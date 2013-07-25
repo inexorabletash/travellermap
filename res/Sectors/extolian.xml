@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<Sector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <X>4</X>
+  <Y>2</Y>
+  <Name>Extolian</Name>
+  <Name Lang="kk">Krurrihkugr</Name>
+  <Subsectors>
+    <Subsector Index="A">Faller-Eresern</Subsector>
+    <Subsector Index="B">Marnoen</Subsector>
+    <Subsector Index="C">Oornoonfan</Subsector>
+    <Subsector Index="D">Nynom</Subsector>
+    <Subsector Index="E">Cornomonte</Subsector>
+    <Subsector Index="F">Dao</Subsector>
+    <Subsector Index="G">Kavix</Subsector>
+    <Subsector Index="H">Kse'i</Subsector>
+    <Subsector Index="I">Extolade</Subsector>
+    <Subsector Index="J">Re Naka</Subsector>
+    <Subsector Index="K">Nufri</Subsector>
+    <Subsector Index="L">Blar</Subsector>
+    <Subsector Index="M">Aarr</Subsector>
+    <Subsector Index="N">Cafesk</Subsector>
+    <Subsector Index="O">Slooda</Subsector>
+    <Subsector Index="P">Ixinsk</Subsector>
+  </Subsectors>
+  <Borders>
+    <Border WrapLabel="false" Color="Blue" Allegiance="6w" LabelPosition="937">0737 0836 0937 1036 1037 0937 0837 0738 0737</Border>
+    <Border WrapLabel="false" Color="Yellow" Allegiance="Ca" LabelPosition="632">0631 0632 0631</Border>
+    <Border WrapLabel="false" Color="Goldenrod" Allegiance="Cr" LabelPosition="208">0001 0102 0201 0301 0300 0301 0302 0202 0203 0204 0205 0306 0206 0107 0108 0109 0110 0111 0112 0113 0114 0115 0116 0115 0114 0113 0112 0111 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001</Border>
+    <Border WrapLabel="false" Color="Purple" Allegiance="Hv" LabelPosition="1921">0407 0507 0606 0605 0604 0603 0602 0502 0601 0600 0700 0800 0900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 2901 2902 2903 2904 3004 3105 3205 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1041 1040 1039 1139 1138 1137 1136 1135 1134 1133 1132 1231 1230 1229 1228 1227 1226 1225 1224 1124 1223 1323 1322 1321 1320 1219 1218 1118 1017 1016 0916 0816 0815 0814 0714 0613 0612 0611 0511 0410 0409 0408 0407</Border>
+    <Border ShowLabel="false" WrapLabel="false" Color="Purple" Allegiance="Hv" LabelPosition="420">0420</Border>
+    <Border WrapLabel="true" Color="Pink" Allegiance="Ia" LabelPosition="337">0033 0133 0232 0233 0234 0235 0236 0337 0338 0438 0539 0540 0541 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036 0035 0034 0033</Border>
+  </Borders>
+  <Labels />
+  <Routes>
+  <Route Start="3039" End="3041" Type="Trade" Color="Gray"/>
+  <Route Start="3039" End="3338" Type="Trade" Color="Gray"/>
+  <Route Start="1040" End="1041" Type="Trade" Color="Gray"/>
+  <Route Start="1040" End="1340" Type="Trade" Color="Gray"/>
+  <Route Start="3221" End="3421" Type="Trade" Color="Gray"/>
+  <Route Start="3039" End="3137" Type="Trade" Color="Gray"/>
+  <Route Start="2834" End="3137" Type="Trade" Color="Gray"/>
+  <Route Start="2834" End="2833" Type="Trade" Color="Gray"/>
+  <Route Start="2834" End="2633" Type="Trade" Color="Gray"/>
+  <Route Start="2834" End="3233" Type="Trade" Color="Gray"/>
+  <Route Start="3130" End="3233" Type="Trade" Color="Gray"/>
+  <Route Start="2633" End="2334" Type="Trade" Color="Gray"/>
+  <Route Start="2133" End="2334" Type="Trade" Color="Gray"/>
+
+  <Route Start="2133" End="1831" Type="Trade" Color="Gray"/>
+  <Route Start="1632" End="1831" Type="Trade" Color="Gray"/>
+
+  <Route Start="1632" End="1831" Type="Trade" Color="Gray"/>
+  <Route Start="1729" End="1831" Type="Trade" Color="Gray"/>
+
+  <Route Start="2133" End="1735" Type="Trade" Color="Gray"/>
+
+  <Route Start="2338" End="2334" Type="Trade" Color="Gray"/>
+  <Route Start="2338" End="2539" Type="Trade" Color="Gray"/>
+
+  <Route Start="1929" End="1729" Type="Trade" Color="Gray"/>
+  <Route Start="2128" End="1929" Type="Trade" Color="Gray"/>
+
+  <Route Start="2128" End="2329" Type="Trade" Color="Gray"/>
+  <Route Start="2128" End="1926" Type="Trade" Color="Gray"/>
+
+  <Route Start="1926" End="1924" Type="Trade" Color="Gray"/>
+  <Route Start="1723" End="1924" Type="Trade" Color="Gray"/>
+  <Route Start="1622" End="1520" Type="Trade" Color="Gray"/>
+  <Route Start="1017" End="1520" Type="Trade" Color="Gray"/>
+
+  <Route Start="1723" End="1622" Type="Trade" Color="Gray"/>
+  <Route Start="1624" End="1924" Type="Trade" Color="Gray"/>
+
+  <Route Start="1622" End="1821" Type="Trade" Color="Gray"/>
+
+  <Route Start="1523" End="1622" Type="Trade" Color="Gray"/>
+  <Route Start="1523" End="1323" Type="Trade" Color="Gray"/>
+
+  </Routes>
+  <Allegiances>
+    <Allegiance Code="Hf">Hive FDA Uplift/Observation Site</Allegiance>
+    <Allegiance Code="Xh">Hive FDA extra-Federation operation</Allegiance>
+    <Allegiance Code="Ca">Cambre Accord</Allegiance>
+    <Allegiance Code="Cr">Corona Regnum</Allegiance>
+    <Allegiance Code="Ia">Ithklur Aexzz</Allegiance>
+    <Allegiance Code="6w">Six Worlds</Allegiance>
+    <Allegiance Code="Na">Non-aligned</Allegiance>
+  </Allegiances>
+  <DataFile Author="Leroy W. L. Guatney" Source="Federation Development Agency" Ref="http://web.archive.org/web/20071029174129/http://home.earthlink.net/~ngc5139/FDA/" Type="SEC">extolian.sec</DataFile>
+</Sector>

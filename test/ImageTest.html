@@ -1,0 +1,193 @@
+﻿<!DOCTYPE html>
+<title>Image Tests</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="stylesheet" type="text/css" href="../site.css?update=2013-07-25">
+<style>
+tbody#results td,
+tbody#results th { width: 256px; overflow: hidden; }
+tbody#results td * { max-width: 256px; height: auto; }
+tbody#results tr.pass td { border: 1px solid green; }
+tbody#results tr.fail td { border: 1px solid red; }
+</style>
+<h1>The Traveller Map - Image Reference Tests</h1>
+<div class="content">
+  <section>
+    <p>
+    This page compares reference images (left) with live renders using the <a href="../api.htm">image APIs</a> (middle) to check for 
+    unintentionally introduced differences (right). The first row is intentionally incorrect, and shows what would happen if coordinates were 
+    calculated incorrectly. All other rows should have no differences, which appears as white space on the right. <b>&Omega;</b>
+    </p>
+  </section>
+  <section>
+    <table>
+      <tbody id="results">
+        <tr>
+          <th>Reference Image</th>
+          <th>Actual Image</th>
+          <th>Diff (white = good, red = bad)</th>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</div>
+
+<script>
+  var DEFAULT_THRESHOLD = 8;
+  var DEFAULT_COUNT = 0;
+
+  function compareImages(url1, url2, threshold, count, callback) {
+    var img1 = new Image(), img1Loaded = false;
+    var img2 = new Image(), img2Loaded = false;
+    img1.onload = img1.onerror = function() {
+      img1Loaded = true;
+      if (img2Loaded) { doCompare(); }
+    };
+    img2.onload = img2.onerror = function() {
+      img2Loaded = true;
+      if (img1Loaded) { doCompare(); }
+    };
+    img1.crossOrigin = 'anonymous';
+    img1.src = url1;
+    img2.crossOrigin = 'anonymous';
+    img2.src = url2;
+    function doCompare() {
+      var w = Math.max(img1.width, img2.width), h = Math.max(img1.height, img2.height);
+
+      function makeCanvas(w, h) {
+        var c = document.createElement('canvas');
+        c.width = w;
+        c.height = h;
+
+        // Hack for IE which fails to apply max-width + height: auto to a canvas
+        c.style.width = '256px';
+        c.style.height = String(256 * h / w) + 'px';
+        
+        return c;
+      }
+
+      function getImagePixels(img) {
+        var c = makeCanvas(w, h);
+        var ctx = c.getContext('2d');
+        ctx.drawImage(img, 0, 0);
+        var id = ctx.getImageData(0, 0, w, h);
+        return id;
+      }
+      var id1 = getImagePixels(img1);
+      var id2 = getImagePixels(img2);
+
+      var c3 = makeCanvas(w, h);
+      var ctx3 = c3.getContext('2d');
+      var id3 = ctx3.getImageData(0, 0, w, h);
+      var d1 = id1.data, d2 = id2.data, d3 = id3.data, len = d3.length;
+      var dirty = false;
+      for (var p = 0; p < len; p += 4) {
+        var dr = Math.abs(d1[p] - d2[p]);
+        var dg = Math.abs(d1[p + 1] - d2[p + 1]);
+        var db = Math.abs(d1[p + 2] - d2[p + 2]);
+        dr = (dr < threshold) ? 0 : dr;
+        dg = (dg < threshold) ? 0 : dg;
+        db = (db < threshold) ? 0 : db;
+        var d = dr + dg + db;
+
+        if (!dirty && d > 0) {
+          if (count) {
+            --count;
+          } else {
+            dirty = true;
+          }
+        }
+
+        d3[p] = 255;
+        d3[p + 1] = 0;
+        d3[p + 2] = 0;
+        d3[p + 3] = d ? 255 : 0;
+      }
+
+      ctx3.putImageData(id3, 0, 0);
+      callback(img1, img2, c3, !dirty);
+    }
+  }
+
+  function check(url1, url2, opt_threshold, opt_count) {
+    var threshold = (opt_threshold === undefined) ? DEFAULT_THRESHOLD : opt_threshold;
+    var count = (opt_count === undefined) ? DEFAULT_COUNT: opt_count;
+    var tr, td;
+
+    tr = document.createElement('tr');
+
+    td = document.createElement('td');
+    tr.appendChild(td);
+    td.appendChild(document.createTextNode(url1));
+
+    td = document.createElement('td');
+    tr.appendChild(td);
+    td.appendChild(document.createTextNode(url2));
+
+    document.querySelector('#results').appendChild(tr);
+
+    tr = document.createElement('tr');
+    document.querySelector('#results').appendChild(tr);
+
+    compareImages("./" + url1, "../" + url2, threshold, count, function(a, b, c, pass) {
+      for (var i = 0; i < 3; ++i) {
+        var item = arguments[i];
+        td = document.createElement('td');
+        tr.appendChild(td);
+        td.appendChild(item);
+      }
+      tr.className = pass ? "pass" : "fail";
+    });
+  }
+
+  // Ensure image diff is working
+  check("ref_bad_example.png", "api/jumpmap?sector=Spinward+Marches&hex=1911&jump=2");
+  
+  // Basics
+  check("ref1.png", "api/jumpmap?sector=Spinward+Marches&hex=1910&jump=3");
+  check("ref2.png", "api/poster?sector=Spinward+Marches", 24);
+  check("ref3.png", "api/poster?sector=Spinward+Marches&subsector=C");
+
+  // Scales
+  check("ref4.png",  "api/tile?x=-0.5&y=-0.5&scale=0.016", 32);
+  check("ref5.png",  "api/tile?x=-0.5&y=-0.5&scale=0.031", 32);
+  check("ref6.png",  "api/tile?x=-0.5&y=-0.5&scale=0.063", 32);
+  check("ref7.png",  "api/tile?x=-0.5&y=-0.5&scale=0.125", 32);
+  check("ref8.png",  "api/tile?x=-0.5&y=-0.5&scale=0.25");
+  check("ref9.png",  "api/tile?x=-0.5&y=-0.5&scale=0.5");
+  check("ref10.png", "api/tile?x=-0.5&y=-0.5&scale=1");
+  check("ref11.png", "api/tile?x=-0.5&y=-0.5&scale=2");
+  check("ref12.png", "api/tile?x=-0.5&y=-0.5&scale=4");
+  check("ref13.png", "api/tile?x=-0.5&y=-0.5&scale=8");
+  check("ref14.png", "api/tile?x=-0.5&y=-0.5&scale=16");
+  check("ref15.png", "api/tile?x=-0.5&y=-0.5&scale=32");
+  check("ref16.png", "api/tile?x=-0.5&y=-0.5&scale=64");
+  check("ref17.png", "api/tile?x=-0.5&y=-0.5&scale=128");
+  check("ref18.png", "api/tile?x=-0.5&y=-0.5&scale=256");
+
+  // Rotation
+  check("ref19.png", "api/poster?sector=Spinward+Marches&scale=8&rotation=0");
+  check("ref20.png", "api/poster?sector=Spinward+Marches&scale=8&rotation=1");
+  check("ref21.png", "api/poster?sector=Spinward+Marches&scale=8&rotation=2");
+  check("ref22.png", "api/poster?sector=Spinward+Marches&scale=8&rotation=3");
+
+  // Options and Styles
+  check("ref23.png", "api/poster?sector=Spinward+Marches&subsector=C&routes=0");
+  check("ref24.png", "api/poster?sector=Spinward+Marches&subsector=C&sscoords=1");
+  check("ref25.png", "api/tile?x=-0.5&y=-0.5&scale=32&options=8192"); // Force Hexes
+  check("ref26.png", "api/poster?sector=Spinward+Marches&subsector=C&style=Atlas");
+  check("ref27.png", "api/poster?sector=Spinward+Marches&subsector=C&style=Print");
+  check("ref28.jpg", "api/poster?sector=Spinward+Marches&subsector=C&style=Candy", 32, 32);
+  check("ref29.png", "api/poster?sector=Spinward+Marches&subsector=C&options=17271"); // World Colors
+  check("ref30.png", "api/poster?sector=Spinward+Marches&subsector=B&options=33655"); // Filled Borders
+
+  // Data Overview
+  check("ref31.png", "api/overview");
+
+  // Regression: hex selector calculation
+  check("ref32.png", "api/tile?x=-74&y=-86&scale=512&options=887&style=poster");
+
+  // Template:
+  // check(ref_image, live_image, opt_rgb_threshold, opt_num_bad_pixels);
+
+</script>

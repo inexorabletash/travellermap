@@ -1,0 +1,733 @@
+Ploblvla
+
+A: Drotschiebrr              A.dat
+B: 'eabr                     B.dat
+C: Friapnchia                C.dat
+D: Zhenchee                  D.dat
+E: Rza                       E.dat
+F: Chaqrbre                  F.dat
+G: Manchtolbrobr             G.dat
+H: Nshezievl                 H.dat
+I: Aza                       I.dat
+J: Kliavrdantsflam           J.dat
+K: Dikleklrafr               K.dat
+L: Tlavrprianja              L.dat
+M: Fritlrialshazh            M.dat
+N: Dliazhpled                N.dat
+O: Lanchiekl                 O.dat
+P: Klefrtlanj                P.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+Z = Zhodani Navy
+Y = Zhodani Depot
+X = Zhodani Relay
+  = None
+
+Allegiance:
+11 Zh = Zhodani
+01 Zc = Zhodani Client
+10 Dr = Droyne
+07 Na = Non-Aligned
+08    = Unknown
+                                          
+                                          
+This sector was created by Clifford Linehan
+
+I wish to thank Marc Miller for his invaluable advice in the creation of this
+sector and the Core Route.
+
+Clifford Linehan - cnl.rubicon@juno.com
+http://www.geocities.com/traveller_core_route
+Developer: Vlanchiets Qlom and the Core Route.
+                                          
+                                          
+@SUB-SECTOR: Chaqrbre SECTOR: Ploblvla
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0911 E357000-0    Ba Lo Ni           001 Na
+F-2           0912 E000000-0    As Ba Lo Ni        014 Na
+F-3           0913 E257000-0    Ba Lo Ni           003 Na
+F-4           0915 E774000-0    Ba Lo Ni           004 Na
+F-5           0919 E300000-0    Ba Lo Ni Va        002 Na
+F-6           1012 E511000-0    Ba Ic Lo Ni        002 Na
+F-7           1014 E5A2000-0    Ba Fl Lo Ni        003 Na
+F-8           1015 E350000-0    Ba De Lo Ni Po     012 Na
+F-9           1016 E8A0000-0    Ba De Lo Ni        031 Na
+F-10          1112 E510000-0    Ba Lo Ni           033 Na
+F-11          1113 E789000-0    Ba Lo Ni           015 Na
+F-12          1117 E838000-0    Ba Lo Ni           012 Na
+F-13          1119 E493000-0    Ba Lo Ni           005 Na
+F-14          1120 E342000-0    Ba Lo Ni Po        004 Na
+F-15          1211 E510000-0    Ba Lo Ni           002 Na
+F-16          1212 E965000-0    Ba Lo Ni           000 Na
+F-17          1215 E273000-0    Ba Lo Ni           003 Na
+F-18          1216 E000000-0    As Ba Lo Ni        003 Na
+F-19          1219 E344000-0    Ba Lo Ni           004 Na
+F-20          1311 E99A000-0    Ba Lo Ni Wa        003 Na
+F-21          1313 E411000-0    Ba Ic Lo Ni        020 Na
+F-22          1315 E110000-0    Ba Lo Ni           023 Na
+F-23          1316 E627000-0    Ba Lo Ni           003 Na
+F-24          1320 E787000-0    Ba Lo Ni           003 Na
+F-25          1411 E8D7000-0    Ba Fl Lo Ni        004 Na
+F-26          1414 E695000-0    Ba Lo Ni           013 Na
+F-27          1419 E386000-0    Ba Lo Ni           000 Na
+F-28          1420 E220000-0    Ba De Lo Ni Po     010 Na
+F-29          1512 E424000-0    Ba Lo Ni           004 Na
+F-30          1513 E574000-0    Ba Lo Ni           001 Na
+F-31          1514 E697000-0    Ba Lo Ni           014 Na
+F-32          1516 X585000-0    Ba Lo Ni        R  003 Na
+F-33          1611 E000000-0    As Ba Lo Ni        002 Na
+F-34          1618 E964000-0    Ba Lo Ni           022 Na
+F-35          1620 E577000-0    Ba Lo Ni           002 Na
+@SUB-SECTOR: Dliazhpled SECTOR: Ploblvla
+#
+$1239 1303 0 1 10
+$1239 1436 0 0 10
+$1436 1333 0 0 10
+$1333 1631 0 0 10
+$1631 1828 1 -1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0932 E7A7000-0    Ba Fl Lo Ni        004 Na
+N-2           0935 E753000-0    Ba Lo Ni Po        004 Na
+N-3           1031 E569000-0    Ba Lo Ni           023 Na
+N-4           1033 E120000-0    Ba De Lo Ni Po     013 Na
+N-5           1035 E794000-0    Ba Lo Ni           023 Na
+N-6           1036 E753000-0    Ba Lo Ni Po        002 Na
+N-7           1037 E658000-0    Ba Lo Ni           004 Na
+N-8           1038 E575000-0    Ba Lo Ni           000 Na
+N-9           1039 E430000-0    Ba De Lo Ni Po     010 Na
+N-10          1040 E6A0000-0    Ba De Lo Ni        004 Na
+N-11          1132 E797000-0    Ba Lo Ni           000 Na
+N-12          1133 E386000-0    Ba Lo Ni           000 Na
+N-13          1134 E547000-0    Ba Lo Ni           013 Na
+N-14          1135 E200000-0    Ba Lo Ni Va        021 Na
+N-15          1139 E541000-0    Ba Lo Ni Po        013 Na
+N-16          1140 E450000-0    Ba De Lo Ni Po     003 Na
+N-17          1231 E537000-0    Ba Lo Ni           024 Na
+N-18          1235 X240000-0    Ba De Lo Ni Po  R  000 Na
+N-19          1238 E438000-0    Ba Lo Ni           010 Na
+N-20          1239 E524000-0    Ba Lo Ni           021 Na
+N-21          1240 E656000-0    Ba Lo Ni           000 Na
+N-22          1333 E647000-0    Ba Lo Ni           004 Na
+N-23          1334 E99A000-0    Ba Lo Ni Wa        005 Na
+N-24          1337 X798000-0    Ba Lo Ni        R  003 Na
+N-25          1339 E69A000-0    Ba Lo Ni Wa        024 Na
+N-26          1340 E352000-0    Ba Lo Ni Po        002 Na
+N-27          1431 E979000-0    Ba Lo Ni           004 Na
+N-28          1433 E767000-0    Ba Lo Ni           005 Na
+N-29          1434 E899000-0    Ba Lo Ni           004 Na
+N-30          1435 E546000-0    Ba Lo Ni           012 Na
+Dlifrziache   1436 C300799-C  Z Na Va              905 Zh
+N-32          1437 E301000-0    Ba Ic Lo Ni Va     014 Na
+N-33          1438 E979000-0    Ba Lo Ni           004 Na
+N-34          1440 E473000-0    Ba Lo Ni           014 Na
+N-35          1534 X420000-0    Ba De Lo Ni Po  R  000 Na
+N-36          1536 E89A000-0    Ba Lo Ni Wa        003 Na
+N-37          1537 E403000-0    Ba Ic Lo Ni Va     003 Na
+N-38          1539 X331000-0    Ba Lo Ni Po     R  015 Na
+N-39          1540 E767000-0    Ba Lo Ni           002 Na
+N-40          1631 E221000-0    Ba Lo Ni Po        004 Na
+N-41          1633 E476000-0    Ba Lo Ni           012 Na
+N-42          1635 E7C4000-0    Ba Fl Lo Ni        023 Na
+N-43          1636 E664000-0    Ba Lo Ni           000 Na
+N-44          1637 E658000-0    Ba Lo Ni           012 Na
+N-45          1639 E773000-0    Ba Lo Ni           003 Na
+@SUB-SECTOR: Manchtolbrobr SECTOR: Ploblvla
+#
+$1718 1821 0 1 10
+$1718 2015 0 0 10
+$2015 1912 0 0 10
+$1912 2008 0 -1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1713 E888000-0    Ba Lo Ni           012 Na
+G-2           1716 E665000-0    Ba Lo Ni           023 Na
+G-3           1717 E300000-0    Ba Lo Ni Va        003 Na
+G-4           1718 E130000-0    Ba De Lo Ni Po     002 Na
+G-5           1719 E362000-0    Ba Lo Ni           002 Na
+G-6           1811 E565000-0    Ba Lo Ni           000 Na
+G-7           1815 E535000-0    Ba Lo Ni           013 Na
+G-8           1816 E768000-0    Ba Lo Ni           001 Na
+G-9           1817 E8B6000-0    Ba Fl Lo Ni        003 Na
+G-10          1818 E599000-0    Ba Lo Ni           015 Na
+G-11          1820 E370000-0    Ba De Lo Ni        000 Na
+G-12          1911 E410000-0    Ba Lo Ni           004 Na
+G-13          1912 E140000-0    Ba De Lo Ni Po     004 Na
+G-14          1913 E571000-0    Ba Lo Ni           004 Na
+G-15          1914 E9C1000-0    Ba Fl Lo Ni        010 Na
+G-16          1915 E457000-0    Ba Lo Ni           005 Na
+G-17          1918 X745000-0    Ba Lo Ni        R  000 Na
+G-18          2014 E222000-0    Ba Lo Ni Po        002 Na
+Aibleblbiat   2015 C120971-C  Z De Hi In Na Po     803 Zh
+G-20          2019 E556000-0    Ba Lo Ni           003 Na
+G-21          2112 E451000-0    Ba Lo Ni Po        033 Na
+G-22          2113 E658000-0    Ba Lo Ni           025 Na
+G-23          2114 E545000-0    Ba Lo Ni           022 Na
+G-24          2115 E583000-0    Ba Lo Ni           010 Na
+G-25          2118 E665000-0    Ba Lo Ni           005 Na
+G-26          2119 E779000-0    Ba Lo Ni           002 Na
+G-27          2120 E333000-0    Ba Lo Ni Po        025 Na
+G-28          2212 E528000-0    Ba Lo Ni           002 Na
+G-29          2214 X243000-0    Ba Lo Ni Po     R  002 Na
+G-30          2215 E9E6000-0    Ba Fl Lo Ni        032 Na
+G-31          2220 E525000-0    Ba Lo Ni           000 Na
+G-32          2311 E664000-0    Ba Lo Ni           023 Na
+G-33          2312 E7B0000-0    Ba De Lo Ni        000 Na
+G-34          2315 E9B5000-0    Ba Fl Lo Ni        011 Na
+G-35          2317 E86A000-0    Ba Lo Ni Wa        003 Na
+G-36          2318 E262000-0    Ba Lo Ni           001 Na
+G-37          2320 E384000-0    Ba Lo Ni           013 Na
+G-38          2413 E433000-0    Ba Lo Ni Po        000 Na
+G-39          2414 E413000-0    Ba Ic Lo Ni        002 Na
+G-40          2415 E768000-0    Ba Lo Ni           014 Na
+G-41          2416 E796000-0    Ba Lo Ni           023 Na
+G-42          2418 E628000-0    Ba Lo Ni           004 Na
+@SUB-SECTOR: Lanchiekl SECTOR: Ploblvla
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1734 E422000-0    Ba Lo Ni Po        003 Na
+O-2           1735 E863000-0    Ba Lo Ni           002 Na
+O-3           1736 E440000-0    Ba De Lo Ni Po     002 Na
+O-4           1737 E749000-0    Ba Lo Ni           015 Na
+O-5           1739 E571000-0    Ba Lo Ni           004 Na
+O-6           1831 E681000-0    Ba Lo Ni           004 Na
+O-7           1832 E538000-0    Ba Lo Ni           003 Na
+O-8           1835 E533000-0    Ba Lo Ni Po        004 Na
+O-9           1837 E237000-0    Ba Lo Ni           001 Na
+O-10          1838 E200000-0    Ba Lo Ni Va        002 Na
+O-11          1839 E658000-0    Ba Lo Ni           001 Na
+O-12          1840 E847000-0    Ba Lo Ni           002 Na
+O-13          1934 E512000-0    Ba Ic Lo Ni        022 Na
+O-14          1937 E356000-0    Ba Lo Ni           023 Na
+O-15          1940 E728000-0    Ba Lo Ni           014 Na
+O-16          2031 E340000-0    Ba De Lo Ni Po     004 Na
+O-17          2032 E548000-0    Ba Lo Ni           004 Na
+O-18          2033 E556000-0    Ba Lo Ni           013 Na
+O-19          2035 X225000-0    Ba Lo Ni        R  003 Na
+O-20          2038 E300000-0    Ba Lo Ni Va        005 Na
+O-21          2040 E310000-0    Ba Lo Ni           000 Na
+O-22          2138 E338000-0    Ba Lo Ni           004 Na
+O-23          2139 E562000-0    Ba Lo Ni           020 Na
+O-24          2140 EAB4000-0    Ba Fl Lo Ni        002 Na
+O-25          2235 E85A000-0    Ba Lo Ni Wa        003 Na
+O-26          2238 E594000-0    Ba Lo Ni           014 Na
+O-27          2332 E9C4000-0    Ba Fl Lo Ni        000 Na
+O-28          2333 E303000-0    Ba Ic Lo Ni Va     014 Na
+O-29          2334 E452000-0    Ba Lo Ni Po        000 Na
+O-30          2337 E7A5000-0    Ba Fl Lo Ni        002 Na
+O-31          2338 E655000-0    Ba Lo Ni           015 Na
+O-32          2339 E464000-0    Ba Lo Ni           003 Na
+O-33          2433 E85A000-0    Ba Lo Ni Wa        004 Na
+O-34          2434 EAFA000-0    Ba Fl Lo Ni Wa     021 Na
+O-35          2436 E7B1000-0    Ba Fl Lo Ni        024 Na
+O-36          2438 E68A000-0    Ba Lo Ni Wa        004 Na
+O-37          2440 E672000-0    Ba Lo Ni           023 Na
+@SUB-SECTOR: Nshezievl SECTOR: Ploblvla
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2511 E524000-0    Ba Lo Ni           014 Na
+H-2           2513 E76A000-0    Ba Lo Ni Wa        013 Na
+H-3           2514 E78A000-0    Ba Lo Ni Wa        014 Na
+H-4           2515 E120000-0    Ba De Lo Ni Po     004 Na
+H-5           2516 E556000-0    Ba Lo Ni           000 Na
+H-6           2517 E340000-0    Ba De Lo Ni Po     024 Na
+H-7           2519 E445000-0    Ba Lo Ni           003 Na
+H-8           2520 E664000-0    Ba Lo Ni           034 Na
+H-9           2611 E647000-0    Ba Lo Ni           022 Na
+H-10          2613 E676000-0    Ba Lo Ni           002 Na
+H-11          2615 EAE7000-0    Ba Fl Lo Ni        010 Na
+H-12          2617 E451000-0    Ba Lo Ni Po        003 Na
+H-13          2618 E200000-0    Ba Lo Ni Va        000 Na
+H-14          2619 E573000-0    Ba Lo Ni           002 Na
+H-15          2712 E301000-0    Ba Ic Lo Ni Va     002 Na
+H-16          2714 X888000-0    Ba Lo Ni        R  004 Na
+H-17          2715 E425000-0    Ba Lo Ni           004 Na
+H-18          2718 E140000-0    Ba De Lo Ni Po     012 Na
+H-19          2812 E100000-0    Ba Lo Ni Va        000 Na
+H-20          2814 E361000-0    Ba Lo Ni           003 Na
+H-21          2815 E87A000-0    Ba Lo Ni Wa        000 Na
+H-22          2818 E453000-0    Ba Lo Ni Po        021 Na
+H-23          2820 E443000-0    Ba Lo Ni Po        014 Na
+H-24          2911 E682000-0    Ba Lo Ni           000 Na
+H-25          2912 E59A000-0    Ba Lo Ni Wa        001 Na
+H-26          2913 E434000-0    Ba Lo Ni           024 Na
+H-27          2916 E646000-0    Ba Lo Ni           002 Na
+H-28          2917 X757000-0    Ba Lo Ni        R  004 Na
+H-29          3011 E727000-0    Ba Lo Ni           020 Na
+H-30          3012 E779000-0    Ba Lo Ni           000 Na
+H-31          3013 E77A000-0    Ba Lo Ni Wa        023 Na
+H-32          3017 E261000-0    Ba Lo Ni           013 Na
+H-33          3019 E445000-0    Ba Lo Ni           015 Na
+H-34          3020 E445000-0    Ba Lo Ni           014 Na
+H-35          3111 E000000-0    As Ba Lo Ni        002 Na
+H-36          3112 E200000-0    Ba Lo Ni Va        023 Na
+H-37          3119 E6A3000-0    Ba Fl Lo Ni        004 Na
+H-38          3120 E7C3000-0    Ba Fl Lo Ni        004 Na
+H-39          3211 E557000-0    Ba Lo Ni           000 Na
+H-40          3213 E220000-0    Ba De Lo Ni Po     002 Na
+H-41          3215 E211000-0    Ba Ic Lo Ni        024 Na
+H-42          3219 X548000-0    Ba Lo Ni        R  020 Na
+H-43          3220 EA98000-0    Ba Lo Ni           012 Na
+@SUB-SECTOR: Klefrtlanj SECTOR: Ploblvla
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2533 EA9A000-0    Ba Lo Ni Wa        024 Na
+P-2           2536 E310000-0    Ba Lo Ni           024 Na
+P-3           2631 E673000-0    Ba Lo Ni           000 Na
+P-4           2632 E140000-0    Ba De Lo Ni Po     014 Na
+P-5           2635 E210000-0    Ba Lo Ni           023 Na
+P-6           2636 E400000-0    Ba Lo Ni Va        004 Na
+P-7           2731 E887000-0    Ba Lo Ni           002 Na
+P-8           2732 E100000-0    Ba Lo Ni Va        014 Na
+P-9           2735 E568000-0    Ba Lo Ni           001 Na
+P-10          2736 E652000-0    Ba Lo Ni Po        030 Na
+P-11          2738 E9D8000-0    Ba Fl Lo Ni        003 Na
+P-12          2835 E225000-0    Ba Lo Ni           004 Na
+P-13          2931 E875000-0    Ba Lo Ni           013 Na
+P-14          2935 E879000-0    Ba Lo Ni           010 Na
+P-15          3031 E562000-0    Ba Lo Ni           015 Na
+P-16          3037 E333000-0    Ba Lo Ni Po        014 Na
+P-17          3038 E231000-0    Ba Lo Ni Po        020 Na
+P-18          3039 E845000-0    Ba Lo Ni           004 Na
+P-19          3136 E745000-0    Ba Lo Ni           010 Na
+P-20          3139 E491000-0    Ba Lo Ni           003 Na
+P-21          3231 E563000-0    Ba Lo Ni           002 Na
+P-22          3232 E446000-0    Ba Lo Ni           020 Na
+P-23          3235 EA77000-0    Ba Lo Ni           012 Na
+@SUB-SECTOR: Aza SECTOR: Ploblvla
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0128 E489000-0    Ba Lo Ni           000 Na
+I-2           0129 E120000-0    Ba De Lo Ni Po     015 Na
+I-3           0222 E475000-0    Ba Lo Ni           003 Na
+I-4           0227 E510000-0    Ba Lo Ni           011 Na
+I-5           0228 E786000-0    Ba Lo Ni           003 Na
+I-6           0323 E236000-0    Ba Lo Ni           004 Na
+I-7           0325 E550000-0    Ba De Lo Ni Po     024 Na
+I-8           0326 E664000-0    Ba Lo Ni           014 Na
+I-9           0329 E858000-0    Ba Lo Ni           011 Na
+I-10          0330 E100000-0    Ba Lo Ni Va        002 Na
+I-11          0422 E645000-0    Ba Lo Ni           005 Na
+I-12          0423 E373000-0    Ba Lo Ni           032 Na
+I-13          0426 E626000-0    Ba Lo Ni           000 Na
+I-14          0427 E444000-0    Ba Lo Ni           004 Na
+I-15          0429 E885000-0    Ba Lo Ni           024 Na
+I-16          0430 E9DA000-0    Ba Fl Lo Ni Wa     014 Na
+I-17          0521 E545000-0    Ba Lo Ni           001 Na
+I-18          0523 E668000-0    Ba Lo Ni           023 Na
+I-19          0525 E738000-0    Ba Lo Ni           003 Na
+I-20          0527 E302000-0    Ba Ic Lo Ni Va     023 Na
+I-21          0528 E795000-0    Ba Lo Ni           004 Na
+I-22          0529 E400000-0    Ba Lo Ni Va        003 Na
+I-23          0621 E654000-0    Ba Lo Ni           002 Na
+I-24          0623 E7B3000-0    Ba Fl Lo Ni        002 Na
+I-25          0624 E110000-0    Ba Lo Ni           000 Na
+I-26          0625 E8B4000-0    Ba Fl Lo Ni        014 Na
+I-27          0626 X968000-0    Ba Lo Ni        R  003 Na
+I-28          0628 E758000-0    Ba Lo Ni           020 Na
+I-29          0629 E677000-0    Ba Lo Ni           010 Na
+I-30          0630 E57A000-0    Ba Lo Ni Wa        001 Na
+I-31          0722 E675000-0    Ba Lo Ni           004 Na
+I-32          0724 E456000-0    Ba Lo Ni           002 Na
+I-33          0725 E210000-0    Ba Lo Ni           014 Na
+I-34          0730 E535000-0    Ba Lo Ni           000 Na
+I-35          0824 E578000-0    Ba Lo Ni           004 Na
+I-36          0829 E360000-0    Ba De Lo Ni        004 Na
+@SUB-SECTOR: Drotschiebrr SECTOR: Ploblvla
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0102 E100000-0    Ba Lo Ni Va        011 Na
+A-2           0103 E565000-0    Ba Lo Ni           000 Na
+A-3           0105 E361000-0    Ba Lo Ni           014 Na
+A-4           0106 E687000-0    Ba Lo Ni           004 Na
+A-5           0107 E442000-0    Ba Lo Ni Po        011 Na
+A-6           0108 E5C2000-0    Ba Fl Lo Ni        021 Na
+A-7           0109 E333000-0    Ba Lo Ni Po        002 Na
+A-8           0204 E439000-0    Ba Lo Ni           002 Na
+A-9           0205 E358000-0    Ba Lo Ni           014 Na
+A-10          0207 E000000-0    As Ba Lo Ni        011 Na
+A-11          0209 E545000-0    Ba Lo Ni           002 Na
+A-12          0301 E100000-0    Ba Lo Ni Va        005 Na
+A-13          0303 E323000-0    Ba Lo Ni Po        000 Na
+A-14          0305 E436000-0    Ba Lo Ni           004 Na
+A-15          0306 E7A4000-0    Ba Fl Lo Ni        000 Na
+A-16          0307 E445000-0    Ba Lo Ni           004 Na
+A-17          0309 E120000-0    Ba De Lo Ni Po     003 Na
+A-18          0404 E997000-0    Ba Lo Ni           000 Na
+A-19          0405 E756000-0    Ba Lo Ni           003 Na
+A-20          0408 E757000-0    Ba Lo Ni           004 Na
+A-21          0501 E6B2000-0    Ba Fl Lo Ni        001 Na
+A-22          0504 E7B6000-0    Ba Fl Lo Ni        003 Na
+A-23          0602 E240000-0    Ba De Lo Ni Po     024 Na
+A-24          0606 E320000-0    Ba De Lo Ni Po     023 Na
+A-25          0608 E8A7000-0    Ba Fl Lo Ni        000 Na
+A-26          0610 E7A7000-0    Ba Fl Lo Ni        004 Na
+A-27          0701 E453000-0    Ba Lo Ni Po        004 Na
+A-28          0702 E764000-0    Ba Lo Ni           004 Na
+A-29          0705 E765000-0    Ba Lo Ni           021 Na
+A-30          0706 E301000-0    Ba Ic Lo Ni Va     002 Na
+A-31          0709 E100000-0    Ba Lo Ni Va        003 Na
+A-32          0710 E240000-0    Ba De Lo Ni Po     005 Na
+A-33          0803 E88A000-0    Ba Lo Ni Wa        014 Na
+A-34          0804 E371000-0    Ba Lo Ni           004 Na
+A-35          0805 E9B6000-0    Ba Fl Lo Ni        001 Na
+A-36          0808 E130000-0    Ba De Lo Ni Po     003 Na
+@SUB-SECTOR: 'eabr SECTOR: Ploblvla
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0901 E545000-0    Ba Lo Ni           004 Na
+B-2           0903 E668000-0    Ba Lo Ni           003 Na
+B-3           0905 E7A1000-0    Ba Fl Lo Ni        013 Na
+B-4           0910 E420000-0    Ba De Lo Ni Po     004 Na
+B-5           1001 E455000-0    Ba Lo Ni           000 Na
+B-6           1002 E7A3000-0    Ba Fl Lo Ni        005 Na
+B-7           1004 X200000-0    Ba Lo Ni Va     R  010 Na
+B-8           1009 E457000-0    Ba Lo Ni           004 Na
+B-9           1101 E798000-0    Ba Lo Ni           004 Na
+B-10          1102 E473000-0    Ba Lo Ni           014 Na
+B-11          1103 E799000-0    Ba Lo Ni           002 Na
+B-12          1106 X663000-0    Ba Lo Ni        R  014 Na
+B-13          1108 E8A6000-0    Ba Fl Lo Ni        011 Na
+B-14          1202 E120000-0    Ba De Lo Ni Po     022 Na
+B-15          1203 E246000-0    Ba Lo Ni           001 Na
+B-16          1206 E300000-0    Ba Lo Ni Va        000 Na
+B-17          1207 E563000-0    Ba Lo Ni           023 Na
+B-18          1208 E110000-0    Ba Lo Ni           002 Na
+B-19          1304 X798000-0    Ba Lo Ni        R  000 Na
+B-20          1307 X435000-0    Ba Lo Ni        R  002 Na
+B-21          1402 E84A000-0    Ba Lo Ni Wa        024 Na
+B-22          1408 X747000-0    Ba Lo Ni        R  011 Na
+B-23          1409 E533000-0    Ba Lo Ni Po        015 Na
+B-24          1502 E100000-0    Ba Lo Ni Va        004 Na
+B-25          1504 E878000-0    Ba Lo Ni           000 Na
+B-26          1510 E476000-0    Ba Lo Ni           013 Na
+B-27          1602 E96A000-0    Ba Lo Ni Wa        003 Na
+B-28          1604 E000000-0    As Ba Lo Ni        034 Na
+B-29          1607 E000000-0    As Ba Lo Ni        010 Na
+B-30          1610 E788000-0    Ba Lo Ni           012 Na
+@SUB-SECTOR: Friapnchia SECTOR: Ploblvla
+#
+$2008 1912 0 1 10
+$2008 2004 0 0 10
+$2004 1901 0 0 10
+$1901 1837 0 -1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1701 E858000-0    Ba Lo Ni           013 Na
+C-2           1703 E758000-0    Ba Lo Ni           020 Na
+C-3           1707 E784000-0    Ba Lo Ni           000 Na
+C-4           1708 E6A2000-0    Ba Fl Lo Ni        003 Na
+C-5           1709 E581000-0    Ba Lo Ni           002 Na
+C-6           1801 E685000-0    Ba Lo Ni           014 Na
+C-7           1803 E436000-0    Ba Lo Ni           012 Na
+C-8           1804 E235000-0    Ba Lo Ni           002 Na
+C-9           1805 X510000-0    Ba Lo Ni        R  012 Na
+C-10          1808 E755000-0    Ba Lo Ni           000 Na
+C-11          1809 E300000-0    Ba Lo Ni Va        023 Na
+C-12          1901 E000000-0    As Ba Lo Ni        002 Na
+C-13          1903 E467000-0    Ba Lo Ni           005 Na
+C-14          1904 E200000-0    Ba Lo Ni Va        021 Na
+C-15          1905 E200000-0    Ba Lo Ni Va        003 Na
+C-16          1907 E456000-0    Ba Lo Ni           022 Na
+C-17          2003 E529000-0    Ba Lo Ni           023 Na
+Ida           2004 B140514-E  Z De Ni Po           212 Zh
+C-19          2008 E443000-0    Ba Lo Ni Po        014 Na
+C-20          2010 E324000-0    Ba Lo Ni           000 Na
+C-21          2102 EA9A000-0    Ba Lo Ni Wa        014 Na
+C-22          2103 E9BA000-0    Ba Fl Lo Ni Wa     002 Na
+C-23          2104 E542000-0    Ba Lo Ni Po        024 Na
+C-24          2105 E100000-0    Ba Lo Ni Va        003 Na
+C-25          2107 X685000-0    Ba Lo Ni        R  013 Na
+C-26          2110 E594000-0    Ba Lo Ni           010 Na
+C-27          2201 E342000-0    Ba Lo Ni Po        010 Na
+C-28          2202 E582000-0    Ba Lo Ni           004 Na
+C-29          2204 E410000-0    Ba Lo Ni           004 Na
+C-30          2205 X856000-0    Ba Lo Ni        R  014 Na
+C-31          2207 E99A000-0    Ba Lo Ni Wa        001 Na
+C-32          2208 E89A000-0    Ba Lo Ni Wa        003 Na
+C-33          2301 E334000-0    Ba Lo Ni           014 Na
+C-34          2304 E8A5000-0    Ba Fl Lo Ni        014 Na
+C-35          2308 EAD8000-0    Ba Fl Lo Ni        004 Na
+C-36          2309 E689000-0    Ba Lo Ni           005 Na
+C-37          2401 E533000-0    Ba Lo Ni Po        012 Na
+C-38          2404 E581000-0    Ba Lo Ni           004 Na
+C-39          2405 E100000-0    Ba Lo Ni Va        002 Na
+C-40          2406 E984000-0    Ba Lo Ni           004 Na
+C-41          2407 E220000-0    Ba De Lo Ni Po     000 Na
+C-42          2408 E201000-0    Ba Ic Lo Ni Va     024 Na
+C-43          2410 E461000-0    Ba Lo Ni           004 Na
+@SUB-SECTOR: Zhenchee SECTOR: Ploblvla
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2503 E558000-0    Ba Lo Ni           004 Na
+D-2           2507 EADA000-0    Ba Fl Lo Ni Wa     014 Na
+D-3           2508 E130000-0    Ba De Lo Ni Po     014 Na
+D-4           2510 E768000-0    Ba Lo Ni           020 Na
+D-5           2605 E645000-0    Ba Lo Ni           004 Na
+D-6           2606 E524000-0    Ba Lo Ni           003 Na
+D-7           2609 X8A2000-0    Ba Fl Lo Ni     R  010 Na
+D-8           2610 E100000-0    Ba Lo Ni Va        003 Na
+D-9           2702 E262000-0    Ba Lo Ni           014 Na
+D-10          2704 E460000-0    Ba De Lo Ni        003 Na
+D-11          2705 E400000-0    Ba Lo Ni Va        020 Na
+D-12          2708 E480000-0    Ba De Lo Ni        013 Na
+D-13          2803 E120000-0    Ba De Lo Ni Po     012 Na
+D-14          2806 E451000-0    Ba Lo Ni Po        013 Na
+D-15          2808 E432000-0    Ba Lo Ni Po        001 Na
+D-16          2809 E55A000-0    Ba Lo Ni Wa        022 Na
+D-17          2810 E552000-0    Ba Lo Ni Po        000 Na
+D-18          2901 E456000-0    Ba Lo Ni           004 Na
+D-19          2908 X200000-0    Ba Lo Ni Va     R  004 Na
+D-20          2910 E859000-0    Ba Lo Ni           004 Na
+D-21          3001 E762000-0    Ba Lo Ni           024 Na
+D-22          3007 E411000-0    Ba Ic Lo Ni        003 Na
+D-23          3008 E464000-0    Ba Lo Ni           025 Na
+D-24          3009 E441000-0    Ba Lo Ni Po        024 Na
+D-25          3010 E7B6000-0    Ba Fl Lo Ni        011 Na
+D-26          3103 E647000-0    Ba Lo Ni           000 Na
+D-27          3104 E573000-0    Ba Lo Ni           004 Na
+D-28          3105 E224000-0    Ba Lo Ni           000 Na
+D-29          3107 E542000-0    Ba Lo Ni Po        021 Na
+D-30          3110 E200000-0    Ba Lo Ni Va        003 Na
+D-31          3203 E380000-0    Ba De Lo Ni        020 Na
+D-32          3205 E7B2000-0    Ba Fl Lo Ni        014 Na
+D-33          3206 E420000-0    Ba De Lo Ni Po     003 Na
+D-34          3208 E789000-0    Ba Lo Ni           004 Na
+D-35          3209 E323000-0    Ba Lo Ni Po        002 Na
+@SUB-SECTOR: Rza SECTOR: Ploblvla
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0111 E668000-0    Ba Lo Ni           010 Na
+E-2           0112 E671000-0    Ba Lo Ni           002 Na
+E-3           0113 E666000-0    Ba Lo Ni           000 Na
+E-4           0116 E401000-0    Ba Ic Lo Ni Va     004 Na
+E-5           0117 E551000-0    Ba Lo Ni Po        005 Na
+E-6           0120 E521000-0    Ba Lo Ni Po        004 Na
+E-7           0211 E568000-0    Ba Lo Ni           004 Na
+E-8           0213 E646000-0    Ba Lo Ni           010 Na
+E-9           0215 E446000-0    Ba Lo Ni           002 Na
+E-10          0217 E78A000-0    Ba Lo Ni Wa        010 Na
+E-11          0218 E612000-0    Ba Ic Lo Ni        000 Na
+E-12          0311 E87A000-0    Ba Lo Ni Wa        023 Na
+E-13          0313 E725000-0    Ba Lo Ni           010 Na
+E-14          0315 E333000-0    Ba Lo Ni Po        023 Na
+E-15          0316 E534000-0    Ba Lo Ni           023 Na
+E-16          0319 E676000-0    Ba Lo Ni           003 Na
+E-17          0320 E140000-0    Ba De Lo Ni Po     004 Na
+E-18          0411 E538000-0    Ba Lo Ni           010 Na
+E-19          0412 E150000-0    Ba De Lo Ni Po     000 Na
+E-20          0414 E542000-0    Ba Lo Ni Po        013 Na
+E-21          0415 E7B2000-0    Ba Fl Lo Ni        004 Na
+E-22          0416 E100000-0    Ba Lo Ni Va        002 Na
+E-23          0417 E899000-0    Ba Lo Ni           012 Na
+E-24          0419 E886000-0    Ba Lo Ni           005 Na
+E-25          0420 E549000-0    Ba Lo Ni           010 Na
+E-26          0511 E89A000-0    Ba Lo Ni Wa        011 Na
+E-27          0512 E5A0000-0    Ba De Lo Ni        004 Na
+E-28          0514 E575000-0    Ba Lo Ni           005 Na
+E-29          0516 E849000-0    Ba Lo Ni           022 Na
+E-30          0517 E566000-0    Ba Lo Ni           014 Na
+E-31          0518 E6A1000-0    Ba Fl Lo Ni        000 Na
+E-32          0520 E687000-0    Ba Lo Ni           003 Na
+E-33          0612 E533000-0    Ba Lo Ni Po        015 Na
+E-34          0613 E878000-0    Ba Lo Ni           022 Na
+E-35          0614 E350000-0    Ba De Lo Ni Po     003 Na
+E-36          0616 E400000-0    Ba Lo Ni Va        012 Na
+E-37          0617 E687000-0    Ba Lo Ni           013 Na
+E-38          0712 E522000-0    Ba Lo Ni Po        021 Na
+E-39          0716 EA9A000-0    Ba Lo Ni Wa        024 Na
+E-40          0719 E657000-0    Ba Lo Ni           023 Na
+E-41          0720 E749000-0    Ba Lo Ni           010 Na
+E-42          0812 E768000-0    Ba Lo Ni           004 Na
+E-43          0813 E478000-0    Ba Lo Ni           021 Na
+E-44          0814 E584000-0    Ba Lo Ni           013 Na
+E-45          0815 E585000-0    Ba Lo Ni           002 Na
+E-46          0817 E463000-0    Ba Lo Ni           005 Na
+E-47          0819 E562000-0    Ba Lo Ni           001 Na
+@SUB-SECTOR: Kliavrdantsflam SECTOR: Ploblvla
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0921 E656000-0    Ba Lo Ni           004 Na
+J-2           0922 E775000-0    Ba Lo Ni           020 Na
+J-3           0925 E343000-0    Ba Lo Ni Po        014 Na
+J-4           0927 E000000-0    As Ba Lo Ni        002 Na
+J-5           0929 E300000-0    Ba Lo Ni Va        010 Na
+J-6           1022 E885000-0    Ba Lo Ni           020 Na
+J-7           1023 E655000-0    Ba Lo Ni           000 Na
+J-8           1025 E455000-0    Ba Lo Ni           004 Na
+J-9           1029 E747000-0    Ba Lo Ni           002 Na
+J-10          1121 E225000-0    Ba Lo Ni           003 Na
+J-11          1123 E300000-0    Ba Lo Ni Va        012 Na
+J-12          1124 E000000-0    As Ba Lo Ni        000 Na
+J-13          1125 E74A000-0    Ba Lo Ni Wa        005 Na
+J-14          1128 E435000-0    Ba Lo Ni           003 Na
+J-15          1221 E327000-0    Ba Lo Ni           013 Na
+J-16          1222 E98A000-0    Ba Lo Ni Wa        002 Na
+J-17          1224 E457000-0    Ba Lo Ni           003 Na
+J-18          1226 E685000-0    Ba Lo Ni           000 Na
+J-19          1227 E8A1000-0    Ba Fl Lo Ni        004 Na
+J-20          1321 E557000-0    Ba Lo Ni           002 Na
+J-21          1325 E578000-0    Ba Lo Ni           004 Na
+J-22          1421 E356000-0    Ba Lo Ni           004 Na
+J-23          1422 E448000-0    Ba Lo Ni           002 Na
+J-24          1423 E558000-0    Ba Lo Ni           023 Na
+J-25          1424 E838000-0    Ba Lo Ni           002 Na
+J-26          1425 E668000-0    Ba Lo Ni           013 Na
+J-27          1426 E542000-0    Ba Lo Ni Po        013 Na
+J-28          1523 E514000-0    Ba Ic Lo Ni        004 Na
+J-29          1525 E7A2000-0    Ba Fl Lo Ni        003 Na
+J-30          1526 E403000-0    Ba Ic Lo Ni Va     004 Na
+J-31          1527 E666000-0    Ba Lo Ni           002 Na
+J-32          1529 E887000-0    Ba Lo Ni           013 Na
+J-33          1627 E210000-0    Ba Lo Ni           003 Na
+J-34          1629 E546000-0    Ba Lo Ni           004 Na
+@SUB-SECTOR: Dikleklrafr SECTOR: Ploblvla
+#
+$1828 1631 -1 1 10
+$1828 1925 0 0 10
+$1925 1821 0 0 10
+$1821 1718 0 -1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1721 E541000-0    Ba Lo Ni Po        013 Na
+K-2           1722 E334000-0    Ba Lo Ni           004 Na
+K-3           1723 E580000-0    Ba De Lo Ni        010 Na
+K-4           1725 E335000-0    Ba Lo Ni           005 Na
+K-5           1726 E510000-0    Ba Lo Ni           021 Na
+K-6           1727 E230000-0    Ba De Lo Ni Po     002 Na
+K-7           1821 E65A000-0    Ba Lo Ni Wa        011 Na
+K-8           1822 E302000-0    Ba Ic Lo Ni Va     005 Na
+K-9           1823 E8A3000-0    Ba Fl Lo Ni        015 Na
+K-10          1827 E476000-0    Ba Lo Ni           033 Na
+K-11          1828 E574000-0    Ba Lo Ni           001 Na
+K-12          1829 E876000-0    Ba Lo Ni           000 Na
+K-13          1830 E200000-0    Ba Lo Ni Va        002 Na
+Prie'         1925 C6A3444-C  Z Fl Ni              211 Zh
+K-15          1927 E534000-0    Ba Lo Ni           004 Na
+K-16          1929 E865000-0    Ba Lo Ni           013 Na
+K-17          2021 E510000-0    Ba Lo Ni           003 Na
+K-18          2022 E769000-0    Ba Lo Ni           000 Na
+K-19          2028 E567000-0    Ba Lo Ni           004 Na
+K-20          2029 E685000-0    Ba Lo Ni           003 Na
+K-21          2127 E480000-0    Ba De Lo Ni        005 Na
+K-22          2222 E656000-0    Ba Lo Ni           001 Na
+K-23          2225 X84A000-0    Ba Lo Ni Wa     R  004 Na
+K-24          2226 E534000-0    Ba Lo Ni           003 Na
+K-25          2230 E150000-0    Ba De Lo Ni Po     004 Na
+K-26          2322 E000000-0    As Ba Lo Ni        003 Na
+K-27          2324 E322000-0    Ba Lo Ni Po        000 Na
+K-28          2327 E443000-0    Ba Lo Ni Po        004 Na
+K-29          2422 E594000-0    Ba Lo Ni           000 Na
+K-30          2424 E311000-0    Ba Ic Lo Ni        022 Na
+K-31          2427 E569000-0    Ba Lo Ni           005 Na
+K-32          2430 E664000-0    Ba Lo Ni           004 Na
+@SUB-SECTOR: Tlavrprianja SECTOR: Ploblvla
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2523 E211000-0    Ba Ic Lo Ni        001 Na
+L-2           2525 E554000-0    Ba Lo Ni           003 Na
+L-3           2526 E899000-0    Ba Lo Ni           013 Na
+L-4           2527 E55A000-0    Ba Lo Ni Wa        004 Na
+L-5           2530 E552000-0    Ba Lo Ni Po        002 Na
+L-6           2623 E6B0000-0    Ba De Lo Ni        004 Na
+L-7           2624 E798000-0    Ba Lo Ni           004 Na
+L-8           2724 E511000-0    Ba Ic Lo Ni        023 Na
+L-9           2726 E99A000-0    Ba Lo Ni Wa        000 Na
+L-10          2728 EAA4000-0    Ba Fl Lo Ni        020 Na
+L-11          2730 E333000-0    Ba Lo Ni Po        022 Na
+L-12          2823 E000000-0    As Ba Lo Ni        022 Na
+L-13          2826 X745000-0    Ba Lo Ni        R  023 Na
+L-14          2828 E643000-0    Ba Lo Ni Po        003 Na
+L-15          2829 E453000-0    Ba Lo Ni Po        014 Na
+L-16          2924 E465000-0    Ba Lo Ni           004 Na
+L-17          2925 E441000-0    Ba Lo Ni Po        002 Na
+L-18          3022 E563000-0    Ba Lo Ni           010 Na
+L-19          3023 E745000-0    Ba Lo Ni           012 Na
+L-20          3026 E696000-0    Ba Lo Ni           005 Na
+L-21          3027 E665000-0    Ba Lo Ni           003 Na
+L-22          3029 E565000-0    Ba Lo Ni           025 Na
+L-23          3121 E430000-0    Ba De Lo Ni Po     013 Na
+L-24          3123 EAA6000-0    Ba Fl Lo Ni        004 Na
+L-25          3125 E535000-0    Ba Lo Ni           003 Na
+L-26          3126 E558000-0    Ba Lo Ni           010 Na
+L-27          3127 E488000-0    Ba Lo Ni           022 Na
+L-28          3128 E554000-0    Ba Lo Ni           004 Na
+L-29          3129 E687000-0    Ba Lo Ni           004 Na
+L-30          3130 E675000-0    Ba Lo Ni           002 Na
+L-31          3221 E300000-0    Ba Lo Ni Va        004 Na
+L-32          3225 E326000-0    Ba Lo Ni           002 Na
+L-33          3227 E674000-0    Ba Lo Ni           013 Na
+L-34          3229 E596000-0    Ba Lo Ni           023 Na
+L-35          3230 E757000-0    Ba Lo Ni           000 Na
+@SUB-SECTOR: Fritlrialshazh SECTOR: Ploblvla
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0131 E8C9000-0    Ba Fl Lo Ni        011 Na
+M-2           0134 E795000-0    Ba Lo Ni           001 Na
+M-3           0136 E200000-0    Ba Lo Ni Va        003 Na
+M-4           0137 E9A2000-0    Ba Fl Lo Ni        022 Na
+M-5           0139 E577000-0    Ba Lo Ni           024 Na
+M-6           0233 E536000-0    Ba Lo Ni           014 Na
+M-7           0237 E000000-0    As Ba Lo Ni        024 Na
+M-8           0332 E524000-0    Ba Lo Ni           010 Na
+M-9           0333 EAE8000-0    Ba Fl Lo Ni        020 Na
+M-10          0338 E320000-0    Ba De Lo Ni Po     003 Na
+M-11          0340 E745000-0    Ba Lo Ni           020 Na
+M-12          0431 E410000-0    Ba Lo Ni           025 Na
+M-13          0434 E556000-0    Ba Lo Ni           013 Na
+M-14          0435 E573000-0    Ba Lo Ni           004 Na
+M-15          0436 E300000-0    Ba Lo Ni Va        012 Na
+M-16          0437 E564000-0    Ba Lo Ni           000 Na
+M-17          0438 E4C2000-0    Ba Fl Lo Ni        024 Na
+M-18          0439 E996000-0    Ba Lo Ni           012 Na
+M-19          0440 E430000-0    Ba De Lo Ni Po     000 Na
+M-20          0531 E8A5000-0    Ba Fl Lo Ni        025 Na
+M-21          0535 X100000-0    Ba Lo Ni Va     R  004 Na
+M-22          0537 E676000-0    Ba Lo Ni           002 Na
+M-23          0539 E678000-0    Ba Lo Ni           005 Na
+M-24          0540 E88A000-0    Ba Lo Ni Wa        023 Na
+M-25          0631 E510000-0    Ba Lo Ni           024 Na
+M-26          0632 E150000-0    Ba De Lo Ni Po     005 Na
+M-27          0633 E502000-0    Ba Ic Lo Ni Va     003 Na
+M-28          0639 E424000-0    Ba Lo Ni           002 Na
+M-29          0731 E150000-0    Ba De Lo Ni Po     013 Na
+M-30          0732 E676000-0    Ba Lo Ni           015 Na
+M-31          0736 E322000-0    Ba Lo Ni Po        002 Na
+M-32          0737 E610000-0    Ba Lo Ni           013 Na
+M-33          0739 E545000-0    Ba Lo Ni           004 Na
+M-34          0832 E754000-0    Ba Lo Ni           004 Na
+M-35          0834 E312000-0    Ba Ic Lo Ni        002 Na
+M-36          0836 E471000-0    Ba Lo Ni           003 Na
+M-37          0838 E866000-0    Ba Lo Ni           002 Na

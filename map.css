@@ -1,0 +1,235 @@
+/* Default (white-on-black) */
+
+html, body { overflow: hidden; }
+form { margin: 0; padding: 0; }
+table { border-collapse: collapse; border: none; }
+td, th { border: none; margin: 0; padding: 0; }
+p { margin: 0; }
+.indent { margin-left: 20px; }
+
+body, table { font-size: 10pt; font-family: Univers, Arial, sans-serif; padding: 0; margin: 0; }
+body { color: white; background-color: black;  }
+table { color: white; }
+a { color: white; }
+#GalacticDirectionDisplay { color: red; font-weight: bold; text-transform: uppercase; font-size: 12pt; }
+.box { border: solid 1px white; background-color: black; }
+#stripe { color: red; background-color: red; border: solid 1px red; height: 4pt; }
+#you_are_here { position: absolute; width: 256px; height: 256px; background-color: Transparent; background-image: url("res/ui/youarehere.gif"); background-repeat: no-repeat; background-position: top left; }
+#overlay { position: absolute; background-color: #8080ff; opacity: 0.5; -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; margin: 0; padding: 0; border: 0; }
+#LogoImage { float: right; width: 292px; height: 102px; background-color: Transparent; background-image: url("res/ui/CT_Logo_Color.png"); background-repeat: no-repeat; background-position: top left; }
+
+#dragContainer {
+    background-image: url('data:image/png,%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%20%00%00%00%20%08%02%00%00%00%FC%18%ED%A3%00%00%00%2BIDATH%C7%ED%D0A%09%00%00%0C%03%B1%CA%A9%7F%85%D3%D0%E7%20g%20p%E9X%D6%00%00%00%00%F0%02%B0%14%00%00%00%00m%0Faa%F0%01%DB%16%C2%C7%00%00%00%00IEND%AEB%60%82');
+    cursor: crosshair;
+}
+
+#GalacticDirectionDisplay { visibility: hidden; }
+.galdir #GalacticDirectionDisplay { visibility: visible; }
+
+#PageRightPane 
+{
+    position: absolute; right: 0; width: 235px; top: 0; bottom: 120px; padding: 0; overflow: hidden;
+}
+
+#PageMainPane
+{
+    position: absolute; left: 0; right: 225px; top: 0; bottom: 120px; padding: 0; overflow: hidden;
+}
+
+#PageBottomPane
+{
+    position: absolute; left: 0; right: 0; bottom: 0; height: 115px; padding: 10px; padding-top: 0; overflow: hidden;
+}
+
+.hide-footer #PageBottomPane { display: none; }
+.hide-footer #PageRightPane { bottom: 0; }
+.hide-footer #PageMainPane { bottom: 0; }
+
+.hide-controls #PageRightPane { display: none; }
+.hide-controls #PageMainPane { right: 0; }
+
+#dragContainer.dragging 
+{
+    cursor: move;
+    cursor: url(res/ui/grabbing.cur), move;
+    cursor: -webkit-grabbing;
+    cursor: -moz-grabbing;
+    cursor: grabbing;
+}
+
+/* WebKit */
+::-webkit-scrollbar { background-color: black; width: 8px; }
+::-webkit-scrollbar-thumb { background-color: #404040; }
+::-webkit-scrollbar-thumb:hover { background-color: #808080; }
+
+/* IE */
+body {
+    scrollbar-face-color:#404040;
+    scrollbar-arrow-color:#000000;
+    scrollbar-track-color:#000000;
+    scrollbar-shadow-color:#404040;
+    scrollbar-highlight-color:#404040;
+    scrollbar-3dlight-color:#404040;
+    scrollbar-darkshadow-color: #000000;
+}
+
+.accordionsection
+{
+    position: absolute;
+    left: 0; width: 100%;
+    background-color: #000000;
+}
+
+.accordionheader
+{
+    font-weight: bold;
+    position: absolute;
+    left: 0; right: 0; top: 0px; height: 18px;
+    cursor: pointer;
+}
+.accordionheader:hover { background-color: #404040; }
+
+.accordion_open .expand { display: none; }
+.accordion_open .collapse { display: inline; }
+.expand { display: inline; }
+.collapse { display: none; }
+
+.accordioncontents
+{
+    position: absolute;
+    left: 0; right: 0; top: 18px; bottom: 0px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#legend .accordioncontents { text-align: center; }
+
+#legend .section h2 {
+    display: inline-block;
+    margin-bottom: 6px;
+    border-bottom: 3px solid white;
+    padding: 2px 0px;
+    text-transform: uppercase;
+    font-size: 10pt;
+    font-weight: normal;
+}
+
+#legend .section ul {
+    text-align: left;
+    display: inline-block;
+    padding: 0; margin: 0;
+    list-style-type: none;
+}
+
+#legend .section li {
+    line-height: 12pt;
+}
+
+#legend .glyph { display: inline-block; width: 15px; text-align: center; }
+#legend .highlight { color: red; }
+#legend .glyph.water { color: #00bfff; }
+#legend .amberzone { color: yellow; }
+#legend .redzone { color: red; }
+
+#legend .section ul.basic_world_colors { display: inline-block; }
+#legend .section ul.extended_world_colors { display: none; }
+#legend.world_colors .section ul.basic_world_colors { display: none; }
+#legend.world_colors .section ul.extended_world_colors { display: inline-block; }
+
+/* Extended World Colors */
+#legend .glyph.RiAg { color: rgb(241,194,50); }
+#legend .glyph.Ag { color: rgb(106,168,79); }
+#legend .glyph.Ri { color: purple; }
+#legend .glyph.In { color: gray; }
+#legend .glyph.corrosive { color: rgb(180,95,6); }
+#legend .glyph.Va { color: black; }
+
+.candy #legend #world_colors,
+.candy #legend #bases { display: none; }
+
+#legend #image1
+{
+    display: inline-block;
+    width: 200px; height: 200px; margin: 0; padding: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url("res/ui/Legend_1003_poster.png");
+}
+#legend #image2
+{
+    display: inline-block;
+    width: 200px; height: 200px; margin: 0; padding: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url("res/ui/Legend_1006_poster.png");
+}
+
+
+.candy #legend #image1 { background-image: url("res/ui/Legend_1003_candy.png"); }
+.candy #legend #image2 { background-image: url("res/ui/Legend_1006_candy.png"); }
+.atlas #legend #image1 { background-image: url("res/ui/Legend_1003_atlas.png"); }
+.atlas #legend #image2 { background-image: url("res/ui/Legend_1006_atlas.png"); }
+.print #legend #image1 { background-image: url("res/ui/Legend_1003_print.png"); }
+.print #legend #image2 { background-image: url("res/ui/Legend_1006_print.png"); }
+
+#SearchDisplay #SearchResults { display: block; }
+#SearchDisplay #SearchProgress { display: none; }
+#SearchDisplay.progress #SearchResults { display: none; }
+#SearchDisplay.progress #SearchProgress { display: block; }
+
+
+/* Atlas (black-on-white) and Print (color-on-white) */
+
+body.print,
+body.atlas { color: black; background-color: white; }
+.print table,
+.atlas table { color: black; }
+.print a,
+.atlas a { color: black; }
+.atlas #GalacticDirectionDisplay { color: gray; }
+.print .box,
+.atlas .box { border: solid 1px black; background-color: white; }
+.print #stripe,
+.atlas #stripe { color: black; background-color: black; border: solid 1px black; }
+.print #you_are_here,
+.atlas #you_are_here { background-image: url("res/ui/youarehere_gray.gif"); }
+.atlas #overlay { background-color: #808080; }
+.print #LogoImage,
+.atlas #LogoImage { background-image: url("res/ui/CT_Logo_Gray.png"); }
+.atlas #legend .highlight { color: gray; }
+.atlas #legend .water { color: #e0e0e0; }
+.atlas #legend .amberzone { color: #c0c0c0; }
+.atlas #legend .redzone { color: black; }
+
+
+.print .accordionsection,
+.atlas .accordionsection { background-color: #ffffff; }
+
+.print .accordionheader:hover,
+.atlas .accordionheader:hover { background-color: #c0c0c0; }
+
+.print #dragContainer,
+.atlas #dragContainer {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAABp0RVh0U29mdHdhcmUAUGFpbnQuTkVUIHYzLjUuMTAw9HKhAAAAWUlEQVRIS+3VyQkAMAhEUdON/TdjOVmOWWCYa/ieByQPo62qwqnMdOIRs4FV3SwaSDCIILr/oDQ5AkyRFPuASL7xCFi7fR0bGigyiJQQUySFIILosWo1yp4YB/GvdXDgEM0AAAAASUVORK5CYII=');
+}
+
+
+
+.print ::-webkit-scrollbar,
+.atlas ::-webkit-scrollbar { background-color: white; width: 8px; }
+.print ::-webkit-scrollbar-thumb,
+.atlas ::-webkit-scrollbar-thumb { background-color: #b0b0b0; }
+.print ::-webkit-scrollbar-thumb:hover,
+.atlas ::-webkit-scrollbar-thumb:hover { background-color: #808080; }
+
+/* IE */
+body.print,
+body.atlas {
+    scrollbar-face-color:#b0b0b0;
+    scrollbar-arrow-color:#ffffff;
+    scrollbar-track-color:#ffffff;
+    scrollbar-shadow-color:#b0b0b0;
+    scrollbar-highlight-color:#b0b0b0;
+    scrollbar-3dlight-color:#b0b0b0;
+    scrollbar-darkshadow-color: #ffffff;
+}

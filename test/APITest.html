@@ -1,0 +1,218 @@
+﻿<!DOCTYPE html>
+<title>API Tests</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="stylesheet" href="../site.css?update=2013-07-25">
+<style>
+#progress 
+{
+    position: relative; 
+    display: inline-block;
+    vertical-align: bottom;
+    border: solid 1px black;
+    width: 300px;
+    height: 20px;
+}
+#progress_label
+{ 
+    position: absolute; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    text-align: center;
+    z-index: 1;
+}
+#progress_meter 
+{ 
+    position: absolute; 
+    left: 0;
+    top: 0;
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+    background-color: #00ff00;
+    text-align: center;
+}
+
+#results
+{
+    margin: 20px;
+}
+
+#summary
+{
+    padding: 15px;
+    border: solid 1px black;
+}
+.test { margin: 4px; }
+.pass { background-color: rgba(0, 255, 0, 0.3); }
+.fail { background-color: rgba(255, 0, 0, 0.3); }
+</style>
+<script src="../polyfill/polyfill.js"></script>
+<h1>The Traveller Map - API Tests</h1>
+<div class="content">
+  <section id="summary">
+    <h2>Summary</h2>
+    <table>
+    <tr><td>Progress: </td><td><span id="progress"><span id="progress_label"></span><span id="progress_meter">&nbsp;</span></span></td></tr>
+    <tr><td>Total Tests: </td><td id="tests_total"></td></tr>
+    <tr><td>Run:</td><td id="tests_run"></td></tr>
+    <tr><td>Passed:</td><td id="tests_passed"></td></tr>
+    <tr><td>Failed:</td><td id="tests_failed"></td></tr>
+    </table>
+  </section>
+  <section id="results">
+    <h2>Tests:</h2>
+  </section>
+</div>
+
+<script>
+'use strict';
+
+var $ = document.querySelector.bind(document);
+
+//
+// Assertion Logic
+//
+
+function compare(a, b) {
+    var i, aks, bks, ak, bk;
+
+    if (a === b) {
+        return a !== 0 || 1 / a === 1 / b; // 0 === -0 but not identical
+    }
+    else if (a !== a && b !== b) {
+        return true; // NaN
+    }
+    else if (typeof a !== typeof b) {
+        return false;
+    }
+    else if (typeof a !== 'object') {
+        return a === b;
+    }
+    else if (a === null || b === null) {
+        return a === b;
+    }
+    else if (a instanceof Date && b instanceof Date) {
+        return Number(a) === Number(b);
+    }
+    else if (a instanceof Array && b instanceof Array) {
+        if (a.length !== b.length) { return false; }
+        for (i = 0; i < a.length; i += 1) {
+            if (!compare(a[i], b[i])) { return false; }
+        }
+        return true;
+    }
+    else {
+        aks = Object.keys(a).sort();
+        bks = Object.keys(b).sort();
+        if (aks.length !== bks.length) { return false; }
+        for (i = 0; i < aks.length; i += 1) {
+            ak = aks[i];
+            bk = bks[i];
+            if (ak !== bk) { return false; }
+            if (!compare(a[ak], b[bk])) { return false; }
+        }
+        return true;
+    }
+}
+
+function AssertionError(msg) {
+    this.name = 'AssertionError';
+    this.message = msg;
+}
+function internal_assert(b, msg) {
+    if (!b) { throw new AssertionError(msg); }
+}
+function assertTrue(b, msg) {
+    internal_assert(b, msg);
+}
+function assertFalse(b, msg) {
+    internal_assert(!b, msg);
+}
+function assertEquals(a, b, msg) {
+    internal_assert(compare(a, b), msg);
+}
+function assertThrows(func, exception, emsg, msg) {
+    try {
+        func();
+        internal_assert(false, msg);
+    }
+    catch (e) {
+        if (typeof e !== exception || emsg !== e.message) {
+            internal_assert(false, msg);
+        }
+    }
+    internal_assert(true, msg);
+}
+
+function runTests(tests) {
+
+    var tests_total = tests.length, tests_run = 0, tests_passed = 0;
+    $('#tests_total').innerHTML = escapeHTML(tests.length);
+
+    function escapeHTML(string) {
+        return String(string).replace(/&/g, '&amp;').replace(/(<)/g, '&lt;').replace(/>/g, '&gt;');
+    }
+    function recordSuccess(name) {
+        var div = document.createElement('div');
+        div.appendChild(document.createTextNode('PASS: ' + name + ' \u00B6'));
+        div.className = 'test pass';
+        $('#results').appendChild(div);
+    }
+
+    function recordFailure(name, failure) {
+        var div = document.createElement('div');
+        div.appendChild(document.createTextNode('FAIL: ' + name + ': ' + failure + ' \u00B6'));
+        div.className = 'test fail';
+        $('#results').appendChild(div);
+    }
+
+    function setProgress(fraction) {
+        var percent = String(Math.round(fraction * 100)) + '%';
+        $('#progress_meter').style.width = percent;
+        $('#progress_label').innerHTML = '';
+        $('#progress_label').appendChild(document.createTextNode(percent));
+    }
+
+    function runNextTest() {
+        var test;
+        if (tests.length) {
+            test = tests.shift();
+            tests_run += 1;
+            $('#tests_run').innerHTML = escapeHTML(tests_run);
+
+            try {
+                test.func();
+                tests_passed += 1;
+                recordSuccess(test.name);
+            }
+            catch (e) {
+                if (e instanceof AssertionError) {
+                    recordFailure(test.name, e.message);
+                }
+                else {
+                    throw e;
+                }
+            }
+            $('#tests_passed').innerHTML = escapeHTML(tests_passed);
+            $('#tests_failed').innerHTML = escapeHTML(tests_run - tests_passed);
+
+            setProgress(tests_run / tests_total);
+            setTimeout(runNextTest, 100);
+        }
+        else {
+            setProgress(1);
+            $('#summary').className = tests_passed === tests_total ? 'pass' : 'fail';
+            $('#results').appendChild(document.createTextNode('\u03A9'));
+        }
+    }
+
+    setProgress(0);
+    setTimeout(runNextTest, 0);
+}
+
+</script>
+<script src="APITest.js"></script>

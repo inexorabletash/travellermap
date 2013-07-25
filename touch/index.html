@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<title>TravellerMap</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<!--[if lt IE 9]><meta http-equiv="X-UA-Compatible" content="chrome=1"><![endif]-->
+<!--[if lt IE 9]><meta http-equiv="imagetoolbar" content="no"><![endif]-->
+
+<!-- iOS specific -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+
+<!-- iPhone -->
+<link rel="apple-touch-icon" sizes="57x57" href="regina57.png">
+<link rel="apple-touch-startup-image" href="startup-320x460.jpg" media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 1)">
+ 
+<!-- iPhone (Retina) -->
+<link rel="apple-touch-icon" sizes="114x114" href="regina114.png">
+<link rel="apple-touch-startup-image" href="startup-640x920.jpg" media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)">
+ 
+<!-- iPhone 5 -->
+<link rel="apple-touch-startup-image" href="startup-640x1096.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)">
+ 
+<!-- iPad -->
+<link rel="apple-touch-icon" sizes="72x72" href="regina72.png">
+<link rel="apple-touch-startup-image" href="startup-768x1004.png" media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 1)">
+<link rel="apple-touch-startup-image" href="startup-748x1024.png" media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 1)">
+ 
+<!-- iPad (Retina) -->
+<link rel="apple-touch-icon" sizes="144x144" href="regina144.png">
+<link rel="apple-touch-startup-image" href="startup-1536x2008.png" media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)">
+<link rel="apple-touch-startup-image" href="startup-1496x2048.png" media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)">
+
+
+<!-- c/o http://cubiq.org/add-to-home-screen -->
+<link rel="stylesheet" href="add-to-home-screen/add2home.css">
+<script>
+var addToHomeConfig = { touchIcon: true };
+</script>
+<script type="application/javascript" src="add-to-home-screen/add2home.js"></script>
+
+<script src="../polyfill/polyfill.js"></script>
+<script src="../map.js?update=2013-07-25"></script>
+<script>
+var map;
+window.onload = function() {
+  // hide nav bar on iPhone
+  setTimeout( function() { window.scrollTo(0,1) }, 100 );
+  window.onresize();
+
+  var canvas = document.getElementById("map");
+  map = new Map(canvas);
+  map.SetOptions(map.GetOptions() | MapOptions.ForceHexes);
+  map.SetScale(canvas.offsetWidth <= 480 ? 1 : 2);
+  map.CenterAtSectorHex(0, 0, Astrometrics.ReferenceHexX, Astrometrics.ReferenceHexY);
+};
+
+window.onresize = function(e) {
+  var canvas = document.getElementById("map")
+  canvas.style.width = document.body.clientWidth + "px";
+  canvas.style.height = document.body.clientHeight + "px";
+};
+</script>
+<style>
+html, body, #map {
+  margin: 0; padding: 0;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+}
+
+body {
+/* TODO: Move to common CSS file */
+/* TODO: Variant for white background */
+  background-color: black;
+  background-image: url('data:image/png,%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%20%00%00%00%20%08%02%00%00%00%FC%18%ED%A3%00%00%00%2BIDATH%C7%ED%D0A%09%00%00%0C%03%B1%CA%A9%7F%85%D3%D0%E7%20g%20p%E9X%D6%00%00%00%00%F0%02%B0%14%00%00%00%00m%0Faa%F0%01%DB%16%C2%C7%00%00%00%00IEND%AEB%60%82');
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+
+  -webkit-touch-callout: none;
+  -webkit-text-size-adjust: none;
+}
+
+#logo {
+  border-top: solid 4px red;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 350px;
+  height: 104px;
+  z-index: 100;
+
+  background-image: url('logo.png');
+  background-position: right bottom;
+  background-repeat: no-repeat;
+}
+
+@media only screen and (max-device-width: 480px) {
+  #logo {
+    zoom: 50%;
+  }
+}
+</style>
+
+<body>
+<div id="map" tabIndex="0"><div id="logo"></div></div>
+</body>

@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<Sector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <X>5</X>
+  <Y>-3</Y>
+  <Name Lang="Hv">Nooq</Name>
+  <Name Lang="Kk">Hkimbiipam</Name>
+  <Subsectors>
+
+<Subsector Index="A"></Subsector>	
+<Subsector Index="B"></Subsector>	
+<Subsector Index="C"></Subsector>	
+<Subsector Index="D"></Subsector>
+<Subsector Index="E"></Subsector>	
+<Subsector Index="F"></Subsector>	
+<Subsector Index="G"></Subsector>	
+<Subsector Index="H"></Subsector>
+<Subsector Index="I"></Subsector>	
+<Subsector Index="J"></Subsector>	
+<Subsector Index="K"></Subsector>	
+<Subsector Index="L"></Subsector>
+<Subsector Index="M"></Subsector>	
+<Subsector Index="N"></Subsector>	
+<Subsector Index="O"></Subsector>
+<Subsector Index="P"></Subsector>
+  </Subsectors>
+<Allegiances>
+	<Allegiance Code="Hv">Hive Federation</Allegiance>
+	<Allegiance Code="Hf">Hive FDA Uplift/Observation Site</Allegiance>
+	<Allegiance Code="Xh">Hive FDA extra-Federation operation</Allegiance>
+	<Allegiance Code="Kk">The Two Thousand Worlds</Allegiance>
+	<Allegiance Code="Na">Non-aligned</Allegiance>
+	<Allegiance Code="Kc">K'kree Client State</Allegiance>
+	<Allegiance Code="Ha">Hiver Client State</Allegiance>
+	<Allegiance Code="Hb">Hiver Client State</Allegiance>
+	<Allegiance Code="Hc">Hiver Client State</Allegiance>
+	<Allegiance Code="Sc">Inheritor Space</Allegiance>
+</Allegiances>
+  <Borders>
+    <Border Allegiance="Sc" Color="red" ShowLabel="true" WrapLabel="true" LabelPosition="3103">
+3002 3102 3101 3100 3200 3300 3301 3302 3201 3102 3002
+  </Border>
+    <Border Allegiance="Hv" Color="purple" ShowLabel="true" LabelPosition="0433" WrapLabel="true">
+0013 0114 0214 0315 0316 0216 0217 0218 0219 0320 0420 0520 
+0620 0621 0622 0723 0724 0725 0726 0727 0827 0828 0829 0830
+0831 0832 0933 1033 1034 1035 1036 1037 1138 1139 1140 1141
+1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041 0040
+0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028
+0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016
+0015 0014 0013
+    </Border>
+    <Border Allegiance="Ha" Color="green" ShowLabel="true">
+1227 1328 1427 1528 1627 1528 1428 1329 1229 1228 1227
+</Border>
+<Border Allegiance="Hb" Color="green" ShowLabel="true">
+0714 0713 0813 0914 1014 0915 0814 0714
+</Border>
+  </Borders>
+  <Routes>
+
+
+  </Routes>
+<Labels/>
+</Sector>

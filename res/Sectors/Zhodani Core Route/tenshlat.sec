@@ -1,0 +1,320 @@
+Tenshlatsvo
+
+A: Dronjrieflkravl           A.dat
+B: Stajiante                 B.dat
+C: Biflzhivrntsa             C.dat
+D: Njaebl                    D.dat
+E: Siezhpafriz               E.dat
+F: Prizdrieflflavr           F.dat
+G: Eblfej                    G.dat
+H: Iaprnsaf                  H.dat
+I: Zdeshnjiaztsil            I.dat
+J: Friqrnjab                 J.dat
+K: Bribiasho                 K.dat
+L: Krezlinzhefr              L.dat
+M: Tliadlvrenia              M.dat
+N: Liavflietl                N.dat
+O: Dlenzhoflvets             O.dat
+P: Shtanzhiadlifr            P.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+Z = Zhodani Navy
+Y = Zhodani Depot
+X = Zhodani Relay
+  = None
+
+Allegiance:
+11 Zh = Zhodani
+01 Zc = Zhodani Client
+10 Dr = Droyne
+07 Na = Non-Aligned
+08    = Unknown
+                                          
+                                          
+This sector was created by Clifford Linehan
+
+I wish to thank Marc Miller for his invaluable advice in the creation of this
+sector and the Core Route.
+
+Clifford Linehan - cnl.rubicon@juno.com
+http://www.geocities.com/traveller_core_route
+Developer: Vlanchiets Qlom and the Core Route.
+                                          
+                                          
+@SUB-SECTOR: Dronjrieflkravl SECTOR: Tenshlatsvo
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0201 A66A230-A    Lo Ni Wa           402 Na
+A-2           0204 D684877-6  S Ri                 410 Na
+A-3           0206 C210796-8    Na                 302 Na
+A-4           0308 C320995-9    De Hi In Na Po     810 Na
+A-5           0407 E442422-8    Ni Po              412 Na
+A-6           0601 C100996-A    Hi Na Va           513 Na
+Ihayskryax    0604 A695733-C  2 Ag              B  703 Dr
+A-8           0605 C566000-8    Ba Lo Ni           803 Na
+A-9           0607 E422320-7    Lo Ni Po           514 Na
+A-10          0707 CAE4655-6  S Fl Ni              200 Na
+A-11          0808 E6466BA-4    Ag Ni              504 Na
+A-12          0809 E221002-6    Lo Ni Po           302 Na
+@SUB-SECTOR: Stajiante SECTOR: Tenshlatsvo
+#
+$1209 1512 0 1 10
+$1209 1007 0 0 10
+$1007 0906 0 0 10
+$0906 0902 0 0 10
+$0902 0838 -1 -1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0902 D565520-5  S Ag Ni              904 Na
+Fatiestial    0906 B538788-A  Z                    504 Zc
+B-3           0908 B577325-6  S Lo Ni              315 Na
+B-4           1002 X88A796-4    Ri Wa           R  614 Na
+Aloiaj        1007 B200755-C  Z Na Va              511 Zc
+B-6           1203 C6236B9-5  S Na Ni Po           503 Na
+B-7           1209 D486633-3  S Ag Ni              814 Na
+B-8           1409 E000687-6    As Na Ni           702 Na
+B-9           1501 E300322-8    Lo Ni Va           301 Na
+B-10          1509 D88A110-4    Lo Ni Wa           111 Na
+@SUB-SECTOR: Biflzhivrntsa SECTOR: Tenshlatsvo
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1704 C210ACF-B    Hi Na              310 Na
+C-2           1705 C536426-8    Ni                 120 Na
+C-3           1903 A67689A-A                       614 Na
+C-4           1910 C738244-7  S Lo Ni              814 Na
+C-5           2005 C140443-A  S De Ni Po           501 Na
+C-6           2010 C300ACH-A    Hi Na Va           901 Na
+C-7           2103 E310584-5    Ni                 113 Na
+C-8           2109 D224550-9    Ni                 613 Na
+C-9           2203 B326772-A  2                    113 Na
+C-10          2306 C463100-A    Lo Ni              801 Na
+C-11          2410 C648210-8    Lo Ni              204 Na
+@SUB-SECTOR: Njaebl SECTOR: Tenshlatsvo
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2807 C698540-8    Ag Ni              503 Na
+D-2           2809 E763665-4    Ni Ri              213 Na
+D-3           2908 C210878-5  S Na                 403 Na
+D-4           3006 B775000-8  2 Ba Lo Ni           625 Na
+@SUB-SECTOR: Siezhpafriz SECTOR: Tenshlatsvo
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0213 D586578-4  S Ag Ni              103 Na
+E-2           0220 D477200-8  S Lo Ni              214 Na
+E-3           0312 E555457-5    Ni                 902 Na
+E-4           0316 B300241-8  S Lo Ni Va           404 Na
+E-5           0512 C501553-7    Ic Ni Va           311 Na
+E-6           0513 C000400-A  S As Ni              724 Na
+E-7           0520 C6336BA-7    Na Ni Po           513 Na
+E-8           0614 C684623-8    Ag Ni              414 Na
+E-9           0618 X253000-1    Ba Lo Ni Po     R  902 Na
+E-10          0712 C546448-8    Ni                 500 Na
+E-11          0714 B342456-9    Ni Po              323 Na
+E-12          0816 A665236-8    Lo Ni              220 Na
+@SUB-SECTOR: Prizdrieflflavr SECTOR: Tenshlatsvo
+#
+$1218 1321 0 1 10
+$1218 1415 0 0 10
+$1415 1512 0 0 10
+$1512 1209 0 -1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           1016 C502753-A  S Ic Na Va           703 Na
+F-2           1114 C2106BE-5  S Na Ni              702 Na
+F-3           1214 C655887-5                       504 Na
+Ajtlie        1218 B566641-9  Z Ag Ni Ri           414 Zc
+F-5           1313 C664310-7    Lo Ni              303 Na
+F-6           1414 A300200-B    Lo Ni Va           921 Na
+Iechans       1415 B3529BD-9  Z Hi Po              422 Zc
+F-8           1512 E435652-8    Ni                 402 Na
+F-9           1514 C452431-7  S Ni Po              104 Na
+F-10          1517 A784224-A    Lo Ni              623 Na
+F-11          1612 X633233-3    Lo Ni Po        R  304 Na
+F-12          1615 E000776-8    As Na              903 Na
+@SUB-SECTOR: Eblfej SECTOR: Tenshlatsvo
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1714 C130010-8    De Lo Ni Po        710 Na
+G-2           1719 C665754-9    Ag Ri              413 Na
+G-3           1819 E100101-7    Lo Ni Va           502 Na
+G-4           1820 B200789-C  N Na Va              503 Na
+G-5           1913 C553324-6    Lo Ni Po           614 Na
+G-6           1914 C000367-A    As Lo Ni           101 Na
+G-7           2011 C2418B8-8  S Po                 700 Na
+G-8           2111 E675A6B-8    Hi In              900 Na
+G-9           2313 B525010-A  2 Lo Ni              204 Na
+G-10          2315 C3109BA-7  S Hi Na              800 Na
+G-11          2412 E497567-8    Ag Ni              322 Na
+@SUB-SECTOR: Iaprnsaf SECTOR: Tenshlatsvo
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2619 B400866-C    Na Va              804 Na
+H-2           2620 B434613-9  N Ni                 805 Na
+H-3           2816 C798313-6  S Lo Ni              932 Na
+H-4           2913 E79A332-5    Lo Ni Wa           614 Na
+H-5           2914 B772886-5  S                    102 Na
+H-6           3011 CAD668A-9    Fl Ni              800 Na
+H-7           3016 C4039A6-9    Hi Ic Na Va        125 Na
+H-8           3118 E200788-5    Na Va              723 Na
+H-9           3213 E3668A9-3                       111 Na
+@SUB-SECTOR: Zdeshnjiaztsil SECTOR: Tenshlatsvo
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0124 D5A1341-7  S Fl Lo Ni           213 Na
+I-2           0127 B431355-C  2 Lo Ni Po           321 Na
+I-3           0226 D5688BB-5  S                    702 Na
+I-4           0321 C100120-9    Lo Ni Va           204 Na
+I-5           0322 A99A578-B  S Ni Wa              413 Na
+I-6           0324 A86A685-C  N Ni Ri Wa           914 Na
+I-7           0527 C84A897-5    Wa                 415 Na
+I-8           0622 C342577-8    Ni Po              504 Na
+I-9           0725 E1607CE-5    De                 605 Na
+I-10          0730 C311300-A  S Ic Lo Ni           100 Na
+I-11          0829 C585104-8    Lo Ni              700 Na
+@SUB-SECTOR: Friqrnjab SECTOR: Tenshlatsvo
+#
+$1230 1333 0 1 10
+$1230 1427 0 0 10
+$1427 1524 0 0 10
+$1524 1321 0 0 10
+$1321 1218 0 -1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0922 D411630-3  S Ic Na Ni           503 Na
+J-2           0927 A996123-9    Lo Ni              605 Na
+J-3           1026 C656577-4  S Ag Ni              800 Na
+J-4           1027 C431111-A  S Lo Ni Po           710 Na
+J-5           1125 B422876-9  N Na Po              203 Na
+J-6           1126 B545440-8  N Ni                 222 Na
+J-7           1128 C656562-5  S Ag Ni              700 Na
+J-8           1230 C452220-8    Lo Ni Po           201 Na
+J-9           1321 C77A367-6    Lo Ni Wa           304 Na
+J-10          1323 E00077B-6    As Na              203 Na
+J-11          1325 C240000-9  S Ba De Lo Ni Po     203 Na
+Inzhjez       1427 B775A89-E  Z Hi In              401 Zc
+J-13          1523 B200300-A  N Lo Ni Va           704 Na
+J-14          1524 C443467-9  S Ni Po              201 Na
+J-15          1526 C798538-5  S Ag Ni              412 Na
+@SUB-SECTOR: Bribiasho SECTOR: Tenshlatsvo
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1922 D000430-8  S As Ni              810 Na
+K-2           1929 C584575-5  S Ag Ni              804 Na
+K-3           2028 A6779AD-D  N Hi In              704 Na
+K-4           2126 D649433-7  S Ni                 700 Na
+@SUB-SECTOR: Krezlinzhefr SECTOR: Tenshlatsvo
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2521 C200532-8    Ni Va              404 Na
+L-2           2523 C876887-3  S                    214 Na
+L-3           2526 D331675-8  S Na Ni Po           904 Na
+L-4           2527 B588462-8    Ni                 301 Na
+L-5           2623 D536111-6  S Lo Ni              704 Na
+L-6           2628 C210200-9    Lo Ni              624 Na
+L-7           2630 B544312-7  S Lo Ni              302 Na
+L-8           2823 C9A7567-8    Fl Ni              404 Na
+L-9           2824 C8A677A-7  S Fl                 802 Na
+L-10          2825 B75568A-6  N Ag Ni              300 Na
+L-11          2827 C300521-B  S Ni Va              912 Na
+L-12          3025 C443431-8  S Ni Po              203 Na
+L-13          3027 C458212-8  S Lo Ni              614 Na
+L-14          3030 C544253-9  S Lo Ni              503 Na
+L-15          3125 C410403-9    Ni                 103 Na
+L-16          3228 C5109BB-6    Hi Na              614 Na
+@SUB-SECTOR: Tliadlvrenia SECTOR: Tenshlatsvo
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0136 E6378CD-6                       600 Na
+M-2           0232 D633667-2  S Na Ni Po           104 Na
+M-3           0340 D669310-7  S Lo Ni              713 Na
+M-4           0532 B788966-A    Hi                 903 Na
+M-5           0638 B100975-D    Hi Na Va           102 Na
+M-6           0732 C999205-A  S Lo Ni              404 Na
+M-7           0734 X330468-3    De Ni Po        R  202 Na
+M-8           0735 C89A521-9    Ni Wa              202 Na
+M-9           0832 C232732-6    Na Po              804 Na
+@SUB-SECTOR: Liavflietl SECTOR: Tenshlatsvo
+#
+$1333 1734 1 0 10
+$1333 1230 0 -1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0932 C63A697-7  S Ni Wa              100 Na
+N-2           0933 C532510-5  S Ni Po              304 Na
+N-3           1036 B000556-B  2 As Ni              410 Na
+N-4           1136 C581201-6    Lo Ni              203 Na
+N-5           1236 B100451-B    Ni Va              214 Na
+N-6           1238 A628222-C  N Lo Ni              604 Na
+N-7           1333 E531233-8    Lo Ni Po           314 Na
+N-8           1334 C97A98C-9  S Hi In Wa           902 Na
+N-9           1338 B000797-B    As Na              313 Na
+N-10          1339 E300565-9    Ni Va              603 Na
+N-11          1431 D511474-5    Ic Ni              303 Na
+N-12          1535 D453488-8  S Ni Po              214 Na
+N-13          1540 E100887-9    Na Va              822 Na
+N-14          1635 C555463-9    Ni                 604 Na
+N-15          1639 B412479-8    Ic Ni              304 Na
+@SUB-SECTOR: Dlenzhoflvets SECTOR: Tenshlatsvo
+#
+$2438 2402 0 1 10
+$2438 2434 0 0 10
+$2434 2233 0 0 10
+$2233 2034 0 0 10
+$2034 1734 0 0 10
+$1734 1333 -1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1734 C69389B-6  S                    123 Na
+O-2           1834 D527451-4    Ni                 800 Na
+O-3           1935 C210438-7    Ni                 804 Na
+O-4           1937 EAA3234-8    Fl Lo Ni           120 Na
+O-5           2034 C54378A-7  S Po                 304 Na
+O-6           2233 E77A400-A    Ni Wa              304 Na
+O-7           2234 E494477-3    Ni                 200 Na
+O-8           2332 E6468BA-5                       503 Na
+O-9           2434 C659422-9    Ni                 913 Na
+O-10          2438 D666200-4  S Lo Ni              200 Na
+@SUB-SECTOR: Shtanzhiadlifr SECTOR: Tenshlatsvo
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2537 C345688-8  S Ag Ni              703 Na
+P-2           2539 C544584-7  S Ag Ni              210 Na
+P-3           2731 D775220-5  S Lo Ni              610 Na
+P-4           2732 E37686A-5                       904 Na
+P-5           2739 B100575-D  S Ni Va              812 Na
+P-6           2839 C596742-6  S Ag                 302 Na
+P-7           2932 E576000-2    Ba Lo Ni           104 Na
+P-8           3133 B483133-A    Lo Ni              202 Na
+P-9           3134 E273332-5    Lo Ni              124 Na
+P-10          3136 C8B459C-8    Fl Ni              900 Na
+P-11          3238 C3328AD-6  S Na Po              633 Na

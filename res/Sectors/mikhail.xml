@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<Sector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <X>3</X>
+  <Y>5</Y>
+  <Name>Mikhail</Name>
+  <Name>Varan</Name>
+  <Subsectors>
+    <Subsector Index="A">Merlina</Subsector>
+    <Subsector Index="B">Prospect</Subsector>
+    <Subsector Index="C">Eddo's Folly</Subsector>
+    <Subsector Index="D">Trudeth Gap</Subsector>
+    <Subsector Index="E">Foldet</Subsector>
+    <Subsector Index="F">Far Reaches</Subsector>
+    <Subsector Index="G">The Outworlds</Subsector>
+    <Subsector Index="H">Shattershard</Subsector>
+    <Subsector Index="I">Antusheng</Subsector>
+    <Subsector Index="J">Kesrith</Subsector>
+    <Subsector Index="K">Varan</Subsector>
+    <Subsector Index="L">Spyne</Subsector>
+    <Subsector Index="M">The Barrens</Subsector>
+    <Subsector Index="N">Singan</Subsector>
+    <Subsector Index="O">Magera</Subsector>
+    <Subsector Index="P">Eclorodacava</Subsector>
+  </Subsectors>
+  <Borders>
+    <Border WrapLabel="false" Color="Gray" Allegiance="Vn" LabelPosition="1525">0726 0825 0925 0924 0923 0922 1021 1121 1221 1321 1421 1521 1621 1721 1820 1920 1919 1918 1817 1816 1815 1814 1714 1814 1915 2015 2116 2216 2217 2318 2319 2419 2420 2321 2322 2323 2324 2325 2326 2327 2328 2329 2429 2430 2431 2432 2433 2434 2435 2436 2437 2338 2238 2138 2038 1938 1838 1738 1638 1538 1438 1338 1238 1138 1038 0938 0937 0936 0935 0934 0933 0932 0931 0830 0829 0729 0728 0727 0726</Border>
+    <Border WrapLabel="true" Color="Blue" Allegiance="Vc" LabelPosition="2323">1923 2022 2123 2124 2024 1924 1923</Border>
+  </Borders>
+  <Labels />
+  <Routes>
+    <Route Start="2022" End="2123" Allegiance="Vn" Color="Blue" />
+    <Route Start="2123" End="2124" Allegiance="Vn" Color="Blue" />
+    <Route Start="2124" End="2024" Allegiance="Vn" Color="Blue" />
+    <Route Start="2024" End="1924" Allegiance="Vn" Color="Blue" />
+    <Route Start="1924" End="1923" Allegiance="Vn" Color="Blue" />
+    <Route Start="1923" End="2022" Allegiance="Vn" Color="Blue" />
+    <Route Start="1814" End="2116" Allegiance="Vn" Color="Gray" />
+    <Route Start="1814" End="1918" Allegiance="Vn" Color="Gray" />
+    <Route Start="1918" End="2019" Allegiance="Vn" Color="Gray" />
+    <Route Start="1918" End="2116" Allegiance="Vn" Color="Gray" />
+    <Route Start="2019" End="2321" Allegiance="Vn" Color="Gray" />
+    <Route Start="2327" End="2124" Allegiance="Vn" Color="Gray" />
+    <Route Start="2327" End="2127" Allegiance="Vn" Color="Gray" />
+    <Route Start="2116" End="2019" Allegiance="Vn" Color="Gray" />
+    <Route Start="2123" End="2321" Allegiance="Vn" Color="Gray" />
+    <Route Start="2019" End="2022" Allegiance="Vn" Color="Gray" />
+    <Route Start="2024" End="2127" Allegiance="Vn" Color="Gray" />
+    <Route Start="1724" End="1826" Allegiance="Vn" Color="Gray" />
+    <Route Start="1521" End="1923" Allegiance="Vn" Color="Gray" />
+    <Route Start="1929" End="2230" Allegiance="Vn" Color="Gray" />
+    <Route Start="1724" End="1924" Allegiance="Vn" Color="Gray" />
+    <Route Start="1724" End="1422" Allegiance="Vn" Color="Gray" />
+    <Route Start="1422" End="1124" Allegiance="Vn" Color="Gray" />
+    <Route Start="1124" End="726" Allegiance="Vn" Color="Gray" />
+    <Route Start="1536" End="1733" Allegiance="Vn" Color="Gray" />
+    <Route Start="1124" End="1227" Allegiance="Vn" Color="Gray" />
+    <Route Start="1227" End="929" Allegiance="Vn" Color="Gray" />
+    <Route Start="2024" End="1826" Allegiance="Vn" Color="Gray" />
+    <Route Start="1826" End="1628" Allegiance="Vn" Color="Gray" />
+    <Route Start="1628" End="1630" Allegiance="Vn" Color="Gray" />
+    <Route Start="2127" End="2230" Allegiance="Vn" Color="Gray" />
+    <Route Start="2230" End="2234" Allegiance="Vn" Color="Gray" />
+    <Route Start="2234" End="2236" Allegiance="Vn" Color="Gray" />
+    <Route Start="1630" End="1333" Allegiance="Vn" Color="Gray" />
+    <Route Start="1333" End="1133" Allegiance="Vn" Color="Gray" />
+    <Route Start="1133" End="1036" Allegiance="Vn" Color="Gray" />
+    <Route Start="1333" End="1536" Allegiance="Vn" Color="Gray" />
+    <Route Start="1630" End="1733" Allegiance="Vn" Color="Gray" />
+    <Route Start="1733" End="1935" Allegiance="Vn" Color="Gray" />
+    <Route Start="1935" End="1837" Allegiance="Vn" Color="Gray" />
+    <Route Start="1935" End="2236" Allegiance="Vn" Color="Gray" />
+    <Route Start="1630" End="1929" Allegiance="Vn" Color="Gray" />
+    <Route Start="1929" End="1826" Allegiance="Vn" Color="Gray" />
+    <Route Start="1929" End="2127" Allegiance="Vn" Color="Gray" />
+    <Route Start="726" End="929" Allegiance="Vn" Color="Gray" />
+    <Route Start="1036" End="1337" Allegiance="Vn" Color="Gray" />
+    <Route Start="1337" End="1536" Allegiance="Vn" Color="Gray" />
+    <Route Start="1536" End="1837" Allegiance="Vn" Color="Gray" />
+    <Route Start="1837" End="2236" Allegiance="Vn" Color="Gray" />
+    <Route Start="1227" End="1628" Allegiance="Vn" Color="Gray" />
+    <Route Start="1422" End="1521" Allegiance="Vn" Color="Gray" />
+    <Route Start="1935" End="2234" Allegiance="Vn" Color="Gray" />
+    <Route Start="1333" End="1330" Allegiance="Vn" Color="Gray" />
+    <Route Start="1330" End="1227" Allegiance="Vn" Color="Gray" />
+  </Routes>
+  <Allegiances>
+    <Allegiance Code="Vn">The Varan League</Allegiance>
+    <Allegiance Code="Vc">The Varan Core Worlds</Allegiance>
+  </Allegiances>
+  <DataFile Author="Ed &quot;Dalthor Et Magera&quot; Anderson" Type="SEC">Mikhail.sec</DataFile>
+</Sector>

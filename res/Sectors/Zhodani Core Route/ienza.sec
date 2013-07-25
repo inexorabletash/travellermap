@@ -1,0 +1,320 @@
+Ienza
+
+A: Idlints                   A.dat
+B: Nalidiafl                 B.dat
+C: Zantsdatl                 C.dat
+D: Nshanjneqr                D.dat
+E: Ieflied                   E.dat
+F: Dlebrabl                  F.dat
+G: Vrefrbrifr                G.dat
+H: Zhdieblbiensho            H.dat
+I: Evzaj                     I.dat
+J: Tlitsvrensbrensh          J.dat
+K: Ieflia                    K.dat
+L: Ietnezh                   L.dat
+M: Zdavleqroqr               M.dat
+N: Iatnsa                    N.dat
+O: Fintsbranch               O.dat
+P: Bratsesh                  P.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+Z = Zhodani Navy
+Y = Zhodani Depot
+X = Zhodani Relay
+  = None
+
+Allegiance:
+11 Zh = Zhodani
+01 Zc = Zhodani Client
+10 Dr = Droyne
+07 Na = Non-Aligned
+08    = Unknown
+                                          
+                                          
+This sector was created by Clifford Linehan
+
+I wish to thank Marc Miller for his invaluable advice in the creation of this
+sector and the Core Route.
+
+Clifford Linehan - cnl.rubicon@juno.com
+http://www.geocities.com/traveller_core_route
+Developer: Vlanchiets Qlom and the Core Route.
+                                          
+                                          
+@SUB-SECTOR: Dlebrabl SECTOR: Ienza
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0915 C987832-7                       204 Na
+F-2           0920 C344588-5    Ag Ni              912 Na
+F-3           1012 C576440-6    Ni                 700 Na
+F-4           1019 DA8A655-7  S Ni Ri Wa           822 Na
+F-5           1316 C250546-9    De Ni Po           622 Na
+F-6           1511 D321456-7    Ni Po              802 Na
+F-7           1517 X776442-0    Ni              R  404 Na
+F-8           1611 C200420-7    Ni Va              204 Na
+@SUB-SECTOR: Iatnsa SECTOR: Ienza
+#
+$1339 1202 0 1 10
+$1339 1436 0 0 10
+$1436 1534 0 0 10
+$1534 1832 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0933 B365111-7  N Lo Ni              905 Na
+N-2           0938 X98A640-1    Ni Ri Wa        R  110 Na
+N-3           1134 A7A5378-D    Fl Lo Ni           803 Na
+N-4           1231 D46869A-7  S Ag Ni Ri           403 Na
+N-5           1235 E31058A-5    Ni                 700 Na
+N-6           1240 EAD5015-5    Fl Lo Ni           312 Na
+Zhdevzdieo    1339 B510564-A  Z Ni                 212 Zc
+N-8           1436 C545888-4  S                    401 Na
+N-9           1534 C8A8463-9  S Fl Ni              103 Na
+N-10          1540 C689100-6    Lo Ni              604 Na
+@SUB-SECTOR: Vrefrbrifr SECTOR: Ienza
+#
+$2319 2222 0 1 10
+$2319 2517 1 0 10
+$2314 2517 1 0 10
+$2314 2410 0 -1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1713 C334687-8    Ni                 321 Na
+G-2           1717 C37279A-7  S                    503 Na
+G-3           1912 A469512-B  S Ni                 104 Na
+G-4           1913 C572410-7    Ni                 204 Na
+G-5           2015 E485400-5    Ni                 202 Na
+G-6           2020 E773679-5    Ni                 704 Na
+G-7           2118 E773101-8    Lo Ni              102 Na
+G-8           2119 B65538A-9  2 Lo Ni              714 Na
+Zhdanch       2314 B767988-7  Z Hi                 903 Zc
+G-10          2315 C200347-A    Lo Ni Va           220 Na
+G-11          2319 D98A8AB-4  S Wa                 814 Na
+G-12          2411 D9A5ABA-A  S Fl Hi              604 Na
+@SUB-SECTOR: Fintsbranch SECTOR: Ienza
+#
+$1832 1534 -1 0 10
+$1832 2029 0 -1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1736 C400421-6  S Ni Va              602 Na
+O-2           1739 C566737-7  S Ag                 625 Na
+O-3           1740 C643000-6  S Ba Lo Ni Po        814 Na
+O-4           1831 C87989A-5                       403 Na
+O-5           1832 C512844-7    Ic Na              504 Na
+O-6           1836 C657346-5    Lo Ni              205 Na
+O-7           1938 C589103-9    Lo Ni              100 Na
+O-8           2232 D424668-6  S Ni                 103 Na
+O-9           2234 E0007A9-7    As Na              600 Na
+O-10          2236 C77A435-8  S Ni Wa              813 Na
+O-11          2237 B000576-A    As Ni              312 Na
+O-12          2239 C210411-8  S Ni                 310 Na
+O-13          2331 C233553-9    Ni Po              813 Na
+O-14          2333 E8D09B7-9    De Hi              600 Na
+@SUB-SECTOR: Zhdieblbiensho SECTOR: Ienza
+#
+$2517 2319 -1 0 10
+$2517 2314 -1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2511 D777559-8  S Ag Ni              615 Na
+H-2           2512 D869465-6  S Ni                 903 Na
+H-3           2513 C6796B9-8    Ni                 924 Na
+H-4           2515 C645254-9  S Lo Ni              703 Na
+H-5           2517 C9A7513-6    Fl Ni              504 Na
+H-6           2518 A564942-E    Hi                 714 Na
+H-7           2519 D311730-4    Ic Na              914 Na
+H-8           2611 D302751-5  S Ic Na Va           213 Na
+H-9           2711 C649524-6    Ni                 704 Na
+H-10          2813 B88A567-8  S Ni Wa              313 Na
+H-11          2918 CAF657A-8  S Fl Ni              600 Na
+H-12          3012 C441423-A    Ni Po              204 Na
+H-13          3015 C567566-8    Ag Ni              322 Na
+H-14          3017 C441544-6    Ni Po              201 Na
+@SUB-SECTOR: Bratsesh SECTOR: Ienza
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2533 C244000-7    Ba Lo Ni           924 Na
+P-2           2634 C698500-A    Ag Ni              204 Na
+P-3           2731 B98A867-7  S Ri Wa              802 Na
+P-4           2837 EAC5222-7    Fl Lo Ni           514 Na
+P-5           2931 A87889E-8                       123 Na
+P-6           2934 D582688-6  S Ni Ri              105 Na
+P-7           2939 C243574-A    Ni Po              705 Na
+P-8           3032 A8D4100-D    Fl Lo Ni           404 Na
+P-9           3035 A868643-C    Ag Ni Ri           222 Na
+P-10          3037 C7287AE-6  S                    805 Na
+P-11          3039 C548469-8  S Ni                 210 Na
+P-12          3137 A5A4578-D    Fl Ni              800 Na
+P-13          3235 E3439BB-8    Hi In Po           412 Na
+@SUB-SECTOR: Evzaj SECTOR: Ienza
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0126 X46367B-0    Ni Ri           R  423 Na
+I-2           0228 C9A4655-9    Fl Ni              404 Na
+I-3           0330 C4249DE-A    Hi In              502 Na
+I-4           0424 C5109A9-9  S Hi Na              303 Na
+I-5           0428 D767855-4    Ri                 300 Na
+I-6           0728 B788221-6    Lo Ni              703 Na
+I-7           0821 C34669D-7  S Ag Ni              204 Na
+@SUB-SECTOR: Idlints SECTOR: Ienza
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0103 E3309ED-6    De Hi In Na Po     103 Na
+A-2           0108 C100452-A    Ni Va              714 Na
+A-3           0202 D30048B-8  S Ni Va              801 Na
+A-4           0307 B225432-9  N Ni                 100 Na
+A-5           0408 B686364-7  N Lo Ni              704 Na
+A-6           0409 C000451-A    As Ni              502 Na
+A-7           0502 C95A8CD-6  S Wa                 924 Na
+A-8           0508 C5248DF-5  S                    201 Na
+A-9           0602 D443334-4    Lo Ni Po           622 Na
+A-10          0703 C30056A-9    Ni Va              121 Na
+A-11          0709 CA56621-6    Ag Ni              102 Na
+A-12          0801 D58868C-1  S Ag Ni Ri           512 Na
+A-13          0803 C7358A9-5  S                    204 Na
+A-14          0805 C9A5887-5    Fl                 402 Na
+@SUB-SECTOR: Nalidiafl SECTOR: Ienza
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0902 B222969-E    Hi In Na Po        804 Na
+B-2           0909 C635644-9  S Ni                 700 Na
+B-3           1103 A452220-C  N Lo Ni Po           203 Na
+B-4           1109 B10057B-C  S Ni Va              204 Na
+B-5           1308 A7A1310-B  N Fl Lo Ni           500 Na
+B-6           1309 D426636-4    Ni                 123 Na
+B-7           1401 D62A978-B  S Hi In Wa           303 Na
+B-8           1404 C787500-9    Ag Ni              603 Na
+B-9           1405 C000420-A  S As Ni              903 Na
+B-10          1408 AA98343-C  N Lo Ni              904 Na
+B-11          1410 CAE1577-7    Fl Ni              513 Na
+B-12          1507 D5598BE-7                       503 Na
+@SUB-SECTOR: Zantsdatl SECTOR: Ienza
+#
+$2410 2314 0 1 10
+$2410 2307 0 0 10
+$2307 2304 0 0 10
+$2304 2001 0 0 10
+$2001 1939 0 -1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1710 B979542-9  N Ni                 902 Na
+C-2           2001 D425300-8    Lo Ni              923 Na
+Twyau         2003 E595735-5    Ag              B  714 Dr
+C-4           2005 C979646-5    Ni                 100 Na
+C-5           2007 D343423-8    Ni Po              103 Na
+C-6           2008 C372001-7    Lo Ni              901 Na
+C-7           2106 B444200-A    Lo Ni              800 Na
+C-8           2109 B2236AB-7  N Na Ni Po           500 Na
+C-9           2304 C270667-8  S De Ni              623 Na
+Pich          2307 B782543-B  Z Ni                 312 Zc
+C-11          2308 E371526-6    Ni                 304 Na
+C-12          2410 C510657-9    Na Ni              613 Na
+@SUB-SECTOR: Nshanjneqr SECTOR: Ienza
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2606 C75A668-9    Ni Wa              404 Na
+D-2           2607 C250679-5    De Ni Po           113 Na
+D-3           2702 B343338-7  S Lo Ni Po           210 Na
+D-4           2704 E76769B-5    Ag Ni Ri           104 Na
+D-5           2802 C300654-6    Na Ni Va           502 Na
+D-6           2808 B68A110-8  N Lo Ni Wa           315 Na
+D-7           2810 C864331-4    Lo Ni              602 Na
+D-8           2906 X8B7875-0    Fl                 703 Na
+D-9           3009 B200544-A  N Ni Va              202 Na
+@SUB-SECTOR: Ieflied SECTOR: Ienza
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0114 C688568-8    Ag Ni              702 Na
+E-2           0316 C75A200-7  S Lo Ni Wa           903 Na
+E-3           0512 B632554-D  N Ni Po              802 Na
+E-4           0516 X878745-0    Ag              R  803 Na
+E-5           0812 C8A37CF-7    Fl                 820 Na
+E-6           0813 B210769-C  N Na                 902 Na
+E-7           0814 B110401-E  N Ni                 123 Na
+@SUB-SECTOR: Tlitsvrensbrensh SECTOR: Ienza
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           1024 E726677-4    Ni                 623 Na
+J-2           1027 A766556-A    Ag Ni              114 Na
+J-3           1030 D410745-6  S Na                 204 Na
+J-4           1122 A966442-A  N Ni                 212 Na
+J-5           1321 B100000-B  S Ba Lo Ni Va        200 Na
+J-6           1322 B99488C-7                       113 Na
+J-7           1328 B340445-9    De Ni Po           614 Na
+J-8           1422 A300377-A  N Lo Ni Va           400 Na
+J-9           1426 B8A7877-B  S Fl                 301 Na
+J-10          1427 C546465-4    Ni                 103 Na
+J-11          1430 C769344-A  S Lo Ni              822 Na
+J-12          1524 B671788-A                       305 Na
+J-13          1527 C535777-4  S                    103 Na
+J-14          1621 C528468-7    Ni                 523 Na
+J-15          1630 E878854-3                       902 Na
+@SUB-SECTOR: Ieflia SECTOR: Ienza
+#
+$2029 1832 0 1 10
+$2029 2126 0 0 10
+$2126 2222 0 0 10
+$2222 2319 0 -1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1923 C510440-9  S Ni                 202 Na
+K-2           2029 C798110-8  S Lo Ni              912 Na
+Iazhder       2126 B788310-9  Z Lo Ni              800 Zc
+K-4           2129 E120875-4    De Na Po           920 Na
+K-5           2222 C210334-A    Lo Ni              813 Na
+K-6           2223 C332896-A  S Na Po              204 Na
+K-7           2322 A220756-B    De Na Po           723 Na
+K-8           2327 C313534-A    Ic Ni              114 Na
+K-9           2430 C375424-5  S Ni                 304 Na
+@SUB-SECTOR: Ietnezh SECTOR: Ienza
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2524 C736165-9  S Lo Ni              102 Na
+L-2           2622 D000215-6    As Lo Ni           133 Na
+L-3           2626 C160235-B    De Lo Ni           702 Na
+L-4           2627 C200884-9  S Na Va              305 Na
+L-5           2722 B466546-8  N Ag Ni              404 Na
+L-6           2723 C230462-A    De Ni Po           902 Na
+L-7           2827 B636985-A    Hi In              910 Na
+L-8           2923 B501100-D  N Ic Lo Ni Va        400 Na
+L-9           3025 B66A263-B    Lo Ni Wa           905 Na
+L-10          3126 D237420-4    Ni                 504 Na
+L-11          3225 C1009AB-8    Hi Na Va           913 Na
+@SUB-SECTOR: Zdavleqroqr SECTOR: Ienza
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0231 C686341-7    Lo Ni              404 Na
+M-2           0332 E7649BB-5    Hi                 912 Na
+M-3           0336 B310587-9    Ni                 914 Na
+M-4           0631 C382678-4  S Ni Ri              300 Na
+M-5           0737 C588545-4    Ag Ni              102 Na
+M-6           0738 C000545-7  S As Ni              821 Na

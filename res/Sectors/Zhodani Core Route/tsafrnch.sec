@@ -1,0 +1,271 @@
+Tsafrnchia
+
+A: Zheprchatsa               A.dat
+B: Fiashtokli                B.dat
+C: Aafl                      C.dat
+D: Iefliv                    D.dat
+E: Rilprianchpients          E.dat
+F: Stonzhafrikr              F.dat
+G: Entplash                  G.dat
+H: Krelar                    H.dat
+I: Ojikl                     I.dat
+J: Evra                      J.dat
+K: Leo                       K.dat
+L: Tlashanchie               L.dat
+M: Leplav                    M.dat
+N: Iezvianch                 N.dat
+O: Peshvienzhi               O.dat
+P: Eflo                      P.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+Z = Zhodani Navy
+Y = Zhodani Depot
+X = Zhodani Relay
+  = None
+
+Allegiance:
+11 Zh = Zhodani
+01 Zc = Zhodani Client
+10 Dr = Droyne
+07 Na = Non-Aligned
+08    = Unknown
+                                          
+                                          
+This sector was created by Clifford Linehan
+
+I wish to thank Marc Miller for his invaluable advice in the creation of this
+sector and the Core Route.
+
+Clifford Linehan - cnl.rubicon@juno.com
+http://www.geocities.com/traveller_core_route
+Developer: Vlanchiets Qlom and the Core Route.
+                                          
+                                          
+@SUB-SECTOR: Zheprchatsa SECTOR: Tsafrnchia
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0102 C486477-5  S Ni                 503 Na
+A-2           0104 C47478B-6    Ag                 205 Na
+A-3           0303 C5768DF-1                       123 Na
+A-4           0401 E564323-6    Lo Ni              104 Na
+A-5           0503 XAF8540-2    Fl Ni           R  512 Na
+A-6           0603 B332500-E    Ni Po              500 Na
+A-7           0801 E484537-8    Ag Ni              304 Na
+A-8           0802 C444103-B    Lo Ni              222 Na
+@SUB-SECTOR: Fiashtokli SECTOR: Tsafrnchia
+#
+$1510 1412 0 1 10
+$1510 1406 0 0 10
+$1406 1504 0 0 10
+$1504 1301 0 0 10
+$1301 1138 0 -1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0908 C25389A-7  S Po                 504 Na
+B-2           1002 CAB9663-5    Fl Ni              703 Na
+B-3           1008 C99A572-9  S Ni Wa              703 Na
+B-4           1301 C657831-6  X                    813 Na
+B-5           1306 C889AB9-A    Hi                 804 Na
+B-6           1406 C415104-9  X Ic Lo Ni           104 Na
+Izyitlzeshi   1504 A200673-D  Z Na Ni Va           913 Zc
+B-8           1505 B333757-B    Na Po              922 Na
+B-9           1510 C322855-A  X Na Po              905 Na
+@SUB-SECTOR: Aafl SECTOR: Tsafrnchia
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1707 C410433-9    Ni                 905 Na
+C-2           1803 E558103-8    Lo Ni              102 Na
+C-3           1904 A738157-F  N Lo Ni              120 Na
+C-4           1909 C663111-7  S Lo Ni              503 Na
+C-5           2005 A65A366-E    Lo Ni Wa           904 Na
+C-6           2105 A413499-F  S Ic Ni              502 Na
+C-7           2206 C440352-9  S De Lo Ni Po        103 Na
+C-8           2408 E67A613-4    Ni Wa              913 Na
+@SUB-SECTOR: Iefliv SECTOR: Tsafrnchia
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2508 E7A0241-3    De Lo Ni           704 Na
+D-2           2509 C404733-6  S Ic Va              600 Na
+D-3           2805 C97A334-A    Lo Ni Wa           902 Na
+D-4           3002 C9A89A8-9  S Fl Hi              614 Na
+D-5           3003 E400444-4    Ni Va              602 Na
+D-6           3102 C301322-6    Ic Lo Ni Va        504 Na
+D-7           3203 A432866-9    Na Po              604 Na
+D-8           3208 B130542-D  N De Ni Po           504 Na
+@SUB-SECTOR: Rilprianchpients SECTOR: Tsafrnchia
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0112 C110847-6  S Na                 913 Na
+E-2           0118 C511564-7  S Ic Ni              202 Na
+E-3           0218 B696453-9    Ni                 503 Na
+E-4           0311 A567200-E  N Lo Ni              502 Na
+E-5           0512 B554434-B  S Ni                 623 Na
+E-6           0617 B649620-9    Ni                 702 Na
+@SUB-SECTOR: Stonzhafrikr SECTOR: Tsafrnchia
+#
+$1412 1715 1 0 10
+$1412 1510 0 -1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0917 B7B4357-B  N Fl Lo Ni           200 Na
+F-2           1013 B3009CD-E  N Hi Na Va           502 Na
+F-3           1212 C540632-8    De Ni Po           502 Na
+F-4           1216 B894625-8  2 Ag Ni              204 Na
+F-5           1220 B441664-9  N Ni Po              902 Na
+F-6           1314 B100346-C    Lo Ni Va           402 Na
+F-7           1318 C532476-5    Ni Po              123 Na
+F-8           1412 C738862-8  X                    413 Na
+F-9           1616 E858664-1    Ag Ni              710 Na
+@SUB-SECTOR: Entplash SECTOR: Tsafrnchia
+#
+$1917 1921 0 1 10
+$1917 1715 0 0 10
+$1715 1412 -1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1715 C300652-A  X Na Ni Va           813 Na
+G-2           1814 EA79672-4    Ni                 103 Na
+G-3           1912 C788545-6    Ag Ni              404 Na
+G-4           1915 E200200-5    Lo Ni Va           212 Na
+G-5           1916 C3336AA-7    Na Ni Po           420 Na
+G-6           1917 C252864-5  X Po                 412 Na
+G-7           2011 B8B0420-8    De Ni              224 Na
+G-8           2320 E363546-8    Ni                 603 Na
+@SUB-SECTOR: Krelar SECTOR: Tsafrnchia
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2618 D5A5269-3  S Fl Lo Ni           802 Na
+H-2           2713 B8799CB-9    Hi In              213 Na
+H-3           2715 C512445-8    Ic Ni              514 Na
+H-4           2716 D25098B-4  S De Hi Po           500 Na
+H-5           2812 A472534-E  N Ni                 900 Na
+H-6           2816 C73A589-C    Ni Wa              923 Na
+H-7           3019 X668876-0    Ri              R  613 Na
+H-8           3111 C587544-5  S Ag Ni              214 Na
+H-9           3120 A350112-A    De Lo Ni Po        812 Na
+H-10          3214 D66558B-6    Ag Ni              614 Na
+H-11          3218 B424843-C  N                    700 Na
+@SUB-SECTOR: Ojikl SECTOR: Tsafrnchia
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0127 C34078A-7    De Po              912 Na
+I-2           0128 C784333-5  S Lo Ni              304 Na
+I-3           0224 C9A9257-9    Fl Lo Ni           104 Na
+I-4           0324 D896330-7  S Lo Ni              205 Na
+I-5           0422 B000325-D    As Lo Ni           721 Na
+I-6           0527 E345435-3    Ni                 304 Na
+I-7           0529 B657557-7    Ag Ni              802 Na
+I-8           0623 E5726AE-1    Ni                 904 Na
+@SUB-SECTOR: Evra SECTOR: Tsafrnchia
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0925 C65467B-5  S Ag Ni              505 Na
+J-2           0926 B636834-A  N                    310 Na
+J-3           1024 E572687-3    Ni                 600 Na
+J-4           1127 C792840-8  S                    204 Na
+J-5           1130 D97A420-4    Ni Wa              704 Na
+J-6           1324 C7C2876-9    Fl                 102 Na
+J-7           1427 D759497-7    Ni                 113 Na
+J-8           1524 E966564-7    Ag Ni              424 Na
+J-9           1527 B120458-C    De Ni Po           304 Na
+@SUB-SECTOR: Leo SECTOR: Tsafrnchia
+#
+$2329 2631 1 1 10
+$2329 2425 0 0 10
+$2425 2123 0 0 10
+$2123 1921 0 0 10
+$1921 1917 0 -1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1921 E000768-7  X As Na              103 Na
+K-2           1923 C96A530-7    Ni Wa              824 Na
+K-3           1926 B636566-C  N Ni                 923 Na
+K-4           1930 B739666-9  2 Ni                 724 Na
+K-5           2024 C400436-8  S Ni Va              922 Na
+Nazh          2123 B422894-A  Z Na Po              804 Zc
+K-7           2125 C554441-6  S Ni                 303 Na
+K-8           2322 C424569-8    Ni                 900 Na
+K-9           2327 EAC6568-3    Fl Ni              404 Na
+K-10          2329 C100551-D  X Ni Va              823 Na
+K-11          2423 D537597-4  S Ni                 814 Na
+Bianj         2425 B322588-A  Z Ni Po              803 Zc
+@SUB-SECTOR: Tlashanchie SECTOR: Tsafrnchia
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2529 B4437CB-B  S Po                 703 Na
+L-2           2530 B220444-B  2 De Ni Po           510 Na
+L-3           3029 C401766-9    Ic Na Va           705 Na
+L-4           3122 C656AAA-B    Hi                 203 Na
+L-5           3124 C411567-8  S Ic Ni              304 Na
+@SUB-SECTOR: Leplav SECTOR: Tsafrnchia
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0335 C200334-8    Lo Ni Va           712 Na
+M-2           0636 C534521-5    Ni                 614 Na
+M-3           0637 C523535-8  S Ni Po              912 Na
+@SUB-SECTOR: Iezvianch SECTOR: Tsafrnchia
+#
+$1538 1301 0 1 10
+$1538 1939 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           1036 C300786-9    Na Va              401 Na
+N-2           1340 B99A558-C  S Ni Wa              615 Na
+N-3           1433 E7B5310-6    Fl Lo Ni           305 Na
+N-4           1532 B896420-A  S Ni                 200 Na
+N-5           1538 E8768BA-2  X                    805 Na
+@SUB-SECTOR: Peshvienzhi SECTOR: Tsafrnchia
+#
+$1939 1538 -1 0 10
+$1939 2337 0 0 10
+$2337 2634 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1737 E362400-7    Ni                 303 Na
+O-2           1836 C254A87-9    Hi                 802 Na
+O-3           1838 C4537BB-7  S Po                 801 Na
+O-4           1938 C254AEH-8  S Hi              A  513 Na
+O-5           1939 C635546-5  X Ni                 824 Na
+O-6           2337 D795667-6  X Ag Ni              804 Na
+O-7           2434 C888557-6    Ag Ni              204 Na
+@SUB-SECTOR: Eflo SECTOR: Tsafrnchia
+#
+$2634 2337 -1 0 10
+$2634 2631 0 0 10
+$2631 2329 -1 -1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Venshplansh   2631 A687224-8  Z Lo Ni              824 Zc
+Brienz        2634 A445404-F  Z Ni                 804 Zc
+P-3           2637 B49499B-B    Hi In              901 Na
+P-4           2733 C559220-5  S Lo Ni              123 Na
+P-5           2739 B412303-A  N Ic Lo Ni           112 Na
+P-6           2934 C100767-8    Na Va              904 Na

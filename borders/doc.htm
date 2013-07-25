@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<title>Borders</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" href="../site.css?update=2013-07-25">
+<style>
+</style>
+
+<h1>Improved Automatic Border Generation for <cite>TRAVELLER </cite>Sectors</h1>
+<div class="content">
+  <div>
+      Joshua Bell, 
+      <a href="mailto:inexorabletash@gmail.com">inexorabletash@gmail.com</a>, 
+      <a href="http://www.travellermap.com">http://www.travellermap.com</a>
+  </div>
+    
+  <h2>Online Demo</h2>
+
+  <p>
+      Try out the <a href="demo.htm">Interactive Border Generation Demo</a>, which runs entirely in a web page.
+  </p>
+    
+  <h2>Background</h2>
+    
+  <p>
+      Sectors in <cite class="traveller">Traveller</cite> are hexagonal grids of 32 by 40 hexes. Each grid space may contain a
+      single star system, represented by a "main world." Further details (multiple stars, multiple worlds) are ignored at this
+      level of representation. The fraction of occupied hexes varies, including at the extreme some large empty areas known as
+      rifts, but outside of rifts the density is generally between 0.3 and 0.6. Each main world has an allegiance to an interstellar
+      polity, or is "non-aligned". <cite class="traveller">Traveller</cite> data for sectors has generally consisted of lists
+      of the occupied hexes and the details of the main world compressed into a data format known as Universal World Profile (UWP),
+      commonly shared as "flat" text files with the .SEC extension.
+  </p>
+  <p>
+      No polity allegiance data is given for empty hexes. It is possible to argue that since there is nothing in such a hex it
+      can't be claimed by a polity, but deep within a large empire it is unlikely that incursions of a foreign force will be viewed
+      with indifference regardless of what hex it lies within. Maps of <cite class="traveller">Traveller</cite> sectors – most
+      notably the classic references <cite>Supplement 3: The Spinward Marches</cite> and <cite>Supplement 10: The Solomani Rim, </cite>
+      show borders around the edges of polities, thus implicitly claiming the empty hexes.
+  </p>
+  <p>
+      Recently, several hex maps of <cite class="traveller">Traveller</cite> sectors have been produced with polity borders like
+      the following.
+  </p>
+  <p><img alt="Sub-optimal borders" width="287" height="226" src="bd_images/image001.gif" /></p>
+  <p>
+      Note the claimed empty hexes (1) that extend outside of the polity with little justification – they don't fall between occupied
+      hexes. Also note the unclaimed empty hexes (2) that are inexplicably unclaimed in the light of similarly claimed hexes nearby
+      (3), and worlds that end up cut off from the main body of the polity due to unclaimed hexes (4).
+  </p>
+  <p>
+      The features are not present or are rare in the classic <cite class="traveller">Traveller</cite> reference materials. One
+      reason is that thanks to fast personal computers and software aids, borders now are often automatically generated.
+  </p>
+  <p><img alt="Spindly borders" width="264" height="332" src="bd_images/image016.jpg" />
+      <span class="caption"><br />Example: Spindly borders c/o T20 Gateway Domain metadata</span>
+  </p>
+
+  <h2>Automatic Border Generation</h2>
+  <p>
+      One of the best resources for <cite class="traveller">TRAVELLER</cite> cartographers today is J. Greely's <a href="http://dotclue.org/t20/">
+          Gateway to PDF</a><a href="#ref_g2p" class="reference">[1]</a> which includes <cite>sec2pdf</cite>, a tool for generating PDF maps from classic ".SEC" sector format
+      files, and <cite>allygen</cite>, a tool that <cite>"tries to create plausible regional borders for a sector, based on starports,
+          tech level, and population."</cite> Greely also defines a ".MSEC" data format for sector metadata beyond simple tables
+      of UWPs, including allegiances, borders, routes, and other features necessary to generate complete sector maps. The tools
+      are provided with full source, and modification and redistribution is encouraged. Sample data is provided for the classic
+      Spinward Marches as well as the Gateway Domain sectors featured in <cite class="traveller">TRAVELLER d20</cite> (T20.)
+  </p>
+  <p>
+      The <cite>allygen</cite> and <cite>sec2pdf</cite> tools also share and define an elegant mechanism for representing borders
+      by defining a traversal from the upper-leftmost hex in a polity proceeding clockwise around the exterior. This is extremely
+      amenable to producing graphical representations of the border.
+  </p>
+  <p>
+      This author used <cite>allygen</cite> while generating borders for many sectors for my <cite class="traveller">Traveller</cite>
+      Map site (<a href="http://www.travellermap.com/">http://www.travellermap.com</a>), but found that the borders generated
+      suffered from the issues identified above.
+  </p>
+  <p>
+      The <cite>allygen</cite> tool determines allegiances for empty hexes per the following heuristics:
+  </p>
+  <ul>
+      <li>In order of decreasing importance (based on starport, tech level, and population), worlds claim nearby empty hexes (up to
+          a distance dependent on starport)</li>
+      <li>Unclaimed hexes are claimed based on "votes" by adjacent hexes</li>
+      <li>Non-aligned worlds "repel borders" (pun present in source code comments)</li>
+      <li>Non-aligned worlds are prevented from breaking polities apart</li>
+      <li>Claimed empty hexes distant from the claiming worlds are unclaimed</li>
+      <li>Claimed empty hexes with fewer than two claimed neighbors are unclaimed</li>
+  </ul>
+  <p>
+      This set of heuristics produces reasonable borders, but is prone to the issues noted above. It is also very sensitive to
+      tweaks in the algorithm – reordering or changing any of the heuristics produces very different borders.
+  </p>
+  <p>
+      The <cite>allygen</cite> algorithm borders are subjectively most reasonable when dealing with many small polities within
+      a sector, and most notably problematic when dealing with large polities occupying large portions of a sector.
+  </p>
+    
+    
+  <h2>Proposed Algorithm</h2>
+  <p>
+      In order to achieve the goal of automatic border production which matches the hand-crafted borders from <cite>Supplement 3:
+          The Spinward Marches</cite> and <cite>Supplement 10: The Solomani Rim</cite>, and are as free from distracting artifacts
+      as possible, a different algorithm must be used.
+  </p>
+  <p>
+      This algorithm is modeled on formalization of "concave hulls" known as <cite>Alpha Shapes</cite><a href="#ref_hull" class="reference">[2]</a>.
+  </p>
+  <p>
+      In 2D geometry, a convex hull is the minimal surface surrounding a set of points – consider an elastic band surrounding
+      push-pins on a cork board, and is a well defined shape for a set of points. A so-called "concave hull," by analogy, is an
+      informal notion that humans would tend to draw concave shapes around point sets with obvious concave features – consider
+      the Great Rift separating the Domain of Deneb from the main body of the Imperium.
+  </p>
+    
+  <p><img alt="Imperial border near the Great Rift" width="252" height="271" src="bd_images/image003.jpg">
+      <span class="caption"><br />The Imperial border is not a convex hull</span>
+  </p>
+  <p>
+      <cite>Alpha Shapes</cite> formalize this notion by constructing a convex hull over a set of points via Delaunay triangulation
+      of the set, but disallowing spans over a certain length characterized in the algorithm by &alpha;. This tends to produce
+      very reasonable "surfaces" over point sets, when the value of &alpha; is carefully chosen.
+  </p>
+  <p>
+      These algorithms take place in Cartesian space. In the hexagonally quantized space of <cite class="traveller">Traveller</cite>,
+      an approximation is used. The following algorithm is proposed.
+  </p>
+  <ul>
+      <li>The sector is scanned, and the number of worlds allied to each polity is calculated.</li>
+      <li>Starting with the polity with the smallest number of worlds, all unclaimed empty hexes are (provisionally) claimed by the
+          polity</li>
+      <li>A set of algorithms are applied which eliminate unreasonable claims on empty hexes, until a steady state is reached</li>
+      <li>The next largest polity is considered, until all polities are processed</li>
+  </ul><h3>Rule #1: Erosion</h3>
+  <p>
+      "If a hex is empty, and it has 3 unaligned neighbors, make it unaligned"
+  </p>
+  <p>
+      This satisfies the heuristic notion that empty hexes that "stick out" from a polity shouldn't be considered part of that
+      polity.
+  </p>
+
+  <p style="font-style: italic;">
+      In the following examples, it is assumed that the polity extends above and to the left of the shown worlds. This hints at
+      another challenge when generating borders: the data present in a .SEC file covers only a single sector, so the creation
+      of borders for polities that extend beyond a single sector is problematic. The original <cite>allygen</cite> tool has some
+      special cases to deal with the fact that .SEC data handles a single sector – a "border" one hex deep is assumed to exist
+      around the sector and may be claimed by various heuristics, but is not unclaimed by others. In the proposed algorithm, the
+      code is extended to load a 3 by 3 grid of .SEC data files so that correct borders can be generated for the central sector.
+  </p>
+
+  <p><img alt="Iteration 1"  width="240" height="196" src="bd_images/image004.gif" /></p>
+  <p><img alt="Iteration 2"  width="240" height="196" src="bd_images/image005.gif" /></p>
+  <p><img alt="Iteration 3"  width="240" height="204" src="bd_images/image006.gif" /></p>
+  <p><img alt="Iteration 4"  width="240" height="196" src="bd_images/image007.gif" /></p>
+  <p><img alt="Iteration 5"  width="245" height="196" src="bd_images/image008.gif" /></p>
+  <p><img alt="Iteration 6"  width="240" height="196" src="bd_images/image009.gif" /></p>
+  <p><img alt="Iteration 7"  width="240" height="196" src="bd_images/image010.gif" /></p>
+  <p><img alt="Iteration 8"  width="240" height="196" src="bd_images/image011.gif" /></p>
+  <p><img alt="Iteration 9"  width="240" height="196" src="bd_images/image012.gif" /></p>
+  <p><img alt="Iteration 10" width="240" height="196" src="bd_images/image013.gif" /></p>
+  <p><img alt="Iteration 11" width="240" height="196" src="bd_images/image014.gif" /></p>
+  <p>
+      On its own, though, it is not sufficient – this will leave straight spans of empty hexes between filled hexes. In other
+      words, rule 1 produces the <cite>convex hull</cite> of a polity, but we want the <cite>Alpha Shape</cite>. Therefore, once
+      a steady state has been reached by applying rule 1, we break out the next heuristic.
+  </p>
+  <h3>Rule #2: Span Breaking</h3>
+  <p>
+      "Break any spans of length greater than 4 - but only in the middle of 3-in-a-row"
+  </p>
+  <p>
+      Without this rule, "inlets" and "bays" are claimed. For one and two hexes, this is desirable or you end up with "spindly"
+      borders. One notable example is a feature I call the "Horn of Vland." Without this rule, the areas coreward and rimward
+      of the horn would be claimed.
+  </p>
+  <p>
+      Unlike rule #1, The heuristic does contain "magic numbers" (4, 3) which are derived experimentally:
+  </p>
+  <ul>
+      <li>Span lengths of 3 should not be broken, or spindly borders occur frequently</li>
+      <li>Span lengths should not be broken unless they contain straight segments, or concave regions are too heavily broken up.</li>
+  </ul>
+  <p>
+      This is analogous to the careful selection of &alpha;-values when producing <cite>Alpha Shapes</cite>.
+  </p>
+
+  <p>
+      <img alt="The Horn of Vland" width="233" height="225" src="bd_images/image018.jpg" />
+      <span class="caption"><br />Example: The Horn of Vland</span>
+  </p>
+
+  <p><img alt="Iteration 12" width="240" height="196" src="bd_images/image019.gif" /></p>
+  <p><img alt="Iteration 13" width="240" height="196" src="bd_images/image020.gif" /></p>
+  <p>
+      Then keep repeating rules #1 and #2 until no changes are made. More precisely, apply rule #1 until a steady state is reached,
+      then if rule #2 results in changes, resume applying rule #1.
+  </p>
+  <p><img alt="Iteration 14" width="240" height="196" src="bd_images/image021.gif" /></p>
+  <p><img alt="Iteration 15" width="240" height="196" src="bd_images/image022.gif" /></p>
+
+
+  <h2>Known Issues and Future Directions</h2>
+
+  <p>
+      In the following configuration, both hex 1 and 2 are susceptible to erosion, and the occupied worlds become isolated. This
+      can occur in other configurations, such as worlds offset by one column and separated by two hexes. To address this, a new
+      heuristic will need to be introduced.
+  </p>
+  <p><img alt="Known Issue" width="173" height="120" src="bd_images/image023.gif" /></p>
+  <p>
+      Non-aligned worlds that end up "within" polities are not considered. In the classic <cite class="traveller">Traveller</cite>
+      references, borders are not consistently shown for these hexes.
+  </p>
+
+
+  <h2>References</h2>
+    
+  <ol>
+      <li id="ref_g2p">
+          J. Greely, 
+          <cite>Gateway to PDF</cite>, 
+          <a href="http://dotclue.org/t20/">http://dotclue.org/t20/</a>
+      </li>
+      <li id="ref_hull">
+          Ken Clarkson, 
+          <cite>hull – convex hulls, Delaunay triangulations, alpha shapes</cite>, 
+          <a href="http://www.netlib.org/voronoi/hull.html">http://www.netlib.org/voronoi/hull.html</a>
+      </li>
+  </ol>
+</div>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<title>The Traveller Map IFrame</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<!--[if lt IE 9]><meta http-equiv="X-UA-Compatible" content="chrome=1"><![endif]-->
+<!--[if lt IE 9]><meta http-equiv="imagetoolbar" content="no"><![endif]-->
+
+<!-- Stylesheet is needed for markers -->
+<link rel="stylesheet" href="map.css?update=2013-07-25">
+
+<script src="polyfill/polyfill.js?update=2013-07-25"></script>
+<script src="map.js?update=2013-07-25"></script>
+<script>
+
+// TODO: Merge with main page, automagically ditch UI if window != window.top
+
+window.onload = function() {
+
+  // IE7 introduced a bug (?) where the offsetHeight is 0 when the iframe initializes
+  // so make this asynchronous
+  window.setTimeout(function() {
+
+    window.onresize();
+    var mapElement = document.getElementById("dragContainer");
+
+    var map = new Map(mapElement);
+    map.ScaleCenterAtSectorHex(2, 0, 0, Astrometrics.ReferenceHexX, Astrometrics.ReferenceHexY);
+
+    applyUrlParameters(map);
+    document.body.className = map.GetStyle();
+  }, 0);
+
+  // Block unwanted text selection, but allow within text fields (for MSIE)
+  document.body.onselectstart = function() { return false; };
+};
+
+window.onresize = function(e) {
+  var canvas = document.getElementById("dragContainer")
+  canvas.style.width = document.body.parentNode.clientWidth + "px";
+  canvas.style.height = document.body.parentNode.clientHeight + "px";
+};
+
+</script>
+
+<body style="margin: 0; padding: 0; border: none; width: 100%; height: 100%;">
+  <div id="dragContainer" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; overflow: hidden;" tabindex="0">
+    &nbsp;
+  </div>
+
+  <!-- Google Analytics -->
+  <script>
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18610679-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function () {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</body>

@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<title>Border Generation</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" href="../site.css?update=2013-07-25">
+
+<script src="../polyfill/polyfill.js"></script>    
+<script src="../polyfill/harmony.js"></script>    
+<script src="../map.js?update=2013-07-25"></script>    
+<script src="borders.js"></script>    
+<script>
+
+var SECTOR_WIDTH = 32, SECTOR_HEIGHT = 40;
+
+var ALLEGIANCE_COLORS = {
+  'Im': 'red',
+  'Cs': 'pink',
+  'As': 'yellow',
+  'Kk': 'green',
+  'Va': 'olive',
+  'Zh': 'blue',
+  'So': 'orange',
+  'Hv': 'purple',
+  'Fa': 'green',
+  'Da': 'lightblue',
+  'Sw': 'blue',
+  'Bw': 'cyan',
+  'Na': 'transparent'
+};
+
+function colorFor(alleg) {
+  if (alleg.startsWith('V')) return 'olivedrab';
+  return ALLEGIANCE_COLORS[alleg];
+}
+
+var ALLEGIANCE_SETS = [
+    ['Na', // Non-aligned
+     'Dr', // Droyne
+     '--', // Unknown
+     'Va', // Vargr
+     'va', // "
+     'Cs', // Client State
+     'Cv', // Vargr client state
+     'cv', // "
+     'J-' // Julian Protectorate
+     ],
+    ["Im", // Classic Imperium
+     "Dd", // Rebellion: Domain of Deneb
+     "Fd", // Rebellion: Federation of Daibei
+     "Fi", // Rebellion: Federation of Ilelish
+     "La", // Rebellion: League of Antares
+     "Li", // Rebellion: Lucan's Imperium
+     "Rv", // Rebellion: Ziru Sirkaa (Restored Vilani Imperium)
+     "Ma", // Rebellion: Margaret's Stronghold
+     "St", // Rebellion: Strephon's Imperium
+     "IL", // Gateway to Destiny: Third Imperium, Luriani Cultural
+     "IU"  // Gateway to Destiny: Third Imperium, Gateway 3rd Imperium Ursa Cultural
+     ],
+    ['As', 'A0', 'A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9'] // Aslan clans
+  ];
+
+
+
+
+//----------------------------------------------------------------------
+//
+// View
+//
+//----------------------------------------------------------------------
+
+function makeMapDisplay(containerElement, map, inset) {
+  var fragments = [], fragment;
+
+  var sz = 20;
+  var pad = 5;
+  var top, left = -sz;
+
+  for (x = map.origin_x + inset; x < map.origin_x + map.width - inset; ++x) {
+    left += (sz + pad);
+    top = (x % 2 ? 0 : (sz + pad) / 2) - sz;
+
+    for (y = map.origin_y + inset; y < map.origin_y + map.height - inset; ++y) {
+      top += (sz + pad);
+
+      fragment = '<div class="hex" id="hex_' + x + '_' + y + '" style="left: ' + left + 'px; top: ' + top + 'px;">';
+      fragment += hexContents(x, y, map);
+      fragment += '<' + '/div>';
+
+      fragments.push(fragment);
+
+    }
+  }
+
+  containerElement.innerHTML = fragments.join("");
+  containerElement.style.width = (map.width * sz + (map.width + 1) * pad) + "px";
+  containerElement.style.height = ((map.height + 0.5) * sz + (map.height + 1.5) * pad) + "px";
+}
+
+
+
+function updateWalks(map) {
+  var borders = [];
+  var bounds = map.getBounds();
+  var allegiance;
+  var x, y, visited = {}, label, alleg, last_alleg, path;
+
+  for (x = map.origin_x; x < map.origin_x + map.width; x += 1) {
+    lastalleg = UNALIGNED;
+    for (y = map.origin_y; y < map.origin_y + map.height; y += 1) {
+      label = hexLabel(x, y);
+      alleg = map.getAllegiance(x, y);
+      if (alleg !== UNALIGNED && alleg !== NON_ALIGNED && alleg !== last_alleg && !(label in visited)) {
+
+        path = walk(map, x, y, alleg);
+        path = path.map(function(hex) { return hexLabel(hex[0], hex[1]); });
+        path.forEach(function(label) { visited[label] = true; });
+        
+        borders.push({
+          allegiance: alleg,
+          path: path
+        });
+      }
+      last_alleg = alleg;
+    }
+  }
+
+  borders.sort(function(a, b) { return a.allegiance < b.allegiance ? -1 : a.allegiance > b.allegiance ? 1 : 0; });
+  
+
+  var html = [];
+  borders.forEach(function(border) {
+    html.push("<li>" + border.allegiance + " : " + border.path.join(" ") + "<" + "/li>");
+  });
+
+  document.getElementById("walks").innerHTML = html.join("");
+}
+
+function hexLabel(x, y) {
+  return (x < 10 ? "0" : "") + x + (y < 10 ? "0" : "") + y;
+}
+
+function hexContents(x, y, map) {
+  var hexNumber = hexLabel(x, y);
+  var occupied = map.isOccupied(x, y);
+  var alleg = map.getAllegiance(x, y);
+  var color = (alleg == UNALIGNED) ? "transparent" : colorFor(alleg);
+  if (color === (void 0)) { color = 'gray'; }
+
+  return "<div class='hexContents' style='background-color: " + color + ";'>" +
+           "<span class='hexNumber'>" + hexNumber + "<" + "/span><br/>" +
+	       (occupied ? "<span class='world'>" + alleg + "</span>" : "") +
+	       "<" + "/div>";
+}
+
+
+
+//----------------------------------------------------------------------
+//
+// Initialization
+//
+//----------------------------------------------------------------------
+
+function run(tasks, completion) {
+  function do_next() {
+    if (tasks.length) {
+      var task = tasks.shift();
+      task(do_next);
+    } else {
+      completion();
+    }
+  }
+  nextTask();
+}
+
+function join(tasks, completion) {
+  var completed = 0;
+  function done_task() {
+    completed += 1;
+    if (completed === tasks.length) {
+      completion();
+    }
+  }
+  tasks.forEach(function(task) { task(done_task); });
+}
+
+
+function loadSector(sx, sy, callback) {
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', '../api/sec/?type=TabDelimited&sx=' + encodeURIComponent(sx) + '&sy=' + encodeURIComponent(sy), true);
+  xhr.onreadystatechange = function(e) {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      var worlds = [];
+      if (xhr.status === 200) {
+        var lines = xhr.responseText.split(/\r?\n/);
+        var header = lines.shift().toLowerCase().split(/\t/);
+        lines.forEach(function (line) {
+          if (!line.length)
+            return;
+
+          var world = {};
+          line.split(/\t/).forEach(function (field, index) {
+            world[header[index]] = field;
+          });
+
+          world.x = parseInt(world.hex.substring(0, 2), 10);
+          world.y = parseInt(world.hex.substring(2, 4), 10);
+          worlds.push(world);
+        });
+      }
+      // Even on error
+      callback(worlds);
+    }
+  };
+  xhr.send();
+}
+
+function sectorCoords(name, callback) {
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', '../api/coordinates?sector=' + encodeURIComponent(name) + "&accept=application/json", true);
+  xhr.onreadystatechange = function(e) {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      if (xhr.status === 200) {
+        callback(JSON.parse(xhr.responseText));
+      } else {
+        callback();
+      }
+    }
+  };
+  xhr.send();
+}
+
+window.onload = function() {
+
+  function status(message) {
+    var display = document.getElementById('status');
+    display.innerHTML += '<div>' + escapeHtml(message) + '<' + '/div>';
+    display.scrollTop = display.scrollHeight
+  }
+
+  var query = getUrlParameters();
+  if (!('sector' in query)) {
+    alert("Missing sector in URL");
+    return;
+  }
+
+  sectorCoords(query.sector, function(coords) {
+    if (!coords) {
+      alert("No such sector");
+      return;
+    }
+
+
+    var bigmap = new AllegianceMap(SECTOR_WIDTH * 3, SECTOR_HEIGHT * 3, 1, 1);
+
+
+    var loadTasks = [];
+    var ox, oy, hx, hy;
+
+    for (ox = -1; ox <= 1; ox += 1) {
+      for (oy = -1; oy <= 1; oy += 1) {
+
+        loadTasks.push((function(ox, oy) {
+
+          return function(completion) {
+
+            loadSector(coords.sx + ox, coords.sy + oy, function(worlds) {
+              status('Loaded sector at ' + (coords.sx + ox) + ',' + (coords.sy + oy));
+              worlds.forEach(function(world) {
+
+                ALLEGIANCE_SETS.forEach(function(alleg_set) {
+                  if (alleg_set.indexOf(world.allegiance) !== -1) {
+                    world.allegiance = alleg_set[0];
+                  }
+                });
+
+                hx = world.x + ((ox + 1) * SECTOR_WIDTH);
+                hy = world.y + ((oy + 1) * SECTOR_HEIGHT);
+
+                bigmap.setOccupied(hx, hy, true);
+                bigmap.setAllegiance(hx, hy, world.allegiance);
+              });
+              completion();
+            });
+          };
+        } (ox, oy)));
+      }
+    }
+
+    join(loadTasks, function() {
+
+      processMap(bigmap, function() {
+        var secmap = new AllegianceMap(SECTOR_WIDTH + 2, SECTOR_HEIGHT + 2, 0, 0);
+        for (hx = 0; hx <= SECTOR_WIDTH + 1; hx += 1) {
+          for (hy = 0; hy <= SECTOR_HEIGHT + 1; hy += 1) {
+            secmap.setOccupied(hx, hy, bigmap.isOccupied(hx + SECTOR_WIDTH, hy + SECTOR_HEIGHT));
+            secmap.setAllegiance(hx, hy, bigmap.getAllegiance(hx + SECTOR_WIDTH, hy + SECTOR_HEIGHT));
+          }
+        }
+
+        makeMapDisplay(document.getElementById('map'), secmap, 1);
+        //makeMapDisplay(document.getElementById('map'), bigmap, 0);
+        updateWalks(secmap);
+      }, status);
+    });
+  });
+};
+
+
+    
+    </script>
+<style>
+.hex 
+{ 
+  position: absolute; 
+  width: 20px; 
+  height: 20px;
+  overflow: hidden;
+  cursor: pointer;
+	border: solid 1px black; 
+	font-size: 7pt;
+	font-family: Univers, Arial, sans-serif;
+	text-align: center;
+	line-height: 100%;
+}
+.hexNumber
+{
+	font-size: 5pt;
+	font-family: Univers, Arial, sans-serif;
+	color: gray;
+}
+.hexContents
+{
+    width: 100%; height: 100%; padding: 0; margin: 0; border: 0; 
+}
+.world
+{
+    font-size: 8pt;
+}
+#status 
+{
+    height: 300px;
+    overflow: auto;
+}
+	</style>    
+
+<div id="status"></div>
+<div id="map" style="position: relative;">
+</div>    
+<ul id="walks">
+</ul>
+

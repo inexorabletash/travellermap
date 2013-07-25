@@ -1,0 +1,784 @@
+Nzhenzie
+
+A: Chtiazplebre              A.dat
+B: Ietlbre                   B.dat
+C: Piado                     C.dat
+D: Iejzhets                  D.dat
+E: Zeqra                     E.dat
+F: Zhevobr                   F.dat
+G: Eftse                     G.dat
+H: Zhetsfish                 H.dat
+I: Fiantfliezhdlez           I.dat
+J: Oif                       J.dat
+K: Nsidre                    K.dat
+L: Drefle                    L.dat
+M: Kavrnchazqrepl            M.dat
+N: Afliej                    N.dat
+O: Atikr                     O.dat
+P: Tsariefloj                P.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+Z = Zhodani Navy
+Y = Zhodani Depot
+X = Zhodani Relay
+  = None
+
+Allegiance:
+11 Zh = Zhodani
+01 Zc = Zhodani Client
+10 Dr = Droyne
+07 Na = Non-Aligned
+08    = Unknown
+                                          
+                                          
+This sector was created by Clifford Linehan
+
+I wish to thank Marc Miller for his invaluable advice in the creation of this
+sector and the Core Route.
+
+Clifford Linehan - cnl.rubicon@juno.com
+http://www.geocities.com/traveller_core_route
+Developer: Vlanchiets Qlom and the Core Route.
+                                          
+                                          
+@SUB-SECTOR: Chtiazplebre SECTOR: Nzhenzie
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0102 C9578AB-7                       700 Na
+A-2           0104 D2446AB-2    Ag Ni              520 Na
+A-3           0105 C510110-6  S Lo Ni              200 Na
+A-4           0106 A7A357A-C  N Fl Ni              700 Na
+A-5           0108 C66A8CC-5  S Wa                 903 Na
+A-6           0201 B85A86A-A    Wa                 422 Na
+A-7           0202 A110753-B  2 Na                 103 Na
+A-8           0203 C662549-7  S Ni                 820 Na
+A-9           0204 D435234-8    Lo Ni              122 Na
+A-10          0206 E000478-6    As Ni              610 Na
+A-11          0207 D884A89-6    Hi                 205 Na
+A-12          0301 A436367-D  N Lo Ni              413 Na
+A-13          0302 B120520-B    De Ni Po           900 Na
+A-14          0305 D555457-5  S Ni                 204 Na
+A-15          0309 C5747BB-3    Ag                 610 Na
+A-16          0402 C200522-B  S Ni Va              901 Na
+A-17          0403 D9A488B-7  S Fl                 324 Na
+A-18          0405 B360751-B    De Ri              604 Na
+A-19          0407 B638516-9  2 Ni                 313 Na
+A-20          0409 E425654-8    Ni                 903 Na
+A-21          0501 C78616A-4  S Lo Ni              214 Na
+A-22          0504 B87889C-6                       300 Na
+A-23          0510 D5355A9-5  S Ni                 705 Na
+A-24          0602 C656888-5                       204 Na
+A-25          0605 C534535-6  S Ni                 303 Na
+A-26          0606 C669799-6    Ri                 305 Na
+A-27          0610 C446415-7  S Ni                 603 Na
+A-28          0701 B444777-7    Ag                 202 Na
+A-29          0704 C88A5A9-8    Ni Wa              111 Na
+A-30          0705 C35589C-6  S                    103 Na
+A-31          0706 C232200-7    Lo Ni Po           314 Na
+A-32          0708 B998748-6    Ag                 112 Na
+A-33          0710 C513879-5    Ic Na              515 Na
+A-34          0801 B24588C-7  2                    413 Na
+A-35          0803 E2218DH-3    Na Po           A  300 Na
+A-36          0805 C5426AB-4    Ni Po              602 Na
+A-37          0808 E634640-7    Ni                 524 Na
+A-38          0810 B210227-D  2 Lo Ni              402 Na
+@SUB-SECTOR: Ietlbre SECTOR: Nzhenzie
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0901 A400954-F  N Hi Na Va           603 Na
+B-2           0907 C738652-7    Ni                 210 Na
+B-3           0909 E220436-7    De Ni Po           602 Na
+B-4           1003 E342400-5    Ni Po              214 Na
+B-5           1009 B341510-8    Ni Po              112 Na
+B-6           1010 C569566-8    Ni                 401 Na
+B-7           1103 B4258CA-8                       811 Na
+B-8           1104 E585213-4    Lo Ni              313 Na
+B-9           1105 C412487-9    Ic Ni              414 Na
+B-10          1109 D74A353-8    Lo Ni Wa           604 Na
+B-11          1201 E42548A-5    Ni                 601 Na
+B-12          1204 C695378-4  S Lo Ni              604 Na
+B-13          1205 C552327-9    Lo Ni Po           700 Na
+B-14          1207 B323479-9  S Ni Po              110 Na
+B-15          1209 B485566-C  N Ag Ni              303 Na
+B-16          1210 E474244-4    Lo Ni              803 Na
+B-17          1301 C240246-8  S De Lo Ni Po        414 Na
+B-18          1303 B5A0357-9  N De Lo Ni           624 Na
+B-19          1306 C797110-5    Lo Ni              723 Na
+B-20          1307 C100457-D    Ni Va              513 Na
+B-21          1309 C85A400-9    Ni Wa              904 Na
+B-22          1310 C361966-9    Hi                 511 Na
+B-23          1402 E6A0202-9    De Lo Ni           300 Na
+B-24          1405 D224201-7  S Lo Ni              902 Na
+B-25          1501 C54A668-7    Ni Wa              715 Na
+B-26          1506 C522654-5    Na Ni Po           402 Na
+B-27          1509 C56A641-6    Ni Ri Wa           913 Na
+B-28          1510 C9B4AEH-C    Fl Hi           A  605 Na
+B-29          1603 E1609AC-7    De Hi              514 Na
+B-30          1604 C222443-7    Ni Po              620 Na
+B-31          1608 C757657-8  S Ag Ni              113 Na
+B-32          1609 B23259A-9  S Ni Po              404 Na
+@SUB-SECTOR: Piado SECTOR: Nzhenzie
+#
+$2109 1911 0 1 10
+$2109 2205 0 0 10
+$2205 2302 0 0 10
+$2302 2238 0 -1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1703 X7C8011-3    Fl Lo Ni        R  223 Na
+C-2           1704 C500674-7    Na Ni Va           803 Na
+C-3           1706 B664100-B  S Lo Ni              803 Na
+C-4           1708 E5A0100-6    De Lo Ni           504 Na
+C-5           1801 C310100-7    Lo Ni              302 Na
+C-6           1802 D555140-2    Lo Ni              101 Na
+C-7           1803 E9AA568-9    Fl Ni Wa           704 Na
+C-8           1805 B755557-9    Ag Ni              100 Na
+C-9           1809 C73A620-6  S Ni Wa              503 Na
+C-10          1905 C79AA87-C    Hi In Wa           503 Na
+C-11          1906 C674487-5    Ni                 320 Na
+C-12          1907 C410100-8    Lo Ni              721 Na
+C-13          1909 A200400-G    Ni Va              823 Na
+C-14          2001 A30088B-A    Na Va              605 Na
+C-15          2002 C334501-C    Ni                 402 Na
+C-16          2005 B344530-A    Ag Ni              823 Na
+C-17          2006 B594220-A  N Lo Ni              404 Na
+C-18          2008 C694402-8  S Ni                 323 Na
+C-19          2009 C361744-6  S Ri                 614 Na
+C-20          2101 C78A674-8  S Ni Ri Wa           403 Na
+C-21          2104 E8C4125-7    Fl Lo Ni           400 Na
+C-22          2105 C3109DD-5  S Hi Na              723 Na
+C-23          2106 C88A343-6  S Lo Ni Wa           504 Na
+Brartsia      2109 A366379-D  Z Lo Ni              214 Zc
+C-25          2110 D67178A-1                       225 Na
+C-26          2202 C461300-6    Lo Ni              502 Na
+C-27          2203 C342110-5  S Lo Ni Po           315 Na
+C-28          2204 C546A8A-8  S Hi In              324 Na
+C-29          2205 C400631-7  S Na Ni Va           205 Na
+C-30          2207 B351363-A  N Lo Ni Po           102 Na
+C-31          2208 B000320-A  S As Lo Ni           304 Na
+C-32          2210 B446552-C    Ag Ni              804 Na
+C-33          2301 C988794-6  S Ag Ri              214 Na
+Itlanzh       2302 B470726-9  Z De                 303 Zc
+C-35          2305 B431514-C  S Ni Po              103 Na
+C-36          2306 X562675-0    Ni Ri           R  810 Na
+C-37          2308 C647554-7  S Ag Ni              320 Na
+C-38          2401 X7A5420-0    Fl Ni           R  430 Na
+C-39          2404 B5748B8-A  N                    313 Na
+C-40          2405 C331366-6  S Lo Ni Po           920 Na
+C-41          2407 C000467-9    As Ni              415 Na
+C-42          2410 A8C4853-D  S Fl                 100 Na
+@SUB-SECTOR: Iejzhets SECTOR: Nzhenzie
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2501 B400000-9  N Ba Lo Ni Va        713 Na
+D-2           2504 D000411-A  S As Ni              314 Na
+D-3           2505 B525111-9    Lo Ni              201 Na
+D-4           2506 B639133-9  2 Lo Ni              804 Na
+D-5           2508 C254897-5  S                    104 Na
+D-6           2509 E635661-2    Ni                 903 Na
+D-7           2601 C341668-7    Ni Po              610 Na
+D-8           2602 B69279C-7  N                    203 Na
+D-9           2605 E222487-6    Ni Po              102 Na
+D-10          2606 B537588-7  N Ni                 421 Na
+D-11          2610 C536225-6  S Lo Ni              522 Na
+D-12          2701 C8A3563-5  S Fl Ni              802 Na
+D-13          2702 E687438-2    Ni                 213 Na
+D-14          2703 C779101-9  S Lo Ni              811 Na
+D-15          2704 X223430-1    Ni Po           R  304 Na
+D-16          2707 E241357-5    Lo Ni Po           103 Na
+D-17          2708 C4008CE-5  S Na Va              712 Na
+D-18          2803 A7B47CB-A  S Fl                 914 Na
+D-19          2804 B553979-8  S Hi Po              804 Na
+D-20          2805 C351662-4    Ni Po              722 Na
+D-21          2807 CAB7441-6    Fl Ni              402 Na
+D-22          2808 E778631-6    Ag Ni              903 Na
+D-23          2903 C364878-9    Ri                 903 Na
+D-24          2904 C100500-D    Ni Va              214 Na
+D-25          2906 C233220-A  S Lo Ni Po           422 Na
+D-26          2907 C576322-7  S Lo Ni              602 Na
+D-27          3004 B889556-8  N Ni                 103 Na
+D-28          3005 C464055-A  S Lo Ni              622 Na
+D-29          3006 B639501-E    Ni                 904 Na
+D-30          3008 C838405-7  S Ni                 604 Na
+D-31          3009 C555563-5  S Ag Ni              922 Na
+D-32          3010 E1006AA-4    Na Ni Va           213 Na
+D-33          3101 C8596AC-7    Ni                 914 Na
+D-34          3108 C402520-9    Ic Ni Va           105 Na
+D-35          3109 B401045-C    Ic Lo Ni Va        810 Na
+Oytsati       3201 C693532-6  S Ni              B  804 Dr
+D-37          3202 B311445-8  S Ic Ni              202 Na
+D-38          3204 X555464-1    Ni              R  120 Na
+D-39          3205 C354778-6  S Ag                 104 Na
+D-40          3206 E764411-4    Ni                 105 Na
+D-41          3207 B47459A-7  N Ag Ni              611 Na
+D-42          3208 C536366-5  S Lo Ni              200 Na
+D-43          3210 C798A9C-A    Hi In              423 Na
+@SUB-SECTOR: Zeqra SECTOR: Nzhenzie
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0111 A9E426B-9    Fl Lo Ni           211 Na
+E-2           0112 D7649DA-6    Hi                 614 Na
+E-3           0114 C422210-B  S Lo Ni Po           703 Na
+E-4           0116 EAA9630-6    Fl Ni              800 Na
+E-5           0117 B210342-B  2 Lo Ni              703 Na
+E-6           0118 E9A6945-7    Fl Hi              705 Na
+E-7           0213 C322940-7  S Hi In Na Po        914 Na
+E-8           0215 C430400-8  S De Ni Po           323 Na
+E-9           0216 E130234-8    De Lo Ni Po        903 Na
+E-10          0217 C797757-4  S Ag                 101 Na
+E-11          0219 C584788-8  S Ag Ri              404 Na
+E-12          0312 C5359DH-4  S Hi In           A  524 Na
+E-13          0314 A6926AC-7    Ni                 803 Na
+E-14          0315 C739410-9    Ni                 305 Na
+E-15          0316 C553313-5  S Lo Ni Po           713 Na
+E-16          0317 C696655-9  S Ag Ni              702 Na
+E-17          0318 C578301-9  S Lo Ni              105 Na
+E-18          0319 E310636-3    Na Ni              904 Na
+E-19          0411 C64A899-5    Wa                 415 Na
+E-20          0418 C757564-4  S Ag Ni              603 Na
+E-21          0419 C000A86-F    As Hi Na           223 Na
+E-22          0518 D469484-7    Ni                 400 Na
+E-23          0520 E788567-4    Ag Ni              202 Na
+E-24          0612 B87A69B-7  N Ni Wa              703 Na
+E-25          0614 C574557-A  S Ag Ni              902 Na
+E-26          0617 B41056A-9  S Ni                 303 Na
+E-27          0618 E465764-2    Ag Ri              921 Na
+E-28          0619 E347363-3    Lo Ni              804 Na
+E-29          0713 C100311-9    Lo Ni Va           800 Na
+E-30          0714 E574988-5    Hi In              601 Na
+E-31          0715 C410886-6    Na                 323 Na
+E-32          0716 E646941-6    Hi In              904 Na
+E-33          0720 C878488-9  S Ni                 604 Na
+E-34          0817 B210694-B  N Na Ni              322 Na
+E-35          0820 C32068B-9    De Na Ni Po        704 Na
+@SUB-SECTOR: Zhevobr SECTOR: Nzhenzie
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0913 A879302-B    Lo Ni              302 Na
+F-2           0914 B888478-9  S Ni                 623 Na
+F-3           0916 EAA6258-6    Fl Lo Ni           913 Na
+F-4           0917 C310500-7    Ni                 600 Na
+F-5           0918 D7778A8-1  S                    424 Na
+F-6           0919 C9A2100-6    Fl Lo Ni           104 Na
+F-7           0920 C6B3210-7  S Fl Lo Ni           402 Na
+F-8           1011 C2446AC-6  S Ag Ni              603 Na
+F-9           1012 C878676-5  S Ag Ni              905 Na
+F-10          1013 D341212-7    Lo Ni Po           223 Na
+F-11          1018 B100686-A  2 Na Ni Va           412 Na
+F-12          1019 C2355AB-B    Ni                 500 Na
+F-13          1111 B763200-9    Lo Ni              910 Na
+F-14          1112 E332686-4    Na Ni Po           700 Na
+F-15          1115 D338333-4  S Lo Ni              413 Na
+F-16          1117 E969431-3    Ni                 100 Na
+F-17          1118 A334323-E  N Lo Ni              204 Na
+F-18          1120 C87489C-3                       702 Na
+F-19          1211 B7B6647-8  2 Fl Ni              432 Na
+F-20          1212 E242321-4    Lo Ni Po           720 Na
+F-21          1214 E364567-7    Ag Ni              704 Na
+F-22          1220 C210421-7    Ni                 304 Na
+F-23          1314 X35167A-0    Ni Po           R  104 Na
+F-24          1316 D455154-6  S Lo Ni              903 Na
+F-25          1320 E220455-8    De Ni Po           321 Na
+F-26          1411 C627764-9  S                    624 Na
+F-27          1412 C634122-9  S Lo Ni              102 Na
+F-28          1418 B77A533-C    Ni Wa              915 Na
+F-29          1513 E9B3210-7    Fl Lo Ni           503 Na
+F-30          1515 C20079E-7  S Na Va              903 Na
+F-31          1518 B41078A-7  N Na                 822 Na
+F-32          1519 B37379C-9                       703 Na
+F-33          1520 B250463-C  S De Ni Po           411 Na
+F-34          1611 C532535-9    Ni Po              302 Na
+F-35          1612 C661533-6  S Ni                 102 Na
+F-36          1614 E2106AB-6    Na Ni              204 Na
+F-37          1619 E345958-A    Hi In              913 Na
+@SUB-SECTOR: Eftse SECTOR: Nzhenzie
+#
+$1820 1622 -1 1 10
+$1820 1917 0 0 10
+$1917 2014 0 0 10
+$2014 1911 0 0 10
+$1911 2109 0 -1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1712 C200566-B    Ni Va              103 Na
+G-2           1713 B884767-6  N Ag Ri              502 Na
+G-3           1715 E8C1540-7    Fl Ni              310 Na
+G-4           1717 C000443-9    As Ni              402 Na
+G-5           1718 D646430-4  S Ni                 425 Na
+G-6           1811 B676320-9  S Lo Ni              902 Na
+G-7           1813 E673420-7    Ni                 914 Na
+G-8           1815 E2425AB-8    Ni Po              320 Na
+G-9           1817 A764300-B    Lo Ni              323 Na
+G-10          1818 B545889-5                       710 Na
+Ienchkaedr    1820 B437633-8  Z Ni                 904 Zc
+Chedr         1911 A87A156-G  Z Lo Ni Wa           813 Zc
+G-13          1913 X410103-6    Lo Ni           R  200 Na
+G-14          1914 C400876-7  S Na Va              213 Na
+G-15          1917 C570000-7  S Ba De Lo Ni        803 Na
+G-16          2012 A320835-A    De Na Po           802 Na
+Ia'e          2014 B55159A-6  Z Ni Po              804 Zc
+G-18          2015 C453767-7    Po                 722 Na
+G-19          2111 C2028BB-5    Ic Na Va           104 Na
+G-20          2113 B846994-A    Hi In              922 Na
+G-21          2116 D000100-8    As Lo Ni           500 Na
+G-22          2118 E86899B-7    Hi                 113 Na
+G-23          2211 C337AAB-E    Hi In              815 Na
+G-24          2213 D430544-4    De Ni Po           112 Na
+G-25          2217 C778213-5    Lo Ni              704 Na
+G-26          2313 A344753-A    Ag                 300 Na
+G-27          2315 C654312-5    Lo Ni              800 Na
+G-28          2316 C400230-B    Lo Ni Va           320 Na
+G-29          2319 C342310-6    Lo Ni Po           215 Na
+G-30          2419 C8A3442-A    Fl Ni              403 Na
+@SUB-SECTOR: Zhetsfish SECTOR: Nzhenzie
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2514 B683110-7  2 Lo Ni              403 Na
+H-2           2516 B24678B-B    Ag                 524 Na
+H-3           2517 C6899DD-6    Hi                 200 Na
+H-4           2518 B685204-C    Lo Ni              203 Na
+H-5           2519 C000643-B  S As Na Ni           513 Na
+H-6           2611 D848668-5    Ag Ni              800 Na
+H-7           2612 A57657B-D  2 Ag Ni              104 Na
+H-8           2613 D562325-2  S Lo Ni              512 Na
+H-9           2614 E789440-4    Ni                 613 Na
+H-10          2615 A43669A-B  N Ni                 810 Na
+H-11          2616 C200121-9    Lo Ni Va           914 Na
+H-12          2618 C8B4540-A    Fl Ni              214 Na
+H-13          2619 C598746-5    Ag                 614 Na
+H-14          2620 B310300-B    Lo Ni              424 Na
+H-15          2711 C342420-7    Ni Po              404 Na
+H-16          2712 E646523-2    Ag Ni              610 Na
+H-17          2714 B768125-B  N Lo Ni              203 Na
+H-18          2715 D110865-7  S Na                 803 Na
+H-19          2716 C99A434-6  S Ni Wa              603 Na
+H-20          2719 C312567-8  S Ic Ni              512 Na
+H-21          2813 E644445-5    Ni                 300 Na
+H-22          2814 B623787-9  S Na Po              600 Na
+H-23          2816 D539697-6  S Ni                 930 Na
+H-24          2818 C738311-6  S Lo Ni              400 Na
+H-25          2819 C100758-B  S Na Va              100 Na
+H-26          2820 E524678-5    Ni                 604 Na
+H-27          2911 E54467A-6    Ag Ni              804 Na
+H-28          2913 C475334-7    Lo Ni              814 Na
+H-29          2914 C684544-5  S Ag Ni              202 Na
+H-30          2915 C725215-6    Lo Ni              810 Na
+H-31          2916 B58568A-8    Ag Ni Ri           100 Na
+H-32          2918 B6B3662-7  S Fl Ni              102 Na
+H-33          2919 A554477-9    Ni                 904 Na
+H-34          2920 C568AFJ-8    Hi              R  524 Na
+H-35          3011 D488250-8    Lo Ni              302 Na
+H-36          3012 C98A688-7    Ni Ri Wa           902 Na
+H-37          3013 E693668-3    Ni                 710 Na
+H-38          3015 B597402-C  S Ni                 402 Na
+H-39          3016 C529555-8    Ni                 520 Na
+H-40          3018 B335364-D  S Lo Ni              811 Na
+H-41          3019 B542130-8    Lo Ni Po           123 Na
+H-42          3020 C263459-A    Ni                 415 Na
+H-43          3112 C100662-A    Na Ni Va           501 Na
+H-44          3113 E76999B-8    Hi                 403 Na
+H-45          3118 D796222-7    Lo Ni              603 Na
+H-46          3120 A745566-A  N Ag Ni              505 Na
+H-47          3211 A335127-C    Lo Ni              603 Na
+H-48          3212 C767424-8  S Ni                 405 Na
+H-49          3213 B738566-7  N Ni                 704 Na
+H-50          3214 D7B3242-6    Fl Lo Ni           812 Na
+H-51          3215 C100233-C    Lo Ni Va           413 Na
+H-52          3217 E566323-5    Lo Ni              900 Na
+H-53          3218 C440130-6  S De Lo Ni Po        314 Na
+@SUB-SECTOR: Fiantfliezhdlez SECTOR: Nzhenzie
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0122 D698236-5  S Lo Ni              703 Na
+I-2           0125 C000558-C    As Ni              213 Na
+I-3           0127 C6A2475-8  S Fl Ni              415 Na
+I-4           0130 DA87563-6  S Ag Ni              723 Na
+I-5           0223 C510473-6    Ni                 405 Na
+I-6           0224 C400858-8  S Na Va              603 Na
+I-7           0226 C583326-5  S Lo Ni              224 Na
+I-8           0228 C473659-9    Ni                 522 Na
+I-9           0230 D656431-5    Ni                 204 Na
+I-10          0321 C659432-A  S Ni                 303 Na
+I-11          0323 E434324-8    Lo Ni              821 Na
+I-12          0324 X674130-0    Lo Ni           R  503 Na
+I-13          0328 E557643-5    Ag Ni              802 Na
+I-14          0329 B779157-8    Lo Ni              703 Na
+I-15          0421 D263952-7  S Hi                 304 Na
+I-16          0422 A440510-A    De Ni Po           505 Na
+I-17          0425 C66689A-5  S Ri                 210 Na
+I-18          0427 B565244-B  2 Lo Ni              813 Na
+I-19          0429 B3208C9-8  N De Na Po           303 Na
+I-20          0521 A646589-8    Ag Ni              703 Na
+I-21          0522 C785677-4    Ag Ni Ri           304 Na
+I-22          0524 A8C3476-B  N Fl Ni              303 Na
+I-23          0525 B200165-A  S Lo Ni Va           135 Na
+I-24          0527 B5878AC-8                       802 Na
+I-25          0529 C89A622-7  S Ni Wa              521 Na
+I-26          0621 C757432-7    Ni                 814 Na
+I-27          0622 C341446-5    Ni Po              724 Na
+I-28          0623 C625478-A    Ni                 804 Na
+I-29          0629 CA9A689-A  S Ni Wa              504 Na
+I-30          0721 C343665-9  S Ni Po              904 Na
+I-31          0722 E695598-2    Ag Ni              712 Na
+I-32          0724 C211688-8    Ic Na Ni           504 Na
+I-33          0727 C500565-7  S Ni Va              300 Na
+I-34          0728 E6A1331-3    Fl Lo Ni           304 Na
+I-35          0729 B423688-A  N Na Ni Po           704 Na
+I-36          0730 C666355-9    Lo Ni              904 Na
+I-37          0823 E374000-7    Ba Lo Ni           504 Na
+I-38          0826 C426224-B    Lo Ni              103 Na
+I-39          0827 C543588-8    Ni Po              234 Na
+I-40          0830 B210001-C  N Lo Ni              310 Na
+@SUB-SECTOR: Oif SECTOR: Nzhenzie
+#
+$1629 1332 0 1 10
+$1629 1526 0 0 10
+$1526 1622 0 0 10
+$1622 1820 1 -1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0921 D674764-1  S Ag                 204 Na
+J-2           0923 D787220-3    Lo Ni              310 Na
+J-3           0924 C778659-8  S Ag Ni              522 Na
+J-4           0927 C7B1773-6    Fl                 405 Na
+J-5           0928 C565240-8    Lo Ni              503 Na
+J-6           0929 CA69ABC-9  S Hi                 225 Na
+J-7           0930 D536888-4                       603 Na
+J-8           1023 B100400-E  N Ni Va              302 Na
+J-9           1024 C320326-A  S De Lo Ni Po        502 Na
+J-10          1026 C665877-3  S Ri                 922 Na
+J-11          1028 E52776A-3                       522 Na
+J-12          1029 C223211-A  S Lo Ni Po           513 Na
+J-13          1121 B657677-9    Ag Ni              724 Na
+J-14          1122 BA9A668-8  2 Ni Wa              425 Na
+J-15          1125 C884001-4    Lo Ni              302 Na
+J-16          1127 C76A668-9    Ni Ri Wa           705 Na
+J-17          1129 BAC4357-8  N Fl Lo Ni           623 Na
+J-18          1130 B564235-9    Lo Ni              404 Na
+J-19          1221 C566851-6  S Ri                 212 Na
+J-20          1222 A445100-B    Lo Ni              604 Na
+J-21          1223 B95A556-9  2 Ni Wa              304 Na
+J-22          1224 C664978-7    Hi                 114 Na
+J-23          1225 C441544-7  S Ni Po              203 Na
+J-24          1227 E9689BC-6    Hi                 110 Na
+J-25          1321 C160203-7  S De Lo Ni           602 Na
+J-26          1324 C330578-6    De Ni Po           720 Na
+J-27          1326 D42157B-4  S Ni Po              402 Na
+J-28          1327 C490100-8    De Lo Ni           504 Na
+J-29          1328 C000597-B  S As Ni              700 Na
+J-30          1330 E74855A-8    Ag Ni              204 Na
+J-31          1421 CA8A68C-9  S Ni Ri Wa           300 Na
+J-32          1422 D451564-3  S Ni Po              510 Na
+J-33          1427 B355658-C  N Ag Ni              123 Na
+J-34          1522 D523335-6    Lo Ni Po           505 Na
+J-35          1525 D545100-6    Lo Ni              502 Na
+J-36          1526 C2008B8-9  S Na Va              424 Na
+J-37          1529 C558331-6    Lo Ni              701 Na
+J-38          1621 A210575-F  N Ni                 101 Na
+J-39          1622 C5539AD-6    Hi Po              213 Na
+J-40          1625 X42188C-0    Na Po           R  104 Na
+J-41          1628 C675100-5    Lo Ni              804 Na
+J-42          1629 D481010-7  S Lo Ni              203 Na
+J-43          1630 C66A8DI-6    Wa              A  904 Na
+@SUB-SECTOR: Nsidre SECTOR: Nzhenzie
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1722 C578310-6    Lo Ni              622 Na
+K-2           1723 D475456-5    Ni                 401 Na
+K-3           1725 A200A9C-F    Hi Na Va           104 Na
+K-4           1728 A472879-8                       201 Na
+K-5           1821 C43769A-9  S Ni                 925 Na
+K-6           1822 D69159D-4  S Ni                 215 Na
+K-7           1830 C8A7353-9    Fl Lo Ni           202 Na
+K-8           1924 E766520-7    Ag Ni              402 Na
+K-9           1927 C213543-7    Ic Ni              700 Na
+K-10          1928 X300215-2    Lo Ni Va        R  610 Na
+K-11          1930 C5458B8-6  S                    125 Na
+K-12          2023 C627536-8    Ni                 703 Na
+K-13          2024 B868120-9    Lo Ni              233 Na
+K-14          2026 C6A568A-5  S Fl Ni              415 Na
+K-15          2121 A8888BA-C                       415 Na
+K-16          2122 C220777-7  S De Na Po           503 Na
+K-17          2123 C63A689-8    Ni Wa              901 Na
+K-18          2127 C510458-A    Ni                 404 Na
+K-19          2128 C585266-5  S Lo Ni              204 Na
+K-20          2130 E1009DB-8    Hi Na Va           401 Na
+K-21          2221 B210415-8    Ni                 404 Na
+K-22          2222 X64A733-2    Wa              R  502 Na
+K-23          2224 C487254-B  S Lo Ni              315 Na
+K-24          2226 C571668-5  S Ni                 212 Na
+K-25          2228 B564223-A    Lo Ni              333 Na
+K-26          2229 A4757A9-9  2 Ag                 405 Na
+K-27          2321 B565488-6    Ni                 304 Na
+K-28          2323 C201667-6    Ic Na Ni Va        702 Na
+K-29          2324 B696449-6    Ni                 200 Na
+K-30          2326 A110686-C  N Na Ni              603 Na
+K-31          2327 B412779-8    Ic Na              314 Na
+K-32          2328 D586566-7    Ag Ni              415 Na
+K-33          2330 A426575-D    Ni                 414 Na
+K-34          2423 C262536-6    Ni                 603 Na
+K-35          2424 D223520-9    Ni Po              203 Na
+K-36          2426 C1009AB-D  S Hi Na Va           202 Na
+K-37          2427 C140745-9  S De Po              710 Na
+K-38          2428 C94A889-8    Wa                 603 Na
+@SUB-SECTOR: Drefle SECTOR: Nzhenzie
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2521 C210216-6  S Lo Ni              515 Na
+L-2           2526 C00065A-A    As Na Ni           720 Na
+L-3           2528 B434538-C    Ni                 503 Na
+L-4           2529 C467534-5    Ag Ni              111 Na
+L-5           2621 C887A88-8  S Hi                 703 Na
+L-6           2623 B277450-A    Ni                 803 Na
+L-7           2626 CA88A86-9  S Hi                 703 Na
+L-8           2628 C444201-6    Lo Ni              222 Na
+L-9           2629 B696454-C    Ni                 904 Na
+L-10          2721 C244654-6  S Ag Ni              403 Na
+L-11          2722 A514200-C    Ic Lo Ni           625 Na
+Saelkrettus   2723 B595431-8  S Ni              B  421 Dr
+L-13          2728 E557202-3    Lo Ni              403 Na
+L-14          2729 C884140-4    Lo Ni              824 Na
+L-15          2730 E636783-5                       114 Na
+L-16          2821 C370654-5  S De Ni              104 Na
+L-17          2824 B671468-9  N Ni                 200 Na
+L-18          2825 E500544-6    Ni Va              605 Na
+L-19          2827 C423435-8  S Ni Po              704 Na
+L-20          2828 C5967CB-5  S Ag                 503 Na
+L-21          2829 D747A9A-A    Hi In              114 Na
+L-22          2922 B575479-8    Ni                 703 Na
+L-23          2924 B627ABF-E    Hi In              204 Na
+L-24          2926 AAA6534-B  2 Fl Ni              701 Na
+L-25          2927 C000AEG-D    As Hi Na        A  712 Na
+L-26          2928 A310655-E  S Na Ni              300 Na
+L-27          3022 C100756-B  S Na Va              200 Na
+L-28          3023 EA9A457-7    Ni Wa              314 Na
+L-29          3026 D341112-6    Lo Ni Po           500 Na
+L-30          3027 C749302-A    Lo Ni              302 Na
+L-31          3028 C633759-8    Na Po              705 Na
+L-32          3030 BA69422-9  N Ni                 624 Na
+L-33          3121 C8A7A72-C    Fl Hi              603 Na
+L-34          3123 A536568-C    Ni                 802 Na
+L-35          3124 B782374-B  N Lo Ni              805 Na
+L-36          3128 C878300-6    Lo Ni              703 Na
+L-37          3222 A9A649C-D  N Fl Ni              104 Na
+L-38          3223 B9B7136-B    Fl Lo Ni           112 Na
+L-39          3224 A671734-8  N                    822 Na
+L-40          3225 D120648-5  S De Na Ni Po        514 Na
+L-41          3227 A62677A-8  N                    902 Na
+L-42          3228 C4109AC-C  S Hi Na              500 Na
+L-43          3229 D475632-2    Ag Ni              922 Na
+L-44          3230 E323424-9    Ni Po              923 Na
+@SUB-SECTOR: Kavrnchazqrepl SECTOR: Nzhenzie
+#
+$0538 0401 0 1 10
+$0538 0835 0 0 10
+$0835 1135 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0133 D634300-8    Lo Ni              503 Na
+M-2           0138 C6A2647-5    Fl Ni              700 Na
+M-3           0139 C769833-5                       225 Na
+M-4           0140 E691249-5    Lo Ni              323 Na
+M-5           0232 C1108BD-6    Na                 510 Na
+M-6           0234 E445431-7    Ni                 305 Na
+M-7           0235 C7B78CA-5    Fl                 803 Na
+M-8           0237 C88999A-6    Hi                 622 Na
+M-9           0238 D776105-5    Lo Ni              812 Na
+M-10          0239 D57238A-7    Lo Ni              604 Na
+M-11          0240 C73A105-9  S Lo Ni Wa           803 Na
+M-12          0331 D542888-2    Po                 401 Na
+M-13          0333 C6A4754-6  S Fl                 400 Na
+M-14          0337 B363631-8  N Ni                 503 Na
+M-15          0431 C4019CF-8    Hi Ic Na Va        713 Na
+M-16          0432 C356443-8    Ni                 213 Na
+M-17          0433 C344999-6    Hi In              710 Na
+M-18          0436 C57399A-6  S Hi In              723 Na
+M-19          0437 E777345-5    Lo Ni              201 Na
+M-20          0440 A866244-8  N Lo Ni              724 Na
+M-21          0535 B782340-8    Lo Ni              522 Na
+M-22          0536 B200110-8    Lo Ni Va           823 Na
+M-23          0538 C9C4666-8    Fl Ni              512 Na
+M-24          0539 C481432-6    Ni                 303 Na
+M-25          0540 D654137-7    Lo Ni              822 Na
+M-26          0632 C539625-A  S Ni                 912 Na
+M-27          0635 B310220-D    Lo Ni              303 Na
+M-28          0636 D30089A-5  S Na Va              200 Na
+M-29          0638 A7A6446-D    Fl Ni              403 Na
+M-30          0640 E233433-4    Ni Po              624 Na
+M-31          0733 C545568-8    Ag Ni              103 Na
+M-32          0735 C413554-9  S Ic Ni              204 Na
+M-33          0736 C667857-6    Ri                 803 Na
+M-34          0738 C44279A-6    Po                 813 Na
+M-35          0739 E553483-4    Ni Po              803 Na
+M-36          0740 D779587-7  S Ni                 525 Na
+M-37          0831 B561642-6    Ni Ri              803 Na
+M-38          0833 B200532-A    Ni Va              603 Na
+M-39          0834 B665454-8  N Ni                 510 Na
+M-40          0835 C310759-9  S Na                 114 Na
+M-41          0836 B529320-8  2 Lo Ni              910 Na
+M-42          0837 B562353-7  N Lo Ni              404 Na
+M-43          0840 C787116-6  S Lo Ni              405 Na
+@SUB-SECTOR: Afliej SECTOR: Nzhenzie
+#
+$1135 0835 -1 0 10
+$1135 1332 0 0 10
+$1332 1629 0 -1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0932 A300585-F  S Ni Va              405 Na
+N-2           0934 A100300-H    Lo Ni Va           925 Na
+N-3           0937 D453599-7    Ni Po              612 Na
+N-4           0939 C769433-9    Ni                 904 Na
+N-5           0940 B230021-8    De Lo Ni Po        400 Na
+N-6           1031 A20037A-F    Lo Ni Va           503 Na
+N-7           1032 D626588-5    Ni                 404 Na
+N-8           1035 B635325-B    Lo Ni              302 Na
+N-9           1037 C585400-7    Ni                 304 Na
+N-10          1039 B428A89-C    Hi In              802 Na
+N-11          1040 D72389A-3    Na Po              703 Na
+N-12          1132 C463003-9  S Lo Ni              504 Na
+Iachdlanzh    1135 B483456-A  Z Ni                 714 Zc
+N-14          1138 C564731-3  S Ag                 413 Na
+N-15          1235 A000200-H  N As Lo Ni           503 Na
+N-16          1240 C453586-8  S Ni Po              904 Na
+N-17          1331 B456226-9    Lo Ni              112 Na
+N-18          1332 C772685-8  S Ni                 404 Na
+N-19          1336 XA78320-0    Lo Ni           R  113 Na
+N-20          1338 A8A5222-B  N Fl Lo Ni           302 Na
+N-21          1339 C6957AC-3  S Ag                 704 Na
+N-22          1340 A466756-9  N Ag Ri              200 Na
+N-23          1433 B1008BB-8    Na Va              302 Na
+N-24          1435 C33787C-9  S                    605 Na
+N-25          1437 E539256-5    Lo Ni              404 Na
+N-26          1533 C484001-5  S Lo Ni              105 Na
+N-27          1536 C20077B-6    Na Va              313 Na
+N-28          1538 D200789-8    Na Va              804 Na
+N-29          1539 E448102-5    Lo Ni              923 Na
+N-30          1540 D73648A-8  S Ni                 415 Na
+N-31          1631 D778523-4  S Ag Ni              304 Na
+N-32          1632 E3549B9-4    Hi                 623 Na
+N-33          1634 C500567-A    Ni Va              814 Na
+N-34          1635 D30068A-5    Na Ni Va           503 Na
+N-35          1637 C363731-8                       624 Na
+N-36          1638 C586568-9    Ag Ni              820 Na
+N-37          1639 E430310-5    De Lo Ni Po        204 Na
+N-38          1640 D463100-8  S Lo Ni              503 Na
+@SUB-SECTOR: Atikr SECTOR: Nzhenzie
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1731 E5238C9-6    Na Po              801 Na
+O-2           1732 B698442-8    Ni                 110 Na
+O-3           1739 B310421-D    Ni                 404 Na
+O-4           1831 B646545-8    Ag Ni              704 Na
+O-5           1832 A637575-E  N Ni                 304 Na
+O-6           1835 C476110-7  S Lo Ni              900 Na
+O-7           1838 D561451-5  S Ni                 801 Na
+O-8           1839 B00089C-A    As Na              804 Na
+O-9           1931 B571479-9  N Ni                 102 Na
+O-10          1932 E87A668-5    Ni Wa              520 Na
+O-11          1933 D59467B-2  S Ag Ni              304 Na
+O-12          1934 D592866-5                       425 Na
+O-13          1935 E696A76-7    Hi In              200 Na
+O-14          1938 B456453-9  2 Ni                 401 Na
+O-15          1939 C532ABC-B  S Hi In Na Po        500 Na
+O-16          1940 B8B8420-7    Fl Ni              604 Na
+O-17          2031 C428557-B    Ni                 404 Na
+O-18          2033 E7A188C-7    Fl                 605 Na
+O-19          2034 B100111-C    Lo Ni Va           725 Na
+O-20          2035 C9C4500-6    Fl Ni              721 Na
+O-21          2037 C422353-C    Lo Ni Po           103 Na
+O-22          2039 B100666-D  N Na Ni Va           202 Na
+O-23          2133 C527772-6  S                    610 Na
+O-24          2135 X513100-5    Ic Lo Ni        R  504 Na
+O-25          2137 B536555-B  N Ni                 801 Na
+O-26          2139 C447430-9    Ni                 404 Na
+O-27          2140 A632484-D  N Ni Po              415 Na
+O-28          2231 B210454-C    Ni                 904 Na
+O-29          2232 D252487-7    Ni Po              504 Na
+O-30          2235 C98A654-B  S Ni Ri Wa           505 Na
+O-31          2237 B65A856-D  S Wa                 114 Na
+O-32          2238 B200A96-G  N Hi Na Va           103 Na
+O-33          2239 C424430-7  S Ni                 404 Na
+O-34          2240 A5A07CD-C    De                 700 Na
+O-35          2336 D536775-7                       603 Na
+O-36          2337 B64236A-8  N Lo Ni Po           304 Na
+O-37          2339 B410123-C  N Lo Ni              411 Na
+O-38          2340 C505666-6    Ic Ni Va           520 Na
+O-39          2431 C000559-B    As Ni              601 Na
+O-40          2434 B210120-8  S Lo Ni              815 Na
+O-41          2436 A8B4400-C    Fl Ni              900 Na
+O-42          2438 B110898-A    Na                 100 Na
+O-43          2439 C6A189C-7  S Fl                 823 Na
+@SUB-SECTOR: Tsariefloj SECTOR: Nzhenzie
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2533 C488536-8  S Ag Ni              200 Na
+P-2           2534 A441314-D  N Lo Ni Po           422 Na
+P-3           2535 C1005AC-A    Ni Va              500 Na
+P-4           2539 E336774-3                       610 Na
+P-5           2631 A456344-E  N Lo Ni              204 Na
+P-6           2632 E462657-8    Ni Ri              603 Na
+P-7           2634 B526769-7                       414 Na
+P-8           2635 C310424-B    Ni                 602 Na
+P-9           2638 C554575-5    Ag Ni              603 Na
+P-10          2639 A431400-E    Ni Po              421 Na
+P-11          2731 C9B2899-5    Fl                 803 Na
+P-12          2732 A566559-9    Ag Ni              304 Na
+P-13          2733 C401452-7    Ic Ni Va           104 Na
+P-14          2739 C120588-9    De Ni Po           800 Na
+P-15          2831 E8737A8-3                       303 Na
+P-16          2833 C957698-5    Ag Ni              902 Na
+P-17          2834 E77A689-6    Ni Wa              504 Na
+P-18          2835 C9B4001-7  S Fl Lo Ni           605 Na
+P-19          2837 B5A0673-7  S De Ni              402 Na
+P-20          2840 A877677-7    Ag Ni              404 Na
+P-21          2932 B652663-7    Ni Po              422 Na
+P-22          2933 B96579E-5  S Ag Ri              302 Na
+P-23          2934 C6659EE-8    Hi                 200 Na
+P-24          2935 B595210-B  N Lo Ni              323 Na
+P-25          2936 C575852-5  S                    322 Na
+P-26          2938 B748766-A    Ag                 504 Na
+P-27          2939 D456205-4    Lo Ni              104 Na
+P-28          3031 E977213-5    Lo Ni              804 Na
+P-29          3036 C160689-6    De Ni Ri           724 Na
+P-30          3037 C333473-8    Ni Po              803 Na
+P-31          3039 A333955-H    Hi In Na Po        600 Na
+P-32          3134 CAC6133-A    Fl Lo Ni           814 Na
+P-33          3135 C564510-4    Ag Ni              322 Na
+P-34          3136 C555121-8    Lo Ni              214 Na
+P-35          3231 A664679-9    Ag Ni Ri           404 Na
+P-36          3235 B766110-8  S Lo Ni              203 Na
+P-37          3236 B836679-7    Ni                 804 Na
+P-38          3238 CAD4521-8    Fl Ni              610 Na
+P-39          3239 E433523-6    Ni Po              522 Na
+P-40          3240 C532578-9  S Ni Po              803 Na

@@ -1,0 +1,674 @@
+Malorn
+
+A: Malorn                    sec_a.dat
+B: Maiste                    sec_b.dat
+C: Heiligebet                sec_c.dat
+D: Oberer                    sec_d.dat
+E: Frankfurt                 sec_e.dat
+F: Amorine                   sec_f.dat
+G: Volxenke                  sec_g.dat
+H: Geheim                    sec_h.dat
+I: Gesetz                    sec_i.dat
+J: Lords                     sec_j.dat
+K: Toh                       sec_k.dat
+L: Attacotti                 sec_l.dat
+M: Kiel                      sec_m.dat
+N: Ustov                     sec_n.dat
+O: Saar                      sec_o.dat
+P: Terese                    sec_p.dat
+
+Bases:
+N = Naval Base
+S = Scout Base
+2 = Navy & Scout Bases
+  = None
+
+Allegiance:
+12 Im = Imperial
+14 As = Aslan
+11 So = Solomani
+07 Na = Non-aligned
+04 Cs = Client State
+01 Mu = Malorn Union
+02 Gt = Great Terbah
+03 Jd = Joie De Vivre
+05 Bs = Bright Star Cooperate
+06 Pb = Parity of Brothers
+13 Cn = Creation of Nonpareil
+14 Lv = Lords of Vision
+10 Tr = Toh Republic
+09 Dj = Daprolix Juncture of Suns
+08    = Unknown
+A: Malorn
+
+@SUB-SECTOR: sec_A   SECTOR: Malorn
+#
+# Trade routes within the subsector
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Jost          0103 D53A365-7  S Lo Ni Wa           203 Mu
+Whane         0104 DAE2478-6  S Fl Ni              414 Mu
+Paraguay      0205 D22075A-7  S De Na Po           504 Mu
+Blaecleah     0206 C67398A-5    Hi In              904 Mu
+Varmer        0208 E400586-9    Ni Va              600 Mu
+Dade          0304 A388000-E    Ba Lo Ni           904 Mu
+Carthag       0305 A586322-8  S Lo Ni              112 Mu
+Spector       0306 A351000-9    Ba Lo Ni Po        910 Mu
+Uadrian       0401 D665675-4    Ag Ni Ri           100 Mu
+Lipschitz     0402 E310898-5    Na                 813 Mu
+Taro          0403 E411785-8    Ic Na              401 Mu
+Ringwood      0407 E447456-4    Ni                 702 Mu
+0410          0410 X410000-0    Ba                 003 Na
+Dart          0501 D130622-4  S De Na Ni Po        623 Mu
+Wympylster    0504 E200447-9    Ni Va              303 Mu
+Estra         0508 E323467-5    Ni Po              904 Mu
+0510          0510 X447000-0    Ba                 001 Na
+Battelle      0603 E886433-2    Ni                 300 Mu
+Ryan          0704 E372767-3                       514 Mu
+Emery         0705 E410756-9    Na                 323 Mu
+0710          0710 X411000-0    Ba                 025 Na
+0802          0802 X897000-0    Ba                 004 Na
+Ordred        0806 CAB87AC-4  S Fl                 302 Mu
+0810          0810 X310000-0    Ba                 024 Na
+B: Maiste
+
+@SUB-SECTOR: sec_B   SECTOR: Malorn
+#
+# Trade routes within the subsector
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+0903          0903 X796000-0    Ba                 000 Na
+Mylner        0906 C225303-9  S Lo Ni              524 Mu
+1001          1001 X231000-0    Ba                 000 Na
+1102          1102 X260000-0    Ba                 010 Na
+1103          1103 X542000-0    Ba                 000 Na
+Bechtel       1106 CAE4621-7    Fl Ni              602 Mu
+Borin         1108 C526510-6    Ni                 403 Mu
+1202          1202 X8A9000-0    Ba                 020 Na
+Sara          1204 C674459-6  S Ni                 302 Mu
+Steelaxe      1205 C35667A-4  S Ag Ni              100 Mu
+1303          1303 X7B1000-0    Ba                 000 Na
+1401          1401 X331000-0    Ba                 024 Na
+1504          1504 X65A000-0    Ba                 002 Na
+Nazarene      1508 D437476-6  S Ni                 212 Gt
+Rustle        1509 D464698-7    Ag Ni Ri           123 Gt
+Macedon       1510 B75A778-9    Wa                 425 Gt
+1603          1603 X000000-0    Ba                 021 Na
+Maiste        1607 B88699E-A    Hi                 103 Gt
+Grenoble      1608 B968665-5    Ag Ni Ri           914 Gt
+C: Heiligebet
+
+@SUB-SECTOR: sec_C   SECTOR: Malorn
+#
+# Trade routes within the subsector
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Muire         1709 C7A5542-6  S Fl Ni              503 Gt
+Francisco     1710 C200242-9    Lo Ni Va           712 Gt
+1806          1806 X999000-0    Ba                 002 Na
+Seward        1808 B495762-6  S Ag                 403 Gt
+Mcfadden      1809 B400541-B    Ni Va              502 Gt
+Benderick     1810 C676466-4    Ni                 223 Gt
+1901          1901 X794000-0    Ba                 005 Na
+1904          1904 X587000-0    Ba                 012 Na
+1905          1905 X9D8000-0    Ba                 023 Na
+Rockies       1909 C676876-7                       623 Gt
+Ernst         1910 C335135-7  S Lo Ni              304 Gt
+2004          2004 X557000-0    Ba                 015 Na
+Nicoll        2009 B410441-8  N Ni                 400 Gt
+Zar           2010 B549763-8                       303 Gt
+2105          2105 X525000-0    Ba                 013 Na
+Frances       2109 C78A300-9  S Lo Ni Wa           104 Gt
+Surtut        2110 C758745-3  S Ag                 213 Gt
+2202          2202 X310000-0    Ba                 002 Na
+2203          2203 X100000-0    Ba                 024 Na
+2205          2205 X100000-0    Ba                 013 Na
+2206          2206 X440000-0    Ba                 011 Na
+Jacer         2208 C8868AA-3                       603 Gt
+Gaunt         2209 B000323-C    As Lo Ni           902 Gt
+2303          2303 X668000-0    Ba                 003 Na
+2304          2304 X511000-0    Ba                 015 Na
+Plainfield    2309 B75A431-B  N Ni Wa              401 Gt
+2401          2401 XA8A000-0    Ba                 003 Na
+2402          2402 X200000-0    Ba                 003 Na
+2403          2403 X260000-0    Ba                 004 Na
+2406          2406 X410000-0    Ba                 003 Na
+Tasslehoff    2409 C410352-C    Lo Ni              105 Gt
+Derel         2410 B676878-7                       723 Gt
+D: Oberer
+
+@SUB-SECTOR: sec_D   SECTOR: Malorn
+#
+# Trade routes within the subsector
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+2505          2505 X325000-0    Ba                 003 Na
+2506          2506 X231000-0    Ba                 000 Na
+2507          2507 X344000-0    Ba                 002 Na
+Bernstein     2510 B966245-6    Lo Ni              122 Gt
+2604          2604 X233000-0    Ba                 003 Na
+Mcintyre      2610 B576575-8    Ag Ni              414 Gt
+2704          2704 X200000-0    Ba                 003 Na
+2709          2709 X764000-0    Ba                 011 Na
+2803          2803 XAA8000-0    Ba                 014 Na
+2809          2809 X795000-0    Ba                 000 Na
+2810          2810 X447000-0    Ba                 013 Na
+2902          2902 X666000-0    Ba                 000 Na
+2906          2906 X456000-0    Ba                 010 Na
+2907          2907 X735000-0    Ba                 000 Na
+2910          2910 X570000-0    Ba                 000 Na
+3003          3003 X798000-0    Ba                 010 Na
+3008          3008 X97A000-0    Ba                 013 Na
+3103          3103 X547000-0    Ba                 000 Na
+3108          3108 X764000-0    Ba                 001 Na
+3110          3110 X340000-0    Ba                 004 Na
+3203          3203 X629000-0    Ba                 003 Na
+3205          3205 X89A000-0    Ba                 003 Na
+3210          3210 X373000-0    Ba                 004 Na
+E: Frankfurt
+
+@SUB-SECTOR: sec_E   SECTOR: Malorn
+#
+# Trade routes within the subsector
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+0113          0113 X867000-0    Ba                 023 Na
+0118          0118 X463000-0    Ba                 003 Na
+0120          0120 X436000-0    Ba                 013 Na
+0214          0214 X559000-0    Ba                 000 Na
+0311          0311 X442000-0    Ba                 013 Na
+0312          0312 X477000-0    Ba                 003 Na
+0412          0412 X333000-0    Ba                 005 Na
+0413          0413 X000000-0    Ba                 002 Na
+0516          0516 X442000-0    Ba                 000 Na
+0518          0518 X689000-0    Ba                 005 Na
+0520          0520 X769000-0    Ba                 000 Na
+0611          0611 X527000-0    Ba                 014 Na
+0614          0614 X556000-0    Ba                 024 Na
+0617          0617 X547000-0    Ba                 003 Na
+0618          0618 X655000-0    Ba                 002 Na
+0619          0619 X637000-0    Ba                 002 Na
+0712          0712 X654000-0    Ba                 012 Na
+0718          0718 X585000-0    Ba                 003 Na
+0811          0811 X346000-0    Ba                 014 Na
+0812          0812 X685000-0    Ba                 003 Na
+0815          0815 X410000-0    Ba                 003 Na
+F: Amorine
+
+@SUB-SECTOR: sec_F   SECTOR: Malorn
+#
+# Trade routes within the subsector
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+0913          0913 X66A000-0    Ba                 023 Na
+0916          0916 X773000-0    Ba                 010 Na
+0917          0917 X9B0000-0    Ba                 001 Na
+0919          0919 X979000-0    Ba                 000 Na
+0920          0920 X557000-0    Ba                 004 Na
+1012          1012 X445000-0    Ba                 000 Na
+1015          1015 X483000-0    Ba                 022 Na
+1017          1017 X564000-0    Ba                 020 Na
+1111          1111 X699000-0    Ba                 003 Na
+1112          1112 X654000-0    Ba                 003 Na
+1113          1113 X458000-0    Ba                 005 Na
+1114          1114 X423000-0    Ba                 003 Na
+1116          1116 X456000-0    Ba                 003 Na
+1118          1118 X130000-0    Ba                 004 Na
+1120          1120 X535000-0    Ba                 004 Na
+1211          1211 X274000-0    Ba                 023 Na
+1214          1214 X553000-0    Ba                 004 Na
+1216          1216 X210000-0    Ba                 011 Na
+1218          1218 X100000-0    Ba                 003 Na
+1220          1220 X100000-0    Ba                 003 Na
+1314          1314 X535000-0    Ba                 004 Na
+1316          1316 X200000-0    Ba                 002 Na
+1320          1320 X665000-0    Ba                 002 Na
+1413          1413 X311000-0    Ba                 000 Na
+1414          1414 X556000-0    Ba                 002 Na
+1417          1417 X211000-0    Ba                 014 Na
+1419          1419 X352000-0    Ba                 013 Na
+1420          1420 X275000-0    Ba                 012 Na
+1513          1513 X762000-0    Ba                 004 Na
+1514          1514 X685000-0    Ba                 010 Na
+1516          1516 X401000-0    Ba                 023 Na
+1517          1517 X666000-0    Ba                 012 Na
+1518          1518 X627000-0    Ba                 012 Na
+1520          1520 X554000-0    Ba                 004 Na
+Amorine       1611 B5369A8-8  N Hi In              922 Gt
+1612          1612 X87A000-0    Ba                 000 Na
+1613          1613 X744000-0    Ba                 002 Na
+1618          1618 X774000-0    Ba                 013 Na
+1619          1619 X481000-0    Ba                 000 Na
+G: Volxenke
+
+@SUB-SECTOR: sec_G   SECTOR: Malorn
+#
+# Trade routes within the subsector
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Elisabetta    1711 B000336-E  2 As Lo Ni           803 Gt
+1714          1714 X9D6000-0    Ba                 013 Na
+1716          1716 X9A1000-0    Ba                 003 Na
+1717          1717 X240000-0    Ba                 004 Na
+1719          1719 X200000-0    Ba                 014 Na
+1720          1720 X558000-0    Ba                 012 Na
+1815          1815 XA77000-0    Ba                 004 Na
+Hughson       1817 E230978-7    De Hi In Na Po     224 Jd
+1819          1819 XAB6000-0    Ba                 024 Na
+1820          1820 X536000-0    Ba                 002 Na
+Gay           1912 C89869B-3    Ag Ni              725 Gt
+Johanna       1913 C666142-7  S Lo Ni              204 Gt
+Cymel         1917 E756752-5    Ag                 734 Jd
+Elijah        1918 E68A541-4    Ni Wa              811 Jd
+Torchlock     2013 C564200-A  S Lo Ni              600 Gt
+2014          2014 X272000-0    Ba                 024 Na
+2015          2015 X200000-0    Ba                 004 Na
+Ffycher       2017 C23056A-B  S De Ni Po           903 Jd
+Marype        2018 E471649-5    Ni                 303 Jd
+Skelbroke     2019 C10067B-6    Na Ni Va           202 Jd
+Tannis        2113 C462425-7    Ni                 104 Gt
+2116          2116 X381000-0    Ba                 000 Na
+2117          2117 X664000-0    Ba                 004 Na
+2118          2118 X464000-0    Ba                 022 Na
+2120          2120 X7A2000-0    Ba                 004 Na
+Santana       2212 B510458-9  N Ni                 205 Gt
+Hapsburg      2213 C545646-7  S Ag Ni              910 Gt
+2218          2218 X555000-0    Ba                 003 Na
+2219          2219 X327000-0    Ba                 004 Na
+2220          2220 X342000-0    Ba                 012 Na
+Kalunda       2311 C32286A-5    Na Po              402 Gt
+Baumer        2312 C201532-A    Ic Ni Va           502 Gt
+2313          2313 X681000-0    Ba                 003 Na
+2317          2317 X483000-0    Ba                 014 Na
+2319          2319 X8A4000-0    Ba                 000 Na
+2412          2412 X110000-0    Ba                 002 Na
+2414          2414 X665000-0    Ba                 023 Na
+2417          2417 X444000-0    Ba                 001 Na
+2418          2418 X7C6000-0    Ba                 000 Na
+H: Geheim
+
+@SUB-SECTOR: sec_H   SECTOR: Malorn
+#
+# Trade routes within the subsector
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Gilson        2511 X676335-2    Lo Ni              521 Gt
+Coken         2512 X7A5A98-6    Fl Hi              910 Gt
+Lynne         2513 D461358-4    Lo Ni              624 Gt
+Nellie        2514 D38479C-6  S Ag Ri              720 Gt
+2515          2515 X685000-0    Ba                 004 Na
+2516          2516 X346000-0    Ba                 014 Na
+2518          2518 X9A5000-0    Ba                 002 Na
+2519          2519 X76A000-0    Ba                 003 Na
+Sacramento    2520 C200672-9  S Na Ni Va           610 Bs
+Drienel       2614 X8B1325-0    Fl Lo Ni           612 Gt
+2616          2616 X358000-0    Ba                 023 Na
+2617          2617 X535000-0    Ba                 003 Na
+2618          2618 X210000-0    Ba                 004 Na
+2619          2619 X797000-0    Ba                 014 Na
+Philth        2620 C352666-7  S Ni Po              404 Bs
+2712          2712 X200000-0    Ba                 005 Na
+2714          2714 X100000-0    Ba                 014 Na
+2715          2715 X130000-0    Ba                 014 Na
+2716          2716 X9D4000-0    Ba                 014 Na
+2719          2719 X635000-0    Ba                 004 Na
+2812          2812 X260000-0    Ba                 002 Na
+2814          2814 X453000-0    Ba                 004 Na
+2816          2816 X487000-0    Ba                 010 Na
+2818          2818 X543000-0    Ba                 004 Na
+2820          2820 X587000-0    Ba                 014 Na
+2912          2912 X666000-0    Ba                 013 Na
+2913          2913 X695000-0    Ba                 002 Na
+2917          2917 X693000-0    Ba                 002 Na
+3011          3011 X9D4000-0    Ba                 014 Na
+3014          3014 X8A8000-0    Ba                 000 Na
+3015          3015 X979000-0    Ba                 012 Na
+3016          3016 X452000-0    Ba                 005 Na
+3112          3112 X420000-0    Ba                 002 Na
+3113          3113 X160000-0    Ba                 004 Na
+Jaeger        3115 B8B4240-8  N Fl Lo Ni           304 Pb
+3120          3120 X899000-0    Ba                 034 Na
+3211          3211 X8A0000-0    Ba                 015 Na
+Wandi         3213 X321657-3    Na Ni Po           513 Pb
+Honeywell     3214 B110020-8    Lo Ni              603 Pb
+3215          3215 X9A4000-0    Ba                 013 Na
+3216          3216 X697000-0    Ba                 004 Na
+Rosalinda     3220 B250200-D  N De Lo Ni Po        920 Cn
+I: Gesetz
+
+@SUB-SECTOR: sec_I   SECTOR: Malorn
+#
+# Trade routes within the subsector
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+0122          0122 X427000-0    Ba                 012 Na
+0126          0126 X759000-0    Ba                 003 Na
+0323          0323 X668000-0    Ba                 005 Na
+0421          0421 X681000-0    Ba                 004 Na
+0425          0425 X7C3000-0    Ba                 003 Na
+0427          0427 X73A000-0    Ba                 005 Na
+0524          0524 X89A000-0    Ba                 023 Na
+0528          0528 X313000-0    Ba                 003 Na
+0622          0622 X210000-0    Ba                 010 Na
+0623          0623 X764000-0    Ba                 024 Na
+0627          0627 X558000-0    Ba                 005 Na
+0628          0628 X262000-0    Ba                 012 Na
+0629          0629 X230000-0    Ba                 012 Na
+0729          0729 XAD7000-0    Ba                 013 Na
+0826          0826 X764000-0    Ba                 024 Na
+0829          0829 X422000-0    Ba                 024 Na
+J: Lords
+
+@SUB-SECTOR: sec_J   SECTOR: Malorn
+#
+# Trade routes within the subsector
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+0921          0921 X76A000-0    Ba                 003 Na
+Baru          0923 E76A751-5    Ri Wa              515 Lv
+Onondaga      0924 C847222-6  S Lo Ni              903 Lv
+Fabienne      0925 C75A554-7    Ni Wa              114 Lv
+0929          0929 X301000-0    Ba                 004 Na
+1021          1021 X000000-0    Ba                 003 Na
+Thelma        1024 E300420-6    Ni Va              600 Lv
+Beldon        1025 E000588-6    As Ni              913 Lv
+1029          1029 X352000-0    Ba                 014 Na
+1030          1030 X386000-0    Ba                 014 Na
+1121          1121 X597000-0    Ba                 003 Na
+1124          1124 X547000-0    Ba                 001 Na
+Piter         1126 C856447-7  S Ni                 604 Lv
+Tasha         1127 E4149CD-5    Hi Ic              314 Lv
+1129          1129 X610000-0    Ba                 033 Na
+1221          1221 X555000-0    Ba                 013 Na
+1222          1222 X534000-0    Ba                 000 Na
+1223          1223 X202000-0    Ba                 003 Na
+1224          1224 X100000-0    Ba                 003 Na
+Alhraed       1226 C335668-A  S Ni                 302 Lv
+Verdi         1227 D333550-8  S Ni Po              125 Lv
+1229          1229 X69A000-0    Ba                 003 Na
+1230          1230 X748000-0    Ba                 022 Na
+1321          1321 X486000-0    Ba                 024 Na
+1324          1324 X696000-0    Ba                 004 Na
+1325          1325 X678000-0    Ba                 004 Na
+1327          1327 X646000-0    Ba                 013 Na
+1328          1328 X88A000-0    Ba                 015 Na
+1330          1330 X763000-0    Ba                 002 Na
+1421          1421 X77A000-0    Ba                 015 Na
+1423          1423 X353000-0    Ba                 001 Na
+1426          1426 X777000-0    Ba                 021 Na
+1429          1429 X8A2000-0    Ba                 013 Na
+1521          1521 X693000-0    Ba                 010 Na
+1522          1522 X457000-0    Ba                 023 Na
+1523          1523 X220000-0    Ba                 012 Na
+1524          1524 X775000-0    Ba                 002 Na
+1525          1525 X633000-0    Ba                 004 Na
+1526          1526 X326000-0    Ba                 012 Na
+1527          1527 X564000-0    Ba                 003 Na
+1528          1528 X595000-0    Ba                 004 Na
+1621          1621 X321000-0    Ba                 000 Na
+1624          1624 X668000-0    Ba                 024 Na
+1626          1626 X7A7000-0    Ba                 004 Na
+K: Toh
+
+@SUB-SECTOR: sec_K   SECTOR: Malorn
+#
+# Trade routes within the subsector
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+1723          1723 X226000-0    Ba                 004 Na
+Cadenza       1727 X89A574-0    Ni Wa              203 Tr
+1823          1823 X200000-0    Ba                 002 Na
+1825          1825 X563000-0    Ba                 003 Na
+Fogter        1828 X86379A-0    Ri                 802 Tr
+1830          1830 X565000-0    Ba                 002 Na
+1925          1925 X321000-0    Ba                 013 Na
+Bavaria       1927 D657210-6  S Lo Ni              204 Tr
+1930          1930 X583000-0    Ba                 000 Na
+Idint         2026 D512000-6    Ba Ic Lo Ni        502 Tr
+2028          2028 X454000-0    Ba                 003 Na
+2029          2029 X879000-0    Ba                 000 Na
+2121          2121 X353000-0    Ba                 003 Na
+2122          2122 X664000-0    Ba                 012 Na
+2123          2123 XA98000-0    Ba                 002 Na
+Ortho         2125 X4419CA-1    Hi In Po           303 Tr
+2127          2127 X9E7000-0    Ba                 001 Na
+2128          2128 X635000-0    Ba                 003 Na
+2130          2130 X543000-0    Ba                 000 Na
+2222          2222 X254000-0    Ba                 002 Na
+Arcy          2224 X686467-0    Ni                 703 Tr
+2230          2230 X467000-0    Ba                 022 Na
+2321          2321 X775000-0    Ba                 004 Na
+2322          2322 X534000-0    Ba                 004 Na
+Schweitzer    2325 D150212-7  S De Lo Ni Po        902 Tr
+2328          2328 X100011-0    Ba                 004 Na
+2330          2330 X424000-0    Ba                 004 Na
+2423          2423 X778000-0    Ba                 023 Na
+2426          2426 X200000-0    Ba                 014 Na
+2427          2427 X223000-0    Ba                 003 Na
+2428          2428 X53A000-0    Ba                 001 Na
+2429          2429 X666000-0    Ba                 004 Na
+L: Attacotti
+
+@SUB-SECTOR: sec_L   SECTOR: Malorn
+#
+# Trade routes within the subsector
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Pericles      2522 D463000-5  S Ba Lo Ni           503 Bs
+Jew           2523 DAC4757-7  S Fl                 901 Bs
+2526          2526 X633000-0    Ba                 012 Na
+2528          2528 X665000-0    Ba                 013 Na
+2529          2529 X97A000-0    Ba                 014 Na
+2530          2530 X957000-0    Ba                 012 Na
+Peredon       2621 C548568-5    Ag Ni              205 Bs
+California    2622 D100422-8  S Ni Va              814 Bs
+Ra            2623 C666677-4    Ag Ni Ri           604 Bs
+Guy-Fern      2624 D888536-5  S Ag Ni              303 Bs
+2626          2626 X320000-0    Ba                 000 Na
+2629          2629 X8A5000-0    Ba                 005 Na
+Elisha        2721 B320675-A  N De Na Ni Po        631 Bs
+Thunderstroke 2722 C538530-5    Ni                 305 Bs
+Jyrre         2725 D498311-8  S Lo Ni              605 Bs
+2728          2728 X677000-0    Ba                 002 Na
+2729          2729 X594000-0    Ba                 001 Na
+Attacotti     2821 C560974-8    De Hi              404 Bs
+2823          2823 X644000-0    Ba                 020 Na
+2824          2824 X665000-0    Ba                 005 Na
+2825          2825 X747000-0    Ba                 023 Na
+2826          2826 X538000-0    Ba                 013 Na
+2829          2829 X500000-0    Ba                 004 Na
+2921          2921 XAB2000-0    Ba                 002 Na
+2922          2922 XAE3000-0    Ba                 013 Na
+2923          2923 X557000-0    Ba                 024 Na
+2924          2924 X240000-0    Ba                 003 Na
+Nostrand      2926 B613644-B  N Ic Na Ni           501 Dj
+2927          2927 X100000-0    Ba                 001 Na
+2928          2928 X140000-0    Ba                 003 Na
+3025          3025 X457000-0    Ba                 005 Na
+3027          3027 X744000-0    Ba                 001 Na
+3028          3028 X775000-0    Ba                 004 Na
+3030          3030 X8A7000-0    Ba                 003 Na
+Tuskegee      3121 C467773-5    Ag Ri              604 Cn
+3122          3122 X434000-0    Ba                 000 Na
+3123          3123 X453000-0    Ba                 021 Na
+Darious       3125 C140557-A  S De Ni Po           912 Dj
+Asia          3126 C746445-6  S Ni                 703 Dj
+3130          3130 X310000-0    Ba                 004 Na
+Peite         3221 C645221-5    Lo Ni              100 Cn
+3224          3224 X774000-0    Ba                 000 Na
+M: Kiel
+
+@SUB-SECTOR: sec_M   SECTOR: Malorn
+#
+# Trade routes within the subsector
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+0133          0133 X100000-0    Ba                 000 Na
+0134          0134 X423000-0    Ba                 020 Na
+0234          0234 X444000-0    Ba                 004 Na
+0235          0235 X552000-0    Ba                 000 Na
+0332          0332 X638000-0    Ba                 010 Na
+0334          0334 X667000-0    Ba                 003 Na
+0335          0335 X845000-0    Ba                 004 Na
+0340          0340 X100000-0    Ba                 000 Na
+0440          0440 X200000-0    Ba                 000 Na
+0531          0531 X697000-0    Ba                 024 Na
+0540          0540 X454000-0    Ba                 024 Na
+0632          0632 X879000-0    Ba                 011 Na
+0636          0636 X894000-0    Ba                 022 Na
+0732          0732 X898000-0    Ba                 004 Na
+0733          0733 X520000-0    Ba                 005 Na
+0735          0735 X444000-0    Ba                 024 Na
+0737          0737 X8C2000-0    Ba                 002 Na
+0834          0834 X000000-0    Ba                 020 Na
+0835          0835 X130000-0    Ba                 002 Na
+N: Ustov
+
+@SUB-SECTOR: sec_N   SECTOR: Malorn
+#
+# Trade routes within the subsector
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+0933          0933 X553000-0    Ba                 022 Na
+0934          0934 X525000-0    Ba                 002 Na
+0936          0936 X200000-0    Ba                 005 Na
+0939          0939 X370000-0    Ba                 003 Na
+1034          1034 X550000-0    Ba                 003 Na
+1035          1035 X242000-0    Ba                 000 Na
+1037          1037 X452000-0    Ba                 003 Na
+1039          1039 X344000-0    Ba                 004 Na
+1040          1040 X200000-0    Ba                 010 Na
+1135          1135 X847000-0    Ba                 000 Na
+1232          1232 X879000-0    Ba                 023 Na
+1234          1234 X875000-0    Ba                 023 Na
+1332          1332 X346000-0    Ba                 023 Na
+1333          1333 X76A000-0    Ba                 004 Na
+1334          1334 X420000-0    Ba                 002 Na
+1337          1337 X443000-0    Ba                 002 Na
+1435          1435 X485000-0    Ba                 013 Na
+1437          1437 X8A5000-0    Ba                 023 Na
+1439          1439 X637000-0    Ba                 014 Na
+1531          1531 X898000-0    Ba                 023 Na
+1532          1532 X9D0000-0    Ba                 000 Na
+1533          1533 X130000-0    Ba                 003 Na
+1534          1534 X454000-0    Ba                 002 Na
+1631          1631 X986000-0    Ba                 013 Na
+1632          1632 X7C4000-0    Ba                 004 Na
+1633          1633 X200000-0    Ba                 024 Na
+1634          1634 X485000-0    Ba                 032 Na
+1636          1636 X986000-0    Ba                 023 Na
+1637          1637 X896000-0    Ba                 024 Na
+1639          1639 X548000-0    Ba                 005 Na
+O: Saar
+
+@SUB-SECTOR: sec_O   SECTOR: Malorn
+#
+# Trade routes within the subsector
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+1732          1732 X587000-0    Ba                 014 Na
+1734          1734 X626000-0    Ba                 020 Na
+1736          1736 X97A000-0    Ba                 001 Na
+1738          1738 X667000-0    Ba                 012 Na
+1832          1832 X501000-0    Ba                 000 Na
+1833          1833 X410000-0    Ba                 005 Na
+1834          1834 X476000-0    Ba                 014 Na
+1836          1836 X9A6000-0    Ba                 010 Na
+1839          1839 X455000-0    Ba                 020 Na
+1931          1931 X534000-0    Ba                 000 Na
+1932          1932 X550000-0    Ba                 013 Na
+1935          1935 X559000-0    Ba                 004 Na
+1936          1936 X202000-0    Ba                 021 Na
+1937          1937 X763000-0    Ba                 003 Na
+1939          1939 X8A5000-0    Ba                 003 Na
+1940          1940 X775000-0    Ba                 013 Na
+2031          2031 X210000-0    Ba                 004 Na
+2032          2032 X100000-0    Ba                 024 Na
+2034          2034 X373000-0    Ba                 004 Na
+2035          2035 X667000-0    Ba                 002 Na
+2036          2036 X696000-0    Ba                 024 Na
+2136          2136 X7A4000-0    Ba                 005 Na
+2138          2138 X353000-0    Ba                 004 Na
+2231          2231 X8A2000-0    Ba                 004 Na
+2232          2232 X536000-0    Ba                 002 Na
+2234          2234 X766000-0    Ba                 002 Na
+2238          2238 X522000-0    Ba                 003 Na
+2239          2239 X567000-0    Ba                 003 Na
+2331          2331 X98A000-0    Ba                 004 Na
+2332          2332 X8A6000-0    Ba                 004 Na
+2432          2432 X554000-0    Ba                 003 Na
+2434          2434 X340000-0    Ba                 014 Na
+2435          2435 X373000-0    Ba                 003 Na
+P: Terese
+
+@SUB-SECTOR: sec_P   SECTOR: Malorn
+#
+# Trade routes within the subsector
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+2531          2531 X341000-0    Ba                 003 Na
+2536          2536 X273000-0    Ba                 003 Na
+2538          2538 X524000-0    Ba                 010 Na
+2539          2539 X348000-0    Ba                 022 Na
+2631          2631 X000000-0    Ba                 001 Na
+2634          2634 X555000-0    Ba                 003 Na
+2635          2635 X539000-0    Ba                 010 Na
+2636          2636 X324000-0    Ba                 014 Na
+2637          2637 X777000-0    Ba                 014 Na
+2638          2638 X746000-0    Ba                 010 Na
+2639          2639 X324000-0    Ba                 000 Na
+2731          2731 X878000-0    Ba                 014 Na
+2732          2732 X8A2000-0    Ba                 013 Na
+2733          2733 X425000-0    Ba                 022 Na
+2739          2739 X200000-0    Ba                 023 Na
+2831          2831 X481000-0    Ba                 014 Na
+2832          2832 X443000-0    Ba                 021 Na
+2834          2834 X694000-0    Ba                 010 Na
+2837          2837 X370000-0    Ba                 004 Na
+2933          2933 X663000-0    Ba                 014 Na
+2937          2937 X356000-0    Ba                 025 Na
+2939          2939 X77A000-0    Ba                 002 Na
+3031          3031 X9E8000-0    Ba                 000 Na
+3032          3032 X637000-0    Ba                 033 Na
+3034          3034 X110000-0    Ba                 014 Na
+3038          3038 X400000-0    Ba                 004 Na
+3131          3131 X945000-0    Ba                 004 Na
+3132          3132 X583000-0    Ba                 023 Na
+3134          3134 X482000-0    Ba                 013 Na
+3138          3138 X322000-0    Ba                 011 Na
+3140          3140 X454000-0    Ba                 003 Na
+3232          3232 X212000-0    Ba                 000 Na
+3233          3233 X453000-0    Ba                 000 Na
+3237          3237 X563000-0    Ba                 004 Na

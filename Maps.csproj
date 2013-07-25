@@ -1,0 +1,849 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{02AE6284-5044-4A23-B5D6-A86EE9C7DFA1}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>Maps</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Flow</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Maps</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PdfSharp, Version=1.32.2608.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\PDFsharp\code\PdfSharp\bin\Release\PdfSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.Web">
+      <Name>System.Web</Name>
+    </Reference>
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Extensions.Design" />
+    <Reference Include="System.Web.Mobile">
+      <Name>System.Web.Mobile</Name>
+    </Reference>
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="borders\bd_images\image001.gif" />
+    <Content Include="borders\bd_images\image003.jpg" />
+    <Content Include="borders\bd_images\image004.gif" />
+    <Content Include="borders\bd_images\image005.gif" />
+    <Content Include="borders\bd_images\image006.gif" />
+    <Content Include="borders\bd_images\image007.gif" />
+    <Content Include="borders\bd_images\image008.gif" />
+    <Content Include="borders\bd_images\image009.gif" />
+    <Content Include="borders\bd_images\image010.gif" />
+    <Content Include="borders\bd_images\image011.gif" />
+    <Content Include="borders\bd_images\image012.gif" />
+    <Content Include="borders\bd_images\image013.gif" />
+    <Content Include="borders\bd_images\image014.gif" />
+    <Content Include="borders\bd_images\image016.jpg" />
+    <Content Include="borders\bd_images\image018.jpg" />
+    <Content Include="borders\bd_images\image019.gif" />
+    <Content Include="borders\bd_images\image020.gif" />
+    <Content Include="borders\bd_images\image021.gif" />
+    <Content Include="borders\bd_images\image022.gif" />
+    <Content Include="borders\bd_images\image023.gif" />
+    <Content Include="borders\borders.js" />
+    <Content Include="borders\default.htm" />
+    <Content Include="borders\demo.htm" />
+    <Content Include="borders\doc.htm" />
+    <Content Include="borders\regen.htm" />
+    <Content Include="Codes.aspx">
+      <SubType>Form</SubType>
+    </Content>
+    <Content Include="Admin.aspx">
+      <SubType>Form</SubType>
+    </Content>
+    <Content Include="Global.asax" />
+    <Content Include="model2\default.html" />
+    <Content Include="model2\sectorgen.html" />
+    <Content Include="model2\sectorgen.js" />
+    <Content Include="model2\sectorgen2.html" />
+    <Content Include="model2\sectorgen2.js" />
+    <Content Include="model2\style.css" />
+    <Content Include="model2\tempcalc.html" />
+    <Content Include="model2\wordgen.html" />
+    <Content Include="model2\wordgen.js" />
+    <Content Include="Overview.aspx">
+      <SubType>Form</SubType>
+    </Content>
+    <Content Include="credits.htm" />
+    <Content Include="handlebars.js" />
+    <Content Include="post.js" />
+    <Content Include="res\search\ArrivalVengeance.xml" />
+    <Content Include="res\search\Default.xml" />
+    <Content Include="res\search\FarFrontiers.xml" />
+    <Content Include="res\search\GrandTour.xml" />
+    <Content Include="res\Sectors\Avereguar.xml" />
+    <Content Include="res\Sectors\blaskon.xml" />
+    <Content Include="res\Sectors\Centrax.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="res\Sectors\extolian.xml" />
+    <Content Include="res\Sectors\Folgore.xml" />
+    <Content Include="res\Sectors\Gzirr!k%27l.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="res\Sectors\K%27trekreer.xml" />
+    <Content Include="res\Sectors\kidunal.xml" />
+    <Content Include="res\Sectors\mikhail.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="res\Sectors\Nooq.xml" />
+    <Content Include="res\Sectors\Porlock.xml" />
+    <Content Include="res\Sectors\Ricenden.xml" />
+    <Content Include="res\Sectors\Theta Borealis.xml" />
+    <Content Include="res\Sectors\Wrenton.xml" />
+    <Content Include="res\ui\ajax-loader.gif" />
+    <Content Include="res\ui\CT_Logo_Color.png" />
+    <Content Include="res\ui\CT_Logo_Gray.png" />
+    <Content Include="res\ui\fb.png" />
+    <Content Include="res\ui\grab.cur" />
+    <Content Include="res\ui\grabbing.cur" />
+    <Content Include="res\ui\legend.html" />
+    <Content Include="res\ui\Legend_1003_atlas.png" />
+    <Content Include="res\ui\Legend_1003_candy.png" />
+    <Content Include="res\ui\Legend_1003_poster.png" />
+    <Content Include="res\ui\Legend_1003_print.png" />
+    <Content Include="res\ui\Legend_1006_atlas.png" />
+    <Content Include="res\ui\Legend_1006_candy.png" />
+    <Content Include="res\ui\Legend_1006_poster.png" />
+    <Content Include="res\ui\Legend_1006_print.png" />
+    <Content Include="res\ui\progress.gif" />
+    <Content Include="res\ui\youarehere.gif" />
+    <Content Include="res\ui\youarehere_gray.gif" />
+    <Content Include="robots.txt" />
+    <Content Include="sitemap.xml" />
+    <Content Include="Coordinates.aspx">
+      <SubType>Form</SubType>
+    </Content>
+    <Content Include="api.htm" />
+    <Content Include="index.html" />
+    <Content Include="index.js" />
+    <Content Include="jpost.htm" />
+    <Content Include="polyfill\harmony.js" />
+    <Content Include="polyfill\polyfill.js" />
+    <Content Include="res\credits.js" />
+    <Content Include="res\Vectors\CoreRoute.xml" />
+    <Content Include="res\Vectors\J4Route.xml" />
+    <Content Include="res\Vectors\J5Route.xml" />
+    <Content Include="sector.js" />
+    <Content Include="SectorMetaData.aspx">
+      <SubType>Form</SubType>
+    </Content>
+    <Content Include="Dump.aspx">
+      <SubType>Form</SubType>
+    </Content>
+    <Content Include="formats.htm" />
+    <Content Include="JumpWorlds.aspx">
+      <SubType>Form</SubType>
+    </Content>
+    <Content Include="map.css" />
+    <Content Include="res\AprilFools\Starburst.png" />
+    <Content Include="res\AprilFools\Starburst_Gray.png" />
+    <Content Include="test\APITest.html" />
+    <Content Include="test\APITest.js" />
+    <Content Include="test\ImageTest.html" />
+    <Content Include="test\ref1.png" />
+    <Content Include="test\ref10.png" />
+    <Content Include="test\ref11.png" />
+    <Content Include="test\ref12.png" />
+    <Content Include="test\ref13.png" />
+    <Content Include="test\ref14.png" />
+    <Content Include="test\ref15.png" />
+    <Content Include="test\ref16.png" />
+    <Content Include="test\ref17.png" />
+    <Content Include="test\ref18.png" />
+    <Content Include="test\ref19.png" />
+    <Content Include="test\ref2.png" />
+    <Content Include="test\ref20.png" />
+    <Content Include="test\ref21.png" />
+    <Content Include="test\ref22.png" />
+    <Content Include="test\ref23.png" />
+    <Content Include="test\ref24.png" />
+    <Content Include="test\ref25.png" />
+    <Content Include="test\ref26.png" />
+    <Content Include="test\ref27.png" />
+    <Content Include="test\ref28.jpg" />
+    <Content Include="test\ref29.png" />
+    <Content Include="test\ref3.png" />
+    <Content Include="test\ref30.png" />
+    <Content Include="test\ref31.png" />
+    <Content Include="test\ref32.png" />
+    <Content Include="test\ref4.png" />
+    <Content Include="test\ref5.png" />
+    <Content Include="test\ref6.png" />
+    <Content Include="test\ref7.png" />
+    <Content Include="test\ref8.png" />
+    <Content Include="test\ref9.png" />
+    <Content Include="test\ref_bad_example.png" />
+    <Content Include="touch\background.png" />
+    <Content Include="touch\background_light.png" />
+    <Content Include="touch\box.jpg" />
+    <Content Include="touch\icon.png" />
+    <Content Include="touch\index.html" />
+    <Content Include="touch\info_button.png" />
+    <Content Include="touch\logo.png" />
+    <Content Include="touch\logo_gray.png" />
+    <Content Include="touch\regina72.png" />
+    <Content Include="touch\startup-ipad.jpg" />
+    <Content Include="touch\startup-iPadPortrait.jpg" />
+    <Content Include="touch\startup.jpg" />
+    <Content Include="Universe.aspx">
+      <SubType>Form</SubType>
+    </Content>
+    <Content Include="JumpMap.aspx">
+      <SubType>Form</SubType>
+    </Content>
+    <Content Include="SEC.aspx" />
+    <Content Include="Errors.aspx">
+      <SubType>Form</SubType>
+    </Content>
+    <Content Include="map.js" />
+    <Content Include="MSEC.aspx" />
+    <Content Include="post.htm" />
+    <Content Include="Poster.aspx">
+      <SubType>Form</SubType>
+    </Content>
+    <Content Include="Credits.aspx">
+      <SubType>Form</SubType>
+    </Content>
+    <Content Include="favicon.ico" />
+    <Content Include="iframe.htm" />
+    <Content Include="info.htm" />
+    <Content Include="Mobile.aspx">
+      <SubType>Form</SubType>
+    </Content>
+    <Content Include="res\Candy\Belt.png" />
+    <Content Include="res\Candy\Hyd0.png" />
+    <Content Include="res\Candy\Hyd1.png" />
+    <Content Include="res\Candy\Hyd2.png" />
+    <Content Include="res\Candy\Hyd3.png" />
+    <Content Include="res\Candy\Hyd4.png" />
+    <Content Include="res\Candy\Hyd5.png" />
+    <Content Include="res\Candy\Hyd6.png" />
+    <Content Include="res\Candy\Hyd7.png" />
+    <Content Include="res\Candy\Hyd8.png" />
+    <Content Include="res\Candy\Hyd9.png" />
+    <Content Include="res\Candy\HydA.png" />
+    <Content Include="res\Candy\Nebula.jpg" />
+    <Content Include="res\Candy\tiled_nebula_256.jpg" />
+    <Content Include="res\Candy\tiled_nebula_512.jpg" />
+    <Content Include="res\credits.xslt" />
+    <Content Include="res\sectors.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="res\Sectors\FarFrontiers.xml" />
+    <Content Include="res\Vectors\Aslan.xml" />
+    <Content Include="res\Vectors\DelphiRift.xml" />
+    <Content Include="res\Vectors\GreatRift.xml" />
+    <Content Include="res\Vectors\Hive.xml" />
+    <Content Include="res\Vectors\Imperium.xml" />
+    <Content Include="res\Vectors\Kkree.xml" />
+    <Content Include="res\Vectors\LesserRift.xml" />
+    <Content Include="res\Vectors\RimwardClient.xml" />
+    <Content Include="res\Sectors\Zhodani Core Route\out.xml" />
+    <Content Include="res\Vectors\Solomani.xml" />
+    <Content Include="res\Vectors\SpinwardClient.xml" />
+    <Content Include="res\Vectors\TrailingClient.xml" />
+    <Content Include="res\Vectors\Vargr.xml" />
+    <Content Include="res\Vectors\WindhornRift.xml" />
+    <Content Include="res\Vectors\ZhdantRift.xml" />
+    <Content Include="res\Worlds.xml" />
+    <Content Include="res\Vectors\Zhodani.xml" />
+    <Content Include="res\ZhodaniCoreRoute.xml" />
+    <Content Include="Search.aspx">
+      <SubType>Form</SubType>
+    </Content>
+    <Content Include="sector.htm" />
+    <Content Include="site.css" />
+    <Content Include="subsector.htm" />
+    <Content Include="Tile.aspx">
+      <SubType>Form</SubType>
+    </Content>
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Compile Include="AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Astrometrics.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Overview.aspx.cs">
+      <DependentUpon>Overview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Metadata.cs" />
+    <Compile Include="Coordinates.aspx.cs">
+      <DependentUpon>Coordinates.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Codes.aspx.cs">
+      <DependentUpon>Codes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin.aspx.cs">
+      <DependentUpon>Admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Location.cs" />
+    <Compile Include="RenderUtil.cs" />
+    <Compile Include="SectorMetaData.aspx.cs">
+      <DependentUpon>SectorMetaData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dump.aspx.cs">
+      <DependentUpon>Dump.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ImageGeneratorPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="JumpWorlds.aspx.cs">
+      <DependentUpon>JumpWorlds.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="serialization\ColumnUtils.cs" />
+    <Compile Include="serialization\MSECParser.cs" />
+    <Compile Include="serialization\MSECWriter.cs" />
+    <Compile Include="serialization\SectorMetadataParser.cs" />
+    <Compile Include="serialization\SectorMetadataSerializer.cs" />
+    <Compile Include="serialization\SectorParser.cs" />
+    <Compile Include="serialization\SectorWriter.cs" />
+    <Compile Include="ServiceConfiguration.cs" />
+    <Compile Include="StellarData.cs" />
+    <Compile Include="Universe.aspx.cs">
+      <DependentUpon>Universe.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="JumpMap.aspx.cs">
+      <DependentUpon>JumpMap.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SEC.aspx.cs">
+      <DependentUpon>SEC.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Errors.aspx.cs">
+      <DependentUpon>Errors.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Json.cs" />
+    <Compile Include="MSEC.aspx.cs">
+      <DependentUpon>MSEC.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Poster.aspx.cs">
+      <DependentUpon>Poster.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Credits.aspx.cs">
+      <DependentUpon>Credits.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mobile.aspx.cs">
+      <DependentUpon>Mobile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Render.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ResourceManager.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Search.aspx.cs">
+      <DependentUpon>Search.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SearchEngine.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Sector.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SectorDataCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Selector.cs" />
+    <Compile Include="Stylesheet.cs" />
+    <Compile Include="Tile.aspx.cs">
+      <DependentUpon>Tile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Util.cs" />
+    <Compile Include="VectorObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="World.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="borders\bd_images\Thumbs.db" />
+    <Content Include="model2\usingmodel2bis2.zip" />
+    <Content Include="res\search\ArrivalVengeance.json" />
+    <Content Include="res\search\Default.json" />
+    <Content Include="res\search\FarFrontiers.json" />
+    <Content Include="res\search\GrandTour.json" />
+    <None Include="res\sectors.xsd" />
+    <None Include="res\Sectors\Alpha Crucis.tab" />
+    <None Include="res\Sectors\Amderstun.sec" />
+    <None Include="res\Sectors\Antares.tab" />
+    <Content Include="res\Sectors\centrax.sec" />
+    <Content Include="res\Sectors\blaskon.sec" />
+    <Content Include="res\Sectors\Avereguar.sec" />
+    <None Include="res\Sectors\Core.tab" />
+    <None Include="res\Sectors\Corridor.tab" />
+    <Content Include="res\Sectors\Dagudashaag.tab" />
+    <None Include="res\Sectors\Daibei.tab" />
+    <Content Include="res\Sectors\DARK1120.SEC" />
+    <None Include="res\Sectors\Delphi.tab" />
+    <None Include="res\Sectors\Deneb.tab" />
+    <None Include="res\Sectors\Diaspora.tab" />
+    <None Include="res\Sectors\Empty Quarter.tab" />
+    <Content Include="res\Sectors\Folgore.sec" />
+    <None Include="res\Sectors\Fornast.tab" />
+    <None Include="res\Sectors\Glimmerdrift.tab" />
+    <None Include="res\Sectors\Grikrng.sec" />
+    <None Include="res\Sectors\Gushemege.tab" />
+    <None Include="res\Sectors\Gvurrdon.tab" />
+    <Content Include="res\Sectors\Gzirr!k%27l.sec" />
+    <None Include="res\Sectors\Harea.sec" />
+    <None Include="res\Sectors\Hinterworlds.tab" />
+    <None Include="res\Sectors\Ilelish.tab" />
+    <Content Include="res\Sectors\K%27trekreer.sec" />
+    <None Include="res\Sectors\Kaa G!kul.sec" />
+    <None Include="res\Sectors\Katoonah.sec" />
+    <Content Include="res\Sectors\kidunal.sec" />
+    <None Include="res\Sectors\legend.sec" />
+    <None Include="res\Sectors\Ley.tab" />
+    <None Include="res\Sectors\Lishun.tab" />
+    <None Include="res\Sectors\Magyar.tab" />
+    <None Include="res\Sectors\Massilia.tab" />
+    <Content Include="res\Sectors\Nooq.sec" />
+    <Content Include="res\Sectors\mikhail.sec" />
+    <None Include="res\Sectors\Old Expanses.tab" />
+    <None Include="res\Sectors\Pliabriebl.sec" />
+    <Content Include="res\Sectors\Porlock.sec" />
+    <None Include="res\Sectors\Reavers Deep.tab" />
+    <None Include="res\Sectors\Reft.tab" />
+    <Content Include="res\Sectors\Ricenden.sec" />
+    <None Include="res\Sectors\Solomani Rim.tab" />
+    <None Include="res\Sectors\Spinward Marches.tab" />
+    <None Include="res\Sectors\TarGkellp.sec" />
+    <Content Include="res\Sectors\Theta Borealis.sec" />
+    <None Include="res\Sectors\Tlyasea.sec" />
+    <None Include="res\Sectors\Trojan Reach.tab" />
+    <Content Include="res\Sectors\Ukaarriitb.sec" />
+    <None Include="res\Sectors\Verge.tab" />
+    <None Include="res\Sectors\Vland.tab" />
+    <Content Include="res\Sectors\Wrenton.sec" />
+    <None Include="res\Sectors\Zarushagar.tab" />
+    <Content Include="res\Sectors\Ziafrplians.tab" />
+    <Content Include="res\ui\youarehere.pdn" />
+    <None Include="res\Vectors\Galaxy_Positive.xvf" />
+    <None Include="res\Sectors\Aerenfors.sec" />
+    <None Include="res\Sectors\afawahisa.sec" />
+    <None Include="res\Sectors\Ahkiweahi.sec" />
+    <None Include="res\Sectors\Aktifao.sec" />
+    <None Include="res\Sectors\aldebaran.sec" />
+    <None Include="res\Sectors\amdukan.sec" />
+    <None Include="res\Sectors\Angfutsag.sec" />
+    <None Include="res\Sectors\arzul.sec" />
+    <None Include="res\Sectors\astron.sec" />
+    <None Include="res\Sectors\ataurre.sec" />
+    <None Include="res\Sectors\banners.sec" />
+    <None Include="res\Sectors\beyond.sec" />
+    <None Include="res\Sectors\canopus.sec" />
+    <None Include="res\Sectors\chtierab.sec" />
+    <None Include="res\Sectors\CrucisMargin.sec" />
+    <None Include="res\Sectors\darknebula.sec" />
+    <None Include="res\Sectors\Darret.sec" />
+    <None Include="res\Sectors\Datsatl.sec" />
+    <None Include="res\Sectors\Dfotseth.sec" />
+    <None Include="res\Sectors\Dhuerorrg.sec" />
+    <None Include="res\Sectors\Drakken.sec" />
+    <None Include="res\Sectors\Ealiyasiyw.sec" />
+    <None Include="res\Sectors\esai-yo.sec" />
+    <None Include="res\Sectors\Etakhasoa.sec" />
+    <None Include="res\Sectors\Extolian.sec" />
+    <None Include="res\Sectors\Fa Dzaets.sec" />
+    <None Include="res\Sectors\Fahreahluis.sec" />
+    <None Include="res\Sectors\faoheiroi-iyhao.sec" />
+    <None Include="res\Sectors\farfrontiers.sec" />
+    <None Include="res\Sectors\Finggvakhou.sec" />
+    <None Include="res\Sectors\foreven.sec" />
+    <None Include="res\Sectors\ftaoiyekyu.sec" />
+    <None Include="res\Sectors\fulani.sec" />
+    <None Include="res\Sectors\Gakghang.sec" />
+    <None Include="res\Sectors\gashikan.sec" />
+    <None Include="res\Sectors\Gateway.sec" />
+    <None Include="res\Sectors\Gelath.sec" />
+    <None Include="res\Sectors\Gh1hken.sec" />
+    <None Include="res\Sectors\Ghoekhnael.sec" />
+    <None Include="res\Sectors\gushmege.sec" />
+    <None Include="res\Sectors\Gzaekfueg.sec" />
+    <None Include="res\Sectors\hadji.sec" />
+    <None Include="res\Sectors\hanstone.sec" />
+    <None Include="res\Sectors\Heakhafaw.sec" />
+    <None Include="res\Sectors\Hfiywitir.sec" />
+    <None Include="res\Sectors\hkakhaeaw.sec" />
+    <None Include="res\Sectors\hlakhoi.sec" />
+    <None Include="res\Sectors\iphigenaia.sec" />
+    <None Include="res\Sectors\Irlaftalea.sec" />
+    <None Include="res\Sectors\Irugangong.sec" />
+    <None Include="res\Sectors\iwahfuah.sec" />
+    <None Include="res\Sectors\karleaya.sec" />
+    <None Include="res\Sectors\Kefiykhta.sec" />
+    <None Include="res\Sectors\KfazzGhik.sec" />
+    <None Include="res\Sectors\khaeaw.sec" />
+    <None Include="res\Sectors\Kharrthon.sec" />
+    <None Include="res\Sectors\Knaeleng.sec" />
+    <None Include="res\Sectors\Knoellighz.sec" />
+    <None Include="res\Sectors\Ksinanirz.sec" />
+    <None Include="res\Sectors\Ktiingzat.sec" />
+    <None Include="res\Sectors\lancask.sec" />
+    <None Include="res\Sectors\langere.sec" />
+    <None Include="res\Sectors\Leonidae.sec" />
+    <None Include="res\Sectors\Listanaya.sec" />
+    <None Include="res\Sectors\Lorspane.sec" />
+    <None Include="res\Sectors\malorn.sec" />
+    <None Include="res\Sectors\Mendan.sec" />
+    <None Include="res\Sectors\meshan.sec" />
+    <None Include="res\Sectors\muarne.sec" />
+    <None Include="res\Sectors\neworld.sec" />
+    <None Include="res\Sectors\Ngathksirz.sec" />
+    <None Include="res\Sectors\OeghzVaerrghr.sec" />
+    <None Include="res\Sectors\Ogadogorz.sec" />
+    <None Include="res\Sectors\Ohieraoi.sec" />
+    <None Include="res\Sectors\Phlask.sec" />
+    <None Include="res\Sectors\provence.sec" />
+    <None Include="res\Sectors\Rfigh.sec" />
+    <None Include="res\Sectors\Riftspan Reaches.sec" />
+    <None Include="res\Sectors\Rzakki.sec" />
+    <None Include="res\Sectors\spica.sec" />
+    <None Include="res\Sectors\staihaia.sec" />
+    <None Include="res\Sectors\star-s_end.sec" />
+    <None Include="res\Sectors\storr.sec" />
+    <None Include="res\Sectors\Teahloarifu.sec" />
+    <None Include="res\Sectors\ThakuFung.sec" />
+    <None Include="res\Sectors\Theron.sec" />
+    <None Include="res\Sectors\tienspevnekr.sec" />
+    <None Include="res\Sectors\touchstone.sec" />
+    <None Include="res\Sectors\trenchans.sec" />
+    <None Include="res\Sectors\tuglikki.sec" />
+    <None Include="res\Sectors\Ugoede.sec" />
+    <None Include="res\Sectors\Uistilrao.sec" />
+    <None Include="res\Sectors\ustral_quadrant.sec" />
+    <None Include="res\Sectors\vanguard_reaches.sec" />
+    <None Include="res\Sectors\VegVergakh.sec" />
+    <None Include="res\Sectors\waroatah.sec" />
+    <None Include="res\Sectors\windhorn.sec" />
+    <None Include="res\Sectors\Yahehwe.sec" />
+    <None Include="res\Sectors\yiklerzdanzh.sec" />
+    <None Include="res\Sectors\ZaoKfengIgGrilokh.sec" />
+    <None Include="res\Sectors\zdiedeia.sec" />
+    <None Include="res\Sectors\zhdant.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\ablaz.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\abresh.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\aed.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\afdranz.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\anshnzhi.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\antsrish.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\aplie.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\aviel.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\azaz.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\azhpliab.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\biaqrpra.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\bliaazh.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\bliatsie.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\brelia.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\brianch.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\chetlias.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\chiajavl.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\chtatiat.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\chtetara.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\chtijash.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\difralfl.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\dlavvrep.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\dliaprqr.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\dliea.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\dliebria.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\doklzots.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\drachabr.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\driaflfi.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\drieblie.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\drierii.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\driklfet.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\eble.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\eblia.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\ee.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\eie.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\ekrbrian.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\enchakl.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\etlnchof.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\evred.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\ezhebl.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\favkrani.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\febiaiad.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\feflolen.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\fiaftash.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\flablent.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\flaflzhe.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\frajbrie.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\fraklbiz.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\fretvlob.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\frizhkla.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\ia.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\ianse.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\iate.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\ichnzhip.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\idekl.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\iebtladl.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\iekrqre.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\ienjaz.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\ienza.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\ieviash.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\ijar.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\ijidl.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\inshzish.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\itsfiebl.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\jdeblins.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\jdenchep.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\jdibrirv.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\jdodiafl.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\jiechnzh.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\kazhekli.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\kepridln.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\kernzhez.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\kiafldli.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\klajipl.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\kliadli.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\kozhdanz.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\loplia.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\lotsar.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\nchadla.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\nchefrij.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\nevlieri.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\nezhatli.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\niabrefv.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\nialkrid.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\niechnch.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\nili.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\nseianzh.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\nshofref.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\ntetszif.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\nzhajdib.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\nzhenzie.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\nzhernzh.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\nzhiaapl.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\nzievi.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\peklproz.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\pivchavi.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\plablsha.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\pliajenz.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\pliantib.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\ploblvla.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\plontarb.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\pofdribl.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\praklfri.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\pranzakl.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\prashtsi.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\preiel.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\prinjobl.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\proanz.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\qlivinch.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\qrecha.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\qrefrnzh.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\ravrazhe.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\riadrazh.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\riafrtaf.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\riekllez.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\setjefrs.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\shenzhts.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\sheqrafl.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\shiadldr.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\shiazhan.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\shiblbro.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\siantsai.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\sieriats.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\stiaklen.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\stienzar.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\stotsshi.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\tatlnjai.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\tavrbovl.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\tenshlat.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\tlabrapl.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\tlapltsi.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\tledrbre.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\tlensbla.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\tlialied.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\tliblnzh.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\tlinchji.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\tsafrnch.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\tsebntsi.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\tselidl.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\vedrabr.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\viashchi.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\vietrien.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\vikrvidr.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\vlofrkla.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\voblezit.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\vravrzha.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\yejiarie.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\yikvrior.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\zabrzikl.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\zdafeflz.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\zdechreb.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\zdielbep.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\zdienzfi.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\zdietabl.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\zentse.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\zenzhej.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\zeshavra.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\zhechinj.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\zhejnzhi.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\zhenzhbr.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\zhetsefr.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\zhevrekl.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\zhiatien.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\zhiejqri.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\zietsebl.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\zietssha.sec" />
+    <None Include="res\Sectors\Zhodani Core Route\zii.sec" />
+    <None Include="res\Sectors\Zortakh.sec" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>3454</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:50103/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+</Project>

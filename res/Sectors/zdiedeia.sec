@@ -1,0 +1,861 @@
+Zdiedeiant
+
+A: Iefla                     sub_a.dat
+B: Qliamria                  sub_b.dat
+C: Kletsshavri               sub_c.dat
+D: Jetlta                    sub_d.dat
+E: Krietieqatl               sub_e.dat
+F: A'letl                    sub_f.dat
+G: Kretlshtiazh              sub_g.dat
+H: Etsia                     sub_h.dat
+I: Leo                       sub_i.dat
+J: Adliev                    sub_j.dat
+K: Sadliavl                  sub_k.dat
+L: Tlabqlel                  sub_l.dat
+M: Qrtlievl                  sub_m.dat
+N: Ieprsidr                  sub_n.dat
+O: Abrrnzh                   sub_o.dat
+P: Tliekrbliepl              sub_p.dat
+
+Bases:
+Z = Zhodani Navy
+Y = Zhodani Depot
+X = Zhodani Relay
+  = None
+
+Allegiance:
+11 Zh = Zhodani
+01 Zc = Zhodani Client
+07 Na = Not Aligned
+10 Dr = Droyne
+08    = Unknown
+                                          
+                                          
+
+Zdiedeiant - Credits
+
+Created  by BeRKA http://zho.berka.com/
+
+                                          
+                                          
+                                          
+---------------------------------------------------------------------- 
+                                          
+@SUB-SECTOR: Iefla SECTOR: Zdiedeiant
+# 
+$0601 0502 0 0 13
+$0502 0602 0 0 13
+$0502 0402 0 0 13
+$0602 0803 0 0 13
+$0402 0104 0 0 13
+$0803 0706 0 0 13
+$0706 0508 0 0 13
+$0508 0409 0 0 13
+$0803 0902 1 0 13
+$0706 0907 1 0 13
+$0409 0413 0 1 13
+$0104 3102 -1 0 13
+$0602 0601 0 0 13
+$0601 0439 0 -1 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Edrtlrm       0101 D483698-2    Ri              A  922 Zc
+Iefle         0104 C6A18AA-8  Z Fl              U  104 Zc
+Shedrzhded    0109 B754455-C    Ni                 624 Zh
+Iesta-86      0206 X376000-0    Ba Lo Ni        R  012 Na
+Zhiashjinsh-5 0207 D481225-5    Lo Ni              300 Zh
+Bliedlsi'     0208 C462768-4    Ri              U  423 Zh
+Zhdiashjda    0209 B34459C-7    Ag Ni           A  114 Zh
+Afldeblzhdizh 0210 CA5A577-7    Ni Wa              102 Zh
+Iqrech        0301 X442000-0    Ba Lo Ni Po     R  022 Na
+Vlefr-46      0302 X624000-0    Ba Lo Ni        R  013 Na
+Iencha        0305 X845000-0    Ba Lo Ni        R  002 Na
+Prieshl-58    0310 X200000-0    Ba Lo Ni Va     R  000 Zh
+IEDRVRIEPL    0402 C688969-5  Z Hi                 532 Zc
+Aplsazhdinzh  0403 B000578-9    As Ni              112 Zc
+Enshstip      0508 A985457-C  X Ni                 423 Zh
+Zekrlief      0407 A6B0379-D    De Lo Ni        A  204 Zh
+IEFLA         0409 C99AABA-9  Z Hi In Wa Cp        200 Zh
+Prrvste       0502 A200415-A  Z Ni Va              301 Zc
+Dedrchteb     0506 C986526-4    Ag Ni              601 Zh
+Ieriabr-4     0601 C367156-9  Z Lo Ni              402 Zc
+Vropltliazia  0602 B514321-8  Z Ic Lo Ni           123 Zc
+Yanshkr-70    0603 X542000-0    Ba Lo Ni Po     R  023 Na
+Jdrnseztlie'  0606 C97A69C-6    Wa                 605 Zh
+Enrepla       0610 X65A000-0    Ba Lo Ni Wa     R  014 Zh
+Shtekr-69     0701 XAB7000-0    Ba Fl Lo Ni     R  001 Na
+Bifrstatla    0706 B333699-7  Z Po                 113 Zh
+Azshtie       0801 X440000-0    Ba De Lo Ni Po  R  035 Na
+Shtadrqratl   0802 X000000-0    As Ba Lo Ni     R  000 Na
+Jiaplrel      0803 C150467-6  Z De Ni Po           703 Zh
+Densniedri    0804 E774200-5    Lo Ni              414 Zh
+Rodraprdriez  0807 X8C1000-0    Ba Fl Lo Ni     R  003 Zh
+                                          
+                                          
+---------------------------------------------------------------------- 
+                                          
+@SUB-SECTOR: Qliamria SECTOR: Zdiedeiant
+# 
+$0902 1105 0 0 10
+$1105 0908 0 0 10
+$0908 0912 0 1 10
+$0902 0939 0 -1 10
+$0902 0803 -1 0 13
+$0907 0706 -1 0 13
+$0907 0908 0 0 13
+$1105 1404 0 0 13
+$1404 1604 0 0 13
+$1404 1606 0 0 13
+$1604 1904 1 0 13
+$1606 1904 1 0 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+KLIEBRZDOZDA  0902 A54498B-D  Z Hi In              823 Zh
+Chtinjvlizdi  0907 C000258-C  Z As Lo Ni        U  204 Zh
+Qliamria      0908 B6548BB-8  Z Cp                 311 Zh
+E'fliapria    1009 C422488-9    Ni Po              103 Zh
+Brie          1002 A400258-B    Lo Ni Va           723 Zh
+Sedlid-55     1101 X210000-0    Ba Lo Ni        R  024 Na
+Eqli'qra      1104 B624679-7    A                  234 Zh
+Aqmopr        1105 B000321-D  X As Lo Ni           523 Zh
+Kliamrns      1106 C100100-B    Lo Ni Va           100 Zh
+Qradr-91      1201 X866000-0    Ba Lo Ni        R  000 Na
+Chtapzhe      1204 C661441-4    Ni                 333 Zh
+Tlenchamim    1207 X313000-0    Ba Ic Lo Ni     R  000 Zh
+Etldriashplo  1208 C558575-6    Ag Ni              710 Zh
+Zhdienziefri  1210 B414576-8    Ic Ni              223 Zh
+Obrqrabr      1309 C677540-5    Ag Ni              612 Zh
+Nianadladr    1401 X639000-0    Ba Lo Ni        R  025 Na
+Inchenchplia  1403 C334385-6    Lo Ni              111 Zh
+Rnchiefie     1404 C687445-6  X Ni                 522 Zh
+Eshchtelenzhe 1508 D667861-2    Ri                 225 Zh
+Ia'efle'      1601 X566000-0    Ba Lo Ni        R  002 Na
+Zhdie'ple     1604 C77A331-9  Z Lo Ni Wa           522 Zh
+Shonevle      1605 B869565-7    Ni                 103 Zh
+Rrriak        1606 C8D1310-4  Z Fl Lo Ni           620 Zh
+Eblvranzhzhd  1607 D683411-2    Ni                 324 Zh
+Zinzhzdaplfi  1609 D362310-6    Lo Ni              113 Zh
+                                          
+                                          
+---------------------------------------------------------------------- 
+                                          
+@SUB-SECTOR: Kletsshavri SECTOR: Zdiedeiant
+# 
+$1904 1604 -1 0 13
+$1904 1903 0 0 13
+$1904 2306 0 0 13
+$2306 2409 0 0 13
+$2409 2310 0 0 13
+$2306 2404 0 0 13
+$2404 2803 1 0 13
+$2310 2113 0 1 13
+$1904 1606 -1 0 13
+$1903 1740 0 -1 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Qlipriplkliet 1703 B675376-8    Lo Ni              413 Zh
+Chtiefrvli    1705 B48056A-7    De Ni              324 Zh
+Teprqiadra    1805 X438000-0    Ba Lo Ni        R  003 Zh
+Bidretlkid    1809 C666158-5    Lo Ni              334 Zh
+Itsadech      1903 B754541-A  Z Ag Ni              111 Zh
+Rbrshtase     1904 B674200-7  Z Lo Ni              615 Zh
+Pafle         2010 X260000-0    Ba De Lo Ni     R  003 Zh
+Viaprdlij     2102 X411000-0    Ba Ic Lo Ni     R  000 Na
+Iavrpiaie     2108 X598000-0    Ba Lo Ni        R  010 Zh
+Qranzi        2109 X300000-0    Ba Lo Ni Va     R  024 Zh
+Drinzhzdenzz  2110 E663389-4    Lo Ni           U  504 Zh
+Qenjable      2201 D360258-4    De Lo Ni        A  111 Na
+Qliapplial    2204 E240576-7    De Ni Po        A  700 Zh
+Saflol        2206 B69859D-7    Ag Ni              415 Zh
+Evzdakr-1     2208 X578000-0    Ba Lo Ni        R  022 Zh
+Ielpleplfiabr 2306 C998369-5  Z Lo Ni           U  802 Zh
+Rqzhaktsonch  2307 X684000-0    Ba Lo Ni        R  010 Zh
+Kletsshavri   2310 A8B3100-B  Y Fl Lo Ni Cp        404 Zh
+Vlie-65       2401 X874000-0    Ba Lo Ni        R  032 Na
+Zizrdl        2403 C100477-7  Z Ni Va           A  722 Zh
+Prliartsonts  2404 C458155-7  Z Lo Ni              612 Zh
+VESHNE        2406 D142977-5    Hi In Po        U  323 Zh
+Ape           2409 C98A544-6  Z Ni Wa              323 Zh
+                                          
+                                          
+---------------------------------------------------------------------- 
+                                          
+@SUB-SECTOR: Jetlta SECTOR: Zdiedeiant
+# 
+$2803 2404 -1 0 13
+$2803 3202 0 0 13
+$3202 0202 1 0 13
+$3202 0204 1 0 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Michta        2504 C87A751-B    Wa                 300 Zh
+Jiafrste      2602 X685133-0    Lo Ni           R  203 Na
+Anzhprienz    2604 E573433-7    Ni                 212 Zh
+Ianzesh       2605 X544000-0    Ba Lo Ni        R  014 Zh
+Chtiatliechz  2607 C551422-9    Ni Po              423 Zh
+Rjedl         2609 X436000-0    Ba Lo Ni        R  003 Zh
+Iabranjjoplr  2610 B200104-C    Lo Ni Va        A  403 Zh
+Ao-407        2702 X648000-0    Ba Lo Ni        R  025 Na
+Dreefrchtievl 2708 X695000-0    Ba Lo Ni        R  004 Zh
+Atsiaplrbl    2710 C653766-3    Po              U  323 Zh
+Jetlta        2803 A425686-9  Z Cp                 104 Zh
+Shteshchtant  2805 C350589-5    De Ni Po           124 Zh
+Ei-352        2810 C462331-5    Lo Ni              100 Zh
+Iachstie      2904 C988523-4    Ag Ni              305 Zh
+Yatlidr       2906 C575462-8    Ni                 800 Zh
+Sieprjiaj     3003 C501888-9    Ic Na Va           313 Zh
+Iaqljrnshkla  3006 X676000-0    Ba Lo Ni        R  023 Zh
+IDAJ          3010 B242988-9    Hi In Po           123 Zh
+Iedzhdiepipr  3104 C436443-6    Ni                 923 Zh
+Stieshtrdr    3107 X542000-0    Ba Lo Ni Po     R  002 Zh
+Dianzhmie     3109 D9D6249-3    Fl Lo Ni           524 Zh
+Jdekiesiench  3206 X532000-0    Ba Lo Ni Po     R  011 Zh
+SHIENSTLE     3207 D8A198A-8    Fl Hi              424 Zh
+Ashtliepiaz   3202 C240631-7  Z De Po              635 Zh
+Evzhdar       3209 X100000-0    Ba Lo Ni Va     R  011 Zh
+ISTONZICH     3210 D79A98C-5    Hi In Wa           102 Zh
+                                          
+                                          
+---------------------------------------------------------------------- 
+                                          
+@SUB-SECTOR: Krietieqatl SECTOR: Zdiedeiant
+# 
+$0413 0409 0 -1 13
+$0413 0116 0 0 13
+$0116 0119 0 0 13
+$0116 3014 -1 0 13
+$0119 3019 -1 0 13
+$0119 0319 0 0 13
+$0319 0516 0 0 13
+$0413 0516 0 0 13
+$0516 0916 1 0 13
+$0319 0521 0 1 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Deplzdadrdrn  0112 X676000-0    Ba Lo Ni        R  014 Zh
+Imdrinsh      0116 B353431-7  Z Ni Po              523 Zh
+Aqlsto'       0119 C887543-6  Z Ag Ni              414 Zh
+Zdiae-20      0211 X200000-0    Ba Lo Ni Va     R  013 Zh
+Emenshkiz     0216 X500000-0    Ba Lo Ni Va     R  002 Zh
+Aqrdleiepl    0413 B000544-9    As Ni              622 Zh
+Dlantpiap     0317 X574000-0    Ba Lo Ni        R  004 Zh
+Kridtlie      0318 E100252-8    Lo Ni Va           200 Zh
+Sabriatsdie   0319 B889202-9  Z Lo Ni              721 Zh
+Sanshyietlab  0418 B534215-7    Lo Ni              905 Zh
+Tapi          0419 E87A250-5    Lo Ni Wa           324 Zh
+Stebrdla      0516 B536577-7  X Ni                 114 Zh
+Vlaqtlie      0517 X523000-0    Ba Lo Ni Po     R  010 Zh
+Plintsibl     0611 E413534-8    Ic Ni           U  404 Zh
+Oqrshtetla    0613 D455110-4    Lo Ni              104 Zh
+KRIETIEQATL   0617 C86A9B9-9    Hi Wa Cp           102 Zh
+Mr'zhiebl-1   0618 E362210-8    Lo Ni              124 Zh
+Ablzhdaqre    0811 X100000-0    Ba Lo Ni Va     R  023 Zh
+Brapr-50      0812 X410000-0    Ba Lo Ni        R  035 Zh
+Stajdesh      0815 D100368-A    Lo Ni Va           701 Zh
+Plichtiachto  0819 CA9A898-6    Wa              U  223 Zh
+Afzhdaz       0820 D564532-2    Ag Ni              200 Zh
+                                          
+                                          
+---------------------------------------------------------------------- 
+                                          
+@SUB-SECTOR: A'letl SECTOR: Zdiedeiant
+# 
+$0912 0908 0 -1 10
+$0912 0916 0 0 10
+$0916 1119 0 0 10
+$1119 1222 0 1 10
+$0912 1212 0 0 13
+$1212 1215 0 0 13
+$1215 1216 0 0 13
+$1216 1117 0 0 13
+$1117 1016 0 0 13
+$1016 0916 0 0 13
+$0916 1018 0 0 13
+$1018 1119 0 0 13
+$1018 0920 0 0 13
+$1119 1219 0 0 13
+$1219 1419 0 0 13
+$1519 1419 0 0 13
+$1216 1519 0 0 13
+$1216 1616 0 0 13
+$0916 0516 -1 0 13
+$1519 1718 1 0 13
+$1616 1718 1 0 13
+$1616 1816 1 0 13
+$0920 1119 0 0 13
+$0920 0521 -1 1 13
+$1419 1422 0 1 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Chtelvrenzhs  0912 B230568-9  Z De Ni Po           201 Zh
+Ianzhtsieienj 1014 C42456B-9    Ni                 600 Zh
+Flitlapraqr   0916 A465885-8  Z Ri                 200 Zh
+A'shte        0920 A667249-9  Z Lo Ni              103 Zh
+Popriadl      1016 A424541-A  Z Ni                 820 Zh
+Donshzhdietl  1018 A777154-9  Z Lo Ni              405 Zh
+Iantstsikria  1020 X427000-0    Ba Lo Ni        R  023 Zh
+Dadstem       1111 D65658A-7    Ag Ni              124 Zh
+Driediadrizh  1117 C522344-A  Z Lo Ni Po           321 Zh
+Aprmodl       1119 A421335-A  Y Lo Ni Po           422 Zh
+Anskelrqliash 1120 B79A6A9-A    Wa                 524 Zh
+Ezh Eblepr    1215 B7B5889-A  Z Fl                 413 Zh
+Tatlshenchets 1216 C120412-7  Z De Ni Po           223 Zh
+Elenzh        1217 A656522-9    Ag Ni              603 Zh
+Shadliebr     1219 A210345-D  Z Lo Ni              533 Zh
+Ietsiafr      1220 C425664-9                       223 Zh
+Plechti       1311 C444789-8    Ag                 704 Zh
+Shtablste'apr 1319 C656433-5    Ni                 804 Zh
+Vreprfe'      1320 E564202-3    Lo Ni              311 Zh
+BRENSHA'      1411 E7549AC-6    Hi                 424 Zh
+Ziaviple      1413 B978630-7    Ag                 400 Zh
+Pefrinj       1417 E354300-8    Lo Ni              113 Zh
+A'letl        1419 A776852-B  Z Cp                 514 Zh
+Peniensh      1212 A122532-B  Z Ni Po              923 Zh
+Nafril        1514 B122438-A    Ni Po           A  123 Zh
+Odrplazhtipl  1515 X120000-0    Ba De Lo Ni Po  R  023 Zh
+Tsrchzdanzh   1516 E99A341-7    Lo Ni Wa           304 Zh
+Praprvlinsh   1518 B536677-8                       500 Zh
+Chtrdlti      1519 B3248CB-7  Z                    323 Zh
+Chtodlrfl     1520 D101898-9    Ic Na Va        R  623 Zh
+Veed          1611 B545444-A    Ni                 312 Zh
+Tlalkl-88     1613 X242000-0    Ba Lo Ni Po     R  003 Zh
+Qrnshrrnshvl  1615 B848314-B    Lo Ni              323 Zh
+Jdafrfloch    1616 B675768-5  Z Ag                 323 Zh
+                                          
+                                          
+---------------------------------------------------------------------- 
+                                          
+@SUB-SECTOR: Kretlshtiazh SECTOR: Zdiedeiant
+# 
+$1718 1519 -1 0 13
+$1718 1616 -1 0 13
+$1718 1816 0 0 13
+$1816 1813 0 0 13
+$1813 2113 0 0 13
+$2113 2310 0 -1 13
+$1816 1616 -1 0 13
+$1816 2215 0 0 13
+$2113 2215 0 0 13
+$2215 2317 0 0 13
+$2317 2318 0 0 13
+$2318 2219 0 0 13
+$2318 2418 0 0 13
+$2418 2219 0 0 13
+$2418 2517 1 0 13
+$2317 2517 1 0 13
+$1718 1621 -1 1 13
+$2219 1821 0 1 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Shtiede       1713 X8B6000-0    Ba Fl Lo Ni     R  003 Zh
+Jdenzjdanchel 1714 E480213-5    De Lo Ni           103 Zh
+Chanzha-24    1715 X699000-0    Ba Lo Ni        R  003 Zh
+STAEB         1716 C000975-A    As Hi In Na        600 Zh
+Zdrkv-45      1717 X7C4000-0    Ba Fl Lo Ni     R  010 Zh
+Ieyob         1718 C737678-8  Z                    123 Zh
+Stanchqie     1719 B140466-9    De Ni Po           113 Zh
+Jienshjanchi  1811 C6677A6-6    Ag                 323 Zh
+Dlrov         1812 B9A2536-8    Fl Ni              204 Zh
+Stedlav       1813 B89A542-A  Z Ni Wa              823 Zh
+Kretlshtiazh  1816 A8B8431-D  Z Fl Ni Cp           312 Zh
+Zhdadl-74     1817 X434000-0    Ba Lo Ni        R  025 Zh
+DLEELFIASH    1911 B5559AB-8    Hi                 323 Zh
+ZHABRZHIEPR   1916 C9E49CE-7    Fl Hi           U  924 Zh
+Eblaefr       2012 D65758A-6    Ag Ni           U  604 Zh
+Metlvle       2013 X225000-0    Ba Lo Ni        R  022 Zh
+Itszhdazhib   2016 A441676-C    Po              A  202 Zh
+Eblzdantso    2017 X9A6000-0    Ba Fl Lo Ni     R  023 Zh
+Flabrpenz     2113 A8C4368-C  Y Fl Lo Ni           323 Zh
+Iamafe-77     2116 X424000-0    Ba Lo Ni        R  024 Zh
+Eprstiaplzhd  2117 C22269C-A    Na Po              510 Zh
+Sheshflim     2119 E101666-8    Ic Na Va           813 Zh
+Ivranshnep    2019 C989372-7    Lo Ni              123 Zh
+Zdachedl      2212 A735562-9    Ni              A  813 Zh
+Frerdre       2215 B10059A-D  Z Ni Va              303 Zh
+Shtemprik     2219 A544634-9  Y Ag                 105 Zh
+Prikra-98     2220 X6A2000-0    Ba Fl Lo Ni     R  013 Zh
+Kiblil        2311 A000230-E    As Lo Ni           124 Zh
+Ezh Rltlr     2315 C320676-7    De Na Po        U  711 Zh
+Drmopie       2316 E768321-2    Lo Ni              204 Zh
+SASTITLKLISH  2317 C310986-9  Z Hi In Na           500 Zh
+Jeiabr        2318 B541768-8  Z Po                 102 Zh
+Zdiqlji       2320 C120149-9    De Lo Ni Po        114 Zh
+SHTADRQESHR   2413 X647A98-6    Hi In           R  300 Zh
+Iebltlentpli  2415 E555758-5    Ag                 335 Zh
+Zhdenzhezdiaj 2416 E96A656-4    Ri Wa              111 Zh
+IAZHBIM       2418 B5759BA-8  Z Hi In              320 Zh
+                                          
+                                          
+---------------------------------------------------------------------- 
+                                          
+@SUB-SECTOR: Etsia SECTOR: Zdiedeiant
+# 
+$2517 2418 -1 0 13
+$2517 2317 -1 0 13
+$2517 2715 0 0 13
+$2715 2914 0 0 13
+$2914 3013 0 0 13
+$2914 3214 0 0 13
+$2914 3115 0 0 13
+$3214 0213 1 0 13
+$3214 3216 0 0 13
+$3115 3216 0 0 13
+$2517 2919 0 0 13
+$3216 2919 0 0 13
+$2919 2721 0 1 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Chtiliash     2511 A110200-E    Lo Ni              424 Zh
+Epli          2512 C121243-B    Lo Ni Po           124 Zh
+Iae           2516 E694562-5    Ag Ni              803 Zh
+Iajedzhde     2520 C583304-5    Lo Ni              423 Zh
+Elbiaj        2612 A274775-B    Ag                 223 Zh
+Enzhiezdiakr  2517 A538100-B  Z Lo Ni              122 Zh
+Tlinaf        2615 D561330-2    Lo Ni              704 Zh
+Plia'zhdizh   2616 E9D4432-4    Fl Ni           A  700 Zh
+Jiekre        2618 C132851-7    Na Po              404 Zh
+STIZHPLIABL   2619 C547AAC-8    Hi In              203 Zh
+Nizensh-3     2711 X000000-0    As Ba Lo Ni     R  022 Zh
+Ietlzdents    2712 A698864-A                       122 Zh
+Iantstlantsd  2713 C624531-7    Ni                 104 Zh
+Fliashchtatl  2715 B599746-A  Z                    713 Zh
+TIZPAJJER     2717 B957987-7    Hi                 113 Zh
+Anzhrf        2719 X340000-0    Ba De Lo Ni Po  R  020 Zh
+Plijiachnia   2815 E586657-2    Ag Ri              234 Zh
+Otspresh      2817 E757368-2    Lo Ni              210 Zh
+Zdints-28     2911 X6B0000-0    Ba De Lo Ni     R  002 Zh
+Briplzhi      2912 C432755-A    Na Po              422 Zh
+JENCHBLIAQE   2914 B536977-A  Z Hi                 102 Zh
+Ieshtsanshrik 2917 E200599-9    Ni Va              112 Zh
+Vriaiezh      2919 A000301-D  Z As Lo Ni           114 Zh
+Bidedrivr     2920 B300510-B    Ni Va           A  205 Zh
+Zdezhiv-3     3013 A462100-E  Z Lo Ni              713 Zh
+Atlanzh       3015 B335687-9                       123 Zh
+TLRBLIAT      3016 E467AAB-7    Hi                 323 Zh
+Etlzhiazhej   3018 C200425-A    Ni Va              124 Zh
+Omfeiakr      3019 D537135-6    Lo Ni              100 Zh
+Frrdrav       3111 B428655-A                       402 Zh
+YENJA         3112 E8669AA-5    Hi                 210 Zh
+Avifia        3113 C133877-A    Po                 601 Zh
+Biiench       3115 C537565-7  Z Ni                 221 Zh
+ETSIA         3117 A8A099B-A    De Hi Cp           111 Zh
+Mashpepl      3118 D663220-5    Lo Ni              214 Zh
+Drinshivl     3119 C577551-A    Ag Ni              102 Zh
+Qlieprshtie   3120 D757576-2    Ag Ni              202 Zh
+Frakrnialpij  3214 A462354-A  Z Lo Ni              504 Zh
+Atsstoltliavr 3216 B47466A-8  Z Ag                 223 Zh
+                                          
+                                          
+---------------------------------------------------------------------- 
+                                          
+@SUB-SECTOR: Leo SECTOR: Zdiedeiant
+# 
+$0521 0319 0 -1 13
+$0521 0823 0 0 13
+$0823 0726 0 0 13
+$0823 0425 0 0 13
+$0726 0425 0 0 13
+$0425 0727 0 0 13
+$0726 0727 0 0 13
+$0425 0227 0 0 13
+$0227 3129 -1 0 13
+$0823 1022 1 0 13
+$0521 0920 1 -1 13
+$0727 0929 1 0 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Jejdiaiab     0122 D655430-2    Ni                 812 Zh
+Entikqrie     0222 E769403-4    Ni                 403 Zh
+Rdrze         0223 E213110-7    Ic Lo Ni           100 Zh
+Dividonsh     0224 X7A6000-0    Ba Fl Lo Ni     R  032 Zh
+LEO           0425 A35197B-A  Y Hi Po Cp           320 Zh
+Zhapiefiaqr   0227 C120335-8  Z De Lo Ni Po        213 Zh
+Dliefrshtrpl  0229 B300334-9    Lo Ni Va           225 Zh
+Diavtliav     0230 E352322-8    Lo Ni Po           124 Zh
+Chizqrie      0326 E586222-2    Lo Ni              100 Zh
+Febrri'       0429 C765732-5    Ag                 400 Zh
+Dliaa'        0430 E354376-3    Lo Ni              224 Zh
+Qleastia      0521 B79A566-8  Z Ni Wa              622 Zh
+Dozhtsachtie  0522 B300350-A    Lo Ni Va           200 Zh
+Tliprzhepr    0528 X648000-0    Ba Lo Ni        R  033 Zh
+Chteanqa      0621 C322100-B    Lo Ni Po           404 Zh
+Stafrqre'-2   0721 X9A5000-0    Ba Fl Lo Ni     R  025 Zh
+PEKRIZ        0623 C795A89-A    Hi In              224 Zh
+Dliepsrtltits 0726 A221774-D  Z Na Po           A  101 Zh
+Peqlivl       0727 C506558-A  Z Ic Ni Va           523 Zh
+Srshant       0730 X9E7334-0    Fl Lo Ni        R  121 Zh
+Pielar        0821 B475524-B    Ag Ni              610 Zh
+CHTIEDZDA     0823 B8989B8-7  Z Hi In              503 Zh
+Arienjdak     0824 X573000-0    Ba Lo Ni        R  014 Zh
+Ketafr        0825 C475520-5    Ag Ni              335 Zh
+Tsadefla      0826 C6A257B-8    Fl Ni              103 Zh
+Klieqzieikrr  0827 D88A200-6    Lo Ni Wa        U  100 Zh
+                                          
+                                          
+---------------------------------------------------------------------- 
+                                          
+@SUB-SECTOR: Adliev SECTOR: Zdiedeiant
+# 
+$1222 1119 0 -1 10
+$1222 1525 0 0 10
+$1525 1727 1 0 10
+$1022 0823 -1 0 13
+$1022 1222 0 0 13
+$1228 1326 0 0 13
+$1326 1525 0 0 13
+$1222 1422 0 0 13
+$1422 1621 0 0 13
+$1422 1419 0 -1 13
+$1621 1718 1 -1 13
+$1525 1724 1 0 13
+$1621 1724 1 0 13
+$1621 1821 1 0 13
+$1228 0931 0 1 13
+$1228 0929 0 0 13
+$0929 0931 0 1 13
+$0929 0727 -1 0 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Zhoflprz      0922 A478242-A    Lo Ni              423 Zh
+Aed           0928 D255555-4    Ag Ni              614 Zh
+Seninsapr     1022 C35178B-9  Z Po                 134 Zh
+Qielchti      1024 DAD7334-6    Fl Lo Ni           124 Zh
+Ieblrplia     1028 C277766-6    Ag              U  124 Zh
+Niqrmab       0926 B110124-B    Lo Ni              103 Zh
+Ianjklrie     1127 C56259E-4    Ni                 124 Zh
+Eproje        1130 B657699-5    Ag                 411 Zh
+Eshta         1222 A555723-A  Z Ag                 314 Zh
+Rdldlienj     1223 B9687BF-6    Ag                 523 Zh
+ADLIEV        1227 CAB3A53-D    Fl Hi Cp           212 Zh
+Beprka        1228 C679785-7  Z                    123 Zh
+Zdeshshik     1126 D687268-4    Lo Ni              122 Zh
+Jashtoblqrie  1321 B250242-B    De Lo Ni Po        713 Zh
+Ezh Iakrdlat  1325 C87A789-9    Wa                 224 Zh
+Barqizher     1329 C575435-8    Ni                 112 Zh
+Retfezh       1422 C629536-A  Z Ni                 613 Zh
+Chtotspliedi  1326 C9A6876-8  Z Fl                 124 Zh
+Tsechto       1621 B210654-C  Z Na                 222 Zh
+Iezdapl       0929 B7B5555-9  X Fl Ni              103 Zh
+Inchvreidr    1525 A784669-9  Z Ag Ri              324 Zh
+Sha'shtevrfr  1528 D4405A6-8    De Ni Po        A  213 Zh
+Chtentspred   1529 CA9A341-6    Lo Ni Wa           502 Zh
+Plr'ie        1625 C628683-8                       211 Zh
+                                          
+                                          
+---------------------------------------------------------------------- 
+                                          
+@SUB-SECTOR: Sadliavl SECTOR: Zdiedeiant
+# 
+$1727 1525 -1 0 10
+$1727 2029 0 0 10
+$2029 2133 0 1 10
+$1724 1525 -1 0 13
+$1724 1825 0 0 13
+$1825 1727 0 0 13
+$1724 1621 -1 0 13
+$2029 2228 0 0 13
+$1821 2219 0 -1 13
+$1821 1621 -1 0 13
+$1821 1724 0 0 13
+$2228 2530 1 0 13
+$2228 2526 1 0 13
+$2228 2232 0 1 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Priejflrzqli  1721 B401598-D    Ic Ni Va           113 Zh
+SADLIAVL      1724 A527945-B  Z Hi In Cp           610 Zh
+IANSATL       1821 A77A9CB-C  X Hi In Wa           413 Zh
+Portlauss     1825 A351667-C  Z Ni Po           R  200 Dr
+Vierrsh       1828 B584877-9    Ri                 301 Zh
+Oprkreia      1829 C774586-8    Ag Ni              210 Zh
+Kievlbrietsl  2327 E788858-6    Ri              U  114 Zh
+Chtesteq      1923 D5A1256-8    Fl Lo Ni        U  933 Zh
+Sheldia       1927 CAA6410-9    Fl Ni              422 Zh
+Yevre         1727 A300866-9  Z Na Va              103 Zh
+Qrekrsha      1929 X335000-0    Ba Lo Ni        R  010 Zh
+Qashtsetlen   2021 C5788A8-8                       400 Zh
+Vrdlste       2029 A8B4448-C  Z Fl Ni              124 Zh
+ADOASH        1730 C415973-9    Hi Ic In           223 Zh
+Zdabrvlem     2127 XAB7000-0    Ba Fl Lo Ni     R  003 Zh
+Tsedlvlietla  2128 C120433-C    De Ni Po           323 Zh
+Shteprie      2025 C236335-B    Lo Ni              322 Zh
+Drieajdie     2224 C400642-9    Na Va              802 Zh
+Pliepshtie    2226 C121610-B    Na Po              400 Zh
+Inzhshtinzh   2228 B53256B-B  Z Ni Po              803 Zh
+CHTIESHI'CHTE 2328 C888973-A    Hi                 524 Zh
+Ezhdifransh   2428 E625200-7    Lo Ni              103 Zh
+                                          
+                                          
+---------------------------------------------------------------------- 
+                                          
+@SUB-SECTOR: Tlabqlel SECTOR: Zdiedeiant
+# 
+$2530 2228 -1 0 13
+$2530 2630 0 0 13
+$2630 2730 0 0 13
+$2730 2830 0 0 13
+$2830 3030 0 0 13
+$2830 3029 0 0 13
+$2530 2526 0 0 13
+$2526 2228 -1 0 13
+$2526 2624 0 0 13
+$2624 2723 0 0 13
+$2723 2721 0 0 13
+$2721 2919 0 -1 13
+$2723 2923 0 0 13
+$2923 2924 0 0 13
+$2624 2924 0 0 13
+$3030 3029 0 0 13
+$3029 3026 0 0 13
+$3026 2924 0 0 13
+$2924 3224 0 0 13
+$3224 3026 0 0 13
+$2730 2530 0 0 13
+$2630 2830 0 0 13
+$2730 3029 0 0 13
+$3026 2624 0 0 13
+$2923 3224 0 0 13
+$3224 0325 1 0 13
+$3026 0127 1 0 13
+$3029 0230 1 0 13
+$3030 0230 1 0 13
+$2530 2232 -1 1 13
+$2530 2532 0 1 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Zhiefrzetlmi  2523 A6A28AB-C    Fl                 703 Zh
+Ienspliesh    2526 A320344-E  Z De Lo Ni Po        300 Zh
+Ekle          2728 C4478AA-8                       223 Zh
+TLABQLEL      2530 A534952-E  Z Hi Cp              223 Zh
+Stizeprr      2623 B687545-9    Ag Ni              420 Zh
+Niekrpiansh   2624 A545763-B  Z Ag                 114 Zh
+Zhdetlafrqia  2625 C652301-9    Lo Ni Po           112 Zh
+Tlinshzhdiak  2627 A000414-E    As Ni              102 Zh
+Tledrfra'iesh 2628 X260225-4    De Lo Ni        R  423 Zh
+ABRINJ        2630 A5539BD-9  Z Hi Po           A  824 Zh
+Jdipchtizh    2721 A746551-E  Z Ag Ni              323 Zh
+Ezh Evlmr     2723 A000732-E  Z As Na              214 Zh
+AEQEFL        2726 C55898A-A    Hi                 320 Zh
+Plidrla       2727 D471310-7    Lo Ni              123 Zh
+Charchienj    2730 A6B368D-A  Z Fl                 314 Zh
+Oriansh-38    2821 X8C3000-0    Ba Fl Lo Ni     R  002 Zh
+Ianzhyiql     2822 C200623-8    Na Va              124 Zh
+Klefbrasensdi 2823 C212654-B    Ic Na              712 Zh
+Stavrfredapr  2824 B32569B-9                       123 Zh
+Tliachqash    2827 C402557-A    Ic Ni Va           722 Zh
+Stianchevra   2829 C11068C-B    Na                 114 Zh
+IENCHAQLANSH  2830 A55A976-E  Z Hi Wa              622 Zh
+Friefatli     2921 C224335-B    Lo Ni              525 Zh
+Blitsel       2922 B684697-9    Ag Ri              120 Zh
+Aiedr         2923 A7B3643-B  Z Fl                 102 Zh
+Dlinzhchtiav  2924 B565510-A  Z Ag Ni              201 Zh
+Iejep         2927 B11068D-9    Na                 204 Zh
+Ibrovlenzh    3022 D2378B8-7                       120 Zh
+Tloinzhzhde   3024 E87A213-6    Lo Ni Wa           912 Zh
+Arzhdai       3026 A532368-B  Y Lo Ni Po           632 Zh
+Arqa          2928 A549202-E    Lo Ni           A  222 Zh
+Ravlchtie     3029 A210640-C  Z Na                 102 Zh
+Yemvrqlchtr   3030 C441647-5  Z Po                 110 Zh
+Inzflensdlie  3126 C100300-A    Lo Ni Va        A  403 Zh
+ZHANCHABTE    3127 B783AFF-D    Hi                 113 Zh
+AVQLIEFR      3223 D523A99-7    Hi In Po           413 Zh
+IVA           3224 C583ACD-B  Z Hi                 110 Zh
+Chtiedlbraia  3227 E561558-7    Ni                 114 Zh
+Shteblstan    3229 B20089D-C    Na Va              100 Zh
+                                          
+                                          
+---------------------------------------------------------------------- 
+                                          
+@SUB-SECTOR: Qrtlievl SECTOR: Zdiedeiant
+# 
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Qrtlievl      0135 C454432-A    Ni Cp              122 Zh
+Plit-79       0332 X232000-0    Ba Lo Ni Po     R  020 Zh
+Uevro         0432 C3515X6-9    Ni Po           R  322 Dr
+Ple'qlef      0531 E456400-7    Ni              U  111 Zh
+Eddrial       0132 C365794-7    Ag Ri              324 Zh
+Adrkan        0631 C140459-7    De Ni Po           124 Zh
+Zhdidlpens    0831 D15079C-7    De Po              214 Zh
+                                          
+                                          
+---------------------------------------------------------------------- 
+                                          
+@SUB-SECTOR: Ieprsidr SECTOR: Zdiedeiant
+# 
+$0931 1228 0 -1 13
+$0931 0929 0 -1 13
+$1535 1935 1 0 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Abipr         0931 C9997BA-6  Z                    203 Zh
+Nabak-3       1031 X7B1000-0    Ba Fl Lo Ni     R  034 Zh
+Tlafr-63      1140 X647000-0    Ba Lo Ni        R  021 Zh
+Plafochtar    1240 E554556-6    Ag Ni              812 Zh
+Plinchflilzdi 1338 C67559A-8    Ag Ni              135 Zh
+Ieprsidr      1340 B65A897-9    Wa Cp              413 Zh
+Eztlev        1535 B45089D-7  Z De Po              324 Zh
+Ie'tlie'chti  1538 C310864-7    Na                 113 Zh
+                                          
+                                          
+---------------------------------------------------------------------- 
+                                          
+@SUB-SECTOR: Abrrnzh SECTOR: Zdiedeiant
+# 
+$2133 2029 0 -1 10
+$2133 2435 0 0 10
+$2435 2539 1 0 10
+$1935 1535 -1 0 13
+$1935 2133 0 0 13
+$1935 2035 0 0 13
+$2035 2037 0 0 13
+$2037 2435 0 0 13
+$2035 2435 0 0 13
+$2435 2436 0 0 13
+$2436 2437 0 0 13
+$2437 2338 0 0 13
+$2338 2238 0 0 13
+$2238 2037 0 0 13
+$2133 2134 0 0 13
+$2134 2035 0 0 13
+$2133 2232 0 0 13
+$2232 2228 0 -1 13
+$2232 2530 1 -1 13
+$2232 2532 1 0 13
+$2437 2539 1 0 13
+$2238 2539 1 0 13
+$2435 2536 1 0 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Entszhaiesh   1737 C88A566-9    Ni Wa              132 Zh
+IAZSHEFR      1740 A6A2A69-C    Fl Hi              313 Zh
+Standriabna   1834 B00087A-A    As Na              324 Zh
+Vla'ozhr      1835 A777213-D    Lo Ni              423 Zh
+Ezh Brempla'  1838 B4427CC-B    Po                 434 Zh
+IAQLRIEDRFRI  1931 E884ADA-8    Hi                 310 Zh
+Zizziadl      1935 A656866-C  Z                    205 Zh
+ABRRNZH       1939 A995983-D    Hi In Cp           614 Zh
+Iezhqibr      1940 B2636BG-9                       412 Zh
+Elchtie       2031 A434667-C                       201 Zh
+Peno          2035 AABA432-E  Z Fl Ni Wa           110 Zh
+Inchshtienem  1937 E234655-7                       203 Zh
+Dleqridantso  2037 A210435-E  Z Ni                 224 Zh
+Eiz           2038 C883744-6    Ri                 114 Zh
+Ye'strz       2039 D120432-7    De Ni Po           633 Zh
+Drejdiaql     2131 C563898-6    Ri              U  203 Zh
+Steblsta      2132 E79A59A-8    Ni Wa              810 Zh
+Elnez         2134 C302612-9  Z Ic Na Va           403 Zh
+Lrpro         2136 C558238-8    Lo Ni              322 Zh
+Iatsazfrep    2239 C565788-8    Ag Ri              300 Zh
+Liflshi       2139 A000647-C    As Na              101 Zh
+Ezrp          2232 C78649A-7  Z Ni                 413 Zh
+Stietjde      2133 B526323-A  Z Lo Ni              422 Zh
+Onsiez        2234 C200323-A    Lo Ni Va           202 Zh
+Jiatlriapl    2135 B450456-D    De Ni Po           122 Zh
+Stedrie       2238 A662351-C  Z Lo Ni              113 Zh
+Nrtldlienz    2240 E0007A9-9    As Na              212 Zh
+Tenshetlchte  2331 B545422-B    Ni                 322 Zh
+Ilqe          2332 C257488-9    Ni                 113 Zh
+Yinzhie       2335 A431124-D    Lo Ni Po           511 Zh
+Tlienjtliesh  2338 A4008BG-E  Z Na Va              200 Zh
+Zhdidiefr     2340 A101751-E    Ic Na Va           310 Zh
+Adrieshtlie   2433 A662574-B    Ni                 123 Zh
+Rzdiaa        2435 A692644-A  Z                    114 Zh
+IQLCHTEETL    2436 B6489A9-C  Z Hi In              333 Zh
+Peplrt        2437 A37369E-C  Y                    625 Zh
+PLINZHAVRA    2440 D614ADA-8    Hi Ic In           324 Zh
+                                          
+                                          
+---------------------------------------------------------------------- 
+                                          
+@SUB-SECTOR: Tliekrbliepl SECTOR: Zdiedeiant
+# 
+$2539 2435 -1 0 10
+$2539 2501 0 1 10
+$2532 2530 0 -1 13
+$2532 2232 -1 0 13
+$2539 2437 -1 0 13
+$2539 2238 -1 0 13
+$2539 2536 0 0 13
+$2536 2532 0 0 13
+$2536 2435 -1 0 13
+$2532 2832 0 0 13
+$2832 2933 0 0 13
+$2933 3033 0 0 13
+$3033 3034 0 0 13
+$3034 2935 0 0 13
+$2935 2836 0 0 13
+$2836 2737 0 0 13
+$2737 2539 0 0 13
+$2539 2838 0 0 13
+$2838 2837 0 0 13
+$2837 2737 0 0 13
+$2837 2836 0 0 13
+$2737 2636 0 0 13
+$2636 2536 0 0 13
+$2838 3038 0 0 13
+$3038 3138 0 0 13
+$3038 3240 0 0 13
+$2836 3138 0 0 13
+$3138 3034 0 0 13
+$3034 0135 1 0 13
+$3138 0337 1 0 13
+$2838 2802 0 1 13
+$3240 3003 0 1 13
+$3240 0339 1 0 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Sezr          2732 B9E1476-8    Fl Ni              310 Zh
+Tlakrtsed     2532 B56A445-C  Z Ni Wa              600 Zh
+Eblfri'       2633 C638100-8    Lo Ni              424 Zh
+Vreshflichfi  2536 A838544-D  Z Ni                 123 Zh
+SHIENSHOQLI   2637 C537989-A    Hi                 210 Zh
+Iatsa-17      2631 X678000-0    Ba Lo Ni        R  034 Zh
+Doqlnabrsapl  2632 C87489A-8                       123 Zh
+Blafidlia'    2635 C331610-A    Na Po              323 Zh
+Vaad          2636 A525488-B  Z Ni                 802 Zh
+Ieplliepl     2640 D633777-6    Po                 615 Zh
+Qliekklia     2735 D9E2665-5    Fl                 100 Zh
+Rqla          2736 X8B5000-0    Ba Fl Lo Ni     R  004 Zh
+Bleqiqr       2737 B55868A-8  Z Ag                 201 Zh
+Dreiadljat    2832 A768440-A  Z Ni                 313 Zh
+Iachtokzhdanj 2836 C1006AB-7  Z Na Va              412 Zh
+Atschte       2837 B400333-D  Z Lo Ni Va           124 Zh
+Flrnchfrabr   2838 B684340-9  Z Lo Ni              521 Zh
+Iabliansh     2933 B5248AA-9  Z                    100 Zh
+Bikrshia      2934 A514300-E    Ic Lo Ni           213 Zh
+Dliabrne      2935 C311645-A  Z Ic Na              200 Zh
+Iepla         3036 C995678-8    Ag              A  100 Zh
+Lisheenz      3033 B759311-B  Z Lo Ni              225 Zh
+Ebltliapr     3034 B979861-B  Z                    510 Zh
+Drnshobl      3035 E110574-A    Ni              A  103 Zh
+Ietlmenz      3038 B758789-9  Z Ag                 123 Zh
+TLIEKRBLIEPL  2539 A46697C-E  Z Hi Cp              411 Zh
+Tlepriadbia   3132 B78A552-D    Ni Wa              410 Zh
+Nazevble      3134 AAE8537-C    Fl Ni              100 Zh
+Jeqleshsie    3135 A51389A-C    Ic                 111 Zh
+Eqlke         3137 C616342-9    Ic Lo Ni           123 Zh
+Jdachech      3138 A59668B-C  Z Ag                 122 Zh
+Keshaa        3232 B7A366A-9    Fl                 123 Zh
+Klefrfe'      3233 C545545-9    Ag Ni              302 Zh
+ASHZHDI'PRIPL 3235 B43596A-B    Hi                 224 Zh
+Stiejdanch    3237 A422798-E    Na Po              425 Zh
+Shtiechdledr  3238 B427356-E    Lo Ni              124 Zh
+Idrzetl       3240 B764673-7  Z Ag Ri              424 Zh
+                                          

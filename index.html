@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<title>The Traveller Map</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!--[if lt IE 9]><meta http-equiv="X-UA-Compatible" content="chrome=1"><![endif]-->
+<!--[if lt IE 9]><meta http-equiv="imagetoolbar" content="no"><![endif]-->
+<link rel="alternate" type="application/atom+xml" title="Traveller Map News - Atom" href="http://travellermap.blogspot.com/feeds/posts/default">
+<link rel="alternate" type="application/rss+xml" title="Traveller Map News - RSS" href="http://travellermap.blogspot.com/feeds/posts/default?alt=rss">
+<link rel="shortcut icon" href="/favicon.ico">
+
+<!-- Facebook Open Graph -->
+<meta property="og:title" content="The Traveller Map">
+<meta property="og:type" content="website">
+<meta property="og:url" content="http://travellermap.com">
+<meta property="og:image" content="http://travellermap.com/res/ui/fb.png">
+<meta property="og:site_name" content="The Traveller Map">
+<meta property="fb:admins" content="617166358">
+
+<link rel="stylesheet" href="map.css?update=2013-07-25">
+<style>
+/* Note: Nested user-select is not currently supported in Mozilla, so the "allowSelection" variant is not yet used. */
+.blockSelection { -moz-user-select: none; -webkit-user-select: none; user-select: none; }
+.allowSelection { -moz-user-select: text; -webkit-user-select: text; user-select: text; }
+</style>
+
+<!--[if lt IE 8]><script>alert("IE7 is no longer supported. Jumping to the basic version.");location='Mobile.aspx';</script><![endif]-->
+<script src="polyfill/polyfill.js?update=2013-07-25"></script>
+<script src="map.js?update=2013-07-25"></script>
+<script src="handlebars.js?update=2013-07-25"></script>
+<script src="index.js?update=2013-07-25"></script>
+<style>
+.box
+{
+    position: absolute; left: 10px; right: 10px; top: 10px; bottom: 10px;
+}
+
+.spinward
+{
+    text-align: center; writing-mode: tb-rl; filter: flipv fliph;
+    transform: translateX(-50%) translateX(0em) rotate(270deg) translateY(50%);
+    -webkit-transform: translateX(-50%) translateX(0em) rotate(270deg) translateY(50%);
+    -moz-transform: translateX(-50%) translateX(0em) rotate(270deg) translateY(50%);
+    -o-transform: translateX(-50%) translateX(0em) rotate(270deg) translateY(50%);
+}
+
+.trailing
+{
+    text-align: center; writing-mode: tb-rl; filter: flipv fliph;
+    transform: translateX(50%) translateX(-1.2em) rotate(270deg) translateY(50%);
+    -webkit-transform: translateX(50%) translateX(-1.2em) rotate(270deg) translateY(50%);
+    -moz-transform: translateX(50%) translateX(-1.2em) rotate(270deg) translateY(50%);
+    -o-transform: translateX(50%) translateX(-1.2em) rotate(270deg) translateY(50%);
+}
+</style>
+
+<body style="margin: 0; padding: 0; border: none; overflow: hidden; width: 100%; height: 100%; max-height: 100%;">
+
+  <div style="display:none">
+    The Traveller Map is a interactive map of the universe of the Traveller role playing game, incorporating official data
+    and fan submissions. The site also provides services for generating custom maps and Web APIs for incorporating maps into
+    other sites.
+  </div>
+
+  <!-- Map Display (expands) -->
+  <div id="PageMainPane" class="blockSelection">
+    <div class="box">
+      <div id="dragContainer" class="galdir" style="position: absolute; overflow: hidden; width: 100%; height: 100%;" tabindex="0">
+        <div id="GalacticDirectionDisplay" style="position: absolute; width: 100%; height: 100%; z-index: 2000;">
+          <div style="position: absolute; top: 4px; left: 0; right: 0; text-align: center;">Coreward</div>
+          <div style="position: absolute; bottom: 4px; left: 0; right: 0; text-align: center;">Rimward</div>
+          <div class="spinward" style="position: absolute; top: 0; height: 100%; left: 4px;">Spinward</div>
+          <div class="trailing" style="position: absolute; top: 0; height: 100%; right: 4px;">Trailing</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Controls (docked right) -->
+  <div id="PageRightPane">
+
+    <div id="Controls" class="box">
+
+      <div id="accordion" style="position: absolute; left: 5px; width: 200px; top: 5px; bottom: 5px; overflow: hidden;">
+
+        <!-- Style -->
+        <div class="accordionsection accordion_open" id="style" style="top: 0; height: 310px;">
+          <div class="accordionheader" id="style_toggle">
+          <span class="expand">[+]</span><span class="collapse">[&minus;]</span>
+          Style:</div>
+          <div class="accordioncontents">
+            <p style="margin-top: 0; margin-bottom: 0.5em; padding: 0;">
+              <select id="SelectStyle" size="1" style="width: 190px;" title="Select a different visual style">
+                <option value="poster" selected="selected">Poster</option>
+                <option value="print">Print</option>
+                <option value="atlas">Atlas</option>
+                <option value="candy">Candy</option>
+              </select>
+
+            <p style="margin-bottom: 0.5em;" title="Select the zoom level">
+              <strong>Scale: (pixels/parsec)</strong>
+              <br>
+              <select id="SelectScale" size="1" style="width: 190px">
+                <option value="0.015625">1/64 (Galaxy)</option>
+                <option value="0.03125">1/32</option>
+                <option value="0.0625">1/16</option>
+                <option value="0.125">1/8</option>
+                <option value="0.25">1/4 (Local Arm)</option>
+                <option value="0.5">1/2</option>
+                <option value="1">1</option>
+                <option value="2" selected="selected">2 (Charted Space)</option>
+                <option value="4">4</option>
+                <option value="8">8</option>
+                <option value="16">16 (Sector)</option>
+                <option value="32">32</option>
+                <option value="64">64 (Subsector)</option>
+                <option value="128">128</option>
+                <option value="256">256</option>
+                <option value="512">512 (System)</option>
+              </select>
+              
+            <p style="margin-bottom: 0.5em;">
+              <strong>Sector Grid:</strong>
+              <label title="Show sector and subsector grid lines"><input type="radio" name="grid" value="true" id="ShowSectorGrid" checked="checked"> On</label>
+              <label title="Hide sector and subsector grid lines"><input type="radio" name="grid" value="false" id="HideSectorGrid"> Off</label>
+
+            <p><strong>Labels:</strong>
+            <div class="indent" style="margin-bottom: 0.5em;">
+              <p><label title="Show or hide the direction labels around the edge of the map"><input type="checkbox" id="ShowGalacticDirections" checked="checked"> Galactic Direction</label>
+              <p><label title="Show or hide sector and subsector names"><input type="checkbox" id="ShowSectorNames" checked="checked"> Sectors</label>
+              <div class="indent" id="sector_label_options">
+                <p><label title="Show only the names of selected sectors when zoomed out"><input type="radio" name="sector_names" id="ShowSelectedSectorNames" checked="checked" value="ShowSelectedSectorNames"> Selected</label>
+                <p><label title="Show the names of all sectors when zoomed out"><input type="radio" name="sector_names" id="ShowAllSectorNames" value="ShowAllSectorNames"> All</label>
+              </div>
+              <p>Governmental Bodies
+              <div class="indent">
+                <p><label title="Display political borders"><input type="checkbox" checked="checked" id="ShowGovernmentBorders"> Borders</label>
+                <p><label title="Display government and region names"><input type="checkbox" checked="checked" id="ShowGovernmentNames"> Names</label>
+                <p><label title="Show important capital worlds when zoomed out"><input type="checkbox" checked="checked" id="ShowCapitals"> Capitals</label>
+                <p><label title="Show important home worlds when zoomed out"><input type="checkbox" checked="checked" id="ShowHomeworlds"> Home Worlds</label>
+              </div>
+            </div>
+            <p><strong>Appearance:</strong>
+            <div class="indent" style="margin-bottom: 0.5em;">
+                <p><label title="Always use hexagonal parsecs&#x0a;[BETA TESTING: May be removed]"><input type="checkbox" id="cbForceHexes"> Force Hexes &beta;</label>
+                <p><label title="Use more colors for world features&#x0a;[BETA TESTING: May be removed]"><input type="checkbox" id="cbWorldColors"> World Colors &beta;</label>
+                <p><label title="Fill borders to make regions more visible&#x0a;[BETA TESTING: May be removed]"><input type="checkbox" id="cbFilledBorders"> Filled Borders &beta;</label>
+              </div>
+          </div>
+        </div>
+
+        <!-- Search -->
+        <div class="accordionsection" id="search" style="top: 310px; bottom: 108px;">
+          <div class="accordionheader" id="search_toggle">
+          <span class="expand">[+]</span><span class="collapse">[&minus;]</span>
+          Search:</div>
+          <div style="position: absolute; top: 18px; left: 0; height: 27px;">
+            <form action="get" id="SearchForm" style="white-space: nowrap;">
+              <input type="text" value="" style="width: 125px;" class="allowSelection" id="SearchText" title="Type a world, subsector or sector name then click Search. Prefix with uwp: to search UWPs. Use * and ? as wildcards.">
+              <input type="submit" value="Search" style="width: 60px;" id="SubmitSearch" title="Type a world, subsector or sector name then click Search">
+            </form>
+          </div>
+          <div class="accordioncontents" style="top: 45px;">
+            <div id="SearchDisplay" style="padding: 2pt;">
+              <div id="SearchResults">&nbsp;</div>
+              <script id="SearchResultsTemplate" type="text/x-handlebars-template">
+                <div>
+                  {{#Results.Items}}
+                    {{#World}}
+                      <div style="font-size: 125%;"><a title="Navigate to {{Name}}" href="" onclick="{{onclick}}">{{Name}}</a></div>
+                      <div style="margin-left: 10pt;">{{Sector}} {{Hex}}</div>
+                      {{#Title}}<div style="margin-left: 10pt;">{{.}}</div>{{/Title}}
+                      {{#Uwp}}<div style="margin-left: 10pt;">{{.}}</div>{{/Uwp}}
+                    {{/World}}
+                    {{#Subsector}}
+                      <div style="font-size: 125%;"><a title="Navigate to {{Name}}" href="" onclick="{{onclick}}">{{Name}}</a></div>
+                      <div style="margin-left: 10pt;">Subsector {{Index}} of {{Sector}}</div>
+                    {{/Subsector}}
+                    {{#Sector}}
+                      <div style="font-size: 125%;"><a title="Navigate to {{Name}}" href="" onclick="{{onclick}}">{{Name}}</a></div>
+                      <div style="margin-left: 10pt;">Sector</div>
+                    {{/Sector}}                
+                  {{/Results.Items}}
+                  {{^Results.Items}}
+                    <div><i>No matches found.</i></div>
+                  {{/Results.Items}}
+                </div>
+              </script>
+              <div id="SearchProgress" style="text-align: center;">
+                <img id="ProgressImage" src="res/ui/ajax-loader.gif" alt="Searching..." style="width: 32px; height: 32px; margin: 6px;">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Legend -->
+        <div class="accordionsection" id="legend" style="height: 18px; bottom: 90px;">
+          <div class="accordionheader" id="legend_toggle">
+          <span class="expand">[+]</span><span class="collapse">[&minus;]</span>
+          Legend:</div>
+          <div class="accordioncontents">
+            <div class="section">
+              <h2>Map Legend</h2><br>
+              <div id="image1"></div>
+              <div id="image2"></div>
+            </div>
+            <div id="world_colors" class="section">
+              <h2>World<br>Characteristics</h2><br>
+              <ul class="basic_world_colors">
+                  <li><span class="glyph" style="font-size: 14pt;">&bull;</span> No Water Present
+                  <li><span class="glyph water" style="font-size: 14pt;">&bull;</span> Water Present
+                  <li><span class="glyph" style="font-size: 12pt;">:::</span> Asteroid Belt
+              </ul>
+              <ul class="extended_world_colors">
+                  <li><span class="glyph RiAg" style="font-size: 14pt;">&bull;</span> Rich &amp; Agricultural
+                  <li><span class="glyph Ag" style="font-size: 14pt;">&bull;</span> Agricultural
+                  <li><span class="glyph Ri" style="font-size: 14pt;">&bull;</span> Rich
+                  <li><span class="glyph In" style="font-size: 14pt;">&bull;</span> Industrial
+                  <li><span class="glyph corrosive" style="font-size: 14pt;">&bull;</span> Corrosive/Insidious
+                  <li><span class="glyph Va" style="font-size: 14pt;">&bull;</span> Vacuum
+                  <li><span class="glyph water" style="font-size: 14pt;">&bull;</span> Water Present
+                  <li><span class="glyph" style="font-size: 14pt;">&bull;</span> No Water Present
+                  <li><span class="glyph" style="font-size: 12pt;">:::</span> Asteroid Belt
+              </ul>
+            </div>
+            <div id="bases" class="section">
+              <h2>Bases</h2><br>
+              <ul>
+                <li><span class="glyph" style="font-size: 8pt;">&#x2605;</span> Imperial Naval Base
+                <li><span class="glyph" style="font-size: 10pt;">&#x25B2;</span> Scout Base
+                <li><span class="glyph highlight" style="font-size: 10pt;">&#x25B2;</span> Scout Way Station
+                <li><span class="glyph" style="font-size: 10pt;">&#x25A0;</span> Naval Depot
+
+                <li><span class="glyph" style="font-size: 12pt;">&diams;</span> Zhodani Base
+                <li><span class="glyph highlight" style="font-size: 12pt;">&diams;</span> Zhodani Relay Station
+                <li><span class="glyph highlight" style="font-size: 10pt;">&#x25A0;</span> Zhodani Depot
+
+                <li><span class="glyph highlight" style="font-size: 8pt;">&#x2605;</span> Vargr Naval Base
+                <li><span class="glyph" style="font-size: 10pt;">**</span> Vargr Corsair Base
+
+                <li><span class="glyph highlight" style="font-size: 8pt;">&#x2605;</span> K'kree Naval Base
+                <li><span class="glyph highlight" style="font-size: 10pt;">&#x25A0;</span> K'kree Naval Outpost
+
+                <li><span class="glyph highlight" style="font-size: 8pt;">&#x2605;</span> Solomani Naval Base
+
+                <li><span class="glyph" style="font-size: 10pt;">**</span> Aslan Clan Base
+                <li><span class="glyph highlight" style="font-size: 8pt;">&#x2605;</span> Aslan Tlauku Base
+
+                <li><span class="glyph highlight" style="font-size: 8pt;">&#x2605;</span> Federation Naval Base
+                <li><span class="glyph" style="font-size: 10pt;">**</span> Federation Embassy
+
+                <li><span class="glyph highlight" style="font-size: 8pt;">&#x2605;</span> Droyne Naval Base
+                <li><span class="glyph" style="font-size: 10pt;">&#x2726;</span> Droyne <span style="display: none">Military</span> Garrison
+
+                <li><span class="glyph highlight" style="font-size: 8pt;">&#x2605;</span> Naval Base
+                <li><span class="glyph" style="font-size: 10pt;">&#x2726;</span> Military Base
+                <li><span class="glyph" style="font-size: 12pt;">&bull;</span> Independent Base
+        
+                <li><span class="glyph highlight" style="font-size: 10pt;"><b>&Gamma;</b></span> Research Station
+                <li><span class="glyph" style="font-size: 10pt;"><b>R</b></span> Imperial Reserve
+                <li><span class="glyph highlight" style="font-size: 10pt;"><b>P</b></span> Imperial Prison
+                <li><span class="glyph" style="font-size: 10pt;"><b>X</b></span> Exile Camp
+              </ul>
+            </div>
+            <div class="section">
+              <h2>Travel Zones</h2><br>
+              <ul>
+                <li><span class="glyph amberzone" style="font-size: 12pt;">&#x25AC;</span> Amber Zone
+                <li><span class="glyph redzone" style="font-size: 12pt;">&#x25AC;</span> Red Zone
+              </ul>
+            </div>
+            <div class="section">
+              <h2>Population</h2><br>
+              <ul>
+                <li><span>Secundus</span> &nbsp; under 1 billion
+                <li><span>PRIMUS</span> &nbsp; over 1 billion
+                <li><span class="highlight">Highlighted</span> world names<br>are subsector capitals
+                </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- View -->
+        <div class="accordionsection accordion_open" id="scroll" style="bottom: 0; height: 90px;">
+          <div class="accordionheader" id="scroll_toggle">
+          <span class="expand">[+]</span><span class="collapse">[&minus;]</span>
+          Scroll Map:</div>
+          <div class="accordioncontents" style="overflow: hidden;">
+            <div style="text-align: center;">
+              <input style="margin: 1px;" type="button" id="ScrollCoreward" value="Coreward" title="Scroll Coreward (shortcut: I)"><br>
+              <span style="white-space: nowrap;">
+                <input style="margin: 1px;" type="button" id="ScrollSpinward" value="Spinward" title="Scroll Spinward (shortcut: J)"><input
+                  style="margin: 1px;" type="button" id="ScrollTrailing" value="Trailing" title="Scroll Trailing (shortcut: L)"></span><br>
+              <input style="margin: 1px;" type="button" id="ScrollRimward" value="Rimward" title="Scroll Rimward (shortcut: K)">
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer (docks bottom) -->
+  <div id="PageBottomPane">
+    <hr id="stripe">
+    <div id="LogoImage" title="Traveller&reg; - Science Fiction Adventure in the Far Future">&nbsp;</div>
+
+    <div id="social" style="float: right; width: 90px;">
+      <div><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://travellermap.com" data-count="none">Tweet</a></div>
+      <div class="g-plusone" data-size="medium" data-annotation="none" data-href="http://travellermap.com"></div>
+      <div class="fb-like" data-href="http://travellermap.com" data-send="false" data-layout="button_count" data-width="90" data-show-faces="false" data-colorscheme="dark"></div>
+    </div>
+
+    <div style="font-style: italic">
+      The Traveller game in all forms is owned by Far Future Enterprises. Copyright &copy; 1977 - 2013 Far Future Enterprises.
+
+      <br>
+      <a title="Data sources, authors, and publishers" target="_blank" href="credits.htm">Credits</a>
+      <a title="News and feedback - in syndication format" target="_blank" href="http://travellermap.blogspot.com/">Blog &amp; Feedback</a>
+      <a title="Write your own code that uses the site" target="_blank" href="api.htm">API</a>
+      <a title="Optimized for use on mobile phones" id="mobile" href="http://travellermap.com/Mobile.aspx">Mobile</a>
+      <a title="Experimental version for touch-aware devices like iPads" id="touch" href="http://travellermap.com/touch/">Touch</a>
+      <a title="Details about the SEC data format" target="_blank" id="format" href="formats.htm">Formats</a>
+      <a title="Information about the Traveller Map page" target="_blank" href="info.htm">About</a>
+
+    </div>
+    <br>
+    <div id="MetadataDisplay">&nbsp;</div>
+    <script id="SectorMetadataTemplate" type="text/x-handlebars-template">
+      {{#SectorName}}<a title="Generate LBB for {{.}}" target="_blank" href="sector.htm?sector={{.}}">{{.}}</a>{{/SectorName}}
+      {{#SectorEra}}(circa {{.}}){{/SectorEra}}
+      <br>
+      <i>
+        {{Attribution}}
+        {{#SectorRef}}<a target="_blank" href="{{.}}">Source</a>{{/SectorRef}}
+        {{#DataURL}}<a title="Raw data for {{../SectorName}}" target="_blank" href="{{.}}">Data</a>{{/DataURL}}
+        {{#PosterURL}}<a title="PDF map of {{../SectorName}}" target="_blank" href="{{.}}">Poster</a>{{/PosterURL}}      
+
+        {{#ProductRef}}
+        &mdash; <a title="Publisher's Catalog" target="_blank" href="{{.}}">{{../ProductTitle}} by {{../ProductAuthor}}, {{../ProductPublisher}}</a>
+        {{/ProductRef}}
+      </i>
+    </script>
+    <script id="WorldMetadataTemplate" type="text/x-handlebars-template">
+      {{#SectorName}}<a title="Generate LBB for {{.}}" target="_blank" href="sector.htm?sector={{.}}">{{.}}</a>{{/SectorName}}
+      {{WorldHex}} <b>{{WorldName}}</b> {{WorldUwp}}
+      {{#SectorEra}}(circa {{.}}){{/SectorEra}}
+      {{#SubsectorName}}(Subsector {{../SubsectorIndex}}: {{.}}){{/SubsectorName}}
+      <br>
+      <i>
+        {{Attribution}} 
+        {{#SectorRef}}<a target="_blank" href="{{.}}">Source</a>{{/SectorRef}}
+        {{#DataURL}}<a title="Raw data for {{../SectorName}}" target="_blank" href="{{.}}">Data</a>{{/DataURL}}
+        {{#PosterURL}}<a title="PDF map of {{../SectorName}}" target="_blank" href="{{.}}">Poster</a>{{/PosterURL}}  
+        {{#ProductRef}}
+        &mdash; <a title="Publisher's Catalog" target="_blank" href="{{.}}">{{../ProductTitle}} by {{../ProductAuthor}}, {{../ProductPublisher}}</a>
+        {{/ProductRef}}
+    </script>
+
+  </div>
+
+  <!-- Google+ -->
+  <script>
+    (function() {
+      var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+      po.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+    })();
+  </script>
+
+  <!-- Twitter -->
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+  <!-- Facebook -->
+  <div id="fb-root"></div><script>(function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "//connect.facebook.net/en_US/all.js#xfbml=1"; fjs.parentNode.insertBefore(js, fjs); }(document, 'script', 'facebook-jssdk'));</script>
+
+  <!-- Google Analytics -->
+  <script>
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18610679-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+</body>
+

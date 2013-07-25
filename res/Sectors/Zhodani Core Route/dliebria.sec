@@ -1,0 +1,324 @@
+Dliebriatia
+
+A: Ranzevl                   A.dat
+B: Eje                       B.dat
+C: Prazhzenzflia             C.dat
+D: Pieveint                  D.dat
+E: Chiplpria                 E.dat
+F: Chesheblchie              F.dat
+G: Rofriekl                  G.dat
+H: Chavlnchienzflesh         H.dat
+I: Dlintsziafedl             I.dat
+J: Sakleier                  J.dat
+K: Riavletsie                K.dat
+L: Flafrjienchnsiedl         L.dat
+M: Plajshifrdlienj           M.dat
+N: Tiafabrtsa                N.dat
+O: Dredliea                  O.dat
+P: Bliplpreie                P.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+Z = Zhodani Navy
+Y = Zhodani Depot
+X = Zhodani Relay
+  = None
+
+Allegiance:
+11 Zh = Zhodani
+01 Zc = Zhodani Client
+10 Dr = Droyne
+07 Na = Non-Aligned
+08    = Unknown
+                                          
+                                          
+This sector was created by Clifford Linehan
+
+I wish to thank Marc Miller for his invaluable advice in the creation of this
+sector and the Core Route.
+
+Clifford Linehan - cnl.rubicon@juno.com
+http://www.geocities.com/traveller_core_route
+Developer: Vlanchiets Qlom and the Core Route.
+                                          
+                                          
+@SUB-SECTOR: Chesheblchie SECTOR: Dliebriatia
+#
+$1611 1713 1 0 10
+$1611 1309 0 -1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0917 B10069C-C  N Na Ni Va           203 Na
+F-2           1114 C442566-5    Ni Po              713 Na
+F-3           1119 C233300-C  S Lo Ni Po           204 Na
+F-4           1318 E524610-3    Ni                 302 Na
+F-5           1320 D324947-8  S Hi In              703 Na
+F-6           1418 C738372-8  S Lo Ni              503 Na
+F-7           1420 A200436-C    Ni Va              520 Na
+F-8           1611 C888226-6    Lo Ni              510 Na
+F-9           1616 X3336A7-2    Na Ni Po        R  630 Na
+@SUB-SECTOR: Tiafabrtsa SECTOR: Dliebriatia
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0937 C9E3555-A    Fl Ni              623 Na
+N-2           1036 A9AA237-D    Fl Lo Ni Wa        802 Na
+N-3           1240 C8C27B9-5  S Fl                 802 Na
+N-4           1334 C3429AE-8    Hi In Po           122 Na
+N-5           1434 C877A55-9    Hi In              804 Na
+N-6           1531 A68679C-9    Ag Ri              802 Na
+N-7           1637 A558756-9    Ag                 104 Na
+@SUB-SECTOR: Rofriekl SECTOR: Dliebriatia
+#
+$2020 2222 0 1 10
+$2020 1818 0 0 10
+$1818 1915 0 0 10
+$1915 1713 0 0 10
+$1713 1611 -1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1713 C53399C-8  S Hi In Na Po        301 Na
+G-2           1719 A62779A-9                       923 Na
+G-3           1814 C9A5226-8    Fl Lo Ni           304 Na
+G-4           1815 B53176A-8  N Na Po              325 Na
+G-5           1816 E535663-5    Ni                 512 Na
+Shonjzhia     1818 B655665-8  Z Ag Ni              103 Zc
+G-7           1819 C300968-8  S Hi Na Va           415 Na
+G-8           1912 C878522-6    Ag Ni              511 Na
+G-9           1913 C466534-8    Ag Ni              201 Na
+Ezden         1915 B785632-5  Z Ag Ni              804 Zc
+G-11          2012 C42769D-8    Ni                 405 Na
+G-12          2020 C566253-A    Lo Ni              603 Na
+G-13          2111 C6B0021-6    De Lo Ni           403 Na
+G-14          2115 C213000-6  S Ba Ic Lo Ni        903 Na
+G-15          2311 D453878-4  S Po                 710 Na
+G-16          2313 C773338-9    Lo Ni              813 Na
+G-17          2315 BAF4456-C  2 Fl Ni              510 Na
+G-18          2411 B795666-9    Ag Ni              523 Na
+G-19          2413 D210798-4    Na                 913 Na
+@SUB-SECTOR: Dredliea SECTOR: Dliebriatia
+#
+$2140 2103 0 1 10
+$2140 2236 0 0 10
+$2236 2535 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1840 B3437AE-7    Po                 923 Na
+O-2           1940 D672005-6  S Lo Ni              512 Na
+O-3           2140 C557999-9  S Hi                 322 Na
+O-4           2231 C120788-8  S De Na Po           402 Na
+Drij          2236 A72A545-B  Z Ni Wa              402 Zc
+O-6           2331 B425336-9  S Lo Ni              400 Na
+O-7           2335 B651348-7  N Lo Ni Po           601 Na
+@SUB-SECTOR: Chavlnchienzflesh SECTOR: Dliebriatia
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2511 A638596-E  N Ni                 204 Na
+H-2           2516 A335436-F  N Ni                 602 Na
+H-3           2517 X150697-4    De Ni Po        R  601 Na
+H-4           2617 B722ACG-C    Hi In Na Po        414 Na
+H-5           2720 B542477-7  N Ni Po              122 Na
+H-6           2812 B53777A-8  N                    900 Na
+H-7           2818 B120566-B  2 De Ni Po           405 Na
+H-8           2819 C633232-8  S Lo Ni Po           100 Na
+H-9           2913 C200AFC-A    Hi Na Va           521 Na
+H-10          2914 B46559A-A    Ag Ni              513 Na
+H-11          3116 C77A545-B  S Ni Wa              410 Na
+H-12          3120 B441330-9  S Lo Ni Po           520 Na
+H-13          3217 C7A6324-9  S Fl Lo Ni           704 Na
+H-14          3219 D200430-9  S Ni Va              920 Na
+@SUB-SECTOR: Bliplpreie SECTOR: Dliebriatia
+#
+$2535 2236 -1 0 10
+$2535 2531 0 0 10
+$2531 2627 0 -1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Dlersetlens   2531 A538777-C  Z                    903 Zc
+P-2           2535 C9A8413-6    Fl Ni              924 Na
+P-3           2536 C5A2133-A    Fl Lo Ni           424 Na
+P-4           2537 E584878-5    Ri                 413 Na
+P-5           2637 C1009B9-B  S Hi Na Va           210 Na
+P-6           2731 C566768-5  S Ag Ri              210 Na
+P-7           2734 C400332-9    Lo Ni Va           103 Na
+P-8           2834 X40097B-4    Hi Na Va        R  810 Na
+P-9           2838 C779864-9                       910 Na
+P-10          2932 C7978BF-4                       304 Na
+P-11          2933 A774103-D    Lo Ni              303 Na
+P-12          3032 A140200-B    De Lo Ni Po        413 Na
+P-13          3136 E66A986-7    Hi Wa              212 Na
+P-14          3235 C242122-7    Lo Ni Po           303 Na
+P-15          3236 C484110-8    Lo Ni              323 Na
+P-16          3238 C000988-D  S As Hi Na           803 Na
+@SUB-SECTOR: Dlintsziafedl SECTOR: Dliebriatia
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0127 A430476-B    De Ni Po           915 Na
+I-2           0322 BA65122-8  N Lo Ni              820 Na
+I-3           0323 C437875-A                       902 Na
+I-4           0324 C244300-A    Lo Ni              914 Na
+I-5           0422 E322300-9    Lo Ni Po           415 Na
+I-6           0428 C464425-7  S Ni                 600 Na
+I-7           0430 C97A869-A    Wa                 604 Na
+I-8           0622 C78368A-3    Ni Ri              220 Na
+I-9           0630 B31087A-8    Na                 103 Na
+I-10          0730 A89A321-B    Lo Ni Wa           110 Na
+I-11          0822 A6B2210-D    Fl Lo Ni           502 Na
+I-12          0825 C200357-7    Lo Ni Va           921 Na
+@SUB-SECTOR: Ranzevl SECTOR: Dliebriatia
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0102 C43286A-A  S Na Po              300 Na
+A-2           0109 C436567-8  S Ni                 804 Na
+A-3           0203 E223413-8    Ni Po              700 Na
+A-4           0303 C633888-6    Na Po              413 Na
+A-5           0401 A3547A5-C  N Ag                 703 Na
+A-6           0402 B692688-7  2 Ni                 823 Na
+A-7           0408 C310202-8  S Lo Ni              322 Na
+A-8           0604 D53568A-6  S Ni                 804 Na
+A-9           0606 D000654-5    As Na Ni           905 Na
+@SUB-SECTOR: Eje SECTOR: Dliebriatia
+#
+$1309 1611 0 1 10
+$1309 1405 0 0 10
+$1405 1103 0 0 10
+$1103 1139 0 -1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0901 B000426-C  N As Ni              900 Na
+B-2           0905 E85A530-8    Ni Wa              310 Na
+B-3           0907 E69668A-5    Ag Ni              903 Na
+B-4           0910 E774674-5    Ag Ni              213 Na
+B-5           1002 C325544-9    Ni                 410 Na
+B-6           1005 B96788B-8    Ri                 514 Na
+Qreb          1103 B685113-B  Z Lo Ni              400 Zc
+B-8           1104 C558767-6    Ag                 500 Na
+B-9           1106 B57266B-9    Ni                 602 Na
+B-10          1107 B684444-7    Ni                 731 Na
+B-11          1110 BAAA668-9    Fl Ni Wa           624 Na
+B-12          1203 E410659-9    Na Ni              402 Na
+B-13          1210 B412000-A  2 Ba Ic Lo Ni        602 Na
+B-14          1309 C3638CB-9                       702 Na
+B-15          1404 C652334-6    Lo Ni Po           703 Na
+Nefrapezh     1405 AAA6477-B  Z Fl Ni              402 Zc
+@SUB-SECTOR: Prazhzenzflia SECTOR: Dliebriatia
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1701 C441562-A    Ni Po              704 Na
+C-2           1802 C310768-8    Na                 814 Na
+C-3           1902 D9D8378-4    Fl Lo Ni           505 Na
+C-4           1903 C100679-7    Na Ni Va           604 Na
+C-5           2107 B210103-D    Lo Ni              100 Na
+C-6           2108 AAE67AB-D    Fl                 104 Na
+Uepo          2302 C595430-9    Ni              B  905 Dr
+C-8           2307 C999568-A  S Ni                 213 Na
+C-9           2407 C200ABD-9    Hi Na Va           304 Na
+C-10          2409 CA8A779-6    Ri Wa              300 Na
+@SUB-SECTOR: Pieveint SECTOR: Dliebriatia
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2507 C323887-9  S Na Po              102 Na
+D-2           2603 C468303-7    Lo Ni              901 Na
+D-3           2608 B747565-6  N Ag Ni              303 Na
+D-4           2702 B313513-A  S Ic Ni              510 Na
+D-5           2703 B76A765-7    Ri Wa              413 Na
+D-6           2801 C895200-8  S Lo Ni              705 Na
+D-7           2807 B544100-A  N Lo Ni              701 Na
+D-8           2901 C845300-5    Lo Ni              524 Na
+D-9           2907 B310025-A  S Lo Ni              614 Na
+D-10          3104 E200342-4    Lo Ni Va           503 Na
+D-11          3105 E86A304-6    Lo Ni Wa           313 Na
+D-12          3107 A455210-B  2 Lo Ni              201 Na
+D-13          3207 B867787-6  N Ag Ri              312 Na
+@SUB-SECTOR: Chiplpria SECTOR: Dliebriatia
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0211 D869554-4    Ni                 600 Na
+E-2           0311 E1008AA-9    Na Va              602 Na
+E-3           0315 D304342-9  S Ic Lo Ni Va        614 Na
+E-4           0318 B6A0434-9  S De Ni              101 Na
+E-5           0519 C438213-6    Lo Ni              223 Na
+E-6           0613 B446AAA-F  2 Hi In              424 Na
+E-7           0614 E340101-8    De Lo Ni Po        910 Na
+E-8           0616 A636322-D  N Lo Ni              714 Na
+@SUB-SECTOR: Sakleier SECTOR: Dliebriatia
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           1022 B674368-A    Lo Ni              604 Na
+J-2           1024 B642643-7    Ni Po              423 Na
+J-3           1025 C727440-5    Ni                 820 Na
+J-4           1028 E2005A8-9    Ni Va              500 Na
+J-5           1125 C446501-7  S Ag Ni              510 Na
+J-6           1321 E455421-6    Ni                 600 Na
+J-7           1322 C225657-7  S Ni                 514 Na
+J-8           1427 C360340-6    De Lo Ni           302 Na
+J-9           1522 C547443-5  S Ni                 804 Na
+J-10          1525 C344665-5  S Ag Ni              103 Na
+@SUB-SECTOR: Riavletsie SECTOR: Dliebriatia
+#
+$2425 2627 1 0 10
+$2425 2222 0 0 10
+$2222 2020 0 -1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Izkial        1821 E22696A-6    Hi In              132 Na
+K-2           1827 E456035-3    Lo Ni              114 Na
+K-3           2222 C300125-A    Lo Ni Va           602 Na
+K-4           2224 X596000-3    Ba Lo Ni        R  721 Na
+K-5           2230 C200430-B    Ni Va              101 Na
+K-6           2329 D150405-9    De Ni Po           300 Na
+Zhdetljasha   2425 B637466-9  Z Ni                 700 Zc
+@SUB-SECTOR: Flafrjienchnsiedl SECTOR: Dliebriatia
+#
+$2627 2531 0 1 10
+$2627 2425 -1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2529 D356000-6  S Ba Lo Ni           323 Na
+L-2           2530 C570333-7    De Lo Ni           704 Na
+L-3           2621 B756630-5    Ag Ni              814 Na
+Iniapr        2627 B85A496-8  Z Ni Wa              204 Zc
+L-5           2822 CA79320-7    Lo Ni              510 Na
+L-6           2826 CAA5666-9  S Fl Ni              121 Na
+L-7           2929 B000521-9  S As Ni              613 Na
+L-8           3025 B3409A8-B    De Hi In Po        704 Na
+L-9           3128 B9A187B-A  N Fl                 314 Na
+L-10          3221 C201005-7  S Ic Lo Ni Va        800 Na
+L-11          3222 A543652-9  N Ni Po              205 Na
+L-12          3226 A445743-A    Ag                 505 Na
+L-13          3229 E65638A-2    Lo Ni              403 Na
+@SUB-SECTOR: Plajshifrdlienj SECTOR: Dliebriatia
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0232 CAA8756-6    Fl                 801 Na
+M-2           0332 B74A310-A    Lo Ni Wa           903 Na
+M-3           0439 D547546-4    Ag Ni              903 Na
+M-4           0539 B241112-C  2 Lo Ni Po           102 Na
+M-5           0637 C777468-9    Ni                 623 Na
+M-6           0732 C566344-4  S Lo Ni              703 Na

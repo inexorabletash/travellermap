@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<Worlds>
+<!--
+	Data sources:
+	
+	- Imperium Worlds, W.L. Guatney, HIWG, http://traveller.mu.org/archive/HIWG/imperium.worlds.txt
+-->
+	<World>
+		<Name>Reference</Name>
+		<MapOptions>WorldsCapitals</MapOptions>
+		<Location><SectorName>Core</SectorName><Hex>0140</Hex></Location>
+		<LabelBiasY>-1</LabelBiasY>
+	</World>
+	<World>
+		<Name>Capital</Name>
+		<MapOptions>WorldsCapitals</MapOptions>
+		<Location><SectorName>Core</SectorName><Hex>2118</Hex></Location>
+		<LabelBiasY>-1</LabelBiasY>
+	</World>
+	<World>
+		<Name>Vland (Vilani Home World)</Name>
+		<MapOptions>WorldsHomeworlds</MapOptions>
+		<Location><SectorName>Vland</SectorName><Hex>1717</Hex></Location>
+	</World>
+	<World>
+		<Name>Terra&#x0A;(Solomani Home World)</Name>
+		<MapOptions>WorldsHomeworlds</MapOptions>
+		<Location><SectorName>Solomani Rim</SectorName><Hex>1827</Hex></Location>
+		<LabelBiasY>1</LabelBiasY>
+	</World>
+	<World>
+		<Name>Zhodane (Zhodani Home World)</Name>
+		<MapOptions>WorldsHomeworlds WorldsCapitals</MapOptions>
+		<Location><SectorName>Zhdant</SectorName><Hex>2719</Hex></Location>
+		<LabelBiasX>0</LabelBiasX>
+    <LabelBiasY>-1</LabelBiasY>
+	</World>
+	<World>
+		<Name>Lair (Vargr Home World)</Name>
+		<MapOptions>WorldsHomeworlds</MapOptions>
+		<Location><SectorName>Provence</SectorName><Hex>2402</Hex></Location>
+		<LabelBiasY>-1</LabelBiasY>
+	</World>
+	<World>
+		<Name>Kirur (Centaur Home World)</Name>
+		<MapOptions>WorldsHomeworlds WorldsCapitals</MapOptions>
+		<Location><SectorName>Ruupiin</SectorName><Hex>1315</Hex></Location>
+		<LabelBiasY>-1</LabelBiasY>
+	</World>
+	<World>
+		<Name>Guaran (Hive Home World)</Name>
+		<MapOptions>WorldsHomeworlds</MapOptions>
+		<Location><SectorName>Ricenden</SectorName><Hex>0827</Hex></Location>
+		<LabelBiasY>-1</LabelBiasY>
+	</World>
+	<World>
+		<Name>Glea (Hive Federation Capital)</Name>
+		<MapOptions>WorldsCapitals</MapOptions>
+		<Location><SectorName>Centrax</SectorName><Hex>2609</Hex></Location>
+	</World>
+	<World>
+		<Name>Kuzyu&#x0A;(Aslan Home World)</Name>
+		<MapOptions>WorldsHomeworlds WorldsCapitals</MapOptions>
+		<Location><SectorName>Dark Nebula</SectorName><Hex>1919</Hex></Location>
+		<LabelBiasX>-1</LabelBiasX>
+	</World>
+	<World>
+		<Name>Regina</Name>
+		<MapOptions>WorldsCapitals</MapOptions>
+		<Location><SectorName>Spinward Marches</SectorName><Hex>1910</Hex></Location>
+	</World>
+</Worlds>

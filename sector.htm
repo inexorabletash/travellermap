@@ -1,0 +1,840 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Traveller Map - Sector Page</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="site.css?update=2013-07-25">
+  <style>
+    @import url(http://fonts.googleapis.com/css?family=Marcellus);
+    @import url(http://fonts.googleapis.com/css?family=PT+Sans+Narrow);
+
+    @media print {
+      @page {
+        size: landscape;
+        margin: 0;
+      }
+    }
+
+    html
+    {
+      margin: 0;
+    }
+
+    body
+    {
+      margin: 0;
+    }
+
+    /* Override site.css */
+    .content {
+      margin: 0;
+      padding: 0;
+      width: auto;
+    }
+
+    #status
+    {
+      background-color: #ffffc0;
+      color: #000000;
+      border: solid 1px black;
+      margin: 2pt;
+      padding: 2pt;
+      position: absolute;
+      top: 0;
+    }
+    #statusImage
+    {
+      width: 16px;
+      height: 16px;
+    }
+
+    table, td, th
+    {
+      border: none;
+    }
+    table
+    {
+      font-size: 9pt;
+      border-collapse: collapse;
+    }
+    th, td
+    {
+      white-space: nowrap;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+    .page
+    {
+      page-break-inside: avoid;
+      page-break-after: always;
+      width: 11in;
+      height: 8.45in;
+      padding: 0; margin: 0; border: 0; overflow: hidden;
+    }
+    .page-half
+    {
+      width: 5.5in;
+      height: 8.45in;
+      padding: 0; margin: 0; border: 0; overflow: hidden;
+      float: left;
+    }
+
+    /* Title Page ============================== */
+
+    .title-page-left
+    {
+      position: relative;
+    }
+
+    .title_top
+    {
+      position: absolute;
+      left: 0.25in;
+      right: 0.25in;
+      height: 4in;
+    }
+    .title_title
+    {
+      position: absolute;
+      bottom: 0;
+
+      font-style: italic;
+      font-size: 32pt;
+      font-family: Optima, Marcellus, serif;
+      font-weight: normal;
+    }
+
+    .title_middle
+    {
+      position: absolute;
+      left: 0.25in;
+      right: 0.25in;
+      top: 4in;
+      height: 1.5in;
+
+      margin-top: 2pt;
+      border-top: 6pt solid black;
+    }
+    .title_logo
+    {
+      text-align: left;
+      float: right;
+    }
+    .title_trav
+    {
+      font-style: italic;
+      font-size: 52pt;
+      font-family: Optima, Marcellus, serif;
+      font-weight: bold;
+      margin-top: -4pt;
+      margin-bottom: -10pt;
+      letter-spacing: -1pt;
+    }
+    .title_reg
+    {
+      font-size: 25%;
+      font-style: normal;
+    }
+    .title_adventure
+    {
+      font-style: italic;
+      font-size: 22pt;
+      font-family: Optima, Marcellus, serif;
+      font-weight: normal;
+      margin: 0;
+      padding: 0;
+      padding-left: 6pt;
+    }
+
+    .title_publisher
+    {
+      position: absolute;
+      margin: 0;
+      padding: 0;
+      left: 0.25in;
+      right: 0.25in;
+      top: 7in;
+
+      font-style: normal;
+      font-size: 24pt;
+      font-family: Optima, Marcellus, serif;
+      font-weight: normal;
+    }
+
+    .title-page-right
+    {
+      position: relative;
+    }
+
+    .align-bottom
+    {
+      position: absolute;
+      bottom: 0;
+      left: 0; right: 0;
+    }
+    .credits
+    {
+      white-space: normal;
+      text-align: justify;
+      margin: 0.1in 0.25in;
+    }
+
+    /* Sector Map ============================== */
+
+    .sector-spread
+    {
+      padding: 0.25in 0.5in;
+    }
+    .sector-image
+    {
+      border: solid 4px black;
+      width: 9.5in;
+    }
+    .map_title
+    {
+      font-style: italic;
+      font-size: 32pt;
+      font-family: Optima, Marcellus, serif;
+      font-weight: bold;
+      margin: 0;
+    }
+    .map_subtitle
+    {
+      font-style: normal;
+      font-size: 12pt;
+      font-family: Optima, Marcellus, serif;
+      font-weight: normal;
+      margin-bottom: 8pt;
+    }
+
+
+    /* SubSector ============================== */
+
+    .ss-page-left
+    {
+      height: 8.25in;
+      float: left;
+    }
+    .ss-page-left .content
+    {
+      padding: 0.25in;
+    }
+    .ss-page-right .content
+    {
+      padding-top: 0.5in;
+    }
+    .ss-page-right
+    {
+      height: 8.25in;
+      float: left;
+    }
+    .subsector-image
+    {
+      padding: 4px;
+    }
+    .subsector-image > img
+    {
+      border: solid 4px black;
+    }
+    .subsector-body
+    {
+      text-align: left;
+      white-space: normal;
+    }
+
+    .sparse table.uwp-data {
+      font-size: 9pt;
+    }
+    .dense table.uwp-data {
+      font-size: 8pt;
+    }
+
+    table.uwp-data {
+      width: 100%;
+      font-family: "PT Sans Narrow", "Helvetica Narrow", "Arial Narrow", Tahoma, sans-serif;
+    }
+    .uwp-data th
+    {
+      text-align: left;
+      font-weight: normal;
+      font-style: italic;
+    }
+    .uwp-data th,
+    .uwp-data td
+    {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    
+    .uwp-data th.world-remarks,
+    .uwp-data td.world-remarks
+    {
+        max-width: 150px;
+    }
+    
+    td.neighbor
+    {
+      text-align: center;
+      font-weight: bold;
+      text-transform: uppercase;
+      padding: 0;
+      white-space: nowrap;
+      line-height: 9pt;
+      font-size: 11pt;
+    }
+    td.vertical
+    {
+      width: 1.25em;
+      max-width: 1.25em;
+    }
+    .rotate90
+    {
+      display: inline-block;
+      padding: 0;
+      margin: 0;
+      transform: translateX(-50%) rotate(90deg) translateY(-4pt);
+      -webkit-transform: translateX(-50%) rotate(90deg) translateY(-4pt);
+      -moz-transform: translateX(-50%) rotate(90deg) translateX(-4pt);
+      -o-transform: translateX(-50%) rotate(90deg) translateX(-4pt);
+    }
+    .rotate180
+    {
+      display: inline-block;
+      padding: 0;
+      margin: 0;
+      transform: rotate(180deg);
+      -webkit-transform: rotate(180deg);
+      -moz-transform: rotate(180deg);
+      -o-transform: rotate(180deg);
+    }
+    .rotate270
+    {
+      display: inline-block;
+      padding: 0;
+      margin: 0;
+      transform: translateX(-50%) rotate(270deg) translateY(10pt);
+      -webkit-transform: translateX(-50%) rotate(270deg) translateY(10pt);
+      -moz-transform: translateX(-50%) rotate(270deg) translateY(10pt);
+      -o-transform: translateX(-50%) rotate(270deg) translateY(10pt);
+    }
+
+
+    .subsector_title
+    {
+      white-space: nowrap;
+      font-weight: bold;
+      font-style: normal;
+      font-size: 24pt;
+      font-family: Optima, Marcellus, serif;
+      border-bottom: solid 6pt black;
+      margin-bottom: 2pt;
+    }
+    .blurb
+    {
+      width: 360pt;
+      white-space: normal;
+      margin-bottom: 0;
+      text-align: justify;
+    }
+
+    .footer
+    {
+      page-break-before: avoid;
+    }
+
+    .footer-left
+    {
+      width: 5in;
+      height: 0.25in;
+      padding-left: 0.25in;
+      padding-right: 0.25in;
+      text-align: left;
+      float: left;
+    }
+    .footer-right
+    {
+      width: 5in;
+      height: 0.25in;
+      padding-left: 0.25in;
+      padding-right: 0.25in;
+      text-align: right;
+      float: left;
+    }
+
+
+    /* Details ============================== */
+
+    .details-page {
+      height: 8.25in;
+    }
+
+    .details-page .content
+    {
+      padding: 0.25in;
+    }
+
+    .details_title
+    {
+      white-space: nowrap;
+      font-weight: bold;
+      font-style: normal;
+      font-size: 24pt;
+      font-family: Optima, Marcellus, serif;
+      border-bottom: solid 6pt black;
+      margin-bottom: 2pt;
+    }
+
+
+    .details_title.right
+    {
+      text-align: right;
+    }
+
+    /* Index ============================== */
+
+    .index-page {
+      height: 8.25in;
+    }
+
+    .index-page .content
+    {
+      padding: 0.25in;
+    }
+
+    .index_title
+    {
+      white-space: nowrap;
+      font-weight: bold;
+      font-style: normal;
+      font-size: 24pt;
+      font-family: Optima, Marcellus, serif;
+      border-bottom: solid 6pt black;
+      margin-bottom: 2pt;
+    }
+    .index_title {
+      visibility: hidden;
+    }
+    .index-page.pp1 .index_title {
+      visibility: visible;
+    }
+
+    .index-column {
+      float: left;
+      margin-top: 0.15in;
+      width: 33%;
+    }
+
+  </style>
+  <!--[if lt IE 10]>
+  <style>
+    .rotate90 { -ms-writing-mode: tb-rl; }
+    .rotate270 { -ms-writing-mode: tb-rl; }
+  </style>
+  <![endif]-->
+  <script src="polyfill/polyfill.js?update=2013-07-25"></script>
+  <script src="map.js?update=2013-07-25"></script>
+  <script src="handlebars.js?update=2013-07-25"></script>
+  <script src="sector.js?update=2013-07-25"></script>
+</head>
+
+<body>
+  <!-- Status Display -->
+  <div id="status">
+    <span id="statusText">Loading...</span>
+    <img id="statusImage" src="res/ui/sector-spinner.gif" alt="" width="16" height="16">
+  </div>
+
+  <!-- Template expansion goes here -->
+  <div id="output"></div>
+
+  <!-- Document Template -->
+  <script id="template" type="text/x-handlebars-template">
+
+    <!-- Title Page -->
+    <div class="page">
+
+      <!-- Left: Title -->
+      <div class="page-half title-page-left">
+        <div class="title_top">
+          <div class="title_title">{{title}}</div>
+        </div>
+        <div class="title_middle">
+          <div class="title_logo">
+            <div class="title_trav">TRAVELLER<span class="title_reg">&reg;</span></div>
+            <div class="title_adventure">Science-Fiction Adventure<br>in the Far Future</div>
+          </div>
+        </div>
+        <div class="title_publisher">Far Future Enterprises</div>
+      </div>
+
+      <!-- Right: Copyright and Credits -->
+      <div class="page-half title-page-right">
+        <div class="align-bottom">
+          <p class="credits">
+            The <b><i>TRAVELLER</i></b> game in all forms is owned
+            by Far Future Enterprises. Copyright &copy; 1977 - 2013
+            Far Future Enterprises. <b><i>TRAVELLER</i></b> is a
+            registered trademark of Far Future Enterprises. Far
+            Future permits web sites and fanzines for this game,
+            provided it contains this notice, that Far Future is
+            notified, and subject to a withdrawal of permission on
+            90 days notice. The contents of this site are for
+            personal, non-commercial use only. Any use of Far Future
+            Enterprises's copyrighted material or trademarks
+            anywhere on this web site and its files should not be
+            viewed as a challenge to those copyrights or
+            trademarks. In addition, any program/articles/file on
+            this site cannot be republished or distributed without
+            the consent of the author who contributed it.
+
+          <p class="credits">
+            Generated by TravellerMap.com
+          
+          {{#metadata}}
+          
+          {{#Credits}}
+          <p class="credits">{{{.}}}
+          {{/Credits}}
+
+          {{#DataFile}}
+
+          {{#Author}}
+          <p class="credits">Data created by: {{.}}
+          {{/Author}}
+
+          {{#Source}}
+          <p class="credits">Adapted from <cite>{{.}}</cite>
+          {{/Source}}
+
+          {{#Publisher}}
+          <p class="credits">Published by {{.}}
+          {{/Publisher}}
+
+          {{#Copyright}}
+          <p class="credits">{{.}}
+          {{/Copyright}}
+
+          {{#Ref}}
+          <p class="credits">{{.}}
+          {{/Ref}}
+
+          <p class="credits">&nbsp;
+
+          {{#Era}}
+          <p class="credits">The current date for this supplement is circa Year {{.}} Imperial.
+          {{/Era}}
+
+          {{/DataFile}}
+
+          {{/metadata}}
+        </div>
+      </div>
+    </div>
+
+    <!-- Sector Map -->
+    <div class="page">
+      <div class="sector-spread">
+        <div class="map_title">{{title}}</div>
+        <div class="map_subtitle">
+          A Detailed Stellar Sector in Charted Space {{#metadata.DataFile.Era}} - Circa {{.}}{{/metadata.DataFile.Era}}
+        </div>
+        <img src="{{img_src}}" alt="" class="sector-image">
+      </div>
+    </div>
+
+    <!-- Subsector Pages -->
+    {{#subsectors}}
+    <div class="page" id="ss{{index}}">
+      <!-- Left: World Data -->
+      <div class="page-half ss-page-left">
+        <div class="content">
+          <div class="subsector_title">{{title}}</div>
+          <div class="subsector-body {{density}}">
+
+            {{#worlds.length}}
+            <table class="uwp-data">
+              <tr>
+                <th class="world-hex">Hex</th>
+                <th class="world-name">Name</th>
+                <th class="world-uwp">UWP</th>
+                <th class="world-remarks">Remarks</th>
+                <th class="world-ix">{Ix}</th>
+                <th class="world-ex">(Ex)</th>
+                <th class="world-cx">[Cx]</th>
+                <th class="world-nobility">N</th>
+                <th class="world-base">B</th>
+                <th class="world-zone">Z</th>
+                <th class="world-pbg">PBG</th>
+                <th class="world-worlds">W</th>
+                <th class="world-alleg">A</th>
+                <th class="world-stellar">Stellar</th>
+
+              {{#../worlds}}
+              <tr>
+                <td class="world-hex">{{hex}}</td>
+                <td class="world-name">{{name}}</td>
+                <td class="world-uwp">{{uwp}}</td>
+                <td class="world-remarks">{{remarks}}</td>
+                <td class="world-ix">{{ix}}</td>
+                <td class="world-ex">{{ex}}</td>
+                <td class="world-cx">{{cx}}</td>
+                <td class="world-nobility">{{nobility}}</td>
+                <td class="world-base">{{bases}}</td>
+                <td class="world-zone">{{zone}}</td>
+                <td class="world-pbg">{{pbg}}</td>
+                <td class="world-worlds">{{w}}</td>
+                <td class="world-alleg">{{allegiance}}</td>
+                <td class="world-stellar">{{stars}}</td>
+              {{/../worlds}}
+            </table>
+            {{/worlds.length}}
+            
+            <p class="blurb">{{blurb}}
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Image -->
+      <div class="page-half ss-page-right">
+        <div class="content">
+
+          <table>
+            <tr>
+              <td>
+              <td class="neighbor" colspan="1">{{neighbor.[0]}}
+              <td>
+            <tr>
+              <td class="neighbor vertical"><div class="rotate270">{{neighbor.[3]}}</div>
+              <td class="subsector-image"><img src="{{img_src}}" alt="" class="subsector-image">
+              <td class="neighbor vertical"><div class="rotate90">{{neighbor.[1]}}</div>
+            <tr>
+              <td>
+              <td class="neighbor" colspan="1"><div class="rotate180">{{neighbor.[2]}}</div>
+              <td>
+          </table>
+        </div>
+      </div>
+
+      <!-- Footer/Page Break -->
+      <div class="footer">
+        <div class="footer-left">Subsector {{index}} of {{../metadata.Names.0.Text}}</div>
+        <div class="footer-right">TravellerMap.com</div>
+      </div>
+    </div>
+    {{/subsectors}}
+
+    <!-- TODO: Additional pages with Map Symbols, World Data -->
+    <div class="page">
+
+      <!-- World Details -->
+      <div class="page-half details-page">
+        <div class="content">
+          <div class="details_title">Map Symbols</div>
+        
+          <style>
+            .legend h4 {
+              text-transform: uppercase;
+              margin-bottom: 0;
+            }
+            .legend td {
+              vertical-align: top;
+              padding: 0 0.125in;
+            }
+
+            .legend ul {
+              padding-left: 0.25in;
+              margin: 0;
+            }
+
+            .legend li {
+              list-style: none;
+            }
+
+            .legend .glyph {
+              display: inline-block;
+              width: 0.3in;
+              height: 0.2in;
+              overflow: hidden;
+              text-align: center;
+            }
+            .legend .highlight { color: red; }
+            .legend .glyph.water { color: #00bfff; }
+            .legend .amberzone { color: yellow; }
+            .legend .redzone { color: red; }
+            .legend .popname {
+              display: inline-block;
+              width: 0.75in;
+              text-align: left;
+            }
+
+          </style>
+          <table class="legend">
+            <tr>
+              <td>
+                <h4>Map Legend</h4>
+                <img src="res/ui/Legend_1003_print.png"><br>
+                <img src="res/ui/Legend_1006_print.png">
+              </td>
+              <td>
+                <h4>World Characteristics</h4>
+                <ul>
+                    <li><span class="glyph" style="font-size: 14pt;">&#x25CB;</span> No Water Present
+                    <li><span class="glyph water" style="font-size: 14pt;">&#x25CF;</span> Water Present
+                    <li><span class="glyph" style="font-size: 12pt; font-weight: bold;">:&middot;:&middot;:</span> Asteroid Belt
+                </ul>
+
+                <h4>Bases</h4>
+
+                <ul>
+                  <li><span class="glyph" style="font-size: 8pt;">&#x2605;</span> Imperial Naval Base
+                  <li><span class="glyph" style="font-size: 10pt;">&#x25B2;</span> Imperial Scout Base
+                  <li><span class="glyph highlight" style="font-size: 10pt;">&#x25B2;</span> Imperial Scout Way Station
+                  <li><span class="glyph" style="font-size: 10pt;">&#x25A0;</span> Imperial Naval Depot
+
+                  <li><span class="glyph" style="font-size: 12pt;">&diams;</span> Zhodani Base
+                  <li><span class="glyph highlight" style="font-size: 12pt;">&diams;</span> Zhodani Relay Station
+
+                  <li><span class="glyph highlight" style="font-size: 8pt;">&#x2605;</span> Other Naval / Tlauku Base
+                  <li><span class="glyph highlight" style="font-size: 10pt;">&#x25A0;</span> Other Naval Depot / Outpost
+                  <li><span class="glyph" style="font-size: 10pt;">**</span> Corsair / Clan Base / Embassy
+                  <li><span class="glyph" style="font-size: 10pt;">&#x2726;</span> Military Base
+                  <li><span class="glyph" style="font-size: 12pt;">&bull;</span> Independent Base
+        
+                  <li><span class="glyph highlight" style="font-size: 10pt;"><b>&Gamma;</b></span> Research Station
+                  <li><span class="glyph" style="font-size: 10pt;"><b>R</b></span> Imperial Reserve
+                  <li><span class="glyph highlight" style="font-size: 10pt;"><b>P</b></span> Imperial Prison
+                  <li><span class="glyph" style="font-size: 10pt;"><b>X</b></span> Exile Camp
+                </ul>
+
+                <h4>Travel Zones</h4>
+                <ul>
+                  <li><span class="glyph amberzone" style="font-size: 12pt;">&#x25AC;</span> Amber Zone
+                  <li><span class="glyph redzone" style="font-size: 12pt;">&#x25AC;</span> Red Zone
+                </ul>
+
+                <h4>Population</h4>
+                <ul>
+                  <li><span class="popname">Secundus</span> under 1 billion
+                  <li><span class="popname">PRIMUS</span> over 1 billion
+                  <li><span class="highlight">Highlighted</span> world names<br>are subsector capitals
+                </ul>
+
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- World Details -->
+      <div class="page-half details-page">
+        <div class="content">
+          <div class="details_title right">World Data</div>
+
+            <style>
+              table.allegiances td {
+                width: 0.5in;
+              }
+              table.subsector-grid {
+                border-collapse: collapse;
+                border: 0.03in solid black;
+              }
+              table.subsector-grid td {
+                width: 0.25in;
+                height: 0.4in;
+                border: 0.03in solid black;
+                vertical-align: top;
+                font-weight: bold;
+              }
+              table.subsector-list td {
+                width: 0.3in;
+              }
+            </style>
+
+            {{#if metadata.Allegiances}}
+              <h4>Non-Standard Allegiances</h4>
+              <table class="allegiances">
+                {{#metadata.Allegiances}}
+                <tr><td>{{Code}}</td><td>{{Name}}</td></tr>
+                {{/metadata.Allegiances}}
+              </table>
+            {{/if}}
+
+            <h4>Subsectors</h4>
+            <table class="subsector-grid">
+              <tr><td>A</td><td>B</td><td>C</td><td>D</td></tr>
+              <tr><td>E</td><td>F</td><td>G</td><td>H</td></tr>
+              <tr><td>I</td><td>J</td><td>K</td><td>L</td></tr>
+              <tr><td>M</td><td>N</td><td>O</td><td>P</td></tr>
+            </table>
+            <table class="subsector-list">
+              {{#metadata.Subsectors}}
+              <tr><td>{{Index}}</td><td>{{Name}}</td></tr>
+              {{/metadata.Subsectors}}
+            </table>
+
+        </div>
+      </div>
+
+      <!-- Footer/Page Break -->
+      <div class="footer">
+        <div class="footer-left">World Details</div>
+        <div class="footer-right">TravellerMap.com</div>
+      </div>
+
+    </div>
+
+
+
+
+
+    <!-- Index Page -->
+    {{#index_pages}}
+    <div class="page">
+
+      <!-- Index Entries -->
+      {{#.}}
+      <div class="page-half index-page pp{{pp}}">
+
+        <div class="content">
+          <div class="index_title">Index</div>
+          {{#.}}
+          <div class="index-column">
+            {{#.}}
+            <div class="index-entry">
+              {{name}}, {{location}}
+            </div>
+            {{/.}}
+          </div>
+          {{/.}}
+        </div>
+
+      </div>
+      {{/.}}
+
+      <!-- Footer/Page Break -->
+      <div class="footer">
+        <div class="footer-left">Index of {{../metadata.Names.0.Text}}</div>
+        <div class="footer-right">TravellerMap.com</div>
+      </div>
+
+    </div>
+    {{/index_pages}}
+
+  </script>
+
+  <!-- Google Analytics -->
+  <script>
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18610679-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+</body>
+</html>

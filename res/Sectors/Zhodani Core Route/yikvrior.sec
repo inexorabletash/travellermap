@@ -1,0 +1,395 @@
+Yikvrior
+
+A: Iepranj                   A.dat
+B: Tlaklfrenche              B.dat
+C: Dlitale                   C.dat
+D: Zhienche                  D.dat
+E: Preshaz                   E.dat
+F: Tlikiazak                 F.dat
+G: Okkla                     G.dat
+H: Zhiashvriavlia            H.dat
+I: Bianzvlabrnzel            I.dat
+J: Ieen                      J.dat
+K: Plantse                   K.dat
+L: Kriafbrainz               L.dat
+M: Dlansibraz                M.dat
+N: Zonchbla                  N.dat
+O: 'intsfins                 O.dat
+P: Fankaesh                  P.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+Z = Zhodani Navy
+Y = Zhodani Depot
+X = Zhodani Relay
+  = None
+
+Allegiance:
+11 Zh = Zhodani
+01 Zc = Zhodani Client
+10 Dr = Droyne
+07 Na = Non-Aligned
+08    = Unknown
+                                          
+                                          
+This sector was created by Clifford Linehan
+
+I wish to thank Marc Miller for his invaluable advice in the creation of this
+sector and the Core Route.
+
+Clifford Linehan - cnl.rubicon@juno.com
+http://www.geocities.com/traveller_core_route
+Developer: Vlanchiets Qlom and the Core Route.
+                                          
+                                          
+@SUB-SECTOR: Iepranj SECTOR: Yikvrior
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0109 B400200-D  N Lo Ni Va           514 Na
+A-2           0203 C3766AB-9    Ag Ni              813 Na
+A-3           0204 C442322-8    Lo Ni Po           723 Na
+A-4           0406 D624503-4  S Ni                 503 Na
+A-5           0408 E555244-6    Lo Ni              924 Na
+A-6           0410 B1409BD-9  N De Hi In Po        823 Na
+A-7           0505 C253111-7    Lo Ni Po           102 Na
+A-8           0703 C573889-7  S                    800 Na
+A-9           0706 A984777-A    Ag Ri              113 Na
+A-10          0709 C362300-A    Lo Ni              500 Na
+A-11          0807 C525163-8    Lo Ni              613 Na
+A-12          0809 D729636-5  S Ni                 513 Na
+@SUB-SECTOR: Tlaklfrenche SECTOR: Yikvrior
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0903 E340210-5    De Lo Ni Po        820 Na
+B-2           0905 C4547AB-8    Ag                 804 Na
+B-3           0908 C610100-A    Lo Ni              421 Na
+B-4           1103 X665442-1    Ni              R  112 Na
+B-5           1106 D301425-9    Ic Ni Va           203 Na
+B-6           1108 D9C5755-6  S Fl                 700 Na
+B-7           1205 A13078A-E  S De Na Po           805 Na
+B-8           1301 D88A444-4  S Ni Wa              411 Na
+B-9           1309 D400246-6  S Lo Ni Va           300 Na
+B-10          1401 B888510-9  N Ag Ni              823 Na
+B-11          1601 B672754-8                       303 Na
+B-12          1609 C000843-A    As Na              600 Na
+@SUB-SECTOR: Dlitale SECTOR: Yikvrior
+#
+$2309 2412 0 1 10
+$2309 2406 0 0 10
+$2406 2403 0 0 10
+$2403 2102 0 0 10
+$2102 2038 0 -1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1701 CAE6654-8    Fl Ni              404 Na
+C-2           1702 C485366-9    Lo Ni              403 Na
+C-3           1708 C699535-7  S Ni                 904 Na
+C-4           1709 C554202-7  S Lo Ni              412 Na
+C-5           1805 C555430-5  S Ni                 402 Na
+C-6           1902 A652666-7  S Ni Po              314 Na
+C-7           1904 D401355-8  S Ic Lo Ni Va        202 Na
+C-8           1909 A638300-D    Lo Ni              720 Na
+C-9           2102 C794302-6    Lo Ni              903 Na
+C-10          2106 C9B6521-7    Fl Ni              703 Na
+C-11          2207 B6775AC-7  2 Ag Ni              922 Na
+C-12          2302 A000352-F  N As Lo Ni           902 Na
+Zhdol         2309 B56A437-B  Z Ni Wa              824 Zc
+C-14          2403 C7A3330-8  S Fl Lo Ni           703 Na
+C-15          2406 C468535-5  S Ag Ni              330 Na
+C-16          2407 E657788-6    Ag                 700 Na
+@SUB-SECTOR: Zhienche SECTOR: Yikvrior
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2504 D333104-9    Lo Ni Po           503 Na
+D-2           2509 B100575-D  N Ni Va              110 Na
+D-3           2608 D513843-4  S Ic Na              124 Na
+D-4           2709 B533301-C    Lo Ni Po           504 Na
+D-5           2710 B58649A-A  N Ni                 605 Na
+D-6           2902 D586867-2    Ri                 513 Na
+D-7           2904 X9C4999-1    Fl Hi           R  400 Na
+D-8           2907 D211587-7    Ic Ni              814 Na
+D-9           3004 C9B4452-A    Fl Ni              104 Na
+D-10          3009 B555679-A  N Ag Ni              904 Na
+D-11          3103 C334456-B  S Ni                 100 Na
+D-12          3206 C242426-A  S Ni Po              823 Na
+D-13          3210 E555774-3    Ag                 402 Na
+@SUB-SECTOR: Preshaz SECTOR: Yikvrior
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0112 E446677-3    Ag Ni              500 Na
+E-2           0113 B434543-A  2 Ni                 522 Na
+E-3           0212 D370200-6    De Lo Ni           705 Na
+E-4           0220 B66A788-B  2 Ri Wa              702 Na
+E-5           0513 D757741-5    Ag                 813 Na
+E-6           0515 C639533-6    Ni                 303 Na
+E-7           0516 B536647-7  N Ni                 922 Na
+E-8           0716 C6516AC-6  S Ni Po              804 Na
+E-9           0717 D300988-7    Hi Na Va           914 Na
+E-10          0812 B200466-B  N Ni Va              703 Na
+E-11          0814 B100455-C  N Ni Va              200 Na
+E-12          0819 B784972-A  N Hi                 414 Na
+@SUB-SECTOR: Tlikiazak SECTOR: Yikvrior
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0915 C856486-9    Ni                 602 Na
+F-2           0917 B510122-7    Lo Ni              202 Na
+F-3           0919 C364400-6    Ni                 602 Na
+F-4           1014 C2417BF-6  S Po                 320 Na
+F-5           1019 B888665-A    Ag Ni Ri           203 Na
+F-6           1020 C000550-C    As Ni              813 Na
+F-7           1113 D866200-3    Lo Ni              401 Na
+F-8           1116 C233533-9  S Ni Po              200 Na
+F-9           1117 D000430-9    As Ni              414 Na
+F-10          1220 A350844-A    De Po              804 Na
+F-11          1420 C331789-8    Na Po              203 Na
+F-12          1511 D514430-5  S Ic Ni              503 Na
+F-13          1618 E8998C9-3                       310 Na
+@SUB-SECTOR: Okkla SECTOR: Yikvrior
+#
+$1919 1923 0 1 10
+$1919 1917 0 0 10
+$1917 2215 0 0 10
+$2215 2412 0 0 10
+$2412 2309 0 -1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1912 A688661-7  S Ag Ni Ri           804 Na
+G-2           1916 C8A6412-A  S Fl Ni              700 Na
+G-3           1917 C564423-6    Ni                 804 Na
+G-4           1919 C362248-8  S Lo Ni              902 Na
+G-5           2113 B567541-6  N Ag Ni              803 Na
+G-6           2211 C654577-8    Ag Ni              103 Na
+G-7           2212 E532453-8    Ni Po              214 Na
+G-8           2215 C796110-6    Lo Ni              723 Na
+G-9           2216 A330000-F  N Ba De Lo Ni Po     400 Na
+G-10          2219 BA98240-9  S Lo Ni              625 Na
+G-11          2311 E511466-8    Ic Ni              913 Na
+G-12          2316 B596553-7  S Ag Ni              204 Na
+G-13          2412 D575676-5    Ag Ni              504 Na
+G-14          2415 D659122-3    Lo Ni              913 Na
+G-15          2418 C344132-6    Lo Ni              403 Na
+@SUB-SECTOR: Zhiashvriavlia SECTOR: Yikvrior
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2611 D370401-5  S De Ni              714 Na
+H-2           2613 D774888-4  S                    414 Na
+H-3           2614 E210885-8    Na                 103 Na
+H-4           2617 C585466-7  S Ni                 403 Na
+H-5           2714 D698425-5  S Ni                 512 Na
+H-6           2715 C889000-A    Ba Lo Ni           203 Na
+H-7           2716 A77A123-F  N Lo Ni Wa           120 Na
+H-8           2717 CA86961-6  S Hi                 614 Na
+H-9           2718 C88A010-6    Lo Ni Wa           902 Na
+H-10          2720 A647311-D  N Lo Ni              504 Na
+H-11          2814 C2138AB-9    Ic Na              403 Na
+H-12          2817 C340998-6  S De Hi In Po        603 Na
+H-13          3018 C8B4367-8  S Fl Lo Ni           914 Na
+H-14          3115 C9C6ABC-B    Fl Hi              101 Na
+H-15          3117 C775100-9    Lo Ni              803 Na
+H-16          3212 D74A322-6    Lo Ni Wa           312 Na
+H-17          3216 C783100-5    Lo Ni              113 Na
+@SUB-SECTOR: Bianzvlabrnzel SECTOR: Yikvrior
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0122 C9C1988-6    Fl Hi              201 Na
+I-2           0123 C233011-6  S Lo Ni Po           104 Na
+I-3           0130 A130766-C    De Na Po           613 Na
+I-4           0229 C689310-9  S Lo Ni              604 Na
+I-5           0230 C1106B6-9    Na Ni              502 Na
+I-6           0321 D264511-6    Ag Ni              904 Na
+I-7           0325 B486467-A    Ni                 104 Na
+I-8           0330 B633543-8    Ni Po              803 Na
+I-9           0421 B550235-B  S De Lo Ni Po        904 Na
+I-10          0423 C654345-9  S Lo Ni              804 Na
+I-11          0425 E528331-4    Lo Ni              103 Na
+I-12          0526 C4027BA-6    Ic Na Va           411 Na
+I-13          0530 B223524-A  N Ni Po              904 Na
+I-14          0623 A89A455-D  N Ni Wa              203 Na
+I-15          0624 A97AACD-E  N Hi In Wa           203 Na
+I-16          0626 C130535-C    De Ni Po           204 Na
+I-17          0628 C7A5300-A    Fl Lo Ni           102 Na
+I-18          0721 C537468-5    Ni                 104 Na
+I-19          0830 A88A433-D  N Ni Wa              713 Na
+@SUB-SECTOR: Ieen SECTOR: Yikvrior
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0921 C77A88A-5  S Wa                 701 Na
+J-2           0922 B2406BD-8  2 De Ni Po           604 Na
+J-3           0928 C7A2502-7  S Fl Ni              600 Na
+J-4           1021 B334443-C  S Ni                 422 Na
+J-5           1026 C57559A-4  S Ag Ni              600 Na
+J-6           1028 C9A2A66-A    Fl Hi              901 Na
+J-7           1030 C580740-7  S De Ri              204 Na
+J-8           1121 C597300-A    Lo Ni              803 Na
+J-9           1129 C438302-B  S Lo Ni              902 Na
+J-10          1223 B547000-8    Ba Lo Ni           802 Na
+J-11          1225 E557668-6    Ag Ni              400 Na
+J-12          1228 C4029BA-7    Hi Ic Na Va        720 Na
+J-13          1421 E676345-6    Lo Ni              604 Na
+J-14          1423 B130568-9    De Ni Po           404 Na
+J-15          1530 D6A2468-3  S Fl Ni              714 Na
+@SUB-SECTOR: Plantse SECTOR: Yikvrior
+#
+$2430 2333 0 1 10
+$2430 2227 0 0 10
+$2227 1826 0 0 10
+$1826 1923 0 0 10
+$1923 1919 0 -1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1724 C671A67-A    Hi In              412 Na
+K-2           1725 B320652-B  N De Na Ni Po        724 Na
+K-3           1726 C100545-9    Ni Va              714 Na
+K-4           1730 C9C4448-6    Fl Ni              804 Na
+K-5           1824 C63A359-C  S Lo Ni Wa           300 Na
+Oetle'blefr   1826 B88A6B8-7  Z Ni Wa              904 Zc
+K-7           1923 C475467-9  S Ni                 104 Na
+K-8           1929 CAD8332-8    Fl Lo Ni           902 Na
+K-9           2021 B568453-9    Ni                 224 Na
+K-10          2022 B539001-C    Lo Ni              103 Na
+K-11          2122 E659543-5    Ni                 504 Na
+K-12          2221 C410667-5    Na Ni              210 Na
+Briela        2227 B867768-6  Z Ag Ri              811 Zc
+K-14          2229 C5646BB-4    Ag Ni              400 Na
+K-15          2323 B57389A-7                       203 Na
+K-16          2325 D3325AB-7  S Ni Po              600 Na
+K-17          2326 CA6A345-8    Lo Ni Wa           410 Na
+K-18          2328 A333877-B  S Na Po              903 Na
+K-19          2427 D510210-5    Lo Ni              503 Na
+K-20          2429 C8A38A8-7    Fl                 900 Na
+Obrdretla     2430 A584499-8  Z Ni                 313 Zc
+@SUB-SECTOR: Kriafbrainz SECTOR: Yikvrior
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2522 B454301-A    Lo Ni              810 Na
+L-2           2526 B477431-A  S Ni                 530 Na
+L-3           2725 C370557-6    De Ni              205 Na
+L-4           2727 C6A0AFG-8    De Hi           A  203 Na
+Urdtume       2730 D594339-3  S Lo Ni           B  702 Dr
+L-6           2826 C355979-8    Hi                 115 Na
+L-7           2827 EAB88CD-7    Fl                 605 Na
+L-8           2926 C78A583-9    Ni Wa              400 Na
+L-9           2928 C667442-9    Ni                 403 Na
+L-10          3021 B43359B-8  N Ni Po              304 Na
+L-11          3023 X130437-1    De Ni Po        R  502 Na
+L-12          3026 C221278-8  S Lo Ni Po           900 Na
+L-13          3121 X7A4420-3    Fl Ni           R  705 Na
+L-14          3123 C110130-9  S Lo Ni              811 Na
+L-15          3124 B673100-A    Lo Ni              104 Na
+L-16          3127 C100241-9    Lo Ni Va           114 Na
+L-17          3221 C242674-6  S Ni Po              225 Na
+@SUB-SECTOR: Dlansibraz SECTOR: Yikvrior
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0131 C100551-B    Ni Va              804 Na
+M-2           0139 D9E7445-8    Fl Ni              410 Na
+M-3           0238 C7B2421-A    Fl Ni              812 Na
+M-4           0240 B777235-9  N Lo Ni              820 Na
+M-5           0339 C565011-8    Lo Ni              200 Na
+M-6           0439 E662789-3    Ri                 725 Na
+M-7           0531 C210300-A  S Lo Ni              602 Na
+M-8           0537 C587755-7    Ag Ri              913 Na
+M-9           0733 D98A9EG-A  S Hi Wa           A  420 Na
+M-10          0737 X400423-0    Ni Va           R  205 Na
+M-11          0739 X537879-0                    R  322 Na
+M-12          0831 E675511-2    Ag Ni              300 Na
+M-13          0833 A8B7732-B    Fl                 503 Na
+M-14          0838 B401787-8    Ic Na Va           312 Na
+M-15          0839 C778687-3    Ag Ni              404 Na
+M-16          0840 E779462-8    Ni                 314 Na
+@SUB-SECTOR: Zonchbla SECTOR: Yikvrior
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0931 C434766-8                       613 Na
+N-2           0933 X410679-3    Na Ni           R  402 Na
+N-3           0935 B5A49CA-8  S Fl Hi              414 Na
+N-4           0936 C410964-8  S Hi Na              105 Na
+N-5           0937 B221A9C-C    Hi In Na Po        803 Na
+N-6           0940 C645898-8                       800 Na
+N-7           1033 B100456-C    Ni Va              403 Na
+N-8           1038 C5538AA-7    Po                 423 Na
+N-9           1039 E400353-5    Lo Ni Va           423 Na
+N-10          1131 C7B3458-6  S Fl Ni              424 Na
+N-11          1133 E656479-4    Ni                 714 Na
+N-12          1234 C463200-8  S Lo Ni              502 Na
+N-13          1338 C130102-8  S De Lo Ni Po        104 Na
+N-14          1432 B400531-D  N Ni Va              814 Na
+N-15          1434 B633555-8    Ni Po              803 Na
+N-16          1439 C784159-8    Lo Ni              122 Na
+N-17          1533 D786433-4  S Ni                 101 Na
+N-18          1535 C594313-9  S Lo Ni              323 Na
+N-19          1632 B252668-7    Ni Po              600 Na
+N-20          1633 B646100-9    Lo Ni              804 Na
+N-21          1635 E000535-A    As Ni              610 Na
+N-22          1640 B1009CA-A  S Hi Na Va           403 Na
+@SUB-SECTOR: 'intsfins SECTOR: Yikvrior
+#
+$2140 1903 0 1 10
+$2140 2238 0 0 10
+$2238 2435 0 0 10
+$2435 2333 0 0 10
+$2333 2430 0 -1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1732 C333237-7  S Lo Ni Po           713 Na
+O-2           1736 C95A200-B  S Lo Ni Wa           200 Na
+O-3           1740 E35548C-7    Ni                 111 Na
+O-4           1832 C415003-6    Ic Lo Ni           923 Na
+O-5           2031 D757658-3  S Ag Ni              503 Na
+O-6           2032 C653510-5  S Ni Po              402 Na
+O-7           2034 C6B4423-6    Fl Ni              903 Na
+O-8           2135 B889777-7  N Ri                 812 Na
+O-9           2140 E567AA8-9    Hi                 510 Na
+O-10          2238 C997ABG-9    Hi In              223 Na
+O-11          2239 C878524-4    Ag Ni              703 Na
+Pliats        2333 B411310-C  Z Ic Lo Ni           602 Zc
+O-13          2339 C767203-A    Lo Ni              122 Na
+O-14          2433 D594302-5    Lo Ni              913 Na
+O-15          2435 D9C5146-8  S Fl Lo Ni           924 Na
+@SUB-SECTOR: Fankaesh SECTOR: Yikvrior
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2538 C649320-5  S Lo Ni              503 Na
+P-2           2631 C654210-5    Lo Ni              614 Na
+P-3           2638 D859332-5    Lo Ni              104 Na
+P-4           2733 E000333-9    As Lo Ni           424 Na
+P-5           2831 C631443-6  S Ni Po              104 Na
+P-6           2834 B866A98-C  N Hi                 233 Na
+P-7           2838 B343745-B  N Po                 923 Na
+P-8           2934 D300220-6  S Lo Ni Va           500 Na
+P-9           2938 C475776-7    Ag                 503 Na
+P-10          3031 C885A8C-7    Hi                 923 Na
+P-11          3134 B3477AC-6    Ag                 900 Na
+P-12          3137 C22069A-A    De Na Ni Po        300 Na
+P-13          3236 C529461-8  S Ni                 710 Na
+P-14          3240 E685343-7    Lo Ni              420 Na

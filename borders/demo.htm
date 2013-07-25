@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<title>Border Generation</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" href="../site.css?update=2013-07-25">
+
+<script src="../polyfill/polyfill.js"></script>    
+<script src="borders.js"></script>    
+<script>
+
+var allegianceMap = {
+  'Im': 'red',
+  'As': 'yellow',
+  'Kk': 'green',
+  'Va': 'olive',
+  'Zh': 'cyan',
+  'So': 'orange',
+  'Hv': 'purple',
+  'Na': 'gray'
+};
+
+var g_map = new AllegianceMap( 16, 20, 1, 1 );
+
+//----------------------------------------------------------------------
+//
+// View
+//
+//----------------------------------------------------------------------
+
+function makeMapDisplay(containerElement, map) {
+var fragments = [], fragment;
+
+var sz = 20;
+var pad = 5;
+var top, left = -sz;
+
+for (x = g_map.origin_x; x < g_map.origin_x + g_map.width; ++x) {
+  left += (sz + pad);
+  top = (x % 2 ? 0 : (sz + pad) / 2) - sz;
+
+  for (y = g_map.origin_y; y < g_map.origin_y + g_map.height; ++y) {
+    top += (sz + pad);
+
+    fragment = "<div class='hex' id='hex_" + x + "_" + y + "' style='position: absolute; width: " + sz + "px; height: " + sz + "px; left: " + left + "px; top: " + top + "px;'>";
+    fragment += hexContents(x, y, map);
+    fragment += "<" + "/div>";
+
+    fragments.push(fragment);
+
+  }
+}
+
+containerElement.innerHTML = fragments.join("");
+containerElement.style.width = (g_map.width * sz + (g_map.width + 1) * pad) + "px";
+containerElement.style.height = ((g_map.height + 0.5) * sz + (g_map.height + 1.5) * pad) + "px";
+}
+
+function updateHex(x, y) {
+// Update view
+document.getElementById("hex_" + x + "_" + y).innerHTML = hexContents(x, y, g_map);
+}
+
+function updateView() {
+g_map.foreach(function(x, y) { updateHex(x, y); });
+}
+
+function updateWalks() {
+var borders = [];
+var bounds = g_map.getBounds();
+var allegiance;
+var x, y, visited = {}, label, alleg, last_alleg, path;
+
+for (x = g_map.origin_x; x < g_map.origin_x + g_map.width; x += 1) {
+  lastalleg = UNALIGNED;
+  for (y = g_map.origin_y; y < g_map.origin_y + g_map.height; y += 1) {
+    label = hexLabel(x, y);
+    alleg = g_map.getAllegiance(x, y);
+    if (alleg !== UNALIGNED && alleg !== NON_ALIGNED && alleg !== last_alleg && !(label in visited)) {
+
+      path = walk(g_map, x, y, alleg);
+      path = path.map(function(hex) { return hexLabel(hex[0], hex[1]); });
+      path.forEach(function(label) { visited[label] = true; });
+
+      borders.push({
+        allegiance: alleg,
+        path: path
+      });
+    }
+    last_alleg = alleg;
+  }
+}
+
+borders.sort(function(a, b) { return a.allegiance < b.allegiance ? -1 : a.allegiance > b.allegiance ? 1 : 0; });
+
+
+var html = [];
+borders.forEach(function(border) {
+  html.push("<li>" + border.allegiance + " : " + border.path.join(" ") + "<" + "/li>");
+});
+
+document.getElementById("walks").innerHTML = html.join("");
+}
+
+function hexLabel(x, y) {
+return (x < 10 ? "0" : "") + x + (y < 10 ? "0" : "") + y;
+}
+
+function hexContents(x, y, map) {
+var hexNumber = hexLabel(x, y);
+var occupied = map.isOccupied(x, y);
+var alleg = map.getAllegiance(x, y);
+var color = (alleg == UNALIGNED) ? "transparent" : allegianceMap[alleg];
+
+return "<div class='hexContents' style='background-color: " + color + ";'>" +
+          "<span class='hexNumber'>" + hexNumber + "<" + "/span><br/>" +
+	      (occupied ? "<span class='world'>&bull;</span>" : "") +
+	      "<" + "/div>";
+}
+
+
+//----------------------------------------------------------------------
+//
+// Interaction
+//
+//----------------------------------------------------------------------
+
+function selectedAllegiance() {
+var select = document.getElementById('allegiance');
+return select.options[select.selectedIndex].value;
+}
+
+function clickHex(x, y) {
+var occupied = !g_map.isOccupied(x, y);
+g_map.setOccupied(x, y, occupied);
+if (occupied) {
+  g_map.setAllegiance(x, y, selectedAllegiance());
+}
+else {
+  g_map.setAllegiance(x, y, UNALIGNED);
+}
+
+updateHex(x, y);
+}
+
+//----------------------------------------------------------------------
+//
+// Initialization
+//
+//----------------------------------------------------------------------
+
+window.onload = function() {
+var view = document.getElementById('map');
+makeMapDisplay(view, g_map);
+
+
+view.onclick = function(e) {
+  e = e ? e : window.event;
+  var target = (e.target) ? e.target : (e.srcElement) ? e.srcElement : null;
+  while (target) {
+    if (target && target.id) {
+      var coords = target.id.split("_");
+      if (coords[0] == "hex") {
+        clickHex(coords[1], coords[2]);
+        break;
+      }
+    }
+    target = target.parentNode;
+  }
+};
+};
+
+function clearMap() {
+g_map.foreach(function(x, y) {
+  g_map.setAllegiance(x, y, UNALIGNED);
+  g_map.setOccupied(x, y, false);
+
+  updateHex(x, y);
+});
+}
+
+function run() {
+processMap(g_map, function() {
+  updateView();
+  updateWalks();
+});
+}
+    
+  </script>
+<style>
+.hex 
+{ 
+  cursor: pointer;
+border: solid 1px black; 
+font-size: 7pt;
+font-family: Univers, Arial, sans-serif;
+text-align: center;
+line-height: 100%;
+}
+.hexNumber
+{
+font-size: 5pt;
+font-family: Univers, Arial, sans-serif;
+color: gray;
+}
+.hexContents
+{
+  width: 100%; height: 100%; padding: 0; margin: 0; border: 0; 
+}
+.world
+{
+  font-size: 12pt;
+}
+</style>    
+
+<h1>Improved Automatic Border Generation for <cite>TRAVELLER</cite> Sectors</h1>
+<div class="content">
+    <div>
+        Joshua Bell, 
+        <a href="mailto:inexorabletash@gmail.com">inexorabletash@gmail.com</a>, 
+        <a href="http://www.travellermap.com">http://www.travellermap.com</a>
+
+        <br>
+        <br>
+        <a href="doc.htm">Read about the algorithm</a>
+    </div>
+
+    <div id="map" style="position: relative;">
+    </div>
+    <div>
+    Allegiance:
+    <select id="allegiance">
+        <option value="Im" style="background-color: red;" selected="selected">Imperium</option>
+        <option value="As" style="background-color: yellow;">Aslan</option>
+        <option value="Kk" style="background-color: green;">K'kree</option>
+        <option value="Va" style="background-color: olive;">Vargr</option>
+        <option value="Zh" style="background-color: cyan;">Zhodani</option>
+        <option value="So" style="background-color: orange;">Solomani</option>
+        <option value="Hv" style="background-color: purple;">Hiver</option>
+        <option value="Na" style="background-color: gray;">Non-Aligned</option>
+    </select>
+    
+    Click a hex to toggle empty/occupied
+    </div>
+    <div>
+    <input type="button" value="Run Algorithm" onclick="run();" />
+    <input type="button" value="Clear Map" onclick="clearMap();" />
+    </div>
+    <div>
+    For selected allegiance only:
+    <input type="button" value="Claim All" onclick="claimAllUnclaimed(g_map,selectedAllegiance()); updateView();" />
+    <input type="button" value="Erode" onclick="erode(g_map,selectedAllegiance(),3); updateView();" />
+    <input type="button" value="Break Spans" onclick="breakSpans(g_map,selectedAllegiance(),4); updateView();" />
+    </div>
+    <ul id="walks">
+    </ul>
+</div>
