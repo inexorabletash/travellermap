@@ -23,7 +23,6 @@
 # .SEC file prepared by Joshua Bell (inexorabletash@gmail.com)
 
 # To Do:
-#  - Remove annotations from codes areas (I-P)
 #  - Review additional sources (not yet incorporated/correlated)
 #    - Ares Magazine Special Edition #2 (Far Frontiers Special Supplement)
 #    - Incorporate PGB data from TTC for rimward half (K?, L?, M?, N, O, P)
@@ -53,6 +52,7 @@
 #  - Incorporated Afachtiabr data           - josh 2008-02-02
 #  - Switched Protectorate to Pt (per TCC)  - josh 2008-02-02
 #  - Correct PBG (B04 to 804) for 1801      - josh 2009-03-27
+#  - Replaced remarks with codes            - josh 2013-07-26
 
 
 # Allegiance Codes (Rimward Half)
@@ -379,7 +379,7 @@ Deyil           3219  C744654-5    Ag Ni S8            413 Na  G6 V M3 D
 Acropolis     0123 A887556-9  A Ag Ni                                      101 Sc
 Belekz        0124 A553413-A    Ni Po                                      100 Sc
 Sinbad's Bane 0125 E569955-7                                               101 Sc
-Salinaikin    0128 A000347-E  N As Concordance Capital                     101 Sc
+Salinaikin    0128 A000347-E  N As Cp                                      101 Sc
 Krobob        0221 A567620-A  N Ag Ni                                    A 101 Zh
 Nautilus      0225 C859457-7    Ni                                         101 Sc
 Stamford      0226 D442885-7    Po                                         101 Sc
@@ -387,17 +387,17 @@ Arbelletia    0228 C235435-9    Ni                                         101 S
 Yith          0229 C223558-C  S Ni Po Rs                                 A 101 Sc
 Carcosa       0322 X400000-3                                             R 101 Na
 Pleroo        0324 BA86698-6  N Ag Ni Ri                                   101 Sc
-Byte          0326 A135212-E    Ni Information Relay Point                 101 Sc
+Byte          0326 A135212-E    Ni (Information Relay Point)               101 Sc
 Mithras       0327 B975740-A  N Ag                                         101 Sc
-Al-Jebel      0329 A330454-C  N Po De Prison Facility                      101 Sc
+Al-Jebel      0329 A330454-C  N Po De Px                                   101 Sc
 Manchu        0425 B000100-D  N As                                         101 Sc
 Cretaceous    0426 C998423-6  S Ni                                         101 Sc
-MaRied        0428 C656650-8    Ag Mining Center                           101 Sc
+MaRied        0428 C656650-8    Ag Mi                                      101 Sc
 Atlantis      0430 E768955-7    Ri                                       A 101 Na
 Shudde-M'ell  0523 E6305A8-8    Ni Po De                                   101 Sc
 Servaas       0524 AA979B9-B  N In                                         101 Sc
 Dunsel        0526 E7628D9-3                                             A 101 Sc
-Summersun     0528 A8867A0-D  A Ri Mercenary owned                         101 Na
+Summersun     0528 A8867A0-D  A Ri (Mercenary owned)                       101 Na
 Roentgen      0530 E8C7673-8    Ni                                       R 101 Na
 Dreamworld    0623 C431631-9  N Na Ni Po                                   101 Sc
 Tanner        0625 A763AD9-A  N                                          A 101 Na
@@ -411,21 +411,21 @@ Sagen         0827 A101722-C  S Na Po                                      100 N
 
 Oskol         0923 X300209-A    Ni                                       A 101 Na
 Mackay        0929 C5B3618-A    Ni                                         100 Na
-Falkirk       1021 E100000-0    Emergency Rescue Station                   101 Na
+Falkirk       1021 E100000-0    (Emergency Rescue Station)                 101 Na
 Amristar      1024 D493654-7    Ni                                         101 Na
 Tinahely      1026 B76A786-B    Ri Wa                                      101 Fa
 Odugama       1027 C651564-A    Ni Po                                      100 Fa
-Freemantle    1029 X3B0000-0    Site of Ancient race                       100 Na
+Freemantle    1029 X3B0000-0    An                                         100 Na
 Sevilla       1122 E440459-9    Ni Po                                      101 Na
 Katano        1123 D120200-C  N Ni Po                                      100 Na
 Lac Remi      1125 C9648D8-8    In                                         101 Fa
 McKne's World 1126 C652545-9    Ni Po                                      100 Fa
 Bulawayo      1127 D886563-8    Ag Ni                                      101 Fa
 Katherina     1129 B130300-C    Rs                                         101 Na
-Afellahlah    1227 A6659C9-C  A Federation capital                         101 Fa
+Afellahlah    1227 A6659C9-C  A Cp                                         101 Fa
 Encrucijada   1230 X000000-0                                               101 Na
 Darien        1321 X100000-0                                               100 Na
-Kaosiung      1324 X6A0510-4    Owned by Mackay Corporation              A 101 Na
+Kaosiung      1324 X6A0510-4    (Owned by Mackay Corporation)            A 101 Na
 Elyptiya      1326 A664885-B    Ri                                         101 Fa
 Lachute       1329 C767764-7    Ag Ri                                      100 Fa
 Mafelong      1422 X4C0000-0                                               101 Na
@@ -445,26 +445,26 @@ Eshaar        1826 E6C4839-3                                               100 N
 Zishilicti    1828 BAA6698-A    Ni                                       A 101 Fw
 Fafris        1830 B6B49A7-9                                               100 Na
 Bindar        1923 B6A3654-A    Ni                                         101 Pt
-Uldor         1928 A787A98-B  N Four Worlds Capital                      A 100 Fw
+Uldor         1928 A787A98-B  N Cp                                       A 100 Fw
 Dloshl        1929 B697998-A    In                                       A 101 Fw
 DiCule        1930 C695643-5    Ag Ni                                      101 Na
 Bigg's World  2021 A797A99-9    In                                         101 Pt
 Zyra          2024 A9878D9-B                                               100 Pt
 Hearth        2027 B456798-A    Ag                                       A 100 Fw
 Ulintl        2028 B543885-A  N                                            100 Ug
-Jacobi        2122 X610000-0    Refueling point                            101 Pt
+Jacobi        2122 X610000-0    (Refueling point)                          101 Pt
 Amanamanim    2125 A574A46-B  N In                                         100 Pt
 Agravaine     2127 A5006A9-A    Ni Na                                      101 Ug
 Rellon        2129 B880666-6    Ni Po                                      101 Ug
 Bummer        2221 ACCA489-B    In                                         101 Pt
 Wa-Lu         2224 A372513-B  S In                                         101 Pt
 Quitalos      2225 A667889-B  N Ri                                         101 Pt
-Garth         2228 A669753-B  N Ri Union of Garth capital                  101 Ug
+Garth         2228 A669753-B  N Ri Cp                                      101 Ug
 Pshtaijtlatl  2322 A795974-B  S In                                         101 Pt
 Yakutz        2323 A885889-B  S Ri                                         101 Pt
 Bloemtol      2328 E7C3657-A    Ni                                         101 Ug
-Caractacalla  2422 A793AC9-C  B In Protectorate capital                    101 Pt
-Calamain      2424 A000460-B  B Under Protectorate Naval Admin           R 101 Pt
+Caractacalla  2422 A793AC9-C  B In Cp                                      101 Pt
+Calamain      2424 A000460-B  B Mr                                       R 101 Pt
 Kintara       2425 A454679-9    Ag Ni                                      101 Pt
 Numicta       2428 D9A7A69-6                                               101 Ug
 
@@ -547,12 +547,12 @@ Secundus      1032 B440669-A    De                                         100 Z
 Foxe          1135 A521535-C    In Na                                      101 Hc
 Lindsay       1137 A6798C9-B  S                                            101 Hc
 Norris        1140 A596940-B    In                                         101 Hc
-Zelpha        1231 A9549B9-B  N Zeiphic Primacy Capital                    101 Zp
+Zelpha        1231 A9549B9-B  N Cp                                         101 Zp
 Primus        1232 B27A769-9    Wa                                         101 Zp
 Quarcus       1233 B957869-9  S                                            101 Zp
 Thorn         1235 A632732-B  S In Ri                                      101 Hc
 Chatsworth    1237 A3A15C7-A                                               100 Hc
-Haladon       1238 A7659C9-C    Ri Haladon Cooperative Capital             101 Hc
+Haladon       1238 A7659C9-C    Ri Cp                                      101 Hc
 Gosspach      1335 B311427-8    Po                                         101 Na
 Tertius       1432 C241469-9                                               101 Zp
 Bosak         1434 A635721-D    Ri In                                      101 Na
@@ -560,7 +560,7 @@ Skela         1437 B564688-A  S Na In                                      101 B
 Porton        1439 B000553-B    Na In                                      100 Bi
 Hollader      1535 E6865D9-7                                               101 Na
 Talak         1537 D687839-6    In                                         101 Na
-Hyperbelon    1539 A366838-A  N Biumvirate Capital                         101 Bi
+Hyperbelon    1539 A366838-A  N Cp                                         101 Bi
 DeBeers       1632 D453369-5    Ag Po                                    A 101 Dh
 Locat         1636 X341300-A    Rs                                         100 Na
 Protalus      1638 B734534-A    In Na                                      101 Bi
@@ -570,15 +570,15 @@ Forbus        1639 C446481-9    Ag                                         101 B
 
 Thenstor      1731 C9C6488-A  S Ni                                         101 Na
 Iraaz         1732 C45696A-6  S                                          A 100 Dh
-Desaekhe      1734 C663739-9  S Hegemony Capital                         A 100 Dh
+Desaekhe      1734 C663739-9  S Cp                                       A 100 Dh
 Kath          1736 C675777-4  S Ag Ni                                      101 Az
 Dansen        1832 D445667-5  S Ag Ni                                    A 101 Dh
 Qarant        1833 E558260-7    Ni                                       A 101 Dh
 Gniadek       1835 B661AB9-B                                               100 Ls
 Lazthar       1836 B7A7566-A  N Ni                                         101 Az
-Harantz       1838 A8859CA-B    Dominion Capital                           100 Az
+Harantz       1838 A8859CA-B    Cp                                         100 Az
 Nomael        1932 C767886-8    Ri                                         100 Ls
-Alzenei       1934 B768895-C  S Ri League Capital                          101 Ls
+Alzenei       1934 B768895-C  S Ri Cp                                      101 Ls
 Zylanth       1937 E100233-9    Ni Va                                      101 Az
 Claveer       1938 B55098C-B  N Po De                                      101 Az
 Jenai         2031 E857756-5    Ag                                         100 Ls
@@ -619,11 +619,11 @@ Omniat        2839 B886441-9    Ag                                         101 T
 Cartelin      2931 B985589-8    Ni Na                                      100 Mn
 Eureka        2934 B000610-B  S In                                         101 Mn
 Eorvin        2935 D656878-7    Po                                         100 Td
-Emulan        2936 C669369-6    Treaty World                             A 101 Tw
+Emulan        2936 C669369-6    (Treaty World)                           A 101 Tw
 Shadmara      2938 E8C1200-9                                               100 Td
 Kulikov       2939 C721587-A    In Na                                      101 Td
 Dovida        3032 B983657-A    In Ag                                      101 Mn
-Eterra        3033 A8679C9-C  N Principality Capital                       101 Mn
+Eterra        3033 A8679C9-C  N Cp                                         101 Mn
 Dictic        3038 E991500-6    Po                                       A 100 Na
 Tintanabulos  3040 X111200-8                                               100 Na
 Lalandra      3134 B742726-A  S In Ri                                      101 Mn

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Serialization;
 
@@ -191,11 +192,13 @@ namespace Maps
         public bool IsCx { get { return HasCode("Cx"); } }
 
         [XmlIgnore, JsonIgnore]
-        public bool IsPenalColony { get { return HasCode("Px"); } }
+        public bool IsPrison { get { return HasCode("Pr"); } }
+        [XmlIgnore, JsonIgnore]
+        public bool IsPenalColony { get { return HasCode("Pe"); } }
         [XmlIgnore, JsonIgnore]
         public bool IsReserve { get { return HasCode("Re"); } }
         [XmlIgnore, JsonIgnore]
-        public bool IsExileCamp { get { return HasCode("Ex"); } }
+        public bool IsExileCamp { get { return HasCode("Ex") || HasCode("Pr"); } }
         [XmlIgnore, JsonIgnore]
         public string ResearchStation { get { return HasCodePrefix("Rs"); } }
 
@@ -213,13 +216,7 @@ namespace Maps
             if (code == null)
                 throw new ArgumentNullException("code");
 
-            foreach (string s in m_codes)
-            {
-                if (s.Equals(code, StringComparison.InvariantCultureIgnoreCase))
-                    return true;
-            }
-
-            return false;
+            return m_codes.Any(s => s.Equals(code, StringComparison.InvariantCultureIgnoreCase));
         }
 
         public string HasCodePrefix(string code)
@@ -230,6 +227,8 @@ namespace Maps
             return m_codes.Where(s => s.StartsWith(code, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
         }
 
+        // "(foo bar)" "(foo)9" "baz" "bat"
+        private static Regex codeRegex = new Regex(@"(\(.*?\)\S*|\S+)", RegexOptions.Compiled | RegexOptions.CultureInvariant);
         public string Remarks
         {
             get { return String.Join(" ", m_codes); }
@@ -237,12 +236,15 @@ namespace Maps
             {
                 if (value == null)
                     throw new ArgumentNullException("codes");
-
-                m_codes = value.Split((char[])null, StringSplitOptions.RemoveEmptyEntries);
+                m_codes.Clear();
+                m_codes.AddRange(codeRegex.Matches(value).Cast<Match>().Select(match => match.Groups[1].Value));
             }
         }
 
-        private string[] m_codes = { };
+        [XmlIgnore, JsonIgnore]
+        public IEnumerable<string> Codes { get { return m_codes; } }
+
+        private List<string> m_codes = new List<string>();
 
         [XmlElement("Bases"), JsonName("Bases")]
         public string CompactLegacyBases

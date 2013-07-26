@@ -68,23 +68,16 @@ namespace Maps
                     //
 
                     DataTable dt_sectors = new DataTable();
-                    dt_sectors.Columns.Add(new DataColumn());
-                    dt_sectors.Columns.Add(new DataColumn());
-                    dt_sectors.Columns.Add(new DataColumn());
+                    for (int i = 0; i < 3; ++i)
+                        dt_sectors.Columns.Add(new DataColumn());
 
                     DataTable dt_subsectors = new DataTable();
-                    dt_subsectors.Columns.Add(new DataColumn());
-                    dt_subsectors.Columns.Add(new DataColumn());
-                    dt_subsectors.Columns.Add(new DataColumn());
-                    dt_subsectors.Columns.Add(new DataColumn());
+                    for (int i = 0; i < 4; ++i)
+                        dt_subsectors.Columns.Add(new DataColumn());
 
                     DataTable dt_worlds = new DataTable();
-                    dt_worlds.Columns.Add(new DataColumn());
-                    dt_worlds.Columns.Add(new DataColumn());
-                    dt_worlds.Columns.Add(new DataColumn());
-                    dt_worlds.Columns.Add(new DataColumn());
-                    dt_worlds.Columns.Add(new DataColumn());
-                    dt_worlds.Columns.Add(new DataColumn());
+                    for (int i = 0; i < 6; ++i)
+                        dt_worlds.Columns.Add(new DataColumn());
 
                     callback("Parsing data...");
                     foreach (Sector sector in map.Sectors)

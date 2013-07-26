@@ -14,12 +14,45 @@ namespace Maps.Pages
     {
         public override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Plain; } }
 
-        // TODO: Add T5 codes
+        static List<string> s_t5SophontCodes = new List<string>
+        {
+            "Adda",
+            "AHum",
+            "Aqua",
+            "Asla",
+            "Bwap",
+            "Chir",
+            "Darm",
+            "Dolp",
+            "Droy",
+            "Gurv",
+            "Hama",
+            "Huma",
+            "Jala",
+            "Jonk",
+            "Lanc",
+            "Mask",
+            "Orca",
+            "S'mr",
+            "Scan",
+            "Ss'r",
+            "Sydi",
+            "Tapa",
+            "UApe",
+            "Ursa",
+            "Varg",
+            "Zhod",
+            "Ziad",
+        };
         static RegexDictionary<string> s_knownCodes = new RegexDictionary<string>
         {
             // General
-            { "^Rs[ABGDEZH]$", "Rs" },
-            { "^O:[0-9]{4}$", "O:nnnn" },
+            { @"^Rs[ABGDEZHT]$", "Rs" },
+            { @"^O:$", "O:unassigned" },
+            { @"^O:XXXX$", "O:unassigned" },
+            { @"^O:\w\w$", "O:allegiance" },
+            { @"^O:[0-9]{4}(-\w+)?$", "O:nnnn" },
+            { @"^Mr:[0-9]{4}(-\w+)?$", "O:nnnn" },
 
             // Legacy
             "Ag", "As", "Ba", "De",
@@ -42,33 +75,40 @@ namespace Maps.Pages
             // Other Common
             "Xb", // X-boat stop
 
-            { "^Rw:[0-9]$", "Rw#" }, // TNE: Refugee World
-            { "^A:?[0-9]$", "A#" }, // Aslan population
-            { "^C:?[0-9]$", "C#" }, // Chirper population
-            { "^D:?[0-9]$", "D#" }, // Droyne population
-            { "^M:?[0-9]$", "M#" }, // Human population (Provence/Tuglikki)
-            { "^V:?[0-9]$", "V#" }, // Vargr population
-            { "^X:?[0-9]$", "X#" }, // Addaxur population (Zhodani)
-            { "^Z:?[0-9]$", "Z#" }, // Zhodani population
+            { @"^Rw:[0-9]$", "Rw#" }, // TNE: Refugee World
+            { @"^A:?[0-9]$", "A#" }, // Aslan population
+            { @"^C:?[0-9]$", "C#" }, // Chirper population
+            { @"^D:?[0-9]$", "D#" }, // Droyne population
+            { @"^M:?[0-9]$", "M#" }, // Human population (Provence/Tuglikki)
+            { @"^V:?[0-9]$", "V#" }, // Vargr population
+            { @"^X:?[0-9]$", "X#" }, // Addaxur population (Zhodani)
+            { @"^Z:?[0-9]$", "Z#" }, // Zhodani population
 
-            { "^H:?[0-9]$", "H#" }, // Hiver population (LWLG)
-            { "^Hn$", "Hn" }, // Hiver-norm (LWLG)
-            { "^Hp$", "Hp" }, // Hiver-prime (LWLG)
-            { "^F:?[0-9]$", "F#" }, // Federation member (non-Hiver) population (LWLG)
+            // LWLG
+            "Hp", "Hn", // Hiver-prime, Hiver-norm
+            "Iw", // Ithkulur world
+            { @"^H:?[0-9]$", "H#" }, // Hiver population
+            { @"^F:?[0-9]$", "F#" }, // Federation member (non-Hiver) population
 
-            { "^S[0-9A-F]{1,2}$", "S##" }, // Companion star orbits (James Kundert)
+            // James Kundert
+            { @"^S[0-9A-F]{1,2}$", "S##" }, // Companion star orbits
 
-            { "^Rn$", "Rn" }, // Yiklerzdanzh 
-            { "^Rv$", "Rv" }, // Yiklerzdanzh 
+            // Yiklerzdanzh
+            "Rn",  
+            "Rv",
 
+            // Traveller 5
+            "As", "De", "Fl", "Ga", "He", "Ic", "Oc", "Va", "Wa", // Planetary
+            "Di", "Ba", "Lo", "Ni", "Ph", "Hi", // Population
+            "Pa", "Ag", "Na", "Pi", "In", "Po", "Pr", "Ri", // Economic
+            "Fr", "Ho", "Co", "Lk", "Tr", "Tu", "Tz", // Climate
+            "Fa", "Mi", "Mr", "Px", "Pe", "Re", // Secondary
+            "Cp", "Cs", "Cx", "Cy", // Political
+            "Sa", "Fo", "Pz", "Da", "Ab", "An", // Special 
 
-            // Traveller5
-            "As", "De", "Fl", "Ga", "He", "Ic", "Oc", "Va", 
-            "Wa", "Di", "Ba", "Lo", "Ni", "Ph", "Hi", "Pa", 
-            "Ag", "Na", "Pi", "In", "Po", "Pr", "Ri", "Fr", 
-            "Ho", "Co", "Lk", "Tr", "Tu", "Tz", "Fa", "Mi", 
-            "Co", "Mr", "Px", "Px", "Re", "Cp", "Cs", "Cx", 
-            "An", "Ab", "Sa", "Fo", "Pz", "Da"
+            { @"^\[.*?\]\d*$", "(major race homeworld)" },
+            { @"^\(.*?\)\d*$", "(minor race homeworld)" },
+            { @"^(" + String.Join("|", s_t5SophontCodes) + @")(\d|W|\?)$", "(sophont)" },
         };
 
         private void Page_Load(object sender, System.EventArgs e)
@@ -109,7 +149,7 @@ namespace Maps.Pages
                     continue;
 
                 foreach (var code in worlds
-                    .SelectMany(world => world.Remarks.Split((char[])null, StringSplitOptions.RemoveEmptyEntries))
+                    .SelectMany(world => world.Codes)
                     .Where(code => filter.IsMatch(code) && !s_knownCodes.IsMatch(code)))
                 {
                     if (!codes.ContainsKey(code))

@@ -285,7 +285,7 @@
         <li>
             Specify <code>ah_sx</code>, <code>sah_sy</code>, <code>yah_hx</code>, <code>yah_hy</code> 
             parameters in <a href="#system_sectorhex">Sector/Hex coordinates</a> to place a "You Are Here" graphical
-            marker. <a href="iframe.htm?yah_sx=-4&amp;yah_sy=-1&amp;yah_hx=19&amp;yah_hy=10">example</a>
+            marker. <a class="example" href="iframe.htm?yah_sx=-4&amp;yah_sy=-1&amp;yah_hx=19&amp;yah_hy=10"></a>
                 
         <li>
             Specify <code>ox</code>, <code>oy</code>, <code>ow</code>, <code>oh</code> parameters for the
@@ -373,7 +373,7 @@
             
     <h4>Example:</h4>
     <p>
-        <a href="api/coordinates?sector=Spinward%20Marches&amp;hex=1910">http://travellermap.com/api/coordinates?sector=Spinward%20Marches&amp;hex=1910</a>
+        <a class="example" href="coordinates?sector=Spinward%20Marches&amp;hex=1910"></a>
     </p>
   </section>
 
@@ -425,7 +425,7 @@
 
     <h4>Example:</h4>
     <p>
-        <a href="api/credits?x=-110&amp;y=-70">http://travellermap.com/api/credits?x=-110&amp;y=-70</a>
+        <a class="example" href="credits?x=-110&amp;y=-70"></a>
     </p>
   </section>
 
@@ -482,7 +482,7 @@
             
     <h4>Example:</h4>   			
     <p>
-        <a href="api/sec?sector=Spinward%20Marches&amp;type=SecondSurvey">http://travellermap.com/api/sec?sector=Spinward%20Marches&amp;type=SecondSurvey</a>
+        <a class="example" href="sec?sector=Spinward%20Marches&amp;type=SecondSurvey"></a>
     </p>
   </section>
 
@@ -513,7 +513,7 @@
             
     <h4>Example:</h4>   			
     <p>
-        <a href="api/metadata?sector=Spinward%20Marches">http://travellermap.com/api/metadata?sector=Spinward%20Marches</a>
+        <a class="example" href="metadata?sector=Spinward%20Marches"></a>
     </p>
   </section>
 
@@ -540,7 +540,7 @@
             
     <h4>Example:</h4>   			
     <p>
-        <a href="api/msec?sector=Spinward%20Marches">http://travellermap.com/api/msec?sector=Spinward%20Marches</a>
+        <a class="example" href="msec?sector=Spinward%20Marches"></a>
     </p>
   </section>
 
@@ -623,6 +623,7 @@
           For example, "<code>r*a</code>" will match Regina.
         <li>Specifying a wildcard within a word turns <em>off</em> the "start of word" match. So "<code>re*in</code>" will <em>not</em> match "Regina" (but "<code>re*in*</code>" will).
         <li>Add <code>exact:</code> as a prefix to force an exact match, e.g. "<code>exact:sol</code>" will not match "Solomani Rim"
+        <li>Add <code>like:</code> as a prefix to do a "sounds like" match, e.g. "<code>like:tear</code>" will find "Terra"
         <li>Specify more than one (space-delimited) word in the query to refine the search. Words are joined as logical <em>and</em> clauses. So "<code>so ri</code>" will match "Solomani Rim"
           (This combines strangely with wildcards; "<code>sol* ri*</code>" tries to find something matching both "<code>sol*</code>" <em>and</em> "<code>ri*</code>" so nothing will be found!)
         <li>Add <code>uwp:</code> as a prefix to a word to search the UWP field. Examples:
@@ -642,7 +643,7 @@
             
     <h4>Example:</h4>   			
     <p>
-        <a href="api/search?q=Regina">http://travellermap.com/api/search?q=Regina</a>
+        <a class="example" href="search?q=Regina"></a>
     </p>
   </section>
 
@@ -676,7 +677,7 @@
             
     <h4>Example:</h4>   			
     <p>
-        <a href="api/universe?era=1000">http://travellermap.com/api/universe?era=1000</a>
+        <a class="example" href="universe?era=1000"></a>
     </p>
   </section>
   </section>
@@ -714,7 +715,7 @@
             
     <h4>Example:</h4>   			
     <p>
-        <a href="api/tile?x=-24.5&amp;y=-18&amp;scale=64&amp;options=887&amp;style=poster">http://travellermap.com/api/tile?x=-24.5&amp;y=-18&amp;scale=64&amp;options=887&amp;style=poster</a>
+        <a class="example" href="tile?x=-24.5&amp;y=-18&amp;scale=64&amp;options=887&amp;style=poster"></a>
     </p>
   </section>
 
@@ -877,7 +878,8 @@
       Use an appropriate parsing function with an explicit radix.</em>
   </p>
   <p>
-      The <a href="#coordinates">Coordinates API</a> will map a sector/hex name (such as "Spinward Marches", "1910")
+      The <a href="#coordinates">Coordinates API</a> will map a <code>sector</code> / <code>hex</code> pair
+    sector/hex name (such as "Spinward Marches", "1910")
       to the numeric quartet in this coordinate space. 
       The <a href="#jumpmap">JumpMap API</a> and <a href="#credits">Credits API</a> accept these coordinates using 
       <code>sx</code>, <code>sy</code>, <code>hx</code> and 
@@ -918,8 +920,8 @@ function SectorHexToXY(sx, sy, hx, hy) {
       specific hex. The coordinates are specified as <code>x</code> and <code>y</code> parameters
   </p>
   <p>
-      The <a href="#coordinates">Coordinates API</a> will map a sector name (such as "Spinward Marches") with optional hex
-      (e.g. "1910"), or Sector/Hex coordinates (<code>sx</code>, <code>sy</code>, <code>hx</code>,
+      The <a href="#coordinates">Coordinates API</a> will map a named location (<code>sector</code>, <code>hex</code>)
+      or sector/hex coordinates (<code>sx</code>, <code>sy</code>, <code>hx</code>,
       <code>hy</code>) to world-space coordinates.
   </p>
   <p>
@@ -941,8 +943,10 @@ function SectorHexToXY(sx, sy, hx, hy) {
                 
       <li>
           Account for hexes being packed more tightly horizontally than vertically, at a ratio of cos(30&deg;):1, and the
-          y axis is inverted. <em>(This is the only coordinate system with an inverted Y axis. 
-          I must have been asleep at the keyboard.)</em>
+          y axis is inverted. 
+        
+        <p class="aside">This is the only coordinate system with an inverted Y axis. 
+          I must have been asleep at the keyboard.)</p>
                 
   </ul>
   <pre class="code">
@@ -960,7 +964,8 @@ function worldXYToImageXY(world_x, world_y) {
   </pre>
   <p>
       This coordinate system is used by Permalinks and the <a href="#iframe">IFRAME API</a> when a precise view
-      point is required. The coordinates are specified as <code>x</code> and <code>y</code> parameters.
+      point is required.
+      The coordinates are specified as <code>x</code> and <code>y</code> parameters.
   </p>
   <p>
       Example: Regina is (x=-95.914, y=70.5)
@@ -988,7 +993,8 @@ x = ( map_center_x * scale - ( width / 2 ) ) / width;
 y = ( -map_center_y * scale - ( height / 2 ) ) / height;
   </pre>
   <p>
-      This coordinate system is only used by the <a href="#tile">Tile API</a>
+      This coordinate system is only used by the <a href="#tile">Tile API</a>.
+      The coordinates are specified as <code>x</code> and <code>y</code> parameters.
   </p>
   <p>
       Example: Regina would be centered in a 512x384, 48px/pc tile at
@@ -1212,9 +1218,16 @@ function cbfn(data) {
 
 <script>
   (function () {
+    function escapeHTML(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+
     [].slice.call(document.querySelectorAll('pre')).forEach(function (pre) {
       pre.innerHTML = pre.innerHTML.replace(/(^ +\r?\n)|(\r?\n +$)/g, '');
     });
+
+    [].slice.call(document.querySelectorAll('a.example')).forEach(function (a) {
+      a.innerHTML = escapeHTML(a.href);
+    });
+
   }());
 </script>
 
