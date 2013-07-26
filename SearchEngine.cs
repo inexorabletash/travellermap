@@ -192,11 +192,6 @@ namespace Maps
 
         public static IEnumerable<ItemLocation> PerformSearch(string query, ResourceManager resourceManager, SearchResultsType types, int numResults)
         {
-            lock (typeof(SearchEngine))
-            {
-                // Ensure the database is not being rebuilt
-            }
-
             List<ItemLocation> results = new List<ItemLocation>();
 
             using (var connection = DBUtil.MakeConnection())
