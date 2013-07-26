@@ -49,7 +49,7 @@ namespace Maps.Serialization
                 case "ALLY":
                     {
                         Match match = Regex.Match(value, @"^(..)\s+(.*)$");
-                        if (match != null)
+                        if (match.Success)
                         {
                             var code = match.Groups[1].Value;
                             var name = match.Groups[2].Value;
@@ -61,7 +61,7 @@ namespace Maps.Serialization
                 case "BASE":
                     {
                         Match match = Regex.Match(value, @"^(.)\s+(..)$/"); // Base decodes to two bases
-                        if (match != null)
+                        if (match.Success)
                         {
                             var code = match.Groups[1].Value;
                             var bases = match.Groups[2].Value;
@@ -69,7 +69,7 @@ namespace Maps.Serialization
                             return;
                         }
                         match = Regex.Match(value, @"^(.)\s+(\S+)\s(\S+)\s+(.*)$");
-                        if (match != null)
+                        if (match.Success)
                         {
                             var code = match.Groups[1].Value;
                             var zapf = match.Groups[2].Value;
@@ -124,7 +124,7 @@ namespace Maps.Serialization
                 case "LABEL":
                     {
                         Match match = Regex.Match(value, @"^(..)(..)[,\/]?([\S]+)?\s+(.*)$");
-                        if (match != null)
+                        if (match.Success)
                         {
                             var c = match.Groups[1].Value;
                             var r = match.Groups[2].Value;
