@@ -1,38 +1,134 @@
 @import url(http://fonts.googleapis.com/css?family=Marcellus);
 @import url(http://fonts.googleapis.com/css?family=Share+Tech+Mono);
 
-body { color: black; background-color: white; }
-body,table,select { font-size: 10pt; font-family: Univers, Arial, sans-serif; }
+/* General Text Styling */
 
-h1, h2, h3 { font-family: Optima, Marcellus, "Times New Roman", serif; }
-h4, h5, h6 { font-family: Univers, Arial, Helvetica, sans-serif; }
+body {
+  color: black;
+  background-color: white;
+}
+body, table, select {
+  font-size: 10pt;
+  font-family: Univers, Arial, sans-serif;
+}
 
-h1 { width: 100%;
-     margin-bottom: 0; font-style: italic;  padding-bottom: 4pt; border-bottom: 4pt solid black; margin-bottom: 4pt; }
-h2, h3 { margin-top: 24pt; margin-bottom: 6pt; }
-h4 { font-size: 10pt; font-weight: bold; margin-bottom: 6pt; }
+h1, h2, h3 {
+  font-family: Optima, Marcellus, "Times New Roman", serif;
+}
+h4, h5, h6 {
+  font-family: Univers, Arial, Helvetica, sans-serif;
+}
 
-.content { margin-left: 1in; width: 6in; }
+h1 {
+  width: 100%;
+  margin-bottom: 0;
+  font-style: italic;
+  padding-bottom: 4pt;
+  border-bottom: 4pt solid black;
+  margin-bottom: 4pt;
+}
+h2, h3 {
+  margin-top: 24pt;
+  margin-bottom: 6pt;
+}
+h4 {
+  font-size: 10pt;
+  font-weight: bold;
+  margin-bottom: 6pt;
+}
+
+.content {
+  margin-left: 1in;
+  width: 6in;
+}
+
+p {
+  text-indent: 2em;
+}
+p, li {
+  text-align: justify;
+}
+
+p.aside {
+  text-indent: 0;
+  border: 1px solid gray;
+  background-color: #f8f8f8;
+  font-style: italic;
+  padding: 10px;
+}
+
+
+a {
+  color: black;
+}
+a.reference {
+  vertical-align: super;
+  font-size: smaller;
+  text-decoration: none;
+}
+
+cite {
+  font-style: italic;
+  font-weight: bold;
+}
+
+.caption { font-size: 90%; font-weight: bold; }
+
+table {
+  border-collapse: collapse;
+}
+
+td.number, th.number {
+  text-align: right;
+  padding-left: 10pt;
+  padding-right: 10pt;
+}
+
+
+
+/* Code Samples and Parameter Definitions */
+
+dl {
+  margin-left: 20px;
+}
+dt {
+  font-weight: bold;
+}
+dt, code, .code {
+  text-indent: 0;
+  text-align: left;
+  white-space: nowrap;
+
+  color: #ff2000;
+  background-color: transparent;
+
+  font-family: "Lucida Console", "Courier New", Courier, monospace;
+  font-style: normal;
+  font-size: 110%;
+  font-weight: bold;
+}
+pre.code {
+  color: #404040;
+  background-color: #f8f8f8;
+
+  border: 1px solid #404040;
+  padding: 10px;
+  width: 800px;
+  white-space: pre;
+
+  line-height: 150%;
+  font-size: 100%;
+}
+.code .comment {
+  font-style: italic;
+  color: #c040c0;
+}
+.code .string {
+  color: #40b040;
+}
+
+/* Form Controls */
 
 textarea {
   font-family: "Share Tech Mono", monospace;
 }
-
-p { text-indent: 2em; }
-p, li { text-align: justify; }
-
-a { color: black; }
-a.reference { vertical-align: super; font-size: smaller; text-decoration: none; }
-
-cite { font-style: italic; font-weight: bold; }
-code, .code { font-weight: bold; text-indent: 0; text-align: left; font-family: "Courier New", Courier, monospace; background-color: #e8e8e8; }
-.code .comment { font-style: italic; color: #c040c0; }
-.code .string { color: #40b040; }
-.caption { font-size: 90%; font-weight: bold; }
-
-table { border-collapse: collapse; }
-
-td.number, th.number { text-align: right; padding-left: 10pt; padding-right: 10pt; }
-
-
-

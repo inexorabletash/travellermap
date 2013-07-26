@@ -173,7 +173,7 @@ namespace Maps.Pages
             ctx.border = border;
 
             ctx.clipPath = clip ? new XGraphicsPath(boundingPathCoords, boundingPathTypes, XFillMode.Alternate) : null;
-            ProduceResponse("Jump Map", ctx, tileSize);
+            ProduceResponse("Jump Map", ctx, tileSize, transparent: clip);
         }
 
         #region Web Form Designer generated code

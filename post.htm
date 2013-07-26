@@ -2,7 +2,7 @@
 <title>Traveller Map - Poster/POST Example</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="shortcut icon" href="/favicon.ico">
-<link rel="stylesheet" type="text/css" href="site.css?update=2013-07-25">
+<link rel="stylesheet" type="text/css" href="site.css?update=2013-07-26">
 
 <h1>The Traveller Map - Poster/POST Example</h1>
 <div class="content">
@@ -21,22 +21,22 @@
       <li>POST text/plain Content
     </ul>
 
-    <h4>Usage:</h4>
+    <h4>API URLs:</h4>
     <p class="code">http://travellermap.com/api/poster</p>
 
     <h4>Options:</h4>
-    <ul>
-      <li><code>scale</code> - scale in pixels/parsec (default is 64)
-      <li><code>subsector</code> - subsector index (A-P) (optional; if not specified, whole sector is rendered)
-      <li><code>rotation</code> - rotate the image, 1 for 90&deg; clockwise, 2 for 180&deg;, 3 for 90&deg; counterclockwise
-      <li><code>options</code> - <a href="api.htm#options">rendering options</a>
-      <li><code>style</code> - <a href="api.htm#options">rendering style</a>
-    </ul>
+    <dl>
+      <dt>scale <dd>scale in pixels/parsec (default is 64)
+      <dt>subsector <dd>subsector index (A-P); if not specified, whole sector is rendered
+      <dt>rotation <dd>rotate the image, 1 for 90&deg; clockwise, 2 for 180&deg;, 3 for 90&deg; counterclockwise
+      <dt>options <dd><a href="api.htm#options">rendering options</a>
+      <dt>style <dd><a href="api.htm#options">rendering style</a>
+    </dl>
 
     <h4>Notes:</h4>
 
     <ul>
-      <li>Image format depends on selected options ("Candy" produces JPEG, otherwise GIF)
+      <li>Image format depends on selected options ("Candy" produces JPEG, otherwise PNG)
       <li>If subsector is specified, only that subsector is rendered
       <li>Scale is pixels/parsec
     </ul>
@@ -187,16 +187,17 @@
 
 </div>
 
-  <!-- Google Analytics -->
-  <script>
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-18610679-2']);
-    _gaq.push(['_trackPageview']);
+<!-- Google Analytics -->
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-18610679-2']);
+  _gaq.push(['_trackPageview']);
 
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
 
+<a href="https://github.com/inexorabletash/travellermap"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>

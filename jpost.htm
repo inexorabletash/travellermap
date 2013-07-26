@@ -2,7 +2,7 @@
 <title>Traveller Map - JumpMap/POST Example</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="shortcut icon" href="/favicon.ico">
-<link rel="stylesheet" type="text/css" href="site.css?update=2013-07-25">
+<link rel="stylesheet" type="text/css" href="site.css?update=2013-07-26">
 
 <h1>The Traveller Map - JumpMap/POST Example</h1>
 <div class="content">
@@ -21,26 +21,26 @@
       <li>POST text/plain Content
     </ul>
 
-    <h4>Usage:</h4>
+    <h4>API URLs:</h4>
     <p class="code">http://travellermap.com/api/jumpmap?hex=<var>hex</var>&amp;jump=<var>jump</var></p>
 
     <h4>Parameters:</h4>
-    <ul>
-      <li><code>jump</code> - jump range in parsecs
-      <li><code>hex</code> - center hex)
-    </ul>
+    <dl>
+      <dt>jump <dd>jump range in parsecs
+      <dt>hex <dd>center hex
+    </dl>
 
     <h4>Options:</h4>
-    <ul>
-      <li><code>scale</code> - scale in pixels/parsec (default is 64)
-      <li><code>options</code> - <a href="api.htm#options">rendering options</a>
-      <li><code>style</code> - <a href="api.htm#options">rendering style</a>
-    </ul>
+    <dl>
+      <dt>scale <dd>scale in pixels/parsec (default is 64)
+      <dt>options <dd><a href="api.htm#options">rendering options</a>
+      <dt>style <dd><a href="api.htm#options">rendering style</a>
+    </dl>
 
     <h4>Notes:</h4>
 
     <ul>
-      <li>Image format depends on selected options ("Candy" produces JPEG, otherwise GIF)
+      <li>Image format depends on selected options ("Candy" produces JPEG, otherwise PNG)
     </ul>
 
   </section>
@@ -201,3 +201,4 @@
   })();
 </script>
 
+<a href="https://github.com/inexorabletash/travellermap"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
