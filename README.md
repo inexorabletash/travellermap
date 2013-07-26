@@ -9,7 +9,8 @@ Copyright (C) 1977-2013 Far Future Enterprises.
 
 See LICENSE.md for software licensing details.
 
-Useful links:
+Useful Links
+------------
 
 * The site itself: http://travellermap.com
 * How the site works: http://travellermap.com/info.htm
@@ -21,3 +22,11 @@ Useful links:
 
 Now that the source is on GitHub, issue tracking can migrate for simple items
 although the Trello board is nicer for organizing wishlists.
+
+
+Dependencies
+------------
+
+* The site is built using ASP.NET and requires IIS7 and .NET 4.0.
+* Bitmap and PDF rendering is done using PDFsharp http://www.pdfsharp.net/ (MIT License)
+* The "Touch" page uses Add to Home Screen by Matteo Spinelli http://cubiq.org/add-to-home-screen (MIT Licence)
