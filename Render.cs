@@ -546,10 +546,7 @@ namespace Maps.Rendering
                             if (ss == null || String.IsNullOrEmpty(ss.Name))
                                 continue;
 
-                            // TODO: Move to a property on Subsector (requires Subsector to know parent sector)
-                            Point center = Astrometrics.LocationToCoordinates(sector.Location,
-                                new Point(Astrometrics.SubsectorWidth * (2 * ssx + 1) / 2, Astrometrics.SubsectorHeight * (2 * ssy + 1) / 2));
-
+                            Point center = sector.SubsectorCenter(i);
                             RenderUtil.DrawLabel(ctx.graphics, ss.Name, center, ctx.styles.subsectorNames.Font, solidBrush, ctx.styles.subsectorNames.textStyle);
                         }
                     }
@@ -1006,7 +1003,7 @@ namespace Maps.Rendering
                                 solidBrush.Color = glyph.IsHighlighted ? ctx.styles.worlds.textHighlightColor : ctx.styles.worlds.textColor;
                                 RenderUtil.DrawGlyph(ctx.graphics, glyph, styleRes, solidBrush, ctx.styles.BaseMiddlePosition.X, 0);
                             }
-                            else if (world.IsExileCamp)
+                            else if (world.IsPrisonExileCamp)
                             {
                                 Glyph glyph = Glyph.ExileCamp;
                                 solidBrush.Color = glyph.IsHighlighted ? ctx.styles.worlds.textHighlightColor : ctx.styles.worlds.textColor;

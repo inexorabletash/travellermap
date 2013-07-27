@@ -181,8 +181,10 @@ tbody#results tr.fail td { border: 1px solid red; }
   check("ref29.png", "api/poster?sector=Spinward+Marches&subsector=C&options=17271"); // World Colors
   check("ref30.png", "api/poster?sector=Spinward+Marches&subsector=B&options=33655"); // Filled Borders
 
-  // Data Overview
-  check("ref31.png", "api/overview");
+  if (String(location).indexOf('localhost') !== -1) {
+    // Data Overview
+    check("ref31.png", "api/overview");
+  }
 
   // Regression: hex selector calculation
   check("ref32.png", "api/tile?x=-74&y=-86&scale=512&options=887&style=poster");

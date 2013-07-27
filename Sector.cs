@@ -224,28 +224,6 @@ namespace Maps
         public string GammaQuadrant { get; set; }
         [XmlIgnore, JsonIgnore]
         public string DeltaQuadrant { get; set; }
-
-        [XmlIgnore, JsonIgnore]
-        public Rectangle Bounds
-        {
-            get
-            {
-                return new Rectangle(
-                        (this.Location.X * Astrometrics.SectorWidth) - Astrometrics.ReferenceHex.X,
-                        (this.Location.Y * Astrometrics.SectorHeight) - Astrometrics.ReferenceHex.Y,
-                        Astrometrics.SectorWidth, Astrometrics.SectorHeight
-                    );
-            }
-        }
-
-        public Rectangle SubsectorBounds(int index)
-        {
-            return new Rectangle(
-                (this.Location.X * Astrometrics.SectorWidth) - Astrometrics.ReferenceHex.X + (Astrometrics.SubsectorWidth * (index % 4)),
-                (this.Location.Y * Astrometrics.SectorHeight) - Astrometrics.ReferenceHex.Y + (Astrometrics.SubsectorHeight * (index / 4)),
-                Astrometrics.SubsectorWidth,
-                Astrometrics.SubsectorHeight);
-        }
     }
 
     public class Sector : SectorBase
@@ -563,12 +541,43 @@ namespace Maps
             return clipPathsCache[(int)type];
         }
 
+        [XmlIgnore, JsonIgnore]
+        public Rectangle Bounds
+        {
+            get
+            {
+                return new Rectangle(
+                        (this.Location.X * Astrometrics.SectorWidth) - Astrometrics.ReferenceHex.X,
+                        (this.Location.Y * Astrometrics.SectorHeight) - Astrometrics.ReferenceHex.Y,
+                        Astrometrics.SectorWidth, Astrometrics.SectorHeight
+                    );
+            }
+        }
+
+        public Rectangle SubsectorBounds(int index)
+        {
+            return new Rectangle(
+                (this.Location.X * Astrometrics.SectorWidth) - Astrometrics.ReferenceHex.X + (Astrometrics.SubsectorWidth * (index % 4)),
+                (this.Location.Y * Astrometrics.SectorHeight) - Astrometrics.ReferenceHex.Y + (Astrometrics.SubsectorHeight * (index / 4)),
+                Astrometrics.SubsectorWidth,
+                Astrometrics.SubsectorHeight);
+        }
+
+        [XmlIgnore, JsonIgnore]
         public Point Center
         {
             get
             {
                 return Astrometrics.LocationToCoordinates(Location, new Point(Astrometrics.SectorWidth / 2, Astrometrics.SectorHeight / 2));
             }
+        }
+
+        public Point SubsectorCenter(int index)
+        {
+            int ssx = index % 4;
+            int ssy = index / 4;
+            return Astrometrics.LocationToCoordinates(this.Location,
+                new Point(Astrometrics.SubsectorWidth * (2 * ssx + 1) / 2, Astrometrics.SubsectorHeight * (2 * ssy + 1) / 2));
         }
     }
 

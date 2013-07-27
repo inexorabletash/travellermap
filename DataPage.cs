@@ -15,12 +15,14 @@ namespace Maps.Pages
     {
         protected bool AdminAuthorized()
         {
-            if (Request["key"] != System.Configuration.ConfigurationManager.AppSettings["AdminKey"])
-            {
-                SendError(403, "Access Denied", "Access Denied");
-                return false;
-            }
-            return true;
+            if (System.Web.HttpContext.Current.Request.Url.Host == "localhost")
+                return true;
+
+            if (Request["key"] == System.Configuration.ConfigurationManager.AppSettings["AdminKey"])
+                return true;
+
+            SendError(403, "Access Denied", "Access Denied");
+            return false;
         }
 
         public abstract string DefaultContentType { get; }

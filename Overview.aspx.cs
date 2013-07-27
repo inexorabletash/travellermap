@@ -15,6 +15,9 @@ namespace Maps.Pages
 
         private void Page_Load(object sender, System.EventArgs e)
         {
+            if (!AdminAuthorized())
+                return;
+
             ResourceManager resourceManager = new ResourceManager(Server, Cache);
 
             MapOptions options = MapOptions.SectorGrid | MapOptions.FilledBorders;

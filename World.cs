@@ -192,13 +192,11 @@ namespace Maps
         public bool IsCx { get { return HasCode("Cx"); } }
 
         [XmlIgnore, JsonIgnore]
-        public bool IsPrison { get { return HasCode("Pr"); } }
-        [XmlIgnore, JsonIgnore]
         public bool IsPenalColony { get { return HasCode("Pe"); } }
         [XmlIgnore, JsonIgnore]
         public bool IsReserve { get { return HasCode("Re"); } }
         [XmlIgnore, JsonIgnore]
-        public bool IsExileCamp { get { return HasCode("Ex") || HasCode("Pr"); } }
+        public bool IsPrisonExileCamp { get { return HasCode("Pr") || HasCode("Ex"); } } // Pr is T5, Ex is legacy
         [XmlIgnore, JsonIgnore]
         public string ResearchStation { get { return HasCodePrefix("Rs"); } }
 
