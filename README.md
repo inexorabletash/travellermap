@@ -30,3 +30,4 @@ Dependencies
 * The site is built using ASP.NET and requires IIS7 and .NET 4.0.
 * Bitmap and PDF rendering is done using PDFsharp http://www.pdfsharp.net/ (MIT License)
 * The "Touch" page uses Add to Home Screen by Matteo Spinelli http://cubiq.org/add-to-home-screen (MIT Licence)
+* HTML templating uses Handlebars.js http://handlebarsjs.com/ (MIT License)
