@@ -48,16 +48,14 @@ namespace Maps
             mpr1("api/universe", "~/Universe.aspx", DEFAULT_JSON);
 
             // Admin
-            mpr0("admin/admin", "~/Admin.aspx");
-            mpr0("admin/codes", "~/Codes.aspx");
-            mpr0("admin/dump", "~/Dump.aspx");
-            mpr0("admin/errors", "~/Errors.aspx");
-
-            // TODO: DEFAULT should be FORCE instead, a type override
+            mpr0("admin/admin", "~/admin/Admin.aspx");
+            mpr0("admin/codes", "~/admin/Codes.aspx");
+            mpr0("admin/dump", "~/admin/Dump.aspx");
+            mpr0("admin/errors", "~/admin/Errors.aspx");
+            mpr0("admin/overview", "~/admin/Overview.aspx");
 
             // RESTful
             mpr1("data", "~/Universe.aspx", DEFAULT_JSON);
-            mpr0("data/image", "~/Overview.aspx");
 
             mpr1("data/{sector}", "~/SEC.aspx", new RouteValueDictionary { { "type", "SecondSurvey" } });
             mpr0("data/{sector}/sec", "~/SEC.aspx");
