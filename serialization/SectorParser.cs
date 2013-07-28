@@ -172,16 +172,12 @@ namespace Maps.Serialization
             {
                 world.Stellar = StellarDataParser.Parse(rest, StellarDataParser.OutputFormat.Compact);
             }
-#if DEBUG
             catch (StellarDataParser.InvalidSystemException)
             {
+#if DEBUG
                 worlds.ErrorList.Add("WARNING (Stellar Data): " + line);
-            }
-#else
-                catch( StellarDataParser.InvalidSystemException )
-                {
-                }
 #endif
+            }
         }
     }
 
