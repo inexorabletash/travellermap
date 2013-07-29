@@ -88,13 +88,13 @@ td.number, th.number {
 
 /* Code Samples and Parameter Definitions */
 
-dl {
+dl.params {
   margin-left: 20px;
 }
-dt {
+dl.params dt {
   font-weight: bold;
 }
-dt, code, .code {
+dl.params dt, code, .code {
   text-indent: 0;
   text-align: left;
   white-space: nowrap;

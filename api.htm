@@ -2,7 +2,7 @@
 <title>Traveller Map - API</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="shortcut icon" href="/favicon.ico">
-<link rel="stylesheet" type="text/css" href="site.css?update=2013-07-26">
+<link rel="stylesheet" type="text/css" href="site.css?update=2013-07-29">
 
 <h1>The Traveller Map API</h1>
 <div class="content">
@@ -238,7 +238,7 @@
     <p>These options are available when calling rendering APIs, but not the main page or
     <a href="#iframe">IFRAME</a> API.</p>
             
-    <dl>
+    <dl class="params">
       <dt>sscoords=1</dt>
       <dd>Hexes are numbered subsector style (0101-0810) instead of sector style (0101-3240)</dd>
             
@@ -267,7 +267,7 @@
         width: 200px; height: 200px; border: solid 1px black;
     </p>
     <h4>Options:</h4>
-    <dl>
+    <dl class="params">
       <dt>scale <dd>scale in pixels/parsec (default is 64) 
       <dt>options <dd><a href="#options">rendering options</a>
       <dt>style <dd><a href="#options">rendering style</a>
@@ -347,7 +347,7 @@
     </p>
             
     <h4>Parameters:</h4>
-    <dl>
+    <dl class="params">
         <dt>sector <dd>specify the <a href="#system_location">sector location</a> by name, e.g. "Spinward%20Marches"
         <dt>hex <dd>specify <a href="#system_location">hex location</a> within the named sector
         <dt>sx <dd>sector x in <a href="#system_sectorhex">sector/hex-space coordinates</a>
@@ -373,7 +373,7 @@
             
     <h4>Example:</h4>
     <p>
-        <a class="example" href="coordinates?sector=Spinward%20Marches&amp;hex=1910"></a>
+        <a class="example" href="api/coordinates?sector=Spinward%20Marches&amp;hex=1910"></a>
     </p>
   </section>
 
@@ -404,7 +404,7 @@
     </p>
 
     <h4>Parameters:</h4>
-    <dl>
+    <dl class="params">
         <dt>sector <dd>specify the <a href="#system_location">sector location</a> by name, e.g. "Spinward%20Marches"
         <dt>hex <dd>specify <a href="#system_location">hex location</a> within the named sector (defaults to 1620 if unspecified)
         <dt>sx <dd>sector x in <a href="#system_sectorhex">sector/hex-space coordinates</a>
@@ -425,7 +425,7 @@
 
     <h4>Example:</h4>
     <p>
-        <a class="example" href="credits?x=-110&amp;y=-70"></a>
+        <a class="example" href="api/credits?x=-110&amp;y=-70"></a>
     </p>
   </section>
 
@@ -445,7 +445,7 @@
     <p class="code">http://travellermap.com/data/<var>sector</var>/<var>subsector</var>/tab</p>
 
     <h4>Parameters:</h4>
-    <dl>
+    <dl class="params">
         <dt>sector <dd>sector name
         <dt>subsector <dd>optional - if specified (<code>A</code> - <code>P</code>), only UWPs for that subsector will be included
         <dt>sx <dd>sector x in <a href="#system_sectorhex">sector/hex-space coordinates</a>
@@ -453,7 +453,7 @@
     </dl>
 
     <h4>Options:</h4>
-    <dl>
+    <dl class="params">
         <dt>type=SecondSurvey
               <dd>The <cite>Traveller<sup>5</sup> Second Survey</cite> format in human readable form:
               Hex, Name, UWP, Trade Classifications and Remarks, 
@@ -482,7 +482,7 @@
             
     <h4>Example:</h4>   			
     <p>
-        <a class="example" href="sec?sector=Spinward%20Marches&amp;type=SecondSurvey"></a>
+        <a class="example" href="api/sec?sector=Spinward%20Marches&amp;type=SecondSurvey"></a>
     </p>
   </section>
 
@@ -495,7 +495,7 @@
     <p class="code">http://travellermap.com/data/<var>sector</var>/metadata</p>
             
     <h4>Parameters:</h4>
-    <dl>
+    <dl class="params">
         <dt>sector <dd>sector name
         <dt>sx <dd>sector x in <a href="#system_sectorhex">sector/hex-space coordinates</a>
         <dt>sy <dd>sector y in <a href="#system_sectorhex">sector/hex-space coordinates</a>
@@ -513,7 +513,7 @@
             
     <h4>Example:</h4>   			
     <p>
-        <a class="example" href="metadata?sector=Spinward%20Marches"></a>
+        <a class="example" href="api/metadata?sector=Spinward%20Marches"></a>
     </p>
   </section>
 
@@ -526,7 +526,7 @@
     <p class="code">http://travellermap.com/data/<var>sector</var>/msec</p>
             
     <h4>Parameters:</h4>
-    <dl>
+    <dl class="params">
         <dt>sector <dd>sector name
         <dt>sx <dd>sector x in <a href="#system_sectorhex">sector/hex-space coordinates</a>
         <dt>sy <dd>sector y in <a href="#system_sectorhex">sector/hex-space coordinates</a>
@@ -540,7 +540,7 @@
             
     <h4>Example:</h4>   			
     <p>
-        <a class="example" href="msec?sector=Spinward%20Marches"></a>
+        <a class="example" href="api/msec?sector=Spinward%20Marches"></a>
     </p>
   </section>
 
@@ -562,7 +562,7 @@
     </p>
             
     <h4>Parameters:</h4>
-    <dl>
+    <dl class="params">
         <dt>jump <dd>jump distance to include (1 through 6, default is 6)
         <dt>sector <dd>specify the <a href="#system_location">sector location</a> by name, e.g. "Spinward%20Marches"
         <dt>hex <dd>specify <a href="#system_location">hex location</a> within the named sector
@@ -608,7 +608,7 @@
     </p>
 
     <h4>Parameters:</h4>
-    <dl>
+    <dl class="params">
         <dt>q <dd>query string
     </dl>
             
@@ -627,7 +627,7 @@
         <li>Specify more than one (space-delimited) word in the query to refine the search. Words are joined as logical <em>and</em> clauses. So "<code>so ri</code>" will match "Solomani Rim"
           (This combines strangely with wildcards; "<code>sol* ri*</code>" tries to find something matching both "<code>sol*</code>" <em>and</em> "<code>ri*</code>" so nothing will be found!)
         <li>Add <code>uwp:</code> as a prefix to a word to search the UWP field. Examples:
-            <dl>
+            <dl class="params">
                 <dt>uwp:a* <dd>find worlds with class A starports
                 <dt>t* uwp:*f <dd>find worlds with names beginning with T that are tech level F
             </dl>
@@ -643,7 +643,7 @@
             
     <h4>Example:</h4>   			
     <p>
-        <a class="example" href="search?q=Regina"></a>
+        <a class="example" href="api/search?q=Regina"></a>
     </p>
   </section>
 
@@ -659,7 +659,7 @@
     </p>
 
     <h4>Options:</h4>
-    <dl>
+    <dl class="params">
         <dt>era <dd>year, e.g. <code>0</code>, <code>1110</code>, <code>1248</code>
         <dt>requireData <dd>if <code>1</code>, only sectors with data files will be included
     </dl>
@@ -677,7 +677,7 @@
             
     <h4>Example:</h4>   			
     <p>
-        <a class="example" href="universe?era=1000"></a>
+        <a class="example" href="api/universe?era=1000"></a>
     </p>
   </section>
   </section>
@@ -691,13 +691,13 @@
     </p>
 
     <h4>Parameters:</h4>
-    <dl>
+    <dl class="params">
         <dt>x <dd><a href="#system_tile">tile-space coordinate</a>
         <dt>y <dd><a href="#system_tile">tile-space coordinate</a>
         <dt>scale <dd>scale in pixels/parsec
     </dl>
     <h4>Options:</h4>
-    <dl>
+    <dl class="params">
         <dt>options <dd><a href="#options">rendering options</a>
         <dt>style <dd><a href="#options">rendering style</a>
         <dt>w <dd>width of image to generate (pixels, default 256)
@@ -715,7 +715,7 @@
             
     <h4>Example:</h4>   			
     <p>
-        <a class="example" href="tile?x=-24.5&amp;y=-18&amp;scale=64&amp;options=887&amp;style=poster"></a>
+        <a class="example" href="api/tile?x=-24.5&amp;y=-18&amp;scale=64&amp;options=887&amp;style=poster"></a>
     </p>
   </section>
 
@@ -736,7 +736,7 @@
     http://travellermap.com/data/<var>sector</var>/<var>subsector</var>/image
 </p>            
 <h4>Parameters:</h4>
-<dl>
+<dl class="params">
     <dt>sector <dd>sector name
     <dt>subsector <dd>subsector index (A-P) (optional; if not specified, whole sector is rendered)
     <dt>x1 <dd>left hex (inclusive) of the rectangle in <a href="#system_world">World-Space Coordinates</a>
@@ -746,7 +746,7 @@
 </dl>
 
 <h4>Options:</h4>
-<dl>
+<dl class="params">
     <dt>scale <dd>scale in pixels/parsec (default is 64)
     <dt>rotation <dd>rotate the image, 1 for 90&deg; clockwise, 2 for 180&deg;, 3 for 90&deg; counterclockwise
     <dt>options <dd><a href="#options">rendering options</a>
@@ -789,7 +789,7 @@
     </p>
             
     <h4>Parameters:</h4>
-    <dl>
+    <dl class="params">
         <dt>jump <dd>jump distance to render (1 through 12, default is 6)
         <dt>sector <dd>specify the <a href="#system_location">sector location</a> by name, e.g. "Spinward%20Marches"
         <dt>hex <dd>specify <a href="#system_location">hex location</a> within the named sector
@@ -801,7 +801,7 @@
         <dt>y <dd>location y in <a href="#system_world">world-space coordinates</a>
     </dl>
     <h4>Options:</h4>
-    <dl>
+    <dl class="params">
         <dt>scale <dd>scale in pixels/parsec (default is 64)
         <dt>options <dd><a href="#options">rendering options</a>
         <dt>style <dd><a href="#options">rendering style</a>
