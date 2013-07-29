@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<title>Traveller Sector Data File Formats</title>
+<link rel="stylesheet" href="site.css">
+
+<style>
+table.format { margin-left: -0.75in; }
+table.format { border: none; border-collapse: separate; }
+table.format .numbers td { border: none; color: gray; }
+table.format .characters td { border: 1px solid black; margin: 2px; font-size: 16pt; font-family: 'Share Tech Mono', monospace; vertical-align: middle; text-align: center; }
+table.format .characters.small td { font-size: 12pt; }
+table.format .fields td.field { background-color: #e0e0e0; }
+
+table.fields { margin: 20px 0; }
+table.fields, table.fields td, table.fields th { border: 1px solid black }
+table.fields th.columns { width: 70px; }
+table.fields th.field { width: 140px; }
+table.fields th.example { width: 140px; }
+table.fields td.example { font-family: 'Share Tech Mono', monospace; }
+table.fields th.details { x-width: 200px; }
+
+pre.example { font-family: 'Share Tech Mono', monospace; }
+</style>
+
+<h1>Traveller Sector Data File Formats</h1>
+<div class="content">
+
+
+<section>
+<h2>Sector Data Files</h2>
+
+<p>
+For convenience, the <cite>Traveller</cite> universe is divided into
+<dfn>sectors</dfn>. A sector comprises a region of space 32 by 40
+hexagonal parsecs on a side, covering a total area of 1280
+"hexes". Outside stellar rifts, the density in charted space is around
+40%, giving around 500 systems per sector.  Each system can be
+conveniently described by a compact format including the name and
+details of the main world in the system, plus additional data about
+the star system - generally referred to as a
+<dfn>Universal World Profile</dfn> or "UWP".
+
+<p>
+For 30 years, <cite>Traveller</cite> sector data has been published
+and shared. A variety of similar data formats have been used. Due
+to the MS-DOS convention of using file names with a dot and three
+letter suffix to indicate the type of file, sector data files are
+often referred to as <dfn>SEC files</dfn>. Various formats are
+in use, often with extremely subtle differences. This document
+attempts to provide details of each format.
+
+<p>
+This document does not fully define the meaning of each element of
+each data format. It is assumed that the reader is familiar
+with <cite>Traveller</cite> world data such as UWP (A0123456-7) and
+trade codes, as well as mapping conventions. Base codes, trade codes
+and travel zones vary between <cite>Traveller</cite>
+editions. Allegiance codes vary across charted space and may be
+re-used.
+</section>
+
+<section id="trader">
+<h2>TRADER Format</h2>
+
+<p>
+The original electronic format for sector data was defined
+by Marc Miller in <em>"Electronically Exploring the Traveller Universe"</em>
+<cite>Challenge Magazine, Issue No. 26</cite>, pp.24-25. The sector
+generator program listing generated files matching this format.
+The format was also used in the <strong>TRADER</strong> game/utilty
+published by GDW for the Apple II computer system. The disk included
+<code>SPINWARD</code> and <code>SOLOMANI</code> data files for
+the two published sectors.
+
+<p>Notably absent from this early format is the world name,
+possibly for space reasons. The allegiance code precedes the base
+code, but already the format is easily recognizable.
+
+<p>
+The format utilizes ASCII encoding; each character takes one byte and
+accented characters and non-Latin characters are not supported.
+Fields are fixed width, left aligned, and padded with spaces (ASCII
+32). Records are also padded to ensure that each record occupies the
+same number of bytes; this allows programs to load specific records by
+index without loading the entire file, a critical requirement for the
+limited computer systems available at the time.
+
+<table class="format">
+<tr class="numbers">
+<td>1
+<td>2
+<td>3
+<td>4
+<td>5
+<td>6
+<td>7
+<td>8
+<td>9
+<td>10
+<td>11
+<td>12
+<td>13
+<td>14
+<td>15
+<td>16
+<td>17
+<td>18
+<td>19
+<td>20
+<td>21
+<td>22
+<td>23
+<td>24
+<td>25
+<td>26
+<td>27
+<td>28
+<td>29
+<td>30
+<td>31
+<td>32
+<td>33
+<td>34
+<td>35
+<td>36
+<td>37
+<td>38
+<td>39
+<td>40
+<td>41
+<td>42
+
+<tr class="characters">
+<td>0
+<td>1
+<td>3
+<td>3
+<td>&nbsp;
+<td>B
+<td>5
+<td>6
+<td>4
+<td>5
+<td>0
+<td>0
+<td>-
+<td>B
+<td>&nbsp;
+<td>N
+<td>&nbsp;
+<td>A
+<td>g
+<td>&nbsp;
+<td>N
+<td>i
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>I
+<td>m
+<td>&nbsp;
+<td>A
+<td>&nbsp;
+<td>G
+<td>&nbsp;
+<td>*
+<td>&nbsp;
+<td>*
+
+<tr class="fields">
+<td class="field" colspan="4">Hex
+<td>
+<td class="field" colspan="9">UWP
+<td>
+<td class="field" colspan="1">B
+<td>
+<td class="field" colspan="14">Trade Classifications
+<td>
+<td class="field" colspan="2">A
+<td>
+<td class="field" colspan="1">Z
+<td>
+<td class="field" colspan="1">G
+<td>
+<td class="field" colspan="1">T
+<td>
+<td class="field" colspan="1">E
+</table>
+
+<br>
+
+<table class="fields">
+<tr><th class="columns">Columns<th class="field">Field<th class="details">Details
+<tr><td>1-4<td>Hex<td>Location in sector (XXYY)
+<tr><td>6-14<td>UWP<td>starport, size, atmosphere, hydrographics, population, government, law level, tech level
+<tr><td>16<td>Bases<td>N = Naval Base, S = Scout Base, etc.
+<tr><td>18-32<td>Trade Classifications<td>Ag = Agricultural, In = Industrial, etc.
+<tr><td>33-34<td>Allegiance<td>Im = Imperial, Zh = Zhodani, etc.
+<tr><td>36<td>Travel Zone<td>A = Amber, R = Red, blank otherwise
+<tr><td>38<td>Gas Giant<td>G = gas giant present, blank otherwise
+<tr><td>40<td>Tradeworld<td>Reserved. Used by TRADER
+<tr><td>42<td>Explored?<td>Reserved. Used by TRADER
+</table>
+
+<p>
+Following the introduction of this format, <cite>Traveller</cite>
+standard world data expanded to include several new fields such
+as "PBG" (population multiplier, number of planetoid belts,
+number of gas giants) and stellar data, culiminating in the
+data published in GDW's <cite>The Spinward Marches Campaign</cite>.
+
+
+</section>
+
+<section id="genie">
+<h2>GEnie Format ("Sunbane") </h2>
+
+<p>
+Joe Fugate of Digest Group Publications generated data for the
+Imperium and several surrounding sectors, 35 in total. This data was
+made available to the public by uploading to the GEnie information
+service. It was later hosted on an FTP file server named "Sunbane".
+This dataset is often referred to as "GENII" <i>(sic)</i> or most commonly
+"the Sunbane data".
+
+<p>
+This format includes the PBG code (population multiplier, number of
+planetoid belts, number of gas giants), stellar data, and of course
+the mainworld  name. Note that a long world name may be truncated,
+and there is not necessarily a blank between the name and hex
+location, and names may be truncated to fit.
+
+<p>
+This is a line-oriented, plain text, fixed-width format.
+
+The format utilizes the
+<a href="https://en.wikipedia.org/wiki/Windows-1252">Windows-1252</a>
+encoding, so each character takes one byte and Western European
+accented characters are supported, but non-Latin characters are not.
+
+Lines may be terminated with LF (ASCII 10) or CR+LF (ASCII 13, ASCII 10).
+
+Each column has a fixed number of characters, padded with spaces
+(ASCII 32) as necessary.  Trailing spaces at the end of a line may be
+truncated.
+
+<p>
+The file helpfully includes a self-documenting, multi-line header:
+
+<p>
+<pre class="code" style="width: 50em">
+Spinward Marches
+ 1-13: Name
+15-18: HexNbr
+20-28: UWP
+   31: Bases
+33-47: Codes & Comments
+   49: Zone
+52-54: PBG
+56-57: Allegiance
+59-74: Stellar Data
+
+....+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8
+</pre>
+
+<p>
+This is followed by system data:
+
+<table class="format">
+<tr class="numbers">
+<td>1
+<td>2
+<td>3
+<td>4
+<td>5
+<td>6
+<td>7
+<td>8
+<td>9
+<td>10
+<td>11
+<td>12
+<td>13
+<td>14
+<td>15
+<td>16
+<td>17
+<td>18
+<td>19
+<td>20
+<td>21
+<td>22
+<td>23
+<td>24
+<td>25
+<td>26
+<td>27
+<td>28
+<td>29
+<td>30
+<td>31
+<td>32
+<td>33
+<td>34
+<td>35
+<td>36
+<td>37
+<td>38
+<td>39
+<td>40
+<td>41
+<td>42
+<td>43
+<td>44
+<td>45
+<td>46
+<td>47
+<td>48
+<td>49
+<td>50
+<td>51
+<td>52
+<td>53
+<td>54
+<td>55
+<td>56
+<td>57
+<td>58
+<td>59
+<td>60
+<td>61
+<td>62
+<td>63
+<td>64
+<td>65
+<td>66
+<td>67
+<td>68
+<td>69
+<td>70
+<td>71
+<td>72
+<td>73
+<td>74
+
+
+<tr class="characters">
+<td>E
+<td>m
+<td>a
+<td>p
+<td>e
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>0
+<td>1
+<td>3
+<td>3
+<td>&nbsp;
+<td>B
+<td>5
+<td>6
+<td>4
+<td>5
+<td>0
+<td>0
+<td>-
+<td>B
+<td>&nbsp;
+<td>N
+<td>&nbsp;
+<td>A
+<td>g
+<td>&nbsp;
+<td>N
+<td>i
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>A
+<td>&nbsp;
+<td>&nbsp;
+<td>5
+<td>0
+<td>3
+<td>&nbsp;
+<td>I
+<td>m
+<td>&nbsp;
+<td>M
+<td>0
+<td>&nbsp;
+<td>V
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+
+<tr class="fields">
+<td class="field" colspan="14">Name
+<td class="field" colspan="4">Hex
+<td>
+<td class="field" colspan="9">UWP
+<td>
+<td class="field" colspan="1">B
+<td>
+<td class="field" colspan="16">Remarks
+<td>
+<td class="field" colspan="1">Z
+<td>
+<td>
+<td class="field" colspan="3">PBG
+<td>
+<td class="field" colspan="2">A
+<td>
+<td class="field" colspan="16">Stellar Data
+</table>
+
+<table class="fields">
+<tr><th class="columns">Columns<th class="field">Field<th class="details">Details
+<tr><td>1-14<td>Name<td>MainWorld name (may be blank)
+<tr><td>15-18<td>Hex<td>Location in sector (XXYY)
+<tr><td>20-28<td>UWP<td>starport, size, atmosphere, hydrographics, population, government, law level, tech level
+<tr><td>31<td>Bases<td>N = Naval Base, S = Scout Base, etc.
+<tr><td>33-47<td>Remarks<td>Ag = Agricultural, In = Industrial, etc.
+<tr><td>49<td>Travel Zone<td>A = Amber, R = Red, blank otherwise
+<tr><td>52-54<td>PBG<td>Population Multiplier, Belts, Gas Giants
+<tr><td>56-57<td>Allegiance<td>Im = Imperial, Zh = Zhodani, etc.
+<tr><td>59-74<td>Stellar Data<td>Morgan-Keenan stellar classifications, space separated
+</table>
+</section>
+
+<section id="sec">
+<h2>Legacy SEC Format</h2>
+
+<p>
+As the introduction to this document alludes, the is no one true SEC file format.
+Various applications have taken canonical name/hex/uwp/bases/codes/zone/pbg/allegiance/stellar
+fields and applied various field widths. It is valuable to document a generalized
+version of this format which applications can consume.
+
+<p>
+This is a line-oriented, plain text, variable-width format.
+
+The format utilizes the Windows-1252 encoding, so each character takes
+one byte and Western European accented characters are supported,
+but non-Latin characters are not.
+
+Lines may be terminated with LF (ASCII 10) or CR+LF (ASCII 13, ASCII 10).
+
+Blanks may be spaces (ASCII 32) or tabs (ASCII 9).
+
+<p>
+To accomodate legacy files, this format does not define field widths. Instead,
+parsers must inspect lines using Regular Expressions (or equivalent logic) to identify
+the fields. The regular expressions here follow the
+<a href="http://perldoc.perl.org/perlre.html">Perl 5 extended regular expression syntax</a>
+which has become a de-facto standard in many programming environments.
+
+
+<p>
+For each line in the file:
+<ul>
+<li>Trailing whitespace on each line should be removed
+<li>Blank lines should be ignored
+<li>Lines starting with <code>#</code> (ASCII 35) should be ignored (comments in some applications)
+<li>Lines starting with <code>$</code> (ASCII 36) should be ignored (routes in some applications)
+<li>Lines starting with <code>@</code> (ASCII 64) should be ignored (subsectors in some applications)
+<li>Lines matching the following regular expression produce the named fields.
+<li>Other lines should be ignored. They may contain errors, or be comments.
+</ul>
+
+<pre class="code">
+^
+( \s*       (?&lt;Name&gt;       .*                            ) )
+( \s*       (?&lt;Hex&gt;        \d\d\d\d                      ) )
+( \s{1,2}   (?&lt;UWP&gt;        [ABCDEX][0-9A-Z]{6}-[0-9A-Z]  ) )
+( \s{1,2}   (?&lt;Base&gt;       [A-Z1-9* ]                    ) )
+( \s{1,2}   (?&lt;Remarks&gt;    .{10,}?                       ) )
+( \s+       (?&lt;Zone&gt;       [ARBFU]                       ) )?
+( \s{1,2}   (?&lt;PBG&gt;        \d[0-9A-F][0-9A-F]            ) )
+( \s{1,2}   (?&lt;Allegiance&gt; (\w\w\b|\w-|--)               ) )
+( \s*       (?&lt;Stars&gt;      .*?                           ) )
+\s*$
+</pre>
+
+<o>
+The complexity associated with the regular expression  merits discussion:
+
+<ul>
+<li>For simplicity, <cite>Traveller</cite> eHex codes are matched as
+<code>[0-9A-Z]</code>. More strictly, this should be: <code>[0-9A-HJ-NP-Z]</code>
+<li>Name: Some files include <code>+</code> (ASCII 43) after the name to signify special
+characteristics. T4-era files terminate the name with <code>.</code> (ASCII 46).
+Some files use the hex location (e.g. <code>0133</code>) as a placeholder when the name
+is not known. Applications should filter all of these.
+<li>Base: Some files include <code>*</code> (ASCII 42)
+<li>Remarks: A minimum width is imposed; otherwise a world with a base and
+no codes cannot be distinguished from a world with a zone and no codes.
+<li>Zone: Includes additional codes:
+<ul>
+<li><code>A</code> = Amber
+<li><code>R</code> = Red
+<li><code>B</code> = <cite>Traveller: The New Era</cite> <dfn>Technologically Elevated Dictatorship</dfn> (a.k.a. "Blue")
+<li><code>F</code> = Forbidden (Zhodani)
+<li><code>U</code> = Unabsorbed (Zhodani)
+</ul>
+<li>PBG: P must be <code>0</code>-<code>9</code>, but B and G can be eHex codes
+<li>Many files fail to separate fields. It is common to "run together" the
+zone, PBG and allegiance codes (e.g. <code>R456Im</code>). (NOTE: The above regular
+expression does not account for this.)
+<li>Stars: many stellar data formats are in use; some use
+additional glyphs to indicate the pair and near/far companions, as well as
+identifying the mainworld's star. Also, many files include non-stellar
+data as extensions. Additional parsing may be applied to distinguish these from
+stellar data, using the following regular expression:
+</ul>
+
+<p>
+This approach is not perfect. Many fields end up with the codes and
+zone fields running together.
+
+<pre class="code">
+^
+(?&lt;primary&gt;
+  ( [OBAFGKM] [0-9] ) \s* (D|Ia|Ib|II|III|IV|V|VI|VII) |
+  (DB|DA|DF|DG|DK|DM|D) |
+  Un
+)
+
+(?:
+  \s+
+  (?&lt;companion&gt;
+    ( [OBAFGKM] [0-9] ) \s* (D|Ia|Ib|II|III|IV|V|VI|VII) |
+    (DB|DA|DF|DG|DK|DM|D) |
+    Un
+  )
+)*
+$
+</pre>
+
+<p>
+From experience, files are "messy". Numerous files transcribed (by hand or
+via OCR) from print publications contain errors, such as
+<code>I</code>/<code>1</code>/<code>l</code> or <code>0</code>/<code>O</code>.
+It is strongly encouraged that applications which consume legacy SEC files be
+made robust against such errors and report parse errors in a useful way to
+the users.
+
+<p>
+The following are some example legacy SEC data file entries found
+on the Internet, with comments:
+
+<pre class="example">
+# Note spacing between allegiance and stars, and "F" zone:
+Iashplie      0701 B658452-C  Z Ni                 917 Zh     K9V M0D
+Prianaf       1520 XA99000-0    Ba Lo Ni        F  003 Zh     F3V M7D
+
+# Note placeholder world name:
+0103               0103 X348002-0   Lo Ni             020 Na F7 V
+Eahyo              0131 X433731-0   Na Po             400 As M7 V M9 D
+
+# Note missing name, and "--" for allegiance, no stars:
+                     0639 X440000-0   Ba Lo Ni Po De         013 --
+Nnurukgr             0705 E637900-5   Hi In                  213 AW
+
+# Note "J-" for allegiance:
+Kue Urzue          0207 C6568AB-5                   R 100 J- F2 V
+Zimigsika          0209 A77399B-C J Hi In Cp          412 J- F0 V
+
+# Note "." placeholder name:
+.             3238 X610000-0    Ba Lo Ni           012 --     F4V
+Rudzaghz      0139 D261610-2    Ni                 314 Va     G3V M3D
+
+# Note placeholder names, no stars:
+G-1           1715 A301735-9  N Ic Na Va           224 Na
+G-2           1718 E7A0437-4    De Ni              604 Na
+
+# Note wide fields, to accomodate long names:
+Dujj't'kzo                0101 E331000-0    Ba Ni Po                        703 Ia M3 III M4 V
+Hastitan                  0104 E460343-4    De Lo Ni Po                     103 Na M2 V M4 V
+
+# Note possibly truncated world name:
+Iyaaahai      2609 C7C05L6-9    De Ni              905 A5 M7 III M7 D
+Eaaileishryaor2610 BAD57M6-E    Fl                 404 As M3 V
+
+# Note world name terminated with ".":
+Ihkasya            1020 B547100-6   Ni                603 Na
+Ftihahe.           1023 D5A07M8-C   De                403 As
+</pre>
+
+<p>
+Despite the allowances in the de-facto format for variable width fields,
+it is strongly recommended that applications output individual sector files
+with fixed width columns. Care should be taken to avoid truncating any
+fields. A pre-processing step which determines the maximum length of the
+name and remarks field may be necessary prior to serializing any of the lines
+in the file. In addition, a minimum field width for name and remarks should
+be selected, both to aid in reading the file (for example, in the case where
+no systems are named) and to avoid collapsing the base, remarks, and zone
+columns.
+
+<p>
+It is also conventional to include a human-readable header which
+contains information about the file, including identifying the fields,
+identifying the sector, and possibly other information such as author,
+source, subsector names, etc.
+</section>
+
+<section id="t5tabdelimited">
+<h2>T5 Tab Delimited Format</h2>
+
+<p>
+<cite>Traveller<sup>5</sup></cite> introduces several new fields
+beyond those in previous editions of <cite>Traveller</cite>, and are
+of course documented in the <cite>Traveller<sup>5</sup> Core Rulebook</cite>.
+These include: Economic extension, Cultural extension, Importance extension,
+Nobility, and World count. In addition, the <dfn><cite>Traveller<sup>5</sup> Second Survey</cite></dfn>
+(T5SS) is established to define a consistent, official data set for licensees
+and players. This allows us to establish a canonical data format.
+
+<p>
+The format utilizes the UTF-8 encoding. Therefore, each character may
+take more than one byte, but all of Earth's writing systems can be
+represented using <a href="http://unicode.org">Unicode</a>.
+
+This is a line-oriented, plain text,
+<a href="http://en.wikipedia.org/wiki/Tab-separated_values">tab-delimited</a> format.
+
+Lines in the file are terminated with either LF (U+000A) or CR+LF (U+000D, U+000A).
+
+Every line in the file has fields separated by the Tab character
+(U+0009). There is no escaping mechanism - neither tabs nor line
+breaking characters may occur within fields. Comments are not supported.
+Blank lines should be ignored.
+
+
+<p>
+The first line in the file is the <dfn>header</dfn>; it is tab-delimited
+and defines the fields. The fields do not appear in a fixed order.
+Parsers should read the header line and use it to construct a
+field index to field name mapping for use with the rest of the file.
+
+<table class="fields">
+<tr><th class="field">Field<th class="details">Details<th class="example">Example
+<tr><td>Hex<td>Location in sector (XXYY)<td class="example">0133
+<tr><td>Name<td>MainWorld name<td class="example">Emape
+<tr><td>UWP<td>starport, size, atmosphere, hydrographics, population, government, law level, tech level<td class="example">B564500-B
+<tr><td>Bases<td>N = Naval Base, S = Scout Base, etc.<td class="example">N
+<tr><td>Remarks<td>Ag = Agricultural, In = Industrial, etc.<td class="example">Ag Ni Pr Da
+<tr><td>Zone<td>A = Amber, R = Red<td class="example">A
+<tr><td>PBG<td>Population multiplier, Belts, Gas giants<td class="example">503
+<tr><td>Allegiance<td>Im = Imperial, Zh = Zhodani, etc.<td class="example">Im
+<tr><td>Stars<td>Morgan-Keenan stellar classifications, space separated<td class="example">M0 V
+<tr><td>{Ix}<td>Importance extension<td class="example">{ 2 }
+<tr><td>(Ex)<td>Economic extension<td class="example">(A46+2)
+<tr><td>[Cx]<td>Cultural extension<td class="example">[1716]
+<tr><td>Nobility<td>Imperial noble rank(s) assigned to<td class="example">BcC
+<tr><td>W<td>Number of worlds in the system<td class="example">6
+</table>
+
+<p>
+Note that the "extension" fields (Ix, Ex, Cx) are given visually distinct
+wrapper characters. This is convention to distinguish the fields when data is
+in print format. Due to the complexity of parsing legacy SEC files, the use
+of tab-delimited format for T5 Second Survey data is strongly recommended.
+
+<p>
+Additional columns may be present, containing convenient but redundant data.
+These commonly include:
+<ul>
+  <li><b>Sector</b> - sector abbreviation (4 letters)
+<li><b>SS</b> - subsector (<code>A</code> - <code>P</code>)
+<li><b>RU</b> - Resource Units (calculated from Economic Extension)
+</ul>
+</section>
+
+<section id="t5plaintext">
+<h2>T5 Plain Text Format</h2>
+
+<p>
+Although the tab-delimited format is the most convenient for interchange
+it is difficult for humans to read. This document establishes an extensible,
+human-readable plain text format for the
+<dfn><cite>Traveller<sup>5</sup></cite> Second Survey</dfn> data.
+
+<p>
+The format utilizes the UTF-8 encoding. Therefore, each character may
+take more than one byte, but all of Earth's writing systems can be
+represented using <a href="http://unicode.org">Unicode</a>.
+This is a variable-width, line-oriented format. Fields are fixed
+width, separated by one space, left aligned and padded by spaces.
+Lines in the file are terminated with either LF
+(U+000A) or CR+LF (U+000D, U+000A).
+There is no escaping mechanism line breaking characters may occur within fields.
+<p>
+Blank lines are ignored. Lines starting with <code>#</code> (U+0023) are ignored.
+
+<p>
+The first non-ignored line in the file is the <dfn>header line</dfn>.
+It establishes
+the field names. The header line is composed of field
+names padded by spaces. The header line is followed by a
+<dfn>separator line</dfn> which defines the field widths.
+The separator line is composed of runs of <code>-</code> (U+002D)
+characters separated by space characters (U+0020).
+To parse the file, the header line should be saved, then the
+separator line parsed to determine field widths and offsets.
+The header line can then be parsed to determine field names.
+The fields do not appear in a fixed order; after parsing
+the separator line and the header line, a field index to field
+name mapping can be constructed to use for parsing the rest of
+the file.
+
+<p>
+The rest of the non-ignored lines in the file are
+<dfn>data lines</dfn> and are parsed using the fields and widths
+determined by parsing the header line.
+
+<p>
+The following is an example header line, separator line, and data
+line:
+
+<table class="format">
+<tr class="characters small">
+<td>H
+<td>e
+<td>x
+<td>&nbsp;
+<td>&nbsp;
+<td>N
+<td>a
+<td>m
+<td>e
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>U
+<td>W
+<td>P
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>R
+<td>e
+<td>m
+<td>a
+<td>r
+<td>k
+<td>s
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>{
+<td>I
+<td>x
+<td>}
+<td>&nbsp;
+<td>&nbsp;
+<td>(
+<td>E
+<td>x
+<td>)
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>[
+<td>C
+<td>x
+<td>]
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>N
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>B
+<td>&nbsp;
+<td>Z
+<td>&nbsp;
+<td>P
+<td>B
+<td>G
+<td>&nbsp;
+<td>W
+<td>&nbsp;
+<td>&nbsp;
+<td>A
+<td>&nbsp;
+<td>&nbsp;
+<td>S
+<td>t
+<td>e
+<td>l
+<td>l
+<td>a
+<td>r
+
+<tr class="characters small">
+<td>-
+<td>-
+<td>-
+<td>-
+<td>&nbsp;
+<td>-
+<td>-
+<td>-
+<td>-
+<td>-
+<td>-
+<td>-
+<td>-
+<td>-
+<td>-
+<td>-
+<td>&nbsp;
+<td>-
+<td>-
+<td>-
+<td>-
+<td>-
+<td>-
+<td>-
+<td>-
+<td>-
+<td>&nbsp;
+<td>-
+<td>-
+<td>-
+<td>-
+<td>-
+<td>-
+<td>-
+<td>-
+<td>-
+<td>-
+<td>-
+<td>-
+<td>-
+<td>-
+<td>-
+<td>-
+<td>&nbsp;
+<td>-
+<td>-
+<td>-
+<td>-
+<td>-
+<td>&nbsp;
+<td>-
+<td>-
+<td>-
+<td>-
+<td>-
+<td>-
+<td>-
+<td>&nbsp;
+<td>-
+<td>-
+<td>-
+<td>-
+<td>-
+<td>-
+<td>&nbsp;
+<td>-
+<td>-
+<td>-
+<td>-
+<td>-
+<td>&nbsp;
+<td>-
+<td>&nbsp;
+<td>-
+<td>&nbsp;
+<td>-
+<td>-
+<td>-
+<td>&nbsp;
+<td>-
+<td>-
+<td>&nbsp;
+<td>-
+<td>-
+<td>&nbsp;
+<td>-
+<td>-
+<td>-
+<td>-
+<td>-
+<td>-
+<td>-
+
+
+<tr class="characters small">
+<td>0
+<td>1
+<td>3
+<td>3
+<td>&nbsp;
+<td>E
+<td>m
+<td>a
+<td>p
+<td>e
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>B
+<td>5
+<td>6
+<td>4
+<td>5
+<td>0
+<td>0
+<td>-
+<td>B
+<td>&nbsp;
+<td>A
+<td>g
+<td>&nbsp;
+<td>N
+<td>i
+<td>&nbsp;
+<td>P
+<td>r
+<td>&nbsp;
+<td>D
+<td>a
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>{
+<td>&nbsp;
+<td>2
+<td>&nbsp;
+<td>}
+<td>&nbsp;
+<td>(
+<td>A
+<td>4
+<td>6
+<td>+
+<td>2
+<td>)
+<td>&nbsp;
+<td>[
+<td>1
+<td>7
+<td>1
+<td>6
+<td>]
+<td>&nbsp;
+<td>B
+<td>c
+<td>C
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+<td>N
+<td>&nbsp;
+<td>A
+<td>&nbsp;
+<td>5
+<td>0
+<td>3
+<td>&nbsp;
+<td>6
+<td>&nbsp;
+<td>&nbsp;
+<td>I
+<td>m
+<td>&nbsp;
+<td>M
+<td>0
+<td>&nbsp;
+<td>V
+<td>&nbsp;
+<td>&nbsp;
+<td>&nbsp;
+
+
+<tr class="fields">
+<td class="field" colspan="4">Hex
+<td>
+<td class="field" colspan="11">Name
+<td>
+<td class="field" colspan="9">UWP
+<td>
+<td class="field" colspan="16">Remarks
+<td>
+<td class="field" colspan="5">Ix
+<td>
+<td class="field" colspan="7">Ex
+<td>
+<td class="field" colspan="6">Cx
+<td>
+<td class="field" colspan="5">N
+<td>
+<td class="field" colspan="1">B
+<td>
+<td class="field" colspan="1">Z
+<td>
+<td class="field" colspan="3">PBG
+<td>
+<td class="field" colspan="2">W
+<td>
+<td class="field" colspan="2">A
+<td>
+<td class="field" colspan="8">Stellar
+</table>
+
+<p>
+The field definitions are the same as those given for the
+<a href="#t5tabdelimited">T5 Tab Delimited Format</a>
+above, and so are not repeated here. While the field
+order should not be assumed by applications parsing this
+format, applications should follow the
+<cite>Traveller<sup>5</sup></cite> Second Survey standard
+defined in the <cite>Traveller<sup>5</sup> Core Rulebook</cite>:
+Hex, Name, UWP, Remarks, Ix, Ex, Cx, N, B, Z, PBG, W, A, Stellar.
+
+</section>
+
+</div>
