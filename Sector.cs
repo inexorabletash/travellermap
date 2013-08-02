@@ -424,7 +424,8 @@ namespace Maps
 
                 if (Credits != null)
                 {
-                    string stripped = (new Regex("<.*?>", System.Text.RegularExpressions.RegexOptions.CultureInvariant)).Replace(Credits, "");
+                    string stripped = Regex.Replace(Credits, "<.*?>", "");
+                    stripped = Regex.Replace(stripped, @"\s+", " ");
                     stripped = stripped.Trim();
                     writer.WriteLine();
                     writer.WriteLine("# Credits: {0}", stripped);
