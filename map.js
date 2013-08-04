@@ -919,9 +919,10 @@ var Map;
     cx = l + (r - l) / 2; // find the center tile location x and y
     cy = t + (b - t) / 2;
 
+    // work out and down from the center for the base quadrant
     for (y = 0; y <= (b - t) / 2; y += 1) {  // build up tile offsets from the center y and then x
         for (x = 0; x <= (r - l) / 2; x += 1) {
-            // to spiral around the center, produce a quadrant offset coefficient
+            // to spiral around the center, produce a quadrant offset coefficient to be applied to the base quadrant numbers
             for (quadrant = 1; quadrant <= 4; quadrant += 1) { // 1 is lower right, 2 upper right, counter-clockwise
                 switch (quadrant) {
                     case 1:
