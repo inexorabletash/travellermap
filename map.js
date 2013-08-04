@@ -868,7 +868,7 @@ var Map;
     }
     this.dirty = false;
 
-    // *FUTURE: Spiral outwards so requests for central
+    // Spiral outwards so requests for central
     // images are serviced first
 
     var self = this,
@@ -894,7 +894,7 @@ var Map;
 
     // Initial z - leave room for lower/higher scale tiles
         z = 10 + this.max_scale - this.min_scale,
-        x, y, dx, dy, dw, dh,
+        x, y, dx, dy, dw, dh, quadrant, cx, cy, qx, qy, ax, ay,
         child, next;
 
 
@@ -911,20 +911,50 @@ var Map;
       this._rd_cb = function() { self.invalidate(100); };
     }
 
+
     // TODO: Defer loading of new tiles while in the middle of a zoom gesture
 
-    for (y = t; y <= b; y += 1) {
-      for (x = l; x <= r; x += 1) {
+    // Spiral outwards so requests for central
+    // images are serviced first
+    cx = l + (r - l) / 2; // find the center tile location x and y
+    cy = t + (b - t) / 2;
 
-        dx = (x - this.x * cf) * this.tilesize * tmult;
-        dy = (y - this.y * cf) * this.tilesize * tmult;
-        dw = this.tilesize * tmult;
-        dh = this.tilesize * tmult;
+    for (y = 0; y <= (b - t) / 2; y += 1) {  // build up tile offsets from the center y and then x
+        for (x = 0; x <= (r - l) / 2; x += 1) {
+            // to spiral around the center, produce a quadrant offset coefficient
+            for (quadrant = 1; quadrant <= 4; quadrant += 1) { // 1 is lower right, 2 upper right, counter-clockwise
+                switch (quadrant) {
+                    case 1:
+                        qx = 1; // keep X axis offset
+                        qy = 1; // keep Y axis offset
+                        break;
+                    case 2:
+                        qx = 1;
+                        qy = -1;  // flip Y axis offset
+                        break;
+                    case 3:
+                        qx = -1;  // flip X axis offset
+                        qy = -1;
+                        break;
+                    case 4:
+                        qx = -1;
+                        qy = 1;
+                        break;
+                }
+                // the adjusted X,Y tile is relative to the center of the map and the current quadrant
+                ax = cx + x * qx;
+                ay = cy + y * qy;
+                // fetch the tile as adjusted
+                dx = (ax - this.x * cf) * this.tilesize * tmult;
+                dy = (ay - this.y * cf) * this.tilesize * tmult;
+                dw = this.tilesize * tmult;
+                dh = this.tilesize * tmult;
 
-        this.drawTile(x, y, tscale,
-                      (cw / 2) + dx, (ch / 2) + dy, dw, dh,
-                      z, this._rd_cb);
-      }
+                this.drawTile(ax, ay, tscale,
+                              (cw / 2) + dx, (ch / 2) + dy, dw, dh,
+                              z, this._rd_cb);
+            }
+        }
     }
 
     // Hide unused tiles
