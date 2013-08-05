@@ -868,9 +868,6 @@ var Map;
     }
     this.dirty = false;
 
-    // Spiral outwards so requests for central
-    // images are serviced first
-
     var self = this,
 
     // Integral scale (the tiles that will be used)
@@ -911,15 +908,12 @@ var Map;
       this._rd_cb = function() { self.invalidate(100); };
     }
 
-
-    // TODO: Defer loading of new tiles while in the middle of a zoom gesture
-
-    // Spiral outwards so requests for central
-    // images are serviced first
+      // Spiral outwards so requests for central
+      // images are serviced first
     cx = l + (r - l) / 2; // find the center tile location x and y
     cy = t + (b - t) / 2;
 
-    // work out and down from the center for the base quadrant
+      // work out and down from the center for the base quadrant
     for (y = 0; y <= (b - t) / 2; y += 1) {  // build up tile offsets from the center y and then x
         for (x = 0; x <= (r - l) / 2; x += 1) {
             // to spiral around the center, produce a quadrant offset coefficient to be applied to the base quadrant numbers
