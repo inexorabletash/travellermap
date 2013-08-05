@@ -35,10 +35,8 @@
 
 .spinward
 {
-    text-align: center; writing-mode: tb-rl; filter: flipv fliph;
-    -ms-transform-origin: 50% 50%;
+    text-align: center;
     transform: translateX(-50%) translateX(0em) rotate(270deg) translateY(50%);
-    -ms-transform: translateX(-50%) translateX(1.2em) rotate(180deg) translateY(0%);
     -webkit-transform: translateX(-50%) translateX(0em) rotate(270deg) translateY(50%);
     -moz-transform: translateX(-50%) translateX(0em) rotate(270deg) translateY(50%);
     -o-transform: translateX(-50%) translateX(0em) rotate(270deg) translateY(50%);
@@ -46,10 +44,8 @@
 
 .trailing
 {
-    text-align: center; writing-mode: tb-rl; filter: flipv fliph;
-    -ms-transform-origin: 50% 50%;
+    text-align: center;
     transform: translateX(50%) translateX(-1.2em) rotate(270deg) translateY(50%);
-    -ms-transform: translateX(50%) translateX(-1.2em) rotate(180deg) translateY(0%);
     -webkit-transform: translateX(50%) translateX(-1.2em) rotate(270deg) translateY(50%);
     -moz-transform: translateX(50%) translateX(-1.2em) rotate(270deg) translateY(50%);
     -o-transform: translateX(50%) translateX(-1.2em) rotate(270deg) translateY(50%);
@@ -61,12 +57,14 @@
 <style>
 .spinward
 { 
-    -ms-writing-mode: tb-rl; 
+    -ms-writing-mode: tb-lr;
+    filter: flipv fliph;
 }
 
 .trailing
 {     
-     -ms-writing-mode: tb-rl;
+     -ms-writing-mode: bt-rl;
+     filter: flipv fliph;
 }
 </style>
 <![endif]-->
