@@ -1,0 +1,1814 @@
+<!DOCTYPE html>
+<title>Second Survey Data Definitions</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" href="site.css">
+<style>
+  table {
+    border-collapse: collapse;
+  }
+
+  td, th {
+    vertical-align: top;
+    text-indent: 0in;
+    padding: 0in 2.9pt 0in 2.9pt;
+  }
+
+  th {
+    font-weight: bold;
+  }
+
+  th.section {
+    font-weight: normal;
+    font-style: italic;
+    text-align: left;
+    padding-top: 10px;
+  }
+
+  table, tr {
+    border: 1pt solid black;
+  }
+  td, th {
+    border: none;
+  }
+  td:first-child, th:first-child {
+    border: 1pt solid black;
+  }
+  
+  .equation {
+    font-size: 12pt;
+    font-weight: bold;
+  }
+
+  div.example {
+    margin-top: 10px;
+    margin-bottom: 10px;  
+  }
+
+  .highlight {
+    background-color: #ffc0c0;
+    padding: 4px;
+    border-radius: 4px;
+    border: 1px solid gray;
+  }
+
+</style>
+
+<h1>The Traveller Map - Second Survey Data Definitions</h1>
+
+<div class="content">
+
+  <section id="intro">
+    <p>The <cite>Traveller<sup>5</sup> Second Survey</cite> format defines a standard for 
+      describing star systems in the <cite>Official Traveller Universe</cite>. It is composed
+      of a series of fields describing various aspects of the main world in each system
+      including physical and cultural characteristics, and some details about other bodies
+      in the system of interest to travellers.
+    </p>
+    <div class="example"><code>1910 Regina A788899-C Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF A &nbsp; 703 14 Im F7 V MD M3 V</code></div>
+    <p class="aside">
+      Note that different editions of <cite>Traveller</cite> and different authors and publications may include
+      different fields, present the fields in different orders, or provide different values for fields.
+    </p>
+  </section>
+
+  <section id="toc">
+    <h2>Contents</h2>
+    <ul>
+      <li>Data Fields
+         <ul>
+           <li><a href="#hex">Hex Location</a></li>
+           <li><a href="#name">MainWorld Name</a></li>
+           <li><a href="#uwp">UWP - Universal World Profile</a></li>
+           <li><a href="#remarks">Remarks and Trade Codes</a></li>
+           <li><a href="#ix">Importance Extension</a></li>
+           <li><a href="#ex">Economic Extension</a></li>
+           <li><a href="#cx">Cultural Extension</a></li>
+           <li><a href="#nobility">Nobility</a></li>
+           <li><a href="#bases">Bases</a></li>
+           <li><a href="#zone">Travel Zone</a></li>
+           <li><a href="#pbg">PBG - Population, Belts, Giants</a></li>
+           <li><a href="#allegiance">Allegiance</a></li>
+           <li><a href="#worlds">Worlds</a></li>
+           <li><a href="#stellar">Stellar Data</a></li>
+         </ul>
+      </li>
+      <li>Appendix
+        <ul>
+          <li><a href="#ehex">eHex</a></li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+  <section id="hex">
+    <h3>Hex Location</h3>
+    <div class="example"><code><span class="highlight">1910</span> Regina A788899-C Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF A &nbsp; 703 14 Im F7 V MD M3 V</code></div>
+    <p>
+      The hexagon location of the world within a sector, given as a four digit number. The first
+      two digits are the distance from the spinward edge in parsecs ranging from <code>01</code> through <code>32</code>.
+      The second two digits are the distance from the coreward edge in parsecs ranging from <code>01</code> through <code>40</code>.
+    </p>
+  </section>
+
+  <section id="name">
+    <h3>MainWorld Name</h3>
+    <div class="example"><code>1910 <span class="highlight">Regina</span> A788899-C Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF A &nbsp; 703 14 Im F7 V MD M3 V</code></div>
+    <p>
+      Name of the primary world in the system. Most characteristics given in the UWP, such as physical and cultural
+      attributes, refer to this world.
+    </p>
+  </section>
+
+  <section id="uwp">
+    <h3>UWP - Universal World Profile</h3>
+    <div class="example"><code>1910 Regina <span class="highlight">A788899-C</span> Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF A &nbsp; 703 14 Im F7 V MD M3 V</code></div>
+    <p>
+      The UWP gives a compact description of the physical and cultural aspects of the 
+      main world, as well the starport facilities and available technology.
+      The fields are respectively:
+    </p>
+    <table>
+      <tr>
+        <th>Code
+        <th>Description
+        
+      <tr>
+        <td><a href="#Starport">Starport</a>
+        <td>Type of starport facility on world.
+
+      <tr>
+        <td><a href="#World_Size_Data">Size</a>
+        <td>World diameter (in units of 1,600 kilometers).
+
+      <tr>
+        <td><a href="#Atmosphere">Atmosphere</a>
+        <td>World atmosphere type.
+
+      <tr>
+        <td><a href="#Hydrographics">Hydrographics</a>
+        <td>World surface covered with water (in tenths).
+
+      <tr>
+        <td><a href="#Population_Exponent">Population</a>
+        <td>Exponent of intelligent population.
+
+      <tr>
+        <td><a href="#Government_Type">Government</a>
+        <td>World government type.
+
+      <tr>
+        <td><a href="#Law_Level">Law Level</a>
+        <td>Degree of oppression by law.
+
+      <tr>
+        <td><a href="#Technological_Level">Technological Level</a>
+        <td>Level of technological achievement.
+
+    </table>
+
+    <section id="Starport">
+      <h4>Starport</h4>
+      <div class="example"><code>1910 Regina <span class="highlight">A</span>788899-C Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF A &nbsp; 703 14 Im F7 V MD M3 V</code></div>
+      <p>
+        Starport indicates the best quality starport in the star
+system.
+      </p>
+      <table>
+        <tr>
+          <th>Code
+          
+          <th>Starport Type
+          
+          <tr>
+            <td><code>A</code>
+            <td>Excellent Quality. Refined fuel
+available. Annual maintenance overhaul available. Shipyard capable of
+constructing starships and non-starships present. Nava base and/or scout base
+may be present.
+
+        <tr>
+          <td><code>B</code>
+          <td>Good Quality. Refined fuel
+available. Annual maintenance overhaul available. Shipyard capable of
+constructing non-starships present. Naval base and/or scout base may be
+present.
+
+        <tr>
+          <td><code>C</code>
+          <td>Routine Quality. Only unrefined
+fuel available. Reasonable repair facilities present. Scout base may be
+present.
+
+        <tr>
+          <td><code>D</code>
+          <td>Only unrefined fuel available. No
+repair facilities present. Scout base may be present.
+
+        <tr>
+          <td><code>E</code>
+          <td>Frontier Installation. Essentially
+a marked spot of bedrock with no fuel, facilities, or bases present.
+
+        <tr>
+          <td><code>X</code>
+          <td>No Starport. No provision is made
+for any ship landings.
+
+      </table>
+    </section>
+    <section id="World_Size_Data">
+      <h4>Size</h4>
+      <div class="example"><code>1910 Regina A<span class="highlight">7</span>88899-C Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF A &nbsp; 703 14 Im F7 V MD M3 V</code></div>
+      <p>
+        Size expresses the diameter of a world in approximately 1,600 km units (or
+1,000 mile units).
+      </p>
+      <p>Size code <code>0</code> indicates that the main "world" of the system is an 
+        asteroid belt.
+      </p>
+      <table>
+        <tr>
+          <td>
+            <i>Size</i>
+          <td>
+            <i>Diameter (km)</i>
+          <td>
+            <i>Mass (Earth = 1)</i>
+          <td>
+            <i>Area (Earth = 1)</i>
+          <td>
+            <i>Gravity (G)</i>
+          <td>
+            <i>Esc. Vel (km/s)</i>
+        <tr>
+          <td><code>1</code>
+            <td>1,600
+            <td>0.0019
+            <td>0.015
+            <td>0.122
+            <td>1.35
+
+        <tr>
+          <td><code>2</code>
+          <td>3,200
+          <td>0.015
+          <td>0.063
+          <td>0.240
+          <td>2.69
+
+        <tr>
+          <td><code>3</code>
+          <td>4,800
+          <td>0.053
+          <td>0.141
+          <td>0.377
+          <td>4.13
+
+        <tr>
+          <td><code>4</code>
+          <td>6,400
+          <td>0.125
+          <td>0.250
+          <td>0.500
+          <td>5.49
+
+        <tr>
+          <td><code>5</code>
+          <td>8,000
+          <td>0.244
+          <td>0.391
+          <td>0.625
+          <td>6.87
+
+        <tr>
+          <td><code>6</code>
+          <td>9,600
+          <td>0.422
+          <td>0.563
+          <td>0.840
+          <td>8.72
+
+        <tr>
+          <td><code>7</code>
+          <td>11,200
+          <td>0.670
+          <td>0.766
+          <td>0.875
+          <td>9.62
+
+        <tr>
+          <td><code>8</code>
+          <td>12,800
+          <td>1.000
+          <td>1.000
+          <td>1.000
+          <td>11.00
+
+        <tr>
+          <td><code>9</code>
+          <td>14,400
+          <td>1.424
+          <td>1.266
+          <td>1.120
+          <td>12.35
+
+        <tr>
+          <td><code>A</code>
+          <td>16,000
+          <td>1.953
+          <td>1.563
+          <td>1.250
+          <td>13.73
+
+      </table>
+      <p>
+        The above table assumes a density similar to Earth (5.5 grams per cubic centimeter).
+    </section>
+    <section id="Atmosphere">
+      <h4>Atmosphere</h4>
+      <div class="example"><code>1910 Regina A7<span class="highlight">8</span>8899-C Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF A &nbsp; 703 14 Im F7 V MD M3 V</code></div>
+      <p>
+        Atmosphere type shows the general character of the
+atmosphere for a world on its surface.
+      </p>
+      <table>
+        <tr>
+          <th>Code
+          
+          <th>Description
+          
+          <tr>
+            <td><code>0</code>
+            <td>No atmosphere. Requires vacc suit.
+
+        <tr>
+          <td><code>1</code>
+          <td>Trace. Requires vacc suit.
+
+        <tr>
+          <td><code>2</code>
+          <td>Very thin. Tainted. Requires
+combination respirator/filter.
+
+        <tr>
+          <td><code>3</code>
+          <td>Very thin. Requires respirator.
+
+        <tr>
+          <td><code>4</code>
+          <td>Thin. Tainted. Requires filter
+mask.
+
+        <tr>
+          <td><code>5</code>
+          <td>Thin. Breathable.
+
+        <tr>
+          <td><code>6</code>
+          <td>Standard. Breathable.
+
+        <tr>
+          <td><code>7</code>
+          <td>Standard. Tainted. Requires filter
+mask.
+
+        <tr>
+          <td><code>8</code>
+          <td>Dense. Breathable.
+
+        <tr>
+          <td><code>9</code>
+          <td>Dense. Tainted. Requires filter
+mask.
+
+        <tr>
+          <td><code>A</code>
+          <td>Exotic. Requires special
+protective equipment.
+
+        <tr>
+          <td><code>B</code>
+          <td>Corrosive. Requires protective
+suit.
+
+        <tr>
+          <td><code>C</code>
+          <td>Insidious. Requires protective
+suit.
+
+        <tr>
+          <td><code>D</code>
+          <td>Dense, high. Breathable above a
+minimum altitude.
+
+        <tr>
+          <td><code>E</code>
+          <td>Ellipsoid. Breathable at certain
+latitudes.
+
+        <tr>
+          <td><code>F</code>
+          <td>Thin, low. Breathable below certain
+altitudes.
+
+      </table>
+    </section>
+    <section id="Hydrographics">
+      <h4>Hydrographics</h4>
+      <div class="example"><code>1910 Regina A78<span class="highlight">8</span>899-C Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF A &nbsp; 703 14 Im F7 V MD M3 V</code></div>
+      <p>
+        Hydrographics shows the percentage of world surface covered by seas or oceans.
+        If atmosphere type is <code>A</code> or above, fluid may be present in place of water.
+      </p>
+      <table>
+        <tr>
+          <th>Code
+          
+          <th>Description
+          
+          <tr>
+            <td><code>0</code>
+            <td>No water. Desert World.
+
+        <tr>
+          <td><code>1</code>
+          <td>10% water.
+
+        <tr>
+          <td><code>2</code>
+          <td>20% water.
+
+        <tr>
+          <td><code>3</code>
+          <td>30% water.
+
+        <tr>
+          <td><code>4</code>
+          <td>40% water.
+
+        <tr>
+          <td><code>5</code>
+          <td>50% water.
+
+        <tr>
+          <td><code>6</code>
+          <td>60% water.
+
+        <tr>
+          <td><code>7</code>
+          <td>70% water. Equivalent to Terra or
+Vland.
+
+        <tr>
+          <td><code>8</code>
+          <td>80% water.
+
+        <tr>
+          <td><code>9</code>
+          <td>90% water.
+
+        <tr>
+          <td><code>A</code>
+          <td>100% water. Water World.
+
+      </table>
+    </section>
+    <section id="Population_Exponent">
+      <h4>Population Exponent</h4>
+      <div class="example"><code>1910 Regina A788<span class="highlight">8</span>99-C Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF A &nbsp; 703 14 Im F7 V MD M3 V</code></div>
+      <p>
+        The population exponent gives an order-of-magnitude approximation of a world's population.
+         Together with the population multiplier digit in
+  the <a href="#pbg">PBG</a> field, the world population can be computed as:
+      </p>
+
+      <p class="equation">
+        population = <i>multiplier</i> &times; 10<sup><i>exponent</i></sup>
+      </p>
+
+
+      <table>
+        <tr>
+          <th>Code
+          
+          <th>Description
+          
+          <tr>
+            <td><code>0</code>
+  <td>Few or no inhabitants.
+
+ <tr>
+   <td><code>1</code>
+  <td>Tens of inhabitants.
+
+ <tr>
+   <td><code>2</code>
+  <td>Hundreds of inhabitants.
+
+ <tr>
+   <td><code>3</code>
+  <td>Thousands of inhabitants.
+
+ <tr>
+   <td><code>4</code>
+  <td>Tens of thousands of inhabitants.
+
+ <tr>
+   <td><code>5</code>
+  <td>Hundreds of thousands of inhabitants.
+
+ <tr>
+   <td><code>6</code>
+  <td>Millions of inhabitants.
+
+ <tr>
+   <td><code>7</code>
+  <td>Tens of millions of inhabitants.
+
+ <tr>
+   <td><code>8</code>
+  <td>Hundreds of millions of
+  inhabitants.
+
+ <tr>
+   <td><code>9</code>
+  <td>Billions of inhabitants.
+
+ <tr>
+   <td><code>A</code>
+  <td>Tens of billions of inhabitants.
+
+      </table>
+    </section>
+    <section id="Government_Type">
+      <h4>Government Type</h4>
+      <div class="example"><code>1910 Regina A7888<span class="highlight">9</span>9-C Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF A &nbsp; 703 14 Im F7 V MD M3 V</code></div>
+      <p>
+        Government shows the basic governmental structure for a world.
+      </p>
+      <p class="aside">
+        Codes <code>G</code> and above were defined in the <cite>Classic Traveller</cite> alien
+        modules for sophont-specific govenment types. Other editions of <cite>Traveller</cite>
+        may define other values for certain codes.
+      </p>
+      <table>
+        <tr>
+          <th>Code
+          
+          <th>Description
+          
+          <th>Allegiance
+          
+          <tr>
+            <td><code>0</code>
+  <td>No Government Structure.
+  <td>
+        <tr>
+          <td><code>1</code>
+  <td>Company/Corporation.
+  <td>
+        <tr>
+          <td><code>2</code>
+  <td>Participating Democracy.
+  <td>
+        <tr>
+          <td><code>3</code>
+  <td>Self-Perpetuating Oligarchy.
+  <td>
+        <tr>
+          <td><code>4</code>
+  <td>Representative Democracy.
+  <td> 
+
+ <tr>
+   <td><code>5</code>
+  <td>Feudal Technocracy.
+  <td> 
+
+ <tr>
+   <td><code>6</code>
+  <td>Captive Government / Colony.
+  <td> 
+
+ <tr>
+   <td><code>7</code>
+  <td>Balkanization.
+  <td> 
+
+ <tr>
+   <td><code>8</code>
+  <td>Civil Service Bureaucracy.
+  <td> 
+
+ <tr>
+   <td><code>9</code>
+  <td>Impersonal Bureaucracy.
+  <td> 
+
+ <tr>
+   <td><code>A</code>
+  <td>Charismatic Dictator.
+  <td> 
+
+ <tr>
+   <td><code>B</code>
+  <td>Non-Charismatic Dictator.
+  <td> 
+
+ <tr>
+   <td><code>C</code>
+  <td>Charismatic Oligarchy.
+  <td> 
+
+ <tr>
+   <td><code>D</code>
+  <td>Religious Dictatorship.
+  <td> 
+
+ <tr>
+   <td><code>E</code>
+  <td>Religious Autocracy.
+  <td> 
+
+ <tr>
+   <td><code>F</code>
+  <td>Totalitarian Oligarchy.
+  <td> 
+
+ <tr>
+   <td><code>G</code>
+  <td>Small Station or Facility.
+  <td>Aslan.
+
+ <tr>
+   <td><code>H</code>
+  <td>Split Clan Control.
+  <td>Aslan.
+
+ <tr>
+   <td><code>J</code>
+  <td>Single On-world Clan Control.
+  <td>Aslan.
+
+ <tr>
+   <td><code>K</code>
+  <td>Single Multi-world Clan Control.
+  <td>Aslan.
+
+ <tr>
+   <td><code>L</code>
+  <td>Major Clan Control.
+  <td>Aslan.
+
+ <tr>
+   <td><code>M</code>
+  <td>Vassal Clan Control.
+  <td>Aslan.
+
+ <tr>
+   <td><code>N</code>
+  <td>Major Vassal Clan Control.
+  <td>Aslan.
+
+ <tr>
+   <td><code>P</code>
+  <td>Small Station or Facility.
+  <td>K’kree.
+
+ <tr>
+   <td><code>Q</code>
+  <td>Krurruna or Krumanak Rule for
+  Off-world Steppelord.
+  <td>K’kree.
+
+ <tr>
+   <td><code>R</code>
+  <td>Steppelord On-world Rule
+  <td>K’kree.
+
+ <tr>
+   <td><code>S</code>
+  <td>Sept.
+  <td>Hiver.
+
+ <tr>
+   <td><code>T</code>
+  <td>Unsupervised Anarchy.
+  <td>Hiver.
+
+ <tr>
+   <td><code>U</code>
+  <td>Supervised Anarchy.
+  <td>Hiver.
+
+ <tr>
+   <td><code>V</code>
+  <td> 
+  <td> 
+
+ <tr>
+   <td><code>W</code>
+  <td>Committee.
+  <td>Hiver.
+
+ <tr>
+   <td><code>X</code>
+  <td>Droyne Hierarchy.
+  <td>Droyne.
+
+ <tr>
+   <td><code>Y</code>
+  <td> 
+  <td> 
+
+ <tr>
+   <td><code>Z</code>
+  <td> 
+  <td> 
+
+      </table>
+    </section>
+    <section id="Law_Level">
+      <h4>Law Level</h4>
+      <div class="example"><code>1910 Regina A78889<span class="highlight">9</span>-C Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF A &nbsp; 703 14 Im F7 V MD M3 V</code></div>
+      <p>
+        Law level indicates basic legal status and shows probability of harassment by local enforcers.
+      </p>
+      <table>
+        <tr>
+          <th>Code
+          
+          <th>Description
+          
+          <tr>
+            <td><code>0</code>
+  <td>No prohibitions.
+
+ <tr>
+   <td><code>1</code>
+  <td>Body pistols, explosives, and
+  poison gas prohibited.
+
+ <tr>
+   <td><code>2</code>
+  <td>Portable energy weapons
+  prohibited.
+
+ <tr>
+   <td><code>3</code>
+  <td>Machineguns, automatic rifles
+  prohibited.
+
+ <tr>
+   <td><code>4</code>
+  <td>Light assault weapons prohibited.
+
+ <tr>
+   <td><code>5</code>
+  <td>Personal concealable weapons
+  prohibited.
+
+ <tr>
+   <td><code>6</code>
+  <td>All firearms except shotguns
+  prohibited.
+
+ <tr>
+   <td><code>7</code>
+  <td>Shotguns prohibited.
+
+ <tr>
+   <td><code>8</code>
+  <td>Long bladed weapons controlled; open possession prohibited.
+
+ <tr>
+   <td><code>9</code>
+  <td>Possession of weapons outside the
+  home prohibited.
+
+ <tr>
+   <td><code>A</code>
+  <td>Weapon possession prohibited.
+
+ <tr>
+   <td><code>B</code>
+  <td>Rigid control of civilian movement.
+
+ <tr>
+   <td><code>C</code>
+  <td>Unrestricted invasion of privacy.
+
+ <tr>
+   <td><code>D</code>
+  <td>Paramilitary law enforcement.
+
+ <tr>
+   <td><code>E</code>
+  <td>Full-fledged police state.
+
+ <tr>
+   <td><code>F</code>
+  <td>All facets of daily life regularly
+  legislated and controlled.
+
+ <tr>
+   <td><code>G</code>
+  <td>Severe punishment for petty
+  infractions.
+
+ <tr>
+   <td><code>H</code>
+  <td>Legalized oppressive practices.
+
+ <tr>
+   <td><code>J</code>
+  <td>Routinely oppressive and
+  restrictive.
+
+ <tr>
+   <td><code>K</code>
+  <td>Excessively oppressive and
+  restrictive.
+
+ <tr>
+   <td><code>L</code>
+  <td>Totally oppressive and
+  restrictive.
+
+ <tr>
+   <td><code>S</code>
+  <td>Special/Variable situation.
+
+      </table>
+    </section>
+    <section id="Technological_Level">
+      <h4>Technological Level</h4>
+      <div class="example"><code>1910 Regina A788899-<span class="highlight">C</span> Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF A &nbsp; 703 14 Im F7 V MD M3 V</code></div>
+      <p>
+        Technological level shows the degree of technological sophistication to be expected on a world.
+      </p>
+      <table>
+        <tr>
+          <th>Code
+          
+          <th>Description
+          
+          <tr>
+            <td><code>0</code>
+  <td>Stone Age. Primitive.
+
+ <tr>
+   <td><code>1</code>
+  <td>Bronze, Iron.
+  <span style="float: right">Bronze Age to Middle Ages</span>
+
+ <tr>
+   <td><code>2</code>
+  <td>Printing Press.
+  <span style="float: right">circa 1400 to 1700.</span>
+
+ <tr>
+   <td><code>3</code>
+  <td>Basic Science.
+  <span style="float: right">circa 1700 to 1860.</span>
+
+ <tr>
+   <td><code>4</code>
+  <td>External Combustion.
+  <span style="float: right">circa 1860 to 1900.</span>
+
+ <tr>
+   <td><code>5</code>
+  <td>Mass Production.
+  <span style="float: right">circa 1900 to 1939.</span>
+
+ <tr>
+   <td><code>6</code>
+  <td>Nuclear Power.
+  <span style="float: right">circa 1940 to 1969.</span>
+
+ <tr>
+   <td><code>7</code>
+  <td>Miniaturized Electronics.
+  <span style="float: right">circa 1970 to 1979.</span>
+
+ <tr>
+   <td><code>8</code>
+  <td>Quality Computers.
+  <span style="float: right">circa 1980 to 1989.</span>
+
+ <tr>
+   <td><code>9</code>
+  <td>Anti-Gravity.
+  <span style="float: right">circa 1990 to 2000.</span>
+
+ <tr>
+   <td><code>A</code>
+  <td>Interstellar community.
+
+ <tr>
+   <td><code>B</code>
+  <td>Lower Average Imperial.
+
+ <tr>
+   <td><code>C</code>
+  <td>Average Imperial.
+
+ <tr>
+   <td><code>D</code>
+  <td>Above Average Imperial.
+
+ <tr>
+   <td><code>E</code>
+  <td>Above Average Imperial.
+
+ <tr>
+   <td><code>F</code>
+  <td>Technical Imperial Maximum.
+
+ <tr>
+   <td><code>G</code>
+  <td>Robots.
+
+ <tr>
+   <td><code>H</code>
+  <td>Artificial Intelligence.
+
+ <tr>
+   <td><code>J</code>
+  <td>Personal Disintegrators.
+
+ <tr>
+   <td><code>K</code>
+  <td>Plastic Metals.
+
+ <tr>
+   <td><code>L</code>
+  <td>Comprehensible only as technological magic.
+
+      </table>
+    </section>
+
+  </section>
+
+  <section id="remarks">
+    <h3>Remarks and Trade Codes</h3>
+    <div class="example"><code>1910 Regina A788899-C <span class="highlight">Ri Pa Ph An Cp (Amindii)2</span>   { 4 }  (D7E+4) [9C6D] BcCeF A &nbsp; 703 14 Im F7 V MD M3 V</code></div>
+    <p>
+      Remarks and trade classifications indicate obvious or important
+characteristics for the main world in the system. They serve to show the
+potential for a world based on its capacity as a source of trade goods, a
+market for trade goods, or both.
+    </p>
+
+    <style>
+      table#remarks-table span {
+        display: block;
+        float: right;
+      }
+    </style>
+    <table id="remarks-table">
+      <tr><th>Code<th>Description
+
+      <tr><th colspan="2" class="section">Planetary
+
+      <tr><td><code>As</code><td>Asteroid Belt.<span>Siz 0</span>
+      <tr><td><code>De</code><td>Desert World.<span>Hyd 0, Atm 2-9</span>
+      <tr><td><code>Fl</code><td>Fluid Hydrographics (in place of water).<span>Atm A+, Hyd 1+</span>  
+      <tr><td><code>Ga</code><td>Garden World.<span>Siz 6-8, Atm 5,6,8, Hyd 5-7</span>
+      <tr><td><code>He</code><td>Hellworld.<span>Siz 3-A, Atm 2,4,7,9-C, Hyd 0-2</span>
+      <tr><td><code>Ic</code><td>Ice Capped.<span>Atm 0-1, Hyd 1+</span>
+      <tr><td><code>Oc</code><td>Ocean World.<span>Hyd A, Siz A+</span>
+      <tr><td><code>Va</code><td>Vacuum World.<span>Atm 0</span>
+      <tr><td><code>Wa</code><td>Water World.<span>Hyd A, Siz 9-</span>
+
+      <tr><th colspan="2" class="section">Population
+
+      <tr><td><code>Di</code><td>Dieback.<span>PGL 0, TL 1+</span>
+      <tr><td><code>Ba</code><td>Barren.<span>PGL 0, TL 0</span>
+      <tr><td><code>Lo</code><td>Low Population.<span>Pop 1-3</span>
+      <tr><td><code>Ni</code><td>Non-Industrial.<span>Pop 4-6</span>
+      <tr><td><code>Ph</code><td>Pre-High Population.<span>Pop 8</span>
+      <tr><td><code>Hi</code><td>High Population.<span>Pop 9+</span>
+
+      <tr><th colspan="2" class="section">Economic
+
+      <tr><td><code>Pa</code><td>Pre-Agricultural.<span>Atm 4-9, Hyd 4-8, Pop 4,8</span>
+      <tr><td><code>Ag</code><td>Agricultural.<span>Atm 4-9, Hyg 4-8, Pop 5-7</span>
+      <tr><td><code>Na</code><td>Non-Agricultural.<span>Atm 3-, Hyd 3-, Pop 6+</span>
+      <tr><td><code>Pi</code><td>Pre-Industrial.<span>Atm 0,1,2,4,7,9, Pop 7-8</span>
+      <tr><td><code>In</code><td>Industrialized.<span>Atm 0,1,2,4,7,9, Pop 9+</span>
+      <tr><td><code>Po</code><td>Poor.<span>Atm 2-5, Hyd 3-</span>
+      <tr><td><code>Pr</code><td>Pre-Rich.<span>Atm 6 or 8, Pop 5 or 9</span>
+      <tr><td><code>Ri</code><td>Rich.<span>Atm 6 or 8, Pop 6-8</span>
+
+      <tr><th colspan="2" class="section">Climate
+
+      <tr><td><code>Fr</code><td>Frozen<span>Siz 2-9, Hyd 1+, HZ +2 or Outer</span>
+      <tr><td><code>Ho</code><td>Hot<span>HZ -1</span>
+      <tr><td><code>Co</code><td>Cold<span>HZ +1</span>
+      <tr><td><code>Lk</code><td>Locked<span>Close Satellite</span>
+      <tr><td><code>Tr</code><td>Tropic<span>Siz 6-9, Atm 4-9, Hyd 3-7, HZ -1</span>
+      <tr><td><code>Tu</code><td>Tundra<span>Siz 6-9, Atm 4-9, Hyd 3-7, HZ +1</span>
+      <tr><td><code>Tz</code><td>Twilight Zone<span>Orbit 0-1</span>
+   
+      <tr><th colspan="2" class="section">Secondary
+
+      <tr><td><code>Fa</code><td>Farming<span>Atm 4-9, Hyd 4-8, Pop 2-6, HZ</span>
+      <tr><td><code>Mi</code><td>Mining<span>Pop 2-6</span>
+      <tr><td><code>Mr</code><td>Military Rule.
+      <tr><td><code>Px</code><td>Prison, Exile Camp
+      <tr><td><code>Pe</code><td>Penal Colony
+      <tr><td><code>Re</code><td>Reserve
+
+
+      <tr><th colspan="2" class="section">Political
+
+      <tr><td><code>Cp</code><td>Subsector Capital.
+      <tr><td><code>Cs</code><td>Sector Capital.
+      <tr><td><code>Cx</code><td>Capital.
+      <tr><td><code>Cy</code><td>Colony (see <code>O:XXXX</code>)
+
+      <tr><th colspan="2" class="section">Special
+
+      <tr><td><code>Sa</code><td>Satellite
+      <tr><td><code>Fo</code><td>Forbidden (Red Zone)
+      <tr><td><code>Pz</code><td>Puzzle (Amber Zone)<span>Pop 7+</span>
+      <tr><td><code>Da</code><td>Danger (Red Zone)<span>Pop 6-</span>
+      <tr><td><code>Ab</code><td>Data Repository.
+      <tr><td><code>An</code><td>Ancient Site.
+      <tr><td><code>Rs</code><td>Research Station.<span>Imperial.</span>
+      <tr><td><code>RsA</code><td>Research Station <code>A</code> = Alpha, <code>B</code> = Beta, <code>G</code>= Gamma, etc.<span>Imperial.</span>
+
+      <tr><th colspan="2" class="section">Ownership
+
+      <tr><td><code>O:<var>XXYY</var></code><td>Controlled by world in hex <code>XXYY</code>
+      <tr><td><code>O:<var>XXYY</var>-<var>SSSS</var></code><td>Controlled by world in hex <code>XXYY</code> in sector <code>SSSS</code>
+      <tr><td><code>O:<var>AA</var></code><td>Controlled by allegiance <code>AA</code>
+      <tr><td><code>Mr:<var>XXYY</var></code><td>Military rule by world in hex <code>XXYY</code>
+
+      <tr><th colspan="2" class="section">Sophonts
+
+      <tr><td><code>[<var>Sophont</var>]</code><td>Homeworld of major race.
+      <tr><td><code>(<var>Sophont</var>)</code><td rowspan="2">Homeworld of minor race.  <code>0</code>-<code>9</code> indicates tenths of population if &lt; 100%.
+      <tr><td><code>(<var>Sophont</var>)0</code>
+      <tr><td><code><var>Soph</var>0</code><td rowspan="2">Sophont Population. <code>Soph</code> is abbreviation for the sophont name. <code>0</code>-<code>9</code> indicates tenths of population; <code>W</code> is 100%, e.g. <code>DroyW</code>.
+      <tr><td><code><var>Soph</var>W</code>
+      <tr><th colspan="2" class="section">Non-Standard / Legacy Codes
+
+      <tr><td><code><var>S</var>0</code><td rowspan="3">Sophont Population. <code>S</code> is abbreviation for the sophont name. <code>0</code>-<code>9</code> indicates tenths of population; <code>w</code> is 100%, e.g. <code>Dw</code>
+      <tr><td><code><var>S</var>:0</code>
+      <tr><td><code><var>S</var>w</code>
+      <tr><td><code>Nh</code><td>Non-Hiver Population.<span>Hiver.</span>
+      <tr><td><code>Nk</code><td>Non-K’kree Population.<span>K’kree.</span> 
+
+      <tr><td><code>Tp</code><td>Terra-prime. <span><cite>Adventure 5: Leviathan.</cite></span>
+      <tr><td><code>Tn</code><td>Terra-norm. <span><cite>Adventure 5: Leviathan.</cite></span>
+      <tr><td><code>Lt</code><td>Low-Technology. <span><cite>Mongoose Publishing.</cite></span>
+      <tr><td><code>Ht</code><td>High-Technology. <span><cite>Mongoose Publishing.</cite></span>
+
+      <tr><td><code>Fa</code><td>Fascinating.<span>Hiver.</span>
+      <tr><td><code>St</code><td>Steppeworld.<span>K’kree</span>
+      <tr><td><code>Ex</code><td>Exile Camp.<span>Imperial.</span>
+      <tr><td><code>Pr</code><td>Prison World.<span>Imperial.</span>
+      <tr><td><code>Xb</code><td>Xboat Stop.<span>Imperial.</span>
+
+
+    </table>
+
+    <p>
+      Legacy sophont abbreviations include: 
+      <code>A</code> = Aslan,
+      <code>C</code> = Chirper,
+      <code>D</code> = Droyne,
+      <code>F</code> = Non-Hiver Federation Member,
+      <code>H</code> = Hiver,
+      <code>I</code> = Ithklur,
+      <code>M</code> = Human (e.g. in Vargr space),
+      <code>V</code> = Vargr,
+      <code>X</code> = Addaxur,
+      <code>Z</code> = Zhodani.
+    </p>
+
+  </section>
+
+  <section id="ix" class="t5">
+    <h3>Importance Extension</h3>
+    <div class="example"><code>1910 Regina A788899-C Ri Pa Ph An Cp (Amindii)2   <span class="highlight">{ 4 }</span>  (D7E+4) [9C6D] BcCeF A &nbsp; 703 14 Im F7 V MD M3 V</code></div>
+    <p>
+      The Importance Extension is abbreviated Ix and written in braces (<code>{}</code>).
+      It is an integer ranking the importance of the world within a region.
+    </p>
+  </section>
+
+  <section id="ex" class="t5">
+    <h3>Economic Extension</h3>
+    <div class="example"><code>1910 Regina A788899-C Ri Pa Ph An Cp (Amindii)2   { 4 }  <span class="highlight">(D7E+4)</span> [9C6D] BcCeF A &nbsp; 703 14 Im F7 V MD M3 V</code></div>
+    <p>
+      The Economic Extension is abbreviated Ex and written in parentheses (<code>()</code>).
+      It describes the strength of a world's economy. It is given as three <a href="#ehex">eHex</a>
+      digits representing Resources, Labor and Infrastructure, followed by a signed integer
+      representing efficiency (with zero written as <code>+0</code>).
+    </p>
+  </section>
+
+  <section id="cx" class="t5">
+    <h3>Cultural Extension</h3>
+    <div class="example"><code>1910 Regina A788899-C Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) <span class="highlight">[9C6D]</span> BcCeF A &nbsp; 703 14 Im F7 V MD M3 V</code></div>
+    <p>
+      The Cultural Extension is abbreviated Cx and written in brackets (<code>[]</code>).
+      It gives insight into the social behavior of the world's population. It is given as
+      four <a href="#ehex">eHex</a> digits representing Homogeneity, Acceptance,
+      Strangeness, and Symbols.
+    </p>
+  </section>
+
+  <section id="nobility" class="t5">
+    <h3>Nobility</h3>
+    <div class="example"><code>1910 Regina A788899-C Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] <span class="highlight">BcCeF</span> A &nbsp; 703 14 Im F7 V MD M3 V</code></div>
+    <p>For Imperial worlds, the noble ranks assigned to the world by the Emperor based on importance.</p>
+    <table>
+      <tr><th>Code<th>Ranking Noble
+      <tr><td><code>A</code><td>Gentleman.
+      <tr><td><code>B</code><td>Knight.
+      <tr><td><code>c</code><td>Baronet.
+      <tr><td><code>C</code><td>Baron.
+      <tr><td><code>D</code><td>Marquis.
+      <tr><td><code>e</code><td>Viscount.
+      <tr><td><code>E</code><td>Count.
+      <tr><td><code>F</code><td>Duke.
+      <tr><td><code>G</code><td>Archduke.
+      <tr><td><code>H</code><td>Emperor.
+    </table>
+  </section>
+
+  <section id="bases">
+    <h3>Bases</h3>
+    <div class="example"><code>1910 Regina A788899-C Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF <span class="highlight">A</span> &nbsp; 703 14 Im F7 V MD M3 V</code></div>
+    <p>
+      Base codes show the presence of military bases in a system; special codes deal with the presence of more than one type of base within the
+same system in order to maintain a single base code letter per system.
+    </p>
+
+    <p class="aside">
+      Base codes have changed significantly between different editions of <cite>Traveller</cite>. 
+      Sector data collections must indicate which set of codes are in use.
+      Sector data collections may also define custom meanings for base codes.
+    </p>
+
+    <h4><cite>Traveller<sup>5</sup></cite>:</h4>
+
+    <table>
+      <tr>
+        <th>Code
+        <th>Description
+      <tr>
+        <td><code>A</code>
+        <td>Naval Base and Scout Base.
+      <tr>
+        <td><code>B</code>
+        <td>Naval Base and Scout Way Station.
+      <tr>
+        <td><code>C</code>
+        <td>Corsair Base.
+      <tr>
+        <td><code>D</code>
+        <td>Naval Depot.
+      <tr>
+        <td><code>E</code>
+        <td>Scout Base and Minor Naval Base.
+      <tr>
+        <td><code>F</code>
+        <td>Scout Way Station and Minor Naval Base.
+      <tr>
+        <td><code>G</code>
+        <td>Minor Naval Base and Corsair Base.
+      <tr>
+        <td><code>H</code>
+        <td>Naval Base and Corsair Base.
+      <tr>
+        <td><code>J</code>
+        <td>Planetary Base and Minor Naval Base.
+      <tr>
+        <td><code>K</code>
+        <td>Naval Base and Planetary Base.
+      <tr>
+        <td><code>L</code>
+        <td>Minor Naval Base.
+      <tr>
+        <td><code>M</code>
+        <td>Naval Base and Minor Naval Base.
+      <tr>
+        <td><code>N</code>
+        <td>Naval Base.
+      <tr>
+        <td><code>P</code>
+        <td>Planetary Base.
+      <tr>
+        <td><code>Q</code>
+        <td>Planetary Base and Corsair Base.
+      <tr>
+        <td><code>R</code>
+        <td>Scout Base and Planetary Base.
+      <tr>
+        <td><code>S</code>
+        <td>Scout Base.
+      <tr>
+        <td><code>T</code>
+        <td><em>Reserved</em>
+      <tr>
+        <td><code>U</code>
+        <td><em>Reserved</em>
+      <tr>
+        <td><code>V</code>
+        <td><em>Reserved</em>
+      <tr>
+        <td><code>W</code>
+        <td>Scout Way Station.
+      <tr>
+        <td><code>X</code>
+        <td>Scout Way Station and Planetary Base.
+      <tr>
+        <td><code>Y</code>
+        <td><em>Reserved</em>
+
+      <tr>
+        <td><code>Z</code>
+        <td><em>Reserved</em>
+    </table>
+
+    <h4>
+      <cite>Classic Traveller</cite>, <cite>MegaTraveller</cite>, <cite>Traveller: The New Era</cite>:
+    </h4>
+
+    <table>
+      <tr>
+        <th>Code       
+        <th>Description
+        <th>Allegiance
+        
+      <tr>
+        <td><code>A</code>
+        <td>Naval Base and Scout Base.
+        <td>Imperial.
+
+      <tr>
+        <td><code>B</code>
+        <td>Naval Base and Way Station.
+        <td>Imperial.
+
+      <tr>
+        <td><code>C</code>
+        <td>Corsair Base.
+        <td>Vargr.
+
+      <tr>
+        <td><code>D</code>
+        <td>Depot.
+        <td>Imperial.
+
+      <tr>
+        <td><code>E</code>
+        <td>Embassy Center.
+        <td>Hiver.
+
+      <tr>
+        <td><code>F</code>
+        <td>Military and Naval Base.
+        <td>
+
+      <tr>
+        <td><code>G</code>
+        <td>Naval Base.
+        <td>Vargr.
+
+      <tr>
+        <td><code>H</code>
+        <td>Naval Base and Corsair Base.
+        <td>Vargr.
+
+      <tr>
+        <td><code>J</code>
+        <td>Naval Base.
+        <td>
+
+      <tr>
+        <td><code>K</code>
+        <td>Naval Base.
+        <td>K’kree
+
+      <tr>
+        <td><code>L</code>
+        <td>Naval Base.
+        <td>Hiver.
+
+      <tr>
+        <td><code>M</code>
+        <td>Military Base.
+        <td>
+
+      <tr>
+        <td><code>N</code>
+        <td>Naval Base.
+        <td>Imperial.
+
+      <tr>
+        <td><code>O</code>
+        <td>Naval Outpost.
+        <td>K’kree
+
+      <tr>
+        <td><code>P</code>
+        <td>Naval Base.
+        <td>Droyne.
+
+      <tr>
+        <td><code>Q</code>
+        <td>Military Garrison.
+        <td>Droyne.
+
+      <tr>
+        <td><code>R</code>
+        <td>Clan Base.
+        <td>Aslan.
+
+      <tr>
+        <td><code>S</code>
+        <td>Scout Base.
+        <td>Imperial.
+
+      <tr>
+        <td><code>T</code>
+        <td>Tlauku Base.
+        <td>Aslan.
+
+      <tr>
+        <td><code>U</code>
+        <td>Tlauku and Clan Base.
+        <td>Aslan.
+
+      <tr>
+        <td><code>V</code>
+        <td>Scout/Exploration Base.
+        <td>
+
+      <tr>
+        <td><code>W</code>
+        <td>Way Station.
+        <td>Imperial.
+
+      <tr>
+        <td><code>X</code>
+        <td>Relay Station.
+        <td>Zhodani.
+
+      <tr>
+        <td><code>Y</code>
+        <td>Depot.
+        <td>Zhodani.
+
+      <tr>
+        <td><code>Z</code>
+        <td>Naval/Military Base.
+        <td>Zhodani.
+    </table>
+
+    <p>
+      Base codes indicate allegiance and general mission or type.
+  </section>
+
+  <section id="zone">
+    <h3>Travel Zone</h3>
+    <div class="example"><code>1910 Regina A788899-C Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF A <span class="highlight">&nbsp;</span> 703 14 Im F7 V MD M3 V</code></div>
+    <p>
+      Codes assigned to the system by government or private institutions about the safety of travel within the system.
+    </p>
+    <p class="aside">
+      Worlds given a Green Zone rating - the default and considered low risk for travel - are usually indicated by leaving the data field blank.
+    </p>
+    <table>
+      <tr>
+        <th>Code        
+        <th>Description
+
+      <tr>
+        <td><code>R</code>
+        <td>Red. Interdicted. Dangerous. Prohibited.
+        <span style="float: right">Imperial.</span>
+
+      <tr>
+        <td><code>A</code>
+        <td>Amber. Potentially dangerous. Caution advised.
+        <span style="float: right">Imperial.</span>
+
+      <tr>
+        <td><code>G</code>
+        <td>Green. Unrestricted.
+        <span style="float: right">Imperial.</span>
+
+      <tr>
+        <td><code>B</code>
+        <td>Blue. Technologically Elevated Dicatorship
+        <span style="float: right">TNE (circa 1202).</span>
+
+      <tr>
+        <td><code>F</code>
+        <td>Forbidden. Access prohibited.
+        <span style="float: right">Zhodani.</span>
+
+      <tr>
+        <td><code>U</code>
+        <td>Unabsorbed. Access restricted.
+        <span style="float: right">Zhodani.</span>
+
+    </table>
+    <p>
+      <em>
+        Imperial travel codes are provided by the <cite>Journal of the Travellers’ Aid Society</cite>, and are used with permission of that publication.
+        Worlds outside the Imperium should be considered Amber Zones by travellers from the Imperium.
+      </em>
+    </p>
+  </section>
+
+  <section id="pbg">
+    <h3>PBG - Population, Belts, Giants</h3>
+    <div class="example"><code>1910 Regina A788899-C Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF A &nbsp; <span class="highlight">703</span> 14 Im F7 V MD M3 V</code></div>
+
+    <h4>Population Multiplier</h4>
+    <div class="example"><code>1910 Regina A788899-C Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF A &nbsp; <span class="highlight">7</span>03 14 Im F7 V MD M3 V</code></div>
+    <p>
+      The first <a href="#ehex">eHex</a> digit is the population multiplier. Together with the
+      <a href="#Population_Exponent">population exponent</a> in the <a href="#uwp">UWP</a>
+      field, the world population can be computed as:
+    </p>
+    <p class="equation">
+      population = <i>multiplier</i> &times; 10<sup><i>exponent</i></sup>
+    </p>
+
+    <h4>Planetoid Belts</h4>
+    <div class="example"><code>1910 Regina A788899-C Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF A &nbsp; 7<span class="highlight">0</span>3 14 Im F7 V MD M3 V</code></div>
+    <p>
+      The second <a href="#ehex">eHex</a> digit is the number of planetoid belts in the system.
+      Note that a main world of size <code>0</code> is termed an asteriod belt, and is not
+      counted here.
+    </p>
+
+    <h4>Gas Giants</h4>
+    <div class="example"><code>1910 Regina A788899-C Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF A &nbsp; 70<span class="highlight">3</span> 14 Im F7 V MD M3 V</code></div>
+    <p>
+      The third <a href="#ehex">eHex</a> digit is the number of gas giants in the system, suitable
+      for fuel skimming.
+    </p>
+  </section>
+
+  <section id="worlds" class="t5">
+    <h3>Worlds</h3>
+    <div class="example"><code>1910 Regina A788899-C Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF A &nbsp; 703 <span class="highlight">14</span> Im F7 V MD M3 V</code></div>
+    <p>
+      The number of "worlds" in the system. This is given as an integer, and will always be at least
+      1 (the main world) plus the number of planetoid belts (see <a href="#pbg">PBG</a>) plus the
+      number of gas giants (see <a href="#pbg">PBG</a>) but will include other planets orbiting
+      the stars and moons orbiting the gas giants in the system.
+    </p>
+  </section>
+
+  <section id="allegiance">
+    <h3>Allegiance</h3>
+    <div class="example"><code>1910 Regina A788899-C Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF A &nbsp; 703 14 <span class="highlight">Im</span> F7 V MD M3 V</code></div>
+    <p>
+      Allegiances indicate the government which dominates a
+system, given as a two letter abbreviation.
+Only selected allegiances are shown in the table below.
+Due to the limited number of readable codes, allegiance codes
+are not unique across all sectors. Each sector should provide
+an allegiance table for codes not listed below.
+    </p>
+
+    <table>
+      <tr>
+        <th>Code
+        <th>Description
+
+        <tr>
+          <td><code>As</code>
+  <td>Aslan (general designation).
+
+ <tr>
+   <td><code>A0</code>
+  <td>Aslan Tlauku Clan (numbers <code>0</code>-<code>9</code> indicate Tlauku clan).
+
+ <tr>
+   <td><code>Cs</code>
+  <td>Client State (usually of the Imperium).
+
+ <tr>
+   <td><code>Dr</code>
+  <td>Droyne.
+
+ <tr>
+   <td><code>Hv</code>
+  <td>Hive Federation.
+
+ <tr>
+   <td><code>Im</code>
+  <td>Imperium.
+
+ <tr>
+   <td><code>Kk</code>
+  <td>The Two Thousand Worlds (K’kree).
+
+ <tr>
+   <td><code>Na</code>
+  <td>Non-Aligned (independent neutral world without affiliation).
+
+ <tr>
+   <td><code>So</code>
+  <td>Solomani Confederation.
+
+ <tr>
+   <td><code>Va</code>
+  <td>Vargr (general designation).
+
+ <tr>
+   <td><code>Vx</code>
+  <td>Vargr (2<sup>nd</sup> digit <code>0</code>-<code>9</code> or letter <code>a</code>-<code>z</code> indicates specific allegiance)
+
+ <tr>
+   <td><code>Zh</code>
+  <td>Zhodani Consulate.
+
+ <tr>
+   <td><code>--</code>
+   <td>Empty, unclaimed system.
+
+    </table>
+  </section>
+
+  <section id="stellar">
+    <h3>Stellar Data</h3>
+    <div class="example"><code>1910 Regina A788899-C Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF A &nbsp; 703 14 Im <span class="highlight">F7 V MD M3 V</span></code></div>
+    <p>
+      Stellar Data indicates the spectral and luminosity class of
+      each star in the system. This uses a subset of the <a href="http://en.wikipedia.org/wiki/Stellar_classification#Yerkes_spectral_classification">Yerkes classification
+      system</a>, such as <code>G2 V</code> where <code>G2</code> is the color/temperature
+  (<sup>2</sup>/<sub>10</sub><sup>th</sup> of the way from yellow <code>G</code> to orange <code>K</code> on the spectrum) and
+  <code>V</code> is the luminosity/size (main sequence).
+    </p>
+    <p>
+      The size code <code>D</code> may be used for dwarf stars, for example <code>MD</code> for a red dwarf; the special
+      code <code>BD</code> is used for brown dwarf objects (failed stars) and <code>WD</code> is used for white dwarfs
+      (hot stellar remnants). If the <code>D</code> code is used the spectral decimal is omitted.
+    </p>
+
+    <h4>Stellar Spectral Class</h4>
+    <table>
+      <tr>
+        <th>Code 
+        <th>Description
+        <th>Temperature (K)
+        
+      <tr>
+        <td><code>O</code>
+        <td>Blue
+        <td>&gt;33,000
+
+      <tr>
+        <td><code>B</code>
+        <td>Blue-White
+        <td>10,000-33,000
+
+      <tr>
+        <td><code>A</code>
+        <td>Blue-White
+        <td>7,500-10,000
+
+      <tr>
+        <td><code>F</code>
+        <td>Yellow-White
+        <td>6,000-7,500
+
+      <tr>
+        <td><code>G</code>
+        <td>Yellow
+        <td>5,200-6,000
+
+      <tr>
+        <td><code>K</code>
+        <td>Orange
+        <td>3,700-5,200
+
+      <tr>
+        <td><code>M</code>
+        <td>Red
+        <td>2,000-3,700
+    </table>
+    <p>
+      Stellar type indicates the spectral classification of a
+star; colors are the essential perceived colors of the star’s visible light.
+    </p>
+    <h4>Stellar Luminosity</h4>
+    <p>
+      The luminosity gives the magnitude, or brightness of the star. This correlates with the size of the
+      star, although it varies depending on spectral class.
+    </p>
+    <table>
+      <tr>
+        <th>Code
+        <th>Description    
+        <th>Diameter (Sol = 1)
+        
+      <tr>
+        <td><code>Ia</code>
+        <td>Bright Supergiant.
+        <td>52 - 3500  
+
+      <tr>
+        <td><code>Ib</code>
+        <td>Weak Supergiant.
+        <td>30 - 3000  
+
+      <tr>
+        <td><code>II</code>
+        <td>Bright Giant.
+        <td>14 - 1000  
+
+      <tr>
+        <td><code>III</code>
+        <td>Normal Giant.
+        <td>4.6 - 360  
+
+      <tr>
+        <td><code>IV</code>
+        <td>Subgiant.
+        <td>3.3 -   13  
+
+      <tr>
+        <td><code>V</code>
+        <td>Main Sequence Star.
+        <td>0.2 -   10  
+
+      <tr>
+        <td><code>VI</code>
+        <td>Subdwarf. <em>NOTE: Use <code>D</code> instead.</em>
+        <td>0.1 -    1.2
+
+      <tr>
+        <td><code>VII</code>
+        <td>White Dwarf. <em>NOTE: Use <code>WD</code> instead.</em>
+        <td>0.006 - 0.018
+
+      <tr>
+        <td><code>D</code>
+        <td>Dwarf.
+        <td>&lt; 0.2
+
+    </table>
+  </section>
+
+  <section id="ehex">
+    <h3>eHex - Extended Hexadecimal</h3>
+    <p>
+      <cite>Traveller</cite> encodes numbers using "extended hexadecimal", which is really a way of encoding numbers
+      larger than 9 into a single printable character. Numbers in the range 0-9 are represented as <code>0</code>-<code>9</code> as normal.
+      Like hexadecimal, values in the range 10-15 are represented as <code>A</code>-<code>F</code> (always uppercase). But the
+      encoding continues for values in the range 16-17 as <code>G</code>-<code>H</code>, 18-22 as <code>J</code>-<code>N</code>,
+      and 23-30 as <code>P</code>-<code>W</code>. Codes <code>X</code>, <code>Y</code> and <code>Z</code> may be used for
+      31-33 or may be reserved for exceptional values. Codes <code>I</code> and <code>O</code> are unused to avoid confusion with
+      <code>1</code> and <code>0</code>.
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th>eHex
+          <th>Decimal
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>0</code>
+          <td>0
+        <tr>
+          <td><code>1</code>
+          <td>1
+        <tr>
+          <td><code>2</code>
+          <td>2
+        <tr>
+          <td><code>3</code>
+          <td>3
+        <tr>
+          <td><code>4</code>
+          <td>4
+        <tr>
+          <td><code>5</code>
+          <td>5
+        <tr>
+          <td><code>6</code>
+          <td>6
+        <tr>
+          <td><code>7</code>
+          <td>7
+        <tr>
+          <td><code>8</code>
+          <td>8
+        <tr>
+          <td><code>9</code>
+          <td>9
+        <tr>
+          <td><code>A</code>
+          <td>10
+        <tr>
+          <td><code>B</code>
+          <td>11
+        <tr>
+          <td><code>C</code>
+          <td>12
+        <tr>
+          <td><code>D</code>
+          <td>13
+        <tr>
+          <td><code>E</code>
+          <td>14
+        <tr>
+          <td><code>F</code>
+          <td>15
+        <tr>
+          <td><code>G</code>
+          <td>16
+        <tr>
+          <td><code>H</code>
+          <td>17
+        <tr>
+          <td><code>J</code>
+          <td>18
+        <tr>
+          <td><code>K</code>
+          <td>19
+        <tr>
+          <td><code>L</code>
+          <td>10
+        <tr>
+          <td><code>M</code>
+          <td>11
+        <tr>
+          <td><code>N</code>
+          <td>12
+        <tr>
+          <td><code>P</code>
+          <td>13
+        <tr>
+          <td><code>Q</code>
+          <td>14
+        <tr>
+          <td><code>R</code>
+          <td>15
+        <tr>
+          <td><code>S</code>
+          <td>16
+        <tr>
+          <td><code>T</code>
+          <td>17
+        <tr>
+          <td><code>U</code>
+          <td>18
+        <tr>
+          <td><code>V</code>
+          <td>19
+        <tr>
+          <td><code>W</code>
+          <td>30
+        <tr>
+          <td><code>X</code>
+          <td>31*
+        <tr>
+          <td><code>Y</code>
+          <td>32*
+        <tr>
+          <td><code>Z</code>
+          <td>33*
+      </tbody>
+    </table>
+
+  </section>
+
+</div>
+
+<div class="editorial">
+  <p>
+    The <em class="product">Traveller</em> game in all forms is owned by Far
+Future Enterprises. Copyright &copy; 1977 &ndash; 2013 Far Future
+Enterprises.
+    <a href="http://farfuture.net/FFEFairUsePolicy2008.pdf">Fair Use Policy</a>
+</div>
+
+<!-- Google Analytics -->
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-18610679-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>

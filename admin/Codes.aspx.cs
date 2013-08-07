@@ -44,6 +44,21 @@ namespace Maps.Pages
             "Zhod",
             "Ziad",
         };
+
+        static List<string> s_legacySophontCodes = new List<string>
+        {
+            "A", // Aslan
+            "C", // Chirper
+            "D", // Droyne
+            "F", // Non-Hiver Federation Member
+            "H", // Hiver
+            "I", // Ithklur
+            "M", // Human (Provence/Tuglikki)
+            "V", // Vargr
+            "X", // Addaxur (Zhodani)
+            "Z", // Zhodani
+        };
+
         static RegexDictionary<string> s_knownCodes = new RegexDictionary<string>
         {
             // General
@@ -64,7 +79,7 @@ namespace Maps.Pages
             "Cs", "Cx", "Ex", "Mr",
             "Pr", "Rs",
 
-            "Aw", "Cw", "Dw", "Vw", // Aslan/Chirper/Droyne/Vargr world
+            { @"^(" + String.Join("|", s_legacySophontCodes) + @"):?(\d|w)$", "(sophont)" },
 
             // Leviathan
             "Tp", "Tn", // Terra-prime, Terra-norm
@@ -76,19 +91,9 @@ namespace Maps.Pages
             "Xb", // X-boat stop
 
             { @"^Rw:[0-9]$", "Rw#" }, // TNE: Refugee World
-            { @"^A:?[0-9]$", "A#" }, // Aslan population
-            { @"^C:?[0-9]$", "C#" }, // Chirper population
-            { @"^D:?[0-9]$", "D#" }, // Droyne population
-            { @"^M:?[0-9]$", "M#" }, // Human population (Provence/Tuglikki)
-            { @"^V:?[0-9]$", "V#" }, // Vargr population
-            { @"^X:?[0-9]$", "X#" }, // Addaxur population (Zhodani)
-            { @"^Z:?[0-9]$", "Z#" }, // Zhodani population
 
             // LWLG
             "Hp", "Hn", // Hiver-prime, Hiver-norm
-            "Iw", // Ithkulur world
-            { @"^H:?[0-9]$", "H#" }, // Hiver population
-            { @"^F:?[0-9]$", "F#" }, // Federation member (non-Hiver) population
 
             // James Kundert
             { @"^S[0-9A-F]{1,2}$", "S##" }, // Companion star orbits
