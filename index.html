@@ -135,20 +135,20 @@
                 <option value="512">512 (System)</option>
               </select>
               
-            <p style="margin-bottom: 0.5em;">
+            <p style="margin-bottom: 0.5em;"></p>
               <strong>Sector Grid:</strong>
               <label title="Show sector and subsector grid lines"><input type="radio" name="grid" value="true" id="ShowSectorGrid" checked="checked"> On</label>
               <label title="Hide sector and subsector grid lines"><input type="radio" name="grid" value="false" id="HideSectorGrid"> Off</label>
 
-            <p><strong>Labels:</strong>
+            <p><strong>Labels:</strong></p>
             <div class="indent" style="margin-bottom: 0.5em;">
-              <p><label title="Show or hide the direction labels around the edge of the map"><input type="checkbox" id="ShowGalacticDirections" checked="checked"> Galactic Direction</label>
-              <p><label title="Show or hide sector and subsector names"><input type="checkbox" id="ShowSectorNames" checked="checked"> Sectors</label>
+              <p><label title="Show or hide the direction labels around the edge of the map"><input type="checkbox" id="ShowGalacticDirections" checked="checked"> Galactic Direction</label></p>
+              <p><label title="Show or hide sector and subsector names"><input type="checkbox" id="ShowSectorNames" checked="checked"> Sectors</label></p>
               <div class="indent" id="sector_label_options">
-                <p><label title="Show only the names of selected sectors when zoomed out"><input type="radio" name="sector_names" id="ShowSelectedSectorNames" checked="checked" value="ShowSelectedSectorNames"> Selected</label>
-                <p><label title="Show the names of all sectors when zoomed out"><input type="radio" name="sector_names" id="ShowAllSectorNames" value="ShowAllSectorNames"> All</label>
+                <p><label title="Show only the names of selected sectors when zoomed out"><input type="radio" name="sector_names" id="ShowSelectedSectorNames" checked="checked" value="ShowSelectedSectorNames"> Selected</label></p>
+                <p><label title="Show the names of all sectors when zoomed out"><input type="radio" name="sector_names" id="ShowAllSectorNames" value="ShowAllSectorNames"> All</label></p>
               </div>
-              <p>Governmental Bodies
+              <p>Governmental Bodies</p>
               <div class="indent">
                 <p><label title="Display political borders"><input type="checkbox" checked="checked" id="ShowGovernmentBorders"> Borders</label>
                 <p><label title="Display government and region names"><input type="checkbox" checked="checked" id="ShowGovernmentNames"> Names</label>
@@ -156,7 +156,7 @@
                 <p><label title="Show important home worlds when zoomed out"><input type="checkbox" checked="checked" id="ShowHomeworlds"> Home Worlds</label>
               </div>
             </div>
-            <p><strong>Appearance:</strong>
+            <p><strong>Appearance:</strong></p>
             <div class="indent" style="margin-bottom: 0.5em;">
                 <p><label title="Always use hexagonal parsecs&#x0a;[BETA TESTING: May be removed]"><input type="checkbox" id="cbForceHexes"> Force Hexes &beta;</label>
                 <p><label title="Use more colors for world features&#x0a;[BETA TESTING: May be removed]"><input type="checkbox" id="cbWorldColors"> World Colors &beta;</label>
@@ -359,7 +359,7 @@
     </script>
     <script id="WorldMetadataTemplate" type="text/x-handlebars-template">
       {{#SectorName}}<a title="Generate LBB for {{.}}" target="_blank" href="sector.htm?sector={{.}}">{{.}}</a>{{/SectorName}}
-      {{WorldHex}} <b>{{WorldName}}</b> {{WorldUwp}}
+      {{WorldHex}} <b>{{WorldName}}</b> {{WorldUwp}} {{WorldRemarks}} {{WorldIx}} {{WorldEx}} {{WorldCx}} {{WorldPbg}}
       {{#SectorEra}}(circa {{.}}){{/SectorEra}}
       {{#SubsectorName}}(Subsector {{../SubsectorIndex}}: {{.}}){{/SubsectorName}}
       <br>
@@ -371,6 +371,7 @@
         {{#ProductRef}}
         &mdash; <a title="Publisher's Catalog" target="_blank" href="{{.}}">{{../ProductTitle}} by {{../ProductAuthor}}, {{../ProductPublisher}}</a>
         {{/ProductRef}}
+      </i>
     </script>
 
   </div>

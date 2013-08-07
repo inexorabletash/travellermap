@@ -126,6 +126,12 @@ namespace Maps.Pages
                         data.WorldName = world.Name;
                         data.WorldHex = world.Hex.ToString("0000", CultureInfo.InvariantCulture);
                         data.WorldUwp = world.UWP;
+                        data.WorldRemarks = world.Remarks;
+                        data.WorldIx = world.Importance;
+                        data.WorldEx = world.Economic;
+                        data.WorldCx = world.Cultural;
+                        data.WorldPbg = world.PBG;
+                        data.WorldAllegiance = world.Allegiance;
                     }
                 }
             }
@@ -156,6 +162,13 @@ namespace Maps.Pages
             public string WorldName { get; set; }
             public string WorldHex { get; set; }
             public string WorldUwp { get; set; }
+            public string WorldRemarks { get; set; }
+            public string WorldIx { get; set; }
+            public string WorldEx { get; set; }
+            public string WorldCx { get; set; }
+            public string WorldPbg { get; set; }
+            public string WorldAllegiance { get; set; }
+
             public string WorldCredits { get; set; }
             public string LandGrabTitle { get; set; }
             public string LandGrabURL { get; set; }
