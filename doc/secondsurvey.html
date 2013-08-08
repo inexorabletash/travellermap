@@ -60,7 +60,7 @@
   <section id="intro">
     <p>The <cite>Traveller<sup>5</sup> Second Survey</cite> format defines a standard for 
       describing star systems in the <cite>Official Traveller Universe</cite>. It is composed
-      of a series of fields describing various aspects of the main world in each system
+      of a series of fields describing various aspects of the Main World (MW) in each system
       including physical and cultural characteristics, and some details about other bodies
       in the system of interest to travellers.
     </p>
@@ -71,7 +71,7 @@
     </p>
     <div class="example"><code>1910 Regina A788899-C Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF A &nbsp; 703 14 Im F7 V MD M3 V</code></div>
     <p class="aside">
-      Note that different editions of <cite>Traveller</cite> and different authors and publications may include
+      Different editions of <cite>Traveller</cite> and different authors and publications may include
       different fields, present the fields in different orders, or provide different values for fields.
       The companion document <a href="fileformats.html">Sector Data File Formats</a> 
       may be used for reference.
@@ -84,7 +84,7 @@
       <li>Data Fields
          <ul>
            <li><a href="#hex">Hex Location</a></li>
-           <li><a href="#name">MainWorld Name</a></li>
+           <li><a href="#name">Main World Name</a></li>
            <li><a href="#uwp">UWP - Universal World Profile</a></li>
            <li><a href="#remarks">Remarks and Trade Codes</a></li>
            <li><a href="#ix">Importance Extension</a></li>
@@ -118,7 +118,7 @@
   </section>
 
   <section id="name">
-    <h3>MainWorld Name</h3>
+    <h3>Main World Name</h3>
     <div class="example"><code>1910 <span class="highlight">Regina</span> A788899-C Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF A &nbsp; 703 14 Im F7 V MD M3 V</code></div>
     <p>
       Name of the primary world in the system. Most characteristics given in the UWP, such as physical and cultural
@@ -140,40 +140,40 @@
         <th>Description
         
       <tr>
-        <td><a href="#Starport">Starport</a>
+        <td><a href="#starport">Starport</a>
         <td>Type of starport facility on world.
 
       <tr>
-        <td><a href="#World_Size_Data">Size</a>
+        <td><a href="#size">Size</a>
         <td>World diameter (in units of 1,600 kilometers).
 
       <tr>
-        <td><a href="#Atmosphere">Atmosphere</a>
+        <td><a href="#atmosphere">Atmosphere</a>
         <td>World atmosphere type.
 
       <tr>
-        <td><a href="#Hydrographics">Hydrographics</a>
+        <td><a href="#hydrographics">Hydrographics</a>
         <td>World surface covered with water (in tenths).
 
       <tr>
-        <td><a href="#Population_Exponent">Population</a>
+        <td><a href="#population_exponent">Population</a>
         <td>Exponent of intelligent population.
 
       <tr>
-        <td><a href="#Government_Type">Government</a>
+        <td><a href="#government">Government</a>
         <td>World government type.
 
       <tr>
-        <td><a href="#Law_Level">Law Level</a>
+        <td><a href="#law_level">Law Level</a>
         <td>Degree of oppression by law.
 
       <tr>
-        <td><a href="#Technological_Level">Technological Level</a>
+        <td><a href="#tech_level">Technological Level</a>
         <td>Level of technological achievement.
 
     </table>
 
-    <section id="Starport">
+    <section id="starport">
       <h4>Starport</h4>
       <div class="example"><code>1910 Regina <span class="highlight">A</span>788899-C Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF A &nbsp; 703 14 Im F7 V MD M3 V</code></div>
       <p>
@@ -183,47 +183,62 @@ system.
       <table>
         <tr>
           <th>Code
-          
-          <th>Starport Type
+          <th>Starport Description
           
           <tr>
             <td><code>A</code>
-            <td>Excellent Quality. Refined fuel
-available. Annual maintenance overhaul available. Shipyard capable of
-constructing starships and non-starships present. Nava base and/or scout base
-may be present.
+            <td>Excellent Quality. Refined fuel available. Annual maintenance overhaul available. Shipyard capable of
+constructing starships and non-starships present. Nava base and/or scout base may be present.
 
         <tr>
           <td><code>B</code>
-          <td>Good Quality. Refined fuel
-available. Annual maintenance overhaul available. Shipyard capable of
-constructing non-starships present. Naval base and/or scout base may be
-present.
+          <td>Good Quality. Refined fuel available. Annual maintenance overhaul available. Shipyard capable of
+constructing non-starships present. Naval base and/or scout base may be present.
 
         <tr>
           <td><code>C</code>
-          <td>Routine Quality. Only unrefined
-fuel available. Reasonable repair facilities present. Scout base may be
-present.
+          <td>Routine Quality. Only unrefined fuel available. Reasonable repair facilities present. Scout base may be present.
 
         <tr>
           <td><code>D</code>
-          <td>Only unrefined fuel available. No
-repair facilities present. Scout base may be present.
+          <td>Poor Quality. Only unrefined fuel available. No repair facilities present. Scout base may be present.
 
         <tr>
           <td><code>E</code>
-          <td>Frontier Installation. Essentially
-a marked spot of bedrock with no fuel, facilities, or bases present.
+          <td>Frontier Installation. Essentially a marked spot of bedrock with no fuel, facilities, or bases present.
 
         <tr>
           <td><code>X</code>
-          <td>No Starport. No provision is made
-for any ship landings.
+          <td>No Starport. No provision is made for any ship landings.
 
       </table>
+
+      <h4>Spaceports</h4>
+      <p>Worlds other than the Main World in a system may also be described by UWP codes. The 
+        port, if any, is referred to as a <dfn>spaceport</dfn>.
+      </p>
+
+      <table>
+        <tr>
+          <th>Code
+          <th>Spaceport Description
+        <tr>
+          <td><code>F</code>
+          <td>Good Quality. Minor damage repairable. Unrefined fuel available.
+        <tr>
+          <td><code>G</code>
+          <td>Poor Quality. Superficial repairs possible. Unrefined fuel available.
+        <tr>
+          <td><code>H</code>
+          <td>Primitive Quality. No repairs or fuel available. 
+        <tr>
+          <td><code>Y</code>
+          <td>None.
+      </table>
+
+
     </section>
-    <section id="World_Size_Data">
+    <section id="size">
       <h4>Size</h4>
       <div class="example"><code>1910 Regina A<span class="highlight">7</span>88899-C Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF A &nbsp; 703 14 Im F7 V MD M3 V</code></div>
       <p>
@@ -331,7 +346,7 @@ for any ship landings.
       <p>
         The above table assumes a density similar to Earth (5.5 grams per cubic centimeter).
     </section>
-    <section id="Atmosphere">
+    <section id="atmosphere">
       <h4>Atmosphere</h4>
       <div class="example"><code>1910 Regina A7<span class="highlight">8</span>8899-C Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF A &nbsp; 703 14 Im F7 V MD M3 V</code></div>
       <p>
@@ -420,7 +435,7 @@ altitudes.
 
       </table>
     </section>
-    <section id="Hydrographics">
+    <section id="hydrographics">
       <h4>Hydrographics</h4>
       <div class="example"><code>1910 Regina A78<span class="highlight">8</span>899-C Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF A &nbsp; 703 14 Im F7 V MD M3 V</code></div>
       <p>
@@ -480,7 +495,7 @@ Vland.
 
       </table>
     </section>
-    <section id="Population_Exponent">
+    <section id="population_exponent">
       <h4>Population Exponent</h4>
       <div class="example"><code>1910 Regina A788<span class="highlight">8</span>99-C Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF A &nbsp; 703 14 Im F7 V MD M3 V</code></div>
       <p>
@@ -547,7 +562,7 @@ Vland.
 
       </table>
     </section>
-    <section id="Government_Type">
+    <section id="government">
       <h4>Government Type</h4>
       <div class="example"><code>1910 Regina A7888<span class="highlight">9</span>9-C Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF A &nbsp; 703 14 Im F7 V MD M3 V</code></div>
       <p>
@@ -735,7 +750,7 @@ Vland.
 
       </table>
     </section>
-    <section id="Law_Level">
+    <section id="law_level">
       <h4>Law Level</h4>
       <div class="example"><code>1910 Regina A78889<span class="highlight">9</span>-C Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF A &nbsp; 703 14 Im F7 V MD M3 V</code></div>
       <p>
@@ -848,7 +863,7 @@ Vland.
 
       </table>
     </section>
-    <section id="Technological_Level">
+    <section id="tech_level">
       <h4>Technological Level</h4>
       <div class="example"><code>1910 Regina A788899-<span class="highlight">C</span> Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF A &nbsp; 703 14 Im F7 V MD M3 V</code></div>
       <p>
@@ -1104,7 +1119,7 @@ market for trade goods, or both.
     <div class="example"><code>1910 Regina A788899-C Ri Pa Ph An Cp (Amindii)2   <span class="highlight">{ 4 }</span>  (D7E+4) [9C6D] BcCeF A &nbsp; 703 14 Im F7 V MD M3 V</code></div>
     <p>
       The Importance Extension is abbreviated Ix and written in braces (<code>{}</code>).
-      It is an integer ranking the importance of the world within a region.
+      It is an integer (positive, negative, or zero) ranking the importance of the world within a region.
     </p>
   </section>
 
@@ -1114,8 +1129,8 @@ market for trade goods, or both.
     <p>
       The Economic Extension is abbreviated Ex and written in parentheses (<code>()</code>).
       It describes the strength of a world's economy. It is given as three <a href="#ehex">eHex</a>
-      digits representing Resources, Labor and Infrastructure, followed by a signed integer
-      representing efficiency (with zero written as <code>+0</code>).
+      digits representing Resources, Labor and Infrastructure, followed by an integer
+      representing efficiency written with a leading sign (zero is written as <code>+0</code>).
     </p>
   </section>
 
@@ -1391,7 +1406,7 @@ same system in order to maintain a single base code letter per system.
       Codes assigned to the system by government or private institutions about the safety of travel within the system.
     </p>
     <p class="aside">
-      Worlds given a Green Zone rating - the default and considered low risk for travel - are usually indicated by leaving the data field blank.
+      Worlds given a Green Zone rating are usually indicated by leaving the data field blank.
     </p>
     <table>
       <tr>
@@ -1445,18 +1460,21 @@ same system in order to maintain a single base code letter per system.
     <div class="example"><code>1910 Regina A788899-C Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF A &nbsp; <span class="highlight">7</span>03 14 Im F7 V MD M3 V</code></div>
     <p>
       The first <a href="#ehex">eHex</a> digit is the population multiplier. Together with the
-      <a href="#Population_Exponent">population exponent</a> in the <a href="#uwp">UWP</a>
+      <a href="#population_exponent">population exponent</a> in the <a href="#uwp">UWP</a>
       field, the world population can be computed as:
     </p>
     <p class="equation">
       population = <i>multiplier</i> &times; 10<sup><i>exponent</i></sup>
     </p>
-
+    <p class="aside">
+      Some legacy files may erroneously have <code>0</code> for the population multiplier but non-zero for the population exponent.
+      Treat the multiplier as <code>1</code> in these cases.
+    </p>
     <h4>Planetoid Belts</h4>
     <div class="example"><code>1910 Regina A788899-C Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF A &nbsp; 7<span class="highlight">0</span>3 14 Im F7 V MD M3 V</code></div>
     <p>
       The second <a href="#ehex">eHex</a> digit is the number of planetoid belts in the system.
-      Note that a main world of size <code>0</code> is termed an asteriod belt, and is not
+      A main world of size <code>0</code> is termed an asteriod belt, and is not
       counted here.
     </p>
 
