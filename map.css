@@ -11,6 +11,8 @@ body, table { font-size: 10pt; font-family: Univers, Arial, sans-serif; padding:
 body { color: white; background-color: black;  }
 table { color: white; }
 a { color: white; }
+a.stealth { text-decoration: none; }
+a.stealth:hover { text-decoration: underline; }
 #GalacticDirectionDisplay { color: red; font-weight: bold; text-transform: uppercase; font-size: 12pt; }
 .box { border: solid 1px white; background-color: black; }
 #stripe { color: red; background-color: red; border: solid 1px red; height: 4pt; }
