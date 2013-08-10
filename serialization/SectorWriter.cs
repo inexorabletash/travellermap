@@ -159,7 +159,7 @@ namespace Maps.Serialization
                     world.Economic,
                     world.Cultural,
                     world.Nobility,
-                    world.Worlds.ToString(CultureInfo.InvariantCulture),
+                    world.Worlds > 0 ? world.Worlds.ToString(CultureInfo.InvariantCulture) : "",
                     world.ResourceUnits.ToString(CultureInfo.InvariantCulture)
                 }));
             }
