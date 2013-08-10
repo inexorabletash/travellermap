@@ -46,6 +46,20 @@
 
   .highlight {
     background-color: #ffc0c0;
+    margin: -5px;
+    padding: 4px;
+    border-radius: 4px;
+    border: 1px solid gray;
+  }
+
+  .example code a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .example code a:hover {
+    background-color: #ffc0c0;
+    margin: -5px;
     padding: 4px;
     border-radius: 4px;
     border: 1px solid gray;
@@ -69,7 +83,7 @@
       an influential world on the edge of the Third Imperium can be summarized
       in Second Survey format as:
     </p>
-    <div class="example"><code>1910 Regina A788899-C Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF A &nbsp; 703 14 Im F7 V MD M3 V</code></div>
+    <div class="example"><code><a href="#hex">1910</a> <a href="#name">Regina</a> <a href="#uwp">A788899-C</a> <a href="#remarks">Ri Pa Ph An Cp (Amindii)2</a>   <a href="#ix">{ 4 }</a>  <a href="#ex">(D7E+4)</a> <a href="#cx">[9C6D]</a> <a href="#nobility">BcCeF</a> <a href="#bases">A</a> <a href="#zone">&nbsp;</a> <a href="#pbg">703</a> <a href="#worlds">14</a> <a href="#allegiance">Im</a> <a href="#stellar">F7 V MD M3 V</a></code></div>
     <p class="aside">
       Different editions of <cite>Traveller</cite> and different authors and publications may include
       different fields, present the fields in different orders, or provide different values for fields.
@@ -995,14 +1009,14 @@ market for trade goods, or both.
       <tr><th colspan="2" class="section">Planetary
 
       <tr><td><code>As</code><td>Asteroid Belt.<span>Siz 0</span>
-      <tr><td><code>De</code><td>Desert World.<span>Hyd 0, Atm 2-9</span>
-      <tr><td><code>Fl</code><td>Fluid Hydrographics (in place of water).<span>Atm A+, Hyd 1+</span>  
+      <tr><td><code>De</code><td>Desert.<span>Atm 2-9, Hyd 0</span>
+      <tr><td><code>Fl</code><td>Fluid Hydrographics (in place of water).<span>Atm A-C, Hyd 1+</span>  
       <tr><td><code>Ga</code><td>Garden World.<span>Siz 6-8, Atm 5,6,8, Hyd 5-7</span>
-      <tr><td><code>He</code><td>Hellworld.<span>Siz 3-A, Atm 2,4,7,9-C, Hyd 0-2</span>
+      <tr><td><code>He</code><td>Hellworld.<span>Siz 3-5,9+, Atm 2,4,7,9-C, Hyd 0-2</span>
       <tr><td><code>Ic</code><td>Ice Capped.<span>Atm 0-1, Hyd 1+</span>
-      <tr><td><code>Oc</code><td>Ocean World.<span>Hyd A, Siz A+</span>
+      <tr><td><code>Oc</code><td>Ocean World.<span>Siz A+, Hyd A</span>
       <tr><td><code>Va</code><td>Vacuum World.<span>Atm 0</span>
-      <tr><td><code>Wa</code><td>Water World.<span>Hyd A, Siz 9-</span>
+      <tr><td><code>Wa</code><td>Water World.<span>Siz 5-9, Hyd A</span>
 
       <tr><th colspan="2" class="section">Population
 
@@ -1021,24 +1035,24 @@ market for trade goods, or both.
       <tr><td><code>Pi</code><td>Pre-Industrial.<span>Atm 0,1,2,4,7,9, Pop 7-8</span>
       <tr><td><code>In</code><td>Industrialized.<span>Atm 0,1,2,4,7,9, Pop 9+</span>
       <tr><td><code>Po</code><td>Poor.<span>Atm 2-5, Hyd 3-</span>
-      <tr><td><code>Pr</code><td>Pre-Rich.<span>Atm 6 or 8, Pop 5 or 9</span>
-      <tr><td><code>Ri</code><td>Rich.<span>Atm 6 or 8, Pop 6-8</span>
+      <tr><td><code>Pr</code><td>Pre-Rich.<span>Atm 6,8, Pop 5,9</span>
+      <tr><td><code>Ri</code><td>Rich.<span>Atm 6,8, Pop 6-8</span>
 
       <tr><th colspan="2" class="section">Climate
 
-      <tr><td><code>Fr</code><td>Frozen<span>Siz 2-9, Hyd 1+, HZ +2 or Outer</span>
-      <tr><td><code>Ho</code><td>Hot<span>HZ -1</span>
-      <tr><td><code>Co</code><td>Cold<span>HZ +1</span>
-      <tr><td><code>Lk</code><td>Locked<span>Close Satellite</span>
-      <tr><td><code>Tr</code><td>Tropic<span>Siz 6-9, Atm 4-9, Hyd 3-7, HZ -1</span>
-      <tr><td><code>Tu</code><td>Tundra<span>Siz 6-9, Atm 4-9, Hyd 3-7, HZ +1</span>
-      <tr><td><code>Tz</code><td>Twilight Zone<span>Orbit 0-1</span>
+      <tr><td><code>Fr</code><td>Frozen.<span>Siz 2-9, Hyd 1+, HZ +2 or Outer</span>
+      <tr><td><code>Ho</code><td>Hot.<span>HZ -1</span>
+      <tr><td><code>Co</code><td>Cold.<span>HZ +1</span>
+      <tr><td><code>Lk</code><td>Locked.<span>Close Satellite</span>
+      <tr><td><code>Tr</code><td>Tropic.<span>Siz 6-9, Atm 4-9, Hyd 3-7, HZ -1</span>
+      <tr><td><code>Tu</code><td>Tundra.<span>Siz 6-9, Atm 4-9, Hyd 3-7, HZ +1</span>
+      <tr><td><code>Tz</code><td>Twilight Zone.<span>Orbit 0-1</span>
    
       <tr><th colspan="2" class="section">Secondary
 
-      <tr><td><code>Fa</code><td>Farming<span>Atm 4-9, Hyd 4-8, Pop 2-6, HZ</span>
-      <tr><td><code>Mi</code><td>Mining<span>Pop 2-6</span>
-      <tr><td><code>Mr</code><td>Military Rule.
+      <tr><td><code>Fa</code><td>Farming<span>Atm 4-9, Hyd 4-8, Pop 2-6, Not MW, HZ</span>
+      <tr><td><code>Mi</code><td>Mining<span>Pop 2-6, Not MW, MW=In</span>
+      <tr><td><code>Mr</code><td>Military Rule.<span>By regional Allegiance power.</span>
       <tr><td><code>Px</code><td>Prison, Exile Camp
       <tr><td><code>Pe</code><td>Penal Colony
       <tr><td><code>Re</code><td>Reserve
@@ -1049,16 +1063,17 @@ market for trade goods, or both.
       <tr><td><code>Cp</code><td>Subsector Capital.
       <tr><td><code>Cs</code><td>Sector Capital.
       <tr><td><code>Cx</code><td>Capital.
-      <tr><td><code>Cy</code><td>Colony (see <code>O:XXXX</code>)
+      <tr><td><code>Cy</code><td>Colony (see <code>O:XXYY</code>)
 
       <tr><th colspan="2" class="section">Special
 
       <tr><td><code>Sa</code><td>Satellite
       <tr><td><code>Fo</code><td>Forbidden (Red Zone)
       <tr><td><code>Pz</code><td>Puzzle (Amber Zone)<span>Pop 7+</span>
-      <tr><td><code>Da</code><td>Danger (Red Zone)<span>Pop 6-</span>
+      <tr><td><code>Da</code><td>Danger (Amber Zone)<span>Pop 6-</span>
       <tr><td><code>Ab</code><td>Data Repository.
       <tr><td><code>An</code><td>Ancient Site.
+
       <tr><td><code>Rs</code><td>Research Station.<span>Imperial.</span>
       <tr><td><code>RsA</code><td>Research Station <code>A</code> = Alpha, <code>B</code> = Beta, <code>G</code>= Gamma, etc.<span>Imperial.</span>
 
@@ -1129,8 +1144,8 @@ market for trade goods, or both.
     <p>
       The Economic Extension is abbreviated Ex and written in parentheses (<code>()</code>).
       It describes the strength of a world's economy. It is given as three <a href="#ehex">eHex</a>
-      digits representing Resources, Labor and Infrastructure, followed by an integer
-      representing efficiency written with a leading sign (zero is written as <code>+0</code>).
+      digits representing <dfn>Resources</dfn>, <dfn>Labor</dfn> and <dfn>Infrastructure</dfn>, followed by an integer
+      representing <dfn>Efficiency</dfn> written with a leading sign (zero is written as <code>+0</code>).
     </p>
   </section>
 
@@ -1140,8 +1155,8 @@ market for trade goods, or both.
     <p>
       The Cultural Extension is abbreviated Cx and written in brackets (<code>[]</code>).
       It gives insight into the social behavior of the world's population. It is given as
-      four <a href="#ehex">eHex</a> digits representing Homogeneity, Acceptance,
-      Strangeness, and Symbols.
+      four <a href="#ehex">eHex</a> digits representing <dfn>Homogeneity</dfn>, <dfn>Acceptance</dfn>,
+      <dfn>Strangeness</dfn>, and <dfn>Symbols</dfn>.
     </p>
   </section>
 
