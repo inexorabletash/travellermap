@@ -2,17 +2,7 @@
 <title>Traveller Map - Credits</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="shortcut icon" href="/favicon.ico">
-<link rel="stylesheet" type="text/css" href="site.css?update=2013-07-25">
-<script>
-  window.onload = function () {
-    var nodes = document.querySelectorAll('a.sector');
-    for (var i = 0; i < nodes.length; ++i) {
-      var anchor = nodes[i];
-      anchor.href = "/?sector=" + encodeURIComponent(anchor.innerText);
-      anchor.target = "_blank";
-    }
-  };
-</script>
+<link rel="stylesheet" type="text/css" href="../site.css?update=2013-07-25">
 
 <h1>The Traveller Map - Credits</h1>
 <div class="content">
@@ -594,6 +584,12 @@
 
   </section>
 </div>
+<script>
+  [].forEach.call(document.querySelectorAll('a.sector'), function(anchor) {
+    anchor.href = "/?sector=" + encodeURIComponent(anchor.innerText);
+    anchor.target = "_blank";
+  });
+</script>
 
 <!-- Google Analytics -->
 <script>
