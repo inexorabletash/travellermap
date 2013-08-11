@@ -116,9 +116,9 @@ namespace Maps.Serialization
                     world.Importance,
                     world.Economic,
                     world.Cultural,
-                    world.Nobility,
-                    world.CompactLegacyBases,
-                    world.Zone,
+                    DashIfEmpty(world.Nobility),
+                    DashIfEmpty(world.CompactLegacyBases),
+                    DashIfEmpty(world.Zone),
                     world.PBG,
                     world.Worlds > 0 ? world.Worlds.ToString() : "",
                     world.Allegiance,
@@ -126,6 +126,13 @@ namespace Maps.Serialization
                 });
             }
             formatter.Serialize(writer, includeHeader);
+        }
+
+        private static string DashIfEmpty(string s)
+        {
+            if (String.IsNullOrWhiteSpace(s))
+                return "-";
+            return s;
         }
     }
 
