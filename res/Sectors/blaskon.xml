@@ -9,13 +9,13 @@
 <Subsector Index="B"></Subsector>	
 <Subsector Index="C">Lotrutan</Subsector>	
 <Subsector Index="D"></Subsector>
-<Subsector Index="E"></Subsector>	
-<Subsector Index="F"></Subsector>	
+<Subsector Index="E">Valaar</Subsector>	
+<Subsector Index="F">Inasko</Subsector>	
 <Subsector Index="G">Ldoocox</Subsector>	
 <Subsector Index="H"></Subsector>
 <Subsector Index="I"></Subsector>	
-<Subsector Index="J"></Subsector>	
-<Subsector Index="K"></Subsector>	
+<Subsector Index="J">Laxsetker</Subsector>	
+<Subsector Index="K">Guuqal</Subsector>	
 <Subsector Index="L"></Subsector>
 <Subsector Index="M"></Subsector>	
 <Subsector Index="N">Kipnasko</Subsector>	
@@ -28,12 +28,51 @@
 	<Allegiance Code="Xh">Hive FDA extra-Federation operation</Allegiance>
 	<Allegiance Code="Na">Non-aligned</Allegiance>
 	<Allegiance Code="Hc">Hiver Client State</Allegiance>
+	<Allegiance Code="Hd">Dradrip Syndicate</Allegiance>
+	<Allegiance Code="Hg">Guuqal Enclave</Allegiance>
 	<Allegiance Code="Hl">Ldoocox Enclave</Allegiance>
+	<Allegiance Code="Hr">Laxsetker Restraint</Allegiance>
+	<Allegiance Code="Hi">Inasko Guidance</Allegiance>
+	<Allegiance Code="Ha">Valaar Association</Allegiance>
+	<Allegiance Code="Hy">Anati Governance</Allegiance>
+	<Allegiance Code="Hq">Cladaa</Allegiance>
+
+
+
 </Allegiances>
   <Borders>
-<Border Allegiance="Hl" Color="green" LabelPosition="1914">
+<Border Allegiance="Hl" Color="Aquamarine" LabelPosition="1914">
 1811 1812 1913 1813 1812
 </Border>
+
+<Border Allegiance="Hg" Color="Aquamarine">
+1923 2022 2122 2123 2022 1923
+</Border>
+
+<Border Allegiance="Ha" Color="Aquamarine">
+0219 0220
+</Border>
+
+<Border Allegiance="Hq" Color="Aquamarine">
+0412 0413 0414 0413
+</Border>
+
+<Border Allegiance="Hy" Color="Aquamarine">
+0107 0206 0306 0305 0306 0307 0207 0107
+</Border>
+
+<Border Allegiance="Hi" Color="Aquamarine" LabelPosition="1320">
+1017 1118 1217 1317 1417 1518 1519 1418 1318 1218 1119 1018 1017
+</Border>
+
+<Border Allegiance="Hr" Color="Aquamarine">
+1529 1429 1330 1331 1231 1230 1229 1129 1028 0928 1027 1128 1227 1327 1427 1528 1529 
+</Border>
+
+<Border Allegiance="Hd" Color="Aquamarine">
+2935 3035 3135 3136 3137 3237 3138 3038 2939 2839 2739 2838 2837 2836 2936 2935
+</Border>
+
     <Border Allegiance="Hv" Color="purple" ShowLabel="true">
 0000 0100 0200 0300 0400 0500 0600 0700 0800 0900 
 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 
@@ -51,6 +90,7 @@
 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 
 0008 0007 0006 0005 0004 0003 0002 0001 0000
 </Border>
+
   </Borders>
   <Routes>
   </Routes>

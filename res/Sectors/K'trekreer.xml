@@ -9,7 +9,7 @@
     <Subsector Index="C"></Subsector>
     <Subsector Index="D"></Subsector>
     <Subsector Index="E"></Subsector>
-    <Subsector Index="F"></Subsector>
+    <Subsector Index="F">Orarnak</Subsector>
     <Subsector Index="G"></Subsector>
     <Subsector Index="H"></Subsector>
     <Subsector Index="I"></Subsector>
@@ -29,8 +29,23 @@
 	<Allegiance Code="Na">Non-aligned</Allegiance>
 	<Allegiance Code="Kc">K'kree Client State</Allegiance>
 	<Allegiance Code="Hc">Hiver Client State</Allegiance>
+	<Allegiance Code="Hp">Orarnak Protectorate</Allegiance>
+	<Allegiance Code="Hn">Noyonak Sub-Federate</Allegiance>
 </Allegiances> 
  <Borders>
+
+<Border WrapLabel="true" Color="Aquamarine" Allegiance="Hp"> 
+0316 0315 0314 0313 0413 0513 0613 0714 0814 0914 1014 1115 1214  
+1314 1414 1515 1516 1616 1717 1817 1818 1919 1819 1720 1620 1621 
+1622 1523 1422 1323 1222 1221 1220 1120 1019 0919 0818 0719 0619
+0519 0618 0718 0717 0616 0516 0416 0316  
+</Border>
+
+<Border WrapLabel="true" Color="Aquamarine" Allegiance="Hn" LabelPosition="1133"> 
+0334 0433 0533 0632 0732 0831 0830 0931 1031 1132 1231 1230 1331 1431 1432 
+1533 1534 1434 1334 1234 1135 1136 1035 0936 0836 0736 0635 0535 0434 0334 
+</Border>
+
 <Border WrapLabel="false" Color="Green" Allegiance="Kk" LabelPosition="1205">
 0000 0100 0200 0300 0400 0500 0600 0700 0800 
 0900 1000 1100 1200 1300 1400 1500 1600 1700
@@ -45,8 +60,9 @@
 0210 0111 0010  
 0009 0008 0007 0006 0005 0004 0003 0002 0001 0000
 </Border>	
+
 <Border WrapLabel="true" Color="Purple" Allegiance="Hv" LabelPosition="1427">
-0026 0025 0024 0023 0022 0021 0020 0019 0018 0119 0218 0318 0317 
+0026 0025 0024 0023 0022 0021 0020 0120 0219 0319 0318 0317 
 0316 0315 0314 0313 0413 0513 0613 0714 0814 0914 1014 1115 1214  
 1314 1414 1515 1516 1616 1717 1817 1818 1919 1819 1720 1620 1621 
 1622 1523 1524 1525 1526 1626 1727 1827 1928 1929 2029 2130 2131 2132
@@ -55,9 +71,43 @@
 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041 0040 0039 0038
 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027
 </Border>
+
   </Borders>
   <Labels />
   <Routes>
+<Route Start="0916" End="1314" Type="Trade" Color="Gray"/>
+<Route Start="1319" End="1619" Type="Trade" Color="Gray"/>
+<Route Start="1919" End="1619" Type="Trade" Color="Gray"/>
+<Route Start="0321" End="0120" Type="Trade" Color="Gray"/>
+<Route Start="0120" End="0020" Type="Trade" Color="Gray"/>
+<Route Start="0321" End="0521" Type="Trade" Color="Gray"/>
+<Route Start="0719" End="0521" Type="Trade" Color="Gray"/>
+<Route Start="0724" End="0521" Type="Trade" Color="Gray"/>
+
+
+<Route Start="0719" End="0817" Type="Trade" Color="Gray"/>
+<Route Start="0916" End="0817" Type="Trade" Color="Gray"/>
+<Route Start="0916" End="0714" Type="Trade" Color="Gray"/>
+<Route Start="0413" End="0714" Type="Trade" Color="Gray"/>
+<Route Start="1319" End="1018" Type="Trade" Color="Gray"/>
+<Route Start="0817" End="1018" Type="Trade" Color="Gray"/>
+<Route Start="0025" End="0325" Type="Trade" Color="Gray"/>
+<Route Start="0624" End="0325" Type="Trade" Color="Gray"/>
+<Route Start="0624" End="0724" Type="Trade" Color="Gray"/>
+<Route Start="0923" End="0724" Type="Trade" Color="Gray"/>
+<Route Start="1323" End="0923" Type="Trade" Color="Gray"/>
+
+<Route Start="0434" End="0336" Type="Trade" Color="Gray"/>
+<Route Start="0037" End="0336" Type="Trade" Color="Gray"/>
+<Route Start="0736" End="0336" Type="Trade" Color="Gray"/>
+<Route Start="0736" End="1037" Type="Trade" Color="Gray"/>
+<Route Start="1238" End="1037" Type="Trade" Color="Gray"/>
+<Route Start="1236" End="1037" Type="Trade" Color="Gray"/>
+<Route Start="1238" End="1539" Type="Trade" Color="Gray"/>
+<Route Start="1740" End="1539" Type="Trade" Color="Gray"/>
+
+<Route Start="1238" End="1437" Type="Trade" Color="Gray"/>
+<Route Start="1736" End="1437" Type="Trade" Color="Gray"/>
 
   </Routes>
 </Sector>

@@ -11,26 +11,26 @@ Blaskon
 
 ....+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8....+....9....+....A....+....B
                           0102 E35764S-5    Ag Ni                           622 Hv G8 V
-Naamglev                  0107 C45196S-9  M Hi Po O:XXXX                    323 Hv F8 V
+Naamglev                  0107 C45196S-9  M Hi Po O:0307 Nh (Naamglev)   A  323 Hy F8 V
                           0118 E201000-0    Ba Ic Ni Po Va                  500 Hv G4 III
                           0120 E310000-0    Ba Ni Po                        903 Hv K1 V M6 V
                           0122 C86A510-7    Ni Wa                           703 Hv A7 V M3 V
-                          0126 X360130-6    De Lo Ni Po                  R  503 Hf K1 V
+                          0126 E360130-6    De Lo Ni Po                  R  503 Hf K1 V
                           0128 C57255S-A    Ni Po                           805 Hv F6 IV
-                          0129 C537196-6    Lo Ni Nh                     A  905 Hv M8 V
+                          0129 C537196-6    Lo Ni Nh (minor)             A  905 Hv M8 V
                           0130 D98766S-A    Ag Ni Ri O:XXXX                 804 Hv M6 V M1 V
                           0131 E447000-0    Ba Ni                           802 Hv G8 III M D
                           0133 E535666-6    Ni O:XXXX                       500 Hv M4 V
                           0202 E200000-0    Ba Ni Po Va                     602 Hv G4 V M3 V
-                          0207 C401156-7  M Ic Lo Ni Po Va Nh            A  803 Hv M4 V M D
+                          0207 C401166-7  M Ic Lo Ni Po Va O:0307           803 Hy M4 V M D
                           0215 C471352-A  M Lo Ni Po                        522 Hv F2 V
-                          0219 A67872S-7  E Ag                              624 Hv M7 V
-                          0220 B326566-7  M Ni Nh O:XXXX                 A  803 Hv M6 V
+Valaat                    0219 A67872S-C  E Ag Nh (Valaat)               A  624 Ha M7 V
+                          0220 B326566-B  M Ni Nh O:0219 Vala7           A  803 Ha M6 V
                           0233 E59374S-9    Po                              504 Hv G6 V M D
-                          0238 C200166-7  M Lo Ni Po Va Nh O:XXXX        A  012 Hv M8 V G5 V
+                          0238 C200166-7  M Lo Ni Po Va Nh O:XXXX (minor)A  012 Hv M8 V G5 V
                           0240 D78482T-9    Ri                              614 Hv M6 V G8 V
-                          0305 D98A460-8    Lo Ni Wa O:XXXX                 403 Hv M1 V M6 V
-                          0307 B000256-7    As Lo Ni Po                     403 Hv G1 III
+                          0305 D98A460-8    Lo Ni Wa O:0307                 403 Hy M1 V M6 V
+Anati                     0307 B000256-B    As Lo Ni Po                     403 Hy G1 III
                           0310 C400230-7  M Lo Ni Po Va                     413 Hv M2 V
                           0317 B202612-A  L Ic Na Ni Po Va                  812 Hv K5 V
                           0318 E987661-7    Ag Ni Ri O:XXXX                 900 H2 M8 V M4 V
@@ -42,8 +42,8 @@ Naamglev                  0107 C45196S-9  M Hi Po O:XXXX                    323 
                           0333 C56485S-A  M Ri                              901 Hv M0 V
                           0335 E200000-0    Ba Ni Po Va                     901 Hv M9 V
                           0401 C777230-8    Lo Ni                           303 Hv M8 V M8 V M4 V
-                          0412 D624266-7    Lo Ni Nh O:0414              A  204 Hv M4 V
-                          0414 A2007A6-B  E Lo Ni Po Va Nh               A  802 Hv M1 V
+                          0412 D624266-7    Lo Ni Nh O:0414 Clad5        A  204 Hq M4 V
+Cladaa                    0414 A2007A6-B  E Lo Ni Po Va Nh (Cladaa)      A  802 Hq M1 V
                           0418 D579440-9    Lo Ni                           600 Hv F7 V
                           0419 A32353S-7    Ni Po                           902 Hv G5 V
                           0422 C69A360-7  M Lo Ni Wa O:XXXX                 211 Hv M3 V M D M D
@@ -61,10 +61,10 @@ Naamglev                  0107 C45196S-9  M Hi Po O:XXXX                    323 
                           0517 B404166-7  L Ic Lo Ni Va O:0517              500 Hv M1 V K7 V
                           0520 E694000-0    Ba Ni                           524 Hv M7 V
                           0521 B595350-9  L Lo Ni                           513 Hv M9 V
-                          0522 B203296-7  L Ic Lo Ni Po Va Nh            A  814 Hv M5 V M D
+                          0522 B203296-7  L Ic Lo Ni Po Va Nh (minor)    A  814 Hv M5 V M D
                           0525 B46876S-D  L Ag O:XXXX                       805 Hv M6 V M8 V M8 V
                           0527 E799360-7    Lo Ni O:XXXX                    611 Hv K7 V
-                          0528 A000366-7  L As Lo Ni Po Nh O:XXXX        A  604 Hv G6 V
+                          0528 A000366-7  L As Lo Ni Po O:XXXX              604 Hv G6 V
                           0531 A210150-8    Lo Ni Po                        804 Hv G2 V M3 V
                           0536 E65485T-9                                    900 Hv M5 V
                           0537 C548341-5  M Lo Ni                           822 H2 F4 V M6 V
@@ -80,7 +80,7 @@ Naamglev                  0107 C45196S-9  M Hi Po O:XXXX                    323 
                           0619 C675360-5  M Lo Ni O:XXXX                    702 Hv K1 V M1 V
                           0622 E210000-0    Ba Ni Po                        300 Hv K4 V M6 V
                           0628 B87C66S-E  L Ni O:XXXX                       700 Hv M6 V M7 V
-                          0630 X675130-6    Lo Ni                        R  802 Hf K4 V
+                          0630 E675130-6    Lo Ni                        R  802 Hf K4 V
                           0631 E330000-0    Ba De Ni Po                     720 Hv M5 III M2 V
                           0632 C99C410-8  M Lo Ni                           924 Hv F2 V M7 V
                           0634 E728000-0    Ba Ni                           914 Hv F3 IV M D
@@ -106,7 +106,7 @@ Naamglev                  0107 C45196S-9  M Hi Po O:XXXX                    323 
                           0805 A36782T-8    Ri                              303 Hv M9 V
 Taxcolask                 0806 A25093U-C  E De Hi Po                        202 Hv K7 V
                           0807 CA56526-8  M Ag Ni                           820 Hv G8 V
-                          0809 B746772-6  M Ag Nh                        A  903 Hv G4 III
+                          0809 B746772-6  M Ag Nh (minor)                A  903 Hv G4 III
                           0813 A311436-7    Ic Lo Ni Po                     600 Hv M7 V M D
                           0816 A8A676T-B  L O:XXXX                          824 Hv M7 V
                           0817 E000000-0    As Ba Ni Po                     924 Hv M0 V
@@ -121,19 +121,19 @@ Dupyux                    0831 C56496S-8  M Hi O:XXXX                       203 
                           0905 A471761-B    Po O:XXXX                       803 H2 M0 V M6 V
                           0907 C657721-B    Ag                              803 H2 F1 V M1 V
                           0922 A569550-6  E Ni                              904 Hv M1 V
-                          0928 B78486T-D  L Ri O:XXXX                       223 Hv M7 V
+                          0928 B78486T-D  L Ri O:1327                       223 Hr M7 V
                           0930 B572650-D    Ni Po                           703 Hv M1 V
                           0933 C684610-9  M Ag Ni Ri                        700 Hv G7 V M5 V
-                          0936 B2002A6-7  M Lo Ni Po Va Nh               A  022 Hv G7 II
+                          0936 B2002A6-7  M Lo Ni Po Va Nh (minor)       A  022 Hv G7 II
                           1001 C436156-6  M Lo Ni                           635 Hv G1 V M5 V
                           1003 B56273S-A  L Po                              803 Hv G5 V
                           1004 E440240-6    De Lo Ni Po                     514 Hv F9 V
-                          1008 A345792-5    Ag Nh                        A  623 Hv M2 V
+                          1008 A345792-5    Ag Nh (minor)                A  623 Hv M2 V
                           1014 E000000-0    As Ba Ni Po                     322 Hv M4 V M8 V
-                          1017 C260350-8    De Lo Ni Po                     903 Hv K3 V
-                          1018 D443360-6    Lo Ni Po O:XXXX                 804 Hv G4 V M D
+                          1017 C260360-8    De Lo Ni Po O:1119              903 Hi K3 V
+                          1018 D443360-6    Lo Ni Po O:1119                 804 Hi G4 V M D
                           1024 B403110-8  L Ic Lo Ni Po Va                  505 Hv K2 V
-                          1027 E100000-0    Ba Ni Po Va                     605 Hv K7 V
+                          1027 E100000-0    Ba Ni Po Va                     605 Hr K7 V
                           1031 B585862-9  M Ri O:XXXX                       705 Hv M5 V
                           1034 E200000-0    Ba Ni Po Va                     724 Hv F6 V
                           1037 C230312-7  M De Lo Ni Po                     914 Hv G6 II
@@ -141,28 +141,28 @@ Dupyux                    0831 C56496S-8  M Hi O:XXXX                       203 
                           1102 A9B385S-C  E Po                              804 Hv M1 V
                           1103 E426000-0    Ba Ni                           713 Hv K8 V
                           1104 B857410-C  L Lo Ni                           813 Hv M2 V M0 V
-                          1105 B441586-7  M Ni Po Nh                     A  713 Hv G9 V M6 V
+                          1105 B441586-7  M Ni Po Nh (minor)             A  713 Hv G9 V M6 V
                           1106 B65785S-B                                    904 Hv K1 V M1 V
                           1109 E200000-0    Ba Ni Po Va                     803 Hv G3 V
                           1110 A000150-7  L As Lo Ni Po                     613 Hv A5 V M D
                           1112 E300000-0    Ba Ni Po Va                     804 Hv K2 IV
                           1115 CAA1240-8  M Lo Ni Po                        810 Hv K4 V
                           1116 C889430-5  M Lo Ni                           514 Hv K3 V M7 V
-Inasko                    1119 A443A6U-B    Hi In Po O:XXXX                 104 Hv M2 II M1 V
+Inasko                    1119 A46697U-C    Hi In Po Nh (Inasko)         A  104 Hi M2 II M1 V
                           1124 C744532-6    Ag Ni                           602 Hv M4 V
-                          1128 A879312-6    Lo Ni                           623 Hv K8 V M9 V
-                          1129 E696642-8    Ag Ni                           524 Hv G5 V
+                          1128 A879312-6    Lo Ni                           623 Hr K8 V M9 V
+                          1129 E696642-8    Ag Ni                           524 Hr G5 V
                           1138 D233712-8    Na Po                           504 Hv K2 V
                           1204 C774852-9  M                                 404 Hv F9 IV
                           1205 D799350-9    Lo Ni                           312 Hv M2 V G3 V
                           1207 C7A3330-8  M Lo Ni Po                        903 Hv G6 V
                           1212 B400230-7    Lo Ni Po Va                     510 Hv M9 V
-                          1217 C998520-5  M Ag Ni                           813 Hv M0 V
+                          1217 C998560-5  M Ag Ni O:1119                    813 Hi M0 V
                           1224 E320000-0    Ba De Ni Po                     815 Hv G1 V
-                          1227 B867652-C  M Ag Ni Ri                        700 Hv K3 IV M D
-                          1228 E35184T-A    Po                              800 Hv M0 V M1 V
-                          1230 E554000-0    Ba Ni                           814 Hv M5 V M D
-                          1231 B8B2330-8  L Lo Ni Po                        800 Hv M0 V
+                          1227 B867652-C  M Ag Ni Ri                        700 Hr K3 IV M D
+                          1228 E35184T-A    Po                              800 Hr M0 V M1 V
+                          1230 E554000-0    Ba Ni                           814 Hr M5 V M D
+                          1231 B8B2330-8  L Lo Ni Po                        800 Hr M0 V
                           1233 B868541-7  L Ag Ni                           620 H2 M3 V
                           1235 E000000-0    As Ba Ni Po                     802 Hv M6 V M9 V
                           1238 E210000-0    Ba Ni Po                        705 Hv G7 V
@@ -174,12 +174,12 @@ Eldarua                   1303 B564A2T-E    Hi                              522 
                           1313 E9B8000-0    Ba Ni                           425 Hv M6 III
                           1315 E383546-3    Ni Po                           505 Hv M4 V K9 V
                           1316 B642540-7  M Ni Po                           804 Hv M8 V K8 V M8 V
-                          1317 E337160-6    Lo Ni O:XXXX                    714 Hv M7 III
-                          1318 D647420-5    Lo Ni                           611 Hv M5 V
+                          1317 E337160-6    Lo Ni O:1119                    714 Hi M7 III
+                          1318 D647460-5    Lo Ni                           611 Hi M5 V
                           1324 B243742-A  L Po                              825 Hv K4 V M4 V M6 V
-Laxsetker                 1327 B68691T-A  L Hi                              224 Hv K2 V
-                          1329 D434616-7    Ni                              711 Hv G7 II
-                          1330 D346231-6    Lo Ni                           304 H2 M8 V
+Laxsetker                 1327 B68698T-A  L Hi                              224 Hr K2 V
+                          1329 D434616-7    Ni                              711 Hr G7 II
+                          1330 D346231-6    Lo Ni                           304 Hr M8 V
                           1331 E000000-0    As Ba Ni Po                     504 Hv K6 V
                           1337 B320250-9  L De Lo Ni Po                     411 Hv G7 V M4 V
                           1338 E210000-0    Ba Ni Po                        304 Hv M2 V
@@ -190,10 +190,10 @@ Laxsetker                 1327 B68691T-A  L Hi                              224 
                           1411 B75A51S-7  L Ni Wa                           304 Hv M4 V M9 V
 Anaftaq                   1412 D56694T-A    Hi                              304 Hv G0 III
                           1415 C76C846-9    Ri                              514 Hv K4 V
-                          1417 C9C76A6-9  M Lo Ni Nh                     A  800 Hv M7 V M1 V
-                          1418 C427466-7  M Lo Ni Nh O:1417              A  113 Hv M8 V M3 V
+Oonsuxy                   1417 C9C76A6-9  M Lo Ni Nh O:1119 Inas6        A  800 Hi M7 V M1 V
+Iupuno                    1418 C427466-7  M Lo Ni Nh O:1119 Inas8        A  113 Hi M8 V M3 V
                           1421 B99B260-9  L Lo Ni O:XXXX                    323 Hv M2 V M9 V
-                          1427 E556451-4    Lo Ni                           601 H2 M7 V
+                          1427 E556451-4    Lo Ni                           601 Hr M7 V
 Kipnasko                  1433 C58691T-C    Hi                              524 Hv M4 III
                           1436 C8C0211-9  M De Lo Ni Po                     810 H2 M8 V
                           1438 E330000-0    Ba De Ni Po                     313 Hv M2 V
@@ -207,10 +207,10 @@ Kipnasko                  1433 C58691T-C    Hi                              524 
                           1512 E130000-0    Ba De Ni Po                     804 Hv F4 IV M4 V
                           1515 D9C7220-9  M Lo Ni                           513 Hv F6 V M D
                           1516 E59665S-8    Ag Ni                           804 Hv M8 V
-                          1518 E549000-0    Ba Ni                           914 Hv M8 V M0 V
-                          1519 E140000-0    Ba De Ni Po                     832 Hv G0 IV M5 V
-                          1528 B324351-B  F Lo Ni                           614 H2 F4 V
-                          1529 D692511-8    Ni Po                           910 H2 M3 V M D
+ADF-343                   1518 E549000-0    Ba Ni                           914 Hi M8 V M0 V
+ADF-122                   1519 E140000-0    Ba De Ni Po                     832 Hi G0 IV M5 V
+                          1528 B324351-B  F Lo Ni                           614 Hr F4 V
+                          1529 D692511-8    Ni Po                           910 Hr M3 V M D
                           1534 A34486T-7  E O:XXXX                          911 Hv M8 V M D
                           1603 B778260-7  L Lo Ni O:XXXX                    604 Hv F1 V M0 V
 Thusdoku                  1606 A384A6T-A  L Hi O:XXXX                       203 Hv G2 V
@@ -226,7 +226,7 @@ Thusdoku                  1606 A384A6T-A  L Hi O:XXXX                       203 
                           1635 E510000-0    Ba Ni Po                        701 Hv K8 V
                           1636 A521721-9    Na Po                           900 H2 M7 V K3 V
                           1704 E77A000-0    Ba Ni Wa                        803 Hv M9 V
-                          1708 A130456-6    De Lo Ni Po Nh               A  804 Hv G7 V
+                          1708 A130456-6    De Lo Ni Po Nh (minor)       A  804 Hv G7 V
                           1716 B767446-9  L Lo Ni                           704 Hv M4 V G0 V
                           1718 E200000-0    Ba Ni Po Va                     605 Hv K0 V
                           1719 E978330-7    Lo Ni                           913 Hv M4 V M5 V
@@ -241,9 +241,9 @@ Thusdoku                  1606 A384A6T-A  L Hi O:XXXX                       203 
                           1806 B202530-C    Ic Ni Po Va                     702 Hv M8 V
                           1807 D370150-5    De Lo Ni Po                     201 Hv G2 IV
                           1808 A65985T-8                                    703 Hv M4 III M2 V
-Ldoocox                   1811 A66592U-A    Hi Nh                        A  302 Hl M7 V
-                          1812 E9B0166-8    De Lo Ni Po Nh O:1811        A  704 Hl M5 V
-                          1813 D623466-7    Lo Ni Po Nh O:1811           A  820 Hl M5 V
+Ldoocox                   1811 A66592U-A    Hi Nh (Ldoocox)              A  302 Hl M7 V
+                          1812 E9B0166-8    De Lo Ni Po Nh O:1811 Ldoo6  A  704 Hl M5 V
+                          1813 D623466-7    Lo Ni Po Nh O:1811 Ldoo3     A  820 Hl M5 V
 Axoxack                   1814 C65455S-9                                    910 Hv M8 V
                           1816 D558522-7  M Ag Ni                           801 Hv M8 V
 Ldalposkac                1818 A55793T-B    Hi                              104 Hv M2 V M D
@@ -261,21 +261,21 @@ Ldalposkac                1818 A55793T-B    Hi                              104 
                           1907 C887450-6  M Lo Ni                           711 Hv F1 V M6 V
                           1908 E200000-0    Ba Ni Po Va                     812 Hv G4 V M2 V
                           1911 B85A210-A    Lo Ni Wa                        903 Hv K1 V M D
-                          1913 D5A1466-8    Lo Ni Po Nh O:1811           A  214 Hl M5 V M7 V
+                          1913 D5A1466-8    Lo Ni Po Nh O:1811 Ldoo8     A  214 Hl M5 V M7 V
                           1920 B33376S-6  L Na Po O:XXXX                 A  702 Hv M2 V M2 V M3 V
-Guuqal                    1923 A486A5W-8  E Hi                              805 Hv M0 III
+Guuqal                    1923 A486A5W-C  E Hi Nh (Guuqal)               A  805 Hg M0 III
                           1928 C999320-5    Lo Ni                           604 Hv M6 V
                           1929 E000000-0    As Ba Ni Po                     803 Hv A1 V
                           1930 EAB7000-0    Ba Ni                           600 Hv G6 V M4 V
                           1935 C275510-5  M Ag Ni                           912 Hv F7 V
                           1938 E486422-3    Lo Ni                           300 Hv G5 V
-                          2004 E544276-5    Lo Ni Nh                     A  903 Hv K2 V
+                          2004 E544276-5    Lo Ni Nh (minor)             A  903 Hv K2 V
                           2007 E310000-0    Ba Ni Po                        605 Hv M7 V M9 V
                           2009 C6A2350-8  M Lo Ni Po                        520 Hv M6 V
                           2011 C140210-6  M De Lo Ni Po                     200 Hv A3 II
 Askldahav                 2016 C75591S-7  M Hi                              800 Hv F1 V M0 V
                           2018 E351832-5    Po                              633 Hv K0 IV
-                          2022 B000176-7  M As Lo Ni Po Nh               A  834 Hv K2 V M D
+                          2022 B000166-7  M As Lo Ni Po Nh O:1923 Guuq6  A  834 Hg K2 V M D
                           2026 E523000-0    Ba Ni Po                        804 Hv M9 V M2 V
 Elviti                    2027 B255A4T-9  L Hi                              621 Hv M5 V G7 V
                           2030 C436220-8  M Lo Ni                           510 Hv G9 V
@@ -287,9 +287,9 @@ Thooti                    2109 A866A6S-9    Hi O:XXXX                       714 
 Lotrutan                  2110 A58193W-D  E Hi Po Cp                        312 Hv M6 V
                           2112 E5A12B6-8    Lo Ni Po                        501 Hv M9 V
                           2113 B322150-8    Lo Ni Po                        525 Hv G7 III M9 V
-                          2120 B88B762-C  F O:XXXX                          503 Hv F1 V M5 V
-                          2122 C8B5576-8  M Ni                           A  714 Hv M4 V GD
-                          2123 A210120-9  E Lo Ni Po                        503 Hv M4 V M4 V
+                          2120 B88B772-C  F                                 503 Hv F1 V M5 V
+                          2122 C8B5566-8  M Ni Nh O:1923 Guuq3           A  714 Hg M4 V GD
+                          2123 A210160-9  E Lo Ni Po Nh O:1923 Guuq5     A  503 Hg M4 V M4 V
                           2125 B550431-7  L De Lo Ni Po                     901 H2 F9 V M7 V
                           2137 E000000-0    As Ba Ni Po                     802 Hv M0 III
                           2139 A45974T-7  E                                 901 Hv M3 V
@@ -365,7 +365,7 @@ Anvaock                   2509 A645956-C    Hi In                           124 
                           2707 D491761-5    Po O:XXXX                       814 Na M0 V M6 V
                           2709 E462502-7    Ni Po                           004 Na M7 V
                           2710 C435622-8  M Ni                              804 Na K6 V M D
-Qisk                      2712 X58535T-7                                 X  310 Na K4 V
+Qisk                      2712 X58535T-7                                 R  310 Na K4 V
                           2714 C000120-7    As Lo Ni Po                     405 Hc M6 V
                           2715 B230140-6    De Lo Ni Po                     815 Hv M4 V M D
                           2718 E88B310-7    Lo Ni                           924 Hv M9 V
@@ -377,7 +377,7 @@ Qisk                      2712 X58535T-7                                 X  310 
                           2727 E203000-0    Ba Ic Ni Po Va                  600 Hv G8 V M5 V
                           2728 E110000-0    Ba Ni Po                        504 Hv G4 V M D
                           2731 C678120-9    Lo Ni                           000 Hv M3 V K8 V
-                          2739 A34186S-5    Fa Po Nh O:XXXX              A  803 Hv F8 V
+                          2739 A34186S-5    Fa Po Nh O:3237 Drad9        A  803 Hd F8 V
                           2804 C85A301-5    Lo Ni Wa                        905 Na M3 V M1 V
                           2805 A5548S2-A                                    424 Na M4 V
                           2806 X875105-5    Lo Ni                        R  802 Na F6 V
@@ -389,9 +389,9 @@ Lunrac                    2817 B78B946-B  L Hi                              610 
                           2826 E899361-8    Lo Ni O:XXXX                    704 H2 M8 V
                           2828 E1402C6-5    De Lo Ni Po                     903 Hv G5 V
                           2830 A9B8560-8    Ni O:XXXX                       801 Hv M2 V M8 V
-                          2836 D475360-8    Lo Ni O:XXXX                    614 Hv M1 V F2 V
-                          2838 B404410-8    Ic Lo Ni Va                     002 Hv M4 V M D
-                          2839 B547310-7  L Lo Ni                           800 Hv M6 V K6 V
+                          2836 D475360-8    Lo Ni O:3237                    614 Hd M1 V F2 V
+                          2838 B404460-8    Ic Lo Ni Va O:3237              102 Hd M4 V M D
+                          2839 B547360-7  L Lo Ni O:3237                    800 Hd M6 V K6 V
                           2901 A425723-A                                    813 Na M4 V
                           2904 E570325-5    De Lo Ni Po                     603 Na F9 V
                           2908 B3427T3-D    Po                              504 Na G9 V
@@ -403,14 +403,14 @@ Lunrac                    2817 B78B946-B  L Hi                              610 
                           2922 AAE6560-A    Ni O:XXXX                       622 Hv M3 III
                           2927 C35562S-9  M Ag Ni                           623 Hv M0 V M9 V
                           2930 D84A220-8    Lo Ni Wa                        010 Hv K9 V
-                          2935 D34165S-8    Ni Po                           814 Hv M3 V M D
-                          2936 A6A2712-A    Po                              720 Hv M6 V
-                          2939 B79A240-A  F Lo Ni Wa                        924 Hv M6 V
+                          2935 D34166S-8    Ni Po O:3237                    814 Hd M3 V M D
+                          2936 A6A2762-A    Po O:3237                       720 Hd M6 V
+                          2939 B79A260-A  F Lo Ni Wa O:3237                 924 Hd M6 V
                           3002 C87B305-9    Lo Ni                           803 Na M4 V M D
                           3006 CA79401-5    Lo Ni                           800 Na G3 V
                           3012 C795464-5    Lo Ni O:XXXX                    912 Na M0 V
 Anix Nuno                 3013 B755936-E  L Hi                              400 Hv M8 V
-                          3015 C4462B6-5  M Lo Ni Nh                     A  901 Hv M4 V M D
+                          3015 C4462B6-5  M Lo Ni Nh (minor)             A  901 Hv M4 V M D
                           3016 A999342-8    Lo Ni                           624 Hv M5 V K8 V
 Ooldspex                  3018 A47292T-A    Hi In Po                        514 Hv M6 V
                           3019 C475531-7    Ag Ni                           704 H2 M5 V
@@ -419,11 +419,11 @@ Ooldspex                  3018 A47292T-A    Hi In Po                        514 
                           3027 AA9D350-5  E Lo Ni                           714 Hv M9 V
                           3028 C474352-8  M Lo Ni                           904 Hv G7 V
                           3029 E89C000-0    Ba Ni                           603 Hv M9 V
-                          3030 C500276-7  M Lo Ni Po Va Nh               A  703 Hv G5 V
+                          3030 C500276-7  M Lo Ni Po Va Nh (minor)       A  703 Hv G5 V
                           3031 B445631-C  L Ag Ni                           712 H2 K1 V
-                          3035 E989410-6    Lo Ni                           500 Hv M3 V K3 V
-                          3036 E3354A6-6    Lo Ni                           603 Hv M3 V M3 V
-                          3038 C646510-7  M Ag Ni                           722 Hv M9 V
+                          3035 E989410-6    Lo Ni                           500 Hd M3 V K3 V
+                          3036 E335466-6    Lo Ni O:3237                    603 Hd M3 V M3 V
+                          3038 C646560-7  M Ag Ni O:3237                    722 Hd M9 V
                           3040 E303000-0    Ba Ic Ni Po Va                  505 Na F2 V M4 V
                           3103 A515501-A    Ic Ni                           613 Na M1 V
                           3104 B476563-7    Ag Ni O:XXXX                    505 Na K4 V M5 V
@@ -434,14 +434,14 @@ F'llunkii                 3112 C4845W5-A                                    200 
                           3126 E76A526-8    Ni Wa                           522 Hv F6 V
                           3128 C546542-9    Ag Ni                           802 Hv M1 V
                           3132 B300136-7  M Lo Ni Po Va                     603 Hv M8 V M1 V
-                          3135 EABA000-0    Ba Ni Wa                        500 Hv K3 V M0 V
-                          3137 A333666-6    Na Ni Po Nh O:3237           A  305 Hf G2 V
+                          3135 EABA160-7    Ba Ni Wa O:3237                 500 Hd K3 V M0 V
+                          3137 A333666-6    Na Ni Po Nh O:3237 Drad8     A  305 Hd G2 V
                           3204 D896762-9    Ag O:XXXX                       912 Na M2 V
-                          3207 X5663W3-9                                    113 Na K2 IV M4 V
+                          3207 X5663W3-9                                 X  113 Na K2 IV M4 V
                           3208 C997106-8    Lo Ni                           615 Na G2 V
 Th'uuns                   3209 C3569T3-A    Hi                              224 Na M3 V
                           3214 B333665-B    Na Ni Po O:XXXX                 713 Na G7 V
                           3216 A230311-6    De Lo Ni Po                     004 H2 M2 V
                           3220 E400000-0    Ba Ni Po Va                     000 Hv M0 V
-Dradrip                   3237 A456A4S-D  M Hi Nh                        A  303 Hf G5 V M0 V
+Dradrip                   3237 A456A4S-D  M Hi Nh (Dradrip)              A  303 Hd G5 V M0 V
                           3239 C459220-5  M Lo Ni                           900 Hv A6 V G0 V

@@ -25,6 +25,7 @@
 <Allegiances>
 	<Allegiance Code="Hv">Hive Federation</Allegiance>
         <Allegiance Code="Ia">Ithklur Aexzz</Allegiance>
+        <Allegiance Code="Rp">Republic of Plato</Allegiance>
 </Allegiances> 
  <Borders>
     <Border WrapLabel="true" Color="Purple" LabelPosition="1717" Allegiance="Hv">0013 0012 0011 0112 0211 0311 0410 0511 0610 0710 0709 0808 0807 0907 1006 1005
@@ -37,6 +38,10 @@
 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041 </Border>
 <Border WrapLabel="true" Color="Pink" Allegiance="Ia">0000 0100 0200 0300 0400 0500 0501 0401 0301 0201 0101 0001 0000</Border>
 </Borders>
+
+<Border Color="White" Allegiance="Rp">
+0404 0405 0506 0405 0306 0206 0305 0404
+</Border>
   <Routes>
 
 <Route Start="1000" End="1001" Type="Trade" Color="Gray"/>

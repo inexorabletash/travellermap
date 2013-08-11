@@ -26,10 +26,18 @@
 	<Allegiance Code="Hv">Hive Federation</Allegiance>
 	<Allegiance Code="Hc">Hiver Client</Allegiance>
 	<Allegiance Code="Hb">Kkatoo Regime</Allegiance>
+	<Allegiance Code="Ha">Gurvin Autonomous Region</Allegiance>
 </Allegiances> 
 <Borders>
 
- <Border WrapLabel="true" Color="Purple" Allegiance="Hv" LabelPosition="1322"> 
+<Border WrapLabel="true" Color="Aquamarine" Allegiance="Ha">
+0102 0202 0302 0401 0502 0601 0701 0702 0703 0803 0904 
+1003 1103 1102 1201 1302 1402 1502 1402 1403 1404 1505 1506 
+1406 1307 1306 1205 1105 1005 0905 0805 0705 
+0605 0505 0405 0406 0306 0205 0204 0104 0103
+</Border>
+
+<Border WrapLabel="false" Color="Purple" Allegiance="Hv" LabelPosition="1322"> 
 1133 1033 1034 1035 1036 0937 0837 0838 0839 
 0840 0841 0741 0641 0541 0441 0341 0241 0141 0041 
 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031
