@@ -24,9 +24,17 @@
   </Subsectors>
 <Allegiances>
 	<Allegiance Code="Hv">Hive Federation</Allegiance>
+  <Allegiance Code="Xh">Hive FDA extra-Federation operation</Allegiance>
+   <Allegiance Code="Hr">Avereguar Ring</Allegiance>
 </Allegiances>
   <Borders>
-<Border Allegiance="Hv" Color="purple">
+
+    <Border Allegiance="Hr" WrapLabel="true" Color="Aquamarine">
+      1212 1312 1311 1411 1511 1610 1711 1611 1612 1613 
+      1714 1715 1615 1516 1515 1414 1315 1314 1213 1212 
+    </Border>
+
+      <Border Allegiance="Hv" Color="purple">
 0329 0228 0128 0028 0027 0026 0025 0024 0023 0022 0021 0020 0018 0019 0018
 0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005
 0004 0003 0002 0001 0000 0100 0200 0300 0400 0500 0600 0700 0800
@@ -38,6 +46,62 @@
 </Border>
   </Borders>
   <Routes>
+    <Route Start="0823" End="1025" Type="Trade" Color="Gray"/>
+    <Route Start="1025" End="1226" Type="Trade" Color="Gray"/>
+    <Route Start="1427" End="1226" Type="Trade" Color="Gray"/>
+    <Route Start="1226" End="1128" Type="Trade" Color="Gray"/>
+    <Route Start="0327" End="0628" Type="Trade" Color="Gray"/>
+
+    <Route Start="0101" End="0301" Type="Trade" Color="Gray"/>
+    <Route Start="0702" End="0301" Type="Trade" Color="Gray"/>
+    <Route Start="0008" End="0307" Type="Trade" Color="Gray"/>
+    <Route Start="0106" End="0307" Type="Trade" Color="Gray"/>
+    <Route Start="0506" End="0307" Type="Trade" Color="Gray"/>
+    <Route Start="0506" End="0404" Type="Trade" Color="Gray"/>
+    <Route Start="0506" End="0906" Type="Trade" Color="Gray"/>
+    <Route Start="1107" End="0906" Type="Trade" Color="Gray"/>
+    <Route Start="1107" End="1308" Type="Trade" Color="Gray"/>
+    <Route Start="1107" End="1507" Type="Trade" Color="Gray"/>
+
+    <Route Start="0327" End="0127" Type="Trade" Color="Gray"/>
+    <Route Start="0327" End="0525" Type="Trade" Color="Gray"/>
+    <Route Start="0823" End="0525" Type="Trade" Color="Gray"/>
+    <Route Start="0117" End="0017" Type="Trade" Color="Gray"/>
+    <Route Start="0117" End="0216" Type="Trade" Color="Gray"/>
+    <Route Start="0414" End="0216" Type="Trade" Color="Gray"/>
+    <Route Start="0414" End="0012" Type="Trade" Color="Gray"/>
+    <Route Start="0414" End="0612" Type="Trade" Color="Gray"/>
+
+    <Route Start="0912" End="0612" Type="Trade" Color="Gray"/>
+    <Route Start="0914" End="0612" Type="Trade" Color="Gray"/>
+    <Route Start="0912" End="1009" Type="Trade" Color="Gray"/>
+
+    <Route Start="0914" End="1213" Type="Trade" Color="Gray"/>
+    <Route Start="1213" End="1512" Type="Trade" Color="Gray"/>
+   <Route Start=" 1213" End="1413" Type="Trade" Color="Gray"/>
+    <Route Start="1413" End="1715" Type="Trade" Color="Gray"/>
+    <Route Start="1618" End="1720" Type="Trade" Color="Gray"/>
+    <Route Start="1720" End="2020" Type="Trade" Color="Gray"/>
+
+    <Route Start="1618" End="1317" Type="Trade" Color="Gray"/>
+    <Route Start="1016" End="1317" Type="Trade" Color="Gray"/>
+    <Route Start="1016" End="0817" Type="Trade" Color="Gray"/>
+
+    <Route Start="0122" End="0321" Type="Trade" Color="Gray"/>
+    <Route Start="0521" End="0321" Type="Trade" Color="Gray"/>
+    <Route Start="0321" End="0622" Type="Trade" Color="Gray"/>
+    <Route Start="0622" End="0823" Type="Trade" Color="Gray"/>
+
+    <Route Start="0914" End="1016" Type="Trade" Color="Gray"/>
+
+    <Route Start="1512" End="1812" Type="Trade" Color="Gray"/>
+    <Route Start="1812" End="2212" Type="Trade" Color="Gray"/>
+    <Route Start="2212" End="2512" Type="Trade" Color="Gray"/>
+
+    <Route Start="1618" End="2018" Type="Trade" Color="Gray"/>
+    <Route Start="2318" End="2018" Type="Trade" Color="Gray"/>
+    <Route Start="2318" End="2719" Type="Trade" Color="Gray"/>
+
   </Routes>
 <Labels/>
 </Sector>

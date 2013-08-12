@@ -31,6 +31,7 @@
 	<Allegiance Code="Hc">Hiver Client State</Allegiance>
 	<Allegiance Code="Hp">Orarnak Protectorate</Allegiance>
 	<Allegiance Code="Hn">Noyonak Sub-Federate</Allegiance>
+  <Allegiance Code="Hl">Jhk-jhk Federation</Allegiance>
 </Allegiances> 
  <Borders>
 
@@ -59,10 +60,14 @@
 1110 1010 0910 0809 0709 0609 0509 0508 0407 0308 0309 0209 
 0210 0111 0010  
 0009 0008 0007 0006 0005 0004 0003 0002 0001 0000
-</Border>	
+</Border>
 
-<Border WrapLabel="true" Color="Purple" Allegiance="Hv" LabelPosition="1427">
-0026 0025 0024 0023 0022 0021 0020 0120 0219 0319 0318 0317 
+   <Border WrapLabel="true" Color="Aquamarine" Allegiance="Hl">
+     0017 0117 0017
+   </Border>
+
+   <Border WrapLabel="true" Color="Purple" Allegiance="Hv" LabelPosition="1427">
+0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0117 0216 
 0316 0315 0314 0313 0413 0513 0613 0714 0814 0914 1014 1115 1214  
 1314 1414 1515 1516 1616 1717 1817 1818 1919 1819 1720 1620 1621 
 1622 1523 1524 1525 1526 1626 1727 1827 1928 1929 2029 2130 2131 2132
@@ -70,8 +75,8 @@
 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1041
 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041 0040 0039 0038
 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027
-</Border>
-
+</Border>  
+   
   </Borders>
   <Labels />
   <Routes>

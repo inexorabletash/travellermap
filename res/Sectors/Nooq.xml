@@ -56,6 +56,32 @@
 </Border>
   </Borders>
   <Routes>
+    <Route Start="0231" End="0532" Type="Trade" Color="Gray"/>
+    <Route Start="0231" End="0131" Type="Trade" Color="Gray"/>
+
+    <Route Start="0729" End="0630" Type="Trade" Color="Gray"/>
+    <Route Start="0532" End="0630" Type="Trade" Color="Gray"/>
+    <Route Start="0532" End="0734" Type="Trade" Color="Gray"/>
+    <Route Start="0735" End="0734" Type="Trade" Color="Gray"/>
+    <Route Start="0735" End="0637" Type="Trade" Color="Gray"/>
+
+    <Route Start="0035" End="0135" Type="Trade" Color="Gray"/>
+
+    <Route Start="0037" End="0237" Type="Trade" Color="Gray"/>
+    <Route Start="0637" End="0237" Type="Trade" Color="Gray"/>
+
+    <Route Start="0037" End="0139" Type="Trade" Color="Gray"/>
+
+    <Route Start="0114" End="0014" Type="Trade" Color="Gray"/>
+    <Route Start="0121" End="0222" Type="Trade" Color="Gray"/>
+    <Route Start="0521" End="0222" Type="Trade" Color="Gray"/>
+    <Route Start="0125" End="0222" Type="Trade" Color="Gray"/>    
+    <Route Start="0125" End="0025" Type="Trade" Color="Gray"/>
+
+    <Route Start="0125" End="0425" Type="Trade" Color="Gray"/>
+    <Route Start="0627" End="0425" Type="Trade" Color="Gray"/>
+    <Route Start="0627" End="0729" Type="Trade" Color="Gray"/>
+    <Route Start="0315" End="0014" Type="Trade" Color="Gray"/>
 
 
   </Routes>

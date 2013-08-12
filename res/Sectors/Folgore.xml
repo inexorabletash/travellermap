@@ -27,9 +27,15 @@
 	<Allegiance Code="Hc">Hiver Client</Allegiance>
 	<Allegiance Code="Hb">Kkatoo Regime</Allegiance>
 	<Allegiance Code="Ha">Gurvin Autonomous Region</Allegiance>
+  <Allegiance Code="Ho">Liraar Oblast</Allegiance>
+  <Allegiance Code="Hq">Yninvox Reserve</Allegiance>
 </Allegiances> 
 <Borders>
 
+  <Border WrapLabel="true" Color="Aquamarine" Allegiance="Hq">
+  0632 0732 0832 0733 0632
+  </Border>  
+  
 <Border WrapLabel="true" Color="Aquamarine" Allegiance="Ha">
 0102 0202 0302 0401 0502 0601 0701 0702 0703 0803 0904 
 1003 1103 1102 1201 1302 1402 1502 1402 1403 1404 1505 1506 
@@ -37,7 +43,12 @@
 0605 0505 0405 0406 0306 0205 0204 0104 0103
 </Border>
 
-<Border WrapLabel="false" Color="Purple" Allegiance="Hv" LabelPosition="1322"> 
+  <Border WrapLabel="true" Color="Aquamarine" Allegiance="Ho">
+    2416 2516 2615 2616 2617 2718 2618 2519 2419 2320 2321 2322 2321
+    2320 2319 2318 2417 2416
+  </Border>
+
+<Border WrapLabel="true" Color="Purple" Allegiance="Hv" LabelPosition="1322"> 
 1133 1033 1034 1035 1036 0937 0837 0838 0839 
 0840 0841 0741 0641 0541 0441 0341 0241 0141 0041 
 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031
@@ -155,6 +166,21 @@
     <Route Start="0901" End="1000" Type="Trade" Color="Gray"/>
 
     <Route Start="2601" End="2600" Type="Trade" Color="Gray"/>
+
+    <Route Start="2706" End="3004" Type="Trade" Color="Gray"/>
+    <Route Start="3306" End="3004" Type="Trade" Color="Gray"/>
+    <Route Start="3208" End="3308" Type="Trade" Color="Gray"/>
+    <Route Start="2528" End="2627" Type="Trade" Color="Gray"/>
+    <Route Start="3026" End="2627" Type="Trade" Color="Gray"/>
+    <Route Start="3026" End="3227" Type="Trade" Color="Gray"/>
+    <Route Start="3227" End="3327" Type="Trade" Color="Gray"/>
+    <Route Start="0134" End="0534" Type="Trade" Color="Gray"/>
+
+    <Route Start="3019" End="3118" Type="Trade" Color="Gray"/>
+    <Route Start="3317" End="3118" Type="Trade" Color="Gray"/>
+    <Route Start="2720" End="3122" Type="Trade" Color="Gray"/>
+    <Route Start="3322" End="3122" Type="Trade" Color="Gray"/>
+
 
   </Routes>
 <Labels>
