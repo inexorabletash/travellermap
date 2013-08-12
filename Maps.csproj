@@ -86,10 +86,6 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PdfSharp, Version=1.32.2608.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\PDFsharp\code\PdfSharp\bin\Release\PdfSharp.dll</HintPath>
-    </Reference>
     <Reference Include="System">
       <Name>System</Name>
     </Reference>
@@ -165,6 +161,7 @@
     <Content Include="handlebars.js" />
     <Content Include="post.js" />
     <Content Include="res\search\ArrivalVengeance.xml" />
+    <Content Include="res\search\Default.json" />
     <Content Include="res\search\Default.xml" />
     <Content Include="res\search\FarFrontiers.xml" />
     <Content Include="res\search\GrandTour.xml" />
@@ -473,7 +470,6 @@
     <Content Include="borders\bd_images\Thumbs.db" />
     <Content Include="model2\usingmodel2bis2.zip" />
     <Content Include="res\search\ArrivalVengeance.json" />
-    <Content Include="res\search\Default.json" />
     <Content Include="res\search\FarFrontiers.json" />
     <Content Include="res\search\GrandTour.json" />
     <None Include="res\sectors.xsd" />
@@ -806,6 +802,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="PdfSharp\PdfSharp.csproj">
+      <Project>{5384ce57-1f94-4d22-860d-2e9c1ac12ddf}</Project>
+      <Name>PdfSharp</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

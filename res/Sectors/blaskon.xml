@@ -5,94 +5,183 @@
   <Name Lang="Hv">Blaskon</Name>
   <Subsectors>
 
-<Subsector Index="A"></Subsector>	
-<Subsector Index="B"></Subsector>	
-<Subsector Index="C">Lotrutan</Subsector>	
-<Subsector Index="D"></Subsector>
-<Subsector Index="E">Valaar</Subsector>	
-<Subsector Index="F">Inasko</Subsector>	
-<Subsector Index="G">Ldoocox</Subsector>	
-<Subsector Index="H"></Subsector>
-<Subsector Index="I"></Subsector>	
-<Subsector Index="J">Laxsetker</Subsector>	
-<Subsector Index="K">Guuqal</Subsector>	
-<Subsector Index="L"></Subsector>
-<Subsector Index="M"></Subsector>	
-<Subsector Index="N">Kipnasko</Subsector>	
-<Subsector Index="O"></Subsector>
-<Subsector Index="P">Dradrip</Subsector>
+    <Subsector Index="A"></Subsector>
+    <Subsector Index="B"></Subsector>
+    <Subsector Index="C">Lotrutan</Subsector>
+    <Subsector Index="D"></Subsector>
+    <Subsector Index="E">Valaar</Subsector>
+    <Subsector Index="F">Inasko</Subsector>
+    <Subsector Index="G">Ldoocox</Subsector>
+    <Subsector Index="H"></Subsector>
+    <Subsector Index="I"></Subsector>
+    <Subsector Index="J">Laxsetker</Subsector>
+    <Subsector Index="K">Guuqal</Subsector>
+    <Subsector Index="L"></Subsector>
+    <Subsector Index="M"></Subsector>
+    <Subsector Index="N">Kipnasko</Subsector>
+    <Subsector Index="O"></Subsector>
+    <Subsector Index="P">Dradrip</Subsector>
   </Subsectors>
-<Allegiances>
-	<Allegiance Code="Hv">Hive Federation</Allegiance>
-	<Allegiance Code="Hf">Hive FDA Uplift/Observation Site</Allegiance>
-	<Allegiance Code="Xh">Hive FDA extra-Federation operation</Allegiance>
-	<Allegiance Code="Na">Non-aligned</Allegiance>
-	<Allegiance Code="Hc">Hiver Client State</Allegiance>
-	<Allegiance Code="Hd">Dradrip Syndicate</Allegiance>
-	<Allegiance Code="Hg">Guuqal Enclave</Allegiance>
-	<Allegiance Code="Hl">Ldoocox Enclave</Allegiance>
-	<Allegiance Code="Hr">Laxsetker Restraint</Allegiance>
-	<Allegiance Code="Hi">Inasko Guidance</Allegiance>
-	<Allegiance Code="Ha">Valaar Association</Allegiance>
-	<Allegiance Code="Hy">Anati Governance</Allegiance>
-	<Allegiance Code="Hq">Cladaa</Allegiance>
+  <Allegiances>
+    <Allegiance Code="Hv">Hive Federation</Allegiance>
+    <Allegiance Code="Hf">Hive FDA Uplift/Observation Site</Allegiance>
+    <Allegiance Code="Xh">Hive FDA extra-Federation operation</Allegiance>
+    <Allegiance Code="Na">Non-aligned</Allegiance>
+    <Allegiance Code="Hc">Hiver Client State</Allegiance>
+    <Allegiance Code="Hd">Dradrip Syndicate</Allegiance>
+    <Allegiance Code="Hg">Guuqal Enclave</Allegiance>
+    <Allegiance Code="Hl">Ldoocox Enclave</Allegiance>
+    <Allegiance Code="Hr">Laxsetker Restraint</Allegiance>
+    <Allegiance Code="Hi">Inasko Guidance</Allegiance>
+    <Allegiance Code="Ha">Valaar Association</Allegiance>
+    <Allegiance Code="Hy">Anati Governance</Allegiance>
+    <Allegiance Code="Hq">Cladaa</Allegiance>
 
 
 
-</Allegiances>
+  </Allegiances>
   <Borders>
-<Border Allegiance="Hl" Color="Aquamarine" LabelPosition="1914">
-1811 1812 1913 1813 1812
-</Border>
+    <Border Allegiance="Hl" Color="Aquamarine" LabelPosition="1914">
+      1811 1812 1913 1813 1812
+    </Border>
 
-<Border Allegiance="Hg" Color="Aquamarine">
-1923 2022 2122 2123 2022 1923
-</Border>
+    <Border Allegiance="Hg" Color="Aquamarine">
+      1923 2022 2122 2123 2022 1923
+    </Border>
 
-<Border Allegiance="Ha" Color="Aquamarine">
-0219 0220
-</Border>
+    <Border Allegiance="Ha" Color="Aquamarine">
+      0219 0220
+    </Border>
 
-<Border Allegiance="Hq" Color="Aquamarine">
-0412 0413 0414 0413
-</Border>
+    <Border Allegiance="Hq" Color="Aquamarine">
+      0412 0413 0414 0413
+    </Border>
 
-<Border Allegiance="Hy" Color="Aquamarine">
-0107 0206 0306 0305 0306 0307 0207 0107
-</Border>
+    <Border Allegiance="Hy" Color="Aquamarine">
+      0107 0206 0306 0305 0306 0307 0207 0107
+    </Border>
 
-<Border Allegiance="Hi" Color="Aquamarine" LabelPosition="1320">
-1017 1118 1217 1317 1417 1518 1519 1418 1318 1218 1119 1018 1017
-</Border>
+    <Border Allegiance="Hi" Color="Aquamarine" LabelPosition="1320">
+      1017 1118 1217 1317 1417 1518 1519 1418 1318 1218 1119 1018 1017
+    </Border>
 
-<Border Allegiance="Hr" Color="Aquamarine">
-1529 1429 1330 1331 1231 1230 1229 1129 1028 0928 1027 1128 1227 1327 1427 1528 1529 
-</Border>
+    <Border Allegiance="Hr" Color="Aquamarine">
+      1529 1429 1330 1331 1231 1230 1229 1129 1028 0928 1027 1128 1227 1327 1427 1528 1529
+    </Border>
 
-<Border Allegiance="Hd" Color="Aquamarine">
-2935 3035 3135 3136 3137 3237 3138 3038 2939 2839 2739 2838 2837 2836 2936 2935
-</Border>
+    <Border Allegiance="Hd" Color="Aquamarine">
+      2935 3035 3135 3136 3137 3237 3138 3038 2939 2839 2739 2838 2837 2836 2936 2935
+    </Border>
 
     <Border Allegiance="Hv" Color="purple" ShowLabel="true">
-0000 0100 0200 0300 0400 0500 0600 0700 0800 0900 
-1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 
-2000 2100 2200 2300 2400 2401 2402 2403 2404 2405
-2406 2507 2508 2509 2409 2410 2411 2412 2413 2414
-2415 2516 2615 2715 2814 2914 3013 3113 3213 3314 3315
-3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 
-3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 
-3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 
-2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 
-1741 1641 1541 1441 1341 1241 1141 1041 0941 0841 
-0741 0641 0541 0441 0341 0241 0141 0041 0040 0039 
-0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 
-0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 
-0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 
-0008 0007 0006 0005 0004 0003 0002 0001 0000
-</Border>
+      0000 0100 0200 0300 0400 0500 0600 0700 0800 0900
+      1000 1100 1200 1300 1400 1500 1600 1700 1800 1900
+      2000 2100 2200 2300 2400 2401 2402 2403 2404 2405
+      2406 2507 2508 2509 2409 2410 2411 2412 2413 2414
+      2415 2516 2615 2715 2814 2914 3013 3113 3213 3314 3315
+      3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326
+      3327 3328 3329 3330 3331 3332 3333 3334 3335 3336
+      3337 3338 3339 3340 3341 3241 3141 3041 2941 2841
+      2741 2641 2541 2441 2341 2241 2141 2041 1941 1841
+      1741 1641 1541 1441 1341 1241 1141 1041 0941 0841
+      0741 0641 0541 0441 0341 0241 0141 0041 0040 0039
+      0038 0037 0036 0035 0034 0033 0032 0031 0030 0029
+      0028 0027 0026 0025 0024 0023 0022 0021 0020 0019
+      0018 0017 0016 0015 0014 0013 0012 0011 0010 0009
+      0008 0007 0006 0005 0004 0003 0002 0001 0000
+    </Border>
 
   </Borders>
   <Routes>
+
+    <Route Start="0102" End="0002" Type="Trade" Color="Gray"/>
+    <Route Start="0102" End="0400" Type="Trade" Color="Gray"/>
+    <Route Start="0400" End="0503" Type="Trade" Color="Gray"/>
+    <Route Start="0012" End="0414" Type="Trade" Color="Gray"/>
+    <Route Start="0941" End="1040" Type="Trade" Color="Gray"/>
+    <Route Start="1138" End="1040" Type="Trade" Color="Gray"/>
+
+    <Route Start="1636" End="1337" Type="Trade" Color="Gray"/>
+    <Route Start="1138" End="1337" Type="Trade" Color="Gray"/>
+    <Route Start="0936" End="1138" Type="Trade" Color="Gray"/>
+    <Route Start="0131" End="0330" Type="Trade" Color="Gray"/>
+
+    <Route Start="0628" End="0330" Type="Trade" Color="Gray"/>
+    <Route Start="0928" End="0628" Type="Trade" Color="Gray"/>
+    <Route Start="0327" End="0628" Type="Trade" Color="Gray"/>
+
+    <Route Start="0928" End="1227" Type="Trade" Color="Gray"/>
+    <Route Start="1327" End="1227" Type="Trade" Color="Gray"/>
+    <Route Start="1528" End="1227" Type="Trade" Color="Gray"/>
+
+    <Route Start="0928" End="0930" Type="Trade" Color="Gray"/>
+    <Route Start="1031" End="0930" Type="Trade" Color="Gray"/>
+    <Route Start="1031" End="1231" Type="Trade" Color="Gray"/>
+    <Route Start="1031" End="1233" Type="Trade" Color="Gray"/>
+    <Route Start="1227" End="1324" Type="Trade" Color="Gray"/>
+    <Route Start="1421" End="1324" Type="Trade" Color="Gray"/>
+
+    <Route Start="2640" End="2639" Type="Trade" Color="Gray"/>
+    <Route Start="2538" End="2639" Type="Trade" Color="Gray"/>
+    <Route Start="2838" End="2639" Type="Trade" Color="Gray"/>
+    <Route Start="2838" End="2936" Type="Trade" Color="Gray"/>
+    <Route Start="2838" End="3137" Type="Trade" Color="Gray"/>
+    <Route Start="3237" End="3137" Type="Trade" Color="Gray"/>
+
+    <Route Start="1421" End="1119" Type="Trade" Color="Gray"/>
+    <Route Start="1324" End="1723" Type="Trade" Color="Gray"/>
+    <Route Start="2123" End="1723" Type="Trade" Color="Gray"/>
+    <Route Start="2123" End="2324" Type="Trade" Color="Gray"/>
+    <Route Start="2123" End="2125" Type="Trade" Color="Gray"/>
+    <Route Start="1811" End="1911" Type="Trade" Color="Gray"/>
+    <Route Start="1811" End="1609" Type="Trade" Color="Gray"/>
+    <Route Start="1609" End="1408 " Type="Trade" Color="Gray"/>
+    <Route Start="1609" End="1808" Type="Trade" Color="Gray"/>
+    <Route Start="1808" End="2109" Type="Trade" Color="Gray"/>
+    <Route Start="2110" End="1911" Type="Trade" Color="Gray"/>
+    <Route Start="1911" End="2113" Type="Trade" Color="Gray"/>
+    <Route Start="1609" End="1411" Type="Trade" Color="Gray"/>
+  <Route Start="1411" End="1212" Type="Trade" Color="Gray"/>
+  <Route Start="1212" End="0813" Type="Trade" Color="Gray"/>
+  <Route Start="0813" End="0612" Type="Trade" Color="Gray"/>
+  <Route Start="0612" End="0414" Type="Trade" Color="Gray"/>
+  <Route Start="0809" End="1110" Type="Trade" Color="Gray"/>
+  <Route Start="1110" End="1408" Type="Trade" Color="Gray"/>
+
+    <Route Start="0327" End="0225" Type="Trade" Color="Gray"/>
+    <Route Start="0024" End="0225" Type="Trade" Color="Gray"/>
+    <Route Start="0121" End="0020" Type="Trade" Color="Gray"/>
+
+    <Route Start="1001" End="1000" Type="Trade" Color="Gray"/>
+
+<Route Start="1001" End="1000" Type="Trade" Color="Gray"/>
+    <Route Start="0107" End="0006" Type="Trade" Color="Gray"/>
+
+    <Route Start="0506" End="0806" Type="Trade" Color="Gray"/>
+    <Route Start="0506" End="0503" Type="Trade" Color="Gray"/>
+    <Route Start="0506" End="0307" Type="Trade" Color="Gray"/>
+    <Route Start="0307" End="0107" Type="Trade" Color="Gray"/>
+
+    <Route Start="1001" End="1003" Type="Trade" Color="Gray"/>
+    <Route Start="0805" End="1003" Type="Trade" Color="Gray"/>
+    <Route Start="0805" End="0806" Type="Trade" Color="Gray"/>
+    <Route Start="1008" End="0806" Type="Trade" Color="Gray"/>
+    <Route Start="1008" End="1110" Type="Trade" Color="Gray"/>
+
+    <Route Start="0121" End="0220" Type="Trade" Color="Gray"/>
+    <Route Start="0219" End="0220" Type="Trade" Color="Gray"/>
+    <Route Start="0220" End="0419" Type="Trade" Color="Gray"/>
+    <Route Start="0819" End="0419" Type="Trade" Color="Gray"/>
+    <Route Start="0819" End="1119" Type="Trade" Color="Gray"/>
+    <Route Start="0816" End="1119" Type="Trade" Color="Gray"/>
+    <Route Start="0816" End="0414" Type="Trade" Color="Gray"/>
+
+    <Route Start="1808" End="1806" Type="Trade" Color="Gray"/>
+    <Route Start="2105" End="1806" Type="Trade" Color="Gray"/>
+    <Route Start="2109" End="2110" Type="Trade" Color="Gray"/>
+    <Route Start="2110" End="2509" Type="Trade" Color="Gray"/>
+
+
   </Routes>
-<Labels/>
+  <Labels/>
 </Sector>

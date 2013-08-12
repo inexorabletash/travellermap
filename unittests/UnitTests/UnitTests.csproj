@@ -37,10 +37,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PdfSharp, Version=1.32.2608.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\PDFsharp\code\PdfSharp\bin\Release\PdfSharp.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
   </ItemGroup>
@@ -66,6 +62,10 @@
     <ProjectReference Include="..\..\Maps.csproj">
       <Project>{02ae6284-5044-4a23-b5d6-a86ee9c7dfa1}</Project>
       <Name>Maps</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PdfSharp\PdfSharp.csproj">
+      <Project>{5384ce57-1f94-4d22-860d-2e9c1ac12ddf}</Project>
+      <Name>PdfSharp</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>
