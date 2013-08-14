@@ -104,9 +104,9 @@ namespace Maps.Serialization
             });
 
             formatter.SetMinimumWidth("Name", 20);
-            formatter.SetMinimumWidth("Remarks", 20); 
+            formatter.SetMinimumWidth("Remarks", 20);
 
-            foreach (World world in worlds)
+            foreach (World world in worlds.OrderBy(world => world.SS))
             {
                 formatter.AddRow(new string[] {
                     world.Hex.ToString("0000"),
