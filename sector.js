@@ -13,13 +13,13 @@
   }
 
   function friendlyNumber(n) {
-    if (n > 1e12) {
+    if (n >= 1e12) {
       return Math.round(n / 1e11) / 10 + " trillion";
-    } else if (n > 1e9) {
+    } else if (n >= 1e9) {
       return Math.round(n / 1e8) / 10 + " billion";
-    } else if (n > 1e6) {
+    } else if (n >= 1e6) {
       return Math.round(n / 1e5) / 10 + " million";
-    } else if (n > 1e3) {
+    } else if (n >= 1e3) {
       return Math.round(n / 1e2) / 10 + " thousand";
     } else {
       return n;
