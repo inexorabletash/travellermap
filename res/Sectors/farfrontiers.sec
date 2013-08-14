@@ -22,13 +22,32 @@
 
 # .SEC file prepared by Joshua Bell (inexorabletash@gmail.com)
 
+# Ares Magazine Special Edition #2 Far Frontiers Special Supplement:
+#  - Krobob 0221 (Antideluvia 0201) is not present
+#  - Names differ for the following worlds:
+#      Sinbad's Bane  0125 => Drawmij
+#      Nautilus       0225 => Natlus
+#      Stamford       0226 => Stamfor
+#      Byte           0326 => Bytar
+#      Mithras        0327 => Mitra
+#      Cretaceous     0426 => Kretakios
+#      MaRied         0428 => Maried
+#      Shudde-M'ell   0523 => Sere
+#      Summersun      0528 => Summer
+#      Dreamworld     0623 => Dreamland
+#      Sherlock       0727 => Nehagen
+#      Greenhouse     0730 => Groneitz
+#      Sagen          0827 => Psagin
+#      Thieves' World 2527 => Kerchov
+#      Oakwood        2827 => Mwari
+
 # To Do:
 #  - Review additional sources (not yet incorporated/correlated)
-#    - Ares Magazine Special Edition #2 (Far Frontiers Special Supplement)
-#    - Incorporate PGB data from TTC for rimward half (K?, L?, M?)
+#    - Incorporate PGB/Stellar Data from TTC#3 for K,L,M
 #  - Investigate anomalies
-#    - TD#2 removes Krobob 0221 (Antideluvia 0201); not present in TCC; allegiance is Zh
+#    - TTC#2 removes Krobob 0221 (Antideluvia 0201); allegiance is Zh
 #    - TotSR has "Zylath" vs. Zylanth (Jungleblut 1937)
+#  - Add subsector textual notes for remaining subsectors
 
 # File History:
 #
@@ -55,7 +74,11 @@
 #  - Replaced remarks with codes            - josh 2013-07-26
 #  - Cp -> Cx for polity capitals           - josh 2013-08-11
 #  - PBG+Stellar for N,O,P from TCC#4       - josh 2013-08-11
+#  - P-mult for 1227, 2422, 2726 c/o text   - josh 2013-08-13
+#  - Added notes about Ares SE #2 changes   - josh 2013-08-13
 
+# Remarks (Coreward Half)
+#  Sn or Snn - orbit number(s) of companion star(s)
 
 # Allegiance Codes (Rimward Half)
 #  
@@ -79,7 +102,7 @@
 #  Zp   Zelphic Primacy
 
 # The Traveller game in all forms is owned by Far Future Enterprises. 
-# Copyright (C) 1997-2008 Far Future Enterprises.
+# Copyright (C) 1997-2013 Far Future Enterprises.
 
 
 # Subsector A: Detsiaiem
@@ -424,7 +447,7 @@ Lac Remi      1125 C9648D8-8    In                                         101 F
 McKne's World 1126 C652545-9    Ni Po                                      100 Fa
 Bulawayo      1127 D886563-8    Ag Ni                                      101 Fa
 Katherina     1129 B130300-C    Rs                                         101 Na
-Afellahlah    1227 A6659C9-C  A Cx                                         101 Fa
+Afellahlah    1227 A6659C9-C  A Cx                                         901 Fa
 Encrucijada   1230 X000000-0                                               101 Na
 Darien        1321 X100000-0                                               100 Na
 Kaosiung      1324 X6A0510-4    (Owned by Mackay Corporation)            A 101 Na
@@ -465,7 +488,7 @@ Garth         2228 A669753-B  N Ri Cx                                      101 U
 Pshtaijtlatl  2322 A795974-B  S In                                         101 Pt
 Yakutz        2323 A885889-B  S Ri                                         101 Pt
 Bloemtol      2328 E7C3657-A    Ni                                         101 Ug
-Caractacalla  2422 A793AC9-C  B In Cx                                      101 Pt
+Caractacalla  2422 A793AC9-C  B In Cx                                      201 Pt
 Calamain      2424 A000460-B  B Mr                                       R 101 Pt
 Kintara       2425 A454679-9    Ag Ni                                      101 Pt
 Numicta       2428 D9A7A69-6                                               101 Ug
@@ -486,7 +509,7 @@ Rjnevelte     2630 B626557-D    Ni                                         100 N
 Malthus       2721 B323501-9  S Ni                                         100 Pt
 Trebberhorn   2723 C6587D9-8    Ag                                         101 Pt
 Bestus        2725 A685621-B    Ag Ni                                      101 Pt
-Marsus        2726 A9989B9-A  N In                                         101 Pt
+Marsus        2726 A9989B9-A  N In                                         801 Pt
 Linelit       2730 C000310-7    Ni As                                      100 Na
 Bosslwck      2822 A7958A9-B  N                                            101 Pt
 Dobbyn        2825 B976775-8    Ag                                       A 100 Pt
