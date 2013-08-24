@@ -35,9 +35,12 @@ namespace Maps.Pages
                 if (RouteData.Values["accept"] != null) {
                     yield return RouteData.Values["accept"].ToString();
                 }
-                foreach (var type in Request.AcceptTypes)
+                if (Request.AcceptTypes != null)
                 {
-                    yield return type;
+                    foreach (var type in Request.AcceptTypes)
+                    {
+                        yield return type;
+                    }
                 }
 
                 yield return DefaultContentType;
