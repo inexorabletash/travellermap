@@ -26,6 +26,14 @@
     }
   }
 
+  function capitalize(s) {
+    return s.substring(0, 1).toUpperCase() + s.substring(1);
+  }
+
+  function titleCaps(s) {
+    return s.split(/ /g).map(capitalize).join(' ');
+  }
+
   function status(string, showImage) {
     var statusElement = document.getElementById('status'),
         statusText = document.getElementById('statusText'),
@@ -176,11 +184,16 @@
             var subsector = sector.subsectors[i],
                 neighbor, l;
 
-            if (/^District /.test(subsector.name)) {
-              subsector.title = subsector.name;
+            if (subsector.name.length === 0) {
+              subsector.article = "subsector " + String.fromCharCode('A'.charCodeAt(0) + i);
+            } else if (/^District /.test(subsector.name)) {
+              subsector.article = subsector.name;
+            } else if (/^The /i.test(subsector.name)) {
+              subsector.article = subsector.name + " subsector";
             } else {
-              subsector.title = /^The /.test(subsector.name) ? subsector.name : "The " + subsector.name + " Subsector";
+              subsector.article = "the " + subsector.name + " subsector";
             }
+            subsector.title = titleCaps(subsector.article);
 
             neighbor = function (n, dx, dy) {
               var x = (n % 4) + dx,
@@ -228,15 +241,15 @@
 
             subsector.blurb = [];
             if (subsector.worlds.length > 1) {
-              subsector.blurb.push(subsector.title + " subsector contains " + subsector.worlds.length + " worlds with a population of " + friendlyNumber(subsector.population) + ".");
+              subsector.blurb.push(capitalize(subsector.article) + " contains " + subsector.worlds.length + " worlds with a population of " + friendlyNumber(subsector.population) + ".");
 
               if (subsector.maxpop && subsector.maxpop.population > 0) {
                 subsector.blurb.push(" The highest population is " + friendlyNumber(subsector.maxpop.population) + ", at " + subsector.maxpop.name + ".");
               }
             } else if (subsector.worlds.length === 1 && subsector.maxpop) {
-              subsector.blurb.push(subsector.title + " subsector contains one world, " + subsector.maxpop.name + ", with a population of " + friendlyNumber(subsector.maxpop.population) + ".");
+              subsector.blurb.push(capitalize(subsector.article) + " contains one world, " + subsector.maxpop.name + ", with a population of " + friendlyNumber(subsector.maxpop.population) + ".");
             } else if (subsector.worlds.length === 0) {
-              subsector.blurb.push(subsector.title + " subsector contains no charted worlds.");
+              subsector.blurb.push(capitalize(subsector.article) + " contains no charted worlds.");
             }
 
             if (subsector.maxtl && subsector.maxtl.length > 0) {
