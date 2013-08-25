@@ -24,7 +24,6 @@ function fetchJSON(uri) {
   return xhr.responseText;
 }
 
-
 function testXML(uri, expected) {
   var xml = fetchXML(uri);
 
@@ -43,9 +42,14 @@ function testJSON(uri, expected) {
             'JSON response does not match, ' + json + ' != ' + JSON.stringify(expected));
 }
 
-function checkType(uri, expected_type) {
+function checkType(uri, expected_type, headers) {
   var xhr = new XMLHttpRequest(), result_type;
   xhr.open('GET', '../' + uri, false);
+  if (headers) {
+    Object.keys(headers).forEach(function(key) {
+      xhr.setRequestHeader(key, headers[key]);
+    });
+  }
   xhr.send();
 
   assertEquals(xhr.status, 200, 'Expected HTTP 200 OK status, saw: ' + xhr.status);
@@ -92,8 +96,7 @@ test('Coordinates XML - Sector + Hex', function() {
 });
 
 
-function typeTest(api, type) {
-
+function substituteParams(api) {
   var call = api;
   var values = {
     "$sector": "solo",
@@ -102,15 +105,18 @@ function typeTest(api, type) {
     "$jump": 2,
     "$query": "terra"
   };
-  Object.keys(values).forEach(function (key) {
+  Object.keys(values).forEach(function(key) {
     call = call.replace(key, values[key]);
   });
-
-  test(api, function () {
-    checkType(call, type);
-  });
+  return call;
 }
 
+function typeTest(api, type) {
+  api = substituteParams(api);
+  test(api, function() {
+    checkType(api, type);
+  });
+}
 
 
 typeTest('Coordinates.aspx?sector=$sector', 'text/xml');
@@ -165,7 +171,6 @@ test('SEC/SectorMetaData/JumpMap', function () {
 });
 
 typeTest('api/coordinates?sector=$sector', 'application/json');
-typeTest('api/coordinates?sector=$sector', 'application/json');
 typeTest('api/sec?sector=$sector', 'text/plain; charset=utf-8');
 typeTest('api/sec?type=sec&sector=$sector', 'text/plain; charset=Windows-1252');
 typeTest('api/sec?type=TabDelimited&sector=$sector', 'text/plain; charset=utf-8');
@@ -196,6 +201,41 @@ typeTest('data/$sector/$hex/coordinates', 'application/json');
 typeTest('data/$sector/$hex/credits', 'application/json');
 typeTest('data/$sector/$hex/jump/$jump', 'application/json');
 typeTest('data/$sector/$hex/jump/$jump/image', 'image/png');
+
+
+[
+  'Coordinates.aspx?sector=$sector',
+  'JumpWorlds.aspx?sector=$sector&hex=$hex&j=$jump',
+  'SEC.aspx?sector=$sector',
+  'MSEC.aspx?sector=$sector',
+  'SectorMetaData.aspx?sector=$sector',
+  'Universe.aspx',
+  'Search.aspx?q=$query',
+  'JumpMap.aspx?sector=$sector&hex=$hex&j=$jump',
+  'Poster.aspx?sector=$sector&subsector=$subsector',
+  'Tile.aspx?x=0&y=0&scale=64',
+  'api/coordinates?sector=$sector',
+  'api/sec?sector=$sector',
+  'api/sec?type=sec&sector=$sector',
+  'api/sec?type=TabDelimited&sector=$sector',
+  'api/metadata?sector=$sector',
+  'api/msec?sector=$sector',
+  'api/jumpworlds?sector=$sector&hex=$hex&jump=$jump',
+  'api/search?q=$query',
+  'api/universe'
+].forEach(function(api) {
+  api = substituteParams(api);
+
+  test("No Accept: " + api, function() {
+    var xhr = new XMLHttpRequest(), result_type;
+    xhr.open('GET', '../' + api, false);
+    xhr.setRequestHeader("Accept", "");
+    xhr.send();
+    assertEquals(xhr.status, 200, 'Expected HTTP 200 OK status, saw: ' + xhr.status);
+  });
+});
+
+
 
 // Initiate Test Harness
 
