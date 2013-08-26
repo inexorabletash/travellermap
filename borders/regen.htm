@@ -70,8 +70,8 @@ var ALLEGIANCE_SETS = [
 function makeMapDisplay(containerElement, map, inset) {
   var fragments = [], fragment;
 
-  var sz = 20;
-  var pad = 5;
+  var sz = 15;
+  var pad = 3;
   var top, left = -sz;
 
   for (x = map.origin_x + inset; x < map.origin_x + map.width - inset; ++x) {
@@ -128,7 +128,12 @@ function updateWalks(map) {
 
   var html = [];
   borders.forEach(function(border) {
-    html.push("<li>" + border.allegiance + " : " + border.path.join(" ") + "<" + "/li>");
+    if (border.path.length < 2)
+      return;
+
+    var str = '<Border Allegiance="' + escapeHtml(border.allegiance) + '">' +
+      border.path.join(' ') + '</Border>';
+    html.push("<li>" + escapeHtml(str));
   });
 
   document.getElementById("walks").innerHTML = html.join("");
@@ -146,7 +151,7 @@ function hexContents(x, y, map) {
   if (color === (void 0)) { color = 'gray'; }
 
   return "<div class='hexContents' style='background-color: " + color + ";'>" +
-           "<span class='hexNumber'>" + hexNumber + "<" + "/span><br/>" +
+           "<span class='hexNumber'>" + hexNumber + "<" + "/span>" +
 	       (occupied ? "<span class='world'>" + alleg + "</span>" : "") +
 	       "<" + "/div>";
 }
@@ -287,7 +292,22 @@ window.onload = function() {
 
     join(loadTasks, function() {
 
-      processMap(bigmap, function() {
+      processMap(
+        bigmap,
+        function complete() {
+          var secmap = new AllegianceMap(SECTOR_WIDTH + 2, SECTOR_HEIGHT + 2, 0, 0);
+          for (hx = 0; hx <= SECTOR_WIDTH + 1; hx += 1) {
+            for (hy = 0; hy <= SECTOR_HEIGHT + 1; hy += 1) {
+              secmap.setOccupied(hx, hy, bigmap.isOccupied(hx + SECTOR_WIDTH, hy + SECTOR_HEIGHT));
+              secmap.setAllegiance(hx, hy, bigmap.getAllegiance(hx + SECTOR_WIDTH, hy + SECTOR_HEIGHT));
+            }
+          }
+
+          makeMapDisplay(document.getElementById('map'), secmap, 1);
+          //makeMapDisplay(document.getElementById('map'), bigmap, 0);
+          updateWalks(secmap);
+        },
+      function progress(message) {
         var secmap = new AllegianceMap(SECTOR_WIDTH + 2, SECTOR_HEIGHT + 2, 0, 0);
         for (hx = 0; hx <= SECTOR_WIDTH + 1; hx += 1) {
           for (hy = 0; hy <= SECTOR_HEIGHT + 1; hy += 1) {
@@ -297,9 +317,8 @@ window.onload = function() {
         }
 
         makeMapDisplay(document.getElementById('map'), secmap, 1);
-        //makeMapDisplay(document.getElementById('map'), bigmap, 0);
-        updateWalks(secmap);
-      }, status);
+        status(message);
+      });
     });
   });
 };
@@ -311,21 +330,25 @@ window.onload = function() {
 .hex 
 { 
   position: absolute; 
-  width: 20px; 
-  height: 20px;
+  width: 15px; 
+  height: 15px;
   overflow: hidden;
   cursor: pointer;
 	border: solid 1px black; 
-	font-size: 7pt;
+	font-size: 6pt;
 	font-family: Univers, Arial, sans-serif;
 	text-align: center;
 	line-height: 100%;
 }
 .hexNumber
 {
-	font-size: 5pt;
+	font-size: 3pt;
 	font-family: Univers, Arial, sans-serif;
 	color: gray;
+  position: absolute;
+  left: 0; top: 0;
+  width: 100%;
+  text-align: center;
 }
 .hexContents
 {
@@ -333,13 +356,19 @@ window.onload = function() {
 }
 .world
 {
-    font-size: 8pt;
+  line-height: 15pt;
+    font-size: 7pt;
 }
 #status 
 {
-    height: 300px;
-    overflow: auto;
+    float: right;
+    width: 300px;
+    padding: 10px;
+    background-color: #f8f8f8;
+    height: 600px;
+    overflow-y: auto;
 }
+
 	</style>    
 
 <div id="status"></div>
