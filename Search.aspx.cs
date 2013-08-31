@@ -76,7 +76,7 @@ namespace Maps.Pages
                 query = "uwp:" + query;
             }
 
-            var searchResults = SearchEngine.PerformSearch(query, resourceManager, SearchEngine.SearchResultsType.Default, 40);
+            var searchResults = SearchEngine.PerformSearch(query, resourceManager, SearchEngine.SearchResultsType.Default, 160);
 
             Results resultsList = new Results();
 

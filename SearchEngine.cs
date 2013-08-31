@@ -82,6 +82,9 @@ namespace Maps
                     callback("Parsing data...");
                     foreach (Sector sector in map.Sectors)
                     {
+                        if (sector.Tag != "OTU")
+                            continue;
+
                         foreach (Name name in sector.Names)
                         {
                             DataRow row = dt_sectors.NewRow();
@@ -98,18 +101,18 @@ namespace Maps
                         }
 
 #if DEBUG
-                        if( !sector.Selected )
+                        if (!sector.Selected)
                             continue;
 #endif
                         // NOTE: May need to page this at some point
                         WorldCollection worlds = sector.GetWorlds(resourceManager, cacheResults: false);
-                        if (worlds != null)
-                        {
+                        if (worlds == null)
+                            continue;
 
-                            foreach (World world in worlds)
-                            {
-                                DataRow row = dt_worlds.NewRow();
-                                row.ItemArray = new object[] { 
+                        foreach (World world in worlds)
+                        {
+                            DataRow row = dt_worlds.NewRow();
+                            row.ItemArray = new object[] { 
                                     sector.X, 
                                     sector.Y, 
                                     world.X, 
@@ -119,10 +122,8 @@ namespace Maps
                                         : (object)DBNull.Value,
                                     world.UWP };
 
-                                dt_worlds.Rows.Add(row);
-                            }
+                            dt_worlds.Rows.Add(row);
                         }
-
                     }
 
 

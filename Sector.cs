@@ -53,6 +53,17 @@ namespace Maps
         }
     }
 
+    public struct SectorMetafileEntry
+    {
+        public string tag;
+        public string filename;
+        public SectorMetafileEntry(string tag, string filename)
+        {
+            this.tag = tag;
+            this.filename = filename;
+        }
+    }
+
     public class SectorMap
     {
         public const string DefaultSetting = "OTU";
@@ -65,12 +76,14 @@ namespace Maps
         private Dictionary<string, Sector> m_nameMap = new Dictionary<string, Sector>(StringComparer.InvariantCultureIgnoreCase);
         // TODO: Add Dictionary<Pair<x,y>, Sector> for FromLocation lookups
 
-        private SectorMap(List<string> metafiles, ResourceManager resourceManager)
+        private SectorMap(List<SectorMetafileEntry> metafiles, ResourceManager resourceManager)
         {
-            foreach (var fileName in metafiles)
+            foreach (var metafile in metafiles)
             {
-                SectorCollection collection = resourceManager.GetXmlFileObject(fileName, typeof(SectorCollection), cache: false) as SectorCollection;
-
+                SectorCollection collection = resourceManager.GetXmlFileObject(metafile.filename, typeof(SectorCollection), cache: false) as SectorCollection;
+                foreach (var sector in collection.Sectors) {
+                    sector.Tag = metafile.tag;
+                }
                 if (m_sectors == null)
                 {
                     m_sectors = collection;
@@ -122,9 +135,11 @@ namespace Maps
             {
                 if (s_OTU == null)
                 {
-                    List<string> files = new List<string>(2);
-                    files.Add(@"~/res/sectors.xml");
-                    files.Add(@"~/res/ZhodaniCoreRoute.xml");
+                    List<SectorMetafileEntry> files = new List<SectorMetafileEntry>
+                    {
+                        new SectorMetafileEntry("OTU", @"~/res/sectors.xml"),
+                        new SectorMetafileEntry("ZCR", @"~/res/ZhodaniCoreRoute.xml")
+                    };                        
 
                     s_OTU = new SectorMap(files, resourceManager);
                 }
@@ -224,6 +239,9 @@ namespace Maps
         public string GammaQuadrant { get; set; }
         [XmlIgnore, JsonIgnore]
         public string DeltaQuadrant { get; set; }
+
+        [XmlIgnore, JsonIgnore]
+        public string Tag { get; set; }
     }
 
     public class Sector : SectorBase
