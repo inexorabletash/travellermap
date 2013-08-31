@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <?xml-stylesheet type="text/xsl" href="credits.xslt"?>
 <!--
-sector.xml
-
 XML metadata for Traveller sectors
 by Joshua Bell, 2006-2013
 
@@ -14,52 +12,7 @@ by Steve Bonneville, and has grown to incorporate finer grained metadata.
 Thanks to J Greely (http://dotclue.org/t20) for his inspirational work on 
 the "MSEC" sector metadata format used by his sec2pdf and allygen tools.
 
-I have not published a formal schema for this XML format. In pseduocode it
-is:
-
-<Sectors>
-<Sector>
-<X> offset from Core </X>
-<Y> offset from Core </Y>
-
-// Names
-<Name [Lang="language code"]> name of the sector </Name>
-...
-
-// Sector data, in Good Old .SEC format
-<DataFile> file name, relative to local store </DataFile>
-
-// Linked metadata; contents of the file replace any inline definitions
-<MetadataFile> file path to XML transclusion, relative to local store </MetadataFile>
-
-// Inline metadata
-<Subsectors>
-<Subsector Index="A"> name of subsector A </Subsector>
-<Subsector Index="B"> name of subsector B </Subsector>
-...
-</Subsectors>
-
-<Allegiances>
-<Allegiance Code="Al" [Base="base allegiance, e.g. 'Im' for 'Dd'"]> name of the polity (e.g. "The Third Imperium") </Allegiance>
-...
-</Allegiances>
-
-<Borders>
-<Border Allegiance="2-letter code" ShowLabel="true|false" LabePosition="xxyy" WrapLabel="true|false">xxyy xxyy xxyy... - per sec2pdf rules</Border>
-...
-</Borders>
-
-<Routes>
-<Route Start="xxyy" [StartOffsetX="-1|1"] [StartOffsetY="-1|1"] End="xxyy" [EndOffsetX="-1|1"] [EndOffsetY="-1|1"] [Type="whatever"] [Color="html color"] [Style="Dashed|Solid|Dotted"] />
-..
-</Routes>
-
-</Sector>
-...
-</Sectors>
-
-Author, Source, Publisher, Copyright, Era and Ref attributes may occur on any element.
-
+Schema can be found at: http://travellermap.com/res/sectors.xsd
 -->
 <!--
 
@@ -146,37 +99,6 @@ Left:	0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027
 
 -->
 <Sectors>
-  <Sector>
-    <Y>-8</Y>
-    <X>32</X>
-    <Name>Legend</Name>
-    <DataFile>legend.sec</DataFile>
-    <Labels>
-      <Label Hex="0601">World&#x0A;Characteristics</Label>
-      <Label Hex="0605">Population</Label>
-
-      <Label Hex="1401">Travel Zones</Label>
-      <Label Hex="1405">Bases</Label>
-
-      <Label Hex="1001">Map Legend</Label>
-      <Label Hex="1002" Color="white" Size="small">Starport&#x0A;Type</Label>
-      <Label Hex="1103" Color="white" Size="small">Gas Giant</Label>
-      <Label Hex="1104" Color="white" Size="small">Allegiance</Label>
-      <Label Hex="1004" Color="white" Size="small">World&#x0A;Name</Label>
-      <Label Hex="0904" Color="white" Size="small">X-Boat&#x0A;Route</Label>
-      <Label Hex="0903" Color="white" Size="small">Bases</Label>
-
-      <Label Hex="1106" Color="white" Size="small">No&#x0A;Gas Giant</Label>
-      <Label Hex="0906" Color="white" Size="small">Travel&#x0A;Zone Code&#x0A;(Red)</Label>
-      <Label Hex="0907" Color="white" Size="small">Border</Label>
-    </Labels>
-    <Routes>
-      <Route Start="1003" End="0904" />
-    </Routes>
-    <Borders>
-      <Border Allegiance="Im" ShowLabel="false">0908 1007 1107 1206 1207 1208 1109 1009 0910 0909 0908</Border>
-    </Borders>
-  </Sector>
   <Sector>
 		<Y>-8</Y>
 		<X>-7</X>

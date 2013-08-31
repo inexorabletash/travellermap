@@ -55,11 +55,11 @@ namespace Maps
 
     public struct SectorMetafileEntry
     {
-        public string tag;
         public string filename;
-        public SectorMetafileEntry(string tag, string filename)
+        public List<string> tags;
+        public SectorMetafileEntry(string filename, List<string> tags)
         {
-            this.tag = tag;
+            this.tags = tags;
             this.filename = filename;
         }
     }
@@ -82,7 +82,7 @@ namespace Maps
             {
                 SectorCollection collection = resourceManager.GetXmlFileObject(metafile.filename, typeof(SectorCollection), cache: false) as SectorCollection;
                 foreach (var sector in collection.Sectors) {
-                    sector.Tag = metafile.tag;
+                    sector.Tags.AddRange(metafile.tags);
                 }
                 if (m_sectors == null)
                 {
@@ -125,7 +125,7 @@ namespace Maps
         }
 
         public static SectorMap FromName(string settingName, ResourceManager resourceManager)
-        {
+          {
             if (settingName != SectorMap.DefaultSetting)
             {
                 throw new ArgumentException("Only OTU setting is currently supported.");
@@ -137,8 +137,9 @@ namespace Maps
                 {
                     List<SectorMetafileEntry> files = new List<SectorMetafileEntry>
                     {
-                        new SectorMetafileEntry("OTU", @"~/res/sectors.xml"),
-                        new SectorMetafileEntry("ZCR", @"~/res/ZhodaniCoreRoute.xml")
+                        new SectorMetafileEntry(@"~/res/legend.xml", new List<string> { "meta" } ),
+                        new SectorMetafileEntry(@"~/res/sectors.xml", new List<string> { "OTU" } ),
+                        new SectorMetafileEntry(@"~/res/ZhodaniCoreRoute.xml", new List<string> { "ZCR" } )
                     };                        
 
                     s_OTU = new SectorMap(files, resourceManager);
@@ -239,9 +240,6 @@ namespace Maps
         public string GammaQuadrant { get; set; }
         [XmlIgnore, JsonIgnore]
         public string DeltaQuadrant { get; set; }
-
-        [XmlIgnore, JsonIgnore]
-        public string Tag { get; set; }
     }
 
     public class Sector : SectorBase
@@ -304,6 +302,10 @@ namespace Maps
             this.Labels.AddRange(metadataSource.Labels);
             this.Credits = metadataSource.Credits;
         }
+        
+        [XmlIgnore, JsonIgnore]
+        public List<string> Tags { get { return m_tags; } }
+        private List<string> m_tags = new List<string>();
 
         public Allegiance GetAllegiance(string code)
         {
