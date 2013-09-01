@@ -916,7 +916,7 @@ var Map;
 
     // TODO: Defer loading of new tiles while in the middle of a zoom gesture
     // Draw a rectanglular area of the map in a spiral from the center of the requested map outwards
-    this.drawRectangle(l, t, r, b, tscale, tmult, ch, cw, cf, z, this._rb_cb);
+    this.drawRectangle(l, t, r, b, tscale, tmult, ch, cw, cf, z, this._rd_cb);
 
     // Hide unused tiles
     child = this.container.firstChild;
@@ -939,11 +939,9 @@ var Map;
   };
 
   // Draw a rectangle (x1, y1) to (x2, y2) (or,  (l,t) to (r,b))
-  // Don't draw the corners twice :-) 
   // Recursive. Base Cases are: single tile or vertical|horizontal line
   // Decreasingly find the next-smaller rectangle to draw, then start drawing outward from the smallest rect to draw
-  Map.prototype.drawRectangle = function (x1, y1, x2, y2, scale, mult, ch, cw, cf, zIndex, callback) {
-
+  Map.prototype.drawRectangle = function(x1, y1, x2, y2, scale, mult, ch, cw, cf, zIndex, callback) {
     var sizeMult = this.tilesize * mult;
     var dx = (x1 - this.x * cf) * sizeMult;
     var dy = (y1 - this.y * cf) * sizeMult;
@@ -993,25 +991,21 @@ var Map;
 
   // Draw tiles from x1, y to x2, y
   Map.prototype.drawHorizontalLine = function (x1, y, x2, scale, mult, cw, cf, dy, dw, dh, zIndex, callback) {
-    var self = this; // for closures
-
     var x = x1;
     var dx;
     for (; x <= x2; x += 1) {
       dx = (x - this.x * cf) * this.tilesize * mult;
-      this.drawTile(x, y, scale, (cw / 2) + dx, dy, dw, dh, zIndex, this._rd_cb);
+      this.drawTile(x, y, scale, (cw / 2) + dx, dy, dw, dh, zIndex, callback);
     }
   };
 
   // Draw tiles from x, y1 to x, y2
   Map.prototype.drawVerticalLine = function (x, y1, y2, scale, mult, ch, cf, dx, dw, dh, zIndex, callback) {
-    var self = this; // for closures
-
     var y = y1;
     var dy;
     for (; y <= y2; y += 1) {
       dy = (y - this.y * cf) * this.tilesize * mult;
-      this.drawTile(x, y, scale, dx, (ch / 2) + dy, dw, dh, zIndex, this._rd_cb);
+      this.drawTile(x, y, scale, dx, (ch / 2) + dy, dw, dh, zIndex, callback);
     }
   };
 
