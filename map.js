@@ -942,6 +942,8 @@ var Map;
   // Recursive. Base Cases are: single tile or vertical|horizontal line
   // Decreasingly find the next-smaller rectangle to draw, then start drawing outward from the smallest rect to draw
   Map.prototype.drawRectangle = function(x1, y1, x2, y2, scale, mult, ch, cw, cf, zIndex, callback) {
+    var self = this;
+
     var sizeMult = this.tilesize * mult;
     var dx = (x1 - this.x * cf) * sizeMult;
     var dy = (y1 - this.y * cf) * sizeMult;
@@ -952,16 +954,16 @@ var Map;
     if ((x1 >= x2) && (y1 >= y2)) {
       // for base case of 0, just draw a single tile
 
-      this.drawTile(x1, y1, scale, (cw / 2) + dx, (ch / 2) + dy, dw, dh, zIndex, callback);
+      drawTile(x1, y1, (cw / 2) + dx, (ch / 2) + dy);
     } else {
       if ((x1 >= x2) && (y1 != y2)) {
         // this is a vertical line
 
-        this.drawVerticalLine(x1, y1, y2, scale, mult, ch, cf, (cw / 2) + dx, dw, dh, zIndex, callback);
+        drawVerticalLine(x1, y1, y2, (cw / 2) + dx);
       } else if ((x1 != x2) && (y1 >= y2)) {
         // this is a horizontal line
 
-        this.drawHorizontalLine(x1, y1, x2, scale, mult, cw, cf, (ch / 2) + dy, dw, dh, zIndex, callback);
+        drawHorizontalLine(x1, y1, x2, (ch / 2) + dy);
       } else {
         // this is a full rectangle
 
@@ -971,43 +973,48 @@ var Map;
 
         // we have drawn all smaller rectangles inside our own. Now draw the perimeter of our own rect.
         // draw across at the top
-        this.drawHorizontalLine(x1, y1, x2, scale, mult, cw, cf, (ch / 2) + dy, dw, dh, zIndex, callback);
+        drawHorizontalLine(x1, y1, x2, (ch / 2) + dy);
 
         // draw the left side 
         // y1 + 1 and y2 - 1 ensure we do not draw overlapping tiles
-        this.drawVerticalLine(x1, y1 + 1, y2 - 1, scale, mult, ch, cf, (cw / 2) + dx, dw, dh, zIndex, callback);
+        drawVerticalLine(x1, y1 + 1, y2 - 1, (cw / 2) + dx);
 
         // draw across at the bottom
         dy = (y2 - this.y * cf) * sizeMult;
-        this.drawHorizontalLine(x1, y2, x2, scale, mult, cw, cf, (ch / 2) + dy, dw, dh, zIndex, callback);
+        drawHorizontalLine(x1, y2, x2, (ch / 2) + dy);
 
         // draw the right side
         // again with the non-overlapping tile math
         dx = (x2 - this.x * cf) * sizeMult;
-        this.drawVerticalLine(x2, y1 + 1, y2 - 1, scale, mult, ch, cf, (cw / 2) + dx, dw, dh, zIndex, callback);
+        drawVerticalLine(x2, y1 + 1, y2 - 1, (cw / 2) + dx);
       }
+    }
+
+    // Draw tiles from x1, y to x2, y
+    function drawHorizontalLine(x1, y, x2, dy) {
+      var x = x1;
+      var dx;
+      for (; x <= x2; x += 1) {
+        dx = (x - self.x * cf) * self.tilesize * mult;
+        drawTile(x, y, (cw / 2) + dx, dy);
+      }
+    }
+
+    // Draw tiles from x, y1 to x, y2
+    function drawVerticalLine(x, y1, y2, dx) {
+      var y = y1;
+      var dy;
+      for (; y <= y2; y += 1) {
+        dy = (y - self.y * cf) * self.tilesize * mult;
+        drawTile(x, y, dx, (ch / 2) + dy);
+      }
+    }
+
+    function drawTile(x, y, dx, dy) {
+      self.drawTile(x, y, scale, dx, dy, dw, dh, zIndex, callback);
     }
   }
 
-  // Draw tiles from x1, y to x2, y
-  Map.prototype.drawHorizontalLine = function (x1, y, x2, scale, mult, cw, cf, dy, dw, dh, zIndex, callback) {
-    var x = x1;
-    var dx;
-    for (; x <= x2; x += 1) {
-      dx = (x - this.x * cf) * this.tilesize * mult;
-      this.drawTile(x, y, scale, (cw / 2) + dx, dy, dw, dh, zIndex, callback);
-    }
-  };
-
-  // Draw tiles from x, y1 to x, y2
-  Map.prototype.drawVerticalLine = function (x, y1, y2, scale, mult, ch, cf, dx, dw, dh, zIndex, callback) {
-    var y = y1;
-    var dy;
-    for (; y <= y2; y += 1) {
-      dy = (y - this.y * cf) * this.tilesize * mult;
-      this.drawTile(x, y, scale, dx, (ch / 2) + dy, dw, dh, zIndex, callback);
-    }
-  };
 
   //
   // Draw the specified tile (scale, x, y) into the rectangle (dx, dy, dw, dh);
