@@ -240,12 +240,9 @@ var LEGACY_STYLES = true;
       }
     },
     globalToLocal: function(x, y, element) {
-      // TODO: Invert the usage of this and switch to getBoundingClientRect()
-      while (element) {
-        x -= element.offsetLeft - element.scrollLeft;
-        y -= element.offsetTop - element.scrollTop;
-        element = element.offsetParent;
-      }
+      var rect = element.getBoundingClientRect();
+      x -= rect.left;
+      y -= rect.top;
       return { x: x, y: y };
     }
   };
@@ -598,8 +595,9 @@ var Map;
       // Compute the physical coordinates
       var f = pow2(1 - self.scale) / self.tilesize,
           coords = DOMHelpers.globalToLocal(e.clientX, e.clientY, container),
-          cx = self.x + f * (coords.x - self.container.offsetWidth / 2),
-          cy = self.y + f * (coords.y - self.container.offsetHeight / 2),
+          rect = self.container.getBoundingClientRect(),
+          cx = self.x + f * (coords.x - rect.width / 2),
+          cy = self.y + f * (coords.y - rect.height / 2),
           hex = logicalToHex(cx * self.tilesize, cy * -self.tilesize);
 
       // Throttle the events
@@ -628,8 +626,9 @@ var Map;
       // Compute the physical coordinates
       var f = pow2(1 - self.scale) / self.tilesize,
           coords = DOMHelpers.globalToLocal(e.clientX, e.clientY, container),
-          cx = self.x + f * (coords.x - self.container.offsetWidth / 2),
-          cy = self.y + f * (coords.y - self.container.offsetHeight / 2),
+          rect = self.container.getBoundingClientRect(),
+          cx = self.x + f * (coords.x - rect.width / 2),
+          cy = self.y + f * (coords.y - rect.height / 2),
           hex = logicalToHex(cx * self.tilesize, cy * -self.tilesize);
 
       fireEvent(self, "Click", { x: hex.hx, y: hex.hy });
@@ -641,7 +640,7 @@ var Map;
       e.preventDefault();
       e.stopPropagation();
 
-      var f, coords, cx, cy, hex;
+      var f, coords, rect, cx, cy, hex;
 
       var MAX_DOUBLECLICK_SCALE = 7;
       if (self.scale < MAX_DOUBLECLICK_SCALE) {
@@ -654,15 +653,17 @@ var Map;
         // Compute the physical coordinates
         f = pow2(1 - self.scale) / self.tilesize;
         coords = DOMHelpers.globalToLocal(e.clientX, e.clientY, container);
-        cx = self.x + f * (coords.x - self.container.offsetWidth / 2);
-        cy = self.y + f * (coords.y - self.container.offsetHeight / 2);
+        rect = self.container.getBoundingClientRect();
+        cx = self.x + f * (coords.x - rect.width / 2);
+        cy = self.y + f * (coords.y - rect.height / 2);
         hex = logicalToHex(cx * self.tilesize, cy * -self.tilesize);
       } else {
         // Compute the physical coordinates
         f = pow2(1 - self.scale) / self.tilesize;
         coords = DOMHelpers.globalToLocal(e.clientX, e.clientY, container);
-        cx = self.x + f * (coords.x - self.container.offsetWidth / 2);
-        cy = self.y + f * (coords.y - self.container.offsetHeight / 2);
+        rect = self.container.getBoundingClientRect();
+        cx = self.x + f * (coords.x - rect.width / 2);
+        cy = self.y + f * (coords.y - rect.height / 2);
         hex = logicalToHex(cx * self.tilesize, cy * -self.tilesize);
 
         self.x = cx;
@@ -823,9 +824,10 @@ var Map;
     }
   };
 
-  Map.prototype.setScale = function (newscale, px, py) {
-    var cw = this.container.offsetWidth,
-      ch = this.container.offsetHeight;
+  Map.prototype.setScale = function(newscale, px, py) {
+    var rect = this.container.getBoundingClientRect(),
+      cw = rect.width,
+      ch = rect.height;
 
     newscale = Math.max(Math.min(newscale, this.max_scale), this.min_scale);
     if (newscale !== this.scale) {
@@ -881,8 +883,9 @@ var Map;
         cf = pow2(tscale - 1), // Coordinate factor (integral)
 
     // Compute edges in tile space
-        cw = this.container.offsetWidth,
-        ch = this.container.offsetHeight,
+        rect = this.container.getBoundingClientRect(),
+        cw = rect.width,
+        ch = rect.height,
 
         l = this.x * cf - (cw / 2) / (this.tilesize * tmult),
         r = this.x * cf + (cw / 2) / (this.tilesize * tmult),
@@ -1227,10 +1230,12 @@ var Map;
   };
 
   Map.prototype.logicalToPixel = function(lx, ly) {
-    var f = pow2(1 - this.scale) / this.tilesize;
+    var f = pow2(1 - this.scale) / this.tilesize,
+      rect = this.container.getBoundingClientRect();
+
     return {
-      x: ((lx / this.tilesize - this.x) / f) + this.container.offsetWidth / 2,
-      y: ((ly / -this.tilesize - this.y) / f) + this.container.offsetHeight / 2
+      x: ((lx / this.tilesize - this.x) / f) + rect.width / 2,
+      y: ((ly / -this.tilesize - this.y) / f) + rect.height / 2
     };
   };
 

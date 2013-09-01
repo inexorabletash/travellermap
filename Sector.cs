@@ -53,6 +53,17 @@ namespace Maps
         }
     }
 
+    public struct SectorMetafileEntry
+    {
+        public string filename;
+        public List<string> tags;
+        public SectorMetafileEntry(string filename, List<string> tags)
+        {
+            this.tags = tags;
+            this.filename = filename;
+        }
+    }
+
     public class SectorMap
     {
         public const string DefaultSetting = "OTU";
@@ -65,12 +76,14 @@ namespace Maps
         private Dictionary<string, Sector> m_nameMap = new Dictionary<string, Sector>(StringComparer.InvariantCultureIgnoreCase);
         // TODO: Add Dictionary<Pair<x,y>, Sector> for FromLocation lookups
 
-        private SectorMap(List<string> metafiles, ResourceManager resourceManager)
+        private SectorMap(List<SectorMetafileEntry> metafiles, ResourceManager resourceManager)
         {
-            foreach (var fileName in metafiles)
+            foreach (var metafile in metafiles)
             {
-                SectorCollection collection = resourceManager.GetXmlFileObject(fileName, typeof(SectorCollection), cache: false) as SectorCollection;
-
+                SectorCollection collection = resourceManager.GetXmlFileObject(metafile.filename, typeof(SectorCollection), cache: false) as SectorCollection;
+                foreach (var sector in collection.Sectors) {
+                    sector.Tags.AddRange(metafile.tags);
+                }
                 if (m_sectors == null)
                 {
                     m_sectors = collection;
@@ -112,7 +125,7 @@ namespace Maps
         }
 
         public static SectorMap FromName(string settingName, ResourceManager resourceManager)
-        {
+          {
             if (settingName != SectorMap.DefaultSetting)
             {
                 throw new ArgumentException("Only OTU setting is currently supported.");
@@ -122,9 +135,12 @@ namespace Maps
             {
                 if (s_OTU == null)
                 {
-                    List<string> files = new List<string>(2);
-                    files.Add(@"~/res/sectors.xml");
-                    files.Add(@"~/res/ZhodaniCoreRoute.xml");
+                    List<SectorMetafileEntry> files = new List<SectorMetafileEntry>
+                    {
+                        new SectorMetafileEntry(@"~/res/legend.xml", new List<string> { "meta" } ),
+                        new SectorMetafileEntry(@"~/res/sectors.xml", new List<string> { "OTU" } ),
+                        new SectorMetafileEntry(@"~/res/ZhodaniCoreRoute.xml", new List<string> { "ZCR" } )
+                    };                        
 
                     s_OTU = new SectorMap(files, resourceManager);
                 }
@@ -286,6 +302,10 @@ namespace Maps
             this.Labels.AddRange(metadataSource.Labels);
             this.Credits = metadataSource.Credits;
         }
+        
+        [XmlIgnore, JsonIgnore]
+        public List<string> Tags { get { return m_tags; } }
+        private List<string> m_tags = new List<string>();
 
         public Allegiance GetAllegiance(string code)
         {

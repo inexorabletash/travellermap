@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<title>Traveller Sector Data File Formats</title>
-<link rel="stylesheet" href="site.css">
-
+<title>Sector Data File Formats</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" href="../site.css">
 <style>
 table.format { margin-left: -0.75in; }
 table.format { border: none; border-collapse: separate; }
@@ -21,13 +21,11 @@ table.fields th.details { x-width: 200px; }
 pre.example { font-family: 'Share Tech Mono', monospace; }
 </style>
 
-<h1>Traveller Sector Data File Formats</h1>
+<h1>The Traveller Map - Sector Data File Formats</h1>
+
 <div class="content">
 
-
-<section>
-<h2>Sector Data Files</h2>
-
+<section id="intro">
 <p>
 For convenience, the <cite>Traveller</cite> universe is divided into
 <dfn>sectors</dfn>. A sector comprises a region of space 32 by 40
@@ -38,6 +36,7 @@ conveniently described by a compact format including the name and
 details of the main world in the system, plus additional data about
 the star system - generally referred to as a
 <dfn>Universal World Profile</dfn> or "UWP".
+</p>
 
 <p>
 For 30 years, <cite>Traveller</cite> sector data has been published
@@ -47,15 +46,25 @@ letter suffix to indicate the type of file, sector data files are
 often referred to as <dfn>SEC files</dfn>. Various formats are
 in use, often with extremely subtle differences. This document
 attempts to provide details of each format.
+</p>
 
-<p>
+<p class="aside">
 This document does not fully define the meaning of each element of
-each data format. It is assumed that the reader is familiar
-with <cite>Traveller</cite> world data such as UWP (A0123456-7) and
-trade codes, as well as mapping conventions. Base codes, trade codes
-and travel zones vary between <cite>Traveller</cite>
-editions. Allegiance codes vary across charted space and may be
-re-used.
+each data format. The companion document 
+<a href="secondsurvey.html">Second Survey Data Definitions</a> 
+may be used for reference.
+</p>
+</section>
+
+<section id="toc">
+<h2>Contents</h2>
+<ul>
+  <li><a href="#trader">Trader</a></li>
+  <li><a href="#genie">GEnie ("Sunbane")</a></li>
+  <li><a href="#sec">Legacy "SEC"</a></li>
+  <li><a href="#t5tab">T5 Tab Delimited</a></li>
+  <li><a href="#t5col">T5 Column Delimited</a></li>
+</ul>
 </section>
 
 <section id="trader">
@@ -70,10 +79,16 @@ The format was also used in the <strong>TRADER</strong> game/utilty
 published by GDW for the Apple II computer system. The disk included
 <code>SPINWARD</code> and <code>SOLOMANI</code> data files for
 the two published sectors.
+</p>
 
-<p>Notably absent from this early format is the world name,
+<p>
+Notably absent from this early format is the world name,
 possibly for space reasons. The allegiance code precedes the base
 code, but already the format is easily recognizable.
+This format corresponds closely to the data from <cite>Classic Traveller</cite>
+  publications such as <cite>Supplement 3: The Spinward Marches</cite>
+  and <cite>Supplement 10: The Solomani Rim</cite>.
+</p>
 
 <p>
 The format utilizes ASCII encoding; each character takes one byte and
@@ -83,6 +98,7 @@ Fields are fixed width, left aligned, and padded with spaces (ASCII
 same number of bytes; this allows programs to load specific records by
 index without loading the entire file, a critical requirement for the
 limited computer systems available at the time.
+</p>
 
 <table class="format">
 <tr class="numbers">
@@ -214,7 +230,7 @@ standard world data expanded to include several new fields such
 as "PBG" (population multiplier, number of planetoid belts,
 number of gas giants) and stellar data, culiminating in the
 data published in GDW's <cite>The Spinward Marches Campaign</cite>.
-
+</p>
 
 </section>
 
@@ -228,6 +244,7 @@ made available to the public by uploading to the GEnie information
 service. It was later hosted on an FTP file server named "Sunbane".
 This dataset is often referred to as "GENII" <i>(sic)</i> or most commonly
 "the Sunbane data".
+</p>
 
 <p>
 This format includes the PBG code (population multiplier, number of
@@ -235,6 +252,17 @@ planetoid belts, number of gas giants), stellar data, and of course
 the mainworld  name. Note that a long world name may be truncated,
 and there is not necessarily a blank between the name and hex
 location, and names may be truncated to fit.
+
+This format corresponds closely to that present in <cite>Classic Traveller</cite>,
+<cite>MegaTraveller</cite>, <cite>Traveller: The New Era</cite> and 
+  <cite>Marc Miller's Traveller (T4)</cite> publications
+  such as 
+  <cite>The Spinward Marches Campaign</cite>, 
+  <cite>MegaTraveller Alien: Vilani &amp; Vargr</cite>,
+  <cite>The Regency Sourcebook</cite> (TNE) and
+  <cite>Second Survey</cite> (T4).
+</p>
+
 
 <p>
 This is a line-oriented, plain text, fixed-width format.
@@ -249,11 +277,12 @@ Lines may be terminated with LF (ASCII 10) or CR+LF (ASCII 13, ASCII 10).
 Each column has a fixed number of characters, padded with spaces
 (ASCII 32) as necessary.  Trailing spaces at the end of a line may be
 truncated.
+</p>
 
 <p>
 The file helpfully includes a self-documenting, multi-line header:
+</p>
 
-<p>
 <pre class="code" style="width: 50em">
 Spinward Marches
  1-13: Name
@@ -271,6 +300,7 @@ Spinward Marches
 
 <p>
 This is followed by system data:
+</p>
 
 <table class="format">
 <tr class="numbers">
@@ -468,6 +498,7 @@ As the introduction to this document alludes, the is no one true SEC file format
 Various applications have taken canonical name/hex/uwp/bases/codes/zone/pbg/allegiance/stellar
 fields and applied various field widths. It is valuable to document a generalized
 version of this format which applications can consume.
+</p>
 
 <p>
 This is a line-oriented, plain text, variable-width format.
@@ -479,6 +510,7 @@ but non-Latin characters are not.
 Lines may be terminated with LF (ASCII 10) or CR+LF (ASCII 13, ASCII 10).
 
 Blanks may be spaces (ASCII 32) or tabs (ASCII 9).
+</p>
 
 <p>
 To accomodate legacy files, this format does not define field widths. Instead,
@@ -486,7 +518,7 @@ parsers must inspect lines using Regular Expressions (or equivalent logic) to id
 the fields. The regular expressions here follow the
 <a href="http://perldoc.perl.org/perlre.html">Perl 5 extended regular expression syntax</a>
 which has become a de-facto standard in many programming environments.
-
+</p>
 
 <p>
 For each line in the file:
@@ -576,10 +608,12 @@ via OCR) from print publications contain errors, such as
 It is strongly encouraged that applications which consume legacy SEC files be
 made robust against such errors and report parse errors in a useful way to
 the users.
+</p>
 
 <p>
 The following are some example legacy SEC data file entries found
 on the Internet, with comments:
+</p>
 
 <pre class="example">
 # Note spacing between allegiance and stars, and "F" zone:
@@ -629,15 +663,17 @@ in the file. In addition, a minimum field width for name and remarks should
 be selected, both to aid in reading the file (for example, in the case where
 no systems are named) and to avoid collapsing the base, remarks, and zone
 columns.
+</p>
 
 <p>
 It is also conventional to include a human-readable header which
 contains information about the file, including identifying the fields,
 identifying the sector, and possibly other information such as author,
 source, subsector names, etc.
+</p>
 </section>
 
-<section id="t5tabdelimited">
+<section id="t5tab">
 <h2>T5 Tab Delimited Format</h2>
 
 <p>
@@ -648,6 +684,7 @@ These include: Economic extension, Cultural extension, Importance extension,
 Nobility, and World count. In addition, the <dfn><cite>Traveller<sup>5</sup> Second Survey</cite></dfn>
 (T5SS) is established to define a consistent, official data set for licensees
 and players. This allows us to establish a canonical data format.
+</p>
 
 <p>
 The format utilizes the UTF-8 encoding. Therefore, each character may
@@ -663,13 +700,14 @@ Every line in the file has fields separated by the Tab character
 (U+0009). There is no escaping mechanism - neither tabs nor line
 breaking characters may occur within fields. Comments are not supported.
 Blank lines should be ignored.
-
+</p>
 
 <p>
 The first line in the file is the <dfn>header</dfn>; it is tab-delimited
 and defines the fields. The fields do not appear in a fixed order.
 Parsers should read the header line and use it to construct a
 field index to field name mapping for use with the rest of the file.
+</p>
 
 <table class="fields">
 <tr><th class="field">Field<th class="details">Details<th class="example">Example
@@ -694,6 +732,7 @@ Note that the "extension" fields (Ix, Ex, Cx) are given visually distinct
 wrapper characters. This is convention to distinguish the fields when data is
 in print format. Due to the complexity of parsing legacy SEC files, the use
 of tab-delimited format for T5 Second Survey data is strongly recommended.
+</p>
 
 <p>
 Additional columns may be present, containing convenient but redundant data.
@@ -705,14 +744,15 @@ These commonly include:
 </ul>
 </section>
 
-<section id="t5plaintext">
-<h2>T5 Plain Text Format</h2>
+<section id="t5col">
+<h2>T5 Column Delimited Format</h2>
 
 <p>
 Although the tab-delimited format is the most convenient for interchange
 it is difficult for humans to read. This document establishes an extensible,
 human-readable plain text format for the
 <dfn><cite>Traveller<sup>5</sup></cite> Second Survey</dfn> data.
+</p>
 
 <p>
 The format utilizes the UTF-8 encoding. Therefore, each character may
@@ -723,8 +763,11 @@ width, separated by one space, left aligned and padded by spaces.
 Lines in the file are terminated with either LF
 (U+000A) or CR+LF (U+000D, U+000A).
 There is no escaping mechanism line breaking characters may occur within fields.
+</p>
+
 <p>
 Blank lines are ignored. Lines starting with <code>#</code> (U+0023) are ignored.
+</p>
 
 <p>
 The first non-ignored line in the file is the <dfn>header line</dfn>.
@@ -741,15 +784,18 @@ The fields do not appear in a fixed order; after parsing
 the separator line and the header line, a field index to field
 name mapping can be constructed to use for parsing the rest of
 the file.
+</p>
 
 <p>
 The rest of the non-ignored lines in the file are
 <dfn>data lines</dfn> and are parsed using the fields and widths
 determined by parsing the header line.
+</p>
 
 <p>
 The following is an example header line, separator line, and data
 line:
+</p>
 
 <table class="format">
 <tr class="characters small">
@@ -1068,14 +1114,36 @@ line:
 
 <p>
 The field definitions are the same as those given for the
-<a href="#t5tabdelimited">T5 Tab Delimited Format</a>
+<a href="#t5tab">T5 Tab Delimited Format</a>
 above, and so are not repeated here. While the field
 order should not be assumed by applications parsing this
 format, applications should follow the
 <cite>Traveller<sup>5</sup></cite> Second Survey standard
 defined in the <cite>Traveller<sup>5</sup> Core Rulebook</cite>:
 Hex, Name, UWP, Remarks, Ix, Ex, Cx, N, B, Z, PBG, W, A, Stellar.
+</p>
 
 </section>
 
 </div>
+
+<div class="editorial">
+  <p>
+    The <em class="product">Traveller</em> game in all forms is owned by Far
+Future Enterprises. Copyright &copy; 1977 &ndash; 2013 Far Future
+Enterprises.
+    <a href="http://farfuture.net/FFEFairUsePolicy2008.pdf">Fair Use Policy</a>
+</div>
+
+<!-- Google Analytics -->
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-18610679-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>

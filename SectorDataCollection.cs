@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Mime;
 
 namespace Maps
 {
@@ -66,7 +67,7 @@ namespace Maps
 
         public void Deserialize(Stream stream, string mediaType)
         {
-            if (mediaType == null || mediaType == System.Net.Mime.MediaTypeNames.Text.Plain)
+            if (mediaType == null || mediaType == MediaTypeNames.Text.Plain || mediaType == MediaTypeNames.Application.Octet)
                 mediaType = SectorFileParser.SniffType(stream);
             SectorFileParser.ForType(mediaType).Parse(stream, this);
         }

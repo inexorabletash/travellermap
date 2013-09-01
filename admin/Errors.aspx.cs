@@ -38,7 +38,7 @@ namespace Maps.Pages
                               where (sectorName == null || sector.Names[0].Text.StartsWith(sectorName, ignoreCase: true, culture: CultureInfo.InvariantCulture))
                               && (sector.DataFile != null)
                               && (type == null || sector.DataFile.Type == type)
-                              && (!sector.DataFile.FileName.Contains(System.IO.Path.DirectorySeparatorChar)) // Skip ZCR sectors
+                              && (sector.Tags.Contains("OTU"))
                               orderby sector.Names[0].Text
                               select sector;
 

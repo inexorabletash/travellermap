@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="The Traveller Map">
 <meta property="fb:admins" content="617166358">
 
-<link rel="stylesheet" href="map.css?update=2013-07-25">
+<link rel="stylesheet" href="map.css?update=2013-08-09">
 <style>
 /* Note: Nested user-select is not currently supported in Mozilla, so the "allowSelection" variant is not yet used. */
 .blockSelection { -moz-user-select: none; -webkit-user-select: none; user-select: none; }
@@ -23,7 +23,7 @@
 </style>
 
 <!--[if lt IE 8]><script>alert("IE7 is no longer supported. Jumping to the basic version.");location='Mobile.aspx';</script><![endif]-->
-<script src="polyfill/polyfill.js?update=2013-07-25"></script>
+<script src="polyfill/polyfill.js?update=2013-08-19"></script>
 <script src="map.js?update=2013-07-25"></script>
 <script src="handlebars.js?update=2013-07-25"></script>
 <script src="index.js?update=2013-07-25"></script>
@@ -35,7 +35,7 @@
 
 .spinward
 {
-    text-align: center; writing-mode: tb-rl; filter: flipv fliph;
+    text-align: center;
     transform: translateX(-50%) translateX(0em) rotate(270deg) translateY(50%);
     -webkit-transform: translateX(-50%) translateX(0em) rotate(270deg) translateY(50%);
     -moz-transform: translateX(-50%) translateX(0em) rotate(270deg) translateY(50%);
@@ -44,13 +44,30 @@
 
 .trailing
 {
-    text-align: center; writing-mode: tb-rl; filter: flipv fliph;
+    text-align: center;
     transform: translateX(50%) translateX(-1.2em) rotate(270deg) translateY(50%);
     -webkit-transform: translateX(50%) translateX(-1.2em) rotate(270deg) translateY(50%);
     -moz-transform: translateX(50%) translateX(-1.2em) rotate(270deg) translateY(50%);
     -o-transform: translateX(50%) translateX(-1.2em) rotate(270deg) translateY(50%);
 }
+
 </style>
+
+<!--[if lt IE 9]>
+<style>
+.spinward
+{ 
+    -ms-writing-mode: tb-lr;
+    filter: flipv fliph;
+}
+
+.trailing
+{     
+     -ms-writing-mode: bt-rl;
+     filter: flipv fliph;
+}
+</style>
+<![endif]-->
 
 <body style="margin: 0; padding: 0; border: none; overflow: hidden; width: 100%; height: 100%; max-height: 100%;">
 
@@ -118,20 +135,20 @@
                 <option value="512">512 (System)</option>
               </select>
               
-            <p style="margin-bottom: 0.5em;">
+            <p style="margin-bottom: 0.5em;"></p>
               <strong>Sector Grid:</strong>
               <label title="Show sector and subsector grid lines"><input type="radio" name="grid" value="true" id="ShowSectorGrid" checked="checked"> On</label>
               <label title="Hide sector and subsector grid lines"><input type="radio" name="grid" value="false" id="HideSectorGrid"> Off</label>
 
-            <p><strong>Labels:</strong>
+            <p><strong>Labels:</strong></p>
             <div class="indent" style="margin-bottom: 0.5em;">
-              <p><label title="Show or hide the direction labels around the edge of the map"><input type="checkbox" id="ShowGalacticDirections" checked="checked"> Galactic Direction</label>
-              <p><label title="Show or hide sector and subsector names"><input type="checkbox" id="ShowSectorNames" checked="checked"> Sectors</label>
+              <p><label title="Show or hide the direction labels around the edge of the map"><input type="checkbox" id="ShowGalacticDirections" checked="checked"> Galactic Direction</label></p>
+              <p><label title="Show or hide sector and subsector names"><input type="checkbox" id="ShowSectorNames" checked="checked"> Sectors</label></p>
               <div class="indent" id="sector_label_options">
-                <p><label title="Show only the names of selected sectors when zoomed out"><input type="radio" name="sector_names" id="ShowSelectedSectorNames" checked="checked" value="ShowSelectedSectorNames"> Selected</label>
-                <p><label title="Show the names of all sectors when zoomed out"><input type="radio" name="sector_names" id="ShowAllSectorNames" value="ShowAllSectorNames"> All</label>
+                <p><label title="Show only the names of selected sectors when zoomed out"><input type="radio" name="sector_names" id="ShowSelectedSectorNames" checked="checked" value="ShowSelectedSectorNames"> Selected</label></p>
+                <p><label title="Show the names of all sectors when zoomed out"><input type="radio" name="sector_names" id="ShowAllSectorNames" value="ShowAllSectorNames"> All</label></p>
               </div>
-              <p>Governmental Bodies
+              <p>Governmental Bodies</p>
               <div class="indent">
                 <p><label title="Display political borders"><input type="checkbox" checked="checked" id="ShowGovernmentBorders"> Borders</label>
                 <p><label title="Display government and region names"><input type="checkbox" checked="checked" id="ShowGovernmentNames"> Names</label>
@@ -139,7 +156,7 @@
                 <p><label title="Show important home worlds when zoomed out"><input type="checkbox" checked="checked" id="ShowHomeworlds"> Home Worlds</label>
               </div>
             </div>
-            <p><strong>Appearance:</strong>
+            <p><strong>Appearance:</strong></p>
             <div class="indent" style="margin-bottom: 0.5em;">
                 <p><label title="Always use hexagonal parsecs&#x0a;[BETA TESTING: May be removed]"><input type="checkbox" id="cbForceHexes"> Force Hexes &beta;</label>
                 <p><label title="Use more colors for world features&#x0a;[BETA TESTING: May be removed]"><input type="checkbox" id="cbWorldColors"> World Colors &beta;</label>
@@ -314,13 +331,13 @@
       The Traveller game in all forms is owned by Far Future Enterprises. Copyright &copy; 1977 - 2013 Far Future Enterprises.
 
       <br>
-      <a title="Data sources, authors, and publishers" target="_blank" href="credits.htm">Credits</a>
+      <a title="Data sources, authors, and publishers" target="_blank" href="doc/credits.html">Credits</a>
       <a title="News and feedback - in syndication format" target="_blank" href="http://travellermap.blogspot.com/">Blog &amp; Feedback</a>
       <a title="Write your own code that uses the site" target="_blank" href="api.htm">API</a>
       <a title="Optimized for use on mobile phones" id="mobile" href="Mobile.aspx">Mobile</a>
       <a title="Experimental version for touch-aware devices like iPads" id="touch" href="touch/">Touch</a>
-      <a title="Details about the SEC data format" target="_blank" id="format" href="formats.htm">Formats</a>
-      <a title="Information about the Traveller Map page" target="_blank" href="info.htm">About</a>
+      <a title="Second Survey system data" target="_blank" id="format" href="doc/secondsurvey.html">Formats</a>
+      <a title="Information about the Traveller Map page" target="_blank" href="doc/about.html">About</a>
 
     </div>
     <br>
@@ -342,7 +359,14 @@
     </script>
     <script id="WorldMetadataTemplate" type="text/x-handlebars-template">
       {{#SectorName}}<a title="Generate LBB for {{.}}" target="_blank" href="sector.htm?sector={{.}}">{{.}}</a>{{/SectorName}}
-      {{WorldHex}} <b>{{WorldName}}</b> {{WorldUwp}}
+      <a class="stealth" href="doc/secondsurvey.html#hex" target="_blank" title="Hex">{{WorldHex}}</a> 
+      <b><a class="stealth" href="doc/secondsurvey.html#name" target="_blank" title="Name">{{WorldName}}</a></b> 
+      <a class="stealth" href="doc/secondsurvey.html#uwp" target="_blank" title="UWP">{{WorldUwp}}</a>
+      <a class="stealth" href="doc/secondsurvey.html#remarks" target="_blank" title="Remarks">{{WorldRemarks}}</a> 
+      <a class="stealth" href="doc/secondsurvey.html#ix" target="_blank" title="Ix">{{WorldIx}}</a> 
+      <a class="stealth" href="doc/secondsurvey.html#ex" target="_blank" title="Ex">{{WorldEx}}</a>
+      <a class="stealth" href="doc/secondsurvey.html#cx" target="_blank" title="Cx">{{WorldCx}}</a>
+      <a class="stealth" href="doc/secondsurvey.html#pbg" target="_blank" title="PBG">{{WorldPbg}}</a>
       {{#SectorEra}}(circa {{.}}){{/SectorEra}}
       {{#SubsectorName}}(Subsector {{../SubsectorIndex}}: {{.}}){{/SubsectorName}}
       <br>
@@ -354,6 +378,7 @@
         {{#ProductRef}}
         &mdash; <a title="Publisher's Catalog" target="_blank" href="{{.}}">{{../ProductTitle}} by {{../ProductAuthor}}, {{../ProductPublisher}}</a>
         {{/ProductRef}}
+      </i>
     </script>
 
   </div>

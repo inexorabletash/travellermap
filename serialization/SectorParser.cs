@@ -210,6 +210,13 @@ namespace Maps.Serialization
             return null;
         }
 
+        private static string EmptyIfDash(string s)
+        {
+            if (String.IsNullOrWhiteSpace(s) || s == "-")
+                return String.Empty;
+            return s;
+        }
+
         protected static void ParseWorld(WorldCollection worlds, StringDictionary dict, string line, int lineNumber)
         {
             try
@@ -225,15 +232,15 @@ namespace Maps.Serialization
                 // Allegiance may affect interpretation of other values, e.g. bases, zones
                 world.Allegiance = Check(dict, new string[] { "A", "Allegiance" });
 
-                world.CompactLegacyBases = Check(dict, new string[] { "B", "Bases" }); // TODO: World.T5Bases ?
-                world.Zone = Check(dict, new string[] { "Z", "Zone" });
+                world.CompactLegacyBases = EmptyIfDash(Check(dict, new string[] { "B", "Bases" })); // TODO: World.T5Bases ?
+                world.Zone = EmptyIfDash(Check(dict, new string[] { "Z", "Zone" }));
                 world.Remarks = Check(dict, new string[] { "Remarks", "Trade Codes", "Comments" } );
 
                 // T5
                 world.Importance = Check(dict, new string[] { "{Ix}", "{ Ix }", "Ix" });
                 world.Economic = Check(dict, new string[] { "(Ex)", "( Ex )", "Ex" });
                 world.Cultural = Check(dict, new string[] { "[Cx]", "[ Cx ]", "Cx" });
-                world.Nobility = Check(dict, new string[] { "N", "Nobility" });
+                world.Nobility = EmptyIfDash(Check(dict, new string[] { "N", "Nobility" }));
 
                 string w = Check(dict, new string[] { "W", "Worlds" });
                 if (!String.IsNullOrEmpty(w))

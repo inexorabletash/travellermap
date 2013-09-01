@@ -104,9 +104,9 @@ namespace Maps.Serialization
             });
 
             formatter.SetMinimumWidth("Name", 20);
-            formatter.SetMinimumWidth("Remarks", 20); 
+            formatter.SetMinimumWidth("Remarks", 20);
 
-            foreach (World world in worlds)
+            foreach (World world in worlds.OrderBy(world => world.SS))
             {
                 formatter.AddRow(new string[] {
                     world.Hex.ToString("0000"),
@@ -116,9 +116,9 @@ namespace Maps.Serialization
                     world.Importance,
                     world.Economic,
                     world.Cultural,
-                    world.Nobility,
-                    world.CompactLegacyBases,
-                    world.Zone,
+                    DashIfEmpty(world.Nobility),
+                    DashIfEmpty(world.CompactLegacyBases),
+                    DashIfEmpty(world.Zone),
                     world.PBG,
                     world.Worlds > 0 ? world.Worlds.ToString() : "",
                     world.Allegiance,
@@ -126,6 +126,13 @@ namespace Maps.Serialization
                 });
             }
             formatter.Serialize(writer, includeHeader);
+        }
+
+        private static string DashIfEmpty(string s)
+        {
+            if (String.IsNullOrWhiteSpace(s))
+                return "-";
+            return s;
         }
     }
 
@@ -159,7 +166,7 @@ namespace Maps.Serialization
                     world.Economic,
                     world.Cultural,
                     world.Nobility,
-                    world.Worlds.ToString(CultureInfo.InvariantCulture),
+                    world.Worlds > 0 ? world.Worlds.ToString(CultureInfo.InvariantCulture) : "",
                     world.ResourceUnits.ToString(CultureInfo.InvariantCulture)
                 }));
             }
