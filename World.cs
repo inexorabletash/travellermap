@@ -48,7 +48,15 @@ namespace Maps
 
         [XmlElement("PBG"), JsonName("PBG")]
         public string PBG { get; set; }
-        public string Zone { get; set; }
+        public string Zone
+        {
+            get { return m_zone; }
+            set
+            {
+                m_zone = (value == " " || value == "G") ? String.Empty : value;
+            }
+        }
+        private string m_zone;
         
         [XmlIgnore,JsonIgnore]
         public string Bases { get; set; }

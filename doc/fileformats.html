@@ -539,7 +539,7 @@ For each line in the file:
 ( \s{1,2}   (?&lt;UWP&gt;        [ABCDEX][0-9A-Z]{6}-[0-9A-Z]  ) )
 ( \s{1,2}   (?&lt;Base&gt;       [A-Z1-9* ]                    ) )
 ( \s{1,2}   (?&lt;Remarks&gt;    .{10,}?                       ) )
-( \s+       (?&lt;Zone&gt;       [ARBFU]                       ) )?
+( \s+       (?&lt;Zone&gt;       [GARBFU]                      ) )?
 ( \s{1,2}   (?&lt;PBG&gt;        \d[0-9A-F][0-9A-F]            ) )
 ( \s{1,2}   (?&lt;Allegiance&gt; (\w\w\b|\w-|--)               ) )
 ( \s*       (?&lt;Stars&gt;      .*?                           ) )
@@ -628,6 +628,10 @@ Eahyo              0131 X433731-0   Na Po             400 As M7 V M9 D
                      0639 X440000-0   Ba Lo Ni Po De         013 --
 Nnurukgr             0705 E637900-5   Hi In                  213 AW
 
+# Note non-standard travel zones:
+Elliador           1307 A67A3DD-B F Lo Ni Wa Cx Hw     O 724 Es M0 III
+Cinhoss            1403 X8C06BF-2 M De Ni              H 620 Es M1 V
+
 # Note "J-" for allegiance:
 Kue Urzue          0207 C6568AB-5                   R 100 J- F2 V
 Zimigsika          0209 A77399B-C J Hi In Cp          412 J- F0 V
@@ -697,7 +701,7 @@ This is a line-oriented, plain text,
 Lines in the file are terminated with either LF (U+000A) or CR+LF (U+000D, U+000A).
 
 Every line in the file has fields separated by the Tab character
-(U+0009). There is no escaping mechanism - neither tabs nor line
+(U+0009). There is no escaping mechanism &ndash; neither tabs nor line
 breaking characters may occur within fields. Comments are not supported.
 Blank lines should be ignored.
 </p>

@@ -64,6 +64,13 @@ namespace Maps.Serialization
                 stream.Position = pos;
             }
         }
+
+        protected static string EmptyIfDash(string s)
+        {
+            if (String.IsNullOrWhiteSpace(s) || s == "-")
+                return String.Empty;
+            return s;
+        }
     }
 
     public class SecParser : SectorFileParser
@@ -99,9 +106,9 @@ namespace Maps.Serialization
             @"( \s*       (?<name>        .*                           ) )  " +	// Name
             @"( \s*       (?<hex>         \d{4}                        ) )  " +	// Hex
             @"( \s{1,2}   (?<uwp>         [ABCDEX][0-9A-Z]{6}-[0-9A-Z] ) )  " +	// UWP (Universal World Profile)
-            @"( \s{1,2}   (?<base>        [A-Z1-9* ]                   ) )  " +	// Base
+            @"( \s{1,2}   (?<base>        [A-Z1-9* \-]                 ) )  " +	// Base
             @"( \s{1,2}   (?<codes>       .{10,}?                      ) )  " +	// Remarks
-            @"( \s+       (?<zone>        [ARBFU]                      ) )? " +	// Zone
+            @"( \s+       (?<zone>        [GARBFU \-]                  ) )? " +	// Zone
             @"( \s{1,2}   (?<pbg>         \d[0-9A-F][0-9A-F]           ) )  " +	// PGB (Population multiplier, Belts, Gas giants)
             @"( \s{1,2}   (?<allegiance>  ([A-Z0-9][A-Za-z0-9?\-]|--)  ) )  " +	// Allegiance
             @"( \s*       (?<rest>        .*?                          ) )  " + // Stellar data (etc)
@@ -136,9 +143,9 @@ namespace Maps.Serialization
                 world.Name = nameFixupRegex.Replace(match.Groups["name"].Value.Trim(), "");
                 world.Hex = Int32.Parse(match.Groups["hex"].Value, CultureInfo.InvariantCulture);
                 world.UWP = match.Groups["uwp"].Value.Trim();
-                world.CompactLegacyBases = match.Groups["base"].Value.Trim();
+                world.CompactLegacyBases = EmptyIfDash(match.Groups["base"].Value.Trim());
                 world.Remarks = match.Groups["codes"].Value.Trim();
-                if (match.Groups["zone"].Success) { world.Zone = match.Groups["zone"].Value; }
+                world.Zone = EmptyIfDash(match.Groups["zone"].Value);
                 world.PBG = match.Groups["pbg"].Value.Trim();
 
 
@@ -208,13 +215,6 @@ namespace Maps.Serialization
                 return dict[key];
             }
             return null;
-        }
-
-        private static string EmptyIfDash(string s)
-        {
-            if (String.IsNullOrWhiteSpace(s) || s == "-")
-                return String.Empty;
-            return s;
         }
 
         protected static void ParseWorld(WorldCollection worlds, StringDictionary dict, string line, int lineNumber)

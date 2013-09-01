@@ -302,7 +302,21 @@ namespace Maps
             this.Labels.AddRange(metadataSource.Labels);
             this.Credits = metadataSource.Credits;
         }
-        
+
+
+        [XmlAttribute("Tags"), JsonName("Tags")]
+        public string TagString
+        {
+            get { return String.Join(" ", m_tags); }
+            set
+            {
+                m_tags.Clear();
+                if (String.IsNullOrWhiteSpace(value))
+                    return;
+                m_tags.AddRange(value.Split());
+            }
+        }
+
         [XmlIgnore, JsonIgnore]
         public List<string> Tags { get { return m_tags; } }
         private List<string> m_tags = new List<string>();

@@ -1387,7 +1387,7 @@ Left:	0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027
       <Allegiance Code="Ax" Base="Zh">Addaxur</Allegiance>
     </Allegiances>
 	</Sector>
-  <Sector Abbreviation="Ziaf">
+  <Sector Abbreviation="Ziaf" Tags="Official">
     <Y>-2</Y>
     <X>-5</X>
     <Name Lang="zh">Ziafrplians</Name>
@@ -1546,7 +1546,7 @@ Left:	0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027
       </Border>
     </Borders>
   </Sector>
-  <Sector Abbreviation="Gvur">
+  <Sector Abbreviation="Gvur" Tags="Official">
 		<Y>-2</Y>
 		<X>-4</X>
 		<Name Lang="va">Gvurrdon</Name>
@@ -2612,7 +2612,7 @@ Left:	0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027
 			<Border Allegiance="Av" Color="purple" LabelPosition="1931">1039 1139 1239 1339 1438 1538 1537 1536 1435 1335 1434 1433 1432 1431 1430 1330 1329 1328 1327 1326 1325 1224 1124 1223 1323 1422 1523 1622 1623 1724 1725 1825 1926 2026 2127 2227 2328 2427 2527 2528 2628 2729 2829 2730 2731 2631 2632 2532 2431 2331 2231 2132 2032 1933 1833 1834 1835 1936 1937 1938 1939 1940 2040 1941 1841 1741 1641 1541 1441 1341 1241 1141 1041 1040 1039</Border>
 		</Borders>
 	</Sector>
-  <Sector Selected="true" Abbreviation="Spin">
+  <Sector Selected="true" Abbreviation="Spin" Tags="Official">
     <Y>-1</Y>
     <X>-4</X>
     <Name>Spinward Marches</Name>
@@ -2822,7 +2822,7 @@ Left:	0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027
     </Borders>
 
   </Sector>
-	<Sector Abbreviation="Dene">
+	<Sector Abbreviation="Dene" Tags="Official">
 		<Y>-1</Y>
 		<X>-3</X>
 		<Name>Deneb</Name>
@@ -2940,7 +2940,7 @@ Left:	0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027
       
 		</Borders>
 	</Sector>
-	<Sector Selected="true" Abbreviation="Corr">
+	<Sector Selected="true" Abbreviation="Corr" Tags="Official">
 		<Y>-1</Y>
 		<X>-2</X>
 		<Name>Corridor</Name>
@@ -3042,7 +3042,7 @@ Left:	0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027
       <Allegiance Code="Vf">Dzarrgh Federate</Allegiance>
     </Allegiances>
 	</Sector>
-	<Sector Abbreviation="Vlan">
+	<Sector Abbreviation="Vlan" Tags="Official">
 		<Y>-1</Y>
 		<X>-1</X>
 		<Name>Vland</Name>
@@ -3186,7 +3186,7 @@ Left:	0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027
       <Border Allegiance="Im" Color="red" LabelPosition="1122">0004 0104 0103 0102 0101 0201 0302 0402 0502 0601 0602 0603 0604 0705 0805 0906 1006 1107 1206 1306 1405 1505 1605 1705 1805 1906 2005 2105 2205 2306 2406 2506 2605 2706 2805 2905 3005 3106 3205 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0030 0131 0231 0331 0430 0530 0630 0730 0829 0929 0928 0927 0926 0925 0924 0823 0723 0622 0522 0422 0322 0221 0321 0420 0520 0619 0720 0820 0921 1020 1120 1119 1118 1117 1116 1115 1114 1113 1012 0912 0811 0711 0610 0510 0410 0311 0211 0210 0110 0009 0008 0007 0006 0005 0004</Border>
     </Borders>
 	</Sector>
-	<Sector Abbreviation="Lish">
+	<Sector Abbreviation="Lish" Tags="Official">
 		<Y>-1</Y>
 		<X>0</X>
 		<Name>Lishun</Name>
@@ -3324,7 +3324,7 @@ Left:	0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027
 			<Route Start="3211" End="3310" />
 		</Routes>
 	</Sector>
-	<Sector Abbreviation="Anta">
+	<Sector Abbreviation="Anta" Tags="Official">
 		<Y>-1</Y>
 		<X>1</X>
 		<Name>Antares</Name>
@@ -3470,7 +3470,7 @@ Left:	0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027
 			<Route Start="3201" End="3239" EndOffsetY="-1" Allegiance="Jr" Color="LightBlue" />
 		</Routes>
 	</Sector>
-	<Sector Abbreviation="Empt">
+	<Sector Abbreviation="Empt" Tags="Official">
 		<Y>-1</Y>
 		<X>2</X>
 		<Name>Empty Quarter</Name>
@@ -3970,7 +3970,7 @@ Left:	0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027
 		</Borders>
 		
 	</Sector>
-	<Sector Abbreviation="Troj">
+	<Sector Abbreviation="Troj" Tags="Official">
 		<Y>0</Y>
 		<X>-4</X>
 		<Name>Trojan Reach</Name>
@@ -4269,7 +4269,7 @@ Left:	0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027
     </Borders>
 
 	</Sector>
-	<Sector Selected="true" Abbreviation="Reft">
+	<Sector Selected="true" Abbreviation="Reft" Tags="Official">
 		<Y>0</Y>
 		<X>-3</X>
 		<Name>Reft Sector</Name>
@@ -4353,7 +4353,7 @@ Left:	0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027
     </Labels>
 
 	</Sector>
-	<Sector Abbreviation="Gush">
+	<Sector Abbreviation="Gush" Tags="Official">
 		<Y>0</Y>
 		<X>-2</X>
 		<Name>Gushemege</Name>
@@ -4464,7 +4464,7 @@ Left:	0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027
             <Route Start="3240" End="0240" EndOffsetX="1" />
         </Routes>
 	</Sector>
-	<Sector Abbreviation="Dagu">
+	<Sector Abbreviation="Dagu" Tags="Official">
 		<Y>0</Y>
 		<X>-1</X>
         <Name>Dagudashaag</Name>
@@ -4642,7 +4642,7 @@ Left:	0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027
 			<Route Start="3120" End="0221" EndOffsetX="1" />
 		</Routes>
 	</Sector>
-	<Sector Abbreviation="Core">
+	<Sector Abbreviation="Core" Tags="Official">
 		<Y>0</Y>
 		<X>0</X>
 		<Name>Core</Name>
@@ -4843,7 +4843,7 @@ Left:	0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027
 			<Route Start="0302" End="0338" EndOffsetY="-1" />
 		</Routes>
 	</Sector>
-	<Sector Abbreviation="Forn">
+	<Sector Abbreviation="Forn" Tags="Official">
 		<Y>0</Y>
 		<X>1</X>
 		<Name>Fornast</Name>
@@ -4965,7 +4965,7 @@ Left:	0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027
 			<Route Start="3018" End="3020" />
 		</Routes>
 	</Sector>
-	<Sector Selected="true" Abbreviation="Ley">
+	<Sector Selected="true" Abbreviation="Ley" Tags="Official">
 		<Y>0</Y>
 		<X>2</X>
 		<Name>Ley Sector</Name>
@@ -5413,7 +5413,7 @@ Left:	0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027
 			<Route Start="1840" End="1941" Allegiance="As" Color="Yellow" />
 		</Routes>
 	</Sector>
-	<Sector Abbreviation="Verg">
+	<Sector Abbreviation="Verg" Tags="Official">
 		<Y>1</Y>
 		<X>-3</X>
 		<Name>Verge</Name>
@@ -5488,7 +5488,7 @@ Left:	0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027
 			</Border>
 		</Borders>
 	</Sector>
-	<Sector Abbreviation="Ilel">
+	<Sector Abbreviation="Ilel" Tags="Official">
 		<Y>1</Y>
 		<X>-2</X>
 		<Name>Ilelish</Name>
@@ -5515,7 +5515,7 @@ Left:	0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027
 			<Border Allegiance="Im" LabelPosition="1912">0000 0100 0200 0300 0400 0500 0600 0700 0800 0900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3329 3228 3128 3028 2929 2828 2729 2629 2529 2429 2330 2229 2130 2030 1930 1830 1731 1631 1531 1430 1331 1231 1132 1032 0932 0832 0732 0632 0533 0433 0333 0233 0133 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001 0000</Border>
 		</Borders>
 	</Sector>
-	<Sector Abbreviation="Zaru">
+	<Sector Abbreviation="Zaru" Tags="Official">
 		<Y>1</Y>
 		<X>-1</X>
 		<Name>Zarushagar</Name>
@@ -5558,7 +5558,7 @@ Left:	0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027
 
 		</Borders>
 	</Sector>
-	<Sector Abbreviation="Mass">
+	<Sector Abbreviation="Mass" Tags="Official">
 		<Y>1</Y>
 		<X>0</X>
         <Name Source="DGP">Massilia</Name>
@@ -5681,7 +5681,7 @@ Left:	0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027
 			<Route Start="3215" End="0314" EndOffsetX="1" />
 		</Routes>
 	</Sector>
-	<Sector Abbreviation="Delp">
+	<Sector Abbreviation="Delp" Tags="Official">
 		<Y>1</Y>
 		<X>1</X>
 		<Name>Delphi</Name>
@@ -5765,7 +5765,7 @@ Left:	0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027
             <Route Start="2139" End="1740" />
         </Routes>
 	</Sector>
-	<Sector Abbreviation="Glim">
+	<Sector Abbreviation="Glim" Tags="Official">
 		<Y>1</Y>
 		<X>2</X>
         <Name>Glimmerdrift Reaches</Name>
@@ -6374,7 +6374,7 @@ Left:	0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027
 			<Route Start="3135" End="3335" Allegiance="As" Color="Yellow" />
 		</Routes>
 	</Sector>
-	<Sector Abbreviation="Reav">
+	<Sector Abbreviation="Reav" Tags="Official">
 		<Y>2</Y>
 		<X>-2</X>
         <Name>Reaver's Deep</Name>
@@ -6517,7 +6517,7 @@ Left:	0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027
 			<Route Start="3232" End="0333" EndOffsetX="1" />
 		</Routes>
 	</Sector>
-	<Sector Abbreviation="Daib">
+	<Sector Abbreviation="Daib" Tags="Official">
 		<Y>2</Y>
 		<X>-1</X>
 		<Name>Daibei</Name>
@@ -6642,7 +6642,7 @@ Left:	0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027
 			<Route Start="2301" End="2540" EndOffsetY="-1" />
 		</Routes>
 	</Sector>
-	<Sector Abbreviation="Dias">
+	<Sector Abbreviation="Dias" Tags="Official">
 		<Y>2</Y>
 		<X>0</X>
 		<Name>Diaspora</Name>
@@ -6814,7 +6814,7 @@ Left:	0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027
 			<Route Start="0228" End="3226" EndOffsetX="-1" EndOffsetY="0" />
 		</Routes>
 	</Sector>
-	<Sector Selected="true" Abbreviation="Olde">
+	<Sector Selected="true" Abbreviation="Olde" Tags="Official">
 		<Y>2</Y>
 		<X>1</X>
 		<Name>Old Expanses</Name>
@@ -7112,7 +7112,7 @@ Left:	0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027
 -->
 		</Routes>
 	</Sector>
-	<Sector Abbreviation="Hint">
+	<Sector Abbreviation="Hint" Tags="Official">
 		<Y>2</Y>
 		<X>2</X>
 		<Name>Hinterworlds</Name>
@@ -7681,7 +7681,7 @@ Left:	0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027
 			<Route Start="1412" End="1512" Color="LightGreen" />
 		</Routes>
 	</Sector>
-	<Sector Abbreviation="Magy">
+	<Sector Abbreviation="Magy" Tags="Official">
 		<Y>3</Y>
 		<X>-1</X>
 		<Name>Magyar</Name>
@@ -7831,7 +7831,7 @@ Left:	0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027
 			<Route Start="0601" End="0639" EndOffsetY="-1" />
 		</Routes>
 	</Sector>
-	<Sector Selected="true" Abbreviation="Solo">
+	<Sector Selected="true" Abbreviation="Solo" Tags="Official">
 		<Y>3</Y>
 		<X>0</X>
 		<Name>Solomani Rim</Name>
@@ -7967,7 +7967,7 @@ Left:	0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027
 			<Border Allegiance="Na" Color="orange" ShowLabel="false">2433</Border>
 		</Borders>
 	</Sector>
-	<Sector Abbreviation="Alph">
+	<Sector Abbreviation="Alph" Tags="Official">
 		<Y>3</Y>
 		<X>1</X>
 		<Name>Alpha Crucis</Name>
