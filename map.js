@@ -945,76 +945,36 @@ var Map;
     var self = this;
 
     var sizeMult = this.tilesize * mult;
+
     var dx = (x1 - this.x * cf) * sizeMult;
     var dy = (y1 - this.y * cf) * sizeMult;
     var dw = sizeMult;
     var dh = sizeMult;
 
-    // Catches base cases and handily catches very simple requests without recursion
-    if ((x1 >= x2) && (y1 >= y2)) {
-      // for base case of 0, just draw a single tile
-
-      drawTile(x1, y1, (cw / 2) + dx, (ch / 2) + dy);
+    if ((x2 - x1) < 2 || (y2 - y1) < 2) {
+      // Base case
+      fill(x1, y1, x2, y2);
     } else {
-      if ((x1 >= x2) && (y1 != y2)) {
-        // this is a vertical line
+      // Recurse - draw inner rectangle 1 dimension smaller.
+      this.drawRectangle(x1 + 1, y1 + 1, x2 - 1, y2 - 1, scale, mult, ch, cw, cf, zIndex, callback);
 
-        drawVerticalLine(x1, y1, y2, (cw / 2) + dx);
-      } else if ((x1 != x2) && (y1 >= y2)) {
-        // this is a horizontal line
-
-        drawHorizontalLine(x1, y1, x2, (ch / 2) + dy);
-      } else {
-        // this is a full rectangle
-
-        // recurse. draw a rectangle 1 dimension smaller than what we are looking at now 
-        // stop recursing when we hit a base case as mentioned above
-        this.drawRectangle(x1 + 1, y1 + 1, x2 - 1, y2 - 1, scale, mult, ch, cw, cf, zIndex, callback);
-
-        // we have drawn all smaller rectangles inside our own. Now draw the perimeter of our own rect.
-        // draw across at the top
-        drawHorizontalLine(x1, y1, x2, (ch / 2) + dy);
-
-        // draw the left side 
-        // y1 + 1 and y2 - 1 ensure we do not draw overlapping tiles
-        drawVerticalLine(x1, y1 + 1, y2 - 1, (cw / 2) + dx);
-
-        // draw across at the bottom
-        dy = (y2 - this.y * cf) * sizeMult;
-        drawHorizontalLine(x1, y2, x2, (ch / 2) + dy);
-
-        // draw the right side
-        // again with the non-overlapping tile math
-        dx = (x2 - this.x * cf) * sizeMult;
-        drawVerticalLine(x2, y1 + 1, y2 - 1, (cw / 2) + dx);
-      }
+      // Now draw the perimeter of our own rect.
+      fill(x1, y1, x2, y1);
+      fill(x1, y2, x2, y2);
+      fill(x1, y1 + 1, x1, y2 - 1);
+      fill(x2, y1 + 1, x2, y2 - 1);
     }
 
-    // Draw tiles from x1, y to x2, y
-    function drawHorizontalLine(x1, y, x2, dy) {
-      var x = x1;
-      var dx;
-      for (; x <= x2; x += 1) {
-        dx = (x - self.x * cf) * self.tilesize * mult;
-        drawTile(x, y, (cw / 2) + dx, dy);
+    function fill(x1, y1, x2, y2) {
+      for (var x = x1; x <= x2; ++x) {
+        for (var y = y1; y <= y2; ++y) {
+          var dx = (x - self.x * cf) * self.tilesize * mult + (cw / 2);
+          var dy = (y - self.y * cf) * self.tilesize * mult + (ch / 2);
+          self.drawTile(x, y, scale, dx, dy, dw, dh, zIndex, callback);
+        }
       }
-    }
-
-    // Draw tiles from x, y1 to x, y2
-    function drawVerticalLine(x, y1, y2, dx) {
-      var y = y1;
-      var dy;
-      for (; y <= y2; y += 1) {
-        dy = (y - self.y * cf) * self.tilesize * mult;
-        drawTile(x, y, dx, (ch / 2) + dy);
-      }
-    }
-
-    function drawTile(x, y, dx, dy) {
-      self.drawTile(x, y, scale, dx, dy, dw, dh, zIndex, callback);
     }
   }
-
 
   //
   // Draw the specified tile (scale, x, y) into the rectangle (dx, dy, dw, dh);
