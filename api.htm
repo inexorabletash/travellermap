@@ -10,10 +10,10 @@
   <section id="overview">
     <h3>Overview</h3>
     <p>
-        The Traveller Map site works by having a browser-based client application written 
+        The Traveller Map site works by having a browser-based client application written
         in <a href="http://javascript.crockford.com/javascript.html">JavaScript</a> call
         various APIs provided by the web site to render map tiles, provide search results,
-        look up coordinates, and so forth. The browser provides the HTML+CSS rendering, layout 
+        look up coordinates, and so forth. The browser provides the HTML+CSS rendering, layout
         and interaction engine, the web site provides the content, and the script glues it together.
     </p>
     <p>
@@ -24,12 +24,12 @@
     <p>
         If you start developing against these APIs in any form, please let me know!
         Email me at <a href="mailto:inexorabletash@gmail.com">inexorabletash@gmail.com</a>.
-        In addition, the <a href="http://travellermap.blogspot.com/">blog</a> is a good 
+        In addition, the <a href="http://travellermap.blogspot.com/">blog</a> is a good
         source of news and discussion around the site and APIs.
     </p>
     <p class="aside">
         NOTE: Many APIs take <code>x</code> and <code>y</code> coordinate parameters.
-        The coordinate system for those values varies depending on the API. See the 
+        The coordinate system for those values varies depending on the API. See the
         <a href="#systems">Coordinate Systems</a> documentation for more details.
     </p>
   </section>
@@ -40,7 +40,7 @@
         <li>
             Common Concepts
             <ul>
-                <li><a href="#urls">Functional APIs vs. Semantic Data URLs</a>        
+                <li><a href="#urls">Functional APIs vs. Semantic Data URLs</a>
                 <li><a href="#options">Rendering Options and Styles</a> - used by many APIs
             </ul>
 
@@ -48,7 +48,7 @@
             <ul>
                 <li><a href="#iframe">IFRAME</a> - embed a draggable, zoomable map in your page
             </ul>
-                
+
         <li>Data APIs
             <ul>
                 <li><a href="#coordinates">Coordinates</a> - look up sector coordinates by name
@@ -60,21 +60,21 @@
                 <li><a href="#search">Search</a> - search for worlds, subsectors or sectors by name
                 <li><a href="#universe">Universe</a> - return a list of sectors, optionally filtered by era
             </ul>
-                
+
         <li>Image APIs
             <ul>
                 <li><a href="#poster">Poster</a> - render an image of a sector or subsector
                 <li><a href="#jumpmap">JumpMap</a> - render a map of worlds reachable by Jump-N
                 <li><a href="#tile">Tile</a> - render an arbitrary rectangle of space to an image
             </ul>
-                
+
         <li>Appendices
             <ul>
                 <li><a href="#systems">Coordinate Systems</a> - what the x and y parameters mean in different APIs
                 <li><a href="#jsonp">JSONP</a> - How to use data from this in your web pages
                 <li><a href="#script">Scripts</a> - dig into the brains of the site itself
             </ul>
-                
+
     </ul>
   </section>
 
@@ -94,7 +94,7 @@
       The second URL is structured around the object being operated on, then specifies
       the data to retrieve; these URLs start with a <code>/data/</code> prefix.
     </p>
-    
+
     <p>
       In this case, both URLs expose identical functionality. Not all functions exposed
       by the first ("api") form have a corresponding second ("data") form - for example, rendering
@@ -125,7 +125,7 @@
       <li>Subsector:
         <ul>
           <li><a href="#poster">http://travellermap.com/data/<var>sector</var>/<var>subsector</var></a> - T5 Second Survey format
-          <li><a href="#poster">http://travellermap.com/data/<var>sector</var>/<var>subsector</var>/tab</a> - T5 Tab Delimited format 
+          <li><a href="#poster">http://travellermap.com/data/<var>sector</var>/<var>subsector</var>/tab</a> - T5 Tab Delimited format
           <li><a href="#poster">http://travellermap.com/data/<var>sector</var>/<var>subsector</var>/sec</a> - legacy SEC format
           <li><a href="#poster">http://travellermap.com/data/<var>sector</var>/<var>subsector</var>/image</a> - map
         </ul>
@@ -145,12 +145,12 @@
   <section id="options">
     <h3>Rendering Options and Styles - visual appearance of the map</h3>
     <p>
-        All of the APIs that produce images (<a href="#poster">Poster</a>, <a href="#jumpmap">JumpMap</a>, 
+        All of the APIs that produce images (<a href="#poster">Poster</a>, <a href="#jumpmap">JumpMap</a>,
         <a href="#tile">Tile</a>) as well as the site itself (including <a href="#iframe">IFRAME</a>) take
         an <code>options</code> parameter that is a bit-map of rendering style options and a <code>style</code>
         parameter that names a visual style/color scheme for the map.
     </p>
-            
+
     <h4>Options</h4>
     <p>
         The options are canonically defined in the <a href="#script">script</a> as flags that can
@@ -211,20 +211,20 @@
     <dl>
     <dt style="clear: both;"><img style="float: right; margin: 10px;" src="/data/spin/1910/image?style=poster&amp;clip=0" alt="poster example">
       poster</dt>
-    <dd>A color-on-black style that matches the "Spinward Marches" poster included with the 
-    <a href="http://travellerbibliography.org/gdw-ct/Deluxe.html" target="_blank">Deluxe Traveller</a> 
-    boxed set and the 
+    <dd>A color-on-black style that matches the "Spinward Marches" poster included with the
+    <a href="http://travellerbibliography.org/gdw-ct/Deluxe.html" target="_blank">Deluxe Traveller</a>
+    boxed set and the
     <a href="http://travellerbibliography.org/gdw-ct/knownspace.html" target="_blank">Imperium Map</a> poster.
     This is the default.</dd>
-            
+
     <dt style="clear: both;"><img style="float: right; margin: 10px;" src="/data/spin/1910/image?style=print&amp;clip=0" alt="print example">print</dt>
     <dd>A color-on-white style best suited for color printing.
     </dd>
     <dd></dd>
 
     <dt style="clear: both;"><img style="float: right; margin: 10px;" src="/data/spin/1910/image?style=atlas&amp;clip=0" alt="atlas example">atlas</dt>
-    <dd>A grayscale black-on-white style that matches the visual style of the 
-    <a href="http://travellerbibliography.org/gdw-ct/Atlas.html">Atlas of the Imperium</a> and early supplements.
+    <dd>A grayscale black-on-white style that matches the visual style of the
+    <a href="http://travellerbibliography.org/gdw-ct/Atlas.html">Atlas of the Imperium</a> and early supplements, best for black-and-white printing.
     </dd>
     <dd></dd>
 
@@ -234,14 +234,14 @@
     </dl>
 
     <h4>Other</h4>
-            
+
     <p>These options are available when calling rendering APIs, but not the main page or
     <a href="#iframe">IFRAME</a> API.</p>
-            
+
     <dl class="params">
       <dt>sscoords=1</dt>
       <dd>Hexes are numbered subsector style (0101-0810) instead of sector style (0101-3240)</dd>
-            
+
       <dt>routes=0</dt>
       <dd>Routes are not rendered (macro-scale or micro-scale)</dd>
     </dl>
@@ -258,7 +258,7 @@
         Where <var>URL</var> is one of:</p>
     <ul>
         <li class="code">http://travellermap.com/iframe.htm?x=<var>x</var>&amp;y=<var>y</var>
-        <li class="code">http://travellermap.com/iframe.htm?sector=<var>sector</var> 
+        <li class="code">http://travellermap.com/iframe.htm?sector=<var>sector</var>
         <li class="code">http://travellermap.com/iframe.htm?sector=<var>sector</var>&amp;hex=<var>hex</var>
     </ul>
     <p>
@@ -268,13 +268,13 @@
     </p>
     <h4>Options:</h4>
     <dl class="params">
-      <dt>scale <dd>scale in pixels/parsec (default is 64) 
+      <dt>scale <dd>scale in pixels/parsec (default is 64)
       <dt>options <dd><a href="#options">rendering options</a>
       <dt>style <dd><a href="#options">rendering style</a>
     </dl>
 
     <p class="aside">
-      If the location is specified using <code>sector</code> or 
+      If the location is specified using <code>sector</code> or
       <code>sector</code> and <code>hex</code> then the specified scale will be ignored.
     </p>
 
@@ -283,20 +283,20 @@
     to the <a href="http://travellermap.blogspot.com">blog</a> first.</p>
     <ul>
         <li>
-            Specify <code>ah_sx</code>, <code>sah_sy</code>, <code>yah_hx</code>, <code>yah_hy</code> 
+            Specify <code>ah_sx</code>, <code>sah_sy</code>, <code>yah_hx</code>, <code>yah_hy</code>
             parameters in <a href="#system_sectorhex">Sector/Hex coordinates</a> to place a "You Are Here" graphical
             marker. <a class="example" href="iframe.htm?yah_sx=-4&amp;yah_sy=-1&amp;yah_hx=19&amp;yah_hy=10"></a>
-                
+
         <li>
             Specify <code>ox</code>, <code>oy</code>, <code>ow</code>, <code>oh</code> parameters for the
             left, top, width and height (in <a href="#system_map">Map-space coordinates</a> to overlay
-            a highlight rectangle over the map. To specify additional overlay rectangles, include 
+            a highlight rectangle over the map. To specify additional overlay rectangles, include
             <code>ox1</code> (etc) for the first additional overlay, <code>ox2</code> (etc) for the
-            second additional overlay, and so on. For example, here's the 
+            second additional overlay, and so on. For example, here's the
             <a target="_blank" href="iframe.htm?ox=-111.95&amp;oy=80&amp;ow=194.2&amp;oh=200">Atlas of the Imperium coverage area</a>.
-                
+
     </ul>
-            
+
     <h4>Notes:</h4>
     <ul>
         <li>It's a fully functional map, just missing the chrome. You can drag with the mouse and zoom by using the mouse wheel or double-clicking (hold Alt and double-click to zoom out). You can even use the <kbd>IJKL</kbd> keys to scroll the map.
@@ -304,9 +304,9 @@
         <li>Alternately, more precise <a href="#system_map">Map-space coordinates</a> may be used for this API.
         <li>For sites such as Wikis that (for security reasons) do not allow embedding arbitrary IFRAMEs, see the <a href="#poster">Poster API</a> instead.
         <li>The CSS of the IFRAME element can be anything you want - the width and height are just examples
-    </ul>    
-            
-    <h4>Example:</h4>			
+    </ul>
+
+    <h4>Example:</h4>
     <pre class="code">
 &lt;iframe
    src="http://travellermap.com/iframe.htm?sector=Spinward%20Marches&amp;hex=1910"
@@ -315,9 +315,9 @@
     </pre>
 
     <p>
-        <iframe src="iframe.htm?sector=Spinward%20Marches&amp;hex=1910" 
-          style="width: 400px; height: 200px; border: solid 1px black;">           
-        </iframe>               
+        <iframe src="iframe.htm?sector=Spinward%20Marches&amp;hex=1910"
+          style="width: 400px; height: 200px; border: solid 1px black;">
+        </iframe>
     </p>
   </section>
   </section>
@@ -330,7 +330,7 @@
         http://travellermap.com/api/coordinates?sector=<var>sector</var>
     </p>
     <p class="code">
-        http://travellermap.com/api/coordinates?sector=<var>sector</var>&amp;hex=<var>hex</var> 
+        http://travellermap.com/api/coordinates?sector=<var>sector</var>&amp;hex=<var>hex</var>
     </p>
     <p class="code">
         http://travellermap.com/api/coordinates?sx=<var>sx</var>&amp;sy=<var>sy</var>
@@ -340,12 +340,12 @@
     </p>
     <h4>Data URLs:</h4>
     <p class="code">
-        http://travellermap.com/data/<var>sector</var>/coordinates 
+        http://travellermap.com/data/<var>sector</var>/coordinates
     </p>
     <p class="code">
-        http://travellermap.com/data/<var>sector</var>/<var>hex</var>/coordinates 
+        http://travellermap.com/data/<var>sector</var>/<var>hex</var>/coordinates
     </p>
-            
+
     <h4>Parameters:</h4>
     <dl class="params">
         <dt>sector <dd>specify the <a href="#system_location">sector location</a> by name, e.g. "Spinward%20Marches"
@@ -355,7 +355,7 @@
         <dt>hx <dd>hex x in <a href="#system_sectorhex">sector/hex-space coordinates</a>
         <dt>hy <dd>hex y in <a href="#system_sectorhex">sector/hex-space coordinates</a>
     </dl>
-            
+
     <h4>Notes:</h4>
     <ul>
         <li>The following coordinates are returned:
@@ -363,14 +363,14 @@
                 <li><a href="#system_sectorhex">Sector/Hex coordinates</a> sx, sy, hx, hy
                 <li><a href="#system_world">World-Space Coordinates</a> x, y
             </ul>
-                
+
         <li>
           Defaults to <a href="http://json.org/">JSON</a>. To retrieve results in XML form, specify
-          the HTTP header <code>Accept: text/xml</code> or include <code>accept=text/xml</code> 
+          the HTTP header <code>Accept: text/xml</code> or include <code>accept=text/xml</code>
           in the query string.
-                
-    </ul>    			
-            
+
+    </ul>
+
     <h4>Example:</h4>
     <p>
         <a class="example" href="api/coordinates?sector=Spinward%20Marches&amp;hex=1910"></a>
@@ -419,9 +419,9 @@
     <ul>
         <li>
           Defaults to <a href="http://json.org/">JSON</a>. To retrieve results in XML form, specify
-          the HTTP header <code>Accept: text/xml</code> or include <code>accept=text/xml</code> 
+          the HTTP header <code>Accept: text/xml</code> or include <code>accept=text/xml</code>
           in the query string.
-    </ul>    			
+    </ul>
 
     <h4>Example:</h4>
     <p>
@@ -458,7 +458,7 @@
         <dd>
           <a href="doc/fileformats.html#t5col">Data Format Definition</a>
           The <cite>Traveller<sup>5</sup> Second Survey</cite> format in human readable form:
-          Hex, Name, UWP, Trade Classifications and Remarks, 
+          Hex, Name, UWP, Trade Classifications and Remarks,
           Extensions (Ix, Ex, Cx), Nobility (N), Bases (B), Travel Zone (Z), PBG, Worlds (W), Allegiance and Stellar.
           Note that fields may be blank if no official T5 data exists.
           <p class="aside">Second Survey is the default for <code>/data/</code> URLs.</p>
@@ -477,7 +477,7 @@
         <dt>metadata=0 <dd>Don't include sector metadata as comments in the file
         <dt>header=0 <dd>Don't include field definitions in the file
     </dl>
-            
+
     <h4>Notes:</h4>
     <ul>
         <li>The column widths in <code>SecondSurvey</code> format are computed dynamically. The header and separator lines must be parsed to identify columns.
@@ -485,8 +485,8 @@
         <li>If you are programatically consuming the data, it is strongly recommended that you use <code>TabDelimited</code> format
         <li>If a <a href="#jsonp">jsonp</a> query parameter is specified, the results are wrapped in a JSONP callback
     </ul>
-            
-    <h4>Example:</h4>   			
+
+    <h4>Example:</h4>
     <p>
         <a class="example" href="api/sec?sector=Spinward%20Marches&amp;type=SecondSurvey"></a>
     </p>
@@ -499,25 +499,25 @@
     <p class="code">http://travellermap.com/api/metadata?sx=<var>sx</var>&amp;sy=<var>sy</var></p>
     <h4>Data URLs:</h4>
     <p class="code">http://travellermap.com/data/<var>sector</var>/metadata</p>
-            
+
     <h4>Parameters:</h4>
     <dl class="params">
         <dt>sector <dd>sector name
         <dt>sx <dd>sector x in <a href="#system_sectorhex">sector/hex-space coordinates</a>
         <dt>sy <dd>sector y in <a href="#system_sectorhex">sector/hex-space coordinates</a>
     </dl>
-            
+
     <h4>Notes:</h4>
     <ul>
         <li>
           Defaults to <a href="http://json.org/">JSON</a>. To retrieve results in XML form, specify
-          the HTTP header <code>Accept: text/xml</code> or include <code>accept=text/xml</code> 
+          the HTTP header <code>Accept: text/xml</code> or include <code>accept=text/xml</code>
           in the query string.
 
         <li>The XML data is the same format as consumed by the <a href="#poster">Poster</a> API via <a href="post.htm">HTTP POST</a>
-    </ul> 
-            
-    <h4>Example:</h4>   			
+    </ul>
+
+    <h4>Example:</h4>
     <p>
         <a class="example" href="api/metadata?sector=Spinward%20Marches"></a>
     </p>
@@ -530,21 +530,21 @@
     <p class="code">http://travellermap.com/api/msec?sx=<var>sx</var>&amp;sy=<var>sy</var></p>
     <h4>Data URLs:</h4>
     <p class="code">http://travellermap.com/data/<var>sector</var>/msec</p>
-            
+
     <h4>Parameters:</h4>
     <dl class="params">
         <dt>sector <dd>sector name
         <dt>sx <dd>sector x in <a href="#system_sectorhex">sector/hex-space coordinates</a>
         <dt>sy <dd>sector y in <a href="#system_sectorhex">sector/hex-space coordinates</a>
     </dl>
-            
+
     <h4>Notes:</h4>
     <ul>
         <li><a href="http://dotclue.org/t20/">sec2pdf at http://dotclue.org/t20/</a>
         <li>If a <a href="#jsonp">jsonp</a> query parameter is specified, the results are wrapped in a JSONP callback
-    </ul> 
-            
-    <h4>Example:</h4>   			
+    </ul>
+
+    <h4>Example:</h4>
     <p>
         <a class="example" href="api/msec?sector=Spinward%20Marches"></a>
     </p>
@@ -566,7 +566,7 @@
     <p class="code">
       http://travellermap.com/data/<var>sector</var>/<var>hex</var>/jump/<var>jump</var>
     </p>
-            
+
     <h4>Parameters:</h4>
     <dl class="params">
         <dt>jump <dd>jump distance to include (1 through 6, default is 6)
@@ -593,14 +593,14 @@
                 <li><code>PBG</code>
                 <li><code>Stellar</code>
             </ul>
-                
+
         <li>
           Defaults to <a href="http://json.org/">JSON</a>. To retrieve results in XML form, specify
-          the HTTP header <code>Accept: text/xml</code> or include <code>accept=text/xml</code> 
+          the HTTP header <code>Accept: text/xml</code> or include <code>accept=text/xml</code>
           in the query string.
-    </ul> 
-            
-    <h4>Example:</h4>   			
+    </ul>
+
+    <h4>Example:</h4>
     <p>
         <a href="http://travellermap.com/api/jumpworlds?sector=Spinward%20Marches&amp;hex=1910&amp;jump=4">Worlds within Jump-4 of Regina</a>
     </p>
@@ -617,14 +617,14 @@
     <dl class="params">
         <dt>q <dd>query string
     </dl>
-            
+
     <h4>Notes:</h4>
     <ul>
         <li>Perform a search of names for matching sectors, subsectors and worlds.
         <li>All searches are <em>case-insensitive</em>.
         <li>By default, only matches at the start of names or after spaces are returned. So "<code>sol</code>" will match "Sol", "Solomani Rim" and "Nowa Sol" but not "Marsol"
-        <li>Wildcards: 
-          <code>*</code> and <code>%</code> can be used as a "zero or more of any character"; 
+        <li>Wildcards:
+          <code>*</code> and <code>%</code> can be used as a "zero or more of any character";
           <code>?</code> and <code>_</code> can be used as "exactly one character".
           For example, "<code>r*a</code>" will match Regina.
         <li>Specifying a wildcard within a word turns <em>off</em> the "start of word" match. So "<code>re*in</code>" will <em>not</em> match "Regina" (but "<code>re*in*</code>" will).
@@ -637,17 +637,17 @@
                 <dt>uwp:a* <dd>find worlds with class A starports
                 <dt>t* uwp:*f <dd>find worlds with names beginning with T that are tech level F
             </dl>
-                
+
         <li>Specifying a search query of XXXXXXX-X (seven alphanumeric characters, hyphen, one alphanumeric character) is a shortcut for <code>uwp:</code>
         <li>Searches are performed on individual items (sectors, subsectors, worlds). You cannot at present do scoped search such as "TL-F worlds in the Solomani Rim"
         <li>Results may appear for items with multiple names (e.g. Solomani Rim sector is known as <em>Kushuggi</em> in Vilani); this is a correct result, although the alternate name is not apparent on the site.
         <li>
           Defaults to <a href="http://json.org/">JSON</a>. To retrieve results in XML form, specify
-          the HTTP header <code>Accept: text/xml</code> or include <code>accept=text/xml</code> 
+          the HTTP header <code>Accept: text/xml</code> or include <code>accept=text/xml</code>
           in the query string.
-    </ul> 
-            
-    <h4>Example:</h4>   			
+    </ul>
+
+    <h4>Example:</h4>
     <p>
         <a class="example" href="api/search?q=Regina"></a>
     </p>
@@ -670,18 +670,18 @@
         <dt>requireData <dd>if <code>1</code>, only sectors with data files will be included
     </dl>
 
-    <h4>Notes:</h4>            
+    <h4>Notes:</h4>
     <ul>
         <li>Returns a list of sectors providing X,Y coordinates and names.
         <li>The <code>era</code> parameter filters on an exact match only; the tagging of sectors with a precise year is sparse
         <li>
           Defaults to <a href="http://json.org/">JSON</a>. To retrieve results in XML form, specify
-          the HTTP header <code>Accept: text/xml</code> or include <code>accept=text/xml</code> 
+          the HTTP header <code>Accept: text/xml</code> or include <code>accept=text/xml</code>
           in the query string.
 
     </ul>
-            
-    <h4>Example:</h4>   			
+
+    <h4>Example:</h4>
     <p>
         <a class="example" href="api/universe?era=1000"></a>
     </p>
@@ -711,15 +711,15 @@
         <dt>accept <dd>specify <code>application/pdf</code> for PDF output; otherwise output depends on options
     </dl>
 
-    <h4>Notes:</h4>            
+    <h4>Notes:</h4>
     <ul>
         <li>Generate a PNG or JPEG image of the specified region.
         <li>Coordinates are in tile-space coordinates (optimized for tile rendering, not navigation); conversion functions are in the script
         <li>Bitmap image format depends on selected options ("Candy" produces JPEG, otherwise PNG)
         <li>The HTTP <code>Accept</code> header can be used to specify <code>application/pdf</code> instead of the query parameter.
-    </ul> 
-            
-    <h4>Example:</h4>   			
+    </ul>
+
+    <h4>Example:</h4>
     <p>
         <a class="example" href="api/tile?x=-24.5&amp;y=-18&amp;scale=64&amp;options=887&amp;style=poster"></a>
     </p>
@@ -737,10 +737,10 @@
 <h4>Data URLs:</h4>
 <p class="code">
     http://travellermap.com/data/<var>sector</var>/image
-</p>            
+</p>
 <p class="code">
     http://travellermap.com/data/<var>sector</var>/<var>subsector</var>/image
-</p>            
+</p>
 <h4>Parameters:</h4>
 <dl class="params">
     <dt>sector <dd>sector name
@@ -768,8 +768,8 @@
     <li>Image format depends on selected options ("Candy" produces JPEG, otherwise PNG)
     <li><a href="post.htm">Custom sector maps can be produced by uploading SEC data (and optionally XML metadata) via HTTP POST</a>
     <li>The HTTP <code>Accept</code> header can be used to specify <code>application/pdf</code> instead of the query parameter.
-</ul>   
-             			
+</ul>
+
 <h4>Example:</h4>
 <p class="code">
     &lt;img src="http://travellermap.com/api/poster?sector=spin&amp;subsector=C&amp;style=atlas&amp;scale=48"&gt;
@@ -793,7 +793,7 @@
     <p class="code">
       http://travellermap.com/data/<var>sector</var>/<var>hex</var>/jump/<var>jump</var>/image
     </p>
-            
+
     <h4>Parameters:</h4>
     <dl class="params">
         <dt>jump <dd>jump distance to render (1 through 12, default is 6)
@@ -821,9 +821,9 @@
         <li>PNG images (indexed, 8-bits per pixel) are returned unless PDF is requested; areas outside the hex borders will be transparent.
         <li>The HTTP <code>Accept</code> header can be used to specify <code>application/pdf</code> instead of the query parameter.
         <li><a href="jpost.htm">Custom maps can be produced by uploading SEC data (and optionally XML metadata) via HTTP POST</a>
-    </ul> 
-            
-    <h4>Example:</h4>   			
+    </ul>
+
+    <h4>Example:</h4>
     <p class="code">
         &lt;img src="http://travellermap.com/api/jumpmap?sector=spin&amp;hex=1910&amp;jump=4&amp;scale=48&amp;style=atlas"&gt;
     </p>
@@ -845,7 +845,7 @@
     <h4>Named Location</h4>
     <p>
         Some APIs support simple named locations, namely the name of a sector followed by a four-digit hex
-        number (in <em>xxyy</em> form). This is inefficient, as the sector must be looked up by name, 
+        number (in <em>xxyy</em> form). This is inefficient, as the sector must be looked up by name,
         but is supported for convenience in APIs likely to be specified as URLs directly by humans
         rather than automatically generated.
     </p>
@@ -857,11 +857,11 @@
     <p>
       Sectors mapped as part of the <cite>Traveller<sup>5</sup> Second Survey</cite> process can be referenced by
       abbreviation as well, where the abbreviation is the first 4 letters (e.g. "spin" for the Spinward Marches), or
-      3 in the case of Ley Sector ("ley"); 
+      3 in the case of Ley Sector ("ley");
     </p>
     <p>
-        The <a href="#coordinates">Coordinates API</a> will look up a sector/hex location and produce sector/hex 
-        coordinates suitible for further calculations. For convenience, the <a href="#jumpmap">JumpMap API</a>, 
+        The <a href="#coordinates">Coordinates API</a> will look up a sector/hex location and produce sector/hex
+        coordinates suitible for further calculations. For convenience, the <a href="#jumpmap">JumpMap API</a>,
         <a href="#credits">Credits API</a>, <a href="#iframe">IFRAME API</a>, and Permalinks all accept named locations using
         <code>sector</code> and <code>hex</code> parameters.
     </p>
@@ -873,22 +873,22 @@
   <section id="system_sectorhex">
   <h4>Sector/Hex Coordinates</h4>
   <p>
-      Sector/Hex are the simplest numeric coordinates. These must be specified as a quartet of (sx, sy, hx, hy). 
+      Sector/Hex are the simplest numeric coordinates. These must be specified as a quartet of (sx, sy, hx, hy).
       The Core sector is at (0,0), with positive x being Trailing and positive y being Rimward.
-      Hex coordinates are 1...32 and 1...40. Note that hx and hy must be specified separately. 
+      Hex coordinates are 1...32 and 1...40. Note that hx and hy must be specified separately.
     </p>
   <p class="aside">
     <em>Developers should
-      be aware that many languages (C/C++, JavaScript, etc) will parse numbers with leading 0's as octal, so 
-      <code>08</code> and <code>09</code> give unexpected results. 
+      be aware that many languages (C/C++, JavaScript, etc) will parse numbers with leading 0's as octal, so
+      <code>08</code> and <code>09</code> give unexpected results.
       Use an appropriate parsing function with an explicit radix.</em>
   </p>
   <p>
       The <a href="#coordinates">Coordinates API</a> will map a <code>sector</code> / <code>hex</code> pair
     sector/hex name (such as "Spinward Marches", "1910")
-      to the numeric quartet in this coordinate space. 
-      The <a href="#jumpmap">JumpMap API</a> and <a href="#credits">Credits API</a> accept these coordinates using 
-      <code>sx</code>, <code>sy</code>, <code>hx</code> and 
+      to the numeric quartet in this coordinate space.
+      The <a href="#jumpmap">JumpMap API</a> and <a href="#credits">Credits API</a> accept these coordinates using
+      <code>sx</code>, <code>sy</code>, <code>hx</code> and
       <code>hy</code> parameters. The <a href="#coordinates">Coordinates API</a> can also accept
       these coordinates using those parameters to map to World-Space coordinates.
   </p>
@@ -901,7 +901,7 @@
   <h4>World-Space Coordinates</h4>
   <p>
       World-space coordinates are more compact than Sector/Hex coordinates, requiring just two numbers. The
-      transformation is simple, and based around Reference (Core 0140). In this scheme, Reference is at 0,0, 
+      transformation is simple, and based around Reference (Core 0140). In this scheme, Reference is at 0,0,
       positive x is Trailing and positive Y is Rimward. To convert Sector/Hex to world-space coordinates, simply
       compute the distance to Reference:
   </p>
@@ -922,7 +922,7 @@ function SectorHexToXY(sx, sy, hx, hy) {
   <p>
       This scheme is roughly comparable to the canonical <cite>Traveller</cite> ring/ray system, but
       is far more convenient given that the origin is within charted space. This coordinate system is used by the
-      <a href="#credits">Credits API</a> and the <a href="#jumpmap">JumpMap API</a>, which require selection of a 
+      <a href="#credits">Credits API</a> and the <a href="#jumpmap">JumpMap API</a>, which require selection of a
       specific hex. The coordinates are specified as <code>x</code> and <code>y</code> parameters
   </p>
   <p>
@@ -944,16 +944,16 @@ function SectorHexToXY(sx, sy, hx, hy) {
   </p>
   <ul>
       <li>
-          Account for "odd" hexes being further coreward than "even" hexes - i.e. hex 1910 is further coreward than hex 2010. 
+          Account for "odd" hexes being further coreward than "even" hexes - i.e. hex 1910 is further coreward than hex 2010.
           Also note that odd/even switch places between Sector/Hex and World-space since Reference is at 0140 and (0,0) respectively.
-                
+
       <li>
           Account for hexes being packed more tightly horizontally than vertically, at a ratio of cos(30&deg;):1, and the
-          y axis is inverted. 
-        
-        <p class="aside">This is the only coordinate system with an inverted Y axis. 
+          y axis is inverted.
+
+        <p class="aside">This is the only coordinate system with an inverted Y axis.
           I must have been asleep at the keyboard.)</p>
-                
+
   </ul>
   <pre class="code">
 function isEven(n) { return (n % 2) === 0; }
@@ -981,8 +981,8 @@ function worldXYToImageXY(world_x, world_y) {
   <section id="system_tile">
   <h4>Tile-Space Coordinates</h4>
   <p>
-      Coordinates used by <a href="#tile">Tile API</a> are designed so that the basic operations 
-      of dragging the map around and requesting new tiles are as simple as possible. If the tile 
+      Coordinates used by <a href="#tile">Tile API</a> are designed so that the basic operations
+      of dragging the map around and requesting new tiles are as simple as possible. If the tile
       scale, width and height remain constant, the tiles at (0,0) and (0,1) are adjacent, and
       the origin is the same as map-space coordinates. Positive x is Trailing, positive y is Rimward.
   </p>
@@ -1009,7 +1009,7 @@ y = ( -map_center_y * scale - ( height / 2 ) ) / height;
   </section>
 
 <!--
-            
+
 <pre class="code">
 <span style="color: Gray;">// Constants</span>
 SectorWidth      = 32
@@ -1023,9 +1023,9 @@ ReferenceHexY    = 40
 
 <span style="color: Gray;">// Convert sector and hex coordinates to world-space coordinates</span>
 <span style="color: Gray;">// where Reference (Core 0140) is 0,0</span>
-world_x = ( ( sector_x - ReferenceSectorX ) * SectorWidth  ) 
+world_x = ( ( sector_x - ReferenceSectorX ) * SectorWidth  )
 + ( hex_x - ReferenceHexX )
-world_y = ( ( sector_y - ReferenceSectorY ) * SectorHeight ) 
+world_y = ( ( sector_y - ReferenceSectorY ) * SectorHeight )
 + ( hex_y - ReferenceHexY )
 
 
@@ -1047,11 +1047,11 @@ var ReferenceHexY    = 40;
 
 function sector_hex_to_world( sector_x, sector_y, hex_x, hex_y )
 {
-var world_x = ( ( sector_x - ReferenceSectorX ) * SectorWidth  ) 
+var world_x = ( ( sector_x - ReferenceSectorX ) * SectorWidth  )
         + ( hex_x - ReferenceHexX );
-var world_y = ( ( sector_y - ReferenceSectorY ) * SectorHeight ) 
+var world_y = ( ( sector_y - ReferenceSectorY ) * SectorHeight )
         + ( hex_y - ReferenceHexY );
-              
+
 return { 'x': world_x, 'y': world_y };
 }
 
@@ -1071,21 +1071,21 @@ var sx = parseInt( document.getElementById('sector_x').value, 10 );
 var sy = parseInt( document.getElementById('sector_y').value, 10 );
 var hx = parseInt( document.getElementById('hex_x'   ).value, 10 );
 var hy = parseInt( document.getElementById('hex_y'   ).value, 10 );
-    
+
 var w = sector_hex_to_world( sx, sy, hx, hy );
 console.log(w);
-    
+
 // Center on the hex itself
 var x = w.x - 0.5;
 var y = w.y - ( ( ( w.x % 2 ) == 0 ) ? 0.5 : 0 );
-    
+
 var scale  = parseInt( document.getElementById('scale' ).value, 10 );
 var width  = parseInt( document.getElementById('width' ).value, 10 );
 var height = parseInt( document.getElementById('height').value, 10 );
-    
+
 var m = world_to_map( x, y, scale, width, height );
-console.log(m);    
-    
+console.log(m);
+
 document.getElementById('map_x').innerHTML = m.x;
 document.getElementById('map_y').innerHTML = m.y;
 
@@ -1102,12 +1102,12 @@ return false;
   <form id="coord_converter" action="" onsubmit="convert(); return false;">
       Sector <label for="sector_x">X:</label> <input id="sector_x" type="text" value="-4" size="3"> <label for="sector_y">Y:</label> <input id="sector_y" type="text" value="-1" size="3"> <br>
       Hex    <label for="hex_x">   X:</label> <input id="hex_x"    type="text" value="19"  size="3"> <label for="hex_y">   Y:</label> <input id="hex_y"    type="text" value="10" size="3"> <br>
-      <label for="scale">Scale:</label> <input id="scale" type="text" value="64" size="4"> 
+      <label for="scale">Scale:</label> <input id="scale" type="text" value="64" size="4">
       <label for="width">Width:</label> <input id="width" type="text" value="256" size="4"> <label for="height">Height:</label> <input id="height" type="text" value="256" size="4"> <br>
       <input type="submit" value="Convert!"><br>
       Map X: <span id="map_x"></span> Map Y: <span id="map_y"></span> <br>
       <img id="tile_conv" style="display: none;" src="">
-                
+
   </form>
 -->
 
@@ -1124,10 +1124,10 @@ return false;
       Web browsers enforce a <a href="http://en.wikipedia.org/wiki/Same_origin_policy">Same Origin Policy</a>
       on content, to stop a page on evilhacker.com from scripting access to your bank account with your stored
       credentials. This is a good thing! Unfortunately, it also means that sites that want to cooperate have
-      to jump through some hurdles. For example, you can't have a web page on your site that calls directly 
-      into one of the APIs on this site (via XMLHttpRequest) from JavaScript. Either the the sites need to have 
-      server-to-server communication (which is troublesome to set up, impractical in some circumstances, and 
-      introduces its own security issues) or they can play some tricks. 
+      to jump through some hurdles. For example, you can't have a web page on your site that calls directly
+      into one of the APIs on this site (via XMLHttpRequest) from JavaScript. Either the the sites need to have
+      server-to-server communication (which is troublesome to set up, impractical in some circumstances, and
+      introduces its own security issues) or they can play some tricks.
       <a href="http://en.wikipedia.org/wiki/JSONP#JSONP">JSONP</a> is one of those tricks.
   </p>
   <p>
@@ -1135,7 +1135,7 @@ return false;
       script files, and those files can come from different sites. While a script cannot make AJAX calls
       to another site to retrieve data, it can cause a script from that site to be loaded just like a local
       script. The loaded script doesn't have any special abilities - it's still running within the domain of the
-      page. The trick is to request a script with dynamically generated content - the data you wanted to request 
+      page. The trick is to request a script with dynamically generated content - the data you wanted to request
       from the remote site in the first place!
   </p>
 
@@ -1159,7 +1159,7 @@ return false;
       where <var>callbackfn</var> is the name of the function you'd like the script to call. This is
       a function that should be pre-existing in your page, that takes an argument. The argument is
       the JavaScript value (usually an object with properties, sub-objects, arrays, etc).
-  </p>            
+  </p>
 
   <p>For example, here's how you could implement a search function on your site:</p>
 
@@ -1174,12 +1174,12 @@ function jsonp_example(q) {
 }
 
 <span class="comment">// This function is called automatically with the results:</span>
-function cbfn(data) { 
-  window.alert('Callback, got ' + data.Results.Count + ' results.'); 
+function cbfn(data) {
+  window.alert('Callback, got ' + data.Results.Count + ' results.');
 }
-  </pre>            
+  </pre>
 
-  <h4>Example:</h4>			
+  <h4>Example:</h4>
   <p>
       <a href="#" onclick="jsonp_example('Regina'); return false;">Make a JSONP call</a>
   </p>
@@ -1205,7 +1205,7 @@ function cbfn(data) {
   <section id="script">
     <h3>Script - dig into the brains of the site itself</h3>
     <p>
-        The <a href="map.js">script file</a> that implements the site logic is full of goodies, such 
+        The <a href="https://github.com/inexorabletash/travellermap/blob/master/map.js">script file</a> that implements the site logic is full of goodies, such
         as the mechanism to convert coordinate spaces between the map's internal format and <b><i>Traveller</i></b>
         parsec numbering, and the definitions of the options that are referenced in various APIs.
     </p>
@@ -1213,9 +1213,9 @@ function cbfn(data) {
         Specifically, the following scripts are used:
     </p>
     <ul>
-        <li><a href="map.js">map.js</a> - the main map logic
-        <li><a href="index.js">index.js</a> - drives the rest of the page
-        <li><a href="handlebars.js">handlebars.js</a> - <a href="http://handlebarsjs.com/">Handlebars.js</a> by Yehuda Katz, for page templating
+        <li><a href="https://github.com/inexorabletash/travellermap/blob/master/map.js">map.js</a> - the main map logic
+        <li><a href="https://github.com/inexorabletash/travellermap/blob/master/index.js">index.js</a> - drives the rest of the page
+        <li><a href="https://github.com/inexorabletash/travellermap/blob/master/handlebars.js">handlebars.js</a> - <a href="http://handlebarsjs.com/">Handlebars.js</a> by Yehuda Katz, for page templating
     </ul>
   </section>
   </section>
