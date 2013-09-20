@@ -1123,7 +1123,6 @@ var Map;
     };
     img.src = uri;
     img.style.position = "absolute";
-    img.style.webkitTransform = "translate3d(0,0,0)"; // force hardware compositing
 
     return (void 0); // undefined
   };
