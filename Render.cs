@@ -458,13 +458,21 @@ namespace Maps.Rendering
                     const int gridSlop = 10;
                     ctx.styles.subsectorGrid.pen.Apply(ref pen);
 
-                    for (float h = ((float)(Math.Floor((ctx.tileRect.Left) / Astrometrics.SubsectorWidth) - 1) - Astrometrics.ReferenceSector.X) * Astrometrics.SubsectorWidth - Astrometrics.ReferenceHex.X; h <= ctx.tileRect.Right + Astrometrics.SectorWidth; h += Astrometrics.SubsectorWidth)
+                    int hmin = (int)Math.Floor(ctx.tileRect.Left / Astrometrics.SubsectorWidth) - 1 - Astrometrics.ReferenceSector.X,
+                        hmax = (int)Math.Ceiling((ctx.tileRect.Right + Astrometrics.SubsectorWidth + Astrometrics.ReferenceHex.X) / Astrometrics.SubsectorWidth);
+                    for (int hi = hmin; hi <= hmax; ++hi)
                     {
+                        if (hi % 4 == 0) continue;
+                        float h = hi * Astrometrics.SubsectorWidth - Astrometrics.ReferenceHex.X;
                         ctx.graphics.DrawLine(pen, h, ctx.tileRect.Top - gridSlop, h, ctx.tileRect.Bottom + gridSlop);
                     }
 
-                    for (float v = ((float)(Math.Floor((ctx.tileRect.Top) / Astrometrics.SubsectorHeight) - 1) - Astrometrics.ReferenceSector.Y) * Astrometrics.SubsectorHeight - Astrometrics.ReferenceHex.Y; v <= ctx.tileRect.Bottom + Astrometrics.SectorHeight; v += Astrometrics.SubsectorHeight)
+                    int vmin = (int)Math.Floor(ctx.tileRect.Top / Astrometrics.SubsectorHeight) - 1 - Astrometrics.ReferenceSector.Y,
+                        vmax = (int)Math.Ceiling((ctx.tileRect.Bottom + Astrometrics.SubsectorHeight + Astrometrics.ReferenceHex.Y) / Astrometrics.SubsectorHeight);
+                    for (int vi = vmin; vi <= vmax; ++vi)
                     {
+                        if (vi % 4 == 0) continue;
+                        float v = vi * Astrometrics.SubsectorHeight - Astrometrics.ReferenceHex.Y;
                         ctx.graphics.DrawLine(pen, ctx.tileRect.Left - gridSlop, v, ctx.tileRect.Right + gridSlop, v);
                     }
                 }
