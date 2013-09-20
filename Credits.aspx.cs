@@ -94,6 +94,7 @@ namespace Maps.Pages
                     data.SectorCopyright = sector.DataFile.Copyright;
                     data.SectorRef = sector.DataFile.Ref;
                     data.SectorEra = sector.DataFile.Era;
+                    data.SectorTags = sector.TagString;
                 }
 
                 //
@@ -152,6 +153,7 @@ namespace Maps.Pages
             public string SectorCopyright { get; set; }
             public string SectorRef { get; set; }
             public string SectorEra { get; set; }
+            public string SectorTags { get; set; }
 
             public string RouteCredits { get; set; }
 

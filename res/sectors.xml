@@ -2547,12 +2547,13 @@ Left:	0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027
 		<DataFile Author="Dale Kemper; James Kundert" Source="Ares Magazine, The Traveller Chronicle">FarFrontiers.sec</DataFile>
 		<MetadataFile Author="Dale Kemper; James Kundert" Source="Ares Magazine; The Traveller Chronicle">FarFrontiers.xml</MetadataFile>
 	</Sector>
-	<Sector>
+	<Sector Tags="Preserve">
 		<Y>-1</Y>
 		<X>-5</X>
 		<Name>Foreven</Name>
+    <Product Publisher="Far Future Enterprises" Title="Foreven Sector: A Referee's Preserve" Ref="http://farfuture.net/FFEForevenSectorReserve2008.pdf"/>
 		<Name Lang="zh">Iakr</Name>
-		<DataFile Source="The Zhodani Base" Publisher="[Referee's Preserve]" Author="GypsyComet, Dylan Lee and BeRKA" Ref="http://www.zho.berka.com/data/foreven/">foreven.sec</DataFile>
+		<DataFile Source="The Zhodani Base" Author="GypsyComet, Dylan Lee and BeRKA" Ref="http://www.zho.berka.com/data/foreven/">foreven.sec</DataFile>
 		<Subsectors>
 			<Subsector Index="A">Shivva</Subsector>
 			<Subsector Index="B">Lieber</Subsector>

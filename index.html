@@ -353,7 +353,10 @@
         {{#PosterURL}}<a title="PDF map of {{../SectorName}}" target="_blank" href="{{.}}">Poster</a>{{/PosterURL}}      
 
         {{#ProductRef}}
-        &mdash; <a title="Publisher's Catalog" target="_blank" href="{{.}}">{{../ProductTitle}} by {{../ProductAuthor}}, {{../ProductPublisher}}</a>
+        &mdash; <a title="Publisher's Catalog" target="_blank" href="{{.}}">
+          {{../ProductTitle}}
+          {{#../ProductAuthor}} by {{.}}{{/../ProductAuthor}}
+          ({{../ProductPublisher}})</a>
         {{/ProductRef}}
       </i>
     </script>
