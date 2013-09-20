@@ -1011,6 +1011,24 @@ Left:	0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027
 		<Name Lang="va" Source="Underdeveloped">Knoellighz</Name>
 		<Name Lang="zh">Tlabrieish</Name>
 		<DataFile Author="John G. Wood" Source="Underdeveloped Sectors" Ref="http://homepage.ntlworld.com/elvwood/Traveller/Sectors/">knoellighz.sec</DataFile>
+    <Subsectors Author="Mike Davis" Ref="http://www.elvwood.org/Traveller/Sectors/Knoellighz.html">
+      <Subsector Index="A">Riadr</Subsector>
+      <Subsector Index="B">Dzighkafe</Subsector>
+      <Subsector Index="C">Rourukhae</Subsector>
+      <Subsector Index="D">Ourdzoeg</Subsector>
+      <Subsector Index="E">Etlieejibia</Subsector>
+      <Subsector Index="F">Engakhs</Subsector>
+      <Subsector Index="G">Oguegh</Subsector>
+      <Subsector Index="H">Elkhaghaza</Subsector>
+      <Subsector Index="I">Yeplzhaf</Subsector>
+      <Subsector Index="J">Irrarrdhang</Subsector>
+      <Subsector Index="K">Thoeg</Subsector>
+      <Subsector Index="L">Goengsakh</Subsector>
+      <Subsector Index="M">Piprninsh</Subsector>
+      <Subsector Index="N">Khuzedhoth</Subsector>
+      <Subsector Index="O">Raelas</Subsector>
+      <Subsector Index="P">Zarthurrue</Subsector>
+    </Subsectors>
 		<Borders>
       <Border Allegiance="V9" Color="olivedrab">0832 0932 1031 1131 1031 1032 1033 1034 1035 1036 1137 1237 1238 1239 1340 1239 1140 1040 0941 0940 0939 0938 0837 0836 0835 0834 0833 0832</Border>
       <Border Allegiance="Vd" Color="olivedrab">1316 1415 1515 1614 1613 1612 1611 1511 1410 1409 1408 1407 1508 1607 1708 1807 1907 2006 2106 2206 2306 2406 2506 2605 2705 2804 2904 3004 3104 3204 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3227 3128 3028 2929 2829 2729 2628 2529 2528 2527 2526 2525 2424 2324 2323 2222 2221 2121 2020 2019 1919 1818 1817 1717 1616 1516 1416 1316</Border>
@@ -1031,7 +1049,25 @@ Left:	0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027
 		<Name Lang="va">Dhuerorrg</Name>
 		<Name Lang="zh">Tazhdapl</Name>
 		<DataFile Author="John G. Wood" Source="Underdeveloped Sectors" Ref="http://homepage.ntlworld.com/elvwood/Traveller/Sectors/">dhuerorrg.sec</DataFile>
-		<Borders>
+    <Subsectors Author="Mike Davis" Ref="http://www.elvwood.org/Traveller/Sectors/Dhuerorrg.html">
+      <Subsector Index="A">Ugaethi</Subsector>
+      <Subsector Index="B">Sogae</Subsector>
+      <Subsector Index="C">Oekhsith</Subsector>
+      <Subsector Index="D">Voetsgouz</Subsector>
+      <Subsector Index="E">Vatsu</Subsector>
+      <Subsector Index="F">Gadhognae</Subsector>
+      <Subsector Index="G">Khoeng</Subsector>
+      <Subsector Index="H">Dhaetsae</Subsector>
+      <Subsector Index="I">Udzginger</Subsector>
+      <Subsector Index="J">Agzaengaez</Subsector>
+      <Subsector Index="K">Rangrrourae</Subsector>
+      <Subsector Index="L">Aegroul</Subsector>
+      <Subsector Index="M">Llako</Subsector>
+      <Subsector Index="N">Dagvigae</Subsector>
+      <Subsector Index="O">Utheng</Subsector>
+      <Subsector Index="P">Ithueng</Subsector>
+    </Subsectors>
+    <Borders>
 			<Border Allegiance="Vb" Color="olivedrab">0430 0530 0529 0629 0729 0829 0929 1029 1130 1229 1329 1330 1430 1531 1631 1732 1831 1932 2032 2132 2231 2331 2430 2530 2529 2528 2628 2728 2827 2828 2929 2829 2730 2630 2631 2632 2633 2534 2535 2536 2537 2437 2337 2236 2137 2037 1938 1838 1839 1840 1741 1641 1541 1441 1341 1241 1141 1041 0941 0841 0741 0641 0640 0540 0439 0438 0538 0537 0536 0535 0534 0533 0532 0531 0430</Border>
 			<Border Allegiance="Vd" Color="olivedrab">0004 0104 0203 0303 0304 0404 0505 0605 0706 0707 0708 0709 0809 0910 1010 1011 1012 1113 1213 1114 1115 1116 1016 1017 1018 1019 1020 1021 1022 1123 1124 1023 0924 0824 0725 0625 0626 0526 0426 0327 0227 0127 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004</Border>
 			<Border Allegiance="Ve" Color="olivedrab">1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3001 3102 3202 3203 3204 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3214 3115 3014 2915 2914 2813 2713 2612 2513 2413 2314 2214 2115 2014 1914 1813 1713 1712 1711 1710 1709 1708 1707 1606 1605 1604 1504 1403 1402 1401 1301 1200</Border>
@@ -1052,7 +1088,25 @@ Left:	0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027
 		<X>-2</X>
 		<Name Lang="va">Ngathksirz</Name>
 		<DataFile Author="John G. Wood" Source="Underdeveloped Sectors" Ref="http://homepage.ntlworld.com/elvwood/Traveller/Sectors/">ngathksirz.sec</DataFile>
-		<Borders>
+    <Subsectors Author="Mike Davis" Ref="http://www.elvwood.org/Traveller/Sectors/Ngathksirz.html">
+      <Subsector Index="A">Odzgoegh</Subsector>
+      <Subsector Index="B">Kfirzin</Subsector>
+      <Subsector Index="C">Kueroe</Subsector>
+      <Subsector Index="D">Aengangvuer</Subsector>
+      <Subsector Index="E">Dhaendzouts</Subsector>
+      <Subsector Index="F">Ruevoga</Subsector>
+      <Subsector Index="G">Aenael</Subsector>
+      <Subsector Index="H">Roenvoegazdu</Subsector>
+      <Subsector Index="I">Zarrkoe</Subsector>
+      <Subsector Index="J">Thafo</Subsector>
+      <Subsector Index="K">Uengou</Subsector>
+      <Subsector Index="L">Raez</Subsector>
+      <Subsector Index="M">Vaerr</Subsector>
+      <Subsector Index="N">Nouksaezor</Subsector>
+      <Subsector Index="O">Oegerag</Subsector>
+      <Subsector Index="P">Serrken</Subsector>
+    </Subsectors>
+    <Borders>
 			<Border Allegiance="Ve" Color="olivedrab">0002 0003 0004 0105 0205 0306 0406 0507 0606 0707 0708 0808 0809 0910 1010 1111 1210 1310 1409 1408 1407 1406 1306 1205 1306 1405 1505 1604 1603 1602 1702 1801 1901 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2640 2540 2440 2340 2240 2140 2040 1941 1841 1741 1641 1541 1441 1341 1241 1141 1041 0941 0841 0741 0641 0541 0440 0340 0239 0139 0038 0037 0036 0035 0135 0234 0233 0232 0332 0331 0330 0429 0529 0528 0527 0526 0525 0424 0524 0623 0622 0621 0620 0619 0618 0518 0517 0516 0415 0315 0214 0115 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002</Border>
 		</Borders>
 		<Allegiances Source="Vilani and Vargr">
@@ -9039,6 +9093,8 @@ Left:	0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027
 		<X>-1</X>
 		<Name Publisher="HIWG">Holowon</Name>
 		<Name Lang="as" Publisher="HIWG">Tahahorol</Name>
+    <DataFile Author="Brian Smaller">Holowan.sec</DataFile>
+    <MetadataFile Author="Brian Smaller">Holowan.xml</MetadataFile>
 	</Sector>
 	<Sector>
 		<Y>6</Y>
