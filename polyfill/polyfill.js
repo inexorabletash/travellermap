@@ -56,7 +56,7 @@ if (typeof Object.getOwnPropertyNames !== "function") {
 if (typeof Object.create !== "function") {
   Object.create = function (prototype, properties) {
     "use strict";
-    if (typeof prototype !== "object" ) { throw new TypeError(); }
+    if (typeof prototype !== "object") { throw new TypeError(); }
     /** @constructor */
     function Ctor() {}
     Ctor.prototype = prototype;
@@ -510,53 +510,11 @@ if (!Date.prototype.toISOString) {
       pad3(this.getUTCMilliseconds()) + 'Z';
   };
 }
-
-
-//----------------------------------------------------------------------
-//
-// Non-standard JavaScript (Mozilla) functions
-//
-//----------------------------------------------------------------------
-
-(function () {
-  // JavaScript 1.8.1
-  String.prototype.trimLeft = String.prototype.trimLeft || function () {
-    return String(this).replace(/^\s+/, '');
-  };
-
-  // JavaScript 1.8.1
-  String.prototype.trimRight = String.prototype.trimRight || function () {
-    return String(this).replace(/\s+$/, '');
-  };
-
-  // JavaScript 1.?
-  var ESCAPES = {
-    //'\x00': '\\0', Special case in FF3.6, removed by FF10
-    '\b': '\\b',
-    '\t': '\\t',
-    '\n': '\\n',
-    '\f': '\\f',
-    '\r': '\\r',
-    '"' : '\\"',
-    '\\': '\\\\'
-  };
-  String.prototype.quote = String.prototype.quote || function() {
-    return '"' + String(this).replace(/[\x00-\x1F"\\\x7F-\uFFFF]/g, function(c) {
-      if (Object.prototype.hasOwnProperty.call(ESCAPES, c)) {
-        return ESCAPES[c];
-      } else if (c.charCodeAt(0) <= 0xFF) {
-        return '\\x' + ('00' + c.charCodeAt(0).toString(16).toUpperCase()).slice(-2);
-      } else {
-        return '\\u' + ('0000' + c.charCodeAt(0).toString(16).toUpperCase()).slice(-4);
-      }
-    }) + '"';
-  };
-}());
-
-
 //----------------------------------------------------------------------
 //
 // Browser Polyfills
+//
+// This assumes ES5 or ES3 + es5.js
 //
 //----------------------------------------------------------------------
 
@@ -613,7 +571,7 @@ if ('window' in this && 'document' in this) {
       requests = Object.create(null);
       timeout_handle = -1;
 
-      Object.keys(cur_requests).forEach(function (id) {
+      Object.keys(cur_requests).forEach(function(id) {
         var request = cur_requests[id];
         if (!request.element || isVisible(request.element)) {
           request.callback(Date.now());
@@ -628,6 +586,7 @@ if ('window' in this && 'document' in this) {
       if (timeout_handle === -1) {
         timeout_handle = window.setTimeout(onFrameTimer, 1000 / TARGET_FPS);
       }
+
       return cb_handle;
     }
 
@@ -662,11 +621,10 @@ if ('window' in this && 'document' in this) {
   // https://dvcs.w3.org/hg/webperf/raw-file/tip/specs/setImmediate/Overview.html
   (function () {
     function setImmediate(callback, args) {
-      var params = [callback, 0], i;
-      for (i = 1; i < arguments.length; i += 1) {
-        params.push(arguments[i]);
-      }
-      return window.setTimeout.apply(null, params);
+      var params = [].slice.call(arguments, 1), i;
+      return window.setTimeout(function() {
+        callback.apply(null, params);
+      }, 0);
     }
 
     function clearImmediate(handle) {
@@ -740,35 +698,35 @@ if ('window' in this && 'document' in this) {
   // DOM Enumerations (http://www.w3.org/TR/DOM-Level-2-Core/)
   //
   window.Node = window.Node || function Node() { throw new TypeError("Illegal constructor"); };
-  window.Node.ELEMENT_NODE = 1;
-  window.Node.ATTRIBUTE_NODE = 2;
-  window.Node.TEXT_NODE = 3;
-  window.Node.CDATA_SECTION_NODE = 4;
-  window.Node.ENTITY_REFERENCE_NODE = 5;
-  window.Node.ENTITY_NODE = 6;
-  window.Node.PROCESSING_INSTRUCTION_NODE = 7;
-  window.Node.COMMENT_NODE = 8;
-  window.Node.DOCUMENT_NODE = 9;
-  window.Node.DOCUMENT_TYPE_NODE = 10;
-  window.Node.DOCUMENT_FRAGMENT_NODE = 11;
-  window.Node.NOTATION_NODE = 12;
+  Node.ELEMENT_NODE = 1;
+  Node.ATTRIBUTE_NODE = 2;
+  Node.TEXT_NODE = 3;
+  Node.CDATA_SECTION_NODE = 4;
+  Node.ENTITY_REFERENCE_NODE = 5;
+  Node.ENTITY_NODE = 6;
+  Node.PROCESSING_INSTRUCTION_NODE = 7;
+  Node.COMMENT_NODE = 8;
+  Node.DOCUMENT_NODE = 9;
+  Node.DOCUMENT_TYPE_NODE = 10;
+  Node.DOCUMENT_FRAGMENT_NODE = 11;
+  Node.NOTATION_NODE = 12;
 
   window.DOMException = window.DOMException || function DOMException() { throw new TypeError("Illegal constructor"); };
-  window.DOMException.INDEX_SIZE_ERR = 1;
-  window.DOMException.DOMSTRING_SIZE_ERR = 2;
-  window.DOMException.HIERARCHY_REQUEST_ERR = 3;
-  window.DOMException.WRONG_DOCUMENT_ERR = 4;
-  window.DOMException.INVALID_CHARACTER_ERR = 5;
-  window.DOMException.NO_DATA_ALLOWED_ERR = 6;
-  window.DOMException.NO_MODIFICATION_ALLOWED_ERR = 7;
-  window.DOMException.NOT_FOUND_ERR = 8;
-  window.DOMException.NOT_SUPPORTED_ERR = 9;
-  window.DOMException.INUSE_ATTRIBUTE_ERR = 10;
-  window.DOMException.INVALID_STATE_ERR = 11;
-  window.DOMException.SYNTAX_ERR = 12;
-  window.DOMException.INVALID_MODIFICATION_ERR = 13;
-  window.DOMException.NAMESPACE_ERR = 14;
-  window.DOMException.INVALID_ACCESS_ERR = 15;
+  DOMException.INDEX_SIZE_ERR = 1;
+  DOMException.DOMSTRING_SIZE_ERR = 2;
+  DOMException.HIERARCHY_REQUEST_ERR = 3;
+  DOMException.WRONG_DOCUMENT_ERR = 4;
+  DOMException.INVALID_CHARACTER_ERR = 5;
+  DOMException.NO_DATA_ALLOWED_ERR = 6;
+  DOMException.NO_MODIFICATION_ALLOWED_ERR = 7;
+  DOMException.NOT_FOUND_ERR = 8;
+  DOMException.NOT_SUPPORTED_ERR = 9;
+  DOMException.INUSE_ATTRIBUTE_ERR = 10;
+  DOMException.INVALID_STATE_ERR = 11;
+  DOMException.SYNTAX_ERR = 12;
+  DOMException.INVALID_MODIFICATION_ERR = 13;
+  DOMException.NAMESPACE_ERR = 14;
+  DOMException.INVALID_ACCESS_ERR = 15;
 
   //
   // Events and EventTargets
@@ -1113,6 +1071,28 @@ if ('window' in this && 'document' in this) {
       addToElementPrototype('relList', function() { return new DOMTokenListShim(this, 'rel'); } );
     }
   }());
+
+  if (!('dataset' in document.createElement('span')) &&
+      'Element' in window && Element.prototype && Object.defineProperty) {
+    Object.defineProperty(Element.prototype, 'dataset', { get: function() {
+      var result = Object.create(null);
+      for (var i = 0; i < this.attributes.length; ++i) {
+        var attr = this.attributes[i];
+        if (attr.specified && attr.name.substring(0, 5) === 'data-') {
+          (function(element, name) {
+            Object.defineProperty(result, name, {
+              get: function() {
+                return element.getAttribute('data-' + name);
+              },
+              set: function(value) {
+                element.setAttribute('data-' + name, value);
+              }});
+          }(this, attr.name.substring(5)));
+        }
+      }
+        return result;
+    }});
+  }
 }
 
 //
@@ -1194,3 +1174,45 @@ if ('window' in this && 'document' in this) {
     return out.join('');
   };
 } (this));
+
+
+//----------------------------------------------------------------------
+//
+// Non-standard JavaScript (Mozilla) functions
+//
+//----------------------------------------------------------------------
+
+(function () {
+  // JavaScript 1.8.1
+  String.prototype.trimLeft = String.prototype.trimLeft || function () {
+    return String(this).replace(/^\s+/, '');
+  };
+
+  // JavaScript 1.8.1
+  String.prototype.trimRight = String.prototype.trimRight || function () {
+    return String(this).replace(/\s+$/, '');
+  };
+
+  // JavaScript 1.?
+  var ESCAPES = {
+    //'\x00': '\\0', Special case in FF3.6, removed by FF10
+    '\b': '\\b',
+    '\t': '\\t',
+    '\n': '\\n',
+    '\f': '\\f',
+    '\r': '\\r',
+    '"' : '\\"',
+    '\\': '\\\\'
+  };
+  String.prototype.quote = String.prototype.quote || function() {
+    return '"' + String(this).replace(/[\x00-\x1F"\\\x7F-\uFFFF]/g, function(c) {
+      if (Object.prototype.hasOwnProperty.call(ESCAPES, c)) {
+        return ESCAPES[c];
+      } else if (c.charCodeAt(0) <= 0xFF) {
+        return '\\x' + ('00' + c.charCodeAt(0).toString(16).toUpperCase()).slice(-2);
+      } else {
+        return '\\u' + ('0000' + c.charCodeAt(0).toString(16).toUpperCase()).slice(-4);
+      }
+    }) + '"';
+  };
+}());

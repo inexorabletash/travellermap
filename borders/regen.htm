@@ -4,7 +4,6 @@
 <link rel="stylesheet" href="../site.css?update=2013-07-25">
 
 <script src="../polyfill/polyfill.js"></script>    
-<script src="../polyfill/harmony.js"></script>    
 <script src="../map.js?update=2013-07-25"></script>    
 <script src="borders.js"></script>    
 <script>
@@ -28,7 +27,7 @@ var ALLEGIANCE_COLORS = {
 };
 
 function colorFor(alleg) {
-  if (alleg.startsWith('V')) return 'olivedrab';
+  if (alleg.indexOf('V') === 0) return 'olivedrab';
   return ALLEGIANCE_COLORS[alleg];
 }
 
