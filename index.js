@@ -151,9 +151,10 @@ window.onload = function() {
   //
   //////////////////////////////////////////////////////////////////////
 
+  var commonMetadataTemplate = Handlebars.compile($('#CommonMetadataTemplate').innerHTML);
+  var statusMetadataTemplate = Handlebars.compile($('#StatusMetadataTemplate').innerHTML);
   var worldMetadataTemplate = Handlebars.compile($('#WorldMetadataTemplate').innerHTML);
   var sectorMetadataTemplate = Handlebars.compile($('#SectorMetadataTemplate').innerHTML);
-
 
   var dataRequest;
   var dataTimeout = 0;
@@ -174,7 +175,13 @@ window.onload = function() {
     }
 
     function displayResults(data) {
-      data.Attribution = (function () {
+      // TODO: Do this with classes instead?
+      var tags = String(data.SectorTags).split(/\s+/);
+      if (tags.indexOf('Official') >= 0) data.Official = true;
+      else if (tags.indexOf('Preserve') >= 0) data.Preserve = true;
+      else data.Unofficial = true;
+
+      data.Attribution = (function() {
         var r = [];
         ['SectorAuthor', 'SectorSource', 'SectorPublisher'].forEach(function (p) {
           if (p in data) { r.push(data[p]); }
@@ -188,7 +195,7 @@ window.onload = function() {
       }
 
       var template = map.GetScale() >= 16 ? worldMetadataTemplate : sectorMetadataTemplate;
-      $("#MetadataDisplay").innerHTML = template(data);
+      $("#MetadataDisplay").innerHTML = statusMetadataTemplate(data) + template(data) + commonMetadataTemplate(data);
     }
 
     var DATA_REQUEST_DELAY_MS = 500;

@@ -179,6 +179,18 @@ body {
 #SearchDisplay.progress #SearchResults { display: none; }
 #SearchDisplay.progress #SearchProgress { display: block; }
 
+/* Credits/Metadata */
+
+.metadata-status a { text-decoration: none; font-weight: bold; }
+.metadata-status .official { visibility: hidden; }
+.metadata-status .preserve { color: green; }
+.metadata-status .unofficial{ color: yellow; }
+.metadata-status .bar { font-size: 12pt; }
+body.print .metadata-status .preserve,
+body.print .metadata-status .unofficial,
+body.atlas .metadata-status .preserve,
+body.atlas .metadata-status .unofficial { color: gray; }
+
 
 /* Atlas (black-on-white) and Print (color-on-white) */
 
