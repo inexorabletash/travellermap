@@ -365,13 +365,19 @@
     <script id="StatusMetadataTemplate" type="text/x-handlebars-template">
       <div class="metadata-status">
         {{#Official}}
-          <a class="official" href="doc/credits.html#official"><span class="bar">&#x25AC;</span> Official <span class="bar">&#x25AC;</span></a>
+          <a class="official" 
+            title="Sector data has been approved by the Traveller 5 Second Survey"
+            href="doc/credits.html#official"><span class="bar">&#x25AC;</span> Official <span class="bar">&#x25AC;</span></a>
         {{/Official}}
         {{#Preserve}}
-          <a class="preserve" href="doc/credits.html#preserve"><span class="bar">&#x25AC;</span> Preserve <span class="bar">&#x25AC;</span></a>
+          <a class="preserve" 
+            title="This sector is set aside as a Referee's Preserve - the presented data is an example"
+            href="doc/credits.html#preserve"><span class="bar">&#x25AC;</span> Preserve <span class="bar">&#x25AC;</span></a>
         {{/Preserve}}
         {{#Unofficial}}
-          <a class="unofficial" href="doc/credits.html#unofficial"><span class="bar">&#x25AC;</span> Unofficial <span class="bar">&#x25AC;</span></a>
+          <a class="unofficial" 
+            title="Sector data has not been approved"
+            href="doc/credits.html#unofficial"><span class="bar">&#x25AC;</span> Unofficial <span class="bar">&#x25AC;</span></a>
         {{/Unofficial}}
       </div>
     </script>
