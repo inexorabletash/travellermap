@@ -9,28 +9,52 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="format-detection" content="telephone=no">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=0">
 
-<!-- iPhone -->
-<link rel="apple-touch-icon" sizes="57x57" href="regina57.png">
-<link rel="apple-touch-startup-image" href="startup-320x460.jpg" media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 1)">
+<!-- Home Screen Icons - iOS and Android -->
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="../res/ui/regina152.png">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../res/ui/regina144.png">
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="../res/ui/regina120.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../res/ui/regina114.png">
+<link rel="apple-touch-icon-precomposed" sizes="76x76" href="../res/ui/regina76.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../res/ui/regina72.png">
+<link rel="apple-touch-icon-precomposed" href="../res/ui/regina57.png">
+<link rel="apple-touch-icon" href="../res/ui/regina57.png">
 
-<!-- iPhone (Retina) -->
-<link rel="apple-touch-icon" sizes="114x114" href="regina114.png">
-<link rel="apple-touch-startup-image" href="startup-640x920.jpg" media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)">
+<!-- iPhone 3GS, 2010 iPod Touch -->
+<link rel="apple-touch-startup-image"
+      href="../res/ui/startup-320x460.jpg"
+      media="(max-device-width: 320px) and (max-device-height: 480px) and (-webkit-device-pixel-ratio: 1)">
 
-<!-- iPhone 5 -->
-<link rel="apple-touch-startup-image" href="startup-640x1096.jpg" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)">
+<!-- iPhone 4, 4S, 2011 iPod Touch -->
+<link rel="apple-touch-startup-image"
+      href="../res/ui/startup-640x920.jpg"
+      media="(max-device-width: 320px) and (max-device-height: 480px) and (-webkit-device-pixel-ratio: 2)">
 
-<!-- iPad -->
-<link rel="apple-touch-icon" sizes="72x72" href="regina72.png">
-<link rel="apple-touch-startup-image" href="startup-768x1004.jpg" media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 1)">
-<link rel="apple-touch-startup-image" href="startup-748x1024.jpg" media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 1)">
+<!-- iPhone 5, 2012 iPod Touch -->
+<link rel="apple-touch-startup-image"
+      href="../res/ui/startup-640x1096.jpg"
+      media="(max-device-width: 320px) and (max-device-height: 568px) and (-webkit-device-pixel-ratio: 2)">
 
-<!-- iPad (Retina) -->
-<link rel="apple-touch-icon" sizes="144x144" href="regina144.png">
-<link rel="apple-touch-startup-image" href="startup-1536x2008.jpg" media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)">
-<link rel="apple-touch-startup-image" href="startup-1496x2048.jpg" media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)">
+<!-- iPad, iPad 2, iPad Mini (Portrait) -->
+<link rel="apple-touch-startup-image"
+      href="../res/ui/startup-768x1004.jpg"
+      media="(max-device-width: 768px) and (max-device-height: 1024px) and (-webkit-device-pixel-ratio: 1) and (orientation: portrait)">
+
+<!-- iPad, iPad 2, iPad Mini (Landscape) -->
+<link rel="apple-touch-startup-image"
+      href="../res/ui/startup-1024x748.jpg"
+      media="(max-device-width: 768px) and (max-device-height: 1024px) and (-webkit-device-pixel-ratio: 1) and (orientation: landscape)">
+
+<!-- Retina iPad (Portrait) -->
+<link rel="apple-touch-startup-image"
+      href="../res/ui/startup-1536x2008.jpg"
+      media="(max-device-width: 768px) and (max-device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+
+<!-- Retina iPad (Landscape) -->
+<link rel="apple-touch-startup-image"
+      href="../res/ui/startup-2048x1496.jpg"
+      media="(max-device-width: 768px) and (max-device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
 
 
 <!-- c/o http://cubiq.org/add-to-home-screen -->
@@ -40,8 +64,8 @@ var addToHomeConfig = { touchIcon: true };
 </script>
 <script type="application/javascript" src="add-to-home-screen/add2home.js"></script>
 
-<script src="../polyfill/polyfill.js"></script>
-<script src="../map.js?update=2013-07-25"></script>
+<script src="../polyfill/polyfill.js?update=2013-09-20"></script>
+<script src="../map.js?update=2013-09-20"></script>
 <script>
 var map;
 window.onload = function() {
