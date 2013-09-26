@@ -1,5 +1,5 @@
 /*!
- * Add to Homescreen v2.0.7 ~ Copyright (c) 2013 Matteo Spinelli, http://cubiq.org
+ * Add to Homescreen v2.0.11 ~ Copyright (c) 2013 Matteo Spinelli, http://cubiq.org
  * Released under MIT license, http://cubiq.org/license
  */
 var addToHome = (function (w) {
@@ -24,7 +24,7 @@ var addToHome = (function (w) {
 
 		options = {
 			autostart: true,			// Automatically open the balloon
-			returningVisitor: false,	// Show the balloon to returning visitors only (setting this to true is HIGHLY RECCOMENDED)
+			returningVisitor: false,	// Show the balloon to returning visitors only (setting this to true is highly recommended)
 			animationIn: 'drop',		// drop || bubble || fade
 			animationOut: 'fade',		// drop || bubble || fade
 			startDelay: 2000,			// 2 seconds from page load before the balloon appears
@@ -60,7 +60,7 @@ var addToHome = (function (w) {
 			nl_nl: 'Installeer deze webapp op uw %device: tik %icon en dan <strong>Voeg toe aan beginscherm</strong>.',
 			pl_pl: 'Aby zainstalować tę aplikacje na %device: naciśnij %icon a następnie <strong>Dodaj jako ikonę</strong>.',
 			pt_br: 'Instale este aplicativo em seu %device: aperte %icon e selecione <strong>Adicionar à Tela Inicio</strong>.',
-			pt_pt: 'Para instalar esta aplicação no seu %device, prima o %icon e depois o <strong>Adicionar ao ecrã principal</strong>.',
+			pt_pt: 'Para instalar esta aplicação no seu %device, prima o %icon e depois em <strong>Adicionar ao ecrã principal</strong>.',
 			ru_ru: 'Установите это веб-приложение на ваш %device: нажмите %icon, затем <strong>Добавить в «Домой»</strong>.',
 			sv_se: 'Lägg till denna webbapplikation på din %device: tryck på %icon och därefter <strong>Lägg till på hemskärmen</strong>.',
 			th_th: 'ติดตั้งเว็บแอพฯ นี้บน %device ของคุณ: แตะ %icon และ <strong>เพิ่มที่หน้าจอโฮม</strong>',
@@ -141,10 +141,10 @@ var addToHome = (function (w) {
 			}
 		}
 
-		balloon.className = (isIPad ? 'addToHomeIpad' : 'addToHomeIphone') + (touchIcon ? ' addToHomeWide' : '');
+		balloon.className = (OSVersion >=7 ? 'addToHomeIOS7 ' : '') + (isIPad ? 'addToHomeIpad' : 'addToHomeIphone') + (touchIcon ? ' addToHomeWide' : '');
 		balloon.innerHTML = touchIcon +
 			options.message.replace('%device', platform).replace('%icon', OSVersion >= 4.2 ? '<span class="addToHomeShare"></span>' : '<span class="addToHomePlus">+</span>') +
-			(options.arrow ? '<span class="addToHomeArrow"></span>' : '') +
+			(options.arrow ? '<span class="addToHomeArrow"' + (OSVersion >= 7 && isIPad && touchIcon ? ' style="margin-left:-32px"' : '') + '></span>' : '') +
 			(options.closeButton ? '<span class="addToHomeClose">\u00D7</span>' : '');
 
 		document.body.appendChild(balloon);
@@ -168,10 +168,12 @@ var addToHome = (function (w) {
 				startX = w.scrollX;
 			} else if ( OSVersion < 6 ) {
 				iPadXShift = 160;
+			} else if ( OSVersion >= 7 ) {
+				iPadXShift = 143;
 			}
 
 			balloon.style.top = startY + options.bottomOffset + 'px';
-			balloon.style.left = startX + iPadXShift - Math.round(balloon.offsetWidth / 2) + 'px';
+			balloon.style.left = Math.max(startX + iPadXShift - Math.round(balloon.offsetWidth / 2), 9) + 'px';
 
 			switch ( options.animationIn ) {
 				case 'drop':
@@ -196,7 +198,7 @@ var addToHome = (function (w) {
 				balloon.style.top = startY - balloon.offsetHeight - options.bottomOffset + 'px';
 			} else {
 				balloon.style.left = '50%';
-				balloon.style.marginLeft = -Math.round(balloon.offsetWidth / 2) - ( w.orientation%180 && OSVersion >= 6 ? 40 : 0 ) + 'px';
+				balloon.style.marginLeft = -Math.round(balloon.offsetWidth / 2) - ( w.orientation%180 && OSVersion >= 6 && OSVersion < 7 ? 40 : 0 ) + 'px';
 				balloon.style.bottom = options.bottomOffset + 'px';
 			}
 
@@ -328,7 +330,7 @@ var addToHome = (function (w) {
 	}
 
 	function orientationCheck () {
-		balloon.style.marginLeft = -Math.round(balloon.offsetWidth / 2) - ( w.orientation%180 && OSVersion >= 6 ? 40 : 0 ) + 'px';
+		balloon.style.marginLeft = -Math.round(balloon.offsetWidth / 2) - ( w.orientation%180 && OSVersion >= 6 && OSVersion < 7 ? 40 : 0 ) + 'px';
 	}
 
 	// Bootstrap!
