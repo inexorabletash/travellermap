@@ -3,7 +3,7 @@
 #
 
 # Rimward half (Far Frontiers) by Dale Kemper (sbgames999@aol.com)
-# 
+#
 # From a manuscript prepared for FASA, published in:
 #  - Ares Magazine Special Edition #2 (Far Frontiers Special Supplement)
 #  - The Traveller Chronicle #2 (I/Antideluvia, J/Alsas; history, states)
@@ -22,31 +22,33 @@
 
 # .SEC file prepared by Joshua Bell (inexorabletash@gmail.com)
 
-# Ares Magazine Special Edition #2 Far Frontiers Special Supplement:
-#  - Krobob 0221 (Antideluvia 0201) is not present
-#  - Names differ for the following worlds:
-#      Sinbad's Bane  0125 => Drawmij
-#      Nautilus       0225 => Natlus
-#      Stamford       0226 => Stamfor
-#      Byte           0326 => Bytar
-#      Mithras        0327 => Mitra
-#      Cretaceous     0426 => Kretakios
-#      MaRied         0428 => Maried
-#      Shudde-M'ell   0523 => Sere
-#      Summersun      0528 => Summer
-#      Dreamworld     0623 => Dreamland
-#      Sherlock       0727 => Nehagen
-#      Greenhouse     0730 => Groneitz
-#      Sagen          0827 => Psagin
-#      Thieves' World 2527 => Kerchov
-#      Oakwood        2827 => Mwari
+# Issues:
+#  - TotSR has "Zylath" vs. Zylanth (Jungleblut 1937)
+#  - TTC#2
+#     - removes Krobob 0221 (Antideluvia 0201); allegiance is Zh
+#  - TTC#3
+#     - Amanamanim 2125 has PBG of 101 but no GG in maps
+#     - Uldor 1928 has PBG of 424 but no GG in maps
+#  - Ares Magazine Special Edition #2 Far Frontiers Special Supplement:
+#     - Krobob 0221 (Antideluvia 0201) is not present
+#     - Names differ for the following worlds:
+#        Sinbad's Bane  0125 => Drawmij
+#        Nautilus       0225 => Natlus
+#        Stamford       0226 => Stamfor
+#        Byte           0326 => Bytar
+#        Mithras        0327 => Mitra
+#        Cretaceous     0426 => Kretakios
+#        MaRied         0428 => Maried
+#        Shudde-M'ell   0523 => Sere
+#        Summersun      0528 => Summer
+#        Dreamworld     0623 => Dreamland
+#        Sherlock       0727 => Nehagen
+#        Greenhouse     0730 => Groneitz
+#        Sagen          0827 => Psagin
+#        Thieves' World 2527 => Kerchov
+#        Oakwood        2827 => Mwari
 
 # To Do:
-#  - Review additional sources (not yet incorporated/correlated)
-#    - Incorporate PGB/Stellar Data from TTC#3 for K,L,M
-#  - Investigate anomalies
-#    - TTC#2 removes Krobob 0221 (Antideluvia 0201); allegiance is Zh
-#    - TotSR has "Zylath" vs. Zylanth (Jungleblut 1937)
 #  - Add subsector textual notes for remaining subsectors
 
 # File History:
@@ -76,12 +78,13 @@
 #  - PBG+Stellar for N,O,P from TCC#4       - josh 2013-08-11
 #  - P-mult for 1227, 2422, 2726 c/o text   - josh 2013-08-13
 #  - Added notes about Ares SE #2 changes   - josh 2013-08-13
+#  - PBG+Stellar for K,L,M from TTC#3       - josh 2013-09-27
 
 # Remarks (Coreward Half)
 #  Sn or Snn - orbit number(s) of companion star(s)
 
 # Allegiance Codes (Rimward Half)
-#  
+#
 #  Az   Domain of Alntzar
 #  Bi   The Biumvirate
 #  Ca   Colonade Administration District
@@ -101,7 +104,7 @@
 #  Zc   Zhodani Client State
 #  Zp   Zelphic Primacy
 
-# The Traveller game in all forms is owned by Far Future Enterprises. 
+# The Traveller game in all forms is owned by Far Future Enterprises.
 # Copyright (C) 1997-2013 Far Future Enterprises.
 
 
@@ -150,16 +153,16 @@ Ku Pryuld       0809  D566645-5 Z  Ni Ri Cw An       U 214 Zh  M8 V
 
 # Subsector B: Ienji
 #
-# Ienji subsector has 26 worlds, 17 of which are within the Zhodani 
-# Consulate. There are 55.75 billion inhabitants, of which some 70 
-# million are Chirpers. There are no significant populations of Addaxur 
+# Ienji subsector has 26 worlds, 17 of which are within the Zhodani
+# Consulate. There are 55.75 billion inhabitants, of which some 70
+# million are Chirpers. There are no significant populations of Addaxur
 # or full Droyne in the subsector. The highest tech level is 13 at Ienji;
-# the highest population is 40 billion (72% of the subsector's populace) 
+# the highest population is 40 billion (72% of the subsector's populace)
 # at Fieedr. The only A ports are at Ienji and Lenj.
 #
-# The Consulate administers two Forbidden worlds and two 
-# Unabsorbed worlds within the subsector. In fact, the two Forbidden 
-# worlds hold 87% of the subsector's population, being Raider worlds 
+# The Consulate administers two Forbidden worlds and two
+# Unabsorbed worlds within the subsector. In fact, the two Forbidden
+# worlds hold 87% of the subsector's population, being Raider worlds
 # caught behind the expanding Consular border.
 #
 Kiav Ibl        0902  E859663-5    Ni                  603 Zh  K3 V
@@ -463,105 +466,105 @@ Azut Leriz    1625 X766000-0                                               101 N
 
 # Subsector K: Taemerlyk
 
-Morlay        1722 D798542-4    Ag Ni                                      101 Na
-Fenner        1723 A230335-D  B Ni Po                                      101 Na
-Excape        1724 D300513-A    Ni                                         101 Na
-Eshaar        1826 E6C4839-3                                               100 Na
-Zishilicti    1828 BAA6698-A    Ni                                       A 101 Fw
-Fafris        1830 B6B49A7-9                                               100 Na
-Bindar        1923 B6A3654-A    Ni                                         101 Pt
-Uldor         1928 A787A98-B  N Cx                                       A 100 Fw
-Dloshl        1929 B697998-A    In                                       A 101 Fw
-DiCule        1930 C695643-5    Ag Ni                                      101 Na
-Bigg's World  2021 A797A99-9    In                                         101 Pt
-Zyra          2024 A9878D9-B                                               100 Pt
-Hearth        2027 B456798-A    Ag                                       A 100 Fw
-Ulintl        2028 B543885-A  N                                            100 Ug
-Jacobi        2122 X610000-0    (Refueling point)                          101 Pt
-Amanamanim    2125 A574A46-B  N In                                         100 Pt
-Agravaine     2127 A5006A9-A    Ni Na                                      101 Ug
-Rellon        2129 B880666-6    Ni Po                                      101 Ug
-Bummer        2221 ACCA489-B    In                                         101 Pt
-Wa-Lu         2224 A372513-B  S In                                         101 Pt
-Quitalos      2225 A667889-B  N Ri                                         101 Pt
-Garth         2228 A669753-B  N Ri Cx                                      101 Ug
-Pshtaijtlatl  2322 A795974-B  S In                                         101 Pt
-Yakutz        2323 A885889-B  S Ri                                         101 Pt
-Bloemtol      2328 E7C3657-A    Ni                                         101 Ug
-Caractacalla  2422 A793AC9-C  B In Cx                                      201 Pt
-Calamain      2424 A000460-B  B Mr                                       R 101 Pt
-Kintara       2425 A454679-9    Ag Ni                                      101 Pt
-Numicta       2428 D9A7A69-6                                               101 Ug
+Morlay        1722 D798542-4    Ag Ni                                      824 Na G9 V
+Fenner        1723 A230335-D  B Ni Po                                      704 Na A2 V MD
+Excape        1724 D300513-A    Ni                                         424 Na G9 V M8 V
+Eshaar        1826 E6C4839-3                                               120 Na F8 V
+Zishilicti    1828 BAA6698-A    Ni                                       A 124 Fw K7 V
+Fafris        1830 B6B49A7-9                                               910 Na F6 V
+Bindar        1923 B6A3654-A    Ni                                         601 Pt F4 III
+Uldor         1928 A787A98-B  N Cx                                       A 420 Fw F7 V
+Dloshl        1929 B697998-A    In                                       A 822 Fw F7 V
+DiCule        1930 C695643-5    Ag Ni                                      304 Na G4 V
+Bigg's World  2021 A797A99-9    In                                         201 Pt F7 V
+Zyra          2024 A9878D9-B                                               500 Pt F7 IV
+Hearth        2027 B456798-A    Ag                                       A 670 Fw G4 V
+Ulintl        2028 B543885-A  N                                            920 Ug F2 V
+Jacobi        2122 X610000-0    (Refueling point)                          002 Pt M7 III MD
+Amanamanim    2125 A574A46-B  N In                                         100 Pt G6 IV
+Agravaine     2127 A5006A9-A    Ni Na                                      705 Ug M2 V MD
+Rellon        2129 B880666-6    Ni Po                                      613 Ug G0 V
+Bummer        2221 ACCA489-B    In                                         202 Pt M8 V
+Wa-Lu         2224 A372513-B  S In                                         211 Pt G6 III
+Quitalos      2225 A667889-B  N Ri                                         923 Pt F2 V MD
+Garth         2228 A669753-B  N Ri Cx                                      422 Ug F0 V MD
+Pshtaijtlatl  2322 A795974-B  S In                                         204 Pt F0 V
+Yakutz        2323 A885889-B  S Ri                                         803 Pt K5 V
+Bloemtol      2328 E7C3657-A    Ni                                         304 Ug M0 II
+Caractacalla  2422 A793AC9-C  B In Cx                                      103 Pt G6 V
+Calamain      2424 A000460-B  B Mr                                       R 211 Pt M4 V
+Kintara       2425 A454679-9    Ag Ni                                      101 Pt A3 V
+Numicta       2428 D9A7A69-6                                               901 Ug F9 V
 
 # Subsector L: Inverness
 
-Aimar         2521 E972678-3    Ni                                         101 Pt
-Pergatory     2523 A7A9301-B    In                                         101 Pt
-Naro-Trevor   2524 A655524-9    Ag Ni                                      101 Pt
-Faro-Trevor   2525 A767745-8    Ag Ri                                      100 Pt
-Shadowsand    2526 C000419-B    Ni                                         100 Na
-Thieves' World2527 C257567-D    Ag Ni                                      101 Na
-Njisse        2530 C755352-A    Ni                                         100 Na
-Llywellan     2625 BA6A788-B    Wa Ri                                      101 Pt
-Freedonia     2627 A7686C0-F  N Ag Ri                                      101 Na
-Sequitor      2629 X566459-3    Ni                                         100 Na
-Rjnevelte     2630 B626557-D    Ni                                         100 Na
-Malthus       2721 B323501-9  S Ni                                         100 Pt
-Trebberhorn   2723 C6587D9-8    Ag                                         101 Pt
-Bestus        2725 A685621-B    Ag Ni                                      101 Pt
-Marsus        2726 A9989B9-A  N In                                         801 Pt
-Linelit       2730 C000310-7    Ni As                                      100 Na
-Bosslwck      2822 A7958A9-B  N                                            101 Pt
-Dobbyn        2825 B976775-8    Ag                                       A 100 Pt
-Oakwood       2827 B444411-A    Ni                                         101 Na
-Sherwood      2829 C584574-5    Ag Ni                                      101 Na
-Kendus        2921 D500889-7    De                                         100 Pt
-Tallamatrix   2923 A593853-A  N                                            101 Pt
-Garden Prime  2925 B1314D9-B    Ni                                         100 Na
-Staci         2927 E300579-5    Ni                                         100 Na
-Goggic        3021 A694610-B  S Ni                                         101 Pt
-Padderborn    3024 D444466-7    Ni                                         101 Pt
-Raskeller     3028 X928440-6                                               101 Mn
-Saulente      3030 C868755-B  S Ag Ri                                      101 Mn
-Phais Eisert  3123 X210000-0                                               101 Pt
-Xylon         3130 E6A2426-4    Ni                                         101 Mn
-Regalia       3221 D521200-7    Po                                       A 101 Pt
-Galatea       3228 E685600-5                                               101 Na
+Aimar         2521 E972678-3    Ni                                         801 Pt F4 III
+Pergatory     2523 A7A9301-B    In                                         111 Pt K3 V
+Naro-Trevor   2524 A655524-9    Ag Ni                                      101 Pt K8 V
+Faro-Trevor   2525 A767745-8    Ag Ri                                      200 Pt K8 IV
+Shadowsand    2526 C000419-B    Ni                                         510 Na G4 V
+Thieves' World2527 C257567-D    Ag Ni                                      704 Na F4 V
+Njisse        2530 C755352-A    Ni                                         900 Na F5 V
+Llywellan     2625 BA6A788-B    Wa Ri                                      424 Pt F4 V MD
+Freedonia     2627 A7686C0-F  N Ag Ri                                      804 Na F3 V
+Sequitor      2629 X566459-3    Ni                                         200 Na F9 V MD
+Rjnevelte     2630 B626557-D    Ni                                         500 Na G9 V
+Malthus       2721 B323501-9  S Ni                                         420 Pt G2 V
+Trebberhorn   2723 C6587D9-8    Ag                                         103 Pt G3 V
+Bestus        2725 A685621-B    Ag Ni                                      125 Pt F9 V
+Marsus        2726 A9989B9-A  N In                                         102 Pt F3 V
+Linelit       2730 C000310-7    Ni As                                      900 Na M9 V
+Bosslwck      2822 A7958A9-B  N                                            903 Pt G3 V
+Dobbyn        2825 B976775-8    Ag                                       A 600 Pt F5 V MD
+Oakwood       2827 B444411-A    Ni                                         702 Na G7 V
+Sherwood      2829 C584574-5    Ag Ni                                      203 Na F4 V
+Kendus        2921 D500889-7    De                                         400 Pt F4 V MD
+Tallamatrix   2923 A593853-A  N                                            402 Pt G2 VI
+Garden Prime  2925 B1314D9-B    Ni                                         420 Na F3 V MD
+Staci         2927 E300579-5    Ni                                         520 Na M5 V
+Goggic        3021 A694610-B  S Ni                                         301 Pt K7 V
+Padderborn    3024 D444466-7    Ni                                         103 Pt G3 V
+Raskeller     3028 X928440-6                                               704 Mn K4 V
+Saulente      3030 C868755-B  S Ag Ri                                      921 Mn F4 V MD
+Phais Eisert  3123 X210000-0                                               125 Pt M0 V MD
+Xylon         3130 E6A2426-4    Ni                                         603 Mn G6 V
+Regalia       3221 D521200-7    Po                                       A 902 Pt F0 IV G3 V
+Galatea       3228 E685600-5                                               502 Na F3 V MD
 
 # Subsector M: Wulfek
 
-Echocha       0134 C443457-9    Ag                                         101 Na
-Follette      0138 D2525A9-7                                               100 Na
-Hrilopar      0232 E622300-6    Po Ni                                      101 Na
-Reseca        0236 C465997-A    Ri                                         101 Ca
-Ort           0237 D66A669-7    Wa                                         100 Ca
-Velpore       0240 EA99422-8    Ni                                         100 Na
-Charon        0332 X442000-0                                               100 Na
-Ralcoan       0334 A782788-9  S Ni                                         101 Ca
-Onada         0340 B7676B5-9    Ag                                         100 Ca
-Zherlicka     0434 A866939-E  N Ri In                                      101 Ca
-Zephron       0435 B651939-C    Na                                         101 Ca
-Mamnon        0436 B583898-C                                               100 Ca
-Thara         0439 A678773-A    In                                         101 Ca
-Endomin       0440 B765899-B  S Ri In                                      101 Ca
-Emorie        0533 E650520-3    De                                       A 101 Na
-Sherzade      0534 BA92654-A                                               101 Ca
-Aemelius      0537 C311543-9    Ag                                         101 Ca
-Jellicoe      0631 B7748D9-B    In                                         101 Na
-Rondomin      0634 B211751-9                                               100 Ca
-Domitar       0636 D443400-8    Ag Ni                                      101 Ca
-Meruritom     0638 CBA0511-A    Na Ni                                      101 Ca
-Balin         0640 B000300-B    Rs                                         100 Ca
-Dingus        0732 E776200-4    Po Ag                                      101 Na
-Ichita        0734 C282799-A    Na                                         101 Ca
-Hectalus      0736 D324555-8    Ag                                         101 Ca
-Dunkel        0738 C8664B6-C    In                                         100 Ca
-Osmice        0740 B432885-B    Na                                         101 Ca
-Wulp-PQ       0832 X582000-0                                               101 Na
-Endus         0834 D778973-C    In                                         101 Ca
-Magnias       0836 B685697-A    Ri                                         101 Ca
-Polletus      0837 B7B1559-B  S In                                         101 Ca
-Allegrim      0839 C465410-A    Po                                         101 Ca
+Echocha       0134 C443457-9    Ag                                         504 Na G6 V
+Follette      0138 D2525A9-7                                               500 Na F5 V
+Hrilopar      0232 E622300-6    Po Ni                                      912 Na M1 V M3 V
+Reseca        0236 C465997-A    Ri                                         603 Ca G7 V MD
+Ort           0237 D66A669-7    Wa                                         920 Ca F4 V MD
+Velpore       0240 EA99422-8    Ni                                         700 Na F8 V MD
+Charon        0332 X442000-0                                               220 Na G8 V
+Ralcoan       0334 A782788-9  S Ni                                         324 Ca F3 V
+Onada         0340 B7676B5-9    Ag                                         700 Ca F6 V MD
+Zherlicka     0434 A866939-E  N Ri In                                      124 Ca F9 V MD
+Zephron       0435 B651939-C    Na                                         314 Ca G9 V
+Mamnon        0436 B583898-C                                               420 Ca F3 V MD
+Thara         0439 A678773-A    In                                         624 Ca G7 V
+Endomin       0440 B765899-B  S Ri In                                      825 Ca F3 V
+Emorie        0533 E650520-3    De                                       A 503 Na F5 V
+Sherzade      0534 BA92654-A                                               204 Ca F6 V MD
+Aemelius      0537 C311543-9    Ag                                         404 Ca G4 IV
+Jellicoe      0631 B7748D9-B    In                                         304 Na F0 V
+Rondomin      0634 B211751-9                                               920 Ca M7 V
+Domitar       0636 D443400-8    Ag Ni                                      101 Ca F3 V
+Meruritom     0638 CBA0511-A    Na Ni                                      613 Ca K3 V
+Balin         0640 B000300-B    Rs                                         600 Ca A7 V G7 V
+Dingus        0732 E776200-4    Po Ag                                      902 Na G7 V
+Ichita        0734 C282799-A    Na                                         923 Ca F7 V MD
+Hectalus      0736 D324555-8    Ag                                         713 Ca M1 IV M4 V
+Dunkel        0738 C8664B6-C    In                                         400 Ca F4 V MD
+Osmice        0740 B432885-B    Na                                         705 Ca M3 V
+Wulp-PQ       0832 X582000-0                                               512 Na F8 V MD
+Endus         0834 D778973-C    In                                         721 Ca F1 V MD
+Magnias       0836 B685697-A    Ri                                         902 Ca F4 V MD
+Polletus      0837 B7B1559-B  S In                                         314 Ca K7 V
+Allegrim      0839 C465410-A    Po                                         503 Ca F7 MD
 
 # Subsector N: Cabala
 
@@ -656,5 +659,3 @@ Pentalus      3136 C957690-9    Ag                                         904 M
 Piat          3137 D131531-4    Po                                         400 Na M8 V
 Calthustra    3231 D749459-8                                               704 Mn G4 V
 Anathos       3238 E800419-C    Rs                                       R 503 Na M5 V M1 D
-
-
