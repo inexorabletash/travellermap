@@ -157,7 +157,7 @@ namespace Maps
         public double Population { get { return Math.Pow(10, PopulationExponent) * PopulationMantissa; } }
 
         [XmlIgnore, JsonIgnore]
-        public bool WaterPresent { get { return (Hydrographics > 0) && (Atmosphere > 1) && (Atmosphere < 10); } }
+        public bool WaterPresent { get { return (Hydrographics > 0) && (Util.InRange(Atmosphere, 2, 9) || Util.InRange(Atmosphere, 0xD, 0xF)); } }
 
         [XmlIgnore, JsonIgnore]
         public bool IsBa { get { return PopulationExponent == 0; } }
