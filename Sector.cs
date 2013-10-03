@@ -950,6 +950,30 @@ namespace Maps
         [XmlAttribute("EndOffsetY")]
         [System.ComponentModel.DefaultValueAttribute(0)]
         public int EndOffsetY { get { return EndOffset.Y; } set { EndOffset = new Point(EndOffset.X, value); } }
+
+        public override string ToString()
+        {
+            var s = "";
+
+            if (StartOffsetX != 0 || StartOffsetY != 0)
+            {
+                s += StartOffsetX.ToString(CultureInfo.InvariantCulture);
+                s += " ";
+                s += StartOffsetY.ToString(CultureInfo.InvariantCulture);
+                s += " ";
+            }
+            s += Start.ToString("0000", CultureInfo.InvariantCulture);
+            s += " ";
+            if (EndOffsetX != 0 || EndOffsetY != 0)
+            {
+                s += EndOffsetX.ToString(CultureInfo.InvariantCulture);
+                s += " ";
+                s += EndOffsetY.ToString(CultureInfo.InvariantCulture);
+                s += " ";
+            }
+            s += End.ToString("0000", CultureInfo.InvariantCulture);
+            return s;
+        }
     }
 
     public class Label : IAllegiance

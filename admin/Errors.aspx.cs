@@ -60,6 +60,22 @@ namespace Maps.Pages
                 {
                     Response.Output.WriteLine("{0} world(s)", 0);
                 }
+
+                foreach (var route in sector.Routes)
+                {
+                    System.Drawing.Point startSector = sector.Location, endSector = sector.Location;
+                    startSector.Offset(route.StartOffset);
+                    endSector.Offset(route.EndOffset);
+
+                    Location startLocation = new Location(startSector, route.Start);
+                    Location endLocation = new Location(endSector, route.End);
+                    int distance = Astrometrics.HexDistance(Astrometrics.LocationToCoordinates(startLocation),
+                        Astrometrics.LocationToCoordinates(endLocation));
+                    if (distance > 4)
+                    {
+                        Response.Output.WriteLine("Route length {0}: {1}", distance, route.ToString());
+                    }
+                }
 #endif
                 Response.Output.WriteLine();
             }
