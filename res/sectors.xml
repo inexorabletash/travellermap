@@ -8008,8 +8008,9 @@ Left:	0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027
 			<Route Start="2937" End="2939" />
 			<Route Start="2937" End="3232" />
 			<Route Start="3024" End="3029" />
-			<Route Start="3026" End="0126" EndOffsetX="1" />
-			<Route Start="3106" End="0105" EndOffsetX="1" />
+<!--			<Route Start="3026" End="0126" EndOffsetX="1" /> Drop per DonM - Alpha Crucis Errata -->
+      <Route Start="3232" End="0232" EndOffsetX="1" Source="Alpha Crucis errata" Author="DonM"/>
+      <Route Start="3106" End="0105" EndOffsetX="1" />
 		</Routes>
 		<Allegiances>
       <Allegiance Code="Ve">Vegan Autonomous Region</Allegiance> <!-- Legacy -->
@@ -8159,8 +8160,8 @@ Left:	0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027
             <Route Start="1918" End="1616" Allegiance="So" />
             <Route Start="1616" End="1418" Allegiance="So" />
             <Route Start="1418" End="1419" Allegiance="So" />
-            <Route Start="1419" End="1321" Allegiance="So" />
-            <Route Start="1321" End="1023" Allegiance="So" />
+            <Route Start="1419" End="1322" Allegiance="So" />
+            <Route Start="1322" End="1023" Allegiance="So" />
             <Route Start="1418" End="1216" Allegiance="So" />
             <Route Start="1216" End="1018" Allegiance="So" />
             <Route Start="1018" End="0720" Allegiance="So" />
