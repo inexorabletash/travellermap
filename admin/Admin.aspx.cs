@@ -2,6 +2,7 @@ using System;
 using System.Data.SqlClient;
 using System.IO;
 using System.Text;
+using System.Collections;
 
 namespace Maps.Pages
 {
@@ -53,6 +54,13 @@ namespace Maps.Pages
         private void Flush()
         {
             SectorMap.Flush();
+
+            var enumerator = Cache.GetEnumerator();
+            while (enumerator.MoveNext())
+            {
+                Cache.Remove(enumerator.Key.ToString());
+            }
+            
             Write("Sector map flushed.");
             Write("<b>&Omega;</b>");
         }
