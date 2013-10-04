@@ -149,7 +149,7 @@
     <Route Start="2114" End="2315" />
     <Route Start="2315" End="2218" />
     <Route Start="2218" End="2120" />
-    <Route Start="2120" End="2114" />
+    <!-- <Route Start="2120" End="2114" /> Removed per DonM -->
     <Route Start="2120" End="2021" />
     <Route Start="2120" End="1920" />
     <Route Start="1920" End="1719" />
@@ -189,7 +189,10 @@
     <Route Start="1822" End="2125" />
     <Route Start="2125" End="2523" />
     <Route Start="2523" End="2823" />
-    <Route Start="2823" End="2628" />
+
+    <Route Start="2628" End="2727" Source="DonM"/>
+    <Route Start="2727" End="2823" Source="DonM"/>
+
     <Route Start="2628" End="2329" />
     <Route Start="2329" End="2228" />
     <Route Start="2228" End="2125" />
@@ -230,7 +233,9 @@
     <Route Start="2237" End="2137" />
     <Route Start="2439" End="2440" />
     <Route Start="2440" End="2240" />
-    <Route Start="2628" End="2633" />
+    <Route Start="2628" End="2631" />
+    <Route Start="2631" End="2632" />
+    <Route Start="2632" End="2633" />
     <Route Start="2633" End="2733" />
     <Route Start="2733" End="2832" />
     <Route Start="2832" End="2833" />
@@ -242,6 +247,8 @@
     <Route Start="2739" End="2740" />
     <Route Start="2740" End="2640" />
     <Route Start="2740" End="3039" />
+
+    <Route Start="2537" End="2736" Source="DonM"/>
 
     <!-- Routes off the edge of the sector -->
     <Route Start="1401" End="1500" />

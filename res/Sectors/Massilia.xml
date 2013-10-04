@@ -30,7 +30,8 @@
   <Routes Publisher="DGP" Source="The Travellers' Digest #11">
     <Route Start="0130" End="0231" />
     <Route Start="0130" End="0327" />
-    <Route Start="0130" End="0434" />
+    <Route Start="0130" End="0231" />
+    <Route Start="0231" End="0434" />
     <Route Start="0134" End="0434" />
     <Route Start="0134" End="3133" EndOffsetX="-1" />
     <Route Start="0205" End="0508" />
@@ -42,21 +43,28 @@
     <Route Start="0318" End="0717" />
     <Route Start="0318" End="3119" EndOffsetX="-1" />
     <Route Start="0327" End="0526" />
-    <Route Start="0327" End="0631" />
+    <Route Start="0327" End="0428" />
+    <Route Start="0428" End="0530" />
+    <Route Start="0530" End="0631" />
     <Route Start="0434" End="0736" />
     <Route Start="0508" End="0711" />
     <Route Start="0512" End="0711" />
     <Route Start="0524" End="0526" />
-    <Route Start="0530" End="0834" />
+    <Route Start="0631" End="0733" />
+    <Route Start="0733" End="0834" />
     <Route Start="0609" End="0711" />
     <Route Start="0711" End="0809" />
     <Route Start="0711" End="0811" />
     <Route Start="0711" End="0908" />
     <Route Start="0717" End="0914" />
     <Route Start="0717" End="0919" />
-    <Route Start="0717" End="1012" />
+    <Route Start="0717" End="0815" />
+    <Route Start="0815" End="0914" />
+    <Route Start="0914" End="1012" />
     <Route Start="0733" End="0933" />
-    <Route Start="0733" End="1533" />
+    <Route Start="0733" End="0933" />
+    <Route Start="0933" End="1133" />
+    <Route Start="1133" End="1533" />
     <Route Start="0736" End="0839" />
     <Route Start="0736" End="0933" />
     <Route Start="0809" End="0908" />
@@ -66,10 +74,13 @@
     <Route Start="0839" End="1040" />
     <Route Start="0919" End="1121" />
     <Route Start="1040" End="1340" />
-    <Route Start="1104" End="1601" />
+    <Route Start="1104" End="1203" />
+    <Route Start="1203" End="1601" />
     <Route Start="1121" End="1322" />
     <Route Start="1133" End="1430" />
-    <Route Start="1322" End="1328" />
+    <Route Start="1322" End="1325" />
+    <Route Start="1325" End="1326" />
+    <Route Start="1326" End="1328" />
     <Route Start="1322" End="1419" />
     <Route Start="1328" End="1430" />
     <Route Start="1340" End="1540" />
@@ -87,7 +98,8 @@
     <Route Start="1719" End="2118" />
     <Route Start="1731" End="2130" />
     <Route Start="1808" End="1910" />
-    <Route Start="1835" End="2238" />
+    <Route Start="1835" End="1837" />
+    <Route Start="1837" End="2238" />
     <Route Start="1910" End="2008" />
     <Route Start="1910" End="2013" />
     <Route Start="2008" End="2407" />
@@ -95,7 +107,9 @@
     <Route Start="2116" End="2118" />
     <Route Start="2130" End="2529" />
     <Route Start="2234" End="2238" />
-    <Route Start="2238" End="1701" EndOffsetY="1" />
+    <Route Start="1940" End="1701" EndOffsetY="1" />
+    <Route Start="1940" End="2039" />
+    <Route Start="2039" End="2238"/>
     <Route Start="2238" End="2540" />
     <Route Start="2407" End="2607" />
     <Route Start="2523" End="2621" />

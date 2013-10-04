@@ -43,7 +43,8 @@
     <Route Start="0402" End="0201" />
     <Route Start="0201" End="3203" EndOffsetX="-1" />
     <Route Start="0506" End="0208" />
-    <Route Start="0825" End="1029" />
+    <!-- <Route Start="0825" End="1029" /> Removed per DonM -->
+    <Route Start="1029" End="1126" Source="DonM"/>
     <Route Start="0208" End="0311" />
     <Route Start="0311" End="0111" />
     <Route Start="0111" End="0208" />
@@ -122,7 +123,9 @@
     <Route Start="1635" End="1833" />
     <Route Start="1235" End="1339" />
     <Route Start="1339" End="1640" />
-    <Route Start="1339" End="0840" />
+    <Route Start="0840" EndOffsetY="1" End="1001" />
+    <Route Start="1339" EndOffsetY="1" End="1001" />
+    <!-- <Route Start="1339" End="0840" /> Removed per DonM -->
     <Route Start="0840" End="0639" />
     <Route Start="0639" End="0736" />
     <Route Start="0736" End="0833" />

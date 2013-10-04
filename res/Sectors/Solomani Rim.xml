@@ -41,10 +41,13 @@
     <Route Start="0214" End="3214" EndOffsetX="-1" />
     <Route Start="0215" End="0317" />
     <Route Start="0230" End="3128" EndOffsetX="-1" />
-    <Route Start="0230" End="0231" />
     <Route Start="0230" End="0233" />
     <Route Start="0230" End="0330" />
-    <Route Start="0231" End="0201" EndOffsetY="1" />
+    <Route Start="0230" End="0233"/>
+    <Route Start="0233" End="0237"/>
+    <Route Start="0237" End="0239"/>
+    <Route Start="0239" End="0240"/>
+    <Route Start="0240" End="0201" EndOffsetY="1" />
     <Route Start="0317" End="0717" />
     <Route Start="0330" End="0632" />
     <Route Start="0524" End="0528" />
@@ -60,7 +63,10 @@
     <Route Start="0921" End="1222" />
     <Route Start="0929" End="1127" />
     <Route Start="1034" End="1035" />
-    <Route Start="1035" End="1538" />
+    <Route Start="1035" End="1136" />
+    <Route Start="1136" End="1337" />
+    <Route Start="1337" End="1437" />
+    <Route Start="1437" End="1538" />
     <Route Start="1105" End="1207" />
     <Route Start="1105" End="1304" />
     <Route Start="1127" End="1224" />
@@ -84,7 +90,8 @@
     <Route Start="1538" End="1738" />
     <Route Start="1540" End="1738" />
     <Route Start="1717" End="1814" />
-    <Route Start="1738" End="2538" />
+    <Route Start="1738" End="2138" />
+    <Route Start="2138" End="2538" />
     <Route Start="1813" End="1814" />
     <Route Start="1813" End="1912" />
     <Route Start="1822" End="2121" />
@@ -119,8 +126,11 @@
     <Route Start="2905" End="3106" />
     <Route Start="2915" End="0115" EndOffsetX="1" />
     <Route Start="2937" End="2939" />
-    <Route Start="2937" End="3232" />
-    <Route Start="3024" End="3029" />
+    <Route Start="2937" End="3035" />
+    <Route Start="3035" End="3134" />
+    <Route Start="3134" End="3232" />
+    <Route Start="3024" End="3026" />
+    <Route Start="3026" End="3029" />
     <!-- <Route Start="3026" End="0126" EndOffsetX="1" /> Drop per DonM - Alpha Crucis Errata -->
     <Route Start="3232" End="0232" EndOffsetX="1" Source="Alpha Crucis errata" Author="DonM"/>
     <Route Start="3106" End="0105" EndOffsetX="1" />
