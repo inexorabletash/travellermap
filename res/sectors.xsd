@@ -7,6 +7,7 @@
     <xs:attribute name="Publisher" type="xs:string" use="optional" />
     <xs:attribute name="Ref" type="xs:anyURI" use="optional" />
     <xs:attribute name="Era" type="xs:unsignedShort" use="optional" />
+    <xs:attribute name="Note" type="xs:string" use="optional" />
   </xs:attributeGroup>
 
   <xs:element name="Sectors">
@@ -37,7 +38,7 @@
             <xs:complexType>
               <xs:attribute name="Publisher" type="xs:string" use="required" />
               <xs:attribute name="Title" type="xs:string" use="required" />
-              <xs:attribute name="Author" type="xs:string" use="required" />
+              <xs:attribute name="Author" type="xs:string" use="optional" />
               <xs:attribute name="Ref" type="xs:anyURI" use="required" />
             </xs:complexType>
           </xs:element>
@@ -162,6 +163,7 @@
                       <xs:extension base="xs:string">
                         <xs:attribute name="Code" type="xs:string" use="required" />
                         <xs:attribute name="Base" type="xs:string" use="optional" />
+                        <xs:attributeGroup ref="metadata"/>
                       </xs:extension>
                     </xs:simpleContent>
                   </xs:complexType>
