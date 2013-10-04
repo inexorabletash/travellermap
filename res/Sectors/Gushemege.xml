@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<Sector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Abbreviation="Gush" Tags="Official">
+    <Y>0</Y>
+    <X>-2</X>
+    <Name>Gushemege</Name>
+    <DataFile Source="Traveller 5 Second Survey" Author="Joe Fugate, David Burden &amp; Leighton Piper" Era="1105" Type="TabDelimited">Gushemege.tab</DataFile>
+    <!-- ALT: Author="David Burden" Publisher="HIWG" Ref="http://www.converj.com/blogs/gushemege/archives/cat_source_material.html"  -->
+    <Subsectors Publisher="HIWG" Author="David Burden" Ref="http://www.converj.com/blogs/gushemege/archives/cat_source_material.html">
+      <Subsector Index="A">Riften</Subsector>
+      <Subsector Index="B">Khiira</Subsector>
+      <Subsector Index="C">Taapvaia</Subsector>
+      <Subsector Index="D">Tansa</Subsector>
+      <Subsector Index="E">Gandonen</Subsector>
+      <Subsector Index="F">Rure</Subsector>
+      <Subsector Index="G">Ankhsusgar</Subsector>
+      <Subsector Index="H">Isi Ahto</Subsector>
+      <Subsector Index="I">Balech</Subsector>
+      <Subsector Index="J">Sallounn</Subsector>
+      <Subsector Index="K">Dashinshaii</Subsector>
+      <Subsector Index="L">Shire</Subsector>
+      <Subsector Index="M">Vipach</Subsector>
+      <Subsector Index="N">Laeth</Subsector>
+      <Subsector Index="O">Truax</Subsector>
+      <Subsector Index="P">Lagan</Subsector>
+    </Subsectors>
+    <Borders>
+      <Border Allegiance="Im" LabelPosition="1709">
+        0125 0224 0223 0222 0322 0421 0521 0620 0619 0618 0617 0616 0615 0614 0714 0813 0913 0912 1011 1111 1210 1209 1309 1308 1407 1507 1606 1605 1705 1804 1803 1802 1801
+        1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300
+        3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341
+        3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041
+        0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027
+        0127 0126 0125
+      </Border>
+    </Borders>
+    <Routes Source="Traveller 1248: Bearers of the Flame" Author="Martin J. Dougherty" Publisher="ComStar Games" Ref="http://www.comstar-games.com/free-traveller/gushemege-Sector-1248.pdf" Era="1248">
+      <Route Start="0912" End="1013" />
+      <Route Start="1013" End="1015" />
+      <Route Start="1015" End="0718" />
+      <Route Start="1015" End="1018" />
+      <Route Start="1015" End="1414" />
+      <Route Start="1414" End="1512" />
+      <Route Start="1414" End="1616" />
+      <Route Start="1616" End="1816" />
+      <Route Start="1816" End="1814" />
+      <Route Start="1814" End="1811" />
+      <Route Start="1811" End="2210" />
+      <Route Start="1816" End="2018" />
+      <Route Start="2018" End="2418" />
+      <Route Start="2418" End="2415" />
+      <Route Start="2415" End="2614" />
+      <Route Start="2614" End="2815" />
+      <Route Start="2815" End="3013" />
+      <Route Start="3013" End="3211" />
+      <Route Start="2018" End="1619" />
+      <Route Start="1619" End="1319" />
+      <Route Start="1319" End="1019" />
+      <Route Start="1019" End="0923" />
+      <Route Start="0923" End="1322" />
+      <Route Start="1322" End="1423" />
+      <Route Start="1423" End="1722" />
+      <Route Start="1722" End="2022" />
+      <Route Start="2022" End="2018" />
+      <Route Start="2022" End="1926" />
+      <Route Start="1926" End="2127" />
+      <Route Start="2127" End="2325" />
+      <Route Start="2325" End="2424" />
+      <Route Start="2424" End="2725" />
+      <Route Start="2725" End="2822" />
+      <Route Start="2725" End="2925" />
+      <Route Start="2925" End="3126" />
+      <Route Start="3126" End="3029" />
+      <Route Start="3029" End="3230" />
+      <Route Start="3029" End="2730" />
+      <Route Start="2730" End="2632" />
+      <Route Start="2632" End="2231" />
+      <Route Start="2231" End="1930" />
+      <Route Start="1930" End="1530" />
+      <Route Start="1530" End="1426" />
+      <Route Start="1426" End="1826" />
+      <Route Start="1826" End="1926" />
+      <Route Start="1426" End="1423" />
+      <Route Start="0923" End="0926" />
+      <Route Start="0926" End="0826" />
+      <Route Start="0826" End="0527" />
+      <Route Start="0527" End="0327" />
+      <Route Start="0327" End="0223" />
+      <Route Start="0527" End="0630" />
+      <Route Start="1530" End="1534" />
+      <Route Start="1530" End="1733" />
+      <Route Start="1733" End="1835" />
+      <Route Start="1835" End="2036" />
+      <Route Start="2036" End="2037" />
+      <Route Start="2037" End="2040" />
+      <Route Start="2037" End="2439" />
+      <Route Start="2439" End="2539" />
+      <Route Start="2539" End="2839" />
+      <Route Start="2839" End="3240" />
+      <Route Start="3240" End="3137" />
+      <Route Start="1534" End="1637" />
+      <Route Start="1637" End="1439" />
+      <Route Start="1534" End="1236" />
+      <Route Start="1236" End="1038" />
+      <Route Start="0527" End="0428" />
+      <Route Start="0428" End="0230" />
+
+      <!-- Inter-sector routes -->
+      <Route Start="3230" End="0329" EndOffsetX="1" />
+      <Route Start="3126" End="0325" EndOffsetX="1" />
+      <Route Start="3240" End="0240" EndOffsetX="1" />
+    </Routes>
+  </Sector>
