@@ -1,120 +1,120 @@
 <?xml version="1.0"?>
 <Sector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Abbreviation="Dene" Tags="Official">
-    <Y>-1</Y>
-    <X>-3</X>
-    <Name>Deneb</Name>
-    <Name Lang="zh">Nieklsdia</Name>
-    <Product Publisher="Mongoose Publishing" Author="Rob Eaglestone" Title="Deneb Sector" Ref="http://www.mongoosepublishing.com/rpgs/traveller/the-third-imperium/deneb-sector.html" />
-    <DataFile Source="Traveller 5 Second Survey" Era="1105" Type="TabDelimited">Deneb.tab</DataFile>
-    <Subsectors Source="MegaTraveller Journal #1">
-      <Subsector Index="A">Pretoria</Subsector>
-      <Subsector Index="B">Lamas</Subsector>
-      <Subsector Index="C">Antra</Subsector>
-      <Subsector Index="D">Million</Subsector>
-      <Subsector Index="E">Sabine</Subsector>
-      <Subsector Index="F">Inar</Subsector>
-      <Subsector Index="G">Dunmag</Subsector>
-      <Subsector Index="H">Atsah</Subsector>
-      <Subsector Index="I">Star Lane</Subsector>
-      <Subsector Index="J">Vincennes</Subsector>
-      <Subsector Index="K">Usani</Subsector>
-      <Subsector Index="L">Geniishir</Subsector>
-      <Subsector Index="M">Gulf</Subsector>
-      <Subsector Index="N">Zeng</Subsector>
-      <Subsector Index="O">Kamlar</Subsector>
-      <Subsector Index="P">Vast Heavens</Subsector>
-    </Subsectors>
+  <Y>-1</Y>
+  <X>-3</X>
+  <Name>Deneb</Name>
+  <Name Lang="zh">Nieklsdia</Name>
+  <Product Publisher="Mongoose Publishing" Author="Rob Eaglestone" Title="Deneb Sector" Ref="http://www.mongoosepublishing.com/rpgs/traveller/the-third-imperium/deneb-sector.html" />
+  <DataFile Source="Traveller 5 Second Survey" Era="1105" Type="TabDelimited">Deneb.tab</DataFile>
+  <Subsectors Source="MegaTraveller Journal #1">
+    <Subsector Index="A">Pretoria</Subsector>
+    <Subsector Index="B">Lamas</Subsector>
+    <Subsector Index="C">Antra</Subsector>
+    <Subsector Index="D">Million</Subsector>
+    <Subsector Index="E">Sabine</Subsector>
+    <Subsector Index="F">Inar</Subsector>
+    <Subsector Index="G">Dunmag</Subsector>
+    <Subsector Index="H">Atsah</Subsector>
+    <Subsector Index="I">Star Lane</Subsector>
+    <Subsector Index="J">Vincennes</Subsector>
+    <Subsector Index="K">Usani</Subsector>
+    <Subsector Index="L">Geniishir</Subsector>
+    <Subsector Index="M">Gulf</Subsector>
+    <Subsector Index="N">Zeng</Subsector>
+    <Subsector Index="O">Kamlar</Subsector>
+    <Subsector Index="P">Vast Heavens</Subsector>
+  </Subsectors>
 
-    <Routes Source="MegaTraveller Journal #1; T5 Cleanup">
-      <Route Start="0124" End="0524" />
-      <Route Start="0201" End="0504" />
-      <Route Start="0201" End="3202" EndOffsetX="-1" Source="Spinward Marches Map" />
-      <Route Start="0208" End="0406" />
-      <Route Start="0208" End="3209" EndOffsetX="-1" />
-      <Route Start="0233" End="0332" />
-      <Route Start="0233" End="3235" EndOffsetX="-1" />
-      <Route Start="0311" End="0514" />
-      <Route Start="0311" End="3212" EndOffsetX="-1" />
-      <Route Start="0316" End="0514" />
-      <Route Start="0316" End="0518" Source="Update from 0517 to 0518 per Rob Eaglestone, T5 cleanup"/>
-      <Route Start="0316" End="0715" />
-      <Route Start="0332" End="0731" />
-      <Route Start="0406" End="0504" />
-      <Route Start="0406" End="0805" />
-      <Route Start="0514" End="0715" />
-      <Route Start="0518" End="0715" Source="Update from 0517 to 0518 per Rob Eaglestone, T5 cleanup" />
-      <Route Start="0524" End="0826" />
-      <Route Start="0715" End="0917" />
-      <Route Start="0715" End="1016" />
-      <Route Start="0729" End="0731" />
-      <Route Start="0729" End="0826" />
-      <Route Start="0730" End="0731" />
-      <Route Start="0805" End="0906" />
-      <Route Start="0805" End="1006" />
-      <Route Start="0826" End="0925" />
-      <Route Start="0917" End="1018" />
-      <Route Start="0925" End="1122" />
-      <Route Start="1006" End="1309" />
-      <Route Start="1016" End="1213" />
-      <Route Start="1018" End="1122" />
-      <Route Start="1122" End="1522" />
-      <Route Start="1309" End="1609" />
-      <Route Start="1336" End="1339" />
-      <Route Start="1336" End="1432" />
-      <Route Start="1339" End="1102" EndOffsetY="1" />
-      <Route Start="1339" End="1639" />
-      <Route Start="1339" End="1340" />
-      <!-- Added per Rob Eaglestone, T5 cleanup -->
-      <Route Start="1417" End="1520" />
-      <Route Start="1417" End="1615" />
-      <Route Start="1432" End="1532" />
-      <Route Start="1432" End="1633" />
-      <Route Start="1520" End="1522" />
-      <Route Start="1522" End="1623" />
-      <Route Start="1532" End="1829" />
-      <Route Start="1609" End="1613" />
-      <Route Start="1609" End="1615" />
-      <Route Start="1609" End="1808" />
-      <Route Start="1623" End="1925" />
-      <Route Start="1633" End="1636" />
-      <Route Start="1639" End="1640" />
-      <Route Start="1808" End="1910" />
-      <Route Start="1826" End="1829" />
-      <Route Start="1826" End="1925" />
-      <Route Start="1910" End="2111" />
-      <Route Start="1925" End="2225" />
-      <Route Start="2111" End="2413" />
-      <Route Start="2225" End="2323" />
-      <Route Start="2323" End="2521" />
-      <Route Start="2520" End="2521" />
-      <Route Start="2813" End="2913" />
-      <!--
+  <Routes Source="MegaTraveller Journal #1; T5 Cleanup">
+    <Route Start="0124" End="0524" />
+    <Route Start="0201" End="0504" />
+    <Route Start="0201" End="3202" EndOffsetX="-1" Source="Spinward Marches Map" />
+    <Route Start="0208" End="0406" />
+    <Route Start="0208" End="3209" EndOffsetX="-1" />
+    <Route Start="0233" End="0332" />
+    <Route Start="0233" End="3235" EndOffsetX="-1" />
+    <Route Start="0311" End="0514" />
+    <Route Start="0311" End="3212" EndOffsetX="-1" />
+    <Route Start="0316" End="0514" />
+    <Route Start="0316" End="0518" Source="Update from 0517 to 0518 per Rob Eaglestone, T5 cleanup"/>
+    <Route Start="0316" End="0715" />
+    <Route Start="0332" End="0731" />
+    <Route Start="0406" End="0504" />
+    <Route Start="0406" End="0805" />
+    <Route Start="0514" End="0715" />
+    <Route Start="0518" End="0715" Source="Update from 0517 to 0518 per Rob Eaglestone, T5 cleanup" />
+    <Route Start="0524" End="0826" />
+    <Route Start="0715" End="0917" />
+    <Route Start="0715" End="1016" />
+    <Route Start="0729" End="0731" />
+    <Route Start="0729" End="0826" />
+    <Route Start="0730" End="0731" />
+    <Route Start="0805" End="0906" />
+    <Route Start="0805" End="1006" />
+    <Route Start="0826" End="0925" />
+    <Route Start="0917" End="1018" />
+    <Route Start="0925" End="1122" />
+    <Route Start="1006" End="1309" />
+    <Route Start="1016" End="1213" />
+    <Route Start="1018" End="1122" />
+    <Route Start="1122" End="1522" />
+    <Route Start="1309" End="1609" />
+    <Route Start="1336" End="1339" />
+    <Route Start="1336" End="1432" />
+    <Route Start="1339" End="1102" EndOffsetY="1" />
+    <Route Start="1339" End="1639" />
+    <Route Start="1339" End="1340" />
+    <!-- Added per Rob Eaglestone, T5 cleanup -->
+    <Route Start="1417" End="1520" />
+    <Route Start="1417" End="1615" />
+    <Route Start="1432" End="1532" />
+    <Route Start="1432" End="1633" />
+    <Route Start="1520" End="1522" />
+    <Route Start="1522" End="1623" />
+    <Route Start="1532" End="1829" />
+    <Route Start="1609" End="1613" />
+    <Route Start="1609" End="1615" />
+    <Route Start="1609" End="1808" />
+    <Route Start="1623" End="1925" />
+    <Route Start="1633" End="1636" />
+    <Route Start="1639" End="1640" />
+    <Route Start="1808" End="1910" />
+    <Route Start="1826" End="1829" />
+    <Route Start="1826" End="1925" />
+    <Route Start="1910" End="2111" />
+    <Route Start="1925" End="2225" />
+    <Route Start="2111" End="2413" />
+    <Route Start="2225" End="2323" />
+    <Route Start="2323" End="2521" />
+    <Route Start="2520" End="2521" />
+    <Route Start="2813" End="2913" />
+    <!--
           These are Rebellion Era-only routes
           <Route Start="2717" End="3016" />
           <Route Start="2913" End="3015" />
           <Route Start="3015" End="3016" />
       -->
-      <Route Start="2913" End="3116" Publisher="DGP" Source="The Travellers' Digest #2" Era="1100" />
-      <Route Start="3116" End="2717" Publisher="DGP" Source="The Travellers' Digest #2" Era="1100" />
-      <Route Start="2717" End="2520" Publisher="DGP" Source="The Travellers' Digest #2" Era="1100" />
-      <Route Start="2520" End="2521" Publisher="DGP" Source="The Travellers' Digest #2" Era="1100" />
-      <Route Start="2413" End="2813" Publisher="DGP" Source="The Travellers' Digest #2" Era="1100" />
-    </Routes>
-    <Borders>
-      <Border Allegiance="Im" Source="http://travellermap.com/borders" LabelPosition="2021" WrapLabel="true">
-        0001
-        0002 0102 0201 0302 0402 0502 0602 0603 0604 0705 0805 0906 1006 1107 1206 1306 1405 1505 1605 1706 1805 1905 2005 2105 2205 2306 2405 2506 2606 2706 2805 2905 3005 3105 3204 3304 3303
-        3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319
-        3219 3119 3019 2920 2820 2721 2621 2522 2523 2423 2424 2425 2326 2226 2227 2228 2129 2130 2131 2031 1932 1933 1833 1834 1835 1736 1737 1637 1638 1639 1640
-        1541 1441 1341 1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041
-        0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001
-      </Border>
-      <Border Allegiance="Vf" Color="olivedrab" Source="http://travellermap.com/borders">
-        3200 3300 3301 3201 3200 3200
-      </Border>
-      <Border Allegiance="Vu" Color="olivedrab" Source="http://travellermap.com/borders">
-        2603 2703 2702 2701 2800 2900 2800 2701 2702 2703 2803 2904 3004 2904 2803 2704 2603
-      </Border>
+    <Route Start="2913" End="3116" Publisher="DGP" Source="The Travellers' Digest #2" Era="1100" />
+    <Route Start="3116" End="2717" Publisher="DGP" Source="The Travellers' Digest #2" Era="1100" />
+    <Route Start="2717" End="2520" Publisher="DGP" Source="The Travellers' Digest #2" Era="1100" />
+    <Route Start="2520" End="2521" Publisher="DGP" Source="The Travellers' Digest #2" Era="1100" />
+    <Route Start="2413" End="2813" Publisher="DGP" Source="The Travellers' Digest #2" Era="1100" />
+  </Routes>
+  <Borders>
+    <Border Allegiance="Im" Source="http://travellermap.com/borders" LabelPosition="2021" WrapLabel="true">
+      0001
+      0002 0102 0201 0302 0402 0502 0602 0603 0604 0705 0805 0906 1006 1107 1206 1306 1405 1505 1605 1706 1805 1905 2005 2105 2205 2306 2405 2506 2606 2706 2805 2905 3005 3105 3204 3304 3303
+      3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319
+      3219 3119 3019 2920 2820 2721 2621 2522 2523 2423 2424 2425 2326 2226 2227 2228 2129 2130 2131 2031 1932 1933 1833 1834 1835 1736 1737 1637 1638 1639 1640
+      1541 1441 1341 1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041
+      0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001
+    </Border>
+    <Border Allegiance="Vf" Color="olivedrab" Source="http://travellermap.com/borders">
+      3200 3300 3301 3201 3200 3200
+    </Border>
+    <Border Allegiance="Vu" Color="olivedrab" Source="http://travellermap.com/borders">
+      2603 2703 2702 2701 2800 2900 2800 2701 2702 2703 2803 2904 3004 2904 2803 2704 2603
+    </Border>
 
-    </Borders>
-  </Sector>
+  </Borders>
+</Sector>

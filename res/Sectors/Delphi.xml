@@ -1,85 +1,85 @@
 <?xml version="1.0"?>
 <Sector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Abbreviation="Delp" Tags="Official">
-    <Y>1</Y>
-    <X>1</X>
-    <Name>Delphi</Name>
-    <Name Lang="vi">Manadish Khurem</Name>
-    <DataFile Source="Traveller 5 Second Survey" Era="1105" Type="TabDelimited">Delphi.tab</DataFile>
-    <Subsectors>
-      <Subsector Index="A">Kirkankhim</Subsector>
-      <Subsector Index="B">Tsent</Subsector>
-      <Subsector Index="C">Dighirpi</Subsector>
-      <Subsector Index="D">Forlorn</Subsector>
-      <Subsector Index="E">Zukhumi</Subsector>
-      <Subsector Index="F">Rifts Reach</Subsector>
-      <Subsector Index="G">Rayoci'Ailr</Subsector>
-      <Subsector Index="H">Tolanada</Subsector>
-      <Subsector Index="I">Aklan</Subsector>
-      <Subsector Index="J">Void</Subsector>
-      <Subsector Index="K">Anaxias</Subsector>
-      <Subsector Index="L">Eduum</Subsector>
-      <Subsector Index="M" Source="Challenge #45">Eta-Gu</Subsector>
-      <Subsector Index="N">Riramla</Subsector>
-      <Subsector Index="O">Zuma</Subsector>
-      <Subsector Index="P">Breda</Subsector>
-    </Subsectors>
-    <Borders>
-      <Border Allegiance="Im" LabelPosition="0810" WrapLabel="true">
-        0000 0100 0200 0300 0400 0500 0600 0700 0800 0900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2100 2000 1901 1902 1903 1904 1905 1805 1706 1707 1607 1508 1408 1409 1310 1210 1211 1212 1213 1214 1315 1215 1116 1117 1118 1119 1120 1121 1122 1123 1223 1124 1024 1025 1026 1027 1028 1029 1130 1230 1231 1232 1333 1433 1534 1634 1735 1835 1935 2035 2135 2235 2335 2334 2433
-        2533 2632 2732 2831 2931 3031 3131 3231 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641
-        2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001 0000
-      </Border>
-    </Borders>
-    <Routes Source="Delphi Project Discussion BOard" Author="Thomas Jones-Low" Ref="http://jtas.sjgames.com/gifbin/2002/DelphiMaps.html">
-      <Route Start="0303" End="0505" />
-      <Route Start="0505" End="0105" />
-      <Route Start="0505" End="0904" />
-      <Route Start="0904" End="1103" />
-      <Route Start="1103" End="1504" />
-      <Route Start="1504" End="1801" />
-      <Route Start="1504" End="1707" />
-      <Route Start="1504" End="1205" />
-      <Route Start="1205" End="1209" />
-      <Route Start="1209" End="1213" />
-      <Route Start="1213" End="0814" />
-      <Route Start="0814" End="0512" />
-      <Route Start="0512" End="0508" />
-      <Route Start="0508" End="0505" />
-      <Route Start="0512" End="0313" />
-      <Route Start="0313" End="0516" />
-      <Route Start="0516" End="0814" />
-      <Route Start="0814" End="0818" />
-      <Route Start="0818" End="0516" />
-      <Route Start="0516" End="0218" />
-      <Route Start="0218" End="0421" />
-      <Route Start="0421" End="0623" />
-      <Route Start="0623" End="1022" />
-      <Route Start="1022" End="1019" />
-      <Route Start="1019" End="0818" />
-      <Route Start="1022" End="1223" />
-      <Route Start="1223" End="1521" />
-      <Route Start="1521" End="1724" />
-      <Route Start="1724" End="2025" />
-      <Route Start="1223" End="0925" />
-      <Route Start="0925" End="0623" />
-      <Route Start="0623" End="0627" />
-      <Route Start="0627" End="0925" />
-      <Route Start="0627" End="0329" />
-      <Route Start="0329" End="0127" />
-      <Route Start="0627" End="0830" />
-      <Route Start="0830" End="0732" />
-      <Route Start="0732" End="0534" />
-      <Route Start="0534" End="0637" />
-      <Route Start="0637" End="0339" />
-      <Route Start="0339" End="0138" />
-      <Route Start="0637" End="0737" />
-      <Route Start="0737" End="1036" />
-      <Route Start="1036" End="0933" />
-      <Route Start="0933" End="0830" />
-      <Route Start="1036" End="1140" />
-      <Route Start="1036" End="1337" />
-      <Route Start="1337" End="1737" />
-      <Route Start="1737" End="2139" />
-      <Route Start="2139" End="1740" />
-    </Routes>
-  </Sector>
+  <Y>1</Y>
+  <X>1</X>
+  <Name>Delphi</Name>
+  <Name Lang="vi">Manadish Khurem</Name>
+  <DataFile Source="Traveller 5 Second Survey" Era="1105" Type="TabDelimited">Delphi.tab</DataFile>
+  <Subsectors>
+    <Subsector Index="A">Kirkankhim</Subsector>
+    <Subsector Index="B">Tsent</Subsector>
+    <Subsector Index="C">Dighirpi</Subsector>
+    <Subsector Index="D">Forlorn</Subsector>
+    <Subsector Index="E">Zukhumi</Subsector>
+    <Subsector Index="F">Rifts Reach</Subsector>
+    <Subsector Index="G">Rayoci'Ailr</Subsector>
+    <Subsector Index="H">Tolanada</Subsector>
+    <Subsector Index="I">Aklan</Subsector>
+    <Subsector Index="J">Void</Subsector>
+    <Subsector Index="K">Anaxias</Subsector>
+    <Subsector Index="L">Eduum</Subsector>
+    <Subsector Index="M" Source="Challenge #45">Eta-Gu</Subsector>
+    <Subsector Index="N">Riramla</Subsector>
+    <Subsector Index="O">Zuma</Subsector>
+    <Subsector Index="P">Breda</Subsector>
+  </Subsectors>
+  <Borders>
+    <Border Allegiance="Im" LabelPosition="0810" WrapLabel="true">
+      0000 0100 0200 0300 0400 0500 0600 0700 0800 0900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2100 2000 1901 1902 1903 1904 1905 1805 1706 1707 1607 1508 1408 1409 1310 1210 1211 1212 1213 1214 1315 1215 1116 1117 1118 1119 1120 1121 1122 1123 1223 1124 1024 1025 1026 1027 1028 1029 1130 1230 1231 1232 1333 1433 1534 1634 1735 1835 1935 2035 2135 2235 2335 2334 2433
+      2533 2632 2732 2831 2931 3031 3131 3231 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641
+      2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001 0000
+    </Border>
+  </Borders>
+  <Routes Source="Delphi Project Discussion BOard" Author="Thomas Jones-Low" Ref="http://jtas.sjgames.com/gifbin/2002/DelphiMaps.html">
+    <Route Start="0303" End="0505" />
+    <Route Start="0505" End="0105" />
+    <Route Start="0505" End="0904" />
+    <Route Start="0904" End="1103" />
+    <Route Start="1103" End="1504" />
+    <Route Start="1504" End="1801" />
+    <Route Start="1504" End="1707" />
+    <Route Start="1504" End="1205" />
+    <Route Start="1205" End="1209" />
+    <Route Start="1209" End="1213" />
+    <Route Start="1213" End="0814" />
+    <Route Start="0814" End="0512" />
+    <Route Start="0512" End="0508" />
+    <Route Start="0508" End="0505" />
+    <Route Start="0512" End="0313" />
+    <Route Start="0313" End="0516" />
+    <Route Start="0516" End="0814" />
+    <Route Start="0814" End="0818" />
+    <Route Start="0818" End="0516" />
+    <Route Start="0516" End="0218" />
+    <Route Start="0218" End="0421" />
+    <Route Start="0421" End="0623" />
+    <Route Start="0623" End="1022" />
+    <Route Start="1022" End="1019" />
+    <Route Start="1019" End="0818" />
+    <Route Start="1022" End="1223" />
+    <Route Start="1223" End="1521" />
+    <Route Start="1521" End="1724" />
+    <Route Start="1724" End="2025" />
+    <Route Start="1223" End="0925" />
+    <Route Start="0925" End="0623" />
+    <Route Start="0623" End="0627" />
+    <Route Start="0627" End="0925" />
+    <Route Start="0627" End="0329" />
+    <Route Start="0329" End="0127" />
+    <Route Start="0627" End="0830" />
+    <Route Start="0830" End="0732" />
+    <Route Start="0732" End="0534" />
+    <Route Start="0534" End="0637" />
+    <Route Start="0637" End="0339" />
+    <Route Start="0339" End="0138" />
+    <Route Start="0637" End="0737" />
+    <Route Start="0737" End="1036" />
+    <Route Start="1036" End="0933" />
+    <Route Start="0933" End="0830" />
+    <Route Start="1036" End="1140" />
+    <Route Start="1036" End="1337" />
+    <Route Start="1337" End="1737" />
+    <Route Start="1737" End="2139" />
+    <Route Start="2139" End="1740" />
+  </Routes>
+</Sector>
