@@ -35,9 +35,9 @@ namespace Maps.Pages
                 // Arbitrary rectangle
 
                 int x1 = GetIntOption("x1", 0);
-                int x2 = GetIntOption("x1", 0);
-                int y1 = GetIntOption("x1", 0);
-                int y2 = GetIntOption("x1", 0);
+                int x2 = GetIntOption("x2", 0);
+                int y1 = GetIntOption("y1", 0);
+                int y2 = GetIntOption("y2", 0);
 
                 tileRect.X = Math.Min(x1, x2);
                 tileRect.Y = Math.Min(y1, y2);
