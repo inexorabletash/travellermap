@@ -75,6 +75,30 @@ namespace Maps.Pages
                     {
                         Response.Output.WriteLine("Route length {0}: {1}", distance, route.ToString());
                     }
+/*
+ * This fails because of routes that use e.g. 3341-style coordinates
+ * It will also be extremely slow due to loading world lists w/o caching
+                    {
+                        var w = map.FromLocation(startSector).GetWorlds(resourceManager, cacheResults: false);
+                        if (w != null)
+                        {
+                            if (w[route.StartPoint.X, route.StartPoint.Y] == null)
+                            {
+                                Response.Output.WriteLine("Route start empty hex: {0}", route.ToString());
+                            }
+                        }
+                    }
+                    {
+                        var w = map.FromLocation(endSector).GetWorlds(resourceManager, cacheResults: false);
+                        if (w != null)
+                        {
+                            if (w[route.EndPoint.X, route.EndPoint.Y] == null)
+                            {
+                                Response.Output.WriteLine("Route end empty hex: {0}", route.ToString());
+                            }
+                        }
+                    }
+                    */
                 }
 #endif
                 Response.Output.WriteLine();

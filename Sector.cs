@@ -192,6 +192,7 @@ namespace Maps
             return sector;
         }
 
+        public Sector FromLocation(Point pt) { return FromLocation(pt.X, pt.Y); }
         public Sector FromLocation(int x, int y)
         {
             if (m_sectors == null)
@@ -419,7 +420,7 @@ namespace Maps
             }
         }
 
-        public void Serialize(ResourceManager resourceManager, TextWriter writer, string mediaType, bool includeMetadata=true, bool includeHeader=true, WorldFilter filter=null)
+        public void Serialize(ResourceManager resourceManager, TextWriter writer, string mediaType, bool includeMetadata=true, bool includeHeader=true, bool sscoords=false, WorldFilter filter=null)
         {
             WorldCollection worlds = GetWorlds(resourceManager);
 
@@ -428,7 +429,7 @@ namespace Maps
             {
                 if (worlds != null)
                 {
-                    worlds.Serialize(writer, mediaType, includeHeader, filter);
+                    worlds.Serialize(writer, mediaType, includeHeader:includeHeader, filter:filter);
                 }
                 return;
             }
@@ -516,7 +517,7 @@ namespace Maps
             }
 
             // Worlds
-            worlds.Serialize(writer, mediaType, includeHeader, filter);
+            worlds.Serialize(writer, mediaType, includeHeader:includeHeader, sscoords:sscoords, filter:filter);
         }
 
         // TODO: Move this elsewhere
@@ -923,11 +924,17 @@ namespace Maps
         [XmlIgnoreAttribute,JsonIgnore]
         public Color Color { get; set; }
 
-        [XmlIgnoreAttribute,JsonIgnore]
+        [XmlIgnoreAttribute, JsonIgnore]
         public Point StartOffset { get; set; }
 
-        [XmlIgnoreAttribute,JsonIgnore]
+        [XmlIgnoreAttribute, JsonIgnore]
         public Point EndOffset { get; set; }
+
+        [XmlIgnoreAttribute, JsonIgnore]
+        public Point StartPoint { get { return new Point(Start / 100, Start % 100); } }
+
+        [XmlIgnoreAttribute, JsonIgnore]
+        public Point EndPoint { get { return new Point(End / 100, End % 100); } }
 
         [XmlAttribute]
         public string Allegiance { get; set; }

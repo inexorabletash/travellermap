@@ -11,15 +11,15 @@ namespace Maps.Serialization
     {
         public abstract Encoding Encoding { get; }
 
-        public virtual void Serialize(Stream stream, IEnumerable<World> worlds, bool includeHeader)
+        public virtual void Serialize(Stream stream, IEnumerable<World> worlds, bool includeHeader=true, bool sscoords=false)
         {
             using (var writer = new StreamWriter(stream, Encoding))
             {
-                Serialize(writer, worlds, includeHeader);
+                Serialize(writer, worlds, includeHeader:includeHeader, sscoords:sscoords);
             }
         }
 
-        public abstract void Serialize(TextWriter writer, IEnumerable<World> worlds, bool includeHeader);
+        public abstract void Serialize(TextWriter writer, IEnumerable<World> worlds, bool includeHeader=true, bool sscoords=false);
 
         public static SectorFileSerializer ForType(string mediaType)
         {
@@ -37,7 +37,7 @@ namespace Maps.Serialization
     {
         public override Encoding Encoding { get { return Encoding.GetEncoding(1252); } }
 
-        public override void Serialize(TextWriter writer, IEnumerable<World> worlds, bool includeHeader)
+        public override void Serialize(TextWriter writer, IEnumerable<World> worlds, bool includeHeader=true, bool sscoords=false)
         {
 
             if (includeHeader)
@@ -67,7 +67,7 @@ namespace Maps.Serialization
             {
                 writer.WriteLine(worldFormat,
                     world.Name.Truncate(14),
-                    world.Hex.ToString("D4"),
+                    (sscoords ? world.SubsectorHex : world.Hex).ToString("D4"),
                     world.UWP,
                     world.CompactLegacyBases,
                     world.Remarks.Truncate(15),
@@ -84,7 +84,7 @@ namespace Maps.Serialization
     {
         public override Encoding Encoding { get { return Util.UTF8_NO_BOM; } }
 
-        public override void Serialize(TextWriter writer, IEnumerable<World> worlds, bool includeHeader)
+        public override void Serialize(TextWriter writer, IEnumerable<World> worlds, bool includeHeader=true, bool sscoords=false)
         {
             ColumnSerializer formatter = new ColumnSerializer(new string[] {
                 "Hex",
@@ -109,7 +109,7 @@ namespace Maps.Serialization
             foreach (World world in worlds.OrderBy(world => world.SS))
             {
                 formatter.AddRow(new string[] {
-                    world.Hex.ToString("0000"),
+                    (sscoords ? world.SubsectorHex : world.Hex).ToString("0000"),
                     world.Name,
                     world.UWP,
                     world.Remarks,
@@ -140,7 +140,7 @@ namespace Maps.Serialization
     {
         public override Encoding Encoding { get { return Util.UTF8_NO_BOM; } }
 
-        public override void Serialize(TextWriter writer, IEnumerable<World> worlds, bool includeHeader)
+        public override void Serialize(TextWriter writer, IEnumerable<World> worlds, bool includeHeader=true, bool sscoords=false)
         {
             if (includeHeader)
             {
@@ -153,7 +153,7 @@ namespace Maps.Serialization
                 writer.WriteLine(String.Join("\t", new string[] {
                     world.Sector.Abbreviation,
                     world.SS,
-                    world.Hex.ToString("D4"),
+                    (sscoords ? world.SubsectorHex : world.Hex).ToString("0000"),
                     world.Name,
                     world.UWP,
                     world.CompactLegacyBases, // TODO: T5Bases ?

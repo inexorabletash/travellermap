@@ -63,6 +63,7 @@ namespace Maps.Pages
                 filter = (World world) => (world.SS == ss);
             }
 
+            bool sscoords = GetBoolOption("sscoords", defaultValue: false);
             bool includeMetadata = GetBoolOption("metadata", defaultValue: true);
             bool includeHeader = GetBoolOption("header", defaultValue: true);
 
@@ -78,13 +79,12 @@ namespace Maps.Pages
                     break;
             }
 
-
             string data;
             using (var writer = new StringWriter())
             {
                 // Content
                 //
-                sector.Serialize(resourceManager, writer, mediaType, includeMetadata:includeMetadata, includeHeader:includeHeader, filter:filter);
+                sector.Serialize(resourceManager, writer, mediaType, includeMetadata:includeMetadata, includeHeader:includeHeader, sscoords: sscoords, filter:filter);
                 data = writer.ToString();
             }
             SendResult(data, encoding);

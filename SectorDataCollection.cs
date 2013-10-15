@@ -60,9 +60,9 @@ namespace Maps
         public List<string> ErrorList { get { return m_errorList; } }
 #endif
 
-        public void Serialize(TextWriter writer, string mediaType, bool includeHeader, WorldFilter filter)
+        public void Serialize(TextWriter writer, string mediaType, bool includeHeader=true, bool sscoords=false, WorldFilter filter=null)
         {
-            SectorFileSerializer.ForType(mediaType).Serialize(writer, this.Where(world => filter == null || filter(world)), includeHeader);
+            SectorFileSerializer.ForType(mediaType).Serialize(writer, this.Where(world => filter == null || filter(world)), includeHeader:includeHeader, sscoords:sscoords);
         }
 
         public void Deserialize(Stream stream, string mediaType)
