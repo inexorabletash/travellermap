@@ -739,7 +739,7 @@ namespace Maps
                 { "Kk", "The Two Thousand Worlds" },
                 { "Na", "Non-Aligned" },
                 { "So", "Solomani Confederation" },
-                { "Va", "Vargr (Non-Aligned }" },
+                { "Va", "Vargr (Non-Aligned)" },
                 { "Zh", "Zhodani Consulate" },
             
                 { "A0", "Yerlyaruiwo Tlaukhu Bloc" },
