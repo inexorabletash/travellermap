@@ -191,7 +191,9 @@
     <Content Include="res\Sectors\Empty Quarter.xml" />
     <Content Include="res\Sectors\extolian.xml" />
     <Content Include="res\Sectors\Folgore.xml" />
-    <Content Include="res\Sectors\Fornast.xml" />
+    <Content Include="res\Sectors\Fornast.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="res\Sectors\Glimmerdrift.xml" />
     <Content Include="res\Sectors\Gushemege.xml" />
     <Content Include="res\Sectors\Gvurrdon.xml" />
@@ -210,7 +212,9 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="res\Sectors\Magyar.xml" />
-    <Content Include="res\Sectors\Massilia.xml" />
+    <Content Include="res\Sectors\Massilia.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="res\Sectors\mikhail.xml">
       <SubType>Designer</SubType>
     </Content>
