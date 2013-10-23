@@ -58,8 +58,8 @@
     for (i = 0; i < 16; i += 1) {
       sector.subsectors[i] = {
         worlds: [],
-        index: (i in metadata.Subsectors) ? metadata.Subsectors[i].Index : undefined,
-        name: (i in metadata.Subsectors) ? metadata.Subsectors[i].Name : undefined,
+        index: (i in metadata.Subsectors) ? metadata.Subsectors[i].Index : String.fromCharCode('A'.charCodeAt(0) + i),
+        name: (i in metadata.Subsectors) ? metadata.Subsectors[i].Name : '',
       };
     }
 
