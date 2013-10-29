@@ -165,6 +165,9 @@ namespace Maps.Serialization
                 {
                     ParseRest(rest, worlds, line, world);
                 }
+
+                // TODO: Would need to filter this on serialization as well, or round trip through SEC would fail
+                // world.UpdateCode("Pr", "Px"); // Legacy: Pr = Prison; T5: Px = Prison/Exile Camp, Pr = Pre-Rich
             }
             catch (Exception e)
             {

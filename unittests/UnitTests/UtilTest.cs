@@ -53,5 +53,49 @@ namespace UnitTests
             Assert.IsFalse(new Glob("a?b?c").IsMatch("Xabc"));
             Assert.IsFalse(new Glob("a?b?c").IsMatch("abcX"));
         }
+
+        [TestMethod]
+        public void ListHashSetTest()
+        {
+            ListHashSet<string> set = new ListHashSet<string>();
+
+            Assert.AreEqual(set.Count(), 0);
+            CollectionAssert.AreEqual(new string[] { }, set.ToArray());
+            Assert.IsFalse(set.Contains("a"));
+            Assert.IsFalse(set.Contains("b"));
+            
+            set.Add("b");
+            Assert.AreEqual(set.Count(), 1);
+            Assert.IsFalse(set.Contains("a"));
+            Assert.IsTrue(set.Contains("b"));
+            CollectionAssert.AreEqual(new string[] { "b" }, set.ToArray());
+
+            set.Add("a");
+            Assert.AreEqual(set.Count(), 2);
+            Assert.IsTrue(set.Contains("a"));
+            Assert.IsTrue(set.Contains("b"));
+            CollectionAssert.AreEqual(new string[] { "b", "a" }, set.ToArray());
+
+            set.Add("b");
+            Assert.AreEqual(set.Count(), 2);
+            Assert.IsTrue(set.Contains("a"));
+            Assert.IsTrue(set.Contains("b"));
+            CollectionAssert.AreEqual(new string[] { "b", "a" }, set.ToArray());
+
+            Assert.AreEqual(set[0], "b");
+            Assert.AreEqual(set[1], "a");
+
+            set.Remove("b");
+
+            CollectionAssert.AreEqual(new string[] { "a" }, set.ToArray());
+            Assert.IsTrue(set.Contains("a"));
+            Assert.IsFalse(set.Contains("b"));
+
+            set.Clear();
+
+            CollectionAssert.AreEqual(new string[] {}, set.ToArray());
+            Assert.IsFalse(set.Contains("a"));
+            Assert.IsFalse(set.Contains("b"));
+        }
     }
 }

@@ -234,6 +234,15 @@ namespace Maps
             return m_codes.Where(s => s.StartsWith(code, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
         }
 
+        public void UpdateCode(string oldCode, string newCode)
+        {
+            if (m_codes.Contains(oldCode))
+            {
+                m_codes.Remove(oldCode);
+                m_codes.Add(newCode);
+            }
+        }
+
         // "(foo bar)" "(foo)9" "baz" "bat"
         private static Regex codeRegex = new Regex(@"(\(.*?\)\S*|\S+)", RegexOptions.Compiled | RegexOptions.CultureInvariant);
         public string Remarks
@@ -251,7 +260,7 @@ namespace Maps
         [XmlIgnore, JsonIgnore]
         public IEnumerable<string> Codes { get { return m_codes; } }
 
-        private List<string> m_codes = new List<string>();
+        private ListHashSet<string> m_codes = new ListHashSet<string>();
 
         [XmlElement("Bases"), JsonName("Bases")]
         public string CompactLegacyBases

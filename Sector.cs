@@ -319,8 +319,8 @@ namespace Maps
         }
 
         [XmlIgnore, JsonIgnore]
-        public List<string> Tags { get { return m_tags; } }
-        private List<string> m_tags = new List<string>();
+        public ListHashSet<string> Tags { get { return m_tags; } }
+        private ListHashSet<string> m_tags = new ListHashSet<string>();
 
         public Allegiance GetAllegiance(string code)
         {
