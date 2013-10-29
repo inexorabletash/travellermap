@@ -204,7 +204,8 @@ namespace Maps
         [XmlIgnore, JsonIgnore]
         public bool IsReserve { get { return HasCode("Re"); } }
         [XmlIgnore, JsonIgnore]
-        public bool IsPrisonExileCamp { get { return HasCode("Pr") || HasCode("Ex"); } } // Pr is T5, Ex is legacy
+        public bool IsPrisonExileCamp { get { return HasCode("Px") || HasCode("Ex"); } } // Px is T5, Ex is legacy
+        // TODO: "Pr" is used in some legacy files, conflicts with T5 "Pre-Rich" - convert codes on import/export
         [XmlIgnore, JsonIgnore]
         public string ResearchStation { get { return HasCodePrefix("Rs"); } }
 
