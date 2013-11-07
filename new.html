@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<title>The Traveller Map</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=0">
+
+<!--[if lt IE 9]><meta http-equiv="X-UA-Compatible" content="chrome=1"><![endif]-->
+<!--[if lt IE 9]><meta http-equiv="imagetoolbar" content="no"><![endif]-->
+<link rel="alternate" type="application/atom+xml" title="Traveller Map News - Atom" href="http://travellermap.blogspot.com/feeds/posts/default">
+<link rel="alternate" type="application/rss+xml" title="Traveller Map News - RSS" href="http://travellermap.blogspot.com/feeds/posts/default?alt=rss">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="canonical" href="http://travellermap.com">
+
+<!-- Facebook Open Graph -->
+<meta property="og:title" content="The Traveller Map">
+<meta property="og:type" content="website">
+<meta property="og:url" content="http://travellermap.com">
+<meta property="og:image" content="http://travellermap.com/res/ui/fb.png">
+<meta property="og:site_name" content="The Traveller Map">
+<meta property="fb:admins" content="617166358">
+
+<link rel="stylesheet" href="new.css?update=2013-09-20">
+
+<!--[if lt IE 8]><script>alert("IE7 is no longer supported.");</script><![endif]-->
+<script src="polyfill/polyfill.js?update=2013-09-20"></script>
+<script src="map.js?update=2013-09-20"></script>
+<script src="handlebars.js?update=2013-07-25"></script>
+<script src="new.js?update=2013-09-20"></script>
+<style>
+button {
+  font-family: Univers, Helvetica, Arial, sans-serif;
+  font-size: 10pt;
+  font-weight: bold;
+  padding: 0 10px; margin: 0; border: none;
+  background-color: #606060;
+  box-shadow: 2px 2px 4px #404040;
+  border-radius: 2px;
+}
+button:hover {
+  background-color: red;
+}
+
+#GalacticDirectionDisplay .spinward {
+    text-align: center;
+    transform: translateX(-50%) translateX(0em) rotate(270deg) translateY(50%);
+    -webkit-transform: translateX(-50%) translateX(0em) rotate(270deg) translateY(50%);
+    -moz-transform: translateX(-50%) translateX(0em) rotate(270deg) translateY(50%);
+    -o-transform: translateX(-50%) translateX(0em) rotate(270deg) translateY(50%);
+}
+#GalacticDirectionDisplay .trailing {
+    text-align: center;
+    transform: translateX(50%) translateX(-1.2em) rotate(270deg) translateY(50%);
+    -webkit-transform: translateX(50%) translateX(-1.2em) rotate(270deg) translateY(50%);
+    -moz-transform: translateX(50%) translateX(-1.2em) rotate(270deg) translateY(50%);
+    -o-transform: translateX(50%) translateX(-1.2em) rotate(270deg) translateY(50%);
+}
+</style>
+
+<!--[if lt IE 9]>
+<style>
+#GalacticDirectionDisplay .spinward {
+    -ms-writing-mode: tb-lr;
+    filter: flipv fliph;
+}
+#GalacticDirectionDisplay .trailing {
+     -ms-writing-mode: bt-rl;
+     filter: flipv fliph;
+}
+</style>
+<![endif]-->
+
+<body style="margin: 0; padding: 0;
+             border: none; overflow: hidden;
+             width: 100%; height: 100%; max-height: 100%;">
+
+  <!-- Search Engine Bait -->
+  <div style="display:none">
+    The Traveller Map is a interactive map of the universe of the
+    Traveller role playing game, incorporating official data and fan
+    submissions. The site also provides services for generating custom
+    maps and Web APIs for incorporating maps into other sites.
+  </div>
+
+  <div id="mapContainer" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0;">
+    <div id="dragContainer" class="galdir" style="position: absolute; overflow: hidden; width: 100%; height: 100%;" tabindex="0">
+      <div id="GalacticDirectionDisplay" style="position: absolute; width: 100%; height: 100%; z-index: 1999;">
+        <div style="position: absolute; top: 4px; left: 0; right: 0; text-align: center;">Coreward</div>
+        <div style="position: absolute; bottom: 4px; left: 0; right: 0; text-align: center;">Rimward</div>
+        <div class="spinward" style="position: absolute; top: 0; height: 100%; left: 4px;">Spinward</div>
+        <div class="trailing" style="position: absolute; top: 0; height: 100%; right: 4px;">Trailing</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="searchBar"
+       style="position: absolute;
+              left: 15px; top: 15px; height: 30px;
+              z-index: 2000;
+              ">
+    <form id="searchForm" action="get" style="display: inline">
+    <input id="searchText"
+           style="height: 30px; width: 250px;
+                  float: left;
+                  font-size: 12pt;
+                  font-family: Univers, Helvetica, Arial, sans-serif;
+                  padding: 0 10px; margin: 0; border: none;
+                  border-radius: 2px;
+                  box-shadow: 2px 2px 4px #404040;
+                  "
+           placeholder="Search for..."
+           title="Search by world, subsector, or sector name.&#x0D;Prefix with uwp: to search UWPs.&#x0D;Use * and ? as wildcards."
+           >
+    <style>
+    #searchText { background-color: white; }
+    .style-print #searchText,
+    .style-atlas #searchText { background-color: #e0e0e0; }
+    </style>
+    <button style="height: 30px;
+                   float: left;
+                   margin-left: 4px;
+                   ">
+      <img style="vertical-align: text-bottom;"
+           src="res/ui/search-button.png"
+           alt="Search">
+    </button>
+    </form>
+    <button id="importantBtn"
+            style="height: 30px;
+                   float: left;
+                   margin-left: 4px;
+                   ">
+      Important
+    </button>
+  </div>
+  <script>
+  (function() {
+    var $ = document.querySelector.bind(document);
+    $("#searchForm").addEventListener('submit', function(e) {
+      search($('#searchText').value);
+      e.preventDefault();
+    });
+    $('#importantBtn').addEventListener('click', function() {
+      search("(default)");
+    });
+  }());
+  </script>
+
+  <div id="resultsBox"
+       class="hoverbox"
+       style="left: 15px; top: 50px; width: 300px;
+              min-height: 50px;
+              max-height: 320px;
+              ">
+    <div id="resultsContainer"></div>
+  </div>
+  <button id="closeResultsBtn"
+          style="position: absolute;
+                 z-index: 2000;
+                 left: 290px; top: 50px;
+                 font-size: 16pt;
+                 "
+          >
+    &times;
+  </button>
+
+  <script id="SearchResultsTemplate" type="text/x-handlebars-template">
+    <div>
+      {{#Results.Items}}
+        {{#World}}
+          <div style="font-size: 125%;"><a title="Navigate to {{Name}}" href="" onclick="{{onclick}}">{{Name}}</a></div>
+          <div style="margin-left: 10pt;">{{Sector}} {{Hex}}</div>
+          {{#Title}}<div style="margin-left: 10pt;">{{.}}</div>{{/Title}}
+          {{#Uwp}}<div style="margin-left: 10pt;">{{.}}</div>{{/Uwp}}
+        {{/World}}
+        {{#Subsector}}
+          <div style="font-size: 125%;"><a title="Navigate to {{Name}}" href="" onclick="{{onclick}}">{{Name}}</a></div>
+          <div style="margin-left: 10pt;">Subsector {{Index}} of {{Sector}}</div>
+        {{/Subsector}}
+        {{#Sector}}
+          <div style="font-size: 125%;"><a title="Navigate to {{Name}}" href="" onclick="{{onclick}}">{{Name}}</a></div>
+          <div style="margin-left: 10pt;">Sector</div>
+        {{/Sector}}
+      {{/Results.Items}}
+      {{^Results.Items}}
+        <div><i>No matches found.</i></div>
+      {{/Results.Items}}
+    </div>
+  </script>
+
+  <div id="progressBox"
+       class="hoverbox"
+       style="position: absolute;
+              left: 15px; top: 50px; height: 50px; width: 400px;
+              text-align: center;
+              ">
+    <img id="ProgressImage" src="res/ui/ajax-loader.gif" alt="" style="width: 32px; height: 32px; margin: 6px;">
+  </div>
+  <style>
+  body #closeResultsBtn { display: none; }
+  body.search-progress #progressBox { display: block; }
+  body.search-results #resultsBox { display: block; }
+  body.search-results #closeResultsBtn { display: block; }
+  </style>
+  <script>
+  (function() {
+    var $ = document.querySelector.bind(document);
+    $('#closeResultsBtn').addEventListener('click', function() {
+      document.body.classList.remove('search-results');
+    });
+  }());
+  </script>
+
+
+  <div id="optionsBar"
+       style="position: absolute;
+              right: 15px; top: 15px; height: 30px;
+              z-index: 2000;">
+    <button id="shareBtn"
+            title="Share"
+            style="height: 30px;
+                   float: left;
+                   margin-left: 4px;
+              ">
+      Share
+    </button>
+    <button id="legendBtn"
+            title="Show map legend"
+            style="height: 30px;
+                   float: left;
+                   margin-left: 4px;
+                   ">
+      Legend
+    </button>
+    <button id="styleBtn"
+            title="Show map style options"
+            style="height: 30px;
+                   float: left;
+                   margin-left: 4px;
+              ">
+      Style
+    </button>
+    <button id="helpBtn"
+            title="Help, feedback, and more"
+            style="height: 30px;
+                   float: left;
+                   margin-left: 4px;
+              ">
+      Help
+    </button>
+  </div>
+  <script>
+  (function() {
+    var $ = document.querySelector.bind(document);
+    var PANELS = ['legend', 'style', 'share', 'help'];
+    PANELS.forEach(function(b) {
+      $('#'+b+'Btn').addEventListener('click', function() {
+        PANELS.forEach(function(p) {
+          document.body.classList[b === p ? 'toggle' : 'remove']('show-' + p);
+        });
+      });
+    });
+  }());
+  </script>
+  <style>
+  body.show-style #styleBox { display: block; }
+  body.show-legend #legendBox { display: block; }
+  body.show-share #shareBox { display: block; }
+  body.show-help #helpBox { display: block; }
+  body.show-style #styleBtn { background-color: red; }
+  body.show-legend #legendBoxBtn { background-color: red; }
+  body.show-share #shareBtn { background-color: red; }
+  body.show-help #helpBtn { background-color: red; }
+  .hoverbox {
+    display: none;
+    position: absolute;
+    z-index: 2000;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: black;
+    border: 1px solid gray;
+    box-shadow: 2px 2px 4px #404040;
+    padding: 20px;
+  }
+  .style-print .hoverbox,
+  .style-atlas .hoverbox { background-color: white; }
+
+  </style>
+
+  <div id="styleBox"
+       class="hoverbox"
+       style="right: 15px; top: 50px; bottom: 150px; width: 200px;
+              max-height: 300px;
+              ">
+
+    <style>
+    #styles button {
+      width: 40px; height: 40px;
+      margin: 2px;
+      background-size: cover;
+      box-shadow: none;
+      border: 1px solid gray;
+    }
+    </style>
+    <p id="styles"
+       style="margin-top: 0; margin-bottom: 0.5em; padding: 0">
+      <button id="styleBtn-poster" style="background-image: url('res/ui/style-poster.png');"
+              title="Classic black background"
+              ></button>
+      <button id="styleBtn-atlas"  style="background-image: url('res/ui/style-atlas.png');"
+              title="Black on white"
+              ></button>
+      <button id="styleBtn-print"  style="background-image: url('res/ui/style-print.png');"
+              title="Printer friendly"
+              ></button>
+      <button id="styleBtn-candy"  style="background-image: url('res/ui/style-candy.png');"
+              title="Eye candy"
+              ></button>
+    </p>
+    <script>
+        (function() {
+          var $ = document.querySelector.bind(document);
+          ['poster', 'atlas', 'print', 'candy'].forEach(function(s) {
+            $('#styleBtn-'+s).addEventListener('click', function() { map.SetStyle(s); });
+          });
+        }());
+    </script>
+
+    <p style="margin-bottom: 0.5em;">
+    <p><strong>Show:</strong></p>
+    <div class="indent" style="margin-bottom: 0.5em;">
+      <p><label title="Show or hide the direction labels around the edge of the map"><input type="checkbox" id="ShowGalacticDirections"> Galactic Direction</label></p>
+      <p><label title="Show sector and subsector grid lines"><input type="checkbox" name="grid" value="true" id="ShowSectorGrid"> Sector Grid</label></p>
+      <p><label title="Show or hide sector and subsector names"><input type="checkbox" id="ShowSectorNames"> Sectors</label></p>
+      <div class="indent">
+        <p><label title="Show only the names of selected sectors when zoomed out"><input type="radio" name="sector_names" id="ShowSelectedSectorNames" value="ShowSelectedSectorNames"> Selected</label></p>
+        <p><label title="Show the names of all sectors when zoomed out"><input type="radio" name="sector_names" id="ShowAllSectorNames" value="ShowAllSectorNames"> All</label></p>
+      </div>
+      <p><label title="Display political borders"><input type="checkbox" id="ShowGovernmentBorders"> Borders</label>
+      <p><label title="Display government and region names"><input type="checkbox" id="ShowGovernmentNames"> Region Names</label>
+      <p><label title="Show important worlds when zoomed out"><input type="checkbox" id="ShowImportantWorlds"> Important Worlds</label>
+    </div>
+    <p><strong>Appearance:</strong></p>
+    <div class="indent" style="margin-bottom: 0.5em;">
+      <p><label title="Always use hexagonal parsecs&#x0a;[BETA TESTING: May be removed]"><input type="checkbox" id="cbForceHexes"> Force Hexes &beta;</label>
+      <p><label title="Use more colors for world features&#x0a;[BETA TESTING: May be removed]"><input type="checkbox" id="cbWorldColors"> World Colors &beta;</label>
+      <p><label title="Fill borders to make regions more visible&#x0a;[BETA TESTING: May be removed]"><input type="checkbox" id="cbFilledBorders"> Filled Borders &beta;</label>
+    </div>
+  </div>
+
+  <div id="legendBox"
+       class="hoverbox"
+       style="right: 15px; top: 50px; bottom: 150px; width: 200px;
+              max-height: 620px;
+              ">
+    <div class="section">
+      <h2 style="margin-top: 0">Map Legend</h2><br>
+      <div id="image1"></div>
+      <div id="image2"></div>
+    </div>
+    <div id="world_colors" class="section">
+      <h2>World<br>Characteristics</h2><br>
+      <ul class="basic_world_colors">
+        <li><span class="glyph" style="font-size: 14pt;">&bull;</span> No Water Present
+        <li><span class="glyph water" style="font-size: 14pt;">&bull;</span> Water Present
+        <li><span class="glyph" style="font-size: 12pt;">:::</span> Asteroid Belt
+      </ul>
+      <ul class="extended_world_colors">
+        <li><span class="glyph RiAg" style="font-size: 14pt;">&bull;</span> Rich &amp; Agricultural
+        <li><span class="glyph Ag" style="font-size: 14pt;">&bull;</span> Agricultural
+        <li><span class="glyph Ri" style="font-size: 14pt;">&bull;</span> Rich
+        <li><span class="glyph In" style="font-size: 14pt;">&bull;</span> Industrial
+        <li><span class="glyph corrosive" style="font-size: 14pt;">&bull;</span> Corrosive/Insidious
+        <li><span class="glyph Va" style="font-size: 14pt;">&bull;</span> Vacuum
+        <li><span class="glyph water" style="font-size: 14pt;">&bull;</span> Water Present
+        <li><span class="glyph" style="font-size: 14pt;">&bull;</span> No Water Present
+        <li><span class="glyph" style="font-size: 12pt;">:::</span> Asteroid Belt
+      </ul>
+    </div>
+    <div id="bases" class="section">
+      <h2>Bases</h2><br>
+      <ul>
+        <li><span class="glyph" style="font-size: 8pt;">&#x2605;</span> Imperial Naval Base
+        <li><span class="glyph" style="font-size: 10pt;">&#x25B2;</span> Scout Base
+        <li><span class="glyph highlight" style="font-size: 10pt;">&#x25B2;</span> Scout Way Station
+        <li><span class="glyph" style="font-size: 10pt;">&#x25A0;</span> Naval Depot
+
+        <li><span class="glyph" style="font-size: 12pt;">&diams;</span> Zhodani Base
+        <li><span class="glyph highlight" style="font-size: 12pt;">&diams;</span> Zhodani Relay Station
+        <li><span class="glyph highlight" style="font-size: 10pt;">&#x25A0;</span> Zhodani Depot
+
+        <li><span class="glyph highlight" style="font-size: 8pt;">&#x2605;</span> Vargr Naval Base
+        <li><span class="glyph" style="font-size: 10pt;">**</span> Vargr Corsair Base
+
+        <li><span class="glyph highlight" style="font-size: 8pt;">&#x2605;</span> K'kree Naval Base
+        <li><span class="glyph highlight" style="font-size: 10pt;">&#x25A0;</span> K'kree Naval Outpost
+
+        <li><span class="glyph highlight" style="font-size: 8pt;">&#x2605;</span> Solomani Naval Base
+
+        <li><span class="glyph" style="font-size: 10pt;">**</span> Aslan Clan Base
+        <li><span class="glyph highlight" style="font-size: 8pt;">&#x2605;</span> Aslan Tlauku Base
+
+        <li><span class="glyph highlight" style="font-size: 8pt;">&#x2605;</span> Federation Naval Base
+        <li><span class="glyph" style="font-size: 10pt;">**</span> Federation Embassy
+
+        <li><span class="glyph highlight" style="font-size: 8pt;">&#x2605;</span> Droyne Naval Base
+        <li><span class="glyph" style="font-size: 10pt;">&#x2726;</span> Droyne <span style="display: none">Military</span> Garrison
+
+        <li><span class="glyph highlight" style="font-size: 8pt;">&#x2605;</span> Naval Base
+        <li><span class="glyph" style="font-size: 10pt;">&#x2726;</span> Military Base
+        <li><span class="glyph" style="font-size: 12pt;">&bull;</span> Independent Base
+
+        <li><span class="glyph highlight" style="font-size: 10pt;"><b>&Gamma;</b></span> Research Station
+        <li><span class="glyph" style="font-size: 10pt;"><b>R</b></span> Imperial Reserve
+        <li><span class="glyph highlight" style="font-size: 10pt;"><b>P</b></span> Penal Colony
+        <li><span class="glyph" style="font-size: 10pt;"><b>X</b></span> Prison, Exile Camp
+      </ul>
+    </div>
+    <div class="section">
+      <h2>Travel Zones</h2><br>
+      <ul>
+        <li><span class="glyph amberzone" style="font-size: 12pt;">&#x25AC;</span> Amber Zone
+        <li><span class="glyph redzone" style="font-size: 12pt;">&#x25AC;</span> Red Zone
+      </ul>
+    </div>
+    <div class="section">
+      <h2>Population</h2><br>
+      <ul>
+        <li><span>Secundus</span> &nbsp; under 1 billion
+        <li><span>PRIMUS</span> &nbsp; over 1 billion
+        <li><span class="highlight">Highlighted</span> world names<br>are subsector capitals
+      </ul>
+    </div>
+  </div>
+
+  <div id="helpBox"
+       class="hoverbox"
+       style="right: 15px; top: 50px; bottom: 150px; width: 200px;
+              max-height: 300px;
+              ">
+    <style>
+    #helpBox p { margin-bottom: 8px; }
+    #helpBox h3 { font-style: italic; font-weight: normal;
+                   color: red;
+                   border-bottom: 2px solid red; }
+    #helpBox a { text-decoration: none; }
+    #helpBox a:hover { text-decoration: underline; }
+    </style>
+    <p><a target="_blank" href="doc/about.html">About the Traveller Map</a></p>
+    <p><a target="_blank" href="doc/credits.html">Credits and Data Sources</a></p>
+    <p><a target="_blank" href="http://travellermap.blogspot.com/">News, Help &amp; Feedback</a></p>
+
+    <h3>Players &amp; Referees</h3>
+
+    <p><a target="_blank" href="doc/secondsurvey.html">Understanding the data</a></p>
+    <p><a target="_blank" href="doc/fileformats.html">Data file formats</a></p>
+    <p><a target="_blank" href="post.htm">Make your own maps</a></p>
+
+    <h3>Developers</h3>
+
+    <p><a target="_blank" href="doc/api.html">Explore the API</a></p>
+    <p><a target="_blank" href="https://github.com/inexorabletash/travellermap">Get the source code</a></p>
+    <p><a target="_blank" href="https://trello.com/b/y61wmEKJ/travellermap-com-wish-list">Check the wish list</a></p>
+  </div>
+
+  <div id="shareBox"
+       class="hoverbox"
+       style="right: 15px; top: 50px; bottom: 150px; width: 230px;
+              max-height: 250px;
+              ">
+    <style>
+    #shareBox > div { margin: 10px 0px; }
+    #shareBox input { width: 210px; padding: 5px; }
+    #shareBox .tip { color: gray; }
+    </style>
+
+    <div>
+      <a href="https://twitter.com/share" class="twitter-share-button" data-via="inexorabletash" data-size="large">Tweet</a>
+    </div>
+
+    <div>
+      <div class="g-plusone" data-size="tall" data-annotation="inline" data-width="240">+1</div>
+    </div>
+
+    <div>
+      <div class="fb-like" data-href="http://travellermap.com" data-width="200" data-colorscheme="dark" data-layout="standard" data-action="like" data-show-faces="true">Like</div>
+    </div>
+
+    <div>
+      Share this link:
+      <input readonly="true" id="share-url" onclick="this.select();" title="Copy and paste">
+    </div>
+
+    <div>
+      Embed this HTML:
+      <input readonly="true" id="share-embed" onclick="this.select();" title="Copy and paste">
+    </div>
+
+  </div>
+
+  <div id="navBar"
+       style="position: absolute;
+              z-index: 2000;">
+    <button id="zoomInBtn"
+            title="Zoom in"
+            style="height: 30px; width: 30px;
+                   float: left;
+                   margin-left: 4px;
+                   font-size: 16pt;
+                   ">
+      &plus;
+    </button>
+    <button id="zoomOutBtn"
+            title="Zoom out"
+            style="height: 30px; width: 30px;
+                   float: left;
+                   margin-left: 4px;
+                   font-size: 16pt;
+              ">
+      &minus;
+    </button>
+  </div>
+  <style>
+  #navBar { right: 15px; bottom: 110px; height: 30px; }
+  .hide-footer #navBar { bottom: 15px; }
+  </style>
+  <script>
+  (function() {
+    var $ = document.querySelector.bind(document);
+    $('#zoomInBtn').addEventListener('click', function() {
+      window.map.ZoomIn();
+    });
+    $('#zoomOutBtn').addEventListener('click', function() {
+      window.map.ZoomOut();
+    });
+  }());
+  </script>
+
+
+  <!-- Footer (docks bottom) -->
+  <div id="PageBottomPane"
+       style="z-index: 2000;
+              ">
+    <style>
+    #PageBottomPane { background-color: rgba(0,0,0,0.65); }
+    .style-atlas #PageBottomPane,
+    .style-print #PageBottomPane { background-color: rgba(255,255,255,0.65); }
+
+    </style>
+    <hr id="stripe">
+    <div id="LogoImage" title="Traveller&reg; - Science Fiction Adventure in the Far Future">&nbsp;</div>    <script>
+        var $ = document.querySelector.bind(document);
+        $("#LogoImage").ondblclick = function() {
+          document.body.classList.add('hide-footer');
+        };
+    </script>
+
+
+
+
+    <div
+       style="font-style: italic; font-size: 8pt;"
+       >
+      The Traveller game in all forms is owned by
+      <a target="_blank" href="http://farfuture.net">Far Future Enterprises</a>.
+      Copyright &copy; 1977 - 2013 Far Future Enterprises.
+    </div>
+    <div id="MetadataDisplay">&nbsp;</div>
+    <script id="SectorMetadataTemplate" type="text/x-handlebars-template">
+      <div>
+        {{#SectorName}}<a title="Printable Sector Booklet for {{.}} Sector" target="_blank" href="sector.htm?sector={{.}}">{{.}}</a>{{/SectorName}}
+        {{#SectorEra}}(circa {{.}}){{/SectorEra}}
+      </div>
+    </script>
+    <script id="WorldMetadataTemplate" type="text/x-handlebars-template">
+      <div>
+        {{#SectorName}}<a title="Printable Sector Booklet for {{.}} Sector" target="_blank" href="sector.htm?sector={{.}}">{{.}}</a>{{/SectorName}}
+        <a class="stealth" href="doc/secondsurvey.html#hex" target="_blank" title="Hex">{{WorldHex}}</a>
+        <b><a class="stealth" href="doc/secondsurvey.html#name" target="_blank" title="Name">{{WorldName}}</a></b>
+        <a class="stealth" href="doc/secondsurvey.html#uwp" target="_blank" title="UWP">{{WorldUwp}}</a>
+        <a class="stealth" href="doc/secondsurvey.html#remarks" target="_blank" title="Remarks">{{WorldRemarks}}</a>
+        <a class="stealth" href="doc/secondsurvey.html#ix" target="_blank" title="Ix">{{WorldIx}}</a>
+        <a class="stealth" href="doc/secondsurvey.html#ex" target="_blank" title="Ex">{{WorldEx}}</a>
+        <a class="stealth" href="doc/secondsurvey.html#cx" target="_blank" title="Cx">{{WorldCx}}</a>
+        <a class="stealth" href="doc/secondsurvey.html#pbg" target="_blank" title="PBG">{{WorldPbg}}</a>
+        {{#SectorEra}}(circa {{.}}){{/SectorEra}}
+        {{#SubsectorName}}(Subsector {{../SubsectorIndex}}: {{.}}){{/SubsectorName}}
+      </div>
+    </script>
+    <script id="StatusMetadataTemplate" type="text/x-handlebars-template">
+      <div class="metadata-status">
+        {{#Official}}
+          <a class="official"
+            title="Sector data has been approved by the Traveller 5 Second Survey"
+            href="doc/credits.html#official"><span class="bar">&#x25AC;</span> Official <span class="bar">&#x25AC;</span></a>
+        {{/Official}}
+        {{#Preserve}}
+          <a class="preserve"
+            title="This sector is set aside as a Referee's Preserve - the presented data is an example"
+            href="doc/credits.html#preserve"><span class="bar">&#x25AC;</span> Preserve <span class="bar">&#x25AC;</span></a>
+        {{/Preserve}}
+        {{#Unofficial}}
+          <a class="unofficial"
+            title="Sector data has not been approved"
+            href="doc/credits.html#unofficial"><span class="bar">&#x25AC;</span> Unofficial <span class="bar">&#x25AC;</span></a>
+        {{/Unofficial}}
+      </div>
+    </script>
+    <script id="CommonMetadataTemplate" type="text/x-handlebars-template">
+      <div style="font-style: italic;">
+        {{Attribution}}
+        {{#SectorRef}}<a target="_blank" href="{{.}}">Source</a>{{/SectorRef}}
+        {{#DataURL}}<a title="Raw data for {{../SectorName}} Sector" target="_blank" href="{{.}}">Data</a>{{/DataURL}}
+        {{#PosterURL}}<a title="PDF map of {{../SectorName}} Sector" target="_blank" href="{{.}}">Poster</a>{{/PosterURL}}
+
+        {{#ProductRef}}
+          &mdash; <a title="Publisher's Catalog" target="_blank" href="{{.}}">
+          {{../ProductTitle}}
+          {{#../ProductAuthor}} by {{.}}{{/../ProductAuthor}}
+          ({{../ProductPublisher}})</a>
+        {{/ProductRef}}
+      </div>
+    </script>
+
+  </div>
+
+  <!-- Twitter -->
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+  <!-- Google+ -->
+  <script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+  </script>
+
+  <!-- Facebook -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&status=0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+  <!-- Google Analytics -->
+  <script>
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18610679-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+</body>

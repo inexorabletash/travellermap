@@ -28,7 +28,7 @@ a.stealth:hover { text-decoration: underline; }
 #GalacticDirectionDisplay { visibility: hidden; }
 .galdir #GalacticDirectionDisplay { visibility: visible; }
 
-#PageRightPane 
+#PageRightPane
 {
     position: absolute; right: 0; width: 235px; top: 0; bottom: 120px; padding: 0; overflow: hidden;
 }
@@ -50,7 +50,7 @@ a.stealth:hover { text-decoration: underline; }
 .hide-controls #PageRightPane { display: none; }
 .hide-controls #PageMainPane { right: 0; }
 
-#dragContainer.dragging 
+#dragContainer.dragging
 {
     cursor: move;
     cursor: url(res/ui/grabbing.cur), move;

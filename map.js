@@ -2,8 +2,11 @@
 // Exported Functionality
 // ======================================================================
 
-var SERVICE_BASE = (window.location.hostname.indexOf("travellermap.com") !== -1) ? "" :
-      (window.location.hostname === "localhost") ? "" : "http://travellermap.com/";
+var SERVICE_BASE = (function(l) {
+  if (l.hostname === 'localhost' && l.pathname.indexOf('~') !== -1)
+    return 'http://travellermap.com';
+  return '';
+}(window.location));
 var LEGACY_STYLES = true;
 
 (function (global) {
@@ -26,6 +29,7 @@ var LEGACY_STYLES = true;
   global.MapOptions = {
     SectorGrid: 0x0001,
     SubsectorGrid: 0x0002,
+    GridMask: 0x0003,
     SectorsSelected: 0x0004,
     SectorsAll: 0x0008,
     SectorsMask: 0x000c,
@@ -498,7 +502,7 @@ function applyUrlParameters(map) {
 // Experimental APIs - may change at any time:
 //   map.TEMP_AddMarker(id, sx, sy, hx, hy); // should have CSS style for .marker#<id>
 //   map.TEMP_AddOverlay(x, y, w, h); // should have CSS style for .overlay
-//  
+//
 //----------------------------------------------------------------------
 
 var Map;
@@ -1075,7 +1079,6 @@ var Map;
   // once it has successfully loaded.
   //
   Map.prototype.getTile = function(x, y, scale, callback) {
-
     var tscale = pow2(scale - 1);
     var options = this.options;
     var uri = SERVICE_BASE + "/api/tile?x=" + x + "&y=" + y + "&scale=" + tscale + "&options=" + options + "&style=" + this.style;
@@ -1373,12 +1376,13 @@ var Map;
     };
   };
 
+  var ZOOM_DELTA = 0.5;
   Map.prototype.ZoomIn = function() {
-    this.setScale(this.scale + 1);
+    this.setScale(this.scale + ZOOM_DELTA);
   };
 
   Map.prototype.ZoomOut = function() {
-    this.setScale(this.scale - 1);
+    this.setScale(this.scale - ZOOM_DELTA);
   };
 
 

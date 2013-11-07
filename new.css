@@ -1,0 +1,202 @@
+/* Default (white-on-black) */
+
+html, body { overflow: hidden; }
+form { margin: 0; padding: 0; }
+table { border-collapse: collapse; border: none; }
+td, th { border: none; margin: 0; padding: 0; }
+p { margin: 0; }
+.indent { margin-left: 20px; }
+
+body, table { font-size: 10pt; font-family: Univers, Arial, sans-serif; padding: 0; margin: 0; }
+body { color: white; background-color: black;  }
+table { color: white; }
+a { color: white; }
+a.stealth { text-decoration: none; }
+a.stealth:hover { text-decoration: underline; }
+#GalacticDirectionDisplay { color: red; font-weight: bold; text-transform: uppercase; font-size: 12pt; }
+.box { border: solid 1px white; background-color: black; }
+#stripe { color: red; background-color: red; border: solid 1px red; height: 4pt; }
+#you_are_here { position: absolute; width: 256px; height: 256px; background-color: Transparent; background-image: url("res/ui/youarehere.gif"); background-repeat: no-repeat; background-position: top left; }
+#overlay { position: absolute; background-color: #8080ff; opacity: 0.5; -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; margin: 0; padding: 0; border: 0; }
+
+#LogoImage { float: right; width: 416px; height: 71px; background-color: Transparent; background-image: url("res/ui/logo-flat.png"); background-repeat: no-repeat; background-position: top left; }
+
+#dragContainer {
+    background-image: url('data:image/png,%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%20%00%00%00%20%08%02%00%00%00%FC%18%ED%A3%00%00%00%2BIDATH%C7%ED%D0A%09%00%00%0C%03%B1%CA%A9%7F%85%D3%D0%E7%20g%20p%E9X%D6%00%00%00%00%F0%02%B0%14%00%00%00%00m%0Faa%F0%01%DB%16%C2%C7%00%00%00%00IEND%AEB%60%82');
+    cursor: crosshair;
+}
+
+#GalacticDirectionDisplay { visibility: hidden; }
+.galdir #GalacticDirectionDisplay { visibility: visible; }
+
+#PageBottomPane
+{
+  position: absolute; left: 0; right: 0; bottom: 0; height: 95px; padding: 10px; padding-top: 0; overflow: hidden;
+}
+
+.hide-footer #PageBottomPane { display: none; }
+.hide-footer #PageRightPane { bottom: 0; }
+.hide-footer #PageMainPane { bottom: 0; }
+
+.hide-controls #PageRightPane { display: none; }
+.hide-controls #PageMainPane { right: 0; }
+
+#dragContainer.dragging
+{
+    cursor: move;
+    cursor: url(res/ui/grabbing.cur), move;
+    cursor: -webkit-grabbing;
+    cursor: -moz-grabbing;
+    cursor: grabbing;
+}
+
+/* WebKit */
+::-webkit-scrollbar { background-color: black; width: 8px; }
+::-webkit-scrollbar-thumb { background-color: #404040; }
+::-webkit-scrollbar-thumb:hover { background-color: #808080; }
+
+/* IE */
+body {
+    scrollbar-face-color:#404040;
+    scrollbar-arrow-color:#000000;
+    scrollbar-track-color:#000000;
+    scrollbar-shadow-color:#404040;
+    scrollbar-highlight-color:#404040;
+    scrollbar-3dlight-color:#404040;
+    scrollbar-darkshadow-color: #000000;
+}
+
+#legendBox {
+  text-align: center;
+}
+
+#legendBox .section h2 {
+  display: inline-block;
+  margin-bottom: 6px;
+  border-bottom: 3px solid white;
+  padding: 2px 0px;
+  text-transform: uppercase;
+  font-size: 10pt;
+  font-weight: normal;
+}
+
+#legendBox .section ul {
+    text-align: left;
+    display: inline-block;
+    padding: 0; margin: 0;
+    list-style-type: none;
+}
+
+#legendBox .section li {
+    line-height: 12pt;
+}
+
+#legendBox .glyph { display: inline-block; width: 15px; text-align: center; }
+#legendBox .highlight { color: red; }
+#legendBox .glyph.water { color: #00bfff; }
+#legendBox .amberzone { color: yellow; }
+#legendBox .redzone { color: red; }
+
+#legendBox .section ul.basic_world_colors { display: inline-block; }
+#legendBox .section ul.extended_world_colors { display: none; }
+#legendBox.world_colors .section ul.basic_world_colors { display: none; }
+#legendBox.world_colors .section ul.extended_world_colors { display: inline-block; }
+
+/* Extended World Colors */
+#legendBox .glyph.RiAg { color: rgb(241,194,50); }
+#legendBox .glyph.Ag { color: rgb(106,168,79); }
+#legendBox .glyph.Ri { color: purple; }
+#legendBox .glyph.In { color: gray; }
+#legendBox .glyph.corrosive { color: rgb(180,95,6); }
+#legendBox .glyph.Va { color: black; }
+
+.style-candy #legendBox #world_colors,
+.style-candy #legendBox #bases { display: none; }
+
+#legendBox #image1
+{
+    display: inline-block;
+    width: 200px; height: 200px; margin: 0; padding: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url("res/ui/Legend_1003_poster.png");
+}
+#legendBox #image2
+{
+    display: inline-block;
+    width: 200px; height: 200px; margin: 0; padding: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url("res/ui/Legend_1006_poster.png");
+}
+
+
+.style-candy #legendBox #image1 { background-image: url("res/ui/Legend_1003_candy.png"); }
+.style-candy #legendBox #image2 { background-image: url("res/ui/Legend_1006_candy.png"); }
+.style-atlas #legendBox #image1 { background-image: url("res/ui/Legend_1003_atlas.png"); }
+.style-atlas #legendBox #image2 { background-image: url("res/ui/Legend_1006_atlas.png"); }
+.style-print #legendBox #image1 { background-image: url("res/ui/Legend_1003_print.png"); }
+.style-print #legendBox #image2 { background-image: url("res/ui/Legend_1006_print.png"); }
+
+
+/* Credits/Metadata */
+
+.metadata-status a { text-decoration: none; font-weight: bold; }
+.metadata-status .official { visibility: hidden; }
+.metadata-status .preserve { color: green; }
+.metadata-status .unofficial{ color: yellow; }
+.metadata-status .bar { font-size: 12pt; }
+.style-print .metadata-status .preserve,
+.style-print .metadata-status .unofficial,
+.style-atlas .metadata-status .preserve,
+.style-atlas .metadata-status .unofficial { color: gray; }
+
+
+/* Atlas (black-on-white) and Print (color-on-white) */
+
+body.style-print,
+body.style-atlas { color: black; background-color: white; }
+.style-print table,
+.style-atlas table { color: black; }
+.style-print a,
+.style-atlas a { color: black; }
+.style-atlas #GalacticDirectionDisplay { color: gray; }
+.style-print .box,
+.style-atlas .box { border: solid 1px black; background-color: white; }
+.style-print #stripe,
+.style-atlas #stripe { color: black; background-color: black; border: solid 1px black; }
+.style-print #you_are_here,
+.style-atlas #you_are_here { background-image: url("res/ui/youarehere_gray.gif"); }
+.style-atlas #overlay { background-color: #808080; }
+.style-print #LogoImage,
+.style-atlas #LogoImage { background-image: url("res/ui/logo-flat-gray.png"); }
+.style-atlas #legendBox .highlight { color: gray; }
+.style-atlas #legendBox .water { color: #e0e0e0; }
+.style-atlas #legendBox .amberzone { color: #c0c0c0; }
+.style-atlas #legendBox .redzone { color: black; }
+
+.style-print #dragContainer,
+.style-atlas #dragContainer {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAABp0RVh0U29mdHdhcmUAUGFpbnQuTkVUIHYzLjUuMTAw9HKhAAAAWUlEQVRIS+3VyQkAMAhEUdON/TdjOVmOWWCYa/ieByQPo62qwqnMdOIRs4FV3SwaSDCIILr/oDQ5AkyRFPuASL7xCFi7fR0bGigyiJQQUySFIILosWo1yp4YB/GvdXDgEM0AAAAASUVORK5CYII=');
+}
+
+
+
+.style-print ::-webkit-scrollbar,
+.style-atlas ::-webkit-scrollbar { background-color: white; width: 8px; }
+.style-print ::-webkit-scrollbar-thumb,
+.style-atlas ::-webkit-scrollbar-thumb { background-color: #b0b0b0; }
+.style-print ::-webkit-scrollbar-thumb:hover,
+.style-atlas ::-webkit-scrollbar-thumb:hover { background-color: #808080; }
+
+/* IE */
+body.style-print,
+body.style-atlas {
+    scrollbar-face-color:#b0b0b0;
+    scrollbar-arrow-color:#ffffff;
+    scrollbar-track-color:#ffffff;
+    scrollbar-shadow-color:#b0b0b0;
+    scrollbar-highlight-color:#b0b0b0;
+    scrollbar-3dlight-color:#b0b0b0;
+    scrollbar-darkshadow-color: #ffffff;
+}
