@@ -155,6 +155,11 @@ window.addEventListener('load', function() {
     updatePermalink();
   }
 
+  if ("q" in oParams) {
+    $('#searchBox').value = oParams.q;
+    search(oParams.q);
+  }
+
   function setOptions(mask, flags) {
     map.SetOptions((map.GetOptions() & ~mask) | flags);
   }

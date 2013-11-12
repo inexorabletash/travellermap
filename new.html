@@ -100,12 +100,12 @@ button:hover {
     }
     </style>
     <form id="searchForm" action="get" style="display: inline">
-    <input id="searchText"
+    <input id="searchBox"
            placeholder="Search for..."
            title="Search by world, subsector, or sector name.&#x0D;Prefix with uwp: to search UWPs.&#x0D;Use * and ? as wildcards."
            >
     <style>
-    #searchText {
+    #searchBox {
       background-color: white;
       height: 30px; width: 250px;
       float: left;
@@ -115,36 +115,44 @@ button:hover {
       border-radius: 2px;
       box-shadow: 2px 2px 4px #404040;
     }
-    .style-print #searchText,
-    .style-atlas #searchText { background-color: #e0e0e0; }
+    .style-print #searchBox,
+    .style-atlas #searchBox { background-color: #e0e0e0; }
     @media only screen and (max-width: 640px), (max-device-width: 640px) {
-      #searchText {
-        width: 200px;
-      }
+      #searchBox { width: 150px; }
     }
     </style>
-    <button style="height: 30px;
-                   float: left;
-                   margin-left: 4px;
-                   ">
+    <button id="searchBtn">
       <img style="vertical-align: text-bottom;"
            src="res/ui/search-button.png"
            alt="Search">
     </button>
+    <style>
+    #searchBtn { height: 30px; float: left; margin-left: 4px; }
+    @media only screen and (max-width: 640px), (max-device-width: 640px) {
+      #searchBtn { display: none; }
+    }
+    </style>
+
     </form>
-    <button id="importantBtn"
-            style="height: 30px;
-                   float: left;
-                   margin-left: 4px;
-                   ">
+    <button id="importantBtn">
       Important
     </button>
+    <style>
+    #importantBtn {
+      height: 30px;
+      float: left;
+      margin-left: 4px;
+    }
+    @media only screen and (max-width: 640px), (max-device-width: 640px) {
+      #importantBtn { display: none; }
+    }
+    </style>
   </div>
   <script>
   (function() {
     var $ = document.querySelector.bind(document);
     $("#searchForm").addEventListener('submit', function(e) {
-      search($('#searchText').value);
+      search($('#searchBox').value);
       e.preventDefault();
     });
     $('#importantBtn').addEventListener('click', function() {
@@ -154,10 +162,10 @@ button:hover {
   </script>
 
   <div id="resultsBox"
-       class="hoverbox"
+       class="hoverbox hoverbox-left"
        style="left: 15px; top: 50px; width: 300px;
               min-height: 50px;
-              max-height: 320px;
+              max-height: 250px;
               ">
     <div id="resultsContainer"></div>
   </div>
@@ -227,9 +235,13 @@ button:hover {
       z-index: 2000;
     }
     @media only screen and (max-width: 640px), (max-device-width: 640px) {
-      #optionsBar {
+      #xoptionsBar {
         left: 15px; right: auto; top: 60px;
       }
+      #shareBtn { display: none; }
+      #x-legendBtn { display: none; }
+      #x-styleBtn { display: none; }
+      #x-helpBtn { display: none; }
     }
     </style>
     <button id="shareBtn"
@@ -304,9 +316,13 @@ button:hover {
   .hoverbox-right {
     right: 15px; top: 50px; bottom: 150px;
   }
+  .hoverbox-left {
+    left: 15px; top: 50px; bottom: 110px;
+  }
   @media only screen and (max-width: 640px), (max-device-width: 640px) {
-    .hoverbox-right {
-      left: 15px; right: 15px; top: 100px; bottom: 50px;
+    .hoverbox-right,
+    .hoverbox-left {
+      bottom: 60px;
     }
   }
 
