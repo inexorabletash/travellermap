@@ -91,28 +91,37 @@ button:hover {
     </div>
   </div>
 
-  <div id="searchBar"
-       style="position: absolute;
-              left: 15px; top: 15px; height: 30px;
-              z-index: 2000;
-              ">
+  <div id="searchBar">
+    <style>
+    #searchBar {
+      position: absolute;
+      left: 15px; top: 15px; height: 30px;
+      z-index: 2000;
+    }
+    </style>
     <form id="searchForm" action="get" style="display: inline">
     <input id="searchText"
-           style="height: 30px; width: 250px;
-                  float: left;
-                  font-size: 12pt;
-                  font-family: Univers, Helvetica, Arial, sans-serif;
-                  padding: 0 10px; margin: 0; border: none;
-                  border-radius: 2px;
-                  box-shadow: 2px 2px 4px #404040;
-                  "
            placeholder="Search for..."
            title="Search by world, subsector, or sector name.&#x0D;Prefix with uwp: to search UWPs.&#x0D;Use * and ? as wildcards."
            >
     <style>
-    #searchText { background-color: white; }
+    #searchText {
+      background-color: white;
+      height: 30px; width: 250px;
+      float: left;
+      font-size: 12pt;
+      font-family: Univers, Helvetica, Arial, sans-serif;
+      padding: 0 10px; margin: 0; border: none;
+      border-radius: 2px;
+      box-shadow: 2px 2px 4px #404040;
+    }
     .style-print #searchText,
     .style-atlas #searchText { background-color: #e0e0e0; }
+    @media only screen and (max-width: 640px), (max-device-width: 640px) {
+      #searchText {
+        width: 200px;
+      }
+    }
     </style>
     <button style="height: 30px;
                    float: left;
@@ -189,7 +198,7 @@ button:hover {
   <div id="progressBox"
        class="hoverbox"
        style="position: absolute;
-              left: 15px; top: 50px; height: 50px; width: 400px;
+              left: 15px; top: 50px; height: 50px; width: 300px;
               text-align: center;
               ">
     <img id="ProgressImage" src="res/ui/ajax-loader.gif" alt="" style="width: 32px; height: 32px; margin: 6px;">
@@ -210,15 +219,24 @@ button:hover {
   </script>
 
 
-  <div id="optionsBar"
-       style="position: absolute;
-              right: 15px; top: 15px; height: 30px;
-              z-index: 2000;">
+  <div id="optionsBar">
+    <style>
+    #optionsBar {
+      position: absolute;
+      right: 15px; top: 15px; height: 30px;
+      z-index: 2000;
+    }
+    @media only screen and (max-width: 640px), (max-device-width: 640px) {
+      #optionsBar {
+        left: 15px; right: auto; top: 60px;
+      }
+    }
+    </style>
     <button id="shareBtn"
             title="Share"
             style="height: 30px;
                    float: left;
-                   margin-left: 4px;
+                   x-margin-left: 4px;
               ">
       Share
     </button>
@@ -266,7 +284,7 @@ button:hover {
   body.show-share #shareBox { display: block; }
   body.show-help #helpBox { display: block; }
   body.show-style #styleBtn { background-color: red; }
-  body.show-legend #legendBoxBtn { background-color: red; }
+  body.show-legend #legendBtn { background-color: red; }
   body.show-share #shareBtn { background-color: red; }
   body.show-help #helpBtn { background-color: red; }
   .hoverbox {
@@ -283,15 +301,24 @@ button:hover {
   .style-print .hoverbox,
   .style-atlas .hoverbox { background-color: white; }
 
+  .hoverbox-right {
+    right: 15px; top: 50px; bottom: 150px;
+  }
+  @media only screen and (max-width: 640px), (max-device-width: 640px) {
+    .hoverbox-right {
+      left: 15px; right: 15px; top: 100px; bottom: 50px;
+    }
+  }
+
   </style>
 
   <div id="styleBox"
-       class="hoverbox"
-       style="right: 15px; top: 50px; bottom: 150px; width: 200px;
-              max-height: 300px;
-              ">
-
+       class="hoverbox hoverbox-right">
     <style>
+    #styleBox {
+      width: 200px;
+      max-height: 300px;
+    }
     #styles button {
       width: 40px; height: 40px;
       margin: 2px;
@@ -347,10 +374,13 @@ button:hover {
   </div>
 
   <div id="legendBox"
-       class="hoverbox"
-       style="right: 15px; top: 50px; bottom: 150px; width: 200px;
-              max-height: 620px;
-              ">
+       class="hoverbox hoverbox-right">
+    <style>
+    #legendBox {
+      width: 200px;
+      max-height: 620px;
+    }
+    </style>
     <div class="section">
       <h2 style="margin-top: 0">Map Legend</h2><br>
       <div id="image1"></div>
@@ -432,11 +462,12 @@ button:hover {
   </div>
 
   <div id="helpBox"
-       class="hoverbox"
-       style="right: 15px; top: 50px; bottom: 150px; width: 200px;
-              max-height: 300px;
-              ">
+       class="hoverbox hoverbox-right">
     <style>
+    #helpBox {
+      width: 200px;
+      max-height: 300px;
+    }
     #helpBox p { margin-bottom: 8px; }
     #helpBox h3 { font-style: italic; font-weight: normal;
                    color: red;
@@ -462,11 +493,12 @@ button:hover {
   </div>
 
   <div id="shareBox"
-       class="hoverbox"
-       style="right: 15px; top: 50px; bottom: 150px; width: 230px;
-              max-height: 250px;
-              ">
+       class="hoverbox hoverbox-right">
     <style>
+    #shareBox {
+      width: 230px;
+      max-height: 250px;
+    }
     #shareBox > div { margin: 10px 0px; }
     #shareBox input { width: 210px; padding: 5px; }
     #shareBox .tip { color: gray; }
@@ -521,6 +553,10 @@ button:hover {
   <style>
   #navBar { right: 15px; bottom: 110px; height: 30px; }
   .hide-footer #navBar { bottom: 15px; }
+
+  @media only screen and (max-width: 640px), (max-device-width: 640px) {
+    #navBar { display: none; }
+  }
   </style>
   <script>
   (function() {
@@ -543,18 +579,19 @@ button:hover {
     #PageBottomPane { background-color: rgba(0,0,0,0.65); }
     .style-atlas #PageBottomPane,
     .style-print #PageBottomPane { background-color: rgba(255,255,255,0.65); }
-
+    @media only screen and (max-width: 640px), (max-device-width: 640px) {
+      #PageBottomPane { zoom: 50%; }
+      #MetadataDisplay { display: none; }
+    }
     </style>
     <hr id="stripe">
-    <div id="LogoImage" title="Traveller&reg; - Science Fiction Adventure in the Far Future">&nbsp;</div>    <script>
+    <div id="LogoImage" title="Traveller&reg; - Science Fiction Adventure in the Far Future">&nbsp;</div>
+    <script>
         var $ = document.querySelector.bind(document);
         $("#LogoImage").ondblclick = function() {
           document.body.classList.add('hide-footer');
         };
     </script>
-
-
-
 
     <div
        style="font-style: italic; font-size: 8pt;"
