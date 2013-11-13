@@ -97,6 +97,35 @@ window.addEventListener('load', function() {
     showCredits(hex.x, hex.y);
   };
 
+  //
+  // Pull in options from URL - from permalinks
+  //
+
+  // Call this AFTER data binding is hooked up so UI is synchronized
+  var urlParams = applyUrlParameters(map);
+
+  // Force UI to synchronize in case URL parameters didn't do it
+  // TODO: Figure out desired order for this.
+  map.OnOptionsChanged(map.GetOptions());
+
+  // TODO: Make this less hokey
+  $("#ShowGalacticDirections").checked = true;
+  $("#ShowGalacticDirections").onclick = function() {
+    mapElement.classList[this.checked ? 'add' : 'remove']('galdir');
+    updatePermalink();
+  };
+  if ("galdir" in urlParams) {
+    var showGalacticDirections = Boolean(Number(urlParams.galdir));
+    mapElement.classList[showGalacticDirections ? 'add' : 'remove']('galdir');
+    $("#ShowGalacticDirections").checked = showGalacticDirections;
+    updatePermalink();
+  }
+
+  if ("q" in urlParams) {
+    $('#searchBox').value = urlParams.q;
+    search(urlParams.q);
+  }
+
   var permalinkTimeout = 0;
   var lastHref;
   function updatePermalink() {
@@ -106,14 +135,21 @@ window.addEventListener('load', function() {
     permalinkTimeout = setTimeout(function() {
 
       // TODO: Factor this out and use for search results as well
-      var href =
-            document.location.href.replace(/\?.*/, '') +
-            "?x=" + Math.round(map.GetX() * 1000) / 1000 +
-            "&y=" + Math.round(map.GetY() * 1000) / 1000 +
-            "&scale=" + Math.round(map.GetScale() * 1000) / 1000 +
-            "&options=" + map.GetOptions() +
-            "&style=" + map.GetStyle() +
-            (mapElement.classList.contains('galdir') ? '' : '&galdir=0');
+      var href = document.location.href.replace(/\?.*/, '');
+
+      urlParams.x = Math.round(map.GetX() * 1000) / 1000;
+      urlParams.y = Math.round(map.GetY() * 1000) / 1000;
+      urlParams.scale = Math.round(map.GetScale() * 1000) / 1000;
+      urlParams.options = map.GetOptions();
+      urlParams.style = map.GetStyle();
+      if (mapElement.classList.contains('galdir'))
+        delete urlParams.galdir;
+      else
+        urlParams.galdir = 0;
+
+      href += '?' + Object.keys(urlParams).map(function(p) {
+        return p + '=' + encodeURIComponent(urlParams[p]);
+      }).join('&');
 
       // TODO: Include markers/overlays in any URL updates.
       if (href === lastHref)
@@ -129,35 +165,6 @@ window.addEventListener('load', function() {
       $('#share-embed').value = '<iframe width=400 height=300 src="' + href + '">';
 
     }, PERMALINK_REFRESH_DELAY_MS);
-  }
-
-  //
-  // Pull in options from URL - from permalinks
-  //
-
-  // Call this AFTER data binding is hooked up so UI is synchronized
-  var oParams = applyUrlParameters(map);
-
-  // Force UI to synchronize in case URL parameters didn't do it
-  // TODO: Figure out desired order for this.
-  map.OnOptionsChanged(map.GetOptions());
-
-  // TODO: Make this less hokey
-  $("#ShowGalacticDirections").checked = true;
-  $("#ShowGalacticDirections").onclick = function() {
-    mapElement.classList[this.checked ? 'add' : 'remove']('galdir');
-    updatePermalink();
-  };
-  if ("galdir" in oParams) {
-    var showGalacticDirections = Boolean(Number(oParams.galdir));
-    mapElement.classList[showGalacticDirections ? 'add' : 'remove']('galdir');
-    $("#ShowGalacticDirections").checked = showGalacticDirections;
-    updatePermalink();
-  }
-
-  if ("q" in oParams) {
-    $('#searchBox').value = oParams.q;
-    search(oParams.q);
   }
 
   function setOptions(mask, flags) {
