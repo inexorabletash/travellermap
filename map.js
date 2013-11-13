@@ -10,7 +10,7 @@ var SERVICE_BASE = (function(l) {
 var LEGACY_STYLES = true;
 
 (function (global) {
-  "use strict";
+  'use strict';
 
   //----------------------------------------------------------------------
   // General Traveller stuff
@@ -18,7 +18,7 @@ var LEGACY_STYLES = true;
 
   global.Traveller = {
     fromHex: function(c) {
-      return "0123456789ABCDEFGHJKLMNPQRSTUVWXYZ".indexOf(c.toUpperCase());
+      return '0123456789ABCDEFGHJKLMNPQRSTUVWXYZ'.indexOf(c.toUpperCase());
     }
   };
 
@@ -53,10 +53,10 @@ var LEGACY_STYLES = true;
   };
 
   global.Styles = {
-    Poster: "poster",
-    Atlas: "atlas",
-    Print: "print",
-    Candy: "candy"
+    Poster: 'poster',
+    Atlas: 'atlas',
+    Print: 'print',
+    Candy: 'candy'
   };
 
   //----------------------------------------------------------------------
@@ -88,7 +88,7 @@ var LEGACY_STYLES = true;
     try {
       xhr.open('GET', url, true);
       // Due to proxies/user-agents not respecting Vary tags, switch to URL params instead of headers.
-      xhr.setRequestHeader("Accept", contentType);
+      xhr.setRequestHeader('Accept', contentType);
       xhr.onreadystatechange = function() {
         if (xhr.readyState === XMLHttpRequest.DONE) {
           try {
@@ -100,7 +100,7 @@ var LEGACY_STYLES = true;
             return;
           }
           if (xhr.status === 200) {
-            callback(contentType === "application/json" ? JSON.parse(xhr.responseText) : xhr.responseText);
+            callback(contentType === 'application/json' ? JSON.parse(xhr.responseText) : xhr.responseText);
           } else {
             if (errback) {
               errback(xhr.status);
@@ -122,8 +122,8 @@ var LEGACY_STYLES = true;
         abort: function() {},
         readyState: XMLHttpRequest.DONE,
         status: 0,
-        statusText: "Forbidden",
-        responseText: "Connection error"
+        statusText: 'Forbidden',
+        responseText: 'Connection error'
       };
     }
   }
@@ -183,8 +183,8 @@ var LEGACY_STYLES = true;
 
     this.fetch = function(key) {
       var value = this.cache[key];
-      if (typeof value === 'undefined') {
-        return (void 0); // undefined
+      if (value === undefined) {
+        return;
       }
 
       var index = this.queue.indexOf(key);
@@ -368,19 +368,19 @@ function logicalToHex(x, y) {
 
 // TODO: Put this in a namespace
 function fireEvent(target, event, data) {
-  if (typeof target["On" + event] === 'function') {
+  if (typeof target['On' + event] === 'function') {
     try {
-      target["On" + event](data);
+      target['On' + event](data);
     } catch (ex) {
       if (console && console.error) {
-        console.error("Event handler for " + event + " threw:", ex);
+        console.error('Event handler for ' + event + ' threw:', ex);
       }
     }
   }
 }
 
 function getUrlParameters() {
-  "use strict";
+  'use strict';
   var o = {};
   if (document.location.search && document.location.search.length > 1) {
     document.location.search.substring(1).split('&').forEach(function(pair) {
@@ -396,8 +396,17 @@ function getUrlParameters() {
 }
 
 function escapeHtml(s) {
-  "use strict";
-  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  'use strict';
+  return s.replace(/[&<>"']/g, function(c) {
+    switch (c) {
+    case '&': return '&amp;';
+    case '<': return '&lt;';
+    case '>': return '&gt;';
+    case '"': return '&quot;';
+    case "'": return '&#39;';
+    default: return c;
+    }
+  });
 }
 
 function applyUrlParameters(map) {
@@ -413,28 +422,28 @@ function applyUrlParameters(map) {
     return isNaN(n) ? 0 : n;
   }
 
-  if ("scale" in params) {
-    map.SetScale(asFloat("scale"));
+  if ('scale' in params) {
+    map.SetScale(asFloat('scale'));
   }
 
-  if ("options" in params) {
-    map.SetOptions(asInt("options"));
+  if ('options' in params) {
+    map.SetOptions(asInt('options'));
   }
 
-  if ("style" in params) {
+  if ('style' in params) {
     map.SetStyle(params.style);
   }
 
-  if ("x" in params && "y" in params) {
-    map.SetPosition(asFloat("x"), asFloat("y"));
+  if ('x' in params && 'y' in params) {
+    map.SetPosition(asFloat('x'), asFloat('y'));
   }
 
-  if ("yah_sx" in params && "yah_sy" in params && "yah_hx" in params && "yah_hx" in params) {
-    map.TEMP_AddMarker("you_are_here", asInt("yah_sx"), asInt("yah_sy"), asInt("yah_hx"), asInt("yah_hy"));
+  if ('yah_sx' in params && 'yah_sy' in params && 'yah_hx' in params && 'yah_hx' in params) {
+    map.TEMP_AddMarker('you_are_here', asInt('yah_sx'), asInt('yah_sy'), asInt('yah_hx'), asInt('yah_hy'));
   }
 
   for (var i = 0; ; ++i) {
-    var suffix = (i == 0) ? "" : i, oxs = "ox" + suffix, oys = "oy" + suffix, ows = "ow" + suffix, ohs = "oh" + suffix;
+    var suffix = (i == 0) ? '' : i, oxs = 'ox' + suffix, oys = 'oy' + suffix, ows = 'ow' + suffix, ohs = 'oh' + suffix;
     if (oxs in params && oys in params && ows in params && ohs in params) {
       var x = asFloat(oxs);
       var y = asFloat(oys);
@@ -446,7 +455,7 @@ function applyUrlParameters(map) {
     }
   }
 
-  if ("sector" in params) {
+  if ('sector' in params && !('x' in params) && !('y' in params)) {
     MapService.coordinates(params.sector, params.hex, function(location) {
       if (location.hx && location.hy) { // NOTE: Test for undefined -or- zero
         map.ScaleCenterAtSectorHex(64, location.sx, location.sy, location.hx, location.hy);
@@ -454,12 +463,12 @@ function applyUrlParameters(map) {
         map.ScaleCenterAtSectorHex(16, location.sx, location.sy, Astrometrics.SectorWidth / 2, Astrometrics.SectorHeight / 2);
       }
     }, function(error) {
-      alert("The requested location \"" + params.sector + ("hex" in params ? (" " + params.hex) : "") + "\" was not found.");
+      alert('The requested location "' + params.sector + ('hex' in params ? (' ' + params.hex) : '') + '" was not found.');
     });
   }
 
-  if ("silly" in params) {
-    map.tileOptions["silly"] = asInt("silly");
+  if ('silly' in params) {
+    map.tileOptions['silly'] = asInt('silly');
   }
 
   return params;
@@ -471,7 +480,7 @@ function applyUrlParameters(map) {
 //
 // Usage:
 //
-//   var map = new Map( document.getElementById("YourMapDiv") );
+//   var map = new Map( document.getElementById('YourMapDiv') );
 //
 //   map.OnScaleChanged   = function() { update scale indicator }
 //   map.OnOptionsChanged = function() { update control panel }
@@ -508,7 +517,7 @@ function applyUrlParameters(map) {
 var Map;
 
 (function(global) {
-  "use strict";
+  'use strict';
 
   // ======================================================================
   // Slippy Map using Tiles
@@ -608,7 +617,7 @@ var Map;
       if (hover_x !== hex.hx || hover_y !== hex.hy) {
         hover_x = hex.hx;
         hover_y = hex.hy;
-        fireEvent(self, "Hover", { x: hex.hx, y: hex.hy });
+        fireEvent(self, 'Hover', { x: hex.hx, y: hex.hy });
       }
 
     }, true);
@@ -635,7 +644,7 @@ var Map;
           cy = self.y + f * (coords.y - rect.height / 2),
           hex = logicalToHex(cx * self.tilesize, cy * -self.tilesize);
 
-      fireEvent(self, "Click", { x: hex.hx, y: hex.hy });
+      fireEvent(self, 'Click', { x: hex.hx, y: hex.hy });
     });
 
     container.addEventListener('dblclick', function(e) {
@@ -675,7 +684,7 @@ var Map;
         self.invalidate();
       }
 
-      fireEvent(self, "DoubleClick", { x: hex.hx, y: hex.hy });
+      fireEvent(self, 'DoubleClick', { x: hex.hx, y: hex.hy });
     });
 
     var wheelListener = function(e) {
@@ -824,7 +833,7 @@ var Map;
       this.x = this.x + dx * f;
       this.y = this.y + dy * f;
       this.invalidate();
-      fireEvent(this, "DisplayChanged");
+      fireEvent(this, 'DisplayChanged');
     }
   };
 
@@ -849,11 +858,11 @@ var Map;
         f = pow2(1 - this.scale) / this.tilesize;
         this.x = hx - (px - cw / 2) * f;
         this.y = hy - (py - ch / 2) * f;
-        fireEvent(this, "DisplayChanged");
+        fireEvent(this, 'DisplayChanged');
       }
 
       this.invalidate();
-      fireEvent(this, "ScaleChanged", this.GetScale());
+      fireEvent(this, 'ScaleChanged', this.GetScale());
     }
   };
 
@@ -1079,9 +1088,10 @@ var Map;
   // once it has successfully loaded.
   //
   Map.prototype.getTile = function(x, y, scale, callback) {
+    if ('onLine' in navigator && !navigator.onLine) return;
     var tscale = pow2(scale - 1);
     var options = this.options;
-    var uri = SERVICE_BASE + "/api/tile?x=" + x + "&y=" + y + "&scale=" + tscale + "&options=" + options + "&style=" + this.style;
+    var uri = SERVICE_BASE + '/api/tile?x=' + x + '&y=' + y + '&scale=' + tscale + '&options=' + options + '&style=' + this.style;
     Object.keys(this.tileOptions).forEach(function (key) {
       uri += '&' + encodeURIComponent(key) + '=' + encodeURIComponent(this.tileOptions[key]);
     }, this);
@@ -1092,23 +1102,20 @@ var Map;
 
     // Have it? Great, get out fast!
     var img = this.cache.fetch(uri);
-    if (typeof img !== 'undefined') {
-      return img;
-    }
+    if (img === undefined)
+      return;
 
     // Load if missing?
-    if (!callback) {
-      return (void 0); // undefined
-    }
+    if (!callback)
+      return;
 
     // In progress?
-    if (this.loading[uri]) {
-      return (void 0); // undefined
-    }
+    if (this.loading[uri])
+      return;
 
-    if (this.defer_loading) {
-      return (void 0); // undefined
-    }
+
+    if (this.defer_loading)
+      return;
 
     // Nope, better try loading it
     this.loading[uri] = true;
@@ -1125,9 +1132,9 @@ var Map;
       img.onload = null; img.onerror = null;
     };
     img.src = uri;
-    img.style.position = "absolute";
+    img.style.position = 'absolute';
 
-    return (void 0); // undefined
+    return;
   };
 
   Map.prototype.shouldAnimateToSectorHex = function(scale, sx, sy, hx, hy) {
@@ -1182,7 +1189,7 @@ var Map;
       overlay.element.parentNode.removeChild(overlay.element);
       div = overlay.element;
     } else {
-      div = document.createElement("div");
+      div = document.createElement('div');
       overlay.element = div;
     }
 
@@ -1190,13 +1197,13 @@ var Map;
     var pt1 = this.logicalToPixel(overlay.x, overlay.y);
     var pt2 = this.logicalToPixel(overlay.x + overlay.w, overlay.y + overlay.h);
 
-    div.className = "overlay";
+    div.className = 'overlay';
     div.id = overlay.id;
 
-    div.style.left = String(pt1.x) + "px";
-    div.style.top = String(pt1.y) + "px";
-    div.style.width = String(pt2.x - pt1.x) + "px";
-    div.style.height = String(pt1.y - pt2.y) + "px";
+    div.style.left = String(pt1.x) + 'px';
+    div.style.top = String(pt1.y) + 'px';
+    div.style.width = String(pt2.x - pt1.x) + 'px';
+    div.style.height = String(pt1.y - pt2.y) + 'px';
     div.style.zIndex = overlay.z;
 
     overlay.element = div;
@@ -1214,18 +1221,18 @@ var Map;
       marker.element.parentNode.removeChild(marker.element);
       div = marker.element;
     } else {
-      div = document.createElement("div");
+      div = document.createElement('div');
       marker.element = div;
     }
 
     var pt = sectorHexToLogical(marker.sx, marker.sy, marker.hx, marker.hy);
     pt = this.logicalToPixel(pt.x, pt.y);
 
-    div.className = "marker";
+    div.className = 'marker';
     div.id = marker.id;
 
-    div.style.left = String(pt.x) + "px";
-    div.style.top = String(pt.y) + "px";
+    div.style.left = String(pt.x) + 'px';
+    div.style.top = String(pt.y) + 'px';
     div.style.zIndex = String(marker.z);
 
     marker.element = div;
@@ -1274,9 +1281,9 @@ var Map;
     if (LEGACY_STYLES) {
       // Handy legacy styles specified in options bits
       if ((options & MapOptions.StyleMaskDeprecated) === MapOptions.PrintStyleDeprecated) {
-        this.SetStyle("atlas", refresh);
+        this.SetStyle('atlas', refresh);
       } else if ((options & MapOptions.StyleMaskDeprecated) === MapOptions.CandyStyleDeprecated) {
-        this.SetStyle("candy", refresh);
+        this.SetStyle('candy', refresh);
       }
       options = options & ~MapOptions.StyleMaskDeprecated;
     }
@@ -1288,7 +1295,7 @@ var Map;
     this.options = options & MapOptions.Mask;
     this.cache.clear();
     this.invalidate();
-    fireEvent(this, "OptionsChanged", this.options);
+    fireEvent(this, 'OptionsChanged', this.options);
   };
 
 
@@ -1303,7 +1310,7 @@ var Map;
 
     this.style = style;
     this.cache.clear();
-    fireEvent(this, "StyleChanged", this.style);
+    fireEvent(this, 'StyleChanged', this.style);
     this.invalidate();
   };
 
@@ -1323,7 +1330,7 @@ var Map;
     }
     this.x = x;
     this.y = y;
-    fireEvent(this, "DisplayChanged");
+    fireEvent(this, 'DisplayChanged');
     this.invalidate();
   };
 
@@ -1372,7 +1379,7 @@ var Map;
       self.x = Animation.interpolate(ox, tx, p);
       self.y = Animation.interpolate(oy, ty, p);
       self.redraw(true);
-      fireEvent(self, "DisplayChanged");
+      fireEvent(self, 'DisplayChanged');
     };
   };
 
@@ -1389,13 +1396,13 @@ var Map;
   // NOTE: This API is subject to change
   Map.prototype.TEMP_AddMarker = function(id, sx, sy, hx, hy) {
     var marker = {
-      "sx": sx,
-      "sy": sy,
-      "hx": hx,
-      "hy": hy,
+      sx: sx,
+      sy: sy,
+      hx: hx,
+      hy: hy,
 
-      "id": id,
-      "z": 1009
+      id: id,
+      z: 1009
     };
 
     this.markers.push(marker);
@@ -1406,13 +1413,13 @@ var Map;
   Map.prototype.TEMP_AddOverlay = function(x, y, w, h) {
     // TODO: Take id, like AddMarker
     var overlay = {
-      "x": x,
-      "y": y,
-      "w": w,
-      "h": h,
+      x: x,
+      y: y,
+      w: w,
+      h: h,
 
-      "id": "overlay",
-      "z": 1010
+      id: 'overlay',
+      z: 1010
     };
 
     this.overlays.push(overlay);
