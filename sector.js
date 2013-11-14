@@ -59,7 +59,7 @@
       sector.subsectors[i] = {
         worlds: [],
         index: (i in metadata.Subsectors) ? metadata.Subsectors[i].Index : String.fromCharCode('A'.charCodeAt(0) + i),
-        name: (i in metadata.Subsectors) ? metadata.Subsectors[i].Name : '',
+        name: (i in metadata.Subsectors) ? metadata.Subsectors[i].Name : ''
       };
     }
 
@@ -272,7 +272,7 @@
               "&scale=64&options=" + encodeURIComponent(options) +
               "&style=" + encodeURIComponent(style);
 
-            subsector.density = (subsector.worlds.length < 42) ? "sparse" : "dense"
+            subsector.density = (subsector.worlds.length < 42) ? "sparse" : "dense";
           });
 
           // Step 3: Output the page
@@ -294,7 +294,7 @@
       });
     }, function (error) {
       status("The requested sector \"" + oParams.sector + "\" was not found.");
-    })
+    });
   };
 
 } ());

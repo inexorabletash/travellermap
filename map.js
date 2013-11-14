@@ -7,7 +7,41 @@ var SERVICE_BASE = (function(l) {
     return 'http://travellermap.com';
   return '';
 }(window.location));
+
 var LEGACY_STYLES = true;
+
+// NOTE: Used by other scripts
+function getUrlParameters() {
+  'use strict';
+  var o = {};
+  if (document.location.search && document.location.search.length > 1) {
+    document.location.search.substring(1).split('&').forEach(function(pair) {
+      var kv = pair.split('=', 2);
+      if (kv.length === 2) {
+        o[kv[0]] = decodeURIComponent(kv[1].replace(/\+/g, ' '));
+      } else {
+        o[kv[0]] = true;
+      }
+    });
+  }
+  return o;
+}
+
+// NOTE: Used by other scripts
+function escapeHtml(s) {
+  'use strict';
+  return s.replace(/[&<>"']/g, function(c) {
+    switch (c) {
+    case '&': return '&amp;';
+    case '<': return '&lt;';
+    case '>': return '&gt;';
+    case '"': return '&quot;';
+    case "'": return '&#39;';
+    default: return c;
+    }
+  });
+}
+
 
 (function (global) {
   'use strict';
@@ -16,7 +50,7 @@ var LEGACY_STYLES = true;
   // General Traveller stuff
   //----------------------------------------------------------------------
 
-  global.Traveller = {
+  var Traveller = {
     fromHex: function(c) {
       return '0123456789ABCDEFGHJKLMNPQRSTUVWXYZ'.indexOf(c.toUpperCase());
     }
@@ -26,7 +60,7 @@ var LEGACY_STYLES = true;
   // Enumerated types
   //----------------------------------------------------------------------
 
-  global.MapOptions = {
+  var MapOptions = {
     SectorGrid: 0x0001,
     SubsectorGrid: 0x0002,
     GridMask: 0x0003,
@@ -52,7 +86,7 @@ var LEGACY_STYLES = true;
     Mask: 0xffff
   };
 
-  global.Styles = {
+  var Styles = {
     Poster: 'poster',
     Atlas: 'atlas',
     Print: 'print',
@@ -63,7 +97,7 @@ var LEGACY_STYLES = true;
   // Astrometric Constants
   //----------------------------------------------------------------------
 
-  global.Astrometrics = {
+  var Astrometrics = {
     ParsecScaleX: Math.cos(Math.PI / 6), // cos(30)
     ParsecScaleY: 1.0,
     SectorWidth: 32,
@@ -76,102 +110,100 @@ var LEGACY_STYLES = true;
     MaxScale: 512
   };
 
-
   // ======================================================================
   // Data Services
   // ======================================================================
 
-  function service(url, contentType, callback, errback) {
-    if (typeof callback !== 'function') { throw new TypeError(); }
+ // TODO: Make these Futures (or at least callback/errback)
+  var MapService = (function() {
 
-    var xhr = new XMLHttpRequest();
-    try {
-      xhr.open('GET', url, true);
-      // Due to proxies/user-agents not respecting Vary tags, switch to URL params instead of headers.
-      xhr.setRequestHeader('Accept', contentType);
-      xhr.onreadystatechange = function() {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-          try {
-            if (xhr.status === 0) {
-              return; // aborted, no callback
+    function service(url, contentType, callback, errback) {
+      if (typeof callback !== 'function') { throw new TypeError(); }
+
+      var xhr = new XMLHttpRequest();
+      try {
+        xhr.open('GET', url, true);
+        // Due to proxies/user-agents not respecting Vary tags, switch to URL params instead of headers.
+        xhr.setRequestHeader('Accept', contentType);
+        xhr.onreadystatechange = function() {
+          if (xhr.readyState === XMLHttpRequest.DONE) {
+            try {
+              if (xhr.status === 0)
+                return; // aborted, no callback
+              if (xhr.status === 200) {
+                callback(contentType === 'application/json' ? JSON.parse(xhr.responseText) : xhr.responseText);
+                return;
+              }
+              if (errback)
+                errback(xhr.status);
+            } catch (e) {
+              // IE9 throws if xhr.status accessed after an explicit abort() call
+              return;
             }
-          } catch (e) {
-            // IE9 throws if xhr.status accessed after an explicit abort() call
-            return;
           }
-          if (xhr.status === 200) {
-            callback(contentType === 'application/json' ? JSON.parse(xhr.responseText) : xhr.responseText);
-          } else {
-            if (errback) {
-              errback(xhr.status);
-            }
-            else {
-              callback(xhr.responseText);
-            }
-          }
-        }
-      };
-      xhr.send();
-      return xhr;
-    } catch (ex) {
-      // If cross-domain, blocked by browsers that don't implement CORS
-      setTimeout(function () {
-        if (errback) { errback(ex.message); } else { callback(null); }
-      }, 0);
-      return {
-        abort: function() {},
-        readyState: XMLHttpRequest.DONE,
-        status: 0,
-        statusText: 'Forbidden',
-        responseText: 'Connection error'
-      };
+        };
+        xhr.send();
+        return xhr;
+      } catch (ex) {
+        // If cross-domain, blocked by browsers that don't implement CORS
+        setTimeout(function () {
+          if (errback)
+            errback(ex.message);
+        }, 0);
+        return {
+          abort: function() {},
+          readyState: XMLHttpRequest.DONE,
+          status: 0,
+          statusText: 'Forbidden',
+          responseText: 'Connection error'
+        };
+      }
     }
-  }
 
-  // TODO: Make these Futures (or at least callback/errback)
-  global.MapService = {
-    coordinates: function(sector, hex, callback, errback) {
-      return service(
-        SERVICE_BASE + '/api/coordinates?sector=' + encodeURIComponent(sector) + (hex ? '&hex=' + encodeURIComponent(hex) : ''),
-        'application/json', callback, errback);
-    },
+    return {
+      coordinates: function(sector, hex, callback, errback) {
+        return service(
+          SERVICE_BASE + '/api/coordinates?sector=' + encodeURIComponent(sector) + (hex ? '&hex=' + encodeURIComponent(hex) : ''),
+          'application/json', callback, errback);
+      },
 
-    credits: function (hexX, hexY, callback, errback) {
-      return service(SERVICE_BASE + '/api/credits?x=' + encodeURIComponent(hexX) + '&y=' + encodeURIComponent(hexY),
-      'application/json', callback, errback);
-    },
+      credits: function (hexX, hexY, callback, errback) {
+        return service(SERVICE_BASE + '/api/credits?x=' + encodeURIComponent(hexX) + '&y=' + encodeURIComponent(hexY),
+                       'application/json', callback, errback);
+      },
 
-    search: function (query, callback, errback) {
-      return service(SERVICE_BASE + '/api/search?q=' + encodeURIComponent(query),
-        'application/json', callback, errback);
-    },
+      search: function (query, callback, errback) {
+        return service(SERVICE_BASE + '/api/search?q=' + encodeURIComponent(query),
+                       'application/json', callback, errback);
+      },
 
-    sectorData: function (sector, callback, errback) {
+      sectorData: function (sector, callback, errback) {
       return service(SERVICE_BASE + '/api/sec?sector=' + encodeURIComponent(sector),
-        'text/plain', callback, errback);
-    },
+                     'text/plain', callback, errback);
+      },
 
-    sectorDataTabDelimited: function (sector, callback, errback) {
-      return service(SERVICE_BASE + '/api/sec?sector=' + encodeURIComponent(sector) + '&type=TabDelimited',
-        'text/plain', callback, errback);
-    },
+      sectorDataTabDelimited: function (sector, callback, errback) {
+        return service(SERVICE_BASE + '/api/sec?sector=' + encodeURIComponent(sector) + '&type=TabDelimited',
+                       'text/plain', callback, errback);
+      },
 
-    sectorMetaData: function (sector, callback, errback) {
-      return service(SERVICE_BASE + '/api/metadata?sector=' + encodeURIComponent(sector),
-        'application/json', callback, errback);
-    },
+      sectorMetaData: function (sector, callback, errback) {
+        return service(SERVICE_BASE + '/api/metadata?sector=' + encodeURIComponent(sector),
+                       'application/json', callback, errback);
+      },
 
-    universe: function (callback, errback) {
-      return service(SERVICE_BASE + '/api/universe',
-        'application/json', callback, errback);
-    }
-  };
+      universe: function (callback, errback) {
+        return service(SERVICE_BASE + '/api/universe',
+                       'application/json', callback, errback);
+      }
+    };
+  }());
 
   // ======================================================================
   // Least-Recently-Used Cache
   // ======================================================================
 
-  global.LRUCache = function(capacity) {
+  var LRUCache = function(capacity) {
     this.capacity = capacity;
     this.cache = {};
     this.queue = [];
@@ -184,7 +216,7 @@ var LEGACY_STYLES = true;
     this.fetch = function(key) {
       var value = this.cache[key];
       if (value === undefined) {
-        return;
+        return undefined;
       }
 
       var index = this.queue.indexOf(key);
@@ -212,7 +244,7 @@ var LEGACY_STYLES = true;
     };
   };
 
-  global.Defaults = {
+  var Defaults = {
     options:
     MapOptions.SectorGrid | MapOptions.SubsectorGrid |
       MapOptions.SectorsSelected |
@@ -224,10 +256,10 @@ var LEGACY_STYLES = true;
   };
 
   // ======================================================================
-  // Static functions to normalize behavior across event models
+  // Helper functions to normalize behavior across event models
   // ======================================================================
 
-  global.DOMHelpers = {
+  var DOMHelpers = {
     setCapture: function(element) {
       if (element.setCapture) {
         element.setCapture(true);
@@ -251,273 +283,170 @@ var LEGACY_STYLES = true;
     }
   };
 
-
   // ======================================================================
   // Animation Utilities
   // ======================================================================
 
-  function isCallable(o) {
-    return typeof o === 'function';
-  }
+  var Animation = (function() {
 
-  //
-  // dur = total duration (seconds)
-  // tick (UNUSED)
-  // smooth = optional smoothing function
-  // set onanimate to function called with animation position (0.0 ... 1.0)
-  //
-  global.Animation = function(dur, tick, smooth) {
-    var start = Date.now();
-    var self = this;
-    this.timerid = requestAnimationFrame(tickFunc);
+    function isCallable(o) {
+      return typeof o === 'function';
+    }
 
-    function tickFunc() {
-      var f = (Date.now() - start) / 1000 / dur;
+    //
+    // dur = total duration (seconds)
+    // tick (UNUSED)
+    // smooth = optional smoothing function
+    // set onanimate to function called with animation position (0.0 ... 1.0)
+    //
+    var Animation = function(dur, tick, smooth) {
+      var start = Date.now();
+      var self = this;
+      this.timerid = requestAnimationFrame(tickFunc);
 
-      var p = f;
-      if (isCallable(smooth)) {
-        p = smooth(p);
-      }
+      function tickFunc() {
+        var f = (Date.now() - start) / 1000 / dur;
 
-      if (isCallable(self.onanimate)) {
-        self.onanimate(p);
-      }
-
-      // Next tick
-      if (f >= 1.0) {
-        if (isCallable(self.oncomplete)) {
-          self.oncomplete();
+        var p = f;
+        if (isCallable(smooth)) {
+          p = smooth(p);
         }
-      } else {
-        requestAnimationFrame(tickFunc);
+
+        if (isCallable(self.onanimate)) {
+          self.onanimate(p);
+        }
+
+        // Next tick
+        if (f >= 1.0) {
+          if (isCallable(self.oncomplete)) {
+            self.oncomplete();
+          }
+        } else {
+          requestAnimationFrame(tickFunc);
+        }
+
       }
+    };
 
-    }
-  };
-
-  Animation.prototype.cancel = function() {
-    if (this.timerid) {
-      cancelAnimationFrame(this.timerid);
-      if (isCallable(this.oncancel)) {
-        this.oncancel();
+    Animation.prototype.cancel = function() {
+      if (this.timerid) {
+        cancelAnimationFrame(this.timerid);
+        if (isCallable(this.oncancel)) {
+          this.oncancel();
+        }
       }
-    }
-  };
+    };
 
-  Animation.interpolate = function(a, b, p) {
-    return a * (1.0 - p) + b * p;
-  };
+    Animation.interpolate = function(a, b, p) {
+      return a * (1.0 - p) + b * p;
+    };
 
-  // Time smoothing function - input time is t within duration dur.
-  // Acceleration period is a, deceleration period is d.
+    // Time smoothing function - input time is t within duration dur.
+    // Acceleration period is a, deceleration period is d.
+    //
+    // Example:     t_filtered = smooth( t, 1.0, 0.25, 0.25 );
+    //
+    // Reference:   http://www.w3.org/TR/2005/REC-SMIL2-20050107/smil-timemanip.html
+    Animation.smooth = function(t, dur, a, d) {
+      var dacc = dur * a;
+      var ddec = dur * d;
+      var r = 1 / (1 - a / 2 - d / 2);
+      var r_t, tdec, pd;
+
+      if (t < dacc) {
+        r_t = r * (t / dacc);
+        return t * r_t / 2;
+      }
+      else if (t <= (dur - ddec)) {
+        return r * (t - dacc / 2);
+      }
+      else {
+        tdec = t - (dur - ddec);
+        pd = tdec / ddec;
+
+        return r * (dur - dacc / 2 - ddec + tdec * (2 - pd) / 2);
+      }
+    };
+
+    return Animation;
+  }());
+
+
+  //----------------------------------------------------------------------
   //
-  // Example:     t_filtered = smooth( t, 1.0, 0.25, 0.25 );
+  // Usage:
   //
-  // Reference:   http://www.w3.org/TR/2005/REC-SMIL2-20050107/smil-timemanip.html
-  Animation.smooth = function(t, dur, a, d) {
-    var dacc = dur * a;
-    var ddec = dur * d;
-    var r = 1 / (1 - a / 2 - d / 2);
-    var r_t, tdec, pd;
+  //   var map = new Map( document.getElementById('YourMapDiv') );
+  //
+  //   map.OnScaleChanged   = function() { update scale indicator }
+  //   map.OnOptionsChanged = function() { update control panel }
+  //   map.OnStyleChanged   = function() { update control panel }
+  //   map.OnDisplayChanged = function() { update permalink }
+  //   map.OnHover          = function( {x, y} ) { show data }
+  //   map.OnClick          = function( {x, y} ) { show data }
+  //   map.OnDoubleClick    = function( {x, y} ) { show data }
+  //
+  //   var hx = map.GetHexX();
+  //   var hy = map.GetHexY();
+  //   var x = map.GetX();
+  //   var y = map.GetY();
+  //   var s = map.GetScale();
+  //   var o = map.GetOptions();
+  //
+  //   map.SetScale( scale, bRefresh );
+  //   map.SetOptions( flags, bRefresh );
+  //   map.SetStyle( style, bRefresh );
+  //   map.SetPosition( x, y );
+  //
+  //   map.ScaleCenterAtSectorHex( scale, sx, sy, hx, hy );
+  //   map.CenterAtSectorHex( sx, sy, hx, hy );
+  //   map.Scroll( dx, dy, fAnimate );
+  //   map.ZoomIn();
+  //   map.ZoomOut();
+  //
+  // Experimental APIs - may change at any time:
+  //   map.TEMP_AddMarker(id, sx, sy, hx, hy); // should have CSS style for .marker#<id>
+  //   map.TEMP_AddOverlay(x, y, w, h); // should have CSS style for .overlay
+  //
+  //----------------------------------------------------------------------
 
-    if (t < dacc) {
-      r_t = r * (t / dacc);
-      return t * r_t / 2;
-    }
-    else if (t <= (dur - ddec)) {
-      return r * (t - dacc / 2);
-    }
-    else {
-      tdec = t - (dur - ddec);
-      pd = tdec / ddec;
+  function sectorHexToLogical(sx, sy, hx, hy) {
+    // Offset from origin
+    var x = (sx * Astrometrics.SectorWidth) + hx - Astrometrics.ReferenceHexX;
+    var y = (sy * Astrometrics.SectorHeight) + hy - Astrometrics.ReferenceHexY;
 
-      return r * (dur - dacc / 2 - ddec + tdec * (2 - pd) / 2);
-    }
-  };
+    // Offset from the "corner" of the hex
+    x -= 0.5;
+    y -= ((hx % 2) === 0) ? 0 : 0.5;
 
-}(this));
+    // Scale to non-homogenous coordinates
+    x *= Astrometrics.ParsecScaleX;
+    y *= -Astrometrics.ParsecScaleY;
 
+    // Drop precision (avoid animations, etc)
+    x = Math.round(x * 1000) / 1000;
+    y = Math.round(y * 1000) / 1000;
 
-// TODO: Put this in a namespace
-function sectorHexToLogical(sx, sy, hx, hy) {
-  // Offset from origin
-  var x = (sx * Astrometrics.SectorWidth) + hx - Astrometrics.ReferenceHexX;
-  var y = (sy * Astrometrics.SectorHeight) + hy - Astrometrics.ReferenceHexY;
+    return {x: x, y: y};
+  }
 
-  // Offset from the "corner" of the hex
-  x -= 0.5;
-  y -= ((hx % 2) === 0) ? 0 : 0.5;
+  function logicalToHex(x, y) {
+    var hx = Math.round((x / Astrometrics.ParsecScaleX) + 0.5);
+    var hy = Math.round((-y / Astrometrics.ParsecScaleY) + ((hx % 2 === 0) ? 0.5 : 0));
+    return {hx: hx, hy: hy};
+  }
 
-  // Scale to non-homogenous coordinates
-  x *= Astrometrics.ParsecScaleX;
-  y *= -Astrometrics.ParsecScaleY;
-
-  // Drop precision (avoid animations, etc)
-  x = Math.round(x * 1000) / 1000;
-  y = Math.round(y * 1000) / 1000;
-
-  return {x: x, y: y};
-}
-
-// TODO: Put this in a namespace
-function logicalToHex(x, y) {
-  var hx = Math.round((x / Astrometrics.ParsecScaleX) + 0.5);
-  var hy = Math.round((-y / Astrometrics.ParsecScaleY) + ((hx % 2 === 0) ? 0.5 : 0));
-  return {hx: hx, hy: hy};
-}
-
-// TODO: Put this in a namespace
-function fireEvent(target, event, data) {
-  if (typeof target['On' + event] === 'function') {
-    try {
-      target['On' + event](data);
-    } catch (ex) {
-      if (console && console.error) {
-        console.error('Event handler for ' + event + ' threw:', ex);
+  function fireEvent(target, event, data) {
+    if (typeof target['On' + event] === 'function') {
+      try {
+        target['On' + event](data);
+      } catch (ex) {
+        if (console && console.error) {
+          console.error('Event handler for ' + event + ' threw:', ex);
+        }
       }
     }
   }
-}
-
-function getUrlParameters() {
-  'use strict';
-  var o = {};
-  if (document.location.search && document.location.search.length > 1) {
-    document.location.search.substring(1).split('&').forEach(function(pair) {
-      var kv = pair.split('=', 2);
-      if (kv.length === 2) {
-        o[kv[0]] = decodeURIComponent(kv[1].replace(/\+/g, ' '));
-      } else {
-        o[kv[0]] = true;
-      }
-    });
-  }
-  return o;
-}
-
-function escapeHtml(s) {
-  'use strict';
-  return s.replace(/[&<>"']/g, function(c) {
-    switch (c) {
-    case '&': return '&amp;';
-    case '<': return '&lt;';
-    case '>': return '&gt;';
-    case '"': return '&quot;';
-    case "'": return '&#39;';
-    default: return c;
-    }
-  });
-}
-
-function applyUrlParameters(map) {
-  var params = getUrlParameters();
-
-  function asFloat(prop) {
-    var n = parseFloat(params[prop]);
-    return isNaN(n) ? 0 : n;
-  }
-
-  function asInt(prop) {
-    var n = parseInt(params[prop], 10);
-    return isNaN(n) ? 0 : n;
-  }
-
-  if ('scale' in params) {
-    map.SetScale(asFloat('scale'));
-  }
-
-  if ('options' in params) {
-    map.SetOptions(asInt('options'));
-  }
-
-  if ('style' in params) {
-    map.SetStyle(params.style);
-  }
-
-  if ('x' in params && 'y' in params) {
-    map.SetPosition(asFloat('x'), asFloat('y'));
-  }
-
-  if ('yah_sx' in params && 'yah_sy' in params && 'yah_hx' in params && 'yah_hx' in params) {
-    map.TEMP_AddMarker('you_are_here', asInt('yah_sx'), asInt('yah_sy'), asInt('yah_hx'), asInt('yah_hy'));
-  }
-
-  for (var i = 0; ; ++i) {
-    var suffix = (i == 0) ? '' : i, oxs = 'ox' + suffix, oys = 'oy' + suffix, ows = 'ow' + suffix, ohs = 'oh' + suffix;
-    if (oxs in params && oys in params && ows in params && ohs in params) {
-      var x = asFloat(oxs);
-      var y = asFloat(oys);
-      var w = asFloat(ows);
-      var h = asFloat(ohs);
-      map.TEMP_AddOverlay(x, y, w, h);
-    } else {
-      break;
-    }
-  }
-
-  if ('sector' in params && !('x' in params) && !('y' in params)) {
-    MapService.coordinates(params.sector, params.hex, function(location) {
-      if (location.hx && location.hy) { // NOTE: Test for undefined -or- zero
-        map.ScaleCenterAtSectorHex(64, location.sx, location.sy, location.hx, location.hy);
-      } else {
-        map.ScaleCenterAtSectorHex(16, location.sx, location.sy, Astrometrics.SectorWidth / 2, Astrometrics.SectorHeight / 2);
-      }
-    }, function(error) {
-      alert('The requested location "' + params.sector + ('hex' in params ? (' ' + params.hex) : '') + '" was not found.');
-    });
-  }
-
-  if ('silly' in params) {
-    map.tileOptions['silly'] = asInt('silly');
-  }
-
-  return params;
-}
-
-
-
-//----------------------------------------------------------------------
-//
-// Usage:
-//
-//   var map = new Map( document.getElementById('YourMapDiv') );
-//
-//   map.OnScaleChanged   = function() { update scale indicator }
-//   map.OnOptionsChanged = function() { update control panel }
-//   map.OnStyleChanged   = function() { update control panel }
-//   map.OnDisplayChanged = function() { update permalink }
-//   map.OnHover          = function( {x, y} ) { show data }
-//   map.OnClick          = function( {x, y} ) { show data }
-//   map.OnDoubleClick    = function( {x, y} ) { show data }
-//
-//   var hx = map.GetHexX();
-//   var hy = map.GetHexY();
-//   var x = map.GetX();
-//   var y = map.GetY();
-//   var s = map.GetScale();
-//   var o = map.GetOptions();
-//
-//   map.SetScale( scale, bRefresh );
-//   map.SetOptions( flags, bRefresh );
-//   map.SetStyle( style, bRefresh );
-//   map.SetPosition( x, y );
-//
-//   map.ScaleCenterAtSectorHex( scale, sx, sy, hx, hy );
-//   map.CenterAtSectorHex( sx, sy, hx, hy );
-//   map.Scroll( dx, dy, fAnimate );
-//   map.ZoomIn();
-//   map.ZoomOut();
-//
-// Experimental APIs - may change at any time:
-//   map.TEMP_AddMarker(id, sx, sy, hx, hy); // should have CSS style for .marker#<id>
-//   map.TEMP_AddOverlay(x, y, w, h); // should have CSS style for .overlay
-//
-//----------------------------------------------------------------------
-
-var Map;
-
-(function(global) {
-  'use strict';
 
   // ======================================================================
   // Slippy Map using Tiles
@@ -987,7 +916,7 @@ var Map;
         }
       }
     }
-  }
+  };
 
   //
   // Draw the specified tile (scale, x, y) into the rectangle (dx, dy, dw, dh);
@@ -1088,7 +1017,7 @@ var Map;
   // once it has successfully loaded.
   //
   Map.prototype.getTile = function(x, y, scale, callback) {
-    if ('onLine' in navigator && !navigator.onLine) return;
+    if ('onLine' in navigator && !navigator.onLine) return undefined;
     var tscale = pow2(scale - 1);
     var options = this.options;
     var uri = SERVICE_BASE + '/api/tile?x=' + x + '&y=' + y + '&scale=' + tscale + '&options=' + options + '&style=' + this.style;
@@ -1096,26 +1025,26 @@ var Map;
       uri += '&' + encodeURIComponent(key) + '=' + encodeURIComponent(this.tileOptions[key]);
     }, this);
 
-    if ('devicePixelRatio' in window && devicePixelRatio > 1) {
-      uri += '&dpr=' + devicePixelRatio;
+    if ('devicePixelRatio' in window && window.devicePixelRatio > 1) {
+      uri += '&dpr=' + window.devicePixelRatio;
     }
 
     // Have it? Great, get out fast!
     var img = this.cache.fetch(uri);
-    if (img === undefined)
-      return;
+    if (img)
+      return img;
 
     // Load if missing?
     if (!callback)
-      return;
+      return undefined;
 
     // In progress?
     if (this.loading[uri])
-      return;
+      return undefined;
 
 
     if (this.defer_loading)
-      return;
+      return undefined;
 
     // Nope, better try loading it
     this.loading[uri] = true;
@@ -1134,7 +1063,7 @@ var Map;
     img.src = uri;
     img.style.position = 'absolute';
 
-    return;
+    return undefined;
   };
 
   Map.prototype.shouldAnimateToSectorHex = function(scale, sx, sy, hx, hy) {
@@ -1426,6 +1355,81 @@ var Map;
     this.makeOverlay(overlay);
   };
 
+  // Exports
+  global.Traveller = Traveller;
+  global.Astrometrics = Astrometrics;
+  global.MapOptions = MapOptions;
+  global.Styles = Styles;
+  global.MapService = MapService;
   global.Map = Map;
 
-} (this));
+}(this));
+
+// NOTE: Needs to be exported
+function applyUrlParameters(map) {
+  var params = getUrlParameters();
+
+  function asFloat(prop) {
+    var n = parseFloat(params[prop]);
+    return isNaN(n) ? 0 : n;
+  }
+
+  function asInt(prop) {
+    var n = parseInt(params[prop], 10);
+    return isNaN(n) ? 0 : n;
+  }
+
+  if ('scale' in params) {
+    map.SetScale(asFloat('scale'));
+  }
+
+  if ('options' in params) {
+    map.SetOptions(asInt('options'));
+  }
+
+  if ('style' in params) {
+    map.SetStyle(params.style);
+  }
+
+  if ('x' in params && 'y' in params) {
+    map.SetPosition(asFloat('x'), asFloat('y'));
+  }
+
+  if ('yah_sx' in params && 'yah_sy' in params && 'yah_hx' in params && 'yah_hx' in params) {
+    map.TEMP_AddMarker('you_are_here', asInt('yah_sx'), asInt('yah_sy'), asInt('yah_hx'), asInt('yah_hy'));
+  }
+
+  for (var i = 0; ; ++i) {
+    var suffix = (i == 0) ? '' : i, oxs = 'ox' + suffix, oys = 'oy' + suffix, ows = 'ow' + suffix, ohs = 'oh' + suffix;
+    if (oxs in params && oys in params && ows in params && ohs in params) {
+      var x = asFloat(oxs);
+      var y = asFloat(oys);
+      var w = asFloat(ows);
+      var h = asFloat(ohs);
+      map.TEMP_AddOverlay(x, y, w, h);
+    } else {
+      break;
+    }
+  }
+
+  if ('sector' in params && !('x' in params) && !('y' in params)) {
+    MapService.coordinates(
+      params.sector, params.hex,
+      function(location) {
+        if (location.hx && location.hy) { // NOTE: Test for undefined -or- zero
+          map.ScaleCenterAtSectorHex(64, location.sx, location.sy, location.hx, location.hy);
+        } else {
+          map.ScaleCenterAtSectorHex(16, location.sx, location.sy, Astrometrics.SectorWidth / 2, Astrometrics.SectorHeight / 2);
+        }
+      },
+      function(error) {
+        alert('The requested location "' + params.sector + ('hex' in params ? (' ' + params.hex) : '') + '" was not found.');
+      });
+  }
+
+  if ('silly' in params) {
+    map.tileOptions['silly'] = asInt('silly');
+  }
+
+  return params;
+}
