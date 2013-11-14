@@ -139,7 +139,7 @@ window.addEventListener('load', function() {
 
       urlParams.x = Math.round(map.GetX() * 1000) / 1000;
       urlParams.y = Math.round(map.GetY() * 1000) / 1000;
-      urlParams.scale = Math.round(map.GetScale() * 1000) / 1000;
+      urlParams.scale = Math.round(map.GetScale() * 100) / 100;
       urlParams.options = map.GetOptions();
       urlParams.style = map.GetStyle();
       if (mapElement.classList.contains('galdir'))
