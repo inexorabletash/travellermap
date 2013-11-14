@@ -505,6 +505,15 @@ function escapeHtml(s) {
     // Event Handlers
     // ======================================================================
 
+    function eventToHexCoords(event) {
+      var f = pow2(1 - self.scale) / self.tilesize;
+      var coords = eventCoordsToLocal(event, container);
+      var rect = self.container.getBoundingClientRect();
+      var cx = self.x + f * (coords.x - rect.width / 2),
+          cy = self.y + f * (coords.y - rect.height / 2);
+      return logicalToHex(cx * self.tilesize, cy * -self.tilesize);
+    }
+
     var dragging, drag_x, drag_y;
     container.addEventListener('mousedown', function(e) {
       self.cancelAnimation();
@@ -533,13 +542,7 @@ function escapeHtml(s) {
         e.stopPropagation();
       }
 
-      // Compute the physical coordinates
-      var f = pow2(1 - self.scale) / self.tilesize,
-          coords = eventCoordsToLocal(e, container),
-          rect = self.container.getBoundingClientRect(),
-          cx = self.x + f * (coords.x - rect.width / 2),
-          cy = self.y + f * (coords.y - rect.height / 2),
-          hex = logicalToHex(cx * self.tilesize, cy * -self.tilesize);
+      var hex = eventToHexCoords(e);
 
       // Throttle the events
       if (hover_x !== hex.hx || hover_y !== hex.hy) {
@@ -564,14 +567,7 @@ function escapeHtml(s) {
       e.preventDefault();
       e.stopPropagation();
 
-      // Compute the physical coordinates
-      var f = pow2(1 - self.scale) / self.tilesize,
-          coords = eventCoordsToLocal(e, container),
-          rect = self.container.getBoundingClientRect(),
-          cx = self.x + f * (coords.x - rect.width / 2),
-          cy = self.y + f * (coords.y - rect.height / 2),
-          hex = logicalToHex(cx * self.tilesize, cy * -self.tilesize);
-
+      var hex = eventToHexCoords(e);
       fireEvent(self, 'Click', { x: hex.hx, y: hex.hy });
     });
 
@@ -585,6 +581,7 @@ function escapeHtml(s) {
 
       var MAX_DOUBLECLICK_SCALE = 7;
       if (self.scale < MAX_DOUBLECLICK_SCALE) {
+        // Zoom and re-center
         var newscale = self.scale + CLICK_SCALE_DELTA * ((e.altKey) ? 1 : -1);
         newscale = Math.min(newscale, MAX_DOUBLECLICK_SCALE);
 
@@ -599,6 +596,8 @@ function escapeHtml(s) {
         cy = self.y + f * (coords.y - rect.height / 2);
         hex = logicalToHex(cx * self.tilesize, cy * -self.tilesize);
       } else {
+        // Just re-center
+
         // Compute the physical coordinates
         f = pow2(1 - self.scale) / self.tilesize;
         coords = eventCoordsToLocal(e, container);
