@@ -274,12 +274,6 @@ function escapeHtml(s) {
       if (element.releaseCapture) {
         element.releaseCapture();
       }
-    },
-    globalToLocal: function(x, y, element) {
-      var rect = element.getBoundingClientRect();
-      x -= rect.left;
-      y -= rect.top;
-      return { x: x, y: y };
     }
   };
 
@@ -448,6 +442,11 @@ function escapeHtml(s) {
     }
   }
 
+  function eventCoordsToLocal(event, element) {
+    var rect = element.getBoundingClientRect();
+    return { x: event.clientX - rect.left, y: event.clientY - rect.top };
+  }
+
   // ======================================================================
   // Slippy Map using Tiles
   // ======================================================================
@@ -536,7 +535,7 @@ function escapeHtml(s) {
 
       // Compute the physical coordinates
       var f = pow2(1 - self.scale) / self.tilesize,
-          coords = DOMHelpers.globalToLocal(e.clientX, e.clientY, container),
+          coords = eventCoordsToLocal(e, container),
           rect = self.container.getBoundingClientRect(),
           cx = self.x + f * (coords.x - rect.width / 2),
           cy = self.y + f * (coords.y - rect.height / 2),
@@ -567,7 +566,7 @@ function escapeHtml(s) {
 
       // Compute the physical coordinates
       var f = pow2(1 - self.scale) / self.tilesize,
-          coords = DOMHelpers.globalToLocal(e.clientX, e.clientY, container),
+          coords = eventCoordsToLocal(e, container),
           rect = self.container.getBoundingClientRect(),
           cx = self.x + f * (coords.x - rect.width / 2),
           cy = self.y + f * (coords.y - rect.height / 2),
@@ -589,12 +588,12 @@ function escapeHtml(s) {
         var newscale = self.scale + CLICK_SCALE_DELTA * ((e.altKey) ? 1 : -1);
         newscale = Math.min(newscale, MAX_DOUBLECLICK_SCALE);
 
-        coords = DOMHelpers.globalToLocal(e.clientX, e.clientY, container);
+        coords = eventCoordsToLocal(e, container);
         self.setScale(newscale, coords.x, coords.y);
 
         // Compute the physical coordinates
         f = pow2(1 - self.scale) / self.tilesize;
-        coords = DOMHelpers.globalToLocal(e.clientX, e.clientY, container);
+        coords = eventCoordsToLocal(e, container);
         rect = self.container.getBoundingClientRect();
         cx = self.x + f * (coords.x - rect.width / 2);
         cy = self.y + f * (coords.y - rect.height / 2);
@@ -602,7 +601,7 @@ function escapeHtml(s) {
       } else {
         // Compute the physical coordinates
         f = pow2(1 - self.scale) / self.tilesize;
-        coords = DOMHelpers.globalToLocal(e.clientX, e.clientY, container);
+        coords = eventCoordsToLocal(e, container);
         rect = self.container.getBoundingClientRect();
         cx = self.x + f * (coords.x - rect.width / 2);
         cy = self.y + f * (coords.y - rect.height / 2);
@@ -622,7 +621,7 @@ function escapeHtml(s) {
 
       var newscale = self.scale + SCROLL_SCALE_DELTA * ((delta > 0) ? -1 : (delta < 0) ? 1 : 0);
 
-      var coords = DOMHelpers.globalToLocal(e.clientX, e.clientY, container);
+      var coords = eventCoordsToLocal(e, container);
       self.setScale(newscale, coords.x, coords.y);
 
       e.preventDefault();
@@ -646,7 +645,7 @@ function escapeHtml(s) {
 
       if (e.touches.length === 1) {
 
-        var coords = DOMHelpers.globalToLocal(e.touches[0].clientX, e.touches[0].clientY, container);
+        var coords = eventCoordsToLocal(e.touches[0], container);
         var dx = touch_x - coords.x;
         var dy = touch_y - coords.y;
 
@@ -661,8 +660,8 @@ function escapeHtml(s) {
             ocx = (pinch_x1 + pinch_x2) / 2,
             ocy = (pinch_y1 + pinch_y2) / 2;
 
-        var coords0 = DOMHelpers.globalToLocal(e.touches[0].clientX, e.touches[0].clientY, container),
-            coords1 = DOMHelpers.globalToLocal(e.touches[1].clientX, e.touches[1].clientY, container);
+        var coords0 = eventCoordsToLocal(e.touches[0], container),
+            coords1 = eventCoordsToLocal(e.touches[1], container);
         pinch_x1 = coords0.x;
         pinch_y1 = coords0.y;
         pinch_x2 = coords1.x;
@@ -689,7 +688,7 @@ function escapeHtml(s) {
       }
 
       if (e.touches.length === 1) {
-        var coords = DOMHelpers.globalToLocal(e.touches[0].clientX, e.touches[0].clientY, container);
+        var coords = eventCoordsToLocal(e.touches[0], container);
         touch_x = coords.x;
         touch_y = coords.y;
       }
@@ -700,13 +699,13 @@ function escapeHtml(s) {
 
     container.addEventListener('touchstart', function(e) {
       if (e.touches.length === 1) {
-        var coords = DOMHelpers.globalToLocal(e.touches[0].clientX, e.touches[0].clientY, container);
+        var coords = eventCoordsToLocal(e.touches[0], container);
         touch_x = coords.x;
         touch_y = coords.y;
       } else if (e.touches.length === 2) {
         self.defer_loading = true;
-        var coords0 = DOMHelpers.globalToLocal(e.touches[0].clientX, e.touches[0].clientY, container),
-            coords1 = DOMHelpers.globalToLocal(e.touches[1].clientX, e.touches[1].clientY, container);
+        var coords0 = eventCoordsToLocal(e.touches[0], container),
+            coords1 = eventCoordsToLocal(e.touches[1], container);
         pinch_x1 = coords0.x;
         pinch_y1 = coords0.y;
         pinch_x2 = coords1.x;
