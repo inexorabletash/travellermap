@@ -151,7 +151,6 @@ window.addEventListener('load', function() {
         return p + '=' + encodeURIComponent(urlParams[p]);
       }).join('&');
 
-      // TODO: Include markers/overlays in any URL updates.
       if (href === lastHref)
         return;
 
@@ -280,6 +279,8 @@ window.addEventListener('load', function() {
 
     // Transform the search results into clickable links
     function displayResults(data) {
+      var base_url = document.location.href.replace(/\?.*/, '');
+
       // Pre-process the data
       for (i = 0; i < data.Results.Items.length; ++i) {
 
@@ -299,8 +300,8 @@ window.addEventListener('load', function() {
           hy = (((n / 4) | 0) + 0.5) * (Astrometrics.SectorHeight / 4);
           scale = subsector.Scale || 32;
 
+          subsector.href = base_url + '?scale=' + scale + '&sx=' + sx + '&sy=' + sy + '&hx=' + hx + '&hy=' + hy;
           subsector.onclick = "map.ScaleCenterAtSectorHex(" + scale + "," + sx + "," + sy + "," + hx + "," + hy + "); return false;";
-
         } else if (item.Sector) {
           var sector = item.Sector;
           sx = sector.SectorX|0;
@@ -309,6 +310,7 @@ window.addEventListener('load', function() {
           hy = (Astrometrics.SectorHeight / 2);
           scale = sector.Scale || 8;
 
+          sector.href = base_url + '?scale=' + scale + '&sx=' + sx + '&sy=' + sy + '&hx=' + hx + '&hy=' + hy;
           sector.onclick = "map.ScaleCenterAtSectorHex(" + scale + "," + sx + "," + sy + "," + hx + "," + hy + "); return false;";
         } else if (item.World) {
           var world = item.World;
@@ -320,6 +322,7 @@ window.addEventListener('load', function() {
           world.Hex = (hx < 10 ? "0" : "") + hx + (hy < 10 ? "0" : "") + hy;
           scale = world.Scale || 64;
 
+          world.href = base_url + '?scale=' + scale + '&sx=' + sx + '&sy=' + sy + '&hx=' + hx + '&hy=' + hy;
           world.onclick = "map.ScaleCenterAtSectorHex(" + scale + "," + sx + "," + sy + "," + hx + "," + hy + "); return false;";
         }
       }

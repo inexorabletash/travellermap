@@ -1389,10 +1389,6 @@ function applyUrlParameters(map) {
     map.SetStyle(params.style);
   }
 
-  if ('x' in params && 'y' in params) {
-    map.SetPosition(asFloat('x'), asFloat('y'));
-  }
-
   if ('yah_sx' in params && 'yah_sy' in params && 'yah_hx' in params && 'yah_hx' in params) {
     map.TEMP_AddMarker('you_are_here', asInt('yah_sx'), asInt('yah_sy'), asInt('yah_hx'), asInt('yah_hy'));
   }
@@ -1410,7 +1406,12 @@ function applyUrlParameters(map) {
     }
   }
 
-  if ('sector' in params && !('x' in params) && !('y' in params)) {
+  if ('x' in params && 'y' in params) {
+    map.SetPosition(asFloat('x'), asFloat('y'));
+  } else if ('sx' in params && 'sy' in params && 'hx' in params && 'hy' in params && 'scale' in params) {
+    map.ScaleCenterAtSectorHex(
+      asFloat('scale'), asFloat('sx'), asFloat('sy'), asFloat('hx'), asFloat('hy'));
+  } else if ('sector' in params) {
     MapService.coordinates(
       params.sector, params.hex,
       function(location) {

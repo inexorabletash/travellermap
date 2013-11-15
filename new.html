@@ -3,6 +3,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=0">
 
+
 <!--[if lt IE 9]><meta http-equiv="X-UA-Compatible" content="chrome=1"><![endif]-->
 <!--[if lt IE 9]><meta http-equiv="imagetoolbar" content="no"><![endif]-->
 <link rel="alternate" type="application/atom+xml" title="Traveller Map News - Atom" href="http://travellermap.blogspot.com/feeds/posts/default">
@@ -68,9 +69,14 @@ button:hover {
 </style>
 <![endif]-->
 
-<body style="margin: 0; padding: 0;
-             border: none; overflow: hidden;
-             width: 100%; height: 100%; max-height: 100%;">
+<body>
+  <style>
+  body {
+    margin: 0; padding: 0;
+    border: none; overflow: hidden;
+    width: 100%; height: 100%; max-height: 100%;
+  }
+  </style>
   <script>
   if (window !== window.top)
     document.body.classList.add('iframe');
@@ -104,12 +110,13 @@ button:hover {
     }
     .iframe #searchBar { display: none; }
     </style>
-    <form id="searchForm" action="get" style="display: inline">
+    <form id="searchForm" action="get">
     <input id="searchBox"
            placeholder="Search for..."
            title="Search by world, subsector, or sector name.&#x0D;Prefix with uwp: to search UWPs.&#x0D;Use * and ? as wildcards."
            >
     <style>
+    #searchForm { display: inline; }
     #searchBox {
       background-color: white;
       height: 30px; width: 250px;
@@ -127,12 +134,12 @@ button:hover {
     }
     </style>
     <button id="searchBtn">
-      <img style="vertical-align: text-bottom;"
-           src="res/ui/search-button.png"
+      <img src="res/ui/search-button.png"
            alt="Search">
     </button>
     <style>
     #searchBtn { height: 30px; float: left; margin-left: 4px; }
+    #searchBtn img { vertical-align: text-bottom; }
     @media only screen and (max-width: 640px), (max-device-width: 640px) {
       #searchBtn { display: none; }
     }
@@ -188,17 +195,17 @@ button:hover {
     <div>
       {{#Results.Items}}
         {{#World}}
-          <div style="font-size: 125%;"><a title="Navigate to {{Name}}" href="" onclick="{{onclick}}">{{Name}}</a></div>
+          <div style="font-size: 125%;"><a title="Navigate to {{Name}}" href="{{href}}" onclick="{{onclick}}">{{Name}}</a></div>
           <div style="margin-left: 10pt;">{{Sector}} {{Hex}}</div>
           {{#Title}}<div style="margin-left: 10pt;">{{.}}</div>{{/Title}}
           {{#Uwp}}<div style="margin-left: 10pt;">{{.}}</div>{{/Uwp}}
         {{/World}}
         {{#Subsector}}
-          <div style="font-size: 125%;"><a title="Navigate to {{Name}}" href="" onclick="{{onclick}}">{{Name}}</a></div>
+          <div style="font-size: 125%;"><a title="Navigate to {{Name}}" href="{{href}}" onclick="{{onclick}}">{{Name}}</a></div>
           <div style="margin-left: 10pt;">Subsector {{Index}} of {{Sector}}</div>
         {{/Subsector}}
         {{#Sector}}
-          <div style="font-size: 125%;"><a title="Navigate to {{Name}}" href="" onclick="{{onclick}}">{{Name}}</a></div>
+          <div style="font-size: 125%;"><a title="Navigate to {{Name}}" href="{{href}}" onclick="{{onclick}}">{{Name}}</a></div>
           <div style="margin-left: 10pt;">Sector</div>
         {{/Sector}}
       {{/Results.Items}}
