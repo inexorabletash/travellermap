@@ -93,8 +93,8 @@ button:hover {
     document.body.classList.add('iframe');
   </script>
 
-  <!-- Search Engine Bait -->
   <div style="display:none">
+    <!-- Search Engine Bait -->
     The Traveller Map is a interactive map of the universe of the
     Traveller role playing game, incorporating official data and fan
     submissions. The site also provides services for generating custom
@@ -262,7 +262,7 @@ button:hover {
 
   <div id="progressBox"
        class="ui hoverbox">
-    <img id="ProgressImage" src="res/ui/ajax-loader.gif" alt="" style="width: 32px; height: 32px; margin: 6px;">
+    <img id="ProgressImage" src="res/ui/ajax-loader.gif" alt="" width="32" height="32" style="margin: 6px;">
     <style>
     #progressBox {
       position: absolute;
@@ -279,10 +279,10 @@ button:hover {
       position: absolute;
       right: 15px; top: 15px; height: 30px;
     }
-    #shareBtn, #legendBtn, #styleBtn, #helpBtn {
+    #optionsBar button {
+      margin-left: 4px;
       height: 30px;
       float: left;
-      margin-left: 4px;
     }
     </style>
     <button id="shareBtn"
@@ -382,11 +382,11 @@ button:hover {
       <button id="styleBtn-poster"
               title="Classic black background"
               ></button>
-      <button id="styleBtn-atlas"
-              title="Black on white"
-              ></button>
       <button id="styleBtn-print"
               title="Printer friendly"
+              ></button>
+      <button id="styleBtn-atlas"
+              title="Black on white"
               ></button>
       <button id="styleBtn-candy"
               title="Eye candy"
@@ -450,66 +450,66 @@ button:hover {
     <section id="world_colors">
       <h2>World<br>Characteristics</h2><br>
       <ul class="basic_world_colors">
-        <li><span class="glyph" style="font-size: 14pt;">&bull;</span> No Water Present
-        <li><span class="glyph water" style="font-size: 14pt;">&bull;</span> Water Present
-        <li><span class="glyph" style="font-size: 12pt;">:::</span> Asteroid Belt
+        <li><span class="glyph">&bull;</span> No Water Present
+        <li><span class="glyph water">&bull;</span> Water Present
+        <li><span class="glyph g12">:::</span> Asteroid Belt
       </ul>
       <ul class="extended_world_colors">
-        <li><span class="glyph RiAg" style="font-size: 14pt;">&bull;</span> Rich &amp; Agricultural
-        <li><span class="glyph Ag" style="font-size: 14pt;">&bull;</span> Agricultural
-        <li><span class="glyph Ri" style="font-size: 14pt;">&bull;</span> Rich
-        <li><span class="glyph In" style="font-size: 14pt;">&bull;</span> Industrial
-        <li><span class="glyph corrosive" style="font-size: 14pt;">&bull;</span> Corrosive/Insidious
-        <li><span class="glyph Va" style="font-size: 14pt;">&bull;</span> Vacuum
-        <li><span class="glyph water" style="font-size: 14pt;">&bull;</span> Water Present
-        <li><span class="glyph" style="font-size: 14pt;">&bull;</span> No Water Present
-        <li><span class="glyph" style="font-size: 12pt;">:::</span> Asteroid Belt
+        <li><span class="glyph RiAg">&bull;</span> Rich &amp; Agricultural
+        <li><span class="glyph Ag">&bull;</span> Agricultural
+        <li><span class="glyph Ri">&bull;</span> Rich
+        <li><span class="glyph In">&bull;</span> Industrial
+        <li><span class="glyph corrosive">&bull;</span> Corrosive/Insidious
+        <li><span class="glyph Va">&bull;</span> Vacuum
+        <li><span class="glyph water">&bull;</span> Water Present
+        <li><span class="glyph">&bull;</span> No Water Present
+        <li><span class="glyph g12">:::</span> Asteroid Belt
       </ul>
     </section>
     <section id="bases">
       <h2>Bases</h2><br>
       <ul>
-        <li><span class="glyph" style="font-size: 8pt;">&#x2605;</span> Imperial Naval Base
-        <li><span class="glyph" style="font-size: 10pt;">&#x25B2;</span> Scout Base
-        <li><span class="glyph highlight" style="font-size: 10pt;">&#x25B2;</span> Scout Way Station
-        <li><span class="glyph" style="font-size: 10pt;">&#x25A0;</span> Naval Depot
+        <li><span class="glyph g8">&#x2605;</span> Imperial Naval Base
+        <li><span class="glyph g10">&#x25B2;</span> Scout Base
+        <li><span class="glyph g10 highlight">&#x25B2;</span> Scout Way Station
+        <li><span class="glyph g10">&#x25A0;</span> Naval Depot
 
-        <li><span class="glyph" style="font-size: 12pt;">&diams;</span> Zhodani Base
-        <li><span class="glyph highlight" style="font-size: 12pt;">&diams;</span> Zhodani Relay Station
-        <li><span class="glyph highlight" style="font-size: 10pt;">&#x25A0;</span> Zhodani Depot
+        <li><span class="glyph g12">&diams;</span> Zhodani Base
+        <li><span class="glyph g12 highlight">&diams;</span> Zhodani Relay Station
+        <li><span class="glyph g10 highlight">&#x25A0;</span> Zhodani Depot
 
-        <li><span class="glyph highlight" style="font-size: 8pt;">&#x2605;</span> Vargr Naval Base
-        <li><span class="glyph" style="font-size: 10pt;">**</span> Vargr Corsair Base
+        <li><span class="glyph g8 highlight">&#x2605;</span> Vargr Naval Base
+        <li><span class="glyph g10">**</span> Vargr Corsair Base
 
-        <li><span class="glyph highlight" style="font-size: 8pt;">&#x2605;</span> K'kree Naval Base
-        <li><span class="glyph highlight" style="font-size: 10pt;">&#x25A0;</span> K'kree Naval Outpost
+        <li><span class="glyph g8 highlight">&#x2605;</span> K'kree Naval Base
+        <li><span class="glyph g10 highlight">&#x25A0;</span> K'kree Naval Outpost
 
-        <li><span class="glyph highlight" style="font-size: 8pt;">&#x2605;</span> Solomani Naval Base
+        <li><span class="glyph g8 highlight">&#x2605;</span> Solomani Naval Base
 
-        <li><span class="glyph" style="font-size: 10pt;">**</span> Aslan Clan Base
-        <li><span class="glyph highlight" style="font-size: 8pt;">&#x2605;</span> Aslan Tlauku Base
+        <li><span class="glyph g10">**</span> Aslan Clan Base
+        <li><span class="glyph g8 highlight">&#x2605;</span> Aslan Tlauku Base
 
-        <li><span class="glyph highlight" style="font-size: 8pt;">&#x2605;</span> Federation Naval Base
-        <li><span class="glyph" style="font-size: 10pt;">**</span> Federation Embassy
+        <li><span class="glyph g8 highlight">&#x2605;</span> Federation Naval Base
+        <li><span class="glyph g10">**</span> Federation Embassy
 
-        <li><span class="glyph highlight" style="font-size: 8pt;">&#x2605;</span> Droyne Naval Base
-        <li><span class="glyph" style="font-size: 10pt;">&#x2726;</span> Droyne <span style="display: none">Military</span> Garrison
+        <li><span class="glyph g8 highlight">&#x2605;</span> Droyne Naval Base
+        <li><span class="glyph g10">&#x2726;</span> Droyne Military Garrison
 
-        <li><span class="glyph highlight" style="font-size: 8pt;">&#x2605;</span> Naval Base
-        <li><span class="glyph" style="font-size: 10pt;">&#x2726;</span> Military Base
-        <li><span class="glyph" style="font-size: 12pt;">&bull;</span> Independent Base
+        <li><span class="glyph g8 highlight">&#x2605;</span> Naval Base
+        <li><span class="glyph g10">&#x2726;</span> Military Base
+        <li><span class="glyph g12">&bull;</span> Independent Base
 
-        <li><span class="glyph highlight" style="font-size: 10pt;"><b>&Gamma;</b></span> Research Station
-        <li><span class="glyph" style="font-size: 10pt;"><b>R</b></span> Imperial Reserve
-        <li><span class="glyph highlight" style="font-size: 10pt;"><b>P</b></span> Penal Colony
-        <li><span class="glyph" style="font-size: 10pt;"><b>X</b></span> Prison, Exile Camp
+        <li><span class="glyph g10 highlight"><b>&Gamma;</b></span> Research Station
+        <li><span class="glyph g10"><b>R</b></span> Imperial Reserve
+        <li><span class="glyph g10 highlight"><b>P</b></span> Penal Colony
+        <li><span class="glyph g10"><b>X</b></span> Prison, Exile Camp
       </ul>
     </section>
     <section>
       <h2>Travel Zones</h2><br>
       <ul>
-        <li><span class="glyph amberzone" style="font-size: 12pt;">&#x25AC;</span> Amber Zone
-        <li><span class="glyph redzone" style="font-size: 12pt;">&#x25AC;</span> Red Zone
+        <li><span class="glyph amberzone g12">&#x25AC;</span> Amber Zone
+        <li><span class="glyph redzone g12">&#x25AC;</span> Red Zone
       </ul>
     </section>
     <section>
@@ -618,24 +618,24 @@ button:hover {
   </div>
 
   <div id="navBar"
-       class="ui"
-       style="position: absolute;">
+       class="ui">
+    <style>
+    #navBar {
+      position: absolute;
+    }
+    #navBar button {
+      height: 30px; width: 30px;
+      float: left;
+      margin-left: 4px;
+      font-size: 16pt;
+    }
+    </style>
     <button id="zoomInBtn"
-            title="Zoom in"
-            style="height: 30px; width: 30px;
-                   float: left;
-                   margin-left: 4px;
-                   font-size: 16pt;
-                   ">
+            title="Zoom in">
       &plus;
     </button>
     <button id="zoomOutBtn"
-            title="Zoom out"
-            style="height: 30px; width: 30px;
-                   float: left;
-                   margin-left: 4px;
-                   font-size: 16pt;
-              ">
+            title="Zoom out">
       &minus;
     </button>
   </div>
@@ -681,9 +681,7 @@ button:hover {
       });
     </script>
 
-    <div
-       style="font-style: italic; font-size: 8pt;"
-       >
+    <div style="font-style: italic; font-size: 8pt;">
       The Traveller game in all forms is owned by
       <a target="_blank" href="http://farfuture.net">Far Future Enterprises</a>.
       Copyright &copy; 1977 - 2013 Far Future Enterprises.

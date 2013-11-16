@@ -94,6 +94,11 @@ body {
 #legendBox .amberzone { color: yellow; }
 #legendBox .redzone { color: red; }
 
+#legendBox .glyph { font-size: 14pt; }
+#legendBox .glyph.g8 { font-size: 8pt; }
+#legendBox .glyph.g10 { font-size: 10pt; }
+#legendBox .glyph.g12 { font-size: 12pt; }
+
 #legendBox ul.basic_world_colors { display: inline-block; }
 #legendBox ul.extended_world_colors { display: none; }
 #legendBox.world_colors ul.basic_world_colors { display: none; }
