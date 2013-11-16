@@ -132,8 +132,22 @@ button:hover {
       }
       .style-print #searchBox,
       .style-atlas #searchBox { background-color: #e0e0e0; }
-      @media only screen and (max-width: 640px), (max-device-width: 640px) {
+      @media only screen and (max-width: 700px), (max-device-width: 700px) {
         #searchBox { width: 150px; }
+      }
+      @media only screen and (max-width: 600px), (max-device-width: 600px) {
+        #searchBox { width: 150px; }
+        #importantBtn { display: none; }
+      }
+      @media only screen and (max-width: 500px), (max-device-width: 500px) {
+        #searchBox { width: 100px; }
+        #importantBtn { display: none; }
+      }
+      @media only screen and (max-width: 450px), (max-device-width: 450px) {
+        #shareBtn { display: none; }
+      }
+      @media only screen and (max-width: 400px), (max-device-width: 400px) {
+        #legendBtn { display: none; }
       }
       </style>
       <button id="searchBtn">
@@ -142,9 +156,6 @@ button:hover {
         <style>
         #searchBtn { width: 40px; height: 30px; float: left; margin-left: 4px; }
         #searchBtn img { vertical-align: text-bottom; }
-        @media only screen and (max-width: 640px), (max-device-width: 640px) {
-          #searchBtn { display: none; }
-        }
         .search-results #searchBtn { display: none; }
         </style>
       </button>
@@ -178,9 +189,6 @@ button:hover {
         float: left;
         margin-left: 4px;
       }
-      @media only screen and (max-width: 640px), (max-device-width: 640px) {
-        #importantBtn { display: none; }
-      }
       </style>
     </button>
     <script>
@@ -201,7 +209,7 @@ button:hover {
        class="ui hoverbox hoverbox-left">
     <style>
     #resultsBox {
-      left: 15px; top: 50px; width: 300px;
+      left: 15px; top: 50px; width: 200px;
       min-height: 50px;
       max-height: 250px;
     }
@@ -245,7 +253,7 @@ button:hover {
     <style>
     #progressBox {
       position: absolute;
-      left: 15px; top: 50px; height: 50px; width: 300px;
+      left: 15px; top: 50px; height: 50px; width: 200px;
       text-align: center;
     }
     .search-progress #progressBox { display: block; }
@@ -257,15 +265,6 @@ button:hover {
     #optionsBar {
       position: absolute;
       right: 15px; top: 15px; height: 30px;
-    }
-    @media only screen and (max-width: 640px), (max-device-width: 640px) {
-      #xoptionsBar {
-        left: 15px; right: auto; top: 60px;
-      }
-      #shareBtn { display: none; }
-      #x-legendBtn { display: none; }
-      #x-styleBtn { display: none; }
-      #x-helpBtn { display: none; }
     }
     #shareBtn, #legendBtn, #styleBtn, #helpBtn {
       height: 30px;
@@ -346,7 +345,7 @@ button:hover {
     <style>
     #styleBox {
       width: 200px;
-      max-height: 300px;
+      max-height: 295px;
     }
     #styles button {
       width: 40px; height: 40px;
@@ -394,7 +393,7 @@ button:hover {
       <div class="indent" style="margin-bottom: 0.5em;">
         <p><label title="Show or hide the direction labels around the edge of the map"><input type="checkbox" id="ShowGalacticDirections"> Galactic Direction</label></p>
         <p><label title="Show sector and subsector grid lines"><input type="checkbox" name="grid" value="true" id="ShowSectorGrid"> Sector Grid</label></p>
-        <p><label title="Show or hide sector and subsector names"><input type="checkbox" id="ShowSectorNames"> Sectors</label></p>
+        <p><label title="Show or hide sector and subsector names"><input type="checkbox" id="ShowSectorNames"> Sector Names</label></p>
         <div class="indent">
           <p><label title="Show only the names of selected sectors when zoomed out"><input type="radio" name="sector_names" id="ShowSelectedSectorNames" value="ShowSelectedSectorNames"> Selected</label></p>
           <p><label title="Show the names of all sectors when zoomed out"><input type="radio" name="sector_names" id="ShowAllSectorNames" value="ShowAllSectorNames"> All</label></p>
@@ -408,7 +407,7 @@ button:hover {
     <section>
       <p><strong>Appearance:</strong>
         <div class="indent" style="margin-bottom: 0.5em;">
-          <p><label title="Always use hexagonal parsecs&#x0a;[BETA TESTING: May be removed]"><input type="checkbox" id="cbForceHexes"> Force Hexes &beta;</label>
+          <p><label title="Always use hexagonal parsecs&#x0a;[BETA TESTING: May be removed]"><input type="checkbox" id="cbForceHexes"> Always Use Hexes &beta;</label>
           <p><label title="Use more colors for world features&#x0a;[BETA TESTING: May be removed]"><input type="checkbox" id="cbWorldColors"> World Colors &beta;</label>
           <p><label title="Fill borders to make regions more visible&#x0a;[BETA TESTING: May be removed]"><input type="checkbox" id="cbFilledBorders"> Filled Borders &beta;</label>
         </div>
@@ -508,12 +507,13 @@ button:hover {
     <style>
     #helpBox {
       width: 200px;
-      max-height: 300px;
+      max-height: 320px;
     }
     #helpBox p { margin-bottom: 1em; }
+    #helpBox p:last-of-type { margin-bottom: 0; }
     #helpBox h3 { font-style: italic; font-weight: normal;
-                   color: red;
-                   border-bottom: 2px solid red; }
+                  color: red;
+                  border-bottom: 2px solid red; }
     #helpBox a { text-decoration: none; }
     #helpBox a:hover { text-decoration: underline; }
     </style>
@@ -539,34 +539,36 @@ button:hover {
     <style>
     #shareBox {
       width: 230px;
-      max-height: 250px;
+      max-height: 230px;
     }
-    #shareBox > div { margin: 10px 0px; }
+    #shareBox section { margin: 10px 0; }
+    #shareBox section:first-of-type { margin-top: 0; }
+    #shareBox section:last-of-type { margin-bottom: 0; }
     #shareBox input { width: 210px; padding: 5px; border: 1px solid #404040; }
     #shareBox .tip { color: gray; }
     </style>
 
-    <div>
+    <section>
       <a href="https://twitter.com/share" class="twitter-share-button" data-via="inexorabletash" data-size="large">Tweet</a>
-    </div>
+    </section>
 
-    <div>
+    <section>
       <div class="g-plusone" data-size="tall" data-annotation="inline" data-width="240">+1</div>
-    </div>
+    </section>
 
-    <div>
+    <section>
       <div class="fb-like" data-href="http://travellermap.com" data-width="200" data-colorscheme="dark" data-layout="standard" data-action="like" data-show-faces="true">Like</div>
-    </div>
+    </section>
 
-    <div>
+    <section>
       Share this link:
       <input readonly="true" id="share-url" onclick="this.select();" title="Copy and paste">
-    </div>
+    </section>
 
-    <div>
+    <section>
       Embed this HTML:
       <input readonly="true" id="share-embed" onclick="this.select();" title="Copy and paste">
-    </div>
+    </section>
 
   </div>
 
