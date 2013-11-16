@@ -174,11 +174,14 @@ button:hover {
   </script>
 
   <div id="resultsBox"
-       class="hoverbox hoverbox-left"
-       style="left: 15px; top: 50px; width: 300px;
-              min-height: 50px;
-              max-height: 250px;
-              ">
+       class="hoverbox hoverbox-left">
+    <style>
+    #resultsBox {
+      left: 15px; top: 50px; width: 300px;
+      min-height: 50px;
+      max-height: 250px;
+    }
+    </style>
     <div id="resultsContainer"></div>
   </div>
   <button id="closeResultsBtn"
@@ -192,21 +195,21 @@ button:hover {
   </button>
 
   <script id="SearchResultsTemplate" type="text/x-handlebars-template">
-    <div>
+    <div class="search-results-items">
       {{#Results.Items}}
         {{#World}}
-          <div style="font-size: 125%;"><a title="Navigate to {{Name}}" href="{{href}}" onclick="{{onclick}}">{{Name}}</a></div>
-          <div style="margin-left: 10pt;">{{Sector}} {{Hex}}</div>
-          {{#Title}}<div style="margin-left: 10pt;">{{.}}</div>{{/Title}}
-          {{#Uwp}}<div style="margin-left: 10pt;">{{.}}</div>{{/Uwp}}
+          <div class="item-main"><a title="Navigate to {{Name}}" href="{{href}}" onclick="{{onclick}}">{{Name}}</a></div>
+          <div class="item-location">{{Sector}} {{Hex}}</div>
+          {{#Title}}<div class="item-title">{{.}}</div>{{/Title}}
+          {{#Uwp}}<div class="item-uwp">{{.}}</div>{{/Uwp}}
         {{/World}}
         {{#Subsector}}
-          <div style="font-size: 125%;"><a title="Navigate to {{Name}}" href="{{href}}" onclick="{{onclick}}">{{Name}}</a></div>
-          <div style="margin-left: 10pt;">Subsector {{Index}} of {{Sector}}</div>
+          <div class="item-main"><a title="Navigate to {{Name}}" href="{{href}}" onclick="{{onclick}}">{{Name}}</a></div>
+          <div class="item-location">Subsector {{Index}} of {{Sector}}</div>
         {{/Subsector}}
         {{#Sector}}
-          <div style="font-size: 125%;"><a title="Navigate to {{Name}}" href="{{href}}" onclick="{{onclick}}">{{Name}}</a></div>
-          <div style="margin-left: 10pt;">Sector</div>
+          <div class="item-main"><a title="Navigate to {{Name}}" href="{{href}}" onclick="{{onclick}}">{{Name}}</a></div>
+          <div class="item-location">Sector</div>
         {{/Sector}}
       {{/Results.Items}}
       {{^Results.Items}}
@@ -214,16 +217,25 @@ button:hover {
       {{/Results.Items}}
     </div>
   </script>
+  <style>
+  .search-results-items .item-main { font-size: 125%; }
+  .search-results-items .item-location { margin-left: 10pt; }
+  .search-results-items .item-title { margin-left: 10pt; }
+  .search-results-items .item-uwp { margin-left: 10pt; }
+  </style>
+
 
   <div id="progressBox"
-       class="hoverbox"
-       style="position: absolute;
-              left: 15px; top: 50px; height: 50px; width: 300px;
-              text-align: center;
-              ">
+       class="hoverbox">
     <img id="ProgressImage" src="res/ui/ajax-loader.gif" alt="" style="width: 32px; height: 32px; margin: 6px;">
   </div>
   <style>
+  #progressBox {
+    position: absolute;
+    left: 15px; top: 50px; height: 50px; width: 300px;
+    text-align: center;
+  }
+
   body #closeResultsBtn { display: none; }
   body.search-progress #progressBox { display: block; }
   body.search-results #resultsBox { display: block; }
@@ -258,38 +270,29 @@ button:hover {
     }
     </style>
     <button id="shareBtn"
-            title="Share"
-            style="height: 30px;
-                   float: left;
-                   x-margin-left: 4px;
-              ">
+            title="Share">
       Share
     </button>
     <button id="legendBtn"
-            title="Show map legend"
-            style="height: 30px;
-                   float: left;
-                   margin-left: 4px;
-                   ">
+            title="Show map legend">
       Legend
     </button>
     <button id="styleBtn"
-            title="Show map style options"
-            style="height: 30px;
-                   float: left;
-                   margin-left: 4px;
-              ">
+            title="Show map style options">
       Style
     </button>
     <button id="helpBtn"
-            title="Help, feedback, and more"
-            style="height: 30px;
-                   float: left;
-                   margin-left: 4px;
-              ">
+            title="Help, feedback, and more">
       Help
     </button>
   </div>
+  <style>
+  #shareBtn, #legendBtn, #styleBtn, #helpBtn {
+    height: 30px;
+    float: left;
+    margin-left: 4px;
+  }
+  </style>
   <script>
   (function() {
     var $ = document.querySelector.bind(document);
@@ -355,22 +358,28 @@ button:hover {
       box-shadow: none;
       border: 1px solid gray;
     }
+    #styleBox section { margin-top: 0.5em; margin-bottom: 0.5em; }
     </style>
-    <p id="styles"
-       style="margin-top: 0; margin-bottom: 0.5em; padding: 0">
-      <button id="styleBtn-poster" style="background-image: url('res/ui/style-poster.png');"
+    <section id="styles">
+      <button id="styleBtn-poster"
               title="Classic black background"
               ></button>
-      <button id="styleBtn-atlas"  style="background-image: url('res/ui/style-atlas.png');"
+      <button id="styleBtn-atlas"
               title="Black on white"
               ></button>
-      <button id="styleBtn-print"  style="background-image: url('res/ui/style-print.png');"
+      <button id="styleBtn-print"
               title="Printer friendly"
               ></button>
-      <button id="styleBtn-candy"  style="background-image: url('res/ui/style-candy.png');"
+      <button id="styleBtn-candy"
               title="Eye candy"
               ></button>
     </p>
+    <style>
+    #styleBtn-poster { background-image: url('res/ui/style-poster.png'); }
+    #styleBtn-atlas  { background-image: url('res/ui/style-atlas.png'); }
+    #styleBtn-print  { background-image: url('res/ui/style-print.png'); }
+    #styleBtn-candy  { background-image: url('res/ui/style-candy.png'); }
+    </style>
     <script>
         (function() {
           var $ = document.querySelector.bind(document);
@@ -379,27 +388,32 @@ button:hover {
           });
         }());
     </script>
+    </section>
 
-    <p style="margin-bottom: 0.5em;">
-    <p><strong>Show:</strong></p>
-    <div class="indent" style="margin-bottom: 0.5em;">
-      <p><label title="Show or hide the direction labels around the edge of the map"><input type="checkbox" id="ShowGalacticDirections"> Galactic Direction</label></p>
-      <p><label title="Show sector and subsector grid lines"><input type="checkbox" name="grid" value="true" id="ShowSectorGrid"> Sector Grid</label></p>
-      <p><label title="Show or hide sector and subsector names"><input type="checkbox" id="ShowSectorNames"> Sectors</label></p>
-      <div class="indent">
-        <p><label title="Show only the names of selected sectors when zoomed out"><input type="radio" name="sector_names" id="ShowSelectedSectorNames" value="ShowSelectedSectorNames"> Selected</label></p>
-        <p><label title="Show the names of all sectors when zoomed out"><input type="radio" name="sector_names" id="ShowAllSectorNames" value="ShowAllSectorNames"> All</label></p>
+    <section>
+      <p><strong>Show:</strong></p>
+      <div class="indent" style="margin-bottom: 0.5em;">
+        <p><label title="Show or hide the direction labels around the edge of the map"><input type="checkbox" id="ShowGalacticDirections"> Galactic Direction</label></p>
+        <p><label title="Show sector and subsector grid lines"><input type="checkbox" name="grid" value="true" id="ShowSectorGrid"> Sector Grid</label></p>
+        <p><label title="Show or hide sector and subsector names"><input type="checkbox" id="ShowSectorNames"> Sectors</label></p>
+        <div class="indent">
+          <p><label title="Show only the names of selected sectors when zoomed out"><input type="radio" name="sector_names" id="ShowSelectedSectorNames" value="ShowSelectedSectorNames"> Selected</label></p>
+          <p><label title="Show the names of all sectors when zoomed out"><input type="radio" name="sector_names" id="ShowAllSectorNames" value="ShowAllSectorNames"> All</label></p>
+        </div>
+        <p><label title="Display political borders"><input type="checkbox" id="ShowGovernmentBorders"> Borders</label>
+        <p><label title="Display government and region names"><input type="checkbox" id="ShowGovernmentNames"> Region Names</label>
+        <p><label title="Show important worlds when zoomed out"><input type="checkbox" id="ShowImportantWorlds"> Important Worlds</label>
       </div>
-      <p><label title="Display political borders"><input type="checkbox" id="ShowGovernmentBorders"> Borders</label>
-      <p><label title="Display government and region names"><input type="checkbox" id="ShowGovernmentNames"> Region Names</label>
-      <p><label title="Show important worlds when zoomed out"><input type="checkbox" id="ShowImportantWorlds"> Important Worlds</label>
-    </div>
-    <p><strong>Appearance:</strong></p>
-    <div class="indent" style="margin-bottom: 0.5em;">
-      <p><label title="Always use hexagonal parsecs&#x0a;[BETA TESTING: May be removed]"><input type="checkbox" id="cbForceHexes"> Force Hexes &beta;</label>
-      <p><label title="Use more colors for world features&#x0a;[BETA TESTING: May be removed]"><input type="checkbox" id="cbWorldColors"> World Colors &beta;</label>
-      <p><label title="Fill borders to make regions more visible&#x0a;[BETA TESTING: May be removed]"><input type="checkbox" id="cbFilledBorders"> Filled Borders &beta;</label>
-    </div>
+    </section>
+
+    <section>
+      <p><strong>Appearance:</strong>
+        <div class="indent" style="margin-bottom: 0.5em;">
+          <p><label title="Always use hexagonal parsecs&#x0a;[BETA TESTING: May be removed]"><input type="checkbox" id="cbForceHexes"> Force Hexes &beta;</label>
+          <p><label title="Use more colors for world features&#x0a;[BETA TESTING: May be removed]"><input type="checkbox" id="cbWorldColors"> World Colors &beta;</label>
+          <p><label title="Fill borders to make regions more visible&#x0a;[BETA TESTING: May be removed]"><input type="checkbox" id="cbFilledBorders"> Filled Borders &beta;</label>
+        </div>
+    </section>
   </div>
 
   <div id="legendBox"
