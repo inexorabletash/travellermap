@@ -127,19 +127,23 @@ window.addEventListener('load', function() {
   }
 
   var permalinkTimeout = 0;
-  var lastHref;
+  var lastPageURL = null;
   function updatePermalink() {
     var PERMALINK_REFRESH_DELAY_MS = 500;
     if (permalinkTimeout)
       clearTimeout(permalinkTimeout);
     permalinkTimeout = setTimeout(function() {
 
-      // TODO: Factor this out and use for search results as well
-      var href = document.location.href.replace(/\?.*/, '');
+      function round(n, d) {
+        return Math.round(n / d) * d;
+      }
 
-      urlParams.x = Math.round(map.GetX() * 1000) / 1000;
-      urlParams.y = Math.round(map.GetY() * 1000) / 1000;
-      urlParams.scale = Math.round(map.GetScale() * 100) / 100;
+      // TODO: Factor this out and use for search results as well
+      var pageURL = document.location.href.replace(/\?.*/, '');
+
+      urlParams.x = round(map.GetX(), .001);
+      urlParams.y = round(map.GetY(), .001);
+      urlParams.scale = round(map.GetScale(), .01);
       urlParams.options = map.GetOptions();
       urlParams.style = map.GetStyle();
       if (mapElement.classList.contains('galdir'))
@@ -147,21 +151,49 @@ window.addEventListener('load', function() {
       else
         urlParams.galdir = 0;
 
-      href += '?' + Object.keys(urlParams).map(function(p) {
+      pageURL += '?' + Object.keys(urlParams).map(function(p) {
         return p + '=' + encodeURIComponent(urlParams[p]);
       }).join('&');
 
-      if (href === lastHref)
+      if (pageURL === lastPageURL)
         return;
 
       // EXPERIMENTAL: update the URL in-place
       if ('history' in window && 'replaceState' in window.history) {
-        if (document.location.href !== href)
-          window.history.replaceState(null, document.title, href);
+        if (document.location.href !== pageURL)
+          window.history.replaceState(null, document.title, pageURL);
       }
 
-      $('#share-url').value = href;
-      $('#share-embed').value = '<iframe width=400 height=300 src="' + href + '">';
+      $('#share-url').value = pageURL;
+      $('#share-embed').value = '<iframe width=400 height=300 src="' + pageURL + '">';
+
+      var snapshotParams = (function() {
+        var map_center_x = map.GetX();
+        var map_center_y = map.GetY();
+        var scale = map.GetScale();
+        var rect = mapElement.getBoundingClientRect();
+        var width = rect.width;
+        var height = rect.height;
+        var x = ( map_center_x * scale - ( width / 2 ) ) / width;
+        var y = ( -map_center_y * scale - ( height / 2 ) ) / height;
+        return { x: x, y: y, w: width, h: height, scale: scale };
+      }());
+      snapshotParams.x = round(snapshotParams.x, .001);
+      snapshotParams.y = round(snapshotParams.y, .001);
+      snapshotParams.scale = round(snapshotParams.scale, .01);
+      snapshotParams.options = map.GetOptions();
+      snapshotParams.style = map.GetStyle();
+      var snapshotURL = SERVICE_BASE + '/api/tile?' +
+            Object.keys(snapshotParams).map(function(p) {
+              return p + '=' + encodeURIComponent(snapshotParams[p]);
+            }).join('&');
+      $('a#share-snapshot').href = snapshotURL;
+
+      // url, media, description
+      $('a#share-pinterest').href = $('a#share-pinterest').getAttribute('base_href') +
+        '?url=' + encodeURIComponent(pageURL) +
+        '&media=' + encodeURIComponent(snapshotURL) +
+        '&description=' + encodeURIComponent('The Traveller Map');
 
     }, PERMALINK_REFRESH_DELAY_MS);
   }
