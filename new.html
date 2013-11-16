@@ -36,6 +36,12 @@ button {
   box-shadow: 2px 2px 4px #404040;
   border-radius: 2px;
 }
+button.glyph {
+  font-size: 16pt;
+}
+button img {
+  vertical-align: text-bottom;
+}
 button:hover {
   background-color: red;
 }
@@ -132,41 +138,37 @@ button:hover {
       }
       .style-print #searchBox,
       .style-atlas #searchBox { background-color: #e0e0e0; }
-      @media only screen and (max-width: 700px), (max-device-width: 700px) {
+      @media only screen and (max-width: 650px), (max-device-width: 650px) {
         #searchBox { width: 150px; }
       }
-      @media only screen and (max-width: 600px), (max-device-width: 600px) {
-        #searchBox { width: 150px; }
-        #importantBtn { display: none; }
-      }
-      @media only screen and (max-width: 500px), (max-device-width: 500px) {
-        #searchBox { width: 100px; }
+      @media only screen and (max-width: 550px), (max-device-width: 550px) {
         #importantBtn { display: none; }
       }
       @media only screen and (max-width: 450px), (max-device-width: 450px) {
-        #shareBtn { display: none; }
+        #searchBox { width: 100px; }
       }
       @media only screen and (max-width: 400px), (max-device-width: 400px) {
         #legendBtn { display: none; }
       }
+      @media only screen and (max-width: 350px), (max-device-width: 350px) {
+        #searchBox { width: 75px; }
+      }
       </style>
       <button id="searchBtn">
-        <img src="res/ui/search-button.png"
+        <img src="res/ui/search-button.png" width="17" height="17"
              alt="Search">
         <style>
         #searchBtn { width: 40px; height: 30px; float: left; margin-left: 4px; }
-        #searchBtn img { vertical-align: text-bottom; }
         .search-results #searchBtn { display: none; }
         </style>
       </button>
     </form>
 
-    <button id="closeResultsBtn">
+    <button id="closeResultsBtn" class="glyph">
       &times;
       <style>
       #closeResultsBtn {
         width: 40px; height: 30px; float: left; margin-left: 4px;
-        font-size: 16pt;
         display: none;
       }
       .search-results #closeResultsBtn { display: inline-block; }
@@ -284,20 +286,21 @@ button:hover {
     }
     </style>
     <button id="shareBtn"
-            title="Share">
+            title="Share links to the map">
       Share
     </button>
     <button id="legendBtn"
-            title="Show map legend">
+            title="Map legend and symbols">
       Legend
     </button>
     <button id="styleBtn"
-            title="Show map style options">
-      Style
+            title="Change the map appearance">
+      <img src="res/ui/gear-button.png" width="17" height="17"
+           alt="Settings">
     </button>
-    <button id="helpBtn"
+    <button id="helpBtn" class="glyph"
             title="Help, feedback, and more">
-      Help
+      ?
     </button>
     <script>
     window.addEventListener('DOMContentLoaded', function() {
@@ -362,7 +365,7 @@ button:hover {
     <style>
     #styleBox {
       width: 200px;
-      max-height: 295px;
+      max-height: 305px;
     }
     #styles button {
       width: 40px; height: 40px;
@@ -371,7 +374,7 @@ button:hover {
       box-shadow: none;
       border: 1px solid gray;
     }
-    #styleBox section { margin-top: 0.5em; margin-bottom: 0.5em; }
+    #styleBox section { margin: 1em 0; }
     #styleBox section:first-of-type { margin-top: 0; }
     #styleBox section:last-of-type { margin-bottom: 0; }
     </style>
@@ -407,7 +410,7 @@ button:hover {
 
     <section>
       <p><strong>Show:</strong></p>
-      <div class="indent" style="margin-bottom: 0.5em;">
+      <div class="indent">
         <p><label title="Show or hide the direction labels around the edge of the map"><input type="checkbox" id="ShowGalacticDirections"> Galactic Direction</label></p>
         <p><label title="Show sector and subsector grid lines"><input type="checkbox" name="grid" value="true" id="ShowSectorGrid"> Sector Grid</label></p>
         <p><label title="Show or hide sector and subsector names"><input type="checkbox" id="ShowSectorNames"> Sector Names</label></p>
@@ -423,7 +426,7 @@ button:hover {
 
     <section>
       <p><strong>Appearance:</strong>
-        <div class="indent" style="margin-bottom: 0.5em;">
+        <div class="indent">
           <p><label title="Always use hexagonal parsecs&#x0a;[BETA TESTING: May be removed]"><input type="checkbox" id="cbForceHexes"> Always Use Hexes &beta;</label>
           <p><label title="Use more colors for world features&#x0a;[BETA TESTING: May be removed]"><input type="checkbox" id="cbWorldColors"> World Colors &beta;</label>
           <p><label title="Fill borders to make regions more visible&#x0a;[BETA TESTING: May be removed]"><input type="checkbox" id="cbFilledBorders"> Filled Borders &beta;</label>
@@ -524,31 +527,42 @@ button:hover {
     <style>
     #helpBox {
       width: 200px;
-      max-height: 320px;
+      max-height: 285px;
     }
-    #helpBox p { margin-bottom: 1em; }
+    #helpBox section { margin: 1em 0; }
+    #helpBox section:first-of-type { margin-top: 0; }
+    #helpBox section:last-of-type { margin-bottom: 0; }
+
+    #helpBox p { margin: 0.5em 0; }
+    #helpBox p:first-of-type { margin-top: 0; }
     #helpBox p:last-of-type { margin-bottom: 0; }
+
     #helpBox h3 { font-style: italic; font-weight: normal;
                   color: red;
                   border-bottom: 2px solid red; }
     #helpBox a { text-decoration: none; }
     #helpBox a:hover { text-decoration: underline; }
     </style>
-    <p><a target="_blank" href="doc/about.html">About the Traveller Map</a></p>
-    <p><a target="_blank" href="doc/credits.html">Credits and Data Sources</a></p>
-    <p><a target="_blank" href="http://travellermap.blogspot.com/">News, Help &amp; Feedback</a></p>
+    <section>
+      <p><a target="_blank" href="doc/about.html">About the Traveller Map</a></p>
+      <p><a target="_blank" href="doc/credits.html">Credits and Data Sources</a></p>
+      <p><a target="_blank" href="http://travellermap.blogspot.com/">News, Help &amp; Feedback</a></p>
+    </section>
 
-    <h3>Players &amp; Referees</h3>
+    <section>
+      <h3>Players &amp; Referees</h3>
+      <p><a target="_blank" href="doc/secondsurvey.html">Understanding the data</a></p>
+      <p><a target="_blank" href="doc/fileformats.html">Data file formats</a></p>
+      <p><a target="_blank" href="post.htm">Make your own maps</a></p>
+    </section>
 
-    <p><a target="_blank" href="doc/secondsurvey.html">Understanding the data</a></p>
-    <p><a target="_blank" href="doc/fileformats.html">Data file formats</a></p>
-    <p><a target="_blank" href="post.htm">Make your own maps</a></p>
+    <section>
+      <h3>Developers</h3>
+      <p><a target="_blank" href="doc/api.html">Explore the API</a></p>
+      <p><a target="_blank" href="https://github.com/inexorabletash/travellermap">Get the source code</a></p>
+      <p><a target="_blank" href="https://trello.com/b/y61wmEKJ/travellermap-com-wish-list">Check the wish list</a></p>
+    </section>
 
-    <h3>Developers</h3>
-
-    <p><a target="_blank" href="doc/api.html">Explore the API</a></p>
-    <p><a target="_blank" href="https://github.com/inexorabletash/travellermap">Get the source code</a></p>
-    <p><a target="_blank" href="https://trello.com/b/y61wmEKJ/travellermap-com-wish-list">Check the wish list</a></p>
   </div>
 
   <div id="shareBox"
@@ -556,9 +570,9 @@ button:hover {
     <style>
     #shareBox {
       width: 230px;
-      max-height: 315px;
+      max-height: 340px;
     }
-    #shareBox section { margin: 10px 0; }
+    #shareBox section { margin: 1em 0; }
     #shareBox section:first-of-type { margin-top: 0; }
     #shareBox section:last-of-type { margin-bottom: 0; }
     #shareBox input { width: 210px; padding: 5px; border: 1px solid #404040; }
