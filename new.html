@@ -41,30 +41,35 @@ button:hover {
 }
 
 #GalacticDirectionDisplay .spinward {
-    text-align: center;
-    transform: translateX(-50%) translateX(0em) rotate(270deg) translateY(50%);
-    -webkit-transform: translateX(-50%) translateX(0em) rotate(270deg) translateY(50%);
-    -moz-transform: translateX(-50%) translateX(0em) rotate(270deg) translateY(50%);
-    -o-transform: translateX(-50%) translateX(0em) rotate(270deg) translateY(50%);
+  text-align: center;
+  transform: translateX(-50%) translateX(0em) rotate(270deg) translateY(50%);
+  -webkit-transform: translateX(-50%) translateX(0em) rotate(270deg) translateY(50%);
+  -moz-transform: translateX(-50%) translateX(0em) rotate(270deg) translateY(50%);
+  -o-transform: translateX(-50%) translateX(0em) rotate(270deg) translateY(50%);
 }
 #GalacticDirectionDisplay .trailing {
-    text-align: center;
-    transform: translateX(50%) translateX(-1.2em) rotate(270deg) translateY(50%);
-    -webkit-transform: translateX(50%) translateX(-1.2em) rotate(270deg) translateY(50%);
-    -moz-transform: translateX(50%) translateX(-1.2em) rotate(270deg) translateY(50%);
-    -o-transform: translateX(50%) translateX(-1.2em) rotate(270deg) translateY(50%);
+  text-align: center;
+  transform: translateX(50%) translateX(-1.2em) rotate(270deg) translateY(50%);
+  -webkit-transform: translateX(50%) translateX(-1.2em) rotate(270deg) translateY(50%);
+  -moz-transform: translateX(50%) translateX(-1.2em) rotate(270deg) translateY(50%);
+  -o-transform: translateX(50%) translateX(-1.2em) rotate(270deg) translateY(50%);
 }
+
+.ui {
+  z-index: 2000;
+}
+.iframe .ui { display: none; }
 </style>
 
 <!--[if lt IE 9]>
 <style>
 #GalacticDirectionDisplay .spinward {
-    -ms-writing-mode: tb-lr;
-    filter: flipv fliph;
+  -ms-writing-mode: tb-lr;
+  filter: flipv fliph;
 }
 #GalacticDirectionDisplay .trailing {
-     -ms-writing-mode: bt-rl;
-     filter: flipv fliph;
+  -ms-writing-mode: bt-rl;
+  filter: flipv fliph;
 }
 </style>
 <![endif]-->
@@ -101,101 +106,109 @@ button:hover {
     </div>
   </div>
 
-  <div id="searchBar">
+  <div id="searchBar" class="ui">
     <style>
     #searchBar {
       position: absolute;
       left: 15px; top: 15px; height: 30px;
-      z-index: 2000;
     }
-    .iframe #searchBar { display: none; }
     </style>
     <form id="searchForm" action="get">
-    <input id="searchBox"
-           placeholder="Search for..."
-           title="Search by world, subsector, or sector name.&#x0D;Prefix with uwp: to search UWPs.&#x0D;Use * and ? as wildcards."
-           >
-    <style>
-    #searchForm { display: inline; }
-    #searchBox {
-      background-color: white;
-      height: 30px; width: 250px;
-      float: left;
-      font-size: 12pt;
-      font-family: Univers, Helvetica, Arial, sans-serif;
-      padding: 0 10px; margin: 0; border: none;
-      border-radius: 2px;
-      box-shadow: 2px 2px 4px #404040;
-    }
-    .style-print #searchBox,
-    .style-atlas #searchBox { background-color: #e0e0e0; }
-    @media only screen and (max-width: 640px), (max-device-width: 640px) {
-      #searchBox { width: 150px; }
-    }
-    </style>
-    <button id="searchBtn">
-      <img src="res/ui/search-button.png"
-           alt="Search">
-    </button>
-    <style>
-    #searchBtn { height: 30px; float: left; margin-left: 4px; }
-    #searchBtn img { vertical-align: text-bottom; }
-    @media only screen and (max-width: 640px), (max-device-width: 640px) {
-      #searchBtn { display: none; }
-    }
-    </style>
-
+      <input id="searchBox"
+             placeholder="Search for..."
+             title="Search by world, subsector, or sector name.&#x0D;Prefix with uwp: to search UWPs.&#x0D;Use * and ? as wildcards."
+             >
+      <style>
+      #searchForm { display: inline; }
+      #searchBox {
+        background-color: white;
+        height: 30px; width: 250px;
+        float: left;
+        font-size: 12pt;
+        font-family: Univers, Helvetica, Arial, sans-serif;
+        padding: 0 10px; margin: 0; border: none;
+        border-radius: 2px;
+        box-shadow: 2px 2px 4px #404040;
+      }
+      .style-print #searchBox,
+      .style-atlas #searchBox { background-color: #e0e0e0; }
+      @media only screen and (max-width: 640px), (max-device-width: 640px) {
+        #searchBox { width: 150px; }
+      }
+      </style>
+      <button id="searchBtn">
+        <img src="res/ui/search-button.png"
+             alt="Search">
+        <style>
+        #searchBtn { width: 40px; height: 30px; float: left; margin-left: 4px; }
+        #searchBtn img { vertical-align: text-bottom; }
+        @media only screen and (max-width: 640px), (max-device-width: 640px) {
+          #searchBtn { display: none; }
+        }
+        .search-results #searchBtn { display: none; }
+        </style>
+      </button>
     </form>
+
+    <button id="closeResultsBtn">
+      &times;
+      <style>
+      #closeResultsBtn {
+        width: 40px; height: 30px; float: left; margin-left: 4px;
+        font-size: 16pt;
+        display: none;
+      }
+      .search-results #closeResultsBtn { display: inline-block; }
+      </style>
+      <script>
+      window.addEventListener('DOMContentLoaded', function() {
+        var $ = document.querySelector.bind(document);
+        $('#closeResultsBtn').addEventListener('click', function() {
+          document.body.classList.remove('search-results');
+        });
+      });
+  </script>
+    </button>
+
     <button id="importantBtn">
       Important
+      <style>
+      #importantBtn {
+        height: 30px;
+        float: left;
+        margin-left: 4px;
+      }
+      @media only screen and (max-width: 640px), (max-device-width: 640px) {
+        #importantBtn { display: none; }
+      }
+      </style>
     </button>
-    <style>
-    #importantBtn {
-      height: 30px;
-      float: left;
-      margin-left: 4px;
-    }
-    @media only screen and (max-width: 640px), (max-device-width: 640px) {
-      #importantBtn { display: none; }
-    }
-    </style>
+    <script>
+    window.addEventListener('DOMContentLoaded', function() {
+      var $ = document.querySelector.bind(document);
+      $("#searchForm").addEventListener('submit', function(e) {
+        search($('#searchBox').value);
+        e.preventDefault();
+      });
+      $('#importantBtn').addEventListener('click', function() {
+        search("(default)");
+      });
+    });
+    </script>
   </div>
-  <script>
-  (function() {
-    var $ = document.querySelector.bind(document);
-    $("#searchForm").addEventListener('submit', function(e) {
-      search($('#searchBox').value);
-      e.preventDefault();
-    });
-    $('#importantBtn').addEventListener('click', function() {
-      search("(default)");
-    });
-  }());
-  </script>
 
   <div id="resultsBox"
-       class="hoverbox hoverbox-left">
+       class="ui hoverbox hoverbox-left">
     <style>
     #resultsBox {
       left: 15px; top: 50px; width: 300px;
       min-height: 50px;
       max-height: 250px;
     }
+    .search-results #resultsBox { display: block; }
     </style>
     <div id="resultsContainer"></div>
-  </div>
-  <button id="closeResultsBtn"
-          style="position: absolute;
-                 z-index: 2000;
-                 left: 290px; top: 50px;
-                 font-size: 16pt;
-                 "
-          >
-    &times;
-  </button>
-
-  <script id="SearchResultsTemplate" type="text/x-handlebars-template">
-    <div class="search-results-items">
+    <script id="SearchResultsTemplate" type="text/x-handlebars-template">
       {{#Results.Items}}
         {{#World}}
           <div class="item-main"><a title="Navigate to {{Name}}" href="{{href}}" onclick="{{onclick}}">{{Name}}</a></div>
@@ -206,7 +219,7 @@ button:hover {
         {{#Subsector}}
           <div class="item-main"><a title="Navigate to {{Name}}" href="{{href}}" onclick="{{onclick}}">{{Name}}</a></div>
           <div class="item-location">Subsector {{Index}} of {{Sector}}</div>
-        {{/Subsector}}
+          {{/Subsector}}
         {{#Sector}}
           <div class="item-main"><a title="Navigate to {{Name}}" href="{{href}}" onclick="{{onclick}}">{{Name}}</a></div>
           <div class="item-location">Sector</div>
@@ -215,50 +228,36 @@ button:hover {
       {{^Results.Items}}
         <div><i>No matches found.</i></div>
       {{/Results.Items}}
-    </div>
-  </script>
-  <style>
-  .search-results-items .item-main { font-size: 125%; }
-  .search-results-items .item-location { margin-left: 10pt; }
-  .search-results-items .item-title { margin-left: 10pt; }
-  .search-results-items .item-uwp { margin-left: 10pt; }
-  </style>
+    </script>
+    <style>
+    #resultsContainer .item-main { font-size: 125%; }
+    #resultsContainer .item-location { margin-left: 10pt; }
+    #resultsContainer .item-title { margin-left: 10pt; }
+    #resultsContainer .item-uwp { margin-left: 10pt; }
+    </style>
+  </div>
+
 
 
   <div id="progressBox"
-       class="hoverbox">
+       class="ui hoverbox">
     <img id="ProgressImage" src="res/ui/ajax-loader.gif" alt="" style="width: 32px; height: 32px; margin: 6px;">
+    <style>
+    #progressBox {
+      position: absolute;
+      left: 15px; top: 50px; height: 50px; width: 300px;
+      text-align: center;
+    }
+    .search-progress #progressBox { display: block; }
+    </style>
   </div>
-  <style>
-  #progressBox {
-    position: absolute;
-    left: 15px; top: 50px; height: 50px; width: 300px;
-    text-align: center;
-  }
 
-  body #closeResultsBtn { display: none; }
-  body.search-progress #progressBox { display: block; }
-  body.search-results #resultsBox { display: block; }
-  body.search-results #closeResultsBtn { display: block; }
-  </style>
-  <script>
-  (function() {
-    var $ = document.querySelector.bind(document);
-    $('#closeResultsBtn').addEventListener('click', function() {
-      document.body.classList.remove('search-results');
-    });
-  }());
-  </script>
-
-
-  <div id="optionsBar">
+  <div id="optionsBar" class="ui">
     <style>
     #optionsBar {
       position: absolute;
       right: 15px; top: 15px; height: 30px;
-      z-index: 2000;
     }
-    .iframe #optionsBar { display: none; }
     @media only screen and (max-width: 640px), (max-device-width: 640px) {
       #xoptionsBar {
         left: 15px; right: auto; top: 60px;
@@ -267,6 +266,11 @@ button:hover {
       #x-legendBtn { display: none; }
       #x-styleBtn { display: none; }
       #x-helpBtn { display: none; }
+    }
+    #shareBtn, #legendBtn, #styleBtn, #helpBtn {
+      height: 30px;
+      float: left;
+      margin-left: 4px;
     }
     </style>
     <button id="shareBtn"
@@ -285,27 +289,21 @@ button:hover {
             title="Help, feedback, and more">
       Help
     </button>
-  </div>
-  <style>
-  #shareBtn, #legendBtn, #styleBtn, #helpBtn {
-    height: 30px;
-    float: left;
-    margin-left: 4px;
-  }
-  </style>
-  <script>
-  (function() {
-    var $ = document.querySelector.bind(document);
-    var PANELS = ['legend', 'style', 'share', 'help'];
-    PANELS.forEach(function(b) {
-      $('#'+b+'Btn').addEventListener('click', function() {
-        PANELS.forEach(function(p) {
-          document.body.classList[b === p ? 'toggle' : 'remove']('show-' + p);
+    <script>
+    window.addEventListener('DOMContentLoaded', function() {
+      var $ = document.querySelector.bind(document);
+      var PANELS = ['legend', 'style', 'share', 'help'];
+      PANELS.forEach(function(b) {
+        $('#'+b+'Btn').addEventListener('click', function() {
+          PANELS.forEach(function(p) {
+            document.body.classList[b === p ? 'toggle' : 'remove']('show-' + p);
+          });
         });
       });
     });
-  }());
-  </script>
+    </script>
+  </div>
+
   <style>
   body.show-style #styleBox { display: block; }
   body.show-legend #legendBox { display: block; }
@@ -318,7 +316,6 @@ button:hover {
   .hoverbox {
     display: none;
     position: absolute;
-    z-index: 2000;
     overflow-x: hidden;
     overflow-y: auto;
     background-color: black;
@@ -345,7 +342,7 @@ button:hover {
   </style>
 
   <div id="styleBox"
-       class="hoverbox hoverbox-right">
+       class="ui hoverbox hoverbox-right">
     <style>
     #styleBox {
       width: 200px;
@@ -359,6 +356,8 @@ button:hover {
       border: 1px solid gray;
     }
     #styleBox section { margin-top: 0.5em; margin-bottom: 0.5em; }
+    #styleBox section:first-of-type { margin-top: 0; }
+    #styleBox section:last-of-type { margin-bottom: 0; }
     </style>
     <section id="styles">
       <button id="styleBtn-poster"
@@ -381,12 +380,12 @@ button:hover {
     #styleBtn-candy  { background-image: url('res/ui/style-candy.png'); }
     </style>
     <script>
-        (function() {
+        window.addEventListener('DOMContentLoaded', function() {
           var $ = document.querySelector.bind(document);
           ['poster', 'atlas', 'print', 'candy'].forEach(function(s) {
             $('#styleBtn-'+s).addEventListener('click', function() { map.SetStyle(s); });
           });
-        }());
+        });
     </script>
     </section>
 
@@ -417,19 +416,19 @@ button:hover {
   </div>
 
   <div id="legendBox"
-       class="hoverbox hoverbox-right">
+       class="ui hoverbox hoverbox-right">
     <style>
     #legendBox {
       width: 200px;
       max-height: 620px;
     }
     </style>
-    <div class="section">
-      <h2 style="margin-top: 0">Map Legend</h2><br>
+    <section>
+      <h2>Map Legend</h2><br>
       <div id="image1"></div>
       <div id="image2"></div>
-    </div>
-    <div id="world_colors" class="section">
+    </section>
+    <section id="world_colors">
       <h2>World<br>Characteristics</h2><br>
       <ul class="basic_world_colors">
         <li><span class="glyph" style="font-size: 14pt;">&bull;</span> No Water Present
@@ -447,8 +446,8 @@ button:hover {
         <li><span class="glyph" style="font-size: 14pt;">&bull;</span> No Water Present
         <li><span class="glyph" style="font-size: 12pt;">:::</span> Asteroid Belt
       </ul>
-    </div>
-    <div id="bases" class="section">
+    </section>
+    <section id="bases">
       <h2>Bases</h2><br>
       <ul>
         <li><span class="glyph" style="font-size: 8pt;">&#x2605;</span> Imperial Naval Base
@@ -486,32 +485,32 @@ button:hover {
         <li><span class="glyph highlight" style="font-size: 10pt;"><b>P</b></span> Penal Colony
         <li><span class="glyph" style="font-size: 10pt;"><b>X</b></span> Prison, Exile Camp
       </ul>
-    </div>
-    <div class="section">
+    </section>
+    <section>
       <h2>Travel Zones</h2><br>
       <ul>
         <li><span class="glyph amberzone" style="font-size: 12pt;">&#x25AC;</span> Amber Zone
         <li><span class="glyph redzone" style="font-size: 12pt;">&#x25AC;</span> Red Zone
       </ul>
-    </div>
-    <div class="section">
+    </section>
+    <section>
       <h2>Population</h2><br>
       <ul>
         <li><span>Secundus</span> &nbsp; under 1 billion
         <li><span>PRIMUS</span> &nbsp; over 1 billion
         <li><span class="highlight">Highlighted</span> world names<br>are subsector capitals
       </ul>
-    </div>
+    </section>
   </div>
 
   <div id="helpBox"
-       class="hoverbox hoverbox-right">
+       class="ui hoverbox hoverbox-right">
     <style>
     #helpBox {
       width: 200px;
       max-height: 300px;
     }
-    #helpBox p { margin-bottom: 8px; }
+    #helpBox p { margin-bottom: 1em; }
     #helpBox h3 { font-style: italic; font-weight: normal;
                    color: red;
                    border-bottom: 2px solid red; }
@@ -536,7 +535,7 @@ button:hover {
   </div>
 
   <div id="shareBox"
-       class="hoverbox hoverbox-right">
+       class="ui hoverbox hoverbox-right">
     <style>
     #shareBox {
       width: 230px;
@@ -572,8 +571,8 @@ button:hover {
   </div>
 
   <div id="navBar"
-       style="position: absolute;
-              z-index: 2000;">
+       class="ui"
+       style="position: absolute;">
     <button id="zoomInBtn"
             title="Zoom in"
             style="height: 30px; width: 30px;
@@ -596,14 +595,13 @@ button:hover {
   <style>
   #navBar { right: 15px; bottom: 110px; height: 30px; }
   .hide-footer #navBar { bottom: 15px; }
-  .iframe #navBar { display: none; }
 
   @media only screen and (max-width: 640px), (max-device-width: 640px) {
     #navBar { display: none; }
   }
   </style>
   <script>
-  (function() {
+  window.addEventListener('DOMContentLoaded', function() {
     var $ = document.querySelector.bind(document);
     $('#zoomInBtn').addEventListener('click', function() {
       window.map.ZoomIn();
@@ -611,31 +609,29 @@ button:hover {
     $('#zoomOutBtn').addEventListener('click', function() {
       window.map.ZoomOut();
     });
-  }());
+  });
   </script>
 
-
-  <!-- Footer (docks bottom) -->
-  <div id="PageBottomPane"
-       style="z-index: 2000;
-              ">
+  <div id="bottom-pane"
+       class="ui">
     <style>
-    #PageBottomPane { background-color: rgba(0,0,0,0.65); }
-    .style-atlas #PageBottomPane,
-    .style-print #PageBottomPane { background-color: rgba(255,255,255,0.65); }
+    #bottom-pane { background-color: rgba(0,0,0,0.65); }
+    .style-atlas #bottom-pane,
+    .style-print #bottom-pane { background-color: rgba(255,255,255,0.65); }
     @media only screen and (max-width: 640px), (max-device-width: 640px) {
-      #PageBottomPane { zoom: 50%; }
+      #bottom-pane { zoom: 50%; }
       #MetadataDisplay { display: none; }
     }
-    .iframe #PageBottomPane { display: none; }
     </style>
     <hr id="stripe">
     <div id="LogoImage" title="Traveller&reg; - Science Fiction Adventure in the Far Future">&nbsp;</div>
     <script>
+      window.addEventListener('DOMContentLoaded', function() {
         var $ = document.querySelector.bind(document);
-        $("#LogoImage").ondblclick = function() {
+        $("#LogoImage").addEventListener('dblclick', function() {
           document.body.classList.add('hide-footer');
-        };
+        });
+      });
     </script>
 
     <div

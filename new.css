@@ -22,32 +22,25 @@ a.stealth:hover { text-decoration: underline; }
 #LogoImage { float: right; width: 416px; height: 71px; background-color: Transparent; background-image: url("res/ui/logo-flat.png"); background-repeat: no-repeat; background-position: top left; }
 
 #dragContainer {
-    background-image: url('data:image/png,%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%20%00%00%00%20%08%02%00%00%00%FC%18%ED%A3%00%00%00%2BIDATH%C7%ED%D0A%09%00%00%0C%03%B1%CA%A9%7F%85%D3%D0%E7%20g%20p%E9X%D6%00%00%00%00%F0%02%B0%14%00%00%00%00m%0Faa%F0%01%DB%16%C2%C7%00%00%00%00IEND%AEB%60%82');
-    cursor: crosshair;
+  background-image: url('data:image/png,%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%20%00%00%00%20%08%02%00%00%00%FC%18%ED%A3%00%00%00%2BIDATH%C7%ED%D0A%09%00%00%0C%03%B1%CA%A9%7F%85%D3%D0%E7%20g%20p%E9X%D6%00%00%00%00%F0%02%B0%14%00%00%00%00m%0Faa%F0%01%DB%16%C2%C7%00%00%00%00IEND%AEB%60%82');
+  cursor: crosshair;
 }
 
 #GalacticDirectionDisplay { visibility: hidden; }
 .galdir #GalacticDirectionDisplay { visibility: visible; }
 
-#PageBottomPane
-{
+#bottom-pane {
   position: absolute; left: 0; right: 0; bottom: 0; height: 95px; padding: 10px; padding-top: 0; overflow: hidden;
 }
 
-.hide-footer #PageBottomPane { display: none; }
-.hide-footer #PageRightPane { bottom: 0; }
-.hide-footer #PageMainPane { bottom: 0; }
+.hide-footer #bottom-pane { display: none; }
 
-.hide-controls #PageRightPane { display: none; }
-.hide-controls #PageMainPane { right: 0; }
-
-#dragContainer.dragging
-{
-    cursor: move;
-    cursor: url(res/ui/grabbing.cur), move;
-    cursor: -webkit-grabbing;
-    cursor: -moz-grabbing;
-    cursor: grabbing;
+#dragContainer.dragging {
+  cursor: move;
+  cursor: url(res/ui/grabbing.cur), move;
+  cursor: -webkit-grabbing;
+  cursor: -moz-grabbing;
+  cursor: grabbing;
 }
 
 /* WebKit */
@@ -57,21 +50,22 @@ a.stealth:hover { text-decoration: underline; }
 
 /* IE */
 body {
-    scrollbar-face-color:#404040;
-    scrollbar-arrow-color:#000000;
-    scrollbar-track-color:#000000;
-    scrollbar-shadow-color:#404040;
-    scrollbar-highlight-color:#404040;
-    scrollbar-3dlight-color:#404040;
-    scrollbar-darkshadow-color: #000000;
+  scrollbar-face-color:#404040;
+  scrollbar-arrow-color:#000000;
+  scrollbar-track-color:#000000;
+  scrollbar-shadow-color:#404040;
+  scrollbar-highlight-color:#404040;
+  scrollbar-3dlight-color:#404040;
+  scrollbar-darkshadow-color: #000000;
 }
 
 #legendBox {
   text-align: center;
 }
 
-#legendBox .section h2 {
+#legendBox section h2 {
   display: inline-block;
+  margin-top: 0;
   margin-bottom: 6px;
   border-bottom: 3px solid white;
   padding: 2px 0px;
@@ -80,14 +74,17 @@ body {
   font-weight: normal;
 }
 
-#legendBox .section ul {
-    text-align: left;
-    display: inline-block;
-    padding: 0; margin: 0;
-    list-style-type: none;
+#legendBox section:first-of-type { margin-top: 0; }
+#legendBox section { margin-top: 1em; }
+
+#legendBox section ul {
+  text-align: left;
+  display: inline-block;
+  padding: 0; margin: 0;
+  list-style-type: none;
 }
 
-#legendBox .section li {
+#legendBox section li {
     line-height: 12pt;
 }
 
@@ -97,10 +94,10 @@ body {
 #legendBox .amberzone { color: yellow; }
 #legendBox .redzone { color: red; }
 
-#legendBox .section ul.basic_world_colors { display: inline-block; }
-#legendBox .section ul.extended_world_colors { display: none; }
-#legendBox.world_colors .section ul.basic_world_colors { display: none; }
-#legendBox.world_colors .section ul.extended_world_colors { display: inline-block; }
+#legendBox ul.basic_world_colors { display: inline-block; }
+#legendBox ul.extended_world_colors { display: none; }
+#legendBox.world_colors ul.basic_world_colors { display: none; }
+#legendBox.world_colors ul.extended_world_colors { display: inline-block; }
 
 /* Extended World Colors */
 #legendBox .glyph.RiAg { color: rgb(241,194,50); }
@@ -115,19 +112,19 @@ body {
 
 #legendBox #image1
 {
-    display: inline-block;
-    width: 200px; height: 200px; margin: 0; padding: 0;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-image: url("res/ui/Legend_1003_poster.png");
+  display: inline-block;
+  width: 200px; height: 200px; margin: 0; padding: 0;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url("res/ui/Legend_1003_poster.png");
 }
 #legendBox #image2
 {
-    display: inline-block;
-    width: 200px; height: 200px; margin: 0; padding: 0;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-image: url("res/ui/Legend_1006_poster.png");
+  display: inline-block;
+  width: 200px; height: 200px; margin: 0; padding: 0;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url("res/ui/Legend_1006_poster.png");
 }
 
 
@@ -177,10 +174,8 @@ body.style-atlas { color: black; background-color: white; }
 
 .style-print #dragContainer,
 .style-atlas #dragContainer {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAABp0RVh0U29mdHdhcmUAUGFpbnQuTkVUIHYzLjUuMTAw9HKhAAAAWUlEQVRIS+3VyQkAMAhEUdON/TdjOVmOWWCYa/ieByQPo62qwqnMdOIRs4FV3SwaSDCIILr/oDQ5AkyRFPuASL7xCFi7fR0bGigyiJQQUySFIILosWo1yp4YB/GvdXDgEM0AAAAASUVORK5CYII=');
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAABp0RVh0U29mdHdhcmUAUGFpbnQuTkVUIHYzLjUuMTAw9HKhAAAAWUlEQVRIS+3VyQkAMAhEUdON/TdjOVmOWWCYa/ieByQPo62qwqnMdOIRs4FV3SwaSDCIILr/oDQ5AkyRFPuASL7xCFi7fR0bGigyiJQQUySFIILosWo1yp4YB/GvdXDgEM0AAAAASUVORK5CYII=');
 }
-
-
 
 .style-print ::-webkit-scrollbar,
 .style-atlas ::-webkit-scrollbar { background-color: white; width: 8px; }
@@ -192,11 +187,11 @@ body.style-atlas { color: black; background-color: white; }
 /* IE */
 body.style-print,
 body.style-atlas {
-    scrollbar-face-color:#b0b0b0;
-    scrollbar-arrow-color:#ffffff;
-    scrollbar-track-color:#ffffff;
-    scrollbar-shadow-color:#b0b0b0;
-    scrollbar-highlight-color:#b0b0b0;
-    scrollbar-3dlight-color:#b0b0b0;
-    scrollbar-darkshadow-color: #ffffff;
+  scrollbar-face-color:#b0b0b0;
+  scrollbar-arrow-color:#ffffff;
+  scrollbar-track-color:#ffffff;
+  scrollbar-shadow-color:#b0b0b0;
+  scrollbar-highlight-color:#b0b0b0;
+  scrollbar-3dlight-color:#b0b0b0;
+  scrollbar-darkshadow-color: #ffffff;
 }
