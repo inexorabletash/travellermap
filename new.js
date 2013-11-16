@@ -328,6 +328,9 @@ window.addEventListener('load', function() {
       }
 
       $("#resultsContainer").innerHTML = searchTemplate(data);
+      var first = $('#resultsContainer a');
+      if (first)
+        setTimeout(function() { first.focus(); }, 0);
     }
   }
 

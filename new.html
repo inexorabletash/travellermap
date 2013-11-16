@@ -243,6 +243,17 @@ button:hover {
     #resultsContainer .item-title { margin-left: 10pt; }
     #resultsContainer .item-uwp { margin-left: 10pt; }
     </style>
+    <script>
+    window.addEventListener('DOMContentLoaded', function() {
+      var $ = document.querySelector.bind(document);
+      document.body.addEventListener('keyup', function(e) {
+        var VK_ESCAPE = 27;
+        if (e.keyCode === VK_ESCAPE) {
+          document.body.classList.remove('search-results');
+        }
+      });
+    });
+    </script>
   </div>
 
 
@@ -297,6 +308,12 @@ button:hover {
           PANELS.forEach(function(p) {
             document.body.classList[b === p ? 'toggle' : 'remove']('show-' + p);
           });
+        });
+        document.body.addEventListener('keyup', function(e) {
+          var VK_ESCAPE = 27;
+          if (e.keyCode === VK_ESCAPE) {
+            document.body.classList.remove('show-' + b);
+          }
         });
       });
     });
