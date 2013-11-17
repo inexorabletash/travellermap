@@ -369,7 +369,5 @@ window.addEventListener('DOMContentLoaded', function() {
   //
   //////////////////////////////////////////////////////////////////////
 
-  if (typeof mapElement.focus === 'function') {
-    mapElement.focus();
-  }
+  mapElement.focus();
 });
