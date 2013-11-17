@@ -40,11 +40,13 @@
       <br>
     </p>
     <p>
-      DGP is a registered trademark of <a href="http://www.cs.ucr.edu/~jimv/tca/rodge3.txt">
-      Digest Group Publications</a>. All rights are reserved by Digest Group
-      Publications. Any use of Digest Group Publications' copyrighted material or
+      Materials producted by Digest Group Publications (DGP) are copyright &copy;
+      Roger Sanger. Any use of Digest Group Publications' copyrighted material or
       trademarks anywhere on this Web site and its files should not be viewed as a
-      challenge to those copyrights or trademarks.
+      challenge to those copyrights. Usage is intended to follow the guidelines
+      <a href="http://members.tip.net.au/~davidjw/tavspecs/maint/dgp_faq.htm">
+        announced by Roger Sanger on the Traveller Mailing List</a> for preserving
+      the overall <b><i>Traveller</i></b> milieu.
     </p>
   </section>
 
@@ -64,9 +66,9 @@
     <h3>Change History</h3>
     <!-- ================================================================================ -->
     <p>
-      Changes to the site and APIs are announced on a blog to support ad-hoc updates and feedback.
-      Check it out: <a href="http://travellermap.blogspot.com/">http://travellermap.blogspot.com/</a>.
-      You can syndicate it here: <a href="http://travellermap.blogspot.com/atom.xml">XML (Atom)</a>.
+      Substantial changes to the site, data and APIs are announced at <a href="http://travellermap.blogspot.com/">the Traveller Map Blog</a>. Changes to the code can be found
+      by looking at the
+      <a href="https://github.com/inexorabletash/travellermap/commits/master">commits on GitHub</a>.
     </p>
   </section>
 
@@ -144,22 +146,24 @@
     <h3>How It Works</h3>
     <!-- ================================================================================ -->
     <p>
-      The map page is constructed using HTML, CSS and JavaScript targetting
-      both the Microsoft Internet Explorer and W3C event models, and has been tested
-      with Internet Explorer 8+, Chrome, Firefox, Opera, and Safari.
+      The map page is constructed using HTML, CSS and JavaScript and
+      has been tested with Internet Explorer 8+, Chrome, Firefox,
+      Opera, and Safari. The page uses script to request image tiles
+      from the server. As the map is dragged, any newly revealed tiles
+      are requested from the server, filling in the edges of the map.
     </p>
     <p>
-      The map page uses client side script to request image tiles from the server.
-      The script arranges the tiles in a scrolling container, which is moved when the
-      user drags the map. As the map is dragged, any newly revealed tiles are
-      requested from the server, filling in the edges of the map. (Feel free to look
-      at the page source to see how this works.)
+      The server providing the map tiles is running Microsoft's
+      ASP.NET, with a custom ASPX service generating the images on the
+      fly. The service is coded using C# and makes use of the GDI+
+      (via <a href="http://www.pdfsharp.net/">PDFsharp</a>) to render
+      the tiles.
     </p>
     <p>
-      The server providing the map tiles is running Microsoft's ASP.NET, with a
-      custom ASPX service generating the images on the fly. The service is coded
-      using C# and makes use of the GDI+ services (via .NET wrappers) to produce
-      high-fidelity rendering.
+      The full source code to the site - both client and server - is
+      available
+      on <a href="https://github.com/inexorabletash/travellermap">GitHub</a>
+      and is released under the Apache open source license.
     </p>
     <p>
       The map data comes from two sources. The macro-scale data - comprising the
@@ -167,7 +171,9 @@
       <a href="http://travellerbibliography.org/gdw-ct/knownspace.html" target="_blank">Imperium Map</a>
       poster released by GDW in the early 1980s by scanning the map and tracing the
       borders with a mouse into a custom vector format. The micro-scale data is
-      derived from sector data found on the Internet in ".sec" format.
+      derived from sector data found on the Internet in ".sec" format. Official
+      data from the <i>Traveller 5 Second Survey</i> effort is used where available.
+
     </p>
   </section>
 
@@ -181,7 +187,7 @@
     </p>
   </section>
 
-  <section>
+  <section id="notes">
     <!-- ================================================================================ -->
     <h3>Design Notes</h3>
     <!-- ================================================================================ -->
@@ -206,57 +212,41 @@
     <p>
       The map features shown at various zoom levels are arbitrary; I settled on them
       by trial and error. Although some view toggles are exposed by the controls, most are
-      hard-coded. Here is a rough guide:
+      hard-coded. Here is a rough guide, with scale in pixels/parsec.
     </p>
 
     <div style="margin-left: 36pt; margin-top: 12pt;">
-      <table>
-        <tr><th>Feature           <th>Min Scale <th>Max Scale
-        <tr><td>Sector Grid       <td>1    <td>-
-        <tr><td>Sector Names      <td>1    <td>-
-        <tr><td>Random Star Field <td>1    <td>4
-        <tr><td>Subsector Grid    <td>-    <td>8
-        <tr><td>Parsecs (Square)  <td>16   <td>48
-        <tr><td>Parsecs (Hex)     <td>48   <td>-
-        <tr><td>Capitals          <td>1/2  <td>4
-        <tr><td>Labels (Macro)    <td>1/2  <td>4
-        <tr><td>Labels (Micro)    <td>16   <td>-
-        <tr><td>Borders (Macro)   <td>1/32 <td>4
-        <tr><td>Borders (Micro)   <td>4    <td>-
-        <tr><td>Routes (Macro)    <td>1/2  <td>4
-        <tr><td>Routes (Micro)    <td>8    <td>-
-        <tr><td>Worlds (Dotmap)   <td>4    <td>16
-        <tr><td>Worlds (Basic)    <td>24   <td>32
-        <tr><td>Worlds (Full Data)<td>48   <td>-
-        <tr><td>Worlds (UWP)      <td>96   <td>-
+      <table id="features">
+        <style>
+        #features th { width: 10pt; }
+        #features th:first-of-type { width: auto; }
+        </style>
+        <tr><th>Feature           <th><sup>1</sup>/<sub>32</sub> <th><sup>1</sup>/<sub>16</sub> <th><sup>1</sup>/<sub>8</sub> <th><sup>1</sup>/<sub>4</sub> <th><sup>1</sup>/<sub>2</sub> <th>1 <th>2 <th>4 <th>8 <th>16 <th>32 <th>64 <th>128
+        <tr><td>Galaxy            <td>&bull;<td>&bull;<td>&bull;<td>&bull;<td><td><td><td><td><td><td><td><td>
+        <tr><td>Local Rifts       <td><td><td><td><td>&bull;<td><td><td><td><td><td><td><td>
+        <tr><td>Random Star Field <td><td><td><td><td><td>&bull;<td>&bull;<td>&bull;<td><td><td><td><td>
+        <tr><td>Important Worlds  <td><td><td><td><td>&bull;<td>&bull;<td>&bull;<td>&bull;<td><td><td><td><td>
+        <tr><td>Worlds            <td><td><td><td><td><td><td><td>&bull;<td>&bull;<td>&bull;<td>&bull;<td>&bull;<td>&bull;
+        <tr><td>Worlds (Basic)    <td><td><td><td><td><td><td><td><td><td><td>&bull;<td>&bull;<td>&bull;
+        <tr><td>Worlds (Full Data)<td><td><td><td><td><td><td><td><td><td><td><td>&bull;<td>&bull;
+        <tr><td>Worlds (UWP)      <td><td><td><td><td><td><td><td><td><td><td><td><td>&bull;
+        <tr><td>Sector Grid       <td><td><td><td><td><td>&bull;<td>&bull;<td>&bull;<td>&bull;<td>&bull;<td>&bull;<td>&bull;<td>&bull;
+        <tr><td>Subsector Grid    <td><td><td><td><td><td><td><td><td>&bull;<td>&bull;<td>&bull;<td>&bull;<td>&bull;
+        <tr><td>Sector Names      <td><td><td><td><td><td>&bull;<td>&bull;<td>&bull;<td>&bull;<td>&bull;<td><td><td>
+        <tr><td>Subsector Names   <td><td><td><td><td><td><td><td><td><td><td>&bull;<td>&bull;<td>
+        <tr><td>Parsecs (Square)  <td><td><td><td><td><td><td><td><td><td>&bull;<td>&bull;<td><td>
+        <tr><td>Parsecs (Hex)     <td><td><td><td><td><td><td><td><td><td><td><td>&bull;<td>&bull;
+        <tr><td>Labels (Macro)    <td><td><td><td><td>&bull;<td>&bull;<td>&bull;<td>&bull;<td><td><td><td><td>
+        <tr><td>Labels (Micro)    <td><td><td><td><td><td><td><td><td>&bull;<td>&bull;<td>&bull;<td>&bull;<td>&bull;
+        <tr><td>Borders (Macro)   <td>&bull;<td>&bull;<td>&bull;<td>&bull;<td>&bull;<td>&bull;<td>&bull;<td><td><td><td><td><td>
+        <tr><td>Borders (Micro)   <td><td><td><td><td><td><td><td>&bull;<td>&bull;<td>&bull;<td>&bull;<td>&bull;<td>&bull;
+        <tr><td>Routes (Macro)    <td><td><td><td><td>&bull;<td>&bull;<td>&bull;<td>&bull;<td><td><td><td><td>
+        <tr><td>Routes (Micro)    <td><td><td><td><td><td><td><td><td>&bull;<td>&bull;<td>&bull;<td>&bull;<td>&bull;
       </table>
     </div>
   </section>
 
-  <section>
-    <!-- ================================================================================ -->
-    <h3>In Closing</h3>
-    <!-- ================================================================================ -->
-    <p>
-      If you do just one thing with the map, set the scale to 64 (Subsector) and
-      select Regina/Spinward Marches.
-    </p>
-    <p>
-      If you do just two things with the map, visit Regina, but also set the scale to
-      16 (Sector) and pan around the Imperium to get a sense of scale.
-    </p>
-    <p>
-      If you do just three things with the map, visit Regina, then pan across the
-      Imperium, but finally set the scale to 64 (Subsector) and select Capital/Core.
-      Then retrace the steps of the Sylean Federation Scout Service, and try to make
-      your way to Vland or Terra. It's a humbling trek.
-    </p>
-    <p>
-      There is lots more that can be done, but for now: enjoy!
-    </p>
-  </section>
-
-  <section>
+  <section id="related">
     <!-- ================================================================================ -->
     <h3>Related Sites and Sources</h3>
     <!-- ================================================================================ -->
@@ -267,35 +257,31 @@
       map is intended to be very simple to use but also extremely minimalist. If you
       need more data or hard core analysis, check out the following sites.
     </p>
+
+    <h4>Active Sites</h4>
+
     <p>
-      <a href="http://web.archive.org/web/20070206131226/http://maps.travellercentral.com/map.html">Map of Traveller Charted Space</a> [via <a href="http://archive.org">The Internet Archive's Wayback Machine</a>]
-      - Anthony Jackson's awesome map site, featuring trade routes, sector data, and
-      PDFs of documented sectors.
+      <a href="http://zho.berka.com/">The Zhodani Base</a> - P-O "BeRKA" Bergstedt's
+      site includes thorough maps and sector data, among other treasures.
     </p>
+
     <p>
       <a href="http://homepage.ntlworld.com/elvwood/Traveller/Sectors/">Underdeveloped
         Sectors</a> - John G. Wood's project to remap the sectors of the Coreward
       and Rimward domains, based on the published DGP dotmaps.
     </p>
-    <p>
-      <a href="http://web.archive.org/web/*/http://www.rossmack.com/ab/RPG/traveller/AstroIndex.asp">AB's Traveller
-        Astrography Page</a> [via <a href="http://archive.org">The Internet Archive's Wayback Machine</a>] - Andrew Brown's excellent site, featuring not only
-      detailed data but background theory and details on on Traveller astrometrics
-      and astrography.
-    </p>
-    <p>
-      <a href="http://zho.berka.com/">The Zhodani Base</a> - P-O "BeRKA" Bergstedt's
-      site includes thorough maps and sector data, among other treasures.
-    </p>
+
     <p>
       <a href="http://www.utzig.com/traveller/iai.shtml">Interactive Atlas of the
         Imperium</a> - Ned Utzig's drill-down side, which like this one generates
       images on the fly.
     </p>
+
     <p>
       <a href="http://www.jtas.net/travelleratlas/index.php">The Traveller Atlas</a> - An
       excellent "drill-in" map site.
     </p>
+
     <p>
       <a href="http://traveller.mu.org/archive/">The Missouri Traveller Archive</a> -
       a fabulous archive of text files.
@@ -304,33 +290,54 @@
       <a href="http://dmckinne.winterwar.org/sector.html">Traveller Sector Information</a> -
       Donald McKinney's comprehensive list of documented sectors in Traveller.
     </p>
+
+
     <p>
-      <a href="http://www.seemann.ms/worlds.htm">List of Worlds</a> - Mark Seemann's
-      comprehensive list of documented worlds in Traveller.
+      <a href="http://dotclue.org/t20/">Gateway to PDF</a> - an awesome set of tools by J. Greely to output
+      PDF files from sector data and route/border metadata, as well as tools to compute things like borders
+      from raw sector data.
     </p>
-    <!-- Offline (with the rest of Geocities) as of 2009-10-27
+
+    <h4>Archived Sites (via <a href="http://archive.org">The Internet Archive's Wayback Machine</a></h4>
+
+    <p>
+      <a href="http://web.archive.org/web/20070206131226/http://maps.travellercentral.com/map.html">Map of Traveller Charted Space</a> - Anthony Jackson's awesome map site, featuring trade routes, sector data, and
+      PDFs of documented sectors.
+    </p>
+
+    <p>
+      <a href="http://web.archive.org/web/20070626165841/http://www.rossmack.com/ab/rpg/traveller/AstroIndex.asp">AB's Traveller
+        Astrography Page</a> - Andrew Brown's excellent site, featuring not only
+      detailed data but background theory and details on on Traveller astrometrics
+      and astrography.
+    </p>
+
+   <!-- Offline (with the rest of Geocities) as of 2009-10-27
     <p>
       <a href="http://www.geocities.com/traveller_core_route/">The Core Route Projects</a>
       - Clifford Linehan's extensive project to map the Zhodani Core Route.
     </p>
     -->
+
     <p>
-      <a href="http://web.archive.org/web/20071029174129/http://home.earthlink.net/~ngc5139/FDA/">Federation Development Agency</a> [via <a href="http://archive.org">The Internet Archive's Wayback Machine</a>]
+      <a href="http://web.archive.org/web/20071029174129/http://home.earthlink.net/~ngc5139/FDA/">Federation Development Agency</a>
       - Leroy W.L. Guatney's development of the Rim-Trailing edge of the OTU.
     </p>
+
     <p>
       <a href="http://web.archive.org/web/20071126115434/http://home.earthlink.net/~ngc5139/IISS/index.html">IISS Stellar
-        Cartography</a> [via <a href="http://archive.org">The Internet Archive's Wayback Machine</a>] - Leroy W. L. Guatney's analysis of Mains and the true
+        Cartography</a> - Leroy W. L. Guatney's analysis of Mains and the true
       extent of the Vilani Imperium.
     </p>
+
     <p>
-      <a href="http://web.archive.org/web/20050310195000/http://members.aol.com/gypsycomet/zhomain.html">The Zhodani Files</a> [via <a href="http://archive.org">The Internet Archive's Wayback Machine</a>] -
+      <a href="http://web.archive.org/web/20050310195000/http://members.aol.com/gypsycomet/zhomain.html">The Zhodani Files</a> -
       GypsyComet's sector maps for the Zhodani Consulate and surrounds.
     </p>
+
     <p>
-      <a href="http://dotclue.org/t20/">Gateway to PDF</a> - an awesome set of tools by J. Greely to output
-      PDF files from sector data and route/border metadata, as well as tools to compute things like borders
-      from raw sector data.
+      <a href="https://web.archive.org/web/20120609082220/http://www.seemann.ms/worlds.htm">List of Worlds</a> - Mark Seemann's
+      comprehensive list of documented worlds in Traveller.
     </p>
   </section>
 
@@ -340,33 +347,32 @@
     <!-- ================================================================================ -->
     <ul>
       <li>
-        Search for "(grand tour)" (no quotes, but with parenthesis) and you'll be shown
-        the route that the intrepid adventures from The Travellers' Digest took.
+        Follow the <a href="http://travellermap.com/?q=(grand tour)">Grand Tour</a>
+        route that the intrepid adventures from The Travellers' Digest took.
       </li>
       <li>
-        Search for "(arrival vengeance)" (no quotes, but with parenthesis) and you'll be
-        shown the route that represented Norris' last desperate attempt to save the
-        Third Imperium.
+        Follow the <a href="http://travellermap.com/?q=(arrival vengeance)">Arrival Vengeance</a>
+        - Archduke Norris' last desperate attempt to save the Third Imperium.
       </li>
       <li>
-        Search for "(far frontiers)" (no quotes, but with parenthesis) to see the locations
-        of the FASA adventures set in that sector.
+        See the locations of FASA adventures set in the
+        <a href="http://travellermap.com/?q=(far frontiers)">Far Frontiers</a> sector.
       </li>
       <li>
-        Browse to http://www.travellermap.com/data/XXXX/image (replacing XXXX with a
+        Browse to http://travellermap.com/data/XXXX/image (replacing XXXX with a
         sector name) to get a render of a single sector at subsector resolution.
       </li>
       <li>
-        Browse to http://www.travellermap.com/data/XXXX/msec (replacing XXXX with a
+        Browse to http://travellermap.com/data/XXXX/msec (replacing XXXX with a
         sector name) to generate a <a href="http://dotclue.org/t20/">sec2pdf</a> compatible
         .msec file for a sector.
       </li>
       <li>
-        Browse to http://www.travellermap.com/sector.htm?sector=XXXX (replacing XXXX with a
+        Browse to http://travellermap.com/sector.htm?sector=XXXX (replacing XXXX with a
         sector name) to get a print-ready booklet with data and maps for each subsector.
       </li>
       <li>
-        Browse to http://www.travellermap.com/post.htm to learn how to generate maps
+        Browse to http://travellermap.com/post.htm to learn how to generate maps
         from your own sector data.
       </li>
       <li>

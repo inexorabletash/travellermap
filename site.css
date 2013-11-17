@@ -40,6 +40,12 @@ h4 {
   margin-left: 1in;
   width: 6in;
 }
+@media (max-width: 7.5in)  {
+  .content { margin-left: 0; }
+}
+@media (max-width: 6.5in)  {
+  .content { width: auto; }
+}
 
 p {
   text-indent: 2em;
