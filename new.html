@@ -55,40 +55,11 @@ button img {
 button:hover {
   background-color: red;
 }
-
-#GalacticDirectionDisplay .spinward {
-  text-align: center;
-  transform: translateX(-50%) translateX(0em) rotate(270deg) translateY(50%);
-  -webkit-transform: translateX(-50%) translateX(0em) rotate(270deg) translateY(50%);
-  -moz-transform: translateX(-50%) translateX(0em) rotate(270deg) translateY(50%);
-  -o-transform: translateX(-50%) translateX(0em) rotate(270deg) translateY(50%);
-}
-#GalacticDirectionDisplay .trailing {
-  text-align: center;
-  transform: translateX(50%) translateX(-1.2em) rotate(270deg) translateY(50%);
-  -webkit-transform: translateX(50%) translateX(-1.2em) rotate(270deg) translateY(50%);
-  -moz-transform: translateX(50%) translateX(-1.2em) rotate(270deg) translateY(50%);
-  -o-transform: translateX(50%) translateX(-1.2em) rotate(270deg) translateY(50%);
-}
-
 .ui {
   z-index: 2000;
 }
 .iframe .ui { display: none; }
 </style>
-
-<!--[if lt IE 9]>
-<style>
-#GalacticDirectionDisplay .spinward {
-  -ms-writing-mode: tb-lr;
-  filter: flipv fliph;
-}
-#GalacticDirectionDisplay .trailing {
-  -ms-writing-mode: bt-rl;
-  filter: flipv fliph;
-}
-</style>
-<![endif]-->
 
 <!-- Home Screen Icons - iOS and Android -->
 <link rel="apple-touch-icon-precomposed" sizes="152x152" href="res/ui/regina152.png">
@@ -122,11 +93,47 @@ button:hover {
 
   <div id="mapContainer" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0;">
     <div id="dragContainer" class="galdir" style="position: absolute; overflow: hidden; width: 100%; height: 100%;" tabindex="0">
-      <div id="GalacticDirectionDisplay" style="position: absolute; width: 100%; height: 100%; z-index: 1999;">
-        <div style="position: absolute; top: 4px; left: 0; right: 0; text-align: center;">Coreward</div>
-        <div style="position: absolute; bottom: 4px; left: 0; right: 0; text-align: center;">Rimward</div>
-        <div class="spinward" style="position: absolute; top: 0; height: 100%; left: 4px;">Spinward</div>
-        <div class="trailing" style="position: absolute; top: 0; height: 100%; right: 4px;">Trailing</div>
+      <div id="GalacticDirectionDisplay">
+        <div id="direction-coreward" class="direction">Coreward</div>
+        <div id="direction-rimward" class="direction">Rimward</div>
+        <div id="direction-spinward" class="direction">Spinward</div>
+        <div id="direction-trailing" class="direction">Trailing</div>
+
+        <style>
+        #GalacticDirectionDisplay {
+          position: absolute; width: 100%; height: 100%; z-index: 1999;
+        }
+        #GalacticDirectionDisplay .direction {
+          position: absolute;
+          text-align: center;
+        }
+        #direction-coreward {
+          top: 4px; left: 0; right: 0;
+        }
+        #direction-rimward {
+          bottom: 4px; left: 0; right: 0;
+        }
+        #direction-spinward {
+          top: 0; bottom: 0; left: 4px;
+
+          transform: translateX(-50%) translateX(0em) rotate(270deg) translateY(50%);
+          -webkit-transform: translateX(-50%) translateX(0em) rotate(270deg) translateY(50%);
+        }
+        #direction-trailing {
+          top: 0; bottom: 0; right: 4px;
+
+          transform: translateX(50%) translateX(-1.2em) rotate(270deg) translateY(50%);
+          -webkit-transform: translateX(50%) translateX(-1.2em) rotate(270deg) translateY(50%);
+        }
+        </style>
+        <!--[if lt IE 9]>
+          <style>
+            #direction-spinward,
+            #direction-trailing {
+              -ms-writing-mode: bt-rl; filter: flipv fliph;
+            }
+          </style>
+        <![endif]-->
       </div>
     </div>
   </div>
