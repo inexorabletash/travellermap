@@ -130,7 +130,8 @@ window.addEventListener('DOMContentLoaded', function() {
     permalinkTimeout = setTimeout(function() {
 
       function round(n, d) {
-        return Math.round(n / d) * d;
+        d = 1 / d; // Avoid twitchy IEEE754 rounding.
+        return Math.round(n * d) / d;
       }
 
       // TODO: Factor this out and use for search results as well
