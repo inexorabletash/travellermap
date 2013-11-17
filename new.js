@@ -190,7 +190,7 @@ window.addEventListener('load', function() {
       $('a#share-snapshot').href = snapshotURL;
 
       // url, media, description
-      $('a#share-pinterest').href = $('a#share-pinterest').getAttribute('base_href') +
+      $('a#share-pinterest').href = $('a#share-pinterest').getAttribute('data-basehref') +
         '?url=' + encodeURIComponent(pageURL) +
         '&media=' + encodeURIComponent(snapshotURL) +
         '&description=' + encodeURIComponent('The Traveller Map');

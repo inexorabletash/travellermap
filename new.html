@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <title>The Traveller Map</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=0">
 
+<!-- Mobile -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=0">
 
 <!--[if lt IE 9]><meta http-equiv="X-UA-Compatible" content="chrome=1"><![endif]-->
 <!--[if lt IE 9]><meta http-equiv="imagetoolbar" content="no"><![endif]-->
+
 <link rel="alternate" type="application/atom+xml" title="Traveller Map News - Atom" href="http://travellermap.blogspot.com/feeds/posts/default">
 <link rel="alternate" type="application/rss+xml" title="Traveller Map News - RSS" href="http://travellermap.blogspot.com/feeds/posts/default?alt=rss">
 <link rel="shortcut icon" href="/favicon.ico">
@@ -80,6 +85,13 @@ button:hover {
 </style>
 <![endif]-->
 
+<!-- c/o http://cubiq.org/add-to-home-screen -->
+<link rel="stylesheet" href="touch/add-to-home-screen/add2home.css">
+<script>
+  var addToHomeConfig = { touchIcon: true };
+</script>
+<script type="application/javascript" src="touch/add-to-home-screen/add2home.js"></script>
+
 <body>
   <style>
   body {
@@ -123,6 +135,8 @@ button:hover {
       <input id="searchBox"
              placeholder="Search for..."
              title="Search by world, subsector, or sector name.&#x0D;Prefix with uwp: to search UWPs.&#x0D;Use * and ? as wildcards."
+             autocomplete="off"
+             spellcheck="false"
              >
       <style>
       #searchForm { display: inline; }
@@ -357,7 +371,6 @@ button:hover {
       bottom: 60px;
     }
   }
-
   </style>
 
   <div id="styleBox"
@@ -391,21 +404,20 @@ button:hover {
       <button id="styleBtn-candy"
               title="Eye candy"
               ></button>
-    </p>
-    <style>
-    #styleBtn-poster { background-image: url('res/ui/style-poster.png'); }
-    #styleBtn-atlas  { background-image: url('res/ui/style-atlas.png'); }
-    #styleBtn-print  { background-image: url('res/ui/style-print.png'); }
-    #styleBtn-candy  { background-image: url('res/ui/style-candy.png'); }
-    </style>
-    <script>
+      <style>
+      #styleBtn-poster { background-image: url('res/ui/style-poster.png'); }
+      #styleBtn-atlas  { background-image: url('res/ui/style-atlas.png'); }
+      #styleBtn-print  { background-image: url('res/ui/style-print.png'); }
+      #styleBtn-candy  { background-image: url('res/ui/style-candy.png'); }
+      </style>
+      <script>
         window.addEventListener('DOMContentLoaded', function() {
           var $ = document.querySelector.bind(document);
           ['poster', 'atlas', 'print', 'candy'].forEach(function(s) {
             $('#styleBtn-'+s).addEventListener('click', function() { map.SetStyle(s); });
           });
         });
-    </script>
+      </script>
     </section>
 
     <section>
@@ -596,19 +608,19 @@ button:hover {
     </section>
 
     <section>
-      <a target="_blank" id="share-pinterest" base_href="//www.pinterest.com/pin/create/button/"
+      <a target="_blank" id="share-pinterest" data-basehref="//www.pinterest.com/pin/create/button/"
          href="#"
-         data-pin-do="buttonPin" data-pin-config="beside"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png"/></a>
+         data-pin-do="buttonPin" data-pin-config="beside"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" alt="Pin It"></a>
     </section>
 
     <section>
       Share this link:
-      <input readonly="true" id="share-url" onclick="this.select();" title="Copy and paste">
+      <input readonly id="share-url" onclick="this.select();" title="Copy and paste">
     </section>
 
     <section>
       Embed this HTML:
-      <input readonly="true" id="share-embed" onclick="this.select();" title="Copy and paste">
+      <input readonly id="share-embed" onclick="this.select();" title="Copy and paste">
     </section>
 
     <section>
@@ -622,6 +634,11 @@ button:hover {
     <style>
     #navBar {
       position: absolute;
+    }
+    #navBar { right: 15px; bottom: 110px; height: 30px; }
+    .hide-footer #navBar { bottom: 15px; }
+    @media only screen and (max-width: 640px), (max-device-width: 640px) {
+      #navBar { display: none; }
     }
     #navBar button {
       height: 30px; width: 30px;
@@ -638,26 +655,18 @@ button:hover {
             title="Zoom out">
       &minus;
     </button>
-  </div>
-  <style>
-  #navBar { right: 15px; bottom: 110px; height: 30px; }
-  .hide-footer #navBar { bottom: 15px; }
-
-  @media only screen and (max-width: 640px), (max-device-width: 640px) {
-    #navBar { display: none; }
-  }
-  </style>
-  <script>
-  window.addEventListener('DOMContentLoaded', function() {
-    var $ = document.querySelector.bind(document);
-    $('#zoomInBtn').addEventListener('click', function() {
-      window.map.ZoomIn();
+    <script>
+    window.addEventListener('DOMContentLoaded', function() {
+      var $ = document.querySelector.bind(document);
+      $('#zoomInBtn').addEventListener('click', function() {
+        window.map.ZoomIn();
+      });
+      $('#zoomOutBtn').addEventListener('click', function() {
+        window.map.ZoomOut();
+      });
     });
-    $('#zoomOutBtn').addEventListener('click', function() {
-      window.map.ZoomOut();
-    });
-  });
   </script>
+  </div>
 
   <div id="bottom-pane"
        class="ui">
@@ -758,25 +767,25 @@ button:hover {
   </script>
 
   <!-- Facebook -->
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
   js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&status=0";
   fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+  }(document, 'script', 'facebook-jssdk'));</script>
 
   <!-- Pinterest -->
-<script type="text/javascript">
-(function(d){
+  <script type="text/javascript">
+  (function(d){
   var f = d.getElementsByTagName('SCRIPT')[0], p = d.createElement('SCRIPT');
   p.type = 'text/javascript';
   p.async = true;
   p.src = '//assets.pinterest.com/js/pinit.js';
   f.parentNode.insertBefore(p, f);
-}(document));
-</script>
+  }(document));
+  </script>
 
   <!-- Google Analytics -->
   <script>
