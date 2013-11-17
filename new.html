@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <title>The Traveller Map</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="description"
+      content="The Traveller Map is a interactive map of the universe of the
+               Traveller role playing game, incorporating official data and fan
+               submissions. The site also provides services for generating custom
+               maps and Web APIs for incorporating maps into other sites.">
 
 <!-- Mobile -->
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -85,7 +90,17 @@ button:hover {
 </style>
 <![endif]-->
 
-<!-- c/o http://cubiq.org/add-to-home-screen -->
+<!-- Home Screen Icons - iOS and Android -->
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="res/ui/regina152.png">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="res/ui/regina144.png">
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="res/ui/regina120.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="res/ui/regina114.png">
+<link rel="apple-touch-icon-precomposed" sizes="76x76" href="res/ui/regina76.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="res/ui/regina72.png">
+<link rel="apple-touch-icon-precomposed" href="res/ui/regina57.png">
+<link rel="apple-touch-icon" href="../res/ui/regina57.png">
+
+<!-- http://cubiq.org/add-to-home-screen -->
 <link rel="stylesheet" href="touch/add-to-home-screen/add2home.css">
 <script>
   var addToHomeConfig = { touchIcon: true };
@@ -104,14 +119,6 @@ button:hover {
   if (window !== window.top)
     document.body.classList.add('iframe');
   </script>
-
-  <div style="display:none">
-    <!-- Search Engine Bait -->
-    The Traveller Map is a interactive map of the universe of the
-    Traveller role playing game, incorporating official data and fan
-    submissions. The site also provides services for generating custom
-    maps and Web APIs for incorporating maps into other sites.
-  </div>
 
   <div id="mapContainer" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0;">
     <div id="dragContainer" class="galdir" style="position: absolute; overflow: hidden; width: 100%; height: 100%;" tabindex="0">
@@ -132,10 +139,13 @@ button:hover {
     }
     </style>
     <form id="searchForm" action="get">
-      <input id="searchBox"
+      <input type="text"
+             id="searchBox"
              placeholder="Search for..."
              title="Search by world, subsector, or sector name.&#x0D;Prefix with uwp: to search UWPs.&#x0D;Use * and ? as wildcards."
              autocomplete="off"
+             autocorrect="off"
+             autocapitalize="off"
              spellcheck="false"
              >
       <style>
