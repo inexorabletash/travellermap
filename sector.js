@@ -96,7 +96,12 @@
       }
     });
     sector.index.sort(function (a, b) {
-      return a.name.localeCompare(b.name, "en-us");
+      try {
+        return a.name.localeCompare(b.name, "en-us");
+      } catch (e) {
+        // Workaround for http://crbug.com/314210
+        return (a.name < b.name) ? -1 : (a.name > b.name) ? 1 : -1;
+      }
     });
     var INDEX_COL_SIZE = 40;
     var columns = partition(sector.index, INDEX_COL_SIZE);
