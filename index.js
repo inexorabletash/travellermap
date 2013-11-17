@@ -125,7 +125,6 @@ window.onload = function() {
     $("#ShowGalacticDirections").checked = showGalacticDirections ? 'checked' : '';
   }
 
-
   //////////////////////////////////////////////////////////////////////
   //
   // Control Panel of Map Options
@@ -316,7 +315,11 @@ window.onload = function() {
   }
 
   // Populate the search pane with stock data
-  search("(default)", false);
+  if ("q" in oParams) {
+    search(oParams.q, true);
+  } else {
+    search("(default)", false);
+  }
 
   //////////////////////////////////////////////////////////////////////
   //

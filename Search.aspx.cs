@@ -17,10 +17,14 @@ namespace Maps.Pages
     {
         public override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Xml; } }
 
-        private static string[] SpecialSearchTerms = { @"(default)", @"(grand tour)", @"(arrival vengeance)", @"(far frontiers)" };
-        private static string[] SpecialSearchResultsXml = { @"~/res/search/Default.xml", @"~/res/search/GrandTour.xml", @"~/res/search/ArrivalVengeance.xml", @"~/res/search/FarFrontiers.xml" };
-        private static string[] SpecialSearchResultsJson = { @"~/res/search/Default.json", @"~/res/search/GrandTour.json", @"~/res/search/ArrivalVengeance.json", @"~/res/search/FarFrontiers.json" };
-
+        private static Dictionary<string, string> SpecialSearches = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase) {
+            { @"(default)", @"~/res/search/Default.json"},
+            { @"(grand tour)", @"~/res/search/GrandTour.json"},
+            { @"(arrival vengeance)", @"~/res/search/ArrivalVengeance.json"},
+            { @"(far frontiers)", @"~/res/search/FarFrontiers.json"},
+            { @"(cirque)", @"~/res/search/Cirque.json"}
+        };
+                                                               
         private static Regex UWP_REGEXP = new Regex(@"^\w{7}-\w$");
 
         private void Page_Load(object sender, System.EventArgs e)
@@ -35,30 +39,22 @@ namespace Maps.Pages
                 return;
 
             // Look for special searches
-            var index = Array.FindIndex(SpecialSearchTerms, s => String.Compare(s, query, ignoreCase: true, culture: CultureInfo.InvariantCulture) == 0);
-            if (index != -1)
+            if (SpecialSearches.ContainsKey(query))
             {
+                string path = SpecialSearches[query];
+
                 if (Request.QueryString["jsonp"] != null)
                 {
                     // TODO: Does this include the JSONP headers?
-                    SendFile(JsonConstants.MediaType, SpecialSearchResultsJson[index]);
+                    SendFile(JsonConstants.MediaType, path);
                     return;
                 }
 
-                foreach (var type in AcceptTypes)
+                if (AcceptTypes.Contains(JsonConstants.MediaType))
                 {
-                    if (type == JsonConstants.MediaType)
-                    {
-                        SendFile(JsonConstants.MediaType, SpecialSearchResultsJson[index]);
-                        return;
-                    }
-                    if (type == MediaTypeNames.Text.Xml)
-                    {
-                        SendFile(MediaTypeNames.Text.Xml, SpecialSearchResultsXml[index]);
-                        return;
-                    }
+                    SendFile(JsonConstants.MediaType, path);
+                    return;
                 }
-                SendFile(MediaTypeNames.Text.Xml, SpecialSearchResultsXml[index]);
                 return;
             }
 
