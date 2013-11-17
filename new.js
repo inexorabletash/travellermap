@@ -27,10 +27,6 @@ window.addEventListener('load', function() {
 
   // Tweak defaults
   map.SetOptions(map.GetOptions() | MapOptions.ForceHexes);
-
-  // TODO: Avoid flash on load
-
-  // TODO: If style or position changes (below) does this generate bogus requests?
   map.ScaleCenterAtSectorHex(2, 0, 0, Astrometrics.ReferenceHexX, Astrometrics.ReferenceHexY);
 
   map.OnScaleChanged = function(scale) {
@@ -105,7 +101,6 @@ window.addEventListener('load', function() {
   var urlParams = applyUrlParameters(map);
 
   // Force UI to synchronize in case URL parameters didn't do it
-  // TODO: Figure out desired order for this.
   map.OnOptionsChanged(map.GetOptions());
 
   // TODO: Make this less hokey

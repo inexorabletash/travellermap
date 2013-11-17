@@ -215,14 +215,12 @@ function escapeHtml(s) {
 
     this.fetch = function(key) {
       var value = this.cache[key];
-      if (value === undefined) {
+      if (value === undefined)
         return undefined;
-      }
 
       var index = this.queue.indexOf(key);
-      if (index !== -1) {
+      if (index !== -1)
         this.queue.splice(index, 1);
-      }
       this.queue.push(key);
       return value;
     };
@@ -230,9 +228,8 @@ function escapeHtml(s) {
     this.insert = function(key, value) {
       // Remove previous instances
       var index = this.queue.indexOf(key);
-      if (index !== -1) {
+      if (index !== -1)
         this.queue.splice(index, 1);
-      }
 
       this.cache[key] = value;
       this.queue.push(key);
@@ -261,19 +258,12 @@ function escapeHtml(s) {
 
   var DOMHelpers = {
     setCapture: function(element) {
-      if (element.setCapture) {
+      if ('setCapture' in element)
         element.setCapture(true);
-      }
-    },
-    focus: function(element) {
-      if (element.focus) {
-        element.focus();
-      }
     },
     releaseCapture: function(element) {
-      if (element.releaseCapture) {
+      if ('releaseCapture' in element)
         element.releaseCapture();
-      }
     }
   };
 
@@ -300,34 +290,26 @@ function escapeHtml(s) {
 
       function tickFunc() {
         var f = (Date.now() - start) / 1000 / dur;
+        if (f < 1.0)
+          requestAnimationFrame(tickFunc);
 
         var p = f;
-        if (isCallable(smooth)) {
+        if (isCallable(smooth))
           p = smooth(p);
-        }
 
-        if (isCallable(self.onanimate)) {
+        if (isCallable(self.onanimate))
           self.onanimate(p);
-        }
 
-        // Next tick
-        if (f >= 1.0) {
-          if (isCallable(self.oncomplete)) {
-            self.oncomplete();
-          }
-        } else {
-          requestAnimationFrame(tickFunc);
-        }
-
+        if (f >= 1.0 && isCallable(self.oncomplete))
+          self.oncomplete();
       }
     };
 
     Animation.prototype.cancel = function() {
       if (this.timerid) {
         cancelAnimationFrame(this.timerid);
-        if (isCallable(this.oncancel)) {
+        if (isCallable(this.oncancel))
           this.oncancel();
-        }
       }
     };
 
@@ -350,11 +332,9 @@ function escapeHtml(s) {
       if (t < dacc) {
         r_t = r * (t / dacc);
         return t * r_t / 2;
-      }
-      else if (t <= (dur - ddec)) {
+      } else if (t <= (dur - ddec)) {
         return r * (t - dacc / 2);
-      }
-      else {
+      } else {
         tdec = t - (dur - ddec);
         pd = tdec / ddec;
 
@@ -517,7 +497,7 @@ function escapeHtml(s) {
     var dragging, drag_x, drag_y;
     container.addEventListener('mousedown', function(e) {
       self.cancelAnimation();
-      DOMHelpers.focus(container);
+      container.focus();
       dragging = true;
       drag_x = e.clientX;
       drag_y = e.clientY;
@@ -577,39 +557,23 @@ function escapeHtml(s) {
       e.preventDefault();
       e.stopPropagation();
 
-      var f, coords, rect, cx, cy, hex;
+      var MAX_DOUBLECLICK_SCALE = 9;
+      if (self.scale >= MAX_DOUBLECLICK_SCALE)
+        return;
 
-      var MAX_DOUBLECLICK_SCALE = 7;
-      if (self.scale < MAX_DOUBLECLICK_SCALE) {
-        // Zoom and re-center
-        var newscale = self.scale + CLICK_SCALE_DELTA * ((e.altKey) ? 1 : -1);
-        newscale = Math.min(newscale, MAX_DOUBLECLICK_SCALE);
+      var newscale = self.scale + CLICK_SCALE_DELTA * ((e.altKey) ? 1 : -1);
+      newscale = Math.min(newscale, MAX_DOUBLECLICK_SCALE);
 
-        coords = eventCoordsToLocal(e, container);
-        self.setScale(newscale, coords.x, coords.y);
+      coords = eventCoordsToLocal(e, container);
+      self.setScale(newscale, coords.x, coords.y);
 
-        // Compute the physical coordinates
-        f = pow2(1 - self.scale) / self.tilesize;
-        coords = eventCoordsToLocal(e, container);
-        rect = self.container.getBoundingClientRect();
-        cx = self.x + f * (coords.x - rect.width / 2);
-        cy = self.y + f * (coords.y - rect.height / 2);
-        hex = logicalToHex(cx * self.tilesize, cy * -self.tilesize);
-      } else {
-        // Just re-center
-
-        // Compute the physical coordinates
-        f = pow2(1 - self.scale) / self.tilesize;
-        coords = eventCoordsToLocal(e, container);
-        rect = self.container.getBoundingClientRect();
-        cx = self.x + f * (coords.x - rect.width / 2);
-        cy = self.y + f * (coords.y - rect.height / 2);
-        hex = logicalToHex(cx * self.tilesize, cy * -self.tilesize);
-
-        self.x = cx;
-        self.y = cy;
-        self.invalidate();
-      }
+      // Compute the physical coordinates
+      var f = pow2(1 - self.scale) / self.tilesize,
+          coords = eventCoordsToLocal(e, container),
+          rect = self.container.getBoundingClientRect(),
+          cx = self.x + f * (coords.x - rect.width / 2),
+          cy = self.y + f * (coords.y - rect.height / 2),
+          hex = logicalToHex(cx * self.tilesize, cy * -self.tilesize);
 
       fireEvent(self, 'DoubleClick', { x: hex.hx, y: hex.hy });
     });
@@ -716,9 +680,8 @@ function escapeHtml(s) {
     }, true);
 
     container.addEventListener('keydown', function(e) {
-      if (e.ctrlKey || e.altKey || e.metaKey) {
+      if (e.ctrlKey || e.altKey || e.metaKey)
         return;
-      }
 
       var isMoz = navigator.userAgent.indexOf('Gecko/') !== -1,
           VK_I = 73,
@@ -744,9 +707,8 @@ function escapeHtml(s) {
 
     self.invalidate();
 
-    if (window === window.top) {
-      DOMHelpers.focus(container);
-    }
+    if (window === window.top)
+      container.focus();
   };
 
   // ======================================================================
@@ -754,14 +716,15 @@ function escapeHtml(s) {
   // ======================================================================
 
   Map.prototype.offset = function(dx, dy) {
-    if (dx !== 0 || dy !== 0) {
-      var f = pow2(1 - this.scale) / this.tilesize;
+    if (dx === 0 && dy === 0)
+      return;
 
-      this.x = this.x + dx * f;
-      this.y = this.y + dy * f;
-      this.invalidate();
-      fireEvent(this, 'DisplayChanged');
-    }
+    var f = pow2(1 - this.scale) / this.tilesize;
+
+    this.x = this.x + dx * f;
+    this.y = this.y + dy * f;
+    this.invalidate();
+    fireEvent(this, 'DisplayChanged');
   };
 
   Map.prototype.setScale = function(newscale, px, py) {
@@ -805,9 +768,9 @@ function escapeHtml(s) {
   };
 
   Map.prototype.redraw = function(force) {
-    if (!this.dirty && !force) {
+    if (!this.dirty && !force)
       return;
-    }
+
     this.dirty = false;
 
     // *FUTURE: Spiral outwards so requests for central
@@ -850,9 +813,8 @@ function escapeHtml(s) {
     // Mark used tiles with this
     this.pass = (this.pass + 1) % 256;
 
-    if (!this._rd_cb) {
+    if (!this._rd_cb)
       this._rd_cb = function() { self.invalidate(100); };
-    }
 
     // TODO: Defer loading of new tiles while in the middle of a zoom gesture
     // Draw a rectanglular area of the map in a spiral from the center of the requested map outwards
@@ -870,12 +832,11 @@ function escapeHtml(s) {
 
     // Reposition markers and overlays
     var i;
-    for (i = 0; i < this.markers.length; i += 1) {
+    for (i = 0; i < this.markers.length; i += 1)
       this.makeMarker(this.markers[i]);
-    }
-    for (i = 0; i < this.overlays.length; i += 1) {
+
+    for (i = 0; i < this.overlays.length; i += 1)
       this.makeOverlay(this.overlays[i]);
-    }
   };
 
   // Draw a rectangle (x1, y1) to (x2, y2) (or,  (l,t) to (r,b))
@@ -948,59 +909,51 @@ function escapeHtml(s) {
     // Otherwise, while we're waiting, see if we have upscale/downscale versions to draw instead
 
     function drawLower(x, y, scale, dx, dy, dw, dh, zIndex) {
+      if (scale <= self.min_scale)
+        return;
 
-      // lower scale versions?
-      if (scale > self.min_scale) {
+      var tscale = scale - 1;
+      var factor = pow2(scale - tscale);
 
-        var tscale = scale - 1;
-        var factor = pow2(scale - tscale);
+      var tx = Math.floor(x / factor);
+      var ty = Math.floor(y / factor);
 
-        var tx = Math.floor(x / factor);
-        var ty = Math.floor(y / factor);
+      var ax = dx - dw * (x - (tx * factor));
+      var ay = dy - dh * (y - (ty * factor));
+      var aw = dw * factor;
+      var ah = dh * factor;
 
-        var ax = dx - dw * (x - (tx * factor));
-        var ay = dy - dh * (y - (ty * factor));
-        var aw = dw * factor;
-        var ah = dh * factor;
-
-        var img = self.getTile(tx, ty, tscale);
-        if (img) {
-          drawImage(img, ax, ay, aw, ah, zIndex);
-        } else {
-          drawLower(tx, ty, tscale, ax, ay, aw, ah, zIndex - 1);
-        }
-      }
+      var img = self.getTile(tx, ty, tscale);
+      if (img)
+        drawImage(img, ax, ay, aw, ah, zIndex);
+      else
+        drawLower(tx, ty, tscale, ax, ay, aw, ah, zIndex - 1);
     }
     drawLower(x, y, scale, dx, dy, dw, dh, zIndex - 1);
 
     function drawHigher(x, y, scale, dx, dy, dw, dh, zIndex) {
-      var tscale, factor, ox, oy, tx, ty, img, ax, ay, aw, ah;
+      if (scale >= self.max_scale)
+        return;
 
-      if (scale < self.max_scale) {
-        tscale = scale + 1;
-        factor = pow2(scale - tscale);
+      var tscale = scale + 1;
+      var factor = pow2(scale - tscale);
 
-        for (oy = 0; oy < 2; oy += 1) {
-          for (ox = 0; ox < 2; ox += 1) {
+      for (var oy = 0; oy < 2; oy += 1) {
+        for (var ox = 0; ox < 2; ox += 1) {
 
-            tx = (x / factor) + ox;
-            ty = (y / factor) + oy;
-            img = self.getTile(tx, ty, tscale);
+          var tx = (x / factor) + ox;
+          var ty = (y / factor) + oy;
+          var img = self.getTile(tx, ty, tscale);
 
-            ax = dx + ox * dw * factor;
-            ay = dy + oy * dh * factor;
-            aw = dw * factor;
-            ah = dh * factor;
+          var ax = dx + ox * dw * factor;
+          var ay = dy + oy * dh * factor;
+          var aw = dw * factor;
+          var ah = dh * factor;
 
-            if (img) {
-              drawImage(img, ax, ay, aw, ah, zIndex);
-            }
-            //else {
-            // Don't recurse as it would try an exponential
-            // number of tiles
-            //    //drawHigher(tx, ty, tscale, ax, ay, aw, ah, zIndex + 1);
-            //}
-          }
+          if (img)
+            drawImage(img, ax, ay, aw, ah, zIndex);
+          // NOTE:  Don't recurse if not found as it would try an exponential number of tiles
+          // e.g. drawHigher(tx, ty, tscale, ax, ay, aw, ah, zIndex + 1);
         }
       }
     }
@@ -1015,7 +968,9 @@ function escapeHtml(s) {
   // once it has successfully loaded.
   //
   Map.prototype.getTile = function(x, y, scale, callback) {
-    if ('onLine' in navigator && !navigator.onLine) return undefined;
+    if ('onLine' in navigator && !navigator.onLine)
+      return undefined;
+
     var tscale = pow2(scale - 1);
     var options = this.options;
     var uri = SERVICE_BASE + '/api/tile?x=' + x + '&y=' + y + '&scale=' + tscale + '&options=' + options + '&style=' + this.style;
@@ -1023,9 +978,8 @@ function escapeHtml(s) {
       uri += '&' + encodeURIComponent(key) + '=' + encodeURIComponent(this.tileOptions[key]);
     }, this);
 
-    if ('devicePixelRatio' in window && window.devicePixelRatio > 1) {
+    if ('devicePixelRatio' in window && window.devicePixelRatio > 1)
       uri += '&dpr=' + window.devicePixelRatio;
-    }
 
     // Have it? Great, get out fast!
     var img = this.cache.fetch(uri);
@@ -1065,9 +1019,8 @@ function escapeHtml(s) {
   };
 
   Map.prototype.shouldAnimateToSectorHex = function(scale, sx, sy, hx, hy) {
-    if (scale !== this.scale) {
+    if (scale !== this.scale)
       return false;
-    }
 
     var target = sectorHexToLogical(sx, sy, hx, hy),
         dx = target.x - this.GetX(),
@@ -1207,17 +1160,15 @@ function escapeHtml(s) {
   Map.prototype.SetOptions = function(options) {
     if (LEGACY_STYLES) {
       // Handy legacy styles specified in options bits
-      if ((options & MapOptions.StyleMaskDeprecated) === MapOptions.PrintStyleDeprecated) {
-        this.SetStyle('atlas', refresh);
-      } else if ((options & MapOptions.StyleMaskDeprecated) === MapOptions.CandyStyleDeprecated) {
-        this.SetStyle('candy', refresh);
-      }
+      if ((options & MapOptions.StyleMaskDeprecated) === MapOptions.PrintStyleDeprecated)
+        this.SetStyle('atlas');
+      else if ((options & MapOptions.StyleMaskDeprecated) === MapOptions.CandyStyleDeprecated)
+        this.SetStyle('candy');
       options = options & ~MapOptions.StyleMaskDeprecated;
     }
 
-    if (options === this.options) {
+    if (options === this.options)
       return;
-    }
 
     this.options = options & MapOptions.Mask;
     this.cache.clear();
@@ -1231,9 +1182,8 @@ function escapeHtml(s) {
   };
 
   Map.prototype.SetStyle = function(style) {
-    if (style === this.style) {
+    if (style === this.style)
       return;
-    }
 
     this.style = style;
     this.cache.clear();
@@ -1367,50 +1317,51 @@ function escapeHtml(s) {
 function applyUrlParameters(map) {
   var params = getUrlParameters();
 
-  function asFloat(prop) {
+  function float(prop) {
     var n = parseFloat(params[prop]);
     return isNaN(n) ? 0 : n;
   }
 
-  function asInt(prop) {
+  function int(prop) {
     var n = parseInt(params[prop], 10);
     return isNaN(n) ? 0 : n;
   }
 
-  if ('scale' in params) {
-    map.SetScale(asFloat('scale'));
+  function has(params, list) {
+    return list.every(function(item) { return item in params; });
   }
 
-  if ('options' in params) {
-    map.SetOptions(asInt('options'));
-  }
+  if ('scale' in params)
+    map.SetScale(float('scale'));
 
-  if ('style' in params) {
+  if ('options' in params)
+    map.SetOptions(int('options'));
+
+  if ('style' in params)
     map.SetStyle(params.style);
-  }
 
-  if ('yah_sx' in params && 'yah_sy' in params && 'yah_hx' in params && 'yah_hx' in params) {
-    map.TEMP_AddMarker('you_are_here', asInt('yah_sx'), asInt('yah_sy'), asInt('yah_hx'), asInt('yah_hy'));
-  }
+  if (has(params, ['yah_sx', 'yah_sy', 'yah_hx', 'yah_hx']))
+    map.TEMP_AddMarker('you_are_here', int('yah_sx'), int('yah_sy'), int('yah_hx'), int('yah_hy'));
 
   for (var i = 0; ; ++i) {
-    var suffix = (i == 0) ? '' : i, oxs = 'ox' + suffix, oys = 'oy' + suffix, ows = 'ow' + suffix, ohs = 'oh' + suffix;
-    if (oxs in params && oys in params && ows in params && ohs in params) {
-      var x = asFloat(oxs);
-      var y = asFloat(oys);
-      var w = asFloat(ows);
-      var h = asFloat(ohs);
+    var n = (i == 0) ? '' : i, oxs = 'ox' + n, oys = 'oy' + n, ows = 'ow' + n, ohs = 'oh' + n;
+    if (has(params, [oxs, oys, ows, ohs])) {
+      var x = float(oxs);
+      var y = float(oys);
+      var w = float(ows);
+      var h = float(ohs);
       map.TEMP_AddOverlay(x, y, w, h);
     } else {
       break;
     }
   }
 
-  if ('x' in params && 'y' in params) {
-    map.SetPosition(asFloat('x'), asFloat('y'));
-  } else if ('sx' in params && 'sy' in params && 'hx' in params && 'hy' in params && 'scale' in params) {
+  // Various coordinate schemes - ordered by priority
+  if (has(params, ['x', 'y'])) {
+    map.SetPosition(float('x'), float('y'));
+  } else if (has(params, ['sx', 'sy', 'hx', 'hy', 'scale'])) {
     map.ScaleCenterAtSectorHex(
-      asFloat('scale'), asFloat('sx'), asFloat('sy'), asFloat('hx'), asFloat('hy'));
+      float('scale'), float('sx'), float('sy'), float('hx'), float('hy'));
   } else if ('sector' in params) {
     MapService.coordinates(
       params.sector, params.hex,
@@ -1426,9 +1377,8 @@ function applyUrlParameters(map) {
       });
   }
 
-  if ('silly' in params) {
-    map.tileOptions['silly'] = asInt('silly');
-  }
+  if ('silly' in params)
+    map.tileOptions['silly'] = int('silly');
 
   return params;
 }
