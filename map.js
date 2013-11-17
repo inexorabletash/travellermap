@@ -11,11 +11,11 @@ var SERVICE_BASE = (function(l) {
 var LEGACY_STYLES = true;
 
 // NOTE: Used by other scripts
-function getUrlParameters() {
+function parseURLQuery(url) {
   'use strict';
-  var o = {};
-  if (document.location.search && document.location.search.length > 1) {
-    document.location.search.substring(1).split('&').forEach(function(pair) {
+  var o = Object.create(null);
+  if (url.search && url.search.length > 1) {
+    url.search.substring(1).split('&').forEach(function(pair) {
       var kv = pair.split('=', 2);
       if (kv.length === 2) {
         o[kv[0]] = decodeURIComponent(kv[1].replace(/\+/g, ' '));
@@ -25,6 +25,12 @@ function getUrlParameters() {
     });
   }
   return o;
+}
+
+// NOTE: Used by other scripts
+function getUrlParameters() {
+  'use strict';
+  return parseURLQuery(document.location);
 }
 
 // NOTE: Used by other scripts

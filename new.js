@@ -1,4 +1,4 @@
-window.addEventListener('load', function() {
+window.addEventListener('DOMContentLoaded', function() {
 
   var $ = document.querySelector.bind(document);
 
@@ -184,12 +184,6 @@ window.addEventListener('load', function() {
             }).join('&');
       $('a#share-snapshot').href = snapshotURL;
 
-      // url, media, description
-      $('a#share-pinterest').href = $('a#share-pinterest').getAttribute('data-basehref') +
-        '?url=' + encodeURIComponent(pageURL) +
-        '&media=' + encodeURIComponent(snapshotURL) +
-        '&description=' + encodeURIComponent('The Traveller Map');
-
     }, PERMALINK_REFRESH_DELAY_MS);
   }
 
@@ -314,9 +308,6 @@ window.addEventListener('load', function() {
         var item = data.Results.Items[i];
         var sx, sy, hx, hy, scale;
 
-        // TODO: replace onclick handlers with proper (copy/pasteable) URLs and
-        // intercept (?) navigation
-
         if (item.Subsector) {
           var subsector = item.Subsector,
             index = subsector.Index || "A",
@@ -328,7 +319,6 @@ window.addEventListener('load', function() {
           scale = subsector.Scale || 32;
 
           subsector.href = base_url + '?scale=' + scale + '&sx=' + sx + '&sy=' + sy + '&hx=' + hx + '&hy=' + hy;
-          subsector.onclick = "map.ScaleCenterAtSectorHex(" + scale + "," + sx + "," + sy + "," + hx + "," + hy + "); return false;";
         } else if (item.Sector) {
           var sector = item.Sector;
           sx = sector.SectorX|0;
@@ -338,7 +328,6 @@ window.addEventListener('load', function() {
           scale = sector.Scale || 8;
 
           sector.href = base_url + '?scale=' + scale + '&sx=' + sx + '&sy=' + sy + '&hx=' + hx + '&hy=' + hy;
-          sector.onclick = "map.ScaleCenterAtSectorHex(" + scale + "," + sx + "," + sy + "," + hx + "," + hy + "); return false;";
         } else if (item.World) {
           var world = item.World;
           world.Name = world.Name || "(Unnamed)";
@@ -350,11 +339,19 @@ window.addEventListener('load', function() {
           scale = world.Scale || 64;
 
           world.href = base_url + '?scale=' + scale + '&sx=' + sx + '&sy=' + sy + '&hx=' + hx + '&hy=' + hy;
-          world.onclick = "map.ScaleCenterAtSectorHex(" + scale + "," + sx + "," + sy + "," + hx + "," + hy + "); return false;";
         }
       }
 
       $("#resultsContainer").innerHTML = searchTemplate(data);
+
+      [].forEach.call(document.querySelectorAll('#resultsContainer a'), function(a) {
+        a.addEventListener('click', function(e) {
+          e.preventDefault();
+          var params = window.parseURLQuery(e.target);
+          map.ScaleCenterAtSectorHex(params.scale, params.sx, params.sy, params.hx, params.hy);
+        });
+      });
+
       var first = $('#resultsContainer a');
       if (first)
         setTimeout(function() { first.focus(); }, 0);
