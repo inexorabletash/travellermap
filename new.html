@@ -275,6 +275,7 @@ button:hover {
         var VK_ESCAPE = 27;
         if (e.keyCode === VK_ESCAPE) {
           document.body.classList.remove('search-results');
+          $('#dragContainer').focus();
         }
       });
     });
