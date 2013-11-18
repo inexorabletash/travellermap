@@ -1,7 +1,7 @@
 window.addEventListener('DOMContentLoaded', function() {
 
-  var $ = document.querySelector.bind(document);
-
+  // IE8: document.querySelector can't use bind()
+  var $ = function(s) { return document.querySelector(s); };
 
   //////////////////////////////////////////////////////////////////////
   //
@@ -349,7 +349,7 @@ window.addEventListener('DOMContentLoaded', function() {
         a.addEventListener('click', function(e) {
           e.preventDefault();
           var params = window.parseURLQuery(e.target);
-          map.ScaleCenterAtSectorHex(params.scale, params.sx, params.sy, params.hx, params.hy);
+          map.ScaleCenterAtSectorHex(params.scale|0, params.sx|0, params.sy|0, params.hx|0, params.hy|0);
         });
       });
 

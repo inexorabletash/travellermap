@@ -87,7 +87,7 @@ button:hover {
   }
   </style>
   <script>
-  if (window !== window.top)
+  if (window != window.top) // != for IE
     document.body.classList.add('iframe');
   </script>
 
@@ -130,7 +130,8 @@ button:hover {
           <style>
             #direction-spinward,
             #direction-trailing {
-              -ms-writing-mode: bt-rl; filter: flipv fliph;
+              -ms-writing-mode: bt-rl;
+              filter: flipv fliph; /* IE10 emulation of IE8 blocks this for untrusted sites */
             }
           </style>
         <![endif]-->
@@ -149,7 +150,7 @@ button:hover {
       <input type="text"
              id="searchBox"
              placeholder="Search for..."
-             title="Search by world, subsector, or sector name.&#x0D;Prefix with uwp: to search UWPs.&#x0D;Use * and ? as wildcards."
+             title="Search by world, subsector, or sector name. Prefix with uwp: to search UWPs. Use * and ? as wildcards."
              autocomplete="off"
              autocorrect="off"
              autocapitalize="off"
@@ -205,7 +206,7 @@ button:hover {
       </style>
       <script>
       window.addEventListener('DOMContentLoaded', function() {
-        var $ = document.querySelector.bind(document);
+        var $ = function(s) { return document.querySelector(s); };
         $('#closeResultsBtn').addEventListener('click', function() {
           document.body.classList.remove('search-results');
         });
@@ -225,7 +226,7 @@ button:hover {
     </button>
     <script>
     window.addEventListener('DOMContentLoaded', function() {
-      var $ = document.querySelector.bind(document);
+      var $ = function(s) { return document.querySelector(s); };
       $("#searchForm").addEventListener('submit', function(e) {
         search($('#searchBox').value);
         e.preventDefault();
@@ -277,7 +278,7 @@ button:hover {
     </style>
     <script>
     window.addEventListener('DOMContentLoaded', function() {
-      var $ = document.querySelector.bind(document);
+      var $ = function(s) { return document.querySelector(s); };
       document.body.addEventListener('keyup', function(e) {
         var VK_ESCAPE = 27;
         if (e.keyCode === VK_ESCAPE) {
@@ -335,7 +336,7 @@ button:hover {
     </button>
     <script>
     window.addEventListener('DOMContentLoaded', function() {
-      var $ = document.querySelector.bind(document);
+      var $ = function(s) { return document.querySelector(s); };
       var PANELS = ['legend', 'style', 'share', 'help'];
       PANELS.forEach(function(b) {
         $('#'+b+'Btn').addEventListener('click', function() {
@@ -433,7 +434,7 @@ button:hover {
       </style>
       <script>
         window.addEventListener('DOMContentLoaded', function() {
-          var $ = document.querySelector.bind(document);
+          var $ = function(s) { return document.querySelector(s); };
           ['poster', 'atlas', 'print', 'candy'].forEach(function(s) {
             $('#styleBtn-'+s).addEventListener('click', function() { map.SetStyle(s); });
           });
@@ -664,7 +665,7 @@ button:hover {
     </style>
     <button id="zoomInBtn"
             title="Zoom in">
-      &plus;
+      +
     </button>
     <button id="zoomOutBtn"
             title="Zoom out">
@@ -672,7 +673,7 @@ button:hover {
     </button>
     <script>
     window.addEventListener('DOMContentLoaded', function() {
-      var $ = document.querySelector.bind(document);
+      var $ = function(s) { return document.querySelector(s); };
       $('#zoomInBtn').addEventListener('click', function() {
         window.map.ZoomIn();
       });
@@ -698,7 +699,7 @@ button:hover {
     <div id="LogoImage" title="Traveller&reg; - Science Fiction Adventure in the Far Future">&nbsp;</div>
     <script>
       window.addEventListener('DOMContentLoaded', function() {
-        var $ = document.querySelector.bind(document);
+        var $ = function(s) { return document.querySelector(s); };
         $("#LogoImage").addEventListener('dblclick', function() {
           document.body.classList.add('hide-footer');
         });

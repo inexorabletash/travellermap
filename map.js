@@ -713,7 +713,7 @@ function escapeHtml(s) {
 
     self.invalidate();
 
-    if (window === window.top)
+    if (window == window.top) // == for IE
       container.focus();
   };
 
