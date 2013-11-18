@@ -395,7 +395,7 @@ button:hover {
     <style>
     #styleBox {
       width: 200px;
-      max-height: 305px;
+      max-height: 385px;
     }
     #styles button {
       width: 40px; height: 40px;
@@ -407,6 +407,10 @@ button:hover {
     #styleBox section { margin: 1em 0; }
     #styleBox section:first-of-type { margin-top: 0; }
     #styleBox section:last-of-type { margin-bottom: 0; }
+
+    /* checkbox/radio buttons are larger on iOS */
+    #styleBox p { min-height: 24px; }
+
     </style>
     <section id="styles">
       <button id="styleBtn-poster"
