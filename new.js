@@ -1,7 +1,21 @@
 window.addEventListener('DOMContentLoaded', function() {
 
+  //////////////////////////////////////////////////////////////////////
+  //
+  // Utilities
+  //
+  //////////////////////////////////////////////////////////////////////
+
   // IE8: document.querySelector can't use bind()
   var $ = function(s) { return document.querySelector(s); };
+
+  function makeURL(base, params) {
+    base = String(base).replace(/\?.*/, '');
+    return base += '?' + Object.keys(params).map(function(p) {
+        return p + '=' + encodeURIComponent(params[p]);
+      }).join('&');
+  }
+
 
   //////////////////////////////////////////////////////////////////////
   //
@@ -9,9 +23,6 @@ window.addEventListener('DOMContentLoaded', function() {
   //
   //////////////////////////////////////////////////////////////////////
 
-  //
-  // Initialize map and register callbacks
-  //
   var mapElement = $("#dragContainer");
   var map = new Map(mapElement);
 
@@ -29,6 +40,10 @@ window.addEventListener('DOMContentLoaded', function() {
   map.SetOptions(map.GetOptions() | MapOptions.ForceHexes);
   map.SetScale(mapElement.offsetWidth <= 480 ? 1 : 2);
   map.CenterAtSectorHex(0, 0, Astrometrics.ReferenceHexX, Astrometrics.ReferenceHexY);
+
+  function setOptions(mask, flags) {
+    map.SetOptions((map.GetOptions() & ~mask) | flags);
+  }
 
   map.OnScaleChanged = function(scale) {
     updatePermalink();
@@ -77,7 +92,6 @@ window.addEventListener('DOMContentLoaded', function() {
                 function(c) { setOptions(bitmask, c ? bitmask : 0); });
   }
 
-
   map.OnStyleChanged = function(style) {
     ['poster', 'atlas', 'print', 'candy'].forEach(function(s) {
       document.body.classList[s === style ? 'add' : 'remove']('style-' + s);
@@ -97,23 +111,24 @@ window.addEventListener('DOMContentLoaded', function() {
   //
   // Pull in options from URL - from permalinks
   //
-
   // Call this AFTER data binding is hooked up so UI is synchronized
+  //
   var urlParams = applyUrlParameters(map);
 
   // Force UI to synchronize in case URL parameters didn't do it
   map.OnOptionsChanged(map.GetOptions());
 
-  // TODO: Make this less hokey
+  // TODO: Generalize URLParam<->Control and URLParam<->Style binding
   $("#ShowGalacticDirections").checked = true;
+  document.body.classList.add('show-directions');
   $("#ShowGalacticDirections").addEventListener('click', function() {
-    mapElement.classList[this.checked ? 'add' : 'remove']('galdir');
+    document.body.classList[this.checked ? 'add' : 'remove']('show-directions');
     updatePermalink();
   });
   if ("galdir" in urlParams) {
-    var showGalacticDirections = Boolean(Number(urlParams.galdir));
-    mapElement.classList[showGalacticDirections ? 'add' : 'remove']('galdir');
-    $("#ShowGalacticDirections").checked = showGalacticDirections;
+    var show = Boolean(Number(urlParams.galdir));
+    document.body.classList[show ? 'add' : 'remove']('show-directions');
+    $("#ShowGalacticDirections").checked = show;
     updatePermalink();
   }
 
@@ -122,13 +137,12 @@ window.addEventListener('DOMContentLoaded', function() {
     search(urlParams.q);
   }
 
-  function makeURL(base, params) {
-    base = String(base).replace(/\?.*/, '');
-    return base += '?' + Object.keys(params).map(function(p) {
-        return p + '=' + encodeURIComponent(params[p]);
-      }).join('&');
-  }
 
+  //////////////////////////////////////////////////////////////////////
+  //
+  // Permalink
+  //
+  //////////////////////////////////////////////////////////////////////
 
   var permalinkTimeout = 0;
   var lastPageURL = null;
@@ -148,7 +162,7 @@ window.addEventListener('DOMContentLoaded', function() {
       urlParams.scale = round(map.GetScale(), .01);
       urlParams.options = map.GetOptions();
       urlParams.style = map.GetStyle();
-      if (mapElement.classList.contains('galdir'))
+      if (document.body.classList.contains('show-directions'))
         delete urlParams.galdir;
       else
         urlParams.galdir = 0;
@@ -184,10 +198,6 @@ window.addEventListener('DOMContentLoaded', function() {
       $('a#share-snapshot').href = snapshotURL;
 
     }, PERMALINK_REFRESH_DELAY_MS);
-  }
-
-  function setOptions(mask, flags) {
-    map.SetOptions((map.GetOptions() & ~mask) | flags);
   }
 
 

@@ -27,7 +27,7 @@ a.stealth:hover { text-decoration: underline; }
 }
 
 #GalacticDirectionDisplay { visibility: hidden; }
-.galdir #GalacticDirectionDisplay { visibility: visible; }
+.show-directions #GalacticDirectionDisplay { visibility: visible; }
 
 #bottom-pane {
   position: absolute; left: 0; right: 0; bottom: 0; height: 95px; padding: 10px; padding-top: 0; overflow: hidden;
