@@ -27,7 +27,8 @@ window.addEventListener('DOMContentLoaded', function() {
 
   // Tweak defaults
   map.SetOptions(map.GetOptions() | MapOptions.ForceHexes);
-  map.ScaleCenterAtSectorHex(2, 0, 0, Astrometrics.ReferenceHexX, Astrometrics.ReferenceHexY);
+  map.SetScale(mapElement.offsetWidth <= 480 ? 1 : 2);
+  map.CenterAtSectorHex(0, 0, Astrometrics.ReferenceHexX, Astrometrics.ReferenceHexY);
 
   map.OnScaleChanged = function(scale) {
     updatePermalink();
