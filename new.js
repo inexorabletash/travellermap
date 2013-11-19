@@ -106,10 +106,10 @@ window.addEventListener('DOMContentLoaded', function() {
 
   // TODO: Make this less hokey
   $("#ShowGalacticDirections").checked = true;
-  $("#ShowGalacticDirections").onclick = function() {
+  $("#ShowGalacticDirections").addEventListener('click', function() {
     mapElement.classList[this.checked ? 'add' : 'remove']('galdir');
     updatePermalink();
-  };
+  });
   if ("galdir" in urlParams) {
     var showGalacticDirections = Boolean(Number(urlParams.galdir));
     mapElement.classList[showGalacticDirections ? 'add' : 'remove']('galdir');

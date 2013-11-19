@@ -1012,11 +1012,13 @@ function escapeHtml(s) {
       delete self.loading[uri];
       self.cache.insert(uri, img);
       callback(img);
-      img.onload = null; img.onerror = null;
+      img.onload = null;
+      img.onerror = null;
     };
     img.onerror = function() {
       delete self.loading[uri];
-      img.onload = null; img.onerror = null;
+      img.onload = null;
+      img.onerror = null;
     };
     img.src = uri;
     img.style.position = 'absolute';
