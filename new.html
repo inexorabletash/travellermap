@@ -29,14 +29,19 @@
 <meta property="og:site_name" content="The Traveller Map">
 <meta property="fb:admins" content="617166358">
 
-<link rel="stylesheet" href="new.css?update=2013-09-20">
+<link rel="stylesheet" href="new.css?update=2013-11-17">
 
-<!--[if lt IE 8]><script>alert("IE7 is no longer supported.");</script><![endif]-->
-<script src="polyfill/polyfill.js?update=2013-09-20"></script>
-<script src="map.js?update=2013-09-20"></script>
+<!--[if lt IE 8]><script>alert("IE7 is no longer supported.");location = 'http://google.com/chrome';</script><![endif]-->
+<script src="polyfill/polyfill.js?update=2013-11-17"></script>
+<script src="map.js?update=2013-11-17"></script>
 <script src="handlebars.js?update=2013-07-25"></script>
-<script src="new.js?update=2013-09-20"></script>
+<script src="new.js?update=2013-11-17-20"></script>
 <style>
+.ui {
+  z-index: 2000;
+}
+.iframe .ui { display: none; }
+
 button {
   font-family: Univers, Helvetica, Arial, sans-serif;
   font-size: 10pt;
@@ -55,10 +60,31 @@ button img {
 button:hover {
   background-color: red;
 }
-.ui {
-  z-index: 2000;
+.hoverbox {
+  display: none;
+  position: absolute;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: black;
+  border: 1px solid gray;
+  box-shadow: 2px 2px 4px #404040;
+  padding: 20px;
 }
-.iframe .ui { display: none; }
+.style-print .hoverbox,
+.style-atlas .hoverbox { background-color: white; }
+
+.hoverbox-right {
+  right: 15px; top: 50px; bottom: 150px;
+}
+.hoverbox-left {
+  left: 15px; top: 50px; bottom: 110px;
+}
+@media only screen and (max-width: 640px), (max-device-width: 640px) {
+  .hoverbox-right,
+  .hoverbox-left {
+    bottom: 60px;
+  }
+}
 </style>
 
 <!-- Home Screen Icons - iOS and Android -->
@@ -101,8 +127,7 @@ button:hover {
           position: absolute; width: 100%; height: 100%; z-index: 1999;
         }
         #GalacticDirectionDisplay .direction {
-          position: absolute;
-          text-align: center;
+          position: absolute; text-align: center;
         }
         #direction-coreward {
           top: 4px; left: 0; right: 0;
@@ -209,7 +234,7 @@ button:hover {
           document.body.classList.remove('search-results');
         });
       });
-  </script>
+      </script>
     </button>
 
     <button id="importantBtn">
@@ -288,8 +313,6 @@ button:hover {
     </script>
   </div>
 
-
-
   <div id="progressBox"
        class="ui hoverbox">
     <img id="ProgressImage" src="res/ui/ajax-loader.gif" alt="" width="32" height="32" style="margin: 6px;">
@@ -355,39 +378,15 @@ button:hover {
   </div>
 
   <style>
-  body.show-style #styleBox { display: block; }
-  body.show-legend #legendBox { display: block; }
-  body.show-share #shareBox { display: block; }
+  body.show-style #styleBox,
+  body.show-legend #legendBox,
+  body.show-share #shareBox,
   body.show-help #helpBox { display: block; }
-  body.show-style #styleBtn { background-color: red; }
-  body.show-legend #legendBtn { background-color: red; }
-  body.show-share #shareBtn { background-color: red; }
+  body.show-style #styleBtn,
+  body.show-legend #legendBtn,
+  body.show-share #shareBtn,
   body.show-help #helpBtn { background-color: red; }
-  .hoverbox {
-    display: none;
-    position: absolute;
-    overflow-x: hidden;
-    overflow-y: auto;
-    background-color: black;
-    border: 1px solid gray;
-    box-shadow: 2px 2px 4px #404040;
-    padding: 20px;
-  }
-  .style-print .hoverbox,
-  .style-atlas .hoverbox { background-color: white; }
 
-  .hoverbox-right {
-    right: 15px; top: 50px; bottom: 150px;
-  }
-  .hoverbox-left {
-    left: 15px; top: 50px; bottom: 110px;
-  }
-  @media only screen and (max-width: 640px), (max-device-width: 640px) {
-    .hoverbox-right,
-    .hoverbox-left {
-      bottom: 60px;
-    }
-  }
   </style>
 
   <div id="styleBox"
