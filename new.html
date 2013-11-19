@@ -753,10 +753,10 @@ button:hover {
     <script id="CommonMetadataTemplate" type="text/x-handlebars-template">
       <div style="font-style: italic;">
         {{Attribution}}
-        {{#SectorRef}}<a target="_blank" href="{{.}}">Source</a>{{/SectorRef}}
         {{#DataURL}}<a title="Raw data for {{../SectorName}} Sector" target="_blank" href="{{.}}">Data</a>{{/DataURL}}
         {{#PosterURL}}<a title="PDF map of {{../SectorName}} Sector" target="_blank" href="{{.}}">Poster</a>{{/PosterURL}}
 
+        {{#SectorRef}}&mdash; <a target="_blank" href="{{.}}">Source</a>{{/SectorRef}}
         {{#ProductRef}}
           &mdash; <a title="Publisher's Catalog" target="_blank" href="{{.}}">
           {{../ProductTitle}}
