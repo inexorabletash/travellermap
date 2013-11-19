@@ -122,6 +122,14 @@ window.addEventListener('DOMContentLoaded', function() {
     search(urlParams.q);
   }
 
+  function makeURL(base, params) {
+    base = String(base).replace(/\?.*/, '');
+    return base += '?' + Object.keys(params).map(function(p) {
+        return p + '=' + encodeURIComponent(params[p]);
+      }).join('&');
+  }
+
+
   var permalinkTimeout = 0;
   var lastPageURL = null;
   function updatePermalink() {
@@ -135,9 +143,6 @@ window.addEventListener('DOMContentLoaded', function() {
         return Math.round(n * d) / d;
       }
 
-      // TODO: Factor this out and use for search results as well
-      var pageURL = document.location.href.replace(/\?.*/, '');
-
       urlParams.x = round(map.GetX(), .001);
       urlParams.y = round(map.GetY(), .001);
       urlParams.scale = round(map.GetScale(), .01);
@@ -148,31 +153,26 @@ window.addEventListener('DOMContentLoaded', function() {
       else
         urlParams.galdir = 0;
 
-      pageURL += '?' + Object.keys(urlParams).map(function(p) {
-        return p + '=' + encodeURIComponent(urlParams[p]);
-      }).join('&');
+      var pageURL = makeURL(document.location, urlParams);
 
       if (pageURL === lastPageURL)
         return;
 
-      // EXPERIMENTAL: update the URL in-place
-      if ('history' in window && 'replaceState' in window.history) {
-        if (document.location.href !== pageURL)
+      if ('history' in window && 'replaceState' in window.history && document.location.href !== pageURL)
           window.history.replaceState(null, document.title, pageURL);
-      }
 
       $('#share-url').value = pageURL;
       $('#share-embed').value = '<iframe width=400 height=300 src="' + pageURL + '">';
 
       var snapshotParams = (function() {
-        var map_center_x = map.GetX();
-        var map_center_y = map.GetY();
-        var scale = map.GetScale();
-        var rect = mapElement.getBoundingClientRect();
-        var width = rect.width;
-        var height = rect.height;
-        var x = ( map_center_x * scale - ( width / 2 ) ) / width;
-        var y = ( -map_center_y * scale - ( height / 2 ) ) / height;
+        var map_center_x = map.GetX(),
+            map_center_y = map.GetY(),
+            scale = map.GetScale(),
+            rect = mapElement.getBoundingClientRect(),
+            width = rect.width,
+            height = rect.height,
+            x = ( map_center_x * scale - ( width / 2 ) ) / width,
+            y = ( -map_center_y * scale - ( height / 2 ) ) / height;
         return { x: x, y: y, w: width, h: height, scale: scale };
       }());
       snapshotParams.x = round(snapshotParams.x, .001);
@@ -180,10 +180,7 @@ window.addEventListener('DOMContentLoaded', function() {
       snapshotParams.scale = round(snapshotParams.scale, .01);
       snapshotParams.options = map.GetOptions();
       snapshotParams.style = map.GetStyle();
-      var snapshotURL = SERVICE_BASE + '/api/tile?' +
-            Object.keys(snapshotParams).map(function(p) {
-              return p + '=' + encodeURIComponent(snapshotParams[p]);
-            }).join('&');
+      var snapshotURL = makeURL(SERVICE_BASE + '/api/tile', snapshotParams);
       $('a#share-snapshot').href = snapshotURL;
 
     }, PERMALINK_REFRESH_DELAY_MS);
@@ -250,10 +247,10 @@ window.addEventListener('DOMContentLoaded', function() {
       }());
 
       if ('SectorName' in data) {
-        data.PosterURL = SERVICE_BASE + '/api/poster?sector=' +
-          encodeURIComponent(data.SectorName) + '&accept=application/pdf&style=' + map.GetStyle();
-        data.DataURL = SERVICE_BASE + '/api/sec?sector=' +
-          encodeURIComponent(data.SectorName) + '&type=SecondSurvey';
+        data.PosterURL = makeURL(SERVICE_BASE + '/api/poster', {
+          sector: data.SectorName, accept: 'application/pdf', style: map.GetStyle()});
+        data.DataURL = makeURL(SERVICE_BASE + '/api/sec', {
+            sector: data.SectorName, type: 'SecondSurvey' });
       }
 
       var template = map.GetScale() >= 16 ? worldMetadataTemplate : sectorMetadataTemplate;
@@ -319,8 +316,7 @@ window.addEventListener('DOMContentLoaded', function() {
           hx = (((n % 4) | 0) + 0.5) * (Astrometrics.SectorWidth / 4);
           hy = (((n / 4) | 0) + 0.5) * (Astrometrics.SectorHeight / 4);
           scale = subsector.Scale || 32;
-
-          subsector.href = base_url + '?scale=' + scale + '&sx=' + sx + '&sy=' + sy + '&hx=' + hx + '&hy=' + hy;
+          subsector.href = makeURL(base_url, {scale: scale, sx: sx, sy: sy, hx: hx, hy: hy});
         } else if (item.Sector) {
           var sector = item.Sector;
           sx = sector.SectorX|0;
@@ -328,8 +324,7 @@ window.addEventListener('DOMContentLoaded', function() {
           hx = (Astrometrics.SectorWidth / 2);
           hy = (Astrometrics.SectorHeight / 2);
           scale = sector.Scale || 8;
-
-          sector.href = base_url + '?scale=' + scale + '&sx=' + sx + '&sy=' + sy + '&hx=' + hx + '&hy=' + hy;
+          sector.href = makeURL(base_url, {scale: scale, sx: sx, sy: sy, hx: hx, hy: hy});
         } else if (item.World) {
           var world = item.World;
           world.Name = world.Name || "(Unnamed)";
@@ -339,8 +334,7 @@ window.addEventListener('DOMContentLoaded', function() {
           hy = world.HexY|0;
           world.Hex = (hx < 10 ? "0" : "") + hx + (hy < 10 ? "0" : "") + hy;
           scale = world.Scale || 64;
-
-          world.href = base_url + '?scale=' + scale + '&sx=' + sx + '&sy=' + sy + '&hx=' + hx + '&hy=' + hy;
+          world.href = makeURL(base_url, {scale: scale, sx: sx, sy: sy, hx: hx, hy: hy});
         }
       }
 

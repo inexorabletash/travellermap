@@ -1020,6 +1020,7 @@ function escapeHtml(s) {
       img.onload = null;
       img.onerror = null;
     };
+    img.className = 'tile';
     img.src = uri;
     img.style.position = 'absolute';
 
