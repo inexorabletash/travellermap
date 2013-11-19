@@ -16,7 +16,7 @@ a.stealth:hover { text-decoration: underline; }
 #GalacticDirectionDisplay { color: red; font-weight: bold; text-transform: uppercase; font-size: 12pt; }
 .box { border: solid 1px white; background-color: black; }
 #stripe { color: red; background-color: red; border: solid 1px red; height: 4pt; }
-#you_are_here { position: absolute; width: 256px; height: 256px; background-color: Transparent; background-image: url("res/ui/youarehere.gif"); background-repeat: no-repeat; background-position: top left; }
+#you_are_here { position: absolute; width: 256px; height: 256px; background-color: Transparent; background-image: url("res/ui/youarehere.png"); background-repeat: no-repeat; background-position: top left; }
 #overlay { position: absolute; background-color: #8080ff; opacity: 0.5; -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; margin: 0; padding: 0; border: 0; }
 #LogoImage { float: right; width: 292px; height: 102px; background-color: Transparent; background-image: url("res/ui/CT_Logo_Color.png"); background-repeat: no-repeat; background-position: top left; }
 
@@ -206,7 +206,7 @@ body.atlas { color: black; background-color: white; }
 .print #stripe,
 .atlas #stripe { color: black; background-color: black; border: solid 1px black; }
 .print #you_are_here,
-.atlas #you_are_here { background-image: url("res/ui/youarehere_gray.gif"); }
+.atlas #you_are_here { background-image: url("res/ui/youarehere_gray.png"); }
 .atlas #overlay { background-color: #808080; }
 .print #LogoImage,
 .atlas #LogoImage { background-image: url("res/ui/CT_Logo_Gray.png"); }
