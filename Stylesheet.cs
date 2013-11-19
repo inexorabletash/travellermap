@@ -461,7 +461,7 @@ namespace Maps.Rendering
 
                         microBorderStyle = MicroBorderStyle.Curve;
 
-                        sectorGrid.visible = sectorGrid.visible && (scale >= 4 && scale < 32);
+                        sectorGrid.visible = sectorGrid.visible && (scale >= 4);
                         subsectorGrid.visible = subsectorGrid.visible && (scale >= 32);
                         parsecGrid.visible = false;
 
