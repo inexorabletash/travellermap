@@ -126,7 +126,7 @@ namespace Maps.Rendering
                     }
                     if (ctx.styles.useGalaxyImage && s_galaxyImage == null)
                     {
-                        s_galaxyImage = Image.FromFile(ctx.resourceManager.Server.MapPath(@"~/res/Candy/Galaxy.png"));
+                        s_galaxyImage = Image.FromFile(ctx.resourceManager.Server.MapPath(@"~/res/Candy/Galaxy.jpg"));
                     }
                     if (ctx.styles.useWorldImages && s_worldImages == null)
                     {
@@ -211,7 +211,7 @@ namespace Maps.Rendering
                 RectangleF chartedSpaceBounds = new RectangleF(-512 / Astrometrics.ParsecScaleX, -512 / Astrometrics.ParsecScaleY, 1024 / Astrometrics.ParsecScaleX, 1024 / Astrometrics.ParsecScaleY);
 
                 RectangleF galacticBounds = new RectangleF(-14598.67f, -23084.26f, 29234.1133f, 25662.4746f); // TODO: Don't hardcode
-                Rectangle galaxyImageRect = new Rectangle(-16557, -24534, 33151, 29062); // Includes plenty of fuzzy slop
+                Rectangle galaxyImageRect = new Rectangle(-18257, -26234, 36551, 32462); // Chosen to match T5 pp.416 
 
                 // This transforms the Linehan galactic structure to the Mikesh galactic structure
                 // See http://travellermap.blogspot.com/2009/03/galaxy-scale-mismatch.html
