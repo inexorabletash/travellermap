@@ -1,1 +1,1 @@
-Galaxy.jpg - Credit: R. Hurt (SSC), JPL-Caltech, NASA
+Galaxy.png - Credit: R. Hurt (SSC), JPL-Caltech, NASA

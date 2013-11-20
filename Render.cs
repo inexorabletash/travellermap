@@ -126,7 +126,7 @@ namespace Maps.Rendering
                     }
                     if (ctx.styles.useGalaxyImage && s_galaxyImage == null)
                     {
-                        s_galaxyImage = Image.FromFile(ctx.resourceManager.Server.MapPath(@"~/res/Candy/Galaxy.jpg"));
+                        s_galaxyImage = Image.FromFile(ctx.resourceManager.Server.MapPath(@"~/res/Candy/Galaxy.png"));
                     }
                     if (ctx.styles.useWorldImages && s_worldImages == null)
                     {
