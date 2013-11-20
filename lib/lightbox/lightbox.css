@@ -1,0 +1,16 @@
+#lightbox {
+  position: fixed;
+  left: 0; top: 0; right: 0; bottom: 0;
+  background-color: rgba(0,0,0,0.9);
+  display: none;
+}
+#lightbox.visible {
+  display: block;
+}
+#lightbox > * {
+  position: absolute;;
+  left: 10%; top: 10%; right: 10%; bottom: 10%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
