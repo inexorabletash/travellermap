@@ -38,7 +38,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
   // Tweak defaults
   map.SetOptions(map.GetOptions() | MapOptions.ForceHexes);
-  map.SetScale(mapElement.offsetWidth <= 480 ? 1 : 2);
+  map.SetScale(mapElement.offsetWidth <= 640 ? 1 : 2);
   map.CenterAtSectorHex(0, 0, Astrometrics.ReferenceHexX, Astrometrics.ReferenceHexY);
 
   function setOptions(mask, flags) {
@@ -355,7 +355,7 @@ window.addEventListener('DOMContentLoaded', function() {
           e.preventDefault();
           var params = window.parseURLQuery(e.target);
           map.ScaleCenterAtSectorHex(params.scale|0, params.sx|0, params.sy|0, params.hx|0, params.hy|0);
-          if (mapElement.offsetWidth < 480)
+          if (mapElement.offsetWidth < 640)
             document.body.classList.remove('search-results');
         });
       });
