@@ -24,47 +24,49 @@ namespace Maps
             Action<string, string, RouteValueDictionary> mpr1 =
                 (url, file, defaults) => routes.MapPageRoute(routeName(), url, file, checkPhysicalUrlAccess: false, defaults: defaults);
 
+            const string BASE_DIR = @"~/server/pages/";
+            const string ADMIN_DIR = @"~/server/admin/";
+
             // Rendering
-            mpr0("api/poster", "~/Poster.aspx");
-            mpr0("api/tile", "~/Tile.aspx");
-            mpr0("api/jumpmap", "~/JumpMap.aspx");
-            mpr0("api/overview", "~/Overview.aspx");
+            mpr0("api/poster", BASE_DIR + "Poster.aspx");
+            mpr0("api/tile", BASE_DIR + "Tile.aspx");
+            mpr0("api/jumpmap", BASE_DIR + "JumpMap.aspx");
 
             // Search Queries
-            mpr1("api/search", "~/Search.aspx", DEFAULT_JSON);
+            mpr1("api/search", BASE_DIR + "Search.aspx", DEFAULT_JSON);
 
             // Location Queries
-            mpr1("api/coordinates", "~/Coordinates.aspx", DEFAULT_JSON);
-            mpr1("api/credits", "~/Credits.aspx", DEFAULT_JSON);
-            mpr1("api/jumpworlds", "~/JumpWorlds.aspx", DEFAULT_JSON);
+            mpr1("api/coordinates", BASE_DIR + "Coordinates.aspx", DEFAULT_JSON);
+            mpr1("api/credits", BASE_DIR + "Credits.aspx", DEFAULT_JSON);
+            mpr1("api/jumpworlds", BASE_DIR + "JumpWorlds.aspx", DEFAULT_JSON);
 
             // Data Retrieval - API-centric
-            mpr1("api/sec", "~/SEC.aspx", new RouteValueDictionary { { "type", "SecondSurvey" } });
-            mpr1("api/sec/{sector}", "~/SEC.aspx", new RouteValueDictionary { { "type", "SecondSurvey" } });
-            mpr0("api/msec", "~/MSEC.aspx");
-            mpr0("api/msec/{sector}", "~/MSEC.aspx");
-            mpr1("api/metadata", "~/SectorMetaData.aspx", DEFAULT_JSON);
-            mpr1("api/metadata/{sector}", "~/SectorMetaData.aspx", DEFAULT_JSON);
-            mpr1("api/universe", "~/Universe.aspx", DEFAULT_JSON);
+            mpr1("api/sec", BASE_DIR + "SEC.aspx", new RouteValueDictionary { { "type", "SecondSurvey" } });
+            mpr1("api/sec/{sector}", BASE_DIR + "SEC.aspx", new RouteValueDictionary { { "type", "SecondSurvey" } });
+            mpr0("api/msec", BASE_DIR + "MSEC.aspx");
+            mpr0("api/msec/{sector}", BASE_DIR + "MSEC.aspx");
+            mpr1("api/metadata", BASE_DIR + "SectorMetaData.aspx", DEFAULT_JSON);
+            mpr1("api/metadata/{sector}", BASE_DIR + "SectorMetaData.aspx", DEFAULT_JSON);
+            mpr1("api/universe", BASE_DIR + "Universe.aspx", DEFAULT_JSON);
 
             // Admin
-            mpr0("admin/admin", "~/admin/Admin.aspx");
-            mpr0("admin/codes", "~/admin/Codes.aspx");
-            mpr0("admin/dump", "~/admin/Dump.aspx");
-            mpr0("admin/errors", "~/admin/Errors.aspx");
-            mpr0("admin/overview", "~/admin/Overview.aspx");
+            mpr0("admin/admin", ADMIN_DIR + "Admin.aspx");
+            mpr0("admin/codes", ADMIN_DIR + "Codes.aspx");
+            mpr0("admin/dump", ADMIN_DIR + "Dump.aspx");
+            mpr0("admin/errors", ADMIN_DIR + "Errors.aspx");
+            mpr0("admin/overview", ADMIN_DIR + "Overview.aspx");
 
             // RESTful
-            mpr1("data", "~/Universe.aspx", DEFAULT_JSON);
+            mpr1("data", BASE_DIR + "Universe.aspx", DEFAULT_JSON);
 
-            mpr1("data/{sector}", "~/SEC.aspx", new RouteValueDictionary { { "type", "SecondSurvey" } });
-            mpr0("data/{sector}/sec", "~/SEC.aspx");
-            mpr1("data/{sector}/tab", "~/SEC.aspx", new RouteValueDictionary { { "type", "TabDelimited" } });
-            mpr0("data/{sector}/metadata", "~/SectorMetaData.aspx"); // TODO: JSON?
-            mpr0("data/{sector}/msec", "~/MSEC.aspx");
-            mpr0("data/{sector}/image", "~/Poster.aspx");
-            mpr1("data/{sector}/coordinates", "~/Coordinates.aspx", DEFAULT_JSON);
-            mpr1("data/{sector}/credits", "~/Credits.aspx", DEFAULT_JSON);
+            mpr1("data/{sector}", BASE_DIR + "SEC.aspx", new RouteValueDictionary { { "type", "SecondSurvey" } });
+            mpr0("data/{sector}/sec", BASE_DIR + "SEC.aspx");
+            mpr1("data/{sector}/tab", BASE_DIR + "SEC.aspx", new RouteValueDictionary { { "type", "TabDelimited" } });
+            mpr0("data/{sector}/metadata", BASE_DIR + "SectorMetaData.aspx"); // TODO: JSON?
+            mpr0("data/{sector}/msec", BASE_DIR + "MSEC.aspx");
+            mpr0("data/{sector}/image", BASE_DIR + "Poster.aspx");
+            mpr1("data/{sector}/coordinates", BASE_DIR + "Coordinates.aspx", DEFAULT_JSON);
+            mpr1("data/{sector}/credits", BASE_DIR + "Credits.aspx", DEFAULT_JSON);
 
             // data/{sector}/{subsector}/foo conflicts with data/{sector}/{hex}/foo
             // so register data/{sector}/A ... data/{sector}/P instead
@@ -74,18 +76,18 @@ namespace Maps
                 string ss = s.ToString();
                 Func<string, string> r = (pattern) => pattern.Replace("{subsector}", ss);
  
-                mpr1(r("data/{sector}/{subsector}"), "~/SEC.aspx", new RouteValueDictionary { { "subsector", ss }, { "type", "SecondSurvey" }, {"metadata", "0"} });
-                mpr1(r("data/{sector}/{subsector}/sec"), "~/SEC.aspx", new RouteValueDictionary { { "subsector", ss }, { "metadata", "0" } });
-                mpr1(r("data/{sector}/{subsector}/tab"), "~/SEC.aspx", new RouteValueDictionary { { "subsector", ss }, { "type", "TabDelimited" }, { "metadata", "0" } });
-                mpr1(r("data/{sector}/{subsector}/image"), "~/Poster.aspx", new RouteValueDictionary { { "subsector", ss } });
+                mpr1(r("data/{sector}/{subsector}"), BASE_DIR + "SEC.aspx", new RouteValueDictionary { { "subsector", ss }, { "type", "SecondSurvey" }, {"metadata", "0"} });
+                mpr1(r("data/{sector}/{subsector}/sec"), BASE_DIR + "SEC.aspx", new RouteValueDictionary { { "subsector", ss }, { "metadata", "0" } });
+                mpr1(r("data/{sector}/{subsector}/tab"), BASE_DIR + "SEC.aspx", new RouteValueDictionary { { "subsector", ss }, { "type", "TabDelimited" }, { "metadata", "0" } });
+                mpr1(r("data/{sector}/{subsector}/image"), BASE_DIR + "Poster.aspx", new RouteValueDictionary { { "subsector", ss } });
             }
 
-            mpr1("data/{sector}/{hex}", "~/JumpWorlds.aspx", new RouteValueDictionary { { "accept", JsonConstants.MediaType }, { "jump", "0" } });
-            mpr1("data/{sector}/{hex}/image", "~/JumpMap.aspx", new RouteValueDictionary { { "jump", "0" } });
-            mpr1("data/{sector}/{hex}/coordinates", "~/Coordinates.aspx", DEFAULT_JSON);
-            mpr1("data/{sector}/{hex}/credits", "~/Credits.aspx", DEFAULT_JSON);
-            mpr1("data/{sector}/{hex}/jump/{jump}", "~/JumpWorlds.aspx", DEFAULT_JSON);
-            mpr0("data/{sector}/{hex}/jump/{jump}/image", "~/JumpMap.aspx");
+            mpr1("data/{sector}/{hex}", BASE_DIR + "JumpWorlds.aspx", new RouteValueDictionary { { "accept", JsonConstants.MediaType }, { "jump", "0" } });
+            mpr1("data/{sector}/{hex}/image", BASE_DIR + "JumpMap.aspx", new RouteValueDictionary { { "jump", "0" } });
+            mpr1("data/{sector}/{hex}/coordinates", BASE_DIR + "Coordinates.aspx", DEFAULT_JSON);
+            mpr1("data/{sector}/{hex}/credits", BASE_DIR + "Credits.aspx", DEFAULT_JSON);
+            mpr1("data/{sector}/{hex}/jump/{jump}", BASE_DIR + "JumpWorlds.aspx", DEFAULT_JSON);
+            mpr0("data/{sector}/{hex}/jump/{jump}/image", BASE_DIR + "JumpMap.aspx");
         }
     }
 }

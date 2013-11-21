@@ -119,11 +119,6 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="admin\Admin.aspx" />
-    <Content Include="admin\Codes.aspx" />
-    <Content Include="admin\Dump.aspx" />
-    <Content Include="admin\Errors.aspx" />
-    <Content Include="admin\Overview.aspx" />
     <Content Include="borders\bd_images\image001.gif" />
     <Content Include="borders\bd_images\image003.jpg" />
     <Content Include="borders\bd_images\image004.gif" />
@@ -156,6 +151,9 @@
     <Content Include="doc\secondsurvey.html" />
     <Content Include="doc\trader_format.html" />
     <Content Include="Global.asax" />
+    <Content Include="lib\handlebars.js" />
+    <Content Include="lib\lightbox\lightbox.css" />
+    <Content Include="lib\lightbox\lightbox.js" />
     <Content Include="model2\default.html" />
     <Content Include="model2\sectorgen.html" />
     <Content Include="model2\sectorgen.js" />
@@ -165,7 +163,6 @@
     <Content Include="model2\tempcalc.html" />
     <Content Include="model2\wordgen.html" />
     <Content Include="model2\wordgen.js" />
-    <Content Include="handlebars.js" />
     <Content Include="post.js" />
     <Content Include="res\legend.xml" />
     <Content Include="res\Sectors\Alpha Crucis.xml" />
@@ -256,10 +253,23 @@
     <Content Include="res\ui\youarehere.gif" />
     <Content Include="res\ui\youarehere_gray.gif" />
     <Content Include="robots.txt" />
+    <Content Include="server\admin\Admin.aspx" />
+    <Content Include="server\admin\Codes.aspx" />
+    <Content Include="server\admin\Dump.aspx" />
+    <Content Include="server\admin\Errors.aspx" />
+    <Content Include="server\admin\Overview.aspx" />
+    <Content Include="server\pages\Coordinates.aspx" />
+    <Content Include="server\pages\Credits.aspx" />
+    <Content Include="server\pages\JumpMap.aspx" />
+    <Content Include="server\pages\JumpWorlds.aspx" />
+    <Content Include="server\pages\MSEC.aspx" />
+    <Content Include="server\pages\Poster.aspx" />
+    <Content Include="server\pages\Search.aspx" />
+    <Content Include="server\pages\SEC.aspx" />
+    <Content Include="server\pages\SectorMetaData.aspx" />
+    <Content Include="server\pages\Tile.aspx" />
+    <Content Include="server\pages\Universe.aspx" />
     <Content Include="sitemap.xml" />
-    <Content Include="Coordinates.aspx">
-      <SubType>Form</SubType>
-    </Content>
     <Content Include="index.html" />
     <Content Include="index.js" />
     <Content Include="jpost.htm" />
@@ -269,12 +279,6 @@
     <Content Include="res\Vectors\J4Route.xml" />
     <Content Include="res\Vectors\J5Route.xml" />
     <Content Include="sector.js" />
-    <Content Include="SectorMetaData.aspx">
-      <SubType>Form</SubType>
-    </Content>
-    <Content Include="JumpWorlds.aspx">
-      <SubType>Form</SubType>
-    </Content>
     <Content Include="map.css" />
     <Content Include="res\AprilFools\Starburst.png" />
     <Content Include="res\AprilFools\Starburst_Gray.png" />
@@ -327,22 +331,8 @@
     <Content Include="touch\startup-ipad.jpg" />
     <Content Include="touch\startup-iPadPortrait.jpg" />
     <Content Include="touch\startup.jpg" />
-    <Content Include="Universe.aspx">
-      <SubType>Form</SubType>
-    </Content>
-    <Content Include="JumpMap.aspx">
-      <SubType>Form</SubType>
-    </Content>
-    <Content Include="SEC.aspx" />
     <Content Include="map.js" />
-    <Content Include="MSEC.aspx" />
     <Content Include="post.htm" />
-    <Content Include="Poster.aspx">
-      <SubType>Form</SubType>
-    </Content>
-    <Content Include="Credits.aspx">
-      <SubType>Form</SubType>
-    </Content>
     <Content Include="favicon.ico" />
     <Content Include="iframe.htm" />
     <Content Include="Mobile.aspx">
@@ -386,133 +376,95 @@
     <Content Include="res\Worlds.xml" />
     <Content Include="res\Vectors\Zhodani.xml" />
     <Content Include="res\ZhodaniCoreRoute.xml" />
-    <Content Include="Search.aspx">
-      <SubType>Form</SubType>
-    </Content>
     <Content Include="sector.htm" />
     <Content Include="site.css" />
-    <Content Include="Tile.aspx">
-      <SubType>Form</SubType>
-    </Content>
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
-    <Compile Include="admin\Admin.aspx.cs">
-      <DependentUpon>Admin.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\Codes.aspx.cs">
-      <DependentUpon>Codes.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\Dump.aspx.cs">
-      <DependentUpon>Dump.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\Errors.aspx.cs">
-      <DependentUpon>Errors.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\Overview.aspx.cs">
-      <DependentUpon>Overview.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
     <Compile Include="AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Astrometrics.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Metadata.cs" />
-    <Compile Include="Coordinates.aspx.cs">
+    <Compile Include="server\admin\Admin.aspx.cs">
+      <DependentUpon>Admin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="server\admin\Codes.aspx.cs">
+      <DependentUpon>Codes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="server\admin\Dump.aspx.cs">
+      <DependentUpon>Dump.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="server\admin\Errors.aspx.cs">
+      <DependentUpon>Errors.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="server\admin\Overview.aspx.cs">
+      <DependentUpon>Overview.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="server\Astrometrics.cs" />
+    <Compile Include="server\Json.cs" />
+    <Compile Include="server\Location.cs" />
+    <Compile Include="server\Metadata.cs" />
+    <Compile Include="server\pages\Coordinates.aspx.cs">
       <DependentUpon>Coordinates.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Location.cs" />
-    <Compile Include="RenderUtil.cs" />
-    <Compile Include="SectorMetaData.aspx.cs">
-      <DependentUpon>SectorMetaData.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DataPage.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ImageGeneratorPage.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="JumpWorlds.aspx.cs">
-      <DependentUpon>JumpWorlds.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="serialization\ColumnUtils.cs" />
-    <Compile Include="serialization\MSECParser.cs" />
-    <Compile Include="serialization\MSECWriter.cs" />
-    <Compile Include="serialization\SectorMetadataParser.cs" />
-    <Compile Include="serialization\SectorMetadataSerializer.cs" />
-    <Compile Include="serialization\SectorParser.cs" />
-    <Compile Include="serialization\SectorWriter.cs" />
-    <Compile Include="ServiceConfiguration.cs" />
-    <Compile Include="StellarData.cs" />
-    <Compile Include="Universe.aspx.cs">
-      <DependentUpon>Universe.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="JumpMap.aspx.cs">
-      <DependentUpon>JumpMap.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SEC.aspx.cs">
-      <DependentUpon>SEC.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Json.cs" />
-    <Compile Include="MSEC.aspx.cs">
-      <DependentUpon>MSEC.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Poster.aspx.cs">
-      <DependentUpon>Poster.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Credits.aspx.cs">
+    <Compile Include="server\pages\Credits.aspx.cs">
       <DependentUpon>Credits.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="server\pages\DataPage.cs" />
+    <Compile Include="server\pages\ImageGeneratorPage.cs" />
+    <Compile Include="server\pages\JumpMap.aspx.cs">
+      <DependentUpon>JumpMap.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="server\pages\JumpWorlds.aspx.cs">
+      <DependentUpon>JumpWorlds.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="server\pages\MSEC.aspx.cs">
+      <DependentUpon>MSEC.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="server\pages\Poster.aspx.cs">
+      <DependentUpon>Poster.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="server\pages\Search.aspx.cs">
+      <DependentUpon>Search.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="server\pages\SEC.aspx.cs">
+      <DependentUpon>SEC.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="server\pages\SectorMetaData.aspx.cs">
+      <DependentUpon>SectorMetaData.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="server\pages\Tile.aspx.cs">
+      <DependentUpon>Tile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="server\pages\Universe.aspx.cs">
+      <DependentUpon>Universe.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="server\Render.cs" />
+    <Compile Include="server\RenderUtil.cs" />
+    <Compile Include="server\ResourceManager.cs" />
+    <Compile Include="server\SearchEngine.cs" />
+    <Compile Include="server\Sector.cs" />
+    <Compile Include="server\SectorDataCollection.cs" />
+    <Compile Include="server\Selector.cs" />
+    <Compile Include="server\serialization\ColumnUtils.cs" />
+    <Compile Include="server\serialization\MSECParser.cs" />
+    <Compile Include="server\serialization\MSECWriter.cs" />
+    <Compile Include="server\serialization\SectorMetadataParser.cs" />
+    <Compile Include="server\serialization\SectorMetadataSerializer.cs" />
+    <Compile Include="server\serialization\SectorParser.cs" />
+    <Compile Include="server\serialization\SectorWriter.cs" />
+    <Compile Include="server\ServiceConfiguration.cs" />
+    <Compile Include="server\StellarData.cs" />
+    <Compile Include="server\Stylesheet.cs" />
+    <Compile Include="server\Util.cs" />
+    <Compile Include="server\VectorObject.cs" />
+    <Compile Include="server\World.cs" />
     <Compile Include="Mobile.aspx.cs">
       <DependentUpon>Mobile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Render.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="ResourceManager.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Search.aspx.cs">
-      <DependentUpon>Search.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SearchEngine.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Sector.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="SectorDataCollection.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Selector.cs" />
-    <Compile Include="Stylesheet.cs" />
-    <Compile Include="Tile.aspx.cs">
-      <DependentUpon>Tile.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Util.cs" />
-    <Compile Include="VectorObject.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="World.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="borders\bd_images\Thumbs.db" />
