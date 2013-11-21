@@ -25,7 +25,7 @@
 <!--[if lt IE 8]><script>alert("IE7 is no longer supported. Jumping to the basic version.");location='Mobile.aspx';</script><![endif]-->
 <script src="polyfill/polyfill.js?update=2013-09-20"></script>
 <script src="map.js?update=2013-09-20"></script>
-<script src="handlebars.js?update=2013-07-25"></script>
+<script src="lib/handlebars.js?update=2013-07-25"></script>
 <script src="index.js?update=2013-11-16"></script>
 <style>
 .box
@@ -56,13 +56,13 @@
 <!--[if lt IE 9]>
 <style>
 .spinward
-{ 
+{
     -ms-writing-mode: tb-lr;
     filter: flipv fliph;
 }
 
 .trailing
-{     
+{
      -ms-writing-mode: tb-lr;
      filter: flipv fliph;
 }
@@ -134,7 +134,7 @@
                 <option value="256">256</option>
                 <option value="512">512 (System)</option>
               </select>
-              
+
             <p style="margin-bottom: 0.5em;"></p>
               <strong>Sector Grid:</strong>
               <label title="Show sector and subsector grid lines"><input type="radio" name="grid" value="true" id="ShowSectorGrid" checked="checked"> On</label>
@@ -195,7 +195,7 @@
                     {{#Sector}}
                       <div style="font-size: 125%;"><a title="Navigate to {{Name}}" href="" onclick="{{onclick}}">{{Name}}</a></div>
                       <div style="margin-left: 10pt;">Sector</div>
-                    {{/Sector}}                
+                    {{/Sector}}
                   {{/Results.Items}}
                   {{^Results.Items}}
                     <div><i>No matches found.</i></div>
@@ -271,7 +271,7 @@
                 <li><span class="glyph highlight" style="font-size: 8pt;">&#x2605;</span> Naval Base
                 <li><span class="glyph" style="font-size: 10pt;">&#x2726;</span> Military Base
                 <li><span class="glyph" style="font-size: 12pt;">&bull;</span> Independent Base
-        
+
                 <li><span class="glyph highlight" style="font-size: 10pt;"><b>&Gamma;</b></span> Research Station
                 <li><span class="glyph" style="font-size: 10pt;"><b>R</b></span> Imperial Reserve
                 <li><span class="glyph highlight" style="font-size: 10pt;"><b>P</b></span> Penal Colony
@@ -350,11 +350,11 @@
     <script id="WorldMetadataTemplate" type="text/x-handlebars-template">
       <div>
         {{#SectorName}}<a title="Generate LBB for {{.}}" target="_blank" href="sector.htm?sector={{.}}">{{.}}</a>{{/SectorName}}
-        <a class="stealth" href="doc/secondsurvey.html#hex" target="_blank" title="Hex">{{WorldHex}}</a> 
-        <b><a class="stealth" href="doc/secondsurvey.html#name" target="_blank" title="Name">{{WorldName}}</a></b> 
+        <a class="stealth" href="doc/secondsurvey.html#hex" target="_blank" title="Hex">{{WorldHex}}</a>
+        <b><a class="stealth" href="doc/secondsurvey.html#name" target="_blank" title="Name">{{WorldName}}</a></b>
         <a class="stealth" href="doc/secondsurvey.html#uwp" target="_blank" title="UWP">{{WorldUwp}}</a>
-        <a class="stealth" href="doc/secondsurvey.html#remarks" target="_blank" title="Remarks">{{WorldRemarks}}</a> 
-        <a class="stealth" href="doc/secondsurvey.html#ix" target="_blank" title="Ix">{{WorldIx}}</a> 
+        <a class="stealth" href="doc/secondsurvey.html#remarks" target="_blank" title="Remarks">{{WorldRemarks}}</a>
+        <a class="stealth" href="doc/secondsurvey.html#ix" target="_blank" title="Ix">{{WorldIx}}</a>
         <a class="stealth" href="doc/secondsurvey.html#ex" target="_blank" title="Ex">{{WorldEx}}</a>
         <a class="stealth" href="doc/secondsurvey.html#cx" target="_blank" title="Cx">{{WorldCx}}</a>
         <a class="stealth" href="doc/secondsurvey.html#pbg" target="_blank" title="PBG">{{WorldPbg}}</a>
@@ -365,17 +365,17 @@
     <script id="StatusMetadataTemplate" type="text/x-handlebars-template">
       <div class="metadata-status">
         {{#Official}}
-          <a class="official" 
+          <a class="official"
             title="Sector data has been approved by the Traveller 5 Second Survey"
             href="doc/credits.html#official"><span class="bar">&#x25AC;</span> Official <span class="bar">&#x25AC;</span></a>
         {{/Official}}
         {{#Preserve}}
-          <a class="preserve" 
+          <a class="preserve"
             title="This sector is set aside as a Referee's Preserve - the presented data is an example"
             href="doc/credits.html#preserve"><span class="bar">&#x25AC;</span> Preserve <span class="bar">&#x25AC;</span></a>
         {{/Preserve}}
         {{#Unofficial}}
-          <a class="unofficial" 
+          <a class="unofficial"
             title="Sector data has not been approved"
             href="doc/credits.html#unofficial"><span class="bar">&#x25AC;</span> Unofficial <span class="bar">&#x25AC;</span></a>
         {{/Unofficial}}
@@ -386,7 +386,7 @@
         {{Attribution}}
         {{#SectorRef}}<a target="_blank" href="{{.}}">Source</a>{{/SectorRef}}
         {{#DataURL}}<a title="Raw data for {{../SectorName}}" target="_blank" href="{{.}}">Data</a>{{/DataURL}}
-        {{#PosterURL}}<a title="PDF map of {{../SectorName}}" target="_blank" href="{{.}}">Poster</a>{{/PosterURL}}      
+        {{#PosterURL}}<a title="PDF map of {{../SectorName}}" target="_blank" href="{{.}}">Poster</a>{{/PosterURL}}
 
         {{#ProductRef}}
           &mdash; <a title="Publisher's Catalog" target="_blank" href="{{.}}">
@@ -427,4 +427,3 @@
     })();
   </script>
 </body>
-
