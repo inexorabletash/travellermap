@@ -11,7 +11,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="format-detection" content="telephone=no">
-<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=0">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=0, width=device-width">
 
 <!--[if lt IE 9]><meta http-equiv="X-UA-Compatible" content="chrome=1"><![endif]-->
 <!--[if lt IE 9]><meta http-equiv="imagetoolbar" content="no"><![endif]-->
@@ -100,6 +100,7 @@ button:hover {
 
 <body>
   <style>
+  html { margin: 0; padding: 0; width: 100%; height: 100%; }
   body {
     margin: 0; padding: 0;
     border: none; overflow: hidden;
@@ -107,6 +108,7 @@ button:hover {
 
     -webkit-touch-callout: none;
     -webkit-text-size-adjust: none;
+    -moz-text-size-adjust: none;
   }
   </style>
   <script>
@@ -689,9 +691,39 @@ button:hover {
     #bottom-pane { background-color: rgba(0,0,0,0.65); }
     .style-atlas #bottom-pane,
     .style-print #bottom-pane { background-color: rgba(255,255,255,0.65); }
+
+    #LogoImage {
+      float: right;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: top right;
+      width: 416px; height: 71px;
+      background-image: url("res/ui/logo-flat.png");
+    }
+    .style-print #LogoImage,
+    .style-atlas #LogoImage {
+      background-image: url("res/ui/logo-flat-gray.png");
+    }
+
+    @media only screen and (max-width: 850px), (max-device-width: 850px) {
+      #LogoImage { width: 210px; height: 71px; background-image: url("res/ui/logo-stacked.png"); }
+      .style-print #LogoImage,
+      .style-atlas #LogoImage {  background-image: url("res/ui/logo-stacked-gray.png"); }
+    }
+
     @media only screen and (max-width: 640px), (max-device-width: 640px) {
       #bottom-pane { zoom: 50%; }
       #MetadataDisplay { display: none; }
+
+      #LogoImage { width: 416px; height: 71px; background-image: url("res/ui/logo-flat.png"); }
+      .style-print #LogoImage,
+      .style-atlas #LogoImage {  background-image: url("res/ui/logo-flat-gray.png"); }
+    }
+
+    @media only screen and (max-width: 480px), (max-device-width: 480px) {
+      #LogoImage { width: 210px; height: 71px; background-image: url("res/ui/logo-stacked.png"); }
+      .style-print #LogoImage,
+      .style-atlas #LogoImage {  background-image: url("res/ui/logo-stacked-gray.png"); }
     }
     </style>
     <hr id="stripe">

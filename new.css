@@ -19,7 +19,6 @@ a.stealth:hover { text-decoration: underline; }
 #you_are_here { position: absolute; width: 256px; height: 256px; background-color: Transparent; background-image: url("res/ui/youarehere.png"); background-repeat: no-repeat; background-position: top left; }
 #overlay { position: absolute; background-color: #8080ff; opacity: 0.5; -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; margin: 0; padding: 0; border: 0; }
 
-#LogoImage { float: right; width: 416px; height: 71px; background-color: Transparent; background-image: url("res/ui/logo-flat.png"); background-repeat: no-repeat; background-position: top left; }
 
 #dragContainer {
   background-image: url('data:image/png,%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%20%00%00%00%20%08%02%00%00%00%FC%18%ED%A3%00%00%00%2BIDATH%C7%ED%D0A%09%00%00%0C%03%B1%CA%A9%7F%85%D3%D0%E7%20g%20p%E9X%D6%00%00%00%00%F0%02%B0%14%00%00%00%00m%0Faa%F0%01%DB%16%C2%C7%00%00%00%00IEND%AEB%60%82');
@@ -170,8 +169,6 @@ body.style-atlas { color: black; background-color: white; }
 .style-print #you_are_here,
 .style-atlas #you_are_here { background-image: url("res/ui/youarehere_gray.png"); }
 .style-atlas #overlay { background-color: #808080; }
-.style-print #LogoImage,
-.style-atlas #LogoImage { background-image: url("res/ui/logo-flat-gray.png"); }
 .style-atlas #legendBox .highlight { color: gray; }
 .style-atlas #legendBox .water { color: #e0e0e0; }
 .style-atlas #legendBox .amberzone { color: #c0c0c0; }
