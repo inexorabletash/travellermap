@@ -13,6 +13,9 @@ Thanks to J Greely (http://dotclue.org/t20) for his inspirational work on
 the "MSEC" sector metadata format used by his sec2pdf and allygen tools.
 
 Schema can be found at: http://travellermap.com/res/sectors.xsd
+
+Sector coordinates are per the region name list; an X Y pair with
+Core at 0 0, X increasing to Trailing and Y increasing to Rimward.
 -->
 <!--
 
@@ -27,8 +30,6 @@ does not include names of major astrographical features of the galaxy
 consolidated from products in print (primarily the GDW alien modules
 and DGP's _Vilani & Vargr_ and _Solomani & Aslan_) and HIWG reference
 materials.
-
-
 
 The main Traveller play-area is a region 500 parsecs across centered
 roughly on Reference/Cadion (Core 0140), called "Charted Space" in
@@ -54,50 +55,17 @@ MEQLEMIANZ:       Eiaplial, Sidiadl, Tsadra
 OBREFRIPL:        {region between Zdiedeidant and Chtierabl}
 SHTOCHIADR:       Itvikiastf, Tlabrieish
 VLANCHIETS QLOM:  {all Zhodani territory coreward of Chtierabl}
+-->
 
-
-
-Sector names and co-ordinates
-(Core = 0 0; positive y is trailing of 0000 ray [Prime Radiant?], and x
-is rimward of 10000 ring, i.e., centered on
-Reference/Cadion (Core 0140).)
-
-This list covers names for 217 sectors; an 12 x 18 matrix centered as above,
-plus the Zhodani outpost sector "Chtierabl".  This area covers some 3472
-subsectors and some 277,760 parsec hexes.  The sector with the greatest
-number of unique names is Corridor (-1 -2), at five.  (Of the two Vilani,
-Eneri is from print; of the two Vargr, the second is Rebellion-era.)
-
-Multiple names for the same sector are separated by a pipe: |
-Non-Imperial names are followed by a code enclosed in curly brackets: {}
-Names from unpublished sources (HIWG) are enclosed in parentheses: ()
-This includes "old Vargr sector names" from HIWG.  Essentially, take
-anything in parentheses with a grain of salt.
-
-Code:
-as Aslan
-hv Hiver
-kk K'kree
-va Vargr
-vi Vilani First Imperium (Ziru Sirka)
-zh Zhodani
-
-No code either means IISS Imperial or may mean that the designation
-is uncertain for an unpublished sector name.
-
-
-Y  X name(s)
-
-
+<!--
 Generic outer borders for a sector:
 
-Top:	0000 0100 0200 0300 0400 0500 0600 0700 0800 0900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300
-Right:	3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341
-Bottom:	3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041
-Left:	0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001 0000
-
-
+Top:    0000 0100 0200 0300 0400 0500 0600 0700 0800 0900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300
+Right:  3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341
+Bottom: 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041
+Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001 0000
 -->
+
 <Sectors>
   <Sector>
     <Y>-8</Y>
@@ -1228,7 +1196,7 @@ Left:	0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027
     <Name>Trenchans</Name>
     <Name>Trenchan</Name>
     <Name Lang="va">Rukhs Dall</Name>
-    <DataFile Author="Jeff Zeitlin"	Source="The Zhodani Base" Ref="http://www.zho.berka.com/data/CLASSIC/sector.pl?sector=TRENCHAN">trenchans.sec</DataFile>
+    <DataFile Author="Jeff Zeitlin"     Source="The Zhodani Base" Ref="http://www.zho.berka.com/data/CLASSIC/sector.pl?sector=TRENCHAN">trenchans.sec</DataFile>
     <Subsectors>
       <Subsector Index="A">Mumari</Subsector>
       <Subsector Index="B">Liiriirda</Subsector>
@@ -3029,6 +2997,7 @@ Left:	0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027
     <Y>0</Y>
     <X>4</X>
     <Name Lang="kk">Luretiir!girr</Name>
+    <Name Lang="kk">Luretir!girr</Name>
   </Sector>
   <Sector>
     <Y>0</Y>
@@ -4328,7 +4297,7 @@ Left:	0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027
       <Route Start="3032" End="3033" Allegiance="So" />
       <Route Start="3033" End="3036" Allegiance="So" />
       <Route Start="3036" End="2837" Allegiance="So" />
-      <!--		<Route Start="0500" End="0501" Color="LightGreen" /> Doesn't match Reaver's Deep Map -->
+      <!--              <Route Start="0500" End="0501" Color="LightGreen" /> Doesn't match Reaver's Deep Map -->
       <Route Start="0501" End="0601" Color="LightGreen" />
       <Route Start="0501" End="0503" Color="LightGreen" />
       <Route Start="0503" End="0603" Color="LightGreen" />
@@ -5504,101 +5473,26 @@ NOTES:
     latter is used.  Sector (0 4) has been spelled "Luretiir!girr" with one
     i and with two; here the more common two "i" version is used.
 
-
 end.  corrections to <bonnevil@cs.umn.edu>
 -->
 
 <!--
-
-Subsector Names - Pending edits
-(Joshua Bell)
-
-Spinward Marches
-  Darrian - Daryen (alternate; The Regency Sourcebook, ca 1202)
-  District 268 - Plankwell (alternate; The Regency Sourcebook, ca 1202)
-  Trin's Veil - Trin's Shroud (alternate; The Regency Sourcebook, ca 1202)
-
-Deneb
-  Dunmag - Namidshur (alternate; The Regency Sourcebook, ca 1202)
-
-Fornast
-
-
-Daibei
-  N Hermes	- Travellers' Digest #15
-
-Ealiyasiyw - Travellers' Digest #18
-
-// Conflicts with sector data
-Far Frontiers	- Travellers' Chronicles #7
-  A Detsiaiem 	- Traveller Chronicles #5
-  B Ienji 		- Traveller Chronicles #5
-  C Naianch		- Traveller Chronicles #6
-  D Qiedrkia 		- Traveller Chronicles #6
-  E Pia 			- Traveller Chronicles #6
-  F Retan			- Traveller Chronicle #8
-  G Dalesabandagh - Traveller Chronicle #8
-  H Zezhpae		- Traveller Chronicle #8
-  I Antedeluvia 	- Traveller Chronicles #2
-  J Alsas 		- Traveller Chronicles #2
-  K Taemerlyk 	- Traveller Chronicles #3
-  L Inverness		- Traveller Chronicles #3
-  M Wulfek 		- Traveller Chronicles #3
-  N Cabala 		- Traveller Chronicles #4
-  O Jungleblut 	- Traveller Chronicles #4
-  P Mnemosyne 	- Traveller Chronicles #4
-
-Foreven
-  L Reidan - Imperial Staple #6
-  O Piah 		- Imperial Staple #10
-  P Urnian 	- Imperial Staple #7
-
-Lishun
-  A 	- Flaming Eye
-  E  	- Flaming Eye
-  F Masionia 	- Travellers' Digest #7
-  I Shuna 	- Travellers' Digest #6
-  L Ot Zell 	- Challenge #71
-
-
-Dagudashaag
-  P	Laraa		- TD #10
-
-Massilia
-  A	Seletron	- TD #10
-
-
-Massilia - Knightfall
-
-Magyar subsector names clash w/ Supp 10 Solomani Rim
-
-(Additional "edges" around DoD can be gleaned from the Regency Sourcebook, for Tuglikki, Corridor, Gushemege and Verge)
-
-  A
-  B
-  C
-  D
-  E
-  F
-  G
-  H
-  I
-  J
-  K
-  L
-  M
-  N
-  O
-  P
-
-http://winterwar.prairienet.org/dmckinne/sector.html
-
+Metadata changes circa 1202, c/o The Regency Sourcebook (TNE)
+  Spinward Marches
+    Darrian - Daryen
+    District 268 - Plankwell
+    Trin's Veil - Trin's Shroud
+  Deneb
+    Dunmag - Namidshur
 
 TODO:
 
-  Integrate: 	http://traveller.mu.org/archive/HIWG/imperium.worlds.txt
+Massilia
+  A     Seletron        - TD #10 ??
+  A     Kerr            - TD #11 ??
+
+TODO:
+
+  Integrate:    http://traveller.mu.org/archive/HIWG/imperium.worlds.txt
     - UWPs/Subsectors/Sectors of homeworlds
-
-
-
 -->

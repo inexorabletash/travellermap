@@ -2,7 +2,7 @@ The Traveller Map - Setup Guide
 ================================
 
 This is the setup guide to source code behind http://travellermap.com - an online resource for fans
-of the Traveller role playing game. 
+of the Traveller role playing game.
 
 This guide assumes basic familiarity with using Visual Studio projects and the Git source control system.
 
@@ -10,14 +10,14 @@ Prerequisites
 -------------
 * Windows 7 or later
 * [Visual Studio Express 2012 for Web](http://www.microsoft.com/visualstudio/eng/products/visual-studio-express-for-web) or the equivalent
-* Git for Windows Windows - options include 
+* Git for Windows Windows - options include
 [msysgit](https://code.google.com/p/msysgit/),
-[TortoiseGit](https://code.google.com/p/tortoisegit/) (a GUI wrapper around msysgit) 
+[TortoiseGit](https://code.google.com/p/tortoisegit/) (a GUI wrapper around msysgit)
 or the git tools for Visual Studio Pro (integrated with Team Explorer)
 
 Setup and Build
 ---------------
-1. Use git to clone this repository 
+1. Use git to clone this repository
 2. Obtain a copy of the [PDFSharp 1.32](http://pdfsharp.codeplex.com/) source
 3. Alter the PDFSharp source by applying the patch contained in `pdfsharp.patch`:
  * GNU Patch won't patch the stock 1.32 sources with this patch because this patch applies to the tip of the PDFSharp repo.
@@ -70,4 +70,3 @@ Now that your application can find your empty database, the reindex action on th
 You will see output from the re-indexing operation; when complete the page will show a summary followed by a little Omega symbol (&Omega;) at the bottom of the page. Hit your back button and try out Search.
 
 NOTE: When the Debug target is running, only the worlds in "selected" sectors will be indexed. A Release build will index all worlds.
-
