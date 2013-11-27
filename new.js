@@ -151,7 +151,7 @@ window.addEventListener('DOMContentLoaded', function() {
     search(urlParams.q);
   }
 
-  $('#homeBtn').addEventListener('click', function() {
+  function goHome() {
     if (['sx', 'sy', 'hx', 'hy'].every(function(p) { return ('yah_' + p) in urlParams; })) {
       map.ScaleCenterAtSectorHex(64,
                                  urlParams.yah_sx|0,
@@ -162,6 +162,20 @@ window.addEventListener('DOMContentLoaded', function() {
     }
     map.SetScale(home.scale);
     map.SetPosition(home.x, home.y);
+  }
+
+  $('#homeBtn').addEventListener('click', goHome);
+
+  mapElement.addEventListener('keydown', function(e) {
+    if (e.ctrlKey || e.altKey || e.metaKey)
+      return;
+    var VK_H = 72;
+    if (e.keyCode === VK_H) {
+      e.preventDefault();
+      e.stopPropagation();
+      goHome();
+      return;
+    }
   });
 
   //////////////////////////////////////////////////////////////////////
@@ -277,7 +291,7 @@ window.addEventListener('DOMContentLoaded', function() {
     }, DATA_REQUEST_DELAY_MS);
 
     function displayResults(data) {
-      var tags = String(data.SectorTags).split(/\s+/);
+      var tags = 'SectorTags' in data ? String(data.SectorTags).split(/\s+/) : [];
       if (tags.indexOf('Official') >= 0) data.Official = true;
       else if (tags.indexOf('Preserve') >= 0) data.Preserve = true;
       else data.Unofficial = true;
@@ -310,8 +324,7 @@ window.addEventListener('DOMContentLoaded', function() {
   //
   //////////////////////////////////////////////////////////////////////
 
-  window.txt = $("#SearchResultsTemplate").innerHTML;
-  var searchTemplate = Handlebars.compile(window.txt);
+  var searchTemplate = Handlebars.compile($("#SearchResultsTemplate").innerHTML);
 
   var searchRequest = null;
 
@@ -351,6 +364,12 @@ window.addEventListener('DOMContentLoaded', function() {
         var item = data.Results.Items[i];
         var sx, sy, hx, hy, scale;
 
+        function applyTags(item) {
+          var tags = 'SectorTags' in item ? item.SectorTags.split(/\s+/) : [];
+          if (tags.indexOf('Official') >= 0) item.Official = true;
+          else item.Unofficial = true; // NOTE: Preserve is not distinguished
+        }
+
         if (item.Subsector) {
           var subsector = item.Subsector,
             index = subsector.Index || "A",
@@ -361,6 +380,7 @@ window.addEventListener('DOMContentLoaded', function() {
           hy = (((n / 4) | 0) + 0.5) * (Astrometrics.SectorHeight / 4);
           scale = subsector.Scale || 32;
           subsector.href = makeURL(base_url, {scale: scale, sx: sx, sy: sy, hx: hx, hy: hy});
+          applyTags(subsector);
         } else if (item.Sector) {
           var sector = item.Sector;
           sx = sector.SectorX|0;
@@ -369,6 +389,7 @@ window.addEventListener('DOMContentLoaded', function() {
           hy = (Astrometrics.SectorHeight / 2);
           scale = sector.Scale || 8;
           sector.href = makeURL(base_url, {scale: scale, sx: sx, sy: sy, hx: hx, hy: hy});
+          applyTags(sector);
         } else if (item.World) {
           var world = item.World;
           world.Name = world.Name || "(Unnamed)";
@@ -379,6 +400,7 @@ window.addEventListener('DOMContentLoaded', function() {
           world.Hex = (hx < 10 ? "0" : "") + hx + (hy < 10 ? "0" : "") + hy;
           scale = world.Scale || 64;
           world.href = makeURL(base_url, {scale: scale, sx: sx, sy: sy, hx: hx, hy: hy});
+          applyTags(world);
         }
       }
 
