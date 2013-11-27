@@ -151,7 +151,7 @@ window.addEventListener('DOMContentLoaded', function() {
     search(urlParams.q);
   }
 
-  $('#homeBtn').addEventListener('click', function() {
+  function goHome() {
     if (['sx', 'sy', 'hx', 'hy'].every(function(p) { return ('yah_' + p) in urlParams; })) {
       map.ScaleCenterAtSectorHex(64,
                                  urlParams.yah_sx|0,
@@ -162,6 +162,20 @@ window.addEventListener('DOMContentLoaded', function() {
     }
     map.SetScale(home.scale);
     map.SetPosition(home.x, home.y);
+  }
+
+  $('#homeBtn').addEventListener('click', goHome);
+
+  mapElement.addEventListener('keydown', function(e) {
+    if (e.ctrlKey || e.altKey || e.metaKey)
+      return;
+    var VK_H = 72;
+    if (e.keyCode === VK_H) {
+      e.preventDefault();
+      e.stopPropagation();
+      goHome();
+      return;
+    }
   });
 
   //////////////////////////////////////////////////////////////////////
