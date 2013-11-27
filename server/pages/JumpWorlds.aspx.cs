@@ -40,7 +40,13 @@ namespace Maps.Pages
             {
                 string sectorName = GetStringOption("sector");
                 int hex = GetIntOption("hex", 0);
-                loc = new Location(map.FromName(sectorName).Location, hex);
+                Sector sector = map.FromName(sectorName);
+                if (sector == null)
+                {
+                    SendError(404, "Not Found", "Sector not found.");
+                    return;
+                }
+                loc = new Location(sector.Location, hex);
             }
             else if (HasOption("sx") && HasOption("sy") && HasOption("hx") && HasOption("hy"))
             {
