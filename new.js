@@ -49,6 +49,11 @@ window.addEventListener('DOMContentLoaded', function() {
     options: map.GetOptions(),
     style: map.GetStyle()
   };
+  var home = {
+    x: defaults.x,
+    y: defaults.y,
+    scale: defaults.scale
+  }
 
   function setOptions(mask, flags) {
     map.SetOptions((map.GetOptions() & ~mask) | flags);
@@ -146,6 +151,18 @@ window.addEventListener('DOMContentLoaded', function() {
     search(urlParams.q);
   }
 
+  $('#homeBtn').addEventListener('click', function() {
+    if (['sx', 'sy', 'hx', 'hy'].every(function(p) { return ('yah_' + p) in urlParams; })) {
+      map.ScaleCenterAtSectorHex(64,
+                                 urlParams.yah_sx|0,
+                                 urlParams.yah_sy|0,
+                                 urlParams.yah_hx|0,
+                                 urlParams.yah_hy|0);
+      return;
+    }
+    map.SetScale(home.scale);
+    map.SetPosition(home.x, home.y);
+  });
 
   //////////////////////////////////////////////////////////////////////
   //
