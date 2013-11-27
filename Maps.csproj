@@ -405,18 +405,23 @@
     </Compile>
     <Compile Include="server\admin\Admin.aspx.cs">
       <DependentUpon>Admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="server\admin\Codes.aspx.cs">
       <DependentUpon>Codes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="server\admin\Dump.aspx.cs">
       <DependentUpon>Dump.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="server\admin\Errors.aspx.cs">
       <DependentUpon>Errors.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="server\admin\Overview.aspx.cs">
       <DependentUpon>Overview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="server\Astrometrics.cs" />
     <Compile Include="server\Json.cs" />
@@ -424,38 +429,53 @@
     <Compile Include="server\Metadata.cs" />
     <Compile Include="server\pages\Coordinates.aspx.cs">
       <DependentUpon>Coordinates.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="server\pages\Credits.aspx.cs">
       <DependentUpon>Credits.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="server\pages\DataPage.cs" />
-    <Compile Include="server\pages\ImageGeneratorPage.cs" />
+    <Compile Include="server\pages\DataPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="server\pages\ImageGeneratorPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="server\pages\JumpMap.aspx.cs">
       <DependentUpon>JumpMap.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="server\pages\JumpWorlds.aspx.cs">
       <DependentUpon>JumpWorlds.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="server\pages\MSEC.aspx.cs">
       <DependentUpon>MSEC.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="server\pages\Poster.aspx.cs">
       <DependentUpon>Poster.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="server\pages\Search.aspx.cs">
       <DependentUpon>Search.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="server\pages\SEC.aspx.cs">
       <DependentUpon>SEC.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="server\pages\SectorMetaData.aspx.cs">
       <DependentUpon>SectorMetaData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="server\pages\Tile.aspx.cs">
       <DependentUpon>Tile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="server\pages\Universe.aspx.cs">
       <DependentUpon>Universe.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="server\Render.cs" />
     <Compile Include="server\RenderUtil.cs" />

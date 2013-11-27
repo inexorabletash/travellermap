@@ -37,7 +37,7 @@ window.addEventListener('DOMContentLoaded', function() {
   //////////////////////////////////////////////////////////////////////
 
   // Tweak defaults
-  map.SetOptions(map.GetOptions() | MapOptions.ForceHexes);
+  map.SetOptions(map.GetOptions() | MapOptions.NamesMinor | MapOptions.ForceHexes);
   map.SetScale(mapElement.offsetWidth <= 640 ? 1 : 2);
   map.CenterAtSectorHex(0, 0, Astrometrics.ReferenceHexX, Astrometrics.ReferenceHexY);
 

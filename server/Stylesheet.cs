@@ -180,7 +180,8 @@ namespace Maps.Rendering
     {
         public const string DEFAULT_FONT = "Arial";
 
-        private const float SectorGridMinScale = 1; // Below this, no sector grid is shown
+        private const float SectorGridMinScale = 1/2f; // Below this, no sector grid is shown
+        private const float SectorGridFullScale = 4; // Above this, sector grid opaque
         private const float SectorNameMinScale = 1;
         private const float SectorNameAllSelectedScale = 4; // At this point, "Selected" == "All"
         private const float SectorNameMaxScale = 16;
@@ -228,9 +229,11 @@ namespace Maps.Rendering
             pseudoRandomStars.visible = (PseudoRandomStarsMinScale <= scale) && (scale <= PseudoRandomStarsMaxScale);
             showRifts = (scale <= PseudoRandomStarsMaxScale || style == Style.Candy);
 
+
             float logscale = (float)Math.Log(scale, 2.0);
-            riftOpacity = Util.Clamp((logscale - -2f) / (2f - -2f), 0.0f, 1.0f) * 0.85f;
-            deepBackgroundOpacity = 1.0f - Util.Clamp((logscale - -3f) / (0f - -3f), 0f, 1f);
+            riftOpacity = ScaleInterpolate(0f, 0.85f, scale, 1/4f, 4f);
+            
+            deepBackgroundOpacity = ScaleInterpolate(1f, 0f, scale, 1/8f, 2f);
 
             macroRoutes.visible = (scale >= MacroRouteMinScale) && (scale <= MacroRouteMaxScale);
             macroNames.visible = (scale >= MacroLabelMinScale) && (scale <= MacroLabelMaxScale);
@@ -335,6 +338,7 @@ namespace Maps.Rendering
 
             macroNames.fontInfo = new FontInfo(DEFAULT_FONT, 8f / 1.4f, XFontStyle.Bold);
             macroNames.smallFontInfo = new FontInfo(DEFAULT_FONT, 5f / 1.4f, XFontStyle.Regular);
+            macroNames.mediumFontInfo = new FontInfo(DEFAULT_FONT, 6.5f / 1.4f, XFontStyle.Italic);
 
 
             capitals.fillColor = Color.Wheat;
@@ -345,7 +349,7 @@ namespace Maps.Rendering
             macroBorders.pen.color = Color.Red;
             macroRoutes.pen.color = Color.White;
             microBorders.pen.color = Color.Gray;
-            Color gridColor = Color.Gray;
+            Color gridColor = Color.FromArgb(ScaleInterpolate(0, 255, scale, SectorGridMinScale, SectorGridFullScale), Color.Gray);
             microRoutes.pen.color = Color.Green;
 
             Color foregroundColor = Color.White;
@@ -455,7 +459,7 @@ namespace Maps.Rendering
                         useWorldImages = true;
                         pseudoRandomStars.visible = false;
 
-                        useBackgroundImage = deepBackgroundOpacity < 1.0f;
+                        useBackgroundImage = deepBackgroundOpacity < 0.5f;
                         useGalaxyImage = deepBackgroundOpacity > 0.0f;
 
 
@@ -584,6 +588,7 @@ namespace Maps.Rendering
             public TextBackgroundStyle textBackgroundStyle;
             public FontInfo fontInfo;
             public FontInfo smallFontInfo;
+            public FontInfo mediumFontInfo;
             public FontInfo largeFontInfo;
 
             public PointF position;
@@ -592,6 +597,8 @@ namespace Maps.Rendering
             public XFont Font { get { if (font == null) { font = this.fontInfo.makeFont(); } return font; } }
             private XFont smallFont;
             public XFont SmallFont { get { if (smallFont == null) { smallFont = this.smallFontInfo.makeFont(); } return smallFont; } }
+            private XFont mediumFont;
+            public XFont MediumFont { get { if (mediumFont == null) { mediumFont = this.mediumFontInfo.makeFont(); } return mediumFont; } }
             private XFont largeFont;
             public XFont LargeFont { get { if (largeFont == null) { largeFont = this.largeFontInfo.makeFont(); } return largeFont; } }
         }
@@ -723,6 +730,33 @@ namespace Maps.Rendering
                 penColor = (world.WaterPresent) ? worldWater.pen.color : worldNoWater.pen.color;
             }
         }
+
+        public static float ScaleInterpolate(float minValue, float maxValue, double scale, float minScale, float maxScale)
+        {
+            if (scale <= minScale) return minValue;
+            if (scale >= maxScale) return maxValue;
+
+            float logscale = (float)Math.Log(scale, 2.0);
+            float logmin = (float)Math.Log(minScale, 2.0);
+            float logmax = (float)Math.Log(maxScale, 2.0);
+            float p = (logscale - logmin) / (logmax - logmin);
+            float value = minValue + (maxValue - minValue) * p;
+            return value;
+        }
+
+        public static int ScaleInterpolate(int minValue, int maxValue, double scale, float minScale, float maxScale)
+        {
+            if (scale <= minScale) return minValue;
+            if (scale >= maxScale) return maxValue;
+
+            float logscale = (float)Math.Log(scale, 2.0);
+            float logmin = (float)Math.Log(minScale, 2.0);
+            float logmax = (float)Math.Log(maxScale, 2.0);
+            float p = (logscale - logmin) / (logmax - logmin);
+            float value = minValue + (maxValue - minValue) * p;
+            return (int)Math.Round(value);
+        }
+
     }
 
     public class FontCache : IDisposable

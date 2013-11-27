@@ -15,6 +15,25 @@ namespace Maps.Rendering
     /// </summary>
     public static class Render
     {
+        private class MapLabel
+        {
+            public MapLabel(string text, float x, float y) { this.text = text; this.position = new PointF(x, y); }
+            public readonly string text;
+            public readonly PointF position;
+        }
+
+        // TODO: Move this to data file
+        private static readonly MapLabel[] labels = 
+        {
+            new MapLabel("Human Client States", -160, -50),
+            new MapLabel("Aslan Client States", -60, 155),
+            new MapLabel("Aslan Colonies", -115, -5),
+            new MapLabel("Mixed Client States", 110, 5),
+            new MapLabel("Scattered\nClient States", 85, 65),
+            new MapLabel("Vargr Enclaves", 95, -135)
+        };
+
+
         private static readonly string[] borderFiles = {
             @"~/res/Vectors/Imperium.xml", 
             @"~/res/Vectors/Aslan.xml", 
@@ -207,9 +226,6 @@ namespace Maps.Rendering
                 // Backgrounds
                 //------------------------------------------------------------
 
-                // "Exclusion zone" for Charted Space - for perf reasons
-                RectangleF chartedSpaceBounds = new RectangleF(-512 / Astrometrics.ParsecScaleX, -512 / Astrometrics.ParsecScaleY, 1024 / Astrometrics.ParsecScaleX, 1024 / Astrometrics.ParsecScaleY);
-
                 RectangleF galacticBounds = new RectangleF(-14598.67f, -23084.26f, 29234.1133f, 25662.4746f); // TODO: Don't hardcode
                 Rectangle galaxyImageRect = new Rectangle(-18257, -26234, 36551, 32462); // Chosen to match T5 pp.416 
 
@@ -314,28 +330,18 @@ namespace Maps.Rendering
 
                     using (RenderUtil.SaveState(ctx.graphics))
                     {
-                        bool drawPseudoRandomStars = false;
+                        ctx.graphics.SmoothingMode = XSmoothingMode.HighQuality;
+                        solidBrush.Color = ctx.styles.pseudoRandomStars.fillColor;
 
-                        if (chartedSpaceBounds.Contains(ctx.tileRect))
+                        Random rand = new Random((((int)ctx.tileRect.Left) << 8) ^ (int)ctx.tileRect.Top);
+                        for (int i = 0; i < nStars; i++)
                         {
-                            // Within Charted Space - just render pseudo-random stars
-                            drawPseudoRandomStars = true;
-                        }
-                        if (drawPseudoRandomStars)
-                        {
-                            ctx.graphics.SmoothingMode = XSmoothingMode.HighQuality;
-                            solidBrush.Color = ctx.styles.pseudoRandomStars.fillColor;
+                            float starX = (float)rand.NextDouble() * ctx.tileRect.Width + ctx.tileRect.X;
+                            float starY = (float)rand.NextDouble() * ctx.tileRect.Height + ctx.tileRect.Y;
+                            float d = (float)rand.NextDouble() * 2;
 
-                            Random rand = new Random((((int)ctx.tileRect.Left) << 8) ^ (int)ctx.tileRect.Top);
-                            for (int i = 0; i < nStars; i++)
-                            {
-                                float starX = (float)rand.NextDouble() * ctx.tileRect.Width + ctx.tileRect.X;
-                                float starY = (float)rand.NextDouble() * ctx.tileRect.Height + ctx.tileRect.Y;
-                                float d = (float)rand.NextDouble() * 2;
-
-                                //ctx.graphics.DrawRectangle( fonts.foregroundBrush, starX, starY, (float)( d / ctx.scale * Astrometrics.ParsecScaleX ), (float)( d / ctx.scale * Astrometrics.ParsecScaleY ) );
-                                ctx.graphics.DrawEllipse(solidBrush, starX, starY, (float)(d / ctx.scale * Astrometrics.ParsecScaleX), (float)(d / ctx.scale * Astrometrics.ParsecScaleY));
-                            }
+                            //ctx.graphics.DrawRectangle( fonts.foregroundBrush, starX, starY, (float)( d / ctx.scale * Astrometrics.ParsecScaleX ), (float)( d / ctx.scale * Astrometrics.ParsecScaleY ) );
+                            ctx.graphics.DrawEllipse(solidBrush, starX, starY, (float)(d / ctx.scale * Astrometrics.ParsecScaleX), (float)(d / ctx.scale * Astrometrics.ParsecScaleY));
                         }
                     }
                 }
@@ -656,6 +662,29 @@ namespace Maps.Rendering
                             solidBrush.Color = major ? ctx.styles.macroRoutes.textColor : ctx.styles.macroRoutes.textHighlightColor;
                             vec.DrawName(ctx.graphics, ctx.tileRect, ctx.options, font, solidBrush, labelStyle);
                         }
+                    }
+
+                    if (ctx.options.HasFlag(MapOptions.NamesMinor))
+                    {
+                        // TODO: Bigger font, italic
+                        XFont font = ctx.styles.macroNames.MediumFont;
+                        solidBrush.Color = ctx.styles.macroRoutes.textHighlightColor;
+                        foreach (var label in labels)
+                        {
+                            using (RenderUtil.SaveState(ctx.graphics))
+                            {
+                                XMatrix matrix = new XMatrix();
+                                matrix.ScalePrepend(1.0f / Astrometrics.ParsecScaleX, 1.0f / Astrometrics.ParsecScaleY);
+                                matrix.TranslatePrepend(label.position.X, label.position.Y);
+                                ctx.graphics.MultiplyTransform(matrix, XMatrixOrder.Prepend);
+
+                                XSize size = ctx.graphics.MeasureString(label.text, font);
+                                ctx.graphics.TranslateTransform(-size.Width / 2, -size.Height / 2); // Center the text
+                                RectangleF textBounds = new RectangleF(0, 0, (float)size.Width, (float)size.Height * 2); // *2 or it gets cut off at high sizes
+                                ctx.graphics.DrawString(label.text, font, solidBrush, textBounds, RenderUtil.StringFormatTopCenter);
+                            }
+                        }
+
                     }
                 }
 
