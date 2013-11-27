@@ -158,6 +158,9 @@ namespace Maps.Pages
 
                 [XmlAttribute("name")]
                 public string Name { get; set; }
+
+                [XmlAttribute("sectorTags")]
+                public string SectorTags { get; set; }
             }
 
             public static SearchResultItem LocationToSearchResult(SectorMap map, ResourceManager resourceManager, ItemLocation location)
@@ -174,6 +177,7 @@ namespace Maps.Pages
                     WorldResult r = new WorldResult();
                     r.SectorX = sector.X;
                     r.SectorY = sector.Y;
+                    r.SectorTags = sector.TagString;
                     r.HexX = (world.Hex / 100);
                     r.HexY = (world.Hex % 100);
                     r.Name = world.Name;
@@ -194,6 +198,7 @@ namespace Maps.Pages
                     SubsectorResult r = new SubsectorResult();
                     r.SectorX = sector.X;
                     r.SectorY = sector.Y;
+                    r.SectorTags = sector.TagString;
                     r.Name = subsector.Name;
                     r.Index = subsector.Index;
                     r.Sector = sector.Names[0].Text;
@@ -210,6 +215,7 @@ namespace Maps.Pages
                     SectorResult r = new SectorResult();
                     r.SectorX = sector.X;
                     r.SectorY = sector.Y;
+                    r.SectorTags = sector.TagString;
                     r.Name = sector.Names[0].Text;
 
                     return r;
