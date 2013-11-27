@@ -11,7 +11,9 @@ window.addEventListener('DOMContentLoaded', function() {
 
   function makeURL(base, params) {
     base = String(base).replace(/\?.*/, '');
-    return base += '?' + Object.keys(params).map(function(p) {
+    var keys = Object.keys(params);
+    if (keys.length === 0) return base;
+    return base += '?' + keys.map(function(p) {
         return p + '=' + encodeURIComponent(params[p]);
       }).join('&');
   }
@@ -40,6 +42,13 @@ window.addEventListener('DOMContentLoaded', function() {
   map.SetOptions(map.GetOptions() | MapOptions.NamesMinor | MapOptions.ForceHexes);
   map.SetScale(mapElement.offsetWidth <= 640 ? 1 : 2);
   map.CenterAtSectorHex(0, 0, Astrometrics.ReferenceHexX, Astrometrics.ReferenceHexY);
+  var defaults = {
+    x: map.GetX(),
+    y: map.GetY(),
+    scale: map.GetScale(),
+    options: map.GetOptions(),
+    style: map.GetStyle()
+  };
 
   function setOptions(mask, flags) {
     map.SetOptions((map.GetOptions() & ~mask) | flags);
@@ -157,11 +166,19 @@ window.addEventListener('DOMContentLoaded', function() {
         return Math.round(n * d) / d;
       }
 
-      urlParams.x = round(map.GetX(), .001);
-      urlParams.y = round(map.GetY(), .001);
-      urlParams.scale = round(map.GetScale(), .01);
+      urlParams.x = round(map.GetX(), 1/1000);
+      urlParams.y = round(map.GetY(), 1/1000);
+      urlParams.scale = round(map.GetScale(), 1/128);
       urlParams.options = map.GetOptions();
       urlParams.style = map.GetStyle();
+
+      // TODO: Decide on whether to keep this or not.
+      // Pro: Don't pollute the URL with unnecessary cruft
+      // Con: URL isn't guaranteed to be persistently sharable
+      ['x', 'y', 'options', 'scale', 'style'].forEach(function(p) {
+        if (urlParams[p] === defaults[p]) delete urlParams[p];
+      });
+
       if (document.body.classList.contains('show-directions'))
         delete urlParams.galdir;
       else
