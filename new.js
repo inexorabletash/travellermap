@@ -291,10 +291,12 @@ window.addEventListener('DOMContentLoaded', function() {
     }, DATA_REQUEST_DELAY_MS);
 
     function displayResults(data) {
-      var tags = 'SectorTags' in data ? String(data.SectorTags).split(/\s+/) : [];
-      if (tags.indexOf('Official') >= 0) data.Official = true;
-      else if (tags.indexOf('Preserve') >= 0) data.Preserve = true;
-      else data.Unofficial = true;
+      if ('SectorTags' in data) {
+        var tags =  String(data.SectorTags).split(/\s+/);
+        if (tags.indexOf('Official') !== -1) data.Official = true;
+        else if (tags.indexOf('Preserve') !== -1) data.Preserve = true;
+        else data.Unofficial = true;
+      }
 
       data.Attribution = (function() {
         var r = [];
@@ -365,9 +367,12 @@ window.addEventListener('DOMContentLoaded', function() {
         var sx, sy, hx, hy, scale;
 
         function applyTags(item) {
-          var tags = 'SectorTags' in item ? item.SectorTags.split(/\s+/) : [];
-          if (tags.indexOf('Official') >= 0) item.Official = true;
-          else item.Unofficial = true; // NOTE: Preserve is not distinguished
+          if ('SectorTags' in item) {
+            var tags = String(item.SectorTags).split(/\s+/);
+            if (tags.indexOf('Official') !== -1) item.Official = true;
+            else if (tags.indexOf('Preserve') !== -1) item.Unofficial = true;
+            else item.Unofficial = true;
+          }
         }
 
         if (item.Subsector) {

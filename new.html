@@ -282,20 +282,26 @@ button:hover {
       <div class="item">
         {{#World}}
           <div class="item-main"><a title="Navigate to {{Name}}" href="{{href}}" onclick="{{onclick}}">{{Name}}</a></div>
-          <div class="item-location">{{Sector}} {{Hex}}</div>
+          <div class="item-location">
+            {{Sector}} {{Hex}}
+            {{#Unofficial}}<span class="item-status">(Unofficial)</span>{{/Unofficial}}
+          </div>
           {{#Title}}<div class="item-title">{{.}}</div>{{/Title}}
           {{#Uwp}}<div class="item-uwp">{{.}}</div>{{/Uwp}}
-          {{#Unofficial}}<div class="item-status">(Unofficial)</div>{{/Unofficial}}
         {{/World}}
         {{#Subsector}}
           <div class="item-main"><a title="Navigate to {{Name}}" href="{{href}}" onclick="{{onclick}}">{{Name}}</a></div>
-          <div class="item-location">Subsector {{Index}} of {{Sector}}</div>
-          {{#Unofficial}}<div class="item-status">(Unofficial)</div>{{/Unofficial}}
+          <div class="item-location">
+            Subsector {{Index}} of {{Sector}}
+            {{#Unofficial}}<span class="item-status">(Unofficial)</span>{{/Unofficial}}
+          </div>
           {{/Subsector}}
         {{#Sector}}
           <div class="item-main"><a title="Navigate to {{Name}}" href="{{href}}" onclick="{{onclick}}">{{Name}}</a></div>
-          <div class="item-location">Sector</div>
-          {{#Unofficial}}<div class="item-status">(Unofficial)</div>{{/Unofficial}}
+          <div class="item-location">
+            Sector
+            {{#Unofficial}}<span class="item-status">(Unofficial)</span>{{/Unofficial}}
+          </div>
         {{/Sector}}
       </div>
       {{/Results.Items}}
@@ -308,7 +314,7 @@ button:hover {
     #resultsContainer .item-location { margin-left: 10pt; }
     #resultsContainer .item-title { margin-left: 10pt; }
     #resultsContainer .item-uwp { margin-left: 10pt; }
-    #resultsContainer .item-status { margin-left: 10pt; font-style: italic; }
+    #resultsContainer .item-status { font-style: italic; }
     </style>
     <script>
     window.addEventListener('DOMContentLoaded', function() {
