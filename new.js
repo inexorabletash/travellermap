@@ -310,8 +310,7 @@ window.addEventListener('DOMContentLoaded', function() {
   //
   //////////////////////////////////////////////////////////////////////
 
-  window.txt = $("#SearchResultsTemplate").innerHTML;
-  var searchTemplate = Handlebars.compile(window.txt);
+  var searchTemplate = Handlebars.compile($("#SearchResultsTemplate").innerHTML);
 
   var searchRequest = null;
 
