@@ -277,7 +277,7 @@ window.addEventListener('DOMContentLoaded', function() {
     }, DATA_REQUEST_DELAY_MS);
 
     function displayResults(data) {
-      var tags = String(data.SectorTags).split(/\s+/);
+      var tags = 'SectorTags' in data ? String(data.SectorTags).split(/\s+/) : [];
       if (tags.indexOf('Official') >= 0) data.Official = true;
       else if (tags.indexOf('Preserve') >= 0) data.Preserve = true;
       else data.Unofficial = true;
@@ -350,6 +350,12 @@ window.addEventListener('DOMContentLoaded', function() {
         var item = data.Results.Items[i];
         var sx, sy, hx, hy, scale;
 
+        function applyTags(item) {
+          var tags = 'SectorTags' in item ? item.SectorTags.split(/\s+/) : [];
+          if (tags.indexOf('Official') >= 0) item.Official = true;
+          else item.Unofficial = true; // NOTE: Preserve is not distinguished
+        }
+
         if (item.Subsector) {
           var subsector = item.Subsector,
             index = subsector.Index || "A",
@@ -360,6 +366,7 @@ window.addEventListener('DOMContentLoaded', function() {
           hy = (((n / 4) | 0) + 0.5) * (Astrometrics.SectorHeight / 4);
           scale = subsector.Scale || 32;
           subsector.href = makeURL(base_url, {scale: scale, sx: sx, sy: sy, hx: hx, hy: hy});
+          applyTags(subsector);
         } else if (item.Sector) {
           var sector = item.Sector;
           sx = sector.SectorX|0;
@@ -368,6 +375,7 @@ window.addEventListener('DOMContentLoaded', function() {
           hy = (Astrometrics.SectorHeight / 2);
           scale = sector.Scale || 8;
           sector.href = makeURL(base_url, {scale: scale, sx: sx, sy: sy, hx: hx, hy: hy});
+          applyTags(sector);
         } else if (item.World) {
           var world = item.World;
           world.Name = world.Name || "(Unnamed)";
@@ -378,6 +386,7 @@ window.addEventListener('DOMContentLoaded', function() {
           world.Hex = (hx < 10 ? "0" : "") + hx + (hy < 10 ? "0" : "") + hy;
           scale = world.Scale || 64;
           world.href = makeURL(base_url, {scale: scale, sx: sx, sy: sy, hx: hx, hy: hy});
+          applyTags(world);
         }
       }
 

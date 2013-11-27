@@ -279,20 +279,25 @@ button:hover {
     <div id="resultsContainer"></div>
     <script id="SearchResultsTemplate" type="text/x-handlebars-template">
       {{#Results.Items}}
+      <div class="item">
         {{#World}}
           <div class="item-main"><a title="Navigate to {{Name}}" href="{{href}}" onclick="{{onclick}}">{{Name}}</a></div>
           <div class="item-location">{{Sector}} {{Hex}}</div>
           {{#Title}}<div class="item-title">{{.}}</div>{{/Title}}
           {{#Uwp}}<div class="item-uwp">{{.}}</div>{{/Uwp}}
+          {{#Unofficial}}<div class="item-status">(Unofficial)</div>{{/Unofficial}}
         {{/World}}
         {{#Subsector}}
           <div class="item-main"><a title="Navigate to {{Name}}" href="{{href}}" onclick="{{onclick}}">{{Name}}</a></div>
           <div class="item-location">Subsector {{Index}} of {{Sector}}</div>
+          {{#Unofficial}}<div class="item-status">(Unofficial)</div>{{/Unofficial}}
           {{/Subsector}}
         {{#Sector}}
           <div class="item-main"><a title="Navigate to {{Name}}" href="{{href}}" onclick="{{onclick}}">{{Name}}</a></div>
           <div class="item-location">Sector</div>
+          {{#Unofficial}}<div class="item-status">(Unofficial)</div>{{/Unofficial}}
         {{/Sector}}
+      </div>
       {{/Results.Items}}
       {{^Results.Items}}
         <div><i>No matches found.</i></div>
@@ -303,6 +308,7 @@ button:hover {
     #resultsContainer .item-location { margin-left: 10pt; }
     #resultsContainer .item-title { margin-left: 10pt; }
     #resultsContainer .item-uwp { margin-left: 10pt; }
+    #resultsContainer .item-status { margin-left: 10pt; font-style: italic; }
     </style>
     <script>
     window.addEventListener('DOMContentLoaded', function() {
