@@ -21,7 +21,7 @@ a.stealth:hover { text-decoration: underline; }
 
 
 #dragContainer {
-  background-image: url('data:image/png,%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%20%00%00%00%20%08%02%00%00%00%FC%18%ED%A3%00%00%00%2BIDATH%C7%ED%D0A%09%00%00%0C%03%B1%CA%A9%7F%85%D3%D0%E7%20g%20p%E9X%D6%00%00%00%00%F0%02%B0%14%00%00%00%00m%0Faa%F0%01%DB%16%C2%C7%00%00%00%00IEND%AEB%60%82');
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgAQMAAABJtOi3AAAABlBMVEUAAAAoKCj70ajHAAAAE0lEQVQI12P4/5+BgZoEA3VNBADtvT/BrQ+bEwAAAABJRU5ErkJggg==');
   cursor: crosshair;
 }
 
@@ -176,7 +176,7 @@ body.style-atlas { color: black; background-color: white; }
 
 .style-print #dragContainer,
 .style-atlas #dragContainer {
-  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAABp0RVh0U29mdHdhcmUAUGFpbnQuTkVUIHYzLjUuMTAw9HKhAAAAWUlEQVRIS+3VyQkAMAhEUdON/TdjOVmOWWCYa/ieByQPo62qwqnMdOIRs4FV3SwaSDCIILr/oDQ5AkyRFPuASL7xCFi7fR0bGigyiJQQUySFIILosWo1yp4YB/GvdXDgEM0AAAAASUVORK5CYII=');
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgAQMAAABJtOi3AAAABlBMVEXX19f///8qtJEjAAAAE0lEQVQI12NgYPj/n4oElU1jAADtvT/BM8KnAAAAAABJRU5ErkJggg==');
 }
 
 .style-print ::-webkit-scrollbar,
