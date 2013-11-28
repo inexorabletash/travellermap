@@ -280,7 +280,6 @@
     <Content Include="res\ui\youarehere.png" />
     <Content Include="res\ui\youarehere_gray.png" />
     <Content Include="robots.txt" />
-    <Content Include="server\admin\Overview.aspx" />
     <Content Include="server\pages\Coordinates.aspx" />
     <Content Include="server\pages\Credits.aspx" />
     <Content Include="server\pages\JumpMap.aspx" />
@@ -403,10 +402,7 @@
     <Compile Include="server\admin\CodesHandler.cs" />
     <Compile Include="server\admin\DumpHandler.cs" />
     <Compile Include="server\admin\ErrorsHandler.cs" />
-    <Compile Include="server\admin\Overview.aspx.cs">
-      <DependentUpon>Overview.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
+    <Compile Include="server\admin\OverviewHandler.cs" />
     <Compile Include="server\Astrometrics.cs" />
     <Compile Include="server\HandlerBase.cs" />
     <Compile Include="server\Json.cs" />

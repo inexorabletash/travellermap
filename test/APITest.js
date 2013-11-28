@@ -76,22 +76,22 @@ var tests = [];
 function test(name, func) { tests.push({ name: name, func: func }); }
 
 test('Coordinates JSON - Sector Only', function() {
-  testJSON('Coordinates.aspx?sector=spin',
+  testJSON('api/coordinates?sector=spin',
       { sx: -4, sy: -1, hx: 0, hy: 0, x: -129, y: -80 });
 });
 
 test('Coordinates JSON - Sector + Hex', function() {
-  testJSON('Coordinates.aspx?sector=spin&hex=1910',
+  testJSON('api/coordinates?sector=spin&hex=1910',
       { sx: -4, sy: -1, hx: 19, hy: 10, x: -110, y: -70 });
 });
 
 test('Coordinates XML - Sector Only', function() {
-  testXML('Coordinates.aspx?sector=spin',
+  testXML('api/coordinates?sector=spin',
       '<?xml version="1.0"?><Coordinates xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><sx>-4<\/sx><sy>-1<\/sy><hx>0<\/hx><hy>0<\/hy><x>-129<\/x><y>-80<\/y><\/Coordinates>');
 });
 
 test('Coordinates XML - Sector + Hex', function() {
-  testXML('Coordinates.aspx?sector=spin&hex=1910',
+  testXML('api/coordinates?sector=spin&hex=1910',
       '<?xml version="1.0"?><Coordinates xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><sx>-4<\/sx><sy>-1<\/sy><hx>19<\/hx><hy>10<\/hy><x>-110<\/x><y>-70<\/y><\/Coordinates>');
 });
 
@@ -119,51 +119,40 @@ function typeTest(api, type) {
 }
 
 
-typeTest('Coordinates.aspx?sector=$sector', 'text/xml');
-typeTest('JumpWorlds.aspx?sector=$sector&hex=$hex&j=$jump', 'text/xml');
-typeTest('JumpWorlds.aspx?sector=$sector&hex=$hex&j=$jump', 'text/xml');
-typeTest('SEC.aspx?sector=$sector', 'text/plain; charset=Windows-1252');
-typeTest('SEC.aspx?sector=$sector&type=SecondSurvey', 'text/plain; charset=utf-8');
-typeTest('SEC.aspx?sector=$sector&type=TabDelimited', 'text/plain; charset=utf-8');
-typeTest('MSEC.aspx?sector=$sector', 'text/plain; charset=utf-8');
-typeTest('SectorMetaData.aspx?sector=$sector', 'text/xml');
-typeTest('Universe.aspx', 'text/xml');
+typeTest('api/jumpmap?sector=$sector&hex=$hex&j=$jump', 'image/png');
+typeTest('api/jumpmap?sector=$sector&hex=$hex&j=$jump&style=candy', 'image/png');
+typeTest('api/jumpmap?sector=$sector&hex=$hex&j=$jump&style=candy&clip=0', 'image/jpeg');
 
-typeTest('Search.aspx?q=$query', 'text/xml');
+typeTest('api/poster?sector=$sector&subsector=$subsector', 'image/png');
+typeTest('api/poster?sector=$sector&subsector=$subsector&style=candy', 'image/jpeg');
 
-typeTest('JumpMap.aspx?sector=$sector&hex=$hex&j=$jump', 'image/png');
-typeTest('JumpMap.aspx?sector=$sector&hex=$hex&j=$jump&style=candy', 'image/png');
-typeTest('JumpMap.aspx?sector=$sector&hex=$hex&j=$jump&style=candy&clip=0', 'image/jpeg');
+typeTest('api/tile?x=0&y=0&scale=64', 'image/png');
+typeTest('api/tile?x=0&y=0&scale=64&style=candy', 'image/jpeg');
 
-typeTest('Poster.aspx?sector=$sector&subsector=$subsector', 'image/png');
-typeTest('Poster.aspx?sector=$sector&subsector=$subsector&style=candy', 'image/jpeg');
-typeTest('Tile.aspx?x=0&y=0&scale=64', 'image/png');
-typeTest('Tile.aspx?x=0&y=0&scale=64&style=candy', 'image/jpeg');
-
-test('SEC/SectorMetaData/Poster', function () {
+test('sec/metadata/poster - blobs', function () {
   assertTrue(window.FormData, 'Browser does not support FormData');
 
   var fd = new FormData();
-  fd.append('file', getBlob('SEC.aspx?sector=spin', 'text/plain; charset=Windows-1252'));
-  fd.append('metadata', getBlob('SectorMetaData.aspx?sector=spin', 'text/xml'));
+  fd.append('file', getBlob('api/sec?sector=spin', 'text/plain; charset=utf-8'));
+  fd.append('metadata', getBlob('api/metadata?sector=spin&accept=text/xml', 'text/xml'));
 
   var xhr = new XMLHttpRequest();
-  xhr.open('POST', '../Poster.aspx', false);
+  xhr.open('POST', '/api/poster', false);
   xhr.send(fd);
 
   assertEquals(xhr.status, 200, 'Expected HTTP 200 OK status, saw: ' + xhr.status);
   assertEquals(xhr.getResponseHeader('Content-Type'), 'image/png', 'incorrect Content-Type: ' + xhr.getResponseHeader('Content-Type'));
 });
 
-test('SEC/SectorMetaData/JumpMap', function () {
+test('sec/metadata/poster - form data', function() {
   assertTrue(window.FormData, 'Browser does not support FormData');
 
   var fd = new FormData();
-  fd.append('file', getBlob('SEC.aspx?sector=spin', 'text/plain; charset=Windows-1252'));
-  fd.append('metadata', getBlob('SectorMetaData.aspx?sector=spin', 'text/xml'));
+  fd.append('file', getBlob('api/sec?sector=spin', 'text/plain; charset=utf-8'));
+  fd.append('metadata', getBlob('api/metadata?sector=spin&accept=text/xml', 'text/xml'));
 
   var xhr = new XMLHttpRequest();
-  xhr.open('POST', '../JumpMap.aspx?hex=1910', false);
+  xhr.open('POST', '/api/jumpmap?hex=1910', false);
   xhr.send(fd);
 
   assertEquals(xhr.status, 200, 'Expected HTTP 200 OK status, saw: ' + xhr.status);
@@ -204,16 +193,6 @@ typeTest('data/$sector/$hex/jump/$jump/image', 'image/png');
 
 
 [
-  'Coordinates.aspx?sector=$sector',
-  'JumpWorlds.aspx?sector=$sector&hex=$hex&j=$jump',
-  'SEC.aspx?sector=$sector',
-  'MSEC.aspx?sector=$sector',
-  'SectorMetaData.aspx?sector=$sector',
-  'Universe.aspx',
-  'Search.aspx?q=$query',
-  'JumpMap.aspx?sector=$sector&hex=$hex&j=$jump',
-  'Poster.aspx?sector=$sector&subsector=$subsector',
-  'Tile.aspx?x=0&y=0&scale=64',
   'api/coordinates?sector=$sector',
   'api/sec?sector=$sector',
   'api/sec?type=sec&sector=$sector',

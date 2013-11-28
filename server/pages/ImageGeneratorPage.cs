@@ -47,18 +47,18 @@ namespace Maps.Pages
             }
         }
 
-        protected void SetCommonResponseHeaders()
+        protected void SetCommonResponseHeaders(HttpContext context)
         {
             // CORS - allow from any origin
-            Response.AddHeader("Access-Control-Allow-Origin", "*");
+            context.Response.AddHeader("Access-Control-Allow-Origin", "*");
 #if !DEBUG
-            Response.Cache.SetCacheability(HttpCacheability.Public);
-            Response.Cache.SetExpires(DateTime.Now.AddHours(12));
-            Response.Cache.SetValidUntilExpires(true);
+            context.Response.Cache.SetCacheability(HttpCacheability.Public);
+            context.Response.Cache.SetExpires(DateTime.Now.AddHours(12));
+            context.Response.Cache.SetValidUntilExpires(true);
 #endif
-            if (Request.HttpMethod == "POST")
+            if (context.Request.HttpMethod == "POST")
             {
-                Response.Cache.SetCacheability(HttpCacheability.NoCache);
+                context.Response.Cache.SetCacheability(HttpCacheability.NoCache);
             }
         }
 
@@ -66,22 +66,31 @@ namespace Maps.Pages
             int rot = 0, float translateX = 0, float translateY = 0,
             bool transparent = false)
         {
+            SetCommonResponseHeaders(Context);
+            ProduceResponse(Context, this, title, ctx, tileSize, rot, translateX, translateY, transparent, RouteData.Values);
+        }
+
+        public static void ProduceResponse(HttpContext context, IRequestAccepter accepter, string title, Render.RenderContext ctx, Size tileSize,
+            int rot = 0, float translateX = 0, float translateY = 0,
+            bool transparent = false, IDictionary<string, Object> queryDefaults = null)
+        {
+
             // New-style Options
             // TODO: move to ParseOptions (maybe - requires options to be parsed after stylesheet creation?)
-            if (GetBoolOption("sscoords", defaultValue: false))
+            if (HandlerBase.GetBoolOption(context.Request, "sscoords", queryDefaults: queryDefaults, defaultValue: false))
             {
                 ctx.styles.hexCoordinateStyle = Stylesheet.HexCoordinateStyle.Subsector;
             }
 
-            if (!GetBoolOption("routes", defaultValue: true))
+            if (!HandlerBase.GetBoolOption(context.Request, "routes", queryDefaults: queryDefaults, defaultValue: true))
             {
                 ctx.styles.macroRoutes.visible = false;
                 ctx.styles.microRoutes.visible = false;
             }
 
-            double devicePixelRatio = GetDoubleOption("dpr", 1);
+            double devicePixelRatio = HandlerBase.GetDoubleOption(context.Request, "dpr", defaultValue: 1, queryDefaults: queryDefaults);
 
-            if (Accepts(MediaTypeNames.Application.Pdf))
+            if (accepter.Accepts(context.Request, MediaTypeNames.Application.Pdf))
             {
                 using (var document = new PdfDocument())
                 {
@@ -110,14 +119,13 @@ namespace Maps.Pages
                     {
                         document.Save(stream, closeStream: false);
 
-                        SetCommonResponseHeaders();
 
-                        Response.ContentType = MediaTypeNames.Application.Pdf;
-                        Response.AddHeader("content-length", stream.Length.ToString());
-                        Response.AddHeader("content-disposition", "inline;filename=\"map.pdf\"");
-                        Response.BinaryWrite(stream.ToArray());
-                        Response.Flush();
-                        stream.Close();
+                        context.Response.ContentType = MediaTypeNames.Application.Pdf;
+                        context.Response.AddHeader("content-length", stream.Length.ToString());
+                        context.Response.AddHeader("content-disposition", "inline;filename=\"map.pdf\"");
+                        context.Response.BinaryWrite(stream.ToArray());
+                        context.Response.Flush();
+                        context.Response.Close();
                     }
 
                     return;
@@ -146,8 +154,7 @@ namespace Maps.Pages
                     }
                 }
 
-                SetCommonResponseHeaders();
-                BitmapResponse(ctx.styles, bitmap, transparent ? Util.MediaTypeName_Image_Png : null);
+                BitmapResponse(context.Response, ctx.styles, bitmap, transparent ? Util.MediaTypeName_Image_Png : null);
             }
         }
 
@@ -209,7 +216,7 @@ namespace Maps.Pages
         }
 
 
-        protected void BitmapResponse(Stylesheet styles, Bitmap bitmap, string mimeType)
+        protected static void BitmapResponse(HttpResponse response, Stylesheet styles, Bitmap bitmap, string mimeType)
         {
             // JPEG or PNG if not specified, based on style
             if (mimeType == null)
@@ -217,14 +224,14 @@ namespace Maps.Pages
                 mimeType = styles.preferredMimeType;
             }
 
-            Response.ContentType = mimeType;
+            response.ContentType = mimeType;
 
             // Searching for a matching encoder
             ImageCodecInfo encoder = null;
             ImageCodecInfo[] encoders = ImageCodecInfo.GetImageEncoders();
             for (int i = 0; i < encoders.Length; ++i)
             {
-                if (encoders[i].MimeType == Response.ContentType)
+                if (encoders[i].MimeType == response.ContentType)
                 {
                     encoder = encoders[i];
                     break;
@@ -256,12 +263,12 @@ namespace Maps.Pages
                     using (var ms = new MemoryStream())
                     {
                         bitmap.Save(ms, encoder, encoderParams);
-                        ms.WriteTo(Context.Response.OutputStream);
+                        ms.WriteTo(response.OutputStream);
                     }
                 }
                 else
                 {
-                    bitmap.Save(Context.Response.OutputStream, encoder, encoderParams);
+                    bitmap.Save(response.OutputStream, encoder, encoderParams);
                 }
 
                 encoderParams.Dispose();
@@ -269,8 +276,8 @@ namespace Maps.Pages
             else
             {
                 // Default to GIF if we can't find anything
-                Response.ContentType = MediaTypeNames.Image.Gif;
-                bitmap.Save(Context.Response.OutputStream, ImageFormat.Gif);
+                response.ContentType = MediaTypeNames.Image.Gif;
+                bitmap.Save(response.OutputStream, ImageFormat.Gif);
             }
         }
 
@@ -316,5 +323,6 @@ namespace Maps.Pages
             }
             return sector;
         }
+
     }
 }

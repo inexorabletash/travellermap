@@ -6,12 +6,17 @@ using System.IO;
 using System.Linq;
 using System.Net.Mime;
 using System.Text;
-using System.Web.Routing;
 using System.Xml.Serialization;
+using System.Web;
 
 namespace Maps.Pages
 {
-    public abstract class BasePage : System.Web.UI.Page
+    public interface IRequestAccepter
+    {
+        bool Accepts(HttpRequest request, string mediaType);
+    }
+
+    public abstract class BasePage : System.Web.UI.Page, IRequestAccepter
     {
         protected bool AdminAuthorized()
         {
@@ -19,74 +24,52 @@ namespace Maps.Pages
         }
 
         public abstract string DefaultContentType { get; }
-        protected IEnumerable<string> AcceptTypes 
-        { 
-            get {
-                if (Request["accept"] != null) {
-                    yield return Request["accept"];
-                }
-                if (RouteData.Values["accept"] != null) {
-                    yield return RouteData.Values["accept"].ToString();
-                }
-                if (Request.AcceptTypes != null)
-                {
-                    foreach (var type in Request.AcceptTypes)
-                    {
-                        yield return type;
-                    }
-                }
-
-                yield return DefaultContentType;
+        public IEnumerable<string> AcceptTypes(HttpRequest request, IDictionary<string, Object> queryDefaults) {
+            if (request["accept"] != null) {
+                yield return request["accept"];
             }
+            if (queryDefaults.ContainsKey("accept")) {
+                yield return queryDefaults["accept"].ToString();
+            }
+            if (request.AcceptTypes != null)
+            {
+                foreach (var type in request.AcceptTypes)
+                {
+                    yield return type;
+                }
+            }
+
+            yield return DefaultContentType;
         }
 
-        protected bool Accepts(string mediaType)
+        public bool Accepts(HttpRequest request, string mediaType)
         {
-            return AcceptTypes.Contains(mediaType);
+            return AcceptTypes(request, RouteData.Values).Contains(mediaType);
         }
 
         protected bool HasOption(string name)
         {
-            return Request[name] != null || RouteData.Values[name] != null;
+            return HandlerBase.HasOption(Request, name, RouteData.Values);
         }
 
         protected string GetStringOption(string name)
         {
-            if (Request[name] != null)
-                return Request[name];
-            if (RouteData.Values[name] != null)
-                return RouteData.Values[name].ToString();
-            return null;
+            return HandlerBase.GetStringOption(Request, name, RouteData.Values);
         }
 
         protected int GetIntOption(string name, int defaultValue)
         {
-            int temp;
-            if (Int32.TryParse(GetStringOption(name), NumberStyles.Integer, CultureInfo.InvariantCulture, out temp))
-            {
-                return temp;
-            }
-            return defaultValue;
+            return HandlerBase.GetIntOption(Request, name, RouteData.Values, defaultValue);
         }
 
         protected double GetDoubleOption(string name, double defaultValue)
         {
-            double temp;
-            if (Double.TryParse(GetStringOption(name), NumberStyles.Float, CultureInfo.InvariantCulture, out temp))
-            {
-                return temp;
-            }
-            return defaultValue;
+            return HandlerBase.GetDoubleOption(Request, name, RouteData.Values, defaultValue);
         }
 
         protected bool GetBoolOption(string name, bool defaultValue)
         {
-            int temp;
-            if (Int32.TryParse(GetStringOption(name), NumberStyles.Integer, CultureInfo.InvariantCulture, out temp))
-            {
-                return temp != 0;
-            }
-            return defaultValue;
+            return HandlerBase.GetBoolOption(Request, name, RouteData.Values, defaultValue);
         }
 
         protected void SendError(int code, string description, string message)
@@ -117,7 +100,7 @@ namespace Maps.Pages
                 return;
             }
 
-            foreach (var type in AcceptTypes)
+            foreach (var type in AcceptTypes(Request, RouteData.Values))
             {
                 if (type == JsonConstants.MediaType)
                 {

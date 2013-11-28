@@ -66,7 +66,7 @@
     <!--  GLOBALIZATION
           This section sets the globalization settings of the application. 
     -->
-    <globalization requestEncoding="utf-8" responseEncoding="utf-8"/>
+    <globalization requestEncoding="utf-8" responseEncoding="utf-8" fileEncoding="utf-8"/>
     <xhtmlConformance mode="Legacy"/>
 
     <pages controlRenderingCompatibilityVersion="3.5" clientIDMode="AutoID"/>
@@ -80,6 +80,13 @@
       https://connect.microsoft.com/VisualStudio/feedback/details/758474/iis-gzip-compression-filter-removes-pre-existing-vary-header
     -->
     <urlCompression doStaticCompression="true" doDynamicCompression="false" />
+    <handlers>
+      <add name="Admin-Admin" path="admin/admin" verb="GET" type="Maps.Pages.AdminHandler,Maps" resourceType="Unspecified" />
+      <add name="Admin-Codes" path="admin/codes" verb="GET" type="Maps.Pages.CodesHandler,Maps" resourceType="Unspecified" />
+      <add name="Admin-Dump" path="admin/dump" verb="GET" type="Maps.Pages.DumpHandler,Maps" resourceType="Unspecified" />
+      <add name="Admin-Errors" path="admin/errors" verb="GET" type="Maps.Pages.ErrorsHandler,Maps" resourceType="Unspecified" />
+      <add name="Admin-Overview" path="admin/overview" verb="GET" type="Maps.Pages.OverviewHandler,Maps" resourceType="Unspecified" />
+    </handlers>
   </system.webServer>
   <connectionStrings>
     <add name="SqlDev" connectionString="DEVELOPMENT_CONNECTION_STRING" providerName="System.Data.SqlClient"/>

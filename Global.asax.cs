@@ -25,7 +25,6 @@ namespace Maps
                 (url, file, defaults) => routes.MapPageRoute(routeName(), url, file, checkPhysicalUrlAccess: false, defaults: defaults);
 
             const string BASE_DIR = @"~/server/pages/";
-            const string ADMIN_DIR = @"~/server/admin/";
 
             // Rendering
             mpr0("api/poster", BASE_DIR + "Poster.aspx");
@@ -48,9 +47,6 @@ namespace Maps
             mpr1("api/metadata", BASE_DIR + "SectorMetaData.aspx", DEFAULT_JSON);
             mpr1("api/metadata/{sector}", BASE_DIR + "SectorMetaData.aspx", DEFAULT_JSON);
             mpr1("api/universe", BASE_DIR + "Universe.aspx", DEFAULT_JSON);
-
-            // Admin
-            mpr0("admin/overview", ADMIN_DIR + "Overview.aspx");
 
             // RESTful
             mpr1("data", BASE_DIR + "Universe.aspx", DEFAULT_JSON);

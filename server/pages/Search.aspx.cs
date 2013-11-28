@@ -50,7 +50,7 @@ namespace Maps.Pages
                     return;
                 }
 
-                if (AcceptTypes.Contains(JsonConstants.MediaType))
+                if (AcceptTypes(Request, RouteData.Values).Contains(JsonConstants.MediaType))
                 {
                     SendFile(JsonConstants.MediaType, path);
                     return;
