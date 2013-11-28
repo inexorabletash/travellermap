@@ -280,10 +280,6 @@
     <Content Include="res\ui\youarehere.png" />
     <Content Include="res\ui\youarehere_gray.png" />
     <Content Include="robots.txt" />
-    <Content Include="server\admin\Admin.aspx" />
-    <Content Include="server\admin\Codes.aspx" />
-    <Content Include="server\admin\Dump.aspx" />
-    <Content Include="server\admin\Errors.aspx" />
     <Content Include="server\admin\Overview.aspx" />
     <Content Include="server\pages\Coordinates.aspx" />
     <Content Include="server\pages\Credits.aspx" />
@@ -403,27 +399,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="server\admin\Admin.aspx.cs">
-      <DependentUpon>Admin.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="server\admin\Codes.aspx.cs">
-      <DependentUpon>Codes.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="server\admin\Dump.aspx.cs">
-      <DependentUpon>Dump.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="server\admin\Errors.aspx.cs">
-      <DependentUpon>Errors.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
+    <Compile Include="server\admin\AdminHandler.cs" />
+    <Compile Include="server\admin\CodesHandler.cs" />
+    <Compile Include="server\admin\DumpHandler.cs" />
+    <Compile Include="server\admin\ErrorsHandler.cs" />
     <Compile Include="server\admin\Overview.aspx.cs">
       <DependentUpon>Overview.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="server\Astrometrics.cs" />
+    <Compile Include="server\HandlerBase.cs" />
     <Compile Include="server\Json.cs" />
     <Compile Include="server\Location.cs" />
     <Compile Include="server\Metadata.cs" />

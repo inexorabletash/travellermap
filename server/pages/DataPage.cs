@@ -15,14 +15,7 @@ namespace Maps.Pages
     {
         protected bool AdminAuthorized()
         {
-            if (System.Web.HttpContext.Current.Request.Url.Host == "localhost")
-                return true;
-
-            if (Request["key"] == System.Configuration.ConfigurationManager.AppSettings["AdminKey"])
-                return true;
-
-            SendError(403, "Access Denied", "Access Denied");
-            return false;
+            return AdminBase.AdminAuthorized(Context);
         }
 
         public abstract string DefaultContentType { get; }
@@ -98,10 +91,7 @@ namespace Maps.Pages
 
         protected void SendError(int code, string description, string message)
         {
-            Response.StatusCode = code;
-            Response.StatusDescription = description;
-            Response.ContentType = MediaTypeNames.Text.Plain;
-            Response.Output.WriteLine(message);
+            HandlerBase.SendError(Response, code, description, message);
         }
     }
 

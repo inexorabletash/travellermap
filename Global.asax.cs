@@ -50,10 +50,6 @@ namespace Maps
             mpr1("api/universe", BASE_DIR + "Universe.aspx", DEFAULT_JSON);
 
             // Admin
-            mpr0("admin/admin", ADMIN_DIR + "Admin.aspx");
-            mpr0("admin/codes", ADMIN_DIR + "Codes.aspx");
-            mpr0("admin/dump", ADMIN_DIR + "Dump.aspx");
-            mpr0("admin/errors", ADMIN_DIR + "Errors.aspx");
             mpr0("admin/overview", ADMIN_DIR + "Overview.aspx");
 
             // RESTful

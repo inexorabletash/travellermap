@@ -61,6 +61,7 @@ namespace Maps.Rendering
             @"~/res/Vectors/CoreRoute.xml" 
         };
 
+        // TODO: Consider not caching these across sessions
         private static XImage s_sillyImageColor;
         private static XImage s_sillyImageGray;
 
