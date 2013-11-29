@@ -126,15 +126,29 @@ namespace Maps
         }
 
         public abstract string DefaultContentType { get; }
-        private IEnumerable<string> AcceptTypes(HttpRequest request)
+
+        public bool Accepts(HttpContext context, string mediaType)
         {
-            if (request["accept"] != null)
+            return AcceptTypes(context).Contains(mediaType);
+        }
+
+        public IEnumerable<string> AcceptTypes(HttpContext context)
+        {
+            IDictionary<string, Object> queryDefaults = null;
+            if (context.Items.Contains("RouteData"))
+                queryDefaults = (context.Items["RouteData"] as System.Web.Routing.RouteData).Values;
+
+            if (context.Request["accept"] != null)
             {
-                yield return request["accept"];
+                yield return context.Request["accept"];
             }
-            if (request.AcceptTypes != null)
+            if (queryDefaults != null && queryDefaults.ContainsKey("accept"))
             {
-                foreach (var type in request.AcceptTypes)
+                yield return queryDefaults["accept"].ToString();
+            }
+            if (context.Request.AcceptTypes != null)
+            {
+                foreach (var type in context.Request.AcceptTypes)
                 {
                     yield return type;
                 }
@@ -142,11 +156,5 @@ namespace Maps
 
             yield return DefaultContentType;
         }
-
-         bool IRequestAccepter.Accepts(HttpRequest request, string mediaType)
-        {
-            return AcceptTypes(request).Contains(mediaType);
-        }
-
     }
 }

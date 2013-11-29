@@ -12,9 +12,10 @@ namespace Maps.Pages
 
     public class JumpMap : ImageGeneratorPage
     {
+        protected override string ServiceName { get { return "jumpmap"; } }
         private void Page_Load(object sender, System.EventArgs e)
         {
-            if (!ServiceConfiguration.CheckEnabled("jumpmap", Response))
+            if (!ServiceConfiguration.CheckEnabled(ServiceName, Response))
             {
                 return;
             }

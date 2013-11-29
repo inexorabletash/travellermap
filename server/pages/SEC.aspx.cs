@@ -10,11 +10,12 @@ namespace Maps.Pages
     /// </summary>
     public class SEC : DataPage
     {
-        public override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Plain; } }
+        protected override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Plain; } }
+        protected override string ServiceName { get { return "sec"; } }
 
         private void Page_Load(object sender, System.EventArgs e)
         {
-            if (!ServiceConfiguration.CheckEnabled("sec", Response))
+            if (!ServiceConfiguration.CheckEnabled(ServiceName, Response))
             {
                 return;
             }

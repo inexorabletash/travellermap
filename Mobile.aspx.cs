@@ -16,7 +16,8 @@ namespace Maps.Pages
     /// </summary>
     public class MobilePage : DataPage
     {
-        public override string DefaultContentType { get { throw new NotImplementedException(); } }
+        protected override string DefaultContentType { get { throw new NotImplementedException(); } }
+        protected override string ServiceName { get { return "mobile"; } }
 
         protected System.Web.UI.HtmlControls.HtmlForm Form1;
         protected System.Web.UI.WebControls.ImageMap MapImage;

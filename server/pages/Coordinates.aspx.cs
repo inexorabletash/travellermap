@@ -10,7 +10,8 @@ namespace Maps.Pages
     /// 
     public class Coordinates : DataPage
     {
-        public override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Xml; } }
+        protected override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Xml; } }
+        protected override string ServiceName { get { return "coordinates"; } }
 
         private void Page_Load(object sender, System.EventArgs e)
         {

@@ -286,7 +286,6 @@
     <Content Include="server\pages\JumpWorlds.aspx" />
     <Content Include="server\pages\MSEC.aspx" />
     <Content Include="server\pages\Poster.aspx" />
-    <Content Include="server\pages\Search.aspx" />
     <Content Include="server\pages\SEC.aspx" />
     <Content Include="server\pages\SectorMetaData.aspx" />
     <Content Include="server\pages\Tile.aspx" />
@@ -438,10 +437,7 @@
       <DependentUpon>Poster.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="server\pages\Search.aspx.cs">
-      <DependentUpon>Search.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
+    <Compile Include="server\pages\SearchHandler.cs" />
     <Compile Include="server\pages\SEC.aspx.cs">
       <DependentUpon>SEC.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

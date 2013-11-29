@@ -85,6 +85,8 @@ namespace Maps
 
         private static void RegisterRoutes(RouteCollection routes)
         {
+            var DEFAULT_JSON = new RouteValueDictionary { { "accept", JsonConstants.MediaType } };
+
             // HttpHandler routing ------------------------------------------------------
 
             //routes.Add(new RegexRoute(@"^/foo/bar", 
@@ -93,9 +95,9 @@ namespace Maps
             //);
 
             routes.Add(new RegexRoute(@"^/admin/admin$", new GenericRouteHandler(typeof(AdminHandler))));
-            routes.Add(new RegexRoute(@"^/admin/flush", new GenericRouteHandler(typeof(AdminHandler)),
+            routes.Add(new RegexRoute(@"^/admin/flush$", new GenericRouteHandler(typeof(AdminHandler)),
                 new RouteValueDictionary(new { action = "flush" })));
-            routes.Add(new RegexRoute(@"^/admin/reindex", new GenericRouteHandler(typeof(AdminHandler)),
+            routes.Add(new RegexRoute(@"^/admin/reindex$", new GenericRouteHandler(typeof(AdminHandler)),
                 new RouteValueDictionary(new { action = "reindex" })));
             routes.Add(new RegexRoute(@"^/admin/codes$", new GenericRouteHandler(typeof(CodesHandler))));
             routes.Add(new RegexRoute(@"^/admin/dump$", new GenericRouteHandler(typeof(DumpHandler))));
@@ -107,9 +109,9 @@ namespace Maps
             // context.Response.Cache.VaryByParam["*"] = true;
             // context.Response.Cache.VaryByHeaders["Accept"] = true;
 
-            // ASPX Page routing --------------------------------------------------------
+            routes.Add(new RegexRoute(@"/api/search$", new GenericRouteHandler(typeof(SearchHandler)), DEFAULT_JSON));
 
-            var DEFAULT_JSON = new RouteValueDictionary { { "accept", JsonConstants.MediaType } };
+            // ASPX Page routing --------------------------------------------------------
 
             // Helpers, to avoid having to mint names for each route
             int routeNum = 0;
@@ -126,9 +128,6 @@ namespace Maps
             mpr0("api/poster", BASE_DIR + "Poster.aspx");
             mpr0("api/tile", BASE_DIR + "Tile.aspx");
             mpr0("api/jumpmap", BASE_DIR + "JumpMap.aspx");
-
-            // Search Queries
-            mpr1("api/search", BASE_DIR + "Search.aspx", DEFAULT_JSON);
 
             // Location Queries
             mpr1("api/coordinates", BASE_DIR + "Coordinates.aspx", DEFAULT_JSON);

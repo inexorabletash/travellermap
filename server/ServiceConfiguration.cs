@@ -9,7 +9,6 @@ namespace Maps
         {
             switch (api)
             {
-
                 case "search": return true;
                 case "credits": return true;
                 case "universe": return true;

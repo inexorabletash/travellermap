@@ -6,6 +6,8 @@ namespace Maps.Pages
 {
     public class Tile : ImageGeneratorPage
     {
+        protected override string ServiceName { get { return "tile"; } }
+
         public const int MinDimension = 64;
         public const int MaxDimension = 2048;
 

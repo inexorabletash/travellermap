@@ -10,11 +10,12 @@ namespace Maps.Pages
     /// </summary>
     public class MSEC : DataPage
     {
-        public override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Plain; } }
+        protected override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Plain; } }
+        protected override string ServiceName { get { return "msec"; } }
 
         private void Page_Load(object sender, System.EventArgs e)
         {
-            if (!ServiceConfiguration.CheckEnabled("msec", Response))
+            if (!ServiceConfiguration.CheckEnabled(ServiceName, Response))
             {
                 return;
             }

@@ -10,11 +10,12 @@ namespace Maps.Pages
     /// </summary>
     public class Universe : DataPage
     {
-        public override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Xml; } }
+        protected override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Xml; } }
+        protected override string ServiceName { get { return "universe"; } }
 
         private void Page_Load(object sender, System.EventArgs e)
         {
-            if (!ServiceConfiguration.CheckEnabled("universe", Response))
+            if (!ServiceConfiguration.CheckEnabled(ServiceName, Response))
             {
                 return;
             }

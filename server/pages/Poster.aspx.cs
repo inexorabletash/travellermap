@@ -10,9 +10,10 @@ namespace Maps.Pages
 
     public class Poster : ImageGeneratorPage
     {
+        protected override string ServiceName { get { return "poster"; } }
         private void Page_Load(object sender, System.EventArgs e)
         {
-            if (!ServiceConfiguration.CheckEnabled("poster", Response))
+            if (!ServiceConfiguration.CheckEnabled(ServiceName, Response))
             {
                 return;
             }

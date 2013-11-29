@@ -18,7 +18,7 @@ namespace Maps.Pages
 {
     public abstract class ImageGeneratorPage : BasePage
     {
-        public override string DefaultContentType { get { return Util.MediaTypeName_Image_Png; } }
+        protected override string DefaultContentType { get { return Util.MediaTypeName_Image_Png; } }
 
         public const double MinScale = 0.0078125; // Math.Pow(2, -7);
         public const double MaxScale = 512; // Math.Pow(2, 9);
@@ -90,7 +90,7 @@ namespace Maps.Pages
 
             double devicePixelRatio = HandlerBase.GetDoubleOption(context.Request, "dpr", defaultValue: 1, queryDefaults: queryDefaults);
 
-            if (accepter.Accepts(context.Request, MediaTypeNames.Application.Pdf))
+            if (accepter.Accepts(context, MediaTypeNames.Application.Pdf))
             {
                 using (var document = new PdfDocument())
                 {

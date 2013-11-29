@@ -13,27 +13,31 @@ namespace Maps.Pages
 {
     public interface IRequestAccepter
     {
-        bool Accepts(HttpRequest request, string mediaType);
+        IEnumerable<string> AcceptTypes(HttpContext context);
+        bool Accepts(HttpContext context, string mediaType);
     }
 
     public abstract class BasePage : System.Web.UI.Page, IRequestAccepter
     {
+        protected abstract string ServiceName { get; }
+
         protected bool AdminAuthorized()
         {
             return AdminBase.AdminAuthorized(Context);
         }
 
-        public abstract string DefaultContentType { get; }
-        public IEnumerable<string> AcceptTypes(HttpRequest request, IDictionary<string, Object> queryDefaults) {
-            if (request["accept"] != null) {
-                yield return request["accept"];
+        protected abstract string DefaultContentType { get; }
+        public IEnumerable<string> AcceptTypes(HttpContext context)
+        {
+            if (context.Request["accept"] != null) {
+                yield return context.Request["accept"];
             }
-            if (queryDefaults.ContainsKey("accept")) {
-                yield return queryDefaults["accept"].ToString();
+            if (RouteData.Values.ContainsKey("accept")) {
+                yield return RouteData.Values["accept"].ToString();
             }
-            if (request.AcceptTypes != null)
+            if (context.Request.AcceptTypes != null)
             {
-                foreach (var type in request.AcceptTypes)
+                foreach (var type in context.Request.AcceptTypes)
                 {
                     yield return type;
                 }
@@ -42,9 +46,9 @@ namespace Maps.Pages
             yield return DefaultContentType;
         }
 
-        public bool Accepts(HttpRequest request, string mediaType)
+        public bool Accepts(HttpContext context, string mediaType)
         {
-            return AcceptTypes(request, RouteData.Values).Contains(mediaType);
+            return AcceptTypes(context).Contains(mediaType);
         }
 
         protected bool HasOption(string name)
@@ -80,108 +84,146 @@ namespace Maps.Pages
 
     public abstract class DataPage : BasePage
     {
-        /// <summary>
-        /// Send as the specified content type if no Accept: type (or query param) 
-        /// requests differently.
-        /// </summary>
-        /// <param name="o"></param>
-        /// <param name="defaultContentType"></param>
         protected void SendResult(object o, Encoding encoding = null)
         {
-            // CORS - allow from any origin
-            Response.AddHeader("Access-Control-Allow-Origin", "*");
-
-            // Vary: * is basically ignored by browsers
-            Response.Cache.SetOmitVaryStar(true);
-
-            if (Request.QueryString["jsonp"] != null)
-            {
-                SendJson(o);
-                return;
-            }
-
-            foreach (var type in AcceptTypes(Request, RouteData.Values))
-            {
-                if (type == JsonConstants.MediaType)
-                {
-                    SendJson(o);
-                    return;
-                }
-                if (type == MediaTypeNames.Text.Xml)
-                {
-                    SendXml(o);
-                    return;
-                }
-            }
-
-            SendText(o, encoding);
+            DataHandlerBase.SendResult(Context, this, o, encoding);
         }
 
         private void SendXml(object o)
         {
-            Response.ContentType = MediaTypeNames.Text.Xml;
-            XmlSerializer xs = new XmlSerializer(o.GetType());
-            xs.Serialize(Response.OutputStream, o);
+            DataHandlerBase.SendXml(Context, o);
         }
 
         private void SendText(object o, Encoding encoding)
         {
-            Response.ContentType = MediaTypeNames.Text.Plain;
-            if (encoding == null)
-            {
-                Response.Output.Write(o.ToString());
-            }
-            else
-            {
-                Response.ContentEncoding = encoding;
-                Response.Output.Write(o.ToString());
-            }
+            DataHandlerBase.SendText(Context, o, encoding);
         }
 
         private void SendJson(object o)
         {
-            Response.ContentType = JsonConstants.MediaType;
+            DataHandlerBase.SendJson(Context, o);
+        }
+
+        public void SendFile(string contentType, string filename)
+        {
+            DataHandlerBase.SendFile(Context, contentType, filename);
+        }
+    }
+
+    public abstract class DataHandlerBase : HandlerBase, IHttpHandler
+    {
+        protected abstract string ServiceName { get; }
+        protected abstract void Process(HttpContext context);
+
+        bool IHttpHandler.IsReusable { get { return true; } }
+
+        void IHttpHandler.ProcessRequest(HttpContext context)
+        {
+            if (!ServiceConfiguration.CheckEnabled(ServiceName, context.Response))
+                return;
+
+            // Configure caching
+            context.Response.Cache.VaryByParams["*"] = true;
+            context.Response.Cache.VaryByHeaders["Accept"] = true;
+
+            Process(context);
+        }
+
+        public static void SendResult(HttpContext context, IRequestAccepter accepter, object o, Encoding encoding = null)
+        {
+            // CORS - allow from any origin
+            context.Response.AddHeader("Access-Control-Allow-Origin", "*");
+
+            // Vary: * is basically ignored by browsers
+            context.Response.Cache.SetOmitVaryStar(true);
+
+            if (context.Request.QueryString["jsonp"] != null)
+            {
+                SendJson(context, o);
+                return;
+            }
+
+            // Check in priority order, since JSON will always be a default.
+            foreach (var type in accepter.AcceptTypes(context))
+            {
+                if (type == JsonConstants.MediaType)
+                {
+                    SendJson(context, o);
+                    return;
+                }
+                if (type == MediaTypeNames.Text.Xml)
+                {
+                    SendXml(context, o);
+                    return;
+                }
+            }
+            SendText(context, o, encoding);
+        }
+
+        public static void SendXml(HttpContext context, object o)
+        {
+            context.Response.ContentType = MediaTypeNames.Text.Xml;
+            XmlSerializer xs = new XmlSerializer(o.GetType());
+            xs.Serialize(context.Response.OutputStream, o);
+        }
+
+        public static void SendText(HttpContext context, object o, Encoding encoding)
+        {
+            context.Response.ContentType = MediaTypeNames.Text.Plain;
+            if (encoding == null)
+            {
+                context.Response.Output.Write(o.ToString());
+            }
+            else
+            {
+                context.Response.ContentEncoding = encoding;
+                context.Response.Output.Write(o.ToString());
+            }
+        }
+
+        public static void SendFile(HttpContext context, string contentType, string filename)
+        {
+            // CORS - allow from any origin
+            context.Response.AddHeader("Access-Control-Allow-Origin", "*");
+
+            context.Response.ContentType = contentType;
+            SendPreamble(context, contentType);
+            context.Response.TransmitFile(filename);
+            SendPostamble(context, contentType);
+        }
+
+        public static void SendJson(HttpContext context, object o)
+        {
+            context.Response.ContentType = JsonConstants.MediaType;
             JsonSerializer js = new JsonSerializer();
 
             // TODO: Subclass this from a DataResponsePage
-            SendPreamble(JsonConstants.MediaType);
-            js.Serialize(Response.OutputStream, o);
-            SendPostamble(JsonConstants.MediaType);
+            SendPreamble(context, JsonConstants.MediaType);
+            js.Serialize(context.Response.OutputStream, o);
+            SendPostamble(context, JsonConstants.MediaType);
         }
 
-        private void SendPreamble(string contentType)
+        private static void SendPreamble(HttpContext context, string contentType)
         {
-            if (contentType == JsonConstants.MediaType && Request.QueryString["jsonp"] != null)
+            if (contentType == JsonConstants.MediaType && context.Request.QueryString["jsonp"] != null)
             {
-                using (var w = new StreamWriter(Response.OutputStream))
+                using (var w = new StreamWriter(context.Response.OutputStream))
                 {
-                    w.Write(Request.QueryString["jsonp"]);
+                    w.Write(context.Request.QueryString["jsonp"]);
                     w.Write("(");
                 }
             }
         }
 
-        private void SendPostamble(string contentType)
+        private static void SendPostamble(HttpContext context, string contentType)
         {
-            if (contentType == JsonConstants.MediaType && Request.QueryString["jsonp"] != null)
+            if (contentType == JsonConstants.MediaType && context.Request.QueryString["jsonp"] != null)
             {
-                using (var w = new StreamWriter(Response.OutputStream))
+                using (var w = new StreamWriter(context.Response.OutputStream))
                 {
                     w.Write(");");
                 }
             }
         }
-
-        public void SendFile(string contentType, string filename)
-        {
-            // CORS - allow from any origin
-            Response.AddHeader("Access-Control-Allow-Origin", "*");
-
-            Response.ContentType = contentType;
-            SendPreamble(contentType);
-            Response.TransmitFile(filename);
-            SendPostamble(contentType);
-        }
     }
-
 }
