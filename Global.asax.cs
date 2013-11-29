@@ -71,7 +71,7 @@ namespace Maps
 
             // Can be accessed in ProcessRequest via:
             // RouteData routeData = HttpContext.Current.Items["RouteData"] as RouteData;
-            
+
             return handler;
         }
     }
@@ -108,14 +108,14 @@ namespace Maps
             // context.Response.Cache.VaryByHeaders["Accept"] = true;
 
             // ASPX Page routing --------------------------------------------------------
-            
+
             var DEFAULT_JSON = new RouteValueDictionary { { "accept", JsonConstants.MediaType } };
 
             // Helpers, to avoid having to mint names for each route
             int routeNum = 0;
             Func<string> routeName = () => "route " + (routeNum++).ToString();
 
-            Action<string, string> mpr0 = 
+            Action<string, string> mpr0 =
                 (url, file) => routes.MapPageRoute(routeName(), url, file);
             Action<string, string, RouteValueDictionary> mpr1 =
                 (url, file, defaults) => routes.MapPageRoute(routeName(), url, file, checkPhysicalUrlAccess: false, defaults: defaults);
@@ -163,8 +163,8 @@ namespace Maps
             {
                 string ss = s.ToString();
                 Func<string, string> r = (pattern) => pattern.Replace("{subsector}", ss);
- 
-                mpr1(r("data/{sector}/{subsector}"), BASE_DIR + "SEC.aspx", new RouteValueDictionary { { "subsector", ss }, { "type", "SecondSurvey" }, {"metadata", "0"} });
+
+                mpr1(r("data/{sector}/{subsector}"), BASE_DIR + "SEC.aspx", new RouteValueDictionary { { "subsector", ss }, { "type", "SecondSurvey" }, { "metadata", "0" } });
                 mpr1(r("data/{sector}/{subsector}/sec"), BASE_DIR + "SEC.aspx", new RouteValueDictionary { { "subsector", ss }, { "metadata", "0" } });
                 mpr1(r("data/{sector}/{subsector}/tab"), BASE_DIR + "SEC.aspx", new RouteValueDictionary { { "subsector", ss }, { "type", "TabDelimited" }, { "metadata", "0" } });
                 mpr1(r("data/{sector}/{subsector}/image"), BASE_DIR + "Poster.aspx", new RouteValueDictionary { { "subsector", ss } });
