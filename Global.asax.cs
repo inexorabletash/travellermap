@@ -1,9 +1,81 @@
 ﻿using Json;
 using System;
+using System.Web;
 using System.Web.Routing;
+using System.Text.RegularExpressions;
+using System.Collections.Generic;
+using Maps.Pages;
 
 namespace Maps
 {
+    // From http://web.archive.org/web/20080401025712/http://www.iridescence.no/Posts/Defining-Routes-using-Regular-Expressions-in-ASPNET-MVC.aspx
+    internal class RegexRoute : System.Web.Routing.Route
+    {
+        private readonly Regex regex;
+
+        public RegexRoute(string pattern, IRouteHandler handler, RouteValueDictionary defaults = null)
+            : base(null, defaults, handler)
+        {
+            regex = new Regex(pattern, RegexOptions.Compiled);
+        }
+
+        public override RouteData GetRouteData(HttpContextBase context)
+        {
+            Match match = regex.Match(context.Request.Path);
+            if (!match.Success)
+                return null;
+
+            RouteData data = new RouteData(this, this.RouteHandler);
+
+            if (Defaults != null)
+            {
+                foreach (var def in Defaults)
+                {
+                    data.Values[def.Key] = def.Value;
+                }
+            }
+
+            for (int i = 1; i < match.Groups.Count; i++)
+            {
+                Group group = match.Groups[i];
+                if (!group.Success)
+                    continue;
+
+                string key = regex.GroupNameFromNumber(i);
+                if (String.IsNullOrEmpty(key) || Char.IsNumber(key, 0))
+                    continue;
+
+                data.Values[key] = group.Value;
+            }
+
+            return data;
+        }
+    }
+
+    internal class GenericRouteHandler : IRouteHandler
+    {
+        private readonly Type type;
+
+        public GenericRouteHandler(Type type)
+        {
+            this.type = type;
+        }
+
+        IHttpHandler IRouteHandler.GetHttpHandler(RequestContext context)
+        {
+            IHttpHandler handler = Activator.CreateInstance(type) as IHttpHandler;
+
+            // Pass in RouteData
+            // suggested by http://weblog.west-wind.com/posts/2011/Mar/28/Custom-ASPNET-Routing-to-an-HttpHandler
+            context.HttpContext.Items["RouteData"] = context.RouteData;
+
+            // Can be accessed in ProcessRequest via:
+            // RouteData routeData = HttpContext.Current.Items["RouteData"] as RouteData;
+            
+            return handler;
+        }
+    }
+
     public class GlobalAsax : System.Web.HttpApplication
     {
         protected void Application_Start(object sender, EventArgs e)
@@ -13,6 +85,25 @@ namespace Maps
 
         private static void RegisterRoutes(RouteCollection routes)
         {
+            // HttpHandler routing ------------------------------------------------------
+
+            //routes.Add(new RegexRoute(@"^/foo/bar", 
+            //                          new GenericRouteHandler(typeof(HandlerClass)),
+            //                          new RouteValueDictionary(new { alpha = "beta" })
+            //);
+
+            routes.Add(new RegexRoute(@"^/admin/admin$", new GenericRouteHandler(typeof(AdminHandler))));
+            routes.Add(new RegexRoute(@"^/admin/flush", new GenericRouteHandler(typeof(AdminHandler)),
+                new RouteValueDictionary(new { action = "flush" })));
+            routes.Add(new RegexRoute(@"^/admin/reindex", new GenericRouteHandler(typeof(AdminHandler)),
+                new RouteValueDictionary(new { action = "reindex" })));
+            routes.Add(new RegexRoute(@"^/admin/codes$", new GenericRouteHandler(typeof(CodesHandler))));
+            routes.Add(new RegexRoute(@"^/admin/dump$", new GenericRouteHandler(typeof(DumpHandler))));
+            routes.Add(new RegexRoute(@"^/admin/errors$", new GenericRouteHandler(typeof(ErrorsHandler))));
+            routes.Add(new RegexRoute(@"^/admin/overview$", new GenericRouteHandler(typeof(OverviewHandler))));
+
+            // ASPX Page routing --------------------------------------------------------
+            
             var DEFAULT_JSON = new RouteValueDictionary { { "accept", JsonConstants.MediaType } };
 
             // Helpers, to avoid having to mint names for each route
