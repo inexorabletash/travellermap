@@ -102,6 +102,11 @@ namespace Maps
             routes.Add(new RegexRoute(@"^/admin/errors$", new GenericRouteHandler(typeof(ErrorsHandler))));
             routes.Add(new RegexRoute(@"^/admin/overview$", new GenericRouteHandler(typeof(OverviewHandler))));
 
+            // See: http://stackoverflow.com/questions/3001009/output-caching-in-http-handler-and-setvaliduntilexpires
+            // to configure caching when moving pages to handlers:
+            // context.Response.Cache.VaryByParam["*"] = true;
+            // context.Response.Cache.VaryByHeaders["Accept"] = true;
+
             // ASPX Page routing --------------------------------------------------------
             
             var DEFAULT_JSON = new RouteValueDictionary { { "accept", JsonConstants.MediaType } };

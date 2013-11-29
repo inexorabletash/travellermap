@@ -22,6 +22,7 @@ namespace Maps.Pages
 
         void IHttpHandler.ProcessRequest(HttpContext context)
         {
+            context.Response.Cache.SetCacheability(HttpCacheability.NoCache);
             if (!AdminAuthorized(context))
                 return;
             Process(context);
