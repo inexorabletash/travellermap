@@ -16,6 +16,9 @@ namespace Maps
         public RegexRoute(string pattern, Type t, RouteValueDictionary defaults = null, bool caseInsensitive = false)
             : base(null, defaults, new GenericRouteHandler(t))
         {
+            if (!pattern.StartsWith("^") || !pattern.EndsWith("$"))
+                throw new ApplicationException("RegexRoute pattern should be pinned with ^..$: " + pattern);
+
             RegexOptions options = RegexOptions.Compiled | RegexOptions.ExplicitCapture;
             if (caseInsensitive) options = options | RegexOptions.IgnoreCase;
 
@@ -25,6 +28,9 @@ namespace Maps
         public RegexRoute(string pattern, IRouteHandler handler, RouteValueDictionary defaults = null, bool caseInsensitive = false)
             : base(null, defaults, handler)
         {
+            if (!pattern.StartsWith("^") || !pattern.EndsWith("$"))
+                throw new ApplicationException("RegexRoute pattern should be pinned with ^..$: " + pattern);
+
             RegexOptions options = RegexOptions.Compiled | RegexOptions.ExplicitCapture;
             if (caseInsensitive) options = options | RegexOptions.IgnoreCase;
 
@@ -114,7 +120,7 @@ namespace Maps
             // context.Response.Cache.VaryByHeaders["Accept"] = true;
 
             // Search
-            routes.Add(new RegexRoute(@"/api/search$", typeof(SearchHandler), DEFAULT_JSON));
+            routes.Add(new RegexRoute(@"^/api/search$", typeof(SearchHandler), DEFAULT_JSON));
 
             // Rendering
             // TODO: Migrate from pages - but add ASPX routes (case-insensitively)
@@ -130,9 +136,15 @@ namespace Maps
 
             // Data Retrieval - API-centric
             // TODO: Migrate from pages - but add ASPX routes (case-insensitively)
+            routes.Add(new RegexRoute(@"^/api/universe$", typeof(UniverseHandler), DEFAULT_JSON));
+
+            routes.Add(new RegexRoute(@"^/Universe.aspx$", typeof(UniverseHandler), caseInsensitive: true));
+
 
             // Data Retrieval - RESTful
             // TODO: Migrate from pages
+            routes.Add(new RegexRoute(@"^/data$", typeof(UniverseHandler), DEFAULT_JSON));
+
             routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/coordinates$", typeof(CoordinatesHandler), DEFAULT_JSON));
             routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/credits$", typeof(CreditsHandler), DEFAULT_JSON));
 
@@ -168,11 +180,8 @@ namespace Maps
             mpr0("api/msec/{sector}", BASE_DIR + "MSEC.aspx");
             mpr1("api/metadata", BASE_DIR + "SectorMetaData.aspx", DEFAULT_JSON);
             mpr1("api/metadata/{sector}", BASE_DIR + "SectorMetaData.aspx", DEFAULT_JSON);
-            mpr1("api/universe", BASE_DIR + "Universe.aspx", DEFAULT_JSON);
 
             // RESTful
-            mpr1("data", BASE_DIR + "Universe.aspx", DEFAULT_JSON);
-
             mpr1("data/{sector}", BASE_DIR + "SEC.aspx", new RouteValueDictionary { { "type", "SecondSurvey" } });
             mpr0("data/{sector}/sec", BASE_DIR + "SEC.aspx");
             mpr1("data/{sector}/tab", BASE_DIR + "SEC.aspx", new RouteValueDictionary { { "type", "TabDelimited" } });

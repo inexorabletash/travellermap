@@ -1,5 +1,5 @@
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Web;
 using System.Xml;
 using System.Xml.Serialization;
 
@@ -8,19 +8,14 @@ namespace Maps.Pages
     /// <summary>
     /// Fetch data about the universe.
     /// </summary>
-    public class Universe : DataPage
+    public class UniverseHandler : DataHandlerBase
     {
-        protected override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Xml; } }
+        public override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Xml; } }
         protected override string ServiceName { get { return "universe"; } }
 
-        private void Page_Load(object sender, System.EventArgs e)
+        public override void Process(HttpContext context)
         {
-            if (!ServiceConfiguration.CheckEnabled(ServiceName, Response))
-            {
-                return;
-            }
-
-            ResourceManager resourceManager = new ResourceManager(Server, Cache);
+            ResourceManager resourceManager = new ResourceManager(context.Server, context.Cache);
 
             // NOTE: This (re)initializes a static data structure used for 
             // resolving names into sector locations, so needs to be run
@@ -28,8 +23,8 @@ namespace Maps.Pages
             SectorMap map = SectorMap.FromName(SectorMap.DefaultSetting, resourceManager);
 
             // Filter parameters
-            string era = GetStringOption("era");
-            bool requireData = GetBoolOption("requireData", defaultValue: false);
+            string era = GetStringOption(context, "era");
+            bool requireData = GetBoolOption(context, "requireData", defaultValue: false);
 
             Result data = new Result();
             foreach (Sector sector in map.Sectors)
@@ -44,28 +39,8 @@ namespace Maps.Pages
                 data.Sectors.Add(sb);
             }
 
-            SendResult(data);
+            SendResult(context, data);
         }
-
-        #region Web Form Designer generated code
-        override protected void OnInit(EventArgs e)
-        {
-            //
-            // CODEGEN: This call is required by the ASP.NET Web Form Designer.
-            //
-            InitializeComponent();
-            base.OnInit(e);
-        }
-
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
-        private void InitializeComponent()
-        {
-            this.Load += new System.EventHandler(this.Page_Load);
-        }
-        #endregion
 
         [XmlRoot(ElementName = "Universe")]
         // public for XML serialization

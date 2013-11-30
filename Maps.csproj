@@ -286,7 +286,6 @@
     <Content Include="server\pages\SEC.aspx" />
     <Content Include="server\pages\SectorMetaData.aspx" />
     <Content Include="server\pages\Tile.aspx" />
-    <Content Include="server\pages\Universe.aspx" />
     <Content Include="sitemap.xml" />
     <Content Include="index.html" />
     <Content Include="index.js" />
@@ -438,10 +437,7 @@
       <DependentUpon>Tile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="server\pages\Universe.aspx.cs">
-      <DependentUpon>Universe.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
+    <Compile Include="server\pages\UniverseHandler.cs" />
     <Compile Include="server\Render.cs" />
     <Compile Include="server\RenderUtil.cs" />
     <Compile Include="server\ResourceManager.cs" />
