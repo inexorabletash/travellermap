@@ -283,7 +283,6 @@
     <Content Include="server\pages\JumpMap.aspx" />
     <Content Include="server\pages\MSEC.aspx" />
     <Content Include="server\pages\Poster.aspx" />
-    <Content Include="server\pages\SEC.aspx" />
     <Content Include="server\pages\SectorMetaData.aspx" />
     <Content Include="server\pages\Tile.aspx" />
     <Content Include="sitemap.xml" />
@@ -425,10 +424,7 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="server\pages\SearchHandler.cs" />
-    <Compile Include="server\pages\SEC.aspx.cs">
-      <DependentUpon>SEC.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
+    <Compile Include="server\pages\SECHandler.cs" />
     <Compile Include="server\pages\SectorMetaData.aspx.cs">
       <DependentUpon>SectorMetaData.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -138,6 +138,10 @@ namespace Maps
             // TODO: Migrate from pages - but add ASPX routes (case-insensitively)
             routes.Add(new RegexRoute(@"^/api/universe$", typeof(UniverseHandler), DEFAULT_JSON));
 
+            routes.Add(new RegexRoute(@"^/api/sec$", typeof(SECHandler), new RouteValueDictionary { { "type", "SecondSurvey" } }));
+            routes.Add(new RegexRoute(@"^/api/sec/(?<sector>[^/]+)$", typeof(SECHandler), new RouteValueDictionary { { "type", "SecondSurvey" } }));
+
+            routes.Add(new RegexRoute(@"^/SEC.aspx$", typeof(SECHandler), caseInsensitive: true));
             routes.Add(new RegexRoute(@"^/Universe.aspx$", typeof(UniverseHandler), caseInsensitive: true));
 
 
@@ -145,12 +149,19 @@ namespace Maps
             // TODO: Migrate from pages
             routes.Add(new RegexRoute(@"^/data$", typeof(UniverseHandler), DEFAULT_JSON));
 
+            routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)$", typeof(SECHandler), new RouteValueDictionary { { "type", "SecondSurvey" } }));
+            routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/sec$", typeof(SECHandler)));
+            routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/tab$", typeof(SECHandler), new RouteValueDictionary { { "type", "TabDelimited" } }));
             routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/coordinates$", typeof(CoordinatesHandler), DEFAULT_JSON));
             routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/credits$", typeof(CreditsHandler), DEFAULT_JSON));
 
+            routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/(?<subsector>[A-Pa-p])$", typeof(SECHandler), new RouteValueDictionary { { "type", "SecondSurvey" }, { "metadata", "0" } }));
+            routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/(?<subsector>[A-Pa-p])/sec$", typeof(SECHandler), new RouteValueDictionary { { "metadata", "0" } }));
+            routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/(?<subsector>[A-Pa-p])/tab$", typeof(SECHandler), new RouteValueDictionary { { "type", "TabDelimited" }, { "metadata", "0" } }));
+
+            routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/(?<hex>\d\d\d\d)$", typeof(JumpWorldsHandler), new RouteValueDictionary { { "accept", JsonConstants.MediaType }, { "jump", "0" } }));
             routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/(?<hex>\d\d\d\d)/coordinates$", typeof(CoordinatesHandler), DEFAULT_JSON));
             routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/(?<hex>\d\d\d\d)/credits$", typeof(CreditsHandler), DEFAULT_JSON));
-            routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/(?<hex>\d\d\d\d)$", typeof(JumpWorldsHandler), new RouteValueDictionary { { "accept", JsonConstants.MediaType }, { "jump", "0" } }));
             routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/(?<hex>\d\d\d\d)/jump/(?<jump>\d+)$", typeof(JumpWorldsHandler), DEFAULT_JSON));
 
             // Legacy Aliases
@@ -174,17 +185,12 @@ namespace Maps
             mpr0("api/jumpmap", BASE_DIR + "JumpMap.aspx");
 
             // Data Retrieval - API-centric
-            mpr1("api/sec", BASE_DIR + "SEC.aspx", new RouteValueDictionary { { "type", "SecondSurvey" } });
-            mpr1("api/sec/{sector}", BASE_DIR + "SEC.aspx", new RouteValueDictionary { { "type", "SecondSurvey" } });
             mpr0("api/msec", BASE_DIR + "MSEC.aspx");
             mpr0("api/msec/{sector}", BASE_DIR + "MSEC.aspx");
             mpr1("api/metadata", BASE_DIR + "SectorMetaData.aspx", DEFAULT_JSON);
             mpr1("api/metadata/{sector}", BASE_DIR + "SectorMetaData.aspx", DEFAULT_JSON);
 
             // RESTful
-            mpr1("data/{sector}", BASE_DIR + "SEC.aspx", new RouteValueDictionary { { "type", "SecondSurvey" } });
-            mpr0("data/{sector}/sec", BASE_DIR + "SEC.aspx");
-            mpr1("data/{sector}/tab", BASE_DIR + "SEC.aspx", new RouteValueDictionary { { "type", "TabDelimited" } });
             mpr0("data/{sector}/metadata", BASE_DIR + "SectorMetaData.aspx"); // TODO: JSON?
             mpr0("data/{sector}/msec", BASE_DIR + "MSEC.aspx");
             mpr0("data/{sector}/image", BASE_DIR + "Poster.aspx");
@@ -197,9 +203,6 @@ namespace Maps
                 string ss = s.ToString();
                 Func<string, string> r = (pattern) => pattern.Replace("{subsector}", ss);
 
-                mpr1(r("data/{sector}/{subsector}"), BASE_DIR + "SEC.aspx", new RouteValueDictionary { { "subsector", ss }, { "type", "SecondSurvey" }, { "metadata", "0" } });
-                mpr1(r("data/{sector}/{subsector}/sec"), BASE_DIR + "SEC.aspx", new RouteValueDictionary { { "subsector", ss }, { "metadata", "0" } });
-                mpr1(r("data/{sector}/{subsector}/tab"), BASE_DIR + "SEC.aspx", new RouteValueDictionary { { "subsector", ss }, { "type", "TabDelimited" }, { "metadata", "0" } });
                 mpr1(r("data/{sector}/{subsector}/image"), BASE_DIR + "Poster.aspx", new RouteValueDictionary { { "subsector", ss } });
             }
 
