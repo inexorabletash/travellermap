@@ -20,6 +20,8 @@ namespace Maps.Pages
             return false;
         }
 
+        bool IHttpHandler.IsReusable { get { return true; } }
+
         void IHttpHandler.ProcessRequest(HttpContext context)
         {
             context.Response.Cache.SetCacheability(HttpCacheability.NoCache);
@@ -56,8 +58,7 @@ namespace Maps.Pages
             context.Response.Write("<h1>Traveller Map - Administration</h1>");
             context.Response.Flush();
 
-            string action = GetStringOption(context.Request, "action", 
-                (context.Items["RouteData"] as System.Web.Routing.RouteData).Values);
+            string action = GetStringOption(context, "action");
             switch (action)
             {
                 case "reindex": Reindex(context); return;

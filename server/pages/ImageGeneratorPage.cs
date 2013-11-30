@@ -70,7 +70,7 @@ namespace Maps.Pages
             ProduceResponse(Context, this, title, ctx, tileSize, rot, translateX, translateY, transparent, RouteData.Values);
         }
 
-        public static void ProduceResponse(HttpContext context, IRequestAccepter accepter, string title, Render.RenderContext ctx, Size tileSize,
+        public static void ProduceResponse(HttpContext context, ITypeAccepter accepter, string title, Render.RenderContext ctx, Size tileSize,
             int rot = 0, float translateX = 0, float translateY = 0,
             bool transparent = false, IDictionary<string, Object> queryDefaults = null)
         {

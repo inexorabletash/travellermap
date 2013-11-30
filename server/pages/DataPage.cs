@@ -1,23 +1,22 @@
 ﻿using Json;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net.Mime;
 using System.Text;
-using System.Xml.Serialization;
 using System.Web;
+using System.Xml.Serialization;
 
 namespace Maps.Pages
 {
-    public interface IRequestAccepter
+    public interface ITypeAccepter
     {
         IEnumerable<string> AcceptTypes(HttpContext context);
         bool Accepts(HttpContext context, string mediaType);
     }
 
-    public abstract class BasePage : System.Web.UI.Page, IRequestAccepter
+    public abstract class BasePage : System.Web.UI.Page, ITypeAccepter
     {
         protected abstract string ServiceName { get; }
 
@@ -123,13 +122,15 @@ namespace Maps.Pages
                 return;
 
             // Configure caching
+            context.Response.Cache.SetCacheability(HttpCacheability.Public);
+            context.Response.Cache.SetMaxAge(TimeSpan.FromHours(1));
             context.Response.Cache.VaryByParams["*"] = true;
             context.Response.Cache.VaryByHeaders["Accept"] = true;
 
             Process(context);
         }
 
-        public static void SendResult(HttpContext context, IRequestAccepter accepter, object o, Encoding encoding = null)
+        public static void SendResult(HttpContext context, ITypeAccepter accepter, object o, Encoding encoding = null)
         {
             // CORS - allow from any origin
             context.Response.AddHeader("Access-Control-Allow-Origin", "*");

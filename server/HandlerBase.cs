@@ -1,14 +1,14 @@
-﻿using System;
-using System.Web;
+﻿using Maps.Pages;
 using Maps.Rendering;
-using System.Globalization;
+using System;
 using System.Collections.Generic;
-using Maps.Pages;
+using System.Globalization;
 using System.Linq;
+using System.Web;
 
 namespace Maps
 {
-    public abstract class HandlerBase : IHttpHandler, IRequestAccepter
+    public abstract class HandlerBase : ITypeAccepter
     {
         protected void ParseOptions(HttpContext context, ref MapOptions options, ref Stylesheet.Style style)
         {
@@ -113,16 +113,6 @@ namespace Maps
             response.StatusDescription = description;
             response.ContentType = System.Net.Mime.MediaTypeNames.Text.Plain;
             response.Output.WriteLine(message);
-        }
-
-        bool IHttpHandler.IsReusable
-        {
-            get { return true; }
-        }
-
-        void IHttpHandler.ProcessRequest(HttpContext context)
-        {
-            throw new NotImplementedException();
         }
 
         public abstract string DefaultContentType { get; }
