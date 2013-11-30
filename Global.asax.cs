@@ -107,7 +107,21 @@ namespace Maps
             // context.Response.Cache.VaryByParam["*"] = true;
             // context.Response.Cache.VaryByHeaders["Accept"] = true;
 
+            // Search
             routes.Add(new RegexRoute(@"/api/search$", typeof(SearchHandler), DEFAULT_JSON));
+
+            // Rendering
+            // TODO: Migrate from pages - but add ASPX routes
+
+            // Location Queries
+            // TODO: Migrate from pages - but add ASPX routes
+
+            // Data Retrieval - API-centric
+            // TODO: Migrate from pages - but add ASPX routes
+
+            // Data Retrieval - RESTful
+            // TODO: Migrate from pages - but add ASPX routes
+
 
             // ASPX Page routing --------------------------------------------------------
 

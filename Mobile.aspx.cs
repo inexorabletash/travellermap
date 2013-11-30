@@ -49,7 +49,7 @@ namespace Maps.Pages
             double tx = (x * (scale * Astrometrics.ParsecScaleX) - (w / 2)) / w;
             double ty = (y * (scale * Astrometrics.ParsecScaleY) - (h / 2)) / h;
 
-            return "Tile.aspx" +
+            return "/api/tile" +
                 "?x=" + tx +
                 "&y=" + ty +
                 "&w=" + w +
