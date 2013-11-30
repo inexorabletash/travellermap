@@ -135,17 +135,19 @@ namespace Maps
             routes.Add(new RegexRoute(@"^/JumpWorlds.aspx$", typeof(JumpWorldsHandler), caseInsensitive: true));
 
             // Data Retrieval - API-centric
-            // TODO: Migrate from pages - but add ASPX routes (case-insensitively)
             routes.Add(new RegexRoute(@"^/api/universe$", typeof(UniverseHandler), DEFAULT_JSON));
 
             routes.Add(new RegexRoute(@"^/api/sec$", typeof(SECHandler), new RouteValueDictionary { { "type", "SecondSurvey" } }));
             routes.Add(new RegexRoute(@"^/api/sec/(?<sector>[^/]+)$", typeof(SECHandler), new RouteValueDictionary { { "type", "SecondSurvey" } }));
 
+            routes.Add(new RegexRoute(@"^/api/metadata$", typeof(SectorMetaDataHandler), DEFAULT_JSON));
+            routes.Add(new RegexRoute(@"^/api/metadata/(?<sector>[^/]+)$", typeof(SectorMetaDataHandler), DEFAULT_JSON));
             routes.Add(new RegexRoute(@"^/api/msec$", typeof(MSECHandler)));
             routes.Add(new RegexRoute(@"^/api/msec/(?<sector>[^/]+)$", typeof(MSECHandler)));
 
             routes.Add(new RegexRoute(@"^/SEC.aspx$", typeof(SECHandler), caseInsensitive: true));
             routes.Add(new RegexRoute(@"^/MSEC.aspx$", typeof(MSECHandler), caseInsensitive: true));
+            routes.Add(new RegexRoute(@"^/SectorMetaData.aspx$", typeof(SectorMetaDataHandler), caseInsensitive: true));
             routes.Add(new RegexRoute(@"^/Universe.aspx$", typeof(UniverseHandler), caseInsensitive: true));
 
 
@@ -158,6 +160,7 @@ namespace Maps
             routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/tab$", typeof(SECHandler), new RouteValueDictionary { { "type", "TabDelimited" } }));
             routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/coordinates$", typeof(CoordinatesHandler), DEFAULT_JSON));
             routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/credits$", typeof(CreditsHandler), DEFAULT_JSON));
+            routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/metadata$", typeof(SectorMetaDataHandler))); // NOTE: XML by default 
             routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/msec$", typeof(MSECHandler)));
 
             routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/(?<subsector>[A-Pa-p])$", typeof(SECHandler), new RouteValueDictionary { { "type", "SecondSurvey" }, { "metadata", "0" } }));
@@ -189,12 +192,7 @@ namespace Maps
             mpr0("api/tile", BASE_DIR + "Tile.aspx");
             mpr0("api/jumpmap", BASE_DIR + "JumpMap.aspx");
 
-            // Data Retrieval - API-centric
-            mpr1("api/metadata", BASE_DIR + "SectorMetaData.aspx", DEFAULT_JSON);
-            mpr1("api/metadata/{sector}", BASE_DIR + "SectorMetaData.aspx", DEFAULT_JSON);
-
             // RESTful
-            mpr0("data/{sector}/metadata", BASE_DIR + "SectorMetaData.aspx"); // TODO: JSON?
             mpr0("data/{sector}/image", BASE_DIR + "Poster.aspx");
 
             // data/{sector}/{subsector}/foo conflicts with data/{sector}/{hex}/foo
