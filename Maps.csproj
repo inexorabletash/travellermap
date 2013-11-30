@@ -281,7 +281,6 @@
     <Content Include="res\ui\youarehere_gray.png" />
     <Content Include="robots.txt" />
     <Content Include="server\pages\JumpMap.aspx" />
-    <Content Include="server\pages\MSEC.aspx" />
     <Content Include="server\pages\Poster.aspx" />
     <Content Include="server\pages\SectorMetaData.aspx" />
     <Content Include="server\pages\Tile.aspx" />
@@ -415,10 +414,7 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="server\pages\JumpWorldsHandler.cs" />
-    <Compile Include="server\pages\MSEC.aspx.cs">
-      <DependentUpon>MSEC.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
+    <Compile Include="server\pages\MSECHandler.cs" />
     <Compile Include="server\pages\Poster.aspx.cs">
       <DependentUpon>Poster.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
