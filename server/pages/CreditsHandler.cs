@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
@@ -6,22 +6,14 @@ using System.Xml.Serialization;
 
 namespace Maps.Pages
 {
-    /// <summary>
-    /// Summary description for Search.
-    /// </summary>
-    public class Credits : DataPage
+    public class CreditsHandler : DataHandlerBase
     {
-        protected override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Xml; } }
+        public override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Xml; } }
         protected override string ServiceName { get { return "credits"; } }
 
-        private void Page_Load(object sender, System.EventArgs e)
+        public override void Process(System.Web.HttpContext context)
         {
-            if (!ServiceConfiguration.CheckEnabled(ServiceName, Response))
-            {
-                return;
-            }
-
-            ResourceManager resourceManager = new ResourceManager(Server, Cache);
+            ResourceManager resourceManager = new ResourceManager(context.Server, context.Cache);
 
             // NOTE: This (re)initializes a static data structure used for 
             // resolving names into sector locations, so needs to be run
@@ -29,30 +21,30 @@ namespace Maps.Pages
             SectorMap map = SectorMap.FromName(SectorMap.DefaultSetting, resourceManager);
             Location loc = new Location(map.FromName("Spinward Marches").Location, 1910);
 
-            if (HasOption("sector"))
+            if (HasOption(context, "sector"))
             {
-                string sectorName = GetStringOption("sector");
+                string sectorName = GetStringOption(context, "sector");
                 Sector sec = map.FromName(sectorName);
                 if (sec == null)
                 {
-                    SendError(404, "Not Found", "Sector not found.");
+                    SendError(context.Response, 404, "Not Found", "Sector not found.");
                     return;
                 }
 
-                int hex = GetIntOption("hex", Astrometrics.SectorCentralHex);
+                int hex = GetIntOption(context, "hex", Astrometrics.SectorCentralHex);
                 loc = new Location(sec.Location, hex);
             }
-            else if (HasOption("sx") && HasOption("sy"))
+            else if (HasOption(context, "sx") && HasOption(context, "sy"))
             {
-                int sx = GetIntOption("sx", 0);
-                int sy = GetIntOption("sy", 0);
-                int hx = GetIntOption("hx", 0);
-                int hy = GetIntOption("hy", 0);
+                int sx = GetIntOption(context, "sx", 0);
+                int sy = GetIntOption(context, "sy", 0);
+                int hx = GetIntOption(context, "hx", 0);
+                int hy = GetIntOption(context, "hy", 0);
                 loc = new Location(map.FromLocation(sx, sy).Location, hx * 100 + hy);
             }
-            else if (HasOption("x") && HasOption("y"))
+            else if (HasOption(context, "x") && HasOption(context, "y"))
             {
-                loc = Astrometrics.CoordinatesToLocation(GetIntOption("x", 0), GetIntOption("y", 0));
+                loc = Astrometrics.CoordinatesToLocation(GetIntOption(context, "x", 0), GetIntOption(context, "y", 0));
             }
 
             if (loc.HexLocation.IsEmpty)
@@ -138,7 +130,7 @@ namespace Maps.Pages
                 }
             }
 
-            SendResult(data);
+            SendResult(context, data);
         }
 
         [XmlRoot(ElementName = "Data")]
@@ -181,29 +173,5 @@ namespace Maps.Pages
             public string ProductAuthor { get; set; }
             public string ProductRef { get; set; }
         }
-
-
-        #region Web Form Designer generated code
-        override protected void OnInit(EventArgs e)
-        {
-            //
-            // CODEGEN: This call is required by the ASP.NET Web Form Designer.
-            //
-            InitializeComponent();
-            base.OnInit(e);
-        }
-
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
-        private void InitializeComponent()
-        {
-            this.Load += new System.EventHandler(this.Page_Load);
-        }
-        #endregion
     }
-
-
-
 }

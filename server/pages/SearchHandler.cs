@@ -76,7 +76,7 @@ namespace Maps.Pages
                     .OfType<Results.SearchResultItem>());
             }
 
-            SendResult(context, this, resultsList);
+            SendResult(context, resultsList);
         }
 
         [JsonName("Results")]

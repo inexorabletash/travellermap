@@ -55,7 +55,7 @@ namespace Maps.Pages
             result.hy = loc.HexLocation.Y;
             result.x = coords.X;
             result.y = coords.Y;
-            SendResult(context, this, result);
+            SendResult(context, result);
         }
 
         [XmlRoot(ElementName = "Coordinates")]

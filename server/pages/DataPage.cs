@@ -130,6 +130,11 @@ namespace Maps.Pages
             Process(context);
         }
 
+        protected void SendResult(HttpContext context, object o, Encoding encoding = null)
+        {
+            SendResult(context, this, o, encoding);
+        }
+
         public static void SendResult(HttpContext context, ITypeAccepter accepter, object o, Encoding encoding = null)
         {
             // CORS - allow from any origin
