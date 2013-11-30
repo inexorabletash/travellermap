@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Web;
+using System.Web.Routing;
 
 namespace Maps
 {
@@ -38,9 +39,12 @@ namespace Maps
             }
         }
 
-        private static System.Web.Routing.RouteValueDictionary Defaults(HttpContext context)
+        private static RouteValueDictionary Defaults(HttpContext context)
         {
-            return (context.Items["RouteData"] as System.Web.Routing.RouteData).Values;
+            RouteData data = context.Items["RouteData"] as RouteData;
+            if (data == null)
+                throw new ApplicationException("RouteData not assigned by RouteHandler");
+            return data.Values;
         }
 
         protected bool HasOption(HttpContext context, string name)

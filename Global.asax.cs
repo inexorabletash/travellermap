@@ -13,10 +13,16 @@ namespace Maps
     {
         private readonly Regex regex;
 
+        public RegexRoute(string pattern, Type t, RouteValueDictionary defaults = null)
+            : base(null, defaults, new GenericRouteHandler(t))
+        {
+            regex = new Regex(pattern, RegexOptions.Compiled | RegexOptions.ExplicitCapture);
+        }
+
         public RegexRoute(string pattern, IRouteHandler handler, RouteValueDictionary defaults = null)
             : base(null, defaults, handler)
         {
-            regex = new Regex(pattern, RegexOptions.Compiled);
+            regex = new Regex(pattern, RegexOptions.Compiled | RegexOptions.ExplicitCapture);
         }
 
         public override RouteData GetRouteData(HttpContextBase context)
@@ -35,17 +41,9 @@ namespace Maps
                 }
             }
 
-            for (int i = 1; i < match.Groups.Count; i++)
+            foreach (var name in regex.GetGroupNames())
             {
-                Group group = match.Groups[i];
-                if (!group.Success)
-                    continue;
-
-                string key = regex.GroupNameFromNumber(i);
-                if (String.IsNullOrEmpty(key) || Char.IsNumber(key, 0))
-                    continue;
-
-                data.Values[key] = group.Value;
+                data.Values[name] = match.Groups[name];
             }
 
             return data;
@@ -94,22 +92,22 @@ namespace Maps
             //                          new RouteValueDictionary(new { alpha = "beta" })
             //);
 
-            routes.Add(new RegexRoute(@"^/admin/admin$", new GenericRouteHandler(typeof(AdminHandler))));
-            routes.Add(new RegexRoute(@"^/admin/flush$", new GenericRouteHandler(typeof(AdminHandler)),
+            routes.Add(new RegexRoute(@"^/admin/admin$", typeof(AdminHandler)));
+            routes.Add(new RegexRoute(@"^/admin/flush$", typeof(AdminHandler),
                 new RouteValueDictionary(new { action = "flush" })));
-            routes.Add(new RegexRoute(@"^/admin/reindex$", new GenericRouteHandler(typeof(AdminHandler)),
+            routes.Add(new RegexRoute(@"^/admin/reindex$", typeof(AdminHandler),
                 new RouteValueDictionary(new { action = "reindex" })));
-            routes.Add(new RegexRoute(@"^/admin/codes$", new GenericRouteHandler(typeof(CodesHandler))));
-            routes.Add(new RegexRoute(@"^/admin/dump$", new GenericRouteHandler(typeof(DumpHandler))));
-            routes.Add(new RegexRoute(@"^/admin/errors$", new GenericRouteHandler(typeof(ErrorsHandler))));
-            routes.Add(new RegexRoute(@"^/admin/overview$", new GenericRouteHandler(typeof(OverviewHandler))));
+            routes.Add(new RegexRoute(@"^/admin/codes$", typeof(CodesHandler)));
+            routes.Add(new RegexRoute(@"^/admin/dump$", typeof(DumpHandler)));
+            routes.Add(new RegexRoute(@"^/admin/errors$", typeof(ErrorsHandler)));
+            routes.Add(new RegexRoute(@"^/admin/overview$", typeof(OverviewHandler)));
 
             // See: http://stackoverflow.com/questions/3001009/output-caching-in-http-handler-and-setvaliduntilexpires
             // to configure caching when moving pages to handlers:
             // context.Response.Cache.VaryByParam["*"] = true;
             // context.Response.Cache.VaryByHeaders["Accept"] = true;
 
-            routes.Add(new RegexRoute(@"/api/search$", new GenericRouteHandler(typeof(SearchHandler)), DEFAULT_JSON));
+            routes.Add(new RegexRoute(@"/api/search$", typeof(SearchHandler), DEFAULT_JSON));
 
             // ASPX Page routing --------------------------------------------------------
 
