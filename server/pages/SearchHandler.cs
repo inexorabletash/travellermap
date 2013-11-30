@@ -25,7 +25,7 @@ namespace Maps.Pages
 
         protected override string ServiceName { get { return "search"; } }
 
-        protected override void Process(HttpContext context)
+        public override void Process(HttpContext context)
         {
             string query = context.Request.QueryString["q"];
             if (query == null)

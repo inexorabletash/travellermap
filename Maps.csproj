@@ -280,7 +280,6 @@
     <Content Include="res\ui\youarehere.png" />
     <Content Include="res\ui\youarehere_gray.png" />
     <Content Include="robots.txt" />
-    <Content Include="server\pages\Coordinates.aspx" />
     <Content Include="server\pages\Credits.aspx" />
     <Content Include="server\pages\JumpMap.aspx" />
     <Content Include="server\pages\JumpWorlds.aspx" />
@@ -407,10 +406,7 @@
     <Compile Include="server\Json.cs" />
     <Compile Include="server\Location.cs" />
     <Compile Include="server\Metadata.cs" />
-    <Compile Include="server\pages\Coordinates.aspx.cs">
-      <DependentUpon>Coordinates.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
+    <Compile Include="server\pages\CoordinatesHandler.cs" />
     <Compile Include="server\pages\Credits.aspx.cs">
       <DependentUpon>Credits.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

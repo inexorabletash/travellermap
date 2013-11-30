@@ -13,16 +13,22 @@ namespace Maps
     {
         private readonly Regex regex;
 
-        public RegexRoute(string pattern, Type t, RouteValueDictionary defaults = null)
+        public RegexRoute(string pattern, Type t, RouteValueDictionary defaults = null, bool caseInsensitive = false)
             : base(null, defaults, new GenericRouteHandler(t))
         {
-            regex = new Regex(pattern, RegexOptions.Compiled | RegexOptions.ExplicitCapture);
+            RegexOptions options = RegexOptions.Compiled | RegexOptions.ExplicitCapture;
+            if (caseInsensitive) options = options | RegexOptions.IgnoreCase;
+
+            regex = new Regex(pattern, options);
         }
 
-        public RegexRoute(string pattern, IRouteHandler handler, RouteValueDictionary defaults = null)
+        public RegexRoute(string pattern, IRouteHandler handler, RouteValueDictionary defaults = null, bool caseInsensitive = false)
             : base(null, defaults, handler)
         {
-            regex = new Regex(pattern, RegexOptions.Compiled | RegexOptions.ExplicitCapture);
+            RegexOptions options = RegexOptions.Compiled | RegexOptions.ExplicitCapture;
+            if (caseInsensitive) options = options | RegexOptions.IgnoreCase;
+
+            regex = new Regex(pattern, options);
         }
 
         public override RouteData GetRouteData(HttpContextBase context)
@@ -114,13 +120,17 @@ namespace Maps
             // TODO: Migrate from pages - but add ASPX routes
 
             // Location Queries
-            // TODO: Migrate from pages - but add ASPX routes
+            // TODO: Migrate from pages - but add ASPX routes (case-insensitively)
+            routes.Add(new RegexRoute(@"^/api/coordinates$", typeof(CoordinatesHandler), DEFAULT_JSON));
 
             // Data Retrieval - API-centric
-            // TODO: Migrate from pages - but add ASPX routes
+            // TODO: Migrate from pages - but add ASPX routes (case-insensitively)
 
             // Data Retrieval - RESTful
-            // TODO: Migrate from pages - but add ASPX routes
+            // TODO: Migrate from pages - but add ASPX routes (case-insensitively)
+            routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/coordinates$", typeof(CoordinatesHandler), DEFAULT_JSON));
+            routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/(?<hex>\d\d\d\d)/coordinates$", typeof(CoordinatesHandler), DEFAULT_JSON));
+            routes.Add(new RegexRoute(@"^/Coordinates.aspx$", typeof(CoordinatesHandler), caseInsensitive: true));
 
 
             // ASPX Page routing --------------------------------------------------------
@@ -142,7 +152,7 @@ namespace Maps
             mpr0("api/jumpmap", BASE_DIR + "JumpMap.aspx");
 
             // Location Queries
-            mpr1("api/coordinates", BASE_DIR + "Coordinates.aspx", DEFAULT_JSON);
+            //mpr1("api/coordinates", BASE_DIR + "Coordinates.aspx", DEFAULT_JSON);
             mpr1("api/credits", BASE_DIR + "Credits.aspx", DEFAULT_JSON);
             mpr1("api/jumpworlds", BASE_DIR + "JumpWorlds.aspx", DEFAULT_JSON);
 
@@ -164,7 +174,6 @@ namespace Maps
             mpr0("data/{sector}/metadata", BASE_DIR + "SectorMetaData.aspx"); // TODO: JSON?
             mpr0("data/{sector}/msec", BASE_DIR + "MSEC.aspx");
             mpr0("data/{sector}/image", BASE_DIR + "Poster.aspx");
-            mpr1("data/{sector}/coordinates", BASE_DIR + "Coordinates.aspx", DEFAULT_JSON);
             mpr1("data/{sector}/credits", BASE_DIR + "Credits.aspx", DEFAULT_JSON);
 
             // data/{sector}/{subsector}/foo conflicts with data/{sector}/{hex}/foo
@@ -183,7 +192,6 @@ namespace Maps
 
             mpr1("data/{sector}/{hex}", BASE_DIR + "JumpWorlds.aspx", new RouteValueDictionary { { "accept", JsonConstants.MediaType }, { "jump", "0" } });
             mpr1("data/{sector}/{hex}/image", BASE_DIR + "JumpMap.aspx", new RouteValueDictionary { { "jump", "0" } });
-            mpr1("data/{sector}/{hex}/coordinates", BASE_DIR + "Coordinates.aspx", DEFAULT_JSON);
             mpr1("data/{sector}/{hex}/credits", BASE_DIR + "Credits.aspx", DEFAULT_JSON);
             mpr1("data/{sector}/{hex}/jump/{jump}", BASE_DIR + "JumpWorlds.aspx", DEFAULT_JSON);
             mpr0("data/{sector}/{hex}/jump/{jump}/image", BASE_DIR + "JumpMap.aspx");

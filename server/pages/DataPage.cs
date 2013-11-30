@@ -112,7 +112,7 @@ namespace Maps.Pages
     public abstract class DataHandlerBase : HandlerBase, IHttpHandler
     {
         protected abstract string ServiceName { get; }
-        protected abstract void Process(HttpContext context);
+        public abstract void Process(HttpContext context);
 
         bool IHttpHandler.IsReusable { get { return true; } }
 

@@ -1,53 +1,48 @@
-using System;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Xml.Serialization;
 
 namespace Maps.Pages
 {
-    /// <summary>
-    /// Summary description for Search.
-    /// </summary>
-    /// 
-    public class Coordinates : DataPage
+    public class CoordinatesHandler : DataHandlerBase
     {
-        protected override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Xml; } }
+        public override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Xml; } }
         protected override string ServiceName { get { return "coordinates"; } }
 
-        private void Page_Load(object sender, System.EventArgs e)
+        public override void Process(System.Web.HttpContext context)
         {
             // NOTE: This (re)initializes a static data structure used for 
             // resolving names into sector locations, so needs to be run
             // before any other objects (e.g. Worlds) are loaded.
-            ResourceManager resourceManager = new ResourceManager(Server, Cache);
+            ResourceManager resourceManager = new ResourceManager(context.Server, context.Cache);
             SectorMap map = SectorMap.FromName(SectorMap.DefaultSetting, resourceManager);
 
             Location loc = new Location(map.FromName("Spinward Marches").Location, 1910);
 
             // Accept either sector [& hex] or sx,sy [& hx,hy]
-            if (HasOption("sector"))
+            if (HasOption(context, "sector"))
             {
-                string sectorName = GetStringOption("sector");
+                string sectorName = GetStringOption(context, "sector");
                 Sector sector = map.FromName(sectorName);
                 if (sector == null)
                 {
-                    SendError(404, "Not Found", "Sector not found.");
+                    SendError(context.Response, 404, "Not Found", "Sector not found.");
                     return;
                 }
 
-                int hex = GetIntOption("hex", 0);
+                int hex = GetIntOption(context, "hex", 0);
                 loc = new Location(sector.Location, hex);
             }
-            else if (HasOption("sx") && HasOption("sy"))
+            else if (HasOption(context, "sx") && HasOption(context, "sy"))
             {
-                int sx = GetIntOption("sx", 0);
-                int sy = GetIntOption("sy", 0);
-                int hx = GetIntOption("hx", 0);
-                int hy = GetIntOption("hy", 0);
+                int sx = GetIntOption(context, "sx", 0);
+                int sy = GetIntOption(context, "sy", 0);
+                int hx = GetIntOption(context, "hx", 0);
+                int hy = GetIntOption(context, "hy", 0);
                 loc = new Location(map.FromLocation(sx, sy).Location, hx * 100 + hy);
             }
             else
             {
-                SendError(404, "Not Found", "Must specify either sector name (and optional hex) or sx, sy (and optional hx, hy).");
+                SendError(context.Response, 404, "Not Found", "Must specify either sector name (and optional hex) or sx, sy (and optional hx, hy).");
                 return;
             }
 
@@ -60,7 +55,7 @@ namespace Maps.Pages
             result.hy = loc.HexLocation.Y;
             result.x = coords.X;
             result.y = coords.Y;
-            SendResult(result);
+            SendResult(context, this, result);
         }
 
         [XmlRoot(ElementName = "Coordinates")]
@@ -77,26 +72,5 @@ namespace Maps.Pages
             public int x { get; set; }
             public int y { get; set; }
         }
-
-        #region Web Form Designer generated code
-        override protected void OnInit(EventArgs e)
-        {
-            //
-            // CODEGEN: This call is required by the ASP.NET Web Form Designer.
-            //
-            InitializeComponent();
-            base.OnInit(e);
-        }
-
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
-        private void InitializeComponent()
-        {
-            this.Load += new System.EventHandler(this.Page_Load);
-        }
-        #endregion
     }
-
 }
