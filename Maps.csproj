@@ -405,6 +405,7 @@
     <Compile Include="server\pages\ImageGeneratorPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="server\pages\ImageHandlerBase.cs" />
     <Compile Include="server\pages\JumpMapHandler.cs" />
     <Compile Include="server\pages\JumpWorldsHandler.cs" />
     <Compile Include="server\pages\MSECHandler.cs" />

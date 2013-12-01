@@ -18,34 +18,8 @@ namespace Maps.Pages
 {
     public abstract class ImageGeneratorPage : BasePage
     {
-        protected override string DefaultContentType { get { return Util.MediaTypeName_Image_Png; } }
-
         public const double MinScale = 0.0078125; // Math.Pow(2, -7);
         public const double MaxScale = 512; // Math.Pow(2, 9);
-
-        protected void ParseOptions(ref MapOptions options, ref Stylesheet.Style style)
-        {
-            options = (MapOptions)GetIntOption("options", (int)options);
-
-#if LEGACY_STYLES
-            // Handle deprecated/legacy options bits for selecting style
-            style =
-                (options & MapOptions.StyleMaskDeprecated) == MapOptions.PrintStyleDeprecated ? Stylesheet.Style.Atlas :
-                (options & MapOptions.StyleMaskDeprecated) == MapOptions.CandyStyleDeprecated ? Stylesheet.Style.Candy :
-                Stylesheet.Style.Poster;
-#endif // LEGACY_STYLES
-
-            if (HasOption("style"))
-            {
-                switch (GetStringOption("style").ToLowerInvariant())
-                {
-                    case "poster": style = Stylesheet.Style.Poster; break;
-                    case "atlas": style = Stylesheet.Style.Atlas; break;
-                    case "print": style = Stylesheet.Style.Print; break;
-                    case "candy": style = Stylesheet.Style.Candy; break;
-                }
-            }
-        }
 
         public static void SetCommonResponseHeaders(HttpContext context)
         {
@@ -60,14 +34,6 @@ namespace Maps.Pages
             {
                 context.Response.Cache.SetCacheability(HttpCacheability.NoCache);
             }
-        }
-
-        protected void ProduceResponse(string title, Render.RenderContext ctx, Size tileSize,
-            int rot = 0, float translateX = 0, float translateY = 0,
-            bool transparent = false)
-        {
-            SetCommonResponseHeaders(Context);
-            ProduceResponse(Context, this, title, ctx, tileSize, rot, translateX, translateY, transparent, RouteData.Values);
         }
 
         public static void ProduceResponse(HttpContext context, ITypeAccepter accepter, string title, Render.RenderContext ctx, Size tileSize,
@@ -215,8 +181,7 @@ namespace Maps.Pages
             }
         }
 
-
-        protected static void BitmapResponse(HttpResponse response, Stylesheet styles, Bitmap bitmap, string mimeType)
+        private static void BitmapResponse(HttpResponse response, Stylesheet styles, Bitmap bitmap, string mimeType)
         {
             // JPEG or PNG if not specified, based on style
             if (mimeType == null)
@@ -279,11 +244,6 @@ namespace Maps.Pages
                 response.ContentType = MediaTypeNames.Image.Gif;
                 bitmap.Save(response.OutputStream, ImageFormat.Gif);
             }
-        }
-
-        protected Sector GetPostedSector()
-        {
-            return GetPostedSector(Context.Request);
         }
 
         public static Sector GetPostedSector(HttpRequest request)

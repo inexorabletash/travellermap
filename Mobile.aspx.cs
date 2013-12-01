@@ -14,7 +14,7 @@ namespace Maps.Pages
     /// <summary>
     /// Summary description for MobilePage.
     /// </summary>
-    public class MobilePage : DataPage
+    public class MobilePage : BasePage
     {
         protected override string DefaultContentType { get { throw new NotImplementedException(); } }
         protected override string ServiceName { get { return "mobile"; } }

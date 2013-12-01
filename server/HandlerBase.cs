@@ -1,4 +1,6 @@
-﻿using Maps.Pages;
+﻿#define LEGACY_STYLES
+
+using Maps.Pages;
 using Maps.Rendering;
 using System;
 using System.Collections.Generic;

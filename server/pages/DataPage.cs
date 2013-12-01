@@ -81,34 +81,6 @@ namespace Maps.Pages
         }
     }
 
-    public abstract class DataPage : BasePage
-    {
-        protected void SendResult(object o, Encoding encoding = null)
-        {
-            DataHandlerBase.SendResult(Context, this, o, encoding);
-        }
-
-        private void SendXml(object o)
-        {
-            DataHandlerBase.SendXml(Context, o);
-        }
-
-        private void SendText(object o, Encoding encoding)
-        {
-            DataHandlerBase.SendText(Context, o, encoding);
-        }
-
-        private void SendJson(object o)
-        {
-            DataHandlerBase.SendJson(Context, o);
-        }
-
-        public void SendFile(string contentType, string filename)
-        {
-            DataHandlerBase.SendFile(Context, contentType, filename);
-        }
-    }
-
     public abstract class DataHandlerBase : HandlerBase, IHttpHandler
     {
         protected abstract string ServiceName { get; }
