@@ -3,9 +3,8 @@ using PdfSharp.Drawing;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Web;
 
-namespace Maps.Pages
+namespace Maps.API
 {
     public class JumpMapHandler : ImageHandlerBase
     {

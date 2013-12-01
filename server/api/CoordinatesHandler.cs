@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.Xml.Serialization;
 
-namespace Maps.Pages
+namespace Maps.API
 {
     public class CoordinatesHandler : DataHandlerBase
     {

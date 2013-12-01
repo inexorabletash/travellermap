@@ -11,7 +11,7 @@ using System.IO;
 using System.Net.Mime;
 using System.Web;
 
-namespace Maps.Pages
+namespace Maps.API
 {
     public abstract class ImageHandlerBase : DataHandlerBase
     {

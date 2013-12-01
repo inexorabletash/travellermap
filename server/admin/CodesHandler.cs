@@ -5,7 +5,7 @@ using System.Linq;
 using System.Net.Mime;
 using System.Text.RegularExpressions;
 
-namespace Maps.Pages
+namespace Maps.Admin
 {
     /// <summary>
     /// Summary description for Search.

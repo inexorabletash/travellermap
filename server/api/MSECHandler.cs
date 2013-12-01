@@ -1,10 +1,9 @@
 ﻿using Maps.Serialization;
 using System;
 using System.IO;
-using System.Net.Mime;
 using System.Web;
 
-namespace Maps.Pages
+namespace Maps.API
 {
     public class MSECHandler : DataHandlerBase
     {

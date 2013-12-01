@@ -1,10 +1,9 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Xml.Serialization;
 
-namespace Maps.Pages
+namespace Maps.API
 {
     public class CreditsHandler : DataHandlerBase
     {

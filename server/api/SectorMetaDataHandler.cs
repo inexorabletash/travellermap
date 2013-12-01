@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web;
 
-namespace Maps.Pages
+namespace Maps.API
 {
     /// <summary>
     /// Fetch metadata about sector.

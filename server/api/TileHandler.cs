@@ -2,7 +2,7 @@
 using System;
 using System.Drawing;
 
-namespace Maps.Pages
+namespace Maps.API
 {
     public class TileHandler : ImageHandlerBase
     {

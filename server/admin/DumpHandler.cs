@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Net.Mime;
 
-namespace Maps.Pages
+namespace Maps.Admin
 {
     /// <summary>
     /// Fetch data about the universe.
     /// </summary>
-    public class DumpHandler : AdminBase
+    public class DumpHandler : AdminHandlerBase
     {
         public override string DefaultContentType { get { return MediaTypeNames.Text.Plain; } }
 

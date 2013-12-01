@@ -1,9 +1,8 @@
 ﻿using System;
 using System.IO;
-using System.Net.Mime;
 using System.Text;
 
-namespace Maps.Pages
+namespace Maps.API
 {
     public class SECHandler : DataHandlerBase
     {

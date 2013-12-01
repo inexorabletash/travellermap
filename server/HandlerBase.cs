@@ -1,17 +1,15 @@
 ﻿#define LEGACY_STYLES
 
-using Maps.Pages;
 using Maps.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using System.Web;
 using System.Web.Routing;
 
 namespace Maps
 {
-    public abstract class HandlerBase : ITypeAccepter
+    public abstract class HandlerBase
     {
         // TODO: Enforce verbs (i.e. GET or POST)
 
@@ -125,34 +123,5 @@ namespace Maps
 
         public abstract string DefaultContentType { get; }
 
-        public bool Accepts(HttpContext context, string mediaType)
-        {
-            return AcceptTypes(context).Contains(mediaType);
-        }
-
-        public IEnumerable<string> AcceptTypes(HttpContext context)
-        {
-            IDictionary<string, Object> queryDefaults = null;
-            if (context.Items.Contains("RouteData"))
-                queryDefaults = (context.Items["RouteData"] as System.Web.Routing.RouteData).Values;
-
-            if (context.Request["accept"] != null)
-            {
-                yield return context.Request["accept"];
-            }
-            if (queryDefaults != null && queryDefaults.ContainsKey("accept"))
-            {
-                yield return queryDefaults["accept"].ToString();
-            }
-            if (context.Request.AcceptTypes != null)
-            {
-                foreach (var type in context.Request.AcceptTypes)
-                {
-                    yield return type;
-                }
-            }
-
-            yield return DefaultContentType;
-        }
     }
 }

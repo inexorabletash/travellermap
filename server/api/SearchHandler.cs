@@ -7,7 +7,7 @@ using System.Web;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace Maps.Pages
+namespace Maps.API
 {
     public class SearchHandler : DataHandlerBase
     {

@@ -4,9 +4,9 @@ using System.IO;
 using System.Text;
 using System.Web;
 
-namespace Maps.Pages
+namespace Maps.Admin
 {
-    public abstract class AdminBase : Maps.HandlerBase, IHttpHandler
+    public abstract class AdminHandlerBase : Maps.HandlerBase, IHttpHandler
     {
         public static bool AdminAuthorized(HttpContext context)
         {
@@ -33,7 +33,7 @@ namespace Maps.Pages
         protected abstract void Process(HttpContext context);
     }
 
-    public class AdminHandler : AdminBase
+    public class AdminHandler : AdminHandlerBase
     {
         public override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Plain; } }
 

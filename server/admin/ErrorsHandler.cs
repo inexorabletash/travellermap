@@ -3,12 +3,12 @@ using System.Linq;
 using System.Net.Mime;
 using System.Text.RegularExpressions;
 
-namespace Maps.Pages
+namespace Maps.Admin
 {
     /// <summary>
     /// Summary description for Search.
     /// </summary>
-    public class ErrorsHandler : AdminBase
+    public class ErrorsHandler : AdminHandlerBase
     {
         public override string DefaultContentType { get { return MediaTypeNames.Text.Plain; } }
 

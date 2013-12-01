@@ -2,12 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net.Mime;
 using System.Text;
 using System.Web;
 using System.Xml.Serialization;
 
-namespace Maps.Pages
+namespace Maps.API
 {
     public interface ITypeAccepter
     {
@@ -15,7 +16,7 @@ namespace Maps.Pages
         bool Accepts(HttpContext context, string mediaType);
     }
 
-    public abstract class DataHandlerBase : HandlerBase, IHttpHandler
+    public abstract class DataHandlerBase : HandlerBase, IHttpHandler, ITypeAccepter
     {
         protected abstract string ServiceName { get; }
         public abstract void Process(HttpContext context);
@@ -136,6 +137,38 @@ namespace Maps.Pages
                     w.Write(");");
                 }
             }
+        }
+
+        // ITypeAccepter
+        public bool Accepts(HttpContext context, string mediaType)
+        {
+            return AcceptTypes(context).Contains(mediaType);
+        }
+
+        // ITypeAccepter
+        public IEnumerable<string> AcceptTypes(HttpContext context)
+        {
+            IDictionary<string, Object> queryDefaults = null;
+            if (context.Items.Contains("RouteData"))
+                queryDefaults = (context.Items["RouteData"] as System.Web.Routing.RouteData).Values;
+
+            if (context.Request["accept"] != null)
+            {
+                yield return context.Request["accept"];
+            }
+            if (queryDefaults != null && queryDefaults.ContainsKey("accept"))
+            {
+                yield return queryDefaults["accept"].ToString();
+            }
+            if (context.Request.AcceptTypes != null)
+            {
+                foreach (var type in context.Request.AcceptTypes)
+                {
+                    yield return type;
+                }
+            }
+
+            yield return DefaultContentType;
         }
     }
 }

@@ -1,10 +1,11 @@
-﻿using Maps.Rendering;
+﻿using Maps.API;
+using Maps.Rendering;
 using System;
 using System.Drawing;
 
-namespace Maps.Pages
+namespace Maps.Admin
 {
-    public class OverviewHandler : AdminHandler
+    public class OverviewHandler : AdminHandler, ITypeAccepter
     {
         public const int MinDimension = 64;
         public const int MaxDimension = 2048;
@@ -61,6 +62,16 @@ namespace Maps.Pages
             ctx.styles.fillMicroBorders = true;
 
             ImageHandlerBase.ProduceResponse(context, this, "Overview", ctx, tileSize);
+        }
+
+        System.Collections.Generic.IEnumerable<string> ITypeAccepter.AcceptTypes(System.Web.HttpContext context)
+        {
+            yield return Util.MediaTypeName_Image_Png;
+        }
+
+        bool ITypeAccepter.Accepts(System.Web.HttpContext context, string mediaType)
+        {
+            return true;
         }
     }
 }
