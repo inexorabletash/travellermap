@@ -28,11 +28,26 @@ namespace Maps.API
             if (!ServiceConfiguration.CheckEnabled(ServiceName, context.Response))
                 return;
 
+            // CORS - allow from any origin
+            context.Response.AddHeader("Access-Control-Allow-Origin", "*");
+
             // Configure caching
-            context.Response.Cache.SetCacheability(HttpCacheability.Public);
-            context.Response.Cache.SetMaxAge(TimeSpan.FromHours(1));
-            context.Response.Cache.VaryByParams["*"] = true;
-            context.Response.Cache.VaryByHeaders["Accept"] = true;
+            if (context.Request.HttpMethod == "POST")
+            {
+                context.Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            }
+            else
+            {
+#if DEBUG
+                context.Response.Cache.SetCacheability(HttpCacheability.NoCache);
+#else
+                context.Response.Cache.SetCacheability(HttpCacheability.Public);
+                context.Response.Cache.SetMaxAge(TimeSpan.FromHours(1));
+                context.Response.Cache.SetValidUntilExpires(true);
+                context.Response.Cache.VaryByParams["*"] = true;
+                context.Response.Cache.VaryByHeaders["Accept"] = true;
+#endif
+            }
 
             Process(context);
         }

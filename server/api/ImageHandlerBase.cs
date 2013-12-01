@@ -24,27 +24,11 @@ namespace Maps.API
             int rot = 0, float translateX = 0, float translateY = 0,
             bool transparent = false)
         {
-            SetCommonResponseHeaders(context);
             ProduceResponse(context, this, title, ctx, tileSize, rot, translateX, translateY, transparent,
                 (context.Items["RouteData"] as System.Web.Routing.RouteData).Values);
         }
 
-        protected static void SetCommonResponseHeaders(HttpContext context)
-        {
-            // CORS - allow from any origin
-            context.Response.AddHeader("Access-Control-Allow-Origin", "*");
-#if !DEBUG
-            context.Response.Cache.SetCacheability(HttpCacheability.Public);
-            context.Response.Cache.SetExpires(DateTime.Now.AddHours(12));
-            context.Response.Cache.SetValidUntilExpires(true);
-#endif
-            if (context.Request.HttpMethod == "POST")
-            {
-                context.Response.Cache.SetCacheability(HttpCacheability.NoCache);
-            }
-        }
-
-        public static void ProduceResponse(HttpContext context, ITypeAccepter accepter, string title, Render.RenderContext ctx, Size tileSize,
+        protected static void ProduceResponse(HttpContext context, ITypeAccepter accepter, string title, Render.RenderContext ctx, Size tileSize,
             int rot = 0, float translateX = 0, float translateY = 0,
             bool transparent = false, IDictionary<string, Object> queryDefaults = null)
         {
