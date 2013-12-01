@@ -86,7 +86,7 @@ namespace Maps.Rendering
             public XGraphicsPath clipPath = null;
             public bool border = false;
             public bool silly = false;
-            public bool tiling = false;
+            public bool clipOutsectorBorders = false;
 
             public XMatrix ImageSpaceToWorldSpace
             {
@@ -1399,7 +1399,7 @@ namespace Maps.Rendering
                 using (RenderUtil.SaveState(ctx.graphics))
                 {
                     // This looks craptacular for Candy style borders :(
-                    if (ctx.tiling &&
+                    if (ctx.clipOutsectorBorders &&
                         (layer == BorderLayer.Fill || ctx.styles.microBorderStyle != MicroBorderStyle.Curve))
                     {
                         Sector.ClipPath clip = sector.ComputeClipPath(borderPathType);

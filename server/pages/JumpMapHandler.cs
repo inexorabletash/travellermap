@@ -1,60 +1,70 @@
-using Maps.Rendering;
+﻿using Maps.Rendering;
 using PdfSharp.Drawing;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Web;
 
 namespace Maps.Pages
 {
-    /// <summary>
-    /// Summary description for WebForm1.
-    /// </summary>
+    public abstract class ImageHandlerBase : DataHandlerBase
+    {
+        public override string DefaultContentType { get { return Util.MediaTypeName_Image_Png; } }
 
-    public class JumpMap : ImageGeneratorPage
+        public const double MinScale = 0.0078125; // Math.Pow(2, -7);
+        public const double MaxScale = 512; // Math.Pow(2, 9);
+
+        protected void ProduceResponse(HttpContext context, string title, Render.RenderContext ctx, Size tileSize,
+            int rot = 0, float translateX = 0, float translateY = 0,
+            bool transparent = false)
+        {
+            ImageGeneratorPage.SetCommonResponseHeaders(context);
+            ImageGeneratorPage.ProduceResponse(context, this, title, ctx, tileSize, rot, translateX, translateY, transparent, 
+                (context.Items["RouteData"] as System.Web.Routing.RouteData).Values);
+        }
+    }
+
+    public class JumpMapHandler : ImageHandlerBase
     {
         protected override string ServiceName { get { return "jumpmap"; } }
-        private void Page_Load(object sender, System.EventArgs e)
-        {
-            if (!ServiceConfiguration.CheckEnabled(ServiceName, Response))
-            {
-                return;
-            }
 
+        public override void Process(System.Web.HttpContext context)
+        {
             // NOTE: This (re)initializes a static data structure used for 
             // resolving names into sector locations, so needs to be run
             // before any other objects (e.g. Worlds) are loaded.
-            ResourceManager resourceManager = new ResourceManager(Server, Cache);
+            ResourceManager resourceManager = new ResourceManager(context.Server, context.Cache);
 
             //
             // Jump
             //
-            int jump = Util.Clamp(GetIntOption("jump", 6), 0, 12);
+            int jump = Util.Clamp(GetIntOption(context, "jump", 6), 0, 12);
 
             //
             // Content & Coordinates
             //
             Selector selector;
             Location loc;
-            if (Request.HttpMethod == "POST")
+            if (context.Request.HttpMethod == "POST")
             {
                 Sector sector;
                 try
                 {
-                    sector = GetPostedSector();
+                    sector = ImageGeneratorPage.GetPostedSector(context.Request);
                 }
                 catch (Exception ex)
                 {
-                    SendError(400, "Invalid request", ex.Message);
+                    SendError(context.Response, 400, "Invalid request", ex.Message);
                     return;
                 }
 
                 if (sector == null)
                 {
-                    SendError(400, "Invalid request", "Either file or data must be supplied in the POST data.");
+                    SendError(context.Response, 400, "Invalid request", "Either file or data must be supplied in the POST data.");
                     return;
                 }
 
-                int hex = GetIntOption("hex", Astrometrics.SectorCentralHex);
+                int hex = GetIntOption(context, "hex", Astrometrics.SectorCentralHex);
                 loc = new Location(new Point(0, 0), hex);
                 selector = new HexSectorSelector(resourceManager, sector, loc.HexLocation, jump);
             }
@@ -62,30 +72,30 @@ namespace Maps.Pages
             {
                 SectorMap map = SectorMap.FromName(SectorMap.DefaultSetting, resourceManager);
 
-                if (HasOption("sector") && HasOption("hex"))
+                if (HasOption(context, "sector") && HasOption(context, "hex"))
                 {
-                    string sectorName = GetStringOption("sector");
-                    int hex = GetIntOption("hex", 0);
+                    string sectorName = GetStringOption(context, "sector");
+                    int hex = GetIntOption(context, "hex", 0);
                     Sector sector = map.FromName(sectorName);
                     if (sector == null)
                     {
-                        SendError(404, "Not Found", "Sector not found.");
+                        SendError(context.Response, 404, "Not Found", "Sector not found.");
                         return;
                     }
 
                     loc = new Location(sector.Location, hex);
                 }
-                else if (HasOption("sx") && HasOption("sy") && HasOption("hx") && HasOption("hy"))
+                else if (HasOption(context, "sx") && HasOption(context, "sy") && HasOption(context, "hx") && HasOption(context, "hy"))
                 {
-                    int sx = GetIntOption("sx", 0);
-                    int sy = GetIntOption("sy", 0);
-                    int hx = GetIntOption("hx", 0);
-                    int hy = GetIntOption("hy", 0);
+                    int sx = GetIntOption(context, "sx", 0);
+                    int sy = GetIntOption(context, "sy", 0);
+                    int hx = GetIntOption(context, "hx", 0);
+                    int hy = GetIntOption(context, "hy", 0);
                     loc = new Location(map.FromLocation(sx, sy).Location, hx * 100 + hy);
                 }
-                else if (HasOption("x") && HasOption("y"))
+                else if (HasOption(context, "x") && HasOption(context, "y"))
                 {
-                    loc = Astrometrics.CoordinatesToLocation(GetIntOption("x", 0), GetIntOption("y", 0));
+                    loc = Astrometrics.CoordinatesToLocation(GetIntOption(context, "x", 0), GetIntOption(context, "y", 0));
                 }
                 else
                 {
@@ -98,24 +108,24 @@ namespace Maps.Pages
             //
             // Scale
             //
-            double scale = Util.Clamp(GetDoubleOption("scale", 64), MinScale, MaxScale);
+            double scale = Util.Clamp(GetDoubleOption(context, "scale", 64), MinScale, MaxScale);
 
             //
             // Options & Style
             //
             MapOptions options = MapOptions.BordersMajor | MapOptions.BordersMinor | MapOptions.ForceHexes;
             Stylesheet.Style style = Stylesheet.Style.Poster;
-            ParseOptions(ref options, ref style);
+            ParseOptions(context, ref options, ref style);
 
             //
             // Border
             //
-            bool border = GetBoolOption("border", defaultValue: true);
+            bool border = GetBoolOption(context, "border", defaultValue: true);
 
             //
             // Clip
             //
-            bool clip = GetBoolOption("clip", defaultValue: true);
+            bool clip = GetBoolOption(context, "clip", defaultValue: true);
 
             //
             // What to render
@@ -179,29 +189,10 @@ namespace Maps.Pages
             ctx.styles = styles;
             ctx.tileSize = tileSize;
             ctx.border = border;
+            ctx.clipOutsectorBorders = true;
 
             ctx.clipPath = clip ? new XGraphicsPath(boundingPathCoords, boundingPathTypes, XFillMode.Alternate) : null;
-            ProduceResponse("Jump Map", ctx, tileSize, transparent: clip);
+            ProduceResponse(context, "Jump Map", ctx, tileSize, transparent: clip);
         }
-
-        #region Web Form Designer generated code
-        override protected void OnInit(EventArgs e)
-        {
-            //
-            // CODEGEN: This call is required by the ASP.NET Web Form Designer.
-            //
-            InitializeComponent();
-            base.OnInit(e);
-        }
-
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
-        private void InitializeComponent()
-        {
-            this.Load += new System.EventHandler(this.Page_Load);
-        }
-        #endregion
     }
 }

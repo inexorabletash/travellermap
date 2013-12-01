@@ -124,6 +124,9 @@ namespace Maps
 
             // Rendering
             // TODO: Migrate from pages - but add ASPX routes (case-insensitively)
+            routes.Add(new RegexRoute(@"^/api/jumpmap$", typeof(JumpMapHandler)));
+
+            routes.Add(new RegexRoute(@"^/JumpMap.aspx$", typeof(JumpMapHandler), caseInsensitive: true));
 
             // Location Queries
             routes.Add(new RegexRoute(@"^/api/coordinates$", typeof(CoordinatesHandler), DEFAULT_JSON));
@@ -172,6 +175,11 @@ namespace Maps
             routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/(?<hex>\d\d\d\d)/credits$", typeof(CreditsHandler), DEFAULT_JSON));
             routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/(?<hex>\d\d\d\d)/jump/(?<jump>\d+)$", typeof(JumpWorldsHandler), DEFAULT_JSON));
 
+            routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/(?<hex>\d\d\d\d)/image$", typeof(JumpMapHandler), new RouteValueDictionary { { "jump", "0" } }));
+            routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/(?<hex>\d\d\d\d)/jump/(?<jump>\d+)/image$", typeof(JumpMapHandler)));
+
+            // TODO: Support subsectors by name
+
             // Legacy Aliases
 
             // ASPX Page routing --------------------------------------------------------
@@ -190,7 +198,6 @@ namespace Maps
             // Rendering
             mpr0("api/poster", BASE_DIR + "Poster.aspx");
             mpr0("api/tile", BASE_DIR + "Tile.aspx");
-            mpr0("api/jumpmap", BASE_DIR + "JumpMap.aspx");
 
             // RESTful
             mpr0("data/{sector}/image", BASE_DIR + "Poster.aspx");
@@ -206,8 +213,6 @@ namespace Maps
                 mpr1(r("data/{sector}/{subsector}/image"), BASE_DIR + "Poster.aspx", new RouteValueDictionary { { "subsector", ss } });
             }
 
-            mpr1("data/{sector}/{hex}/image", BASE_DIR + "JumpMap.aspx", new RouteValueDictionary { { "jump", "0" } });
-            mpr0("data/{sector}/{hex}/jump/{jump}/image", BASE_DIR + "JumpMap.aspx");
         }
     }
 }

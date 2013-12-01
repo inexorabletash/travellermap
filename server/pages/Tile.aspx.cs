@@ -53,7 +53,7 @@ namespace Maps.Pages
             ctx.styles = new Stylesheet(scale, options, style);
             ctx.tileSize = tileSize;
             ctx.silly = silly;
-            ctx.tiling = true;
+            ctx.clipOutsectorBorders = true;
             ProduceResponse("Tile", ctx, tileSize);
         }
 

@@ -45,7 +45,7 @@ namespace Maps.Pages
             ctx.styles = new Stylesheet(scale, options, style);
             ctx.tileSize = tileSize;
             ctx.silly = false;
-            ctx.tiling = true;
+            ctx.clipOutsectorBorders = true;
 
             ctx.styles.microRoutes.visible = true;
             ctx.styles.macroRoutes.visible = false;

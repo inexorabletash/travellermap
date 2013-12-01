@@ -280,7 +280,6 @@
     <Content Include="res\ui\youarehere.png" />
     <Content Include="res\ui\youarehere_gray.png" />
     <Content Include="robots.txt" />
-    <Content Include="server\pages\JumpMap.aspx" />
     <Content Include="server\pages\Poster.aspx" />
     <Content Include="server\pages\Tile.aspx" />
     <Content Include="sitemap.xml" />
@@ -408,10 +407,7 @@
     <Compile Include="server\pages\ImageGeneratorPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="server\pages\JumpMap.aspx.cs">
-      <DependentUpon>JumpMap.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
+    <Compile Include="server\pages\JumpMapHandler.cs" />
     <Compile Include="server\pages\JumpWorldsHandler.cs" />
     <Compile Include="server\pages\MSECHandler.cs" />
     <Compile Include="server\pages\Poster.aspx.cs">

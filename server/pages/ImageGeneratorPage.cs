@@ -47,7 +47,7 @@ namespace Maps.Pages
             }
         }
 
-        protected void SetCommonResponseHeaders(HttpContext context)
+        public static void SetCommonResponseHeaders(HttpContext context)
         {
             // CORS - allow from any origin
             context.Response.AddHeader("Access-Control-Allow-Origin", "*");
@@ -283,31 +283,36 @@ namespace Maps.Pages
 
         protected Sector GetPostedSector()
         {
+            return GetPostedSector(Context.Request);
+        }
+
+        public static Sector GetPostedSector(HttpRequest request)
+        {
             Sector sector = null;
-            if (Request.ContentType.StartsWith("multipart/form-data")
-                && Request.Files["file"] != null && Request.Files["file"].ContentLength > 0)
+            if (request.ContentType.StartsWith("multipart/form-data")
+                && request.Files["file"] != null && request.Files["file"].ContentLength > 0)
             {
-                HttpPostedFile hpf = Request.Files["file"];
+                HttpPostedFile hpf = request.Files["file"];
                 sector = new Sector(hpf.InputStream, hpf.ContentType);
 
-                if (Request.Files["metadata"] != null && Request.Files["metadata"].ContentLength > 0)
+                if (request.Files["metadata"] != null && request.Files["metadata"].ContentLength > 0)
                 {
-                    hpf = Request.Files["metadata"];
+                    hpf = request.Files["metadata"];
 
                     string type = SectorMetadataFileParser.SniffType(hpf.InputStream);
                     Sector meta = SectorMetadataFileParser.ForType(type).Parse(hpf.InputStream);
                     sector.Merge(meta);
                 }
             }
-            else if (Request.ContentType == "application/x-www-form-urlencoded"
-                    && Request.Form["data"] != null)
+            else if (request.ContentType == "application/x-www-form-urlencoded"
+                    && request.Form["data"] != null)
             {
-                string data = Request.Form["data"];
+                string data = request.Form["data"];
                 sector = new Sector(data.ToStream(), MediaTypeNames.Text.Plain);
 
-                if (!String.IsNullOrEmpty(Request.Form["metadata"]))
+                if (!String.IsNullOrEmpty(request.Form["metadata"]))
                 {
-                    string metadata = Request.Form["metadata"];
+                    string metadata = request.Form["metadata"];
                     string type = SectorMetadataFileParser.SniffType(metadata.ToStream());
                     var parser = SectorMetadataFileParser.ForType(type);
                     using (var reader = new StringReader(metadata))
@@ -317,12 +322,11 @@ namespace Maps.Pages
                     }
                 }
             }
-            else if (Request.ContentType == MediaTypeNames.Text.Plain)
+            else if (request.ContentType == MediaTypeNames.Text.Plain)
             {
-                sector = new Sector(Request.InputStream, MediaTypeNames.Text.Plain);
+                sector = new Sector(request.InputStream, MediaTypeNames.Text.Plain);
             }
             return sector;
         }
-
     }
 }
