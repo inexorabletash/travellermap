@@ -60,7 +60,7 @@ namespace Maps.Pages
             ctx.styles.pseudoRandomStars.visible = false;
             ctx.styles.fillMicroBorders = true;
 
-            ImageGeneratorPage.ProduceResponse(context, this, "Overview", ctx, tileSize);
+            ImageHandlerBase.ProduceResponse(context, this, "Overview", ctx, tileSize);
         }
     }
 }

@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net.Mime;
 using System.Text;
 using System.Web;
@@ -14,71 +13,6 @@ namespace Maps.Pages
     {
         IEnumerable<string> AcceptTypes(HttpContext context);
         bool Accepts(HttpContext context, string mediaType);
-    }
-
-    public abstract class BasePage : System.Web.UI.Page, ITypeAccepter
-    {
-        protected abstract string ServiceName { get; }
-
-        protected bool AdminAuthorized()
-        {
-            return AdminBase.AdminAuthorized(Context);
-        }
-
-        protected abstract string DefaultContentType { get; }
-        public IEnumerable<string> AcceptTypes(HttpContext context)
-        {
-            if (context.Request["accept"] != null) {
-                yield return context.Request["accept"];
-            }
-            if (RouteData.Values.ContainsKey("accept")) {
-                yield return RouteData.Values["accept"].ToString();
-            }
-            if (context.Request.AcceptTypes != null)
-            {
-                foreach (var type in context.Request.AcceptTypes)
-                {
-                    yield return type;
-                }
-            }
-
-            yield return DefaultContentType;
-        }
-
-        public bool Accepts(HttpContext context, string mediaType)
-        {
-            return AcceptTypes(context).Contains(mediaType);
-        }
-
-        protected bool HasOption(string name)
-        {
-            return HandlerBase.HasOption(Request, name, RouteData.Values);
-        }
-
-        protected string GetStringOption(string name)
-        {
-            return HandlerBase.GetStringOption(Request, name, RouteData.Values);
-        }
-
-        protected int GetIntOption(string name, int defaultValue)
-        {
-            return HandlerBase.GetIntOption(Request, name, RouteData.Values, defaultValue);
-        }
-
-        protected double GetDoubleOption(string name, double defaultValue)
-        {
-            return HandlerBase.GetDoubleOption(Request, name, RouteData.Values, defaultValue);
-        }
-
-        protected bool GetBoolOption(string name, bool defaultValue)
-        {
-            return HandlerBase.GetBoolOption(Request, name, RouteData.Values, defaultValue);
-        }
-
-        protected void SendError(int code, string description, string message)
-        {
-            HandlerBase.SendError(Response, code, description, message);
-        }
     }
 
     public abstract class DataHandlerBase : HandlerBase, IHttpHandler

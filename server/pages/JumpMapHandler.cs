@@ -33,7 +33,7 @@ namespace Maps.Pages
                 Sector sector;
                 try
                 {
-                    sector = ImageGeneratorPage.GetPostedSector(context.Request);
+                    sector = GetPostedSector(context.Request);
                 }
                 catch (Exception ex)
                 {

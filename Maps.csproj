@@ -399,10 +399,7 @@
     <Compile Include="server\Metadata.cs" />
     <Compile Include="server\pages\CoordinatesHandler.cs" />
     <Compile Include="server\pages\CreditsHandler.cs" />
-    <Compile Include="server\pages\DataPage.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="server\pages\ImageGeneratorPage.cs">
+    <Compile Include="server\pages\DataHandlerBase.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="server\pages\ImageHandlerBase.cs" />

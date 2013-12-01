@@ -11,14 +11,8 @@ using System.Xml.Serialization;
 
 namespace Maps.Pages
 {
-    /// <summary>
-    /// Summary description for MobilePage.
-    /// </summary>
-    public class MobilePage : BasePage
+    public class MobilePage : System.Web.UI.Page
     {
-        protected override string DefaultContentType { get { throw new NotImplementedException(); } }
-        protected override string ServiceName { get { return "mobile"; } }
-
         protected System.Web.UI.HtmlControls.HtmlForm Form1;
         protected System.Web.UI.WebControls.ImageMap MapImage;
         protected System.Web.UI.WebControls.Button ButtonScrollCoreward;
@@ -85,10 +79,10 @@ namespace Maps.Pages
 
         private void SetScale(double scale)
         {
-            if (scale < ImageGeneratorPage.MinScale)
-                scale = ImageGeneratorPage.MinScale;
-            if (scale > ImageGeneratorPage.MaxScale)
-                scale = ImageGeneratorPage.MaxScale;
+            if (scale < ImageHandlerBase.MinScale)
+                scale = ImageHandlerBase.MinScale;
+            if (scale > ImageHandlerBase.MaxScale)
+                scale = ImageHandlerBase.MaxScale;
 
             ViewState["scale"] = scale;
             Refresh();

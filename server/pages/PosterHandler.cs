@@ -57,7 +57,7 @@ namespace Maps.Pages
                 {
                     try
                     {
-                        sector = ImageGeneratorPage.GetPostedSector(context.Request);
+                        sector = GetPostedSector(context.Request);
                     }
                     catch (Exception ex)
                     {
