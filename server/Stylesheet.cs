@@ -319,7 +319,7 @@ namespace Maps.Rendering
 
             if (worlds.visible)
             {
-                float fontScale = (scale <= 96f || style == Style.Candy) ? 1f : 96f / (float)scale;
+                float fontScale = (scale <= 96f || style == Style.Candy) ? 1f : 96f / Math.Min((float)scale, 192f);
 
                 worlds.fontInfo = new FontInfo(DEFAULT_FONT, scale < WorldFullMinScale ? 0.2f : 0.15f * fontScale, XFontStyle.Bold);
                 wingdingFont = new FontInfo("Wingdings", scale < WorldFullMinScale ? 0.2f : 0.175f * fontScale);
@@ -374,7 +374,7 @@ namespace Maps.Rendering
             microBorders.textStyle.Scale = new SizeF(1.0f, 1.0f);
             microBorders.textStyle.Uppercase = false;
 
-            sectorName.textStyle.Rotation = -50;
+            sectorName.textStyle.Rotation = -50; // degrees
             sectorName.textStyle.Translation = new PointF(0, 0);
             sectorName.textStyle.Scale = new SizeF(0.75f, 1.0f);
             sectorName.textStyle.Uppercase = false;
