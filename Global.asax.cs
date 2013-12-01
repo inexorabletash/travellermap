@@ -1,4 +1,6 @@
-﻿using Json;
+﻿#define LEGACY_ASPX
+
+using Json;
 using Maps.Admin;
 using Maps.API;
 using System;
@@ -104,6 +106,8 @@ namespace Maps
                 new RouteValueDictionary(new { action = "flush" })));
             routes.Add(new RegexRoute(@"^/admin/reindex$", typeof(AdminHandler),
                 new RouteValueDictionary(new { action = "reindex" })));
+            routes.Add(new RegexRoute(@"^/admin/profile$", typeof(AdminHandler),
+                new RouteValueDictionary(new { action = "profile" })));
             routes.Add(new RegexRoute(@"^/admin/codes$", typeof(CodesHandler)));
             routes.Add(new RegexRoute(@"^/admin/dump$", typeof(DumpHandler)));
             routes.Add(new RegexRoute(@"^/admin/errors$", typeof(ErrorsHandler)));
@@ -112,26 +116,27 @@ namespace Maps
             // Search
             routes.Add(new RegexRoute(@"^/api/search$", typeof(SearchHandler), DEFAULT_JSON));
 
+#if LEGACY_ASPX
             routes.Add(new RegexRoute(@"^/Search.aspx$", typeof(SearchHandler), caseInsensitive: true));
-
+#endif
             // Rendering
             routes.Add(new RegexRoute(@"^/api/jumpmap$", typeof(JumpMapHandler)));
             routes.Add(new RegexRoute(@"^/api/poster$", typeof(PosterHandler)));
             routes.Add(new RegexRoute(@"^/api/tile$", typeof(TileHandler)));
-
+#if LEGACY_ASPX
             routes.Add(new RegexRoute(@"^/JumpMap.aspx$", typeof(JumpMapHandler), caseInsensitive: true));
             routes.Add(new RegexRoute(@"^/Poster.aspx$", typeof(PosterHandler), caseInsensitive: true));
             routes.Add(new RegexRoute(@"^/Tile.aspx$", typeof(TileHandler), caseInsensitive: true));
-
+#endif
             // Location Queries
             routes.Add(new RegexRoute(@"^/api/coordinates$", typeof(CoordinatesHandler), DEFAULT_JSON));
             routes.Add(new RegexRoute(@"^/api/credits$", typeof(CreditsHandler), DEFAULT_JSON));
             routes.Add(new RegexRoute(@"^/api/jumpworlds$", typeof(JumpWorldsHandler), DEFAULT_JSON));
-
+#if LEGACY_ASPX
             routes.Add(new RegexRoute(@"^/Coordinates.aspx$", typeof(CoordinatesHandler), caseInsensitive: true));
             routes.Add(new RegexRoute(@"^/Credits.aspx$", typeof(CreditsHandler), caseInsensitive: true));
             routes.Add(new RegexRoute(@"^/JumpWorlds.aspx$", typeof(JumpWorldsHandler), caseInsensitive: true));
-
+#endif
             // Data Retrieval - API-centric
             routes.Add(new RegexRoute(@"^/api/universe$", typeof(UniverseHandler), DEFAULT_JSON));
             routes.Add(new RegexRoute(@"^/api/sec$", typeof(SECHandler), new RouteValueDictionary { { "type", "SecondSurvey" } }));
@@ -140,12 +145,12 @@ namespace Maps
             routes.Add(new RegexRoute(@"^/api/metadata/(?<sector>[^/]+)$", typeof(SectorMetaDataHandler), DEFAULT_JSON));
             routes.Add(new RegexRoute(@"^/api/msec$", typeof(MSECHandler)));
             routes.Add(new RegexRoute(@"^/api/msec/(?<sector>[^/]+)$", typeof(MSECHandler)));
-
+#if LEGACY_ASPX
             routes.Add(new RegexRoute(@"^/Universe.aspx$", typeof(UniverseHandler), caseInsensitive: true));
             routes.Add(new RegexRoute(@"^/SEC.aspx$", typeof(SECHandler), caseInsensitive: true));
             routes.Add(new RegexRoute(@"^/SectorMetaData.aspx$", typeof(SectorMetaDataHandler), caseInsensitive: true));
             routes.Add(new RegexRoute(@"^/MSEC.aspx$", typeof(MSECHandler), caseInsensitive: true));
-
+#endif
             // Data Retrieval - RESTful
             routes.Add(new RegexRoute(@"^/data$", typeof(UniverseHandler), DEFAULT_JSON));
 
@@ -163,13 +168,13 @@ namespace Maps
             routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/(?<subsector>[A-Pa-p])/tab$", typeof(SECHandler), new RouteValueDictionary { { "type", "TabDelimited" }, { "metadata", "0" } }));
             routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/(?<subsector>[A-Pa-p])/image$", typeof(PosterHandler)));
 
-            routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/(?<hex>\d\d\d\d)$", typeof(JumpWorldsHandler), new RouteValueDictionary { { "accept", JsonConstants.MediaType }, { "jump", "0" } }));
-            routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/(?<hex>\d\d\d\d)/coordinates$", typeof(CoordinatesHandler), DEFAULT_JSON));
-            routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/(?<hex>\d\d\d\d)/credits$", typeof(CreditsHandler), DEFAULT_JSON));
-            routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/(?<hex>\d\d\d\d)/jump/(?<jump>\d+)$", typeof(JumpWorldsHandler), DEFAULT_JSON));
+            routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/(?<hex>[0-9]{4})$", typeof(JumpWorldsHandler), new RouteValueDictionary { { "accept", JsonConstants.MediaType }, { "jump", "0" } }));
+            routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/(?<hex>[0-9]{4})/coordinates$", typeof(CoordinatesHandler), DEFAULT_JSON));
+            routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/(?<hex>[0-9]{4})/credits$", typeof(CreditsHandler), DEFAULT_JSON));
+            routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/(?<hex>[0-9]{4})/jump/(?<jump>\d+)$", typeof(JumpWorldsHandler), DEFAULT_JSON));
 
-            routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/(?<hex>\d\d\d\d)/image$", typeof(JumpMapHandler), new RouteValueDictionary { { "jump", "0" } }));
-            routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/(?<hex>\d\d\d\d)/jump/(?<jump>\d+)/image$", typeof(JumpMapHandler)));
+            routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/(?<hex>[0-9]{4})/image$", typeof(JumpMapHandler), new RouteValueDictionary { { "jump", "0" } }));
+            routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/(?<hex>[0-9]{4})/jump/(?<jump>\d+)/image$", typeof(JumpMapHandler)));
 
             // TODO: Support subsectors by name
 

@@ -118,6 +118,24 @@ function typeTest(api, type) {
   });
 }
 
+typeTest('Coordinates.aspx?sector=$sector', 'text/xml');
+typeTest('JumpWorlds.aspx?sector=$sector&hex=$hex&j=$jump', 'text/xml');
+typeTest('JumpWorlds.aspx?sector=$sector&hex=$hex&j=$jump', 'text/xml');
+typeTest('SEC.aspx?sector=$sector', 'text/plain; charset=Windows-1252');
+typeTest('SEC.aspx?sector=$sector&type=SecondSurvey', 'text/plain; charset=utf-8');
+typeTest('SEC.aspx?sector=$sector&type=TabDelimited', 'text/plain; charset=utf-8');
+typeTest('MSEC.aspx?sector=$sector', 'text/plain; charset=utf-8');
+typeTest('SectorMetaData.aspx?sector=$sector', 'text/xml');
+typeTest('Universe.aspx', 'text/xml');
+typeTest('Search.aspx?q=$query', 'text/xml');
+typeTest('JumpMap.aspx?sector=$sector&hex=$hex&j=$jump', 'image/png');
+typeTest('JumpMap.aspx?sector=$sector&hex=$hex&j=$jump&style=candy', 'image/png');
+typeTest('JumpMap.aspx?sector=$sector&hex=$hex&j=$jump&style=candy&clip=0', 'image/jpeg');
+typeTest('Poster.aspx?sector=$sector&subsector=$subsector', 'image/png');
+typeTest('Poster.aspx?sector=$sector&subsector=$subsector&style=candy', 'image/jpeg');
+typeTest('Tile.aspx?x=0&y=0&scale=64', 'image/png');
+typeTest('Tile.aspx?x=0&y=0&scale=64&style=candy', 'image/jpeg');
+
 
 typeTest('api/jumpmap?sector=$sector&hex=$hex&j=$jump', 'image/png');
 typeTest('api/jumpmap?sector=$sector&hex=$hex&j=$jump&style=candy', 'image/png');
@@ -193,6 +211,16 @@ typeTest('data/$sector/$hex/jump/$jump/image', 'image/png');
 
 
 [
+  'Coordinates.aspx?sector=$sector',
+  'JumpWorlds.aspx?sector=$sector&hex=$hex&j=$jump',
+  'SEC.aspx?sector=$sector',
+  'MSEC.aspx?sector=$sector',
+  'SectorMetaData.aspx?sector=$sector',
+  'Universe.aspx',
+  'Search.aspx?q=$query',
+  'JumpMap.aspx?sector=$sector&hex=$hex&j=$jump',
+  'Poster.aspx?sector=$sector&subsector=$subsector',
+  'Tile.aspx?x=0&y=0&scale=64',
   'api/coordinates?sector=$sector',
   'api/sec?sector=$sector',
   'api/sec?type=sec&sector=$sector',

@@ -97,14 +97,14 @@ namespace Maps.API
                 if (HasOption(context, "subsector") && GetStringOption(context, "subsector").Length > 0)
                 {
                     options = options & ~MapOptions.SubsectorGrid;
-                    char ss = GetStringOption(context, "subsector").ToUpperInvariant()[0];
-                    if (ss < 'A' || ss > 'P')
+                    string ss = GetStringOption(context, "subsector").ToUpperInvariant();
+                    if (ss.Length != 1 || ss[0] < 'A' || ss[0] > 'P')
                     {
                         SendError(context.Response, 400, "Invalid subsector", String.Format("The subsector index '{0}' is not valid (must be A...P).", ss));
                         return;
                     }
 
-                    int index = (int)(ss) - (int)('A');
+                    int index = (int)(ss[0]) - (int)('A');
                     selector = new SubsectorSelector(resourceManager, sector, index);
 
                     tileRect = sector.SubsectorBounds(index);
