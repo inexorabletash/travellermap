@@ -403,6 +403,7 @@
     <Compile Include="server\api\SearchHandler.cs" />
     <Compile Include="server\api\SECHandler.cs" />
     <Compile Include="server\api\SectorMetaDataHandler.cs" />
+    <Compile Include="server\api\ServiceConfiguration.cs" />
     <Compile Include="server\api\TileHandler.cs" />
     <Compile Include="server\api\UniverseHandler.cs" />
     <Compile Include="server\Astrometrics.cs" />
@@ -424,7 +425,6 @@
     <Compile Include="server\serialization\SectorMetadataSerializer.cs" />
     <Compile Include="server\serialization\SectorParser.cs" />
     <Compile Include="server\serialization\SectorWriter.cs" />
-    <Compile Include="server\ServiceConfiguration.cs" />
     <Compile Include="server\StellarData.cs" />
     <Compile Include="server\Stylesheet.cs" />
     <Compile Include="server\Util.cs" />

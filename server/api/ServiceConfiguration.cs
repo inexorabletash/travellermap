@@ -1,7 +1,7 @@
 ﻿using System.Net.Mime;
 using System.Web;
 
-namespace Maps
+namespace Maps.API
 {
     public class ServiceConfiguration
     {
