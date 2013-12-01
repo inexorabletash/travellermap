@@ -41,7 +41,6 @@ namespace Maps.Admin
         {
             context.Server.ScriptTimeout = 3600; // An hour should be plenty
             context.Response.ContentType = System.Net.Mime.MediaTypeNames.Text.Html;
-            context.Response.StatusCode = 200;
             context.Response.BufferOutput = false;
 
             context.Response.Write("<!DOCTYPE html>");

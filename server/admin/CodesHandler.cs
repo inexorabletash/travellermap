@@ -117,6 +117,7 @@ namespace Maps.Admin
         protected override void Process(System.Web.HttpContext context)
         {
             context.Response.ContentType = MediaTypeNames.Text.Plain;
+            context.Response.StatusCode = 200;
 
             ResourceManager resourceManager = new ResourceManager(context.Server, context.Cache);
 
