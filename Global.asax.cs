@@ -99,11 +99,6 @@ namespace Maps
 
             // HttpHandler routing ------------------------------------------------------
 
-            //routes.Add(new RegexRoute(@"^/foo/bar", 
-            //                          new GenericRouteHandler(typeof(HandlerClass)),
-            //                          new RouteValueDictionary(new { alpha = "beta" })
-            //);
-
             routes.Add(new RegexRoute(@"^/admin/admin$", typeof(AdminHandler)));
             routes.Add(new RegexRoute(@"^/admin/flush$", typeof(AdminHandler),
                 new RouteValueDictionary(new { action = "flush" })));
@@ -114,19 +109,17 @@ namespace Maps
             routes.Add(new RegexRoute(@"^/admin/errors$", typeof(ErrorsHandler)));
             routes.Add(new RegexRoute(@"^/admin/overview$", typeof(OverviewHandler)));
 
-            // See: http://stackoverflow.com/questions/3001009/output-caching-in-http-handler-and-setvaliduntilexpires
-            // to configure caching when moving pages to handlers:
-            // context.Response.Cache.VaryByParam["*"] = true;
-            // context.Response.Cache.VaryByHeaders["Accept"] = true;
-
             // Search
             routes.Add(new RegexRoute(@"^/api/search$", typeof(SearchHandler), DEFAULT_JSON));
 
+            routes.Add(new RegexRoute(@"^/Search.aspx$", typeof(SearchHandler), caseInsensitive: true));
+
             // Rendering
-            // TODO: Migrate from pages - but add ASPX routes (case-insensitively)
             routes.Add(new RegexRoute(@"^/api/jumpmap$", typeof(JumpMapHandler)));
+            routes.Add(new RegexRoute(@"^/api/poster$", typeof(PosterHandler)));
 
             routes.Add(new RegexRoute(@"^/JumpMap.aspx$", typeof(JumpMapHandler), caseInsensitive: true));
+            routes.Add(new RegexRoute(@"^/Poster.aspx$", typeof(PosterHandler), caseInsensitive: true));
 
             // Location Queries
             routes.Add(new RegexRoute(@"^/api/coordinates$", typeof(CoordinatesHandler), DEFAULT_JSON));
@@ -139,23 +132,19 @@ namespace Maps
 
             // Data Retrieval - API-centric
             routes.Add(new RegexRoute(@"^/api/universe$", typeof(UniverseHandler), DEFAULT_JSON));
-
             routes.Add(new RegexRoute(@"^/api/sec$", typeof(SECHandler), new RouteValueDictionary { { "type", "SecondSurvey" } }));
             routes.Add(new RegexRoute(@"^/api/sec/(?<sector>[^/]+)$", typeof(SECHandler), new RouteValueDictionary { { "type", "SecondSurvey" } }));
-
             routes.Add(new RegexRoute(@"^/api/metadata$", typeof(SectorMetaDataHandler), DEFAULT_JSON));
             routes.Add(new RegexRoute(@"^/api/metadata/(?<sector>[^/]+)$", typeof(SectorMetaDataHandler), DEFAULT_JSON));
             routes.Add(new RegexRoute(@"^/api/msec$", typeof(MSECHandler)));
             routes.Add(new RegexRoute(@"^/api/msec/(?<sector>[^/]+)$", typeof(MSECHandler)));
 
-            routes.Add(new RegexRoute(@"^/SEC.aspx$", typeof(SECHandler), caseInsensitive: true));
-            routes.Add(new RegexRoute(@"^/MSEC.aspx$", typeof(MSECHandler), caseInsensitive: true));
-            routes.Add(new RegexRoute(@"^/SectorMetaData.aspx$", typeof(SectorMetaDataHandler), caseInsensitive: true));
             routes.Add(new RegexRoute(@"^/Universe.aspx$", typeof(UniverseHandler), caseInsensitive: true));
-
+            routes.Add(new RegexRoute(@"^/SEC.aspx$", typeof(SECHandler), caseInsensitive: true));
+            routes.Add(new RegexRoute(@"^/SectorMetaData.aspx$", typeof(SectorMetaDataHandler), caseInsensitive: true));
+            routes.Add(new RegexRoute(@"^/MSEC.aspx$", typeof(MSECHandler), caseInsensitive: true));
 
             // Data Retrieval - RESTful
-            // TODO: Migrate from pages
             routes.Add(new RegexRoute(@"^/data$", typeof(UniverseHandler), DEFAULT_JSON));
 
             routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)$", typeof(SECHandler), new RouteValueDictionary { { "type", "SecondSurvey" } }));
@@ -165,10 +154,12 @@ namespace Maps
             routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/credits$", typeof(CreditsHandler), DEFAULT_JSON));
             routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/metadata$", typeof(SectorMetaDataHandler))); // NOTE: XML by default 
             routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/msec$", typeof(MSECHandler)));
+            routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/image$", typeof(PosterHandler)));
 
             routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/(?<subsector>[A-Pa-p])$", typeof(SECHandler), new RouteValueDictionary { { "type", "SecondSurvey" }, { "metadata", "0" } }));
             routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/(?<subsector>[A-Pa-p])/sec$", typeof(SECHandler), new RouteValueDictionary { { "metadata", "0" } }));
             routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/(?<subsector>[A-Pa-p])/tab$", typeof(SECHandler), new RouteValueDictionary { { "type", "TabDelimited" }, { "metadata", "0" } }));
+            routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/(?<subsector>[A-Pa-p])/image$", typeof(PosterHandler)));
 
             routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/(?<hex>\d\d\d\d)$", typeof(JumpWorldsHandler), new RouteValueDictionary { { "accept", JsonConstants.MediaType }, { "jump", "0" } }));
             routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/(?<hex>\d\d\d\d)/coordinates$", typeof(CoordinatesHandler), DEFAULT_JSON));
@@ -180,38 +171,12 @@ namespace Maps
 
             // TODO: Support subsectors by name
 
-            // Legacy Aliases
-
             // ASPX Page routing --------------------------------------------------------
 
-            // Helpers, to avoid having to mint names for each route
-            int routeNum = 0;
-            Func<string> routeName = () => "route " + (routeNum++).ToString();
-
-            Action<string, string> mpr0 =
-                (url, file) => routes.MapPageRoute(routeName(), url, file);
-            Action<string, string, RouteValueDictionary> mpr1 =
-                (url, file, defaults) => routes.MapPageRoute(routeName(), url, file, checkPhysicalUrlAccess: false, defaults: defaults);
-
-            const string BASE_DIR = @"~/server/pages/";
-
             // Rendering
-            mpr0("api/poster", BASE_DIR + "Poster.aspx");
-            mpr0("api/tile", BASE_DIR + "Tile.aspx");
 
-            // RESTful
-            mpr0("data/{sector}/image", BASE_DIR + "Poster.aspx");
-
-            // data/{sector}/{subsector}/foo conflicts with data/{sector}/{hex}/foo
-            // so register data/{sector}/A ... data/{sector}/P instead
-            // TODO: Support subsectors by name - will require manual delegation
-            for (char s = 'A'; s <= 'P'; ++s)
-            {
-                string ss = s.ToString();
-                Func<string, string> r = (pattern) => pattern.Replace("{subsector}", ss);
-
-                mpr1(r("data/{sector}/{subsector}/image"), BASE_DIR + "Poster.aspx", new RouteValueDictionary { { "subsector", ss } });
-            }
+            // TODO: Migrate to HttpHandler
+            routes.MapPageRoute("tile", "api/tile", @"~/server/pages/Tile.aspx");
 
         }
     }

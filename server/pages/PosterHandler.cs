@@ -1,44 +1,36 @@
-using Maps.Rendering;
+﻿using Maps.Rendering;
 using System;
 using System.Drawing;
 
 namespace Maps.Pages
 {
-    /// <summary>
-    /// Summary description for WebForm1.
-    /// </summary>
-
-    public class Poster : ImageGeneratorPage
+    public class PosterHandler : ImageHandlerBase
     {
         protected override string ServiceName { get { return "poster"; } }
-        private void Page_Load(object sender, System.EventArgs e)
-        {
-            if (!ServiceConfiguration.CheckEnabled(ServiceName, Response))
-            {
-                return;
-            }
 
+        public override void Process(System.Web.HttpContext context)
+        {
             // NOTE: This (re)initializes a static data structure used for 
             // resolving names into sector locations, so needs to be run
             // before any other objects (e.g. Worlds) are loaded.
-            ResourceManager resourceManager = new ResourceManager(Server, Cache);
+            ResourceManager resourceManager = new ResourceManager(context.Server, context.Cache);
 
             Selector selector;
             RectangleF tileRect = new RectangleF();
             MapOptions options = MapOptions.SectorGrid | MapOptions.SubsectorGrid | MapOptions.BordersMajor | MapOptions.BordersMinor | MapOptions.NamesMajor | MapOptions.NamesMinor | MapOptions.WorldsCapitals | MapOptions.WorldsHomeworlds;
             Stylesheet.Style style = Stylesheet.Style.Poster;
-            ParseOptions(ref options, ref style);
+            ParseOptions(context, ref options, ref style);
             string title;
 
-            if (HasOption("x1") && HasOption("x2") &&
-                HasOption("y1") && HasOption("y2"))
+            if (HasOption(context, "x1") && HasOption(context, "x2") &&
+                HasOption(context, "y1") && HasOption(context, "y2"))
             {
                 // Arbitrary rectangle
 
-                int x1 = GetIntOption("x1", 0);
-                int x2 = GetIntOption("x2", 0);
-                int y1 = GetIntOption("y1", 0);
-                int y2 = GetIntOption("y2", 0);
+                int x1 = GetIntOption(context, "x1", 0);
+                int x2 = GetIntOption(context, "x2", 0);
+                int y1 = GetIntOption(context, "y1", 0);
+                int y2 = GetIntOption(context, "y2", 0);
 
                 tileRect.X = Math.Min(x1, x2);
                 tileRect.Y = Math.Min(y1, y2);
@@ -61,21 +53,21 @@ namespace Maps.Pages
                 Sector sector = null;
                 options = options & ~MapOptions.SectorGrid;
 
-                if (Request.HttpMethod == "POST")
+                if (context.Request.HttpMethod == "POST")
                 {
                     try
                     {
-                        sector = GetPostedSector();
+                        sector = ImageGeneratorPage.GetPostedSector(context.Request);
                     }
                     catch (Exception ex)
                     {
-                        SendError(400, "Invalid request", ex.Message);
+                        SendError(context.Response, 400, "Invalid request", ex.Message);
                         return;
                     }
 
                     if (sector == null)
                     {
-                        SendError(400, "Invalid request", "Either file or data must be supplied in the POST data.");
+                        SendError(context.Response, 400, "Invalid request", "Either file or data must be supplied in the POST data.");
                         return;
                     }
 
@@ -83,10 +75,10 @@ namespace Maps.Pages
                 }
                 else
                 {
-                    string sectorName = GetStringOption("sector");
+                    string sectorName = GetStringOption(context, "sector");
                     if (sectorName == null)
                     {
-                        SendError(404, "Not Found", "No sector specified.");
+                        SendError(context.Response, 404, "Not Found", "No sector specified.");
                         return;
                     }
 
@@ -95,20 +87,20 @@ namespace Maps.Pages
                     sector = map.FromName(sectorName);
                     if (sector == null)
                     {
-                        SendError(404, "Not Found", String.Format("The specified sector '{0}' was not found.", sectorName));
+                        SendError(context.Response, 404, "Not Found", String.Format("The specified sector '{0}' was not found.", sectorName));
                         return;
                     }
 
                     title = sector.Names[0].Text;
                 }
 
-                if (HasOption("subsector") && GetStringOption("subsector").Length > 0)
+                if (HasOption(context, "subsector") && GetStringOption(context, "subsector").Length > 0)
                 {
                     options = options & ~MapOptions.SubsectorGrid;
-                    char ss = GetStringOption("subsector").ToUpperInvariant()[0];
+                    char ss = GetStringOption(context, "subsector").ToUpperInvariant()[0];
                     if (ss < 'A' || ss > 'P')
                     {
-                        SendError(400, "Invalid subsector", String.Format("The subsector index '{0}' is not valid (must be A...P).", ss));
+                        SendError(context.Response, 400, "Invalid subsector", String.Format("The subsector index '{0}' is not valid (must be A...P).", ss));
                         return;
                     }
 
@@ -142,9 +134,9 @@ namespace Maps.Pages
             }
 
             const double NormalScale = 64; // pixels/parsec - standard subsector-rendering scale
-            double scale = Util.Clamp(GetDoubleOption("scale", NormalScale), MinScale, MaxScale);
+            double scale = Util.Clamp(GetDoubleOption(context, "scale", NormalScale), MinScale, MaxScale);
 
-            int rot = GetIntOption("rotation", 0) % 4;
+            int rot = GetIntOption(context, "rotation", 0) % 4;
 
             Size tileSize = new Size((int)Math.Floor(tileRect.Width * scale * Astrometrics.ParsecScaleX), (int)Math.Floor(tileRect.Height * scale * Astrometrics.ParsecScaleY));
 
@@ -173,29 +165,7 @@ namespace Maps.Pages
             ctx.options = options;
             ctx.styles = new Stylesheet(scale, options, style);
             ctx.tileSize = tileSize;
-            ProduceResponse(title, ctx, new Size(bitmapWidth, bitmapHeight), rot, translateX, translateY);
+            ProduceResponse(context, title, ctx, new Size(bitmapWidth, bitmapHeight), rot, translateX, translateY);
         }
-
-
-
-        #region Web Form Designer generated code
-        override protected void OnInit(EventArgs e)
-        {
-            //
-            // CODEGEN: This call is required by the ASP.NET Web Form Designer.
-            //
-            InitializeComponent();
-            base.OnInit(e);
-        }
-
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
-        private void InitializeComponent()
-        {
-            this.Load += new System.EventHandler(this.Page_Load);
-        }
-        #endregion
     }
 }

@@ -11,6 +11,8 @@ namespace Maps
 {
     public abstract class HandlerBase : ITypeAccepter
     {
+        // TODO: Enforce verbs (i.e. GET or POST)
+
         protected void ParseOptions(HttpContext context, ref MapOptions options, ref Stylesheet.Style style)
         {
             ParseOptions(context.Request, Defaults(context), ref options, ref style);
