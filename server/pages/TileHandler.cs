@@ -1,10 +1,10 @@
-using Maps.Rendering;
+﻿using Maps.Rendering;
 using System;
 using System.Drawing;
 
 namespace Maps.Pages
 {
-    public class Tile : ImageGeneratorPage
+    public class TileHandler : ImageHandlerBase
     {
         protected override string ServiceName { get { return "tile"; } }
 
@@ -14,20 +14,19 @@ namespace Maps.Pages
         public const int NormalTileWidth = 256;
         public const int NormalTileHeight = 256;
 
-
-        private void Page_Load(object sender, System.EventArgs e)
+        public override void Process(System.Web.HttpContext context)
         {
-            ResourceManager resourceManager = new ResourceManager(Server, Cache);
+            ResourceManager resourceManager = new ResourceManager(context.Server, context.Cache);
 
             MapOptions options = MapOptions.SectorGrid | MapOptions.BordersMajor | MapOptions.NamesMajor | MapOptions.NamesMinor;
             Stylesheet.Style style = Stylesheet.Style.Poster;
-            ParseOptions(ref options, ref style);
+            ParseOptions(context, ref options, ref style);
 
-            double x = GetDoubleOption("x", 0);
-            double y = GetDoubleOption("y", 0);
-            double scale = Util.Clamp(GetDoubleOption("scale", 0), MinScale, MaxScale);
-            int width = Util.Clamp(GetIntOption("w", NormalTileWidth), MinDimension, MaxDimension);
-            int height = Util.Clamp(GetIntOption("h", NormalTileHeight), MinDimension, MaxDimension);
+            double x = GetDoubleOption(context, "x", 0);
+            double y = GetDoubleOption(context, "y", 0);
+            double scale = Util.Clamp(GetDoubleOption(context, "scale", 0), MinScale, MaxScale);
+            int width = Util.Clamp(GetIntOption(context, "w", NormalTileWidth), MinDimension, MaxDimension);
+            int height = Util.Clamp(GetIntOption(context, "h", NormalTileHeight), MinDimension, MaxDimension);
 
             Size tileSize = new Size(width, height);
 
@@ -39,7 +38,7 @@ namespace Maps.Pages
 
             DateTime dt = DateTime.Now;
             bool silly = (Math.Abs((int)x % 2) == Math.Abs((int)y % 2)) && (dt.Month == 4 && dt.Day == 1);
-            silly = GetBoolOption("silly", silly);
+            silly = GetBoolOption(context, "silly", silly);
 
             Render.RenderContext ctx = new Render.RenderContext();
             ctx.resourceManager = resourceManager;
@@ -54,29 +53,7 @@ namespace Maps.Pages
             ctx.tileSize = tileSize;
             ctx.silly = silly;
             ctx.clipOutsectorBorders = true;
-            ProduceResponse("Tile", ctx, tileSize);
+            ProduceResponse(context, "Tile", ctx, tileSize);
         }
-
-
-        #region Web Form Designer generated code
-        override protected void OnInit(EventArgs e)
-        {
-            //
-            // CODEGEN: This call is required by the ASP.NET Web Form Designer.
-            //
-            InitializeComponent();
-            base.OnInit(e);
-        }
-
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
-        private void InitializeComponent()
-        {
-            this.Load += new System.EventHandler(this.Page_Load);
-        }
-        #endregion
-
     }
 }

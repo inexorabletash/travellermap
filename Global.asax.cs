@@ -117,9 +117,11 @@ namespace Maps
             // Rendering
             routes.Add(new RegexRoute(@"^/api/jumpmap$", typeof(JumpMapHandler)));
             routes.Add(new RegexRoute(@"^/api/poster$", typeof(PosterHandler)));
+            routes.Add(new RegexRoute(@"^/api/tile$", typeof(TileHandler)));
 
             routes.Add(new RegexRoute(@"^/JumpMap.aspx$", typeof(JumpMapHandler), caseInsensitive: true));
             routes.Add(new RegexRoute(@"^/Poster.aspx$", typeof(PosterHandler), caseInsensitive: true));
+            routes.Add(new RegexRoute(@"^/Tile.aspx$", typeof(TileHandler), caseInsensitive: true));
 
             // Location Queries
             routes.Add(new RegexRoute(@"^/api/coordinates$", typeof(CoordinatesHandler), DEFAULT_JSON));
@@ -170,13 +172,6 @@ namespace Maps
             routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/(?<hex>\d\d\d\d)/jump/(?<jump>\d+)/image$", typeof(JumpMapHandler)));
 
             // TODO: Support subsectors by name
-
-            // ASPX Page routing --------------------------------------------------------
-
-            // Rendering
-
-            // TODO: Migrate to HttpHandler
-            routes.MapPageRoute("tile", "api/tile", @"~/server/pages/Tile.aspx");
 
         }
     }

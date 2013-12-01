@@ -280,7 +280,6 @@
     <Content Include="res\ui\youarehere.png" />
     <Content Include="res\ui\youarehere_gray.png" />
     <Content Include="robots.txt" />
-    <Content Include="server\pages\Tile.aspx" />
     <Content Include="sitemap.xml" />
     <Content Include="index.html" />
     <Content Include="index.js" />
@@ -413,10 +412,7 @@
     <Compile Include="server\pages\SearchHandler.cs" />
     <Compile Include="server\pages\SECHandler.cs" />
     <Compile Include="server\pages\SectorMetaDataHandler.cs" />
-    <Compile Include="server\pages\Tile.aspx.cs">
-      <DependentUpon>Tile.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
+    <Compile Include="server\pages\TileHandler.cs" />
     <Compile Include="server\pages\UniverseHandler.cs" />
     <Compile Include="server\Render.cs" />
     <Compile Include="server\RenderUtil.cs" />

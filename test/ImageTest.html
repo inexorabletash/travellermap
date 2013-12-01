@@ -153,8 +153,8 @@ tbody#results tr.fail td { border: 1px solid red; }
   check("ref5.png",  "api/tile?x=-0.5&y=-0.5&scale=0.031", 32);
   check("ref6.png",  "api/tile?x=-0.5&y=-0.5&scale=0.063", 32);
   check("ref7.png",  "api/tile?x=-0.5&y=-0.5&scale=0.125", 32);
-  check("ref8.png",  "api/tile?x=-0.5&y=-0.5&scale=0.25");
-  check("ref9.png",  "api/tile?x=-0.5&y=-0.5&scale=0.5");
+  check("ref8.png",  "api/tile?x=-0.5&y=-0.5&scale=0.25", 32);
+  check("ref9.png",  "api/tile?x=-0.5&y=-0.5&scale=0.5", 32);
   check("ref10.png", "api/tile?x=-0.5&y=-0.5&scale=1");
   check("ref11.png", "api/tile?x=-0.5&y=-0.5&scale=2");
   check("ref12.png", "api/tile?x=-0.5&y=-0.5&scale=4");
@@ -189,7 +189,7 @@ tbody#results tr.fail td { border: 1px solid red; }
   // Regression: hex selector calculation
   check("ref32.png", "api/tile?x=-74&y=-86&scale=512&options=887&style=poster");
   // Regression: candy sector grid lines
-  check("ref33.jpg", "api/tile?x=-0.5&y=-0.25&w=512&h=512&scale=32&options=9079&style=candy");
+  check("ref33.jpg", "api/tile?x=-0.5&y=-0.25&w=512&h=512&scale=32&options=9079&style=candy", 24);
 
 
   // Template:
