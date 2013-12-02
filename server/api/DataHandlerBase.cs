@@ -59,9 +59,6 @@ namespace Maps.API
 
         public static void SendResult(HttpContext context, ITypeAccepter accepter, object o, Encoding encoding = null)
         {
-            // CORS - allow from any origin
-            context.Response.AddHeader("Access-Control-Allow-Origin", "*");
-
             // Vary: * is basically ignored by browsers
             context.Response.Cache.SetOmitVaryStar(true);
 
@@ -111,9 +108,6 @@ namespace Maps.API
 
         public static void SendFile(HttpContext context, string contentType, string filename)
         {
-            // CORS - allow from any origin
-            context.Response.AddHeader("Access-Control-Allow-Origin", "*");
-
             context.Response.ContentType = contentType;
             SendPreamble(context, contentType);
             context.Response.TransmitFile(filename);
