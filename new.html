@@ -533,18 +533,18 @@ button:hover {
         <li><span class="glyph g10 highlight">&#x25A0;</span> Zhodani Depot
 
         <li><span class="glyph g8 highlight">&#x2605;</span> Vargr Naval Base
-        <li><span class="glyph g10">**</span> Vargr Corsair Base
+        <li><span class="glyph g8">&#x2217;&#x2217;</span> Vargr Corsair Base
 
         <li><span class="glyph g8 highlight">&#x2605;</span> K'kree Naval Base
         <li><span class="glyph g10 highlight">&#x25A0;</span> K'kree Naval Outpost
 
         <li><span class="glyph g8 highlight">&#x2605;</span> Solomani Naval Base
 
-        <li><span class="glyph g10">**</span> Aslan Clan Base
+        <li><span class="glyph g8">&#x2217;&#x2217;</span> Aslan Clan Base
         <li><span class="glyph g8 highlight">&#x2605;</span> Aslan Tlauku Base
 
         <li><span class="glyph g8 highlight">&#x2605;</span> Federation Naval Base
-        <li><span class="glyph g10">**</span> Federation Embassy
+        <li><span class="glyph g8">&#x2217;&#x2217;</span> Federation Embassy
 
         <li><span class="glyph g8 highlight">&#x2605;</span> Droyne Naval Base
         <li><span class="glyph g10">&#x2726;</span> Droyne Military Garrison
@@ -764,13 +764,13 @@ button:hover {
     <div id="MetadataDisplay">&nbsp;</div>
     <script id="SectorMetadataTemplate" type="text/x-handlebars-template">
       <div>
-        {{#SectorName}}<a title="Printable Sector Booklet for {{.}} Sector" target="_blank" href="sector.htm?sector={{.}}">{{.}}</a>{{/SectorName}}
+        {{#SectorName}}<a title="Printable Booklet for {{.}} Sector" target="_blank" href="/data/{{.}}/booklet">{{.}}</a>{{/SectorName}}
         {{#SectorEra}}(circa {{.}}){{/SectorEra}}
       </div>
     </script>
     <script id="WorldMetadataTemplate" type="text/x-handlebars-template">
       <div>
-        {{#SectorName}}<a title="Printable Sector Booklet for {{.}} Sector" target="_blank" href="sector.htm?sector={{.}}">{{.}}</a>{{/SectorName}}
+        {{#SectorName}}<a title="Printable Booklet for {{.}} Sector" target="_blank" href="/data/{{.}}/booklet">{{.}}</a>{{/SectorName}}
         <a class="stealth" href="doc/secondsurvey.html#hex" target="_blank" title="Hex">{{WorldHex}}</a>
         <b><a class="stealth" href="doc/secondsurvey.html#name" target="_blank" title="Name">{{WorldName}}</a></b>
         <a class="stealth" href="doc/secondsurvey.html#uwp" target="_blank" title="UWP">{{WorldUwp}}</a>

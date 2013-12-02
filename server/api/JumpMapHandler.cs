@@ -173,6 +173,7 @@ namespace Maps.API
             ctx.border = border;
             ctx.clipOutsectorBorders = true;
 
+            // TODO: Widen path to allow for single-pixel border
             ctx.clipPath = clip ? new XGraphicsPath(boundingPathCoords, boundingPathTypes, XFillMode.Alternate) : null;
             ProduceResponse(context, "Jump Map", ctx, tileSize, transparent: clip);
         }
