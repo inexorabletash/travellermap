@@ -195,23 +195,27 @@ button:hover {
       }
       .style-print #searchBox,
       .style-atlas #searchBox { background-color: #e0e0e0; }
-      @media only screen and (max-width: 700px), (max-device-width: 700px) {
+      @media only screen and (max-width: 650px), (max-device-width: 650px) {
         #searchBox { width: 150px; }
       }
-      @media only screen and (max-width: 600px), (max-device-width: 600px) {
+      @media only screen and (max-width: 550px), (max-device-width: 550px) {
         #searchBox { width: 80px; padding: 0 4px; }
       }
-      @media only screen and (max-width: 500px), (max-device-width: 500px) {
-        #importantBtn { display: none; }
-      }
-      @media only screen and (max-width: 425px), (max-device-width: 425px) {
+      @media only screen and (max-width: 460px), (max-device-width: 460px) {
         #legendBtn { display: none; }
+      }
+      @media only screen and (max-width: 460px), (max-device-width: 460px) {
+        #legendBtn { display: none; }
+      }
+      @media only screen and (max-width: 400px), (max-device-width: 400px) {
+        #starBtn { display: none; }
       }
       @media only screen and (max-width: 350px), (max-device-width: 350px) {
         #searchBox { width: 50px; }
       }
       </style>
-      <button id="searchBtn">
+      <button id="searchBtn"
+              title="Search">
         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAMAAAAMs7fIAAAAM1BMVEUAAAAAAAAABQAABQAACAAABQAABQAABQAABgAABAAABAAABQAABAAAAwAABQAABgAAAwByeGHnAAAAD3RSTlMAEJCgIGDsMIDZQHCzUMaidUdwAAAAbklEQVQY023QWwrFIAxFUd8m2nZn/qO95dpAKZ4fD0tCIGGfMkVqfIEAYPUNLWWD00cg309U2iOT5j/Dh9IqF+KSV1HmKhX7L+7Ql0RDyw2K+vYKXAqk4nQ2AE1YD54h0kMxnDx9S0f40DE2p/kByccEjmEXLDUAAAAASUVORK5CYII="
              width="17" height="17"
              alt="Search">
@@ -241,12 +245,12 @@ button:hover {
       </script>
     </button>
 
-    <button id="importantBtn"
-            title="Search for capitals and homeworlds">
-      <img src="res/ui/star-button.png"
-           width="17" height="17" alt="Points of Interest">
+    <button id="starBtn"
+            title="Points of interest">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAMAAAAMs7fIAAAAUVBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABcqRVCAAAAGnRSTlMACexeUctAZgEQtTWCrW8eA5L3GHYp24uaY7niTYMAAABwSURBVBjTXZBbCsQgDABTW63a13bfzP0Puq4YKRn8kGECGlGGKIZxsSZ/jEg4MzaBGdtg1XyuAK5eRpHguPB+/atM5xzaW1RMosxUgnS+VJ5d3O5QDr6bADkdHg41J3ss5creRPRL+8qmq0kaP0r6A4lYCK1s5x8tAAAAAElFTkSuQmCC"
+           width="17" height="17" alt="Points of interest">
       <style>
-      #importantBtn {
+      #starBtn {
         height: 30px;
         float: left;
         margin-left: 4px;
@@ -260,7 +264,7 @@ button:hover {
         search($('#searchBox').value);
         e.preventDefault();
       });
-      $('#importantBtn').addEventListener('click', function() {
+      $('#starBtn').addEventListener('click', function() {
         search("(default)");
       });
     });
@@ -369,7 +373,7 @@ button:hover {
       <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAMAAAAMs7fIAAAAP1BMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACzJYIvAAAAFHRSTlMAYpYDv9tw9xIQX4HM8KIFr+U23VrmvHEAAABhSURBVBjTpY9JDoAgDEUrlkFGh97/rBYQIhpXvs1PX9omH76Zn0JtalwQRLQ6361BymgSl9glVZpRmjqO5xTpTkxgcTBo+W050og+h4FmJMD00wTNHACWI2QDS4HL1XhzAkBGCW3YsBI9AAAAAElFTkSuQmCC"
            width="17" height="17"
            alt="Home">
-    <button id="styleBtn"
+    <button id="settingsBtn"
             title="Change the map appearance">
       <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAARBAMAAADJQ1rJAAAAJ1BMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADdEvm1AAAADHRSTlMAAQo844KK8mBApcPkkCjWAAAAZElEQVQI12NgYBCAYgZGRuFmQUYGEFeB5QiDggBQiPNozpnUk4xAIZ0zIAAUZGQ9c3z7maOMQFm2M4uY1hwDsph9jisoqJ9xZmDgOHOaiYn7zAmEGJI6hF6EeQg7EPYi3IJwHwCloCkTYV1GGgAAAABJRU5ErkJggg=="
            width="17" height="17"
@@ -382,7 +386,7 @@ button:hover {
     <script>
     window.addEventListener('DOMContentLoaded', function() {
       var $ = function(s) { return document.querySelector(s); };
-      var PANELS = ['legend', 'style', 'share', 'help'];
+      var PANELS = ['legend', 'settings', 'share', 'help'];
       PANELS.forEach(function(b) {
         $('#'+b+'Btn').addEventListener('click', function() {
           PANELS.forEach(function(p) {
@@ -401,21 +405,21 @@ button:hover {
   </div>
 
   <style>
-  body.show-style #styleBox,
+  body.show-settings #settingsBox,
   body.show-legend #legendBox,
   body.show-share #shareBox,
   body.show-help #helpBox { display: block; }
-  body.show-style #styleBtn,
+  body.show-settings #settingsBtn,
   body.show-legend #legendBtn,
   body.show-share #shareBtn,
   body.show-help #helpBtn { background-color: red; }
 
   </style>
 
-  <div id="styleBox"
+  <div id="settingsBox"
        class="ui hoverbox hoverbox-right">
     <style>
-    #styleBox {
+    #settingsBox {
       width: 200px;
       max-height: 385px;
     }
@@ -426,38 +430,38 @@ button:hover {
       box-shadow: none;
       border: 1px solid gray;
     }
-    #styleBox section { margin: 1em 0; }
-    #styleBox section:first-of-type { margin-top: 0; }
-    #styleBox section:last-of-type { margin-bottom: 0; }
+    #settingsBox section { margin: 1em 0; }
+    #settingsBox section:first-of-type { margin-top: 0; }
+    #settingsBox section:last-of-type { margin-bottom: 0; }
 
     /* checkbox/radio buttons are larger on iOS */
-    #styleBox p { min-height: 24px; }
+    #settingsBox p { min-height: 24px; }
 
     </style>
     <section id="styles">
-      <button id="styleBtn-poster"
+      <button id="settingsBtn-poster"
               title="Classic black background"
               ></button>
-      <button id="styleBtn-print"
+      <button id="settingsBtn-print"
               title="Printer friendly"
               ></button>
-      <button id="styleBtn-atlas"
+      <button id="settingsBtn-atlas"
               title="Black on white"
               ></button>
-      <button id="styleBtn-candy"
+      <button id="settingsBtn-candy"
               title="Eye candy"
               ></button>
       <style>
-      #styleBtn-poster { background-image: url('res/ui/style-poster.png'); }
-      #styleBtn-atlas  { background-image: url('res/ui/style-atlas.png'); }
-      #styleBtn-print  { background-image: url('res/ui/style-print.png'); }
-      #styleBtn-candy  { background-image: url('res/ui/style-candy.png'); }
+      #settingsBtn-poster { background-image: url('res/ui/style-poster.png'); }
+      #settingsBtn-atlas  { background-image: url('res/ui/style-atlas.png'); }
+      #settingsBtn-print  { background-image: url('res/ui/style-print.png'); }
+      #settingsBtn-candy  { background-image: url('res/ui/style-candy.png'); }
       </style>
       <script>
         window.addEventListener('DOMContentLoaded', function() {
           var $ = function(s) { return document.querySelector(s); };
           ['poster', 'atlas', 'print', 'candy'].forEach(function(s) {
-            $('#styleBtn-'+s).addEventListener('click', function() { map.SetStyle(s); });
+            $('#settingsBtn-'+s).addEventListener('click', function() { map.SetStyle(s); });
           });
         });
       </script>
