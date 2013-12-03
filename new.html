@@ -118,7 +118,7 @@ button:hover {
   </script>
 
   <div id="mapContainer" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0;">
-    <div id="dragContainer" style="position: absolute; overflow: hidden; width: 100%; height: 100%;" tabindex="0">
+    <div id="dragContainer" style="position: absolute; overflow: hidden; width: 100%; height: 100%;" tabindex="0" title="Drag to scroll">
       <div id="GalacticDirectionDisplay">
         <div id="direction-coreward" class="direction">Coreward</div>
         <div id="direction-rimward" class="direction">Rimward</div>
@@ -185,7 +185,7 @@ button:hover {
       #searchForm { display: inline; }
       #searchBox {
         background-color: white;
-        height: 30px; width: 250px;
+        height: 30px; width: 200px;
         float: left;
         font-size: 12pt;
         font-family: Univers, Helvetica, Arial, sans-serif;
@@ -195,22 +195,16 @@ button:hover {
       }
       .style-print #searchBox,
       .style-atlas #searchBox { background-color: #e0e0e0; }
-      @media only screen and (max-width: 650px) {
-        #searchBox { width: 150px; }
+      @media only screen and (max-width: 600px) {
+        #searchBox { width: 100px; }
       }
-      @media only screen and (max-width: 550px) {
-        #searchBox { width: 80px; padding: 0 4px; }
-      }
-      @media only screen and (max-width: 460px) {
-        #legendBtn { display: none; }
-      }
-      @media only screen and (max-width: 460px) {
+      @media only screen and (max-width: 470px) {
         #legendBtn { display: none; }
       }
       @media only screen and (max-width: 400px) {
         #starBtn { display: none; }
       }
-      @media only screen and (max-width: 350px) {
+      @media only screen and (max-width: 360px) {
         #searchBox { width: 50px; }
       }
       </style>
@@ -362,7 +356,9 @@ button:hover {
     </style>
     <button id="shareBtn"
             title="Share links to the map">
-      Share
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAMAAAAMs7fIAAAAQlBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACO4fbyAAAAFXRSTlMAKlv4BDPaQRqADsbopGgl0alS7KbFwjzRAAAAYUlEQVQY042OSw6AIAxEBwT5+dfe/6q2IQRBF77NZF6aZvBgjuigyfaGKJhazTISkzwkDkBxz4jRgOOoBoAfSt/WbHYKqnzmkBMLhk4HZKMdhCuimDrMJTHtyJ+m4dO8uQE/DglxnzUgrQAAAABJRU5ErkJggg=="
+           width="17" height="17"
+           alt="Share">
     </button>
     <button id="legendBtn"
             title="Map legend and symbols">
@@ -535,26 +531,11 @@ button:hover {
 
         <li><span class="glyph g12">&diams;</span> Zhodani Base
         <li><span class="glyph g12 highlight">&diams;</span> Zhodani Relay Station
-        <li><span class="glyph g10 highlight">&#x25A0;</span> Zhodani Depot
 
-        <li><span class="glyph g8 highlight">&#x2605;</span> Vargr Naval Base
-        <li><span class="glyph g8">&#x2217;&#x2217;</span> Vargr Corsair Base
+        <li><span class="glyph g8 highlight">&#x2605;</span> Other Naval / Tlauku Base
+        <li><span class="glyph g10 highlight">&#x25A0;</span> Other Naval Outpost / Depot
+        <li><span class="glyph g8">&#x2217;&#x2217;</span> Corsair / Clan / Embassy
 
-        <li><span class="glyph g8 highlight">&#x2605;</span> K'kree Naval Base
-        <li><span class="glyph g10 highlight">&#x25A0;</span> K'kree Naval Outpost
-
-        <li><span class="glyph g8 highlight">&#x2605;</span> Solomani Naval Base
-
-        <li><span class="glyph g8">&#x2217;&#x2217;</span> Aslan Clan Base
-        <li><span class="glyph g8 highlight">&#x2605;</span> Aslan Tlauku Base
-
-        <li><span class="glyph g8 highlight">&#x2605;</span> Federation Naval Base
-        <li><span class="glyph g8">&#x2217;&#x2217;</span> Federation Embassy
-
-        <li><span class="glyph g8 highlight">&#x2605;</span> Droyne Naval Base
-        <li><span class="glyph g10">&#x2726;</span> Droyne Military Garrison
-
-        <li><span class="glyph g8 highlight">&#x2605;</span> Naval Base
         <li><span class="glyph g10">&#x2726;</span> Military Base
         <li><span class="glyph g12">&bull;</span> Independent Base
 
@@ -574,8 +555,8 @@ button:hover {
     <section>
       <h2>Population</h2><br>
       <ul>
-        <li><span>Secundus</span> &nbsp; under 1 billion
-        <li><span>PRIMUS</span> &nbsp; over 1 billion
+        <li><span class="popname">Secundus</span> &nbsp; under 1 billion
+        <li><span class="popname">PRIMUS</span> &nbsp; over 1 billion
         <li><span class="highlight">Highlighted</span> world names<br>are subsector capitals
       </ul>
     </section>
