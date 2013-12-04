@@ -138,21 +138,20 @@ function escapeHtml(s) {
         // Due to proxies/user-agents not respecting Vary tags, switch to URL params instead of headers.
         xhr.setRequestHeader('Accept', contentType);
         xhr.onreadystatechange = function() {
-          if (xhr.readyState === XMLHttpRequest.DONE) {
-            try {
-              if (xhr.status === 0)
-                return; // aborted, no callback
-              if (xhr.status === 200) {
-                callback(contentType === 'application/json' ? JSON.parse(xhr.responseText) : xhr.responseText);
-                return;
-              }
-              if (errback)
-                errback(xhr.status);
-            } catch (e) {
-              // IE9 throws if xhr.status accessed after an explicit abort() call
-              return;
-            }
+          if (xhr.readyState !== XMLHttpRequest.DONE)
+            return;
+          if (xhr.status === 200) {
+            callback(contentType === 'application/json' ? JSON.parse(xhr.responseText) : xhr.responseText);
+            return;
           }
+          if (errback)
+            errback(xhr.status);
+        };
+        var original_abort = xhr.abort;
+        xhr.abort = function() {
+          xhr.onreadystatechange = null;
+          if (original_abort)
+            original_abort.call(xhr);
         };
         xhr.send();
         return xhr;

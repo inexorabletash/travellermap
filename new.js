@@ -274,7 +274,7 @@ window.addEventListener('DOMContentLoaded', function() {
     if (lastX === hexX && lastY === hexY)
       return;
 
-    if (dataRequest && dataRequest.abort) {
+    if (dataRequest) {
       dataRequest.abort();
       dataRequest = null;
     }
@@ -289,8 +289,8 @@ window.addEventListener('DOMContentLoaded', function() {
       dataRequest = MapService.credits(hexX, hexY, function(data) {
         dataRequest = null;
         displayResults(data);
-      }, function (error) {
-        $('#MetadataDisplay').innerHTML = '<i>Error: ' + error + '</i>';
+      }, function(error) {
+        //$('#MetadataDisplay').innerHTML = '<i>' + error + '</i>';
       });
 
     }, DATA_REQUEST_DELAY_MS);
@@ -305,7 +305,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
       data.Attribution = (function() {
         var r = [];
-        ['SectorAuthor', 'SectorSource', 'SectorPublisher'].forEach(function (p) {
+        ['SectorAuthor', 'SectorSource', 'SectorPublisher'].forEach(function(p) {
           if (p in data) { r.push(data[p]); }
         });
         return r.join(', ');
@@ -349,7 +349,7 @@ window.addEventListener('DOMContentLoaded', function() {
     document.body.classList.add('search-progress');
     document.body.classList.remove('search-results');
 
-    if (searchRequest && searchRequest.abort)
+    if (searchRequest)
       searchRequest.abort();
 
     searchRequest = MapService.search(query, function(data) {
@@ -357,8 +357,11 @@ window.addEventListener('DOMContentLoaded', function() {
       displayResults(data);
       document.body.classList.remove('search-progress');
       document.body.classList.add('search-results');
-    }, function (error) {
-      $('#SearchResults').innerHTML = '<div><i>Error: ' + error + '<' + '/i><' + '/div>';
+    }, function(error) {
+      searchRequest = null;
+      $('#resultsContainer').innerHTML = '<i>Error fetching results.</i>';
+      document.body.classList.remove('search-progress');
+      document.body.classList.add('search-results');
     });
 
     // Transform the search results into clickable links
