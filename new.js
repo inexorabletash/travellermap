@@ -1,4 +1,9 @@
+// imports
+var SERVICE_BASE, MapOptions, Astrometrics, MapService;
+var Handlebars;
+
 window.addEventListener('DOMContentLoaded', function() {
+  'use strict';
 
   //////////////////////////////////////////////////////////////////////
   //
@@ -25,7 +30,7 @@ window.addEventListener('DOMContentLoaded', function() {
   //
   //////////////////////////////////////////////////////////////////////
 
-  var mapElement = $("#dragContainer");
+  var mapElement = $('#dragContainer');
   var map = new Map(mapElement);
 
   // Export
@@ -53,7 +58,7 @@ window.addEventListener('DOMContentLoaded', function() {
     x: defaults.x,
     y: defaults.y,
     scale: defaults.scale
-  }
+  };
 
   function setOptions(mask, flags) {
     map.SetOptions((map.GetOptions() & ~mask) | flags);
@@ -66,7 +71,7 @@ window.addEventListener('DOMContentLoaded', function() {
   var optionObservers = [];
   map.OnOptionsChanged = function(options) {
     optionObservers.forEach(function(o) { o(options); });
-    $('#legendBox').classList[(options & MapOptions.WorldColors) ? "add" : "remove"]("world_colors");
+    $('#legendBox').classList[(options & MapOptions.WorldColors) ? 'add' : 'remove']('world_colors');
     updatePermalink();
   };
 
@@ -89,7 +94,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
   function bindControl(selector, property, onChange, event, onEvent) {
     var element = $(selector);
-    if (!element) { console.error("Unmatched selector: " + selector); return; }
+    if (!element) { console.error('Unmatched selector: ' + selector); return; }
     optionObservers.push(function(o) { element[property] = onChange(o); });
     element.addEventListener(event, function() { onEvent(element); });
   }
@@ -127,26 +132,26 @@ window.addEventListener('DOMContentLoaded', function() {
   //
   // Call this AFTER data binding is hooked up so UI is synchronized
   //
-  var urlParams = applyUrlParameters(map);
+  var urlParams = map.ApplyURLParameters();
 
   // Force UI to synchronize in case URL parameters didn't do it
   map.OnOptionsChanged(map.GetOptions());
 
   // TODO: Generalize URLParam<->Control and URLParam<->Style binding
-  $("#ShowGalacticDirections").checked = true;
+  $('#ShowGalacticDirections').checked = true;
   document.body.classList.add('show-directions');
-  $("#ShowGalacticDirections").addEventListener('click', function() {
+  $('#ShowGalacticDirections').addEventListener('click', function() {
     document.body.classList[this.checked ? 'add' : 'remove']('show-directions');
     updatePermalink();
   });
-  if ("galdir" in urlParams) {
+  if ('galdir' in urlParams) {
     var show = Boolean(Number(urlParams.galdir));
     document.body.classList[show ? 'add' : 'remove']('show-directions');
-    $("#ShowGalacticDirections").checked = show;
+    $('#ShowGalacticDirections').checked = show;
     updatePermalink();
   }
 
-  if ("q" in urlParams) {
+  if ('q' in urlParams) {
     $('#searchBox').value = urlParams.q;
     search(urlParams.q);
   }
@@ -237,9 +242,9 @@ window.addEventListener('DOMContentLoaded', function() {
             y = ( -map_center_y * scale - ( height / 2 ) ) / height;
         return { x: x, y: y, w: width, h: height, scale: scale };
       }());
-      snapshotParams.x = round(snapshotParams.x, .001);
-      snapshotParams.y = round(snapshotParams.y, .001);
-      snapshotParams.scale = round(snapshotParams.scale, .01);
+      snapshotParams.x = round(snapshotParams.x, 1/1000);
+      snapshotParams.y = round(snapshotParams.y, 1/1000);
+      snapshotParams.scale = round(snapshotParams.scale, 1/128);
       snapshotParams.options = map.GetOptions();
       snapshotParams.style = map.GetStyle();
       var snapshotURL = makeURL(SERVICE_BASE + '/api/tile', snapshotParams);
@@ -285,7 +290,7 @@ window.addEventListener('DOMContentLoaded', function() {
         dataRequest = null;
         displayResults(data);
       }, function (error) {
-        $("#MetadataDisplay").innerHTML = "<i>Error: " + error + "</i>";
+        $('#MetadataDisplay').innerHTML = '<i>Error: ' + error + '</i>';
       });
 
     }, DATA_REQUEST_DELAY_MS);
@@ -314,7 +319,7 @@ window.addEventListener('DOMContentLoaded', function() {
       }
 
       var template = map.GetScale() >= 16 ? worldMetadataTemplate : sectorMetadataTemplate;
-      $("#MetadataDisplay").innerHTML = statusMetadataTemplate(data) +
+      $('#MetadataDisplay').innerHTML = statusMetadataTemplate(data) +
         template(data) + commonMetadataTemplate(data);
     }
   }
@@ -326,17 +331,17 @@ window.addEventListener('DOMContentLoaded', function() {
   //
   //////////////////////////////////////////////////////////////////////
 
-  var searchTemplate = Handlebars.compile($("#SearchResultsTemplate").innerHTML);
+  var searchTemplate = Handlebars.compile($('#SearchResultsTemplate').innerHTML);
 
   var searchRequest = null;
 
   function search(query) {
-    if (query === "")
+    if (query === '')
       return;
 
     // IE stops animated images when submitting a form - restart it
     if (document.images) {
-      var progressImage = $("#ProgressImage");
+      var progressImage = $('#ProgressImage');
       progressImage.src = progressImage.src;
     }
 
@@ -353,32 +358,36 @@ window.addEventListener('DOMContentLoaded', function() {
       document.body.classList.remove('search-progress');
       document.body.classList.add('search-results');
     }, function (error) {
-      $("#SearchResults").innerHTML = "<div><i>Error: " + error + "<" + "/i><" + "/div>";
+      $('#SearchResults').innerHTML = '<div><i>Error: ' + error + '<' + '/i><' + '/div>';
     });
 
     // Transform the search results into clickable links
     function displayResults(data) {
       var base_url = document.location.href.replace(/\?.*/, '');
 
+      function applyTags(item) {
+        if ('SectorTags' in item) {
+          var tags = String(item.SectorTags).split(/\s+/);
+          if (tags.indexOf('Official') !== -1) item.Official = true;
+          else if (tags.indexOf('Preserve') !== -1) item.Unofficial = true;
+          else item.Unofficial = true;
+        }
+      }
+
+      function pad2(n) {
+        return ('00' + n).slice(-2);
+      }
+
       // Pre-process the data
-      for (i = 0; i < data.Results.Items.length; ++i) {
+      for (var i = 0; i < data.Results.Items.length; ++i) {
 
         var item = data.Results.Items[i];
         var sx, sy, hx, hy, scale;
 
-        function applyTags(item) {
-          if ('SectorTags' in item) {
-            var tags = String(item.SectorTags).split(/\s+/);
-            if (tags.indexOf('Official') !== -1) item.Official = true;
-            else if (tags.indexOf('Preserve') !== -1) item.Unofficial = true;
-            else item.Unofficial = true;
-          }
-        }
-
         if (item.Subsector) {
           var subsector = item.Subsector,
-            index = subsector.Index || "A",
-            n = (index.charCodeAt(0) - "A".charCodeAt(0));
+            index = subsector.Index || 'A',
+            n = (index.charCodeAt(0) - 'A'.charCodeAt(0));
           sx = subsector.SectorX|0;
           sy = subsector.SectorY|0;
           hx = (((n % 4) | 0) + 0.5) * (Astrometrics.SectorWidth / 4);
@@ -397,19 +406,19 @@ window.addEventListener('DOMContentLoaded', function() {
           applyTags(sector);
         } else if (item.World) {
           var world = item.World;
-          world.Name = world.Name || "(Unnamed)";
-          sx = world.SectorX | 0;
-          sy = world.SectorY | 0;
-          hx = world.HexX | 0;
+          world.Name = world.Name || '(Unnamed)';
+          sx = world.SectorX|0;
+          sy = world.SectorY|0;
+          hx = world.HexX|0;
           hy = world.HexY|0;
-          world.Hex = (hx < 10 ? "0" : "") + hx + (hy < 10 ? "0" : "") + hy;
+          world.Hex = pad2(hx) + pad2(hy);
           scale = world.Scale || 64;
           world.href = makeURL(base_url, {scale: scale, sx: sx, sy: sy, hx: hx, hy: hy});
           applyTags(world);
         }
       }
 
-      $("#resultsContainer").innerHTML = searchTemplate(data);
+      $('#resultsContainer').innerHTML = searchTemplate(data);
 
       [].forEach.call(document.querySelectorAll('#resultsContainer a'), function(a) {
         a.addEventListener('click', function(e) {

@@ -33,6 +33,12 @@ function getUrlParameters() {
   return parseURLQuery(document.location);
 }
 
+
+// NOTE: Needs to be exported
+function applyUrlParameters(map) {
+  return map.ApplyURLParameters();
+}
+
 // NOTE: Used by other scripts
 function escapeHtml(s) {
   'use strict';
@@ -1312,6 +1318,75 @@ function escapeHtml(s) {
     this.makeOverlay(overlay);
   };
 
+  Map.prototype.ApplyURLParameters = function() {
+    var params = parseURLQuery(document.location);
+
+    function float(prop) {
+      var n = parseFloat(params[prop]);
+      return isNaN(n) ? 0 : n;
+    }
+
+    function int(prop) {
+      var n = parseInt(params[prop], 10);
+      return isNaN(n) ? 0 : n;
+    }
+
+    function has(params, list) {
+      return list.every(function(item) { return item in params; });
+    }
+
+    if ('scale' in params)
+      this.SetScale(float('scale'));
+
+    if ('options' in params)
+      this.SetOptions(int('options'));
+
+    if ('style' in params)
+      this.SetStyle(params.style);
+
+    if (has(params, ['yah_sx', 'yah_sy', 'yah_hx', 'yah_hx']))
+      this.TEMP_AddMarker('you_are_here', int('yah_sx'), int('yah_sy'), int('yah_hx'), int('yah_hy'));
+
+    for (var i = 0; ; ++i) {
+      var n = (i == 0) ? '' : i, oxs = 'ox' + n, oys = 'oy' + n, ows = 'ow' + n, ohs = 'oh' + n;
+      if (has(params, [oxs, oys, ows, ohs])) {
+        var x = float(oxs);
+        var y = float(oys);
+        var w = float(ows);
+        var h = float(ohs);
+        this.TEMP_AddOverlay(x, y, w, h);
+      } else {
+        break;
+      }
+    }
+
+    // Various coordinate schemes - ordered by priority
+    if (has(params, ['x', 'y'])) {
+      this.SetPosition(float('x'), float('y'));
+    } else if (has(params, ['sx', 'sy', 'hx', 'hy', 'scale'])) {
+      this.ScaleCenterAtSectorHex(
+        float('scale'), float('sx'), float('sy'), float('hx'), float('hy'));
+    } else if ('sector' in params) {
+      MapService.coordinates(
+      params.sector, params.hex,
+        function(location) {
+          if (location.hx && location.hy) { // NOTE: Test for undefined -or- zero
+            this.ScaleCenterAtSectorHex(64, location.sx, location.sy, location.hx, location.hy);
+          } else {
+            this.ScaleCenterAtSectorHex(16, location.sx, location.sy, Astrometrics.SectorWidth / 2, Astrometrics.SectorHeight / 2);
+          }
+        },
+        function(error) {
+          alert('The requested location "' + params.sector + ('hex' in params ? (' ' + params.hex) : '') + '" was not found.');
+        });
+    }
+
+    if ('silly' in params)
+      this.tileOptions['silly'] = int('silly');
+
+    return params;
+  };
+
   // Exports
   global.Traveller = Traveller;
   global.Astrometrics = Astrometrics;
@@ -1321,73 +1396,3 @@ function escapeHtml(s) {
   global.Map = Map;
 
 }(this));
-
-// NOTE: Needs to be exported
-function applyUrlParameters(map) {
-  var params = getUrlParameters();
-
-  function float(prop) {
-    var n = parseFloat(params[prop]);
-    return isNaN(n) ? 0 : n;
-  }
-
-  function int(prop) {
-    var n = parseInt(params[prop], 10);
-    return isNaN(n) ? 0 : n;
-  }
-
-  function has(params, list) {
-    return list.every(function(item) { return item in params; });
-  }
-
-  if ('scale' in params)
-    map.SetScale(float('scale'));
-
-  if ('options' in params)
-    map.SetOptions(int('options'));
-
-  if ('style' in params)
-    map.SetStyle(params.style);
-
-  if (has(params, ['yah_sx', 'yah_sy', 'yah_hx', 'yah_hx']))
-    map.TEMP_AddMarker('you_are_here', int('yah_sx'), int('yah_sy'), int('yah_hx'), int('yah_hy'));
-
-  for (var i = 0; ; ++i) {
-    var n = (i == 0) ? '' : i, oxs = 'ox' + n, oys = 'oy' + n, ows = 'ow' + n, ohs = 'oh' + n;
-    if (has(params, [oxs, oys, ows, ohs])) {
-      var x = float(oxs);
-      var y = float(oys);
-      var w = float(ows);
-      var h = float(ohs);
-      map.TEMP_AddOverlay(x, y, w, h);
-    } else {
-      break;
-    }
-  }
-
-  // Various coordinate schemes - ordered by priority
-  if (has(params, ['x', 'y'])) {
-    map.SetPosition(float('x'), float('y'));
-  } else if (has(params, ['sx', 'sy', 'hx', 'hy', 'scale'])) {
-    map.ScaleCenterAtSectorHex(
-      float('scale'), float('sx'), float('sy'), float('hx'), float('hy'));
-  } else if ('sector' in params) {
-    MapService.coordinates(
-      params.sector, params.hex,
-      function(location) {
-        if (location.hx && location.hy) { // NOTE: Test for undefined -or- zero
-          map.ScaleCenterAtSectorHex(64, location.sx, location.sy, location.hx, location.hy);
-        } else {
-          map.ScaleCenterAtSectorHex(16, location.sx, location.sy, Astrometrics.SectorWidth / 2, Astrometrics.SectorHeight / 2);
-        }
-      },
-      function(error) {
-        alert('The requested location "' + params.sector + ('hex' in params ? (' ' + params.hex) : '') + '" was not found.');
-      });
-  }
-
-  if ('silly' in params)
-    map.tileOptions['silly'] = int('silly');
-
-  return params;
-}
