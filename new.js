@@ -1,7 +1,3 @@
-// imports
-var SERVICE_BASE, MapOptions, Astrometrics, MapService;
-var Handlebars;
-
 window.addEventListener('DOMContentLoaded', function() {
   'use strict';
 
