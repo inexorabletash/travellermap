@@ -178,11 +178,6 @@ window.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  $('#zoomInBtn').title += '\nKeyboard: +';
-  $('#zoomOutBtn').title += '\nKeyboard: -';
-  $('#homeBtn').title += '\nKeyboard: H';
-  mapElement.title += '\nKeyboard: I J K L';
-
   //////////////////////////////////////////////////////////////////////
   //
   // Permalink
