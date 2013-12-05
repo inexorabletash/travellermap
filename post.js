@@ -1,14 +1,7 @@
 (function () {
   var list = document.querySelector('#sector');
 
-  var xhr = new XMLHttpRequest();
-  xhr.open("GET", "api/universe?requireData=1&accept=application/json", true);
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-      populateSectorList(JSON.parse(xhr.responseText));
-    }
-  };
-  xhr.send(null);
+  MapService.universe(populateSectorList);
 
   function populateSectorList(universe) {
     var names = [];
@@ -29,8 +22,12 @@
 
   list.addEventListener("change", function (e) {
     var name = list.value;
-    fetchInto("api/sec?sector=" + encodeURIComponent(name) + "&type=legacy&metadata=0&header=0", "#data");
-    fetchInto("api/metadata?sector=" + encodeURIComponent(name) + "&accept=text/xml", "#metadata");
+    MapService.sectorData(name, function(data) {
+      document.querySelector('#data').value = data;
+    }, undefined, {type: 'legacy', metadata: 0, header: 0});
+    MapService.sectorMetaData(name, function(data) {
+      document.querySelector('#metadata').value = data;
+    }, undefined, {accept: 'text/xml'});
   });
 
   function fetchInto(url, selector) {

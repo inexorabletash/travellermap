@@ -10,16 +10,6 @@ window.addEventListener('DOMContentLoaded', function() {
   // IE8: document.querySelector can't use bind()
   var $ = function(s) { return document.querySelector(s); };
 
-  function makeURL(base, params) {
-    base = String(base).replace(/\?.*/, '');
-    var keys = Object.keys(params);
-    if (keys.length === 0) return base;
-    return base += '?' + keys.map(function(p) {
-        return encodeURIComponent(p) + '=' + encodeURIComponent(params[p]);
-      }).join('&');
-  }
-
-
   //////////////////////////////////////////////////////////////////////
   //
   // Main Page Logic

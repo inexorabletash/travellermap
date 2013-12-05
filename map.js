@@ -54,6 +54,16 @@ function escapeHtml(s) {
   });
 }
 
+// NOTE: Used by other scripts
+function makeURL(base, params) {
+  base = String(base).replace(/\?.*/, '');
+  var keys = Object.keys(params);
+  if (keys.length === 0) return base;
+  return base += '?' + keys.map(function(p) {
+    if (params[p] === undefined) return;
+    return encodeURIComponent(p) + '=' + encodeURIComponent(params[p]);
+  }).join('&');
+}
 
 (function (global) {
   'use strict';
@@ -126,7 +136,6 @@ function escapeHtml(s) {
   // Data Services
   // ======================================================================
 
- // TODO: Make these Futures (or at least callback/errback)
   var MapService = (function() {
 
     function service(url, contentType, callback, errback) {
@@ -172,40 +181,55 @@ function escapeHtml(s) {
     }
 
     return {
-      coordinates: function(sector, hex, callback, errback) {
-        return service(
-          SERVICE_BASE + '/api/coordinates?sector=' + encodeURIComponent(sector) + (hex ? '&hex=' + encodeURIComponent(hex) : ''),
-          'application/json', callback, errback);
+      coordinates: function(sector, hex, callback, errback, options) {
+        options = options || {};
+        options.sector = sector;
+        options.hex = hex;
+        return service(makeURL(SERVICE_BASE + '/api/coordinates', options),
+                       options.accept || 'application/json', callback, errback);
       },
 
-      credits: function (hexX, hexY, callback, errback) {
-        return service(SERVICE_BASE + '/api/credits?x=' + encodeURIComponent(hexX) + '&y=' + encodeURIComponent(hexY),
-                       'application/json', callback, errback);
+      credits: function (hexX, hexY, callback, errback, options) {
+        options = options || {};
+        options.x = hexX;
+        options.y = hexY;
+        return service(makeURL(SERVICE_BASE + '/api/credits', options),
+                       options.accept || 'application/json', callback, errback);
       },
 
-      search: function (query, callback, errback) {
-        return service(SERVICE_BASE + '/api/search?q=' + encodeURIComponent(query),
-                       'application/json', callback, errback);
+      search: function (query, callback, errback, options) {
+        options = options || {};
+        options.q = query;
+        return service(makeURL(SERVICE_BASE + '/api/search', options),
+                       options.accept || 'application/json', callback, errback);
       },
 
-      sectorData: function (sector, callback, errback) {
-      return service(SERVICE_BASE + '/api/sec?sector=' + encodeURIComponent(sector),
-                     'text/plain', callback, errback);
+      sectorData: function (sector, callback, errback, options) {
+        options = options || {};
+        options.sector = sector;
+        return service(makeURL(SERVICE_BASE + '/api/sec', options),
+                       options.accept || 'text/plain', callback, errback);
       },
 
-      sectorDataTabDelimited: function (sector, callback, errback) {
-        return service(SERVICE_BASE + '/api/sec?sector=' + encodeURIComponent(sector) + '&type=TabDelimited',
-                       'text/plain', callback, errback);
+      sectorDataTabDelimited: function (sector, callback, errback, options) {
+        options = options || {};
+        options.sector = sector;
+        options.type = 'TabDelimited';
+        return service(makeURL(SERVICE_BASE + '/api/sec', options),
+                       options.accept || 'text/plain', callback, errback);
       },
 
-      sectorMetaData: function (sector, callback, errback) {
-        return service(SERVICE_BASE + '/api/metadata?sector=' + encodeURIComponent(sector),
-                       'application/json', callback, errback);
+      sectorMetaData: function (sector, callback, errback, options) {
+        options = options || {};
+        options.sector = sector;
+        return service(makeURL(SERVICE_BASE + '/api/metadata', options),
+                       options.accept || 'application/json', callback, errback);
       },
 
-      universe: function (callback, errback) {
-        return service(SERVICE_BASE + '/api/universe',
-                       'application/json', callback, errback);
+      universe: function (callback, errback, options) {
+        options = options || {};
+        return service(makeURL(SERVICE_BASE + '/api/universe', options),
+                       options.accept || 'application/json', callback, errback);
       }
     };
   }());
