@@ -15,7 +15,7 @@ window.addEventListener('DOMContentLoaded', function() {
     var keys = Object.keys(params);
     if (keys.length === 0) return base;
     return base += '?' + keys.map(function(p) {
-        return p + '=' + encodeURIComponent(params[p]);
+        return encodeURIComponent(p) + '=' + encodeURIComponent(params[p]);
       }).join('&');
   }
 
@@ -90,7 +90,6 @@ window.addEventListener('DOMContentLoaded', function() {
 
   function bindControl(selector, property, onChange, event, onEvent) {
     var element = $(selector);
-    if (!element) { console.error('Unmatched selector: ' + selector); return; }
     optionObservers.push(function(o) { element[property] = onChange(o); });
     element.addEventListener(event, function() { onEvent(element); });
   }

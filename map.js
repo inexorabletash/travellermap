@@ -1366,13 +1366,14 @@ function escapeHtml(s) {
       this.ScaleCenterAtSectorHex(
         float('scale'), float('sx'), float('sy'), float('hx'), float('hy'));
     } else if ('sector' in params) {
+      var self = this;
       MapService.coordinates(
-      params.sector, params.hex,
+        params.sector, params.hex,
         function(location) {
           if (location.hx && location.hy) { // NOTE: Test for undefined -or- zero
-            this.ScaleCenterAtSectorHex(64, location.sx, location.sy, location.hx, location.hy);
+            self.ScaleCenterAtSectorHex(64, location.sx, location.sy, location.hx, location.hy);
           } else {
-            this.ScaleCenterAtSectorHex(16, location.sx, location.sy, Astrometrics.SectorWidth / 2, Astrometrics.SectorHeight / 2);
+            self.ScaleCenterAtSectorHex(16, location.sx, location.sy, Astrometrics.SectorWidth / 2, Astrometrics.SectorHeight / 2);
           }
         },
         function(error) {
