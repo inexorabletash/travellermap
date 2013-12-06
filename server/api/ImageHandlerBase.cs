@@ -241,43 +241,46 @@ namespace Maps.API
         protected static Sector GetPostedSector(HttpRequest request)
         {
             Sector sector = null;
-            if (request.ContentType.StartsWith("multipart/form-data")
-                && request.Files["file"] != null && request.Files["file"].ContentLength > 0)
+
+            if (request.Files["file"] != null && request.Files["file"].ContentLength > 0)
             {
                 HttpPostedFile hpf = request.Files["file"];
                 sector = new Sector(hpf.InputStream, hpf.ContentType);
-
-                if (request.Files["metadata"] != null && request.Files["metadata"].ContentLength > 0)
-                {
-                    hpf = request.Files["metadata"];
-
-                    string type = SectorMetadataFileParser.SniffType(hpf.InputStream);
-                    Sector meta = SectorMetadataFileParser.ForType(type).Parse(hpf.InputStream);
-                    sector.Merge(meta);
-                }
-            }
-            else if (request.ContentType == "application/x-www-form-urlencoded"
-                    && request.Form["data"] != null)
+            } 
+            else if (!String.IsNullOrEmpty(request.Form["data"]))
             {
                 string data = request.Form["data"];
                 sector = new Sector(data.ToStream(), MediaTypeNames.Text.Plain);
-
-                if (!String.IsNullOrEmpty(request.Form["metadata"]))
-                {
-                    string metadata = request.Form["metadata"];
-                    string type = SectorMetadataFileParser.SniffType(metadata.ToStream());
-                    var parser = SectorMetadataFileParser.ForType(type);
-                    using (var reader = new StringReader(metadata))
-                    {
-                        Sector meta = parser.Parse(reader);
-                        sector.Merge(meta);
-                    }
-                }
             }
             else if (request.ContentType == MediaTypeNames.Text.Plain)
             {
                 sector = new Sector(request.InputStream, MediaTypeNames.Text.Plain);
             }
+            else
+            {
+                return null;
+            }
+
+            if (request.Files["metadata"] != null && request.Files["metadata"].ContentLength > 0)
+            {
+                HttpPostedFile hpf = request.Files["metadata"];
+
+                string type = SectorMetadataFileParser.SniffType(hpf.InputStream);
+                Sector meta = SectorMetadataFileParser.ForType(type).Parse(hpf.InputStream);
+                sector.Merge(meta);
+            }
+            else if (!String.IsNullOrEmpty(request.Form["metadata"]))
+            {
+                string metadata = request.Form["metadata"];
+                string type = SectorMetadataFileParser.SniffType(metadata.ToStream());
+                var parser = SectorMetadataFileParser.ForType(type);
+                using (var reader = new StringReader(metadata))
+                {
+                    Sector meta = parser.Parse(reader);
+                    sector.Merge(meta);
+                }
+            }
+
             return sector;
         }
     }
