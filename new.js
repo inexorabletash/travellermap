@@ -297,6 +297,8 @@ window.addEventListener('DOMContentLoaded', function() {
       }());
 
       if ('SectorName' in data) {
+        data.BookletURL = SERVICE_BASE +
+          '/data/' + encodeURIComponent(data.SectorName) + '/booklet';
         data.PosterURL = makeURL(SERVICE_BASE + '/api/poster', {
           sector: data.SectorName, accept: 'application/pdf', style: map.GetStyle()});
         data.DataURL = makeURL(SERVICE_BASE + '/api/sec', {

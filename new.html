@@ -750,13 +750,13 @@ button:hover {
     <div id="MetadataDisplay">&nbsp;</div>
     <script id="SectorMetadataTemplate" type="text/x-handlebars-template">
       <div>
-        {{#SectorName}}<a title="Printable Booklet for {{.}} Sector" target="_blank" href="/data/{{.}}/booklet">{{.}}</a>{{/SectorName}}
+        {{#SectorName}}<a title="Printable Booklet for {{.}} Sector" target="_blank" href="{{../BookletURL}}">{{.}}</a>{{/SectorName}}
         {{#SectorEra}}(circa {{.}}){{/SectorEra}}
       </div>
     </script>
     <script id="WorldMetadataTemplate" type="text/x-handlebars-template">
       <div>
-        {{#SectorName}}<a title="Printable Booklet for {{.}} Sector" target="_blank" href="/data/{{.}}/booklet">{{.}}</a>{{/SectorName}}
+        {{#SectorName}}<a title="Printable Booklet for {{.}} Sector" target="_blank" href="{{../BookletURL}}">{{.}}</a>{{/SectorName}}
         <a class="stealth" href="doc/secondsurvey.html#hex" target="_blank" title="Hex">{{WorldHex}}</a>
         <b><a class="stealth" href="doc/secondsurvey.html#name" target="_blank" title="Name">{{WorldName}}</a></b>
         <a class="stealth" href="doc/secondsurvey.html#uwp" target="_blank" title="UWP">{{WorldUwp}}</a>
