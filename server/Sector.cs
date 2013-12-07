@@ -388,6 +388,22 @@ namespace Maps
             }
         }
 
+        public int SubsectorIndexFor(string label)
+        {
+            if (String.IsNullOrWhiteSpace(label))
+                return -1;
+            Subsector subsector;
+            if (label.Length == 1 && 'A' <= label.ToUpperInvariant()[0] && label.ToUpperInvariant()[0] <= 'P')
+            {
+                return (int)label.ToUpperInvariant()[0] - (int)'A';
+            }
+
+            subsector = Subsectors.Where(ss => !String.IsNullOrEmpty(ss.Name) && ss.Name.Equals(label, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
+            if (subsector == null)
+                return -1;
+            return subsector.IndexNumber;
+        }
+
         public WorldCollection GetWorlds(ResourceManager resourceManager, bool cacheResults = true)
         {
             lock (this)
@@ -680,6 +696,16 @@ namespace Maps
 
         [XmlAttribute]
         public string Index { get; set; }
+
+        public int IndexNumber
+        {
+            get
+            {
+                if (String.IsNullOrWhiteSpace(Index))
+                    return -1;
+                return (int)Index[0] - (int)'A';
+            }
+        }
     }
 
     public class Allegiance : IAllegiance

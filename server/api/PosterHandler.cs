@@ -94,24 +94,24 @@ namespace Maps.API
                     title = sector.Names[0].Text;
                 }
 
-                if (HasOption(context, "subsector") && GetStringOption(context, "subsector").Length > 0)
+                if (sector != null && HasOption(context, "subsector") && GetStringOption(context, "subsector").Length > 0)
                 {
                     options = options & ~MapOptions.SubsectorGrid;
-                    string ss = GetStringOption(context, "subsector").ToUpperInvariant();
-                    if (ss.Length != 1 || ss[0] < 'A' || ss[0] > 'P')
+                    string subsector = GetStringOption(context, "subsector");
+                    int index = sector.SubsectorIndexFor(subsector);
+                    if (index == -1)
                     {
-                        SendError(context.Response, 400, "Invalid subsector", String.Format("The subsector index '{0}' is not valid (must be A...P).", ss));
+                        SendError(context.Response, 404, "Not Found", String.Format("The specified subsector '{0}' was not found.", subsector));
                         return;
                     }
 
-                    int index = (int)(ss[0]) - (int)('A');
                     selector = new SubsectorSelector(resourceManager, sector, index);
 
                     tileRect = sector.SubsectorBounds(index);
 
                     options &= ~(MapOptions.SectorGrid | MapOptions.SubsectorGrid);
 
-                    title = String.Format("{0} - Subsector {1}", title, ss);
+                    title = String.Format("{0} - Subsector {1}", title, 'A' + index);
                 }
                 else
                 {

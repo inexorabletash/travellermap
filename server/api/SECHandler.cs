@@ -51,13 +51,14 @@ namespace Maps.API
             WorldFilter filter = null;
             if (HasOption(context, "subsector"))
             {
-                string ss = GetStringOption(context, "subsector").ToUpperInvariant();
-                if (ss.Length != 1 || ss[0] < 'A' || ss[0] > 'P')
+                string subsector = GetStringOption(context, "subsector");
+                int index = sector.SubsectorIndexFor(subsector);
+                if (index == -1)
                 {
-                    SendError(context.Response, 400, "Invalid subsector", String.Format("The subsector index '{0}' is not valid (must be A...P).", ss));
+                    SendError(context.Response, 404, "Not Found", String.Format("The specified subsector '{0}' was not found.", subsector));
                     return;
                 }
-                filter = (World world) => (world.SS == ss);
+                filter = (World world) => (world.Subsector == index);
             }
 
             bool sscoords = GetBoolOption(context, "sscoords", defaultValue: false);

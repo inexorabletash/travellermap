@@ -102,7 +102,7 @@
       On the other hand, the data URLs are much easier to remember and share.
       Both will be supported indefinitely.
     </p>
-    <h4>Semantic URL Namespace</h4>
+    <h3>Semantic URL Namespace</h3>
 
     <ul>
       <li>Universe:
@@ -120,23 +120,27 @@
           <li><a href="#poster">http://travellermap.com/data/<var>sector</var>/image</a> - map
           <li><a href="#credits">http://travellermap.com/data/<var>sector</var>/coordinates</a> - coordinates
           <li><a href="#credits">http://travellermap.com/data/<var>sector</var>/credits</a> - credits
+          <li><var>sector</var> is name e.g. <code>Spinward Marches</code> or T5SS abbreviation e.g. <code>spin</code>
+        
         </ul>
       </li>
-      <li>Subsector:
+      <li>Subsector
         <ul>
           <li><a href="#poster">http://travellermap.com/data/<var>sector</var>/<var>subsector</var></a> - T5 Second Survey format
           <li><a href="#poster">http://travellermap.com/data/<var>sector</var>/<var>subsector</var>/tab</a> - T5 Tab Delimited format
           <li><a href="#poster">http://travellermap.com/data/<var>sector</var>/<var>subsector</var>/sec</a> - legacy SEC format
           <li><a href="#poster">http://travellermap.com/data/<var>sector</var>/<var>subsector</var>/image</a> - map
+          <li><var>subsector</var> is index <code>A</code> - <code>P</code> or name e.g. <code>Regina</code>
         </ul>
       </li>
-      <li>World:
+      <li>World
         <ul>
           <li><a href="#coordinates">http://travellermap.com/data/<var>sector</var>/<var>hex</var>/coordinates</a> - coordinates
           <li><a href="#credits">http://travellermap.com/data/<var>sector</var>/<var>hex</var>/credits</a> - credits
 
           <li><a href="#jumpworlds">http://travellermap.com/data/<var>sector</var>/<var>hex</var>/jump/<var>jump</var></a> - worlds in jump range
           <li><a href="#jumpmap">http://travellermap.com/data/<var>sector</var>/<var>hex</var>/jump/<var>jump</var>/image</a> - jump map
+          <li><var>hex</var> is <code>XXYY</code> e.g. <code>1910</code>
         </ul>
       </li>
     </ul>
@@ -248,6 +252,8 @@
   </section>
 
   <section id="html-apis">
+    <h2>HTML APIs</h2>
+
   <section id="iframe">
     <h3>IFRAME - embed a map in your page</h3>
     <h4>Usage:</h4>
@@ -323,6 +329,8 @@
   </section>
 
   <section id="data-apis">
+    <h2>Data APIs</h2>
+
   <section id="coordinates">
     <h3>Coordinates - sector lookup and coordinate conversion</h3>
     <h4>API URLs:</h4>
@@ -446,8 +454,8 @@
 
     <h4>Parameters:</h4>
     <dl class="params">
-        <dt>sector <dd>sector name
-        <dt>subsector <dd>optional - if specified (<code>A</code> - <code>P</code>), only UWPs for that subsector will be included
+        <dt>sector <dd>sector name or T5SS abbreviation
+        <dt>subsector <dd><code>A</code> - <code>P</code> or name; optional - if specified , only UWPs for that subsector will be included
         <dt>sx <dd>sector x in <a href="#system_sectorhex">sector/hex-space coordinates</a>
         <dt>sy <dd>sector y in <a href="#system_sectorhex">sector/hex-space coordinates</a>
     </dl>
@@ -503,7 +511,7 @@
 
     <h4>Parameters:</h4>
     <dl class="params">
-        <dt>sector <dd>sector name
+        <dt>sector <dd>sector name or T5SS abbreviation
         <dt>sx <dd>sector x in <a href="#system_sectorhex">sector/hex-space coordinates</a>
         <dt>sy <dd>sector y in <a href="#system_sectorhex">sector/hex-space coordinates</a>
     </dl>
@@ -690,6 +698,7 @@
   </section>
 
   <section id="rendering-apis">
+    <h2>Rendering APIs</h2>
   <section id="tile">
     <h3>Tile - render an image of an arbitrary rectangle of space at any size and scale</h3>
     <h4>API URLs:</h4>
@@ -745,7 +754,7 @@
 <h4>Parameters:</h4>
 <dl class="params">
     <dt>sector <dd>sector name
-    <dt>subsector <dd>subsector index (A-P) (optional; if not specified, whole sector is rendered)
+    <dt>subsector <dd>subsector index (<a>A</a> - <code>P</code> or name) (optional; if not specified, whole sector is rendered)
     <dt>x1 <dd>left hex (inclusive) of the rectangle in <a href="#system_world">World-Space Coordinates</a>
     <dt>y1 <dd>top hex (inclusive) of the rectangle in <a href="#system_world">World-Space Coordinates</a>
     <dt>x2 <dd>right hex (inclusive) of the rectangle in <a href="#system_world">World-Space Coordinates</a>
@@ -834,6 +843,7 @@
   </section>
 
   <section id="appendix">
+    <h2>Appendix</h2>
   <section id="systems">
     <h3>Coordinate Systems - the varied esoteric x/y values</h3>
     <p>
@@ -856,7 +866,7 @@
         Remember to URL-encode non-alphanumeric characters (e.g. spaces are <code>%20</code>).
     </p>
     <p>
-      Sectors mapped as part of the <cite>Traveller<sup>5</sup> Second Survey</cite> process can be referenced by
+      Sectors mapped as part of the <cite>Traveller<sup>5</sup> Second Survey</cite> (T5SS) process can be referenced by
       abbreviation as well, where the abbreviation is the first 4 letters (e.g. "spin" for the Spinward Marches), or
       3 in the case of Ley Sector ("ley");
     </p>
