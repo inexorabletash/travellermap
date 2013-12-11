@@ -213,7 +213,7 @@
     <Route Start="0827" End="1025" Allegiance="Zh" Color="LightBlue" />
     <Route Start="0230" End="0330" Allegiance="Zh" Color="LightBlue" />
     <Route Start="0230" End="0333" Allegiance="Zh" Color="LightBlue" />
-    <Route Start="0230" End="3029" Allegiance="Zh" Color="LightBlue" />
+    <Route Start="0230" End="3029" EndOffsetX="-1" Allegiance="Zh" Color="LightBlue" />
     <Route Start="0230" End="3030" EndOffsetX="-1" Allegiance="Zh" Color="LightBlue" />
     <Route Start="0330" End="0430" Allegiance="Zh" Color="LightBlue" />
     <Route Start="0430" End="0529" Allegiance="Zh" Color="LightBlue" />
@@ -388,7 +388,7 @@
     <Route Start="2634" End="3035" Allegiance="Zh" Color="LightBlue" />
     <Route Start="3035" End="2634" Allegiance="Zh" Color="LightBlue" />
     <Route Start="3035" End="2733" Allegiance="Zh" Color="LightBlue" />
-    <Route Start="3035" End="0136" Allegiance="Zh" Color="LightBlue" />
+    <Route Start="3035" End="0136" EndOffsetX="1" Allegiance="Zh" Color="LightBlue" />
     <Route Start="3035" End="0138" EndOffsetX="1" Allegiance="Zh" Color="LightBlue" />
     <Route Start="2837" End="2634" Allegiance="Zh" Color="LightBlue" />
     <Route Start="2837" End="2939" Allegiance="Zh" Color="LightBlue" />
@@ -404,8 +404,8 @@
     <Route Start="2940" End="3240" Allegiance="Zh" Color="LightBlue" />
     <Route Start="3240" End="2940" Allegiance="Zh" Color="LightBlue" />
     <Route Start="3240" End="0139" EndOffsetX="1" Allegiance="Zh" Color="LightBlue" />
-    <Route Start="3240" End="0104" Allegiance="Zh" Color="LightBlue" />
-    <Route Start="3240" End="0501" EndOffsetX="1" EndOffsetY="1"  Allegiance="Zh" Color="LightBlue" />
+    <Route Start="3240" End="0104" EndOffsetX="1" EndOffsetY="1" Allegiance="Zh" Color="LightBlue" />
+    <Route Start="3240" End="0501" EndOffsetX="1" EndOffsetY="1" Allegiance="Zh" Color="LightBlue" />
   </Routes>
 
 </Sector>
