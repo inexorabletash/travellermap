@@ -2,6 +2,8 @@
 <title>Second Survey Data Definitions</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" href="../site.css">
+<meta name="viewport" content="initial-scale=1, width=device-width">
+
 <style>
   table {
     border-collapse: collapse;
@@ -33,7 +35,7 @@
   td:first-child, th:first-child {
     border: 1pt solid black;
   }
-  
+
   .equation {
     font-size: 12pt;
     font-weight: bold;
@@ -41,7 +43,7 @@
 
   div.example {
     margin-top: 10px;
-    margin-bottom: 10px;  
+    margin-bottom: 10px;
   }
 
   .highlight {
@@ -72,7 +74,7 @@
 <div class="content">
 
   <section id="intro">
-    <p>The <cite>Traveller<sup>5</sup> Second Survey</cite> format defines a standard for 
+    <p>The <cite>Traveller<sup>5</sup> Second Survey</cite> format defines a standard for
       describing star systems in the <cite>Official Traveller Universe</cite>. It is composed
       of a series of fields describing various aspects of the Main World (MW) in each system
       including physical and cultural characteristics, and some details about other bodies
@@ -87,7 +89,7 @@
     <p class="aside">
       Different editions of <cite>Traveller</cite> and different authors and publications may include
       different fields, present the fields in different orders, or provide different values for fields.
-      The companion document <a href="fileformats.html">Sector Data File Formats</a> 
+      The companion document <a href="fileformats.html">Sector Data File Formats</a>
       may be used for reference.
     </p>
   </section>
@@ -144,7 +146,7 @@
     <h2>UWP - Universal World Profile</h2>
     <div class="example"><code>1910 Regina <span class="highlight">A788899-C</span> Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF A - 703 14 Im F7 V MD M3 V</code></div>
     <p>
-      The UWP gives a compact description of the physical and cultural aspects of the 
+      The UWP gives a compact description of the physical and cultural aspects of the
       main world, as well the starport facilities and available technology.
       The fields are respectively:
     </p>
@@ -152,7 +154,7 @@
       <tr>
         <th>Code
         <th>Description
-        
+
       <tr>
         <td><a href="#starport">Starport</a>
         <td>Type of starport facility on world.
@@ -198,7 +200,7 @@ system.
         <tr>
           <th>Code
           <th>Starport Description
-          
+
           <tr>
             <td><code>A</code>
             <td>Excellent Quality. Refined fuel available. Annual maintenance overhaul available. Shipyard capable of
@@ -228,7 +230,7 @@ constructing non-starships present. Naval base and/or scout base may be present.
       </table>
 
       <h3>Spaceports</h3>
-      <p>Worlds other than the Main World in a system may also be described by UWP codes. The 
+      <p>Worlds other than the Main World in a system may also be described by UWP codes. The
         port, if any, is referred to as a <dfn>spaceport</dfn>.
       </p>
 
@@ -244,7 +246,7 @@ constructing non-starships present. Naval base and/or scout base may be present.
           <td>Poor Quality. Superficial repairs possible. Unrefined fuel available.
         <tr>
           <td><code>H</code>
-          <td>Primitive Quality. No repairs or fuel available. 
+          <td>Primitive Quality. No repairs or fuel available.
         <tr>
           <td><code>Y</code>
           <td>None.
@@ -259,7 +261,7 @@ constructing non-starships present. Naval base and/or scout base may be present.
         Size expresses the diameter of a world in approximately 1,600 km units (or
 1,000 mile units).
       </p>
-      <p>Size code <code>0</code> indicates that the main "world" of the system is an 
+      <p>Size code <code>0</code> indicates that the main "world" of the system is an
         asteroid belt.
       </p>
       <table>
@@ -370,9 +372,9 @@ atmosphere for a world on its surface.
       <table>
         <tr>
           <th>Code
-          
+
           <th>Description
-          
+
           <tr>
             <td><code>0</code>
             <td>No atmosphere. Requires vacc suit.
@@ -459,9 +461,9 @@ altitudes.
       <table>
         <tr>
           <th>Code
-          
+
           <th>Description
-          
+
           <tr>
             <td><code>0</code>
             <td>No water. Desert World.
@@ -526,9 +528,9 @@ Vland.
       <table>
         <tr>
           <th>Code
-          
+
           <th>Description
-          
+
           <tr>
             <td><code>0</code>
   <td>Few or no inhabitants.
@@ -590,11 +592,11 @@ Vland.
       <table>
         <tr>
           <th>Code
-          
+
           <th>Description
-          
+
           <th>Allegiance
-          
+
           <tr>
             <td><code>0</code>
   <td>No Government Structure.
@@ -614,62 +616,62 @@ Vland.
         <tr>
           <td><code>4</code>
   <td>Representative Democracy.
-  <td> 
+  <td>
 
  <tr>
    <td><code>5</code>
   <td>Feudal Technocracy.
-  <td> 
+  <td>
 
  <tr>
    <td><code>6</code>
   <td>Captive Government / Colony.
-  <td> 
+  <td>
 
  <tr>
    <td><code>7</code>
   <td>Balkanization.
-  <td> 
+  <td>
 
  <tr>
    <td><code>8</code>
   <td>Civil Service Bureaucracy.
-  <td> 
+  <td>
 
  <tr>
    <td><code>9</code>
   <td>Impersonal Bureaucracy.
-  <td> 
+  <td>
 
  <tr>
    <td><code>A</code>
   <td>Charismatic Dictator.
-  <td> 
+  <td>
 
  <tr>
    <td><code>B</code>
   <td>Non-Charismatic Dictator.
-  <td> 
+  <td>
 
  <tr>
    <td><code>C</code>
   <td>Charismatic Oligarchy.
-  <td> 
+  <td>
 
  <tr>
    <td><code>D</code>
   <td>Religious Dictatorship.
-  <td> 
+  <td>
 
  <tr>
    <td><code>E</code>
   <td>Religious Autocracy.
-  <td> 
+  <td>
 
  <tr>
    <td><code>F</code>
   <td>Totalitarian Oligarchy.
-  <td> 
+  <td>
 
  <tr>
    <td><code>G</code>
@@ -739,8 +741,8 @@ Vland.
 
  <tr>
    <td><code>V</code>
-  <td> 
-  <td> 
+  <td>
+  <td>
 
  <tr>
    <td><code>W</code>
@@ -754,13 +756,13 @@ Vland.
 
  <tr>
    <td><code>Y</code>
-  <td> 
-  <td> 
+  <td>
+  <td>
 
  <tr>
    <td><code>Z</code>
-  <td> 
-  <td> 
+  <td>
+  <td>
 
       </table>
     </section>
@@ -773,9 +775,9 @@ Vland.
       <table>
         <tr>
           <th>Code
-          
+
           <th>Description
-          
+
           <tr>
             <td><code>0</code>
   <td>No prohibitions.
@@ -886,9 +888,9 @@ Vland.
       <table>
         <tr>
           <th>Code
-          
+
           <th>Description
-          
+
           <tr>
             <td><code>0</code>
   <td>Stone Age. Primitive.
@@ -1010,7 +1012,7 @@ market for trade goods, or both.
 
       <tr><td><code>As</code><td>Asteroid Belt.<span>Siz 0</span>
       <tr><td><code>De</code><td>Desert.<span>Atm 2-9, Hyd 0</span>
-      <tr><td><code>Fl</code><td>Fluid Hydrographics (in place of water).<span>Atm A-C, Hyd 1+</span>  
+      <tr><td><code>Fl</code><td>Fluid Hydrographics (in place of water).<span>Atm A-C, Hyd 1+</span>
       <tr><td><code>Ga</code><td>Garden World.<span>Siz 6-8, Atm 5,6,8, Hyd 5-7</span>
       <tr><td><code>He</code><td>Hellworld.<span>Siz 3-5,9+, Atm 2,4,7,9-C, Hyd 0-2</span>
       <tr><td><code>Ic</code><td>Ice Capped.<span>Atm 0-1, Hyd 1+</span>
@@ -1047,7 +1049,7 @@ market for trade goods, or both.
       <tr><td><code>Tr</code><td>Tropic.<span>Siz 6-9, Atm 4-9, Hyd 3-7, HZ -1</span>
       <tr><td><code>Tu</code><td>Tundra.<span>Siz 6-9, Atm 4-9, Hyd 3-7, HZ +1</span>
       <tr><td><code>Tz</code><td>Twilight Zone.<span>Orbit 0-1</span>
-   
+
       <tr><th colspan="2" class="section">Secondary
 
       <tr><td><code>Fa</code><td>Farming<span>Atm 4-9, Hyd 4-8, Pop 2-6, Not MW, HZ</span>
@@ -1096,7 +1098,7 @@ market for trade goods, or both.
       <tr><td><code><var>S</var>:0</code>
       <tr><td><code><var>S</var>w</code>
       <tr><td><code>Nh</code><td>Non-Hiver Population.<span>Hiver.</span>
-      <tr><td><code>Nk</code><td>Non-K’kree Population.<span>K’kree.</span> 
+      <tr><td><code>Nk</code><td>Non-K’kree Population.<span>K’kree.</span>
 
       <tr><td><code>Tp</code><td>Terra-prime. <span><cite>Adventure 5: Leviathan.</cite></span>
       <tr><td><code>Tn</code><td>Terra-norm. <span><cite>Adventure 5: Leviathan.</cite></span>
@@ -1113,7 +1115,7 @@ market for trade goods, or both.
     </table>
 
     <p>
-      Legacy sophont abbreviations include: 
+      Legacy sophont abbreviations include:
       <code>A</code> = Aslan,
       <code>C</code> = Chirper,
       <code>D</code> = Droyne,
@@ -1193,7 +1195,7 @@ same system in order to maintain a single base code letter per system.
     </p>
 
     <p class="aside">
-      Base codes have changed significantly between different editions of <cite>Traveller</cite>. 
+      Base codes have changed significantly between different editions of <cite>Traveller</cite>.
       Sector data collections must indicate which set of codes are in use.
       Sector data collections may also define custom meanings for base codes.
     </p>
@@ -1285,10 +1287,10 @@ same system in order to maintain a single base code letter per system.
 
     <table>
       <tr>
-        <th>Code       
+        <th>Code
         <th>Description
         <th>Allegiance
-        
+
       <tr>
         <td><code>A</code>
         <td>Naval Base and Scout Base.
@@ -1430,7 +1432,7 @@ same system in order to maintain a single base code letter per system.
     </p>
     <table>
       <tr>
-        <th>Code        
+        <th>Code
         <th>Description
 
       <tr>
@@ -1608,10 +1610,10 @@ an allegiance table for codes not listed below.
     <h3>Stellar Spectral Class</h3>
     <table>
       <tr>
-        <th>Code 
+        <th>Code
         <th>Description
         <th>Temperature (K)
-        
+
       <tr>
         <td><code>O</code>
         <td>Blue
@@ -1659,38 +1661,38 @@ star; colors are the essential perceived colors of the star’s visible light.
     <table>
       <tr>
         <th>Code
-        <th>Description    
+        <th>Description
         <th>Diameter (Sol = 1)
-        
+
       <tr>
         <td><code>Ia</code>
         <td>Bright Supergiant.
-        <td>52 - 3500  
+        <td>52 - 3500
 
       <tr>
         <td><code>Ib</code>
         <td>Weak Supergiant.
-        <td>30 - 3000  
+        <td>30 - 3000
 
       <tr>
         <td><code>II</code>
         <td>Bright Giant.
-        <td>14 - 1000  
+        <td>14 - 1000
 
       <tr>
         <td><code>III</code>
         <td>Normal Giant.
-        <td>4.6 - 360  
+        <td>4.6 - 360
 
       <tr>
         <td><code>IV</code>
         <td>Subgiant.
-        <td>3.3 -   13  
+        <td>3.3 -   13
 
       <tr>
         <td><code>V</code>
         <td>Main Sequence Star.
-        <td>0.2 -   10  
+        <td>0.2 -   10
 
       <tr>
         <td><code>VI</code>
