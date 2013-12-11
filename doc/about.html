@@ -3,6 +3,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="shortcut icon" href="/favicon.ico">
 <link rel="stylesheet" type="text/css" href="../site.css?update=2013-07-25">
+<meta name="viewport" content="initial-scale=1, width=device-width">
+
 <style>
   th, td { text-align: center; padding-left: 4pt; padding-right: 4pt; }
   table, th, td { border: solid 1px black; }
@@ -128,9 +130,8 @@
       <a target="_blank" href="http://maps.google.com">Google Maps</a>
       appearing, and was inspired to create a functional
       version of the map viewer using contemporary Web technologies.
-      I was also inspired by the many other <b><i>Traveller</i></b> map
-      resources on the Internet, although sadly many are now offline. There
-      are also full applications, such as Jim Vassilakos' venerable and highly regarded
+      I was also inspired by the many other online <b><i>Traveller</i></b> map
+      resources and desktop applications such as Jim Vassilakos' venerable
       <a target="_blank" href="http://wiki.travellerrpg.com/Galactic">Galactic</a>.
     </p>
     <p>
@@ -138,6 +139,73 @@
       <i>Traveller 5 Second Survey</i> effort, as well as older published
       data and unofficial fan submissions.
     </p>
+  </section>
+
+  <section>
+    <h3>Search Tips</h3>
+
+    <p>
+      Use the search field to look up worlds, subsectors and sectors
+      by name. By default, searches use "prefix" search. So
+      <code>reg</code> will find the Regina system and the Regina
+      subsector, among others.
+    </p>
+    <p>
+      You can use <code>*</code> and <code>?</code> as wildcards. <code>*</code>
+      matches zero or more characters, so <code>*ward</code> will find the Spinward Marches
+      sector. <code>?</code> matches exactly one character, so <code>t?rra</code> will
+      find the Terra system.
+    </p>
+    <p>
+      Specify <code>uwp:</code> to search UWPs. For example,
+      <code>uwp:*-g</code> will find tech level 16 worlds.
+    </p>
+    <p>
+      Specify <code>like:</code> to find similar-sounding words. For example,
+      <code>like:caboodle</code> will find Capital.
+    </p>
+    <p>
+      Specify <code>exact:</code> to find exact matches. For example,
+      <code>exact:sol</code> will find Sol subsector, but not the Solomani Rim sector.
+    </p>
+    <p>
+      Multiple words form an "and" search. For example, <code>sol ri</code> will
+      find the Solomani Rim sector, but not the Sol subsector. <code>c* uwp:*-f</code>
+      will find all worlds starting with C that are tech level 15.
+    </p>
+  </section>
+
+  <section>
+    <h3>Keyboard Controls</h3>
+    <style>
+    #keys {
+      margin-left: 25px;
+    }
+    #keys .key {
+      vertical-align: text-bottom;
+      display: inline-block;
+      font-size: 16pt;
+      font-weight: bold;
+      border: 1px solid black;
+      border-radius: 4px;
+      padding: 2px;
+      margin: 2px;
+      margin-top: 8px;
+      margin-bottom: -6px;
+      width: 20px; height: 20px;
+      text-align: center;
+    }
+    </style>
+    <div id="keys">
+      <div><span class="key">+</span> - Zoom in</div>
+      <div><span class="key">&minus;</span> - Zoom out</div>
+      <div><span class="key">H</span> - Home (default view)</div>
+      <div><span class="key">I</span> - Scroll up (coreward)</div>
+      <div><span class="key">J</span> - Scroll left (spinward)</div>
+      <div><span class="key">K</span> - Scroll down (rimward)</div>
+      <div><span class="key">L</span> - Scroll right (trailing)</div>
+    </div>
+
   </section>
 
   <section>
@@ -346,72 +414,6 @@
     </p>
   </section>
 
-  <section>
-    <h3>Search Tips</h3>
-
-    <p>
-      Use the search field to look up worlds, subsectors and sectors
-      by name. By default, searches use "prefix" search. So
-      <code>reg</code> will find the Regina system and the Regina
-      subsector, among others.
-    </p>
-    <p>
-      You can use <code>*</code> and <code>?</code> as wildcards. <code>*</code>
-      matches zero or more characters, so <code>*ward</code> will find the Spinward Marches
-      sector. <code>?</code> matches exactly one character, so <code>t?rra</code> will
-      find the Terra system.
-    </p>
-    <p>
-      Specify <code>uwp:</code> to search UWPs. For example,
-      <code>uwp:*-g</code> will find tech level 16 worlds.
-    </p>
-    <p>
-      Specify <code>like:</code> to find similar-sounding words. For example,
-      <code>like:caboodle</code> will find Capital.
-    </p>
-    <p>
-      Specify <code>exact:</code> to find exact matches. For example,
-      <code>exact:sol</code> will find Sol subsector, but not the Solomani Rim sector.
-    </p>
-    <p>
-      Multiple words form an "and" search. For example, <code>sol ri</code> will
-      find the Solomani Rim sector, but not the Sol subsector. <code>c* uwp:*-f</code>
-      will find all worlds starting with C that are tech level 15.
-    </p>
-  </section>
-
-  <section>
-    <h3>Keyboard Controls</h3>
-    <style>
-    #keys {
-      margin-left: 25px;
-    }
-    #keys .key {
-      vertical-align: text-bottom;
-      display: inline-block;
-      font-size: 16pt;
-      font-weight: bold;
-      border: 1px solid black;
-      border-radius: 4px;
-      padding: 2px;
-      margin: 2px;
-      margin-top: 8px;
-      margin-bottom: -6px;
-      width: 20px; height: 20px;
-      text-align: center;
-    }
-    </style>
-    <div id="keys">
-      <div><span class="key">+</span> - Zoom in</div>
-      <div><span class="key">&minus;</span> - Zoom out</div>
-      <div><span class="key">H</span> - Home (default view)</div>
-      <div><span class="key">I</span> - Scroll up (coreward)</div>
-      <div><span class="key">J</span> - Scroll left (spinward)</div>
-      <div><span class="key">K</span> - Scroll down (rimward)</div>
-      <div><span class="key">L</span> - Scroll right (trailing)</div>
-    </div>
-
-  </section>
    <section>
     <h3>Easter Eggs</h3>
 
