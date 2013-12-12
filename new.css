@@ -72,6 +72,10 @@ body {
   font-size: 10pt;
   font-weight: normal;
 }
+.style-atlas #legendBox section h2,
+.style-print #legendBox section h2 {
+  border-bottom: 3px solid black;
+}
 
 #legendBox section:first-of-type { margin-top: 0; }
 #legendBox section { margin-top: 1em; }
@@ -134,8 +138,8 @@ body {
 }
 
 
-.style-candy #legendBox #image1 { background-image: url("res/ui/Legend_1003_candy.png"); }
-.style-candy #legendBox #image2 { background-image: url("res/ui/Legend_1006_candy.png"); }
+.style-candy #legendBox #image1 { background-image: url("res/ui/Legend_1003_candy.jpg"); }
+.style-candy #legendBox #image2 { background-image: url("res/ui/Legend_1006_candy.jpg"); }
 .style-atlas #legendBox #image1 { background-image: url("res/ui/Legend_1003_atlas.png"); }
 .style-atlas #legendBox #image2 { background-image: url("res/ui/Legend_1006_atlas.png"); }
 .style-print #legendBox #image1 { background-image: url("res/ui/Legend_1003_print.png"); }
