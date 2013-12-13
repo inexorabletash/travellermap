@@ -30,7 +30,8 @@ namespace Maps.Rendering
             new MapLabel("Aslan Colonies", -115, -5),
             new MapLabel("Mixed Client States", 110, 5),
             new MapLabel("Scattered\nClient States", 85, 65),
-            new MapLabel("Vargr Enclaves", 95, -135)
+            new MapLabel("Vargr Enclaves", 95, -135),
+            new MapLabel("Hive Young Worlds", 100, 128)
         };
 
 
