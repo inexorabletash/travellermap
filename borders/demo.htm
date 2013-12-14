@@ -55,65 +55,65 @@ containerElement.style.height = ((g_map.height + 0.5) * sz + (g_map.height + 1.5
 }
 
 function updateHex(x, y) {
-// Update view
-document.getElementById("hex_" + x + "_" + y).innerHTML = hexContents(x, y, g_map);
+  // Update view
+  document.getElementById("hex_" + x + "_" + y).innerHTML = hexContents(x, y, g_map);
 }
 
 function updateView() {
-g_map.foreach(function(x, y) { updateHex(x, y); });
+  g_map.foreach(function(x, y) { updateHex(x, y); });
 }
 
 function updateWalks() {
-var borders = [];
-var bounds = g_map.getBounds();
-var allegiance;
-var x, y, visited = {}, label, alleg, last_alleg, path;
+  var borders = [];
+  var bounds = g_map.getBounds();
+  var allegiance;
+  var x, y, visited = {}, label, alleg, last_alleg, path;
 
-for (x = g_map.origin_x; x < g_map.origin_x + g_map.width; x += 1) {
-  lastalleg = UNALIGNED;
-  for (y = g_map.origin_y; y < g_map.origin_y + g_map.height; y += 1) {
-    label = hexLabel(x, y);
-    alleg = g_map.getAllegiance(x, y);
-    if (alleg !== UNALIGNED && alleg !== NON_ALIGNED && alleg !== last_alleg && !(label in visited)) {
+  for (x = g_map.origin_x; x < g_map.origin_x + g_map.width; x += 1) {
+    lastalleg = UNALIGNED;
+    for (y = g_map.origin_y; y < g_map.origin_y + g_map.height; y += 1) {
+      label = hexLabel(x, y);
+      alleg = g_map.getAllegiance(x, y);
+      if (alleg !== UNALIGNED && alleg !== NON_ALIGNED && alleg !== last_alleg && !(label in visited)) {
 
-      path = walk(g_map, x, y, alleg);
-      path = path.map(function(hex) { return hexLabel(hex[0], hex[1]); });
-      path.forEach(function(label) { visited[label] = true; });
+        path = walk(g_map, x, y, alleg);
+        path = path.map(function(hex) { return hexLabel(hex[0], hex[1]); });
+        path.forEach(function(label) { visited[label] = true; });
 
-      borders.push({
-        allegiance: alleg,
-        path: path
-      });
+        borders.push({
+          allegiance: alleg,
+          path: path
+        });
+      }
+      last_alleg = alleg;
     }
-    last_alleg = alleg;
   }
-}
 
-borders.sort(function(a, b) { return a.allegiance < b.allegiance ? -1 : a.allegiance > b.allegiance ? 1 : 0; });
+  borders.sort(function(a, b) { return a.allegiance < b.allegiance ? -1 : a.allegiance > b.allegiance ? 1 : 0; });
 
 
-var html = [];
-borders.forEach(function(border) {
-  html.push("<li>" + border.allegiance + " : " + border.path.join(" ") + "<" + "/li>");
-});
+  var html = [];
+  borders.forEach(function(border) {
+    html.push("<li>" + border.allegiance + " : " + border.path.join(" ") + "<" + "/li>");
+  });
 
-document.getElementById("walks").innerHTML = html.join("");
+  document.getElementById("walks").innerHTML = html.join("");
 }
 
 function hexLabel(x, y) {
-return (x < 10 ? "0" : "") + x + (y < 10 ? "0" : "") + y;
+  return (x < 10 ? "0" : "") + x + (y < 10 ? "0" : "") + y;
 }
 
 function hexContents(x, y, map) {
-var hexNumber = hexLabel(x, y);
-var occupied = map.isOccupied(x, y);
-var alleg = map.getAllegiance(x, y);
-var color = (alleg == UNALIGNED) ? "transparent" : allegianceMap[alleg];
+  var hexNumber = hexLabel(x, y);
+  var occupied = map.isOccupied(x, y);
+  var alleg = map.getAllegiance(x, y);
+  var color = (alleg == UNALIGNED) ? "transparent" : allegianceMap[alleg];
 
-return "<div class='hexContents' style='background-color: " + color + ";'>" +
-          "<span class='hexNumber'>" + hexNumber + "<" + "/span><br/>" +
-	      (occupied ? "<span class='world'>&bull;</span>" : "") +
-	      "<" + "/div>";
+  return "<div class='hexContents' style='background-color: " + color + ";'>" +
+    "<span class='hexNumber'>" + hexNumber + "<" + "/span><br/>" +
+    (occupied ? "<span class='world'>&bull;</span>" : "") +
+    "<" + "/div>";
 }
 
 
@@ -124,21 +124,20 @@ return "<div class='hexContents' style='background-color: " + color + ";'>" +
 //----------------------------------------------------------------------
 
 function selectedAllegiance() {
-var select = document.getElementById('allegiance');
-return select.options[select.selectedIndex].value;
+  var select = document.getElementById('allegiance');
+  return select.options[select.selectedIndex].value;
 }
 
 function clickHex(x, y) {
-var occupied = !g_map.isOccupied(x, y);
-g_map.setOccupied(x, y, occupied);
-if (occupied) {
-  g_map.setAllegiance(x, y, selectedAllegiance());
-}
-else {
-  g_map.setAllegiance(x, y, UNALIGNED);
-}
+  var occupied = !g_map.isOccupied(x, y);
+  g_map.setOccupied(x, y, occupied);
+  if (occupied) {
+    g_map.setAllegiance(x, y, selectedAllegiance());
+  } else {
+    g_map.setAllegiance(x, y, UNALIGNED);
+  }
 
-updateHex(x, y);
+  updateHex(x, y);
 }
 
 //----------------------------------------------------------------------
@@ -148,40 +147,40 @@ updateHex(x, y);
 //----------------------------------------------------------------------
 
 window.onload = function() {
-var view = document.getElementById('map');
-makeMapDisplay(view, g_map);
+  var view = document.getElementById('map');
+  makeMapDisplay(view, g_map);
 
 
-view.onclick = function(e) {
-  e = e ? e : window.event;
-  var target = (e.target) ? e.target : (e.srcElement) ? e.srcElement : null;
-  while (target) {
-    if (target && target.id) {
-      var coords = target.id.split("_");
-      if (coords[0] == "hex") {
-        clickHex(coords[1], coords[2]);
-        break;
+  view.onclick = function(e) {
+    e = e ? e : window.event;
+    var target = (e.target) ? e.target : (e.srcElement) ? e.srcElement : null;
+    while (target) {
+      if (target && target.id) {
+        var coords = target.id.split("_");
+        if (coords[0] == "hex") {
+          clickHex(coords[1], coords[2]);
+          break;
+        }
       }
+      target = target.parentNode;
     }
-    target = target.parentNode;
-  }
-};
+  };
 };
 
 function clearMap() {
-g_map.foreach(function(x, y) {
-  g_map.setAllegiance(x, y, UNALIGNED);
-  g_map.setOccupied(x, y, false);
+  g_map.foreach(function(x, y) {
+    g_map.setAllegiance(x, y, UNALIGNED);
+    g_map.setOccupied(x, y, false);
 
-  updateHex(x, y);
-});
+    updateHex(x, y);
+  });
 }
 
 function run() {
-processMap(g_map, function() {
-  updateView();
-  updateWalks();
-});
+  processMap(g_map, function() {
+    updateView();
+    updateWalks();
+  });
 }
 
   </script>

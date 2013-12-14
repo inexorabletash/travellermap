@@ -5,8 +5,8 @@
 //
 // Based on allygen by J. Greely http://dotclue.org/t20
 //
-// The Traveller game in all forms is owned by Far Future Enterprises. 
-// Copyright (C) 1977-2008 Far Future Enterprises. 
+// The Traveller game in all forms is owned by Far Future Enterprises.
+// Copyright (C) 1977-2008 Far Future Enterprises.
 
 var UNALIGNED = "--";
 var NON_ALIGNED = "Na";
@@ -35,21 +35,17 @@ AllegianceMap.prototype.getBounds = function()
         'right':  this.origin_x + this.width  - 1,
         'bottom': this.origin_y + this.height - 1
     };
-
-}
+};
 
 AllegianceMap.prototype.inBounds = function( x, y )
 {
-    if( x - this.origin_x < 0 || x - this.origin_x >= this.width || 
-        y - this.origin_y < 0 || y - this.origin_y >= this.height )
-    {
+    if (x - this.origin_x < 0 || x - this.origin_x >= this.width ||
+        y - this.origin_y < 0 || y - this.origin_y >= this.height) {
         return false;
-    }   
-    else
-    {
+    } else {
         return true;
     }
-}
+};
 
 AllegianceMap.prototype.foreach = function(func) {
   var bounds = this.getBounds();
@@ -58,7 +54,7 @@ AllegianceMap.prototype.foreach = function(func) {
       func(c, r);
     }
   }
-}
+};
 
 AllegianceMap.prototype.isOccupied = function(x, y) {
   if (!this.inBounds(x, y)) {
@@ -67,7 +63,7 @@ AllegianceMap.prototype.isOccupied = function(x, y) {
   }
 
   return this.map[x - this.origin_x][y - this.origin_y].occupied;
-}
+};
 
 AllegianceMap.prototype.setOccupied = function(x, y, occupied) {
   if (!this.inBounds(x, y)) {
@@ -76,8 +72,7 @@ AllegianceMap.prototype.setOccupied = function(x, y, occupied) {
   }
 
   this.map[x - this.origin_x][y - this.origin_y].occupied = occupied;
-
-}
+};
 
 AllegianceMap.prototype.getAllegiance = function(x, y) {
   if (!this.inBounds(x, y)) {
@@ -86,17 +81,14 @@ AllegianceMap.prototype.getAllegiance = function(x, y) {
   }
 
   return this.map[x - this.origin_x][y - this.origin_y].alleg;
-}
+};
 
 AllegianceMap.prototype.setAllegiance = function(x, y, alleg) {
-  if (!this.inBounds(x, y)) {
-    console.log(x + "," + y);
-    foo.bar = baz;
+  if (!this.inBounds(x, y))
     throw "sa Index out of bounds";
-  }
 
   this.map[x - this.origin_x][y - this.origin_y].alleg = alleg;
-}
+};
 
 // TODO: Would be simpler if we returned a Hex object
 
@@ -107,7 +99,7 @@ AllegianceMap.prototype.isMarked = function(x, y) {
   }
 
   return this.map[x - this.origin_x][y - this.origin_y].mark;
-}
+};
 
 AllegianceMap.prototype.setMarked = function(x, y, mark) {
   if (!this.inBounds(x, y)) {
@@ -116,7 +108,7 @@ AllegianceMap.prototype.setMarked = function(x, y, mark) {
   }
 
   this.map[x - this.origin_x][y - this.origin_y].mark = mark;
-}
+};
 
 
 // Find neighbor of a hex in a given direction.
@@ -184,7 +176,7 @@ function walk(map, start_x, start_y, allegiance, func) {
   var border = [[start_x, start_y]];
 
   if (func) { func(start_x, start_y, -1); }
-  
+
   // Directions checked in starting hex: sw=0, nw=1, n=2 (by definition)
   var checked = [true, true, true];
   var checkfirst = 3; // northeast - first direction to test
@@ -230,8 +222,7 @@ function walk(map, start_x, start_y, allegiance, func) {
 
       checkfirst = (dir + 4) % 6;
       current = next;
-    }
-    else {
+    } else {
       // Can't find a friend!
       break;
     }
@@ -270,7 +261,7 @@ function breakSpans(map, allegiance, n) {
     // Sneaky bit #1:
     // Break only when three hexes are in the same direction
     // to avoid breaks at concave turns in a border that might
-    // be between worlds. 
+    // be between worlds.
     if (lastDir !== dir) {
       dirList = [];
     }
@@ -288,8 +279,7 @@ function breakSpans(map, allegiance, n) {
         spanList = [];
         dirList = [];
       }
-    }
-    else {
+    } else {
       // Nope, not a span - reset, keep looking
       spanList = [];
       dirList = [];
@@ -348,7 +338,7 @@ function breakSpans(map, allegiance, n) {
 function buildBridges(map, allegiance) {
 
   // Scan the whole map, looking for 1 parsec gaps within a polity
-  // that could be bridged. Insert the first possible bridge detected 
+  // that could be bridged. Insert the first possible bridge detected
   // in each case.
 
   function neighborAllegiance(c, r, dir) {
@@ -357,7 +347,7 @@ function buildBridges(map, allegiance) {
     var y = hex[1];
     return map.inBounds(x, y) ? map.getAllegiance(x, y) : UNALIGNED;
   }
-  
+
   var bounds = map.getBounds();
   for (var c = bounds.left; c <= bounds.right; ++c) {
     for (var r = bounds.top; r <= bounds.bottom; ++r) {
@@ -401,8 +391,8 @@ function processAllegiance(map, allegiance) {
   do {
     dirty = false;
 
-    // don't be too greedy; snip off empty hexes on the edges of empires 
-    // with 3 unallied, adjacent neighbors 
+    // don't be too greedy; snip off empty hexes on the edges of empires
+    // with 3 unallied, adjacent neighbors
     //
     dirty = dirty || erode(map, allegiance, 3);
 
@@ -433,8 +423,7 @@ function processMap(map, success_callback, progress_callback) {
         var alleg = map.getAllegiance(c, r);
         if (counts[alleg]) {
           counts[alleg] += 1;
-        }
-        else {
+        } else {
           counts[alleg] = 1;
         }
       }
@@ -460,8 +449,6 @@ function processMap(map, success_callback, progress_callback) {
       }
     }
     doNext();
-    
+
   }, 0);
 }
-
-
