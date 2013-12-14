@@ -189,7 +189,7 @@ function join(tasks, completion) {
 
 function loadSector(sx, sy, callback) {
   var xhr = new XMLHttpRequest();
-  xhr.open('GET', '../api/sec/?type=TabDelimited&sx=' + encodeURIComponent(sx) + '&sy=' + encodeURIComponent(sy), true);
+  xhr.open('GET', '../api/sec?type=TabDelimited&sx=' + encodeURIComponent(sx) + '&sy=' + encodeURIComponent(sy), true);
   xhr.onreadystatechange = function(e) {
     if (xhr.readyState === XMLHttpRequest.DONE) {
       var worlds = [];

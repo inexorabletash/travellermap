@@ -21,6 +21,7 @@ namespace Maps.API
             Stylesheet.Style style = Stylesheet.Style.Poster;
             ParseOptions(context, ref options, ref style);
             string title;
+            bool clipOutsectorBorders;
 
             if (HasOption(context, "x1") && HasOption(context, "x2") &&
                 HasOption(context, "y1") && HasOption(context, "y2"))
@@ -46,6 +47,7 @@ namespace Maps.API
                 tileRect.Height += 1;
 
                 title = String.Format("Poster ({0},{1}) - ({2},{3})", x1, y1, x2, y2);
+                clipOutsectorBorders = true;
             }
             else
             {
@@ -130,7 +132,7 @@ namespace Maps.API
                 {
                     tileRect.Width += 0.75f;
                 }
-
+                clipOutsectorBorders = false;
             }
 
             const double NormalScale = 64; // pixels/parsec - standard subsector-rendering scale
@@ -165,6 +167,7 @@ namespace Maps.API
             ctx.options = options;
             ctx.styles = new Stylesheet(scale, options, style);
             ctx.tileSize = tileSize;
+            ctx.clipOutsectorBorders = clipOutsectorBorders;
             ProduceResponse(context, title, ctx, new Size(bitmapWidth, bitmapHeight), rot, translateX, translateY);
         }
     }
