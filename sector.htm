@@ -732,49 +732,78 @@
         <div class="content">
           <div class="details_title right">World Data</div>
 
+          {{#if metadata.Allegiances}}
+            <h4>Non-Standard Allegiances</h4>
             <style>
-              table.allegiances td {
+              table.allegiances tr td:first-of-type {
                 width: 0.5in;
               }
-              table.subsector-grid {
-                border-collapse: collapse;
-                border: 0.03in solid black;
-                float: left;
-                margin-right: 20px;
-              }
-              table.subsector-grid td {
-                width: 0.25in;
-                height: 0.4in;
-                border: 0.03in solid black;
-                vertical-align: top;
-                font-weight: bold;
-              }
-              table.subsector-list td {
-                width: 0.3in;
-              }
             </style>
-
-            {{#if metadata.Allegiances}}
-              <h4>Non-Standard Allegiances</h4>
-              <table class="allegiances">
-                {{#metadata.Allegiances}}
-                <tr><td>{{Code}}</td><td>{{Name}}</td></tr>
-                {{/metadata.Allegiances}}
-              </table>
-            {{/if}}
-
-            <h4>Subsectors</h4>
-            <table class="subsector-grid">
-              <tr><td>A</td><td>B</td><td>C</td><td>D</td></tr>
-              <tr><td>E</td><td>F</td><td>G</td><td>H</td></tr>
-              <tr><td>I</td><td>J</td><td>K</td><td>L</td></tr>
-              <tr><td>M</td><td>N</td><td>O</td><td>P</td></tr>
+            <table class="allegiances">
+              {{#metadata.Allegiances}}
+              <tr><td>{{Code}}</td><td>{{Name}}</td></tr>
+              {{/metadata.Allegiances}}
             </table>
-            <table class="subsector-list">
-              {{#metadata.Subsectors}}
-              <tr><td>{{Index}}</td><td>{{Name}}</td></tr>
-              {{/metadata.Subsectors}}
-            </table>
+          {{/if}}
+
+          <h4>Subsectors</h4>
+          <style>
+            table.subsector-grid {
+              border-collapse: collapse;
+              border: 0.03in solid black;
+              float: left;
+              margin-right: 20px;
+            }
+            table.subsector-grid td {
+              width: 0.25in;
+              height: 0.4in;
+              border: 0.03in solid black;
+              vertical-align: top;
+              font-weight: bold;
+            }
+          </style>
+          <table class="subsector-grid">
+            <tr><td>A</td><td>B</td><td>C</td><td>D</td></tr>
+            <tr><td>E</td><td>F</td><td>G</td><td>H</td></tr>
+            <tr><td>I</td><td>J</td><td>K</td><td>L</td></tr>
+            <tr><td>M</td><td>N</td><td>O</td><td>P</td></tr>
+          </table>
+
+          <style>
+            table.subsector-list tr td:first-of-type {
+              width: 0.3in;
+            }
+          </style>
+          <table class="subsector-list">
+            {{#metadata.Subsectors}}
+            <tr><td>{{Index}}</td><td>{{Name}}</td></tr>
+            {{/metadata.Subsectors}}
+          </table>
+
+          <h4>Worlds</h4>
+          <p>
+            World listings are presented in the format described by the Traveller<sup>5</sup> Second Survey, and include the following fields:
+          </p>
+          <style>
+            table.field-definitions td:first-of-type {
+              width: 0.75in;
+            }
+          </style>
+          <table class="field-definitions">
+            <tr><td>UWP</td><td>Universal World Profile:
+                Starport, Size, Atm, Hyd, Pop, Gov, Law, Tech</td></tr>
+            <tr><td>Remarks</td><td>Trade codes and notes</td></tr>
+            <tr><td>Ix</td><td>Importance Extension - world importance</td></tr>
+            <tr><td>Ex</td><td>Economic Extension: Resources, Labor, Infrastructure, Efficiency</td></tr>
+            <tr><td>Cx</td><td>Cultural Extension: Homogeneity, Acceptance, Strangeness, Symbols</td></tr>
+            <tr><td>N</td><td>Nobility (Third Imperium)</td></tr>
+            <tr><td>B</td><td>Bases</td></tr>
+            <tr><td>Z</td><td>Travel Zone Classification</td></tr>
+            <tr><td>PBG</td><td>Population multiplier; Belt count; Gas giant count</td></tr>
+            <tr><td>W</td><td>World count</td></tr>
+            <tr><td>A</td><td>Allegiance</td></tr>
+            <tr><td>Stellar</td><td>System star types</td></tr>
+          </table>
 
         </div>
       </div>
