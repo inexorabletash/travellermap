@@ -195,17 +195,20 @@ button:hover {
       }
       .style-print #searchBox,
       .style-atlas #searchBox { background-color: #e0e0e0; }
-      @media only screen and (max-width: 600px) {
+      @media only screen and (max-width: 610px) {
         #searchBox { width: 100px; }
       }
-      @media only screen and (max-width: 470px) {
+      @media only screen and (max-width: 510px) {
         #legendBtn { display: none; }
       }
-      @media only screen and (max-width: 400px) {
+      @media only screen and (max-width: 440px) {
         #starBtn { display: none; }
       }
-      @media only screen and (max-width: 360px) {
+      @media only screen and (max-width: 400px) {
         #searchBox { width: 50px; }
+      }
+      @media only screen and (max-width: 350px) {
+        #downloadBtn { display: none; }
       }
       </style>
       <button id="searchBtn"
@@ -354,6 +357,12 @@ button:hover {
       float: left;
     }
     </style>
+    <button id="downloadBtn"
+            title="Download maps, data, and more">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAARAQMAAAABo9W5AAAABlBMVEUAAAAAAAClZ7nPAAAAAXRSTlMAQObYZgAAACxJREFUCNdjAAHmA9ix/A8GBv4PDAzsDyD48GEGhoPNDAwHmBkY/v8HYxAAANMxEABTRRV6AAAAAElFTkSuQmCC"
+           width="17" height="17"
+           alt="Download">
+    </button>
     <button id="shareBtn"
             title="Share links to the map">
       <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAMAAAAMs7fIAAAAQlBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACO4fbyAAAAFXRSTlMAKlv4BDPaQRqADsbopGgl0alS7KbFwjzRAAAAYUlEQVQY042OSw6AIAxEBwT5+dfe/6q2IQRBF77NZF6aZvBgjuigyfaGKJhazTISkzwkDkBxz4jRgOOoBoAfSt/WbHYKqnzmkBMLhk4HZKMdhCuimDrMJTHtyJ+m4dO8uQE/DglxnzUgrQAAAABJRU5ErkJggg=="
@@ -382,7 +391,7 @@ button:hover {
     <script>
     window.addEventListener('DOMContentLoaded', function() {
       var $ = function(s) { return document.querySelector(s); };
-      var PANELS = ['legend', 'settings', 'share', 'help'];
+      var PANELS = ['legend', 'settings', 'share', 'download', 'help'];
       PANELS.forEach(function(b) {
         $('#'+b+'Btn').addEventListener('click', function() {
           PANELS.forEach(function(p) {
@@ -404,10 +413,12 @@ button:hover {
   body.show-settings #settingsBox,
   body.show-legend #legendBox,
   body.show-share #shareBox,
+  body.show-download #downloadBox,
   body.show-help #helpBox { display: block; }
   body.show-settings #settingsBtn,
   body.show-legend #legendBtn,
   body.show-share #shareBtn,
+  body.show-download #downloadBtn,
   body.show-help #helpBtn { background-color: red; }
 
   </style>
@@ -625,7 +636,7 @@ button:hover {
     <style>
     #shareBox {
       width: 230px;
-      max-height: 300px;
+      max-height: 280px;
     }
     #shareBox section { margin: 1em 0; }
     #shareBox section:first-of-type { margin-top: 0; }
@@ -660,10 +671,55 @@ button:hover {
       <input readonly id="share-embed" onclick="this.select();" title="Copy and paste">
     </section>
 
+  </div>
+
+  <div id="downloadBox"
+       class="ui hoverbox hoverbox-right">
+    <style>
+    #downloadBox {
+      width: 230px;
+      max-height: 150px;
+    }
+    #downloadBox section { margin: 1em 0; }
+    #downloadBox section:first-of-type { margin-top: 0; }
+    #downloadBox section:last-of-type { margin-bottom: 0; }
+    #downloadBox #sector-selected { display: none; }
+    #downloadBox.sector-selected #sector-selected { display: block; }
+    #downloadBox.sector-selected #no-sector-selected { display: none; }
+
+    #downloadBox h3 { font-style: italic; font-weight: normal;
+                      color: red;
+                      border-bottom: 2px solid red;
+                      margin-bottom: 10px; }
+    #downloadBox ul { list-style-type: none; padding-left: 20px; }
+    #downloadBox li { margin: 1em 0; }
+    </style>
+
     <section>
-      <a id="share-snapshot" target="_blank" href="#" download="TravellerMapSnapshot">Save Snapshot</a>
+      <a id="download-snapshot" target="_blank" href="#" download="TravellerMapSnapshot">Save Snapshot</a>
+      (<a id="download-snapshot-pdf" target="_blank" href="#">or PDF</a>)
     </section>
 
+    <section id="no-sector-selected">
+      <section>
+        Click on the map to select a sector for more options.
+      </section>
+    </section>
+
+    <section id="sector-selected">
+      <h3 id="sector-name"></h3>
+      <ul>
+        <li>
+          <a id="download-booklet" target="_blank" href="#">Printable Booklet</a>
+        </li>
+        <li>
+          <a id="download-poster" target="_blank" href="#">Sector Poster</a>
+        </li>
+        <li>
+          <a id="download-data" target="_blank" href="#">Raw Sector Data</a>
+        </li>
+      </ul>
+    </section>
   </div>
 
   <div id="navBar"
@@ -765,13 +821,13 @@ button:hover {
     <div id="MetadataDisplay">&nbsp;</div>
     <script id="SectorMetadataTemplate" type="text/x-handlebars-template">
       <div>
-        {{#SectorName}}<a title="Printable Booklet for {{.}} Sector" target="_blank" href="{{../BookletURL}}">{{.}}</a>{{/SectorName}}
+        {{SectorName}}
         {{#SectorEra}}(circa {{.}}){{/SectorEra}}
       </div>
     </script>
     <script id="WorldMetadataTemplate" type="text/x-handlebars-template">
       <div>
-        {{#SectorName}}<a title="Printable Booklet for {{.}} Sector" target="_blank" href="{{../BookletURL}}">{{.}}</a>{{/SectorName}}
+        {{SectorName}}
         <a class="stealth" href="doc/secondsurvey.html#hex" target="_blank" title="Hex">{{WorldHex}}</a>
         <b><a class="stealth" href="doc/secondsurvey.html#name" target="_blank" title="Name">{{WorldName}}</a></b>
         <a class="stealth" href="doc/secondsurvey.html#uwp" target="_blank" title="UWP">{{WorldUwp}}</a>
@@ -801,13 +857,14 @@ button:hover {
             title="Sector data has not been approved"
             href="doc/credits.html#unofficial"><span class="bar">&#x25AC;</span> Unofficial <span class="bar">&#x25AC;</span></a>
         {{/Unofficial}}
+        {{#Unmapped}}
+          &nbsp;
+        {{/Unmapped}}
       </div>
     </script>
     <script id="CommonMetadataTemplate" type="text/x-handlebars-template">
       <div style="font-style: italic;">
         {{Attribution}}
-        {{#DataURL}}<a title="Raw data for {{../SectorName}} Sector" target="_blank" href="{{.}}">Data</a>{{/DataURL}}
-        {{#PosterURL}}<a title="PDF map of {{../SectorName}} Sector" target="_blank" href="{{.}}">Poster</a>{{/PosterURL}}
 
         {{#SectorRef}}&mdash; <a target="_blank" href="{{.}}">Source</a>{{/SectorRef}}
         {{#ProductRef}}

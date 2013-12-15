@@ -233,7 +233,10 @@ window.addEventListener('DOMContentLoaded', function() {
       snapshotParams.options = map.GetOptions();
       snapshotParams.style = map.GetStyle();
       var snapshotURL = makeURL(SERVICE_BASE + '/api/tile', snapshotParams);
-      $('a#share-snapshot').href = snapshotURL;
+      $('a#download-snapshot').href = snapshotURL;
+      snapshotParams.accept = 'application/pdf';
+      snapshotURL = makeURL(SERVICE_BASE + '/api/tile', snapshotParams);
+      $('a#download-snapshot-pdf').href = snapshotURL;
 
     }, PERMALINK_REFRESH_DELAY_MS);
   }
@@ -286,6 +289,8 @@ window.addEventListener('DOMContentLoaded', function() {
         if (tags.indexOf('Official') !== -1) data.Official = true;
         else if (tags.indexOf('Preserve') !== -1) data.Preserve = true;
         else data.Unofficial = true;
+      } else {
+        data.Unmapped = true;
       }
 
       data.Attribution = (function() {
@@ -296,18 +301,29 @@ window.addEventListener('DOMContentLoaded', function() {
         return r.join(', ');
       }());
 
-      if ('SectorName' in data) {
-        data.BookletURL = SERVICE_BASE +
-          '/data/' + encodeURIComponent(data.SectorName) + '/booklet';
-        data.PosterURL = makeURL(SERVICE_BASE + '/api/poster', {
-          sector: data.SectorName, accept: 'application/pdf', style: map.GetStyle()});
-        data.DataURL = makeURL(SERVICE_BASE + '/api/sec', {
-            sector: data.SectorName, type: 'SecondSurvey' });
-      }
-
       var template = map.GetScale() >= 16 ? worldMetadataTemplate : sectorMetadataTemplate;
       $('#MetadataDisplay').innerHTML = statusMetadataTemplate(data) +
         template(data) + commonMetadataTemplate(data);
+
+      // Other UI
+      if ('SectorName' in data && 'SectorTags' in data) {
+        var bookletURL = SERVICE_BASE +
+              '/data/' + encodeURIComponent(data.SectorName) + '/booklet';
+        var posterURL = makeURL(SERVICE_BASE + '/api/poster', {
+          sector: data.SectorName, accept: 'application/pdf', style: map.GetStyle()});
+        var dataURL = makeURL(SERVICE_BASE + '/api/sec', {
+          sector: data.SectorName, type: 'SecondSurvey' });
+
+        var title = data.SectorName;
+        title = title.replace(/ Sector$/, '') + ' Sector';
+        $('#downloadBox').classList.add('sector-selected');
+        $('#downloadBox #sector-name').innerHTML = escapeHtml(title);
+        $('#downloadBox a#download-booklet').href = bookletURL;
+        $('#downloadBox a#download-poster').href = posterURL;
+        $('#downloadBox a#download-data').href = dataURL;
+      } else {
+        $('#downloadBox').classList.remove('sector-selected');
+      }
     }
   }
 
