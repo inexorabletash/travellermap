@@ -1,4 +1,4 @@
-﻿<!DOCTYPE HTML>
+<!DOCTYPE html>
 <title>Traveller Map - JumpMap/POST Example</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="shortcut icon" href="/favicon.ico">
@@ -6,10 +6,10 @@
 
 <h1>The Traveller Map - JumpMap/POST Example</h1>
 <div class="content">
-	<section>
-		<!-- ================================================================================ -->
-		<h3>Explanation</h3>
-		<!-- ================================================================================ -->
+  <section>
+    <!-- ================================================================================ -->
+    <h3>Explanation</h3>
+    <!-- ================================================================================ -->
 
     <p>
       The <b>JumpMap</b> API supports the HTTP POST method for submitting custom sector data for
@@ -45,16 +45,16 @@
 
   </section>
 
-	<section>
-		<!-- ================================================================================ -->
-		<h3>POST Form Data</h3>
-		<!-- ================================================================================ -->
+  <section>
+    <!-- ================================================================================ -->
+    <h3>POST Form Data</h3>
+    <!-- ================================================================================ -->
 
     <ul>
       <li>POST with encoding type "application/x-www-form-urlencoded"
       <li>Sector data is specified as HTML form field "data"
       <li>Options specified in the URL query and/or POST variables
-      <li>Metadata in <a href="doc/api.html#metadata">XML</a> (<a href="res/Sectors/FarFrontiers.xml">example</a>) 
+      <li>Metadata in <a href="doc/api.html#metadata">XML</a> (<a href="res/Sectors/FarFrontiers.xml">example</a>)
         or <a href="http://dotclue.org/t20/">MSEC</a> format may optionally be specified as an optional "metadata" field
     </ul>
 
@@ -103,12 +103,12 @@
 
       <input type="submit" value="POST">
     </form>
-	</section>
+  </section>
 
-	<section>
-		<!-- ================================================================================ -->
-		<h3>POST File Attachment</h3>
-		<!-- ================================================================================ -->
+  <section>
+    <!-- ================================================================================ -->
+    <h3>POST File Attachment</h3>
+    <!-- ================================================================================ -->
 
     <form action="api/jumpmap" method="post" enctype="multipart/form-data" autocomplete="off">
       <ul>
@@ -124,7 +124,7 @@
       </div>
 
       <ul>
-        <li>Metadata in <a href="doc/api.html#metadata">XML</a> (<a href="res/Sectors/FarFrontiers.xml">example</a>) 
+        <li>Metadata in <a href="doc/api.html#metadata">XML</a> (<a href="res/Sectors/FarFrontiers.xml">example</a>)
           or <a href="http://dotclue.org/t20/">MSEC</a> format may optionally be specified as an attachment named "metadata"
       </ul>
 
@@ -167,10 +167,10 @@
 
   </section>
 
-	<section>
-		<!-- ================================================================================ -->
-		<h3>POST text/plain Content</h3>
-		<!-- ================================================================================ -->
+  <section>
+    <!-- ================================================================================ -->
+    <h3>POST text/plain Content</h3>
+    <!-- ================================================================================ -->
 
     <p>
       This cannot be done through a Web page except via XMLHttpRequest, which doesn't

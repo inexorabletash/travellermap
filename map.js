@@ -17,11 +17,10 @@ function parseURLQuery(url) {
   if (url.search && url.search.length > 1) {
     url.search.substring(1).split('&').forEach(function(pair) {
       var kv = pair.split('=', 2);
-      if (kv.length === 2) {
+      if (kv.length === 2)
         o[kv[0]] = decodeURIComponent(kv[1].replace(/\+/g, ' '));
-      } else {
+      else
         o[kv[0]] = true;
-      }
     });
   }
   return o;
@@ -60,7 +59,7 @@ function makeURL(base, params) {
   var keys = Object.keys(params);
   if (keys.length === 0) return base;
   return base += '?' + keys.map(function(p) {
-    if (params[p] === undefined) return;
+    if (params[p] === undefined) return undefined;;
     return encodeURIComponent(p) + '=' + encodeURIComponent(params[p]);
   }).join('&');
 }
@@ -139,7 +138,7 @@ function makeURL(base, params) {
   var MapService = (function() {
 
     function service(url, contentType, callback, errback) {
-      if (typeof callback !== 'function') { throw new TypeError(); }
+      if (typeof callback !== 'function') throw new TypeError();
 
       var xhr = new XMLHttpRequest();
       try {
@@ -450,9 +449,8 @@ function makeURL(base, params) {
       try {
         target['On' + event](data);
       } catch (ex) {
-        if (console && console.error) {
+        if (console && console.error)
           console.error('Event handler for ' + event + ' threw:', ex);
-        }
       }
     }
   }
@@ -859,9 +857,8 @@ function makeURL(base, params) {
     child = this.container.firstChild;
     while (child) {
       next = child.nextSibling;
-      if (child.tagName === 'IMG' && child.pass !== this.pass) {
+      if (child.tagName === 'IMG' && child.pass !== this.pass)
         this.container.removeChild(child);
-      }
       child = next;
     }
 
@@ -923,7 +920,7 @@ function makeURL(base, params) {
 
     function drawImage(img, x, y, w, h, z) {
 
-      if (img.parentNode !== self.container) { self.container.appendChild(img); }
+      if (img.parentNode !== self.container) self.container.appendChild(img);
 
       img.style.left = Math.floor(x) + 'px';
       img.style.top = Math.floor(y) + 'px';
@@ -1083,9 +1080,8 @@ function makeURL(base, params) {
         tx = target.x,
         ty = target.y;
 
-    if (ox === tx && oy === ty) {
+    if (ox === tx && oy === ty)
       return;
-    }
 
     this.animation = new Animation(3.0, 1000 / 40, function(p) {
       return Animation.smooth(p, 1.0, 0.1, 0.25);
@@ -1098,9 +1094,8 @@ function makeURL(base, params) {
   };
 
   Map.prototype.makeOverlay = function(overlay) {
-    if (overlay === null) {
+    if (overlay === null)
       return;
-    }
 
     var div;
     if (overlay.element && overlay.element.parentNode) {
@@ -1129,9 +1124,8 @@ function makeURL(base, params) {
   };
 
   Map.prototype.makeMarker = function(marker) {
-    if (marker === null) {
+    if (marker === null)
       return;
-    }
 
     // TODO: Consider preserving existing item
     var div;

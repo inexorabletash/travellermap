@@ -1,441 +1,384 @@
-﻿<!DOCTYPE HTML>
-<html>
-<head>
-  <title>Traveller Map - Sector Page</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <link rel="shortcut icon" href="/favicon.ico">
-  <link rel="stylesheet" type="text/css" href="site.css?update=2013-08-25">
-  <style>
-    @import url(http://fonts.googleapis.com/css?family=Marcellus|PT+Sans+Narrow);
+<!DOCTYPE html>
+<title>Traveller Map - Sector Page</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="stylesheet" type="text/css" href="site.css?update=2013-08-25">
+<style>
+@import url(http://fonts.googleapis.com/css?family=Marcellus|PT+Sans+Narrow);
 
-    @media print {
-      @page {
-        size: landscape;
-        margin: 0;
-      }
-    }
+@media print {
+  @page {
+    size: landscape;
+    margin: 0;
+  }
+}
 
-    html
-    {
-      margin: 0;
-    }
+html {
+  margin: 0;
+}
 
-    body
-    {
-      margin: 0;
-    }
+body {
+  margin: 0;
+}
 
-    /* Override site.css */
-    .content {
-      margin: 0;
-      padding: 0;
-      width: auto;
-    }
+/* Override site.css */
+.content {
+  margin: 0;
+  padding: 0;
+  width: auto;
+}
 
-    #status
-    {
-      background-color: #ffffc0;
-      color: #000000;
-      border: solid 1px black;
-      margin: 2pt;
-      padding: 2pt;
-      position: absolute;
-      top: 0;
-    }
-    #statusImage
-    {
-      width: 16px;
-      height: 16px;
-    }
+#status {
+  background-color: #ffffc0;
+  color: #000000;
+  border: solid 1px black;
+  margin: 2pt;
+  padding: 2pt;
+  position: absolute;
+  top: 0;
+}
+#statusImage {
+  width: 16px;
+  height: 16px;
+}
 
-    table, td, th
-    {
-      border: none;
-    }
-    table
-    {
-      font-size: 9pt;
-      border-collapse: collapse;
-    }
-    th, td
-    {
-      white-space: nowrap;
-      padding-top: 0;
-      padding-bottom: 0;
-    }
-    .page
-    {
-      page-break-inside: avoid;
-      page-break-after: always;
-      width: 11in;
-      height: 8.45in;
-      padding: 0; margin: 0; border: 0; overflow: hidden;
-    }
-    .page-half
-    {
-      width: 5.5in;
-      height: 8.45in;
-      padding: 0; margin: 0; border: 0; overflow: hidden;
-      float: left;
-    }
+table, td, th {
+  border: none;
+}
+table {
+  font-size: 9pt;
+  border-collapse: collapse;
+}
+th, td {
+  white-space: nowrap;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.page {
+  page-break-inside: avoid;
+  page-break-after: always;
+  width: 11in;
+  height: 8.45in;
+  padding: 0; margin: 0; border: 0; overflow: hidden;
+}
+.page-half {
+  width: 5.5in;
+  height: 8.45in;
+  padding: 0; margin: 0; border: 0; overflow: hidden;
+  float: left;
+}
 
-    /* Title Page ============================== */
+/* Title Page ============================== */
 
-    .title-page-left
-    {
-      position: relative;
-    }
+.title-page-left {
+  position: relative;
+}
 
-    .title_top
-    {
-      position: absolute;
-      left: 0.25in;
-      right: 0.25in;
-      height: 4in;
-    }
-    .title_title
-    {
-      position: absolute;
-      bottom: 0;
+.title_top {
+  position: absolute;
+  left: 0.25in;
+  right: 0.25in;
+  height: 4in;
+}
+.title_title {
+  position: absolute;
+  bottom: 0;
 
-      font-style: italic;
-      font-size: 32pt;
-      font-family: Optima, Marcellus, serif;
-      font-weight: normal;
-    }
+  font-style: italic;
+  font-size: 32pt;
+  font-family: Optima, Marcellus, serif;
+  font-weight: normal;
+}
 
-    .title_middle
-    {
-      position: absolute;
-      left: 0.25in;
-      right: 0.25in;
-      top: 4in;
-      height: 1.5in;
+.title_middle {
+  position: absolute;
+  left: 0.25in;
+  right: 0.25in;
+  top: 4in;
+  height: 1.5in;
 
-      margin-top: 2pt;
-      border-top: 6pt solid black;
-    }
-    .title_logo
-    {
-      text-align: left;
-      float: right;
-    }
-    .title_trav
-    {
-      font-style: italic;
-      font-size: 52pt;
-      font-family: Optima, Marcellus, serif;
-      font-weight: bold;
-      margin-top: -4pt;
-      margin-bottom: -10pt;
-      letter-spacing: -1pt;
-    }
-    .title_reg
-    {
-      font-size: 25%;
-      font-style: normal;
-    }
-    .title_adventure
-    {
-      font-style: italic;
-      font-size: 22pt;
-      font-family: Optima, Marcellus, serif;
-      font-weight: normal;
-      margin: 0;
-      padding: 0;
-      padding-left: 6pt;
-    }
+  margin-top: 2pt;
+  border-top: 6pt solid black;
+}
+.title_logo {
+  text-align: left;
+  float: right;
+}
+.title_trav {
+  font-style: italic;
+  font-size: 52pt;
+  font-family: Optima, Marcellus, serif;
+  font-weight: bold;
+  margin-top: -4pt;
+  margin-bottom: -10pt;
+  letter-spacing: -1pt;
+}
+.title_reg {
+  font-size: 25%;
+  font-style: normal;
+}
+.title_adventure {
+  font-style: italic;
+  font-size: 22pt;
+  font-family: Optima, Marcellus, serif;
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+  padding-left: 6pt;
+}
 
-    .title_publisher
-    {
-      position: absolute;
-      margin: 0;
-      padding: 0;
-      left: 0.25in;
-      right: 0.25in;
-      top: 7in;
+.title_publisher {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  left: 0.25in;
+  right: 0.25in;
+  top: 7in;
 
-      font-style: normal;
-      font-size: 24pt;
-      font-family: Optima, Marcellus, serif;
-      font-weight: normal;
-    }
+  font-style: normal;
+  font-size: 24pt;
+  font-family: Optima, Marcellus, serif;
+  font-weight: normal;
+}
 
-    .title-page-right
-    {
-      position: relative;
-    }
+.title-page-right {
+  position: relative;
+}
 
-    .align-bottom
-    {
-      position: absolute;
-      bottom: 0;
-      left: 0; right: 0;
-    }
-    .credits
-    {
-      white-space: normal;
-      text-align: justify;
-      margin: 0.1in 0.25in;
-    }
+.align-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0; right: 0;
+}
+.credits {
+  white-space: normal;
+  text-align: justify;
+  margin: 0.1in 0.25in;
+}
 
-    /* Sector Map ============================== */
+/* Sector Map ============================== */
 
-    .sector-spread
-    {
-      padding: 0.25in 0.5in;
-    }
-    .sector-image
-    {
-      border: solid 4px black;
-      width: 9.5in;
-    }
-    .map_title
-    {
-      font-style: italic;
-      font-size: 32pt;
-      font-family: Optima, Marcellus, serif;
-      font-weight: bold;
-      margin: 0;
-    }
-    .map_subtitle
-    {
-      font-style: normal;
-      font-size: 12pt;
-      font-family: Optima, Marcellus, serif;
-      font-weight: normal;
-      margin-bottom: 8pt;
-    }
-
+.sector-spread {
+  padding: 0.25in 0.5in;
+}
+.sector-image {
+  border: solid 4px black;
+  width: 9.5in;
+}
+.map_title {
+  font-style: italic;
+  font-size: 32pt;
+  font-family: Optima, Marcellus, serif;
+  font-weight: bold;
+  margin: 0;
+}
+.map_subtitle {
+  font-style: normal;
+  font-size: 12pt;
+  font-family: Optima, Marcellus, serif;
+  font-weight: normal;
+  margin-bottom: 8pt;
+}
 
     /* SubSector ============================== */
 
-    .ss-page-left
-    {
-      height: 8.25in;
-      float: left;
-    }
-    .ss-page-left .content
-    {
-      padding: 0.25in;
-    }
-    .ss-page-right .content
-    {
-      padding-top: 0.5in;
-    }
-    .ss-page-right
-    {
-      height: 8.25in;
-      float: left;
-    }
-    .subsector-image
-    {
-      padding: 4px;
-    }
-    .subsector-image > img
-    {
-      border: solid 4px black;
-    }
-    .subsector-body
-    {
-      text-align: left;
-      white-space: normal;
-    }
+.ss-page-left {
+  height: 8.25in;
+  float: left;
+}
+.ss-page-left .content {
+  padding: 0.25in;
+}
+.ss-page-right .content {
+  padding-top: 0.5in;
+}
+.ss-page-right {
+  height: 8.25in;
+  float: left;
+}
+.subsector-image {
+  padding: 4px;
+}
+.subsector-image > img {
+  border: solid 4px black;
+}
+.subsector-body {
+  text-align: left;
+  white-space: normal;
+}
 
-    .sparse table.uwp-data {
-      font-size: 9pt;
-    }
-    .dense table.uwp-data {
-      font-size: 8pt;
-    }
+.sparse table.uwp-data {
+  font-size: 9pt;
+}
+.dense table.uwp-data {
+  font-size: 8pt;
+}
 
-    table.uwp-data {
-      width: 100%;
-      font-family: "PT Sans Narrow", "Helvetica Narrow", "Arial Narrow", Tahoma, sans-serif;
-    }
-    .uwp-data th
-    {
-      text-align: left;
-      font-weight: normal;
-      font-style: italic;
-    }
-    .uwp-data th,
-    .uwp-data td
-    {
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
+table.uwp-data {
+  width: 100%;
+  font-family: "PT Sans Narrow", "Helvetica Narrow", "Arial Narrow", Tahoma, sans-serif;
+}
+.uwp-data th {
+  text-align: left;
+  font-weight: normal;
+  font-style: italic;
+}
+.uwp-data th,
+.uwp-data td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
-    .uwp-data th.world-remarks,
-    .uwp-data td.world-remarks
-    {
-        max-width: 150px;
-    }
+.uwp-data th.world-remarks,
+.uwp-data td.world-remarks {
+  max-width: 150px;
+}
 
-    td.neighbor
-    {
-      text-align: center;
-      font-weight: bold;
-      text-transform: uppercase;
-      padding: 0;
-      white-space: nowrap;
-      line-height: 9pt;
-      font-size: 11pt;
-    }
-    td.vertical
-    {
-      width: 1.25em;
-      max-width: 1.25em;
-    }
-    .rotate90
-    {
-      display: inline-block;
-      padding: 0;
-      margin: 0;
-      transform: translateX(-50%) rotate(90deg) translateY(-4pt);
-      -webkit-transform: translateX(-50%) rotate(90deg) translateY(-4pt);
-      -moz-transform: translateX(-50%) rotate(90deg) translateX(-4pt);
-      -o-transform: translateX(-50%) rotate(90deg) translateX(-4pt);
-    }
-    .rotate180
-    {
-      display: inline-block;
-      padding: 0;
-      margin: 0;
-      transform: rotate(180deg);
-      -webkit-transform: rotate(180deg);
-      -moz-transform: rotate(180deg);
-      -o-transform: rotate(180deg);
-    }
-    .rotate270
-    {
-      display: inline-block;
-      padding: 0;
-      margin: 0;
-      transform: translateX(-50%) rotate(270deg) translateY(10pt);
-      -webkit-transform: translateX(-50%) rotate(270deg) translateY(10pt);
-      -moz-transform: translateX(-50%) rotate(270deg) translateY(10pt);
-      -o-transform: translateX(-50%) rotate(270deg) translateY(10pt);
-    }
+td.neighbor {
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 0;
+  white-space: nowrap;
+  line-height: 9pt;
+  font-size: 11pt;
+}
+td.vertical {
+  width: 1.25em;
+  max-width: 1.25em;
+}
+.rotate90 {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  transform: translateX(-50%) rotate(90deg) translateY(-4pt);
+  -webkit-transform: translateX(-50%) rotate(90deg) translateY(-4pt);
+  -moz-transform: translateX(-50%) rotate(90deg) translateX(-4pt);
+  -o-transform: translateX(-50%) rotate(90deg) translateX(-4pt);
+}
+.rotate180 {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+}
+.rotate270 {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  transform: translateX(-50%) rotate(270deg) translateY(10pt);
+  -webkit-transform: translateX(-50%) rotate(270deg) translateY(10pt);
+  -moz-transform: translateX(-50%) rotate(270deg) translateY(10pt);
+  -o-transform: translateX(-50%) rotate(270deg) translateY(10pt);
+}
 
+.subsector_title {
+  white-space: nowrap;
+  font-weight: bold;
+  font-style: normal;
+  font-size: 24pt;
+  font-family: Optima, Marcellus, serif;
+  border-bottom: solid 6pt black;
+  margin-bottom: 2pt;
+}
+.blurb {
+  width: 360pt;
+  white-space: normal;
+  margin-bottom: 0;
+  text-align: justify;
+}
 
-    .subsector_title
-    {
-      white-space: nowrap;
-      font-weight: bold;
-      font-style: normal;
-      font-size: 24pt;
-      font-family: Optima, Marcellus, serif;
-      border-bottom: solid 6pt black;
-      margin-bottom: 2pt;
-    }
-    .blurb
-    {
-      width: 360pt;
-      white-space: normal;
-      margin-bottom: 0;
-      text-align: justify;
-    }
+.footer {
+  page-break-before: avoid;
+}
 
-    .footer
-    {
-      page-break-before: avoid;
-    }
+.footer-left {
+  width: 5in;
+  height: 0.25in;
+  padding-left: 0.25in;
+  padding-right: 0.25in;
+  text-align: left;
+  float: left;
+}
+.footer-right {
+  width: 5in;
+  height: 0.25in;
+  padding-left: 0.25in;
+  padding-right: 0.25in;
+  text-align: right;
+  float: left;
+}
 
-    .footer-left
-    {
-      width: 5in;
-      height: 0.25in;
-      padding-left: 0.25in;
-      padding-right: 0.25in;
-      text-align: left;
-      float: left;
-    }
-    .footer-right
-    {
-      width: 5in;
-      height: 0.25in;
-      padding-left: 0.25in;
-      padding-right: 0.25in;
-      text-align: right;
-      float: left;
-    }
+/* Details ============================== */
 
+.details-page {
+  height: 8.25in;
+}
 
-    /* Details ============================== */
+.details-page .content {
+  padding: 0.25in;
+}
 
-    .details-page {
-      height: 8.25in;
-    }
+.details_title {
+  white-space: nowrap;
+  font-weight: bold;
+  font-style: normal;
+  font-size: 24pt;
+  font-family: Optima, Marcellus, serif;
+  border-bottom: solid 6pt black;
+  margin-bottom: 2pt;
+}
 
-    .details-page .content
-    {
-      padding: 0.25in;
-    }
+.details_title.right {
+  text-align: right;
+}
 
-    .details_title
-    {
-      white-space: nowrap;
-      font-weight: bold;
-      font-style: normal;
-      font-size: 24pt;
-      font-family: Optima, Marcellus, serif;
-      border-bottom: solid 6pt black;
-      margin-bottom: 2pt;
-    }
+/* Index ============================== */
 
+.index-page {
+  height: 8.25in;
+}
 
-    .details_title.right
-    {
-      text-align: right;
-    }
+.index-page .content {
+  padding: 0.25in;
+}
 
-    /* Index ============================== */
+.index_title {
+  white-space: nowrap;
+  font-weight: bold;
+  font-style: normal;
+  font-size: 24pt;
+  font-family: Optima, Marcellus, serif;
+  border-bottom: solid 6pt black;
+  margin-bottom: 2pt;
+}
+.index_title {
+  visibility: hidden;
+}
+.index-page.pp1 .index_title {
+  visibility: visible;
+}
 
-    .index-page {
-      height: 8.25in;
-    }
+.index-column {
+  float: left;
+  margin-top: 0.15in;
+  width: 33%;
+}
 
-    .index-page .content
-    {
-      padding: 0.25in;
-    }
-
-    .index_title
-    {
-      white-space: nowrap;
-      font-weight: bold;
-      font-style: normal;
-      font-size: 24pt;
-      font-family: Optima, Marcellus, serif;
-      border-bottom: solid 6pt black;
-      margin-bottom: 2pt;
-    }
-    .index_title {
-      visibility: hidden;
-    }
-    .index-page.pp1 .index_title {
-      visibility: visible;
-    }
-
-    .index-column {
-      float: left;
-      margin-top: 0.15in;
-      width: 33%;
-    }
-
-  </style>
-  <!--[if lt IE 10]>
+</style>
+<!--[if lt IE 10]>
   <style>
     .rotate90 { -ms-writing-mode: tb-rl; }
     .rotate270 { -ms-writing-mode: tb-rl; }
   </style>
-  <![endif]-->
-  <script src="lib/polyfill/polyfill.js?update=2013-07-25"></script>
-  <script src="lib/handlebars.js?update=2013-07-25"></script>
-  <script src="map.js?update=2013-07-25"></script>
-  <script src="sector.js?update=2013-10-22"></script>
-</head>
+<![endif]-->
+<script src="lib/polyfill/polyfill.js?update=2013-07-25"></script>
+<script src="lib/handlebars.js?update=2013-07-25"></script>
+<script src="map.js?update=2013-07-25"></script>
+<script src="sector.js?update=2013-10-22"></script>
 
 <body>
   <!-- Status Display -->
@@ -866,4 +809,3 @@
     })();
   </script>
 </body>
-</html>
