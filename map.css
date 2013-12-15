@@ -247,3 +247,19 @@ body.atlas {
     scrollbar-3dlight-color:#b0b0b0;
     scrollbar-darkshadow-color: #ffffff;
 }
+
+noscript {
+  display: block;
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 400px;
+  height: 200px;
+  margin-top: -100px;
+  margin-left: -200px;
+  text-align: center;
+  line-height: 200px;
+  z-index: 9999;
+  color: white;
+  background-color: black;
+  border: 2px solid white;
+}
