@@ -1054,6 +1054,7 @@ function makeURL(base, params) {
   };
 
   Map.prototype.shouldAnimateToSectorHex = function(scale, sx, sy, hx, hy) {
+    // TODO: Allow scale changes if target is "visible" (zooming in)
     if (scale !== this.scale)
       return false;
 
@@ -1072,15 +1073,16 @@ function makeURL(base, params) {
     }
   };
 
-  Map.prototype.animateToSectorHex = function(sx, sy, hx, hy) {
+  Map.prototype.animateToSectorHex = function(scale, sx, sy, hx, hy) {
     this.cancelAnimation();
     var target = sectorHexToLogical(sx, sy, hx, hy),
+        os = this.GetScale(),
         ox = this.GetX(),
         oy = this.GetY(),
+        ts = scale,
         tx = target.x,
         ty = target.y;
-
-    if (ox === tx && oy === ty)
+    if (ox === tx && oy === ty && os === ts)
       return;
 
     this.animation = new Animation(3.0, 1000 / 40, function(p) {
@@ -1088,6 +1090,10 @@ function makeURL(base, params) {
     });
     var self = this;
     this.animation.onanimate = function(p) {
+      // Interpolate scale in log space.
+      self.SetScale(Math.pow(2, Animation.interpolate(
+        Math.log(os)/Math.LN2, Math.log(ts)/Math.LN2, p)));
+      // TODO: If animating scale, need to slew to target more quickly.
       self.SetPosition(Animation.interpolate(ox, tx, p), Animation.interpolate(oy, ty, p));
       self.redraw();
     };
@@ -1179,9 +1185,8 @@ function makeURL(base, params) {
 
   Map.prototype.SetScale = function(scale) {
     scale = 1 + log2(Number(scale));
-    if (scale === this.scale) {
+    if (scale === this.scale)
       return;
-    }
     this.setScale(scale);
   };
 
@@ -1250,7 +1255,7 @@ function makeURL(base, params) {
     this.cancelAnimation();
 
     if (this.shouldAnimateToSectorHex(1 + log2(Number(scale)), sx, sy, hx, hy)) {
-      this.animateToSectorHex(sx, sy, hx, hy);
+      this.animateToSectorHex(scale, sx, sy, hx, hy);
     } else {
       this.SetScale(scale);
       this.CenterAtSectorHex(sx, sy, hx, hy);
