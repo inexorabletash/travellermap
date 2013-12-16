@@ -261,6 +261,15 @@ button:hover {
         search($('#searchBox').value);
         e.preventDefault();
       });
+      var searchTimer = null;
+      var SEARCH_TIMER_DELAY = 500; // ms
+      $("#searchBox").addEventListener('keyup', function(e) {
+        if (searchTimer)
+          clearTimeout(searchTimer);
+        searchTimer = setTimeout(function() {
+          search($('#searchBox').value, true);
+        }, SEARCH_TIMER_DELAY);
+      });
       $('#starBtn').addEventListener('click', function() {
         search("(default)");
       });

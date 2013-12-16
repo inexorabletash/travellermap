@@ -338,19 +338,20 @@ window.addEventListener('DOMContentLoaded', function() {
 
   var searchRequest = null;
 
-  function search(query) {
+  function search(query, typed) {
     if (query === '')
       return;
 
-    // IE stops animated images when submitting a form - restart it
-    if (document.images) {
-      var progressImage = $('#ProgressImage');
-      progressImage.src = progressImage.src;
-    }
+    if (!typed) {
+      // IE stops animated images when submitting a form - restart it
+      if (document.images) {
+        var progressImage = $('#ProgressImage');
+        progressImage.src = progressImage.src;
+      }
 
-    // NOTE: Do this first in case the response is synchronous (cached)
-    document.body.classList.add('search-progress');
-    document.body.classList.remove('search-results');
+      document.body.classList.add('search-progress');
+      document.body.classList.remove('search-results');
+    }
 
     if (searchRequest)
       searchRequest.abort();
@@ -437,7 +438,7 @@ window.addEventListener('DOMContentLoaded', function() {
       });
 
       var first = $('#resultsContainer a');
-      if (first)
+      if (first && !typed)
         setTimeout(function() { first.focus(); }, 0);
     }
   }
