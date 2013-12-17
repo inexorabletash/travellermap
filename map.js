@@ -292,11 +292,14 @@ function makeURL(base, params) {
 
   var DOMHelpers = {
     setCapture: function(element) {
-      if ('setCapture' in element)
+      // Prevents click events in FF (?!?)
+      var isIE = navigator.userAgent.indexOf('MSIE') !== -1;
+      if (isIE && 'setCapture' in element)
         element.setCapture(true);
     },
     releaseCapture: function(element) {
-      if ('releaseCapture' in element)
+      var isIE = navigator.userAgent.indexOf('MSIE') !== -1;
+      if (isIE && 'releaseCapture' in element)
         element.releaseCapture();
     }
   };
@@ -716,13 +719,12 @@ function makeURL(base, params) {
       if (e.ctrlKey || e.altKey || e.metaKey)
         return;
 
-      var isMoz = navigator.userAgent.indexOf('Gecko/') !== -1,
-          VK_I = 73,
+      var VK_I = 73,
           VK_J = 74,
           VK_K = 75,
           VK_L = 76,
-          VK_SUBTRACT = isMoz ? 109 : 189,
-          VK_EQUALS = isMoz ? 61 : 187;
+          VK_SUBTRACT = ('DOM_VK_HYPHEN_MINUS' in e) ? e.DOM_VK_HYPHEN_MINUS : 189,
+          VK_EQUALS = ('DOM_VK_EQUALS' in e) ? e.DOM_VK_EQUALS : 187;
 
       switch (e.keyCode) {
         case VK_I: self.Scroll(0, -KEY_SCROLL_DELTA); break;
