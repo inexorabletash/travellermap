@@ -262,7 +262,7 @@ button:hover {
         e.preventDefault();
       });
       var searchTimer = null;
-      var SEARCH_TIMER_DELAY = 500; // ms
+      var SEARCH_TIMER_DELAY = 250; // ms
       $("#searchBox").addEventListener('keyup', function(e) {
         if (searchTimer)
           clearTimeout(searchTimer);
@@ -414,6 +414,16 @@ button:hover {
             document.body.classList.remove('show-' + b);
           }
         });
+      });
+
+      // In FF and IE, need to render the FB "Like" button after it becomes
+      // visible or it ends up with zero height.
+      var rendered = false;
+      $('#shareBtn').addEventListener('click', function() {
+        if (!rendered) {
+          try { FB.XFBML.parse(); } catch (e) {}
+          rendered = true;
+        }
       });
     });
     </script>
@@ -651,7 +661,7 @@ button:hover {
     #shareBox section:first-of-type { margin-top: 0; }
     #shareBox section:last-of-type { margin-bottom: 0; }
     #shareBox input { width: 210px; padding: 5px; border: 1px solid #404040; }
-    #shareBox .tip { color: gray; }
+    #shareBox section.fb { height: 33px; }
     </style>
 
     <section>
@@ -662,7 +672,7 @@ button:hover {
       <div class="g-plusone" data-size="tall" data-annotation="inline" data-width="240">+1</div>
     </section>
 
-    <section>
+    <section class="fb">
       <div class="fb-like" data-href="http://travellermap.com" data-width="200" data-colorscheme="dark" data-layout="standard" data-action="like" data-show-faces="true">Like</div>
     </section>
 
@@ -904,6 +914,11 @@ button:hover {
   </script>
 
   <!-- Facebook -->
+  <script>
+  // Stop the fb like button from rendering automatically
+  // since the button is within {display: none} by default.
+  window.fbAsyncInit = function () { FB.init({xfbml:false}); };
+  </script>
   <div id="fb-root"></div>
   <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
