@@ -302,8 +302,8 @@ window.addEventListener('DOMContentLoaded', function() {
       }());
 
       var template = map.GetScale() >= 16 ? worldMetadataTemplate : sectorMetadataTemplate;
-      $('#MetadataDisplay').innerHTML = statusMetadataTemplate(data) +
-        template(data) + commonMetadataTemplate(data);
+      $('#MetadataDisplay').innerHTML =
+        template(data) + commonMetadataTemplate(data) + statusMetadataTemplate(data);
 
       // Other UI
       if ('SectorName' in data && 'SectorTags' in data) {

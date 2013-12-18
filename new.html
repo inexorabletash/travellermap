@@ -808,7 +808,6 @@ button:hover {
 
     @media only screen and (max-width: 640px) {
       #bottom-pane { zoom: 50%; }
-      #MetadataDisplay { display: none; }
 
       #LogoImage { width: 416px; height: 71px; background-image: url("res/ui/logo-flat.png"); }
       .style-print #LogoImage,
@@ -832,12 +831,13 @@ button:hover {
       });
     </script>
 
-    <div style="font-style: italic; font-size: 8pt;">
-      The Traveller game in all forms is owned by
-      <a target="_blank" href="http://farfuture.net">Far Future Enterprises</a>.
-      Copyright &copy; 1977 - 2013 Far Future Enterprises.
+    <div id="MetadataDisplay">
+      <div style="font-style: italic;">
+        The Traveller game in all forms is owned by
+        <a target="_blank" href="http://farfuture.net">Far Future Enterprises</a>.
+        Copyright &copy; 1977 - 2013 Far Future Enterprises.
+      </div>
     </div>
-    <div id="MetadataDisplay">&nbsp;</div>
     <script id="SectorMetadataTemplate" type="text/x-handlebars-template">
       <div>
         {{SectorName}}
