@@ -489,6 +489,11 @@
       sectors were designed and submitted by Mark Humphreys, after dot-maps by Leroy W. L. Guatney.
     </p>
 
+    <p>
+      <a class="sector">Luretiir!girr</a> sector was designed by Joshua Bell as a placeholder
+      for a dotmap by Leeroy W. L. Guatney.
+    </p>
+
     <!-- ................................................................................ -->
     <h3>Rimward Sectors</h3>
     <!-- ................................................................................ -->
@@ -591,7 +596,7 @@
 </div>
 <script>
   [].forEach.call(document.querySelectorAll('a.sector'), function(anchor) {
-    anchor.href = "/?sector=" + encodeURIComponent(anchor.innerText);
+    anchor.href = "../?sector=" + encodeURIComponent(anchor.innerText);
     anchor.target = "_blank";
   });
 </script>
