@@ -337,10 +337,18 @@ window.addEventListener('DOMContentLoaded', function() {
   var searchTemplate = Handlebars.compile($('#SearchResultsTemplate').innerHTML);
 
   var searchRequest = null;
+  var lastQuery = null;
 
   function search(query, typed) {
     if (query === '')
       return;
+
+    if (query === lastQuery) {
+      if (!document.body.classList.contains('search-progress') && !typed)
+        document.body.classList.add('search-results');
+      return;
+    }
+    lastQuery = query;
 
     if (!typed) {
       // IE stops animated images when submitting a form - restart it
