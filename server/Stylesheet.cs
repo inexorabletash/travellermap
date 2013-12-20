@@ -340,7 +340,6 @@ namespace Maps.Rendering
             macroNames.smallFontInfo = new FontInfo(DEFAULT_FONT, 5f / 1.4f, XFontStyle.Regular);
             macroNames.mediumFontInfo = new FontInfo(DEFAULT_FONT, 6.5f / 1.4f, XFontStyle.Italic);
 
-
             capitals.fillColor = Color.Wheat;
             capitals.textColor = Color.Red;
             blueZone.pen.color = Color.Blue;
@@ -572,6 +571,10 @@ namespace Maps.Rendering
 
             hexNumber.textColor = lightColor;
             imageBorderColor = lightColor;
+
+            placeholder.fontInfo = new FontInfo(DEFAULT_FONT, 0.4f);
+            placeholder.textColor = foregroundColor;
+            placeholder.position = new PointF(0, 0.03f);
         }
 
         public struct StyleElement
@@ -672,6 +675,7 @@ namespace Maps.Rendering
         public StyleElement macroBorders;
         public StyleElement macroNames;
         public StyleElement pseudoRandomStars;
+        public StyleElement placeholder;
 
         public StyleElement microBorders;
         public bool fillMicroBorders;

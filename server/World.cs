@@ -223,6 +223,7 @@ namespace Maps
             if (code == null)
                 throw new ArgumentNullException("code");
 
+            // TODO: Performance impact - this must be an O(n) lookup bypassing the hash
             return m_codes.Any(s => s.Equals(code, StringComparison.InvariantCultureIgnoreCase));
         }
 

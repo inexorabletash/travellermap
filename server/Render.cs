@@ -771,6 +771,7 @@ namespace Maps.Rendering
         private enum WorldLayer { Background, Foreground };
         private static void DrawWorld(RenderContext ctx, FontCache styleRes, World world, WorldLayer layer)
         {
+            bool isPlaceholder = world.HasCode("(Dotmap)");
             bool isCapital = world.IsCapital;
             bool isHiPop = world.Population >= 1e9;
             bool renderName = ctx.styles.worldDetails.HasFlag(WorldDetails.AllNames) ||
@@ -845,6 +846,13 @@ namespace Maps.Rendering
                         #region Disc
                         if (ctx.styles.worldDetails.HasFlag(WorldDetails.Type))
                         {
+                            if (isPlaceholder)
+                            {
+                                const string placeholder = "\u2217"; // U+2217 (ASTERISK OPERATOR)
+                                DrawWorldLabel(ctx, ctx.styles.placeholder.textBackgroundStyle, solidBrush, ctx.styles.placeholder.textColor, ctx.styles.placeholder.position, ctx.styles.placeholder.Font, placeholder);
+                                return;
+                            }
+
                             // Blank out world area, so routes are shown correctly
                             if (!ctx.styles.fillMicroBorders)
                             {
