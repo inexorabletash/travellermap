@@ -109,7 +109,7 @@ window.addEventListener('DOMContentLoaded', function() {
   };
 
   map.OnClick = map.OnDoubleClick = function(hex) {
-    showCredits(hex.x, hex.y);
+    showCredits(hex.x, hex.y, /*immediate*/true);
   };
 
   //
@@ -257,7 +257,7 @@ window.addEventListener('DOMContentLoaded', function() {
   var dataTimeout = 0;
   var lastX, lastY;
 
-  function showCredits(hexX, hexY) {
+  function showCredits(hexX, hexY, immediate) {
     var DATA_REQUEST_DELAY_MS = 500;
     if (lastX === hexX && lastY === hexY)
       return;
@@ -281,7 +281,7 @@ window.addEventListener('DOMContentLoaded', function() {
         //$('#MetadataDisplay').innerHTML = '<i>' + error + '</i>';
       });
 
-    }, DATA_REQUEST_DELAY_MS);
+    }, immediate ? 0 : DATA_REQUEST_DELAY_MS);
 
     function displayResults(data) {
       if ('SectorTags' in data) {
