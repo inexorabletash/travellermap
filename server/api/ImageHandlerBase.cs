@@ -57,10 +57,10 @@ namespace Maps.API
                     document.Info.Author = "Joshua Bell";
                     document.Info.Creator = "TravellerMap.com";
                     document.Info.Subject = DateTime.Now.ToString("F", CultureInfo.InvariantCulture);
-                    document.Info.Keywords = "The Traveller game in all forms is owned by Far Future Enterprises. Copyright (C) 1977 - 2013 Far Future Enterprises. Traveller is a registered trademark of Far Future Enterprises.";
+                    document.Info.Keywords = "The Traveller game in all forms is owned by Far Future Enterprises. Copyright (C) 1977 - 2014 Far Future Enterprises. Traveller is a registered trademark of Far Future Enterprises.";
 
                     // TODO: Credits/Copyright
-                    // This is close, but doesn't define the namespace correctly: 
+                    // This is close, but doesn't define the namespace correctly:
                     // document.Info.Elements.Add( new KeyValuePair<string, PdfItem>( "/photoshop/Copyright", new PdfString( "HelloWorld" ) ) );
 
                     PdfPage page = document.AddPage();
@@ -146,9 +146,9 @@ namespace Maps.API
                     graphics.MultiplyTransform(m);
                     XPen pen = new XPen(ctx.styles.imageBorderColor, 0.2f);
 
-                    // PdfSharp can't ExcludeClip so we take advantage of the fact that we know 
-                    // the path starts on the left edge and proceeds clockwise. We extend the 
-                    // path with a counterclockwise border around it, then use that to exclude 
+                    // PdfSharp can't ExcludeClip so we take advantage of the fact that we know
+                    // the path starts on the left edge and proceeds clockwise. We extend the
+                    // path with a counterclockwise border around it, then use that to exclude
                     // the original path's region for rendering the border.
                     ctx.clipPath.Flatten();
                     RectangleF bounds = PathUtil.Bounds(ctx.clipPath);
@@ -245,7 +245,7 @@ namespace Maps.API
             {
                 HttpPostedFile hpf = request.Files["file"];
                 sector = new Sector(hpf.InputStream, hpf.ContentType);
-            } 
+            }
             else if (!String.IsNullOrEmpty(request.Form["data"]))
             {
                 string data = request.Form["data"];

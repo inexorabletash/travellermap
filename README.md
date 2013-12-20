@@ -4,8 +4,8 @@ The Traveller Map - Source Code
 This is the source code behind http://travellermap.com - an online resource for fans
 of the Traveller role playing game.
 
-The Traveller game in all forms is owned by Far Future Enterprises. 
-Copyright (C) 1977-2013 Far Future Enterprises.
+The Traveller game in all forms is owned by Far Future Enterprises.
+Copyright (C) 1977-2014 Far Future Enterprises.
 
 See LICENSE.md for software licensing details.
 
