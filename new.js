@@ -109,7 +109,7 @@ window.addEventListener('DOMContentLoaded', function() {
   };
 
   map.OnClick = map.OnDoubleClick = function(hex) {
-    showCredits(hex.x, hex.y);
+    showCredits(hex.x, hex.y, /*immediate*/true);
   };
 
   //
@@ -257,7 +257,7 @@ window.addEventListener('DOMContentLoaded', function() {
   var dataTimeout = 0;
   var lastX, lastY;
 
-  function showCredits(hexX, hexY) {
+  function showCredits(hexX, hexY, immediate) {
     var DATA_REQUEST_DELAY_MS = 500;
     if (lastX === hexX && lastY === hexY)
       return;
@@ -281,7 +281,7 @@ window.addEventListener('DOMContentLoaded', function() {
         //$('#MetadataDisplay').innerHTML = '<i>' + error + '</i>';
       });
 
-    }, DATA_REQUEST_DELAY_MS);
+    }, immediate ? 0 : DATA_REQUEST_DELAY_MS);
 
     function displayResults(data) {
       if ('SectorTags' in data) {
@@ -302,8 +302,8 @@ window.addEventListener('DOMContentLoaded', function() {
       }());
 
       var template = map.GetScale() >= 16 ? worldMetadataTemplate : sectorMetadataTemplate;
-      $('#MetadataDisplay').innerHTML = statusMetadataTemplate(data) +
-        template(data) + commonMetadataTemplate(data);
+      $('#MetadataDisplay').innerHTML =
+        template(data) + commonMetadataTemplate(data) + statusMetadataTemplate(data);
 
       // Other UI
       if ('SectorName' in data && 'SectorTags' in data) {
@@ -337,10 +337,18 @@ window.addEventListener('DOMContentLoaded', function() {
   var searchTemplate = Handlebars.compile($('#SearchResultsTemplate').innerHTML);
 
   var searchRequest = null;
+  var lastQuery = null;
 
   function search(query, typed) {
     if (query === '')
       return;
+
+    if (query === lastQuery) {
+      if (!document.body.classList.contains('search-progress') && !typed)
+        document.body.classList.add('search-results');
+      return;
+    }
+    lastQuery = query;
 
     if (!typed) {
       // IE stops animated images when submitting a form - restart it
