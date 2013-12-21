@@ -193,9 +193,6 @@ window.addEventListener('DOMContentLoaded', function() {
       urlParams.options = map.GetOptions();
       urlParams.style = map.GetStyle();
 
-      // TODO: Decide on whether to keep this or not.
-      // Pro: Don't pollute the URL with unnecessary cruft
-      // Con: URL isn't guaranteed to be persistently sharable
       ['x', 'y', 'options', 'scale', 'style'].forEach(function(p) {
         if (urlParams[p] === defaults[p]) delete urlParams[p];
       });
