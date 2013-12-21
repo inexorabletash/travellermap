@@ -252,7 +252,7 @@ namespace Maps.Rendering
         public static Glyph Star5Point = new Glyph(GlyphFont.Ding, "\xAB"); // U+2605 (BLACK STAR)
         public static Glyph Star6Point = new Glyph(GlyphFont.Ding, "\xAC"); // U+2736 (BLACK SIX POINTED STAR)
         public static Glyph WhiteStar = new Glyph(GlyphFont.Normal, "\u2606"); // U+2606 (WHITE STAR)
-        public static Glyph StarStar = new Glyph(GlyphFont.Normal, "\u2217\u2217"); // U+2217 (ASTERISK OPERATOR)
+        public static Glyph StarStar = new Glyph(GlyphFont.Normal, "**"); // Would prefer U+2217 (ASTERISK OPERATOR) but font coverage is poor
 
         // Research Stations
         public static Glyph Alpha = new Glyph(GlyphFont.Normal, "\x0391").Highlight;

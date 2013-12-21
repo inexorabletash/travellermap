@@ -77,7 +77,6 @@ namespace Maps.API
                     {
                         document.Save(stream, closeStream: false);
 
-
                         context.Response.ContentType = MediaTypeNames.Application.Pdf;
                         context.Response.AddHeader("content-length", stream.Length.ToString());
                         context.Response.AddHeader("content-disposition", "inline;filename=\"map.pdf\"");

@@ -90,7 +90,7 @@ namespace Maps.Rendering
             this.style = style;
         }
 
-        private static XPdfFontOptions s_fontOptions = new XPdfFontOptions(PdfSharp.Pdf.PdfFontEncoding.Unicode);
+        private static XPdfFontOptions s_fontOptions = new XPdfFontOptions(PdfSharp.Pdf.PdfFontEncoding.Unicode, PdfSharp.Pdf.PdfFontEmbedding.Always);
         public XFont makeFont()
         {
             if (this.family != null)
@@ -572,9 +572,10 @@ namespace Maps.Rendering
             hexNumber.textColor = lightColor;
             imageBorderColor = lightColor;
 
-            placeholder.fontInfo = new FontInfo(DEFAULT_FONT, 0.4f);
+            placeholder.content = "*";
+            placeholder.fontInfo = new FontInfo("Georgia", 0.6f);
             placeholder.textColor = foregroundColor;
-            placeholder.position = new PointF(0, 0.03f);
+            placeholder.position = new PointF(0, 0.17f);
         }
 
         public struct StyleElement
@@ -582,6 +583,7 @@ namespace Maps.Rendering
             public bool visible;
 
             public Color fillColor;
+            public string content;
 
             public PenInfo pen;
 

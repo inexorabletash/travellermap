@@ -848,8 +848,7 @@ namespace Maps.Rendering
                         {
                             if (isPlaceholder)
                             {
-                                const string placeholder = "\u2217"; // U+2217 (ASTERISK OPERATOR)
-                                DrawWorldLabel(ctx, ctx.styles.placeholder.textBackgroundStyle, solidBrush, ctx.styles.placeholder.textColor, ctx.styles.placeholder.position, ctx.styles.placeholder.Font, placeholder);
+                                DrawWorldLabel(ctx, ctx.styles.placeholder.textBackgroundStyle, solidBrush, ctx.styles.placeholder.textColor, ctx.styles.placeholder.position, ctx.styles.placeholder.Font, ctx.styles.placeholder.content);
                                 return;
                             }
 
