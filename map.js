@@ -723,13 +723,21 @@ function makeURL(base, params) {
           VK_J = 74,
           VK_K = 75,
           VK_L = 76,
+          VK_LEFT = 0x25,
+          VK_UP = 0x26,
+          VK_RIGHT = 0x27,
+          VK_DOWN = 0x28,
           VK_SUBTRACT = ('DOM_VK_HYPHEN_MINUS' in e) ? e.DOM_VK_HYPHEN_MINUS : 189,
           VK_EQUALS = ('DOM_VK_EQUALS' in e) ? e.DOM_VK_EQUALS : 187;
 
       switch (e.keyCode) {
+        case VK_UP:
         case VK_I: self.Scroll(0, -KEY_SCROLL_DELTA); break;
+        case VK_LEFT:
         case VK_J: self.Scroll(-KEY_SCROLL_DELTA, 0); break;
+        case VK_DOWN:
         case VK_K: self.Scroll(0, KEY_SCROLL_DELTA); break;
+        case VK_RIGHT:
         case VK_L: self.Scroll(KEY_SCROLL_DELTA, 0); break;
         case VK_SUBTRACT: self.setScale(self.scale - KEY_ZOOM_DELTA); break;
         case VK_EQUALS: self.setScale(self.scale + KEY_ZOOM_DELTA); break;
