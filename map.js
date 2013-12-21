@@ -719,16 +719,16 @@ function makeURL(base, params) {
       if (e.ctrlKey || e.altKey || e.metaKey)
         return;
 
-      var VK_I = 73,
-          VK_J = 74,
-          VK_K = 75,
-          VK_L = 76,
+      var VK_I = 0x49,
+          VK_J = 0x4A,
+          VK_K = 0x4B,
+          VK_L = 0x4C,
           VK_LEFT = 0x25,
           VK_UP = 0x26,
           VK_RIGHT = 0x27,
           VK_DOWN = 0x28,
-          VK_SUBTRACT = ('DOM_VK_HYPHEN_MINUS' in e) ? e.DOM_VK_HYPHEN_MINUS : 189,
-          VK_EQUALS = ('DOM_VK_EQUALS' in e) ? e.DOM_VK_EQUALS : 187;
+          VK_SUBTRACT = ('DOM_VK_HYPHEN_MINUS' in e) ? e.DOM_VK_HYPHEN_MINUS : 0xBD,
+          VK_EQUALS = ('DOM_VK_EQUALS' in e) ? e.DOM_VK_EQUALS : 0xBB;
 
       switch (e.keyCode) {
         case VK_UP:
