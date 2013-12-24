@@ -38,6 +38,7 @@ window.addEventListener('DOMContentLoaded', function() {
     y: map.GetY(),
     scale: map.GetScale(),
     options: map.GetOptions(),
+    routes: 1,
     style: map.GetStyle()
   };
   var home = {
@@ -72,6 +73,7 @@ window.addEventListener('DOMContentLoaded', function() {
               function(o) { return o & MapOptions.SectorsAll; },
               function(c) { setOptions(MapOptions.SectorsMask, c ? MapOptions.SectorsAll : 0); });
   bindCheckedToOption('#ShowGovernmentBorders', MapOptions.BordersMask);
+  bindCheckedToNamedOption('#ShowRoutes', 'routes');
   bindCheckedToOption('#ShowGovernmentNames', MapOptions.NamesMask);
   bindCheckedToOption('#ShowImportantWorlds', MapOptions.WorldsMask);
   bindCheckedToOption('#cbForceHexes', MapOptions.ForceHexes);
@@ -94,6 +96,13 @@ window.addEventListener('DOMContentLoaded', function() {
     bindChecked(selector,
                 function(o) { return (o & bitmask); },
                 function(c) { setOptions(bitmask, c ? bitmask : 0); });
+  }
+  function bindCheckedToNamedOption(selector, name) {
+    bindChecked(selector,
+                function(o) { var v = map.GetNamedOption(name);
+                              return v === undefined ? defaults[name] : v; },
+                function(c) { if (c === defaults[name]) map.ClearNamedOption(name)
+                              else map.SetNamedOption(name, c ? 1 : 0); });
   }
 
   map.OnStyleChanged = function(style) {
@@ -193,7 +202,11 @@ window.addEventListener('DOMContentLoaded', function() {
       urlParams.options = map.GetOptions();
       urlParams.style = map.GetStyle();
 
-      ['x', 'y', 'options', 'scale', 'style'].forEach(function(p) {
+      map.GetNamedOptionNames().forEach(function(name) {
+        urlParams[name] = map.GetNamedOption(name);
+      });
+
+      ['x', 'y', 'options', 'scale', 'style', 'routes'].forEach(function(p) {
         if (urlParams[p] === defaults[p]) delete urlParams[p];
       });
 
@@ -229,6 +242,7 @@ window.addEventListener('DOMContentLoaded', function() {
       snapshotParams.scale = round(snapshotParams.scale, 1/128);
       snapshotParams.options = map.GetOptions();
       snapshotParams.style = map.GetStyle();
+      snapshotParams.routes = urlParams.routes;
       var snapshotURL = makeURL(SERVICE_BASE + '/api/tile', snapshotParams);
       $('a#download-snapshot').href = snapshotURL;
       snapshotParams.accept = 'application/pdf';

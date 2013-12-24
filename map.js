@@ -1223,6 +1223,24 @@ function makeURL(base, params) {
     fireEvent(this, 'OptionsChanged', this.options);
   };
 
+  Map.prototype.SetNamedOption = function(name, value) {
+    this.tileOptions[name] = value;
+    this.cache.clear();
+    this.invalidate();
+    fireEvent(this, 'OptionsChanged', this.options);
+  };
+  Map.prototype.GetNamedOption = function(name) {
+    return this.tileOptions[name];
+  };
+  Map.prototype.ClearNamedOption = function(name) {
+    delete this.tileOptions[name];
+    this.cache.clear();
+    this.invalidate();
+    fireEvent(this, 'OptionsChanged', this.options);
+  };
+  Map.prototype.GetNamedOptionNames = function() {
+    return Object.keys(this.tileOptions);
+  };
 
   Map.prototype.GetStyle = function() {
     return this.style;
@@ -1416,6 +1434,9 @@ function makeURL(base, params) {
 
     if ('silly' in params)
       this.tileOptions['silly'] = int('silly');
+
+    if ('routes' in params)
+      this.tileOptions['routes'] = int('routes');
 
     return params;
   };
