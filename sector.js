@@ -152,8 +152,7 @@
   window.onload = function () {
     var oParams = getUrlParameters(),
         options = oParams.options !== (void 0) ? oParams.options : MapOptions.BordersMask,
-        style = oParams.style || "print",
-        request;
+        style = oParams.style || "print";
 
     if (!oParams.sector) {
       status("Missing 'sector' parameter in URL query string.");
@@ -289,10 +288,10 @@
           }, 0);
 
         }, 0);
-      }, function (error) {
+      }, function () {
         status("The requested sector \"" + oParams.sector + "\" was not found.");
       });
-    }, function (error) {
+    }, function () {
       status("The requested sector \"" + oParams.sector + "\" was not found.");
     });
   };
