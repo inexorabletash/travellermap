@@ -51,7 +51,7 @@ window.addEventListener('DOMContentLoaded', function() {
     map.SetOptions((map.GetOptions() & ~mask) | flags);
   }
 
-  map.OnScaleChanged = function(scale) {
+  map.OnScaleChanged = function() {
     updatePermalink();
   };
 
@@ -99,9 +99,9 @@ window.addEventListener('DOMContentLoaded', function() {
   }
   function bindCheckedToNamedOption(selector, name) {
     bindChecked(selector,
-                function(o) { var v = map.GetNamedOption(name);
-                              return v === undefined ? defaults[name] : v; },
-                function(c) { if (c === defaults[name]) map.ClearNamedOption(name)
+                function() { var v = map.GetNamedOption(name);
+                             return v === undefined ? defaults[name] : v; },
+                function(c) { if (c === defaults[name]) map.ClearNamedOption(name);
                               else map.SetNamedOption(name, c ? 1 : 0); });
   }
 
@@ -288,8 +288,7 @@ window.addEventListener('DOMContentLoaded', function() {
       dataRequest = MapService.credits(hexX, hexY, function(data) {
         dataRequest = null;
         displayResults(data);
-      }, function(error) {
-        //$('#MetadataDisplay').innerHTML = '<i>' + error + '</i>';
+      }, function() {
       });
 
     }, immediate ? 0 : DATA_REQUEST_DELAY_MS);
@@ -380,7 +379,7 @@ window.addEventListener('DOMContentLoaded', function() {
       displayResults(data);
       document.body.classList.remove('search-progress');
       document.body.classList.add('search-results');
-    }, function(error) {
+    }, function() {
       searchRequest = null;
       $('#resultsContainer').innerHTML = '<i>Error fetching results.</i>';
       document.body.classList.remove('search-progress');

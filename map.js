@@ -59,7 +59,7 @@ function makeURL(base, params) {
   var keys = Object.keys(params);
   if (keys.length === 0) return base;
   return base += '?' + keys.map(function(p) {
-    if (params[p] === undefined) return undefined;;
+    if (params[p] === undefined) return undefined;
     return encodeURIComponent(p) + '=' + encodeURIComponent(params[p]);
   }).join('&');
 }
@@ -316,11 +316,10 @@ function makeURL(base, params) {
 
     //
     // dur = total duration (seconds)
-    // tick (UNUSED)
     // smooth = optional smoothing function
     // set onanimate to function called with animation position (0.0 ... 1.0)
     //
-    var Animation = function(dur, tick, smooth) {
+    var Animation = function(dur, smooth) {
       var start = Date.now();
       var self = this;
       this.timerid = requestAnimationFrame(tickFunc);
@@ -629,7 +628,7 @@ function makeURL(base, params) {
     container.addEventListener('mousewheel', wheelListener); // IE/Chrome/Safari/Opera
     container.addEventListener('DOMMouseScroll', wheelListener); // FF
 
-    window.addEventListener('resize', function(e) {
+    window.addEventListener('resize', function() {
       self.redraw(true); // synchronous
     });
 
@@ -799,7 +798,7 @@ function makeURL(base, params) {
     }
   };
 
-  Map.prototype.invalidate = function (delay) {
+  Map.prototype.invalidate = function() {
     this.dirty = true;
     var self = this;
     if (!self._raf_handle) {
@@ -843,7 +842,6 @@ function makeURL(base, params) {
 
     // Initial z - leave room for lower/higher scale tiles
         z = 10 + this.max_scale - this.min_scale,
-        x, y, dx, dy, dw, dh,
         child, next;
 
 
@@ -857,7 +855,7 @@ function makeURL(base, params) {
     this.pass = (this.pass + 1) % 256;
 
     if (!this._rd_cb)
-      this._rd_cb = function() { self.invalidate(100); };
+      this._rd_cb = function() { self.invalidate(); };
 
     // TODO: Defer loading of new tiles while in the middle of a zoom gesture
     // Draw a rectanglular area of the map in a spiral from the center of the requested map outwards
@@ -889,8 +887,6 @@ function makeURL(base, params) {
 
     var sizeMult = this.tilesize * mult;
 
-    var dx = (x1 - this.x * cf) * sizeMult;
-    var dy = (y1 - this.y * cf) * sizeMult;
     var dw = sizeMult;
     var dh = sizeMult;
 
@@ -1095,7 +1091,7 @@ function makeURL(base, params) {
     if (ox === tx && oy === ty && os === ts)
       return;
 
-    this.animation = new Animation(3.0, 1000 / 40, function(p) {
+    this.animation = new Animation(3.0, function(p) {
       return Animation.smooth(p, 1.0, 0.1, 0.25);
     });
     var self = this;
@@ -1313,7 +1309,7 @@ function makeURL(base, params) {
         tx = ox + dx * f,
         ty = oy + dy * f;
 
-    this.animation = new Animation(1.0, 1000 / 40, function(p) {
+    this.animation = new Animation(1.0, function(p) {
       return Animation.smooth(p, 1.0, 0.1, 0.25);
     });
     var self = this;
@@ -1369,6 +1365,7 @@ function makeURL(base, params) {
   };
 
   Map.prototype.ApplyURLParameters = function() {
+    var self = this;
     var params = parseURLQuery(document.location);
 
     function float(prop) {
@@ -1398,7 +1395,7 @@ function makeURL(base, params) {
       this.TEMP_AddMarker('you_are_here', int('yah_sx'), int('yah_sy'), int('yah_hx'), int('yah_hy'));
 
     for (var i = 0; ; ++i) {
-      var n = (i == 0) ? '' : i, oxs = 'ox' + n, oys = 'oy' + n, ows = 'ow' + n, ohs = 'oh' + n;
+      var n = (i === 0) ? '' : i, oxs = 'ox' + n, oys = 'oy' + n, ows = 'ow' + n, ohs = 'oh' + n;
       if (has(params, [oxs, oys, ows, ohs])) {
         var x = float(oxs);
         var y = float(oys);
@@ -1417,7 +1414,6 @@ function makeURL(base, params) {
       this.ScaleCenterAtSectorHex(
         float('scale'), float('sx'), float('sy'), float('hx'), float('hy'));
     } else if ('sector' in params) {
-      var self = this;
       MapService.coordinates(
         params.sector, params.hex,
         function(location) {
@@ -1427,16 +1423,15 @@ function makeURL(base, params) {
             self.ScaleCenterAtSectorHex(16, location.sx, location.sy, Astrometrics.SectorWidth / 2, Astrometrics.SectorHeight / 2);
           }
         },
-        function(error) {
+        function() {
           alert('The requested location "' + params.sector + ('hex' in params ? (' ' + params.hex) : '') + '" was not found.');
         });
     }
 
-    if ('silly' in params)
-      this.tileOptions['silly'] = int('silly');
-
-    if ('routes' in params)
-      this.tileOptions['routes'] = int('routes');
+    ['silly', 'routes'].forEach(function(name) {
+      if (name in params)
+        self.tileOptions[name]  = int(name);
+    });
 
     return params;
   };
