@@ -1,4 +1,6 @@
 (function () {
+  'use strict';
+
   var list = document.querySelector('#sector');
 
   MapService.universe(populateSectorList);
