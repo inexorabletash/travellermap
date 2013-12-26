@@ -53,6 +53,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
   map.OnScaleChanged = function() {
     updatePermalink();
+    updateSectorLinks();
   };
 
   var optionObservers = [];
@@ -60,6 +61,7 @@ window.addEventListener('DOMContentLoaded', function() {
     optionObservers.forEach(function(o) { o(options); });
     $('#legendBox').classList[(options & MapOptions.WorldColors) ? 'add' : 'remove']('world_colors');
     updatePermalink();
+    updateSectorLinks();
   };
 
   bindCheckedToOption('#ShowSectorGrid', MapOptions.GridMask);
@@ -110,6 +112,7 @@ window.addEventListener('DOMContentLoaded', function() {
       document.body.classList[s === style ? 'add' : 'remove']('style-' + s);
     });
     updatePermalink();
+    updateSectorLinks();
   };
 
   map.OnDisplayChanged = function() {
@@ -267,6 +270,7 @@ window.addEventListener('DOMContentLoaded', function() {
   var dataRequest = null;
   var dataTimeout = 0;
   var lastX, lastY;
+  var selectedSector = null;
 
   function showCredits(hexX, hexY, immediate) {
     var DATA_REQUEST_DELAY_MS = 500;
@@ -317,26 +321,32 @@ window.addEventListener('DOMContentLoaded', function() {
 
       // Other UI
       if ('SectorName' in data && 'SectorTags' in data) {
-        var bookletURL = SERVICE_BASE +
-              '/data/' + encodeURIComponent(data.SectorName) + '/booklet';
-        var posterURL = makeURL(SERVICE_BASE + '/api/poster', {
-          sector: data.SectorName, accept: 'application/pdf', style: map.GetStyle()});
-        var dataURL = makeURL(SERVICE_BASE + '/api/sec', {
-          sector: data.SectorName, type: 'SecondSurvey' });
-
-        var title = data.SectorName;
-        title = title.replace(/ Sector$/, '') + ' Sector';
+        selectedSector = data.SectorName;
+        updateSectorLinks();
         $('#downloadBox').classList.add('sector-selected');
-        $('#downloadBox #sector-name').innerHTML = escapeHtml(title);
-        $('#downloadBox a#download-booklet').href = bookletURL;
-        $('#downloadBox a#download-poster').href = posterURL;
-        $('#downloadBox a#download-data').href = dataURL;
       } else {
         $('#downloadBox').classList.remove('sector-selected');
       }
     }
   }
 
+  function updateSectorLinks() {
+    if (!selectedSector)
+      return;
+
+    var bookletURL = SERVICE_BASE +
+          '/data/' + encodeURIComponent(selectedSector) + '/booklet';
+    var posterURL = makeURL(SERVICE_BASE + '/api/poster', {
+      sector: selectedSector, accept: 'application/pdf', style: map.GetStyle()});
+    var dataURL = makeURL(SERVICE_BASE + '/api/sec', {
+      sector: selectedSector, type: 'SecondSurvey' });
+
+    var title = selectedSector.replace(/ Sector$/, '') + ' Sector';
+    $('#downloadBox #sector-name').innerHTML = escapeHtml(title);
+    $('#downloadBox a#download-booklet').href = bookletURL;
+    $('#downloadBox a#download-poster').href = posterURL;
+    $('#downloadBox a#download-data').href = dataURL;
+  }
 
   //////////////////////////////////////////////////////////////////////
   //
