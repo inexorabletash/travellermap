@@ -71,7 +71,7 @@
 <script>
 'use strict';
 
-var $ = document.querySelector.bind(document);
+var $ = function(s) { return document.querySelector(s); };
 
 //
 // Assertion Logic
