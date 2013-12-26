@@ -1,483 +1,463 @@
-Ahkiweahi'
-0 0
-              1    2          3 4               5  6   7      8
-#
-#Seed: 2518
-#Alleg: 01: Dr: "Droyne"
-#Alleg: 02: V4: "Vargr (40th Squadron)"
-#Alleg: 03: Sw: "Sword Worlds Confederation"
-#Alleg: 04: Cs: "Client State"
-#Alleg: 05: V6: "Vargr (Assemblage of 1116)"
-#Alleg: 06: Vn: "Vargr (Ngath Confederation)"
-#Alleg: 07: Na: "Non-Aligned"
-#Alleg: 08: Vp: "Vargr (Thirz Empire)"
-#Alleg: 09: Vq: "Vargr (Society of Equals)"
-#Alleg: 10: Zh: "Zhodani Consulate/Colonies"
-#Alleg: 11: Im: "Third Imperium"
-#Alleg: 12: Ve: "Vargr (Empire of Varroerth)"
-#Alleg: 13: Sh: "Steaakh Hlaia"
-#Alleg: 14: As: "Aslan Hierate/Colonies"
-#Alleg: 15: Hv: "Hive Federation"
-#
-#--------1---------2---------3---------4---------5---------6---
-#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
-#----------   ---- ---------  - --------------- -  --- -- --- -
-Dalanesalar   0101 A683300-D    Lo Ni              321 Na     F1V 
-Teneentre     0601 E77A458-8    Ni Wa              603 Na     F3V 
-Ayar          0701 E647767-4    Ag                 100 Na     G7V M3D 
-Padhar        0801 D78816B-6    Lo Ni              704 Na     F9V 
-Cenathodethi  1001 C646430-8  S Ni                 802 Na     K3V 
-Timuyud       1101 A564579-D  M Ag Ni              223 Na     F7V 
-Sircouft      1901 B646643-5    Ag Ni              404 Na     F5V 
-Peckavind     2001 E321469-7    Ni Po              503 Na     M5V M8V 
-Thetoyadchad  2201 C525856-9  S                    401 Na     M1V M7V 
-Rope          2401 E000868-5    As Na              437 Na     F9D M6D 
-Eocera        2801 B724410-C  S Ni                 900 Na     M6V 
-Iten          3001 C654535-5  S Ag Ni              300 Na     K5V 
-Mamor         3101 E55946A-6    Ni                 113 Na     F4V 
-Oonoumar      3201 C000677-A  S As Na Ni           322 Na     F8IV M8D 
-Athani        0602 C331574-8  S Ni Po              300 Na     F1V M0D 
-Wasdang       1102 B120788-C  M De Na Po           303 Na     F9V 
-Oikhu         1402 E86A4M7-A    Ni Wa              104 As     F7V 
-Lae           1802 C441379-6    Lo Ni Po           601 Na     F2V 
-Whishe        2502 C525253-A    Lo Ni              102 Na     M2V 
-Ecengbelyo    2602 E9A8122-5    Fl Lo Ni           314 Na     M4V 
-Nanofrast     2802 D564000-5    Ba Lo Ni           203 Na     K4V M5D M7D 
-Nacashir      0203 B628301-D  B Lo Ni              622 Na     G5V 
-Minero        0303 E3106AC-3    Na Ni              403 Na     M7V M7D 
-Thireen       0403 A72A641-C  B Ni Wa              301 Na     M1III 
-Atrarenet     0503 BAEA8BB-A  B Fl Wa              101 Na     F4V 
-Tesedou       0703 C8478AD-4  S                    803 Na     M5V 
-Ftiylrawawe   1003 B6487H7-C    Ag                 323 As     F0V M8D 
-Waikhakhihah  1303 C6798M6-9                       522 As     F1V 
-Eyaai         1403 C8C07N3-B  R De                 102 As     M8V 
-Luitrahaw     1603 A3466L4-B  T Ag Ni              810 A6     F2V M8D 
-Sholahins     2003 D688754-6  S Ag Ri              504 Na     F1V 
-Naci          2503 B441412-9  S Ni Po              123 Na     F0V M8D 
-Vinsinecas    2603 D666336-2    Lo Ni              702 Na     G0V 
-Sore          3103 B500100-A  S Lo Ni Va           404 Na     M1V 
-Ioridcekaet   3203 C65A588-8    Ni Wa              503 Na     F3V 
-Wirout        0104 X557436-2    Ni              R  814 Na     M0V 
-Kedofahapoun  0704 E100159-9    Lo Ni Va           713 Na     M2V 
-Lahyeraitea   0804 C4265J4-C    Ni                 514 As     K0V M0D 
-Aohuiwtraol   1004 B6733G7-E    Lo Ni              523 As     F5V 
-Fehouta       1104 C7A35NA-9    Fl Ni              103 As     K4V M4D 
-Tleifue       1204 E8776M7-5    Ag Ni              400 As     F3V 
-Lapmes        1804 C553453-9  S Ni Po              404 Na     F8V M7D 
-Lethe         1904 D653467-4  S Ni Po              102 Na     F8V M6D 
-Minge         2004 C34166A-9  M Ni Po              715 Na     F6V M6D 
-Thellsecko    2204 C465340-9  S Lo Ni              424 Na     F2V 
-Birowi        3204 D433653-6  S Na Ni Po           604 Na     M3V M2V 
-Ame           0105 B346321-8    Lo Ni              710 Na     F7V 
-Mocet         0205 C76A266-6  M Lo Ni Wa           206 Na     K6V M5D 
-Ktorlea       0605 E2344L9-7    Ni                 620 A3     M7V 
-Khouheh       0705 C5A28J2-9    Fl                 906 As     F3V M1D 
-Toiras        0805 B6492G7-E    Lo Ni              814 As     G1V 
-Troukaukhuih  1205 C3644N9-7  T Ni                 913 As     F9V 
-Hkuara        1305 D0005K5-A    As Ni              813 As     G9V 
-Hoiloukh      1405 X5581GA-A    Lo Ni              601 As     F0V 
-Hresea        1505 C3108K6-A    Na                 102 As     F5V M8D 
-Worman        2105 C610342-A  M Lo Ni              625 Na     F4IV M5D M1D 
-Vasta         2805 C447204-7  M Lo Ni              413 Na     F1V M3D 
-Limejor       3205 C100689-A    Na Ni Va           310 Na     K6V 
-Ahkuihyal     0406 B5446N7-D    Ag Ni              122 As     F4V 
-Fa            0506 E0001G6-7    As Lo Ni           620 As     A6V M5D 
-Yeealyar      1006 E3105KB-9    Ni              A  102 As     M1V 
-Kekheahkar    1106 A3206K6-E  R De Na Ni Po        902 As     M0V 
-Codthin       1406 C54748C-7  S Ni                 105 Na     G5V 
-There         1506 E547522-2    Ag Ni              524 Na     F2V 
-Kebiwhet      1606 C5426BC-4  S Ni Po              306 Na     F1V M2D 
-Sare          1906 C474AA6-8    Hi In              102 Na     M7V 
-Hethen        2006 C583342-5    Lo Ni              106 Na     F5V M0D 
-Waathiysed    2706 E353378-5    Lo Ni Po           301 Na     G0V 
-Fohon         2906 C100120-C    Lo Ni Va           302 Na     K5V 
-Temoura       3106 E666855-3    Ri                 304 Na     F7V M1D 
-Jerchend      0207 C400135-8  M Lo Ni Va           800 Na     M6V 
-Dongirean     0307 B747233-8    Lo Ni              903 Na     F5V M8D 
-Hlahea'a      0507 D6435L5-B  T Ag Ni Po           504 A3     F3V M7D 
-Khtyaea       0807 B8567J9-C    Ag                 704 As     K4V 
-Uikiraohye    1007 X0004L9-A    As Ni              703 A1     G5V 
-Ciraner       1307 EAA5526-7    Fl Ni              800 Na     K2V M4D 
-Erye          1507 C43678A-5  S                    110 Na     F1V 
-Ledo          1607 A88A467-C  B Ni Wa              403 Na     F5V 
-Ine           1707 B000630-D  B As Na Ni           914 Na     M1V M8D 
-Riwlin        1807 E775743-6    Ag                 400 Na     G2V 
-Eolhon        1907 B99A764-9  A Wa                 308 Na     G5V M2D 
-Pote          2007 B301344-9  B Ic Lo Ni Va        224 Na     F1IV M8D 
-Cipladthull   2307 C4569A6-7  S Hi In              114 Na     F2V 
-Tragrat       2407 E774430-2    Ni                 704 Na     F7V 
-Colons        2707 E1007A7-7    Na Va              600 Na     K9V M5D 
-Aroick        2807 C446757-8    Ag                 525 Na     F5V M0D 
-Whouge        3107 B666897-A  A Ri                 516 Na     F7V M2D 
-Vansomo       0108 A635657-D    Ni                 625 Na     M2V 
-Tleawlusyeoi  0408 C6476H7-C  R Ag Ni              800 As     F3V 
-Khteaaftea    0508 D5431M5-8    Lo Ni Po           402 As     G0V M1D 
-Hkeietih      0608 C5571K4-7    Lo Ni              803 As     M6V 
-Hkasiykh      0808 C4107M4-A    Na                 400 As     M3V 
-Raire         1008 A4947L5-E  T Ag                 904 A7     G9V 
-Ide           1108 C467642-6    Ag Ni Ri           401 Na     F2V 
-Fralo         1408 C5436AC-7    Ag Ni Po           402 Na     F7V 
-Grosel        1508 C8A9746-7  S Fl                 203 Na     M6V 
-Fewou         2508 CA6AADF-7  M Hi In Wa           410 Na     F3V 
-Rirjo         2908 B120101-D  A De Lo Ni Po        102 Na     M8II 
-Aa            3008 A778321-9  A Lo Ni              124 Na     G0V M2D 
-Fepoun        3108 C692788-3                       401 Na     F7V 
-Fidi          3208 BAB6420-9  S Fl Ni              520 Na     M2II M8V 
-Oatehoioiy    0409 B4514J6-9  R Ni Po              817 As     M6V M8D 
-Khtekhtis     0709 B4776K7-B  R Ag Ni              305 As     G1V M7D M4D 
-Jatingoiton   1109 A7A0887-A    De                 403 Na     K3V 
-Thitrond      1209 C130347-B  S De Lo Ni Po        904 Na     M3V M3D 
-Jete          1309 B574657-7  M Ag Ni              900 Na     F1V 
-Casewed       1609 C200445-7  S Ni Va              202 Na     K5V 
-Frivit        2709 CA686A8-7  S Ag Ni              210 Na     F3V 
-Jire          0210 C758379-9  S Lo Ni              213 Na     F9V M7D M7D 
-Keuiaauyor    0510 A1106K4-E  R Na Ni              522 As     M3V 
-Oiei          0810 D3008N8-8    Na Va              602 As     F8D M5D 
-Hener         1210 CA8A588-9  M Ni Wa              905 Na     K8V M8D 
-Douyotohiht   1310 A59A500-D    Ni Wa              804 Na     G2V 
-Basaaba       1410 E555554-7    Ag Ni              402 Na     F7V 
-Endfran       1610 C685653-7  S Ag Ni Ri           124 Na     F5V 
-Finaitor      1710 C263644-5  S Ag Ni Ri           602 Na     G9V M1D 
-Eshad         1810 B336978-E  S Hi In              806 Na     F7V M3D 
-Kiyeri        1910 B130348-C  M De Lo Ni Po        231 Na     M8V M1D 
-Vires         2110 B300452-A  B Ni Va              332 Na     G6IV K6D 
-Lerekar       2410 CA87369-7  S Lo Ni              900 Na     F7V M6D 
-Wengroll      3110 B460772-7  M De Ri              307 Na     K6V M4D M2D 
-Istegh        0311 C452000-7  S Ba Lo Ni Po        803 Na     G4V M7D 
-Kewoiw        0511 C4433H8-B    Lo Ni Po           503 As     F2V 
-Ie            0611 C3411M4-B    Lo Ni Po           404 As     F9V 
-Iyyel         0811 D9885H6-9    Ag Ni              403 As     F2V 
-Felrewekhe    0911 B55A7K4-E  R Wa                 432 As     F0V M6D 
-Liped         1011 B868676-6  S Ag Ni Ri           714 Na     F3V M3D 
-Ethiro        1111 D755554-3  S Ag Ni              211 Na     G9V M5D 
-Ackteiht      1311 C654330-5  S Lo Ni              402 Na     F8V M5D 
-Beno          1811 C595778-7  S Ag                 514 Na     F1V 
-Iton          2011 C413989-A    Hi Ic Na           722 Na     F2V M5D 
-Nitin         2111 C347359-9  S Lo Ni              200 Na     M7V 
-Arai          2711 E200100-9    Lo Ni Va           600 Na     F3V 
-Froute        0312 B373687-B    Ag Ni              500 Na     F3V 
-Eweastoul     0512 A2208K7-E    De Na Po           502 As     F8V M5D 
-Htuwafyal     0712 D3615JA-6    Ni                 803 As     F8V 
-Laoure        1412 E344765-5    Ag                 610 Na     F0V 
-Hadoudong     1812 B684544-7  S Ag Ni              602 Na     F9V 
-Vedmod        2012 E77A777-7    Wa                 711 Na     F9V 
-Doumecoun     2112 D45469C-4  S Ag Ni              414 Na     F6V 
-Ederar        2312 C5656AC-4  S Ag Ni              300 Na     F7V 
-Prayedan      0213 B659652-A    Ni                 212 Na     F2V M2D 
-Dalyjedalou   0913 D788789-2  S Ag Ri              705 Na     F7V M2D 
-Steser        1013 C549565-A  S Ni                 530 Na     K0V M5D 
-Thadlar       1313 E140776-4    De Po              300 Na     F0V 
-Wopesrens     1513 C536246-6    Lo Ni              613 Na     M4V 
-Wavilldam     1713 C6B0A86-8  S De Hi In           213 Na     K0V 
-Wethowo       1813 C99A679-8  S Ni Wa              700 Na     F5V 
-Oshid         2113 C337220-6    Lo Ni              801 Na     M5V 
-Indu          2213 D528337-7  S Lo Ni              404 Na     M5V M0D 
-Acorene       2413 B658230-B  A Lo Ni              221 Sh     F3V 
-Toda          2613 C312369-A  M Ic Lo Ni           913 Sh     G8V M0D 
-Thadkete      0614 C623558-7  M Ni Po              511 Na     G3V 
-Youce         1214 DAA87AC-2  S Fl                 203 Na     M8V 
-Locka         1514 E8C1345-8    Fl Lo Ni           203 Na     M4V 
-Ethase        1714 C776311-7  M Lo Ni              603 Na     F8V M4D 
-Oeceller      1914 X403841-2    Ic Na Va        R  311 Na     F0V 
-Thoawholl     2014 A321437-B    Ni Po              703 Na     G5V M2D 
-Colol         2414 E6289DF-6    Hi In              624 Sh     G3V 
-Bemide        2514 C84967B-6  S Ni                 502 Sh     F3V 
-Ojeck         2714 C534577-8  S Ni                 600 Sh     M0V 
-Opawheua      0115 A343798-8    Ag Po              312 Na     F8V 
-Tenathecha    0215 C350984-6    De Hi In Po        816 Na     F5V M7D 
-Adahavele     0315 E35188A-4    Po                 203 Na     F3V 
-Bonoshend     0415 A9A6003-D  B Fl Lo Ni           702 Na     M1V 
-Hiard         0515 D9D4651-4    Fl Ni              901 Na     M3V 
-Baeth         0615 B764277-7  B Lo Ni              704 Na     F1V M3D 
-Waanbor       0915 B6638AE-5  B                    106 Na     F7V M7D 
-Peri          1315 E527501-5    Ni                 800 Na     M3V M1D 
-Otan          1715 C423210-A  S Lo Ni Po           803 Na     K6V 
-Ontowi        1815 D888301-6    Lo Ni              205 Na     F5V M7D 
-Wojor         2315 E789437-7    Ni                 913 Sh     M5V M6D 
-Thongthena    3015 C571212-8  S Lo Ni              111 Sh     F7V 
-Faa           3115 C7A4776-6  M Fl                 415 Sh     M4V 
-Efer          0516 B674000-6  M Ba Lo Ni           300 Na     F4V 
-Whiga         0616 B666510-A  M Ag Ni              114 Na     F8V M8D 
-Pejip         0916 B667520-6    Ag Ni              110 Na     F5V 
-Vadoud        1416 B75477A-7  S Ag                 703 Na     F4V 
-Cabed         1616 C67A541-A  M Ni Wa              303 Na     F2V 
-Bamer         1916 C6A4300-7    Fl Lo Ni           403 Na     M8V M2D 
-Prifande      2016 D000336-7    As Lo Ni           602 Na     A9V 
-Erotever      2116 C100358-A  M Lo Ni Va           200 Na     M2V 
-Soo           2216 D100542-9    Ni Va              414 Sh     K0V 
-Mochi         2516 C457765-6    Ag                 700 Sh     F1V 
-Maed          2616 C7B4763-8  S Fl                 901 Sh     M6V 
-Itieya        2716 B6A3666-A    Fl Ni              200 Sh     K1V 
-Thomat        3016 E300755-5    Na Va              301 Sh     M0V 
-Idta          0617 C33568A-7    Ni                 102 Na     M6V M5D 
-Todwhenge     0817 E655843-2                       803 Na     F1V M5D 
-Igrin         0917 D343698-3  S Ag Ni Po           204 Na     F5V M4D 
-Gethangfren   1017 B554202-7  S Lo Ni              720 Na     G3V 
-Entthen       1217 B674553-A    Ag Ni              103 Na     F1V 
-Shei          1417 C636001-A  S Lo Ni              609 Na     M7V M2V 
-Cerid         1517 X453734-0    Ag Po           R  520 Na     F8V 
-Adall         1617 C300300-9    Lo Ni Va           102 Na     M5V 
-Thisecsemote  2117 B887121-7    Lo Ni              614 Na     F3V M2D M2D 
-Whanac        0118 C447332-8  M Lo Ni              712 Na     F8V 
-Wanintew      0218 E481304-7    Lo Ni              510 Na     F1V 
-Wullun        0318 C73A512-C    Ni Wa              200 Na     A3V 
-Venken        1218 E410255-7    Lo Ni              605 Na     F7V M7D M5D 
-Bopleno       1318 C221772-6  M Na Po              314 Na     M1V M2V 
-Aou           1618 A201553-B  M Ic Ni Va           102 Na     K3V 
-Esing         1918 C9C2987-A  S Fl Hi In           104 Na     M8V M5D 
-Diwexa        2218 D8B0656-5    De Ni              914 Sh     M2V K1V 
-Thiir         3118 D688889-1  S Ri                 912 Sh     K2V 
-Iyie          0119 C4257AD-8  M                    615 Na     F2V M7D 
-Eenant        0619 B588200-8  A Lo Ni              601 Na     F6V M8D 
-Yathitho      1119 E7968BE-5                       214 Na     F7V M8D 
-Ebe           1219 C250677-4    De Ni Po           100 Na     F7V 
-Iente         1319 C557520-7    Ag Ni              400 Na     G5V M4D 
-Anal          1519 C799412-9  S Ni                 505 Na     G5V 
-Oet           1619 C72A364-8  S Lo Ni Wa           404 Na     K1V 
-Indedeno      1719 C444356-A    Lo Ni              504 Na     F8V 
-Plemest       1819 A442310-C  A Lo Ni Po           602 Na     F0V 
-Sairend       2219 D6A0556-5  S De Ni              201 Sh     M6V 
-Celbrun       2319 C510787-6  S Na                 104 Sh     K9V M5D 
-Thoe          2519 C8B06A6-6  M De Ni              311 Sh     G7V 
-Osdoun        2719 C220566-6  S De Ni Po           300 Sh     M4V 
-Plono         2819 A665598-C  M Ag Ni              100 Sh     F7V M5D 
-Ei            3019 E412765-4    Ic Na              300 Na     M7V 
-Tene          0120 B140AB8-C    De Hi In Po        915 Na     F4V M7D 
-Yogir         0520 B5367AA-7                       817 Na     M3V M3D 
-Aldo          0720 D536300-6    Lo Ni              605 Na     M7V M7V 
-Oneisfranika  1020 B88A68B-B  M Ni Ri Wa           615 Na     F5V 
-Dehened       1220 D436500-7  S Ni                 700 Na     M7V 
-Stawesoust    1420 E689548-3    Ni                 304 Na     F6V M3V 
-Thafe         1720 C342223-5  M Lo Ni Po           913 Na     K5V M3D 
-Prined        1920 A757376-D    Lo Ni              803 Na     F3V 
-Tosutins      2120 D663741-1    Ag Ri              413 Na     F0V 
-Guplecki      2220 C533583-9    Ni Po              322 Sh     G7V M3V 
-Hasi          2520 X440866-1    De Po           R  924 Sh     F0V M7D 
-Cithewepeht   2620 C342111-6  M Lo Ni Po           803 Sh     K9V M2D 
-Salle         2720 B100754-A  S Na Va              704 Sh     K2V 
-Grema         2920 C2529EC-9  S Hi In Po           611 Na     F8V 
-Olu           3220 C977331-5  M Lo Ni              435 Na     F8V M5D M3D 
-Frevem        0121 C9A7210-9  S Fl Lo Ni           323 Na     A9V M6D 
-Tore          0321 C9A3436-5  S Fl Ni              405 Na     M0V 
-Rethir        0421 E759689-4    Ni                 603 Na     F7V M6D 
-Whememi       0821 C52579B-9  M                    504 Na     M4V 
-Showeken      1121 C55167B-7    Ni Po              201 Na     G2V 
-Gedtagh       1321 B65A313-B    Lo Ni Wa           510 Na     F0V 
-Mithins       1521 A868599-B    Ag Ni              613 Na     G0V 
-Erereshe      1621 C877864-7                       801 Na     F6V M8D 
-Lereco        1921 C689002-8  S Lo Ni              702 Na     M0V 
-Relic         2021 C779835-9                       314 Na     K7V 
-Nanar         2121 C310757-7  S Na                 712 Na     M3V 
-Ceplar        2221 C9B4645-8  S Fl Ni              600 Sh     M0V 
-Avaoo         2621 D202100-5    Ic Lo Ni Va        800 Sh     M4III 
-Ecku          2721 E302444-4    Ic Ni Va           623 Na     M1V 
-Hemhas        2821 A545965-E  S Hi In              102 Na     F3V 
-Faxo          2921 X557862-0                    R  503 Na     F0V 
-Enes          0122 C312785-5    Ic Na              704 Na     F0V 
-Orpeshop      0322 D456469-3    Ni                 204 Na     F3V 
-Shalpall      0422 B684995-B  A Hi In              504 Na     F3V 
-Fitevi        0822 B88A769-B  B Ri Wa              124 Na     F5V 
-Kama          1222 C446358-6    Lo Ni              513 Na     F8V M3D 
-Ewa           1322 A445400-F  M Ni                 300 Na     M6V 
-Eiliar        1422 C262654-A  M Ni Ri              113 Na     G5V M6D 
-Eoarmen       1522 B350320-B    De Lo Ni Po        904 Na     F2V M6D 
-Fraresheshi   1622 C674878-8                       434 Na     K1V M2D 
-Acher         1922 C587100-7  S Lo Ni              805 Na     G7V M8D 
-Edari         2222 B100478-D    Ni Va              603 Sh     F7V 
-Shemsint      2622 D779355-6  S Lo Ni              210 Sh     F3V 
-Aodwarewha    2722 D667300-7    Lo Ni              504 Na     F1V 
-Osi           2822 C524555-B  S Ni                 800 Na     M5V 
-Ildimber      3222 C333848-9  S Na Po              125 Na     M2V M0D 
-Shii          0723 E9C3759-7    Fl                 903 Na     M5V 
-Leyiyo        0923 C636301-9    Lo Ni              810 Na     K5III 
-Idlos         1123 C200325-A  M Lo Ni Va           402 Na     F0V M3D 
-Hosou         1223 C679322-A  M Lo Ni              913 Na     F1V M8D 
-Gonda         1423 C455100-7    Lo Ni              910 Na     K2V 
-Triwtide      2023 E554465-4    Ni                 501 Na     F1V 
-Inhesuethop   2623 B65A100-E    Lo Ni Wa           601 Sh     F4V 
-Ana           2923 B895312-7  S Lo Ni              814 Na     F5V M0D 
-Vaeldcot      3023 D536467-4  S Ni                 506 Na     M2V M7D 
-Eethaneo      3123 B34869E-8  S Ag Ni              603 Na     F5V M0D 
-Cooutour      0124 D46457A-8    Ag Ni              106 Na     M7V M5D 
-Ereo          0224 E300589-4    Ni Va              104 Na     G6V 
-Istein        0424 C334623-8    Ni                 802 Na     M6V 
-Wheleir       0824 E625331-8    Lo Ni              905 Na     M6V M6D 
-Tinsede       0924 E551756-3    Po                 800 Na     F1V 
-Barjo         1024 C75A110-6  S Lo Ni Wa           435 Na     F0V M1D 
-Chichint      1324 C674300-9  M Lo Ni              502 Na     G4V M1D 
-Tedere        1524 D686000-6    Ba Lo Ni           913 Na     F2V M1D 
-Penge         1724 X210721-0    Na              R  600 Na     K2V M1D 
-Ianvid        2324 E564569-2    Ag Ni              704 Sh     F6V 
-Erar          2524 C5A088B-4  M De                 803 Sh     G0V M4D 
-Ohed          2624 B7A0766-7  B De                 931 Sh     M8III 
-Miing         3124 C363425-7    Ni                 902 Na     F4V 
-Nesar         0425 C334623-8    Ni                 400 Na     M5V 
-Todan         0525 B000003-D  B As Lo Ni           705 Na     G1II 
-Riplet        0625 D301567-4  S Ic Ni Va           912 Na     M4V M1D 
-Shaens        0725 C6339A9-7    Hi In Na Po        903 Na     K3V M6D 
-Ethiy         0925 B88A569-8    Ni Wa              100 Na     F1V 
-Odket         1425 C6388A9-6  S                    802 Na     G9V 
-Weammonei     1525 B110742-9  S Na                 409 Na     K9V K6D 
-Ire           1925 B869004-A  B Lo Ni              703 Na     K8V M6D 
-Sheeengcode   2125 B64A579-9  M Ni Wa              606 Na     F8V M7D 
-Chetor        2225 C6B19BF-7    Fl Hi In           101 Na     K1V 
-Sead          2325 A788633-9    Ag Ni              706 Na     F1V M8D 
-Tofed         3125 C66A333-6    Lo Ni Wa           614 Na     F5V M1D 
-Frendowes     0826 EAF1531-8    Fl Ni              505 Na     G9V 
-Econ          1126 D410548-9  S Ni                 701 Na     K2V 
-Thebattir     1226 C562352-7  M Lo Ni              502 Na     F6V 
-Dessshuns     1326 C5676AB-5  M Ag Ni              101 Na     F1V 
-Ftasui        1626 B4112G5-D    Ic Lo Ni           400 As     M6III M3V 
-Heu           2026 D330447-8  S De Ni Po           910 Na     A0V 
-Lingo         2226 C374641-8    Ag Ni              900 Na     F6V M5D 
-Hea           2326 C485154-7  S Lo Ni              921 Na     F1V 
-Feo           2726 C859549-7  S Ni                 700 Na     M1V 
-Shedongi      3026 C575694-8    Ag Ni              414 Na     F0V 
-Kae           3126 C581596-9    Ni                 101 Na     F8V 
-Een           0227 A434422-F  M Ni                 302 Na     M0V M5D 
-Ferhide       0327 B7A3402-B  B Fl Ni              403 Na     K3V 
-Dodi          0527 B97A310-D    Lo Ni Wa           712 Na     F4V M0D 
-Sheye         0627 C764336-5  M Lo Ni              504 Na     F6V 
-Aeftowo       0827 B000747-A  A As Na              804 Na     M3V M4D 
-Hii           1327 X78979B-3    Ri              R  915 Na     G1V M3D 
-Oulaoelr      1527 B3468J4-E                       221 As     F3V 
-Hloiel        1627 B9973M4-8  R Lo Ni              901 As     F7V M8D 
-Bremves       1927 E857544-5    Ag Ni              920 Na     F7V 
-Payi          2127 A647000-A    Ba Lo Ni           314 Na     F7V M7D 
-Theto         2227 C366454-7  S Ni                 301 Na     F9V M1D 
-Iyir          2427 C6A0579-A    De Ni              710 Na     M1V 
-Geeaeer       2527 D411214-9    Ic Lo Ni           720 Na     M0V 
-Hefic         2927 C7B1000-7  S Ba Fl Lo Ni        600 Na     F6V 
-Greset        3027 C242787-5  M Po                 220 Na     F3V M0D 
-Racodosin     3127 X300346-3    Lo Ni Va        R  502 Na     F9V 
-Engi          0128 C559A87-8  M Hi In              502 Na     F6V 
-Arver         0428 C223112-A  S Lo Ni Po           314 Na     F0IV G5V 
-Tepoy         0628 C37189E-7                       403 Na     M4V 
-Ouer          0928 E67A000-6    Ba Lo Ni Wa        204 Na     M6V M3D 
-Issdodproul   1328 B98A236-A  B Lo Ni Wa           326 Na     G4V M3D 
-Fteoieaauh    1428 C9A68JB-9  R Fl              A  906 As     K9V M7D 
-Laiy          1628 C3222G5-E    Lo Ni Po           706 As     M7V M2D 
-Wershifret    2028 C456237-9  S Lo Ni              728 Na     F7V M1D 
-Sheenho       2228 E964555-3    Ag Ni              912 Na     F4V 
-Ethi          2328 C310653-B  M Na Ni              310 Na     M3V 
-Entaluerot    2528 B100442-A  S Ni Va              209 Na     M1V M4D 
-Veya          2628 B130101-A  B De Lo Ni Po        400 Na     M2II 
-Oa            2728 C100434-8  M Ni Va              804 Na     M1V M5D 
-Prate         0129 C9A58AD-9  S Fl                 900 Na     F1V M0D M2D 
-Horsyosse     0729 E87A110-7    Lo Ni Wa           104 Na     F2V 
-Wyuaya        1029 C300000-0  U Ba Lo Ni Va        004 As     M0V M1V 
-Theens        1129 C53389A-8    Na Po              702 Na     G1V 
-Pouge         1229 C400221-7  M Lo Ni Va           304 Na     M6V 
-Shinsas       1329 C669444-8  S Ni                 604 Na     M7V M6D 
-Ahkasukhyol   1429 C557008-A  U Lo Ni              112 As     F5V M4D 
-Thadea        1929 D8776AB-1  S Ag Ni              824 Na     F8V M8D 
-Warlia        2629 A3456JB-B  R Ag Ni           A  227 As     F5V M5D 
-Oeyei         3129 B5647LB-A    Ag Ri           A  804 A2     G0V 
-Oudonva       0330 AAB378B-B    Fl                 612 Na     K5V 
-Foumro        0630 C336300-9    Lo Ni              512 Na     G6V 
-Iytea         1530 C6476K9-8  R Ag Ni              914 As     F7V 
-Koeihewektea  1630 D8854L6-9  T Ni                 904 A7     K4V 
-Yerlaoe       1730 C2609LA-C    De Hi In           400 A6     F5V 
-Foryalouye    1830 B2216NB-D  T Na Ni Po        A  515 As     M4V M5D 
-Asoikha       2730 C7755H6-8    Ag Ni              613 As     F1V 
-Ouraoh        3030 E4669M9-9    Hi In              702 As     G5V 
-Toi           0431 D457321-4  S Lo Ni              103 Na     F9V M3D 
-Lineerrim     0531 B300666-7  B Na Ni Va           615 Na     M1V M5D 
-Tuitloi       0831 D4335H6-6    Ni Po              903 As     K9V M4V 
-Heiasiyr      0931 C3006J4-7    Na Ni Va           211 As     M5III 
-Hkearaoweh    1131 C7655LA-A  T Ag Ni              506 A6     F7V M7D M3D 
-Eeiha         1231 B431AH8-D  R Hi In Na Po        916 As     F4V M6D M8D 
-Ahirl         1331 E6554LA-6    Ni                 217 A5     F8V M5D 
-Earlaea       1431 D9894NC-8    Ni              A  603 As     F5V M2D 
-Aoeia         1631 E0004H9-9    As Ni              814 As     F6V M1D 
-Hfaktoasou    1731 D45500B-6  U Lo Ni           A  301 As     F5V 
-Keaihear      1831 D5597J5-7                       104 As     F9V 
-Eoahloah      2631 B1101L4-A  T Lo Ni              204 A0     F1V M2D 
-Houlyohfyur   2831 B6236NA-C    Na Ni Po           802 As     M5V 
-Aaoeayo       3231 C5985L6-7  T Ag Ni              213 A1     F9V 
-Jivavet       0132 E9B27A9-7    Fl                 600 Na     M3V 
-Bastlar       0532 C7A6552-7  M Fl Ni              205 Na     F6III M3V 
-Aiieas        0932 C6651G8-C    Lo Ni              724 As     K4V M4D 
-Huiwe         1232 C1404K3-C  R De Ni Po           402 As     F8V M6D 
-Stahkesyewew  1732 C7759H3-A    Hi In              603 As     F0V 
-Oiorasa       2332 C883676-5    Ag Ni Ri           300 Na     F5V M8D 
-Khtoawo       2432 C8996K4-A  R Ni                 201 As     F4V 
-Hkoiukhoa     2832 E7624N7-8    Ni                 701 As     K9V 
-Ahiaryuhkou   2932 C2309HC-B    De Hi In Na Po  A  702 As     F6V 
-Yowwea'ah     3032 E4765K9-A    Ag Ni              824 As     F4V 
-Lonthid       0133 C89A100-B    Lo Ni Wa           500 Na     F1V 
-Whio          0333 C253000-9  S Ba Lo Ni Po        104 Na     F8V 
-Ahtiyi        0833 C7795M5-A  R Ni                 802 As     F7V 
-Kewaolr       1333 E425000-0  U Ba Lo Ni           003 As     M7V M0D 
-Ceafa         2233 E334799-5                       800 Na     M5V M3V 
-Hetheteend    2333 B9969CA-B  S Hi In              301 Na     M8V 
-Khtarlaolr    2433 C110AM8-D  R Hi Na              600 As     F5V 
-Eaafteas      2733 C4755MA-9    Ag Ni              203 As     F0V M3D 
-Stiyhoiw      3133 D9896LB-B    Ni Ri           A  817 A4     F0V M0D 
-Eie           3233 C69A6M5-C  R Ni Wa              806 As     K0V M8D 
-Inereabo      0134 C576565-6    Ag Ni              506 Na     F7V M7D 
-Eaeaeaaua     0634 C8344L7-C  T Ni                 822 A9     K2V 
-Ealrarlaikh   0834 C310AJ6-C  R Hi Na              810 As     F9V M2D 
-Kosatoa       0934 C6597M9-8                       517 As     F7V M3D 
-Teiwouta      1034 A3465L7-D    Ag Ni              423 A7     F5V 
-Luakyui       1434 E2315LA-6    Ni Po              404 A0     M3V 
-Hteahtew      1634 E6563HB-5    Lo Ni           A  400 As     G9V 
-Tooom         1834 C150120-8    De Lo Ni Po        308 Na     F7V M5D 
-Foupfour      1934 D200335-4  S Lo Ni Va           200 Na     M8V 
-Manthour      2034 C77A597-A  M Ni Wa              112 Na     F0V 
-Retot         2234 C000568-C    As Ni              400 Na     A3V 
-Keyorlualr    2534 B69A2M9-8    Lo Ni Wa           523 As     F7V 
-Iwuiea        3134 C7474K4-A    Ni                 803 As     F9V 
-Ahtikyuw      3234 C6944J9-7  R Ni                 502 As     F9V 
-Namouese      0135 C586535-4  M Ag Ni              603 Na     G2V 
-Pementicos    0335 E64A768-8    Wa                 200 Na     F5V 
-Latruhei      0735 A5925HA-E  R Ni                 215 As     M4V M5D 
-Kakhearealre  1135 C5A27N6-B    Fl                 302 As     M2V K7V 
-Aau           1235 B661009-A  U Lo Ni              600 As     F1V M4D 
-Ftiyaeaa      1335 C9E83M8-A  R Fl Lo Ni           610 As     G6IV 
-Oilyakhyeaoa  1535 C5279H4-D  R Hi In              201 As     F9V 
-Yoour         1835 X300849-0    Na Va           R  504 Na     F0V 
-Shomick       2435 C210753-9  S Na                 322 Na     M0V 
-Uiaiaow       2835 B2209M4-E    De Hi In Na Po     205 As     F0V M4D 
-Aooaweei      3035 E000000-0  U As Ba Lo Ni        000 As     M0III 
-Wedwemafra    0136 C232464-6    Ni Po              504 Na     M3V 
-Ehagre        0436 C473535-A    Ag Ni              705 Na     G7V M2D 
-Toweetew      0736 BAB7000-9  B Ba Fl Lo Ni        801 Na     M0V M1V 
-Irpad         0836 D775334-4  S Lo Ni              811 Na     F8V 
-Therolyinoa   0936 C323000-B  S Ba Lo Ni Po        815 Na     M1V M2V 
-Warsha        1136 C726835-4                       102 Na     M6V 
-Enthatir      1236 C84A953-C    Hi In Wa           310 Na     F2V 
-Whesi         1636 B522476-C  B Ni Po              111 Na     M4V M0D 
-Hieco         1736 C110867-9  S Na                 704 Na     F7V M1D 
-Wafen         1836 X300849-0    Na Va           R  624 Na     F8D 
-Weghtetent    2336 C581651-5  M Ni Ri              805 Na     G2V 
-Loaliyw       2736 C6675LB-A    Ag Ni           A  943 A9     F2V M2V 
-Ourlais       3236 D66A6M8-6    Ni Ri Wa           102 As     F4V 
-Wandtharthel  0137 C764326-6    Lo Ni              604 Na     F0V M1D 
-Teghgo        0437 B482310-B  M Lo Ni              200 Na     F4V 
-Thiant        1337 D858675-5  S Ag Ni              502 Na     M0V 
-Lothe         1537 C245332-8    Lo Ni              913 Na     F7V 
-Laan          2437 D100779-8  S Na Va              706 Na     K1V M4V 
-Cheti         0138 C402953-9    Hi Ic Na Va        802 Na     F0D 
-Dobiiyind     0238 C5929B9-9  S Hi In              716 Na     K2V M7D 
-Sothad        1038 C536233-6    Lo Ni              810 Na     F6V 
-Teplodad      1438 C554367-5  S Lo Ni              803 Na     K6V M5D 
-Mire          1538 B9948BE-9  B                    512 Na     F5V 
-Rime          1938 B674463-A  B Ni                 402 Na     F7V 
-Tanhanerd     3238 A474100-E  B Lo Ni              503 Na     F8V 
-Edi           0539 A543341-D  B Lo Ni Po           110 Na     F7V 
-Conanat       1339 A4746A5-D  M Ag Ni              303 Na     F2V 
-Oca           1539 C254586-5  M Ag Ni              701 Na     F2V M8D 
-Karan         1639 C344865-9  S                    112 Na     G4V M7D 
-Eces          0140 D460454-6    De Ni              200 Na     F0V 
-Hopirs        0240 X200476-1    Ni Va           R  100 Na     M0V 
-Monmenenswho  1040 B200A9A-C    Hi Na Va           428 Na     K7V M1D 
-Ocaars        1340 C140646-7    De Ni Po           600 Na     F8V 
-Niou          1440 C865362-7    Lo Ni              911 Na     F8V 
-Oyi           1640 C445889-5  M                    401 Na     F1V M4D 
-Tasiado       1940 E9A56A9-3    Fl Ni              404 Na     G0V 
-Emef          2240 C40487C-6    Ic Va              302 Na     G5D 
-Adeshani      2440 B320267-C  B De Lo Ni Po        804 Na     G6V 
-Eleke         2640 E457410-5    Ni                 100 Na     F4V M2D 
-Vesamir       2940 CA9A357-A  M Lo Ni Wa           304 Na     G1V 
-Acinesa       3140 C6B0223-5    De Lo Ni           201 Na     M1V 
+# Sector: Ahkiweahi'
+
+# Solomani and Aslan Dotmap Reconstruction
+
+              0101 X100000-0    (Dotmap)           000 Na
+              0601 X100000-0    (Dotmap)           000 Na
+              0701 X100000-0    (Dotmap)           000 Na
+              0801 X100000-0    (Dotmap)           000 Na
+              1001 X100000-0    (Dotmap)           000 Na
+              1101 X100000-0    (Dotmap)           000 Na
+              1901 X100000-0    (Dotmap)           000 Na
+              2001 X100000-0    (Dotmap)           000 Na
+              2201 X100000-0    (Dotmap)           000 Na
+              2401 X100000-0    (Dotmap)           000 Na
+              2801 X100000-0    (Dotmap)           000 Na
+              3001 X100000-0    (Dotmap)           000 Na
+              3101 X100000-0    (Dotmap)           000 Na
+              3201 X100000-0    (Dotmap)           000 Na
+              0602 X100000-0    (Dotmap)           000 Na
+              1102 X100000-0    (Dotmap)           000 Na
+              1402 X100000-0    (Dotmap)           000 As
+              1802 X100000-0    (Dotmap)           000 Na
+              2502 X100000-0    (Dotmap)           000 Na
+              2602 X100000-0    (Dotmap)           000 Na
+              2802 X100000-0    (Dotmap)           000 Na
+              0203 X100000-0    (Dotmap)           000 Na
+              0303 X100000-0    (Dotmap)           000 Na
+              0403 X100000-0    (Dotmap)           000 Na
+              0503 X100000-0    (Dotmap)           000 Na
+              0703 X100000-0    (Dotmap)           000 Na
+              1003 X100000-0    (Dotmap)           000 As
+              1303 X100000-0    (Dotmap)           000 As
+              1403 X100000-0    (Dotmap)           000 As
+              1603 X100000-0    (Dotmap)           000 A6
+              2003 X100000-0    (Dotmap)           000 Na
+              2503 X100000-0    (Dotmap)           000 Na
+              2603 X100000-0    (Dotmap)           000 Na
+              3103 X100000-0    (Dotmap)           000 Na
+              3203 X100000-0    (Dotmap)           000 Na
+              0104 X100000-0    (Dotmap)           000 Na
+              0704 X100000-0    (Dotmap)           000 Na
+              0804 X100000-0    (Dotmap)           000 As
+              1004 X100000-0    (Dotmap)           000 As
+              1104 X100000-0    (Dotmap)           000 As
+              1204 X100000-0    (Dotmap)           000 As
+              1804 X100000-0    (Dotmap)           000 Na
+              1904 X100000-0    (Dotmap)           000 Na
+              2004 X100000-0    (Dotmap)           000 Na
+              2204 X100000-0    (Dotmap)           000 Na
+              3204 X100000-0    (Dotmap)           000 Na
+              0105 X100000-0    (Dotmap)           000 Na
+              0205 X100000-0    (Dotmap)           000 Na
+              0605 X100000-0    (Dotmap)           000 A3
+              0705 X100000-0    (Dotmap)           000 As
+              0805 X100000-0    (Dotmap)           000 As
+              1205 X100000-0    (Dotmap)           000 As
+              1305 X100000-0    (Dotmap)           000 As
+              1405 X100000-0    (Dotmap)           000 As
+              1505 X100000-0    (Dotmap)           000 As
+              2105 X100000-0    (Dotmap)           000 Na
+              2805 X100000-0    (Dotmap)           000 Na
+              3205 X100000-0    (Dotmap)           000 Na
+              0406 X100000-0    (Dotmap)           000 As
+              0506 X100000-0    (Dotmap)           000 As
+              1006 X100000-0    (Dotmap)           000 As
+              1106 X100000-0    (Dotmap)           000 As
+              1406 X100000-0    (Dotmap)           000 Na
+              1506 X100000-0    (Dotmap)           000 Na
+              1606 X100000-0    (Dotmap)           000 Na
+              1906 X100000-0    (Dotmap)           000 Na
+              2006 X100000-0    (Dotmap)           000 Na
+              2706 X100000-0    (Dotmap)           000 Na
+              2906 X100000-0    (Dotmap)           000 Na
+              3106 X100000-0    (Dotmap)           000 Na
+              0207 X100000-0    (Dotmap)           000 Na
+              0307 X100000-0    (Dotmap)           000 Na
+              0507 X100000-0    (Dotmap)           000 A3
+              0807 X100000-0    (Dotmap)           000 As
+              1007 X100000-0    (Dotmap)           000 A1
+              1307 X100000-0    (Dotmap)           000 Na
+              1507 X100000-0    (Dotmap)           000 Na
+              1607 X100000-0    (Dotmap)           000 Na
+              1707 X100000-0    (Dotmap)           000 Na
+              1807 X100000-0    (Dotmap)           000 Na
+              1907 X100000-0    (Dotmap)           000 Na
+              2007 X100000-0    (Dotmap)           000 Na
+              2307 X100000-0    (Dotmap)           000 Na
+              2407 X100000-0    (Dotmap)           000 Na
+              2707 X100000-0    (Dotmap)           000 Na
+              2807 X100000-0    (Dotmap)           000 Na
+              3107 X100000-0    (Dotmap)           000 Na
+              0108 X100000-0    (Dotmap)           000 Na
+              0408 X100000-0    (Dotmap)           000 As
+              0508 X100000-0    (Dotmap)           000 As
+              0608 X100000-0    (Dotmap)           000 As
+              0808 X100000-0    (Dotmap)           000 As
+              1008 X100000-0    (Dotmap)           000 A7
+              1108 X100000-0    (Dotmap)           000 Na
+              1408 X100000-0    (Dotmap)           000 Na
+              1508 X100000-0    (Dotmap)           000 Na
+              2508 X100000-0    (Dotmap)           000 Na
+              2908 X100000-0    (Dotmap)           000 Na
+              3008 X100000-0    (Dotmap)           000 Na
+              3108 X100000-0    (Dotmap)           000 Na
+              3208 X100000-0    (Dotmap)           000 Na
+              0409 X100000-0    (Dotmap)           000 As
+              0709 X100000-0    (Dotmap)           000 As
+              1109 X100000-0    (Dotmap)           000 Na
+              1209 X100000-0    (Dotmap)           000 Na
+              1309 X100000-0    (Dotmap)           000 Na
+              1609 X100000-0    (Dotmap)           000 Na
+              2709 X100000-0    (Dotmap)           000 Na
+              0210 X100000-0    (Dotmap)           000 Na
+              0510 X100000-0    (Dotmap)           000 As
+              0810 X100000-0    (Dotmap)           000 As
+              1210 X100000-0    (Dotmap)           000 Na
+              1310 X100000-0    (Dotmap)           000 Na
+              1410 X100000-0    (Dotmap)           000 Na
+              1610 X100000-0    (Dotmap)           000 Na
+              1710 X100000-0    (Dotmap)           000 Na
+              1810 X100000-0    (Dotmap)           000 Na
+              1910 X100000-0    (Dotmap)           000 Na
+              2110 X100000-0    (Dotmap)           000 Na
+              2410 X100000-0    (Dotmap)           000 Na
+              3110 X100000-0    (Dotmap)           000 Na
+              0311 X100000-0    (Dotmap)           000 Na
+              0511 X100000-0    (Dotmap)           000 As
+              0611 X100000-0    (Dotmap)           000 As
+              0811 X100000-0    (Dotmap)           000 As
+              0911 X100000-0    (Dotmap)           000 As
+              1011 X100000-0    (Dotmap)           000 Na
+              1111 X100000-0    (Dotmap)           000 Na
+              1311 X100000-0    (Dotmap)           000 Na
+              1811 X100000-0    (Dotmap)           000 Na
+              2011 X100000-0    (Dotmap)           000 Na
+              2111 X100000-0    (Dotmap)           000 Na
+              2711 X100000-0    (Dotmap)           000 Na
+              0312 X100000-0    (Dotmap)           000 Na
+              0512 X100000-0    (Dotmap)           000 As
+              0712 X100000-0    (Dotmap)           000 As
+              1412 X100000-0    (Dotmap)           000 Na
+              1812 X100000-0    (Dotmap)           000 Na
+              2012 X100000-0    (Dotmap)           000 Na
+              2112 X100000-0    (Dotmap)           000 Na
+              2312 X100000-0    (Dotmap)           000 Na
+              0213 X100000-0    (Dotmap)           000 Na
+              0913 X100000-0    (Dotmap)           000 Na
+              1013 X100000-0    (Dotmap)           000 Na
+              1313 X100000-0    (Dotmap)           000 Na
+              1513 X100000-0    (Dotmap)           000 Na
+              1713 X100000-0    (Dotmap)           000 Na
+              1813 X100000-0    (Dotmap)           000 Na
+              2113 X100000-0    (Dotmap)           000 Na
+              2213 X100000-0    (Dotmap)           000 Na
+              2413 X100000-0    (Dotmap)           000 Sh
+              2613 X100000-0    (Dotmap)           000 Sh
+              0614 X100000-0    (Dotmap)           000 Na
+              1214 X100000-0    (Dotmap)           000 Na
+              1514 X100000-0    (Dotmap)           000 Na
+              1714 X100000-0    (Dotmap)           000 Na
+              1914 X100000-0    (Dotmap)           000 Na
+              2014 X100000-0    (Dotmap)           000 Na
+              2414 X100000-0    (Dotmap)           000 Sh
+              2514 X100000-0    (Dotmap)           000 Sh
+              2714 X100000-0    (Dotmap)           000 Sh
+              0115 X100000-0    (Dotmap)           000 Na
+              0215 X100000-0    (Dotmap)           000 Na
+              0315 X100000-0    (Dotmap)           000 Na
+              0415 X100000-0    (Dotmap)           000 Na
+              0515 X100000-0    (Dotmap)           000 Na
+              0615 X100000-0    (Dotmap)           000 Na
+              0915 X100000-0    (Dotmap)           000 Na
+              1315 X100000-0    (Dotmap)           000 Na
+              1715 X100000-0    (Dotmap)           000 Na
+              1815 X100000-0    (Dotmap)           000 Na
+              2315 X100000-0    (Dotmap)           000 Sh
+              3015 X100000-0    (Dotmap)           000 Sh
+              3115 X100000-0    (Dotmap)           000 Sh
+              0516 X100000-0    (Dotmap)           000 Na
+              0616 X100000-0    (Dotmap)           000 Na
+              0916 X100000-0    (Dotmap)           000 Na
+              1416 X100000-0    (Dotmap)           000 Na
+              1616 X100000-0    (Dotmap)           000 Na
+              1916 X100000-0    (Dotmap)           000 Na
+              2016 X100000-0    (Dotmap)           000 Na
+              2116 X100000-0    (Dotmap)           000 Na
+              2216 X100000-0    (Dotmap)           000 Sh
+              2516 X100000-0    (Dotmap)           000 Sh
+              2616 X100000-0    (Dotmap)           000 Sh
+              2716 X100000-0    (Dotmap)           000 Sh
+              3016 X100000-0    (Dotmap)           000 Sh
+              0617 X100000-0    (Dotmap)           000 Na
+              0817 X100000-0    (Dotmap)           000 Na
+              0917 X100000-0    (Dotmap)           000 Na
+              1017 X100000-0    (Dotmap)           000 Na
+              1217 X100000-0    (Dotmap)           000 Na
+              1417 X100000-0    (Dotmap)           000 Na
+              1517 X100000-0    (Dotmap)           000 Na
+              1617 X100000-0    (Dotmap)           000 Na
+              2117 X100000-0    (Dotmap)           000 Na
+              0118 X100000-0    (Dotmap)           000 Na
+              0218 X100000-0    (Dotmap)           000 Na
+              0318 X100000-0    (Dotmap)           000 Na
+              1218 X100000-0    (Dotmap)           000 Na
+              1318 X100000-0    (Dotmap)           000 Na
+              1618 X100000-0    (Dotmap)           000 Na
+              1918 X100000-0    (Dotmap)           000 Na
+              2218 X100000-0    (Dotmap)           000 Sh
+              3118 X100000-0    (Dotmap)           000 Sh
+              0119 X100000-0    (Dotmap)           000 Na
+              0619 X100000-0    (Dotmap)           000 Na
+              1119 X100000-0    (Dotmap)           000 Na
+              1219 X100000-0    (Dotmap)           000 Na
+              1319 X100000-0    (Dotmap)           000 Na
+              1519 X100000-0    (Dotmap)           000 Na
+              1619 X100000-0    (Dotmap)           000 Na
+              1719 X100000-0    (Dotmap)           000 Na
+              1819 X100000-0    (Dotmap)           000 Na
+              2219 X100000-0    (Dotmap)           000 Sh
+              2319 X100000-0    (Dotmap)           000 Sh
+              2519 X100000-0    (Dotmap)           000 Sh
+              2719 X100000-0    (Dotmap)           000 Sh
+              2819 X100000-0    (Dotmap)           000 Sh
+              3019 X100000-0    (Dotmap)           000 Na
+              0120 X100000-0    (Dotmap)           000 Na
+              0520 X100000-0    (Dotmap)           000 Na
+              0720 X100000-0    (Dotmap)           000 Na
+              1020 X100000-0    (Dotmap)           000 Na
+              1220 X100000-0    (Dotmap)           000 Na
+              1420 X100000-0    (Dotmap)           000 Na
+              1720 X100000-0    (Dotmap)           000 Na
+              1920 X100000-0    (Dotmap)           000 Na
+              2120 X100000-0    (Dotmap)           000 Na
+              2220 X100000-0    (Dotmap)           000 Sh
+              2520 X100000-0    (Dotmap)           000 Sh
+              2620 X100000-0    (Dotmap)           000 Sh
+              2720 X100000-0    (Dotmap)           000 Sh
+              2920 X100000-0    (Dotmap)           000 Na
+              3220 X100000-0    (Dotmap)           000 Na
+              0121 X100000-0    (Dotmap)           000 Na
+              0321 X100000-0    (Dotmap)           000 Na
+              0421 X100000-0    (Dotmap)           000 Na
+              0821 X100000-0    (Dotmap)           000 Na
+              1121 X100000-0    (Dotmap)           000 Na
+              1321 X100000-0    (Dotmap)           000 Na
+              1521 X100000-0    (Dotmap)           000 Na
+              1621 X100000-0    (Dotmap)           000 Na
+              1921 X100000-0    (Dotmap)           000 Na
+              2021 X100000-0    (Dotmap)           000 Na
+              2121 X100000-0    (Dotmap)           000 Na
+              2221 X100000-0    (Dotmap)           000 Sh
+              2621 X100000-0    (Dotmap)           000 Sh
+              2721 X100000-0    (Dotmap)           000 Na
+              2821 X100000-0    (Dotmap)           000 Na
+              2921 X100000-0    (Dotmap)           000 Na
+              0122 X100000-0    (Dotmap)           000 Na
+              0322 X100000-0    (Dotmap)           000 Na
+              0422 X100000-0    (Dotmap)           000 Na
+              0822 X100000-0    (Dotmap)           000 Na
+              1222 X100000-0    (Dotmap)           000 Na
+              1322 X100000-0    (Dotmap)           000 Na
+              1422 X100000-0    (Dotmap)           000 Na
+              1522 X100000-0    (Dotmap)           000 Na
+              1622 X100000-0    (Dotmap)           000 Na
+              1922 X100000-0    (Dotmap)           000 Na
+              2222 X100000-0    (Dotmap)           000 Sh
+              2622 X100000-0    (Dotmap)           000 Sh
+              2722 X100000-0    (Dotmap)           000 Na
+              2822 X100000-0    (Dotmap)           000 Na
+              3222 X100000-0    (Dotmap)           000 Na
+              0723 X100000-0    (Dotmap)           000 Na
+              0923 X100000-0    (Dotmap)           000 Na
+              1123 X100000-0    (Dotmap)           000 Na
+              1223 X100000-0    (Dotmap)           000 Na
+              1423 X100000-0    (Dotmap)           000 Na
+              2023 X100000-0    (Dotmap)           000 Na
+              2623 X100000-0    (Dotmap)           000 Sh
+              2923 X100000-0    (Dotmap)           000 Na
+              3023 X100000-0    (Dotmap)           000 Na
+              3123 X100000-0    (Dotmap)           000 Na
+              0124 X100000-0    (Dotmap)           000 Na
+              0224 X100000-0    (Dotmap)           000 Na
+              0424 X100000-0    (Dotmap)           000 Na
+              0824 X100000-0    (Dotmap)           000 Na
+              0924 X100000-0    (Dotmap)           000 Na
+              1024 X100000-0    (Dotmap)           000 Na
+              1324 X100000-0    (Dotmap)           000 Na
+              1524 X100000-0    (Dotmap)           000 Na
+              1724 X100000-0    (Dotmap)           000 Na
+              2324 X100000-0    (Dotmap)           000 Sh
+              2524 X100000-0    (Dotmap)           000 Sh
+              2624 X100000-0    (Dotmap)           000 Sh
+              3124 X100000-0    (Dotmap)           000 Na
+              0425 X100000-0    (Dotmap)           000 Na
+              0525 X100000-0    (Dotmap)           000 Na
+              0625 X100000-0    (Dotmap)           000 Na
+              0725 X100000-0    (Dotmap)           000 Na
+              0925 X100000-0    (Dotmap)           000 Na
+              1425 X100000-0    (Dotmap)           000 Na
+              1525 X100000-0    (Dotmap)           000 Na
+              1925 X100000-0    (Dotmap)           000 Na
+              2125 X100000-0    (Dotmap)           000 Na
+              2225 X100000-0    (Dotmap)           000 Na
+              2325 X100000-0    (Dotmap)           000 Na
+              3125 X100000-0    (Dotmap)           000 Na
+              0826 X100000-0    (Dotmap)           000 Na
+              1126 X100000-0    (Dotmap)           000 Na
+              1226 X100000-0    (Dotmap)           000 Na
+              1326 X100000-0    (Dotmap)           000 Na
+              1626 X100000-0    (Dotmap)           000 As
+              2026 X100000-0    (Dotmap)           000 Na
+              2226 X100000-0    (Dotmap)           000 Na
+              2326 X100000-0    (Dotmap)           000 Na
+              2726 X100000-0    (Dotmap)           000 Na
+              3026 X100000-0    (Dotmap)           000 Na
+              3126 X100000-0    (Dotmap)           000 Na
+              0227 X100000-0    (Dotmap)           000 Na
+              0327 X100000-0    (Dotmap)           000 Na
+              0527 X100000-0    (Dotmap)           000 Na
+              0627 X100000-0    (Dotmap)           000 Na
+              0827 X100000-0    (Dotmap)           000 Na
+              1327 X100000-0    (Dotmap)           000 Na
+              1527 X100000-0    (Dotmap)           000 As
+              1627 X100000-0    (Dotmap)           000 As
+              1927 X100000-0    (Dotmap)           000 Na
+              2127 X100000-0    (Dotmap)           000 Na
+              2227 X100000-0    (Dotmap)           000 Na
+              2427 X100000-0    (Dotmap)           000 Na
+              2527 X100000-0    (Dotmap)           000 Na
+              2927 X100000-0    (Dotmap)           000 Na
+              3027 X100000-0    (Dotmap)           000 Na
+              3127 X100000-0    (Dotmap)           000 Na
+              0128 X100000-0    (Dotmap)           000 Na
+              0428 X100000-0    (Dotmap)           000 Na
+              0628 X100000-0    (Dotmap)           000 Na
+              0928 X100000-0    (Dotmap)           000 Na
+              1328 X100000-0    (Dotmap)           000 Na
+              1428 X100000-0    (Dotmap)           000 As
+              1628 X100000-0    (Dotmap)           000 As
+              2028 X100000-0    (Dotmap)           000 Na
+              2228 X100000-0    (Dotmap)           000 Na
+              2328 X100000-0    (Dotmap)           000 Na
+              2528 X100000-0    (Dotmap)           000 Na
+              2628 X100000-0    (Dotmap)           000 Na
+              2728 X100000-0    (Dotmap)           000 Na
+              0129 X100000-0    (Dotmap)           000 Na
+              0729 X100000-0    (Dotmap)           000 Na
+              1029 X100000-0    (Dotmap)           000 As
+              1129 X100000-0    (Dotmap)           000 Na
+              1229 X100000-0    (Dotmap)           000 Na
+              1329 X100000-0    (Dotmap)           000 Na
+              1429 X100000-0    (Dotmap)           000 As
+              1929 X100000-0    (Dotmap)           000 Na
+              2629 X100000-0    (Dotmap)           000 As
+              3129 X100000-0    (Dotmap)           000 A2
+              0330 X100000-0    (Dotmap)           000 Na
+              0630 X100000-0    (Dotmap)           000 Na
+              1530 X100000-0    (Dotmap)           000 As
+              1630 X100000-0    (Dotmap)           000 A7
+              1730 X100000-0    (Dotmap)           000 A6
+              1830 X100000-0    (Dotmap)           000 As
+              2730 X100000-0    (Dotmap)           000 As
+              3030 X100000-0    (Dotmap)           000 As
+              0431 X100000-0    (Dotmap)           000 Na
+              0531 X100000-0    (Dotmap)           000 Na
+              0831 X100000-0    (Dotmap)           000 As
+              0931 X100000-0    (Dotmap)           000 As
+              1131 X100000-0    (Dotmap)           000 A6
+              1231 X100000-0    (Dotmap)           000 As
+              1331 X100000-0    (Dotmap)           000 A5
+              1431 X100000-0    (Dotmap)           000 As
+              1631 X100000-0    (Dotmap)           000 As
+              1731 X100000-0    (Dotmap)           000 As
+              1831 X100000-0    (Dotmap)           000 As
+              2631 X100000-0    (Dotmap)           000 A0
+              2831 X100000-0    (Dotmap)           000 As
+              3231 X100000-0    (Dotmap)           000 A1
+              0132 X100000-0    (Dotmap)           000 Na
+              0532 X100000-0    (Dotmap)           000 Na
+              0932 X100000-0    (Dotmap)           000 As
+              1232 X100000-0    (Dotmap)           000 As
+              1732 X100000-0    (Dotmap)           000 As
+              2332 X100000-0    (Dotmap)           000 Na
+              2432 X100000-0    (Dotmap)           000 As
+              2832 X100000-0    (Dotmap)           000 As
+              2932 X100000-0    (Dotmap)           000 As
+              3032 X100000-0    (Dotmap)           000 As
+              0133 X100000-0    (Dotmap)           000 Na
+              0333 X100000-0    (Dotmap)           000 Na
+              0833 X100000-0    (Dotmap)           000 As
+              1333 X100000-0    (Dotmap)           000 As
+              2233 X100000-0    (Dotmap)           000 Na
+              2333 X100000-0    (Dotmap)           000 Na
+              2433 X100000-0    (Dotmap)           000 As
+              2733 X100000-0    (Dotmap)           000 As
+              3133 X100000-0    (Dotmap)           000 A4
+              3233 X100000-0    (Dotmap)           000 As
+              0134 X100000-0    (Dotmap)           000 Na
+              0634 X100000-0    (Dotmap)           000 A9
+              0834 X100000-0    (Dotmap)           000 As
+              0934 X100000-0    (Dotmap)           000 As
+              1034 X100000-0    (Dotmap)           000 A7
+              1434 X100000-0    (Dotmap)           000 A0
+              1634 X100000-0    (Dotmap)           000 As
+              1834 X100000-0    (Dotmap)           000 Na
+              1934 X100000-0    (Dotmap)           000 Na
+              2034 X100000-0    (Dotmap)           000 Na
+              2234 X100000-0    (Dotmap)           000 Na
+              2534 X100000-0    (Dotmap)           000 As
+              3134 X100000-0    (Dotmap)           000 As
+              3234 X100000-0    (Dotmap)           000 As
+              0135 X100000-0    (Dotmap)           000 Na
+              0335 X100000-0    (Dotmap)           000 Na
+              0735 X100000-0    (Dotmap)           000 As
+              1135 X100000-0    (Dotmap)           000 As
+              1235 X100000-0    (Dotmap)           000 As
+              1335 X100000-0    (Dotmap)           000 As
+              1535 X100000-0    (Dotmap)           000 As
+              1835 X100000-0    (Dotmap)           000 Na
+              2435 X100000-0    (Dotmap)           000 Na
+              2835 X100000-0    (Dotmap)           000 As
+              3035 X100000-0    (Dotmap)           000 As
+              0136 X100000-0    (Dotmap)           000 Na
+              0436 X100000-0    (Dotmap)           000 Na
+              0736 X100000-0    (Dotmap)           000 Na
+              0836 X100000-0    (Dotmap)           000 Na
+              0936 X100000-0    (Dotmap)           000 Na
+              1136 X100000-0    (Dotmap)           000 Na
+              1236 X100000-0    (Dotmap)           000 Na
+              1636 X100000-0    (Dotmap)           000 Na
+              1736 X100000-0    (Dotmap)           000 Na
+              1836 X100000-0    (Dotmap)           000 Na
+              2336 X100000-0    (Dotmap)           000 Na
+              2736 X100000-0    (Dotmap)           000 A9
+              3236 X100000-0    (Dotmap)           000 As
+              0137 X100000-0    (Dotmap)           000 Na
+              0437 X100000-0    (Dotmap)           000 Na
+              1337 X100000-0    (Dotmap)           000 Na
+              1537 X100000-0    (Dotmap)           000 Na
+              2437 X100000-0    (Dotmap)           000 Na
+              0138 X100000-0    (Dotmap)           000 Na
+              0238 X100000-0    (Dotmap)           000 Na
+              1038 X100000-0    (Dotmap)           000 Na
+              1438 X100000-0    (Dotmap)           000 Na
+              1538 X100000-0    (Dotmap)           000 Na
+              1938 X100000-0    (Dotmap)           000 Na
+              3238 X100000-0    (Dotmap)           000 Na
+              0539 X100000-0    (Dotmap)           000 Na
+              1339 X100000-0    (Dotmap)           000 Na
+              1539 X100000-0    (Dotmap)           000 Na
+              1639 X100000-0    (Dotmap)           000 Na
+              0140 X100000-0    (Dotmap)           000 Na
+              0240 X100000-0    (Dotmap)           000 Na
+              1040 X100000-0    (Dotmap)           000 Na
+              1340 X100000-0    (Dotmap)           000 Na
+              1440 X100000-0    (Dotmap)           000 Na
+              1640 X100000-0    (Dotmap)           000 Na
+              1940 X100000-0    (Dotmap)           000 Na
+              2240 X100000-0    (Dotmap)           000 Na
+              2440 X100000-0    (Dotmap)           000 Na
+              2640 X100000-0    (Dotmap)           000 Na
+              2940 X100000-0    (Dotmap)           000 Na
+              3140 X100000-0    (Dotmap)           000 Na
