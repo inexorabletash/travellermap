@@ -135,12 +135,14 @@ namespace Maps.Serialization
                             {
                                 if (option == "low")
                                 {
-                                    // TODO: Implement
+                                    label.OffsetY = 0.85f;
                                     continue;
                                 }
                                 if (Regex.IsMatch(option, @"[-+](\d+)$"))
                                 {
-                                    // TODO: Implement
+                                    int offset = 0;
+                                    Int32.TryParse(option, out offset);
+                                    label.OffsetY = offset / 100f;
                                     continue;
                                 }
                                 if (option == "right" || option == "left")

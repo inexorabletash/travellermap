@@ -1294,8 +1294,7 @@ namespace Maps.Rendering
                         Point labelHex = new Point(label.Hex / 100, label.Hex % 100);
                         PointF labelPos = Astrometrics.HexToCenter(Astrometrics.LocationToCoordinates(new Location(sector.Location, labelHex)));
                         // TODO: Adopt some of the tweaks from .MSEC
-                        //labelPos.X -= 0.5f;
-                        //labelPos.Y -= 0.5f;
+                        labelPos.Y -= label.OffsetY * 0.7f;
 
                         XFont font;
                         switch (label.Size)

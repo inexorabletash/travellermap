@@ -1040,6 +1040,9 @@ namespace Maps
         public string Size { get; set; }
 
         [XmlAttribute]
+        public float OffsetY { get; set; }
+
+        [XmlAttribute]
         // TODO: Unused
         public string RenderType { get; set; }
 

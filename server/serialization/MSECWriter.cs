@@ -187,30 +187,29 @@ namespace Maps.Serialization
 
             private void WriteLabel(Label label)
             {
-                const int lineOffset = -60;
-                int offset = 0;
                 string[] lines = label.Text.Split('\n');
 
-                if (lines.Length > 2)
-                {
-                    offset -= (lineOffset * (lines.Length - 2)) / 2;
-                }
+                const int lineOffset = -60;
+                int offset = -(lineOffset * (lines.Length - 1)) / 2;
 
-                foreach (string line in lines.Where(line => line.Length > 0))
+                foreach (string line in lines)
                 {
-                    writer.Write("label ");
-                    writer.Write(label.Hex.ToString("0000", CultureInfo.InvariantCulture));
-                    if (offset != 0)
+                    if (line.Length > 0)
                     {
-                        writer.Write("/");
-                        writer.Write(offset.ToString("+0;-0", CultureInfo.InvariantCulture));
+                        writer.Write("label ");
+                        writer.Write(label.Hex.ToString("0000", CultureInfo.InvariantCulture));
+                        if (offset != 0)
+                        {
+                            writer.Write("/");
+                            writer.Write(offset.ToString("+0;-0", CultureInfo.InvariantCulture));
+                        }
+                        writer.Write(" ");
+                        writer.Write(line);
+                        writer.WriteLine();
                     }
-                    writer.Write(" ");
-                    writer.Write(line);
-                    writer.WriteLine();
-                }
 
-                offset += lineOffset;
+                    offset += lineOffset;
+                }
 
                 // TODO: Other properties
             }
