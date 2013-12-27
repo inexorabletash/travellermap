@@ -139,22 +139,32 @@ namespace Maps.API
             double scale = Util.Clamp(GetDoubleOption(context, "scale", NormalScale), MinScale, MaxScale);
 
             int rot = GetIntOption(context, "rotation", 0) % 4;
+            bool thumb = GetBoolOption(context, "thumb", false);
+
+            Stylesheet stylesheet = new Stylesheet(scale, options, style);
 
             Size tileSize = new Size((int)Math.Floor(tileRect.Width * scale * Astrometrics.ParsecScaleX), (int)Math.Floor(tileRect.Height * scale * Astrometrics.ParsecScaleY));
 
             int bitmapWidth = tileSize.Width, bitmapHeight = tileSize.Height;
+            if (thumb)
+            {
+                bitmapWidth = bitmapWidth / 4;
+                bitmapHeight = bitmapHeight / 4;
+                scale = scale / 4;
+            }
+
             float translateX = 0, translateY = 0, angle = rot * 90;
             switch (rot)
             {
                 case 1: // 90 degrees clockwise
-                    bitmapWidth = tileSize.Height; bitmapHeight = tileSize.Width;
+                    Util.Swap(ref bitmapWidth, ref bitmapHeight);
                     translateX = bitmapWidth;
                     break;
                 case 2: // 180 degrees
-                    translateX = tileSize.Width; translateY = tileSize.Height;
+                    translateX = bitmapWidth; translateY = bitmapHeight;
                     break;
                 case 3: // 270 degrees clockwise
-                    bitmapWidth = tileSize.Height; bitmapHeight = tileSize.Width;
+                    Util.Swap(ref bitmapWidth, ref bitmapHeight);
                     translateY = bitmapHeight;
                     break;
             }
@@ -165,7 +175,7 @@ namespace Maps.API
             ctx.tileRect = tileRect;
             ctx.scale = scale;
             ctx.options = options;
-            ctx.styles = new Stylesheet(scale, options, style);
+            ctx.styles = stylesheet;
             ctx.tileSize = tileSize;
             ctx.clipOutsectorBorders = clipOutsectorBorders;
             ProduceResponse(context, title, ctx, new Size(bitmapWidth, bitmapHeight), rot, translateX, translateY);
