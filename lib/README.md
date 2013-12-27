@@ -5,13 +5,6 @@ add-to-home-screen
 * Copyright (c) 2013 Matteo Spinelli, http://cubiq.org
 * http://cubiq.org/add-to-home-screen
 
-handlebars.js
--------------
-* Handlebars
-* Mustache-based templating system for HTML and JavaScript
-* Copyright (C) 2011 by Yehuda Katz
-* http://handlebarsjs.com/
-
 lightbox
 --------
 * Simple image lightbox

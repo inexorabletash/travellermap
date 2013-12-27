@@ -3,6 +3,7 @@
 // ======================================================================
 
 var SERVICE_BASE = (function(l) {
+  'use strict';
   if (l.hostname === 'localhost' && l.pathname.indexOf('~') !== -1)
     return 'http://travellermap.com';
   return '';
@@ -35,6 +36,7 @@ function getUrlParameters() {
 
 // NOTE: Needs to be exported
 function applyUrlParameters(map) {
+  'use strict';
   return map.ApplyURLParameters();
 }
 
@@ -55,6 +57,7 @@ function escapeHtml(s) {
 
 // NOTE: Used by other scripts
 function makeURL(base, params) {
+  'use strict';
   base = String(base).replace(/\?.*/, '');
   var keys = Object.keys(params);
   if (keys.length === 0) return base;

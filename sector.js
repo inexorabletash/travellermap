@@ -1,5 +1,5 @@
 (function() {
-  "use strict";
+  'use strict';
 
   function friendlyJoin(l) {
     if (l.length === 0) {
@@ -8,19 +8,19 @@
       return l[0];
     } else {
       var last = l.pop();
-      return l.join(", ") + " and " + last;
+      return l.join(', ') + ' and ' + last;
     }
   }
 
   function friendlyNumber(n) {
     if (n >= 1e12) {
-      return Math.round(n / 1e11) / 10 + " trillion";
+      return Math.round(n / 1e11) / 10 + ' trillion';
     } else if (n >= 1e9) {
-      return Math.round(n / 1e8) / 10 + " billion";
+      return Math.round(n / 1e8) / 10 + ' billion';
     } else if (n >= 1e6) {
-      return Math.round(n / 1e5) / 10 + " million";
+      return Math.round(n / 1e5) / 10 + ' million';
     } else if (n >= 1e3) {
-      return Math.round(n / 1e2) / 10 + " thousand";
+      return Math.round(n / 1e2) / 10 + ' thousand';
     } else {
       return n;
     }
@@ -97,7 +97,7 @@
     });
     sector.index.sort(function (a, b) {
       try {
-        return a.name.localeCompare(b.name, "en-us");
+        return a.name.localeCompare(b.name, 'en-us');
       } catch (e) {
         // Workaround for http://crbug.com/314210
         return (a.name < b.name) ? -1 : (a.name > b.name) ? 1 : -1;
@@ -114,7 +114,7 @@
     sector.index_pages.forEach(function (page) {
       page.forEach(function (half, index) {
         half.pp = ++pp;
-        half.facing = index % 2 ? "right" : "left";
+        half.facing = index % 2 ? 'right' : 'left';
       });
     });
 
@@ -147,24 +147,24 @@
   }
 
   var hash = window.location.hash;
-  window.location.hash = "";
+  window.location.hash = '';
 
   window.onload = function () {
     var oParams = getUrlParameters(),
         options = oParams.options !== (void 0) ? oParams.options : MapOptions.BordersMask,
-        style = oParams.style || "print";
+        style = oParams.style || 'print';
 
     if (!oParams.sector) {
       status("Missing 'sector' parameter in URL query string.");
       return;
     }
 
-    status("Fetching metadata...", true);
+    status('Fetching metadata...', true);
     MapService.sectorMetaData(oParams.sector, function (metadata) {
 
-      status("Fetching data...", true);
+      status('Fetching data...', true);
       MapService.sectorDataTabDelimited(oParams.sector, function (data) {
-        status("Processing data...", true);
+        status('Processing data...', true);
         setTimeout(function () {
 
           // Step 1: Parse the sector data
@@ -173,29 +173,29 @@
           // Step 2: Post-process the data
           sector.title = sector.metadata.Names[0].Text;
           if (!/^The /.test(sector.title)) {
-            sector.title = "The " + sector.title;
+            sector.title = 'The ' + sector.title;
             if (![/ Sector$/, /es$/, / Rim$/].some(function (re) { return re.test(sector.title); })) {
-              sector.title += " Sector";
+              sector.title += ' Sector';
             }
           }
           document.title = sector.title;
 
-          sector.img_src = SERVICE_BASE + "/api/poster?sector=" + encodeURIComponent(oParams.sector) +
-            "&rotation=3&scale=64&options=" + encodeURIComponent(options | MapOptions.SubsectorGrid | MapOptions.NamesMask) +
-            "&style=" + encodeURIComponent(style);
+          sector.img_src = SERVICE_BASE + '/api/poster?sector=' + encodeURIComponent(oParams.sector) +
+            '&rotation=3&scale=64&options=' + encodeURIComponent(options | MapOptions.SubsectorGrid | MapOptions.NamesMask) +
+            '&style=' + encodeURIComponent(style);
 
           range(16).forEach(function (i) {
             var subsector = sector.subsectors[i],
                 neighbor, l;
 
             if (subsector.name.length === 0) {
-              subsector.article = "subsector " + String.fromCharCode('A'.charCodeAt(0) + i);
+              subsector.article = 'subsector ' + String.fromCharCode('A'.charCodeAt(0) + i);
             } else if (/^District /.test(subsector.name)) {
               subsector.article = subsector.name;
             } else if (/^The /i.test(subsector.name)) {
-              subsector.article = subsector.name + " subsector";
+              subsector.article = subsector.name + ' subsector';
             } else {
-              subsector.article = "the " + subsector.name + " subsector";
+              subsector.article = 'the ' + subsector.name + ' subsector';
             }
             subsector.title = titleCaps(subsector.article);
 
@@ -204,7 +204,7 @@
                   y = Math.floor(n / 4) + dy;
 
               if (x < 0 || x >= 4 || y < 0 || y >= 4) {
-                return "\xA0"; // Make sure the space doesn't collapse
+                return '\xA0'; // Make sure the space doesn't collapse
               } else {
                 n = x + (4 * y);
                 return sector.subsectors[n].name;
@@ -225,7 +225,7 @@
             subsector.worlds.forEach(function (world) {
               subsector.population += world.population;
 
-              if (world.name !== "") {
+              if (world.name !== '') {
                 if (!subsector.maxpop || subsector.maxpop.population < world.population) {
                   subsector.maxpop = world;
                 }
@@ -236,7 +236,7 @@
                   subsector.maxtl.push(world);
                 }
 
-                if (world.remarks.split(/ /).some(function (x) { return x === "Cp"; })) {
+                if (world.remarks.split(/ /).some(function (x) { return x === 'Cp'; })) {
                   subsector.capital = world;
                 }
               }
@@ -245,37 +245,37 @@
 
             subsector.blurb = [];
             if (subsector.worlds.length > 1) {
-              subsector.blurb.push(capitalize(subsector.article) + " contains " + subsector.worlds.length + " worlds with a population of " + friendlyNumber(subsector.population) + ".");
+              subsector.blurb.push(capitalize(subsector.article) + ' contains ' + subsector.worlds.length + ' worlds with a population of ' + friendlyNumber(subsector.population) + '.');
 
               if (subsector.maxpop && subsector.maxpop.population > 0) {
-                subsector.blurb.push(" The highest population is " + friendlyNumber(subsector.maxpop.population) + ", at " + subsector.maxpop.name + ".");
+                subsector.blurb.push(' The highest population is ' + friendlyNumber(subsector.maxpop.population) + ', at ' + subsector.maxpop.name + '.');
               }
             } else if (subsector.worlds.length === 1 && subsector.maxpop) {
-              subsector.blurb.push(capitalize(subsector.article) + " contains one world, " + subsector.maxpop.name + ", with a population of " + friendlyNumber(subsector.maxpop.population) + ".");
+              subsector.blurb.push(capitalize(subsector.article) + ' contains one world, ' + subsector.maxpop.name + ', with a population of ' + friendlyNumber(subsector.maxpop.population) + '.');
             } else if (subsector.worlds.length === 0) {
-              subsector.blurb.push(capitalize(subsector.article) + " contains no charted worlds.");
+              subsector.blurb.push(capitalize(subsector.article) + ' contains no charted worlds.');
             }
 
             if (subsector.maxtl && subsector.maxtl.length > 0) {
               l = subsector.maxtl.map(function (world) { return world.name; });
-              subsector.blurb.push(" The highest tech level is " + subsector.maxtl[0].uwp.charAt(8) + " at " + friendlyJoin(l) + ".");
+              subsector.blurb.push(' The highest tech level is ' + subsector.maxtl[0].uwp.charAt(8) + ' at ' + friendlyJoin(l) + '.');
             }
 
             if (subsector.capital) {
-              subsector.blurb.push(" The subsector capital is at " + subsector.capital.name + ".");
+              subsector.blurb.push(' The subsector capital is at ' + subsector.capital.name + '.');
             }
 
-            subsector.blurb = subsector.blurb.join(" ");
-            subsector.img_src = SERVICE_BASE + "/api/poster?sector=" + encodeURIComponent(oParams.sector) +
-              "&subsector=" + encodeURIComponent(subsector.index) +
-              "&scale=64&options=" + encodeURIComponent(options) +
-              "&style=" + encodeURIComponent(style);
+            subsector.blurb = subsector.blurb.join(' ');
+            subsector.img_src = SERVICE_BASE + '/api/poster?sector=' + encodeURIComponent(oParams.sector) +
+              '&subsector=' + encodeURIComponent(subsector.index) +
+              '&scale=64&options=' + encodeURIComponent(options) +
+              '&style=' + encodeURIComponent(style);
 
-            subsector.density = (subsector.worlds.length < 42) ? "sparse" : "dense";
+            subsector.density = (subsector.worlds.length < 42) ? 'sparse' : 'dense';
           });
 
           // Step 3: Output the page
-          status("Composing pages...", true);
+          status('Composing pages...', true);
           // The following logic is done asynchronously so that the status display can update
           window.setTimeout(function () {
 
@@ -289,10 +289,10 @@
 
         }, 0);
       }, function () {
-        status("The requested sector \"" + oParams.sector + "\" was not found.");
+        status('The requested sector "' + oParams.sector + '" was not found.');
       });
     }, function () {
-      status("The requested sector \"" + oParams.sector + "\" was not found.");
+      status('The requested sector "' + oParams.sector + '" was not found.');
     });
   };
 

@@ -1,7 +1,9 @@
 (function () {
+  'use strict';
+
   var list = document.querySelector('#sector');
 
-  MapService.universe(populateSectorList);
+  MapService.universe(populateSectorList, undefined, {requireData: 1});
 
   function populateSectorList(universe) {
     var names = [];
