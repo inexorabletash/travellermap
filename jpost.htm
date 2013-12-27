@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <title>Traveller Map - JumpMap/POST Example</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="shortcut icon" href="/favicon.ico">
+<link rel="shortcut icon" href="favicon.ico">
 <link rel="stylesheet" type="text/css" href="site.css?update=2013-07-29">
+<script src="lib/polyfill/polyfill.js?update=2013-12-26"></script>
+<script src="map.js?update=2013-12-27"></script>
+<script src="post.js?update=2013-12-27"></script>
 
 <h1>The Traveller Map - JumpMap/POST Example</h1>
 <div class="content">
@@ -62,16 +65,18 @@
       <select id="sector">
         <option disabled>Select...</option>
       </select>
-      <script src="map.js?update=2013-12-26"></script>
-      <script src="post.js?update=2013-12-26"></script>
     </p>
 
     <form action="api/jumpmap" method="post" enctype="application/x-www-form-urlencoded">
       <div>Sector Data:</div>
-      <textarea id="data" name="data" style="width: 650px; height: 150px; white-space: pre;" wrap="off" cols="80" rows="40"></textarea>
+      <textarea id="data" name="data"
+                style="width: 650px; height: 150px; white-space: pre;"
+                spellcheck="false" wrap="off" cols="80" rows="10"></textarea>
 
       <div>Metadata:</div>
-      <textarea id="metadata" name="metadata" style="width: 650px; height: 150px; white-space: pre;" wrap="off" cols="80" rows="10"></textarea>
+      <textarea id="metadata" name="metadata"
+                style="width: 650px; height: 150px; white-space: pre;"
+                spellcheck="false" wrap="off" cols="80" rows="10"></textarea>
 
       <p>
         Additional options:

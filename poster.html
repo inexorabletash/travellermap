@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<title>Poster Maker</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="stylesheet" type="text/css" href="site.css?update=2013-07-29">
+<script src="lib/polyfill/polyfill.js?update=2013-12-26"></script>
+<script src="map.js?update=2013-12-27"></script>
+<script src="post.js?update=2013-12-27"></script>
+
+<h1>The Traveller Map - Poster Maker</h1>
+<div id="content" style="width: 660px;">
+
+<div>
+Select a sector, or enter your own data below:
+<select id="sector">
+  <option disabled>Select...</option>
+</select>
+</div>
+
+<form id="form" target="_blank" method="POST">
+  <div>Sector Data:
+    (<a target="_blank" href="doc/fileformats.html">file formats</a>)</div>
+  <textarea id="data" name="data"
+            style="width: 650px; height: 120px; white-space: pre;"
+            spellcheck="false" wrap="off" cols="80" rows="10"></textarea>
+
+  <div>Metadata:
+    (<a target="_blank" href="doc/api.html#metadata">XML</a> or
+    <a target="_blank" href="doc/api.html#msec">MSEC</a>)</div>
+  <textarea id="metadata" name="metadata"
+            style="width: 650px; height: 120px; white-space: pre;"
+            spellcheck="false" wrap="off" cols="80" rows="10"></textarea>
+
+  <table>
+    <tr>
+      <td>Format:
+      <td>
+        <select id="accept" name="accept">
+          <option selected value="application/pdf">PDF (for printing)</option>
+          <option value="">Bitmap (for screen)</option>
+        </select>
+    </tr>
+    <tr>
+      <td>Show:
+      <td>
+        <select name="subsector">
+          <option selected value="">Whole Sector</option>
+          <option value="A">Subsector A</option>
+          <option value="B">Subsector B</option>
+          <option value="C">Subsector C</option>
+          <option value="D">Subsector D</option>
+          <option value="E">Subsector E</option>
+          <option value="F">Subsector F</option>
+          <option value="G">Subsector G</option>
+          <option value="H">Subsector H</option>
+          <option value="I">Subsector I</option>
+          <option value="J">Subsector J</option>
+          <option value="K">Subsector K</option>
+          <option value="L">Subsector L</option>
+          <option value="M">Subsector M</option>
+          <option value="N">Subsector N</option>
+          <option value="O">Subsector O</option>
+          <option value="P">Subsector P</option>
+        </select>
+    </tr>
+    <tr>
+      <td>Style:
+      <td>
+        <select name="style">
+          <option value="poster" selected>Poster (color on black)</option>
+          <option value="print">Print (color on white)</option>
+          <option value="atlas">Atlas (black on white)</option>
+          <option value="candy">Candy (fancy)</option>
+        </select>
+    </tr>
+    <tr>
+      <td>Rotation:
+      <td>
+        <select name="rotation">
+          <option value="">None</option>
+          <option value="1">90&deg; CW</option>
+          <option value="2">180&deg;</option>
+          <option value="3">90&deg; CCW</option>
+        </select>
+    </tr>
+    <tr>
+      <td>Scale:
+      <td><input type="number" name="scale" value="">
+      <td>pixels/parsec; default: 64; include UWPs: 128
+    </tr>
+    <tr>
+      <td>Options:
+      <td><input type="text" name="options" value="">
+      <td>See <a href="doc/api.html#options">API documentation</a> for details
+    </tr>
+    <tr>
+      <td>Hex Numbers:
+      <td>
+        <select name="sscoords">
+          <option selected>Sector (3240)</option>
+          <option value="1">Subsector (0810)</option>
+        </select>
+    </tr>
+    <tr>
+      <td colspan=3>
+        <input id="previewBtn" type="submit" value="Quick Preview">
+        <input id="renderBtn" type="submit" value="Render Poster">
+        <br>
+        <br>
+    </tr>
+    <tr>
+      <td colspan=3>
+        Jump Map:
+        J-<input type="number" name="jump" min="0" max="6" value="3">
+        Hex: <input type="text" name="hex" size=4  value="" placeholder="XXYY">
+        <input id="jumpBtn" type="submit" value="Render Jump Map">
+    </tr>
+  </table>
+  <input id="thumb" type="hidden" name="thumb" value="">
+</form>
+
+<div style="margin-top: 10px; font-size: 80%">
+  The <em class="product">Traveller</em> game in all forms is owned by Far
+  Future Enterprises. Copyright &copy; 1977 &ndash; 2013 Far Future
+  Enterprises.
+  <a href="http://farfuture.net/FFEFairUsePolicy2008.pdf">Fair Use Policy</a>
+</div>
+
+</div>
+
+<script>
+var $ = function(s) { return document.querySelector(s); };
+
+$('#previewBtn').addEventListener('click', function(e) {
+  e.preventDefault();
+  e.stopPropagation();
+
+  var form = $('#form');
+  form.target = 'iframe';
+  form.action = SERVICE_BASE + '/api/poster';
+  $('#thumb').value = '1';
+  var accept = $('#accept').value;
+  $('#accept').value = '';
+  form.submit();
+  $('#thumb').value = '';
+  $('#accept').value = accept;
+});
+
+$('#renderBtn').addEventListener('click', function(e) {
+  e.preventDefault();
+  e.stopPropagation();
+
+  var form = $('#form');
+  form.target = '_blank';
+  form.action = SERVICE_BASE + '/api/poster';
+  form.submit();
+});
+
+$('#jumpBtn').addEventListener('click', function(e) {
+  e.preventDefault();
+  e.stopPropagation();
+
+  var form = $('#form');
+  form.target = '_blank';
+  form.action = SERVICE_BASE + '/api/jumpmap';
+  form.submit();
+});
+
+</script>
+
+<style>
+#preview {
+  position: absolute;
+  right: 10px; top: 10px; width: 450px; height: 651px;
+  border: 1px solid black;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgAQMAAABJtOi3AAAABlBMVEUAAAAoKCj70ajHAAAAE0lEQVQI12P4/5+BgZoEA3VNBADtvT/BrQ+bEwAAAABJRU5ErkJggg==');
+}
+#iframe {
+  width: 100%; height: 100%; border: none;
+}
+</style>
+
+<div id="preview"><iframe id="iframe"></iframe></div>
+
+
+<script id="Google_Analytics">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-18610679-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>

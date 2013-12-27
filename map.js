@@ -228,6 +228,13 @@ function makeURL(base, params) {
                        options.accept || 'application/json', callback, errback);
       },
 
+      MSEC: function (sector, callback, errback, options) {
+        options = options || {};
+        options.sector = sector;
+        return service(makeURL(SERVICE_BASE + '/api/msec', options),
+                       options.accept || 'text/plain', callback, errback);
+      },
+
       universe: function (callback, errback, options) {
         options = options || {};
         return service(makeURL(SERVICE_BASE + '/api/universe', options),

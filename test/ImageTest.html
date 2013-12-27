@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <title>Image Tests</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="shortcut icon" href="/favicon.ico">
+<link rel="shortcut icon" href="../favicon.ico">
 <link rel="stylesheet" type="text/css" href="../site.css?update=2013-07-25">
 <style>
 tbody#results td,
@@ -14,8 +14,8 @@ tbody#results tr.fail td { border: 1px solid red; }
 <div class="content">
   <section>
     <p>
-    This page compares reference images (left) with live renders using the <a href="../doc/api.html">image APIs</a> (middle) to check for 
-    unintentionally introduced differences (right). The first row is intentionally incorrect, and shows what would happen if coordinates were 
+    This page compares reference images (left) with live renders using the <a href="../doc/api.html">image APIs</a> (middle) to check for
+    unintentionally introduced differences (right). The first row is intentionally incorrect, and shows what would happen if coordinates were
     calculated incorrectly. All other rows should have no differences, which appears as white space on the right. <b>&Omega;</b>
     </p>
   </section>
@@ -62,7 +62,7 @@ tbody#results tr.fail td { border: 1px solid red; }
         // Hack for IE which fails to apply max-width + height: auto to a canvas
         c.style.width = '256px';
         c.style.height = String(256 * h / w) + 'px';
-        
+
         return c;
       }
 
@@ -142,7 +142,7 @@ tbody#results tr.fail td { border: 1px solid red; }
 
   // Ensure image diff is working
   check("ref_bad_example.png", "api/jumpmap?sector=Spinward+Marches&hex=1911&jump=2");
-  
+
   // Basics
   check("ref1.png", "api/jumpmap?sector=Spinward+Marches&hex=1910&jump=3");
   check("ref2.png", "api/poster?sector=Spinward+Marches", 24);

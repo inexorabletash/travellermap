@@ -1,7 +1,9 @@
-(function () {
+document.addEventListener('DOMContentLoaded', function() {
   'use strict';
+  var $ = function(s) { return document.querySelector(s); };
+  var $$ = function(s) { return document.querySelectorAll(s); };
 
-  var list = document.querySelector('#sector');
+  var list = $('#sector');
 
   MapService.universe(populateSectorList, undefined, {requireData: 1});
 
@@ -25,10 +27,10 @@
   list.addEventListener("change", function (e) {
     var name = list.value;
     MapService.sectorData(name, function(data) {
-      document.querySelector('#data').value = data;
+      $('#data').value = data;
     }, undefined, {type: 'legacy', metadata: 0, header: 0});
     MapService.sectorMetaData(name, function(data) {
-      document.querySelector('#metadata').value = data;
+      $('#metadata').value = data;
     }, undefined, {accept: 'text/xml'});
   });
 
@@ -37,9 +39,28 @@
     xhr.open("GET", url, true);
     xhr.onreadystatechange = function () {
       if (xhr.readyState === 4 && xhr.status === 200) {
-        document.querySelector(selector).value = xhr.responseText;
+        $(selector).value = xhr.responseText;
       }
     };
     xhr.send(null);
   }
-}());
+
+  [].forEach.call($$('textarea'), function(elem) {
+    elem.addEventListener('dragover', function (e) {
+      e.stopPropagation();
+      e.preventDefault();
+      e.dataTransfer.dropEffect = 'copy';
+    });
+    elem.addEventListener('drop', function (e) {
+      e.stopPropagation();
+      e.preventDefault();
+      var reader = new FileReader();
+      reader.readAsText(e.dataTransfer.files[0], 'windows-1252');
+      reader.onload = function(e) {
+        elem.value = e.target.result;
+      };
+    });
+    elem.placeholder = 'Copy and paste data or drag and drop a file here.';
+  });
+
+});

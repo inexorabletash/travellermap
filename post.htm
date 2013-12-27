@@ -3,13 +3,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="shortcut icon" href="/favicon.ico">
 <link rel="stylesheet" type="text/css" href="site.css?update=2013-07-29">
+<script src="lib/polyfill/polyfill.js?update=2013-12-26"></script>
+<script src="map.js?update=2013-12-27"></script>
+<script src="post.js?update=2013-12-27"></script>
 
 <h1>The Traveller Map - Poster/POST Example</h1>
+
 <div class="content">
   <section>
-    <!-- ================================================================================ -->
     <h3>Explanation</h3>
-    <!-- ================================================================================ -->
 
     <p>
       The <b>Poster</b> API supports the HTTP POST method for submitting custom sector data for
@@ -44,9 +46,7 @@
   </section>
 
   <section>
-    <!-- ================================================================================ -->
     <h3>POST Form Data</h3>
-    <!-- ================================================================================ -->
 
     <ul>
       <li>POST with encoding type "application/x-www-form-urlencoded"
@@ -60,24 +60,51 @@
       <select id="sector">
         <option disabled>Select...</option>
       </select>
-      <script src="map.js?update=2013-12-26"></script>
-      <script src="post.js?update=2013-12-26"></script>
     </p>
 
     <form action="api/poster" method="post" enctype="application/x-www-form-urlencoded">
       <div>Sector Data:</div>
-      <textarea id="data" name="data" style="width: 650px; height: 150px; white-space: pre;" wrap="off" cols="80" rows="40"></textarea>
+      <textarea id="data" name="data"
+                style="width: 650px; height: 150px; white-space: pre;"
+                spellcheck="false" wrap="off" cols="80" rows="10"></textarea>
 
       <div>Metadata:</div>
-      <textarea id="metadata" name="metadata" style="width: 650px; height: 150px; white-space: pre;" wrap="off" cols="80" rows="10"></textarea>
+      <textarea id="metadata" name="metadata"
+                style="width: 650px; height: 150px; white-space: pre;"
+                spellcheck="false" wrap="off" cols="80" rows="10"></textarea>
 
       <p>
         Additional options:
 
       <table style="margin-left: 40px;">
         <tr><td>Scale:    <td><input type="text" name="scale"     value="">
-        <tr><td>Subsector:<td><input type="text" name="subsector" value="">
-        <tr><td>Rotation: <td><input type="text" name="rotation"  value="">
+        <tr><td>Subsector:<td>
+            <select name="subsector">
+              <option selected value="">Whole Sector</option>
+              <option>A</option>
+              <option>B</option>
+              <option>C</option>
+              <option>D</option>
+              <option>E</option>
+              <option>F</option>
+              <option>G</option>
+              <option>H</option>
+              <option>I</option>
+              <option>J</option>
+              <option>K</option>
+              <option>L</option>
+              <option>M</option>
+              <option>N</option>
+              <option>O</option>
+              <option>P</option>
+            </select>
+        <tr><td>Rotation: <td>
+            <select name="rotation">
+              <option value="" selected>None</option>
+              <option value="1">90&deg; CW</option>
+              <option value="2">180&deg;</option>
+              <option value="3">90&deg; CCW</option>
+            </select>
         <tr><td>Options:  <td><input type="text" name="options"   value="">
         <tr><td>Hex Numbers:<td>
             <select name="sscoords">
@@ -105,9 +132,7 @@
   </section>
 
   <section>
-    <!-- ================================================================================ -->
     <h3>POST File Attachment</h3>
-    <!-- ================================================================================ -->
 
     <form action="api/poster" method="post" enctype="multipart/form-data" autocomplete="off">
       <ul>
@@ -136,8 +161,33 @@
 
       <table style="margin-left: 40px;">
         <tr><td>Scale:    <td><input type="text" name="scale"     value="">
-        <tr><td>Subsector:<td><input type="text" name="subsector" value="">
-        <tr><td>Rotation: <td><input type="text" name="rotation"  value="">
+        <tr><td>Subsector:<td>
+            <select name="subsector">
+              <option selected value="">Whole Sector</option>
+              <option>A</option>
+              <option>B</option>
+              <option>C</option>
+              <option>D</option>
+              <option>E</option>
+              <option>F</option>
+              <option>G</option>
+              <option>H</option>
+              <option>I</option>
+              <option>J</option>
+              <option>K</option>
+              <option>L</option>
+              <option>M</option>
+              <option>N</option>
+              <option>O</option>
+              <option>P</option>
+            </select>
+        <tr><td>Rotation: <td>
+            <select name="rotation">
+              <option value="" selected>None</option>
+              <option value="1">90&deg; CW</option>
+              <option value="2">180&deg;</option>
+              <option value="3">90&deg; CCW</option>
+            </select>
         <tr><td>Options:  <td><input type="text" name="options"   value="">
         <tr><td>Hex Numbers:<td>
             <select name="sscoords">
@@ -167,9 +217,7 @@
   </section>
 
   <section>
-    <!-- ================================================================================ -->
     <h3>POST text/plain Content</h3>
-    <!-- ================================================================================ -->
 
     <p>
       This cannot be done through a Web page except via XMLHttpRequest, which doesn't
