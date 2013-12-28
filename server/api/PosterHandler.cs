@@ -145,14 +145,14 @@ namespace Maps.API
 
             Size tileSize = new Size((int)Math.Floor(tileRect.Width * scale * Astrometrics.ParsecScaleX), (int)Math.Floor(tileRect.Height * scale * Astrometrics.ParsecScaleY));
 
-            int bitmapWidth = tileSize.Width, bitmapHeight = tileSize.Height;
             if (thumb)
             {
-                bitmapWidth = bitmapWidth / 4;
-                bitmapHeight = bitmapHeight / 4;
-                scale = scale / 4;
+                tileSize.Width = (int)Math.Floor(16 * tileSize.Width / scale);
+                tileSize.Height = (int)Math.Floor(16 * tileSize.Height / scale);
+                scale = 16;
             }
 
+            int bitmapWidth = tileSize.Width, bitmapHeight = tileSize.Height;
             float translateX = 0, translateY = 0, angle = rot * 90;
             switch (rot)
             {
