@@ -74,6 +74,9 @@ namespace Maps.API
                     }
 
                     title = "User Data";
+
+                    // TODO: Suppress all OTU rendering.
+                    options = options & ~MapOptions.WorldsHomeworlds & ~MapOptions.WorldsCapitals;
                 }
                 else
                 {
@@ -124,10 +127,8 @@ namespace Maps.API
                 }
 
                 // Account for jagged hexes
-                tileRect.X -= 0.25f;
-                tileRect.Width += 0.5f;
                 tileRect.Height += 0.5f;
-
+                tileRect.Inflate(0.25f, 0.10f);
                 if (style == Stylesheet.Style.Candy)
                 {
                     tileRect.Width += 0.75f;
