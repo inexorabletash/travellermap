@@ -31,87 +31,93 @@ Select a sector, or enter your own data below:
             style="width: 650px; height: 120px; white-space: pre;"
             spellcheck="false" wrap="off" cols="80" rows="10"></textarea>
 
-  <table>
+  <table id="option_columns">
+    <style>
+    table#option_columns > tbody> tr > td { padding: 0 20px; }
+    </style>
     <tr>
-      <td style="text-align: right">Format:
       <td>
-        <select id="accept" name="accept">
-          <option selected value="application/pdf">PDF (for printing)</option>
-          <option value="">Bitmap (for screen)</option>
-        </select>
-    </tr>
-    <tr>
-      <td style="text-align: right">Show:
+        <table id="label_grid">
+          <tr>
+            <td style="text-align: right">Format:
+            <td>
+              <select id="accept" name="accept">
+                <option selected value="application/pdf">PDF (for printing)</option>
+                <option value="">Bitmap (for screen)</option>
+              </select>
+          </tr>
+          <tr>
+            <td style="text-align: right">Show:
+            <td>
+              <select name="subsector">
+                <option selected value="">Whole Sector</option>
+                <option value="A">Subsector A</option>
+                <option value="B">Subsector B</option>
+                <option value="C">Subsector C</option>
+                <option value="D">Subsector D</option>
+                <option value="E">Subsector E</option>
+                <option value="F">Subsector F</option>
+                <option value="G">Subsector G</option>
+                <option value="H">Subsector H</option>
+                <option value="I">Subsector I</option>
+                <option value="J">Subsector J</option>
+                <option value="K">Subsector K</option>
+                <option value="L">Subsector L</option>
+                <option value="M">Subsector M</option>
+                <option value="N">Subsector N</option>
+                <option value="O">Subsector O</option>
+                <option value="P">Subsector P</option>
+              </select>
+          </tr>
+          <tr>
+            <td style="text-align: right">Style:
+            <td>
+              <select name="style">
+                <option value="poster" selected>Black background</option>
+                <option value="print">White background</option>
+                <option value="atlas">Black and white</option>
+                <option value="candy">Eye candy</option>
+              </select>
+          </tr>
+          <tr>
+            <td style="text-align: right">Rotation:
+            <td>
+              <select name="rotation">
+                <option value="">None</option>
+                <option value="1">90&deg; CW</option>
+                <option value="2">180&deg;</option>
+                <option value="3">90&deg; CCW</option>
+              </select>
+          </tr>
+          <tr>
+            <td style="text-align: right">Scale:
+            <td>
+              <select name="scale">
+                <option value="16">16 pixels/parsec - dotmap</option>
+                <option value="32">32 pixels/parsec - atlas</option>
+                <option value="64" selected>64 pixels/parsec - classic</option>
+                <option value="128">128 pixels/parsec - uwp</option>
+              </select>
+          </tr>
+          <tr>
+            <td style="text-align: right">Hex numbers:
+            <td>
+              <select name="sscoords">
+                <option selected>Sector (3240)</option>
+                <option value="1">Subsector (0810)</option>
+              </select>
+          </tr>
+        </table>
+      </td>
       <td>
-        <select name="subsector">
-          <option selected value="">Whole Sector</option>
-          <option value="A">Subsector A</option>
-          <option value="B">Subsector B</option>
-          <option value="C">Subsector C</option>
-          <option value="D">Subsector D</option>
-          <option value="E">Subsector E</option>
-          <option value="F">Subsector F</option>
-          <option value="G">Subsector G</option>
-          <option value="H">Subsector H</option>
-          <option value="I">Subsector I</option>
-          <option value="J">Subsector J</option>
-          <option value="K">Subsector K</option>
-          <option value="L">Subsector L</option>
-          <option value="M">Subsector M</option>
-          <option value="N">Subsector N</option>
-          <option value="O">Subsector O</option>
-          <option value="P">Subsector P</option>
-        </select>
-    </tr>
-    <tr>
-      <td style="text-align: right">Style:
-      <td>
-        <select name="style">
-          <option value="poster" selected>Black background</option>
-          <option value="print">White background</option>
-          <option value="atlas">Black and white</option>
-          <option value="candy">Eye candy</option>
-        </select>
-    </tr>
-    <tr>
-      <td style="text-align: right">Rotation:
-      <td>
-        <select name="rotation">
-          <option value="">None</option>
-          <option value="1">90&deg; CW</option>
-          <option value="2">180&deg;</option>
-          <option value="3">90&deg; CCW</option>
-        </select>
-    </tr>
-    <tr>
-      <td style="text-align: right">Scale:
-      <td>
-        <select name="scale">
-          <option value="16">16 pixels/parsec - dotmap</option>
-          <option value="32">32 pixels/parsec - atlas</option>
-          <option value="64" selected>64 pixels/parsec - classic</option>
-          <option value="128">128 pixels/parsec - uwp</option>
-        </select>
-    </tr>
-    <tr>
-      <td style="text-align: right">Hex numbers:
-      <td>
-        <select name="sscoords">
-          <option selected>Sector (3240)</option>
-          <option value="1">Subsector (0810)</option>
-        </select>
-    </tr>
-    <tr>
-      <td colspan=2>
         <input type="hidden" name="options" value="9207">
         <input type="hidden" name="routes" value="1">
-        <label><input type="checkbox" id="options-names" checked>Sector/Subsector Names</label>
-        <label><input type="checkbox" id="options-grid" checked>Subsector Grid</label>
-        <label><input type="checkbox" id="options-borders" checked>Borders</label>
-        <label><input type="checkbox" id="options-filled-borders">Filled Borders</label>
-        <br>
-        <label><input type="checkbox" id="options-routes" checked>Routes</label>
-        <label><input type="checkbox" id="options-force-hexes" checked>Force Hexes</label>
+        <label><input type="checkbox" id="options-names" checked>Sector/Subsector Names</label><br>
+        <label><input type="checkbox" id="options-grid" checked>Subsector Grid</label><br>
+        <label><input type="checkbox" id="options-routes" checked>Routes</label><br>
+        <label><input type="checkbox" id="options-borders" checked>Borders</label><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<label><input type="checkbox" id="options-filled-borders"> Filled</label><br>
+        <label><input type="checkbox" id="options-force-hexes" checked>Force Hexes</label><br>
         <label><input type="checkbox" id="options-world-colors">World Colors</label>
         <script>
         (function() {
@@ -148,22 +154,18 @@ Select a sector, or enter your own data below:
           }
         }());
         </script>
-
-    </tr>
-    <tr>
-      <td colspan=2>
-        <input id="previewBtn" type="submit" value="Quick Preview">
-        <input id="renderBtn" type="submit" value="Render Poster">
-    </tr>
-    <tr>
-      <td colspan=2>
-        <br>
-        Jump Map:
-        J-<input type="number" name="jump" min="0" max="6" value="3">
-        Hex: <input type="text" name="hex" size=4  value="" placeholder="XXYY">
-        <input id="jumpBtn" type="submit" value="Render Jump Map">
     </tr>
   </table>
+  <div style="margin-top: 15px">
+    <input id="previewBtn" type="submit" value="Quick Preview">
+    <input id="renderBtn" type="submit" value="Render Poster">
+  </div>
+  <div style="margin-top: 15px">
+    Jump Map:
+    J-<input type="number" name="jump" min="0" max="6" value="3">
+    Hex: <input type="text" name="hex" size=4  value="" placeholder="XXYY">
+    <input id="jumpBtn" type="submit" value="Render Jump Map">
+  </div>
   <input id="thumb" type="hidden" name="thumb" value="">
 </form>
 
