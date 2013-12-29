@@ -33,7 +33,7 @@ Select a sector, or enter your own data below:
 
   <table>
     <tr>
-      <td>Format:
+      <td style="text-align: right">Format:
       <td>
         <select id="accept" name="accept">
           <option selected value="application/pdf">PDF (for printing)</option>
@@ -41,7 +41,7 @@ Select a sector, or enter your own data below:
         </select>
     </tr>
     <tr>
-      <td>Show:
+      <td style="text-align: right">Show:
       <td>
         <select name="subsector">
           <option selected value="">Whole Sector</option>
@@ -64,17 +64,17 @@ Select a sector, or enter your own data below:
         </select>
     </tr>
     <tr>
-      <td>Style:
+      <td style="text-align: right">Style:
       <td>
         <select name="style">
-          <option value="poster" selected>Poster (color on black)</option>
-          <option value="print">Print (color on white)</option>
-          <option value="atlas">Atlas (black on white)</option>
-          <option value="candy">Candy (fancy)</option>
+          <option value="poster" selected>Black background</option>
+          <option value="print">White background</option>
+          <option value="atlas">Black and white</option>
+          <option value="candy">Eye candy</option>
         </select>
     </tr>
     <tr>
-      <td>Rotation:
+      <td style="text-align: right">Rotation:
       <td>
         <select name="rotation">
           <option value="">None</option>
@@ -84,17 +84,17 @@ Select a sector, or enter your own data below:
         </select>
     </tr>
     <tr>
-      <td>Scale:
-      <td><input type="number" name="scale" value="">
-      <td>pixels/parsec; default: 64; include UWPs: 128
+      <td style="text-align: right">Scale:
+      <td>
+        <select name="scale">
+          <option value="16">16 pixels/parsec - dotmap</option>
+          <option value="32">32 pixels/parsec - atlas</option>
+          <option value="64" selected>64 pixels/parsec - classic</option>
+          <option value="128">128 pixels/parsec - uwp</option>
+        </select>
     </tr>
     <tr>
-      <td>Options:
-      <td><input type="text" name="options" value="">
-      <td>See <a href="doc/api.html#options">API documentation</a> for details
-    </tr>
-    <tr>
-      <td>Hex Numbers:
+      <td style="text-align: right">Hex numbers:
       <td>
         <select name="sscoords">
           <option selected>Sector (3240)</option>
@@ -102,14 +102,62 @@ Select a sector, or enter your own data below:
         </select>
     </tr>
     <tr>
-      <td colspan=3>
-        <input id="previewBtn" type="submit" value="Quick Preview">
-        <input id="renderBtn" type="submit" value="Render Poster">
+      <td colspan=2>
+        <input type="hidden" name="options" value="9207">
+        <input type="hidden" name="routes" value="1">
+        <label><input type="checkbox" id="options-names" checked>Sector/Subsector Names</label>
+        <label><input type="checkbox" id="options-grid" checked>Subsector Grid</label>
+        <label><input type="checkbox" id="options-borders" checked>Borders</label>
+        <label><input type="checkbox" id="options-filled-borders">Filled Borders</label>
         <br>
-        <br>
+        <label><input type="checkbox" id="options-routes" checked>Routes</label>
+        <label><input type="checkbox" id="options-force-hexes" checked>Force Hexes</label>
+        <label><input type="checkbox" id="options-world-colors">World Colors</label>
+        <script>
+        (function() {
+          var $ = function(s) { return document.querySelector(s); };
+          bindCheckboxToOptionsBitmap('#options-grid', MapOptions.GridMask);
+          bindCheckboxToOptionsBitmap('#options-borders', MapOptions.BordersMask);
+          bindCheckboxToOptionsBitmap('#options-names', MapOptions.SectorsMask);
+          bindCheckboxToBooleanOption('#options-routes', 'routes');
+          bindCheckboxToOptionsBitmap('#options-force-hexes', MapOptions.ForceHexes);
+          bindCheckboxToOptionsBitmap('#options-world-colors', MapOptions.WorldColors);
+          bindCheckboxToOptionsBitmap('#options-filled-borders', MapOptions.FilledBorders);
+          makeCheckboxDependent('#options-filled-borders', '#options-borders');
+          function bindCheckboxToOptionsBitmap(selector, mask) {
+            $(selector).addEventListener('click', function(e) {
+              var state = e.target.checked;
+              var input = $('input[name="options"]');
+              var options = Number(input.value);
+              options = state ? (options | mask) : (options & ~mask);
+              input.value = options;
+            });
+          }
+          function bindCheckboxToBooleanOption(selector, name) {
+            $(selector).addEventListener('click', function(e) {
+              var state = e.target.checked;
+              var input = $('input[name="' + name + '"]');
+              input.value = state ? 1 : 0;
+            });
+          }
+          function makeCheckboxDependent(dependent, master) {
+            $(master).addEventListener('click', function(e) {
+              if (!e.target.checked)
+                $(dependent).checked = false;
+            });
+          }
+        }());
+        </script>
+
     </tr>
     <tr>
-      <td colspan=3>
+      <td colspan=2>
+        <input id="previewBtn" type="submit" value="Quick Preview">
+        <input id="renderBtn" type="submit" value="Render Poster">
+    </tr>
+    <tr>
+      <td colspan=2>
+        <br>
         Jump Map:
         J-<input type="number" name="jump" min="0" max="6" value="3">
         Hex: <input type="text" name="hex" size=4  value="" placeholder="XXYY">
