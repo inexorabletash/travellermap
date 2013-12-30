@@ -359,10 +359,10 @@
     <dl class="params">
         <dt>sector <dd>specify the <a href="#system_location">sector location</a> by name, e.g. "Spinward%20Marches"
         <dt>hex <dd>specify <a href="#system_location">hex location</a> within the named sector
-        <dt>sx <dd>sector x in <a href="#system_sectorhex">sector/hex-space coordinates</a>
-        <dt>sy <dd>sector y in <a href="#system_sectorhex">sector/hex-space coordinates</a>
-        <dt>hx <dd>hex x in <a href="#system_sectorhex">sector/hex-space coordinates</a>
-        <dt>hy <dd>hex y in <a href="#system_sectorhex">sector/hex-space coordinates</a>
+        <dt>sx
+        <dt>sy <dd>sector in <a href="#system_sectorhex">sector/hex-space coordinates</a>
+        <dt>hx
+        <dt>hy <dd>hex in <a href="#system_sectorhex">sector/hex-space coordinates</a>
     </dl>
 
     <h4>Notes:</h4>
@@ -416,12 +416,12 @@
     <dl class="params">
         <dt>sector <dd>specify the <a href="#system_location">sector location</a> by name, e.g. "Spinward%20Marches"
         <dt>hex <dd>specify <a href="#system_location">hex location</a> within the named sector (defaults to 1620 if unspecified)
-        <dt>sx <dd>sector x in <a href="#system_sectorhex">sector/hex-space coordinates</a>
-        <dt>sy <dd>sector y in <a href="#system_sectorhex">sector/hex-space coordinates</a>
-        <dt>hx <dd>hex x in <a href="#system_sectorhex">sector/hex-space coordinates</a>
-        <dt>hy <dd>hex y in <a href="#system_sectorhex">sector/hex-space coordinates</a>
-        <dt>x <dd>location x in <a href="#system_world">world-space coordinates</a>
-        <dt>y <dd>location y in <a href="#system_world">world-space coordinates</a>
+        <dt>sx
+        <dt>sy <dd>sector in <a href="#system_sectorhex">sector/hex-space coordinates</a>
+        <dt>hx
+        <dt>hy <dd>hex in <a href="#system_sectorhex">sector/hex-space coordinates</a>
+        <dt>x
+        <dt>y <dd>location in <a href="#system_world">world-space coordinates</a>
     </dl>
 
     <h4>Notes:</h4>
@@ -457,8 +457,8 @@
     <dl class="params">
         <dt>sector <dd>sector name or T5SS abbreviation
         <dt>subsector <dd><code>A</code> - <code>P</code> or name; optional - if specified , only UWPs for that subsector will be included
-        <dt>sx <dd>sector x in <a href="#system_sectorhex">sector/hex-space coordinates</a>
-        <dt>sy <dd>sector y in <a href="#system_sectorhex">sector/hex-space coordinates</a>
+        <dt>sx
+        <dt>sy <dd>sector in <a href="#system_sectorhex">sector/hex-space coordinates</a>
     </dl>
 
     <h4>Options:</h4>
@@ -513,8 +513,8 @@
     <h4>Parameters:</h4>
     <dl class="params">
         <dt>sector <dd>sector name or T5SS abbreviation
-        <dt>sx <dd>sector x in <a href="#system_sectorhex">sector/hex-space coordinates</a>
-        <dt>sy <dd>sector y in <a href="#system_sectorhex">sector/hex-space coordinates</a>
+        <dt>sx
+        <dt>sy <dd>sector in <a href="#system_sectorhex">sector/hex-space coordinates</a>
     </dl>
 
     <h4>Notes:</h4>
@@ -524,7 +524,8 @@
           the HTTP header <code>Accept: text/xml</code> or include <code>accept=text/xml</code>
           in the query string.
 
-        <li>The XML data is the same format as consumed by the <a href="#poster">Poster</a> API via <a href="../post.htm">HTTP POST</a>
+        <li>The XML data is the same format as consumed by the <a href="#poster">Poster</a> API
+          when using HTTP <code>POST</code>.
     </ul>
 
     <h4>Example:</h4>
@@ -544,8 +545,8 @@
     <h4>Parameters:</h4>
     <dl class="params">
         <dt>sector <dd>sector name
-        <dt>sx <dd>sector x in <a href="#system_sectorhex">sector/hex-space coordinates</a>
-        <dt>sy <dd>sector y in <a href="#system_sectorhex">sector/hex-space coordinates</a>
+        <dt>sx
+        <dt>sy <dd>sector in <a href="#system_sectorhex">sector/hex-space coordinates</a>
     </dl>
 
     <h4>Notes:</h4>
@@ -582,12 +583,12 @@
         <dt>jump <dd>jump distance to include (1 through 6, default is 6)
         <dt>sector <dd>specify the <a href="#system_location">sector location</a> by name, e.g. "Spinward%20Marches"
         <dt>hex <dd>specify <a href="#system_location">hex location</a> within the named sector
-        <dt>sx <dd>sector x in <a href="#system_sectorhex">sector/hex-space coordinates</a>
-        <dt>sy <dd>sector y in <a href="#system_sectorhex">sector/hex-space coordinates</a>
-        <dt>hx <dd>hex x in <a href="#system_sectorhex">sector/hex-space coordinates</a>
-        <dt>hy <dd>hex y in <a href="#system_sectorhex">sector/hex-space coordinates</a>
-        <dt>x <dd>location x in <a href="#system_world">world-space coordinates</a>
-        <dt>y <dd>location y in <a href="#system_world">world-space coordinates</a>
+        <dt>sx
+        <dt>sy <dd>sector in <a href="#system_sectorhex">sector/hex-space coordinates</a>
+        <dt>hx
+        <dt>hy <dd>hex in <a href="#system_sectorhex">sector/hex-space coordinates</a>
+        <dt>x
+        <dt>y <dd>location in <a href="#system_world">world-space coordinates</a>
     </dl>
 
     <h4>Notes:</h4>
@@ -709,7 +710,7 @@
 
     <h4>Parameters:</h4>
     <dl class="params">
-        <dt>x <dd><a href="#system_tile">tile-space coordinate</a>
+        <dt>x
         <dt>y <dd><a href="#system_tile">tile-space coordinate</a>
         <dt>scale <dd>scale in pixels/parsec
     </dl>
@@ -740,10 +741,13 @@
 <h3>Poster - render an image of a sector or subsector</h3>
 <h4>API URLs:</h4>
 <p class="code">
-    http://travellermap.com/api/poster?sector=<var>sector</var>
+    http://travellermap.com/api/poster
 </p>
 <p class="code">
     http://travellermap.com/api/poster?sector=<var>sector</var>
+</p>
+<p class="code">
+    http://travellermap.com/api/poster?sector=<var>sector</var>&amp;subsector=<var>subsector</var>
 </p>
 <h4>Data URLs:</h4>
 <p class="code">
@@ -752,14 +756,54 @@
 <p class="code">
     http://travellermap.com/data/<var>sector</var>/<var>subsector</var>/image
 </p>
-<h4>Parameters:</h4>
+
+<h4>HTTP Methods:</h4>
 <dl class="params">
-    <dt>sector <dd>sector name
-    <dt>subsector <dd>subsector index (<a>A</a> - <code>P</code> or name) (optional; if not specified, whole sector is rendered)
-    <dt>x1 <dd>left hex (inclusive) of the rectangle in <a href="#system_world">World-Space Coordinates</a>
-    <dt>y1 <dd>top hex (inclusive) of the rectangle in <a href="#system_world">World-Space Coordinates</a>
-    <dt>x2 <dd>right hex (inclusive) of the rectangle in <a href="#system_world">World-Space Coordinates</a>
-    <dt>y2 <dd>bottom hex (inclusive) of the rectangle in <a href="#system_world">World-Space Coordinates</a>
+  <dt>GET
+    <dd>The content to render is specified some combination of the following URL parameters:
+      <dl class="params">
+        <dt>sector <dd>sector name
+        <dt>subsector <dd>subsector index (<code>A</code> - <code>P</code> or name)
+        <dt>x1
+        <dt>y1 <dd>top-left hex (inclusive) of the rectangle in <a href="#system_world">World-Space Coordinates</a>
+        <dt>x2
+        <dt>y2 <dd>bottom-right hex (inclusive) of the rectangle in <a href="#system_world">World-Space Coordinates</a>
+      </dl>
+
+  <dt>POST
+    <dd>
+      The content to render is submitted as part of the payload, allowing custom maps to be
+      rendered. Options (see below) can be specified either as URL parameters or
+      in the POST body. A specific subsector can be rendered using this parameter,
+      which can be either part of the POST data or a URL parameter:
+
+      <dl class="params">
+        <dt>subsector <dd>subsector index (<code>A</code> - <code>P</code>)
+      </dl>
+
+      Sector data and metadata can be sent in a variety of
+      different ways, determined by the <code>Content-Type</code> header:
+        <dl class="params">
+          <dt>application/x-www-form-urlencoded
+          <dd>This is a standard HTML form formatted body. In the POST body,
+            a field named <code>data</code> must contain the sector data
+            and a field named <code>metadata</code> may contain the metadata.
+          <dt>multipart/form-data
+          <dd>This allows file attachments to be used, as produced by using
+            an HTML form with <code>input type="file"</code> elements.
+            An attachment named <code>file</code> must contain the sector data,
+            and an attachment named <code>metadata</code> may contain the metadata.
+          <dt>text/plain
+          <dd>The body of the request is the sector data. No metadata can be
+            specified using this type. Other options must be specified in the URL.
+        </dl>
+        Sector data must be specified in
+          <a href="fileformats.html#sec">SEC</sec> (<a href="../data/spin/sec">example</a>),
+          <a href="fileformats.html#t5tab">T5 Tab Delimited (<a href="../data/spin/tab">example</a>), or
+          <a href="fileformats.html#t5col">T5 Column Delimited  (<a href="../data/spin">example</a>) format.
+        Metadata must be specified in either
+          <a href="api.html#metadata">XML</a> (<a href="../data/spin/metadata">example</a>) or
+          <a href="http://dotclue.org/t20/">MSEC</a>  (<a href="../data/spin/msec">example</a>) format.
 </dl>
 
 <h4>Options:</h4>
@@ -769,16 +813,15 @@
     <dt>options <dd><a href="#options">rendering options</a>
     <dt>style <dd><a href="#options">rendering style</a>
     <dt>accept <dd>specify <code>application/pdf</code> for PDF output
-    <dt>thumb <dd>specify <code>1</code> to render a quarter-size thumbnail
+    <dt>thumb <dd>specify <code>1</code> to render a thumbnail (16 pixels/parsec)
 </dl>
 
 <h4>Notes:</h4>
 <ul>
     <li>Generate a PNG or JPEG image of the specified sector (or just subsector), or an arbitrary rectangle of space.
-    <li>Scale (pixels/parsec) and other standard options can be included
     <li>Image format depends on selected options ("Candy" produces JPEG, otherwise PNG)
-    <li><a href="../post.htm">Custom sector maps can be produced by uploading SEC data (and optionally XML metadata) via HTTP POST</a>
     <li>The HTTP <code>Accept</code> header can be used to specify <code>application/pdf</code> instead of the query parameter.
+    <li>The <a href="../poster.html">Poster Maker</a> provides a friendly user interface to this API.
 </ul>
 
 <h4>Example:</h4>
@@ -792,31 +835,74 @@
     <h3>JumpMap - render an image of hexes within Jump-N of some location</h3>
     <h4>API URLs:</h4>
     <p class="code">
-        http://travellermap.com/api/jumpmap?x=<var>x</var>&amp;y=<var>y</var>
+        http://travellermap.com/api/jumpmap?sector=<var>sector</var>&amp;hex=<var>hex</var>&amp;jump=<var>jump</var>
     </p>
     <p class="code">
-        http://travellermap.com/api/jumpmap?sx=<var>sx</var>&amp;sy=<var>sy</var>&amp;hx=<var>hx</var>&amp;hy=<var>hy</var>
+        http://travellermap.com/api/jumpmap?sx=<var>sx</var>&amp;sy=<var>sy</var>&amp;hx=<var>hx</var>&amp;hy=<var>hy</var>&amp;jump=<var>jump</var>
     </p>
     <p class="code">
-        http://travellermap.com/api/jumpmap?sector=<var>sector</var>&amp;hex=<var>hex</var>
+        http://travellermap.com/api/jumpmap?x=<var>x</var>&amp;y=<var>y</var>&amp;jump=<var>jump</var>
     </p>
     <h4>Data URLs:</h4>
     <p class="code">
       http://travellermap.com/data/<var>sector</var>/<var>hex</var>/jump/<var>jump</var>/image
     </p>
 
-    <h4>Parameters:</h4>
+
+
+<h4>HTTP Methods:</h4>
+<dl class="params">
+  <dt>GET
+    <dd>The map to render is specified some combination of the following URL parameters:
     <dl class="params">
         <dt>jump <dd>jump distance to render (1 through 12, default is 6)
         <dt>sector <dd>specify the <a href="#system_location">sector location</a> by name, e.g. "Spinward%20Marches"
         <dt>hex <dd>specify <a href="#system_location">hex location</a> within the named sector
-        <dt>sx <dd>sector x in <a href="#system_sectorhex">sector/hex-space coordinates</a>
-        <dt>sy <dd>sector y in <a href="#system_sectorhex">sector/hex-space coordinates</a>
-        <dt>hx <dd>hex x in <a href="#system_sectorhex">sector/hex-space coordinates</a>
-        <dt>hy <dd>hex y in <a href="#system_sectorhex">sector/hex-space coordinates</a>
-        <dt>x <dd>location x in <a href="#system_world">world-space coordinates</a>
-        <dt>y <dd>location y in <a href="#system_world">world-space coordinates</a>
+        <dt>sx
+        <dt>sy <dd>sector in <a href="#system_sectorhex">sector/hex-space coordinates</a>
+        <dt>hx
+        <dt>hy <dd>hex in <a href="#system_sectorhex">sector/hex-space coordinates</a>
+        <dt>x
+        <dt>y <dd>location in <a href="#system_world">world-space coordinates</a>
     </dl>
+
+  <dt>POST
+    <dd>
+      The content to render is submitted as part of the payload, allowing custom maps to be
+      rendered. Options (see below) can be specified either as URL parameters or
+      in the POST body. The specific hex to render is specified using these paramters,
+      which can be either part of the POST data or URL parameters:
+
+      <dl class="params">
+        <dt>jump <dd>jump distance to render (1 through 12, default is 6)
+        <dt>hex <dd>specify <a href="#system_location">hex location</a> within the named sector
+      </dl>
+
+      Sector data and metadata can be sent in a variety of
+      different ways, determined by the <code>Content-Type</code> header:
+        <dl class="params">
+          <dt>application/x-www-form-urlencoded
+          <dd>This is a standard HTML form formatted body. In the POST body,
+            a field named <code>data</code> must contain the sector data
+            and a field named <code>metadata</code> may contain the metadata.
+          <dt>multipart/form-data
+          <dd>This allows file attachments to be used, as produced by using
+            an HTML form with <code>input type="file"</code> elements.
+            An attachment named <code>file</code> must contain the sector data,
+            and an attachment named <code>metadata</code> may contain the metadata.
+          <dt>text/plain
+          <dd>The body of the request is the sector data. No metadata can be
+            specified using this type. Other options must be specified in the URL.
+        </dl>
+        Sector data must be specified in
+          <a href="fileformats.html#sec">SEC</sec> (<a href="../data/spin/sec">example</a>),
+          <a href="fileformats.html#t5tab">T5 Tab Delimited (<a href="../data/spin/tab">example</a>), or
+          <a href="fileformats.html#t5col">T5 Column Delimited  (<a href="../data/spin">example</a>) format.
+        Metadata must be specified in either
+          <a href="api.html#metadata">XML</a> (<a href="../data/spin/metadata">example</a>) or
+          <a href="http://dotclue.org/t20/">MSEC</a>  (<a href="../data/spin/msec">example</a>) format.
+</dl>
+
     <h4>Options:</h4>
     <dl class="params">
         <dt>scale <dd>scale in pixels/parsec (default is 64)
@@ -828,10 +914,10 @@
 
     <h4>Notes:</h4>
     <ul>
-        <li>Generate a PNG or JPEG image of the specified region.
+        <li>Generate a PNG image of the specified region.
         <li>PNG images (indexed, 8-bits per pixel) are returned unless PDF is requested; areas outside the hex borders will be transparent.
         <li>The HTTP <code>Accept</code> header can be used to specify <code>application/pdf</code> instead of the query parameter.
-        <li><a href="../jpost.htm">Custom maps can be produced by uploading SEC data (and optionally XML metadata) via HTTP POST</a>
+        <li>The <a href="../poster.html">Poster Maker</a> provides a friendly user interface to this API.
     </ul>
 
     <h4>Example:</h4>

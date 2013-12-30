@@ -112,9 +112,10 @@ Select a sector, or enter your own data below:
       <td>
         <input type="hidden" name="options" value="9207">
         <input type="hidden" name="routes" value="1">
-        <label><input type="checkbox" id="options-names" checked>Sector/Subsector Names</label><br>
+        <label><input type="checkbox" id="options-sector-names" checked>Sector/Subsector Names</label><br>
         <label><input type="checkbox" id="options-grid" checked>Subsector Grid</label><br>
         <label><input type="checkbox" id="options-routes" checked>Routes</label><br>
+        <label><input type="checkbox" id="options-names" checked>Labels</label><br>
         <label><input type="checkbox" id="options-borders" checked>Borders</label><br>
         &nbsp;&nbsp;&nbsp;&nbsp;<label><input type="checkbox" id="options-filled-borders"> Filled</label><br>
         <label><input type="checkbox" id="options-force-hexes" checked>Force Hexes</label><br>
@@ -124,7 +125,8 @@ Select a sector, or enter your own data below:
           var $ = function(s) { return document.querySelector(s); };
           bindCheckboxToOptionsBitmap('#options-grid', MapOptions.GridMask);
           bindCheckboxToOptionsBitmap('#options-borders', MapOptions.BordersMask);
-          bindCheckboxToOptionsBitmap('#options-names', MapOptions.SectorsMask);
+          bindCheckboxToOptionsBitmap('#options-sector-names', MapOptions.SectorsMask);
+          bindCheckboxToOptionsBitmap('#options-names', MapOptions.NamesMask);
           bindCheckboxToBooleanOption('#options-routes', 'routes');
           bindCheckboxToOptionsBitmap('#options-force-hexes', MapOptions.ForceHexes);
           bindCheckboxToOptionsBitmap('#options-world-colors', MapOptions.WorldColors);
@@ -221,6 +223,7 @@ $('#jumpBtn').addEventListener('click', function(e) {
 <style>
 #preview {
   position: absolute;
+  z-index: 1;
   right: 10px; top: 10px; width: 450px; height: 651px;
   border: 1px solid black;
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgAQMAAABJtOi3AAAABlBMVEUAAAAoKCj70ajHAAAAE0lEQVQI12P4/5+BgZoEA3VNBADtvT/BrQ+bEwAAAABJRU5ErkJggg==');
