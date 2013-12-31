@@ -47,6 +47,8 @@
 
         <li>HTML APIs
             <ul>
+                <li><a href="#query">Query Parameters</a> - for the main page and IFRAME
+                <li><a href="#go">Go Links</a> - short URLs for navigating the main page
                 <li><a href="#iframe">IFRAME</a> - embed a draggable, zoomable map in your page
             </ul>
 
@@ -255,6 +257,65 @@
   <section id="html-apis" class="apis">
     <h2>HTML APIs</h2>
 
+  <section id="query">
+    <h3>Query Parameters - Main Page and IFRAME</h3>
+    <h4>Options:</h4>
+    <dl class="params">
+      <dt>scale <dd>scale in pixels/parsec (default is 64)
+      <dt>options <dd><a href="#options">rendering options</a>
+      <dt>style <dd><a href="#options">rendering style</a>
+      <dt>sector
+      <dt>hex <dd>specify a location in <a href="#system_location">named coordinates</a> - <code>hex</code> is optional; <code>scale</code> will be ignored.
+      <dt>sx
+      <dt>sy
+      <dt>hx
+      <dt>hy <dd>specify a location in <a href="#system_sectorhex">Sector/Hex coordinates</a> (<code>scale</code> must also be explicitly specified)
+      <dt>x
+      <dt>y <dd>specify a location in <a href="#system_map">Map-space coordinates</a>
+    </dl>
+
+
+    <h4>Beta Features:</h4>
+    <p>Beta API features may be revoked or changed at any time, but I'll post updates
+    to the <a href="http://travellermap.blogspot.com">blog</a> first.</p>
+    <dl class="params">
+      <dt>yah_sx
+      <dt>yah_sy
+      <dt>yah_hx
+      <dt>yah_hy
+        <dd><a href="#system_sectorhex">Sector/Hex coordinates</a> to place a "You Are Here" graphical
+            marker. (<a target="_blank" href="../?yah_sx=-4&amp;yah_sy=-1&amp;yah_hx=19&amp;yah_hy=10">example</a>)
+
+      <dt>ox
+      <dt>oy
+      <dt>ow
+      <dt>oh
+        <dd><a href="#system_map">Map-space coordinates</a> for the left, top, width, and height of an overlay or highlight rectangle to place over the map.To specify additional overlay rectangles, include
+            <code>ox1</code> (etc) for the first additional overlay, <code>ox2</code> (etc) for the
+            second additional overlay, and so on. For example, here's the
+            <a target="_blank" href="../?ox=-111.95&amp;oy=80&amp;ow=194.2&amp;oh=200">Atlas of the Imperium coverage area</a>.
+
+    </dl>
+  </section>
+
+  <section id="go">
+    <h3>Go Links - short URLs for specifying a location on the map</h3>
+    <h4>API URLs:</h4>
+    <p class="code">
+        http://travellermap.com/go/<var>sector</var>
+    </p>
+    <p class="code">
+        http://travellermap.com/go/<var>sector</var>/<var>hex</var>
+    </p>
+    <p>These URLs navigate the map page, and can be used instead of the longer
+      <code>?sector=<var>sector</var>&amp;hex=<var>hex</var></code> syntax.
+    </p>
+    <h4>Example:</h4>
+    <p>
+        <a class="example" href="/go/spin/1910"></a>
+    </p>
+  </section>
+
   <section id="iframe">
     <h3>IFRAME - embed a map in your page</h3>
     <h4>Usage:</h4>
@@ -280,35 +341,9 @@
       <dt>style <dd><a href="#options">rendering style</a>
     </dl>
 
-    <p class="aside">
-      If the location is specified using <code>sector</code> or
-      <code>sector</code> and <code>hex</code> then the specified scale will be ignored.
-    </p>
-
-    <h4>Beta Features:</h4>
-    <p>Beta API features may be revoked or changed at any time, but I'll post updates
-    to the <a href="http://travellermap.blogspot.com">blog</a> first.</p>
-    <ul>
-        <li>
-            Specify <code>ah_sx</code>, <code>sah_sy</code>, <code>yah_hx</code>, <code>yah_hy</code>
-            parameters in <a href="#system_sectorhex">Sector/Hex coordinates</a> to place a "You Are Here" graphical
-            marker. <a class="example" href="../iframe.htm?yah_sx=-4&amp;yah_sy=-1&amp;yah_hx=19&amp;yah_hy=10"></a>
-
-        <li>
-            Specify <code>ox</code>, <code>oy</code>, <code>ow</code>, <code>oh</code> parameters for the
-            left, top, width and height (in <a href="#system_map">Map-space coordinates</a> to overlay
-            a highlight rectangle over the map. To specify additional overlay rectangles, include
-            <code>ox1</code> (etc) for the first additional overlay, <code>ox2</code> (etc) for the
-            second additional overlay, and so on. For example, here's the
-            <a target="_blank" href="../iframe.htm?ox=-111.95&amp;oy=80&amp;ow=194.2&amp;oh=200">Atlas of the Imperium coverage area</a>.
-
-    </ul>
-
-    <h4>Notes:</h4>
+   <h4>Notes:</h4>
     <ul>
         <li>It's a fully functional map, just missing the chrome. You can drag with the mouse and zoom by using the mouse wheel or double-clicking (hold Alt and double-click to zoom out). You can even use the <kbd>IJKL</kbd> keys or arrow keys to scroll the map.
-        <li><a href="#system_location">Named locations</a> (sector and hex names) may be used for this API.
-        <li>Alternately, more precise <a href="#system_map">Map-space coordinates</a> may be used for this API.
         <li>For sites such as Wikis that (for security reasons) do not allow embedding arbitrary IFRAMEs, see the <a href="#poster">Poster API</a> instead.
         <li>The CSS of the IFRAME element can be anything you want - the width and height are just examples
     </ul>
@@ -382,7 +417,7 @@
 
     <h4>Example:</h4>
     <p>
-        <a class="example" href="../api/coordinates?sector=Spinward%20Marches&amp;hex=1910"></a>
+        <a class="example" href="/api/coordinates?sector=Spinward%20Marches&amp;hex=1910"></a>
     </p>
   </section>
 
@@ -434,7 +469,7 @@
 
     <h4>Example:</h4>
     <p>
-        <a class="example" href="../api/credits?x=-110&amp;y=-70"></a>
+        <a class="example" href="/api/credits?x=-110&amp;y=-70"></a>
     </p>
   </section>
 
@@ -498,7 +533,7 @@
 
     <h4>Example:</h4>
     <p>
-        <a class="example" href="../api/sec?sector=Spinward%20Marches&amp;type=SecondSurvey"></a>
+        <a class="example" href="/api/sec?sector=Spinward%20Marches&amp;type=SecondSurvey"></a>
     </p>
   </section>
 
@@ -530,7 +565,7 @@
 
     <h4>Example:</h4>
     <p>
-        <a class="example" href="../api/metadata?sector=Spinward%20Marches"></a>
+        <a class="example" href="/api/metadata?sector=Spinward%20Marches"></a>
     </p>
   </section>
 
@@ -557,7 +592,7 @@
 
     <h4>Example:</h4>
     <p>
-        <a class="example" href="../api/msec?sector=Spinward%20Marches"></a>
+        <a class="example" href="/api/msec?sector=Spinward%20Marches"></a>
     </p>
   </section>
 
@@ -660,7 +695,7 @@
 
     <h4>Example:</h4>
     <p>
-        <a class="example" href="../api/search?q=Regina"></a>
+        <a class="example" href="/api/search?q=Regina"></a>
     </p>
   </section>
 
@@ -694,7 +729,7 @@
 
     <h4>Example:</h4>
     <p>
-        <a class="example" href="../api/universe?era=1000"></a>
+        <a class="example" href="/api/universe?era=1000"></a>
     </p>
   </section>
   </section>
@@ -733,7 +768,7 @@
 
     <h4>Example:</h4>
     <p>
-        <a class="example" href="../api/tile?x=-24.5&amp;y=-18&amp;scale=64&amp;options=887&amp;style=poster"></a>
+        <a class="example" href="/api/tile?x=-24.5&amp;y=-18&amp;scale=64&amp;options=887&amp;style=poster"></a>
     </p>
   </section>
 
@@ -798,12 +833,12 @@
             specified using this type. Other options must be specified in the URL.
         </dl>
         Sector data must be specified in
-          <a href="fileformats.html#sec">SEC</sec> (<a href="../data/spin/sec">example</a>),
-          <a href="fileformats.html#t5tab">T5 Tab Delimited (<a href="../data/spin/tab">example</a>), or
-          <a href="fileformats.html#t5col">T5 Column Delimited  (<a href="../data/spin">example</a>) format.
+          <a href="fileformats.html#sec">SEC</sec> (<a href="/data/spin/sec">example</a>),
+          <a href="fileformats.html#t5tab">T5 Tab Delimited (<a href="/data/spin/tab">example</a>), or
+          <a href="fileformats.html#t5col">T5 Column Delimited  (<a href="/data/spin">example</a>) format.
         Metadata must be specified in either
-          <a href="api.html#metadata">XML</a> (<a href="../data/spin/metadata">example</a>) or
-          <a href="http://dotclue.org/t20/">MSEC</a>  (<a href="../data/spin/msec">example</a>) format.
+          <a href="api.html#metadata">XML</a> (<a href="/data/spin/metadata">example</a>) or
+          <a href="http://dotclue.org/t20/">MSEC</a>  (<a href="/data/spin/msec">example</a>) format.
 </dl>
 
 <h4>Options:</h4>
@@ -828,7 +863,7 @@
 <p class="code">
     &lt;img src="http://travellermap.com/api/poster?sector=spin&amp;subsector=C&amp;style=atlas&amp;scale=48"&gt;
 </p>
-<img src="../api/poster?sector=spin&amp;subsector=C&amp;style=atlas&amp;scale=48" style="border: solid 4px black;" alt="Regina Subsector">
+<img src="/api/poster?sector=spin&amp;subsector=C&amp;style=atlas&amp;scale=48" style="border: solid 4px black;" alt="Regina Subsector">
 </section>
 
   <section id="jumpmap">
@@ -895,12 +930,12 @@
             specified using this type. Other options must be specified in the URL.
         </dl>
         Sector data must be specified in
-          <a href="fileformats.html#sec">SEC</sec> (<a href="../data/spin/sec">example</a>),
-          <a href="fileformats.html#t5tab">T5 Tab Delimited (<a href="../data/spin/tab">example</a>), or
-          <a href="fileformats.html#t5col">T5 Column Delimited  (<a href="../data/spin">example</a>) format.
+          <a href="fileformats.html#sec">SEC</sec> (<a href="/data/spin/sec">example</a>),
+          <a href="fileformats.html#t5tab">T5 Tab Delimited (<a href="/data/spin/tab">example</a>), or
+          <a href="fileformats.html#t5col">T5 Column Delimited  (<a href="/data/spin">example</a>) format.
         Metadata must be specified in either
-          <a href="api.html#metadata">XML</a> (<a href="../data/spin/metadata">example</a>) or
-          <a href="http://dotclue.org/t20/">MSEC</a>  (<a href="../data/spin/msec">example</a>) format.
+          <a href="api.html#metadata">XML</a> (<a href="/data/spin/metadata">example</a>) or
+          <a href="http://dotclue.org/t20/">MSEC</a>  (<a href="/data/spin/msec">example</a>) format.
 </dl>
 
     <h4>Options:</h4>
@@ -924,7 +959,7 @@
     <p class="code">
         &lt;img src="http://travellermap.com/api/jumpmap?sector=spin&amp;hex=1910&amp;jump=4&amp;scale=48&amp;style=atlas"&gt;
     </p>
-    <img src="../api/jumpmap?sector=spin&amp;hex=1910&amp;jump=4&amp;scale=48&amp;style=atlas" alt="Regina Jump-4 Map">
+    <img src="/api/jumpmap?sector=spin&amp;hex=1910&amp;jump=4&amp;scale=48&amp;style=atlas" alt="Regina Jump-4 Map">
   </section>
 
   </section>
