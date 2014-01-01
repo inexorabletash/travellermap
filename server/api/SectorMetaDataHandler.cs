@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web;
+using Maps.Serialization;
 
 namespace Maps.API
 {
@@ -20,7 +21,17 @@ namespace Maps.API
             SectorMap map = SectorMap.FromName(SectorMap.DefaultSetting, resourceManager);
             Sector sector;
 
-            if (HasOption(context, "sx") && HasOption(context, "sy"))
+            if (context.Request.HttpMethod == "POST")
+            {
+                // Slurp in stream
+                var type = SectorMetadataFileParser.SniffType(context.Request.InputStream);
+                var parser = SectorMetadataFileParser.ForType(type);
+                using (var reader = new System.IO.StreamReader(context.Request.InputStream, context.Request.ContentEncoding))
+                {
+                    sector = parser.Parse(reader);
+                }
+            }
+            else if (HasOption(context, "sx") && HasOption(context, "sy"))
             {
                 int sx = GetIntOption(context, "sx", 0);
                 int sy = GetIntOption(context, "sy", 0);
