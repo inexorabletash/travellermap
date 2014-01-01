@@ -849,76 +849,77 @@ namespace Maps.Rendering
                             if (isPlaceholder)
                             {
                                 DrawWorldLabel(ctx, ctx.styles.placeholder.textBackgroundStyle, solidBrush, ctx.styles.placeholder.textColor, ctx.styles.placeholder.position, ctx.styles.placeholder.Font, ctx.styles.placeholder.content);
-                                return;
-                            }
-
-                            // Blank out world area, so routes are shown correctly
-                            if (!ctx.styles.fillMicroBorders)
-                            {
-                                solidBrush.Color = ctx.styles.backgroundColor;
-                                ctx.graphics.DrawEllipse(solidBrush, -0.15f, -0.15f, 0.3f, 0.3f);
-                            }
-
-                            if (world.Size <= 0)
-                            {
-                                #region Asteroid-Belt
-                                if (ctx.styles.worldDetails.HasFlag(WorldDetails.Asteroids))
-                                {
-                                    // Basic pattern, with probability varying per position:
-                                    //   o o o
-                                    //  o o o o
-                                    //   o o o
-
-                                    int[] lpx = { -2, 0, 2, -3, -1, 1, 3, -2, 0, 2 };
-                                    int[] lpy = { -2, -2, -2, 0, 0, 0, 0, 2, 2, 2 };
-                                    float[] lpr = { 0.5f, 0.9f, 0.5f, 0.6f, 0.9f, 0.9f, 0.6f, 0.5f, 0.9f, 0.5f };
-
-                                    solidBrush.Color = ctx.styles.worlds.textColor;
-
-                                    // Random generator is seeded with world location so it is always the same
-                                    Random rand = new Random(world.Coordinates.X ^ world.Coordinates.Y);
-                                    for (int i = 0; i < lpx.Length; ++i)
-                                    {
-                                        if (rand.NextDouble() < lpr[i])
-                                        {
-                                            float px = lpx[i] * 0.035f;
-                                            float py = lpy[i] * 0.035f;
-
-                                            float w = 0.04f + (float)rand.NextDouble() * 0.03f;
-                                            float h = 0.04f + (float)rand.NextDouble() * 0.03f;
-
-                                            // If necessary, add jitter here
-                                            float dx = 0, dy = 0;
-
-                                            ctx.graphics.DrawEllipse(solidBrush,
-                                                px + dx - w / 2, py + dy - h / 2, w, h);
-                                        }
-                                    }
-                                }
-                                else
-                                {
-                                    // Just a glyph
-                                    solidBrush.Color = ctx.styles.worlds.textColor;
-                                    RenderUtil.DrawGlyph(ctx.graphics, Glyph.DiamondX, styleRes, solidBrush, 0.0f, 0.0f);
-                                }
-                                #endregion
                             }
                             else
                             {
-                                XColor penColor, brushColor;
-                                ctx.styles.WorldColors(world, out penColor, out brushColor);
-
-                                if (!brushColor.IsEmpty)
+                                // Blank out world area, so routes are shown correctly
+                                if (!ctx.styles.fillMicroBorders)
                                 {
-                                    solidBrush.Color = brushColor;
-                                    ctx.graphics.DrawEllipse(solidBrush, -0.1f, -0.1f, 0.2f, 0.2f);
+                                    solidBrush.Color = ctx.styles.backgroundColor;
+                                    ctx.graphics.DrawEllipse(solidBrush, -0.15f, -0.15f, 0.3f, 0.3f);
                                 }
 
-                                if (!penColor.IsEmpty)
+                                if (world.Size <= 0)
                                 {
-                                    ctx.styles.worldWater.pen.Apply(ref pen);
-                                    pen.Color = penColor;
-                                    ctx.graphics.DrawEllipse(pen, -0.1f, -0.1f, 0.2f, 0.2f);
+                                    #region Asteroid-Belt
+                                    if (ctx.styles.worldDetails.HasFlag(WorldDetails.Asteroids))
+                                    {
+                                        // Basic pattern, with probability varying per position:
+                                        //   o o o
+                                        //  o o o o
+                                        //   o o o
+
+                                        int[] lpx = { -2, 0, 2, -3, -1, 1, 3, -2, 0, 2 };
+                                        int[] lpy = { -2, -2, -2, 0, 0, 0, 0, 2, 2, 2 };
+                                        float[] lpr = { 0.5f, 0.9f, 0.5f, 0.6f, 0.9f, 0.9f, 0.6f, 0.5f, 0.9f, 0.5f };
+
+                                        solidBrush.Color = ctx.styles.worlds.textColor;
+
+                                        // Random generator is seeded with world location so it is always the same
+                                        Random rand = new Random(world.Coordinates.X ^ world.Coordinates.Y);
+                                        for (int i = 0; i < lpx.Length; ++i)
+                                        {
+                                            if (rand.NextDouble() < lpr[i])
+                                            {
+                                                float px = lpx[i] * 0.035f;
+                                                float py = lpy[i] * 0.035f;
+
+                                                float w = 0.04f + (float)rand.NextDouble() * 0.03f;
+                                                float h = 0.04f + (float)rand.NextDouble() * 0.03f;
+
+                                                // If necessary, add jitter here
+                                                float dx = 0, dy = 0;
+
+                                                ctx.graphics.DrawEllipse(solidBrush,
+                                                    px + dx - w / 2, py + dy - h / 2, w, h);
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        // Just a glyph
+                                        solidBrush.Color = ctx.styles.worlds.textColor;
+                                        RenderUtil.DrawGlyph(ctx.graphics, Glyph.DiamondX, styleRes, solidBrush, 0.0f, 0.0f);
+                                    }
+                                    #endregion
+                                }
+                                else
+                                {
+                                    XColor penColor, brushColor;
+                                    ctx.styles.WorldColors(world, out penColor, out brushColor);
+
+                                    if (!brushColor.IsEmpty)
+                                    {
+                                        solidBrush.Color = brushColor;
+                                        ctx.graphics.DrawEllipse(solidBrush, -0.1f, -0.1f, 0.2f, 0.2f);
+                                    }
+
+                                    if (!penColor.IsEmpty)
+                                    {
+                                        ctx.styles.worldWater.pen.Apply(ref pen);
+                                        pen.Color = penColor;
+                                        ctx.graphics.DrawEllipse(pen, -0.1f, -0.1f, 0.2f, 0.2f);
+                                    }
                                 }
                             }
                         }
@@ -927,17 +928,6 @@ namespace Maps.Rendering
                             // Dotmap
                             solidBrush.Color = ctx.styles.worlds.textColor;
                             ctx.graphics.DrawEllipse(solidBrush, -0.2f, -0.2f, 0.4f, 0.4f);
-                        }
-                        #endregion
-
-                        #region GasGiant
-                        if (ctx.styles.worldDetails.HasFlag(WorldDetails.GasGiant))
-                        {
-                            if (world.GasGiants > 0)
-                            {
-                                solidBrush.Color = ctx.styles.worlds.textColor;
-                                RenderUtil.DrawGlyph(ctx.graphics, Glyph.Circle, styleRes, solidBrush, ctx.styles.GasGiantPosition.X, ctx.styles.GasGiantPosition.Y);
-                            }
                         }
                         #endregion
 
@@ -957,6 +947,37 @@ namespace Maps.Rendering
                         }
                         #endregion
 
+                        #region Allegiance
+                        // TODO: Mask off background for allegiance
+                        if (ctx.styles.worldDetails.HasFlag(WorldDetails.Allegiance))
+                        {
+                            if (!world.HasDefaultAllegiance())
+                            {
+                                string alleg = world.Allegiance;
+                                solidBrush.Color = ctx.styles.worlds.textColor;
+
+                                if (ctx.styles.lowerCaseAllegiance)
+                                    alleg = alleg.ToLowerInvariant();
+
+                                ctx.graphics.DrawString(alleg, ctx.styles.worlds.SmallFont, solidBrush, ctx.styles.AllegiancePosition.X, ctx.styles.AllegiancePosition.Y, RenderUtil.StringFormatCentered);
+                            }
+                        }
+                        #endregion
+
+                        if (isPlaceholder)
+                            return;
+
+                        #region GasGiant
+                        if (ctx.styles.worldDetails.HasFlag(WorldDetails.GasGiant))
+                        {
+                            if (world.GasGiants > 0)
+                            {
+                                solidBrush.Color = ctx.styles.worlds.textColor;
+                                RenderUtil.DrawGlyph(ctx.graphics, Glyph.Circle, styleRes, solidBrush, ctx.styles.GasGiantPosition.X, ctx.styles.GasGiantPosition.Y);
+                            }
+                        }
+                        #endregion
+
                         #region Starport
                         if (ctx.styles.worldDetails.HasFlag(WorldDetails.Starport))
                         {
@@ -972,23 +993,6 @@ namespace Maps.Rendering
                             solidBrush.Color = ctx.styles.worlds.textColor;
 
                             ctx.graphics.DrawString(uwp, ctx.styles.hexNumber.Font, solidBrush, ctx.styles.StarportPosition.X, -ctx.styles.StarportPosition.Y, RenderUtil.StringFormatCentered);
-                        }
-                        #endregion
-
-                        #region Allegiance
-                        // TODO: Mask off background for allegiance
-                        if (ctx.styles.worldDetails.HasFlag(WorldDetails.Allegiance))
-                        {
-                            if (!world.HasDefaultAllegiance())
-                            {
-                                string alleg = world.Allegiance;
-                                solidBrush.Color = ctx.styles.worlds.textColor;
-
-                                if (ctx.styles.lowerCaseAllegiance)
-                                    alleg = alleg.ToLowerInvariant();
-
-                                ctx.graphics.DrawString(alleg, ctx.styles.worlds.SmallFont, solidBrush, ctx.styles.AllegiancePosition.X, ctx.styles.AllegiancePosition.Y, RenderUtil.StringFormatCentered);
-                            }
                         }
                         #endregion
 
