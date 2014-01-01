@@ -181,43 +181,44 @@ Select a sector, or enter your own data below:
 </div>
 
 <script>
-var $ = function(s) { return document.querySelector(s); };
+(function() {
+  var $ = function(s) { return document.querySelector(s); };
 
-$('#previewBtn').addEventListener('click', function(e) {
-  e.preventDefault();
-  e.stopPropagation();
+  $('#previewBtn').addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
 
-  var form = $('#form');
-  form.target = 'iframe';
-  form.action = SERVICE_BASE + '/api/poster';
-  $('#thumb').value = '1';
-  var accept = $('#accept').value;
-  $('#accept').value = '';
-  form.submit();
-  $('#thumb').value = '';
-  $('#accept').value = accept;
-});
+    var form = $('#form');
+    form.target = 'iframe';
+    form.action = SERVICE_BASE + '/api/poster';
+    $('#thumb').value = '1';
+    var accept = $('#accept').value;
+    $('#accept').value = '';
+    form.submit();
+    $('#thumb').value = '';
+    $('#accept').value = accept;
+  });
 
-$('#renderBtn').addEventListener('click', function(e) {
-  e.preventDefault();
-  e.stopPropagation();
+  $('#renderBtn').addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
 
-  var form = $('#form');
-  form.target = '_blank';
-  form.action = SERVICE_BASE + '/api/poster';
-  form.submit();
-});
+    var form = $('#form');
+    form.target = '_blank';
+    form.action = SERVICE_BASE + '/api/poster';
+    form.submit();
+  });
 
-$('#jumpBtn').addEventListener('click', function(e) {
-  e.preventDefault();
-  e.stopPropagation();
+  $('#jumpBtn').addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
 
-  var form = $('#form');
-  form.target = '_blank';
-  form.action = SERVICE_BASE + '/api/jumpmap';
-  form.submit();
-});
-
+    var form = $('#form');
+    form.target = '_blank';
+    form.action = SERVICE_BASE + '/api/jumpmap';
+    form.submit();
+  });
+}());
 </script>
 
 <style>
