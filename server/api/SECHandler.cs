@@ -18,7 +18,16 @@ namespace Maps.API
             SectorMap map = SectorMap.FromName(SectorMap.DefaultSetting, resourceManager);
             Sector sector;
 
-            if (HasOption(context, "sx") && HasOption(context, "sy"))
+            bool sscoords = GetBoolOption(context, "sscoords", defaultValue: false);
+            bool includeMetadata = GetBoolOption(context, "metadata", defaultValue: true);
+            bool includeHeader = GetBoolOption(context, "header", defaultValue: true);
+
+            if (context.Request.HttpMethod == "POST")
+            {
+                sector = new Sector(context.Request.InputStream, context.Request.ContentType);
+                includeMetadata = false;
+            }
+            else if (HasOption(context, "sx") && HasOption(context, "sy"))
             {
                 int sx = GetIntOption(context, "sx", 0);
                 int sy = GetIntOption(context, "sy", 0);
@@ -61,12 +70,8 @@ namespace Maps.API
                 filter = (World world) => (world.Subsector == index);
             }
 
-            bool sscoords = GetBoolOption(context, "sscoords", defaultValue: false);
-            bool includeMetadata = GetBoolOption(context, "metadata", defaultValue: true);
-            bool includeHeader = GetBoolOption(context, "header", defaultValue: true);
-
             string mediaType = GetStringOption(context, "type");
-            Encoding encoding; ;
+            Encoding encoding;
             switch (mediaType)
             {
                 case "SecondSurvey":

@@ -23,7 +23,6 @@ namespace Maps.API
 
             if (context.Request.HttpMethod == "POST")
             {
-                // Slurp in stream
                 var type = SectorMetadataFileParser.SniffType(context.Request.InputStream);
                 var parser = SectorMetadataFileParser.ForType(type);
                 using (var reader = new System.IO.StreamReader(context.Request.InputStream, context.Request.ContentEncoding))
