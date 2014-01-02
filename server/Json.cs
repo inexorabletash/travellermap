@@ -226,7 +226,7 @@ namespace Json
             for (int i = 0; i < s.Length; ++i)
             {
                 char c = s[i];
-                if ((c == '\\') || (c == '"'))
+                if ((c == '\\') || (c == '"') || (c == '/'))
                 {
                     sb.Append('\\');
                     sb.Append(c);

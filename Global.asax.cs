@@ -130,6 +130,11 @@ namespace Maps
         {
             var DEFAULT_JSON = new RouteValueDictionary { { "accept", JsonConstants.MediaType } };
 
+            // Navigation  --------------------------------------------------
+
+            routes.Add(new RegexRoute(@"^/go/(?<sector>[^/]+)$", new RedirectRouteHandler("/?sector={sector}", statusCode: 302)));
+            routes.Add(new RegexRoute(@"^/go/(?<sector>[^/]+)/(?<hex>[0-9]{4})$", new RedirectRouteHandler("/?sector={sector}&hex={hex}", statusCode: 302)));
+
             // Administration -----------------------------------------------
 
             routes.Add(new RegexRoute(@"^/admin/admin$", new GenericRouteHandler(typeof(AdminHandler))));
