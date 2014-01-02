@@ -4,6 +4,9 @@
 <link rel="shortcut icon" href="../favicon.ico">
 <link rel="stylesheet" type="text/css" href="../site.css?update=2013-07-29">
 <meta name="viewport" content="initial-scale=1, width=device-width">
+<style>
+h3 { text-decoration: underline; }
+</style>
 
 <h1>The Traveller Map API</h1>
 <div class="content">
@@ -42,40 +45,40 @@
             Common Concepts
             <ul>
                 <li><a href="#urls">Functional APIs vs. Semantic Data URLs</a>
-                <li><a href="#options">Rendering Options and Styles</a> - used by many APIs
+                <li><a href="#options">Rendering Options and Styles</a> &ndash; used by many APIs
             </ul>
 
         <li>HTML APIs
             <ul>
-                <li><a href="#query">Query Parameters</a> - for the main page and IFRAME
-                <li><a href="#go">Go Links</a> - short URLs for navigating the main page
-                <li><a href="#iframe">IFRAME</a> - embed a draggable, zoomable map in your page
+                <li><a href="#query">Query Parameters</a> &ndash; for the main page and IFRAME
+                <li><a href="#go">Go Links</a> &ndash; short URLs for navigating the main page
+                <li><a href="#iframe">IFRAME</a> &ndash; embed a draggable, zoomable map in your page
             </ul>
 
         <li>Data APIs
             <ul>
-                <li><a href="#coordinates">Coordinates</a> - look up sector coordinates by name
-                <li><a href="#credits">Credits</a> - get world data and metadata by location
-                <li><a href="#sec">SEC</a> - retrieve sector data
-                <li><a href="#metadata">SectorMetaData</a> - retrieve sector metadata
-                <li><a href="#msec">MSEC</a> - retrieve sector metadata (sec2pdf compatible)
-                <li><a href="#jumpworlds">JumpWorlds</a> - return a list of worlds reachable by Jump-N
-                <li><a href="#search">Search</a> - search for worlds, subsectors or sectors by name
-                <li><a href="#universe">Universe</a> - return a list of sectors, optionally filtered by era
+                <li><a href="#coordinates">Coordinates</a> &ndash; look up sector coordinates by name
+                <li><a href="#credits">Credits</a> &ndash; get world data and metadata by location
+                <li><a href="#sec">SEC</a> &ndash; retrieve sector data
+                <li><a href="#metadata">SectorMetaData</a> &ndash; retrieve sector metadata
+                <li><a href="#msec">MSEC</a> &ndash; retrieve <cite>sec2pdf</cite>-compatible sector metadata
+                <li><a href="#jumpworlds">JumpWorlds</a> &ndash; return a list of worlds reachable by Jump-N
+                <li><a href="#search">Search</a> &ndash; search for worlds, subsectors or sectors by name
+                <li><a href="#universe">Universe</a> &ndash; return a list of sectors, optionally filtered by era
             </ul>
 
         <li>Image APIs
             <ul>
-                <li><a href="#poster">Poster</a> - render an image of a sector or subsector
-                <li><a href="#jumpmap">JumpMap</a> - render a map of worlds reachable by Jump-N
-                <li><a href="#tile">Tile</a> - render an arbitrary rectangle of space to an image
+                <li><a href="#poster">Poster</a> &ndash; render an image of a sector or subsector
+                <li><a href="#jumpmap">JumpMap</a> &ndash; render a map of worlds reachable by Jump-N
+                <li><a href="#tile">Tile</a> &ndash; render an arbitrary rectangle of space to an image
             </ul>
 
         <li>Appendices
             <ul>
-                <li><a href="#systems">Coordinate Systems</a> - what the x and y parameters mean in different APIs
-                <li><a href="#jsonp">JSONP</a> - How to use data from this in your web pages
-                <li><a href="#script">Scripts</a> - dig into the brains of the site itself
+                <li><a href="#systems">Coordinate Systems</a> &ndash; what the x and y parameters mean in different APIs
+                <li><a href="#jsonp">JSONP</a> &ndash; How to use data from this in your web pages
+                <li><a href="#script">Scripts</a> &ndash; dig into the brains of the site itself
             </ul>
 
     </ul>
@@ -100,7 +103,7 @@
 
     <p>
       In this case, both URLs expose identical functionality. Not all functions exposed
-      by the first ("api") form have a corresponding second ("data") form - for example, rendering
+      by the first ("api") form have a corresponding second ("data") form &ndash; for example, rendering
       arbitrary rectangles of space, or selecting a sector by x/y coordinates.
       On the other hand, the data URLs are much easier to remember and share.
       Both will be supported indefinitely.
@@ -110,39 +113,39 @@
     <ul>
       <li>Universe:
         <ul>
-          <li><a href="#universe">http://travellermap.com/data</a> - list of all sectors
+          <li><a href="#universe">http://travellermap.com/data</a> &ndash; list of all sectors
         </ul>
       </li>
       <li>Sector:
         <ul>
-          <li><a href="#sec">http://travellermap.com/data/<var>sector</var></a> - T5 Second Survey format
-          <li><a href="#sec">http://travellermap.com/data/<var>sector</var>/tab</a> - T5 Tab Delimited format
-          <li><a href="#sec">http://travellermap.com/data/<var>sector</var>/sec</a> - legacy SEC format
-          <li><a href="#metadata">http://travellermap.com/data/<var>sector</var>/metadata</a> - XML metadata
-          <li><a href="#msec">http://travellermap.com/data/<var>sector</var>/msec</a> - MSEC metadata
-          <li><a href="#poster">http://travellermap.com/data/<var>sector</var>/image</a> - map
-          <li><a href="#credits">http://travellermap.com/data/<var>sector</var>/coordinates</a> - coordinates
-          <li><a href="#credits">http://travellermap.com/data/<var>sector</var>/credits</a> - credits
+          <li><a href="#sec">http://travellermap.com/data/<var>sector</var></a> &ndash; T5 Second Survey format
+          <li><a href="#sec">http://travellermap.com/data/<var>sector</var>/tab</a> &ndash; T5 Tab Delimited format
+          <li><a href="#sec">http://travellermap.com/data/<var>sector</var>/sec</a> &ndash; legacy SEC format
+          <li><a href="#metadata">http://travellermap.com/data/<var>sector</var>/metadata</a> &ndash; XML metadata
+          <li><a href="#msec">http://travellermap.com/data/<var>sector</var>/msec</a> &ndash; MSEC metadata
+          <li><a href="#poster">http://travellermap.com/data/<var>sector</var>/image</a> &ndash; map
+          <li><a href="#credits">http://travellermap.com/data/<var>sector</var>/coordinates</a> &ndash; coordinates
+          <li><a href="#credits">http://travellermap.com/data/<var>sector</var>/credits</a> &ndash; credits
           <li><var>sector</var> is name e.g. <code>Spinward Marches</code> or T5SS abbreviation e.g. <code>spin</code>
 
         </ul>
       </li>
       <li>Subsector
         <ul>
-          <li><a href="#poster">http://travellermap.com/data/<var>sector</var>/<var>subsector</var></a> - T5 Second Survey format
-          <li><a href="#poster">http://travellermap.com/data/<var>sector</var>/<var>subsector</var>/tab</a> - T5 Tab Delimited format
-          <li><a href="#poster">http://travellermap.com/data/<var>sector</var>/<var>subsector</var>/sec</a> - legacy SEC format
-          <li><a href="#poster">http://travellermap.com/data/<var>sector</var>/<var>subsector</var>/image</a> - map
-          <li><var>subsector</var> is index <code>A</code> - <code>P</code> or name e.g. <code>Regina</code>
+          <li><a href="#poster">http://travellermap.com/data/<var>sector</var>/<var>subsector</var></a> &ndash; T5 Second Survey format
+          <li><a href="#poster">http://travellermap.com/data/<var>sector</var>/<var>subsector</var>/tab</a> &ndash; T5 Tab Delimited format
+          <li><a href="#poster">http://travellermap.com/data/<var>sector</var>/<var>subsector</var>/sec</a> &ndash; legacy SEC format
+          <li><a href="#poster">http://travellermap.com/data/<var>sector</var>/<var>subsector</var>/image</a> &ndash; map
+          <li><var>subsector</var> is index <code>A</code> &ndash; <code>P</code> or name e.g. <code>Regina</code>
         </ul>
       </li>
       <li>World
         <ul>
-          <li><a href="#coordinates">http://travellermap.com/data/<var>sector</var>/<var>hex</var>/coordinates</a> - coordinates
-          <li><a href="#credits">http://travellermap.com/data/<var>sector</var>/<var>hex</var>/credits</a> - credits
+          <li><a href="#coordinates">http://travellermap.com/data/<var>sector</var>/<var>hex</var>/coordinates</a> &ndash; coordinates
+          <li><a href="#credits">http://travellermap.com/data/<var>sector</var>/<var>hex</var>/credits</a> &ndash; credits
 
-          <li><a href="#jumpworlds">http://travellermap.com/data/<var>sector</var>/<var>hex</var>/jump/<var>jump</var></a> - worlds in jump range
-          <li><a href="#jumpmap">http://travellermap.com/data/<var>sector</var>/<var>hex</var>/jump/<var>jump</var>/image</a> - jump map
+          <li><a href="#jumpworlds">http://travellermap.com/data/<var>sector</var>/<var>hex</var>/jump/<var>jump</var></a> &ndash; worlds in jump range
+          <li><a href="#jumpmap">http://travellermap.com/data/<var>sector</var>/<var>hex</var>/jump/<var>jump</var>/image</a> &ndash; jump map
           <li><var>hex</var> is <code>XXYY</code> e.g. <code>1910</code>
         </ul>
       </li>
@@ -150,7 +153,7 @@
     </section>
 
   <section id="options">
-    <h3>Rendering Options and Styles - visual appearance of the map</h3>
+    <h3>Rendering Options and Styles &ndash; visual appearance of the map</h3>
     <p>
         All of the APIs that produce images (<a href="#poster">Poster</a>, <a href="#jumpmap">JumpMap</a>,
         <a href="#tile">Tile</a>) as well as the site itself (including <a href="#iframe">IFRAME</a>) take
@@ -258,14 +261,14 @@
     <h2>HTML APIs</h2>
 
   <section id="query">
-    <h3>Query Parameters - Main Page and IFRAME</h3>
+    <h3>Query Parameters &ndash; Main Page and IFRAME</h3>
     <h4>Options:</h4>
     <dl class="params">
       <dt>scale <dd>scale in pixels/parsec (default is 64)
       <dt>options <dd><a href="#options">rendering options</a>
       <dt>style <dd><a href="#options">rendering style</a>
       <dt>sector
-      <dt>hex <dd>specify a location in <a href="#system_location">named coordinates</a> - <code>hex</code> is optional; <code>scale</code> will be ignored.
+      <dt>hex <dd>specify a location in <a href="#system_location">named coordinates</a> &ndash; <code>hex</code> is optional; <code>scale</code> will be ignored.
       <dt>sx
       <dt>sy
       <dt>hx
@@ -299,7 +302,7 @@
   </section>
 
   <section id="go">
-    <h3>Go Links - short URLs for specifying a location on the map</h3>
+    <h3>Go Links &ndash; short URLs for specifying a location on the map</h3>
     <h4>API URLs:</h4>
     <p class="code">
         http://travellermap.com/go/<var>sector</var>
@@ -317,7 +320,7 @@
   </section>
 
   <section id="iframe">
-    <h3>IFRAME - embed a map in your page</h3>
+    <h3>IFRAME &ndash; embed a map in your page</h3>
     <h4>Usage:</h4>
     <p class="code">
         &lt;iframe src="<var>URL</var>" style="<var>STYLE</var>"&gt;&lt;/iframe&gt;
@@ -345,7 +348,7 @@
     <ul>
         <li>It's a fully functional map, just missing the chrome. You can drag with the mouse and zoom by using the mouse wheel or double-clicking (hold Alt and double-click to zoom out). You can even use the <kbd>IJKL</kbd> keys or arrow keys to scroll the map.
         <li>For sites such as Wikis that (for security reasons) do not allow embedding arbitrary IFRAMEs, see the <a href="#poster">Poster API</a> instead.
-        <li>The CSS of the IFRAME element can be anything you want - the width and height are just examples
+        <li>The CSS of the IFRAME element can be anything you want &ndash; the width and height are just examples
     </ul>
 
     <h4>Example:</h4>
@@ -368,7 +371,7 @@
     <h2>Data APIs</h2>
 
   <section id="coordinates">
-    <h3>Coordinates - sector lookup and coordinate conversion</h3>
+    <h3>Coordinates &ndash; sector lookup and coordinate conversion</h3>
     <h4>API URLs:</h4>
     <p class="code">
         http://travellermap.com/api/coordinates?sector=<var>sector</var>
@@ -422,7 +425,7 @@
   </section>
 
   <section id="credits">
-    <h3>Credits - get world data and metadata (attributions, etc) for a given location</h3>
+    <h3>Credits &ndash; get world data and metadata (attributions, etc) for a given location</h3>
     <h4>API URLs:</h4>
     <p class="code">
         http://travellermap.com/api/credits?sector=<var>sector</var>
@@ -474,26 +477,47 @@
   </section>
 
   <section id="sec">
-    <h3>SEC - retrieve UWP data for a sector</h3>
-    <h4>API URLs:</h4>
-    <p class="code">http://travellermap.com/api/sec?sector=<var>sector</var></p>
-    <p class="code">http://travellermap.com/api/sec?sector=<var>sector</var>&amp;hex=<var>hex</var></p>
-    <p class="code">http://travellermap.com/api/sec?sx=<var>sx</var>&amp;sy=<var>sy</var></p>
-    <h4>Data URLs:</h4>
-    <p class="code">http://travellermap.com/data/<var>sector</var></p>
-    <p class="code">http://travellermap.com/data/<var>sector</var>/sec</p>
-    <p class="code">http://travellermap.com/data/<var>sector</var>/tab</p>
-
-    <p class="code">http://travellermap.com/data/<var>sector</var>/<var>subsector</var></p>
-    <p class="code">http://travellermap.com/data/<var>sector</var>/<var>subsector</var>/sec</p>
-    <p class="code">http://travellermap.com/data/<var>sector</var>/<var>subsector</var>/tab</p>
-
-    <h4>Parameters:</h4>
+    <h3>SEC &ndash; retrieve UWP data for a sector</h3>
+    <h4>HTTP Methods:</h4>
     <dl class="params">
-        <dt>sector <dd>sector name or T5SS abbreviation
-        <dt>subsector <dd><code>A</code> - <code>P</code> or name; optional - if specified , only UWPs for that subsector will be included
-        <dt>sx
-        <dt>sy <dd>sector in <a href="#system_sectorhex">sector/hex-space coordinates</a>
+      <dt>GET
+        <dd>The sector to output is specified some combination of the following URL parameters:
+
+          <h4>API URLs:</h4>
+          <p class="code">http://travellermap.com/api/sec?sector=<var>sector</var></p>
+          <p class="code">http://travellermap.com/api/sec?sector=<var>sector</var>&amp;hex=<var>hex</var></p>
+          <p class="code">http://travellermap.com/api/sec?sx=<var>sx</var>&amp;sy=<var>sy</var></p>
+          <h4>Data URLs:</h4>
+          <p class="code">http://travellermap.com/data/<var>sector</var></p>
+          <p class="code">http://travellermap.com/data/<var>sector</var>/sec</p>
+          <p class="code">http://travellermap.com/data/<var>sector</var>/tab</p>
+
+          <p class="code">http://travellermap.com/data/<var>sector</var>/<var>subsector</var></p>
+          <p class="code">http://travellermap.com/data/<var>sector</var>/<var>subsector</var>/sec</p>
+          <p class="code">http://travellermap.com/data/<var>sector</var>/<var>subsector</var>/tab</p>
+
+          <h4>Parameters:</h4>
+          <dl class="params">
+            <dt>sector <dd>sector name or T5SS abbreviation
+            <dt>subsector <dd><code>A</code> &ndash; <code>P</code> or name; optional &ndash; if specified , only UWPs for that subsector will be included
+            <dt>sx
+            <dt>sy <dd>sector in <a href="#system_sectorhex">sector/hex-space coordinates</a>
+          </dl>
+
+        <dt>POST
+        <dd>
+          The body of the request is sector data to be parsed. After successful
+          parsing, the same data is returned but reformatted according to the
+          selected options. This can be used to convert
+          <a href="fileformats.html#sec">SEC</a> data to
+          <a href="fileformats.html#t5tab">T5 Tab Delimited</a> for easier parsing
+          by script. The format of the input data is "sniffed" &ndash; if it contains
+          tabs it is assumed to be in
+          <a href="fileformats.html#t5tab">T5 Tab Delimited</a> format; if it
+          contains extension field delimiters it is assumed to be in
+          <a href="fileformats.html#t5col">T5 Column Delimited</a> format;
+          otherwise, it is parsed as
+          <a href="fileformats.html#sec">Legacy SEC</a> format.
     </dl>
 
     <h4>Options:</h4>
@@ -538,20 +562,38 @@
   </section>
 
   <section id="metadata">
-    <h3>SectorMetaData - generate metadata for a sector</h3>
-    <h4>API URLs:</h4>
-    <p class="code">http://travellermap.com/api/metadata?sector=<var>sector</var></p>
-    <p class="code">http://travellermap.com/api/metadata?sx=<var>sx</var>&amp;sy=<var>sy</var></p>
-    <h4>Data URLs:</h4>
-    <p class="code">http://travellermap.com/data/<var>sector</var>/metadata</p>
-
-    <h4>Parameters:</h4>
+    <h3>SectorMetaData &ndash; generate metadata for a sector</h3>
+    <h4>HTTP Methods:</h4>
     <dl class="params">
-        <dt>sector <dd>sector name or T5SS abbreviation
-        <dt>sx
-        <dt>sy <dd>sector in <a href="#system_sectorhex">sector/hex-space coordinates</a>
-    </dl>
+      <dt>GET
+      <dd>
+        The sector to output is specified some combination of the following URL parameters:
+        <h4>API URLs:</h4>
+        <p class="code">http://travellermap.com/api/metadata?sector=<var>sector</var></p>
+        <p class="code">http://travellermap.com/api/metadata?sx=<var>sx</var>&amp;sy=<var>sy</var></p>
+        <h4>Data URLs:</h4>
+        <p class="code">http://travellermap.com/data/<var>sector</var>/metadata</p>
 
+        <h4>Parameters:</h4>
+        <dl class="params">
+          <dt>sector <dd>sector name or T5SS abbreviation
+              <dt>sx
+              <dt>sy <dd>sector in <a href="#system_sectorhex">sector/hex-space coordinates</a>
+        </dl>
+
+      <dt>POST
+      <dd>
+        The body of the request is sector metadata to be parsed. After successful
+        parsing, the same data is returned but reformatted according to the
+        selected options. This can be used to convert
+        XML or MSEC to JSON for easier parsing by script. The input data format is
+        "sniffed" &ndash; if it has an XML prologue it is assumed to be
+        <a href="api.html#metadata">XML</a> format
+        (<a href="/data/spin/metadata">example</a>); otherwise,
+        <a href="http://dotclue.org/t20/">MSEC</a> format
+        (<a href="/data/spin/msec">example</a>) is assumed. JSON parsing
+        is not supported.
+    </dl>
     <h4>Notes:</h4>
     <ul>
         <li>
@@ -570,7 +612,7 @@
   </section>
 
   <section id="msec">
-    <h3>MSEC - generate sec2pdf compatible metadata for a sector</h3>
+    <h3>MSEC &ndash; generate sec2pdf compatible metadata for a sector</h3>
     <h4>API URLs:</h4>
     <p class="code">http://travellermap.com/api/msec?sector=<var>sector</var></p>
     <p class="code">http://travellermap.com/api/msec?sx=<var>sx</var>&amp;sy=<var>sy</var></p>
@@ -597,7 +639,7 @@
   </section>
 
   <section id="jumpworlds">
-    <h3>JumpWorlds - return a list of worlds within Jump-N from some location</h3>
+    <h3>JumpWorlds &ndash; return a list of worlds within Jump-N from some location</h3>
     <h4>API URLs:</h4>
     <p class="code">
         http://travellermap.com/api/jumpworlds?x=<var>x</var>&amp;y=<var>y</var>
@@ -653,7 +695,7 @@
   </section>
 
   <section id="search">
-    <h3>Search - find worlds, subsectors or sectors by name (or UWP) using free text search</h3>
+    <h3>Search &ndash; find worlds, subsectors or sectors by name (or UWP) using free text search</h3>
     <h4>API URLs:</h4>
     <p class="code">
         http://travellermap.com/api/search?q=<var>QUERY</var>
@@ -700,7 +742,7 @@
   </section>
 
   <section id="universe">
-    <h3>Universe - return a list of all sectors, optionally filtered by era</h3>
+    <h3>Universe &ndash; return a list of all sectors, optionally filtered by era</h3>
     <h4>API URLs:</h4>
     <p class="code">
         http://travellermap.com/api/universe
@@ -737,7 +779,7 @@
   <section id="rendering-apis" class="apis">
     <h2>Rendering APIs</h2>
   <section id="tile">
-    <h3>Tile - render an image of an arbitrary rectangle of space at any size and scale</h3>
+    <h3>Tile &ndash; render an image of an arbitrary rectangle of space at any size and scale</h3>
     <h4>API URLs:</h4>
     <p class="code">
         http://travellermap.com/api/tile?x=<var>x</var>&amp;y=<var>y</var>&amp;scale=<var>N</var>
@@ -773,7 +815,7 @@
   </section>
 
   <section id="poster">
-<h3>Poster - render an image of a sector or subsector</h3>
+<h3>Poster &ndash; render an image of a sector or subsector</h3>
 <h4>API URLs:</h4>
 <p class="code">
     http://travellermap.com/api/poster
@@ -798,7 +840,7 @@
     <dd>The content to render is specified some combination of the following URL parameters:
       <dl class="params">
         <dt>sector <dd>sector name
-        <dt>subsector <dd>subsector index (<code>A</code> - <code>P</code> or name)
+        <dt>subsector <dd>subsector index (<code>A</code> &ndash; <code>P</code> or name)
         <dt>x1
         <dt>y1 <dd>top-left hex (inclusive) of the rectangle in <a href="#system_world">World-Space Coordinates</a>
         <dt>x2
@@ -813,7 +855,7 @@
       which can be either part of the POST data or a URL parameter:
 
       <dl class="params">
-        <dt>subsector <dd>subsector index (<code>A</code> - <code>P</code>)
+        <dt>subsector <dd>subsector index (<code>A</code> &ndash; <code>P</code>)
       </dl>
 
       Sector data and metadata can be sent in a variety of
@@ -867,7 +909,7 @@
 </section>
 
   <section id="jumpmap">
-    <h3>JumpMap - render an image of hexes within Jump-N of some location</h3>
+    <h3>JumpMap &ndash; render an image of hexes within Jump-N of some location</h3>
     <h4>API URLs:</h4>
     <p class="code">
         http://travellermap.com/api/jumpmap?sector=<var>sector</var>&amp;hex=<var>hex</var>&amp;jump=<var>jump</var>
@@ -967,7 +1009,7 @@
   <section id="appendix">
     <h2>Appendix</h2>
   <section id="systems">
-    <h3>Coordinate Systems - the varied esoteric x/y values</h3>
+    <h3>Coordinate Systems &ndash; the varied esoteric x/y values</h3>
     <p>
         Different APIs use different coordinate systems. Future API updates may attempt to unify them,
         but the different coordinate systems will always be required, as different APIs provide
@@ -1077,7 +1119,7 @@ function SectorHexToXY(sx, sy, hx, hy) {
   </p>
   <ul>
       <li>
-          Account for "odd" hexes being further coreward than "even" hexes - i.e. hex 1910 is further coreward than hex 2010.
+          Account for "odd" hexes being further coreward than "even" hexes &ndash; i.e. hex 1910 is further coreward than hex 2010.
           Also note that odd/even switch places between Sector/Hex and World-space since Reference is at 0140 and (0,0) respectively.
 
       <li>
@@ -1247,7 +1289,7 @@ return false;
 </section>
 
   <section id="jsonp">
-  <h3>JSONP - How to use this site's data APIs in your Web pages</h3>
+  <h3>JSONP &ndash; How to use this site's data APIs in your Web pages</h3>
   <p class="aside">
     APIs on this site output <a href="http://www.w3.org/TR/cors/">CORS</a> headers so if you know your users
     will be accessing your site using reasonably up-to-date browsers you can call the APIs directly via
@@ -1267,8 +1309,8 @@ return false;
       Web browsers allow pages to dynamically add content via script. They can even add references to additional
       script files, and those files can come from different sites. While a script cannot make AJAX calls
       to another site to retrieve data, it can cause a script from that site to be loaded just like a local
-      script. The loaded script doesn't have any special abilities - it's still running within the domain of the
-      page. The trick is to request a script with dynamically generated content - the data you wanted to request
+      script. The loaded script doesn't have any special abilities &ndash; it's still running within the domain of the
+      page. The trick is to request a script with dynamically generated content &ndash; the data you wanted to request
       from the remote site in the first place!
   </p>
 
@@ -1336,7 +1378,7 @@ function cbfn(data) {
 </section>
 
   <section id="script">
-    <h3>Script - dig into the brains of the site itself</h3>
+    <h3>Script &ndash; dig into the brains of the site itself</h3>
     <p>
         The <a href="https://github.com/inexorabletash/travellermap/blob/master/map.js">script file</a> that implements the site logic is full of goodies, such
         as the mechanism to convert coordinate spaces between the map's internal format and <b><i>Traveller</i></b>
@@ -1346,8 +1388,8 @@ function cbfn(data) {
         Specifically, the following scripts are used:
     </p>
     <ul>
-        <li><a href="https://github.com/inexorabletash/travellermap/blob/master/map.js">map.js</a> - the main map logic
-        <li><a href="https://github.com/inexorabletash/travellermap/blob/master/index.js">index.js</a> - drives the rest of the page
+        <li><a href="https://github.com/inexorabletash/travellermap/blob/master/map.js">map.js</a> &ndash; the main map logic
+        <li><a href="https://github.com/inexorabletash/travellermap/blob/master/index.js">index.js</a> &ndash; drives the rest of the page
         <li><a href="http://handlebarsjs.com/">Handlebars.js</a> by Yehuda Katz, for page templating
     </ul>
   </section>
