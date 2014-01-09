@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<title>World Data Sheet</title>
+<link rel="stylesheet" href="site.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.1.2/handlebars.min.js"></script>
+
+<style>
+body { text-align: center; background-color: gray; margin: 0; padding: 0; width: 100%; }
+#paper { text-align: left; width: 8.5in; height: 11in; overflow: hidden; background-color: white; color: black; margin: 0.25in auto; box-shadow: 0 0 30px 5px #202020;}
+#page { margin: 0.5in; position: relative; }
+td { vertical-align: top; }
+.nowrap { white-space: nowrap; }
+</style>
+
+
+<div id="paper">
+<div id="page" class="Siz7 Hyd8">
+
+<h1>Regina (Spinward Marches 1910)</h1>
+
+<div class="image">
+<style>
+.image {
+  position: absolute;
+  top: 0; right: 0;
+  background-image: url('res/Candy/tiled_nebula_256.jpg');
+  width: 160px;
+  height: 160px;
+  line-height: 160px;
+  text-align: center;
+  border: 2px solid black;
+}
+.image .disc {
+  display: inline-block;
+  vertical-align: middle;
+  width: 50%; height: 50%;
+  background-size: cover;
+}
+.Hyd0.Siz0 .image .disc { background-image: url('res/Candy/Belt.png'); }
+
+.Hyd0 .image .disc { background-image: url('res/Candy/Hyd0.png'); }
+.Hyd1 .image .disc { background-image: url('res/Candy/Hyd1.png'); }
+.Hyd2 .image .disc { background-image: url('res/Candy/Hyd2.png'); }
+.Hyd3 .image .disc { background-image: url('res/Candy/Hyd3.png'); }
+.Hyd4 .image .disc { background-image: url('res/Candy/Hyd4.png'); }
+.Hyd5 .image .disc { background-image: url('res/Candy/Hyd5.png'); }
+.Hyd6 .image .disc { background-image: url('res/Candy/Hyd6.png'); }
+.Hyd7 .image .disc { background-image: url('res/Candy/Hyd7.png'); }
+.Hyd8 .image .disc { background-image: url('res/Candy/Hyd8.png'); }
+.Hyd9 .image .disc { background-image: url('res/Candy/Hyd9.png'); }
+.HydA .image .disc { background-image: url('res/Candy/HydA.png'); }
+
+.Siz1 .image .disc { width: 25%; height: 25%; }
+.Siz2 .image .disc { width: 30%; height: 30%; }
+.Siz3 .image .disc { width: 35%; height: 35%; }
+.Siz4 .image .disc { width: 40%; height: 40%; }
+.Siz5 .image .disc { width: 45%; height: 45%; }
+.Siz6 .image .disc { width: 50%; height: 50%; }
+.Siz7 .image .disc { width: 55%; height: 55%; }
+.Siz8 .image .disc { width: 60%; height: 60%; }
+.Siz9 .image .disc { width: 65%; height: 65%; }
+.SizA .image .disc { width: 70%; height: 70%; }
+
+.Siz0 .image .disc { background-image: url('res/Candy/Belt.png'); width: 80%; height: 45%; }
+
+</style>
+<span class="disc Hyd8 Siz7"></span>
+</div>
+
+
+<table class="decode"><tr>
+<td>Allegiance:
+<td><big>Third Imperium</big> (Im)
+</table>
+
+<table class="decode"><tr>
+<td>System:
+<td>
+    <big>F7 V &nbsp; MD  &nbsp; M3 V</big>
+    <br>
+    <big>3</big> <small>Gas Giants</small>
+    &mdash;
+    <big>0</big> <small>Planetoid Belts</small>
+    &mdash;
+    <big>14</big> <small>Total Worlds</small>
+    <br>
+    Naval Base &mdash; Scout Base
+</table>
+
+
+<style>
+.decode { white-space: nowrap; margin: 10px 0; }
+.decode tr:first-of-type td { padding-bottom: 4px; font-weight: bold;}
+.decode td { padding: 0; margin: 0; width: 14pt; font-size: 14pt; line-height: 14pt; text-align: center; }
+.decode td:first-of-type { text-align: right; padding-right: 4px; font-size: 10pt; width; auto;
+                           width: 150px; }
+.decode td:last-of-type { text-align: left; padding-left: 4px; font-size: 10pt; width: auto; }
+</style>
+
+
+<table class="decode">
+<tr><td>Universal World Profile:<td>A<td>7<td>8<td>8<td>8<td>9<td>9<td>&ndash;<td>C<td>
+<tr><td>Starport (Excellent)<td>&#x251B;<td>&#x2503;<td>&#x2503;<td>&#x2503;<td>&#x2503;<td>&#x2503;<td>&#x2503;<td><td>&#x2517;<td>Technology Level (Average Imperial)
+<tr><td>Size (11,200km)<td>&#x2501;<td>&#x251B;<td>&#x2503;<td>&#x2503;<td>&#x2503;<td>&#x2503;<td>&#x2517;<td>&#x2501;<td>&#x2501;<td>Law Level (Weapons outside the home prohibited)
+<tr><td>Atmosphere (Dense)<td>&#x2501;<td>&#x2501;<td>&#x251B;<td>&#x2503;<td>&#x2503;<td>&#x2517;<td>&#x2501;<td>&#x2501;<td>&#x2501;<td>Government Type (Impersonal Bureacracy)
+<tr><td>Hydrosphere (80%)<td>&#x2501;<td>&#x2501;<td>&#x2501;<td>&#x251B;<td>&#x2517;<td>&#x2501;<td>&#x2501;<td>&#x2501;<td>&#x2501;<td>Population (Hundreds of millions)
+</table>
+
+<table class="decode">
+<tr><td>Importance {Ix}:<td>{<td>4<td>}<td>
+</table>
+
+<table class="decode">
+<tr><td>Economics (Ex):<td>(<td>D<td>7<td>E<td>+<td>4<td>)<td>
+<tr><td>Resources<td>&#x2501;<td>&#x251B;<td>&#x2503;<td>&#x2503;<td><td>&#x2517;<td>&#x2501;<td>Efficiency
+<tr><td>Labor<td>&#x2501;<td>&#x2501;<td>&#x251B;<td>&#x2517;<td>&#x2501;<td>&#x2501;<td>&#x2501;<td>Infrastructure
+</table>
+
+<table class="decode">
+<tr><td>Culture [Cx]:<td>[<td>9<td>C<td>6<td>D<td>]<td>
+<tr><td>Homogeneity<td>&#x2501;<td>&#x251B;<td>&#x2503;<td>&#x2503;<td>&#x2517;<td>&#x2501;<td>Symbols
+<tr><td>Acceptance<td>&#x2501;<td>&#x2501;<td>&#x251B;<td>&#x2517;<td>&#x2501;<td>&#x2501;<td>Strangeness
+</table>
+
+<table class="decode"><tr>
+<td style="vertical-align: bottom">Total Population:
+<td><big>7 &times; 10<sup>8</sup> = 700,000,000</big>
+</table>
+
+<table class="decode"><tr>
+<td>Nobility:
+<td><big>Knight &mdash; Baronet &mdash; Baron &mdash; Viscount &mdash; Subsector Duke</big>
+</table>
+
+<table class="decode">
+<tr><td>Remarks:<td style="white-space: normal">
+<span class="nowrap"><big>Ri</big> <small>Rich</small></span></span>
+<span class="nowrap"><big>Pa</big> <small>Pre-Agricultural</small></span>
+<span class="nowrap"><big>Ph</big> <small>Pre-High Population</small></span>
+<span class="nowrap"><big>An</big> <small>Ancient Site</small></span>
+<span class="nowrap"><big>Cp</big> <small>Subsector Capital</small></span>
+<span class="nowrap"><big>(Amindii)2</big> <small>Sophont Population 20%</small></span>
+</table>
+
+<table class="decode"><tr>
+<td>Travel Zone:
+<td><big>No Restrictions</big> <br> <small>Travellers' Aid Society Rating: Green</small>
+</table>
+
+
+
+<h2>Neighborhood (Jump-2)</h2>
+<style>
+@import url(http://fonts.googleapis.com/css?family=PT+Sans+Narrow);
+.uwp td, .uwp th { padding-right: 1em; white-space: nowrap}
+.uwp th { text-align: left; }
+.uwp td { font-family: "PT Sans Narrow"; }
+#jumpmap { padding-right: 20px; }
+</style>
+<table>
+<tr>
+  <td><img id="jumpmap" src="//travellermap.com/data/spin/1910/jump/2/image?scale=48&border=0"></td>
+  <td><div class="uwp" id="neighborhood-data"></div></td>
+</tr>
+</table>
+<script id="neighborhood-template" type="text/x-handlebars-template">
+<table class="uwp">
+<tr><th>Name<th>Hex<th>UWP<th>B<th>Remarks<th>Z<th>PBG<th>A<th>Stellar</tr>
+{{#Worlds}}
+<tr><td>{{Name}}<td>{{Hex}}<td>{{UWP}}<td>{{Bases}}<td>{{Remarks}}<td>{{Zone}}<td>{{PBG}}<td>{{Allegiance}}<td>{{Stellar}}
+{{/Worlds}}
+</table>
+</script>
+<script>
+function neighborhood(data) {
+  var $ = function(s) { return document.querySelector(s); };
+  var template = Handlebars.compile($('#neighborhood-template').innerHTML);
+  $('#neighborhood-data').innerHTML = template(data);
+}
+</script>
+<script src="//travellermap.com/data/spin/1910/jump/2?jsonp=neighborhood"></script>
+
+
+
+</div>
+</div>
