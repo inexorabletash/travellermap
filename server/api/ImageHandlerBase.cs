@@ -111,7 +111,37 @@ namespace Maps.API
                     }
                 }
 
-                BitmapResponse(context.Response, ctx.styles, bitmap, transparent ? Util.MediaTypeName_Image_Png : null);
+                bool dataURI = HandlerBase.GetBoolOption(context.Request, "datauri", queryDefaults: queryDefaults, defaultValue: false );
+                MemoryStream ms = null;
+                if (dataURI)
+                {
+                    ms = new MemoryStream();
+                }
+
+                BitmapResponse(context.Response, dataURI ? ms : context.Response.OutputStream, ctx.styles, bitmap, transparent ? Util.MediaTypeName_Image_Png : null);
+
+                if (dataURI)
+                {
+                    string contentType = context.Response.ContentType;
+                    context.Response.ContentType = System.Net.Mime.MediaTypeNames.Text.Plain;
+                    ms.Seek(0, SeekOrigin.Begin);
+
+                    context.Response.Output.Write("data:");
+                    context.Response.Output.Write(contentType);
+                    context.Response.Output.Write(";base64,");
+                    context.Response.Output.Flush();
+
+                    byte[] buffer = new byte[4096];
+                    System.Security.Cryptography.ICryptoTransform transform = new System.Security.Cryptography.ToBase64Transform();
+                    using (System.Security.Cryptography.CryptoStream cs = new System.Security.Cryptography.CryptoStream(context.Response.OutputStream, transform, System.Security.Cryptography.CryptoStreamMode.Write))
+                    {
+                        int bytesRead;
+                        while ((bytesRead = ms.Read(buffer, 0, buffer.Length)) > 0)
+                            cs.Write(buffer, 0, bytesRead);
+                        cs.FlushFinalBlock();
+                    }
+                    context.Response.OutputStream.Flush();
+                }
             }
         }
 
@@ -172,7 +202,7 @@ namespace Maps.API
             }
         }
 
-        private static void BitmapResponse(HttpResponse response, Stylesheet styles, Bitmap bitmap, string mimeType)
+        private static void BitmapResponse(HttpResponse response, Stream outputStream, Stylesheet styles, Bitmap bitmap, string mimeType)
         {
             // JPEG or PNG if not specified, based on style
             if (mimeType == null)
@@ -219,12 +249,12 @@ namespace Maps.API
                     using (var ms = new MemoryStream())
                     {
                         bitmap.Save(ms, encoder, encoderParams);
-                        ms.WriteTo(response.OutputStream);
+                        ms.WriteTo(outputStream);
                     }
                 }
                 else
                 {
-                    bitmap.Save(response.OutputStream, encoder, encoderParams);
+                    bitmap.Save(outputStream, encoder, encoderParams);
                 }
 
                 encoderParams.Dispose();
@@ -233,7 +263,7 @@ namespace Maps.API
             {
                 // Default to GIF if we can't find anything
                 response.ContentType = MediaTypeNames.Image.Gif;
-                bitmap.Save(response.OutputStream, ImageFormat.Gif);
+                bitmap.Save(outputStream, ImageFormat.Gif);
             }
         }
 
