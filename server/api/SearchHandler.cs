@@ -171,8 +171,8 @@ namespace Maps.API
                     r.SectorX = sector.X;
                     r.SectorY = sector.Y;
                     r.SectorTags = sector.TagString;
-                    r.HexX = (world.Hex / 100);
-                    r.HexY = (world.Hex % 100);
+                    r.HexX = world.X;
+                    r.HexY = world.Y;
                     r.Name = world.Name;
                     r.Sector = sector.Names[0].Text;
                     r.Uwp = world.UWP;

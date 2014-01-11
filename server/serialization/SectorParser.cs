@@ -141,7 +141,7 @@ namespace Maps.Serialization
 
                 // Crack the RegExpr data
                 world.Name = nameFixupRegex.Replace(match.Groups["name"].Value.Trim(), "");
-                world.Hex = Int32.Parse(match.Groups["hex"].Value, CultureInfo.InvariantCulture);
+                world.Hex = match.Groups["hex"].Value.Trim();
                 world.UWP = match.Groups["uwp"].Value.Trim();
                 world.CompactLegacyBases = EmptyIfDash(match.Groups["base"].Value.Trim());
                 world.Remarks = match.Groups["codes"].Value.Trim();
@@ -225,7 +225,7 @@ namespace Maps.Serialization
             try
             {
                 World world = new World();
-                world.Hex = Int32.Parse(dict["Hex"], CultureInfo.InvariantCulture);
+                world.Hex = dict["Hex"];
                 world.Name = dict["Name"];
 
                 world.UWP = Check(dict, "UWP", UWP_REGEX);

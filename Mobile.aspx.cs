@@ -282,7 +282,7 @@ namespace Maps.Pages
                         ((WorldLocation)o).Resolve(map, resourceManager, out sector, out world);
 
                         dr[0] = world.Name;
-                        dr[1] = String.Format(CultureInfo.InvariantCulture, "{0} {1}", sector.Names[0].Text, world.Hex.ToString("0000", CultureInfo.InvariantCulture));
+                        dr[1] = String.Format(CultureInfo.InvariantCulture, "{0} {1}", sector.Names[0].Text, world.Hex);
                         dr[2] = xml;
                     }
                     else if (o is SubsectorLocation)

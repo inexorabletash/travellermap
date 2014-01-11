@@ -30,16 +30,21 @@ namespace Maps
         }
 
         public string Name { get; set; }
-        public int Hex { get; set; }
+
+        public string Hex
+        {
+            get { return (X * 100 + Y).ToString("0000", CultureInfo.InvariantCulture); }
+            set { int hex = Int32.Parse(value, CultureInfo.InvariantCulture); X = hex / 100; Y = hex % 100; }
+        }
 
         [XmlIgnore,JsonIgnore]
-        public int SubsectorHex
+        public string SubsectorHex
         {
             get
             {
                 return
-                    ((X - 1) % 8 + 1) * 100 +
-                    ((Y - 1) % 10 + 1);
+                    (((X - 1) % 8 + 1) * 100 +
+                    ((Y - 1) % 10 + 1)).ToString("0000", CultureInfo.InvariantCulture);
             }
         }
 
@@ -84,9 +89,9 @@ namespace Maps
 
         // Derived
         [XmlIgnore, JsonIgnore]
-        public int X { get { return Hex / 100; } }
+        public int X { get; set; }
         [XmlIgnore, JsonIgnore]
-        public int Y { get { return Hex % 100; } }
+        public int Y { get; set; }
 
         public int Subsector
         {
@@ -113,7 +118,7 @@ namespace Maps
 
 
         [XmlIgnore, JsonIgnore]
-        public Point Location { get { return new Point(Hex / 100, Hex % 100); } }
+        public Point Location { get { return new Point(X, Y); } }
 
         [XmlIgnore, JsonIgnore]
         public char Starport { get { return UWP[0]; } }
@@ -277,6 +282,8 @@ namespace Maps
         [XmlIgnore, JsonIgnore]
         public bool IsBlue { get { return Zone == "B"; } } // TNE Technologically Elevated Dictatorship
 
+
+
         private const string HEX = "0123456789ABCDEFGHJKLMNPQRSTUVWXYZ";
         // Decimal hi:              0000000000111111111122222222223333
         // Decimal lo:              0123456789012345678901234567890123
@@ -402,5 +409,12 @@ namespace Maps
         {
             return DefaultAllegiances.Contains(this.Allegiance);
         }
+
+        [XmlAttribute("Sector"), JsonName("Sector")]
+        public string SectorName { get { return this.Sector.Names[0].Text; } }
+
+        public string AllegianceName { get { return this.Sector.GetAllegiance(this.Allegiance).Name; } }
+
+
     }
 }
