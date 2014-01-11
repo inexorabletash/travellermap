@@ -826,14 +826,13 @@ namespace Maps.Rendering
                         #region Hex
                         if (ctx.styles.worldDetails.HasFlag(WorldDetails.Hex))
                         {
-                            int coords;
+                            string hex;
                             switch (ctx.styles.hexCoordinateStyle)
                             {
                                 default:
-                                case Stylesheet.HexCoordinateStyle.Sector: coords = world.Hex; break;
-                                case Stylesheet.HexCoordinateStyle.Subsector: coords = world.SubsectorHex; break;
+                                case Stylesheet.HexCoordinateStyle.Sector: hex = world.Hex; break;
+                                case Stylesheet.HexCoordinateStyle.Subsector: hex = world.SubsectorHex; break;
                             }
-                            String hex = coords.ToString("0000", CultureInfo.InvariantCulture);
                             XSize size = ctx.graphics.MeasureString(hex, ctx.styles.hexNumber.Font);
                             solidBrush.Color = ctx.styles.hexNumber.textColor;
                             ctx.graphics.DrawString(hex, ctx.styles.hexNumber.Font, solidBrush, 0.0f, -0.5f, RenderUtil.StringFormatTopCenter);

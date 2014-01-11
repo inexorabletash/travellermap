@@ -117,7 +117,7 @@ namespace Maps.API
                     if (world != null)
                     {
                         data.WorldName = world.Name;
-                        data.WorldHex = world.Hex.ToString("0000", CultureInfo.InvariantCulture);
+                        data.WorldHex = world.Hex;
                         data.WorldUwp = world.UWP;
                         data.WorldRemarks = world.Remarks;
                         data.WorldIx = world.Importance;

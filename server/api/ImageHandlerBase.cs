@@ -119,7 +119,7 @@ namespace Maps.API
                 }
 
                 BitmapResponse(context.Response, dataURI ? ms : context.Response.OutputStream, ctx.styles, bitmap, transparent ? Util.MediaTypeName_Image_Png : null);
-
+                
                 if (dataURI)
                 {
                     string contentType = context.Response.ContentType;

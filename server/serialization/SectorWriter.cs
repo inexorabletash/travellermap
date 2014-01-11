@@ -67,7 +67,7 @@ namespace Maps.Serialization
             {
                 writer.WriteLine(worldFormat,
                     world.Name.Truncate(14),
-                    (sscoords ? world.SubsectorHex : world.Hex).ToString("D4"),
+                    sscoords ? world.SubsectorHex : world.Hex,
                     world.UWP,
                     world.CompactLegacyBases,
                     world.Remarks.Truncate(15),
@@ -109,7 +109,7 @@ namespace Maps.Serialization
             foreach (World world in worlds.OrderBy(world => world.SS))
             {
                 formatter.AddRow(new string[] {
-                    (sscoords ? world.SubsectorHex : world.Hex).ToString("0000"),
+                    sscoords ? world.SubsectorHex : world.Hex,
                     world.Name,
                     world.UWP,
                     world.Remarks,
@@ -153,7 +153,7 @@ namespace Maps.Serialization
                 writer.WriteLine(String.Join("\t", new string[] {
                     world.Sector.Abbreviation,
                     world.SS,
-                    (sscoords ? world.SubsectorHex : world.Hex).ToString("0000"),
+                    sscoords ? world.SubsectorHex : world.Hex,
                     world.Name,
                     world.UWP,
                     world.CompactLegacyBases, // TODO: T5Bases ?
