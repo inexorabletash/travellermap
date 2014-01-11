@@ -232,7 +232,7 @@
     Pz: 'Puzzle',
     Da: 'Danger',
     Ab: 'Data Repository',
-    An: 'Ancient Site.',
+    An: 'Ancient Site',
     Rs: 'Research Station'
   };
 
