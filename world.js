@@ -115,7 +115,7 @@
     0: 'No prohibitions',
     1: 'Body pistols, explosives, and poison gas prohibited',
     2: 'Portable energy weapons prohibited',
-    3: 'Machineguns, automatic rifles prohibited',
+    3: 'Machine guns, automatic rifles prohibited',
     4: 'Light assault weapons prohibited',
     5: 'Personal concealable weapons prohibited',
     6: 'All firearms except shotguns prohibited',
