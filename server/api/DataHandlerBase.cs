@@ -117,6 +117,7 @@ namespace Maps.API
         public static void SendJson(HttpContext context, object o)
         {
             context.Response.ContentType = JsonConstants.MediaType;
+
             JsonSerializer js = new JsonSerializer();
 
             // TODO: Subclass this from a DataResponsePage
