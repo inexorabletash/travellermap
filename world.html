@@ -104,14 +104,12 @@ td { vertical-align: top; }
 <div id="world-data"></div>
 <script id="world-template" type="text/x-handlebars-template">
 
-<h1>{{Name}} (Spinward Marches {{Hex}})</h1>
+<h1>{{Name}} ({{Sector}} {{Hex}})</h1>
 
-{{#Allegiance}}
 <table class="decode"><tr>
 <td>Allegiance:
-<td><big>{{name}}</big> ({{code}})
+<td><big>{{AllegianceName}}</big> ({{Allegiance}})
 </table>
-{{/Allegiance}}
 
 <table class="decode"><tr>
 <td>System:
@@ -189,17 +187,17 @@ td { vertical-align: top; }
 
 </script>
 <script>
+function fromEHex(c) {
+  return '0123456789ABCDEFGHJKLMNPQRSTUVWXYZ'.indexOf(c.toUpperCase());
+}
+function numberWithCommas(x) {
+  return String(x).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
 function world(data) {
   // TODO: Post-Process
   var world = data.Worlds[0];
-  console.log(world);
-
-  function fromEHex(c) {
-    return '0123456789ABCDEFGHJKLMNPQRSTUVWXYZ'.indexOf(c.toUpperCase());
-  }
-  function numberWithCommas(x) {
-    return String(x).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-  }
+  if (!world) return;
 
   var uwp = world.UWP;
   world.UWP = {
@@ -509,25 +507,6 @@ function world(data) {
   });
 
 
-  var ALLEGIANCE_TABLE = {
-    As: 'Aslan Hierate',
-    Cs: 'Imperial Client State',
-    Dr: 'Droyne',
-    Hv: 'Hive Federation',
-    Im: 'Third Imperium',
-    JP: 'Julian Protectorate',
-    Kk: 'The Two Thousand Worlds',
-    Na: 'Non-Aligned',
-    So: 'Solomani Confederation',
-    Va: 'Vargr (Non-Aligned)',
-    Zh: 'Zhodani Consulate'
-  };
-  world.Allegiance = (function(s) {
-    if (s in ALLEGIANCE_TABLE) return { code: s, name: ALLEGIANCE_TABLE[s] };
-    return { code: s, name: '???' };
-  }(world.Allegiance));
-
-
   var BASE_TABLE = {
     A: ['Naval Base', 'Scout Base'],
     B: ['Naval Base', 'Scout Way Station'],
@@ -594,10 +573,12 @@ function world(data) {
 .uwp td { font-family: "PT Sans Narrow"; }
 #jumpmap { }
 #neighborhood { width: 100%; }
+a { text-decoration: none; }
+a:hover { text-decoration: underline; }
 </style>
 <table id="neighborhood">
 <tr>
-  <td><img id="jumpmap" src="//travellermap.com/data/spin/1910/jump/2/image?scale=48&border=0"></td>
+  <td><img id="jumpmap"></td>
   <td><div class="uwp" id="neighborhood-data"></div></td>
 </tr>
 </table>
@@ -605,7 +586,8 @@ function world(data) {
 <table class="uwp">
 <tr><th>Name<th>Hex<th>UWP<th>B<th>Remarks<th>Z<th>PBG<th>A<th>Stellar</tr>
 {{#Worlds}}
-<tr><td>{{Name}}<td>{{Hex}}<td>{{UWP}}<td>{{Bases}}<td>{{Remarks}}<td>{{Zone}}<td>{{PBG}}<td>{{Allegiance}}<td>{{Stellar}}
+<tr><td><a href="?sector={{Sector}}&hex={{Hex}}">{{Name}}</a>
+<td>{{Hex}}<td>{{UWP}}<td>{{Bases}}<td>{{Remarks}}<td>{{Zone}}<td>{{PBG}}<td>{{Allegiance}}<td>{{Stellar}}
 {{/Worlds}}
 </table>
 </script>
@@ -617,8 +599,32 @@ function neighborhood(data) {
 }
 </script>
 
-<script src="//travellermap.com/data/spin/1910?jsonp=world"></script>
-<script src="//travellermap.com/data/spin/1910/jump/2?jsonp=neighborhood"></script>
+
+<script>
+window.addEventListener('DOMContentLoaded', function() {
+  var $ = function(s) { return document.querySelector(s); };
+  function load(url) {
+    var s = document.createElement('script');
+    s.src = url;
+    document.body.appendChild(s);
+  }
+  var query = (function(s) {
+    var q = {};
+    if (s) s.substring(1).split('&').forEach(function(pair) {
+      pair = pair.split('=');
+      q[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
+    });
+    return q;
+  }(document.location.search));
+
+  var sector = query['sector'] || 'spin';
+  var hex = query['hex'] || '1910';
+
+  load('//travellermap.com/data/'+sector+'/'+hex+'?jsonp=world');
+  load('//travellermap.com/data/'+sector+'/'+hex+'/jump/2?jsonp=neighborhood');
+  $('#jumpmap').src = '//travellermap.com/data/'+sector+'/'+hex+'/jump/2/image?scale=48&border=0';
+});
+</script>
 
 <div style="text-align: center; font-size: 8pt;">
     The <em class="product">Traveller</em> game in all forms is owned by Far
