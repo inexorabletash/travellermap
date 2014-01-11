@@ -45,8 +45,8 @@ td { vertical-align: top; }
 .image {
   position: absolute;
   top: 0; right: 0;
-  width: 150px;
-  height: 150px;
+  width: 140px;
+  height: 140px;
   border: 2px solid black;
 }
 .image .background {
@@ -114,21 +114,32 @@ td { vertical-align: top; }
 
 
 <style>
-.decode { white-space: nowrap; margin: 8px 0; }
+.decode { white-space: nowrap; margin: 10px 10px; }
 .decode tr:first-of-type td { padding-bottom: 4px; font-weight: bold;}
-.decode td { padding: 0; margin: 0; width: 10pt; font-size: 12pt; line-height: 12pt; text-align: center; }
-.decode td:first-of-type { text-align: right; padding-right: 4px; font-size: 8pt; width; auto;
+.decode td {
+  padding: 0; margin: 0; width: 12px; font-size: 14px; line-height: 14px;
+  x-vertical-align: middle;
+  text-align: center;
+  overflow: hidden;
+}
+.decode td.box {
+  font-size: 18px; width: 16px; max-width: 16px;
+  font-family: Lucida Sans Unicode, Helvetica, Arial Unicode MS;
+}
+
+.decode td:first-of-type { text-align: right; padding-right: 4px; font-size: 11px; width; auto;
                            width: 150px; }
-.decode td:last-of-type { text-align: left; padding-left: 4px; font-size: 8pt; width: auto; }
+.decode td:last-of-type { text-align: left; padding-left: 4px; font-size: 11px; width: auto; }
+
 </style>
 
 
 <table class="decode">
 <tr><td>Universal World Profile:<td>A<td>7<td>8<td>8<td>8<td>9<td>9<td>&ndash;<td>C<td>
-<tr><td>Starport (Excellent)<td>&#x251B;<td>&#x2503;<td>&#x2503;<td>&#x2503;<td>&#x2503;<td>&#x2503;<td>&#x2503;<td><td>&#x2517;<td>Technology Level (Average Imperial)
-<tr><td>Size (11,200km)<td>&#x2501;<td>&#x251B;<td>&#x2503;<td>&#x2503;<td>&#x2503;<td>&#x2503;<td>&#x2517;<td>&#x2501;<td>&#x2501;<td>Law Level (Weapons outside the home prohibited)
-<tr><td>Atmosphere (Dense)<td>&#x2501;<td>&#x2501;<td>&#x251B;<td>&#x2503;<td>&#x2503;<td>&#x2517;<td>&#x2501;<td>&#x2501;<td>&#x2501;<td>Government Type (Impersonal Bureacracy)
-<tr><td>Hydrosphere (80%)<td>&#x2501;<td>&#x2501;<td>&#x2501;<td>&#x251B;<td>&#x2517;<td>&#x2501;<td>&#x2501;<td>&#x2501;<td>&#x2501;<td>Population (Hundreds of millions)
+    <tr><td>Starport (Excellent)<td class="box">&#x2518;<td class="box">&#x2502;<td class="box">&#x2502;<td class="box">&#x2502;<td class="box">&#x2502;<td class="box">&#x2502;<td class="box">&#x2502;<td><td class="box">&#x2514;<td>Technology Level (Average Imperial)
+<tr><td>Size (11,200km)<td class="box">&#x2500;<td class="box">&#x2518;<td class="box">&#x2502;<td class="box">&#x2502;<td class="box">&#x2502;<td class="box">&#x2502;<td class="box">&#x2514;<td class="box">&#x2500;<td class="box">&#x2500;<td>Law Level (Weapons outside the home prohibited)
+<tr><td>Atmosphere (Dense)<td class="box">&#x2500;<td class="box">&#x2500;<td class="box">&#x2518;<td class="box">&#x2502;<td class="box">&#x2502;<td class="box">&#x2514;<td class="box">&#x2500;<td class="box">&#x2500;<td class="box">&#x2500;<td>Government Type (Impersonal Bureacracy)
+    <tr><td>Hydrosphere (80%)<td class="box">&#x2500;<td class="box">&#x2500;<td class="box">&#x2500;<td class="box">&#x2518;<td class="box">&#x2514;<td class="box">&#x2500;<td class="box">&#x2500;<td class="box">&#x2500;<td class="box">&#x2500;<td>Population (Hundreds of millions)
 </table>
 
 <table class="decode">
@@ -137,14 +148,14 @@ td { vertical-align: top; }
 
 <table class="decode">
 <tr><td>Economics (Ex):<td>(<td>D<td>7<td>E<td>+<td>4<td>)<td>
-<tr><td>Resources<td>&#x2501;<td>&#x251B;<td>&#x2503;<td>&#x2503;<td><td>&#x2517;<td>&#x2501;<td>Efficiency
-<tr><td>Labor<td>&#x2501;<td>&#x2501;<td>&#x251B;<td>&#x2517;<td>&#x2501;<td>&#x2501;<td>&#x2501;<td>Infrastructure
+<tr><td>Resources<td class="box">&#x2500;<td class="box">&#x2518;<td class="box">&#x2502;<td class="box">&#x2502;<td><td class="box">&#x2514;<td class="box">&#x2500;<td>Efficiency
+<tr><td>Labor<td class="box">&#x2500;<td class="box">&#x2500;<td class="box">&#x2518;<td class="box">&#x2514;<td class="box">&#x2500;<td class="box">&#x2500;<td class="box">&#x2500;<td>Infrastructure
 </table>
 
 <table class="decode">
 <tr><td>Culture [Cx]:<td>[<td>9<td>C<td>6<td>D<td>]<td>
-<tr><td>Homogeneity<td>&#x2501;<td>&#x251B;<td>&#x2503;<td>&#x2503;<td>&#x2517;<td>&#x2501;<td>Symbols
-<tr><td>Acceptance<td>&#x2501;<td>&#x2501;<td>&#x251B;<td>&#x2517;<td>&#x2501;<td>&#x2501;<td>Strangeness
+<tr><td>Homogeneity<td class="box">&#x2500;<td class="box">&#x2518;<td class="box">&#x2502;<td class="box">&#x2502;<td class="box">&#x2514;<td class="box">&#x2500;<td>Symbols
+<tr><td>Acceptance<td class="box">&#x2500;<td class="box">&#x2500;<td class="box">&#x2518;<td class="box">&#x2514;<td class="box">&#x2500;<td class="box">&#x2500;<td>Strangeness
 </table>
 
 <table class="decode"><tr>
@@ -172,7 +183,7 @@ td { vertical-align: top; }
 <td><big>No Restrictions</big> <br> <small>Travellers' Aid Society Rating: Green</small>
 </table>
 
-<h2 style="margin-top: 0;">Neighborhood (Jump-2)</h2>
+<h2 style="margin-top: 0;">Jump-2 Neighborhood</h2>
 <style>
 @import url(http://fonts.googleapis.com/css?family=PT+Sans+Narrow);
 .uwp td, .uwp th { padding-right: 0.5em; white-space: nowrap}
