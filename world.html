@@ -10,7 +10,7 @@ body { margin: 0; padding: 0; }
 
 @media only screen {
   body { text-align: center; background-color: gray; width: 100%; }
-  #paper { width: 8in; height: 9.75in; margin: 0.5in auto; box-shadow: 0 0 30px 5px #202020;}
+  #paper { width: 8in; height: 9.75in; margin: 0.25in auto; box-shadow: 0 0 30px 5px #202020;}
   #page { margin: 0.5in;  }
 }
 
@@ -167,16 +167,20 @@ td { vertical-align: top; }
 <td><big>{{PopMult}} &times; 10<sup>{{PopExp}}</sup> = {{TotalPopulation}}</big>
 </table>
 
+{{#if Nobility}}
 <table class="decode"><tr>
 <td>Nobility:
 <td><big class="nobility">{{#Nobility}} <span class="noble">{{.}}</span> {{/Nobility}}</big>
 </table>
+{{/if}}
 
+{{#if Remarks}}
 <table class="decode"><tr>
 <td>Remarks:
 <td style="white-space: normal">
 {{#Remarks}}<span class="nowrap"><big>{{code}}</big> <small>{{detail}}</small></span>&#x20;{{/Remarks}}
 </table>
+{{/if}}
 
 {{#Zone}}
 <table class="decode"><tr>
@@ -381,25 +385,34 @@ function world(data) {
   world.PopMult = world.PBG.Pop;
   world.PopExp  = fromEHex(world.UWP.Pop);
   world.TotalPopulation = numberWithCommas(world.PopMult * Math.pow(10, world.PopExp));
-  var ix = world.Ix.replace(/^{\s*|\s*}$/g, '');
-  world.Ix = {
-    Imp: ix
-  };
-  var ex = world.Ex.replace(/^\(\s*|\s*\)$/g, '');
-  world.Ex = {
-    Res: ex.substring(0, 1),
-    Lab: ex.substring(1, 2),
-    Inf: ex.substring(2, 3),
-    EffSign: ex.substring(3, 4),
-    EffValue: ex.substring(4, 5)
-  };
-  var cx = world.Cx.replace(/^\[\s*|\s*\]$/g, '');
-  world.Cx = {
-    Hom: cx.substring(0, 1),
-    Acc: cx.substring(1, 2),
-    Str: cx.substring(2, 3),
-    Sym: cx.substring(3, 4)
-  };
+
+  if ('Ix' in world) {
+    var ix = (world.Ix || '').replace(/^{\s*|\s*}$/g, '');
+    world.Ix = {
+      Imp: ix
+    };
+  }
+
+  if ('Ex' in world) {
+    var ex = world.Ex.replace(/^\(\s*|\s*\)$/g, '');
+    world.Ex = {
+      Res: ex.substring(0, 1),
+      Lab: ex.substring(1, 2),
+      Inf: ex.substring(2, 3),
+      EffSign: ex.substring(3, 4),
+      EffValue: ex.substring(4, 5)
+    };
+  }
+
+  if ('Cx' in world) {
+    var cx = world.Cx.replace(/^\[\s*|\s*\]$/g, '');
+    world.Cx = {
+      Hom: cx.substring(0, 1),
+      Acc: cx.substring(1, 2),
+      Str: cx.substring(2, 3),
+      Sym: cx.substring(3, 4)
+    };
+  }
 
   var NOBILITY_TABLE = {
     B: 'Knight',
@@ -413,10 +426,11 @@ function world(data) {
     G: 'Archduke',
     H: 'Emperor',
   };
-  world.Nobility = world.Nobility.split('').map(function(s){
-    return s.replace(/./, function(n) { return NOBILITY_TABLE[n] || '???'; })
-  });
-
+  if ('Nobility' in world) {
+    world.Nobility = world.Nobility.split('').map(function(s){
+      return s.replace(/./, function(n) { return NOBILITY_TABLE[n] || '???'; })
+    });
+  }
 
   var REMARKS_TABLE = {
     // Planetary
@@ -573,8 +587,8 @@ function world(data) {
 .uwp td { font-family: "PT Sans Narrow"; }
 #jumpmap { }
 #neighborhood { width: 100%; }
-a { text-decoration: none; }
-a:hover { text-decoration: underline; }
+.uwp a { text-decoration: none; }
+.uwp a:hover { text-decoration: underline; }
 </style>
 <table id="neighborhood">
 <tr>
