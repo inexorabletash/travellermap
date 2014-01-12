@@ -41,6 +41,7 @@
       statusElement.style.display = 'none';
       return;
     }
+    string = String(string);
     statusElement.style.display = '';
     statusText.innerHTML = escapeHtml(string);
     statusImage.style.display = showImage ? '' : 'none';
@@ -424,10 +425,12 @@
         results.forEach(function(result) { result(); });
         status();
         window.location.hash = hash;
+      }, function(error) {
+        // TODO: combine promise chains so only one error handler is needed.
+        status('Failed: ' + error);
       });
-
     }, function(error) {
-      status(error);
+      status('Failed: ' + error);
     });
   };
 
