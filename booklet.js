@@ -144,55 +144,28 @@
     return rv;
   }
 
+  // |data| can be string (payload) or object (key/value form data)
   // Returns Promise<string>
-  function getTextViaPOST(url, body) {
+  function getTextViaPOST(url, data) {
     return new Promise(function(resolve, reject) {
+      var body = null;
+      if (typeof data === 'string') {
+        body = data;
+      } else if (typeof data === 'object') {
+        body = new FormData();
+        Object.keys(data).forEach(function(key) { body.append(key, data[key]); });
+      }
       var xhr = new XMLHttpRequest(), async = true;
       xhr.open('POST', url, async);
       xhr.send(body);
       xhr.onreadystatechange = function() {
         if (xhr.readyState !== XMLHttpRequest.DONE)
           return;
-        if (xhr.status !== 200) {
+        if (xhr.status === 200)
+          resolve(xhr.response);
+        else
           reject(xhr.responseText);
-          return;
-        }
-        resolve(xhr.responseText);
       };
-    });
-  }
-
-  // Returns Promise<Blob>
-  function getBlobViaPOST(url, data) {
-    return new Promise(function(resolve, reject) {
-      var fd = new FormData();
-      Object.keys(data).forEach(function(key) { fd.append(key, data[key]); });
-      var xhr = new XMLHttpRequest(), async = true;
-      xhr.open('POST', url, async);
-      xhr.responseType = 'blob';
-      xhr.send(fd);
-      xhr.onreadystatechange = function() {
-        if (xhr.readyState !== XMLHttpRequest.DONE)
-          return;
-        if (xhr.status !== 200) {
-          reject(xhr.responseText);
-          return;
-        }
-        resolve(xhr.response);
-      };
-    });
-  }
-
-  // Returns Promise<dataURL>
-  function getDataURLViaPOST(url, data) {
-    return getBlobViaPOST(url, data).then(function(response) {
-      return new Promise(function(resolve, reject) {
-        var fileReader = new FileReader();
-        fileReader.readAsDataURL(response);
-        fileReader.onloadend = function() {
-          resolve(fileReader.result);
-        };
-      });
     });
   }
 
@@ -291,13 +264,14 @@
           style: style
         });
       } else {
-        var promise = getDataURLViaPOST(SERVICE_BASE + '/api/poster', {
+        var promise = getTextViaPOST(SERVICE_BASE + '/api/poster', {
           data: params.data,
           metadata: params.metadata,
           rotation: 3,
           scale: 64,
           options: options | MapOptions.SubsectorGrid | MapOptions.NamesMask,
-          style: style
+          style: style,
+          datauri: 1
         });
         img_promises.push(promise.then(function(url) {
           return function() { $('img.sector-image').src = url; };
@@ -400,13 +374,14 @@
             style: style
           });
         } else {
-          var promise = getDataURLViaPOST(SERVICE_BASE + '/api/poster', {
+          var promise = getTextViaPOST(SERVICE_BASE + '/api/poster', {
             data: params.data,
             metadata: params.metadata,
             subsector: subsector.index,
             scale: 64,
             options: options,
-            style: style
+            style: style,
+            datauri: 1
           });
           img_promises.push(promise.then(function(url) {
             return function() { $('#ss' + subsector.index  + ' img.subsector-image').src = url; };
