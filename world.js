@@ -431,7 +431,9 @@
     fetch('//travellermap.com/data/'+sector+'/'+hex+'/jump/2?accept=application/json', function(data) {
       renderNeighborhood(JSON.parse(data));
     });
-    $('#jumpmap').src = '//travellermap.com/data/'+sector+'/'+hex+'/jump/2/image?scale=48&border=0';
+    var mapurl = '//travellermap.com/data/'+sector+'/'+hex+'/jump/2/image?scale=48&border=0';
+    if (window.devicePixelRatio > 1) mapurl += '&dpr=' + window.devicePixelRatio;
+    $('#jumpmap').src = mapurl;
   });
 
 }(this));
