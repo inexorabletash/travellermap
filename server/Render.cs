@@ -183,21 +183,34 @@ namespace Maps.Rendering
                 //
                 //////////////////////////////////////////////////////////////
 
-                // Fill
-                ctx.graphics.SmoothingMode = XSmoothingMode.HighSpeed;
-                solidBrush.Color = ctx.styles.backgroundColor;
-                ctx.graphics.DrawRectangle(solidBrush, 0, 0, ctx.tileSize.Width, ctx.tileSize.Height);
+                using (Maps.Rendering.RenderUtil.SaveState(ctx.graphics))
+                {
+                    // TODO: Do this im world space to reduce churn
+                    if (ctx.clipPath != null)
+                    {
+                        XMatrix m = ctx.ImageSpaceToWorldSpace;
+                        ctx.graphics.MultiplyTransform(m);
+                        ctx.graphics.IntersectClip(ctx.clipPath);
+                        m.Invert();
+                        ctx.graphics.MultiplyTransform(m);
+                    }
+
+                    // Fill
+                    ctx.graphics.SmoothingMode = XSmoothingMode.HighSpeed;
+                    solidBrush.Color = ctx.styles.backgroundColor;
+                    ctx.graphics.DrawRectangle(solidBrush, 0, 0, ctx.tileSize.Width, ctx.tileSize.Height);
 
 
-                //// Draw tile #
-                //using( var font = new Font( FontFamily.GenericSansSerif, 10 ) )
-                //{
-                //	graphics.DrawString( String.Format( "({0},{1})", x, y ), font, foregroundBrush, 0, 0 );
-                //	graphics.DrawString( String.Format( "{0},{1}-{2}x{3}", tileRect.X, tileRect.Y, tileRect.Width, tileRect.Height ), font, foregroundBrush, 0, 20 );
-                //}
+                    //// Draw tile #
+                    //using( var font = new Font( FontFamily.GenericSansSerif, 10 ) )
+                    //{
+                    //	graphics.DrawString( String.Format( "({0},{1})", x, y ), font, foregroundBrush, 0, 0 );
+                    //	graphics.DrawString( String.Format( "{0},{1}-{2}x{3}", tileRect.X, tileRect.Y, tileRect.Width, tileRect.Height ), font, foregroundBrush, 0, 20 );
+                    //}
 
-                // Frame it
-                //graphics.DrawRectangle( Pens.Green, 0, 0, tileSize.Width-1, tileSize.Height-1 );
+                    // Frame it
+                    //graphics.DrawRectangle( Pens.Green, 0, 0, tileSize.Width-1, tileSize.Height-1 );
+                }
 
                 timers.Add(new Timer("imagespace"));
                 //////////////////////////////////////////////////////////////
@@ -214,445 +227,419 @@ namespace Maps.Rendering
 
                 ctx.graphics.MultiplyTransform(imageSpaceToWorldSpace);
 
-                //------------------------------------------------------------
-                // Explicit Clipping
-                //------------------------------------------------------------
-
-                if (ctx.clipPath != null)
+                using (Maps.Rendering.RenderUtil.SaveState(ctx.graphics))
                 {
-                    ctx.graphics.IntersectClip(ctx.clipPath);
-                }
 
-                //ctx.styles.showPseudoRandomStars = true;
-                //------------------------------------------------------------
-                // Backgrounds
-                //------------------------------------------------------------
+                    //------------------------------------------------------------
+                    // Explicit Clipping
+                    //------------------------------------------------------------
 
-                RectangleF galacticBounds = new RectangleF(-14598.67f, -23084.26f, 29234.1133f, 25662.4746f); // TODO: Don't hardcode
-                Rectangle galaxyImageRect = new Rectangle(-18257, -26234, 36551, 32462); // Chosen to match T5 pp.416 
-
-                // This transforms the Linehan galactic structure to the Mikesh galactic structure
-                // See http://travellermap.blogspot.com/2009/03/galaxy-scale-mismatch.html
-                Matrix xformLinehanToMikesh = new Matrix(0.9181034f, 0.0f, 0.0f, 0.855192542f, 120.672432f, 86.34569f);
-
-                //------------------------------------------------------------
-                // Local background (Nebula)
-                //------------------------------------------------------------
-                #region local-background
-
-                // NOTE: Since alpha texture brushes aren't supported without
-                // creating a new image (slow!) we render the local background
-                // first, then overlay the deep background over it, for
-                // basically the same effect since the alphas sum to 1.
-
-                if (ctx.styles.useBackgroundImage && galacticBounds.IntersectsWith(ctx.tileRect))
-                {
-                    // Image-space rendering, so save current context
-                    using (RenderUtil.SaveState(ctx.graphics))
+                    if (ctx.clipPath != null)
                     {
-                        // Never fill outside the galaxy
-                        ctx.graphics.IntersectClip(galacticBounds);
+                        ctx.graphics.IntersectClip(ctx.clipPath);
+                    }
 
-                        // Map back to image space so it scales/tiles nicely
-                        ctx.graphics.MultiplyTransform(worldSpaceToImageSpace);
+                    //ctx.styles.showPseudoRandomStars = true;
+                    //------------------------------------------------------------
+                    // Backgrounds
+                    //------------------------------------------------------------
 
-                        const float backgroundImageScale = 2.0f;
+                    RectangleF galacticBounds = new RectangleF(-14598.67f, -23084.26f, 29234.1133f, 25662.4746f); // TODO: Don't hardcode
+                    Rectangle galaxyImageRect = new Rectangle(-18257, -26234, 36551, 32462); // Chosen to match T5 pp.416 
 
-                        lock (s_backgroundImage)
+                    // This transforms the Linehan galactic structure to the Mikesh galactic structure
+                    // See http://travellermap.blogspot.com/2009/03/galaxy-scale-mismatch.html
+                    Matrix xformLinehanToMikesh = new Matrix(0.9181034f, 0.0f, 0.0f, 0.855192542f, 120.672432f, 86.34569f);
+
+                    //------------------------------------------------------------
+                    // Local background (Nebula)
+                    //------------------------------------------------------------
+                    #region local-background
+
+                    // NOTE: Since alpha texture brushes aren't supported without
+                    // creating a new image (slow!) we render the local background
+                    // first, then overlay the deep background over it, for
+                    // basically the same effect since the alphas sum to 1.
+
+                    if (ctx.styles.useBackgroundImage && galacticBounds.IntersectsWith(ctx.tileRect))
+                    {
+                        // Image-space rendering, so save current context
+                        using (RenderUtil.SaveState(ctx.graphics))
                         {
-                            // Scaled size of the background
-                            double w = s_backgroundImage.PixelWidth * backgroundImageScale;
-                            double h = s_backgroundImage.PixelHeight * backgroundImageScale;
+                            // Never fill outside the galaxy
+                            ctx.graphics.IntersectClip(galacticBounds);
 
-                            // Offset of the background, relative to the canvas
-                            double ox = (float)(-ctx.tileRect.Left * ctx.scale * Astrometrics.ParsecScaleX) % w;
-                            double oy = (float)(-ctx.tileRect.Top * ctx.scale * Astrometrics.ParsecScaleY) % h;
-                            if (ox > 0) { ox -= w; }
-                            if (oy > 0) { oy -= h; }
+                            // Map back to image space so it scales/tiles nicely
+                            ctx.graphics.MultiplyTransform(worldSpaceToImageSpace);
 
-                            // Number of copies needed to cover the canvas
-                            int nx = 1 + (int)Math.Floor(ctx.tileSize.Width / w);
-                            int ny = 1 + (int)Math.Floor(ctx.tileSize.Height / h);
-                            if (ox + nx * w < ctx.tileSize.Width) { nx += 1; }
-                            if (oy + ny * h < ctx.tileSize.Height) { ny += 1; }
+                            const float backgroundImageScale = 2.0f;
 
-                            for (int x = 0; x < nx; ++x)
+                            lock (s_backgroundImage)
                             {
-                                for (int y = 0; y < ny; ++y)
+                                // Scaled size of the background
+                                double w = s_backgroundImage.PixelWidth * backgroundImageScale;
+                                double h = s_backgroundImage.PixelHeight * backgroundImageScale;
+
+                                // Offset of the background, relative to the canvas
+                                double ox = (float)(-ctx.tileRect.Left * ctx.scale * Astrometrics.ParsecScaleX) % w;
+                                double oy = (float)(-ctx.tileRect.Top * ctx.scale * Astrometrics.ParsecScaleY) % h;
+                                if (ox > 0) { ox -= w; }
+                                if (oy > 0) { oy -= h; }
+
+                                // Number of copies needed to cover the canvas
+                                int nx = 1 + (int)Math.Floor(ctx.tileSize.Width / w);
+                                int ny = 1 + (int)Math.Floor(ctx.tileSize.Height / h);
+                                if (ox + nx * w < ctx.tileSize.Width) { nx += 1; }
+                                if (oy + ny * h < ctx.tileSize.Height) { ny += 1; }
+
+                                for (int x = 0; x < nx; ++x)
                                 {
-                                    ctx.graphics.DrawImage(s_backgroundImage, ox + x * w, oy + y * h, w + 1, h + 1);
-                                    //ctx.graphics.DrawRectangle( XPens.Orange, ox + x * w, oy + y * h, w, h );
+                                    for (int y = 0; y < ny; ++y)
+                                    {
+                                        ctx.graphics.DrawImage(s_backgroundImage, ox + x * w, oy + y * h, w + 1, h + 1);
+                                        //ctx.graphics.DrawRectangle( XPens.Orange, ox + x * w, oy + y * h, w, h );
+                                    }
                                 }
                             }
                         }
                     }
-                }
-                #endregion
-                timers.Add(new Timer("nebula"));
+                    #endregion
+                    timers.Add(new Timer("nebula"));
 
-                //------------------------------------------------------------
-                // Deep background (Galaxy)
-                //------------------------------------------------------------
-                #region galaxy-background
-                if (ctx.styles.useGalaxyImage && ctx.styles.deepBackgroundOpacity > 0f)
-                {
-                    using (RenderUtil.SaveState(ctx.graphics))
+                    //------------------------------------------------------------
+                    // Deep background (Galaxy)
+                    //------------------------------------------------------------
+                    #region galaxy-background
+                    if (ctx.styles.useGalaxyImage && ctx.styles.deepBackgroundOpacity > 0f)
                     {
-                        ctx.graphics.MultiplyTransform(xformLinehanToMikesh);
-                        lock (s_galaxyImage)
+                        using (RenderUtil.SaveState(ctx.graphics))
                         {
-                            RenderUtil.DrawImageAlpha(ctx.graphics, ctx.styles.deepBackgroundOpacity, s_galaxyImage, galaxyImageRect);
-                        }
-                    }
-                }
-                #endregion
-                timers.Add(new Timer("galaxy"));
-
-                //------------------------------------------------------------
-                // Pseudo-Random Stars
-                //------------------------------------------------------------
-                #region pseudorandom-stars
-
-                if (ctx.styles.pseudoRandomStars.visible)
-                {
-                    // Render pseudorandom stars based on the tile # and 
-                    // scale factor. Note that these are positioned in
-                    // screen space, not world space.
-
-                    //const int nStars = 75;
-                    int nMinStars = ctx.tileSize.Width * ctx.tileSize.Height / 300;
-                    int nStars = ctx.scale >= 1 ? nMinStars : (int)(nMinStars / ctx.scale);
-
-                    // NOTE: For performance's sake, three different cases are considered:
-                    // (1) Tile is entirely within charted space (most common) - just render
-                    //     the pseudorandom stars into the tile
-                    // (2) Tile intersects the galaxy bounds - render pseudorandom stars
-                    //     into a texture, then fill the galaxy vector with it
-                    // (3) Tile is entire outside the galaxy - don't render stars
-
-                    using (RenderUtil.SaveState(ctx.graphics))
-                    {
-                        ctx.graphics.SmoothingMode = XSmoothingMode.HighQuality;
-                        solidBrush.Color = ctx.styles.pseudoRandomStars.fillColor;
-
-                        Random rand = new Random((((int)ctx.tileRect.Left) << 8) ^ (int)ctx.tileRect.Top);
-                        for (int i = 0; i < nStars; i++)
-                        {
-                            float starX = (float)rand.NextDouble() * ctx.tileRect.Width + ctx.tileRect.X;
-                            float starY = (float)rand.NextDouble() * ctx.tileRect.Height + ctx.tileRect.Y;
-                            float d = (float)rand.NextDouble() * 2;
-
-                            //ctx.graphics.DrawRectangle( fonts.foregroundBrush, starX, starY, (float)( d / ctx.scale * Astrometrics.ParsecScaleX ), (float)( d / ctx.scale * Astrometrics.ParsecScaleY ) );
-                            ctx.graphics.DrawEllipse(solidBrush, starX, starY, (float)(d / ctx.scale * Astrometrics.ParsecScaleX), (float)(d / ctx.scale * Astrometrics.ParsecScaleY));
-                        }
-                    }
-                }
-                #endregion
-                timers.Add(new Timer("pseudorandom"));
-
-                //------------------------------------------------------------
-                // Rifts in Charted Space
-                //------------------------------------------------------------
-                #region riftFiles
-
-                if (ctx.styles.showRifts && ctx.styles.riftOpacity > 0f)
-                {
-                    Rectangle riftImageRect;
-                    riftImageRect = new Rectangle(-1374, -827, 2769, 1754); // Correct
-                    lock (s_riftImage)
-                    {
-                        RenderUtil.DrawImageAlpha(ctx.graphics, ctx.styles.riftOpacity, s_riftImage, riftImageRect);
-                    }
-                }
-                #endregion
-                timers.Add(new Timer("riftFiles"));
-
-                //------------------------------------------------------------
-                // April Fool's Day
-                //------------------------------------------------------------
-                #region april-fools
-
-                if (ctx.silly)
-                {
-                    using (RenderUtil.SaveState(ctx.graphics))
-                    {
-                        // Render in image-space
-                        ctx.graphics.MultiplyTransform(worldSpaceToImageSpace);
-
-                        XImage sillyImage = ctx.styles.grayscale ? s_sillyImageGray : s_sillyImageColor;
-
-                        lock (sillyImage)
-                        {
-                            ctx.graphics.DrawImage(sillyImage, 0, 0, ctx.tileSize.Width, ctx.tileSize.Height);
-                        }
-                    }
-                    timers.Add(new Timer("silly"));
-                }
-
-                #endregion
-
-                //------------------------------------------------------------
-                // Macro: Borders object
-                //------------------------------------------------------------
-                #region macro-borders
-                if (ctx.styles.macroBorders.visible)
-                {
-                    ctx.styles.macroBorders.pen.Apply(ref pen);
-                    ctx.graphics.SmoothingMode = XSmoothingMode.AntiAlias;
-                    foreach (var vec in borderFiles
-                        .Select(file => ctx.resourceManager.GetXmlFileObject(file, typeof(VectorObject)))
-                        .OfType<VectorObject>()
-                        .Where(vec => (vec.MapOptions & ctx.options & MapOptions.BordersMask) != 0))
-                    {
-                        vec.Draw(ctx.graphics, ctx.tileRect, ctx.options, pen);
-                    }
-
-                }
-                #endregion
-                timers.Add(new Timer("macroborder"));
-
-                //------------------------------------------------------------
-                // Macro: Route object
-                //------------------------------------------------------------
-                #region macro-routes
-
-                if (ctx.styles.macroRoutes.visible)
-                {
-                    ctx.styles.macroRoutes.pen.Apply(ref pen);
-                    ctx.graphics.SmoothingMode = XSmoothingMode.AntiAlias;
-                    foreach (var vec in routeFiles
-                        .Select(file => ctx.resourceManager.GetXmlFileObject(file, typeof(VectorObject)))
-                        .OfType<VectorObject>()
-                        .Where(vec => (vec.MapOptions & ctx.options & MapOptions.BordersMask) != 0))
-                    {
-                        vec.Draw(ctx.graphics, ctx.tileRect, ctx.options, pen);
-                    }
-                }
-                #endregion
-                timers.Add(new Timer("macroroute"));
-
-                //------------------------------------------------------------
-                // Sector Grid
-                //------------------------------------------------------------
-                #region sector-grid
-
-                ctx.graphics.SmoothingMode = XSmoothingMode.HighSpeed;
-
-                if (ctx.styles.sectorGrid.visible)
-                {
-                    const int gridSlop = 10;
-                    ctx.styles.sectorGrid.pen.Apply(ref pen);
-
-                    for (float h = ((float)(Math.Floor((ctx.tileRect.Left) / Astrometrics.SectorWidth) - 1) - Astrometrics.ReferenceSector.X) * Astrometrics.SectorWidth - Astrometrics.ReferenceHex.X; h <= ctx.tileRect.Right + Astrometrics.SectorWidth; h += Astrometrics.SectorWidth)
-                    {
-                        ctx.graphics.DrawLine(pen, h, ctx.tileRect.Top - gridSlop, h, ctx.tileRect.Bottom + gridSlop);
-                    }
-
-                    for (float v = ((float)(Math.Floor((ctx.tileRect.Top) / Astrometrics.SectorHeight) - 1) - Astrometrics.ReferenceSector.Y) * Astrometrics.SectorHeight - Astrometrics.ReferenceHex.Y; v <= ctx.tileRect.Bottom + Astrometrics.SectorHeight; v += Astrometrics.SectorHeight)
-                    {
-                        ctx.graphics.DrawLine(pen, ctx.tileRect.Left - gridSlop, v, ctx.tileRect.Right + gridSlop, v);
-                    }
-                }
-
-                #endregion
-
-                //------------------------------------------------------------
-                // Subsector Grid
-                //------------------------------------------------------------
-                #region subsector-grid
-                ctx.graphics.SmoothingMode = XSmoothingMode.HighSpeed;
-                if (ctx.styles.subsectorGrid.visible)
-                {
-                    const int gridSlop = 10;
-                    ctx.styles.subsectorGrid.pen.Apply(ref pen);
-
-                    int hmin = (int)Math.Floor(ctx.tileRect.Left / Astrometrics.SubsectorWidth) - 1 - Astrometrics.ReferenceSector.X,
-                        hmax = (int)Math.Ceiling((ctx.tileRect.Right + Astrometrics.SubsectorWidth + Astrometrics.ReferenceHex.X) / Astrometrics.SubsectorWidth);
-                    for (int hi = hmin; hi <= hmax; ++hi)
-                    {
-                        if (hi % 4 == 0) continue;
-                        float h = hi * Astrometrics.SubsectorWidth - Astrometrics.ReferenceHex.X;
-                        ctx.graphics.DrawLine(pen, h, ctx.tileRect.Top - gridSlop, h, ctx.tileRect.Bottom + gridSlop);
-                    }
-
-                    int vmin = (int)Math.Floor(ctx.tileRect.Top / Astrometrics.SubsectorHeight) - 1 - Astrometrics.ReferenceSector.Y,
-                        vmax = (int)Math.Ceiling((ctx.tileRect.Bottom + Astrometrics.SubsectorHeight + Astrometrics.ReferenceHex.Y) / Astrometrics.SubsectorHeight);
-                    for (int vi = vmin; vi <= vmax; ++vi)
-                    {
-                        if (vi % 4 == 0) continue;
-                        float v = vi * Astrometrics.SubsectorHeight - Astrometrics.ReferenceHex.Y;
-                        ctx.graphics.DrawLine(pen, ctx.tileRect.Left - gridSlop, v, ctx.tileRect.Right + gridSlop, v);
-                    }
-                }
-                #endregion
-
-                //------------------------------------------------------------
-                // Parsec Grid
-                //------------------------------------------------------------
-                #region parsec-grid
-                // TODO: Optimize - timers indicate this is slow
-                ctx.graphics.SmoothingMode = XSmoothingMode.HighQuality;
-                if (ctx.styles.parsecGrid.visible)
-                {
-                    const int parsecSlop = 1;
-
-                    int hx = (int)Math.Floor(ctx.tileRect.Left);
-                    int hw = (int)Math.Ceiling(ctx.tileRect.Width);
-                    int hy = (int)Math.Floor(ctx.tileRect.Top);
-                    int hh = (int)Math.Ceiling(ctx.tileRect.Height);
-
-                    ctx.styles.parsecGrid.pen.Apply(ref pen);
-
-                    switch (ctx.styles.microBorderStyle)
-                    {
-                        case MicroBorderStyle.Square:
-                            for (int px = hx - parsecSlop; px < hx + hw + parsecSlop; px++)
+                            ctx.graphics.MultiplyTransform(xformLinehanToMikesh);
+                            lock (s_galaxyImage)
                             {
-                                float yOffset = ((px % 2) != 0) ? 0.0f : 0.5f;
-                                for (int py = hy - parsecSlop; py < hy + hh + parsecSlop; py++)
-                                {
-                                    // TODO: use RenderUtil.(Square|Hex)Edges(X|Y) arrays
-                                    const float inset = 0.1f;
-                                    ctx.graphics.DrawRectangle(pen, px + inset, py + inset + yOffset, 1 - inset * 2, 1 - inset * 2);
-                                }
+                                RenderUtil.DrawImageAlpha(ctx.graphics, ctx.styles.deepBackgroundOpacity, s_galaxyImage, galaxyImageRect);
                             }
-                            break;
-
-                        case MicroBorderStyle.Hex:
-                            XPoint[] points = new XPoint[4];
-                            for (int px = hx - parsecSlop; px < hx + hw + parsecSlop; px++)
-                            {
-                                float yOffset = ((px % 2) != 0) ? 0.0f : 0.5f;
-                                for (int py = hy - parsecSlop; py < hy + hh + parsecSlop; py++)
-                                {
-                                    // TODO: use RenderUtil.(Square|Hex)Edges(X|Y) arrays
-                                    const float hexEdge = 0.18f; // TODO: Need to compute this (should be cos(60), inverse-scaled)
-                                    points[0] = new XPoint(px + -hexEdge, py + 0.5f + yOffset);
-                                    points[1] = new XPoint(px + hexEdge, py + 1.0f + yOffset);
-                                    points[2] = new XPoint(px + 1.0f - hexEdge, py + 1.0f + yOffset);
-                                    points[3] = new XPoint(px + 1.0f + hexEdge, py + 0.5f + yOffset);
-                                    ctx.graphics.DrawLines(pen, points);
-                                }
-                            }
-                            break;
-                        case MicroBorderStyle.Curve:
-                            // none
-                            break;
-                    }
-                }
-                #endregion
-                timers.Add(new Timer("parsec grids"));
-
-                //------------------------------------------------------------
-                // Subsector Names
-                //------------------------------------------------------------
-                #region subsector-names
-
-                if (ctx.styles.subsectorNames.visible)
-                {
-                    solidBrush.Color = ctx.styles.subsectorNames.textColor;
-                    foreach (Sector sector in ctx.selector.Sectors)
-                    {
-                        for (int i = 0; i < 16; i++)
-                        {
-                            int ssx = i % 4;
-                            int ssy = i / 4;
-
-                            Subsector ss = sector[i];
-                            if (ss == null || String.IsNullOrEmpty(ss.Name))
-                                continue;
-
-                            Point center = sector.SubsectorCenter(i);
-                            RenderUtil.DrawLabel(ctx.graphics, ss.Name, center, ctx.styles.subsectorNames.Font, solidBrush, ctx.styles.subsectorNames.textStyle);
                         }
                     }
-                }
+                    #endregion
+                    timers.Add(new Timer("galaxy"));
 
-                #endregion
+                    //------------------------------------------------------------
+                    // Pseudo-Random Stars
+                    //------------------------------------------------------------
+                    #region pseudorandom-stars
 
-                //------------------------------------------------------------
-                // Micro: Borders
-                //------------------------------------------------------------
-                #region micro-borders
-                if (ctx.styles.microBorders.visible)
-                {
-                    if (ctx.styles.fillMicroBorders)
+                    if (ctx.styles.pseudoRandomStars.visible)
                     {
-                        DrawMicroBorders(ctx, fonts, BorderLayer.Fill);
+                        // Render pseudorandom stars based on the tile # and 
+                        // scale factor. Note that these are positioned in
+                        // screen space, not world space.
+
+                        //const int nStars = 75;
+                        int nMinStars = ctx.tileSize.Width * ctx.tileSize.Height / 300;
+                        int nStars = ctx.scale >= 1 ? nMinStars : (int)(nMinStars / ctx.scale);
+
+                        // NOTE: For performance's sake, three different cases are considered:
+                        // (1) Tile is entirely within charted space (most common) - just render
+                        //     the pseudorandom stars into the tile
+                        // (2) Tile intersects the galaxy bounds - render pseudorandom stars
+                        //     into a texture, then fill the galaxy vector with it
+                        // (3) Tile is entire outside the galaxy - don't render stars
+
+                        using (RenderUtil.SaveState(ctx.graphics))
+                        {
+                            ctx.graphics.SmoothingMode = XSmoothingMode.HighQuality;
+                            solidBrush.Color = ctx.styles.pseudoRandomStars.fillColor;
+
+                            Random rand = new Random((((int)ctx.tileRect.Left) << 8) ^ (int)ctx.tileRect.Top);
+                            for (int i = 0; i < nStars; i++)
+                            {
+                                float starX = (float)rand.NextDouble() * ctx.tileRect.Width + ctx.tileRect.X;
+                                float starY = (float)rand.NextDouble() * ctx.tileRect.Height + ctx.tileRect.Y;
+                                float d = (float)rand.NextDouble() * 2;
+
+                                //ctx.graphics.DrawRectangle( fonts.foregroundBrush, starX, starY, (float)( d / ctx.scale * Astrometrics.ParsecScaleX ), (float)( d / ctx.scale * Astrometrics.ParsecScaleY ) );
+                                ctx.graphics.DrawEllipse(solidBrush, starX, starY, (float)(d / ctx.scale * Astrometrics.ParsecScaleX), (float)(d / ctx.scale * Astrometrics.ParsecScaleY));
+                            }
+                        }
                     }
-                    DrawMicroBorders(ctx, fonts, BorderLayer.Stroke);
-                }
-                #endregion
-                timers.Add(new Timer("microborders"));
+                    #endregion
+                    timers.Add(new Timer("pseudorandom"));
 
-                //------------------------------------------------------------
-                // Micro: Routes
-                //------------------------------------------------------------
-                #region routes
+                    //------------------------------------------------------------
+                    // Rifts in Charted Space
+                    //------------------------------------------------------------
+                    #region riftFiles
 
-                if (ctx.styles.microRoutes.visible)
-                {
-                    DrawRoutes(ctx, fonts);
-                }
-                #endregion
-                timers.Add(new Timer("routes"));
-
-                //------------------------------------------------------------
-                // Sector Names
-                //------------------------------------------------------------
-                #region sector-names
-
-                if (ctx.styles.showSomeSectorNames || ctx.styles.subsectorNames.visible)
-                {
-                    foreach (Sector sector in ctx.selector.Sectors
-                        .Where(sector => ctx.styles.showAllSectorNames || (ctx.styles.showSomeSectorNames && sector.Selected))
-                        .Where(sector => sector.Names.Any()))
+                    if (ctx.styles.showRifts && ctx.styles.riftOpacity > 0f)
                     {
-                        solidBrush.Color = ctx.styles.sectorName.textColor;
-                        string name = sector.Names[0].Text;
-
-                        RenderUtil.DrawLabel(ctx.graphics, name, sector.Center, ctx.styles.sectorName.Font, solidBrush, ctx.styles.sectorName.textStyle);
+                        Rectangle riftImageRect;
+                        riftImageRect = new Rectangle(-1374, -827, 2769, 1754); // Correct
+                        lock (s_riftImage)
+                        {
+                            RenderUtil.DrawImageAlpha(ctx.graphics, ctx.styles.riftOpacity, s_riftImage, riftImageRect);
+                        }
                     }
-                }
+                    #endregion
+                    timers.Add(new Timer("riftFiles"));
 
-                #endregion
+                    //------------------------------------------------------------
+                    // April Fool's Day
+                    //------------------------------------------------------------
+                    #region april-fools
 
-                //------------------------------------------------------------
-                // Macro: Government / Rift / Route Names
-                //------------------------------------------------------------
-                #region government-rift-names
-                if (ctx.styles.macroNames.visible)
-                {
-                    foreach (var vec in borderFiles
-                        .Select(file => ctx.resourceManager.GetXmlFileObject(file, typeof(VectorObject)))
-                        .OfType<VectorObject>()
-                        .Where(vec => (vec.MapOptions & ctx.options & MapOptions.NamesMask) != 0))
+                    if (ctx.silly)
                     {
-                        bool major = vec.MapOptions.HasFlag(MapOptions.NamesMajor);
-                        LabelStyle labelStyle = new LabelStyle();
-                        labelStyle.Uppercase = major;
-                        XFont font = major ? ctx.styles.macroNames.Font : ctx.styles.macroNames.SmallFont;
-                        solidBrush.Color = major ? ctx.styles.macroNames.textColor : ctx.styles.macroNames.textHighlightColor;
-                        vec.DrawName(ctx.graphics, ctx.tileRect, ctx.options, font, solidBrush, labelStyle);
+                        using (RenderUtil.SaveState(ctx.graphics))
+                        {
+                            // Render in image-space
+                            ctx.graphics.MultiplyTransform(worldSpaceToImageSpace);
+
+                            XImage sillyImage = ctx.styles.grayscale ? s_sillyImageGray : s_sillyImageColor;
+
+                            lock (sillyImage)
+                            {
+                                ctx.graphics.DrawImage(sillyImage, 0, 0, ctx.tileSize.Width, ctx.tileSize.Height);
+                            }
+                        }
+                        timers.Add(new Timer("silly"));
                     }
 
-                    foreach (var vec in riftFiles
-                        .Select(file => ctx.resourceManager.GetXmlFileObject(file, typeof(VectorObject)))
-                        .OfType<VectorObject>()
-                        .Where(vec => (vec.MapOptions & ctx.options & MapOptions.NamesMask) != 0))
+                    #endregion
+
+                    //------------------------------------------------------------
+                    // Macro: Borders object
+                    //------------------------------------------------------------
+                    #region macro-borders
+                    if (ctx.styles.macroBorders.visible)
                     {
-                        bool major = vec.MapOptions.HasFlag(MapOptions.NamesMajor);
-                        LabelStyle labelStyle = new LabelStyle();
-                        labelStyle.Rotation = 35;
-                        labelStyle.Uppercase = major;
-                        XFont font = major ? ctx.styles.macroNames.Font : ctx.styles.macroNames.SmallFont;
-                        solidBrush.Color = major ? ctx.styles.macroNames.textColor : ctx.styles.macroNames.textHighlightColor;
-                        vec.DrawName(ctx.graphics, ctx.tileRect, ctx.options, font, solidBrush, labelStyle);
+                        ctx.styles.macroBorders.pen.Apply(ref pen);
+                        ctx.graphics.SmoothingMode = XSmoothingMode.AntiAlias;
+                        foreach (var vec in borderFiles
+                            .Select(file => ctx.resourceManager.GetXmlFileObject(file, typeof(VectorObject)))
+                            .OfType<VectorObject>()
+                            .Where(vec => (vec.MapOptions & ctx.options & MapOptions.BordersMask) != 0))
+                        {
+                            vec.Draw(ctx.graphics, ctx.tileRect, ctx.options, pen);
+                        }
+
                     }
+                    #endregion
+                    timers.Add(new Timer("macroborder"));
+
+                    //------------------------------------------------------------
+                    // Macro: Route object
+                    //------------------------------------------------------------
+                    #region macro-routes
 
                     if (ctx.styles.macroRoutes.visible)
                     {
+                        ctx.styles.macroRoutes.pen.Apply(ref pen);
+                        ctx.graphics.SmoothingMode = XSmoothingMode.AntiAlias;
                         foreach (var vec in routeFiles
+                            .Select(file => ctx.resourceManager.GetXmlFileObject(file, typeof(VectorObject)))
+                            .OfType<VectorObject>()
+                            .Where(vec => (vec.MapOptions & ctx.options & MapOptions.BordersMask) != 0))
+                        {
+                            vec.Draw(ctx.graphics, ctx.tileRect, ctx.options, pen);
+                        }
+                    }
+                    #endregion
+                    timers.Add(new Timer("macroroute"));
+
+                    //------------------------------------------------------------
+                    // Sector Grid
+                    //------------------------------------------------------------
+                    #region sector-grid
+
+                    ctx.graphics.SmoothingMode = XSmoothingMode.HighSpeed;
+
+                    if (ctx.styles.sectorGrid.visible)
+                    {
+                        const int gridSlop = 10;
+                        ctx.styles.sectorGrid.pen.Apply(ref pen);
+
+                        for (float h = ((float)(Math.Floor((ctx.tileRect.Left) / Astrometrics.SectorWidth) - 1) - Astrometrics.ReferenceSector.X) * Astrometrics.SectorWidth - Astrometrics.ReferenceHex.X; h <= ctx.tileRect.Right + Astrometrics.SectorWidth; h += Astrometrics.SectorWidth)
+                        {
+                            ctx.graphics.DrawLine(pen, h, ctx.tileRect.Top - gridSlop, h, ctx.tileRect.Bottom + gridSlop);
+                        }
+
+                        for (float v = ((float)(Math.Floor((ctx.tileRect.Top) / Astrometrics.SectorHeight) - 1) - Astrometrics.ReferenceSector.Y) * Astrometrics.SectorHeight - Astrometrics.ReferenceHex.Y; v <= ctx.tileRect.Bottom + Astrometrics.SectorHeight; v += Astrometrics.SectorHeight)
+                        {
+                            ctx.graphics.DrawLine(pen, ctx.tileRect.Left - gridSlop, v, ctx.tileRect.Right + gridSlop, v);
+                        }
+                    }
+
+                    #endregion
+
+                    //------------------------------------------------------------
+                    // Subsector Grid
+                    //------------------------------------------------------------
+                    #region subsector-grid
+                    ctx.graphics.SmoothingMode = XSmoothingMode.HighSpeed;
+                    if (ctx.styles.subsectorGrid.visible)
+                    {
+                        const int gridSlop = 10;
+                        ctx.styles.subsectorGrid.pen.Apply(ref pen);
+
+                        int hmin = (int)Math.Floor(ctx.tileRect.Left / Astrometrics.SubsectorWidth) - 1 - Astrometrics.ReferenceSector.X,
+                            hmax = (int)Math.Ceiling((ctx.tileRect.Right + Astrometrics.SubsectorWidth + Astrometrics.ReferenceHex.X) / Astrometrics.SubsectorWidth);
+                        for (int hi = hmin; hi <= hmax; ++hi)
+                        {
+                            if (hi % 4 == 0) continue;
+                            float h = hi * Astrometrics.SubsectorWidth - Astrometrics.ReferenceHex.X;
+                            ctx.graphics.DrawLine(pen, h, ctx.tileRect.Top - gridSlop, h, ctx.tileRect.Bottom + gridSlop);
+                        }
+
+                        int vmin = (int)Math.Floor(ctx.tileRect.Top / Astrometrics.SubsectorHeight) - 1 - Astrometrics.ReferenceSector.Y,
+                            vmax = (int)Math.Ceiling((ctx.tileRect.Bottom + Astrometrics.SubsectorHeight + Astrometrics.ReferenceHex.Y) / Astrometrics.SubsectorHeight);
+                        for (int vi = vmin; vi <= vmax; ++vi)
+                        {
+                            if (vi % 4 == 0) continue;
+                            float v = vi * Astrometrics.SubsectorHeight - Astrometrics.ReferenceHex.Y;
+                            ctx.graphics.DrawLine(pen, ctx.tileRect.Left - gridSlop, v, ctx.tileRect.Right + gridSlop, v);
+                        }
+                    }
+                    #endregion
+
+                    //------------------------------------------------------------
+                    // Parsec Grid
+                    //------------------------------------------------------------
+                    #region parsec-grid
+                    // TODO: Optimize - timers indicate this is slow
+                    ctx.graphics.SmoothingMode = XSmoothingMode.HighQuality;
+                    if (ctx.styles.parsecGrid.visible)
+                    {
+                        const int parsecSlop = 1;
+
+                        int hx = (int)Math.Floor(ctx.tileRect.Left);
+                        int hw = (int)Math.Ceiling(ctx.tileRect.Width);
+                        int hy = (int)Math.Floor(ctx.tileRect.Top);
+                        int hh = (int)Math.Ceiling(ctx.tileRect.Height);
+
+                        ctx.styles.parsecGrid.pen.Apply(ref pen);
+
+                        switch (ctx.styles.microBorderStyle)
+                        {
+                            case MicroBorderStyle.Square:
+                                for (int px = hx - parsecSlop; px < hx + hw + parsecSlop; px++)
+                                {
+                                    float yOffset = ((px % 2) != 0) ? 0.0f : 0.5f;
+                                    for (int py = hy - parsecSlop; py < hy + hh + parsecSlop; py++)
+                                    {
+                                        // TODO: use RenderUtil.(Square|Hex)Edges(X|Y) arrays
+                                        const float inset = 0.1f;
+                                        ctx.graphics.DrawRectangle(pen, px + inset, py + inset + yOffset, 1 - inset * 2, 1 - inset * 2);
+                                    }
+                                }
+                                break;
+
+                            case MicroBorderStyle.Hex:
+                                XPoint[] points = new XPoint[4];
+                                for (int px = hx - parsecSlop; px < hx + hw + parsecSlop; px++)
+                                {
+                                    float yOffset = ((px % 2) != 0) ? 0.0f : 0.5f;
+                                    for (int py = hy - parsecSlop; py < hy + hh + parsecSlop; py++)
+                                    {
+                                        // TODO: use RenderUtil.(Square|Hex)Edges(X|Y) arrays
+                                        const float hexEdge = 0.18f; // TODO: Need to compute this (should be cos(60), inverse-scaled)
+                                        points[0] = new XPoint(px + -hexEdge, py + 0.5f + yOffset);
+                                        points[1] = new XPoint(px + hexEdge, py + 1.0f + yOffset);
+                                        points[2] = new XPoint(px + 1.0f - hexEdge, py + 1.0f + yOffset);
+                                        points[3] = new XPoint(px + 1.0f + hexEdge, py + 0.5f + yOffset);
+                                        ctx.graphics.DrawLines(pen, points);
+                                    }
+                                }
+                                break;
+                            case MicroBorderStyle.Curve:
+                                // none
+                                break;
+                        }
+                    }
+                    #endregion
+                    timers.Add(new Timer("parsec grids"));
+
+                    //------------------------------------------------------------
+                    // Subsector Names
+                    //------------------------------------------------------------
+                    #region subsector-names
+
+                    if (ctx.styles.subsectorNames.visible)
+                    {
+                        solidBrush.Color = ctx.styles.subsectorNames.textColor;
+                        foreach (Sector sector in ctx.selector.Sectors)
+                        {
+                            for (int i = 0; i < 16; i++)
+                            {
+                                int ssx = i % 4;
+                                int ssy = i / 4;
+
+                                Subsector ss = sector[i];
+                                if (ss == null || String.IsNullOrEmpty(ss.Name))
+                                    continue;
+
+                                Point center = sector.SubsectorCenter(i);
+                                RenderUtil.DrawLabel(ctx.graphics, ss.Name, center, ctx.styles.subsectorNames.Font, solidBrush, ctx.styles.subsectorNames.textStyle);
+                            }
+                        }
+                    }
+
+                    #endregion
+
+                    //------------------------------------------------------------
+                    // Micro: Borders
+                    //------------------------------------------------------------
+                    #region micro-borders
+                    if (ctx.styles.microBorders.visible)
+                    {
+                        if (ctx.styles.fillMicroBorders)
+                        {
+                            DrawMicroBorders(ctx, fonts, BorderLayer.Fill);
+                        }
+                        DrawMicroBorders(ctx, fonts, BorderLayer.Stroke);
+                    }
+                    #endregion
+                    timers.Add(new Timer("microborders"));
+
+                    //------------------------------------------------------------
+                    // Micro: Routes
+                    //------------------------------------------------------------
+                    #region routes
+
+                    if (ctx.styles.microRoutes.visible)
+                    {
+                        DrawRoutes(ctx, fonts);
+                    }
+                    #endregion
+                    timers.Add(new Timer("routes"));
+
+                    //------------------------------------------------------------
+                    // Sector Names
+                    //------------------------------------------------------------
+                    #region sector-names
+
+                    if (ctx.styles.showSomeSectorNames || ctx.styles.subsectorNames.visible)
+                    {
+                        foreach (Sector sector in ctx.selector.Sectors
+                            .Where(sector => ctx.styles.showAllSectorNames || (ctx.styles.showSomeSectorNames && sector.Selected))
+                            .Where(sector => sector.Names.Any()))
+                        {
+                            solidBrush.Color = ctx.styles.sectorName.textColor;
+                            string name = sector.Names[0].Text;
+
+                            RenderUtil.DrawLabel(ctx.graphics, name, sector.Center, ctx.styles.sectorName.Font, solidBrush, ctx.styles.sectorName.textStyle);
+                        }
+                    }
+
+                    #endregion
+
+                    //------------------------------------------------------------
+                    // Macro: Government / Rift / Route Names
+                    //------------------------------------------------------------
+                    #region government-rift-names
+                    if (ctx.styles.macroNames.visible)
+                    {
+                        foreach (var vec in borderFiles
                             .Select(file => ctx.resourceManager.GetXmlFileObject(file, typeof(VectorObject)))
                             .OfType<VectorObject>()
                             .Where(vec => (vec.MapOptions & ctx.options & MapOptions.NamesMask) != 0))
@@ -661,71 +648,103 @@ namespace Maps.Rendering
                             LabelStyle labelStyle = new LabelStyle();
                             labelStyle.Uppercase = major;
                             XFont font = major ? ctx.styles.macroNames.Font : ctx.styles.macroNames.SmallFont;
-                            solidBrush.Color = major ? ctx.styles.macroRoutes.textColor : ctx.styles.macroRoutes.textHighlightColor;
+                            solidBrush.Color = major ? ctx.styles.macroNames.textColor : ctx.styles.macroNames.textHighlightColor;
                             vec.DrawName(ctx.graphics, ctx.tileRect, ctx.options, font, solidBrush, labelStyle);
                         }
-                    }
 
-                    if (ctx.options.HasFlag(MapOptions.NamesMinor))
-                    {
-                        // TODO: Bigger font, italic
-                        XFont font = ctx.styles.macroNames.MediumFont;
-                        solidBrush.Color = ctx.styles.macroRoutes.textHighlightColor;
-                        foreach (var label in labels)
+                        foreach (var vec in riftFiles
+                            .Select(file => ctx.resourceManager.GetXmlFileObject(file, typeof(VectorObject)))
+                            .OfType<VectorObject>()
+                            .Where(vec => (vec.MapOptions & ctx.options & MapOptions.NamesMask) != 0))
                         {
-                            using (RenderUtil.SaveState(ctx.graphics))
-                            {
-                                XMatrix matrix = new XMatrix();
-                                matrix.ScalePrepend(1.0f / Astrometrics.ParsecScaleX, 1.0f / Astrometrics.ParsecScaleY);
-                                matrix.TranslatePrepend(label.position.X, label.position.Y);
-                                ctx.graphics.MultiplyTransform(matrix, XMatrixOrder.Prepend);
+                            bool major = vec.MapOptions.HasFlag(MapOptions.NamesMajor);
+                            LabelStyle labelStyle = new LabelStyle();
+                            labelStyle.Rotation = 35;
+                            labelStyle.Uppercase = major;
+                            XFont font = major ? ctx.styles.macroNames.Font : ctx.styles.macroNames.SmallFont;
+                            solidBrush.Color = major ? ctx.styles.macroNames.textColor : ctx.styles.macroNames.textHighlightColor;
+                            vec.DrawName(ctx.graphics, ctx.tileRect, ctx.options, font, solidBrush, labelStyle);
+                        }
 
-                                XSize size = ctx.graphics.MeasureString(label.text, font);
-                                ctx.graphics.TranslateTransform(-size.Width / 2, -size.Height / 2); // Center the text
-                                RectangleF textBounds = new RectangleF(0, 0, (float)size.Width, (float)size.Height * 2); // *2 or it gets cut off at high sizes
-                                ctx.graphics.DrawString(label.text, font, solidBrush, textBounds, RenderUtil.StringFormatTopCenter);
+                        if (ctx.styles.macroRoutes.visible)
+                        {
+                            foreach (var vec in routeFiles
+                                .Select(file => ctx.resourceManager.GetXmlFileObject(file, typeof(VectorObject)))
+                                .OfType<VectorObject>()
+                                .Where(vec => (vec.MapOptions & ctx.options & MapOptions.NamesMask) != 0))
+                            {
+                                bool major = vec.MapOptions.HasFlag(MapOptions.NamesMajor);
+                                LabelStyle labelStyle = new LabelStyle();
+                                labelStyle.Uppercase = major;
+                                XFont font = major ? ctx.styles.macroNames.Font : ctx.styles.macroNames.SmallFont;
+                                solidBrush.Color = major ? ctx.styles.macroRoutes.textColor : ctx.styles.macroRoutes.textHighlightColor;
+                                vec.DrawName(ctx.graphics, ctx.tileRect, ctx.options, font, solidBrush, labelStyle);
                             }
                         }
 
-                    }
-                }
-
-                #endregion
-
-                //------------------------------------------------------------
-                // Macro: Capitals & Home Worlds
-                //------------------------------------------------------------
-                #region capitals-homeworlds
-
-                if (ctx.styles.capitals.visible && (ctx.options & MapOptions.WorldsMask) != 0)
-                {
-                    WorldObjectCollection worlds = ctx.resourceManager.GetXmlFileObject(@"~/res/Worlds.xml", typeof(WorldObjectCollection)) as WorldObjectCollection;
-                    if (worlds != null)
-                    {
-                        solidBrush.Color = ctx.styles.capitals.textColor;
-                        foreach (WorldObject world in worlds.Worlds.Where(world => (world.MapOptions & ctx.options) != 0))
+                        if (ctx.options.HasFlag(MapOptions.NamesMinor))
                         {
-                            world.Paint(ctx.graphics, ctx.tileRect, ctx.options, ctx.styles.capitals.fillColor,
-                                solidBrush, ctx.styles.macroNames.SmallFont);
+                            // TODO: Bigger font, italic
+                            XFont font = ctx.styles.macroNames.MediumFont;
+                            solidBrush.Color = ctx.styles.macroRoutes.textHighlightColor;
+                            foreach (var label in labels)
+                            {
+                                using (RenderUtil.SaveState(ctx.graphics))
+                                {
+                                    XMatrix matrix = new XMatrix();
+                                    matrix.ScalePrepend(1.0f / Astrometrics.ParsecScaleX, 1.0f / Astrometrics.ParsecScaleY);
+                                    matrix.TranslatePrepend(label.position.X, label.position.Y);
+                                    ctx.graphics.MultiplyTransform(matrix, XMatrixOrder.Prepend);
+
+                                    XSize size = ctx.graphics.MeasureString(label.text, font);
+                                    ctx.graphics.TranslateTransform(-size.Width / 2, -size.Height / 2); // Center the text
+                                    RectangleF textBounds = new RectangleF(0, 0, (float)size.Width, (float)size.Height * 2); // *2 or it gets cut off at high sizes
+                                    ctx.graphics.DrawString(label.text, font, solidBrush, textBounds, RenderUtil.StringFormatTopCenter);
+                                }
+                            }
+
                         }
                     }
+
+                    #endregion
+
+                    //------------------------------------------------------------
+                    // Macro: Capitals & Home Worlds
+                    //------------------------------------------------------------
+                    #region capitals-homeworlds
+
+                    if (ctx.styles.capitals.visible && (ctx.options & MapOptions.WorldsMask) != 0)
+                    {
+                        WorldObjectCollection worlds = ctx.resourceManager.GetXmlFileObject(@"~/res/Worlds.xml", typeof(WorldObjectCollection)) as WorldObjectCollection;
+                        if (worlds != null)
+                        {
+                            solidBrush.Color = ctx.styles.capitals.textColor;
+                            foreach (WorldObject world in worlds.Worlds.Where(world => (world.MapOptions & ctx.options) != 0))
+                            {
+                                world.Paint(ctx.graphics, ctx.tileRect, ctx.options, ctx.styles.capitals.fillColor,
+                                    solidBrush, ctx.styles.macroNames.SmallFont);
+                            }
+                        }
+                    }
+
+                    #endregion
+                    timers.Add(new Timer("grids and names"));
+
+                    //------------------------------------------------------------
+                    // Micro: Government Names
+                    //------------------------------------------------------------
+                    #region government-names
+
+                    if (ctx.styles.showMicroNames)
+                    {
+                        DrawLabels(ctx, fonts);
+                    }
+
+                    #endregion
+                    timers.Add(new Timer("micro"));
                 }
 
-                #endregion
-                timers.Add(new Timer("grids and names"));
-
-                //------------------------------------------------------------
-                // Micro: Government Names
-                //------------------------------------------------------------
-                #region government-names
-
-                if (ctx.styles.showMicroNames)
-                {
-                    DrawLabels(ctx, fonts);
-                }
-
-                #endregion
-                timers.Add(new Timer("micro"));
+                // End of clipping, so world names are not clipped in jumpmaps.
 
                 //------------------------------------------------------------
                 // Worlds

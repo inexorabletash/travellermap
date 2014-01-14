@@ -150,23 +150,6 @@ namespace Maps.API
             graphics.TranslateTransform(translateX, translateY);
             graphics.RotateTransform(rot * 90);
 
-            using (Maps.Rendering.RenderUtil.SaveState(graphics))
-            {
-
-                if (ctx.clipPath != null)
-                {
-                    XMatrix m = ctx.ImageSpaceToWorldSpace;
-                    graphics.MultiplyTransform(m);
-                    graphics.IntersectClip(ctx.clipPath);
-                    m.Invert();
-                    graphics.MultiplyTransform(m);
-                }
-
-                ctx.graphics = graphics;
-                Maps.Rendering.Render.RenderTile(ctx);
-            }
-
-
             if (ctx.border && ctx.clipPath != null)
             {
                 using (Maps.Rendering.RenderUtil.SaveState(graphics))
@@ -200,6 +183,25 @@ namespace Maps.API
                     graphics.DrawPath(pen, ctx.clipPath);
                 }
             }
+
+            using (Maps.Rendering.RenderUtil.SaveState(graphics))
+            {
+                /*
+                if (ctx.clipPath != null)
+                {
+                    XMatrix m = ctx.ImageSpaceToWorldSpace;
+                    graphics.MultiplyTransform(m);
+                    graphics.IntersectClip(ctx.clipPath);
+                    m.Invert();
+                    graphics.MultiplyTransform(m);
+                }
+                 * */
+
+                ctx.graphics = graphics;
+                Maps.Rendering.Render.RenderTile(ctx);
+            }
+
+
         }
 
         private static void BitmapResponse(HttpResponse response, Stream outputStream, Stylesheet styles, Bitmap bitmap, string mimeType)
