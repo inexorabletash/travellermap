@@ -32,27 +32,32 @@
     return s.split(/ /g).map(capitalize).join(' ');
   }
 
-  function status(string, showImage) {
+  var finished = false;
+  function status(string, pending) {
+    if (finished) return;
     var statusElement = $('#status'),
         statusText = $('#statusText'),
         statusImage = $('#statusImage');
 
-    if (!string) {
+    if (!string && !pending) {
       statusElement.style.display = 'none';
       return;
     }
+
+    finished = !pending;
     string = String(string);
     statusElement.style.display = '';
     statusText.innerHTML = escapeHtml(string);
-    statusImage.style.display = showImage ? '' : 'none';
+    statusImage.style.display = pending ? '' : 'none';
   }
 
   function parseSector(tabDelimitedData, metadata) {
-     var i, sector = {
+    var i, sector = {
       metadata: metadata,
       worlds: [],
       subsectors: []
     };
+
     for (i = 0; i < 16; i += 1) {
       sector.subsectors[i] = {
         worlds: [],
@@ -157,8 +162,10 @@
       }
       var xhr = new XMLHttpRequest(), async = true;
       xhr.open('POST', url, async);
+      status('Requesting data...', true);
       xhr.send(body);
       xhr.onreadystatechange = function() {
+        status('Receiving data...', true);
         if (xhr.readyState !== XMLHttpRequest.DONE)
           return;
         if (xhr.status === 200)
@@ -213,8 +220,12 @@
     }
 
     $('#compose').addEventListener('click', function() {
-      $('#input').style.display = 'none';
       var form = $('#form');
+      if (!form['data'].value.length) {
+        alert('Sector data must be specified.');
+        return;
+      }
+      $('#input').style.display = 'none';
       render({
         data: form['data'].value,
         metadata: form['metadata'].value
@@ -240,43 +251,41 @@
       var metadata = results[1];
 
       status('Processing data...', true);
-      var img_promises = [];
+      var pending_promises = [];
 
       // Step 1: Parse the sector data
       var sector = parseSector(data, metadata);
 
       // Step 2: Post-process the data
-      sector.title = sector.metadata.Names[0].Text;
-      if (!/^The /.test(sector.title)) {
-        sector.title = 'The ' + sector.title;
-        if (![/ Sector$/, /es$/, / Rim$/].some(function (re) { return re.test(sector.title); })) {
-          sector.title += ' Sector';
+      if (sector.metadata.Names.length) {
+        sector.name = sector.title = sector.metadata.Names[0].Text;
+        if (!/^The /.test(sector.title)) {
+          sector.title = 'The ' + sector.title;
+          if (![/ Sector$/, /es$/, / Rim$/].some(function (re) { return re.test(sector.title); })) {
+            sector.title += ' Sector';
+          }
         }
+      } else {
+        sector.name = sector.title = 'Unnamed Sector';
       }
       document.title = sector.title;
-
-      if ('sector' in params) {
-        sector.img_src = makeURL(SERVICE_BASE + '/api/poster', {
-          sector: params.sector,
+      var imageURL, options = {
           rotation: 3,
           scale: 64,
           options: options | MapOptions.SubsectorGrid | MapOptions.NamesMask,
           style: style
-        });
+      };
+      if ('sector' in params) {
+        options.sector = params.sector;
+        imageURL = Promise.resolve(makeURL(SERVICE_BASE + '/api/poster', options));
       } else {
-        var promise = getTextViaPOST(SERVICE_BASE + '/api/poster', {
-          data: params.data,
-          metadata: params.metadata,
-          rotation: 3,
-          scale: 64,
-          options: options | MapOptions.SubsectorGrid | MapOptions.NamesMask,
-          style: style,
-          datauri: 1
-        });
-        img_promises.push(promise.then(function(url) {
-          return function() { $('img.sector-image').src = url; };
-        }));
+        options.data = params.data;
+        options.datauri = 1;
+        imageURL = getTextViaPOST(SERVICE_BASE + '/api/poster', options);
       }
+      pending_promises.push(imageURL.then(function(url) {
+        return function() { $('img.sector-image').src = url; };
+      }));
 
       range(16).forEach(function (i) {
         var subsector = sector.subsectors[i];
@@ -365,45 +374,46 @@
         }
 
         subsector.blurb = subsector.blurb.join(' ');
-        if ('sector' in params) {
-          subsector.img_src = makeURL(SERVICE_BASE + '/api/poster', {
-            sector: params.sector,
+        var imageURL, options = {
             subsector: subsector.index,
             scale: 64,
             options: options,
             style: style
-          });
+        };
+        if ('sector' in params) {
+          options.sector = params.sector;
+          imageURL = Promise.resolve(makeURL(SERVICE_BASE + '/api/poster', options));
         } else {
-          var promise = getTextViaPOST(SERVICE_BASE + '/api/poster', {
-            data: params.data,
-            metadata: params.metadata,
-            subsector: subsector.index,
-            scale: 64,
-            options: options,
-            style: style,
-            datauri: 1
-          });
-          img_promises.push(promise.then(function(url) {
-            return function() { $('#ss' + subsector.index  + ' img.subsector-image').src = url; };
-          }));
+          options.data = params.data;
+          options.datauri = 1;
+          imageURL = getTextViaPOST(SERVICE_BASE + '/api/poster', options);
         }
+        pending_promises.push(imageURL.then(function(url) {
+          return function() { $('#ss' + subsector.index  + ' img.subsector-image').src = url; };
+        }));
 
         subsector.density = (subsector.worlds.length < 42) ? 'sparse' : 'dense';
       });
 
       // Step 3: Output the page
       status('Composing pages...', true);
-      // The following logic is done asynchronously so that the status display can update
-      Promise.all(img_promises).then(function (results) {
-        var template = Handlebars.compile($('#template').innerHTML);
-        $('#output').innerHTML = template(sector);
-        results.forEach(function(result) { result(); });
-        status();
-        window.location.hash = hash;
-      }, function(error) {
-        // TODO: combine promise chains so only one error handler is needed.
-        status('Failed: ' + error);
-      });
+
+      pending_promises.push(Promise.resolve(sector));
+
+      return Promise.all(pending_promises);
+
+    }).then(function (results) {
+      var template = Handlebars.compile($('#template').innerHTML);
+
+      // Last result is the sector data...
+      var sector = results.pop();
+      $('#output').innerHTML = template(sector);
+
+      // Other results are tasks to run.
+      results.forEach(function(result) { result(); });
+
+      status();
+      window.location.hash = hash;
     }, function(error) {
       status('Failed: ' + error);
     });
