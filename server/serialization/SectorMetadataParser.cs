@@ -40,7 +40,7 @@ namespace Maps.Serialization
                 using (var reader = new NoCloseStreamReader(stream, Encoding.GetEncoding(1252), detectEncodingFromByteOrderMarks: true, bufferSize: BUFFER_SIZE))
                 {
                     string line = reader.ReadLine();
-                    if (sniff_xml.IsMatch(line))
+                    if (line != null && sniff_xml.IsMatch(line))
                         return "XML";
                 }
                 return "MSEC";
