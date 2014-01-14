@@ -48,11 +48,12 @@
   }
 
   function parseSector(tabDelimitedData, metadata) {
-     var i, sector = {
+    var i, sector = {
       metadata: metadata,
       worlds: [],
       subsectors: []
     };
+
     for (i = 0; i < 16; i += 1) {
       sector.subsectors[i] = {
         worlds: [],
@@ -158,7 +159,9 @@
       var xhr = new XMLHttpRequest(), async = true;
       xhr.open('POST', url, async);
       xhr.send(body);
+      status('Requesting image...', true);
       xhr.onreadystatechange = function() {
+        status('Receiving data...', true);
         if (xhr.readyState !== XMLHttpRequest.DONE)
           return;
         if (xhr.status === 200)
@@ -213,8 +216,12 @@
     }
 
     $('#compose').addEventListener('click', function() {
-      $('#input').style.display = 'none';
       var form = $('#form');
+      if (!form['data'].value.length) {
+        alert('Sector data must be specified.');
+        return;
+      }
+      $('#input').style.display = 'none';
       render({
         data: form['data'].value,
         metadata: form['metadata'].value
@@ -236,174 +243,181 @@
     Promise.all(
       [sectorData(params), sectorMetaData(params)]
     ).then(function(results) {
-      var data = results[0];
-      var metadata = results[1];
+      try {
+        var data = results[0];
+        var metadata = results[1];
 
-      status('Processing data...', true);
-      var img_promises = [];
+        status('Processing data...', true);
+        var img_promises = [];
 
-      // Step 1: Parse the sector data
-      var sector = parseSector(data, metadata);
-
-      // Step 2: Post-process the data
-      sector.title = sector.metadata.Names[0].Text;
-      if (!/^The /.test(sector.title)) {
-        sector.title = 'The ' + sector.title;
-        if (![/ Sector$/, /es$/, / Rim$/].some(function (re) { return re.test(sector.title); })) {
-          sector.title += ' Sector';
-        }
-      }
-      document.title = sector.title;
-
-      if ('sector' in params) {
-        sector.img_src = makeURL(SERVICE_BASE + '/api/poster', {
-          sector: params.sector,
-          rotation: 3,
-          scale: 64,
-          options: options | MapOptions.SubsectorGrid | MapOptions.NamesMask,
-          style: style
-        });
-      } else {
-        var promise = getTextViaPOST(SERVICE_BASE + '/api/poster', {
-          data: params.data,
-          metadata: params.metadata,
-          rotation: 3,
-          scale: 64,
-          options: options | MapOptions.SubsectorGrid | MapOptions.NamesMask,
-          style: style,
-          datauri: 1
-        });
-        img_promises.push(promise.then(function(url) {
-          return function() { $('img.sector-image').src = url; };
-        }));
-      }
-
-      range(16).forEach(function (i) {
-        var subsector = sector.subsectors[i];
-
-        if (subsector.name.length === 0) {
-          subsector.article = 'subsector ' + String.fromCharCode('A'.charCodeAt(0) + i);
-        } else if (/^District /i.test(subsector.name)) {
-          subsector.article = subsector.name;
-        } else if (/^The /i.test(subsector.name)) {
-          subsector.article = subsector.name + ' subsector';
+        // Step 1: Parse the sector data
+        var sector = parseSector(data, metadata);
+        // Step 2: Post-process the data
+        if (sector.metadata.Names.length) {
+          sector.title = sector.metadata.Names[0].Text;
+          if (!/^The /.test(sector.title)) {
+            sector.title = 'The ' + sector.title;
+            if (![/ Sector$/, /es$/, / Rim$/].some(function (re) { return re.test(sector.title); })) {
+              sector.title += ' Sector';
+            }
+          }
         } else {
-          subsector.article = 'the ' + subsector.name + ' subsector';
+          sector.title = 'Unnamed Sector';
         }
-        subsector.title = titleCaps(subsector.article);
-
-        function neighbor(n, dx, dy) {
-          var x = (n % 4) + dx,
-              y = Math.floor(n / 4) + dy;
-
-          if (x < 0 || x >= 4 || y < 0 || y >= 4) {
-            return '\xA0'; // Make sure the space doesn't collapse
-          } else {
-            n = x + (4 * y);
-            return sector.subsectors[n].name;
-          }
-        }
-
-        subsector.neighbor = [];
-        subsector.neighbor[0] = neighbor(i, 0, -1);
-        subsector.neighbor[1] = neighbor(i, 1, 0);
-        subsector.neighbor[2] = neighbor(i, 0, 1);
-        subsector.neighbor[3] = neighbor(i, -1, 0);
-
-        subsector.population = 0;
-        subsector.maxpop = null;
-        subsector.maxtl = null;
-        subsector.capital = null;
-
-        subsector.worlds.forEach(function (world) {
-          subsector.population += world.population;
-
-          if (world.name !== '') {
-            if (!subsector.maxpop || subsector.maxpop.population < world.population) {
-              subsector.maxpop = world;
-            }
-
-            if (!subsector.maxtl || Traveller.fromHex(subsector.maxtl[0].uwp.charAt(8)) < Traveller.fromHex(world.uwp.charAt(8))) {
-              subsector.maxtl = [world];
-            } else if (Traveller.fromHex(subsector.maxtl[0].uwp.charAt(8)) === Traveller.fromHex(world.uwp.charAt(8))) {
-              subsector.maxtl.push(world);
-            }
-
-            if (world.remarks.split(/ /).some(function (x) { return x === 'Cp'; })) {
-              subsector.capital = world;
-            }
-          }
-        });
-
-        subsector.blurb = [];
-        if (subsector.worlds.length > 1) {
-          subsector.blurb.push(capitalize(subsector.article) + ' contains ' +
-                               subsector.worlds.length + ' worlds with a population of ' +
-                               friendlyNumber(subsector.population) + '.');
-
-          if (subsector.maxpop && subsector.maxpop.population > 0) {
-            subsector.blurb.push('The highest population is ' +
-                                 friendlyNumber(subsector.maxpop.population) + ', at ' +
-                                 subsector.maxpop.name + '.');
-          }
-        } else if (subsector.worlds.length === 1 && subsector.maxpop) {
-          subsector.blurb.push(capitalize(subsector.article) + ' contains one world, ' +
-                               subsector.maxpop.name + ', with a population of ' +
-                               friendlyNumber(subsector.maxpop.population) + '.');
-        } else if (subsector.worlds.length === 0) {
-          subsector.blurb.push(capitalize(subsector.article) + ' contains no charted worlds.');
-        }
-
-        if (subsector.maxtl && subsector.maxtl.length > 0) {
-          subsector.blurb.push('The highest tech level is ' + subsector.maxtl[0].uwp.charAt(8) +
-                               ' at ' + friendlyJoin(subsector.maxtl.map(function (world) {
-                                 return world.name; })) + '.');
-        }
-
-        if (subsector.capital) {
-          subsector.blurb.push('The subsector capital is at ' + subsector.capital.name + '.');
-        }
-
-        subsector.blurb = subsector.blurb.join(' ');
+        document.title = sector.title;
         if ('sector' in params) {
-          subsector.img_src = makeURL(SERVICE_BASE + '/api/poster', {
+          sector.img_src = makeURL(SERVICE_BASE + '/api/poster', {
             sector: params.sector,
-            subsector: subsector.index,
+            rotation: 3,
             scale: 64,
-            options: options,
+            options: options | MapOptions.SubsectorGrid | MapOptions.NamesMask,
             style: style
           });
         } else {
           var promise = getTextViaPOST(SERVICE_BASE + '/api/poster', {
             data: params.data,
             metadata: params.metadata,
-            subsector: subsector.index,
+            rotation: 3,
             scale: 64,
-            options: options,
+            options: options | MapOptions.SubsectorGrid | MapOptions.NamesMask,
             style: style,
             datauri: 1
           });
           img_promises.push(promise.then(function(url) {
-            return function() { $('#ss' + subsector.index  + ' img.subsector-image').src = url; };
+            return function() { $('img.sector-image').src = url; };
           }));
         }
 
-        subsector.density = (subsector.worlds.length < 42) ? 'sparse' : 'dense';
-      });
+        range(16).forEach(function (i) {
+          var subsector = sector.subsectors[i];
 
-      // Step 3: Output the page
-      status('Composing pages...', true);
-      // The following logic is done asynchronously so that the status display can update
-      Promise.all(img_promises).then(function (results) {
-        var template = Handlebars.compile($('#template').innerHTML);
-        $('#output').innerHTML = template(sector);
-        results.forEach(function(result) { result(); });
-        status();
-        window.location.hash = hash;
-      }, function(error) {
-        // TODO: combine promise chains so only one error handler is needed.
-        status('Failed: ' + error);
-      });
+          if (subsector.name.length === 0) {
+            subsector.article = 'subsector ' + String.fromCharCode('A'.charCodeAt(0) + i);
+          } else if (/^District /i.test(subsector.name)) {
+            subsector.article = subsector.name;
+          } else if (/^The /i.test(subsector.name)) {
+            subsector.article = subsector.name + ' subsector';
+          } else {
+            subsector.article = 'the ' + subsector.name + ' subsector';
+          }
+          subsector.title = titleCaps(subsector.article);
+
+          function neighbor(n, dx, dy) {
+            var x = (n % 4) + dx,
+                y = Math.floor(n / 4) + dy;
+
+            if (x < 0 || x >= 4 || y < 0 || y >= 4) {
+              return '\xA0'; // Make sure the space doesn't collapse
+            } else {
+              n = x + (4 * y);
+              return sector.subsectors[n].name;
+            }
+          }
+
+          subsector.neighbor = [];
+          subsector.neighbor[0] = neighbor(i, 0, -1);
+          subsector.neighbor[1] = neighbor(i, 1, 0);
+          subsector.neighbor[2] = neighbor(i, 0, 1);
+          subsector.neighbor[3] = neighbor(i, -1, 0);
+
+          subsector.population = 0;
+          subsector.maxpop = null;
+          subsector.maxtl = null;
+          subsector.capital = null;
+
+          subsector.worlds.forEach(function (world) {
+            subsector.population += world.population;
+
+            if (world.name !== '') {
+              if (!subsector.maxpop || subsector.maxpop.population < world.population) {
+                subsector.maxpop = world;
+              }
+
+              if (!subsector.maxtl || Traveller.fromHex(subsector.maxtl[0].uwp.charAt(8)) < Traveller.fromHex(world.uwp.charAt(8))) {
+                subsector.maxtl = [world];
+              } else if (Traveller.fromHex(subsector.maxtl[0].uwp.charAt(8)) === Traveller.fromHex(world.uwp.charAt(8))) {
+                subsector.maxtl.push(world);
+              }
+
+              if (world.remarks.split(/ /).some(function (x) { return x === 'Cp'; })) {
+                subsector.capital = world;
+              }
+            }
+          });
+
+          subsector.blurb = [];
+          if (subsector.worlds.length > 1) {
+            subsector.blurb.push(capitalize(subsector.article) + ' contains ' +
+                                 subsector.worlds.length + ' worlds with a population of ' +
+                                 friendlyNumber(subsector.population) + '.');
+
+            if (subsector.maxpop && subsector.maxpop.population > 0) {
+              subsector.blurb.push('The highest population is ' +
+                                   friendlyNumber(subsector.maxpop.population) + ', at ' +
+                                   subsector.maxpop.name + '.');
+            }
+          } else if (subsector.worlds.length === 1 && subsector.maxpop) {
+            subsector.blurb.push(capitalize(subsector.article) + ' contains one world, ' +
+                                 subsector.maxpop.name + ', with a population of ' +
+                                 friendlyNumber(subsector.maxpop.population) + '.');
+          } else if (subsector.worlds.length === 0) {
+            subsector.blurb.push(capitalize(subsector.article) + ' contains no charted worlds.');
+          }
+
+          if (subsector.maxtl && subsector.maxtl.length > 0) {
+            subsector.blurb.push('The highest tech level is ' + subsector.maxtl[0].uwp.charAt(8) +
+                                 ' at ' + friendlyJoin(subsector.maxtl.map(function (world) {
+                                   return world.name; })) + '.');
+          }
+
+          if (subsector.capital) {
+            subsector.blurb.push('The subsector capital is at ' + subsector.capital.name + '.');
+          }
+
+          subsector.blurb = subsector.blurb.join(' ');
+          if ('sector' in params) {
+            subsector.img_src = makeURL(SERVICE_BASE + '/api/poster', {
+              sector: params.sector,
+              subsector: subsector.index,
+              scale: 64,
+              options: options,
+              style: style
+            });
+          } else {
+            var promise = getTextViaPOST(SERVICE_BASE + '/api/poster', {
+              data: params.data,
+              metadata: params.metadata,
+              subsector: subsector.index,
+              scale: 64,
+              options: options,
+              style: style,
+              datauri: 1
+            });
+            img_promises.push(promise.then(function(url) {
+              return function() { $('#ss' + subsector.index  + ' img.subsector-image').src = url; };
+            }));
+          }
+
+          subsector.density = (subsector.worlds.length < 42) ? 'sparse' : 'dense';
+        });
+
+        // Step 3: Output the page
+        status('Composing pages...', true);
+        // The following logic is done asynchronously so that the status display can update
+        Promise.all(img_promises).then(function (results) {
+          var template = Handlebars.compile($('#template').innerHTML);
+          $('#output').innerHTML = template(sector);
+          results.forEach(function(result) { result(); });
+          status();
+          window.location.hash = hash;
+        }, function(error) {
+          // TODO: combine promise chains so only one error handler is needed.
+          status('Failed: ' + error);
+        });
+      } catch (ex) {
+        // TODO: make this part of the promise chain.
+        status('Failed: ' + ex);
+      }
     }, function(error) {
       status('Failed: ' + error);
     });
