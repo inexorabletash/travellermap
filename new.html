@@ -194,8 +194,11 @@ button:hover {
       }
       .style-print #searchBox,
       .style-atlas #searchBox { background-color: #e0e0e0; }
-      @media only screen and (max-width: 610px) {
+      @media only screen and (max-width: 660px) {
         #searchBox { width: 100px; }
+      }
+      @media only screen and (max-width: 570px) {
+        #uploadBtn { display: none; }
       }
       @media only screen and (max-width: 510px) {
         #legendBtn { display: none; }
@@ -365,6 +368,12 @@ button:hover {
       float: left;
     }
     </style>
+    <button id="homeBtn"
+            title="Return to the default view&#x0A;Keyboard: H">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAMAAAAMs7fIAAAAP1BMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACzJYIvAAAAFHRSTlMAYpYDv9tw9xIQX4HM8KIFr+U23VrmvHEAAABhSURBVBjTpY9JDoAgDEUrlkFGh97/rBYQIhpXvs1PX9omH76Zn0JtalwQRLQ6361BymgSl9glVZpRmjqO5xTpTkxgcTBo+W050og+h4FmJMD00wTNHACWI2QDS4HL1XhzAkBGCW3YsBI9AAAAAElFTkSuQmCC"
+           width="17" height="17"
+           alt="Home">
+    </button>
     <button id="shareBtn"
             title="Share links to the map">
       <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAMAAAAMs7fIAAAAQlBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACO4fbyAAAAFXRSTlMAKlv4BDPaQRqADsbopGgl0alS7KbFwjzRAAAAYUlEQVQY042OSw6AIAxEBwT5+dfe/6q2IQRBF77NZF6aZvBgjuigyfaGKJhazTISkzwkDkBxz4jRgOOoBoAfSt/WbHYKqnzmkBMLhk4HZKMdhCuimDrMJTHtyJ+m4dO8uQE/DglxnzUgrQAAAABJRU5ErkJggg=="
@@ -377,15 +386,15 @@ button:hover {
            width="17" height="17"
            alt="Download">
     </button>
+    <button id="uploadBtn"
+            title="Make maps and booklets with your own data">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAARBAMAAADJQ1rJAAAAG1BMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACUUeIgAAAACHRSTlMAEgSAqCzfQdMiC3oAAAA+SURBVAjXYwCCiEYGCGDKaFOAsJg7OgwgrIqOjlYwg7EDCARALBYQywEi3dEBJIhndUBYHagsuBQEILMQAACWqhzv5u2K6AAAAABJRU5ErkJggg=="
+           width="17" height="17"
+           alt="Upload">
+    </button>
     <button id="legendBtn"
             title="Map legend and symbols">
       Legend
-    </button>
-    <button id="homeBtn"
-            title="Return to the default view&#x0A;Keyboard: H">
-      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAMAAAAMs7fIAAAAP1BMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACzJYIvAAAAFHRSTlMAYpYDv9tw9xIQX4HM8KIFr+U23VrmvHEAAABhSURBVBjTpY9JDoAgDEUrlkFGh97/rBYQIhpXvs1PX9omH76Zn0JtalwQRLQ6361BymgSl9glVZpRmjqO5xTpTkxgcTBo+W050og+h4FmJMD00wTNHACWI2QDS4HL1XhzAkBGCW3YsBI9AAAAAElFTkSuQmCC"
-           width="17" height="17"
-           alt="Home">
     </button>
     <button id="settingsBtn"
             title="Change the map appearance">
@@ -400,7 +409,7 @@ button:hover {
     <script>
     window.addEventListener('DOMContentLoaded', function() {
       var $ = function(s) { return document.querySelector(s); };
-      var PANELS = ['legend', 'settings', 'share', 'download', 'help'];
+      var PANELS = ['legend', 'settings', 'share', 'download', 'upload', 'help'];
       PANELS.forEach(function(b) {
         $('#'+b+'Btn').addEventListener('click', function() {
           PANELS.forEach(function(p) {
@@ -433,11 +442,13 @@ button:hover {
   body.show-legend #legendBox,
   body.show-share #shareBox,
   body.show-download #downloadBox,
+  body.show-upload #uploadBox,
   body.show-help #helpBox { display: block; }
   body.show-settings #settingsBtn,
   body.show-legend #legendBtn,
   body.show-share #shareBtn,
   body.show-download #downloadBtn,
+  body.show-upload #uploadBtn,
   body.show-help #helpBtn { background-color: red; }
 
   </style>
@@ -599,7 +610,7 @@ button:hover {
     <style>
     #helpBox {
       width: 200px;
-      max-height: 440px;
+      max-height: 410px;
     }
     #helpBox section { margin: 1em 0; }
     #helpBox section:first-of-type { margin-top: 0; }
@@ -639,7 +650,6 @@ button:hover {
       <h3>Players &amp; Referees</h3>
       <p><a target="_blank" href="doc/secondsurvey.html">Understanding the data</a></p>
       <p><a target="_blank" href="doc/fileformats.html">Data file formats</a></p>
-      <p><a target="_blank" href="poster.html">Make your own maps</a></p>
     </section>
 
     <section>
@@ -740,6 +750,41 @@ button:hover {
         </li>
       </ul>
     </section>
+  </div>
+
+  <div id="uploadBox"
+       class="ui hoverbox hoverbox-right">
+    <style>
+    #uploadBox {
+      width: 200px;
+      max-height: 180px;
+    }
+    #uploadBox section { margin: 1em 0; }
+    #uploadBox section:first-of-type { margin-top: 0; }
+    #uploadBox section:last-of-type { margin-bottom: 0; }
+
+    #uploadBox h3:first-of-type { margin-top: 0; }
+    #uploadBox h3 { font-style: italic; font-weight: normal;
+                  color: red;
+                  border-bottom: 2px solid red;
+                  margin-bottom: 10px; }
+
+    #uploadBox a { display: block; margin-bottom: 0.5em; }
+    </style>
+
+    <h3>Your Traveller Universe</h3>
+    <section>
+      <a target="_blank" href="booklet.html">Booklet Maker</a>
+      Upload your own sector data
+      to produce a printable booklet.
+    </section>
+
+    <section>
+      <a target="_blank" href="poster.html">Poster Maker</a>
+      Upload your own sector data
+      to produce a custom map poster, for print or Web.</p>
+    </section>
+
   </div>
 
   <div id="navBar"
