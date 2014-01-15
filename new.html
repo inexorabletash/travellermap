@@ -194,11 +194,8 @@ button:hover {
       }
       .style-print #searchBox,
       .style-atlas #searchBox { background-color: #e0e0e0; }
-      @media only screen and (max-width: 660px) {
+      @media only screen and (max-width: 610px) {
         #searchBox { width: 100px; }
-      }
-      @media only screen and (max-width: 570px) {
-        #uploadBtn { display: none; }
       }
       @media only screen and (max-width: 510px) {
         #legendBtn { display: none; }
@@ -386,12 +383,6 @@ button:hover {
            width="17" height="17"
            alt="Download">
     </button>
-    <button id="uploadBtn"
-            title="Make maps and booklets with your own data">
-      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAARBAMAAADJQ1rJAAAAG1BMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACUUeIgAAAACHRSTlMAEgSAqCzfQdMiC3oAAAA+SURBVAjXYwCCiEYGCGDKaFOAsJg7OgwgrIqOjlYwg7EDCARALBYQywEi3dEBJIhndUBYHagsuBQEILMQAACWqhzv5u2K6AAAAABJRU5ErkJggg=="
-           width="17" height="17"
-           alt="Upload">
-    </button>
     <button id="legendBtn"
             title="Map legend and symbols">
       Legend
@@ -409,7 +400,7 @@ button:hover {
     <script>
     window.addEventListener('DOMContentLoaded', function() {
       var $ = function(s) { return document.querySelector(s); };
-      var PANELS = ['legend', 'settings', 'share', 'download', 'upload', 'help'];
+      var PANELS = ['legend', 'settings', 'share', 'download', 'help'];
       PANELS.forEach(function(b) {
         $('#'+b+'Btn').addEventListener('click', function() {
           PANELS.forEach(function(p) {
@@ -442,13 +433,11 @@ button:hover {
   body.show-legend #legendBox,
   body.show-share #shareBox,
   body.show-download #downloadBox,
-  body.show-upload #uploadBox,
   body.show-help #helpBox { display: block; }
   body.show-settings #settingsBtn,
   body.show-legend #legendBtn,
   body.show-share #shareBtn,
   body.show-download #downloadBtn,
-  body.show-upload #uploadBtn,
   body.show-help #helpBtn { background-color: red; }
 
   </style>
@@ -610,7 +599,7 @@ button:hover {
     <style>
     #helpBox {
       width: 200px;
-      max-height: 410px;
+      max-height: 440px;
     }
     #helpBox section { margin: 1em 0; }
     #helpBox section:first-of-type { margin-top: 0; }
@@ -650,6 +639,10 @@ button:hover {
       <h3>Players &amp; Referees</h3>
       <p><a target="_blank" href="doc/secondsurvey.html">Understanding the data</a></p>
       <p><a target="_blank" href="doc/fileformats.html">Data file formats</a></p>
+      <p>
+        <a target="_blank" href="booklet.html">Booklet Maker</a> &bull;
+        <a target="_blank" href="poster.html">Poster Maker</a>
+      </p>
     </section>
 
     <section>
@@ -750,41 +743,6 @@ button:hover {
         </li>
       </ul>
     </section>
-  </div>
-
-  <div id="uploadBox"
-       class="ui hoverbox hoverbox-right">
-    <style>
-    #uploadBox {
-      width: 200px;
-      max-height: 180px;
-    }
-    #uploadBox section { margin: 1em 0; }
-    #uploadBox section:first-of-type { margin-top: 0; }
-    #uploadBox section:last-of-type { margin-bottom: 0; }
-
-    #uploadBox h3:first-of-type { margin-top: 0; }
-    #uploadBox h3 { font-style: italic; font-weight: normal;
-                  color: red;
-                  border-bottom: 2px solid red;
-                  margin-bottom: 10px; }
-
-    #uploadBox a { display: block; margin-bottom: 0.5em; }
-    </style>
-
-    <h3>Your Traveller Universe</h3>
-    <section>
-      <a target="_blank" href="booklet.html">Booklet Maker</a>
-      Upload your own sector data
-      to produce a printable booklet.
-    </section>
-
-    <section>
-      <a target="_blank" href="poster.html">Poster Maker</a>
-      Upload your own sector data
-      to produce a custom map poster, for print or Web.</p>
-    </section>
-
   </div>
 
   <div id="navBar"
