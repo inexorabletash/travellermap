@@ -271,6 +271,7 @@ window.addEventListener('DOMContentLoaded', function() {
   var dataTimeout = 0;
   var lastX, lastY;
   var selectedSector = null;
+  var selectedWorld = null;
 
   function showCredits(hexX, hexY, immediate) {
     var DATA_REQUEST_DELAY_MS = 500;
@@ -322,10 +323,15 @@ window.addEventListener('DOMContentLoaded', function() {
       // Other UI
       if ('SectorName' in data && 'SectorTags' in data) {
         selectedSector = data.SectorName;
+        selectedWorld = ('WorldHex' in data) ? { name: data.WorldName, hex: data.WorldHex } : null;
         updateSectorLinks();
         $('#downloadBox').classList.add('sector-selected');
+        $('#downloadBox').classList[('WorldHex' in data) ? 'add' : 'remove']('world-selected');
       } else {
+        selectedSector = null;
+        selectedHex = null;
         $('#downloadBox').classList.remove('sector-selected');
+        $('#downloadBox').classList.remove('world-selected');
       }
     }
   }
@@ -341,11 +347,22 @@ window.addEventListener('DOMContentLoaded', function() {
     var dataURL = makeURL(SERVICE_BASE + '/api/sec', {
       sector: selectedSector, type: 'SecondSurvey' });
 
+    var worldURL = makeURL('world.html', {
+      sector: selectedSector,
+      hex: selectedWorld.hex
+    });
+
     var title = selectedSector.replace(/ Sector$/, '') + ' Sector';
     $('#downloadBox #sector-name').innerHTML = escapeHtml(title);
     $('#downloadBox a#download-booklet').href = bookletURL;
     $('#downloadBox a#download-poster').href = posterURL;
     $('#downloadBox a#download-data').href = dataURL;
+
+    if (selectedWorld) {
+      $('#downloadBox a#world-data-sheet').href = worldURL;
+      $('#downloadBox a#world-data-sheet').innerHTML = 'Data Sheet: ' +
+        selectedWorld.name + ' (' + selectedWorld.hex + ')';
+    }
   }
 
   //////////////////////////////////////////////////////////////////////
