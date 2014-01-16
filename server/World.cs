@@ -413,8 +413,14 @@ namespace Maps
         [XmlAttribute("Sector"), JsonName("Sector")]
         public string SectorName { get { return this.Sector.Names[0].Text; } }
 
-        public string AllegianceName { get { return this.Sector.GetAllegiance(this.Allegiance).Name; } }
-
+        public string AllegianceName
+        {
+            get
+            {
+                var allegiance = this.Sector.GetAllegiance(this.Allegiance);
+                return allegiance == null ? "" : allegiance.Name;
+            }
+        }
 
     }
 }
