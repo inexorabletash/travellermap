@@ -701,14 +701,16 @@ button:hover {
     <style>
     #downloadBox {
       width: 200px;
-      max-height: 150px;
+      max-height: 180px;
     }
     #downloadBox section { margin: 1em 0; }
     #downloadBox section:first-of-type { margin-top: 0; }
     #downloadBox section:last-of-type { margin-bottom: 0; }
     #downloadBox #sector-selected { display: none; }
+    #downloadBox #world-selected { display: none; }
     #downloadBox.sector-selected #sector-selected { display: block; }
     #downloadBox.sector-selected #no-sector-selected { display: none; }
+    #downloadBox.sector-selected.world-selected #world-selected { display: block; }
 
     #downloadBox h3 { font-style: italic; font-weight: normal;
                       color: red;
@@ -741,8 +743,14 @@ button:hover {
         <li>
           <a id="download-data" target="_blank" href="#">Raw Sector Data</a>
         </li>
+
+        <li id="world-selected">
+          <a id="world-data-sheet" target="_blank" href="#">World Data Sheet</a>
+        </li>
+
       </ul>
     </section>
+
   </div>
 
   <div id="navBar"
@@ -850,17 +858,19 @@ button:hover {
     </script>
     <script id="WorldMetadataTemplate" type="text/x-handlebars-template">
       <div>
+        <a class="stealth" target="_blank" href="world.html?sector={{SectorName}}&hex={{WorldHex}}">
         {{SectorName}}
-        <a class="stealth" href="doc/secondsurvey.html#hex" target="_blank" title="Hex">{{WorldHex}}</a>
-        <b><a class="stealth" href="doc/secondsurvey.html#name" target="_blank" title="Name">{{WorldName}}</a></b>
-        <a class="stealth" href="doc/secondsurvey.html#uwp" target="_blank" title="UWP">{{WorldUwp}}</a>
-        <a class="stealth" href="doc/secondsurvey.html#remarks" target="_blank" title="Remarks">{{WorldRemarks}}</a>
-        <a class="stealth" href="doc/secondsurvey.html#ix" target="_blank" title="Ix">{{WorldIx}}</a>
-        <a class="stealth" href="doc/secondsurvey.html#ex" target="_blank" title="Ex">{{WorldEx}}</a>
-        <a class="stealth" href="doc/secondsurvey.html#cx" target="_blank" title="Cx">{{WorldCx}}</a>
-        <a class="stealth" href="doc/secondsurvey.html#pbg" target="_blank" title="PBG">{{WorldPbg}}</a>
+        {{WorldHex}}
+        <b>{{WorldName}}</b>
+        {{WorldUwp}}
+        {{WorldRemarks}}
+        {{WorldIx}}
+        {{WorldEx}}
+        {{WorldCx}}
+        {{WorldPbg}}
         {{#SectorEra}}(circa {{.}}){{/SectorEra}}
         {{#SubsectorName}}(Subsector {{../SubsectorIndex}}: {{.}}){{/SubsectorName}}
+        </a>
       </div>
     </script>
     <script id="StatusMetadataTemplate" type="text/x-handlebars-template">

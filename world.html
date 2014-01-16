@@ -127,10 +127,12 @@ td { vertical-align: top; }
 
 <h1>{{Name}} ({{Sector}} {{Hex}})</h1>
 
+{{#if AllegianceName}}
 <table class="decode"><tr>
 <td>Allegiance:
 <td><big>{{AllegianceName}}</big> ({{Allegiance}})
 </table>
+{{/if}}
 
 <table class="decode"><tr>
 <td>System:
@@ -227,8 +229,10 @@ td { vertical-align: top; }
 <table class="uwp">
 <tr><th>Name<th>Hex<th>UWP<th>B<th>Remarks<th>Z<th>PBG<th>A<th>Stellar</tr>
 {{#Worlds}}
-<tr><td><a href="?sector={{Sector}}&hex={{Hex}}">{{Name}}</a>
-<td>{{Hex}}<td>{{UWP}}<td>{{Bases}}<td>{{Remarks}}<td>{{Zone}}<td>{{PBG}}<td>{{Allegiance}}<td>{{Stellar}}
+<tr>
+<td><a href="?sector={{Sector}}&hex={{Hex}}">{{Name}}</a>
+<td><a href="?sector={{Sector}}&hex={{Hex}}">{{Hex}}</a>
+<td>{{UWP}}<td>{{Bases}}<td>{{Remarks}}<td>{{Zone}}<td>{{PBG}}<td>{{Allegiance}}<td>{{Stellar}}
 {{/Worlds}}
 </table>
 </script>
