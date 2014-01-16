@@ -131,7 +131,9 @@ td { vertical-align: top; }
 <div id="world-data"></div>
 <script id="world-template" type="text/x-handlebars-template">
 
-<h1>{{Name}} ({{Sector}} {{Hex}})</h1>
+<h1>
+{{Name}} ({{#SubsectorName}}<small>{{.}} /</small> {{/SubsectorName}}{{Sector}} {{Hex}})
+</h1>
 
 {{#if AllegianceName}}
 <table class="decode"><tr>
