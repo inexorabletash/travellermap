@@ -416,6 +416,11 @@ namespace Maps
         [XmlAttribute("Sector"), JsonName("Sector")]
         public string SectorName { get { return this.Sector.Names[0].Text; } }
 
+        public string SubsectorName { get { 
+            var ss = this.Sector[this.Subsector];
+            return ss == null ? "" : ss.Name;
+        } }
+
         public string AllegianceName
         {
             get
