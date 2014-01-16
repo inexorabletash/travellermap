@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 
 namespace Maps
 {
@@ -108,6 +109,9 @@ namespace Maps
                         if (worlds == null)
                             continue;
 
+                        var world_query = from world in worlds
+                                          where !world.IsPlaceholder
+                                          select world;
                         foreach (World world in worlds)
                         {
                             DataRow row = dt_worlds.NewRow();

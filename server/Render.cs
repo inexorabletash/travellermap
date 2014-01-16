@@ -790,7 +790,7 @@ namespace Maps.Rendering
         private enum WorldLayer { Background, Foreground };
         private static void DrawWorld(RenderContext ctx, FontCache styleRes, World world, WorldLayer layer)
         {
-            bool isPlaceholder = world.HasCode("(Dotmap)");
+            bool isPlaceholder = world.IsPlaceholder;
             bool isCapital = world.IsCapital;
             bool isHiPop = world.Population >= 1e9;
             bool renderName = ctx.styles.worldDetails.HasFlag(WorldDetails.AllNames) ||
