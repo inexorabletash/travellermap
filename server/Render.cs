@@ -792,7 +792,7 @@ namespace Maps.Rendering
         {
             bool isPlaceholder = world.IsPlaceholder;
             bool isCapital = world.IsCapital;
-            bool isHiPop = world.Population >= 1e9;
+            bool isHiPop = world.IsHi;
             bool renderName = ctx.styles.worldDetails.HasFlag(WorldDetails.AllNames) ||
                 (ctx.styles.worldDetails.HasFlag(WorldDetails.KeyNames) && (isCapital || isHiPop));
             bool renderUWP = ctx.styles.worldDetails.HasFlag(WorldDetails.Uwp);

@@ -152,7 +152,7 @@ namespace Maps.Serialization
                 // Cleanup known placeholders
                 if (world.Name == match.Groups["hex"].Value || placeholderNameRegex.IsMatch(world.Name))
                     world.Name = "";
-                if (world.Name == world.Name.ToUpperInvariant())
+                if (world.Name == world.Name.ToUpperInvariant() && world.IsHi)
                     world.Name = Util.FixCapitalization(world.Name);
 
                 //world.Name = world.Name.Replace('~', '\u00e9'); // Used for Ferré (Cadion/Core 0704)
@@ -253,7 +253,7 @@ namespace Maps.Serialization
                     world.ResourceUnits = Int32.Parse(w, NumberStyles.Integer, CultureInfo.InvariantCulture);
 
                 // Cleanup known placeholders
-                if (world.Name == world.Name.ToUpperInvariant())
+                if (world.Name == world.Name.ToUpperInvariant() && world.IsHi)
                 {
                     world.Name = Util.FixCapitalization(world.Name);
                 }
