@@ -269,19 +269,19 @@
         sector.name = sector.title = 'Unnamed Sector';
       }
       document.title = sector.title;
-      var imageURL, options = {
+      var imageURL, url_params = {
           rotation: 3,
           scale: 64,
           options: options | MapOptions.SubsectorGrid | MapOptions.NamesMask,
           style: style
       };
       if ('sector' in params) {
-        options.sector = params.sector;
-        imageURL = Promise.resolve(makeURL(SERVICE_BASE + '/api/poster', options));
+        url_params.sector = params.sector;
+        imageURL = Promise.resolve(makeURL(SERVICE_BASE + '/api/poster', url_params));
       } else {
-        options.data = params.data;
-        options.datauri = 1;
-        imageURL = getTextViaPOST(SERVICE_BASE + '/api/poster', options);
+        url_params.data = params.data;
+        url_params.datauri = 1;
+        imageURL = getTextViaPOST(SERVICE_BASE + '/api/poster', url_params);
       }
       pending_promises.push(imageURL.then(function(url) {
         return function() { $('img.sector-image').src = url; };
@@ -374,19 +374,19 @@
         }
 
         subsector.blurb = subsector.blurb.join(' ');
-        var imageURL, options = {
+        var imageURL, url_params = {
             subsector: subsector.index,
             scale: 64,
             options: options,
             style: style
         };
         if ('sector' in params) {
-          options.sector = params.sector;
-          imageURL = Promise.resolve(makeURL(SERVICE_BASE + '/api/poster', options));
+          url_params.sector = params.sector;
+          imageURL = Promise.resolve(makeURL(SERVICE_BASE + '/api/poster', url_params));
         } else {
-          options.data = params.data;
-          options.datauri = 1;
-          imageURL = getTextViaPOST(SERVICE_BASE + '/api/poster', options);
+          url_params.data = params.data;
+          url_params.datauri = 1;
+          imageURL = getTextViaPOST(SERVICE_BASE + '/api/poster', url_params);
         }
         pending_promises.push(imageURL.then(function(url) {
           return function() { $('#ss' + subsector.index  + ' img.subsector-image').src = url; };
