@@ -261,7 +261,7 @@
         sector.name = sector.title = sector.metadata.Names[0].Text;
         if (!/^The /.test(sector.title)) {
           sector.title = 'The ' + sector.title;
-          if (!/ (Sector|Reaches|Expanses|Rim)$/.test(sector.title))
+          if (!/ (Sector|Marches|Reaches|Expanses|Rim)$/.test(sector.title))
             sector.title += ' Sector';
         }
       } else {
