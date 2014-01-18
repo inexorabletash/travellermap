@@ -391,7 +391,7 @@
 
     // Try loading pre-rendered; if it works, use it instead.
     var img = new Image();
-    img.src = 'res/Candy/worlds/' + encodeURIComponent(world.Sector + ' ' + world.Hex);
+    img.src = 'res/Candy/worlds/' + encodeURIComponent(world.Sector + ' ' + world.Hex) + '.png';
     img.onload = function() {
       $('#world-image .disc').src = img.src;
     };
