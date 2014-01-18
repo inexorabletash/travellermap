@@ -280,6 +280,7 @@
         imageURL = Promise.resolve(makeURL(SERVICE_BASE + '/api/poster', url_params));
       } else {
         url_params.data = params.data;
+        url_params.metadata = params.metadata;
         url_params.datauri = 1;
         imageURL = getTextViaPOST(SERVICE_BASE + '/api/poster', url_params);
       }
@@ -385,6 +386,7 @@
           imageURL = Promise.resolve(makeURL(SERVICE_BASE + '/api/poster', url_params));
         } else {
           url_params.data = params.data;
+          url_params.metadata = params.metadata;
           url_params.datauri = 1;
           imageURL = getTextViaPOST(SERVICE_BASE + '/api/poster', url_params);
         }

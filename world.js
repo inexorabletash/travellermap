@@ -317,8 +317,11 @@
     world.PopExp  = fromEHex(world.UWP.Pop);
     world.TotalPopulation = numberWithCommas(world.PopMult * Math.pow(10, world.PopExp));
 
+    var UNICODE_MINUS = '\u2212'; // U+2212 MINUS SIGN
+
     if (world.Ix) {
       var ix = (world.Ix || '').replace(/^{\s*|\s*}$/g, '');
+      ix = ix.replace('-', UNICODE_MINUS);
       world.Ix = {
         Imp: ix
       };
@@ -326,6 +329,7 @@
 
     if (world.Ex) {
       var ex = world.Ex.replace(/^\(\s*|\s*\)$/g, '');
+      ex = ex.replace('-', UNICODE_MINUS);
       world.Ex = {
         Res: ex.substring(0, 1),
         Lab: ex.substring(1, 2),
