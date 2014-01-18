@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var name = list.value;
     MapService.sectorData(name, function(data) {
       $('#data').value = data;
-    }, undefined, {type: 'legacy', metadata: 0, header: 0});
+    }, undefined, {type: 'SecondSurvey', metadata: 0});
     MapService.sectorMetaData(name, function(data) {
       $('#metadata').value = data;
     }, undefined, {accept: 'text/xml'});
