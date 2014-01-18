@@ -119,6 +119,8 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="booklet.html" />
+    <Content Include="booklet.js" />
     <Content Include="borders\bd_images\image001.gif" />
     <Content Include="borders\bd_images\image003.jpg" />
     <Content Include="borders\bd_images\image004.gif" />
@@ -160,6 +162,11 @@
     <Content Include="res\Candy\Nebula.png" />
     <Content Include="res\Candy\README.txt" />
     <Content Include="res\Candy\Rifts.png" />
+    <Content Include="res\Candy\worlds\Core 0140.png" />
+    <Content Include="res\Candy\worlds\Corridor 1511.png" />
+    <Content Include="res\Candy\worlds\README.txt" />
+    <Content Include="res\Candy\worlds\Solomani Rim 1827.png" />
+    <Content Include="res\Candy\worlds\Spinward Marches 1910.png" />
     <Content Include="res\legend.xml" />
     <Content Include="res\Sectors\Alpha Crucis.xml" />
     <Content Include="res\Sectors\Antares.xml" />
@@ -240,6 +247,7 @@
     <Content Include="res\ui\button-search.png" />
     <Content Include="res\ui\button-share.png" />
     <Content Include="res\ui\button-star.png" />
+    <Content Include="res\ui\button-upload.png" />
     <Content Include="res\ui\CT_Logo_Color.png" />
     <Content Include="res\ui\CT_Logo_Gray.png" />
     <Content Include="res\ui\fb.png" />
@@ -430,6 +438,8 @@
       <DependentUpon>Mobile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Content Include="world.html" />
+    <Content Include="world.js" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="borders\bd_images\Thumbs.db" />
