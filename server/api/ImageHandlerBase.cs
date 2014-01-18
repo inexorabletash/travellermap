@@ -283,7 +283,7 @@ namespace Maps.API
                 string data = request.Form["data"];
                 sector = new Sector(data.ToStream(), MediaTypeNames.Text.Plain);
             }
-            else if (request.ContentType == MediaTypeNames.Text.Plain)
+            else if (new ContentType(request.ContentType).MediaType == MediaTypeNames.Text.Plain)
             {
                 sector = new Sector(request.InputStream, MediaTypeNames.Text.Plain);
             }
