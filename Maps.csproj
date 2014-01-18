@@ -119,6 +119,8 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="booklet.html" />
+    <Content Include="booklet.js" />
     <Content Include="borders\bd_images\image001.gif" />
     <Content Include="borders\bd_images\image003.jpg" />
     <Content Include="borders\bd_images\image004.gif" />
@@ -430,6 +432,8 @@
       <DependentUpon>Mobile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Content Include="world.html" />
+    <Content Include="world.js" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="borders\bd_images\Thumbs.db" />
