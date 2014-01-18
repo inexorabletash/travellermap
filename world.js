@@ -334,8 +334,7 @@
         Res: ex.substring(0, 1),
         Lab: ex.substring(1, 2),
         Inf: ex.substring(2, 3),
-        EffSign: ex.substring(3, 4),
-        EffValue: ex.substring(4, 5)
+        Eff: ex.substring(3)
       };
     }
 

@@ -261,9 +261,8 @@
         sector.name = sector.title = sector.metadata.Names[0].Text;
         if (!/^The /.test(sector.title)) {
           sector.title = 'The ' + sector.title;
-          if (![/ Sector$/, /es$/, / Rim$/].some(function (re) { return re.test(sector.title); })) {
+          if (!/ (Sector|Reaches|Expanses|Rim)$/.test(sector.title))
             sector.title += ' Sector';
-          }
         }
       } else {
         sector.name = sector.title = 'Unnamed Sector';
