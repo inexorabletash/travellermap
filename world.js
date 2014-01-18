@@ -388,6 +388,13 @@
     $('#world-image').classList.add('Siz' + world.UWP.Siz);
     $('#world-image .disc').src = 'res/Candy/' + (world.UWP.Siz === '0' ? 'Belt' : 'Hyd' + world.UWP.Hyd) + '.png';
     $('#world-image').style.display = 'block';
+
+    // Try loading pre-rendered; if it works, use it instead.
+    var img = new Image();
+    img.src = 'res/Candy/worlds/' + encodeURIComponent(world.Sector + ' ' + world.Hex);
+    img.onload = function() {
+      $('#world-image .disc').src = img.src;
+    };
   }
 
   function renderNeighborhood(data) {
