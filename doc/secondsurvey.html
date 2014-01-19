@@ -1596,17 +1596,25 @@ an allegiance table for codes not listed below.
     <div class="example"><code>1910 Regina A788899-C Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF A - 703 14 Im <span class="highlight">F7 V MD M3 V</span></code></div>
     <p>
       Stellar Data indicates the spectral and luminosity class of
-      each star in the system. This uses a subset of the <a href="http://en.wikipedia.org/wiki/Stellar_classification#Yerkes_spectral_classification">Yerkes classification
+      each star in the system. This uses a subset of the <a target="_blank" href="http://en.wikipedia.org/wiki/Stellar_classification#Yerkes_spectral_classification">Yerkes classification
       system</a>, such as <code>G2 V</code> where <code>G2</code> is the color/temperature
   (<sup>2</sup>/<sub>10</sub><sup>th</sup> of the way from yellow <code>G</code> to orange <code>K</code> on the spectrum) and
   <code>V</code> is the luminosity/size (main sequence).
     </p>
     <p>
-      The size code <code>D</code> may be used for dwarf stars, and if so the spectral decimal may be omitted; for example, <code>MD</code>.
+      The size code <code>D</code> may be used for white dwarf stars,
+      and if so the spectral decimal may be omitted (e.g. <code>MD</code>);
+      the size code may also be used as a prefix, e.g.
+      <code>DB</code>,
+      <code>DA</code>,
+      <code>DF</code>,
+      <code>DG</code>,
+      <code>DK</code>,
+      <code>DM</code>. The special code <code>WD</code> may also be used for white dwarfs. (This differs significantly from real-world classification of white dwarf stars.)
     </p>
+
     <p>
-      The special code <code>BD</code> is used for brown dwarf objects (so-called "failed stars"). The special code <code>WD</code> is used for white dwarfs
-      (hot stellar remnants).
+      The special code <code>BD</code> is used for brown dwarf objects (so-called "failed stars").
     </p>
 
     <h3>Stellar Spectral Class</h3>
@@ -1703,13 +1711,8 @@ star; colors are the essential perceived colors of the star’s visible light.
 
       <tr>
         <td><code>VII</code>
-        <td>White Dwarf. <em>NOTE: Use <code>WD</code> instead.</em>
+        <td>White Dwarf. <em>NOTE: Use <code>D</code> instead.</em>
         <td>0.006 - 0.018
-
-      <tr>
-        <td><code>D</code>
-        <td>Dwarf.
-        <td>&lt; 0.2
 
     </table>
   </section>
