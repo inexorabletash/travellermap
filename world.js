@@ -9,15 +9,23 @@
   }
 
   var STARPORT_TABLE = {
+    // Starports
     A: 'Excellent',
     B: 'Good',
     C: 'Routine',
     D: 'Poor',
     E: 'Frontier Installation',
-    X: 'None'
+    X: 'None',
+    // Spaceports
+    F: 'Good',
+    G: 'Poor',
+    H: 'Primitive',
+    Y: 'None'
   };
 
   var SIZ_TABLE = {
+    0: 'Asteroid Belt',
+    S: 'Small World', // MegaTraveller
     1: '1,600km',
     2: '3,200km',
     3: '4,800km',
@@ -27,7 +35,12 @@
     7: '11,200km',
     8: '12,800km',
     9: '14,400km',
-    A: '16,000km'
+    A: '16,000km',
+    B: 'Exceptional', // Non-standard
+    C: 'Exceptional', // "
+    D: 'Exceptional', // "
+    E: 'Exceptional', // "
+    F: 'Exceptional'  // "
   };
 
   var ATM_TABLE = {
@@ -198,7 +211,7 @@
     Ag: 'Agricultural',
     Na: 'Non-Agricultural',
     Pi: 'Pre-Industrial',
-      In: 'Industrialized',
+    In: 'Industrialized',
     Po: 'Poor',
     Pr: 'Pre-Rich',
     Ri: 'Rich',
@@ -233,7 +246,20 @@
     Da: 'Danger',
     Ab: 'Data Repository',
     An: 'Ancient Site',
-    Rs: 'Research Station'
+    Rs: 'Research Station',
+
+    // Legacy
+    Nh: 'Non-Hiver Population',
+    Nk: "Non-K'kree Population",
+    Tp: 'Terra-prime',
+    Tn: 'Terra-norm',
+    Lt: 'Low Technology',
+    Ht: 'High Technology',
+    //Fa: 'Fascinating', // Conflicts with T5: Farming.
+    St: 'Steppeworld',
+    Ex: 'Exile Camp',
+    //Pr: 'Prison World', // Conflicts with T5: Pre-Rich.
+    Xb: 'Xboat Station'
   };
 
   var REMARKS_PATTERNS = [
@@ -315,6 +341,8 @@
     };
     world.PopMult = world.PBG.Pop;
     world.PopExp  = fromEHex(world.UWP.Pop);
+    if (world.PopExp > 0 && world.PopMult === 0)
+      world.PopMult = 1;
     world.TotalPopulation = numberWithCommas(world.PopMult * Math.pow(10, world.PopExp));
 
     var UNICODE_MINUS = '\u2212'; // U+2212 MINUS SIGN
@@ -386,6 +414,8 @@
     var $ = function(s) { return document.querySelector(s); };
     var template = Handlebars.compile($('#world-template').innerHTML);
     $('#world-data').innerHTML = template(world);
+
+    document.title = Handlebars.compile('{{Name}} ({{Sector}} {{Hex}}) - World Data Sheet')(world);
 
     $('#world-image').classList.add('Hyd' + world.UWP.Hyd);
     $('#world-image').classList.add('Siz' + world.UWP.Siz);
