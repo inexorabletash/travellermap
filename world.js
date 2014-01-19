@@ -474,6 +474,7 @@
     var mapurl = '//travellermap.com/data/'+sector+'/'+hex+'/jump/2/image?scale=48&border=0';
     if (window.devicePixelRatio > 1) mapurl += '&dpr=' + window.devicePixelRatio;
     $('#jumpmap').src = mapurl;
+    // TODO: Add click event handler for navigation.
   });
 
 }(this));
