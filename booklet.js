@@ -153,17 +153,17 @@
   // Returns Promise<string>
   function getTextViaPOST(url, data) {
     return new Promise(function(resolve, reject) {
-      var body = null;
-      if (typeof data === 'string') {
-        body = data;
-      } else if (typeof data === 'object') {
-        body = new FormData();
-        Object.keys(data).forEach(function(key) { body.append(key, data[key]); });
-      }
+      status('Requesting data...', true);
       var xhr = new XMLHttpRequest(), async = true;
       xhr.open('POST', url, async);
-      status('Requesting data...', true);
-      xhr.send(body);
+      if (typeof data === 'string') {
+        xhr.setRequestHeader('Content-Type', 'text/plain'); // Safari doesn't infer this.
+        xhr.send(data);
+      } else if (typeof data === 'object') {
+        var fd  = new FormData();
+        Object.keys(data).forEach(function(key) { fd.append(key, data[key]); });
+        xhr.send(fd);
+      }
       xhr.onreadystatechange = function() {
         status('Receiving data...', true);
         if (xhr.readyState !== XMLHttpRequest.DONE)
