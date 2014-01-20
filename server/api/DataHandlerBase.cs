@@ -28,9 +28,6 @@ namespace Maps.API
             if (!ServiceConfiguration.CheckEnabled(ServiceName, context.Response))
                 return;
 
-            // CORS - allow from any origin
-            context.Response.AddHeader("Access-Control-Allow-Origin", "*");
-
             // Configure caching
             if (context.Request.HttpMethod == "POST")
             {

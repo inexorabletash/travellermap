@@ -80,6 +80,14 @@
       https://connect.microsoft.com/VisualStudio/feedback/details/758474/iis-gzip-compression-filter-removes-pre-existing-vary-header
     -->
     <urlCompression doStaticCompression="true" doDynamicCompression="false" />
+    <!-- Disable WebDAV so ASP.NET can handle OPTIONS header for CORS requests. -->
+    <modules runAllManagedModulesForAllRequests="true">
+      <remove name="WebDAVModule" />
+    </modules>
+    <handlers>
+      <remove name="WebDAV"/>
+      <remove name="OPTIONSVerbHandler"/>
+    </handlers>
   </system.webServer>
   <connectionStrings>
     <add name="SqlDev" connectionString="DEVELOPMENT_CONNECTION_STRING" providerName="System.Data.SqlClient"/>
