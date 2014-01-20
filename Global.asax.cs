@@ -149,6 +149,9 @@ namespace Maps
             routes.Add(new RegexRoute(@"^/go/(?<sector>[^/]+)$", new RedirectRouteHandler("/?sector={sector}", statusCode: 302)));
             routes.Add(new RegexRoute(@"^/go/(?<sector>[^/]+)/(?<hex>[0-9]{4})$", new RedirectRouteHandler("/?sector={sector}&hex={hex}", statusCode: 302)));
 
+            routes.Add(new RegexRoute(@"^/booklet/(?<sector>[^/]+)$", new RedirectRouteHandler("/booklet.html?sector={sector}", statusCode: 302)));
+            routes.Add(new RegexRoute(@"^/sheet/(?<sector>[^/]+)/(?<hex>[0-9]{4})$", new RedirectRouteHandler("/world.html?sector={sector}&hex={hex}", statusCode: 302)));
+
             // Administration -----------------------------------------------
 
             routes.Add(new RegexRoute(@"^/admin/admin$", new GenericRouteHandler(typeof(AdminHandler))));
@@ -241,6 +244,8 @@ namespace Maps
             routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/(?<hex>[0-9]{4})/jump/(?<jump>\d+)$", new GenericRouteHandler(typeof(JumpWorldsHandler)), DEFAULT_JSON));
             routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/(?<hex>[0-9]{4})/image$", new GenericRouteHandler(typeof(JumpMapHandler)), new RouteValueDictionary { { "jump", "0" } }));
             routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/(?<hex>[0-9]{4})/jump/(?<jump>\d+)/image$", new GenericRouteHandler(typeof(JumpMapHandler))));
+
+            routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/(?<hex>[0-9]{4})/sheet$", new RedirectRouteHandler("/world.html?sector={sector}&hex={hex}", statusCode: 302)));
 
             // Subsector by Name e.g. /data/Spinward Marches/Regina
             routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/(?<subsector>[^/]+)$", new GenericRouteHandler(typeof(SECHandler)), new RouteValueDictionary { { "type", "SecondSurvey" }, { "metadata", "0" } }));
