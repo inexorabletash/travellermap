@@ -60,9 +60,9 @@ h3 { text-decoration: underline; }
                 <li><a href="#coordinates">Coordinates</a> &ndash; look up sector coordinates by name
                 <li><a href="#credits">Credits</a> &ndash; get world data and metadata by location
                 <li><a href="#sec">SEC</a> &ndash; retrieve sector data
-                <li><a href="#metadata">SectorMetaData</a> &ndash; retrieve sector metadata
+                <li><a href="#metadata">Metadata</a> &ndash; retrieve sector metadata
                 <li><a href="#msec">MSEC</a> &ndash; retrieve <cite>sec2pdf</cite>-compatible sector metadata
-                <li><a href="#jumpworlds">JumpWorlds</a> &ndash; return a list of worlds reachable by Jump-N
+                <li><a href="#jumpworlds">Jump Worlds</a> &ndash; return a list of worlds reachable by Jump-N
                 <li><a href="#search">Search</a> &ndash; search for worlds, subsectors or sectors by name
                 <li><a href="#universe">Universe</a> &ndash; return a list of sectors, optionally filtered by era
             </ul>
@@ -70,7 +70,7 @@ h3 { text-decoration: underline; }
         <li>Image APIs
             <ul>
                 <li><a href="#poster">Poster</a> &ndash; render an image of a sector or subsector
-                <li><a href="#jumpmap">JumpMap</a> &ndash; render a map of worlds reachable by Jump-N
+                <li><a href="#jumpmap">Jump Map</a> &ndash; render a map of worlds reachable by Jump-N
                 <li><a href="#tile">Tile</a> &ndash; render an arbitrary rectangle of space to an image
             </ul>
 
@@ -143,6 +143,7 @@ h3 { text-decoration: underline; }
       </li>
       <li>World
         <ul>
+          <li><a href="#jumpworlds">http://travellermap.com/data/<var>sector</var>/<var>hex</a> &ndash; world data
           <li><a href="#coordinates">http://travellermap.com/data/<var>sector</var>/<var>hex</var>/coordinates</a> &ndash; coordinates
           <li><a href="#credits">http://travellermap.com/data/<var>sector</var>/<var>hex</var>/credits</a> &ndash; credits
 
@@ -160,7 +161,7 @@ h3 { text-decoration: underline; }
   <section id="options">
     <h3>Rendering Options and Styles &ndash; visual appearance of the map</h3>
     <p>
-        All of the APIs that produce images (<a href="#poster">Poster</a>, <a href="#jumpmap">JumpMap</a>,
+        All of the APIs that produce images (<a href="#poster">Poster</a>, <a href="#jumpmap">Jump Map</a>,
         <a href="#tile">Tile</a>) as well as the site itself (including <a href="#iframe">IFRAME</a>) take
         an <code>options</code> parameter that is a bit-map of rendering style options and a <code>style</code>
         parameter that names a visual style/color scheme for the map.
@@ -417,7 +418,7 @@ h3 { text-decoration: underline; }
             </ul>
 
         <li>
-          Defaults to <a href="http://json.org/">JSON</a>. To retrieve results in XML form, specify
+          The default output format is <a href="http://json.org/">JSON</a>. To retrieve results in XML form, specify
           the HTTP header <code>Accept: text/xml</code> or include <code>accept=text/xml</code>
           in the query string.
 
@@ -469,10 +470,10 @@ h3 { text-decoration: underline; }
 
     <h4>Notes:</h4>
     <ul>
-        <li>
-          Defaults to <a href="http://json.org/">JSON</a>. To retrieve results in XML form, specify
-          the HTTP header <code>Accept: text/xml</code> or include <code>accept=text/xml</code>
-          in the query string.
+      <li>
+        The default output format is <a href="http://json.org/">JSON</a>. To retrieve results in XML form, specify
+        the HTTP header <code>Accept: text/xml</code> or include <code>accept=text/xml</code>
+        in the query string.
     </ul>
 
     <h4>Example:</h4>
@@ -567,7 +568,7 @@ h3 { text-decoration: underline; }
   </section>
 
   <section id="metadata">
-    <h3>SectorMetaData &ndash; generate metadata for a sector</h3>
+    <h3>Metadata &ndash; retrieve metadata for a sector</h3>
     <h4>HTTP Methods:</h4>
     <dl class="params">
       <dt>GET
@@ -602,7 +603,7 @@ h3 { text-decoration: underline; }
     <h4>Notes:</h4>
     <ul>
         <li>
-          Defaults to <a href="http://json.org/">JSON</a>. To retrieve results in XML form, specify
+          The default output format is <a href="http://json.org/">JSON</a>. To retrieve results in XML form, specify
           the HTTP header <code>Accept: text/xml</code> or include <code>accept=text/xml</code>
           in the query string.
 
@@ -644,7 +645,7 @@ h3 { text-decoration: underline; }
   </section>
 
   <section id="jumpworlds">
-    <h3>JumpWorlds &ndash; return a list of worlds within Jump-N from some location</h3>
+    <h3>Jump Worlds &ndash; return a list of worlds within Jump-N from some location</h3>
     <h4>API URLs:</h4>
     <p class="code">
         http://travellermap.com/api/jumpworlds?x=<var>x</var>&amp;y=<var>y</var>
@@ -657,12 +658,15 @@ h3 { text-decoration: underline; }
     </p>
     <h4>Data URLs:</h4>
     <p class="code">
+      http://travellermap.com/data/<var>sector</var>/<var>hex</var>
+    </p>
+    <p class="code">
       http://travellermap.com/data/<var>sector</var>/<var>hex</var>/jump/<var>jump</var>
     </p>
 
     <h4>Parameters:</h4>
     <dl class="params">
-        <dt>jump <dd>jump distance to include (1 through 6, default is 6)
+        <dt>jump <dd>jump distance to include (<code>0</code> through <code>12</code>, default is <code>6</code>)
         <dt>sector <dd>specify the <a href="#system_location">sector location</a> by name, e.g. "Spinward%20Marches"
         <dt>hex <dd>specify <a href="#system_location">hex location</a> within the named sector
         <dt>sx
@@ -675,22 +679,30 @@ h3 { text-decoration: underline; }
 
     <h4>Notes:</h4>
     <ul>
-        <li>Returns a list of worlds. Each world has the following fields (in no particular order):
-            <ul>
-                <li><code>Name</code>
-                <li><code>Hex</code>
-                <li><code>UWP</code>
-                <li><code>Bases</code>
-                <li><code>Zone</code>
-                <li><code>Allegiance</code>
-                <li><code>PBG</code>
-                <li><code>Stellar</code>
-            </ul>
+      <li>The short Data URL form (<code>/data/<var>sector</var>/<var>hex</var></code>) is an alias for jump 0 - only details for the specified
+        system are returned.
+      <li>Returns a list of worlds. Each world has the following fields (in no particular order), although fields may be omitted if blank:
+        <ul>
+          <li><code>Name</code>
+          <li><code>Hex</code>
+          <li><code>UWP</code>
+          <li><code>Bases</code>
+          <li><code>Remarks</code>
+          <li><code>Zone</code>
+          <li><code>PBG</code>
+          <li><code>Allegiance</code>
+          <li><code>Stellar</code>
+          <li><code>Ix</code>
+          <li><code>Ex</code>
+          <li><code>Cx</code>
+          <li><code>Nobility</code>
+          <li><code>Worlds</code>
+        </ul>
 
-        <li>
-          Defaults to <a href="http://json.org/">JSON</a>. To retrieve results in XML form, specify
-          the HTTP header <code>Accept: text/xml</code> or include <code>accept=text/xml</code>
-          in the query string.
+      <li>
+        The default output format is <a href="http://json.org/">JSON</a>. To retrieve results in XML form, specify
+        the HTTP header <code>Accept: text/xml</code> or include <code>accept=text/xml</code>
+        in the query string.
     </ul>
 
     <h4>Example:</h4>
@@ -735,7 +747,7 @@ h3 { text-decoration: underline; }
         <li>Searches are performed on individual items (sectors, subsectors, worlds). You cannot at present do scoped search such as "TL-F worlds in the Solomani Rim"
         <li>Results may appear for items with multiple names (e.g. Solomani Rim sector is known as <em>Kushuggi</em> in Vilani); this is a correct result, although the alternate name is not apparent on the site.
         <li>
-          Defaults to <a href="http://json.org/">JSON</a>. To retrieve results in XML form, specify
+          The default output format is <a href="http://json.org/">JSON</a>. To retrieve results in XML form, specify
           the HTTP header <code>Accept: text/xml</code> or include <code>accept=text/xml</code>
           in the query string.
     </ul>
@@ -768,7 +780,7 @@ h3 { text-decoration: underline; }
         <li>Returns a list of sectors providing X,Y coordinates and names.
         <li>The <code>era</code> parameter filters on an exact match only; the tagging of sectors with a precise year is sparse
         <li>
-          Defaults to <a href="http://json.org/">JSON</a>. To retrieve results in XML form, specify
+          The default output format is <a href="http://json.org/">JSON</a>. To retrieve results in XML form, specify
           the HTTP header <code>Accept: text/xml</code> or include <code>accept=text/xml</code>
           in the query string.
 
@@ -914,7 +926,7 @@ h3 { text-decoration: underline; }
 </section>
 
   <section id="jumpmap">
-    <h3>JumpMap &ndash; render an image of hexes within Jump-N of some location</h3>
+    <h3>Jump Map &ndash; render an image of hexes within Jump-N of some location</h3>
     <h4>API URLs:</h4>
     <p class="code">
         http://travellermap.com/api/jumpmap?sector=<var>sector</var>&amp;hex=<var>hex</var>&amp;jump=<var>jump</var>
@@ -937,7 +949,7 @@ h3 { text-decoration: underline; }
   <dt>GET
     <dd>The map to render is specified some combination of the following URL parameters:
     <dl class="params">
-        <dt>jump <dd>jump distance to render (1 through 12, default is 6)
+        <dt>jump <dd>jump distance to render (<code>0</code> through <code>12</code>, default is <code>6</code>)
         <dt>sector <dd>specify the <a href="#system_location">sector location</a> by name, e.g. "Spinward%20Marches"
         <dt>hex <dd>specify <a href="#system_location">hex location</a> within the named sector
         <dt>sx
@@ -1041,7 +1053,7 @@ h3 { text-decoration: underline; }
     </p>
     <p>
         The <a href="#coordinates">Coordinates API</a> will look up a sector/hex location and produce sector/hex
-        coordinates suitible for further calculations. For convenience, the <a href="#jumpmap">JumpMap API</a>,
+        coordinates suitible for further calculations. For convenience, the <a href="#jumpmap">Jump Map API</a>,
         <a href="#credits">Credits API</a>, <a href="#iframe">IFRAME API</a>, and Permalinks all accept named locations using
         <code>sector</code> and <code>hex</code> parameters.
     </p>
@@ -1067,7 +1079,7 @@ h3 { text-decoration: underline; }
       The <a href="#coordinates">Coordinates API</a> will map a <code>sector</code> / <code>hex</code> pair
     sector/hex name (such as "Spinward Marches", "1910")
       to the numeric quartet in this coordinate space.
-      The <a href="#jumpmap">JumpMap API</a> and <a href="#credits">Credits API</a> accept these coordinates using
+      The <a href="#jumpmap">Jump Map API</a> and <a href="#credits">Credits API</a> accept these coordinates using
       <code>sx</code>, <code>sy</code>, <code>hx</code> and
       <code>hy</code> parameters. The <a href="#coordinates">Coordinates API</a> can also accept
       these coordinates using those parameters to map to World-Space coordinates.
@@ -1102,7 +1114,7 @@ function SectorHexToXY(sx, sy, hx, hy) {
   <p>
       This scheme is roughly comparable to the canonical <cite>Traveller</cite> ring/ray system, but
       is far more convenient given that the origin is within charted space. This coordinate system is used by the
-      <a href="#credits">Credits API</a> and the <a href="#jumpmap">JumpMap API</a>, which require selection of a
+      <a href="#credits">Credits API</a> and the <a href="#jumpmap">Jump Map API</a>, which require selection of a
       specific hex. The coordinates are specified as <code>x</code> and <code>y</code> parameters
   </p>
   <p>
@@ -1326,10 +1338,10 @@ return false;
   <ul>
       <li><a href="#coordinates">Coordinates</a>
       <li><a href="#credits">Credits</a>
-      <li><a href="#jumpworlds">JumpWorlds</a>
+      <li><a href="#jumpworlds">Jump Worlds</a>
       <li><a href="#search">Search</a>
       <li><a href="#universe">Universe</a>
-      <li><a href="#metadata">SectorMetaData</a>
+      <li><a href="#metadata">Metadata</a>
       <li><a href="#sec">SEC</a> (callback parameter is a single string containing linebreaks)
       <li><a href="#msec">MSEC</a> (callback parameter is a single string containing linebreaks)
   </ul>
