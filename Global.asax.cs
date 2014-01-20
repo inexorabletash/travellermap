@@ -226,7 +226,7 @@ namespace Maps
             routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/msec$", new GenericRouteHandler(typeof(MSECHandler))));
             routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/image$", new GenericRouteHandler(typeof(PosterHandler))));
 
-            routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/booklet$", new RedirectRouteHandler("/sector.htm?sector={sector}", statusCode: 302)));
+            routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/booklet$", new RedirectRouteHandler("/booklet.html?sector={sector}", statusCode: 302)));
 
             // Subsector by Index, e.g. /data/Spinward Marches/C
             routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/(?<subsector>[A-Pa-p])$", new GenericRouteHandler(typeof(SECHandler)), new RouteValueDictionary { { "type", "SecondSurvey" }, { "metadata", "0" } }));
