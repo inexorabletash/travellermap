@@ -260,6 +260,19 @@ h3 { text-decoration: underline; }
 
       <dt>routes=0</dt>
       <dd>Routes are not rendered (macro-scale or micro-scale)</dd>
+
+      <dt>dpr=<var>number</var></dt>
+      <dd>The image is rendered for the specified
+        <a target="_blank" href="http://www.quirksmode.org/blog/archives/2012/07/more_about_devi.html">device pixel ratio</a>.
+        For example, specifying <code>dpr=2</code> would produce an image at double the
+        resolution, providing better quality for iOS "retina" and other high-density
+        displays.
+
+      <dt>datauri=1</dt>
+      <dd>The image is returned as a base64-encoded
+        <a target="_blank" href="http://en.wikipedia.org/wiki/Data_URI_scheme">Data URI</a>
+        rather than as binary data. This is useful when requesting images via POST via XHR
+        to insert into HTML.</dd>
     </dl>
   </section>
 
