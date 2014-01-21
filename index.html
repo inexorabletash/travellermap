@@ -630,24 +630,24 @@ button:hover {
 
     <section>
       <h3>The Traveller Map</h3>
-      <p><a target="_blank" href="doc/about.html">About the Traveller Map</a></p>
-      <p><a target="_blank" href="doc/credits.html">Credits and Data Sources</a></p>
+      <p><a target="_blank" href="doc/about">About the Traveller Map</a></p>
+      <p><a target="_blank" href="doc/credits">Credits and Data Sources</a></p>
       <p><a target="_blank" href="http://travellermap.blogspot.com/">News, Help &amp; Feedback</a></p>
     </section>
 
     <section>
       <h3>Players &amp; Referees</h3>
-      <p><a target="_blank" href="doc/secondsurvey.html">Understanding the data</a></p>
-      <p><a target="_blank" href="doc/fileformats.html">Data file formats</a></p>
+      <p><a target="_blank" href="doc/secondsurvey">Understanding the data</a></p>
+      <p><a target="_blank" href="doc/fileformats">Data file formats</a></p>
       <p>
-        <a target="_blank" href="booklet.html">Booklet Maker</a> &bull;
-        <a target="_blank" href="poster.html">Poster Maker</a>
+        <a target="_blank" href="booklet">Booklet Maker</a> &bull;
+        <a target="_blank" href="poster">Poster Maker</a>
       </p>
     </section>
 
     <section>
       <h3>Developers</h3>
-      <p><a target="_blank" href="doc/api.html">Explore the API</a></p>
+      <p><a target="_blank" href="doc/api">Explore the API</a></p>
       <p><a target="_blank" href="https://github.com/inexorabletash/travellermap">Get the source code</a></p>
       <p><a target="_blank" href="https://trello.com/b/y61wmEKJ/travellermap-com-wish-list">Check the wish list</a></p>
     </section>
@@ -858,7 +858,7 @@ button:hover {
     </script>
     <script id="WorldMetadataTemplate" type="text/x-handlebars-template">
       <div>
-        <a class="stealth" target="_blank" href="world.html?sector={{SectorName}}&hex={{WorldHex}}">
+        <a class="stealth" target="_blank" href="world?sector={{SectorName}}&hex={{WorldHex}}">
         {{SectorName}}
         {{WorldHex}}
         <b>{{WorldName}}</b>
@@ -872,17 +872,17 @@ button:hover {
         {{#Official}}
           <a class="official"
             title="Sector data has been approved by the Traveller 5 Second Survey"
-            href="doc/credits.html#official"><span class="bar">&#x25AC;</span> Official <span class="bar">&#x25AC;</span></a>
+            href="doc/credits#official"><span class="bar">&#x25AC;</span> Official <span class="bar">&#x25AC;</span></a>
         {{/Official}}
         {{#Preserve}}
           <a class="preserve"
             title="This sector is set aside as a Referee's Preserve - the presented data is an example"
-            href="doc/credits.html#preserve"><span class="bar">&#x25AC;</span> Preserve <span class="bar">&#x25AC;</span></a>
+            href="doc/credits#preserve"><span class="bar">&#x25AC;</span> Preserve <span class="bar">&#x25AC;</span></a>
         {{/Preserve}}
         {{#Unofficial}}
           <a class="unofficial"
             title="Sector data has not been approved"
-            href="doc/credits.html#unofficial"><span class="bar">&#x25AC;</span> Unofficial <span class="bar">&#x25AC;</span></a>
+            href="doc/credits#unofficial"><span class="bar">&#x25AC;</span> Unofficial <span class="bar">&#x25AC;</span></a>
         {{/Unofficial}}
         {{#Unmapped}}
           &nbsp;

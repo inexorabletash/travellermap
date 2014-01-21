@@ -331,11 +331,11 @@
       The Traveller game in all forms is owned by Far Future Enterprises. Copyright &copy; 1977 - 2014 Far Future Enterprises.
 
       <br>
-      <a title="Data sources, authors, and publishers" target="_blank" href="doc/credits.html">Credits</a>
+      <a title="Data sources, authors, and publishers" target="_blank" href="doc/credits">Credits</a>
       <a title="News and feedback - in syndication format" target="_blank" href="http://travellermap.blogspot.com/">Blog &amp; Feedback</a>
-      <a title="Write your own code that uses the site" target="_blank" href="doc/api.html">API</a>
-      <a title="Second Survey system data" target="_blank" id="format" href="doc/secondsurvey.html">Formats</a>
-      <a title="Information about the Traveller Map page" target="_blank" href="doc/about.html">About</a>
+      <a title="Write your own code that uses the site" target="_blank" href="doc/api">API</a>
+      <a title="Second Survey system data" target="_blank" id="format" href="doc/secondsurvey">Formats</a>
+      <a title="Information about the Traveller Map page" target="_blank" href="doc/about">About</a>
       &mdash;
       <a title="Return to the standard interface" id="normal" href=".">Back to the Current Interface</a>
 
@@ -350,14 +350,14 @@
     <script id="WorldMetadataTemplate" type="text/x-handlebars-template">
       <div>
         {{#SectorName}}<a title="Generate LBB for {{.}}" target="_blank" href="sector.htm?sector={{.}}">{{.}}</a>{{/SectorName}}
-        <a class="stealth" href="doc/secondsurvey.html#hex" target="_blank" title="Hex">{{WorldHex}}</a>
-        <b><a class="stealth" href="doc/secondsurvey.html#name" target="_blank" title="Name">{{WorldName}}</a></b>
-        <a class="stealth" href="doc/secondsurvey.html#uwp" target="_blank" title="UWP">{{WorldUwp}}</a>
-        <a class="stealth" href="doc/secondsurvey.html#remarks" target="_blank" title="Remarks">{{WorldRemarks}}</a>
-        <a class="stealth" href="doc/secondsurvey.html#ix" target="_blank" title="Ix">{{WorldIx}}</a>
-        <a class="stealth" href="doc/secondsurvey.html#ex" target="_blank" title="Ex">{{WorldEx}}</a>
-        <a class="stealth" href="doc/secondsurvey.html#cx" target="_blank" title="Cx">{{WorldCx}}</a>
-        <a class="stealth" href="doc/secondsurvey.html#pbg" target="_blank" title="PBG">{{WorldPbg}}</a>
+        <a class="stealth" href="doc/secondsurvey#hex" target="_blank" title="Hex">{{WorldHex}}</a>
+        <b><a class="stealth" href="doc/secondsurvey#name" target="_blank" title="Name">{{WorldName}}</a></b>
+        <a class="stealth" href="doc/secondsurvey#uwp" target="_blank" title="UWP">{{WorldUwp}}</a>
+        <a class="stealth" href="doc/secondsurvey#remarks" target="_blank" title="Remarks">{{WorldRemarks}}</a>
+        <a class="stealth" href="doc/secondsurvey#ix" target="_blank" title="Ix">{{WorldIx}}</a>
+        <a class="stealth" href="doc/secondsurvey#ex" target="_blank" title="Ex">{{WorldEx}}</a>
+        <a class="stealth" href="doc/secondsurvey#cx" target="_blank" title="Cx">{{WorldCx}}</a>
+        <a class="stealth" href="doc/secondsurvey#pbg" target="_blank" title="PBG">{{WorldPbg}}</a>
         {{#SectorEra}}(circa {{.}}){{/SectorEra}}
         {{#SubsectorName}}(Subsector {{../SubsectorIndex}}: {{.}}){{/SubsectorName}}
       </div>
@@ -367,17 +367,17 @@
         {{#Official}}
           <a class="official"
             title="Sector data has been approved by the Traveller 5 Second Survey"
-            href="doc/credits.html#official"><span class="bar">&#x25AC;</span> Official <span class="bar">&#x25AC;</span></a>
+            href="doc/credits#official"><span class="bar">&#x25AC;</span> Official <span class="bar">&#x25AC;</span></a>
         {{/Official}}
         {{#Preserve}}
           <a class="preserve"
             title="This sector is set aside as a Referee's Preserve - the presented data is an example"
-            href="doc/credits.html#preserve"><span class="bar">&#x25AC;</span> Preserve <span class="bar">&#x25AC;</span></a>
+            href="doc/credits#preserve"><span class="bar">&#x25AC;</span> Preserve <span class="bar">&#x25AC;</span></a>
         {{/Preserve}}
         {{#Unofficial}}
           <a class="unofficial"
             title="Sector data has not been approved"
-            href="doc/credits.html#unofficial"><span class="bar">&#x25AC;</span> Unofficial <span class="bar">&#x25AC;</span></a>
+            href="doc/credits#unofficial"><span class="bar">&#x25AC;</span> Unofficial <span class="bar">&#x25AC;</span></a>
         {{/Unofficial}}
       </div>
     </script>

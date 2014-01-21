@@ -126,7 +126,7 @@ h3 { text-decoration: underline; }
           <li><a href="#poster">http://travellermap.com/data/<var>sector</var>/image</a> &ndash; map
           <li><a href="#coordinates">http://travellermap.com/data/<var>sector</var>/coordinates</a> &ndash; coordinates
           <li><a href="#credits">http://travellermap.com/data/<var>sector</var>/credits</a> &ndash; credits
-          <li>http://travellermap.com/data/<var>sector</var>/booklet &ndash; alias for <a target="_blank" href="../booklet.html">booklet.html</a>
+          <li>http://travellermap.com/data/<var>sector</var>/booklet &ndash; alias for <a target="_blank" href="../booklet">booklet</a>
           <li><var>sector</var> is name e.g. <code>Spinward Marches</code> or T5SS abbreviation e.g. <code>spin</code>
 
         </ul>
@@ -149,7 +149,7 @@ h3 { text-decoration: underline; }
 
           <li><a href="#jumpworlds">http://travellermap.com/data/<var>sector</var>/<var>hex</var>/jump/<var>jump</var></a> &ndash; worlds in jump range
           <li><a href="#jumpmap">http://travellermap.com/data/<var>sector</var>/<var>hex</var>/jump/<var>jump</var>/image</a> &ndash; jump map
-          <li>http://travellermap.com/data/<var>sector</var>/<var>hex</var>/sheet &ndash; alias for <a target="_blank" href="../world.html">world.html</a>
+          <li>http://travellermap.com/data/<var>sector</var>/<var>hex</var>/sheet &ndash; alias for <a target="_blank" href="../world">world</a>
           <li><var>sector</var> is name e.g. <code>Spinward Marches</code> or T5SS abbreviation e.g. <code>spin</code>
           <li><var>hex</var> is <code>XXYY</code> e.g. <code>1910</code>
           <li><var>jump</var> is a number in the range <code>0</code> - <code>12</code>
@@ -515,22 +515,22 @@ h3 { text-decoration: underline; }
           The body of the request is sector data to be parsed. After successful
           parsing, the same data is returned but reformatted according to the
           selected options. This can be used to convert
-          <a href="fileformats.html#sec">SEC</a> data to
-          <a href="fileformats.html#t5tab">T5 Tab Delimited</a> for easier parsing
+          <a href="fileformats#sec">SEC</a> data to
+          <a href="fileformats#t5tab">T5 Tab Delimited</a> for easier parsing
           by script. The format of the input data is "sniffed" &ndash; if it contains
           tabs it is assumed to be in
-          <a href="fileformats.html#t5tab">T5 Tab Delimited</a> format; if it
+          <a href="fileformats#t5tab">T5 Tab Delimited</a> format; if it
           contains extension field delimiters it is assumed to be in
-          <a href="fileformats.html#t5col">T5 Column Delimited</a> format;
+          <a href="fileformats#t5col">T5 Column Delimited</a> format;
           otherwise, it is parsed as
-          <a href="fileformats.html#sec">Legacy SEC</a> format.
+          <a href="fileformats#sec">Legacy SEC</a> format.
     </dl>
 
     <h4>Options:</h4>
     <dl class="params">
         <dt>type=SecondSurvey
         <dd>
-          <a href="fileformats.html#t5col">Data Format Definition</a>
+          <a href="fileformats#t5col">Data Format Definition</a>
           The <cite>Traveller<sup>5</sup> Second Survey</cite> format in human readable form:
           Hex, Name, UWP, Trade Classifications and Remarks,
           Extensions (Ix, Ex, Cx), Nobility (N), Bases (B), Travel Zone (Z), PBG, Worlds (W), Allegiance and Stellar.
@@ -539,12 +539,12 @@ h3 { text-decoration: underline; }
 
         <dt>type=TabDelimited
         <dd>
-          <a href="fileformats.html#t5tab">Data Format Definition</a>
+          <a href="fileformats#t5tab">Data Format Definition</a>
           Full <cite>Traveller<sup>5</sup> Second Survey</cite> data, in a more easily parsed format.
 
         <dt>type=Legacy
         <dd>
-          <a href="fileformats.html#genie">Data Format Definition</a>
+          <a href="fileformats#genie">Data Format Definition</a>
           Legacy sector format: Name, Hex, UWP, Bases, Trade Classifications and Remarks, Travel Zone, PBG, Allegiance and Stellar.
           <p class="aside">Legacy format is the default for <code>/api/</code> URLs</p>
 
@@ -594,7 +594,7 @@ h3 { text-decoration: underline; }
         selected options. This can be used to convert
         XML or MSEC to JSON for easier parsing by script. The input data format is
         "sniffed" &ndash; if it has an XML prologue it is assumed to be
-        <a href="api.html#metadata">XML</a> format
+        <a href="#metadata">XML</a> format
         (<a href="/data/spin/metadata">example</a>); otherwise,
         <a href="http://dotclue.org/t20/">MSEC</a> format
         (<a href="/data/spin/msec">example</a>) is assumed. JSON parsing
@@ -892,11 +892,11 @@ h3 { text-decoration: underline; }
             specified using this type. Other options must be specified in the URL.
         </dl>
         Sector data must be specified in
-          <a href="fileformats.html#sec">SEC</sec> (<a href="/data/spin/sec">example</a>),
-          <a href="fileformats.html#t5tab">T5 Tab Delimited (<a href="/data/spin/tab">example</a>), or
-          <a href="fileformats.html#t5col">T5 Column Delimited  (<a href="/data/spin">example</a>) format.
+          <a href="fileformats#sec">SEC</sec> (<a href="/data/spin/sec">example</a>),
+          <a href="fileformats#t5tab">T5 Tab Delimited (<a href="/data/spin/tab">example</a>), or
+          <a href="fileformats#t5col">T5 Column Delimited  (<a href="/data/spin">example</a>) format.
         Metadata must be specified in either
-          <a href="api.html#metadata">XML</a> (<a href="/data/spin/metadata">example</a>) or
+          <a href="#metadata">XML</a> (<a href="/data/spin/metadata">example</a>) or
           <a href="http://dotclue.org/t20/">MSEC</a>  (<a href="/data/spin/msec">example</a>) format.
 </dl>
 
@@ -915,7 +915,7 @@ h3 { text-decoration: underline; }
     <li>Generate a PNG or JPEG image of the specified sector (or just subsector), or an arbitrary rectangle of space.
     <li>Image format depends on selected options ("Candy" produces JPEG, otherwise PNG)
     <li>The HTTP <code>Accept</code> header can be used to specify <code>application/pdf</code> instead of the query parameter.
-    <li>The <a href="../poster.html">Poster Maker</a> provides a friendly user interface to this API.
+    <li>The <a href="../poster">Poster Maker</a> provides a friendly user interface to this API.
 </ul>
 
 <h4>Example:</h4>
@@ -989,11 +989,11 @@ h3 { text-decoration: underline; }
             specified using this type. Other options must be specified in the URL.
         </dl>
         Sector data must be specified in
-          <a href="fileformats.html#sec">SEC</sec> (<a href="/data/spin/sec">example</a>),
-          <a href="fileformats.html#t5tab">T5 Tab Delimited (<a href="/data/spin/tab">example</a>), or
-          <a href="fileformats.html#t5col">T5 Column Delimited  (<a href="/data/spin">example</a>) format.
+          <a href="fileformats#sec">SEC</sec> (<a href="/data/spin/sec">example</a>),
+          <a href="fileformats#t5tab">T5 Tab Delimited (<a href="/data/spin/tab">example</a>), or
+          <a href="fileformats#t5col">T5 Column Delimited  (<a href="/data/spin">example</a>) format.
         Metadata must be specified in either
-          <a href="api.html#metadata">XML</a> (<a href="/data/spin/metadata">example</a>) or
+          <a href="#metadata">XML</a> (<a href="/data/spin/metadata">example</a>) or
           <a href="http://dotclue.org/t20/">MSEC</a>  (<a href="/data/spin/msec">example</a>) format.
 </dl>
 
@@ -1011,7 +1011,7 @@ h3 { text-decoration: underline; }
         <li>Generate a PNG image of the specified region.
         <li>PNG images (indexed, 8-bits per pixel) are returned unless PDF is requested; areas outside the hex borders will be transparent.
         <li>The HTTP <code>Accept</code> header can be used to specify <code>application/pdf</code> instead of the query parameter.
-        <li>The <a href="../poster.html">Poster Maker</a> provides a friendly user interface to this API.
+        <li>The <a href="../poster">Poster Maker</a> provides a friendly user interface to this API.
     </ul>
 
     <h4>Example:</h4>
