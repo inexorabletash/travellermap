@@ -7,6 +7,7 @@ using System;
 using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Routing;
+using System.Collections.Generic;
 
 namespace Maps
 {
@@ -21,7 +22,7 @@ namespace Maps
             if (!pattern.StartsWith("^") || !pattern.EndsWith("$"))
                 throw new ApplicationException("RegexRoute pattern should be pinned with ^..$: " + pattern);
 
-            RegexOptions options = RegexOptions.Compiled | RegexOptions.ExplicitCapture;
+            RegexOptions options = RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.ExplicitCapture;
             if (caseInsensitive) options = options | RegexOptions.IgnoreCase;
 
             regex = new Regex(pattern, options);
@@ -78,7 +79,7 @@ namespace Maps
 
     internal class RedirectRouteHandler : IRouteHandler
     {
-        private Regex replacer = new Regex(@"{(.*?)}", RegexOptions.Compiled);
+        private Regex replacer = new Regex(@"{(.*?)}", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
         private readonly string pattern;
         private readonly int statusCode;
@@ -138,7 +139,26 @@ namespace Maps
                 HttpContext.Current.Response.AddHeader("Access-Control-Max-Age", "3600");
                 HttpContext.Current.Response.End();
             }
+
+            // Make ".html" suffix optional for certain pages
+            if (s_extensionless.Contains(Context.Request.Path.ToLowerInvariant()))
+            {
+                Context.RewritePath(Context.Request.Path + ".html");
+                return;
+            }
         }
+
+        private static HashSet<string> s_extensionless = new HashSet<string> {
+            "/booklet",
+            "/poster",
+            "/world",
+            "/old",
+            "/doc/about",
+            "/doc/api",
+            "/doc/credits",
+            "/doc/fileformats",
+            "/doc/secondsurvey"
+        };
 
         private static void RegisterRoutes(RouteCollection routes)
         {
@@ -149,8 +169,8 @@ namespace Maps
             routes.Add(new RegexRoute(@"^/go/(?<sector>[^/]+)$", new RedirectRouteHandler("/?sector={sector}", statusCode: 302)));
             routes.Add(new RegexRoute(@"^/go/(?<sector>[^/]+)/(?<hex>[0-9]{4})$", new RedirectRouteHandler("/?sector={sector}&hex={hex}", statusCode: 302)));
 
-            routes.Add(new RegexRoute(@"^/booklet/(?<sector>[^/]+)$", new RedirectRouteHandler("/booklet.html?sector={sector}", statusCode: 302)));
-            routes.Add(new RegexRoute(@"^/sheet/(?<sector>[^/]+)/(?<hex>[0-9]{4})$", new RedirectRouteHandler("/world.html?sector={sector}&hex={hex}", statusCode: 302)));
+            routes.Add(new RegexRoute(@"^/booklet/(?<sector>[^/]+)$", new RedirectRouteHandler("/booklet?sector={sector}", statusCode: 302)));
+            routes.Add(new RegexRoute(@"^/sheet/(?<sector>[^/]+)/(?<hex>[0-9]{4})$", new RedirectRouteHandler("/world?sector={sector}&hex={hex}", statusCode: 302)));
 
             // Administration -----------------------------------------------
 
@@ -229,7 +249,7 @@ namespace Maps
             routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/msec$", new GenericRouteHandler(typeof(MSECHandler))));
             routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/image$", new GenericRouteHandler(typeof(PosterHandler))));
 
-            routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/booklet$", new RedirectRouteHandler("/booklet.html?sector={sector}", statusCode: 302)));
+            routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/booklet$", new RedirectRouteHandler("/booklet?sector={sector}", statusCode: 302)));
 
             // Subsector by Index, e.g. /data/Spinward Marches/C
             routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/(?<subsector>[A-Pa-p])$", new GenericRouteHandler(typeof(SECHandler)), new RouteValueDictionary { { "type", "SecondSurvey" }, { "metadata", "0" } }));
@@ -245,7 +265,7 @@ namespace Maps
             routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/(?<hex>[0-9]{4})/image$", new GenericRouteHandler(typeof(JumpMapHandler)), new RouteValueDictionary { { "jump", "0" } }));
             routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/(?<hex>[0-9]{4})/jump/(?<jump>\d+)/image$", new GenericRouteHandler(typeof(JumpMapHandler))));
 
-            routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/(?<hex>[0-9]{4})/sheet$", new RedirectRouteHandler("/world.html?sector={sector}&hex={hex}", statusCode: 302)));
+            routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/(?<hex>[0-9]{4})/sheet$", new RedirectRouteHandler("/world?sector={sector}&hex={hex}", statusCode: 302)));
 
             // Subsector by Name e.g. /data/Spinward Marches/Regina
             routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/(?<subsector>[^/]+)$", new GenericRouteHandler(typeof(SECHandler)), new RouteValueDictionary { { "type", "SecondSurvey" }, { "metadata", "0" } }));
