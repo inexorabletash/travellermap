@@ -233,13 +233,18 @@ namespace Maps
 
                 // NOTE: DISTINCT is to filter out "Ley" and "Ley Sector" (different names, same result). 
                 // TODO: Include the searched-for name in the results, and show alternate names in the result set.
-                // {0} is the list of distinct fields (i.e. coordinates), {1} is the table, {2} is the filter
-                string query_format = "SELECT DISTINCT TOP " + numResults + " {0},name FROM {1} WHERE {2} ORDER BY name ASC";
+                // {0} is the list of distinct fields (i.e. coordinates), {1} is the list of fields in the subquery (same as {0} but with "name" added, {2} is the table, {3} is the filter
+                // Since we need the distinct values from the term {0} but don't use the name for the results construction, we can ignore name in the resultset.
+                // This allows us to get the top N results from the database, sort by name, and then toss out duplicates not based on name but on the other, used, columns
+                // Here's a sample subquery that works for the sector table.
+                // SELECT DISTINCT TOP 160 tt.x, tt.y FROM (SELECT TOP 160 x, y,name FROM sectors WHERE (name LIKE 'LEY%' OR name LIKE '%LEY%') ORDER BY name ASC) AS tt;
+                string query_format = "SELECT DISTINCT TOP " + numResults + " {0} FROM (SELECT TOP " + numResults + " {1} FROM {2} WHERE {3}) AS TT";
 
                 // Sectors
                 if (types.HasFlag(SearchResultsType.Sectors) && numResults > 0)
                 {
-                    string sql = String.Format(query_format, "x, y", "sectors", where);
+                    // Note duplicated field names so the results of both queries can come out right.
+                    string sql = String.Format(query_format, "TT.x, TT.y", "x, y", "sectors", where);
                     using (var sqlCommand = new SqlCommand(sql, connection))
                     {
                         for (int i = 0; i < terms.Count; ++i)
@@ -260,7 +265,8 @@ namespace Maps
                 // Subsectors
                 if (types.HasFlag(SearchResultsType.Subsectors) && numResults > 0)
                 {
-                    string sql = String.Format(query_format, "sector_x, sector_y, subsector_index", "subsectors", where);
+                    // Note duplicated field names so the results of both queries can come out right.
+                    string sql = String.Format(query_format, "TT.sector_x, TT.sector_y, TT.subsector_index", "sector_x, sector_y, subsector_index", "subsectors", where);
                     using (var sqlCommand = new SqlCommand(sql, connection))
                     {
                         for (int i = 0; i < terms.Count; ++i)
@@ -283,14 +289,16 @@ namespace Maps
                 // Worlds & UWPs
                 if ((types.HasFlag(SearchResultsType.Worlds) || types.HasFlag(SearchResultsType.UWP)) && numResults > 0)
                 {
-                    string sql = String.Format(query_format, "sector_x, sector_y, hex_x, hex_y", "worlds", where);
+                    // Note duplicated field names so the results of both queries can come out right.
+                    string sql = String.Format(query_format, "TT.sector_x, TT.sector_y, TT.hex_x, TT.hex_y", "sector_x, sector_y, hex_x, hex_y", "worlds", where);
                     using (var sqlCommand = new SqlCommand(sql, connection))
                     {
                         for (int i = 0; i < terms.Count; ++i)
                         {
                             sqlCommand.Parameters.AddWithValue(String.Format("@term{0}", i), terms[i]);
                         }
-                        using (var row = sqlCommand.ExecuteReader())
+                        using (
+                            var row = sqlCommand.ExecuteReader())
                         {
                             while (row.Read())
                             {
