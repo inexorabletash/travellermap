@@ -297,8 +297,7 @@ namespace Maps
                         {
                             sqlCommand.Parameters.AddWithValue(String.Format("@term{0}", i), terms[i]);
                         }
-                        using (
-                            var row = sqlCommand.ExecuteReader())
+                        using (var row = sqlCommand.ExecuteReader())
                         {
                             while (row.Read())
                             {
