@@ -302,12 +302,24 @@ h3 { text-decoration: underline; }
     <p>Beta API features may be revoked or changed at any time, but I'll post updates
     to the <a href="http://travellermap.blogspot.com">blog</a> first.</p>
     <dl class="params">
+      <dt>yah_sector
+      <dt>yah_hex
+        <dd><a href="#system_location">Named coordinates</a> to place a "You Are Here" graphical
+            marker. (<a target="_blank" href="../?yah_sector=spin&yah_hex=1910">example</a>)
+
       <dt>yah_sx
       <dt>yah_sy
       <dt>yah_hx
       <dt>yah_hy
         <dd><a href="#system_sectorhex">Sector/Hex coordinates</a> to place a "You Are Here" graphical
             marker. (<a target="_blank" href="../?yah_sx=-4&amp;yah_sy=-1&amp;yah_hx=19&amp;yah_hy=10">example</a>)
+
+      <dt>marker_sector
+      <dt>marker_hex
+      <dt>marker_url
+        <dd><a href="#system_location">Named coordinates</a> and image URL for a custom marker.
+          The image should be a 256px &times 256px PNG and will be centered on the given coordinates.
+          (<a target="_blank" href="../?marker_sector=spin&marker_hex=1910&marker_url=res/markers/beowulf.png">example</a>)
 
       <dt>ox
       <dt>oy

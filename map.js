@@ -425,7 +425,7 @@ function makeURL(base, params) {
   //   map.ZoomOut();
   //
   // Experimental APIs - may change at any time:
-  //   map.TEMP_AddMarker(id, sx, sy, hx, hy); // should have CSS style for .marker#<id>
+  //   map.TEMP_AddMarker(id, sx, sy, hx, hy, opt_url); // should have CSS style for .marker#<id>
   //   map.TEMP_AddOverlay(x, y, w, h); // should have CSS style for .overlay
   //
   //----------------------------------------------------------------------
@@ -1149,7 +1149,6 @@ function makeURL(base, params) {
     if (marker === null)
       return;
 
-    // TODO: Consider preserving existing item
     var div;
     if (marker.element && marker.element.parentNode) {
       marker.element.parentNode.removeChild(marker.element);
@@ -1157,6 +1156,11 @@ function makeURL(base, params) {
     } else {
       div = document.createElement('div');
       marker.element = div;
+      if (marker.url) {
+        var img = document.createElement('img');
+        img.src = marker.url;
+        div.appendChild(img);
+      }
     }
 
     var pt = sectorHexToLogical(marker.sx, marker.sy, marker.hx, marker.hy);
@@ -1342,7 +1346,7 @@ function makeURL(base, params) {
 
 
   // NOTE: This API is subject to change
-  Map.prototype.TEMP_AddMarker = function(id, sx, sy, hx, hy) {
+  Map.prototype.TEMP_AddMarker = function(id, sx, sy, hx, hy, opt_url) {
     var marker = {
       sx: sx,
       sy: sy,
@@ -1350,6 +1354,7 @@ function makeURL(base, params) {
       hy: hy,
 
       id: id,
+      url: opt_url,
       z: 1009
     };
 
@@ -1403,6 +1408,35 @@ function makeURL(base, params) {
 
     if (has(params, ['yah_sx', 'yah_sy', 'yah_hx', 'yah_hx']))
       this.TEMP_AddMarker('you_are_here', int('yah_sx'), int('yah_sy'), int('yah_hx'), int('yah_hy'));
+
+    if (has(params, ['yah_sector'])) {
+      MapService.coordinates(
+        params.yah_sector, params.yah_hex,
+        function(location) {
+          if (!(location.hx && location.hy)) {
+            location.hx = Astrometrics.SectorWidth / 2;
+            location.hy = Astrometrics.SectorHeight / 2;
+          }
+          self.TEMP_AddMarker('you_are_here', location.sx, location.sy, location.hx, location.hy);
+        },
+        function() {
+          alert('The requested marker location "' + params.yah_sector + ('yah_hex' in params ? (' ' + params.yah_hex) : '') + '" was not found.');
+        });
+    }
+    if (has(params, ['marker_sector', 'marker_url'])) {
+      MapService.coordinates(
+        params.marker_sector, params.marker_hex,
+        function(location) {
+          if (!(location.hx && location.hy)) {
+            location.hx = Astrometrics.SectorWidth / 2;
+            location.hy = Astrometrics.SectorHeight / 2;
+          }
+          self.TEMP_AddMarker('custom', location.sx, location.sy, location.hx, location.hy, params.marker_url);
+        },
+        function() {
+          alert('The requested marker location "' + params.marker_sector + ('marker_hex' in params ? (' ' + params.marker_hex) : '') + '" was not found.');
+        });
+    }
 
     for (var i = 0; ; ++i) {
       var n = (i === 0) ? '' : i, oxs = 'ox' + n, oys = 'oy' + n, ows = 'ow' + n, ohs = 'oh' + n;

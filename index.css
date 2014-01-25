@@ -16,7 +16,9 @@ a.stealth:hover { text-decoration: underline; }
 #GalacticDirectionDisplay { color: red; font-weight: bold; text-transform: uppercase; font-size: 12pt; }
 .box { border: solid 1px white; background-color: black; }
 #stripe { color: red; background-color: red; border: solid 1px red; height: 4pt; }
-#you_are_here { position: absolute; width: 256px; height: 256px; background-color: Transparent; background-image: url("res/ui/youarehere.png"); background-repeat: no-repeat; background-position: top left; }
+.marker#you_are_here { position: absolute; width: 256px; height: 256px; background-color: Transparent; background-image: url("res/ui/youarehere.png"); background-repeat: no-repeat; background-position: top left; }
+.marker#custom { position: absolute; width: 256px; height: 256px; }
+.marker#custom img { position: absolute; width: 128px; height: 128px; left: -64px; top: -64px;}
 #overlay { position: absolute; background-color: #8080ff; opacity: 0.5; -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; margin: 0; padding: 0; border: 0; }
 
 
