@@ -1,3 +1,6 @@
+World images (Belt.png, Hyd*.png, Nebula.png)
+ - Wayne Peters
+
 Galaxy.jpg / Galaxy.png
  - Credit: NASA / JPL-Caltech / R. Hurt (SSC-Caltech)
  - http://www.spitzer.caltech.edu/images/2353-sig05-010a-Milky-Way-Bar
