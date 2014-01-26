@@ -174,30 +174,58 @@ h3 { text-decoration: underline; }
         be specified in decimal.
     </p>
     <p class="aside">
-      Tip: You can use the checkboxes in the table below to compute an options value.
+      Tip: You can use the checkboxes in the table below to compute an options value. Reload
+      the page to see the default options.
     </p>
 
     <table id="options_table">
-        <tr><th></th><th style="text-align:left;">Option<th>Hexadecimal<th>Decimal<th style="text-align: left;">Notes
-        <tr><td><input type="checkbox" value="1" /></td><td>SectorGrid            <td class="number">0x0001<td class="number">     1<td>
-        <tr><td><input type="checkbox" value="2" /></td><td>SubsectorGrid         <td class="number">0x0002<td class="number">     2<td>
-        <tr><td><input type="checkbox" value="4" /></td><td>SectorsSelected       <td class="number">0x0004<td class="number">     4<td>At low scales, show only some sector names
-        <tr><td><input type="checkbox" value="8" /></td><td>SectorsAll            <td class="number">0x0008<td class="number">     8<td>Show all sector names
-        <tr><td><input type="checkbox" value="16" /></td><td>BordersMajor          <td class="number">0x0010<td class="number">    16<td>
-        <tr><td></td><td><i>BordersMinor</i>   <td class="number">0x0020<td class="number">    32<td>No longer used
-        <tr><td><input type="checkbox" value="64" /></td><td>NamesMajor            <td class="number">0x0040<td class="number">    64<td>
-        <tr><td></td><td><i>NamesMinor</i>            <td class="number">0x0080<td class="number">   128<td>No longer used
-        <tr><td><input type="checkbox" value="256" /></td><td>WorldsCapitals        <td class="number">0x0100<td class="number">   256<td>
-        <tr><td><input type="checkbox" value="512" /></td><td>WorldsHomeworlds      <td class="number">0x0200<td class="number">   512<td>
-        <tr><td></td><td><i>RoutesSelected</i> <td class="number">0x0400<td class="number">  1024<td>No longer used
-        <tr><td></td><td><i>PrintStyle</i>     <td class="number">0x0800<td class="number">  2048<td>No longer used
-        <tr><td></td><td><i>CandyStyle</i>     <td class="number">0x1000<td class="number">  4096<td>No longer used
-        <tr><td><input type="checkbox" value="8192" /></td><td>ForceHexes            <td class="number">0x2000<td class="number">  8192<td>Beta Feature
-        <tr><td><input type="checkbox" value="16384" /></td><td>WorldColors           <td class="number">0x4000<td class="number"> 16384<td>Beta Feature
-        <tr><td><input type="checkbox" value="32768" /></td><td>FilledBorders         <td class="number">0x8000<td class="number"> 32768<td>Beta Feature
+        <tr><th><th style="text-align:left;">Option<th>Hexadecimal<th>Decimal<th style="text-align: left;">Notes
+        <tr><td><input type="checkbox" value="1" checked><td>SectorGrid             <td class="number">0x0001<td class="number">     1
+          <td>Show sector grid.
+        <tr><td><input type="checkbox" value="2" checked><td>SubsectorGrid          <td class="number">0x0002<td class="number">     2
+          <td>Show subsector grid.
+        <tr><td><input type="checkbox" value="4" checked><td>SectorsSelected        <td class="number">0x0004<td class="number">     4
+          <td>At low scales, show only some sector names
+        <tr><td><input type="checkbox" value="8"><td>SectorsAll             <td class="number">0x0008<td class="number">     8
+          <td>Show all sector names
+        <tr><td><input type="checkbox" value="16" checked><td>BordersMajor          <td class="number">0x0010<td class="number">    16
+          <td>Show major region borders.
+        <tr><td><input type="checkbox" value="32" checked><td>BordersMinor          <td class="number">0x0020<td class="number">    32
+          <td>Show minor region borders.
+        <tr><td><input type="checkbox" value="64" checked><td>NamesMajor            <td class="number">0x0040<td class="number">    64
+          <td>Show major region names.
+        <tr><td><input type="checkbox" value="128" checked><td>NamesMinor           <td class="number">0x0080<td class="number">   128
+          <td>Show minor region names.
+        <tr><td><input type="checkbox" value="256" checked><td>WorldsCapitals       <td class="number">0x0100<td class="number">   256
+          <td>Show important worlds (capitals).
+        <tr><td><input type="checkbox" value="512" checked><td>WorldsHomeworlds     <td class="number">0x0200<td class="number">   512
+          <td>Show important worlds (homeworlds).
+<!--
+        <tr><td><td>RoutesSelected <td class="number">0x0400<td class="number">  1024
+          <td>No longer used
+        <tr><td><td>PrintStyle     <td class="number">0x0800<td class="number">  2048
+          <td>No longer used
+        <tr><td><td>CandyStyle     <td class="number">0x1000<td class="number">  4096
+          <td>No longer used
+-->
+        <tr><td><input type="checkbox" value="8192" checked><td>ForceHexes          <td class="number">0x2000<td class="number">  8192
+          <td>Never render square hexes.
+        <tr><td><input type="checkbox" value="16384"><td>WorldColors        <td class="number">0x4000<td class="number"> 16384
+          <td>Use additional world colors for atm/hyd.
+        <tr><td><input type="checkbox" value="32768"><td>FilledBorders      <td class="number">0x8000<td class="number"> 32768
+          <td>Background colors for bordered regions.
     </table>
     <p>
       Computed options value: <span id="computed_options"></span> (<a target="_blank" id="test_options" href="#">try it</a>)
+    </p>
+    <p class="aside">
+      Some flag values (not listed in the above table) have been deprecated. See the source code
+      for more details. Because URLs may exist that reference them the flags cannot be reused. Going
+      forward, distinct query parameters will be used to control rendering options. In addition,
+      the flags do not correspond 1:1 to options shown on the main map page as the as the UI has
+      evolved and simplified over time. Specifically, the pairs SectorGrid/SubsectorGrid,
+      BordersMajor/BordersMinor, NamesMajor/NamesMinor, and WorldsCapitals/WorldsHomeworlds
+      are always set/cleared together by one checkbox.
     </p>
     <script>
       (function () {
@@ -219,6 +247,44 @@ h3 { text-decoration: underline; }
         updateOptions();
       }());
     </script>
+
+    <p>
+      Behind the scenes, options values are one input to a style calculation; other inputs include
+      the scale (see below). The options flags (e.g. SectorGrid) only apply at certain scales,
+      per the following table:
+    </p>
+
+    <table id="features">
+      <style>
+      #features th { width: 10pt; }
+      #features th:first-of-type { width: auto; }
+      #features th,
+      #features td { text-align: center; padding-left: 4pt; padding-right: 4pt; }
+      table#features, #features th, #features td { border: solid 1px black; }
+      </style>
+
+      <tr><th>Feature           <th><sup>1</sup>&frasl;<sub>32</sub> <th><sup>1</sup>&frasl;<sub>16</sub> <th><sup>1</sup>&frasl;<sub>8</sub> <th><sup>1</sup>&frasl;<sub>4</sub> <th><sup>1</sup>&frasl;<sub>2</sub> <th>1 <th>2 <th>4 <th>8 <th>16 <th>32 <th>64 <th>128</tr>
+      <tr><td>Galaxy            <td>&bull;<td>&bull;<td>&bull;<td>&bull;<td><td><td><td><td><td><td><td><td></tr>
+      <tr><td>Local Rifts       <td><td><td><td><td>&bull;<td><td><td><td><td><td><td><td></tr>
+      <tr><td>Random Star Field <td><td><td><td><td><td>&bull;<td>&bull;<td>&bull;<td><td><td><td><td></tr>
+      <tr><td>Important Worlds  <td><td><td><td><td>&bull;<td>&bull;<td>&bull;<td>&bull;<td><td><td><td><td></tr>
+      <tr><td>Worlds            <td><td><td><td><td><td><td><td>&bull;<td>&bull;<td>&bull;<td>&bull;<td>&bull;<td>&bull;</tr>
+      <tr><td>Worlds (Basic)    <td><td><td><td><td><td><td><td><td><td><td>&bull;<td>&bull;<td>&bull;</tr>
+      <tr><td>Worlds (Full Data)<td><td><td><td><td><td><td><td><td><td><td><td>&bull;<td>&bull;</tr>
+      <tr><td>Worlds (UWP)      <td><td><td><td><td><td><td><td><td><td><td><td><td>&bull;</tr>
+      <tr><td>Sector Grid       <td><td><td><td><td><td>&bull;<td>&bull;<td>&bull;<td>&bull;<td>&bull;<td>&bull;<td>&bull;<td>&bull;</tr>
+      <tr><td>Subsector Grid    <td><td><td><td><td><td><td><td><td>&bull;<td>&bull;<td>&bull;<td>&bull;<td>&bull;</tr>
+      <tr><td>Sector Names      <td><td><td><td><td><td>&bull;<td>&bull;<td>&bull;<td>&bull;<td>&bull;<td><td><td></tr>
+      <tr><td>Subsector Names   <td><td><td><td><td><td><td><td><td><td><td>&bull;<td>&bull;<td></tr>
+      <tr><td>Parsecs (Square)  <td><td><td><td><td><td><td><td><td><td>&bull;<td>&bull;<td><td></tr>
+      <tr><td>Parsecs (Hex)     <td><td><td><td><td><td><td><td><td><td><td><td>&bull;<td>&bull;</tr>
+      <tr><td>Labels (Macro)    <td><td><td><td><td>&bull;<td>&bull;<td>&bull;<td>&bull;<td><td><td><td><td></tr>
+      <tr><td>Labels (Micro)    <td><td><td><td><td><td><td><td><td>&bull;<td>&bull;<td>&bull;<td>&bull;<td>&bull;</tr>
+      <tr><td>Borders (Macro)   <td>&bull;<td>&bull;<td>&bull;<td>&bull;<td>&bull;<td>&bull;<td>&bull;<td><td><td><td><td><td></tr>
+      <tr><td>Borders (Micro)   <td><td><td><td><td><td><td><td>&bull;<td>&bull;<td>&bull;<td>&bull;<td>&bull;<td>&bull;</tr>
+      <tr><td>Routes (Macro)    <td><td><td><td><td>&bull;<td>&bull;<td>&bull;<td>&bull;<td><td><td><td><td></tr>
+      <tr><td>Routes (Micro)    <td><td><td><td><td><td><td><td><td>&bull;<td>&bull;<td>&bull;<td>&bull;<td>&bull;</tr>
+    </table>
 
 
     <h4>Styles</h4>
