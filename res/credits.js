@@ -24,11 +24,12 @@ function sortTable(tbody, col) {
   while (tbody.children.length > 1) {
     tr = tbody.children[1];
     rows.push(tr);
-    tbody.removeChild(tr); 
+    tbody.removeChild(tr);
   }
 
   function compare(a, b) {
-    var ta = a.children[col].innerText, tb = b.children[col].innerText;
+    var ta = a.children[col].innerText || a.children[col].textContent,
+        tb = b.children[col].innerText || b.children[col].textContent;
     if (ta === String(Number(ta)) && tb === String(Number(tb))) {
       ta = Number(ta);
       tb = Number(tb);

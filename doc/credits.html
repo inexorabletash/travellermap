@@ -596,7 +596,7 @@
 </div>
 <script>
   [].forEach.call(document.querySelectorAll('a.sector'), function(anchor) {
-    anchor.href = "../?sector=" + encodeURIComponent(anchor.innerText);
+    anchor.href = "../?sector=" + encodeURIComponent(anchor.innerText || anchor.textContent);
     anchor.target = "_blank";
   });
 </script>
