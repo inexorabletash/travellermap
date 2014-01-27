@@ -424,9 +424,8 @@ function makeURL(base, params) {
   //   map.ZoomIn();
   //   map.ZoomOut();
   //
-  // Experimental APIs - may change at any time:
-  //   map.TEMP_AddMarker(id, sx, sy, hx, hy, opt_url); // should have CSS style for .marker#<id>
-  //   map.TEMP_AddOverlay(x, y, w, h); // should have CSS style for .overlay
+  //   map.AddMarker(id, sx, sy, hx, hy, opt_url); // should have CSS style for .marker#<id>
+  //   map.AddOverlay(x, y, w, h); // should have CSS style for .overlay
   //
   //----------------------------------------------------------------------
 
@@ -1346,7 +1345,7 @@ function makeURL(base, params) {
 
 
   // NOTE: This API is subject to change
-  Map.prototype.TEMP_AddMarker = function(id, sx, sy, hx, hy, opt_url) {
+  Map.prototype.AddMarker = function(id, sx, sy, hx, hy, opt_url) {
     var marker = {
       sx: sx,
       sy: sy,
@@ -1363,7 +1362,7 @@ function makeURL(base, params) {
   };
 
 
-  Map.prototype.TEMP_AddOverlay = function(x, y, w, h) {
+  Map.prototype.AddOverlay = function(x, y, w, h) {
     // TODO: Take id, like AddMarker
     var overlay = {
       x: x,
@@ -1407,7 +1406,7 @@ function makeURL(base, params) {
       this.SetStyle(params.style);
 
     if (has(params, ['yah_sx', 'yah_sy', 'yah_hx', 'yah_hx']))
-      this.TEMP_AddMarker('you_are_here', int('yah_sx'), int('yah_sy'), int('yah_hx'), int('yah_hy'));
+      this.AddMarker('you_are_here', int('yah_sx'), int('yah_sy'), int('yah_hx'), int('yah_hy'));
 
     if (has(params, ['yah_sector'])) {
       MapService.coordinates(
@@ -1417,7 +1416,7 @@ function makeURL(base, params) {
             location.hx = Astrometrics.SectorWidth / 2;
             location.hy = Astrometrics.SectorHeight / 2;
           }
-          self.TEMP_AddMarker('you_are_here', location.sx, location.sy, location.hx, location.hy);
+          self.AddMarker('you_are_here', location.sx, location.sy, location.hx, location.hy);
         },
         function() {
           alert('The requested marker location "' + params.yah_sector + ('yah_hex' in params ? (' ' + params.yah_hex) : '') + '" was not found.');
@@ -1431,7 +1430,7 @@ function makeURL(base, params) {
             location.hx = Astrometrics.SectorWidth / 2;
             location.hy = Astrometrics.SectorHeight / 2;
           }
-          self.TEMP_AddMarker('custom', location.sx, location.sy, location.hx, location.hy, params.marker_url);
+          self.AddMarker('custom', location.sx, location.sy, location.hx, location.hy, params.marker_url);
         },
         function() {
           alert('The requested marker location "' + params.marker_sector + ('marker_hex' in params ? (' ' + params.marker_hex) : '') + '" was not found.');
@@ -1445,7 +1444,7 @@ function makeURL(base, params) {
         var y = float(oys);
         var w = float(ows);
         var h = float(ohs);
-        this.TEMP_AddOverlay(x, y, w, h);
+        this.AddOverlay(x, y, w, h);
       } else {
         break;
       }
