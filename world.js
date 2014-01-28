@@ -415,7 +415,7 @@
     var template = Handlebars.compile($('#world-template').innerHTML);
     $('#world-data').innerHTML = template(world);
 
-    document.title = Handlebars.compile('{{Name}} ({{Sector}} {{Hex}}) - World Data Sheet')(world);
+    document.title = Handlebars.compile('{{{Name}}} ({{{Sector}}} {{{Hex}}}) - World Data Sheet')(world);
 
     $('#world-image').classList.add('Hyd' + world.UWP.Hyd);
     $('#world-image').classList.add('Siz' + world.UWP.Siz);
