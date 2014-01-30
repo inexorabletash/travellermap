@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
       e.stopPropagation();
       e.preventDefault();
       var reader = new FileReader();
-      reader.readAsText(e.dataTransfer.files[0], 'windows-1252');
+      reader.readAsText(e.dataTransfer.files[0], 'utf-8');
       reader.onload = function(e) {
         elem.value = e.target.result;
       };
