@@ -54,13 +54,27 @@ document.addEventListener('DOMContentLoaded', function() {
     elem.addEventListener('drop', function (e) {
       e.stopPropagation();
       e.preventDefault();
-      var reader = new FileReader();
-      reader.readAsText(e.dataTransfer.files[0], 'utf-8');
-      reader.onload = function(e) {
-        elem.value = e.target.result;
-      };
+      blobToString(e.dataTransfer.files[0], function(s) {
+        elem.value = s;
+      });
     });
     elem.placeholder = 'Copy and paste data or drag and drop a file here.';
   });
+
+  function blobToString(blob, callback) {
+    var encodings = ['utf-8', 'windows-1252'];
+    (function tryNextEncoding() {
+      var encoding = encodings.shift();
+      var reader = new FileReader();
+      reader.readAsText(blob, encoding);
+      reader.onload = function(e) {
+        var result = reader.result;
+        if (result.indexOf('\uFFFD') !== -1 && encodings.length)
+          tryNextEncoding();
+        else
+          callback(result);
+      };
+    }());
+  }
 
 });
