@@ -209,6 +209,8 @@ window.addEventListener('DOMContentLoaded', function() {
         urlParams[name] = map.GetNamedOption(name);
       });
 
+      delete urlParams.sector;
+      delete urlParams.hex;
       ['x', 'y', 'options', 'scale', 'style', 'routes'].forEach(function(p) {
         if (urlParams[p] === defaults[p]) delete urlParams[p];
       });
@@ -316,23 +318,23 @@ window.addEventListener('DOMContentLoaded', function() {
         return r.join(', ');
       }());
 
-      var template = map.GetScale() >= 16 ? worldMetadataTemplate : sectorMetadataTemplate;
-      $('#MetadataDisplay').innerHTML =
-        template(data) + commonMetadataTemplate(data) + statusMetadataTemplate(data);
-
       // Other UI
       if ('SectorName' in data && 'SectorTags' in data) {
         selectedSector = data.SectorName;
-        selectedWorld = ('WorldHex' in data) ? { name: data.WorldName, hex: data.WorldHex } : null;
+        selectedWorld = (map.GetScale() >= 16 && 'WorldHex' in data) ? { name: data.WorldName, hex: data.WorldHex } : null;
         updateSectorLinks();
         $('#downloadBox').classList.add('sector-selected');
         $('#downloadBox').classList[('WorldHex' in data) ? 'add' : 'remove']('world-selected');
       } else {
         selectedSector = null;
-        selectedHex = null;
+        selectedWorld = null;
         $('#downloadBox').classList.remove('sector-selected');
         $('#downloadBox').classList.remove('world-selected');
       }
+
+      var template = selectedWorld ? worldMetadataTemplate : sectorMetadataTemplate;
+      $('#MetadataDisplay').innerHTML =
+        template(data) + commonMetadataTemplate(data) + statusMetadataTemplate(data);
     }
   }
 
@@ -349,7 +351,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
     var worldURL = makeURL('world.html', {
       sector: selectedSector,
-      hex: selectedWorld.hex
+      hex: selectedWorld ? selectedWorld.hex : ''
     });
 
     var title = selectedSector.replace(/ Sector$/, '') + ' Sector';

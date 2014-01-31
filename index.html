@@ -29,13 +29,13 @@
 <meta property="og:site_name" content="The Traveller Map">
 <meta property="fb:admins" content="617166358">
 
-<link rel="stylesheet" href="index.css?update=2014-01-25">
+<link rel="stylesheet" href="index.css?update=2014-01-26">
 
 <!--[if lt IE 8]><script>alert("IE7 is no longer supported.");location = 'http://google.com/chrome';</script><![endif]-->
 <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.1.2/handlebars.min.js"></script>
-<script src="lib/polyfill/polyfill.js?update=2014-01-19"></script>
-<script src="map.js?update=2014-01-25"></script>
-<script src="index.js?update=2014-01-15"></script>
+<script src="lib/polyfill/polyfill.js?update=2014-01-26"></script>
+<script src="map.js?update=2014-01-26"></script>
+<script src="index.js?update=2014-01-30"></script>
 <style>
 .ui {
   z-index: 2000;
@@ -859,11 +859,11 @@ button:hover {
     <script id="WorldMetadataTemplate" type="text/x-handlebars-template">
       <div>
         <a class="stealth" target="_blank" href="world?sector={{SectorName}}&hex={{WorldHex}}">
-        {{SectorName}}
-        {{WorldHex}}
-        <b>{{WorldName}}</b>
-        {{WorldUwp}}
-        &nbsp; (more...)
+          {{SectorName}}
+          {{WorldHex}}
+          <b>{{WorldName}}</b>
+          {{WorldUwp}}
+          &nbsp; (more...)
         </a>
       </div>
     </script>
