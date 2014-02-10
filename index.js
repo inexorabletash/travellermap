@@ -304,6 +304,7 @@ window.addEventListener('DOMContentLoaded', function() {
       if ('SectorTags' in data) {
         var tags =  String(data.SectorTags).split(/\s+/);
         if (tags.indexOf('Official') !== -1) data.Official = true;
+        else if (tags.indexOf('Unreviewed') !== -1) data.Unreviewed = true;
         else if (tags.indexOf('Preserve') !== -1) data.Preserve = true;
         else data.Unofficial = true;
       } else {
@@ -423,6 +424,7 @@ window.addEventListener('DOMContentLoaded', function() {
         if ('SectorTags' in item) {
           var tags = String(item.SectorTags).split(/\s+/);
           if (tags.indexOf('Official') !== -1) item.Official = true;
+          else if (tags.indexOf('Unreviewed') !== -1) item.Unreviewed = true;
           else if (tags.indexOf('Preserve') !== -1) item.Unofficial = true;
           else item.Unofficial = true;
         }

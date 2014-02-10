@@ -152,6 +152,7 @@ body {
 
 .metadata-status a { text-decoration: none; font-weight: bold; }
 .metadata-status .official { visibility: hidden; }
+.metadata-status .unreviewed{ color: orange; }
 .metadata-status .preserve { color: green; }
 .metadata-status .unofficial{ color: yellow; }
 .metadata-status .bar { font-size: 12pt; }
