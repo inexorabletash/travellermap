@@ -325,7 +325,7 @@ window.addEventListener('DOMContentLoaded', function() {
         selectedWorld = (map.GetScale() >= 16 && 'WorldHex' in data) ? { name: data.WorldName, hex: data.WorldHex } : null;
         updateSectorLinks();
         $('#downloadBox').classList.add('sector-selected');
-        $('#downloadBox').classList[('WorldHex' in data) ? 'add' : 'remove']('world-selected');
+        $('#downloadBox').classList[selectedWorld ? 'add' : 'remove']('world-selected');
       } else {
         selectedSector = null;
         selectedWorld = null;
