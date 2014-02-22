@@ -363,10 +363,11 @@ namespace Maps.Rendering
             worldNoWater.pen.color = Color.Empty;
 
             float onePixel = 1f / (float)scale;
-
+    
             parsecGrid.pen = new PenInfo(gridColor, onePixel);
             subsectorGrid.pen = new PenInfo(gridColor, onePixel * 2);
             sectorGrid.pen = new PenInfo(gridColor, (subsectorGrid.visible ? 4 : 2) * onePixel);
+            worldWater.pen = new PenInfo(Color.Empty, Math.Max(0.01f, onePixel));
 
             microBorders.textStyle.Rotation = 0;
             microBorders.textStyle.Translation = new PointF(0, 0);
