@@ -116,13 +116,14 @@ tbody#results tr.fail td { border: 1px solid red; }
 
     tr = document.createElement('tr');
 
-    td = document.createElement('td');
-    tr.appendChild(td);
+    td = tr.appendChild(document.createElement('td'));
     td.appendChild(document.createTextNode(url1));
 
-    td = document.createElement('td');
-    tr.appendChild(td);
+    td = tr.appendChild(document.createElement('td'));
     td.appendChild(document.createTextNode(url2));
+
+    td = tr.appendChild(document.createElement('td'));
+    td.appendChild(document.createTextNode('threshold = ' + threshold));
 
     document.querySelector('#results').appendChild(tr);
 

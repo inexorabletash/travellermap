@@ -147,6 +147,11 @@ namespace Maps.Rendering
 
         public void Apply(ref XPen pen)
         {
+            if (this.width == 0f)
+            {
+                throw new ApplicationException("Hairline pens not supported, set width > 0");
+            }
+
             pen.Color = this.color;
             pen.Width = this.width;
             pen.DashStyle = this.dashStyle;
