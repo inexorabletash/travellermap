@@ -412,7 +412,7 @@
     }(world.Zone));
 
     world.Worlds = Number(world.Worlds);
-    world.OtherWorlds = world.Worlds - 1 - world.PBG.Belts - world.PBG.GG - world.Stars.length;
+    world.OtherWorlds = world.Worlds - 1 - world.PBG.Belts - world.PBG.GG;
 
     var $ = function(s) { return document.querySelector(s); };
     var template = Handlebars.compile($('#world-template').innerHTML);
