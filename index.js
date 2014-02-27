@@ -120,26 +120,21 @@ window.addEventListener('DOMContentLoaded', function() {
     showCredits(map.GetHexX(), map.GetHexY());
   };
 
+  function post(message) {
+    if (window.parent !== window && 'postMessage' in window.parent) {
+      // Fails cross-domain in IE10-
+      try { window.parent.postMessage(message, '*'); } catch (_) {}
+    }
+  }
+
   map.OnClick = function(hex) {
     showCredits(hex.x, hex.y, /*immediate*/true);
-    if (window.parent !== window && 'postMessage' in window.parent) {
-      window.parent.postMessage({
-        source: 'travellermap',
-        type: 'click',
-        location: hex
-      }, '*');
-    }
+    post({source: 'travellermap', type: 'click', location: hex});
   };
 
   map.OnDoubleClick = function(hex) {
     showCredits(hex.x, hex.y, /*immediate*/true);
-    if (window.parent !== window && 'postMessage' in window.parent) {
-      window.parent.postMessage({
-        source: 'travellermap',
-        type: 'doubleclick',
-        location: hex
-      }, '*');
-    }
+    post({source: 'travellermap', type: 'doubleclick', location: hex});
   };
 
   //
