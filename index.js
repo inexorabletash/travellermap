@@ -120,8 +120,26 @@ window.addEventListener('DOMContentLoaded', function() {
     showCredits(map.GetHexX(), map.GetHexY());
   };
 
-  map.OnClick = map.OnDoubleClick = function(hex) {
+  map.OnClick = function(hex) {
     showCredits(hex.x, hex.y, /*immediate*/true);
+    if (window.parent !== window && 'postMessage' in window.parent) {
+      window.parent.postMessage({
+        source: 'travellermap',
+        type: 'click',
+        location: hex
+      }, '*');
+    }
+  };
+
+  map.OnDoubleClick = function(hex) {
+    showCredits(hex.x, hex.y, /*immediate*/true);
+    if (window.parent !== window && 'postMessage' in window.parent) {
+      window.parent.postMessage({
+        source: 'travellermap',
+        type: 'doubleclick',
+        location: hex
+      }, '*');
+    }
   };
 
   //
