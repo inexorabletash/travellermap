@@ -302,6 +302,7 @@ namespace Maps
             this.Routes.AddRange(metadataSource.Routes);
             this.Labels.AddRange(metadataSource.Labels);
             this.Credits = metadataSource.Credits;
+            this.Products.AddRange(metadataSource.Products);
         }
 
 
