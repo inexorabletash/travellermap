@@ -1,646 +1,403 @@
 Foreven
+-5 1
 
-A: Shivva                    sub_a.dat           f
-B: Lieber                    sub_b.dat           f
-C: Shial                     sub_c.dat           f
-D: Massina                   sub_d.dat           f
-E: Pieplow                   sub_e.dat           f
-F: Anika                     sub_f.dat           f
-G: Mowbrey                   sub_g.dat           f
-H: Fessor                    sub_h.dat           f
-I: Lassana                   sub_i.dat           f
-J: Titan                     sub_j.dat           f
-K: Xenough                   sub_k.dat           f
-L: Reidain                   sub_l.dat           f
-M: Rull                      sub_m.dat           f
-N: Harem                     sub_n.dat           f
-O: Piah                      sub_o.dat           f
-P: Urnian                    sub_p.dat           f
+# Referee's Preserve
+# http://farfuture.net/FFEForevenSectorReserve2008.pdf
 
-Bases:
-N = Imperial Navy
-S = Imperial Scout
-A = Imperial Navy & Scout
-J = Avalar Navy
-Z = Zhodani Navy
-Y = Zhodani Depot
-X = Zhodani Relay
-M = Mnemosyne Navy
-D = Darrian Navy
-  = None
+# Subsector A
+          0103 X000000-0   (Dotmap)        000 Zh
+          0104 X000000-0   (Dotmap)        000 Zh
+          0202 X000000-0   (Dotmap)        000 Zh
+          0203 X000000-0   (Dotmap)        000 Zh
+          0302 X000000-0   (Dotmap)        000 Zh
+          0304 X000000-0   (Dotmap)        000 Zh
+          0305 X000000-0   (Dotmap)        000 Zh
+          0306 X000000-0   (Dotmap)        000 Zh
+          0308 X000000-0   (Dotmap)        000 Zh
+          0309 X000000-0   (Dotmap)        000 Zh
+          0401 X000000-0   (Dotmap)        000 Zh
+          0402 X000000-0   (Dotmap)        000 Zh
+          0403 X000000-0   (Dotmap)        000 Zh
+          0404 X000000-0   (Dotmap)        000 Zh
+          0408 X000000-0   (Dotmap)        000 Zh
+          0502 X000000-0   (Dotmap)        000 Zh
+          0503 X000000-0   (Dotmap)        000 Zh
+          0504 X000000-0   (Dotmap)        000 Zh
+          0505 X000000-0   (Dotmap)        000 Zh
+          0507 X000000-0   (Dotmap)        000 Zh
+          0508 X000000-0   (Dotmap)        000 Zh
+          0604 X000000-0   (Dotmap)        000 Zh
+          0607 X000000-0   (Dotmap)        000 Zh
+          0610 X000000-0   (Dotmap)        000 Zh
+          0708 X000000-0   (Dotmap)        000 Zh
+          0801 X000000-0   (Dotmap)        000 Zh
+          0807 X000000-0   (Dotmap)        000 Zh
+          0810 X000000-0   (Dotmap)        000 Zh
 
-Allegiance:
-07 Na = Non-aligned
-11 Zh = Zhodani
-01 Zc = Zhodani Client
-04 Cs = Imperial Client State
-03 Av = Avalar Consulate
-15 Mn = Mnemosyne Principality
-06 Dc = Darrian Client
-10 Dr = Droyne
-08    = Unknown
-                                          
-                                          
-Foreven Sector - Credits
---------------------------
+# Subsector B
+          0902 X000000-0   (Dotmap)        000 Zh
+          0908 X000000-0   (Dotmap)        000 Zh
+          0909 X000000-0   (Dotmap)        000 Zh
+          0910 X000000-0   (Dotmap)        000 Zh
+          1007 X000000-0   (Dotmap)        000 Zh
+          1102 X000000-0   (Dotmap)        000 Zh
+          1103 X000000-0   (Dotmap)        000 Zh
+          1109 X000000-0   (Dotmap)        000 Zh
+          1205 X000000-0   (Dotmap)        000 Zh
+          1209 X000000-0   (Dotmap)        000 Zh
+          1303 X000000-0   (Dotmap)        000 Zh
+          1304 X000000-0   (Dotmap)        000 Zh
+          1307 X000000-0   (Dotmap)        000 Zh
+          1403 X000000-0   (Dotmap)        000 Zh
+          1404 X000000-0   (Dotmap)        000 Zh
+          1405 X000000-0   (Dotmap)        000 Zh
+          1410 X000000-0   (Dotmap)        000 Zh
+          1501 X000000-0   (Dotmap)        000 Zh
+          1504 X000000-0   (Dotmap)        000 Zh
+          1507 X000000-0   (Dotmap)        000 Zh
+          1602 X000000-0   (Dotmap)        000 Zh
 
-These are the subsectors that GypsyComet,
-Dylan Lee and BeRKA have mapped in the Foreven Sector.
-Foreven Sector is directly spinward (left)
-of the Spinward Marches. 
-                                          
-                                          
-                                          
----------------------------------------------------------------------- 
-                                          
-@SUB-SECTOR: Shivva SECTOR: Foreven
-#
-$0104 0403 0 0 13
-$0104 0306 0 0 13
-$0502 0403 0 0 13
-$0502 0401 0 0 13
-$0504 0403 0 0 13
-$0508 0306 0 0 13
-$0708 0508 0 0 13
-$0408 0508 0 0 13
-$0408 0312 0 1 13
-$0502 0801 0 0 13
-$0404 0403 0 0 13
-$0404 0508 0 0 13
-$0708 0712 0 1 13
-$0708 0910 1 0 13
-$0801 1102 1 0 13
-#--------1---------2---------3---------4---------5---------6---
-#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
-#----------   ---- ---------  - --------------- -  --- -- --- -
-EZJAVRCHA     0103 C5829BA-A    Hi                 604 Zh
-Fadishivr     0104 A000465-C  Z As Ni              203 Zh
-Tlensheplie   0202 B376669-A    Ag Ni              905 Zh
-Frinzhqlekl   0203 A851868-A    Po                 201 Zh
-Odlaj         0302 C251662-9    Ni Po              202 Zh
-Iatsvlabl     0304 B435424-C    Ni                 204 Zh
-Anzplefral    0305 B654335-B    Lo Ni              705 Zh
-Tefechij      0306 A321868-C  Z Na Po              314 Zh
-Brajshtaz     0308 X525000-0    Ba Lo Ni        R  005 Zh
-Chanzqlibr    0309 A465301-D  Z Lo Ni              200 Zh
-Tledlziad     0401 B313454-E  Z Ic Ni              704 Zh
-Stietlid      0402 A676402-C    Lo Ni              803 Zh
-SHIVVA        0403 A456AA8-E  Z Hi Cp              324 Zh
-Diachiniem    0404 A450546-E  Z De Ni Po           204 Zh
-Zhodrkradl    0408 A477521-A  Z Ag Ni              104 Zh
-Niaql         0502 B2427AB-B  Z Po                 400 Zh
-Izdeprjdia    0503 B5A3421-B    Fl Ni              104 Zh
-Ezh Zafr      0504 B997541-B  Z Ag Ni              704 Zh
-Ishitlidl     0505 E000778-8    As Na              724 Zh
-Planchiefl    0507 D78A27A-6    Lo Ni Wa           402 Zh
-PADREBR       0508 B5139CB-D  Z Hi Ic Na           805 Zh
-Antneflkra    0604 C578636-7    Ag Ni              703 Zh
-Dliablsa      0607 X458000-0    Ba Lo Ni        R  005 Zh
-Dliatsia      0610 C533754-7    Na Po              704 Zh
-Pa Flavr      0708 B7745AA-A  Z Ag Ni              200 Zh
-Ezh Etsia     0801 C537652-8  Z Ni                 803 Zh
-Seqi          0807 A75A766-E    Wa                 201 Zh
-Sutiano       0810 C779876-8                    A  902 Zh
-                                          
-                                          
----------------------------------------------------------------------- 
-                                          
-@SUB-SECTOR: Lieber SECTOR: Foreven
-#
-$0910 0708 -1 0 13
-$0910 1212 0 1 13
-$0910 1007 0 0 13
-$1102 0801 -1 0 13
-$1102 1103 0 0 13
-$1007 1307 0 0 13
-$1103 1304 0 0 13
-$1307 1405 0 0 13
-$1405 1404 0 0 13
-$1304 1404 0 0 13
-$1404 1804 1 0 13
-#--------1---------2---------3---------4---------5---------6---
-#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
-#----------   ---- ---------  - --------------- -  --- -- --- -
-Ojovshala     0902 B572367-9    Lo Ni              324 Zh
-Friazhdial    0908 B724522-A    Ni                 924 Zh
-Jdatshiedl    0909 C1407AD-8    De Po              013 Zh
-SHTIEM        0910 B68799C-D  Z Hi                 204 Zh
-Viplshanch    1007 C3116AB-A  Z Ic Na Ni           203 Zh
-Ezh Bova      1102 B230567-D  Z De Ni Po           103 Zh
-Vrarnjiavl    1103 B000414-C  Z As Ni              202 Zh
-Yejaple       1109 C465764-6    Lo Ni              712 Zh
-Rabrplibli    1205 C0006AD-A    As Na Ni           323 Zh
-Jiatsar       1209 C5838AE-7                    A  710 Zh
-Apltla        1303 C887778-7    Ag Ri              202 Zh
-Fliaza        1304 C250231-6  Z De Lo Ni Po        813 Zh
-Shiplielot    1307 B666446-B  Z Lo Ni              804 Zh
-Flieflienz    1403 B511122-C    Ic Lo Ni           310 Zh
-LIEBER        1404 A6939A6-D  Z Hi In              113 Zh
-Inzens        1405 B325678-C  Z Ni                 303 Zh
-Stablolins    1410 C564589-7    Ag Ni              402 Zh
-Prozashiz     1501 E95A788-5    Wa                 305 Zh
-Shetsodrev    1504 E43456A-7    Ni                 310 Zh
-Lianzhjinj    1507 C9B2269-A    Fl Lo Ni           214 Zh
-Chiazeaz      1602 C270331-6    De Lo Ni           300 Zh
-                                          
-                                          
----------------------------------------------------------------------- 
-                                          
-@SUB-SECTOR: Shial SECTOR: Foreven
-#
-$1804 1404 -1 0 13
-$1701 1804 0 0 13
-$1701 0207 0 -1 13
-$1804 1905 0 0 13
-$1905 1807 0 0 13
-$1807 1808 0 0 13
-$1701 1837 0 -1 13
-$1905 2304 0 0 13
-$1905 2003 0 0 13
-$2304 2202 0 0 13
-$2202 2439 0 -1 13
-$2304 2602 1 0 13
-#--------1---------2---------3---------4---------5---------6---
-#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
-#----------   ---- ---------  - --------------- -  --- -- --- -
-Ezh Ieets     1701 A320220-C  Z De Lo Ni Po        302 Zh
-Jdieshaqra    1703 A211368-E    Ic Lo Ni           304 Zh
-Frapi         1704 X541000-0                    R  005 Zh
-Blibrafli     1804 B695668-6  Z Ag Ni              603 Zh
-Tladree       1806 A642369-9    Lo Ni Po           101 Zh
-Ibiedl        1807 A411576-E  Z Ic Ni              815 Zh
-Tseplezvie    1808 A533664-A  Z Na Ni Po           803 Zh
-Qrikliev      1901 X638000-0    Ba Lo Ni        R  000 Zh
-Entians       1905 B684778-8  Z Ag Ri              623 Zh
-Eqrebr        2002 B246362-C    Lo Ni              105 Zh
-Ezh Kadep     2003 C76678C-5  Z Ag Ri              105 Zh
-Ratanshont    2005 X530000-0    Ba De Lo Ni Po  R  004 Zh
-Oplzenzh      2102 B100679-B    Na Ni Va           604 Zh
-Ziatip        2103 C320726-9    De Na Po           402 Zh
-Pepraet       2202 A3017BF-C  Z Ic Na Va        A  400 Zh
-Caglop        2209 D592654-3    Ni                 400 Na
-Praienz       2304 B310330-D  Z Lo Ni              403 Zh
-Zhdejtlia     2306 X100000-0    Ba Lo Ni Va     R  004 Zh
-Dybun         2309 X567000-0    Ba Lo Ni        R  004 Na
-Sayploc       2310 E237262-7    Lo Ni              305 Na
-                                          
-                                          
----------------------------------------------------------------------- 
-                                          
-@SUB-SECTOR: Massina SECTOR: Foreven
-#
-$3108 3204 0 0 13
-$3204 0103 1 0 13
-$3108 2807 0 0 13
-$2807 2607 0 0 13
-$3204 2905 0 0 13
-$2905 2602 0 0 13
-$2710 2607 0 0 13
-$2710 2811 0 1 13
-$2602 2304 -1 0 13
-#--------1---------2---------3---------4---------5---------6---
-#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
-#----------   ---- ---------  - --------------- -  --- -- --- -
-STABLSTIAIQL  2501 C100A8A-C    Hi In Na           304 Zh
-Aba           2502 E623646-7    Na Ni Po        A  923 Zh
-Zhebronzebl   2505 A246442-A    Ni                 604 Zh
-KLOIABR       2602 C87A967-A  Z Hi In Wa           920 Zh
-Bivreble      2603 C887588-5    Ag Ni              700 Zh
-Azesiatl      2607 C223333-B  Z Lo Ni Po           615 Zh
-Stiviaz       2608 X776000-0    Ba Lo Ni        R  002 Zh
-Idlzhatl      2610 X757000-0    Ba Lo Ni        R  004 Zh
-Inshzdans     2710 B100445-E  X Ni Va              214 Zh
-Siablibriats  2805 C8B669A-9    Fl Ni              802 Zh
-Prafniedr     2807 B200100-9  Z Lo Ni              134 Zh
-Siapriao      2808 E778452-8    Ni                 500 Zh
-Pliakrdla     2905 A9C6474-D  X Fl Ni              913 Zh
-Yim           2907 E547423-5    Ni                 805 Zh
-Zdiiel        2910 E672310-6    Lo Ni              814 Zh
-Rayarkfost    3003 B4657X9-9    Ag Ri           R  623 Dr
-Brimatij      3006 DAB5552-8    Fl Ni              725 Zh
-Tiens Parde   3107 B664651-6    Ag Ni Ri           602 Zh
-Nianshse      3108 C648358-6  Z Lo Ni              312 Zh
-Zde'dier      3201 C200534-7    Ni                 202 Zh
-Iasha         3204 C431411-B  Z Ni Po              414 Zh
-Jdiaiekl      3205 C333654-8    Na Ni Po           513 Zh
-Bri'zdapienz  3206 C300743-8    Na Va              614 Zh
-                                          
-                                          
----------------------------------------------------------------------- 
-                                          
-@SUB-SECTOR: Pieplow SECTOR: Foreven
-#
-$0712 1012 1 0 13
-$0712 0412 0 0 13
-$0412 0312 0 0 13
-$0412 0516 0 0 13
-$0516 0517 0 0 13
-$0517 0418 0 0 13
-$0517 0818 0 0 13
-$0312 0408 0 -1 13
-$0712 0708 0 -1 13
-#--------1---------2---------3---------4---------5---------6---
-#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
-#----------   ---- ---------  - --------------- -  --- -- --- -
-Zdata         0112 B652579-A    Ni Po              801 Zh
-Zabl          0113 B53667B-8    Ni                 202 Zh
-Azhdots       0116 AAB8656-B    Fl Ni              822 Zh
-Azh           0211 C459759-9                       401 Zh
-Ientsyopr     0212 XAC5000-0    Ba Fl Lo Ni     R  004 Zh
-Dled          0213 X404000-0    Ba Ic Lo Ni Va  R  004 Zh
-Vratsie       0214 B6A2566-9    Fl Ni              704 Zh
-Ponchviaq     0218 D566600-7    Ag Ni              103 Zh
-PIEPLOV       0312 A000973-E  Z As Hi In Na Cp     105 Zh
-Brieria       0411 B9A5899-B                       105 Zh
-Epriatlech    0412 C666663-7  Z Ag Ni Ri           705 Zh
-Piesh         0418 B352688-A  Z Po                 623 Zh
-Dumosif       0513 B5628X8-8    Ri              R  312 Dr
-Aflebshaql    0516 A886758-A  Z Ag Ri              302 Zh
-Dliadizh      0517 C765454-7  Z Ni                 304 Zh
-Maple         0520 D9C8115-7    Fl Lo Ni           402 Na
-Bianz         0612 B666653-A    Ag Ni Ri           401 Zh
-Drensblebl    0712 B7A28BB-B  Z Fl                 503 Zh
-Plibradr      0716 E549456-9    Ni              A  613 Zh
-Iantzpliq     0717 D6868AA-5                       724 Zh
-Chake         0720 E612377-6    Ic Lo Ni        A  301 Na
-Afriedevr     0814 X796000-0    Ba Lo Ni        R  013 Zh
-Brietlmofl    0815 E472102-6    Lo Ni              214 Zh
-Eriedlier     0818 B447687-B  Z Ag Ni              104 Zh
-Wutubole      0819 C7A1252-A    Fl Lo Ni           203 Na
-Cogswell      0820 D878565-7    Ag Ni              200 Na
-                                          
-                                          
----------------------------------------------------------------------- 
-                                          
-@SUB-SECTOR: Anika SECTOR: Foreven
-#
-$1212 1012 0 0 13
-$1212 1314 0 0 13
-$1314 1612 0 0 13
-$1412 1212 0 0 13
-$1412 1612 0 0 13
-$1212 1312 0 0 13
-$1612 1815 1 0 13
-$1618 1815 1 0 13
-$1618 1920 1 0 13
-$1012 0712 -1 0 13
-$1312 1412 0 0 13
-$1212 0910 0 -1 13
-#--------1---------2---------3---------4---------5---------6---
-#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
-#----------   ---- ---------  - --------------- -  --- -- --- -
-Stradl        0911 X8B1000-0    Ba Fl Lo Ni     R  010 Zh
-Ora'shtivl    0914 C661646-7    Ri Ni           A  503 Zh
-Chabriaezh    0915 B895630-A    Ag Ni              921 Zh
-Roia          0919 C573873-7                       401 Na
-Il Ser        1012 B537458-7  Z Ni                 111 Zh
-Shrdrplibrie  1016 B402487-C    Ic Ni Va           101 Zh
-Rafra         1111 E330885-6    De Na Po           524 Zh
-Ebriapl       1112 C000854-A    As Na              922 Zh
-Azhshinti     1115 A777784-A    Ag                 504 Zh
-Zdovesil      1212 A65588A-9  Z Cp                 103 Zh
-Vla Mev       1214 C557134-8    Lo Ni              213 Zh
-Dla'zevl      1216 E360787-4    De Ri              920 Zh
-Belt Maginum  1218 B000888-B    As                 423 Na
-Oriaj A'      1312 A474332-B  Y Lo Ni              213 Zh
-Dashiietl     1314 A210525-E  Z Ni                 811 Zh
-Iazbreliep    1316 C535769-6    Po                 803 Zh
-Clamp         1317 D553231-3    Lo Ni Po           700 Na
-Hamagast      1319 E6458BE-2                    A  701 Na
-Edaj          1411 A573795-C                       224 Zh
-Enjiaim       1412 B446567-C  Z Ag Ni              804 Zh
-Ile Danse     1416 A56A756-B    Ri Wa              404 Na
-Kormorant     1419 C6A4554-8    Fl Ni              900 Na
-Jaliaia       1519 C754320-7    Lo Ni              312 Na
-Tlivsiqlal    1612 B443754-A  Z Po                 202 Zh
-Battle        1617 X210000-0    Ba Lo Ni        R  024 Na
-Tlebria       1618 A889614-D  X Ni                 825 Zc
-Gohrost       1619 X110000-0    Ba Lo Ni        R  023 Na
-Yanagh        1620 C236545-7    Ni                 910 Na
-                                          
-                                          
----------------------------------------------------------------------- 
-                                          
-@SUB-SECTOR: Mowbrey SECTOR: Foreven
-#
-$1815 1612 -1 0 13
-$1815 1618 -1 0 13
-$1920 1618 -1 0 13
-$1920 2121 0 1 13
-$2320 2121 0 1 13
-$2320 2517 1 0 13
-$2320 2520 1 0 13
-#--------1---------2---------3---------4---------5---------6---
-#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
-#----------   ---- ---------  - --------------- -  --- -- --- -
-Retlkasrnz    1712 D8AA87A-7    Fl Wa              401 Zh
-New Keento    1813 C879758-9                       200 Na
-Fonda         1815 B400784-B  X Na Va Cp           204 Zc
-Cotalu        1816 C633552-7    Ni Po              903 Na
-Eronirabo     1817 B5528CD-9    Po                 703 Na
-Gatina        1915 C765876-7    Ag Ri           A  100 Na
-Lalumostu     1920 C53576B-9  X                    204 Zc
-Sturray       2017 C7A9215-A    Fl Lo Ni           200 Na
-Tasijopze     2113 X543000-0    Ba Lo Ni Po     R  003 Na
-Purfyr        2211 C867645-A    Ag Ni Ri           602 Na
-Ranther       2214 D539598-5    Ni                 803 Na
-Lajachi       2311 E222750-6    Na Po              203 Na
-Robebi        2320 B9988AB-9  Z                    804 Zc
-Ibrolelis     2412 C110667-B    Na Ni              600 Na
-Cocta         2415 C5677BA-A    Ag              A  204 Na
-Dedei         2420 D526332-5    Lo Ni              105 Zc
-                                          
-                                          
----------------------------------------------------------------------- 
-                                          
-@SUB-SECTOR: Fessor SECTOR: Foreven
-#
-$2811 2710 0 -1 13
-$2811 2614 0 0 13
-$2520 2822 0 1 13
-$2517 2614 0 0 13
-$2517 2320 -1 0 13
-$2520 2320 -1 0 13
-#--------1---------2---------3---------4---------5---------6---
-#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
-#----------   ---- ---------  - --------------- -  --- -- --- -
-Lanei         2517 B502565-B  Z Ic Ni Va           305 Zc
-Lorelei       2518 C668742-7    Ag Ri           A  304 Na
-Rematen       2520 AAB5500-D  X Fl Ni              500 Zc
-Okopivo       2611 C340564-7    De Ni Po           904 Na
-Orval         2613 E765674-5    Ag Ni Ri        A  202 Na
-Nilestart     2614 D66475A-6  X Ag Ri              300 Zc
-Cigura        2615 E676500-4    Ag Ni              201 Zc
-Blukjere      2616 B7658DG-7                    A  403 Na
-Roopolaty     2712 C65667A-9    Ag Ni           A  303 Na
-Cadabibado    2715 B855598-B    Ag Ni              404 Na
-Esia'dria     2811 C564789-8  Z Ag Ri              902 Zh
-Agnasti       2812 C100433-D    Ni Va           A  100 Na
-FESSOR        2814 B510999-D  S Hi In Na Cp        200 Cs
-Ynotpu        2820 B322569-A    Ni Po              200 Zc
-Ecahesa       2920 D410555-B    Ni                 405 Na
-Askadero      3013 B747221-A  N Lo Ni              103 Cs
-Apinanto      3014 E431432-6    Ni Po              303 Na
-Pynchan       3015 C656795-9    Ag              A  302 Na
-Parthinia     3018 C694655-C    Ag Ni              500 Na
-Gwydion       3020 C442535-9    Ni Po              303 Na
-Ugenie        3111 X597000-0    Ba Lo Ni        R  004 Na
-Lanilre       3115 C333472-8    Ni Po              104 Na
-Malefolge     3116 B787699-7    Ag Ni Ri        A  602 Na
-Wadanga       3119 C438131-8    Lo Ni              303 Na
-Koskepoc      3212 B769758-A    Ri                 504 Na
-Saphi         3214 B470689-C    De Ni              102 Cs
-Calo          3215 D56A755-9    Ri Wa              105 Na
-Elindu        3217 E764300-4    Lo Ni           A  304 Na
-                                          
-                                          
----------------------------------------------------------------------- 
-                                          
-@SUB-SECTOR: Lassana SECTOR: Foreven
-#
-#--------1---------2---------3---------4---------5---------6---
-#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
-#----------   ---- ---------  - --------------- -  --- -- --- -
-Canwell       0129 C430698-6    De Na Ni Po        400 Mn
-Ablets        0130 C694568-7    Ag Ni              814 Mn
-Penud         0223 X300000-0    Ba Lo Ni Va     R  023 Na
-Syngok        0224 E7A1305-6    Fl Lo Ni           100 Na
-Coolie        0226 C301410-8  M Ic Ni Va           510 Mn
-Mospat        0227 C110446-A    Ni                 504 Mn
-Ceysteni      0422 X100000-0    Ba Lo Ni Va     R  004 Na
-Hallap        0424 C578322-7    Lo Ni              203 Na
-Wanb          0426 C473388-8    Lo Ni              125 Mn
-Meltrand      0526 B565779-8    Cp Ag Ri           103 Mn
-Alista        0527 C57477A-6    Ag                 424 Mn
-Ebsa          0623 E675464-5    Ni                 312 Na
-San Soisva    0723 D37236A-7    Lo Ni              210 Na
-Ghost         0730 E300310-6    Lo Ni Va           813 Mn
-Logan         0822 B415430-9    Ic Ni              103 Na
-White Hart    0825 C888732-6    Ag              A  103 Na
-                                          
-                                          
----------------------------------------------------------------------- 
-                                          
-@SUB-SECTOR: Titan SECTOR: Foreven
-#
-#--------1---------2---------3---------4---------5---------6---
-#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
-#----------   ---- ---------  - --------------- -  --- -- --- -
-Highbury      0926 B566879-9    Ri                 203 Na     h
-Garbo         0930 B211512-9    Ic Ni              104 Na
-Anfield       1026 C8B9101-B    Fl Lo Ni           604 Na
-Solochov      1124 C335797-A  J                    104 Av
-Trafford      1126 C574651-6    Ag Ni           A  703 Na     h
-PASTERNAK     1224 D573944-5    Hi In              203 Av     h
-Bunin         1325 D202200-7    Ic Lo Ni Va        803 Av
-Unaski        1329 E2007AB-8    Na Va           A  401 Av
-Ninox         1330 D130897-7    De Na Po           504 Av     h
-Telypo        1422 C65658B-5    Ag Ni           A  600 Av     h
-Totashev      1423 C587544-8    Ag Ni           A  102 Av     h
-Bamse         1426 B000897-B  J As Na              103 Av
-Evaberi       1427 C302868-7    Ic Na Va           204 Av     h
-Spokes        1428 B40086A-7    Na Va              115 Av     h
-TITAN         1429 A642ABA-D  J Hi In Po Cp        203 Av     h
-Nordstrom     1523 DADA511-8    Fl Ni Wa           400 Av     h
-Pudimon       1528 C41076A-7    Na                 403 Av     h
-Naphopi       1622 A458744-D  J Ag                 401 Av
-HEPRING       1628 B6789AD-C  J Hi In           A  603 Av     h
-Robalin       1630 B969898-B  J Ri                 204 Av     h
-                                          
-                                          
----------------------------------------------------------------------- 
-                                          
-@SUB-SECTOR: Xenough SECTOR: Foreven
-#
-$2121 1920 0 -1 13
-$2121 2320 0 -1 13
-#--------1---------2---------3---------4---------5---------6---
-#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
-#----------   ---- ---------  - --------------- -  --- -- --- -
-Sypot         1724 C9B15AE-7    Fl Ni              805 Av
-Lubote        1725 A7B4344-C  J Fl Lo Ni           204 Av
-Koshadi       1726 C6976BB-4    Ag Ni              202 Av     h
-Torinsk       1728 A0007AE-D  J As Na              204 Av     h
-Mahir         1729 B41089D-C    Na                 702 Av     h
-Onohemu       1822 C244345-7    Lo Ni              402 Na
-XENOUGH       1828 A560A8A-D  J De Hi Cp           203 Av     h
-Tepenke       1926 A64887B-9  J                    501 Av
-Dibelon       1927 C778786-9    Ag                 104 Av
-Debagu        2021 C8B5665-5    Fl Ni              302 Na
-Notaneja      2022 C647589-6    Ag Ni              303 Na
-Tubadeja      2023 C8C0522-7    De Ni              102 Na
-Sizapooma     2121 B530530-B  Z De Ni Po           201 Zc
-Bava World    2123 X220000-0    Ba De Lo Ni Po  R  005 Na
-Nesturgi      2128 C699687-9    Ni                 504 Av     h
-Daba          2225 X357000-0    Ba Lo Ni        R  003 Na
-Lador         2230 C683685-6    Ni Ri              201 Av
-Dengvin       2325 E666775-2    Ag Ri              903 Na
-Asyrog        2326 D48768A-3    Ag Ni Ri           404 Na
-Manifesto     2328 C000343-B    As Lo Ni           101 Av
-Anipaso       2422 CAD8665-8    Fl Ni              402 Cs
-Podse         2423 D200269-9    Lo Ni Va           105 Cs
-Kahitse       2427 C583732-8                       700 Av
-LENIN         2428 A766A86-D  J Hi                 303 Av
-TUNMOPOSU     2429 A647975-C    Hi In              804 Av
-Rantatte      2430 A3328B9-A    Na Po              200 Av
-                                          
-                                          
----------------------------------------------------------------------- 
-                                          
-@SUB-SECTOR: Reidain SECTOR: Foreven
-#
-$2822 3021 0 0 13
-$2822 2520 0 -1 13
-#--------1---------2---------3---------4---------5---------6---
-#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
-#----------   ---- ---------  - --------------- -  --- -- --- -
-Hollis        2523 A370642-C  A De Ni           A  303 Cs
-Ryanbiwul     2527 C778310-8  J Lo Ni              803 Av
-Ontsi         2528 C775555-9    Ag Ni              102 Av
-Gitts         2623 A202535-D    Ic Ni Va           304 Na
-Boygahe       2628 E400797-6    Na Va              203 Av
-Syl           2724 B510874-C    Na                 904 Na
-Taypikacho    2821 B583876-7    Ri                 603 Zc
-Genape        2822 A7A2678-C  Z Fl Ni              802 Zc
-Orynphant     2829 E54369A-3    Ni Po           A  702 Av
-Attbegasu     2923 C9A3203-C    Fl Lo Ni           600 Na
-Jadrin        2924 C140566-C    De Ni Po           204 Na
-REIDAIN       2925 C9EA97B-D    Fl Hi Wa Cp        202 Na
-Lenskansi     2926 B120663-D    De Na Ni Po        803 Na
-Danalipa      2927 A400754-D  A Na Va           A  400 Cs
-Isheydkoka    3021 B373300-D  Z Lo Ni              102 Zc
-Gijisapo      3121 E150220-6    De Lo Ni Po        202 Na
-Inpota        3124 A665337-D  D Lo Ni              603 Dc
-Sowponanho    3126 X796877-4                    R  903 Na
-Tadasvena     3221 C455125-8    Lo Ni              802 Na
-Lopiengeta    3227 D868365-4  S Lo Ni           A  103 Cs
-Alenzar       3229 C000414-9    As Ni              513 Cs
-Raschev       3230 C8697C4-6                       123 Cs
-                                          
-                                          
----------------------------------------------------------------------- 
-                                          
-@SUB-SECTOR: Rull SECTOR: Foreven
-#
-#--------1---------2---------3---------4---------5---------6---
-#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
-#----------   ---- ---------  - --------------- -  --- -- --- -
-Bender        0131 E452564-8    Ni Po              404 Mn
-Konnel        0135 A6A3300-C    Fl Lo Ni           523 Mn
-Pinkel        0136 C668664-7    Ag Ni Ri           502 Mn
-Junnice       0232 B301110-8  M Ic Lo Ni Va        522 Mn
-Kelly         0235 E444767-7    Ag                 503 Mn
-Cauchon       0236 A110466-D    Ni              A  924 Mn
-Esker         0239 B99A747-9    Wa                 823 Na
-Thorhault     0332 B785577-6    Ag Ni              412 Mn
-Baldur        0335 B425555-A    Ni                 715 Mn
-Cale          0336 X330321-4    De Lo Ni Po     R  604 Mn
-Guam Go       0431 B651699-8    Ni Po              805 Mn
-Spirit        0436 B739769-A                       114 Mn
-Mossip        0437 A736363-D  M Lo Ni              204 Mn
-Aren-Karu     0439 B78566A-A    Ag Ni Ri           204 Na
-Rull          0538 A00089D-A    Cp As              304 Mn
-Bail          0633 C8A5101-B    Fl Lo Ni           305 Mn
-Mape          0634 B554363-A  M Lo Ni              224 Mn
-Maru          0639 A73A774-A    Wa                 713 Na
-Forget        0732 C457451-6    Ni                 201 Mn
-Foop          0734 CA89540-7  M Ni                 610 Mn
-Connaught     0735 C4846AA-6    Ag Ni              102 Mn
-Ripost        0837 D344863-2                       604 Mn
-Ventnor       0839 C212379-6    Ic Lo Ni           112 Na
-Ovant         0840 E577200-6    Lo Ni           A  920 Na
-                                          
-                                          
----------------------------------------------------------------------- 
-                                          
-@SUB-SECTOR: Harem SECTOR: Foreven
-#
-#--------1---------2---------3---------4---------5---------6---
-#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
-#----------   ---- ---------  - --------------- -  --- -- --- -
-Wright        0935 C470574-9    De Ni              305 Mn
-Ninang        1032 XAF3000-0    Ba Fl Lo Ni     R  003 Na
-Denanus       1039 B347557-B  J Ag Ni              714 Av     h
-Vanja         1139 C000577-C    As Ni           A  232 Av
-Soonrod       1140 B776513-B    Ag Ni              242 Av     h
-Mapes         1234 X513000-0    Ba Ic Lo Ni     R  000 Na
-Wakato        1239 B778440-B    Ni                 123 Av     h
-Bophani       1240 C493520-7    Ni                 212 Av
-Elloni        1335 D548405-6    Ni                 700 Av     h
-Goku          1432 D150441-9    De Ni Po        A  524 Av
-Huaras        1534 D344556-8    Ag Ni              102 Av
-Daphne        1536 B786786-B    Ag Ri              512 Av     h
-Bebeto        1539 B786898-9    Ri                 221 Av     h
-Ringun        1631 A866796-A  J Ag Ri              701 Av     h
-Isobel        1632 B336423-9    Ni              A  300 Av     h
-Banbas        1634 C513454-8    Ic Ni              804 Av
-AVALAR        1636 A75599C-C  J Hi Cp              904 Av     h
-MILNE         1637 A888947-C  J Hi                 324 Av     h
-Olga          1639 B454766-C  J Ag                 914 Av
-CALIENTE      1640 C6739CC-7    Hi In              404 Av     h
-                                          
-                                          
----------------------------------------------------------------------- 
-                                          
-@SUB-SECTOR: Piah SECTOR: Foreven
-#
-#--------1---------2---------3---------4---------5---------6---
-#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
-#----------   ---- ---------  - --------------- -  --- -- --- -
-Wepwaci       1734 B79889D-B  J                    704 Av     h
-TEWUPO        1738 A748ACA-D  J Hi In Cp           205 Av     h
-Lypkytan      1739 A8A1662-A    Fl Ni              303 Av
-Eroda         1833 B897894-9  J                    305 Av
-HINATANPYL    1834 C3009BB-9    Hi In Na Va     A  203 Av     h
-Epepazap      1840 A886752-A    Ag Ri              704 Av     h
-Weepo         1936 A95788C-B  J                 A  405 Av     h
-Estyske       1938 A410699-D  J Na Ni              104 Av     h
-Tapsa-64      2040 B300113-C  J Lo Ni Va           702 Av     h
-Piah          2135 C000212-A    As Lo Ni           705 Na
-Opib          2136 X749000-0    Ba Lo Ni        R  005 Na
-Otargh        2137 E550344-6    De Lo Ni Po        501 Na
-Merghy        2231 C543685-8    Ni Po              301 Av
-Ukardi        2236 D765211-6    Lo Ni              600 Na     h
-Tindad        2237 X7B0000-0    Ba De Lo Ni     R  000 Na
-Iptete        2334 E381776-3    Ri              A  404 Na     h
-Shortcut      2335 B360730-B    De              A  203 Na     h
-Kulse         2431 CAC37AB-A  J Fl                 603 Av     h
-Ronsk         2433 C7A5430-A    Fl Ni           A  602 Na
-Bestala       2436 E343666-7    Ni Po              102 Na     h
-                                          
-                                          
----------------------------------------------------------------------- 
-                                          
-@SUB-SECTOR: Urnian SECTOR: Foreven
-#
-#--------1---------2---------3---------4---------5---------6---
-#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
-#----------   ---- ---------  - --------------- -  --- -- --- -
-Dinpholasy    2532 B988676-9    Ag Ni Ri        A  105 Av     h
-LUNE          2537 C4409A6-A    De Hi In        A  103 Na     h
-Ronu          2632 E534440-3    Ni Po              402 Av     h
-Lela          2634 C310400-A    Ni                 902 Na
-Suspe         2731 B8C6311-C  J Fl Lo Ni           904 Av
-Capshobem     2736 D78A100-6    Lo Ni Wa           203 Na     h
-Nosafo        2739 E320213-6    De Lo Ni Po        300 Na
-Nanno         2740 D500456-9    Ni Va              504 Na     h
-URNIAN        2833 B9779AC-A  N Hi In Cp           503 Cs     h
-PYLKAH        2834 E463977-9    Hi                 305 Na     h
-Nato          2835 E795230-5    Lo Ni           A  100 Na
-Okunpamsk     2836 C300201-9    Lo Ni Va           302 Na
-Ipmokyng      2838 C739878-9                       304 Na
-Udika         2934 C659322-8    Lo Ni              905 Na
-Ovdyo         2935 C422425-C    Ni Po              805 Cs
-Kutadis       2937 E668214-2    Lo Ni           A  104 Na     h
-Cinboshabo    2938 C422685-B  S Na Ni Po           804 Cs     h
-Tenynti       2940 C130151-B    De Lo Ni Po        104 Na
-Vapchy        3034 B847320-7    Lo Ni              304 Na
-Gotylu        3035 E688699-2    Ag Ni Ri        A  904 Na
-Novoterre     3037 C765877-5  S Ri              R  804 Cs     h
-Benoncra      3131 B628567-9  S Ni                 203 Cs     h
-Lorapa        3134 C140864-6  S De Po              604 Cs
-Mainap        3135 E363400-5    Ni                 803 Na     h
-Shofrete      3232 X73A863-5    Wa              R  301 Cs
-Taupi         3236 E6A4447-4    Fl Ni           A  202 Na     h
-Ake           3238 D5356AA-8    Ni                 101 Cs     h
-                                          
+# Subsector C
+          1701 X000000-0   (Dotmap)        000 Zh
+          1703 X000000-0   (Dotmap)        000 Zh
+          1704 X000000-0   (Dotmap)        000 Zh
+          1804 X000000-0   (Dotmap)        000 Zh
+          1806 X000000-0   (Dotmap)        000 Zh
+          1807 X000000-0   (Dotmap)        000 Zh
+          1808 X000000-0   (Dotmap)        000 Zh
+          1901 X000000-0   (Dotmap)        000 Zh
+          1905 X000000-0   (Dotmap)        000 Zh
+          2002 X000000-0   (Dotmap)        000 Zh
+          2003 X000000-0   (Dotmap)        000 Zh
+          2005 X000000-0   (Dotmap)        000 Zh
+          2102 X000000-0   (Dotmap)        000 Zh
+          2103 X000000-0   (Dotmap)        000 Zh
+          2202 X000000-0   (Dotmap)        000 Zh
+          2209 X000000-0   (Dotmap)        000 Na
+          2304 X000000-0   (Dotmap)        000 Zh
+          2306 X000000-0   (Dotmap)        000 Zh
+          2309 X000000-0   (Dotmap)        000 Na
+          2310 X000000-0   (Dotmap)        000 Na
+
+# Subsector D Massina
+          2501 X000000-0   (Dotmap)        000 Zh
+          2502 X000000-0   (Dotmap)        000 Zh
+          2602 X000000-0   (Dotmap)        000 Zh
+          2603 X000000-0   (Dotmap)        000 Zh
+          2607 X000000-0   (Dotmap)        000 Zh
+          2608 X000000-0   (Dotmap)        000 Zh
+          2610 X000000-0   (Dotmap)        000 Zh
+          2710 X000000-0   (Dotmap)        000 Zh
+          2805 X000000-0   (Dotmap)        000 Zh
+          2807 X000000-0   (Dotmap)        000 Zh
+          2808 X000000-0   (Dotmap)        000 Zh
+          2905 X000000-0   (Dotmap)        000 Zh
+          2907 X000000-0   (Dotmap)        000 Zh
+          2910 X000000-0   (Dotmap)        000 Zh
+          3003 X000000-0   (Dotmap)        000 Zh
+          3006 X000000-0   (Dotmap)        000 Zh
+          3107 X000000-0   (Dotmap)        000 Zh
+          3108 X000000-0   (Dotmap)        000 Zh
+          3201 X000000-0   (Dotmap)        000 Zh
+          3204 X000000-0   (Dotmap)        000 Zh
+          3205 X000000-0   (Dotmap)        000 Zh
+          3206 X000000-0   (Dotmap)        000 Zh
+
+# Subsector E
+          0112 X000000-0   (Dotmap)        000 Zh
+          0113 X000000-0   (Dotmap)        000 Zh
+          0116 X000000-0   (Dotmap)        000 Zh
+          0211 X000000-0   (Dotmap)        000 Zh
+          0212 X000000-0   (Dotmap)        000 Zh
+          0213 X000000-0   (Dotmap)        000 Zh
+          0214 X000000-0   (Dotmap)        000 Zh
+          0218 X000000-0   (Dotmap)        000 Zh
+          0312 X000000-0   (Dotmap)        000 Zh
+          0411 X000000-0   (Dotmap)        000 Zh
+          0412 X000000-0   (Dotmap)        000 Zh
+          0418 X000000-0   (Dotmap)        000 Zh
+          0513 X000000-0   (Dotmap)        000 Zh
+          0516 X000000-0   (Dotmap)        000 Zh
+          0517 X000000-0   (Dotmap)        000 Zh
+          0520 X000000-0   (Dotmap)        000 Na
+          0612 X000000-0   (Dotmap)        000 Zh
+          0712 X000000-0   (Dotmap)        000 Zh
+          0716 X000000-0   (Dotmap)        000 Zh
+          0717 X000000-0   (Dotmap)        000 Zh
+          0720 X000000-0   (Dotmap)        000 Na
+          0814 X000000-0   (Dotmap)        000 Zh
+          0815 X000000-0   (Dotmap)        000 Zh
+          0818 X000000-0   (Dotmap)        000 Zh
+          0819 X000000-0   (Dotmap)        000 Na
+          0820 X000000-0   (Dotmap)        000 Na
+
+# Subsector F
+          0911 X000000-0   (Dotmap)        000 Zh
+          0914 X000000-0   (Dotmap)        000 Zh
+          0915 X000000-0   (Dotmap)        000 Zh
+          0919 X000000-0   (Dotmap)        000 Na
+          1012 X000000-0   (Dotmap)        000 Zh
+          1016 X000000-0   (Dotmap)        000 Zh
+          1111 X000000-0   (Dotmap)        000 Zh
+          1112 X000000-0   (Dotmap)        000 Zh
+          1115 X000000-0   (Dotmap)        000 Zh
+Zdovesil  1212 A65588A-9 Z Cp              103 Zh M1 V M3 V
+          1214 X000000-0   (Dotmap)        000 Zh
+          1216 X000000-0   (Dotmap)        000 Zh
+          1218 X000000-0   (Dotmap)        000 Na
+          1312 X000000-0   (Dotmap)        000 Zh
+          1314 X000000-0   (Dotmap)        000 Zh
+          1316 X000000-0   (Dotmap)        000 Zh
+          1317 X000000-0   (Dotmap)        000 Na
+          1319 X000000-0   (Dotmap)        000 Na
+          1411 X000000-0   (Dotmap)        000 Zh
+          1412 X000000-0   (Dotmap)        000 Zh
+          1416 X000000-0   (Dotmap)        000 Na
+          1419 X000000-0   (Dotmap)        000 Na
+          1519 X000000-0   (Dotmap)        000 Na
+          1612 X000000-0   (Dotmap)        000 Zh
+          1617 X000000-0   (Dotmap)        000 Na
+Tlebria   1618 X000000-0   (Dotmap)        000 Na
+          1619 X000000-0   (Dotmap)        000 Na
+          1620 X000000-0   (Dotmap)        000 Na
+
+# Subsector G
+          1712 X000000-0   (Dotmap)        000 Zh
+          1813 X000000-0   (Dotmap)        000 Zh
+          1815 X000000-0   (Dotmap)        000 Zh
+          1816 X000000-0   (Dotmap)        000 Zh
+          1817 X000000-0   (Dotmap)        000 Zh
+          1915 X000000-0   (Dotmap)        000 Zh
+          1920 X000000-0   (Dotmap)        000 Zh
+          2017 X000000-0   (Dotmap)        000 Zh
+          2113 X000000-0   (Dotmap)        000 Zh
+          2211 X000000-0   (Dotmap)        000 Zh
+          2214 X000000-0   (Dotmap)        000 Zh
+          2311 X000000-0   (Dotmap)        000 Zh
+          2320 X000000-0   (Dotmap)        000 Zh
+          2412 X000000-0   (Dotmap)        000 Zh
+
+# Subsector H: Fessor
+          2517 X000000-0   (Dotmap)        000 Na
+          2518 X000000-0   (Dotmap)        000 Na
+          2520 X000000-0   (Dotmap)        000 Na
+          2611 X000000-0   (Dotmap)        000 Na
+          2613 X000000-0   (Dotmap)        000 Na
+          2614 X000000-0   (Dotmap)        000 Na
+          2615 X000000-0   (Dotmap)        000 Na
+          2616 X000000-0   (Dotmap)        000 Na
+          2712 X000000-0   (Dotmap)        000 Na
+          2715 X000000-0   (Dotmap)        000 Na
+          2811 X000000-0   (Dotmap)        000 Zh
+          2812 X000000-0   (Dotmap)        000 Na
+          2814 X000000-0   (Dotmap)        000 Na
+          2820 X000000-0   (Dotmap)        000 Na
+          2920 X000000-0   (Dotmap)        000 Na
+          3013 X000000-0   (Dotmap)        000 Na
+          3014 X000000-0   (Dotmap)        000 Na
+          3015 X000000-0   (Dotmap)        000 Na
+          3018 X000000-0   (Dotmap)        000 Na
+          3020 X000000-0   (Dotmap)        000 Na
+          3111 X000000-0   (Dotmap)        000 Na
+          3115 X000000-0   (Dotmap)        000 Na
+          3116 X000000-0   (Dotmap)        000 Na
+          3119 X000000-0   (Dotmap)        000 Na
+          3212 X000000-0   (Dotmap)        000 Na
+          3214 X000000-0   (Dotmap)        000 Na
+          3215 X000000-0   (Dotmap)        000 Na
+          3217 X000000-0   (Dotmap)        000 Na
+
+# Subsector I
+          0129 X000000-0   (Dotmap)        000 Na
+          0130 X000000-0   (Dotmap)        000 Na
+          0223 X000000-0   (Dotmap)        000 Na
+          0224 X000000-0   (Dotmap)        000 Na
+          0226 X000000-0   (Dotmap)        000 Na
+          0227 X000000-0   (Dotmap)        000 Na
+          0422 X000000-0   (Dotmap)        000 Na
+          0424 X000000-0   (Dotmap)        000 Na
+          0426 X000000-0   (Dotmap)        000 Na
+          0526 X000000-0   (Dotmap)        000 Na
+          0527 X000000-0   (Dotmap)        000 Na
+          0623 X000000-0   (Dotmap)        000 Na
+          0723 X000000-0   (Dotmap)        000 Na
+          0730 X000000-0   (Dotmap)        000 Na
+          0822 X000000-0   (Dotmap)        000 Na
+          0825 X000000-0   (Dotmap)        000 Na
+
+#Subsector J
+          0926 X000000-0   (Dotmap)        000 Na
+          0930 X000000-0   (Dotmap)        000 Na
+          1026 X000000-0   (Dotmap)        000 Na
+          1124 X000000-0   (Dotmap)        000 Na
+          1126 X000000-0   (Dotmap)        000 Na
+          1224 X000000-0   (Dotmap)        000 Na
+          1325 X000000-0   (Dotmap)        000 Na
+          1329 X000000-0   (Dotmap)        000 Na
+          1330 X000000-0   (Dotmap)        000 Na
+          1422 X000000-0   (Dotmap)        000 Na
+          1423 X000000-0   (Dotmap)        000 Na
+          1426 X000000-0   (Dotmap)        000 Na
+          1427 X000000-0   (Dotmap)        000 Na
+          1428 X000000-0   (Dotmap)        000 Na
+          1429 X000000-0   (Dotmap)        000 Na
+          1523 X000000-0   (Dotmap)        000 Na
+          1528 X000000-0   (Dotmap)        000 Na
+          1622 X000000-0   (Dotmap)        000 Na
+          1628 X000000-0   (Dotmap)        000 Na
+          1630 X000000-0   (Dotmap)        000 Na
+          0926 X000000-0   (Dotmap)        000 Na
+          0930 X000000-0   (Dotmap)        000 Na
+          1026 X000000-0   (Dotmap)        000 Na
+          1124 X000000-0   (Dotmap)        000 Na
+          1126 X000000-0   (Dotmap)        000 Na
+          1224 X000000-0   (Dotmap)        000 Na
+          1325 X000000-0   (Dotmap)        000 Na
+          1329 X000000-0   (Dotmap)        000 Na
+
+# Subsector K
+          1724 X000000-0   (Dotmap)        000 Na
+          1725 X000000-0   (Dotmap)        000 Na
+          1726 X000000-0   (Dotmap)        000 Na
+          1728 X000000-0   (Dotmap)        000 Na
+          1729 X000000-0   (Dotmap)        000 Na
+          1822 X000000-0   (Dotmap)        000 Na
+          1828 X000000-0   (Dotmap)        000 Na
+          1926 X000000-0   (Dotmap)        000 Na
+          1927 X000000-0   (Dotmap)        000 Na
+          2021 X000000-0   (Dotmap)        000 Na
+          2022 X000000-0   (Dotmap)        000 Na
+          2023 X000000-0   (Dotmap)        000 Na
+          2121 X000000-0   (Dotmap)        000 Na
+          2123 X000000-0   (Dotmap)        000 Na
+          2128 X000000-0   (Dotmap)        000 Na
+          2225 X000000-0   (Dotmap)        000 Na
+          2230 X000000-0   (Dotmap)        000 Na
+          2325 X000000-0   (Dotmap)        000 Na
+          2326 X000000-0   (Dotmap)        000 Na
+          2328 X000000-0   (Dotmap)        000 Na
+          2422 X000000-0   (Dotmap)        000 Na
+          2427 X000000-0   (Dotmap)        000 Na
+          2428 X000000-0   (Dotmap)        000 Na
+          2429 X000000-0   (Dotmap)        000 Na
+          2430 X000000-0   (Dotmap)        000 Na
+
+# Subsector L: Reidain
+Hollis    2523 A370642-C A De Ni           303 Cs M3 V
+          2527 X000000-0   (Dotmap)        000 Na
+          2528 X000000-0   (Dotmap)        000 Na
+          2623 X000000-0   (Dotmap)        000 Na
+          2724 X000000-0   (Dotmap)        000 Na
+          2822 X000000-0   (Dotmap)        000 Na
+          2823 X000000-0   (Dotmap)        000 Na
+          2829 X000000-0   (Dotmap)        000 Na
+          2923 X000000-0   (Dotmap)        000 Na
+          2924 X000000-0   (Dotmap)        000 Na
+          2925 X000000-0   (Dotmap)        000 Na
+          2926 X000000-0   (Dotmap)        000 Na
+          2927 X000000-0   (Dotmap)        000 Na
+          3021 X000000-0   (Dotmap)        000 Na
+          3027 X000000-0   (Dotmap)        000 Na
+          3028 X000000-0   (Dotmap)        000 Na
+          3126 X000000-0   (Dotmap)        000 Na
+          3129 X000000-0   (Dotmap)        000 Na
+          3227 X000000-0   (Dotmap)        000 Na
+Alenzar   3229 C000414-9   As Ni           513 Cs M0 III
+Raschev   3230 C8697C4-6                   123 Cs M3 V
+
+# Subsector M
+          0131 X000000-0   (Dotmap)        000 Na
+          0135 X000000-0   (Dotmap)        000 Na
+          0136 X000000-0   (Dotmap)        000 Na
+          0232 X000000-0   (Dotmap)        000 Na
+          0235 X000000-0   (Dotmap)        000 Na
+          0236 X000000-0   (Dotmap)        000 Na
+          0239 X000000-0   (Dotmap)        000 Na
+          0332 X000000-0   (Dotmap)        000 Na
+          0335 X000000-0   (Dotmap)        000 Na
+          0336 X000000-0   (Dotmap)        000 Na
+          0431 X000000-0   (Dotmap)        000 Na
+          0436 X000000-0   (Dotmap)        000 Na
+          0437 X000000-0   (Dotmap)        000 Na
+          0439 X000000-0   (Dotmap)        000 Na
+          0538 X000000-0   (Dotmap)        000 Na
+          0633 X000000-0   (Dotmap)        000 Na
+          0634 X000000-0   (Dotmap)        000 Na
+          0639 X000000-0   (Dotmap)        000 Na
+          0732 X000000-0   (Dotmap)        000 Na
+          0734 X000000-0   (Dotmap)        000 Na
+          0735 X000000-0   (Dotmap)        000 Na
+          0837 X000000-0   (Dotmap)        000 Na
+          0839 X000000-0   (Dotmap)        000 Na
+          0840 X000000-0   (Dotmap)        000 Na
+
+# Subsector N
+          0935 X000000-0   (Dotmap)        000 Na
+          1032 X000000-0   (Dotmap)        000 Na
+          1039 X000000-0   (Dotmap)        000 Na
+          1139 X000000-0   (Dotmap)        000 Na
+          1140 X000000-0   (Dotmap)        000 Na
+          1234 X000000-0   (Dotmap)        000 Na
+          1239 X000000-0   (Dotmap)        000 Na
+          1240 X000000-0   (Dotmap)        000 Na
+          1335 X000000-0   (Dotmap)        000 Na
+          1432 X000000-0   (Dotmap)        000 Na
+          1534 X000000-0   (Dotmap)        000 Na
+          1536 X000000-0   (Dotmap)        000 Na
+          1539 X000000-0   (Dotmap)        000 Na
+          1631 X000000-0   (Dotmap)        000 Na
+          1632 X000000-0   (Dotmap)        000 Na
+          1634 X000000-0   (Dotmap)        000 Na
+AVALAR    1636 A75599C-C J Cp              904 Na M0V
+          1637 X000000-0   (Dotmap)        000 Na
+          1639 X000000-0   (Dotmap)        000 Na
+          1640 X000000-0   (Dotmap)        000 Na
+
+# Subsector O
+          1734 X000000-0   (Dotmap)        000 Na
+          1738 X000000-0   (Dotmap)        000 Na
+          1739 X000000-0   (Dotmap)        000 Na
+          1833 X000000-0   (Dotmap)        000 Na
+          1834 X000000-0   (Dotmap)        000 Na
+          1840 X000000-0   (Dotmap)        000 Na
+          1936 X000000-0   (Dotmap)        000 Na
+          1938 X000000-0   (Dotmap)        000 Na
+          2040 X000000-0   (Dotmap)        000 Na
+          2135 X000000-0   (Dotmap)        000 Na
+          2136 X000000-0   (Dotmap)        000 Na
+          2137 X000000-0   (Dotmap)        000 Na
+          2231 X000000-0   (Dotmap)        000 Na
+          2236 X000000-0   (Dotmap)        000 Na
+          2237 X000000-0   (Dotmap)        000 Na
+          2334 X000000-0   (Dotmap)        000 Na
+          2335 X000000-0   (Dotmap)        000 Na
+          2431 X000000-0   (Dotmap)        000 Na
+          2433 X000000-0   (Dotmap)        000 Na
+
+# Subsector P
+          2532 X000000-0   (Dotmap)        000 Na
+          2537 X000000-0   (Dotmap)        000 Na
+          2632 X000000-0   (Dotmap)        000 Na
+          2634 X000000-0   (Dotmap)        000 Na
+          2731 X000000-0   (Dotmap)        000 Na
+          2736 X000000-0   (Dotmap)        000 Na
+          2739 X000000-0   (Dotmap)        000 Na
+          2740 X000000-0   (Dotmap)        000 Na
+          2833 X000000-0   (Dotmap)        000 Na
+          2834 X000000-0   (Dotmap)        000 Na
+          2835 X000000-0   (Dotmap)        000 Na
+          2836 X000000-0   (Dotmap)        000 Na
+          2838 X000000-0   (Dotmap)        000 Na
+          2934 X000000-0   (Dotmap)        000 Na
+          2935 X000000-0   (Dotmap)        000 Na
+          2937 X000000-0   (Dotmap)        000 Na
+          2938 X000000-0   (Dotmap)        000 Na
+          2940 X000000-0   (Dotmap)        000 Na
+          3034 X000000-0   (Dotmap)        000 Na
+          3035 X000000-0   (Dotmap)        000 Na
+          3037 X000000-0   (Dotmap)        000 Na
+          3131 X000000-0   (Dotmap)        000 Na
+          3134 X000000-0   (Dotmap)        000 Na
+          3135 X000000-0   (Dotmap)        000 Na
+          3232 X000000-0   (Dotmap)        000 Na
+          3238 X000000-0   (Dotmap)        000 Na
