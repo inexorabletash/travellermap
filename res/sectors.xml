@@ -1447,7 +1447,7 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
       <Allegiance Code="Ax" Base="Zh">Addaxur</Allegiance>
     </Allegiances>
   </Sector>
-  <Sector Abbreviation="Ziaf" Tags="Official">
+  <Sector Abbreviation="Ziaf" Tags="Official" Selected="true">
     <Y>-2</Y>
     <X>-5</X>
     <Name Lang="zh">Ziafrplians</Name>
@@ -1456,7 +1456,7 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <DataFile Source="Traveller 5 Second Survey" Era="1105" Type="TabDelimited">Ziafrplians.tab</DataFile>
     <MetadataFile>Ziafrplians.xml</MetadataFile>
   </Sector>
-  <Sector Abbreviation="Gvur" Tags="Official">
+  <Sector Abbreviation="Gvur" Tags="Official" Selected="true">
     <Y>-2</Y>
     <X>-4</X>
     <Name Lang="va">Gvurrdon</Name>
@@ -2385,7 +2385,7 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <DataFile Author="Dale Kemper; James Kundert" Source="Ares Magazine, The Traveller Chronicle">FarFrontiers.sec</DataFile>
     <MetadataFile Author="Dale Kemper; James Kundert" Source="Ares Magazine; The Traveller Chronicle">FarFrontiers.xml</MetadataFile>
   </Sector>
-  <Sector Tags="Preserve">
+  <Sector Tags="Preserve" Selected="true">
     <Y>-1</Y>
     <X>-5</X>
     <Name>Foreven</Name>
@@ -2519,7 +2519,7 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <DataFile Source="Traveller 5 Second Survey" Era="1105" Type="TabDelimited">Spinward Marches.tab</DataFile>
     <MetadataFile>Spinward Marches.xml</MetadataFile>
   </Sector>
-  <Sector Abbreviation="Dene" Tags="Official">
+  <Sector Abbreviation="Dene" Tags="Official" Selected="true">
     <Y>-1</Y>
     <X>-3</X>
     <Name>Deneb</Name>
@@ -2736,7 +2736,7 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
       <Border Allegiance="Iz" Color="green">1600 1700 1800 1900 2000 2100 2200 2300 2400 2401 2402 2403 2304 2204 2105 2005 1906 1805 1804 1704 1603 1602 1601 1600</Border>
     </Borders>
   </Sector>
-  <Sector Selected="true">
+  <Sector>
     <Y>0</Y>
     <X>-6</X>
     <Name>Vanguard Reaches</Name>
@@ -2780,7 +2780,7 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
       <Border Allegiance="Hc" Color="slategray">3035 3135 3235 3336 3337 3338 3238 3138 3037 3036 3035</Border>
     </Borders>
   </Sector>
-  <Sector Selected="true">
+  <Sector>
     <Y>0</Y>
     <X>-5</X>
     <Name>The Beyond</Name>
@@ -2893,7 +2893,7 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     </Borders>
 
   </Sector>
-  <Sector Abbreviation="Troj" Tags="Official">
+  <Sector Abbreviation="Troj" Tags="Official" Selected="true">
     <Y>0</Y>
     <X>-4</X>
     <Name>Trojan Reach</Name>
@@ -2959,7 +2959,7 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <DataFile Source="Traveller 5 Second Survey" Era="1105" Type="TabDelimited">Fornast.tab</DataFile>
     <MetadataFile>Fornast.xml</MetadataFile>
   </Sector>
-  <Sector Selected="true" Abbreviation="Ley" Tags="Official">
+  <Sector Abbreviation="Ley" Tags="Official">
     <Y>0</Y>
     <X>2</X>
     <Name>Ley Sector</Name>
@@ -3931,7 +3931,7 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <DataFile Source="Traveller 5 Second Survey" Era="1105" Type="TabDelimited">Diaspora.tab</DataFile>
     <MetadataFile>Diaspora.xml</MetadataFile>
   </Sector>
-  <Sector Selected="true" Abbreviation="Olde" Tags="Official">
+  <Sector Abbreviation="Olde" Tags="Official">
     <Y>2</Y>
     <X>1</X>
     <Name>Old Expanses</Name>
@@ -4224,7 +4224,7 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
       <Subsector Index="P">Aiaiheh</Subsector>
     </Subsectors>
   </Sector>
-  <Sector Selected="true" Tags="Unreviewed">
+  <Sector Tags="Unreviewed">
     <Y>3</Y>
     <X>-2</X>
     <Name>Dark Nebula</Name>
@@ -4414,7 +4414,7 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <DataFile Source="Traveller 5 Second Survey" Era="1105" Type="TabDelimited">Solomani Rim.tab</DataFile>
     <MetadataFile>Solomani Rim.xml</MetadataFile>
   </Sector>
-  <Sector Abbreviation="Alph" Tags="Official">
+  <Sector Abbreviation="Alph" Tags="Official" Selected="true">
     <Y>3</Y>
     <X>1</X>
     <Name>Alpha Crucis</Name>
