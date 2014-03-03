@@ -251,12 +251,7 @@ namespace Json
                 {
                     sb.Append("\\r");
                 }
-                else if (c < '\x20' || (c >= '\x7F' && c <= '\xFF'))
-                {
-                    sb.Append("\\x");
-                    sb.Append(Convert.ToByte(c).ToString("X2"));
-                }
-                else if (c > '\xFF')
+                else if (c < '\x20' || (c >= '\x7F'))
                 {
                     sb.Append("\\u");
                     sb.Append(Convert.ToInt16(c).ToString("X4"));
