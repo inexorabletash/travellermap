@@ -29,13 +29,13 @@
 <meta property="og:site_name" content="The Traveller Map">
 <meta property="fb:admins" content="617166358">
 
-<link rel="stylesheet" href="index.css?update=2014-02-09">
+<link rel="stylesheet" href="index.css?update=2014-03-02">
 
 <!--[if lt IE 8]><script>alert("IE7 is no longer supported.");location = 'http://google.com/chrome';</script><![endif]-->
 <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.1.2/handlebars.min.js"></script>
-<script src="lib/polyfill/polyfill.js?update=2014-01-26"></script>
+<script src="lib/polyfill/polyfill.js?update=2014-02-15"></script>
 <script src="map.js?update=2014-02-09"></script>
-<script src="index.js?update=2014-02-10"></script>
+<script src="index.js?update=2014-03-02"></script>
 <style>
 .ui {
   z-index: 2000;
@@ -887,6 +887,11 @@ button:hover {
             title="This sector is set aside as a Referee's Preserve - the presented data is an example"
             href="doc/credits#preserve"><span class="bar">&#x25AC;</span> Preserve <span class="bar">&#x25AC;</span></a>
         {{/Preserve}}
+        {{#Apocryphal}}
+          <a class="apocryphal"
+            title="Sector data is apocryphal - no longer considered official"
+            href="doc/credits#apocryphal"><span class="bar">&#x25AC;</span> Apocryphal <span class="bar">&#x25AC;</span></a>
+        {{/Apocryphal}}
         {{#Unofficial}}
           <a class="unofficial"
             title="Sector data is unofficial"
