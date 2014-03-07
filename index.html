@@ -94,7 +94,11 @@ button:hover {
 <!-- http://cubiq.org/add-to-home-screen -->
 <link rel="stylesheet" href="lib/add-to-home-screen/add2home.css">
 <script>
-  var addToHomeConfig = { touchIcon: true };
+  var addToHomeConfig = {
+    autostart: window == window.top, // == for IE
+    returningVisitor: true,
+    touchIcon: true
+  };
 </script>
 <script type="application/javascript" src="lib/add-to-home-screen/add2home.js"></script>
 
