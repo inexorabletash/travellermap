@@ -29,13 +29,13 @@
 <meta property="og:site_name" content="The Traveller Map">
 <meta property="fb:admins" content="617166358">
 
-<link rel="stylesheet" href="index.css?update=2014-03-02">
+<link rel="stylesheet" href="index.css?update=2014-03-13">
 
 <!--[if lt IE 8]><script>alert("IE7 is no longer supported.");location = 'http://google.com/chrome';</script><![endif]-->
 <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.1.2/handlebars.min.js"></script>
-<script src="lib/polyfill/polyfill.js?update=2014-02-15"></script>
-<script src="map.js?update=2014-02-09"></script>
-<script src="index.js?update=2014-03-02"></script>
+<script src="lib/polyfill/polyfill.js?update=2014-03-13"></script>
+<script src="map.js?update=2014-03-13"></script>
+<script src="index.js?update=2014-03-14"></script>
 <style>
 .ui {
   z-index: 2000;
@@ -707,17 +707,17 @@ button:hover {
        class="ui hoverbox hoverbox-right">
     <style>
     #downloadBox {
-      width: 200px;
-      max-height: 180px;
+      width: 230px;
+      max-height: 205px;
     }
     #downloadBox section { margin: 1em 0; }
     #downloadBox section:first-of-type { margin-top: 0; }
     #downloadBox section:last-of-type { margin-bottom: 0; }
     #downloadBox #sector-selected { display: none; }
-    #downloadBox #world-selected { display: none; }
+    #downloadBox .world-selected { display: none; }
     #downloadBox.sector-selected #sector-selected { display: block; }
     #downloadBox.sector-selected #no-sector-selected { display: none; }
-    #downloadBox.sector-selected.world-selected #world-selected { display: block; }
+    #downloadBox.sector-selected.world-selected .world-selected { display: block; }
 
     #downloadBox h3 { font-style: italic; font-weight: normal;
                       color: red;
@@ -751,8 +751,17 @@ button:hover {
           <a id="download-data" target="_blank" href="#">Raw Sector Data</a>
         </li>
 
-        <li id="world-selected">
+        <li class="world-selected">
           <a id="world-data-sheet" target="_blank" href="#">World Data Sheet</a>
+        </li>
+
+        <li class="world-selected">
+          <a id="world-jump-map-1" target="_blank" href="#">J-1</a> &bull;
+          <a id="world-jump-map-2" target="_blank" href="#">J-2</a> &bull;
+          <a id="world-jump-map-3" target="_blank" href="#">J-3</a> &bull;
+          <a id="world-jump-map-4" target="_blank" href="#">J-4</a> &bull;
+          <a id="world-jump-map-5" target="_blank" href="#">J-5</a> &bull;
+          <a id="world-jump-map-6" target="_blank" href="#">J-6</a>
         </li>
 
       </ul>
