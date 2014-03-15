@@ -252,8 +252,12 @@ namespace Maps
             }
         }
 
-        // "(foo bar)" "(foo)9" "baz" "bat"
-        private static Regex codeRegex = new Regex(@"(\(.*?\)\S*|\S+)", RegexOptions.Compiled | RegexOptions.CultureInvariant);
+        // "[Sophont]" - major race homeworld
+        // "(Sophont)" - minor race homeworld
+        // "(Sophont)0" - minor race homeworld (population in tenths)
+        // "{comment ... }" - arbirary comment
+        // "xyz" - other code
+        private static Regex codeRegex = new Regex(@"(\(.*?\)\S*|\[.*?\]\S*|\{.*?\}\S*|\S+)", RegexOptions.Compiled | RegexOptions.CultureInvariant);
         public string Remarks
         {
             get { return String.Join(" ", m_codes); }
