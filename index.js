@@ -366,10 +366,6 @@ window.addEventListener('DOMContentLoaded', function() {
     var dataURL = makeURL(SERVICE_BASE + '/api/sec', {
       sector: selectedSector, type: 'SecondSurvey' });
 
-    var worldURL = makeURL('world.html', {
-      sector: selectedSector,
-      hex: selectedWorld ? selectedWorld.hex : ''
-    });
 
     var title = selectedSector.replace(/ Sector$/, '') + ' Sector';
     $('#downloadBox #sector-name').innerHTML = escapeHtml(title);
@@ -378,9 +374,29 @@ window.addEventListener('DOMContentLoaded', function() {
     $('#downloadBox a#download-data').href = dataURL;
 
     if (selectedWorld) {
+      var worldURL = makeURL('world.html', {
+        sector: selectedSector,
+        hex: selectedWorld.hex
+      });
+
       $('#downloadBox a#world-data-sheet').href = worldURL;
       $('#downloadBox a#world-data-sheet').innerHTML = 'Data Sheet: ' +
         selectedWorld.name + ' (' + selectedWorld.hex + ')';
+
+      var options = map.GetOptions() & (
+        MapOptions.BordersMask | MapOptions.NamesMask |
+          MapOptions.WorldColors | MapOptions.FilledBorders);
+
+      for (var j = 1; j <= 6; ++j) {
+        var jumpMapURL = makeURL(SERVICE_BASE + '/api/jumpmap', {
+          sector: selectedSector,
+          hex: selectedWorld.hex,
+          jump: j,
+          style: map.GetStyle(),
+          options: options
+        });
+        $('#downloadBox a#world-jump-map-' + j).href = jumpMapURL;
+      }
     }
   }
 

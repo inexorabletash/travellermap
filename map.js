@@ -152,7 +152,15 @@ function makeURL(base, params) {
           if (xhr.readyState !== XMLHttpRequest.DONE)
             return;
           if (xhr.status === 200) {
-            callback(contentType === 'application/json' ? JSON.parse(xhr.responseText) : xhr.responseText);
+            var data = xhr.responseText;
+            try {
+              if (contentType === 'application/json')
+                data = JSON.parse(data);
+            } catch (ex) {
+              errback(ex);
+              return;
+            }
+            callback(data);
             return;
           }
           if (errback)

@@ -2623,45 +2623,8 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <Y>0</Y>
     <X>-6</X>
     <Name>Vanguard Reaches</Name>
-    <Name Lang="as">Telehfaeikh</Name>
-    <Name Lang="zh">Steblenzh</Name>
-    <DataFile Author="Chuck Kallenbach II" Publisher="Paranoia Press" Source="Vanguard Reaches" Ref="http://web.archive.org/web/19970522162511/http://www.inlink.com/~scoundrl/paranoia.htm">vanguard_reaches.sec</DataFile>
-    <Subsectors  Author="Chuck Kallenbach II" Publisher="Paranoia Press" Source="Vanguard Reaches" Ref="http://web.archive.org/web/19970522162511/http://www.inlink.com/~scoundrl/paranoia.htm">
-      <Subsector Index="A">Issoudun</Subsector>
-      <Subsector Index="B">Andwella</Subsector>
-      <Subsector Index="C">Coos</Subsector>
-      <Subsector Index="D">Trelyn</Subsector>
-      <Subsector Index="E">Chapra</Subsector>
-      <Subsector Index="F">Haldensleben</Subsector>
-      <Subsector Index="G">Pandemonium</Subsector>
-      <Subsector Index="H">Eslyat</Subsector>
-      <Subsector Index="I">Eckmann Schrift</Subsector>
-      <Subsector Index="J">Four Corners</Subsector>
-      <Subsector Index="K">Diadem</Subsector>
-      <Subsector Index="L">Kajaani</Subsector>
-      <Subsector Index="M">Helix</Subsector>
-      <Subsector Index="N">Hyperion</Subsector>
-      <Subsector Index="O">Old Colonies</Subsector>
-      <Subsector Index="P">Jarnac</Subsector>
-    </Subsectors>
-    <Allegiances Author="Chuck Kallenbach II" Source="Paranoia Press" Ref="http://web.archive.org/web/19970522162511/http://www.inlink.com/~scoundrl/paranoia.htm">
-      <Allegiance Code="Ac">Altarean Confederation</Allegiance>
-      <Allegiance Code="Co">Corellian</Allegiance>
-      <Allegiance Code="Es">Eslyat</Allegiance>
-      <Allegiance Code="Hc">Hefrin Colony</Allegiance>
-      <Allegiance Code="Tc">Tellerian Cluster</Allegiance>
-      <Allegiance Code="Td">Trelyn Domain</Allegiance>
-    </Allegiances>
-    <Borders Author="Joshua Bell">
-      <Border Allegiance="Zh" Color="blue">0101 0201 0302 0402 0502 0602 0603 0604 0605 0606 0707 0807 0908 0909 0910 0810 0711 0712 0713 0714 0715 0815 0816 0817 0818 0719 0720 0620 0521 0421 0322 0221 0121 0120 0119 0118 0217 0216 0215 0214 0213 0212 0312 0311 0310 0309 0308 0307 0306 0305 0204 0203 0202 0201 0101</Border>
-      <Border Allegiance="Tc" Color="orange">0926 1025 1125 1124 1224 1125 1025 1026 0926</Border>
-      <Border Allegiance="Es" Color="white">1004 1104 1203 1303 1403 1504 1604 1605 1706 1707 1708 1709 1609 1510 1511 1411 1311 1210 1209 1109 1108 1107 1106 1005 1004</Border>
-      <Border Allegiance="Ac" Color="olivedrab">1232 1332 1331 1430 1530 1630 1730 1830 1831 1932 1832 1833 1734 1634 1635 1636 1637 1538 1437 1337 1336 1235 1234 1233 1232</Border>
-      <Border Allegiance="Td" Color="brown">1801 1902 2001 2101 2100 2200 2300 2400 2500 2600 2700 2800 2900 2800 2701 2702 2703 2704 2804 2805 2806 2807 2708 2608 2509 2409 2310 2309 2208 2207 2206 2106 2005 2004 2003 2002 1902 1801</Border>
-      <Border Allegiance="As" Color="yellow">1838 1938 2037 2137 2136 2135 2235 2335 2336 2436 2337 2338 2339 2340 2341 2240 2140 2040 2039 1939 1838</Border>
-      <Border Allegiance="Co" Color="hotpink">2512 2611 2711 2710 2809 2910 3009 3110 3209 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3227 3128 3027 2927 2826 2726 2825 2824 2823 2822 2821 2721 2720 2719 2718 2617 2616 2516 2515 2514 2513 2512</Border>
-      <Border Allegiance="Hc" Color="slategray">3035 3135 3235 3336 3337 3338 3238 3138 3037 3036 3035</Border>
-    </Borders>
+    <DataFile Author="Chuck Kallenbach II" Publisher="Paranoia Press" Source="Vanguard Reaches" Ref="http://farfuture.net/Contents%20CDROM%20Apocrypha-2.pdf">Vanguard Reaches.sec</DataFile>
+    <MetaDataFile Author="Chuck Kallenbach II" Publisher="Paranoia Press" Source="Vanguard Reaches" Ref="http://farfuture.net/Contents%20CDROM%20Apocrypha-2.pdf">Vanguard Reaches.xml</MetaDataFile>
   </Sector>
   <Sector Tags="Apocryphal">
     <Y>0</Y>
@@ -2670,111 +2633,8 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <Name>Beyond</Name>
     <Name Lang="as">Lerlairlaii</Name>
     <Name Lang="zh">Zhdiakltlatl</Name>
-    <DataFile Author="Chuck Kallenbach II" Source="Beyond" Publisher="Paranoia Press" Ref="http://web.archive.org/web/19970522162511/http://www.inlink.com/~scoundrl/paranoia.htm">beyond.sec</DataFile>
-    <Subsectors Author="Chuck Kallenbach II" Source="Beyond" Publisher="Paranoia Press">
-      <Subsector Index="A">Meizirn</Subsector>
-      <Subsector Index="B">Avalar</Subsector>
-      <Subsector Index="C">Katanga</Subsector>
-      <Subsector Index="D">Marrakesh</Subsector>
-      <Subsector Index="E">Corell</Subsector>
-      <Subsector Index="F">Ventura</Subsector>
-      <Subsector Index="G">Garrone</Subsector>
-      <Subsector Index="H">Floria</Subsector>
-      <Subsector Index="I">Lorimer</Subsector>
-      <Subsector Index="J">Nakris</Subsector>
-      <Subsector Index="K">Camis</Subsector>
-      <Subsector Index="L">Yuarla</Subsector>
-      <Subsector Index="M">Hefrin</Subsector>
-      <Subsector Index="N">Tribeca</Subsector>
-      <Subsector Index="O">Kilriani</Subsector>
-      <Subsector Index="P">Asyoh</Subsector>
-    </Subsectors>
-    <Allegiances Author="Chuck Kallenbach II" Source="The Beyond, Paranoia Press">
-      <Allegiance Code="Co">Corellian</Allegiance>
-      <Allegiance Code="Hc">Hefrin Colony</Allegiance>
-      <Allegiance Code="Fl">Florian League</Allegiance>
-      <Allegiance Code="Um">Union of Meizirn</Allegiance>
-      <Allegiance Code="Mk">Marrakesh Trade Assoc</Allegiance>
-      <Allegiance Code="Fg">Federation of Garrone</Allegiance>
-      <Allegiance Code="Nc">Nakris Confederation</Allegiance>
-      <Allegiance Code="Ke">Katanga Empire</Allegiance>
-      <Allegiance Code="Av">Avalar Consulate</Allegiance>
-    </Allegiances>
-    <Routes Author="Chuck Kallenbach II" Source="The Beyond, Paranoia Press">
-      <Route Start="0104" End="0405" Allegiance="Um" Color="LightGray" />
-      <Route Start="0303" End="0405" Allegiance="Um" Color="LightGray" />
-      <Route Start="0405" End="0704" Allegiance="Um" Color="LightGray" />
-
-      <Route Start="1102" End="1401" Allegiance="Av" Color="LightGray" />
-      <Route Start="1307" End="1403" Allegiance="Av" Color="LightGray" />
-      <Route Start="1307" End="1609" Allegiance="Av" Color="LightGray" />
-      <Route Start="1401" End="1403" Allegiance="Av" Color="LightGray" />
-      <Route Start="2604" End="2905" Allegiance="Mk" Color="LightGray" />
-      <Route Start="2609" End="2908" Allegiance="Mk" Color="LightGray" />
-      <Route Start="2905" End="3006" Allegiance="Mk" Color="LightGray" />
-      <Route Start="2908" End="3006" Allegiance="Mk" Color="LightGray" />
-      <Route Start="2908" End="3110" Allegiance="Mk" Color="LightGray" />
-      <Route Start="3006" End="3207" Allegiance="Mk" Color="LightGray" />
-
-      <Route Start="0114" End="0316" Allegiance="Co" Color="LightGray" />
-      <Route Start="0121" End="0318" Allegiance="Co" Color="LightGray" />
-      <Route Start="0121" End="0318" Allegiance="Co" Color="LightGray" />
-      <Route Start="0121" End="0423" Allegiance="Co" Color="LightGray" />
-      <Route Start="0316" End="0318" Allegiance="Co" Color="LightGray" />
-      <Route Start="0318" End="0718" Allegiance="Co" Color="LightGray" />
-      <Route Start="0423" End="0723" Allegiance="Co" Color="LightGray" />
-      <Route Start="0718" End="1017" Allegiance="Co" Color="LightGray" />
-      <Route Start="0718" End="1017" Allegiance="Co" Color="LightGray" />
-      <Route Start="0723" End="0924" Allegiance="Co" Color="LightGray" />
-      <Route Start="0723" End="0924" Allegiance="Co" Color="LightGray" />
-      <Route Start="1017" End="1415" Allegiance="Co" Color="LightGray" />
-      <Route Start="1415" End="1513" Allegiance="Co" Color="LightGray" />
-
-      <Route Start="2434" End="2634" Allegiance="As" Color="Yellow" />
-      <Route Start="2434" End="2634" Allegiance="As" Color="Yellow" />
-      <Route Start="2531" End="2634" Allegiance="As" Color="Yellow" />
-      <Route Start="2628" End="2929" Allegiance="As" Color="Yellow" />
-      <Route Start="2634" End="3034" Allegiance="As" Color="Yellow" />
-      <Route Start="2636" End="2836" Allegiance="As" Color="Yellow" />
-      <Route Start="2836" End="3136" Allegiance="As" Color="Yellow" />
-      <Route Start="2929" End="3131" Allegiance="As" Color="Yellow" />
-      <Route Start="2929" End="3131" Allegiance="As" Color="Yellow" />
-      <Route Start="2929" End="3228" Allegiance="As" Color="Yellow" />
-      <Route Start="3034" End="3131" Allegiance="As" Color="Yellow" />
-      <Route Start="3034" End="3136" Allegiance="As" Color="Yellow" />
-      <Route Start="3123" End="3226" Allegiance="As" Color="Yellow" />
-      <Route Start="3136" End="0338" EndOffsetX="1" EndOffsetY="0" Allegiance="As" Color="Yellow" />
-      <Route Start="3226" End="0127" EndOffsetX="1" EndOffsetY="0" Allegiance="As" Color="Yellow" />
-      <Route Start="3226" End="3228" Allegiance="As" Color="Yellow" />
-
-      <Route Start="2116" End="2119" Allegiance="Fg" Color="LightGray" />
-      <Route Start="2119" End="2121" Allegiance="Fg" Color="LightGray" />
-      <Route Start="1922" End="2121" Allegiance="Fg" Color="LightGray" />
-      <Route Start="2121" End="2421" Allegiance="Fg" Color="LightGray" />
-      <Route Start="2325" End="2421" Allegiance="Fg" Color="LightGray" />
-      <Route Start="1824" End="1922" Allegiance="Fg" Color="LightGray" />
-
-      <Route Start="2717" End="3017" Allegiance="Fl" Color="LightGreen" />
-      <Route Start="3017" End="3020" Allegiance="Fl" Color="LightGreen" />
-      <Route Start="3017" End="3115" Allegiance="Fl" Color="LightGreen" />
-      <Route Start="3113" End="0213" EndOffsetX="1" EndOffsetY="0" Allegiance="Fl" Color="LightGreen" />
-      <Route Start="3113" End="3115" Allegiance="Fl" Color="LightGreen" />
-
-    </Routes>
-
-    <Borders Author="Joshua Bell" Ref="http://travellermap.com/borders/">
-      <Border Allegiance="Co" Color="hotpink" LabelPosition="0620">0009 0110 0210 0311 0312 0412 0513 0613 0714 0813 0913 0912 0911 1011 1112 1212 1312 1411 1512 1611 1612 1613 1614 1515 1516 1416 1417 1318 1319 1320 1220 1121 1122 1123 1023 1024 0925 0825 0726 0626 0627 0528 0428 0329 0228 0128 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009</Border>
-      <Border Allegiance="Um" Color="olivedrab" LabelPosition="0304">0103 0202 0302 0401 0502 0602 0603 0704 0705 0605 0506 0507 0406 0306 0205 0204 0104 0103</Border>
-      <Border Allegiance="Hc" Color="slategray" LabelPosition="0137" WrapLabel="true">0035 0135 0235 0335 0434 0435 0336 0337 0237 0138 0038 0037 0036 0035</Border>
-      <Border Allegiance="Nc" Color="cyan" LabelPosition="1431" WrapLabel="true">0931 1030 1130 1229 1330 1331 1332 1333 1232 1132 1032 1031 0931</Border>
-      <Border Allegiance="Av" Color="purple" LabelPosition="1606" WrapLabel="true">1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000 1901 1801 1802 1703 1603 1604 1605 1606 1607 1708 1808 1908 1808 1709 1609 1509 1409 1309 1308 1307 1306 1205 1204 1104 1103 1002 1001 1000</Border>
-      <Border Allegiance="Fg" Color="darkred" LabelPosition="1722" WrapLabel="true">1521 1620 1720 1819 1818 1817 1917 1916 1915 1914 2013 2012 2011 2012 2113 2114 2115 2116 2216 2217 2218 2219 2320 2420 2421 2422 2423 2424 2325 2326 2225 2126 2026 1927 1827 1727 1626 1526 1525 1524 1523 1522 1521</Border>
-      <Border Allegiance="Ke" Color="orange" LabelPosition="1904" WrapLabel="true">2103 2202 2302 2202 2103 2104 2103</Border>
-      <Border Allegiance="As" Color="yellow" LabelPosition="2831">2138 2237 2337 2436 2435 2434 2433 2432 2431 2331 2430 2530 2629 2628 2728 2827 2826 2825 2925 2924 3023 3123 3122 3121 3220 3221 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2140 2139 2138</Border>
-      <Border Allegiance="Mk" Color="white" LabelPosition="2707">2404 2505 2604 2705 2804 2904 3003 3103 3203 3204 3205 3206 3207 3108 3109 3110 3010 2911 2811 2711 2611 2511 2510 2509 2508 2507 2506 2505 2404</Border>
-      <Border Allegiance="Fl" Color="green" LabelPosition="3119" WrapLabel="true">2717 2816 2916 2915 2914 3013 3012 3112 3211 3311 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3320 3219 3120 3020 2920 2919 2918 2817 2717</Border>
-    </Borders>
-
+    <DataFile Author="Donald P. Rapp" Source="Beyond" Publisher="Paranoia Press" Ref="http://farfuture.net/Contents%20CDROM%20Apocrypha-2.pdf">beyond.sec</DataFile>
+    <MetaDataFile Author="Donald P. Rapp" Source="Beyond" Publisher="Paranoia Press">Beyond.xml</MetaDataFile>
   </Sector>
   <Sector Abbreviation="Troj" Tags="Official" Selected="true">
     <Y>0</Y>
