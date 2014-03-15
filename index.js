@@ -383,11 +383,17 @@ window.addEventListener('DOMContentLoaded', function() {
       $('#downloadBox a#world-data-sheet').innerHTML = 'Data Sheet: ' +
         selectedWorld.name + ' (' + selectedWorld.hex + ')';
 
+      var options = map.GetOptions() & (
+        MapOptions.BordersMask | MapOptions.NamesMask |
+          MapOptions.WorldColors | MapOptions.FilledBorders);
+
       for (var j = 1; j <= 6; ++j) {
         var jumpMapURL = makeURL(SERVICE_BASE + '/api/jumpmap', {
           sector: selectedSector,
           hex: selectedWorld.hex,
-          jump: j
+          jump: j,
+          style: map.GetStyle(),
+          options: options
         });
         $('#downloadBox a#world-jump-map-' + j).href = jumpMapURL;
       }
