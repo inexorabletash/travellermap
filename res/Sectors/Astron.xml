@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<Sector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Tags="OTU">
+  <X>-8</X>
+  <Y>0</Y>
+  <Name>Astron</Name>
+  <Name Lang="zh">Shiants</Name>
+  <Subsectors>
+    <Subsector Index="A">Yrgonomi</Subsector>
+    <Subsector Index="B">Ratatta</Subsector>
+    <Subsector Index="C">Obunemias</Subsector>
+    <Subsector Index="D">Gembolia</Subsector>
+    <Subsector Index="E">Klantor</Subsector>
+    <Subsector Index="F">Plutting</Subsector>
+    <Subsector Index="G">Vantor</Subsector>
+    <Subsector Index="H">Haddox</Subsector>
+    <Subsector Index="I">Ingo</Subsector>
+    <Subsector Index="J">Fiqorino</Subsector>
+    <Subsector Index="K">Vyfura</Subsector>
+    <Subsector Index="L">Blahonga</Subsector>
+    <Subsector Index="M">Stane</Subsector>
+    <Subsector Index="N">Vilian</Subsector>
+    <Subsector Index="O">Surgian</Subsector>
+    <Subsector Index="P">Fundibul</Subsector>
+  </Subsectors>
+  <Borders />
+  <Labels />
+  <Routes>
+    <Route Start="3230" End="0128"  EndOffsetX="1" Color="#8000BF00" Type="btn10"/>
+    <Route Start="3230" End="3234" Color="#8000BF00" Type="btn10"/>
+    <Route Start="3222" End="0125"  EndOffsetX="1" Color="#8000BF00" Type="btn10"/>
+    <Route Start="3222" End="3219" Color="#8000BF00" Type="btn10"/>
+    <Route Start="3234" End="3036" Color="#8000BF00" Type="btn10"/>
+    <Route Start="3036" End="3038" Color="#8000BF00" Type="btn10"/>
+  </Routes>
+  <Allegiances />
+  <DataFile Source="CORE" Ref="http://www.ocean-of-storms.com/core/astrogat/f4.htm" Type="SEC">astron.sec</DataFile>
+</Sector>

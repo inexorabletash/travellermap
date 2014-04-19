@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<Sector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Tags="OTU">
+  <X>-7</X>
+  <Y>0</Y>
+  <Name>Fulani</Name>
+  <Name Lang="zh">Chtedria</Name>
+  <Subsectors>
+    <Subsector Index="A">Pieshivl</Subsector>
+    <Subsector Index="B">Aquaria</Subsector>
+    <Subsector Index="C">Bilahew</Subsector>
+    <Subsector Author="Chuck Kallenbach II" Source="The Vanguard Reaches" Publisher="Paranoia Press" Index="D">Lythgoe</Subsector>
+    <Subsector Index="E">Rosorky</Subsector>
+    <Subsector Index="F">Zhdierqr</Subsector>
+    <Subsector Index="G">Tiachtiebria</Subsector>
+    <Subsector Author="Chuck Kallenbach II" Source="The Vanguard Reaches" Publisher="Paranoia Press" Index="H">Vanguard</Subsector>
+    <Subsector Index="I">Encha</Subsector>
+    <Subsector Index="J">Rdrefrn-40</Subsector>
+    <Subsector Index="K">Janzya'jopr</Subsector>
+    <Subsector Author="Chuck Kallenbach II" Source="The Vanguard Reaches" Publisher="Paranoia Press" Index="L">Zachrisson</Subsector>
+    <Subsector Index="M">Eiebl</Subsector>
+    <Subsector Index="N">Jdinchpipr</Subsector>
+    <Subsector Index="O">Ozhev</Subsector>
+    <Subsector Author="Chuck Kallenbach II" Source="The Vanguard Reaches" Publisher="Paranoia Press" Index="P">Idella</Subsector>
+  </Subsectors>
+  <Borders>
+    <Border WrapLabel="false" Color="Green" Allegiance="Iz" LabelPosition="2003">1600 1700 1800 1900 2000 2100 2200 2300 2400 2401 2402 2403 2304 2204 2105 2005 1906 1805 1804 1704 1603 1602 1601 1600</Border>
+  </Borders>
+  <Labels />
+  <Routes>
+    <Route Start="2304" End="2403" Color="#99FF0000" Type="btn08"/>
+    <Route Start="2402" End="2202" Color="#99FF0000" Type="btn08"/>
+    <Route Start="1802" End="1903" Color="#99FF0000" Type="btn08"/>
+    <Route Start="2304" End="2202" Color="#BFFFFF00" Type="btn09"/>
+    <Route Start="1906" End="1903" Color="#BFFFFF00" Type="btn09"/>
+    <Route Start="2301" End="2140"  EndOffsetY="-1" Color="#BFFFFF00" Type="btn09"/>
+    <Route Start="1903" End="2102" Color="#BFFFFF00" Type="btn09"/>
+    <Route Start="2202" End="2403" Color="#BFFFFF00" Type="btn09"/>
+    <Route Start="2202" End="2203" Color="#BFFFFF00" Type="btn09"/>
+    <Route Start="0207" End="0205" Color="#8000BF00" Type="btn10"/>
+    <Route Start="0207" End="0110" Color="#8000BF00" Type="btn10"/>
+    <Route Start="0113" End="0116" Color="#8000BF00" Type="btn10"/>
+    <Route Start="0113" End="0110" Color="#8000BF00" Type="btn10"/>
+    <Route Start="0116" End="3219"  EndOffsetX="-1" Color="#8000BF00" Type="btn10"/>
+    <Route Start="0128" End="0125" Color="#8000BF00" Type="btn10"/>
+    <Route Start="0202" End="0205" Color="#8000BF00" Type="btn10"/>
+  </Routes>
+  <Allegiances />
+  <DataFile Source="CORE" Ref="http://www.ocean-of-storms.com/core/astrogat/f5.htm" Type="SEC">fulani.sec</DataFile>
+</Sector>

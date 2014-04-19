@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<Sector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Tags="OTU">
+  <X>-7</X>
+  <Y>1</Y>
+  <Name>Theron</Name>
+  <Name Lang="as">Iykhaiser</Name>
+  <Subsectors>
+    <Subsector Index="A">Terrelay</Subsector>
+    <Subsector Index="B">Ronodik</Subsector>
+    <Subsector Index="C">Babs</Subsector>
+    <Subsector Index="D">Mirdika</Subsector>
+    <Subsector Index="E">Chang-Tu</Subsector>
+    <Subsector Index="F">Olpinures</Subsector>
+    <Subsector Index="G">Plok</Subsector>
+    <Subsector Index="H">Lisqitama</Subsector>
+    <Subsector Index="I">Ubagil</Subsector>
+    <Subsector Index="J">Babadur</Subsector>
+    <Subsector Index="K">Tynvegi</Subsector>
+    <Subsector Index="L">Joseph</Subsector>
+    <Subsector Index="M">Quadrant 01-569</Subsector>
+    <Subsector Index="N">Pozzy</Subsector>
+    <Subsector Index="O">Virtanen</Subsector>
+    <Subsector Index="P">Willwlmo</Subsector>
+  </Subsectors>
+  <Borders>
+    <Border WrapLabel="false" Color="Green" Allegiance="Rm" LabelPosition="3031">2734 2833 2832 2831 2830 2829 2828 2827 2927 3026 3126 3125 3225 3325 3326 3327 3328 3329 3330 3331 3332 3333 3232 3132 3032 2933 2934 2935 2936 2937 2836 2737 2736 2735 2734</Border>
+  </Borders>
+  <Labels />
+  <Routes>
+    <Route Start="0533" End="0831" Color="#99FF0000" Type="btn08"/>
+    <Route Start="0533" End="0233" Color="#99FF0000" Type="btn08"/>
+    <Route Start="3129" End="0130"  EndOffsetX="1" Color="#99FF0000" Type="btn08"/>
+    <Route Start="0831" End="1130" Color="#99FF0000" Type="btn08"/>
+    <Route Start="1730" End="1430" Color="#99FF0000" Type="btn08"/>
+    <Route Start="1730" End="1929" Color="#99FF0000" Type="btn08"/>
+    <Route Start="2932" End="3231" Color="#99FF0000" Type="btn08"/>
+    <Route Start="1430" End="1130" Color="#99FF0000" Type="btn08"/>
+    <Route Start="1929" End="2228" Color="#99FF0000" Type="btn08"/>
+    <Route Start="0233" End="3232"  EndOffsetX="-1" Color="#99FF0000" Type="btn08"/>
+    <Route Start="2527" End="2228" Color="#99FF0000" Type="btn08"/>
+    <Route Start="2527" End="2827" Color="#99FF0000" Type="btn08"/>
+    <Route Start="3129" End="2827" Color="#BFFFFF00" Type="btn09"/>
+  </Routes>
+  <Allegiances>
+    <Allegiance Code="Rm">Regency of Muirimi</Allegiance>
+  </Allegiances>
+  <DataFile Author="Jo Grant" Source="CORE, The Zhodani Base" Ref="http://zho.berka.com/data/CLASSIC/sector.pl?sector=THERON" Type="SEC">theron.sec</DataFile>
+</Sector>

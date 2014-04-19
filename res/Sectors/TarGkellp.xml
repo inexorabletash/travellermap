@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<Sector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Tags="OTU">
+  <X>5</X>
+  <Y>-4</Y>
+  <Name Lang="kk">Tar'G'kell'p</Name>
+  <Subsectors>
+    <Subsector Index="A">Alpha Zone</Subsector>
+    <Subsector Index="B">Bravo Zone</Subsector>
+    <Subsector Index="C">Charlie Zone</Subsector>
+    <Subsector Index="D">Delta Zone</Subsector>
+    <Subsector Index="E">Echo Zone</Subsector>
+    <Subsector Index="F">Foxtrot Zone</Subsector>
+    <Subsector Index="G">Golf Zone</Subsector>
+    <Subsector Index="H">Hotel Zone</Subsector>
+    <Subsector Index="I">India Zone</Subsector>
+    <Subsector Index="J">Juliet Zone</Subsector>
+    <Subsector Index="K">Kilo Zone</Subsector>
+    <Subsector Index="L">Lima Zone</Subsector>
+    <Subsector Index="M">Mike Zone</Subsector>
+    <Subsector Index="N">November Zone</Subsector>
+    <Subsector Index="O">Oscar Zone</Subsector>
+    <Subsector Index="P">Papa Zone</Subsector>
+  </Subsectors>
+  <Borders />
+  <Labels />
+  <Routes>
+    <Route Start="0311" End="0213" Color="#99FF0000" Type="btn08"/>
+    <Route Start="0311" End="0308" Color="#99FF0000" Type="btn08"/>
+    <Route Start="0420" End="0524" Color="#99FF0000" Type="btn08"/>
+    <Route Start="0420" End="0219" Color="#99FF0000" Type="btn08"/>
+    <Route Start="0524" End="0626" Color="#99FF0000" Type="btn08"/>
+    <Route Start="0626" End="0629" Color="#99FF0000" Type="btn08"/>
+    <Route Start="0629" End="0631" Color="#99FF0000" Type="btn08"/>
+    <Route Start="0631" End="0734" Color="#99FF0000" Type="btn08"/>
+    <Route Start="0734" End="0738" Color="#99FF0000" Type="btn08"/>
+    <Route Start="0738" End="0701"  EndOffsetY="1" Color="#99FF0000" Type="btn08"/>
+    <Route Start="0308" End="0405" Color="#99FF0000" Type="btn08"/>
+    <Route Start="0216" End="0213" Color="#99FF0000" Type="btn08"/>
+    <Route Start="0216" End="0219" Color="#99FF0000" Type="btn08"/>
+    <Route Start="0402" End="0405" Color="#99FF0000" Type="btn08"/>
+  </Routes>
+  <Allegiances />
+  <DataFile Author="&quot;77topaz&quot;" Source="explorerbase" Ref="http://explorerbase.wikispaces.com/Tar%27G%27kell%27p+Sector+Data" Type="SEC">TarGkellp.sec</DataFile>
+</Sector>

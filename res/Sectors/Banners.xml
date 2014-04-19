@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<Sector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Tags="OTU">
+  <X>-8</X>
+  <Y>0</Y>
+  <Name>Astron</Name>
+  <Name Lang="zh">Shiants</Name>
+  <Subsectors>
+    <Subsector Index="A"></Subsector>
+    <Subsector Index="B"></Subsector>
+    <Subsector Index="C"></Subsector>
+    <Subsector Index="D"></Subsector>
+    <Subsector Index="E"></Subsector>
+    <Subsector Index="F"></Subsector>
+    <Subsector Index="G">Woal</Subsector>
+    <Subsector Index="H"></Subsector>
+    <Subsector Index="I"></Subsector>
+    <Subsector Index="J"></Subsector>
+    <Subsector Index="K">Roakh</Subsector>
+    <Subsector Index="L"></Subsector>
+    <Subsector Index="M"></Subsector>
+    <Subsector Index="N">Delsun</Subsector>
+    <Subsector Index="O"></Subsector>
+    <Subsector Index="P"></Subsector>
+  </Subsectors>
+  <Borders />
+  <Labels />
+  <Routes>
+    <Route Start="1225" End="1424" Color="#99FF0000" Type="btn08"/>
+    <Route Start="1424" End="1723" Color="#99FF0000" Type="btn08"/>
+    <Route Start="2018" End="2021" Color="#99FF0000" Type="btn08"/>
+    <Route Start="2018" End="2015" Color="#99FF0000" Type="btn08"/>
+    <Route Start="2417" End="2719" Color="#99FF0000" Type="btn08"/>
+    <Route Start="2417" End="2315" Color="#99FF0000" Type="btn08"/>
+    <Route Start="1612" End="1615" Color="#99FF0000" Type="btn08"/>
+    <Route Start="1615" End="1813" Color="#99FF0000" Type="btn08"/>
+    <Route Start="1615" End="1714" Color="#99FF0000" Type="btn08"/>
+    <Route Start="1714" End="1715" Color="#99FF0000" Type="btn08"/>
+    <Route Start="2012" End="2213" Color="#99FF0000" Type="btn08"/>
+    <Route Start="2015" End="1916" Color="#99FF0000" Type="btn08"/>
+    <Route Start="2719" End="2921" Color="#99FF0000" Type="btn08"/>
+    <Route Start="1723" End="2021" Color="#99FF0000" Type="btn08"/>
+    <Route Start="2213" End="2315" Color="#99FF0000" Type="btn08"/>
+    <Route Start="2921" End="3122" Color="#99FF0000" Type="btn08"/>
+    <Route Start="2207" End="2006" Color="#BFFFFF00" Type="btn09"/>
+    <Route Start="2207" End="2605" Color="#BFFFFF00" Type="btn09"/>
+    <Route Start="2207" End="2505" Color="#BFFFFF00" Type="btn09"/>
+    <Route Start="2605" End="3006" Color="#BFFFFF00" Type="btn09"/>
+    <Route Start="1612" End="1514" Color="#BFFFFF00" Type="btn09"/>
+    <Route Start="1612" End="1813" Color="#BFFFFF00" Type="btn09"/>
+    <Route Start="1612" End="1714" Color="#BFFFFF00" Type="btn09"/>
+    <Route Start="1813" End="2012" Color="#BFFFFF00" Type="btn09"/>
+    <Route Start="2012" End="2015" Color="#BFFFFF00" Type="btn09"/>
+    <Route Start="2012" End="2113" Color="#BFFFFF00" Type="btn09"/>
+    <Route Start="2211" End="2113" Color="#BFFFFF00" Type="btn09"/>
+    <Route Start="2211" End="2213" Color="#BFFFFF00" Type="btn09"/>
+    <Route Start="2502" End="2505" Color="#BFFFFF00" Type="btn09"/>
+    <Route Start="1910" End="2109" Color="#8000BF00" Type="btn10"/>
+    <Route Start="1910" End="1612" Color="#8000BF00" Type="btn10"/>
+    <Route Start="1714" End="2012" Color="#8000BF00" Type="btn10"/>
+    <Route Start="2012" End="2211" Color="#8000BF00" Type="btn10"/>
+    <Route Start="2006" End="2109" Color="#8000BF00" Type="btn10"/>
+    <Route Start="2207" End="2109" Color="#9900FFFF" Type="btn11"/>
+    <Route Start="2207" End="2104" Color="#9900FFFF" Type="btn11"/>
+    <Route Start="2211" End="2109" Color="#9900FFFF" Type="btn11"/>
+  </Routes>
+  <Allegiances />
+  <DataFile Source="CORE" Ref="http://www.ocean-of-storms.com/core/astrogat/kE.htm" Type="SEC">banners.sec</DataFile>
+</Sector>
