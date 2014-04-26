@@ -2,6 +2,7 @@ using Json;
 using Maps.Rendering;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
@@ -247,21 +248,31 @@ namespace Maps
         private MetadataCollection<Product> m_products = new MetadataCollection<Product>();
 
         [XmlAttribute]
-        [System.ComponentModel.DefaultValue(false)]
+        [DefaultValue(false)]
         public bool Selected { get; set; }
 
         [XmlElement("Product")]
         public MetadataCollection<Product> Products { get { return m_products; } }
     
         public MetadataCollection<Subsector> Subsectors { get { return m_subsectors; } }
+        [XmlIgnore]
+        public bool SubsectorsSpecified { get { return m_subsectors.Count() > 0; } }
 
         public MetadataCollection<Border> Borders { get { return m_borders; } }
+        [XmlIgnore]
+        public bool BordersSpecified { get { return m_borders.Count() > 0; } }
 
         public MetadataCollection<Label> Labels { get { return m_labels; } }
+        [XmlIgnore]
+        public bool LabelsSpecified { get { return m_labels.Count() > 0; } }
 
         public MetadataCollection<Route> Routes { get { return m_routes; } }
+        [XmlIgnore]
+        public bool RoutesSpecified { get { return m_routes.Count() > 0; } }
 
         public MetadataCollection<Allegiance> Allegiances { get { return m_allegiances; } }
+        [XmlIgnore]
+        public bool AllegiancesSpecified { get { return m_allegiances.Count() > 0; } }
 
         public string Credits { get; set; }
 
@@ -282,6 +293,7 @@ namespace Maps
             this.Labels.AddRange(metadataSource.Labels);
             this.Credits = metadataSource.Credits;
             this.Products.AddRange(metadataSource.Products);
+            this.Stylesheet = metadataSource.Stylesheet;
         }
 
 
@@ -603,6 +615,13 @@ namespace Maps
             return Astrometrics.LocationToCoordinates(this.Location,
                 new Point(Astrometrics.SubsectorWidth * (2 * ssx + 1) / 2, Astrometrics.SubsectorHeight * (2 * ssy + 1) / 2));
         }
+
+        [XmlIgnore, JsonIgnore]
+        public SectorStylesheet Stylesheet { get; set; }
+
+        [XmlElement("Stylesheet"), JsonName("Stylesheet")]
+        public string StylesheetText { get { return Stylesheet == null ? null : Stylesheet.ToString(); } set { Stylesheet = SectorStylesheet.Parse(value); } }
+
     }
 
     public class Product : MetadataItem
@@ -622,7 +641,7 @@ namespace Maps
         public string Text { get; set; }
 
         [XmlAttribute]
-        [System.ComponentModel.DefaultValueAttribute("")]
+        [DefaultValueAttribute("")]
         public string Lang { get; set; }
 
         [XmlAttribute]
@@ -651,7 +670,7 @@ namespace Maps
         public string FileName { get; set; }
 
         [XmlAttribute]
-        [System.ComponentModel.DefaultValueAttribute("")]
+        [DefaultValueAttribute("")]
         public string Type { get; set; }
     }
 
@@ -761,7 +780,7 @@ namespace Maps
         }
 
         [XmlAttribute]
-        [System.ComponentModel.DefaultValue(true)]
+        [DefaultValue(true)]
         public bool ShowLabel { get; set; }
 
         [XmlAttribute]
@@ -863,19 +882,13 @@ namespace Maps
     {
         public enum RouteStyle
         {
-            Solid,
+            Solid = 0, // Default
             Dashed,
             Dotted
         }
 
-        public static Color DefaultColor { get { return Color.Green; } }
-        public static RouteStyle DefaultStyle { get { return RouteStyle.Solid; } }
-
         public Route()
         {
-            Color = DefaultColor;
-            Style = DefaultStyle;
-            Allegiance = "Im";
         }
 
         public Route(Point? startOffset = null, int start = 0, Point? endOffset = null, int end = 0, string color = null)
@@ -895,13 +908,6 @@ namespace Maps
         [XmlAttribute]
         public int End { get; set; }
 
-        [XmlAttribute]
-        [System.ComponentModel.DefaultValueAttribute(RouteStyle.Solid)]
-        public RouteStyle Style { get; set; }
-
-        [XmlIgnoreAttribute,JsonIgnore]
-        public Color Color { get; set; }
-
         [XmlIgnoreAttribute, JsonIgnore]
         public Point StartOffset { get; set; }
 
@@ -914,27 +920,42 @@ namespace Maps
         [XmlIgnoreAttribute, JsonIgnore]
         public Point EndPoint { get { return new Point(End / 100, End % 100); } }
 
-        [XmlAttribute]
-        public string Allegiance { get; set; }
-
-        [XmlAttribute("Color"),JsonName("Color")]
-        public string ColorHtml { get { return ColorTranslator.ToHtml(Color); } set { Color = ColorTranslator.FromHtml(value); } }
-
         [XmlAttribute("StartOffsetX")]
-        [System.ComponentModel.DefaultValueAttribute(0)]
+        [DefaultValueAttribute(0)]
         public int StartOffsetX { get { return StartOffset.X; } set { StartOffset = new Point(value, StartOffset.Y); } }
 
         [XmlAttribute("StartOffsetY")]
-        [System.ComponentModel.DefaultValueAttribute(0)]
+        [DefaultValueAttribute(0)]
         public int StartOffsetY { get { return StartOffset.Y; } set { StartOffset = new Point(StartOffset.X, value); } }
 
         [XmlAttribute("EndOffsetX")]
-        [System.ComponentModel.DefaultValueAttribute(0)]
+        [DefaultValueAttribute(0)]
         public int EndOffsetX { get { return EndOffset.X; } set { EndOffset = new Point(value, EndOffset.Y); } }
 
         [XmlAttribute("EndOffsetY")]
-        [System.ComponentModel.DefaultValueAttribute(0)]
+        [DefaultValueAttribute(0)]
         public int EndOffsetY { get { return EndOffset.Y; } set { EndOffset = new Point(EndOffset.X, value); } }
+
+
+        [XmlIgnore]
+        public RouteStyle? Style { get; set; }
+        [XmlAttribute("Style"), JsonIgnore]
+        public RouteStyle _Style { get { return Style.Value; } set { Style = value; } }
+        public bool ShouldSerialize_Style() { return Style.HasValue; }
+
+        [XmlIgnore]
+        public float? Width { get; set; }
+        [XmlAttribute("Width"), JsonIgnore]
+        public float _Width { get { return Width.Value; } set { Width = value; } }
+        public bool ShouldSerialize_Width() { return Width.HasValue; }
+
+        [XmlIgnore, JsonIgnore]
+        public Color? Color { get; set; }
+        [XmlAttribute("Color"), JsonName("Color")]
+        public string ColorHtml { get { return Color.HasValue ? ColorTranslator.ToHtml(Color.Value) : null; } set { Color = ColorTranslator.FromHtml(value); } }
+
+        [XmlAttribute]
+        public string Allegiance { get; set; }
 
         public override string ToString()
         {

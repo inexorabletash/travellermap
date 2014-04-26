@@ -433,6 +433,7 @@
     <Compile Include="server\SecondSurvey.cs" />
     <Compile Include="server\Sector.cs" />
     <Compile Include="server\SectorDataCollection.cs" />
+    <Compile Include="server\SectorStylesheet.cs" />
     <Compile Include="server\Selector.cs" />
     <Compile Include="server\serialization\ColumnUtils.cs" />
     <Compile Include="server\serialization\MSECParser.cs" />
@@ -461,6 +462,7 @@
     <Content Include="res\search\GrandTour.json" />
     <Content Include="res\search\Cirque.json" />
     <Content Include="res\Candy\Galaxy.pdn" />
+    <Content Include="lib\README.md" />
     <None Include="res\sectors.xsd" />
     <Content Include="res\Sectors\Aktifao.tab" />
     <None Include="res\Sectors\Alpha Crucis.tab" />

@@ -93,6 +93,7 @@
               <xs:attributeGroup ref="metadata"/>
             </xs:complexType>
           </xs:element>
+          <xs:element name="Stylesheet" type="xs:string"/>
           <xs:element name="Labels">
             <xs:complexType>
               <xs:sequence>

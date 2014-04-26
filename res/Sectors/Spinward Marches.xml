@@ -161,6 +161,15 @@
     <Route Start="0325" End="0624" Allegiance="DaCf" Color="LightGreen" />
     <Route Start="0624" End="0724" Allegiance="DaCf" Color="LightGreen" />
   </Routes>
+  <Stylesheet>
+    route.Im { color: green; }
+    route.Da { color: lightgreen; }
+    route.Zh { color: lightblue; }
+    border.Da { color: lightblue; }
+    border.Sw { color: blue; }
+    border.Zh { color: blue; }
+    border.Im { color: red; }
+  </Stylesheet>
   <Borders>
     <Border Allegiance="DaCf" Color="lightblue" LabelPosition="0423" WrapLabel="true">
       0223 0323 0422 0421 0522 0621 0721 0821 0822 0723 0724 0725 0726 0727

@@ -104,6 +104,23 @@ namespace Maps
                 return s.Substring(start);
             return s.Substring(start, length);
         }
+
+
+        public static Func<A1, A2, R> Memoize2<A1, A2, R>(this Func<A1, A2, R> f)
+        {
+            var map = new Dictionary<Tuple<A1, A2>, R>();
+            return (a1, a2) =>
+            {
+                var key = Tuple.Create(a1, a2);
+                R value;
+                if (map.TryGetValue(key, out value))
+                    return value;
+                value = f(a1, a2);
+                map.Add(key, value);
+                return value;
+            };
+        }
+
     }
 
     // Like Regex, but takes shell-style globs:

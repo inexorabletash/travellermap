@@ -106,8 +106,8 @@ namespace Json
             foreach (PropertyInfo pi in item.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public)
                 .Where(pi => pi.CanRead && pi.GetIndexParameters().Length == 0 && !Ignore(pi)))
             {
-                object value = pi.GetValue(item, null);
-                object default_value = GetDefaultValue(pi);
+                var value = pi.GetValue(item, null);
+                var default_value = GetDefaultValue(pi);
 
                 // TODO: allow null? Currently being automagically suppressed
                 if (value != null && !value.Equals(default_value))

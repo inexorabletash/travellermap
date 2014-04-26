@@ -1375,6 +1375,7 @@ namespace Maps.Rendering
                 ctx.graphics.SmoothingMode = XSmoothingMode.AntiAlias;
                 XPen pen = new XPen(XColor.Empty);
                 ctx.styles.microRoutes.pen.Apply(ref pen);
+                float baseWidth = ctx.styles.microRoutes.pen.width;
 
                 foreach (Sector sector in ctx.selector.Sectors)
                 {
@@ -1401,35 +1402,61 @@ namespace Maps.Rendering
                             endPoint = tmp;
                         }
 
-                        // HACK
-                        if (ctx.styles.grayscale ||
-                            !ColorUtil.NoticeableDifference(route.Color, ctx.styles.backgroundColor))
+                        float? routeWidth = route.Width;
+                        Color? routeColor = route.Color;
+                        Route.RouteStyle? routeStyle = route.Style;
+
+#if USE_SECTOR_STYLESHEET
+                        if (sector.Stylesheet != null)
                         {
-                            pen.Color = ctx.styles.microRoutes.pen.color; // default
+                            SectorStylesheet.StyleResult ssr = sector.Stylesheet.Apply("route", route.Allegiance);
+                            if (!routeStyle.HasValue)
+                                routeStyle = ssr.GetEnum<Route.RouteStyle>("style");
+                            if (!routeColor.HasValue)
+                                routeColor = ColorTranslator.FromHtml(ssr.GetString("color"));
+                            if (!routeWidth.HasValue)
+                                routeWidth = (float)ssr.GetNumber("width");
                         }
-                        else
+#endif
+
+                        // In grayscale, convert default color and style to non-default style
+                        if (ctx.styles.grayscale && !routeColor.HasValue && !routeStyle.HasValue)
                         {
-                            pen.Color = route.Color;
+                            routeStyle = Route.RouteStyle.Dashed;
                         }
 
-                        switch (route.Style)
+                        // TODO: Get these from a master stylesheet
+                        if (!routeColor.HasValue)
+                            routeColor = Color.Green;
+                        if (!routeStyle.HasValue)
+                            routeStyle = Route.RouteStyle.Solid;
+                        if (!routeWidth.HasValue)
+                            routeWidth = 1.0f;
+
+                        // Ensure color is visible
+                        if (ctx.styles.grayscale || !ColorUtil.NoticeableDifference(routeColor.Value, ctx.styles.backgroundColor))
                         {
-                            default:
-                            case Route.RouteStyle.Solid: pen.DashStyle = XDashStyle.Solid; break;
-                            case Route.RouteStyle.Dashed: pen.DashStyle = XDashStyle.Dash; break;
-                            case Route.RouteStyle.Dotted: pen.DashStyle = XDashStyle.Dot; break;
+                            routeColor = ctx.styles.microRoutes.pen.color; // default
                         }
 
-                        // HACK
-                        if (ctx.styles.grayscale && route.Color != Route.DefaultColor && route.Style == Route.DefaultStyle)
-                        {
-                            pen.DashStyle = XDashStyle.Dash;
-                        }
-
+                        pen.Color = routeColor.Value;
+                        pen.Width = routeWidth.Value * baseWidth;
+                        pen.DashStyle = RouteStyleToDashStyle(routeStyle.Value);
 
                         ctx.graphics.DrawLine(pen, startPoint, endPoint);
                     }
                 }
+            }
+        }
+
+        private static XDashStyle RouteStyleToDashStyle(Route.RouteStyle routeStyle)
+        {
+            switch (routeStyle)
+            {
+                default:
+                case Route.RouteStyle.Solid: return XDashStyle.Solid;
+                case Route.RouteStyle.Dashed: return XDashStyle.Dash;
+                case Route.RouteStyle.Dotted: return XDashStyle.Dot;
             }
         }
 
