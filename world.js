@@ -468,13 +468,15 @@
     var sector = query['sector'] || 'spin';
     var hex = query['hex'] || '1910';
 
-    fetch('//travellermap.com/data/'+sector+'/'+hex+'?accept=application/json', function(data) {
+    var prefix = (location.hostname === 'localhost') ? '' : '//travellermap.com';
+
+    fetch(prefix + '/data/'+sector+'/'+hex+'?accept=application/json', function(data) {
       renderWorld(JSON.parse(data));
     });
-    fetch('//travellermap.com/data/'+sector+'/'+hex+'/jump/2?accept=application/json', function(data) {
+    fetch(prefix + '/data/'+sector+'/'+hex+'/jump/2?accept=application/json', function(data) {
       renderNeighborhood(JSON.parse(data));
     });
-    var mapurl = '//travellermap.com/data/'+sector+'/'+hex+'/jump/2/image?scale=48&border=0';
+    var mapurl = prefix + '/data/'+sector+'/'+hex+'/jump/2/image?scale=48&border=0';
     if (window.devicePixelRatio > 1) mapurl += '&dpr=' + window.devicePixelRatio;
     $('#jumpmap').src = mapurl;
     // TODO: Add click event handler for navigation.

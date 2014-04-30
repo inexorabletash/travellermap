@@ -145,7 +145,7 @@ namespace Maps.Serialization
             private void WriteAllegiance(Allegiance allegiance)
             {
                 writer.Write("ally ");
-                writer.Write(allegiance.Code);
+                writer.Write(allegiance.T5Code);
                 writer.Write(" ");
                 writer.Write(allegiance.Name);
                 writer.WriteLine();

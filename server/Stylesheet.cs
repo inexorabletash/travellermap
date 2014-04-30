@@ -218,6 +218,8 @@ namespace Maps.Rendering
         private const float CandyMaxBorderRelativeScale = 32;
         private const float CandyMaxRouteRelativeScale = 32;
 
+        private const float T5AllegianceCodeMinScale = 64;
+
         public enum Style { Poster, Atlas, Candy, Print };
 
         public Stylesheet(double scale, MapOptions options, Style style)
@@ -234,6 +236,7 @@ namespace Maps.Rendering
             pseudoRandomStars.visible = (PseudoRandomStarsMinScale <= scale) && (scale <= PseudoRandomStarsMaxScale);
             showRifts = (scale <= PseudoRandomStarsMaxScale || style == Style.Candy);
 
+            t5AllegianceCodes = scale >= T5AllegianceCodeMinScale;
 
             float logscale = (float)Math.Log(scale, 2.0);
             riftOpacity = ScaleInterpolate(0f, 0.85f, scale, 1/4f, 4f);
@@ -634,6 +637,7 @@ namespace Maps.Rendering
         public float hexContentScale = 1.0f;
 
         public String preferredMimeType;
+        public bool t5AllegianceCodes;
 
 
         // Worlds

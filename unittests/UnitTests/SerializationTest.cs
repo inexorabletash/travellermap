@@ -98,7 +98,7 @@ namespace UnitTests
             Assert.AreEqual("Sector Name", sector.Names[0].Text);
 
             Assert.AreEqual(1, sector.Allegiances.Count);
-            Assert.AreEqual("X7", sector.Allegiances[0].Code);
+            Assert.AreEqual("X7", sector.Allegiances[0].T5Code);
             Assert.AreEqual("Seven Evil Exes", sector.Allegiances[0].Name);
 
             Assert.AreEqual(2, sector.Borders.Count);

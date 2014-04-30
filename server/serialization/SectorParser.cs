@@ -143,7 +143,7 @@ namespace Maps.Serialization
                 world.Name = nameFixupRegex.Replace(match.Groups["name"].Value.Trim(), "");
                 world.Hex = match.Groups["hex"].Value.Trim();
                 world.UWP = match.Groups["uwp"].Value.Trim();
-                world.CompactLegacyBases = EmptyIfDash(match.Groups["base"].Value.Trim());
+                world.LegacyBaseCode = EmptyIfDash(match.Groups["base"].Value.Trim());
                 world.Remarks = match.Groups["codes"].Value.Trim();
                 world.Zone = EmptyIfDash(match.Groups["zone"].Value);
                 world.PBG = match.Groups["pbg"].Value.Trim();
@@ -197,8 +197,8 @@ namespace Maps.Serialization
         private static readonly Regex UWP_REGEX = new Regex("^[ABCDEX]" + HEX + @"{6}-" + HEX + @"$");
         private static readonly Regex PBG_REGEX = new Regex("^[0-9]{3}$");
 
-        private const string STAR = @"[OBAFGKMW](?:D|([0-9]\x20?(?:D|Ia|Ib|II|III|IV|V|VI|VII)))";
-        private static readonly Regex STARS_REGEX = new Regex("^|" + STAR + @"(?:\x20" + STAR + @")*$");
+        private const string STAR = @"(D|[OBAFGKM][0-9]\x20(?:Ia|Ib|II|III|IV|V|VI))";
+        private static readonly Regex STARS_REGEX = new Regex("^(|" + STAR + @"(?:\x20" + STAR + @")*)$");
 
         private static string Check(StringDictionary dict, string key, Regex regex)
         {
@@ -235,7 +235,10 @@ namespace Maps.Serialization
                 // Allegiance may affect interpretation of other values, e.g. bases, zones
                 world.Allegiance = Check(dict, new string[] { "A", "Allegiance" });
 
-                world.CompactLegacyBases = EmptyIfDash(Check(dict, new string[] { "B", "Bases" })); // TODO: World.T5Bases ?
+                if (SecondSurvey.T5AllegianceToLegacy(world.Allegiance) == world.Allegiance)
+                    throw new Exception("Unknown allegiance: " + world.Allegiance);
+
+                world.Bases = EmptyIfDash(Check(dict, new string[] { "B", "Bases" })); // TODO: World.T5Bases ?
                 world.Zone = EmptyIfDash(Check(dict, new string[] { "Z", "Zone" }));
                 world.Remarks = Check(dict, new string[] { "Remarks", "Trade Codes", "Comments" } );
 

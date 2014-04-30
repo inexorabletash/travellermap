@@ -969,9 +969,14 @@ namespace Maps.Rendering
                         // TODO: Mask off background for allegiance
                         if (ctx.styles.worldDetails.HasFlag(WorldDetails.Allegiance))
                         {
-                            if (!world.HasDefaultAllegiance())
+                            string alleg = world.Allegiance;
+                            if (!SecondSurvey.IsDefaultAllegiance(alleg))
                             {
-                                string alleg = world.Allegiance;
+                                if (!ctx.styles.t5AllegianceCodes && alleg.Length > 2)
+                                    alleg = SecondSurvey.T5AllegianceToLegacy(alleg);
+                                else if (ctx.styles.t5AllegianceCodes && alleg.Length < 4)
+                                    alleg = SecondSurvey.LegacyAllegianceToT5(alleg);
+
                                 solidBrush.Color = ctx.styles.worlds.textColor;
 
                                 if (ctx.styles.lowerCaseAllegiance)

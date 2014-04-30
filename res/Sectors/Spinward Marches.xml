@@ -153,25 +153,20 @@
     <Route Start="1103" End="1402" Allegiance="Zh" Color="LightBlue" />
 
 
-    <Route Start="0421" End="0223" Allegiance="Da" Color="LightGreen" />
-    <Route Start="0223" End="0325" Allegiance="Da" Color="LightGreen" />
-    <Route Start="0325" End="0426" Allegiance="Da" Color="LightGreen" />
-    <Route Start="0426" End="0527" Allegiance="Da" Color="LightGreen" />
-    <Route Start="0527" End="0727" Allegiance="Da" Color="LightGreen" />
-    <Route Start="0325" End="0624" Allegiance="Da" Color="LightGreen" />
-    <Route Start="0624" End="0724" Allegiance="Da" Color="LightGreen" />
+    <Route Start="0421" End="0223" Allegiance="DaCf" Color="LightGreen" />
+    <Route Start="0223" End="0325" Allegiance="DaCf" Color="LightGreen" />
+    <Route Start="0325" End="0426" Allegiance="DaCf" Color="LightGreen" />
+    <Route Start="0426" End="0527" Allegiance="DaCf" Color="LightGreen" />
+    <Route Start="0527" End="0727" Allegiance="DaCf" Color="LightGreen" />
+    <Route Start="0325" End="0624" Allegiance="DaCf" Color="LightGreen" />
+    <Route Start="0624" End="0724" Allegiance="DaCf" Color="LightGreen" />
   </Routes>
-  <Allegiances>
-    <Allegiance Code="Da">Darrian Confederation</Allegiance>
-    <Allegiance Code="Sw">Sword Worlds</Allegiance>
-    <Allegiance Code="Cz">Zhodani Client State</Allegiance>
-  </Allegiances>
   <Borders>
-    <Border Allegiance="Da" Color="lightblue" LabelPosition="0423" WrapLabel="true">
+    <Border Allegiance="DaCf" Color="lightblue" LabelPosition="0423" WrapLabel="true">
       0223 0323 0422 0421 0522 0621 0721 0821 0822 0723 0724 0725 0726 0727
       0728 0627 0527 0427 0426 0326 0325 0224 0223
     </Border>
-    <Border Allegiance="Sw" Color="blue" LabelPosition="1327" WrapLabel="true">
+    <Border Allegiance="SwCf" Color="blue" LabelPosition="1327" WrapLabel="true">
       0620 0720 0820 0921 1021 1121 1221 1322 1421 1522 1523 1524
       1525 1526 1626 1627 1628 1529 1528 1427 1327 1227 1128 1129 1130
       1129 1028 0928 0927 0926

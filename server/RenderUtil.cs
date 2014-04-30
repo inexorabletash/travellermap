@@ -292,56 +292,30 @@ namespace Maps.Rendering
             return glyph;
         }
 
-
         private static RegexDictionary<Glyph> s_baseGlyphTable = new GlobDictionary<Glyph> {
-
-                // == Classic ==================================================================
-
-                // *.A => N+S (SEC decode)
-                // *.B => N+W (SEC decode)
-                { "V?.C", Glyph.StarStar.BiasBottom }, // Vargr Corsair Base
-                { "*.D", Glyph.Square.BiasBottom }, // Imperial Depot
-                { "Hv.E", Glyph.StarStar.BiasBottom }, // Hiver Embassy 
-                // *.F => M+J (SEC decode)
-                { "V?.G", Glyph.Star5Point.Highlight.BiasTop }, // Vargr Naval Base
-                // V?.H => C+G (SEC decode)
-                { "*.J", Glyph.Star5Point.Highlight }, // Naval Base
-                { "K?.K", Glyph.Star5Point.Highlight.BiasTop }, // K'kree Naval Base
-                { "Hv.L", Glyph.Star5Point.Highlight.BiasTop }, // Hiver Naval Base
-                { "*.M", Glyph.Star4Point }, // Military Base
-                { "*.N", Glyph.Star5Point.BiasTop }, // Imperial Naval Base
-                { "K?.O", Glyph.Square.Highlight.BiasTop }, // K'kree Naval Outpost
-                { "Dr.P", Glyph.Star5Point.Highlight.BiasTop }, // Droyne Naval Base
-                { "Dr.Q", Glyph.Star4Point.BiasBottom }, // Droyne Military Garrison
-                { "A?.R", Glyph.StarStar.BiasBottom }, // Aslan Clan Base
-                { "*.S", Glyph.Triangle.BiasBottom }, // Imperial Scout Base
-                { "A?.T", Glyph.Star5Point.Highlight.BiasTop }, // Aslan Tlaukhu Base
-                // A?.U => R+T (SEC decode)
-                { "*.V", Glyph.Circle.BiasBottom }, // Scout/Exploration
-                { "*.W", Glyph.Triangle.Highlight.BiasBottom }, // Imperial Scout Waystation
-                { "Zh.X", Glyph.Diamond.Highlight }, // Zhodani Relay Station
-                { "Zh.Y", Glyph.Square.Highlight }, // Zhodani Depot
-                { "Zh.Z", Glyph.Diamond }, // Zhodani Naval/Military Base
-
-                // == Other ====================================================================
-                // *.2 => N+S (SEC decode)
-                { "So.F", Glyph.Star5Point.Highlight }, // Solomani Naval Base
-                { "*.*", Glyph.Circle }, // Independent Base
-
-                // Also seen: 
-                // G = Solomani Naval (conflict)
-                // P = Prison Camp
-                // R = Research Station (conflict)
-            };
+            { "*.C", Glyph.StarStar.BiasBottom }, // Vargr Corsair Base
+            { "Im.D", Glyph.Square.BiasBottom }, // Imperial Depot
+            { "*.D", Glyph.Square.Highlight}, // Depot
+            { "*.E", Glyph.StarStar.BiasBottom }, // Hiver Embassy (non-standard)
+            { "*.K", Glyph.Star5Point.Highlight.BiasTop }, // Naval Base
+            { "*.M", Glyph.Star4Point.BiasBottom }, // Military Base
+            { "*.N", Glyph.Star5Point.BiasTop }, // Imperial Naval Base
+            { "*.O", Glyph.Square.Highlight.BiasTop }, // K'kree Naval Outpost (non-standard)
+            { "*.R", Glyph.StarStar.BiasBottom }, // Aslan Clan Base
+            { "Im.S", Glyph.Triangle.BiasBottom }, // Imperial Scout Base
+            { "*.S", Glyph.Circle.BiasBottom }, // Scout/Exploration
+            { "*.T", Glyph.Star5Point.Highlight.BiasTop }, // Aslan Tlaukhu Base
+            { "*.W", Glyph.Triangle.Highlight.BiasBottom }, // Imperial Scout Waystation
+            { "*.X", Glyph.Diamond.Highlight }, // Zhodani Relay Station
+            { "*.Z", Glyph.Diamond }, // Zhodani Naval/Military Base
+            { "*.*", Glyph.Circle }, // Independent Base
+        };
 
         public static Glyph FromBaseCode(string allegiance, char code)
         {
             return s_baseGlyphTable.Match(allegiance + "." + code);
         }
-
     }
-
-
 
     public class BorderPath
     {

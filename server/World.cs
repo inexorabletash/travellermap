@@ -123,26 +123,26 @@ namespace Maps
         [XmlIgnore, JsonIgnore]
         public char Starport { get { return UWP[0]; } }
         [XmlIgnore, JsonIgnore]
-        public int Size { get { return (UWP[1] == 'S' || UWP[1] == 's') ? -1 : FromHex(UWP[1]); } }
+        public int Size { get { return (UWP[1] == 'S' || UWP[1] == 's') ? -1 : SecondSurvey.FromHex(UWP[1]); } }
         [XmlIgnore, JsonIgnore]
-        public int Atmosphere { get { return FromHex(UWP[2]); } }
+        public int Atmosphere { get { return SecondSurvey.FromHex(UWP[2]); } }
         [XmlIgnore, JsonIgnore]
-        public int Hydrographics { get { return FromHex(UWP[3]); } }
+        public int Hydrographics { get { return SecondSurvey.FromHex(UWP[3]); } }
         [XmlIgnore, JsonIgnore]
-        public int PopulationExponent { get { return FromHex(UWP[4]); } }
+        public int PopulationExponent { get { return SecondSurvey.FromHex(UWP[4]); } }
         [XmlIgnore, JsonIgnore]
-        public int Government { get { return FromHex(UWP[5]); } }
+        public int Government { get { return SecondSurvey.FromHex(UWP[5]); } }
         [XmlIgnore, JsonIgnore]
-        public int Law { get { return FromHex(UWP[6]); } }
+        public int Law { get { return SecondSurvey.FromHex(UWP[6]); } }
         [XmlIgnore, JsonIgnore]
-        public int TechLevel { get { return FromHex(UWP[8]); } }
+        public int TechLevel { get { return SecondSurvey.FromHex(UWP[8]); } }
 
         [XmlIgnore, JsonIgnore]
         public int PopulationMantissa
         {
             get
             {
-                int mantissa = FromHex(PBG[0]);
+                int mantissa = SecondSurvey.FromHex(PBG[0]);
                 if (mantissa == 0 && PopulationExponent > 0)
                 {
                     // Hack for legacy data w/o PBG
@@ -153,10 +153,10 @@ namespace Maps
         }
         
         [XmlIgnore, JsonIgnore]
-        public int Belts { get { return FromHex(PBG[1]); } }
+        public int Belts { get { return SecondSurvey.FromHex(PBG[1]); } }
 
         [XmlIgnore, JsonIgnore]
-        public int GasGiants { get { return FromHex(PBG[2]); } }
+        public int GasGiants { get { return SecondSurvey.FromHex(PBG[2]); } }
 
         [XmlIgnore, JsonIgnore]
         public double Population { get { return Math.Pow(10, PopulationExponent) * PopulationMantissa; } }
@@ -276,10 +276,10 @@ namespace Maps
         private ListHashSet<string> m_codes = new ListHashSet<string>();
 
         [XmlElement("Bases"), JsonName("Bases")]
-        public string CompactLegacyBases
+        public string LegacyBaseCode
         {
-            get { return EncodeLegacyBases(this.Allegiance, Bases); }
-            set { Bases = DecodeLegacyBases(this.Allegiance, value); }
+            get { return SecondSurvey.EncodeLegacyBases(this.Allegiance, Bases); }
+            set { Bases = SecondSurvey.DecodeLegacyBases(this.Allegiance, value); }
         }
 
         [XmlIgnore, JsonIgnore]
@@ -291,131 +291,9 @@ namespace Maps
 
 
 
-        private const string HEX = "0123456789ABCDEFGHJKLMNPQRSTUVWXYZ";
-        // Decimal hi:              0000000000111111111122222222223333
-        // Decimal lo:              0123456789012345678901234567890123
-
-        private static char ToHex(int c)
-        {
-            if (c == -1)
-            {
-                return 'S'; // Hack for "small" worlds
-            }
-
-            if (0 <= c && c < HEX.Length)
-            {
-                return HEX[c];
-            }
-
-            throw new ArgumentOutOfRangeException(String.Format(CultureInfo.InvariantCulture, "Value out of range: '{0}'", c), "c");
-        }
-
-        private static int FromHex(char c)
-        {
-            c = Char.ToUpperInvariant(c);
-            int value = HEX.IndexOf(c);
-            if (value != -1)
-                return value;
-            switch (c)
-            {
-                case '_': return 0; // Unknown
-                case '?': return 0; // Unknown
-                case 'O': return 0; // Typo found in some data files
-                case 'I': return 1; // Typo found in some data files
-            }
-            throw new ArgumentOutOfRangeException(String.Format(CultureInfo.InvariantCulture, "Character out of range: '{0}'", c), "c");
-        }
-
-        // Bases should be string containing zero or more of: CDLNPSW
-
-        private static RegexDictionary<string> s_legacyBaseDecodeTable = new GlobDictionary<string> {
-            // Overrides
-            { "Zh.D", "Y" }, // Zhodani Depot (map T5 to legacy Y for distinct glyph }
-            { "Zh.F", "Z" }, // Zhodani Base (map T5 to legacy Z for distinct glyph }
-            { "So.K", "JM" }, // Solomani Naval and Planetary Base (map T5 to legacy }
-            { "Hv.F", "LM" }, // Hiver Military & Naval Base
-            { "So.F", "J" }, // Solomani Naval Base
-
-            // Legacy Decodes
-            { "*.2", "NS" }, // Imperial Naval Base + Scout Base
-            { "*.A", "NS" }, // (ditto }
-            { "*.B", "NW" }, // Imperial Naval Base + Scout Waystation
-            { "*.F", "JM" }, // Military & Naval Base
-            { "V?.H", "CG" }, // Vargr Corsair Base + Naval Base
-            { "A?.U", "RT" }, // Aslan Tlaukhu Base & Clan Base
-        };
-
-        private static RegexDictionary<string> s_t5BaseDecodeTable = new GlobDictionary<string> {
-            // Overrides - check if still needed
-            { "Zh.D", "Y" }, // Zhodani Depot (map T5 to legacy Y for distinct glyph }
-            { "Zh.F", "Z" }, // Zhodani Base (map T5 to legacy Z for distinct glyph }
-            { "So.K", "JM" }, // Solomani Naval and Planetary Base (map T5 to legacy }
-
-            // T5 Codes
-            { "*.A", "NS" },
-            { "*.B", "NW" },
-            // *.C == Corsair
-            // *.D == Depot
-            { "*.E", "SL" },
-            { "*.F", "WL" },
-            { "*.G", "LC" },
-            { "*.H", "NC" },
-            { "*.J", "PL" },
-            { "*.K", "NP" },
-            // *.L == Minor Naval
-            { "*.M", "NL" },
-            // *.N == Naval
-            // *.P == Planetary
-            { "*.Q", "PC" },
-            { "*.R", "SP" },
-            // *.S == Scout
-            // *.T == (reserved }
-            // *.U == (reserved }
-            // *.V == (reserved }
-            // *.W == Way Station
-            { "*.X", "WP" },
-            // *.Y == (reserved }
-            // *.Z == (reserved }
-        };
-
-        // TODO: This should be in the SEC file parser, but it complicates the formatting code
-        private static string DecodeLegacyBases(string allegiance, string code)
-        {
-            string match = s_legacyBaseDecodeTable.Match(allegiance + "." + code);
-            return (match != default(string)) ? match : code;
-        }
-
-        private static RegexDictionary<string> s_legacyBaseEncodeTable = new GlobDictionary<string> {
-            // Legacy Encodes
-            { "*.NS", "A" }, // Naval Base + Scout Base
-            { "*.NW", "B" }, // Naval Base + Scout Waystation,
-            { "*.JM", "F" }, // Mlitary & Naval Base,
-            { "V?.CG", "H" }, // Vargr Corsair Base + Naval Base,
-            { "A?.RT", "U" }, // Aslan Tlaukhu Base & Clan Base,
-            { "Hv.LM", "F" }, // Hiver Military & Naval Base
-        };
-
-        // TODO: This should be in the SEC file parser, but it complicates the formatting code
-        private static string EncodeLegacyBases(string allegiance, string bases)
-        {
-            string match = s_legacyBaseEncodeTable.Match(allegiance + "." + bases);
-            return (match != default(String)) ? match : bases;
-        }
 
         [XmlIgnore,JsonIgnore]
         public string BaseAllegiance { get { return this.Sector != null ? Sector.GetBaseAllegianceCode(this.Allegiance) : this.Allegiance; } }
-
-        private static readonly HashSet<string> DefaultAllegiances = new HashSet<string>(new string[] { 
-            // NOTE: Do not use this for autonomous/cultural regional codes (e.g. Vegan, Sylean, etc). 
-            // Use <Allegiance Code="Ve" Base="Im">Vegan Autonomous Region</Allegiance> in metadata instead
-            "Im", // Classic Imperium
-            "--", // Placeholder - show as blank
-        }, StringComparer.InvariantCultureIgnoreCase);
-
-        public bool HasDefaultAllegiance()
-        {
-            return DefaultAllegiances.Contains(this.Allegiance);
-        }
 
         [XmlAttribute("Sector"), JsonName("Sector")]
         public string SectorName { get { return this.Sector.Names[0].Text; } }

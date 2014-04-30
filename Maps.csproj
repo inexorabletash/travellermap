@@ -156,6 +156,8 @@
     <Content Include="index.css" />
     <Content Include="lib\lightbox\lightbox.css" />
     <Content Include="lib\lightbox\lightbox.js" />
+    <Content Include="lib\polyfill\es6.js" />
+    <Content Include="lib\polyfill\polyfill.js" />
     <Content Include="old.css" />
     <Content Include="old.html" />
     <Content Include="old.js" />
@@ -172,6 +174,11 @@
     <Content Include="res\Candy\worlds\Solomani Rim 1827.png" />
     <Content Include="res\Candy\worlds\Spinward Marches 1910.png" />
     <Content Include="res\legend.xml" />
+    <Content Include="res\markers\beowulf.png" />
+    <Content Include="res\markers\fartrader.png" />
+    <Content Include="res\markers\README.txt" />
+    <Content Include="res\markers\scout.png" />
+    <Content Include="res\markers\submerchant.png" />
     <Content Include="res\Sectors\Alpha Crucis.xml" />
     <Content Include="res\Sectors\Antares.xml" />
     <Content Include="res\Sectors\Avereguar.xml" />
@@ -423,6 +430,7 @@
     <Compile Include="server\RenderUtil.cs" />
     <Compile Include="server\ResourceManager.cs" />
     <Compile Include="server\SearchEngine.cs" />
+    <Compile Include="server\SecondSurvey.cs" />
     <Compile Include="server\Sector.cs" />
     <Compile Include="server\SectorDataCollection.cs" />
     <Compile Include="server\Selector.cs" />
