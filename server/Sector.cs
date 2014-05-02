@@ -203,47 +203,7 @@ namespace Maps
         }
     }
 
-    public class SectorBase : MetadataItem
-    {
-        public SectorBase()
-        {
-            this.Names = new List<Name>();
-        }
-
-        public SectorBase(SectorBase other)
-        {
-            // TODO: Deep copy?
-            this.Location = other.Location;
-            this.Names = other.Names;
-            this.Abbreviation = other.Abbreviation;
-        }
-
-        public int X { get { return Location.X; } set { Location = new Point(value, Location.Y); } }
-        public int Y { get { return Location.Y; } set { Location = new Point(Location.X, value); } }
-
-        [XmlAttribute]
-        public string Abbreviation { get; set; }
-
-        [XmlIgnore, JsonIgnore]
-        public Point Location { get; set; }
-
-        [XmlElement("Name")]
-        public List<Name> Names { get; set; }
-
-        [XmlIgnore, JsonIgnore]
-        public string Domain { get; set; }
-
-        [XmlIgnore, JsonIgnore]
-        public string AlphaQuadrant { get; set; }
-        [XmlIgnore, JsonIgnore]
-        public string BetaQuadrant { get; set; }
-        [XmlIgnore, JsonIgnore]
-        public string GammaQuadrant { get; set; }
-        [XmlIgnore, JsonIgnore]
-        public string DeltaQuadrant { get; set; }
-    }
-
-    public class Sector : SectorBase
+    public class Sector : MetadataItem
     {
         public Sector()
         {
@@ -260,20 +220,37 @@ namespace Maps
             m_data = wc;
         }
 
+        public int X { get { return Location.X; } set { Location = new Point(value, Location.Y); } }
+        public int Y { get { return Location.Y; } set { Location = new Point(Location.X, value); } }
+        public Point Location { get; set; }
+
+        [XmlAttribute]
+        public string Abbreviation { get; set; }
+
+        [XmlElement("Name")]
+        public List<Name> Names { get; set; }
+
+        public string Domain { get; set; }
+
+        public string AlphaQuadrant { get; set; }
+        public string BetaQuadrant { get; set; }
+        public string GammaQuadrant { get; set; }
+        public string DeltaQuadrant { get; set; }
+
         private MetadataCollection<Subsector> m_subsectors = new MetadataCollection<Subsector>();
         private MetadataCollection<Route> m_routes = new MetadataCollection<Route>();
         private MetadataCollection<Label> m_labels = new MetadataCollection<Label>();
         private MetadataCollection<Border> m_borders = new MetadataCollection<Border>();
         private MetadataCollection<Allegiance> m_allegiances = new MetadataCollection<Allegiance>();
-        private List<Product> m_products = new List<Product>();
+        private MetadataCollection<Product> m_products = new MetadataCollection<Product>();
 
         [XmlAttribute]
         [System.ComponentModel.DefaultValue(false)]
         public bool Selected { get; set; }
 
         [XmlElement("Product")]
-        public List<Product> Products { get { return m_products; } }
-
+        public MetadataCollection<Product> Products { get { return m_products; } }
+    
         public MetadataCollection<Subsector> Subsectors { get { return m_subsectors; } }
 
         public MetadataCollection<Border> Borders { get { return m_borders; } }
@@ -304,7 +281,6 @@ namespace Maps
             this.Credits = metadataSource.Credits;
             this.Products.AddRange(metadataSource.Products);
         }
-
 
         [XmlAttribute("Tags"), JsonName("Tags")]
         public string TagString
@@ -739,10 +715,10 @@ namespace Maps
         /// The four letter (or, in legacy data, two) code for the allegiance, e.g. "As" for Aslan, "Va" for Vargr, 
         /// "Im" for Imperium, and so on.
         /// </summary>
-        [XmlAttribute]
+        [XmlAttribute("Code"), JsonName("Code")]
         public string T5Code { get; set; }
 
-        [XmlAttribute]
+        [XmlIgnore, JsonIgnore]
         public string LegacyCode { get; set; }
 
         /// <summary>

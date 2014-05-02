@@ -72,14 +72,14 @@ namespace Maps
             SectorFileParser.ForType(mediaType).Parse(stream, this);
         }
 
-        public List<string> AllegianceCodes()
+        public HashSet<string> AllegianceCodes()
         {
             var set = new HashSet<string>();
-            foreach (var world in m_worlds)
+            foreach (var world in this)
             {
                 set.Add(world.Allegiance);
             }
-            return set.ToList();
+            return set;
         }
     }
 }

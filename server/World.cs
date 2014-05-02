@@ -289,9 +289,6 @@ namespace Maps
         [XmlIgnore, JsonIgnore]
         public bool IsBlue { get { return Zone == "B"; } } // TNE Technologically Elevated Dictatorship
 
-
-
-
         [XmlIgnore,JsonIgnore]
         public string BaseAllegiance { get { return this.Sector != null ? Sector.GetBaseAllegianceCode(this.Allegiance) : this.Allegiance; } }
 
