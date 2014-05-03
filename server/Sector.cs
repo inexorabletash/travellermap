@@ -282,6 +282,7 @@ namespace Maps
             this.Products.AddRange(metadataSource.Products);
         }
 
+
         [XmlAttribute("Tags"), JsonName("Tags")]
         public string TagString
         {

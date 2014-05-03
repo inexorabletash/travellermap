@@ -137,7 +137,7 @@ namespace Maps.Serialization
                 World world = new World();
 
                 // Allegiance may affect interpretation of other values, e.g. bases, zones
-                world.Allegiance = match.Groups["allegiance"].Value.Trim();
+                world.Allegiance = SecondSurvey.LegacyAllegianceToT5(match.Groups["allegiance"].Value.Trim());
 
                 // Crack the RegExpr data
                 world.Name = nameFixupRegex.Replace(match.Groups["name"].Value.Trim(), "");

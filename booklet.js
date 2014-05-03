@@ -123,6 +123,10 @@
       });
     });
 
+    if ('Allegiances' in metadata) {
+      metadata.Allegiances.sort(function(a, b) { return a.Code < b.Code ? -1 : a.Code > b.Code ? 1 : 0; });
+    }
+
     return sector;
   }
 
