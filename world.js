@@ -281,30 +281,19 @@
   ];
 
   var BASE_TABLE = {
-    A: ['Naval Base', 'Scout Base'],
-    B: ['Naval Base', 'Scout Way Station'],
     C: ['Corsair Base'],
     D: ['Naval Depot'],
     E: ['Embassy Center'],
-    F: ['Military Base', 'Naval Base'],
-    G: ['Naval Base'],
-    H: ['Naval Base', 'Corsair Base'],
-    J: ['Naval Base'],
     K: ['Naval Base'],
     L: ['Naval Base'],
     M: ['Military Base'],
     N: ['Naval Base'],
     O: ['Naval Outpost'],
-    P: ['Naval Base'],
-    Q: ['Military Garrison'],
     R: ['Clan Base'],
     S: ['Scout Base'],
     T: ['Tlauku Base'],
-    U: ['Tlauku Base', 'Clan Base'],
-    V: ['Scout/Exploration Base'],
     W: ['Scout Way Station'],
     X: ['Relay Station'],
-    Y: ['Depot'],
     Z: ['Naval/Military Base']
   };
 
@@ -394,8 +383,7 @@
     }
 
     world.Bases = (function(code) {
-      if (code in BASE_TABLE) return BASE_TABLE[code];
-      return [];
+      return (code || '').split('').map(function(code) { return BASE_TABLE[code]; });
     }(world.Bases));
 
     world.Stars = world.Stellar.split(/\s+(?!Ia|Ib|II|III|IV|V|VI|VII|D)/);

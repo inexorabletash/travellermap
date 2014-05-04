@@ -63,7 +63,6 @@ namespace Maps
         }
         private string m_zone;
         
-        [XmlIgnore,JsonIgnore]
         public string Bases { get; set; }
         public string Allegiance { get; set; }
         public string Stellar { get; set; }
@@ -275,7 +274,6 @@ namespace Maps
 
         private ListHashSet<string> m_codes = new ListHashSet<string>();
 
-        [XmlElement("Bases"), JsonName("Bases")]
         public string LegacyBaseCode
         {
             get { return SecondSurvey.EncodeLegacyBases(this.Allegiance, Bases); }
@@ -289,23 +287,46 @@ namespace Maps
         [XmlIgnore, JsonIgnore]
         public bool IsBlue { get { return Zone == "B"; } } // TNE Technologically Elevated Dictatorship
 
-        [XmlIgnore,JsonIgnore]
-        public string BaseAllegiance { get { return this.Sector != null ? Sector.GetBaseAllegianceCode(this.Allegiance) : this.Allegiance; } }
-
         [XmlAttribute("Sector"), JsonName("Sector")]
         public string SectorName { get { return this.Sector.Names[0].Text; } }
 
-        public string SubsectorName { get { 
-            var ss = this.Sector[this.Subsector];
-            return ss == null ? "" : ss.Name;
-        } }
+        public string SubsectorName
+        {
+            get
+            {
+                var ss = this.Sector[this.Subsector];
+                return ss == null ? "" : ss.Name;
+            }
+        }
 
         public string AllegianceName
         {
             get
             {
-                var allegiance = this.Sector.GetAllegiance(this.Allegiance);
+                if (this.Sector == null)
+                    return "";
+                var allegiance = this.Sector.GetAllegianceFromCode(this.Allegiance);
                 return allegiance == null ? "" : allegiance.Name;
+            }
+        }
+
+        [XmlIgnore, JsonIgnore]
+        public string BaseAllegiance
+        {
+            get
+            {
+                if (this.Sector == null)
+                    return this.Allegiance;
+                return Sector.AllegianceCodeToBaseAllegianceCode(this.Allegiance);
+            }
+        }
+
+        [XmlIgnore, JsonIgnore]
+        public string LegacyAllegiance
+        {
+            get
+            {
+                return SecondSurvey.T5AllegianceCodeToLegacyCode(this.Allegiance);
             }
         }
 

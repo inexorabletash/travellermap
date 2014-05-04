@@ -300,11 +300,11 @@ namespace Maps
         public ListHashSet<string> Tags { get { return m_tags; } }
         private ListHashSet<string> m_tags = new ListHashSet<string>();
 
-        public Allegiance GetAllegiance(string code)
+        public Allegiance GetAllegianceFromCode(string code)
         {
             // TODO: Consider hashtable
             Allegiance alleg = Allegiances.Where(a => a.T5Code == code).FirstOrDefault();
-            return alleg != null ? alleg : SecondSurvey.GetStockAllegiance(code);
+            return alleg != null ? alleg : SecondSurvey.GetStockAllegianceFromCode(code);
         }
 
         /// <summary>
@@ -312,17 +312,11 @@ namespace Maps
         /// </summary>
         /// <param name="code">The allegiance code to map, e.g. "Sy"</param>
         /// <returns>The base allegiance code, e.g. "Im", or the original code if none.</returns>
-        public string GetBaseAllegianceCode(string code)
+        public string AllegianceCodeToBaseAllegianceCode(string code)
         {
-            if (m_allegiances == null)
-                return code;
-
-            Allegiance alleg = m_allegiances.Where(a => a.T5Code != null && a.T5Code == code).FirstOrDefault();
+            var alleg = GetAllegianceFromCode(code);
             if (alleg != null && !String.IsNullOrEmpty(alleg.Base))
-            {
                 return alleg.Base;
-            }
-
             return code;
         }
 
@@ -494,15 +488,9 @@ namespace Maps
             // Allegiances
             if (includeMetadata)
             {
-                Dictionary<string, Allegiance> allegiances = new Dictionary<string, Allegiance>();
-  
-                // TODO: Factor this logic out for MSEC/SectorMetaData serializers to use
-                foreach (Allegiance alleg in worlds
-                    .Select(world => world.Allegiance)
-                    .Where(code => !allegiances.ContainsKey(code))
-                    .Select(code => GetAllegiance(code))
+                foreach (Allegiance alleg in worlds.AllegianceCodes()
+                    .Select(code => GetAllegianceFromCode(code))
                     .Where(alleg => alleg != null)
-                    .Distinct()
                     .OrderBy(alleg => alleg.T5Code))
                 {
                     writer.WriteLine("# Alleg: {0}: \"{1}\"", alleg.T5Code, alleg.Name);

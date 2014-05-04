@@ -137,7 +137,7 @@ namespace Maps.Serialization
                 World world = new World();
 
                 // Allegiance may affect interpretation of other values, e.g. bases, zones
-                world.Allegiance = SecondSurvey.LegacyAllegianceToT5(match.Groups["allegiance"].Value.Trim());
+                world.Allegiance = match.Groups["allegiance"].Value.Trim();
 
                 // Crack the RegExpr data
                 world.Name = nameFixupRegex.Replace(match.Groups["name"].Value.Trim(), "");
@@ -148,15 +148,11 @@ namespace Maps.Serialization
                 world.Zone = EmptyIfDash(match.Groups["zone"].Value);
                 world.PBG = match.Groups["pbg"].Value.Trim();
 
-
                 // Cleanup known placeholders
                 if (world.Name == match.Groups["hex"].Value || placeholderNameRegex.IsMatch(world.Name))
                     world.Name = "";
                 if (world.Name == world.Name.ToUpperInvariant() && world.IsHi)
                     world.Name = Util.FixCapitalization(world.Name);
-
-                //world.Name = world.Name.Replace('~', '\u00e9'); // Used for Ferré (Cadion/Core 0704)
-                //world.Pbg = world.Pbg.Replace( ' ', '0' ); // Shouldn't be necessary
 
                 worlds[world.X, world.Y] = world;
 
@@ -235,7 +231,7 @@ namespace Maps.Serialization
                 // Allegiance may affect interpretation of other values, e.g. bases, zones
                 world.Allegiance = Check(dict, new string[] { "A", "Allegiance" });
 
-                if (SecondSurvey.T5AllegianceToLegacy(world.Allegiance) == world.Allegiance)
+                if (SecondSurvey.T5AllegianceCodeToLegacyCode(world.Allegiance) == world.Allegiance)
                     throw new Exception("Unknown allegiance: " + world.Allegiance);
 
                 world.Bases = EmptyIfDash(Check(dict, new string[] { "B", "Bases" })); // TODO: World.T5Bases ?

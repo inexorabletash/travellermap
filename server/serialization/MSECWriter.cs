@@ -104,7 +104,7 @@ namespace Maps.Serialization
 
                         if (code != null)
                         {
-                            alleg = sector.GetAllegiance(code);
+                            alleg = sector.GetAllegianceFromCode(code);
                         }
 
                         if (alleg != null)

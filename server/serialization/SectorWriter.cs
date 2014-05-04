@@ -73,7 +73,7 @@ namespace Maps.Serialization
                     world.Remarks.Truncate(15),
                     world.Zone,
                     world.PBG,
-                    world.Allegiance,
+                    world.LegacyAllegiance.Truncate(2),
                     world.Stellar.Truncate(15)
                     );
             }
