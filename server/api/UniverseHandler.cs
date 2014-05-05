@@ -55,6 +55,8 @@ namespace Maps.API
         [XmlRoot("Sector")]
         public class SectorResult
         {
+            private SectorResult() { }
+
             public SectorResult(Sector sector) { m_sector = sector; }
             private Sector m_sector;
 

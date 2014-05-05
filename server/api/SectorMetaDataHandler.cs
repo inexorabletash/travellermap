@@ -107,7 +107,15 @@ namespace Maps.API
             {
                 get
                 {
-                    return m_worlds.AllegianceCodes().Select(code => m_sector.GetAllegianceFromCode(code)).Where(code => code != null). ToList();
+                    // Ensure the allegiance list documents the codes as used by the worlds
+                    var list = new List<Allegiance>();
+                    foreach (var code in m_worlds.AllegianceCodes()) {
+                        var alleg = m_sector.GetAllegianceFromCode(code);
+                        if (alleg == null)
+                            continue;
+                        list.Add(new Allegiance(code, alleg.Name));
+                    }
+                    return list;
                 }
             }
 

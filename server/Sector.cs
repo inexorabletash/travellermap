@@ -207,9 +207,11 @@ namespace Maps
     {
         public Sector()
         {
+            this.Names = new List<Name>();
+
         }
 
-        public Sector(Stream stream, string mediaType)
+        public Sector(Stream stream, string mediaType)  : this()
         {
             WorldCollection wc = new WorldCollection();
             wc.Deserialize(stream, mediaType);
@@ -413,6 +415,8 @@ namespace Maps
             WorldCollection worlds = GetWorlds(resourceManager);
 
             // TODO: less hacky T5 support
+            bool isT5 = (mediaType == "TabDelimited" || mediaType == "SecondSurvey");
+
             if (mediaType == "TabDelimited")
             {
                 if (worlds != null)
@@ -488,12 +492,14 @@ namespace Maps
             // Allegiances
             if (includeMetadata)
             {
-                foreach (Allegiance alleg in worlds.AllegianceCodes()
-                    .Select(code => GetAllegianceFromCode(code))
-                    .Where(alleg => alleg != null)
-                    .OrderBy(alleg => alleg.T5Code))
+                // Use codes as present in the data, to match the worlds
+                foreach (string code in worlds.AllegianceCodes())
                 {
-                    writer.WriteLine("# Alleg: {0}: \"{1}\"", alleg.T5Code, alleg.Name);
+                    var alleg = GetAllegianceFromCode(code);
+                    if (alleg != null)
+                    {
+                        writer.WriteLine("# Alleg: {0}: \"{1}\"", isT5 ? code : SecondSurvey.T5AllegianceCodeToLegacyCode(code), alleg.Name);
+                    }
                 }
                 writer.WriteLine();
             }
@@ -708,7 +714,8 @@ namespace Maps
         public string T5Code { get; set; }
 
         [XmlIgnore, JsonIgnore]
-        public string LegacyCode { get; set; }
+        public string LegacyCode { get { return String.IsNullOrEmpty(m_legacyCode) ? T5Code : m_legacyCode; } set { m_legacyCode = value; } }
+        private string m_legacyCode;
 
         /// <summary>
         /// The code for the fundamental allegiance type. For example, the various MT-era Rebellion 
@@ -717,7 +724,8 @@ namespace Maps
         /// 
         /// Base codes should be unique across Charted Space, but other allegiance codes may not be.
         /// 
-        /// This is not for encoding naval/scout bases.
+        /// This is not the same as e.g. naval/scout bases, but it can be used to more easily distinguish
+        //  e.g. Imperial naval bases from Vargr naval bases (e.g. "Im"+"N" vs. "Va"+"N")
         /// </summary>
         [XmlAttribute]
         public string Base { get; set; }

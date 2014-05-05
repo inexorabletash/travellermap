@@ -82,7 +82,7 @@ namespace Maps.Serialization
                 // Borders, Routes and Labels - group by allegiance
                 //
                 List<IAllegiance> list = new List<IAllegiance>();
-                list.AddRange(sector.Allegiances);
+                list.AddRange(sector.Allegiances); // TODO: Output stock allegiances
                 list.AddRange(sector.Borders);
                 list.AddRange(sector.Routes);
                 list.AddRange(sector.Labels);
