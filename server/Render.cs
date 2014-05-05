@@ -969,9 +969,12 @@ namespace Maps.Rendering
                         // TODO: Mask off background for allegiance
                         if (ctx.styles.worldDetails.HasFlag(WorldDetails.Allegiance))
                         {
-                            if (!world.HasDefaultAllegiance())
+                            string alleg = world.Allegiance;
+                            if (!SecondSurvey.IsDefaultAllegiance(alleg))
                             {
-                                string alleg = world.Allegiance;
+                                if (!ctx.styles.t5AllegianceCodes && alleg.Length > 2)
+                                    alleg = SecondSurvey.T5AllegianceCodeToLegacyCode(alleg);
+
                                 solidBrush.Color = ctx.styles.worlds.textColor;
 
                                 if (ctx.styles.lowerCaseAllegiance)
@@ -1042,7 +1045,7 @@ namespace Maps.Rendering
                             // Base 2
                             if (num_bases > 1)
                             {
-                                Glyph glyph = Glyph.FromBaseCode(world.Allegiance, world.Bases[1]);
+                                Glyph glyph = Glyph.FromBaseCode(world.LegacyAllegiance, world.Bases[1]);
                                 if (glyph.Printable)
                                 {
                                     PointF pt = bottomUsed ? ctx.styles.BaseTopPosition : ctx.styles.BaseBottomPosition;
@@ -1291,7 +1294,7 @@ namespace Maps.Rendering
                     solidBrush.Color = ctx.styles.microBorders.textColor;
                     foreach (Border border in sector.Borders.Where(border => border.ShowLabel))
                     {
-                        Allegiance alleg = sector.GetAllegiance(border.Allegiance);
+                        Allegiance alleg = sector.GetAllegianceFromCode(border.Allegiance);
                         if (alleg != null)
                         {
                             string text = alleg.Name;

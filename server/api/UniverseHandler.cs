@@ -35,8 +35,7 @@ namespace Maps.API
                 if (era != null && (sector.DataFile == null || sector.DataFile.Era != era))
                     continue;
 
-                SectorBase sb = new SectorBase(sector);
-                data.Sectors.Add(sb);
+                data.Sectors.Add(new SectorResult(sector));
             }
 
             SendResult(context, data);
@@ -46,13 +45,29 @@ namespace Maps.API
         // public for XML serialization
         public class Result
         {
-            public Result()
-            {
-                Sectors = new List<SectorBase>();
-            }
+            public Result() {}
 
             [XmlElement("Sector")]
-            public List<SectorBase> Sectors { get; set; }
+            public List<SectorResult> Sectors { get { return m_sectors; } }
+            private List<SectorResult> m_sectors = new List<SectorResult>();
+        }
+
+        [XmlRoot("Sector")]
+        public class SectorResult
+        {
+            private SectorResult() { }
+
+            public SectorResult(Sector sector) { m_sector = sector; }
+            private Sector m_sector;
+
+            public int X { get { return m_sector.X; } }
+            public int Y { get { return m_sector.Y; } }
+
+            [XmlAttribute]
+            public string Abbreviation { get { return m_sector.Abbreviation; } }
+
+            [XmlElement("Name")]
+            public List<Name> Names { get { return m_sector.Names; } }
         }
     }
 }

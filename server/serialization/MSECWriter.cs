@@ -82,7 +82,7 @@ namespace Maps.Serialization
                 // Borders, Routes and Labels - group by allegiance
                 //
                 List<IAllegiance> list = new List<IAllegiance>();
-                list.AddRange(sector.Allegiances);
+                list.AddRange(sector.Allegiances); // TODO: Output stock allegiances
                 list.AddRange(sector.Borders);
                 list.AddRange(sector.Routes);
                 list.AddRange(sector.Labels);
@@ -104,7 +104,7 @@ namespace Maps.Serialization
 
                         if (code != null)
                         {
-                            alleg = sector.GetAllegiance(code);
+                            alleg = sector.GetAllegianceFromCode(code);
                         }
 
                         if (alleg != null)
@@ -145,7 +145,7 @@ namespace Maps.Serialization
             private void WriteAllegiance(Allegiance allegiance)
             {
                 writer.Write("ally ");
-                writer.Write(allegiance.Code);
+                writer.Write(allegiance.T5Code);
                 writer.Write(" ");
                 writer.Write(allegiance.Name);
                 writer.WriteLine();

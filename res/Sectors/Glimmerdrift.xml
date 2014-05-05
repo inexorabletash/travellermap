@@ -5,22 +5,6 @@
   <Name>Glimmerdrift Reaches</Name>
   <Name>Glimmerdrift</Name>
   <DataFile Author="Martin J. Dougherty and Hunter Gordon" Source="Traveller 5 Second Survey" Era="1105" Type="TabDelimited">Glimmerdrift.tab</DataFile>
-  <Allegiances Publisher="QuickLink Interactive" Source="Gateway to Destiny" Era="1000">
-    <Allegiance Code="IC" Base="Cs">Imperial Client State</Allegiance>
-    <Allegiance Code="Id" Base="Im">Imperial (Domain of Sylea, or "Delphi Worlds")</Allegiance>
-    <Allegiance Code="IL" Base="Im">Imperial, culturally Luriani</Allegiance>
-    <Allegiance Code="IU" Base="Im">Imperial, Ursa world</Allegiance>
-    <Allegiance Code="Xx" Base="Na">Independent</Allegiance>
-
-    <!-- TODO: Clean this up w/ new data from Don and Marc -->
-    <Allegiance Code="Fh">Federation of Heron</Allegiance>
-    <Allegiance Code="Gf">PLACEHOLDER</Allegiance>
-    <Allegiance Code="Gr">PLACEHOLDER</Allegiance>
-    <Allegiance Code="Gs">Grand Duchy of Stoner</Allegiance>
-    <Allegiance Code="Ln">Loyal Nineworld Republic</Allegiance>
-    <Allegiance Code="Mk">Maskai Empire</Allegiance>
-    <Allegiance Code="Sl">PLACEHOLDER</Allegiance>
-  </Allegiances>
   <Borders>
     <Border Allegiance="Im" LabelPosition="1102" WrapLabel="true">
       0905 1004 1003 1002 1001 1000 1100 1200 1300 1400 1500 1600 1700 1701 1702 1602 1503 1403 1404 1304 1204 1105 1004 0905
@@ -28,31 +12,31 @@
     <Border Allegiance="Im" LabelPosition="0339">
       0031 0131 0230 0331 0430 0531 0631 0732 0733 0734	0735 0736 0737 0837 0838 0839 0840 0740 0639 0540	0440 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031
     </Border>
-    <Border Allegiance="Fh" Color="orange" WrapLabel="true" LabelPosition="0725">
+    <Border Allegiance="FeHe" Color="orange" WrapLabel="true" LabelPosition="0725">
       0520 0620 0721 0821 0921 0821 0722 0622 0623 0622 0522 0521 0520
     </Border>
-    <Border Allegiance="Fh" Color="orange" WrapLabel="true" ShowLabel="false">
+    <Border Allegiance="FeHe" Color="orange" WrapLabel="true" ShowLabel="false">
       0726 0727 0827 0727 0726
     </Border>
-    <Border Allegiance="Gf" Color="blue" ShowLabel="false">
+    <Border Allegiance="GlFe" Color="blue" ShowLabel="false">
       2222 2322 2321 2320 2319 2418 2417 2416 2415 2515 2514 2513 2613 2713 2813 2914 3014 3114 3115 3116 3117 3118 3119 3120 3121 3122 3123 3124 3023 2924 2824 2725 2625 2626 2526 2425 2325 2225 2224 2223 2222
     </Border>
-    <Border Allegiance="Gr" Color="white" ShowLabel="false">
+    <Border Allegiance="GaCo" Color="white" ShowLabel="false">
       1034 1134 1233 1234 1335 1435 1336 1236 1235 1234 1134 1034
     </Border>
-    <Border Allegiance="Gs" Color="purple" LabelPosition="1010">
+    <Border Allegiance="GdSt" Color="purple" LabelPosition="1010">
       1009 1110 1210 1311 1410 1510 1509 1510 1511 1611 1511 1411 1312 1212 1213 1113 1112 1111 1110 1009
     </Border>
-    <Border Allegiance="Ln" Color="darkslategray" LabelPosition="2532" WrapLabel="true">
+    <Border Allegiance="LnRp" Color="darkslategray" LabelPosition="2532" WrapLabel="true">
       1932 2031 2131 2230 2231 2332 2333 2334 2434 2535 2435 2336 2236 2235 2135 2134 2133 2032 1932
     </Border>
-    <Border Allegiance="Mk" Color="hotpink" LabelPosition="1523" WrapLabel="true">
+    <Border Allegiance="MaEm" Color="hotpink" LabelPosition="1523" WrapLabel="true">
       1323 1422 1522 1422 1423 1324 1323
     </Border>
-    <Border Allegiance="Sl" Color="darkkhaki" ShowLabel="false">
+    <Border Allegiance="SlPr" Color="darkkhaki" ShowLabel="false">
       1904 2004 2105 2204 2305 2404 2504 2503 2603 2703 2704 2705 2706 2606 2507 2406 2306 2205 2105 2004 1904
     </Border>
-    <Border Allegiance="Sl" Color="darkkhaki" ShowLabel="false">
+    <Border Allegiance="SlPr" Color="darkkhaki" ShowLabel="false">
       2904
     </Border>
   </Borders>

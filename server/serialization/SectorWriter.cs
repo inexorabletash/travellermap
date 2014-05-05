@@ -69,11 +69,11 @@ namespace Maps.Serialization
                     world.Name.Truncate(14),
                     sscoords ? world.SubsectorHex : world.Hex,
                     world.UWP,
-                    world.CompactLegacyBases,
+                    world.LegacyBaseCode,
                     world.Remarks.Truncate(15),
                     world.Zone,
                     world.PBG,
-                    world.Allegiance,
+                    world.LegacyAllegiance.Truncate(2),
                     world.Stellar.Truncate(15)
                     );
             }
@@ -117,7 +117,7 @@ namespace Maps.Serialization
                     world.Economic,
                     world.Cultural,
                     DashIfEmpty(world.Nobility),
-                    DashIfEmpty(world.CompactLegacyBases),
+                    DashIfEmpty(world.Bases),
                     DashIfEmpty(world.Zone),
                     world.PBG,
                     world.Worlds > 0 ? world.Worlds.ToString() : "",
@@ -156,7 +156,7 @@ namespace Maps.Serialization
                     sscoords ? world.SubsectorHex : world.Hex,
                     world.Name,
                     world.UWP,
-                    world.CompactLegacyBases, // TODO: T5Bases ?
+                    world.Bases,
                     world.Remarks,
                     world.Zone,
                     world.PBG,

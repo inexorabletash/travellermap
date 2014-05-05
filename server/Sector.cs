@@ -203,53 +203,15 @@ namespace Maps
         }
     }
 
-    public class SectorBase : MetadataItem
-    {
-        public SectorBase()
-        {
-            this.Names = new List<Name>();
-        }
-
-        public SectorBase(SectorBase other)
-        {
-            // TODO: Deep copy?
-            this.Location = other.Location;
-            this.Names = other.Names;
-            this.Abbreviation = other.Abbreviation;
-        }
-
-        public int X { get { return Location.X; } set { Location = new Point(value, Location.Y); } }
-        public int Y { get { return Location.Y; } set { Location = new Point(Location.X, value); } }
-
-        [XmlAttribute]
-        public string Abbreviation { get; set; }
-
-        [XmlIgnore, JsonIgnore]
-        public Point Location { get; set; }
-
-        [XmlElement("Name")]
-        public List<Name> Names { get; set; }
-
-        [XmlIgnore, JsonIgnore]
-        public string Domain { get; set; }
-
-        [XmlIgnore, JsonIgnore]
-        public string AlphaQuadrant { get; set; }
-        [XmlIgnore, JsonIgnore]
-        public string BetaQuadrant { get; set; }
-        [XmlIgnore, JsonIgnore]
-        public string GammaQuadrant { get; set; }
-        [XmlIgnore, JsonIgnore]
-        public string DeltaQuadrant { get; set; }
-    }
-
-    public class Sector : SectorBase
+    public class Sector : MetadataItem
     {
         public Sector()
         {
+            this.Names = new List<Name>();
+
         }
 
-        public Sector(Stream stream, string mediaType)
+        public Sector(Stream stream, string mediaType)  : this()
         {
             WorldCollection wc = new WorldCollection();
             wc.Deserialize(stream, mediaType);
@@ -260,20 +222,37 @@ namespace Maps
             m_data = wc;
         }
 
+        public int X { get { return Location.X; } set { Location = new Point(value, Location.Y); } }
+        public int Y { get { return Location.Y; } set { Location = new Point(Location.X, value); } }
+        public Point Location { get; set; }
+
+        [XmlAttribute]
+        public string Abbreviation { get; set; }
+
+        [XmlElement("Name")]
+        public List<Name> Names { get; set; }
+
+        public string Domain { get; set; }
+
+        public string AlphaQuadrant { get; set; }
+        public string BetaQuadrant { get; set; }
+        public string GammaQuadrant { get; set; }
+        public string DeltaQuadrant { get; set; }
+
         private MetadataCollection<Subsector> m_subsectors = new MetadataCollection<Subsector>();
         private MetadataCollection<Route> m_routes = new MetadataCollection<Route>();
         private MetadataCollection<Label> m_labels = new MetadataCollection<Label>();
         private MetadataCollection<Border> m_borders = new MetadataCollection<Border>();
         private MetadataCollection<Allegiance> m_allegiances = new MetadataCollection<Allegiance>();
-        private List<Product> m_products = new List<Product>();
+        private MetadataCollection<Product> m_products = new MetadataCollection<Product>();
 
         [XmlAttribute]
         [System.ComponentModel.DefaultValue(false)]
         public bool Selected { get; set; }
 
         [XmlElement("Product")]
-        public List<Product> Products { get { return m_products; } }
-
+        public MetadataCollection<Product> Products { get { return m_products; } }
+    
         public MetadataCollection<Subsector> Subsectors { get { return m_subsectors; } }
 
         public MetadataCollection<Border> Borders { get { return m_borders; } }
@@ -323,11 +302,11 @@ namespace Maps
         public ListHashSet<string> Tags { get { return m_tags; } }
         private ListHashSet<string> m_tags = new ListHashSet<string>();
 
-        public Allegiance GetAllegiance(string code)
+        public Allegiance GetAllegianceFromCode(string code)
         {
             // TODO: Consider hashtable
-            Allegiance alleg = Allegiances.Where(a => a.Code == code).FirstOrDefault();
-            return alleg != null ? alleg : Allegiance.GetStockAllegiance(code);
+            Allegiance alleg = Allegiances.Where(a => a.T5Code == code).FirstOrDefault();
+            return alleg != null ? alleg : SecondSurvey.GetStockAllegianceFromCode(code);
         }
 
         /// <summary>
@@ -335,17 +314,11 @@ namespace Maps
         /// </summary>
         /// <param name="code">The allegiance code to map, e.g. "Sy"</param>
         /// <returns>The base allegiance code, e.g. "Im", or the original code if none.</returns>
-        public string GetBaseAllegianceCode(string code)
+        public string AllegianceCodeToBaseAllegianceCode(string code)
         {
-            if (m_allegiances == null)
-                return code;
-
-            Allegiance alleg = m_allegiances.Where(a => a.Code != null && a.Code == code).FirstOrDefault();
+            var alleg = GetAllegianceFromCode(code);
             if (alleg != null && !String.IsNullOrEmpty(alleg.Base))
-            {
                 return alleg.Base;
-            }
-
             return code;
         }
 
@@ -442,6 +415,8 @@ namespace Maps
             WorldCollection worlds = GetWorlds(resourceManager);
 
             // TODO: less hacky T5 support
+            bool isT5 = (mediaType == "TabDelimited" || mediaType == "SecondSurvey");
+
             if (mediaType == "TabDelimited")
             {
                 if (worlds != null)
@@ -517,18 +492,14 @@ namespace Maps
             // Allegiances
             if (includeMetadata)
             {
-                Dictionary<string, Allegiance> allegiances = new Dictionary<string, Allegiance>();
-  
-                // TODO: Factor this logic out for MSEC/SectorMetaData serializers to use
-                foreach (Allegiance alleg in worlds
-                    .Select(world => world.Allegiance)
-                    .Where(code => !allegiances.ContainsKey(code))
-                    .Select(code => GetAllegiance(code))
-                    .Where(alleg => alleg != null)
-                    .Distinct()
-                    .OrderBy(alleg => alleg.Code))
+                // Use codes as present in the data, to match the worlds
+                foreach (string code in worlds.AllegianceCodes())
                 {
-                    writer.WriteLine("# Alleg: {0}: \"{1}\"", alleg.Code, alleg.Name);
+                    var alleg = GetAllegianceFromCode(code);
+                    if (alleg != null)
+                    {
+                        writer.WriteLine("# Alleg: {0}: \"{1}\"", isT5 ? code : SecondSurvey.T5AllegianceCodeToLegacyCode(code), alleg.Name);
+                    }
                 }
                 writer.WriteLine();
             }
@@ -715,18 +686,36 @@ namespace Maps
         public Allegiance(string code, string name)
         {
             this.Name = name;
-            this.Code = code;
+            this.T5Code = code;
+            this.LegacyCode = code;
+        }
+        public Allegiance(string t5code, string legacyCode, string name)
+        {
+            this.Name = name;
+            this.T5Code = t5code;
+            this.LegacyCode = legacyCode;
+        }
+        public Allegiance(string t5code, string legacyCode, string baseCode, string name)
+        {
+            this.Name = name;
+            this.T5Code = t5code;
+            this.LegacyCode = legacyCode;
+            this.Base = baseCode;
         }
 
         [XmlText]
         public string Name { get; set; }
 
         /// <summary>
-        /// The two letter code for the allegiance, e.g. "As" for Aslan, "Va" for Vargr, 
+        /// The four letter (or, in legacy data, two) code for the allegiance, e.g. "As" for Aslan, "Va" for Vargr, 
         /// "Im" for Imperium, and so on.
         /// </summary>
-        [XmlAttribute]
-        public string Code { get; set; }
+        [XmlAttribute("Code"), JsonName("Code")]
+        public string T5Code { get; set; }
+
+        [XmlIgnore, JsonIgnore]
+        public string LegacyCode { get { return String.IsNullOrEmpty(m_legacyCode) ? T5Code : m_legacyCode; } set { m_legacyCode = value; } }
+        private string m_legacyCode;
 
         /// <summary>
         /// The code for the fundamental allegiance type. For example, the various MT-era Rebellion 
@@ -735,56 +724,18 @@ namespace Maps
         /// 
         /// Base codes should be unique across Charted Space, but other allegiance codes may not be.
         /// 
-        /// This is not for encoding naval/scout bases.
+        /// This is not the same as e.g. naval/scout bases, but it can be used to more easily distinguish
+        //  e.g. Imperial naval bases from Vargr naval bases (e.g. "Im"+"N" vs. "Va"+"N")
         /// </summary>
         [XmlAttribute]
         public string Base { get; set; }
-
-
-
-        public static Allegiance GetStockAllegiance(string code)
-        {
-            return s_stockAllegiances.Where(alleg => alleg.Code == code).FirstOrDefault();
-        }
 
         private class AllegianceCollection : List<Allegiance>
         {
             public void Add(string code, string name) { Add(new Allegiance(code, name)); }
         }
 
-        private static List<Allegiance> s_stockAllegiances = InitAllegiances();
-        static List<Allegiance> InitAllegiances()
-        {
-            List<Allegiance> stockAllegiances = new AllegianceCollection {
-                { "As", "Aslan Hierate" },
-                { "Cs", "Imperial Client State" },
-                { "Dr", "Droyne" },
-                { "Hv", "Hive Federation" },
-                { "Im", "Third Imperium" },
-                { "J-", "Julian Protectorate" },
-                { "JP", "Julian Protectorate" },
-                { "Kk", "The Two Thousand Worlds" },
-                { "Na", "Non-Aligned" },
-                { "So", "Solomani Confederation" },
-                { "Va", "Vargr (Non-Aligned)" },
-                { "Zh", "Zhodani Consulate" },
-            
-                { "A0", "Yerlyaruiwo Tlaukhu Bloc" },
-                { "A1", "Khaukeairl Tlaukhu Bloc" },
-                { "A2", "Syoisuis Tlaukhu Bloc" },
-                { "A3", "Tralyeaeawi Tlaukhu Bloc" },
-                { "A4", "Eakhtiyho Tlaukhu Bloc" },
-                { "A5", "Hlyueawi/Isoitiyro Tlaukhu Bloc" },
-                { "A6", "Uiktawa Tlaukhu Bloc" },
-                { "A7", "Ikhtealyo Tlaukhu Bloc" },
-                { "A8", "Seieakh Tlaukhu Bloc" },
-                { "A9", "Aokhalte Tlaukhu Bloc" }
-            };
-
-            return stockAllegiances;
-        }
-
-        string IAllegiance.Allegiance { get { return this.Code; } }
+        string IAllegiance.Allegiance { get { return this.T5Code; } }
     }
 
     public interface IAllegiance

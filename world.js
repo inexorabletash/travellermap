@@ -281,30 +281,19 @@
   ];
 
   var BASE_TABLE = {
-    A: ['Naval Base', 'Scout Base'],
-    B: ['Naval Base', 'Scout Way Station'],
     C: ['Corsair Base'],
     D: ['Naval Depot'],
     E: ['Embassy Center'],
-    F: ['Military Base', 'Naval Base'],
-    G: ['Naval Base'],
-    H: ['Naval Base', 'Corsair Base'],
-    J: ['Naval Base'],
     K: ['Naval Base'],
     L: ['Naval Base'],
     M: ['Military Base'],
     N: ['Naval Base'],
     O: ['Naval Outpost'],
-    P: ['Naval Base'],
-    Q: ['Military Garrison'],
     R: ['Clan Base'],
     S: ['Scout Base'],
     T: ['Tlauku Base'],
-    U: ['Tlauku Base', 'Clan Base'],
-    V: ['Scout/Exploration Base'],
     W: ['Scout Way Station'],
     X: ['Relay Station'],
-    Y: ['Depot'],
     Z: ['Naval/Military Base']
   };
 
@@ -394,8 +383,7 @@
     }
 
     world.Bases = (function(code) {
-      if (code in BASE_TABLE) return BASE_TABLE[code];
-      return [];
+      return (code || '').split('').map(function(code) { return BASE_TABLE[code]; });
     }(world.Bases));
 
     world.Stars = world.Stellar.split(/\s+(?!Ia|Ib|II|III|IV|V|VI|VII|D)/);
@@ -468,13 +456,15 @@
     var sector = query['sector'] || 'spin';
     var hex = query['hex'] || '1910';
 
-    fetch('//travellermap.com/data/'+sector+'/'+hex+'?accept=application/json', function(data) {
+    var prefix = (location.hostname === 'localhost') ? '' : '//travellermap.com';
+
+    fetch(prefix + '/data/'+sector+'/'+hex+'?accept=application/json', function(data) {
       renderWorld(JSON.parse(data));
     });
-    fetch('//travellermap.com/data/'+sector+'/'+hex+'/jump/2?accept=application/json', function(data) {
+    fetch(prefix + '/data/'+sector+'/'+hex+'/jump/2?accept=application/json', function(data) {
       renderNeighborhood(JSON.parse(data));
     });
-    var mapurl = '//travellermap.com/data/'+sector+'/'+hex+'/jump/2/image?scale=48&border=0';
+    var mapurl = prefix + '/data/'+sector+'/'+hex+'/jump/2/image?scale=48&border=0';
     if (window.devicePixelRatio > 1) mapurl += '&dpr=' + window.devicePixelRatio;
     $('#jumpmap').src = mapurl;
     // TODO: Add click event handler for navigation.

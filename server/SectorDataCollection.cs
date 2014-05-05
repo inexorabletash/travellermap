@@ -71,5 +71,15 @@ namespace Maps
                 mediaType = SectorFileParser.SniffType(stream);
             SectorFileParser.ForType(mediaType).Parse(stream, this);
         }
+
+        public HashSet<string> AllegianceCodes()
+        {
+            var set = new HashSet<string>();
+            foreach (var world in this)
+            {
+                set.Add(world.Allegiance);
+            }
+            return set;
+        }
     }
 }

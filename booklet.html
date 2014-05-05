@@ -440,7 +440,7 @@ td.vertical {
   <script id="template" type="text/x-handlebars-template">
 
     <!-- Title Page -->
-    <div class="page">
+    <div id="title_page" class="page">
 
       <!-- Left: Title -->
       <div class="page-half title-page-left">
@@ -523,7 +523,7 @@ td.vertical {
     </div>
 
     <!-- Sector Map -->
-    <div class="page">
+    <div id="sector_spread" class="page">
       <div class="sector-spread">
         <div class="map_title">{{title}}</div>
         <div class="map_subtitle">
@@ -615,8 +615,9 @@ td.vertical {
     </div>
     {{/subsectors}}
 
-    <div class="page">
-      <!-- World Details -->
+    <!-- Legend and Details -->
+    <div id="legend_details" class="page">
+      <!-- Legend -->
       <div class="page-half details-page">
         <div class="content">
           <div class="details_title">Map Symbols</div>
@@ -680,9 +681,9 @@ td.vertical {
 
                 <ul>
                   <li><span class="glyph" style="font-size: 8pt;">&#x2605;</span> Imperial Naval Base
+                  <li><span class="glyph" style="font-size: 10pt;">&#x25A0;</span> Imperial Naval Depot
                   <li><span class="glyph" style="font-size: 10pt;">&#x25B2;</span> Imperial Scout Base
                   <li><span class="glyph highlight" style="font-size: 10pt;">&#x25B2;</span> Imperial Scout Way Station
-                  <li><span class="glyph" style="font-size: 10pt;">&#x25A0;</span> Imperial Naval Depot
 
                   <li><span class="glyph" style="font-size: 12pt;">&diams;</span> Zhodani Base
                   <li><span class="glyph highlight" style="font-size: 12pt;">&diams;</span> Zhodani Relay Station
@@ -723,11 +724,39 @@ td.vertical {
         <div class="content">
           <div class="details_title right">World Data</div>
 
+          <p>
+            World listings are presented in the format described by the Traveller<sup>5</sup> Second Survey, and include the following fields:
+          </p>
+          <style>
+            table.field-definitions td:first-of-type {
+              width: 0.75in;
+            }
+          </style>
+          <table class="field-definitions">
+            <tr><td>UWP</td><td>Universal World Profile:
+                Starport, Size, Atm, Hyd, Pop, Gov, Law, Tech</td></tr>
+            <tr><td>Remarks</td><td>Trade codes and notes</td></tr>
+            <tr><td>{Ix}</td><td>Importance Extension - world importance</td></tr>
+            <tr><td>(Ex)</td><td>Economic Extension: Resources, Labor, Infrastructure, Efficiency</td></tr>
+            <tr><td>[Cx]</td><td>Cultural Extension: Homogeneity, Acceptance, Strangeness, Symbols</td></tr>
+            <tr><td>N</td><td>Nobility (Third Imperium)</td></tr>
+            <tr><td>B</td><td>Bases</td></tr>
+            <tr><td>Z</td><td>Travel Zone Classification</td></tr>
+            <tr><td>PBG</td><td>Population multiplier; Belt count; Gas giant count</td></tr>
+            <tr><td>W</td><td>World count</td></tr>
+            <tr><td>A</td><td>Allegiance</td></tr>
+            <tr><td>Stellar</td><td>System star types</td></tr>
+          </table>
+
           {{#if metadata.Allegiances}}
-            <h4>Non-Standard Allegiances</h4>
+            <h4>Allegiances</h4>
             <style>
-              table.allegiances tr td:first-of-type {
+              table.allegiances td:first-of-type {
                 width: 0.5in;
+              }
+              table.allegiances td {
+                white-space: normal;
+                vertical-align: top;
               }
             </style>
             <table class="allegiances">
@@ -737,7 +766,26 @@ td.vertical {
             </table>
           {{/if}}
 
-          <h4>Subsectors</h4>
+
+        </div>
+      </div>
+
+      <!-- Footer/Page Break -->
+      <div class="footer">
+        <div class="footer-left">World Details</div>
+        <div class="footer-right">TravellerMap.com</div>
+      </div>
+
+    </div>
+
+    <!-- Subsector Listing -->
+    <div id="subsector_listing" class="page">
+      <!-- Subsectors -->
+      <div class="page-half details-page">
+        <div class="content">
+          <div class="details_title">Subsectors</div>
+
+          <h4>&nbsp;</h4>
           <style>
             table.subsector-grid {
               border-collapse: collapse;
@@ -771,37 +819,22 @@ td.vertical {
             {{/metadata.Subsectors}}
           </table>
 
-          <h4>Worlds</h4>
-          <p>
-            World listings are presented in the format described by the Traveller<sup>5</sup> Second Survey, and include the following fields:
-          </p>
-          <style>
-            table.field-definitions td:first-of-type {
-              width: 0.75in;
-            }
-          </style>
-          <table class="field-definitions">
-            <tr><td>UWP</td><td>Universal World Profile:
-                Starport, Size, Atm, Hyd, Pop, Gov, Law, Tech</td></tr>
-            <tr><td>Remarks</td><td>Trade codes and notes</td></tr>
-            <tr><td>{Ix}</td><td>Importance Extension - world importance</td></tr>
-            <tr><td>(Ex)</td><td>Economic Extension: Resources, Labor, Infrastructure, Efficiency</td></tr>
-            <tr><td>[Cx]</td><td>Cultural Extension: Homogeneity, Acceptance, Strangeness, Symbols</td></tr>
-            <tr><td>N</td><td>Nobility (Third Imperium)</td></tr>
-            <tr><td>B</td><td>Bases</td></tr>
-            <tr><td>Z</td><td>Travel Zone Classification</td></tr>
-            <tr><td>PBG</td><td>Population multiplier; Belt count; Gas giant count</td></tr>
-            <tr><td>W</td><td>World count</td></tr>
-            <tr><td>A</td><td>Allegiance</td></tr>
-            <tr><td>Stellar</td><td>System star types</td></tr>
-          </table>
-
         </div>
+
+        <!-- TODO: More useful stuff here -->
+
+      </div>
+
+      <!-- World Details -->
+      <div class="page-half details-page">
+
+        <!-- TODO: More useful stuff here -->
+
       </div>
 
       <!-- Footer/Page Break -->
       <div class="footer">
-        <div class="footer-left">World Details</div>
+        <div class="footer-left">Subsectors of {{name}}</div>
         <div class="footer-right">TravellerMap.com</div>
       </div>
 
@@ -809,7 +842,7 @@ td.vertical {
 
     <!-- Index Page -->
     {{#index_pages}}
-    <div class="page">
+    <div class="index_page page">
 
       <!-- Index Entries -->
       {{#.}}
