@@ -73,11 +73,8 @@ namespace Maps.Admin
         {
             // General
             { @"^Rs[ABGDEZHT]$", "Rs" },
-            { @"^O:$", "O:unassigned" },
-            { @"^O:XXXX$", "O:unassigned" },
-            { @"^O:\w\w$", "O:allegiance" },
             { @"^O:[0-9]{4}(-\w+)?$", "O:nnnn" },
-            { @"^Mr:[0-9]{4}(-\w+)?$", "O:nnnn" },
+            { @"^O:[A-Za-z]{4}-[0-9]{4}$", "O:nnnn (outsector)" },
 
             // Legacy
             "Ag", "As", "Ba", "De",
