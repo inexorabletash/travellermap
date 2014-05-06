@@ -281,7 +281,7 @@ namespace Maps.Serialization
 
     public class TabDelimitedParser : T5ParserBase
     {
-        public override Encoding Encoding { get { return Encoding.GetEncoding(1252); } }
+        public override Encoding Encoding { get { return Encoding.UTF8; } }
 
         private static readonly char[] TAB_DELIMITER = { '\t' };
         public override void Parse(TextReader reader, WorldCollection worlds)
