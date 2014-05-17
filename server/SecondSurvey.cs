@@ -318,7 +318,7 @@ namespace Maps
             { "SoCf", "So", "So", "Solomani Confederation" },
             { "StCl", "Sc", null, "Strend Cluster" },
             { "SwCf", "Sw", null, "Sword Worlds Confederation" },
-            { "TeAr", "As", "As", "Tealou Arlaoh" }, // (Aslan independent clan, non-outcast)
+            { "TeAr", "Ta", "As", "Tealou Arlaoh" }, // (Aslan independent clan, non-outcast)
             { "UnHa", "Uh", null, "Union of Harmony" },
             { "V40S", "Ve", "Va", "40th Squadron" },
             { "VARC", "Vr", "Va", "Anti-Rukh Coalition" },
