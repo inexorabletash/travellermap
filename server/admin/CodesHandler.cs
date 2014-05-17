@@ -12,48 +12,6 @@ namespace Maps.Admin
     /// </summary>
     public class CodesHandler : AdminHandler
     {
-        // TODO: Load this from a data file
-        static List<string> s_t5SophontCodes = new List<string>
-        {
-            "Adda",
-            "AHum",
-            "Aqua",
-            "Asla",
-            "Bhun",
-            "Bruh",
-            "Buru",
-            "Bwap",
-            "Chir",
-            "Darm",
-            "Dolp",
-            "Droy",
-            "Gray",
-            "Gurv",
-            "Hama",
-            "Huma",
-            "Kiak",
-            "Jala",
-            "Jonk",
-            "Lanc",
-            "Luri",
-            "Mask",
-            "Orca",
-            "S'mr",
-            "Sele",
-            "Scan",
-            "Ss'r",
-            "Sydi",
-            "Syle",
-            "Tapa",
-            "Tent",
-            "UApe",
-            "Ursa",
-            "Urun",
-            "Varg",
-            "Vega",
-            "Zhod",
-            "Ziad",
-        };
 
         static List<string> s_legacySophontCodes = new List<string>
         {
@@ -120,7 +78,7 @@ namespace Maps.Admin
 
             { @"^\[.*?\]\d*$", "(major race homeworld)" },
             { @"^\(.*?\)\d*$", "(minor race homeworld)" },
-            { @"^(" + String.Join("|", s_t5SophontCodes) + @")(\d|W|\?)$", "(sophont)" },
+            { @"^(" + String.Join("|", SecondSurvey.SophontCodes) + @")(\d|W|\?)$", "(sophont)" },
         };
 
         protected override void Process(System.Web.HttpContext context)

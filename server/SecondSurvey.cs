@@ -61,9 +61,9 @@ namespace Maps
         // R     Aslan      Clan base
         // S     Imperial   Scout base
         // T     Aslan      Tlaukhu base
+        // V     Any        Exploration base
         // W     Imperial   Way station
         // X     Zhodani    Relay station
-        // Z     Zhodani    Military and Naval base
 
         private static RegexDictionary<string> s_legacyBaseDecodeTable = new GlobDictionary<string> {
             { "*.2", "NS" },  // Imperial Naval base + Scout base
@@ -89,11 +89,11 @@ namespace Maps
             { "*.S", "S" },   // Imperial Scout Base
             { "*.T", "T" },   // Aslan Tlaukhu Base
             { "*.U", "RT" },  // Aslan Tlaukhu and Clan Base
-            { "*.V", "S" },   // Scout/Exploration        - TODO: Approved T5SS code for non-Imperial Scout
+            { "*.V", "V" },   // Scout/Exploration
             { "*.W", "W" },   // Imperial Scout Way Station
             { "*.X", "X" },   // Zhodani Relay Station
             { "*.Y", "D" },   // Zhodani Depot
-            { "*.Z", "Z" },   // Zhodani Naval/Military Base
+            { "*.Z", "KM" },   // Zhodani Naval/Military Base
         };
 
         public static string DecodeLegacyBases(string allegiance, string code)
@@ -130,7 +130,7 @@ namespace Maps
             { "*.RT", "U" },  // Aslan Tlaukhu and Clan Base
             { "*.W", "W" },   // Imperial Scout Way Station
             { "*.X", "X" }, // Zhodani Relay Station
-            { "*.Z", "Z" }, // Zhodani Naval/Military Base
+            { "Zh.KM", "Z" }, // Zhodani Naval/Military Base
         };
 
         public static string EncodeLegacyBases(string allegiance, string bases)
@@ -248,10 +248,11 @@ namespace Maps
         private static T5Allegiances s_t5Allegiances = new T5Allegiances {
             // T5Code, LegacyCode, BaseCode, Name
             { "AnTC", "Ac", null, "Anubian Trade Coalition" },
-            { "AsGl", "Gl", "As", "Glorious Empire" },
+            { "AsIf", "As", "As", "Iyeaao'fte" },
             { "AsMw", "As", "As", "Aslan Hierate, single multiple-world clan dominates" },
+            { "AsOf", "As", "As", "Oleaiy'fte" }, // (Tlaukhu client state)
             { "AsSc", "As", "As", "Aslan Hierate, multiple clans split control" },
-            { "AsSF", "As", "As", "Aslan Hierate, small station or facility" },
+            { "AsSF", "As", "As", "Aslan Hierate, small station" }, // (temporary)
             { "AsT0", "A0", "As", "Aslan Hierate, Tlaukhu control, Yerlyaruiwo (1), Hrawoao (13), Eisohiyw (14), Ferekhearl (19)" },
             { "AsT1", "A1", "As", "Aslan Hierate, Tlaukhu control, Khauleairl (2), Estoieie' (16), Toaseilwi (22)" },
             { "AsT2", "A2", "As", "Aslan Hierate, Tlaukhu control, Syoisuis (3)" },
@@ -263,10 +264,9 @@ namespace Maps
             { "AsT8", "A8", "As", "Aslan Hierate, Tlaukhu control, Seieakh (9), Akatoiloh (18), We'okunir (29)" },
             { "AsT9", "A9", "As", "Aslan Hierate, Tlaukhu control, Aokhalte (10), Sahao' (21), Ouokhoi (26)" },
             { "AsTv", "As", "As", "Aslan Hierate, Tlaukhu vassal clan dominates" },
-            { "AsUh", "Uh", "As", "Ulane Hierate" },
             { "AsVc", "As", "As", "Aslan Hierate, vassal clan dominates" },
             { "AsWc", "As", "As", "Aslan Hierate, single one-world clan dominates" },
-            { "AsXx", "As", "As", "Aslan Hierate, unknown" },
+            { "AsXX", "As", "As", "Aslan Hierate, unknown" },
             { "BlSo", "Bs", null, "Belgardian Sojurnate" },
             { "CaAs", "Cb", null, "Carrillian Assembly" },
             { "CaPr", "Ca", null, "Principality of Caledon" },
@@ -283,9 +283,10 @@ namespace Maps
             { "GaRp", "Gr", null, "Gamma Republic" },
             { "GdMh", "Ma", null, "Grand Duchy of Marlheim" },
             { "GdSt", "Gs", null, "Grand Duchy of Stoner" },
+            { "GeOr", "Go", null, "Gerontocracy of Ormine" },
+            { "GlEm", "Gl", "As", "Glorious Empire" }, // (Aslan independent clan, outcast)
             { "GlFe", "Gf", null, "Glimmerdrift Federation" },
             { "GnCl", "Gi", null, "Gniivi Collective" },
-            { "HeLo", "Hl", null, "Hegemony of Lorean" },
             { "ImAp", "Im", "Im", "Third Imperium, Amec Protectorate" },
             { "ImDa", "Im", "Im", "Third Imperium, Domain of Antares" },
             { "ImDc", "Im", "Im", "Third Imperium, Domain of Sylea" },
@@ -299,22 +300,26 @@ namespace Maps
             { "ImSy", "Im", "Im", "Third Imperium, Sylean Worlds" },
             { "ImVd", "Ve", "Im", "Third Imperium, Vegan Autonomous District" },
             { "IsDo", "Id", null, "Islaiat Dominate" },
+            { "JuHl", "Hl", "Jp", "Julian Protectorate, Hegemony of Lorean" },
             { "JuPr", "Jp", "Jp", "Julian Protectorate, independent" },
             { "JuRu", "Jr", "Jp", "Julian Protectorate, Rukadukaz Republic" },
             { "KhLe", "Kl", null, "Khuur League" },
             { "LnRp", "Ln", null, "Loyal Nineworlds Republic" },
             { "LyCo", "Ly", null, "Lanyard Colonies" },
             { "MaEm", "Mk", null, "Maskai Empire" },
+            { "NaAs", "As", "As", "Non-Aligned, Aslan-dominated" }, // (outside Hierate)
             { "NaHu", "Na", null, "Non-Aligned, Human-dominated" },
             { "NaVa", "Va", null, "Non-Aligned, Vargr-dominated" },
             { "NaXX", "Na", null, "Unclaimed" },
             { "OcWs", "Ow", null, "Outcasts of the Whispering Sky" },
             { "RaRa", "Ra", null, "Ral Ranta" },
             { "SeFo", "Sf", null, "Senlis Foederate" },
-            { "SlPr", "Sl", null, "Shukikikar Protectorate" },
+            { "SlLg", "Sl", null, "Shukikikar League" },
             { "SoCf", "So", "So", "Solomani Confederation" },
             { "StCl", "Sc", null, "Strend Cluster" },
             { "SwCf", "Sw", null, "Sword Worlds Confederation" },
+            { "TeAr", "As", "As", "Tealou Arlaoh" }, // (Aslan independent clan, non-outcast)
+            { "UnHa", "Uh", null, "Union of Harmony" },
             { "V40S", "Ve", "Va", "40th Squadron" },
             { "VARC", "Vr", "Va", "Anti-Rukh Coalition" },
             { "VAug", "Vu", "Va", "United Followers of Augurgh" },
@@ -357,5 +362,56 @@ namespace Maps
 
         #endregion Allegiance
 
+        #region Sophonts
+        private static Dictionary<string, string> s_sophontCodes = new Dictionary<string,string> {
+            { "Adda", "Addaxur" }, 
+            { "Aqua", "Aquans" }, 
+            { "Asla", "Aslan" }, 
+            { "Bhun", "Brunj" }, 
+            { "Bruh", "Bruhre" }, 
+            { "Buru", "Burugdi" }, 
+            { "Bwap", "Bwaps" }, 
+            { "Chir", "Chirpers" }, 
+            { "Darm", "Darmine" }, 
+            { "Dolp", "Dolphins" }, 
+            { "Droy", "Droyne" }, 
+            { "Gray", "Graytch" }, 
+            { "Hama", "Hamaran" }, 
+            { "Huma", "Human" }, 
+            { "Jala", "Jala'lak" }, 
+            { "Jend", "Jenda" }, 
+            { "Jonk", "Jonkeereen" }, 
+            { "Kiak", "Kiakh'iee" }, 
+            { "Lamu", "Lamura Gav/Teg" }, 
+            { "Lanc", "Lancians" }, 
+            { "Luri", "Luriani" }, 
+            { "Mask", "Maskai" }, 
+            { "Orca", "Orca" }, 
+            { "Ormi", "Ormine" }, 
+            { "Scan", "Scanians" }, 
+            { "Sele", "Selenites" }, 
+            { "S'mr", "S'mrii" }, 
+            { "Stal", "Stalkers" }, 
+            { "Sydi", "Sydites" }, 
+            { "Syle", "Syleans" }, 
+            { "Tapa", "Tapazmal" }, 
+            { "Tent", "Tentrassi" }, 
+            { "UApe", "Uplifted Apes" }, 
+            { "Ulan", "Ulane" }, 
+            { "Ursa", "Ursa" }, 
+            { "Urun", "Urunishani" }, 
+            { "Varg", "Vargr" }, 
+            { "Vega", "Vegans" }, 
+            { "Zhod", "Zhodani" }, 
+            { "Ziad", "Ziadd" }, 
+        };
+        public static string SophontCodeToName(string code)
+        {
+            if (s_sophontCodes.ContainsKey(code))
+                return s_sophontCodes[code];
+            return null;
+        }
+        public static IEnumerable<string> SophontCodes { get { return s_sophontCodes.Keys.ToList(); } }
+        #endregion // Sophonts
     }
 }

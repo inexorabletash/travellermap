@@ -192,7 +192,7 @@ namespace Maps.Serialization
         private static readonly Regex UWP_REGEX = new Regex("^[ABCDEX]" + HEX + @"{6}-" + HEX + @"$");
         private static readonly Regex PBG_REGEX = new Regex("^[0-9]{3}$");
 
-        private const string STAR = @"(D|[OBAFGKM][0-9]\x20(?:Ia|Ib|II|III|IV|V|VI))";
+        private const string STAR = @"(D|BD|[OBAFGKM][0-9]\x20(?:Ia|Ib|II|III|IV|V|VI))";
         private static readonly Regex STARS_REGEX = new Regex("^(|" + STAR + @"(?:\x20" + STAR + @")*)$");
 
         private static string Check(StringDictionary dict, string key, Regex regex)
@@ -224,6 +224,11 @@ namespace Maps.Serialization
                 world.Name = dict["Name"];
 
                 world.UWP = Check(dict, "UWP", UWP_REGEX);
+
+                // TEMPORARY - T5SS spreadsheet sometimes leaves out leading 0s.
+                dict["PBG"] = dict["PBG"].PadLeft(3, '0');
+
+                
                 world.PBG = Check(dict, "PBG", PBG_REGEX);
                 world.Stellar = Check(dict, new string[] { "Stellar", "Stars", "Stellar Data" }, STARS_REGEX);
 
