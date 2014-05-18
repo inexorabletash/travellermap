@@ -214,7 +214,7 @@ namespace Maps
         public string ResearchStation { get { return HasCodePrefix("Rs"); } }
 
         [XmlIgnore, JsonIgnore]
-        public bool IsPlaceholder { get { return HasCode("(Dotmap)"); } }
+        public bool IsPlaceholder { get { return UWP == "XXXXXXX-X" || HasCode("(Dotmap)"); } }
 
         [XmlIgnore, JsonIgnore]
         public bool IsCapital

@@ -352,6 +352,7 @@ namespace Maps
             "ImLu", // Third Imperium, Luriani Cultural Association (Ley/Forn)
             "ImSy", // Third Imperium, Sylean Worlds (Core)
             "ImVd", // Third Imperium, Vegan Autonomous District (Solo)
+            "XXXX", // Unknown
             "--", // Placeholder - show as blank
         };
 

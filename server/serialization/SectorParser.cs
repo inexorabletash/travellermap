@@ -109,7 +109,7 @@ namespace Maps.Serialization
             @"( \s{1,2}   (?<base>        [A-Z1-9* \-]                 ) )  " +	// Base
             @"( \s{1,2}   (?<codes>       .{10,}?                      ) )  " +	// Remarks
             @"( \s+       (?<zone>        [GARBFU \-]                  ) )? " +	// Zone
-            @"( \s{1,2}   (?<pbg>         \d[0-9A-F][0-9A-F]           ) )  " +	// PGB (Population multiplier, Belts, Gas giants)
+            @"( \s{1,2}   (?<pbg>         [0-9X][0-9A-FX][0-9A-FX]     ) )  " +	// PGB (Population multiplier, Belts, Gas giants)
             @"( \s{1,2}   (?<allegiance>  ([A-Z0-9][A-Za-z0-9?\-]|--)  ) )  " +	// Allegiance
             @"( \s*       (?<rest>        .*?                          ) )  " + // Stellar data (etc)
             @"\s*$"	
@@ -190,7 +190,7 @@ namespace Maps.Serialization
     {
         private const string HEX = @"[0123456789ABCDEFGHJKLMNPQRSTUVWXYZ]";
         private static readonly Regex UWP_REGEX = new Regex("^[ABCDEX]" + HEX + @"{6}-" + HEX + @"$");
-        private static readonly Regex PBG_REGEX = new Regex("^[0-9]{3}$");
+        private static readonly Regex PBG_REGEX = new Regex("^[0-9X]{3}$");
 
         private const string STAR = @"(D|BD|[OBAFGKM][0-9]\x20(?:Ia|Ib|II|III|IV|V|VI))";
         private static readonly Regex STARS_REGEX = new Regex("^(|" + STAR + @"(?:\x20" + STAR + @")*)$");
