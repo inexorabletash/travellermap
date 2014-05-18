@@ -16,6 +16,7 @@ my %sectors = (
     Dias => "Diaspora",
     Eali => "Ealiyasiyw",
     Empt => "Empty Quarter",
+    Fore => "Foreven",
     Forn => "Fornast",
     Glim => "Glimmerdrift",
     Gush => "Gushemege",
