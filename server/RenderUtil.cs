@@ -302,12 +302,12 @@ namespace Maps.Rendering
             { "*.N", Glyph.Star5Point.BiasTop }, // Imperial Naval Base
             { "*.O", Glyph.Square.Highlight.BiasTop }, // K'kree Naval Outpost (non-standard)
             { "*.R", Glyph.StarStar.BiasBottom }, // Aslan Clan Base
-            { "Im.S", Glyph.Triangle.BiasBottom }, // Imperial Scout Base
-            { "*.S", Glyph.Circle.BiasBottom }, // Scout/Exploration
+            { "*.S", Glyph.Triangle.BiasBottom }, // Imperial Scout Base
             { "*.T", Glyph.Star5Point.Highlight.BiasTop }, // Aslan Tlaukhu Base
+            { "*.V", Glyph.Circle.BiasBottom }, // Exploration Base
             { "*.W", Glyph.Triangle.Highlight.BiasBottom }, // Imperial Scout Waystation
             { "*.X", Glyph.Diamond.Highlight }, // Zhodani Relay Station
-            { "*.Z", Glyph.Diamond }, // Zhodani Naval/Military Base
+            { "*.Z", Glyph.Diamond }, // Zhodani Naval/Military Base (non-standard)
             { "*.*", Glyph.Circle }, // Independent Base
         };
 

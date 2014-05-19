@@ -124,10 +124,10 @@ namespace Maps
             { "*.O", "O" },   // K'kree Naval Outpost     - TODO: Approved T5SS code for Outpost
             { "Dr.M", "Q" },   // Droyne Military Garrison
             { "*.R", "R" },   // Aslan Clan Base
-            { "Im.S", "S" },   // Imperial Scout Base
-            { "*.S", "V" },   // Scout/Exploration        - TODO: Approved T5SS code for non-Imperial Scout
+            { "*.S", "S" },   // Imperial Scout Base
             { "*.T", "T" },   // Aslan Tlaukhu Base
             { "*.RT", "U" },  // Aslan Tlaukhu and Clan Base
+            { "*.V", "V" },   // Exploration
             { "*.W", "W" },   // Imperial Scout Way Station
             { "*.X", "X" }, // Zhodani Relay Station
             { "Zh.KM", "Z" }, // Zhodani Naval/Military Base
@@ -206,7 +206,7 @@ namespace Maps
         }
 
         private static StringDictionary s_legacyAllegianceToT5 = new StringDictionary {
-            { "As", "AsXx" },
+            { "As", "AsXX" },
             { "A0", "AsT0" },
             { "A1", "AsT1" },
             { "A2", "AsT2" },

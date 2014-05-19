@@ -106,7 +106,7 @@ namespace Maps.Serialization
             @"( \s*       (?<name>        .*                           ) )  " +	// Name
             @"( \s*       (?<hex>         \d{4}                        ) )  " +	// Hex
             @"( \s{1,2}   (?<uwp>         [ABCDEX][0-9A-Z]{6}-[0-9A-Z] ) )  " +	// UWP (Universal World Profile)
-            @"( \s{1,2}   (?<base>        [A-Z1-9* \-]                 ) )  " +	// Base
+            @"( \s{1,2}   (?<base>        [A-Zr1-9* \-]                ) )  " +	// Base
             @"( \s{1,2}   (?<codes>       .{10,}?                      ) )  " +	// Remarks
             @"( \s+       (?<zone>        [GARBFU \-]                  ) )? " +	// Zone
             @"( \s{1,2}   (?<pbg>         [0-9X][0-9A-FX][0-9A-FX]     ) )  " +	// PGB (Population multiplier, Belts, Gas giants)

@@ -1021,13 +1021,19 @@ namespace Maps.Rendering
                         // TODO: Mask off background for glyphs
                         if (ctx.styles.worldDetails.HasFlag(WorldDetails.Bases))
                         {
-                            int num_bases = world.Bases.Length;
+                            string bases = world.Bases;
+
+                            // Special case: Show Zho Naval+Military as diamond
+                            if (world.BaseAllegiance == "Zh" && bases == "KM")
+                            {
+                                bases = "Z";
+                            }
 
                             // Base 1
                             bool bottomUsed = false;
-                            if (num_bases > 0)
+                            if (bases.Length > 0)
                             {
-                                Glyph glyph = Glyph.FromBaseCode(world.BaseAllegiance, world.Bases[0]);
+                                Glyph glyph = Glyph.FromBaseCode(world.BaseAllegiance, bases[0]);
                                 if (glyph.Printable)
                                 {
                                     PointF pt = ctx.styles.BaseTopPosition;
@@ -1043,9 +1049,9 @@ namespace Maps.Rendering
                             }
 
                             // Base 2
-                            if (num_bases > 1)
+                            if (bases.Length > 1)
                             {
-                                Glyph glyph = Glyph.FromBaseCode(world.LegacyAllegiance, world.Bases[1]);
+                                Glyph glyph = Glyph.FromBaseCode(world.LegacyAllegiance, bases[1]);
                                 if (glyph.Printable)
                                 {
                                     PointF pt = bottomUsed ? ctx.styles.BaseTopPosition : ctx.styles.BaseBottomPosition;
@@ -1083,7 +1089,6 @@ namespace Maps.Rendering
                         }
                         #endregion
                     }
-
                 }
                 else
                 {
