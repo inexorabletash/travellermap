@@ -64,8 +64,8 @@ Vlan	M	0635	Savvud	C545499-9	S	Ni Pa		601	ImDv	M1 V	{ -1 }	(732+1)	[536A]	Bc	14	
 Vlan	M	0637	Bood	A540520-C		De He Ni Po		410	ImDv	M0 V	{ 1 }	(845-3)	[1617]	B	14	112
 Vlan	M	0639	Liigima	B7C2303-D	N	Fl He Lo		403	ImDv	K9 V K2 V	{ 1 }	(821-2)	[142A]	B	11	13
 Vlan	M	0640	Aquacade	A67A224-F	N	Lo Wa		120	ImDv	M2 V	{ 1 }	(611-1)	[133D]	B	8	5
-Vlan	A	701	Taegzdueg	C665552-9		Ag Ni Ga Pr		314	NaHu	G0 V M5 V	{ 0 }	(C44-4)	[1515]		12	115
-Vlan	A	703	Khigapka	B797457-C		Ni Pa		902	NaHu	M2 V	{ 1 }	(834+1)	[455C]		9	96
+Vlan	A	0701	Taegzdueg	C665552-9		Ag Ni Ga Pr		314	NaHu	G0 V M5 V	{ 0 }	(C44-4)	[1515]		12	115
+Vlan	A	0703	Khigapka	B797457-C		Ni Pa		902	NaHu	M2 V	{ 1 }	(834+1)	[455C]		9	96
 Vlan	A	0705	Shukhuge	C727830-9		Ph Pi		110	ImDv	M1 V	{ 0 }	(B79-4)	[3814]	BDe	11	416
 Vlan	A	0707	Lenordi	D000487-8	S	As Ni Va		310	ImDv	M2 V	{ -3 }	(731-3)	[4158]	B	8	15
 Vlan	A	0708	VOSKHOD	B3109ED-E	W	Hi In Na Cp		101	ImDv	M1 V M0 V	{ 5 }	(C8H+5)	[DE9J]	BEF	12	8,160
@@ -77,8 +77,8 @@ Vlan	M	0737	Kuzey Anadolu	C50069D-9	S	Na Ni Va		403	ImDv	K5 V K3 V	{ -1 }	(B53+3
 Vlan	M	0738	Daglari	C310688-A		Na Ni		121	ImDv	M3 V	{ 0 }	(B54+1)	[665A]	B	14	220
 Vlan	M	0739	Trabbon	D554733-5		Ag		620	ImDv	K7 V	{ -1 }	(966-4)	[4622]	BC	6	194
 Vlan	M	0740	KIROV	B683A9B-D		Hi		810	ImDv	K5 V K4 V	{ 3 }	(D9F+5)	[CD7F]	BE	10	8,775
-Vlan	A	801	Ogerrgh	E62A837-8		Wa Ph Pi		110	NaVa	M1 V	{ -2 }	(B76-2)	[8658]		9	370
-Vlan	A	804	KEGIRUR	D76A945-8		Hi Wa Pr Pz	A	901	NaVa	M0 V	{ -1 }	(C88-3)	[7836]		10	538
+Vlan	A	0801	Ogerrgh	E62A837-8		Wa Ph Pi		110	NaVa	M1 V	{ -2 }	(B76-2)	[8658]		9	370
+Vlan	A	0804	KEGIRUR	D76A945-8		Hi Wa Pr Pz	A	901	NaVa	M0 V	{ -1 }	(C88-3)	[7836]		10	538
 Vlan	A	0806	Gadiga	E88A202-A		Lo Wa Da	A	101	ImDv	F9 V K8 V M8 V	{ -1 }	(511-5)	[1116]	B	11	3
 Vlan	A	0807	Kunumi	A554412-D		Ni Pa		621	ImDv	K0 V	{ 1 }	(934-3)	[1519]	Bc	12	76
 Vlan	M	0831	Igsudi	B572320-B	N	He Lo		320	ImDv	G4 V K6 V	{ 1 }	(721-3)	[1416]	B	10	10
@@ -87,7 +87,7 @@ Vlan	M	0833	Karbarlah	D5878A8-6		Ri Pa Ph		210	ImDv	M1 V	{ -1 }	(A76-1)	[8756]	B
 Vlan	M	0834	Khisber	B87A501-D	NS	Ni Wa Da	A	523	ImDv	F6 V	{ 2 }	(C46-2)	[1719]	B	10	230
 Vlan	M	0835	Zhirka	E000110-A		As Lo Va		610	ImDv	M2 V M9 V	{ -1 }	(411-5)	[1115]	B	12	2
 Vlan	M	0839	Kiimiim	B672352-C		He Lo		803	ImDv	G2 V	{ 1 }	(821-3)	[1418]	B	7	11
-Vlan	B	902	Otsaellghue	A425435-E	N	Ni Varg9		303	CsIm	K9 V	{ 1 }	(934-1)	[253C]		8	97
+Vlan	B	0902	Otsaellghue	A425435-E	N	Ni Varg9		303	CsIm	K9 V	{ 1 }	(934-1)	[253C]		8	97
 Vlan	B	0906	Iishashun	C62546A-A		Ni O:0708		713	ImDv	K3 V	{ 0 }	(A33+2)	[647C]	B	10	180
 Vlan	B	0909	Jiinasha	C200789-A	S	Na Va Pi		820	ImDv	M4 III	{ 1 }	(B6A+2)	[886B]	BD	7	1,320
 Vlan	J	0921	Ganiir	C423320-B		Lo Po		105	ImDv	M3 V M5 V	{ 0 }	(A21-4)	[1316]	B	16	12
