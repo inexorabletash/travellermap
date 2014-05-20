@@ -13,9 +13,9 @@ namespace Maps
 {
 
 #if NOT_YET_IMPLEMENTED
-	[XmlRoot( ElementName = "Setting" )]
-	public class Setting
-	{
+    [XmlRoot( ElementName = "Setting" )]
+    public class Setting
+    {
         public Setting()
         {
             Rifts = new List<string>();
@@ -24,24 +24,24 @@ namespace Maps
             SectorCollections = new List<string>();
         }
 
-		private SectorMap m_map;
-		public SectorMap Map { get { return m_map; } }
+        private SectorMap m_map;
+        public SectorMap Map { get { return m_map; } }
 
-		public List<string> Rifts { get; set; }
-		public List<string> Borders { get; set; }
-		public List<string> Worlds { get; set; }
+        public List<string> Rifts { get; set; }
+        public List<string> Borders { get; set; }
+        public List<string> Worlds { get; set; }
         public List<string> SectorCollections { get; set; }
 
-		public static Setting GetSetting( string name, ResourceManager resourceManager )
-		{
-			// TODO: Cache these statically
-			Setting setting = resourceManager.GetXmlFileObject( String.Format( @"~/res/Setting_{0}.xml", name ), typeof( Setting ), false ) as Setting;
+        public static Setting GetSetting( string name, ResourceManager resourceManager )
+        {
+            // TODO: Cache these statically
+            Setting setting = resourceManager.GetXmlFileObject( String.Format( @"~/res/Setting_{0}.xml", name ), typeof( Setting ), false ) as Setting;
 
             setting.m_map = null; // new SectorMap( /*setting.m_sectorCollections*/ );
 
-			return setting;
-		}
-	}
+            return setting;
+        }
+    }
 #endif
 
     public class MapNotInitializedException : Exception

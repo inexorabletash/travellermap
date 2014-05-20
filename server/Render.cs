@@ -204,8 +204,8 @@ namespace Maps.Rendering
                     //// Draw tile #
                     //using( var font = new Font( FontFamily.GenericSansSerif, 10 ) )
                     //{
-                    //	graphics.DrawString( String.Format( "({0},{1})", x, y ), font, foregroundBrush, 0, 0 );
-                    //	graphics.DrawString( String.Format( "{0},{1}-{2}x{3}", tileRect.X, tileRect.Y, tileRect.Width, tileRect.Height ), font, foregroundBrush, 0, 20 );
+                    //  graphics.DrawString( String.Format( "({0},{1})", x, y ), font, foregroundBrush, 0, 0 );
+                    //  graphics.DrawString( String.Format( "{0},{1}-{2}x{3}", tileRect.X, tileRect.Y, tileRect.Width, tileRect.Height ), font, foregroundBrush, 0, 20 );
                     //}
 
                     // Frame it
