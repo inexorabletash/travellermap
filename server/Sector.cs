@@ -493,7 +493,7 @@ namespace Maps
             if (includeMetadata)
             {
                 // Use codes as present in the data, to match the worlds
-                foreach (string code in worlds.AllegianceCodes())
+                foreach (string code in worlds.AllegianceCodes().OrderBy(s => s))
                 {
                     var alleg = GetAllegianceFromCode(code);
                     if (alleg != null)
