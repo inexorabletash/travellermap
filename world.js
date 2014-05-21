@@ -248,6 +248,15 @@
     An: 'Ancient Site',
     Rs: 'Research Station',
 
+    RsA: 'Research Station Alpha',
+    RsB: 'Research Station Beta',
+    RsG: 'Research Station Gamma',
+    RsD: 'Research Station Delta',
+    RsE: 'Research Station Epsilon',
+    RsZ: 'Research Station Zeta',
+    RsH: 'Research Station Eta',
+    RsT: 'Research Station Theta',
+
     // Legacy
     Nh: 'Non-Hiver Population',
     Nk: "Non-K'kree Population",
