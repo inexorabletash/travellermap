@@ -107,9 +107,13 @@ namespace Maps.API
             {
                 get
                 {
+                    if (m_worlds == null)
+                        return null;
+
                     // Ensure the allegiance list documents the codes as used by the worlds
                     var list = new List<Allegiance>();
-                    foreach (var code in m_worlds.AllegianceCodes()) {
+                    foreach (var code in m_worlds.AllegianceCodes())
+                    {
                         var alleg = m_sector.GetAllegianceFromCode(code);
                         if (alleg == null)
                             continue;
