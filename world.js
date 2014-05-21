@@ -248,6 +248,15 @@
     An: 'Ancient Site',
     Rs: 'Research Station',
 
+    RsA: 'Research Station Alpha',
+    RsB: 'Research Station Beta',
+    RsG: 'Research Station Gamma',
+    RsD: 'Research Station Delta',
+    RsE: 'Research Station Epsilon',
+    RsZ: 'Research Station Zeta',
+    RsH: 'Research Station Eta',
+    RsT: 'Research Station Theta',
+
     // Legacy
     Nh: 'Non-Hiver Population',
     Nk: "Non-K'kree Population",
@@ -276,7 +285,8 @@
     [ /^\[.*\]$/, 'Homeworld'],
     [ /^\(.*\)$/, 'Homeworld'],
     [ /^\(.*\)(\d)$/, 'Homeworld, Population $1$`0%'],
-    [ /^\w\w\w\w(\d)$/, 'Sophont, Population $1$`0%'],
+    [ /^\w\w\w\w0$/, 'Sophont, Population < 10%'],
+    [ /^\w\w\w\w([1-9])$/, 'Sophont, Population $1$`0%'],
     [ /^\w\w\w\wW$/, 'Sophont, Population 100%']
   ];
 
