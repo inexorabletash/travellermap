@@ -285,7 +285,8 @@
     [ /^\[.*\]$/, 'Homeworld'],
     [ /^\(.*\)$/, 'Homeworld'],
     [ /^\(.*\)(\d)$/, 'Homeworld, Population $1$`0%'],
-    [ /^\w\w\w\w(\d)$/, 'Sophont, Population $1$`0%'],
+    [ /^\w\w\w\w0$/, 'Sophont, Population < 10%'],
+    [ /^\w\w\w\w([1-9])$/, 'Sophont, Population $1$`0%'],
     [ /^\w\w\w\wW$/, 'Sophont, Population 100%']
   ];
 
