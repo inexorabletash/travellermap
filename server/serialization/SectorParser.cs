@@ -235,8 +235,11 @@ namespace Maps.Serialization
                 // Allegiance may affect interpretation of other values, e.g. bases, zones
                 world.Allegiance = Check(dict, new string[] { "A", "Allegiance" });
 
+#if DEBUG
+                // User data may have legacy allegiances.
                 if (SecondSurvey.T5AllegianceCodeToLegacyCode(world.Allegiance) == world.Allegiance)
                     throw new Exception("Unknown allegiance: " + world.Allegiance);
+#endif
 
                 world.Bases = EmptyIfDash(Check(dict, new string[] { "B", "Bases" })); // TODO: World.T5Bases ?
                 world.Zone = EmptyIfDash(Check(dict, new string[] { "Z", "Zone" }));
