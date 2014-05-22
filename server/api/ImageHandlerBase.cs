@@ -46,6 +46,8 @@ namespace Maps.API
                 ctx.styles.microRoutes.visible = false;
             }
 
+            ctx.styles.dimUnofficialSectors = HandlerBase.GetBoolOption(context.Request, "dimunofficial", queryDefaults: queryDefaults, defaultValue: false);
+
             double devicePixelRatio = HandlerBase.GetDoubleOption(context.Request, "dpr", defaultValue: 1, queryDefaults: queryDefaults);
 
             if (accepter.Accepts(context, MediaTypeNames.Application.Pdf))

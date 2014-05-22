@@ -81,6 +81,7 @@ window.addEventListener('DOMContentLoaded', function() {
   bindCheckedToOption('#cbForceHexes', MapOptions.ForceHexes);
   bindCheckedToOption('#cbWorldColors', MapOptions.WorldColors);
   bindCheckedToOption('#cbFilledBorders',MapOptions.FilledBorders);
+  bindCheckedToNamedOption('#cbDimUnofficial', 'dimunofficial');
 
   function bindControl(selector, property, onChange, event, onEvent) {
     var element = $(selector);

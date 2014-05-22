@@ -626,6 +626,7 @@ namespace Maps.Rendering
         public bool useBackgroundImage;
         public bool useGalaxyImage;
         public bool useWorldImages;
+        public bool dimUnofficialSectors;
 
         public float deepBackgroundOpacity;
 

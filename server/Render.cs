@@ -618,6 +618,7 @@ namespace Maps.Rendering
                     //------------------------------------------------------------
                     #region sector-names
 
+                    // BUG: Should that be showAllSectorNames not subsectorNames.visible?
                     if (ctx.styles.showSomeSectorNames || ctx.styles.subsectorNames.visible)
                     {
                         foreach (Sector sector in ctx.selector.Sectors
@@ -758,6 +759,23 @@ namespace Maps.Rendering
                 }
                 #endregion
                 timers.Add(new Timer("worlds"));
+
+
+                //------------------------------------------------------------
+                // Unofficial
+                //------------------------------------------------------------
+                #region unofficial
+
+                if (ctx.styles.dimUnofficialSectors)
+                {
+                    solidBrush.Color = Color.FromArgb(128, ctx.styles.backgroundColor);
+                    foreach (Sector sector in ctx.selector.Sectors.Where(sector => !sector.Tags.Contains("Official")))
+                    {
+                        ctx.graphics.DrawRectangle(solidBrush, sector.Bounds);
+                    }
+                }
+
+                #endregion
 
 #if SHOW_TIMING
                 using( RenderUtil.SaveState( ctx.graphics ) )
