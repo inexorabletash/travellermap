@@ -1479,7 +1479,7 @@ function makeURL(base, params) {
         });
     }
 
-    ['silly', 'routes'].forEach(function(name) {
+    ['silly', 'routes', 'dimunofficial'].forEach(function(name) {
       if (name in params)
         self.tileOptions[name]  = int(name);
     });

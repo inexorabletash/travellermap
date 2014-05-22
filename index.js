@@ -39,6 +39,7 @@ window.addEventListener('DOMContentLoaded', function() {
     scale: map.GetScale(),
     options: map.GetOptions(),
     routes: 1,
+    dimunofficial: 0,
     style: map.GetStyle()
   };
   var home = {
@@ -225,7 +226,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
       delete urlParams.sector;
       delete urlParams.hex;
-      ['x', 'y', 'options', 'scale', 'style', 'routes'].forEach(function(p) {
+      ['x', 'y', 'options', 'scale', 'style', 'routes', 'dimunofficial'].forEach(function(p) {
         if (urlParams[p] === defaults[p]) delete urlParams[p];
       });
 
