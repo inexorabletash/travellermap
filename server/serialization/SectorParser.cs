@@ -227,21 +227,23 @@ namespace Maps.Serialization
 
                 // TEMPORARY - T5SS spreadsheet sometimes leaves out leading 0s.
                 dict["PBG"] = dict["PBG"].PadLeft(3, '0');
-
-                
                 world.PBG = Check(dict, "PBG", PBG_REGEX);
+
+#if DEBUG
                 world.Stellar = Check(dict, new string[] { "Stellar", "Stars", "Stellar Data" }, STARS_REGEX);
+#else
+                world.Stellar = Check(dict, new string[] { "Stellar", "Stars", "Stellar Data" });
+#endif
 
                 // Allegiance may affect interpretation of other values, e.g. bases, zones
                 world.Allegiance = Check(dict, new string[] { "A", "Allegiance" });
-
 #if DEBUG
                 // User data may have legacy allegiances.
                 if (SecondSurvey.T5AllegianceCodeToLegacyCode(world.Allegiance) == world.Allegiance)
                     throw new Exception("Unknown allegiance: " + world.Allegiance);
 #endif
 
-                world.Bases = EmptyIfDash(Check(dict, new string[] { "B", "Bases" })); // TODO: World.T5Bases ?
+                world.Bases = EmptyIfDash(Check(dict, new string[] { "B", "Bases" }));
                 world.Zone = EmptyIfDash(Check(dict, new string[] { "Z", "Zone" }));
                 world.Remarks = Check(dict, new string[] { "Remarks", "Trade Codes", "Comments" } );
 
@@ -251,12 +253,12 @@ namespace Maps.Serialization
                 world.Cultural = Check(dict, new string[] { "[Cx]", "[ Cx ]", "Cx" });
                 world.Nobility = EmptyIfDash(Check(dict, new string[] { "N", "Nobility" }));
 
-                string w = Check(dict, new string[] { "W", "Worlds" });
-                if (!String.IsNullOrEmpty(w))
-                    world.Worlds = Int32.Parse(w, NumberStyles.Integer, CultureInfo.InvariantCulture);
-                string ru = dict["RU"];
-                if (!String.IsNullOrEmpty(ru))
-                    world.ResourceUnits = Int32.Parse(w, NumberStyles.Integer, CultureInfo.InvariantCulture);
+                int w;
+                if (Int32.TryParse(Check(dict, new string[] { "W", "Worlds" }), NumberStyles.Integer, CultureInfo.InvariantCulture, out w))
+                    world.Worlds = w;
+                int ru;
+                if (Int32.TryParse(dict["RU"], NumberStyles.Integer | NumberStyles.AllowThousands, CultureInfo.InvariantCulture, out ru))
+                    world.ResourceUnits = ru;
 
                 // Cleanup known placeholders
                 if (world.Name == world.Name.ToUpperInvariant() && world.IsHi)
