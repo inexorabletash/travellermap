@@ -206,7 +206,7 @@ namespace Maps
         }
 
         private static StringDictionary s_legacyAllegianceToT5 = new StringDictionary {
-            { "As", "AsXX" },
+            // { "As", "AsXX" }, // Acceptable for a world, but not a polity
             { "A0", "AsT0" },
             { "A1", "AsT1" },
             { "A2", "AsT2" },
