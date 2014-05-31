@@ -165,14 +165,11 @@
     <Route Start="0624" End="0724" Allegiance="DaCf" />
   </Routes>
   <Stylesheet>
-    route.Im { color: green; }
-    route.DaCf { color: lightgreen; }
-    route.ZhCo { color: lightblue; }
-    route.SwCf { color: #003300; }
     border.DaCf { color: lightblue; }
+    route.DaCf { color: lightgreen; }
+
     border.SwCf { color: blue; }
-    border.ZhCo { color: blue; }
-    border.Im { color: red; }
+    route.SwCf { color: #006600; }
   </Stylesheet>
   <Borders>
     <Border Allegiance="DaCf" LabelPosition="0423" WrapLabel="true">

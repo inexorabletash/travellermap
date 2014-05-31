@@ -616,11 +616,32 @@ namespace Maps
                 new Point(Astrometrics.SubsectorWidth * (2 * ssx + 1) / 2, Astrometrics.SubsectorHeight * (2 * ssy + 1) / 2));
         }
 
+        private static SectorStylesheet s_defaultStyleSheet = SectorStylesheet.Parse(@"
+            border.Im { color: red; }
+            route.Im { color: green; }
+
+            border.ZhCo { color: blue; }
+            route.ZhCo { color: lightblue; }
+        ");
+
         [XmlIgnore, JsonIgnore]
         public SectorStylesheet Stylesheet { get; set; }
 
+        public SectorStylesheet.StyleResult ApplyStylesheet(string element, string code)
+        {
+            return Stylesheet != null ? Stylesheet.Apply(element, code) : s_defaultStyleSheet.Apply(element, code);
+        }
+
         [XmlElement("Stylesheet"), JsonName("Stylesheet")]
-        public string StylesheetText { get { return Stylesheet == null ? null : Stylesheet.ToString(); } set { Stylesheet = SectorStylesheet.Parse(value); } }
+        public string StylesheetText
+        {
+            get { return Stylesheet == null ? null : Stylesheet.ToString(); }
+            set
+            {
+                Stylesheet = SectorStylesheet.Parse(value);
+                Stylesheet.Parent = s_defaultStyleSheet;
+            }
+        }
 
     }
 

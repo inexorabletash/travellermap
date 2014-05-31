@@ -268,6 +268,8 @@ namespace Maps
 
         #endregion // Parser
 
+        public SectorStylesheet Parent { get; set; }
+
         SectorStylesheet(List<Rule> rules)
         {
             this.rules = rules;
@@ -311,19 +313,22 @@ namespace Maps
                 this.code = code;
                 this.dict = dict;
             }
+            
+            private bool GetValue(string property, out string value)
+            {
+                return dict.TryGetValue(property, out value) && !String.IsNullOrEmpty(value);
+            }
 
             public string GetString(string property)
             {
                 string value;
-                if (!dict.TryGetValue(property, out value) || String.IsNullOrEmpty(value))
-                    return null;
-                return value;
+                return GetValue(property, out value) ? value : null;
             }
 
             public Color? GetColor(string property)
             {
                 string value;
-                if (!dict.TryGetValue(property, out value) || String.IsNullOrEmpty(value))
+                if (!GetValue(property, out value))
                     return null;
                 try
                 {
@@ -338,9 +343,12 @@ namespace Maps
             public double? GetNumber(string property)
             {
                 string value;
-                if (!dict.TryGetValue(property, out value) || String.IsNullOrEmpty(value))
+                if (!GetValue(property, out value))
                     return null;
-                return Double.Parse(value);
+                double result;
+                if (Double.TryParse(value, out result))
+                    return result;
+                return null;
             }
 
             public T? GetEnum<T>(string property) where T : struct // enum 
@@ -361,8 +369,19 @@ namespace Maps
             }
         }
 
-
         private Dictionary<Tuple<string, string>, StyleResult> memo = new Dictionary<Tuple<string, string>, StyleResult>();
+
+        private List<SectorStylesheet> Chain()
+        {
+            var list = new List<SectorStylesheet>();
+            var o = this;
+            while (o != null)
+            {
+                list.Insert(0, o);
+                o = o.Parent;
+            }
+            return list;
+        }
 
         public StyleResult Apply(string element, string code)
         {
@@ -372,19 +391,22 @@ namespace Maps
                 return result;
 
             var dict = new Dictionary<string, Tuple<int, string>>(StringComparer.InvariantCultureIgnoreCase);
-            foreach (var rule in rules)
+            foreach (var sheet in Chain())
             {
-                foreach (var selector in rule.selectors)
+                foreach (var rule in sheet.rules)
                 {
-                    var match = Match(element, code, selector);
-                    if (match == 0)
-                        continue;
-
-                    foreach (var declaration in rule.declarations)
+                    foreach (var selector in rule.selectors)
                     {
-                        Tuple<int, string> current;
-                        if (!dict.TryGetValue(declaration.property, out current) || match >= current.Item1)
-                            dict[declaration.property] = new Tuple<int, string>(match, declaration.value);
+                        var match = Match(element, code, selector);
+                        if (match == 0)
+                            continue;
+
+                        foreach (var declaration in rule.declarations)
+                        {
+                            Tuple<int, string> current;
+                            if (!dict.TryGetValue(declaration.property, out current) || match >= current.Item1)
+                                dict[declaration.property] = new Tuple<int, string>(match, declaration.value);
+                        }
                     }
                 }
             }
@@ -397,7 +419,7 @@ namespace Maps
             return result;
         }
 
-        private int Match(string element, string code, Selector selector)
+        private static int Match(string element, string code, Selector selector)
         {
             if (element != selector.element)
                 return 0;

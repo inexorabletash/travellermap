@@ -1406,16 +1406,13 @@ namespace Maps.Rendering
                         Color? routeColor = route.Color;
                         Route.RouteStyle? routeStyle = route.Style;
 
-                        if (sector.Stylesheet != null)
-                        {
-                            SectorStylesheet.StyleResult ssr = sector.Stylesheet.Apply("route", route.Allegiance);
-                            if (!routeStyle.HasValue)
-                                routeStyle = ssr.GetEnum<Route.RouteStyle>("style");
-                            if (!routeColor.HasValue)
-                                routeColor = ssr.GetColor("color");
-                            if (!routeWidth.HasValue)
-                                routeWidth = (float?)ssr.GetNumber("width");
-                        }
+                        SectorStylesheet.StyleResult ssr = sector.ApplyStylesheet("route", route.Allegiance);
+                        if (!routeStyle.HasValue)
+                            routeStyle = ssr.GetEnum<Route.RouteStyle>("style");
+                        if (!routeColor.HasValue)
+                            routeColor = ssr.GetColor("color");
+                        if (!routeWidth.HasValue)
+                            routeWidth = (float?)ssr.GetNumber("width");
 
                         // In grayscale, convert default color and style to non-default style
                         if (ctx.styles.grayscale && !routeColor.HasValue && !routeStyle.HasValue)
@@ -1423,7 +1420,6 @@ namespace Maps.Rendering
                             routeStyle = Route.RouteStyle.Dashed;
                         }   
 
-                        // TODO: Get these from a master stylesheet
                         if (!routeColor.HasValue)
                             routeColor = ctx.styles.microRoutes.pen.color;
                         if (!routeStyle.HasValue)
@@ -1503,14 +1499,9 @@ namespace Maps.Rendering
                         XGraphicsPath clipPath = new XGraphicsPath(borderPath.clipPathPoints, borderPath.clipPathTypes, XFillMode.Alternate);
 
                         Color? borderColor = border.Color;
-                        if (sector.Stylesheet != null)
-                        {
-                            SectorStylesheet.StyleResult ssr = sector.Stylesheet.Apply("border", border.Allegiance);
-                            if (!borderColor.HasValue)
-                                borderColor = ssr.GetColor("color");
-                        }
-
-                        // TODO: Get defaults from a global stylesheet
+                        SectorStylesheet.StyleResult ssr = sector.ApplyStylesheet("border", border.Allegiance);
+                        if (!borderColor.HasValue)
+                            borderColor = ssr.GetColor("color");
                         if (!borderColor.HasValue)
                             borderColor = ctx.styles.microBorders.pen.color;
                         
