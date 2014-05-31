@@ -766,7 +766,6 @@ namespace Maps
     {
         public Border()
         {
-            this.Color = Color.Red;
             this.ShowLabel = true;
             this.Path = new int[0];
         }
@@ -786,11 +785,10 @@ namespace Maps
         [XmlAttribute]
         public bool WrapLabel { get; set; }
 
-        [XmlIgnoreAttribute,JsonIgnore]
-        public Color Color { get; set; }
-
-        [XmlAttribute("Color"),JsonName("Color")]
-        public string ColorHtml { get { return ColorTranslator.ToHtml(this.Color); } set { this.Color = ColorTranslator.FromHtml(value); } }
+        [XmlIgnore, JsonIgnore]
+        public Color? Color { get; set; }
+        [XmlAttribute("Color"), JsonName("Color")]
+        public string ColorHtml { get { return Color.HasValue ? ColorTranslator.ToHtml(Color.Value) : null; } set { Color = ColorTranslator.FromHtml(value); } }
 
         [XmlAttribute]
         public string Allegiance { get; set; }

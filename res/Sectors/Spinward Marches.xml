@@ -71,22 +71,25 @@
     <Route Start="2323" End="2124" />
     <Route Start="2124" End="1824" />
     <Route Start="1824" End="1526" />
-    <Route Start="1526" End="1525" />
-    <Route Start="1525" End="1524" />
-    <Route Start="1524" End="1523" />
-    <Route Start="1523" End="1522" />
-    <Route Start="1524" End="1424" />
-    <Route Start="1424" End="1324" />
-    <Route Start="1324" End="1223" />
-    <Route Start="1223" End="1123" />
-    <Route Start="1123" End="1022" />
-    <Route Start="1022" End="0922" />
-    <Route Start="0922" End="0921" />
-    <Route Start="1424" End="1325" />
-    <Route Start="1325" End="1225" />
-    <Route Start="1225" End="1126" />
-    <Route Start="1126" End="1026" />
-    <Route Start="1026" End="0927" />
+    
+    <Route Start="1526" End="1525" Allegiance="SwCf" />
+    <Route Start="1525" End="1524" Allegiance="SwCf" />
+    <Route Start="1524" End="1523" Allegiance="SwCf" />
+    <Route Start="1523" End="1522" Allegiance="SwCf" />
+    <Route Start="1524" End="1424" Allegiance="SwCf" />
+    <Route Start="1424" End="1324" Allegiance="SwCf" />
+    <Route Start="1324" End="1223" Allegiance="SwCf" />
+    <Route Start="1223" End="1123" Allegiance="SwCf" />
+    <Route Start="1123" End="1022" Allegiance="SwCf" />
+    <Route Start="1022" End="0922" Allegiance="SwCf" />
+    <Route Start="0922" End="0921" Allegiance="SwCf" />
+    
+    <Route Start="1424" End="1325" Allegiance="SwCf" />
+    <Route Start="1325" End="1225" Allegiance="SwCf" />
+    <Route Start="1225" End="1126" Allegiance="SwCf" />
+    <Route Start="1126" End="1026" Allegiance="SwCf" />
+    <Route Start="1026" End="0927" Allegiance="SwCf" />
+    
     <Route Start="1526" End="1329" />
     <Route Start="1329" End="0930" />
     <Route Start="0930" End="0732" />
@@ -138,51 +141,52 @@
     <Route Start="3103" End="3202" />
     <Route Start="3202" End="3302" />
 
-    <Route Start="0001" End="0103" Allegiance="Zh" Color="LightBlue" />
-    <Route Start="0103" End="0304" Allegiance="Zh" Color="LightBlue" />
-    <Route Start="0304" End="0307" Allegiance="Zh" Color="LightBlue" />
-    <Route Start="0307" End="0608" Allegiance="Zh" Color="LightBlue" />
-    <Route Start="0608" End="0610" Allegiance="Zh" Color="LightBlue" />
-    <Route Start="0610" End="0712" Allegiance="Zh" Color="LightBlue" />
-    <Route Start="0712" End="0614" Allegiance="Zh" Color="LightBlue" />
-    <Route Start="0614" End="0412" Allegiance="Zh" Color="LightBlue" />
-    <Route Start="0303" End="0304" Allegiance="Zh" Color="LightBlue" />
-    <Route Start="0304" End="0705" Allegiance="Zh" Color="LightBlue" />
-    <Route Start="0705" End="0904" Allegiance="Zh" Color="LightBlue" />
-    <Route Start="0904" End="1103" Allegiance="Zh" Color="LightBlue" />
-    <Route Start="1103" End="1402" Allegiance="Zh" Color="LightBlue" />
+    <Route Start="0001" End="0103" Allegiance="ZhCo" />
+    <Route Start="0103" End="0304" Allegiance="ZhCo" />
+    <Route Start="0304" End="0307" Allegiance="ZhCo" />
+    <Route Start="0307" End="0608" Allegiance="ZhCo" />
+    <Route Start="0608" End="0610" Allegiance="ZhCo" />
+    <Route Start="0610" End="0712" Allegiance="ZhCo" />
+    <Route Start="0712" End="0614" Allegiance="ZhCo" />
+    <Route Start="0614" End="0412" Allegiance="ZhCo" />
+    <Route Start="0303" End="0304" Allegiance="ZhCo" />
+    <Route Start="0304" End="0705" Allegiance="ZhCo" />
+    <Route Start="0705" End="0904" Allegiance="ZhCo" />
+    <Route Start="0904" End="1103" Allegiance="ZhCo" />
+    <Route Start="1103" End="1402" Allegiance="ZhCo" />
 
 
-    <Route Start="0421" End="0223" Allegiance="DaCf" Color="LightGreen" />
-    <Route Start="0223" End="0325" Allegiance="DaCf" Color="LightGreen" />
-    <Route Start="0325" End="0426" Allegiance="DaCf" Color="LightGreen" />
-    <Route Start="0426" End="0527" Allegiance="DaCf" Color="LightGreen" />
-    <Route Start="0527" End="0727" Allegiance="DaCf" Color="LightGreen" />
-    <Route Start="0325" End="0624" Allegiance="DaCf" Color="LightGreen" />
-    <Route Start="0624" End="0724" Allegiance="DaCf" Color="LightGreen" />
+    <Route Start="0421" End="0223" Allegiance="DaCf" />
+    <Route Start="0223" End="0325" Allegiance="DaCf" />
+    <Route Start="0325" End="0426" Allegiance="DaCf" />
+    <Route Start="0426" End="0527" Allegiance="DaCf" />
+    <Route Start="0527" End="0727" Allegiance="DaCf" />
+    <Route Start="0325" End="0624" Allegiance="DaCf" />
+    <Route Start="0624" End="0724" Allegiance="DaCf" />
   </Routes>
   <Stylesheet>
     route.Im { color: green; }
-    route.Da { color: lightgreen; }
-    route.Zh { color: lightblue; }
-    border.Da { color: lightblue; }
-    border.Sw { color: blue; }
-    border.Zh { color: blue; }
+    route.DaCf { color: lightgreen; }
+    route.ZhCo { color: lightblue; }
+    route.SwCf { color: #003300; }
+    border.DaCf { color: lightblue; }
+    border.SwCf { color: blue; }
+    border.ZhCo { color: blue; }
     border.Im { color: red; }
   </Stylesheet>
   <Borders>
-    <Border Allegiance="DaCf" Color="lightblue" LabelPosition="0423" WrapLabel="true">
+    <Border Allegiance="DaCf" LabelPosition="0423" WrapLabel="true">
       0223 0323 0422 0421 0522 0621 0721 0821 0822 0723 0724 0725 0726 0727
       0728 0627 0527 0427 0426 0326 0325 0224 0223
     </Border>
-    <Border Allegiance="SwCf" Color="blue" LabelPosition="1327" WrapLabel="true">
+    <Border Allegiance="SwCf" LabelPosition="1327" WrapLabel="true">
       0620 0720 0820 0921 1021 1121 1221 1322 1421 1522 1523 1524
       1525 1526 1626 1627 1628 1529 1528 1427 1327 1227 1128 1129 1130
       1129 1028 0928 0927 0926
       0925 0924 0923 0922 0921 0820 0720 0620
     </Border>
 
-    <Border Allegiance="Zh" Color="blue" LabelPosition="0205" WrapLabel="true">
+    <Border Allegiance="ZhCo" LabelPosition="0205" WrapLabel="true">
       0000 0100 0200 0101 0102 0202 0303 0403 0504 0604 0705 0804 0904 1003 1103
       1102 1201 1302 1401 1402 1303 1202 1103 1003 0904 0804 0705 0604 0505
       0506 0507 0508 0608 0609 0610 0611 0712 0612 0613 0614 0514 0413 0412

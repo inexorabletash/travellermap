@@ -1406,28 +1406,26 @@ namespace Maps.Rendering
                         Color? routeColor = route.Color;
                         Route.RouteStyle? routeStyle = route.Style;
 
-#if USE_SECTOR_STYLESHEET
                         if (sector.Stylesheet != null)
                         {
                             SectorStylesheet.StyleResult ssr = sector.Stylesheet.Apply("route", route.Allegiance);
                             if (!routeStyle.HasValue)
                                 routeStyle = ssr.GetEnum<Route.RouteStyle>("style");
                             if (!routeColor.HasValue)
-                                routeColor = ColorTranslator.FromHtml(ssr.GetString("color"));
+                                routeColor = ssr.GetColor("color");
                             if (!routeWidth.HasValue)
-                                routeWidth = (float)ssr.GetNumber("width");
+                                routeWidth = (float?)ssr.GetNumber("width");
                         }
-#endif
 
                         // In grayscale, convert default color and style to non-default style
                         if (ctx.styles.grayscale && !routeColor.HasValue && !routeStyle.HasValue)
                         {
                             routeStyle = Route.RouteStyle.Dashed;
-                        }
+                        }   
 
                         // TODO: Get these from a master stylesheet
                         if (!routeColor.HasValue)
-                            routeColor = Color.Green;
+                            routeColor = ctx.styles.microRoutes.pen.color;
                         if (!routeStyle.HasValue)
                             routeStyle = Route.RouteStyle.Solid;
                         if (!routeWidth.HasValue)
@@ -1503,17 +1501,25 @@ namespace Maps.Rendering
 
                         XGraphicsPath drawPath = borderPath.borderPathPoints.Length > 0 ? new XGraphicsPath(borderPath.borderPathPoints, borderPath.borderPathTypes, XFillMode.Alternate) : null;
                         XGraphicsPath clipPath = new XGraphicsPath(borderPath.clipPathPoints, borderPath.clipPathTypes, XFillMode.Alternate);
-                        Color color;
+
+                        Color? borderColor = border.Color;
+                        if (sector.Stylesheet != null)
+                        {
+                            SectorStylesheet.StyleResult ssr = sector.Stylesheet.Apply("border", border.Allegiance);
+                            if (!borderColor.HasValue)
+                                borderColor = ssr.GetColor("color");
+                        }
+
+                        // TODO: Get defaults from a global stylesheet
+                        if (!borderColor.HasValue)
+                            borderColor = ctx.styles.microBorders.pen.color;
+                        
                         if (ctx.styles.grayscale ||
-                            !ColorUtil.NoticeableDifference(border.Color, ctx.styles.backgroundColor))
+                            !ColorUtil.NoticeableDifference(borderColor.Value, ctx.styles.backgroundColor))
                         {
-                            color = ctx.styles.microBorders.pen.color; // default
+                            borderColor = ctx.styles.microBorders.pen.color; // default
                         }
-                        else
-                        {
-                            color = border.Color;
-                        }
-                        pen.Color = color;
+                        pen.Color = borderColor.Value;
 
                         if (ctx.styles.microBorderStyle != MicroBorderStyle.Curve)
                         {
@@ -1523,7 +1529,7 @@ namespace Maps.Rendering
                                 ctx.graphics.IntersectClip(clipPath);
                                 if (layer == BorderLayer.Fill)
                                 {
-                                    solidBrush.Color = Color.FromArgb(FILL_ALPHA, color);
+                                    solidBrush.Color = Color.FromArgb(FILL_ALPHA, borderColor.Value);
                                     ctx.graphics.DrawPath(solidBrush, clipPath);
                                 }
 
@@ -1537,7 +1543,7 @@ namespace Maps.Rendering
                         {
                             if (layer == BorderLayer.Fill)
                             {
-                                solidBrush.Color = Color.FromArgb(FILL_ALPHA, color);
+                                solidBrush.Color = Color.FromArgb(FILL_ALPHA, borderColor.Value);
                                 ctx.graphics.DrawClosedCurve(solidBrush, borderPath.clipPathPoints);
                             }
 

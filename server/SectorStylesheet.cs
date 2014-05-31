@@ -4,6 +4,7 @@ using System.Linq;
 using System.IO;
 using System.Text;
 using System.Web;
+using System.Drawing;
 
 namespace Maps
 {
@@ -20,9 +21,10 @@ namespace Maps
         //   declaration-list := declaration*
         //   declaration      := property WS ':' WS value WS ';' WS      // ';' is terminator, not separator
         //   property         := IDENT
-        //   value            := IDENT | NUMBER
+        //   value            := IDENT | NUMBER | COLOR
         //   IDENT            := [A-Za-z_][A-Za-z0-9_]*
         //   NUMBER           := '-'? [0-9]* ('.' [0-9]+) ([eE] [-+]? [0-9]+)?
+        //   COLOR            := '#' [0-9A-F]{6}
         //   WS               := ( U+0009 | U+000A | U+000D | U+0020 )*
 
         class Rule {
@@ -157,6 +159,8 @@ namespace Maps
                 string value = IDENT();
                 if (value != null) return value;
                 value = NUMBER();
+                if (value != null) return value;
+                value = COLOR();
                 return value;
             }
             public string IDENT()
@@ -217,6 +221,21 @@ namespace Maps
                         consume();
                 }
 
+                return s;
+            }
+            public string COLOR()
+            {
+                int c = reader.Peek();
+                if (c != '#')
+                    return null;
+                reader.Read();
+                string s = "#";
+                for (int i = 0; i < 6; ++i) {
+                    c = reader.Peek();
+                    if (!('0' <= c && c <= '9') && !('A' <= c && c <= 'F'))
+                        throw new ParseException("Expected hex, saw: " + reader.ReadLine());
+                    s += (char)reader.Read();
+                }
                 return s;
             }
             private void WS()
@@ -297,8 +316,23 @@ namespace Maps
             {
                 string value;
                 if (!dict.TryGetValue(property, out value) || String.IsNullOrEmpty(value))
-                    return default(string);
+                    return null;
                 return value;
+            }
+
+            public Color? GetColor(string property)
+            {
+                string value;
+                if (!dict.TryGetValue(property, out value) || String.IsNullOrEmpty(value))
+                    return null;
+                try
+                {
+                    return ColorTranslator.FromHtml(value);
+                }
+                catch
+                {
+                    return null;
+                }
             }
 
             public double? GetNumber(string property)
@@ -309,18 +343,21 @@ namespace Maps
                 return Double.Parse(value);
             }
 
-            // Will throw if value can't be parsed as case-insensitive match for enum.
-            public T GetEnum<T>(string property) where T : struct // enum 
+            public T? GetEnum<T>(string property) where T : struct // enum 
             {
                 if (!typeof(T).IsEnum)
                     throw new Exception("Type must be an enum");
 
                 string value;
                 if (!dict.TryGetValue(property, out value) || String.IsNullOrEmpty(value))
-                    return default(T);
+                    return null;
 
-                const bool caseInsensitive = true;
-                return (T)Enum.Parse(typeof(T), value, caseInsensitive);
+                bool ignoreCase = true;
+                T result;
+                if (Enum.TryParse<T>(value, ignoreCase, out result))
+                    return result;
+
+                return null;
             }
         }
 
