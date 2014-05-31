@@ -22,7 +22,7 @@ namespace Maps
         //   declaration      := property WS ':' WS value WS ';' WS      // ';' is terminator, not separator
         //   property         := IDENT
         //   value            := IDENT | NUMBER | COLOR
-        //   IDENT            := [A-Za-z_][A-Za-z0-9_]*
+        //   IDENT            := [A-Za-z_]([A-Za-z0-9_] | '\' ANY)* 
         //   NUMBER           := '-'? [0-9]* ('.' [0-9]+) ([eE] [-+]? [0-9]+)?
         //   COLOR            := '#' [0-9A-F]{6}
         //   WS               := ( U+0009 | U+000A | U+000D | U+0020 | '/' '*' ... '*' '/')*
@@ -172,8 +172,16 @@ namespace Maps
                 while (true)
                 {
                     c = reader.Peek();
-                    if (!(('A' <= c && c <= 'Z') || ('a' <= c && c <= 'z') || ('0' <= c && c <= '9') || c == '_'))
+
+                    if (c == '\\')
+                    {
+                        reader.Read();
+                        if (reader.Peek() == -1) throw new ParseException("Expected character after \\, saw EOF");
+                    }
+                    else if (!(('A' <= c && c <= 'Z') || ('a' <= c && c <= 'z') || ('0' <= c && c <= '9') || c == '_'))
+                    {
                         break;
+                    }
 
                     ident += Char.ConvertFromUtf32(reader.Read());
                 }
