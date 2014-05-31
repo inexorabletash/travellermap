@@ -112,22 +112,18 @@ namespace Maps
         public void Resolve(SectorMap sectorMap, ResourceManager resourceManager, out Sector sector, out World world)
         {
             if (sectorMap == null)
-            {
                 throw new ArgumentNullException("sectorMap");
-            }
 
             sector = null;
             world = null;
 
             sector = sectorMap.FromLocation(Sector.X, Sector.Y);
-            if (sector != null)
-            {
-                WorldCollection worlds = sector.GetWorlds(resourceManager, cacheResults: true);
-                if (worlds != null)
-                {
-                    world = worlds[World.X, World.Y];
-                }
-            }
+            if (sector == null)
+                return;
+
+            WorldCollection worlds = sector.GetWorlds(resourceManager, cacheResults: true);
+            if (worlds != null)
+                world = worlds[World.X, World.Y];
         }
     }
 
@@ -158,18 +154,14 @@ namespace Maps
         public void Resolve(SectorMap sectorMap, out Sector sector, out Subsector subsector)
         {
             if (sectorMap == null)
-            {
                 throw new ArgumentNullException("sectorMap");
-            }
 
             sector = null;
             subsector = null;
 
             sector = sectorMap.FromLocation(SectorLocation.X, SectorLocation.Y);
             if (sector != null)
-            {
                 subsector = sector[Index];
-            }
         }
     }
 

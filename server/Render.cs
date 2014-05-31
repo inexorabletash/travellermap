@@ -235,9 +235,7 @@ namespace Maps.Rendering
                     //------------------------------------------------------------
 
                     if (ctx.clipPath != null)
-                    {
                         ctx.graphics.IntersectClip(ctx.clipPath);
-                    }
 
                     //ctx.styles.showPseudoRandomStars = true;
                     //------------------------------------------------------------
@@ -1408,12 +1406,9 @@ namespace Maps.Rendering
 
                         //
                         SectorStylesheet.StyleResult ssr = sector.ApplyStylesheet("route", route.Allegiance ?? route.Type ?? "Im");
-                        if (!routeStyle.HasValue)
-                            routeStyle = ssr.GetEnum<Route.RouteStyle>("style");
-                        if (!routeColor.HasValue)
-                            routeColor = ssr.GetColor("color");
-                        if (!routeWidth.HasValue)
-                            routeWidth = (float?)ssr.GetNumber("width");
+                        routeStyle = routeStyle ?? ssr.GetEnum<Route.RouteStyle>("style");
+                        routeColor = routeColor ?? ssr.GetColor("color");
+                        routeWidth = routeWidth ?? (float?)ssr.GetNumber("width");
 
                         // In grayscale, convert default color and style to non-default style
                         if (ctx.styles.grayscale && !routeColor.HasValue && !routeStyle.HasValue)
@@ -1421,12 +1416,9 @@ namespace Maps.Rendering
                             routeStyle = Route.RouteStyle.Dashed;
                         }   
 
-                        if (!routeColor.HasValue)
-                            routeColor = ctx.styles.microRoutes.pen.color;
-                        if (!routeStyle.HasValue)
-                            routeStyle = Route.RouteStyle.Solid;
-                        if (!routeWidth.HasValue)
-                            routeWidth = 1.0f;
+                        routeColor = routeColor ?? ctx.styles.microRoutes.pen.color;
+                        routeStyle = routeStyle ?? Route.RouteStyle.Solid;
+                        routeWidth = routeWidth ?? 1.0f;
 
                         // Ensure color is visible
                         if (ctx.styles.grayscale || !ColorUtil.NoticeableDifference(routeColor.Value, ctx.styles.backgroundColor))
@@ -1485,9 +1477,7 @@ namespace Maps.Rendering
 
                         sectorClipPath = new XGraphicsPath(clip.clipPathPoints, clip.clipPathPointTypes, XFillMode.Alternate);
                         if (sectorClipPath != null)
-                        {
                             ctx.graphics.IntersectClip(sectorClipPath);
-                        }
                     }
 
                     ctx.graphics.SmoothingMode = XSmoothingMode.AntiAlias;
@@ -1501,10 +1491,7 @@ namespace Maps.Rendering
 
                         Color? borderColor = border.Color;
                         SectorStylesheet.StyleResult ssr = sector.ApplyStylesheet("border", border.Allegiance);
-                        if (!borderColor.HasValue)
-                            borderColor = ssr.GetColor("color");
-                        if (!borderColor.HasValue)
-                            borderColor = ctx.styles.microBorders.pen.color;
+                        borderColor = borderColor ?? ssr.GetColor("color") ?? ctx.styles.microBorders.pen.color;
                         
                         if (ctx.styles.grayscale ||
                             !ColorUtil.NoticeableDifference(borderColor.Value, ctx.styles.backgroundColor))
@@ -1526,9 +1513,7 @@ namespace Maps.Rendering
                                 }
 
                                 if (layer == BorderLayer.Stroke && drawPath != null)
-                                {
                                     ctx.graphics.DrawPath(pen, drawPath);
-                                }
                             }
                         }
                         else

@@ -156,12 +156,7 @@ namespace Maps
             }
             public string ParseValue()
             {
-                string value = IDENT();
-                if (value != null) return value;
-                value = NUMBER();
-                if (value != null) return value;
-                value = COLOR();
-                return value;
+                return IDENT() ?? NUMBER() ?? COLOR();
             }
             public string IDENT()
             {

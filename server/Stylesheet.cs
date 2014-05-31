@@ -94,17 +94,10 @@ namespace Maps.Rendering
         public XFont makeFont()
         {
             if (this.family != null)
-            {
                 return new XFont(this.family, this.size * 1.4f, this.style, s_fontOptions);
-            }
-            else if (this.name != null)
-            {
+            if (this.name != null)
                 return new XFont(this.name, this.size * 1.4f, this.style, s_fontOptions);
-            }
-            else
-            {
-                return null;
-            }
+            return null;
         }
     }
 
@@ -148,18 +141,14 @@ namespace Maps.Rendering
         public void Apply(ref XPen pen)
         {
             if (this.width == 0f)
-            {
                 throw new ApplicationException("Hairline pens not supported, set width > 0");
-            }
 
             pen.Color = this.color;
             pen.Width = this.width;
             pen.DashStyle = this.dashStyle;
 
             if (this.dashPattern != null)
-            {
                 pen.DashPattern = this.dashPattern;
-            }
         }
 
 

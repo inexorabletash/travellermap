@@ -107,9 +107,7 @@ namespace Maps
             get
             {
                 if (this.Sector == null)
-                {
                     throw new Exception("Can't get coordinates for a world not assigned to a sector");
-                }
 
                 return Astrometrics.LocationToCoordinates(this.Sector.Location, this.Location);
             }

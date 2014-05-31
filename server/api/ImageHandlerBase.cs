@@ -209,10 +209,7 @@ namespace Maps.API
         private static void BitmapResponse(HttpResponse response, Stream outputStream, Stylesheet styles, Bitmap bitmap, string mimeType)
         {
             // JPEG or PNG if not specified, based on style
-            if (mimeType == null)
-            {
-                mimeType = styles.preferredMimeType;
-            }
+            mimeType = mimeType ?? styles.preferredMimeType;
 
             response.ContentType = mimeType;
 

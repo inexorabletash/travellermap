@@ -72,8 +72,7 @@ namespace Maps
 
         public static Stream ToStream(this string str, Encoding encoding = null)
         {
-            if (encoding == null)
-                encoding = Encoding.UTF8;
+            encoding = encoding ?? Encoding.UTF8;
             MemoryStream stream = new MemoryStream();
             using (StreamWriter writer = new NoCloseStreamWriter(stream, encoding))
             {

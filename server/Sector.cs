@@ -397,15 +397,11 @@ namespace Maps
             {
                 // Have it cached - just return it
                 if (m_data != null)
-                {
                     return m_data;
-                }
 
                 // Can't look it up; failure case
                 if (DataFile == null)
-                {
                     return null;
-                }
 
                 // Otherwise, look it up
                 WorldCollection data = resourceManager.GetDeserializableFileObject(@"~/res/Sectors/" + DataFile, typeof(WorldCollection), cacheResults: false, mediaType: DataFile.Type) as WorldCollection;
@@ -433,9 +429,7 @@ namespace Maps
             if (mediaType == "TabDelimited")
             {
                 if (worlds != null)
-                {
                     worlds.Serialize(writer, mediaType, includeHeader:includeHeader, filter:filter);
-                }
                 return;
             }
 
@@ -629,7 +623,7 @@ namespace Maps
 
         public SectorStylesheet.StyleResult ApplyStylesheet(string element, string code)
         {
-            return Stylesheet != null ? Stylesheet.Apply(element, code) : s_defaultStyleSheet.Apply(element, code);
+            return (Stylesheet ?? s_defaultStyleSheet).Apply(element, code);
         }
 
         [XmlElement("Stylesheet"), JsonName("Stylesheet")]
@@ -913,9 +907,9 @@ namespace Maps
         public Route(Point? startOffset = null, int start = 0, Point? endOffset = null, int end = 0, string color = null)
             : this()
         {
-            StartOffset = (startOffset == null) ? Point.Empty : (Point)startOffset;
+            StartOffset = startOffset ?? Point.Empty;
             Start = start;
-            EndOffset = (endOffset == null) ? Point.Empty : (Point)endOffset;
+            EndOffset = endOffset ?? Point.Empty;
             End = end;
             if (color != null)
                 ColorHtml = color;
