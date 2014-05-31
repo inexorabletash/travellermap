@@ -25,7 +25,7 @@ namespace Maps
         //   IDENT            := [A-Za-z_][A-Za-z0-9_]*
         //   NUMBER           := '-'? [0-9]* ('.' [0-9]+) ([eE] [-+]? [0-9]+)?
         //   COLOR            := '#' [0-9A-F]{6}
-        //   WS               := ( U+0009 | U+000A | U+000D | U+0020 )*
+        //   WS               := ( U+0009 | U+000A | U+000D | U+0020 | '/' '*' ... '*' '/')*
 
         class Rule {
             public Rule(List<Selector> selectors, List<Declaration> declarations) { this.selectors = selectors; this.declarations = declarations; }
@@ -250,6 +250,22 @@ namespace Maps
                         case 0x20:
                             reader.Read();
                             continue;
+
+                        case '/':
+                            reader.Read();
+                            if (reader.Peek() != '*') throw new ParseException("Expected /* ...*/, saw: " + reader.ReadLine());
+                            reader.Read();
+
+                            while (true)
+                            {
+                                int c = reader.Read();
+                                if (c == -1) throw new ParseException("Expected */, saw EOF");
+                                if (c != '*') continue;
+                                c = reader.Read();
+                                if (c == '/') break;
+                            }
+                            continue;
+
                         default:
                             return;
                     }
@@ -263,7 +279,11 @@ namespace Maps
         }
         public static SectorStylesheet Parse(string src)
         {
-            return new SectorStylesheet(new Parser(new StringReader(src)).ParseStylesheet());
+            return Parse(new StringReader(src));
+        }
+        public static SectorStylesheet Parse(TextReader reader)
+        {
+            return new SectorStylesheet(new Parser(reader).ParseStylesheet());
         }
 
         #endregion // Parser

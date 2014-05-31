@@ -1406,7 +1406,8 @@ namespace Maps.Rendering
                         Color? routeColor = route.Color;
                         Route.RouteStyle? routeStyle = route.Style;
 
-                        SectorStylesheet.StyleResult ssr = sector.ApplyStylesheet("route", route.Allegiance);
+                        //
+                        SectorStylesheet.StyleResult ssr = sector.ApplyStylesheet("route", route.Allegiance ?? route.Type ?? "Im");
                         if (!routeStyle.HasValue)
                             routeStyle = ssr.GetEnum<Route.RouteStyle>("style");
                         if (!routeColor.HasValue)

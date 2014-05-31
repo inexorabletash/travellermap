@@ -35,8 +35,8 @@
     <Routes Source="TD #20">
       <!-- Not sure why these are blocked -->
       <!--
-          <RouteX Start="0118" End="0217" Allegiance="As" Color="Yellow"/>
-          <RouteX Start="0118" End="3117" EndOffsetX="-1" Allegiance="As" Color="Yellow"/>
+          <RouteX Start="0118" End="0217" Allegiance="As"/>
+          <RouteX Start="0118" End="3117" EndOffsetX="-1" Allegiance="As"/>
       -->
       <Route Start="0408" End="0707" />
       <Route Start="0604" End="0707" />
@@ -69,7 +69,7 @@
         3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141
         2140 2139
         </Border>
-        <Border Allegiance="As" Color="yellow">
+        <Border Allegiance="As">
         0011 0112 0212 0313 0213 0214 0215 0216 0217 0118 0018 0019 0018 0017 0016 0015 0014 0013 0012 0011
         </Border>
         </Borders>

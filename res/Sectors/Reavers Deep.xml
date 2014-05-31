@@ -31,8 +31,15 @@
     <Subsector Index="O">Drinsaar</Subsector>
     <Subsector Index="P">Fahlnar</Subsector>
   </Subsectors>
+  <Stylesheet>
+    route.UnHa,
+    route.PrCa,
+    route.DuCf,
+    route.CaAs,
+    route.GdMh { color: lightgreen; }
+  </Stylesheet>
   <Borders>
-    <Border Allegiance="As" Color="yellow" LabelPosition="0233">
+    <Border Allegiance="As" LabelPosition="0233">
       0027 0127 0227 0328 0329 0429 0530 0531 0431 0432 0433 0334 0335 0235
       0236 0237 0238 0339 0340 0341 0241 0141 0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027
     </Border>
@@ -47,81 +54,88 @@
     </Border>
     <Border Allegiance="LyCo" Color="darkred" LabelPosition="1837" WrapLabel="true">1937 2037 2038 1938 1937</Border>
     <Border Allegiance="GdMh" Color="blue" LabelPosition="1130">0926 1026 1127 1128 1129 1229 1230 1231 1132 1031 1030 1029 1028 1027 1026 0926</Border>
-    <Border Allegiance="So" Color="orange" LabelPosition="3140" WrapLabel="true">2241 2341 2441 2541 2540 2639 2739 2838 2938 3037 3036 3136 3236 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241</Border>
+    <Border Allegiance="SoCf" LabelPosition="3140" WrapLabel="true">2241 2341 2441 2541 2540 2639 2739 2838 2938 3037 3036 3136 3236 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241</Border>
     <Border Allegiance="AsUh" Color="lightyellow" LabelPosition="0536">0535 0634 0633 0733 0734 0735 0835 0936 1036 1037 0938 0838 0739 0740 0741 0841 0741 0841 0741 0641 0541 0540 0539 0538 0537 0536 0535</Border>
   </Borders>
   <Routes Publisher="DGP" Source="The Travellers' Digest #16">
-    <Route Start="0117" End="0120" Allegiance="As" Color="Yellow" />
-    <Route Start="0117" End="0217" Allegiance="As" Color="Yellow" />
-    <Route Start="0120" End="0221" Allegiance="As" Color="Yellow" />
-    <Route Start="0120" End="3220" EndOffsetX="-1" Allegiance="As" Color="Yellow" />
-    <Route Start="0131" End="0230" Allegiance="As" Color="Yellow" />
-    <Route Start="0131" End="3031" EndOffsetX="-1" Allegiance="As" Color="Yellow" />
-    <Route Start="0135" End="0234" Allegiance="As" Color="Yellow" />
-    <Route Start="0135" End="3135" EndOffsetX="-1" Allegiance="As" Color="Yellow" />
-    <Route Start="0215" End="0217" Allegiance="As" Color="Yellow" />
-    <Route Start="0217" End="0317" Allegiance="As" Color="Yellow" />
-    <Route Start="0221" End="0320" Allegiance="As" Color="Yellow" />
-    <Route Start="0221" End="0324" Allegiance="As" Color="Yellow" />
-    <Route Start="0227" End="0230" Allegiance="As" Color="Yellow" />
-    <Route Start="0230" End="0530" Allegiance="As" Color="Yellow" />
-    <Route Start="0633" End="0734" Color="LightGreen" />
-    <Route Start="0734" End="0737" Color="LightGreen" />
-    <Route Start="0737" End="0738" Color="LightGreen" />
-    <Route Start="0737" End="0937" Color="LightGreen" />
-    <Route Start="0738" End="0601" EndOffsetY="1" Color="LightGreen" />
-    <Route Start="0738" End="0838" Color="LightGreen" />
-    <Route Start="0926" End="1127" Color="LightGreen" />
-    <Route Start="0937" End="1036" Color="LightGreen" />
-    <Route Start="0937" End="1037" Color="LightGreen" />
-    <Route Start="1030" End="1230" Color="LightGreen" />
-    <Route Start="1127" End="1129" Color="LightGreen" />
-    <Route Start="1129" End="1230" Color="LightGreen" />
-    <Route Start="1213" End="1214" Color="LightGreen" />
-    <Route Start="1214" End="1415" Color="LightGreen" />
-    <Route Start="1216" End="1217" Color="LightGreen" />
-    <Route Start="1216" End="1415" Color="LightGreen" />
-    <Route Start="1230" End="1231" Color="LightGreen" />
-    <Route Start="1327" End="1526" Color="LightGreen" />
-    <Route Start="1413" End="1415" Color="LightGreen" />
-    <Route Start="1415" End="1615" Color="LightGreen" />
-    <Route Start="1526" End="1625" Color="LightGreen" />
-    <Route Start="1613" End="1615" Color="LightGreen" />
-    <Route Start="1615" End="1716" Color="LightGreen" />
-    <Route Start="1617" End="1717" Color="LightGreen" />
-    <Route Start="1622" End="1624" Color="LightGreen" />
-    <Route Start="1624" End="1625" Color="LightGreen" />
-    <Route Start="1716" End="1717" Color="LightGreen" />
-    <Route Start="1716" End="1815" Color="LightGreen" />
-    <Route Start="1716" End="1917" Color="LightGreen" />
-    <Route Start="1813" End="1815" Color="LightGreen" />
-    <Route Start="1813" End="1913" Color="LightGreen" />
-    <Route Start="1815" End="1916" Color="LightGreen" />
-    <Route Start="1917" End="2017" Color="LightGreen" />
-    <Route Start="2033" End="2034" Color="LightGreen" />
-    <Route Start="2033" End="2133" Color="LightGreen" />
-    <Route Start="2133" End="2230" Color="LightGreen" />
-    <Route Start="2133" End="2433" Color="LightGreen" />
+    <Route Start="0117" End="0120" Allegiance="As" />
+    <Route Start="0117" End="0217" Allegiance="As" />
+    <Route Start="0120" End="0221" Allegiance="As" />
+    <Route Start="0120" End="3220" EndOffsetX="-1" Allegiance="As" />
+    <Route Start="0131" End="0230" Allegiance="As" />
+    <Route Start="0131" End="3031" EndOffsetX="-1" Allegiance="As" />
+    <Route Start="0135" End="0234" Allegiance="As" />
+    <Route Start="0135" End="3135" EndOffsetX="-1" Allegiance="As" />
+    <Route Start="0215" End="0217" Allegiance="As" />
+    <Route Start="0217" End="0317" Allegiance="As" />
+    <Route Start="0221" End="0320" Allegiance="As" />
+    <Route Start="0221" End="0324" Allegiance="As" />
+    <Route Start="0227" End="0230" Allegiance="As" />
+    <Route Start="0230" End="0530" Allegiance="As" />
+    
+    <Route Start="0633" End="0734" Allegiance="UnHa" />
+    <Route Start="0734" End="0737" Allegiance="UnHa" />
+    <Route Start="0737" End="0738" Allegiance="UnHa" />
+    <Route Start="0737" End="0937" Allegiance="UnHa" />
+    <Route Start="0738" End="0601" EndOffsetY="1" Allegiance="UnHa" />
+    <Route Start="0738" End="0838" Allegiance="UnHa" />
+    <Route Start="0937" End="1036" Allegiance="UnHa" />
+    <Route Start="0937" End="1037" Allegiance="UnHa" />
+
+    <Route Start="0926" End="1127" Allegiance="GdMh" />
+    <Route Start="1030" End="1230" Allegiance="GdMh" />
+    <Route Start="1127" End="1129" Allegiance="GdMh" />
+    <Route Start="1129" End="1230" Allegiance="GdMh" />
+    
+    <Route Start="1213" End="1214" Allegiance="PrCa" />
+    <Route Start="1214" End="1415" Allegiance="PrCa" />
+    <Route Start="1216" End="1217" Allegiance="PrCa" />
+    <Route Start="1216" End="1415" Allegiance="PrCa" />
+    <Route Start="1230" End="1231" Allegiance="PrCa" />
+    <Route Start="1413" End="1415" Allegiance="PrCa" />
+    <Route Start="1415" End="1615" Allegiance="PrCa" />
+    <Route Start="1613" End="1615" Allegiance="PrCa" />
+    <Route Start="1615" End="1716" Allegiance="PrCa" />
+    <Route Start="1617" End="1717" Allegiance="PrCa" />
+    
+    <Route Start="1716" End="1717" Allegiance="PrCa" />
+    <Route Start="1716" End="1815" Allegiance="PrCa" />
+    <Route Start="1716" End="1917" Allegiance="PrCa" />
+    <Route Start="1813" End="1815" Allegiance="PrCa" />
+    <Route Start="1813" End="1913" Allegiance="PrCa" />
+    <Route Start="1815" End="1916" Allegiance="PrCa" />
+    <Route Start="1917" End="2017" Allegiance="PrCa" />
+
+    <Route Start="1327" End="1526" Allegiance="DuCf" />
+    <Route Start="1526" End="1625" Allegiance="DuCf" />
+    <Route Start="1622" End="1624" Allegiance="DuCf" />
+    <Route Start="1624" End="1625" Allegiance="DuCf" />
+
+    <Route Start="2033" End="2034" Allegiance="CaAs" />
+    <Route Start="2033" End="2133" Allegiance="CaAs" />
+    <Route Start="2133" End="2230" Allegiance="CaAs" />
+    <Route Start="2133" End="2433" Allegiance="CaAs" />
+    <Route Start="2230" End="2330" Allegiance="CaAs" />
+    <Route Start="2330" End="2431" Allegiance="CaAs" />
+    <Route Start="2330" End="2530" Allegiance="CaAs" />
+    <Route Start="2431" End="2632" Allegiance="CaAs" />
+    <Route Start="2433" End="2632" Allegiance="CaAs" />
+    <Route Start="2530" End="2732" Allegiance="CaAs" />
+    <Route Start="2632" End="2732" Allegiance="CaAs" />
+    <Route Start="2732" End="2829" Allegiance="CaAs" />
+    <Route Start="2732" End="2932" Allegiance="CaAs" />
+
     <Route Start="2218" End="2416" />
     <Route Start="2221" End="2322" />
-    <Route Start="2230" End="2330" Color="LightGreen" />
     <Route Start="2322" End="2421" />
-    <Route Start="2330" End="2431" Color="LightGreen" />
-    <Route Start="2330" End="2530" Color="LightGreen" />
     <Route Start="2416" End="2616" />
     <Route Start="2421" End="2621" />
-    <Route Start="2431" End="2632" Color="LightGreen" />
-    <Route Start="2433" End="2632" Color="LightGreen" />
     <Route Start="2514" End="2516" />
     <Route Start="2516" End="2616" />
-    <Route Start="2530" End="2732" Color="LightGreen" />
     <Route Start="2616" End="2917" />
     <Route Start="2621" End="2622" />
     <Route Start="2622" End="3023" />
-    <Route Start="2632" End="2732" Color="LightGreen" />
     <Route Start="2724" End="3023" />
-    <Route Start="2732" End="2829" Color="LightGreen" />
-    <Route Start="2732" End="2932" Color="LightGreen" />
     <Route Start="2917" End="3115" />
     <Route Start="3021" End="3220" />
     <Route Start="3023" End="3125" />

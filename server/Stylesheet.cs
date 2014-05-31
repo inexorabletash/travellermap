@@ -357,7 +357,7 @@ namespace Maps.Rendering
             macroRoutes.pen.color = Color.White;
             microBorders.pen.color = Color.Gray;
             Color gridColor = Color.FromArgb(ScaleInterpolate(0, 255, scale, SectorGridMinScale, SectorGridFullScale), Color.Gray);
-            microRoutes.pen.color = Color.Green;
+            microRoutes.pen.color = Color.Gray;
 
             Color foregroundColor = Color.White;
             backgroundColor = Color.Black;

@@ -23,15 +23,18 @@
     <Subsector Index="O">Udusis</Subsector>
     <Subsector Index="P">Yashodhan</Subsector>
   </Subsectors>
+  <Stylesheet>
+    border.JuRu { color: cyan; }
+  </Stylesheet>
   <Borders>
-    <Border Allegiance="HeLo" Color="steelblue" LabelPosition="2206" WrapLabel="true">1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3216 3217 3218 3219 3120 3020 3019 2919 2918 2817 2717 2616 2516 2415 2316 2315 2314 2313 2212 2112 2011 1911 2011 2112 2211 2210 2110 2009 2008 2007 2006 2005 1905 2004 2003 2002 2001 2000 1900</Border>
-    <Border Allegiance="Im" Color="red" LabelPosition="2232" WrapLabel="true">0028 0128 0127 0227 0327 0426 0527 0627 0728 0828 0929 1029 1129 1228 1328 1327 1326 1426 1527 1626 1726 1826 1927 2027 2128 2227 2328 2428 2429 2430 2431 2432 2433 2434 2435 2536 2436 2337 2237 2138 2038 2039 1940 1840 1741 1641 1541 1441 1341 1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028</Border>
-    <Border Allegiance="JuRu" Color="cyan" LabelPosition="0607" WrapLabel="true">0000 0100 0200 0300 0400 0500 0600 0700 0800 0900 1000 1100 1200 1301 1302 1303 1203 1204 1205 1206 1207 1308 1408 1308 1208 1209 1210 1211 1112 1012 1013 0914 0814 0715 0615 0616 0617 0517 0416 0316 0216 0116 0115 0114 0113 0112 0111 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001 0000</Border>
-    <Border Allegiance="JuRu" Color="cyan" ShowLabel="false">1315</Border>
+    <Border Allegiance="Im" LabelPosition="2232" WrapLabel="true">0028 0128 0127 0227 0327 0426 0527 0627 0728 0828 0929 1029 1129 1228 1328 1327 1326 1426 1527 1626 1726 1826 1927 2027 2128 2227 2328 2428 2429 2430 2431 2432 2433 2434 2435 2536 2436 2337 2237 2138 2038 2039 1940 1840 1741 1641 1541 1441 1341 1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028</Border>
 
-    <Border Allegiance="JuPr" Color="blue" ShowLabel="false">0000 0100 0200 0300 0400 0500 0600 0700 0800 0900 1000 1100 1200 1300 1400 1500 1400 1301 1302 1303 1203 1204 1205 1206 1207 1308 1408 1308 1208 1209 1210 1211 1112 1012 1013 0914 0814 0715 0615 0616 0617 0517 0416 0316 0216 0116 0115 0114 0113 0112 0111 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001 0000</Border>
-    <Border Allegiance="JuPr" Color="blue" ShowLabel="false">1315</Border>
-    <Border Allegiance="JuPr" Color="blue" ShowLabel="false">1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3216 3217 3218 3219 3120 3020 3019 2919 2918 2817 2717 2616 2516 2415 2316 2315 2314 2313 2212 2112 2011 1911 2011 2112 2211 2210 2110 2009 2008 2007 2006 2005 1905 2004 2003 2002 2001 2000 1900</Border>
+    <Border Allegiance="JuRu" ShowLabel="false">1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3216 3217 3218 3219 3120 3020 3019 2919 2918 2817 2717 2616 2516 2415 2316 2315 2314 2313 2212 2112 2011 1911 2011 2112 2211 2210 2110 2009 2008 2007 2006 2005 1905 2004 2003 2002 2001 2000 1900</Border>
+    <Border Allegiance="JuRu" ShowLabel="false">0000 0100 0200 0300 0400 0500 0600 0700 0800 0900 1000 1100 1200 1301 1302 1303 1203 1204 1205 1206 1207 1308 1408 1308 1208 1209 1210 1211 1112 1012 1013 0914 0814 0715 0615 0616 0617 0517 0416 0316 0216 0116 0115 0114 0113 0112 0111 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001 0000</Border>
+    <Border Allegiance="JuRu" ShowLabel="false">1315</Border>
+    <Border Allegiance="JuPr" ShowLabel="false">0000 0100 0200 0300 0400 0500 0600 0700 0800 0900 1000 1100 1200 1300 1400 1500 1400 1301 1302 1303 1203 1204 1205 1206 1207 1308 1408 1308 1208 1209 1210 1211 1112 1012 1013 0914 0814 0715 0615 0616 0617 0517 0416 0316 0216 0116 0115 0114 0113 0112 0111 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001 0000</Border>
+    <Border Allegiance="JuPr" ShowLabel="false">1315</Border>
+    <Border Allegiance="JuPr" ShowLabel="false">1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3216 3217 3218 3219 3120 3020 3019 2919 2918 2817 2717 2616 2516 2415 2316 2315 2314 2313 2212 2112 2011 1911 2011 2112 2211 2210 2110 2009 2008 2007 2006 2005 1905 2004 2003 2002 2001 2000 1900</Border>
   </Borders>
   <Routes Author="Jason &quot;Flynn&quot; Kemp, Mike Kuehn" Source="Underdeveloped Sectors" Ref="http://www.elvwood.org/Traveller/Sectors/EmptyQuarter.html">
     <Route Start="0426" End="0127" />
@@ -88,82 +91,82 @@
     <Route Start="0338" End="0241" />
     <Route Start="0638" End="0641" />
 
-    <Route Start="2001" End="2203" Allegiance="HeLo" Color="LightBlue" />
-    <Route Start="2203" End="2005" Allegiance="HeLo" Color="LightBlue" />
-    <Route Start="2203" End="2405" Allegiance="HeLo" Color="LightBlue" />
-    <Route Start="2405" End="2407" Allegiance="HeLo" Color="LightBlue" />
-    <Route Start="2407" End="2109" Allegiance="HeLo" Color="LightBlue" />
-    <Route Start="2109" End="2009" Allegiance="HeLo" Color="LightBlue" />
-    <Route Start="2009" End="1911" Allegiance="HeLo" Color="LightBlue" />
-    <Route Start="2109" End="2410" Allegiance="HeLo" Color="LightBlue" />
-    <Route Start="2410" End="2212" Allegiance="HeLo" Color="LightBlue" />
-    <Route Start="2212" End="2413" Allegiance="HeLo" Color="LightBlue" />
-    <Route Start="2413" End="2516" Allegiance="HeLo" Color="LightBlue" />
-    <Route Start="2413" End="2612" Allegiance="HeLo" Color="LightBlue" />
-    <Route Start="2612" End="2913" Allegiance="HeLo" Color="LightBlue" />
-    <Route Start="2913" End="2914" Allegiance="HeLo" Color="LightBlue" />
-    <Route Start="2914" End="3116" Allegiance="HeLo" Color="LightBlue" />
-    <Route Start="3116" End="3117" Allegiance="HeLo" Color="LightBlue" />
-    <Route Start="3117" End="2919" Allegiance="HeLo" Color="LightBlue" />
-    <Route Start="3117" End="3219" Allegiance="HeLo" Color="LightBlue" />
-    <Route Start="2913" End="3112" Allegiance="HeLo" Color="LightBlue" />
-    <Route Start="2612" End="2810" Allegiance="HeLo" Color="LightBlue" />
-    <Route Start="2810" End="2708" Allegiance="HeLo" Color="LightBlue" />
-    <Route Start="2708" End="2407" Allegiance="HeLo" Color="LightBlue" />
-    <Route Start="2708" End="2906" Allegiance="HeLo" Color="LightBlue" />
-    <Route Start="2906" End="3008" Allegiance="HeLo" Color="LightBlue" />
-    <Route Start="3008" End="2810" Allegiance="HeLo" Color="LightBlue" />
-    <Route Start="3008" End="3206" Allegiance="HeLo" Color="LightBlue" />
-    <Route Start="2906" End="2704" Allegiance="HeLo" Color="LightBlue" />
-    <Route Start="2704" End="2804" Allegiance="HeLo" Color="LightBlue" />
-    <Route Start="2804" End="3104" Allegiance="HeLo" Color="LightBlue" />
-    <Route Start="3104" End="3201" Allegiance="HeLo" Color="LightBlue" />
-    <Route Start="2704" End="2701" Allegiance="HeLo" Color="LightBlue" />
-    <Route Start="2704" End="2504" Allegiance="HeLo" Color="LightBlue" />
-    <Route Start="2504" End="2405" Allegiance="HeLo" Color="LightBlue" />
+    <Route Start="2001" End="2203" Allegiance="JuPr" />
+    <Route Start="2203" End="2005" Allegiance="JuPr" />
+    <Route Start="2203" End="2405" Allegiance="JuPr" />
+    <Route Start="2405" End="2407" Allegiance="JuPr" />
+    <Route Start="2407" End="2109" Allegiance="JuPr" />
+    <Route Start="2109" End="2009" Allegiance="JuPr" />
+    <Route Start="2009" End="1911" Allegiance="JuPr" />
+    <Route Start="2109" End="2410" Allegiance="JuPr" />
+    <Route Start="2410" End="2212" Allegiance="JuPr" />
+    <Route Start="2212" End="2413" Allegiance="JuPr" />
+    <Route Start="2413" End="2516" Allegiance="JuPr" />
+    <Route Start="2413" End="2612" Allegiance="JuPr" />
+    <Route Start="2612" End="2913" Allegiance="JuPr" />
+    <Route Start="2913" End="2914" Allegiance="JuPr" />
+    <Route Start="2914" End="3116" Allegiance="JuPr" />
+    <Route Start="3116" End="3117" Allegiance="JuPr" />
+    <Route Start="3117" End="2919" Allegiance="JuPr" />
+    <Route Start="3117" End="3219" Allegiance="JuPr" />
+    <Route Start="2913" End="3112" Allegiance="JuPr" />
+    <Route Start="2612" End="2810" Allegiance="JuPr" />
+    <Route Start="2810" End="2708" Allegiance="JuPr" />
+    <Route Start="2708" End="2407" Allegiance="JuPr" />
+    <Route Start="2708" End="2906" Allegiance="JuPr" />
+    <Route Start="2906" End="3008" Allegiance="JuPr" />
+    <Route Start="3008" End="2810" Allegiance="JuPr" />
+    <Route Start="3008" End="3206" Allegiance="JuPr" />
+    <Route Start="2906" End="2704" Allegiance="JuPr" />
+    <Route Start="2704" End="2804" Allegiance="JuPr" />
+    <Route Start="2804" End="3104" Allegiance="JuPr" />
+    <Route Start="3104" End="3201" Allegiance="JuPr" />
+    <Route Start="2704" End="2701" Allegiance="JuPr" />
+    <Route Start="2704" End="2504" Allegiance="JuPr" />
+    <Route Start="2504" End="2405" Allegiance="JuPr" />
     <!-- Routes off the edge of the sector -->
-    <Route Start="2701" End="2600" Allegiance="HeLo" Color="LightBlue" />
-    <Route Start="3201" End="3100" Allegiance="HeLo" Color="LightBlue" />
-    <Route Start="3201" End="3301" Allegiance="HeLo" Color="LightBlue" />
-    <Route Start="3206" End="0205" EndOffsetX="1" Allegiance="HeLo" Color="LightBlue" />
-    <Route Start="3112" End="3312" Allegiance="HeLo" Color="LightBlue" />
+    <Route Start="2701" End="2600" Allegiance="JuPr" />
+    <Route Start="3201" End="3100" Allegiance="JuPr" />
+    <Route Start="3201" End="3301" Allegiance="JuPr" />
+    <Route Start="3206" End="0205" EndOffsetX="1" Allegiance="JuPr" />
+    <Route Start="3112" End="3312" Allegiance="JuPr" />
 
 
-    <Route Start="0302" End="0501" Allegiance="JuRu" Color="LightBlue" />
-    <Route Start="0501" End="0601" Allegiance="JuRu" Color="LightBlue" />
-    <Route Start="0601" End="0704" Allegiance="JuRu" Color="LightBlue" />
-    <Route Start="0704" End="0705" Allegiance="JuRu" Color="LightBlue" />
-    <Route Start="0705" End="0406" Allegiance="JuRu" Color="LightBlue" />
-    <Route Start="0406" End="0206" Allegiance="JuRu" Color="LightBlue" />
-    <Route Start="0206" End="0305" Allegiance="JuRu" Color="LightBlue" />
-    <Route Start="0305" End="0302" Allegiance="JuRu" Color="LightBlue" />
-    <Route Start="0206" End="0208" Allegiance="JuRu" Color="LightBlue" />
-    <Route Start="0208" End="0510" Allegiance="JuRu" Color="LightBlue" />
-    <Route Start="0510" End="0709" Allegiance="JuRu" Color="LightBlue" />
-    <Route Start="0709" End="0907" Allegiance="JuRu" Color="LightBlue" />
-    <Route Start="0907" End="0906" Allegiance="JuRu" Color="LightBlue" />
-    <Route Start="0906" End="0705" Allegiance="JuRu" Color="LightBlue" />
-    <Route Start="0906" End="1105" Allegiance="JuRu" Color="LightBlue" />
-    <Route Start="1105" End="1303" Allegiance="JuRu" Color="LightBlue" />
-    <Route Start="1303" End="1301" Allegiance="JuRu" Color="LightBlue" />
-    <Route Start="0906" End="1206" Allegiance="JuRu" Color="LightBlue" />
-    <Route Start="1206" End="1408" Allegiance="JuRu" Color="LightBlue" />
-    <Route Start="0709" End="0811" Allegiance="JuRu" Color="LightBlue" />
-    <Route Start="0811" End="1013" Allegiance="JuRu" Color="LightBlue" />
-    <Route Start="1013" End="1211" Allegiance="JuRu" Color="LightBlue" />
-    <Route Start="1013" End="1214" Allegiance="JuRu" Color="LightBlue" />
-    <Route Start="1214" End="1315" Allegiance="JuRu" Color="LightBlue" />
-    <Route Start="0811" End="0613" Allegiance="JuRu" Color="LightBlue" />
-    <Route Start="0613" End="0514" Allegiance="JuRu" Color="LightBlue" />
-    <Route Start="0514" End="0414" Allegiance="JuRu" Color="LightBlue" />
-    <Route Start="0414" End="0616" Allegiance="JuRu" Color="LightBlue" />
-    <Route Start="0414" End="0116" Allegiance="JuRu" Color="LightBlue" />
+    <Route Start="0302" End="0501" Allegiance="JuPr" />
+    <Route Start="0501" End="0601" Allegiance="JuPr" />
+    <Route Start="0601" End="0704" Allegiance="JuPr" />
+    <Route Start="0704" End="0705" Allegiance="JuPr" />
+    <Route Start="0705" End="0406" Allegiance="JuPr" />
+    <Route Start="0406" End="0206" Allegiance="JuPr" />
+    <Route Start="0206" End="0305" Allegiance="JuPr" />
+    <Route Start="0305" End="0302" Allegiance="JuPr" />
+    <Route Start="0206" End="0208" Allegiance="JuPr" />
+    <Route Start="0208" End="0510" Allegiance="JuPr" />
+    <Route Start="0510" End="0709" Allegiance="JuPr" />
+    <Route Start="0709" End="0907" Allegiance="JuPr" />
+    <Route Start="0907" End="0906" Allegiance="JuPr" />
+    <Route Start="0906" End="0705" Allegiance="JuPr" />
+    <Route Start="0906" End="1105" Allegiance="JuPr" />
+    <Route Start="1105" End="1303" Allegiance="JuPr" />
+    <Route Start="1303" End="1301" Allegiance="JuPr" />
+    <Route Start="0906" End="1206" Allegiance="JuPr" />
+    <Route Start="1206" End="1408" Allegiance="JuPr" />
+    <Route Start="0709" End="0811" Allegiance="JuPr" />
+    <Route Start="0811" End="1013" Allegiance="JuPr" />
+    <Route Start="1013" End="1211" Allegiance="JuPr" />
+    <Route Start="1013" End="1214" Allegiance="JuPr" />
+    <Route Start="1214" End="1315" Allegiance="JuPr" />
+    <Route Start="0811" End="0613" Allegiance="JuPr" />
+    <Route Start="0613" End="0514" Allegiance="JuPr" />
+    <Route Start="0514" End="0414" Allegiance="JuPr" />
+    <Route Start="0414" End="0616" Allegiance="JuPr" />
+    <Route Start="0414" End="0116" Allegiance="JuPr" />
     <!-- Routes off the edge of the sector -->
-    <Route Start="1301" EndOffsetY="-1" End="1238" Allegiance="JuRu" Color="LightBlue" />
-    <Route Start="0501" EndOffsetY="-1" End="0639" Allegiance="JuRu" Color="LightBlue" />
-    <Route Start="0206" End="0004" Allegiance="JuRu" Color="LightBlue" />
-    <Route Start="2001" End="1900" Allegiance="JuRu" Color="LightBlue" />
-    <!-- <Route Start="0116" End="0016" Allegiance="JuRu" Color="LightBlue" /> Nowhere for this one to go! -->
+    <Route Start="1301" EndOffsetY="-1" End="1238" Allegiance="JuPr" />
+    <Route Start="0501" EndOffsetY="-1" End="0639" Allegiance="JuPr" />
+    <Route Start="0206" End="0004" Allegiance="JuPr" />
+    <Route Start="2001" End="1900" Allegiance="JuPr" />
+    <!-- <Route Start="0116" End="0016" Allegiance="JuPr" /> Nowhere for this one to go! -->
 
   </Routes>
 </Sector>

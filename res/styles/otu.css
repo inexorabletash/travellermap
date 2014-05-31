@@ -1,0 +1,30 @@
+﻿/* 
+ * Styles for map elements that key off of allegiance codes. This includes:
+ *   borders: color
+ *   route: color, style, width
+ * Syntax is similar to CSS:
+ *   element { property: value; property: value; }
+ *   element.allegiance { ... }
+ * Note that ; is a terminator, not a separator
+ */
+
+border.Im { color: red; }
+route.Im { color: green; }
+
+border.SoCf { color: orange; }
+route.SoCf { color: green; }
+
+border.ZhCo { color: blue; }
+route.ZhCo { color: lightblue; }
+
+border.As { color: yellow; }
+route.As { color: yellow; }
+
+border.Hv { color: purple; }
+route.Hv { color: gray; }
+
+border.Kk { color: green; }
+route.Kk { color: gray; }
+
+border.JuPr { color: blue; }
+route.JuPr { color: lightblue; }

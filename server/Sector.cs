@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Xml.Serialization;
+using System.Reflection;
 
 namespace Maps
 {
@@ -616,13 +617,12 @@ namespace Maps
                 new Point(Astrometrics.SubsectorWidth * (2 * ssx + 1) / 2, Astrometrics.SubsectorHeight * (2 * ssy + 1) / 2));
         }
 
-        private static SectorStylesheet s_defaultStyleSheet = SectorStylesheet.Parse(@"
-            border.Im { color: red; }
-            route.Im { color: green; }
-
-            border.ZhCo { color: blue; }
-            route.ZhCo { color: lightblue; }
-        ");
+        private static SectorStylesheet s_defaultStyleSheet;
+        static Sector() {
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            Stream stream = assembly.GetManifestResourceStream(@"Maps.res.styles.otu.css");
+            s_defaultStyleSheet = SectorStylesheet.Parse(new StreamReader(stream));
+        }
 
         [XmlIgnore, JsonIgnore]
         public SectorStylesheet Stylesheet { get; set; }
@@ -975,6 +975,9 @@ namespace Maps
 
         [XmlAttribute]
         public string Allegiance { get; set; }
+
+        [XmlAttribute]
+        public string Type { get; set; }
 
         public override string ToString()
         {
