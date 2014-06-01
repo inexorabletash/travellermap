@@ -58,13 +58,6 @@
   </Borders>
 
   <Routes>
-    <!--
-    <Route Allegiance="Parallel Lines" Color="gray" Start="" End="" />
-    <Route Allegiance="Beaufort Lines" Color="gray" Start="" End="" />
-    <Route Allegiance="Other Commercial Lines" Color="gray" Start="" End="" />
-    <Route Allegiance="Xboat" Color="gray" Start="" End="" />
-    -->
-
     <!-- Other Commercial Lines Jump Route -->
     <Route Type="Commercial" Start="0104" End="0105"/>
     <Route Type="Commercial" Start="0105" End="0205"/>

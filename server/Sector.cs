@@ -821,6 +821,9 @@ namespace Maps
             set { LabelPosition = new Point(value / 100, value % 100); }
         }
 
+        [XmlAttribute]
+        public string Label { get; set; }
+
         [XmlText,JsonName("Path")]
         public string PathString
         {

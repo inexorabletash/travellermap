@@ -1318,7 +1318,7 @@ namespace Maps.Rendering
                         Allegiance alleg = sector.GetAllegianceFromCode(border.Allegiance);
                         if (alleg != null)
                         {
-                            string text = alleg.Name;
+                            string text = border.Label ?? alleg.Name;
                             Point labelHex = border.LabelPosition;
                             PointF labelPos = Astrometrics.HexToCenter(Astrometrics.LocationToCoordinates(new Location(sector.Location, labelHex)));
                             // TODO: Replace these with, well, positions!
