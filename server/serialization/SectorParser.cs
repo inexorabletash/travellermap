@@ -339,9 +339,8 @@ namespace Maps.Serialization
         public override void Parse(TextReader reader, WorldCollection worlds)
         {
             ColumnParser parser = new ColumnParser(reader);
-            foreach (var row in parser.Data) {
+            foreach (var row in parser.Data)
                 ParseWorld(worlds, row.dict, row.line, row.lineNumber);
-            }
         }
     }
 

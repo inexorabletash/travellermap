@@ -88,9 +88,7 @@ namespace Maps.Serialization
         {
             StringDictionary dict = new StringDictionary();
             foreach (var column in columns)
-            {
                 dict[column.name] = Util.SafeSubstring(line, column.start, column.length).TrimEnd();
-            }
             data.Add(new Row { dict = dict, line = line, lineNumber = lineNumber });
         }
     }
@@ -132,9 +130,7 @@ namespace Maps.Serialization
             foreach (var row in rows)
             {
                 for (int i = 0; i < row.Length; ++i)
-                {
                     widths[i] = Math.Max(widths[i], row[i].Length);
-                }
             }
             for (int i = 0; i < widths.Length; ++i)
             {

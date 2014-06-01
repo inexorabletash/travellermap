@@ -137,9 +137,7 @@ namespace Maps.Admin
             {
                 context.Response.Output.Write(code + " - ");
                 foreach (var sector in codes[code].OrderBy(s => s))
-                {
                     context.Response.Output.Write(sector + " ");
-                }
                 context.Response.Output.WriteLine("");
             }
         }

@@ -238,10 +238,9 @@ namespace Maps
                     string sql = String.Format(query_format, "TT.x, TT.y", "x, y", "sectors", where);
                     using (var sqlCommand = new SqlCommand(sql, connection))
                     {
-                        for (int i = 0; i < terms.Count; ++i)
-                        {
+                        for (int i = 0; i < terms.Count; ++i)                        
                             sqlCommand.Parameters.AddWithValue(String.Format("@term{0}", i), terms[i]);
-                        }
+                        
                         using (var row = sqlCommand.ExecuteReader())
                         {
                             while (row.Read())
@@ -261,9 +260,8 @@ namespace Maps
                     using (var sqlCommand = new SqlCommand(sql, connection))
                     {
                         for (int i = 0; i < terms.Count; ++i)
-                        {
                             sqlCommand.Parameters.AddWithValue(String.Format("@term{0}", i), terms[i]);
-                        }
+                        
                         using (var row = sqlCommand.ExecuteReader())
                         {
                             while (row.Read())
@@ -285,15 +283,12 @@ namespace Maps
                     using (var sqlCommand = new SqlCommand(sql, connection))
                     {
                         for (int i = 0; i < terms.Count; ++i)
-                        {
                             sqlCommand.Parameters.AddWithValue(String.Format("@term{0}", i), terms[i]);
-                        }
+                        
                         using (var row = sqlCommand.ExecuteReader())
                         {
                             while (row.Read())
-                            {
                                 results.Add(new WorldLocation(row.GetInt32(0), row.GetInt32(1), row.GetInt32(2), row.GetInt32(3)));
-                            }
                         }
                     }
                 }

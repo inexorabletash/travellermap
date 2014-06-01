@@ -54,14 +54,10 @@ namespace Maps.Admin
             foreach (string value in values)
             {
                 if (!first)
-                {
                     output.Write(',');
-                }
                 else
-                {
                     first = false;
-                }
-
+                
                 if (value.IndexOf(',') == -1 && value.IndexOf('"') == -1)
                 {
                     // plain

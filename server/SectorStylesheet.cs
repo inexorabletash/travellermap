@@ -234,7 +234,8 @@ namespace Maps
                     return null;
                 reader.Read();
                 string s = "#";
-                for (int i = 0; i < 6; ++i) {
+                for (int i = 0; i < 6; ++i)
+                {
                     c = reader.Peek();
                     if (!('0' <= c && c <= '9') && !('A' <= c && c <= 'F'))
                         throw new ParseException("Expected hex, saw: " + reader.ReadLine());
@@ -436,9 +437,7 @@ namespace Maps
             }
             result = new StyleResult(element, code, new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase));
             foreach (var entry in dict)
-            {
                 result.dict[entry.Key] = entry.Value.Item2;
-            }
             memo[key] = result;
             return result;
         }

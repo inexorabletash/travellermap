@@ -455,14 +455,10 @@ namespace Maps.Rendering
                         ctx.styles.sectorGrid.pen.Apply(ref pen);
 
                         for (float h = ((float)(Math.Floor((ctx.tileRect.Left) / Astrometrics.SectorWidth) - 1) - Astrometrics.ReferenceSector.X) * Astrometrics.SectorWidth - Astrometrics.ReferenceHex.X; h <= ctx.tileRect.Right + Astrometrics.SectorWidth; h += Astrometrics.SectorWidth)
-                        {
                             ctx.graphics.DrawLine(pen, h, ctx.tileRect.Top - gridSlop, h, ctx.tileRect.Bottom + gridSlop);
-                        }
-
+                        
                         for (float v = ((float)(Math.Floor((ctx.tileRect.Top) / Astrometrics.SectorHeight) - 1) - Astrometrics.ReferenceSector.Y) * Astrometrics.SectorHeight - Astrometrics.ReferenceHex.Y; v <= ctx.tileRect.Bottom + Astrometrics.SectorHeight; v += Astrometrics.SectorHeight)
-                        {
                             ctx.graphics.DrawLine(pen, ctx.tileRect.Left - gridSlop, v, ctx.tileRect.Right + gridSlop, v);
-                        }
                     }
 
                     #endregion
@@ -760,9 +756,7 @@ namespace Maps.Rendering
                 {
                     solidBrush.Color = Color.FromArgb(128, ctx.styles.backgroundColor);
                     foreach (Sector sector in ctx.selector.Sectors.Where(sector => !sector.Tags.Contains("Official")))
-                    {
                         ctx.graphics.DrawRectangle(solidBrush, sector.Bounds);
-                    }
                 }
 
                 #endregion

@@ -57,10 +57,8 @@ namespace Maps.API
             {
                 // TODO: Multiple names
                 foreach (var name in sector.Names.Take(1))
-                {
                     data.SectorName = name.Text;
-                }
-
+                
                 // Raw HTML credits
                 data.Credits = sector.Credits == null ? null : sector.Credits.Trim();
 

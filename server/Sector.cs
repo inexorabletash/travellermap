@@ -204,9 +204,7 @@ namespace Maps
             WorldCollection wc = new WorldCollection();
             wc.Deserialize(stream, mediaType);
             foreach (World world in wc)
-            {
                 world.Sector = this;
-            }
             m_data = wc;
         }
 
@@ -804,9 +802,7 @@ namespace Maps
             {
                 string[] hexes = new string[Path.Length];
                 for (int i = 0; i < Path.Length; i++)
-                {
                     hexes[i] = Path[i].ToString("0000", CultureInfo.InvariantCulture);
-                }
                 return String.Join(" ", hexes);
             }
             set

@@ -76,9 +76,7 @@ namespace Maps
         {
             var set = new HashSet<string>();
             foreach (var world in this)
-            {
                 set.Add(world.Allegiance);
-            }
             return set;
         }
     }

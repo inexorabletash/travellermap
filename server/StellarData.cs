@@ -228,10 +228,8 @@ namespace Maps
             public string ToString(OutputFormat format)
             {
                 string s = Core.ToString(format);
-                foreach (Companion c in Companions)
-                {
+                foreach (Companion c in Companions)                
                     s += " " + c.ToString(format);
-                }
                 return s;
             }
 
