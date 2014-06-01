@@ -68,13 +68,9 @@ namespace Maps.Serialization
                     {
                         Subsector ss = sector[i];
                         if (ss != null)
-                        {
                             writer.WriteLine("" + (char)('a' + i) + " " + ss.Name);
-                        }
                         else
-                        {
                             writer.WriteLine("" + (char)('a' + i));
-                        }
                     }
                     writer.WriteLine();
                 }
@@ -103,9 +99,7 @@ namespace Maps.Serialization
                         alleg = null;
 
                         if (code != null)
-                        {
                             alleg = sector.GetAllegianceFromCode(code);
-                        }
 
                         if (alleg != null)
                         {
@@ -124,21 +118,13 @@ namespace Maps.Serialization
 
                     // Output the item
                     if (item is Allegiance)
-                    {
                         WriteAllegiance(item as Allegiance);
-                    }
                     else if (item is Border)
-                    {
                         WriteBorder(item as Border, alleg);
-                    }
                     else if (item is Label)
-                    {
                         WriteLabel(item as Label);
-                    }
                     else if (item is Route)
-                    {
                         WriteRoute(item as Route);
-                    }
                 }
             }
 
@@ -216,12 +202,12 @@ namespace Maps.Serialization
 
             private void WriteBorder(Border border, Allegiance alleg)
             {
-                if (border.ShowLabel && alleg != null)
+                if (border.ShowLabel && (border.Label != null || alleg != null))
                 {
                     writer.Write("label ");
                     writer.Write(border.LabelPositionHex.ToString("0000", CultureInfo.InvariantCulture));
                     writer.Write(" ");
-                    writer.Write(alleg.Name);
+                    writer.Write(border.Label ?? alleg.Name);
                     writer.WriteLine();
                 }
 
@@ -238,31 +224,15 @@ namespace Maps.Serialization
             private static int CompareAllegiances(IAllegiance a, IAllegiance b)
             {
                 if (a == null)
-                {
-                    if (b == null)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return -1;
-                    }
-                }
-                else
-                {
-                    if (b == null)
-                    {
-                        return 1;
-                    }
-                    else if (string.Equals(a.Allegiance, b.Allegiance))
-                    {
-                        return string.Compare(a.GetType().ToString(), b.GetType().ToString());
-                    }
-                    else
-                    {
-                        return string.Compare(a.Allegiance, b.Allegiance);
-                    }
-                }
+                    return b == null ? 0 : -1;
+
+                if (b == null)
+                    return 1;
+                    
+                if (string.Equals(a.Allegiance, b.Allegiance))
+                    return string.Compare(a.GetType().ToString(), b.GetType().ToString());
+
+                return string.Compare(a.Allegiance, b.Allegiance);
             }
         }
     }

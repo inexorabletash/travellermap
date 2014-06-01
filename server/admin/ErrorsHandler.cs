@@ -49,9 +49,7 @@ namespace Maps.Admin
                 {
                     context.Response.Output.WriteLine("{0} world(s)", worlds.Count());
                     foreach (string s in worlds.ErrorList.Where(s => candidate.IsMatch(s)))
-                    {
                         context.Response.Output.WriteLine(s);
-                    }
                 }
                 else
                 {
@@ -69,9 +67,7 @@ namespace Maps.Admin
                     int distance = Astrometrics.HexDistance(Astrometrics.LocationToCoordinates(startLocation),
                         Astrometrics.LocationToCoordinates(endLocation));
                     if (distance > 4)
-                    {
                         context.Response.Output.WriteLine("Route length {0}: {1}", distance, route.ToString());
-                    }
                     /*
                      * This fails because of routes that use e.g. 3341-style coordinates
                      * It will also be extremely slow due to loading world lists w/o caching
@@ -80,9 +76,7 @@ namespace Maps.Admin
                                             if (w != null)
                                             {
                                                 if (w[route.StartPoint.X, route.StartPoint.Y] == null)
-                                                {
                                                     context.Response.Output.WriteLine("Route start empty hex: {0}", route.ToString());
-                                                }
                                             }
                                         }
                                         {
@@ -90,9 +84,7 @@ namespace Maps.Admin
                                             if (w != null)
                                             {
                                                 if (w[route.EndPoint.X, route.EndPoint.Y] == null)
-                                                {
                                                     context.Response.Output.WriteLine("Route end empty hex: {0}", route.ToString());
-                                                }
                                             }
                                         }
                                         */

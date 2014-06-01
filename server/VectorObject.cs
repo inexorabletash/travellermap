@@ -121,9 +121,7 @@ namespace Maps.Rendering
                     List<byte> types = new List<byte>(m_pathDataPoints.Length);
                     types.Add((byte)PathPointType.Start);
                     for (int i = 1; i < m_pathDataPoints.Length; ++i)
-                    {
                         types.Add((byte)PathPointType.Line);
-                    }
                     m_pathDataTypes = types.ToArray();
                 }
 
@@ -153,9 +151,7 @@ namespace Maps.Rendering
             lock( this )
             {
                 if( flattened )
-                {
                     return;
-                }
                 flattened = true;
 
                 XGraphicsPath path = this.Path;
@@ -227,11 +223,8 @@ namespace Maps.Rendering
                 {
                     string str = Name;
                     if (labelStyle.Uppercase)
-                    {
                         str = str.ToUpperInvariant();
-                    }
-
-
+            
                     PointF pos = NamePosition;// PointF( bounds.Left + bounds.Width / 2, bounds.Top + bounds.Height / 2 );
 
                     using (RenderUtil.SaveState(graphics))

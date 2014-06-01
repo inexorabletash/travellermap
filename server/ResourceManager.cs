@@ -23,15 +23,11 @@ namespace Maps
             {
                 int index = m_keys.FindIndex(delegate(string s) { return s == key; });
                 if (index == -1)
-                {
                     return null;
-                }
-
+                
                 if (index == 0)
-                {
                     return m_values[0];
-                }
-
+                
                 string k = m_keys[index];
                 object v = m_values[index];
                 m_keys.RemoveAt(index);
@@ -105,9 +101,7 @@ namespace Maps
                     XmlSerializer xs = new XmlSerializer(type);
                     object o = xs.Deserialize(stream);
                     if (o.GetType() != type)
-                    {
                         throw new InvalidOperationException();
-                    }
                     return o;
                 }
             }
@@ -145,33 +139,25 @@ namespace Maps
                             CallingConventions.HasThis, new Type[0], null);
 
                         if (constructorInfoObj == null)
-                        {
                             throw new TargetException();
-                        }
 
                         obj = constructorInfoObj.Invoke(null);
 
                         IDeserializable ides = obj as IDeserializable;
                         if (ides == null)
-                        {
                             throw new TargetException();
-                        }
 
                         ides.Deserialize(stream, mediaType);
                     }
 
                     if (cacheResults)
-                    {
                         Cache[name] = obj;
-                    }
                 }
             }
 
             if (obj.GetType() != type)
-            {
                 throw new InvalidOperationException("Object is of the wrong type.");
-            }
-
+            
             return obj;
         }
     }

@@ -160,19 +160,15 @@ namespace Maps.API
                 queryDefaults = (context.Items["RouteData"] as System.Web.Routing.RouteData).Values;
 
             if (context.Request["accept"] != null)
-            {
                 yield return context.Request["accept"];
-            }
+
             if (queryDefaults != null && queryDefaults.ContainsKey("accept"))
-            {
                 yield return queryDefaults["accept"].ToString();
-            }
+
             if (context.Request.AcceptTypes != null)
             {
                 foreach (var type in context.Request.AcceptTypes)
-                {
                     yield return type;
-                }
             }
 
             yield return DefaultContentType;

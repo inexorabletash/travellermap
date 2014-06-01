@@ -36,10 +36,8 @@ namespace Maps.API
             // New-style Options
             // TODO: move to ParseOptions (maybe - requires options to be parsed after stylesheet creation?)
             if (HandlerBase.GetBoolOption(context.Request, "sscoords", queryDefaults: queryDefaults, defaultValue: false))
-            {
                 ctx.styles.hexCoordinateStyle = Stylesheet.HexCoordinateStyle.Subsector;
-            }
-
+            
             if (!HandlerBase.GetBoolOption(context.Request, "routes", queryDefaults: queryDefaults, defaultValue: true))
             {
                 ctx.styles.macroRoutes.visible = false;
@@ -94,10 +92,8 @@ namespace Maps.API
             using (var bitmap = new Bitmap((int)Math.Floor(tileSize.Width * devicePixelRatio), (int)Math.Floor(tileSize.Height * devicePixelRatio), PixelFormat.Format32bppArgb))
             {
                 if (transparent)
-                {
                     bitmap.MakeTransparent();
-                }
-
+                
                 using (var g = Graphics.FromImage(bitmap))
                 {
                     g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
@@ -105,9 +101,7 @@ namespace Maps.API
                     using (var graphics = XGraphics.FromGraphics(g, new XSize(tileSize.Width * devicePixelRatio, tileSize.Height * devicePixelRatio)))
                     {
                         if (devicePixelRatio != 0)
-                        {
                             graphics.ScaleTransform(devicePixelRatio);
-                        }
 
                         RenderToGraphics(ctx, rot, translateX, translateY, graphics);
                     }
@@ -116,10 +110,8 @@ namespace Maps.API
                 bool dataURI = HandlerBase.GetBoolOption(context.Request, "datauri", queryDefaults: queryDefaults, defaultValue: false );
                 MemoryStream ms = null;
                 if (dataURI)
-                {
                     ms = new MemoryStream();
-                }
-
+                
                 BitmapResponse(context.Response, dataURI ? ms : context.Response.OutputStream, ctx.styles, bitmap, transparent ? Util.MediaTypeName_Image_Png : null);
                 
                 if (dataURI)

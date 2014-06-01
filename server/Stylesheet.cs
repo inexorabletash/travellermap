@@ -507,10 +507,8 @@ namespace Maps.Rendering
                         worlds.textStyle.Uppercase = true;
 
                         if (scale > CandyMaxWorldRelativeScale)
-                        {
                             hexContentScale = CandyMaxWorldRelativeScale / (float)scale;
-                        }
-
+                        
                         break;
                     }
             }

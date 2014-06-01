@@ -27,10 +27,8 @@ namespace Maps.Rendering
         public static void DrawImageAlpha(XGraphics graphics, float alpha, Image image, Rectangle targetRect)
         {
             if (alpha <= 0f)
-            {
                 return;
-            }
-
+            
             // Clamp and Quantize
             alpha = Math.Min(1f, alpha);
             alpha = (float)Math.Round(alpha * 16f) / 16f;
@@ -43,10 +41,8 @@ namespace Maps.Rendering
             lock (image)
             {
                 if (image.Tag == null || !(image.Tag is Dictionary<int, XImage>))
-                {
                     image.Tag = new Dictionary<int, XImage>();
-                }
-
+                
                 Dictionary<int, XImage> dict = image.Tag as Dictionary<int, XImage>;
                 if (dict.ContainsKey(key))
                 {
@@ -490,9 +486,7 @@ namespace Maps.Rendering
             this.clipPathTypes = clipPathTypes.ToArray();
 
             if (curve.Count > 1)
-            {
                 curves.Add(curve);
-            }
 
             this.curvePoints = curves.Select(c => c.ToArray()).ToArray();
         }
@@ -573,11 +567,23 @@ namespace Maps.Rendering
             for (int i = 1; i < points.Length; ++i)
             {
                 PointF pt = points[i];
-                if (pt.X < rect.X) { float d = rect.X - pt.X; rect.X = pt.X; rect.Width += d; }
-                if (pt.Y < rect.Y) { float d = rect.Y - pt.Y; rect.Y = pt.Y; rect.Height += d; }
+                if (pt.X < rect.X)
+                {
+                    float d = rect.X - pt.X; 
+                    rect.X = pt.X; 
+                    rect.Width += d;
+                }
+                if (pt.Y < rect.Y)
+                {
+                    float d = rect.Y - pt.Y;
+                    rect.Y = pt.Y;
+                    rect.Height += d;
+                }
 
-                if (pt.X > rect.Right) { rect.Width = pt.X - rect.X; }
-                if (pt.Y > rect.Bottom) { rect.Height = pt.Y - rect.Y; }
+                if (pt.X > rect.Right) 
+                    rect.Width = pt.X - rect.X;
+                if (pt.Y > rect.Bottom)
+                    rect.Height = pt.Y - rect.Y;
             }
 
             return rect;

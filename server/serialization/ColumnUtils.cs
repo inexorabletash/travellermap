@@ -114,20 +114,15 @@ namespace Maps.Serialization
         public void AddRow(IList<string> data)
         {
             if (rows[0].Length != data.Count())
-            {
                 throw new ApplicationException("Differing column counts");
-            }
+
             string[] row = new string[rows[0].Length];
             for (int i = 0; i < row.Length; ++i)
             {
                 if (data[i] == null)
-                {
                     row[i] = "";
-                }
                 else
-                {
                     row[i] = data[i].Trim();
-                }
             }
             rows.Add(row);
         }
@@ -144,9 +139,7 @@ namespace Maps.Serialization
             for (int i = 0; i < widths.Length; ++i)
             {
                 if (minimums.ContainsKey(i))
-                {
                     widths[i] = Math.Max(widths[i], minimums[i]);
-                }
             }
 
             return widths;
@@ -178,9 +171,7 @@ namespace Maps.Serialization
                 for (int i = 0; i < row.Length; ++i)
                 {
                     if (i != 0)
-                    {
                         line.Append(Delimiter);
-                    }
                     string col = row[i];
                     line.Append(col);
                     line.Append(Padding, widths[i] - col.Length);
@@ -193,9 +184,7 @@ namespace Maps.Serialization
                     for (int i = 0; i < row.Length; ++i)
                     {
                         if (i != 0)
-                        {
                             line.Append(Delimiter);
-                        }
                         line.Append(Separator, widths[i]);
                     }
                     writer.WriteLine(line.ToString());

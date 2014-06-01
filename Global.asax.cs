@@ -39,16 +39,12 @@ namespace Maps
             if (Defaults != null)
             {
                 foreach (var def in Defaults)
-                {
                     data.Values[def.Key] = def.Value;
-                }
             }
 
             foreach (var name in regex.GetGroupNames())
-            {
                 data.Values[name] = match.Groups[name];
-            }
-
+            
             return data;
         }
     }

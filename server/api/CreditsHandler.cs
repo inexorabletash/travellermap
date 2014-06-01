@@ -47,9 +47,7 @@ namespace Maps.API
             }
 
             if (loc.HexLocation.IsEmpty)
-            {
                 loc.HexLocation = new Point(Astrometrics.SectorWidth / 2, Astrometrics.SectorHeight / 2);
-            }
 
             Sector sector = map.FromLocation(loc.SectorLocation.X, loc.SectorLocation.Y);
 

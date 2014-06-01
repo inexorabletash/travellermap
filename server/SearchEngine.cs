@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Web;
 
 namespace Maps
 {
@@ -10,17 +11,7 @@ namespace Maps
     {
         public static SqlConnection MakeConnection()
         {
-            string connectionStringName;
-
-            if (System.Web.HttpContext.Current.Request.Url.Host == "localhost")
-            {
-                connectionStringName = "SqlDev";
-            }
-            else
-            {
-                connectionStringName = "SqlProd";
-            }
-
+            string connectionStringName = (HttpContext.Current.Request.Url.Host == "localhost") ? "SqlDev" : "SqlProd";
             string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings[connectionStringName].ConnectionString;
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();

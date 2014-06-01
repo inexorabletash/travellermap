@@ -150,10 +150,8 @@ namespace Maps.API
 
             // If any names are showing, show them all
             if (styles.worldDetails.HasFlag(WorldDetails.KeyNames))
-            {
                 styles.worldDetails |= WorldDetails.AllNames;
-            }
-
+            
             // Compute path
             float[] edgeX, edgeY;
             RenderUtil.HexEdges(styles.microBorderStyle == MicroBorderStyle.Square ? PathUtil.PathType.Square : PathUtil.PathType.Hex,

@@ -90,11 +90,9 @@ namespace Maps.Serialization
                     {
                         string[] tokens = value.Split((char[])null, StringSplitOptions.RemoveEmptyEntries);
                         if (!Regex.IsMatch(tokens.Last(), @"^\d{4}$"))
-                        {
                             sector.Borders.Add(new Border(String.Join(" ", tokens.Take(tokens.Count() - 1)), tokens.Last()));
-                        } else {
+                        else
                             sector.Borders.Add(new Border(String.Join(" ", tokens)));
-                        }
                         return;
                     }
 
@@ -211,9 +209,8 @@ namespace Maps.Serialization
                 }
 
                 if (accum.Length > 0)
-                {
                     Apply(accum.ToString(), sector);
-                }
+
                 accum.Clear();
                 accum.Append(line);
             }

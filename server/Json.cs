@@ -58,13 +58,9 @@ namespace Json
         public void Serialize( TextWriter writer, object item )
         {
             if( this.SerializeCollectionsAsArrays && item is IEnumerable )
-            {
                 SerializeArray( writer, (IEnumerable)item );
-            }
             else
-            {
                 SerializeValue( writer, item );
-            }
         }
 
         private static string GetName( object item )
@@ -113,13 +109,9 @@ namespace Json
                 if (value != null && !value.Equals(default_value))
                 {
                     if (!first)
-                    {
                         writer.Write(JsonConstants.FieldDelimiter);
-                    }
                     else
-                    {
                         first = false;
-                    }
 
                     writer.Write(Enquote(GetName(pi)));
                     writer.Write(JsonConstants.NameSeparator);
@@ -130,9 +122,7 @@ namespace Json
             writer.Write( JsonConstants.EndObject );
 
             if( name != null )
-            {
                 writer.Write( JsonConstants.EndObject );
-            }
         }
 
         private void SerializeArray( TextWriter writer, IEnumerable enumerable )
@@ -150,70 +140,42 @@ namespace Json
             foreach( object o in enumerable )
             {
                 if( !first )
-                {
                     writer.Write( JsonConstants.FieldDelimiter );
-                }
                 else
-                {
                     first = false;
-                }
 
                 SerializeValue( writer, o );
             }
             writer.Write( JsonConstants.EndArray );
 
             if( name != null )
-            {
                 writer.Write( JsonConstants.EndObject );
-            }
         }
 
-        private void SerializeValue( TextWriter writer, object o )
+        private void SerializeValue(TextWriter writer, object o)
         {
-            if( o == null )
-            {
-                writer.Write( "null" );
-            }
-            else if( o is bool )
-            {
-                writer.Write( ( (bool)o ) ? "true" : "false" );
-            }
-            else if( o is byte )
-            {
-                writer.Write( ( (double)(byte)o ).ToString( CultureInfo.InvariantCulture ) );
-            }
-            else if( o is short )
-            {
-                writer.Write( ( (double)(short)o ).ToString( CultureInfo.InvariantCulture ) );
-            }
-            else if( o is int )
-            {
-                writer.Write( ( (double)(int)o ).ToString( CultureInfo.InvariantCulture ) );
-            }
-            else if( o is long )
-            {
-                writer.Write( ( (double)(long)o ).ToString( CultureInfo.InvariantCulture ) );
-            }
-            else if( o is float )
-            {
-                writer.Write( ( (double)(float)o ).ToString( CultureInfo.InvariantCulture ) );
-            }
-            else if( o is double )
-            {
-                writer.Write( ( (double)o ).ToString( CultureInfo.InvariantCulture ) );
-            }
-            else if( o is string )
-            {
-                writer.Write( Enquote( (string)o ) );
-            }
-            else if( o is IEnumerable )
-            {
-                SerializeArray( writer, (IEnumerable)o );
-            }
+            if (o == null)
+                writer.Write("null");
+            else if (o is bool)
+                writer.Write(((bool)o) ? "true" : "false");
+            else if (o is byte)
+                writer.Write(((double)(byte)o).ToString(CultureInfo.InvariantCulture));
+            else if (o is short)
+                writer.Write(((double)(short)o).ToString(CultureInfo.InvariantCulture));
+            else if (o is int)
+                writer.Write(((double)(int)o).ToString(CultureInfo.InvariantCulture));
+            else if (o is long)
+                writer.Write(((double)(long)o).ToString(CultureInfo.InvariantCulture));
+            else if (o is float)
+                writer.Write(((double)(float)o).ToString(CultureInfo.InvariantCulture));
+            else if (o is double)
+                writer.Write(((double)o).ToString(CultureInfo.InvariantCulture));
+            else if (o is string)
+                writer.Write(Enquote((string)o));
+            else if (o is IEnumerable)
+                SerializeArray(writer, (IEnumerable)o);
             else
-            {
-                SerializeObject( writer, o );
-            }
+                SerializeObject(writer, o);
         }
 
         private static string Enquote( string s )

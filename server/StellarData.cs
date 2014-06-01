@@ -251,14 +251,9 @@ namespace Maps
                         r.Read();
 
                     Companion companion;
-                    if (Companion.Parse(r, out companion))
-                    {
-                        system.Companions.Add(companion);
-                    }
-                    else
-                    {
+                    if (!Companion.Parse(r, out companion))
                         throw new InvalidSystemException("Expected companion");
-                    }
+                    system.Companions.Add(companion);
                 }
 
                 return true;
@@ -276,18 +271,12 @@ namespace Maps
             {
                 string res;
                 if (Type.Length > 1)
-                {
                     res = Type;
-                }
                 else
-                {
                     res = Type + Tenths.ToString() + (format == OutputFormat.Compact ? "" : " ") + Size;
-                }
 
                 if (Main && format == OutputFormat.Extended)
-                {
                     res += "*";
-                }
 
                 return res;
             }
@@ -310,7 +299,8 @@ namespace Maps
                     star = new Star();
                     star.Type = m;
 
-                    if (r.Peek() == ' ') {
+                    if (r.Peek() == ' ')
+                    {
                         while (r.Peek() == ' ') // w*
                             r.Read();
                         if (Match(r, DWARF_SIZE) == null)

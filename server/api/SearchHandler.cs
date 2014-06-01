@@ -61,10 +61,8 @@ namespace Maps.API
             query = query.Replace('?', '_'); // Support ? and _ as wildcards
 
             if (UWP_REGEXP.IsMatch(query))
-            {
                 query = "uwp:" + query;
-            }
-
+            
             var searchResults = SearchEngine.PerformSearch(query, resourceManager, SearchEngine.SearchResultsType.Default, 160);
 
             Results resultsList = new Results();

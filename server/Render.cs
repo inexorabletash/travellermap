@@ -138,17 +138,14 @@ namespace Maps.Rendering
                 lock (ctx.resourceManager.GetType())
                 {
                     if (ctx.styles.useBackgroundImage && s_backgroundImage == null)
-                    {
                         s_backgroundImage = XImage.FromFile(ctx.resourceManager.Server.MapPath(@"~/res/Candy/Nebula.png"));
-                    }
+ 
                     if (ctx.styles.showRifts && s_riftImage == null)
-                    {
                         s_riftImage = Image.FromFile(ctx.resourceManager.Server.MapPath(@"~/res/Candy/Rifts.png"));
-                    }
+
                     if (ctx.styles.useGalaxyImage && s_galaxyImage == null)
-                    {
                         s_galaxyImage = Image.FromFile(ctx.resourceManager.Server.MapPath(@"~/res/Candy/Galaxy.png"));
-                    }
+                    
                     if (ctx.styles.useWorldImages && s_worldImages == null)
                     {
                         s_worldImages = new Dictionary<string, XImage> {
@@ -281,14 +278,14 @@ namespace Maps.Rendering
                                 // Offset of the background, relative to the canvas
                                 double ox = (float)(-ctx.tileRect.Left * ctx.scale * Astrometrics.ParsecScaleX) % w;
                                 double oy = (float)(-ctx.tileRect.Top * ctx.scale * Astrometrics.ParsecScaleY) % h;
-                                if (ox > 0) { ox -= w; }
-                                if (oy > 0) { oy -= h; }
+                                if (ox > 0) ox -= w;
+                                if (oy > 0) oy -= h;
 
                                 // Number of copies needed to cover the canvas
                                 int nx = 1 + (int)Math.Floor(ctx.tileSize.Width / w);
                                 int ny = 1 + (int)Math.Floor(ctx.tileSize.Height / h);
-                                if (ox + nx * w < ctx.tileSize.Width) { nx += 1; }
-                                if (oy + ny * h < ctx.tileSize.Height) { ny += 1; }
+                                if (ox + nx * w < ctx.tileSize.Width) nx += 1;
+                                if (oy + ny * h < ctx.tileSize.Height) ny += 1;
 
                                 for (int x = 0; x < nx; ++x)
                                 {
@@ -591,9 +588,7 @@ namespace Maps.Rendering
                     if (ctx.styles.microBorders.visible)
                     {
                         if (ctx.styles.fillMicroBorders)
-                        {
                             DrawMicroBorders(ctx, fonts, BorderLayer.Fill);
-                        }
                         DrawMicroBorders(ctx, fonts, BorderLayer.Stroke);
                     }
                     #endregion
@@ -605,9 +600,8 @@ namespace Maps.Rendering
                     #region routes
 
                     if (ctx.styles.microRoutes.visible)
-                    {
                         DrawRoutes(ctx, fonts);
-                    }
+                    
                     #endregion
                     timers.Add(new Timer("routes"));
 
@@ -735,10 +729,8 @@ namespace Maps.Rendering
                     #region government-names
 
                     if (ctx.styles.showMicroNames)
-                    {
                         DrawLabels(ctx, fonts);
-                    }
-
+                    
                     #endregion
                     timers.Add(new Timer("micro"));
                 }
@@ -1041,9 +1033,7 @@ namespace Maps.Rendering
 
                             // Special case: Show Zho Naval+Military as diamond
                             if (world.BaseAllegiance == "Zh" && bases == "KM")
-                            {
                                 bases = "Z";
-                            }
 
                             // Base 1
                             bool bottomUsed = false;
@@ -1408,23 +1398,18 @@ namespace Maps.Rendering
                         SectorStylesheet.StyleResult ssr = sector.ApplyStylesheet("route", route.Allegiance ?? route.Type ?? "Im");
                         routeStyle = routeStyle ?? ssr.GetEnum<Route.RouteStyle>("style");
                         routeColor = routeColor ?? ssr.GetColor("color");
-                        routeWidth = routeWidth ?? (float?)ssr.GetNumber("width");
+                        routeWidth = routeWidth ?? (float?)ssr.GetNumber("width") ?? 1.0f;
 
                         // In grayscale, convert default color and style to non-default style
                         if (ctx.styles.grayscale && !routeColor.HasValue && !routeStyle.HasValue)
-                        {
                             routeStyle = Route.RouteStyle.Dashed;
-                        }   
 
                         routeColor = routeColor ?? ctx.styles.microRoutes.pen.color;
                         routeStyle = routeStyle ?? Route.RouteStyle.Solid;
-                        routeWidth = routeWidth ?? 1.0f;
 
                         // Ensure color is visible
                         if (ctx.styles.grayscale || !ColorUtil.NoticeableDifference(routeColor.Value, ctx.styles.backgroundColor))
-                        {
                             routeColor = ctx.styles.microRoutes.pen.color; // default
-                        }
 
                         pen.Color = routeColor.Value;
                         pen.Width = routeWidth.Value * baseWidth;

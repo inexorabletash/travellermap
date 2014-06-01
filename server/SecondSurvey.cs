@@ -17,14 +17,10 @@ namespace Maps
         public static char ToHex(int c)
         {
             if (c == -1)
-            {
                 return 'S'; // Hack for "small" worlds
-            }
 
             if (0 <= c && c < HEX.Length)
-            {
                 return HEX[c];
-            }
 
             throw new ArgumentOutOfRangeException(String.Format(CultureInfo.InvariantCulture, "Value out of range: '{0}'", c), "c");
         }

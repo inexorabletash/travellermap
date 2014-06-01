@@ -83,17 +83,13 @@ namespace Maps
             foreach (var metafile in metafiles)
             {
                 SectorCollection collection = resourceManager.GetXmlFileObject(metafile.filename, typeof(SectorCollection), cache: false) as SectorCollection;
-                foreach (var sector in collection.Sectors) {
+                foreach (var sector in collection.Sectors)
                     sector.Tags.AddRange(metafile.tags);
-                }
+
                 if (m_sectors == null)
-                {
                     m_sectors = collection;
-                }
                 else
-                {
-                    m_sectors.Merge(collection);
-                }
+                    m_sectors.Merge(collection);                
             }
 
             m_nameMap.Clear();
@@ -120,18 +116,14 @@ namespace Maps
                 }
 
                 if (!String.IsNullOrEmpty(sector.Abbreviation) && !m_nameMap.ContainsKey(sector.Abbreviation))
-                {
                     m_nameMap.Add(sector.Abbreviation, sector);
-                }
             }
         }
 
         public static SectorMap FromName(string settingName, ResourceManager resourceManager)
           {
             if (settingName != SectorMap.DefaultSetting)
-            {
                 throw new ArgumentException("Only OTU setting is currently supported.");
-            }
 
             lock (typeof(SectorMap))
             {
@@ -167,19 +159,13 @@ namespace Maps
             //  * Consider Location (the offender) having a default setting
 
             if (settingName == null)
-            {
                 settingName = SectorMap.DefaultSetting;
-            }
 
             if (settingName != SectorMap.DefaultSetting)
-            {
                 throw new ArgumentException("Only OTU setting is currently supported");
-            }
 
             if (s_OTU == null)
-            {
                 throw new MapNotInitializedException();
-            }
 
             return s_OTU.FromName(sectorName);
         }
@@ -280,9 +266,7 @@ namespace Maps
         public void Merge(Sector metadataSource)
         {
             if (metadataSource == null)
-            {
                 throw new ArgumentNullException("metadataSource");
-            }
 
             // TODO: This is very fragile; if a new type is added to Sector we need to add more code here.
             if (metadataSource.Names.Any()) this.Names = metadataSource.Names;
@@ -381,9 +365,7 @@ namespace Maps
                 return -1;
             Subsector subsector;
             if (label.Length == 1 && 'A' <= label.ToUpperInvariant()[0] && label.ToUpperInvariant()[0] <= 'P')
-            {
                 return (int)label.ToUpperInvariant()[0] - (int)'A';
-            }
 
             subsector = Subsectors.Where(ss => !String.IsNullOrEmpty(ss.Name) && ss.Name.Equals(label, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
             if (subsector == null)
@@ -406,14 +388,10 @@ namespace Maps
                 // Otherwise, look it up
                 WorldCollection data = resourceManager.GetDeserializableFileObject(@"~/res/Sectors/" + DataFile, typeof(WorldCollection), cacheResults: false, mediaType: DataFile.Type) as WorldCollection;
                 foreach (World world in data)
-                {
                     world.Sector = this;
-                }
 
                 if (cacheResults)
-                {
                     m_data = data;
-                }
 
                 return data;
             }
@@ -447,13 +425,9 @@ namespace Maps
                 writer.WriteLine();
                 foreach(var name in Names) {
                     if (name.Lang != null)
-                    {
                         writer.WriteLine("# Name: {0} ({1})", name.Text, name.Lang);
-                    }
                     else
-                    {
                         writer.WriteLine("# Name: {0}", name);
-                    }
                 }
 
                 if (Credits != null)
@@ -490,9 +464,8 @@ namespace Maps
 
             if (worlds == null)
             {
-                if (includeMetadata) {
+                if (includeMetadata)
                     writer.WriteLine("# No world data available");
-                }
                 return;
             }
 
@@ -504,9 +477,7 @@ namespace Maps
                 {
                     var alleg = GetAllegianceFromCode(code);
                     if (alleg != null)
-                    {
                         writer.WriteLine("# Alleg: {0}: \"{1}\"", isT5 ? code : SecondSurvey.T5AllegianceCodeToLegacyCode(code), alleg.Name);
-                    }
                 }
                 writer.WriteLine();
             }
@@ -549,10 +520,14 @@ namespace Maps
                 for (int i = 1; i < clipPathPoints.Length; ++i )
                 {
                     PointF pt = clipPathPoints[i];
-                    if (pt.X < min.X) { min.X = pt.X; }
-                    if (pt.Y < min.Y) { min.Y = pt.Y; }
-                    if (pt.X > max.X) { max.X = pt.X; }
-                    if (pt.Y > max.Y) { max.Y = pt.Y; }
+                    if (pt.X < min.X)
+                        min.X = pt.X;
+                    if (pt.Y < min.Y) 
+                        min.Y = pt.Y;
+                    if (pt.X > max.X) 
+                        max.X = pt.X;
+                    if (pt.Y > max.Y) 
+                        max.Y = pt.Y;
                 }
                 this.bounds = new RectangleF(min, new SizeF(max.X - min.X, max.Y - min.Y));
             }
@@ -564,9 +539,7 @@ namespace Maps
             lock (this)
             {
                 if (clipPathsCache[(int)type] == null)
-                {
                     clipPathsCache[(int)type] = new ClipPath(this, type);
-                }
             }
 
             return clipPathsCache[(int)type];
@@ -867,9 +840,7 @@ namespace Maps
 
                 // If no position was set, use the center of the "bounding box"
                 if (LabelPosition.IsEmpty)
-                {
                     LabelPosition = new Point((min.X + max.X + 1) / 2, (min.Y + max.Y + 1) / 2); // "+ 1" to round up
-                }
 
                 Extends = (min.X < 1 || min.Y < 1 || max.X > Astrometrics.SectorWidth || max.Y > Astrometrics.SectorHeight);
             }
@@ -884,9 +855,7 @@ namespace Maps
             lock (this)
             {
                 if (borderPathsCache[(int)type] == null)
-                {
                     borderPathsCache[(int)type] = new BorderPath(this, sector, type);
-                }
             }
 
             return borderPathsCache[(int)type];
@@ -1054,13 +1023,9 @@ namespace Maps
                 throw new ArgumentNullException("otherCollection");
 
             if (Sectors == null)
-            {
                 Sectors = otherCollection.Sectors;
-            }
             else if (otherCollection.Sectors != null)
-            {
                 Sectors.AddRange(otherCollection.Sectors);
-            }
         }
     }
 

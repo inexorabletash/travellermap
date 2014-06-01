@@ -140,11 +140,9 @@ namespace Maps
             get
             {
                 int mantissa = SecondSurvey.FromHex(PBG[0]);
+                // Hack for legacy data w/o PBG
                 if (mantissa == 0 && PopulationExponent > 0)
-                {
-                    // Hack for legacy data w/o PBG
                     return 1;
-                }
                 return mantissa;
             }
         }

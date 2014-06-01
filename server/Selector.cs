@@ -137,9 +137,7 @@ namespace Maps
             {
                 RectangleF rect = m_rect;
                 if (Slop)
-                {
                     rect.Inflate(rect.Width * SLOP_FACTOR, rect.Height * SLOP_FACTOR);
-                }
 
                 int sx1 = (int)Math.Floor((rect.Left + Astrometrics.ReferenceHex.X) / Astrometrics.SectorWidth);
                 int sx2 = (int)Math.Floor((rect.Right + Astrometrics.ReferenceHex.X) / Astrometrics.SectorWidth);
@@ -166,10 +164,8 @@ namespace Maps
             {
                 RectangleF rect = m_rect;
                 if (Slop)
-                {
                     rect.Inflate(rect.Width * SLOP_FACTOR, rect.Height * SLOP_FACTOR);
-                }
-
+                
                 int hx1 = (int)Math.Floor(rect.Left);
                 int hx2 = (int)Math.Ceiling(rect.Right);
 

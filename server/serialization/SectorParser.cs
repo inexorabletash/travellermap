@@ -157,9 +157,7 @@ namespace Maps.Serialization
 
                 string rest = match.Groups["rest"].Value;
                 if (!String.IsNullOrEmpty(rest))
-                {
                     ParseRest(rest, worlds, line, world);
-                }
 
                 // TODO: Would need to filter this on serialization as well, or round trip through SEC would fail
                 // world.UpdateCode("Pr", "Px"); // Legacy: Pr = Prison; T5: Px = Prison/Exile Camp, Pr = Pre-Rich
@@ -262,17 +260,14 @@ namespace Maps.Serialization
 
                 // Cleanup known placeholders
                 if (world.Name == world.Name.ToUpperInvariant() && world.IsHi)
-                {
                     world.Name = Util.FixCapitalization(world.Name);
-                }
+
                 // Fix "smart" apostrophe
                 world.Name = world.Name.Replace('\x92', '\'');
 
 #if DEBUG
                 if (worlds[world.X, world.Y] != null)
-                {
                     worlds.ErrorList.Add("ERROR (Duplicate): " + line);
-                }
 #endif
                 worlds[world.X, world.Y] = world;
             }
@@ -330,9 +325,8 @@ namespace Maps.Serialization
                 return;
             }
             StringDictionary dict = new StringDictionary();
-            for (var i = 0; i < cols.Length; ++i ) {
+            for (var i = 0; i < cols.Length; ++i )
                 dict[header[i]] = cols[i].Trim();
-            }
 
             ParseWorld(worlds, dict, line, lineNumber);
         }

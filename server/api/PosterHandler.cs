@@ -130,9 +130,7 @@ namespace Maps.API
                 tileRect.Height += 0.5f;
                 tileRect.Inflate(0.25f, 0.10f);
                 if (style == Stylesheet.Style.Candy)
-                {
                     tileRect.Width += 0.75f;
-                }
                 clipOutsectorBorders = false;
             }
 

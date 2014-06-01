@@ -79,9 +79,7 @@ namespace Maps
         {
             int temp;
             if (Int32.TryParse(GetStringOption(request, name, queryDefaults), NumberStyles.Integer, CultureInfo.InvariantCulture, out temp))
-            {
                 return temp;
-            }
             return defaultValue;
         }
 
@@ -93,9 +91,7 @@ namespace Maps
         {
             double temp;
             if (Double.TryParse(GetStringOption(request, name, queryDefaults), NumberStyles.Float, CultureInfo.InvariantCulture, out temp))
-            {
                 return temp;
-            }
             return defaultValue;
         }
 
@@ -107,9 +103,7 @@ namespace Maps
         {
             int temp;
             if (Int32.TryParse(GetStringOption(request, name, queryDefaults), NumberStyles.Integer, CultureInfo.InvariantCulture, out temp))
-            {
                 return temp != 0;
-            }
             return defaultValue;
         }
 

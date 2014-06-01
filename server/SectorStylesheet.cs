@@ -171,7 +171,8 @@ namespace Maps
                     if (c == '\\')
                     {
                         reader.Read();
-                        if (reader.Peek() == -1) throw new ParseException("Expected character after \\, saw EOF");
+                        if (reader.Peek() == -1)
+                            throw new ParseException("Expected character after \\, saw EOF");
                     }
                     else if (!(('A' <= c && c <= 'Z') || ('a' <= c && c <= 'z') || ('0' <= c && c <= '9') || c == '_'))
                     {
