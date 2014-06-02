@@ -300,7 +300,7 @@ namespace Maps
         {
             // TODO: Consider hashtable
             Allegiance alleg = Allegiances.Where(a => a.T5Code == code).FirstOrDefault();
-            return alleg != null ? alleg : SecondSurvey.GetStockAllegianceFromCode(code);
+            return alleg ?? SecondSurvey.GetStockAllegianceFromCode(code);
         }
 
         /// <summary>
