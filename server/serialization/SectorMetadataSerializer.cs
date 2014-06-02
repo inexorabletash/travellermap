@@ -21,6 +21,7 @@ namespace Maps.Serialization
         }
     }
 
+    // NOTE: This is unused; see SectorMetaDataHandler
     public class XMLSectorMetadataSerializer : SectorMetadataSerializer
     {
         public override void Serialize(TextWriter writer, Sector sector)

@@ -34,7 +34,6 @@ namespace Maps.Rendering
             new MapLabel("Hive Young Worlds", 100, 128)
         };
 
-
         private static readonly string[] borderFiles = {
             @"~/res/Vectors/Imperium.xml", 
             @"~/res/Vectors/Aslan.xml", 
@@ -182,7 +181,6 @@ namespace Maps.Rendering
 
                 using (Maps.Rendering.RenderUtil.SaveState(ctx.graphics))
                 {
-                    // TODO: Do this im world space to reduce churn
                     if (ctx.clipPath != null)
                     {
                         XMatrix m = ctx.ImageSpaceToWorldSpace;
@@ -245,6 +243,7 @@ namespace Maps.Rendering
                     // This transforms the Linehan galactic structure to the Mikesh galactic structure
                     // See http://travellermap.blogspot.com/2009/03/galaxy-scale-mismatch.html
                     Matrix xformLinehanToMikesh = new Matrix(0.9181034f, 0.0f, 0.0f, 0.855192542f, 120.672432f, 86.34569f);
+                    timers.Add(new Timer("prep"));
 
                     //------------------------------------------------------------
                     // Local background (Nebula)
@@ -462,6 +461,7 @@ namespace Maps.Rendering
                     }
 
                     #endregion
+                    timers.Add(new Timer("sector grid"));
 
                     //------------------------------------------------------------
                     // Subsector Grid
@@ -492,6 +492,7 @@ namespace Maps.Rendering
                         }
                     }
                     #endregion
+                    timers.Add(new Timer("subsector grid"));
 
                     //------------------------------------------------------------
                     // Parsec Grid
@@ -526,18 +527,18 @@ namespace Maps.Rendering
                                 break;
 
                             case MicroBorderStyle.Hex:
+                                // TODO: use RenderUtil.(Square|Hex)Edges(X|Y) arrays
+                                const double hexEdge = 0.18f; // TODO: Need to compute this (should be cos(60), inverse-scaled)
                                 XPoint[] points = new XPoint[4];
                                 for (int px = hx - parsecSlop; px < hx + hw + parsecSlop; px++)
                                 {
-                                    float yOffset = ((px % 2) != 0) ? 0.0f : 0.5f;
+                                    double yOffset = ((px % 2) != 0) ? 0.0 : 0.5;
                                     for (int py = hy - parsecSlop; py < hy + hh + parsecSlop; py++)
                                     {
-                                        // TODO: use RenderUtil.(Square|Hex)Edges(X|Y) arrays
-                                        const float hexEdge = 0.18f; // TODO: Need to compute this (should be cos(60), inverse-scaled)
-                                        points[0] = new XPoint(px + -hexEdge, py + 0.5f + yOffset);
-                                        points[1] = new XPoint(px + hexEdge, py + 1.0f + yOffset);
-                                        points[2] = new XPoint(px + 1.0f - hexEdge, py + 1.0f + yOffset);
-                                        points[3] = new XPoint(px + 1.0f + hexEdge, py + 0.5f + yOffset);
+                                        points[0] = new XPoint(px + -hexEdge, py + 0.5 + yOffset);
+                                        points[1] = new XPoint(px + hexEdge, py + 1.0 + yOffset);
+                                        points[2] = new XPoint(px + 1.0 - hexEdge, py + 1.0 + yOffset);
+                                        points[3] = new XPoint(px + 1.0 + hexEdge, py + 0.5 + yOffset);
                                         ctx.graphics.DrawLines(pen, points);
                                     }
                                 }
@@ -606,8 +607,7 @@ namespace Maps.Rendering
                     //------------------------------------------------------------
                     #region sector-names
 
-                    // BUG: Should that be showAllSectorNames not subsectorNames.visible?
-                    if (ctx.styles.showSomeSectorNames || ctx.styles.subsectorNames.visible)
+                    if (ctx.styles.showSomeSectorNames || ctx.styles.showAllSectorNames)
                     {
                         foreach (Sector sector in ctx.selector.Sectors
                             .Where(sector => ctx.styles.showAllSectorNames || (ctx.styles.showSomeSectorNames && sector.Selected))
@@ -621,6 +621,7 @@ namespace Maps.Rendering
                     }
 
                     #endregion
+                    timers.Add(new Timer("sector names"));
 
                     //------------------------------------------------------------
                     // Macro: Government / Rift / Route Names
@@ -673,7 +674,6 @@ namespace Maps.Rendering
 
                         if (ctx.options.HasFlag(MapOptions.NamesMinor))
                         {
-                            // TODO: Bigger font, italic
                             XFont font = ctx.styles.macroNames.MediumFont;
                             solidBrush.Color = ctx.styles.macroRoutes.textHighlightColor;
                             foreach (var label in labels)
@@ -696,6 +696,7 @@ namespace Maps.Rendering
                     }
 
                     #endregion
+                    timers.Add(new Timer("macro names"));
 
                     //------------------------------------------------------------
                     // Macro: Capitals & Home Worlds
@@ -717,7 +718,7 @@ namespace Maps.Rendering
                     }
 
                     #endregion
-                    timers.Add(new Timer("grids and names"));
+                    timers.Add(new Timer("macro worlds"));
 
                     //------------------------------------------------------------
                     // Micro: Government Names
@@ -728,7 +729,7 @@ namespace Maps.Rendering
                         DrawLabels(ctx, fonts);
                     
                     #endregion
-                    timers.Add(new Timer("micro"));
+                    timers.Add(new Timer("microborder labels"));
                 }
 
                 // End of clipping, so world names are not clipped in jumpmaps.
@@ -1292,8 +1293,7 @@ namespace Maps.Rendering
                 XSolidBrush solidBrush = new XSolidBrush();
 
                 ctx.graphics.SmoothingMode = XSmoothingMode.AntiAlias;
-                //ctx.graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
-
+                
                 foreach (Sector sector in ctx.selector.Sectors)
                 {
                     solidBrush.Color = ctx.styles.microBorders.textColor;
@@ -1310,10 +1310,8 @@ namespace Maps.Rendering
                             //labelPos.Y -= 0.5f;
 
                             if (border.WrapLabel)
-                            {
                                 text = text.Replace(' ', '\n');
-                            }
-
+                            
                             RenderUtil.DrawLabel(ctx.graphics, text, labelPos, ctx.styles.microBorders.Font, solidBrush, ctx.styles.microBorders.textStyle);
                         }
                     }
@@ -1337,13 +1335,9 @@ namespace Maps.Rendering
                         if (!ctx.styles.grayscale &&
                             ColorUtil.NoticeableDifference(label.Color, ctx.styles.backgroundColor) &&
                             (label.Color != Label.DefaultColor))
-                        {
                             solidBrush.Color = label.Color;
-                        }
                         else
-                        {
                             solidBrush.Color = ctx.styles.microBorders.textColor;
-                        }
                         RenderUtil.DrawLabel(ctx.graphics, text, labelPos, font, solidBrush, ctx.styles.microBorders.textStyle);
                     }
                 }

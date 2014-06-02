@@ -32,7 +32,6 @@ namespace Maps.API
             int rot = 0, float translateX = 0, float translateY = 0,
             bool transparent = false, IDictionary<string, Object> queryDefaults = null)
         {
-
             // New-style Options
             // TODO: move to ParseOptions (maybe - requires options to be parsed after stylesheet creation?)
             if (HandlerBase.GetBoolOption(context.Request, "sscoords", queryDefaults: queryDefaults, defaultValue: false))

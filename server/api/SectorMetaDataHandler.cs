@@ -93,7 +93,7 @@ namespace Maps.API
             [XmlElement("Name")]
             public List<Name> Names { get { return m_sector.Names; } }
 
-            public string Credits { get { return m_sector.Credits; } }
+            public string Credits { get { return m_sector.Credits; } set { } }
 
             public int X { get { return m_sector.X; } }
             public int Y { get { return m_sector.Y; } }
@@ -123,9 +123,16 @@ namespace Maps.API
                 }
             }
 
+            public string Stylesheet { get { return m_sector.StylesheetText; } set { } }
+
             public MetadataCollection<Label> Labels { get { return m_sector.Labels; } }
+            public bool ShouldSerializeLabels() { return m_sector.Labels.Count > 0; }
+
             public MetadataCollection<Border> Borders { get { return m_sector.Borders; } }
+            public bool ShouldSerializeBorders() { return m_sector.Borders.Count > 0;  }
+
             public MetadataCollection<Route> Routes { get { return m_sector.Routes; } }
+            public bool ShouldSerializeRoutes() { return m_sector.Routes.Count > 0;  }
         }
     }
 }

@@ -119,26 +119,23 @@ namespace Maps.Rendering
         {
             using (RenderUtil.SaveState(g))
             {
-                XTextFormatter tf = new XTextFormatter(g);
-                tf.Alignment = XParagraphAlignment.Center;
-
-                XMatrix matrix = new XMatrix();
-                matrix.TranslatePrepend(labelPos.X, labelPos.Y);
-                matrix.ScalePrepend(1.0f / Astrometrics.ParsecScaleX, 1.0f / Astrometrics.ParsecScaleY);
-
                 if (labelStyle.Uppercase)
                     text = text.ToUpper();
                 if (labelStyle.Wrap)
-                    text = text.Replace(' ', '\n');
+                    text = text.Replace(' ', '\n');                
 
-                matrix.TranslatePrepend(labelStyle.Translation.X, labelStyle.Translation.Y);
-                matrix.RotatePrepend(labelStyle.Rotation);
-                matrix.ScalePrepend(labelStyle.Scale.Width, labelStyle.Scale.Height);
-                g.MultiplyTransform(matrix, XMatrixOrder.Prepend);
+                g.TranslateTransform(labelPos.X, labelPos.Y);
+                g.ScaleTransform(1.0f / Astrometrics.ParsecScaleX, 1.0f / Astrometrics.ParsecScaleY);
+                g.TranslateTransform(labelStyle.Translation.X, labelStyle.Translation.Y);
+                g.RotateTransform(labelStyle.Rotation);
+                g.ScaleTransform(labelStyle.Scale.Width, labelStyle.Scale.Height);
 
                 XSize size = g.MeasureString(text, font);
                 size.Width *= 2; // prevent cut-off e.g. when rotated
                 XRect bounds = new XRect(-size.Width / 2, -size.Height / 2, size.Width, size.Height);
+
+                XTextFormatter tf = new XTextFormatter(g);
+                tf.Alignment = XParagraphAlignment.Center;
                 tf.DrawString(text, font, brush, bounds);
             }
         }
