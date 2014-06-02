@@ -50,7 +50,7 @@ namespace Maps
 
             public override string ToString()
             {
-                return property + ": " + value;
+                return property + ": " + value + ";";
             }
         };
 
