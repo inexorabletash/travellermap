@@ -276,9 +276,8 @@ namespace Maps
             this.Labels.AddRange(metadataSource.Labels);
             this.Credits = metadataSource.Credits;
             this.Products.AddRange(metadataSource.Products);
-            this.Stylesheet = metadataSource.Stylesheet;
+            this.StylesheetText = metadataSource.StylesheetText;
         }
-
 
         [XmlAttribute("Tags"), JsonName("Tags")]
         public string TagString
@@ -600,13 +599,18 @@ namespace Maps
         [XmlElement("Stylesheet"), JsonName("Stylesheet")]
         public string StylesheetText
         {
-            get { return Stylesheet == null ? null : Stylesheet.ToString(); }
+            get { return stylesheetText; }
             set
             {
-                Stylesheet = SectorStylesheet.Parse(value);
-                Stylesheet.Parent = s_defaultStyleSheet;
+                stylesheetText = value;
+                if (value != null)
+                {
+                    Stylesheet = SectorStylesheet.Parse(stylesheetText);
+                    Stylesheet.Parent = s_defaultStyleSheet;
+                }
             }
         }
+        private string stylesheetText;
 
     }
 
