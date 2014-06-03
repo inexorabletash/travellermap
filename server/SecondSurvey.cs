@@ -264,6 +264,7 @@ namespace Maps
             { "AsT8", "A8", "As", "Aslan Hierate, Tlaukhu control, Seieakh (9), Akatoiloh (18), We'okunir (29)" },
             { "AsT9", "A9", "As", "Aslan Hierate, Tlaukhu control, Aokhalte (10), Sahao' (21), Ouokhoi (26)" },
             { "AsTv", "As", "As", "Aslan Hierate, Tlaukhu vassal clan dominates" },
+            { "AsTz", "As", "As", "Aslan Hierate, Zodia Colonies" },
             { "AsVc", "As", "As", "Aslan Hierate, vassal clan dominates" },
             { "AsWc", "As", "As", "Aslan Hierate, single one-world clan dominates" },
             { "AsXX", "As", "As", "Aslan Hierate, unknown" },
