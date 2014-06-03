@@ -1309,8 +1309,10 @@ namespace Maps.Rendering
                             //labelPos.X -= 0.5f;
                             //labelPos.Y -= 0.5f;
 
+                            System.Text.RegularExpressions.Regex r = new System.Text.RegularExpressions.Regex(@"\s+(?![a-z])");
                             if (border.WrapLabel)
-                                text = text.Replace(' ', '\n');
+                                text = r.Replace(text, "\n");
+                                //text = text.Replace(' ', '\n');
                             
                             RenderUtil.DrawLabel(ctx.graphics, text, labelPos, ctx.styles.microBorders.Font, solidBrush, ctx.styles.microBorders.textStyle);
                         }
