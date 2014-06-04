@@ -1,0 +1,182 @@
+<?xml version="1.0"?>
+<Sector>
+  <Y>-1</Y>
+  <X>-7</X>
+  <Name Lang="zh">Yiklerzdanzh</Name>
+  <Name Publisher="HIWG">Horizon's Edge</Name>
+  <DataFile Publisher="HIWG Australia" Author="David Schneider, Grant Sinclair" Era="1200" Ref="http://zho.berka.com/data/TNE/sector.pl?sector=YIKLER">yiklerzdanzh.sec</DataFile>
+  <Subsectors Source="HIWG Australia">
+    <Subsector Index="A">Peedizh Chr</Subsector>
+    <Subsector Index="B">Tapljifriens</Subsector>
+    <Subsector Index="C">Shipaiebria</Subsector>
+    <Subsector Index="D">Drbli Chtidr</Subsector>
+    <Subsector Index="E">Izellensjdash</Subsector>
+    <Subsector Index="F">Meichntid Ibl</Subsector>
+    <Subsector Index="G">Lenchiajzhdiezh</Subsector>
+    <Subsector Index="H">Chinzhedniedoch</Subsector>
+    <Subsector Index="I">Talpaku</Subsector>
+    <Subsector Index="J">Stellar Chorus</Subsector>
+    <Subsector Index="K">Wyld Worlds</Subsector>
+    <Subsector Index="L">Akigura</Subsector>
+    <Subsector Index="M">String of Pearls</Subsector>
+    <Subsector Index="N">Dlarashtsalash</Subsector>
+    <Subsector Index="O">Izh Kriezhlal</Subsector>
+    <Subsector Index="P">Rom's Loch</Subsector>
+  </Subsectors>
+  <Borders>
+    <Border Allegiance="AU" Color="yellow">2423 2523 2622 2621 2620 2721 2821 2921 2821 2822 2823 2824 2825 2725 2624 2524 2423</Border>
+    <Border Allegiance="CA" Color="purple">1029 1129 1229 1330 1230 1231 1132 1133 1132 1031 1030 1029</Border>
+    <Border Allegiance="Cc" Color="white">1426 1527 1426</Border>
+    <Border Allegiance="Gs" Color="brown">2633 2733 2832 2933 3032 2933 2934 2834 2735 2734 2633</Border>
+    <Border Allegiance="Iz" Color="green">1437 1537 1636 1736 1735 1835 1936 2035 2036 2137 2138 2238 2339 2439 2440 2441 2341 2241 2141 2041 1941 1841 1741 1641 1640 1639 1539 1438 1437</Border>
+    <Border Allegiance="Mi" Color="hotpink">0817 0917 1016 1015 1115 1215 1315 1414 1514 1613 1612 1713 1812 1813 1914 2013 2114 2214 2215 2216 2217 2318 2218 2219 2119 2019 1920 1820 1720 1619 1520 1420 1320 1219 1119 1019 0920 0919 0918 0817</Border>
+    <Border Allegiance="SC" Color="cyan">2728 2827 2927 3026 3025 3024 3023 3022 3122 3222 3323 3324 3325 3326 3327 3328 3227 3127 3027 2928 2827 2728</Border>
+    <Border Allegiance="Sr" Color="darkred">0119 0219 0320 0420 0520 0620 0721 0821 0722 0723 0622 0523 0422 0322 0221 0220 0219 0119</Border>
+    <Border Allegiance="TL" Color="orange">0127 0226 0225 0224 0223 0323 0423 0524 0624 0625 0726 0826 0727 0627 0628 0629 0630 0631 0632 0532 0431 0331 0230 0130 0129 0128 0127</Border>
+    <Border Allegiance="ZhCo">0000 0100 0200 0300 0400 0500 0600 0700 0800 0900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3320 3219 3119 3018 2919 2819 2818 2718 2617 2616 2516 2415 2414 2314 2213 2113 2012 1913 1912 1811 1711 1611 1512 1412 1313 1213 1114 1014 0915 0916 0816 0717 0617 0518 0418 0319 0318 0217 0117 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001 0000</Border>
+    <Border Allegiance="ZhCo">3135 3235 3236 3237 3238 3239 3238 3237 3137 3136 3135</Border>
+  </Borders>
+  <Allegiances Source="HIWG Australia">
+    <Allegiance Code="AU">Akigura Union</Allegiance>
+    <Allegiance Code="CA">Carillon Harmonies</Allegiance>
+    <Allegiance Code="Cc">Carillon Client State</Allegiance>
+    <Allegiance Code="Gs">Glenauran Signatorate</Allegiance>
+    <Allegiance Code="Ic">Izrats Kriezhlas Unity Client State</Allegiance>
+    <Allegiance Code="Iz">Izrats Kriezhlas Unity</Allegiance>
+    <Allegiance Code="Mc">Meichntid Ibl Client State</Allegiance>
+    <Allegiance Code="Mi">Meichntid Ibl</Allegiance>
+    <Allegiance Code="Sr">S'raak Empire</Allegiance>
+    <Allegiance Code="TL">Talpaku Communality</Allegiance>
+    <Allegiance Code="TC">Talpaku Communality Client State</Allegiance>
+    <Allegiance Code="Sc">Salinaikin Concordance</Allegiance>
+  </Allegiances>
+  <Stylesheet>
+    route.Mi { color: pink; }
+    route.TL { color: brown; }
+  </Stylesheet>
+  <Routes Source="HIWG Austrailia">
+    <Route Start="0701" End="0604" Allegiance="ZhCo"/>
+    <Route Start="0604" End="0305" Allegiance="ZhCo"/>
+    <Route Start="0305" End="0309" Allegiance="ZhCo"/>
+    <Route Start="0305" End="0105" Allegiance="ZhCo"/>
+    <Route Start="0309" End="0112" Allegiance="ZhCo"/>
+    <Route Start="0112" End="0214" Allegiance="ZhCo"/>
+    <Route Start="0214" End="0117" Allegiance="ZhCo"/>
+    <Route Start="0604" End="0708" Allegiance="ZhCo"/>
+    <Route Start="0708" End="0610" Allegiance="ZhCo"/>
+    <Route Start="0610" End="0309" Allegiance="ZhCo"/>
+    <Route Start="0708" End="0906" Allegiance="ZhCo"/>
+    <Route Start="0906" End="1104" Allegiance="ZhCo"/>
+    <Route Start="1104" End="1405" Allegiance="ZhCo"/>
+    <Route Start="1405" End="1308" Allegiance="ZhCo"/>
+    <Route Start="1308" End="1410" Allegiance="ZhCo"/>
+    <Route Start="1410" End="1512" Allegiance="ZhCo"/>
+    <Route Start="1512" End="1809" Allegiance="ZhCo"/>
+    <Route Start="1809" End="2007" Allegiance="ZhCo"/>
+    <Route Start="2007" End="1605" Allegiance="ZhCo"/>
+    <Route Start="1605" End="1405" Allegiance="ZhCo"/>
+    <Route Start="2007" End="2105" Allegiance="ZhCo"/>
+    <Route Start="2105" End="2101" Allegiance="ZhCo"/>
+    <Route Start="2801" End="2703" Allegiance="ZhCo"/>
+    <Route Start="2703" End="2706" Allegiance="ZhCo"/>
+    <Route Start="2706" End="2508" Allegiance="ZhCo"/>
+    <Route Start="2508" End="2110" Allegiance="ZhCo"/>
+    <Route Start="2110" End="2007" Allegiance="ZhCo"/>
+    <Route Start="1809" End="1913" Allegiance="ZhCo"/>
+    <Route Start="1913" End="2211" Allegiance="ZhCo"/>
+    <Route Start="2211" End="2110" Allegiance="ZhCo"/>
+    <Route Start="2508" End="2610" Allegiance="ZhCo"/>
+    <Route Start="2610" End="2714" Allegiance="ZhCo"/>
+    <Route Start="2714" End="2912" Allegiance="ZhCo"/>
+    <Route Start="2912" End="3209" Allegiance="ZhCo"/>
+    <Route Start="3209" End="3108" Allegiance="ZhCo"/>
+    <Route Start="3108" End="2905" Allegiance="ZhCo"/>
+    <Route Start="2905" End="2801" Allegiance="ZhCo"/>
+    <Route Start="2714" End="2617" Allegiance="ZhCo"/>
+    <Route Start="2617" End="2516" Allegiance="ZhCo"/>
+    <Route Start="2516" End="2314" Allegiance="ZhCo"/>
+    <Route Start="2314" End="2714" Allegiance="ZhCo"/>
+    <Route Start="0610" End="0812" Allegiance="ZhCo"/>
+    <Route Start="0812" End="0814" Allegiance="ZhCo"/>
+    <Route Start="0814" End="0515" Allegiance="ZhCo"/>
+    <Route Start="0515" End="0316" Allegiance="ZhCo"/>
+    <Route Start="0316" End="0214" Allegiance="ZhCo"/>
+    <Route Start="0117" End="0319" Allegiance="ZhCo"/>
+    <Route Start="0319" End="0518" Allegiance="ZhCo"/>
+    <Route Start="0518" End="0716" Allegiance="ZhCo"/>
+    <Route Start="0716" End="0916" Allegiance="ZhCo"/>
+    <Route Start="0916" End="0814" Allegiance="ZhCo"/>
+    <Route Start="0916" End="1013" Allegiance="ZhCo"/>
+    <Route Start="1013" End="1011" Allegiance="ZhCo"/>
+    <Route Start="1013" End="1213" Allegiance="ZhCo"/>
+    <Route Start="1213" End="1313" Allegiance="ZhCo"/>
+    <Route Start="1313" End="1512" Allegiance="ZhCo"/>
+
+
+    <!-- Outsector Routes -->
+    <Route Start="0105" End="0004" Allegiance="ZhCo"/>
+    <Route Start="0701" EndOffsetY="-1" End="0737" Allegiance="ZhCo"/>
+    <Route Start="2101" EndOffsetY="-1" End="2038" Allegiance="ZhCo"/>
+    <Route Start="2801" EndOffsetY="-1" End="2739" Allegiance="ZhCo"/>
+
+    <Route Start="3209" End="3310" Allegiance="ZhCo"/>
+    <Route Start="3119" End="3320" Allegiance="ZhCo"/>
+    <Route Start="0117" EndOffsetX="-1" End="3117" Allegiance="ZhCo"/>
+
+    <Route Start="1115" End="1017" Allegiance="Mi"/>
+    <Route Start="1017" End="0917" Allegiance="Mi"/>
+    <Route Start="0917" End="0817" Allegiance="Mi"/>
+    <Route Start="1017" End="1218" Allegiance="Mi"/>
+    <Route Start="1218" End="0920" Allegiance="Mi"/>
+    <Route Start="1218" End="1320" Allegiance="Mi"/>
+    <Route Start="1218" End="1417" Allegiance="Mi"/>
+    <Route Start="1417" End="1615" Allegiance="Mi"/>
+    <Route Start="1615" End="1614" Allegiance="Mi"/>
+    <Route Start="1614" End="1613" Allegiance="Mi"/>
+    <Route Start="1613" End="1612" Allegiance="Mi"/>
+    <Route Start="1615" End="1816" Allegiance="Mi"/>
+    <Route Start="1816" End="1918" Allegiance="Mi"/>
+    <Route Start="1918" End="2117" Allegiance="Mi"/>
+    <Route Start="2117" End="2318" Allegiance="Mi"/>
+    <Route Start="1918" End="1719" Allegiance="Mi"/>
+    <Route Start="1719" End="1820" Allegiance="Mi"/>
+    <Route Start="1719" End="1519" Allegiance="Mi"/>
+    <Route Start="1519" End="1417" Allegiance="Mi"/>
+
+    <Route Start="2617" End="2819" Allegiance="ZhCo"/>
+    <Route Start="2819" End="3119" Allegiance="ZhCo"/>
+    <Route Start="2617" End="2620" Allegiance="ZhCo"/>
+    <Route Start="2620" End="2921" Allegiance="ZhCo"/>
+    <Route Start="2620" End="2623" Allegiance="ZhCo"/>
+    <Route Start="2623" End="2423" Allegiance="ZhCo"/>
+    <Route Start="2623" End="2825" Allegiance="ZhCo"/>
+    <Route Start="2825" End="2728" Allegiance="ZhCo"/>
+    <Route Start="2728" End="3026" Allegiance="ZhCo"/>
+    <Route Start="3026" End="3124" Allegiance="ZhCo"/>
+    <Route Start="3124" End="3122" Allegiance="ZhCo"/>
+    <Route Start="2728" End="2531" Allegiance="ZhCo"/>
+    <Route Start="2531" End="2832" Allegiance="ZhCo"/>
+    <Route Start="2832" End="3032" Allegiance="ZhCo"/>
+    <Route Start="2832" End="2734" Allegiance="ZhCo"/>
+    <Route Start="2734" End="2735" Allegiance="ZhCo"/>
+    <Route Start="2735" End="2537" Allegiance="ZhCo"/>
+    <Route Start="2531" End="2334" Allegiance="ZhCo"/>
+    <Route Start="2334" End="2137" Allegiance="ZhCo"/>
+    <Route Start="2137" End="2035" Allegiance="ZhCo"/>
+    <Route Start="2035" End="1738" Allegiance="ZhCo"/>
+    <Route Start="1738" End="1438" Allegiance="ZhCo"/>
+    <Route Start="1738" End="1740" Allegiance="ZhCo"/>
+    <Route Start="1740" End="2140" Allegiance="ZhCo"/>
+    <Route Start="2140" End="2439" Allegiance="ZhCo"/>
+    <Route Start="2439" End="2137" Allegiance="ZhCo"/>
+    <Route Start="2140" EndOffsetY="1" End="2201" Allegiance="ZhCo"/>
+
+    <Route Start="0424" End="0527" Allegiance="TL"/>
+    <Route Start="0527" End="0427" Allegiance="TL"/>
+    <Route Start="0427" End="0225" Allegiance="TL"/>
+    <Route Start="0225" End="0424" Allegiance="TL"/>
+    <Route Start="0427" End="0430" Allegiance="TL"/>
+    <Route Start="0430" End="0631" Allegiance="TL"/>
+
+  </Routes>
+</Sector>
