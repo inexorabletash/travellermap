@@ -174,6 +174,8 @@ namespace Maps
 
         public static Allegiance GetStockAllegianceFromCode(string code)
         {
+            if (code == null)
+                return null;
             if (s_t5Allegiances.ContainsKey(code))
                 return s_t5Allegiances[code];
             if (s_legacyAllegianceToT5.ContainsKey(code))

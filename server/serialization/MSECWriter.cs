@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -120,11 +121,11 @@ namespace Maps.Serialization
                     if (item is Allegiance)
                         WriteAllegiance(item as Allegiance);
                     else if (item is Border)
-                        WriteBorder(item as Border, alleg);
+                        WriteBorder(item as Border, alleg, sector);
                     else if (item is Label)
                         WriteLabel(item as Label);
                     else if (item is Route)
-                        WriteRoute(item as Route);
+                        WriteRoute(item as Route, sector);
                 }
             }
 
@@ -137,7 +138,7 @@ namespace Maps.Serialization
                 writer.WriteLine();
             }
 
-            private void WriteRoute(Route route)
+            private void WriteRoute(Route route, Sector sector)
             {
                 writer.Write("route ");
 
@@ -161,11 +162,12 @@ namespace Maps.Serialization
                 }
                 writer.Write(route.End.ToString("0000", CultureInfo.InvariantCulture));
 
-
-                if (route.ColorHtml != null)
+                SectorStylesheet.StyleResult ssr = sector.ApplyStylesheet("route", route.Allegiance);
+                Color? color = route.Color ?? ssr.GetColor("color");
+                if (color.HasValue)
                 {
                     writer.Write(" ");
-                    writer.Write(route.ColorHtml.ToLowerInvariant());
+                    writer.Write(ColorTranslator.ToHtml(color.Value).ToLowerInvariant());
                 }
 
                 writer.WriteLine();
@@ -200,7 +202,7 @@ namespace Maps.Serialization
                 // TODO: Other properties
             }
 
-            private void WriteBorder(Border border, Allegiance alleg)
+            private void WriteBorder(Border border, Allegiance alleg, Sector sector)
             {
                 if (border.ShowLabel && (border.Label != null || alleg != null))
                 {
@@ -213,10 +215,13 @@ namespace Maps.Serialization
 
                 writer.Write("border ");
                 writer.Write(border.PathString);
-                if (border.ColorHtml != null)
+
+                SectorStylesheet.StyleResult ssr = sector.ApplyStylesheet("border", alleg.T5Code);
+                Color? color = border.Color ?? ssr.GetColor("color");
+                if (color.HasValue)
                 {
                     writer.Write(" ");
-                    writer.Write(border.ColorHtml.ToLowerInvariant());
+                    writer.Write(ColorTranslator.ToHtml(color.Value).ToLowerInvariant());
                 }
                 writer.WriteLine();
             }
