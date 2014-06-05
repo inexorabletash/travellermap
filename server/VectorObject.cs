@@ -1,4 +1,5 @@
 using PdfSharp.Drawing;
+using PdfSharp.Drawing.Layout;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -235,14 +236,13 @@ namespace Maps.Rendering
                         matrix.RotatePrepend(-labelStyle.Rotation); // Rotate it
                         graphics.MultiplyTransform(matrix, XMatrixOrder.Prepend);
 
-                        // TODO: Accomodate wrapping
-                        //SizeF size = graphics.MeasureString( str, font, bounds.Size);
                         XSize size = graphics.MeasureString(str, font);
                         graphics.TranslateTransform(-size.Width / 2, -size.Height / 2); // Center the text
-                        //graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
                         RectangleF textBounds = new RectangleF(0, 0, (float)size.Width, (float)size.Height * 2); // *2 or it gets cut off at high sizes
-                        graphics.DrawString(str, font, textBrush, textBounds, RenderUtil.StringFormatTopCenter);
 
+                        XTextFormatter tf = new XTextFormatter(graphics);
+                        tf.Alignment = XParagraphAlignment.Center;
+                        tf.DrawString(str, font, textBrush, textBounds);
                     }
                 }
             }

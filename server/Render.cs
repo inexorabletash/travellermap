@@ -1,6 +1,7 @@
 //#define SHOW_TIMING
 
 using PdfSharp.Drawing;
+using PdfSharp.Drawing.Layout;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -688,7 +689,9 @@ namespace Maps.Rendering
                                     XSize size = ctx.graphics.MeasureString(label.text, font);
                                     ctx.graphics.TranslateTransform(-size.Width / 2, -size.Height / 2); // Center the text
                                     RectangleF textBounds = new RectangleF(0, 0, (float)size.Width, (float)size.Height * 2); // *2 or it gets cut off at high sizes
-                                    ctx.graphics.DrawString(label.text, font, solidBrush, textBounds, RenderUtil.StringFormatTopCenter);
+                                    XTextFormatter formatter = new XTextFormatter(ctx.graphics);
+                                    formatter.Alignment = XParagraphAlignment.Center;
+                                    formatter.DrawString(label.text, font, solidBrush, textBounds);
                                 }
                             }
 
