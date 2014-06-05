@@ -263,6 +263,7 @@ window.addEventListener('DOMContentLoaded', function() {
       snapshotParams.options = map.GetOptions();
       snapshotParams.style = map.GetStyle();
       snapshotParams.routes = urlParams.routes;
+      snapshotParams.dimunofficial = urlParams.dimunofficial;
       var snapshotURL = makeURL(SERVICE_BASE + '/api/tile', snapshotParams);
       $('a#download-snapshot').href = snapshotURL;
       snapshotParams.accept = 'application/pdf';

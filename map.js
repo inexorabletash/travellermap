@@ -61,8 +61,9 @@ function makeURL(base, params) {
   base = String(base).replace(/\?.*/, '');
   var keys = Object.keys(params);
   if (keys.length === 0) return base;
-  return base += '?' + keys.map(function(p) {
-    if (params[p] === undefined) return undefined;
+  return base += '?' + keys.filter(function (p) {
+    return params[p] !== undefined;
+  }).map(function (p) {
     return encodeURIComponent(p) + '=' + encodeURIComponent(params[p]);
   }).join('&');
 }
