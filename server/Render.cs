@@ -1104,7 +1104,11 @@ namespace Maps.Rendering
                         #region Disc
                         if (ctx.styles.worldDetails.HasFlag(WorldDetails.Type))
                         {
-                            if (world.Size <= 0)
+                            if (isPlaceholder)
+                            {
+                                DrawWorldLabel(ctx, ctx.styles.placeholder.textBackgroundStyle, solidBrush, ctx.styles.placeholder.textColor, ctx.styles.placeholder.position, ctx.styles.placeholder.Font, ctx.styles.placeholder.content);
+                            } 
+                            else if (world.Size <= 0)
                             {
                                 const float scaleX = 1.5f;
                                 const float scaleY = 1.0f;
@@ -1150,6 +1154,9 @@ namespace Maps.Rendering
                         }
                         #endregion
                     }
+
+                    if (isPlaceholder)
+                        return;
 
                     if (layer == WorldLayer.Foreground)
                     {
