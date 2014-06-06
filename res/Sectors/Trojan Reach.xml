@@ -1,19 +1,12 @@
-<?xml version="1.0"?>
-<Sector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Abbreviation="Troj" Tags="Official">
-  <Y>0</Y>
-  <X>-4</X>
+<?xml version="1.0" ?>
+<Sector>
   <Name>Trojan Reach</Name>
   <Name>Trojan Reaches</Name>
   <Name Lang="as">Hlaoirloahaurl</Name>
   <Name Lang="zh">Idrflanta</Name>
-  <Credits>
-    <![CDATA[
-                Two subsectors of <b>Trojan Reach</b> sector were designed by Bob McWilliams and appear in <b>Traveller</b> Adventure 4, <cite>Leviathan</cite>.
-            ]]>
-  </Credits>
-  <Product Publisher="Mongoose Publishing" Author="Gareth Hanrahan" Title="Alien Module 1: Aslan" Ref="http://www.mongoosepublishing.com/rpgs/traveller/the-third-imperium/alien-module-1-aslan.html" />
-  <DataFile Source="Traveller 5 Second Survey" Era="1105" Type="TabDelimited">Trojan Reach.tab</DataFile>
-  <Subsectors Publisher="DGP" Source="The Travellers' Digest #20" Era="1120">
+  <Credits>                Two subsectors of &lt;b&gt;Trojan Reach&lt;/b&gt; sector were designed by Bob McWilliams and appear in &lt;b&gt;Traveller&lt;/b&gt; Adventure 4, &lt;cite&gt;Leviathan&lt;/cite&gt;.            </Credits>
+  <Product Author="Gareth Hanrahan" Publisher="Mongoose Publishing" Ref="http://www.mongoosepublishing.com/rpgs/traveller/the-third-imperium/alien-module-1-aslan.html" Title="Alien Module 1: Aslan"/>
+  <Subsectors>
     <Subsector Index="A">Menorial</Subsector>
     <Subsector Index="B">Egyrn</Subsector>
     <Subsector Index="C">Pax Rulin</Subsector>
@@ -31,634 +24,534 @@
     <Subsector Index="O">Hkea'as</Subsector>
     <Subsector Index="P">Binary</Subsector>
   </Subsectors>
-
   <Allegiances>
-    <Allegiance Code="Bs">Belgardian Sojourn</Allegiance>
-    <Allegiance Code="Fl">Florian League</Allegiance>
-    <Allegiance Code="Sf">Senlis Foederate</Allegiance>
-    <Allegiance Code="Bs">Belgardian Sojourn</Allegiance>
-    <Allegiance Code="Gl">Glorious Empire</Allegiance>
-    <Allegiance Code="Zl">Pa'an (Zhodani Client)</Allegiance>
-    <Allegiance Code="Sc">Strend Cluster</Allegiance>
+    <Allegiance Code="NaHu">Non-Aligned, Human-dominated</Allegiance>
+    <Allegiance Code="FlLe">Florian League</Allegiance>
+    <Allegiance Code="AsVc">Aslan Hierate, vassal clan dominates</Allegiance>
+    <Allegiance Code="AsMw">Aslan Hierate, single multiple-world clan dominates</Allegiance>
+    <Allegiance Code="AsT2">Aslan Hierate, Tlaukhu control, Syoisuis (3)</Allegiance>
+    <Allegiance Code="AsT5">Aslan Hierate, Tlaukhu control, Hlyueawi (6), Isoitiyro (15)</Allegiance>
+    <Allegiance Code="AsWc">Aslan Hierate, single one-world clan dominates</Allegiance>
+    <Allegiance Code="AsSc">Aslan Hierate, multiple clans split control</Allegiance>
+    <Allegiance Code="AsT7">Aslan Hierate, Tlaukhu control, Ikhtealyo (8), Tlerfearlyo (20), Yehtahikh (24)</Allegiance>
+    <Allegiance Code="StCl">Strend Cluster</Allegiance>
+    <Allegiance Code="AsTv">Aslan Hierate, Tlaukhu vassal clan dominates</Allegiance>
+    <Allegiance Code="AsT6">Aslan Hierate, Tlaukhu control, Uiktawa (7), Iykyasea (17), Faowaou (27)</Allegiance>
+    <Allegiance Code="AsT3">Aslan Hierate, Tlaukhu control, Tralyeaeawi (4), Yulraleh (12), Aiheilar (25), Riyhalaei (28)</Allegiance>
+    <Allegiance Code="AsXX">Aslan Hierate, unknown</Allegiance>
+    <Allegiance Code="CsIm">Client State, Third Imperium</Allegiance>
+    <Allegiance Code="GlEm">Glorious Empire</Allegiance>
+    <Allegiance Code="CsZh">Client State, Zhodani Consulate</Allegiance>
+    <Allegiance Code="AsT1">Aslan Hierate, Tlaukhu control, Khauleairl (2), Estoieie' (16), Toaseilwi (22)</Allegiance>
+    <Allegiance Code="BlSo">Belgardian Sojurnate</Allegiance>
+    <Allegiance Code="NaXX">Unclaimed</Allegiance>
+    <Allegiance Code="AsT4">Aslan Hierate, Tlaukhu control, Eakhtiyho (5), Eteawyolei' (11), Fteweyeakh (23)</Allegiance>
+    <Allegiance Code="AsT8">Aslan Hierate, Tlaukhu control, Seieakh (9), Akatoiloh (18), We'okunir (29)</Allegiance>
+    <Allegiance Code="AsT0">Aslan Hierate, Tlaukhu control, Yerlyaruiwo (1), Hrawoao (13), Eisohiyw (14), Ferekhearl (19)</Allegiance>
+    <Allegiance Code="AsT9">Aslan Hierate, Tlaukhu control, Aokhalte (10), Sahao' (21), Ouokhoi (26)</Allegiance>
+    <Allegiance Code="ImDd">Third Imperium, Domain of Deneb</Allegiance>
+    <Allegiance Code="SeFo">Senlis Foederate</Allegiance>
   </Allegiances>
-
-  <!--
-        <Routes Publisher="DGP" Source="The Travellers' Digest #20" Era="1120">
-        <Route Start="0122" End="0223" Allegiance="As" Color="Yellow" />
-        <Route Start="0126" End="0132" Allegiance="As" Color="Yellow" />
-        <Route Start="0126" End="0224" Allegiance="As" Color="Yellow" />
-        <Route Start="0129" End="0328" Allegiance="As" Color="Yellow" />
-        <Route Start="0130" End="0132" Allegiance="As" Color="Yellow" />
-        <Route Start="0132" End="0232" Allegiance="As" Color="Yellow" />
-        <Route Start="0139" End="0240" Allegiance="As" Color="Yellow" />
-        <Route Start="0139" End="0338" Allegiance="As" Color="Yellow" />
-        <Route Start="0210" End="0213" Allegiance="Fl" Color="LightGreen" />
-        <Route Start="0213" End="0415" Allegiance="Fl" Color="LightGreen" />
-        <Route Start="0213" End="3114" EndOffsetX="-1" Allegiance="Fl" Color="LightGreen" />
-        <Route Start="0220" End="0322" Allegiance="As" Color="Yellow" />
-        <Route Start="0223" End="0224" Allegiance="As" Color="Yellow" />
-        <Route Start="0223" End="0322" Allegiance="As" Color="Yellow" />
-        <Route Start="0224" End="0425" Allegiance="As" Color="Yellow" />
-        <Route Start="0232" End="0531" Allegiance="As" Color="Yellow" />
-        <Route Start="0232" End="0234" Allegiance="As" Color="Yellow" />
-        <Route Start="0317" End="0415" Allegiance="Fl" Color="LightGreen" />
-        <Route Start="0322" End="0523" Allegiance="As" Color="Yellow" />
-        <Route Start="0328" End="0429" Allegiance="As" Color="Yellow" />
-        <Route Start="0328" End="0528" Allegiance="As" Color="Yellow" />
-        <Route Start="0415" End="0614" Allegiance="Fl" Color="LightGreen" />
-        <Route Start="0415" End="0616" Allegiance="Fl" Color="LightGreen" />
-        <Route Start="0425" End="0525" Allegiance="As" Color="Yellow" />
-        <Route Start="0429" End="0431" Allegiance="As" Color="Yellow" />
-        <Route Start="0429" End="0528" Allegiance="As" Color="Yellow" />
-        <Route Start="0430" End="0431" Allegiance="As" Color="Yellow" />
-        <Route Start="0523" End="0525" Allegiance="As" Color="Yellow" />
-        <Route Start="0528" End="0727" Allegiance="As" Color="Yellow" />
-        <Route Start="0727" End="0825" Allegiance="As" Color="Yellow" />
-        <Route Start="0824" End="0825" Allegiance="As" Color="Yellow" />
-        <Route Start="0824" End="1023" Allegiance="As" Color="Yellow" />
-        <Route Start="0825" End="1026" Allegiance="As" Color="Yellow" />
-        <Route Start="0835" End="0837" Allegiance="As" Color="Yellow" />
-        <Route Start="0835" End="0934" Allegiance="As" Color="Yellow" />
-        <Route Start="0835" End="1036" Allegiance="As" Color="Yellow" />
-        <Route Start="0837" End="0839" Allegiance="As" Color="Yellow" />
-        <Route Start="0837" End="1036" Allegiance="As" Color="Yellow" />
-        <Route Start="0839" End="0640" Allegiance="As" Color="Yellow" />
-        <Route Start="0839" End="0840" Allegiance="As" Color="Yellow" />
-        <Route Start="0929" End="0931" Allegiance="As" Color="Yellow" />
-        <Route Start="0929" End="1028" Allegiance="As" Color="Yellow" />
-        <Route Start="0929" End="1030" Allegiance="As" Color="Yellow" />
-        <Route Start="0930" End="0934" Allegiance="As" Color="Yellow" />
-        <Route Start="0931" End="1030" Allegiance="As" Color="Yellow" />
-        <Route Start="0934" End="1034" Allegiance="As" Color="Yellow" />
-        <Route Start="1022" End="1023" Allegiance="As" Color="Yellow" />
-        <Route Start="1022" End="1121" Allegiance="As" Color="Yellow" />
-        <Route Start="1022" End="1221" Allegiance="As" Color="Yellow" />
-        <Route Start="1023" End="1223" Allegiance="As" Color="Yellow" />
-        <Route Start="1026" End="1028" Allegiance="As" Color="Yellow" />
-        <Route Start="1026" End="1126" Allegiance="As" Color="Yellow" />
-        <Route Start="1030" End="1230" Allegiance="As" Color="Yellow" />
-        <Route Start="1034" End="1038" Allegiance="As" Color="Yellow" />
-        <Route Start="1036" End="1733" Allegiance="As" Color="Yellow" />
-        <Route Start="1220" End="1223" Allegiance="As" Color="Yellow" />
-        <Route Start="1223" End="1324" Allegiance="As" Color="Yellow" />
-        <Route Start="1230" End="1429" Allegiance="As" Color="Yellow" />
-        <Route Start="1235" End="1436" Allegiance="As" Color="Yellow" />
-        <Route Start="1339" End="1438" Allegiance="As" Color="Yellow" />
-        <Route Start="1426" End="1626" Allegiance="As" Color="Yellow" />
-        <Route Start="1429" End="1630" Allegiance="As" Color="Yellow" />
-        <Route Start="1436" End="1438" Allegiance="As" Color="Yellow" />
-        <Route Start="1534" End="1733" Allegiance="As" Color="Yellow" />
-        <Route Start="1534" End="1735" Allegiance="As" Color="Yellow" />
-        <Route Start="1534" End="1835" Allegiance="As" Color="Yellow" />
-        <Route Start="1619" End="1621" Allegiance="As" Color="Yellow" />
-        <Route Start="1621" End="1723" Allegiance="As" Color="Yellow" />
-        <Route Start="1626" End="1728" Allegiance="As" Color="Yellow" />
-        <Route Start="1630" End="1631" Allegiance="As" Color="Yellow" />
-        <Route Start="1631" End="1733" Allegiance="As" Color="Yellow" />
-        <Route Start="1723" End="1823" Allegiance="As" Color="Yellow" />
-        <Route Start="1728" End="1928" Allegiance="As" Color="Yellow" />
-        <Route Start="1733" End="1735" Allegiance="As" Color="Yellow" />
-        <Route Start="1733" End="1933" Allegiance="As" Color="Yellow" />
-        <Route Start="1823" End="2023" Allegiance="As" Color="Yellow" />
-        <Route Start="1919" End="2020" Allegiance="As" Color="Yellow" />
-        <Route Start="1927" End="1928" Allegiance="As" Color="Yellow" />
-        <Route Start="1928" End="2029" Allegiance="As" Color="Yellow" />
-        <Route Start="1931" End="1933" Allegiance="As" Color="Yellow" />
-        <Route Start="1931" End="2029" Allegiance="As" Color="Yellow" />
-        <Route Start="2020" End="2221" Allegiance="As" Color="Yellow" />
-        <Route Start="2023" End="2421" Allegiance="As" Color="Yellow" />
-        <Route Start="2123" End="2424" Allegiance="As" Color="Yellow" />
-        <Route Start="2221" End="2621" Allegiance="As" Color="Yellow" />
-        <Route Start="2226" End="2227" Allegiance="As" Color="Yellow" />
-        <Route Start="2226" End="2624" Allegiance="As" Color="Yellow" />
-        <Route Start="2233" End="2234" Allegiance="As" Color="Yellow" />
-        <Route Start="2233" End="2332" Allegiance="As" Color="Yellow" />
-        <Route Start="2314" End="2513" Allegiance="As" Color="Yellow" />
-        <Route Start="2314" End="2515" Allegiance="As" Color="Yellow" />
-        <Route Start="2421" End="2520" Allegiance="As" Color="Yellow" />
-        <Route Start="2421" End="2621" Allegiance="As" Color="Yellow" />
-        <Route Start="2424" End="2624" Allegiance="As" Color="Yellow" />
-        <Route Start="2424" End="2824" Allegiance="As" Color="Yellow" />
-        <Route Start="2425" End="2527" Allegiance="As" Color="Yellow" />
-        <Route Start="2425" End="2624" Allegiance="As" Color="Yellow" />
-        <Route Start="2515" End="2813" Allegiance="As" Color="Yellow" />
-        <Route Start="2520" End="2621" Allegiance="As" Color="Yellow" />
-        <Route Start="2614" End="2916" Allegiance="As" Color="Yellow" />
-        <Route Start="2621" End="2722" Allegiance="As" Color="Yellow" />
-        <Route Start="2621" End="2820" Allegiance="As" Color="Yellow" />
-        <Route Start="2722" End="2823" Allegiance="As" Color="Yellow" />
-        <Route Start="2813" End="2912" Allegiance="As" Color="Yellow" />
-        <Route Start="2813" End="3013" Allegiance="As" Color="Yellow" />
-        <Route Start="2819" End="2820" Allegiance="As" Color="Yellow" />
-        <Route Start="2819" End="2918" Allegiance="As" Color="Yellow" />
-        <Route Start="2823" End="2824" Allegiance="As" Color="Yellow" />
-        <Route Start="2823" End="2923" Allegiance="As" Color="Yellow" />
-        <Route Start="2916" End="2918" Allegiance="As" Color="Yellow" />
-        <Route Start="2918" End="3117" Allegiance="As" Color="Yellow" />
-        <Route Start="2918" End="3119" Allegiance="As" Color="Yellow" />
-        <Route Start="3013" End="3212" Allegiance="As" Color="Yellow" />
-        <Route Start="3117" End="0118" EndOffsetX="1" Allegiance="As" Color="Yellow" />
-        <Route Start="3117" End="3215" Allegiance="As" Color="Yellow" />
-        <Route Start="2102" End="2140" EndOffsetY="-1" />
-        <Route Start="2102" End="2204" />
-        <Route Start="2804" End="2805" />
-        <Route Start="2804" End="2902" />
-        <Route Start="2902" End="2739" EndOffsetY="-1" />
-        <Route Start="2708" End="2805" />
-        </Routes>
-    -->
-  <Routes Author="Mike Jackson" Source="Third Imperium #5" Era="1100">
-    <Route Start="0914" End="0614" Color="#99FF0000" Type="btn08"/>
-    <Route Start="2714" End="2515" Color="#99FF0000" Type="btn08"/>
-    <Route Start="2714" End="2616" Color="#99FF0000" Type="btn08"/>
-    <Route Start="2527" End="2226" Color="#99FF0000" Type="btn08"/>
-    <Route Start="1514" End="1816" Color="#99FF0000" Type="btn08"/>
-    <Route Start="1514" End="1613" Color="#99FF0000" Type="btn08"/>
-    <Route Start="2621" End="2421" Color="#99FF0000" Type="btn08"/>
-    <Route Start="2621" End="2520" Color="#99FF0000" Type="btn08"/>
-    <Route Start="2820" End="2821" Color="#99FF0000" Type="btn08"/>
-    <Route Start="2820" End="2923" Color="#99FF0000" Type="btn08"/>
-    <Route Start="3030" End="3029" Color="#99FF0000" Type="btn08"/>
-    <Route Start="2918" End="2921" Color="#99FF0000" Type="btn08"/>
-    <Route Start="0132" End="0130" Color="#99FF0000" Type="btn08"/>
-    <Route Start="0132" End="0134" Color="#99FF0000" Type="btn08"/>
-    <Route Start="0134" End="0335" Color="#99FF0000" Type="btn08"/>
-    <Route Start="0122" End="0322" Color="#99FF0000" Type="btn08"/>
-    <Route Start="2234" End="2232" Color="#99FF0000" Type="btn08"/>
-    <Route Start="3107" End="3105" Color="#99FF0000" Type="btn08"/>
-    <Route Start="0317" End="0516" Color="#99FF0000" Type="btn08"/>
-    <Route Start="0317" End="0417" Color="#99FF0000" Type="btn08"/>
-    <Route Start="0614" End="0815" Color="#99FF0000" Type="btn08"/>
-    <Route Start="0614" End="0713" Color="#99FF0000" Type="btn08"/>
-    <Route Start="0201" End="0440"  EndOffsetY="-1" Color="#99FF0000" Type="btn08"/>
-    <Route Start="1816" End="2018" Color="#99FF0000" Type="btn08"/>
-    <Route Start="2020" End="2023" Color="#99FF0000" Type="btn08"/>
-    <Route Start="2020" End="2221" Color="#99FF0000" Type="btn08"/>
-    <Route Start="0510" End="0609" Color="#99FF0000" Type="btn08"/>
-    <Route Start="1810" End="2211" Color="#99FF0000" Type="btn08"/>
-    <Route Start="1906" End="2105" Color="#99FF0000" Type="btn08"/>
-    <Route Start="2102" End="1801" Color="#99FF0000" Type="btn08"/>
-    <Route Start="2405" End="2203" Color="#99FF0000" Type="btn08"/>
-    <Route Start="2602" End="2801" Color="#99FF0000" Type="btn08"/>
-    <Route Start="2602" End="2402" Color="#99FF0000" Type="btn08"/>
-    <Route Start="2708" End="2709" Color="#99FF0000" Type="btn08"/>
-    <Route Start="2805" End="2904" Color="#99FF0000" Type="btn08"/>
-    <Route Start="1220" End="1121" Color="#99FF0000" Type="btn08"/>
-    <Route Start="1202" End="1305" Color="#99FF0000" Type="btn08"/>
-    <Route Start="2211" End="2213" Color="#99FF0000" Type="btn08"/>
-    <Route Start="2002" End="2203" Color="#99FF0000" Type="btn08"/>
-    <Route Start="3013" End="2916" Color="#99FF0000" Type="btn08"/>
-    <Route Start="3013" End="3113" Color="#99FF0000" Type="btn08"/>
-    <Route Start="2501" End="2639"  EndOffsetY="-1" Color="#99FF0000" Type="btn08"/>
-    <Route Start="0224" End="0223" Color="#99FF0000" Type="btn08"/>
-    <Route Start="0224" End="0322" Color="#99FF0000" Type="btn08"/>
-    <Route Start="0229" End="0430" Color="#99FF0000" Type="btn08"/>
-    <Route Start="0328" End="0429" Color="#99FF0000" Type="btn08"/>
-    <Route Start="0328" End="0129" Color="#99FF0000" Type="btn08"/>
-    <Route Start="0329" End="0429" Color="#99FF0000" Type="btn08"/>
-    <Route Start="0425" End="0528" Color="#99FF0000" Type="btn08"/>
-    <Route Start="0425" End="0426" Color="#99FF0000" Type="btn08"/>
-    <Route Start="0430" End="0530" Color="#99FF0000" Type="btn08"/>
-    <Route Start="0528" End="0529" Color="#99FF0000" Type="btn08"/>
-    <Route Start="0528" End="0628" Color="#99FF0000" Type="btn08"/>
-    <Route Start="0529" End="0530" Color="#99FF0000" Type="btn08"/>
-    <Route Start="0529" End="0628" Color="#99FF0000" Type="btn08"/>
-    <Route Start="0530" End="0332" Color="#99FF0000" Type="btn08"/>
-    <Route Start="0628" End="0930" Color="#99FF0000" Type="btn08"/>
-    <Route Start="0727" End="1027" Color="#99FF0000" Type="btn08"/>
-    <Route Start="0727" End="0824" Color="#99FF0000" Type="btn08"/>
-    <Route Start="0829" End="0531" Color="#99FF0000" Type="btn08"/>
-    <Route Start="0930" End="1230" Color="#99FF0000" Type="btn08"/>
-    <Route Start="1027" End="1226" Color="#99FF0000" Type="btn08"/>
-    <Route Start="1027" End="1128" Color="#99FF0000" Type="btn08"/>
-    <Route Start="1028" End="1030" Color="#99FF0000" Type="btn08"/>
-    <Route Start="1126" End="1124" Color="#99FF0000" Type="btn08"/>
-    <Route Start="1221" End="1022" Color="#99FF0000" Type="btn08"/>
-    <Route Start="1223" End="1323" Color="#99FF0000" Type="btn08"/>
-    <Route Start="1226" End="1426" Color="#99FF0000" Type="btn08"/>
-    <Route Start="1230" End="1333" Color="#99FF0000" Type="btn08"/>
-    <Route Start="0335" End="0234" Color="#99FF0000" Type="btn08"/>
-    <Route Start="0335" End="0236" Color="#99FF0000" Type="btn08"/>
-    <Route Start="0338" End="0236" Color="#99FF0000" Type="btn08"/>
-    <Route Start="0738" End="0837" Color="#99FF0000" Type="btn08"/>
-    <Route Start="0839" End="1101"  EndOffsetY="1" Color="#99FF0000" Type="btn08"/>
-    <Route Start="0933" End="0835" Color="#99FF0000" Type="btn08"/>
-    <Route Start="1034" End="1333" Color="#99FF0000" Type="btn08"/>
-    <Route Start="1235" End="1236" Color="#99FF0000" Type="btn08"/>
-    <Route Start="1236" End="1339" Color="#99FF0000" Type="btn08"/>
-    <Route Start="1236" End="1535" Color="#99FF0000" Type="btn08"/>
-    <Route Start="1339" End="1101"  EndOffsetY="1" Color="#99FF0000" Type="btn08"/>
-    <Route Start="1339" End="1537" Color="#99FF0000" Type="btn08"/>
-    <Route Start="1436" End="1537" Color="#99FF0000" Type="btn08"/>
-    <Route Start="1533" End="1535" Color="#99FF0000" Type="btn08"/>
-    <Route Start="1537" End="1637" Color="#99FF0000" Type="btn08"/>
-    <Route Start="1733" End="1735" Color="#99FF0000" Type="btn08"/>
-    <Route Start="1735" End="1534" Color="#99FF0000" Type="btn08"/>
-    <Route Start="1735" End="1835" Color="#99FF0000" Type="btn08"/>
-    <Route Start="1835" End="1634" Color="#99FF0000" Type="btn08"/>
-    <Route Start="1933" End="2134" Color="#99FF0000" Type="btn08"/>
-    <Route Start="1518" End="1619" Color="#99FF0000" Type="btn08"/>
-    <Route Start="3119" End="3219" Color="#99FF0000" Type="btn08"/>
-    <Route Start="2515" End="2517" Color="#99FF0000" Type="btn08"/>
-    <Route Start="0126" End="0127" Color="#99FF0000" Type="btn08"/>
-    <Route Start="0319" End="0418" Color="#99FF0000" Type="btn08"/>
-    <Route Start="2113" End="2314" Color="#99FF0000" Type="btn08"/>
-    <Route Start="1928" End="2029" Color="#99FF0000" Type="btn08"/>
-    <Route Start="2123" End="2223" Color="#99FF0000" Type="btn08"/>
-    <Route Start="2221" End="2223" Color="#99FF0000" Type="btn08"/>
-    <Route Start="2221" End="2421" Color="#99FF0000" Type="btn08"/>
-    <Route Start="2322" End="2421" Color="#99FF0000" Type="btn08"/>
-    <Route Start="2324" End="2424" Color="#99FF0000" Type="btn08"/>
-    <Route Start="2824" End="2821" Color="#99FF0000" Type="btn08"/>
-    <Route Start="2425" End="2725" Color="#99FF0000" Type="btn08"/>
-    <Route Start="0240" End="0201"  EndOffsetY="1" Color="#99FF0000" Type="btn08"/>
-    <Route Start="0240" End="0139" Color="#99FF0000" Type="btn08"/>
-    <Route Start="2115" End="2314" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="2115" End="2116" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="2612" End="2513" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="2711" End="2909" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="2711" End="2708" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="0914" End="1015" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="0914" End="0811" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="2714" End="2912" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="2714" End="2715" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="2714" End="2813" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="2527" End="2425" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="2820" End="2719" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="2820" End="2921" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="2332" End="2232" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="2918" End="3016" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="1324" End="1524" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="1324" End="1022" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="0209" End="0210" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="0209" End="0310" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="1613" End="1816" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="3117" End="3119" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="3117" End="0118"  EndOffsetX="1" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="3117" End="3219" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="0218" End="0319" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="0317" End="0416" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="0614" End="0915" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="0716" End="0415" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="0811" End="0609" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="0204" End="0307" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="0204" End="0505" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="0307" End="0408" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="0408" End="0609" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="1630" End="1533" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="1630" End="1429" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="1630" End="1728" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="2020" End="1818" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="0510" End="0310" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="0702" End="0440"  EndOffsetY="-1" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="1810" End="2008" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="2102" End="2203" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="2102" End="2002" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="2105" End="2306" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="2108" End="2008" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="2805" End="2804" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="3105" End="0105"  EndOffsetX="1" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="3105" End="2904" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="1118" End="1121" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="1118" End="1317" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="1220" End="1022" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="1220" End="1222" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="1220" End="1519" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="1317" End="1015" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="3013" End="2915" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="2501" End="2739"  EndOffsetY="-1" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="0224" End="0425" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="0229" End="0329" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="0229" End="0528" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="0321" End="0322" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="0322" End="0523" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="0328" End="0329" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="0328" End="0127" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="0429" End="0430" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="0429" End="0529" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="0523" End="0824" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="0528" End="0530" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="0528" End="0727" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="0530" End="0531" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="0530" End="0628" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="0628" End="0727" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="0724" End="0825" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="0727" End="0825" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="0825" End="1026" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="0825" End="1124" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="0829" End="0930" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="0929" End="1028" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="0930" End="0931" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="1027" End="1026" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="1028" End="1230" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="1028" End="1128" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="1028" End="1026" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="1121" End="1022" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="1221" End="1222" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="1222" End="1323" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="1230" End="1429" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="1230" End="0931" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="1322" End="1323" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="1323" End="1124" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="1429" End="1728" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="0335" End="0633" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="0338" End="0139" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="0531" End="0633" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="0640" End="0701"  EndOffsetY="1" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="0837" End="0835" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="0840" End="0901"  EndOffsetY="1" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="0840" End="0701"  EndOffsetY="1" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="0933" End="1034" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="0936" End="1036" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="0936" End="0835" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="1034" End="1036" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="1235" End="1335" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="1333" End="1335" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="1533" End="1534" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="1535" End="1534" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="1535" End="1634" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="1535" End="1537" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="1733" End="1634" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="1735" End="1634" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="1835" End="1933" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="1931" End="1933" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="1931" End="1830" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="1931" End="2232" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="1933" End="2233" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="1518" End="1519" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="2515" End="2513" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="2515" End="2616" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="2815" End="2915" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="2815" End="2916" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="3215" End="2916" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="0127" End="0129" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="0129" End="0130" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="1026" End="1124" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="3212" End="3113" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="3212" End="2912" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="1928" End="1927" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="2023" End="1927" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="2123" End="1823" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="2123" End="2421" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="2314" End="2513" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="2226" End="2329" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="2324" End="2425" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="2719" End="2819" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="0240" End="3102"  EndOffsetX="-1"  EndOffsetY="1" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="0915" End="1015" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="1534" End="1634" Color="#BFFFFF00" Type="btn09"/>
-    <Route Start="2115" End="2113" Color="#8000BF00" Type="btn10"/>
-    <Route Start="2115" End="1816" Color="#8000BF00" Type="btn10"/>
-    <Route Start="2711" End="2411" Color="#8000BF00" Type="btn10"/>
-    <Route Start="1324" End="1426" Color="#8000BF00" Type="btn10"/>
-    <Route Start="1324" End="1323" Color="#8000BF00" Type="btn10"/>
-    <Route Start="3116" End="3215" Color="#8000BF00" Type="btn10"/>
-    <Route Start="0614" End="0415" Color="#8000BF00" Type="btn10"/>
-    <Route Start="1816" End="1818" Color="#8000BF00" Type="btn10"/>
-    <Route Start="1816" End="1518" Color="#8000BF00" Type="btn10"/>
-    <Route Start="0504" End="0440" Color="#8000BF00" Type="btn10"/>
-    <Route Start="2102" End="2140"  EndOffsetY="-1" Color="#8000BF00" Type="btn10"/>
-    <Route Start="2105" End="2108" Color="#8000BF00" Type="btn10"/>
-    <Route Start="2108" End="2309" Color="#8000BF00" Type="btn10"/>
-    <Route Start="2602" End="2501" Color="#8000BF00" Type="btn10"/>
-    <Route Start="2602" End="2704" Color="#8000BF00" Type="btn10"/>
-    <Route Start="2708" End="2909" Color="#8000BF00" Type="btn10"/>
-    <Route Start="2708" End="2807" Color="#8000BF00" Type="btn10"/>
-    <Route Start="2805" End="2704" Color="#8000BF00" Type="btn10"/>
-    <Route Start="2805" End="2807" Color="#8000BF00" Type="btn10"/>
-    <Route Start="2805" End="3105" Color="#8000BF00" Type="btn10"/>
-    <Route Start="2909" End="2912" Color="#8000BF00" Type="btn10"/>
-    <Route Start="2909" End="3111" Color="#8000BF00" Type="btn10"/>
-    <Route Start="2909" End="2807" Color="#8000BF00" Type="btn10"/>
-    <Route Start="3105" End="0203"  EndOffsetX="1" Color="#8000BF00" Type="btn10"/>
-    <Route Start="1317" End="1518" Color="#8000BF00" Type="btn10"/>
-    <Route Start="2211" End="2113" Color="#8000BF00" Type="btn10"/>
-    <Route Start="2211" End="2411" Color="#8000BF00" Type="btn10"/>
-    <Route Start="2211" End="2309" Color="#8000BF00" Type="btn10"/>
-    <Route Start="3013" End="2912" Color="#8000BF00" Type="btn10"/>
-    <Route Start="3013" End="3215" Color="#8000BF00" Type="btn10"/>
-    <Route Start="3013" End="3212" Color="#8000BF00" Type="btn10"/>
-    <Route Start="2402" End="2501" Color="#8000BF00" Type="btn10"/>
-    <Route Start="2402" End="2704" Color="#8000BF00" Type="btn10"/>
-    <Route Start="2501" End="2539"  EndOffsetY="-1" Color="#8000BF00" Type="btn10"/>
-    <Route Start="2501" End="2540"  EndOffsetY="-1" Color="#8000BF00" Type="btn10"/>
-    <Route Start="0229" End="0129" Color="#8000BF00" Type="btn10"/>
-    <Route Start="0229" End="0130" Color="#8000BF00" Type="btn10"/>
-    <Route Start="0229" End="0429" Color="#8000BF00" Type="btn10"/>
-    <Route Start="0425" End="0727" Color="#8000BF00" Type="btn10"/>
-    <Route Start="0429" End="0530" Color="#8000BF00" Type="btn10"/>
-    <Route Start="0429" End="0628" Color="#8000BF00" Type="btn10"/>
-    <Route Start="0523" End="0724" Color="#8000BF00" Type="btn10"/>
-    <Route Start="0628" End="0829" Color="#8000BF00" Type="btn10"/>
-    <Route Start="0722" End="1022" Color="#8000BF00" Type="btn10"/>
-    <Route Start="0722" End="0820" Color="#8000BF00" Type="btn10"/>
-    <Route Start="0727" End="1028" Color="#8000BF00" Type="btn10"/>
-    <Route Start="0829" End="1028" Color="#8000BF00" Type="btn10"/>
-    <Route Start="1027" End="1028" Color="#8000BF00" Type="btn10"/>
-    <Route Start="1323" End="1022" Color="#8000BF00" Type="btn10"/>
-    <Route Start="1323" End="1621" Color="#8000BF00" Type="btn10"/>
-    <Route Start="1426" End="1429" Color="#8000BF00" Type="btn10"/>
-    <Route Start="1426" End="1728" Color="#8000BF00" Type="btn10"/>
-    <Route Start="1621" End="1619" Color="#8000BF00" Type="btn10"/>
-    <Route Start="1621" End="1723" Color="#8000BF00" Type="btn10"/>
-    <Route Start="0332" End="0633" Color="#8000BF00" Type="btn10"/>
-    <Route Start="0633" End="0835" Color="#8000BF00" Type="btn10"/>
-    <Route Start="0633" End="0933" Color="#8000BF00" Type="btn10"/>
-    <Route Start="0839" End="1038" Color="#8000BF00" Type="btn10"/>
-    <Route Start="0931" End="0933" Color="#8000BF00" Type="btn10"/>
-    <Route Start="1036" End="0835" Color="#8000BF00" Type="btn10"/>
-    <Route Start="1036" End="1236" Color="#8000BF00" Type="btn10"/>
-    <Route Start="1038" End="1339" Color="#8000BF00" Type="btn10"/>
-    <Route Start="1335" End="1535" Color="#8000BF00" Type="btn10"/>
-    <Route Start="1835" End="1534" Color="#8000BF00" Type="btn10"/>
-    <Route Start="1835" End="2137" Color="#8000BF00" Type="btn10"/>
-    <Route Start="1619" End="1818" Color="#8000BF00" Type="btn10"/>
-    <Route Start="1723" End="2023" Color="#8000BF00" Type="btn10"/>
-    <Route Start="1723" End="1823" Color="#8000BF00" Type="btn10"/>
-    <Route Start="1728" End="1928" Color="#8000BF00" Type="btn10"/>
-    <Route Start="2023" End="2223" Color="#8000BF00" Type="btn10"/>
-    <Route Start="2223" End="2324" Color="#8000BF00" Type="btn10"/>
-    <Route Start="2616" End="2915" Color="#8000BF00" Type="btn10"/>
-    <Route Start="2714" End="2915" Color="#9900FFFF" Type="btn11"/>
-    <Route Start="2714" End="2513" Color="#9900FFFF" Type="btn11"/>
-    <Route Start="2918" End="3117" Color="#9900FFFF" Type="btn11"/>
-    <Route Start="2918" End="2719" Color="#9900FFFF" Type="btn11"/>
-    <Route Start="3117" End="3215" Color="#9900FFFF" Type="btn11"/>
-    <Route Start="0213" End="0415" Color="#9900FFFF" Type="btn11"/>
-    <Route Start="0213" End="0210" Color="#9900FFFF" Type="btn11"/>
-    <Route Start="0317" End="0415" Color="#9900FFFF" Type="btn11"/>
-    <Route Start="0317" End="0319" Color="#9900FFFF" Type="btn11"/>
-    <Route Start="0307" End="0505" Color="#9900FFFF" Type="btn11"/>
-    <Route Start="0307" End="0310" Color="#9900FFFF" Type="btn11"/>
-    <Route Start="0504" End="0702" Color="#9900FFFF" Type="btn11"/>
-    <Route Start="0504" End="0505" Color="#9900FFFF" Type="btn11"/>
-    <Route Start="2105" End="2203" Color="#9900FFFF" Type="btn11"/>
-    <Route Start="3105" End="0106"  EndOffsetX="1" Color="#9900FFFF" Type="btn11"/>
-    <Route Start="2211" End="2513" Color="#9900FFFF" Type="btn11"/>
-    <Route Start="2202" End="2140"  EndOffsetY="-1" Color="#9900FFFF" Type="btn11"/>
-    <Route Start="2202" End="2203" Color="#9900FFFF" Type="btn11"/>
-    <Route Start="2203" End="2402" Color="#9900FFFF" Type="btn11"/>
-    <Route Start="0229" End="0332" Color="#9900FFFF" Type="btn11"/>
-    <Route Start="0229" End="0328" Color="#9900FFFF" Type="btn11"/>
-    <Route Start="0321" End="0319" Color="#9900FFFF" Type="btn11"/>
-    <Route Start="0321" End="0523" Color="#9900FFFF" Type="btn11"/>
-    <Route Start="0328" End="0425" Color="#9900FFFF" Type="btn11"/>
-    <Route Start="0425" End="0523" Color="#9900FFFF" Type="btn11"/>
-    <Route Start="0523" End="0722" Color="#9900FFFF" Type="btn11"/>
-    <Route Start="0310" End="0210" Color="#9900FFFF" Type="btn11"/>
-    <Route Start="0332" End="0335" Color="#9900FFFF" Type="btn11"/>
-    <Route Start="0335" End="0338" Color="#9900FFFF" Type="btn11"/>
-    <Route Start="0338" End="0240" Color="#9900FFFF" Type="btn11"/>
-    <Route Start="0837" End="0839" Color="#9900FFFF" Type="btn11"/>
-    <Route Start="0837" End="1036" Color="#9900FFFF" Type="btn11"/>
-    <Route Start="0839" End="0701"  EndOffsetY="1" Color="#9900FFFF" Type="btn11"/>
-    <Route Start="1036" End="1335" Color="#9900FFFF" Type="btn11"/>
-    <Route Start="1335" End="1534" Color="#9900FFFF" Type="btn11"/>
-    <Route Start="1733" End="1931" Color="#9900FFFF" Type="btn11"/>
-    <Route Start="1733" End="1534" Color="#9900FFFF" Type="btn11"/>
-    <Route Start="1931" End="1928" Color="#9900FFFF" Type="btn11"/>
-    <Route Start="3215" End="2915" Color="#9900FFFF" Type="btn11"/>
-    <Route Start="1928" End="2226" Color="#9900FFFF" Type="btn11"/>
-    <Route Start="2223" End="2226" Color="#9900FFFF" Type="btn11"/>
-    <Route Start="2223" End="2421" Color="#9900FFFF" Type="btn11"/>
-    <Route Start="2520" End="2719" Color="#9900FFFF" Type="btn11"/>
-    <Route Start="2520" End="2421" Color="#9900FFFF" Type="btn11"/>
-    <Route Start="3215" End="3212" Color="#990000FF" Type="btn12"/>
-    <!-- END TRADE ROUTES -->  
-    <Route Start="2711" End="2909" />
-    <Route Start="2711" End="2714" />
-    <Route Start="2714" End="2715" />
-    <Route Start="2714" End="2513" />
-    <Route Start="2513" End="2211" />
-    <Route Start="2715" End="2515" />
-    <Route Start="2715" End="2815" />
-    <Route Start="2815" End="2916" />
-    <Route Start="2916" End="2918" />
-    <Route Start="2916" End="3215" />
-    <Route Start="3215" End="3013" />
-    <Route Start="3013" End="2813" />
-    <Route Start="2813" End="2714" />
-    <Route Start="3013" End="3012" />
-    <Route Start="3012" End="3212" />
-    <Route Start="3212" EndOffsetX="1" End="0210" />
-
-    <Route Start="2909" End="2708" />
-    <Route StartOffsetX="1" Start="0408" EndOffsetX="1" End="0210" />
-    <Route Start="2204" End="2405" />
-    <Route Start="2405" End="2708" />
-
-
-    <Route Start="2102" End="2140" EndOffsetY="-1" />
-    <Route Start="2102" End="2204" />
-    <Route Start="2804" End="2805" />
-    <Route Start="2804" End="2902" />
-    <Route Start="2902" End="2739" EndOffsetY="-1" />
-    <Route Start="2708" End="2805" />
-
-
-    <Route Start="0210" End="0213" Allegiance="Fl" Color="LightGreen" />
-    <Route Start="0213" End="0415" Allegiance="Fl" Color="LightGreen" />
-    <Route Start="0213" End="3115" EndOffsetX="-1" Allegiance="Fl" Color="LightGreen" />
-    <Route Start="0317" End="0415" Allegiance="Fl" Color="LightGreen" />
-    <Route Start="0415" End="0614" Allegiance="Fl" Color="LightGreen" />
-    <Route Start="0415" End="0616" Allegiance="Fl" Color="LightGreen" />
-    <Route Start="0317" End="0218" Allegiance="Fl" Color="LightGreen" />
-    <Route Start="0218" End="0220" Allegiance="Fl" Color="LightGreen" />
-    <Route Start="0220" End="0321" Allegiance="Fl" Color="LightGreen" />
-    <Route Start="0321" End="0523" Allegiance="Fl" Color="LightGreen" />
-
-    <Route Start="1621" End="1723" Allegiance="As" Color="Yellow" />
-    <Route Start="0122" End="0223" Allegiance="As" Color="Yellow" />
-    <Route Start="0223" End="0224" Allegiance="As" Color="Yellow" />
-    <Route Start="0223" End="0322" Allegiance="As" Color="Yellow" />
-    <Route Start="1723" End="1823" Allegiance="As" Color="Yellow" />
-    <Route Start="1823" End="2023" Allegiance="As" Color="Yellow" />
-    <Route Start="0224" End="0425" Allegiance="As" Color="Yellow" />
-    <Route Start="0425" End="0525" Allegiance="As" Color="Yellow" />
-    <Route Start="0126" End="0127" Allegiance="As" Color="Yellow" />
-    <Route Start="0127" End="0129" Allegiance="As" Color="Yellow" />
-    <Route Start="0129" End="0130" Allegiance="As" Color="Yellow" />
-    <Route Start="0130" End="0132" Allegiance="As" Color="Yellow" />
-    <Route Start="0126" End="0224" Allegiance="As" Color="Yellow" />
-    <Route Start="1426" End="1626" Allegiance="As" Color="Yellow" />
-    <Route Start="1626" End="1728" Allegiance="As" Color="Yellow" />
-    <Route Start="1927" End="1928" Allegiance="As" Color="Yellow" />
-    <Route Start="0328" End="0429" Allegiance="As" Color="Yellow" />
-    <Route Start="0328" End="0528" Allegiance="As" Color="Yellow" />
-    <Route Start="0528" End="0727" Allegiance="As" Color="Yellow" />
-    <Route Start="1728" End="1928" Allegiance="As" Color="Yellow" />
-    <Route Start="1928" End="2029" Allegiance="As" Color="Yellow" />
-    <Route Start="0129" End="0328" Allegiance="As" Color="Yellow" />
-    <Route Start="0429" End="0431" Allegiance="As" Color="Yellow" />
-    <Route Start="0429" End="0528" Allegiance="As" Color="Yellow" />
-    <Route Start="1429" End="1630" Allegiance="As" Color="Yellow" />
-    <Route Start="0130" End="0132" Allegiance="As" Color="Yellow" />
-    <Route Start="0430" End="0431" Allegiance="As" Color="Yellow" />
-    <Route Start="0930" End="0934" Allegiance="As" Color="Yellow" />
-    <Route Start="1230" End="1429" Allegiance="As" Color="Yellow" />
-    <Route Start="1630" End="1631" Allegiance="As" Color="Yellow" />
-    <Route Start="1631" End="1733" Allegiance="As" Color="Yellow" />
-    <Route Start="1931" End="1933" Allegiance="As" Color="Yellow" />
-    <Route Start="1931" End="2029" Allegiance="As" Color="Yellow" />
-    <Route Start="0132" End="0232" Allegiance="As" Color="Yellow" />
-    <Route Start="0232" End="0234" Allegiance="As" Color="Yellow" />
-    <Route Start="0232" End="0531" Allegiance="As" Color="Yellow" />
-    <Route Start="1733" End="1735" Allegiance="As" Color="Yellow" />
-    <Route Start="1733" End="1933" Allegiance="As" Color="Yellow" />
-    <Route Start="0934" End="1034" Allegiance="As" Color="Yellow" />
-    <Route Start="1034" End="1038" Allegiance="As" Color="Yellow" />
-    <Route Start="1534" End="1733" Allegiance="As" Color="Yellow" />
-    <Route Start="1534" End="1735" Allegiance="As" Color="Yellow" />
-    <Route Start="1534" End="1835" Allegiance="As" Color="Yellow" />
-    <Route Start="0835" End="0837" Allegiance="As" Color="Yellow" />
-    <Route Start="0835" End="0934" Allegiance="As" Color="Yellow" />
-    <Route Start="0835" End="1036" Allegiance="As" Color="Yellow" />
-    <Route Start="1235" End="1436" Allegiance="As" Color="Yellow" />
-    <Route Start="1436" End="1438" Allegiance="As" Color="Yellow" />
-    <Route Start="1036" End="1235" Allegiance="As" Color="Yellow" />
-    <Route Start="1235" End="1335" Allegiance="As" Color="Yellow" />
-    <Route Start="1335" End="1534" Allegiance="As" Color="Yellow" />
-    <Route Start="1534" End="1733" Allegiance="As" Color="Yellow" />
-    <Route Start="0837" End="0839" Allegiance="As" Color="Yellow" />
-    <Route Start="0837" End="1036" Allegiance="As" Color="Yellow" />
-    <Route Start="0139" End="0240" Allegiance="As" Color="Yellow" />
-    <Route Start="0139" End="0338" Allegiance="As" Color="Yellow" />
-    <Route Start="0839" End="0640" Allegiance="As" Color="Yellow" />
-    <Route Start="0839" End="0840" Allegiance="As" Color="Yellow" />
-    <Route Start="1339" End="1438" Allegiance="As" Color="Yellow" />
-
-
-
-  </Routes>
-  <!--
-        <Borders Source="Based on allegiances from MTJ Domain of Deneb Supplement" Era="1120">
-        <Border Allegiance="Fl" Color="lightblue">0110 0210 0310 0410 0510 0511 0512 0612 0713 0714 0715 0716 0616 0517 0417 0418 0319 0218 0119 0118 0117 0116 0115 0114 0113 0112 0111 0110</Border>
-        <Border Allegiance="Bs" Color="blue">1005 1106 1206 1207 1308 1207 1206 1106 1005</Border>
-
-<Border Allegiance="As" Color="yellow">
-0022 0122 0221 0220 0320 0420 0520 0619 0719 0818 0918 1017 1016 1015 1115 1114 1213 1313 1412 1411 1410 1510 1609 1608 1607 1606 1605 1606 1607 1708 1808 1909 2008 2108 2208 2309 2409 2510 2609 2709 2809 2910 3010 3111
-3211 3312 3313 3314 3315 3316 3317 3318 3218 3219 3120 3020 2921 2922 2923 2823 2824 2725 2625 2626 2527 2528 2428 2429 2330 2331 2332 2232 2233 2134 2034 1935 1835 1836 1737 1637 1538 1438 1339
-1340 1341
-1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041
-0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022
-</Border>
-
-<Border Allegiance="Im">
-1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300
-3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311
-3210 3110 3009 2909 2908 2807 2708 2607 2507 2406 2306 2205 2105 2104 2103 2002
-1902 1901 1800
-</Border>
-</Borders>
-    -->
-  <Borders Source="Based on allegiances from Atlas of the Imperium" Author="Joshua Bell" Era="1065">
-    <Border Allegiance="As" Color="yellow" LabelPosition="0732">0122 0123 0223 0323 0322 0323 0324 0424 0525 0625 0725 0824 0823 0824 0725 0726 0727 0728 0729 0829 0930 0931 1031 1131 1230 1229 1228 1227 1226 1225 1224 1223 1323 1322 1422 1522 1621 1722 1822 1923 2023 2024 2125 2126 2226 2227 2228 2229 2230 2231 2232 2233 2134 2034 1935 1835 1736 1636 1637 1538 1438 1339 1340 1341 1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0126 0125 0124 0123 0122</Border>
-    <Border Allegiance="Bs" Color="blue" LabelPosition="1007" WrapLabel="true">1005 1106 1206 1207 1308 1207 1206 1106 1005</Border>
-    <Border Allegiance="Fl" Color="green" LabelPosition="0412">0110 0210 0310 0410 0510 0511 0611 0612 0713 0613 0614 0615 0716 0616 0517 0417 0418 0319 0320 0420 0521 0621 0722 0723 0724 0623 0523 0422 0421 0321 0221 0222 0221 0121 0120 0119 0118 0117 0116 0115 0114 0113 0112 0111 0110</Border>
-    <Border Allegiance="Gl" Color="purple" LabelPosition="0922" WrapLabel="true">0825 0925 1024 1023 1022 1122 1121 1122 1123 1124 1125 1126 1127 1128 1028 1029 1030 1029 0929 0928 0927 0926 0825</Border>
+  <Stylesheet>    route.FlLe { color: LightGreen; }  </Stylesheet>
+  <Borders>
+    <Border Allegiance="As" LabelPosition="732" WrapLabel="false">0122 0123 0223 0323 0322 0323 0324 0424 0525 0625 0725 0824 0823 0824 0725 0726 0727 0728 0729 0829 0930 0931 1031 1131 1230 1229 1228 1227 1226 1225 1224 1223 1323 1322 1422 1522 1621 1722 1822 1923 2023 2024 2125 2126 2226 2227 2228 2229 2230 2231 2232 2233 2134 2034 1935 1835 1736 1636 1637 1538 1438 1339 1340 1341 1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0126 0125 0124 0123 0122</Border>
+    <Border Allegiance="BlSo" Color="Blue" LabelPosition="1007" WrapLabel="true">1005 1106 1206 1207 1308 1207 1206 1106 1005</Border>
+    <Border Allegiance="FlLe" Color="Green" LabelPosition="412" WrapLabel="false">0110 0210 0310 0410 0510 0511 0611 0612 0713 0613 0614 0615 0716 0616 0517 0417 0418 0319 0320 0420 0521 0621 0722 0723 0724 0623 0523 0422 0421 0321 0221 0222 0221 0121 0120 0119 0118 0117 0116 0115 0114 0113 0112 0111 0110</Border>
+    <Border Allegiance="AsGl" Color="LightYellow" LabelPosition="922" WrapLabel="true">0825 0925 1024 1023 1022 1122 1121 1122 1123 1124 1125 1126 1127 1128 1028 1029 1030 1029 0929 0928 0927 0926 0825</Border>
     <Border Allegiance="Im" LabelPosition="3109" WrapLabel="true">1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3218 3219 3119 3018 2918 2817 2717 2616 2615 2515 2514 2413 2313 2213 2212 2211 2312 2411 2511 2610 2710 2709 2708 2707 2606 2506 2405 2306 2205 2105 2104 2103 2002 2001 1901 1800</Border>
-    <Border Allegiance="Sf" Color="olivedrab" LabelPosition="2009">2008 2108 2208 2309 2208 2108 2008</Border>
-    <Border Allegiance="Sc" Color="darkkhaki" LabelPosition="0506">0403 0503 0504 0505 0504 0403</Border>
+    <Border Allegiance="SeFo" Color="OliveDrab" LabelPosition="2009" WrapLabel="false">2008 2108 2208 2309 2208 2108 2008</Border>
+    <Border Allegiance="StCl" Color="DarkKhaki" LabelPosition="506" WrapLabel="false">0403 0503 0504 0505 0504 0403</Border>
   </Borders>
-
+  <Routes>
+    <Route End="2909" Start="2711"/>
+    <Route End="2714" Start="2711"/>
+    <Route End="2715" Start="2714"/>
+    <Route End="2513" Start="2714"/>
+    <Route End="2211" Start="2513"/>
+    <Route End="2515" Start="2715"/>
+    <Route End="2815" Start="2715"/>
+    <Route End="2916" Start="2815"/>
+    <Route End="2918" Start="2916"/>
+    <Route End="3215" Start="2916"/>
+    <Route End="3013" Start="3215"/>
+    <Route End="2813" Start="3013"/>
+    <Route End="2714" Start="2813"/>
+    <Route End="3012" Start="3013"/>
+    <Route End="3212" Start="3012"/>
+    <Route End="210" EndOffsetX="1" Start="3212"/>
+    <Route End="2708" Start="2909"/>
+    <Route End="210" EndOffsetX="1" Start="408" StartOffsetX="1"/>
+    <Route End="2405" Start="2204"/>
+    <Route End="2708" Start="2405"/>
+    <Route End="2140" EndOffsetY="-1" Start="2102"/>
+    <Route End="2204" Start="2102"/>
+    <Route End="2805" Start="2804"/>
+    <Route End="2902" Start="2804"/>
+    <Route End="2739" EndOffsetY="-1" Start="2902"/>
+    <Route End="2805" Start="2708"/>
+    <Route Allegiance="FlLe" End="213" Start="210"/>
+    <Route Allegiance="FlLe" End="415" Start="213"/>
+    <Route Allegiance="FlLe" End="3115" EndOffsetX="-1" Start="213"/>
+    <Route Allegiance="FlLe" End="415" Start="317"/>
+    <Route Allegiance="FlLe" End="614" Start="415"/>
+    <Route Allegiance="FlLe" End="616" Start="415"/>
+    <Route Allegiance="FlLe" End="218" Start="317"/>
+    <Route Allegiance="FlLe" End="220" Start="218"/>
+    <Route Allegiance="FlLe" End="321" Start="220"/>
+    <Route Allegiance="FlLe" End="523" Start="321"/>
+    <Route Allegiance="As" End="1723" Start="1621"/>
+    <Route Allegiance="As" End="223" Start="122"/>
+    <Route Allegiance="As" End="224" Start="223"/>
+    <Route Allegiance="As" End="322" Start="223"/>
+    <Route Allegiance="As" End="1823" Start="1723"/>
+    <Route Allegiance="As" End="2023" Start="1823"/>
+    <Route Allegiance="As" End="425" Start="224"/>
+    <Route Allegiance="As" End="525" Start="425"/>
+    <Route Allegiance="As" End="127" Start="126"/>
+    <Route Allegiance="As" End="129" Start="127"/>
+    <Route Allegiance="As" End="130" Start="129"/>
+    <Route Allegiance="As" End="132" Start="130"/>
+    <Route Allegiance="As" End="224" Start="126"/>
+    <Route Allegiance="As" End="1626" Start="1426"/>
+    <Route Allegiance="As" End="1728" Start="1626"/>
+    <Route Allegiance="As" End="1928" Start="1927"/>
+    <Route Allegiance="As" End="429" Start="328"/>
+    <Route Allegiance="As" End="528" Start="328"/>
+    <Route Allegiance="As" End="727" Start="528"/>
+    <Route Allegiance="As" End="1928" Start="1728"/>
+    <Route Allegiance="As" End="2029" Start="1928"/>
+    <Route Allegiance="As" End="328" Start="129"/>
+    <Route Allegiance="As" End="431" Start="429"/>
+    <Route Allegiance="As" End="528" Start="429"/>
+    <Route Allegiance="As" End="1630" Start="1429"/>
+    <Route Allegiance="As" End="132" Start="130"/>
+    <Route Allegiance="As" End="431" Start="430"/>
+    <Route Allegiance="As" End="934" Start="930"/>
+    <Route Allegiance="As" End="1429" Start="1230"/>
+    <Route Allegiance="As" End="1631" Start="1630"/>
+    <Route Allegiance="As" End="1733" Start="1631"/>
+    <Route Allegiance="As" End="1933" Start="1931"/>
+    <Route Allegiance="As" End="2029" Start="1931"/>
+    <Route Allegiance="As" End="232" Start="132"/>
+    <Route Allegiance="As" End="234" Start="232"/>
+    <Route Allegiance="As" End="531" Start="232"/>
+    <Route Allegiance="As" End="1735" Start="1733"/>
+    <Route Allegiance="As" End="1933" Start="1733"/>
+    <Route Allegiance="As" End="1034" Start="934"/>
+    <Route Allegiance="As" End="1038" Start="1034"/>
+    <Route Allegiance="As" End="1733" Start="1534"/>
+    <Route Allegiance="As" End="1735" Start="1534"/>
+    <Route Allegiance="As" End="1835" Start="1534"/>
+    <Route Allegiance="As" End="837" Start="835"/>
+    <Route Allegiance="As" End="934" Start="835"/>
+    <Route Allegiance="As" End="1036" Start="835"/>
+    <Route Allegiance="As" End="1436" Start="1235"/>
+    <Route Allegiance="As" End="1438" Start="1436"/>
+    <Route Allegiance="As" End="1235" Start="1036"/>
+    <Route Allegiance="As" End="1335" Start="1235"/>
+    <Route Allegiance="As" End="1534" Start="1335"/>
+    <Route Allegiance="As" End="1733" Start="1534"/>
+    <Route Allegiance="As" End="839" Start="837"/>
+    <Route Allegiance="As" End="1036" Start="837"/>
+    <Route Allegiance="As" End="240" Start="139"/>
+    <Route Allegiance="As" End="338" Start="139"/>
+    <Route Allegiance="As" End="640" Start="839"/>
+    <Route Allegiance="As" End="840" Start="839"/>
+    <Route Allegiance="As" End="1438" Start="1339"/>
+    <Route Color="BFFFFF00" End="2912" Start="3113" Type="btn09"/>
+    <Route Color="99FF0000" End="3212" Start="3113" Type="btn08"/>
+    <Route Color="BFFFFF00" End="1626" Start="1928" Type="btn09"/>
+    <Route Color="9900FFFF" End="1728" Start="1928" Type="btn11"/>
+    <Route Color="BFFFFF00" End="1927" Start="1928" Type="btn09"/>
+    <Route Color="99FF0000" End="2229" Start="1928" Type="btn08"/>
+    <Route Color="9900FFFF" End="2226" Start="1928" Type="btn11"/>
+    <Route Color="BFFFFF00" End="2029" Start="1928" Type="btn09"/>
+    <Route Color="99FF0000" End="1830" Start="1928" Type="btn08"/>
+    <Route Color="99FF0000" End="0317" Start="0417" Type="btn08"/>
+    <Route Color="99FF0000" End="2134" Start="2233" Type="btn08"/>
+    <Route Color="99FF0000" End="2232" Start="2233" Type="btn08"/>
+    <Route Color="99FF0000" End="2229" Start="2233" Type="btn08"/>
+    <Route Color="99FF0000" End="2234" Start="2233" Type="btn08"/>
+    <Route Color="99FF0000" End="0815" Start="0915" Type="btn08"/>
+    <Route Color="99FF0000" End="1015" Start="0915" Type="btn08"/>
+    <Route Color="99FF0000" End="0716" Start="0915" Type="btn08"/>
+    <Route Color="99FF0000" End="0914" Start="0915" Type="btn08"/>
+    <Route Color="9900FFFF" End="2910" Start="2807" Type="btn11"/>
+    <Route Color="8000BF00" End="2708" Start="2807" Type="btn10"/>
+    <Route Color="9900FFFF" End="2805" Start="2807" Type="btn11"/>
+    <Route Color="99FF0000" End="3107" Start="2807" Type="btn08"/>
+    <Route Color="99FF0000" End="2709" Start="2807" Type="btn08"/>
+    <Route Color="99FF0000" End="2921" Start="2821" Type="btn08"/>
+    <Route Color="99FF0000" End="2621" Start="2821" Type="btn08"/>
+    <Route Color="99FF0000" End="1323" Start="1223" Type="btn08"/>
+    <Route Color="99FF0000" End="2612" Start="2513" Type="btn08"/>
+    <Route Color="9900FFFF" End="2714" Start="2513" Type="btn11"/>
+    <Route Color="9900FFFF" End="2711" Start="2513" Type="btn11"/>
+    <Route Color="99FF0000" End="2515" Start="2513" Type="btn08"/>
+    <Route Color="9900FFFF" End="2211" Start="2513" Type="btn11"/>
+    <Route Color="99FF0000" End="2314" Start="2513" Type="btn08"/>
+    <Route Color="8000BF00" End="0213" Start="0317" Type="btn10"/>
+    <Route Color="99FF0000" End="0516" Start="0317" Type="btn08"/>
+    <Route Color="99FF0000" End="0119" Start="0317" Type="btn08"/>
+    <Route Color="BFFFFF00" End="0415" Start="0317" Type="btn09"/>
+    <Route Color="BFFFFF00" End="0416" Start="0317" Type="btn09"/>
+    <Route Color="8000BF00" End="0319" Start="0317" Type="btn10"/>
+    <Route Color="99FF0000" End="1222" Start="0820" Type="btn08"/>
+    <Route Color="BFFFFF00" End="0722" Start="0820" Type="btn09"/>
+    <Route Color="BFFFFF00" End="1022" Start="0820" Type="btn09"/>
+    <Route Color="99FF0000" End="0127" Start="0126" Type="btn08"/>
+    <Route Color="99FF0000" End="2306" Start="2108" Type="btn08"/>
+    <Route Color="8000BF00" End="2105" Start="2108" Type="btn10"/>
+    <Route Color="8000BF00" End="2309" Start="2108" Type="btn10"/>
+    <Route Color="BFFFFF00" End="0523" Start="0224" Type="btn09"/>
+    <Route Color="8000BF00" End="0322" Start="0224" Type="btn10"/>
+    <Route Color="99FF0000" End="0223" Start="0224" Type="btn08"/>
+    <Route Color="8000BF00" End="0227" Start="0224" Type="btn10"/>
+    <Route Color="8000BF00" End="0127" Start="0224" Type="btn10"/>
+    <Route Color="BFFFFF00" End="0425" Start="0224" Type="btn09"/>
+    <Route Color="8000BF00" End="1621" Start="1723" Type="btn10"/>
+    <Route Color="8000BF00" End="1524" Start="1723" Type="btn10"/>
+    <Route Color="BFFFFF00" End="1823" Start="1723" Type="btn09"/>
+    <Route Color="8000BF00" End="2023" Start="1723" Type="btn10"/>
+    <Route Color="8000BF00" End="1128" Start="1429" Type="btn10"/>
+    <Route Color="BFFFFF00" End="1426" Start="1429" Type="btn09"/>
+    <Route Color="8000BF00" End="1728" Start="1429" Type="btn10"/>
+    <Route Color="BFFFFF00" End="1230" Start="1429" Type="btn09"/>
+    <Route Color="99FF0000" End="1333" Start="1429" Type="btn08"/>
+    <Route Color="99FF0000" End="1339" Start="1436" Type="btn08"/>
+    <Route Color="BFFFFF00" End="1535" Start="1436" Type="btn09"/>
+    <Route Color="99FF0000" End="1235" Start="1436" Type="btn08"/>
+    <Route Color="BFFFFF00" End="0227" Start="0127" Type="btn09"/>
+    <Route Color="8000BF00" End="3028" EndOffsetX="-1" Start="0127" Type="btn10"/>
+    <Route Color="99FF0000" End="0129" Start="0127" Type="btn08"/>
+    <Route Color="99FF0000" End="0229" Start="0127" Type="btn08"/>
+    <Route Color="9900FFFF" End="1619" Start="1621" Type="btn11"/>
+    <Route Color="9900FFFF" End="1323" Start="1621" Type="btn11"/>
+    <Route Color="8000BF00" End="0210" Start="0310" Type="btn10"/>
+    <Route Color="8000BF00" End="0307" Start="0310" Type="btn10"/>
+    <Route Color="99FF0000" End="0408" Start="0310" Type="btn08"/>
+    <Route Color="99FF0000" End="0209" Start="0310" Type="btn08"/>
+    <Route Color="BFFFFF00" End="0510" Start="0310" Type="btn09"/>
+    <Route Color="99FF0000" End="2424" Start="2425" Type="btn08"/>
+    <Route Color="BFFFFF00" End="2324" Start="2425" Type="btn09"/>
+    <Route Color="9900FFFF" End="2226" Start="2425" Type="btn11"/>
+    <Route Color="9900FFFF" End="2724" Start="2425" Type="btn11"/>
+    <Route Color="8000BF00" End="2527" Start="2425" Type="btn10"/>
+    <Route Color="99FF0000" End="2428" Start="2425" Type="btn08"/>
+    <Route Color="9900FFFF" End="2724" Start="2923" Type="btn11"/>
+    <Route Color="9900FFFF" End="2921" Start="2923" Type="btn11"/>
+    <Route Color="99FF0000" End="2332" Start="2428" Type="btn08"/>
+    <Route Color="99FF0000" End="3117" Start="3016" Type="btn08"/>
+    <Route Color="99FF0000" End="0118" EndOffsetX="1" Start="3219" Type="btn08"/>
+    <Route Color="BFFFFF00" End="3117" Start="3219" Type="btn09"/>
+    <Route Color="99FF0000" End="3119" Start="3219" Type="btn08"/>
+    <Route Color="99FF0000" End="2324" Start="2424" Type="btn08"/>
+    <Route Color="BFFFFF00" End="1626" Start="1324" Type="btn09"/>
+    <Route Color="BFFFFF00" End="1426" Start="1324" Type="btn09"/>
+    <Route Color="BFFFFF00" End="1323" Start="1324" Type="btn09"/>
+    <Route Color="BFFFFF00" End="2234" Start="2137" Type="btn09"/>
+    <Route Color="8000BF00" End="1835" Start="2137" Type="btn10"/>
+    <Route Color="BFFFFF00" End="1630" Start="1830" Type="btn09"/>
+    <Route Color="BFFFFF00" End="1931" Start="1830" Type="btn09"/>
+    <Route Color="BFFFFF00" End="1535" Start="1534" Type="btn09"/>
+    <Route Color="BFFFFF00" End="1335" Start="1534" Type="btn09"/>
+    <Route Color="99FF0000" End="1333" Start="1534" Type="btn08"/>
+    <Route Color="99FF0000" End="1735" Start="1534" Type="btn08"/>
+    <Route Color="BFFFFF00" End="1533" Start="1534" Type="btn09"/>
+    <Route Color="BFFFFF00" End="1634" Start="1534" Type="btn09"/>
+    <Route Color="99FF0000" End="1535" Start="1735" Type="btn08"/>
+    <Route Color="99FF0000" End="1835" Start="1735" Type="btn08"/>
+    <Route Color="99FF0000" End="1733" Start="1735" Type="btn08"/>
+    <Route Color="99FF0000" End="1634" Start="1735" Type="btn08"/>
+    <Route Color="8000BF00" End="0530" Start="0229" Type="btn10"/>
+    <Route Color="9900FFFF" End="0529" Start="0229" Type="btn11"/>
+    <Route Color="8000BF00" End="0227" Start="0229" Type="btn10"/>
+    <Route Color="BFFFFF00" End="0329" Start="0229" Type="btn09"/>
+    <Route Color="BFFFFF00" End="0531" Start="0229" Type="btn09"/>
+    <Route Color="99FF0000" End="3228" EndOffsetX="-1" Start="0229" Type="btn08"/>
+    <Route Color="8000BF00" End="0130" Start="0229" Type="btn10"/>
+    <Route Color="99FF0000" End="0430" Start="0229" Type="btn08"/>
+    <Route Color="8000BF00" End="0129" Start="0229" Type="btn10"/>
+    <Route Color="BFFFFF00" End="0232" Start="0229" Type="btn09"/>
+    <Route Color="BFFFFF00" End="0332" Start="0229" Type="btn09"/>
+    <Route Color="8000BF00" End="0530" Start="0529" Type="btn10"/>
+    <Route Color="9900FFFF" End="0829" Start="0529" Type="btn11"/>
+    <Route Color="9900FFFF" End="0727" Start="0529" Type="btn11"/>
+    <Route Color="9900FFFF" End="0531" Start="0529" Type="btn11"/>
+    <Route Color="BFFFFF00" End="0429" Start="0529" Type="btn09"/>
+    <Route Color="99FF0000" End="0430" Start="0529" Type="btn08"/>
+    <Route Color="8000BF00" End="0628" Start="0529" Type="btn10"/>
+    <Route Color="99FF0000" End="0633" Start="0933" Type="btn08"/>
+    <Route Color="BFFFFF00" End="0835" Start="0933" Type="btn09"/>
+    <Route Color="99FF0000" End="1030" Start="0933" Type="btn08"/>
+    <Route Color="8000BF00" End="1034" Start="0933" Type="btn10"/>
+    <Route Color="8000BF00" End="0931" Start="0933" Type="btn10"/>
+    <Route Color="9900FFFF" End="0505" Start="0307" Type="btn11"/>
+    <Route Color="99FF0000" End="0408" Start="0307" Type="btn08"/>
+    <Route Color="9900FFFF" End="3208" EndOffsetX="-1" Start="0307" Type="btn11"/>
+    <Route Color="BFFFFF00" End="0204" Start="0307" Type="btn09"/>
+    <Route Color="BFFFFF00" End="2904" Start="2804" Type="btn09"/>
+    <Route Color="8000BF00" End="2805" Start="2804" Type="btn10"/>
+    <Route Color="8000BF00" End="2602" Start="2804" Type="btn10"/>
+    <Route Color="99FF0000" End="0936" Start="0837" Type="btn08"/>
+    <Route Color="9900FFFF" End="0738" Start="0837" Type="btn11"/>
+    <Route Color="BFFFFF00" End="1038" Start="0837" Type="btn09"/>
+    <Route Color="9900FFFF" End="0835" Start="0837" Type="btn11"/>
+    <Route Color="BFFFFF00" End="1036" Start="0837" Type="btn09"/>
+    <Route Color="9900FFFF" End="0505" Start="0504" Type="btn11"/>
+    <Route Color="9900FFFF" End="0702" Start="0504" Type="btn11"/>
+    <Route Color="99FF0000" End="0724" Start="0722" Type="btn08"/>
+    <Route Color="BFFFFF00" End="0523" Start="0722" Type="btn09"/>
+    <Route Color="8000BF00" End="2203" Start="2102" Type="btn10"/>
+    <Route Color="8000BF00" End="2105" Start="2102" Type="btn10"/>
+    <Route Color="BFFFFF00" End="2002" Start="2102" Type="btn09"/>
+    <Route Color="99FF0000" End="2402" Start="2102" Type="btn08"/>
+    <Route Color="BFFFFF00" End="0332" Start="0633" Type="btn09"/>
+    <Route Color="9900FFFF" End="0531" Start="0633" Type="btn11"/>
+    <Route Color="8000BF00" End="0835" Start="0633" Type="btn10"/>
+    <Route Color="8000BF00" End="0335" Start="0633" Type="btn10"/>
+    <Route Color="99FF0000" End="0934" Start="0633" Type="btn08"/>
+    <Route Color="BFFFFF00" End="0931" Start="0633" Type="btn09"/>
+    <Route Color="BFFFFF00" End="2322" Start="2520" Type="btn09"/>
+    <Route Color="BFFFFF00" End="2719" Start="2520" Type="btn09"/>
+    <Route Color="BFFFFF00" End="0530" Start="0628" Type="btn09"/>
+    <Route Color="BFFFFF00" End="0727" Start="0628" Type="btn09"/>
+    <Route Color="99FF0000" End="0531" Start="0628" Type="btn08"/>
+    <Route Color="99FF0000" End="0929" Start="0628" Type="btn08"/>
+    <Route Color="99FF0000" End="0727" Start="0425" Type="btn08"/>
+    <Route Color="99FF0000" End="0523" Start="0425" Type="btn08"/>
+    <Route Color="99FF0000" End="0426" Start="0425" Type="btn08"/>
+    <Route Color="8000BF00" End="0321" Start="0322" Type="btn10"/>
+    <Route Color="BFFFFF00" End="0523" Start="0322" Type="btn09"/>
+    <Route Color="99FF0000" End="0122" Start="0322" Type="btn08"/>
+    <Route Color="8000BF00" End="1128" Start="0929" Type="btn10"/>
+    <Route Color="9900FFFF" End="0829" Start="0929" Type="btn11"/>
+    <Route Color="99FF0000" End="1030" Start="0929" Type="btn08"/>
+    <Route Color="8000BF00" End="1028" Start="0929" Type="btn10"/>
+    <Route Color="BFFFFF00" End="0930" Start="0929" Type="btn09"/>
+    <Route Color="99FF0000" End="1015" Start="1317" Type="btn08"/>
+    <Route Color="BFFFFF00" End="1518" Start="1317" Type="btn09"/>
+    <Route Color="99FF0000" End="1118" Start="1317" Type="btn08"/>
+    <Route Color="BFFFFF00" End="2203" Start="2002" Type="btn09"/>
+    <Route Color="BFFFFF00" End="1034" Start="1333" Type="btn09"/>
+    <Route Color="99FF0000" End="1535" Start="1333" Type="btn08"/>
+    <Route Color="8000BF00" End="2616" Start="2714" Type="btn10"/>
+    <Route Color="9900FFFF" End="3015" Start="2714" Type="btn11"/>
+    <Route Color="8000BF00" End="3013" Start="2714" Type="btn10"/>
+    <Route Color="BFFFFF00" End="2813" Start="2714" Type="btn09"/>
+    <Route Color="BFFFFF00" End="2815" Start="2714" Type="btn09"/>
+    <Route Color="BFFFFF00" End="2715" Start="2714" Type="btn09"/>
+    <Route Color="9900FFFF" End="2211" Start="2113" Type="btn11"/>
+    <Route Color="9900FFFF" End="2115" Start="2113" Type="btn11"/>
+    <Route Color="99FF0000" End="2314" Start="2113" Type="btn08"/>
+    <Route Color="BFFFFF00" End="0931" Start="1230" Type="btn09"/>
+    <Route Color="BFFFFF00" End="0523" Start="0724" Type="btn09"/>
+    <Route Color="BFFFFF00" End="0824" Start="0724" Type="btn09"/>
+    <Route Color="99FF0000" End="2213" Start="2211" Type="btn08"/>
+    <Route Color="8000BF00" End="2309" Start="2211" Type="btn10"/>
+    <Route Color="99FF0000" End="1810" Start="2211" Type="btn08"/>
+    <Route Color="8000BF00" End="2904" Start="3105" Type="btn10"/>
+    <Route Color="8000BF00" End="0105" EndOffsetX="1" Start="3105" Type="btn10"/>
+    <Route Color="8000BF00" End="0106" EndOffsetX="1" Start="3105" Type="btn10"/>
+    <Route Color="BFFFFF00" End="0203" EndOffsetX="1" Start="3105" Type="btn09"/>
+    <Route Color="99FF0000" End="1618" Start="1619" Type="btn08"/>
+    <Route Color="9900FFFF" End="1818" Start="1619" Type="btn11"/>
+    <Route Color="BFFFFF00" End="1518" Start="1619" Type="btn09"/>
+    <Route Color="99FF0000" End="0236" Start="0338" Type="btn08"/>
+    <Route Color="BFFFFF00" End="0139" Start="0338" Type="btn09"/>
+    <Route Color="99FF0000" End="0201" EndOffsetY="1" Start="0240" Type="btn08"/>
+    <Route Color="99FF0000" End="0303" EndOffsetY="1" Start="0240" Type="btn08"/>
+    <Route Color="BFFFFF00" End="0103" EndOffsetY="1" Start="0240" Type="btn09"/>
+    <Route Color="99FF0000" End="0402" EndOffsetY="1" Start="0240" Type="btn08"/>
+    <Route Color="BFFFFF00" End="0139" Start="0240" Type="btn09"/>
+    <Route Color="BFFFFF00" End="1927" Start="1823" Type="btn09"/>
+    <Route Color="99FF0000" End="2125" Start="1823" Type="btn08"/>
+    <Route Color="99FF0000" End="2123" Start="1823" Type="btn08"/>
+    <Route Color="99FF0000" End="0525" Start="0523" Type="btn08"/>
+    <Route Color="8000BF00" End="0321" Start="0523" Type="btn10"/>
+    <Route Color="99FF0000" End="0222" Start="0523" Type="btn08"/>
+    <Route Color="8000BF00" End="0824" Start="0523" Type="btn10"/>
+    <Route Color="99FF0000" End="2329" Start="2527" Type="btn08"/>
+    <Route Color="8000BF00" End="3029" Start="2527" Type="btn10"/>
+    <Route Color="99FF0000" End="2725" Start="2527" Type="btn08"/>
+    <Route Color="9900FFFF" End="3215" Start="3013" Type="btn11"/>
+    <Route Color="9900FFFF" End="2912" Start="3013" Type="btn11"/>
+    <Route Color="99FF0000" End="3011" Start="3013" Type="btn08"/>
+    <Route Color="8000BF00" End="3212" Start="3013" Type="btn10"/>
+    <Route Color="BFFFFF00" End="2813" Start="3013" Type="btn09"/>
+    <Route Color="99FF0000" End="1126" Start="1128" Type="btn08"/>
+    <Route Color="BFFFFF00" End="1027" Start="1128" Type="btn09"/>
+    <Route Color="BFFFFF00" End="1028" Start="1128" Type="btn09"/>
+    <Route Color="99FF0000" End="1226" Start="1128" Type="btn08"/>
+    <Route Color="BFFFFF00" End="2918" Start="2719" Type="btn09"/>
+    <Route Color="99FF0000" End="2819" Start="2719" Type="btn08"/>
+    <Route Color="99FF0000" End="1514" Start="1613" Type="btn08"/>
+    <Route Color="99FF0000" End="1715" Start="1613" Type="btn08"/>
+    <Route Color="8000BF00" End="1733" Start="1630" Type="btn10"/>
+    <Route Color="8000BF00" End="1728" Start="1630" Type="btn10"/>
+    <Route Color="8000BF00" End="1533" Start="1630" Type="btn10"/>
+    <Route Color="99FF0000" End="1027" Start="1126" Type="btn08"/>
+    <Route Color="99FF0000" End="3240" EndOffsetX="-1" Start="0139" Type="btn08"/>
+    <Route Color="99FF0000" End="0135" Start="0139" Type="btn08"/>
+    <Route Color="9900FFFF" End="0103" EndOffsetY="1" Start="0139" Type="btn11"/>
+    <Route Color="99FF0000" End="2724" Start="2824" Type="btn08"/>
+    <Route Color="BFFFFF00" End="1537" Start="1535" Type="btn09"/>
+    <Route Color="BFFFFF00" End="1835" Start="1535" Type="btn09"/>
+    <Route Color="8000BF00" End="1236" Start="1535" Type="btn10"/>
+    <Route Color="BFFFFF00" End="1335" Start="1535" Type="btn09"/>
+    <Route Color="8000BF00" End="1533" Start="1535" Type="btn10"/>
+    <Route Color="BFFFFF00" End="1634" Start="1535" Type="btn09"/>
+    <Route Color="BFFFFF00" End="2616" Start="2517" Type="btn09"/>
+    <Route Color="99FF0000" End="0319" Start="0418" Type="btn08"/>
+    <Route Color="8000BF00" End="0213" Start="0210" Type="btn10"/>
+    <Route Color="BFFFFF00" End="0209" Start="0210" Type="btn09"/>
+    <Route Color="8000BF00" End="3109" EndOffsetX="-1" Start="0210" Type="btn10"/>
+    <Route Color="99FF0000" End="1339" Start="1438" Type="btn08"/>
+    <Route Color="99FF0000" End="1537" Start="1438" Type="btn08"/>
+    <Route Color="99FF0000" End="0525" Start="0727" Type="btn08"/>
+    <Route Color="9900FFFF" End="0825" Start="0727" Type="btn11"/>
+    <Route Color="99FF0000" End="1028" Start="0727" Type="btn08"/>
+    <Route Color="99FF0000" End="2018" Start="2116" Type="btn08"/>
+    <Route Color="BFFFFF00" End="2115" Start="2116" Type="btn09"/>
+    <Route Color="8000BF00" End="3030" Start="3029" Type="btn10"/>
+    <Route Color="99FF0000" End="0530" Start="0531" Type="btn08"/>
+    <Route Color="99FF0000" End="0332" Start="0531" Type="btn08"/>
+    <Route Color="99FF0000" End="0829" Start="0531" Type="btn08"/>
+    <Route Color="BFFFFF00" End="0430" Start="0531" Type="btn09"/>
+    <Route Color="BFFFFF00" End="0130" Start="0132" Type="btn09"/>
+    <Route Color="99FF0000" End="0534" Start="0232" Type="btn08"/>
+    <Route Color="99FF0000" End="0135" Start="0232" Type="btn08"/>
+    <Route Color="99FF0000" End="0332" Start="0232" Type="btn08"/>
+    <Route Color="99FF0000" End="2123" Start="2223" Type="btn08"/>
+    <Route Color="99FF0000" End="2324" Start="2223" Type="btn08"/>
+    <Route Color="BFFFFF00" End="1026" Start="1028" Type="btn09"/>
+    <Route Color="8000BF00" End="1027" Start="1028" Type="btn10"/>
+    <Route Color="BFFFFF00" End="1030" Start="1028" Type="btn09"/>
+    <Route Color="BFFFFF00" End="1023" Start="1022" Type="btn09"/>
+    <Route Color="BFFFFF00" End="1121" Start="1022" Type="btn09"/>
+    <Route Color="99FF0000" End="0222" Start="0122" Type="btn08"/>
+    <Route Color="99FF0000" End="0936" Start="0934" Type="btn08"/>
+    <Route Color="99FF0000" End="0931" Start="0934" Type="btn08"/>
+    <Route Color="99FF0000" End="1235" Start="0934" Type="btn08"/>
+    <Route Color="99FF0000" End="0201" Start="0204" Type="btn08"/>
+    <Route Color="BFFFFF00" End="0936" Start="1034" Type="btn09"/>
+    <Route Color="8000BF00" End="0835" Start="1034" Type="btn10"/>
+    <Route Color="8000BF00" End="1236" Start="1034" Type="btn10"/>
+    <Route Color="BFFFFF00" End="1235" Start="1034" Type="btn09"/>
+    <Route Color="9900FFFF" End="2921" Start="2918" Type="btn11"/>
+    <Route Color="8000BF00" End="2616" Start="2918" Type="btn10"/>
+    <Route Color="9900FFFF" End="3117" Start="2918" Type="btn11"/>
+    <Route Color="99FF0000" End="2819" Start="2918" Type="btn08"/>
+    <Route Color="8000BF00" End="2910" Start="2909" Type="btn10"/>
+    <Route Color="99FF0000" End="2708" Start="2909" Type="btn08"/>
+    <Route Color="BFFFFF00" End="1220" Start="1222" Type="btn09"/>
+    <Route Color="BFFFFF00" End="1221" Start="1222" Type="btn09"/>
+    <Route Color="BFFFFF00" End="1323" Start="1222" Type="btn09"/>
+    <Route Color="8000BF00" End="2602" Start="2501" Type="btn10"/>
+    <Route Color="8000BF00" End="2539" EndOffsetY="-1" Start="2501" Type="btn10"/>
+    <Route Color="99FF0000" End="2402" Start="2501" Type="btn08"/>
+    <Route Color="99FF0000" End="0835" Start="0936" Type="btn08"/>
+    <Route Color="BFFFFF00" End="2306" Start="2405" Type="btn09"/>
+    <Route Color="99FF0000" End="2203" Start="2405" Type="btn08"/>
+    <Route Color="BFFFFF00" End="2402" Start="2405" Type="btn09"/>
+    <Route Color="9900FFFF" End="1023" Start="1323" Type="btn11"/>
+    <Route Color="BFFFFF00" End="1322" Start="1323" Type="btn09"/>
+    <Route Color="8000BF00" End="1524" Start="1323" Type="btn10"/>
+    <Route Color="BFFFFF00" End="0416" Start="0716" Type="btn09"/>
+    <Route Color="99FF0000" End="0614" Start="0716" Type="btn08"/>
+    <Route Color="9900FFFF" End="2910" Start="2711" Type="btn11"/>
+    <Route Color="8000BF00" End="2708" Start="2711" Type="btn10"/>
+    <Route Color="99FF0000" End="3116" Start="2916" Type="btn08"/>
+    <Route Color="BFFFFF00" End="3117" Start="2916" Type="btn09"/>
+    <Route Color="BFFFFF00" End="3015" Start="2916" Type="btn09"/>
+    <Route Color="BFFFFF00" End="2815" Start="2916" Type="btn09"/>
+    <Route Color="BFFFFF00" End="2715" Start="2916" Type="btn09"/>
+    <Route Color="BFFFFF00" End="0931" Start="0930" Type="btn09"/>
+    <Route Color="99FF0000" End="2105" Start="2306" Type="btn08"/>
+    <Route Color="99FF0000" End="1816" Start="1518" Type="btn08"/>
+    <Route Color="BFFFFF00" End="3215" Start="3116" Type="btn09"/>
+    <Route Color="99FF0000" End="1015" Start="0914" Type="btn08"/>
+    <Route Color="BFFFFF00" End="1026" Start="1023" Type="btn09"/>
+    <Route Color="99FF0000" End="1124" Start="1023" Type="btn08"/>
+    <Route Color="BFFFFF00" End="0824" Start="1023" Type="btn09"/>
+    <Route Color="9900FFFF" End="0825" Start="1023" Type="btn11"/>
+    <Route Color="99FF0000" End="2724" Start="2621" Type="btn08"/>
+    <Route Color="99FF0000" End="2322" Start="2020" Type="btn08"/>
+    <Route Color="99FF0000" End="2018" Start="2020" Type="btn08"/>
+    <Route Color="99FF0000" End="1818" Start="2020" Type="btn08"/>
+    <Route Color="99FF0000" End="2023" Start="2020" Type="btn08"/>
+    <Route Color="99FF0000" End="2322" Start="2221" Type="btn08"/>
+    <Route Color="99FF0000" End="0416" Start="0415" Type="btn08"/>
+    <Route Color="BFFFFF00" End="1118" Start="1121" Type="btn09"/>
+    <Route Color="8000BF00" End="1835" Start="1733" Type="btn10"/>
+    <Route Color="BFFFFF00" End="1634" Start="1733" Type="btn09"/>
+    <Route Color="99FF0000" End="1715" Start="1816" Type="btn08"/>
+    <Route Color="9900FFFF" End="1818" Start="1816" Type="btn11"/>
+    <Route Color="9900FFFF" End="2115" Start="1816" Type="btn11"/>
+    <Route Color="9900FFFF" End="2904" Start="2805" Type="btn11"/>
+    <Route Color="99FF0000" End="0614" Start="0213" Type="btn08"/>
+    <Route Color="8000BF00" End="0130" Start="0129" Type="btn10"/>
+    <Route Color="9900FFFF" End="3117" Start="3215" Type="btn11"/>
+    <Route Color="9900FFFF" End="3015" Start="3215" Type="btn11"/>
+    <Route Color="BFFFFF00" End="0216" EndOffsetX="1" Start="3215" Type="btn09"/>
+    <Route Color="99FF0000" End="0134" Start="0234" Type="btn08"/>
+    <Route Color="99FF0000" End="0335" Start="0234" Type="btn08"/>
+    <Route Color="BFFFFF00" End="0609" Start="0510" Type="btn09"/>
+    <Route Color="BFFFFF00" End="3117" Start="3119" Type="btn09"/>
+    <Route Color="99FF0000" End="0713" Start="0614" Type="btn08"/>
+    <Route Color="99FF0000" End="0815" Start="0614" Type="btn08"/>
+    <Route Color="BFFFFF00" End="0416" Start="0614" Type="btn09"/>
+    <Route Color="BFFFFF00" End="1637" Start="1835" Type="btn09"/>
+    <Route Color="BFFFFF00" End="1634" Start="1835" Type="btn09"/>
+    <Route Color="99FF0000" End="2332" Start="2029" Type="btn08"/>
+    <Route Color="99FF0000" End="1931" Start="2029" Type="btn08"/>
+    <Route Color="99FF0000" End="2018" Start="1919" Type="btn08"/>
+    <Route Color="99FF0000" End="1818" Start="1919" Type="btn08"/>
+    <Route Color="BFFFFF00" End="2724" Start="2725" Type="btn09"/>
+    <Route Color="8000BF00" End="2602" Start="2402" Type="btn10"/>
+    <Route Color="8000BF00" End="2203" Start="2402" Type="btn10"/>
+    <Route Color="99FF0000" End="0332" Start="0430" Type="btn08"/>
+    <Route Color="BFFFFF00" End="0118" EndOffsetX="1" Start="3117" Type="btn09"/>
+    <Route Color="BFFFFF00" End="2904" Start="2602" Type="btn09"/>
+    <Route Color="8000BF00" End="2902" Start="2602" Type="btn10"/>
+    <Route Color="99FF0000" End="2115" Start="2314" Type="btn08"/>
+    <Route Color="BFFFFF00" End="1036" Start="1335" Type="btn09"/>
+    <Route Color="99FF0000" End="1236" Start="1335" Type="btn08"/>
+    <Route Color="99FF0000" End="1235" Start="1335" Type="btn08"/>
+    <Route Color="99FF0000" End="1533" Start="1335" Type="btn08"/>
+    <Route Color="8000BF00" End="1236" Start="1339" Type="btn10"/>
+    <Route Color="99FF0000" End="1401" EndOffsetY="1" Start="1339" Type="btn08"/>
+    <Route Color="99FF0000" End="1637" Start="1339" Type="btn08"/>
+    <Route Color="9900FFFF" End="2910" Start="2912" Type="btn11"/>
+    <Route Color="99FF0000" End="2813" Start="2912" Type="btn08"/>
+    <Route Color="99FF0000" End="3111" Start="2912" Type="btn08"/>
+    <Route Color="8000BF00" End="2202" Start="2203" Type="btn10"/>
+    <Route Color="8000BF00" End="2105" Start="2203" Type="btn10"/>
+    <Route Color="99FF0000" End="2123" Start="2322" Type="btn08"/>
+    <Route Color="BFFFFF00" End="2023" Start="2322" Type="btn09"/>
+    <Route Color="99FF0000" End="2324" Start="2322" Type="btn08"/>
+    <Route Color="99FF0000" End="0429" Start="0530" Type="btn08"/>
+    <Route Color="99FF0000" End="0332" Start="0530" Type="btn08"/>
+    <Route Color="99FF0000" End="0931" Start="0530" Type="btn08"/>
+    <Route Color="99FF0000" End="2105" Start="1906" Type="btn08"/>
+    <Route Color="9900FFFF" End="0940" EndOffsetY="-1" Start="0702" Type="btn11"/>
+    <Route Color="BFFFFF00" End="2234" Start="2332" Type="btn09"/>
+    <Route Color="8000BF00" End="0319" Start="0321" Type="btn10"/>
+    <Route Color="8000BF00" End="0824" Start="0825" Type="btn10"/>
+    <Route Color="9900FFFF" End="2902" Start="2904" Type="btn11"/>
+    <Route Color="99FF0000" End="2815" Start="2715" Type="btn08"/>
+    <Route Color="BFFFFF00" End="0218" Start="0319" Type="btn09"/>
+    <Route Color="99FF0000" End="0534" Start="0835" Type="btn08"/>
+    <Route Color="99FF0000" End="2123" Start="2023" Type="btn08"/>
+    <Route Color="BFFFFF00" End="2324" Start="2023" Type="btn09"/>
+    <Route Color="BFFFFF00" End="1927" Start="2023" Type="btn09"/>
+    <Route Color="BFFFFF00" End="2125" Start="2023" Type="btn09"/>
+    <Route Color="99FF0000" End="2801" Start="2902" Type="btn08"/>
+    <Route Color="9900FFFF" End="3039" EndOffsetY="-1" Start="2902" Type="btn11"/>
+    <Route Color="BFFFFF00" End="2125" Start="2226" Type="btn09"/>
+    <Route Color="99FF0000" End="1026" Start="0824" Type="btn08"/>
+    <Route Color="BFFFFF00" End="1236" Start="1036" Type="btn09"/>
+    <Route Color="8000BF00" End="0829" Start="0931" Type="btn10"/>
+    <Route Color="BFFFFF00" End="0332" Start="0130" Type="btn09"/>
+  </Routes>
 </Sector>

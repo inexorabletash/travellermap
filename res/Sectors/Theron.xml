@@ -1,7 +1,5 @@
-<?xml version="1.0"?>
-<Sector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Tags="OTU">
-  <X>-7</X>
-  <Y>1</Y>
+<?xml version="1.0" ?>
+<Sector>
   <Name>Theron</Name>
   <Name Lang="as">Iykhaiser</Name>
   <Subsectors>
@@ -22,27 +20,28 @@
     <Subsector Index="O">Virtanen</Subsector>
     <Subsector Index="P">Willwlmo</Subsector>
   </Subsectors>
-  <Borders>
-    <Border WrapLabel="false" Color="Green" Allegiance="Rm" LabelPosition="3031">2734 2833 2832 2831 2830 2829 2828 2827 2927 3026 3126 3125 3225 3325 3326 3327 3328 3329 3330 3331 3332 3333 3232 3132 3032 2933 2934 2935 2936 2937 2836 2737 2736 2735 2734</Border>
-  </Borders>
-  <Labels />
-  <Routes>
-    <Route Start="0533" End="0831" Color="#99FF0000" Type="btn08"/>
-    <Route Start="0533" End="0233" Color="#99FF0000" Type="btn08"/>
-    <Route Start="3129" End="0130"  EndOffsetX="1" Color="#99FF0000" Type="btn08"/>
-    <Route Start="0831" End="1130" Color="#99FF0000" Type="btn08"/>
-    <Route Start="1730" End="1430" Color="#99FF0000" Type="btn08"/>
-    <Route Start="1730" End="1929" Color="#99FF0000" Type="btn08"/>
-    <Route Start="2932" End="3231" Color="#99FF0000" Type="btn08"/>
-    <Route Start="1430" End="1130" Color="#99FF0000" Type="btn08"/>
-    <Route Start="1929" End="2228" Color="#99FF0000" Type="btn08"/>
-    <Route Start="0233" End="3232"  EndOffsetX="-1" Color="#99FF0000" Type="btn08"/>
-    <Route Start="2527" End="2228" Color="#99FF0000" Type="btn08"/>
-    <Route Start="2527" End="2827" Color="#99FF0000" Type="btn08"/>
-    <Route Start="3129" End="2827" Color="#BFFFFF00" Type="btn09"/>
-  </Routes>
   <Allegiances>
+    <Allegiance Code="Na">Non-Aligned, Human-dominated</Allegiance>
     <Allegiance Code="Rm">Regency of Muirimi</Allegiance>
   </Allegiances>
-  <DataFile Author="Jo Grant" Source="CORE, The Zhodani Base" Ref="http://zho.berka.com/data/CLASSIC/sector.pl?sector=THERON" Type="SEC">theron.sec</DataFile>
+  <Borders>
+    <Border Allegiance="Rm" Color="Green" LabelPosition="3031" WrapLabel="false">2734 2833 2832 2831 2830 2829 2828 2827 2927 3026 3126 3125 3225 3325 3326 3327 3328 3329 3330 3331 3332 3333 3232 3132 3032 2933 2934 2935 2936 2937 2836 2737 2736 2735 2734</Border>
+  </Borders>
+  <Routes>
+    <Route Color="BFFFFF00" End="3215" Start="2718" Type="btn09"/>
+    <Route Color="BFFFFF00" End="2320" Start="2718" Type="btn09"/>
+    <Route Color="99FF0000" End="0623" Start="0223" Type="btn08"/>
+    <Route Color="99FF0000" End="0123" Start="0223" Type="btn08"/>
+    <Route Color="BFFFFF00" End="1622" Start="1922" Type="btn09"/>
+    <Route Color="BFFFFF00" End="2320" Start="1922" Type="btn09"/>
+    <Route Color="BFFFFF00" End="0922" Start="0623" Type="btn09"/>
+    <Route Color="99FF0000" End="0425" Start="0623" Type="btn08"/>
+    <Route Color="BFFFFF00" End="1323" Start="0922" Type="btn09"/>
+    <Route Color="99FF0000" End="2930" Start="2932" Type="btn08"/>
+    <Route Color="99FF0000" End="3231" Start="2932" Type="btn08"/>
+    <Route Color="BFFFFF00" End="1323" Start="1622" Type="btn09"/>
+    <Route Color="99FF0000" End="3029" Start="3231" Type="btn08"/>
+    <Route Color="99FF0000" End="0226" Start="0425" Type="btn08"/>
+    <Route Color="99FF0000" End="2827" Start="3129" Type="btn08"/>
+  </Routes>
 </Sector>
