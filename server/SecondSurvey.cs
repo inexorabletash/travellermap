@@ -360,6 +360,11 @@ namespace Maps
             return s_defaultAllegiances.Contains(code);
         }
 
+        public static bool IsKnownT5Allegiance(string code)
+        {
+            return s_t5Allegiances.ContainsKey(code);
+        }
+
         #endregion Allegiance
 
         #region Sophonts

@@ -187,28 +187,46 @@ namespace Maps.Serialization
     public abstract class T5ParserBase : SectorFileParser
     {
         private const string HEX = @"[0123456789ABCDEFGHJKLMNPQRSTUVWXYZ]";
+
+        // Regex checks are only done in Debug - data is trusted otherwise
+        private static readonly Regex HEX_REGEX = new Regex(@"^\d\d\d\d$");
         private static readonly Regex UWP_REGEX = new Regex("^[ABCDEX]" + HEX + @"{6}-" + HEX + @"$");
         private static readonly Regex PBG_REGEX = new Regex("^[0-9X]{3}$");
+
+        private static readonly Regex BASES_REGEX = new Regex(@"^C?D?K?M?N?R?S?T?V?W?X?$");
+        private static readonly Regex ZONE_REGEX = new Regex(@"^(|A|R)$");
+        private static readonly Regex ALLEGIANCE_REGEX = new Regex(@"^([A-Za-z0-9]{4}|----)$");
+        private static readonly Regex NOBILITY_REGEX = new Regex(@"^[BcCDeEfFGH]*$");
 
         private const string STAR = @"(D|BD|[OBAFGKM][0-9]\x20(?:Ia|Ib|II|III|IV|V|VI))";
         private static readonly Regex STARS_REGEX = new Regex("^(|" + STAR + @"(?:\x20" + STAR + @")*)$");
 
         private static string Check(StringDictionary dict, string key, Regex regex)
         {
+#if DEBUG
             if (!regex.IsMatch(dict[key]))
-                throw new Exception(key);
+                throw new Exception(String.Format("Unexpected value for {0}: '{1}'", key, dict[key]));
+#endif
             return dict[key];
         }
 
         private static string Check(StringDictionary dict, IEnumerable<string> keys, Regex regex = null)
         {
+            return Check(dict, keys, value => regex == null || regex.IsMatch(value));
+        }
+
+        private static string Check(StringDictionary dict, IEnumerable<string> keys, Func<string, bool> validate)
+        {
             foreach (var key in keys)
             {
                 if (!dict.ContainsKey(key))
                     continue;
-                if (regex != null && !regex.IsMatch(dict[key]))
-                    throw new Exception(key);
-                return dict[key];
+                string value = dict[key];
+#if DEBUG
+                if (!validate(value))
+                    throw new Exception(String.Format("Unexpected value for {0}: '{1}'", key, value));
+#endif
+                return value;
             }
             return null;
         }
@@ -218,42 +236,24 @@ namespace Maps.Serialization
             try
             {
                 World world = new World();
-                world.Hex = dict["Hex"];
+                world.Hex = Check(dict, "Hex", HEX_REGEX);
                 world.Name = dict["Name"];
-
                 world.UWP = Check(dict, "UWP", UWP_REGEX);
-
-                // TEMPORARY - T5SS spreadsheet sometimes leaves out leading 0s.
-                dict["PBG"] = dict["PBG"].PadLeft(3, '0');
-                world.PBG = Check(dict, "PBG", PBG_REGEX);
-
-#if DEBUG
-                world.Stellar = Check(dict, new string[] { "Stellar", "Stars", "Stellar Data" }, STARS_REGEX);
-#else
-                world.Stellar = Check(dict, new string[] { "Stellar", "Stars", "Stellar Data" });
-#endif
-
-                // Allegiance may affect interpretation of other values, e.g. bases, zones
-                world.Allegiance = Check(dict, new string[] { "A", "Allegiance" });
-#if DEBUG
-                // User data may have legacy allegiances.
-                if (SecondSurvey.T5AllegianceCodeToLegacyCode(world.Allegiance) == world.Allegiance)
-                    throw new Exception("Unknown allegiance: " + world.Allegiance);
-#endif
-
-                world.Bases = EmptyIfDash(Check(dict, new string[] { "B", "Bases" }));
-                world.Zone = EmptyIfDash(Check(dict, new string[] { "Z", "Zone" }));
-                world.Remarks = Check(dict, new string[] { "Remarks", "Trade Codes", "Comments" } );
-
-                // T5
+                world.Remarks = Check(dict, new string[] { "Remarks", "Trade Codes", "Comments" });
                 world.Importance = Check(dict, new string[] { "{Ix}", "{ Ix }", "Ix" });
                 world.Economic = Check(dict, new string[] { "(Ex)", "( Ex )", "Ex" });
                 world.Cultural = Check(dict, new string[] { "[Cx]", "[ Cx ]", "Cx" });
-                world.Nobility = EmptyIfDash(Check(dict, new string[] { "N", "Nobility" }));
+                world.Nobility = EmptyIfDash(Check(dict, new string[] { "N", "Nobility" }, NOBILITY_REGEX));
+                world.Bases = EmptyIfDash(Check(dict, new string[] { "B", "Bases" }, BASES_REGEX));
+                world.Zone = EmptyIfDash(Check(dict, new string[] { "Z", "Zone" }, ZONE_REGEX));
+                world.PBG = Check(dict, "PBG", PBG_REGEX);
+                world.Allegiance = Check(dict, new string[] { "A", "Allegiance" }, SecondSurvey.IsKnownT5Allegiance);
+                world.Stellar = Check(dict, new string[] { "Stellar", "Stars", "Stellar Data" }, STARS_REGEX);
 
                 int w;
                 if (Int32.TryParse(Check(dict, new string[] { "W", "Worlds" }), NumberStyles.Integer, CultureInfo.InvariantCulture, out w))
                     world.Worlds = w;
+
                 int ru;
                 if (Int32.TryParse(dict["RU"], NumberStyles.Integer | NumberStyles.AllowThousands, CultureInfo.InvariantCulture, out ru))
                     world.ResourceUnits = ru;
@@ -261,9 +261,6 @@ namespace Maps.Serialization
                 // Cleanup known placeholders
                 if (world.Name == world.Name.ToUpperInvariant() && world.IsHi)
                     world.Name = Util.FixCapitalization(world.Name);
-
-                // Fix "smart" apostrophe
-                world.Name = world.Name.Replace('\x92', '\'');
 
 #if DEBUG
                 if (worlds[world.X, world.Y] != null)
@@ -274,7 +271,7 @@ namespace Maps.Serialization
 #if DEBUG
             catch (Exception e)
             {
-                worlds.ErrorList.Add(String.Format("ERROR (TAB Parse - {0}): ", e.Message) + line);
+                worlds.ErrorList.Add(String.Format("ERROR (T5 Parse - {0}): ", e.Message) + line);
             }
 #else
             catch (Exception)
