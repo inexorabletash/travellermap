@@ -16,6 +16,8 @@ namespace Maps.Serialization
             string separator = null;
             string line;
             int lineNumber = 0;
+
+            // TODO: Make this a generator, parsing on demand.
             while (true)
             {
                 line = reader.ReadLine();

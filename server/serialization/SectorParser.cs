@@ -99,8 +99,6 @@ namespace Maps.Serialization
             }
         }
 
-        // TEMP: Sec5Xml interrim data contains + suffix for new worlds, +/- prefix and * suffix for stars
-
         // PERF: Big time sucker; consider optimizing (can save 5% by eliminating Unicode char classes)
         private static readonly Regex worldRegex = new Regex(@"^" +
             @"( \s*       (?<name>        .*                           ) )  " + // Name
@@ -158,9 +156,6 @@ namespace Maps.Serialization
                 string rest = match.Groups["rest"].Value;
                 if (!String.IsNullOrEmpty(rest))
                     ParseRest(rest, worlds, line, world);
-
-                // TODO: Would need to filter this on serialization as well, or round trip through SEC would fail
-                // world.UpdateCode("Pr", "Px"); // Legacy: Pr = Prison; T5: Px = Prison/Exile Camp, Pr = Pre-Rich
             }
             catch (Exception e)
             {
@@ -281,54 +276,6 @@ namespace Maps.Serialization
         }
     }
 
-    public class TabDelimitedParser : T5ParserBase
-    {
-        public override Encoding Encoding { get { return Encoding.UTF8; } }
-
-        private static readonly char[] TAB_DELIMITER = { '\t' };
-        public override void Parse(TextReader reader, WorldCollection worlds)
-        {
-            int lineNumber = 0;
-            string line;
-            string[] header = null;
-            while (true) {
-                line = reader.ReadLine();
-                if (line == null)
-                    return;
-                ++lineNumber;
-
-                if (line.Length == 0)
-                    continue;
-                if (line.StartsWith("#"))
-                    continue;
-
-                if (header == null) {
-                    header = line.Split(TAB_DELIMITER);
-                    continue;
-                }
-
-                ParseLine(worlds, header, line, lineNumber);
-            }
-        }
-
-
-        private static void ParseLine(WorldCollection worlds, string[] header, string line, int lineNumber)
-        {
-            string[] cols = line.Split(TAB_DELIMITER);
-            if (cols.Length != header.Length) {
-#if DEBUG
-                worlds.ErrorList.Add("ERROR (TAB Parse): " + line);
-#endif
-                return;
-            }
-            StringDictionary dict = new StringDictionary();
-            for (var i = 0; i < cols.Length; ++i )
-                dict[header[i]] = cols[i].Trim();
-
-            ParseWorld(worlds, dict, line, lineNumber);
-        }
-    }
-
     public class SecondSurveyParser : T5ParserBase
     {
         public override Encoding Encoding { get { return Encoding.UTF8; } }
@@ -341,4 +288,70 @@ namespace Maps.Serialization
         }
     }
 
+    public class TabDelimitedParser : T5ParserBase
+    {
+        public override Encoding Encoding { get { return Encoding.UTF8; } }
+
+        public override void Parse(TextReader reader, WorldCollection worlds)
+        {
+            TSVParser parser = new TSVParser(reader);
+            foreach (var row in parser.Data)
+                ParseWorld(worlds, row.dict, row.line, row.lineNumber);
+        }
+    }
+
+    public class TSVParser
+    {
+        private static readonly char[] TAB_DELIMITER = { '\t' };
+
+        public TSVParser(TextReader reader)
+        {
+            int lineNumber = 0;
+            string line;
+            while (true)
+            {
+                line = reader.ReadLine();
+                if (line == null)
+                    return;
+                ++lineNumber;
+
+                if (line.Length == 0)
+                    continue;
+                if (line.StartsWith("#"))
+                    continue;
+
+                if (header == null)
+                {
+                    header = line.Split(TAB_DELIMITER);
+                    continue;
+                }
+
+                ParseLine(line, lineNumber);
+            }
+        }
+
+        private void ParseLine(string line, int lineNumber)
+        {
+            string[] cols = line.Split(TAB_DELIMITER);
+            if (cols.Length != header.Length)
+                throw new Exception(String.Format("ERROR (Tab Parse) ({0}): {1}", lineNumber, line));
+
+            StringDictionary dict = new StringDictionary();
+            for (var i = 0; i < cols.Length; ++i)
+                dict[header[i]] = cols[i].Trim();
+
+            data.Add(new Row { dict = dict, lineNumber = lineNumber, line = line });
+        }
+
+        public struct Row
+        {
+            public StringDictionary dict;
+            public int lineNumber;
+            public string line;
+        }
+
+        private string[] header;
+        private List<Row> data = new List<Row>();
+        public List<Row> Data { get { return data; } }
+    }
 }
