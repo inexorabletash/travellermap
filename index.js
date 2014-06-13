@@ -55,6 +55,7 @@ window.addEventListener('DOMContentLoaded', function() {
   map.OnScaleChanged = function() {
     updatePermalink();
     updateSectorLinks();
+    savePreferences();
   };
 
   var optionObservers = [];
@@ -63,6 +64,7 @@ window.addEventListener('DOMContentLoaded', function() {
     $('#legendBox').classList[(options & MapOptions.WorldColors) ? 'add' : 'remove']('world_colors');
     updatePermalink();
     updateSectorLinks();
+    savePreferences();
   };
 
   bindCheckedToOption('#ShowSectorGrid', MapOptions.GridMask);
@@ -115,11 +117,13 @@ window.addEventListener('DOMContentLoaded', function() {
     });
     updatePermalink();
     updateSectorLinks();
+    savePreferences();
   };
 
   map.OnDisplayChanged = function() {
-    updatePermalink();
     showCredits(map.GetHexX(), map.GetHexY());
+    updatePermalink();
+    savePreferences();
   };
 
   function post(message) {
@@ -145,58 +149,60 @@ window.addEventListener('DOMContentLoaded', function() {
   $('#ShowGalacticDirections').addEventListener('click', function() {
     document.body.classList[this.checked ? 'add' : 'remove']('show-directions');
     updatePermalink();
+    savePreferences();
   });
 
+  function maybeLoad(key, func) {
+    var str = localStorage.getItem(key);
+    if (str) func(JSON.parse(str));
+  }
+
   (function() {
-    function maybeLoad(key, func) {
-      var str = localStorage.getItem(key);
-      if (str) func(JSON.parse(str));
-    }
-    function maybeSave(test, key, data) {
-      if (test)
-        localStorage.setItem(key, JSON.stringify(data));
-      else
-        localStorage.removeItem(key);
-    }
-
-    maybeLoad('preferences', function(o) {
+    var preferences = JSON.parse(localStorage.getItem('preferences'));
+    var location = JSON.parse(localStorage.getItem('location'));
+    if (preferences) {
       $('#cbSavePreferences').checked = true;
-      if ('style' in o) map.SetStyle(o.style);
-      if ('options' in o) map.SetOptions(o.options);
+      if ('style' in preferences) map.SetStyle(preferences.style);
+      if ('options' in preferences) map.SetOptions(preferences.options);
       ['routes', 'dimunofficial'].forEach(function(name) {
-        if (name in o) map.SetNamedOption(name, o[name]);
+        if (name in preferences) map.SetNamedOption(name, preferences[name]);
       });
-      if ('galdir' in o) document.body.classList[o.galdir ? 'add' : 'remove']('show-directions');
-    });
+      if ('galdir' in preferences) document.body.classList[preferences.galdir ? 'add' : 'remove']('show-directions');
+    }
 
-    maybeLoad('location', function(o) {
+    if (location) {
       $('#cbSaveLocation').checked = true;
-      if ('scale' in o) map.SetScale(o.scale);
-      if ('position' in o) map.SetPosition(o.position.x, o.position.y);
-    });
-
-    window.addEventListener('unload', function() {
-      maybeSave($('#cbSavePreferences').checked, 'preferences', {
-        style: map.GetStyle(),
-        options: map.GetOptions(),
-        routes: map.GetNamedOption('routes'),
-        dimunofficial: map.GetNamedOption('dimunofficial'),
-        galdir: document.body.classList.contains('show-directions') ? 1 : 0
-      });
-      maybeSave($('#cbSaveLocation').checked, 'location', {
-          position: { x: map.GetX(), y: map.GetY() },
-          scale: map.GetScale()
-      });
-    });
-
-    $('#cbSavePreferences').addEventListener('click', function(e) {
-      if (!e.target.checked) localStorage.removeItem('preferences');
-    });
-
-    $('#cbSaveLocation').addEventListener('click', function(e) {
-      if (!e.target.checked) localStorage.removeItem('location');
-    });
+      if ('scale' in location) map.SetScale(location.scale);
+      if ('position' in location) map.SetPosition(location.position.x, location.position.y);
+    }
   }());
+
+  function maybeSave(test, key, data) {
+    if (test)
+      localStorage.setItem(key, JSON.stringify(data));
+    else
+      localStorage.removeItem(key);
+  }
+
+  // TODO: Throttle this.
+  function savePreferences() {
+    maybeSave($('#cbSavePreferences').checked, 'preferences', {
+      style: map.GetStyle(),
+      options: map.GetOptions(),
+      routes: map.GetNamedOption('routes'),
+      dimunofficial: map.GetNamedOption('dimunofficial'),
+      galdir: document.body.classList.contains('show-directions') ? 1 : 0
+    });
+    maybeSave($('#cbSaveLocation').checked, 'location', {
+      position: { x: map.GetX(), y: map.GetY() },
+      scale: map.GetScale()
+    });
+  }
+
+  window.addEventListener('unload', savePreferences);
+
+  $('#cbSavePreferences').addEventListener('click', savePreferences);
+  $('#cbSaveLocation').addEventListener('click', savePreferences);
 
   //
   // Pull in options from URL - from permalinks
