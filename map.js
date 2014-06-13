@@ -1482,7 +1482,7 @@ function makeURL(base, params) {
 
     ['silly', 'routes', 'dimunofficial'].forEach(function(name) {
       if (name in params)
-        self.tileOptions[name]  = int(name);
+        self.tileOptions[name] = int(name);
     });
 
     return params;

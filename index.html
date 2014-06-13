@@ -34,8 +34,8 @@
 <!--[if lt IE 8]><script>alert("IE7 is no longer supported.");location = 'http://google.com/chrome';</script><![endif]-->
 <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.1.2/handlebars.min.js"></script>
 <script src="lib/polyfill/polyfill.js?update=2014-03-13"></script>
-<script src="map.js?update=2014-06-04"></script>
-<script src="index.js?update=2014-06-04"></script>
+<script src="map.js?update=2014-06-12"></script>
+<script src="index.js?update=2014-06-12"></script>
 <style>
 .ui {
   z-index: 2000;
@@ -454,7 +454,7 @@ button:hover {
     <style>
     #settingsBox {
       width: 200px;
-      max-height: 435px;
+      max-height: 520px;
     }
     #styles button {
       width: 40px; height: 40px;
@@ -524,6 +524,14 @@ button:hover {
         <p><label title="Use more colors for world features"><input type="checkbox" id="cbWorldColors"> More World Colors</label>
         <p><label title="Fill borders to make regions more visible"><input type="checkbox" id="cbFilledBorders"> Filled Borders</label>
         <p><label title="Dim sectors that are not official Traveller 5 Sector Survey data"><input type="checkbox" id="cbDimUnofficial"> Dim Unofficial Data</label>
+      </div>
+    </section>
+
+    <section>
+      <p><strong>Save:</strong></p>
+      <div class="indent">
+        <p><label title="Remember your style and appearance settings for your next visit"><input type="checkbox" id="cbSavePreferences"> Preferences</label>
+        <p><label title="Remember your location for your next visit"><input type="checkbox" id="cbSaveLocation"> Location</label>
       </div>
     </section>
   </div>

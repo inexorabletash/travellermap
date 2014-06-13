@@ -139,6 +139,65 @@ window.addEventListener('DOMContentLoaded', function() {
     post({source: 'travellermap', type: 'doubleclick', location: hex});
   };
 
+  // TODO: Generalize URLParam<->Control and URLParam<->Style binding
+  $('#ShowGalacticDirections').checked = true;
+  document.body.classList.add('show-directions');
+  $('#ShowGalacticDirections').addEventListener('click', function() {
+    document.body.classList[this.checked ? 'add' : 'remove']('show-directions');
+    updatePermalink();
+  });
+
+  (function() {
+    function maybeLoad(key, func) {
+      var str = localStorage.getItem(key);
+      if (str) func(JSON.parse(str));
+    }
+    function maybeSave(test, key, data) {
+      if (test)
+        localStorage.setItem(key, JSON.stringify(data));
+      else
+        localStorage.removeItem(key);
+    }
+
+    maybeLoad('preferences', function(o) {
+      $('#cbSavePreferences').checked = true;
+      if ('style' in o) map.SetStyle(o.style);
+      if ('options' in o) map.SetOptions(o.options);
+      ['routes', 'dimunofficial'].forEach(function(name) {
+        if (name in o) map.SetNamedOption(name, o[name]);
+      });
+      if ('galdir' in o) document.body.classList[o.galdir ? 'add' : 'remove']('show-directions');
+    });
+
+    maybeLoad('location', function(o) {
+      $('#cbSaveLocation').checked = true;
+      if ('scale' in o) map.SetScale(o.scale);
+      if ('position' in o) map.SetPosition(o.position.x, o.position.y);
+    });
+
+    window.addEventListener('unload', function() {
+      maybeSave($('#cbSavePreferences').checked, 'preferences', {
+        style: map.GetStyle(),
+        options: map.GetOptions(),
+        routes: map.GetNamedOption('routes'),
+        dimunofficial: map.GetNamedOption('dimunofficial'),
+        galdir: document.body.classList.contains('show-directions') ? 1 : 0
+      });
+      maybeSave($('#cbSaveLocation').checked, 'location', {
+          position: { x: map.GetX(), y: map.GetY() },
+          scale: map.GetScale()
+      });
+    });
+
+    $('#cbSavePreferences').addEventListener('click', function(e) {
+      if (!e.target.checked) localStorage.removeItem('preferences');
+    });
+
+    $('#cbSaveLocation').addEventListener('click', function(e) {
+      if (!e.target.checked) localStorage.removeItem('location');
+    });
+  }());
+
   //
   // Pull in options from URL - from permalinks
   //
@@ -149,19 +208,13 @@ window.addEventListener('DOMContentLoaded', function() {
   // Force UI to synchronize in case URL parameters didn't do it
   map.OnOptionsChanged(map.GetOptions());
 
-  // TODO: Generalize URLParam<->Control and URLParam<->Style binding
-  $('#ShowGalacticDirections').checked = true;
-  document.body.classList.add('show-directions');
-  $('#ShowGalacticDirections').addEventListener('click', function() {
-    document.body.classList[this.checked ? 'add' : 'remove']('show-directions');
-    updatePermalink();
-  });
   if ('galdir' in urlParams) {
     var show = Boolean(Number(urlParams.galdir));
+    console.log('show: ' + show);
     document.body.classList[show ? 'add' : 'remove']('show-directions');
-    $('#ShowGalacticDirections').checked = show;
     updatePermalink();
   }
+  $('#ShowGalacticDirections').checked = document.body.classList.contains('show-directions');
 
   if ('q' in urlParams) {
     $('#searchBox').value = urlParams.q;
