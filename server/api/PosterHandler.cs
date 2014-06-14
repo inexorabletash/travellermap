@@ -49,6 +49,50 @@ namespace Maps.API
                 title = String.Format("Poster ({0},{1}) - ({2},{3})", x1, y1, x2, y2);
                 clipOutsectorBorders = true;
             }
+            else if (HasOption(context, "domain"))
+            {
+                string domain = GetStringOption(context, "domain");
+                int x, y;
+                switch (domain.ToLowerInvariant()) {
+                    case "deneb": x = -4; y = -1; domain = "Deneb"; break;
+                    case "vland": x = -2; y = -1; domain = "Vland";  break;
+                    case "ilelish": x = -2; y = 1; domain = "Ilelish";  break;
+                    case "antares": x = 0; y = -2; domain = "Antares";  break;
+                    case "sylea": x = 0; y = 0; domain = "Sylea";  break;
+                    case "sol": x = 0; y = 2; domain = "Sol";  break;
+                    case "gateway": x = 2; y = 0; domain = "Gateway"; break;
+                    default:
+                        SendError(context.Response, 404, "Not Found", "Unknown domain: " + domain);
+                        return;
+                }
+
+                int x1 = x * Astrometrics.SectorWidth - Astrometrics.ReferenceHex.X + 1;
+                int y1 = y * Astrometrics.SectorHeight - Astrometrics.ReferenceHex.Y + 1;
+                int x2 = x1 + 2 * Astrometrics.SectorWidth - 1;
+                int y2 = y1 + 2 * Astrometrics.SectorHeight - 1;
+
+                tileRect.X = Math.Min(x1, x2);
+                tileRect.Y = Math.Min(y1, y2);
+                tileRect.Width = Math.Max(x1, x2) - tileRect.X;
+                tileRect.Height = Math.Max(y1, y2) - tileRect.Y;
+
+                SectorMap map = SectorMap.FromName(SectorMap.DefaultSetting, resourceManager);
+                selector = new RectSelector(map, resourceManager, tileRect);
+                selector.Slop = false;
+
+                tileRect.Offset(-1, -1);
+                tileRect.Width += 1;
+                tileRect.Height += 1;
+
+                // Account for jagged hexes
+                tileRect.Height += 0.5f;
+                tileRect.Inflate(0.25f, 0.10f);
+                if (style == Stylesheet.Style.Candy)
+                    tileRect.Width += 0.75f;
+
+                title = String.Format("Domain of {0}", domain);
+                clipOutsectorBorders = true;
+            }
             else
             {
                 // Sector - either POSTed or specified by name
