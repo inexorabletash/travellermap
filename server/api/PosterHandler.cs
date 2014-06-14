@@ -64,7 +64,14 @@ namespace Maps.API
 
                         // And these aren't domains, but...
                     case "foreven": x = -6; y = -1; title = "Land Grab / Foreven"; break;
-                    case "solomani": x = -2; y = 3; w = 5; h = 2; title = "Solomani Confederacy"; break; 
+                    case "imperium": x = -4; y = -1; w = 7; h = 5; title = "Third Imperium"; break;
+                    case "solomani": x = -2; y = 2; w = 5; h = 3; title = "Solomani Confederacy"; break;
+                    case "zhodani": x = -8; y = -3; w = 5; h = 3; title = "Zhodani Consulate"; break;
+                    case "hive": x = 2; y = 1; w = 6; h = 4; title = "Hive Federation"; break;
+                    case "aslan": x = -8; y = 1; w = 7; h = 4; title = "Aslan Hierate"; break;
+                    case "vargr": x = -4; y = -4; w = 8; h = 3; title = "Vargr Extents"; break; 
+                    // TODO: K'kree
+                    // TODO: Zhodani provinces
 
                     default:
                         SendError(context.Response, 404, "Not Found", "Unknown domain: " + domain);
