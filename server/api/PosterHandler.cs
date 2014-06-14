@@ -52,15 +52,20 @@ namespace Maps.API
             else if (HasOption(context, "domain"))
             {
                 string domain = GetStringOption(context, "domain");
-                int x, y;
+                int x, y, w = 2, h = 2;
                 switch (domain.ToLowerInvariant()) {
-                    case "deneb": x = -4; y = -1; domain = "Deneb"; break;
-                    case "vland": x = -2; y = -1; domain = "Vland";  break;
-                    case "ilelish": x = -2; y = 1; domain = "Ilelish";  break;
-                    case "antares": x = 0; y = -2; domain = "Antares";  break;
-                    case "sylea": x = 0; y = 0; domain = "Sylea";  break;
-                    case "sol": x = 0; y = 2; domain = "Sol";  break;
-                    case "gateway": x = 2; y = 0; domain = "Gateway"; break;
+                    case "deneb": x = -4; y = -1; title = "Domain of Deneb"; break;
+                    case "vland": x = -2; y = -1; title = "Domain of Vland";  break;
+                    case "ilelish": x = -2; y = 1; title = "Domain of Ilelish";  break;
+                    case "antares": x = 0; y = -2; title = "Domain of Antares";  break;
+                    case "sylea": x = 0; y = 0; title = "Domain of Sylea";  break;
+                    case "sol": x = 0; y = 2; title = "Domain of Sol";  break;
+                    case "gateway": x = 2; y = 0; title = "Domain of Gateway"; break;
+
+                        // And these aren't domains, but...
+                    case "foreven": x = -6; y = -1; title = "Land Grab / Foreven"; break;
+                    case "solomani": x = -2; y = 3; w = 5; h = 2; title = "Solomani Confederacy"; break; 
+
                     default:
                         SendError(context.Response, 404, "Not Found", "Unknown domain: " + domain);
                         return;
@@ -68,8 +73,8 @@ namespace Maps.API
 
                 int x1 = x * Astrometrics.SectorWidth - Astrometrics.ReferenceHex.X + 1;
                 int y1 = y * Astrometrics.SectorHeight - Astrometrics.ReferenceHex.Y + 1;
-                int x2 = x1 + 2 * Astrometrics.SectorWidth - 1;
-                int y2 = y1 + 2 * Astrometrics.SectorHeight - 1;
+                int x2 = x1 + w * Astrometrics.SectorWidth - 1;
+                int y2 = y1 + h * Astrometrics.SectorHeight - 1;
 
                 tileRect.X = Math.Min(x1, x2);
                 tileRect.Y = Math.Min(y1, y2);
@@ -90,7 +95,6 @@ namespace Maps.API
                 if (style == Stylesheet.Style.Candy)
                     tileRect.Width += 0.75f;
 
-                title = String.Format("Domain of {0}", domain);
                 clipOutsectorBorders = true;
             }
             else
