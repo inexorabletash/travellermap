@@ -246,7 +246,7 @@ namespace Maps.Rendering
             fillMicroBorders = microBorders.visible && options.HasFlag(MapOptions.FilledBorders);
             microRoutes.visible = (scale >= RouteMinScale);
 
-            worldDetails = !worlds.visible ? 0 :
+            worldDetails = !worlds.visible ? WorldDetails.None :
                 (scale < WorldBasicMinScale) ? WorldDetails.Dotmap :
                 (scale < WorldFullMinScale) ? WorldDetails.Atlas :
                 WorldDetails.Poster;

@@ -756,7 +756,7 @@ namespace Maps.Rendering
                 //------------------------------------------------------------
                 #region unofficial
 
-                if (ctx.styles.dimUnofficialSectors)
+                if (ctx.styles.dimUnofficialSectors && ctx.styles.worlds.visible)
                 {
                     solidBrush.Color = Color.FromArgb(128, ctx.styles.backgroundColor);
                     foreach (Sector sector in ctx.selector.Sectors.Where(sector => !sector.Tags.Contains("Official")))
