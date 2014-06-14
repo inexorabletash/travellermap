@@ -216,7 +216,6 @@ window.addEventListener('DOMContentLoaded', function() {
 
   if ('galdir' in urlParams) {
     var show = Boolean(Number(urlParams.galdir));
-    console.log('show: ' + show);
     document.body.classList[show ? 'add' : 'remove']('show-directions');
     updatePermalink();
   }
