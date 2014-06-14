@@ -299,6 +299,7 @@ button:hover {
           <div class="item-location">
             {{Sector}} {{Hex}}
             {{#Unreviewed}}<span class="item-status">(Unreviewed)</span>{{/Unreviewed}}
+            {{#Apocryphal}}<span class="item-status">(Apocryphal)</span>{{/Apocryphal}}
             {{#Unofficial}}<span class="item-status">(Unofficial)</span>{{/Unofficial}}
           </div>
           {{#Title}}<div class="item-title">{{.}}</div>{{/Title}}
@@ -309,6 +310,7 @@ button:hover {
           <div class="item-location">
             Subsector {{Index}} of {{Sector}}
             {{#Unreviewed}}<span class="item-status">(Unreviewed)</span>{{/Unreviewed}}
+            {{#Apocryphal}}<span class="item-status">(Apocryphal)</span>{{/Apocryphal}}
             {{#Unofficial}}<span class="item-status">(Unofficial)</span>{{/Unofficial}}
           </div>
           {{/Subsector}}
@@ -317,6 +319,7 @@ button:hover {
           <div class="item-location">
             Sector
             {{#Unreviewed}}<span class="item-status">(Unreviewed)</span>{{/Unreviewed}}
+            {{#Apocryphal}}<span class="item-status">(Apocryphal)</span>{{/Apocryphal}}
             {{#Unofficial}}<span class="item-status">(Unofficial)</span>{{/Unofficial}}
           </div>
         {{/Sector}}
