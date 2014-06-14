@@ -108,7 +108,7 @@ namespace Maps.Serialization
             @"( \s{1,2}   (?<codes>       .{10,}?                      ) )  " + // Remarks
             @"( \s+       (?<zone>        [GARBFU \-]                  ) )? " + // Zone
             @"( \s{1,2}   (?<pbg>         [0-9X][0-9A-FX][0-9A-FX]     ) )  " + // PGB (Population multiplier, Belts, Gas giants)
-            @"( \s{1,2}   (?<allegiance>  ([A-Z0-9][A-Za-z0-9?\-]|--)  ) )  " + // Allegiance
+            @"( \s{1,2}   (?<allegiance>  ([A-Za-z0-9][A-Za-z0-9?\-]|--)  ) )  " + // Allegiance
             @"( \s*       (?<rest>        .*?                          ) )  " + // Stellar data (etc)
             @"\s*$" 
             , RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.Singleline | RegexOptions.ExplicitCapture | RegexOptions.IgnorePatternWhitespace);
