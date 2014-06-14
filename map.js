@@ -17,6 +17,7 @@ function parseURLQuery(url) {
   var o = Object.create(null);
   if (url.search && url.search.length > 1) {
     url.search.substring(1).split('&').forEach(function(pair) {
+      if (!pair) return;
       var kv = pair.split('=', 2);
       if (kv.length === 2)
         o[kv[0]] = decodeURIComponent(kv[1].replace(/\+/g, ' '));

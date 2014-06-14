@@ -52,20 +52,7 @@ window.addEventListener('DOMContentLoaded', function() {
     map.SetOptions((map.GetOptions() & ~mask) | flags);
   }
 
-  map.OnScaleChanged = function() {
-    updatePermalink();
-    updateSectorLinks();
-    savePreferences();
-  };
-
   var optionObservers = [];
-  map.OnOptionsChanged = function(options) {
-    optionObservers.forEach(function(o) { o(options); });
-    $('#legendBox').classList[(options & MapOptions.WorldColors) ? 'add' : 'remove']('world_colors');
-    updatePermalink();
-    updateSectorLinks();
-    savePreferences();
-  };
 
   bindCheckedToOption('#ShowSectorGrid', MapOptions.GridMask);
   bindCheckedToOption('#ShowSectorNames', MapOptions.SectorsMask);
@@ -111,10 +98,24 @@ window.addEventListener('DOMContentLoaded', function() {
                               else map.SetNamedOption(name, c ? 1 : 0); });
   }
 
+  map.OnOptionsChanged = function(options) {
+    optionObservers.forEach(function(o) { o(options); });
+    $('#legendBox').classList[(options & MapOptions.WorldColors) ? 'add' : 'remove']('world_colors');
+    updatePermalink();
+    updateSectorLinks();
+    savePreferences();
+  };
+
   map.OnStyleChanged = function(style) {
     ['poster', 'atlas', 'print', 'candy'].forEach(function(s) {
       document.body.classList[s === style ? 'add' : 'remove']('style-' + s);
     });
+    updatePermalink();
+    updateSectorLinks();
+    savePreferences();
+  };
+
+  map.OnScaleChanged = function() {
     updatePermalink();
     updateSectorLinks();
     savePreferences();
@@ -152,11 +153,6 @@ window.addEventListener('DOMContentLoaded', function() {
     savePreferences();
   });
 
-  function maybeLoad(key, func) {
-    var str = localStorage.getItem(key);
-    if (str) func(JSON.parse(str));
-  }
-
   (function() {
     var preferences = JSON.parse(localStorage.getItem('preferences'));
     var location = JSON.parse(localStorage.getItem('location'));
@@ -177,29 +173,31 @@ window.addEventListener('DOMContentLoaded', function() {
     }
   }());
 
-  function maybeSave(test, key, data) {
-    if (test)
-      localStorage.setItem(key, JSON.stringify(data));
-    else
-      localStorage.removeItem(key);
-  }
-
-  // TODO: Throttle this.
+  var savePreferencesTimeout;
+  var SAVE_PREFERENCES_DELAY_MS = 500;
   function savePreferences() {
-    maybeSave($('#cbSavePreferences').checked, 'preferences', {
-      style: map.GetStyle(),
-      options: map.GetOptions(),
-      routes: map.GetNamedOption('routes'),
-      dimunofficial: map.GetNamedOption('dimunofficial'),
-      galdir: document.body.classList.contains('show-directions') ? 1 : 0
-    });
-    maybeSave($('#cbSaveLocation').checked, 'location', {
-      position: { x: map.GetX(), y: map.GetY() },
-      scale: map.GetScale()
-    });
-  }
+    if (savePreferencesTimeout) clearTimeout(savePreferencesTimeout);
+    savePreferencesTimeout = setTimeout(function() {
+      function maybeSave(test, key, data) {
+        if (test)
+          localStorage.setItem(key, JSON.stringify(data));
+        else
+          localStorage.removeItem(key);
+      }
 
-  window.addEventListener('unload', savePreferences);
+      maybeSave($('#cbSavePreferences').checked, 'preferences', {
+        style: map.GetStyle(),
+        options: map.GetOptions(),
+        routes: map.GetNamedOption('routes'),
+        dimunofficial: map.GetNamedOption('dimunofficial'),
+        galdir: document.body.classList.contains('show-directions') ? 1 : 0
+      });
+      maybeSave($('#cbSaveLocation').checked, 'location', {
+        position: { x: map.GetX(), y: map.GetY() },
+        scale: map.GetScale()
+      });
+    }, SAVE_PREFERENCES_DELAY_MS);
+  }
 
   $('#cbSavePreferences').addEventListener('click', savePreferences);
   $('#cbSaveLocation').addEventListener('click', savePreferences);
