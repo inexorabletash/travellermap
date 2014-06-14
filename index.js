@@ -22,6 +22,7 @@ window.addEventListener('DOMContentLoaded', function() {
   // Export
   window.map = map;
 
+  var isIframe = (window != window.top); // != for IE
 
   //////////////////////////////////////////////////////////////////////
   //
@@ -154,6 +155,7 @@ window.addEventListener('DOMContentLoaded', function() {
   });
 
   (function() {
+    if (isIframe) return;
     var preferences = JSON.parse(localStorage.getItem('preferences'));
     var location = JSON.parse(localStorage.getItem('location'));
     if (preferences) {
@@ -176,6 +178,7 @@ window.addEventListener('DOMContentLoaded', function() {
   var savePreferencesTimeout;
   var SAVE_PREFERENCES_DELAY_MS = 500;
   function savePreferences() {
+    if (isIframe) return;
     if (savePreferencesTimeout) clearTimeout(savePreferencesTimeout);
     savePreferencesTimeout = setTimeout(function() {
       function maybeSave(test, key, data) {
