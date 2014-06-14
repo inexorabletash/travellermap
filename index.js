@@ -173,29 +173,31 @@ window.addEventListener('DOMContentLoaded', function() {
     }
   }());
 
-  // TODO: Throttle this.
+  var savePreferencesTimeout;
+  var SAVE_PREFERENCES_DELAY_MS = 500;
   function savePreferences() {
-    function maybeSave(test, key, data) {
-      if (test)
-        localStorage.setItem(key, JSON.stringify(data));
-      else
-        localStorage.removeItem(key);
-    }
+    if (savePreferencesTimeout) clearTimeout(savePreferencesTimeout);
+    savePreferencesTimeout = setTimeout(function() {
+      function maybeSave(test, key, data) {
+        if (test)
+          localStorage.setItem(key, JSON.stringify(data));
+        else
+          localStorage.removeItem(key);
+      }
 
-    maybeSave($('#cbSavePreferences').checked, 'preferences', {
-      style: map.GetStyle(),
-      options: map.GetOptions(),
-      routes: map.GetNamedOption('routes'),
-      dimunofficial: map.GetNamedOption('dimunofficial'),
-      galdir: document.body.classList.contains('show-directions') ? 1 : 0
-    });
-    maybeSave($('#cbSaveLocation').checked, 'location', {
-      position: { x: map.GetX(), y: map.GetY() },
-      scale: map.GetScale()
-    });
+      maybeSave($('#cbSavePreferences').checked, 'preferences', {
+        style: map.GetStyle(),
+        options: map.GetOptions(),
+        routes: map.GetNamedOption('routes'),
+        dimunofficial: map.GetNamedOption('dimunofficial'),
+        galdir: document.body.classList.contains('show-directions') ? 1 : 0
+      });
+      maybeSave($('#cbSaveLocation').checked, 'location', {
+        position: { x: map.GetX(), y: map.GetY() },
+        scale: map.GetScale()
+      });
+    }, SAVE_PREFERENCES_DELAY_MS);
   }
-
-  window.addEventListener('unload', savePreferences);
 
   $('#cbSavePreferences').addEventListener('click', savePreferences);
   $('#cbSaveLocation').addEventListener('click', savePreferences);
