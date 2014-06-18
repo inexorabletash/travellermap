@@ -959,15 +959,13 @@ namespace Maps.Rendering
                         if (renderName)
                         {
                             string name = world.Name;
-                            if (isHiPop)
+                            if (isHiPop || ctx.styles.worlds.textStyle.Uppercase)
                                 name = name.ToUpperInvariant();
 
                             Color textColor = isCapital ? ctx.styles.worlds.textHighlightColor : ctx.styles.worlds.textColor;
+                            XFont font = (isHiPop || isCapital) ? ctx.styles.worlds.LargeFont : ctx.styles.worlds.Font;
 
-                            if (ctx.styles.worlds.textStyle.Uppercase)
-                                name = name.ToUpper();
-
-                            DrawWorldLabel(ctx, ctx.styles.worlds.textBackgroundStyle, solidBrush, textColor, ctx.styles.worlds.textStyle.Translation, ctx.styles.worlds.Font, name);
+                            DrawWorldLabel(ctx, ctx.styles.worlds.textBackgroundStyle, solidBrush, textColor, ctx.styles.worlds.textStyle.Translation, font, name);
                         }
                         #endregion
 

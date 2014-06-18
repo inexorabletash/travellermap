@@ -209,7 +209,7 @@ namespace Maps.Rendering
 
         private const float T5AllegianceCodeMinScale = 64;
 
-        public enum Style { Poster, Atlas, Candy, Print };
+        public enum Style { Poster, Atlas, Candy, Print, Draft };
 
         public Stylesheet(double scale, MapOptions options, Style style)
         {
@@ -323,6 +323,7 @@ namespace Maps.Rendering
                 glyphFont = new FontInfo(DEFAULT_FONT, scale < WorldFullMinScale ? 0.175f : 0.15f * fontScale, XFontStyle.Bold);
                 hexNumber.fontInfo = new FontInfo(DEFAULT_FONT, 0.1f * fontScale);
                 worlds.smallFontInfo = new FontInfo(DEFAULT_FONT, scale < WorldFullMinScale ? 0.2f : 0.1f * fontScale, XFontStyle.Regular);
+                worlds.largeFontInfo = worlds.fontInfo;
                 starportFont = (scale < WorldFullMinScale) ? worlds.smallFontInfo : worlds.fontInfo;
             }
 
@@ -388,6 +389,28 @@ namespace Maps.Rendering
             useGalaxyImage = false;
             useWorldImages = false;
 
+            // Cap pen widths when zooming in
+            float penScale = (scale <= 64) ? 1f : (64f / (float)scale);
+
+            float borderPenWidth =
+                (scale < MicroBorderMinScale) ? 1 : // When rendering vector borders
+                (scale < ParsecMinScale) ? 1 :      // When not rendering "hexes"
+                0.16f * penScale; // ... but cut in half by clipping
+
+            float routePenWidth =
+                scale <= 16 ? 0.2f :
+                0.08f * penScale;
+
+            microBorders.pen.width = borderPenWidth;
+            macroBorders.pen.width = borderPenWidth;
+            microRoutes.pen.width = routePenWidth;
+
+            amberZone.pen.width = redZone.pen.width = blueZone.pen.width = 0.05f * penScale;
+
+            macroRoutes.pen.width = borderPenWidth;
+            macroRoutes.pen.DashStyle = XDashStyle.Dash;
+
+
             switch (style)
             {
                 case Style.Poster:
@@ -446,6 +469,68 @@ namespace Maps.Rendering
                         amberZone.pen.color = Color.Gold;
                         worldNoWater.fillColor = Color.White;
                         worldNoWater.pen = new PenInfo(Color.Black, onePixel);
+
+                        riftOpacity = Math.Min(riftOpacity, 0.70f);
+
+                        break;
+                    }
+                case Style.Draft:
+                    {
+                        deepBackgroundOpacity = 0f;
+
+                        foregroundColor = Color.Black;
+                        backgroundColor = Color.AntiqueWhite;
+ 
+                        subsectorGrid.pen.color = Color.FromArgb(0x80, Color.Firebrick);
+
+                        const string FONT_NAME = "Comic Sans MS";
+                        worlds.fontInfo.name = FONT_NAME;
+                        worlds.smallFontInfo.name = FONT_NAME;
+                        starportFont.name = FONT_NAME;
+                        worlds.largeFontInfo.name = FONT_NAME;
+                        worlds.largeFontInfo.size = worlds.fontInfo.size * 1.25f;
+
+                        macroNames.fontInfo.name = FONT_NAME;
+                        microBorders.smallFontInfo.name = FONT_NAME;
+                        microBorders.largeFontInfo.name = FONT_NAME;
+                        microBorders.fontInfo.name = FONT_NAME;
+                        macroBorders.fontInfo.name = FONT_NAME;
+                        macroRoutes.fontInfo.name = FONT_NAME;
+                        capitals.fontInfo.name = FONT_NAME;
+                        macroNames.mediumFontInfo.name = FONT_NAME;
+                        macroNames.smallFontInfo.name = FONT_NAME;
+                        macroBorders.smallFontInfo.name = FONT_NAME;
+
+                        microBorders.textStyle.Uppercase = true;
+
+                        worlds.textStyle.Uppercase = true;
+                        worlds.textBackgroundStyle = TextBackgroundStyle.None;
+                        worldDetails = worldDetails & ~WorldDetails.Allegiance;
+
+                        subsectorNames.fontInfo.name = FONT_NAME;
+                        sectorName.fontInfo.name = FONT_NAME;
+
+                        // TODO: Hex numbers in all parsecs
+                        // TODO: HiPop underlined
+
+                        microBorders.pen.width = onePixel * 4;
+
+                        worldWater.fillColor = foregroundColor;
+                        worldNoWater.fillColor = Color.Empty; ;
+                        worldNoWater.pen = new PenInfo(foregroundColor, onePixel);
+
+                        amberZone.pen.color = foregroundColor;
+                        amberZone.pen.width = onePixel;
+                        redZone.pen.width = onePixel * 2;
+
+                        lightColor = Color.DarkCyan;
+                        darkColor = Color.DarkGray;
+                        dimColor = Color.LightGray;
+                        microRoutes.pen.color = Color.Gray;
+
+                        parsecGrid.pen.color = lightColor;
+                        microBorders.textColor = Color.Brown;
+
 
                         riftOpacity = Math.Min(riftOpacity, 0.70f);
 
@@ -518,26 +603,6 @@ namespace Maps.Rendering
             subsectorNames.textColor = scale < 16 ? foregroundColor :
                 scale < 48 ? darkColor : dimColor;
 
-            // Cap pen widths when zooming in
-            float penScale = (scale <= 64) ? 1f : (64f / (float)scale);
-
-            float borderPenWidth =
-                (scale < MicroBorderMinScale) ? 1 : // When rendering vector borders
-                (scale < ParsecMinScale) ? 1 :      // When not rendering "hexes"
-                0.16f * penScale; // ... but cut in half by clipping
-
-            float routePenWidth =
-                scale <= 16 ? 0.2f :
-                0.08f * penScale;
-
-            microBorders.pen.width = borderPenWidth;
-            macroBorders.pen.width = borderPenWidth;
-            microRoutes.pen.width = routePenWidth;
-
-            amberZone.pen.width = redZone.pen.width = blueZone.pen.width = 0.05f * penScale;
-
-            macroRoutes.pen.width = borderPenWidth;
-            macroRoutes.pen.DashStyle = XDashStyle.Dash;
 
             if (style == Style.Candy)
             {
