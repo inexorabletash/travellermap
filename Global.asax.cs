@@ -110,8 +110,11 @@ namespace Maps
 
             void IHttpHandler.ProcessRequest(HttpContext context)
             {
+                string target = url;
+                if (context.Request.QueryString.Count > 0)
+                    target += (target.Contains("?") ? "&" : "?") + context.Request.QueryString;
                 context.Response.StatusCode = statusCode;
-                context.Response.AddHeader("Location", url);
+                context.Response.AddHeader("Location", target);
             }
         }
     }
