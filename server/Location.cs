@@ -1,6 +1,7 @@
 ﻿using Json;
 using System;
 using System.Drawing;
+using System.Globalization;
 using System.Xml.Serialization;
 
 namespace Maps
@@ -78,6 +79,21 @@ namespace Maps
         {
             return SectorLocation.GetHashCode() ^ HexLocation.GetHashCode();
         }
+
+        public string HexString
+        {
+            get { return (HexLocation.X * 100 + HexLocation.Y).ToString("0000", CultureInfo.InvariantCulture); }
+        }
+
+        public string SubsectorHexString
+        {
+            get
+            {
+                return (((HexLocation.X - 1) % 8 + 1) * 100 +
+                        ((HexLocation.Y - 1) % 10 + 1)).ToString("0000", CultureInfo.InvariantCulture);
+            }
+        }
+
     }
 
     [XmlInclude(typeof(WorldLocation)), XmlInclude(typeof(SubsectorLocation)), XmlInclude(typeof(SectorLocation))]

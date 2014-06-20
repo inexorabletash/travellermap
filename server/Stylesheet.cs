@@ -258,6 +258,7 @@ namespace Maps.Rendering
             worlds.textBackgroundStyle = TextBackgroundStyle.Rectangle;
 
             hexCoordinateStyle = HexCoordinateStyle.Sector;
+            numberAllHexes = false;
 
             if (scale < WorldFullMinScale)
             {
@@ -532,7 +533,9 @@ namespace Maps.Rendering
                         microBorders.textColor = Color.Brown;
 
 
-                        riftOpacity = Math.Min(riftOpacity, 0.70f);
+                        riftOpacity = Math.Min(riftOpacity, 0.30f);
+
+                        numberAllHexes = true;
 
                         break;
                     }
@@ -719,6 +722,7 @@ namespace Maps.Rendering
             Subsector
         };
         public HexCoordinateStyle hexCoordinateStyle;
+        public bool numberAllHexes;
 
         // Sector Name
         public StyleElement sectorName;
