@@ -108,7 +108,7 @@ window.addEventListener('DOMContentLoaded', function() {
   };
 
   map.OnStyleChanged = function(style) {
-    ['poster', 'atlas', 'print', 'candy'].forEach(function(s) {
+    ['poster', 'atlas', 'print', 'candy', 'draft'].forEach(function(s) {
       document.body.classList[s === style ? 'add' : 'remove']('style-' + s);
     });
     updatePermalink();

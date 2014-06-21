@@ -116,7 +116,8 @@ function makeURL(base, params) {
     Poster: 'poster',
     Atlas: 'atlas',
     Print: 'print',
-    Candy: 'candy'
+    Candy: 'candy',
+    Draft: 'draft',
   };
 
   //----------------------------------------------------------------------

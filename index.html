@@ -72,6 +72,7 @@ button:hover {
 }
 .style-print .hoverbox,
 .style-atlas .hoverbox { background-color: white; }
+.style-draft .hoverbox { background-color: antiquewhite; }
 
 .hoverbox-right {
   right: 15px; top: 50px; bottom: 150px;
@@ -197,6 +198,7 @@ button:hover {
         box-shadow: 2px 2px 4px #404040;
       }
       .style-print #searchBox,
+      .style-draft #searchBox,
       .style-atlas #searchBox { background-color: #e0e0e0; }
       @media only screen and (max-width: 610px) {
         #searchBox { width: 100px; }
@@ -824,6 +826,7 @@ button:hover {
        class="ui">
     <style>
     #bottom-pane { background-color: rgba(0,0,0,0.65); }
+    .style-draft #bottom-pane { background-color: antiquewhite; }
     .style-atlas #bottom-pane,
     .style-print #bottom-pane { background-color: rgba(255,255,255,0.65); }
 
@@ -835,6 +838,7 @@ button:hover {
       width: 416px; height: 71px;
       background-image: url("res/ui/logo-flat.png");
     }
+    .style-draft #LogoImage,
     .style-print #LogoImage,
     .style-atlas #LogoImage {
       background-image: url("res/ui/logo-flat-gray.png");
@@ -842,6 +846,7 @@ button:hover {
 
     @media only screen and (max-width: 850px) {
       #LogoImage { width: 210px; height: 71px; background-image: url("res/ui/logo-stacked.png"); }
+      .style-draft #LogoImage,
       .style-print #LogoImage,
       .style-atlas #LogoImage {  background-image: url("res/ui/logo-stacked-gray.png"); }
     }
@@ -850,12 +855,14 @@ button:hover {
       #bottom-pane { zoom: 50%; }
 
       #LogoImage { width: 416px; height: 71px; background-image: url("res/ui/logo-flat.png"); }
+      .style-draft #LogoImage,
       .style-print #LogoImage,
       .style-atlas #LogoImage {  background-image: url("res/ui/logo-flat-gray.png"); }
     }
 
     @media only screen and (max-width: 480px) {
       #LogoImage { width: 210px; height: 71px; background-image: url("res/ui/logo-stacked.png"); }
+      .style-draft #LogoImage,
       .style-print #LogoImage,
       .style-atlas #LogoImage {  background-image: url("res/ui/logo-stacked-gray.png"); }
     }

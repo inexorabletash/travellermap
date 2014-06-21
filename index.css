@@ -74,6 +74,7 @@ body {
   font-size: 10pt;
   font-weight: normal;
 }
+.style-draft #legendBox section h2,
 .style-atlas #legendBox section h2,
 .style-print #legendBox section h2 {
   border-bottom: 3px solid black;
@@ -146,6 +147,8 @@ body {
 .style-atlas #legendBox #image2 { background-image: url("res/ui/Legend_1006_atlas.png"); }
 .style-print #legendBox #image1 { background-image: url("res/ui/Legend_1003_print.png"); }
 .style-print #legendBox #image2 { background-image: url("res/ui/Legend_1006_print.png"); }
+.style-draft #legendBox #image1 { background-image: url("res/ui/Legend_1003_atlas.png"); }
+.style-draft #legendBox #image2 { background-image: url("res/ui/Legend_1006_atlas.png"); }
 
 
 /* Credits/Metadata */
@@ -168,8 +171,10 @@ body {
 
 body.style-print,
 body.style-atlas { color: black; background-color: white; }
+.style-draft table,
 .style-print table,
 .style-atlas table { color: black; }
+.style-draft a,
 .style-print a,
 .style-atlas a { color: black; }
 .style-atlas #GalacticDirectionDisplay { color: gray; }
@@ -185,6 +190,11 @@ body.style-atlas { color: black; background-color: white; }
 .style-atlas #legendBox .amberzone { color: #c0c0c0; }
 .style-atlas #legendBox .redzone { color: black; }
 
+body.style-draft { color: black; background-color: antiquewhite; }
+.style-draft .box { border: solid 1px black; background-color: antiquewhite; }
+
+
+/* TODO: draft */
 .style-print #dragContainer,
 .style-atlas #dragContainer {
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgAQMAAABJtOi3AAAABlBMVEXX19f///8qtJEjAAAAE0lEQVQI12NgYPj/n4oElU1jAADtvT/BM8KnAAAAAABJRU5ErkJggg==');
