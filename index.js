@@ -599,5 +599,6 @@ window.addEventListener('DOMContentLoaded', function() {
   //
   //////////////////////////////////////////////////////////////////////
 
-  mapElement.focus();
+  if (window == window.top) // == for IE
+    mapElement.focus();
 });
