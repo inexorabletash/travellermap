@@ -9,13 +9,14 @@ Copyright (C) 1977-2014 Far Future Enterprises.
 
 See LICENSE.md for software licensing details.
 
+
 Useful Links
 ------------
 
 * The site itself: http://travellermap.com
-* How the site works: http://travellermap.com/info.htm
-* API documentation: http://travellermap.com/api.htm
-* Credits for the data: http://travellermap.com/credits.htm
+* How the site works: http://travellermap.com/doc/info
+* API documentation: http://travellermap.com/doc/api
+* Credits for the data: http://travellermap.com/doc/credits
 * Blog: http://travellermap.blogspot.com
 * GitHub repo: https://github.com/inexorabletash/travellermap
 * TODO list/bug tracking: https://trello.com/b/y61wmEKJ/travellermap-com-wish-list

@@ -236,6 +236,8 @@ table.uwp-data {
   max-width: 150px;
 }
 
+.uwp-data .world-name.hipop { text-transform: uppercase; }
+
 td.neighbor {
   text-align: center;
   font-weight: bold;
@@ -379,12 +381,12 @@ td.vertical {
     .rotate270 { -ms-writing-mode: tb-rl; }
   </style>
 <![endif]-->
-<script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.1.2/handlebars.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.min.js"></script>
 <script src="lib/polyfill/polyfill.js?update=2014-03-13"></script>
 <script src="lib/polyfill/es6.js?update=2014-03-21"></script>
-<script src="map.js?update=2014-06-04"></script>
+<script src="map.js?update=2014-06-20"></script>
 <script src="post.js?update=2014-03-13"></script>
-<script src="booklet.js?update=2014-05-20"></script>
+<script src="booklet.js?update=2014-06-22"></script>
 
 <body>
   <!-- Status Display -->
@@ -563,7 +565,7 @@ td.vertical {
               {{#../worlds}}
               <tr>
                 <td class="world-hex">{{hex}}</td>
-                <td class="world-name">{{name}}</td>
+                <td class="world-name {{#hipop}}hipop{{/hipop}}">{{name}}</td>
                 <td class="world-uwp">{{uwp}}</td>
                 <td class="world-remarks">{{remarks}}</td>
                 <td class="world-ix">{{ix}}</td>

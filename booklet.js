@@ -80,6 +80,8 @@
       });
       world.population = Math.pow(10, Traveller.fromHex(world.uwp.charAt(4))) *
         Traveller.fromHex(world.pbg.charAt(0));
+      if (world.population >= 1e9)
+        world.hipop = true;
       sector.worlds.push(world);
     });
 
@@ -419,7 +421,7 @@
 
       status();
       window.location.hash = hash;
-    }, function(error) {
+    }).catch(function(error) {
       status('Failed: ' + error);
     });
   };
