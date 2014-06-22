@@ -548,6 +548,35 @@ namespace Maps.Rendering
                                 // none
                                 break;
                         }
+
+                        if (ctx.styles.numberAllHexes &&
+                            ctx.styles.worldDetails.HasFlag(WorldDetails.Hex))
+                        {
+                            solidBrush.Color = ctx.styles.hexNumber.textColor;
+                            for (int px = hx - parsecSlop; px < hx + hw + parsecSlop; px++)
+                            {
+                                double yOffset = ((px % 2) != 0) ? 0.0 : 0.5;
+                                for (int py = hy - parsecSlop; py < hy + hh + parsecSlop; py++)
+                                {
+                                    Location loc = Astrometrics.CoordinatesToLocation(px + 1, py + 1);
+                                    string hex;
+                                    switch (ctx.styles.hexCoordinateStyle)
+                                    {
+                                        default:
+                                        case Stylesheet.HexCoordinateStyle.Sector: hex = loc.HexString; break;
+                                        case Stylesheet.HexCoordinateStyle.Subsector: hex = loc.SubsectorHexString; break;
+                                    }
+                                    using (RenderUtil.SaveState(ctx.graphics))
+                                    {
+                                        XMatrix matrix = new XMatrix();
+                                        matrix.TranslatePrepend(px + 0.5f, py + yOffset);
+                                        matrix.ScalePrepend(ctx.styles.hexContentScale / Astrometrics.ParsecScaleX, ctx.styles.hexContentScale / Astrometrics.ParsecScaleY);
+                                        ctx.graphics.MultiplyTransform(matrix, XMatrixOrder.Prepend);
+                                        ctx.graphics.DrawString(hex, ctx.styles.hexNumber.Font, solidBrush, 0, 0, RenderUtil.StringFormatTopCenter);
+                                    }
+                                }
+                            }                            
+                        }
                     }
                     #endregion
                     timers.Add(new Timer("parsec grids"));
@@ -849,7 +878,8 @@ namespace Maps.Rendering
                         #endregion
 
                         #region Hex
-                        if (ctx.styles.worldDetails.HasFlag(WorldDetails.Hex))
+                        if (!ctx.styles.numberAllHexes && 
+                            ctx.styles.worldDetails.HasFlag(WorldDetails.Hex))
                         {
                             string hex;
                             switch (ctx.styles.hexCoordinateStyle)
@@ -858,7 +888,6 @@ namespace Maps.Rendering
                                 case Stylesheet.HexCoordinateStyle.Sector: hex = world.Hex; break;
                                 case Stylesheet.HexCoordinateStyle.Subsector: hex = world.SubsectorHex; break;
                             }
-                            XSize size = ctx.graphics.MeasureString(hex, ctx.styles.hexNumber.Font);
                             solidBrush.Color = ctx.styles.hexNumber.textColor;
                             ctx.graphics.DrawString(hex, ctx.styles.hexNumber.Font, solidBrush, 0.0f, -0.5f, RenderUtil.StringFormatTopCenter);
                         }

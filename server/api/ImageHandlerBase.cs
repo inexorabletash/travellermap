@@ -36,7 +36,10 @@ namespace Maps.API
             // TODO: move to ParseOptions (maybe - requires options to be parsed after stylesheet creation?)
             if (HandlerBase.GetBoolOption(context.Request, "sscoords", queryDefaults: queryDefaults, defaultValue: false))
                 ctx.styles.hexCoordinateStyle = Stylesheet.HexCoordinateStyle.Subsector;
-            
+
+            if (HandlerBase.GetBoolOption(context.Request, "allhexes", queryDefaults: queryDefaults, defaultValue: false))
+                ctx.styles.numberAllHexes = true;
+
             if (!HandlerBase.GetBoolOption(context.Request, "routes", queryDefaults: queryDefaults, defaultValue: true))
             {
                 ctx.styles.macroRoutes.visible = false;
