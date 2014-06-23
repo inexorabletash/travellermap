@@ -69,7 +69,7 @@ h3 { text-decoration: underline; }
 
         <li>Image APIs
             <ul>
-                <li><a href="#poster">Poster</a> &ndash; render an image of a sector or subsector
+                <li><a href="#poster">Poster</a> &ndash; render an image of a sector, quadrant or subsector
                 <li><a href="#jumpmap">Jump Map</a> &ndash; render a map of worlds reachable by Jump-N
                 <li><a href="#tile">Tile</a> &ndash; render an arbitrary rectangle of space to an image
             </ul>
@@ -111,12 +111,12 @@ h3 { text-decoration: underline; }
     <h3>Semantic URL Namespace</h3>
 
     <ul>
-      <li>Universe:
+      <li>Universe
         <ul>
           <li><a href="#universe">http://travellermap.com/data</a> &ndash; list of all sectors
         </ul>
       </li>
-      <li>Sector:
+      <li>Sector
         <ul>
           <li><a href="#sec">http://travellermap.com/data/<var>sector</var></a> &ndash; T5 Second Survey format
           <li><a href="#sec">http://travellermap.com/data/<var>sector</var>/tab</a> &ndash; T5 Tab Delimited format
@@ -129,6 +129,16 @@ h3 { text-decoration: underline; }
           <li>http://travellermap.com/data/<var>sector</var>/booklet &ndash; alias for <a target="_blank" href="../booklet">booklet</a>
           <li><var>sector</var> is name e.g. <code>Spinward Marches</code> or T5SS abbreviation e.g. <code>spin</code>
 
+        </ul>
+      </li>
+      <li>Quadrant
+        <ul>
+          <li><a href="#poster">http://travellermap.com/data/<var>sector</var>/<var>quadrant</var></a> &ndash; T5 Second Survey format
+          <li><a href="#poster">http://travellermap.com/data/<var>sector</var>/<var>quadrant</var>/tab</a> &ndash; T5 Tab Delimited format
+          <li><a href="#poster">http://travellermap.com/data/<var>sector</var>/<var>quadrant</var>/sec</a> &ndash; legacy SEC format
+          <li><a href="#poster">http://travellermap.com/data/<var>sector</var>/<var>quadrant</var>/image</a> &ndash; map
+          <li><var>sector</var> is name e.g. <code>Spinward Marches</code> or T5SS abbreviation e.g. <code>spin</code>
+          <li><var>quadrant</var> is one of: <code>Alpha</code>, <code>Beta</code>, <code>Gamma</code> or <code>Delta</code>
         </ul>
       </li>
       <li>Subsector
@@ -622,6 +632,8 @@ h3 { text-decoration: underline; }
           <h4>API URLs:</h4>
           <p class="code">http://travellermap.com/api/sec?sector=<var>sector</var></p>
           <p class="code">http://travellermap.com/api/sec?sector=<var>sector</var>&amp;hex=<var>hex</var></p>
+          <p class="code">http://travellermap.com/api/sec?sector=<var>sector</var>&amp;subsector=<var>subsector</var></p>
+          <p class="code">http://travellermap.com/api/sec?sector=<var>sector</var>&amp;quadrant=<var>quadrant</var></p>
           <p class="code">http://travellermap.com/api/sec?sx=<var>sx</var>&amp;sy=<var>sy</var></p>
           <h4>Data URLs:</h4>
           <p class="code">http://travellermap.com/data/<var>sector</var></p>
@@ -632,10 +644,15 @@ h3 { text-decoration: underline; }
           <p class="code">http://travellermap.com/data/<var>sector</var>/<var>subsector</var>/sec</p>
           <p class="code">http://travellermap.com/data/<var>sector</var>/<var>subsector</var>/tab</p>
 
+          <p class="code">http://travellermap.com/data/<var>sector</var>/<var>quadrant</var></p>
+          <p class="code">http://travellermap.com/data/<var>sector</var>/<var>quadrant</var>/sec</p>
+          <p class="code">http://travellermap.com/data/<var>sector</var>/<var>quadrant</var>/tab</p>
+
           <h4>Parameters:</h4>
           <dl class="params">
             <dt>sector <dd>sector name or T5SS abbreviation
             <dt>subsector <dd><code>A</code> &ndash; <code>P</code> or name; optional &ndash; if specified , only UWPs for that subsector will be included
+            <dt>quadrant <dd>one of <code>Alpha</code>, <code>Beta</code>, <code>Gamma</code> or <code>Delta</code>
             <dt>sx
             <dt>sy <dd>sector in <a href="#system_sectorhex">sector/hex-space coordinates</a>
           </dl>
@@ -962,7 +979,7 @@ h3 { text-decoration: underline; }
   </section>
 
   <section id="poster">
-<h3>Poster &ndash; render an image of a sector or subsector</h3>
+<h3>Poster &ndash; render an image of a sector, quadrant or subsector</h3>
 <h4>API URLs:</h4>
 <p class="code">
     http://travellermap.com/api/poster
@@ -971,7 +988,10 @@ h3 { text-decoration: underline; }
     http://travellermap.com/api/poster?sector=<var>sector</var>
 </p>
 <p class="code">
-    http://travellermap.com/api/poster?sector=<var>sector</var>&amp;subsector=<var>subsector</var>
+  http://travellermap.com/api/poster?sector=<var>sector</var>&amp;subsector=<var>subsector</var>
+</p>
+<p class="code">
+  http://travellermap.com/api/poster?sector=<var>sector</var>&amp;quadrant=<var>quadrant</var>
 </p>
 <h4>Data URLs:</h4>
 <p class="code">
@@ -980,6 +1000,9 @@ h3 { text-decoration: underline; }
 <p class="code">
     http://travellermap.com/data/<var>sector</var>/<var>subsector</var>/image
 </p>
+<p class="code">
+    http://travellermap.com/data/<var>sector</var>/<var>quadrant</var>/image
+</p>
 
 <h4>HTTP Methods:</h4>
 <dl class="params">
@@ -987,6 +1010,7 @@ h3 { text-decoration: underline; }
     <dd>The content to render is specified some combination of the following URL parameters:
       <dl class="params">
         <dt>sector <dd>sector name
+        <dt>quadrant <dd>one of <code>Alpha</code>, <code>Beta</code>, <code>Gamma</code> or <code>Delta</code>
         <dt>subsector <dd>subsector index (<code>A</code> &ndash; <code>P</code> or name)
         <dt>domain <dd>one of the <a target="_blank" href="http://wiki.travellerrpg.com/Domain">domains of the Third Imperium</a> (Sylea, Vland, Gateway, Ilelish, Antares, Sol, Deneb)
         <dt>x1
