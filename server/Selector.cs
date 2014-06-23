@@ -112,6 +112,53 @@ namespace Maps
         }
     }
 
+    public class QuadrantSelector : Selector
+    {
+        Sector m_sector;
+        int m_index;
+        ResourceManager m_resourceManager;
+
+        public QuadrantSelector(ResourceManager resourceManager, Sector sector, int index)
+        {
+            if (resourceManager == null)
+                throw new ArgumentNullException("resourceManager");
+
+            if (sector == null)
+                throw new ArgumentNullException("sector");
+
+            if (index < 0 || index >= 4)
+                throw new ArgumentOutOfRangeException("index", "index must be 0...3");
+
+            m_sector = sector;
+            m_index = index;
+            m_resourceManager = resourceManager;
+        }
+
+
+        public override IEnumerable<Sector> Sectors { get { yield return m_sector; } }
+
+        public override IEnumerable<World> Worlds
+        {
+            get
+            {
+                int qx = m_index % 2;
+                int qy = m_index / 2;
+
+                WorldCollection worlds = m_sector.GetWorlds(m_resourceManager);
+                for (int x = 0; x < Astrometrics.SubsectorWidth * 2; ++x)
+                {
+                    for (int y = 0; y < Astrometrics.SubsectorHeight * 2; ++y)
+                    {
+                        World world = worlds[1 + x + Astrometrics.SubsectorWidth * 2 * qx, 1 + y + Astrometrics.SubsectorHeight * 2 * qy];
+                        if (world == null)
+                            continue;
+                        yield return world;
+                    }
+                }
+            }
+        }
+    }
+
     public class RectSelector : Selector
     {
         SectorMap m_map;

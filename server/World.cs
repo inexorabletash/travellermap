@@ -96,7 +96,15 @@ namespace Maps
         {
             get
             {
-                return ((X - 1) / 8) + ((Y - 1) / 10) * 4;
+                return ((X - 1) / Astrometrics.SubsectorWidth) + ((Y - 1) / Astrometrics.SubsectorHeight) * 4;
+            }
+        }
+
+        public int Quadrant
+        {
+            get
+            {
+                return ((X - 1) / (Astrometrics.SubsectorWidth * 2)) + ((Y - 1) / (Astrometrics.SubsectorHeight * 2)) * 4;
             }
         }
 

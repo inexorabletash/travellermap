@@ -198,6 +198,7 @@ namespace Maps
             routes.Add(new RegexRoute(@"^/api/jumpmap$", new GenericRouteHandler(typeof(JumpMapHandler))));
             routes.Add(new RegexRoute(@"^/api/poster$", new GenericRouteHandler(typeof(PosterHandler))));
             routes.Add(new RegexRoute(@"^/api/poster/(?<sector>[^/]+)$", new GenericRouteHandler(typeof(PosterHandler))));
+            routes.Add(new RegexRoute(@"^/api/poster/(?<sector>[^/]+)/(?<quadrant>(?:alpha|beta|gamma|delta))$", new GenericRouteHandler(typeof(PosterHandler))));
             routes.Add(new RegexRoute(@"^/api/poster/(?<sector>[^/]+)/(?<subsector>[^/]+)$", new GenericRouteHandler(typeof(PosterHandler))));
             routes.Add(new RegexRoute(@"^/api/tile$", new GenericRouteHandler(typeof(TileHandler))));
 #if LEGACY_ASPX
@@ -222,6 +223,7 @@ namespace Maps
             routes.Add(new RegexRoute(@"^/api/universe$", new GenericRouteHandler(typeof(UniverseHandler)), DEFAULT_JSON));
             routes.Add(new RegexRoute(@"^/api/sec$", new GenericRouteHandler(typeof(SECHandler)), new RouteValueDictionary { { "type", "SecondSurvey" } }));
             routes.Add(new RegexRoute(@"^/api/sec/(?<sector>[^/]+)$", new GenericRouteHandler(typeof(SECHandler)), new RouteValueDictionary { { "type", "SecondSurvey" } }));
+            routes.Add(new RegexRoute(@"^/api/sec/(?<sector>[^/]+)/(?<quadrant>alpha|beta|gamma|delta)$", new GenericRouteHandler(typeof(SECHandler)), new RouteValueDictionary { { "type", "SecondSurvey" }, { "metadata", 0 } }));
             routes.Add(new RegexRoute(@"^/api/sec/(?<sector>[^/]+)/(?<subsector>[^/]+)$", new GenericRouteHandler(typeof(SECHandler)), new RouteValueDictionary { { "type", "SecondSurvey" }, { "metadata", 0 } }));
             routes.Add(new RegexRoute(@"^/api/metadata$", new GenericRouteHandler(typeof(SectorMetaDataHandler)), DEFAULT_JSON));
             routes.Add(new RegexRoute(@"^/api/metadata/(?<sector>[^/]+)$", new GenericRouteHandler(typeof(SectorMetaDataHandler)), DEFAULT_JSON));
@@ -249,6 +251,12 @@ namespace Maps
             routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/image$", new GenericRouteHandler(typeof(PosterHandler))));
 
             routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/booklet$", new RedirectRouteHandler("/booklet?sector={sector}", statusCode: 302)));
+
+            // Quadrant, e.g. /data/Spinward Marches/Alpha
+            routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/(?<quadrant>alpha|beta|gamma|delta)$", new GenericRouteHandler(typeof(SECHandler)), new RouteValueDictionary { { "type", "SecondSurvey" }, { "metadata", "0" } }));
+            routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/(?<quadrant>alpha|beta|gamma|delta)/sec$", new GenericRouteHandler(typeof(SECHandler)), new RouteValueDictionary { { "metadata", "0" } }));
+            routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/(?<quadrant>alpha|beta|gamma|delta)/tab$", new GenericRouteHandler(typeof(SECHandler)), new RouteValueDictionary { { "type", "TabDelimited" }, { "metadata", "0" } }));
+            routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/(?<quadrant>alpha|beta|gamma|delta)/image$", new GenericRouteHandler(typeof(PosterHandler))));
 
             // Subsector by Index, e.g. /data/Spinward Marches/C
             routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/(?<subsector>[A-Pa-p])$", new GenericRouteHandler(typeof(SECHandler)), new RouteValueDictionary { { "type", "SecondSurvey" }, { "metadata", "0" } }));

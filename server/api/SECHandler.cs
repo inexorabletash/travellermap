@@ -70,6 +70,17 @@ namespace Maps.API
                 }
                 filter = (World world) => (world.Subsector == index);
             }
+            else if (HasOption(context, "quadrant"))
+            {
+                string quadrant = GetStringOption(context, "quadrant");
+                int index = Sector.QuadrantIndexFor(quadrant);
+                if (index == -1)
+                {
+                    SendError(context.Response, 404, "Not Found", String.Format("The quadrant '{0}' was not found.", quadrant));
+                    return;
+                }
+                filter = (World world) => (world.Quadrant == index);
+            }
 
             string mediaType = GetStringOption(context, "type");
             Encoding encoding;

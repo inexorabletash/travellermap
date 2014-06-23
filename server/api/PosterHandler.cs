@@ -173,6 +173,27 @@ namespace Maps.API
 
                     title = String.Format("{0} - Subsector {1}", title, 'A' + index);
                 }
+                else if (sector != null && HasOption(context, "quadrant") && GetStringOption(context, "quadrant").Length > 0)
+                {
+                    string quadrant = GetStringOption(context, "quadrant");
+                    int index;
+                    switch (quadrant.ToLowerInvariant()) {
+                        case "alpha": index = 0; quadrant = "Alpha";  break;
+                        case "beta": index = 1; quadrant = "Beta"; break;
+                        case "gamma": index = 2; quadrant = "Gamma"; break;
+                        case "delta": index = 3; quadrant = "Delta"; break;
+                        default:
+                            SendError(context.Response, 404, "Not Found", String.Format("The specified quadrant '{0}' was not found.", quadrant));
+                            return;
+                    }
+    
+                    selector = new QuadrantSelector(resourceManager, sector, index);
+                    tileRect = sector.QuadrantBounds(index);
+
+                    options &= ~(MapOptions.SectorGrid | MapOptions.SubsectorGrid | MapOptions.SectorsMask);
+
+                    title = String.Format("{0} - {1} Quadrant", title, quadrant);
+                }
                 else
                 {
                     selector = new SectorSelector(resourceManager, sector);

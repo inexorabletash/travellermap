@@ -370,6 +370,17 @@ namespace Maps
             return subsector.IndexNumber;
         }
 
+        public static int QuadrantIndexFor(string label)
+        {
+            switch (label.ToLowerInvariant()) {
+                case "alpha": return 0;
+                case "beta": return 1;
+                case "gamma": return 2;
+                case "delta": return 3;
+            }
+            return -1;
+        }
+
         public WorldCollection GetWorlds(ResourceManager resourceManager, bool cacheResults = true)
         {
             lock (this)
@@ -562,6 +573,15 @@ namespace Maps
                 (this.Location.Y * Astrometrics.SectorHeight) - Astrometrics.ReferenceHex.Y + (Astrometrics.SubsectorHeight * (index / 4)),
                 Astrometrics.SubsectorWidth,
                 Astrometrics.SubsectorHeight);
+        }
+
+        public Rectangle QuadrantBounds(int index)
+        {
+            return new Rectangle(
+                (this.Location.X * Astrometrics.SectorWidth) - Astrometrics.ReferenceHex.X + (Astrometrics.SubsectorWidth * 2 * (index % 2)),
+                (this.Location.Y * Astrometrics.SectorHeight) - Astrometrics.ReferenceHex.Y + (Astrometrics.SubsectorHeight * 2 * (index / 2)),
+                Astrometrics.SubsectorWidth * 2,
+                Astrometrics.SubsectorHeight * 2);
         }
 
         [XmlIgnore, JsonIgnore]
