@@ -78,7 +78,7 @@ function makeURL(base, params) {
 
   var Traveller = {
     fromHex: function(c) {
-      return '0123456789ABCDEFGHJKLMNPQRSTUVWXYZ'.indexOf(c.toUpperCase());
+      return '0123456789ABCDEFGHJKLMNPQRSTUVW'.indexOf(c.toUpperCase());
     }
   };
 

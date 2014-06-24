@@ -78,8 +78,9 @@
         var col = header[index].replace(/[^a-z]/g, '');
         world[col] = field;
       });
-      world.population = Math.pow(10, Traveller.fromHex(world.uwp.charAt(4))) *
-        Traveller.fromHex(world.pbg.charAt(0));
+      var exp = Traveller.fromHex(world.uwp.charAt(4)),
+          mult = Traveller.fromHex(world.pbg.charAt(0));
+      world.population = exp >= 0 && mult >= 0 ? Math.pow(10, exp) * mult : 0;
       if (world.population >= 1e9)
         world.hipop = true;
       sector.worlds.push(world);
@@ -329,6 +330,7 @@
         subsector.maxpop = null;
         subsector.maxtl = null;
         subsector.capital = null;
+        subsector.unexplored = 0;
 
         subsector.worlds.forEach(function (world) {
           subsector.population += world.population;
@@ -348,12 +350,19 @@
               subsector.capital = world;
             }
           }
+
+          if (world.uwp === 'XXXXXXX-X')
+            subsector.unexplored += 1;
         });
 
+        var popstring =
+
         subsector.blurb = [];
-        if (subsector.worlds.length > 1) {
+        if (subsector.worlds.length > 1 && subsector.worlds.length > subsector.unexplored) {
           subsector.blurb.push(capitalize(subsector.article) + ' contains ' +
-                               subsector.worlds.length + ' worlds with a population of ' +
+                               subsector.worlds.length + ' worlds with a ' +
+                               (subsector.unexplored > 0 ? 'known population' : 'population') +
+                               ' of ' +
                                friendlyNumber(subsector.population) + '.');
 
           if (subsector.maxpop && subsector.maxpop.population > 0) {
@@ -367,6 +376,11 @@
                                friendlyNumber(subsector.maxpop.population) + '.');
         } else if (subsector.worlds.length === 0) {
           subsector.blurb.push(capitalize(subsector.article) + ' contains no charted worlds.');
+        }
+
+        if (subsector.unexplored > 0) {
+          subsector.blurb.push(capitalize(subsector.article) +
+                               ' contains ' + subsector.unexplored + ' unexplored worlds.');
         }
 
         if (subsector.maxtl && subsector.maxtl.length > 0) {
