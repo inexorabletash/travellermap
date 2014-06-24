@@ -1,4 +1,4 @@
-﻿<!DOCTYPE HTML>
+<!DOCTYPE HTML>
 <title>Traveller Map - API</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="shortcut icon" href="../favicon.ico">
@@ -50,7 +50,7 @@ h3 { text-decoration: underline; }
 
         <li>HTML APIs
             <ul>
-                <li><a href="#query">Query Parameters</a> &ndash; for the main page and IFRAME
+                <li><a href="#query">Query Parameters</a> &ndash; for the main page
                 <li><a href="#go">Go Links</a> &ndash; short URLs for navigating the main page
                 <li><a href="#iframe">IFRAME</a> &ndash; embed a draggable, zoomable map in your page
             </ul>
@@ -300,7 +300,7 @@ h3 { text-decoration: underline; }
     <h4>Styles</h4>
 
     <p>Style values include:</p>
-    <dl>
+    <dl class="params">
     <dt style="clear: both;"><img style="float: right; margin: 10px;" src="../res/ui/style-poster.png" alt="poster example">
       poster</dt>
     <dd>A color-on-black style that matches the "Spinward Marches" poster included with the
@@ -370,7 +370,7 @@ h3 { text-decoration: underline; }
     <h2>HTML APIs</h2>
 
   <section id="query">
-    <h3>Query Parameters &ndash; Main Page and IFRAME</h3>
+    <h3>Query Parameters &ndash; Main Page</h3>
     <h4>Options:</h4>
     <dl class="params">
       <dt>scale <dd>scale in pixels/parsec (default is 64)
@@ -472,42 +472,34 @@ h3 { text-decoration: underline; }
         &lt;iframe src="<var>URL</var>" style="<var>STYLE</var>"&gt;&lt;/iframe&gt;
     </p>
     <p>
-        Where <var>URL</var> is one of:</p>
-    <ul>
-        <li class="code">http://travellermap.com/?x=<var>x</var>&amp;y=<var>y</var>
-        <li class="code">http://travellermap.com/?sector=<var>sector</var>
-        <li class="code">http://travellermap.com/?sector=<var>sector</var>&amp;hex=<var>hex</var>
-    </ul>
+        Where <var>URL</var> is any main page URL, including
+        <a href="#query">query parameters</a> and/or <a href="#go">go links</a>.
     <p>
         And <var>STYLE</var> is something like:</p>
     <p class="code">
         width: 200px; height: 200px; border: solid 1px black;
     </p>
-    <h4>Options:</h4>
-    <dl class="params">
-      <dt>scale <dd>scale in pixels/parsec (default is 64)
-      <dt>options <dd><a href="#options">rendering options</a>
-      <dt>style <dd><a href="#options">rendering style</a>
-    </dl>
 
    <h4>Notes:</h4>
     <ul>
-        <li>It's a fully functional map, just missing the chrome. You can drag with the mouse and zoom by using the mouse wheel or double-clicking (hold Alt and double-click to zoom out). You can even use the <kbd>IJKL</kbd> keys or arrow keys to scroll the map.
+        <li>You use the same URL as for the main page. The site detects that it's running in an iframe and automatically hides the UI.
+        <li>User preferences are ignored, so that you can control the styling and location with parameters.
+        <li>You can drag with the mouse and zoom by using the mouse wheel or double-clicking (hold Alt and double-click to zoom out). You can even use the <kbd>IJKL</kbd> keys or arrow keys to scroll the map.
         <li>For sites such as Wikis that (for security reasons) do not allow embedding arbitrary IFRAMEs, see the <a href="#poster">Poster API</a> instead.
-        <li>The CSS of the IFRAME element can be anything you want &ndash; the width and height are just examples
+        <li>The <var>STYLE</var> of the IFRAME element can be anything you want to match your site &ndash; the width and height are just examples
     </ul>
 
     <h4>Example:</h4>
     <pre class="code">
 &lt;iframe
-   src="http://travellermap.com/?sector=Spinward%20Marches&amp;hex=1910"
-   style="width: 400px; height: 200px; border: solid 1px black;"&gt;
+   src="http://travellermap.com/go/spin/1910?style=print"
+   style="width: 400px; height: 200px; border: ridge 10px gray;"&gt;
 &lt;/iframe&gt;
     </pre>
 
     <p>
-        <iframe src="../?sector=Spinward%20Marches&amp;hex=1910"
-          style="width: 400px; height: 200px; border: solid 1px black;">
+        <iframe src="http://travellermap.com/go/spin/1910?style=print"
+          style="width: 400px; height: 200px; border: ridge 10px gray;">
         </iframe>
     </p>
   </section>
