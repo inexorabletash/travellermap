@@ -32,7 +32,23 @@
     return out.join('\n');
   }
 
-  // TODO: Use fetch/Response from http://fetch.spec.whatwg.org
+  // TODO: Use a proper polyfill for fetch/Response from http://fetch.spec.whatwg.org
+  function Response(xhr) {
+    this._xhr = xhr;
+    var headers = {};
+    xhr.getAllResponseHeaders().split(/\r?\n/).forEach(function(header) {
+      headers[header.substring(0, header.indexOf(':'))] = header.substring(header.indexOf(':') + 2);
+    });
+    this.headers = headers;
+  }
+  Response.prototype = {
+    asText: function() {
+      return Promise.resolve(this._xhr.responseText);
+    },
+    asXML: function() {
+      return Promise.resolve(this._xhr.responseXML);
+    }
+  };
   function fetch(url, options) {
     return new Promise(function(resolve, reject) {
       var xhr = new XMLHttpRequest(), async = true;
@@ -41,7 +57,7 @@
         if (xhr.readyState !== XMLHttpRequest.DONE)
           return;
         if (xhr.status === 200)
-          resolve(xhr);
+          resolve(new Response(xhr));
         else
           reject(xhr.responseText);
       };
@@ -52,10 +68,19 @@
 
   function compareContent(contentType, url1, url2, callback) {
     Promise.all([fetch(url1), fetch(url2)]).then(function(responses) {
+      return Promise.all(responses.map(function(response) {
+        return response.asText().then(function(text) {
+          return {
+            contentType: response.headers['Content-Type'],
+            text: text
+          };
+        });
+      }));
+    }).then(function(responses) {
       var a = 'Content-Type: ' + contentType + '\n'
-            + responses[0].responseText;
-      var b = 'Content-Type: ' + responses[1].getResponseHeader('Content-Type') + '\n'
-            + responses[1].responseText;
+            + responses[0].text;
+      var b = 'Content-Type: ' + responses[1].contentType + '\n'
+            + responses[1].text;
       var d = diff(a, b);
       callback(a, b, d, !d);
     }).catch(function(error) {
