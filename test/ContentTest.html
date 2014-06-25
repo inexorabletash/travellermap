@@ -42,5 +42,7 @@ tbody#results tr.fail td { border: 1px solid red; }
 
   // Ensure diff is working
   check('text/plain', 'test/a.txt', 'test/b.txt');
+  check('text/plain', 'test/a.txt', 'test/a.txt');
+  check('text/plain', 'test/a.txt', 'test/c.txt');
 
 </script>

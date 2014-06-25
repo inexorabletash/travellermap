@@ -59,53 +59,54 @@
         if (xhr.status === 200)
           resolve(new Response(xhr));
         else
-          reject(xhr.responseText);
+          reject(xhr.statusText);
       };
-      xhr.onerror = reject;
       xhr.send();
     });
   }
 
   function compareContent(contentType, url1, url2, callback) {
-    Promise.all([fetch(url1), fetch(url2)]).then(function(responses) {
-      return Promise.all(responses.map(function(response) {
-        return response.asText().then(function(text) {
-          return {
-            contentType: response.headers['Content-Type'],
-            text: text
-          };
-        });
-      }));
-    }).then(function(responses) {
-      var a = 'Content-Type: ' + contentType + '\n'
-            + responses[0].text;
-      var b = 'Content-Type: ' + responses[1].contentType + '\n'
-            + responses[1].text;
-      var d = diff(a, b);
-      callback(a, b, d, !d);
-    }).catch(function(error) {
-      callback('', '', 'Fetch failed: ' + error, true);
-      // TODO: Handle error
-    });
+
+    function getHeaderAndBody(response) {
+      return response.asText().then(function(text) {
+        return {
+          headers: response.headers,
+          text: text
+        };
+      });
+    }
+
+    Promise.all([fetch(url1).then(getHeaderAndBody), fetch(url2).then(getHeaderAndBody)])
+      .then(function(responses) {
+        var a = 'Content-Type: ' + contentType + '\n'
+              + responses[0].text;
+        var b = 'Content-Type: ' + responses[1].headers['Content-Type'] + '\n'
+              + responses[1].text;
+        var d = diff(a, b);
+        callback(a, b, d, !d);
+      }).catch(function(error) {
+        callback('', '', 'Fetch failed: ' + error);
+        // TODO: Handle error
+      });
   }
 
   var $ = function(selector) { return document.querySelector(selector); };
-  var ce = function(tag) { return document.createElement(tag); };
-  var tn = function(text) { return document.createTextNode(text); };
+  function elem(tag) { return document.createElement(tag); }
+  function text(text) { return document.createTextNode(text); }
 
   function check(contentType, url1, url2) {
-    var tr = $('#results').appendChild(ce('tr'));
-    tr.appendChild(ce('td')).appendChild(tn(url1));
-    tr.appendChild(ce('td')).appendChild(tn(url2));
-    tr.appendChild(ce('td')).appendChild(tn('diff'));
+    var tr = $('#results').appendChild(elem('tr'));
+    tr.appendChild(elem('td')).appendChild(text(url1));
+    tr.appendChild(elem('td')).appendChild(text(url2));
+    tr.appendChild(elem('td')).appendChild(text('diff'));
 
-    tr = $('#results').appendChild(ce('tr'));
+    tr = $('#results').appendChild(elem('tr'));
 
     compareContent(contentType, '../' + url1, '../' + url2, function(a, b, c, pass) {
-      for (var i = 0; i < 3; ++i) {
-        tr.appendChild(ce('td')).appendChild(tn(arguments[i]));
-      }
-      tr.className = pass ? 'pass' : 'fail';
+      tr.appendChild(elem('td')).appendChild(text(a));
+      tr.appendChild(elem('td')).appendChild(text(b));
+      tr.appendChild(elem('td')).appendChild(text(c));
+      tr.classList.add(pass ? 'pass' : 'fail');
     });
   }
 
