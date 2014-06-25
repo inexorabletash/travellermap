@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<title>Content Tests</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="shortcut icon" href="../favicon.ico">
+<link rel="stylesheet" type="text/css" href="../site.css?update=2014-01-07">
+<style>
+tbody#results td,
+tbody#results th { width: 256px; overflow: hidden; }
+tbody#results td { max-height: 256px;
+                   overflow: auto;
+                   white-space: pre;
+                   vertical-align: top; }
+tbody#results tr.pass td { border: 1px solid green; }
+tbody#results tr.fail td { border: 1px solid red; }
+
+</style>
+<h1>The Traveller Map - Content Reference Tests</h1>
+<div class="content">
+  <section>
+    <p>
+    This page compares reference text content  (left) with content fetched from <a href="../doc/api">APIs</a> (middle) to check for
+    unintentionally introduced differences (right). The first row is intentionally incorrect, and shows what would happen if coordinates were
+    calculated incorrectly. All other rows should have no differences. <b>&Omega;</b>
+    </p>
+  </section>
+  <section>
+    <table>
+      <tbody id="results">
+        <tr>
+          <th>Reference Content</th>
+          <th>Actual Content</th>
+          <th>Diff (empty = good)</th>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</div>
+
+<script src="../lib/polyfill/es6.js"></script>
+<script src="ContentTest.js"></script>
+<script>
+
+  // Ensure diff is working
+  check('text/plain', 'test/a.txt', 'test/b.txt');
+
+</script>
