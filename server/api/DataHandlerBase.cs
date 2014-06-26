@@ -129,6 +129,7 @@ namespace Maps.API
             {
                 using (var w = new StreamWriter(context.Response.OutputStream))
                 {
+                    // TODO: Ensure jsonp is just an identifier
                     w.Write(context.Request.QueryString["jsonp"]);
                     w.Write("(");
                 }

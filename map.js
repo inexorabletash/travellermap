@@ -1119,7 +1119,8 @@ function makeURL(base, params) {
       // Interpolate scale in log space.
       self.SetScale(Math.pow(2, Animation.interpolate(
         Math.log(os)/Math.LN2, Math.log(ts)/Math.LN2, p)));
-      // TODO: If animating scale, need to slew to target more quickly.
+      // TODO: If animating scale, this should follow an arc (parabola?) through 3space treating
+      // scale as Z and computing a height such that the target is in view at the turnaround.
       self.SetPosition(Animation.interpolate(ox, tx, p), Animation.interpolate(oy, ty, p));
       self.redraw();
     };

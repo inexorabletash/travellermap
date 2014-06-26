@@ -82,7 +82,7 @@ namespace Maps
             stream.Position = 0;
             return stream;
         }
-        
+
         // TODO: Could be a variant of Enumerable.Range(...).Select(...)
         public static IEnumerable<int> Sequence(int start, int end)
         {

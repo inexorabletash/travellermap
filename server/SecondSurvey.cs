@@ -67,7 +67,7 @@ namespace Maps
             { "*.B", "NW" },  // Imperial Naval base + Scout Way station
             { "*.C", "C" },   // Vargr Corsair base
             { "*.D", "D" },   // Depot
-            { "*.E", "E"},    // Hiver Embassy             - TODO: Approved T5SS code for Embassy
+            { "*.E", "E"},    // Hiver Embassy            - TODO: Approved T5SS code for Embassy
             { "So.F", "K" },  // Solomani Naval Base
             { "*.F", "KM" },  // Military & Naval Base
             { "*.G", "K" },   // Vargr Naval Base
@@ -159,7 +159,7 @@ namespace Maps
             { "So", "Solomani Confederation" },
             { "Va", "Vargr (Non-Aligned)" },
             { "Zh", "Zhodani Consulate" },
-            
+
             { "A0", "Yerlyaruiwo Tlaukhu Bloc" },
             { "A1", "Khaukeairl Tlaukhu Bloc" },
             { "A2", "Syoisuis Tlaukhu Bloc" },
@@ -238,9 +238,9 @@ namespace Maps
         // TODO: Parse this from data file
         private class T5Allegiances : Dictionary<string, Allegiance>
         {
-            public void Add(string t5code, string code, string baseCode, string name) 
+            public void Add(string t5code, string code, string baseCode, string name)
             {
-                this.Add(t5code, new Allegiance(t5code, code, baseCode, name)); 
+                this.Add(t5code, new Allegiance(t5code, code, baseCode, name));
             }
         }
         private static T5Allegiances s_t5Allegiances = new T5Allegiances {
@@ -335,8 +335,8 @@ namespace Maps
             { "ZhCo", "Zh", "Zh", "Zhodani Consulate" }
         };
 
-        private static readonly HashSet<string> s_defaultAllegiances = new HashSet<string> { 
-            // NOTE: Do not use this for autonomous/cultural regional codes (e.g. Vegan, Sylean, etc). 
+        private static readonly HashSet<string> s_defaultAllegiances = new HashSet<string> {
+            // NOTE: Do not use this for autonomous/cultural regional codes (e.g. Vegan, Sylean, etc).
             // Use <Allegiance Code="Ve" Base="Im">Vegan Autonomous Region</Allegiance> in metadata instead
             "Im", // Classic Imperium
             "ImAp", // Third Imperium, Amec Protectorate (Dagu)
@@ -369,46 +369,46 @@ namespace Maps
 
         #region Sophonts
         private static Dictionary<string, string> s_sophontCodes = new Dictionary<string,string> {
-            { "Adda", "Addaxur" }, 
-            { "Aqua", "Aquans" }, 
-            { "Asla", "Aslan" }, 
-            { "Bhun", "Brunj" }, 
-            { "Bruh", "Bruhre" }, 
-            { "Buru", "Burugdi" }, 
-            { "Bwap", "Bwaps" }, 
-            { "Chir", "Chirpers" }, 
-            { "Darm", "Darmine" }, 
-            { "Dolp", "Dolphins" }, 
-            { "Droy", "Droyne" }, 
-            { "Gray", "Graytch" }, 
-            { "Hama", "Hamaran" }, 
-            { "Huma", "Human" }, 
-            { "Jala", "Jala'lak" }, 
-            { "Jend", "Jenda" }, 
-            { "Jonk", "Jonkeereen" }, 
-            { "Kiak", "Kiakh'iee" }, 
-            { "Lamu", "Lamura Gav/Teg" }, 
-            { "Lanc", "Lancians" }, 
-            { "Luri", "Luriani" }, 
-            { "Mask", "Maskai" }, 
-            { "Orca", "Orca" }, 
-            { "Ormi", "Ormine" }, 
-            { "Scan", "Scanians" }, 
-            { "Sele", "Selenites" }, 
-            { "S'mr", "S'mrii" }, 
-            { "Stal", "Stalkers" }, 
-            { "Sydi", "Sydites" }, 
-            { "Syle", "Syleans" }, 
-            { "Tapa", "Tapazmal" }, 
-            { "Tent", "Tentrassi" }, 
-            { "UApe", "Uplifted Apes" }, 
-            { "Ulan", "Ulane" }, 
-            { "Ursa", "Ursa" }, 
-            { "Urun", "Urunishani" }, 
-            { "Varg", "Vargr" }, 
-            { "Vega", "Vegans" }, 
-            { "Zhod", "Zhodani" }, 
-            { "Ziad", "Ziadd" }, 
+            { "Adda", "Addaxur" },
+            { "Aqua", "Aquans" },
+            { "Asla", "Aslan" },
+            { "Bhun", "Brunj" },
+            { "Bruh", "Bruhre" },
+            { "Buru", "Burugdi" },
+            { "Bwap", "Bwaps" },
+            { "Chir", "Chirpers" },
+            { "Darm", "Darmine" },
+            { "Dolp", "Dolphins" },
+            { "Droy", "Droyne" },
+            { "Gray", "Graytch" },
+            { "Hama", "Hamaran" },
+            { "Huma", "Human" },
+            { "Jala", "Jala'lak" },
+            { "Jend", "Jenda" },
+            { "Jonk", "Jonkeereen" },
+            { "Kiak", "Kiakh'iee" },
+            { "Lamu", "Lamura Gav/Teg" },
+            { "Lanc", "Lancians" },
+            { "Luri", "Luriani" },
+            { "Mask", "Maskai" },
+            { "Orca", "Orca" },
+            { "Ormi", "Ormine" },
+            { "Scan", "Scanians" },
+            { "Sele", "Selenites" },
+            { "S'mr", "S'mrii" },
+            { "Stal", "Stalkers" },
+            { "Sydi", "Sydites" },
+            { "Syle", "Syleans" },
+            { "Tapa", "Tapazmal" },
+            { "Tent", "Tentrassi" },
+            { "UApe", "Uplifted Apes" },
+            { "Ulan", "Ulane" },
+            { "Ursa", "Ursa" },
+            { "Urun", "Urunishani" },
+            { "Varg", "Vargr" },
+            { "Vega", "Vegans" },
+            { "Zhod", "Zhodani" },
+            { "Ziad", "Ziadd" },
         };
         public static string SophontCodeToName(string code)
         {

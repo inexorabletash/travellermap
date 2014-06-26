@@ -24,7 +24,7 @@ namespace Maps.Rendering
         }
 
         // TODO: Move this to data file
-        private static readonly MapLabel[] labels = 
+        private static readonly MapLabel[] labels =
         {
             new MapLabel("Human Client States", -160, -50),
             new MapLabel("Aslan Client States", -60, 155),
@@ -36,30 +36,30 @@ namespace Maps.Rendering
         };
 
         private static readonly string[] borderFiles = {
-            @"~/res/Vectors/Imperium.xml", 
-            @"~/res/Vectors/Aslan.xml", 
-            @"~/res/Vectors/Kkree.xml", 
-            @"~/res/Vectors/Vargr.xml", 
-            @"~/res/Vectors/Zhodani.xml", 
-            @"~/res/Vectors/Solomani.xml", 
-            @"~/res/Vectors/Hive.xml", 
-            @"~/res/Vectors/SpinwardClient.xml", 
-            @"~/res/Vectors/RimwardClient.xml", 
+            @"~/res/Vectors/Imperium.xml",
+            @"~/res/Vectors/Aslan.xml",
+            @"~/res/Vectors/Kkree.xml",
+            @"~/res/Vectors/Vargr.xml",
+            @"~/res/Vectors/Zhodani.xml",
+            @"~/res/Vectors/Solomani.xml",
+            @"~/res/Vectors/Hive.xml",
+            @"~/res/Vectors/SpinwardClient.xml",
+            @"~/res/Vectors/RimwardClient.xml",
             @"~/res/Vectors/TrailingClient.xml"
         };
 
-        private static readonly string[] riftFiles = { 
-            @"~/res/Vectors/GreatRift.xml", 
-            @"~/res/Vectors/LesserRift.xml", 
-            @"~/res/Vectors/WindhornRift.xml", 
-            @"~/res/Vectors/DelphiRift.xml", 
-            @"~/res/Vectors/ZhdantRift.xml" 
+        private static readonly string[] riftFiles = {
+            @"~/res/Vectors/GreatRift.xml",
+            @"~/res/Vectors/LesserRift.xml",
+            @"~/res/Vectors/WindhornRift.xml",
+            @"~/res/Vectors/DelphiRift.xml",
+            @"~/res/Vectors/ZhdantRift.xml"
         };
 
         private static readonly string[] routeFiles = {
             @"~/res/Vectors/J5Route.xml",
             @"~/res/Vectors/J4Route.xml",
-            @"~/res/Vectors/CoreRoute.xml" 
+            @"~/res/Vectors/CoreRoute.xml"
         };
 
         // TODO: Consider not caching these across sessions
@@ -139,13 +139,13 @@ namespace Maps.Rendering
                 {
                     if (ctx.styles.useBackgroundImage && s_backgroundImage == null)
                         s_backgroundImage = XImage.FromFile(ctx.resourceManager.Server.MapPath(@"~/res/Candy/Nebula.png"));
- 
+
                     if (ctx.styles.showRifts && s_riftImage == null)
                         s_riftImage = Image.FromFile(ctx.resourceManager.Server.MapPath(@"~/res/Candy/Rifts.png"));
 
                     if (ctx.styles.useGalaxyImage && s_galaxyImage == null)
                         s_galaxyImage = Image.FromFile(ctx.resourceManager.Server.MapPath(@"~/res/Candy/Galaxy.png"));
-                    
+
                     if (ctx.styles.useWorldImages && s_worldImages == null)
                     {
                         s_worldImages = new Dictionary<string, XImage> {
@@ -239,7 +239,7 @@ namespace Maps.Rendering
                     //------------------------------------------------------------
 
                     RectangleF galacticBounds = new RectangleF(-14598.67f, -23084.26f, 29234.1133f, 25662.4746f); // TODO: Don't hardcode
-                    Rectangle galaxyImageRect = new Rectangle(-18257, -26234, 36551, 32462); // Chosen to match T5 pp.416 
+                    Rectangle galaxyImageRect = new Rectangle(-18257, -26234, 36551, 32462); // Chosen to match T5 pp.416
 
                     // This transforms the Linehan galactic structure to the Mikesh galactic structure
                     // See http://travellermap.blogspot.com/2009/03/galaxy-scale-mismatch.html
@@ -326,7 +326,7 @@ namespace Maps.Rendering
 
                     if (ctx.styles.pseudoRandomStars.visible)
                     {
-                        // Render pseudorandom stars based on the tile # and 
+                        // Render pseudorandom stars based on the tile # and
                         // scale factor. Note that these are positioned in
                         // screen space, not world space.
 
@@ -456,7 +456,7 @@ namespace Maps.Rendering
 
                         for (float h = ((float)(Math.Floor((ctx.tileRect.Left) / Astrometrics.SectorWidth) - 1) - Astrometrics.ReferenceSector.X) * Astrometrics.SectorWidth - Astrometrics.ReferenceHex.X; h <= ctx.tileRect.Right + Astrometrics.SectorWidth; h += Astrometrics.SectorWidth)
                             ctx.graphics.DrawLine(pen, h, ctx.tileRect.Top - gridSlop, h, ctx.tileRect.Bottom + gridSlop);
-                        
+
                         for (float v = ((float)(Math.Floor((ctx.tileRect.Top) / Astrometrics.SectorHeight) - 1) - Astrometrics.ReferenceSector.Y) * Astrometrics.SectorHeight - Astrometrics.ReferenceHex.Y; v <= ctx.tileRect.Bottom + Astrometrics.SectorHeight; v += Astrometrics.SectorHeight)
                             ctx.graphics.DrawLine(pen, ctx.tileRect.Left - gridSlop, v, ctx.tileRect.Right + gridSlop, v);
                     }
@@ -530,6 +530,21 @@ namespace Maps.Rendering
                             case MicroBorderStyle.Hex:
                                 // TODO: use RenderUtil.(Square|Hex)Edges(X|Y) arrays
                                 const double hexEdge = 0.18f; // TODO: Need to compute this (should be cos(60), inverse-scaled)
+
+                                // hexEdge should be Math.Tan(Math.PI/6) / 4 / Astrometrics.ParsecScaleX = 0.1666
+/*
+            1
+    +-*------------*x+
+    |/              \|
+    /                \
+   /|                |\
+  * |                +x*  x = tan( pi / 6 ) / 4
+   \|                |/
+    \                /
+    |\              /|
+    +-*------------*-+
+*/
+
                                 XPoint[] points = new XPoint[4];
                                 for (int px = hx - parsecSlop; px < hx + hw + parsecSlop; px++)
                                 {
@@ -575,7 +590,7 @@ namespace Maps.Rendering
                                         ctx.graphics.DrawString(hex, ctx.styles.hexNumber.Font, solidBrush, 0, 0, RenderUtil.StringFormatTopCenter);
                                     }
                                 }
-                            }                            
+                            }
                         }
                     }
                     #endregion
@@ -628,7 +643,7 @@ namespace Maps.Rendering
 
                     if (ctx.styles.microRoutes.visible)
                         DrawRoutes(ctx, fonts);
-                    
+
                     #endregion
                     timers.Add(new Timer("routes"));
 
@@ -759,7 +774,7 @@ namespace Maps.Rendering
 
                     if (ctx.styles.showMicroNames)
                         DrawLabels(ctx, fonts);
-                    
+
                     #endregion
                     timers.Add(new Timer("microborder labels"));
                 }
@@ -878,7 +893,7 @@ namespace Maps.Rendering
                         #endregion
 
                         #region Hex
-                        if (!ctx.styles.numberAllHexes && 
+                        if (!ctx.styles.numberAllHexes &&
                             ctx.styles.worldDetails.HasFlag(WorldDetails.Hex))
                         {
                             string hex;
@@ -1134,7 +1149,7 @@ namespace Maps.Rendering
                             if (isPlaceholder)
                             {
                                 DrawWorldLabel(ctx, ctx.styles.placeholder.textBackgroundStyle, solidBrush, ctx.styles.placeholder.textColor, ctx.styles.placeholder.position, ctx.styles.placeholder.Font, ctx.styles.placeholder.content);
-                            } 
+                            }
                             else if (world.Size <= 0)
                             {
                                 const float scaleX = 1.5f;
@@ -1285,7 +1300,7 @@ namespace Maps.Rendering
                         ctx.graphics.DrawRectangle(brush, position.X - size.Width / 2, position.Y - size.Height / 2, size.Width, size.Height);
                     }
                     break;
-             
+
                 case TextBackgroundStyle.Outline:
                 case TextBackgroundStyle.Shadow:
                     {
@@ -1330,7 +1345,7 @@ namespace Maps.Rendering
                 XSolidBrush solidBrush = new XSolidBrush();
 
                 ctx.graphics.SmoothingMode = XSmoothingMode.AntiAlias;
-                
+
                 foreach (Sector sector in ctx.selector.Sectors)
                 {
                     solidBrush.Color = ctx.styles.microBorders.textColor;
@@ -1350,7 +1365,7 @@ namespace Maps.Rendering
                             if (border.WrapLabel)
                                 text = r.Replace(text, "\n");
                                 //text = text.Replace(' ', '\n');
-                            
+
                             RenderUtil.DrawLabel(ctx.graphics, text, labelPos, ctx.styles.microBorders.Font, solidBrush, ctx.styles.microBorders.textStyle);
                         }
                     }
@@ -1407,7 +1422,7 @@ namespace Maps.Rendering
                         PointF startPoint = Astrometrics.HexToCenter(Astrometrics.LocationToCoordinates(startLocation));
                         PointF endPoint = Astrometrics.HexToCenter(Astrometrics.LocationToCoordinates(endLocation));
 
-                        // If drawing dashed lines twice and the start/end are swapped the 
+                        // If drawing dashed lines twice and the start/end are swapped the
                         // dashes don't overlap correctly. So "sort" the points.
                         if ((startPoint.X > endPoint.X) ||
                             (startPoint.X == endPoint.X) && (startPoint.Y > endPoint.Y))
@@ -1504,7 +1519,7 @@ namespace Maps.Rendering
                         Color? borderColor = border.Color;
                         SectorStylesheet.StyleResult ssr = sector.ApplyStylesheet("border", border.Allegiance);
                         borderColor = borderColor ?? ssr.GetColor("color") ?? ctx.styles.microBorders.pen.color;
-                        
+
                         if (ctx.styles.grayscale ||
                             !ColorUtil.NoticeableDifference(borderColor.Value, ctx.styles.backgroundColor))
                         {
@@ -1543,7 +1558,7 @@ namespace Maps.Rendering
                                     // TODO: Investigate DrawClosedCurve to handle endings
                                     // Would need to have path computer tell whether
                                     // or not the path was actually a closed loop
-                                    // Can do it by clipping borders to sector, but that loses 
+                                    // Can do it by clipping borders to sector, but that loses
                                     // bottom/right overlaps
                                     ctx.graphics.DrawCurve(pen, curve, 0.6f);
                                 }
