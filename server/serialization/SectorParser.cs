@@ -196,27 +196,41 @@ namespace Maps.Serialization
         private const string STAR = @"(D|BD|[OBAFGKM][0-9]\x20(?:Ia|Ib|II|III|IV|V|VI))";
         private static readonly Regex STARS_REGEX = new Regex("^(|" + STAR + @"(?:\x20" + STAR + @")*)$");
 
-        private static string Check(StringDictionary dict, string key, Regex regex)
+        [Flags]
+        private enum CheckOptions
+        {
+            EmptyIfDash = 1
+        };
+
+        private static string Check(StringDictionary dict, string key, Regex regex, CheckOptions options = 0)
         {
 #if DEBUG
             if (!regex.IsMatch(dict[key]))
                 throw new Exception(String.Format("Unexpected value for {0}: '{1}'", key, dict[key]));
 #endif
-            return dict[key];
+            string value = dict[key];
+
+            if (options.HasFlag(CheckOptions.EmptyIfDash))
+                value = EmptyIfDash(value);
+
+            return value;
         }
 
-        private static string Check(StringDictionary dict, IEnumerable<string> keys, Regex regex = null)
+        private static string Check(StringDictionary dict, IEnumerable<string> keys, Regex regex = null, CheckOptions options = 0)
         {
-            return Check(dict, keys, value => regex == null || regex.IsMatch(value));
+            return Check(dict, keys, value => regex == null || regex.IsMatch(value), options);
         }
 
-        private static string Check(StringDictionary dict, IEnumerable<string> keys, Func<string, bool> validate)
+        private static string Check(StringDictionary dict, IEnumerable<string> keys, Func<string, bool> validate, CheckOptions options = 0)
         {
             foreach (var key in keys)
             {
                 if (!dict.ContainsKey(key))
                     continue;
                 string value = dict[key];
+
+                if (options.HasFlag(CheckOptions.EmptyIfDash))
+                    value = EmptyIfDash(value);
 #if DEBUG
                 if (!validate(value))
                     throw new Exception(String.Format("Unexpected value for {0}: '{1}'", key, value));
@@ -238,9 +252,9 @@ namespace Maps.Serialization
                 world.Importance = Check(dict, new string[] { "{Ix}", "{ Ix }", "Ix" });
                 world.Economic = Check(dict, new string[] { "(Ex)", "( Ex )", "Ex" });
                 world.Cultural = Check(dict, new string[] { "[Cx]", "[ Cx ]", "Cx" });
-                world.Nobility = EmptyIfDash(Check(dict, new string[] { "N", "Nobility" }, NOBILITY_REGEX));
-                world.Bases = EmptyIfDash(Check(dict, new string[] { "B", "Bases" }, BASES_REGEX));
-                world.Zone = EmptyIfDash(Check(dict, new string[] { "Z", "Zone" }, ZONE_REGEX));
+                world.Nobility = Check(dict, new string[] { "N", "Nobility" }, NOBILITY_REGEX, CheckOptions.EmptyIfDash);
+                world.Bases = Check(dict, new string[] { "B", "Bases" }, BASES_REGEX, CheckOptions.EmptyIfDash);
+                world.Zone = Check(dict, new string[] { "Z", "Zone" }, ZONE_REGEX, CheckOptions.EmptyIfDash);
                 world.PBG = Check(dict, "PBG", PBG_REGEX);
                 world.Allegiance = Check(dict, new string[] { "A", "Allegiance" }, SecondSurvey.IsKnownT5Allegiance);
                 world.Stellar = Check(dict, new string[] { "Stellar", "Stars", "Stellar Data" }, STARS_REGEX);
