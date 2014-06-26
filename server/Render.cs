@@ -528,33 +528,16 @@ namespace Maps.Rendering
                                 break;
 
                             case MicroBorderStyle.Hex:
-                                // TODO: use RenderUtil.(Square|Hex)Edges(X|Y) arrays
-                                const double hexEdge = 0.18f; // TODO: Need to compute this (should be cos(60), inverse-scaled)
-
-                                // hexEdge should be Math.Tan(Math.PI/6) / 4 / Astrometrics.ParsecScaleX = 0.1666
-/*
-            1
-    +-*------------*x+
-    |/              \|
-    /                \
-   /|                |\
-  * |                +x*  x = tan( pi / 6 ) / 4
-   \|                |/
-    \                /
-    |\              /|
-    +-*------------*-+
-*/
-
                                 XPoint[] points = new XPoint[4];
                                 for (int px = hx - parsecSlop; px < hx + hw + parsecSlop; px++)
                                 {
                                     double yOffset = ((px % 2) != 0) ? 0.0 : 0.5;
                                     for (int py = hy - parsecSlop; py < hy + hh + parsecSlop; py++)
                                     {
-                                        points[0] = new XPoint(px + -hexEdge, py + 0.5 + yOffset);
-                                        points[1] = new XPoint(px + hexEdge, py + 1.0 + yOffset);
-                                        points[2] = new XPoint(px + 1.0 - hexEdge, py + 1.0 + yOffset);
-                                        points[3] = new XPoint(px + 1.0 + hexEdge, py + 0.5 + yOffset);
+                                        points[0] = new XPoint(px + -RenderUtil.HEX_EDGE, py + 0.5 + yOffset);
+                                        points[1] = new XPoint(px + RenderUtil.HEX_EDGE, py + 1.0 + yOffset);
+                                        points[2] = new XPoint(px + 1.0 - RenderUtil.HEX_EDGE, py + 1.0 + yOffset);
+                                        points[3] = new XPoint(px + 1.0 + RenderUtil.HEX_EDGE, py + 0.5 + yOffset);
                                         ctx.graphics.DrawLines(pen, points);
                                     }
                                 }
