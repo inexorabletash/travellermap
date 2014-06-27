@@ -1,6 +1,24 @@
 (function(global) {
   'use strict';
 
+  var $ = function(s) { return document.querySelector(s); };
+
+  function fetch(url) {
+    return new Promise(function(resolve, reject) {
+      var xhr = new XMLHttpRequest(), async = true;
+      xhr.open('GET', url, async);
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState !== XMLHttpRequest.DONE)
+          return;
+        if (xhr.status === 200)
+          resolve(xhr.responseText);
+        else
+          reject(xhr.statusText);
+      };
+      xhr.send();
+    });
+  }
+
   function fromEHex(c) {
     return '0123456789ABCDEFGHJKLMNPQRSTUVWXYZ'.indexOf(c.toUpperCase());
   }
@@ -413,7 +431,6 @@
     world.Worlds = Number(world.Worlds);
     world.OtherWorlds = world.Worlds - 1 - world.PBG.Belts - world.PBG.GG;
 
-    var $ = function(s) { return document.querySelector(s); };
     var template = Handlebars.compile($('#world-template').innerHTML);
     $('#world-data').innerHTML = template(world);
 
@@ -435,30 +452,11 @@
   }
 
   function renderNeighborhood(data) {
-    var $ = function(s) { return document.querySelector(s); };
     var template = Handlebars.compile($('#neighborhood-template').innerHTML);
     $('#neighborhood-data').innerHTML = template(data);
   }
 
   window.addEventListener('DOMContentLoaded', function() {
-    var $ = function(s) { return document.querySelector(s); };
-
-    function fetch(url) {
-      return new Promise(function(resolve, reject) {
-        var xhr = new XMLHttpRequest();
-        var async = true;
-        xhr.open('GET', url, true);
-        xhr.onreadystatechange = function() {
-          if (xhr.readyState !== XMLHttpRequest.DONE) return;
-          if (xhr.status === 200)
-            resolve(xhr.responseText);
-          else
-            reject(xhr.statusText);
-        };
-        xhr.send();
-      });
-    }
-
     var query = (function(s) {
       var q = {};
       if (s) s.substring(1).split('&').forEach(function(pair) {
@@ -471,7 +469,8 @@
     var sector = query['sector'] || 'spin';
     var hex = query['hex'] || '1910';
 
-    var prefix = (false && location.hostname === 'localhost') ? '' : '//travellermap.com';
+    var prefix = (location.hostname === 'localhost' && location.pathname.indexOf('~') !== -1) ?
+          'http://travellermap.com' : '';
 
     fetch(prefix + '/data/'+sector+'/'+hex+'?accept=application/json').then(function(data) {
       renderWorld(JSON.parse(data));
