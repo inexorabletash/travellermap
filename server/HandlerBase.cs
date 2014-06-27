@@ -110,6 +110,7 @@ namespace Maps
 
         public static void SendError(HttpResponse response, int code, string description, string message)
         {
+            response.TrySkipIisCustomErrors = true;
             response.StatusCode = code;
             response.StatusDescription = description;
             response.ContentType = System.Net.Mime.MediaTypeNames.Text.Plain;

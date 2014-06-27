@@ -36,13 +36,13 @@ namespace Maps.API
                 }
                 catch (Exception ex)
                 {
-                    SendError(context.Response, 400, "Invalid request", ex.Message);
+                    SendError(context.Response, 400, "Bad Request", ex.Message);
                     return;
                 }
 
                 if (sector == null)
                 {
-                    SendError(context.Response, 400, "Invalid request", "Either file or data must be supplied in the POST data.");
+                    SendError(context.Response, 400, "Bad Request", "Either file or data must be supplied in the POST data.");
                     return;
                 }
 

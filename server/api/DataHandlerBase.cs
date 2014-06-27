@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Mime;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Xml.Serialization;
 
@@ -53,6 +54,13 @@ namespace Maps.API
         {
             SendResult(context, this, o, encoding);
         }
+            
+        private static readonly Regex simpleJSIdentifierRegex = new Regex(@"^[A-Za-z_][A-Za-z0-9_]*$", RegexOptions.Compiled);
+        public static bool IsSimpleJSIdentifier(string s)
+        {
+            return simpleJSIdentifierRegex.IsMatch(s);
+        }
+
 
         public static void SendResult(HttpContext context, ITypeAccepter accepter, object o, Encoding encoding = null)
         {
@@ -61,6 +69,12 @@ namespace Maps.API
 
             if (context.Request.QueryString["jsonp"] != null)
             {
+                if (!IsSimpleJSIdentifier(context.Request.QueryString["jsonp"]))
+                {
+                    SendError(context.Response, 403, "Forbidden", "The jsonp parameter must be a simple script identifier.");
+                    return;
+                }
+
                 SendJson(context, o);
                 return;
             }
