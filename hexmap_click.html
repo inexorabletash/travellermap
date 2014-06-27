@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<img id="jmap" src="test/ref1.png">
+<script src="hexmap_click.js"></script>
+<script>
+
+var img = document.querySelector('#jmap');
+img.onmousemove = function(e) {
+  var res = onjmapclick(e,
+                        3, // jump
+                        64, // scale
+                        -110, -70); // worldspace coords
+  console.log(res);
+};
+</script>

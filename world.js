@@ -487,10 +487,62 @@
       renderNeighborhood(JSON.parse(data));
     });
 
+
+    var JUMP = 2;
+    var SCALE = 48;
+
     var mapurl = prefix + '/api/jumpmap?' + coords + '&jump=2&scale=48&border=0';
+    var mapurl = prefix + '/data/' + sector + '/' + hex
+          + '/jump/' + JUMP + '/image?scale=' + SCALE + '&border=0';
+
     if (window.devicePixelRatio > 1) mapurl += '&dpr=' + window.devicePixelRatio;
     $('#jumpmap').src = mapurl;
-    // TODO: Add click event handler for navigation.
+
+    fetch(prefix + '/api/coordinates?sector=' + sector + '/' + hex, function(data) {
+      var coords = JSON.parse(data);
+      $('#jumpmap').addEventListener('click', function(event) {
+        var result = onjmapclick(event, JUMP, SCALE, coords.x, coords.y);
+        if (result) {
+          fetch(prefix + '/api/coordinates?x=' + sector + '/' + hex, function(data) {
+
+          });
+        }
+      });
+    });
   });
+
+
+  // event = event
+  // jump = size of jump map (e.g. 2)
+  // scale = pixels/parsec (e.g. 48)
+  // x, y = world space coords
+  // returns {x: x, y: y} world space coords, or null
+  function onjmapclick(event, jump, scale, x, y) {
+    // TODO: Reject hexes greater than J distance?
+
+    var rect = event.target.getBoundingClientRect();
+    var w = rect.right - rect.left;
+    var h = rect.bottom - rect.top;
+
+    var scaleX = Math.cos(Math.PI / 6) * scale, scaleY = scale;
+    var dx = ((event.clientX  - rect.left - w / 2) / scaleX);
+    var dy = ((event.clientY - rect.top - h / 2) / scaleY);
+
+    // TODO: Verify this for even/odd hexes (might be -= in one case)
+
+    function p(n) { return Math.abs(Math.round(n) - n); }
+    var THRESHOLD = 0.4;
+
+    if (p(dx) > THRESHOLD) return null;
+    dx = Math.round(dx);
+    if (x % 2)
+      dy += (dx % 2) ? 0 : 0.5;
+    else
+      dy += (dx % 2) ? 0.5 : 0;
+    if (p(dy) > THRESHOLD) return null;
+    dy = Math.round(dy);
+
+    return { x: x + dx, y: y + dy };
+  }
 
 }(this));
