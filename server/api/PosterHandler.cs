@@ -74,7 +74,7 @@ namespace Maps.API
                     // TODO: Zhodani provinces
 
                     default:
-                        SendError(context.Response, 404, "Not Found", "Unknown domain: " + domain);
+                        SendError(context.Response, 404, "Not Found", String.Format("Unknown domain: {0}", domain));
                         return;
                 }
 
@@ -138,7 +138,7 @@ namespace Maps.API
                     string sectorName = GetStringOption(context, "sector");
                     if (sectorName == null)
                     {
-                        SendError(context.Response, 404, "Not Found", "No sector specified.");
+                        SendError(context.Response, 400, "Bad Request", "No sector specified.");
                         return;
                     }
 
@@ -183,7 +183,7 @@ namespace Maps.API
                         case "gamma": index = 2; quadrant = "Gamma"; break;
                         case "delta": index = 3; quadrant = "Delta"; break;
                         default:
-                            SendError(context.Response, 404, "Not Found", String.Format("The specified quadrant '{0}' was not found.", quadrant));
+                            SendError(context.Response, 400, "Bad Request", String.Format("The specified quadrant '{0}' is invalid.", quadrant));
                             return;
                     }
     

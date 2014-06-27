@@ -59,7 +59,7 @@ namespace Maps.API
             }
             else
             {
-                SendError(context.Response, 404, "Not Found", "No sector specified.");
+                SendError(context.Response, 400, "Bad Request", "No sector specified.");
                 return;
             }
 

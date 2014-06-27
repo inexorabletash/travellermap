@@ -16,7 +16,7 @@ namespace Maps.Admin
             if (context.Request["key"] == System.Configuration.ConfigurationManager.AppSettings["AdminKey"])
                 return true;
 
-            SendError(context.Response, 403, "Access Denied", "Access Denied");
+            SendError(context.Response, 403, "Forbidden", "Access Denied");
             return false;
         }
 

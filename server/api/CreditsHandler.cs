@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Xml.Serialization;
@@ -26,7 +27,7 @@ namespace Maps.API
                 Sector sec = map.FromName(sectorName);
                 if (sec == null)
                 {
-                    SendError(context.Response, 404, "Not Found", "Sector not found.");
+                    SendError(context.Response, 404, "Not Found", String.Format("The specified sector '{0}' was not found.", sectorName));
                     return;
                 }
 
