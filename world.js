@@ -19,6 +19,12 @@
     });
   }
 
+  function makeQuery(obj) {
+    return Object.keys(obj).map(function(key) {
+      return encodeURIComponent(key) + '=' + encodeURIComponent(obj[key]);
+    }).join('&');
+  }
+
   function fromEHex(c) {
     return '0123456789ABCDEFGHJKLMNPQRSTUVWXYZ'.indexOf(c.toUpperCase());
   }
@@ -33,7 +39,7 @@
     C: 'Routine',
     D: 'Poor',
     E: 'Frontier Installation',
-    X: 'None',
+    X: 'None or Unknown',
     // Spaceports
     F: 'Good',
     G: 'Poor',
@@ -309,20 +315,20 @@
   ];
 
   var BASE_TABLE = {
-    C: ['Corsair Base'],
-    D: ['Naval Depot'],
-    E: ['Embassy Center'],
-    K: ['Naval Base'],
-    L: ['Naval Base'],
-    M: ['Military Base'],
-    N: ['Naval Base'],
-    O: ['Naval Outpost'],
-    R: ['Clan Base'],
-    S: ['Scout Base'],
-    T: ['Tlauku Base'],
-    W: ['Scout Way Station'],
-    X: ['Relay Station'],
-    Z: ['Naval/Military Base']
+    C: 'Corsair Base',
+    D: 'Naval Depot',
+    E: 'Embassy Center',
+    K: 'Naval Base',
+    L: 'Naval Base',
+    M: 'Military Base',
+    N: 'Naval Base',
+    O: 'Naval Outpost',
+    R: 'Clan Base',
+    S: 'Scout Base',
+    T: 'Tlauku Base',
+    W: 'Scout Way Station',
+    X: 'Relay Station',
+    Z: 'Naval/Military Base'
   };
 
   function renderWorld(data) {
@@ -471,53 +477,53 @@
 
     var coords;
     if ('sector' in query && 'hex' in query) {
-      coords = 'sector=' + encodeURIComponent(query['sector'])
-        + '&hex=' + encodeURIComponent(query['hex']);
+      coords = {sector: query.sector, hex: query.hex};
     } else if ('x' in query && 'y' in query) {
-      coords = 'x=' + encodeURIComponent(query['x']) + '&y=' + encodeURIComponent(query['y']);
+      coords = {x: query.x, y: query.y};
     } else {
-      coords = 'sector=spin&hex=1910';
+      coords = {sector: 'spin', hex: '1910'};
     }
 
-    fetch(prefix + '/api/jumpworlds?' + coords + '&jump=0').then(function(data) {
-      renderWorld(JSON.parse(data));
-    });
-
-    fetch(prefix + '/api/jumpworlds?' + coords + '&jump=2').then(function(data) {
-      renderNeighborhood(JSON.parse(data));
-    });
-
-
-    var JUMP = 2;
-    var SCALE = 48;
-
-    var mapurl = prefix + '/api/jumpmap?' + coords + '&jump=2&scale=48&border=0';
-    var mapurl = prefix + '/data/' + sector + '/' + hex
-          + '/jump/' + JUMP + '/image?scale=' + SCALE + '&border=0';
-
-    if (window.devicePixelRatio > 1) mapurl += '&dpr=' + window.devicePixelRatio;
-    $('#jumpmap').src = mapurl;
-
-    fetch(prefix + '/api/coordinates?sector=' + sector + '/' + hex, function(data) {
+    fetch(prefix + '/api/coordinates?' + makeQuery(coords)).then(function(data) {
       var coords = JSON.parse(data);
-      $('#jumpmap').addEventListener('click', function(event) {
-        var result = onjmapclick(event, JUMP, SCALE, coords.x, coords.y);
-        if (result) {
-          fetch(prefix + '/api/coordinates?x=' + sector + '/' + hex, function(data) {
 
-          });
+      fetch(prefix + '/api/jumpworlds?' + makeQuery({x: coords.x, y: coords.y, jump: 0}))
+        .then(function(data) {
+          renderWorld(JSON.parse(data));
+          // TODO: Use history API to prettify URL
+        });
+
+      var JUMP = 2;
+      var SCALE = 48;
+
+      fetch(prefix + '/api/jumpworlds?' + makeQuery({x: coords.x, y: coords.y, jump: JUMP}))
+        .then(function(data) {
+          renderNeighborhood(JSON.parse(data));
+        });
+
+      var mapParams = {
+        x: coords.x,
+        y: coords.y,
+        jump: JUMP,
+        scale: SCALE,
+        border: 0};
+      if (window.devicePixelRatio > 1)
+        mapParams.dpr = window.devicePixelRatio;
+      $('#jumpmap').src = prefix + '/api/jumpmap?' + makeQuery(mapParams);
+
+      $('#jumpmap').addEventListener('click', function(event) {
+        var result = jmapToCoords(event, JUMP, SCALE, coords.x, coords.y);
+        if (result) {
+          location.search = '?x=' + result.x + '&y=' + result.y;
         }
       });
+
+    }).catch(function(reason) {
+      // TODO: Display error
     });
   });
 
-
-  // event = event
-  // jump = size of jump map (e.g. 2)
-  // scale = pixels/parsec (e.g. 48)
-  // x, y = world space coords
-  // returns {x: x, y: y} world space coords, or null
-  function onjmapclick(event, jump, scale, x, y) {
+  function jmapToCoords(event, jump, scale, x, y) {
     // TODO: Reject hexes greater than J distance?
 
     var rect = event.target.getBoundingClientRect();
@@ -528,17 +534,15 @@
     var dx = ((event.clientX  - rect.left - w / 2) / scaleX);
     var dy = ((event.clientY - rect.top - h / 2) / scaleY);
 
-    // TODO: Verify this for even/odd hexes (might be -= in one case)
-
     function p(n) { return Math.abs(Math.round(n) - n); }
     var THRESHOLD = 0.4;
 
     if (p(dx) > THRESHOLD) return null;
     dx = Math.round(dx);
     if (x % 2)
-      dy += (dx % 2) ? 0 : 0.5;
-    else
       dy += (dx % 2) ? 0.5 : 0;
+    else
+      dy -= (dx % 2) ? 0.5 : 0;
     if (p(dy) > THRESHOLD) return null;
     dy = Math.round(dy);
 
