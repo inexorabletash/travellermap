@@ -216,7 +216,7 @@ namespace Maps.Serialization
                 writer.Write("border ");
                 writer.Write(border.PathString);
 
-                SectorStylesheet.StyleResult ssr = sector.ApplyStylesheet("border", alleg.T5Code);
+                SectorStylesheet.StyleResult ssr = sector.ApplyStylesheet("border", alleg == null ? null : alleg.T5Code);
                 Color? color = border.Color ?? ssr.GetColor("color");
                 if (color.HasValue)
                 {

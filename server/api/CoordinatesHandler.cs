@@ -19,7 +19,7 @@ namespace Maps.API
 
             Location loc = new Location(map.FromName("Spinward Marches").Location, 1910);
 
-            // Accept either sector [& hex] or sx,sy [& hx,hy]
+            // Accept either sector [& hex] or sx,sy [& hx,hy] or x,y
             if (HasOption(context, "sector"))
             {
                 string sectorName = GetStringOption(context, "sector");
@@ -41,9 +41,15 @@ namespace Maps.API
                 int hy = GetIntOption(context, "hy", 0);
                 loc = new Location(map.FromLocation(sx, sy).Location, hx * 100 + hy);
             }
+            else if (HasOption(context, "x") && HasOption(context, "y"))
+            {
+                int x = GetIntOption(context, "x", 0);
+                int y = GetIntOption(context, "y", 0);
+                loc = Astrometrics.CoordinatesToLocation(x, y);
+            }
             else
             {
-                SendError(context.Response, 400, "Bad Request", "Must specify either sector name (and optional hex) or sx, sy (and optional hx, hy).");
+                SendError(context.Response, 400, "Bad Request", "Must specify either sector name (and optional hex) or sx, sy (and optional hx, hy), or x, y (world-space coordinates).");
                 return;
             }
 
