@@ -71,7 +71,7 @@ namespace Maps.API
             {
                 if (!IsSimpleJSIdentifier(context.Request.QueryString["jsonp"]))
                 {
-                    SendError(context.Response, 403, "Invalid JSONP identifier", "The jsonp parameter must be a simple script identifier.");
+                    SendError(context.Response, 403, "Forbidden", "The jsonp parameter must be a simple script identifier.");
                     return;
                 }
 
