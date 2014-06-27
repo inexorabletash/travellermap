@@ -402,7 +402,8 @@
       switch (zone) {
       case 'A': return { rule: 'Caution', rating: 'Amber'};
       case 'R': return { rule: 'Restricted', rating: 'Red'};
-      case 'B': return { rule: 'Technologically Elevated Dictatorship', rating: 'c/o Coalition Data Services'};
+      case 'B': return { rule: 'Technologically Elevated Dictatorship',
+                         rating: 'c/o Coalition Data Services'};
       case 'F': return { rule: 'Forbidden', rating: 'c/o Consulate Data Services'};
       case 'U': return { rule: 'Unabsorbed', rating: 'c/o Consulate Data Services'};
       default: return { rule: 'No Restrictions', rating: 'Green'};
@@ -416,11 +417,13 @@
     var template = Handlebars.compile($('#world-template').innerHTML);
     $('#world-data').innerHTML = template(world);
 
-    document.title = Handlebars.compile('{{{Name}}} ({{{Sector}}} {{{Hex}}}) - World Data Sheet')(world);
+    document.title = Handlebars.compile(
+      '{{{Name}}} ({{{Sector}}} {{{Hex}}}) - World Data Sheet')(world);
 
     $('#world-image').classList.add('Hyd' + world.UWP.Hyd);
     $('#world-image').classList.add('Siz' + world.UWP.Siz);
-    $('#world-image .disc').src = 'res/Candy/' + (world.UWP.Siz === '0' ? 'Belt' : 'Hyd' + world.UWP.Hyd) + '.png';
+    $('#world-image .disc').src = 'res/Candy/' +
+      (world.UWP.Siz === '0' ? 'Belt' : 'Hyd' + world.UWP.Hyd) + '.png';
     $('#world-image').style.display = 'block';
 
     // Try loading pre-rendered; if it works, use it instead.
@@ -440,18 +443,20 @@
   window.addEventListener('DOMContentLoaded', function() {
     var $ = function(s) { return document.querySelector(s); };
 
-    function fetch(url, callback, errback) {
-      var xhr = new XMLHttpRequest();
-      var async = true;
-      xhr.open('GET', url, true);
-      xhr.onreadystatechange = function() {
-        if (xhr.readyState !== XMLHttpRequest.DONE) return;
-        if (xhr.status === 200)
-          callback(xhr.responseText);
-        else
-          errback(xhr.responseText);
-      };
-      xhr.send();
+    function fetch(url) {
+      return new Promise(function(resolve, reject) {
+        var xhr = new XMLHttpRequest();
+        var async = true;
+        xhr.open('GET', url, true);
+        xhr.onreadystatechange = function() {
+          if (xhr.readyState !== XMLHttpRequest.DONE) return;
+          if (xhr.status === 200)
+            resolve(xhr.responseText);
+          else
+            reject(xhr.statusText);
+        };
+        xhr.send();
+      });
     }
 
     var query = (function(s) {
@@ -466,12 +471,12 @@
     var sector = query['sector'] || 'spin';
     var hex = query['hex'] || '1910';
 
-    var prefix = (location.hostname === 'localhost') ? '' : '//travellermap.com';
+    var prefix = (false && location.hostname === 'localhost') ? '' : '//travellermap.com';
 
-    fetch(prefix + '/data/'+sector+'/'+hex+'?accept=application/json', function(data) {
+    fetch(prefix + '/data/'+sector+'/'+hex+'?accept=application/json').then(function(data) {
       renderWorld(JSON.parse(data));
     });
-    fetch(prefix + '/data/'+sector+'/'+hex+'/jump/2?accept=application/json', function(data) {
+    fetch(prefix + '/data/'+sector+'/'+hex+'/jump/2?accept=application/json').then(function(data) {
       renderNeighborhood(JSON.parse(data));
     });
     var mapurl = prefix + '/data/'+sector+'/'+hex+'/jump/2/image?scale=48&border=0';
