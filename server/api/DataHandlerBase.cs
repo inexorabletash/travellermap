@@ -54,7 +54,7 @@ namespace Maps.API
         {
             SendResult(context, this, o, encoding);
         }
-
+            
         private static readonly Regex simpleJSIdentifierRegex = new Regex(@"^[A-Za-z_][A-Za-z0-9_]*$", RegexOptions.Compiled);
         public static bool IsSimpleJSIdentifier(string s)
         {
@@ -71,7 +71,7 @@ namespace Maps.API
             {
                 if (!IsSimpleJSIdentifier(context.Request.QueryString["jsonp"]))
                 {
-                    SendError(context.Response, 400, "Invalid JSONP identifier", "The jsonp parameter must be a simple script identifier.");
+                    SendError(context.Response, 403, "Invalid JSONP identifier", "The jsonp parameter must be a simple script identifier.");
                     return;
                 }
 
