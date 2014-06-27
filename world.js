@@ -466,19 +466,28 @@
       return q;
     }(document.location.search));
 
-    var sector = query['sector'] || 'spin';
-    var hex = query['hex'] || '1910';
-
     var prefix = (location.hostname === 'localhost' && location.pathname.indexOf('~') !== -1) ?
           'http://travellermap.com' : '';
 
-    fetch(prefix + '/data/'+sector+'/'+hex+'?accept=application/json').then(function(data) {
+    var coords;
+    if ('sector' in query && 'hex' in query) {
+      coords = 'sector=' + encodeURIComponent(query['sector'])
+        + '&hex=' + encodeURIComponent(query['hex']);
+    } else if ('x' in query && 'y' in query) {
+      coords = 'x=' + encodeURIComponent(query['x']) + '&y=' + encodeURIComponent(query['y']);
+    } else {
+      coords = 'sector=spin&hex=1910';
+    }
+
+    fetch(prefix + '/api/jumpworlds?' + coords + '&jump=0').then(function(data) {
       renderWorld(JSON.parse(data));
     });
-    fetch(prefix + '/data/'+sector+'/'+hex+'/jump/2?accept=application/json').then(function(data) {
+
+    fetch(prefix + '/api/jumpworlds?' + coords + '&jump=2').then(function(data) {
       renderNeighborhood(JSON.parse(data));
     });
-    var mapurl = prefix + '/data/'+sector+'/'+hex+'/jump/2/image?scale=48&border=0';
+
+    var mapurl = prefix + '/api/jumpmap?' + coords + '&jump=2&scale=48&border=0';
     if (window.devicePixelRatio > 1) mapurl += '&dpr=' + window.devicePixelRatio;
     $('#jumpmap').src = mapurl;
     // TODO: Add click event handler for navigation.
