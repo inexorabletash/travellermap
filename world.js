@@ -424,13 +424,15 @@
 
     world.Zone = (function(zone) {
       switch (zone) {
-      case 'A': return { rule: 'Caution', rating: 'Amber'};
-      case 'R': return { rule: 'Restricted', rating: 'Red'};
+      case 'A': return { rule: 'Caution', rating: 'Amber', className: 'amber'};
+      case 'R': return { rule: 'Restricted', rating: 'Red', className: 'red'};
       case 'B': return { rule: 'Technologically Elevated Dictatorship',
-                         rating: 'c/o Coalition Data Services'};
-      case 'F': return { rule: 'Forbidden', rating: 'c/o Consulate Data Services'};
-      case 'U': return { rule: 'Unabsorbed', rating: 'c/o Consulate Data Services'};
-      default: return { rule: 'No Restrictions', rating: 'Green'};
+                         rating: 'c/o Coalition Data Services', className: 'ted'};
+      case 'F': return { rule: 'Forbidden', rating: 'c/o Consulate Data Services',
+                         className: 'forbidden'};
+      case 'U': return { rule: 'Unabsorbed', rating: 'c/o Consulate Data Services',
+                         className: 'unabsorbed'};
+      default: return { rule: 'No Restrictions', rating: 'Green', className: 'green'};
       }
     }(world.Zone));
 
@@ -443,6 +445,11 @@
     document.title = Handlebars.compile(
       '{{{Name}}} ({{{Sector}}} {{{Hex}}}) - World Data Sheet')(world);
 
+    if ('history' in window && 'replaceState' in window.history) {
+      var url = window.location.href.replace(/\?.*$/, '') + '?sector=' + world.Sector + '&hex=' + world.Hex;
+      window.history.replaceState(null, document.title, url);
+    }
+
     $('#world-image').classList.add('Hyd' + world.UWP.Hyd);
     $('#world-image').classList.add('Siz' + world.UWP.Siz);
     $('#world-image .disc').src = 'res/Candy/' +
@@ -450,7 +457,7 @@
     $('#world-image').style.display = 'block';
 
     // Try loading pre-rendered; if it works, use it instead.
-    var img = new Image();
+    var img = document.createElement('img');
     img.src = 'res/Candy/worlds/' + encodeURIComponent(world.Sector + ' ' + world.Hex) + '.png';
     img.onload = function() {
       $('#world-image .disc').src = img.src;
@@ -472,7 +479,8 @@
       return q;
     }(document.location.search));
 
-    var prefix = (location.hostname === 'localhost' && location.pathname.indexOf('~') !== -1) ?
+    var prefix = (window.location.hostname === 'localhost'
+                  && window.location.pathname.indexOf('~') !== -1) ?
           'http://travellermap.com' : '';
 
     var coords;
@@ -486,38 +494,36 @@
 
     fetch(prefix + '/api/coordinates?' + makeQuery(coords)).then(function(data) {
       var coords = JSON.parse(data);
-
-      fetch(prefix + '/api/jumpworlds?' + makeQuery({x: coords.x, y: coords.y, jump: 0}))
-        .then(function(data) {
-          renderWorld(JSON.parse(data));
-          // TODO: Use history API to prettify URL
-        });
-
       var JUMP = 2;
       var SCALE = 48;
 
-      fetch(prefix + '/api/jumpworlds?' + makeQuery({x: coords.x, y: coords.y, jump: JUMP}))
-        .then(function(data) {
-          renderNeighborhood(JSON.parse(data));
-        });
+      return Promise.all([
+        fetch(prefix + '/api/jumpworlds?' + makeQuery({x: coords.x, y: coords.y, jump: 0}))
+          .then(function(data) {
+            renderWorld(JSON.parse(data));
+          }),
+        fetch(prefix + '/api/jumpworlds?' + makeQuery({x: coords.x, y: coords.y, jump: JUMP}))
+          .then(function(data) {
+            renderNeighborhood(JSON.parse(data));
+          })
+          .then(function() {
+            var mapParams = {
+              x: coords.x,
+              y: coords.y,
+              jump: JUMP,
+              scale: SCALE,
+              border: 0};
+            if (window.devicePixelRatio > 1)
+              mapParams.dpr = window.devicePixelRatio;
+            $('#jumpmap').src = prefix + '/api/jumpmap?' + makeQuery(mapParams);
 
-      var mapParams = {
-        x: coords.x,
-        y: coords.y,
-        jump: JUMP,
-        scale: SCALE,
-        border: 0};
-      if (window.devicePixelRatio > 1)
-        mapParams.dpr = window.devicePixelRatio;
-      $('#jumpmap').src = prefix + '/api/jumpmap?' + makeQuery(mapParams);
-
-      $('#jumpmap').addEventListener('click', function(event) {
-        var result = jmapToCoords(event, JUMP, SCALE, coords.x, coords.y);
-        if (result) {
-          location.search = '?x=' + result.x + '&y=' + result.y;
-        }
-      });
-
+            $('#jumpmap').addEventListener('click', function(event) {
+              var result = jmapToCoords(event, JUMP, SCALE, coords.x, coords.y);
+              if (result)
+                window.location.search = '?x=' + result.x + '&y=' + result.y;
+            });
+          })
+      ]);
     }).catch(function(reason) {
       // TODO: Display error
     });

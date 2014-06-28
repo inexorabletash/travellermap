@@ -102,6 +102,9 @@ td { vertical-align: top; }
 .bases .base:last-child:after,
 .nobility .noble:last-child:after { content: ''; }
 
+.zone-amber { background-color: yellow; padding: 2px 20px; display: inline-block; }
+.zone-red { background-color: red; padding: 2px 20px; display: inline-block; }
+
 /* UWP Table */
 
 .uwp th { font-size: 9pt; text-align: left; }
@@ -214,33 +217,37 @@ td { vertical-align: top; }
 {{#Zone}}
 <table class="decode"><tr>
 <td>Travel Zone:
-<td><big>{{rule}}</big> <br> <small>Travellers' Aid Society Rating: {{rating}}</small>
+<td><big class="zone-{{className}}">{{rule}}</big> <br> <small>Travellers' Aid Society Rating: {{rating}}</small>
 </table>
 {{/Zone}}
 
 </script>
 
-
-
-
-<h2 style="margin-top: 0;">Jump-2 Neighborhood</h2>
-<table id="neighborhood">
-<tr>
-  <td><img id="jumpmap"></td>
-  <td><div class="uwp" id="neighborhood-data"></div></td>
-</tr>
-</table>
-
+<div id="neighborhood-data"></div>
 <script id="neighborhood-template" type="text/x-handlebars-template">
-<table class="uwp">
-<tr><th>Name<th>Hex<th>UWP<th>B<th>Remarks<th>Z<th>PBG<th>A<th>Stellar</tr>
-{{#Worlds}}
-<tr>
-<td><a href="?sector={{Sector}}&hex={{Hex}}">{{Name}}</a>
-<td><a href="?sector={{Sector}}&hex={{Hex}}">{{Hex}}</a>
-<td>{{UWP}}<td>{{Bases}}<td>{{Remarks}}<td>{{Zone}}<td>{{PBG}}<td>{{Allegiance}}<td>{{Stellar}}
-{{/Worlds}}
-</table>
+  <h2 style="margin-top: 0;">Jump-2 Neighborhood</h2>
+  <table id="neighborhood">
+    <tr>
+      <td><img id="jumpmap"></td>
+      <td><div class="uwp">
+          <table class="uwp">
+            <tr><th>Name<th>Hex<th>UWP<th>B<th>Remarks<th>Z<th>PBG<th>A<th>Stellar</tr>
+            {{#Worlds}}
+            <tr>
+              <td><a href="?sector={{Sector}}&hex={{Hex}}">{{Name}}</a>
+              <td><a href="?sector={{Sector}}&hex={{Hex}}">{{Hex}}</a>
+              <td>{{UWP}}
+              <td>{{Bases}}
+              <td>{{Remarks}}
+              <td>{{Zone}}
+              <td>{{PBG}}
+              <td>{{Allegiance}}
+              <td>{{Stellar}}
+            {{/Worlds}}
+          </table>
+      </div></td>
+    </tr>
+  </table>
 </script>
 
 <div style="text-align: center; font-size: 8pt;">
