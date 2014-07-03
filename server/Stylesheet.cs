@@ -184,6 +184,7 @@ namespace Maps.Rendering
         private const float SubsectorsMinScale = 8;
         private const float SubsectorNameMinScale = 24;
         private const float SubsectorNameMaxScale = 64;
+        private const float MegaLabelMaxScale = 1f / 4;
         private const float MacroWorldsMinScale = 1f / 2;
         private const float MacroWorldsMaxScale = 4;
         private const float MacroLabelMinScale = 1f / 2;
@@ -213,6 +214,8 @@ namespace Maps.Rendering
 
         public Stylesheet(double scale, MapOptions options, Style style)
         {
+            float onePixel = 1f / (float)scale;
+
             grayscale = false;
             subsectorGrid.visible = ((scale >= SubsectorsMinScale) && options.HasFlag(MapOptions.SubsectorGrid));
             sectorGrid.visible = ((scale >= SectorGridMinScale) && options.HasFlag(MapOptions.SectorGrid));
@@ -234,6 +237,8 @@ namespace Maps.Rendering
 
             macroRoutes.visible = (scale >= MacroRouteMinScale) && (scale <= MacroRouteMaxScale);
             macroNames.visible = (scale >= MacroLabelMinScale) && (scale <= MacroLabelMaxScale);
+            // TODO: Turn these on
+            megaNames.visible = false && scale <= MegaLabelMaxScale;
             showMicroNames = ((scale >= MicroNameMinScale) && ((options & MapOptions.NamesMask) != 0));
             capitals.visible = (scale >= MacroWorldsMinScale) && (scale <= MacroWorldsMaxScale);
 
@@ -339,6 +344,11 @@ namespace Maps.Rendering
             macroNames.smallFontInfo = new FontInfo(DEFAULT_FONT, 5f / 1.4f, XFontStyle.Regular);
             macroNames.mediumFontInfo = new FontInfo(DEFAULT_FONT, 6.5f / 1.4f, XFontStyle.Italic);
 
+            float megaNameScaleFactor = scale < 0.125 ? 30f : 10f;
+            megaNames.fontInfo = new FontInfo(DEFAULT_FONT, 24f * megaNameScaleFactor, XFontStyle.Bold);
+            megaNames.mediumFontInfo = new FontInfo(DEFAULT_FONT, 22f * megaNameScaleFactor, XFontStyle.Regular);
+            megaNames.smallFontInfo = new FontInfo(DEFAULT_FONT, 20f * megaNameScaleFactor, XFontStyle.Italic);
+
             capitals.fillColor = Color.Wheat;
             capitals.textColor = Color.Red;
             blueZone.pen.color = Color.Blue;
@@ -361,8 +371,6 @@ namespace Maps.Rendering
             worldNoWater.fillColor = Color.White;
             worldNoWater.pen.color = Color.Empty;
 
-            float onePixel = 1f / (float)scale;
-    
             parsecGrid.pen = new PenInfo(gridColor, onePixel);
             subsectorGrid.pen = new PenInfo(gridColor, onePixel * 2);
             sectorGrid.pen = new PenInfo(gridColor, (subsectorGrid.visible ? 4 : 2) * onePixel);
@@ -492,14 +500,17 @@ namespace Maps.Rendering
                         worlds.largeFontInfo.size = worlds.fontInfo.size * 1.25f;
 
                         macroNames.fontInfo.name = FONT_NAME;
+                        macroNames.mediumFontInfo.name = FONT_NAME;
+                        macroNames.smallFontInfo.name = FONT_NAME;
+                        megaNames.fontInfo.name = FONT_NAME;
+                        megaNames.mediumFontInfo.name = FONT_NAME;
+                        megaNames.smallFontInfo.name = FONT_NAME;
                         microBorders.smallFontInfo.name = FONT_NAME;
                         microBorders.largeFontInfo.name = FONT_NAME;
                         microBorders.fontInfo.name = FONT_NAME;
                         macroBorders.fontInfo.name = FONT_NAME;
                         macroRoutes.fontInfo.name = FONT_NAME;
                         capitals.fontInfo.name = FONT_NAME;
-                        macroNames.mediumFontInfo.name = FONT_NAME;
-                        macroNames.smallFontInfo.name = FONT_NAME;
                         macroBorders.smallFontInfo.name = FONT_NAME;
 
                         microBorders.textStyle.Uppercase = true;
@@ -624,6 +635,9 @@ namespace Maps.Rendering
 
             pseudoRandomStars.fillColor = foregroundColor;
 
+            megaNames.textColor = foregroundColor;
+            megaNames.textHighlightColor = highlightColor;
+
             macroNames.textColor = foregroundColor;
             macroNames.textHighlightColor = highlightColor;
 
@@ -742,6 +756,7 @@ namespace Maps.Rendering
         public StyleElement macroRoutes;
         public StyleElement microRoutes;
         public StyleElement macroBorders;
+        public StyleElement megaNames;
         public StyleElement macroNames;
         public StyleElement pseudoRandomStars;
         public StyleElement placeholder;

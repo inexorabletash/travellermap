@@ -18,9 +18,10 @@ namespace Maps.Rendering
     {
         private class MapLabel
         {
-            public MapLabel(string text, float x, float y) { this.text = text; this.position = new PointF(x, y); }
+            public MapLabel(string text, float x, float y, bool minor = false) { this.text = text; this.position = new PointF(x, y); this.minor = minor; }
             public readonly string text;
             public readonly PointF position;
+            public readonly bool minor;
         }
 
         // TODO: Move this to data file
@@ -33,6 +34,19 @@ namespace Maps.Rendering
             new MapLabel("Scattered\nClient States", 85, 65),
             new MapLabel("Vargr Enclaves", 95, -135),
             new MapLabel("Hive Young Worlds", 100, 128)
+        };
+
+        // TODO: Move this to data file
+        private static readonly MapLabel[] megaLabels = 
+        {
+            new MapLabel("Charted Space", -120, 400, true),
+            new MapLabel("Zhodani Core Expeditions", 0, -2000, true),
+            new MapLabel("Core Sophonts", 0, -10000),
+            new MapLabel("Abyssals", -12000, -8500),
+            new MapLabel("Denizens", -7000, -7000),
+            new MapLabel("Essaray", 6000, -12000),
+            new MapLabel("Dushis Khurisi", 0, -19000, true),
+            new MapLabel("The Barren Arm", 8000, -4500, true),
         };
 
         private static readonly string[] borderFiles = {
@@ -249,7 +263,7 @@ namespace Maps.Rendering
                     //------------------------------------------------------------
                     // Local background (Nebula)
                     //------------------------------------------------------------
-                    #region local-background
+                    #region nebula-background
 
                     // NOTE: Since alpha texture brushes aren't supported without
                     // creating a new image (slow!) we render the local background
@@ -299,7 +313,7 @@ namespace Maps.Rendering
                         }
                     }
                     #endregion
-                    timers.Add(new Timer("nebula"));
+                    timers.Add(new Timer("background (nebula)"));
 
                     //------------------------------------------------------------
                     // Deep background (Galaxy)
@@ -317,7 +331,7 @@ namespace Maps.Rendering
                         }
                     }
                     #endregion
-                    timers.Add(new Timer("galaxy"));
+                    timers.Add(new Timer("background (galaxy)"));
 
                     //------------------------------------------------------------
                     // Pseudo-Random Stars
@@ -364,7 +378,7 @@ namespace Maps.Rendering
                     //------------------------------------------------------------
                     // Rifts in Charted Space
                     //------------------------------------------------------------
-                    #region riftFiles
+                    #region rifts
 
                     if (ctx.styles.showRifts && ctx.styles.riftOpacity > 0f)
                     {
@@ -376,7 +390,7 @@ namespace Maps.Rendering
                         }
                     }
                     #endregion
-                    timers.Add(new Timer("riftFiles"));
+                    timers.Add(new Timer("rifts"));
 
                     //------------------------------------------------------------
                     // April Fool's Day
@@ -420,7 +434,7 @@ namespace Maps.Rendering
 
                     }
                     #endregion
-                    timers.Add(new Timer("macroborder"));
+                    timers.Add(new Timer("macro-borders"));
 
                     //------------------------------------------------------------
                     // Macro: Route object
@@ -440,7 +454,7 @@ namespace Maps.Rendering
                         }
                     }
                     #endregion
-                    timers.Add(new Timer("macroroute"));
+                    timers.Add(new Timer("macro-routes"));
 
                     //------------------------------------------------------------
                     // Sector Grid
@@ -577,7 +591,7 @@ namespace Maps.Rendering
                         }
                     }
                     #endregion
-                    timers.Add(new Timer("parsec grids"));
+                    timers.Add(new Timer("parsec grid"));
 
                     //------------------------------------------------------------
                     // Subsector Names
@@ -605,6 +619,7 @@ namespace Maps.Rendering
                     }
 
                     #endregion
+                    timers.Add(new Timer("subsector names"));
 
                     //------------------------------------------------------------
                     // Micro: Borders
@@ -617,18 +632,18 @@ namespace Maps.Rendering
                         DrawMicroBorders(ctx, fonts, BorderLayer.Stroke);
                     }
                     #endregion
-                    timers.Add(new Timer("microborders"));
+                    timers.Add(new Timer("micro-borders"));
 
                     //------------------------------------------------------------
                     // Micro: Routes
                     //------------------------------------------------------------
-                    #region routes
+                    #region micro-routes
 
                     if (ctx.styles.microRoutes.visible)
                         DrawRoutes(ctx, fonts);
 
                     #endregion
-                    timers.Add(new Timer("routes"));
+                    timers.Add(new Timer("micro-routes"));
 
                     //------------------------------------------------------------
                     // Sector Names
@@ -650,6 +665,35 @@ namespace Maps.Rendering
 
                     #endregion
                     timers.Add(new Timer("sector names"));
+
+                    //------------------------------------------------------------
+                    // Mega: Galaxy-Scale Labels
+                    //------------------------------------------------------------
+                    #region mega-names
+                    if (ctx.styles.megaNames.visible)
+                    {
+                        solidBrush.Color = ctx.styles.megaNames.textColor;
+                        foreach (var label in megaLabels)
+                        {
+                            using (RenderUtil.SaveState(ctx.graphics))
+                            {
+                                XMatrix matrix = new XMatrix();
+                                matrix.ScalePrepend(1.0f / Astrometrics.ParsecScaleX, 1.0f / Astrometrics.ParsecScaleY);
+                                matrix.TranslatePrepend(label.position.X, label.position.Y);
+                                ctx.graphics.MultiplyTransform(matrix, XMatrixOrder.Prepend);
+
+                                XFont font = label.minor ? ctx.styles.megaNames.SmallFont : ctx.styles.megaNames.Font;
+                                XSize size = ctx.graphics.MeasureString(label.text, font);
+                                ctx.graphics.TranslateTransform(-size.Width / 2, -size.Height / 2); // Center the text
+                                RectangleF textBounds = new RectangleF(0, 0, (float)size.Width * 1.01f, (float)size.Height * 2); // *2 or it gets cut off at high sizes
+                                XTextFormatter formatter = new XTextFormatter(ctx.graphics);
+                                formatter.Alignment = XParagraphAlignment.Center;
+                                formatter.DrawString(label.text, font, solidBrush, textBounds);
+                            }
+                        }
+                    }
+                    #endregion
+                    timers.Add(new Timer("mega names"));
 
                     //------------------------------------------------------------
                     // Macro: Government / Rift / Route Names
@@ -751,15 +795,15 @@ namespace Maps.Rendering
                     timers.Add(new Timer("macro worlds"));
 
                     //------------------------------------------------------------
-                    // Micro: Government Names
+                    // Micro: Border Labels & Explicit Labels
                     //------------------------------------------------------------
-                    #region government-names
+                    #region micro-border-labels
 
                     if (ctx.styles.showMicroNames)
                         DrawLabels(ctx, fonts);
 
                     #endregion
-                    timers.Add(new Timer("microborder labels"));
+                    timers.Add(new Timer("micro-border labels"));
                 }
 
                 // End of clipping, so world names are not clipped in jumpmaps.

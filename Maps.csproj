@@ -359,9 +359,6 @@
     <Content Include="test\ref_bad_example.png" />
     <Content Include="map.js" />
     <Content Include="favicon.ico" />
-    <Content Include="Mobile.aspx">
-      <SubType>Form</SubType>
-    </Content>
     <Content Include="res\Candy\Belt.png" />
     <Content Include="res\Candy\Hyd0.png" />
     <Content Include="res\Candy\Hyd1.png" />
@@ -455,10 +452,6 @@
     <Compile Include="server\Util.cs" />
     <Compile Include="server\VectorObject.cs" />
     <Compile Include="server\World.cs" />
-    <Compile Include="Mobile.aspx.cs">
-      <DependentUpon>Mobile.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
     <Content Include="world.html" />
     <Content Include="world.js" />
   </ItemGroup>
