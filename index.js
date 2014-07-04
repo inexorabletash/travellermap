@@ -113,12 +113,14 @@ window.addEventListener('DOMContentLoaded', function() {
     });
     updatePermalink();
     updateSectorLinks();
+    updateScaleIndicator();
     savePreferences();
   };
 
   map.OnScaleChanged = function() {
     updatePermalink();
     updateSectorLinks();
+    updateScaleIndicator();
     savePreferences();
   };
 
@@ -598,6 +600,53 @@ window.addEventListener('DOMContentLoaded', function() {
 
   // Export
   window.search = search;
+
+
+  //////////////////////////////////////////////////////////////////////
+  //
+  // Miscellaneous
+  //
+  //////////////////////////////////////////////////////////////////////
+
+  var isCanvasSupported = ('getContext' in $('#scaleIndicator')),
+      animId = 0;
+  function updateScaleIndicator() {
+    if (!isCanvasSupported) return;
+
+    cancelAnimationFrame(animId);
+    animId = requestAnimationFrame(function() {
+      var scale = map.GetScale() * Astrometrics.ParsecScaleX,
+          canvas = $('#scaleIndicator'),
+          ctx = canvas.getContext('2d'),
+          w = parseFloat(canvas.width),
+          h = parseFloat(canvas.height),
+          style = map.GetStyle(),
+          color = ['atlas', 'print', 'draft'].indexOf(style) !== -1 ? 'black' : 'white';
+
+      ctx.clearRect(0, 0, w, h);
+
+      var dist = w / scale;
+      var factor = Math.pow(10, Math.floor(Math.log(dist) / Math.LN10));
+      dist = Math.floor(dist / factor) * factor;
+      var label = dist + ' pc';
+      var bar = dist * scale;
+
+      ctx.strokeStyle = color;
+      ctx.beginPath();
+      ctx.moveTo(w - bar + 1, h / 2);
+      ctx.lineTo(w - bar + 1, h * 3 / 4);
+      ctx.lineTo(w - 1, h * 3 / 4);
+      ctx.lineTo(w - 1, h / 2);
+      ctx.stroke();
+
+      ctx.fillStyle = color;
+      ctx.font = '10px Arial';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(label, w - bar / 2, h / 2);
+    });
+  }
+  updateScaleIndicator();
 
 
   //////////////////////////////////////////////////////////////////////
