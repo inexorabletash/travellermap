@@ -215,6 +215,13 @@ window.addEventListener('DOMContentLoaded', function() {
   // Force UI to synchronize in case URL parameters didn't do it
   map.OnOptionsChanged(map.GetOptions());
 
+  if (isIframe) {
+    var forceui = ('forceui' in urlParams) && Boolean(Number(urlParams.forceui));
+    if (!forceui)
+      document.body.classList.add('hide-ui');
+    document.body.classList.add('hide-footer');
+  }
+
   if ('galdir' in urlParams) {
     var show = Boolean(Number(urlParams.galdir));
     document.body.classList[show ? 'add' : 'remove']('show-directions');
@@ -599,6 +606,6 @@ window.addEventListener('DOMContentLoaded', function() {
   //
   //////////////////////////////////////////////////////////////////////
 
-  if (window == window.top) // == for IE
+  if (!isIframe) // == for IE
     mapElement.focus();
 });

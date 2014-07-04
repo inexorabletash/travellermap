@@ -29,18 +29,19 @@
 <meta property="og:site_name" content="The Traveller Map">
 <meta property="fb:admins" content="617166358">
 
-<link rel="stylesheet" href="index.css?update=2014-06-20">
+<link rel="stylesheet" href="index.css?update=2014-06-24">
 
 <!--[if lt IE 8]><script>alert("IE7 is no longer supported.");location = 'http://google.com/chrome';</script><![endif]-->
 <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.min.js"></script>
-<script src="lib/polyfill/polyfill.js?update=2014-03-13"></script>
-<script src="map.js?update=2014-06-20"></script>
-<script src="index.js?update=2014-06-20"></script>
+<script src="lib/polyfill/polyfill.js?update=2014-06-29"></script>
+<script src="map.js?update=2014-06-25"></script>
+<script src="index.js?update=2014-07-04"></script>
 <style>
 .ui {
   z-index: 2000;
 }
-.iframe .ui { display: none; }
+
+.hide-ui .ui { display: none; }
 
 button {
   font-family: Univers, Helvetica, Arial, sans-serif;
@@ -97,9 +98,8 @@ button:hover {
 <script type="application/javascript" src="lib/add-to-home-screen/addtohomescreen.js"></script>
 <script>
   // Skip if in iframe
-  if (window == window.top) { // == for IE
+  if (window == window.top) // == for IE
       addToHomescreen();
-  }
 </script>
 
 <body>
@@ -115,10 +115,6 @@ button:hover {
     -moz-text-size-adjust: none;
   }
   </style>
-  <script>
-  if (window != window.top) // != for IE
-    document.body.classList.add('iframe');
-  </script>
 
   <div id="mapContainer" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0;">
     <div id="dragContainer" style="position: absolute; overflow: hidden; width: 100%; height: 100%;" tabindex="0" title="Mouse: Drag to scroll, wheel to zoom&#x0A;Keyboard: Arrows to scroll, +/- to zoom">

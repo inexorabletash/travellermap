@@ -174,7 +174,7 @@ h3 { text-decoration: underline; }
     <p>
         All of the APIs that produce images (<a href="#poster">Poster</a>, <a href="#jumpmap">Jump Map</a>,
         <a href="#tile">Tile</a>) as well as the site itself (including <a href="#iframe">IFRAME</a>) take
-        an <code>options</code> parameter that is a bit-map of rendering style options and a <code>style</code>
+        an <code>options</code> parameter that is a bit field of rendering style options and a <code>style</code>
         parameter that names a visual style/color scheme for the map.
     </p>
 
@@ -365,6 +365,17 @@ h3 { text-decoration: underline; }
         rather than as binary data. This is useful when requesting images via POST via XHR
         to insert into HTML.</dd>
     </dl>
+
+    <h4>IFRAME Only</h4>
+
+    <p>These options are available only when the <a href="#iframe">IFRAME</a> API is used.</p>
+
+    <dl class="params">
+      <dt>forceui=1</dt>
+      <dd>The page UI (search box, options buttons, etc) is shown. The default is to hide
+      the UI when the map is embedded in another page. Not that not all options may make
+      sense.</dd>
+    </dl>
   </section>
 
   <section id="html-apis" class="apis">
@@ -488,6 +499,7 @@ h3 { text-decoration: underline; }
         <li>You can drag with the mouse and zoom by using the mouse wheel or double-clicking (hold Alt and double-click to zoom out). You can even use the <kbd>IJKL</kbd> keys or arrow keys to scroll the map.
         <li>For sites such as Wikis that (for security reasons) do not allow embedding arbitrary IFRAMEs, see the <a href="#poster">Poster API</a> instead.
         <li>The <var>STYLE</var> of the IFRAME element can be anything you want to match your site &ndash; the width and height are just examples
+        <li>By default, the UI is hidden. To force the UI to be shown in an iframe, add the URL parameter <code>forceui=1</code>
     </ul>
 
     <h4>Example:</h4>
