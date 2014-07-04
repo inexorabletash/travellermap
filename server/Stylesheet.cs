@@ -232,7 +232,7 @@ namespace Maps.Rendering
 
             float logscale = (float)Math.Log(scale, 2.0);
             riftOpacity = ScaleInterpolate(0f, 0.85f, scale, 1/4f, 4f);
-            
+
             deepBackgroundOpacity = ScaleInterpolate(1f, 0f, scale, 1/8f, 2f);
 
             macroRoutes.visible = (scale >= MacroRouteMinScale) && (scale <= MacroRouteMaxScale);
@@ -622,7 +622,7 @@ namespace Maps.Rendering
 
                         if (scale > CandyMaxWorldRelativeScale)
                             hexContentScale = CandyMaxWorldRelativeScale / (float)scale;
-                        
+
                         break;
                     }
             }
