@@ -485,12 +485,20 @@ namespace Maps.Rendering
                     }
                 case Style.Draft:
                     {
+                        int inkOpacity = 0xB0;
+
                         deepBackgroundOpacity = 0f;
 
-                        foregroundColor = Color.Black;
                         backgroundColor = Color.AntiqueWhite;
- 
-                        subsectorGrid.pen.color = Color.FromArgb(0x80, Color.Firebrick);
+                        foregroundColor = Color.FromArgb(inkOpacity, Color.Black);
+                        highlightColor = Color.FromArgb(inkOpacity, Color.Red);
+
+                        lightColor = Color.FromArgb(inkOpacity, Color.DarkCyan);
+                        darkColor = Color.FromArgb(inkOpacity, Color.Black);
+                        dimColor = Color.FromArgb(inkOpacity / 2, Color.Black);
+
+
+                        subsectorGrid.pen.color = Color.FromArgb(inkOpacity, Color.Firebrick);
 
                         const string FONT_NAME = "Comic Sans MS";
                         worlds.fontInfo.name = FONT_NAME;
@@ -498,6 +506,7 @@ namespace Maps.Rendering
                         starportFont.name = FONT_NAME;
                         worlds.largeFontInfo.name = FONT_NAME;
                         worlds.largeFontInfo.size = worlds.fontInfo.size * 1.25f;
+                        worlds.fontInfo.size *= 0.8f;
 
                         macroNames.fontInfo.name = FONT_NAME;
                         macroNames.mediumFontInfo.name = FONT_NAME;
@@ -515,34 +524,40 @@ namespace Maps.Rendering
 
                         microBorders.textStyle.Uppercase = true;
 
+                        sectorName.textStyle.Uppercase = true;
+                        subsectorNames.textStyle.Uppercase = true;
+
+                        // TODO: Render small, around edges
+                        subsectorNames.visible = false;
+
                         worlds.textStyle.Uppercase = true;
+
+                        // TODO: Decide on this. It's nice to not overwrite the parsec grid, but
+                        // it looks very cluttered, especially amber/red zones.
                         worlds.textBackgroundStyle = TextBackgroundStyle.None;
+
                         worldDetails = worldDetails & ~WorldDetails.Allegiance;
 
                         subsectorNames.fontInfo.name = FONT_NAME;
                         sectorName.fontInfo.name = FONT_NAME;
 
-                        // TODO: Hex numbers in all parsecs
-                        // TODO: HiPop underlined
+                        worlds.largeFontInfo.style |= XFontStyle.Underline;
 
                         microBorders.pen.width = onePixel * 4;
+                        microBorders.pen.dashStyle = XDashStyle.Dot;
 
-                        worldWater.fillColor = foregroundColor;
-                        worldNoWater.fillColor = Color.Empty; ;
-                        worldNoWater.pen = new PenInfo(foregroundColor, onePixel);
+                        worldNoWater.fillColor = foregroundColor;
+                        worldWater.fillColor = Color.Empty;
+                        worldWater.pen = new PenInfo(foregroundColor, onePixel * 2);
 
                         amberZone.pen.color = foregroundColor;
                         amberZone.pen.width = onePixel;
                         redZone.pen.width = onePixel * 2;
 
-                        lightColor = Color.DarkCyan;
-                        darkColor = Color.DarkGray;
-                        dimColor = Color.LightGray;
                         microRoutes.pen.color = Color.Gray;
 
                         parsecGrid.pen.color = lightColor;
-                        microBorders.textColor = Color.Brown;
-
+                        microBorders.textColor = Color.FromArgb(inkOpacity, Color.Brown);
 
                         riftOpacity = Math.Min(riftOpacity, 0.30f);
 
