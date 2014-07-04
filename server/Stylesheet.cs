@@ -229,7 +229,7 @@ namespace Maps.Rendering
 
             float logscale = (float)Math.Log(scale, 2.0);
             riftOpacity = ScaleInterpolate(0f, 0.85f, scale, 1/4f, 4f);
-            
+
             deepBackgroundOpacity = ScaleInterpolate(1f, 0f, scale, 1/8f, 2f);
 
             macroRoutes.visible = (scale >= MacroRouteMinScale) && (scale <= MacroRouteMaxScale);
@@ -362,7 +362,7 @@ namespace Maps.Rendering
             worldNoWater.pen.color = Color.Empty;
 
             float onePixel = 1f / (float)scale;
-    
+
             parsecGrid.pen = new PenInfo(gridColor, onePixel);
             subsectorGrid.pen = new PenInfo(gridColor, onePixel * 2);
             sectorGrid.pen = new PenInfo(gridColor, (subsectorGrid.visible ? 4 : 2) * onePixel);
@@ -481,7 +481,7 @@ namespace Maps.Rendering
 
                         foregroundColor = Color.Black;
                         backgroundColor = Color.AntiqueWhite;
- 
+
                         subsectorGrid.pen.color = Color.FromArgb(0x80, Color.Firebrick);
 
                         const string FONT_NAME = "Comic Sans MS";
@@ -511,7 +511,6 @@ namespace Maps.Rendering
                         subsectorNames.fontInfo.name = FONT_NAME;
                         sectorName.fontInfo.name = FONT_NAME;
 
-                        // TODO: Hex numbers in all parsecs
                         // TODO: HiPop underlined
 
                         microBorders.pen.width = onePixel * 4;
@@ -596,7 +595,7 @@ namespace Maps.Rendering
 
                         if (scale > CandyMaxWorldRelativeScale)
                             hexContentScale = CandyMaxWorldRelativeScale / (float)scale;
-                        
+
                         break;
                     }
             }
