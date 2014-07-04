@@ -640,7 +640,7 @@ window.addEventListener('DOMContentLoaded', function() {
       ctx.stroke();
 
       ctx.fillStyle = color;
-      ctx.font = '10px Arial';
+      ctx.font = '10px Univers, Arial, sans-serif';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       ctx.fillText(label, w - bar / 2, h / 2);
