@@ -628,6 +628,7 @@ window.addEventListener('DOMContentLoaded', function() {
       var dist = w / scale;
       var factor = Math.pow(10, Math.floor(Math.log(dist) / Math.LN10));
       dist = Math.floor(dist / factor) * factor;
+      dist = parseFloat(dist.toPrecision(1));
       var label = dist + ' pc';
       var bar = dist * scale;
 
