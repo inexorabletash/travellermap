@@ -52,6 +52,7 @@
                       <xs:restriction base="xs:string">
                         <xs:enumeration value="SEC"/>
                         <xs:enumeration value="TabDelimited"/>
+                        <xs:enumeration value="SecondSurvey"/>
                       </xs:restriction>
                     </xs:simpleType>
                   </xs:attribute>
