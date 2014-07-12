@@ -7,6 +7,15 @@
 
 <style>
 h3 { text-decoration: underline; }
+
+#features th { width: 10pt; }
+#features th:first-of-type { width: auto; }
+#features th,
+#features td { text-align: center; padding-left: 4pt; padding-right: 4pt; }
+table#features, #features th, #features td { border: solid 1px black; }
+
+#sample_markers { margin-left: 1in; }
+#sample_markers td { padding-right: 0.25in; }
 </style>
 
 <h1>The Traveller Map API</h1>
@@ -154,7 +163,7 @@ h3 { text-decoration: underline; }
       </li>
       <li>World
         <ul>
-          <li><a href="#jumpworlds">http://travellermap.com/data/<var>sector</var>/<var>hex</a> &ndash; world data
+          <li><a href="#jumpworlds">http://travellermap.com/data/<var>sector</var>/<var>hex</var></a> &ndash; world data
           <li><a href="#coordinates">http://travellermap.com/data/<var>sector</var>/<var>hex</var>/coordinates</a> &ndash; coordinates
           <li><a href="#credits">http://travellermap.com/data/<var>sector</var>/<var>hex</var>/credits</a> &ndash; credits
 
@@ -266,14 +275,6 @@ h3 { text-decoration: underline; }
     </p>
 
     <table id="features">
-      <style>
-      #features th { width: 10pt; }
-      #features th:first-of-type { width: auto; }
-      #features th,
-      #features td { text-align: center; padding-left: 4pt; padding-right: 4pt; }
-      table#features, #features th, #features td { border: solid 1px black; }
-      </style>
-
       <tr><th>Feature           <th><sup>1</sup>&frasl;<sub>32</sub> <th><sup>1</sup>&frasl;<sub>16</sub> <th><sup>1</sup>&frasl;<sub>8</sub> <th><sup>1</sup>&frasl;<sub>4</sub> <th><sup>1</sup>&frasl;<sub>2</sub> <th>1 <th>2 <th>4 <th>8 <th>16 <th>32 <th>64 <th>128</tr>
       <tr><td>Galaxy            <td>&bull;<td>&bull;<td>&bull;<td>&bull;<td><td><td><td><td><td><td><td><td></tr>
       <tr><td>Local Rifts       <td><td><td><td><td>&bull;<td><td><td><td><td><td><td><td></tr>
@@ -407,7 +408,7 @@ h3 { text-decoration: underline; }
       <dt>yah_sector
       <dt>yah_hex
         <dd><a href="#system_location">Named coordinates</a> to place a "You Are Here" graphical
-            marker. (<a target="_blank" href="../?yah_sector=spin&yah_hex=1910">example</a>)
+            marker. (<a target="_blank" href="../?yah_sector=spin&amp;yah_hex=1910">example</a>)
 
       <dt>yah_sx
       <dt>yah_sy
@@ -420,8 +421,8 @@ h3 { text-decoration: underline; }
       <dt>marker_hex
       <dt>marker_url
         <dd><a href="#system_location">Named coordinates</a> and image URL for a custom marker.
-          The image should be a 256px &times 256px PNG and will be centered on the given coordinates.
-          (<a target="_blank" href="../?marker_sector=spin&marker_hex=1910&marker_url=res/markers/beowulf.png">example</a>)
+          The image should be a 256px &times; 256px PNG and will be centered on the given coordinates.
+          (<a target="_blank" href="../?marker_sector=spin&amp;marker_hex=1910&amp;marker_url=res/markers/beowulf.png">example</a>)
 
       <dt>ox
       <dt>oy
@@ -437,22 +438,17 @@ h3 { text-decoration: underline; }
     A handful of example markers are available; relative URLs can be used for these.
     Images by Andrew Boulton, c/o FFE.
     <table id="sample_markers">
-      <style>
-      #sample_markers { margin-left: 1in; }
-      #sample_markers td { padding-right: 0.25in; }
-
-      </style>
       <tr>
-        <td><img src="../res/markers/beowulf.png" style="width: 64px;">
+        <td><img src="../res/markers/beowulf.png" style="width: 64px;" alt="Beowulf-Class Free Trader">
         <td><code>res/markers/beowulf.png</code>
       <tr>
-        <td><img src="../res/markers/scout.png" style="width: 64px;">
+        <td><img src="../res/markers/scout.png" style="width: 64px;" alt="Sulieman-Class Scout/Courier">
         <td><code>res/markers/scout.png</code>
       <tr>
-        <td><img src="../res/markers/fartrader.png" style="width: 64px;">
+        <td><img src="../res/markers/fartrader.png" style="width: 64px;" alt="Empress Marava-Class Far Trader">
         <td><code>res/markers/fartrader.png</code>
       <tr>
-        <td><img src="../res/markers/submerchant.png" style="width: 64px;">
+        <td><img src="../res/markers/submerchant.png" style="width: 64px;" alt="Akkigish-class Subsidized Merchant">
         <td><code>res/markers/submerchant.png</code>
     </table>
 
@@ -1052,12 +1048,12 @@ h3 { text-decoration: underline; }
             specified using this type. Other options must be specified in the URL.
         </dl>
         Sector data must be specified in
-          <a href="fileformats#sec">SEC</sec> (<a href="/data/spin/sec">example</a>),
-          <a href="fileformats#t5tab">T5 Tab Delimited (<a href="/data/spin/tab">example</a>), or
-          <a href="fileformats#t5col">T5 Column Delimited  (<a href="/data/spin">example</a>) format.
+          <a href="fileformats#sec">SEC</a> (<a href="/data/spin/sec">example</a>),
+          <a href="fileformats#t5tab">T5 Tab Delimited</a> (<a href="/data/spin/tab">example</a>), or
+          <a href="fileformats#t5col">T5 Column Delimited</a> (<a href="/data/spin">example</a>) format.
         Metadata must be specified in either
           <a href="#metadata">XML</a> (<a href="/data/spin/metadata">example</a>) or
-          <a href="http://dotclue.org/t20/">MSEC</a>  (<a href="/data/spin/msec">example</a>) format.
+          <a href="http://dotclue.org/t20/">MSEC</a> (<a href="/data/spin/msec">example</a>) format.
 </dl>
 
 <h4>Options:</h4>
@@ -1149,12 +1145,12 @@ h3 { text-decoration: underline; }
             specified using this type. Other options must be specified in the URL.
         </dl>
         Sector data must be specified in
-          <a href="fileformats#sec">SEC</sec> (<a href="/data/spin/sec">example</a>),
-          <a href="fileformats#t5tab">T5 Tab Delimited (<a href="/data/spin/tab">example</a>), or
-          <a href="fileformats#t5col">T5 Column Delimited  (<a href="/data/spin">example</a>) format.
+          <a href="fileformats#sec">SEC</a> (<a href="/data/spin/sec">example</a>),
+          <a href="fileformats#t5tab">T5 Tab Delimited</a> (<a href="/data/spin/tab">example</a>), or
+          <a href="fileformats#t5col">T5 Column Delimited</a> (<a href="/data/spin">example</a>) format.
         Metadata must be specified in either
           <a href="#metadata">XML</a> (<a href="/data/spin/metadata">example</a>) or
-          <a href="http://dotclue.org/t20/">MSEC</a>  (<a href="/data/spin/msec">example</a>) format.
+          <a href="http://dotclue.org/t20/">MSEC</a> (<a href="/data/spin/msec">example</a>) format.
 </dl>
 
     <h4>Options:</h4>

@@ -68,13 +68,18 @@
     border: 1px solid gray;
   }
 
+  table#remarks-table span {
+    display: block;
+    float: right;
+  }
+
 </style>
 
 <h1>The Traveller Map - Second Survey Data Definitions</h1>
 
 <div class="content">
 
-  <section id="intro">
+  <div id="intro">
     <p>The <cite>Traveller<sup>5</sup> Second Survey</cite> format defines a standard for
       describing star systems in the <cite>Official Traveller Universe</cite>. It is composed
       of a series of fields describing various aspects of the Main World (MW) in each system
@@ -93,7 +98,7 @@
       The companion document <a href="fileformats">Sector Data File Formats</a>
       may be used for reference.
     </p>
-  </section>
+  </div>
 
   <section id="toc">
     <h3>Contents</h3>
@@ -1000,12 +1005,6 @@ potential for a world based on its capacity as a source of trade goods, a
 market for trade goods, or both.
     </p>
 
-    <style>
-      table#remarks-table span {
-        display: block;
-        float: right;
-      }
-    </style>
     <table id="remarks-table">
       <tr><th>Code<th>Description
 
@@ -1109,8 +1108,6 @@ market for trade goods, or both.
       <tr><td><code>Ex</code><td>Exile Camp.<span>Imperial.</span>
       <tr><td><code>Pr</code><td>Prison World.<span>Imperial.</span>
       <tr><td><code>Xb</code><td>Xboat Station.<span>Imperial.</span>
-
-
     </table>
 
     <p>
