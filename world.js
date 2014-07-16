@@ -331,12 +331,8 @@
     Z: 'Naval/Military Base'
   };
 
-  function renderWorld(data) {
-    var world = data.Worlds[0];
-    if (!world) return;
-
-    var uwp = world.UWP;
-    world.UWP = {
+  function splitUWP(uwp) {
+    return {
       Starport: uwp.substring(0, 1),
       Siz: uwp.substring(1, 2),
       Atm: uwp.substring(2, 3),
@@ -346,7 +342,20 @@
       Law: uwp.substring(6, 7),
       Tech: uwp.substring(8, 9)
     };
+  }
+  function splitPBG(pbg) {
+    return {
+      Pop: fromEHex(pbg.substring(0, 1)),
+      Belts: fromEHex(pbg.substring(1, 2)),
+      GG: fromEHex(pbg.substring(2, 3))
+    };
+  }
 
+  function renderWorld(data) {
+    var world = data.Worlds[0];
+    if (!world) return;
+
+    world.UWP = splitUWP(world.UWP);
     world.UWP.StarportBlurb = STARPORT_TABLE[world.UWP.Starport];
     world.UWP.SizBlurb = SIZ_TABLE[world.UWP.Siz];
     world.UWP.AtmBlurb = ATM_TABLE[world.UWP.Atm];
@@ -356,12 +365,7 @@
     world.UWP.LawBlurb = LAW_TABLE[world.UWP.Law];
     world.UWP.TechBlurb = TECH_TABLE[world.UWP.Tech];
 
-    var pbg = world.PBG;
-    world.PBG = {
-      Pop: pbg.substring(0, 1),
-      Belts: fromEHex(pbg.substring(1, 2)),
-      GG: fromEHex(pbg.substring(2, 3))
-    };
+    world.PBG = splitPBG(world.PBG);
     world.PopMult = world.PBG.Pop;
     world.PopExp  = fromEHex(world.UWP.Pop);
     if (world.PopExp > 0 && world.PopMult === 0)
@@ -465,6 +469,14 @@
   }
 
   function renderNeighborhood(data) {
+
+    // Make hi-pop worlds uppercase
+    data.Worlds.forEach(function(world) {
+      var pop = fromEHex(splitUWP(world.UWP).Pop);
+      if (pop >= 9)
+        world.Name = world.Name.toUpperCase();
+    });
+
     var template = Handlebars.compile($('#neighborhood-template').innerHTML);
     $('#neighborhood-data').innerHTML = template(data);
   }
