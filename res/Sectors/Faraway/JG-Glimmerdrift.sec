@@ -1,0 +1,822 @@
+Glimmerdrift Reaches
+
+# Notes from Galactic's GALS/CLASSIC/GLIMDRFT
+
+# The Gimmerdrift Reaches is copyright 1981 by Judges Guild.
+#
+# The sector was written by Dave Sering and Steve Crow, with artwork by Ken
+# Simpson and Ed Perry. Bob Bledsaw (judgesguild@q-com.com) gave permission
+# for this sector to be transcribed into Galactic (as well as other
+# Traveller-related freeware). The transcription was done by Andrew
+# Moffatt-Vallance (a.vallance@netaccess.co.nz) in 1997.
+##
+# The Glimmerdrift Reaches sector was developed by Judges Guild in 1981.
+# It was declared invalid by GDW in 1984.
+#
+# Since the sector was produced before it became common practice to give
+# population multipliers, number of planetoid belts, or number of gas giants in
+# sector data, these numbers have been left as 0, except with gas giants where 0
+# indicates the absence of any and 1 indicates the presence of an indeterminate
+# number. There were also a few subsectors where it was possible to have a
+# reasonable guess at population multipliers. These have also been included.
+#
+# Whilst transcribing the data I have tried to preserve as much of the feel of
+# the original product as possible. Please bear in mind that this sector was
+# published in the early eighties, and as such is far 'rougher' than the sectors
+# which are published today. In transcribing the data, I found many examples
+# where the planetary data conflicted with the accompaning text. I have made no
+# attempt to correct these conflicts.
+#
+# Andrew Moffatt-Vallance, 1997
+# a.vallance@netaccess.co.nz
+#
+# Update (17-July-97): Added random population multipliers (where popmult
+# originally equaled 0) on recommendation from one of the users. Worlds with
+# pop=0, law=0, and gov=0 got to keep their original popmult=0.   -jimv
+
+# Subsectors:
+# A: Darkling
+# B: Thorstone
+# C: Tri-Empire
+# D: Marla
+# E: Glowing
+# F: Kraxin
+# G: Williamsburg
+# H: Tasman
+# I: Even
+# J: Poonch
+# K: Sosie
+# L: Ryazan
+# M: Verge
+# N: Zairae
+# O: Sepik
+# P: Daro
+
+# Allegiances:
+# Im: Imperial
+# Za: Zarian Realm
+# Mn: Mandanin Co-Dominion
+# Ma: Marlan Primate
+# Gl: Ginlenchy Concordance
+# Kx: Krax Confederation
+# Rn: Rm Nai
+# Cs: Client State
+# Na: Non-aligned
+#   : Unknown
+
+
+@SUB-SECTOR: sec_a   SECTOR: glimdrft
+#
+#Jump Routes
+
+#
+#--------1---------2---------3---------4---------5---------6----
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- --
+Verglavia     0105 E338772-6                       200 Na
+Bursa         0202 D5406B5-5    Ni                 701 Na
+Kofu          0306 A000368-C    As                 601 Na
+Clearwater    0409 B3777B2-7    Ag                 200 Na
+Depew         0603 X7C7000-0  S                    001 Cs
+Garati        0706 CA98440-4    Ni                 400 Na
+Harahan       0710 B863400-7    Ni                 200 Na
+Mantua        0803 A9CA657-C    Ni Wa              601 Na
+@SUB-SECTOR: sec_b   SECTOR: glimdrft
+#
+#Jump Routes
+$1107 1109 0 0
+$1107 1206 0 0
+$1109 1210 0 0
+$1203 1402 0 0
+$1203 1306 0 0
+$1206 1306 0 0
+$1210 1211 0 1
+$1306 1406 0 0
+$1308 1406 0 0
+$1308 1408 0 0
+$1401 1440 0 -1
+$1401 1402 0 0
+$1402 1602 0 0
+$1408 1608 0 0
+$1510 1609 0 0
+$1510 1511 0 1
+$1602 1802 1 0
+$1605 1606 0 0
+$1606 1607 0 0
+$1607 1707 1 0
+$1607 1608 0 0
+$1608 1609 0 0
+$1609 1710 1 0
+#
+#--------1---------2---------3---------4---------5---------6----
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- --
+Marchand      0902 A427868-C                       301 Na
+Axel          1007 C63A300-A    Wa                 400 Gl
+Girth         1008 C9A8500-A    Ni                 101 Gl
+Turhan        1010 D732100-6    Ni                 200 Gl
+Paranom       1101 E000368-9    As                 701 Im
+Krintokal     1103 E432210-A    Ni                 200 Im
+Scorpian      1104 C727525-A    Ni                 101 Im
+Wilmar        1107 A649772-A                       900 Gl
+Cornet        1109 D586787-5                       201 Gl
+Harkness      1201 XAC4350-B    Ni                 800 Im
+Petra         1203 A568777-9  S Ri Ag              601 Im
+Meritus       1206 D727673-6    Ni                 100 Gl
+Thorstone     1210 A664624-8    Ni                 301 Gl
+Arcan's       1306 A85A594-A    Wa                 601 Gl
+Idiothar      1308 C7B2748-8                       200 Gl
+Fatima        1401 A742887-9                       701 Im
+Cairo         1402 AA95477-D  N Ni                 800 Im
+Mildreth      1406 D895957-6                       701 Gl
+Paramond      1408 A729774-9                       501 Gl
+Valeris       1510 E554500-6    Ag                 201 Gl
+Davnet        1602 D558672-9    Ag                 700 Im
+Liana         1605 B756879-7    Ni                 301 Gl
+Vicat         1606 D7AA200-9    Wa                 601 Gl
+Bairdis       1607 AA63872-9                       400 Gl
+Bellmawr      1608 AAA6530-A    Ni                 101 Gl
+Amorica       1609 D6416B9-6    Ni                 401 Gl
+Balhk         1610 A727585-A    Ni                 901 Gl
+@SUB-SECTOR: sec_c   SECTOR: glimdrft
+#
+#Jump Routes
+$1707 1607 -1 0
+$1707 1906 0 0
+$1710 1609 -1 0
+$1710 1810 0 0
+$1802 1602 -1 0
+$1802 1940 0 -1
+$1802 1902 0 0
+$1810 1811 0 1
+$1810 1909 0 0
+$1901 1940 0 -1
+$1901 1902 0 0
+$1902 2202 0 0
+$1906 2107 0 0
+$1909 2109 0 0
+$2107 2109 0 0
+$2109 2209 0 0
+$2202 2302 0 0
+$2202 2303 0 0
+$2209 2211 0 1
+$2209 2407 0 0
+$2302 2303 0 0
+$2303 2403 0 0
+$2303 2502 1 0
+$2403 2404 0 0
+$2404 2604 1 0
+$2404 2406 0 0
+$2406 2407 0 0
+$2407 2606 1 0
+$2407 2509 1 0
+#
+#--------1---------2---------3---------4---------5----------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- --
+Flameask      1707 D557747-3    Ag                 801 Gl
+Brondel       1710 E642457-5    Ni                 700 Gl
+Citadel       1802 A473669-A    Ni                 201 Im
+Macelight     1810 B000AB6-D    As In              401 Gl
+Realmuster    1901 C000899-B    As                 801 Im
+Parasit       1902 CAC1787-A                       201 Im
+Aldrus        1906 C865465-6    Ni                 401 Gl
+Bakcyon       1909 B7449B6-C    In                 200 Gl
+Prophet       2005 X000479-8    As                 401 Gl
+Seraul        2007 D210200-A    Ni                 501 Gl
+Steelsten     2107 B748645-6    Ag                 500 Gl
+Quabinisar    2109 XAC2961-A                       501 Gl
+Ixobis-Kher   2202 A87A465-A    Ni                 400 Ma
+Simulacrim    2209 D200223-8    Ni                 601 Gl
+Ixobis-Lar    2302 D586673-5    Ri Ag              300 Ma
+Ixobis-Rit    2303 A120400-D    Ni                 401 Ma
+Ixobis-Mag    2403 D120236-8    Ni                 800 Ma
+Ixobis-Daw    2404 B854500-8    Ag                 901 Ma
+Ixobis-Mon    2406 D854565-5    Ag                 400 Ma
+Ixobis-Ron    2407 A000772-A    As                 501 As
+@SUB-SECTOR: sec_d   SECTOR: glimdrft
+#
+#Jump Routes
+$2502 2303 -1 0
+$2509 2407 -1 0
+$2509 2708 0 0
+$2604 2404 -1 0
+$2604 2804 0 0
+$2604 2606 0 0
+$2606 2407 -1 0
+$2606 2708 0 0
+$2708 2807 0 0
+$2804 2903 0 0
+$2804 2906 0 0
+$2807 2906 0 0
+$2810 2711 0 1
+$2810 2912 0 1
+$2906 3005 0 0
+#
+#--------1---------2---------3---------4---------5----------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- --
+Meceno        2502 E000455-A    As                 301 Ma
+Nasik         2509 E354494-7    Ni                 800 Ma
+Priluki       2602 C966300-9    Ni                 801 Ma
+Tampo         2604 B682100-A    Ni                 300 Ma
+Arbay         2606 A375300-A    Ni                 900 Ma
+Hestralia     2702 C130561-9    Ni                 901 Ma
+Dorah         2708 B000A99-A    As In              601 Ma
+Parcensee     2710 C0008C9-C    As                 901 Mn
+Garrison      2804 C212300-A    Ni                 600 Ma
+Guafo         2807 B000597-A    As                 301 Ma
+Inisheer      2810 A49A356-D    Wa                 200 Mn
+Kamiri        2903 A968368-A    Ni                 100 Ma
+Kentland      2906 B6826A6-9    Ni                 201 Ma
+Lahr          2909 E110255-B    Ni                 801 Na
+Xuyen         3002 B222235-9    Ni                 100 Ma
+Olmok         3003 D000337-A    As                 201 Ma
+Meyertins     3005 DAA2664-A    Ni                 700 Ma
+Monteballuna  3108 D000456-9    As                 201 Na
+Archangel     3110 B348200-9    Ni                 100 Na
+Olabada       3205 D565898-4    Ni                 601 Na
+Graysands     3209 BAA8200-A    Ni                 800 Na
+@SUB-SECTOR: sec_e   SECTOR: glimdrft
+#
+#Jump Routes
+$0620 0621 0 1
+$0620 0720 0 0
+$0720 0818 0 0
+$0818 0919 1 0
+#
+#--------1---------2---------3---------4---------5----------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- --
+Platteworld   0118 A230A99-D    Na                 701 Na
+Portugia      0211 C8649A9-9                       500 Na
+Reinbear      0316 X000523-D    As                 301 Na
+Loda          0418 B000400-C    As                 801 Na
+St. John      0512 C232872-A    Na                 801 Na
+Glowing       0620 C0007A5-A    As                 801 Kx
+Slovak        0715 XAC2365-B    Ni                 200 Na
+K'ro          0720 C200572-8    Ni                 101 Kx
+Geats         0818 C658894-8                       400 Kx
+@SUB-SECTOR: sec_f   SECTOR: glimdrft
+#
+#Jump Routes
+$0919 0818 -1 0
+$0919 1019 0 0
+$1016 1118 0 0
+$1019 1118 0 0
+$1019 1120 0 0
+$1112 1211 0 0
+$1118 1216 0 0
+$1118 1119 0 0
+$1119 1120 0 0
+$1120 0921 0 1
+$1120 1420 0 0
+$1120 1220 0 0
+$1211 1210 0 -1
+$1211 1411 0 0
+$1211 1212 0 0
+$1212 1213 0 0
+$1213 1314 0 0
+$1216 1317 0 0
+$1220 1420 0 0
+$1314 1515 0 0
+$1317 1517 0 0
+$1317 1519 0 0
+$1411 1511 0 0
+$1411 1412 0 0
+$1412 1612 0 0
+$1420 1519 0 0
+$1420 1620 0 0
+$1420 1421 0 1
+$1511 1510 0 -1
+$1517 1618 0 0
+$1519 1618 0 0
+$1519 1820 1 0
+$1618 1817 1 0
+$1618 1719 1 0
+#
+#--------1---------2---------3---------4---------5----------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- --
+Sporades      0913 A160500-E    Ni                 300 Na
+Pola          0919 C000579-9    As                 501 Kx
+Zuica         1014 EAB1200-A    Ni                 100 Na
+Bolzano       1016 BABA400-B    Wa                 401 Kx
+Fridwell      1019 AAA3557-C    Ni                 900 Kx
+Tarlak        1112 C230572-9    Ni                 801 Gl
+Zathlid       1117 EAA4413-8                       701 Kx
+Iberia        1118 AAB48B9-A                       301 Kx
+Lazica        1119 CAC9567-7    Ni                 200 Kx
+Krax          1120 A782995-D    Ca                 401 Kx
+Tinworld      1211 C257376-6    Ni                 800 Gl
+Tokeebanga    1212 C000300-9    As                 101 Gl
+Uzi           1213 B564594-8    Ag                 700 Gl
+Asding        1216 A221798-D    Na                 100 Kx
+Siling        1218 C0008A6-A    As                 301 Kx
+Alan          1220 A000300-B    As                 701 Kx
+Redworld      1314 A000438-A    As                 201 Gl
+Utigur        1317 B342A98-E    In                 701 Kx
+Sabirian      1319 X000300-9    As                 401 Kx
+Waterstone    1411 A000944-A    As                 901 Gl
+Loo           1412 EAC3768-A                       700 Gl
+Frama         1419 C264740-5                       101 Kx
+Krina         1420 AAB4988-B  N                    300 Kx
+Quicksilver   1511 E0007A5-A    As                 601 Gl
+Yangky        1513 C200578-A    Ni                 901 Gl
+Whiteplains   1515 D695387-6    Ni                 900 Gl
+Zrintel       1517 C212474-A    Ni                 200 Kx
+Rasma         1519 C684763-7    Ri Ag           A  301 Kx
+Minotaur      1612 X100767-A    Na                 901 Gl
+Lodestone     1613 X200474-A    Ni                 601 Gl
+Logansport    1614 A110527-B    Ni                 601 Gl
+Tinto         1618 AAB4788-A                       400 Kx
+Zrotax        1620 B2319A5-9    In                 300 Kx
+@SUB-SECTOR: sec_g   SECTOR: glimdrft
+#
+#Jump Routes
+$1719 1618 -1 0
+$1811 1810 0 -1
+$1811 1912 0 0
+$1817 1618 -1 0
+$1817 1918 0 0
+$1820 1519 -1 0
+$1820 1922 0 1
+$1912 1913 0 0
+$1912 2112 0 0
+$1913 1914 0 0
+$1914 2114 0 0
+$1918 2118 0 0
+$2112 2211 0 0
+$2113 2114 0 0
+$2117 2316 0 0
+$2117 2118 0 0
+$2118 2219 0 0
+$2315 2413 0 0
+$2315 2316 0 0
+$2316 2416 0 0
+$2413 2513 1 0
+$2416 2516 1 0
+$2416 2417 0 0
+#
+#--------1---------2---------3---------4---------5----------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- --
+Labila        1713 D493578-5    Ni                 400 Gl
+Russell       1715 X000346-8    As                 301 Gl
+Rimma         1717 D110385-7    Ni                 801 Kx
+Linmar        1719 A000300-B    As                 201 Kx
+Sakkara       1811 A2108B6-A    Na                 801 Gl
+Sansabia      1812 C598100-6    Ni                 300 Gl
+Nitsaw        1817 A654400-B    Ni                 701 Kx
+Oelm          1818 DAA5342-A    Ni                 500 Kx
+Estin         1820 B492479-9    Na                 200 Kx
+Gaucho        1912 A220744-A    Na                 201 Gl
+Sao           1913 B210676-A    Na                 801 Gl
+Jeffer-Scott  1914 BA99588-A    Ni                 400 Gl
+Spalding      1916 B232676-9    Na                 701 Na
+Almin         1918 DAA9489-5    Ni                 100 Kx
+Akbar         1919 D000469-A    As                 300 Kx
+Stetson       2014 DAC9437-A    Ni                 400 Gl
+Bourre        2020 X231658-3    Na              A  301 Kx
+Yanika        2112 D210373-6    Ni                 201 Gl
+Charlotte     2113 B100300-A    Ni                 101 Gl
+Dolly Vee     2114 AAB4377-A    Ni                 900 Gl
+Vincennes     2117 A210500-A    Ni                 501 Na
+Lacako        2118 A000476-D    As                 201 Na
+Spider Sea    2211 A758400-A    Ni                 100 Gl
+Williamsburg  2219 B000989-D    As In              801 Na
+Woodruff      2312 EAB2587-A    Ni                 500 Na
+Bolshevik     2315 A000279-B    As                 701 Mn
+Kanata        2316 B347553-9    Ag                 501 Mn
+Cazor         2318 E120100-A    Ni                 101 Mn
+Cloverdale    2413 CAA1400-A    Ni                 501 Mn
+Tschen        2414 EAC1944-A                       900 Mn
+Sussex        2416 B120400-A    Ni                 301 Mn
+Dondo         2417 A688100-C    Ni                 400 Mn
+Doom Master   2419 EAC1576-A    Ni                 501 Na
+@SUB-SECTOR: sec_h  SECTOR: glimdrft
+#
+#Jump Routes
+$2513 2413 -1 0
+$2513 2612 0 0
+$2516 2416 -1 0
+$2516 2615 0 0
+$2612 2711 0 0
+$2612 2613 0 0
+$2613 2615 0 0
+$2613 2714 0 0
+$2615 2715 0 0
+$2711 2810 0 -1
+$2714 2715 0 0
+$2715 2814 0 0
+$2715 2816 0 0
+$2816 2918 0 0
+$2912 2810 0 -1
+$2912 3112 0 0
+$2918 3016 0 0
+$2918 2919 0 0
+$2919 2920 0 0
+$2920 3121 0 1
+$3016 3215 0 0
+$3112 3212 0 0
+$3212 0113 1 0
+$3212 3214 0 0
+$3214 0214 1 0
+$3214 3215 0 0
+#
+#--------1---------2---------3---------4---------5----------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- --
+Agon          2513 E220549-8                       101 Mn
+Guadelupe     2516 DA69647-5    Ri Na              801 Mn
+Hernosadd     2519 EABA972-8    Wa                 100 Mn
+Apolis        2611 XAB9500-8    Ni                 200 Mn
+Apan          2612 D372586-7    Ni                 301 Mn
+Kinja         2613 AAC4500-A    Ni                 300 Mn
+Kotah         2615 A110620-A    Na                 800 Mn
+Londonderry   2619 A000675-A    As                 601 Mn
+Luxeuil       2711 C554156-7    Ni                 700 Mn
+Niv           2714 A100400-B    Ni                 200 Mn
+Ocra          2715 A000588-A    As                 801 Mn
+Carpathia     2716 CAA1A57-A                       600 Mn
+Esefer        2718 C000496-B    As                 801 Mn
+Sanulia       2812 XAB9766-A                       601 Mn
+Coneworld     2814 A857988-B                       500 Mn
+Sulivan       2816 BABA300-A    Ni                 301 Mn
+Tasmania      2817 C756357-8    Ni                 100 Mn
+Thunder       2820 CAB2200-A    Ni                 901 Mn
+Dona          2911 X212883-8    Na                 901 Mn
+Oblast        2912 A485340-B    Ni                 700 Mn
+Usob          2918 BAA1495-B    Ni                 300 Mn
+New Virginia  2919 A348546-B    Ag                 201 Mn
+Wexham        2920 EAA1200-8    Ni                 900 Mn
+Shirol        3013 D100687-8    Na                 501 Mn
+Zamboanga     3014 E110686-B    Na                 501 Mn
+Appalachia    3016 A200263-B    Ni                 101 Mn
+Blumenu       3018 XAB1100-A    Ni                 400 Mn
+Claw          3112 XAC2949-A                       701 Mn
+Clarendon     3117 C788658-7    Ri Ag              701 Mn
+Benin         3118 XAA9499-A    Ni                 900 Mn
+Gysburg       3212 A210276-A    Ni                 300 Mn
+Iriga         3214 A698775-9    Ag                 201 Mn
+Kalix         3215 EACA100-A    Wa                 500 Mn
+Labria        3218 X120657-8    Na                 901 Mn
+Manning       3219 E346300-6    Ni                 100 Mn
+Mifraz        3220 D964699-5    Ri Ag              501 Mn
+@SUB-SECTOR: sec_i   SECTOR: glimdrft
+#
+#Jump Routes
+$0129 0229 0 0
+$0225 0525 0 0
+$0225 0427 0 0
+$0229 0331 0 1
+$0423 0624 0 0
+$0427 0628 0 0
+$0525 0624 0 0
+$0527 0626 0 0
+$0621 0620 0 -1
+$0621 0624 0 0
+$0624 0924 1 0
+$0624 0626 0 0
+$0626 0826 0 0
+$0626 0627 0 0
+$0627 0628 0 0
+$0628 0730 0 0
+$0730 0731 0 1
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Natal         0121 C001611-C    As                 301 Na
+Havan         0129 D478877-5                       900 Im
+Kalima        0224 E000669-9    As                 801 Kx
+Tellmar       0225 A9599A8-C    Ni                 200 Kx
+Tralmar       0227 C110500-B    Ni                 601 Kx
+Carlyle       0229 AAB1560-C    Ni                 501 Im
+Norristown    0230 EAAA494-A    Wa                 300 Im
+Frenzo        0325 XAAA664-8    Wa                 700 Kx
+Blumorn       0327 E130576-8    Ni                 501 Kx
+Ramin         0423 B767873-9    Ni                 801 Kx
+Kinsharth     0424 X765779-5    Ri Ag           R  501 Kx
+Hyline        0427 BA8A549-B    Wa                 900 Kx
+Dustie        0428 D000300-9    As                 201 Kx
+Krantell      0523 XAB25A5-8    Ni                 100 Kx
+Farmin        0525 AAAA476-C    Wa                 200 Kx
+Even          0527 A120965-C    In                 301 Kx
+Farwall       0621 A664668-B    Ri Ag              301 Kx
+Shanza        0624 B589536-B    Ni                 901 Kx
+Endit         0626 BA92794-B  N                    401 Kx
+Landing       0627 C000838-A    As                 101 Kx
+Nuway         0628 A876996-C                       800 Kx
+Putdown       0629 C000753-B    As In              401 Kx
+K'stat        0721 DAB2556-8    Ni                 500 Kx
+K'free        0723 D000583-9    As                 901 Kx
+Trazewell     0725 X000000-0    As                 000 Kx
+Frenty        0726 XAA1200-7    Ni                 700 Kx
+Zafire        0728 C546667-A    Ag                 401 Kx
+Grendel       0729 X130272-7    Ni                 101 Kx
+Hrothgar      0730 A654300-E    Ni                 600 Kx
+Beowulf       0821 E000640-A    As                 901 Kx
+Flast         0824 X220500-6    Ni                 601 Kx
+Plash         0826 B130476-B    Ni                 501 Kx
+Zara          0830 C000769-8    As                 701 Kx
+@SUB-SECTOR: sec_j   SECTOR: glimdrft
+#
+#Jump Routes
+$0921 1120 0 -1
+$0921 0924 0 0
+$0924 0624 -1 0
+$1127 1225 0 0
+$1127 1327 0 0
+$1225 1327 0 0
+$1229 1331 0 1
+$1327 1527 0 0
+$1421 1420 0 -1
+$1421 1422 0 0
+$1430 1331 0 1
+$1527 1528 0 0
+$1530 1430 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Trento        0921 AAA2564-D  N Ni                 901 Kx
+Randabar      0924 A886411-C    Ni                 801 Kx
+Katmere       0927 CABA798-A    Wa                 500 Kx
+Trieste       0928 X100261-8    Ni                 801 Kx
+Neot          1021 EAC2576-9    Ni                 101 Kx
+Wastin        1022 DAB9200-8    Ni                 500 Kx
+Flubit        1024 CAB1467-A                       200 Kx
+Kushan        1123 X232000-0                       000 Kx
+Suevi         1124 D000500-A    As                 701 Kx
+Ord           1127 BAB1300-A    Ni                 700 Na
+Ficin         1129 D1105A5-A    Ni                 801 Na
+Kutrigur      1222 X000000-0    As                 001 Kx
+Poonch        1225 B232853-C    Na                 301 Na
+Qazvin        1229 A000300-8    As                 501 Za
+Irdon         1230 C86A468-8    Wa                 800 Za
+Slina         1323 E000554-9    As                 201 Kx
+Port Peters   1327 AAC9459-C    Ni                 201 Na
+Susquashanna  1329 E757635-8    Ag                 100 Za
+Caba          1421 BAC1347-C    Ni                 801 Kx
+Afin          1422 A4998A6-E    Ni                 501 Kx
+Artin         1423 XAC1210-A                       800 Kx
+Tamia         1425 XAB1766-8                       400 Na
+Djis          1430 C110574-9    Ni                 701 Za
+Uzlovaya      1527 B1106B6-9    Na                 101 Na
+Felicia       1528 BAC1586-C    Ni                 700 Na
+Dell          1530 B110159-8    Ni                 901 Za
+Lindin        1621 D000200-A    As                 401 Kx
+Raka          1623 C000494-B    As                 601 Kx
+Szczcinski    1626 EAB1375-8    Ni                 600 Na
+Alexandria    1630 D200568-8    Ni                 201 Za
+@SUB-SECTOR: sec_k   SECTOR: glimdrft
+#
+#Jump Routes
+$1725 1926 0 0
+$1922 1820 0 -1
+$1926 2026 0 0
+$1929 2128 0 0
+$2026 2128 0 0
+$2128 2327 0 0
+$2128 2329 0 0
+#
+#--------1---------2---------3---------4---------5----------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- --
+Lindran       1722 D000440-A    As                 301 Kx
+Vassel        1725 A000576-B    As                 501 Na
+El Dorado     1729 C200536-8    Ni                 701 Na
+Krasi         1822 C130257-C    Ni                 601 Kx
+Astrid        1823 EAB9372-5    Ni                 901 Kx
+Cerinola      1827 EAA1568-A    Ni                 900 Na
+Abin          1922 A654754-D    Ag                 800 Kx
+Andres        1925 E000786-8    As                 101 Na
+Firenzi       1926 A798100-C    Ni                 300 Na
+Galax         1929 A000169-C    As                 601 Na
+Sosie         2021 D000788-9    In                 801 Kx
+Taglia        2026 B1305A6-9    Ni                 501 Na
+Hazzard       2030 X232883-8    Na                 901 Na
+Czar          2124 C1007C7-8    Na                 601 Na
+Rumfill       2126 E476400-5    Ni                 700 Na
+Sahara        2128 AA58356-C    Ni                 301 Na
+Longion       2221 XAC25A5-A    Ni                 100 Na
+Gazelle       2222 X000523-A    As                 601 Na
+Britlan       2224 EAB1384-A    Ni                 200 Na
+Casino        2327 B000383-A    As                 901 Na
+Numidios      2328 D130272-A    Ni                 501 Na
+Outjo         2329 AAAA579-C    Wa                 700 Na
+Qa            2423 CAC96A7-A    Ni                 400 Na
+Pegu          2425 B000400-C    As                 901 Na
+Dozur         2429 EAC1661-A    Ni                 500 Na
+@SUB-SECTOR: sec_l   SECTOR: glimdrft
+#
+#Jump Routes
+$2627 2628 0 0
+$2628 2827 0 0
+$2628 2829 0 0
+$2722 2822 0 0
+$2822 2824 0 0
+$3121 2920 0 -1
+$3121 0121 1 0
+$3121 3132 0 0
+#
+#--------1---------2---------3---------4---------5----------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- --
+Ryazan        2522 E59AA94-7    Wa In              701 Na
+Fitla         2524 C231300-9    Ni                 500 Na
+Sergy         2529 DABA546-8    Wa Ni              501 Na
+Sokolov       2622 X110100-8    Ni                 600 Na
+Spoleto       2625 XAAA878-A    Wa                 701 Na
+Staat         2626 D210894-7    Na                 701 Na
+Tai Hu        2627 AAA1483-C    Ni                 100 Na
+Turburan      2628 A542689-8    In                 900 Na
+Mali          2630 X120994-8    In                 901 Na
+Joyosa        2722 AAC9723-9                       401 Na
+Windover      2822 BAC2689-A    Ni                 901 Na
+Winooski      2824 A456272-C    Ni                 900 Na
+Weschester    2827 B5858A5-9    Ag                 300 Na
+Jeni          2829 A232694-9    Na                 601 Na
+Zamki         2926 CAB18A7-9    Ni                 100 Na
+Mergatroid    2929 EAC1A84-A                       300 Na
+Bartica       3023 C100797-8    Na                 401 Na
+Cork          3025 C130657-A    Na                 801 Na
+Iloilo        3029 CAB18A7-A                       601 Na
+Jauf          3121 C767200-4    Ni                 100 Mn
+Kara Su       3122 A110200-C    Ni                 401 Mn
+Ninaken       3125 B232472-A    Ni                 700 Na
+Sarowar       3227 AAC2647-9    Ni                 601 Na
+@SUB-SECTOR: sec_m   SECTOR: glimdrft
+#
+#Jump Routes
+$0132 0333 0 0
+$0224 0333 0 0
+$0236 0333 0 0
+$0236 0339 0 0
+$0331 0229 0 -1
+$0331 0333 0 0
+$0331 0432 0 0
+$0333 0433 0 0
+$0337 0436 0 0
+$0339 0101 0 1
+$0339 0637 0 0
+$0432 0433 0 0
+$0433 0534 0 0
+$0433 0435 0 0
+$0435 0436 0 0
+$0435 0635 0 0
+$0436 0637 0 0
+$0534 0733 0 0
+$0534 0635 0 0
+$0635 0637 0 0
+$0731 0730 0 -1
+$0731 0733 0 0
+#
+#--------1---------2---------3---------4---------5----------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- --
+Messara       0131 E452300-5                       100 Im
+Mou           0132 A000576-C    As                 901 Im
+Yagawa        0134 B110830-A    Na                 601 Im
+Galnor        0139 B357649-A    Ni                 600 Im
+Hangstar      0234 D221320-6    Ni                 900 Im
+Phasis        0236 D453744-5    Ag                 700 Im
+Pindare       0331 AAA1974-A  2                    801 Im
+Sterling      0333 A000799-A    As                 901 Im
+Zucko         0337 B120163-C    Ni                 201 Im
+Taji          0338 C232566-9    Ni                 801 Im
+Sugarbush     0339 C564223-8    Ni                 200 Im
+Parda         0340 EAB1449-A    Ni                 500 Im
+Frisney       0432 B554A66-B                       901 Im
+Valdai        0433 A000349-B    As                 801 Im
+Verona        0435 A675356-9    Ni                 400 Im
+Franklin      0436 C130AA4-B    In                 501 Im
+Halsey        0534 D200727-8  S Na                 901 Im
+Giyul         0539 EAC2000-0                       000 Im
+Andorus       0540 X0008B9-8    As                 601 Im
+Icewind       0635 A100115-C    Ni                 601 Im
+Khartago      0637 B210944-B  N In                 401 Im
+Herot         0731 X000888-8    As                 601 Kx
+Kildonovan    0733 CAA9AD9-C                       900 Na
+Halifax       0738 C786677-8    Ri Ag              800 Im
+Imbabura      0739 E000886-8    As                 101 Im
+Istok         0834 X110400-8    Ni                 401 Na
+@SUB-SECTOR: sec_n   SECTOR: glimdrft
+#
+#Jump Routes
+$0935 1134 0 0
+$0935 0936 0 0
+$1134 1135 0 0
+$1134 1335 0 0
+$1331 1229 0 -1
+$1331 1430 0 -1
+$1331 1333 0 0
+$1333 1434 0 0
+$1335 1434 0 0
+$1434 1534 0 0
+$1434 1536 0 0
+$1534 1633 0 0
+$1536 1537 0 0
+$1537 1736 1 0
+$1633 1733 1 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Gorizia       0931 C000894-9    As                 401 Kx
+Fuime         0932 E100421-9                       401 Kx
+Kali          0935 A222963-8    In                 201 Za
+Ko Hu         0936 BABA511-8    Wa                 600 Za
+Carla         0940 C000755-B    As                 901 In
+Maceio        1035 C897775-9    Ag                 301 Za
+Madidi        1036 E1209C9-8    In                 601 Za
+Keewat        1133 X230AB9-8    In                 101 Za
+Chutes        1134 AAC5751-9                       800 Za
+Schneider     1135 B000443-A    As                 101 Za
+Prospect      1137 C130A77-9    In                 801 Za
+Skagway       1231 D200555-9    Ni                 901 Za
+Rhin          1235 EAA1144-C    Ni                 501 Za
+Zipple        1238 E948AD9-B                       200 Za
+Bethguerra    1331 A000677-A    As                 701 Za
+Sivash        1333 B100674-B    Na                 801 Za
+Hyde          1335 A665966-E                       800 Za
+Suddengrave   1338 D210AA6-9    In                 301 Za
+Szolnok       1339 EAB2111-8    Ni                 700 Za
+Taor          1431 X000226-A    As                 100 Za
+Liberty       1434 A1106B9-D    Na                 801 Za
+Sheboygan     1435 B220132-D    Ni                 501 Za
+Trebic        1438 CAC9466-9    Ni                 900 Za
+Pasak         1532 D000110-A    As                 401 Za
+Swift         1533 DA5AAA7-A    Wa                 900 Za
+Cheetah       1534 X120400-C    Ni                 901 Za
+Vale          1536 C657594-A    Ag                 800 Za
+Yamdrok       1537 B787879-B    Ag                 501 Za
+Treslin       1538 E654554-9    Ag                 901 Za
+Joes Hermtage 1633 C432321-6    Ni                 301 Za
+Lecht         1638 E543100-7    Ni                 500 Za
+@SUB-SECTOR: sec_o   SECTOR: glimdrft
+#
+#Jump Routes
+$1732 1733 0 0
+$1733 1633 -1 0
+$1733 1735 0 0
+$1735 1736 0 0
+$1736 1537 -1 0
+$1934 2134 0 0
+$1935 2134 0 0
+$2132 2134 0 0
+$2134 2435 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Borja         1731 X130500-8    Ni                 601 Za
+Calleyville   1732 A200532-8    Ni                 101 Za
+Decanesia     1733 BAB1400-8    Ni                 101 Za
+Karol         1735 B594596-8    Ag                 600 Za
+Machpelah     1736 A000956-B    As In              201 Za
+Hucknail      1738 E100555-8    Ni                 601 Za
+Jain          1832 X210400-8    Ni                 201 Za
+Hio           1934 AAC1340-9    Ni                 700 Na
+Bertville     1935 B000116-9    As                 201 Na
+Luga          1937 C1105A9-A    Ni                 601 Na
+Minit         1940 D221A86-A    In                 700 Na
+Navajo        2031 EAA2635-A    Ni                 501 Na
+Monitor       2039 C000400-C    As                 101 Na
+Phigalia      2132 A120516-B    Ni                 201 Na
+Sepik         2134 B232966-B    In                 300 Na
+Madryn        2137 CAB9988-C                       401 Na
+Kalahari      2239 C645412-7    Ni                 801 Na
+Sudetic       2332 E000488-8    As                 300 Na
+Zarvas        2337 X1306B5-8    Ni                 201 Na
+Thames        2435 A200567-C    Ni                 801 Na
+Tirolios      2438 BACA994-A    Wa                 600 Na
+@SUB-SECTOR: sec_p   SECTOR: glimdrft
+#
+#Jump Routes
+$3238 3239 0 0
+$3239 0140 1 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Tusruga       2534 C000555-A    As                 701 Na
+Vinyl         2633 C569566-9    Ag                 900 Na
+Witlock       2636 E100415-6    Ni                 501 Na
+Wisloka       2638 X210596-6    Ni                 601 Na
+Autonomy      2639 AAA5147-D    Ni                 600 Na
+Polydor       2735 B0008B9-B    As                 801 Na
+Symz          2831 C110111-7    Ni                 201 Na
+Bangor        2833 D222849-5    Na                 500 Na
+Caria         2838 EAB1140-6    Ni                 300 Na
+Chavez        2932 X000500-A    As                 900 Na
+Natalie       2936 A867338-B    Ni                 600 Na
+Dublon        3034 B120654-B    Na                 201 Na
+Salt Lick     3036 C230284-7    Ni                 101 Na
+I'Boi         3039 DAC2662-5    Ni                 300 Rn
+Lindsey       3131 E000477-8    As                 100 Na
+Manawatu      3134 X130876-5    Na                 501 Na
+Daro          3235 A200664-B    Na                 201 Na
+T'Fto         3238 B000100-D    As                 501 Rn
+Rofa          3239 B978477-8  N Ni                 200 Rn
