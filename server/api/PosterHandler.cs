@@ -73,6 +73,8 @@ namespace Maps.API
                     // TODO: K'kree
                     // TODO: Zhodani provinces
 
+                    case "jg": x = 100; y = 100; w = 2; h = 2; title = "Judges Guild"; break;
+
                     default:
                         SendError(context.Response, 404, "Not Found", String.Format("Unknown domain: {0}", domain));
                         return;
