@@ -133,6 +133,7 @@ namespace Maps
                     {
                         new SectorMetafileEntry(@"~/res/legend.xml", new List<string> { "meta" } ),
                         new SectorMetafileEntry(@"~/res/sectors.xml", new List<string> { "OTU" } ),
+                        new SectorMetafileEntry(@"~/res/faraway.xml", new List<string> { "Faraway" } ),
                         new SectorMetafileEntry(@"~/res/ZhodaniCoreRoute.xml", new List<string> { "ZCR" } )
                     };                        
 
