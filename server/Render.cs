@@ -1461,20 +1461,19 @@ namespace Maps.Rendering
 
                         float? routeWidth = route.Width;
                         Color? routeColor = route.Color;
-                        Route.RouteStyle? routeStyle = route.Style;
+                        LineStyle? routeStyle = route.Style;
 
-                        //
                         SectorStylesheet.StyleResult ssr = sector.ApplyStylesheet("route", route.Allegiance ?? route.Type ?? "Im");
-                        routeStyle = routeStyle ?? ssr.GetEnum<Route.RouteStyle>("style");
+                        routeStyle = routeStyle ?? ssr.GetEnum<LineStyle>("style");
                         routeColor = routeColor ?? ssr.GetColor("color");
                         routeWidth = routeWidth ?? (float?)ssr.GetNumber("width") ?? 1.0f;
 
                         // In grayscale, convert default color and style to non-default style
                         if (ctx.styles.grayscale && !routeColor.HasValue && !routeStyle.HasValue)
-                            routeStyle = Route.RouteStyle.Dashed;
+                            routeStyle = LineStyle.Dashed;
 
                         routeColor = routeColor ?? ctx.styles.microRoutes.pen.color;
-                        routeStyle = routeStyle ?? Route.RouteStyle.Solid;
+                        routeStyle = routeStyle ?? LineStyle.Solid;
 
                         // Ensure color is visible
                         if (ctx.styles.grayscale || !ColorUtil.NoticeableDifference(routeColor.Value, ctx.styles.backgroundColor))
@@ -1482,7 +1481,7 @@ namespace Maps.Rendering
 
                         pen.Color = routeColor.Value;
                         pen.Width = routeWidth.Value * baseWidth;
-                        pen.DashStyle = RouteStyleToDashStyle(routeStyle.Value);
+                        pen.DashStyle = LineStyleToDashStyle(routeStyle.Value);
 
                         ctx.graphics.DrawLine(pen, startPoint, endPoint);
                     }
@@ -1490,14 +1489,14 @@ namespace Maps.Rendering
             }
         }
 
-        private static XDashStyle RouteStyleToDashStyle(Route.RouteStyle routeStyle)
+        private static XDashStyle LineStyleToDashStyle(LineStyle style)
         {
-            switch (routeStyle)
+            switch (style)
             {
                 default:
-                case Route.RouteStyle.Solid: return XDashStyle.Solid;
-                case Route.RouteStyle.Dashed: return XDashStyle.Dash;
-                case Route.RouteStyle.Dotted: return XDashStyle.Dot;
+                case LineStyle.Solid: return XDashStyle.Solid;
+                case LineStyle.Dashed: return XDashStyle.Dash;
+                case LineStyle.Dotted: return XDashStyle.Dot;
             }
         }
 
@@ -1544,7 +1543,10 @@ namespace Maps.Rendering
                         XGraphicsPath clipPath = new XGraphicsPath(borderPath.clipPathPoints, borderPath.clipPathTypes, XFillMode.Alternate);
 
                         Color? borderColor = border.Color;
+                        LineStyle? borderStyle = border.Style;
+
                         SectorStylesheet.StyleResult ssr = sector.ApplyStylesheet("border", border.Allegiance);
+                        borderStyle = borderStyle ?? ssr.GetEnum<LineStyle>("style") ?? LineStyle.Solid;
                         borderColor = borderColor ?? ssr.GetColor("color") ?? ctx.styles.microBorders.pen.color;
 
                         if (ctx.styles.grayscale ||
@@ -1553,6 +1555,7 @@ namespace Maps.Rendering
                             borderColor = ctx.styles.microBorders.pen.color; // default
                         }
                         pen.Color = borderColor.Value;
+                        pen.DashStyle = LineStyleToDashStyle(borderStyle.Value);
 
                         if (ctx.styles.microBorderStyle != MicroBorderStyle.Curve)
                         {

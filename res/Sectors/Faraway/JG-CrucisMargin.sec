@@ -153,162 +153,21 @@
 # P: Falaya
 
 # Allegiances:
-# Sx: Sphere Fenix
-# Uc: Union Crucis
 # C1: Crucis, Sliv Faction
-# Ry: Ramayan
-# Na: Non-aligned
-# Rn: Rm Nai
-# Md: Mandanin Co-Dominion
-# C4: Crucis, Cast Faction
-# Hi: Hv'ika Kamlin
 # C2: Crucis, Nar Faction
 # C3: Crucis, Suo Faction
+# C4: Crucis, Cast Faction
 # Ck: Chhung Kuo
-# --: Unknown
+# Hi: Hv'ika Kamlin
+# Mn: Mandanin Co-Dominion
+# Na: Non-aligned
+# Rn: Rm Nai
+# Ry: Ramayan
+# Sx: Sphere Fenix
+# Uc: Union Crucis
 
+# Ark
 
-@SUB-SECTOR: Accra SECTOR: Crucis Margin
-#
-# Jump-routes
-$0923 0722 -1 0 11
-$1027 0827 -1 0 11
-$1630 1530 0 0 11
-$1530 1430 0 0 11
-$1430 1330 0 0 11
-$1330 1130 0 0 11
-$1130 1128 0 0 11
-$1128 1027 0 0 11
-$1027 1126 0 0 11
-$1126 1125 0 0 11
-$1125 1023 0 0 11
-$1023 0923 0 0 11
-$1125 1325 0 0 11
-$1325 1426 0 0 11
-$1426 1427 0 0 11
-$1427 1528 0 0 11
-$1528 1530 0 0 11
-$1626 1624 0 0 11
-$1624 1523 0 0 11
-$1523 1621 0 0 11
-$1621 1620 0 -1 11
-$1626 1726 1 0 11
-$1626 1727 1 0 11
-$1430 1332 0 1 11
-$1630 1632 0 1 11
-#
-#--------1---------2---------3---------4---------5---------6---
-#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
-#----------   ---- ---------  - --------------- -  --- -- --- -
-Baragoi       0923 C896569-B    Ag                 200 Md
-Soroti        0924 D875155-9    Ni                 104 Md
-Lodwar        0926 D585869-C                       322 Md
-Mbale         0929 D786200-A    Ni                 220 Md
-Tororo        1023 C566664-B    Ag Ri              205 Md
-Kagamega      1027 B566653-C    Ag Ri              900 Md
-Kisil         1030 E366345-B    Ni                 310 Md
-Narok         1122 D5757A3-C    Ag                 803 Na
-Ngong         1124 D578308-8    Ni                 300 Md
-Tsavo         1125 A474A98-E  N In                 600 Md
-Konza         1126 C000759-C    As                 213 Md
-Thikan        1128 C756541-A    Ag                 403 Md
-Embu          1130 B844674-C    Ag                 500 Md
-Nyeri         1226 D387674-9    Ag Ri              303 Md
-Daboya        1321 D555858-9                       310 Na
-Tamale        1323 E687617-B    Ag                 623 Na
-Yendi         1325 C273755-C                       221 Md
-Yapei         1327 D332591-8    Na Po              200 Md
-Bole          1330 C659376-A    Ni                 712 Md
-Wenchi        1426 C100475-B    Va                 503 Md
-Tumu          1427 B355532-B    Ag                 614 Md
-Navrongo      1428 D493854-9  S                    100 Md
-Zuarungu      1429 D200789-B    Va                 104 Md     f
-Akim Oda      1430 C220456-B    De                 104 Md
-Sba           1523 C8788A5-A                       800 C2
-Keta          1528 C562333-A    Ni                 214 Md
-Accra         1530 A6679C9-D  N                    900 Md
-Kerzaz        1621 C0005A6-C    As                 604 C2
-Adrar         1624 C310527-C    De                 513 C2
-Guerzim       1626 B756759-B  S Ag                 702 C2     f
-Bechar        1630 C353539-B    Ni                 912 Md
-@SUB-SECTOR: Andalusia SECTOR: Crucis Margin
-#
-# Jump-routes
-$2522 2520 0 -1 11
-$3221 3220 0 -1 11
-$3226 2826 0 0 11
-$2826 2625 0 0 11
-$2625 2623 0 0 11
-$2623 2522 0 0 11
-$2623 2823 0 0 11
-$2823 3221 0 0 11
-$3130 3030 0 0 11
-$3030 2830 0 0 11
-$3030 3028 0 0 11
-$3028 2728 0 0 11
-$2728 2528 0 0 11
-$2728 2826 0 0 11
-$2528 2428 -1 0 11
-$3030 3031 0 1 11
-$2830 2532 0 1 11
-$3130 0130 1 0 11
-$3226 0126 1 0 11
-$3221 0221 1 0 11
-#
-#--------1---------2---------3---------4---------5---------6---
-#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
-#----------   ---- ---------  - --------------- -  --- -- --- -
-Uterea        2522 C659695-A    Ni                 210 C4
-Coin          2525 D543889-A    Po                 304 Uc
-Ivalo         2528 C333334-C    Na Po              900 C3
-Tervola       2530 E8B8210-9    Ni                 705 C4
-Ecija         2623 A674A99-D    In Cx              100 C4     f
-Ronda         2625 C855638-A    Ag                 104 C4
-Pokka         2627 D684786-A    Ag                 900 Uc
-Vaala         2630 D687775-C    Ag Ri              204 C3
-Osuna         2722 E84A439-8    Wa                 100 C4
-Ranua         2728 AA69779-D                       402 C3
-Albox         2823 C220645-B    De                 302 C4
-Lorea         2826 B330552-B    De                 904 C4
-Athari        2830 C879799-9                       400 C3
-Jaen          2921 E557759-9    Ag                 513 C4
-Jodar         2923 C646789-C    Ag                 100 C4
-Rute          2927 D100437-B    Va                 513 Uc
-Alcala        3022 C535444-B    Na                 600 C4
-Almonte       3024 E6A7585-9    Ni                 902 Uc
-Rinlo         3026 C131636-B    Ni Po              800 C4
-Varkaus       3027 E310433-A    De                 703 Uc
-Toijala       3028 C9CA341-C    Wa                 710 C3
-Lahti         3030 A597AC9-E  N In                 103 C3
-Baena         3121 D584839-A                       804 C4
-Keski         3130 C987553-9    Ag                 100 C3
-Rota          3221 A676886-E  N                    302 C4
-Vejir         3223 E679408-8    Ni                 600 Uc
-Chiclana      3226 C776667-C    Ag                 802 C4
-@SUB-SECTOR: Ark SECTOR: Crucis Margin
-#
-# Jump-routes
-$0202 0206 0 0 11
-$0202 0401 0 0 11
-$0206 0704 0 0 11
-$0505 0510 0 0 11
-$0206 0308 0 0 11
-$0308 0508 0 0 11
-$0508 0709 0 0 11
-$0709 0810 0 0 11
-$0704 0804 0 0 11
-$0401 0601 0 0 11
-$0601 0702 0 0 11
-$0702 0704 0 0 11
-$0804 0907 1 0 11
-$0702 0903 1 0 11
-$0810 0811 0 1 11
-$0510 0611 0 1 11
-$0810 0910 1 0 11
-#
-#--------1---------2---------3---------4---------5---------6---
-#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
-#----------   ---- ---------  - --------------- -  --- -- --- -
 Aiwo          0101 D685745-5    Ag                 702 Na
 Boe           0103 B897896-A                       101 Na
 Acier         0106 EAC4352-9    Ni                 820 Na
@@ -327,343 +186,18 @@ Buada         0505 B232411-E  N Ni Po              110 Sx
 Tasmilma      0507 C768646-A    Ag Ri              100 Sx
 Arket         0508 A886989-E  N                    120 Sx
 Vryheid       0510 C400310-D  S Ro                 605 Sx
-Uaboe         0601 C965669-A    Ag                 110 Sx     f
+Uaboe         0601 C965669-A    Ag                 110 Sx
 Martre        0606 C343689-B    Ni Po              100 Sx
-Ewa           0702 A200789-D    Va                 103 Sx     f
+Ewa           0702 A200789-D    Va                 103 Sx
 Abricot       0704 A97A899-E    Wa                 700 Sx
 Babia         0707 E554173-8    Ni Po              800 Sx
 Malini        0709 B86A989-B    Wa                 110 Sx
 Aldrin        0804 E000453-A    As                 203 Sx
 Genk          0807 C66A969-B    Wa                 700 Sx
 Djebeha       0810 B400682-C    Ro                 115 Sx
-@SUB-SECTOR: Asturias SECTOR: Crucis Margin
-#
-# Jump-routes
-$2518 2417 -1 0 11
-$2518 2520 0 0 11
-$2520 2420 -1 0 11
-$2612 2713 0 0 11
-$2713 2812 0 0 11
-$2812 2810 0 -1 11
-$2612 2610 0 -1 11
-$2718 2518 0 0 11
-$3220 2718 0 0 11
-$2815 2916 0 0 10
-$2916 3015 0 0 10
-$3015 3215 0 0 10
-$3113 3011 0 0 10
-$3011 3110 0 -1 10
-$2520 2522 0 1 11
-$3220 3221 0 1 11
-#
-#--------1---------2---------3---------4---------5---------6---
-#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
-#----------   ---- ---------  - --------------- -  --- -- --- -
-Ferrol        2518 A438739-E  N                    105 C4
-Cruz          2520 B55A859-C    Wa                 210 C4
-Hu            2612 C795464-B    Ni                 900 Ck
-Sedano        2615 D410352-8    De                 323 Na
-Vivero        2618 D432555-A    Ni Po              513 Uc
-Heng-o        2713 A748683-E  N Ag                 403 Ch
-Laurca        2718 C210627-B    De                 510 C4
-Oviedo        2719 E6A4220-9    Ni                 530 C4
-Shun          2811 B586548-B    Ag                 712 Ch
-Ming          2812 D452205-A    Ni Po              411 Ch
-Tsi           2813 E756446-B    Ni                 620 Ch
-Dax           2815 B6A6408-A    Ni                 402 Na
-Llanes        2818 D57A766-B    Wa                 210 C4
-Sahagun       2820 E9B8345-A    Ni                 720 Uc
-Aviles        2916 E94A476-9    Wa                 704 Na
-Potes         2918 E5765A5-8    Ag                 220 Uc
-Micres        2920 D77A999-B    In Wa              224 C4
-Foix          3011 C200210-A    Ni Va              704 Na
-Adour         3013 E355212-B    Ni                 400 Na
-Auch          3015 C581565-9    Ni                 313 Na
-Sestao        3019 C6838A8-A                       500 C4
-Pau           3113 B677778-C    Ag                 200 Na
-Irun          3117 E768787-9    Ag Ri              304 Na
-Bermeo        3119 D110432-C    De                 503 C4
-Sete          3211 D663868-A                       212 Na
-Estella       3215 B300416-C    Ni Ro              600 Na
-Tarbes        3217 E489343-B    Ni                 100 Na
-Tafalla       3219 E657846-A                       900 Uc
-Gijon         3220 C480204-9    De                 412 C4  5M f
-@SUB-SECTOR: Chhung Kuo SECTOR: Crucis Margin
-#
-# Jump-routes
-$2505 2405 -1 0 11
-$2505 2504 0 0 11
-$2504 2602 0 0 11
-$2505 2606 0 0 11
-$2606 2610 0 0 11
-$2608 2407 -1 0 11
-$2602 2702 0 0 11
-$2602 2704 0 0 11
-$2608 2708 0 0 11
-$2704 2804 0 0 11
-$2804 2806 0 0 11
-$2806 2708 0 0 11
-$2708 2808 0 0 11
-$2808 2810 0 0 11
-$2902 2702 0 0 11
-$2806 2907 0 0 11
-$2902 3003 0 0 11
-$3003 2804 0 0 11
-$3108 3207 0 0 10
-$2810 2812 0 1 11
-$2610 2612 0 1 11
-$3110 3011 0 1 10
-#
-#--------1---------2---------3---------4---------5---------6---
-#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
-#----------   ---- ---------  - --------------- -  --- -- --- -
-Hun-tun       2504 C6487B5-B    Ag                 824 Ck
-Huangho       2505 B66A624-C    Wa                 503 Ck
-Chin Shan     2602 A667657-D  N Ag Ri              720 Ck
-Shan          2605 E130320-6    De                 624 Ck
-Wu Ti         2606 D779273-7    Ni                 400 Ck
-Ju-i          2607 C5258B8-C                       803 Ck
-Pu Chou       2608 A896999-D    In Cx              610 Ck     f
-Yu-Chhiang    2609 D868420-9    Ni                 310 Ck
-Kuan Yin      2610 C636899-B    Na                 304 Ck
-Huan          2701 D849679-A    Ni                 104 Na
-Shang Ti      2702 C67A839-C    Wa                 312 Ck     f
-Yen Ti        2703 D262210-B    Ni                 524 Ck
-Shen-nung     2704 C94A746-B    Wa                 410 Ck
-Thien-Shen    2708 B693889-C                       200 Ck
-Feng Po       2710 E684414-A    Ni                 904 Ck
-Fu Hsi        2804 A657676-D    Ag                 600 Ck
-Nu-kua        2805 B454459-B    Ni                 100 Ck
-Kung-Sang     2806 A0008C7-E  N As                 604 Ck     f
-Chuan Hsiun   2809 C656769-C    Ag                 111 Ck
-Khun Yao      2810 C578525-D    Ag                 700 Ck
-Chu-jung      2902 B85947B-D  S                    102 Ck
-Huang Ti      2808 C310552-B    De                 220 Ck
-Ho Liu        2907 D652766-C    Po                 612 Ck
-Hunan         2908 E9A8737-6                       200 Ck
-Ti-mu         3003 C366998-B                       604 Ck
-Hun-kuo       3006 E410000--    De                 910 Ck
-Fenho         3101 E66A678-9    Wa                 610 Na
-Pa Kua        3104 D585567-A    Ag                 603 Ck
-Tao           3108 B3346B9-B    Ni                 200 Na
-Madi          3110 C310528-A    Ni De              402 Na
-Shen          3202 E410000--    De                 900 Na
-Tsing Tao     3205 E8C9349-A                       504 Na
-Krina         3207 D658545-9    Ag                 503 Na
-@SUB-SECTOR: Falaya SECTOR: Crucis Margin
-#
-# Jump-routes
-$2532 2433 -1 0 11
-$2532 2733 0 0 11
-$2733 3031 0 0 11
-$3031 3030 0 -1 11
-$2532 2830 0 -1 11
-$3236 3137 0 0 11
-$3137 3138 0 0 11
-$3138 3238 0 0 11
-$3238 3140 0 0 11
-$2638 2738 0 0 10
-$2738 2636 0 0 10
-$3238 0139 1 0 11
-$3236 0137 1 0 11
-#
-#--------1---------2---------3---------4---------5---------6---
-#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
-#----------   ---- ---------  - --------------- -  --- -- --- -
-Kheri         2532 A797551-E  N Ag                 303 C3
-Atcha         2535 D64A370-C    Wa                 520 Na
-Lismore       2633 D434586-8    Ni                 200 Uc
-Minles        2636 C300699-A    Va                 501 Na
-Olduvai       2638 C451677-C    Ni Po              700 Na
-Paphos        2731 C461624-A    Ni                 500 C3
-Scabin        2732 D443405-A    Ni Po              513 C3
-Raslapsi      2733 C9B6779-C                       404 C3
-Delago        2735 E799234-8    Ni                 304 Na
-Falaya        2738 A9978C6-D                       103 Na
-Kivu          2832 B784775-D  S Ag Ri              520 C3
-Mani          2835 E6A78B7-7                       623 Na
-Rion          2840 E478AD9-A    In                 430 Na
-Uku           2931 D7948A9-8                       605 C3
-Siut          2939 E510405-7    De                 400 Na
-Ulsan         3031 C567472-9    Ni                 910 Na
-Degh          3033 EAC9220-A                       904 Na
-Thomi         3131 D96A754-A    Wa                 210 Uc
-Khuaf         3134 D7A6535-B    Ni                 512 Na
-Kmmo-im       3137 B458739-B    Ag                 602 Hi
-Rm-y-mi       3138 C534769-C    Na                 610 Hi
-Kixym         3140 B554585-C  S Ag                 902 Hi
-Talslad       3233 E7AA343-A    Wa                 803 Na
-473-276       3236 C438673-A    Na                 600 Hi
-Gau-kee       3238 B787879-D    Ni                 811 Hi
-Lno-rin       3240 D63A655-9    Wa                 700 Hi
-@SUB-SECTOR: Lodz SECTOR: Crucis Margin
-#
-# Jump-routes
-$1712 1612 -1 0 11
-$1712 1810 0 -1 11
-$1719 1518 -1 0 11
-$1719 1620 -1 0 11
-$1813 1712 0 0 11
-$1816 1616 -1 0 11
-$1819 1719 0 0 11
-$1813 2014 0 0 11
-$2014 2016 0 0 11
-$2016 1816 0 0 11
-$2014 2214 0 0 11
-$2417 2214 0 0 11
-$2214 2313 0 0 11
-$2211 2313 0 0 11
-$2211 2111 0 0 11
-$2111 2010 0 -1 11
-$2016 2217 0 0 11
-$2217 2417 0 0 11
-$2417 2518 1 0 11
-$2420 2520 1 0 11
-$1819 1921 0 1 11
-$2420 2122 0 1 11
-#
-#--------1---------2---------3---------4---------5---------6---
-#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
-#----------   ---- ---------  - --------------- -  --- -- --- -
-Kutno         1712 BA98667-C  S Ag                 203 C1
-Rawa Maz      1717 E665789-A    Ag Ri              522 C1
-Qabalan       1719 B897638-B    Ag                 710 C2
-Wielun        1813 C667626-B    Ag                 520 C1
-Kepno         1816 C531767-A    Na Po              802 C1
-Kharas        1819 C626AC7-B    In                 123 C2
-Sieradz       1914 C233422-9    Ni Po              802 C1
-Konski        2012 E535103-6    Ni                 200 Uc
-Katowice      2014 A8A7868-D  N Ni                 522 C1
-Zabrze        2016 A464786-C    Ag Ri              500 C1
-Rybnik        2018 EAC8444-A                       220 Uc
-Ariha         2020 D000341-C    As                 112 Uc
-Lubon         2111 C300246-9    Va                 813 C1  A  f
-Zywiec        2116 D6979C7-B    In                 214 C1
-Gradzisk      2211 B8476A6-C  S Ag                 510 C1
-Opole         2214 B557568-A    Ag                 200 C1
-Bzura         2215 E69A444-9    Wa                 400 Uc
-Nysa          2217 C440676-A    De                 221 Uc
-Damiya        2220 D8C6130-9                       520 Uc
-Nowytarg      2313 C658662-B    Ag                 500 C1
-Warta         2316 C8CA778-C    Wa                 511 Uc
-Ajlun         2318 D7C7663-A                       504 Uc
-Majdal        2319 E546894-9    Ni                 800 Uc
-Ya'bud        2412 D000566-C    As                 902 Na
-Iksal         2417 B5548A8-C                       300 Uc
-Qana          2420 C240370-9    De                 403 Uc
-@SUB-SECTOR: Mandin SECTOR: Crucis Margin
-#
-# Jump-routes
-$0113 0515 0 0 11
-$0214 0314 0 0 11
-$0214 0316 0 0 11
-$0316 0416 0 0 11
-$0515 0416 0 0 11
-$0416 0418 0 0 11
-$0418 0619 0 0 11
-$0619 0616 0 0 11
-$0616 0515 0 0 11
-$0515 0813 0 0 10
-$0813 0713 0 0 11
-$0713 0611 0 0 11
-$0811 0813 0 0 11
-$0811 0810 0 -1 11
-$0611 0510 0 -1 11
-$0113 3212 -1 0 11
-$0214 3214 -1 0 11
-$0817 0918 1 0 10
-$0813 1014 1 0 11
-$0619 0621 0 1 11
-#
-#--------1---------2---------3---------4---------5---------6---
-#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
-#----------   ---- ---------  - --------------- -  --- -- --- -
-Jammu         0113 C75A448-A    Ni Wa              200 Md
-Negril        0120 C652593-A    Ni                 612 Md   H f
-Fauve         0214 A665656-E  N Ag Ri              803 Md
-Nagar         0215 D245422-B    Ni                 512 Md
-Macroform     0217 E142120-9    Ni Po              500 Md
-Ochon         0219 D422533-8    Ni Po              403 Md
-Arrah         0311 E4437A8-8    Po                 310 Na
-Kataga        0314 C330426-A    De                 903 Md
-Ttrino        0316 C583314-B    Ni                 210 Md
-Zhidah        0320 E360310-A    De                 514 Md
-Abony         0412 D544473-9    Ni                 300 Na
-Kronshlot     0414 C454580-C    Ag                 102 Md
-Kalradin      0416 A7878D9-D  N Cx                 700 Md     f
-Flakestar     0418 C325653-B    Na                 911 Md
-Oldflight     0515 B463656-C  S Ni                 400 Md
-Shiga         0520 E456343-7    Ni                 912 Md
-Toboloski     0611 D8B8243-9                       300 Sx
-Kochi         0614 BA898B9-A                       300 Na
-Gifu          0616 CAA9665-B    Ni                 400 Md
-Mayagi        0617 C736878-A    Na                 701 Md
-Orsu          0619 B766575-C  S Ag                 402 Md
-Jaruco        0711 D594614-B    Ag                 900 Sx
-Tumuc         0713 C2346A5-D    Na                 103 Sx
-Berken        0811 C544686-C    Ag                 500 Sx
-Marada        0813 A484776-E  N Ag Ri              520 Sx
-Serir         0817 D649A99-7    In                 810 Na
-Tottori       0818 E573224-8    Ni                 803 Na
-@SUB-SECTOR: Memsil SECTOR: Crucis Margin
-#
-# Jump-routes
-$2031 2030 0 -1 11
-$2031 1829 0 -1 11
-$2031 2133 0 0 11
-$2133 2333 0 0 11
-$2333 2433 0 0 11
-$2433 2532 1 0 11
-#
-#--------1---------2---------3---------4---------5---------6---
-#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
-#----------   ---- ---------  - --------------- -  --- -- --- -
-Ocumare       1732 E200441-9    Va                 403 Na
-Rzhev         1735 D569320-A    Ni                 725 Na
-Krandin       1737 E000455-9    As                 504 Na
-Margilan      1834 E654364-B    Ni                 510 Na
-Loche         1936 C766473-9    Ni                 612 Na
-Erywin        1938 D773434-A    Ni                 502 Na
-Nieuw         2031 B374677-C  S Ag                 510 C3
-Kasmi         2040 D344418-B    Ni                 310 Na
-Lonoke        2133 C8787A4-C    Ag                 512 C3   C f
-Riad          2136 D446473-8    Ni                 620 Na
-Wald          2231 E999597-B    Ni                 614 C3
-Oconee        2232 D869443-C    Ni                 102 C3
-Khalke        2237 E888472-9    Ni                 200 Na
-Penas         2239 E6A4587-7    Ni                 523 Na
-Flekke        2333 C986436-A    Ni                 210 C3
-Zisteffle     2335 C656749-B    Ag                 614 Na
-Emis          2431 E69A876-B    Wa                 220 C3
-Mimsilmi      2433 B9989B7-D  S In                 802 C3
-T'Kaim        2437 E787373-8    Ni                 400 Na
-Erex          2439 E533402-9    Ni Po              713 Na
-@SUB-SECTOR: Negoiul SECTOR: Crucis Margin
-#
-# Jump-routes
-$0907 0804 -1 0 11
-$0903 0702 -1 0 11
-$0903 1102 0 0 11
-$0907 1208 0 0 11
-$1102 1203 0 0 11
-$1203 1304 0 0 11
-$1304 1306 0 0 11
-$1208 1606 0 0 11
-$1306 1507 0 0 11
-$1507 1509 0 0 11
-$1509 1410 0 0 11
-$1102 1502 0 0 11
-$1502 1602 0 0 11
-$1606 1706 1 0 11
-$1602 1702 1 0 11
-$1010 1012 0 1 11
-$1010 0910 0 0 11
-$0910 0810 -1 0 11
-$1410 1411 0 1 11
-#
-#--------1---------2---------3---------4---------5---------6---
-#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
-#----------   ---- ---------  - --------------- -  --- -- --- -
+
+# Negoiul
+
 Elsmere       0901 C534329-7    Ni                 804 Na
 Frauten       0903 C767443-B    Ni                 700 Sx
 Dolak         0904 E575779-9    Ag                 504 Sx
@@ -686,80 +220,109 @@ Quindio       1406 C320524-8    De                 503 Sx
 Holt          1410 C000685-A    As                 114 Sx
 Prosser       1502 C4695A0-C    Ni                 300 Sx
 Nafud         1504 D4549D9-6                    A  500 Sx
-Rulti         1507 A5587C9-E  N Cx                 120 Sx     f
+Rulti         1507 A5587C9-E  N Cx                 120 Sx
 Vianden       1509 C547535-C    Ag                 700 Sx
 Slae          1602 C436688-B    Ni                 612 Sx
 Furnas        1604 E5728A9-A                       502 Sx
 Sembilen      1606 C533310-9    Ni Po              810 Sx
-@SUB-SECTOR: Nidge SECTOR: Crucis Margin
-#
-# Jump-routes
-$0934 0833 -1 0 11
-$0932 0831 -1 0 11
-$0934 1135 0 0 11
-$1135 1335 0 0 11
-$1335 1434 0 0 11
-$1434 1533 0 0 11
-$1533 1332 0 0 11
-$1332 0932 0 0 11
-$1533 1632 0 0 11
-$1332 1430 0 -1 11
-$1632 1630 0 -1 11
-#
-#--------1---------2---------3---------4---------5---------6---
-#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
-#----------   ---- ---------  - --------------- -  --- -- --- -
-Armero        0932 C96A201-9    Wa                 910 Md
-Slint         0934 C572639-A    Ni                 401 Md
-Pavlet        1034 D776643-A    Ag                 110 Md
-Meshed        1038 E543789-9    Na                 224 Na
-Kutenai       1132 C548989-B    In                 800 Md
-Stefen        1135 B547AA9-B  S In                 802 Md
-Monsoom       1137 D65A443-C    Wa                 520 Na
-Pelly         1233 E4238C9-7    Po                 110 Md
-Tsama         1238 B563568-D    Ni                 921 Na
-Seregno       1240 E6A1689-B    Ni                 931 Na
-K'Kigi        1332 B445533-C    Ag                 500 Md
-Tzitin        1335 C000689-C    As                 524 Md
-Lugg          1337 E433302-9    Ni Po              904 Na
-Senlac        1433 DAB6477-B    Ni                 313 Md
-Amya          1434 C769586-A    Ni                 600 Md
-Isparta       1439 D000323-C    As                 303 Na
-Pelieo        1531 D462673-A    Ni                 704 Md
-Nigde         1533 A738789-E  N                    900 Md
-Hzimo         1537 E541508-A    Ni Po              823 Na
-Remino        1631 C100206-B    Va                 902 Md
-Stm-Fi        1632 C95A477-B    Wa                 903 Md
-@SUB-SECTOR: Olsztyn SECTOR: Crucis Margin
-#
-# Jump-routes
-$0918 0817 -1 0 10
-$1012 1010 0 -1 11
-$1012 1015 0 0 11
-$1014 0813 -1 0 11
-$1019 0918 0 0 10
-$1117 1015 0 0 11
-$1217 1117 0 0 11
-$1217 1213 0 0 11
-$1215 1014 0 0 11
-$1313 1213 0 0 11
-$1313 1311 0 0 11
-$1311 1411 0 0 11
-$1411 1312 0 0 11
-$1411 1410 0 -1 11
-$1518 1616 0 0 11
-$1616 1516 0 0 11
-$1516 1514 0 0 11
-$1514 1612 0 0 11
-$1612 1712 1 0 11
-$1518 1719 1 0 11
-$1620 1719 1 0 11
-$1616 1816 1 0 11
-$1620 1621 0 1 11
-#
-#--------1---------2---------3---------4---------5---------6---
-#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
-#----------   ---- ---------  - --------------- -  --- -- --- -
+
+# Souris
+
+Palompi       1701 X101000--    Va                 600 Na
+Rickamil      1702 B7A7568-D  N Ni                 514 Sx
+Lorne         1704 C696364-9    Ni                 403 Sx
+Doven         1706 B67A656-D  S Wa                 200 Sx
+Orwelle       1802 E472464-6    Ni                 702 Sx
+Spry          1805 C737822-A                       210 Sx
+Eliot         1808 D437576-B    Ni                 700 Na
+Ionae         1810 C5797B9-B                       713 Uc
+Nye           1902 D528753-8    Na                 200 Sx
+Osowiec       1906 E5415A1-9    Ni Po              200 Sx
+Tadzhik       1910 D565310-5    Ni                 400 Uc
+Beowawe       2003 E6439A7-9    In Po              204 Sx
+Souris        2004 B753636-D  N Ni Po              724 Sx
+Taginae       2008 E666000--                       200 Sx
+Sluiskin      2010 B767559-B  S Ag                 522 Uc
+Vamitra       2101 C477326-9    Ni                 200 Ry
+Deeth         2103 C231442-8    Na Po              503 Sx
+Moapa         2106 E333472-7    Na Po              903 Na
+Denio         2205 A6695A6-C    Ni                 400 Na
+Inuvik        2206 C9998B5-A                       201 Na
+Wager         2302 D566569-9    Ag                 110 Na
+Adair         2304 E400210-7    Va                 700 Na
+Oita          2308 C000547-C    As                 512 Na
+Pamlico       2310 E675206-4    Ni                 200 Na
+Pi            2405 C876897-C                       924 Ck
+Tsung         2407 B568456-B  S Ni                 405 Ck
+
+# Chhung Kuo
+
+Hun-tun       2504 C6487B5-B    Ag                 824 Ck
+Huangho       2505 B66A624-C    Wa                 503 Ck
+Chin Shan     2602 A667657-D  N Ag Ri              720 Ck
+Shan          2605 E130320-6    De                 624 Ck
+Wu Ti         2606 D779273-7    Ni                 400 Ck
+Ju-i          2607 C5258B8-C                       803 Ck
+Pu Chou       2608 A896999-D    In Cx              610 Ck
+Yu-Chhiang    2609 D868420-9    Ni                 310 Ck
+Kuan Yin      2610 C636899-B    Na                 304 Ck
+Huan          2701 D849679-A    Ni                 104 Na
+Shang Ti      2702 C67A839-C    Wa                 312 Ck
+Yen Ti        2703 D262210-B    Ni                 524 Ck
+Shen-nung     2704 C94A746-B    Wa                 410 Ck
+Thien-Shen    2708 B693889-C                       200 Ck
+Feng Po       2710 E684414-A    Ni                 904 Ck
+Fu Hsi        2804 A657676-D    Ag                 600 Ck
+Nu-kua        2805 B454459-B    Ni                 100 Ck
+Kung-Sang     2806 A0008C7-E  N As                 604 Ck
+Chuan Hsiun   2809 C656769-C    Ag                 111 Ck
+Khun Yao      2810 C578525-D    Ag                 700 Ck
+Chu-jung      2902 B85947B-D  S                    102 Ck
+Huang Ti      2808 C310552-B    De                 220 Ck
+Ho Liu        2907 D652766-C    Po                 612 Ck
+Hunan         2908 E9A8737-6                       200 Ck
+Ti-mu         3003 C366998-B                       604 Ck
+Hun-kuo       3006 E410000--    De                 910 Ck
+Fenho         3101 E66A678-9    Wa                 610 Na
+Pa Kua        3104 D585567-A    Ag                 603 Ck
+Tao           3108 B3346B9-B    Ni                 200 Na
+Madi          3110 C310528-A    Ni De              402 Na
+Shen          3202 E410000--    De                 900 Na
+Tsing Tao     3205 E8C9349-A                       504 Na
+Krina         3207 D658545-9    Ag                 503 Na
+
+# Mandin
+
+Jammu         0113 C75A448-A    Ni Wa              200 Mn
+Negril        0120 C652593-A    Ni                 612 Mn
+Fauve         0214 A665656-E  N Ag Ri              803 Mn
+Nagar         0215 D245422-B    Ni                 512 Mn
+Macroform     0217 E142120-9    Ni Po              500 Mn
+Ochon         0219 D422533-8    Ni Po              403 Mn
+Arrah         0311 E4437A8-8    Po                 310 Na
+Kataga        0314 C330426-A    De                 903 Mn
+Ttrino        0316 C583314-B    Ni                 210 Mn
+Zhidah        0320 E360310-A    De                 514 Mn
+Abony         0412 D544473-9    Ni                 300 Na
+Kronshlot     0414 C454580-C    Ag                 102 Mn
+Kalradin      0416 A7878D9-D  N Cx                 700 Mn
+Flakestar     0418 C325653-B    Na                 911 Mn
+Oldflight     0515 B463656-C  S Ni                 400 Mn
+Shiga         0520 E456343-7    Ni                 912 Mn
+Toboloski     0611 D8B8243-9                       300 Sx
+Kochi         0614 BA898B9-A                       300 Na
+Gifu          0616 CAA9665-B    Ni                 400 Mn
+Mayagi        0617 C736878-A    Na                 701 Mn
+Orsu          0619 B766575-C  S Ag                 402 Mn
+Jaruco        0711 D594614-B    Ag                 900 Sx
+Tumuc         0713 C2346A5-D    Na                 103 Sx
+Berken        0811 C544686-C    Ag                 500 Sx
+Marada        0813 A484776-E  N Ag Ri              520 Sx
+Serir         0817 D649A99-7    In                 810 Na
+Tottori       0818 E573224-8    Ni                 803 Na
+
+# Olsztyn
+
 Mangots       0911 D769503-B    Ni                 501 Sx
 Kumhwa        0913 E493223-9    Ni                 620 Sx
 Ahaggar       0915 E240432-A    De                 804 Sx
@@ -789,175 +352,137 @@ Suwon         1520 E210211-8    De                 403 C2
 Ptock         1612 C365856-B    Ri                 202 C2
 Gdynia        1616 A523AB8-E  N In Po              700 C2
 Wroclaw       1620 B6A5AC8-C                       304 C1
-@SUB-SECTOR: Pingsang SECTOR: Crucis Margin
-#
-# Jump-routes
-$0121 3121 -1 0 11
-$0222 0121 0 0 11
-$0222 0124 0 0 11
-$0225 0124 0 0 11
-$0423 0324 0 0 11
-$0324 0225 0 0 11
-$0225 0627 0 0 11
-$0623 0423 0 0 11
-$0623 0724 0 0 11
-$0724 0727 0 0 11
-$0727 0627 0 0 11
-$0627 0827 0 0 11
-$0827 0727 0 0 11
-$0627 0729 0 0 11
-$0729 0829 0 0 11
-$0829 0830 0 0 11
-$0623 0722 0 0 11
-$0722 0621 0 0 11
-$0621 0619 0 -1 11
-$0722 0923 1 0 11
-$0827 1027 1 0 11
-$0830 0833 0 1 11
-#
-#--------1---------2---------3---------4---------5---------6---
-#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
-#----------   ---- ---------  - --------------- -  --- -- --- -
-Okaya         0121 B6299D9-A    In                 304 Md
-Suwa          0123 D7C5205-9    Ni                 200 Md
-Uda           0124 C641312-B    Ni Po              603 Md
+
+# Lodz
+
+Kutno         1712 BA98667-C  S Ag                 203 C1
+Rawa Maz      1717 E665789-A    Ag Ri              522 C1
+Qabalan       1719 B897638-B    Ag                 710 C2
+Wielun        1813 C667626-B    Ag                 520 C1
+Kepno         1816 C531767-A    Na Po              802 C1
+Kharas        1819 C626AC7-B    In                 123 C2
+Sieradz       1914 C233422-9    Ni Po              802 C1
+Konski        2012 E535103-6    Ni                 200 Uc
+Katowice      2014 A8A7868-D  N Ni                 522 C1
+Zabrze        2016 A464786-C    Ag Ri              500 C1
+Rybnik        2018 EAC8444-A                       220 Uc
+Ariha         2020 D000341-C    As                 112 Uc
+Lubon         2111 C300246-9    Va                 813 C1
+Zywiec        2116 D6979C7-B    In                 214 C1
+Gradzisk      2211 B8476A6-C  S Ag                 510 C1
+Opole         2214 B557568-A    Ag                 200 C1
+Bzura         2215 E69A444-9    Wa                 400 Uc
+Nysa          2217 C440676-A    De                 221 Uc
+Damiya        2220 D8C6130-9                       520 Uc
+Nowytarg      2313 C658662-B    Ag                 500 C1
+Warta         2316 C8CA778-C    Wa                 511 Uc
+Ajlun         2318 D7C7663-A                       504 Uc
+Majdal        2319 E546894-9    Ni                 800 Uc
+Ya'bud        2412 D000566-C    As                 902 Na
+Iksal         2417 B5548A8-C                       300 Uc
+Qana          2420 C240370-9    De                 403 Uc
+
+# Asturias
+
+Ferrol        2518 A438739-E  N                    105 C4
+Cruz          2520 B55A859-C    Wa                 210 C4
+Hu            2612 C795464-B    Ni                 900 Ck
+Sedano        2615 D410352-8    De                 323 Na
+Vivero        2618 D432555-A    Ni Po              513 Uc
+Heng-o        2713 A748683-E  N Ag                 403 Ck
+Laurca        2718 C210627-B    De                 510 C4
+Oviedo        2719 E6A4220-9    Ni                 530 C4
+Shun          2811 B586548-B    Ag                 712 Ck
+Ming          2812 D452205-A    Ni Po              411 Ck
+Tsi           2813 E756446-B    Ni                 620 Ck
+Dax           2815 B6A6408-A    Ni                 402 Na
+Llanes        2818 D57A766-B    Wa                 210 C4
+Sahagun       2820 E9B8345-A    Ni                 720 Uc
+Aviles        2916 E94A476-9    Wa                 704 Na
+Potes         2918 E5765A5-8    Ag                 220 Uc
+Micres        2920 D77A999-B    In Wa              224 C4
+Foix          3011 C200210-A    Ni Va              704 Na
+Adour         3013 E355212-B    Ni                 400 Na
+Auch          3015 C581565-9    Ni                 313 Na
+Sestao        3019 C6838A8-A                       500 C4
+Pau           3113 B677778-C    Ag                 200 Na
+Irun          3117 E768787-9    Ag Ri              304 Na
+Bermeo        3119 D110432-C    De                 503 C4
+Sete          3211 D663868-A                       212 Na
+Estella       3215 B300416-C    Ni Ro              600 Na
+Tarbes        3217 E489343-B    Ni                 100 Na
+Tafalla       3219 E657846-A                       900 Uc
+Gijon         3220 C480204-9    De                 412 C4
+
+# Pingsang
+
+Okaya         0121 B6299D9-A    In                 304 Mn
+Suwa          0123 D7C5205-9    Ni                 200 Mn
+Uda           0124 C641312-B    Ni Po              603 Mn
 Kilchu        0129 D431111-9    Ni Po              700 Na
-Odate         0222 C441543-A    Ni Po              300 Md
-Kobe          0225 A453619-E  N Ni Po              101 Md
+Odate         0222 C441543-A    Ni Po              300 Mn
+Kobe          0225 A453619-E  N Ni Po              101 Mn
 Iida          0227 D8C4592-B    Ni                 800 Na
-Nikko         0321 E764786-9    Ag Ri              820 Md
-Mito          0322 D8B9341-A    Ni                 114 Md
-Honjo         0324 C527503-8    Ni                 510 Md
-Akita         0326 C568779-B    Ag Ri              104 Md
+Nikko         0321 E764786-9    Ag Ri              820 Mn
+Mito          0322 D8B9341-A    Ni                 114 Mn
+Honjo         0324 C527503-8    Ni                 510 Mn
+Akita         0326 C568779-B    Ag Ri              104 Mn
 Oki           0330 A424799-C    Na Po              300 Na
-Biwa          0421 E527999-B    In                 922 Md
-Kuji          0423 C566424-A    Ni                 600 Md
+Biwa          0421 E527999-B    In                 922 Mn
+Kuji          0423 C566424-A    Ni                 600 Mn
 Dogo          0428 E2349C6-9                       124 Na
-Kitale        0521 D210467-A    De                 914 Md
-Mori          0526 E260626-A    De                 400 Md
+Kitale        0521 D210467-A    De                 914 Mn
+Mori          0526 E260626-A    De                 400 Mn
 Dozen         0530 C664522-B    Ag                 500 Na
-Maralal       0621 C564684-B    Ag Ri              704 Md
-Kure          0623 A544658-D  N Ni                 920 Md
-Tsu           0627 B536557-C    Ni                 702 Md
-Garba Tula    0722 B696576-B    Ag                 300 Md
-Muddo Gashi   0724 C424302-C    Ni                 304 Md
-Wajir         0725 C310523-A    De                 200 Md
-Osaka         0727 A867889-D  N Ri                 813 Md
-Ise           0729 C641438-A    Ni Po              200 Md
-Kamchina      0823 D000360-B    As                 700 Md
-Bura          0827 B310231-A    De                 112 Md
-Garissa       0829 C6A97B4-B                       700 Md
-Tana          0830 C8A7719-C                       804 Md
-@SUB-SECTOR: Piute SECTOR: Crucis Margin
-#
-# Jump-routes
-$0140 3239 -1 0 11
-$0140 0240 0 0 11
-$0140 0238 0 0 11
-$0238 0640 0 0 11
-$0439 0440 0 0 11
-$0833 0830 0 -1 11
-$0833 0934 1 0 11
-$0831 0932 1 0 11
-$0140 0101 0 1 11
-$0440 0401 0 1 11
-$0640 0601 0 1 11
-#
-#--------1---------2---------3---------4---------5---------6---
-#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
-#----------   ---- ---------  - --------------- -  --- -- --- -
-Zynki         0136 E78A471-B    Wa                 604 Na
-K'Mara        0140 C534889-9    Na                 211 Rn
-Hmrilma       0233 C362419-A    Ni                 700 Na
-Rill          0234 A879778-C                       711 Na     f
-sOra          0238 B200210-C    Va Po              804 Rn
-Himrai        0240 D6665A5-C    Ag                 800 Rn
-Fmsani        0337 E552635-9    Ni Po              513 Na
-Midlo         0431 E696889-7                       100 Na
-Scorch        0433 D220473-A    De                 203 Na
-sFyri         0439 A552769-D  N Po                 413 Rn
-Kald          0440 C5A6877-B                       605 Rn
-Rasnoe        0638 E223314-9    Ni Po              502 Na
-Tstata        0640 C455569-A    Ag                 613 Rn
-Aldrikin      0736 E656664-7    Ag                 510 Na
-Syzlin        0831 A645794-D  N Ag                 304 Md
-Zankai        0833 C200444-A    Va                 403 Md
-Madra         0838 E496346-A    Ni                 510 Na
-@SUB-SECTOR: Souris SECTOR: Crucis Margin
-#
-# Jump-routes
-$1702 1706 0 0 11
-$1706 1606 -1 0 11
-$1702 1602 -1 0 11
-$1706 2004 0 0 11
-$1702 1902 0 0 11
-$1810 2010 0 0 11
-$1902 2103 0 0 11
-$2004 2103 0 0 11
-$2004 2205 0 0 10
-$2405 2407 0 0 11
-$2205 2206 0 0 10
-$2206 2308 0 0 10
-$2405 2505 1 0 11
-$2407 2608 1 0 11
-$1810 1712 0 1 11
-$2010 2111 0 1 11
-#
-#--------1---------2---------3---------4---------5---------6---
-#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
-#----------   ---- ---------  - --------------- -  --- -- --- -
-Palompi       1701 X101000--    Va                 600 Na
-Rickamil      1702 B7A7568-D  N Ni                 514 Sx
-Lorne         1704 C696364-9    Ni                 403 Sx
-Doven         1706 B67A656-D  S Wa                 200 Sx
-Orwelle       1802 E472464-6    Ni                 702 Sx
-Spry          1805 C737822-A                       210 Sx
-Eliot         1808 D437576-B    Ni                 700 Na
-Ionae         1810 C5797B9-B                       713 Uc
-Nye           1902 D528753-8    Na                 200 Sx
-Osowiec       1906 E5415A1-9    Ni Po              200 Sx
-Tadzhik       1910 D565310-5    Ni                 400 Uc
-Beowawe       2003 E6439A7-9    In Po              204 Sx
-Souris        2004 B753636-D  N Ni Po              724 Sx
-Taginae       2008 E666000--                       200 Sx
-Sluiskin      2010 B767559-B  S Ag                 522 Uc
-Vamitra       2101 C477326-9    Ni                 200 Ry
-Deeth         2103 C231442-8    Na Po              503 Sx
-Moapa         2106 E333472-7    Na Po              903 Na
-Denio         2205 A6695A6-C    Ni                 400 Na
-Inuvik        2206 C9998B5-A                       201 Na
-Wager         2302 D566569-9    Ag                 110 Na
-Adair         2304 E400210-7    Va                 700 Na
-Oita          2308 C000547-C    As                 512 Na     f
-Pamlico       2310 E675206-4    Ni                 200 Na
-Pi            2405 C876897-C                       924 Ck
-Tsung         2407 B568456-B  S Ni                 405 Ck
-@SUB-SECTOR: Turku SECTOR: Crucis Margin
-#
-# Jump-routes
-$1726 1626 -1 0 11
-$1726 1728 0 0 11
-$1727 1626 -1 0 11
-$1726 1825 0 0 11
-$1825 1924 0 0 11
-$1924 1822 0 0 11
-$1822 1921 0 0 11
-$1921 1819 0 -1 11
-$1829 1728 0 0 11
-$1728 1928 0 0 11
-$2027 1928 0 0 11
-$1921 2122 0 0 11
-$2428 2030 0 0 11
-$2329 2227 0 0 11
-$2227 2027 0 0 11
-$2122 2420 0 -1 11
-$2428 2528 1 0 11
-$2030 2031 0 1 11
-$1829 2031 0 1 11
-#
-#--------1---------2---------3---------4---------5---------6---
-#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
-#----------   ---- ---------  - --------------- -  --- -- --- -
+Maralal       0621 C564684-B    Ag Ri              704 Mn
+Kure          0623 A544658-D  N Ni                 920 Mn
+Tsu           0627 B536557-C    Ni                 702 Mn
+Garba Tula    0722 B696576-B    Ag                 300 Mn
+Muddo Gashi   0724 C424302-C    Ni                 304 Mn
+Wajir         0725 C310523-A    De                 200 Mn
+Osaka         0727 A867889-D  N Ri                 813 Mn
+Ise           0729 C641438-A    Ni Po              200 Mn
+Kamchina      0823 D000360-B    As                 700 Mn
+Bura          0827 B310231-A    De                 112 Mn
+Garissa       0829 C6A97B4-B                       700 Mn
+Tana          0830 C8A7719-C                       804 Mn
+
+# Accra
+
+Baragoi       0923 C896569-B    Ag                 200 Mn
+Soroti        0924 D875155-9    Ni                 104 Mn
+Lodwar        0926 D585869-C                       322 Mn
+Mbale         0929 D786200-A    Ni                 220 Mn
+Tororo        1023 C566664-B    Ag Ri              205 Mn
+Kagamega      1027 B566653-C    Ag Ri              900 Mn
+Kisil         1030 E366345-B    Ni                 310 Mn
+Narok         1122 D5757A3-C    Ag                 803 Na
+Ngong         1124 D578308-8    Ni                 300 Mn
+Tsavo         1125 A474A98-E  N In                 600 Mn
+Konza         1126 C000759-C    As                 213 Mn
+Thikan        1128 C756541-A    Ag                 403 Mn
+Embu          1130 B844674-C    Ag                 500 Mn
+Nyeri         1226 D387674-9    Ag Ri              303 Mn
+Daboya        1321 D555858-9                       310 Na
+Tamale        1323 E687617-B    Ag                 623 Na
+Yendi         1325 C273755-C                       221 Mn
+Yapei         1327 D332591-8    Na Po              200 Mn
+Bole          1330 C659376-A    Ni                 712 Mn
+Wenchi        1426 C100475-B    Va                 503 Mn
+Tumu          1427 B355532-B    Ag                 614 Mn
+Navrongo      1428 D493854-9  S                    100 Mn
+Zuarungu      1429 D200789-B    Va                 104 Mn
+Akim Oda      1430 C220456-B    De                 104 Mn
+Sba           1523 C8788A5-A                       800 C2
+Keta          1528 C562333-A    Ni                 214 Mn
+Accra         1530 A6679C9-D  N                    900 Mn
+Kerzaz        1621 C0005A6-C    As                 604 C2
+Adrar         1624 C310527-C    De                 513 C2
+Guerzim       1626 B756759-B  S Ag                 702 C2
+Bechar        1630 C353539-B    Ni                 912 Mn
+
+# Turku
+
 Quargla       1722 D552759-A                       214 C2
 Edjeleh       1724 E100365-8    Va                 813 C2
 Temassinin    1726 C324A59-B    In                 900 C2
@@ -986,3 +511,129 @@ Turku         2329 A442899-E  N Po                 100 C3
 Jarpen        2421 E8A4595-A    Ni                 305 Uc
 Mellansel     2425 E200485-B    Va                 613 Uc
 Kuhmo         2428 C8CA885-9    Wa                 300 C3
+
+# Andalusia
+
+Uterea        2522 C659695-A    Ni                 210 C4
+Coin          2525 D543889-A    Po                 304 Uc
+Ivalo         2528 C333334-C    Na Po              900 C3
+Tervola       2530 E8B8210-9    Ni                 705 C4
+Ecija         2623 A674A99-D    In Cx              100 C4
+Ronda         2625 C855638-A    Ag                 104 C4
+Pokka         2627 D684786-A    Ag                 900 Uc
+Vaala         2630 D687775-C    Ag Ri              204 C3
+Osuna         2722 E84A439-8    Wa                 100 C4
+Ranua         2728 AA69779-D                       402 C3
+Albox         2823 C220645-B    De                 302 C4
+Lorea         2826 B330552-B    De                 904 C4
+Athari        2830 C879799-9                       400 C3
+Jaen          2921 E557759-9    Ag                 513 C4
+Jodar         2923 C646789-C    Ag                 100 C4
+Rute          2927 D100437-B    Va                 513 Uc
+Alcala        3022 C535444-B    Na                 600 C4
+Almonte       3024 E6A7585-9    Ni                 902 Uc
+Rinlo         3026 C131636-B    Ni Po              800 C4
+Varkaus       3027 E310433-A    De                 703 Uc
+Toijala       3028 C9CA341-C    Wa                 710 C3
+Lahti         3030 A597AC9-E  N In                 103 C3
+Baena         3121 D584839-A                       804 C4
+Keski         3130 C987553-9    Ag                 100 C3
+Rota          3221 A676886-E  N                    302 C4
+Vejir         3223 E679408-8    Ni                 600 Uc
+Chiclana      3226 C776667-C    Ag                 802 C4
+
+# Piute
+
+Zynki         0136 E78A471-B    Wa                 604 Na
+K'Mara        0140 C534889-9    Na                 211 Rn
+Hmrilma       0233 C362419-A    Ni                 700 Na
+Rill          0234 A879778-C                       711 Na
+sOra          0238 B200210-C    Va Po              804 Rn
+Himrai        0240 D6665A5-C    Ag                 800 Rn
+Fmsani        0337 E552635-9    Ni Po              513 Na
+Midlo         0431 E696889-7                       100 Na
+Scorch        0433 D220473-A    De                 203 Na
+sFyri         0439 A552769-D  N Po                 413 Rn
+Kald          0440 C5A6877-B                       605 Rn
+Rasnoe        0638 E223314-9    Ni Po              502 Na
+Tstata        0640 C455569-A    Ag                 613 Rn
+Aldrikin      0736 E656664-7    Ag                 510 Na
+Syzlin        0831 A645794-D  N Ag                 304 Mn
+Zankai        0833 C200444-A    Va                 403 Mn
+Madra         0838 E496346-A    Ni                 510 Na
+
+# Nidge
+
+Armero        0932 C96A201-9    Wa                 910 Mn
+Slint         0934 C572639-A    Ni                 401 Mn
+Pavlet        1034 D776643-A    Ag                 110 Mn
+Meshed        1038 E543789-9    Na                 224 Na
+Kutenai       1132 C548989-B    In                 800 Mn
+Stefen        1135 B547AA9-B  S In                 802 Mn
+Monsoom       1137 D65A443-C    Wa                 520 Na
+Pelly         1233 E4238C9-7    Po                 110 Mn
+Tsama         1238 B563568-D    Ni                 921 Na
+Seregno       1240 E6A1689-B    Ni                 931 Na
+K'Kigi        1332 B445533-C    Ag                 500 Mn
+Tzitin        1335 C000689-C    As                 524 Mn
+Lugg          1337 E433302-9    Ni Po              904 Na
+Senlac        1433 DAB6477-B    Ni                 313 Mn
+Amya          1434 C769586-A    Ni                 600 Mn
+Isparta       1439 D000323-C    As                 303 Na
+Pelieo        1531 D462673-A    Ni                 704 Mn
+Nigde         1533 A738789-E  N                    900 Mn
+Hzimo         1537 E541508-A    Ni Po              823 Na
+Remino        1631 C100206-B    Va                 902 Mn
+Stm-Fi        1632 C95A477-B    Wa                 903 Mn
+
+# Memsil
+
+Ocumare       1732 E200441-9    Va                 403 Na
+Rzhev         1735 D569320-A    Ni                 725 Na
+Krandin       1737 E000455-9    As                 504 Na
+Margilan      1834 E654364-B    Ni                 510 Na
+Loche         1936 C766473-9    Ni                 612 Na
+Erywin        1938 D773434-A    Ni                 502 Na
+Nieuw         2031 B374677-C  S Ag                 510 C3
+Kasmi         2040 D344418-B    Ni                 310 Na
+Lonoke        2133 C8787A4-C    Ag                 512 C3
+Riad          2136 D446473-8    Ni                 620 Na
+Wald          2231 E999597-B    Ni                 614 C3
+Oconee        2232 D869443-C    Ni                 102 C3
+Khalke        2237 E888472-9    Ni                 200 Na
+Penas         2239 E6A4587-7    Ni                 523 Na
+Flekke        2333 C986436-A    Ni                 210 C3
+Zisteffle     2335 C656749-B    Ag                 614 Na
+Emis          2431 E69A876-B    Wa                 220 C3
+Mimsilmi      2433 B9989B7-D  S In                 802 C3
+T'Kaim        2437 E787373-8    Ni                 400 Na
+Erex          2439 E533402-9    Ni Po              713 Na
+
+# Falaya
+
+Kheri         2532 A797551-E  N Ag                 303 C3
+Atcha         2535 D64A370-C    Wa                 520 Na
+Lismore       2633 D434586-8    Ni                 200 Uc
+Minles        2636 C300699-A    Va                 501 Na
+Olduvai       2638 C451677-C    Ni Po              700 Na
+Paphos        2731 C461624-A    Ni                 500 C3
+Scabin        2732 D443405-A    Ni Po              513 C3
+Raslapsi      2733 C9B6779-C                       404 C3
+Delago        2735 E799234-8    Ni                 304 Na
+Falaya        2738 A9978C6-D                       103 Na
+Kivu          2832 B784775-D  S Ag Ri              520 C3
+Mani          2835 E6A78B7-7                       623 Na
+Rion          2840 E478AD9-A    In                 430 Na
+Uku           2931 D7948A9-8                       605 C3
+Siut          2939 E510405-7    De                 400 Na
+Ulsan         3031 C567472-9    Ni                 910 Na
+Degh          3033 EAC9220-A                       904 Na
+Thomi         3131 D96A754-A    Wa                 210 Uc
+Khuaf         3134 D7A6535-B    Ni                 512 Na
+Kmmo-im       3137 B458739-B    Ag                 602 Hi
+Rm-y-mi       3138 C534769-C    Na                 610 Hi
+Kixym         3140 B554585-C  S Ag                 902 Hi
+Talslad       3233 E7AA343-A    Wa                 803 Na
+473-276       3236 C438673-A    Na                 600 Hi
+Gau-kee       3238 B787879-D    Ni                 811 Hi
+Lno-rin       3240 D63A655-9    Wa                 700 Hi

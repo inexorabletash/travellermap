@@ -820,6 +820,13 @@ namespace Maps
         [XmlAttribute]
         public string Label { get; set; }
 
+        [XmlIgnore]
+        public LineStyle? Style { get; set; }
+        [XmlAttribute("Style"), JsonIgnore]
+        public LineStyle _Style { get { return Style.Value; } set { Style = value; } }
+        public bool ShouldSerialize_Style() { return Style.HasValue; }
+
+
         [XmlText,JsonName("Path")]
         public string PathString
         {
@@ -884,15 +891,15 @@ namespace Maps
 
     }
 
+    public enum LineStyle
+    {
+        Solid = 0, // Default
+        Dashed,
+        Dotted
+    }
+
     public class Route : IAllegiance
     {
-        public enum RouteStyle
-        {
-            Solid = 0, // Default
-            Dashed,
-            Dotted
-        }
-
         public Route()
         {
         }
@@ -944,9 +951,9 @@ namespace Maps
 
 
         [XmlIgnore]
-        public RouteStyle? Style { get; set; }
+        public LineStyle? Style { get; set; }
         [XmlAttribute("Style"), JsonIgnore]
-        public RouteStyle _Style { get { return Style.Value; } set { Style = value; } }
+        public LineStyle _Style { get { return Style.Value; } set { Style = value; } }
         public bool ShouldSerialize_Style() { return Style.HasValue; }
 
         [XmlIgnore]
