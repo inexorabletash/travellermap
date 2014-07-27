@@ -1379,7 +1379,7 @@ namespace Maps.Rendering
                     foreach (Border border in sector.Borders.Where(border => border.ShowLabel))
                     {
                         Allegiance alleg = sector.GetAllegianceFromCode(border.Allegiance);
-                        if (alleg != null)
+                        if (alleg != null || !String.IsNullOrEmpty(border.Label))
                         {
                             string text = border.Label ?? alleg.Name;
                             Point labelHex = border.LabelPosition;

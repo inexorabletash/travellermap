@@ -25,9 +25,13 @@ namespace Maps
             throw new ArgumentOutOfRangeException(String.Format(CultureInfo.InvariantCulture, "Value out of range: '{0}'", c), "c");
         }
 
-        public static int FromHex(char c)
+        public static int FromHex(char c, int? valueIfX = null)
         {
             c = Char.ToUpperInvariant(c);
+
+            if (c == 'X' && valueIfX.HasValue)
+                return valueIfX.Value;
+
             int value = HEX.IndexOf(c);
             if (value != -1)
                 return value;

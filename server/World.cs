@@ -128,13 +128,13 @@ namespace Maps
         [XmlIgnore, JsonIgnore]
         public char Starport { get { return UWP[0]; } }
         [XmlIgnore, JsonIgnore]
-        public int Size { get { return (UWP[1] == 'S' || UWP[1] == 's') ? -1 : SecondSurvey.FromHex(UWP[1]); } }
+        public int Size { get { return Char.ToUpperInvariant(UWP[1]) == 'S' ? -1 : SecondSurvey.FromHex(UWP[1]); } }
         [XmlIgnore, JsonIgnore]
         public int Atmosphere { get { return SecondSurvey.FromHex(UWP[2]); } }
         [XmlIgnore, JsonIgnore]
         public int Hydrographics { get { return SecondSurvey.FromHex(UWP[3]); } }
         [XmlIgnore, JsonIgnore]
-        public int PopulationExponent { get { return SecondSurvey.FromHex(UWP[4]); } }
+        public int PopulationExponent { get { return SecondSurvey.FromHex(UWP[4], valueIfX: 0); } }
         [XmlIgnore, JsonIgnore]
         public int Government { get { return SecondSurvey.FromHex(UWP[5]); } }
         [XmlIgnore, JsonIgnore]
@@ -147,7 +147,7 @@ namespace Maps
         {
             get
             {
-                int mantissa = SecondSurvey.FromHex(PBG[0]);
+                int mantissa = SecondSurvey.FromHex(PBG[0], valueIfX: 0);
                 // Hack for legacy data w/o PBG
                 if (mantissa == 0 && PopulationExponent > 0)
                     return 1;
