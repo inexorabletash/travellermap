@@ -216,6 +216,9 @@ namespace Maps
         [XmlAttribute]
         public string Abbreviation { get; set; }
 
+        [XmlAttribute]
+        public string Label { get; set; }
+
         [XmlElement("Name")]
         public List<Name> Names { get; set; }
 

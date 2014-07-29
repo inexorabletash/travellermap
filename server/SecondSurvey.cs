@@ -14,7 +14,7 @@ namespace Maps
         // Decimal hi:              0000000000111111111122222222223333
         // Decimal lo:              0123456789012345678901234567890123
 
-        public static char ToHex(int c)
+        public static char ToHex(int c) 
         {
             if (c == -1)
                 return 'S'; // Hack for "small" worlds

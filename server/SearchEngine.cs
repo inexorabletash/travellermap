@@ -73,7 +73,7 @@ namespace Maps
                     callback("Parsing data...");
                     foreach (Sector sector in map.Sectors)
                     {
-                        if (!sector.Tags.Contains("OTU"))
+                        if (!sector.Tags.Contains("OTU") && !sector.Tags.Contains("Faraway"))
                             continue;
 
                         foreach (Name name in sector.Names)

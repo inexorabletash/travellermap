@@ -654,10 +654,10 @@ namespace Maps.Rendering
                     {
                         foreach (Sector sector in ctx.selector.Sectors
                             .Where(sector => ctx.styles.showAllSectorNames || (ctx.styles.showSomeSectorNames && sector.Selected))
-                            .Where(sector => sector.Names.Any()))
+                            .Where(sector => sector.Names.Any() || sector.Label != null))
                         {
                             solidBrush.Color = ctx.styles.sectorName.textColor;
-                            string name = sector.Names[0].Text;
+                            string name = sector.Label ?? sector.Names[0].Text;
 
                             RenderUtil.DrawLabel(ctx.graphics, name, sector.Center, ctx.styles.sectorName.Font, solidBrush, ctx.styles.sectorName.textStyle);
                         }

@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Sectors>
-  <Sector Abbreviation="JGLe">
+  <Sector Abbreviation="JGLe" Label="Ley Sector" Tags="Apocryphal">
     <X>100</X>
     <Y>100</Y>
     <Name>Ley (Judges Guild)</Name>
     <DataFile Author="Dave Sering" Publisher="Judges Guild">Faraway/JG-Ley.sec</DataFile>
     <Stylesheet>
-      border.Im,
-      border { color: lightblue; style: dashed; }
+      border { color: salmon; style: dashed; }
+      border.Im { color: lightblue; style: dashed; }
+      border.Hazard { color: red; style: dotted; }
+
+      route.Independent { color: darkblue; style: dashed; }
+      route.Special { color: steelblue; width: 3; }
       route.Trade { color: red; width: 0.5; }
-      route.Im { color: mediumblue; width: 1.25; }
     </Stylesheet>
     <Subsectors>
       <Subsector Index="A">Ikhnaton</Subsector>
@@ -219,7 +222,6 @@
       <Route Type="Trade" Start="1513" End="1611"/>
       <Route Type="Trade" Start="1514" End="1615"/>
       <Route Type="Trade" Start="1626" End="1628"/>
-      <Route Type="Trade" Start="1633" End="1733"/>
       <Route Type="Trade" Start="1731" End="1733"/>
       <Route Type="Trade" Start="1731" End="2031"/>      
       <Route Type="Trade" Start="1817" End="1915"/>
@@ -260,17 +262,20 @@
       <Route Type="Trade" Start="3128" End="3129"/>
     </Routes>
   </Sector>
-  <Sector Abbreviation="JGMA">
+  <Sector Abbreviation="JGMA" Label="Maranatha-&#10;Alkahest" Tags="Apocryphal">
     <X>101</X>
     <Y>100</Y>
     <Name>Maranatha-Alkahest (Judges Guild)</Name>
     <Name>Maranatha-Alkahest</Name>
-    <DataFile Publisher="Judges Guild">Faraway/Maranatha-Alkahest.sec</DataFile>
+    <DataFile Author="Dave Sering" Publisher="Judges Guild">Faraway/Maranatha-Alkahest.sec</DataFile>
     <Stylesheet>
       border { color: salmon; style: dashed; }
+      border.Im { color: lightblue; style: dashed; }
       border.Hazard { color: red; style: dotted; }
-      route { color: darkblue; }
+
       route.Independent { color: darkblue; style: dashed; }
+      route.Special { color: steelblue; width: 3; }
+      route.Trade { color: red; width: 0.5; }
     </Stylesheet>
     <Subsectors>
       <Subsector Index="A">Blackedge</Subsector>
@@ -312,7 +317,7 @@
       <Border Allegiance="Sz" LabelPosition="2920" WrapLabel="true">2820 2920 2919 2918 2917 2916 2917 2918 3018 3119 3120 3220 3221 3122 3022 2922 2821 2820</Border>
       <Border Allegiance="Tc" LabelPosition="2933">2931 3030 3029 3129 3228 3227 3226 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3236 3235 3135 3134 3033 3032 2932 2931</Border>
       <Border Allegiance="Zu">0223 0323 0422 0522 0622 0722 0821 0921 1020 1120 1119 1218 1318 1319 1419 1420 1421 1422 1423 1424 1425 1426 1327 1328 1228 1229 1230 1131 1132 1133 1033 0934 0834 0734 0633 0533 0532 0431 0331 0230 0229 0228 0227 0226 0225 0224 0223</Border>
-      <Border Allegiance="Hazard" Label="Navigational Hazard" LabelPosition="0505">0506</Border>
+      <Border Allegiance="Hazard" Label="Navigational Hazard" LabelPosition="0505" WrapLabel="true">0506</Border>
     </Borders>
     <Routes>
       <Route Type="Trade" Start="0223" End="0422"/>
@@ -565,17 +570,19 @@
       <Route Type="Trade" Start="3234" End="3236"/>
     </Routes>
   </Sector>
-  <Sector Abbreviation="JGGR">
+  <Sector Abbreviation="JGGR" Label="Glimmerdrift Reaches" Tags="Apocryphal">
     <X>100</X>
     <Y>101</Y>
     <Name>Glimmerdrift Reaches (Judges Guild)</Name>
     <DataFile Author="Dave Sering and Steve Crow" Publisher="Judges Guild">Faraway/JG-Glimmerdrift.sec</DataFile>
     <Stylesheet>
-      border.Im,
       border { color: salmon; style: dashed; }
-      route { color: darkblue; }
+      border.Im { color: lightblue; style: dashed; }
+      border.Hazard { color: red; style: dotted; }
+
       route.Independent { color: darkblue; style: dashed; }
       route.Special { color: steelblue; width: 3; }
+      route.Trade { color: red; width: 0.5; }
     </Stylesheet>
     <Subsectors>
       <Subsector Index="A">Darkling</Subsector>
@@ -701,7 +708,6 @@
       <Route Type="Trade" Start="1118" End="1119"/>
       <Route Type="Trade" Start="1118" End="1216"/>
       <Route Type="Trade" Start="1119" End="1120"/>
-      <Route Type="Trade" Start="0921" End="1120"/>
       <Route Type="Trade" Start="1120" End="1220"/>
       <Route Type="Trade" Start="1134" End="1135"/>
       <Route Type="Trade" Start="1134" End="1335"/>
@@ -727,7 +733,6 @@
       <Route Type="Trade" Start="1333" End="1434"/>
       <Route Type="Trade" Start="1335" End="1434"/>
       <Route Type="Trade" Start="1401" End="1402"/>
-      <Route Type="Trade" Start="1401" End="1440" EndOffsetY="-1"/>
       <Route Type="Trade" Start="1402" End="1602"/>
       <Route Type="Trade" Start="1408" End="1608"/>
       <Route Type="Trade" Start="1411" End="1412"/>
@@ -766,7 +771,6 @@
       <Route Type="Trade" Start="1537" End="1736"/>
       <Route Type="Trade" Start="1602" End="1802"/>
       <Route Type="Trade" Start="1802" End="1902"/>
-      <Route Type="Trade" Start="1802" End="1940" EndOffsetY="-1"/>
       <Route Type="Trade" Start="1810" End="1811"/>
       <Route Type="Trade" Start="1810" End="1909"/>
       <Route Type="Trade" Start="1810" End="1811"/>
@@ -852,15 +856,19 @@
       <Route Type="Trade" Start="3239" End="0140" EndOffsetX="1"/>
     </Routes>
   </Sector>
-  <Sector Abbreviation="JGCM">
+  <Sector Abbreviation="JGCM" Label="Crucis Margin" Tags="Apocryphal">
     <X>101</X>
     <Y>101</Y>
     <Name>Crucis Margin (Judges Guild)</Name>
     <DataFile Author="Dave Sering" Publisher="Judges Guild">Faraway/JG-CrucisMargin.sec</DataFile>
     <Stylesheet>
       border { color: salmon; style: dashed; }
-      route { color: darkblue; }
+      border.Im { color: lightblue; style: dashed; }
+      border.Hazard { color: red; style: dotted; }
+
       route.Independent { color: darkblue; style: dashed; }
+      route.Special { color: steelblue; width: 3; }
+      route.Trade { color: red; width: 0.5; }
     </Stylesheet>
     <Subsectors>
       <Subsector Index="A">Ark</Subsector>
@@ -980,7 +988,6 @@
       <Route Type="Independent" Start="3015" End="3215"/>
       <Route Type="Independent" Start="3113" End="3011"/>
       <Route Type="Independent" Start="3011" End="3110"/>
-      <Route Type="Independent" Start="2520" End="2522"/>
       <Route Type="Trade" Start="3220" End="3221"/>
       <Route Type="Trade" Start="2505" End="2405"/>
       <Route Type="Trade" Start="2505" End="2504"/>
@@ -1003,7 +1010,6 @@
       <Route Type="Independent" Start="3108" End="3207"/>
       <Route Type="Trade" Start="2810" End="2812"/>
       <Route Type="Trade" Start="2610" End="2612"/>
-      <Route Type="Trade" Start="3110" End="3011"/>
       <Route Type="Trade" Start="2532" End="2433"/>
       <Route Type="Trade" Start="2532" End="2733"/>
       <Route Type="Trade" Start="2733" End="3031"/>
