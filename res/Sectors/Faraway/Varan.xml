@@ -2,7 +2,6 @@
 <Sector Tags="Faraway">
   <X>200</X>
   <Y>100</Y>
-  <Name>Mikhail</Name>
   <Name>Varan</Name>
   <Subsectors>
     <Subsector Index="A">Merlina</Subsector>
@@ -84,6 +83,7 @@
     <Route Start="1330" End="1227" Allegiance="Vn" />
   </Routes>
   <Allegiances>
+    <Allegiance Code="Na">Non-Aligned</Allegiance>
     <Allegiance Code="Vn">The Varan League</Allegiance>
     <Allegiance Code="Vc">The Varan Core Worlds</Allegiance>
     <Allegiance Code="Sw">The Shattered Worlds</Allegiance>

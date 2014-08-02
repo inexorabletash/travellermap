@@ -156,7 +156,8 @@ namespace Maps
             "/doc/api",
             "/doc/credits",
             "/doc/fileformats",
-            "/doc/secondsurvey"
+            "/doc/secondsurvey",
+            "/doc/submit"
         };
 
         private static void RegisterRoutes(RouteCollection routes)

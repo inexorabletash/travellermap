@@ -35,7 +35,7 @@ namespace Maps.Admin
                               where (sectorName == null || sector.Names[0].Text.StartsWith(sectorName, ignoreCase: true, culture: CultureInfo.InvariantCulture))
                               && (sector.DataFile != null)
                               && (type == null || sector.DataFile.Type == type)
-                              && (sector.Tags.Contains("OTU"))
+                              && (sector.Tags.Contains("OTU") || sector.Tags.Contains("Apocryphal") || sector.Tags.Contains("Faraway"))
                               orderby sector.Names[0].Text
                               select sector;
 

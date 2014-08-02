@@ -151,6 +151,7 @@
     <Content Include="doc\credits.html" />
     <Content Include="doc\fileformats.html" />
     <Content Include="doc\secondsurvey.html" />
+    <Content Include="doc\submit.html" />
     <Content Include="doc\trader_format.html" />
     <Content Include="Global.asax" />
     <Content Include="index.css" />
@@ -202,6 +203,7 @@
     <Content Include="res\Sectors\Ealiyasiyw.xml" />
     <Content Include="res\Sectors\Empty Quarter.xml" />
     <Content Include="res\Sectors\extolian.xml" />
+    <Content Include="res\Sectors\Faraway\Varan.xml" />
     <Content Include="res\Sectors\Folgore.xml" />
     <Content Include="res\Sectors\Foreven.xml" />
     <Content Include="res\Sectors\Fornast.xml">
@@ -231,9 +233,6 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="res\Sectors\Mendan.xml" />
-    <Content Include="res\Sectors\mikhail.xml">
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="res\Sectors\Nooq.xml" />
     <Content Include="res\Sectors\Old Expanses.xml">
       <SubType>Designer</SubType>
@@ -492,6 +491,7 @@
     <Content Include="res\Sectors\Faraway\JG-Glimmerdrift.sec" />
     <Content Include="res\Sectors\Faraway\JG-Ley.sec" />
     <Content Include="res\Sectors\Faraway\Maranatha-Alkahest.sec" />
+    <Content Include="res\Sectors\Faraway\Varan.tab" />
     <None Include="res\Sectors\Fornast.tab" />
     <None Include="res\Sectors\Glimmerdrift.tab" />
     <None Include="res\Sectors\Grikrng.sec" />
@@ -515,7 +515,6 @@
     <None Include="res\Sectors\Magyar.tab" />
     <None Include="res\Sectors\Massilia.tab" />
     <Content Include="res\Sectors\Nooq.sec" />
-    <Content Include="res\Sectors\mikhail.sec" />
     <None Include="res\Sectors\Old Expanses.tab" />
     <None Include="res\Sectors\Pliabriebl.sec" />
     <Content Include="res\Sectors\Porlock.sec" />

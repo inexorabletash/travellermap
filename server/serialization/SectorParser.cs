@@ -256,7 +256,9 @@ namespace Maps.Serialization
                 world.Bases = Check(dict, new string[] { "B", "Bases" }, BASES_REGEX, CheckOptions.EmptyIfDash);
                 world.Zone = Check(dict, new string[] { "Z", "Zone" }, ZONE_REGEX, CheckOptions.EmptyIfDash);
                 world.PBG = Check(dict, "PBG", PBG_REGEX);
-                world.Allegiance = Check(dict, new string[] { "A", "Allegiance" }, SecondSurvey.IsKnownT5Allegiance);
+                world.Allegiance = Check(dict, new string[] { "A", "Allegiance" }, 
+                    // TODO: Allow unofficial sectors to have locally declared allegiances.
+                    a => a.Length != 4 || SecondSurvey.IsKnownT5Allegiance(a));
                 world.Stellar = Check(dict, new string[] { "Stellar", "Stars", "Stellar Data" }, STARS_REGEX);
 
                 int w;
