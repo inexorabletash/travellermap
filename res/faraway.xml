@@ -223,7 +223,7 @@
       <Route Type="Trade" Start="1514" End="1615"/>
       <Route Type="Trade" Start="1626" End="1628"/>
       <Route Type="Trade" Start="1731" End="1733"/>
-      <Route Type="Trade" Start="1731" End="2031"/>      
+      <Route Type="Trade" Start="1731" End="2031"/>
       <Route Type="Trade" Start="1817" End="1915"/>
       <Route Type="Trade" Start="1823" End="1921"/>
       <Route Type="Trade" Start="1823" End="2024"/>
@@ -621,7 +621,7 @@
       <Border Allegiance="Ma" LabelPosition="2603">2202 2302 2402 2502 2602 2702 2802 2903 3002 3003 3004 3005 2906 2806 2807 2708 2608 2509 2508 2507 2406 2405 2404 2403 2303 2202</Border>
       <Border Allegiance="Mn" LabelPosition="3015" WrapLabel="true">2315 2414 2413 2513 2612 2611 2711 2710 2810 2911 3011 3112 3212 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3323 3222 3122 3021 2921 2820 2720 2619 2519 2418 2318 2317 2316 2315</Border>
       <Border Allegiance="Rn" LabelPosition="3139">3039 3139 3238 3339 3340 3341 3241 3141 3041 3040 3039</Border>
-      <Border Allegiance="Za" LabelPosition="1337">0935 1034 1134 1133 1232 1231 1230 1229 1329 1429 1530 1630 1731 1732 1832 1733 1734 1735 1736 1737 1738 1638 1538 1438 1339 1238 1237 1137 1036 0936 0935</Border>      
+      <Border Allegiance="Za" LabelPosition="1337">0935 1034 1134 1133 1232 1231 1230 1229 1329 1429 1530 1630 1731 1732 1832 1733 1734 1735 1736 1737 1738 1638 1538 1438 1339 1238 1237 1137 1036 0936 0935</Border>
     </Borders>
     <Routes>
       <!--<Route Type="Trade" Start="0435" End="0635"/>-->
@@ -1192,5 +1192,12 @@
       <Route Type="Trade" Start="2030" End="2031"/>
       <Route Type="Trade" Start="1829" End="2031"/>
     </Routes>
+  </Sector>
+  <Sector Tags="Faraway">
+    <X>200</X>
+    <Y>100</Y>
+    <Name Author="Ed &quot;Dalthor Et Magera&quot; Anderson">Varan</Name>
+    <DataFile Author="Ed &quot;Dalthor Et Magera&quot; Anderson">Faraway/Varan.sec</DataFile>
+    <MetadataFile Author="Ed &quot;Dalthor Et Magera&quot; Anderson">Faraway/Varan.xml</MetadataFile>
   </Sector>
 </Sectors>
