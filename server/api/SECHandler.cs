@@ -2,6 +2,7 @@
 using System.IO;
 using System.Text;
 using System.Net.Mime;
+using System.Collections.Generic;
 
 namespace Maps.API
 {
@@ -25,7 +26,14 @@ namespace Maps.API
 
             if (context.Request.HttpMethod == "POST")
             {
-                sector = new Sector(context.Request.InputStream, new ContentType(context.Request.ContentType).MediaType);
+                bool lint = GetBoolOption(context, "lint", defaultValue: false);
+                var errors = lint ? new ErrorLogger() : null;
+                sector = new Sector(context.Request.InputStream, new ContentType(context.Request.ContentType).MediaType, errors);
+                if (lint && !errors.Empty)
+                {
+                    SendError(context.Response, 400, "Bad Request", errors.ToString());
+                    return;
+                }
                 includeMetadata = false;
             }
             else if (HasOption(context, "sx") && HasOption(context, "sy"))

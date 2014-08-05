@@ -72,7 +72,7 @@ namespace Maps
 
     public interface IDeserializable
     {
-        void Deserialize(Stream stream, string mediaType);
+        void Deserialize(Stream stream, string mediaType, ErrorLogger errors = null);
     }
 
     public class ResourceManager

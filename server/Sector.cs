@@ -200,10 +200,10 @@ namespace Maps
 
         }
 
-        public Sector(Stream stream, string mediaType)  : this()
+        public Sector(Stream stream, string mediaType, ErrorLogger errors)  : this()
         {
             WorldCollection wc = new WorldCollection();
-            wc.Deserialize(stream, mediaType);
+            wc.Deserialize(stream, mediaType, errors);
             foreach (World world in wc)
                 world.Sector = this;
             m_data = wc;

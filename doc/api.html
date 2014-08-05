@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <title>API - Traveller Map</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="shortcut icon" href="../favicon.ico">
@@ -672,6 +672,12 @@ table#features, #features th, #features td { border: solid 1px black; }
           <a href="fileformats#t5col">T5 Column Delimited</a> format;
           otherwise, it is parsed as
           <a href="fileformats#sec">Legacy SEC</a> format.
+          <h4>Parameters:</h4>
+          <dl class="params">
+            <dt>lint=1
+            <dd>Return an HTTP failure (400) if warnings or errors are found while parsing the sector data.
+            The default is to silently ignore any lines with errors.
+          </dl>
     </dl>
 
     <h4>Options:</h4>
@@ -747,6 +753,13 @@ table#features, #features th, #features td { border: solid 1px black; }
         <a href="http://dotclue.org/t20/">MSEC</a> format
         (<a href="/data/spin/msec">example</a>) is assumed. JSON parsing
         is not supported.
+
+        <h4>Parameters:</h4>
+        <dl class="params">
+          <dt>lint=1
+          <dd>Return an HTTP failure (400) if warnings or errors are found while parsing the sector data.
+          The default is to silently ignore any lines with errors.
+        </dl>
     </dl>
     <h4>Notes:</h4>
     <ul>
@@ -1029,6 +1042,9 @@ table#features, #features th, #features td { border: solid 1px black; }
 
       <dl class="params">
         <dt>subsector <dd>subsector index (<code>A</code> &ndash; <code>P</code>)
+        <dt>lint=1
+        <dd>Return an HTTP failure (400) if warnings or errors are found while parsing the sector data.
+        The default is to silently ignore any lines with errors.
       </dl>
 
       Sector data and metadata can be sent in a variety of
@@ -1126,6 +1142,9 @@ table#features, #features th, #features td { border: solid 1px black; }
       <dl class="params">
         <dt>jump <dd>jump distance to render (1 through 12, default is 6)
         <dt>hex <dd>specify <a href="#system_location">hex location</a> within the named sector
+        <dt>lint=1
+        <dd>Return an HTTP failure (400) if warnings or errors are found while parsing the sector data.
+        The default is to silently ignore any lines with errors.
       </dl>
 
       Sector data and metadata can be sent in a variety of

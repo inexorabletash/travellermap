@@ -12,9 +12,6 @@ namespace Maps.Admin
     {
         public override string DefaultContentType { get { return MediaTypeNames.Text.Plain; } }
 
-        private static readonly Regex candidate = new Regex(@"(\w\w\w\w\w\w\w-\w|Error) \b",
-            RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.Singleline | RegexOptions.ExplicitCapture | RegexOptions.IgnorePatternWhitespace);
-
         protected override void Process(System.Web.HttpContext context)
         {
             context.Response.ContentType = MediaTypeNames.Text.Plain;
@@ -48,8 +45,7 @@ namespace Maps.Admin
                 if (worlds != null)
                 {
                     context.Response.Output.WriteLine("{0} world(s)", worlds.Count());
-                    foreach (string s in worlds.ErrorList.Where(s => candidate.IsMatch(s)))
-                        context.Response.Output.WriteLine(s);
+                    worlds.ErrorList.Report(context.Response.Output);
                 }
                 else
                 {

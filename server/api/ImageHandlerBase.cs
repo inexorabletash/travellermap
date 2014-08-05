@@ -262,23 +262,23 @@ namespace Maps.API
             }
         }
 
-        protected static Sector GetPostedSector(HttpRequest request)
+        protected static Sector GetPostedSector(HttpRequest request, ErrorLogger errors)
         {
             Sector sector = null;
 
             if (request.Files["file"] != null && request.Files["file"].ContentLength > 0)
             {
                 HttpPostedFile hpf = request.Files["file"];
-                sector = new Sector(hpf.InputStream, hpf.ContentType);
+                sector = new Sector(hpf.InputStream, hpf.ContentType, errors);
             }
             else if (!String.IsNullOrEmpty(request.Form["data"]))
             {
                 string data = request.Form["data"];
-                sector = new Sector(data.ToStream(), MediaTypeNames.Text.Plain);
+                sector = new Sector(data.ToStream(), MediaTypeNames.Text.Plain, errors);
             }
             else if (new ContentType(request.ContentType).MediaType == MediaTypeNames.Text.Plain)
             {
-                sector = new Sector(request.InputStream, MediaTypeNames.Text.Plain);
+                sector = new Sector(request.InputStream, MediaTypeNames.Text.Plain, errors);
             }
             else
             {

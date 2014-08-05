@@ -13,15 +13,15 @@ namespace Maps.Serialization
         public const int BUFFER_SIZE = 32768;
 
         public abstract Encoding Encoding { get; }
-        public void Parse(Stream stream, WorldCollection worlds)
+        public void Parse(Stream stream, WorldCollection worlds, ErrorLogger errors)
         {
             using (var reader = new StreamReader(stream, Encoding, detectEncodingFromByteOrderMarks: true, bufferSize: BUFFER_SIZE))
             {
-                Parse(reader, worlds);
+                Parse(reader, worlds, errors ?? worlds.ErrorList);
             }
         }
 
-        public abstract void Parse(TextReader reader, WorldCollection worlds);
+        public abstract void Parse(TextReader reader, WorldCollection worlds, ErrorLogger errors);
 
         public static SectorFileParser ForType(string mediaType)
         {
@@ -77,7 +77,7 @@ namespace Maps.Serialization
     {
         public override Encoding Encoding { get { return Encoding.UTF8; } }
 
-        public override void Parse(TextReader reader, WorldCollection worlds)
+        public override void Parse(TextReader reader, WorldCollection worlds, ErrorLogger errors)
         {
             int lineNumber = 0;
             for (string line = reader.ReadLine(); line != null; line = reader.ReadLine())
@@ -93,7 +93,7 @@ namespace Maps.Serialization
                     case '$': break; // route
                     case '@': break; // subsector
                     default:
-                        ParseUWP(worlds, line, lineNumber);
+                        ParseWorld(worlds, line, lineNumber, errors ?? worlds.ErrorList);
                         break;
                 }
             }
@@ -119,14 +119,13 @@ namespace Maps.Serialization
             @"^[A-P]-\d{1,2}$",
             RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.Singleline | RegexOptions.ExplicitCapture | RegexOptions.IgnorePatternWhitespace);
 
-        private static void ParseUWP(WorldCollection worlds, string line, int lineNumber)
+        private static void ParseWorld(WorldCollection worlds, string line, int lineNumber, ErrorLogger errors)
         {
             Match match = worldRegex.Match(line);
             if (!match.Success)
             {
-#if DEBUG
-                worlds.ErrorList.Add("ERROR (SEC Parse): " + line);
-#endif
+                if (errors != null)
+                    errors.Error("SEC Parse", lineNumber, line);
                 return;
             }
 
@@ -155,7 +154,7 @@ namespace Maps.Serialization
 
                 string rest = match.Groups["rest"].Value;
                 if (!String.IsNullOrEmpty(rest))
-                    ParseRest(rest, worlds, line, world);
+                    ParseRest(rest, worlds, lineNumber, line, world, errors);
             }
             catch (Exception e)
             {
@@ -163,18 +162,17 @@ namespace Maps.Serialization
             }
         }
 
-        private static void ParseRest(string rest, WorldCollection worlds, string line, World world)
+        private static void ParseRest(string rest, WorldCollection worlds, int lineNumber, string line, World world, ErrorLogger errors)
         {
             // Assume stellar data, try to parse it
             try
             {
                 world.Stellar = StellarDataParser.Parse(rest, StellarDataParser.OutputFormat.Compact);
-            }
+            }   
             catch (StellarDataParser.InvalidSystemException)
             {
-#if DEBUG
-                worlds.ErrorList.Add("WARNING (Stellar Data): " + line);
-#endif
+                if (errors != null)
+                    errors.Warning(String.Format("Invalid stellar data: '{0}'", rest), lineNumber, line);
             }
         }
     }
@@ -240,7 +238,7 @@ namespace Maps.Serialization
             return null;
         }
 
-        protected static void ParseWorld(WorldCollection worlds, StringDictionary dict, string line, int lineNumber)
+        protected static void ParseWorld(WorldCollection worlds, StringDictionary dict, string line, int lineNumber, ErrorLogger errors)
         {
             try
             {
@@ -273,22 +271,15 @@ namespace Maps.Serialization
                 if (world.Name == world.Name.ToUpperInvariant() && world.IsHi)
                     world.Name = Util.FixCapitalization(world.Name);
 
-#if DEBUG
-                if (worlds[world.X, world.Y] != null)
-                    worlds.ErrorList.Add("ERROR (Duplicate): " + line);
-#endif
+                if (worlds[world.X, world.Y] != null && errors != null)
+                    errors.Warning("Duplicate World", lineNumber, line);
                 worlds[world.X, world.Y] = world;
             }
-#if DEBUG
             catch (Exception e)
             {
-                worlds.ErrorList.Add(String.Format("ERROR (T5 Parse - {0}): ", e.Message) + line);
+                if (errors != null)
+                    errors.Error(e.Message, lineNumber, line);
             }
-#else
-            catch (Exception)
-            {
-            }
-#endif
         }
     }
 
@@ -296,11 +287,11 @@ namespace Maps.Serialization
     {
         public override Encoding Encoding { get { return Encoding.UTF8; } }
 
-        public override void Parse(TextReader reader, WorldCollection worlds)
+        public override void Parse(TextReader reader, WorldCollection worlds, ErrorLogger errors)
         {
             ColumnParser parser = new ColumnParser(reader);
             foreach (var row in parser.Data)
-                ParseWorld(worlds, row.dict, row.line, row.lineNumber);
+                ParseWorld(worlds, row.dict, row.line, row.lineNumber, errors);
         }
     }
 
@@ -308,11 +299,11 @@ namespace Maps.Serialization
     {
         public override Encoding Encoding { get { return Encoding.UTF8; } }
 
-        public override void Parse(TextReader reader, WorldCollection worlds)
+        public override void Parse(TextReader reader, WorldCollection worlds, ErrorLogger errors)
         {
             TSVParser parser = new TSVParser(reader);
             foreach (var row in parser.Data)
-                ParseWorld(worlds, row.dict, row.line, row.lineNumber);
+                ParseWorld(worlds, row.dict, row.line, row.lineNumber, errors);
         }
     }
 

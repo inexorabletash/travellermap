@@ -243,4 +243,66 @@ namespace Maps
             return m_list.GetEnumerator();
         }
     }
+
+    public class ErrorLogger
+    {
+        public enum Severity {
+            Fatal,
+            Error,
+            Warning,
+            Hint
+        }
+
+        private struct Record
+        {
+            public Record(Severity severity, string message)
+            {
+                this.severity = severity;
+                this.message = message;
+            }
+            public Severity severity;
+            public string message;
+        }
+
+        public ErrorLogger() { }
+
+        public void Log(Severity sev, string message)
+        {
+            log.Add(new Record(sev, message));
+        }
+        public void Log(Severity sev, string message, int lineNumber, string line)
+        {
+            log.Add(new Record(sev, String.Format("{0}, line {1}: {2}", message, lineNumber, line)));
+        }
+        public void Fatal(string message) { Log(Severity.Fatal, message); }
+        public void Fatal(string message, int lineNumber, string line) { Log(Severity.Fatal, message, lineNumber, line); }
+        public void Error(string message) { Log(Severity.Error, message); }
+        public void Error(string message, int lineNumber, string line) { Log(Severity.Error, message, lineNumber, line); }
+        public void Warning(string message) { Log(Severity.Warning, message); }
+        public void Warning(string message, int lineNumber, string line) { Log(Severity.Warning, message, lineNumber, line); }
+        public void Hint(string message) { Log(Severity.Hint, message); }
+        public void Hint(string message, int lineNumber, string line) { Log(Severity.Hint, message, lineNumber, line); }
+
+        private List<Record> log = new List<Record>();
+
+        public bool Empty { get { return log.Count == 0; } }
+        public int Count { get { return log.Count; } }
+
+        public void Report(TextWriter writer)
+        {
+            foreach (var record in log)
+            {
+                writer.WriteLine("{0}: {1}", record.severity.ToString(), record.message);
+            }
+        }
+
+        public override string ToString()
+        {
+            using (StringWriter writer = new StringWriter())
+            {
+                Report(writer);
+                return writer.ToString();
+            }
+        }
+    }
 }

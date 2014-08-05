@@ -116,7 +116,13 @@ namespace Maps.API
                 {
                     try
                     {
-                        sector = GetPostedSector(context.Request);
+                        bool lint = GetBoolOption(context, "lint", defaultValue: false);
+                        ErrorLogger errors = new ErrorLogger();
+                        sector = GetPostedSector(context.Request, errors);
+                        if (lint && !errors.Empty)
+                        {
+                            SendError(context.Response, 400, "Bad Request", errors.ToString());
+                        }
                     }
                     catch (Exception ex)
                     {

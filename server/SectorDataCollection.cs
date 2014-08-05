@@ -13,6 +13,13 @@ namespace Maps
     /// </summary>
     public class WorldCollection : IDeserializable, IEnumerable<World>
     {
+        public WorldCollection()
+        {
+#if DEBUG
+            m_errors = new ErrorLogger();
+#endif
+        }
+        
         private World[,] m_worlds = new World[Astrometrics.SectorWidth, Astrometrics.SectorHeight];
         public World this[int x, int y]
         {
@@ -55,21 +62,19 @@ namespace Maps
         }
 
 
-#if DEBUG
-        private List<string> m_errorList = new List<string>();
-        public List<string> ErrorList { get { return m_errorList; } }
-#endif
+        private ErrorLogger m_errors = null;
+        public ErrorLogger ErrorList { get { return m_errors; } }
 
         public void Serialize(TextWriter writer, string mediaType, bool includeHeader=true, bool sscoords=false, WorldFilter filter=null)
         {
             SectorFileSerializer.ForType(mediaType).Serialize(writer, this.Where(world => filter == null || filter(world)), includeHeader:includeHeader, sscoords:sscoords);
         }
 
-        public void Deserialize(Stream stream, string mediaType)
+        public void Deserialize(Stream stream, string mediaType, ErrorLogger errors = null)
         {
             if (mediaType == null || mediaType == MediaTypeNames.Text.Plain || mediaType == MediaTypeNames.Application.Octet)
                 mediaType = SectorFileParser.SniffType(stream);
-            SectorFileParser.ForType(mediaType).Parse(stream, this);
+            SectorFileParser.ForType(mediaType).Parse(stream, this, errors);
         }
 
         public HashSet<string> AllegianceCodes()
