@@ -66,6 +66,9 @@ namespace Maps.API
             [XmlAttribute]
             public string Abbreviation { get { return m_sector.Abbreviation; } }
 
+            [XmlAttribute]
+            public string Tags { get { return m_sector.TagString;  } }
+
             [XmlElement("Name")]
             public List<Name> Names { get { return m_sector.Names; } }
         }
