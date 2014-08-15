@@ -34,8 +34,6 @@ a.stealth:hover { text-decoration: underline; }
   position: absolute; left: 0; right: 0; bottom: 0; height: 95px; padding: 10px; padding-top: 0; overflow: hidden;
 }
 
-.hide-footer #bottom-pane { display: none; }
-
 #dragContainer.dragging {
   cursor: move;
   cursor: url(res/ui/grabbing.cur), move;
