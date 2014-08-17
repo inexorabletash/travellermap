@@ -219,9 +219,11 @@ window.addEventListener('DOMContentLoaded', function() {
 
   if (isIframe) {
     var forceui = ('forceui' in urlParams) && Boolean(Number(urlParams.forceui));
-    if (!forceui)
-      document.body.classList.add('hide-ui');
-    document.body.classList.add('hide-footer');
+    if (forceui)
+      document.body.classList.remove('hide-ui');
+  } else {
+    document.body.classList.remove('hide-ui');
+    document.body.classList.remove('hide-footer');
   }
 
   if ('galdir' in urlParams) {
