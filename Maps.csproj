@@ -119,6 +119,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="server\WorldCollection.cs" />
     <Content Include="booklet.html" />
     <Content Include="booklet.js" />
     <Content Include="borders\bd_images\image001.gif" />
@@ -439,7 +440,6 @@
     <Compile Include="server\SearchEngine.cs" />
     <Compile Include="server\SecondSurvey.cs" />
     <Compile Include="server\Sector.cs" />
-    <Compile Include="server\SectorDataCollection.cs" />
     <Compile Include="server\SectorStylesheet.cs" />
     <Compile Include="server\Selector.cs" />
     <Compile Include="server\serialization\ColumnUtils.cs" />

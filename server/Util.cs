@@ -304,5 +304,10 @@ namespace Maps
                 return writer.ToString();
             }
         }
+
+        public void Prepend(Severity severity, string message)
+        {
+            log.Insert(0, new Record(severity, message));
+        }
     }
 }

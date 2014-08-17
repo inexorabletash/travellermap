@@ -65,16 +65,21 @@ namespace Maps
         private ErrorLogger m_errors = null;
         public ErrorLogger ErrorList { get { return m_errors; } }
 
-        public void Serialize(TextWriter writer, string mediaType, bool includeHeader=true, bool sscoords=false, WorldFilter filter=null)
+        public void Serialize(TextWriter writer, string mediaType, bool includeHeader = true, bool sscoords = false, WorldFilter filter = null)
         {
-            SectorFileSerializer.ForType(mediaType).Serialize(writer, this.Where(world => filter == null || filter(world)), includeHeader:includeHeader, sscoords:sscoords);
+            SectorFileSerializer.ForType(mediaType).Serialize(writer, this.Where(world => filter == null || filter(world)), includeHeader: includeHeader, sscoords: sscoords);
         }
 
         public void Deserialize(Stream stream, string mediaType, ErrorLogger errors = null)
         {
             if (mediaType == null || mediaType == MediaTypeNames.Text.Plain || mediaType == MediaTypeNames.Application.Octet)
                 mediaType = SectorFileParser.SniffType(stream);
-            SectorFileParser.ForType(mediaType).Parse(stream, this, errors);
+            SectorFileParser parser = SectorFileParser.ForType(mediaType);
+            parser.Parse(stream, this, errors);
+            if (errors != null && !errors.Empty)
+            {
+                errors.Prepend(ErrorLogger.Severity.Warning, String.Format("Parsing as: {0}", parser.Name));
+            }
         }
 
         public HashSet<string> AllegianceCodes()

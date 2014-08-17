@@ -898,7 +898,8 @@ namespace Maps
     {
         Solid = 0, // Default
         Dashed,
-        Dotted
+        Dotted,
+        None
     }
 
     public class Route : IAllegiance

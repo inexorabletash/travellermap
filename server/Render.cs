@@ -1479,6 +1479,9 @@ namespace Maps.Rendering
                         if (ctx.styles.grayscale || !ColorUtil.NoticeableDifference(routeColor.Value, ctx.styles.backgroundColor))
                             routeColor = ctx.styles.microRoutes.pen.color; // default
 
+                        if (routeStyle.Value == LineStyle.None)
+                            continue;
+
                         pen.Color = routeColor.Value;
                         pen.Width = routeWidth.Value * baseWidth;
                         pen.DashStyle = LineStyleToDashStyle(routeStyle.Value);
@@ -1497,6 +1500,7 @@ namespace Maps.Rendering
                 case LineStyle.Solid: return XDashStyle.Solid;
                 case LineStyle.Dashed: return XDashStyle.Dash;
                 case LineStyle.Dotted: return XDashStyle.Dot;
+                case LineStyle.None: throw new ApplicationException("LineStyle.None should be detected earlier");
             }
         }
 
@@ -1549,11 +1553,15 @@ namespace Maps.Rendering
                         borderStyle = borderStyle ?? ssr.GetEnum<LineStyle>("style") ?? LineStyle.Solid;
                         borderColor = borderColor ?? ssr.GetColor("color") ?? ctx.styles.microBorders.pen.color;
 
+                        if (layer == BorderLayer.Stroke && borderStyle.Value == LineStyle.None)
+                            continue;
+
                         if (ctx.styles.grayscale ||
                             !ColorUtil.NoticeableDifference(borderColor.Value, ctx.styles.backgroundColor))
                         {
                             borderColor = ctx.styles.microBorders.pen.color; // default
                         }
+
                         pen.Color = borderColor.Value;
                         pen.DashStyle = LineStyleToDashStyle(borderStyle.Value);
 
