@@ -12,6 +12,7 @@ namespace Maps.Serialization
     {
         public const int BUFFER_SIZE = 32768;
 
+        public abstract string Name { get; }
         public abstract Encoding Encoding { get; }
         public void Parse(Stream stream, WorldCollection worlds, ErrorLogger errors)
         {
@@ -75,6 +76,7 @@ namespace Maps.Serialization
 
     public class SecParser : SectorFileParser
     {
+        public override string Name { get { return "SEC (Legacy)"; } }
         public override Encoding Encoding { get { return Encoding.UTF8; } }
 
         public override void Parse(TextReader reader, WorldCollection worlds, ErrorLogger errors)
@@ -99,6 +101,8 @@ namespace Maps.Serialization
             }
         }
 
+        private static readonly Regex uwpRegex = new Regex(@"\w\w\w\w\w\w\w-\w", RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.Singleline);
+
         // PERF: Big time sucker; consider optimizing (can save 5% by eliminating Unicode char classes)
         private static readonly Regex worldRegex = new Regex(@"^" +
             @"( \s*       (?<name>        .*                           ) )  " + // Name
@@ -121,7 +125,14 @@ namespace Maps.Serialization
 
         private static void ParseWorld(WorldCollection worlds, string line, int lineNumber, ErrorLogger errors)
         {
+            if (!uwpRegex.IsMatch(line))
+            {
+                if (errors != null)
+                    errors.Warning("Ignoring non-UWP data", lineNumber, line);
+                return;
+            }
             Match match = worldRegex.Match(line);
+
             if (!match.Success)
             {
                 if (errors != null)
@@ -200,67 +211,92 @@ namespace Maps.Serialization
             EmptyIfDash = 1
         };
 
-        private static string Check(StringDictionary dict, string key, Regex regex, CheckOptions options = 0)
+        private class FieldChecker
         {
-#if DEBUG
-            if (!regex.IsMatch(dict[key]))
-                throw new Exception(String.Format("Unexpected value for {0}: '{1}'", key, dict[key]));
-#endif
-            string value = dict[key];
+            private StringDictionary dict;
+            private ErrorLogger errors;
+            private int lineNumber;
+            private string line;
+            bool hadError = false;
 
-            if (options.HasFlag(CheckOptions.EmptyIfDash))
-                value = EmptyIfDash(value);
-
-            return value;
-        }
-
-        private static string Check(StringDictionary dict, IEnumerable<string> keys, Regex regex = null, CheckOptions options = 0)
-        {
-            return Check(dict, keys, value => regex == null || regex.IsMatch(value), options);
-        }
-
-        private static string Check(StringDictionary dict, IEnumerable<string> keys, Func<string, bool> validate, CheckOptions options = 0)
-        {
-            foreach (var key in keys)
+            public bool HadError { get { return hadError; } }
+            public FieldChecker(StringDictionary dict, ErrorLogger errors, int lineNumber, string line)
             {
-                if (!dict.ContainsKey(key))
-                    continue;
+                this.dict = dict;
+                this.errors = errors;
+                this.lineNumber = lineNumber;
+                this.line = line;
+            }
+            public string Check(string key, Regex regex, CheckOptions options = 0)
+            {
+                if (!regex.IsMatch(dict[key]))
+                {
+                    if (errors != null)
+                        errors.Error(String.Format("Unexpected value for {0}: '{1}'", key, dict[key]), lineNumber, line);
+                    hadError = true;
+                }
+
                 string value = dict[key];
 
                 if (options.HasFlag(CheckOptions.EmptyIfDash))
                     value = EmptyIfDash(value);
-#if DEBUG
-                if (!validate(value))
-                    throw new Exception(String.Format("Unexpected value for {0}: '{1}'", key, value));
-#endif
+
                 return value;
             }
-            return null;
+
+            public string Check(IEnumerable<string> keys, Regex regex = null, CheckOptions options = 0)
+            {
+                return Check(keys, value => regex == null || regex.IsMatch(value), options);
+            }
+
+            public string Check(IEnumerable<string> keys, Func<string, bool> validate, CheckOptions options = 0)
+            {
+                foreach (var key in keys)
+                {
+                    if (!dict.ContainsKey(key))
+                        continue;
+                    string value = dict[key];
+
+                    if (options.HasFlag(CheckOptions.EmptyIfDash))
+                        value = EmptyIfDash(value);
+
+                    if (!validate(value))
+                    {
+                        if (errors != null)
+                            errors.Error(String.Format("Unexpected value for {0}: '{1}'", key, value), lineNumber, line);
+                        hadError = true;
+                    }
+
+                    return value;
+                }
+                return null;
+            }
         }
 
         protected static void ParseWorld(WorldCollection worlds, StringDictionary dict, string line, int lineNumber, ErrorLogger errors)
         {
             try
             {
+                FieldChecker checker = new FieldChecker(dict, errors, lineNumber, line);
                 World world = new World();
-                world.Hex = Check(dict, "Hex", HEX_REGEX);
+                world.Hex = checker.Check("Hex", HEX_REGEX);
                 world.Name = dict["Name"];
-                world.UWP = Check(dict, "UWP", UWP_REGEX);
-                world.Remarks = Check(dict, new string[] { "Remarks", "Trade Codes", "Comments" });
-                world.Importance = Check(dict, new string[] { "{Ix}", "{ Ix }", "Ix" });
-                world.Economic = Check(dict, new string[] { "(Ex)", "( Ex )", "Ex" });
-                world.Cultural = Check(dict, new string[] { "[Cx]", "[ Cx ]", "Cx" });
-                world.Nobility = Check(dict, new string[] { "N", "Nobility" }, NOBILITY_REGEX, CheckOptions.EmptyIfDash);
-                world.Bases = Check(dict, new string[] { "B", "Bases" }, BASES_REGEX, CheckOptions.EmptyIfDash);
-                world.Zone = Check(dict, new string[] { "Z", "Zone" }, ZONE_REGEX, CheckOptions.EmptyIfDash);
-                world.PBG = Check(dict, "PBG", PBG_REGEX);
-                world.Allegiance = Check(dict, new string[] { "A", "Allegiance" }, 
+                world.UWP = checker.Check("UWP", UWP_REGEX);
+                world.Remarks = checker.Check(new string[] { "Remarks", "Trade Codes", "Comments" });
+                world.Importance = checker.Check(new string[] { "{Ix}", "{ Ix }", "Ix" });
+                world.Economic = checker.Check(new string[] { "(Ex)", "( Ex )", "Ex" });
+                world.Cultural = checker.Check(new string[] { "[Cx]", "[ Cx ]", "Cx" });
+                world.Nobility = checker.Check(new string[] { "N", "Nobility" }, NOBILITY_REGEX, CheckOptions.EmptyIfDash);
+                world.Bases = checker.Check(new string[] { "B", "Bases" }, BASES_REGEX, CheckOptions.EmptyIfDash);
+                world.Zone = checker.Check(new string[] { "Z", "Zone" }, ZONE_REGEX, CheckOptions.EmptyIfDash);
+                world.PBG = checker.Check("PBG", PBG_REGEX);
+                world.Allegiance = checker.Check(new string[] { "A", "Allegiance" },
                     // TODO: Allow unofficial sectors to have locally declared allegiances.
                     a => a.Length != 4 || SecondSurvey.IsKnownT5Allegiance(a));
-                world.Stellar = Check(dict, new string[] { "Stellar", "Stars", "Stellar Data" }, STARS_REGEX);
+                world.Stellar = checker.Check(new string[] { "Stellar", "Stars", "Stellar Data" }, STARS_REGEX);
 
                 int w;
-                if (Int32.TryParse(Check(dict, new string[] { "W", "Worlds" }), NumberStyles.Integer, CultureInfo.InvariantCulture, out w))
+                if (Int32.TryParse(checker.Check(new string[] { "W", "Worlds" }), NumberStyles.Integer, CultureInfo.InvariantCulture, out w))
                     world.Worlds = w;
 
                 int ru;
@@ -273,18 +309,22 @@ namespace Maps.Serialization
 
                 if (worlds[world.X, world.Y] != null && errors != null)
                     errors.Warning("Duplicate World", lineNumber, line);
-                worlds[world.X, world.Y] = world;
+
+                if (!checker.HadError)
+                {
+                    worlds[world.X, world.Y] = world;
+                }
             }
             catch (Exception e)
             {
-                if (errors != null)
-                    errors.Error(e.Message, lineNumber, line);
+                throw new Exception(String.Format("UWP Parse Error in line {0}:\n{1}\n{2}", lineNumber, e.Message, line));
             }
         }
     }
 
     public class SecondSurveyParser : T5ParserBase
     {
+        public override string Name { get { return "T5 Second Survey - Column Delimited"; } }
         public override Encoding Encoding { get { return Encoding.UTF8; } }
 
         public override void Parse(TextReader reader, WorldCollection worlds, ErrorLogger errors)
@@ -297,6 +337,7 @@ namespace Maps.Serialization
 
     public class TabDelimitedParser : T5ParserBase
     {
+        public override string Name { get { return "T5 Second Survey - Tab Delimited"; } }
         public override Encoding Encoding { get { return Encoding.UTF8; } }
 
         public override void Parse(TextReader reader, WorldCollection worlds, ErrorLogger errors)
