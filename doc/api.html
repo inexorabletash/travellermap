@@ -1022,6 +1022,7 @@ table#features, #features th, #features td { border: solid 1px black; }
 <dl class="params">
   <dt>GET
     <dd>The content to render is specified some combination of the following URL parameters:
+      <h4>Parameters:</h4>
       <dl class="params">
         <dt>sector <dd>sector name
         <dt>quadrant <dd>one of <code>Alpha</code>, <code>Beta</code>, <code>Gamma</code> or <code>Delta</code>
@@ -1040,6 +1041,7 @@ table#features, #features th, #features td { border: solid 1px black; }
       in the POST body. A specific subsector can be rendered using this parameter,
       which can be either part of the POST data or a URL parameter:
 
+      <h4>Parameters:</h4>
       <dl class="params">
         <dt>subsector <dd>subsector index (<code>A</code> &ndash; <code>P</code>)
         <dt>lint=1
@@ -1120,7 +1122,8 @@ table#features, #features th, #features td { border: solid 1px black; }
 <dl class="params">
   <dt>GET
     <dd>The map to render is specified some combination of the following URL parameters:
-    <dl class="params">
+      <h4>Parameters:</h4>
+      <dl class="params">
         <dt>jump <dd>jump distance to render (<code>0</code> through <code>12</code>, default is <code>6</code>)
         <dt>sector <dd>specify the <a href="#system_location">sector location</a> by name, e.g. "Spinward%20Marches"
         <dt>hex <dd>specify <a href="#system_location">hex location</a> within the named sector
@@ -1130,7 +1133,7 @@ table#features, #features th, #features td { border: solid 1px black; }
         <dt>hy <dd>hex in <a href="#system_sectorhex">sector/hex-space coordinates</a>
         <dt>x
         <dt>y <dd>location in <a href="#system_world">world-space coordinates</a>
-    </dl>
+      </dl>
 
   <dt>POST
     <dd>
@@ -1139,6 +1142,7 @@ table#features, #features th, #features td { border: solid 1px black; }
       in the POST body. The specific hex to render is specified using these paramters,
       which can be either part of the POST data or URL parameters:
 
+      <h4>Parameters:</h4>
       <dl class="params">
         <dt>jump <dd>jump distance to render (1 through 12, default is 6)
         <dt>hex <dd>specify <a href="#system_location">hex location</a> within the named sector
