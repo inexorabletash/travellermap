@@ -1,6 +1,13 @@
 window.addEventListener('DOMContentLoaded', function() {
   'use strict';
 
+  var Util = {
+    countdown: function countdown(n, callback) {
+      callback(n--);
+      if (n >= 0) setTimeout(function() { countdown(n, callback); }, 1000);
+    }
+  };
+
   //////////////////////////////////////////////////////////////////////
   //
   // Utilities
@@ -651,6 +658,60 @@ window.addEventListener('DOMContentLoaded', function() {
   }
   updateScaleIndicator();
 
+  //////////////////////////////////////////////////////////////////////
+  //
+  // Server Heartbeat
+  //
+  //////////////////////////////////////////////////////////////////////
+
+  var HEARTBEAT_MS = 10000,
+      RETRY_SLOP_MS = 5000,
+      RETRY_S = 10;
+  function checkServer(ok, err) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('HEAD', './empty.txt?' + Date.now());
+    xhr.send();
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState !== XMLHttpRequest.DONE) return;
+      if (xhr.status === 200)
+        ok();
+      else
+        err();
+    };
+  }
+  var intervalId = setInterval(function() {
+    checkServer(
+      function() {},
+      function() {
+        clearInterval(intervalId);
+        document.body.classList.add('serverError');
+        retry();
+        function retry() {
+          Util.countdown(RETRY_S, function(n) {
+            if (n) {
+              $('#siteStatus a').innerHTML =
+                escapeHtml('Unable to contact server. Retrying in ' + n + ' seconds.');
+              return;
+            }
+            $('#siteStatus a').innerHTML =
+              escapeHtml('Unable to contact server. Retrying...');
+            setTimeout(function() {
+              checkServer(
+                function() {
+                  $('#siteStatus a').innerHTML =
+                    escapeHtml('Connection re-established. Click to refresh.');
+                  $('#siteStatus a').addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.location.reload();
+                  });
+                },
+                retry
+              );
+            }, RETRY_SLOP_MS);
+          });
+        }
+      });
+  }, HEARTBEAT_MS);
 
   //////////////////////////////////////////////////////////////////////
   //

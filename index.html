@@ -965,32 +965,7 @@ button:hover {
     #siteStatus a:hover { text-decoration: underline; }
     body.serverError #siteStatus { display: block; }
     </style>
-    <a href="#">Unable to contact server. Will retry every 10s.</a>
-    <script>
-    window.addEventListener('DOMContentLoaded', function() {
-      var intervalId = setInterval(function() {
-         var xhr = new XMLHttpRequest();
-         xhr.open('HEAD', './empty.txt?' + Math.random());
-         xhr.send();
-         xhr.onreadystatechange = function() {
-           if (xhr.readyState !== XMLHttpRequest.DONE) return;
-           if (xhr.status === 200) return;
-           clearInterval(intervalId);
-           document.body.classList.add('serverError');
-           $('#siteStatus a').innerHTML =
-               escapeHtml('Unable to contact sever.');
-
-           $('#siteStatus a').innerHTML =
-               escapeHtml('Connection re-established. Click to refresh.');
-         };
-      }, 10000);
-      var $ = function(s) { return document.querySelector(s); };
-      $("#serverRecovered a").addEventListener('click', function(e) {
-        e.preventDefault();
-        location.reload();
-      });
-    });
-    </script>
+    <a></a>
   </div>
 
   <noscript><div>
