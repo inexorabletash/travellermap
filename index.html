@@ -287,9 +287,11 @@ button:hover {
       max-height: 250px;
     }
     .search-results #resultsBox { display: block; }
+    #resultsBox .tip a { text-decoration: none; }
+    #resultsBox .tip a:hover { text-decoration: underline; }
     </style>
     <div id="resultsContainer"></div>
-    <p><br><a target="_blank" href="doc/about#search">Search tips...</a></p>
+    <p class="tip"><br><a target="_blank" href="doc/about#search">Search tips...</a></p>
     <script id="SearchResultsTemplate" type="text/x-handlebars-template">
       {{#Results.Items}}
       <div class="item">
