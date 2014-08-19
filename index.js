@@ -682,22 +682,22 @@ window.addEventListener('DOMContentLoaded', function() {
       function() {
         clearInterval(intervalId);
         document.body.classList.add('serverError');
-        retry();
-        function retry() {
+        (function retry() {
+          var label = $('#siteStatus a');
           Util.countdown(RETRY_S, function(n) {
             if (n) {
-              $('#siteStatus a').innerHTML =
+              label.innerHTML =
                 escapeHtml('Unable to contact server. Retrying in ' + n + ' seconds.');
               return;
             }
-            $('#siteStatus a').innerHTML =
+            label.innerHTML =
               escapeHtml('Unable to contact server. Retrying...');
             setTimeout(function() {
               checkServer(
                 function() {
-                  $('#siteStatus a').innerHTML =
+                  label.innerHTML =
                     escapeHtml('Connection re-established. Click to refresh.');
-                  $('#siteStatus a').addEventListener('click', function(e) {
+                  label.addEventListener('click', function(e) {
                     e.preventDefault();
                     window.location.reload();
                   });
@@ -706,7 +706,7 @@ window.addEventListener('DOMContentLoaded', function() {
               );
             }, RETRY_SLOP_MS);
           });
-        }
+        }());
       });
   }, HEARTBEAT_MS);
 
