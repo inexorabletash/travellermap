@@ -669,14 +669,11 @@ window.addEventListener('DOMContentLoaded', function() {
       RETRY_S = 10;
   function checkServer(ok, err) {
     var xhr = new XMLHttpRequest();
-    xhr.open('HEAD', './empty.txt?' + Date.now());
+    xhr.open('HEAD', './heartbeat.txt?' + Date.now());
     xhr.send();
     xhr.onreadystatechange = function() {
       if (xhr.readyState !== XMLHttpRequest.DONE) return;
-      if (xhr.status === 200)
-        ok();
-      else
-        err();
+      if (xhr.status === 200) ok(); else err();
     };
   }
   var intervalId = setInterval(function() {
