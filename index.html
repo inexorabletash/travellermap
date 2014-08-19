@@ -67,14 +67,11 @@ button:hover {
   position: absolute;
   overflow-x: hidden;
   overflow-y: auto;
-  background-color: black;
+  background-color: inherit;
   border: 1px solid gray;
   box-shadow: 2px 2px 4px #404040;
   padding: 20px;
 }
-.style-print .hoverbox,
-.style-atlas .hoverbox { background-color: white; }
-.style-draft .hoverbox { background-color: antiquewhite; }
 
 .hoverbox-right {
   right: 15px; top: 50px; bottom: 150px;
@@ -953,6 +950,47 @@ button:hover {
       </div>
     </script>
 
+  </div>
+
+  <div id="siteStatus" class="ui hoverbox">
+    <style scoped>
+    #siteStatus {
+      top: 15px;
+      left: 0; right: 0;
+      margin-left: auto; margin-right: auto;
+      width: 400px;
+      text-align: center;
+    }
+    #siteStatus a { text-decoration: none; }
+    #siteStatus a:hover { text-decoration: underline; }
+    body.serverError #siteStatus { display: block; }
+    </style>
+    <a href="#">Unable to contact server. Will retry every 10s.</a>
+    <script>
+    window.addEventListener('DOMContentLoaded', function() {
+      var intervalId = setInterval(function() {
+         var xhr = new XMLHttpRequest();
+         xhr.open('HEAD', './empty.txt?' + Math.random());
+         xhr.send();
+         xhr.onreadystatechange = function() {
+           if (xhr.readyState !== XMLHttpRequest.DONE) return;
+           if (xhr.status === 200) return;
+           clearInterval(intervalId);
+           document.body.classList.add('serverError');
+           $('#siteStatus a').innerHTML =
+               escapeHtml('Unable to contact sever.');
+
+           $('#siteStatus a').innerHTML =
+               escapeHtml('Connection re-established. Click to refresh.');
+         };
+      }, 10000);
+      var $ = function(s) { return document.querySelector(s); };
+      $("#serverRecovered a").addEventListener('click', function(e) {
+        e.preventDefault();
+        location.reload();
+      });
+    });
+    </script>
   </div>
 
   <noscript><div>

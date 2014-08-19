@@ -14,7 +14,6 @@ a { color: white; }
 a.stealth { text-decoration: none; }
 a.stealth:hover { text-decoration: underline; }
 #GalacticDirectionDisplay { color: red; font-weight: bold; text-transform: uppercase; font-size: 12pt; }
-.box { border: solid 1px white; background-color: black; }
 #stripe { color: red; background-color: red; border: solid 1px red; height: 4pt; }
 .marker#you_are_here { position: absolute; width: 256px; height: 256px; background-color: Transparent; background-image: url("res/ui/youarehere.png"); background-repeat: no-repeat; background-position: top left; }
 .marker#custom { position: absolute; width: 256px; height: 256px; }
@@ -177,7 +176,7 @@ body.style-atlas { color: black; background-color: white; }
 .style-atlas a { color: black; }
 .style-atlas #GalacticDirectionDisplay { color: gray; }
 .style-print .box,
-.style-atlas .box { border: solid 1px black; background-color: white; }
+.style-atlas .box { border: solid 1px black; }
 .style-print #stripe,
 .style-atlas #stripe { color: black; background-color: black; border: solid 1px black; }
 .style-print #you_are_here,
@@ -229,6 +228,6 @@ noscript div {
   line-height: 200px;
   z-index: 9999;
   color: white;
-  background-color: black;
+  background-color: inherit;
   border: 2px solid white;
 }
