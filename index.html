@@ -29,13 +29,14 @@
 <meta property="og:site_name" content="The Traveller Map">
 <meta property="fb:admins" content="617166358">
 
-<link rel="stylesheet" href="index.css?update=2014-08-14">
+<link rel="stylesheet" href="index.css?update=2014-08-19">
+<link rel="stylesheet" href="lib/add-to-home-screen/addtohomescreen.css">
 
 <!--[if lt IE 8]><script>alert("IE7 is no longer supported.");location = 'http://google.com/chrome';</script><![endif]-->
 <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.min.js"></script>
-<script src="lib/polyfill/polyfill.js?update=2014-06-29"></script>
+<script src="lib/polyfill/polyfill.js?update=2014-08-18"></script>
 <script src="map.js?update=2014-08-14"></script>
-<script src="index.js?update=2014-08-14"></script>
+<script src="index.js?update=2014-08-19"></script>
 <style>
 .ui {
   z-index: 2000;
@@ -91,29 +92,7 @@ button:hover {
 <link rel="apple-touch-icon-precomposed" href="res/ui/regina152.png">
 <link rel="apple-touch-icon"             href="res/ui/regina152.png">
 
-<!-- http://cubiq.org/add-to-home-screen -->
-<link rel="stylesheet" href="lib/add-to-home-screen/addtohomescreen.css">
-<script type="application/javascript" src="lib/add-to-home-screen/addtohomescreen.js"></script>
-<script>
-  // Skip if in iframe
-  if (window == window.top) // == for IE
-      addToHomescreen();
-</script>
-
 <body class="hide-ui hide-footer">
-  <style>
-  html { margin: 0; padding: 0; width: 100%; height: 100%; }
-  body {
-    margin: 0; padding: 0;
-    border: none; overflow: hidden;
-    width: 100%; height: 100%; max-height: 100%;
-
-    -webkit-touch-callout: none;
-    -webkit-text-size-adjust: none;
-    -moz-text-size-adjust: none;
-  }
-  </style>
-
   <div id="mapContainer" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0;">
     <div id="dragContainer" style="position: absolute; overflow: hidden; width: 100%; height: 100%;" tabindex="0" title="Mouse: Drag to scroll, wheel to zoom&#x0A;Keyboard: Arrows to scroll, +/- to zoom">
       <div id="GalacticDirectionDisplay">
@@ -423,13 +402,12 @@ button:hover {
         });
       });
 
-      // In FF and IE, need to render the FB "Like" button after it becomes
-      // visible or it ends up with zero height.
-      var rendered = false;
+      // Init all of the "social" UI asynchronously.
+      var initialized = false;
       $('#shareBtn').addEventListener('click', function() {
-        if (!rendered) {
-          try { FB.XFBML.parse(); } catch (e) {}
-          rendered = true;
+        if (!initialized) {
+          initialized = true;
+          initSharingLinks();
         }
       });
     });
@@ -437,17 +415,16 @@ button:hover {
   </div>
 
   <style>
-  body.show-settings #settingsBox,
-  body.show-legend #legendBox,
-  body.show-share #shareBox,
-  body.show-download #downloadBox,
-  body.show-help #helpBox { display: block; }
-  body.show-settings #settingsBtn,
-  body.show-legend #legendBtn,
-  body.show-share #shareBtn,
-  body.show-download #downloadBtn,
-  body.show-help #helpBtn { background-color: red; }
-
+  .show-settings #settingsBox,
+  .show-legend #legendBox,
+  .show-share #shareBox,
+  .show-download #downloadBox,
+  .show-help #helpBox { display: block; }
+  .show-settings #settingsBtn,
+  .show-legend #legendBtn,
+  .show-share #shareBtn,
+  .show-download #downloadBtn,
+  .show-help #helpBtn { background-color: red; }
   </style>
 
   <div id="settingsBox"
@@ -470,7 +447,6 @@ button:hover {
 
     /* checkbox/radio buttons are larger on iOS */
     #settingsBox p { min-height: 24px; }
-
     </style>
     <section id="styles">
       <button id="settingsBtn-poster"
@@ -694,7 +670,7 @@ button:hover {
     </section>
 
     <section class="fb">
-      <div class="fb-like" data-href="http://travellermap.com" data-width="200" data-colorscheme="dark" data-layout="standard" data-action="like" data-show-faces="true">Like</div>
+      <div class="fb-like" data-href="http://travellermap.com" data-width="200" data-colorscheme="dark" data-layout="standard" data-action="like" data-show-faces="false">Like</div>
     </section>
 
     <section>
@@ -953,7 +929,7 @@ button:hover {
   </div>
 
   <div id="siteStatus" class="ui hoverbox">
-    <style scoped>
+    <style>
     #siteStatus {
       top: 15px;
       left: 0; right: 0;
@@ -963,7 +939,7 @@ button:hover {
     }
     #siteStatus a { text-decoration: none; }
     #siteStatus a:hover { text-decoration: underline; }
-    body.serverError #siteStatus { display: block; }
+    .show-connection-status #siteStatus { display: block; }
     </style>
     <a></a>
   </div>
@@ -972,32 +948,29 @@ button:hover {
     This site requires JavaScript.
   </div></noscript>
 
-  <!-- Twitter -->
-  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-
-  <!-- Google+ -->
-  <script type="text/javascript">
-  (function() {
-    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-    po.src = 'https://apis.google.com/js/plusone.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-  })();
-  </script>
-
-  <!-- Facebook -->
-  <script>
-  // Stop the fb like button from rendering automatically
-  // since the button is within {display: none} by default.
-  window.fbAsyncInit = function () { FB.init({xfbml:false}); };
-  </script>
   <div id="fb-root"></div>
-  <script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&status=0";
-  fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));</script>
+  <script>
+  function initSharingLinks() {
+    // Twitter
+    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+
+    // Google+
+    (function() {
+      var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+      po.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+    })();
+
+    // Facebook
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&status=0";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  }
+  </script>
 
   <!-- Google Analytics -->
   <script>
@@ -1011,4 +984,11 @@ button:hover {
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
   </script>
+
+  <script type="application/javascript" src="lib/add-to-home-screen/addtohomescreen.js"></script>
+  <script>
+    if (window == window.top) // Skip if in iframe, == for IE
+      addToHomescreen({skipFirstVisit: true, maxDisplayCount: 1});
+  </script>
+
 </body>

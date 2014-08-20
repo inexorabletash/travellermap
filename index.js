@@ -664,51 +664,57 @@ window.addEventListener('DOMContentLoaded', function() {
   //
   //////////////////////////////////////////////////////////////////////
 
-  var HEARTBEAT_MS = 10000,
-      RETRY_SLOP_MS = 5000,
-      RETRY_S = 10;
-  function checkServer(ok, err) {
-    var xhr = new XMLHttpRequest();
-    xhr.open('HEAD', './heartbeat.txt?' + Date.now());
-    xhr.send();
-    xhr.onreadystatechange = function() {
-      if (xhr.readyState !== XMLHttpRequest.DONE) return;
-      if (xhr.status === 200) ok(); else err();
-    };
-  }
-  var intervalId = setInterval(function() {
-    checkServer(
-      function() {},
-      function() {
-        clearInterval(intervalId);
-        document.body.classList.add('serverError');
-        (function retry() {
-          var label = $('#siteStatus a');
-          Util.countdown(RETRY_S, function(n) {
-            if (n) {
-              label.innerHTML =
-                escapeHtml('Unable to contact server. Retrying in ' + n + ' seconds.');
-              return;
-            }
-            label.innerHTML =
-              escapeHtml('Unable to contact server. Retrying...');
-            setTimeout(function() {
-              checkServer(
-                function() {
-                  label.innerHTML =
-                    escapeHtml('Connection re-established. Click to refresh.');
-                  label.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    window.location.reload();
-                  });
-                },
-                retry
-              );
-            }, RETRY_SLOP_MS);
-          });
-        }());
-      });
-  }, HEARTBEAT_MS);
+  (function() {
+    var HEARTBEAT_MS = 10000,
+        RETRY_SLOP_MS = 5000,
+        RETRY_S = 10;
+    function fetch(url, ok, err) {
+      var xhr = new XMLHttpRequest();
+      xhr.open('HEAD', url);
+      xhr.send();
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState !== XMLHttpRequest.DONE) return;
+        if (xhr.status === 200) ok(); else err();
+      };
+    }
+    function label(message, activate) {
+      var element = $('#siteStatus a');
+      element.innerHTML = escapeHtml(message);
+      if (activate) {
+        element.addEventListener('click', function(e) {
+          e.preventDefault();
+          window.location.reload();
+        });
+      }
+    }
+    var intervalId = setInterval(function() {
+      fetch(
+        './res/heartbeat/heartbeat.txt?' + Date.now(),
+        function() {},
+        function() {
+          clearInterval(intervalId);
+          document.body.classList.add('show-connection-status');
+          (function retry() {
+            Util.countdown(RETRY_S, function(n) {
+              if (n) {
+                label('Unable to contact server. Retrying in ' + n + ' seconds.');
+                return;
+              }
+              label('Unable to contact server. Retrying...');
+              setTimeout(function() {
+                fetch(
+                  './res/heartbeat/recovery.txt?' + Date.now(),
+                  function() {
+                    label('Connection re-established. Click to refresh.', true);
+                  },
+                  retry
+                );
+              }, RETRY_SLOP_MS);
+            });
+          }());
+        });
+    }, HEARTBEAT_MS);
+  }());
 
   //////////////////////////////////////////////////////////////////////
   //
