@@ -987,7 +987,7 @@ button:hover {
 
   <script type="application/javascript" src="lib/add-to-home-screen/addtohomescreen.js"></script>
   <script>
-    if (window == window.top) // Skip if in iframe, == for IE
+    if (window == window.top && 'addToHomeScreen' in window) // Skip if in iframe, == for IE
       addToHomescreen({skipFirstVisit: true, maxDisplayCount: 1});
   </script>
 
