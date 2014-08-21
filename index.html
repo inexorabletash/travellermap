@@ -55,7 +55,7 @@ button {
   border-radius: 2px;
 }
 button.glyph {
-  font-size: 16pt;
+  font-size: 160%;
 }
 button img {
   vertical-align: text-bottom;
@@ -830,20 +830,15 @@ button:hover {
     }
 
     @media only screen and (max-width: 640px) {
-      #bottom-pane { zoom: 50%; }
-
-      #LogoImage { width: 416px; height: 71px; background-image: url("res/ui/logo-flat.png"); }
-      .style-draft #LogoImage,
-      .style-print #LogoImage,
-      .style-atlas #LogoImage {  background-image: url("res/ui/logo-flat-gray.png"); }
+      #bottom-pane { font-size: 75%; height: 45px; padding: 2px;}
+      #stripe { height: 2pt; margin: 2px 0px; }
+      #LogoImage { width: 105px; height: 35.5px; }
     }
 
-    @media only screen and (max-width: 480px) {
-      #LogoImage { width: 210px; height: 71px; background-image: url("res/ui/logo-stacked.png"); }
-      .style-draft #LogoImage,
-      .style-print #LogoImage,
-      .style-atlas #LogoImage {  background-image: url("res/ui/logo-stacked-gray.png"); }
+    @media only screen and (max-width: 360px) {
+      #bottom-pane { font-size: 65%; height: 60px; }
     }
+
     </style>
     <hr id="stripe">
     <div id="LogoImage" title="Traveller&reg; - Science Fiction Adventure in the Far Future">&nbsp;</div>
