@@ -47,7 +47,7 @@
     finished = !pending;
     string = String(string);
     statusElement.style.display = '';
-    statusText.innerHTML = escapeHtml(string);
+    statusText.innerHTML = Util.escapeHTML(string);
     statusImage.style.display = pending ? '' : 'none';
   }
 
@@ -189,7 +189,7 @@
         MapService.sectorDataTabDelimited(params.sector, resolve, reject);
       } else if ('data' in params) {
         resolve(getTextViaPOST(
-          makeURL(SERVICE_BASE + '/api/sec', {type: 'TabDelimited'}),
+          Util.makeURL(SERVICE_BASE + '/api/sec', {type: 'TabDelimited'}),
           params.data
         ));
       } else {
@@ -205,7 +205,7 @@
         return;
       } else if ('metadata' in params) {
         getTextViaPOST(
-          makeURL(SERVICE_BASE + '/api/metadata', {accept: 'application/json'}),
+          Util.makeURL(SERVICE_BASE + '/api/metadata', {accept: 'application/json'}),
           params.metadata
         ).then(function(text) {
           resolve(JSON.parse(text));
@@ -219,7 +219,7 @@
   }
 
   document.addEventListener('DOMContentLoaded', function() {
-    var params = getUrlParameters();
+    var params = Util.parseURLQuery(document.location);
     if (params.sector) {
       $('#input').style.display = 'none';
       render(params);
@@ -283,7 +283,7 @@
       };
       if ('sector' in params) {
         url_params.sector = params.sector;
-        imageURL = Promise.resolve(makeURL(SERVICE_BASE + '/api/poster', url_params));
+        imageURL = Promise.resolve(Util.makeURL(SERVICE_BASE + '/api/poster', url_params));
       } else {
         url_params.data = params.data;
         url_params.metadata = params.metadata;
@@ -402,7 +402,7 @@
         };
         if ('sector' in params) {
           url_params.sector = params.sector;
-          imageURL = Promise.resolve(makeURL(SERVICE_BASE + '/api/poster', url_params));
+          imageURL = Promise.resolve(Util.makeURL(SERVICE_BASE + '/api/poster', url_params));
         } else {
           url_params.data = params.data;
           url_params.metadata = params.metadata;

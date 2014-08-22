@@ -1,13 +1,6 @@
 window.addEventListener('DOMContentLoaded', function() {
   'use strict';
 
-  var Util = {
-    countdown: function countdown(n, callback) {
-      callback(n--);
-      if (n >= 0) setTimeout(function() { countdown(n, callback); }, 1000);
-    }
-  };
-
   //////////////////////////////////////////////////////////////////////
   //
   // Utilities
@@ -312,7 +305,7 @@ window.addEventListener('DOMContentLoaded', function() {
       else
         urlParams.galdir = 0;
 
-      var pageURL = makeURL(document.location, urlParams);
+      var pageURL = Util.makeURL(document.location, urlParams);
 
       if (pageURL === lastPageURL)
         return;
@@ -341,10 +334,10 @@ window.addEventListener('DOMContentLoaded', function() {
       snapshotParams.style = map.GetStyle();
       snapshotParams.routes = urlParams.routes;
       snapshotParams.dimunofficial = urlParams.dimunofficial;
-      var snapshotURL = makeURL(SERVICE_BASE + '/api/tile', snapshotParams);
+      var snapshotURL = Util.makeURL(SERVICE_BASE + '/api/tile', snapshotParams);
       $('a#download-snapshot').href = snapshotURL;
       snapshotParams.accept = 'application/pdf';
-      snapshotURL = makeURL(SERVICE_BASE + '/api/tile', snapshotParams);
+      snapshotURL = Util.makeURL(SERVICE_BASE + '/api/tile', snapshotParams);
       $('a#download-snapshot-pdf').href = snapshotURL;
 
     }, PERMALINK_REFRESH_DELAY_MS);
@@ -441,20 +434,20 @@ window.addEventListener('DOMContentLoaded', function() {
 
     var bookletURL = SERVICE_BASE +
           '/data/' + encodeURIComponent(selectedSector) + '/booklet';
-    var posterURL = makeURL(SERVICE_BASE + '/api/poster', {
+    var posterURL = Util.makeURL(SERVICE_BASE + '/api/poster', {
       sector: selectedSector, accept: 'application/pdf', style: map.GetStyle()});
-    var dataURL = makeURL(SERVICE_BASE + '/api/sec', {
+    var dataURL = Util.makeURL(SERVICE_BASE + '/api/sec', {
       sector: selectedSector, type: 'SecondSurvey' });
 
 
     var title = selectedSector.replace(/ Sector$/, '') + ' Sector';
-    $('#downloadBox #sector-name').innerHTML = escapeHtml(title);
+    $('#downloadBox #sector-name').innerHTML = Util.escapeHTML(title);
     $('#downloadBox a#download-booklet').href = bookletURL;
     $('#downloadBox a#download-poster').href = posterURL;
     $('#downloadBox a#download-data').href = dataURL;
 
     if (selectedWorld) {
-      var worldURL = makeURL('world.html', {
+      var worldURL = Util.makeURL('world.html', {
         sector: selectedSector,
         hex: selectedWorld.hex
       });
@@ -468,7 +461,7 @@ window.addEventListener('DOMContentLoaded', function() {
           MapOptions.WorldColors | MapOptions.FilledBorders);
 
       for (var j = 1; j <= 6; ++j) {
-        var jumpMapURL = makeURL(SERVICE_BASE + '/api/jumpmap', {
+        var jumpMapURL = Util.makeURL(SERVICE_BASE + '/api/jumpmap', {
           sector: selectedSector,
           hex: selectedWorld.hex,
           jump: j,
@@ -564,7 +557,7 @@ window.addEventListener('DOMContentLoaded', function() {
           hx = (((n % 4) | 0) + 0.5) * (Astrometrics.SectorWidth / 4);
           hy = (((n / 4) | 0) + 0.5) * (Astrometrics.SectorHeight / 4);
           scale = subsector.Scale || 32;
-          subsector.href = makeURL(base_url, {scale: scale, sx: sx, sy: sy, hx: hx, hy: hy});
+          subsector.href = Util.makeURL(base_url, {scale: scale, sx: sx, sy: sy, hx: hx, hy: hy});
           applyTags(subsector);
         } else if (item.Sector) {
           var sector = item.Sector;
@@ -573,7 +566,7 @@ window.addEventListener('DOMContentLoaded', function() {
           hx = (Astrometrics.SectorWidth / 2);
           hy = (Astrometrics.SectorHeight / 2);
           scale = sector.Scale || 8;
-          sector.href = makeURL(base_url, {scale: scale, sx: sx, sy: sy, hx: hx, hy: hy});
+          sector.href = Util.makeURL(base_url, {scale: scale, sx: sx, sy: sy, hx: hx, hy: hy});
           applyTags(sector);
         } else if (item.World) {
           var world = item.World;
@@ -584,7 +577,7 @@ window.addEventListener('DOMContentLoaded', function() {
           hy = world.HexY|0;
           world.Hex = pad2(hx) + pad2(hy);
           scale = world.Scale || 64;
-          world.href = makeURL(base_url, {scale: scale, sx: sx, sy: sy, hx: hx, hy: hy});
+          world.href = Util.makeURL(base_url, {scale: scale, sx: sx, sy: sy, hx: hx, hy: hy});
           applyTags(world);
         }
       }
@@ -594,7 +587,7 @@ window.addEventListener('DOMContentLoaded', function() {
       [].forEach.call(document.querySelectorAll('#resultsContainer a'), function(a) {
         a.addEventListener('click', function(e) {
           e.preventDefault();
-          var params = window.parseURLQuery(e.target);
+          var params = Util.parseURLQuery(e.target);
           map.ScaleCenterAtSectorHex(params.scale|0, params.sx|0, params.sy|0, params.hx|0, params.hy|0);
           if (mapElement.offsetWidth < 640)
             document.body.classList.remove('search-results');
@@ -679,7 +672,7 @@ window.addEventListener('DOMContentLoaded', function() {
     }
     function label(message, activate) {
       var element = $('#siteStatus a');
-      element.innerHTML = escapeHtml(message);
+      element.innerHTML = Util.escapeHTML(message);
       if (activate) {
         element.addEventListener('click', function(e) {
           e.preventDefault();
@@ -687,7 +680,11 @@ window.addEventListener('DOMContentLoaded', function() {
         });
       }
     }
-    var intervalId = setInterval(function() {
+    function countdown(n, callback) {
+      callback(n--);
+      if (n >= 0) setTimeout(function() { countdown(n, callback); }, 1000);
+    }
+     var intervalId = setInterval(function() {
       fetch(
         './res/heartbeat/heartbeat.txt?' + Date.now(),
         function() {},
@@ -695,7 +692,7 @@ window.addEventListener('DOMContentLoaded', function() {
           clearInterval(intervalId);
           document.body.classList.add('show-connection-status');
           (function retry() {
-            Util.countdown(RETRY_S, function(n) {
+            countdown(RETRY_S, function(n) {
               if (n) {
                 label('Unable to contact server. Retrying in ' + n + ' seconds.');
                 return;

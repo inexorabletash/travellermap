@@ -133,9 +133,9 @@ function updateWalks(map) {
     if (border.path.length < 2)
       return;
 
-    var str = '<Border Allegiance="' + escapeHtml(border.allegiance) + '">' +
+    var str = '<Border Allegiance="' + Util.escapeHTML(border.allegiance) + '">' +
       border.path.join(' ') + '</Border>';
-    html.push("<li>" + escapeHtml(str));
+    html.push("<li>" + Util.escapeHTML(str));
   });
 
   document.getElementById("walks").innerHTML = html.join("");
@@ -239,11 +239,11 @@ window.onload = function() {
 
   function status(message) {
     var display = document.getElementById('status');
-    display.innerHTML += '<div>' + escapeHtml(message) + '<' + '/div>';
+    display.innerHTML += '<div>' + Util.escapeHTML(message) + '<' + '/div>';
     display.scrollTop = display.scrollHeight
   }
 
-  var query = getUrlParameters();
+  var query = parseURLQuery(document.location);
   if (!('sector' in query)) {
     alert("Missing sector in URL");
     return;

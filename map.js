@@ -2,72 +2,52 @@
 // Exported Functionality
 // ======================================================================
 
-var SERVICE_BASE = (function(l) {
-  'use strict';
-  if (l.hostname === 'localhost' && l.pathname.indexOf('~') !== -1)
-    return 'http://travellermap.com';
-  return '';
-}(window.location));
-
-var LEGACY_STYLES = true;
-
 // NOTE: Used by other scripts
-function parseURLQuery(url) {
-  'use strict';
-  var o = Object.create(null);
-  if (url.search && url.search.length > 1) {
-    url.search.substring(1).split('&').forEach(function(pair) {
-      if (!pair) return;
-      var kv = pair.split('=', 2);
-      if (kv.length === 2)
-        o[kv[0]] = decodeURIComponent(kv[1].replace(/\+/g, ' '));
-      else
-        o[kv[0]] = true;
-    });
-  }
-  return o;
-}
-
-// NOTE: Used by other scripts
-function getUrlParameters() {
-  'use strict';
-  return parseURLQuery(document.location);
-}
-
-
-// NOTE: Needs to be exported
-function applyUrlParameters(map) {
-  'use strict';
-  return map.ApplyURLParameters();
-}
-
-// NOTE: Used by other scripts
-function escapeHtml(s) {
-  'use strict';
-  return s.replace(/[&<>"']/g, function(c) {
-    switch (c) {
-    case '&': return '&amp;';
-    case '<': return '&lt;';
-    case '>': return '&gt;';
-    case '"': return '&quot;';
-    case "'": return '&#39;';
-    default: return c;
+var Util = {
+  parseURLQuery: function(url) {
+    'use strict';
+    var o = Object.create(null);
+    if (url.search && url.search.length > 1) {
+      url.search.substring(1).split('&').forEach(function(pair) {
+        if (!pair) return;
+        var kv = pair.split('=', 2);
+        if (kv.length === 2)
+          o[kv[0]] = decodeURIComponent(kv[1].replace(/\+/g, ' '));
+        else
+          o[kv[0]] = true;
+      });
     }
-  });
-}
+    return o;
+  },
 
-// NOTE: Used by other scripts
-function makeURL(base, params) {
-  'use strict';
-  base = String(base).replace(/\?.*/, '');
-  var keys = Object.keys(params);
-  if (keys.length === 0) return base;
-  return base += '?' + keys.filter(function (p) {
-    return params[p] !== undefined;
-  }).map(function (p) {
-    return encodeURIComponent(p) + '=' + encodeURIComponent(params[p]);
-  }).join('&');
-}
+  // TODO: Rename to escapeHTML
+  escapeHTML: function(s) {
+    'use strict';
+    return String(s).replace(/[&<>"']/g, function(c) {
+      switch (c) {
+      case '&': return '&amp;';
+      case '<': return '&lt;';
+      case '>': return '&gt;';
+      case '"': return '&quot;';
+      case "'": return '&#39;';
+      default: return c;
+      }
+    });
+  },
+
+  makeURL: function(base, params) {
+    'use strict';
+    base = String(base).replace(/\?.*/, '');
+    var keys = Object.keys(params);
+    if (keys.length === 0) return base;
+    return base += '?' + keys.filter(function (p) {
+      return params[p] !== undefined;
+    }).map(function (p) {
+      return encodeURIComponent(p) + '=' + encodeURIComponent(params[p]);
+    }).join('&');
+  }
+};
+
 
 (function (global) {
   'use strict';
@@ -75,6 +55,15 @@ function makeURL(base, params) {
   //----------------------------------------------------------------------
   // General Traveller stuff
   //----------------------------------------------------------------------
+
+  var SERVICE_BASE = (function(l) {
+    'use strict';
+    if (l.hostname === 'localhost' && l.pathname.indexOf('~') !== -1)
+      return 'http://travellermap.com';
+    return '';
+  }(window.location));
+
+  var LEGACY_STYLES = true;
 
   var Traveller = {
     fromHex: function(c) {
@@ -117,7 +106,7 @@ function makeURL(base, params) {
     Atlas: 'atlas',
     Print: 'print',
     Candy: 'candy',
-    Draft: 'draft',
+    Draft: 'draft'
   };
 
   //----------------------------------------------------------------------
@@ -198,7 +187,7 @@ function makeURL(base, params) {
         options = options || {};
         options.sector = sector;
         options.hex = hex;
-        return service(makeURL(SERVICE_BASE + '/api/coordinates', options),
+        return service(Util.makeURL(SERVICE_BASE + '/api/coordinates', options),
                        options.accept || 'application/json', callback, errback);
       },
 
@@ -206,21 +195,21 @@ function makeURL(base, params) {
         options = options || {};
         options.x = hexX;
         options.y = hexY;
-        return service(makeURL(SERVICE_BASE + '/api/credits', options),
+        return service(Util.makeURL(SERVICE_BASE + '/api/credits', options),
                        options.accept || 'application/json', callback, errback);
       },
 
       search: function (query, callback, errback, options) {
         options = options || {};
         options.q = query;
-        return service(makeURL(SERVICE_BASE + '/api/search', options),
+        return service(Util.makeURL(SERVICE_BASE + '/api/search', options),
                        options.accept || 'application/json', callback, errback);
       },
 
       sectorData: function (sector, callback, errback, options) {
         options = options || {};
         options.sector = sector;
-        return service(makeURL(SERVICE_BASE + '/api/sec', options),
+        return service(Util.makeURL(SERVICE_BASE + '/api/sec', options),
                        options.accept || 'text/plain', callback, errback);
       },
 
@@ -228,27 +217,27 @@ function makeURL(base, params) {
         options = options || {};
         options.sector = sector;
         options.type = 'TabDelimited';
-        return service(makeURL(SERVICE_BASE + '/api/sec', options),
+        return service(Util.makeURL(SERVICE_BASE + '/api/sec', options),
                        options.accept || 'text/plain', callback, errback);
       },
 
       sectorMetaData: function (sector, callback, errback, options) {
         options = options || {};
         options.sector = sector;
-        return service(makeURL(SERVICE_BASE + '/api/metadata', options),
+        return service(Util.makeURL(SERVICE_BASE + '/api/metadata', options),
                        options.accept || 'application/json', callback, errback);
       },
 
       MSEC: function (sector, callback, errback, options) {
         options = options || {};
         options.sector = sector;
-        return service(makeURL(SERVICE_BASE + '/api/msec', options),
+        return service(Util.makeURL(SERVICE_BASE + '/api/msec', options),
                        options.accept || 'text/plain', callback, errback);
       },
 
       universe: function (callback, errback, options) {
         options = options || {};
-        return service(makeURL(SERVICE_BASE + '/api/universe', options),
+        return service(Util.makeURL(SERVICE_BASE + '/api/universe', options),
                        options.accept || 'application/json', callback, errback);
       }
     };
@@ -1059,7 +1048,7 @@ function makeURL(base, params) {
     // Nope, better try loading it
     this.loading[uri] = true;
     var self = this; // for event handler closures
-    img = new Image();
+    img = document.createElement('img');
     img.onload = function() {
       delete self.loading[uri];
       self.cache.insert(uri, img);
@@ -1392,7 +1381,7 @@ function makeURL(base, params) {
 
   Map.prototype.ApplyURLParameters = function() {
     var self = this;
-    var params = parseURLQuery(document.location);
+    var params = Util.parseURLQuery(document.location);
 
     function float(prop) {
       var n = parseFloat(params[prop]);
@@ -1492,6 +1481,8 @@ function makeURL(base, params) {
   };
 
   // Exports
+  global.SERVICE_BASE = SERVICE_BASE;
+  global.LEGACY_STYLES = LEGACY_STYLES;
   global.Traveller = Traveller;
   global.Astrometrics = Astrometrics;
   global.MapOptions = MapOptions;
