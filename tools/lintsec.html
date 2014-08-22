@@ -8,10 +8,10 @@
 <script src="../map.js?update=2014-06-23"></script>
 <style>
   #input, #output {
-    width: 1000px; height: 300px; 
+    width: 1000px; height: 300px;
     white-space: pre;
     overflow: scroll;
-  } 
+  }
 
   .pass #summary { color: #008000; }
   .fail #summary { color: #800000; }
@@ -36,7 +36,7 @@
     $('#go').addEventListener('click', function () {
       var input = $('#input').value;
       var xhr = new XMLHttpRequest(), async = true;
-      xhr.open('POST', SERVICE_BASE + '/api/sec' + '?lint=1', async);
+      xhr.open('POST', Traveller.SERVICE_BASE + '/api/sec' + '?lint=1', async);
       xhr.setRequestHeader('Content-Type', 'text/plain');
       xhr.send(input);
       xhr.onreadystatechange = function () {

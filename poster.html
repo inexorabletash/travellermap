@@ -190,7 +190,7 @@ Select a sector, or enter your own data below:
 
     var form = $('#form');
     form.target = 'iframe';
-    form.action = SERVICE_BASE + '/api/poster';
+    form.action = Traveller.SERVICE_BASE + '/api/poster';
     $('#thumb').value = '1';
     var accept = $('#accept').value;
     $('#accept').value = '';
@@ -205,7 +205,7 @@ Select a sector, or enter your own data below:
 
     var form = $('#form');
     form.target = '_blank';
-    form.action = SERVICE_BASE + '/api/poster';
+    form.action = Traveller.SERVICE_BASE + '/api/poster';
     form.submit();
   });
 
@@ -215,7 +215,7 @@ Select a sector, or enter your own data below:
 
     var form = $('#form');
     form.target = '_blank';
-    form.action = SERVICE_BASE + '/api/jumpmap';
+    form.action = Traveller.SERVICE_BASE + '/api/jumpmap';
     form.submit();
   });
 }());

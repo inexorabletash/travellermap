@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   var list = $('#sector');
 
-  MapService.universe(populateSectorList, undefined, {requireData: 1});
+  Traveller.MapService.universe(populateSectorList, undefined, {requireData: 1});
 
   function populateSectorList(universe) {
     var names = [];
@@ -26,10 +26,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
   list.addEventListener("change", function (e) {
     var name = list.value;
-    MapService.sectorData(name, function(data) {
+    Traveller.MapService.sectorData(name, function(data) {
       $('#data').value = data;
     }, undefined, {type: 'SecondSurvey', metadata: 0});
-    MapService.sectorMetaData(name, function(data) {
+    Traveller.MapService.sectorMetaData(name, function(data) {
       $('#metadata').value = data;
     }, undefined, {accept: 'text/xml'});
   });

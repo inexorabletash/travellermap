@@ -65,11 +65,9 @@ var Util = {
 
   var LEGACY_STYLES = true;
 
-  var Traveller = {
-    fromHex: function(c) {
-      return '0123456789ABCDEFGHJKLMNPQRSTUVW'.indexOf(c.toUpperCase());
-    }
-  };
+  function fromHex(c) {
+    return '0123456789ABCDEFGHJKLMNPQRSTUVW'.indexOf(c.toUpperCase());
+  }
 
   //----------------------------------------------------------------------
   // Enumerated types
@@ -1216,7 +1214,7 @@ var Util = {
 
   Map.prototype.SetOptions = function(options) {
     if (LEGACY_STYLES) {
-      // Handy legacy styles specified in options bits
+      // Handle legacy styles specified in options bits
       if ((options & MapOptions.StyleMaskDeprecated) === MapOptions.PrintStyleDeprecated)
         this.SetStyle('atlas');
       else if ((options & MapOptions.StyleMaskDeprecated) === MapOptions.CandyStyleDeprecated)
@@ -1481,13 +1479,15 @@ var Util = {
   };
 
   // Exports
-  global.SERVICE_BASE = SERVICE_BASE;
-  global.LEGACY_STYLES = LEGACY_STYLES;
-  global.Traveller = Traveller;
-  global.Astrometrics = Astrometrics;
-  global.MapOptions = MapOptions;
-  global.Styles = Styles;
-  global.MapService = MapService;
-  global.Map = Map;
+  global.Traveller = {
+    SERVICE_BASE: SERVICE_BASE,
+    LEGACY_STYLES: LEGACY_STYLES,
+    Astrometrics: Astrometrics,
+    Map: Map,
+    MapOptions: MapOptions,
+    Styles: Styles,
+    MapService: MapService,
+    fromHex: fromHex
+  };
 
 }(this));

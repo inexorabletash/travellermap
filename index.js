@@ -17,7 +17,7 @@ window.addEventListener('DOMContentLoaded', function() {
   //////////////////////////////////////////////////////////////////////
 
   var mapElement = $('#dragContainer');
-  var map = new Map(mapElement);
+  var map = new Traveller.Map(mapElement);
 
   // Export
   window.map = map;
@@ -31,9 +31,9 @@ window.addEventListener('DOMContentLoaded', function() {
   //////////////////////////////////////////////////////////////////////
 
   // Tweak defaults
-  map.SetOptions(map.GetOptions() | MapOptions.NamesMinor | MapOptions.ForceHexes);
+  map.SetOptions(map.GetOptions() | Traveller.MapOptions.NamesMinor | Traveller.MapOptions.ForceHexes);
   map.SetScale(mapElement.offsetWidth <= 640 ? 1 : 2);
-  map.CenterAtSectorHex(0, 0, Astrometrics.ReferenceHexX, Astrometrics.ReferenceHexY);
+  map.CenterAtSectorHex(0, 0, Traveller.Astrometrics.ReferenceHexX, Traveller.Astrometrics.ReferenceHexY);
   var defaults = {
     x: map.GetX(),
     y: map.GetY(),
@@ -55,23 +55,23 @@ window.addEventListener('DOMContentLoaded', function() {
 
   var optionObservers = [];
 
-  bindCheckedToOption('#ShowSectorGrid', MapOptions.GridMask);
-  bindCheckedToOption('#ShowSectorNames', MapOptions.SectorsMask);
-  bindEnabled('#ShowSelectedSectorNames', function(o) { return o & MapOptions.SectorsMask; });
+  bindCheckedToOption('#ShowSectorGrid', Traveller.MapOptions.GridMask);
+  bindCheckedToOption('#ShowSectorNames', Traveller.MapOptions.SectorsMask);
+  bindEnabled('#ShowSelectedSectorNames', function(o) { return o & Traveller.MapOptions.SectorsMask; });
   bindChecked('#ShowSelectedSectorNames',
-              function(o) { return o & MapOptions.SectorsSelected; },
-              function(c) { setOptions(MapOptions.SectorsMask, c ? MapOptions.SectorsSelected : 0); });
-  bindEnabled('#ShowAllSectorNames', function(o) { return o & MapOptions.SectorsMask; });
+              function(o) { return o & Traveller.MapOptions.SectorsSelected; },
+              function(c) { setOptions(Traveller.MapOptions.SectorsMask, c ? Traveller.MapOptions.SectorsSelected : 0); });
+  bindEnabled('#ShowAllSectorNames', function(o) { return o & Traveller.MapOptions.SectorsMask; });
   bindChecked('#ShowAllSectorNames',
-              function(o) { return o & MapOptions.SectorsAll; },
-              function(c) { setOptions(MapOptions.SectorsMask, c ? MapOptions.SectorsAll : 0); });
-  bindCheckedToOption('#ShowGovernmentBorders', MapOptions.BordersMask);
+              function(o) { return o & Traveller.MapOptions.SectorsAll; },
+              function(c) { setOptions(Traveller.MapOptions.SectorsMask, c ? Traveller.MapOptions.SectorsAll : 0); });
+  bindCheckedToOption('#ShowGovernmentBorders', Traveller.MapOptions.BordersMask);
   bindCheckedToNamedOption('#ShowRoutes', 'routes');
-  bindCheckedToOption('#ShowGovernmentNames', MapOptions.NamesMask);
-  bindCheckedToOption('#ShowImportantWorlds', MapOptions.WorldsMask);
-  bindCheckedToOption('#cbForceHexes', MapOptions.ForceHexes);
-  bindCheckedToOption('#cbWorldColors', MapOptions.WorldColors);
-  bindCheckedToOption('#cbFilledBorders',MapOptions.FilledBorders);
+  bindCheckedToOption('#ShowGovernmentNames', Traveller.MapOptions.NamesMask);
+  bindCheckedToOption('#ShowImportantWorlds', Traveller.MapOptions.WorldsMask);
+  bindCheckedToOption('#cbForceHexes', Traveller.MapOptions.ForceHexes);
+  bindCheckedToOption('#cbWorldColors', Traveller.MapOptions.WorldColors);
+  bindCheckedToOption('#cbFilledBorders',Traveller.MapOptions.FilledBorders);
   bindCheckedToNamedOption('#cbDimUnofficial', 'dimunofficial');
 
   function bindControl(selector, property, onChange, event, onEvent) {
@@ -101,7 +101,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
   map.OnOptionsChanged = function(options) {
     optionObservers.forEach(function(o) { o(options); });
-    $('#legendBox').classList[(options & MapOptions.WorldColors) ? 'add' : 'remove']('world_colors');
+    $('#legendBox').classList[(options & Traveller.MapOptions.WorldColors) ? 'add' : 'remove']('world_colors');
     updatePermalink();
     updateSectorLinks();
     savePreferences();
@@ -334,10 +334,10 @@ window.addEventListener('DOMContentLoaded', function() {
       snapshotParams.style = map.GetStyle();
       snapshotParams.routes = urlParams.routes;
       snapshotParams.dimunofficial = urlParams.dimunofficial;
-      var snapshotURL = Util.makeURL(SERVICE_BASE + '/api/tile', snapshotParams);
+      var snapshotURL = Util.makeURL(Traveller.SERVICE_BASE + '/api/tile', snapshotParams);
       $('a#download-snapshot').href = snapshotURL;
       snapshotParams.accept = 'application/pdf';
-      snapshotURL = Util.makeURL(SERVICE_BASE + '/api/tile', snapshotParams);
+      snapshotURL = Util.makeURL(Traveller.SERVICE_BASE + '/api/tile', snapshotParams);
       $('a#download-snapshot-pdf').href = snapshotURL;
 
     }, PERMALINK_REFRESH_DELAY_MS);
@@ -378,7 +378,7 @@ window.addEventListener('DOMContentLoaded', function() {
       lastX = hexX;
       lastY = hexY;
 
-      dataRequest = MapService.credits(hexX, hexY, function(data) {
+      dataRequest = Traveller.MapService.credits(hexX, hexY, function(data) {
         dataRequest = null;
         displayResults(data);
       }, function() {
@@ -432,11 +432,11 @@ window.addEventListener('DOMContentLoaded', function() {
     if (!selectedSector)
       return;
 
-    var bookletURL = SERVICE_BASE +
+    var bookletURL = Traveller.SERVICE_BASE +
           '/data/' + encodeURIComponent(selectedSector) + '/booklet';
-    var posterURL = Util.makeURL(SERVICE_BASE + '/api/poster', {
+    var posterURL = Util.makeURL(Traveller.SERVICE_BASE + '/api/poster', {
       sector: selectedSector, accept: 'application/pdf', style: map.GetStyle()});
-    var dataURL = Util.makeURL(SERVICE_BASE + '/api/sec', {
+    var dataURL = Util.makeURL(Traveller.SERVICE_BASE + '/api/sec', {
       sector: selectedSector, type: 'SecondSurvey' });
 
 
@@ -457,11 +457,11 @@ window.addEventListener('DOMContentLoaded', function() {
         selectedWorld.name + ' (' + selectedWorld.hex + ')';
 
       var options = map.GetOptions() & (
-        MapOptions.BordersMask | MapOptions.NamesMask |
-          MapOptions.WorldColors | MapOptions.FilledBorders);
+        Traveller.MapOptions.BordersMask | Traveller.MapOptions.NamesMask |
+          Traveller.MapOptions.WorldColors | Traveller.MapOptions.FilledBorders);
 
       for (var j = 1; j <= 6; ++j) {
-        var jumpMapURL = Util.makeURL(SERVICE_BASE + '/api/jumpmap', {
+        var jumpMapURL = Util.makeURL(Traveller.SERVICE_BASE + '/api/jumpmap', {
           sector: selectedSector,
           hex: selectedWorld.hex,
           jump: j,
@@ -509,7 +509,7 @@ window.addEventListener('DOMContentLoaded', function() {
     if (searchRequest)
       searchRequest.abort();
 
-    searchRequest = MapService.search(query, function(data) {
+    searchRequest = Traveller.MapService.search(query, function(data) {
       searchRequest = null;
       displayResults(data);
       document.body.classList.remove('search-progress');
@@ -554,8 +554,8 @@ window.addEventListener('DOMContentLoaded', function() {
             n = (index.charCodeAt(0) - 'A'.charCodeAt(0));
           sx = subsector.SectorX|0;
           sy = subsector.SectorY|0;
-          hx = (((n % 4) | 0) + 0.5) * (Astrometrics.SectorWidth / 4);
-          hy = (((n / 4) | 0) + 0.5) * (Astrometrics.SectorHeight / 4);
+          hx = (((n % 4) | 0) + 0.5) * (Traveller.Astrometrics.SectorWidth / 4);
+          hy = (((n / 4) | 0) + 0.5) * (Traveller.Astrometrics.SectorHeight / 4);
           scale = subsector.Scale || 32;
           subsector.href = Util.makeURL(base_url, {scale: scale, sx: sx, sy: sy, hx: hx, hy: hy});
           applyTags(subsector);
@@ -563,8 +563,8 @@ window.addEventListener('DOMContentLoaded', function() {
           var sector = item.Sector;
           sx = sector.SectorX|0;
           sy = sector.SectorY|0;
-          hx = (Astrometrics.SectorWidth / 2);
-          hy = (Astrometrics.SectorHeight / 2);
+          hx = (Traveller.Astrometrics.SectorWidth / 2);
+          hy = (Traveller.Astrometrics.SectorHeight / 2);
           scale = sector.Scale || 8;
           sector.href = Util.makeURL(base_url, {scale: scale, sx: sx, sy: sy, hx: hx, hy: hy});
           applyTags(sector);
@@ -617,7 +617,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
     cancelAnimationFrame(animId);
     animId = requestAnimationFrame(function() {
-      var scale = map.GetScale() * Astrometrics.ParsecScaleX,
+      var scale = map.GetScale() * Traveller.Astrometrics.ParsecScaleX,
           canvas = $('#scaleIndicator'),
           ctx = canvas.getContext('2d'),
           w = parseFloat(canvas.width),

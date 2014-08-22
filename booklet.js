@@ -91,8 +91,8 @@
     sector.worlds.forEach(function(world) {
       var x = Math.floor(parseInt(world.hex, 10) / 100),
           y = Math.floor(parseInt(world.hex, 10) % 100),
-          ss = Math.floor((x - 1) / (Astrometrics.SectorWidth / 4)) +
-            Math.floor((y - 1) / (Astrometrics.SectorHeight / 4)) * 4;
+          ss = Math.floor((x - 1) / (Traveller.Astrometrics.SectorWidth / 4)) +
+            Math.floor((y - 1) / (Traveller.Astrometrics.SectorHeight / 4)) * 4;
 
       sector.subsectors[ss].worlds.push(world);
 
@@ -186,10 +186,10 @@
   function sectorData(params) {
     return new Promise(function(resolve, reject) {
       if ('sector' in params) {
-        MapService.sectorDataTabDelimited(params.sector, resolve, reject);
+        Traveller.MapService.sectorDataTabDelimited(params.sector, resolve, reject);
       } else if ('data' in params) {
         resolve(getTextViaPOST(
-          Util.makeURL(SERVICE_BASE + '/api/sec', {type: 'TabDelimited'}),
+          Util.makeURL(Traveller.SERVICE_BASE + '/api/sec', {type: 'TabDelimited'}),
           params.data
         ));
       } else {
@@ -201,11 +201,11 @@
   function sectorMetaData(params) {
     return new Promise(function(resolve, reject) {
       if ('sector' in params) {
-        MapService.sectorMetaData(params.sector, resolve, reject);
+        Traveller.MapService.sectorMetaData(params.sector, resolve, reject);
         return;
       } else if ('metadata' in params) {
         getTextViaPOST(
-          Util.makeURL(SERVICE_BASE + '/api/metadata', {accept: 'application/json'}),
+          Util.makeURL(Traveller.SERVICE_BASE + '/api/metadata', {accept: 'application/json'}),
           params.metadata
         ).then(function(text) {
           resolve(JSON.parse(text));
@@ -246,7 +246,7 @@
     var hash = window.location.hash;
     window.location.hash = '';
 
-    var options = params.options !== (void 0) ? Number(params.options) : MapOptions.BordersMask,
+    var options = params.options !== (void 0) ? Number(params.options) : Traveller.MapOptions.BordersMask,
         style = params.style || 'print';
 
     status('Fetching data...', true);
@@ -278,17 +278,17 @@
       var imageURL, url_params = {
           rotation: 3,
           scale: 64,
-          options: options | MapOptions.SubsectorGrid | MapOptions.NamesMask,
+          options: options | Traveller.MapOptions.SubsectorGrid | Traveller.MapOptions.NamesMask,
           style: style
       };
       if ('sector' in params) {
         url_params.sector = params.sector;
-        imageURL = Promise.resolve(Util.makeURL(SERVICE_BASE + '/api/poster', url_params));
+        imageURL = Promise.resolve(Util.makeURL(Traveller.SERVICE_BASE + '/api/poster', url_params));
       } else {
         url_params.data = params.data;
         url_params.metadata = params.metadata;
         url_params.datauri = 1;
-        imageURL = getTextViaPOST(SERVICE_BASE + '/api/poster', url_params);
+        imageURL = getTextViaPOST(Traveller.SERVICE_BASE + '/api/poster', url_params);
       }
       pending_promises.push(imageURL.then(function(url) {
         return function() { $('img.sector-image').src = url; };
@@ -402,12 +402,12 @@
         };
         if ('sector' in params) {
           url_params.sector = params.sector;
-          imageURL = Promise.resolve(Util.makeURL(SERVICE_BASE + '/api/poster', url_params));
+          imageURL = Promise.resolve(Util.makeURL(Traveller.SERVICE_BASE + '/api/poster', url_params));
         } else {
           url_params.data = params.data;
           url_params.metadata = params.metadata;
           url_params.datauri = 1;
-          imageURL = getTextViaPOST(SERVICE_BASE + '/api/poster', url_params);
+          imageURL = getTextViaPOST(Traveller.SERVICE_BASE + '/api/poster', url_params);
         }
         pending_promises.push(imageURL.then(function(url) {
           return function() { $('#ss' + subsector.index  + ' img.subsector-image').src = url; };
