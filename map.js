@@ -4,6 +4,18 @@
 
 // NOTE: Used by other scripts
 var Util = {
+  makeURL: function(base, params) {
+    'use strict';
+    base = String(base).replace(/\?.*/, '');
+    var keys = Object.keys(params);
+    if (keys.length === 0) return base;
+    return base += '?' + keys.filter(function (p) {
+      return params[p] !== undefined;
+    }).map(function (p) {
+      return encodeURIComponent(p) + '=' + encodeURIComponent(params[p]);
+    }).join('&');
+  },
+
   parseURLQuery: function(url) {
     'use strict';
     var o = Object.create(null);
@@ -20,7 +32,6 @@ var Util = {
     return o;
   },
 
-  // TODO: Rename to escapeHTML
   escapeHTML: function(s) {
     'use strict';
     return String(s).replace(/[&<>"']/g, function(c) {
@@ -33,18 +44,6 @@ var Util = {
       default: return c;
       }
     });
-  },
-
-  makeURL: function(base, params) {
-    'use strict';
-    base = String(base).replace(/\?.*/, '');
-    var keys = Object.keys(params);
-    if (keys.length === 0) return base;
-    return base += '?' + keys.filter(function (p) {
-      return params[p] !== undefined;
-    }).map(function (p) {
-      return encodeURIComponent(p) + '=' + encodeURIComponent(params[p]);
-    }).join('&');
   }
 };
 

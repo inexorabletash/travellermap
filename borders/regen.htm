@@ -11,19 +11,22 @@
 var SECTOR_WIDTH = 32, SECTOR_HEIGHT = 40;
 
 var ALLEGIANCE_COLORS = {
-  'Im': 'red',
-  'Cs': 'pink',
-  'As': 'yellow',
-  'Kk': 'green',
-  'Va': 'olive',
-  'Zh': 'blue',
-  'So': 'orange',
-  'Hv': 'purple',
-  'Fa': 'green',
-  'Da': 'lightblue',
-  'Sw': 'blue',
-  'Bw': 'cyan',
-  'Na': 'transparent'
+  'Im':   'red',
+  'CsIm': 'pink',
+  'CsZh': 'lightblue',
+  'As':   'yellow',
+  'Kk':   'green',
+  'Va':   'olive',
+  'ZhCo': 'blue',
+  'SoCo': 'orange',
+  'Hv':   'purple',
+  'Fa':   'green',
+  'DaCf': 'lightblue',
+  'SwCf': 'blue',
+  'Na':   'transparent',
+  'NaHu': 'transparent',
+  'NaVa': 'transparent',
+  'NaXX': 'transparent'
 };
 
 function colorFor(alleg) {
@@ -42,20 +45,20 @@ var ALLEGIANCE_SETS = [
      'cv', // "
      'J-' // Julian Protectorate
     ],
-    /*
-    ["Im", // Classic Imperium
-     "Dd", // Rebellion: Domain of Deneb
-     "Fd", // Rebellion: Federation of Daibei
-     "Fi", // Rebellion: Federation of Ilelish
-     "La", // Rebellion: League of Antares
-     "Li", // Rebellion: Lucan's Imperium
-     "Rv", // Rebellion: Ziru Sirkaa (Restored Vilani Imperium)
-     "Ma", // Rebellion: Margaret's Stronghold
-     "St", // Rebellion: Strephon's Imperium
-     "IL", // Gateway to Destiny: Third Imperium, Luriani Cultural
-     "IU"  // Gateway to Destiny: Third Imperium, Gateway 3rd Imperium Ursa Cultural
-     ],
-     */
+
+    ['Im', // Classic Imperium
+     'ImDa', // Domain of Antares (Anta/Empt/Lish)
+     'ImDc', // Domain of Sylea (Core/Delp/Forn/Mass)
+     'ImDd', // Domain of Deneb (Dene/Reft/Spin/Troj)
+     'ImDg', // Domain of Gateway (Glim/Hint/Ley)
+     'ImDi', // Domain of Ilelish (Daib/Ilel/Reav/Verg/Zaru)
+     'ImDs', // Domain of Sol (Alph/Dias/Magy/Olde/Solo)
+     'ImDv', // Domain of Vland (Corr/Dagu/Gush/Reft/Vlan)
+     'ImLa', // League of Antares (Anta)
+     'ImLu', // Luriani Cultural Association (Ley/Forn)
+     'ImSy'  // Sylean Worlds (Core)
+    ],
+
     ['As', 'A0', 'A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9'], // Aslan clans
     ['Uc', 'C1', 'C2', 'C3', 'C4'] // Union Crucis (Judges Guild)
   ];
@@ -191,48 +194,35 @@ function join(tasks, completion) {
 
 
 function loadSector(sx, sy, callback) {
-  var xhr = new XMLHttpRequest(), async = true;
-  xhr.open('GET', Util.makeURL('../api/sec', {type: 'TabDelimited', sx: sx, sy: sy}), async);
-  xhr.onreadystatechange = function(e) {
-    if (xhr.readyState === XMLHttpRequest.DONE) {
+  var sectorName = undefined;
+  Traveller.MapService.sectorDataTabDelimited(
+    sectorName,
+    function(data) {
       var worlds = [];
-      if (xhr.status === 200) {
-        var lines = xhr.responseText.split(/\r?\n/);
-        var header = lines.shift().toLowerCase().split(/\t/);
-        lines.forEach(function (line) {
-          if (!line.length)
-            return;
+      var lines = data.split(/\r?\n/);
+      var header = lines.shift().toLowerCase().split(/\t/);
+      lines.forEach(function (line) {
+        if (!line.length)
+          return;
 
-          var world = {};
-          line.split(/\t/).forEach(function (field, index) {
-            world[header[index]] = field;
-          });
-
-          world.x = parseInt(world.hex.substring(0, 2), 10);
-          world.y = parseInt(world.hex.substring(2, 4), 10);
-          worlds.push(world);
+        var world = {};
+        line.split(/\t/).forEach(function (field, index) {
+          world[header[index]] = field;
         });
-      }
-      // Even on error
+
+        world.x = parseInt(world.hex.substring(0, 2), 10);
+        world.y = parseInt(world.hex.substring(2, 4), 10);
+        worlds.push(world);
+      });
       callback(worlds);
-    }
-  };
-  xhr.send();
+    },
+    function(error) { callback([]); },
+    {sx: sx, sy: sy});
 }
 
 function sectorCoords(name, callback) {
-  var xhr = new XMLHttpRequest(), async = true;
-  xhr.open('GET', Util.makeURL('../api/coordinates', {sector: name, accept: 'application/json'}), async);
-  xhr.onreadystatechange = function(e) {
-    if (xhr.readyState === XMLHttpRequest.DONE) {
-      if (xhr.status === 200) {
-        callback(JSON.parse(xhr.responseText));
-      } else {
-        callback();
-      }
-    }
-  };
-  xhr.send();
+  Traveller.MapService.coordinates(
+    name, undefined, callback, function() { callback(); });
 }
 
 window.onload = function() {
@@ -243,7 +233,7 @@ window.onload = function() {
     display.scrollTop = display.scrollHeight
   }
 
-  var query = parseURLQuery(document.location);
+  var query = Util.parseURLQuery(document.location);
   if (!('sector' in query)) {
     alert("Missing sector in URL");
     return;
