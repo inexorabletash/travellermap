@@ -178,6 +178,14 @@ namespace Maps
             }
         }
 
+        // TODO: Implement parser:
+        // Query            ::= ConjunctionQuery
+        // ConunctionQuery  ::= Term (' '+ Term)*
+        // Term             ::= Operator? Phrase
+        // Phrase           ::= [^ "]+ 
+        //                    | '"' [^"]& '"'
+        // Operator         ::= ("uwp" | "like" | "exact") ':'
+
         public static IEnumerable<ItemLocation> PerformSearch(string query, ResourceManager resourceManager, SearchResultsType types, int numResults)
         {
             List<ItemLocation> results = new List<ItemLocation>();

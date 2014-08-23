@@ -208,7 +208,8 @@ namespace Maps.Serialization
         [Flags]
         private enum CheckOptions
         {
-            EmptyIfDash = 1
+            EmptyIfDash = 1,
+            Warning = 2
         };
 
         private class FieldChecker
@@ -231,9 +232,17 @@ namespace Maps.Serialization
             {
                 if (!regex.IsMatch(dict[key]))
                 {
-                    if (errors != null)
-                        errors.Error(String.Format("Unexpected value for {0}: '{1}'", key, dict[key]), lineNumber, line);
-                    hadError = true;
+                    if (!options.HasFlag(CheckOptions.Warning))
+                    {
+                        if (errors != null)
+                            errors.Error(String.Format("Unexpected value for {0}: '{1}'", key, dict[key]), lineNumber, line);
+                        hadError = true;
+                    }
+                    else
+                    {
+                        if (errors != null)
+                            errors.Warning(String.Format("Unexpected value for {0}: '{1}'", key, dict[key]), lineNumber, line);
+                    }
                 }
 
                 string value = dict[key];
@@ -262,9 +271,17 @@ namespace Maps.Serialization
 
                     if (!validate(value))
                     {
-                        if (errors != null)
-                            errors.Error(String.Format("Unexpected value for {0}: '{1}'", key, value), lineNumber, line);
-                        hadError = true;
+                        if (!options.HasFlag(CheckOptions.Warning))
+                        {
+                            if (errors != null)
+                                errors.Error(String.Format("Unexpected value for {0}: '{1}'", key, value), lineNumber, line);
+                            hadError = true;
+                        } 
+                        else
+                        {
+                            if (errors != null)
+                                errors.Warning(String.Format("Unexpected value for {0}: '{1}'", key, value), lineNumber, line);
+                        }
                     }
 
                     return value;
@@ -293,7 +310,7 @@ namespace Maps.Serialization
                 world.Allegiance = checker.Check(new string[] { "A", "Allegiance" },
                     // TODO: Allow unofficial sectors to have locally declared allegiances.
                     a => a.Length != 4 || SecondSurvey.IsKnownT5Allegiance(a));
-                world.Stellar = checker.Check(new string[] { "Stellar", "Stars", "Stellar Data" }, STARS_REGEX);
+                world.Stellar = checker.Check(new string[] { "Stellar", "Stars", "Stellar Data" }, STARS_REGEX, CheckOptions.Warning);
 
                 int w;
                 if (Int32.TryParse(checker.Check(new string[] { "W", "Worlds" }), NumberStyles.Integer, CultureInfo.InvariantCulture, out w))
