@@ -35,8 +35,8 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   function fetchInto(url, selector) {
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", url, true);
+    var xhr = new XMLHttpRequest(), async = true;
+    xhr.open("GET", url, async);
     xhr.onreadystatechange = function () {
       if (xhr.readyState === 4 && xhr.status === 200) {
         $(selector).value = xhr.responseText;
