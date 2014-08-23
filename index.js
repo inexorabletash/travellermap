@@ -669,8 +669,8 @@ window.addEventListener('DOMContentLoaded', function() {
         RETRY_SLOP_MS = 5000,
         RETRY_S = 10;
     function fetch(url, ok, err) {
-      var xhr = new XMLHttpRequest();
-      xhr.open('HEAD', url);
+      var xhr = new XMLHttpRequest(), async = true;
+      xhr.open('HEAD', url, async);
       xhr.send();
       xhr.onreadystatechange = function() {
         if (xhr.readyState !== XMLHttpRequest.DONE) return;
