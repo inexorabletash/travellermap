@@ -19,15 +19,6 @@
     });
   }
 
-  function makeQuery(obj) {
-    return Object.keys(obj).map(function(key) {
-      return encodeURIComponent(key) + '=' + encodeURIComponent(obj[key]);
-    }).join('&');
-  }
-
-  function fromEHex(c) {
-    return '0123456789ABCDEFGHJKLMNPQRSTUVWXYZ'.indexOf(c.toUpperCase());
-  }
   function numberWithCommas(x) {
     return String(x).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   }
@@ -345,9 +336,9 @@
   }
   function splitPBG(pbg) {
     return {
-      Pop: fromEHex(pbg.substring(0, 1)),
-      Belts: fromEHex(pbg.substring(1, 2)),
-      GG: fromEHex(pbg.substring(2, 3))
+      Pop: Traveller.fromHex(pbg.substring(0, 1)),
+      Belts: Traveller.fromHex(pbg.substring(1, 2)),
+      GG: Traveller.fromHex(pbg.substring(2, 3))
     };
   }
 
@@ -367,7 +358,7 @@
 
     world.PBG = splitPBG(world.PBG);
     world.PopMult = world.PBG.Pop;
-    world.PopExp  = fromEHex(world.UWP.Pop);
+    world.PopExp  = Traveller.fromHex(world.UWP.Pop);
     if (world.PopExp > 0 && world.PopMult === 0)
       world.PopMult = 1;
     world.TotalPopulation = numberWithCommas(world.PopMult * Math.pow(10, world.PopExp));
@@ -472,7 +463,7 @@
 
     // Make hi-pop worlds uppercase
     data.Worlds.forEach(function(world) {
-      var pop = fromEHex(splitUWP(world.UWP).Pop);
+      var pop = Traveller.fromHex(splitUWP(world.UWP).Pop);
       if (pop >= 9)
         world.Name = world.Name.toUpperCase();
     });
@@ -504,17 +495,17 @@
       coords = {sector: 'spin', hex: '1910'};
     }
 
-    fetch(prefix + '/api/coordinates?' + makeQuery(coords)).then(function(data) {
+    fetch(Util.makeURL(prefix + '/api/coordinates?', coords)).then(function(data) {
       var coords = JSON.parse(data);
       var JUMP = 2;
       var SCALE = 48;
 
       return Promise.all([
-        fetch(prefix + '/api/jumpworlds?' + makeQuery({x: coords.x, y: coords.y, jump: 0}))
+        fetch(Util.makeURL(prefix + '/api/jumpworlds?', {x: coords.x, y: coords.y, jump: 0}))
           .then(function(data) {
             renderWorld(JSON.parse(data));
           }),
-        fetch(prefix + '/api/jumpworlds?' + makeQuery({x: coords.x, y: coords.y, jump: JUMP}))
+        fetch(Util.makeURL(prefix + '/api/jumpworlds?', {x: coords.x, y: coords.y, jump: JUMP}))
           .then(function(data) {
             renderNeighborhood(JSON.parse(data));
           })
@@ -527,7 +518,7 @@
               border: 0};
             if (window.devicePixelRatio > 1)
               mapParams.dpr = window.devicePixelRatio;
-            $('#jumpmap').src = prefix + '/api/jumpmap?' + makeQuery(mapParams);
+            $('#jumpmap').src = Util.makeURL(prefix + '/api/jumpmap?', mapParams);
 
             $('#jumpmap').addEventListener('click', function(event) {
               var result = jmapToCoords(event, JUMP, SCALE, coords.x, coords.y);

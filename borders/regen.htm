@@ -191,8 +191,8 @@ function join(tasks, completion) {
 
 
 function loadSector(sx, sy, callback) {
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', '../api/sec?type=TabDelimited&sx=' + encodeURIComponent(sx) + '&sy=' + encodeURIComponent(sy), true);
+  var xhr = new XMLHttpRequest(), async = true;
+  xhr.open('GET', Util.makeURL('../api/sec', {type: 'TabDelimited', sx: sx, sy: sy}), async);
   xhr.onreadystatechange = function(e) {
     if (xhr.readyState === XMLHttpRequest.DONE) {
       var worlds = [];
@@ -221,8 +221,8 @@ function loadSector(sx, sy, callback) {
 }
 
 function sectorCoords(name, callback) {
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', '../api/coordinates?sector=' + encodeURIComponent(name) + "&accept=application/json", true);
+  var xhr = new XMLHttpRequest(), async = true;
+  xhr.open('GET', Util.makeURL('../api/coordinates', {sector: name, accept: 'application/json'}), async);
   xhr.onreadystatechange = function(e) {
     if (xhr.readyState === XMLHttpRequest.DONE) {
       if (xhr.status === 200) {

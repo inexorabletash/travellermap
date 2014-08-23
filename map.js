@@ -128,14 +128,14 @@ var Util = {
   // Data Services
   // ======================================================================
 
+  // TODO: Make these ES6-Promise based
   var MapService = (function() {
-
     function service(url, contentType, callback, errback) {
       if (typeof callback !== 'function') throw new TypeError();
 
-      var xhr = new XMLHttpRequest();
+      var xhr = new XMLHttpRequest(), async = true;
       try {
-        xhr.open('GET', url, true);
+        xhr.open('GET', url, async);
         // Due to proxies/user-agents not respecting Vary tags, switch to URL params instead of headers.
         xhr.setRequestHeader('Accept', contentType);
         xhr.onreadystatechange = function() {
@@ -166,10 +166,7 @@ var Util = {
         return xhr;
       } catch (ex) {
         // If cross-domain, blocked by browsers that don't implement CORS
-        setTimeout(function () {
-          if (errback)
-            errback(ex.message);
-        }, 0);
+        if (errback) setTimeout(function() { errback(ex.message); }, 0);
         return {
           abort: function() {},
           readyState: XMLHttpRequest.DONE,
@@ -476,7 +473,7 @@ var Util = {
   function log2(v) { return Math.log(v) / Math.LN2; }
   function pow2(v) { return Math.pow(2, v); }
 
-  var Map = function(container) {
+  function Map(container) {
 
     var self = this; // For event closures that may muck with 'this'
 
@@ -758,7 +755,7 @@ var Util = {
 
     if (window == window.top) // == for IE
       container.focus();
-  };
+  }
 
   // ======================================================================
   // Private Methods
@@ -1016,18 +1013,18 @@ var Util = {
     if ('onLine' in navigator && !navigator.onLine)
       return undefined;
 
-    var tscale = pow2(scale - 1);
-    var options = this.options;
-    var uri = SERVICE_BASE + '/api/tile?x=' + x + '&y=' + y + '&scale=' + tscale + '&options=' + options + '&style=' + this.style;
+    var params = {x: x, y: y, scale: pow2(scale - 1), options: this.options, style: this.style};
     Object.keys(this.tileOptions).forEach(function (key) {
-      uri += '&' + encodeURIComponent(key) + '=' + encodeURIComponent(this.tileOptions[key]);
+      params[key] = this.tileOptions[key];
     }, this);
 
     if ('devicePixelRatio' in window && window.devicePixelRatio > 1)
-      uri += '&dpr=' + window.devicePixelRatio;
+      params.dpr = window.devicePixelRatio;
+
+    var url = Util.makeURL(SERVICE_BASE + '/api/tile', params);
 
     // Have it? Great, get out fast!
-    var img = this.cache.fetch(uri);
+    var img = this.cache.fetch(url);
     if (img)
       return img;
 
@@ -1036,7 +1033,7 @@ var Util = {
       return undefined;
 
     // In progress?
-    if (this.loading[uri])
+    if (this.loading[url])
       return undefined;
 
 
@@ -1044,23 +1041,23 @@ var Util = {
       return undefined;
 
     // Nope, better try loading it
-    this.loading[uri] = true;
+    this.loading[url] = true;
     var self = this; // for event handler closures
     img = document.createElement('img');
     img.onload = function() {
-      delete self.loading[uri];
-      self.cache.insert(uri, img);
+      delete self.loading[url];
+      self.cache.insert(url, img);
       callback(img);
       img.onload = null;
       img.onerror = null;
     };
     img.onerror = function() {
-      delete self.loading[uri];
+      delete self.loading[url];
       img.onload = null;
       img.onerror = null;
     };
     img.className = 'tile';
-    img.src = uri;
+    img.src = url;
     img.style.position = 'absolute';
 
     return undefined;
@@ -1478,7 +1475,10 @@ var Util = {
     return params;
   };
 
+  //----------------------------------------------------------------------
   // Exports
+  //----------------------------------------------------------------------
+
   global.Traveller = {
     SERVICE_BASE: SERVICE_BASE,
     LEGACY_STYLES: LEGACY_STYLES,
