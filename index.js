@@ -661,15 +661,6 @@ window.addEventListener('DOMContentLoaded', function() {
     var HEARTBEAT_MS = 10000,
         RETRY_SLOP_MS = 5000,
         RETRY_S = 10;
-    function fetch(url, ok, err) {
-      var xhr = new XMLHttpRequest(), async = true;
-      xhr.open('HEAD', url, async);
-      xhr.send();
-      xhr.onreadystatechange = function() {
-        if (xhr.readyState !== XMLHttpRequest.DONE) return;
-        if (xhr.status === 200) ok(); else err();
-      };
-    }
     function label(message, activate) {
       var element = $('#siteStatus a');
       element.innerHTML = Util.escapeHTML(message);
@@ -685,8 +676,9 @@ window.addEventListener('DOMContentLoaded', function() {
       if (n >= 0) setTimeout(function() { countdown(n, callback); }, 1000);
     }
      var intervalId = setInterval(function() {
-      fetch(
+       Util.fetch(
         './res/heartbeat/heartbeat.txt?' + Date.now(),
+        {},
         function() {},
         function() {
           clearInterval(intervalId);
@@ -699,8 +691,9 @@ window.addEventListener('DOMContentLoaded', function() {
               }
               label('Unable to contact server. Retrying...');
               setTimeout(function() {
-                fetch(
+                Util.fetch(
                   './res/heartbeat/recovery.txt?' + Date.now(),
+                  {},
                   function() {
                     label('Connection re-established. Click to refresh.', true);
                   },

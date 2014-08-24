@@ -4,6 +4,8 @@
 <link rel="shortcut icon" href="favicon.ico">
 <link rel="stylesheet" type="text/css" href="site.css?update=2014-01-26">
 <script src="lib/polyfill/polyfill.js?update=2014-03-13"></script>
+<script src="lib/polyfill/es6.js?update=2014-03-21"></script>
+<script src="lib/polyfill/fetch.js?update=2014-08-23"></script>
 <script src="map.js?update=2014-06-20"></script>
 <script src="post.js?update=2014-03-13"></script>
 
@@ -77,6 +79,7 @@ Select a sector, or enter your own data below:
                 <option value="print">White background (Color)</option>
                 <option value="atlas">White background (B&amp;W)</option>
                 <option value="candy">Eye candy</option>
+                <option value="draft">Draft</option>
               </select>
           </tr>
           <tr>
@@ -123,14 +126,15 @@ Select a sector, or enter your own data below:
         <script>
         (function() {
           var $ = function(s) { return document.querySelector(s); };
-          bindCheckboxToOptionsBitmap('#options-grid', MapOptions.GridMask);
-          bindCheckboxToOptionsBitmap('#options-borders', MapOptions.BordersMask);
-          bindCheckboxToOptionsBitmap('#options-sector-names', MapOptions.SectorsMask);
-          bindCheckboxToOptionsBitmap('#options-names', MapOptions.NamesMask);
+          var o = Traveller.MapOptions;
+          bindCheckboxToOptionsBitmap('#options-grid', o.GridMask);
+          bindCheckboxToOptionsBitmap('#options-borders', o.BordersMask);
+          bindCheckboxToOptionsBitmap('#options-sector-names', o.SectorsMask);
+          bindCheckboxToOptionsBitmap('#options-names', o.NamesMask);
           bindCheckboxToBooleanOption('#options-routes', 'routes');
-          bindCheckboxToOptionsBitmap('#options-force-hexes', MapOptions.ForceHexes);
-          bindCheckboxToOptionsBitmap('#options-world-colors', MapOptions.WorldColors);
-          bindCheckboxToOptionsBitmap('#options-filled-borders', MapOptions.FilledBorders);
+          bindCheckboxToOptionsBitmap('#options-force-hexes', o.ForceHexes);
+          bindCheckboxToOptionsBitmap('#options-world-colors', o.WorldColors);
+          bindCheckboxToOptionsBitmap('#options-filled-borders', o.FilledBorders);
           makeCheckboxDependent('#options-filled-borders', '#options-borders');
           function bindCheckboxToOptionsBitmap(selector, mask) {
             $(selector).addEventListener('click', function(e) {

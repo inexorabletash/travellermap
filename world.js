@@ -3,22 +3,6 @@
 
   var $ = function(s) { return document.querySelector(s); };
 
-  function fetch(url) {
-    return new Promise(function(resolve, reject) {
-      var xhr = new XMLHttpRequest(), async = true;
-      xhr.open('GET', url, async);
-      xhr.onreadystatechange = function() {
-        if (xhr.readyState !== XMLHttpRequest.DONE)
-          return;
-        if (xhr.status === 200)
-          resolve(xhr.responseText);
-        else
-          reject(xhr.statusText);
-      };
-      xhr.send();
-    });
-  }
-
   function numberWithCommas(x) {
     return String(x).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   }
@@ -495,19 +479,20 @@
       coords = {sector: 'spin', hex: '1910'};
     }
 
-    fetch(Util.makeURL(prefix + '/api/coordinates?', coords)).then(function(data) {
+    fetch(Util.makeURL(prefix + '/api/coordinates?', coords)).then(function(response) {
+      var data = response.responseText;
       var coords = JSON.parse(data);
       var JUMP = 2;
       var SCALE = 48;
 
       return Promise.all([
         fetch(Util.makeURL(prefix + '/api/jumpworlds?', {x: coords.x, y: coords.y, jump: 0}))
-          .then(function(data) {
-            renderWorld(JSON.parse(data));
+          .then(function(response) {
+            renderWorld(JSON.parse(response.responseText));
           }),
         fetch(Util.makeURL(prefix + '/api/jumpworlds?', {x: coords.x, y: coords.y, jump: JUMP}))
-          .then(function(data) {
-            renderNeighborhood(JSON.parse(data));
+          .then(function(response) {
+            renderNeighborhood(JSON.parse(response.responseText));
           })
           .then(function() {
             var mapParams = {
@@ -528,7 +513,7 @@
           })
       ]);
     }).catch(function(reason) {
-      // TODO: Display error
+      console.error(reason);
     });
   });
 

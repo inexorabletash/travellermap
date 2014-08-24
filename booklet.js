@@ -159,28 +159,27 @@
   // |data| can be string (payload) or object (key/value form data)
   // Returns Promise<string>
   function getTextViaPOST(url, data) {
-    return new Promise(function(resolve, reject) {
-      status('Requesting data...', true);
-      var xhr = new XMLHttpRequest(), async = true;
-      xhr.open('POST', url, async);
-      if (typeof data === 'string') {
-        xhr.setRequestHeader('Content-Type', 'text/plain'); // Safari doesn't infer this.
-        xhr.send(data);
-      } else if (typeof data === 'object') {
-        var fd  = new FormData();
-        Object.keys(data).forEach(function(key) { fd.append(key, data[key]); });
-        xhr.send(fd);
-      }
-      xhr.onreadystatechange = function() {
-        status('Receiving data...', true);
-        if (xhr.readyState !== XMLHttpRequest.DONE)
-          return;
-        if (xhr.status === 200)
-          resolve(xhr.response);
-        else
-          reject(xhr.responseText);
-      };
-    });
+    status('Requesting data...', true);
+    var request;
+    if (typeof data === 'string') {
+      request = fetch(url, {
+        method: 'POST',
+        headers: {'Content-Type': 'text/plain'},  // Safari doesn't infer this.
+        body: data
+      });
+    } else {
+      data = Object(data);
+      var fd = new FormData();
+      Object.keys(data).forEach(function(key) { fd.append(key, data[key]); });
+      request = fetch(url, {
+        method: 'POST',
+        body: fd
+      });
+    }
+    return request.then(
+      function(response) { return response.response; },
+      function(error) { throw error.responseText; }
+    );
   }
 
   function sectorData(params) {

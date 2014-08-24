@@ -32,6 +32,50 @@ var Util = {
     return o;
   },
 
+  fetch: function(url, options, callback, errback) {
+    // NOTE: Due to proxies/user-agents not respecting Vary tags
+    // prefer URL params instead of headers for specifying 'Accept'
+    // type(s).
+    try {
+      options = options || {};
+      var method = options.method || 'GET';
+      var headers = options.headers || {};
+      var body = options.body || null;
+      var xhr = new XMLHttpRequest(), async = true;
+      xhr.open(method, url, async);
+      Object.keys(headers).forEach(function(key) {
+        xhr.setRequestHeader(key, headers[key]);
+      });
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState !== XMLHttpRequest.DONE) return;
+        if (xhr.status === 200) {
+          if (callback) callback(xhr);
+        } else {
+          if (errback) errback(xhr);
+        }
+      };
+      var original_abort = xhr.abort;
+      xhr.abort = function() {
+        xhr.onreadystatechange = null;
+        if (original_abort)
+          original_abort.call(xhr);
+      };
+      xhr.send(body);
+      return xhr;
+    } catch (ex) {
+      // If cross-domain, blocked by browsers that don't implement CORS.
+      if (errback)
+        setTimeout(function() { errback(ex.message); }, 0);
+      return {
+        abort: function() {},
+        readyState: XMLHttpRequest.DONE,
+        status: 0,
+        statusText: 'Forbidden',
+        responseText: 'Connection error'
+      };
+    }
+  },
+
   escapeHTML: function(s) {
     'use strict';
     return String(s).replace(/[&<>"']/g, function(c) {
@@ -130,50 +174,24 @@ var Util = {
   // TODO: Make these ES6-Promise based
   var MapService = (function() {
     function service(url, contentType, callback, errback) {
-      if (typeof callback !== 'function') throw new TypeError();
-
-      var xhr = new XMLHttpRequest(), async = true;
-      try {
-        xhr.open('GET', url, async);
-        // Due to proxies/user-agents not respecting Vary tags, switch to URL params instead of headers.
-        xhr.setRequestHeader('Accept', contentType);
-        xhr.onreadystatechange = function() {
-          if (xhr.readyState !== XMLHttpRequest.DONE)
-            return;
-          if (xhr.status === 200) {
-            var data = xhr.responseText;
+      return Util.fetch(
+        url,
+        {headers: {Accept: contentType}},
+        function(response) {
+          var data = response.responseText;
+          if (contentType === 'application/json') {
             try {
-              if (contentType === 'application/json')
-                data = JSON.parse(data);
+              data = JSON.parse(data);
             } catch (ex) {
               errback(ex);
               return;
             }
-            callback(data);
-            return;
           }
-          if (errback)
-            errback(xhr.status);
-        };
-        var original_abort = xhr.abort;
-        xhr.abort = function() {
-          xhr.onreadystatechange = null;
-          if (original_abort)
-            original_abort.call(xhr);
-        };
-        xhr.send();
-        return xhr;
-      } catch (ex) {
-        // If cross-domain, blocked by browsers that don't implement CORS
-        if (errback) setTimeout(function() { errback(ex.message); }, 0);
-        return {
-          abort: function() {},
-          readyState: XMLHttpRequest.DONE,
-          status: 0,
-          statusText: 'Forbidden',
-          responseText: 'Connection error'
-        };
-      }
+          callback(data);
+        },
+        function(error) {
+          errback(Error(error.statusText));
+        });
     }
 
     return {
