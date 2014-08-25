@@ -480,19 +480,26 @@
     }
 
     fetch(Util.makeURL(prefix + '/api/coordinates?', coords)).then(function(response) {
-      var data = response.responseText;
-      var coords = JSON.parse(data);
+      if (response.status !== 200) return Promise.reject(response.body.asText());
+      return response.body.asJSON();
+    }).then(function(coords) {
       var JUMP = 2;
       var SCALE = 48;
 
       return Promise.all([
         fetch(Util.makeURL(prefix + '/api/jumpworlds?', {x: coords.x, y: coords.y, jump: 0}))
           .then(function(response) {
-            renderWorld(JSON.parse(response.responseText));
+            return response.body.asJSON();
+          })
+          .then(function(json) {
+            renderWorld(json);
           }),
         fetch(Util.makeURL(prefix + '/api/jumpworlds?', {x: coords.x, y: coords.y, jump: JUMP}))
           .then(function(response) {
-            renderNeighborhood(JSON.parse(response.responseText));
+            return response.body.asJSON();
+          })
+          .then(function(json) {
+            renderNeighborhood(json);
           })
           .then(function() {
             var mapParams = {

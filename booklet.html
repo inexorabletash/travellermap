@@ -1,8 +1,15 @@
 <!DOCTYPE html>
-<title>Traveller Map - Sector Page</title>
+<title>Sector Booklet - Traveller Map</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="shortcut icon" href="favicon.ico">
-<link rel="stylesheet" type="text/css" href="site.css?update=2014-01-26">
+<link rel="stylesheet" href="site.css?update=2014-01-26">
+<script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.min.js"></script>
+<script src="lib/polyfill/polyfill.js?update=2014-03-13"></script>
+<script src="lib/polyfill/es6.js?update=2014-03-21"></script>
+<script src="lib/polyfill/experimental/fetch.js?update=2014-08-23"></script>
+<script src="map.js?update=2014-06-23"></script>
+<script src="post.js?update=2014-03-13"></script>
+<script src="booklet.js?update=2014-06-23"></script>
 <style>
 @import url(http://fonts.googleapis.com/css?family=Marcellus|PT+Sans+Narrow);
 
@@ -381,13 +388,6 @@ td.vertical {
     .rotate270 { -ms-writing-mode: tb-rl; }
   </style>
 <![endif]-->
-<script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.min.js"></script>
-<script src="lib/polyfill/polyfill.js?update=2014-03-13"></script>
-<script src="lib/polyfill/es6.js?update=2014-03-21"></script>
-<script src="lib/polyfill/fetch.js?update=2014-08-23"></script>
-<script src="map.js?update=2014-06-23"></script>
-<script src="post.js?update=2014-03-13"></script>
-<script src="booklet.js?update=2014-06-23"></script>
 
 <body>
   <!-- Status Display -->

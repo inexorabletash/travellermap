@@ -177,8 +177,11 @@
       });
     }
     return request.then(
-      function(response) { return response.response; },
-      function(error) { throw error.responseText; }
+      function(response) {
+        if (response.status === 200)
+          return response.body.asText();
+        return Promise.reject(response.body.asText());
+      }
     );
   }
 
