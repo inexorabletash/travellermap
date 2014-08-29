@@ -4,7 +4,6 @@
 
 // NOTE: Used by other scripts
 var Util = {
-  // Replace with URL constructor (or polyfill)
   makeURL: function(base, params) {
     'use strict';
     base = String(base).replace(/\?.*/, '');
@@ -17,7 +16,7 @@ var Util = {
     }).join('&');
   },
 
-  // Replace with URL constructor (or polyfill)
+  // Replace with URL/searchParams
   parseURLQuery: function(url) {
     'use strict';
     var o = Object.create(null);

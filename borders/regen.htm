@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="../site.css?update=2014-01-07">
 
 <script src="../lib/polyfill/polyfill.js"></script>
+<script src="../lib/polyfill/url.js"></script>
 <script src="../map.js?update=2013-12-31"></script>
 <script src="borders.js"></script>
 <script>
@@ -233,13 +234,13 @@ window.onload = function() {
     display.scrollTop = display.scrollHeight
   }
 
-  var query = Util.parseURLQuery(document.location);
-  if (!('sector' in query)) {
+  var searchParams = new URL(document.location).searchParams;
+  if (!searchParams.has('sector')) {
     alert("Missing sector in URL");
     return;
   }
 
-  sectorCoords(query.sector, function(coords) {
+  sectorCoords(searchParams.get('sector'), function(coords) {
     if (!coords) {
       alert("No such sector");
       return;

@@ -221,10 +221,12 @@
   }
 
   document.addEventListener('DOMContentLoaded', function() {
-    var params = Util.parseURLQuery(document.location);
-    if (params.sector) {
+    var searchParams = new URL(document.location).searchParams;
+    if (searchParams.has('sector')) {
       $('#input').style.display = 'none';
-      render(params);
+      render({
+        sector: searchParams.get('sector')
+      });
       return;
     }
 
