@@ -471,13 +471,12 @@
           'http://travellermap.com' : '';
 
     var coords;
-    if ('sector' in query && 'hex' in query) {
+    if ('sector' in query && 'hex' in query)
       coords = {sector: query.sector, hex: query.hex};
-    } else if ('x' in query && 'y' in query) {
+    else if ('x' in query && 'y' in query)
       coords = {x: query.x, y: query.y};
-    } else {
+    else
       coords = {sector: 'spin', hex: '1910'};
-    }
 
     fetch(Util.makeURL(prefix + '/api/coordinates?', coords)).then(function(response) {
       if (response.status !== 200) return Promise.reject(response.body.asText());

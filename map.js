@@ -4,6 +4,7 @@
 
 // NOTE: Used by other scripts
 var Util = {
+  // Replace with URL constructor (or polyfill)
   makeURL: function(base, params) {
     'use strict';
     base = String(base).replace(/\?.*/, '');
@@ -16,6 +17,7 @@ var Util = {
     }).join('&');
   },
 
+  // Replace with URL constructor (or polyfill)
   parseURLQuery: function(url) {
     'use strict';
     var o = Object.create(null);
@@ -32,6 +34,7 @@ var Util = {
     return o;
   },
 
+  // Replace with Fetch API (or polyfill)
   fetch: function(url, options, callback, errback) {
     // NOTE: Due to proxies/user-agents not respecting Vary tags
     // prefer URL params instead of headers for specifying 'Accept'
