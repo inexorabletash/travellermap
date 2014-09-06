@@ -328,8 +328,8 @@ window.addEventListener('DOMContentLoaded', function() {
             map_center_y = map.GetY(),
             scale = map.GetScale(),
             rect = mapElement.getBoundingClientRect(),
-            width = rect.width,
-            height = rect.height,
+            width = Math.round(rect.width),
+            height = Math.round(rect.height),
             x = ( map_center_x * scale - ( width / 2 ) ) / width,
             y = ( -map_center_y * scale - ( height / 2 ) ) / height;
         return { x: x, y: y, w: width, h: height, scale: scale };
