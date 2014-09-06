@@ -830,7 +830,8 @@ namespace Maps.Rendering
                 if (ctx.styles.dimUnofficialSectors && ctx.styles.worlds.visible)
                 {
                     solidBrush.Color = Color.FromArgb(128, ctx.styles.backgroundColor);
-                    foreach (Sector sector in ctx.selector.Sectors.Where(sector => !sector.Tags.Contains("Official")))
+                    foreach (Sector sector in ctx.selector.Sectors
+                        .Where(sector => !sector.Tags.Contains("Official") && !sector.Tags.Contains("Preserve")))
                         ctx.graphics.DrawRectangle(solidBrush, sector.Bounds);
                 }
 

@@ -78,9 +78,9 @@ namespace Maps
         }
         public static int GetIntOption(HttpRequest request, string name, IDictionary<string, Object> queryDefaults, int defaultValue)
         {
-            int temp;
-            if (Int32.TryParse(GetStringOption(request, name, queryDefaults), NumberStyles.Integer, CultureInfo.InvariantCulture, out temp))
-                return temp;
+            double temp;
+            if (Double.TryParse(GetStringOption(request, name, queryDefaults), NumberStyles.Float, CultureInfo.InvariantCulture, out temp))
+                return (int)Math.Round(temp);
             return defaultValue;
         }
 
