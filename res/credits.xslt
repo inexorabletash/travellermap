@@ -11,7 +11,7 @@
                 th, td { white-space: nowrap; text-align: left; vertical-align: top; }
                 th:hover { text-decoration: underline; cursor: pointer; }
             </style>
-            <script src="../lib/polyfill/polyfill.js"></script>
+            <script src="../lib/polyfill/polyfill.min.js"></script>
             <script src="credits.js"></script>
         </head>
         <body>

@@ -3,7 +3,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="shortcut icon" href="../favicon.ico">
 <link rel="stylesheet" href="../site.css?update=2014-01-26">
-<script src="../lib/polyfill/polyfill.js?update=2014-03-13"></script>
+<script src="../lib/polyfill/polyfill.min.js?update=2014-03-13"></script>
 <script src="../lib/polyfill/es6.js?update=2014-03-21"></script>
 <script src="../lib/polyfill/url.js?update=2014-03-21"></script>
 <script src="../lib/polyfill/experimental/fetch.js?update=2014-08-23"></script>
@@ -51,7 +51,7 @@
           document.body.classList.remove('pass');
           $('#summary').innerHTML = '\u2717 Errors found';
         }
-        return response.body.asText();
+        return response.text();
       }).then(function(text) {
         $('#output').value = text;
       }).catch(function(error) {

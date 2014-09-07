@@ -179,8 +179,8 @@
     return request.then(
       function(response) {
         if (response.status === 200)
-          return response.body.asText();
-        return Promise.reject(response.body.asText());
+          return response.text();
+        return Promise.reject(response.text());
       }
     );
   }

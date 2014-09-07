@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  list.addEventListener("change", function (e) {
+  list.addEventListener('change', function (e) {
     var name = list.value;
     Traveller.MapService.sectorData(name, function(data) {
       $('#data').value = data;
@@ -34,18 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }, undefined, {accept: 'text/xml'});
   });
 
-  function fetchInto(url, selector) {
-    var xhr = new XMLHttpRequest(), async = true;
-    xhr.open("GET", url, async);
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState === 4 && xhr.status === 200) {
-        $(selector).value = xhr.responseText;
-      }
-    };
-    xhr.send(null);
-  }
-
-  [].forEach.call($$('textarea'), function(elem) {
+  Array.from($$('textarea')).forEach(function(elem) {
     elem.addEventListener('dragover', function (e) {
       e.stopPropagation();
       e.preventDefault();
@@ -54,27 +43,29 @@ document.addEventListener('DOMContentLoaded', function() {
     elem.addEventListener('drop', function (e) {
       e.stopPropagation();
       e.preventDefault();
-      blobToString(e.dataTransfer.files[0], function(s) {
+      blobToString(e.dataTransfer.files[0]).then(function(s) {
         elem.value = s;
       });
     });
     elem.placeholder = 'Copy and paste data or drag and drop a file here.';
   });
 
-  function blobToString(blob, callback) {
-    var encodings = ['utf-8', 'windows-1252'];
-    (function tryNextEncoding() {
-      var encoding = encodings.shift();
-      var reader = new FileReader();
-      reader.readAsText(blob, encoding);
-      reader.onload = function(e) {
-        var result = reader.result;
-        if (result.indexOf('\uFFFD') !== -1 && encodings.length)
-          tryNextEncoding();
-        else
-          callback(result);
-      };
-    }());
+  function blobToString(blob) {
+    return new Promise(function(resolve, reject) {
+      var encodings = ['utf-8', 'windows-1252'];
+      (function tryNextEncoding() {
+        var encoding = encodings.shift();
+        var reader = new FileReader();
+        reader.readAsText(blob, encoding);
+        reader.onload = function(e) {
+          var result = reader.result;
+          if (result.indexOf('\uFFFD') !== -1 && encodings.length)
+            tryNextEncoding();
+          else
+            resolve(result);
+        };
+      }());
+    });
   }
 
 });

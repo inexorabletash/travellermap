@@ -479,8 +479,8 @@
       coords = {sector: 'spin', hex: '1910'};
 
     fetch(Util.makeURL(prefix + '/api/coordinates?', coords)).then(function(response) {
-      if (response.status !== 200) return Promise.reject(response.body.asText());
-      return response.body.asJSON();
+      if (response.status !== 200) return Promise.reject(response.text());
+      return response.json();
     }).then(function(coords) {
       var JUMP = 2;
       var SCALE = 48;
@@ -488,14 +488,14 @@
       return Promise.all([
         fetch(Util.makeURL(prefix + '/api/jumpworlds?', {x: coords.x, y: coords.y, jump: 0}))
           .then(function(response) {
-            return response.body.asJSON();
+            return response.json();
           })
           .then(function(json) {
             renderWorld(json);
           }),
         fetch(Util.makeURL(prefix + '/api/jumpworlds?', {x: coords.x, y: coords.y, jump: JUMP}))
           .then(function(response) {
-            return response.body.asJSON();
+            return response.json();
           })
           .then(function(json) {
             renderNeighborhood(json);
