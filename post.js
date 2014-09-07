@@ -1,3 +1,7 @@
+// Common routines between Poster Maker and Booklet Maker
+// * Populate sector selector, and load data on demand
+// * Add drag-and-drop handlers for TEXTAREA elements
+
 document.addEventListener('DOMContentLoaded', function() {
   'use strict';
   var $ = function(s) { return document.querySelector(s); };
@@ -8,20 +12,20 @@ document.addEventListener('DOMContentLoaded', function() {
   Traveller.MapService.universe(populateSectorList, undefined, {requireData: 1});
 
   function populateSectorList(universe) {
-    var names = [];
-    universe.Sectors.forEach(function (sector) {
-      var x = sector.X, y = sector.Y, name = sector.Names[0].Text;
-      if (Math.abs(x) < 10 && Math.abs(y) < 5) {
-        names.push(name);
-      }
-    });
-    names.sort();
-    names.forEach(function (name) {
-      var option = document.createElement('option');
-      option.appendChild(document.createTextNode(name));
-      option.value = name;
-      list.appendChild(option);
-    });
+    universe.Sectors
+      .filter(function(sector) {
+        return Math.abs(sector.X) < 10 && Math.abs(sector.Y) < 5;
+      })
+      .map(function(sector) {
+        return sector.Names[0].Text;
+      })
+      .sort()
+      .forEach(function(name) {
+        var option = document.createElement('option');
+        option.appendChild(document.createTextNode(name));
+        option.value = name;
+        list.appendChild(option);
+      });
   }
 
   list.addEventListener('change', function (e) {
@@ -67,5 +71,4 @@ document.addEventListener('DOMContentLoaded', function() {
       }());
     });
   }
-
 });
