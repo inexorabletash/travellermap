@@ -692,6 +692,7 @@
 
   </section>
 </div>
+<script src="../lib/polyfill/polyfill.js"></script>
 <script>
   [].forEach.call(document.querySelectorAll('a.sector'), function(anchor) {
     var name = anchor.innerText || anchor.textContent;
@@ -769,8 +770,7 @@
              console.log('Credits for unknown sector: ' + s);
          });
 
-       })
-      .catch(function (reason) {
+       }, function (reason) {
         console.error(reason);
       });
   }
