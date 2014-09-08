@@ -49,35 +49,38 @@ Exploring the Traveller Universe</q>, Challenge Magazine, Issue No. 26, pp.24-25
 
 <p>&nbsp;
 <p>
-<b>Editor's Notes:</b> This document is <q>a compilation of basic data from a variety
-of <em class="product">Traveller</em> sources</q> for the interpretation of world data codes.
-It accompanied an article and sample code describing the first
-standardized format for <em class="product">Traveller</em> UWP data interchange, and is presented
-here verbatim.
+<b>Editor's Notes:</b> This document is <q>a compilation of basic data
+from a variety of <em class="product">Traveller</em> sources</q> for
+the interpretation of world data codes. It accompanied an article and
+sample code describing the first standardized format
+for <em class="product">Traveller</em> UWP data interchange, and is
+presented here verbatim.
 
 <p>
-Since the original publication
-of <em class="product">Traveller</em> the term Universal Planetary Profile (UPP) has gradually
-been replaced with Universal World Profile (UWP) to disambiguate from Universal
-Personality Profile (UPP). Circa 2009, most extant documentation refers to UWP
-exclusively.
+Since the original publication of <em class="product">Traveller</em>
+the term Universal Planetary Profile (UPP) has gradually been replaced
+with Universal World Profile (UWP) to disambiguate from Universal
+Personality Profile (UPP). Circa 2009, most extant documentation
+refers to UWP exclusively.
 
 <p>
-Many changes have been proposed or introduced to later de-facto updates to the
-format since the original publication, most notably the inclusion of world
-names as an initial field, and <b>PBG</b> codes which
-provide the Population Multiplier, number of Asteroid Belts, and number of Gas Giants
-respectively, replacing the simple G code for Gas Giants.
-Many other codes have been introduced, and the trade classification/remarks field
-is generally considered extensible.
+Many changes have been proposed or introduced to later de-facto
+updates to the format since the original publication, most notably the
+inclusion of world names as an initial field, and <b>PBG</b> codes
+which provide the Population Multiplier, number of Asteroid Belts, and
+number of Gas Giants respectively, replacing the simple G code for Gas
+Giants. Many other codes have been introduced, and the trade
+classification/remarks field is generally considered extensible.
 
 <p>&nbsp;
 <p>
-<b>Errata:</b> The allegiance codes Jl and Jr appear to be swapped; Jr was the
-allegiance code used for the Julian Protectorate in <cite>Atlas of the Imperium</cite>,
-although this may also represent a later change. Trade classification codes nAg and
-nIn violate the clause <q>up to five 2-letter trade classifications</q>;
-although nAg and nIn are found in print, all electronic files have used Na and Ni respectively.
+<b>Errata:</b> The allegiance codes Jl and Jr appear to be swapped; Jr
+was the allegiance code used for the Julian Protectorate
+in <cite>Atlas of the Imperium</cite>, although this may also
+represent a later change. Trade classification codes nAg and nIn
+violate the clause <q>up to five 2-letter trade classifications</q>;
+although nAg and nIn are found in print, all electronic files have
+used Na and Ni respectively.
 </div>
 <h1>Standard Format</h1>
 <!--
@@ -90,39 +93,52 @@ others (given only a compatible computer or computer link).
 -->
 <p>
 The Standard UPP Format for worlds saves basic data generated in
-accordance with world generation rules in <em class="product">Traveller</em>.
+accordance with world generation rules
+in <em class="product">Traveller</em>.
 
 <p>
-All data for a sector is contained in one file (if disk space or available
-memory precludes it all being in one file, two or more may be necessary).
-Each record in the file is one world UPP.
+All data for a sector is contained in one file (if disk space or
+available memory precludes it all being in one file, two or more may
+be necessary). Each record in the file is one world UPP.
 
 <p>
 Each record is divided into six fields:
 
-<p><b>Hex Location:</b> Bytes 1-4. The hexagon location of the world within a sector map. Values range from 0101 to 3240.
-<p><b>UPP:</b> Bytes 6-14. The actual generated UPP. Byte 6 is starport type; byte 7 is world size; byte 13 is always a hyphen (-); byte 14 is tech level.
-<p><b>Bases:</b> Byte 16. A single code letter for any bases in the system.
-<p><b>Trade Classifications:</b> Bytes 18-32. Up to five 2-letter trade classifications can be held in this field. Each classification is separated from the others by a space. If it possible to generate some of these trade classifications from the world UPP, but they are computed and included as part of the world data to allow quick scanning and analysis of the data.
-<p><b>Allegiance:</b> Bytes 33-34. A 2-letter code for the interstellar government which claims the allegiance of the world.
-<p><b>Travel Zone:</b> Byte 36. If the world is travel zoned, then this field holds the letter A (for Amber) or R (for Red).
-<p><b>Gas Giant:</b> Byte 38. If the system has one or more gas giants, then this field has a G.
+<p><b>Hex Location:</b> Bytes 1-4. The hexagon location of the world
+within a sector map. Values range from 0101 to 3240.
+<p><b>UPP:</b> Bytes 6-14. The actual generated UPP. Byte 6 is
+starport type; byte 7 is world size; byte 13 is always a hyphen (-);
+byte 14 is tech level.
+<p><b>Bases:</b> Byte 16. A single code letter for any bases in the
+system.
+<p><b>Trade Classifications:</b> Bytes 18-32. Up to five 2-letter
+trade classifications can be held in this field. Each classification
+is separated from the others by a space. If it possible to generate
+some of these trade classifications from the world UPP, but they are
+computed and included as part of the world data to allow quick
+scanning and analysis of the data.
+<p><b>Allegiance:</b> Bytes 33-34. A 2-letter code for the
+interstellar government which claims the allegiance of the world.
+<p><b>Travel Zone:</b> Byte 36. If the world is travel zoned, then
+this field holds the letter A (for Amber) or R (for Red).
+<p><b>Gas Giant:</b> Byte 38. If the system has one or more gas
+giants, then this field has a G.
 <p><b>Tradeworld:</b> Byte 40. Reserved for later use.
 <p><b>Explored?:</b> Byte 42. Reserved for later use.
 <h1>Data Formats</h1>
-<p>The information produced by the Imperial Interstellar Scout
-Service is provided in specific formats in order to allow quick and easy access
-to the data.
+<p>The information produced by the Imperial Interstellar Scout Service
+is provided in specific formats in order to allow quick and easy
+access to the data.
 <p>Data is grouped by Sectors, corresponding to sectors of the
 Imperium and of surrounding space.
-<p><b>Data Codes:</b> The data in the UPP and in associated
-fields is coded to hold the maximum amount of information. This guide shows the
+<p><b>Data Codes:</b> The data in the UPP and in associated fields is
+coded to hold the maximum amount of information. This guide shows the
 basic interpretation of the codes used.
 <h2>World UPPs</h2>
-<p>World UPPs (Universal Planetary Profiles) are constructed of
-eight discrete digits or characters in order to provide a quick readout of the
-basic information about the world. Each segment of the UPP is one digit or
-character. The data is presented in the following order:
+<p>World UPPs (Universal Planetary Profiles) are constructed of eight
+discrete digits or characters in order to provide a quick readout of
+the basic information about the world. Each segment of the UPP is one
+digit or character. The data is presented in the following order:
 <h3>World UPP Components</h3>
 <table>
  <tr>
@@ -176,33 +192,30 @@ character. The data is presented in the following order:
   </th>
  <tr>
   <td class="codes">A
-  <td>Excellent Quality. Refined fuel
-  available. Annual maintenance overhaul available. Shipyard capable of
-  constructing starships and non-starships present. Nava base and/or scout base
-  may be present.
+  <td>Excellent Quality. Refined fuel available. Annual maintenance
+  overhaul available. Shipyard capable of constructing starships and
+  non-starships present. Nava base and/or scout base may be present.
 
  <tr>
   <td class="codes">B
-  <td>Good Quality. Refined fuel
-  available. Annual maintenance overhaul available. Shipyard capable of
-  constructing non-starships present. Naval base and/or scout base may be
-  present.
+  <td>Good Quality. Refined fuel available. Annual maintenance
+  overhaul available. Shipyard capable of constructing non-starships
+  present. Naval base and/or scout base may be present.
 
  <tr>
   <td class="codes">C
-  <td>Routine Quality. Only unrefined
-  fuel available. Reasonable repair facilities present. Scout base may be
-  present.
-
- <tr>
-  <td class="codes">D
-  <td>Only unrefined fuel available. No
+  <td>Routine Quality. Only unrefined fuel available. Reasonable
   repair facilities present. Scout base may be present.
 
  <tr>
+  <td class="codes">D
+  <td>Only unrefined fuel available. No repair facilities
+  present. Scout base may be present.
+
+ <tr>
   <td class="codes">E
-  <td>Frontier Installation. Essentially
-  a marked spot of bedrock with no fuel, facilities, or bases present.
+  <td>Frontier Installation. Essentially a marked spot of bedrock with
+  no fuel, facilities, or bases present.
 
  <tr>
   <td class="codes">F
@@ -210,8 +223,7 @@ character. The data is presented in the following order:
   for any ship landings.
 
 </table>
-<p>Starport indicates the best quality starport in the star
-system.
+<p>Starport indicates the best quality starport in the star system.
 <h3><a id="World_Size_Data">World Size Data</a></h3>
 <table>
  <tr>
@@ -303,11 +315,12 @@ system.
   <td class="rightcol">13.73
 
 </table>
-<p>Size is the size code from the Universal Planetary Profile
-(UPP) and expresses the diameter of a world in approximately 1,600 km units (or
-1,000 mile units). Diameter is in kilometers. Mass is in Earths (Earth=1) and
-assumes a density similar to Earth (5.5 grams per cubic centimeter). Area is in
-Earths (Earth=1). Gravity is in Gs (Earth=1). Escape velocity is in km per sec.
+<p>Size is the size code from the Universal Planetary Profile (UPP)
+and expresses the diameter of a world in approximately 1,600 km units
+(or 1,000 mile units). Diameter is in kilometers. Mass is in Earths
+(Earth=1) and assumes a density similar to Earth (5.5 grams per cubic
+centimeter). Area is in Earths (Earth=1). Gravity is in Gs
+(Earth=1). Escape velocity is in km per sec.
 <h3><a id="Atmosphere">Atmosphere</a></h3>
 <table>
  <tr>
@@ -392,8 +405,8 @@ Earths (Earth=1). Gravity is in Gs (Earth=1). Escape velocity is in km per sec.
   altitudes.
 
 </table>
-<p>Atmosphere type shows the general character of the
-atmosphere for a world on its surface.
+<p>Atmosphere type shows the general character of the atmosphere for a
+world on its surface.
 <h3><a id="Hydrographics">Hydrographics</a></h3>
 <table>
  <tr>
@@ -449,10 +462,10 @@ atmosphere for a world on its surface.
   <td>100% water. Water World.
 
 </table>
-<p>Hydrographics shows the percentage of world surface covered
-by seas or oceans.
-<p><b>Note:</b> If atmosphere type is A or above, fluid may be
-present in place of water.
+<p>Hydrographics shows the percentage of world surface covered by seas
+or oceans.
+<p><b>Note:</b> If atmosphere type is A or above, fluid may be present
+in place of water.
 <h3><a id="Population">Population</a></h3>
 <table>
  <tr>
@@ -508,8 +521,7 @@ present in place of water.
   <td>Tens of billions of inhabitants.
 
 </table>
-<p>Population shows a rough statement of population level for a
-world.
+<p>Population shows a rough statement of population level for a world.
 <h3><a id="Government_Type">Government Type</a></h3>
 <table>
  <tr>
@@ -694,8 +706,7 @@ world.
   <td class="rightcol">&nbsp;
 
 </table>
-<p>Government shows the basic governmental structure for a
-world.
+<p>Government shows the basic governmental structure for a world.
 <h3><a id="Law_Level">Law Level</a></h3>
 <table>
  <tr>
@@ -805,8 +816,8 @@ world.
   <td>Special/Variable situation.
 
 </table>
-<p>Law level indicates basic legal status and shows probability
-of harassment by local enforcers.
+<p>Law level indicates basic legal status and shows probability of
+harassment by local enforcers.
 <h3><a id="Technological_Level">Technological Level</a></h3>
 <table>
  <tr>
@@ -938,9 +949,9 @@ of harassment by local enforcers.
 <p>Technological level shows the degree of technological
 sophistication to be expected on a world.
 <h2>Stellar Data</h2>
-<p>Stellar Data indicates the spectral class and size class of
-stars in the system. Up to three stars may be present and information shown on
-them.
+<p>Stellar Data indicates the spectral class and size class of stars
+in the system. Up to three stars may be present and information shown
+on them.
 <h3>Stellar Type</h3>
 <table>
  <tr>
@@ -989,8 +1000,8 @@ them.
   3,800
 
 </table>
-<p>Stellar type indicates the spectral classification of a
-star; colors are the essential perceived colors of the star’s visible light.
+<p>Stellar type indicates the spectral classification of a star;
+colors are the essential perceived colors of the star’s visible light.
 Temperature is given in degrees Kelvin.
 <h3>Stellar Size</h3>
 <table>
@@ -1045,10 +1056,11 @@ Temperature is given in degrees Kelvin.
   <td class="rightcol">0.006 - 0.018
 
 </table>
-<p>Stellar size indicates the radius of the star expressed in
-solar radii and shows the relative differences to be expected.
+<p>Stellar size indicates the radius of the star expressed in solar
+radii and shows the relative differences to be expected.
 <h2>Base Codes</h2>
-<p>Base codes show the presence of military bases in a system; special codes deal with the presence of more than one type of base within the
+<p>Base codes show the presence of military bases in a system; special
+codes deal with the presence of more than one type of base within the
 same system in order to maintain a single base code letter per system.
 <table>
  <tr>
@@ -1189,10 +1201,10 @@ same system in order to maintain a single base code letter per system.
 </table>
 <p>Base codes indicate allegiance and general mission or type.
 <h2>Trade Classifications</h2>
-<p>Trade classifications indicate obvious or important
-characteristics for worlds defined by the world UPP. They serve to show the
-potential for a world based on its capacity as a source of trade goods, a
-market for trade goods, or both.
+<p>Trade classifications indicate obvious or important characteristics
+for worlds defined by the world UPP. They serve to show the potential
+for a world based on its capacity as a source of trade goods, a market
+for trade goods, or both.
 <h3>Trade Classifications</h3>
 <p>&nbsp;
 <table>
@@ -1371,8 +1383,8 @@ market for trade goods, or both.
 <p>Remarks are additional statements not considered to be trade
 classifications.
 <h2>Additional Data</h2>
-<p>The additional data fields show the travel status (when
-known), the presence of a gas giant, and the allegiance of the system.
+<p>The additional data fields show the travel status (when known), the
+presence of a gas giant, and the allegiance of the system.
 <h3>Travel Codes</h3>
 <table>
  <tr>
@@ -1414,10 +1426,11 @@ known), the presence of a gas giant, and the allegiance of the system.
 
 </table>
 <p>Imperial travel codes are provided by the <i>Journal of the
-Travellers’ Aid Society</i>, and are used with permission of that publication.
+Travellers’ Aid Society</i>, and are used with permission of that
+publication.
 <p>&nbsp;
-<p><b>Gas Giants:</b> The code G indicates one or more gas
-giants present.
+<p><b>Gas Giants:</b> The code G indicates one or more gas giants
+present.
 <h3>Allegiances</h3>
 <table>
  <tr>
@@ -1568,8 +1581,8 @@ giants present.
   <td class="rightcol">&nbsp;
 
 </table>
-<p>Allegiances indicate the government which dominates a
-system. Only selected allegiances are shown in this table.
+<p>Allegiances indicate the government which dominates a system. Only
+selected allegiances are shown in this table.
 <h2></h2>
 <p><b>References:</b>
     <cite>The <em class="product">Traveller</em> Book</cite> (GDW: 1982).
@@ -1585,8 +1598,8 @@ system. Only selected allegiances are shown in this table.
 
 <p>&nbsp;
 <div class="editorial">
-<p>The <em class="product">Traveller</em> game in all forms is owned by Far
-Future Enterprises. Copyright &copy; 1977 - 2014 Far Future
+<p>The <em class="product">Traveller</em> game in all forms is owned
+by Far Future Enterprises. Copyright &copy; 1977 - 2014 Far Future
 Enterprises.
 <a href="http://farfuture.net/FFEFairUsePolicy2008.pdf">Fair Use Policy</a>
 </div>

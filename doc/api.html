@@ -25,26 +25,32 @@ table#features, #features th, #features td { border: solid 1px black; }
   <section id="overview">
     <h3>Overview</h3>
     <p>
-        The Traveller Map site works by having a browser-based client application written
-        in <a href="http://javascript.crockford.com/javascript.html">JavaScript</a> call
-        various APIs provided by the web site to render map tiles, provide search results,
-        look up coordinates, and so forth. The browser provides the HTML+CSS rendering, layout
-        and interaction engine, the web site provides the content, and the script glues it together.
+        The Traveller Map site works by having a browser-based client
+        application written
+        in <a href="http://javascript.crockford.com/javascript.html">JavaScript</a>
+        call various APIs provided by the web site to render map
+        tiles, provide search results, look up coordinates, and so
+        forth. The browser provides the HTML+CSS rendering, layout and
+        interaction engine, the web site provides the content, and the
+        script glues it together.
     </p>
     <p>
-        All of these APIs may be called by other applications. In addition, several other
-        APIs have been exposed specifically for external applications or users to take
-        advantage of.
+        All of these APIs may be called by other applications. In
+        addition, several other APIs have been exposed specifically
+        for external applications or users to take advantage of.
     </p>
     <p>
-        If you start developing against these APIs in any form, please let me know!
-        Email me at <a href="mailto:inexorabletash@gmail.com">inexorabletash@gmail.com</a>.
-        In addition, the <a href="http://travellermap.blogspot.com/">blog</a> is a good
-        source of news and discussion around the site and APIs.
+        If you start developing against these APIs in any form, please
+        let me know! Email me
+        at <a href="mailto:inexorabletash@gmail.com">inexorabletash@gmail.com</a>.
+        In addition,
+        the <a href="http://travellermap.blogspot.com/">blog</a> is a
+        good source of news and discussion around the site and APIs.
     </p>
     <p class="aside">
-        NOTE: Many APIs take <code>x</code> and <code>y</code> coordinate parameters.
-        The coordinate system for those values varies depending on the API. See the
+        NOTE: Many APIs take <code>x</code> and <code>y</code>
+        coordinate parameters. The coordinate system for those values
+        varies depending on the API. See the
         <a href="#systems">Coordinate Systems</a> documentation for more details.
     </p>
   </section>
@@ -98,26 +104,30 @@ table#features, #features th, #features td { border: solid 1px black; }
   <section id="urls">
     <h3>Functional APIs vs. Semantic Data URLs</h3>
     <p>
-      The site exposes the same functions through two different URL schemes. For example,
-      to render a poster-style map of Deneb you can use either of these URLs:
+      The site exposes the same functions through two different URL
+      schemes. For example, to render a poster-style map of Deneb you
+      can use either of these URLs:
     </p>
     <p class="code">http://travellermap.com/api/poster?sector=Deneb</p>
     <p class="code">http://travellermap.com/data/Deneb/image</p>
     <p>
-      The first URL is structured based on the function that is being performed,
-      and takes parameters (defining data to operate on) and options (that refine
-      the behavior); these URLs start with a <code>/api/</code> prefix.
+      The first URL is structured based on the function that is being
+      performed, and takes parameters (defining data to operate on)
+      and options (that refine the behavior); these URLs start with
+      a <code>/api/</code> prefix.
 
-      The second URL is structured around the object being operated on, then specifies
-      the data to retrieve; these URLs start with a <code>/data/</code> prefix.
+      The second URL is structured around the object being operated
+      on, then specifies the data to retrieve; these URLs start with
+      a <code>/data/</code> prefix.
     </p>
 
     <p>
-      In this case, both URLs expose identical functionality. Not all functions exposed
-      by the first ("api") form have a corresponding second ("data") form &ndash; for example, rendering
-      arbitrary rectangles of space, or selecting a sector by x/y coordinates.
-      On the other hand, the data URLs are much easier to remember and share.
-      Both will be supported indefinitely.
+      In this case, both URLs expose identical functionality. Not all
+      functions exposed by the first ("api") form have a corresponding
+      second ("data") form &ndash; for example, rendering arbitrary
+      rectangles of space, or selecting a sector by x/y coordinates.
+      On the other hand, the data URLs are much easier to remember and
+      share. Both will be supported indefinitely.
     </p>
     <h3>Semantic URL Namespace</h3>
 
@@ -190,13 +200,14 @@ table#features, #features th, #features td { border: solid 1px black; }
 
     <h4>Options</h4>
     <p>
-        The options are canonically defined in the <a href="#script">script</a> as flags that can
-        be combined by adding the values together. The <code>options</code> parameter must
-        be specified in decimal.
+        The options are canonically defined in
+        the <a href="#script">script</a> as flags that can be combined
+        by adding the values together. The <code>options</code>
+        parameter must be specified in decimal.
     </p>
     <p class="aside">
-      Tip: You can use the checkboxes in the table below to compute an options value. Reload
-      the page to see the default options.
+      Tip: You can use the checkboxes in the table below to compute an
+      options value. Reload the page to see the default options.
     </p>
 
     <table id="options_table">
@@ -240,13 +251,16 @@ table#features, #features th, #features td { border: solid 1px black; }
       Computed options value: <span id="computed_options"></span> (<a target="_blank" id="test_options" href="#">try it</a>)
     </p>
     <p class="aside">
-      Some flag values (not listed in the above table) have been deprecated. See the source code
-      for more details. Because URLs may exist that reference them the flags cannot be reused. Going
-      forward, distinct query parameters will be used to control rendering options. In addition,
-      the flags do not correspond 1:1 to options shown on the main map page as the as the UI has
-      evolved and simplified over time. Specifically, the pairs SectorGrid/SubsectorGrid,
-      BordersMajor/BordersMinor, NamesMajor/NamesMinor, and WorldsCapitals/WorldsHomeworlds
-      are always set/cleared together by one checkbox.
+      Some flag values (not listed in the above table) have been
+      deprecated. See the source code for more details. Because URLs
+      may exist that reference them the flags cannot be reused. Going
+      forward, distinct query parameters will be used to control
+      rendering options. In addition, the flags do not correspond 1:1
+      to options shown on the main map page as the as the UI has
+      evolved and simplified over time. Specifically, the pairs
+      SectorGrid/SubsectorGrid, BordersMajor/BordersMinor,
+      NamesMajor/NamesMinor, and WorldsCapitals/WorldsHomeworlds are
+      always set/cleared together by one checkbox.
     </p>
     <script>
       (function () {
@@ -270,8 +284,9 @@ table#features, #features th, #features td { border: solid 1px black; }
     </script>
 
     <p>
-      Behind the scenes, options values are one input to a style calculation; other inputs include
-      the scale (see below). The options flags (e.g. SectorGrid) only apply at certain scales,
+      Behind the scenes, options values are one input to a style
+      calculation; other inputs include the scale (see below). The
+      options flags (e.g. SectorGrid) only apply at certain scales,
       per the following table:
     </p>
 
