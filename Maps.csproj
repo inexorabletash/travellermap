@@ -159,7 +159,10 @@
     <Content Include="lib\lightbox\lightbox.css" />
     <Content Include="lib\lightbox\lightbox.js" />
     <Content Include="lib\polyfill\es6.js" />
+    <Content Include="lib\polyfill\experimental\fetch.js" />
     <Content Include="lib\polyfill\polyfill.js" />
+    <Content Include="lib\polyfill\polyfill.min.js" />
+    <Content Include="lib\polyfill\url.js" />
     <Content Include="post.js" />
     <Content Include="poster.html" />
     <Content Include="res\Candy\Galaxy.jpg" />
@@ -315,7 +318,6 @@
     <Content Include="res\ui\youarehere_gray.png" />
     <Content Include="index.html" />
     <Content Include="index.js" />
-    <Content Include="polyfill\polyfill.js" />
     <Content Include="res\credits.js" />
     <Content Include="res\Vectors\CoreRoute.xml" />
     <Content Include="res\Vectors\J4Route.xml" />
@@ -401,6 +403,7 @@
     <Content Include="res\Vectors\Zhodani.xml" />
     <Content Include="res\ZhodaniCoreRoute.xml" />
     <Content Include="site.css" />
+    <Content Include="tools\lintsec.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
