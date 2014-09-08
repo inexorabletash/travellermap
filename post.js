@@ -2,7 +2,7 @@
 // * Populate sector selector, and load data on demand
 // * Add drag-and-drop handlers for TEXTAREA elements
 
-document.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('DOMContentLoaded', function() {
   'use strict';
   var $ = function(s) { return document.querySelector(s); };
   var $$ = function(s) { return document.querySelectorAll(s); };

@@ -220,7 +220,7 @@
     });
   }
 
-  document.addEventListener('DOMContentLoaded', function() {
+  window.addEventListener('DOMContentLoaded', function() {
     var searchParams = new URL(document.location).searchParams;
     if (searchParams.has('sector')) {
       $('#input').style.display = 'none';
