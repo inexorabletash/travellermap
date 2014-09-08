@@ -68,13 +68,14 @@
     }
 
     var lines = tabDelimitedData.split(/\r?\n/);
-    var header = lines.shift().toLowerCase().split(/\t/);
+    var header = lines.shift().toLowerCase().split('\t');
+    console.log(header);
     lines.forEach(function (line) {
       if (!line.length)
         return;
 
       var world = {};
-      line.split(/\t/).forEach(function (field, index) {
+      line.split('\t').forEach(function (field, index) {
         var col = header[index].replace(/[^a-z]/g, '');
         world[col] = field;
       });
@@ -439,7 +440,7 @@
 
       status();
       window.location.hash = hash;
-    }).catch(function(error) {
+    }, function(error) {
       status('Failed: ' + error);
     });
   };

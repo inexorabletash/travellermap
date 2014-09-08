@@ -201,13 +201,13 @@ function loadSector(sx, sy, callback) {
     function(data) {
       var worlds = [];
       var lines = data.split(/\r?\n/);
-      var header = lines.shift().toLowerCase().split(/\t/);
+      var header = lines.shift().toLowerCase().split('\t');
       lines.forEach(function (line) {
         if (!line.length)
           return;
 
         var world = {};
-        line.split(/\t/).forEach(function (field, index) {
+        line.split('\t').forEach(function (field, index) {
           world[header[index]] = field;
         });
 
