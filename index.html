@@ -60,7 +60,7 @@ button.glyph {
   font-size: 160%;
 }
 button img {
-  vertical-align: text-bottom;
+  vertical-align: middle;
 }
 button:hover {
   background-color: red;
@@ -202,8 +202,10 @@ button:hover {
       </button>
     </form>
 
-    <button id="closeResultsBtn" class="glyph">
-      &times;
+    <button id="closeResultsBtn">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAMAAAAMs7fIAAAAP1BMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACzJYIvAAAAFHRSTlMAPPQo5wSPcMOrDNnNZBi3h3hQSCFE0/gAAABbSURBVBjTjc1JFoAgDANQQEFlcOz9zyodeNnSTfr+InGz1xbN5zTYaBVKVJReIqHUs4rEQ4gheAcKBiCAUmVpgL5GVg8YBAjfDvJamplKFEqy0glrtz754py5H4x5BeoO3VSIAAAAAElFTkSuQmCC"
+           width="17" height="17"
+           alt="Close">
       <style>
       #closeResultsBtn {
         width: 40px; height: 30px; float: left; margin-left: 4px;
@@ -384,9 +386,11 @@ button:hover {
            width="17" height="17"
            alt="Settings">
     </button>
-    <button id="helpBtn" class="glyph"
+    <button id="helpBtn"
             title="Help, feedback, and more">
-      ?
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAMAAAAMs7fIAAAAS1BMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADmYDp0AAAAGHRSTlMA1gnr374hHPM5GMOjj04UBOezq3xsXECzLbvmAAAAZklEQVQY04XNSQ6AIBAF0UZBwHm27n9S2ygRV1bSm5f8tNwNcT+8vBVdQJurBKMDyusSrWCi+A7cIw76azsRHvFRQSVQSt64QJtDoVtT59AkSG0Kg+S1UMsno3/+aqz1X7FQ/cnbCeAKBQv8hfP9AAAAAElFTkSuQmCC"
+           width="17" height="17"
+           alt="Help">
     </button>
     <script>
     window.addEventListener('DOMContentLoaded', function() {
@@ -785,11 +789,15 @@ button:hover {
     </canvas>
     <button id="zoomInBtn"
             title="Zoom in&#x0A;Keyboard: +">
-      +
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAARAQMAAAABo9W5AAAABlBMVEUAAAAAAAClZ7nPAAAAAXRSTlMAQObYZgAAABVJREFUCNdjgAHGA5jY/h8MY5WHAQB/vAtCMbCZpwAAAABJRU5ErkJggg=="
+             width="17" height="17"
+             alt="Zoom in">
     </button>
     <button id="zoomOutBtn"
             title="Zoom out&#x0A;Keyboard: -">
-      &minus;
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAARAQMAAAABo9W5AAAABlBMVEUAAAAAAAClZ7nPAAAAAXRSTlMAQObYZgAAABBJREFUCNdjwAfs/8ExPgAAf08DuM8cN6YAAAAASUVORK5CYII="
+             width="17" height="17"
+             alt="Zoom out">
     </button>
     <script>
     window.addEventListener('DOMContentLoaded', function() {
