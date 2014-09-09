@@ -212,7 +212,8 @@ window.addEventListener('DOMContentLoaded', function() {
   //
   // Call this AFTER data binding is hooked up so UI is synchronized
   //
-  var urlParams = map.ApplyURLParameters();
+  var standalone = 'standalone' in window.navigator && window.navigator.standalone;
+  var urlParams = standalone ? {} : map.ApplyURLParameters();
 
   // Force UI to synchronize in case URL parameters didn't do it
   map.OnOptionsChanged(map.GetOptions());
