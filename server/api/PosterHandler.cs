@@ -10,7 +10,7 @@ namespace Maps.API
 
         public override void Process(System.Web.HttpContext context)
         {
-            // NOTE: This (re)initializes a static data structure used for 
+            // NOTE: This (re)initializes a static data structure used for
             // resolving names into sector locations, so needs to be run
             // before any other objects (e.g. Worlds) are loaded.
             ResourceManager resourceManager = new ResourceManager(context.Server, context.Cache);
@@ -69,11 +69,11 @@ namespace Maps.API
                     case "zhodani": x = -8; y = -3; w = 5; h = 3; title = "Zhodani Consulate"; break;
                     case "hive": x = 2; y = 1; w = 6; h = 4; title = "Hive Federation"; break;
                     case "aslan": x = -8; y = 1; w = 7; h = 4; title = "Aslan Hierate"; break;
-                    case "vargr": x = -4; y = -4; w = 8; h = 3; title = "Vargr Extents"; break; 
+                    case "vargr": x = -4; y = -4; w = 8; h = 3; title = "Vargr Extents"; break;
                     // TODO: K'kree
                     // TODO: Zhodani provinces
 
-                    case "jg": x = 100; y = 100; w = 2; h = 2; title = "Judges Guild"; break;
+                    case "jg": x = 160; y = 0; w = 2; h = 2; title = "Judges Guild"; break;
 
                     default:
                         SendError(context.Response, 404, "Not Found", String.Format("Unknown domain: {0}", domain));
@@ -194,7 +194,7 @@ namespace Maps.API
                             SendError(context.Response, 400, "Bad Request", String.Format("The specified quadrant '{0}' is invalid.", quadrant));
                             return;
                     }
-    
+
                     selector = new QuadrantSelector(resourceManager, sector, index);
                     tileRect = sector.QuadrantBounds(index);
 
