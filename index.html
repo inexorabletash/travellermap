@@ -877,7 +877,8 @@ button:hover {
     </script>
     <script id="WorldMetadataTemplate" type="text/x-handlebars-template">
       <div>
-        <a class="stealth" target="_blank" href="world?sector={{SectorName}}&hex={{WorldHex}}">
+        <a class="stealth" target="_blank" href="world?sector={{SectorName}}&hex={{WorldHex}}"
+           onclick="return showWorldPopup('world?sector={{SectorName}}&hex={{WorldHex}}&nopage&nohood');">
           {{SectorName}}
           {{WorldHex}}
           <b>{{WorldName}}</b>
@@ -932,6 +933,11 @@ button:hover {
       </div>
     </script>
 
+  </div>
+
+  <div id="popup-overlay" tabindex="0">
+    <iframe id="popup-iframe" src="about:blank"></iframe>
+    <div id="popup-click"></div>
   </div>
 
   <div id="siteStatus" class="ui hoverbox">

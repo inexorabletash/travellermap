@@ -457,14 +457,10 @@
   }
 
   window.addEventListener('DOMContentLoaded', function() {
-    var query = (function(s) {
-      var q = {};
-      if (s) s.substring(1).split('&').forEach(function(pair) {
-        pair = pair.split('=');
-        q[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
-      });
-      return q;
-    }(document.location.search));
+    var query = Util.parseURLQuery(document.location);
+
+    if ('nopage' in query)
+      document.body.classList.add('nopage');
 
     var prefix = (window.location.hostname === 'localhost'
                   && window.location.pathname.indexOf('~') !== -1) ?
@@ -485,20 +481,24 @@
       var JUMP = 2;
       var SCALE = 48;
 
-      return Promise.all([
+      var promises = [];
+      promises.push(
         fetch(Util.makeURL(prefix + '/api/jumpworlds?', {x: coords.x, y: coords.y, jump: 0}))
           .then(function(response) {
             return response.json();
           })
           .then(function(json) {
             renderWorld(json);
-          }),
+          }));
+
+      if (!('nopage' in query)) promises.push(
         fetch(Util.makeURL(prefix + '/api/jumpworlds?', {x: coords.x, y: coords.y, jump: JUMP}))
           .then(function(response) {
             return response.json();
           })
           .then(function(json) {
-            renderNeighborhood(json);
+            if (!('nohood' in query))
+              renderNeighborhood(json);
           })
           .then(function() {
             var mapParams = {
@@ -517,7 +517,9 @@
                 window.location.search = '?x=' + result.x + '&y=' + result.y;
             });
           })
-      ]);
+      );
+
+      return Promise.all(promises);
     }).catch(function(reason) {
       console.error(reason);
     });

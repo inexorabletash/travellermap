@@ -23,6 +23,7 @@ window.addEventListener('DOMContentLoaded', function() {
   window.map = map;
 
   var isIframe = (window != window.top); // != for IE
+  var isSmallScreen = mapElement.offsetWidth <= 640; // Arbitrary
 
   //////////////////////////////////////////////////////////////////////
   //
@@ -32,7 +33,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
   // Tweak defaults
   map.SetOptions(map.GetOptions() | Traveller.MapOptions.NamesMinor | Traveller.MapOptions.ForceHexes);
-  map.SetScale(mapElement.offsetWidth <= 640 ? 1 : 2);
+  map.SetScale(isSmallScreen ? 1 : 2);
   map.CenterAtSectorHex(0, 0, Traveller.Astrometrics.ReferenceHexX, Traveller.Astrometrics.ReferenceHexY);
   var defaults = {
     x: map.GetX(),
@@ -651,6 +652,24 @@ window.addEventListener('DOMContentLoaded', function() {
     });
   }
   updateScaleIndicator();
+
+  //////////////////////////////////////////////////////////////////////
+  //
+  // Popup Displays
+  //
+  //////////////////////////////////////////////////////////////////////
+
+  window.showWorldPopup = function(url) {
+    if (isSmallScreen) return true;
+    $('#popup-iframe').src = url;
+    $('#popup-iframe').onload = function() {
+      $('#popup-overlay').classList.add('visible');
+    };
+    return false;
+  };
+  $('#popup-click').addEventListener('click', function() {
+    $('#popup-overlay').classList.remove('visible');
+  });
 
   //////////////////////////////////////////////////////////////////////
   //

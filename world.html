@@ -14,19 +14,24 @@
 <style>
 @import url(http://fonts.googleapis.com/css?family=PT+Sans+Narrow);
 
-body { margin: 0; padding: 0; }
+html, body { margin: 0; padding: 0; overflow: hidden; }
 #paper { text-align: left; background-color: white; color: black; overflow: hidden;  }
 #page { position: relative; width: 7in; height: 9in;}
 
 @media only screen {
-  #page { margin: 0.25in;  }
+  #page { margin: 0.25in; }
 }
 
 @media only screen and (min-width: 8in) {
   body { text-align: center; background-color: gray; width: 100%; }
   #paper { width: 8in; height: 9.75in; margin: 0.25in auto; box-shadow: 0 0 30px 5px #202020;}
-  #page { margin: 0.5in;  }
+  #page { margin: 0.5in; }
+
+  .nopage #paper { width: 8in; height: 6.5in; margin: 0; }
+  .nopage #page { width: 7in; height: 5.5in; }
 }
+
+.nopage #footer { display: none; }
 
 @media only print {
   @page {
@@ -138,7 +143,7 @@ td { vertical-align: top; }
 <script id="world-template" type="text/x-handlebars-template">
 
 <h1>
-{{Name}} ({{#SubsectorName}}<small>{{.}} /</small> {{/SubsectorName}}{{Sector}} {{Hex}})
+{{Name}} <small>{{#SubsectorName}}/ {{.}}{{/SubsectorName}} ({{Sector}} {{Hex}})</small>
 </h1>
 
 {{#if AllegianceName}}
@@ -255,7 +260,7 @@ td { vertical-align: top; }
   </table>
 </script>
 
-<div style="text-align: center; font-size: 8pt;">
+<div id="footer" style="text-align: center; font-size: 8pt;">
   The <em class="product">Traveller</em> game in all forms is owned by Far
   Future Enterprises. Copyright &copy; 1977 &ndash; 2014 Far Future
   Enterprises.

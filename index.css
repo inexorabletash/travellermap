@@ -239,6 +239,35 @@ body.style-atlas {
 }
 
 
+/* Word Data Popup */
+
+#popup-overlay {
+  display: none;
+  position: fixed;
+  z-index: 3000;
+  left: 0; top: 0; right: 0; bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+}
+#popup-overlay.visible {
+  display: block;
+}
+#popup-iframe {
+  position: absolute;
+  width: 8in; height: 6.5in;
+  left: 0; right: 0; top: 0; bottom: 0;
+  overflow: hidden;
+  margin: auto;
+  padding: 0;
+  border: 1px solid gray;
+}
+#popup-click {
+  position: absolute;
+  left: 0; right: 0; top: 0; bottom: 0;
+  overflow: hidden;
+  margin: 0; padding: 0;
+}
+
+
 /* Scripting Disabled */
 
 noscript div {
