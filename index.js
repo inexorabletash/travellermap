@@ -668,7 +668,7 @@ window.addEventListener('DOMContentLoaded', function() {
     };
     return false;
   };
-  ['click', 'keydown'].forEach(function(event) {
+  ['click', 'keydown', 'touchstart'].forEach(function(event) {
     $('#popup-click').addEventListener(event, function(e) {
       e.preventDefault();
       $('#popup-overlay').classList.remove('visible');
