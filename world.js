@@ -520,7 +520,7 @@
       );
 
       return Promise.all(promises);
-    }).catch(function(reason) {
+    }, function(reason) {
       console.error(reason);
     });
   });
