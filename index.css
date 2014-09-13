@@ -253,7 +253,7 @@ body.style-atlas {
 }
 #popup-iframe {
   position: absolute;
-  width: 8in; height: 6.5in;
+  width: 8in; height: 6.5in; max-height: 100%;
   left: 0; right: 0; top: 0; bottom: 0;
   overflow: hidden;
   margin: auto;
