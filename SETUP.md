@@ -17,22 +17,21 @@ or the git tools for Visual Studio Pro (integrated with Team Explorer)
 
 Setup and Build
 ---------------
-1. Use git to clone this repository
-2. Obtain a copy of the [PDFSharp 1.32](http://pdfsharp.codeplex.com/) source
-3. Alter the PDFSharp source by applying the patch contained in `pdfsharp.patch`:
- * GNU Patch won't patch the stock 1.32 sources with this patch because this patch applies to the tip of the PDFSharp repo.
- * As of this writing, the Codeplex svn interface is not functioning so you cannot get the tip of the PDFSharp repo.
- * The author used TortiseUDiff to view the patch and manually apply the hunks to the 3 patched files. Took 5 min.
-4. Using Visual Studio, open the project, select the Release target, and build PDFSharp
-5. Copy the included `web.config.sample` file to `web.config`
-6. Using Visual Studio, load the solution file `Maps.sln`
-7. Delete and re-add the references to PDFSharp in the Maps project and UnitTests project to point to the PDFSharp DLL you just built
-8. Optionally, modify the `web.config` file in the solution:
- * Add an admin key - this can be used to trigger flushing of the memory cache and rebuilding the search index
+1. Clone the source for PDFsharp:
+ * example: `git clone https://github.com/inexorabletash/PDFsharp.git`
+ * This fork includes required patches that have not yet been accepted upstream.
+2. Using Visual Studio, open `PDFsharp\code\BuildAll-PdfSharp-VS2010.sln`, select the Release target, and build.
+3. Clone this repository:
+ * example: `git clone https://github.com/inexorabletash/travellermap.git`
+4. In your clone, copy the included `web.config.sample` file to `web.config`
+5. Using Visual Studio, open `Maps.sln`
+6. In the Solution Explorer pane, in both the Maps project and the UnitTests project, delete and re-add the references to PdfSharp to point to the PDFSharp DLL you just built (`PDFsharp\code\PDFSharp\bin\Release\PdfSharp.dll`)
+7. Optionally, modify the `web.config` file in the solution:
+ * Add an admin key - this can be used to trigger flushing of the memory cache and rebuilding the search index.
  * Find the `sessionState` element and the `stateConnectionString` attribute; change `50103` to
  your local IISExpress port number. Find this by opening the Maps project's properties and looking for the
  Web tab, "Servers" subsection, Project URL box (mine says `http://localhost:50103/` for example).
-9. Select the Debug or Release target and build Maps
+8. Select the Debug or Release target and build the Maps target.
 
 Trying it out
 -------------
