@@ -664,11 +664,16 @@ window.addEventListener('DOMContentLoaded', function() {
     $('#popup-iframe').src = url;
     $('#popup-iframe').onload = function() {
       $('#popup-overlay').classList.add('visible');
+      $('#popup-click').focus();
     };
     return false;
   };
-  $('#popup-click').addEventListener('click', function() {
-    $('#popup-overlay').classList.remove('visible');
+  ['click', 'keydown'].forEach(function(event) {
+    $('#popup-click').addEventListener(event, function(e) {
+      e.preventDefault();
+      $('#popup-overlay').classList.remove('visible');
+      mapElement.focus();
+    });
   });
 
   //////////////////////////////////////////////////////////////////////
