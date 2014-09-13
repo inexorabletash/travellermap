@@ -415,8 +415,10 @@
       }
     }(world.Zone));
 
-    world.Worlds = Number(world.Worlds);
-    world.OtherWorlds = world.Worlds - 1 - world.PBG.Belts - world.PBG.GG;
+    if (world.Worlds) {
+      world.Worlds = Number(world.Worlds);
+      world.OtherWorlds = world.Worlds - 1 - world.PBG.Belts - world.PBG.GG;
+    }
 
     var template = Handlebars.compile($('#world-template').innerHTML);
     $('#world-data').innerHTML = template(world);

@@ -163,8 +163,10 @@ td { vertical-align: top; }
       <big>{{PBG.GG}}</big> <small>Gas Giants</small>
       &mdash;
       <big>{{PBG.Belts}}</big> <small>Planetoid Belts</small>
+      {{#OtherWorlds}}
       &mdash;
-      <big>{{OtherWorlds}}</big> <small>Other Worlds</small>
+      <big>{{.}}</big> <small>Other Worlds</small>
+      {{/OtherWorlds}}
     </div>
     <div class="bases">
       {{#Bases}} <span class="base">{{.}}</span> {{/Bases}}
