@@ -9,7 +9,7 @@
 <script src="lib/polyfill/url.js?update=2014-09-09"></script>
 <script src="lib/polyfill/experimental/fetch.js?update=2014-09-08"></script>
 <script src="map.js?update=2014-09-08"></script>
-<script src="world.js?update=2014-09-12"></script>
+<script src="world.js?update=2014-09-16"></script>
 
 <style>
 @import url(http://fonts.googleapis.com/css?family=PT+Sans+Narrow);
@@ -143,7 +143,11 @@ td { vertical-align: top; }
 <script id="world-template" type="text/x-handlebars-template">
 
 <h1>
-{{Name}} <small>{{#SubsectorName}}/ {{.}}{{/SubsectorName}} ({{Sector}} {{Hex}})</small>
+{{#if Name}} {{Name}} {{else}} (Unnamed) {{/if}}
+<small>
+{{#if SubsectorName}} / {{SubsectorName}} {{/if}}
+({{Sector}} {{Hex}})
+</small>
 </h1>
 
 {{#if AllegianceName}}
@@ -157,16 +161,16 @@ td { vertical-align: top; }
 <td>System:
 <td>
     <div>
-      <big class="stars"> {{#Stars}} <span class="star">{{.}}</span> {{/Stars}} </big>
+      <big class="stars"> {{#if Stars}} <span class="star">{{Stars}}</span> {{/if}} </big>
     </div>
     <div>
       <big>{{PBG.GG}}</big> <small>Gas Giants</small>
       &mdash;
       <big>{{PBG.Belts}}</big> <small>Planetoid Belts</small>
-      {{#OtherWorlds}}
+      {{#if OtherWorlds}}
       &mdash;
-      <big>{{.}}</big> <small>Other Worlds</small>
-      {{/OtherWorlds}}
+      <big>{{OtherWorlds}}</big> <small>Other Worlds</small>
+      {{/if}}
     </div>
     <div class="bases">
       {{#Bases}} <span class="base">{{.}}</span> {{/Bases}}
@@ -184,32 +188,34 @@ td { vertical-align: top; }
 </table>
 {{/UWP}}
 
-{{#Ix}}
+{{#if Ix}}
 <table class="decode">
-<tr><td>Importance {Ix}:<td>{<td>{{Imp}}<td>}<td>
+<tr><td>Importance {Ix}:<td>{<td>{{Ix.Imp}}<td>}<td>
 </table>
-{{/Ix}}
+{{/if}}
 
-{{#Ex}}
+{{#if Ex}}
 <table class="decode">
-<tr><td>Economics (Ex):<td>(<td>{{Res}}<td>{{Lab}}<td>{{Inf}}<td>{{Eff}}<td>)<td>
+<tr><td>Economics (Ex):<td>(<td>{{Ex.Res}}<td>{{Ex.Lab}}<td>{{Ex.Inf}}<td>{{Ex.Eff}}<td>)<td>
 <tr><td>Resources<td class="box">&#x2500;<td class="box">&#x2518;<td class="box">&#x2502;<td class="box">&#x2502;<td class="box">&#x2514;<td class="box">&#x2500;<td>Efficiency
 <tr><td>Labor<td class="box">&#x2500;<td class="box">&#x2500;<td class="box">&#x2518;<td class="box">&#x2514;<td class="box">&#x2500;<td class="box">&#x2500;<td>Infrastructure
 </table>
-{{/Ex}}
+{{/if}}
 
-{{#Cx}}
+{{#if Cx}}
 <table class="decode">
-<tr><td>Culture [Cx]:<td>[<td>{{Hom}}<td>{{Acc}}<td>{{Str}}<td>{{Sym}}<td>]<td>
+<tr><td>Culture [Cx]:<td>[<td>{{Cx.Hom}}<td>{{Cx.Acc}}<td>{{Cx.Str}}<td>{{Cx.Sym}}<td>]<td>
 <tr><td>Homogeneity<td class="box">&#x2500;<td class="box">&#x2518;<td class="box">&#x2502;<td class="box">&#x2502;<td class="box">&#x2514;<td class="box">&#x2500;<td>Symbols
 <tr><td>Acceptance<td class="box">&#x2500;<td class="box">&#x2500;<td class="box">&#x2518;<td class="box">&#x2514;<td class="box">&#x2500;<td class="box">&#x2500;<td>Strangeness
 </table>
-{{/Cx}}
+{{/if}}
 
+{{#if TotalPopulation }}
 <table class="decode"><tr>
 <td style="vertical-align: bottom">Total Population:
 <td><big>{{PopMult}} &times; 10<sup>{{PopExp}}</sup> = {{TotalPopulation}}</big>
 </table>
+{{/if}}
 
 {{#if Nobility}}
 <table class="decode"><tr>

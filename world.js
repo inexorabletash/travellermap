@@ -39,7 +39,8 @@
     C: 'Exceptional', // "
     D: 'Exceptional', // "
     E: 'Exceptional', // "
-    F: 'Exceptional'  // "
+    F: 'Exceptional', // "
+    X: 'Unknown'
   };
 
   var ATM_TABLE = {
@@ -58,7 +59,8 @@
     C: 'Insidious',
     D: 'Dense, high',
     E: 'Ellipsoid',
-    F: 'Thin, low'
+    F: 'Thin, low',
+    X: 'Unknown'
   };
 
   var HYD_TABLE = {
@@ -72,7 +74,8 @@
     7: '70%',
     8: '80%',
     9: '90%',
-    A: '100%'
+    A: '100%',
+    X: 'Unknown'
   };
 
   var POP_TABLE = {
@@ -86,7 +89,8 @@
     7: 'Tens of millions',
     8: 'Hundreds of millions',
     9: 'Billions',
-    A: 'Tens of billions'
+    A: 'Tens of billions',
+    X: 'Unknown'
   };
 
   var GOV_TABLE = {
@@ -120,7 +124,8 @@
     T: 'Unsupervised Anarchy',
     U: 'Supervised Anarchy',
     W: 'Committee',
-    X: 'Droyne Hierarchy'
+    //X: 'Droyne Hierarchy',
+    X: 'Unknown'
   };
 
   var LAW_TABLE = {
@@ -145,7 +150,8 @@
     J: 'Routinely oppressive and restrictive',
     K: 'Excessively oppressive and restrictive',
     L: 'Totally oppressive and restrictive',
-    S: 'Special/Variable situation'
+    S: 'Special/Variable situation',
+    X: 'Unknown'
   };
 
   var TECH_TABLE = {
@@ -169,7 +175,8 @@
     H: 'Artificial Intelligence',
     J: 'Personal Disintegrators',
     K: 'Plastic Metals',
-    L: 'Comprehensible only as technological magic'
+    L: 'Comprehensible only as technological magic',
+    X: 'Unknown'
   };
 
   var NOBILITY_TABLE = {
@@ -319,6 +326,8 @@
     };
   }
   function splitPBG(pbg) {
+    if (pbg === 'XXX')
+      return { Pop: -1, Belts: '???', GG: '???' };
     return {
       Pop: Traveller.fromHex(pbg.substring(0, 1)),
       Belts: Traveller.fromHex(pbg.substring(1, 2)),
@@ -345,7 +354,8 @@
     world.PopExp  = Traveller.fromHex(world.UWP.Pop);
     if (world.PopExp > 0 && world.PopMult === 0)
       world.PopMult = 1;
-    world.TotalPopulation = numberWithCommas(world.PopMult * Math.pow(10, world.PopExp));
+    if (world.PopExp >= 0 && world.PopMult >= 0)
+      world.TotalPopulation = numberWithCommas(world.PopMult * Math.pow(10, world.PopExp));
 
     var UNICODE_MINUS = '\u2212'; // U+2212 MINUS SIGN
 
