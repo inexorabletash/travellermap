@@ -619,7 +619,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
     cancelAnimationFrame(animId);
     animId = requestAnimationFrame(function() {
-      var scale = map.GetScale() * Traveller.Astrometrics.ParsecScaleX,
+      var scale = map.GetScale(),
           canvas = $('#scaleIndicator'),
           ctx = canvas.getContext('2d'),
           w = parseFloat(canvas.width),
