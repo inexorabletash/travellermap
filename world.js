@@ -124,8 +124,8 @@
     T: 'Unsupervised Anarchy',
     U: 'Supervised Anarchy',
     W: 'Committee',
-    //X: 'Droyne Hierarchy',
-    X: 'Unknown'
+    X: 'Droyne Hierarchy'
+    //X: 'Unknown' // Need a hack for this
   };
 
   var LAW_TABLE = {
@@ -339,13 +339,15 @@
     var world = data.Worlds[0];
     if (!world) return;
 
+    var placeholder = world.UWP === 'XXXXXXX-X';
+
     world.UWP = splitUWP(world.UWP);
     world.UWP.StarportBlurb = STARPORT_TABLE[world.UWP.Starport];
     world.UWP.SizBlurb = SIZ_TABLE[world.UWP.Siz];
     world.UWP.AtmBlurb = ATM_TABLE[world.UWP.Atm];
     world.UWP.HydBlurb = HYD_TABLE[world.UWP.Hyd];
     world.UWP.PopBlurb = POP_TABLE[world.UWP.Pop];
-    world.UWP.GovBlurb = GOV_TABLE[world.UWP.Gov];
+    world.UWP.GovBlurb = placeholder ? 'Unknown' : GOV_TABLE[world.UWP.Gov];
     world.UWP.LawBlurb = LAW_TABLE[world.UWP.Law];
     world.UWP.TechBlurb = TECH_TABLE[world.UWP.Tech];
 
