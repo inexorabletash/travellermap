@@ -441,10 +441,14 @@
       window.history.replaceState(null, document.title, url);
     }
 
-    $('#world-image').classList.add('Hyd' + world.UWP.Hyd);
-    $('#world-image').classList.add('Siz' + world.UWP.Siz);
-    $('#world-image .disc').src = 'res/Candy/' +
-      (world.UWP.Siz === '0' ? 'Belt' : 'Hyd' + world.UWP.Hyd) + '.png';
+    if (world.UWP.Hyd === 'X' || world.UWP.Siz === 'X') {
+      $('#world-image').classList.add('unknown');
+    } else {
+      $('#world-image').classList.add('Hyd' + world.UWP.Hyd);
+      $('#world-image').classList.add('Siz' + world.UWP.Siz);
+      $('#world-image .disc').src = 'res/Candy/' +
+        (world.UWP.Siz === '0' ? 'Belt' : 'Hyd' + world.UWP.Hyd) + '.png';
+    }
     $('#world-image').style.display = 'block';
 
     // Try loading pre-rendered; if it works, use it instead.

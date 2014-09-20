@@ -9,7 +9,7 @@
 <script src="lib/polyfill/url.js?update=2014-09-09"></script>
 <script src="lib/polyfill/experimental/fetch.js?update=2014-09-08"></script>
 <script src="map.js?update=2014-09-08"></script>
-<script src="world.js?update=2014-09-16"></script>
+<script src="world.js?update=2014-09-20"></script>
 
 <style>
 @import url(http://fonts.googleapis.com/css?family=PT+Sans+Narrow);
@@ -65,6 +65,20 @@ td { vertical-align: top; }
   margin: auto;
   z-index: 2;
 }
+.image .placeholder {
+  display: none;
+  color: white;
+  font-size: 60px;
+  margin-top: -30px;
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+  z-index: 2;
+}
+.image.unknown .disc { display: none; }
+.image.unknown .placeholder { display: table-cell; }
+
 
 .Siz0 .disc { width: 80%; height: 45%; }
 .Siz1 .disc { width: 25%; height: 25%; }
@@ -136,6 +150,7 @@ td { vertical-align: top; }
 <div id="world-image" class="image">
 <img class="background" alt="" src="res/Candy/tiled_nebula_256.jpg">
 <img class="disc" alt="" src="res/Candy/Hyd8.png">
+<div class="placeholder">?</div>
 </div>
 
 
