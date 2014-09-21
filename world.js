@@ -296,6 +296,28 @@
     [ /^\w\w\w\wW$/, 'Sophont, Population 100%']
   ];
 
+  // Legacy Sophont Codes (Aw, A#)
+  [
+    ['A', 'Aslan'],
+    ['C', 'Chirper'],
+    ['D', 'Droyne'],
+    ['F', 'Non-Hiver'],
+    ['H', 'Hiver'],
+    ['I', 'Ithklur'],
+    ['M', 'Human'],
+    ['V', 'Vargr'],
+    ['X', 'Addaxur'],
+    ['Z', 'Zhodani']
+  ].forEach(function(pair) {
+    [ /^\w\w\w\w0$/, 'Sophont, Population < 10%'],
+    [ /^\w\w\w\w([1-9])$/, 'Sophont, Population $1$`0%'],
+    REMARKS_PATTERNS.push([
+      new RegExp('^' + pair[0] + '0$'), pair[1] + ', Population < 10%']);
+    REMARKS_PATTERNS.push([
+      new RegExp('^' + pair[0] + '([1-9])$'), pair[1] + ', Population $1$`0%']);
+    REMARKS_TABLE[pair[0] + 'w'] = pair[1] + ' World';
+  });
+
   var BASE_TABLE = {
     C: 'Corsair Base',
     D: 'Naval Depot',
@@ -339,7 +361,7 @@
     var world = data.Worlds[0];
     if (!world) return;
 
-    var placeholder = world.UWP === 'XXXXXXX-X';
+    var isPlaceholder = world.UWP === 'XXXXXXX-X';
 
     world.UWP = splitUWP(world.UWP);
     world.UWP.StarportBlurb = STARPORT_TABLE[world.UWP.Starport];
@@ -347,7 +369,7 @@
     world.UWP.AtmBlurb = ATM_TABLE[world.UWP.Atm];
     world.UWP.HydBlurb = HYD_TABLE[world.UWP.Hyd];
     world.UWP.PopBlurb = POP_TABLE[world.UWP.Pop];
-    world.UWP.GovBlurb = placeholder ? 'Unknown' : GOV_TABLE[world.UWP.Gov];
+    world.UWP.GovBlurb = isPlaceholder ? 'Unknown' : GOV_TABLE[world.UWP.Gov];
     world.UWP.LawBlurb = LAW_TABLE[world.UWP.Law];
     world.UWP.TechBlurb = TECH_TABLE[world.UWP.Tech];
 
@@ -443,7 +465,7 @@
       window.history.replaceState(null, document.title, url);
     }
 
-    if (world.UWP.Hyd === 'X' || world.UWP.Siz === 'X') {
+    if (isPlaceholder) {
       $('#world-image').classList.add('unknown');
     } else {
       $('#world-image').classList.add('Hyd' + world.UWP.Hyd);
@@ -454,11 +476,13 @@
     $('#world-image').style.display = 'block';
 
     // Try loading pre-rendered; if it works, use it instead.
-    var img = document.createElement('img');
-    img.src = 'res/Candy/worlds/' + encodeURIComponent(world.Sector + ' ' + world.Hex) + '.png';
-    img.onload = function() {
-      $('#world-image .disc').src = img.src;
-    };
+    if (!isPlaceholder) {
+      var img = document.createElement('img');
+      img.src = 'res/Candy/worlds/' + encodeURIComponent(world.Sector + ' ' + world.Hex) + '.png';
+      img.onload = function() {
+        $('#world-image .disc').src = img.src;
+      };
+    }
   }
 
   function renderNeighborhood(data) {
