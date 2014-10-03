@@ -32,11 +32,11 @@ a { color: white; }
 a.stealth { text-decoration: none; }
 a.stealth:hover { text-decoration: underline; }
 
-#GalacticDirectionDisplay {
+.direction {
   font-weight: bold; text-transform: uppercase; font-size: 120%;
   color: red;
 }
-.style-atlas #GalacticDirectionDisplay { color: gray; }
+.style-atlas .direction { color: gray; }
 
 #stripe {
   border: solid 1px red; height: 4pt;
@@ -76,8 +76,8 @@ a.stealth:hover { text-decoration: underline; }
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgAQMAAABJtOi3AAAABlBMVEXX19f///8qtJEjAAAAE0lEQVQI12NgYPj/n4oElU1jAADtvT/BM8KnAAAAAABJRU5ErkJggg==');
 }
 
-#GalacticDirectionDisplay { visibility: hidden; }
-.show-directions #GalacticDirectionDisplay { visibility: visible; }
+.direction { visibility: hidden; }
+.show-directions .direction { visibility: visible; }
 
 #bottom-pane {
   position: absolute;
