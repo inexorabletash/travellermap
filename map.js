@@ -533,9 +533,8 @@ var Util = {
     // TODO: Events are broken if this runs immediately
     //setTimeout(function() {
     //  container.style.transition = '1s ease-in-out';
-    //  container.style.transform = 'perspective(1000px) rotateX(40deg)';
+    //container.style.transform = 'perspective(1000px) rotateX(40deg)';
     //}, 4000);
-    console.log(container.id);
 
     // Event target, so it doesn't change during refreshes
     var sink = document.createElement('div');
