@@ -481,8 +481,10 @@ var Util = {
   }
 
   function eventCoordsToLocal(event, element) {
-    var rect = element.getBoundingClientRect();
-    return { x: event.clientX - rect.left, y: event.clientY - rect.top };
+    //var rect = element.getBoundingClientRect();
+    //return { x: event.clientX - rect.left, y: event.clientY - rect.top };
+
+    return { x: event.offsetX - SINK_OFFSET, y: event.offsetY - SINK_OFFSET};
   }
 
   // ======================================================================
@@ -491,6 +493,8 @@ var Util = {
 
   function log2(v) { return Math.log(v) / Math.LN2; }
   function pow2(v) { return Math.pow(2, v); }
+
+  var SINK_OFFSET = 1000;
 
   function Map(container) {
 
@@ -511,7 +515,7 @@ var Util = {
 
     this.tilesize = 256;
 
-    this.cache = new LRUCache(128); // TODO: ensure enough to fill screen
+    this.cache = new LRUCache(512); // TODO: ensure enough to fill screen
 
     this.loading = {};
     this.pass = 0;
@@ -524,15 +528,19 @@ var Util = {
     var KEY_ZOOM_DELTA = 0.5;
 
     container.style.position = 'relative';
-    container.style.overflow = 'hidden';
+    //container.style.overflow = 'hidden';
+
+    // TODO: Events are broken if this runs immediately
+    //setTimeout(function() {
+    //  container.style.transition = '1s ease-in-out';
+    //  container.style.transform = 'perspective(1000px) rotateX(40deg)';
+    //}, 4000);
+    console.log(container.id);
 
     // Event target, so it doesn't change during refreshes
     var sink = document.createElement('div');
     sink.style.position = 'absolute';
-    sink.style.left = 0;
-    sink.style.top = 0;
-    sink.style.right = 0;
-    sink.style.bottom = 0;
+    sink.style.left = sink.style.top = sink.style.right = sink.style.bottom = (-SINK_OFFSET) + 'px';
     sink.style.zIndex = 1000;
     container.appendChild(sink);
 
@@ -546,9 +554,8 @@ var Util = {
     function eventToHexCoords(event) {
       var f = pow2(1 - self.scale) / self.tilesize;
       var coords = eventCoordsToLocal(event, container);
-      var rect = self.container.getBoundingClientRect();
-      var cx = self.x + f * (coords.x - rect.width / 2),
-          cy = self.y + f * (coords.y - rect.height / 2);
+      var cx = self.x + f * (coords.x - self.container.offsetWidth / 2),
+          cy = self.y + f * (coords.y - self.container.offsetHeight / 2);
       return logicalToHex(cx * self.tilesize, cy * -self.tilesize);
     }
 
@@ -557,8 +564,8 @@ var Util = {
       self.cancelAnimation();
       container.focus();
       dragging = true;
-      drag_x = e.clientX;
-      drag_y = e.clientY;
+      drag_x = e.offsetX;
+      drag_y = e.offsetY;
       DOMHelpers.setCapture(container);
       container.classList.add('dragging');
 
@@ -569,13 +576,13 @@ var Util = {
     var hover_x, hover_y;
     container.addEventListener('mousemove', function(e) {
       if (dragging) {
-        var dx = drag_x - e.clientX;
-        var dy = drag_y - e.clientY;
+        var dx = drag_x - e.offsetX;
+        var dy = drag_y - e.offsetY;
 
         self.offset(dx, dy);
 
-        drag_x = e.clientX;
-        drag_y = e.clientY;
+        drag_x = e.offsetX;
+        drag_y = e.offsetY;
         e.preventDefault();
         e.stopPropagation();
       }
@@ -589,7 +596,7 @@ var Util = {
         fireEvent(self, 'Hover', { x: hex.hx, y: hex.hy });
       }
 
-    }, true);
+    }, false);
 
     document.addEventListener('mouseup', function(e) {
       if (dragging) {
@@ -628,9 +635,8 @@ var Util = {
       // Compute the physical coordinates
       var f = pow2(1 - self.scale) / self.tilesize,
           coords = eventCoordsToLocal(e, container),
-          rect = self.container.getBoundingClientRect(),
-          cx = self.x + f * (coords.x - rect.width / 2),
-          cy = self.y + f * (coords.y - rect.height / 2),
+          cx = self.x + f * (coords.x - self.container.offsetWidth / 2),
+          cy = self.y + f * (coords.y - self.container.offsetHeight / 2),
           hex = logicalToHex(cx * self.tilesize, cy * -self.tilesize);
 
       fireEvent(self, 'DoubleClick', { x: hex.hx, y: hex.hy });
@@ -793,9 +799,8 @@ var Util = {
   };
 
   Map.prototype.setScale = function(newscale, px, py) {
-    var rect = this.container.getBoundingClientRect(),
-      cw = rect.width,
-      ch = rect.height;
+    var cw = this.container.offsetWidth,
+        ch = this.container.offsetHeight;
 
     newscale = Math.max(Math.min(newscale, this.max_scale), this.min_scale);
     if (newscale !== this.scale) {
@@ -854,9 +859,8 @@ var Util = {
         cf = pow2(tscale - 1), // Coordinate factor (integral)
 
     // Compute edges in tile space
-        rect = this.container.getBoundingClientRect(),
-        cw = rect.width,
-        ch = rect.height,
+        cw = this.container.offsetWidth,
+        ch = this.container.offsetHeight,
 
         l = this.x * cf - (cw / 2) / (this.tilesize * tmult),
         r = this.x * cf + (cw / 2) / (this.tilesize * tmult),
@@ -873,6 +877,10 @@ var Util = {
     t = Math.floor(t) - 1;
     r = Math.floor(r) + 1;
     b = Math.floor(b) + 1;
+
+    l -= 1;
+    t -= 1;
+    r += 1;
 
     // Mark used tiles with this
     this.pass = (this.pass + 1) % 256;
@@ -1192,12 +1200,10 @@ var Util = {
   };
 
   Map.prototype.logicalToPixel = function(lx, ly) {
-    var f = pow2(1 - this.scale) / this.tilesize,
-      rect = this.container.getBoundingClientRect();
-
+    var f = pow2(1 - this.scale) / this.tilesize;
     return {
-      x: ((lx / this.tilesize - this.x) / f) + rect.width / 2,
-      y: ((ly / -this.tilesize - this.y) / f) + rect.height / 2
+      x: ((lx / this.tilesize - this.x) / f) + this.container.offsetWidth / 2,
+      y: ((ly / -this.tilesize - this.y) / f) + this.container.offsetHeight / 2
     };
   };
 
