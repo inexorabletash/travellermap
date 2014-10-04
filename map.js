@@ -266,6 +266,12 @@ var Util = {
     this.cache = {};
     this.queue = [];
 
+    this.ensureCapacity = function(capacity) {
+      if (this.capacity < capacity) {
+        this.capacity = capacity;
+      }
+    };
+
     this.clear = function() {
       this.cache = [];
       this.queue = [];
@@ -514,7 +520,7 @@ var Util = {
 
     this.tilesize = 256;
 
-    this.cache = new LRUCache(512); // TODO: ensure enough to fill screen
+    this.cache = new LRUCache(64);
 
     this.loading = {};
     this.pass = 0;
@@ -883,6 +889,9 @@ var Util = {
 
     if (!this._rd_cb)
       this._rd_cb = function() { self.invalidate(); };
+
+    var tileCount = (r - l + 1) * (b - t + 1);
+    this.cache.ensureCapacity(tileCount);
 
     // TODO: Defer loading of new tiles while in the middle of a zoom gesture
     // Draw a rectanglular area of the map in a spiral from the center of the requested map outwards

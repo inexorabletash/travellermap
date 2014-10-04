@@ -245,6 +245,7 @@ body.style-atlas {
   display: none;
   position: fixed;
   z-index: 3000;
+  transform: translateZ(3000px);
   left: 0; top: 0; right: 0; bottom: 0;
   background-color: rgba(0,0,0,0.5);
 }
@@ -281,6 +282,7 @@ noscript div {
   text-align: center;
   line-height: 200px;
   z-index: 9999;
+  transform: translateZ(9999px);
   color: white;
   background-color: inherit;
   border: 2px solid white;
