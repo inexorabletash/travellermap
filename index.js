@@ -19,6 +19,10 @@ window.addEventListener('DOMContentLoaded', function() {
   var mapElement = $('#dragContainer');
   var map = new Traveller.Map(mapElement);
 
+  setTimeout(function() {
+    mapElement.classList.add('tilt');
+  }, 5000);
+
   // Export
   window.map = map;
 
