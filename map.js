@@ -480,11 +480,10 @@ var Util = {
     }
   }
 
-  function eventCoordsToLocal(event, element) {
-    //var rect = element.getBoundingClientRect();
-    //return { x: event.clientX - rect.left, y: event.clientY - rect.top };
-
-    return { x: event.offsetX - SINK_OFFSET, y: event.offsetY - SINK_OFFSET};
+  function eventCoords(event) {
+    var offsetX = 'offsetX' in event ? event.offsetX : event.layerX;
+    var offsetY = 'offsetY' in event ? event.offsetY : event.layerY;
+    return { x: offsetX - SINK_OFFSET, y: offsetY - SINK_OFFSET};
   }
 
   // ======================================================================
@@ -552,7 +551,7 @@ var Util = {
 
     function eventToHexCoords(event) {
       var f = pow2(1 - self.scale) / self.tilesize;
-      var coords = eventCoordsToLocal(event, container);
+      var coords = eventCoords(event);
       var cx = self.x + f * (coords.x - self.container.offsetWidth / 2),
           cy = self.y + f * (coords.y - self.container.offsetHeight / 2);
       return logicalToHex(cx * self.tilesize, cy * -self.tilesize);
@@ -563,8 +562,9 @@ var Util = {
       self.cancelAnimation();
       container.focus();
       dragging = true;
-      drag_x = e.offsetX;
-      drag_y = e.offsetY;
+      var coords = eventCoords(e);
+      drag_x = coords.x;
+      drag_y = coords.y;
       DOMHelpers.setCapture(container);
       container.classList.add('dragging');
 
@@ -575,13 +575,14 @@ var Util = {
     var hover_x, hover_y;
     container.addEventListener('mousemove', function(e) {
       if (dragging) {
-        var dx = drag_x - e.offsetX;
-        var dy = drag_y - e.offsetY;
+        var coords = eventCoords(e);
+        var dx = drag_x - coords.x;
+        var dy = drag_y - coords.y;
 
         self.offset(dx, dy);
 
-        drag_x = e.offsetX;
-        drag_y = e.offsetY;
+        drag_x = coords.x;
+        drag_y = coords.y;
         e.preventDefault();
         e.stopPropagation();
       }
@@ -628,12 +629,12 @@ var Util = {
       var newscale = self.scale + CLICK_SCALE_DELTA * ((e.altKey) ? 1 : -1);
       newscale = Math.min(newscale, MAX_DOUBLECLICK_SCALE);
 
-      coords = eventCoordsToLocal(e, container);
+      coords = eventCoords(e);
       self.setScale(newscale, coords.x, coords.y);
 
       // Compute the physical coordinates
       var f = pow2(1 - self.scale) / self.tilesize,
-          coords = eventCoordsToLocal(e, container),
+          coords = eventCoords(e),
           cx = self.x + f * (coords.x - self.container.offsetWidth / 2),
           cy = self.y + f * (coords.y - self.container.offsetHeight / 2),
           hex = logicalToHex(cx * self.tilesize, cy * -self.tilesize);
@@ -647,7 +648,7 @@ var Util = {
 
       var newscale = self.scale + SCROLL_SCALE_DELTA * ((delta > 0) ? -1 : (delta < 0) ? 1 : 0);
 
-      var coords = eventCoordsToLocal(e, container);
+      var coords = eventCoords(e);
       self.setScale(newscale, coords.x, coords.y);
 
       e.preventDefault();
@@ -671,7 +672,7 @@ var Util = {
 
       if (e.touches.length === 1) {
 
-        var coords = eventCoordsToLocal(e.touches[0], container);
+        var coords = eventCoords(e.touches[0]);
         var dx = touch_x - coords.x;
         var dy = touch_y - coords.y;
 
@@ -686,8 +687,8 @@ var Util = {
             ocx = (pinch_x1 + pinch_x2) / 2,
             ocy = (pinch_y1 + pinch_y2) / 2;
 
-        var coords0 = eventCoordsToLocal(e.touches[0], container),
-            coords1 = eventCoordsToLocal(e.touches[1], container);
+        var coords0 = eventCoords(e.touches[0]),
+            coords1 = eventCoords(e.touches[1]);
         pinch_x1 = coords0.x;
         pinch_y1 = coords0.y;
         pinch_x2 = coords1.x;
@@ -714,7 +715,7 @@ var Util = {
       }
 
       if (e.touches.length === 1) {
-        var coords = eventCoordsToLocal(e.touches[0], container);
+        var coords = eventCoords(e.touches[0]);
         touch_x = coords.x;
         touch_y = coords.y;
       }
@@ -725,13 +726,13 @@ var Util = {
 
     container.addEventListener('touchstart', function(e) {
       if (e.touches.length === 1) {
-        var coords = eventCoordsToLocal(e.touches[0], container);
+        var coords = eventCoords(e.touches[0]);
         touch_x = coords.x;
         touch_y = coords.y;
       } else if (e.touches.length === 2) {
         self.defer_loading = true;
-        var coords0 = eventCoordsToLocal(e.touches[0], container),
-            coords1 = eventCoordsToLocal(e.touches[1], container);
+        var coords0 = eventCoords(e.touches[0]),
+            coords1 = eventCoords(e.touches[1]);
         pinch_x1 = coords0.x;
         pinch_y1 = coords0.y;
         pinch_x2 = coords1.x;
@@ -842,9 +843,6 @@ var Util = {
 
     this.dirty = false;
 
-    // *FUTURE: Spiral outwards so requests for central
-    // images are serviced first
-
     var self = this,
 
     // Integral scale (the tiles that will be used)
@@ -869,7 +867,6 @@ var Util = {
     // Initial z - leave room for lower/higher scale tiles
         z = 10 + this.max_scale - this.min_scale,
         child, next;
-
 
     // Quantize to bounding tiles
     l = Math.floor(l) - 1;

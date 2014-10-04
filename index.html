@@ -100,7 +100,6 @@ button:hover {
               left: 0; top: 0; right: 0; bottom: 0;">
     <div id="dragContainer"
          style="position: absolute;
-                transform: translateZ(500px) perspective(1000px) rotateX(40deg);
                 width: 100%; height: 100%;"
          tabindex="0"
          title="Mouse: Drag to scroll, wheel to zoom&#x0A;Keyboard: Arrows to scroll, +/- to zoom">
@@ -112,6 +111,14 @@ button:hover {
   <div id="direction-trailing" class="direction">Trailing</div>
 
   <style>
+  #dragContainer {
+    transform: translateZ(500px) perspective(1000px);
+    transition: 1s ease-in-out;
+  }
+  #dragContainer.tilt {
+    transform: translateZ(500px) perspective(1000px) rotateX(40deg);
+    transition: 1s ease-in-out;
+  }
   .direction {
     pointer-events: none;
     position: absolute;
