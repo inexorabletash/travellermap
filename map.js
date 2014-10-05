@@ -533,13 +533,6 @@ var Util = {
     var KEY_ZOOM_DELTA = 0.5;
 
     container.style.position = 'relative';
-    //container.style.overflow = 'hidden';
-
-    // TODO: Events are broken if this runs immediately
-    //setTimeout(function() {
-    //  container.style.transition = '1s ease-in-out';
-    //container.style.transform = 'perspective(1000px) rotateX(40deg)';
-    //}, 4000);
 
     // Event target, so it doesn't change during refreshes
     var sink = document.createElement('div');
@@ -891,7 +884,7 @@ var Util = {
       this._rd_cb = function() { self.invalidate(); };
 
     var tileCount = (r - l + 1) * (b - t + 1);
-    this.cache.ensureCapacity(tileCount);
+    this.cache.ensureCapacity(tileCount * 2);
 
     // TODO: Defer loading of new tiles while in the middle of a zoom gesture
     // Draw a rectanglular area of the map in a spiral from the center of the requested map outwards

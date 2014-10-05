@@ -115,7 +115,7 @@ button:hover {
     transform: translateZ(500px) perspective(1000px);
     transition: 1s ease-in-out;
   }
-  #dragContainer.tilt {
+  .tilt #dragContainer {
     transform: translateZ(500px) perspective(1000px) rotateX(40deg);
     transition: 1s ease-in-out;
   }
@@ -529,6 +529,13 @@ button:hover {
       <div class="indent">
         <p><label title="Remember your style and appearance settings for your next visit"><input type="checkbox" id="cbSavePreferences"> Preferences</label>
         <p><label title="Remember your location for your next visit"><input type="checkbox" id="cbSaveLocation"> Location</label>
+      </div>
+    </section>
+
+    <section>
+      <p><strong>Experiments:</strong></p>
+      <div class="indent">
+        <p><label title="Perspective effect"><input type="checkbox" id="cbTilt"> Tilt</label>
       </div>
     </section>
   </div>

@@ -19,10 +19,6 @@ window.addEventListener('DOMContentLoaded', function() {
   var mapElement = $('#dragContainer');
   var map = new Traveller.Map(mapElement);
 
-  setTimeout(function() {
-    mapElement.classList.add('tilt');
-  }, 5000);
-
   // Export
   window.map = map;
 
@@ -161,6 +157,14 @@ window.addEventListener('DOMContentLoaded', function() {
     savePreferences();
   });
 
+  $('#cbTilt').checked = false;
+  document.body.classList.remove('tilt');
+  $('#cbTilt').addEventListener('click', function() {
+    document.body.classList[this.checked ? 'add' : 'remove']('tilt');
+    updatePermalink();
+    savePreferences();
+  });
+
   (function() {
     if (isIframe) return;
     var preferences = JSON.parse(localStorage.getItem('preferences'));
@@ -173,6 +177,7 @@ window.addEventListener('DOMContentLoaded', function() {
         if (name in preferences) map.SetNamedOption(name, preferences[name]);
       });
       if ('galdir' in preferences) document.body.classList[preferences.galdir ? 'add' : 'remove']('show-directions');
+      if ('tilt' in preferences) document.body.classList[preferences.tilt ? 'add' : 'remove']('tilt');
     }
 
     if (location) {
@@ -200,7 +205,8 @@ window.addEventListener('DOMContentLoaded', function() {
         options: map.GetOptions(),
         routes: map.GetNamedOption('routes'),
         dimunofficial: map.GetNamedOption('dimunofficial'),
-        galdir: document.body.classList.contains('show-directions') ? 1 : 0
+        galdir: document.body.classList.contains('show-directions') ? 1 : 0,
+        tilt: document.body.classList.contains('tilt') ? 1 : 0
       });
       maybeSave($('#cbSaveLocation').checked, 'location', {
         position: { x: map.GetX(), y: map.GetY() },
@@ -219,7 +225,7 @@ window.addEventListener('DOMContentLoaded', function() {
   //
   var standalone = 'standalone' in window.navigator && window.navigator.standalone;
   var urlParams = standalone ? {} : map.ApplyURLParameters();
-
+  console.log(JSON.stringify(urlParams));
   // Force UI to synchronize in case URL parameters didn't do it
   map.OnOptionsChanged(map.GetOptions());
 
@@ -237,7 +243,13 @@ window.addEventListener('DOMContentLoaded', function() {
     document.body.classList[show ? 'add' : 'remove']('show-directions');
     updatePermalink();
   }
+  if ('tilt' in urlParams) {
+    show = Boolean(Number(urlParams.tilt));
+    document.body.classList[show ? 'add' : 'remove']('tilt');
+    updatePermalink();
+  }
   $('#ShowGalacticDirections').checked = document.body.classList.contains('show-directions');
+  $('#cbTilt').checked = document.body.classList.contains('tilt');
 
   if ('q' in urlParams) {
     $('#searchBox').value = urlParams.q;
@@ -310,6 +322,11 @@ window.addEventListener('DOMContentLoaded', function() {
         delete urlParams.galdir;
       else
         urlParams.galdir = 0;
+
+      if (document.body.classList.contains('tilt'))
+        urlParams.tilt = 1;
+      else
+        delete urlParams.tilt;
 
       var pageURL = Util.makeURL(document.location, urlParams);
 
