@@ -149,23 +149,21 @@ window.addEventListener('DOMContentLoaded', function() {
   };
 
   // TODO: Generalize URLParam<->Control and URLParam<->Style binding
-  $('#ShowGalacticDirections').checked = true;
-  document.body.classList.add('show-directions');
-  $('#ShowGalacticDirections').addEventListener('click', function() {
-    document.body.classList[this.checked ? 'add' : 'remove']('show-directions');
-    updatePermalink();
-    savePreferences();
+  var PARAM_OPTIONS = [
+    {param: 'galdir', selector: '#cbGalDir', className: 'show-directions', default: true},
+    {param: 'tilt', selector: '#cbTilt', className: 'tilt', default: false}
+  ];
+  PARAM_OPTIONS.forEach(function(option) {
+    $(option.selector).checked = option.default;
+    document.body.classList[option.default ? 'add' : 'remove'](option.className);
+    $(option.selector).addEventListener('click', function() {
+      document.body.classList[this.checked ? 'add' : 'remove'](option.className);
+      updatePermalink();
+      savePreferences();
+    });
   });
 
-  $('#cbTilt').checked = false;
-  document.body.classList.remove('tilt');
-  $('#cbTilt').addEventListener('click', function() {
-    document.body.classList[this.checked ? 'add' : 'remove']('tilt');
-    updatePermalink();
-    savePreferences();
-  });
-
-  (function() {
+ (function() {
     if (isIframe) return;
     var preferences = JSON.parse(localStorage.getItem('preferences'));
     var location = JSON.parse(localStorage.getItem('location'));
@@ -176,8 +174,11 @@ window.addEventListener('DOMContentLoaded', function() {
       ['routes', 'dimunofficial'].forEach(function(name) {
         if (name in preferences) map.SetNamedOption(name, preferences[name]);
       });
-      if ('galdir' in preferences) document.body.classList[preferences.galdir ? 'add' : 'remove']('show-directions');
-      if ('tilt' in preferences) document.body.classList[preferences.tilt ? 'add' : 'remove']('tilt');
+
+      PARAM_OPTIONS.forEach(function(option) {
+        if (option.param in preferences)
+          document.body.classList[preferences[option.param] ? 'add' : 'remove'](option.className);
+      });
     }
 
     if (location) {
@@ -200,14 +201,16 @@ window.addEventListener('DOMContentLoaded', function() {
           localStorage.removeItem(key);
       }
 
-      maybeSave($('#cbSavePreferences').checked, 'preferences', {
+      var prefs = {
         style: map.GetStyle(),
         options: map.GetOptions(),
         routes: map.GetNamedOption('routes'),
-        dimunofficial: map.GetNamedOption('dimunofficial'),
-        galdir: document.body.classList.contains('show-directions') ? 1 : 0,
-        tilt: document.body.classList.contains('tilt') ? 1 : 0
+        dimunofficial: map.GetNamedOption('dimunofficial')
+      };
+      PARAM_OPTIONS.forEach(function(option) {
+        prefs[option.param] = document.body.classList.contains(option.className);
       });
+      maybeSave($('#cbSavePreferences').checked, 'preferences', prefs);
       maybeSave($('#cbSaveLocation').checked, 'location', {
         position: { x: map.GetX(), y: map.GetY() },
         scale: map.GetScale()
@@ -225,7 +228,7 @@ window.addEventListener('DOMContentLoaded', function() {
   //
   var standalone = 'standalone' in window.navigator && window.navigator.standalone;
   var urlParams = standalone ? {} : map.ApplyURLParameters();
-  console.log(JSON.stringify(urlParams));
+
   // Force UI to synchronize in case URL parameters didn't do it
   map.OnOptionsChanged(map.GetOptions());
 
@@ -238,18 +241,16 @@ window.addEventListener('DOMContentLoaded', function() {
     document.body.classList.remove('hide-footer');
   }
 
-  if ('galdir' in urlParams) {
-    var show = Boolean(Number(urlParams.galdir));
-    document.body.classList[show ? 'add' : 'remove']('show-directions');
-    updatePermalink();
-  }
-  if ('tilt' in urlParams) {
-    show = Boolean(Number(urlParams.tilt));
-    document.body.classList[show ? 'add' : 'remove']('tilt');
-    updatePermalink();
-  }
-  $('#ShowGalacticDirections').checked = document.body.classList.contains('show-directions');
-  $('#cbTilt').checked = document.body.classList.contains('tilt');
+  var dirty = false;
+  PARAM_OPTIONS.forEach(function(option) {
+    if (option.param in urlParams) {
+      var show = Boolean(Number(urlParams[option.param]));
+      document.body.classList[show ? 'add' : 'remove'](option.className);
+      dirty = true;
+    }
+    $(option.selector).checked = document.body.classList.contains(option.className);
+  });
+  if (dirty) updatePermalink();
 
   if ('q' in urlParams) {
     $('#searchBox').value = urlParams.q;
@@ -318,15 +319,12 @@ window.addEventListener('DOMContentLoaded', function() {
         if (urlParams[p] === defaults[p]) delete urlParams[p];
       });
 
-      if (document.body.classList.contains('show-directions'))
-        delete urlParams.galdir;
-      else
-        urlParams.galdir = 0;
-
-      if (document.body.classList.contains('tilt'))
-        urlParams.tilt = 1;
-      else
-        delete urlParams.tilt;
+      PARAM_OPTIONS.forEach(function(option) {
+        if (document.body.classList.contains(option.className) === option.default)
+          delete urlParams[option.param];
+        else
+          urlParams[option.param] = 1;
+      });
 
       var pageURL = Util.makeURL(document.location, urlParams);
 
