@@ -267,9 +267,8 @@ var Util = {
     this.queue = [];
 
     this.ensureCapacity = function(capacity) {
-      if (this.capacity < capacity) {
+      if (this.capacity < capacity)
         this.capacity = capacity;
-      }
     };
 
     this.clear = function() {
@@ -595,7 +594,7 @@ var Util = {
         fireEvent(self, 'Hover', { x: hex.hx, y: hex.hy });
       }
 
-    }, false);
+    }, true);
 
     document.addEventListener('mouseup', function(e) {
       if (dragging) {
@@ -873,6 +872,7 @@ var Util = {
     r = Math.floor(r) + 1;
     b = Math.floor(b) + 1;
 
+    // Add extra around l/t/r edges for "tilt" effect
     l -= 1;
     t -= 1;
     r += 1;

@@ -163,7 +163,7 @@ window.addEventListener('DOMContentLoaded', function() {
     });
   });
 
- (function() {
+  (function() {
     if (isIframe) return;
     var preferences = JSON.parse(localStorage.getItem('preferences'));
     var location = JSON.parse(localStorage.getItem('location'));
