@@ -486,8 +486,16 @@ var Util = {
   }
 
   function eventCoords(event) {
-    var offsetX = 'offsetX' in event ? event.offsetX : event.layerX;
-    var offsetY = 'offsetY' in event ? event.offsetY : event.layerY;
+    // Attempt to get transformed coords; offsetX/Y for Chrome/Safari/IE,
+    // layerX/Y for Firefox. Touch events lack these, so compute untransformed
+    // coords.
+    // TODO: Map touch coordinates back into world-space.
+    var offsetX = 'offsetX' in event ? event.offsetX :
+          'layerX' in event ? event.layerX :
+          event.pageX - event.target.offsetLeft;
+    var offsetY = 'offsetY' in event ? event.offsetY :
+          'layerY' in event ? event.layerY :
+          event.pageY - event.target.offsetTop;
     return { x: offsetX - SINK_OFFSET, y: offsetY - SINK_OFFSET};
   }
 
