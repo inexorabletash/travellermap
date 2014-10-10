@@ -882,7 +882,7 @@ var Util = {
 
     // Add extra around l/t/r edges for "tilt" effect
     l -= 1;
-    t -= 1;
+    t -= 2;
     r += 1;
 
     // Mark used tiles with this
