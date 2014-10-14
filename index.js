@@ -697,61 +697,6 @@ window.addEventListener('DOMContentLoaded', function() {
 
   //////////////////////////////////////////////////////////////////////
   //
-  // Server Heartbeat
-  //
-  //////////////////////////////////////////////////////////////////////
-
-  (function() {
-    var HEARTBEAT_MS = 10000,
-        RETRY_SLOP_MS = 5000,
-        RETRY_S = 10;
-    function label(message, activate) {
-      var element = $('#siteStatus a');
-      element.innerHTML = Util.escapeHTML(message);
-      if (activate) {
-        element.addEventListener('click', function(e) {
-          e.preventDefault();
-          window.location.reload();
-        });
-      }
-    }
-    function countdown(n, callback) {
-      callback(n--);
-      if (n >= 0) setTimeout(function() { countdown(n, callback); }, 1000);
-    }
-     var intervalId = setInterval(function() {
-       Util.fetch(
-        './res/heartbeat/heartbeat.txt?' + Date.now(),
-        {},
-        function() {},
-        function() {
-          clearInterval(intervalId);
-          document.body.classList.add('show-connection-status');
-          (function retry() {
-            countdown(RETRY_S, function(n) {
-              if (n) {
-                label('Unable to contact server. Retrying in ' + n + ' seconds.');
-                return;
-              }
-              label('Unable to contact server. Retrying...');
-              setTimeout(function() {
-                Util.fetch(
-                  './res/heartbeat/recovery.txt?' + Date.now(),
-                  {},
-                  function() {
-                    label('Connection re-established. Click to refresh.', true);
-                  },
-                  retry
-                );
-              }, RETRY_SLOP_MS);
-            });
-          }());
-        });
-    }, HEARTBEAT_MS);
-  }());
-
-  //////////////////////////////////////////////////////////////////////
-  //
   // Final setup
   //
   //////////////////////////////////////////////////////////////////////
