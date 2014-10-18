@@ -131,7 +131,12 @@ a.stealth:hover { text-decoration: underline; }
 #legendBox .highlight { color: red; }
 .style-atlas #legendBox .highlight { color: gray; }
 #legendBox .glyph.water { color: #00bfff; }
-.style-atlas #legendBox .water { color: #e0e0e0; }
+.style-atlas #legendBox .water { color: #000000; }
+.style-print #legendBox .nowater,
+.style-atlas #legendBox .nowater {
+  color: #f0f0f0;
+  text-shadow: -1px -1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000, 1px 1px 0 #000;
+}
 #legendBox .amberzone { color: yellow; }
 .style-atlas #legendBox .amberzone { color: #c0c0c0; }
 #legendBox .redzone { color: red; }
@@ -155,7 +160,10 @@ a.stealth:hover { text-decoration: underline; }
 #legendBox .glyph.Ri { color: purple; }
 #legendBox .glyph.In { color: gray; }
 #legendBox .glyph.corrosive { color: rgb(180,95,6); }
-#legendBox .glyph.Va { color: black; }
+#legendBox .glyph.Va {
+  color: black;
+  text-shadow: -1px -1px 0 #fff, -1px 1px 0 #fff, 1px -1px 0 #fff, 1px 1px 0 #fff;
+}
 
 .style-candy #legendBox #world_colors,
 .style-candy #legendBox #bases { display: none; }
