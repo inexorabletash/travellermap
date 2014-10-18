@@ -4,6 +4,8 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.IO;
+using System.Text.RegularExpressions;
 
 namespace Maps
 {
@@ -178,13 +180,14 @@ namespace Maps
             }
         }
 
-        // TODO: Implement parser:
-        // Query            ::= ConjunctionQuery
-        // ConunctionQuery  ::= Term (' '+ Term)*
-        // Term             ::= Operator? Phrase
-        // Phrase           ::= [^ "]+ 
-        //                    | '"' [^"]& '"'
-        // Operator         ::= ("uwp" | "like" | "exact") ':'
+        private static readonly Regex RE_TERMS = new Regex("(uwp:|exact:|like:)?(\"[^\"]+\"|\\S+)", 
+            RegexOptions.Compiled | RegexOptions.CultureInvariant);
+        private static IEnumerable<string> ParseTerms(string q)
+        {
+            return RE_TERMS.Matches(q).Cast<Match>().Select(m => m.Value).Where(s => !String.IsNullOrWhiteSpace(s));
+        }
+        private static readonly string[] OPS = { "uwp:", "exact:", "like:" };
+
 
         public static IEnumerable<ItemLocation> PerformSearch(string query, ResourceManager resourceManager, SearchResultsType types, int numResults)
         {
@@ -194,25 +197,50 @@ namespace Maps
             {
                 List<string> clauses = new List<string>();
                 List<string> terms = new List<string>();
-                foreach (string t in query.Split((char[])null, StringSplitOptions.RemoveEmptyEntries))
+                foreach (string t in ParseTerms(query))
                 {
                     string term = t;
-                    string clause;
-                    if (term.StartsWith("uwp:"))
+                    string op = null;
+                    bool quoted = false;
+
+                    foreach (var o in OPS)
                     {
-                        term = term.Substring(term.IndexOf(':') + 1);
+                        if (term.StartsWith(o))
+                        {
+                            op = o;
+                            term = term.Substring(o.Length);
+                            break;
+                        }
+                    }
+
+                    // Infer a trailing "
+                    if (term.StartsWith("\"") && (!term.EndsWith("\"") || term.Length == 1))
+                        term += '"';
+                    if (term.Length >= 2 && term.StartsWith("\"") && term.EndsWith("\""))
+                    {
+                        quoted = true;
+                        term = term.Substring(1, term.Length - 2);
+                    }
+                    if (term.Length == 0)
+                        continue;
+
+                    string clause;
+                    if (op == "uwp:")
+                    {
                         clause = "uwp LIKE @term";
                         types = SearchResultsType.UWP;
                     }
-                    else if (term.StartsWith("exact:"))
+                    else if (op == "exact:")
                     {
-                        term = term.Substring(term.IndexOf(':') + 1);
                         clause = "name LIKE @term";
                     }
-                    else if (term.StartsWith("like:"))
+                    else if (op == "like:")
                     {
-                        term = term.Substring(term.IndexOf(':') + 1);
                         clause = "SOUNDEX(name) = SOUNDEX(@term)";
+                    }
+                    else if (quoted)
+                    {
+                        clause = "name LIKE @term";
                     }
                     else if (term.Contains("%") || term.Contains("_"))
                     {
