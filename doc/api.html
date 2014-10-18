@@ -48,10 +48,10 @@ table#features, #features th, #features td { border: solid 1px black; }
         good source of news and discussion around the site and APIs.
     </p>
     <p class="aside">
-        NOTE: Many APIs take <code>x</code> and <code>y</code>
-        coordinate parameters. The coordinate system for those values
-        varies depending on the API. See the
-        <a href="#systems">Coordinate Systems</a> documentation for more details.
+      Many APIs take <code>x</code> and <code>y</code> coordinate
+      parameters. The coordinate system for those values varies
+      depending on the API. See the <a href="#systems">Coordinate
+      Systems</a> documentation for more details.
     </p>
   </section>
 
@@ -258,8 +258,8 @@ table#features, #features th, #features td { border: solid 1px black; }
       rendering options. In addition, the flags do not correspond 1:1
       to options shown on the main map page as the as the UI has
       evolved and simplified over time. Specifically, the pairs
-      SectorGrid/SubsectorGrid, BordersMajor/BordersMinor,
-      NamesMajor/NamesMinor, and WorldsCapitals/WorldsHomeworlds are
+      SectorGrid/<wbr>SubsectorGrid, BordersMajor/<wbr>BordersMinor,
+      NamesMajor/<wbr>NamesMinor, and WorldsCapitals/<wbr>WorldsHomeworlds are
       always set/cleared together by one checkbox.
     </p>
     <script>
@@ -292,8 +292,8 @@ table#features, #features th, #features td { border: solid 1px black; }
 
     <table id="features">
       <tr><th>Feature           <th><sup>1</sup>&frasl;<sub>32</sub> <th><sup>1</sup>&frasl;<sub>16</sub> <th><sup>1</sup>&frasl;<sub>8</sub> <th><sup>1</sup>&frasl;<sub>4</sub> <th><sup>1</sup>&frasl;<sub>2</sub> <th>1 <th>2 <th>4 <th>8 <th>16 <th>32 <th>64 <th>128</tr>
-      <tr><td>Galaxy            <td>&bull;<td>&bull;<td>&bull;<td>&bull;<td><td><td><td><td><td><td><td><td></tr>
-      <tr><td>Local Rifts       <td><td><td><td><td>&bull;<td><td><td><td><td><td><td><td></tr>
+      <tr><td>Galaxy            <td>&bull;<td>&bull;<td>&bull;<td>&bull;<td>&bull;<td>&bull;<td><td><td><td><td><td><td></tr>
+      <tr><td>Local Rifts       <td><td><td><td><td>&bull;<td>&bull;<td>&bull;<td>&bull;<td><td><td><td><td></tr>
       <tr><td>Random Star Field <td><td><td><td><td><td>&bull;<td>&bull;<td>&bull;<td><td><td><td><td></tr>
       <tr><td>Important Worlds  <td><td><td><td><td>&bull;<td>&bull;<td>&bull;<td>&bull;<td><td><td><td><td></tr>
       <tr><td>Worlds            <td><td><td><td><td><td><td><td>&bull;<td>&bull;<td>&bull;<td>&bull;<td>&bull;<td>&bull;</tr>
@@ -390,7 +390,7 @@ table#features, #features th, #features td { border: solid 1px black; }
     <dl class="params">
       <dt>forceui=1</dt>
       <dd>The page UI (search box, options buttons, etc) is shown. The default is to hide
-      the UI when the map is embedded in another page. Not that not all options may make
+      the UI when the map is embedded in another page. Note that not all options may make
       sense.</dd>
     </dl>
   </section>
@@ -1320,6 +1320,16 @@ function SectorHexToXY(sx, sy, hx, hy) {
   <p>
       Example: Regina is (x=-110, y=-70)
   </p>
+
+  <div class="aside">
+    <div>Within Charted Space, to convert world-space coordinates to ring/ray:</div>
+    <br>
+    <div>ring = y + 10000</div>
+    <div>ray = x if x &ge; 0, or x + 62833 otherwise</div>
+    <br>
+    Example: Regina is (-70 + 10000) ring/ray (-110 + 62833), or 9930 ring/ray 62723
+  </div>
+
   </section>
 
   <section id="system_map">
@@ -1339,7 +1349,7 @@ function SectorHexToXY(sx, sy, hx, hy) {
           y axis is inverted.
 
         <p class="aside">This is the only coordinate system with an inverted Y axis.
-          I must have been asleep at the keyboard.)</p>
+          I don't know what I was thinking. I must have been asleep at the keyboard.</p>
 
   </ul>
   <pre class="code">
@@ -1503,9 +1513,13 @@ return false;
   <section id="jsonp">
   <h3>JSONP &ndash; How to use this site's data APIs in your Web pages</h3>
   <p class="aside">
-    APIs on this site output <a href="http://www.w3.org/TR/cors/">CORS</a> headers so if you know your users
-    will be accessing your site using reasonably up-to-date browsers you can call the APIs directly via
-    <a href="http://en.wikipedia.org/wiki/XMLHttpRequest">XMLHttpRequest</a> rather than using JSONP trick described below.
+    APIs on this site
+    output <a href="http://www.w3.org/TR/cors/">CORS</a> headers so if
+    you know your users will be accessing your site using reasonably
+    <a target="_blank" href="http://caniuse.com/#search=cors">up-to-date browsers</a>
+    you can call the APIs directly via
+    <a href="http://en.wikipedia.org/wiki/XMLHttpRequest">XMLHttpRequest</a>
+    rather than using JSONP trick described below.
   </p>
   <p>
       Web browsers enforce a <a href="http://en.wikipedia.org/wiki/Same_origin_policy">Same Origin Policy</a>
