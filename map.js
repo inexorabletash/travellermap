@@ -1381,7 +1381,7 @@ var Util = {
 
       id: id,
       url: opt_url,
-      z: 1009
+      z: 909
     };
 
     this.markers.push(marker);
@@ -1398,7 +1398,7 @@ var Util = {
       h: h,
 
       id: 'overlay',
-      z: 1010
+      z: 910
     };
 
     this.overlays.push(overlay);
