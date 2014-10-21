@@ -38,7 +38,7 @@ window.addEventListener('DOMContentLoaded', function() {
     }, undefined, {accept: 'text/xml'});
   });
 
-  Array.from($$('textarea')).forEach(function(elem) {
+  Array.from($$('textarea.drag-n-drop')).forEach(function(elem) {
     elem.addEventListener('dragover', function (e) {
       e.stopPropagation();
       e.preventDefault();
@@ -72,3 +72,31 @@ window.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+
+// |data| can be string (payload) or object (key/value form data)
+// Returns Promise<string>
+function getTextViaPOST(url, data) {
+  var request;
+  if (typeof data === 'string') {
+    request = fetch(url, {
+      method: 'POST',
+      headers: {'Content-Type': 'text/plain'},  // Safari doesn't infer this.
+      body: data
+    });
+  } else {
+    data = Object(data);
+    var fd = new FormData();
+    Object.keys(data).forEach(function(key) { fd.append(key, data[key]); });
+    request = fetch(url, {
+      method: 'POST',
+      body: fd
+    });
+  }
+  return request.then(
+    function(response) {
+      if (response.status === 200)
+        return response.text();
+      return Promise.reject(response.text());
+    }
+  );
+}

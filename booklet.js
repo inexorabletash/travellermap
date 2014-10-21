@@ -69,7 +69,6 @@
 
     var lines = tabDelimitedData.split(/\r?\n/);
     var header = lines.shift().toLowerCase().split('\t');
-    console.log(header);
     lines.forEach(function (line) {
       if (!line.length)
         return;
@@ -155,35 +154,6 @@
       start += 1;
     }
     return rv;
-  }
-
-  // |data| can be string (payload) or object (key/value form data)
-  // Returns Promise<string>
-  function getTextViaPOST(url, data) {
-    status('Requesting data...', true);
-    var request;
-    if (typeof data === 'string') {
-      request = fetch(url, {
-        method: 'POST',
-        headers: {'Content-Type': 'text/plain'},  // Safari doesn't infer this.
-        body: data
-      });
-    } else {
-      data = Object(data);
-      var fd = new FormData();
-      Object.keys(data).forEach(function(key) { fd.append(key, data[key]); });
-      request = fetch(url, {
-        method: 'POST',
-        body: fd
-      });
-    }
-    return request.then(
-      function(response) {
-        if (response.status === 200)
-          return response.text();
-        return Promise.reject(response.text());
-      }
-    );
   }
 
   function sectorData(params) {
