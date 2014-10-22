@@ -42,7 +42,7 @@
           spellcheck="false" wrap="off" cols="80" rows="10"></textarea>
 </ol>
 
-<p>Tip: Use your browser's zoom in/zoom out functions to see map details.</p>
+<p>Tip: Use your browser&#39;s zoom in/zoom out functions to see map details.</p>
 
 <div>
   <canvas id="canvas" width="450" height="651"
@@ -179,7 +179,13 @@ $('#canvas').addEventListener('mousedown', function(e) {
   e.preventDefault();
   e.stopPropagation();
 
-  var x = e.offsetX, y = e.offsetY;
+  var offsetX = 'offsetX' in e ? e.offsetX :
+    'layerX' in e ? e.layerX :
+    e.pageX - e.target.offsetLeft;
+  var offsetY = 'offsetY' in e ? e.offsetY :
+    'layerY' in e ? e.layerY :
+    e.pageY - e.target.offsetTop;
+  var x = offsetX, y = offsetY;
 
   x = (x - INSET) / PS / Math.cos(Math.PI/6);
   y = (y - INSET) / PS;
