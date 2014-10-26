@@ -150,12 +150,12 @@ window.addEventListener('DOMContentLoaded', function() {
 
   // TODO: Generalize URLParam<->Control and URLParam<->Style binding
   var PARAM_OPTIONS = [
-    {param: 'galdir', selector: '#cbGalDir', className: 'show-directions', default: true},
-    {param: 'tilt', selector: '#cbTilt', className: 'tilt', default: false}
+    {param: 'galdir', selector: '#cbGalDir', className: 'show-directions', 'default': true},
+    {param: 'tilt', selector: '#cbTilt', className: 'tilt', 'default': false}
   ];
   PARAM_OPTIONS.forEach(function(option) {
-    $(option.selector).checked = option.default;
-    document.body.classList[option.default ? 'add' : 'remove'](option.className);
+    $(option.selector).checked = option['default'];
+    document.body.classList[option['default'] ? 'add' : 'remove'](option.className);
     $(option.selector).addEventListener('click', function() {
       document.body.classList[this.checked ? 'add' : 'remove'](option.className);
       updatePermalink();
@@ -320,7 +320,7 @@ window.addEventListener('DOMContentLoaded', function() {
       });
 
       PARAM_OPTIONS.forEach(function(option) {
-        if (document.body.classList.contains(option.className) === option.default)
+        if (document.body.classList.contains(option.className) === option['default'])
           delete urlParams[option.param];
         else
           urlParams[option.param] = 1;
