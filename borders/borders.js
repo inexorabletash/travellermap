@@ -78,11 +78,20 @@ var AllegianceMap = (function() {
       return this.map[x - this.origin_x][y - this.origin_y].alleg;
     },
 
-    setAllegiance: function(x, y, alleg) {
+    getTrueAllegiance: function(x, y) {
       if (!this.inBounds(x, y))
         throw "Coordinates out of bounds";
 
-      this.map[x - this.origin_x][y - this.origin_y].alleg = alleg;
+      var hex = this.map[x - this.origin_x][y - this.origin_y];
+      return hex.trueAllegiance || hex.alleg;
+    },
+
+    setAllegiance: function(x, y, effectiveAllegiance, trueAllegiance) {
+      if (!this.inBounds(x, y))
+        throw "Coordinates out of bounds";
+
+      this.map[x - this.origin_x][y - this.origin_y].alleg = effectiveAllegiance;
+      this.map[x - this.origin_x][y - this.origin_y].trueAllegiance = trueAllegiance;
     },
 
     // TODO: Would be simpler if we returned a Hex object
@@ -382,6 +391,7 @@ function processAllegiance(map, allegiance) {
   // Reduce to the "alpha shape" of the polity
   //
   var dirty;
+  var count = 0;
   do {
     dirty = false;
 

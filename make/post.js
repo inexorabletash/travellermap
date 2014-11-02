@@ -30,11 +30,13 @@ window.addEventListener('DOMContentLoaded', function() {
 
   list.addEventListener('change', function (e) {
     var name = list.value;
-    Traveller.MapService.sectorData(name, function(data) {
-      $('#data').value = data;
+    MapService.sectorData(name, function(data) {
+      var target = $('#data');
+      if (target) target.value = data;
     }, undefined, {type: 'SecondSurvey', metadata: 0});
-    Traveller.MapService.sectorMetaData(name, function(data) {
-      $('#metadata').value = data;
+    MapService.sectorMetaData(name, function(data) {
+      var target = $('#metadata');
+      if (target) target.value = data;
     }, undefined, {accept: 'text/xml'});
   });
 
