@@ -77,7 +77,7 @@ Select a sector, or enter your own data below:
               <script>
               document.querySelector('select#portion').addEventListener('change', function(e) {
                 var select = e.target;
-                var option = select.querySelector('option:checked');
+                var option = select.querySelectorAll('option')[select.selectedIndex];
                 select.setAttribute('name', option.getAttribute('data-name'));
               });
               </script>
