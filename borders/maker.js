@@ -85,6 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (/V./i.test(alleg)) return ALLEGIANCE_COLORS['va'];
     if (/J./i.test(alleg)) return ALLEGIANCE_COLORS['jp'];
     if (/A\d/i.test(alleg)) return ALLEGIANCE_COLORS['as'];
+    if (/XXXX/i.test(alleg)) return ALLEGIANCE_COLORS['na'];
     return ALLEGIANCE_COLORS[alleg];
   }
 
@@ -188,6 +189,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function effectiveAllegiance(a) {
+      if (/^Im..$/.test(a)) return 'Im';
+      if (/^As..$/.test(a)) return 'As';
+      if (/^Cs..$/.test(a)) return 'Na';
+      if (/^XXXX$/.test(a)) return 'Na';
+
       switch (a) {
         case 'Cs': // Imperial Client
         case 'Cz': // Zhodani Client
