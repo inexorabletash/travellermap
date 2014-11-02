@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', function() {
   setInterval(function() {
     var value = $('#data').value;
     if (value !== lastValue) {
-      console.log('yo');
       $('#metadata_generated').value = '';
       lastValue = value;
       if (!value) return;
@@ -246,7 +245,6 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function status(message) {
-    console.log(message);
     $('#status').innerHTML = Util.escapeHTML(message);
   }
 });

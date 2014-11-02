@@ -78,10 +78,8 @@ window.addEventListener('DOMContentLoaded', function() {
 // |data| can be string (payload) or object (key/value form data)
 // Returns Promise<string>
 function getTextViaPOST(url, data) {
-  console.log('gtvp');
   var request;
   if (typeof data === 'string') {
-    console.log('heya');
     request = fetch(url, {
       method: 'POST',
       headers: {'Content-Type': 'text/plain'},  // Safari doesn't infer this.

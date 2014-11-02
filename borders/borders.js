@@ -391,7 +391,6 @@ function processAllegiance(map, allegiance) {
   // Reduce to the "alpha shape" of the polity
   //
   var dirty;
-  var count = 0;
   do {
     dirty = false;
 
