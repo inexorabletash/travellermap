@@ -12,7 +12,6 @@
 
 <h1>The Traveller Map - Poster Maker</h1>
 <div id="content" style="width: 660px;">
-
 <div>
 Select a sector, or enter your own data below:
 <select id="sector">
@@ -52,25 +51,36 @@ Select a sector, or enter your own data below:
           <tr>
             <td style="text-align: right">Show:
             <td>
-              <select name="subsector">
-                <option selected value="">Whole Sector</option>
-                <option value="A">Subsector A</option>
-                <option value="B">Subsector B</option>
-                <option value="C">Subsector C</option>
-                <option value="D">Subsector D</option>
-                <option value="E">Subsector E</option>
-                <option value="F">Subsector F</option>
-                <option value="G">Subsector G</option>
-                <option value="H">Subsector H</option>
-                <option value="I">Subsector I</option>
-                <option value="J">Subsector J</option>
-                <option value="K">Subsector K</option>
-                <option value="L">Subsector L</option>
-                <option value="M">Subsector M</option>
-                <option value="N">Subsector N</option>
-                <option value="O">Subsector O</option>
-                <option value="P">Subsector P</option>
+              <select id="portion" name="">
+                <option data-name="" value="" selected>Whole Sector</option>
+                <option data-name="subsector" value="A">Subsector A</option>
+                <option data-name="subsector" value="B">Subsector B</option>
+                <option data-name="subsector" value="C">Subsector C</option>
+                <option data-name="subsector" value="D">Subsector D</option>
+                <option data-name="subsector" value="E">Subsector E</option>
+                <option data-name="subsector" value="F">Subsector F</option>
+                <option data-name="subsector" value="G">Subsector G</option>
+                <option data-name="subsector" value="H">Subsector H</option>
+                <option data-name="subsector" value="I">Subsector I</option>
+                <option data-name="subsector" value="J">Subsector J</option>
+                <option data-name="subsector" value="K">Subsector K</option>
+                <option data-name="subsector" value="L">Subsector L</option>
+                <option data-name="subsector" value="M">Subsector M</option>
+                <option data-name="subsector" value="N">Subsector N</option>
+                <option data-name="subsector" value="O">Subsector O</option>
+                <option data-name="subsector" value="P">Subsector P</option>
+                <option data-name="quadrant" value="Alpha">Quadrant Alpha </option>
+                <option data-name="quadrant" value="Beta">Quadrant Beta </option>
+                <option data-name="quadrant" value="Gamma">Quadrant Gamma </option>
+                <option data-name="quadrant" value="Delta">Quadrant Delta </option>
               </select>
+              <script>
+              document.querySelector('select#portion').addEventListener('change', function(e) {
+                var select = e.target;
+                var option = select.querySelector('option:checked');
+                select.setAttribute('name', option.getAttribute('data-name'));
+              });
+              </script>
           </tr>
           <tr>
             <td style="text-align: right">Style:
