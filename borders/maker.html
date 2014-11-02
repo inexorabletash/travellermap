@@ -5,8 +5,9 @@
 <link rel="stylesheet" href="../site.css?update=2014-01-07">
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.1.2/handlebars.min.js"></script>
-<script src="../lib/polyfill/polyfill.js"></script>
-<script src="../lib/polyfill/harmony.js"></script>
+<script src="../lib/polyfill/polyfill.min.js?update=2014-11-01"></script>
+<script src="../lib/polyfill/es6.js?update=2014-11-01"></script>
+<script src="../lib/polyfill/experimental/fetch.js?update=2014-11-01"></script>
 <script src="../map.js?update=2013-12-31"></script>
 <script src="../post.js?update=2013-12-31"></script>
 <script src="borders.js"></script>
@@ -22,7 +23,7 @@
   </div>
 
   <form id="form" target="_blank" method="POST">
-    <textarea id="data" name="data"
+    <textarea id="data" name="data" class="drag-n-drop"
               style="width: 650px; height: 120px; white-space: pre;"
               spellcheck="false" wrap="off" cols="80" rows="10"></textarea>
 
@@ -30,12 +31,13 @@
       <label><input type="radio" name="metatype" value="xml" checked><a target="_blank" href="doc/api#metadata">XML</a></label> or
       <label><input type="radio" name="metatype" value="msec"><a target="_blank" href="doc/api#msec">MSEC</a></label>
     </div>
-    <textarea id="metadata_generated" name="metadata"
+    <textarea id="metadata_generated" name="metadata" class="drag-n-drop"
               style="width: 650px; height: 120px; white-space: pre;"
               spellcheck="false" wrap="off" cols="80" rows="10"></textarea>
   </form>
 
   <button id="go">Calculate Borders</button>
+  <span id="status"></span>
 
   <style>
   .hex {
@@ -66,14 +68,6 @@
     line-height: 15pt;
     font-size: 7pt;
   }
-  #status {
-    float: right;
-    width: 300px;
-    padding: 10px;
-    background-color: #f8f8f8;
-    height: 600px;
-    overflow-y: auto;
-  }
   </style>
 
   <div id="map">
@@ -94,8 +88,7 @@
 <Sector>
   <Borders>
 {{#borders}}    <Border Allegiance="{{allegiance}}">{{#path}}{{.}} {{/path}}</Border>
-{{/borders}}
-  </Borders>
+{{/borders}}  </Borders>
 </Sector>
   </script>
 

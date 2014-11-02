@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
   setInterval(function() {
     var value = $('#data').value;
     if (value !== lastValue) {
+      console.log('yo');
       $('#metadata_generated').value = '';
       lastValue = value;
       if (!value) return;
@@ -18,31 +19,11 @@ document.addEventListener('DOMContentLoaded', function() {
     run();
   });
 
-  // |data| can be string (payload) or object (key/value form data)
-  // Returns Promise<string>
-  function getTextViaPOST(url, data) {
-    return new Promise(function(resolve, reject) {
-      var xhr = new XMLHttpRequest(), async = true;
-      xhr.open('POST', url, async);
-      xhr.setRequestHeader('Content-Type', 'text/plain'); // Safari doesn't infer this.
-      xhr.send(data);
-      xhr.onreadystatechange = function() {
-        if (xhr.readyState !== XMLHttpRequest.DONE) return;
-        if (xhr.status === 200)
-          resolve(xhr.response);
-        else
-          reject(xhr.responseText);
-      };
-    });
-  }
-
   function convertData(text) {
-    return new Promise(function(resolve, reject) {
-      resolve(getTextViaPOST(
-        makeURL(SERVICE_BASE + '/api/sec', {type: 'TabDelimited'}),
-        text
-      ));
-    });
+    return getTextViaPOST(
+      Util.makeURL(Traveller.SERVICE_BASE + '/api/sec', {type: 'TabDelimited'}),
+      text
+    );
   }
 
   function parseSector(tabDelimitedData) {
@@ -73,26 +54,35 @@ document.addEventListener('DOMContentLoaded', function() {
   var ALLEGIANCE_COLORS = {
     im: 'red',
     cs: 'pink',
+    imcs: 'pink',
     as: 'yellow',
     kk: 'green',
     kc: 'lightgreen',
     va: 'olive',
     zh: 'blue',
+    zhco: 'blue',
     zc: 'lightblue',
     so: 'orange',
+    socf: 'orange',
     hv: 'purple',
     hc: 'pink',
     fa: 'green',
     da: 'lightblue',
+    dacf: 'lightblue',
     sw: 'blue',
+    swcf: 'blue',
     bw: 'cyan',
     ga: 'yellow',
     jp: 'blue',
-    na: 'transparent'
+    na: 'transparent',
+    nahu: 'transparent',
+    naxx: 'transparent'
   };
 
   function colorFor(alleg) {
     alleg = String(alleg).toLowerCase();
+    if (/Im../i.test(alleg)) return ALLEGIANCE_COLORS['im'];
+    if (/As../i.test(alleg)) return ALLEGIANCE_COLORS['as'];
     if (/V./i.test(alleg)) return ALLEGIANCE_COLORS['va'];
     if (/J./i.test(alleg)) return ALLEGIANCE_COLORS['jp'];
     if (/A\d/i.test(alleg)) return ALLEGIANCE_COLORS['as'];
@@ -244,13 +234,19 @@ document.addEventListener('DOMContentLoaded', function() {
     processMap(
       map,
       function complete() {
+        status('');
         updateDisplay();
         updateWalks();
       },
       function progress(message) {
+        status(message);
         updateDisplay();
         updateWalks();
       });
   }
 
+  function status(message) {
+    console.log(message);
+    $('#status').innerHTML = Util.escapeHTML(message);
+  }
 });

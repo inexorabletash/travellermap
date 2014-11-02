@@ -30,11 +30,11 @@ window.addEventListener('DOMContentLoaded', function() {
 
   list.addEventListener('change', function (e) {
     var name = list.value;
-    MapService.sectorData(name, function(data) {
+    Traveller.MapService.sectorData(name, function(data) {
       var target = $('#data');
       if (target) target.value = data;
     }, undefined, {type: 'SecondSurvey', metadata: 0});
-    MapService.sectorMetaData(name, function(data) {
+    Traveller.MapService.sectorMetaData(name, function(data) {
       var target = $('#metadata');
       if (target) target.value = data;
     }, undefined, {accept: 'text/xml'});
@@ -78,8 +78,10 @@ window.addEventListener('DOMContentLoaded', function() {
 // |data| can be string (payload) or object (key/value form data)
 // Returns Promise<string>
 function getTextViaPOST(url, data) {
+  console.log('gtvp');
   var request;
   if (typeof data === 'string') {
+    console.log('heya');
     request = fetch(url, {
       method: 'POST',
       headers: {'Content-Type': 'text/plain'},  // Safari doesn't infer this.
