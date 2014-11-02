@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<title>Border Maker</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="shortcut icon" href="../favicon.ico">
+<link rel="stylesheet" href="../site.css?update=2014-01-07">
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.1.2/handlebars.min.js"></script>
+<script src="../lib/polyfill/polyfill.js"></script>
+<script src="../lib/polyfill/harmony.js"></script>
+<script src="../map.js?update=2013-12-31"></script>
+<script src="../post.js?update=2013-12-31"></script>
+<script src="borders.js"></script>
+
+<h1>The Traveller Map - Border Maker</h1>
+<div id="content" style="width: 660px;">
+
+  <div>
+    Select a sector, or enter your own data below:
+    <select id="sector">
+      <option disabled>Select...</option>
+    </select>
+  </div>
+
+  <form id="form" target="_blank" method="POST">
+    <textarea id="data" name="data"
+              style="width: 650px; height: 120px; white-space: pre;"
+              spellcheck="false" wrap="off" cols="80" rows="10"></textarea>
+
+    <div>Generated Metadata:
+      <label><input type="radio" name="metatype" value="xml" checked><a target="_blank" href="doc/api#metadata">XML</a></label> or
+      <label><input type="radio" name="metatype" value="msec"><a target="_blank" href="doc/api#msec">MSEC</a></label>
+    </div>
+    <textarea id="metadata_generated" name="metadata"
+              style="width: 650px; height: 120px; white-space: pre;"
+              spellcheck="false" wrap="off" cols="80" rows="10"></textarea>
+  </form>
+
+  <button id="go">Calculate Borders</button>
+
+  <style>
+  .hex {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    overflow: hidden;
+    cursor: pointer;
+    border: solid 1px black;
+    font-size: 6pt;
+    font-family: Univers, Arial, sans-serif;
+    text-align: center;
+    line-height: 100%;
+  }
+  .hexNumber {
+    font-size: 3pt;
+    font-family: Univers, Arial, sans-serif;
+    color: gray;
+    position: absolute;
+    left: 0; top: 0;
+    width: 100%;
+    text-align: center;
+  }
+  .hexContents {
+    width: 100%; height: 100%; padding: 0; margin: 0; border: 0;
+  }
+  .world {
+    line-height: 15pt;
+    font-size: 7pt;
+  }
+  #status {
+    float: right;
+    width: 300px;
+    padding: 10px;
+    background-color: #f8f8f8;
+    height: 600px;
+    overflow-y: auto;
+  }
+  </style>
+
+  <div id="map">
+  </div>
+  <style>
+  #map {
+    position: absolute;
+    top: 20px; right: 20px;
+    border: 2px solid black;
+    background-color: white;
+    z-index: 2;
+  }
+  </style>
+
+
+  <script id="xml-template" type="x-handlebars-template">
+<?xml version="1.0" encoding="utf-8" ?>
+<Sector>
+  <Borders>
+{{#borders}}    <Border Allegiance="{{allegiance}}">{{#path}}{{.}} {{/path}}</Border>
+{{/borders}}
+  </Borders>
+</Sector>
+  </script>
+
+  <script id="msec-template" type="x-handlebars-template">
+{{#borders}}
+# Allegiance: {{allegiance}}
+border{{#path}} {{.}}{{/path}}
+{{/borders}}
+  </script>
+
+  <script src="maker.js"></script>
+
+</div>
