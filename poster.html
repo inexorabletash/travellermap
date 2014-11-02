@@ -203,15 +203,21 @@ Select a sector, or enter your own data below:
     e.preventDefault();
     e.stopPropagation();
 
-    var form = $('#form');
-    form.target = 'iframe';
-    form.action = Traveller.SERVICE_BASE + '/api/poster';
-    $('#thumb').value = '1';
-    var accept = $('#accept').value;
-    $('#accept').value = '';
-    form.submit();
-    $('#thumb').value = '';
-    $('#accept').value = accept;
+    var data = new FormData($('#form'));
+    data.append('datauri', '1');
+    data.append('thumb', '1');
+    data.append('accept', '');
+    var xhr = new XMLHttpRequest(), async = true;
+    xhr.open('POST', Traveller.SERVICE_BASE + '/api/poster', async);
+    xhr.send(data);
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState !== XMLHttpRequest.DONE) return;
+      if (xhr.status === 200) {
+        $('#preview').src = xhr.responseText;
+      } else {
+        alert(xhr.responseText);
+      }
+    };
   });
 
   $('#renderBtn').addEventListener('click', function(e) {
@@ -244,12 +250,9 @@ Select a sector, or enter your own data below:
   border: 1px solid black;
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgAQMAAABJtOi3AAAABlBMVEUAAAAoKCj70ajHAAAAE0lEQVQI12P4/5+BgZoEA3VNBADtvT/BrQ+bEwAAAABJRU5ErkJggg==');
 }
-#iframe {
-  width: 100%; height: 100%; border: none;
-}
 </style>
 
-<div id="preview"><iframe name="iframe" id="iframe"></iframe></div>
+<img id="preview">
 
 <!-- Google Analytics -->
 <script>
