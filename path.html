@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<title>Path Finder - Traveller Map</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="stylesheet" href="site.css?update=2014-10-17">
+<script src="lib/polyfill/polyfill.min.js?update=2014-09-08"></script>
+<script src="lib/polyfill/es6.js?update=2014-09-08"></script>
+<script src="lib/polyfill/url.js?update=2014-09-09"></script>
+<script src="lib/polyfill/experimental/fetch.js?update=2014-09-08"></script>
+<script src="map.js?update=2014-10-17"></script>
+<script src="post.js?update=2014-10-20"></script>
+<script src="path.js?update=2014-10-20"></script>
+
+<h1>The Traveller Map - Path Finder</h1>
+<ol>
+  <li>
+  <select id="sector">
+    <option disabled>Select...</option>
+  </select>
+  a sector, or enter custom sector data/metadata:
+
+<div>Sector Data:
+  (<a target="_blank" href="doc/fileformats">file formats</a>)</div>
+<textarea id="data" name="data" class="drag-n-drop"
+          style="width: 650px; height: 120px; white-space: pre;"
+          spellcheck="false" wrap="off" cols="80" rows="10"></textarea>
+
+<div>Metadata:
+  (<a target="_blank" href="doc/api#metadata">XML</a> or
+  <a target="_blank" href="doc/api#msec">MSEC</a>)</div>
+<textarea id="metadata" name="metadata" class="drag-n-drop"
+          style="width: 650px; height: 120px; white-space: pre;"
+          spellcheck="false" wrap="off" cols="80" rows="10"></textarea>
+
+  <li>Click <button id="parsesec">Generate Map</button> (may take a few seconds)
+  <li>Enter a <label>jump rating:
+      <input id="jump" type="number" value="1" min="1" max="6"></label>
+  <li>Click on the map to set a route start point, then again to set a route end point
+  <li>The route will appear in the box below:<br>
+<textarea id="out"
+          style="width: 650px; height: 120px;"
+          readonly="true"
+          spellcheck="false" cols="80" rows="10"></textarea>
+</ol>
+
+<p>Tip: Use your browser&#39;s zoom in/zoom out functions to see map details.</p>
+
+<div>
+  <canvas id="canvas" width="450" height="651"
+          style="
+                 position: absolute;
+                 z-index: 1;
+                 right: 10px; top: 10px;
+                 cursor: crosshair;
+                 border: 1px solid black;
+                 background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgAQMAAABJtOi3AAAABlBMVEUAAAAoKCj70ajHAAAAE0lEQVQI12P4/5+BgZoEA3VNBADtvT/BrQ+bEwAAAABJRU5ErkJggg==');
+                 ">
+</div>
+
+<div style="margin-top: 10px; font-size: 80%">
+  The <em class="product">Traveller</em> game in all forms is owned by Far
+  Future Enterprises. Copyright &copy; 1977 &ndash; 2014 Far Future
+  Enterprises.
+  <a href="http://farfuture.net/FFEFairUsePolicy2008.pdf">Fair Use Policy</a>
+</div>
+
+<script>
+"use strict";
+
+var $ = function(s) { return document.querySelector(s); };
+
+var PS = 16; // px/parsec
+var INSET = 2; // px
+var RADIUS = 4;
+
+var sec = {};
+
+var canvas = $('#canvas'), ctx = canvas.getContext('2d');
+
+$('#parsesec').addEventListener('click', parse);
+
+var sec;
+function parse() {
+  var data = $('#data').value;
+  if (!data.length) return;
+  getTextViaPOST(
+    Util.makeURL(Traveller.SERVICE_BASE + '/api/sec', {type: 'TabDelimited'}),
+    data
+  ).then(function(data) {
+    return parseSector(data);
+  }).then(function(sector) {
+    sec = sector;
+    var params = {
+      data: $('#data').value,
+      metadata: $('#metadata').value,
+      style: 'print',
+      options: 41975,
+      scale: 64,
+      datauri: 1
+    };
+    return getTextViaPOST(Traveller.SERVICE_BASE + '/api/poster', params);
+  }).then(function(dataURL) {
+    $('#canvas').style.backgroundSize = '100% 100%';
+    $('#canvas').style.backgroundImage = 'url("' + dataURL + '")';
+    refresh();
+  });
+}
+
+function parseSector(tabDelimitedData) {
+  var sector = {
+    worlds: {}
+  };
+  var lines = tabDelimitedData.split(/\r?\n/);
+  var header = lines.shift().toLowerCase().split('\t')
+    .map(function(h) { return h.replace(/[^a-z]/g, ''); });
+  lines.forEach(function(line) {
+    if (!line.length) return;
+    var world = {};
+    line.split('\t').forEach(function(field, index) {
+      world[header[index]] = field;
+    });
+    sector.worlds[world.hex] = world;
+  });
+  return sector;
+}
+
+var route = [];
+
+function refresh() {
+  function hexToCoords(hex) {
+    var x = parseFloat(hex.substring(0, 2)) - 1;
+    var y = parseFloat(hex.substring(2, 4)) - 1;
+    return hxhyToCoords(x, y);
+  }
+  function hxhyToCoords(hx, hy) {
+    var x = hx, y = hy;
+    var dy = (x % 2) ? 0.5 : 0;
+    x *= Math.cos(Math.PI/6); // cos(30deg)
+    return {x:x*PS+INSET+PS/2, y:(y+dy)*PS+INSET+PS/2};
+  }
+
+  ctx.clearRect(0, 0, PS * canvas.width, PS * canvas.height);
+
+  ctx.lineWidth = 2;
+  ctx.strokeStyle = 'red';
+  stack.forEach(function(hex) {
+    var coords = hexToCoords(hex);
+    ctx.beginPath();
+    ctx.arc(coords.x,
+            coords.y,
+            RADIUS + 2, 0, 2 * Math.PI, false);
+    ctx.stroke();
+  });
+
+  var out = '';
+  if (route) {
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = 'rgba(0,128,0,0.5)';
+    route.forEach(function(hex, index) {
+      var coords = hexToCoords(hex);
+      ctx.beginPath();
+      ctx.arc(coords.x,
+              coords.y,
+              RADIUS + 2, 0, 2 * Math.PI, false);
+      ctx.stroke();
+    });
+
+    ctx.lineWidth = 4;
+    ctx.strokeStyle = "green";
+    ctx.beginPath();
+    route.forEach(function(hex, index) {
+      var coords = hexToCoords(hex);
+      if (index === 0) {
+        ctx.moveTo(coords.x, coords.y);
+        out += '  ' + hex;
+      } else {
+        ctx.lineTo(coords.x, coords.y);
+        out += ' -- ' + hex;
+      }
+    });
+    ctx.stroke();
+  } else {
+    out = 'No route found.';
+  }
+  $('#out').value = out;
+}
+
+
+var stack = [];
+$('#canvas').addEventListener('mousedown', function(e) {
+  e.preventDefault();
+  e.stopPropagation();
+
+  var offsetX = 'offsetX' in e ? e.offsetX :
+    'layerX' in e ? e.layerX :
+    e.pageX - e.target.offsetLeft;
+  var offsetY = 'offsetY' in e ? e.offsetY :
+    'layerY' in e ? e.layerY :
+    e.pageY - e.target.offsetTop;
+  var x = offsetX, y = offsetY;
+
+  x = (x - INSET) / PS / Math.cos(Math.PI/6);
+  y = (y - INSET) / PS;
+  x = Math.floor(x);
+  if (x % 2) y -= 0.5;
+  y = Math.floor(y);
+  var hex = ('00' + (x+1)).slice(-2) + ('00' + (y+1)).slice(-2);
+
+  if (stack.length) {
+    var start = stack.pop();
+    var jump = Number($('#jump').value);
+    route = computeRoute(sec.worlds, start, hex, jump);
+  } else {
+    stack.push(hex);
+  }
+  refresh();
+});
+
+parse();
+refresh();
+
+</script>
+
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-18610679-2', 'auto');
+  ga('send', 'pageview');
+</script>
