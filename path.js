@@ -1,13 +1,8 @@
 (function(global) {
-
-  //////////////////////////////////////////////////////////////////////
-  //
   // A* Algorithm
   //
   // Based on notes in _AI for Game Developers_, Bourg & Seemann,
   //     O'Reilly Media, Inc., July 2004.
-  //
-  //////////////////////////////////////////////////////////////////////
 
   function Node(id, cost, steps, parent) {
     this.id = id;
@@ -24,11 +19,11 @@
 
   List.prototype = {
     isEmpty: function() {
-      return (this.count == 0);
+      return this.count == 0;
     },
 
     contains: function(node) {
-      return (this.list[node.id] !== undefined);
+      return this.list[node.id] !== undefined;
     },
 
     add: function(node) {
@@ -36,22 +31,12 @@
         this.list[node.id] = node;
         this.count++;
       }
-
-      var str = '';
-      for (var key in this.list) {
-        str += ' ' + key + ': ' + this.list[key] + '   ';
-      }
     },
 
     remove: function(node) {
       if (this.contains(node)) {
         delete this.list[node.id];
         this.count--;
-      }
-
-      var str = '';
-      for (var key in this.list) {
-        str += ' ' + key + ': ' + this.list[key] + '   ';
       }
     },
 
@@ -73,7 +58,7 @@
   };
 
 
-  function CalculateRoute(startHex, endHex, jump) {
+  function computeRoute(map, startHex, endHex, jump) {
     var open   = new List();
     var closed = new List();
 
@@ -141,16 +126,8 @@
     return undefined;
   }
 
-  //////////////////////////////////////////////////////////////////////
-  //
-  // Function:
-  //     dist(hexA, hexB) - returns distance in hexes
-  //
-  // Example:
-  //     dist('0101', '0404') returns 5
-  //
-  //////////////////////////////////////////////////////////////////////
-
+  // Distance in hexes
+  // dist('0101', '0404') -> 5
   function dist(a, b) {
     a = Number(a);
     b = Number(b);
@@ -165,9 +142,8 @@
     var adx = Math.abs(dx);
     var ody = dy + div(adx, 2);
 
-    if (odd(a_x) && even(b_x)) {
+    if (odd(a_x) && even(b_x))
       ody += 1;
-    }
 
     return max(adx - ody, ody, adx);
   }
@@ -181,20 +157,10 @@
   function max(a, b, c) { return (a >= b && a >= c) ? a : (b >= a && b >= c) ? b : c; }
 
 
-  //////////////////////////////////////////////////////////////////////
+  // Returns list of hexes within range:
+  // reachable('0101', 2) -> ['0102', '0201', '0202', '0301', '0302']
   //
-  // Function:
-  //    reachable(hex, jump) - returns list of hexes within range
-  //
-  // Example:
-  //    reachable('0101', 2) returns (0102, 0201, 0202, 0301, 0302)
-  //
-  // Note:
-  //    This just walks over a square and calls dist(); it could be
-  //     more intelligent
-  //
-  //////////////////////////////////////////////////////////////////////
-
+  // This just walks over a square and calls dist(); it could be smarter.
   function reachable(hex, jump) {
     var results = [];
 
@@ -204,8 +170,9 @@
 
     for (var rx = x - jump; rx <= x + jump; ++rx) {
       for (var ry = y - jump; ry <= y + jump; ++ry) {
-        if (rx >= 1 && rx <= SECTOR_WIDTH && ry >= 1 && ry <= SECTOR_HEIGHT) {
-          var candidate = HexString(rx, ry);
+        if (rx >= 1 && rx <= Traveller.Astrometrics.SectorWidth &&
+            ry >= 1 && ry <= Traveller.Astrometrics.SectorHeight) {
+          var candidate = hexString(rx, ry);
           var distance = dist(hex, candidate);
           if (distance > 0 && distance <= jump) {
             results.push(candidate);
@@ -217,9 +184,7 @@
     return results;
   }
 
-  var SECTOR_WIDTH = 32;
-  var SECTOR_HEIGHT = 40;
-  function HexString(x, y) {
+  function hexString(x, y) {
     var str = '';
     if (x < 10) str += '0';
     str += x.toString();
@@ -229,11 +194,7 @@
     return str;
   }
 
-  // TODO: Refactor this
-  var map;
-  global.computeRoute = function(sector, start, end, jump) {
-    map = sector;
-    return CalculateRoute(start, end, jump || 1);
-  };
+  // Exports
+  global.computeRoute = computeRoute;
 
 }(this));

@@ -172,10 +172,10 @@ function refresh() {
       var coords = hexToCoords(hex);
       if (index === 0) {
         ctx.moveTo(coords.x, coords.y);
-        out += '  ' + hex;
+        out += hex;
       } else {
         ctx.lineTo(coords.x, coords.y);
-        out += ' -- ' + hex;
+        out += ' -> ' + hex;
       }
     });
     ctx.stroke();
