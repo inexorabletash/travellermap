@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <title>Sector Booklet - Traveller Map</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="shortcut icon" href="favicon.ico">
-<link rel="stylesheet" href="site.css?update=2014-10-17">
+<link rel="shortcut icon" href="../favicon.ico">
+<link rel="stylesheet" href="../site.css?update=2014-10-17">
 <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js"></script>
-<script src="lib/polyfill/polyfill.min.js?update=2014-09-08"></script>
-<script src="lib/polyfill/es6.js?update=2014-09-08"></script>
-<script src="lib/polyfill/url.js?update=2014-09-09"></script>
-<script src="lib/polyfill/experimental/fetch.js?update=2014-09-08"></script>
-<script src="map.js?update=2014-10-17"></script>
+<script src="../lib/polyfill/polyfill.min.js?update=2014-09-08"></script>
+<script src="../lib/polyfill/es6.js?update=2014-09-08"></script>
+<script src="../lib/polyfill/url.js?update=2014-09-09"></script>
+<script src="../lib/polyfill/experimental/fetch.js?update=2014-09-08"></script>
+<script src="../map.js?update=2014-10-17"></script>
 <script src="post.js?update=2014-10-20"></script>
 <script src="booklet.js?update=2014-10-19"></script>
 <style>
@@ -394,7 +394,7 @@ td.vertical {
   <!-- Status Display -->
   <div id="status">
     <span id="statusText">Loading...</span>
-    <img id="statusImage" src="res/ui/sector-spinner.gif" alt="" width="16" height="16">
+    <img id="statusImage" src="../res/ui/sector-spinner.gif" alt="" width="16" height="16">
   </div>
 
   <!-- Sector Selector/Input -->
@@ -412,14 +412,14 @@ td.vertical {
 
     <form id="form" action="api/poster" method="post" enctype="application/x-www-form-urlencoded">
       <div>Sector Data:
-        (<a target="_blank" href="doc/fileformats">file formats</a>)</div>
+        (<a target="_blank" href="../doc/fileformats">file formats</a>)</div>
       <textarea id="data" name="data" class="drag-n-drop"
                 style="width: 650px; height: 120px; white-space: pre;"
                 spellcheck="false" wrap="off" cols="80" rows="10"></textarea>
 
       <div>Metadata:
-        (<a target="_blank" href="doc/api#metadata">XML</a> or
-        <a target="_blank" href="doc/api#msec">MSEC</a>)</div>
+        (<a target="_blank" href="../doc/api#metadata">XML</a> or
+        <a target="_blank" href="../doc/api#msec">MSEC</a>)</div>
       <textarea id="metadata" name="metadata" class="drag-n-drop"
                 style="width: 650px; height: 120px; white-space: pre;"
             spellcheck="false" wrap="off" cols="80" rows="10"></textarea>
@@ -669,8 +669,8 @@ td.vertical {
             <tr>
               <td>
                 <h4>Map Legend</h4>
-                <img src="res/ui/Legend_1003_print.png"><br>
-                <img src="res/ui/Legend_1006_print.png">
+                <img src="../res/ui/Legend_1003_print.png"><br>
+                <img src="../res/ui/Legend_1006_print.png">
               </td>
               <td>
                 <h4>World Characteristics</h4>
