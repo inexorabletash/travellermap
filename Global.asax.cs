@@ -148,17 +148,17 @@ namespace Maps
         }
 
         private static HashSet<string> s_extensionless = new HashSet<string> {
-            "/booklet",
-            "/poster",
-            "/path",
-            "/routes",
             "/world",
             "/doc/about",
             "/doc/api",
             "/doc/credits",
             "/doc/fileformats",
             "/doc/secondsurvey",
-            "/doc/submit"
+            "/doc/submit",
+            "/make/booklet",
+            "/make/poster",
+            "/make/routes",
+            "/make/path",
         };
 
         private static void RegisterRoutes(RouteCollection routes)
@@ -170,7 +170,7 @@ namespace Maps
             routes.Add(new RegexRoute(@"^/go/(?<sector>[^/]+)$", new RedirectRouteHandler("/?sector={sector}", statusCode: 302)));
             routes.Add(new RegexRoute(@"^/go/(?<sector>[^/]+)/(?<hex>[0-9]{4})$", new RedirectRouteHandler("/?sector={sector}&hex={hex}", statusCode: 302)));
 
-            routes.Add(new RegexRoute(@"^/booklet/(?<sector>[^/]+)$", new RedirectRouteHandler("/booklet?sector={sector}", statusCode: 302)));
+            routes.Add(new RegexRoute(@"^/booklet/(?<sector>[^/]+)$", new RedirectRouteHandler("/make/booklet?sector={sector}", statusCode: 302)));
             routes.Add(new RegexRoute(@"^/sheet/(?<sector>[^/]+)/(?<hex>[0-9]{4})$", new RedirectRouteHandler("/world?sector={sector}&hex={hex}", statusCode: 302)));
 
             // Administration -----------------------------------------------
@@ -252,7 +252,7 @@ namespace Maps
             routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/msec$", new GenericRouteHandler(typeof(MSECHandler))));
             routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/image$", new GenericRouteHandler(typeof(PosterHandler))));
 
-            routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/booklet$", new RedirectRouteHandler("/booklet?sector={sector}", statusCode: 302)));
+            routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/booklet$", new RedirectRouteHandler("/make/booklet?sector={sector}", statusCode: 302)));
 
             // Quadrant, e.g. /data/Spinward Marches/Alpha
             routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/(?<quadrant>alpha|beta|gamma|delta)$", new GenericRouteHandler(typeof(SECHandler)), new RouteValueDictionary { { "type", "SecondSurvey" }, { "metadata", "0" } }));
