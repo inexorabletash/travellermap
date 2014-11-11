@@ -150,8 +150,9 @@ namespace Maps
         private static HashSet<string> s_extensionless = new HashSet<string> {
             "/booklet",
             "/poster",
+            "/path",
+            "/routes",
             "/world",
-            "/old",
             "/doc/about",
             "/doc/api",
             "/doc/credits",
