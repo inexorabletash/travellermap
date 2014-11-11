@@ -120,8 +120,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="server\WorldCollection.cs" />
-    <Content Include="booklet.html" />
-    <Content Include="booklet.js" />
     <Content Include="borders\bd_images\image001.gif" />
     <Content Include="borders\bd_images\image003.jpg" />
     <Content Include="borders\bd_images\image004.gif" />
@@ -163,8 +161,13 @@
     <Content Include="lib\polyfill\polyfill.js" />
     <Content Include="lib\polyfill\polyfill.min.js" />
     <Content Include="lib\polyfill\url.js" />
-    <Content Include="post.js" />
-    <Content Include="poster.html" />
+    <Content Include="make\booklet.html" />
+    <Content Include="make\booklet.js" />
+    <Content Include="make\path.html" />
+    <Content Include="make\path.js" />
+    <Content Include="make\post.js" />
+    <Content Include="make\poster.html" />
+    <Content Include="make\routes.html" />
     <Content Include="res\Candy\Galaxy.jpg" />
     <Content Include="res\Candy\Galaxy.png" />
     <Content Include="res\Candy\Nebula.png" />
