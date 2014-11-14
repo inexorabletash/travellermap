@@ -31,10 +31,12 @@ window.addEventListener('DOMContentLoaded', function() {
   list.addEventListener('change', function (e) {
     var name = list.value;
     Traveller.MapService.sectorData(name, function(data) {
-      $('#data').value = data;
+      var target = $('#data');
+      if (target) target.value = data;
     }, undefined, {type: 'SecondSurvey', metadata: 0});
     Traveller.MapService.sectorMetaData(name, function(data) {
-      $('#metadata').value = data;
+      var target = $('#metadata');
+      if (target) target.value = data;
     }, undefined, {accept: 'text/xml'});
   });
 
@@ -92,11 +94,17 @@ function getTextViaPOST(url, data) {
       body: fd
     });
   }
-  return request.then(
-    function(response) {
+
+  return request
+    .then(function(response) {
+      return Promise.all([response, response.text()]);
+    })
+    .then(function(values) {
+      var response = values[0];
+      var text = values[1];
       if (response.status === 200)
-        return response.text();
-      return Promise.reject(response.text());
-    }
-  );
+        return text;
+      else
+        throw text;
+    });
 }

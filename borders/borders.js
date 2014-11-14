@@ -30,14 +30,14 @@ var AllegianceMap = (function() {
   }
 
   AllegianceMap.prototype = {
-      getBounds: function() {
-        return {
-          'top':    this.origin_y,
-          'left':   this.origin_x,
-          'right':  this.origin_x + this.width  - 1,
-          'bottom': this.origin_y + this.height - 1
-        };
-      },
+    getBounds: function() {
+      return {
+        'top':    this.origin_y,
+        'left':   this.origin_x,
+        'right':  this.origin_x + this.width  - 1,
+        'bottom': this.origin_y + this.height - 1
+      };
+    },
 
     inBounds: function( x, y ) {
       if (x - this.origin_x < 0 || x - this.origin_x >= this.width ||
@@ -78,11 +78,20 @@ var AllegianceMap = (function() {
       return this.map[x - this.origin_x][y - this.origin_y].alleg;
     },
 
-    setAllegiance: function(x, y, alleg) {
+    getTrueAllegiance: function(x, y) {
       if (!this.inBounds(x, y))
         throw "Coordinates out of bounds";
 
-      this.map[x - this.origin_x][y - this.origin_y].alleg = alleg;
+      var hex = this.map[x - this.origin_x][y - this.origin_y];
+      return hex.trueAllegiance || hex.alleg;
+    },
+
+    setAllegiance: function(x, y, effectiveAllegiance, trueAllegiance) {
+      if (!this.inBounds(x, y))
+        throw "Coordinates out of bounds";
+
+      this.map[x - this.origin_x][y - this.origin_y].alleg = effectiveAllegiance;
+      this.map[x - this.origin_x][y - this.origin_y].trueAllegiance = trueAllegiance;
     },
 
     // TODO: Would be simpler if we returned a Hex object
