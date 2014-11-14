@@ -169,7 +169,8 @@ namespace Maps.Serialization
             }
             catch (Exception e)
             {
-                throw new Exception(String.Format("UWP Parse Error in line {0}:\n{1}\n{2}", lineNumber, e.Message, line));
+                errors.Error("Parse error: " + e.Message, lineNumber, line);
+                //throw new Exception(String.Format("UWP Parse Error in line {0}:\n{1}\n{2}", lineNumber, e.Message, line));
             }
         }
 
@@ -334,7 +335,8 @@ namespace Maps.Serialization
             }
             catch (Exception e)
             {
-                throw new Exception(String.Format("UWP Parse Error in line {0}:\n{1}\n{2}", lineNumber, e.Message, line));
+                errors.Error("Parse Error: " + e.Message, lineNumber, line);
+                //throw new Exception(String.Format("UWP Parse Error in line {0}:\n{1}\n{2}", lineNumber, e.Message, line));
             }
         }
     }

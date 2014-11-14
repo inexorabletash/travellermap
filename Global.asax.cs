@@ -155,6 +155,7 @@ namespace Maps
             "/doc/fileformats",
             "/doc/secondsurvey",
             "/doc/submit",
+            "/make/borders",
             "/make/booklet",
             "/make/poster",
             "/make/routes",
