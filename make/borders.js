@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
   'use strict';
   var $ = function(s) { return document.querySelector(s); };
+  var $$ = function(s) { return document.querySelectorAll(s); };
 
   // TODO: other events
   var lastValue = null;
@@ -16,6 +17,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
   $('#go').addEventListener('click', function() {
     run();
+  });
+  $('#edges').addEventListener('click', function() {
+    if (claimEdges()) {
+      updateDisplay();
+      updateWalks();
+    }
+  });
+  [$('#xml'), $('#msec')].forEach(function(e) {
+    e.addEventListener('click', updateWalks);
   });
 
   function convertData(text) {
@@ -103,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
       for (y = map.origin_y + inset; y < map.origin_y + map.height - inset; ++y) {
         top += (sz + pad);
 
-        fragment = '<div class="hex" id="hex_' + hexLabel(x, y) + '" style="left: ' + left + 'px; top: ' + top + 'px;">';
+        fragment = '<div class="hex" data-hex="' + hexLabel(x, y) + '" style="left: ' + left + 'px; top: ' + top + 'px;">';
         fragment += hexContents(x, y, map);
         fragment += '<' + '/div>';
 
@@ -115,6 +125,16 @@ document.addEventListener('DOMContentLoaded', function() {
     containerElement.innerHTML = fragments.join('');
     containerElement.style.width = (map.width * sz + (map.width + 1) * pad) + 'px';
     containerElement.style.height = ((map.height + 0.5) * sz + (map.height + 1.5) * pad) + 'px';
+
+    [].slice.call($$('.hex')).forEach(function(e) {
+      e.onclick = function() {
+        var hex = this.getAttribute('data-hex');
+        if (toggleAllegiance(hex)) {
+          updateDisplay();
+          updateWalks();
+        }
+      };
+    });
   }
 
   var xml_template = Handlebars.compile($('#xml-template').innerHTML.trim());
@@ -178,11 +198,11 @@ document.addEventListener('DOMContentLoaded', function() {
       "<" + "/div>";
   }
 
-  var map = new AllegianceMap(SECTOR_WIDTH, SECTOR_HEIGHT);
+  var map = new AllegianceMap(SECTOR_WIDTH + 2, SECTOR_HEIGHT + 2, 0, 0);
 
   function buildMap(sector) {
-    for (var hx = 1; hx <= 32; ++hx) {
-      for (var hy = 1; hy <= 40; ++hy) {
+    for (var hx = 0; hx <= Traveller.Astrometrics.SectorWidth + 1; ++hx) {
+      for (var hy = 0; hy <= Traveller.Astrometrics.SectorHeight + 1; ++hy) {
           map.setOccupied(hx, hy, false);
           map.setAllegiance(hx, hy, UNALIGNED);
       }
@@ -192,6 +212,7 @@ document.addEventListener('DOMContentLoaded', function() {
       if (/^Im..$/.test(a)) return 'Im';
       if (/^As..$/.test(a)) return 'As';
       if (/^Cs..$/.test(a)) return 'Na';
+      if (/^Na..$/.test(a)) return 'Na';
       if (/^XXXX$/.test(a)) return 'Na';
 
       switch (a) {
@@ -229,6 +250,57 @@ document.addEventListener('DOMContentLoaded', function() {
 
     updateDisplay();
   };
+
+  function toggleAllegiance(hex) {
+    var hx = Number(hex.substring(0, 2));
+    var hy = Number(hex.substring(2, 4));
+    if (map.isOccupied(hx, hy))
+      return false;
+
+    var alleg = map.getAllegiance(hx, hy);
+    if (alleg !== UNALIGNED) {
+      map.setAllegiance(hx, hy, UNALIGNED);
+      return true;
+    }
+
+    return claimByVotes(hx, hy);
+  }
+
+  function claimByVotes(hx, hy) {
+    var votes = {};
+    for (var dir = 0; dir < 6; ++dir) {
+      var nxy = neighbor(hx, hy, dir);
+      try {
+        var nalleg = map.getAllegiance(nxy[0], nxy[1]);
+        if (nalleg === UNALIGNED)
+          continue;
+        if (votes.hasOwnProperty(nalleg))
+          ++votes[nalleg];
+        else
+          votes[nalleg] = 1;
+      } catch(_) {}
+    }
+    var top = Object.keys(votes).reduce(function(cur, key) {
+      return votes[key] > cur[1] ? [key, votes[key]] : cur;
+    }, ['--', 0])[0];
+    if (top === UNALIGNED)
+      return false;
+    map.setAllegiance(hx, hy, top);
+    return true;
+  }
+
+  function claimEdges() {
+    var dirty = false;
+    for (var hx = 0; hx <= Traveller.Astrometrics.SectorWidth + 1; ++hx) {
+      dirty = claimByVotes(hx, 0) || dirty;
+      dirty = claimByVotes(hx, Traveller.Astrometrics.SectorHeight + 1) || dirty;
+    }
+    for (var hy = 0; hy <= Traveller.Astrometrics.SectorHeight + 1; ++hy) {
+      dirty = claimByVotes(0, hy) || dirty;
+      dirty = claimByVotes(Traveller.Astrometrics.SectorWidth + 1, hy) || dirty;
+    }
+    return dirty;
+  }
 
   function updateDisplay() {
     // TODO: Do this incrementally

@@ -9,35 +9,45 @@
 <script src="../lib/polyfill/es6.js?update=2014-11-01"></script>
 <script src="../lib/polyfill/experimental/fetch.js?update=2014-11-01"></script>
 <script src="../map.js?update=2013-12-31"></script>
-<script src="../post.js?update=2013-12-31"></script>
-<script src="borders.js"></script>
+<script src="../borders/borders.js?update=2014-11-12"></script>
+<script src="post.js?update=2013-12-31"></script>
+<script src="borders.js?update=2014-11-12"></script>
 
 <h1>The Traveller Map - Border Maker</h1>
-<div id="content" style="width: 660px;">
+<ol>
+  <li>
+  <select id="sector">
+    <option disabled>Select...</option>
+  </select>
+  a sector, or enter custom sector data/metadata:
 
-  <div>
-    Select a sector, or enter your own data below:
-    <select id="sector">
-      <option disabled>Select...</option>
-    </select>
-  </div>
+<div>Sector Data:
+  (<a target="_blank" href="../doc/fileformats">file formats</a>)
+</div>
+<textarea id="data" name="data" class="drag-n-drop"
+          style="width: 650px; height: 120px; white-space: pre;"
+          spellcheck="false" wrap="off" cols="80" rows="10"></textarea>
 
-  <form id="form" target="_blank" method="POST">
-    <textarea id="data" name="data" class="drag-n-drop"
-              style="width: 650px; height: 120px; white-space: pre;"
-              spellcheck="false" wrap="off" cols="80" rows="10"></textarea>
+  <li>Click
+  <button id="go">Calculate Borders</button>
+  <span id="status"></span>
 
-    <div>Generated Metadata:
-      <label><input type="radio" name="metatype" value="xml" checked><a target="_blank" href="doc/api#metadata">XML</a></label> or
-      <label><input type="radio" name="metatype" value="msec"><a target="_blank" href="doc/api#msec">MSEC</a></label>
-    </div>
+  <li>Optional: Click <button id="edges">Claim Edges</button> to
+    guess at out-sector borders.
+  <li>Click on hexes in the map to toggle allegiances
+  <li>
+    <form id="form">
+Pick a file type:
+<label><input id="xml" type="radio" name="metatype" value="xml" checked><a target="_blank" href="doc/api#metadata">XML</a></label> or
+    <label><input id="msec" type="radio" name="metatype" value="msec"><a target="_blank" href="doc/api#msec">MSEC</a></label>
+    </form>
+
+  <li>Copy the borders from the box below into your metadata file:<br>
     <textarea id="metadata_generated" name="metadata" class="drag-n-drop"
               style="width: 650px; height: 120px; white-space: pre;"
               spellcheck="false" wrap="off" cols="80" rows="10"></textarea>
-  </form>
+</ol>
 
-  <button id="go">Calculate Borders</button>
-  <span id="status"></span>
 
   <style>
   .hex {
@@ -99,6 +109,20 @@ border{{#path}} {{.}}{{/path}}
 {{/borders}}
   </script>
 
-  <script src="maker.js"></script>
-
+<div style="margin-top: 10px; font-size: 80%">
+  The <em class="product">Traveller</em> game in all forms is owned by Far
+  Future Enterprises. Copyright &copy; 1977 &ndash; 2014 Far Future
+  Enterprises.
+  <a href="http://farfuture.net/FFEFairUsePolicy2008.pdf">Fair Use Policy</a>
 </div>
+
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-18610679-2', 'auto');
+  ga('send', 'pageview');
+</script>

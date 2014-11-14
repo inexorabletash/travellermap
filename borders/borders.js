@@ -30,14 +30,14 @@ var AllegianceMap = (function() {
   }
 
   AllegianceMap.prototype = {
-      getBounds: function() {
-        return {
-          'top':    this.origin_y,
-          'left':   this.origin_x,
-          'right':  this.origin_x + this.width  - 1,
-          'bottom': this.origin_y + this.height - 1
-        };
-      },
+    getBounds: function() {
+      return {
+        'top':    this.origin_y,
+        'left':   this.origin_x,
+        'right':  this.origin_x + this.width  - 1,
+        'bottom': this.origin_y + this.height - 1
+      };
+    },
 
     inBounds: function( x, y ) {
       if (x - this.origin_x < 0 || x - this.origin_x >= this.width ||
