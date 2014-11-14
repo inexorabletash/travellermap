@@ -11,7 +11,10 @@ document.addEventListener('DOMContentLoaded', function() {
       $('#metadata_generated').value = '';
       lastValue = value;
       if (!value) return;
-      convertData(value).then(parseSector).then(buildMap);
+      convertData(value)
+        .then(parseSector)
+        .then(buildMap)
+        .catch(function(reason) { alert(reason); });
     }
   }, 500);
 

@@ -2,13 +2,15 @@
 <title>Route Maker - Traveller Map</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="shortcut icon" href="../favicon.ico">
-<link rel="stylesheet" href="../site.css?update=2014-10-17">
-<script src="../lib/polyfill/polyfill.min.js?update=2014-09-08"></script>
-<script src="../lib/polyfill/es6.js?update=2014-09-08"></script>
-<script src="../lib/polyfill/url.js?update=2014-09-09"></script>
-<script src="../lib/polyfill/experimental/fetch.js?update=2014-09-08"></script>
-<script src="../map.js?update=2014-10-17"></script>
-<script src="post.js?update=2014-10-20"></script>
+<link rel="stylesheet" href="../site.css?update=2014-11-09">
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.1.2/handlebars.min.js"></script>
+<script src="../lib/polyfill/polyfill.min.js?update=2014-11-09"></script>
+<script src="../lib/polyfill/es6.js?update=2014-11-09"></script>
+<script src="../lib/polyfill/url.js?update=2014-11-09"></script>
+<script src="../lib/polyfill/experimental/fetch.js?update=2014-11-09"></script>
+<script src="../map.js?update=2014-11-09"></script>
+<script src="post.js?update=2014-11-13"></script>
 
 <h1>The Traveller Map - Route Maker</h1>
 <ol>
@@ -35,8 +37,14 @@
   <li>Click on the map to set a route start point, then again to set a route end point
   <li>If needed, click <button id="undo">Undo</button> to undo the last click,
     or <button id="clear">Clear</button> to start over
+  <li>
+    <form id="form">
+Pick a file type:
+<label><input id="xml" type="radio" name="metatype" value="xml" checked><a target="_blank" href="doc/api#metadata">XML</a></label> or
+    <label><input id="msec" type="radio" name="metatype" value="msec"><a target="_blank" href="doc/api#msec">MSEC</a></label>
+    </form>
   <li>Copy the routes from the box below into your metadata file:<br>
-<textarea id="xml"
+<textarea id="metadata_generated"
           style="width: 650px; height: 120px; white-space: pre;"
           readonly="true"
           spellcheck="false" wrap="off" cols="80" rows="10"></textarea>
@@ -55,6 +63,20 @@
                  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgAQMAAABJtOi3AAAABlBMVEUAAAAoKCj70ajHAAAAE0lEQVQI12P4/5+BgZoEA3VNBADtvT/BrQ+bEwAAAABJRU5ErkJggg==');
                  ">
 </div>
+
+  <script id="xml-template" type="x-handlebars-template">
+<?xml version="1.0" encoding="utf-8" ?>
+<Sector>
+  <Routes>
+{{#routes}}    <Route Start="{{start}}" End="{{end}}"/>
+{{/routes}}  </Routes>
+</Sector>
+  </script>
+
+  <script id="msec-template" type="x-handlebars-template">
+{{#routes}}route {{start}} {{end}}
+{{/routes}}
+  </script>
 
 <div style="margin-top: 10px; font-size: 80%">
   The <em class="product">Traveller</em> game in all forms is owned by Far
@@ -89,25 +111,30 @@ function parse() {
   if (!data.length) return;
   getTextViaPOST(
     Util.makeURL(Traveller.SERVICE_BASE + '/api/sec', {type: 'TabDelimited'}),
-    data
-  ).then(function(data) {
-    return parseSector(data);
-  }).then(function(sector) {
-    sec = sector;
-    var params = {
-      data: $('#data').value,
-      metadata: $('#metadata').value,
-      style: 'print',
-      options: 41975,
-      scale: 64,
-      datauri: 1
-    };
-    return getTextViaPOST(Traveller.SERVICE_BASE + '/api/poster', params);
-  }).then(function(dataURL) {
-    $('#canvas').style.backgroundSize = '100% 100%';
-    $('#canvas').style.backgroundImage = 'url("' + dataURL + '")';
-    refresh();
-  });
+    data)
+    .then(function(data) {
+      return parseSector(data);
+    })
+    .then(function(sector) {
+      sec = sector;
+      var params = {
+        data: $('#data').value,
+        metadata: $('#metadata').value,
+        style: 'print',
+        options: 41975,
+        scale: 64,
+        datauri: 1
+      };
+      return getTextViaPOST(Traveller.SERVICE_BASE + '/api/poster', params);
+    })
+    .then(function(dataURL) {
+      $('#canvas').style.backgroundSize = '100% 100%';
+      $('#canvas').style.backgroundImage = 'url("' + dataURL + '")';
+      refresh();
+    })
+    .catch(function(reason) {
+      alert(reason);
+    });
 }
 
 function parseSector(tabDelimitedData) {
@@ -155,7 +182,7 @@ function refresh() {
     ctx.stroke();
   });
 
-  var xml = '';
+
   ctx.lineWidth = 4;
   ctx.strokeStyle = "green";
   routes.forEach(function(route) {
@@ -165,14 +192,20 @@ function refresh() {
     var end = hexToCoords(route.end), ex = end.x, ey = end.y;
     ctx.lineTo(ex, ey);
     ctx.stroke();
-
-    xml += '  <Route Start="'+route.start+'" End="'+route.end+'"/>\n';
   });
-  $('#xml').value = '<Routes>\n' + xml + '</Routes>';
+
+  var template = ($('#form').elements.metatype.value === 'xml') ? xml_template : msec_template;
+  $('#metadata_generated').value = template({routes:routes});
 
   ctx.fillStyle = 'black';
 }
 
+var xml_template = Handlebars.compile($('#xml-template').innerHTML.trim());
+var msec_template = Handlebars.compile($('#msec-template').innerHTML.trim());
+
+[$('#xml'), $('#msec')].forEach(function(e) {
+  e.addEventListener('click', refresh);
+});
 
 var stack = [];
 $('#canvas').addEventListener('mousedown', function(e) {
