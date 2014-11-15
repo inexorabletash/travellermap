@@ -154,11 +154,24 @@ document.addEventListener('DOMContentLoaded', function() {
       for (y = map.origin_y; y < map.origin_y + map.height; y += 1) {
         label = hexLabel(x, y);
         alleg = map.getAllegiance(x, y);
-        if (alleg !== UNALIGNED && alleg !== NON_ALIGNED && alleg !== last_alleg && !(label in visited)) {
+        if (alleg !== UNALIGNED && alleg !== NON_ALIGNED &&
+            alleg !== last_alleg && !(label in visited)) {
 
           path = walk(map, x, y, alleg);
           path = path.map(function(hex) { return hexLabel(hex[0], hex[1]); });
           path.forEach(function(label) { visited[label] = true; });
+
+          // Filter out holes
+          var len = path.length;
+          if (len > 1) {
+            var hex1 = path[len - 2], hex2 = path[len - 1];
+            var x1 = Number(hex1.substring(0, 2));
+            var x2 = Number(hex2.substring(0, 2));
+            var y1 = Number(hex1.substring(2, 4));
+            var y2 = Number(hex2.substring(2, 4));
+            if ((x1 < x2) || (x1 === x2 && y1 < y2))
+              continue;
+          }
 
           borders.push({
             allegiance: alleg,
