@@ -207,7 +207,7 @@ namespace Maps.Serialization
                 if (border.ShowLabel && (border.Label != null || alleg != null))
                 {
                     writer.Write("label ");
-                    writer.Write(border.LabelPositionHex.ToString("0000", CultureInfo.InvariantCulture));
+                    writer.Write(border.LabelPositionHex);
                     writer.Write(" ");
                     writer.Write(border.Label ?? alleg.Name);
                     writer.WriteLine();

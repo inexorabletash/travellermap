@@ -814,10 +814,10 @@ namespace Maps
         public Point LabelPosition { get; set; }
 
         [XmlAttribute("LabelPosition"),JsonName("LabelPosition")]
-        public int LabelPositionHex
+        public string LabelPositionHex
         {
-            get { return LabelPosition.X * 100 + LabelPosition.Y; }
-            set { LabelPosition = new Point(value / 100, value % 100); }
+            get { return (LabelPosition.X * 100 + LabelPosition.Y).ToString("0000", CultureInfo.InvariantCulture); }
+            set { int hex; if (Int32.TryParse(value, out hex)) LabelPosition = new Point(hex / 100, hex % 100); }
         }
 
         [XmlAttribute]
