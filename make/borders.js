@@ -282,10 +282,15 @@ document.addEventListener('DOMContentLoaded', function() {
     return claimByVotes(hx, hy);
   }
 
-  function claimByVotes(hx, hy) {
+  function claimByVotes(hx, hy, ignoreOutSector) {
     var votes = {};
     for (var dir = 0; dir < 6; ++dir) {
       var nxy = neighbor(hx, hy, dir);
+      if (ignoreOutSector &&
+          (nxy[0] < 1 || nxy[0] > Traveller.Astrometrics.SectorWidth ||
+           nxy[1] < 1 || nxy[1] > Traveller.Astrometrics.SectorHeight))
+        continue;
+
       try {
         var nalleg = map.getAllegiance(nxy[0], nxy[1]);
         if (nalleg === UNALIGNED)
@@ -308,12 +313,12 @@ document.addEventListener('DOMContentLoaded', function() {
   function claimEdges() {
     var dirty = false;
     for (var hx = 0; hx <= Traveller.Astrometrics.SectorWidth + 1; ++hx) {
-      dirty = claimByVotes(hx, 0) || dirty;
-      dirty = claimByVotes(hx, Traveller.Astrometrics.SectorHeight + 1) || dirty;
+      dirty = claimByVotes(hx, 0, true) || dirty;
+      dirty = claimByVotes(hx, Traveller.Astrometrics.SectorHeight + 1, true) || dirty;
     }
     for (var hy = 0; hy <= Traveller.Astrometrics.SectorHeight + 1; ++hy) {
-      dirty = claimByVotes(0, hy) || dirty;
-      dirty = claimByVotes(Traveller.Astrometrics.SectorWidth + 1, hy) || dirty;
+      dirty = claimByVotes(0, hy, true) || dirty;
+      dirty = claimByVotes(Traveller.Astrometrics.SectorWidth + 1, hy, true) || dirty;
     }
     return dirty;
   }
