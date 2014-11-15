@@ -3,24 +3,29 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" href="../site.css?update=2014-07-31">
 <style>
+div.figure { margin: 2em; }
 </style>
 
 <h1>Improved Automatic Border Generation for <cite>TRAVELLER </cite>Sectors</h1>
 <div class="content">
   <div>
-      Joshua Bell, 
-      <a href="mailto:inexorabletash@gmail.com">inexorabletash@gmail.com</a>, 
-      <a href="http://www.travellermap.com">http://www.travellermap.com</a>
+      Joshua Bell,
+      <a href="mailto:inexorabletash@gmail.com">inexorabletash@gmail.com</a>,
+      <a href="http://travellermap.com">http://travellermap.com</a>
   </div>
-    
+
   <h2>Online Demo</h2>
 
   <p>
-      Try out the <a href="demo.htm">Interactive Border Generation Demo</a>, which runs entirely in a web page.
+      To experiment with the algorithm, try out the <a href="demo.htm">Interactive Border Generation Demo</a>.
   </p>
-    
+
+  <p>
+      To generate borders for a sector, try out the <a href="../make/borders">Border Maker</a>.
+  </p>
+
   <h2>Background</h2>
-    
+
   <p>
       Sectors in <cite class="traveller">Traveller</cite> are hexagonal grids of 32 by 40 hexes. Each grid space may contain a
       single star system, represented by a "main world." Further details (multiple stars, multiple worlds) are ignored at this
@@ -33,7 +38,7 @@
   <p>
       No polity allegiance data is given for empty hexes. It is possible to argue that since there is nothing in such a hex it
       can't be claimed by a polity, but deep within a large empire it is unlikely that incursions of a foreign force will be viewed
-      with indifference regardless of what hex it lies within. Maps of <cite class="traveller">Traveller</cite> sectors – most
+      with indifference regardless of what hex it lies within. Maps of <cite class="traveller">Traveller</cite> sectors &mdash; most
       notably the classic references <cite>Supplement 3: The Spinward Marches</cite> and <cite>Supplement 10: The Solomani Rim, </cite>
       show borders around the edges of polities, thus implicitly claiming the empty hexes.
   </p>
@@ -41,9 +46,11 @@
       Recently, several hex maps of <cite class="traveller">Traveller</cite> sectors have been produced with polity borders like
       the following.
   </p>
-  <p><img alt="Sub-optimal borders" width="287" height="226" src="bd_images/image001.gif" /></p>
+  <div class="figure">
+    <img alt="Sub-optimal borders" width="287" height="226" src="bd_images/image001.gif">
+  </div>
   <p>
-      Note the claimed empty hexes (1) that extend outside of the polity with little justification – they don't fall between occupied
+      Note the claimed empty hexes (1) that extend outside of the polity with little justification &mdash; they don't fall between occupied
       hexes. Also note the unclaimed empty hexes (2) that are inexplicably unclaimed in the light of similarly claimed hexes nearby
       (3), and worlds that end up cut off from the main body of the polity due to unclaimed hexes (4).
   </p>
@@ -51,9 +58,11 @@
       The features are not present or are rare in the classic <cite class="traveller">Traveller</cite> reference materials. One
       reason is that thanks to fast personal computers and software aids, borders now are often automatically generated.
   </p>
-  <p><img alt="Spindly borders" width="264" height="332" src="bd_images/image016.jpg" />
-      <span class="caption"><br />Example: Spindly borders c/o T20 Gateway Domain metadata</span>
-  </p>
+
+  <div class="figure">
+    <img alt="Spindly borders" width="264" height="332" src="bd_images/image016.jpg">
+    <span class="caption"><br>Example: Spindly borders c/o T20 Gateway Domain metadata</span>
+  </div>
 
   <h2>Automatic Border Generation</h2>
   <p>
@@ -71,8 +80,8 @@
       amenable to producing graphical representations of the border.
   </p>
   <p>
-      This author used <cite>allygen</cite> while generating borders for many sectors for my <cite class="traveller">Traveller</cite>
-      Map site (<a href="http://www.travellermap.com/">http://www.travellermap.com</a>), but found that the borders generated
+      This author used <cite>allygen</cite> while generating borders for many sectors for the <cite class="traveller">Traveller</cite>
+      Map site (<a href="http://travellermap.com/">http://travellermap.com</a>), but found that the borders generated
       suffered from the issues identified above.
   </p>
   <p>
@@ -89,14 +98,14 @@
   </ul>
   <p>
       This set of heuristics produces reasonable borders, but is prone to the issues noted above. It is also very sensitive to
-      tweaks in the algorithm – reordering or changing any of the heuristics produces very different borders.
+      tweaks in the algorithm &mdash; reordering or changing any of the heuristics produces very different borders.
   </p>
   <p>
       The <cite>allygen</cite> algorithm borders are subjectively most reasonable when dealing with many small polities within
       a sector, and most notably problematic when dealing with large polities occupying large portions of a sector.
   </p>
-    
-    
+
+
   <h2>Proposed Algorithm</h2>
   <p>
       In order to achieve the goal of automatic border production which matches the hand-crafted borders from <cite>Supplement 3:
@@ -107,15 +116,16 @@
       This algorithm is modeled on formalization of "concave hulls" known as <cite>Alpha Shapes</cite><a href="#ref_hull" class="reference">[2]</a>.
   </p>
   <p>
-      In 2D geometry, a convex hull is the minimal surface surrounding a set of points – consider an elastic band surrounding
+      In 2D geometry, a convex hull is the minimal surface surrounding a set of points &mdash; consider an elastic band surrounding
       push-pins on a cork board, and is a well defined shape for a set of points. A so-called "concave hull," by analogy, is an
-      informal notion that humans would tend to draw concave shapes around point sets with obvious concave features – consider
+      informal notion that humans would tend to draw concave shapes around point sets with obvious concave features &mdash; consider
       the Great Rift separating the Domain of Deneb from the main body of the Imperium.
   </p>
-    
-  <p><img alt="Imperial border near the Great Rift" width="252" height="271" src="bd_images/image003.jpg">
-      <span class="caption"><br />The Imperial border is not a convex hull</span>
-  </p>
+
+  <div class="figure">
+    <img alt="Imperial border near the Great Rift" width="252" height="271" src="bd_images/image003.jpg">
+    <span class="caption"><br>The Imperial border is not a convex hull</span>
+  </div>
   <p>
       <cite>Alpha Shapes</cite> formalize this notion by constructing a convex hull over a set of points via Delaunay triangulation
       of the set, but disallowing spans over a certain length characterized in the algorithm by &alpha;. This tends to produce
@@ -144,24 +154,24 @@
       In the following examples, it is assumed that the polity extends above and to the left of the shown worlds. This hints at
       another challenge when generating borders: the data present in a .SEC file covers only a single sector, so the creation
       of borders for polities that extend beyond a single sector is problematic. The original <cite>allygen</cite> tool has some
-      special cases to deal with the fact that .SEC data handles a single sector – a "border" one hex deep is assumed to exist
+      special cases to deal with the fact that .SEC data handles a single sector &mdash; a "border" one hex deep is assumed to exist
       around the sector and may be claimed by various heuristics, but is not unclaimed by others. In the proposed algorithm, the
       code is extended to load a 3 by 3 grid of .SEC data files so that correct borders can be generated for the central sector.
   </p>
 
-  <p><img alt="Iteration 1"  width="240" height="196" src="bd_images/image004.gif" /></p>
-  <p><img alt="Iteration 2"  width="240" height="196" src="bd_images/image005.gif" /></p>
-  <p><img alt="Iteration 3"  width="240" height="204" src="bd_images/image006.gif" /></p>
-  <p><img alt="Iteration 4"  width="240" height="196" src="bd_images/image007.gif" /></p>
-  <p><img alt="Iteration 5"  width="245" height="196" src="bd_images/image008.gif" /></p>
-  <p><img alt="Iteration 6"  width="240" height="196" src="bd_images/image009.gif" /></p>
-  <p><img alt="Iteration 7"  width="240" height="196" src="bd_images/image010.gif" /></p>
-  <p><img alt="Iteration 8"  width="240" height="196" src="bd_images/image011.gif" /></p>
-  <p><img alt="Iteration 9"  width="240" height="196" src="bd_images/image012.gif" /></p>
-  <p><img alt="Iteration 10" width="240" height="196" src="bd_images/image013.gif" /></p>
-  <p><img alt="Iteration 11" width="240" height="196" src="bd_images/image014.gif" /></p>
+  <div class="figure"><img alt="Iteration 1"  width="240" height="196" src="bd_images/image004.gif"></div>
+  <div class="figure"><img alt="Iteration 2"  width="240" height="196" src="bd_images/image005.gif"></div>
+  <div class="figure"><img alt="Iteration 3"  width="240" height="204" src="bd_images/image006.gif"></div>
+  <div class="figure"><img alt="Iteration 4"  width="240" height="196" src="bd_images/image007.gif"></div>
+  <div class="figure"><img alt="Iteration 5"  width="245" height="196" src="bd_images/image008.gif"></div>
+  <div class="figure"><img alt="Iteration 6"  width="240" height="196" src="bd_images/image009.gif"></div>
+  <div class="figure"><img alt="Iteration 7"  width="240" height="196" src="bd_images/image010.gif"></div>
+  <div class="figure"><img alt="Iteration 8"  width="240" height="196" src="bd_images/image011.gif"></div>
+  <div class="figure"><img alt="Iteration 9"  width="240" height="196" src="bd_images/image012.gif"></div>
+  <div class="figure"><img alt="Iteration 10" width="240" height="196" src="bd_images/image013.gif"></div>
+  <div class="figure"><img alt="Iteration 11" width="240" height="196" src="bd_images/image014.gif"></div>
   <p>
-      On its own, though, it is not sufficient – this will leave straight spans of empty hexes between filled hexes. In other
+      On its own, though, it is not sufficient &mdash; this will leave straight spans of empty hexes between filled hexes. In other
       words, rule 1 produces the <cite>convex hull</cite> of a polity, but we want the <cite>Alpha Shape</cite>. Therefore, once
       a steady state has been reached by applying rule 1, we break out the next heuristic.
   </p>
@@ -185,19 +195,19 @@
       This is analogous to the careful selection of &alpha;-values when producing <cite>Alpha Shapes</cite>.
   </p>
 
-  <p>
-      <img alt="The Horn of Vland" width="233" height="225" src="bd_images/image018.jpg" />
-      <span class="caption"><br />Example: The Horn of Vland</span>
-  </p>
+  <div class="figure">
+      <img alt="The Horn of Vland" width="233" height="225" src="bd_images/image018.jpg">
+      <span class="caption"><br>Example: The Horn of Vland</span>
+  </div>
 
-  <p><img alt="Iteration 12" width="240" height="196" src="bd_images/image019.gif" /></p>
-  <p><img alt="Iteration 13" width="240" height="196" src="bd_images/image020.gif" /></p>
+  <div class="figure"><img alt="Iteration 12" width="240" height="196" src="bd_images/image019.gif"></div>
+  <div class="figure"><img alt="Iteration 13" width="240" height="196" src="bd_images/image020.gif"></div>
   <p>
       Then keep repeating rules #1 and #2 until no changes are made. More precisely, apply rule #1 until a steady state is reached,
       then if rule #2 results in changes, resume applying rule #1.
   </p>
-  <p><img alt="Iteration 14" width="240" height="196" src="bd_images/image021.gif" /></p>
-  <p><img alt="Iteration 15" width="240" height="196" src="bd_images/image022.gif" /></p>
+  <div class="figure"><img alt="Iteration 14" width="240" height="196" src="bd_images/image021.gif"></div>
+  <div class="figure"><img alt="Iteration 15" width="240" height="196" src="bd_images/image022.gif"></div>
 
 
   <h2>Known Issues and Future Directions</h2>
@@ -207,7 +217,7 @@
       can occur in other configurations, such as worlds offset by one column and separated by two hexes. To address this, a new
       heuristic will need to be introduced.
   </p>
-  <p><img alt="Known Issue" width="173" height="120" src="bd_images/image023.gif" /></p>
+  <div class="figure"><img alt="Known Issue" width="173" height="120" src="bd_images/image023.gif"></div>
   <p>
       Non-aligned worlds that end up "within" polities are not considered. In the classic <cite class="traveller">Traveller</cite>
       references, borders are not consistently shown for these hexes.
@@ -215,16 +225,16 @@
 
 
   <h2>References</h2>
-    
+
   <ol>
       <li id="ref_g2p">
-          J. Greely, 
-          <cite>Gateway to PDF</cite>, 
+          J. Greely,
+          <cite>Gateway to PDF</cite>,
           <a href="http://dotclue.org/t20/">http://dotclue.org/t20/</a>
       </li>
       <li id="ref_hull">
-          Ken Clarkson, 
-          <cite>hull – convex hulls, Delaunay triangulations, alpha shapes</cite>, 
+          Ken Clarkson,
+          <cite>hull &mdash; convex hulls, Delaunay triangulations, alpha shapes</cite>,
           <a href="http://www.netlib.org/voronoi/hull.html">http://www.netlib.org/voronoi/hull.html</a>
       </li>
   </ol>
