@@ -3,9 +3,16 @@
 // Test Helpers
 //
 
+var SERVICE_BASE = (function(l) {
+  'use strict';
+  if (l.hostname === 'localhost' && l.pathname.indexOf('~') !== -1)
+    return 'http://travellermap.com';
+  return '';
+}(window.location));
+
 function fetchXML(uri) {
   var xhr = new XMLHttpRequest();
-  xhr.open('GET', '../' + uri, false);
+  xhr.open('GET', SERVICE_BASE + '/' + uri, false);
   xhr.setRequestHeader('Accept', 'text/xml');
   xhr.send();
 
@@ -16,7 +23,7 @@ function fetchXML(uri) {
 
 function fetchJSON(uri) {
   var xhr = new XMLHttpRequest();
-  xhr.open('GET', '../' + uri, false);
+  xhr.open('GET', SERVICE_BASE + '/' + uri, false);
   xhr.setRequestHeader('Accept', 'application/json');
   xhr.send();
   assertEquals(xhr.status, 200, 'Expected HTTP 200 OK status, saw: ' + xhr.status);
@@ -44,7 +51,7 @@ function testJSON(uri, expected) {
 
 function checkType(uri, expected_type, headers) {
   var xhr = new XMLHttpRequest(), result_type;
-  xhr.open('GET', '../' + uri, false);
+  xhr.open('GET', SERVICE_BASE + '/' + uri, false);
   if (headers) {
     Object.keys(headers).forEach(function(key) {
       xhr.setRequestHeader(key, headers[key]);
@@ -60,7 +67,7 @@ function checkType(uri, expected_type, headers) {
 function getBlob(url, type) {
   // possibly do this using XHR2 with xhr.contentType = 'blob'
   var xhr = new XMLHttpRequest();
-  xhr.open('GET', '../' + url, false);
+  xhr.open('GET', SERVICE_BASE + '/' + url, false);
   xhr.send();
   assertEquals(xhr.status, 200, 'Expected HTTP 200 OK for ' + url + ', saw: ' + xhr.status);
   assertEquals(xhr.getResponseHeader('Content-Type'), type, 'Incorrect Content-Type for ' + url + ': ' + xhr.getResponseHeader('Content-Type'));
@@ -235,14 +242,12 @@ typeTest('data/$sector/$hex/jump/$jump/image', 'image/png');
 
   test("No Accept: " + api, function() {
     var xhr = new XMLHttpRequest(), result_type;
-    xhr.open('GET', '../' + api, false);
+    xhr.open('GET', SERVICE_BASE + '/' + api, false);
     xhr.setRequestHeader("Accept", "");
     xhr.send();
     assertEquals(xhr.status, 200, 'Expected HTTP 200 OK status, saw: ' + xhr.status);
   });
 });
-
-
 
 // Initiate Test Harness
 

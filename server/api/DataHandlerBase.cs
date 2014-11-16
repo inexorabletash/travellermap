@@ -177,6 +177,9 @@ namespace Maps.API
             if (context.Request["accept"] != null)
                 yield return context.Request["accept"];
 
+            if (context.Request.Headers["accept"] != null)
+                yield return context.Request.Headers["accept"];
+
             if (queryDefaults != null && queryDefaults.ContainsKey("accept"))
                 yield return queryDefaults["accept"].ToString();
 
