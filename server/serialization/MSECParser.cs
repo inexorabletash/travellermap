@@ -106,12 +106,12 @@ namespace Maps.Serialization
                             route.StartOffsetX = Int32.Parse(tokens[cur++], NumberStyles.Integer, CultureInfo.InvariantCulture);
                         if (Regex.IsMatch(tokens[cur], @"^[-+]?[01]$"))
                             route.StartOffsetY = Int32.Parse(tokens[cur++], NumberStyles.Integer, CultureInfo.InvariantCulture);
-                        route.Start = Int32.Parse(tokens[cur++], NumberStyles.Integer, CultureInfo.InvariantCulture);
+                        route.Start = Astrometrics.HexToInt(tokens[cur++]);
                         if (Regex.IsMatch(tokens[cur], @"^[-+]?[01]$"))
                             route.EndOffsetX = Int32.Parse(tokens[cur++], NumberStyles.Integer, CultureInfo.InvariantCulture);
                         if (Regex.IsMatch(tokens[cur], @"^[-+]?[01]$"))
                             route.EndOffsetY = Int32.Parse(tokens[cur++], NumberStyles.Integer, CultureInfo.InvariantCulture);
-                        route.End = Int32.Parse(tokens[cur++], NumberStyles.Integer, CultureInfo.InvariantCulture);
+                        route.End = Astrometrics.HexToInt(tokens[cur++]);
                         if (cur < tokens.Length)
                             route.ColorHtml = tokens[cur++];
 

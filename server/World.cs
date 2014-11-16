@@ -33,19 +33,14 @@ namespace Maps
 
         public string Hex
         {
-            get { return (X * 100 + Y).ToString("0000", CultureInfo.InvariantCulture); }
-            set { int hex = Int32.Parse(value, CultureInfo.InvariantCulture); X = hex / 100; Y = hex % 100; }
+            get { return Astrometrics.IntToHex(X * 100 + Y); }
+            set { int hex = Astrometrics.HexToInt(value); X = hex / 100; Y = hex % 100; }
         }
 
         [XmlIgnore,JsonIgnore]
         public string SubsectorHex
         {
-            get
-            {
-                return
-                    (((X - 1) % 8 + 1) * 100 +
-                    ((Y - 1) % 10 + 1)).ToString("0000", CultureInfo.InvariantCulture);
-            }
+            get { return Astrometrics.IntToHex(((X - 1) % Astrometrics.SubsectorWidth + 1) * 100 + ((Y - 1) % Astrometrics.SubsectorHeight + 1)); }
         }
 
         [XmlElement("UWP"),JsonName("UWP")]

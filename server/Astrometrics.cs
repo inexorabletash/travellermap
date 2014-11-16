@@ -1,5 +1,6 @@
 using System;
 using System.Drawing;
+using System.Globalization;
 
 namespace Maps
 {
@@ -121,7 +122,30 @@ namespace Maps
 
             return new Point(c, r);
         }
+
+        public static string PointToHex(Point pt)
+        {
+            return (pt.X * 100 + pt.Y).ToString("0000", CultureInfo.InvariantCulture);
+        }
+
+        public static string IntToHex(int i)
+        {
+            return i.ToString("0000", CultureInfo.InvariantCulture);
+        }
+
+        public static Point HexToPoint(string s)
+        {
+            int hex;
+            if (Int32.TryParse(s, out hex))
+            {
+                return new Point(hex / 100, hex % 100);
+            }
+            return new Point();
+        }
+
+        public static int HexToInt(string s)
+        {
+            return Int32.Parse(s, NumberStyles.Integer, CultureInfo.InvariantCulture);
+        }
     }
-
-
 }

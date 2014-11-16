@@ -816,8 +816,8 @@ namespace Maps
         [XmlAttribute("LabelPosition"),JsonName("LabelPosition")]
         public string LabelPositionHex
         {
-            get { return (LabelPosition.X * 100 + LabelPosition.Y).ToString("0000", CultureInfo.InvariantCulture); }
-            set { int hex; if (Int32.TryParse(value, out hex)) LabelPosition = new Point(hex / 100, hex % 100); }
+            get { return Astrometrics.PointToHex(LabelPosition); }
+            set { LabelPosition = Astrometrics.HexToPoint(value); }
         }
 
         [XmlAttribute]
@@ -837,7 +837,7 @@ namespace Maps
             {
                 string[] hexes = new string[Path.Length];
                 for (int i = 0; i < Path.Length; i++)
-                    hexes[i] = Path[i].ToString("0000", CultureInfo.InvariantCulture);
+                    hexes[i] = Astrometrics.IntToHex(Path[i]);
                 return String.Join(" ", hexes);
             }
             set
@@ -874,7 +874,7 @@ namespace Maps
                     LabelPosition = new Point((min.X + max.X + 1) / 2, (min.Y + max.Y + 1) / 2); // "+ 1" to round up
 
                 Extends = (min.X < 1 || min.Y < 1 || max.X > Astrometrics.SectorWidth || max.Y > Astrometrics.SectorHeight);
-            }
+            }           
         }
 
         [XmlIgnoreAttribute,JsonIgnore]
@@ -919,11 +919,25 @@ namespace Maps
                 ColorHtml = color;
         }
 
-        [XmlAttribute]
+        [XmlIgnoreAttribute, JsonIgnore]
         public int Start { get; set; }
 
-        [XmlAttribute]
+        [XmlIgnoreAttribute, JsonIgnore]
         public int End { get; set; }
+
+        [XmlAttribute("Start"), JsonName("Start")]
+        public string StartHex 
+        {
+            get { return Astrometrics.IntToHex(Start); } 
+            set { Start = Astrometrics.HexToInt(value); }
+        }
+
+        [XmlAttribute("End"), JsonName("End")]
+        public string EndHex
+        {
+            get { return Astrometrics.IntToHex(End); }
+            set { End = Astrometrics.HexToInt(value); }
+        }
 
         [XmlIgnoreAttribute, JsonIgnore]
         public Point StartOffset { get; set; }
@@ -988,7 +1002,7 @@ namespace Maps
                 s += StartOffsetY.ToString(CultureInfo.InvariantCulture);
                 s += " ";
             }
-            s += Start.ToString("0000", CultureInfo.InvariantCulture);
+            s += StartHex;
             s += " ";
             if (EndOffsetX != 0 || EndOffsetY != 0)
             {
@@ -997,7 +1011,7 @@ namespace Maps
                 s += EndOffsetY.ToString(CultureInfo.InvariantCulture);
                 s += " ";
             }
-            s += End.ToString("0000", CultureInfo.InvariantCulture);
+            s += EndHex;
             return s;
         }
     }

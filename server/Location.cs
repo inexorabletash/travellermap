@@ -82,15 +82,15 @@ namespace Maps
 
         public string HexString
         {
-            get { return (HexLocation.X * 100 + HexLocation.Y).ToString("0000", CultureInfo.InvariantCulture); }
+            get { return Astrometrics.PointToHex(HexLocation); }
         }
 
         public string SubsectorHexString
         {
             get
             {
-                return (((HexLocation.X - 1) % 8 + 1) * 100 +
-                        ((HexLocation.Y - 1) % 10 + 1)).ToString("0000", CultureInfo.InvariantCulture);
+                return Astrometrics.IntToHex((((HexLocation.X - 1) % 8 + 1) * 100 +
+                        ((HexLocation.Y - 1) % 10 + 1)));
             }
         }
 
