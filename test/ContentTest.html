@@ -4,14 +4,19 @@
 <link rel="shortcut icon" href="../favicon.ico">
 <link rel="stylesheet" type="text/css" href="../site.css?update=2014-01-07">
 <script src="../lib/polyfill/polyfill.min.js?update=2014-09-08"></script>
+<script src="../lib/polyfill/es6.js?update=2014-09-08"></script>
+<script src="../lib/polyfill/url.js?update=2014-09-08"></script>
+<script src="../lib/polyfill/experimental/fetch.js?update=2014-09-08"></script>
 
 <style>
 tbody#results td,
 tbody#results th { width: 256px; overflow: hidden; }
-tbody#results td { max-height: 256px;
-                   overflow: auto;
-                   white-space: pre;
-                   vertical-align: top; }
+tbody#results td { vertical-align: top; padding: 0; }
+tbody#results textarea { margin: 0; border: 0;
+                         height: 256px;
+                         width: 256px;
+                         white-space: pre;
+                         overflow: scroll; }
 tbody#results tr.pass td { border: 1px solid green; }
 tbody#results tr.fail td { border: 1px solid red; }
 
@@ -41,9 +46,14 @@ tbody#results tr.fail td { border: 1px solid red; }
 <script src="ContentTest.js"></script>
 <script>
 
-  // Ensure diff is working
-  check('text/plain', 'test/a.txt', 'test/b.txt');
-  check('text/plain', 'test/a.txt', 'test/a.txt');
-  check('text/plain', 'test/a.txt', 'test/c.txt');
+  var SERVICE_BASE = (function(l) {
+    'use strict';
+    if (l.hostname === 'localhost' && l.pathname.indexOf('~') !== -1)
+      return 'http://travellermap.com';
+    return '';
+  }(window.location));
+
+check('application/json', 'refs/data_spin_1910.json', SERVICE_BASE + '/data/spin/1910');
+check('text/xml', 'refs/data_spin_1910.xml', SERVICE_BASE + '/data/spin/1910');
 
 </script>
