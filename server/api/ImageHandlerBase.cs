@@ -95,13 +95,18 @@ namespace Maps.API
             {
                 if (transparent)
                     bitmap.MakeTransparent();
-                
+
                 using (var g = Graphics.FromImage(bitmap))
                 {
                     g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+                    g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                    g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+                    g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
 
                     using (var graphics = XGraphics.FromGraphics(g, new XSize(tileSize.Width * devicePixelRatio, tileSize.Height * devicePixelRatio)))
                     {
+                        graphics.SmoothingMode = XSmoothingMode.HighQuality;
+
                         if (devicePixelRatio != 0)
                             graphics.ScaleTransform(devicePixelRatio);
 
