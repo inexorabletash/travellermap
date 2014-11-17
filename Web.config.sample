@@ -96,6 +96,12 @@
           cacheControlCustom="public"
           cacheControlMode="UseMaxAge"
           cacheControlMaxAge="24:00:00" />
+      <mimeMap fileExtension=".json" mimeType="application/json" />
+      <mimeMap fileExtension=".sec" mimeType="text/plain" />
+      <mimeMap fileExtension=".msec" mimeType="text/plain" />
+      <mimeMap fileExtension=".t5col" mimeType="text/plain" />
+      <mimeMap fileExtension=".t5tab" mimeType="text/plain" />
+      <mimeMap fileExtension=".tab" mimeType="text/plain" />
     </staticContent>
   </system.webServer>
 
