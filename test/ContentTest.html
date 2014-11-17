@@ -104,4 +104,28 @@ check('text/plain; charset=Windows-1252',
       'refs/sec_legend_sscoords.sec',
       SERVICE_BASE + '/api/sec?sector=legend&type=Legacy&sscoords=1', filter_timestamp);
 
+// Metadata API
+
+check('text/xml',
+      'refs/metadata_legend.xml',
+      SERVICE_BASE + '/api/metadata?sector=legend');
+check('application/json',
+      'refs/metadata_legend.json',
+      SERVICE_BASE + '/api/metadata?sector=legend');
+
+// MSEC API
+
+check('text/plain; charset=utf-8',
+      'refs/msec_legend.txt',
+      SERVICE_BASE + '/api/msec?sector=legend', filter_timestamp);
+
+// JumpWorlds API
+
+check('text/xml',
+      'refs/jumpworlds_legend_0602.xml',
+      SERVICE_BASE + '/api/jumpworlds?sector=legend&hex=0602&jump=1');
+check('application/json',
+      'refs/jumpworlds_legend_0602.json',
+      SERVICE_BASE + '/api/jumpworlds?sector=legend&hex=0602&jump=1');
+
 </script>

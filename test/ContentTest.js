@@ -44,8 +44,10 @@
       });
     }
 
+    var requestContentType = contentType.replace(/;.*/, '');
+
     return Promise.all([fetch(url1).then(getHeaderAndBody),
-                 fetch(url2, {headers: {Accept: contentType }}).then(getHeaderAndBody)])
+                 fetch(url2, {headers: {Accept: requestContentType }}).then(getHeaderAndBody)])
       .then(function(responses) {
         var a = 'Content-Type: ' + contentType + '\n'
               + responses[0].text;
