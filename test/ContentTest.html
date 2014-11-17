@@ -20,14 +20,22 @@ tbody#results textarea { margin: 0; border: 0;
 tbody#results tr.pass td { border: 1px solid green; }
 tbody#results tr.fail td { border: 1px solid red; }
 
+#status_tests, #status_passed, #status_failed { font-weight: bold; }
+
 </style>
 <h1>The Traveller Map - Content Reference Tests</h1>
 <div class="content">
   <section>
     <p>
-    This page compares reference text content  (left) with content fetched from <a href="../doc/api">APIs</a> (middle) to check for
-    unintentionally introduced differences (right). The first row is intentionally incorrect, and shows what would happen if coordinates were
-    calculated incorrectly. All other rows should have no differences. <b>&Omega;</b>
+    This page compares reference text content (left) with content
+    fetched from <a href="../doc/api">APIs</a> (middle) to check for
+    unintentionally introduced differences (right).
+    <b>&Omega;</b>
+    </p>
+    <p>
+      Tests: <span id="status_tests"></span>
+      Passed: <span id="status_passed"></span>
+      Failed: <span id="status_failed"></span>
     </p>
   </section>
   <section>
@@ -46,14 +54,54 @@ tbody#results tr.fail td { border: 1px solid red; }
 <script src="ContentTest.js"></script>
 <script>
 
-  var SERVICE_BASE = (function(l) {
-    'use strict';
-    if (l.hostname === 'localhost' && l.pathname.indexOf('~') !== -1)
-      return 'http://travellermap.com';
-    return '';
-  }(window.location));
+var SERVICE_BASE = (function(l) {
+  'use strict';
+  if (l.hostname === 'localhost' && l.pathname.indexOf('~') !== -1)
+    return 'http://travellermap.com';
+  return '';
+}(window.location));
+
+// Usage:
+//   check(contentType, expectedURI, actualURI, filter_opt);
+
+// Sanity Tests
 
 check('application/json', 'refs/data_spin_1910.json', SERVICE_BASE + '/data/spin/1910');
 check('text/xml', 'refs/data_spin_1910.xml', SERVICE_BASE + '/data/spin/1910');
+
+// Coordinates API
+
+check('application/json', 'refs/coordinates_spin.json', SERVICE_BASE + '/api/coordinates?sector=spin');
+check('text/xml', 'refs/coordinates_spin.xml', SERVICE_BASE + '/api/coordinates?sector=spin');
+
+check('application/json', 'refs/coordinates_spin_1910.json', SERVICE_BASE + '/api/coordinates?sector=spin&hex=1910');
+check('text/xml', 'refs/coordinates_spin_1910.xml', SERVICE_BASE + '/api/coordinates?sector=spin&hex=1910');
+
+check('application/json', 'refs/credits_legend.json', SERVICE_BASE + '/api/credits?sector=legend');
+check('text/xml', 'refs/credits_legend.xml', SERVICE_BASE + '/api/credits?sector=legend');
+
+check('application/json', 'refs/credits_0_0.json', SERVICE_BASE + '/api/credits?x=0&y=0');
+check('text/xml', 'refs/credits_0_0.xml', SERVICE_BASE + '/api/credits?x=0&y=0');
+
+// Sector Data API
+
+check('text/plain; charset=utf-8',
+      'refs/sec_legend.t5col',
+      SERVICE_BASE + '/api/sec?sector=legend', filter_timestamp);
+check('text/plain; charset=utf-8',
+      'refs/sec_legend.t5tab',
+      SERVICE_BASE + '/api/sec?sector=legend&type=TabDelimited');
+check('text/plain; charset=Windows-1252',
+      'refs/sec_legend.sec',
+      SERVICE_BASE + '/api/sec?sector=legend&type=Legacy', filter_timestamp);
+check('text/plain; charset=Windows-1252',
+      'refs/sec_legend_nometa.sec',
+      SERVICE_BASE + '/api/sec?sector=legend&type=Legacy&metadata=0');
+check('text/plain; charset=Windows-1252',
+      'refs/sec_legend_noheader.sec',
+      SERVICE_BASE + '/api/sec?sector=legend&type=Legacy&header=0', filter_timestamp);
+check('text/plain; charset=Windows-1252',
+      'refs/sec_legend_sscoords.sec',
+      SERVICE_BASE + '/api/sec?sector=legend&type=Legacy&sscoords=1', filter_timestamp);
 
 </script>
