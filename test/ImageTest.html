@@ -35,6 +35,13 @@ tbody#results tr.fail td { border: 1px solid red; }
 </div>
 
 <script>
+  var SERVICE_BASE = (function(l) {
+    'use strict';
+    if (l.hostname === 'localhost' && l.pathname.indexOf('~') !== -1)
+      return 'http://travellermap.com';
+    return '';
+  }(window.location));
+
   var DEFAULT_THRESHOLD = 8;
   var DEFAULT_COUNT = 0;
 
@@ -132,7 +139,7 @@ tbody#results tr.fail td { border: 1px solid red; }
     tr = document.createElement('tr');
     document.querySelector('#results').appendChild(tr);
 
-    compareImages("./" + url1, "../" + url2, threshold, count, function(a, b, c, pass) {
+    compareImages(url1, url2, threshold, count, function(a, b, c, pass) {
       for (var i = 0; i < 3; ++i) {
         var item = arguments[i];
         td = document.createElement('td');
@@ -144,58 +151,58 @@ tbody#results tr.fail td { border: 1px solid red; }
   }
 
   // Ensure image diff is working
-  check("ref_bad_example.png", "api/jumpmap?sector=Spinward+Marches&hex=1911&jump=2");
+  check("refs/ref_bad_example.png", SERVICE_BASE + "/api/jumpmap?sector=Spinward+Marches&hex=1911&jump=2");
 
   // Basics
-  check("ref1.png", "api/jumpmap?sector=Spinward+Marches&hex=1910&jump=3");
-  check("ref2.png", "api/poster?sector=Spinward+Marches", 24);
-  check("ref3.png", "api/poster?sector=Spinward+Marches&subsector=C");
+  check("refs/ref1.png", SERVICE_BASE + "/api/jumpmap?sector=Spinward+Marches&hex=1910&jump=3");
+  check("refs/ref2.png", SERVICE_BASE + "/api/poster?sector=Spinward+Marches", 24);
+  check("refs/ref3.png", SERVICE_BASE + "/api/poster?sector=Spinward+Marches&subsector=C");
 
   // Scales
-  check("ref4.png",  "api/tile?x=-0.5&y=-0.5&scale=0.016", 32);
-  check("ref5.png",  "api/tile?x=-0.5&y=-0.5&scale=0.031", 32);
-  check("ref6.png",  "api/tile?x=-0.5&y=-0.5&scale=0.063", 32);
-  check("ref7.png",  "api/tile?x=-0.5&y=-0.5&scale=0.125", 32);
-  check("ref8.png",  "api/tile?x=-0.5&y=-0.5&scale=0.25", 32);
-  check("ref9.png",  "api/tile?x=-0.5&y=-0.5&scale=0.5", 32);
-  check("ref10.png", "api/tile?x=-0.5&y=-0.5&scale=1");
-  check("ref11.png", "api/tile?x=-0.5&y=-0.5&scale=2");
-  check("ref12.png", "api/tile?x=-0.5&y=-0.5&scale=4");
-  check("ref13.png", "api/tile?x=-0.5&y=-0.5&scale=8");
-  check("ref14.png", "api/tile?x=-0.5&y=-0.5&scale=16");
-  check("ref15.png", "api/tile?x=-0.5&y=-0.5&scale=32");
-  check("ref16.png", "api/tile?x=-0.5&y=-0.5&scale=64");
-  check("ref17.png", "api/tile?x=-0.5&y=-0.5&scale=128");
-  check("ref18.png", "api/tile?x=-0.5&y=-0.5&scale=256");
+  check("refs/ref4.png",  SERVICE_BASE + "/api/tile?x=-0.5&y=-0.5&scale=0.016", 32);
+  check("refs/ref5.png",  SERVICE_BASE + "/api/tile?x=-0.5&y=-0.5&scale=0.031", 32);
+  check("refs/ref6.png",  SERVICE_BASE + "/api/tile?x=-0.5&y=-0.5&scale=0.063", 32);
+  check("refs/ref7.png",  SERVICE_BASE + "/api/tile?x=-0.5&y=-0.5&scale=0.125", 32);
+  check("refs/ref8.png",  SERVICE_BASE + "/api/tile?x=-0.5&y=-0.5&scale=0.25", 32);
+  check("refs/ref9.png",  SERVICE_BASE + "/api/tile?x=-0.5&y=-0.5&scale=0.5", 32);
+  check("refs/ref10.png", SERVICE_BASE + "/api/tile?x=-0.5&y=-0.5&scale=1");
+  check("refs/ref11.png", SERVICE_BASE + "/api/tile?x=-0.5&y=-0.5&scale=2");
+  check("refs/ref12.png", SERVICE_BASE + "/api/tile?x=-0.5&y=-0.5&scale=4");
+  check("refs/ref13.png", SERVICE_BASE + "/api/tile?x=-0.5&y=-0.5&scale=8");
+  check("refs/ref14.png", SERVICE_BASE + "/api/tile?x=-0.5&y=-0.5&scale=16");
+  check("refs/ref15.png", SERVICE_BASE + "/api/tile?x=-0.5&y=-0.5&scale=32");
+  check("refs/ref16.png", SERVICE_BASE + "/api/tile?x=-0.5&y=-0.5&scale=64");
+  check("refs/ref17.png", SERVICE_BASE + "/api/tile?x=-0.5&y=-0.5&scale=128");
+  check("refs/ref18.png", SERVICE_BASE + "/api/tile?x=-0.5&y=-0.5&scale=256");
 
   // Rotation
-  check("ref19.png", "api/poster?sector=Spinward+Marches&scale=8&rotation=0");
-  check("ref20.png", "api/poster?sector=Spinward+Marches&scale=8&rotation=1");
-  check("ref21.png", "api/poster?sector=Spinward+Marches&scale=8&rotation=2");
-  check("ref22.png", "api/poster?sector=Spinward+Marches&scale=8&rotation=3");
+  check("refs/ref19.png", SERVICE_BASE + "/api/poster?sector=Spinward+Marches&scale=8&rotation=0");
+  check("refs/ref20.png", SERVICE_BASE + "/api/poster?sector=Spinward+Marches&scale=8&rotation=1");
+  check("refs/ref21.png", SERVICE_BASE + "/api/poster?sector=Spinward+Marches&scale=8&rotation=2");
+  check("refs/ref22.png", SERVICE_BASE + "/api/poster?sector=Spinward+Marches&scale=8&rotation=3");
 
   // Options and Styles
-  check("ref23.png", "api/poster?sector=Spinward+Marches&subsector=C&routes=0");
-  check("ref24.png", "api/poster?sector=Spinward+Marches&subsector=C&sscoords=1");
-  check("ref25.png", "api/tile?x=-0.5&y=-0.5&scale=32&options=8192"); // Force Hexes
-  check("ref26.png", "api/poster?sector=Spinward+Marches&subsector=C&style=Atlas");
-  check("ref27.png", "api/poster?sector=Spinward+Marches&subsector=C&style=Print");
-  check("ref28.jpg", "api/poster?sector=Spinward+Marches&subsector=C&style=Candy", 32, 32);
-  check("ref29.png", "api/poster?sector=Spinward+Marches&subsector=C&options=17271"); // World Colors
-  check("ref30.png", "api/poster?sector=Spinward+Marches&subsector=B&options=33655"); // Filled Borders
+  check("refs/ref23.png", SERVICE_BASE + "/api/poster?sector=Spinward+Marches&subsector=C&routes=0");
+  check("refs/ref24.png", SERVICE_BASE + "/api/poster?sector=Spinward+Marches&subsector=C&sscoords=1");
+  check("refs/ref25.png", SERVICE_BASE + "/api/tile?x=-0.5&y=-0.5&scale=32&options=8192"); // Force Hexes
+  check("refs/ref26.png", SERVICE_BASE + "/api/poster?sector=Spinward+Marches&subsector=C&style=Atlas");
+  check("refs/ref27.png", SERVICE_BASE + "/api/poster?sector=Spinward+Marches&subsector=C&style=Print");
+  check("refs/ref28.jpg", SERVICE_BASE + "/api/poster?sector=Spinward+Marches&subsector=C&style=Candy", 32, 32);
+  check("refs/ref29.png", SERVICE_BASE + "/api/poster?sector=Spinward+Marches&subsector=C&options=17271"); // World Colors
+  check("refs/ref30.png", SERVICE_BASE + "/api/poster?sector=Spinward+Marches&subsector=B&options=33655"); // Filled Borders
 
   if (String(location).indexOf('localhost') !== -1) {
     // Data Overview
-    check("ref31.png", "admin/overview");
+    check("refs/ref31.png", "admin/overview");
   }
 
   // Regression: hex selector calculation
-  check("ref32.png", "api/tile?x=-74&y=-86&scale=512&options=887&style=poster");
+  check("refs/ref32.png", SERVICE_BASE + "/api/tile?x=-74&y=-86&scale=512&options=887&style=poster");
   // Regression: candy sector grid lines
-  check("ref33.jpg", "api/tile?x=-0.5&y=-0.25&w=512&h=512&scale=32&options=9079&style=candy", 24);
+  check("refs/ref33.jpg", SERVICE_BASE + "/api/tile?x=-0.5&y=-0.25&w=512&h=512&scale=32&options=9079&style=candy", 24);
 
   // Quadrant
-  check("ref34.png", "api/poster/spin/alpha");
+  check("refs/ref34.png", SERVICE_BASE + "/api/poster/spin/alpha");
 
   // Template:
   // check(ref_image, live_image, opt_rgb_threshold, opt_num_bad_pixels);
