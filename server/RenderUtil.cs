@@ -144,6 +144,9 @@ namespace Maps.Rendering
                 g.RotateTransform(labelStyle.Rotation);
                 g.ScaleTransform(labelStyle.Scale.Width, labelStyle.Scale.Height);
 
+                if (labelStyle.Rotation != 0)
+                    g.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+
                 XSize size = g.MeasureString(text, font);
                 size.Width *= 2; // prevent cut-off e.g. when rotated
                 XRect bounds = new XRect(-size.Width / 2, -size.Height / 2, size.Width, size.Height);
