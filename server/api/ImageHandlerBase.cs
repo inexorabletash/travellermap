@@ -49,6 +49,8 @@ namespace Maps.API
             ctx.styles.dimUnofficialSectors = HandlerBase.GetBoolOption(context.Request, "dimunofficial", queryDefaults: queryDefaults, defaultValue: false);
 
             double devicePixelRatio = HandlerBase.GetDoubleOption(context.Request, "dpr", defaultValue: 1, queryDefaults: queryDefaults);
+            if (devicePixelRatio <= 0)
+                devicePixelRatio = 1;
 
             if (accepter.Accepts(context, MediaTypeNames.Application.Pdf))
             {
@@ -98,17 +100,11 @@ namespace Maps.API
 
                 using (var g = Graphics.FromImage(bitmap))
                 {
-                    g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-                    g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-                    g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-                    g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+                    g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
 
                     using (var graphics = XGraphics.FromGraphics(g, new XSize(tileSize.Width * devicePixelRatio, tileSize.Height * devicePixelRatio)))
                     {
-                        graphics.SmoothingMode = XSmoothingMode.HighQuality;
-
-                        if (devicePixelRatio != 0)
-                            graphics.ScaleTransform(devicePixelRatio);
+                        graphics.ScaleTransform(devicePixelRatio);
 
                         RenderToGraphics(ctx, rot, translateX, translateY, graphics);
                     }
