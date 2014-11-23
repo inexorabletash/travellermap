@@ -22,16 +22,16 @@ pre.example { font-family: 'Share Tech Mono', monospace; }
       represents a portion of the information presented in maps. Details
       such as borders and routes provide extra flavor to the visual
       presentation of sectors, and important details such as subsector names
-      also need to be captured. Together, this extra detail is descibed by
-      <a target="_blank" href="http://dotclue.org/t20/"J. Greely</a>
+      also need to be captured. Together, this extra detail is described by
+      <a target="_blank" href="http://dotclue.org/t20/">J. Greely</a>
       as <dfn>sector metadata</dfn>.
     </p>
 
     <p>
-      Greely describes a plain text metadata file format by example:
+      Greely defines a plain text metadata file format by example:
       <a target="_blank" href="http://dotclue.org/t20/SpinwardMarches.txt">SpinwardMarches.txt</a>
-      This is used by his
-      <a target="_blank" href="http://dotclue.org/t20/">sec2pdf tool</a>
+      This format is used by his
+      <a target="_blank" href="http://dotclue.org/t20/">sec2pdf</a> tool
       for generating PDF
       sector maps. The Traveller Map site supports most features of this
       "MSEC" format in the <a href="../make/poster">Poster Maker</a>
@@ -49,12 +49,14 @@ pre.example { font-family: 'Share Tech Mono', monospace; }
       tools can be used to ensure that files conform to the schema.
       The schema defines far more detail than is presented here, as it
       also allows for annotations regarding the source of the data,
-      relevant era, and so on. This is primarily of interest only for
-      managing the dataset of the entire map.
+      relevant era, and so on to be added to practically any element..
+      This is primarily of interest only for managing the dataset of
+      the entire map, and is the reasoning behind an extensible
+      XML-based format.
     </p>
 
     <p>
-      The basic structure is as follows:
+      The basic XML metadata file structure is as follows:
     </p>
 
 <script class="example" type="text/xml">
@@ -186,14 +188,26 @@ pre.example { font-family: 'Share Tech Mono', monospace; }
     <p>
       Borders are the most complex metadata type. Following the "MSEC"
       format, borders are defined by listing the hexes around the
-      perimeter. The start hex <em>must</em> be the uppermost
+      perimeter. Each <code>Border</code> element contains the hexes as
+      a list, e.g. <code>0101 0201 0102 0101</code>.
+      The start hex <em>must</em> be the uppermost
       (Coreward) hex in the leftmost (Spinward) column. The path then
       follows each hex clockwise around the bounded region until
       it returns to the start hex again.
     </p>
     <p>
-      Each <code>Border</code> element contains the hexes as
-      a list, e.g. <code>0101 0201 0102 0101</code>.
+      Borders support regions that extend beyond the edges of a
+      sector. This is done by using otherwise invalid 4-digit hex
+      codes (e.g. <code>0000</code>, <code>3341</code>), for a
+      one-hex buffer zone around the edge of the sector representing
+      adjacent sectors. The borders on these hexes are not drawn,
+      but are necessary to specify to satisfy the algorithm above.
+    </p>
+    <p class="aside">
+      It's easy to make a mistake when hand-coding borders following
+      the above rules. This will result in sometimes subtle, but often
+      dramatic visual glitches when rendering maps. Consider using
+      the <a href="../make/borders">Border Maker</a>.
     </p>
     <p>
       If a border specifies an <code>Allegiance</code> attribute which
@@ -241,9 +255,6 @@ pre.example { font-family: 'Share Tech Mono', monospace; }
     0506 0507 0508 0608 0609 0610 0611 0712 0612 0613 0614 0514 0413 0412
     0512 0511 0610 0609 0608 0508 0407 0307 0206 0106 0006 0005 0004 0003
     0002 0001 0000
-  </Border>
-  <Border Allegiance="Im" ShowLabel="false">
-    1329 1429 1430 1330 1329
   </Border>
   ...
 </Borders>
@@ -354,14 +365,14 @@ pre.example { font-family: 'Share Tech Mono', monospace; }
         (for routes) type.
         e.g. <code>border.Im</code>, <code>route.ZhCo</code>, <code>route.Trade</code></li>
       <li>Multiple selectors can be listed, separated with commas.
-        e.g. <code>border.JuPr, border.JuRu { color: blue; }</code>
+        e.g. <code>border.JuPr, border.JuRu { color: blue }</code>
       <li>You can use backslash (<code>\</code>) to escape characters like spaces e.g. <code>route.Core\ Route</code></li>
     </ul>
     <h4>Declarations (the bit in the back)</h4>
     <ul>
       <li>A declaration list occurs in <code>{</code> braces <code>}</code> after the selector list.</li>
-      <li>Each declaration has a property, colon (<code>:</code>), value, semicolon (<code>;</code>)</li>
-      <li>Semicolons are <em>terminators</em>, not <em>separators</em>. You need a trailing semicolon after every declaration. <em>This is different from CSS.</em></li>
+      <li>Separate multiple declarations with semicolons (<code>;</code>)</li>
+      <li>Each declaration has a property, colon (<code>:</code>), value
     </ul>
     <h4>Properties/Values</h4>
     <dl class="params">
@@ -376,9 +387,21 @@ pre.example { font-family: 'Share Tech Mono', monospace; }
     <ul>
       <li><code>color</code> and <code>style</code> apply to matching <code>Border</code> elements</li>
       <li><code>color</code>, <code>style</code> and <code>width</code> apply to matching <code>Route</code> elements</li>
-      <li>You can use <code>/* comments */</code> anywhere you can put spaces.</li>
+      <li>You can use C-style <code>/* comments */</code> anywhere you can put spaces.</li>
       <li>Just like in HTML, explicit values on an element take precedence over a matching stylesheet rule.</li>
     </ul>
+    <h4>Examples</h4>
+<script class="example" type="text/plain">
+<Stylesheet>
+  border.Im { color: red }
+  border.SoCf { color: orange }
+
+  route.Im, route.SoCf { color: green }
+
+  route.Trade { color: gray; style: dashed; width: 0.5 }
+  border.Hazard { color: #c02020; style: dotted }
+</Stylesheet>
+</script>
     <p>
       The following allegiance codes are recognized and matching
       routes and borders are automatically styled, although
@@ -393,18 +416,23 @@ pre.example { font-family: 'Share Tech Mono', monospace; }
       <code>Kk</code>
       <code>JuPr</code>
     </p>
+    <p class="aside">
+      Since T5SS codes are focused on the allegiance of a specific world to a
+      polity or domain, they don't precisely match the needs for metadata elements
+      such as routes or borders which implicitly span multiple worlds.
+      <code>SoCf</code> and <code>ZhCo</code> are T5SS allegiance
+      codes for those homogenous polities (Solomani Confederation and
+      Zhodani Consulate, respectively). <code>JuPr</code> is the generic code
+      for Julian Protectorate worlds although some may be aligned to a member
+      state of the protectorate. Imperial worlds are marked with the allegiance
+      e.g. <code>ImDd</code> for worlds in the Domain of Deneb, so a generic
+      <code>Im</code> code is used for Imperial routes and borders. Similarly,
+      Aslan worlds are associated with specific clans, but <code>As</code> is
+      retained as a code for the Hierate as a whole. No T5SS codes have
+      been defined for the Two Thousand Worlds or Hive Federation, so
+      <code>Kk</code> and <code>Hv</code> (respectiely) continue to be used.
 
-    <h4>Examples</h4>
-<script class="example" type="text/plain">
-<Stylesheet>
-  border.DaCf { color: lightblue; }
-  route.DaCf { color: lightgreen; }
-
-  border.SwCf { color: blue; }
-  route.SwCf { color: #006600; }
-</Stylesheet>
-</script>
-
+    </p>
   </section>
 </div>
 
