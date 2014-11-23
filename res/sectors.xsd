@@ -125,8 +125,9 @@
                     <xs:attribute name="EndOffsetX" type="xs:byte" use="optional" />
                     <xs:attribute name="EndOffsetY" type="xs:byte" use="optional" />
                     <xs:attribute name="Allegiance" type="xs:string" use="optional" />
-                    <xs:attribute name="Color" type="xs:string" use="optional" />
                     <xs:attribute name="Type" type="xs:string" use="optional" />
+                    <xs:attribute name="Color" type="xs:string" use="optional" />
+                    <xs:attribute name="Width" type="xs:float" use="optional" />
                     <xs:attribute name="Style" type="xs:string" use="optional" />
                     <xs:attributeGroup ref="metadata"/>
                   </xs:complexType>
@@ -144,6 +145,7 @@
                       <xs:extension base="xs:string">
                         <xs:attribute name="Allegiance" type="xs:string" use="required" />
                         <xs:attribute name="Color" type="xs:string" use="optional" />
+                        <xs:attribute name="Style" type="xs:string" use="optional" />
                         <xs:attribute name="Label" type="xs:string" use="optional" />
                         <xs:attribute name="ShowLabel" type="xs:boolean" use="optional" />
                         <xs:attribute name="WrapLabel" type="xs:boolean" use="optional" />

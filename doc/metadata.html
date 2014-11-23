@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<title>Sector Metadata</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="shortcut icon" href="../favicon.ico">
+<link rel="stylesheet" href="../site.css">
+<meta name="viewport" content="initial-scale=1, width=device-width">
+<script src="../lib/polyfill/polyfill.min.js?update=2014-09-08"></script>
+
+<style>
+pre.example { font-family: 'Share Tech Mono', monospace; }
+</style>
+
+<h1>The Traveller Map - Sector Metadata</h1>
+
+<div class="content">
+
+  <div id="intro">
+    <p>
+      Traditional <cite>Traveller</cite> <a href="doc/fileformats">sector
+      data</a> is a list of UWPs, describing the systems in the sector.
+      While this is adequate for most adventuring and exploration, it only
+      represents a portion of the information presented in maps. Details
+      such as borders and routes provide extra flavor to the visual
+      presentation of sectors, and important details such as subsector names
+      also need to be captured. Together, this extra detail is descibed by
+      <a target="_blank" href="http://dotclue.org/t20/"J. Greely</a>
+      as <dfn>sector metadata</dfn>.
+    </p>
+
+    <p>
+      Greely describes a plain text metadata file format by example:
+      <a target="_blank" href="http://dotclue.org/t20/SpinwardMarches.txt">SpinwardMarches.txt</a>
+      This is used by his
+      <a target="_blank" href="http://dotclue.org/t20/">sec2pdf tool</a>
+      for generating PDF
+      sector maps. The Traveller Map site supports most features of this
+      "MSEC" format in the <a href="../make/poster">Poster Maker</a>
+      and <a href="../make/poster">Booklet Maker</a>, but also supports an
+      extensible XML format specific to the site.
+    </p>
+  </div>
+
+  <section id="structure">
+    <h2>Metadata File Structure</h2>
+
+    <p>
+      The XML metadata format is formally described by a
+      <a href="../res/sectors.xsd">W3C XML Schema file</a>; validation
+      tools can be used to ensure that files conform to the schema.
+    </p>
+
+    <p>
+      The basic structure is as follows:
+    </p>
+
+<script class="example" type="text/xml">
+<?xml version="1.0"?>
+<Sector>
+  <Name>Spinward Marches</Name>
+
+  <!-- most common -->
+  <Subsectors>...</Subsectors>
+  <Routes>...</Routes>
+  <Borders>...</Borders>
+
+  <!-- less common -->
+  <Allegiances>...</Allegiances>
+  <Labels>...</Labels>
+  <Stylesheet>...</Stylesheet>
+</Sector>
+</script>
+
+  </section>
+
+  <section id="subsectors">
+    <h2>Subsectors</h2>
+    <p>
+      Subsector names are specified using one <code>Subsector</code>
+      element each, with the subsector name as the text content.
+    </p>
+    <h4>Attributes</h4>
+    <dl class="params">
+      <dt>Index</dt>
+      <dd>subsector position <code>A</code> - <code>P</code>
+    </dl>
+
+    <h4>Examples</h4>
+<script class="example" type="text/xml">
+<Subsectors>
+  <Subsector Index="A">Cronor</Subsector>
+  <Subsector Index="B">Jewell</Subsector>
+  <Subsector Index="C">Regina</Subsector>
+  <Subsector Index="D">Aramis</Subsector>
+  ...
+</Subsectors>
+</script>
+  </section>
+
+  <section id="routes">
+    <h2>Routes</h2>
+    <p>
+      Routes - representing the Imperial X-boat network, trade routes,
+      rift-crossing routes, and so on - are listed with each connection
+      requiring one <code>Route</code> element:
+    </p>
+
+    <h4>Attributes</h4>
+    </p>
+    <dl class="params">
+      <dt>Start</dt>
+      <dd>route start hex as <code><var>XXYY</var></code></dd>
+
+      <dt>End</dt>
+      <dd>route end hex as <code><var>XXYY</var></code></dd>
+      <dt>StartOffsetX</dt>
+      <dt>StartOffsetY</dt>
+      <dt>EndOffsetX</dt>
+      <dt>EndOffsetY</dt>
+      <dd>(optional) <code>1</code>, <code>-1</code>, or <code>0</code> (default)</dd>
+
+      <dt>Allegiance</dt>
+      <dd>(optional) Used with stylesheets. e.g. <code>ZhCo</code></dd>
+
+      <dt>Type</dt>
+      <dd>(optional) Used with stylesheets. e.g. <code>Trade</code>, <code>Communication</code>, etc</dd>
+
+      <dt>Style</dt>
+      <dd>(optional) one of
+        <code>Solid</code>, <code>Dashed</code> or <code>Dotted</code></dd>
+
+      <dt>Color</dt>
+      <dd>(optional) an HTML color name or code <code>#<var>RRGGBB</var></code></dd>
+
+      <dt>Width</dt>
+      <dd>(optional) a scaling factor, relative to the default width e.g. <code>1.5</code></dd>
+    </dl>
+
+    <h4>Examples</h4>
+<script class="example" type="text/xml">
+<Routes>
+  <Route Start="1106" End="1006" />
+  <Route Start="1106" End="1005" />
+  <Route Start="2140" EndOffsetY="1" End="2102" />
+  <Route Start="0001" End="0103" Allegiance="ZhCo" />
+  <Route Start="0103" End="0304" Allegiance="ZhCo" />
+  ...
+</Routes>
+</script>
+
+    <p>
+      Routes that extend past the bounds of a sector can use either otherwise
+      invalid 4-digit hex codes (e.g. <code>0000</code>, <code>3341</code>)
+      or indicate a sector offset x or y for the start or end hex, with negative
+      x being spinward and negative y being coreward. For example, these two
+      routes are identical:
+    </p>
+
+    <h4>Examples</h4>
+<script class="example" type="text/xml">
+<Route Start="0000" End="3341" />
+<Route Start="3240" StartOffsetX="-1" StartOffsetY="-1"
+       End="0101" EndOffsetX="1" EndOffsetY="1" />
+</script>
+
+    <p>
+      Routes can be styled either through direct use of the
+      <code>Style</code> and <code>Color</code> attributes, or
+      by <code>Stylesheet</code> definitions, referencing the
+      <code>Allegiance</code> or <code>Type</code> attributes
+      in style selectors.
+    </p>
+
+    <p>
+      Use the <a href="../make/routes">Route Maker</a> to assist in
+      authoring routes for your sectors.
+    </p>
+
+  </section>
+
+  <section id="borders">
+    <h2>Borders</h2>
+    <p>
+      Borders are the most complex metadata type. Following the "MSEC"
+      format, borders are defined by listing the hexes around the
+      perimeter. The start hex <em>must</em> be the uppermost
+      (Coreward) hex in the leftmost (Spinward) column. The path then
+      follows each hex clockwise around the bounded region until
+      it returns to the start hex again.
+    </p>
+    <p>
+      Each <code>Border</code> element contains the hexes as
+      a list, e.g. <code>0101 0201 0102 0101</code>.
+    </p>
+    <p>
+      If a border specifies an <code>Allegiance</code> attribute which
+      matches a known allegiance code, or an explicit <code>Label</code>
+      is given, a label is shown (by default) at the approximate center
+      of the bounded region.
+    </p>
+    <h4>Attributes</h4>
+    <dl class="params">
+      <dt>Allegiance</dt>
+      <dd>(optional) Used with stylesheets and for automatic labels. e.g. <code>ZhCo</code></dd>
+
+      <dt>ShowLabel</dt>
+      <dd>(optional) Must be <code>true</code> (default) or <code>false</code>
+        (to suppress the automatic label)</dd>
+
+      <dt>WrapLabel</dt>
+      <dd>(optional) Must be <code>false</code> (default) or <code>true</code>
+        (to wrap the label text onto multiple lines)</dd>
+
+      <dt>LabelPosition</dt>
+      <dd>(optional) Label hex position, as <code><var>XXYY</var></code></dd>
+
+      <dt>Label</dt>
+      <dd>(optional) Label text to use, regardless of a matching allegiance</dd>
+
+      <dt>Style</dt>
+      <dd>(optional) one of
+        <code>Solid</code>, <code>Dashed</code> or <code>Dotted</code></dd>
+
+      <dt>Color</dt>
+      <dd>(optional) an HTML color name or code <code>#<var>RRGGBB</var></code></dd>
+    </dl>
+
+    <h4>Examples</h4>
+<script class="example" type="text/xml">
+<Borders>
+  <Border Allegiance="DaCf" LabelPosition="0423" WrapLabel="true">
+    0223 0323 0422 0421 0522 0621 0721 0821 0822 0723 0724 0725 0726 0727
+    0728 0627 0527 0427 0426 0326 0325 0224 0223
+  </Border>
+  <Border Allegiance="ZhCo" LabelPosition="0205" WrapLabel="true">
+    0000 0100 0200 0101 0102 0202 0303 0403 0504 0604 0705 0804 0904 1003 1103
+    1102 1201 1302 1401 1402 1303 1202 1103 1003 0904 0804 0705 0604 0505
+    0506 0507 0508 0608 0609 0610 0611 0712 0612 0613 0614 0514 0413 0412
+    0512 0511 0610 0609 0608 0508 0407 0307 0206 0106 0006 0005 0004 0003
+    0002 0001 0000
+  </Border>
+  <Border Allegiance="Im" ShowLabel="false">
+    1329 1429 1430 1330 1329
+  </Border>
+  ...
+</Borders>
+</script>
+
+    <p>
+      Borders can be styled either through direct use of the
+      <code>Style</code> and <code>Color</code> attributes, or
+      by <code>Stylesheet</code> definitions, referencing the
+      <code>Allegiance</code>
+      in style selectors.
+    </p>
+
+    <p>
+      Use the <a href="../make/border">Border Maker</a> to assist in
+      authoring borders for your sectors.
+    </p>
+  </section>
+
+  <section id="allegiances">
+    <h2>Allegiances</h2>
+    <p>
+      Although there are common allegiance codes in use, e.g. <code>Im</code> for
+      the Third Imperium, custom allegiances may be necessary. These are defined
+      using <code>Allegiance</code> elements.
+    </p>
+    <h4>Attributes</h4>
+    <dl class="params">
+      <dt>Code</dt>
+      <dd>The abbreviation for the allegiance. This is matched by
+      <code>Border</code> elements to produce automatic labels.</dd>
+    </dl>
+    <p class="aside">
+      Although the <cite>Traveller<sup>5</sup> Second Survey</cite>
+      project is defining canonical four-character allegiance codes
+      (e.g. <code>ZhCo</code>) for polities in the Official Traveller
+      Universe, two-character allegiance codes (e.g. <code>Aq</code>)
+      should continue to be used for custom data. This is because the
+      Traveller Map site enforces that four-character codes are from
+      the T5SS list, and rejects unknown codes as errors to assist in
+      the project.
+    </p>
+    <h4>Examples</h4>
+<script class="example" type="text/xml">
+<Allegiances>
+  <Allegiance Code="Az">The Alntzar Domain</Allegiance>
+  <Allegiance Code="Bi">The Biumvirate</Allegiance>
+  <Allegiance Code="Ca">Colonade Administration District</Allegiance>
+  ...
+</Allegiances>
+</script>
+    <p>
+      Since allegiances are not directly displayed, they can be used
+      for other book-keeping, e.g. to conveniently annotate routes
+      with a shipping company.
+    </p>
+  </section>
+
+  <section id="labels">
+    <h2>Labels</h2>
+    <p>
+      In addition to the labels generated automatically for borders,
+      labels can be explicitly added using <code>Label</code> elements.
+      These can be used for labelling rift-crossing routes, navigation
+      hazards, and so on.
+    </p>
+    <h4>Attributes</h4>
+    <dl class="params">
+      <dt>Hex</dt>
+      <dd>label position as <code><var>XXYY</var></code></dd>
+
+      <dt>Color</dt>
+      <dd>an HTML color name or code <code>#<var>RRGGBB</var></code></dd>
+
+      <dt>Size</dt>
+      <dd>(optional) one of <code>small</code> or <code>large</code></dd>
+
+      <dt>Allegiance</dt>
+      <dd>Currently unused</dd>
+    </dl>
+    <h4>Examples</h4>
+<script class="example" type="text/xml">
+<Labels>
+  <Label Hex="0709" Color="white">J-5 Route</Label>
+  ...
+</Labels>
+</script>
+  </section>
+
+  <section id="stylesheet">
+    <h2>Stylesheet</h2>
+    <p>
+      Just as CSS provides a convenient way to define styles for HTML
+      documents, you can specify a <code>Stylesheet</code> element to
+      easily control the appearance of borders and routes
+      The syntax is intentionally similar to the CSS language used in
+      web pages. The basic structure is a list of rules:
+    </p>
+    <code>
+      selector, selector, ... { property: value; property: value; ... }
+    </code>
+
+    <h4>Selectors - (the bit up front)</h4>
+    <ul>
+      <li>Starts with a <var>type</var>: <code>border</code> or <code>route</code></li>
+      <li>The type is optionally followed by a period (<code>.</code>), then
+        a <var>class</var>. For <cite>Traveller</cite> this is the allegiance or
+        (for routes) type.
+        e.g. <code>border.Im</code>, <code>route.ZhCo</code>, <code>route.Trade</code></li>
+      <li>Multiple selectors can be listed, separated with commas.
+        e.g. <code>border.JuPr, border.JuRu { color: blue; }</code>
+      <li>You can use backslash (<code>\</code>) to escape characters like spaces e.g. <code>route.Core\ Route</code></li>
+    </ul>
+    <h4>Declarations (the bit in the back)</h4>
+    <ul>
+      <li>A declaration list occurs in <code>{</code> braces <code>}</code> after the selector list.</li>
+      <li>Each declaration has a property, colon (<code>:</code>), value, semicolon (<code>;</code>)</li>
+      <li>Semicolons are <em>terminators</em>, not <em>separators</em>. You need a trailing semicolon after every declaration. <em>This is different from CSS.</em></li>
+    </ul>
+    <h4>Properties/Values</h4>
+    <dl class="params">
+      <dt>color</dt>
+      <dd>HTML color name or code <code>#<var>RRGGBB</var></code></dd>
+      <dt>width</dt>
+      <dd>integer or floating point number</dd>
+      <dt>style</dt>
+      <dd>one of <code>solid</code>, <code>dashed</code>, or <code>dotted</code>
+    </dl>
+    <h4>Application Rules</h4>
+    <ul>
+      <li><code>color</code> and <code>style</code> apply to matching <code>Border</code> elements</li>
+      <li><code>color</code>, <code>style</code> and <code>width</code> apply to matching <code>Route</code> elements</li>
+      <li>You can use <code>/* comments */</code> anywhere you can put spaces.</li>
+      <li>Just like in HTML, explicit values on an element take precedence over a matching stylesheet rule.</li>
+    </ul>
+    <p>
+      The following allegiance codes are recognized and matching
+      routes and borders are automatically styled, although
+      a <code>Stylesheet</code> definition will take precedence.
+    </p>
+    <p>
+      <code>Im</code>
+      <code>SoCf</code>
+      <code>ZhCo</code>
+      <code>As</code>
+      <code>Hv</code>
+      <code>Kk</code>
+      <code>JuPr</code>
+    </p>
+
+    <h4>Examples</h4>
+<script class="example" type="text/plain">
+<Stylesheet>
+  border.DaCf { color: lightblue; }
+  route.DaCf { color: lightgreen; }
+
+  border.SwCf { color: blue; }
+  route.SwCf { color: #006600; }
+</Stylesheet>
+</script>
+
+  </section>
+
+</div>
+
+<div class="editorial">
+  <p>
+    The <em class="product">Traveller</em> game in all forms is owned by Far
+    Future Enterprises. Copyright &copy; 1977 &ndash; 2014 Far Future
+    Enterprises.
+    <a href="http://farfuture.net/FFEFairUsePolicy2008.pdf">Fair Use Policy</a>
+  </p>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  [].slice.call(document.querySelectorAll('script.example'))
+    .forEach(function(script) {
+      var pre = document.createElement('pre');
+      pre.className = 'code';
+      // TODO: Syntax Highlighting
+      pre.appendChild(document.createTextNode(script.innerHTML.trim()));
+      script.parentNode.replaceChild(pre, script);
+    });
+});
+</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-18610679-2', 'auto');
+  ga('send', 'pageview');
+</script>
