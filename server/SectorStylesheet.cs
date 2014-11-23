@@ -13,13 +13,13 @@ namespace Maps
         // Grammar: 
         //   stylesheet       := WS rule-list WS
         //   rule-list        := rule*
-        //   rule             := selector-list '{' WS declaration-list '}' WS
+        //   rule             := selector-list declaration-list
         //   selector-list    := selector WS ( ',' WS selector )* WS
         //   selector         := element ( '.' code )?
         //   element          := IDENT
         //   code             := IDENT
-        //   declaration-list := declaration*
-        //   declaration      := property WS ':' WS value WS ';' WS      // ';' is terminator, not separator
+        //   declaration-list := '{' WS declaration? ( ';' WS declaration? )*  '}' WS
+        //   declaration      := property WS ':' WS value WS
         //   property         := IDENT
         //   value            := IDENT | NUMBER | COLOR
         //   IDENT            := [A-Za-z_]([A-Za-z0-9_] | '\' ANY)* 
@@ -91,11 +91,7 @@ namespace Maps
             {
                 List<Selector> selectors = ParseSelectorList();
                 if (selectors == null) return null;
-                Expect('{');
-                WS();
                 List<Declaration> declarations = ParseDeclarationList();
-                Expect('}');
-                WS();
                 return new Rule(selectors, declarations);
             }
             public List<Selector> ParseSelectorList()
@@ -131,13 +127,22 @@ namespace Maps
             }
             public List<Declaration> ParseDeclarationList()
             {
+                Expect('{');
+                WS();
                 List<Declaration> declarations = new List<Declaration>();
-                while (true)
-                {
-                    Declaration declaration = ParseDeclaration();
-                    if (declaration == null) break;
+                Declaration declaration = ParseDeclaration();
+                if (declaration != null)
                     declarations.Add(declaration);
+                while (reader.Peek() == ';')
+                {
+                    Expect(';');
+                    WS();
+                    declaration = ParseDeclaration();
+                    if (declaration != null)
+                        declarations.Add(declaration);
                 }
+                Expect('}');
+                WS();
                 return declarations;
             }
             public Declaration ParseDeclaration()
@@ -149,8 +154,6 @@ namespace Maps
                 WS();
                 string value = ParseValue();
                 if (value == null) throw new ParseException("Expected value, saw: " + reader.ReadLine());
-                WS();
-                Expect(';');
                 WS();
                 return new Declaration(property, value);
             }
