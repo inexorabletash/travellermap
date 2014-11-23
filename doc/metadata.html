@@ -10,7 +10,7 @@
 pre.example { font-family: 'Share Tech Mono', monospace; }
 </style>
 
-<h1>The Traveller Map - Sector Metadata</h1>
+<h1>The Traveller Map - Sector Metadata File Format</h1>
 
 <div class="content">
 
@@ -33,15 +33,22 @@ pre.example { font-family: 'Share Tech Mono', monospace; }
       This format is used by his
       <a target="_blank" href="http://dotclue.org/t20/">sec2pdf</a> tool
       for generating PDF
-      sector maps. The Traveller Map site supports most features of this
-      "MSEC" format in the <a href="../make/poster">Poster Maker</a>
-      and <a href="../make/poster">Booklet Maker</a>, but also supports an
-      extensible XML format specific to the site.
+      sector maps. The Traveller Map site supports MSEC files in both the
+      "MSEC" format in the <a href="../make/poster">Poster Maker</a> and
+      other tools, but also supports an XML format specific to the site
+      that gives more options.
     </p>
+
+    <p class="aside">
+      For details on the non-meta data file format, see the
+      <a href="fileformats">Sector Data File Formats</a>
+      page.
+    </p>
+
   </div>
 
   <section id="structure">
-    <h2>Metadata File Structure</h2>
+    <h2>XML Metadata File Structure</h2>
 
     <p>
       The XML metadata format is formally described by a
