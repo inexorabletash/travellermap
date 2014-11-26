@@ -71,7 +71,8 @@ namespace Maps.API
             {
                 resultsList.AddRange(searchResults
                     .Select(loc => Results.LocationToSearchResult(map, resourceManager, loc))
-                    .OfType<Results.SearchResultItem>());
+                    .OfType<Results.SearchResultItem>()
+                    .OrderByDescending(item => item.Importance));
             }
 
             SendResult(context, resultsList);
@@ -152,6 +153,9 @@ namespace Maps.API
 
                 [XmlAttribute("sectorTags")]
                 public string SectorTags { get; set; }
+
+                [XmlIgnore, JsonIgnore]
+                public int? Importance { get; set; }
             }
 
             public static SearchResultItem LocationToSearchResult(SectorMap map, ResourceManager resourceManager, ItemLocation location)
@@ -174,6 +178,7 @@ namespace Maps.API
                     r.Name = world.Name;
                     r.Sector = sector.Names[0].Text;
                     r.Uwp = world.UWP;
+                    r.Importance = world.ImportanceValue;
 
                     return r;
                 }

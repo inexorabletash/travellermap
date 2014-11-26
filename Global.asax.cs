@@ -153,6 +153,7 @@ namespace Maps
             "/doc/api",
             "/doc/credits",
             "/doc/fileformats",
+            "/doc/metadata",
             "/doc/secondsurvey",
             "/doc/submit",
             "/make/borders",

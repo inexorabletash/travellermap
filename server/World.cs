@@ -73,6 +73,25 @@ namespace Maps
 
         [XmlElement("Ix"), JsonName("Ix")]
         public string Importance { get; set; }
+
+        [XmlIgnore, JsonIgnore]
+        public int? ImportanceValue
+        {
+            get
+            {
+                int? value = null;
+                int tmp;
+                string ix = Importance;
+                if (!String.IsNullOrWhiteSpace(ix) && Int32.TryParse(ix.Replace('{', ' ').Replace('}', ' '),
+                    NumberStyles.AllowLeadingWhite | NumberStyles.AllowTrailingWhite | NumberStyles.Integer,
+                    CultureInfo.InvariantCulture, out tmp))
+                {
+                    value = tmp;
+                }
+                return value;
+            }
+        }
+
         [XmlElement("Ex"), JsonName("Ex")]
         public string Economic { get; set; }
         [XmlElement("Cx"), JsonName("Cx")]
