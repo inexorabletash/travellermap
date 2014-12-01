@@ -132,7 +132,7 @@ pre.example { font-family: 'Share Tech Mono', monospace; }
       <dd>(optional) <code>1</code>, <code>-1</code>, or <code>0</code> (default)</dd>
 
       <dt>Allegiance</dt>
-      <dd>(optional) Used with stylesheets. e.g. <code>ZhCo</code></dd>
+      <dd>(optional) Used with stylesheets. e.g. <code>ZhCo</code> or <code>Aq</code></dd>
 
       <dt>Type</dt>
       <dd>(optional) Used with stylesheets. e.g. <code>Trade</code>, <code>Communication</code>, etc</dd>
@@ -225,7 +225,8 @@ pre.example { font-family: 'Share Tech Mono', monospace; }
     <h4>Attributes</h4>
     <dl class="params">
       <dt>Allegiance</dt>
-      <dd>(optional) Used with stylesheets and for automatic labels. e.g. <code>ZhCo</code></dd>
+      <dd>(optional) Used with stylesheets and for automatic labels.
+        e.g. <code>ZhCo</code> or <code>Aq</code></dd>
 
       <dt>ShowLabel</dt>
       <dd>(optional) Must be <code>true</code> (default) or <code>false</code>
@@ -302,7 +303,9 @@ pre.example { font-family: 'Share Tech Mono', monospace; }
       should continue to be used for custom data. This is because the
       Traveller Map site enforces that four-character codes are from
       the T5SS list, and rejects unknown codes as errors to assist in
-      the project.
+      the project. Since all T5SS allegiance codes are known by the
+      site already, it is not necessary to define them using
+      <code>Allegiance</code> elements.
     </p>
     <h4>Examples</h4>
 <script class="example" type="text/xml">
