@@ -1279,7 +1279,7 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <DataFile Author="Dale Kemper; James Kundert" Source="Ares Magazine, The Traveller Chronicle">FarFrontiers.sec</DataFile>
     <MetadataFile Author="Dale Kemper; James Kundert" Source="Ares Magazine; The Traveller Chronicle">FarFrontiers.xml</MetadataFile>
   </Sector>
-  <Sector Tags="Preserve" Selected="true">
+  <Sector Abbreviation="Fore" Tags="Preserve" Selected="true">
     <Y>-1</Y>
     <X>-5</X>
     <Name>Foreven</Name>
@@ -1307,7 +1307,7 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <DataFile Source="Traveller 5 Second Survey" Era="1105" Type="TabDelimited">Deneb.tab</DataFile>
     <MetadataFile>Deneb.xml</MetadataFile>
   </Sector>
-  <Sector Abbreviation="Corr" Tags="Official" Selected="true">
+  <Sector Abbreviation="Corr" Tags="Official">
     <Y>-1</Y>
     <X>-2</X>
     <Name>Corridor</Name>
