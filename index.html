@@ -119,6 +119,7 @@ button:hover {
     transition: 1s ease-in-out;
   }
   .tilt #dragContainer {
+    -webkit-transform: translateZ(500px) perspective(1000px) rotateX(45deg);
     transform: translateZ(500px) perspective(1000px) rotateX(45deg);
     transition: 1s ease-in-out;
   }
@@ -535,12 +536,9 @@ button:hover {
       </div>
     </section>
 
-    <section>
-      <p><strong>Experiments:</strong></p>
-      <div class="indent">
-        <p><label title="Perspective effect - requires Chrome, Firefox, or IE10+"><input type="checkbox" id="cbTilt"> Tilt</label>
-      </div>
-    </section>
+    <div style="display: none">
+      <input type="checkbox" id="cbTilt">
+    </div>
   </div>
 
   <div id="legendBox"
@@ -819,6 +817,9 @@ button:hover {
       margin-left: 4px;
       font-size: 16pt;
     }
+    .tilt #tiltBtn {
+      background-color: red;
+    }
     </style>
     <canvas id="scaleIndicator" width="120" height="30">
     </canvas>
@@ -833,6 +834,12 @@ button:hover {
       <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAARAQMAAAABo9W5AAAABlBMVEUAAAAAAAClZ7nPAAAAAXRSTlMAQObYZgAAABBJREFUCNdjwAfs/8ExPgAAf08DuM8cN6YAAAAASUVORK5CYII="
              width="17" height="17"
              alt="Zoom out">
+    </button>
+    <button id="tiltBtn"
+            title="Tilt&#x0A;Keyboard: T">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAMAAAAMs7fIAAAAM1BMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACjBUbJAAAAEHRSTlMA+/7fIQ4Hzb6voYB0T0kxIGAiOgAAAFxJREFUGNONzUkSwCAIBEAJ4r7w/9fGALE8Ogeq6MOMuwwl1iQy8WiC3mTyn2kyGOQHHiZtS1MIhZ8P1i1BJW6JKgQLlIB0XGq0SOf7IV2kHlJFMu8eziJ4CLqrvHSQB58bUd2fAAAAAElFTkSuQmCC"
+             width="17" height="17"
+             alt="Tilt">
     </button>
     <script>
     window.addEventListener('DOMContentLoaded', function() {

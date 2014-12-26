@@ -272,14 +272,27 @@ window.addEventListener('DOMContentLoaded', function() {
 
   $('#homeBtn').addEventListener('click', goHome);
 
+  $('#tiltBtn').addEventListener('click', toggleTilt);
+
+  function toggleTilt() {
+    // TODO: Decouple from option.
+    $('#cbTilt').click();
+  };
+
   mapElement.addEventListener('keydown', function(e) {
     if (e.ctrlKey || e.altKey || e.metaKey)
       return;
-    var VK_H = 72;
+    var VK_H = 72, VK_T = 84;
     if (e.keyCode === VK_H) {
       e.preventDefault();
       e.stopPropagation();
       goHome();
+      return;
+    }
+    if (e.keyCode === VK_T) {
+      e.preventDefault();
+      e.stopPropagation();
+      toggleTilt();
       return;
     }
   });
