@@ -526,6 +526,22 @@ table#features, #features th, #features td { border: solid 1px black; }
           style="width: 400px; height: 200px; border: ridge 10px gray;">
         </iframe>
     </p>
+
+   <h4>Beta Features:</h4>
+    <ul>
+        <li>When the user clicks or double-clicks on the map, a
+          <a target="_blank" href="https://html.spec.whatwg.org/multipage/comms.html#the-messageevent-interfaces">message event</a>
+          will posted to the containing page. The <code>data</code> element of the
+          event will have the form:
+          <pre class="code">
+{"source": "travellermap", "type": "click", "location": {"x": 19: "y": 10}}
+          </pre>
+          or:
+          <pre class="code">
+{"source": "travellermap", "type": "doubleclick", "location": {"x": 19: "y": 10}}
+          </pre>
+    </ul>
+
   </section>
   </section>
 
