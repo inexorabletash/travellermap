@@ -275,7 +275,6 @@ window.addEventListener('DOMContentLoaded', function() {
   $('#tiltBtn').addEventListener('click', toggleTilt);
 
   function toggleTilt() {
-    // TODO: Decouple from option.
     $('#cbTilt').click();
   };
 
