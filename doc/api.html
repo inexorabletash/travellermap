@@ -935,6 +935,11 @@ table#features, #features th, #features td { border: solid 1px black; }
                 <dt>uwp:a* <dd>find worlds with class A starports
                 <dt>t* uwp:*f <dd>find worlds with names beginning with T that are tech level F
             </dl>
+        <li>Add <code>in:</code> as a prefix to a word to search the sector name. Examples:
+            <dl class="params">
+                <dt>t* in:spin <dd>find worlds in Spinward Marches sector begining with T
+                <dt>uwp:*-f in:"Solomani Rim"<dd>find worlds with tech level F in the Solomani Rim
+            </dl>
 
         <li>Specifying a search query of XXXXXXX-X (seven alphanumeric characters, hyphen, one alphanumeric character) is a shortcut for <code>uwp:</code>
         <li>Searches are performed on individual items (sectors, subsectors, worlds). You cannot at present do scoped search such as "TL-F worlds in the Solomani Rim"
