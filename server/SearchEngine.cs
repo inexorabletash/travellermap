@@ -34,8 +34,7 @@ namespace Maps
             Sectors = 0x0001,
             Subsectors = 0x0002,
             Worlds = 0x0004,
-            UWP = 0x0008,
-            Default = Sectors | Subsectors | Worlds // NOTE: doesn't include UWP
+            Default = Sectors | Subsectors | Worlds
         }
 
         public delegate void StatusCallback(string status);
@@ -251,7 +250,7 @@ namespace Maps
                 }
 
                 // Worlds & UWPs
-                if ((types.HasFlag(SearchResultsType.Worlds) || types.HasFlag(SearchResultsType.UWP)))
+                if (types.HasFlag(SearchResultsType.Worlds))
                 {
                     // Note duplicated field names so the results of both queries can come out right.
                     string sql = String.Format(query_format, "TT.sector_x, TT.sector_y, TT.hex_x, TT.hex_y", "sector_x, sector_y, hex_x, hex_y", "worlds", where);
@@ -271,7 +270,12 @@ namespace Maps
             return results;
         }
 
-        private static readonly string[] OPS = { "uwp:", "exact:", "like:", "in:" };
+        private static readonly string[] OPS = { 
+                                                   "uwp:", 
+                                                   "exact:", 
+                                                   "like:", 
+                                                   "in:"
+                                               };
         private static readonly Regex RE_TERMS = new Regex("(" + String.Join("|", OPS) + ")?(\"[^\"]+\"|\\S+)",
             RegexOptions.Compiled | RegexOptions.CultureInvariant);
 
@@ -317,7 +321,12 @@ namespace Maps
                 if (op == "uwp:")
                 {
                     clause = "uwp LIKE @term";
-                    types = SearchResultsType.UWP;
+                    types = SearchResultsType.Worlds;
+                }
+                else if (op == "in:")
+                {
+                    clause = "sector_name LIKE @term + '%'";
+                    types = SearchResultsType.Worlds;
                 }
                 else if (op == "exact:")
                 {
@@ -326,10 +335,6 @@ namespace Maps
                 else if (op == "like:")
                 {
                     clause = "SOUNDEX(name) = SOUNDEX(@term)";
-                }
-                else if (op == "in:")
-                {
-                    clause = "sector_name LIKE @term + '%'";
                 }
                 else if (quoted)
                 {
