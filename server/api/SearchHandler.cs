@@ -62,8 +62,10 @@ namespace Maps.API
 
             if (UWP_REGEXP.IsMatch(query))
                 query = "uwp:" + query;
-            
-            var searchResults = SearchEngine.PerformSearch(query, resourceManager, SearchEngine.SearchResultsType.Default, 160);
+
+            const int NUM_RESULTS = 160;
+
+            var searchResults = SearchEngine.PerformSearch(query, resourceManager, SearchEngine.SearchResultsType.Default, NUM_RESULTS);
 
             Results resultsList = new Results();
 
@@ -72,7 +74,8 @@ namespace Maps.API
                 resultsList.AddRange(searchResults
                     .Select(loc => Results.LocationToSearchResult(map, resourceManager, loc))
                     .OfType<Results.SearchResultItem>()
-                    .OrderByDescending(item => item.Importance));
+                    .OrderByDescending(item => item.Importance)
+                    .Take(NUM_RESULTS));
             }
 
             SendResult(context, resultsList);

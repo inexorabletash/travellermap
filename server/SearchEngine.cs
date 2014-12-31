@@ -69,7 +69,7 @@ namespace Maps
                         dt_subsectors.Columns.Add(new DataColumn());
 
                     DataTable dt_worlds = new DataTable();
-                    for (int i = 0; i < 6; ++i)
+                    for (int i = 0; i < 7; ++i)
                         dt_worlds.Columns.Add(new DataColumn());
 
                     callback("Parsing data...");
@@ -116,7 +116,9 @@ namespace Maps
                                     world.Name != null && world.Name.Length > 0
                                         ? (object)world.Name
                                         : (object)DBNull.Value,
-                                    world.UWP };
+                                    world.UWP,
+                                    sector.Names.Count > 0 ? (object)sector.Names[0] : (object)DBNull.Value
+                            };
 
                             dt_worlds.Rows.Add(row);
                         }
@@ -126,19 +128,23 @@ namespace Maps
                     //
                     // Rebuild the tables with fresh schema
                     //
+
+                    const string INDEX_OPTIONS = " WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON)";
+
                     string[] rebuild_schema = {
                         "IF EXISTS(SELECT 1 FROM sys.objects WHERE OBJECT_ID = OBJECT_ID(N'sectors') AND type = (N'U')) DROP TABLE sectors",
-                        "CREATE TABLE sectors(x int NOT NULL,y int NOT NULL,name nvarchar(50) NULL)",
-                        "CREATE NONCLUSTERED INDEX sector_name ON sectors ( name ASC ) WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON)",
+                        "CREATE TABLE sectors (x int NOT NULL, y int NOT NULL, name nvarchar(50) NULL)",
+                        "CREATE NONCLUSTERED INDEX sector_name ON sectors ( name ASC )" + INDEX_OPTIONS,
 
                         "IF EXISTS(SELECT 1 FROM sys.objects WHERE OBJECT_ID = OBJECT_ID(N'subsectors') AND type = (N'U')) DROP TABLE subsectors",
-                        "CREATE TABLE subsectors (sector_x int NOT NULL, sector_y int NOT NULL, subsector_index char(1) NOT NULL, name nvarchar(50) NULL )",
-                        "CREATE NONCLUSTERED INDEX subsector_name ON subsectors ( name ASC )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON)",
+                        "CREATE TABLE subsectors (sector_x int NOT NULL, sector_y int NOT NULL, subsector_index char(1) NOT NULL, name nvarchar(50) NULL)",
+                        "CREATE NONCLUSTERED INDEX subsector_name ON subsectors ( name ASC )" + INDEX_OPTIONS,
 
                         "IF EXISTS(SELECT 1 FROM sys.objects WHERE OBJECT_ID = OBJECT_ID(N'worlds') AND type = (N'U')) DROP TABLE worlds",
-                        "CREATE TABLE worlds( sector_x int NOT NULL, sector_y int NOT NULL, hex_x int NOT NULL, hex_y int NOT NULL, name nvarchar(50) NULL, uwp nchar(9) NULL )",
-                        "CREATE NONCLUSTERED INDEX world_name ON worlds ( name ASC ) WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON)",
-                        "CREATE NONCLUSTERED INDEX world_uwp ON worlds ( uwp ASC ) WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON)",
+                        "CREATE TABLE worlds (sector_x int NOT NULL, sector_y int NOT NULL, hex_x int NOT NULL, hex_y int NOT NULL, name nvarchar(50) NULL, uwp nchar(9) NULL, sector_name nvarchar(50) NULL)",
+                        "CREATE NONCLUSTERED INDEX world_name ON worlds ( name ASC )" + INDEX_OPTIONS,
+                        "CREATE NONCLUSTERED INDEX world_uwp ON worlds ( uwp ASC )" + INDEX_OPTIONS,
+                        "CREATE NONCLUSTERED INDEX world_sector_name ON worlds ( sector_name ASC )" + INDEX_OPTIONS,
                     };
 
                     callback("Rebuilding schema...");
@@ -180,116 +186,49 @@ namespace Maps
             }
         }
 
-        private static readonly Regex RE_TERMS = new Regex("(uwp:|exact:|like:)?(\"[^\"]+\"|\\S+)", 
-            RegexOptions.Compiled | RegexOptions.CultureInvariant);
-        private static IEnumerable<string> ParseTerms(string q)
-        {
-            return RE_TERMS.Matches(q).Cast<Match>().Select(m => m.Value).Where(s => !String.IsNullOrWhiteSpace(s));
-        }
-        private static readonly string[] OPS = { "uwp:", "exact:", "like:" };
-
-
-        public static IEnumerable<ItemLocation> PerformSearch(string query, ResourceManager resourceManager, SearchResultsType types, int numResults)
+        public static IEnumerable<ItemLocation> PerformSearch(string query, ResourceManager resourceManager, SearchResultsType types, int maxResultsPerType)
         {
             List<ItemLocation> results = new List<ItemLocation>();
 
+            List<string> clauses;
+            List<string> terms;
+            types = ParseQuery(query, types, out clauses, out terms);
+
+            string where = String.Join(" AND ", clauses.ToArray());
+
+            // NOTE: DISTINCT is to filter out "Ley" and "Ley Sector" (different names, same result). 
+            // TODO: Include the searched-for name in the results, and show alternate names in the result set.
+            // {0} is the list of distinct fields (i.e. coordinates), {1} is the list of fields in the subquery (same as {0} but with "name" added, {2} is the table, {3} is the filter
+            // Since we need the distinct values from the term {0} but don't use the name for the results construction, we can ignore name in the resultset.
+            // This allows us to get the top N results from the database, sort by name, and then toss out duplicates not based on name but on the other, used, columns
+            // Here's a sample subquery that works for the sector table.
+            // SELECT DISTINCT TOP 160 tt.x, tt.y FROM (SELECT TOP 160 x, y,name FROM sectors WHERE (name LIKE 'LEY%' OR name LIKE '%LEY%') ORDER BY name ASC) AS tt;
+            string query_format = "SELECT DISTINCT TOP " + maxResultsPerType + " {0} FROM (SELECT TOP " + maxResultsPerType + " {1} FROM {2} WHERE {3}) AS TT";
+
             using (var connection = DBUtil.MakeConnection())
             {
-                List<string> clauses = new List<string>();
-                List<string> terms = new List<string>();
-                foreach (string t in ParseTerms(query))
-                {
-                    string term = t;
-                    string op = null;
-                    bool quoted = false;
-
-                    foreach (var o in OPS)
-                    {
-                        if (term.StartsWith(o))
-                        {
-                            op = o;
-                            term = term.Substring(o.Length);
-                            break;
-                        }
-                    }
-
-                    // Infer a trailing "
-                    if (term.StartsWith("\"") && (!term.EndsWith("\"") || term.Length == 1))
-                        term += '"';
-                    if (term.Length >= 2 && term.StartsWith("\"") && term.EndsWith("\""))
-                    {
-                        quoted = true;
-                        term = term.Substring(1, term.Length - 2);
-                    }
-                    if (term.Length == 0)
-                        continue;
-
-                    string clause;
-                    if (op == "uwp:")
-                    {
-                        clause = "uwp LIKE @term";
-                        types = SearchResultsType.UWP;
-                    }
-                    else if (op == "exact:")
-                    {
-                        clause = "name LIKE @term";
-                    }
-                    else if (op == "like:")
-                    {
-                        clause = "SOUNDEX(name) = SOUNDEX(@term)";
-                    }
-                    else if (quoted)
-                    {
-                        clause = "name LIKE @term";
-                    }
-                    else if (term.Contains("%") || term.Contains("_"))
-                    {
-                        clause = "name LIKE @term";
-                    }
-                    else
-                    {
-                        clause = "name LIKE @term + '%' OR name LIKE '% ' + @term + '%'";
-                    }
-
-                    clause = clause.Replace("@term", String.Format("@term{0}", terms.Count));
-                    clauses.Add("(" + clause + ")");
-                    terms.Add(term);
-                }
-
-                string where = String.Join(" AND ", clauses.ToArray());
-
-                // NOTE: DISTINCT is to filter out "Ley" and "Ley Sector" (different names, same result). 
-                // TODO: Include the searched-for name in the results, and show alternate names in the result set.
-                // {0} is the list of distinct fields (i.e. coordinates), {1} is the list of fields in the subquery (same as {0} but with "name" added, {2} is the table, {3} is the filter
-                // Since we need the distinct values from the term {0} but don't use the name for the results construction, we can ignore name in the resultset.
-                // This allows us to get the top N results from the database, sort by name, and then toss out duplicates not based on name but on the other, used, columns
-                // Here's a sample subquery that works for the sector table.
-                // SELECT DISTINCT TOP 160 tt.x, tt.y FROM (SELECT TOP 160 x, y,name FROM sectors WHERE (name LIKE 'LEY%' OR name LIKE '%LEY%') ORDER BY name ASC) AS tt;
-                string query_format = "SELECT DISTINCT TOP " + numResults + " {0} FROM (SELECT TOP " + numResults + " {1} FROM {2} WHERE {3}) AS TT";
-
                 // Sectors
-                if (types.HasFlag(SearchResultsType.Sectors) && numResults > 0)
+                if (types.HasFlag(SearchResultsType.Sectors))
                 {
                     // Note duplicated field names so the results of both queries can come out right.
                     string sql = String.Format(query_format, "TT.x, TT.y", "x, y", "sectors", where);
                     using (var sqlCommand = new SqlCommand(sql, connection))
                     {
-                        for (int i = 0; i < terms.Count; ++i)                        
+                        for (int i = 0; i < terms.Count; ++i)
                             sqlCommand.Parameters.AddWithValue(String.Format("@term{0}", i), terms[i]);
-                        
+
                         using (var row = sqlCommand.ExecuteReader())
                         {
                             while (row.Read())
                             {
                                 results.Add(new SectorLocation(row.GetInt32(0), row.GetInt32(1)));
-                                numResults -= 1;
                             }
                         }
                     }
                 }
 
                 // Subsectors
-                if (types.HasFlag(SearchResultsType.Subsectors) && numResults > 0)
+                if (types.HasFlag(SearchResultsType.Subsectors))
                 {
                     // Note duplicated field names so the results of both queries can come out right.
                     string sql = String.Format(query_format, "TT.sector_x, TT.sector_y, TT.subsector_index", "sector_x, sector_y, subsector_index", "subsectors", where);
@@ -297,7 +236,7 @@ namespace Maps
                     {
                         for (int i = 0; i < terms.Count; ++i)
                             sqlCommand.Parameters.AddWithValue(String.Format("@term{0}", i), terms[i]);
-                        
+
                         using (var row = sqlCommand.ExecuteReader())
                         {
                             while (row.Read())
@@ -312,7 +251,7 @@ namespace Maps
                 }
 
                 // Worlds & UWPs
-                if ((types.HasFlag(SearchResultsType.Worlds) || types.HasFlag(SearchResultsType.UWP)) && numResults > 0)
+                if ((types.HasFlag(SearchResultsType.Worlds) || types.HasFlag(SearchResultsType.UWP)))
                 {
                     // Note duplicated field names so the results of both queries can come out right.
                     string sql = String.Format(query_format, "TT.sector_x, TT.sector_y, TT.hex_x, TT.hex_y", "sector_x, sector_y, hex_x, hex_y", "worlds", where);
@@ -320,7 +259,7 @@ namespace Maps
                     {
                         for (int i = 0; i < terms.Count; ++i)
                             sqlCommand.Parameters.AddWithValue(String.Format("@term{0}", i), terms[i]);
-                        
+
                         using (var row = sqlCommand.ExecuteReader())
                         {
                             while (row.Read())
@@ -329,8 +268,87 @@ namespace Maps
                     }
                 }
             }
-
             return results;
+        }
+
+        private static readonly string[] OPS = { "uwp:", "exact:", "like:", "in:" };
+        private static readonly Regex RE_TERMS = new Regex("(" + String.Join("|", OPS) + ")?(\"[^\"]+\"|\\S+)",
+            RegexOptions.Compiled | RegexOptions.CultureInvariant);
+
+        private static IEnumerable<string> ParseTerms(string q)
+        {
+            return RE_TERMS.Matches(q).Cast<Match>().Select(m => m.Value).Where(s => !String.IsNullOrWhiteSpace(s));
+        }
+
+
+
+        private static SearchResultsType ParseQuery(string query, SearchResultsType types, out List<string> clauses, out List<string> terms)
+        {
+            clauses = new List<string>();
+            terms = new List<string>();
+            foreach (string t in ParseTerms(query))
+            {
+                string term = t;
+                string op = null;
+                bool quoted = false;
+
+                foreach (var o in OPS)
+                {
+                    if (term.StartsWith(o))
+                    {
+                        op = o;
+                        term = term.Substring(o.Length);
+                        break;
+                    }
+                }
+
+                // Infer a trailing "
+                if (term.StartsWith("\"") && (!term.EndsWith("\"") || term.Length == 1))
+                    term += '"';
+                if (term.Length >= 2 && term.StartsWith("\"") && term.EndsWith("\""))
+                {
+                    quoted = true;
+                    term = term.Substring(1, term.Length - 2);
+                }
+                if (term.Length == 0)
+                    continue;
+
+                string clause;
+                if (op == "uwp:")
+                {
+                    clause = "uwp LIKE @term";
+                    types = SearchResultsType.UWP;
+                }
+                else if (op == "exact:")
+                {
+                    clause = "name LIKE @term";
+                }
+                else if (op == "like:")
+                {
+                    clause = "SOUNDEX(name) = SOUNDEX(@term)";
+                }
+                else if (op == "in:")
+                {
+                    clause = "sector_name LIKE @term + '%'";
+                }
+                else if (quoted)
+                {
+                    clause = "name LIKE @term";
+                }
+                else if (term.Contains("%") || term.Contains("_"))
+                {
+                    clause = "name LIKE @term";
+                }
+                else
+                {
+                    clause = "name LIKE @term + '%' OR name LIKE '% ' + @term + '%'";
+                }
+
+                clause = clause.Replace("@term", String.Format("@term{0}", terms.Count));
+                clauses.Add("(" + clause + ")");
+                terms.Add(term);
+            }
+            return types;
         }
     }
 }
