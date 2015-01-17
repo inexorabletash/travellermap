@@ -1,4 +1,4 @@
-﻿using Maps.Rendering;
+using Maps.Rendering;
 using Maps.Serialization;
 using PdfSharp.Drawing;
 using PdfSharp.Pdf;
@@ -61,7 +61,7 @@ namespace Maps.API
                     document.Info.Author = "Joshua Bell";
                     document.Info.Creator = "TravellerMap.com";
                     document.Info.Subject = DateTime.Now.ToString("F", CultureInfo.InvariantCulture);
-                    document.Info.Keywords = "The Traveller game in all forms is owned by Far Future Enterprises. Copyright (C) 1977 - 2014 Far Future Enterprises. Traveller is a registered trademark of Far Future Enterprises.";
+                    document.Info.Keywords = "The Traveller game in all forms is owned by Far Future Enterprises. Copyright (C) 1977 - 2015 Far Future Enterprises. Traveller is a registered trademark of Far Future Enterprises.";
 
                     // TODO: Credits/Copyright
                     // This is close, but doesn't define the namespace correctly:
@@ -114,9 +114,9 @@ namespace Maps.API
                 MemoryStream ms = null;
                 if (dataURI)
                     ms = new MemoryStream();
-                
+
                 BitmapResponse(context.Response, dataURI ? ms : context.Response.OutputStream, ctx.styles, bitmap, transparent ? Util.MediaTypeName_Image_Png : null);
-                
+
                 if (dataURI)
                 {
                     string contentType = context.Response.ContentType;
