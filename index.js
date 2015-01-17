@@ -423,7 +423,7 @@ window.addEventListener('DOMContentLoaded', function() {
       if ('SectorTags' in data) {
         var tags =  String(data.SectorTags).split(/\s+/);
         data.Unofficial = true;
-        ['Official', 'Unreviewed', 'Apocryphal', 'Preserve'].forEach(function(tag) {
+        ['Official', 'InReview', 'Unreviewed', 'Apocryphal', 'Preserve'].forEach(function(tag) {
           if (tags.indexOf(tag) !== -1) {
             delete data.Unofficial;
             data[tag] = true;
@@ -562,7 +562,7 @@ window.addEventListener('DOMContentLoaded', function() {
         if ('SectorTags' in item) {
           var tags = String(item.SectorTags).split(/\s+/);
           item.Unofficial = true;
-          ['Official', 'Unreviewed', 'Apocryphal', 'Preserve'].forEach(function(tag) {
+          ['Official', 'InReview', 'Unreviewed', 'Apocryphal', 'Preserve'].forEach(function(tag) {
             if (tags.indexOf(tag) !== -1) {
               delete item.Unofficial;
               item[tag] = true;

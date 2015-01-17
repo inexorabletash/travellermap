@@ -199,10 +199,11 @@ a.stealth:hover { text-decoration: underline; }
 
 .metadata-status a { text-decoration: none; font-weight: bold; }
 .metadata-status .official { visibility: hidden; }
-.metadata-status .unreviewed{ color: orange; }
+.metadata-status .inreview { color: orange; }
+.metadata-status .unreviewed { color: orange; }
 .metadata-status .preserve { color: green; }
-.metadata-status .apocryphal{ color: magenta; }
-.metadata-status .unofficial{ color: yellow; }
+.metadata-status .apocryphal { color: magenta; }
+.metadata-status .unofficial { color: yellow; }
 .metadata-status .bar { font-size: 120%; }
 .style-print .metadata-status .preserve,
 .style-print .metadata-status .apocryphal,

@@ -29,14 +29,14 @@
 <meta property="og:site_name" content="The Traveller Map">
 <meta property="fb:admins" content="617166358">
 
-<link rel="stylesheet" href="index.css?update=2014-11-09">
+<link rel="stylesheet" href="index.css?update=2015-01-17">
 <link rel="stylesheet" href="lib/add-to-home-screen/addtohomescreen.css">
 
 <!--[if lt IE 8]><script>alert("IE7 is no longer supported.");location = 'http://google.com/chrome';</script><![endif]-->
 <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js"></script>
-<script src="lib/polyfill/polyfill.min.js?update=2014-11-09"></script>
+<script src="lib/polyfill/polyfill.min.js?update=2015-01-02"></script>
 <script src="map.js?update=2014-11-15"></script>
-<script src="index.js?update=2014-12-26"></script>
+<script src="index.js?update=2015-01-17"></script>
 <style>
 .ui {
   z-index: 2000;
@@ -298,6 +298,7 @@ button:hover {
           <div class="item-main"><a title="Navigate to {{Name}}" href="{{href}}" onclick="{{onclick}}">{{Name}}</a></div>
           <div class="item-location">
             {{Sector}} {{Hex}}
+            {{#InReview}}<span class="item-status">(In Review)</span>{{/InReview}}
             {{#Unreviewed}}<span class="item-status">(Unreviewed)</span>{{/Unreviewed}}
             {{#Apocryphal}}<span class="item-status">(Apocryphal)</span>{{/Apocryphal}}
             {{#Unofficial}}<span class="item-status">(Unofficial)</span>{{/Unofficial}}
@@ -309,6 +310,7 @@ button:hover {
           <div class="item-main"><a title="Navigate to {{Name}}" href="{{href}}" onclick="{{onclick}}">{{Name}}</a></div>
           <div class="item-location">
             Subsector {{Index}} of {{Sector}}
+            {{#InReview}}<span class="item-status">(In Review)</span>{{/InReview}}
             {{#Unreviewed}}<span class="item-status">(Unreviewed)</span>{{/Unreviewed}}
             {{#Apocryphal}}<span class="item-status">(Apocryphal)</span>{{/Apocryphal}}
             {{#Unofficial}}<span class="item-status">(Unofficial)</span>{{/Unofficial}}
@@ -318,6 +320,7 @@ button:hover {
           <div class="item-main"><a title="Navigate to {{Name}}" href="{{href}}" onclick="{{onclick}}">{{Name}}</a></div>
           <div class="item-location">
             Sector
+            {{#InReview}}<span class="item-status">(In Review)</span>{{/InReview}}
             {{#Unreviewed}}<span class="item-status">(Unreviewed)</span>{{/Unreviewed}}
             {{#Apocryphal}}<span class="item-status">(Apocryphal)</span>{{/Apocryphal}}
             {{#Unofficial}}<span class="item-status">(Unofficial)</span>{{/Unofficial}}
@@ -937,6 +940,11 @@ button:hover {
             title="Sector data has been approved by the Traveller 5 Second Survey"
             href="doc/credits#official"><span class="bar">&#x25AC;</span> Official <span class="bar">&#x25AC;</span></a>
         {{/Official}}
+        {{#InReview}}
+          <a class="inreview" target="_blank"
+            title="Sector data is being reviewed by the Traveller 5 Second Survey"
+            href="doc/credits#inreview"><span class="bar">&#x25AC;</span> In Review <span class="bar">&#x25AC;</span></a>
+        {{/InReview}}
         {{#Unreviewed}}
           <a class="unreviewed" target="_blank"
             title="Sector data has not yet been reviewed by the Traveller 5 Second Survey"
