@@ -939,6 +939,153 @@ namespace Maps.Rendering
 
                     if (layer == WorldLayer.Foreground)
                     {
+                        #region Disc Background
+                        if (ctx.styles.worldDetails.HasFlag(WorldDetails.Type)
+                            && !isPlaceholder
+                            && !ctx.styles.fillMicroBorders)
+                        {
+                            // Blank out world area, so routes are shown correctly
+                            solidBrush.Color = ctx.styles.backgroundColor;
+                            ctx.graphics.DrawEllipse(solidBrush, -0.15f, -0.15f, 0.3f, 0.3f);
+                        }
+                        #endregion
+
+                        #region Name
+                        if (renderName)
+                        {
+                            string name = world.Name;
+                            if (isHiPop || ctx.styles.worlds.textStyle.Uppercase)
+                                name = name.ToUpperInvariant();
+
+                            Color textColor = isCapital ? ctx.styles.worlds.textHighlightColor : ctx.styles.worlds.textColor;
+                            XFont font = (isHiPop || isCapital) ? ctx.styles.worlds.LargeFont : ctx.styles.worlds.Font;
+
+                            DrawWorldLabel(ctx, ctx.styles.worlds.textBackgroundStyle, solidBrush, textColor, ctx.styles.worlds.textStyle.Translation, font, name);
+                        }
+                        #endregion
+
+                        #region Allegiance
+                        // TODO: Mask off background for allegiance
+                        if (ctx.styles.worldDetails.HasFlag(WorldDetails.Allegiance))
+                        {
+                            string alleg = world.Allegiance;
+                            if (!SecondSurvey.IsDefaultAllegiance(alleg))
+                            {
+                                if (!ctx.styles.t5AllegianceCodes && alleg.Length > 2)
+                                    alleg = SecondSurvey.T5AllegianceCodeToLegacyCode(alleg);
+
+                                solidBrush.Color = ctx.styles.worlds.textColor;
+
+                                if (ctx.styles.lowerCaseAllegiance)
+                                    alleg = alleg.ToLowerInvariant();
+
+                                ctx.graphics.DrawString(alleg, ctx.styles.worlds.SmallFont, solidBrush, ctx.styles.AllegiancePosition.X, ctx.styles.AllegiancePosition.Y, RenderUtil.StringFormatCentered);
+                            }
+                        }
+                        #endregion
+
+                        if (!isPlaceholder)
+                        {
+                            #region GasGiant
+                            if (ctx.styles.worldDetails.HasFlag(WorldDetails.GasGiant))
+                            {
+                                if (world.GasGiants > 0)
+                                {
+                                    solidBrush.Color = ctx.styles.worlds.textColor;
+                                    RenderUtil.DrawGlyph(ctx.graphics, Glyph.Circle, styleRes, solidBrush, ctx.styles.GasGiantPosition.X, ctx.styles.GasGiantPosition.Y);
+                                }
+                            }
+                            #endregion
+
+                            #region Starport
+                            if (ctx.styles.worldDetails.HasFlag(WorldDetails.Starport))
+                            {
+                                string starport = world.Starport.ToString();
+                                DrawWorldLabel(ctx, ctx.styles.worlds.textBackgroundStyle, solidBrush, ctx.styles.worlds.textColor, ctx.styles.StarportPosition, styleRes.StarportFont, starport);
+                            }
+                            #endregion
+
+                            #region UWP
+                            if (renderUWP)
+                            {
+                                string uwp = world.UWP;
+                                solidBrush.Color = ctx.styles.worlds.textColor;
+
+                                ctx.graphics.DrawString(uwp, ctx.styles.hexNumber.Font, solidBrush, ctx.styles.StarportPosition.X, -ctx.styles.StarportPosition.Y, RenderUtil.StringFormatCentered);
+                            }
+                            #endregion
+
+                            #region Bases
+                            // TODO: Mask off background for glyphs
+                            if (ctx.styles.worldDetails.HasFlag(WorldDetails.Bases))
+                            {
+                                string bases = world.Bases;
+
+                                // Special case: Show Zho Naval+Military as diamond
+                                if (world.BaseAllegiance == "Zh" && bases == "KM")
+                                    bases = "Z";
+
+                                // Base 1
+                                bool bottomUsed = false;
+                                if (bases.Length > 0)
+                                {
+                                    Glyph glyph = Glyph.FromBaseCode(world.BaseAllegiance, bases[0]);
+                                    if (glyph.Printable)
+                                    {
+                                        PointF pt = ctx.styles.BaseTopPosition;
+                                        if (glyph.Bias == Glyph.GlyphBias.Bottom)
+                                        {
+                                            pt = ctx.styles.BaseBottomPosition;
+                                            bottomUsed = true;
+                                        }
+
+                                        solidBrush.Color = glyph.IsHighlighted ? ctx.styles.worlds.textHighlightColor : ctx.styles.worlds.textColor;
+                                        RenderUtil.DrawGlyph(ctx.graphics, glyph, styleRes, solidBrush, pt.X, pt.Y);
+                                    }
+                                }
+
+                                // Base 2
+                                if (bases.Length > 1)
+                                {
+                                    Glyph glyph = Glyph.FromBaseCode(world.LegacyAllegiance, bases[1]);
+                                    if (glyph.Printable)
+                                    {
+                                        PointF pt = bottomUsed ? ctx.styles.BaseTopPosition : ctx.styles.BaseBottomPosition;
+                                        solidBrush.Color = glyph.IsHighlighted ? ctx.styles.worlds.textHighlightColor : ctx.styles.worlds.textColor;
+                                        RenderUtil.DrawGlyph(ctx.graphics, glyph, styleRes, solidBrush, pt.X, pt.Y);
+                                    }
+                                }
+
+                                // Research Stations
+                                string rs;
+                                if ((rs = world.ResearchStation) != null)
+                                {
+                                    Glyph glyph = Glyph.FromResearchCode(rs);
+                                    solidBrush.Color = glyph.IsHighlighted ? ctx.styles.worlds.textHighlightColor : ctx.styles.worlds.textColor;
+                                    RenderUtil.DrawGlyph(ctx.graphics, glyph, styleRes, solidBrush, ctx.styles.BaseMiddlePosition.X, ctx.styles.BaseMiddlePosition.Y);
+                                }
+                                else if (world.IsReserve)
+                                {
+                                    Glyph glyph = Glyph.Reserve;
+                                    solidBrush.Color = glyph.IsHighlighted ? ctx.styles.worlds.textHighlightColor : ctx.styles.worlds.textColor;
+                                    RenderUtil.DrawGlyph(ctx.graphics, glyph, styleRes, solidBrush, ctx.styles.BaseMiddlePosition.X, 0);
+                                }
+                                else if (world.IsPenalColony)
+                                {
+                                    Glyph glyph = Glyph.Prison;
+                                    solidBrush.Color = glyph.IsHighlighted ? ctx.styles.worlds.textHighlightColor : ctx.styles.worlds.textColor;
+                                    RenderUtil.DrawGlyph(ctx.graphics, glyph, styleRes, solidBrush, ctx.styles.BaseMiddlePosition.X, 0);
+                                }
+                                else if (world.IsPrisonExileCamp)
+                                {
+                                    Glyph glyph = Glyph.ExileCamp;
+                                    solidBrush.Color = glyph.IsHighlighted ? ctx.styles.worlds.textHighlightColor : ctx.styles.worlds.textColor;
+                                    RenderUtil.DrawGlyph(ctx.graphics, glyph, styleRes, solidBrush, ctx.styles.BaseMiddlePosition.X, 0);
+                                }
+                            }
+                            #endregion
+                        }
+
                         #region Disc
                         if (ctx.styles.worldDetails.HasFlag(WorldDetails.Type))
                         {
@@ -948,13 +1095,6 @@ namespace Maps.Rendering
                             }
                             else
                             {
-                                // Blank out world area, so routes are shown correctly
-                                if (!ctx.styles.fillMicroBorders)
-                                {
-                                    solidBrush.Color = ctx.styles.backgroundColor;
-                                    ctx.graphics.DrawEllipse(solidBrush, -0.15f, -0.15f, 0.3f, 0.3f);
-                                }
-
                                 if (world.Size <= 0)
                                 {
                                     #region Asteroid-Belt
@@ -1024,142 +1164,6 @@ namespace Maps.Rendering
                             // Dotmap
                             solidBrush.Color = ctx.styles.worlds.textColor;
                             ctx.graphics.DrawEllipse(solidBrush, -0.2f, -0.2f, 0.4f, 0.4f);
-                        }
-                        #endregion
-
-                        #region Name
-                        if (renderName)
-                        {
-                            string name = world.Name;
-                            if (isHiPop || ctx.styles.worlds.textStyle.Uppercase)
-                                name = name.ToUpperInvariant();
-
-                            Color textColor = isCapital ? ctx.styles.worlds.textHighlightColor : ctx.styles.worlds.textColor;
-                            XFont font = (isHiPop || isCapital) ? ctx.styles.worlds.LargeFont : ctx.styles.worlds.Font;
-
-                            DrawWorldLabel(ctx, ctx.styles.worlds.textBackgroundStyle, solidBrush, textColor, ctx.styles.worlds.textStyle.Translation, font, name);
-                        }
-                        #endregion
-
-                        #region Allegiance
-                        // TODO: Mask off background for allegiance
-                        if (ctx.styles.worldDetails.HasFlag(WorldDetails.Allegiance))
-                        {
-                            string alleg = world.Allegiance;
-                            if (!SecondSurvey.IsDefaultAllegiance(alleg))
-                            {
-                                if (!ctx.styles.t5AllegianceCodes && alleg.Length > 2)
-                                    alleg = SecondSurvey.T5AllegianceCodeToLegacyCode(alleg);
-
-                                solidBrush.Color = ctx.styles.worlds.textColor;
-
-                                if (ctx.styles.lowerCaseAllegiance)
-                                    alleg = alleg.ToLowerInvariant();
-
-                                ctx.graphics.DrawString(alleg, ctx.styles.worlds.SmallFont, solidBrush, ctx.styles.AllegiancePosition.X, ctx.styles.AllegiancePosition.Y, RenderUtil.StringFormatCentered);
-                            }
-                        }
-                        #endregion
-
-                        if (isPlaceholder)
-                            return;
-
-                        #region GasGiant
-                        if (ctx.styles.worldDetails.HasFlag(WorldDetails.GasGiant))
-                        {
-                            if (world.GasGiants > 0)
-                            {
-                                solidBrush.Color = ctx.styles.worlds.textColor;
-                                RenderUtil.DrawGlyph(ctx.graphics, Glyph.Circle, styleRes, solidBrush, ctx.styles.GasGiantPosition.X, ctx.styles.GasGiantPosition.Y);
-                            }
-                        }
-                        #endregion
-
-                        #region Starport
-                        if (ctx.styles.worldDetails.HasFlag(WorldDetails.Starport))
-                        {
-                            string starport = world.Starport.ToString();
-                            DrawWorldLabel(ctx, ctx.styles.worlds.textBackgroundStyle, solidBrush, ctx.styles.worlds.textColor, ctx.styles.StarportPosition, styleRes.StarportFont, starport);
-                        }
-                        #endregion
-
-                        #region UWP
-                        if (renderUWP)
-                        {
-                            string uwp = world.UWP;
-                            solidBrush.Color = ctx.styles.worlds.textColor;
-
-                            ctx.graphics.DrawString(uwp, ctx.styles.hexNumber.Font, solidBrush, ctx.styles.StarportPosition.X, -ctx.styles.StarportPosition.Y, RenderUtil.StringFormatCentered);
-                        }
-                        #endregion
-
-                        #region Bases
-                        // TODO: Mask off background for glyphs
-                        if (ctx.styles.worldDetails.HasFlag(WorldDetails.Bases))
-                        {
-                            string bases = world.Bases;
-
-                            // Special case: Show Zho Naval+Military as diamond
-                            if (world.BaseAllegiance == "Zh" && bases == "KM")
-                                bases = "Z";
-
-                            // Base 1
-                            bool bottomUsed = false;
-                            if (bases.Length > 0)
-                            {
-                                Glyph glyph = Glyph.FromBaseCode(world.BaseAllegiance, bases[0]);
-                                if (glyph.Printable)
-                                {
-                                    PointF pt = ctx.styles.BaseTopPosition;
-                                    if (glyph.Bias == Glyph.GlyphBias.Bottom)
-                                    {
-                                        pt = ctx.styles.BaseBottomPosition;
-                                        bottomUsed = true;
-                                    }
-
-                                    solidBrush.Color = glyph.IsHighlighted ? ctx.styles.worlds.textHighlightColor : ctx.styles.worlds.textColor;
-                                    RenderUtil.DrawGlyph(ctx.graphics, glyph, styleRes, solidBrush, pt.X, pt.Y);
-                                }
-                            }
-
-                            // Base 2
-                            if (bases.Length > 1)
-                            {
-                                Glyph glyph = Glyph.FromBaseCode(world.LegacyAllegiance, bases[1]);
-                                if (glyph.Printable)
-                                {
-                                    PointF pt = bottomUsed ? ctx.styles.BaseTopPosition : ctx.styles.BaseBottomPosition;
-                                    solidBrush.Color = glyph.IsHighlighted ? ctx.styles.worlds.textHighlightColor : ctx.styles.worlds.textColor;
-                                    RenderUtil.DrawGlyph(ctx.graphics, glyph, styleRes, solidBrush, pt.X, pt.Y);
-                                }
-                            }
-
-                            // Research Stations
-                            string rs;
-                            if ((rs = world.ResearchStation) != null)
-                            {
-                                Glyph glyph = Glyph.FromResearchCode(rs);
-                                solidBrush.Color = glyph.IsHighlighted ? ctx.styles.worlds.textHighlightColor : ctx.styles.worlds.textColor;
-                                RenderUtil.DrawGlyph(ctx.graphics, glyph, styleRes, solidBrush, ctx.styles.BaseMiddlePosition.X, ctx.styles.BaseMiddlePosition.Y);
-                            }
-                            else if (world.IsReserve)
-                            {
-                                Glyph glyph = Glyph.Reserve;
-                                solidBrush.Color = glyph.IsHighlighted ? ctx.styles.worlds.textHighlightColor : ctx.styles.worlds.textColor;
-                                RenderUtil.DrawGlyph(ctx.graphics, glyph, styleRes, solidBrush, ctx.styles.BaseMiddlePosition.X, 0);
-                            }
-                            else if (world.IsPenalColony)
-                            {
-                                Glyph glyph = Glyph.Prison;
-                                solidBrush.Color = glyph.IsHighlighted ? ctx.styles.worlds.textHighlightColor : ctx.styles.worlds.textColor;
-                                RenderUtil.DrawGlyph(ctx.graphics, glyph, styleRes, solidBrush, ctx.styles.BaseMiddlePosition.X, 0);
-                            }
-                            else if (world.IsPrisonExileCamp)
-                            {
-                                Glyph glyph = Glyph.ExileCamp;
-                                solidBrush.Color = glyph.IsHighlighted ? ctx.styles.worlds.textHighlightColor : ctx.styles.worlds.textColor;
-                                RenderUtil.DrawGlyph(ctx.graphics, glyph, styleRes, solidBrush, ctx.styles.BaseMiddlePosition.X, 0);
-                            }
                         }
                         #endregion
                     }
