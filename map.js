@@ -537,7 +537,6 @@ var Util = {
     var CLICK_SCALE_DELTA = -0.5;
     var SCROLL_SCALE_DELTA = -0.15;
     var KEY_SCROLL_DELTA = 25;
-    var KEY_ZOOM_DELTA = 0.5;
 
     container.style.position = 'relative';
 
@@ -773,8 +772,8 @@ var Util = {
         case VK_K: self.Scroll(0, KEY_SCROLL_DELTA); break;
         case VK_RIGHT:
         case VK_L: self.Scroll(KEY_SCROLL_DELTA, 0); break;
-        case VK_SUBTRACT: self.setScale(self.scale - KEY_ZOOM_DELTA); break;
-        case VK_EQUALS: self.setScale(self.scale + KEY_ZOOM_DELTA); break;
+        case VK_SUBTRACT: self.ZoomOut(); break;
+        case VK_EQUALS: self.ZoomIn(); break;
         default: return;
       }
 
@@ -1362,12 +1361,16 @@ var Util = {
   };
 
   var ZOOM_DELTA = 0.5;
+  function roundScale(s) {
+    return Math.round(s / ZOOM_DELTA) * ZOOM_DELTA;
+  }
+
   Map.prototype.ZoomIn = function() {
-    this.setScale(this.scale + ZOOM_DELTA);
+    this.setScale(roundScale(this.scale) + ZOOM_DELTA);
   };
 
   Map.prototype.ZoomOut = function() {
-    this.setScale(this.scale - ZOOM_DELTA);
+    this.setScale(roundScale(this.scale) - ZOOM_DELTA);
   };
 
 
