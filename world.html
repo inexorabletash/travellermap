@@ -119,6 +119,7 @@ td { vertical-align: top; }
 
 /* Specific Data Fields */
 
+.stars { font-size: 117%; }
 .stars .star:after,
 .bases .base:after,
 .nobility .noble:after { content: ' \2014 '; } /* U+2014 EM DASH */
@@ -176,8 +177,8 @@ td { vertical-align: top; }
 <table class="decode"><tr>
 <td>System:
 <td>
-    <div>
-      <big class="stars"> {{#if Stars}} <span class="star">{{Stars}}</span> {{/if}} </big>
+    <div class="stars">
+    {{#Stars}} <span class="star">{{.}}</span> {{/Stars}}
     </div>
     <div>
       <big>{{PBG.GG}}</big> <small>Gas Giants</small>
