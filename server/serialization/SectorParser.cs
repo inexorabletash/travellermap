@@ -162,7 +162,6 @@ namespace Maps.Serialization
                     world.Name = Util.FixCapitalization(world.Name);
 
                 worlds[world.X, world.Y] = world;
-
                 string rest = match.Groups["rest"].Value;
                 if (!String.IsNullOrEmpty(rest))
                     ParseRest(rest, worlds, lineNumber, line, world, errors);
@@ -203,7 +202,7 @@ namespace Maps.Serialization
         private static readonly Regex ALLEGIANCE_REGEX = new Regex(@"^([A-Za-z0-9]{4}|----)$");
         private static readonly Regex NOBILITY_REGEX = new Regex(@"^[BcCDeEfFGH]*$");
 
-        private const string STAR = @"(D|BD|[OBAFGKM][0-9]\x20(?:Ia|Ib|II|III|IV|V|VI))";
+        private const string STAR = @"(D|BD|BH|[OBAFGKM][0-9]\x20(?:Ia|Ib|II|III|IV|V|VI))";
         private static readonly Regex STARS_REGEX = new Regex("^(|" + STAR + @"(?:\x20" + STAR + @")*)$");
 
         [Flags]

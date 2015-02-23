@@ -31,11 +31,15 @@ namespace Maps
         // Common:
         //   star       ::= type ( tenths w* size | w* "D" ) main?
         //                | dwarf
+        //                | browndwarf
+        //                | blackhole
         //                | unknown
         //   type       ::= "O" | "B" | "A" | "F" | "G" | "K" | "M"
         //   tenths     ::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
         //   size       ::= "D" | "Ia" | "Ib" | "II" | "III" | "IV" | "V" | "VI" | "VII"
         //   dwarf      ::= "DB" | "DA" | "DF" | "DG" | "DK" | "DM" | "D"
+        //   browndwarf ::= "BD"
+        //   blackhole  ::= "BH"
         //   unknown    ::= "Un"
         //
         //   main       ::= "*"
@@ -44,6 +48,7 @@ namespace Maps
         //
         // Notes:
         //   * "Un" is from Mendan 0221 (verified in Challenge #46)
+        //   * "BH" is for Far Frontiers 2526 Shadowsand (per "Rescue on Galatea")
         //
         // Future: 
         //   * support "L" | "T" | "Y" brown dwarf types
@@ -284,11 +289,20 @@ namespace Maps
             private static string[] STAR_SIZES = { "D", "Ia", "Ib", "II", "III", "IV", "V", "VI", "VII" };
             private static string[] DWARF_SIZE = { "D" };
             private static string[] DWARF_TYPES = { "DB", "DA", "DF", "DG", "DK", "DM", "D" };
-            private static string[] OTHER_TYPES = { "Un" };
+            private static string[] OTHER_TYPES = { "BD", "BH", "Un" };
 
             public static bool Parse(TextReader r, out Star star)
             {
                 string m;
+
+                m = Match(r, OTHER_TYPES);
+                if (m != null)
+                {
+                    // Brown Dwarf, Black Hole, Unknown
+                    star = new Star();
+                    star.Type = m;
+                    return true;
+                }
 
                 m = Match(r, STAR_TYPES);
                 if (m != null)
@@ -341,15 +355,6 @@ namespace Maps
                 if (m != null)
                 {
                     // Dwarf
-                    star = new Star();
-                    star.Type = m;
-                    return true;
-                }
-
-                m = Match(r, OTHER_TYPES);
-                if (m != null)
-                {
-                    // Unknown
                     star = new Star();
                     star.Type = m;
                     return true;
