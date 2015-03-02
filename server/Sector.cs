@@ -107,6 +107,11 @@ namespace Maps
                     try
                     {
                         m_nameMap.Add(name.Text, sector);
+
+                        // Automatically alias "SpinwardMarches"
+                        string spaceless = name.Text.Replace(" ", "");
+                        if (spaceless != name.Text)
+                            m_nameMap.Add(spaceless, sector);
                     }
                     catch (ArgumentException)
                     {
