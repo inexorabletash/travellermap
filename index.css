@@ -216,11 +216,9 @@ a.stealth:hover { text-decoration: underline; }
 /* Scrollbars */
 
 /* Chrome/Safari */
-::-webkit-scrollbar { background-color: black; width: 8px; }
+::-webkit-scrollbar { background-color: transparent; width: 8px; }
 ::-webkit-scrollbar-thumb { background-color: #404040; }
 ::-webkit-scrollbar-thumb:hover { background-color: #808080; }
-.style-print ::-webkit-scrollbar,
-.style-atlas ::-webkit-scrollbar { background-color: white; width: 8px; }
 .style-print ::-webkit-scrollbar-thumb,
 .style-atlas ::-webkit-scrollbar-thumb { background-color: #b0b0b0; }
 .style-print ::-webkit-scrollbar-thumb:hover,
