@@ -90,6 +90,15 @@ var Util = {
       default: return c;
       }
     });
+  },
+
+  once: function(f) {
+    var run = false;
+    return function() {
+      if (run) return;
+      run = true;
+      f.apply(this, arguments);
+    };
   }
 };
 

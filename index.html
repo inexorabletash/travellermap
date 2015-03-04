@@ -29,14 +29,14 @@
 <meta property="og:site_name" content="The Traveller Map">
 <meta property="fb:admins" content="617166358">
 
-<link rel="stylesheet" href="index.css?update=2015-01-17">
+<link rel="stylesheet" href="index.css?update=2015-02-24">
 <link rel="stylesheet" href="lib/add-to-home-screen/addtohomescreen.css">
 
 <!--[if lt IE 8]><script>alert("IE7 is no longer supported.");location = 'http://google.com/chrome';</script><![endif]-->
 <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js"></script>
-<script src="lib/polyfill/polyfill.min.js?update=2015-01-02"></script>
-<script src="map.js?update=2015-01-23"></script>
-<script src="index.js?update=2015-01-17"></script>
+<script src="lib/polyfill/polyfill.min.js?update=2015-03-01"></script>
+<script src="map.js?update=2015-03-03"></script>
+<script src="index.js?update=2015-03-03"></script>
 <style>
 .ui {
   z-index: 2000;
@@ -433,12 +433,9 @@ button:hover {
       });
 
       // Init all of the "social" UI asynchronously.
-      var initialized = false;
-      $('#shareBtn').addEventListener('click', function() {
-        if (!initialized) {
-          initialized = true;
-          initSharingLinks();
-        }
+      setTimeout(initSharingLinks, 1000);
+`<      $('#shareBtn').addEventListener('click', function() {
+        initSharingLinks();
       });
     });
     </script>
@@ -1018,7 +1015,7 @@ button:hover {
 
   <div id="fb-root"></div>
   <script>
-  function initSharingLinks() {
+  var initSharingLinks = Util.once(function() {
     // Twitter
     !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
 
@@ -1037,7 +1034,7 @@ button:hover {
       js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=259977877486558&version=v2.0";
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
-  }
+  });
   </script>
 
   <script type="application/javascript" src="lib/add-to-home-screen/addtohomescreen.min.js"></script>
