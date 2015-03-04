@@ -1,3 +1,6 @@
+// Externs
+var Traveller, Util, Handlebars;
+
 window.addEventListener('DOMContentLoaded', function() {
   'use strict';
 
@@ -25,6 +28,7 @@ window.addEventListener('DOMContentLoaded', function() {
   var isIframe = (window != window.top); // != for IE
   var isSmallScreen = mapElement.offsetWidth <= 640; // Arbitrary
 
+
   //////////////////////////////////////////////////////////////////////
   //
   // Parameters and Style
@@ -49,6 +53,113 @@ window.addEventListener('DOMContentLoaded', function() {
     y: defaults.y,
     scale: defaults.scale
   };
+
+  var SAVE_PREFERENCES_DELAY_MS = 500;
+  var savePreferences = isIframe ? function() {} : Util.debounce(function() {
+    function maybeSave(test, key, data) {
+      if (test)
+        localStorage.setItem(key, JSON.stringify(data));
+      else
+        localStorage.removeItem(key);
+    }
+
+    var prefs = {
+      style: map.GetStyle(),
+      options: map.GetOptions(),
+      routes: map.GetNamedOption('routes'),
+      dimunofficial: map.GetNamedOption('dimunofficial')
+    };
+      PARAM_OPTIONS.forEach(function(option) {
+        prefs[option.param] = document.body.classList.contains(option.className);
+      });
+    maybeSave($('#cbSavePreferences').checked, 'preferences', prefs);
+    maybeSave($('#cbSaveLocation').checked, 'location', {
+      position: { x: map.GetX(), y: map.GetY() },
+      scale: map.GetScale()
+    });
+  }, SAVE_PREFERENCES_DELAY_MS);
+
+
+  //////////////////////////////////////////////////////////////////////
+  //
+  // Permalink
+  //
+  //////////////////////////////////////////////////////////////////////
+
+  var PERMALINK_REFRESH_DELAY_MS = 500;
+  var lastPageURL = null;
+  var updatePermalink = Util.debounce(function() {
+    function round(n, d) {
+      d = 1 / d; // Avoid twitchy IEEE754 rounding.
+      return Math.round(n * d) / d;
+    }
+
+    urlParams.x = round(map.GetX(), 1/1000);
+    urlParams.y = round(map.GetY(), 1/1000);
+    urlParams.scale = round(map.GetScale(), 1/128);
+    urlParams.options = map.GetOptions();
+    urlParams.style = map.GetStyle();
+
+    map.GetNamedOptionNames().forEach(function(name) {
+      urlParams[name] = map.GetNamedOption(name);
+    });
+
+    delete urlParams.sector;
+    delete urlParams.hex;
+    ['x', 'y', 'options', 'scale', 'style', 'routes', 'dimunofficial'].forEach(function(p) {
+      if (urlParams[p] === defaults[p]) delete urlParams[p];
+    });
+
+    PARAM_OPTIONS.forEach(function(option) {
+      if (document.body.classList.contains(option.className) === option['default'])
+        delete urlParams[option.param];
+      else
+        urlParams[option.param] = 1;
+    });
+
+    var pageURL = Util.makeURL(document.location, urlParams);
+
+    if (pageURL === lastPageURL)
+      return;
+
+    if ('history' in window && 'replaceState' in window.history && document.location.href !== pageURL)
+      window.history.replaceState(null, document.title, pageURL);
+
+    $('#share-url').value = pageURL;
+    $('#share-embed').value = '<iframe width=400 height=300 src="' + pageURL + '">';
+
+    var snapshotParams = (function() {
+      var map_center_x = map.GetX(),
+          map_center_y = map.GetY(),
+          scale = map.GetScale(),
+          rect = mapElement.getBoundingClientRect(),
+          width = Math.round(rect.width),
+          height = Math.round(rect.height),
+          x = ( map_center_x * scale - ( width / 2 ) ) / width,
+          y = ( -map_center_y * scale - ( height / 2 ) ) / height;
+      return { x: x, y: y, w: width, h: height, scale: scale };
+    }());
+    snapshotParams.x = round(snapshotParams.x, 1/1000);
+    snapshotParams.y = round(snapshotParams.y, 1/1000);
+    snapshotParams.scale = round(snapshotParams.scale, 1/128);
+    snapshotParams.options = map.GetOptions();
+    snapshotParams.style = map.GetStyle();
+    snapshotParams.routes = urlParams.routes;
+    snapshotParams.dimunofficial = urlParams.dimunofficial;
+    var snapshotURL = Util.makeURL(Traveller.SERVICE_BASE + '/api/tile', snapshotParams);
+    $('a#download-snapshot').href = snapshotURL;
+    snapshotParams.accept = 'application/pdf';
+    snapshotURL = Util.makeURL(Traveller.SERVICE_BASE + '/api/tile', snapshotParams);
+    $('a#download-snapshot-pdf').href = snapshotURL;
+
+  }, PERMALINK_REFRESH_DELAY_MS);
+
+
+  //////////////////////////////////////////////////////////////////////
+  //
+  // UI Binding
+  //
+  //////////////////////////////////////////////////////////////////////
 
   function setOptions(mask, flags) {
     map.SetOptions((map.GetOptions() & ~mask) | flags);
@@ -188,35 +299,6 @@ window.addEventListener('DOMContentLoaded', function() {
     }
   }());
 
-  var savePreferencesTimeout;
-  var SAVE_PREFERENCES_DELAY_MS = 500;
-  function savePreferences() {
-    if (isIframe) return;
-    if (savePreferencesTimeout) clearTimeout(savePreferencesTimeout);
-    savePreferencesTimeout = setTimeout(function() {
-      function maybeSave(test, key, data) {
-        if (test)
-          localStorage.setItem(key, JSON.stringify(data));
-        else
-          localStorage.removeItem(key);
-      }
-
-      var prefs = {
-        style: map.GetStyle(),
-        options: map.GetOptions(),
-        routes: map.GetNamedOption('routes'),
-        dimunofficial: map.GetNamedOption('dimunofficial')
-      };
-      PARAM_OPTIONS.forEach(function(option) {
-        prefs[option.param] = document.body.classList.contains(option.className);
-      });
-      maybeSave($('#cbSavePreferences').checked, 'preferences', prefs);
-      maybeSave($('#cbSaveLocation').checked, 'location', {
-        position: { x: map.GetX(), y: map.GetY() },
-        scale: map.GetScale()
-      });
-    }, SAVE_PREFERENCES_DELAY_MS);
-  }
 
   $('#cbSavePreferences').addEventListener('click', savePreferences);
   $('#cbSaveLocation').addEventListener('click', savePreferences);
@@ -296,86 +378,6 @@ window.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  //////////////////////////////////////////////////////////////////////
-  //
-  // Permalink
-  //
-  //////////////////////////////////////////////////////////////////////
-
-  var permalinkTimeout = 0;
-  var lastPageURL = null;
-  function updatePermalink() {
-    var PERMALINK_REFRESH_DELAY_MS = 500;
-    if (permalinkTimeout)
-      clearTimeout(permalinkTimeout);
-    permalinkTimeout = setTimeout(function() {
-
-      function round(n, d) {
-        d = 1 / d; // Avoid twitchy IEEE754 rounding.
-        return Math.round(n * d) / d;
-      }
-
-      urlParams.x = round(map.GetX(), 1/1000);
-      urlParams.y = round(map.GetY(), 1/1000);
-      urlParams.scale = round(map.GetScale(), 1/128);
-      urlParams.options = map.GetOptions();
-      urlParams.style = map.GetStyle();
-
-      map.GetNamedOptionNames().forEach(function(name) {
-        urlParams[name] = map.GetNamedOption(name);
-      });
-
-      delete urlParams.sector;
-      delete urlParams.hex;
-      ['x', 'y', 'options', 'scale', 'style', 'routes', 'dimunofficial'].forEach(function(p) {
-        if (urlParams[p] === defaults[p]) delete urlParams[p];
-      });
-
-      PARAM_OPTIONS.forEach(function(option) {
-        if (document.body.classList.contains(option.className) === option['default'])
-          delete urlParams[option.param];
-        else
-          urlParams[option.param] = 1;
-      });
-
-      var pageURL = Util.makeURL(document.location, urlParams);
-
-      if (pageURL === lastPageURL)
-        return;
-
-      if ('history' in window && 'replaceState' in window.history && document.location.href !== pageURL)
-          window.history.replaceState(null, document.title, pageURL);
-
-      $('#share-url').value = pageURL;
-      $('#share-embed').value = '<iframe width=400 height=300 src="' + pageURL + '">';
-
-      var snapshotParams = (function() {
-        var map_center_x = map.GetX(),
-            map_center_y = map.GetY(),
-            scale = map.GetScale(),
-            rect = mapElement.getBoundingClientRect(),
-            width = Math.round(rect.width),
-            height = Math.round(rect.height),
-            x = ( map_center_x * scale - ( width / 2 ) ) / width,
-            y = ( -map_center_y * scale - ( height / 2 ) ) / height;
-        return { x: x, y: y, w: width, h: height, scale: scale };
-      }());
-      snapshotParams.x = round(snapshotParams.x, 1/1000);
-      snapshotParams.y = round(snapshotParams.y, 1/1000);
-      snapshotParams.scale = round(snapshotParams.scale, 1/128);
-      snapshotParams.options = map.GetOptions();
-      snapshotParams.style = map.GetStyle();
-      snapshotParams.routes = urlParams.routes;
-      snapshotParams.dimunofficial = urlParams.dimunofficial;
-      var snapshotURL = Util.makeURL(Traveller.SERVICE_BASE + '/api/tile', snapshotParams);
-      $('a#download-snapshot').href = snapshotURL;
-      snapshotParams.accept = 'application/pdf';
-      snapshotURL = Util.makeURL(Traveller.SERVICE_BASE + '/api/tile', snapshotParams);
-      $('a#download-snapshot-pdf').href = snapshotURL;
-
-    }, PERMALINK_REFRESH_DELAY_MS);
-  }
-
 
   //////////////////////////////////////////////////////////////////////
   //
@@ -414,7 +416,6 @@ window.addEventListener('DOMContentLoaded', function() {
       dataRequest = Traveller.MapService.credits(hexX, hexY, function(data) {
         dataRequest = null;
         displayResults(data);
-      }, function() {
       });
 
     }, immediate ? 0 : DATA_REQUEST_DELAY_MS);

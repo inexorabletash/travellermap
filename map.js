@@ -92,13 +92,36 @@ var Util = {
     });
   },
 
-  once: function(f) {
+  once: function(func) {
     var run = false;
     return function() {
       if (run) return;
       run = true;
-      f.apply(this, arguments);
+      func.apply(this, arguments);
     };
+  },
+
+  debounce: function(func, delay, immediate) {
+    var timeoutId = 0;
+    if (immediate) {
+      return function() {
+        if (timeoutId)
+          clearTimeout(timeoutId);
+        else
+          func.apply(this, arguments);
+        timeoutId = setTimeout(function() { timeoutId = 0; }, delay);
+      };
+    } else {
+      return function() {
+        var $this = this, $arguments = arguments;
+        if (timeoutId)
+          clearTimeout(timeoutId);
+        timeoutId = setTimeout(function() {
+          func.apply($this, $arguments);
+          timeoutId = 0;
+        }, delay);
+      };
+    }
   }
 };
 
@@ -194,14 +217,16 @@ var Util = {
             try {
               data = JSON.parse(data);
             } catch (ex) {
-              errback(ex);
+              if (errback)
+                errback(ex);
               return;
             }
           }
           callback(data);
         },
         function(error) {
-          errback(Error(error.statusText));
+          if (errback)
+            errback(Error(error.statusText));
         });
     }
 
