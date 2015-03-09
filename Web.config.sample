@@ -92,10 +92,7 @@
 
     <!-- Allow cache of static content for 24 hours -->
     <staticContent>
-      <clientCache
-          cacheControlCustom="public"
-          cacheControlMode="UseMaxAge"
-          cacheControlMaxAge="24:00:00" />
+      <clientCache cacheControlCustom="public" cacheControlMode="UseMaxAge" cacheControlMaxAge="24:00:00"/>
       <mimeMap fileExtension=".json" mimeType="application/json" />
       <mimeMap fileExtension=".sec" mimeType="text/plain" />
       <mimeMap fileExtension=".msec" mimeType="text/plain" />
@@ -103,6 +100,12 @@
       <mimeMap fileExtension=".t5tab" mimeType="text/plain" />
       <mimeMap fileExtension=".tab" mimeType="text/plain" />
     </staticContent>
+    
+    <!-- Custom HTTP error pages -->
+    <httpErrors existingResponse="Replace" errorMode="Custom">
+      <remove statusCode="404" subStatusCode="-1"/>
+      <error statusCode="404" prefixLanguageFilePath="" path="404.html" responseMode="File"/>
+    </httpErrors>
   </system.webServer>
 
   <connectionStrings>
