@@ -581,6 +581,31 @@ var Util = {
     sink.style.zIndex = 1000;
     container.appendChild(sink);
 
+    this.canvas = null;
+    this.ctx = null;
+    var canvas = document.createElement('canvas');
+    if ('getContext' in canvas && canvas.getContext('2d')) {
+      var cw = container.offsetWidth;
+      var ch = container.offsetHeight;
+      var pw = (cw * 2) | 0;
+      var ph = (ch * 2) | 0;
+
+      canvas.width = pw;
+      canvas.height = ph;
+      canvas.offset_x = -(cw / 2);
+      canvas.offset_y = -ch;
+      canvas.style.width = cw * 2;
+      canvas.style.height = ch * 2;
+      canvas.style.left = canvas.offset_x + 'px';
+      canvas.style.top = canvas.offset_y + 'px';
+
+      canvas.style.position = 'absolute';
+      canvas.style.zIndex = 0;
+      container.appendChild(canvas);
+      this.canvas = canvas;
+      this.ctx = canvas.getContext('2d');
+    }
+
     this.markers = [];
     this.overlays = [];
 
@@ -907,6 +932,21 @@ var Util = {
         z = 10 + this.max_scale - this.min_scale,
         child, next;
 
+    if (this.canvas) {
+      var pw = (cw * 2) | 0;
+      var ph = (ch * 2) | 0;
+      if (this.canvas.width !== pw && this.canvas.height !== ph) {
+        this.canvas.width = pw;
+        this.canvas.height = ph;
+        this.canvas.offset_x = -(cw / 2);
+        this.canvas.offset_y = -ch;
+        this.canvas.style.width = cw * 2;
+        this.canvas.style.height = ch * 2;
+        this.canvas.style.left = this.canvas.offset_x + 'px';
+        this.canvas.style.top = this.canvas.offset_y + 'px';
+      }
+    }
+
     // Quantize to bounding tiles
     l = Math.floor(l) - 1;
     t = Math.floor(t) - 1;
@@ -995,6 +1035,12 @@ var Util = {
     var self = this; // for closures
 
     function drawImage(img, x, y, w, h, z) {
+      if (self.ctx) {
+        x -= self.canvas.offset_x;
+        y -= self.canvas.offset_y;
+        self.ctx.drawImage(img, Math.round(x), Math.round(y), w, h);
+        return;
+      }
 
       if (img.parentNode !== self.container) self.container.appendChild(img);
 
