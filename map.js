@@ -542,6 +542,10 @@ var Util = {
 
   var SINK_OFFSET = 1000;
 
+  var BSR = 'webkitBackingStorePixelRatio' in window ? window.webkitBackingStorePixelRatio : 1;
+  var DPR = 'devicePIxelRatio' in window ? window.devicePixelRatio  : 1;
+  var CANVAS_SCALE_RATIO = DPR/BSR;
+
   function Map(container) {
 
     var self = this; // For event closures that may muck with 'this'
@@ -587,8 +591,8 @@ var Util = {
     if ('getContext' in canvas && canvas.getContext('2d')) {
       var cw = container.offsetWidth;
       var ch = container.offsetHeight;
-      var pw = (cw * 2) | 0;
-      var ph = (ch * 2) | 0;
+      var pw = (cw * 2 * CANVAS_SCALE_RATIO) | 0;
+      var ph = (ch * 2 * CANVAS_SCALE_RATIO) | 0;
 
       canvas.width = pw;
       canvas.height = ph;
@@ -933,9 +937,9 @@ var Util = {
         child, next;
 
     if (this.canvas) {
-      var pw = (cw * 2) | 0;
-      var ph = (ch * 2) | 0;
-      if (this.canvas.width !== pw && this.canvas.height !== ph) {
+      var pw = (cw * 2 * CANVAS_SCALE_RATIO) | 0;
+      var ph = (ch * 2 * CANVAS_SCALE_RATIO) | 0;
+      if (this.canvas.width !== pw || this.canvas.height !== ph) {
         this.canvas.width = pw;
         this.canvas.height = ph;
         this.canvas.offset_x = -(cw / 2);
