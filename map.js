@@ -542,10 +542,6 @@ var Util = {
 
   var SINK_OFFSET = 1000;
 
-  var BSR = 'webkitBackingStorePixelRatio' in window ? window.webkitBackingStorePixelRatio : 1;
-  var DPR = 'devicePIxelRatio' in window ? window.devicePixelRatio  : 1;
-  var CANVAS_SCALE_RATIO = DPR/BSR;
-
   function Map(container) {
 
     var self = this; // For event closures that may muck with 'this'
@@ -589,25 +585,36 @@ var Util = {
     this.ctx = null;
     var canvas = document.createElement('canvas');
     if ('getContext' in canvas && canvas.getContext('2d')) {
-      var cw = container.offsetWidth;
-      var ch = container.offsetHeight;
-      var pw = (cw * 2 * CANVAS_SCALE_RATIO) | 0;
-      var ph = (ch * 2 * CANVAS_SCALE_RATIO) | 0;
-
-      canvas.width = pw;
-      canvas.height = ph;
-      canvas.offset_x = -(cw / 2);
-      canvas.offset_y = -ch;
-      canvas.style.width = cw * 2;
-      canvas.style.height = ch * 2;
-      canvas.style.left = canvas.offset_x + 'px';
-      canvas.style.top = canvas.offset_y + 'px';
-
       canvas.style.position = 'absolute';
       canvas.style.zIndex = 0;
       container.appendChild(canvas);
+
+      var ctx = canvas.getContext('2d');
+      this.ctx = ctx;
       this.canvas = canvas;
-      this.ctx = canvas.getContext('2d');
+
+      this.resetCanvas = function() {
+        var dpr = 'devicePixelRatio' in window ? window.devicePixelRatio : 1;
+
+        var cw = container.offsetWidth;
+        var ch = container.offsetHeight;
+        var pw = (cw * 2 * dpr) | 0;
+        var ph = (ch * 2 * dpr) | 0;
+        var ox = -(cw / 2);
+        var oy = -ch;
+
+        this.canvas.width = pw;
+        this.canvas.height = ph;
+        this.canvas.style.width = (cw * 2) + 'px';
+        this.canvas.style.height = (ch * 2) + 'px';
+        this.canvas.offset_x = ox;
+        this.canvas.offset_y = oy;
+        this.canvas.style.left = ox + 'px';
+        this.canvas.style.top = oy + 'px';
+        this.ctx.setTransform(1,0,0,1,0,0);
+        this.ctx.scale(dpr, dpr);
+      };
+      this.resetCanvas();
     }
 
     this.markers = [];
@@ -726,7 +733,9 @@ var Util = {
     container.addEventListener('DOMMouseScroll', wheelListener); // FF
 
     window.addEventListener('resize', function() {
-      self.redraw(true); // synchronous
+      if (self.canvas)
+        self.resetCanvas();
+      self.invalidate();
     });
 
     var pinch_x1, pinch_y1, pinch_x2, pinch_y2;
@@ -936,21 +945,6 @@ var Util = {
         z = 10 + this.max_scale - this.min_scale,
         child, next;
 
-    if (this.canvas) {
-      var pw = (cw * 2 * CANVAS_SCALE_RATIO) | 0;
-      var ph = (ch * 2 * CANVAS_SCALE_RATIO) | 0;
-      if (this.canvas.width !== pw || this.canvas.height !== ph) {
-        this.canvas.width = pw;
-        this.canvas.height = ph;
-        this.canvas.offset_x = -(cw / 2);
-        this.canvas.offset_y = -ch;
-        this.canvas.style.width = cw * 2;
-        this.canvas.style.height = ch * 2;
-        this.canvas.style.left = this.canvas.offset_x + 'px';
-        this.canvas.style.top = this.canvas.offset_y + 'px';
-      }
-    }
-
     // Quantize to bounding tiles
     l = Math.floor(l) - 1;
     t = Math.floor(t) - 1;
@@ -976,12 +970,14 @@ var Util = {
     this.drawRectangle(l, t, r, b, tscale, tmult, ch, cw, cf, z, this._rd_cb);
 
     // Hide unused tiles
-    child = this.container.firstChild;
-    while (child) {
-      next = child.nextSibling;
-      if (child.tagName === 'IMG' && child.pass !== this.pass)
-        this.container.removeChild(child);
-      child = next;
+    if (!this.ctx) {
+      child = this.container.firstChild;
+      while (child) {
+        next = child.nextSibling;
+        if (child.tagName === 'IMG' && child.pass !== this.pass)
+          this.container.removeChild(child);
+        child = next;
+      }
     }
 
     // Reposition markers and overlays
@@ -1042,7 +1038,11 @@ var Util = {
       if (self.ctx) {
         x -= self.canvas.offset_x;
         y -= self.canvas.offset_y;
-        self.ctx.drawImage(img, Math.round(x), Math.round(y), w, h);
+        var px = x | 0;
+        var py = y | 0;
+        var pw = ((x + w) | 0) - px;
+        var ph = ((y + h) | 0) - py;
+        self.ctx.drawImage(img, px, py, pw, ph);
         return;
       }
 
