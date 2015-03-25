@@ -966,7 +966,11 @@ var Util = {
     this.cache.ensureCapacity(tileCount * 2);
 
     // TODO: Defer loading of new tiles while in the middle of a zoom gesture
-    // Draw a rectanglular area of the map in a spiral from the center of the requested map outwards
+    // Draw a rectanglular area of the map in a spiral from the center of the requested map outward
+    if (this.ctx) {
+      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    }
+
     this.drawRectangle(l, t, r, b, tscale, tmult, ch, cw, cf, z, this._rd_cb);
 
     // Hide unused tiles
