@@ -38,6 +38,7 @@ namespace Maps
                     case "print": style = Stylesheet.Style.Print; break;
                     case "candy": style = Stylesheet.Style.Candy; break;
                     case "draft": style = Stylesheet.Style.Draft; break;
+                    case "fasa": style = Stylesheet.Style.FASA; break;
                 }
             }
         }

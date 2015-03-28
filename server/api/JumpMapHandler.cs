@@ -160,7 +160,7 @@ namespace Maps.API
             
             // Compute path
             float[] edgeX, edgeY;
-            RenderUtil.HexEdges(styles.microBorderStyle == MicroBorderStyle.Square ? PathUtil.PathType.Square : PathUtil.PathType.Hex,
+            RenderUtil.HexEdges(styles.hexStyle == HexStyle.Square ? PathUtil.PathType.Square : PathUtil.PathType.Hex,
                 out edgeX, out edgeY);
             PointF[] boundingPathCoords;
             byte[] boundingPathTypes;

@@ -526,9 +526,9 @@ namespace Maps.Rendering
 
                         ctx.styles.parsecGrid.pen.Apply(ref pen);
 
-                        switch (ctx.styles.microBorderStyle)
+                        switch (ctx.styles.hexStyle)
                         {
-                            case MicroBorderStyle.Square:
+                            case HexStyle.Square:
                                 for (int px = hx - parsecSlop; px < hx + hw + parsecSlop; px++)
                                 {
                                     float yOffset = ((px % 2) != 0) ? 0.0f : 0.5f;
@@ -541,7 +541,7 @@ namespace Maps.Rendering
                                 }
                                 break;
 
-                            case MicroBorderStyle.Hex:
+                            case HexStyle.Hex:
                                 XPoint[] points = new XPoint[4];
                                 for (int px = hx - parsecSlop; px < hx + hw + parsecSlop; px++)
                                 {
@@ -556,7 +556,7 @@ namespace Maps.Rendering
                                     }
                                 }
                                 break;
-                            case MicroBorderStyle.Curve:
+                            case HexStyle.None:
                                 // none
                                 break;
                         }
@@ -899,22 +899,33 @@ namespace Maps.Rendering
                         {
                             if (world.IsAmber || world.IsRed || world.IsBlue)
                             {
-                                PenInfo pi =
-                                    world.IsAmber ? ctx.styles.amberZone.pen :
-                                    world.IsRed ? ctx.styles.redZone.pen : ctx.styles.blueZone.pen;
-                                pi.Apply(ref pen);
+                                Stylesheet.StyleElement elem =
+                                    world.IsAmber ? ctx.styles.amberZone :
+                                    world.IsRed ? ctx.styles.redZone : ctx.styles.blueZone;
 
-                                if (renderName && ctx.styles.fillMicroBorders)
+                                if (!elem.fillColor.IsEmpty)
                                 {
-                                    using (RenderUtil.SaveState(ctx.graphics))
+                                    solidBrush.Color = elem.fillColor;
+                                    ctx.graphics.DrawEllipse(solidBrush, -0.4f, -0.4f, 0.8f, 0.8f);
+                                }
+
+                                PenInfo pi = elem.pen;
+                                if (!pi.color.IsEmpty)
+                                {
+                                    pi.Apply(ref pen);
+
+                                    if (renderName && ctx.styles.fillMicroBorders)
                                     {
-                                        ctx.graphics.IntersectClip(new RectangleF(-.5f, -.5f, 1f, renderUWP ? 0.65f : 0.75f));
+                                        using (RenderUtil.SaveState(ctx.graphics))
+                                        {
+                                            ctx.graphics.IntersectClip(new RectangleF(-.5f, -.5f, 1f, renderUWP ? 0.65f : 0.75f));
+                                            ctx.graphics.DrawEllipse(pen, -0.4f, -0.4f, 0.8f, 0.8f);
+                                        }
+                                    }
+                                    else
+                                    {
                                         ctx.graphics.DrawEllipse(pen, -0.4f, -0.4f, 0.8f, 0.8f);
                                     }
-                                }
-                                else
-                                {
-                                    ctx.graphics.DrawEllipse(pen, -0.4f, -0.4f, 0.8f, 0.8f);
                                 }
                             }
                         }
@@ -954,11 +965,13 @@ namespace Maps.Rendering
                         if (renderName)
                         {
                             string name = world.Name;
-                            if (isHiPop || ctx.styles.worlds.textStyle.Uppercase)
+                            if ((isHiPop && ctx.styles.worldDetails.HasFlag(WorldDetails.Highlight)) || ctx.styles.worlds.textStyle.Uppercase)
                                 name = name.ToUpperInvariant();
 
-                            Color textColor = isCapital ? ctx.styles.worlds.textHighlightColor : ctx.styles.worlds.textColor;
-                            XFont font = (isHiPop || isCapital) ? ctx.styles.worlds.LargeFont : ctx.styles.worlds.Font;
+                            Color textColor = (isCapital && ctx.styles.worldDetails.HasFlag(WorldDetails.Highlight))
+                                ? ctx.styles.worlds.textHighlightColor : ctx.styles.worlds.textColor;
+                            XFont font = ((isHiPop || isCapital) && ctx.styles.worldDetails.HasFlag(WorldDetails.Highlight)) 
+                                ? ctx.styles.worlds.LargeFont : ctx.styles.worlds.Font;
 
                             DrawWorldLabel(ctx, ctx.styles.worlds.textBackgroundStyle, solidBrush, textColor, ctx.styles.worlds.textStyle.Translation, font, name);
                         }
@@ -1293,7 +1306,8 @@ namespace Maps.Rendering
 
                             using (RenderUtil.SaveState(ctx.graphics))
                             {
-                                Color textColor = isCapital ? ctx.styles.worlds.textHighlightColor : ctx.styles.worlds.textColor;
+                                Color textColor = (isCapital && ctx.styles.worldDetails.HasFlag(WorldDetails.Highlight))
+                                    ? ctx.styles.worlds.textHighlightColor : ctx.styles.worlds.textColor;
 
                                 if (ctx.styles.worlds.textStyle.Uppercase)
                                     name = name.ToUpper();
