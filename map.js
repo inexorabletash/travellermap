@@ -613,6 +613,7 @@ var Util = {
         this.canvas.style.top = oy + 'px';
         this.ctx.setTransform(1,0,0,1,0,0);
         this.ctx.scale(dpr, dpr);
+        this.ctx.globalCompositeOperation = 'destination-over';
       };
       this.resetCanvas();
     }
