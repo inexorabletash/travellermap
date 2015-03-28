@@ -509,6 +509,9 @@ namespace Maps.Rendering
 
                         worldWater.fillColor = inkColor;
                         worldNoWater.fillColor = inkColor;
+                        worldWater.pen.color = Color.Empty;
+                        worldNoWater.pen.color = Color.Empty;
+
                         showWorldDetailColors = false;
 
                         worldDetails = worldDetails & ~WorldDetails.Starport;
@@ -844,10 +847,10 @@ namespace Maps.Rendering
         public MicroBorderStyle microBorderStyle;
         public HexStyle hexStyle;
 
-        public void WorldColors(World world, out XColor penColor, out XColor brushColor)
+        public void WorldColors(World world, out XColor penColorOut, out XColor brushColorOut)
         {
-            penColor = XColor.Empty;
-            brushColor = XColor.Empty;
+            Color penColor = Color.Empty;
+            Color brushColor = Color.Empty;
 
             if (showWorldDetailColors)
             {
@@ -895,6 +898,9 @@ namespace Maps.Rendering
                 brushColor = (world.WaterPresent) ? worldWater.fillColor : worldNoWater.fillColor;
                 penColor = (world.WaterPresent) ? worldWater.pen.color : worldNoWater.pen.color;
             }
+
+            penColorOut = penColor.IsEmpty ? XColor.Empty : penColor;
+            brushColorOut = brushColor.IsEmpty ? XColor.Empty : brushColor;
         }
 
         public static float ScaleInterpolate(float minValue, float maxValue, double scale, float minScale, float maxScale)
