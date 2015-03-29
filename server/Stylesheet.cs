@@ -507,6 +507,8 @@ namespace Maps.Rendering
                         hexStyle = HexStyle.Hex;
                         microBorderStyle = MicroBorderStyle.Curve;
 
+                        parsecGrid.pen.color = lightColor;
+
                         worldWater.fillColor = inkColor;
                         worldNoWater.fillColor = inkColor;
                         worldWater.pen.color = Color.Empty;
