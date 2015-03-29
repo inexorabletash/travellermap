@@ -34,6 +34,7 @@ my %sectors = (
     Reft => "Reft",
     Rift => "Riftspan Reaches",
     Solo => "Solomani Rim",
+    Spic => "Spica",
     Spin => "Spinward Marches",
     Stai => "Staihaia'yo",
     Troj => "Trojan Reach",

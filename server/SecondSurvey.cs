@@ -14,7 +14,7 @@ namespace Maps
         // Decimal hi:              0000000000111111111122222222223333
         // Decimal lo:              0123456789012345678901234567890123
 
-        public static char ToHex(int c) 
+        public static char ToHex(int c)
         {
             if (c == -1)
                 return 'S'; // Hack for "small" worlds
@@ -53,7 +53,7 @@ namespace Maps
         // ----  ---------  ------------------------
         // C     Vargr      Corsair base
         // D     Any        Depot
-        // E     Hiver      Embassy -------------- NONSTANDARD
+        // E     Hiver      Embassy
         // K     Any        Naval base
         // M     Any        Military base
         // N     Imperial   Naval base
@@ -63,7 +63,7 @@ namespace Maps
         // T     Aslan      Tlaukhu base
         // V     Any        Exploration base
         // W     Imperial   Way station
-        // X     Zhodani    Relay station
+        // X     Zhodani    Relay station -------- DEPRECATED in T5SS; use Zh.W
 
         private static RegexDictionary<string> s_legacyBaseDecodeTable = new GlobDictionary<string> {
             { "*.2", "NS" },  // Imperial Naval base + Scout base
@@ -71,7 +71,7 @@ namespace Maps
             { "*.B", "NW" },  // Imperial Naval base + Scout Way station
             { "*.C", "C" },   // Vargr Corsair base
             { "*.D", "D" },   // Depot
-            { "*.E", "E"},    // Hiver Embassy            - TODO: Approved T5SS code for Embassy
+            { "*.E", "E"},    // Hiver Embassy
             { "So.F", "K" },  // Solomani Naval Base
             { "*.F", "KM" },  // Military & Naval Base
             { "*.G", "K" },   // Vargr Naval Base
@@ -91,7 +91,7 @@ namespace Maps
             { "*.U", "RT" },  // Aslan Tlaukhu and Clan Base
             { "*.V", "V" },   // Scout/Exploration
             { "*.W", "W" },   // Imperial Scout Way Station
-            { "*.X", "X" },   // Zhodani Relay Station
+            { "*.X", "X" },   // Zhodani Relay Station    - TODO: Deprecate for T5SS Zh.W
             { "*.Y", "D" },   // Zhodani Depot
             { "*.Z", "KM" },   // Zhodani Naval/Military Base
         };
@@ -109,7 +109,7 @@ namespace Maps
             { "*.C", "C" },   // Vargr Corsair base
             { "Zh.D", "Y" }, // Zhodani Depot
             { "*.D", "D" },   // Depot
-            { "*.E", "E"},   // Hiver Embassy             - TODO: Approved T5SS code for Embassy
+            { "*.E", "E"},   // Hiver Embassy
             { "*.KM", "F" },  // Military & Naval Base
             { "So.K", "F" },  // Solomani Naval Base
             { "V*.K", "G" },   // Vargr Naval Base
@@ -129,7 +129,7 @@ namespace Maps
             { "*.RT", "U" },  // Aslan Tlaukhu and Clan Base
             { "*.V", "V" },   // Exploration
             { "*.W", "W" },   // Imperial Scout Way Station
-            { "*.X", "X" }, // Zhodani Relay Station
+            { "*.X", "X" }, // Zhodani Relay Station      - TODO: Deprecate for T5SS Zh.W
             { "Zh.KM", "Z" }, // Zhodani Naval/Military Base
         };
 
@@ -154,7 +154,7 @@ namespace Maps
             { "As", "Aslan Hierate" },
             { "Cs", "Imperial Client State" },
             { "Dr", "Droyne" },
-            { "Hv", "Hive Federation" },
+            { "Hv", "Hiver Federation" },
             { "Im", "Third Imperium" },
             { "J-", "Julian Protectorate" },
             { "Jp", "Julian Protectorate" },
@@ -221,6 +221,7 @@ namespace Maps
             { "A9", "AsT9" },
             { "Cs", "CsIm" },
             { "Cz", "CsZh" },
+            { "Hv", "HvFd" },
             { "J-", "JuPr" },
             { "Jp", "JuPr" },
             { "Ju", "JuPr" },
@@ -290,6 +291,7 @@ namespace Maps
             { "GlEm", "Gl", "As", "Glorious Empire" }, // (Aslan independent clan, outcast)
             { "GlFe", "Gf", null, "Glimmerdrift Federation" },
             { "GnCl", "Gi", null, "Gniivi Collective" },
+            { "HvFd", "Hv", "Hv", "Hiver Federation" },
             { "ImAp", "Im", "Im", "Third Imperium, Amec Protectorate" },
             { "ImDa", "Im", "Im", "Third Imperium, Domain of Antares" },
             { "ImDc", "Im", "Im", "Third Imperium, Domain of Sylea" },
@@ -323,18 +325,24 @@ namespace Maps
             { "SwCf", "Sw", null, "Sword Worlds Confederation" },
             { "TeAr", "Ta", "As", "Tealou Arlaoh" }, // (Aslan independent clan, non-outcast)
             { "UnHa", "Uh", null, "Union of Harmony" },
-            { "V40S", "Ve", "Va", "40th Squadron" },
-            { "VARC", "Vr", "Va", "Anti-Rukh Coalition" },
+            { "V40S", "Ve", "Va", "40th Squadron" }, // (Ekhelle Ksafi)
+            { "VARC", "Vr", "Va", "Anti-Rukh Coalition" }, // (Gnoerrgh Rukh Lloell)
             { "VAug", "Vu", "Va", "United Followers of Augurgh" },
-            { "VCKd", "Vk", "Va", "Commonality of Kedzudh" },
+            { "VBkA", "Vb", "Va", "Bakne Alliance" },
+            { "VCKd", "Vk", "Va", "Commonality of Kedzudh" }, // (Kedzudh Aeng)
             { "VDzF", "Vf", "Va", "Dzarrgh Federate" },
-            { "VPGa", "Vg", "Va", "Pact of Gaerr" },
-            { "VRuk", "Vn", "Va", "Worlds of Leader Rukh" },
-            { "VSDp", "Vs", "Va", "Seaknouth Dependency" },
-            { "VSEq", "Vd", "Va", "Society of Equals" },
-            { "VThE", "Vt", "Va", "Thoengling Empire" },
-            { "VTzE", "Vp", "Va", "Thirz Empire" },
-            { "VUru", "Vu", "Va", "Nation of Urukhu" },
+            { "VLIn", "Vi", "Va", "Llaeghskath Interacterate" },
+            { "VPGa", "Vg", "Va", "Pact of Gaerr" }, // (Gaerr Thue)
+            { "VRrS", "VW", "Va", "Rranglloez Stronghold" },
+            { "VRuk", "Vn", "Va", "Worlds of Leader Rukh" }, // (Rukh Aegz)
+            { "VSDp", "Vs", "Va", "Seaknouth Dependency" }, // (Saeknouth Igz)
+            { "VSEq", "Vd", "Va", "Society of Equals" }, // (Dzen Aeng Kho)
+            { "VThE", "Vt", "Va", "Thoengling Empire" }, // (Thoengling Raghz)
+            { "VTzE", "Vp", "Va", "Thirz Empire" }, // (Thirz Uerra)
+            { "VUru", "Vu", "Va", "Urukhu" },
+            { "VVar", "Ve", "Va", "Empire of Varroerth" },
+            { "VWan", "Vw", "Va", "People of Wanz" },
+            { "VWP2", "V2", "Va", "Windhorn Pact of Two" },
             { "XXXX", "Xx", null, "Unknown" },
             { "ZhCo", "Zh", "Zh", "Zhodani Consulate" }
         };
