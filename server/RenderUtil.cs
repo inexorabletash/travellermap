@@ -372,7 +372,7 @@ namespace Maps.Rendering
                     if (checkFirst < 3)
                         break;
                 }
-                else if (!startHexVisited)
+                else if (!startHexVisited)  
                 {
                     startHex = hex;
                     startHexVisited = true;

@@ -42,21 +42,22 @@ namespace Maps.Rendering
     {
         None = 0x0000,
 
-        Type = 0x0001,
-        KeyNames = 0x0002,
-        Starport = 0x0004,
-        GasGiant = 0x0008,
-        Allegiance = 0x0010,
-        Bases = 0x0020,
-        Hex = 0x0040,
-        Zone = 0x0080,
-        AllNames = 0x0100,
-        Uwp = 0x0200,
-        Asteroids = 0x0400,
+        Type = 0x0001, // Show world type (water/no water/asteroid/unknown)
+        KeyNames = 0x0002, // Show HiPop/Capital names
+        Starport = 0x0004, // Show starport
+        GasGiant = 0x0008, // Show gas giant glyph
+        Allegiance = 0x0010, // Show allegiance code
+        Bases = 0x0020, // Show bases
+        Hex = 0x0040, // Include hex numbers
+        Zone = 0x0080, // Show Amber/Red zones
+        AllNames = 0x0100, // Show all world names, not just HiPop/Capitals
+        Uwp = 0x0200, // Show UWP below world name
+        Asteroids = 0x0400, // Render asteroids as pseudorandom ovals
+        Highlight = 0x0800, // Highlight (text font, text color) HiPopCapital worlds
 
         Dotmap = None,
-        Atlas = Type | KeyNames | Starport | GasGiant | Allegiance | Bases | Zone,
-        Poster = Type | KeyNames | Starport | GasGiant | Allegiance | Bases | Hex | Zone | AllNames | Asteroids,
+        Atlas = Type | KeyNames | Starport | GasGiant | Allegiance | Bases | Zone | Highlight,
+        Poster = Atlas | Hex | AllNames | Asteroids,
     }
 
     public enum TextBackgroundStyle
@@ -169,6 +170,12 @@ namespace Maps.Rendering
         Square,
         Curve,
     }
+    public enum HexStyle
+    {
+        None,
+        Hex,
+        Square,
+    }
 
     public class Stylesheet
     {
@@ -210,7 +217,7 @@ namespace Maps.Rendering
 
         private const float T5AllegianceCodeMinScale = 64;
 
-        public enum Style { Poster, Atlas, Candy, Print, Draft };
+        public enum Style { Poster, Atlas, Candy, Print, Draft, FASA };
 
         public Stylesheet(double scale, MapOptions options, Style style)
         {
@@ -242,10 +249,11 @@ namespace Maps.Rendering
             showMicroNames = ((scale >= MicroNameMinScale) && ((options & MapOptions.NamesMask) != 0));
             capitals.visible = (scale >= MacroWorldsMinScale) && (scale <= MacroWorldsMaxScale);
 
-            microBorderStyle = (((options & MapOptions.ForceHexes) == 0) && (scale < ParsecHexMinScale))
-                ? MicroBorderStyle.Square
-                : MicroBorderStyle.Hex;
-
+            hexStyle = (((options & MapOptions.ForceHexes) == 0) && (scale < ParsecHexMinScale))
+                ? HexStyle.Square
+                : HexStyle.Hex;
+            microBorderStyle = hexStyle == HexStyle.Square ? MicroBorderStyle.Square : MicroBorderStyle.Hex;
+            
             macroBorders.visible = (scale >= MacroBorderMinScale) && (scale < MicroBorderMinScale) && ((options & MapOptions.BordersMask) != 0);
             microBorders.visible = (scale >= MicroBorderMinScale) && ((options & MapOptions.BordersMask) != 0);
             fillMicroBorders = microBorders.visible && options.HasFlag(MapOptions.FilledBorders);
@@ -462,6 +470,63 @@ namespace Maps.Rendering
 
                         break;
                     }
+                case Style.FASA:
+                    {
+                        deepBackgroundOpacity = 0f;
+                        riftOpacity = 0;
+
+                        Color inkColor = Color.FromArgb(0x5C, 0x40, 0x33);
+
+                        foregroundColor = inkColor;
+                        backgroundColor = Color.White;
+                       
+                        grayscale = true; // TODO: Tweak to be "monochrome"
+                        capitals.fillColor = inkColor;
+                        capitals.textColor = inkColor;
+                        amberZone.pen.color = inkColor;
+                        amberZone.pen.width = onePixel * 2;
+                        blueZone.pen.color = inkColor; // TODO: make dashed
+                        redZone.pen.color = Color.Empty;
+                        redZone.fillColor = Color.FromArgb(0x80, inkColor);
+                        
+                        macroBorders.pen.color = inkColor;
+                        macroRoutes.pen.color = inkColor;
+                        
+                        microBorders.pen.color = inkColor;
+                        microBorders.pen.width = onePixel * 2;
+                        microBorders.fontInfo.size *= 0.6f;
+                        microBorders.fontInfo.style = XFontStyle.Regular;
+
+                        microRoutes.pen.color = inkColor;
+
+                        lightColor = Color.FromArgb(0x80, inkColor);
+                        darkColor = inkColor;
+                        dimColor = inkColor;
+                        highlightColor = inkColor;
+                        microBorders.textColor = inkColor;
+                        hexStyle = HexStyle.Hex;
+                        microBorderStyle = MicroBorderStyle.Curve;
+
+                        worldWater.fillColor = inkColor;
+                        worldNoWater.fillColor = inkColor;
+                        worldWater.pen.color = Color.Empty;
+                        worldNoWater.pen.color = Color.Empty;
+
+                        showWorldDetailColors = false;
+
+                        worldDetails = worldDetails & ~WorldDetails.Starport;
+                        worldDetails = worldDetails & ~WorldDetails.Allegiance;
+                        worldDetails = worldDetails & ~WorldDetails.Bases;
+                        worldDetails = worldDetails & ~WorldDetails.GasGiant;
+                        worldDetails = worldDetails & ~WorldDetails.Highlight;
+                        worlds.fontInfo.size *= 0.85f;
+                        worlds.textStyle.Translation = new PointF(0, 0.25f);
+
+                        numberAllHexes = true;
+                        hexCoordinateStyle = HexCoordinateStyle.Subsector;
+
+                        break;
+                    }
                 case Style.Print:
                     {
                         deepBackgroundOpacity = 0f;
@@ -573,7 +638,7 @@ namespace Maps.Rendering
                         useBackgroundImage = deepBackgroundOpacity < 0.5f;
                         useGalaxyImage = deepBackgroundOpacity > 0.0f;
 
-
+                        hexStyle = HexStyle.None;
                         microBorderStyle = MicroBorderStyle.Curve;
 
                         sectorGrid.visible = sectorGrid.visible && (scale >= 4);
@@ -780,11 +845,12 @@ namespace Maps.Rendering
         public bool fillMicroBorders;
         public bool showMicroNames;
         public MicroBorderStyle microBorderStyle;
+        public HexStyle hexStyle;
 
-        public void WorldColors(World world, out XColor penColor, out XColor brushColor)
+        public void WorldColors(World world, out XColor penColorOut, out XColor brushColorOut)
         {
-            penColor = XColor.Empty;
-            brushColor = XColor.Empty;
+            Color penColor = Color.Empty;
+            Color brushColor = Color.Empty;
 
             if (showWorldDetailColors)
             {
@@ -832,6 +898,9 @@ namespace Maps.Rendering
                 brushColor = (world.WaterPresent) ? worldWater.fillColor : worldNoWater.fillColor;
                 penColor = (world.WaterPresent) ? worldWater.pen.color : worldNoWater.pen.color;
             }
+
+            penColorOut = penColor.IsEmpty ? XColor.Empty : penColor;
+            brushColorOut = brushColor.IsEmpty ? XColor.Empty : brushColor;
         }
 
         public static float ScaleInterpolate(float minValue, float maxValue, double scale, float minScale, float maxScale)
