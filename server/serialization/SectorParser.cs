@@ -197,7 +197,7 @@ namespace Maps.Serialization
         private static readonly Regex UWP_REGEX = new Regex("^[ABCDEX]" + HEX + @"{6}-" + HEX + @"$");
         private static readonly Regex PBG_REGEX = new Regex("^[0-9X]{3}$");
 
-        private static readonly Regex BASES_REGEX = new Regex(@"^C?D?K?M?N?R?S?T?V?W?X?$");
+        private static readonly Regex BASES_REGEX = new Regex(@"^C?D?E?K?M?N?R?S?T?V?W?X?$");
         private static readonly Regex ZONE_REGEX = new Regex(@"^(|A|R)$");
         private static readonly Regex ALLEGIANCE_REGEX = new Regex(@"^([A-Za-z0-9]{4}|----)$");
         private static readonly Regex NOBILITY_REGEX = new Regex(@"^[BcCDeEfFGH]*$");
