@@ -950,17 +950,6 @@ namespace Maps.Rendering
 
                     if (layer == WorldLayer.Foreground)
                     {
-                        #region Disc Background
-                        if (ctx.styles.worldDetails.HasFlag(WorldDetails.Type)
-                            && !isPlaceholder
-                            && !ctx.styles.fillMicroBorders)
-                        {
-                            // Blank out world area, so routes are shown correctly
-                            solidBrush.Color = ctx.styles.backgroundColor;
-                            ctx.graphics.DrawEllipse(solidBrush, -0.15f, -0.15f, 0.3f, 0.3f);
-                        }
-                        #endregion
-
                         #region Name
                         if (renderName)
                         {
@@ -1478,6 +1467,9 @@ namespace Maps.Rendering
                             endPoint = tmp;
                         }
 
+                        // Shorten line to leave room for world glyph
+                        OffsetSegment(ref startPoint, ref endPoint, 0.3f);
+
                         float? routeWidth = route.Width;
                         Color? routeColor = route.Color;
                         LineStyle? routeStyle = route.Style;
@@ -1509,6 +1501,19 @@ namespace Maps.Rendering
                     }
                 }
             }
+        }
+
+        private static void OffsetSegment(ref PointF startPoint, ref PointF endPoint, float offset)
+        {
+            float dx = endPoint.X - startPoint.X;
+            float dy = endPoint.Y - startPoint.Y;
+            float length = (float)Math.Sqrt(dx * dx + dy * dy);
+            float ddx = dx * offset / length;
+            float ddy = dy * offset / length;
+            startPoint.X += ddx;
+            startPoint.Y += ddy;
+            endPoint.X -= ddx;
+            endPoint.Y -= ddy;
         }
 
         private static XDashStyle LineStyleToDashStyle(LineStyle style)
