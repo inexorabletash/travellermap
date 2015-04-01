@@ -1468,11 +1468,11 @@ namespace Maps.Rendering
                         }
 
                         // Shorten line to leave room for world glyph
-                        OffsetSegment(ref startPoint, ref endPoint, 0.3f);
+                        OffsetSegment(ref startPoint, ref endPoint, 0.25f);
 
                         float? routeWidth = route.Width;
                         Color? routeColor = route.Color;
-                        LineStyle? routeStyle = route.Style;
+                        LineStyle? routeStyle = ctx.styles.overrideLineStyle ?? route.Style;
 
                         SectorStylesheet.StyleResult ssr = sector.ApplyStylesheet("route", route.Allegiance ?? route.Type ?? "Im");
                         routeStyle = routeStyle ?? ssr.GetEnum<LineStyle>("style");

@@ -528,6 +528,7 @@ namespace Maps.Rendering
 
                         numberAllHexes = true;
                         hexCoordinateStyle = HexCoordinateStyle.Subsector;
+                        overrideLineStyle = LineStyle.Solid;
 
                         break;
                     }
@@ -850,6 +851,7 @@ namespace Maps.Rendering
         public bool showMicroNames;
         public MicroBorderStyle microBorderStyle;
         public HexStyle hexStyle;
+        public LineStyle? overrideLineStyle;
 
         public void WorldColors(World world, out XColor penColorOut, out XColor brushColorOut)
         {
