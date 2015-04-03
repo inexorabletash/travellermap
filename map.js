@@ -594,10 +594,19 @@ var Util = {
       this.canvas = canvas;
 
       this.resetCanvas = function() {
-        var dpr = 'devicePixelRatio' in window ? window.devicePixelRatio : 1;
-
         var cw = container.offsetWidth;
         var ch = container.offsetHeight;
+
+        var dpr = 'devicePixelRatio' in window ? window.devicePixelRatio : 1;
+
+        // iOS devices have a limit of 3 or 5 megapixels for canvas backing
+        // store; given screen resolution * 4x size for "tilt" display this
+        // can easily be reached, so reduce effective dpr.
+        if (dpr > 1 && /iOS/.test(navigator.userAgent) &&
+            (cw * ch * dpr * dpr * 2 * 2) > 3e6) {
+          dpr = 1;
+        }
+
         var pw = (cw * 2 * dpr) | 0;
         var ph = (ch * 2 * dpr) | 0;
         var ox = -(cw / 2);
