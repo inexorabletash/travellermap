@@ -602,7 +602,7 @@ var Util = {
         // iOS devices have a limit of 3 or 5 megapixels for canvas backing
         // store; given screen resolution * 4x size for "tilt" display this
         // can easily be reached, so reduce effective dpr.
-        if (dpr > 1 && /iOS/.test(navigator.userAgent) &&
+        if (dpr > 1 && /\biPad\b/.test(navigator.userAgent) &&
             (cw * ch * dpr * dpr * 2 * 2) > 3e6) {
           dpr = 1;
         }
