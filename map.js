@@ -601,7 +601,7 @@ var Util = {
         var pw = (cw * 2 * dpr) | 0;
         var ph = (ch * 2 * dpr) | 0;
         var ox = -(cw / 2);
-        var oy = -ch;
+        var oy = -(ch * 3 / 4);
 
         this.canvas.width = pw;
         this.canvas.height = ph;
