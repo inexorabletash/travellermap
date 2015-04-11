@@ -600,22 +600,29 @@ var Util = {
         var dpr = 'devicePixelRatio' in window ? window.devicePixelRatio : 1;
 
         // iOS devices have a limit of 3 or 5 megapixels for canvas backing
-        // store; given screen resolution * 4x size for "tilt" display this
+        // store; given screen resolution * ~3x size for "tilt" display this
         // can easily be reached, so reduce effective dpr.
         if (dpr > 1 && /\biPad\b/.test(navigator.userAgent) &&
             (cw * ch * dpr * dpr * 2 * 2) > 3e6) {
           dpr = 1;
         }
 
-        var pw = (cw * 2 * dpr) | 0;
-        var ph = (ch * 2 * dpr) | 0;
-        var ox = -(cw / 2);
-        var oy = -(ch * 3 / 4);
+        // Scale factor for canvas to accomodate tilt.
+        var sx = 1.75;
+        var sy = 1.75;
+
+        // Pixel size of the canvas backing store.
+        var pw = (cw * sx * dpr) | 0;
+        var ph = (ch * sy * dpr) | 0;
+
+        // Offset of the canvas against the container.
+        var ox = -((cw * sx) - cw) / 2;
+        var oy = -((ch * sy) - ch) * 7 / 8;
 
         this.canvas.width = pw;
         this.canvas.height = ph;
-        this.canvas.style.width = (cw * 2) + 'px';
-        this.canvas.style.height = (ch * 2) + 'px';
+        this.canvas.style.width = (cw * sx) + 'px';
+        this.canvas.style.height = (ch * sy) + 'px';
         this.canvas.offset_x = ox;
         this.canvas.offset_y = oy;
         this.canvas.style.left = ox + 'px';
