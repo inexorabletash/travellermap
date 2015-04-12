@@ -609,7 +609,7 @@ var Util = {
 
         // Scale factor for canvas to accomodate tilt.
         var sx = 1.75;
-        var sy = 1.75;
+        var sy = 1.85;
 
         // Pixel size of the canvas backing store.
         var pw = (cw * sx * dpr) | 0;
@@ -617,7 +617,7 @@ var Util = {
 
         // Offset of the canvas against the container.
         var ox = -((cw * sx) - cw) / 2;
-        var oy = -((ch * sy) - ch) * 9 / 10;
+        var oy = -((ch * sy) - ch) * 0.8;
 
         this.canvas.width = pw;
         this.canvas.height = ph;
