@@ -617,7 +617,7 @@ var Util = {
 
         // Offset of the canvas against the container.
         var ox = -((cw * sx) - cw) / 2;
-        var oy = -((ch * sy) - ch) * 7 / 8;
+        var oy = -((ch * sy) - ch) * 9 / 10;
 
         this.canvas.width = pw;
         this.canvas.height = ph;
