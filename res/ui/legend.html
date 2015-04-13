@@ -1,27 +1,18 @@
 <!DOCTYPE html>
 <title>Legend Images</title>
 <base href="http://travellermap.com">
-<div>
-<img src="/api/jumpmap?jump=1&sector=Legend&hex=1003&options=884&border=0&style=atlas">
-<img src="/api/jumpmap?jump=1&sector=Legend&hex=1006&options=884&border=0&style=atlas">
-</div>
+<script>
+['poster', 'atlas', 'print', 'candy', 'draft', 'fasa'].forEach(function(style) {
+  var div = document.createElement('div');
+  document.documentElement.appendChild(div);
+  var img;
 
-<div>
-<img src="/api/jumpmap?jump=1&sector=Legend&hex=1003&options=884&border=0&clip=0&style=candy">
-<img src="/api/jumpmap?jump=1&sector=Legend&hex=1006&options=884&border=0&clip=0&style=candy">
-</div>
+  img = document.createElement('img');
+  img.src = '/api/jumpmap?jump=1&sector=Legend&hex=1003&options=884&border=0&style='+style;
+  div.appendChild(img);
 
-<div>
-<img src="/api/jumpmap?jump=1&sector=Legend&hex=1003&options=884&border=0&style=poster">
-<img src="/api/jumpmap?jump=1&sector=Legend&hex=1006&options=884&border=0&style=poster">
-</div>
-
-<div>
-<img src="/api/jumpmap?jump=1&sector=Legend&hex=1003&options=884&border=0&style=print">
-<img src="/api/jumpmap?jump=1&sector=Legend&hex=1006&options=884&border=0&style=print">
-</div>
-
-<div>
-<img src="/api/jumpmap?jump=1&sector=Legend&hex=1003&options=884&border=0&style=draft">
-<img src="/api/jumpmap?jump=1&sector=Legend&hex=1006&options=884&border=0&style=draft">
-</div>
+  img = document.createElement('img');
+  img.src = '/api/jumpmap?jump=1&sector=Legend&hex=1006&options=884&border=0&style='+style;
+  div.appendChild(img);
+});
+</script>

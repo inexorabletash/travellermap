@@ -30,14 +30,14 @@
 <meta property="og:site_name" content="The Traveller Map">
 <meta property="fb:admins" content="617166358">
 
-<link rel="stylesheet" href="index.css?update=2015-03-24">
+<link rel="stylesheet" href="index.css?update=2015-04-12">
 <link rel="stylesheet" href="lib/add-to-home-screen/addtohomescreen.css">
 
 <!--[if lt IE 8]><script>alert("IE7 is no longer supported.");location = 'http://google.com/chrome';</script><![endif]-->
 <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js"></script>
 <script src="lib/polyfill/polyfill.min.js?update=2015-03-08"></script>
 <script src="map.js?update=2015-04-12"></script>
-<script src="index.js?update=2015-04-02"></script>
+<script src="index.js?update=2015-04-12"></script>
 <style>
 .ui {
   z-index: 2000;
@@ -190,6 +190,7 @@ button:hover {
         box-shadow: 2px 2px 4px #404040;
       }
       .style-print #searchBox,
+      .style-fasa #searchBox,
       .style-draft #searchBox,
       .style-atlas #searchBox { background-color: #e0e0e0; }
       @media only screen and (max-width: 610px) {
@@ -859,6 +860,7 @@ button:hover {
     #bottom-pane { background-color: rgba(0,0,0,0.65); }
     .style-draft #bottom-pane { background-color: antiquewhite; }
     .style-atlas #bottom-pane,
+    .style-fasa #bottom-pane,
     .style-print #bottom-pane { background-color: rgba(255,255,255,0.65); }
 
     #LogoImage {
@@ -869,6 +871,7 @@ button:hover {
       width: 416px; height: 71px;
       background-image: url("res/ui/logo-flat.png");
     }
+    .style-fasa #LogoImage,
     .style-draft #LogoImage,
     .style-print #LogoImage,
     .style-atlas #LogoImage {
@@ -877,6 +880,7 @@ button:hover {
 
     @media only screen and (max-width: 850px) {
       #LogoImage { width: 210px; height: 71px; background-image: url("res/ui/logo-stacked.png"); }
+      .style-fasa #LogoImage,
       .style-draft #LogoImage,
       .style-print #LogoImage,
       .style-atlas #LogoImage {  background-image: url("res/ui/logo-stacked-gray.png"); }

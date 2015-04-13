@@ -220,7 +220,7 @@ window.addEventListener('DOMContentLoaded', function() {
   };
 
   map.OnStyleChanged = function(style) {
-    ['poster', 'atlas', 'print', 'candy', 'draft'].forEach(function(s) {
+    ['poster', 'atlas', 'print', 'candy', 'draft', 'fasa'].forEach(function(s) {
       document.body.classList[s === style ? 'add' : 'remove']('style-' + s);
     });
     updatePermalink();
@@ -657,7 +657,7 @@ window.addEventListener('DOMContentLoaded', function() {
           w = parseFloat(canvas.width),
           h = parseFloat(canvas.height),
           style = map.GetStyle(),
-          color = ['atlas', 'print', 'draft'].indexOf(style) !== -1 ? 'black' : 'white';
+          color = ['atlas', 'print', 'draft', 'fasa'].indexOf(style) !== -1 ? 'black' : 'white';
 
       ctx.clearRect(0, 0, w, h);
 

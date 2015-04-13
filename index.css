@@ -21,10 +21,12 @@ body {
 
 body { color: white; background-color: black;  }
 body.style-print,
+body.style-fasa,
 body.style-atlas { color: black; background-color: white; }
 body.style-draft { color: black; background-color: antiquewhite; }
 
 a { color: white; }
+.style-fasa a { color: #5C4033; }
 .style-draft a,
 .style-print a,
 .style-atlas a { color: black; }
@@ -36,6 +38,7 @@ a.stealth:hover { text-decoration: underline; }
   font-weight: bold; text-transform: uppercase; font-size: 120%;
   color: red;
 }
+.style-fasa .direction { color: #5C4033; }
 .style-atlas .direction { color: gray; }
 
 #stripe {
@@ -44,6 +47,7 @@ a.stealth:hover { text-decoration: underline; }
  }
 .style-print #stripe,
 .style-atlas #stripe { color: black; background-color: black; border: solid 1px black; }
+.style-fasa #stripe { color: #5C4033; background-color: #5C4033; border: solid 1px #5C4033; }
 
 .marker#you_are_here {
   position: absolute; width: 256px; height: 256px;
@@ -70,7 +74,7 @@ a.stealth:hover { text-decoration: underline; }
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgAQMAAABJtOi3AAAABlBMVEUAAAAoKCj70ajHAAAAE0lEQVQI12P4/5+BgZoEA3VNBADtvT/BrQ+bEwAAAABJRU5ErkJggg==');
   cursor: crosshair;
 }
-/* TODO: draft */
+/* TODO: draft, fasa */
 .style-print #dragContainer,
 .style-atlas #dragContainer {
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgAQMAAABJtOi3AAAABlBMVEXX19f///8qtJEjAAAAE0lEQVQI12NgYPj/n4oElU1jAADtvT/BM8KnAAAAAABJRU5ErkJggg==');
@@ -107,6 +111,7 @@ a.stealth:hover { text-decoration: underline; }
   font-size: 100%;
   font-weight: normal;
 }
+.style-fasa #legendBox section h2,
 .style-draft #legendBox section h2,
 .style-atlas #legendBox section h2,
 .style-print #legendBox section h2 {
@@ -129,6 +134,7 @@ a.stealth:hover { text-decoration: underline; }
 
 #legendBox .glyph { display: inline-block; width: 20px; text-align: center; }
 #legendBox .highlight { color: red; }
+.style-draft #legendBox .highlight,
 .style-atlas #legendBox .highlight { color: gray; }
 #legendBox .glyph.water { color: #00bfff; }
 .style-atlas #legendBox .water { color: #000000; }
@@ -191,8 +197,10 @@ a.stealth:hover { text-decoration: underline; }
 .style-atlas #legendBox #image2 { background-image: url("res/ui/Legend_1006_atlas.png"); }
 .style-print #legendBox #image1 { background-image: url("res/ui/Legend_1003_print.png"); }
 .style-print #legendBox #image2 { background-image: url("res/ui/Legend_1006_print.png"); }
-.style-draft #legendBox #image1 { background-image: url("res/ui/Legend_1003_atlas.png"); }
-.style-draft #legendBox #image2 { background-image: url("res/ui/Legend_1006_atlas.png"); }
+.style-draft #legendBox #image1 { background-image: url("res/ui/Legend_1003_draft.png"); }
+.style-draft #legendBox #image2 { background-image: url("res/ui/Legend_1006_draft.png"); }
+.style-fasa #legendBox #image1 { background-image: url("res/ui/Legend_1003_fasa.png"); }
+.style-fasa #legendBox #image2 { background-image: url("res/ui/Legend_1006_fasa.png"); }
 
 
 /* Credits/Metadata */

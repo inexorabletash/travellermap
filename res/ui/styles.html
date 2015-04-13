@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<title>Style Images</title>
+<base href="http://travellermap.com">
+<script>
+var REFERENCE_SECTOR_X = 0;
+var REFERENCE_SECTOR_Y = 0;
+var REFERENCE_HEX_X = 1;
+var REFERENCE_HEX_Y = 40;
+var SECTOR_WIDTH = 32;
+var SECTOR_HEIGHT = 40;
+
+function sectorHexToWorldXY(sx, sy, hx, hy) {
+  var x = ( ( sx - REFERENCE_SECTOR_X ) * SECTOR_WIDTH ) + ( hx - REFERENCE_HEX_X );
+  var y = ( ( sy - REFERENCE_SECTOR_Y ) * SECTOR_HEIGHT ) + ( hy - REFERENCE_HEX_Y );
+  return {x: x, y: y};
+}
+
+function isEven(n) { return (n % 2) === 0; }
+
+var PARSEC_SCALE_X = Math.cos(Math.PI / 6);
+var PARSEC_SCALE_Y = 1;
+
+function worldXYToMapXY(world_x, world_y) {
+  var ix = world_x - 0.5
+  var iy = isEven(world_x) ? world_y - 0.5 : world_y
+  var x = ix * PARSEC_SCALE_X;
+  var y = iy * -PARSEC_SCALE_Y;
+  return {x: x, y: y};
+}
+
+var worldXY = sectorHexToWorldXY(-4, -1, 19, 10);
+var mapXY = worldXYToMapXY(worldXY.x, worldXY.y);
+var scale = 48;
+var width = 48;
+var height = 48;
+
+var x = ( mapXY.x * scale - ( width / 2 ) ) / width;
+var y = ( -mapXY.y * scale - ( height / 2 ) ) / height;
+
+['poster', 'atlas', 'print', 'candy', 'draft', 'fasa'].forEach(function(style) {
+  var div = document.createElement('div');
+  document.documentElement.appendChild(div);
+
+  var img = document.createElement('img');
+  img.src = '/api/tile?dpr=2&style='+style+'&scale='+scale+'&w='+width+'&h='+height+'&x='+x+'&y='+y;
+  div.appendChild(img);
+});
+</script>

@@ -318,7 +318,7 @@ table#features, #features th, #features td { border: solid 1px black; }
 
     <p>Style values include:</p>
     <dl class="params">
-    <dt style="clear: both;"><img style="float: right; margin: 10px;" src="../res/ui/style-poster.png" alt="poster example">
+    <dt style="clear: both;"><img style="float: right; width: 48px; height: 48px; margin: 10px;" src="../res/ui/style-poster.png" alt="poster example">
       style=poster</dt>
     <dd>A color-on-black style that matches the "Spinward Marches" poster included with the
     <a href="http://travellerbibliography.org/gdw-ct/Deluxe.html" target="_blank">Deluxe Traveller</a>
@@ -326,30 +326,33 @@ table#features, #features th, #features td { border: solid 1px black; }
     <a href="http://travellerbibliography.org/gdw-ct/knownspace.html" target="_blank">Imperium Map</a> poster.
     This is the default.</dd>
 
-    <dt style="clear: both;"><img style="float: right; margin: 10px;" src="../res/ui/style-print.png" alt="print example">
+    <dt style="clear: both;"><img style="float: right; width: 48px; height: 48px; margin: 10px;" src="../res/ui/style-print.png" alt="print example">
       style=print</dt>
     <dd>A color-on-white style best suited for color printing.
     </dd>
 
-    <dt style="clear: both;"><img style="float: right; margin: 10px;" src="../res/ui/style-atlas.png" alt="atlas example">
+    <dt style="clear: both;"><img style="float: right; width: 48px; height: 48px; margin: 10px;" src="../res/ui/style-atlas.png" alt="atlas example">
       style=atlas</dt>
     <dd>A grayscale black-on-white style that matches the visual style of the
     <a href="http://travellerbibliography.org/gdw-ct/Atlas.html">Atlas of the Imperium</a> and early supplements, best for black-and-white printing.
     </dd>
 
-    <dt style="clear: both;"><img style="float: right; margin: 10px;" src="../res/ui/style-candy.png"  alt="candy example">
+    <dt style="clear: both;"><img style="float: right; width: 48px; height: 48px; margin: 10px;" src="../res/ui/style-candy.png"  alt="candy example">
       style=candy</dt>
     <dd>A style designed by Wayne Peters that evokes interactive map displays from contemporary movies. Does not
     show world base or allegiance information, but does illustrate world size and hydrographics.</dd>
 
-    <dt style="clear: both;"><img style="float: right; margin: 10px;" src="../res/ui/style-draft.png"  alt="draft example">
+    <dt style="clear: both;"><img style="float: right; width: 48px; height: 48px; margin: 10px;" src="../res/ui/style-draft.png"  alt="draft example">
       style=draft</dt>
     <dd>A style reminiscent of GDW's original hand drawn draft of the Spinward Marches sector map.
       (A high resolution scan of the original is available on
       <a target="_blank"
          title="GDW's original hand drawn draft of the Spinward Marches sector map"
-         href="http://rpg.drivethrustuff.com/product/64319/The-Spinward-Marches">DriveThruRPG</a>.)
-</dd>
+         href="http://rpg.drivethrustuff.com/product/64319/The-Spinward-Marches">DriveThruRPG</a>.)</dd>
+
+    <dt style="clear: both;"><img style="float: right; width: 48px; height: 48px; margin: 10px;" src="../res/ui/style-fasa.png"  alt="FASA example">
+      style=fasa</dt>
+    <dd>A style reminiscent of FASA's classic supplements and magazines.)</dd>
     </dl>
 
     <h4>Page and API</h4>
@@ -1324,16 +1327,16 @@ table#features, #features th, #features td { border: solid 1px black; }
       compute the distance to Reference:
   </p>
   <pre class="code">
-var ReferenceSectorX = 0;
-var ReferenceSectorY = 0;
-var ReferenceHexX = 1;
-var ReferenceHexY = 40;
-var SectorWidth = 32;
-var SectorHeight = 40;
+var REFERENCE_SECTOR_X = 0;
+var REFERENCE_SECTOR_Y = 0;
+var REFERENCE_HEX_X = 1;
+var REFERENCE_HEX_Y = 40;
+var SECTOR_WIDTH = 32;
+var SECTOR_HEIGHT = 40;
 
-function SectorHexToXY(sx, sy, hx, hy) {
-  var x = ( ( sx - ReferenceSectorX ) * SectorWidth ) + ( hx - ReferenceHexX );
-  var y = ( ( sy - ReferenceSectorY ) * SectorHeight ) + ( hy - ReferenceHexY );
+function sectorHexToWorldXY(sx, sy, hx, hy) {
+  var x = ( ( sx - REFERENCE_SECTOR_X ) * SECTOR_WIDTH ) + ( hx - REFERENCE_HEX_X );
+  var y = ( ( sy - REFERENCE_SECTOR_Y ) * SECTOR_HEIGHT ) + ( hy - REFERENCE_HEX_Y );
   return {x: x, y: y};
 }
   </pre>
@@ -1385,14 +1388,14 @@ function SectorHexToXY(sx, sy, hx, hy) {
   </ul>
   <pre class="code">
 function isEven(n) { return (n % 2) === 0; }
-var ParsecScaleX = Math.cos(Math.PI / 6); <span class="comment">// cosine 30&deg;</span>
-var ParsecScaleY = 1;
+var PARSEC_SCALE_X = Math.cos(Math.PI / 6); <span class="comment">// cosine 30&deg;</span>
+var PARSEC_SCALE_Y = 1;
 
-function worldXYToImageXY(world_x, world_y) {
+function worldXYToMapXY(world_x, world_y) {
   var ix = world_x - 0.5
   var iy = isEven(world_x) ? world_y - 0.5 : world_y
-  var x = ix * ParsecScaleX;
-  var y = iy * -ParsecScaleY;
+  var x = ix * PARSEC_SCALE_X;
+  var y = iy * -PARSEC_SCALE_Y;
   return {x: x, y: y};
 }
   </pre>
@@ -1435,110 +1438,6 @@ y = ( -map_center_y * scale - ( height / 2 ) ) / height;
       (x=-9.4919375, y=-9.3125)
   </p>
   </section>
-
-<!--
-
-<pre class="code">
-<span style="color: Gray;">// Constants</span>
-SectorWidth      = 32
-SectorHeight     = 40
-ParsecScaleX     = Math.cos(Math.PI/6); // cos(30)
-ParsecScaleY     = 1.0
-ReferenceSectorX = 0
-ReferenceSectorY = 0
-ReferenceHexX    = 1
-ReferenceHexY    = 40
-
-<span style="color: Gray;">// Convert sector and hex coordinates to world-space coordinates</span>
-<span style="color: Gray;">// where Reference (Core 0140) is 0,0</span>
-world_x = ( ( sector_x - ReferenceSectorX ) * SectorWidth  )
-+ ( hex_x - ReferenceHexX )
-world_y = ( ( sector_y - ReferenceSectorY ) * SectorHeight )
-+ ( hex_y - ReferenceHexY )
-
-
-<span style="color: Gray;">// Convert world-space coordinates to map-space coordinates</span>
-map_x = world_x * ( scale * ParsecScaleX ) / width
-map_y = world_y * ( scale * ParsecScaleY ) / height
-
-</pre>
-
-<script>
-var SectorWidth      = 32;
-var SectorHeight     = 40;
-var ParsecScaleX     = Math.cos(Math.PI/6); // cos(30)
-var ParsecScaleY     = 1.0;
-var ReferenceSectorX = 0;
-var ReferenceSectorY = 0;
-var ReferenceHexX    = 1;
-var ReferenceHexY    = 40;
-
-function sector_hex_to_world( sector_x, sector_y, hex_x, hex_y )
-{
-var world_x = ( ( sector_x - ReferenceSectorX ) * SectorWidth  )
-        + ( hex_x - ReferenceHexX );
-var world_y = ( ( sector_y - ReferenceSectorY ) * SectorHeight )
-        + ( hex_y - ReferenceHexY );
-
-return { 'x': world_x, 'y': world_y };
-}
-
-function world_to_map( world_x, world_y, scale, width, height, offset_x, offset_y )
-{
-if( offset_x === undefined ) { offset_x = width  / 2; }
-if( offset_y === undefined ) { offset_y = height / 2; }
-
-var map_x = ( world_x * ParsecScaleX * scale - offset_x ) / width;
-var map_y = ( world_y * ParsecScaleY * scale - offset_y ) / height;
-return { 'x': map_x, 'y': map_y };
-}
-
-function convert()
-{
-var sx = parseInt( document.getElementById('sector_x').value, 10 );
-var sy = parseInt( document.getElementById('sector_y').value, 10 );
-var hx = parseInt( document.getElementById('hex_x'   ).value, 10 );
-var hy = parseInt( document.getElementById('hex_y'   ).value, 10 );
-
-var w = sector_hex_to_world( sx, sy, hx, hy );
-console.log(w);
-
-// Center on the hex itself
-var x = w.x - 0.5;
-var y = w.y - ( ( ( w.x % 2 ) == 0 ) ? 0.5 : 0 );
-
-var scale  = parseInt( document.getElementById('scale' ).value, 10 );
-var width  = parseInt( document.getElementById('width' ).value, 10 );
-var height = parseInt( document.getElementById('height').value, 10 );
-
-var m = world_to_map( x, y, scale, width, height );
-console.log(m);
-
-document.getElementById('map_x').innerHTML = m.x;
-document.getElementById('map_y').innerHTML = m.y;
-
-var img = document.getElementById('tile_conv');
-img.src = "api/tile?x="+m.x+"&y="+m.y+"&scale="+scale+"&w="+width+"&h="+height+"&options=877";
-img.style.display = "";
-
-return false;
-}
-
-
-</script>
-
-  <form id="coord_converter" action="" onsubmit="convert(); return false;">
-      Sector <label for="sector_x">X:</label> <input id="sector_x" type="text" value="-4" size="3"> <label for="sector_y">Y:</label> <input id="sector_y" type="text" value="-1" size="3"> <br>
-      Hex    <label for="hex_x">   X:</label> <input id="hex_x"    type="text" value="19"  size="3"> <label for="hex_y">   Y:</label> <input id="hex_y"    type="text" value="10" size="3"> <br>
-      <label for="scale">Scale:</label> <input id="scale" type="text" value="64" size="4">
-      <label for="width">Width:</label> <input id="width" type="text" value="256" size="4"> <label for="height">Height:</label> <input id="height" type="text" value="256" size="4"> <br>
-      <input type="submit" value="Convert!"><br>
-      Map X: <span id="map_x"></span> Map Y: <span id="map_y"></span> <br>
-      <img id="tile_conv" style="display: none;" src="">
-
-  </form>
--->
-
 </section>
 
   <section id="jsonp">
