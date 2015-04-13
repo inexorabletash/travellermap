@@ -616,13 +616,13 @@ var Util = {
         var ph = (ch * sy * dpr) | 0;
 
         // Offset of the canvas against the container.
-        var ox = -((cw * sx) - cw) / 2;
-        var oy = -((ch * sy) - ch) * 0.8;
+        var ox = (-((cw * sx) - cw) / 2) | 0;
+        var oy = (-((ch * sy) - ch) * 0.8) | 0;
 
         this.canvas.width = pw;
         this.canvas.height = ph;
-        this.canvas.style.width = (cw * sx) + 'px';
-        this.canvas.style.height = (ch * sy) + 'px';
+        this.canvas.style.width = (cw * sx)|0 + 'px';
+        this.canvas.style.height = (ch * sy)|0 + 'px';
         this.canvas.offset_x = ox;
         this.canvas.offset_y = oy;
         this.canvas.style.left = ox + 'px';
