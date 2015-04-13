@@ -508,6 +508,8 @@ namespace Maps.Rendering
                         microBorderStyle = MicroBorderStyle.Curve;
 
                         parsecGrid.pen.color = lightColor;
+                        sectorGrid.pen.color = lightColor;
+                        subsectorGrid.pen.color = lightColor;
 
                         worldWater.fillColor = inkColor;
                         worldNoWater.fillColor = inkColor;

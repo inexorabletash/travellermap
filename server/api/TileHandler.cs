@@ -8,7 +8,7 @@ namespace Maps.API
     {
         protected override string ServiceName { get { return "tile"; } }
 
-        public const int MinDimension = 64;
+        public const int MinDimension = 1;
         public const int MaxDimension = 2048;
 
         public const int NormalTileWidth = 256;
