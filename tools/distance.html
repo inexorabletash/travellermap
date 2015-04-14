@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<title>Distance Calculator - Traveller Map</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="shortcut icon" href="../favicon.ico">
+<link rel="stylesheet" href="../site.css?update=2015-01-02">
+<script src="../lib/polyfill/polyfill.min.js?update=2015-03-08"></script>
+<script src="../lib/polyfill/es6.js?update=2015-03-01"></script>
+<script src="../map.js?update=2015-04-12"></script>
+<style>
+  td, div { padding-top: 0.5em; }
+</style>
+<h1>Traveller Map - Distance Calculator</h1>
+
+<table>
+<tr>
+  <td>Start:</td>
+  <td><input type=text id=startsec title="Enter starting sector name (e.g. 'Spinward Marches')" placeholder="Sector"></td>
+  <td><input type=text id=starthex title="Enter starting hex (e.g. 1910)" placeholder="Hex"></td>
+  <td>e.g. Spin 1910
+</tr>
+<tr>
+  <td>End:</td>
+  <td><input type=text id=endsec title="Enter ending sector name (e.g. 'Solomani Rim')" placeholder="Sector"></td>
+  <td><input type=text id=endhex title="Enter ending hex (e.g. 1827)" placeholder="Hex"></td>
+  <td>e.g. Solo 1827
+</tr>
+</table>
+
+<div>Distance: <input type=text readonly id=distance title="Distance in hexes"> hexes
+
+<script>
+
+window.addEventListener('DOMContentLoaded', function () {
+  'use strict';
+  var $ = function (s) { return document.querySelector(s); };
+
+  ['startsec', 'starthex', 'endsec', 'endhex'].forEach(function(id) {
+    $('#'+id).addEventListener('change', refresh);
+  });
+
+  function coords(sec, hex) {
+    return new Promise(function(resolve, reject) {
+      Traveller.MapService.coordinates(sec, hex, resolve, reject);
+    });
+  }
+
+  function distance(a, b) {
+    var dx = b.x - a.x;
+    var dy = b.y - a.y;
+
+    var adx = Math.abs(dx);
+    var ody = dy + div(adx, 2);
+
+    if (even(a.x) && odd(b.x))
+      ody += 1;
+
+    return Math.max(adx - ody, ody, adx);
+
+    function even(x) { return (x % 2) === 0; }
+    function odd (x) { return (x % 2) !== 0; }
+
+    function div(a, b) { return Math.floor(a / b); }
+    function mod(a, b) { return Math.floor(a % b); }
+  }
+
+  function refresh() {
+    Promise.all([
+      coords($('#startsec').value, $('#starthex').value),
+      coords($('#endsec').value, $('#endhex').value)
+    ]).then(function(coords) {
+      var dist = distance(coords[0], coords[1]);
+      $('#distance').value = dist;
+    }).catch(function(reason) {
+      console.warn('Oops: ' + reason);
+    });
+  }
+});
+</script>
