@@ -621,8 +621,8 @@ var Util = {
 
         this.canvas.width = pw;
         this.canvas.height = ph;
-        this.canvas.style.width = (cw * sx)|0 + 'px';
-        this.canvas.style.height = (ch * sy)|0 + 'px';
+        this.canvas.style.width = ((cw * sx) | 0) + 'px';
+        this.canvas.style.height = ((ch * sy) | 0) + 'px';
         this.canvas.offset_x = ox;
         this.canvas.offset_y = oy;
         this.canvas.style.left = ox + 'px';
