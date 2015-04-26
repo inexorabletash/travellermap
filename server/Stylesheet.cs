@@ -525,8 +525,6 @@ namespace Maps.Rendering
                         worldDetails = worldDetails & ~WorldDetails.Highlight;
                         worlds.fontInfo.size *= 0.85f;
                         worlds.textStyle.Translation = new PointF(0, 0.25f);
-                        // TODO: Only if not a red-zone
-                        // worlds.textBackgroundStyle = TextBackgroundStyle.None;
 
                         numberAllHexes = true;
                         hexCoordinateStyle = HexCoordinateStyle.Subsector;

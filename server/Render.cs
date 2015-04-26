@@ -897,12 +897,10 @@ namespace Maps.Rendering
                         #region Zone
                         if (ctx.styles.worldDetails.HasFlag(WorldDetails.Zone))
                         {
-                            if (world.IsAmber || world.IsRed || world.IsBlue)
+                            Stylesheet.StyleElement? maybeElem = ZoneStyle(ctx, world);
+                            if (maybeElem.HasValue)
                             {
-                                Stylesheet.StyleElement elem =
-                                    world.IsAmber ? ctx.styles.amberZone :
-                                    world.IsRed ? ctx.styles.redZone : ctx.styles.blueZone;
-
+                                Stylesheet.StyleElement elem = maybeElem.Value;
                                 if (!elem.fillColor.IsEmpty)
                                 {
                                     solidBrush.Color = elem.fillColor;
@@ -950,6 +948,10 @@ namespace Maps.Rendering
 
                     if (layer == WorldLayer.Foreground)
                     {
+                        Stylesheet.StyleElement? elem = ZoneStyle(ctx, world);
+                        TextBackgroundStyle worldTextBackgroundStyle = (elem.HasValue && !elem.Value.fillColor.IsEmpty)
+                            ? TextBackgroundStyle.None : ctx.styles.worlds.textBackgroundStyle;
+
                         #region Name
                         if (renderName)
                         {
@@ -962,7 +964,7 @@ namespace Maps.Rendering
                             XFont font = ((isHiPop || isCapital) && ctx.styles.worldDetails.HasFlag(WorldDetails.Highlight)) 
                                 ? ctx.styles.worlds.LargeFont : ctx.styles.worlds.Font;
 
-                            DrawWorldLabel(ctx, ctx.styles.worlds.textBackgroundStyle, solidBrush, textColor, ctx.styles.worlds.textStyle.Translation, font, name);
+                            DrawWorldLabel(ctx, worldTextBackgroundStyle, solidBrush, textColor, ctx.styles.worlds.textStyle.Translation, font, name);
                         }
                         #endregion
 
@@ -1003,7 +1005,7 @@ namespace Maps.Rendering
                             if (ctx.styles.worldDetails.HasFlag(WorldDetails.Starport))
                             {
                                 string starport = world.Starport.ToString();
-                                DrawWorldLabel(ctx, ctx.styles.worlds.textBackgroundStyle, solidBrush, ctx.styles.worlds.textColor, ctx.styles.StarportPosition, styleRes.StarportFont, starport);
+                                DrawWorldLabel(ctx, worldTextBackgroundStyle, solidBrush, ctx.styles.worlds.textColor, ctx.styles.StarportPosition, styleRes.StarportFont, starport);
                             }
                             #endregion
 
@@ -1170,7 +1172,7 @@ namespace Maps.Rendering
                         #endregion
                     }
                 }
-                else
+                else // ctx.styles.useWorldImages
                 {
                     float imageRadius = ((world.Size <= 0) ? 0.6f : (0.3f * (world.Size / 5.0f + 0.2f))) / 2;
                     float decorationRadius = imageRadius;
@@ -1315,6 +1317,18 @@ namespace Maps.Rendering
                     }
                 }
             }
+        }
+
+        private static Stylesheet.StyleElement? ZoneStyle(RenderContext ctx, World world)
+        {
+            if (world.IsAmber || world.IsRed || world.IsBlue)
+            {
+                Stylesheet.StyleElement elem =
+                    world.IsAmber ? ctx.styles.amberZone :
+                    world.IsRed ? ctx.styles.redZone : ctx.styles.blueZone;
+                return elem;
+            }
+            return null;
         }
 
         private static void DrawWorldLabel(RenderContext ctx, TextBackgroundStyle backgroundStyle, XSolidBrush brush, Color color, PointF position, XFont font, string text)
