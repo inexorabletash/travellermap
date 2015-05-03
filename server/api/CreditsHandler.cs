@@ -72,18 +72,27 @@ namespace Maps.API
                     data.ProductRef = sector.Products[0].Ref;
                 }
 
+                // Tags
+                data.SectorTags = sector.TagString;
+
                 //
                 // Sector Credits
                 //
+                data.SectorAuthor = sector.Author;
+                data.SectorSource = sector.Source;
+                data.SectorPublisher = sector.Publisher;
+                data.SectorCopyright = sector.Copyright;
+                data.SectorRef = sector.Ref;
+                data.SectorEra = sector.Era;
+
                 if (sector.DataFile != null)
                 {
-                    data.SectorAuthor = sector.DataFile.Author;
-                    data.SectorSource = sector.DataFile.Source;
-                    data.SectorPublisher = sector.DataFile.Publisher;
-                    data.SectorCopyright = sector.DataFile.Copyright;
-                    data.SectorRef = sector.DataFile.Ref;
-                    data.SectorEra = sector.DataFile.Era;
-                    data.SectorTags = sector.TagString;
+                    data.SectorAuthor = sector.DataFile.Author ?? data.SectorAuthor;
+                    data.SectorSource = sector.DataFile.Source ?? data.SectorSource;
+                    data.SectorPublisher = sector.DataFile.Publisher ?? data.SectorPublisher;
+                    data.SectorCopyright = sector.DataFile.Copyright ?? data.SectorCopyright;
+                    data.SectorRef = sector.DataFile.Ref ?? data.SectorRef;
+                    data.SectorEra = sector.DataFile.Era ?? data.SectorEra;
                 }
 
                 //
