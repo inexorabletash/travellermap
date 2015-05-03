@@ -396,8 +396,6 @@
             var img = $('#ss' + subsector.index  + ' img.subsector-image');
             img.src = url;
             window['img_' + subsector.index] = img;
-
-            console.log('called: ' + subsector.index + ' - ' + url);
           };
         }));
 

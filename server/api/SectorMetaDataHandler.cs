@@ -76,9 +76,11 @@ namespace Maps.API
             {
                 this.m_sector = sector;
                 this.m_worlds = worlds;
+                this.m_dataFile = new DataFileMetadata(sector);
             }
             private Sector m_sector;
             private WorldCollection m_worlds;
+            private DataFileMetadata m_dataFile;
 
             [XmlAttribute]
             [System.ComponentModel.DefaultValue(false)]
@@ -94,6 +96,7 @@ namespace Maps.API
             public List<Name> Names { get { return m_sector.Names; } }
 
             public string Credits { get { return m_sector.Credits; } set { } }
+            public DataFileMetadata DataFile { get { return m_dataFile; } }
 
             public int X { get { return m_sector.X; } }
             public int Y { get { return m_sector.Y; } }
@@ -133,6 +136,39 @@ namespace Maps.API
 
             public MetadataCollection<Route> Routes { get { return m_sector.Routes; } }
             public bool ShouldSerializeRoutes() { return m_sector.Routes.Count > 0;  }
+        }
+
+        [XmlRoot("DataFile")]
+        public class DataFileMetadata
+        {
+            private DataFileMetadata() { }
+
+            public DataFileMetadata(Sector sector)
+            {
+                this.m_sector = sector;
+            }
+            private Sector m_sector;
+
+            [XmlAttribute]
+            public string Title { get { return (m_sector.DataFile != null ? m_sector.DataFile.Title : null) ?? m_sector.Title; } }
+
+            [XmlAttribute]
+            public string Author { get { return (m_sector.DataFile != null ? m_sector.DataFile.Author : null) ?? m_sector.Author; } }
+
+            [XmlAttribute]
+            public string Source { get { return (m_sector.DataFile != null ? m_sector.DataFile.Source : null) ?? m_sector.Source; } }
+
+            [XmlAttribute]
+            public string Publisher { get { return (m_sector.DataFile != null ? m_sector.DataFile.Publisher : null) ?? m_sector.Publisher; } }
+
+            [XmlAttribute]
+            public string Copyright { get { return (m_sector.DataFile != null ? m_sector.DataFile.Copyright : null) ?? m_sector.Copyright; } }
+
+            [XmlAttribute]
+            public string Era { get { return (m_sector.DataFile != null ? m_sector.DataFile.Era : null) ?? m_sector.Era; } }
+
+            [XmlAttribute]
+            public string Ref { get { return (m_sector.DataFile != null ? m_sector.DataFile.Ref : null) ?? m_sector.Ref; } }
         }
     }
 }
