@@ -903,61 +903,46 @@
 
 <script>
   function check() {
-    function fetch(url) {
-      return new Promise(function (resolve, reject) {
-        var xhr = new XMLHttpRequest(), async = true;
-        xhr.open('GET', url, async);
-        xhr.send();
-        xhr.onreadystatechange = function () {
-          if (xhr.readyState !== XMLHttpRequest.DONE) return;
-          if (xhr.status === 200)
-            resolve(xhr.responseText);
-          else
-            reject(new Error(xhr.statusText));
-        };
-      });
-    }
+    var SERVICE_BASE = (function(l) {
+      if (l.hostname === 'localhost' && l.pathname.indexOf('~') !== -1)
+        return 'http://travellermap.com';
+      return '';
+    }(window.location));
 
-    function toSet(a) {
-      var map = {};
-      a.forEach(function (e) { map[e] = true; });
-      return map;
-    }
-
-    fetch('/api/universe?requireData=1')
-       .then(function (data) {
-         var doc = [].slice.call(document.querySelectorAll('a.sector')).map(function (a) {
+    fetch(SERVICE_BASE + '/api/universe?requireData=1')
+       .then(function(response) {
+         if (response.status !== 200)
+           throw new Error(response.statusText);
+         return response.text();
+       })
+       .then(function(data) {
+         var doc = [].slice.call(document.querySelectorAll('a.sector')).map(function(a) {
            var name = a.innerText || a.textContent;
            name = name.replace(/^The /, '');
            return name;
          });
-         var docSet = toSet(doc);
 
-         var knownSet = {};
-         var known = JSON.parse(data).Sectors.filter(function (s) {
+         var docSet = new Set(doc);
+         var knownSet = new Set();
+         var known = JSON.parse(data).Sectors.filter(function(s) {
            var tags = s.Tags.split();
            if (tags.indexOf('ZCR') !== -1) return false;
            return true;
-         }).map(function (s) {
-           s.Names.forEach(function (name) { knownSet[name.Text] = true; });
+         }).map(function(s) {
+           s.Names.forEach(function(name) { knownSet.add(name.Text); });
            return s;
          });
 
-         window.doc = doc;
-         window.docSet = docSet;
-         window.known = known;
-         window.knownSet = knownSet;
-
-         known.forEach(function (s) {
-           if (!s.Names.some(function (name) { return docSet[name.Text]; }))
+         known.forEach(function(s) {
+           if (!s.Names.some(function(name) { return docSet.has(name.Text); }))
              console.log('No credits for known sector: ' + s.Names[0].Text);
          });
-         doc.forEach(function (s) {
-           if (!knownSet[s])
+         doc.forEach(function(s) {
+           if (!knownSet.has(s))
              console.log('Credits for unknown sector: ' + s);
          });
-
-       }, function (reason) {
+       })
+      .catch(function(reason) {
         console.error(reason);
       });
   }
