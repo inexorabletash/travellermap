@@ -102,7 +102,7 @@
     </staticContent>
     
     <!-- Custom HTTP error pages -->
-    <httpErrors existingResponse="Replace" errorMode="Custom">
+    <httpErrors existingResponse="Auto" errorMode="Custom">
       <remove statusCode="404" subStatusCode="-1"/>
       <error statusCode="404" prefixLanguageFilePath="" path="404.html" responseMode="File"/>
     </httpErrors>
