@@ -893,22 +893,22 @@
 </div>
 
 <script>
-  [].forEach.call(document.querySelectorAll('a.sector'), function(anchor) {
-    var name = anchor.innerText || anchor.textContent;
-    name = name.replace(/^The /, '');
-    anchor.href = "../?sector=" + encodeURIComponent(name);
-    anchor.target = "_blank";
-  });
+var SERVICE_BASE = (function(l) {
+  if (l.hostname === 'localhost' && l.pathname.indexOf('~') !== -1)
+    return 'http://travellermap.com';
+  return '';
+}(window.location));
+
+[].slice.call(document.querySelectorAll('a.sector')).forEach(function(anchor) {
+  var name = anchor.innerText || anchor.textContent;
+  name = name.replace(/^The /, '');
+  anchor.href = SERVICE_BASE + '/go/' + encodeURIComponent(name);
+  anchor.target = "_blank";
+});
 </script>
 
 <script>
   function check() {
-    var SERVICE_BASE = (function(l) {
-      if (l.hostname === 'localhost' && l.pathname.indexOf('~') !== -1)
-        return 'http://travellermap.com';
-      return '';
-    }(window.location));
-
     fetch(SERVICE_BASE + '/api/universe?requireData=1')
        .then(function(response) {
          if (response.status !== 200)
