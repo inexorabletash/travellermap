@@ -141,3 +141,27 @@ pre.code {
 textarea {
   font-family: "Share Tech Mono", monospace;
 }
+
+/* Table of Contents */
+
+@media only screen and (min-width: 1000px) {
+  nav.toc { display: block !important; }
+}
+nav.toc {
+  display: none;
+  position: fixed;
+  left: 720px;
+  top: 20px;
+  line-height: 150%;
+  padding: 1em;
+  border: 1px solid gray;
+  background-color: #f8f8f8;
+}
+nav.toc h2 { margin-top: 0; }
+nav.toc a { display: block; text-decoration: none; }
+nav.toc a.H1 { margin-left: 0; }
+nav.toc a.H2 { margin-left: 1em; font-weight: bold; }
+nav.toc a.H3 { margin-left: 2em; }
+nav.toc a.H4 { margin-left: 3em; font-style: italic; }
+nav.toc a.H5 { margin-left: 4em; }
+nav.toc a.H6 { margin-left: 5em; }
