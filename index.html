@@ -315,6 +315,7 @@ button:hover {
             {{#Apocryphal}}<span class="item-status">(Apocryphal)</span>{{/Apocryphal}}
             {{#Unofficial}}<span class="item-status">(Unofficial)</span>{{/Unofficial}}
           </div>
+          {{#Title}}<div class="item-title">{{.}}</div>{{/Title}}
           {{/Subsector}}
         {{#Sector}}
           <div class="item-main"><a title="Navigate to {{Name}}" href="{{href}}" onclick="{{onclick}}">{{Name}}</a></div>
@@ -325,6 +326,7 @@ button:hover {
             {{#Apocryphal}}<span class="item-status">(Apocryphal)</span>{{/Apocryphal}}
             {{#Unofficial}}<span class="item-status">(Unofficial)</span>{{/Unofficial}}
           </div>
+          {{#Title}}<div class="item-title">{{.}}</div>{{/Title}}
         {{/Sector}}
       </div>
       {{/Results.Items}}
