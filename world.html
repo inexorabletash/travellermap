@@ -6,7 +6,7 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.2/handlebars.min.js"></script>
 <script src="lib/polyfill/polyfill.min.js?update=2015-04-25"></script>
 <script src="map.js?update=2015-04-14"></script>
-<script src="world.js?update=2014-11-09"></script>
+<script src="world.js?update=2015-05-18"></script>
 
 <style>
 @import url(http://fonts.googleapis.com/css?family=PT+Sans+Narrow);
@@ -100,14 +100,13 @@ td { vertical-align: top; }
 .decode { white-space: nowrap; margin: 10px 10px; }
 .decode tr:first-of-type td { padding-bottom: 4px; font-weight: bold;}
 .decode td {
-  padding: 0; margin: 0; width: 12px; font-size: 14px; line-height: 14px;
+  padding: 0; margin: 0; width: 16px; font-size: 14px; line-height: 14px;
   x-vertical-align: middle;
   text-align: center;
   overflow: hidden;
 }
-.decode td.box {
-  font-size: 18px; width: 16px; max-width: 16px;
-  font-family: Lucida Sans Unicode, Helvetica, Arial Unicode MS;
+.decode img {
+  margin-top: 2px;
 }
 
 .decode td:first-of-type { text-align: right; padding-right: 4px; font-size: 11px;
@@ -195,34 +194,34 @@ td { vertical-align: top; }
 {{#UWP}}
 <table class="decode">
 <tr><td>Universal World Profile:<td>{{Starport}}<td>{{Siz}}<td>{{Atm}}<td>{{Hyd}}<td>{{Pop}}<td>{{Gov}}<td>{{Law}}<td>&ndash;<td>{{Tech}}<td>
-    <tr><td>Starport ({{StarportBlurb}})<td class="box">&#x2518;<td class="box">&#x2502;<td class="box">&#x2502;<td class="box">&#x2502;<td class="box">&#x2502;<td class="box">&#x2502;<td class="box">&#x2502;<td><td class="box">&#x2514;<td>Technology Level ({{TechBlurb}})
-<tr><td>Size ({{SizBlurb}})<td class="box">&#x2500;<td class="box">&#x2518;<td class="box">&#x2502;<td class="box">&#x2502;<td class="box">&#x2502;<td class="box">&#x2502;<td class="box">&#x2514;<td class="box">&#x2500;<td class="box">&#x2500;<td>Law Level ({{LawBlurb}})
-<tr><td>Atmosphere ({{AtmBlurb}})<td class="box">&#x2500;<td class="box">&#x2500;<td class="box">&#x2518;<td class="box">&#x2502;<td class="box">&#x2502;<td class="box">&#x2514;<td class="box">&#x2500;<td class="box">&#x2500;<td class="box">&#x2500;<td>Government Type ({{GovBlurb}})
-    <tr><td>Hydrosphere ({{HydBlurb}})<td class="box">&#x2500;<td class="box">&#x2500;<td class="box">&#x2500;<td class="box">&#x2518;<td class="box">&#x2514;<td class="box">&#x2500;<td class="box">&#x2500;<td class="box">&#x2500;<td class="box">&#x2500;<td>Population ({{PopBlurb}})
+    <tr><td>Starport ({{StarportBlurb}})<td colspan=9 rowspan=4><img src="res/world/uwp.png" alt=""><td>Technology Level ({{TechBlurb}})
+<tr><td>Size ({{SizBlurb}})<td>Law Level ({{LawBlurb}})
+<tr><td>Atmosphere ({{AtmBlurb}})<td>Government Type ({{GovBlurb}})
+    <tr><td>Hydrosphere ({{HydBlurb}})<td>Population ({{PopBlurb}})
 </table>
 {{/UWP}}
 
-{{#if Ix}}
+{{#Ix}}
 <table class="decode">
-<tr><td>Importance {Ix}:<td>{<td>{{Ix.Imp}}<td>}<td>
+<tr><td>Importance {Ix}:<td>{<td>{{Imp}}<td>}<td>
 </table>
-{{/if}}
+{{/Ix}}
 
-{{#if Ex}}
+{{#Ex}}
 <table class="decode">
-<tr><td>Economics (Ex):<td>(<td>{{Ex.Res}}<td>{{Ex.Lab}}<td>{{Ex.Inf}}<td>{{Ex.Eff}}<td>)<td>
-<tr><td>Resources<td class="box">&#x2500;<td class="box">&#x2518;<td class="box">&#x2502;<td class="box">&#x2502;<td class="box">&#x2514;<td class="box">&#x2500;<td>Efficiency
-<tr><td>Labor<td class="box">&#x2500;<td class="box">&#x2500;<td class="box">&#x2518;<td class="box">&#x2514;<td class="box">&#x2500;<td class="box">&#x2500;<td>Infrastructure
+<tr><td>Economics (Ex):<td>(<td>{{Res}}<td>{{Lab}}<td>{{Inf}}<td>{{Eff}}<td>)<td>
+<tr><td>Resources ({{ResBlurb}})<td colspan=6 rowspan=2><img src="res/world/ex.png" alt=""><td>Efficiency ({{EffBlurb}})
+<tr><td>Labor ({{LabBlurb}})<td>Infrastructure ({{InfBlurb}})
 </table>
-{{/if}}
+{{/Ex}}
 
-{{#if Cx}}
+{{#Cx}}
 <table class="decode">
-<tr><td>Culture [Cx]:<td>[<td>{{Cx.Hom}}<td>{{Cx.Acc}}<td>{{Cx.Str}}<td>{{Cx.Sym}}<td>]<td>
-<tr><td>Homogeneity<td class="box">&#x2500;<td class="box">&#x2518;<td class="box">&#x2502;<td class="box">&#x2502;<td class="box">&#x2514;<td class="box">&#x2500;<td>Symbols
-<tr><td>Acceptance<td class="box">&#x2500;<td class="box">&#x2500;<td class="box">&#x2518;<td class="box">&#x2514;<td class="box">&#x2500;<td class="box">&#x2500;<td>Strangeness
+<tr><td>Culture [Cx]:<td>[<td>{{Hom}}<td>{{Acc}}<td>{{Str}}<td>{{Sym}}<td>]<td>
+<tr><td>Homogeneity ({{HomBlurb}})<td colspan=6 rowspan=2><img src="res/world/cx.png" alt=""><td>Symbols ({{SymBlurb}})
+<tr><td>Acceptance ({{AccBlurb}})<td>Strangeness ({{StrBlurb}})
 </table>
-{{/if}}
+{{/Cx}}
 
 {{#if TotalPopulation }}
 <table class="decode"><tr>

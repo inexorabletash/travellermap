@@ -400,6 +400,10 @@
         Inf: ex.substring(2, 3),
         Eff: ex.substring(3)
       };
+      ['Res', 'Lab', 'Inf'].forEach(function(s) {
+        world.Ex[s + 'Blurb'] = Traveller.fromHex(world.Ex[s]);
+      });
+      world.Ex.EffBlurb = world.Ex.Eff;
     }
 
     if (world.Cx) {
@@ -410,6 +414,9 @@
         Str: cx.substring(2, 3),
         Sym: cx.substring(3, 4)
       };
+      ['Hom', 'Acc', 'Str', 'Sym'].forEach(function(s) {
+        world.Cx[s + 'Blurb'] = Traveller.fromHex(world.Cx[s]);
+      });
     }
 
     if (world.Nobility) {
