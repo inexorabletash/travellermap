@@ -50,6 +50,7 @@ my %files;
 
 my $line = <STDIN>;
 chomp $line;
+die "Unexpected header: $line\n" unless $line =~ /^Sector\tHex\tName\tUWP\t/;
 my @header = map { trim($_) } split('\t', $line);
 
 my @outheader = (
@@ -75,10 +76,10 @@ my @outheader = (
 #Sector Hex Name UWP TC Remarks Sophonts Details {Ix} (Ex) [Cx] Nobility Bases Zone PBG Allegiance Stars W RU
 
 sub trim ($) {
-    my ($_) = @_;
-    $_ =~ s/^\s+//;
-    $_ =~ s/\s+$//;
-    return $_;
+    my ($s) = @_;
+    $s =~ s/^\s+//;
+    $s =~ s/\s+$//;
+    return $s;
 }
 
 sub combine {
