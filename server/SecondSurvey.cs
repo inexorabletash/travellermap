@@ -250,12 +250,13 @@ namespace Maps
         }
         private static T5Allegiances s_t5Allegiances = new T5Allegiances {
             // T5Code, LegacyCode, BaseCode, Name
+            { "AlCo", "Al", null, "Altarean Confederation" },
             { "AnTC", "Ac", null, "Anubian Trade Coalition" },
             { "AsIf", "As", "As", "Iyeaao'fte" },
             { "AsMw", "As", "As", "Aslan Hierate, single multiple-world clan dominates" },
             { "AsOf", "As", "As", "Oleaiy'fte" }, // (Tlaukhu client state)
-            { "AsSc", "As", "As", "Aslan Hierate, multiple clans split control" },
             { "AsSF", "As", "As", "Aslan Hierate, small station" }, // (temporary)
+            { "AsSc", "As", "As", "Aslan Hierate, multiple clans split control" },
             { "AsT0", "A0", "As", "Aslan Hierate, Tlaukhu control, Yerlyaruiwo (1), Hrawoao (13), Eisohiyw (14), Ferekhearl (19)" },
             { "AsT1", "A1", "As", "Aslan Hierate, Tlaukhu control, Khauleairl (2), Estoieie' (16), Toaseilwi (22)" },
             { "AsT2", "A2", "As", "Aslan Hierate, Tlaukhu control, Syoisuis (3)" },
@@ -275,6 +276,7 @@ namespace Maps
             { "CaAs", "Cb", null, "Carrillian Assembly" },
             { "CaPr", "Ca", null, "Principality of Caledon" },
             { "CaTe", "Ct", null, "Carter Technocracy" },
+            { "CoAl", "Co", null, "Comsentient Alliance" },
             { "CoLp", "Lp", null, "Council of Leh Perash" },
             { "CsCa", "Ca", null, "Client State, Principality of Caledon" },
             { "CsIm", "Cs", null, "Client State, Third Imperium" },
@@ -282,6 +284,8 @@ namespace Maps
             { "CyUn", "Cu", null, "Cytralin Unity" },
             { "DaCf", "Da", null, "Darrian Confederation" },
             { "DuCf", "Cd", null, "Confederation of Duncinae" },
+            { "EsMa", "Es", null, "Eslyat Magistracy" },
+            { "FCSA", "Fc", null, "Four Corners Sovereign Array" },
             { "FeHe", "Fh", null, "Federation of Heron" },
             { "FlLe", "Fl", null, "Florian League" },
             { "GaRp", "Gr", null, "Gamma Republic" },
@@ -291,7 +295,9 @@ namespace Maps
             { "GlEm", "Gl", "As", "Glorious Empire" }, // (Aslan independent clan, outcast)
             { "GlFe", "Gf", null, "Glimmerdrift Federation" },
             { "GnCl", "Gi", null, "Gniivi Collective" },
+            { "GrCo", "Gr", null, "Grossdeutchland Confederation" },
             { "HvFd", "Hv", "Hv", "Hiver Federation" },
+            { "HyLe", null, null, "Hyperion League" },
             { "ImAp", "Im", "Im", "Third Imperium, Amec Protectorate" },
             { "ImDa", "Im", "Im", "Third Imperium, Domain of Antares" },
             { "ImDc", "Im", "Im", "Third Imperium, Domain of Sylea" },
@@ -305,25 +311,34 @@ namespace Maps
             { "ImSy", "Im", "Im", "Third Imperium, Sylean Worlds" },
             { "ImVd", "Ve", "Im", "Third Imperium, Vegan Autonomous District" },
             { "IsDo", "Id", null, "Islaiat Dominate" },
+            { "JaPa", "Ja", null, "Jarnac Pashalic" },
             { "JuHl", "Hl", "Jp", "Julian Protectorate, Hegemony of Lorean" },
             { "JuPr", "Jp", "Jp", "Julian Protectorate, independent" },
             { "JuRu", "Jr", "Jp", "Julian Protectorate, Rukadukaz Republic" },
+            { "KaTr", "Kt", null, "Kajaani Triumverate" },
             { "KhLe", "Kl", null, "Khuur League" },
+            { "LaCo", "Lc", null, "Langemarck Coalition" },
             { "LnRp", "Ln", null, "Loyal Nineworlds Republic" },
             { "LyCo", "Ly", null, "Lanyard Colonies" },
             { "MaEm", "Mk", null, "Maskai Empire" },
             { "NaAs", "As", "As", "Non-Aligned, Aslan-dominated" }, // (outside Hierate)
             { "NaHu", "Na", null, "Non-Aligned, Human-dominated" },
             { "NaVa", "Va", null, "Non-Aligned, Vargr-dominated" },
-            { "NaXX", "Na", null, "Unclaimed" },
+            { "NaXX", "Na", null, "Non-Aligned, unclaimed" },
             { "OcWs", "Ow", null, "Outcasts of the Whispering Sky" },
+            { "PiFe", "Pi", null, "Pionier Fellowship" },
             { "RaRa", "Ra", null, "Ral Ranta" },
             { "SeFo", "Sf", null, "Senlis Foederate" },
             { "SlLg", "Sl", null, "Shukikikar League" },
             { "SoCf", "So", "So", "Solomani Confederation" },
+            { "SoNS", "So", "So", "Solomani Confederation, New Slavic Solidarity" },
+            { "SoRD", "So", "So", "Solomani Confederation, Reformed Dootchen Estates" },
+            { "SoWu", "So", "So", "Solomani Confederation, Wuan Technology Association" },
             { "StCl", "Sc", null, "Strend Cluster" },
             { "SwCf", "Sw", null, "Sword Worlds Confederation" },
             { "TeAr", "Ta", "As", "Tealou Arlaoh" }, // (Aslan independent clan, non-outcast)
+            { "TeCl", "Tc", null, "Tellerian Cluster" },
+            { "TrDo", "Td", null, "Trelyn Domain" },
             { "UnHa", "Uh", null, "Union of Harmony" },
             { "V40S", "Ve", "Va", "40th Squadron" }, // (Ekhelle Ksafi)
             { "VARC", "Vr", "Va", "Anti-Rukh Coalition" }, // (Gnoerrgh Rukh Lloell)
@@ -341,10 +356,11 @@ namespace Maps
             { "VTzE", "Vp", "Va", "Thirz Empire" }, // (Thirz Uerra)
             { "VUru", "Vu", "Va", "Urukhu" },
             { "VVar", "Ve", "Va", "Empire of Varroerth" },
-            { "VWan", "Vw", "Va", "People of Wanz" },
             { "VWP2", "V2", "Va", "Windhorn Pact of Two" },
+            { "VWan", "Vw", "Va", "People of Wanz" },
             { "XXXX", "Xx", null, "Unknown" },
-            { "ZhCo", "Zh", "Zh", "Zhodani Consulate" }
+            { "ZhCa", "Ca", "Zh", "Zhodani Consulate, Colonnade District" },
+            { "ZhCo", "Zh", "Zh", "Zhodani Consulate" },
         };
 
         private static readonly HashSet<string> s_defaultAllegiances = new HashSet<string> {
