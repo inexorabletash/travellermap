@@ -296,7 +296,7 @@ namespace Maps
             { "GnCl", "Gi", null, "Gniivi Collective" },
             { "GrCo", "Gr", null, "Grossdeutchland Confederation" },
             { "HvFd", "Hv", "Hv", "Hiver Federation" },
-            { "HyLe", null, null, "Hyperion League" },
+            { "HyLe", "Hy", null, "Hyperion League" },
             { "ImAp", "Im", "Im", "Third Imperium, Amec Protectorate" },
             { "ImDa", "Im", "Im", "Third Imperium, Domain of Antares" },
             { "ImDc", "Im", "Im", "Third Imperium, Domain of Sylea" },
