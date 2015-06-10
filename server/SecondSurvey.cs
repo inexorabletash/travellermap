@@ -62,8 +62,7 @@ namespace Maps
         // S     Imperial   Scout base
         // T     Aslan      Tlaukhu base
         // V     Any        Exploration base
-        // W     Imperial   Way station
-        // X     Zhodani    Relay station -------- DEPRECATED in T5SS; use Zh.W
+        // W     Any        Way station
 
         private static RegexDictionary<string> s_legacyBaseDecodeTable = new GlobDictionary<string> {
             { "*.2", "NS" },  // Imperial Naval base + Scout base
@@ -90,10 +89,10 @@ namespace Maps
             { "*.T", "T" },   // Aslan Tlaukhu Base
             { "*.U", "RT" },  // Aslan Tlaukhu and Clan Base
             { "*.V", "V" },   // Scout/Exploration
-            { "*.W", "W" },   // Imperial Scout Way Station
-            { "*.X", "X" },   // Zhodani Relay Station    - TODO: Deprecate for T5SS Zh.W
+            { "*.W", "W" },   // Way Station
+            { "*.X", "W" },   // Zhodani Relay Station
             { "*.Y", "D" },   // Zhodani Depot
-            { "*.Z", "KM" },   // Zhodani Naval/Military Base
+            { "*.Z", "KM" },  // Zhodani Naval/Military Base
         };
 
         public static string DecodeLegacyBases(string allegiance, string code)
@@ -128,8 +127,8 @@ namespace Maps
             { "*.T", "T" },   // Aslan Tlaukhu Base
             { "*.RT", "U" },  // Aslan Tlaukhu and Clan Base
             { "*.V", "V" },   // Exploration
+            { "Zh.W", "X" },  // Zhodani Relay Station
             { "*.W", "W" },   // Imperial Scout Way Station
-            { "*.X", "X" }, // Zhodani Relay Station      - TODO: Deprecate for T5SS Zh.W
             { "Zh.KM", "Z" }, // Zhodani Naval/Military Base
         };
 

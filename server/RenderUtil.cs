@@ -306,7 +306,7 @@ namespace Maps.Rendering
             { "*.C", Glyph.StarStar.BiasBottom }, // Vargr Corsair Base
             { "Im.D", Glyph.Square.BiasBottom }, // Imperial Depot
             { "*.D", Glyph.Square.Highlight}, // Depot
-            { "*.E", Glyph.StarStar.BiasBottom }, // Hiver Embassy (non-standard)
+            { "*.E", Glyph.StarStar.BiasBottom }, // Hiver Embassy
             { "*.K", Glyph.Star5Point.Highlight.BiasTop }, // Naval Base
             { "*.M", Glyph.Star4Point.BiasBottom }, // Military Base
             { "*.N", Glyph.Star5Point.BiasTop }, // Imperial Naval Base
@@ -315,9 +315,9 @@ namespace Maps.Rendering
             { "*.S", Glyph.Triangle.BiasBottom }, // Imperial Scout Base
             { "*.T", Glyph.Star5Point.Highlight.BiasTop }, // Aslan Tlaukhu Base
             { "*.V", Glyph.Circle.BiasBottom }, // Exploration Base
+            { "Zh.W", Glyph.Diamond.Highlight }, // Zhodani Relay Station
             { "*.W", Glyph.Triangle.Highlight.BiasBottom }, // Imperial Scout Waystation
-            { "*.X", Glyph.Diamond.Highlight }, // Zhodani Relay Station
-            { "*.Z", Glyph.Diamond }, // Zhodani Naval/Military Base (non-standard)
+            { "Zh.Z", Glyph.Diamond }, // Zhodani Base (Special case for "Zh.KM")
             { "*.*", Glyph.Circle }, // Independent Base
         };
 
