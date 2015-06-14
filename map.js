@@ -122,6 +122,14 @@ var Util = {
         }, delay);
       };
     }
+  },
+
+  memoize: function(f) {
+    var cache = Object.create(null);
+    return function() {
+      var key = JSON.stringify([].slice.call(arguments));
+      return (key in cache) ? cache[key] : cache[key] = f.apply(this, arguments);
+    };
   }
 };
 

@@ -79,6 +79,9 @@ window.addEventListener('DOMContentLoaded', function() {
     });
   }, SAVE_PREFERENCES_DELAY_MS);
 
+  var template = Util.memoize(function(sel) {
+    return Handlebars.compile($(sel).innerHTML);
+  });
 
   //////////////////////////////////////////////////////////////////////
   //
@@ -385,11 +388,6 @@ window.addEventListener('DOMContentLoaded', function() {
   //
   //////////////////////////////////////////////////////////////////////
 
-  var commonMetadataTemplate = Handlebars.compile($('#CommonMetadataTemplate').innerHTML);
-  var statusMetadataTemplate = Handlebars.compile($('#StatusMetadataTemplate').innerHTML);
-  var worldMetadataTemplate = Handlebars.compile($('#WorldMetadataTemplate').innerHTML);
-  var sectorMetadataTemplate = Handlebars.compile($('#SectorMetadataTemplate').innerHTML);
-
   var dataRequest = null;
   var dataTimeout = 0;
   var lastX, lastY;
@@ -456,9 +454,10 @@ window.addEventListener('DOMContentLoaded', function() {
         $('#downloadBox').classList.remove('world-selected');
       }
 
-      var template = selectedWorld ? worldMetadataTemplate : sectorMetadataTemplate;
       $('#MetadataDisplay').innerHTML =
-        template(data) + commonMetadataTemplate(data) + statusMetadataTemplate(data);
+        template(selectedWorld ? '#WorldMetadataTemplate' : '#SectorMetadataTemplate')(data)
+        + template('#CommonMetadataTemplate')(data)
+        + template('#StatusMetadataTemplate')(data);
     }
   }
 
@@ -512,8 +511,6 @@ window.addEventListener('DOMContentLoaded', function() {
   // Search
   //
   //////////////////////////////////////////////////////////////////////
-
-  var searchTemplate = Handlebars.compile($('#SearchResultsTemplate').innerHTML);
 
   var searchRequest = null;
   var lastQuery = null;
@@ -616,7 +613,7 @@ window.addEventListener('DOMContentLoaded', function() {
         }
       }
 
-      $('#resultsContainer').innerHTML = searchTemplate(data);
+      $('#resultsContainer').innerHTML = template('#SearchResultsTemplate')(data);
 
       [].forEach.call(document.querySelectorAll('#resultsContainer a'), function(a) {
         a.addEventListener('click', function(e) {
