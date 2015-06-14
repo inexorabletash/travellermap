@@ -931,18 +931,18 @@ var Util = {
   Map.prototype.invalidate = function() {
     this.dirty = true;
     var self = this;
-    if (self._raf_handle)
-      return;
-
-    self._raf_handle = requestAnimationFrame(function() {
-      self._raf_handle = null;
-      self.redraw();
-    });
+    if (!self._raf_handle) {
+      self._raf_handle = requestAnimationFrame(function () {
+        self._raf_handle = null;
+        self.redraw();
+      });
+    }
   };
 
-  Map.prototype.redraw = function() {
-    if (!this.dirty)
+  Map.prototype.redraw = function(force) {
+    if (!this.dirty && !force)
       return;
+
     this.dirty = false;
 
     var self = this,
@@ -1251,6 +1251,7 @@ var Util = {
       // TODO: If animating scale, this should follow an arc (parabola?) through 3space treating
       // scale as Z and computing a height such that the target is in view at the turnaround.
       self.SetPosition(Animation.interpolate(ox, tx, p), Animation.interpolate(oy, ty, p));
+      self.redraw();
     };
   };
 
@@ -1467,7 +1468,7 @@ var Util = {
     this.animation.onanimate = function(p) {
       self.x = Animation.interpolate(ox, tx, p);
       self.y = Animation.interpolate(oy, ty, p);
-      self.invalidate();
+      self.redraw(true);
       fireEvent(self, 'DisplayChanged');
     };
   };
