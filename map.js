@@ -556,6 +556,9 @@ var Util = {
 
     this.container = container;
 
+    this.width = container.offsetWidth;
+    this.height = container.offsetHeight;
+
     this.min_scale = -5;
     this.max_scale = 10;
 
@@ -602,8 +605,8 @@ var Util = {
       this.canvas = canvas;
 
       this.resetCanvas = function() {
-        var cw = container.offsetWidth;
-        var ch = container.offsetHeight;
+        var cw = self.width;
+        var ch = self.height;
 
         var dpr = 'devicePixelRatio' in window ? window.devicePixelRatio : 1;
 
@@ -652,8 +655,8 @@ var Util = {
     function eventToHexCoords(event) {
       var f = pow2(1 - self.scale) / self.tilesize;
       var coords = eventCoords(event);
-      var cx = self.x + f * (coords.x - self.container.offsetWidth / 2),
-          cy = self.y + f * (coords.y - self.container.offsetHeight / 2);
+      var cx = self.x + f * (coords.x - self.width / 2),
+          cy = self.y + f * (coords.y - self.height / 2);
       return logicalToHex(cx * self.tilesize, cy * -self.tilesize);
     }
 
@@ -735,8 +738,8 @@ var Util = {
       // Compute the physical coordinates
       var f = pow2(1 - self.scale) / self.tilesize,
           coords = eventCoords(e),
-          cx = self.x + f * (coords.x - self.container.offsetWidth / 2),
-          cy = self.y + f * (coords.y - self.container.offsetHeight / 2),
+          cx = self.x + f * (coords.x - self.width / 2),
+          cy = self.y + f * (coords.y - self.height / 2),
           hex = logicalToHex(cx * self.tilesize, cy * -self.tilesize);
 
       fireEvent(self, 'DoubleClick', { x: hex.hx, y: hex.hy });
@@ -758,9 +761,11 @@ var Util = {
     container.addEventListener('DOMMouseScroll', wheelListener); // FF
 
     window.addEventListener('resize', function() {
+      self.width = container.offsetWidth;
+      self.height = container.offsetHeight;
       if (self.canvas)
         self.resetCanvas();
-      self.invalidate();
+      self.redraw(true);
     });
 
     var pinch_x1, pinch_y1, pinch_x2, pinch_y2;
@@ -901,8 +906,8 @@ var Util = {
   };
 
   Map.prototype.setScale = function(newscale, px, py) {
-    var cw = this.container.offsetWidth,
-        ch = this.container.offsetHeight;
+    var cw = this.width,
+        ch = this.height;
 
     newscale = Math.max(Math.min(newscale, this.max_scale), this.min_scale);
     if (newscale !== this.scale) {
@@ -932,7 +937,7 @@ var Util = {
     this.dirty = true;
     var self = this;
     if (!self._raf_handle) {
-      self._raf_handle = requestAnimationFrame(function () {
+      self._raf_handle = requestAnimationFrame(function invalidationRAF(ms) {
         self._raf_handle = null;
         self.redraw();
       });
@@ -958,8 +963,8 @@ var Util = {
         cf = pow2(tscale - 1), // Coordinate factor (integral)
 
     // Compute edges in tile space
-        cw = this.container.offsetWidth,
-        ch = this.container.offsetHeight,
+        cw = this.width,
+        ch = this.height,
 
         l = this.x * cf - (cw / 2) / (this.tilesize * tmult),
         r = this.x * cf + (cw / 2) / (this.tilesize * tmult),
@@ -1320,8 +1325,8 @@ var Util = {
   Map.prototype.logicalToPixel = function(lx, ly) {
     var f = pow2(1 - this.scale) / this.tilesize;
     return {
-      x: ((lx / this.tilesize - this.x) / f) + this.container.offsetWidth / 2,
-      y: ((ly / -this.tilesize - this.y) / f) + this.container.offsetHeight / 2
+      x: ((lx / this.tilesize - this.x) / f) + this.width / 2,
+      y: ((ly / -this.tilesize - this.y) / f) + this.height / 2
     };
   };
 
