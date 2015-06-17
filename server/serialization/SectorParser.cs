@@ -49,7 +49,7 @@ namespace Maps.Serialization
                     for (string line = reader.ReadLine(); line != null; line = reader.ReadLine())
                     {
                         if (line.Length == 0 || comment.IsMatch(line))
-                            continue;   
+                            continue;
 
                         if (sniff_tab.IsMatch(line))
                             return "TabDelimited";
@@ -114,7 +114,7 @@ namespace Maps.Serialization
             @"( \s{1,2}   (?<pbg>         [0-9X][0-9A-FX][0-9A-FX]     ) )  " + // PGB (Population multiplier, Belts, Gas giants)
             @"( \s{1,2}   (?<allegiance>  ([A-Za-z0-9][A-Za-z0-9?\-]|--)  ) )  " + // Allegiance
             @"( \s*       (?<rest>        .*?                          ) )  " + // Stellar data (etc)
-            @"\s*$" 
+            @"\s*$"
             , RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.Singleline | RegexOptions.ExplicitCapture | RegexOptions.IgnorePatternWhitespace);
 
         private static readonly Regex nameFixupRegex = new Regex(@"[\.\+]*$", RegexOptions.Compiled);
@@ -179,7 +179,7 @@ namespace Maps.Serialization
             try
             {
                 world.Stellar = StellarDataParser.Parse(rest, StellarDataParser.OutputFormat.Compact);
-            }   
+            }
             catch (StellarDataParser.InvalidSystemException)
             {
                 if (errors != null)
@@ -276,7 +276,7 @@ namespace Maps.Serialization
                             if (errors != null)
                                 errors.Error(String.Format("Unexpected value for {0}: '{1}'", key, value), lineNumber, line);
                             hadError = true;
-                        } 
+                        }
                         else
                         {
                             if (errors != null)
@@ -307,7 +307,7 @@ namespace Maps.Serialization
                 world.Bases = checker.Check(new string[] { "B", "Bases" }, BASES_REGEX, CheckOptions.EmptyIfDash);
                 world.Zone = checker.Check(new string[] { "Z", "Zone" }, ZONE_REGEX, CheckOptions.EmptyIfDash);
                 world.PBG = checker.Check("PBG", PBG_REGEX);
-                world.Allegiance = checker.Check(new string[] { "A", "Allegiance" },
+                world.Allegiance = checker.Check(new string[] { "A", "Al", "Allegiance" },
                     // TODO: Allow unofficial sectors to have locally declared allegiances.
                     a => a.Length != 4 || SecondSurvey.IsKnownT5Allegiance(a));
                 world.Stellar = checker.Check(new string[] { "Stellar", "Stars", "Stellar Data" }, STARS_REGEX, CheckOptions.Warning);
