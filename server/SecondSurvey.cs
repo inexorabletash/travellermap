@@ -273,11 +273,11 @@ namespace Maps
             { "AsXX", "As", "As", "Aslan Hierate, unknown" },
             { "BlSo", "Bs", null, "Belgardian Sojurnate" },
             { "CAEM", "Es", null, "Comsentient Alliance, Eslyat Magistracy" },
+            { "CAin", "Co", null, "Comsentient Alliance" }, // independent
             { "CAKT", "Kt", null, "Comsentient Alliance, Kajaani Triumverate" },
             { "CaAs", "Cb", null, "Carrillian Assembly" },
             { "CaPr", "Ca", null, "Principality of Caledon" },
             { "CaTe", "Ct", null, "Carter Technocracy" },
-            { "Cain", "Co", null, "Comsentient Alliance" }, // independent
             { "CoLp", "Lp", null, "Council of Leh Perash" },
             { "CsCa", "Ca", null, "Client State, Principality of Caledon" },
             { "CsIm", "Cs", null, "Client State, Third Imperium" },
