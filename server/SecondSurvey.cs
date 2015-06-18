@@ -249,6 +249,7 @@ namespace Maps
         }
         private static T5Allegiances s_t5Allegiances = new T5Allegiances {
             // T5Code, LegacyCode, BaseCode, Name
+            { "AkUn", "Ak", null, "Akeena Union" },
             { "AlCo", "Al", null, "Altarean Confederation" },
             { "AnTC", "Ac", null, "Anubian Trade Coalition" },
             { "AsIf", "As", "As", "Iyeaao'fte" },
@@ -290,6 +291,7 @@ namespace Maps
             { "FCSA", "Fc", null, "Four Corners Sovereign Array" },
             { "FeHe", "Fh", null, "Federation of Heron" },
             { "FlLe", "Fl", null, "Florian League" },
+            { "GaFd", "Ga", null, "Galian Federation" },
             { "GaRp", "Gr", null, "Gamma Republic" },
             { "GdMh", "Ma", null, "Grand Duchy of Marlheim" },
             { "GdSt", "Gs", null, "Grand Duchy of Stoner" },
@@ -298,6 +300,7 @@ namespace Maps
             { "GlFe", "Gf", null, "Glimmerdrift Federation" },
             { "GnCl", "Gi", null, "Gniivi Collective" },
             { "GrCo", "Gr", null, "Grossdeutchland Confederation" },
+            { "HoPA", "Ho", null, "Hochiken People's Assembly" },
             { "HvFd", "Hv", "Hv", "Hiver Federation" },
             { "HyLe", "Hy", null, "Hyperion League" },
             { "IHPr", "IS", null, "I'Sred*Ni Heptad Protectorate" },
@@ -326,13 +329,16 @@ namespace Maps
             { "MaCl", "Ma", null, "Mapepire Cluster" },
             { "MaEm", "Mk", null, "Maskai Empire" },
             { "MaPr", "MF", null, "Ma'Gnar Primarchic" },
+            { "MeCo", "Me", null, "Megusard Corporate" },
             { "NaAs", "As", "As", "Non-Aligned, Aslan-dominated" }, // (outside Hierate)
             { "NaHu", "Na", null, "Non-Aligned, Human-dominated" },
             { "NaVa", "Va", null, "Non-Aligned, Vargr-dominated" },
             { "NaXX", "Na", null, "Non-Aligned, unclaimed" },
             { "OcWs", "Ow", null, "Outcasts of the Whispering Sky" },
             { "PiFe", "Pi", null, "Pionier Fellowship" },
+            { "PlLe", "Pl", null, "Plavian League" },
             { "RaRa", "Ra", null, "Ral Ranta" },
+            { "ReUn", "Re", null, "Renkard Union" },
             { "SeFo", "Sf", null, "Senlis Foederate" },
             { "SlLg", "Sl", null, "Shukikikar League" },
             { "SoCf", "So", "So", "Solomani Confederation" },
@@ -341,8 +347,10 @@ namespace Maps
             { "SoWu", "So", "So", "Solomani Confederation, Wuan Technology Association" },
             { "StCl", "Sc", null, "Strend Cluster" },
             { "SwCf", "Sw", null, "Sword Worlds Confederation" },
+            { "SwFW", "Sw", null, "Swanfei Free Worlds" },
             { "TeAr", "Ta", "As", "Tealou Arlaoh" }, // (Aslan independent clan, non-outcast)
             { "TeCl", "Tc", null, "Tellerian Cluster" },
+            { "TrCo", "Tr", null, "Trindel Confederacy" },
             { "TrDo", "Td", null, "Trelyn Domain" },
             { "UnHa", "Uh", null, "Union of Harmony" },
             { "V40S", "Ve", "Va", "40th Squadron" }, // (Ekhelle Ksafi)
@@ -363,6 +371,7 @@ namespace Maps
             { "VVar", "Ve", "Va", "Empire of Varroerth" },
             { "VWP2", "V2", "Va", "Windhorn Pact of Two" },
             { "VWan", "Vw", "Va", "People of Wanz" },
+            { "ViCo", "Vi", null, "Viyard Concourse" },
             { "XXXX", "Xx", null, "Unknown" },
             { "ZhCa", "Ca", null, "Zhodani Consulate, Colonnade province" },
             { "ZhCo", "Zh", "Zh", "Zhodani Consulate" }, // Undetermined Province
