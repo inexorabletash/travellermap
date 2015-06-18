@@ -6,8 +6,10 @@ my %sectors = (
     Akti => "Aktifao",
     Alph => "Alpha Crucis",
     Anta => "Antares",
+    Beyo => "Beyond",
     Core => "Core",
     Corr => "Corridor",
+    Cruc => "Crucis Margin",
     Dagu => "Dagudashaag",
     Daib => "Daibei",
     Dark => "Dark Nebula",
@@ -16,8 +18,10 @@ my %sectors = (
     Dias => "Diaspora",
     Eali => "Ealiyasiyw",
     Empt => "Empty Quarter",
+    FarF => "Far Frontiers",
     Fore => "Foreven",
     Forn => "Fornast",
+    Gate => "Gateway",
     Glim => "Glimmerdrift",
     Gush => "Gushemege",
     Gvur => "Gvurrdon",
@@ -37,9 +41,11 @@ my %sectors = (
     Spic => "Spica",
     Spin => "Spinward Marches",
     Stai => "Staihaia'yo",
+    Thet => "Theta Borealis",
     Troj => "Trojan Reach",
     Uist => "Uistilrao",
     Ustr => "Ustral Quadrant",
+    Vang => "Vanguard Reaches",
     Verg => "Verge",
     Vlan => "Vland",
     Zaru => "Zarushagar",
@@ -111,6 +117,7 @@ foreach $line (<STDIN>) {
     }
     my $sec = $fields{'Sector'};
     if (!exists $files{$sec}) {
+        die "Unknown sector code: $sec\n" unless exists $sectors{$sec};
         $files{$sec} = FileHandle->new("> $sectors{$sec}.tab");
         print { $files{$sec} } join("\t", @outheader), "\n";
     }
