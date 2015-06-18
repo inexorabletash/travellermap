@@ -5,28 +5,28 @@
   <Name>Gateway</Name>
   <DataFile Author="William H. Keith, Jr., Martin J. Dougherty and Hunter Gordon" Source="Traveller 5 Second Survey" Era="1105" Type="TabDelimited">Gateway.tab</DataFile>
   <Borders>
-    <Border Allegiance="HoPA" Color="darkgreen">
+    <Border Allegiance="HoPA" Color="darkgreen" LabelPosition="1503" WrapLabel="true">
       1101 1201 1302 1401 1501 1601 1702 1801 1902 2001 2101 2001 2002 2003 1904 1905 1906 1907 1908 2008 1908 1808 1709 1609 1509 1408 1308 1407 1406 1506 1505 1504 1403 1303 1202 1201 1101
     </Border>
     <Border Allegiance="PlLe" Color="hotpink">
       1412 1512 1612 1712 1811 1911 2010 2011 2012 2113 2013 2014 2015 2016 2017 1918 1818 1718 1617 1616 1615 1614 1514 1413 1412
     </Border>
-    <Border Allegiance="GaFd" Color="darkred">
+    <Border Allegiance="GaFd" Color="darkred" LabelPosition="0929">
       0425 0525 0624 0724 0823 0923 0922 0921 1020 1019 1119 1218 1319 1320 1321 1322 1222 1223 1124 1125 1126 1127 1128 1129 1029 1030 0931 0831 0832 0733 0633 0534 0433 0432 0431 0430 0530 0529 0528 0527 0526 0425
     </Border>
-    <Border Allegiance="AkUn" Color="darkkhaki">
+    <Border Allegiance="AkUn" Color="darkkhaki" LabelPosition="2809">
       2409 2509 2508 2507 2506 2605 2706 2806 2807 2808 2809 2810 2711 2611 2610 2510 2409
     </Border>
-    <Border Allegiance="SwFW" Color="white">
+    <Border Allegiance="SwFW" Color="white" LabelPosition="2721" WrapLabel="true">
       2520 2619 2618 2718 2817 2918 2919 2920 2921 2821 2722 2621 2521 2520
     </Border>
-    <Border Allegiance="TrCo" Color="darkblue">
+    <Border Allegiance="TrCo" Color="darkblue" LabelPosition="1925" WrapLabel="true">
       1423 1523 1622 1723 1823 1924 1925 1926 1826 1727 1627 1628 1629 1628 1627 1527 1526 1525 1424 1423
     </Border>
-    <Border Allegiance="ViCo" Color="orange">
+    <Border Allegiance="ViCo" Color="orange" LabelPosition="1632" WrapLabel="true">
       1338 1437 1436 1435 1434 1433 1432 1532 1531 1530 1630 1730 1829 1930 1931 1831 1832 1833 1834 1835 1836 1937 2037 2138 2139 2140 2039 1939 1839 1739 1639 1539 1438 1339 1338
     </Border>
-    <Border Allegiance="MeCo" Color="darkslategray">
+    <Border Allegiance="MeCo" Color="darkslategray" LabelPosition="2528">
       2329 2429 2529 2628 2728 2827 2928 2827 2728 2628 2629 2630 2531 2530
       2429 2329
     </Border>
