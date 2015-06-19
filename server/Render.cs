@@ -37,7 +37,7 @@ namespace Maps.Rendering
         };
 
         // TODO: Move this to data file
-        private static readonly MapLabel[] megaLabels = 
+        private static readonly MapLabel[] megaLabels =
         {
             new MapLabel("Charted Space", -120, 400, true),
             new MapLabel("Zhodani Core Expeditions", 0, -2000, true),
@@ -831,7 +831,7 @@ namespace Maps.Rendering
                 {
                     solidBrush.Color = Color.FromArgb(128, ctx.styles.backgroundColor);
                     foreach (Sector sector in ctx.selector.Sectors
-                        .Where(sector => !sector.Tags.Contains("Official") && !sector.Tags.Contains("Preserve")))
+                        .Where(sector => !sector.Tags.Contains("Official") && !sector.Tags.Contains("Preserve") && !sector.Tags.Contains("InReview")))
                         ctx.graphics.DrawRectangle(solidBrush, sector.Bounds);
                 }
 
@@ -961,7 +961,7 @@ namespace Maps.Rendering
 
                             Color textColor = (isCapital && ctx.styles.worldDetails.HasFlag(WorldDetails.Highlight))
                                 ? ctx.styles.worlds.textHighlightColor : ctx.styles.worlds.textColor;
-                            XFont font = ((isHiPop || isCapital) && ctx.styles.worldDetails.HasFlag(WorldDetails.Highlight)) 
+                            XFont font = ((isHiPop || isCapital) && ctx.styles.worldDetails.HasFlag(WorldDetails.Highlight))
                                 ? ctx.styles.worlds.LargeFont : ctx.styles.worlds.Font;
 
                             DrawWorldLabel(ctx, worldTextBackgroundStyle, solidBrush, textColor, ctx.styles.worlds.textStyle.Translation, font, name);
