@@ -381,7 +381,7 @@ namespace Maps
             { "VWan", "Vw", "Va", "People of Wanz" },
             { "ViCo", "Vi", null, "Viyard Concourse" },
             { "XXXX", "Xx", null, "Unknown" },
-            { "ZhCa", "Ca", null, "Zhodani Consulate, Colonnade province" },
+            { "ZhCa", "Ca", "Zh", "Zhodani Consulate, Colonnade province" },
             { "ZhCo", "Zh", "Zh", "Zhodani Consulate" }, // Undetermined Province
             { "ZhIN", "Zh", "Zh", "Zhodani Consulate, Iadr Nsobl province" },
             { "ZyCo", "Zc", null, "Zydarian Codominion" },
