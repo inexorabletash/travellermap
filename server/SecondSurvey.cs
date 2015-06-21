@@ -252,10 +252,10 @@ namespace Maps
             { "AkUn", "Ak", null, "Akeena Union" },
             { "AlCo", "Al", null, "Altarean Confederation" },
             { "AnTC", "Ac", null, "Anubian Trade Coalition" },
-            { "AsIf", "As", "As", "Iyeaao'fte" },
+            { "AsIf", "As", "As", "Iyeaao'fte" }, // (Tlaukhu client state)
             { "AsMw", "As", "As", "Aslan Hierate, single multiple-world clan dominates" },
             { "AsOf", "As", "As", "Oleaiy'fte" }, // (Tlaukhu client state)
-            { "AsSF", "As", "As", "Aslan Hierate, small station" }, // (temporary)
+            { "AsSF", "As", "As", "Aslan Hierate, small facility" }, // (temporary)
             { "AsSc", "As", "As", "Aslan Hierate, multiple clans split control" },
             { "AsT0", "A0", "As", "Aslan Hierate, Tlaukhu control, Yerlyaruiwo (1), Hrawoao (13), Eisohiyw (14), Ferekhearl (19)" },
             { "AsT1", "A1", "As", "Aslan Hierate, Tlaukhu control, Khauleairl (2), Estoieie' (16), Toaseilwi (22)" },
@@ -320,7 +320,7 @@ namespace Maps
             { "IsDo", "Id", null, "Islaiat Dominate" },
             { "JaPa", "Ja", null, "Jarnac Pashalic" },
             { "JuHl", "Hl", "Jp", "Julian Protectorate, Hegemony of Lorean" },
-            { "JuPr", "Jp", "Jp", "Julian Protectorate, independent" },
+            { "JuPr", "Jp", "Jp", "Julian Protectorate" }, // independent
             { "JuRu", "Jr", "Jp", "Julian Protectorate, Rukadukaz Republic" },
             { "KaCo", "KC", null, "Katowice Conquest" },
             { "KaWo", "KW", null, "Karhyri Worlds" },
@@ -371,7 +371,7 @@ namespace Maps
             { "VPGa", "Vg", "Va", "Pact of Gaerr" }, // (Gaerr Thue)
             { "VRrS", "VW", "Va", "Rranglloez Stronghold" },
             { "VRuk", "Vn", "Va", "Worlds of Leader Rukh" }, // (Rukh Aegz)
-            { "VSDp", "Vs", "Va", "Seaknouth Dependency" }, // (Saeknouth Igz)
+            { "VSDp", "Vs", "Va", "Saeknouth Dependency" }, // (Saeknouth Igz)
             { "VSEq", "Vd", "Va", "Society of Equals" }, // (Dzen Aeng Kho)
             { "VThE", "Vt", "Va", "Thoengling Empire" }, // (Thoengling Raghz)
             { "VTzE", "Vp", "Va", "Thirz Empire" }, // (Thirz Uerra)
@@ -382,7 +382,7 @@ namespace Maps
             { "ViCo", "Vi", null, "Viyard Concourse" },
             { "XXXX", "Xx", null, "Unknown" },
             { "ZhCa", "Ca", "Zh", "Zhodani Consulate, Colonnade province" },
-            { "ZhCo", "Zh", "Zh", "Zhodani Consulate" }, // Undetermined Province
+            { "ZhCo", "Zh", "Zh", "Zhodani Consulate" }, // undetermined
             { "ZhIN", "Zh", "Zh", "Zhodani Consulate, Iadr Nsobl province" },
             { "ZyCo", "Zc", null, "Zydarian Codominion" },
         };
