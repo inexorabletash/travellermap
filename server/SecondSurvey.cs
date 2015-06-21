@@ -249,6 +249,7 @@ namespace Maps
         }
         private static T5Allegiances s_t5Allegiances = new T5Allegiances {
             // T5Code, LegacyCode, BaseCode, Name
+            // Allegiance Table Begin
             { "AkUn", "Ak", null, "Akeena Union" },
             { "AlCo", "Al", null, "Altarean Confederation" },
             { "AnTC", "Ac", null, "Anubian Trade Coalition" },
@@ -305,18 +306,18 @@ namespace Maps
             { "HvFd", "Hv", "Hv", "Hiver Federation" },
             { "HyLe", "Hy", null, "Hyperion League" },
             { "IHPr", "IS", null, "I'Sred*Ni Heptad Protectorate" },
-            { "ImAp", "Im", "Im", "Third Imperium, Amec Protectorate" },
-            { "ImDa", "Im", "Im", "Third Imperium, Domain of Antares" },
-            { "ImDc", "Im", "Im", "Third Imperium, Domain of Sylea" },
-            { "ImDd", "Im", "Im", "Third Imperium, Domain of Deneb" },
-            { "ImDg", "Im", "Im", "Third Imperium, Domain of Gateway" },
-            { "ImDi", "Im", "Im", "Third Imperium, Domain of Ilelish" },
-            { "ImDs", "Im", "Im", "Third Imperium, Domain of Sol" },
-            { "ImDv", "Im", "Im", "Third Imperium, Domain of Vland" },
-            { "ImLa", "Im", "Im", "Third Imperium, League of Antares" },
-            { "ImLu", "Im", "Im", "Third Imperium, Luriani Cultural Association" },
-            { "ImSy", "Im", "Im", "Third Imperium, Sylean Worlds" },
-            { "ImVd", "Ve", "Im", "Third Imperium, Vegan Autonomous District" },
+            { "ImAp", "Im", "Im", "Third Imperium, Amec Protectorate" }, // (Dagu)
+            { "ImDa", "Im", "Im", "Third Imperium, Domain of Antares" }, // (Anta/Empt/Lish)
+            { "ImDc", "Im", "Im", "Third Imperium, Domain of Sylea" }, // (Core/Delp/Forn/Mass)
+            { "ImDd", "Im", "Im", "Third Imperium, Domain of Deneb" }, // (Dene/Reft/Spin/Troj)
+            { "ImDg", "Im", "Im", "Third Imperium, Domain of Gateway" }, // (Glim/Hint/Ley)
+            { "ImDi", "Im", "Im", "Third Imperium, Domain of Ilelish" }, // (Daib/Ilel/Reav/Verg/Zaru)
+            { "ImDs", "Im", "Im", "Third Imperium, Domain of Sol" }, // (Alph/Dias/Magy/Olde/Solo)
+            { "ImDv", "Im", "Im", "Third Imperium, Domain of Vland" }, // (Corr/Dagu/Gush/Reft/Vlan)
+            { "ImLa", "Im", "Im", "Third Imperium, League of Antares" }, // (Anta)
+            { "ImLu", "Im", "Im", "Third Imperium, Luriani Cultural Association" }, // (Ley/Forn)
+            { "ImSy", "Im", "Im", "Third Imperium, Sylean Worlds" }, // (Core)
+            { "ImVd", "Ve", "Im", "Third Imperium, Vegan Autonomous District" }, // (Solo)
             { "IsDo", "Id", null, "Islaiat Dominate" },
             { "JaPa", "Ja", null, "Jarnac Pashalic" },
             { "JuHl", "Hl", "Jp", "Julian Protectorate, Hegemony of Lorean" },
@@ -385,6 +386,7 @@ namespace Maps
             { "ZhCo", "Zh", "Zh", "Zhodani Consulate" }, // undetermined
             { "ZhIN", "Zh", "Zh", "Zhodani Consulate, Iadr Nsobl province" },
             { "ZyCo", "Zc", null, "Zydarian Codominion" },
+            // Allegiance Table End
         };
 
         private static readonly HashSet<string> s_defaultAllegiances = new HashSet<string> {
