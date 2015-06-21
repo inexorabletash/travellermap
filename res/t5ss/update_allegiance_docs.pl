@@ -19,9 +19,9 @@ my @lines;
 {
     open my $fh, '<', $alleg_path or die;
     while (<$fh>) {
-        next unless m/^(\w\w\w\w)\t(.*)/;
+        next unless m/^(\w\w\w\w)\t(.*?)\t(.*?)\t(.*)/;
         next if $1 eq "Code";
-        push @lines, "      <tr><td><code>$1</code><td>$2";
+        push @lines, "      <tr><td><code>$1</code><td>$4";
     }
     close $fh;
 }
