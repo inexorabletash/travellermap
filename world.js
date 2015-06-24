@@ -291,9 +291,9 @@
     [ /^\[.*\]$/, 'Homeworld'],
     [ /^\(.*\)$/, 'Homeworld'],
     [ /^\(.*\)(\d)$/, 'Homeworld, Population $1$`0%'],
-    [ /^\w\w\w\w0$/, 'Sophont, Population < 10%'],
-    [ /^\w\w\w\w([1-9])$/, 'Sophont, Population $1$`0%'],
-    [ /^\w\w\w\wW$/, 'Sophont, Population 100%']
+    [ /^[A-Z][A-Za-z']{3}0$/, 'Sophont, Population < 10%'],
+    [ /^[A-Z][A-Za-z']{3}([1-9])$/, 'Sophont, Population $1$`0%'],
+    [ /^[A-Z][A-Za-z']{3}W$/, 'Sophont, Population 100%']
   ];
 
   // Legacy Sophont Codes (Aw, A#)
