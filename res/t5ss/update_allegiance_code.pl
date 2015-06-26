@@ -24,9 +24,10 @@ my @lines;
 {
     open my $fh, '<', $alleg_path or die;
     while (<$fh>) {
-        next unless m/^(\w\w\w\w)\t(.*?)\t(.*?)\t(.*)/;
+        chomp;
+        next unless m/^(\w\w\w\w)\t/;
         next if $1 eq "Code";
-        my ($alleg, $legacy, $base, $desc) = ($1, $2, $3, $4);
+        my ($alleg, $legacy, $base, $desc, $location) = split(/\t/);
 
         my $comment;
         if ($desc =~ /^([^(]+) (\(\D[^)]+\))$/ ||

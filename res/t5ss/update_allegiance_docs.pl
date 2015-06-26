@@ -19,9 +19,11 @@ my @lines;
 {
     open my $fh, '<', $alleg_path or die;
     while (<$fh>) {
-        next unless m/^(\w\w\w\w)\t(.*?)\t(.*?)\t(.*)/;
+        chomp;
+        next unless m/^(\w\w\w\w)\t/;
         next if $1 eq "Code";
-        push @lines, "      <tr><td><code>$1</code><td>$4";
+        my ($code, $legacy, $base, $name, $location) = split(/\t/);
+        push @lines, "      <tr><td><code>$code</code><td>$name";
     }
     close $fh;
 }

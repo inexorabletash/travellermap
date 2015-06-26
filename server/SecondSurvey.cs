@@ -268,6 +268,7 @@ namespace Maps
             { "AsT7", "A7", "As", "Aslan Hierate, Tlaukhu control, Ikhtealyo (8), Tlerfearlyo (20), Yehtahikh (24)" },
             { "AsT8", "A8", "As", "Aslan Hierate, Tlaukhu control, Seieakh (9), Akatoiloh (18), We'okunir (29)" },
             { "AsT9", "A9", "As", "Aslan Hierate, Tlaukhu control, Aokhalte (10), Sahao' (21), Ouokhoi (26)" },
+            { "AsTA", "Ta", "As", "Tealou Arlaoh" }, // (Aslan independent clan, non-outcast)
             { "AsTv", "As", "As", "Aslan Hierate, Tlaukhu vassal clan dominates" },
             { "AsTz", "As", "As", "Aslan Hierate, Zodia clan" }, // (Tralyeaeawi vassal)
             { "AsVc", "As", "As", "Aslan Hierate, vassal clan dominates" },
@@ -291,10 +292,12 @@ namespace Maps
             { "DiWb", "Dw", null, "Die Weltbund" },
             { "DuCf", "Cd", null, "Confederation of Duncinae" },
             { "FCSA", "Fc", null, "Four Corners Sovereign Array" },
+            { "FeAm", "FA", null, "Federation of Amil" },
             { "FeHe", "Fh", null, "Federation of Heron" },
             { "FlLe", "Fl", null, "Florian League" },
             { "GaFd", "Ga", null, "Galian Federation" },
             { "GaRp", "Gr", null, "Gamma Republic" },
+            { "GdKa", "Rm", null, "Grand Duchy of Kalradin" },
             { "GdMh", "Ma", null, "Grand Duchy of Marlheim" },
             { "GdSt", "Gs", null, "Grand Duchy of Stoner" },
             { "GeOr", "Go", null, "Gerontocracy of Ormine" },
@@ -306,18 +309,18 @@ namespace Maps
             { "HvFd", "Hv", "Hv", "Hiver Federation" },
             { "HyLe", "Hy", null, "Hyperion League" },
             { "IHPr", "IS", null, "I'Sred*Ni Heptad Protectorate" },
-            { "ImAp", "Im", "Im", "Third Imperium, Amec Protectorate" }, // (Dagu)
-            { "ImDa", "Im", "Im", "Third Imperium, Domain of Antares" }, // (Anta/Empt/Lish)
-            { "ImDc", "Im", "Im", "Third Imperium, Domain of Sylea" }, // (Core/Delp/Forn/Mass)
-            { "ImDd", "Im", "Im", "Third Imperium, Domain of Deneb" }, // (Dene/Reft/Spin/Troj)
-            { "ImDg", "Im", "Im", "Third Imperium, Domain of Gateway" }, // (Glim/Hint/Ley)
-            { "ImDi", "Im", "Im", "Third Imperium, Domain of Ilelish" }, // (Daib/Ilel/Reav/Verg/Zaru)
-            { "ImDs", "Im", "Im", "Third Imperium, Domain of Sol" }, // (Alph/Dias/Magy/Olde/Solo)
-            { "ImDv", "Im", "Im", "Third Imperium, Domain of Vland" }, // (Corr/Dagu/Gush/Reft/Vlan)
-            { "ImLa", "Im", "Im", "Third Imperium, League of Antares" }, // (Anta)
-            { "ImLu", "Im", "Im", "Third Imperium, Luriani Cultural Association" }, // (Ley/Forn)
-            { "ImSy", "Im", "Im", "Third Imperium, Sylean Worlds" }, // (Core)
-            { "ImVd", "Ve", "Im", "Third Imperium, Vegan Autonomous District" }, // (Solo)
+            { "ImAp", "Im", "Im", "Third Imperium, Amec Protectorate" },
+            { "ImDa", "Im", "Im", "Third Imperium, Domain of Antares" },
+            { "ImDc", "Im", "Im", "Third Imperium, Domain of Sylea" },
+            { "ImDd", "Im", "Im", "Third Imperium, Domain of Deneb" },
+            { "ImDg", "Im", "Im", "Third Imperium, Domain of Gateway" },
+            { "ImDi", "Im", "Im", "Third Imperium, Domain of Ilelish" },
+            { "ImDs", "Im", "Im", "Third Imperium, Domain of Sol" },
+            { "ImDv", "Im", "Im", "Third Imperium, Domain of Vland" },
+            { "ImLa", "Im", "Im", "Third Imperium, League of Antares" },
+            { "ImLu", "Im", "Im", "Third Imperium, Luriani Cultural Association" },
+            { "ImSy", "Im", "Im", "Third Imperium, Sylean Worlds" },
+            { "ImVd", "Ve", "Im", "Third Imperium, Vegan Autonomous District" },
             { "IsDo", "Id", null, "Islaiat Dominate" },
             { "JaPa", "Ja", null, "Jarnac Pashalic" },
             { "JuHl", "Hl", "Jp", "Julian Protectorate, Hegemony of Lorean" },
@@ -337,9 +340,9 @@ namespace Maps
             { "MiCo", "Mi", null, "Mische Conglomerate" },
             { "MrCo", "MC", null, "Mercantile Concord" },
             { "NaAs", "As", "As", "Non-Aligned, Aslan-dominated" }, // (outside Hierate)
-            { "NaHu", "Na", null, "Non-Aligned, Human-dominated" },
+            { "NaHu", "Na", "Na", "Non-Aligned, Human-dominated" },
             { "NaVa", "Va", null, "Non-Aligned, Vargr-dominated" },
-            { "NaXX", "Na", null, "Non-Aligned, unclaimed" },
+            { "NaXX", "Na", "Na", "Non-Aligned, unclaimed" },
             { "OcWs", "Ow", null, "Outcasts of the Whispering Sky" },
             { "OlWo", "Ow", null, "Old Worlds" },
             { "PiFe", "Pi", null, "Pionier Fellowship" },
@@ -357,7 +360,6 @@ namespace Maps
             { "SwCf", "Sw", null, "Sword Worlds Confederation" },
             { "SwFW", "Sw", null, "Swanfei Free Worlds" },
             { "SyRe", "Sy", null, "Syzlin Republic" },
-            { "TeAr", "Ta", "As", "Tealou Arlaoh" }, // (Aslan independent clan, non-outcast)
             { "TeCl", "Tc", null, "Tellerian Cluster" },
             { "TrCo", "Tr", null, "Trindel Confederacy" },
             { "TrDo", "Td", null, "Trelyn Domain" },
