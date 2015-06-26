@@ -1826,102 +1826,12 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <DataFile Author="Martin J. Dougherty and Hunter Gordon" Source="Traveller 5 Second Survey" Era="1105" Type="TabDelimited">Glimmerdrift.tab</DataFile>
     <MetadataFile>Glimmerdrift.xml</MetadataFile>
   </Sector>
-  <Sector Abbreviation="Cruc" Tags="Unreviewed">
+  <Sector Abbreviation="Cruc" Tags="InReview">
     <Y>1</Y>
     <X>3</X>
     <Name>Crucis Margin</Name>
-    <DataFile Author="Martin J. Dougherty and Hunter Gordon" Publisher="QuickLink Interactive" Source="Gateway to Destiny" Ref="http://dotclue.org/t20/" Era="1000">CrucisMargin.sec</DataFile>
-    <Allegiances Publisher="QuickLink Interactive" Source="Gateway to Destiny" Era="1000">
-      <Allegiance Code="GT">Glimmerdrift Trade Consortium</Allegiance>
-      <Allegiance Code="CK">Corporate Republic of Kobe</Allegiance>
-      <Allegiance Code="FA">Free and Holy Federation of Amil</Allegiance>
-      <Allegiance Code="Go">Greater Osaka</Allegiance>
-      <Allegiance Code="Hc">Hiver Client</Allegiance>
-      <Allegiance Code="Kc">K'Kree Client</Allegiance>
-      <Allegiance Code="KC">Katowice Conquest</Allegiance>
-      <Allegiance Code="KD">Kafoe Dominate</Allegiance>
-      <Allegiance Code="KW">Karhyri Worlds</Allegiance>
-      <Allegiance Code="LT">Lords of Thunder</Allegiance>
-      <Allegiance Code="MC">Mercantile Concord</Allegiance>
-      <Allegiance Code="Mi">Mische Conglomerate</Allegiance>
-      <Allegiance Code="Oe">Empire of Olduvai</Allegiance>
-      <Allegiance Code="Ow">Old Worlds</Allegiance>
-      <Allegiance Code="Oy">Oytrip of Tubroyllufotyusk</Allegiance>
-      <Allegiance Code="Rh">The Reach</Allegiance>
-      <Allegiance Code="Rm">Raidermarch</Allegiance>
-      <Allegiance Code="Sy">Syzlin Republic</Allegiance>
-    </Allegiances>
-    <Borders>
-      <Border Allegiance="Mi" Color="darkred">
-        0601 0702 0801 0901 0902 0903 0904 0804 0704 0703 0702 0601
-      </Border>
-      <Border Allegiance="FA" Color="olivedrab">
-        1502 1601 1701 1801 1902 1802 1702 1602 1502
-      </Border>
-      <Border Allegiance="Rm" Color="darkkhaki">
-        0214 0314 0413 0412 0413 0514 0614 0615 0616 0617 0517 0416 0316 0215 0214
-      </Border>
-      <Border Allegiance="KD" Color="white">
-        1117 1217 1117
-      </Border>
-      <Border Allegiance="Ow" Color="darkslategray">
-        1516 1616 1717 1816 1817 1918 2018 2019 2020 2021 2122 2021 1922 1822 1722 1622 1523 1522 1521 1520 1519 1518 1517 1516
-      </Border>
-      <Border Allegiance="KC" Color="darkblue">
-        1813 1913 2012 2013 2114 2214 2215 2316 2215 2116 2016 2015 2014 1914 1813
-      </Border>
-      <Border Allegiance="MC" Color="purple">
-        2405 2505 2504 2603 2602 2702 2701 2801 2902 2903 3003 3104 3004 3005 3006 2907 2908 2808 2809 2810 2811 2812 2813 2713 2612 2611 2610 2609 2608 2508 2407 2406 2405
-      </Border>
-      <Border Allegiance="LT" Color="hotpink">
-        3101
-      </Border>
-      <Border Allegiance="GT" Color="darkgreen" ShowLabel="false">
-        0121
-      </Border>
-      <Border Allegiance="GT" Color="darkgreen" ShowLabel="false">
-        0222
-      </Border>
-      <Border Allegiance="CK" Color="white">
-        0225 0326 0225
-      </Border>
-      <Border Allegiance="Go" Color="white">
-        0627 0727 0827 0727 0627
-      </Border>
-      <Border Allegiance="Sy" Color="darkblue">
-        0729 0829 0929 1029 1130 1131 1132 1133 1233 1134 1135 1035 1036 1037 1038 1037 0937 0836 0736 0835 0834 0833 0832 0831 0830 0829 0729
-      </Border>
-      <Border Allegiance="KW" Color="darkkhaki">
-        0140 0239 0238 0239 0340 0439 0540 0640 0540 0440 0340 0240 0140
-      </Border>
-      <Border Allegiance="Oy" Color="darkred">
-        2623
-      </Border>
-      <Border Allegiance="Rh" Color="orange">
-        2329 2428 2528 2627 2728 2627 2528 2428 2329
-      </Border>
-      <Border Allegiance="Oe" Color="darkslategray">
-        2638 2738 2638
-      </Border>
-    </Borders>
-    <Subsectors Source="Gateway to Destiny">
-      <Subsector Index="A">Ostermann</Subsector>
-      <Subsector Index="B">Vandir</Subsector>
-      <Subsector Index="C">Outrun</Subsector>
-      <Subsector Index="D">Chin Shan</Subsector>
-      <Subsector Index="E">Raidermarch</Subsector>
-      <Subsector Index="F">NewSun</Subsector>
-      <Subsector Index="G">Old Worlds</Subsector>
-      <Subsector Index="H">Peril's Edge</Subsector>
-      <Subsector Index="I">Kobe</Subsector>
-      <Subsector Index="J">Bright Heavens</Subsector>
-      <Subsector Index="K">Reach</Subsector>
-      <Subsector Index="L">No Return</Subsector>
-      <Subsector Index="M">Syzlin</Subsector>
-      <Subsector Index="N">Taitin</Subsector>
-      <Subsector Index="O">Scatter</Subsector>
-      <Subsector Index="P">Kixum</Subsector>
-    </Subsectors>
+    <DataFile Author="Martin J. Dougherty and Hunter Gordon" Source="Traveller 5 Sector Survey" Era="1105" Type="TabDelimited">Crucis Margin.tab</DataFile>
+    <MetadataFile>Crucis Margin.xml</MetadataFile>
   </Sector>
   <Sector>
     <Y>1</Y>
