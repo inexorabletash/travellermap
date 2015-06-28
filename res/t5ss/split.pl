@@ -1,6 +1,7 @@
 #!/usr/bin/env perl
 use strict;
 use FileHandle;
+use File::Basename;
 
 my %sectors = (
     Akti => "Aktifao",
@@ -54,9 +55,21 @@ my %sectors = (
 
 my %files;
 
-my $line = <STDIN>;
-chomp $line;
+my $dir = dirname($0);
+
+my $in_path = $dir . '/world_data.tsv';
+open my $in, '<', $in_path or die;
+my $line;
+
+$line = <$in>; chomp $line; $line =~ s/\s+$//;
+die "Unexpected header: $line\n" unless $line =~ /^WORLD DATA$/;
+
+$line = <$in>; chomp $line; $line =~ s/\s+$//;
+die "Unexpected header: $line\n" unless $line =~ /^$/;
+
+$line = <$in>; chomp $line;
 die "Unexpected header: $line\n" unless $line =~ /^Sector\tHex\tName\tUWP\t/;
+
 my @header = map { trim($_) } split('\t', $line);
 
 my @outheader = (
@@ -108,7 +121,7 @@ sub hexToSS {
     return chr(ord('A') + $ssx + $ssy * 4);
 }
 
-foreach $line (<STDIN>) {
+foreach $line (<$in>) {
     chomp $line;
     my @cols = map { trim($_) } split("\t", $line);
     my %fields = ();
@@ -118,7 +131,7 @@ foreach $line (<STDIN>) {
     my $sec = $fields{'Sector'};
     if (!exists $files{$sec}) {
         die "Unknown sector code: $sec\n" unless exists $sectors{$sec};
-        $files{$sec} = FileHandle->new("> $sectors{$sec}.tab");
+        $files{$sec} = FileHandle->new("> $dir/../Sectors/$sectors{$sec}.tab");
         print { $files{$sec} } join("\t", @outheader), "\n";
     }
 
@@ -133,3 +146,5 @@ foreach $line (<STDIN>) {
     }
     print { $files{$sec} } join("\t", @out), "\n";
 }
+
+close $in;

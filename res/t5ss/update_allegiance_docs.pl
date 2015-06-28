@@ -13,16 +13,28 @@ my $html;
     close $fh;
 }
 
+sub trim ($) {
+    my ($s) = @_;
+    $s =~ s/^\s+//;
+    $s =~ s/\s+$//;
+    return $s;
+}
 
 my $alleg_path = $dir . '/allegiance_codes.tsv';
 my @lines;
 {
     open my $fh, '<', $alleg_path or die;
+
+    my $line = <$fh>; chomp $line; $line = trim($line);
+    die "Unexpected header: $line\n" unless $line =~ /^ALLEGIANCES$/;
+    my $line = <$fh>; chomp $line; $line = trim($line);
+    die "Unexpected header: $line\n" unless $line =~ /^$/;
+
     while (<$fh>) {
         chomp;
         next unless m/^(\w\w\w\w)\t/;
         next if $1 eq "Code";
-        my ($code, $legacy, $base, $name, $location) = split(/\t/);
+        my ($code, $legacy, $base, $name, $location) = map { trim($_) } split(/\t/);
         push @lines, "      <tr><td><code>$code</code><td>$name";
     }
     close $fh;
