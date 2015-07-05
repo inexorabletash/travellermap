@@ -14,7 +14,7 @@ Useful Links
 ------------
 
 * The site itself: http://travellermap.com
-* How the site works: http://travellermap.com/doc/info
+* How the site works: http://travellermap.com/doc/about
 * API documentation: http://travellermap.com/doc/api
 * Credits for the data: http://travellermap.com/doc/credits
 * Blog: http://travellermap.blogspot.com
