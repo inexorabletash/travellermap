@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<Sector Tags="Apocryphal">
+<Sector Tags="InReview">
   <Y>0</Y>
   <X>-5</X>
   <Name>The Beyond</Name>
   <Name>Beyond</Name>
   <Name Lang="as">Lerlairlaii</Name>
   <Name Lang="zh">Zhdiakltlatl</Name>
-  <DataFile Author="Donald P. Rapp" Source="Beyond" Publisher="Paranoia Press" Ref="http://farfuture.net/Contents%20CDROM%20Apocrypha-2.pdf">beyond.sec</DataFile>
-
+  <DataFile Author="Donald P. Rapp and Chuck Kallenbach II" Source="Traveller 5 Second Survey" Era="1105" Type="TabDelimited">Beyond.tab</DataFile>
   <Subsectors>
     <Subsector Index="A">Mapepire</Subsector>
     <Subsector Index="B">Liberty Hall</Subsector>
@@ -28,18 +27,11 @@
   </Subsectors>
 
   <Allegiances>
-    <Allegiance Code="Es">Eslayt Magistracy</Allegiance>
-    <Allegiance Code="IS">I'Sred*Ni Heptad Protectorate</Allegiance>
-    <Allegiance Code="Ms">Ma'Gnar Primarchic (associate faction)</Allegiance>
-    <Allegiance Code="MF">Ma'Gnar Primarchic</Allegiance>
-    <Allegiance Code="Ma">Mapepire Cluster</Allegiance>
-    <Allegiance Code="Dw">Die Weltbund</Allegiance>
-    <Allegiance Code="Zc">Zydarian Codomiunum</Allegiance>
-
     <Allegiance Code="PL">Parallel Lines</Allegiance>
     <Allegiance Code="BL">Beaufort Lines</Allegiance>
     <Allegiance Code="OC">Other Commercial Lines</Allegiance>
   </Allegiances>
+
   <Stylesheet>
     route.Xboat { color: green; }
     route.BL { color: red; style: dotted; }
@@ -47,14 +39,15 @@
   </Stylesheet>
 
   <Borders>
-    <Border Allegiance="As" LabelPosition="0436" Color="yellow">0134 0135 0235 0336 0435 0336 0236 0237 0338 0237 0137 0136 0135 0134 </Border>
-    <Border Allegiance="As" LabelPosition="2633" Color="yellow">2039 2139 2138 2137 2237 2337 2436 2536 2635 2634 2534 2434 2534 2633 2733 2832 2932 2931 2930 2929 3028 3128 3227 3226 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2040 2039 </Border>
-    <Border Allegiance="Dw" LabelPosition="1704" Color="tan">1402 1502 1501 1502 1503 1603 1703 1802 1902 2001 2101 2001 2002 2003 2004 2005 2006 1907 1908 1909 1808 1709 1608 1508 1507 1506 1505 1504 1503 1402 </Border>
-    <Border Allegiance="Es" LabelPosition="0214" WrapLabel="true" Color="tan">0011 0112 0113 0213 0114 0113 0112 0011</Border>
-    <Border Allegiance="IS" LabelPosition="1821" WrapLabel="true" Color="cyan">1624 1724 1824 1924 1923 2022 2122 2121 2120 2019 2119 2120 2121 2221 2322 2422 2522 2621 2622 2523 2423 2424 2425 2326 2327 2427 2428 2529 2428 2328 2227 2128 2028 1929 1930 2030 1930 1929 1828 1729 1628 1627 1727 1726 1625 1624 </Border>
-    <Border Allegiance="Ma" LabelPosition="0406" WrapLabel="true" Color="white">0102 0202 0302 0402 0502 0602 0603 0604 0605 0505 0405 0305 0205 0105 0104 0103 0102 </Border>
-    <Border Allegiance="MF" LabelPosition="2706" Color="hotpink">2310 2409 2509 2608 2708 2707 2806 2906 2905 2904 2903 3002 3103 3104 3105 3106 3107 3207 3208 3209 3110 3010 3011 3012 2912 2811 2712 2611 2512 2411 2311 2310 </Border>
-    <Border Allegiance="Zc" LabelPosition="1330" WrapLabel="true" Color="pink">0530 0629 0729 0828 0929 1029 1130 1131 1031 0932 0832 0732 0631 0531 0530 </Border>
+    <Border Allegiance="As" LabelPosition="2633">2039 2139 2138 2137 2237 2337 2436 2536 2635 2735 2736 2836 2936 2935 2934 3033 3032 3031 3030 3029 2929 3028 3128 3227 3226 3326 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2040 2039 </Border>
+    <Border Allegiance="CAEM" LabelPosition="0214" WrapLabel="true" Color="tan">0011 0112 0113 0213 0114 0113 0112 0011 </Border>
+    <Border Allegiance="DiWb" LabelPosition="1704" Color="tan">1402 1502 1501 1502 1503 1603 1703 1802 1902 2001 2101 2001 2002 2003 2004 2005 2006 1907 1908 1909 1808 1709 1608 1508 1507 1506 1505 1504 1503 1402 </Border>
+    <Border Allegiance="FlLe" Color="green">2717 2816 2916 2915 2914 2913 3013 3113 3112 3011 3111 3210 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3318 3217 3117 3016 2916 2816 2717 </Border>
+    <Border Allegiance="IHPr" LabelPosition="1821" WrapLabel="true" Color="cyan">1624 1724 1824 1924 1923 2022 2122 2121 2120 2019 2119 2120 2121 2221 2322 2422 2522 2621 2622 2523 2423 2424 2425 2326 2327 2427 2428 2529 2428 2328 2227 2128 2028 1929 1930 2030 1930 1929 1828 1729 1628 1627 1727 1726 1625 1624 </Border>
+    <Border Allegiance="JaPa" LabelPosition="0436" Color="pink">0033 0134 0135 0235 0336 0435 0336 0236 0237 0338 0237 0137 0036 0035 0034 0033 </Border>
+    <Border Allegiance="MaCl" LabelPosition="0406" WrapLabel="true" Color="white">0102 0202 0303 0402 0502 0602 0603 0604 0605 0505 0405 0305 0205 0105 0104 0103 0102 </Border>
+    <Border Allegiance="MaPr" LabelPosition="2706" Color="hotpink">2512 2611 2711 2710 2609 2608 2607 2707 2806 2906 3005 3004 3003 3002 3003 3004 3005 3006 3107 3007 3008 3009 3110 3209 3110 3010 2911 2912 3012 2912 2811 2712 2611 2512 </Border>
+    <Border Allegiance="ZyCo" LabelPosition="1330" WrapLabel="true" Color="pink">0530 0629 0729 0828 0929 1029 1130 1131 1031 0932 0832 0732 0631 0531 0530 </Border>
   </Borders>
 
   <Routes>
