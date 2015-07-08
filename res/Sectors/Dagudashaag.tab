@@ -24,7 +24,7 @@ Dagu	E	0213	Aaki	B434553-D		Ni		123	ImDv	G7 V	{ 1 }	(C45-2)	[262A]	B	9	192
 Dagu	E	0214	Cablu	D548543-7		Ag Ni		100	ImDv	K1 V	{ -2 }	(742-5)	[2324]	BC	13	28
 Dagu	E	0216	Oewni	B564466-9	S	Ni Pa Mr		422	ImDv	K5 V M2 V M5 V	{ 0 }	(A33-1)	[3448]	Bc	7	81
 Dagu	E	0217	Fau	B423766-A		Na Po Pi ZiadW O:0320		300	ImDv	K5 V M7 V	{ 2 }	(96B+1)	[6949]	BD	9	594
-Dagu	I	0222	Maq'appav	B200310-D	S	Lo Va ZiadW Mr		914	ImAp	M2 V	{ 1 }	(A21-3)	[1418]	B	9	14
+Dagu	I	0222	Maq'appav	B200310-D	S	Lo Va ZiadW		914	ImAp	M2 V	{ 1 }	(A21-3)	[1418]	B	9	14
 Dagu	I	0223	Shammud	C546154-9		Lo		603	ImAp	K5 IV M1 V	{ -1 }	(611-3)	[1137]	B	10	4
 Dagu	I	0227	Ekhor	C7A8588-9		Fl Ni		203	ImAp	M2 V	{ -1 }	(A43-1)	[5459]	B	8	108
 Dagu	I	0228	Kaattji	C545230-9	S	Lo		603	ImAp	M2 V	{ -1 }	(711-5)	[1114]	B	12	4
@@ -86,7 +86,7 @@ Dagu	M	0539	Tarija	B20056B-C		Ni Va O:0240		810	ImDv	M1 III	{ 1 }	(845+3)	[767E]
 Dagu	M	0540	Shanim	B000661-C	N	As Na Ni Va Mr		803	ImDv	G1 V	{ 1 }	(B55-3)	[2718]	B	7	193
 Dagu	A	0601	Ninaan	C544543-9		Ag Ni		235	ImDv	M2 V M1 V	{ 0 }	(F44-3)	[2526]	BC	12	168
 Dagu	A	0604	Seminary	C422425-B	S	He Ni Po Da	A	900	ImDv	M1 V	{ 0 }	(633-2)	[2439]	B	11	43
-Dagu	A	0610	Zishku	C7A5776-9		Fl		524	ImDv	K0 V	{ 0 }	(F69-1)	[6748]	B	9	729
+Dagu	A	0610	Zishku	C7A5776-9		Fl Pz	A	524	ImDv	K0 V	{ 0 }	(F69-1)	[6748]	B	9	729
 Dagu	E	0613	Niirkhi	B657794-A	W	Ag Ga		205	ImDv	G1 V M2 V	{ 4 }	(E6D+2)	[5B38]	BCf	9	2,184
 Dagu	E	0614	Gladsheim	B9D5102-D	N	Lo		100	ImDv	K9 V	{ 1 }	(311-3)	[1219]	B	9	2
 Dagu	E	0615	Gaae	C540538-7	S	De He Ni Po (Ka Kelaree)		100	ImDv	K4 V M1 V	{ -2 }	(742-2)	[5357]	B	13	45
@@ -161,7 +161,7 @@ Dagu	J	0930	Lemimamur	D8B4210-8	S	Fl Lo		321	ImAp	M3 V M9 V	{ -3 }	(711-5)	[1113
 Dagu	N	0931	Liishuga	D66388C-6	S	Ri Ph		200	ImDv	K1 V	{ -1 }	(A76+2)	[B789]	BCe	4	840
 Dagu	N	0932	Sii	B888540-A	S	Ag Ni Pr		312	ImDv	M1 V	{ 2 }	(A46-2)	[1715]	BcC	12	192
 Dagu	N	0933	Mishu	BAD5348-A		Lo		603	ImDv	G7 V	{ 1 }	(821+1)	[345A]	B	14	16
-Dagu	N	0935	Akiva	A98A869-D	N	Ri Wa Ph (Scanian)6 (Aquan)3		105	ImDv	G8 V M2 V	{ 3 }	(F7E+4)	[9B6E]	BCe	16	5,880
+Dagu	N	0935	Akiva	A98A879-D	N	Ri Wa Ph (Scanian)6 (Aquan)3		105	ImDv	G8 V M2 V	{ 3 }	(F7E+4)	[9B6E]	BCe	16	5,880
 Dagu	N	0936	Abbayi	C682343-8		Lo Varg3		804	ImDv	K2 V M0 V	{ -2 }	(921-5)	[1125]	B	7	9
 Dagu	N	0940	Uaam	A579546-E		Ni (Jala'Lak)		814	ImDv	M2 V	{ 1 }	(C45+1)	[464D]	B	8	240
 Dagu	B	1004	Ikiir	A5A4304-F	N	Fl Lo		810	ImDv	M1 V	{ 1 }	(621-1)	[143D]	B	13	11
@@ -418,7 +418,7 @@ Dagu	O	2436	Amamni	D430300-A		De Lo Po		411	ImDv	M5 V	{ -1 }	(721-5)	[1215]	B	8	
 Dagu	O	2437	Ghesaak	D100400-B	S	Ni Va		903	ImDv	G4 V	{ -1 }	(932-5)	[1316]	B	12	27
 Dagu	O	2439	Gesalt	D663422-7		Ni		423	ImDv	G4 V	{ -3 }	(631-5)	[1113]	B	9	9
 Dagu	O	2440	Silk	C554377-9	S	Lo		703	ImDv	K9 V	{ -1 }	(821-1)	[3259]	B	11	14
-Dagu	D	2505	Urpa	B776565-B		Ag Ni (Urpayans)		803	ImDv	K4 V	{ 2 }	(A46+1)	[3739]	BC	14	240
+Dagu	D	2505	Urpa	B776555-B		Ag Ni (Urpayans)		803	ImDv	K4 V	{ 2 }	(A46+1)	[3739]	BC	14	240
 Dagu	D	2506	Shuakhuar	B5728BD-A	N	He Ph Pi		600	ImDv	M2 V	{ 2 }	(A7B+5)	[CA9E]	BDe	12	3,850
 Dagu	H	2512	Lashgaiika	B420753-D	N	De He Na Po Pi		700	ImDv	K2 V	{ 2 }	(96D-1)	[492A]	BD	14	632
 Dagu	H	2513	Luguk	D8A4689-8	S	Fl Ni		202	ImDv	G4 V M4 V	{ -3 }	(A51-2)	[7369]	B	17	40
