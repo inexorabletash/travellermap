@@ -1485,11 +1485,11 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
       <Border Allegiance="Iz" Color="green">1600 1700 1800 1900 2000 2100 2200 2300 2400 2401 2402 2403 2304 2204 2105 2005 1906 1805 1804 1704 1603 1602 1601 1600</Border>
     </Borders>
   </Sector>
-  <Sector Abbreviation="Vang" Tags="Apocryphal">
+  <Sector Abbreviation="Vang" Tags="InReview">
     <Y>0</Y>
     <X>-6</X>
     <Name>Vanguard Reaches</Name>
-    <DataFile Author="Chuck Kallenbach II" Publisher="Paranoia Press" Source="Vanguard Reaches" Ref="http://farfuture.net/Contents%20CDROM%20Apocrypha-2.pdf">Vanguard Reaches.sec</DataFile>
+    <DataFile Author="Chuck Kallenbach II"  Source="Traveller 5 Second Survey" Era="1105" Type="TabDelimited">Vanguard Reaches.tab</DataFile>
     <MetadataFile Author="Chuck Kallenbach II" Publisher="Paranoia Press" Source="Vanguard Reaches" Ref="http://farfuture.net/Contents%20CDROM%20Apocrypha-2.pdf">Vanguard Reaches.xml</MetadataFile>
   </Sector>
   <Sector Abbreviation="Beyo" Tags="InReview">
