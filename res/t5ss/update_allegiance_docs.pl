@@ -35,7 +35,8 @@ my @lines;
         next unless m/^(\w\w\w\w)\t/;
         next if $1 eq "Code";
         my ($code, $legacy, $base, $name, $location) = map { trim($_) } split(/\t/);
-        push @lines, "      <tr><td><code>$code</code><td>$name";
+        $location =~ s|/|/&#x200B;|g;
+        push @lines, "      <tr><td><code>$code</code><td>$name<td>$location";
     }
     close $fh;
 }
