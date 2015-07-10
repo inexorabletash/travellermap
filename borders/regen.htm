@@ -13,8 +13,6 @@ var SECTOR_WIDTH = 32, SECTOR_HEIGHT = 40;
 
 var ALLEGIANCE_COLORS = {
   'Im':   'red',
-  'CsIm': 'pink',
-  'CsZh': 'lightblue',
   'As':   'yellow',
   'Kk':   'green',
   'Va':   'olive',
@@ -25,9 +23,6 @@ var ALLEGIANCE_COLORS = {
   'DaCf': 'lightblue',
   'SwCf': 'blue',
   'Na':   'transparent',
-  'NaHu': 'transparent',
-  'NaVa': 'transparent',
-  'NaXX': 'transparent'
 };
 
 function colorFor(alleg) {
@@ -35,34 +30,57 @@ function colorFor(alleg) {
   return ALLEGIANCE_COLORS[alleg];
 }
 
+// All later entries in each set are mapped to the first
 var ALLEGIANCE_SETS = [
-    ['Na', // Non-aligned
-     'Dr', // Droyne
-     '--', // Unknown
-     'Va', // Vargr
-     'va', // "
-     'Cs', // Client State
-     'Cv', // Vargr client state
-     'cv', // "
-     'J-' // Julian Protectorate
-    ],
 
-    ['Im', // Classic Imperium
-     'ImDa', // Domain of Antares (Anta/Empt/Lish)
-     'ImDc', // Domain of Sylea (Core/Delp/Forn/Mass)
-     'ImDd', // Domain of Deneb (Dene/Reft/Spin/Troj)
-     'ImDg', // Domain of Gateway (Glim/Hint/Ley)
-     'ImDi', // Domain of Ilelish (Daib/Ilel/Reav/Verg/Zaru)
-     'ImDs', // Domain of Sol (Alph/Dias/Magy/Olde/Solo)
-     'ImDv', // Domain of Vland (Corr/Dagu/Gush/Reft/Vlan)
-     'ImLa', // League of Antares (Anta)
-     'ImLu', // Luriani Cultural Association (Ley/Forn)
-     'ImSy'  // Sylean Worlds (Core)
-    ],
+  // Non-Aligned (no borders)
+  ['Na', // Non-aligned
+   'Dr', // Droyne
+   '--', // Unknown
+   'Va', // Vargr
+   'va', // "
+   'Cs', // Client State
+   'Cv', // Vargr client state
+   'cv', // "
+   'J-', // Julian Protectorate
 
-    ['As', 'A0', 'A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9'], // Aslan clans
-    ['Uc', 'C1', 'C2', 'C3', 'C4'] // Union Crucis (Judges Guild)
-  ];
+   'NaAs', 'NaHu', 'NaVa', 'NaXX',
+   'XXXX',
+   'CsCa', 'CsHv', 'CsIm', 'CsMP', 'CsZh',
+  ],
+
+  // Classic Imperium
+  ['Im',
+   //'ImAp', // Amec Protectorate (Dagu)
+   'ImDa', // Domain of Antares (Anta/Empt/Lish)
+   'ImDc', // Domain of Sylea (Core/Delp/Forn/Mass)
+   'ImDd', // Domain of Deneb (Dene/Reft/Spin/Troj)
+   'ImDg', // Domain of Gateway (Glim/Hint/Ley)
+   'ImDi', // Domain of Ilelish (Daib/Ilel/Reav/Verg/Zaru)
+   'ImDs', // Domain of Sol (Alph/Dias/Magy/Olde/Solo)
+   'ImDv', // Domain of Vland (Corr/Dagu/Gush/Reft/Vlan)
+   'ImLa', // League of Antares (Anta)
+   //'ImLu', // Luriani Cultural Association (Ley/Forn)
+   //'ImSy', // Sylean Worlds (Core)
+   //'ImVd' Vegan Autonomous District (Solo)
+  ],
+
+  ['As', 'A0', 'A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9',
+   'AsIf', 'AsMw', 'AsOf', 'AsSc', 'AsSF', 'AsT0', 'AsT1', 'AsT2',
+   'AsT3', 'AsT4', 'AsT5', 'AsT6', 'AsT7', 'AsT8', 'AsT9', 'AsTA',
+   'AsTv', 'AsTz', 'AsVc', 'AsWc', 'AsXX'
+  ], // Aslan clans
+
+  ['Uc', 'C1', 'C2', 'C3', 'C4'], // Union Crucis (Judges Guild)
+  ['SoCf', 'SoNS', 'SoRD', 'SoWu', 'So'], // Solomani Confederation
+  ['ZhCo', 'ZhCa', 'ZhIN', 'Zh'], // Zhodani Consulate
+
+  // Comment out to get member state borders
+  ['CA', 'CAEM', 'CAin', 'CAKT'], // Comsentient Alliance (Beyo/Vang)
+
+  //Julian Protectorate
+  ['JuPr', 'JuRu', 'JuHl']
+];
 
 
 
@@ -129,7 +147,16 @@ function updateWalks(map) {
     }
   }
 
+  borders = borders.filter(function(border) {
+    return border.path.some(function(hex) {
+      var x = (Number(hex) / 100) | 0;
+      var y = Number(hex) % 100;
+      return (1 <= x && x <= 32) && (1 <= y && y <= 40);
+    });
+  });
+
   borders.sort(function(a, b) { return a.allegiance < b.allegiance ? -1 : a.allegiance > b.allegiance ? 1 : 0; });
+
 
 
   var html = [];
@@ -158,8 +185,8 @@ function hexContents(x, y, map) {
 
   return "<div class='hexContents' style='background-color: " + color + ";'>" +
            "<span class='hexNumber'>" + hexNumber + "<" + "/span>" +
-	       (occupied ? "<span class='world'>" + alleg + "</span>" : "") +
-	       "<" + "/div>";
+         (occupied ? "<span class='world'>" + alleg + "</span>" : "") +
+         "<" + "/div>";
 }
 
 
@@ -327,17 +354,17 @@ window.onload = function() {
   height: 15px;
   overflow: hidden;
   cursor: pointer;
-	border: solid 1px black;
-	font-size: 6pt;
-	font-family: Univers, Arial, sans-serif;
-	text-align: center;
-	line-height: 100%;
+  border: solid 1px black;
+  font-size: 6pt;
+  font-family: Univers, Arial, sans-serif;
+  text-align: center;
+  line-height: 100%;
 }
 .hexNumber
 {
-	font-size: 3pt;
-	font-family: Univers, Arial, sans-serif;
-	color: gray;
+  font-size: 3pt;
+  font-family: Univers, Arial, sans-serif;
+  color: gray;
   position: absolute;
   left: 0; top: 0;
   width: 100%;
@@ -362,7 +389,7 @@ window.onload = function() {
     overflow-y: auto;
 }
 
-	</style>
+</style>
 
 <div id="status"></div>
 <div id="map" style="position: relative;">
