@@ -89,7 +89,7 @@ namespace Maps
                 if (m_sectors == null)
                     m_sectors = collection;
                 else
-                    m_sectors.Merge(collection);                
+                    m_sectors.Merge(collection);
             }
 
             m_nameMap.Clear();
@@ -126,7 +126,7 @@ namespace Maps
         }
 
         public static SectorMap FromName(string settingName, ResourceManager resourceManager)
-          {
+        {
             if (settingName != SectorMap.DefaultSetting)
                 throw new ArgumentException("Only OTU setting is currently supported.");
 
@@ -140,7 +140,7 @@ namespace Maps
                         new SectorMetafileEntry(@"~/res/sectors.xml", new List<string> { "OTU" } ),
                         new SectorMetafileEntry(@"~/res/faraway.xml", new List<string> { "Faraway" } ),
                         new SectorMetafileEntry(@"~/res/ZhodaniCoreRoute.xml", new List<string> { "ZCR" } )
-                    };                        
+                    };
 
                     s_OTU = new SectorMap(files, resourceManager);
                 }
@@ -205,7 +205,8 @@ namespace Maps
 
         }
 
-        public Sector(Stream stream, string mediaType, ErrorLogger errors)  : this()
+        public Sector(Stream stream, string mediaType, ErrorLogger errors)
+            : this()
         {
             WorldCollection wc = new WorldCollection();
             wc.Deserialize(stream, mediaType, errors);
@@ -247,7 +248,7 @@ namespace Maps
 
         [XmlElement("Product")]
         public MetadataCollection<Product> Products { get { return m_products; } }
-    
+
         public MetadataCollection<Subsector> Subsectors { get { return m_subsectors; } }
         [XmlIgnore]
         public bool SubsectorsSpecified { get { return m_subsectors.Count() > 0; } }
@@ -381,7 +382,8 @@ namespace Maps
 
         public static int QuadrantIndexFor(string label)
         {
-            switch (label.ToLowerInvariant()) {
+            switch (label.ToLowerInvariant())
+            {
                 case "alpha": return 0;
                 case "beta": return 1;
                 case "gamma": return 2;
@@ -414,7 +416,7 @@ namespace Maps
             }
         }
 
-        public void Serialize(ResourceManager resourceManager, TextWriter writer, string mediaType, bool includeMetadata=true, bool includeHeader=true, bool sscoords=false, WorldFilter filter=null)
+        public void Serialize(ResourceManager resourceManager, TextWriter writer, string mediaType, bool includeMetadata = true, bool includeHeader = true, bool sscoords = false, WorldFilter filter = null)
         {
             WorldCollection worlds = GetWorlds(resourceManager);
 
@@ -424,7 +426,7 @@ namespace Maps
             if (mediaType == "TabDelimited")
             {
                 if (worlds != null)
-                    worlds.Serialize(writer, mediaType, includeHeader:includeHeader, filter:filter);
+                    worlds.Serialize(writer, mediaType, includeHeader: includeHeader, filter: filter);
                 return;
             }
 
@@ -440,7 +442,8 @@ namespace Maps
                 writer.WriteLine("# {0},{1}", this.X, this.Y);
 
                 writer.WriteLine();
-                foreach(var name in Names) {
+                foreach (var name in Names)
+                {
                     if (name.Lang != null)
                         writer.WriteLine("# Name: {0} ({1})", name.Text, name.Lang);
                     else
@@ -500,7 +503,7 @@ namespace Maps
             }
 
             // Worlds
-            worlds.Serialize(writer, mediaType, includeHeader:includeHeader, sscoords:sscoords, filter:filter);
+            worlds.Serialize(writer, mediaType, includeHeader: includeHeader, sscoords: sscoords, filter: filter);
         }
 
         // TODO: Move this elsewhere
@@ -534,16 +537,16 @@ namespace Maps
 
                 PointF min = clipPathPoints[0];
                 PointF max = clipPathPoints[0];
-                for (int i = 1; i < clipPathPoints.Length; ++i )
+                for (int i = 1; i < clipPathPoints.Length; ++i)
                 {
                     PointF pt = clipPathPoints[i];
                     if (pt.X < min.X)
                         min.X = pt.X;
-                    if (pt.Y < min.Y) 
+                    if (pt.Y < min.Y)
                         min.Y = pt.Y;
-                    if (pt.X > max.X) 
+                    if (pt.X > max.X)
                         max.X = pt.X;
-                    if (pt.Y > max.Y) 
+                    if (pt.Y > max.Y)
                         max.Y = pt.Y;
                 }
                 this.bounds = new RectangleF(min, new SizeF(max.X - min.X, max.Y - min.Y));
@@ -611,7 +614,8 @@ namespace Maps
         }
 
         private static SectorStylesheet s_defaultStyleSheet;
-        static Sector() {
+        static Sector()
+        {
             Assembly assembly = Assembly.GetExecutingAssembly();
             Stream stream = assembly.GetManifestResourceStream(@"Maps.res.styles.otu.css");
             s_defaultStyleSheet = SectorStylesheet.Parse(new StreamReader(stream));
@@ -812,13 +816,13 @@ namespace Maps
         [XmlAttribute]
         public string Allegiance { get; set; }
 
-        [XmlIgnore,JsonIgnore]
+        [XmlIgnore, JsonIgnore]
         public int[] Path { get; set; }
 
-        [XmlIgnoreAttribute,JsonIgnore]
+        [XmlIgnoreAttribute, JsonIgnore]
         public Point LabelPosition { get; set; }
 
-        [XmlAttribute("LabelPosition"),JsonName("LabelPosition")]
+        [XmlAttribute("LabelPosition"), JsonName("LabelPosition")]
         public string LabelPositionHex
         {
             get { return Astrometrics.PointToHex(LabelPosition); }
@@ -835,7 +839,7 @@ namespace Maps
         public bool ShouldSerialize_Style() { return Style.HasValue; }
 
 
-        [XmlText,JsonName("Path")]
+        [XmlText, JsonName("Path")]
         public string PathString
         {
             get
@@ -879,10 +883,10 @@ namespace Maps
                     LabelPosition = new Point((min.X + max.X + 1) / 2, (min.Y + max.Y + 1) / 2); // "+ 1" to round up
 
                 Extends = (min.X < 1 || min.Y < 1 || max.X > Astrometrics.SectorWidth || max.Y > Astrometrics.SectorHeight);
-            }           
+            }
         }
 
-        [XmlIgnoreAttribute,JsonIgnore]
+        [XmlIgnoreAttribute, JsonIgnore]
         public bool Extends { get; set; }
 
         private BorderPath[] borderPathsCache = new BorderPath[(int)PathUtil.PathType.TypeCount];
@@ -931,9 +935,9 @@ namespace Maps
         public int End { get; set; }
 
         [XmlAttribute("Start"), JsonName("Start")]
-        public string StartHex 
+        public string StartHex
         {
-            get { return Astrometrics.IntToHex(Start); } 
+            get { return Astrometrics.IntToHex(Start); }
             set { Start = Astrometrics.HexToInt(value); }
         }
 
@@ -1042,10 +1046,10 @@ namespace Maps
         [XmlAttribute]
         public string Allegiance { get; set; }
 
-        [XmlIgnoreAttribute,JsonIgnore]
+        [XmlIgnoreAttribute, JsonIgnore]
         public Color Color { get; set; }
 
-        [XmlAttribute("Color"),JsonName("Color")]
+        [XmlAttribute("Color"), JsonName("Color")]
         public string ColorHtml { get { return ColorTranslator.ToHtml(Color); } set { Color = ColorTranslator.FromHtml(value); } }
 
         [XmlAttribute]
