@@ -76,7 +76,7 @@ namespace Maps
         public IList<Sector> Sectors { get { return m_sectors.Sectors; } }
 
         private Dictionary<string, Sector> m_nameMap = new Dictionary<string, Sector>(StringComparer.InvariantCultureIgnoreCase);
-        // TODO: Add Dictionary<Pair<x,y>, Sector> for FromLocation lookups
+        private Dictionary<Point, Sector> m_locationMap = new Dictionary<Point, Sector>();
 
         private SectorMap(List<SectorMetafileEntry> metafiles, ResourceManager resourceManager)
         {
@@ -93,6 +93,7 @@ namespace Maps
             }
 
             m_nameMap.Clear();
+            m_locationMap.Clear();
 
             foreach (var sector in m_sectors.Sectors)
             {
@@ -102,22 +103,17 @@ namespace Maps
                     sector.Merge(metadata);
                 }
 
+                m_locationMap.Add(sector.Location, sector);
+
                 foreach (var name in sector.Names)
                 {
-                    try
-                    {
+                    if (!m_nameMap.ContainsKey(name.Text))
                         m_nameMap.Add(name.Text, sector);
 
-                        // Automatically alias "SpinwardMarches"
-                        string spaceless = name.Text.Replace(" ", "");
-                        if (spaceless != name.Text)
-                            m_nameMap.Add(spaceless, sector);
-                    }
-                    catch (ArgumentException)
-                    {
-                        // If it's already in there, ignore it
-                        // FUTURE: Return a list of candidates
-                    }
+                    // Automatically alias "SpinwardMarches"
+                    string spaceless = name.Text.Replace(" ", "");
+                    if (spaceless != name.Text && !m_nameMap.ContainsKey(spaceless))
+                        m_nameMap.Add(spaceless, sector);
                 }
 
                 if (!String.IsNullOrEmpty(sector.Abbreviation) && !m_nameMap.ContainsKey(sector.Abbreviation))
@@ -186,14 +182,15 @@ namespace Maps
             return sector;
         }
 
-        public Sector FromLocation(Point pt) { return FromLocation(pt.X, pt.Y); }
-        public Sector FromLocation(int x, int y)
+        public Sector FromLocation(int x, int y) { return FromLocation(new Point(x, y)); }
+        public Sector FromLocation(Point pt)
         {
-            if (m_sectors == null)
+            if (m_sectors == null || m_locationMap == null)
                 throw new MapNotInitializedException();
 
-            // TODO: If perf is a concern, replace this with an array (or some such).
-            return m_sectors.Sectors.Where(sector => sector.X == x && sector.Y == y).FirstOrDefault();
+            Sector sector;
+            m_locationMap.TryGetValue(pt, out sector);
+            return sector;
         }
     }
 
@@ -277,7 +274,9 @@ namespace Maps
                 throw new ArgumentNullException("metadataSource");
 
             // TODO: This is very fragile; if a new type is added to Sector we need to add more code here.
+
             if (metadataSource.Names.Any()) this.Names = metadataSource.Names;
+            if (metadataSource.DataFile != null) this.DataFile = metadataSource.DataFile;
 
             this.Subsectors.AddRange(metadataSource.Subsectors);
             this.Allegiances.AddRange(metadataSource.Allegiances);
