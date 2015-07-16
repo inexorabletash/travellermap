@@ -35,11 +35,11 @@
     8: '12,800km',
     9: '14,400km',
     A: '16,000km',
-    B: 'Exceptional', // Non-standard
-    C: 'Exceptional', // "
-    D: 'Exceptional', // "
-    E: 'Exceptional', // "
-    F: 'Exceptional', // "
+    B: '17,600km',
+    C: '19,200km',
+    D: '20,800km',
+    E: '22,400km',
+    F: '24,000km',
     X: 'Unknown'
   };
 
@@ -58,13 +58,13 @@
     B: 'Corrosive',
     C: 'Insidious',
     D: 'Dense, high',
-    E: 'Ellipsoid',
-    F: 'Thin, low',
+    E: 'Thin, low',
+    F: 'Unusual',
     X: 'Unknown'
   };
 
   var HYD_TABLE = {
-    0: 'No water',
+    0: 'Desert World',
     1: '10%',
     2: '20%',
     3: '30%',
@@ -74,12 +74,12 @@
     7: '70%',
     8: '80%',
     9: '90%',
-    A: '100%',
+    A: 'Water World',
     X: 'Unknown'
   };
 
   var POP_TABLE = {
-    0: 'Few or none',
+    0: 'Unpopulated',
     1: 'Tens',
     2: 'Hundreds',
     3: 'Thousands',
@@ -90,6 +90,11 @@
     8: 'Hundreds of millions',
     9: 'Billions',
     A: 'Tens of billions',
+    B: 'Hundreds of billions',
+    C: 'Trillions',
+    D: 'Tens of trillions',
+    E: 'Hundreds of tillions',
+    F: 'Quadrillions',
     X: 'Unknown'
   };
 
@@ -110,6 +115,8 @@
     D: 'Religious Dictatorship',
     E: 'Religious Autocracy',
     F: 'Totalitarian Oligarchy',
+
+    // Legacy/Non-Human
     G: 'Small Station or Facility',
     H: 'Split Clan Control',
     J: 'Single On-world Clan Control',
@@ -216,6 +223,7 @@
     Pa: 'Pre-Agricultural',
     Ag: 'Agricultural',
     Na: 'Non-Agricultural',
+    Px: 'Prison, Exile Camp',
     Pi: 'Pre-Industrial',
     In: 'Industrialized',
     Po: 'Poor',
@@ -235,7 +243,6 @@
     Fa: 'Farming',
     Mi: 'Mining',
     Mr: 'Military Rule',
-    Px: 'Prison, Exile Camp',
     Pe: 'Penal Colony',
     Re: 'Reserve',
 
@@ -252,8 +259,8 @@
     Da: 'Danger',
     Ab: 'Data Repository',
     An: 'Ancient Site',
-    Rs: 'Research Station',
 
+    Rs: 'Research Station',
     RsA: 'Research Station Alpha',
     RsB: 'Research Station Beta',
     RsG: 'Research Station Gamma',
@@ -321,18 +328,19 @@
   var BASE_TABLE = {
     C: 'Corsair Base',
     D: 'Naval Depot',
-    E: 'Embassy Center',
+    E: 'Embassy',
     K: 'Naval Base',
-    L: 'Naval Base',
+    L: 'Naval Base', // Obsolete
     M: 'Military Base',
     N: 'Naval Base',
-    O: 'Naval Outpost',
+    O: 'Naval Outpost', // Obsolete
     R: 'Clan Base',
     S: 'Scout Base',
     T: 'Tlauku Base',
-    W: 'Scout Way Station',
-    X: 'Relay Station',
-    Z: 'Naval/Military Base'
+    V: 'Exploration Base',
+    W: 'Way Station',
+    X: 'Relay Station', // Obsolete
+    Z: 'Naval/Military Base' // Obsolete
   };
 
   function splitUWP(uwp) {
