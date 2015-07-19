@@ -39,7 +39,7 @@ namespace Maps.Rendering
         // TODO: Move this to data file
         private static readonly MapLabel[] megaLabels =
         {
-            new MapLabel("Charted Space", -120, 400, true),
+            new MapLabel("Charted Space", 0, 400, true),
             new MapLabel("Zhodani Core Expeditions", 0, -2000, true),
             new MapLabel("Core Sophonts", 0, -10000),
             new MapLabel("Abyssals", -12000, -8500),
@@ -628,8 +628,8 @@ namespace Maps.Rendering
                     if (ctx.styles.microBorders.visible)
                     {
                         if (ctx.styles.fillMicroBorders)
-                            DrawMicroBorders(ctx, fonts, BorderLayer.Fill);
-                        DrawMicroBorders(ctx, fonts, BorderLayer.Stroke);
+                            DrawMicroBorders(ctx, BorderLayer.Fill);
+                        DrawMicroBorders(ctx, BorderLayer.Stroke);
                     }
                     #endregion
                     timers.Add(new Timer("micro-borders"));
@@ -1413,7 +1413,6 @@ namespace Maps.Rendering
                             System.Text.RegularExpressions.Regex r = new System.Text.RegularExpressions.Regex(@"\s+(?![a-z])");
                             if (border.WrapLabel)
                                 text = r.Replace(text, "\n");
-                                //text = text.Replace(' ', '\n');
 
                             RenderUtil.DrawLabel(ctx.graphics, text, labelPos, ctx.styles.microBorders.Font, solidBrush, ctx.styles.microBorders.textStyle);
                         }
@@ -1543,7 +1542,7 @@ namespace Maps.Rendering
         }
 
         private enum BorderLayer { Fill, Stroke };
-        private static void DrawMicroBorders(RenderContext ctx, FontCache styleRes, BorderLayer layer)
+        private static void DrawMicroBorders(RenderContext ctx, BorderLayer layer)
         {
             const byte FILL_ALPHA = 64;
 

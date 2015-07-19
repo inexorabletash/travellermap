@@ -244,8 +244,7 @@ namespace Maps.Rendering
 
             macroRoutes.visible = (scale >= MacroRouteMinScale) && (scale <= MacroRouteMaxScale);
             macroNames.visible = (scale >= MacroLabelMinScale) && (scale <= MacroLabelMaxScale);
-            // TODO: Turn these on
-            megaNames.visible = false && scale <= MegaLabelMaxScale;
+            megaNames.visible = scale <= MegaLabelMaxScale && ((options & MapOptions.NamesMask) != 0);
             showMicroNames = ((scale >= MicroNameMinScale) && ((options & MapOptions.NamesMask) != 0));
             capitals.visible = (scale >= MacroWorldsMinScale) && (scale <= MacroWorldsMaxScale);
 
@@ -352,7 +351,7 @@ namespace Maps.Rendering
             macroNames.smallFontInfo = new FontInfo(DEFAULT_FONT, 5f / 1.4f, XFontStyle.Regular);
             macroNames.mediumFontInfo = new FontInfo(DEFAULT_FONT, 6.5f / 1.4f, XFontStyle.Italic);
 
-            float megaNameScaleFactor = scale < 0.125 ? 30f : 10f;
+            float megaNameScaleFactor = 1.0f * onePixel;
             megaNames.fontInfo = new FontInfo(DEFAULT_FONT, 24f * megaNameScaleFactor, XFontStyle.Bold);
             megaNames.mediumFontInfo = new FontInfo(DEFAULT_FONT, 22f * megaNameScaleFactor, XFontStyle.Regular);
             megaNames.smallFontInfo = new FontInfo(DEFAULT_FONT, 20f * megaNameScaleFactor, XFontStyle.Italic);

@@ -215,7 +215,9 @@
     <Content Include="res\Sectors\Empty Quarter.xml" />
     <Content Include="res\Sectors\extolian.xml" />
     <Content Include="res\Sectors\Far Frontiers.xml" />
-    <Content Include="res\Sectors\Faraway\Varan.xml" />
+    <Content Include="res\Sectors\Faraway\Varan.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="res\Sectors\Folgore.xml" />
     <Content Include="res\Sectors\Foreven.xml" />
     <Content Include="res\Sectors\Fornast.xml">
@@ -507,8 +509,8 @@
     <Content Include="res\Sectors\Faraway\JG-Glimmerdrift.sec" />
     <Content Include="res\Sectors\Faraway\JG-Ley.sec" />
     <Content Include="res\Sectors\Faraway\Maranatha-Alkahest.sec" />
-    <Content Include="res\Sectors\Faraway\Varan.tab" />
     <Content Include="res\Sectors\Far Frontiers.sec" />
+    <Content Include="res\Sectors\Faraway\Varan.t5" />
     <None Include="res\Sectors\Fornast.tab" />
     <Content Include="res\Sectors\Gateway.tab" />
     <None Include="res\Sectors\Glimmerdrift.tab" />
@@ -562,6 +564,14 @@
     <Content Include="res\Sectors\Ziafrplians.tab" />
     <Content Include="res\ui\youarehere.pdn" />
     <Content Include="res\ui\regina.pdf" />
+    <Content Include="res\t5ss\allegiance_codes.tsv" />
+    <Content Include="res\t5ss\base_codes.tsv" />
+    <Content Include="res\t5ss\sophont_codes.tsv" />
+    <Content Include="res\t5ss\update_allegiance_code.pl" />
+    <Content Include="res\t5ss\update_allegiance_docs.pl" />
+    <Content Include="res\t5ss\update_sophont_docs.pl" />
+    <Content Include="res\t5ss\update_world_data.pl" />
+    <Content Include="res\t5ss\world_data.tsv" />
     <None Include="res\Vectors\Galaxy_Positive.xvf" />
     <None Include="res\Sectors\Aerenfors.sec" />
     <None Include="res\Sectors\afawahisa.sec" />
