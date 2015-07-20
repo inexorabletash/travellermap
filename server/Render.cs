@@ -85,6 +85,7 @@ namespace Maps.Rendering
         // These are loaded as GDI+ Images since we need to derive alpha-variants of them;
         // the results are cached as PDFSharp Images (XImage)
         private static Image s_galaxyImage;
+        private static Image s_galaxyImageGray;
         private static Image s_riftImage;
         private static Dictionary<string, XImage> s_worldImages;
 
@@ -157,8 +158,10 @@ namespace Maps.Rendering
                     if (ctx.styles.showRifts && s_riftImage == null)
                         s_riftImage = Image.FromFile(ctx.resourceManager.Server.MapPath(@"~/res/Candy/Rifts.png"));
 
-                    if (ctx.styles.useGalaxyImage && s_galaxyImage == null)
+                    if (ctx.styles.useGalaxyImage && s_galaxyImage == null) {
                         s_galaxyImage = Image.FromFile(ctx.resourceManager.Server.MapPath(@"~/res/Candy/Galaxy.png"));
+                        s_galaxyImageGray = Image.FromFile(ctx.resourceManager.Server.MapPath(@"~/res/Candy/Galaxy_Gray.png"));
+                    }
 
                     if (ctx.styles.useWorldImages && s_worldImages == null)
                     {
@@ -324,9 +327,10 @@ namespace Maps.Rendering
                         using (RenderUtil.SaveState(ctx.graphics))
                         {
                             ctx.graphics.MultiplyTransform(xformLinehanToMikesh);
-                            lock (s_galaxyImage)
+                            Image galaxyImage = ctx.styles.lightBackground ? s_galaxyImageGray : s_galaxyImage;
+                            lock (galaxyImage)
                             {
-                                RenderUtil.DrawImageAlpha(ctx.graphics, ctx.styles.deepBackgroundOpacity, s_galaxyImage, galaxyImageRect);
+                                RenderUtil.DrawImageAlpha(ctx.graphics, ctx.styles.deepBackgroundOpacity, galaxyImage, galaxyImageRect);
                             }
                         }
                     }

@@ -224,6 +224,8 @@ namespace Maps.Rendering
             float onePixel = 1f / (float)scale;
 
             grayscale = false;
+            lightBackground = false;
+
             subsectorGrid.visible = ((scale >= SubsectorsMinScale) && options.HasFlag(MapOptions.SubsectorGrid));
             sectorGrid.visible = ((scale >= SectorGridMinScale) && options.HasFlag(MapOptions.SectorGrid));
             parsecGrid.visible = (scale >= ParsecMinScale);
@@ -402,7 +404,7 @@ namespace Maps.Rendering
             worlds.textStyle.Uppercase = false;
 
             useBackgroundImage = false;
-            useGalaxyImage = false;
+            useGalaxyImage = deepBackgroundOpacity > 0.0f;
             useWorldImages = false;
 
             // Cap pen widths when zooming in
@@ -432,14 +434,13 @@ namespace Maps.Rendering
                 case Style.Poster:
                     {
                         // This is the default - no changes
-                        useGalaxyImage = deepBackgroundOpacity > 0.0f;
                         break;
                     }
                 case Style.Atlas:
                     {
-                        deepBackgroundOpacity = 0f;
-
                         grayscale = true;
+                        lightBackground = true;
+
                         capitals.fillColor = Color.DarkGray;
                         capitals.textColor = Color.Black;
                         amberZone.pen.color = Color.LightGray;
@@ -471,6 +472,7 @@ namespace Maps.Rendering
                     }
                 case Style.FASA:
                     {
+                        useGalaxyImage = false;
                         deepBackgroundOpacity = 0f;
                         riftOpacity = 0;
 
@@ -478,8 +480,10 @@ namespace Maps.Rendering
 
                         foregroundColor = inkColor;
                         backgroundColor = Color.White;
-                       
+
                         grayscale = true; // TODO: Tweak to be "monochrome"
+                        lightBackground = true;
+
                         capitals.fillColor = inkColor;
                         capitals.textColor = inkColor;
                         amberZone.pen.color = inkColor;
@@ -533,7 +537,7 @@ namespace Maps.Rendering
                     }
                 case Style.Print:
                     {
-                        deepBackgroundOpacity = 0f;
+                        lightBackground = true;
 
                         foregroundColor = Color.Black;
                         backgroundColor = Color.White;
@@ -555,6 +559,9 @@ namespace Maps.Rendering
                 case Style.Draft:
                     {
                         int inkOpacity = 0xB0;
+
+                        useGalaxyImage = false;
+                        lightBackground = true;
 
                         deepBackgroundOpacity = 0f;
 
@@ -640,7 +647,6 @@ namespace Maps.Rendering
                         pseudoRandomStars.visible = false;
 
                         useBackgroundImage = deepBackgroundOpacity < 0.5f;
-                        useGalaxyImage = deepBackgroundOpacity > 0.0f;
 
                         hexStyle = HexStyle.None;
                         microBorderStyle = MicroBorderStyle.Curve;
@@ -784,6 +790,7 @@ namespace Maps.Rendering
         public float deepBackgroundOpacity;
 
         public bool grayscale;
+        public bool lightBackground;
 
         public bool showRifts;
         public float riftOpacity;
