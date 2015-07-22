@@ -103,13 +103,14 @@ window.addEventListener('DOMContentLoaded', function() {
     urlParams.options = map.GetOptions();
     urlParams.style = map.GetStyle();
 
-    map.GetNamedOptionNames().forEach(function(name) {
+    var namedOptions = map.GetNamedOptionNames();
+    namedOptions.forEach(function(name) {
       urlParams[name] = map.GetNamedOption(name);
     });
 
     delete urlParams.sector;
     delete urlParams.hex;
-    ['x', 'y', 'options', 'scale', 'style', 'routes', 'dimunofficial'].forEach(function(p) {
+    ['x', 'y', 'options', 'scale', 'style'].concat(namedOptions).forEach(function(p) {
       if (urlParams[p] === defaults[p]) delete urlParams[p];
     });
 
@@ -147,8 +148,9 @@ window.addEventListener('DOMContentLoaded', function() {
     snapshotParams.scale = round(snapshotParams.scale, 1/128);
     snapshotParams.options = map.GetOptions();
     snapshotParams.style = map.GetStyle();
-    snapshotParams.routes = urlParams.routes;
-    snapshotParams.dimunofficial = urlParams.dimunofficial;
+    namedOptions.forEach(function(name) {
+      snapshotParams[name] = urlParams[name];
+    });
     var snapshotURL = Util.makeURL(Traveller.SERVICE_BASE + '/api/tile', snapshotParams);
     $('a#download-snapshot').href = snapshotURL;
     snapshotParams.accept = 'application/pdf';
