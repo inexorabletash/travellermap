@@ -57,7 +57,7 @@ namespace Maps
             }
         }
         private string m_zone;
-        
+
         public string Bases { get; set; }
         public string Allegiance { get; set; }
         public string Stellar { get; set; }
@@ -168,7 +168,7 @@ namespace Maps
                 return mantissa;
             }
         }
-        
+
         [XmlIgnore, JsonIgnore]
         public int Belts { get { return SecondSurvey.FromHex(PBG[1]); } }
 
@@ -272,7 +272,7 @@ namespace Maps
         // "[Sophont]" - major race homeworld
         // "(Sophont)" - minor race homeworld
         // "(Sophont)0" - minor race homeworld (population in tenths)
-        // "{comment ... }" - arbirary comment
+        // "{comment ... }" - arbitrary comment
         // "xyz" - other code
         private static Regex codeRegex = new Regex(@"(\(.*?\)\S*|\[.*?\]\S*|\{.*?\}\S*|\S+)", RegexOptions.Compiled | RegexOptions.CultureInvariant);
         public string Remarks
