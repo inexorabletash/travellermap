@@ -68,7 +68,7 @@ namespace Maps
                         dt_subsectors.Columns.Add(new DataColumn());
 
                     DataTable dt_worlds = new DataTable();
-                    for (int i = 0; i < 7; ++i)
+                    for (int i = 0; i < 10; ++i)
                         dt_worlds.Columns.Add(new DataColumn());
 
                     callback("Parsing data...");
@@ -116,6 +116,9 @@ namespace Maps
                                         ? (object)world.Name
                                         : (object)DBNull.Value,
                                     world.UWP,
+                                    world.PBG,
+                                    world.Zone == "" ? "G" : world.Zone,
+                                    world.Allegiance,
                                     sector.Names.Count > 0 ? (object)sector.Names[0] : (object)DBNull.Value
                             };
 
@@ -140,9 +143,21 @@ namespace Maps
                         "CREATE NONCLUSTERED INDEX subsector_name ON subsectors ( name ASC )" + INDEX_OPTIONS,
 
                         "IF EXISTS(SELECT 1 FROM sys.objects WHERE OBJECT_ID = OBJECT_ID(N'worlds') AND type = (N'U')) DROP TABLE worlds",
-                        "CREATE TABLE worlds (sector_x int NOT NULL, sector_y int NOT NULL, hex_x int NOT NULL, hex_y int NOT NULL, name nvarchar(50) NULL, uwp nchar(9) NULL, sector_name nvarchar(50) NULL)",
+                        "CREATE TABLE worlds ("
+                            + "sector_x int NOT NULL, " 
+                            + "sector_y int NOT NULL, "
+                            + "hex_x int NOT NULL, "
+                            + "hex_y int NOT NULL, "
+                            + "name nvarchar(50) NULL, "
+                            + "uwp nchar(9) NULL, "
+                            + "pbg nchar(3) NULL, "
+                            + "zone nchar(1) NULL, "
+                            + "alleg nchar(4) NULL, "
+                            + "sector_name nvarchar(50) NULL)",
                         "CREATE NONCLUSTERED INDEX world_name ON worlds ( name ASC )" + INDEX_OPTIONS,
                         "CREATE NONCLUSTERED INDEX world_uwp ON worlds ( uwp ASC )" + INDEX_OPTIONS,
+                        "CREATE NONCLUSTERED INDEX world_pbg ON worlds ( pbg ASC )" + INDEX_OPTIONS,
+                        "CREATE NONCLUSTERED INDEX world_alleg ON worlds ( alleg ASC )" + INDEX_OPTIONS,
                         "CREATE NONCLUSTERED INDEX world_sector_name ON worlds ( sector_name ASC )" + INDEX_OPTIONS,
                     };
 
@@ -192,6 +207,9 @@ namespace Maps
             List<string> clauses;
             List<string> terms;
             types = ParseQuery(query, types, out clauses, out terms);
+
+            if (clauses.Count() == 0)
+                return results;
 
             string where = String.Join(" AND ", clauses.ToArray());
 
@@ -249,7 +267,7 @@ namespace Maps
                     }
                 }
 
-                // Worlds & UWPs
+                // Worlds & UWPs, etc
                 if (types.HasFlag(SearchResultsType.Worlds))
                 {
                     // Note duplicated field names so the results of both queries can come out right.
@@ -272,6 +290,9 @@ namespace Maps
 
         private static readonly string[] OPS = { 
                                                    "uwp:", 
+                                                   "pbg:", 
+                                                   "zone:", 
+                                                   "alleg:", 
                                                    "exact:", 
                                                    "like:", 
                                                    "in:"
@@ -321,6 +342,21 @@ namespace Maps
                 if (op == "uwp:")
                 {
                     clause = "uwp LIKE @term";
+                    types = SearchResultsType.Worlds;
+                }
+                else if (op == "pbg:")
+                {
+                    clause = "pbg LIKE @term";
+                    types = SearchResultsType.Worlds;
+                }
+                else if (op == "zone:")
+                {
+                    clause = "zone LIKE @term";
+                    types = SearchResultsType.Worlds;
+                }
+                else if (op == "alleg:")
+                {
+                    clause = "alleg LIKE @term";
                     types = SearchResultsType.Worlds;
                 }
                 else if (op == "in:")
