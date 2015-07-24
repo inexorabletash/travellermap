@@ -93,6 +93,7 @@
     <!-- Allow cache of static content for 24 hours -->
     <staticContent>
       <clientCache cacheControlCustom="public" cacheControlMode="UseMaxAge" cacheControlMaxAge="24:00:00"/>
+      <remove fileExtension=".json"/> <!-- May be present already in IIS8 -->
       <mimeMap fileExtension=".json" mimeType="application/json" />
       <mimeMap fileExtension=".sec" mimeType="text/plain" />
       <mimeMap fileExtension=".msec" mimeType="text/plain" />

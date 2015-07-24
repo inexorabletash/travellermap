@@ -60,6 +60,7 @@ namespace Maps
             Extended      // F7 V [(M8 D M6 V)]
         };
 
+        [Serializable]
         public class InvalidSystemException : ApplicationException
         {
             public InvalidSystemException(string message) : base(message) { }

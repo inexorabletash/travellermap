@@ -20,9 +20,10 @@ namespace Maps.Admin
             return false;
         }
 
-        bool IHttpHandler.IsReusable { get { return true; } }
+        public bool IsReusable { get { return true; } }
 
-        void IHttpHandler.ProcessRequest(HttpContext context)
+
+        public void ProcessRequest(HttpContext context)
         {
             context.Response.Cache.SetCacheability(HttpCacheability.NoCache);
             if (!AdminAuthorized(context))
@@ -112,6 +113,7 @@ namespace Maps.Admin
             Write(context.Response, "<b>&Omega;</b>");
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Security", "CA2100:Review SQL queries for security vulnerabilities")]
         private void Reindex(HttpContext context)
         {
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -126,14 +127,20 @@ namespace Maps
     //  - case insensitive by default
     //  - * matches 0-or-more of anything
     //  - ? matches exactly one of anything
+    [Serializable]
     public class Glob : Regex
     {
         public Glob(string pattern, RegexOptions options = RegexOptions.IgnoreCase | RegexOptions.Singleline)
             : base("^" + Regex.Escape(pattern).Replace(@"\*", ".*").Replace(@"\?", ".") + "$", options) { }
+        protected Glob(SerializationInfo info, StreamingContext context) : base(info, context) { }
     }
 
+    [Serializable]
     public class RegexDictionary<T> : Dictionary<Regex, T>
     {
+        public RegexDictionary() { }
+        protected RegexDictionary(SerializationInfo info, StreamingContext context) : base(info, context) { }
+
         public virtual void Add(string r, T v) { Add(new Regex(r), v); }
         public virtual void Add(T v) { Add(new Regex("^" + Regex.Escape(v.ToString()) + "$"), v); }
 
@@ -147,8 +154,12 @@ namespace Maps
         }
     }
 
+    [Serializable]
     public class GlobDictionary<T> : RegexDictionary<T>
     {
+        public GlobDictionary() { }
+        protected GlobDictionary(SerializationInfo info, StreamingContext context) : base(info, context) { }
+
         public override void Add(string r, T v) { Add(new Glob(r), v); }
         public override void Add(T v) { Add(new Glob(v.ToString()), v); }
     }
@@ -183,7 +194,7 @@ namespace Maps
         }
     }
 
-    public class ListHashSet<T> : IEnumerable<T>
+    sealed public class ListHashSet<T> : IEnumerable<T>
     {
         private List<T> m_list = new List<T>();
         private HashSet<T> m_set = new HashSet<T>();

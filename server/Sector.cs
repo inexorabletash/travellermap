@@ -45,7 +45,7 @@ namespace Maps
         }
     }
 #endif
-
+    [Serializable]
     public class MapNotInitializedException : Exception
     {
         public MapNotInitializedException()
@@ -69,6 +69,8 @@ namespace Maps
     public class SectorMap
     {
         public const string DefaultSetting = "OTU";
+
+        private static Object s_lock = new Object();
 
         private static SectorMap s_OTU;
 
@@ -126,7 +128,7 @@ namespace Maps
             if (settingName != SectorMap.DefaultSetting)
                 throw new ArgumentException("Only OTU setting is currently supported.");
 
-            lock (typeof(SectorMap))
+            lock (SectorMap.s_lock)
             {
                 if (s_OTU == null)
                 {
@@ -147,7 +149,7 @@ namespace Maps
 
         public static void Flush()
         {
-            lock (typeof(SectorMap))
+            lock (SectorMap.s_lock)
             {
                 s_OTU = null;
             }
@@ -721,7 +723,7 @@ namespace Maps
         }
     }
 
-    public class Allegiance : IAllegiance
+    sealed public class Allegiance : IAllegiance
     {
         public Allegiance() { }
         public Allegiance(string code, string name)

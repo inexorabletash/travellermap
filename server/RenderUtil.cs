@@ -9,6 +9,14 @@ using System.Linq;
 
 namespace Maps.Rendering
 {
+    // Wrapper to allow locking, since Image is [MarshalByRefObject]
+    public class ImageHolder
+    {
+        public ImageHolder(Image image) { m_image = image; }
+        public Image Image {  get { return m_image; } }
+        private Image m_image;
+    }
+
     public static class RenderUtil
     {
         /*
@@ -38,7 +46,7 @@ namespace Maps.Rendering
             edgeY = (type == PathUtil.PathType.Hex) ? RenderUtil.HexEdgesY : RenderUtil.SquareEdgesY;
         }
 
-        public static void DrawImageAlpha(XGraphics graphics, float alpha, Image image, Rectangle targetRect)
+        public static void DrawImageAlpha(XGraphics graphics, float alpha, ImageHolder holder, Rectangle targetRect)
         {
             if (alpha <= 0f)
                 return;
@@ -48,11 +56,12 @@ namespace Maps.Rendering
             alpha = (float)Math.Round(alpha * 16f) / 16f;
             int key = (int)Math.Round(alpha * 16);
 
+            Image image = holder.Image;
             XImage ximage;
 
             int w = image.Width, h = image.Height;
 
-            lock (image)
+            lock (holder)
             {
                 if (image.Tag == null || !(image.Tag is Dictionary<int, XImage>))
                     image.Tag = new Dictionary<int, XImage>();
@@ -162,7 +171,7 @@ namespace Maps.Rendering
             return new SaveGraphicsState(g);
         }
 
-        public class SaveGraphicsState : IDisposable
+        sealed public class SaveGraphicsState : IDisposable
         {
             private XGraphics g;
             private XGraphicsState gs;
@@ -175,9 +184,14 @@ namespace Maps.Rendering
 
             #region IDisposable Members
 
-            void IDisposable.Dispose()
+            public void Dispose()
             {
-                this.g.Restore(this.gs);
+                if (this.g != null && this.gs != null)
+                {
+                    this.g.Restore(this.gs);
+                    this.g = null;
+                    this.gs = null;
+                }
             }
 
             #endregion

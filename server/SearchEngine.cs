@@ -39,11 +39,12 @@ namespace Maps
 
         public delegate void StatusCallback(string status);
 
+        private static Object s_lock = new Object();
+
         public static void PopulateDatabase(ResourceManager resourceManager, StatusCallback callback)
         {
-            // Lock on this class rather than the cacheResults. Tile requests are not
-            // blocked but we don't index twice.
-            lock (typeof(SearchEngine))
+            // Lock to prevent indexing twice, without blocking tile requests.
+            lock (SearchEngine.s_lock)
             {
                 // NOTE: This (re)initializes a static data structure used for 
                 // resolving names into sector locations, so needs to be run
@@ -177,7 +178,6 @@ namespace Maps
                         bulk.BatchSize = dt_sectors.Rows.Count;
                         bulk.DestinationTableName = "sectors";
                         bulk.WriteToServer(dt_sectors);
-                        bulk.Close();
                     }
                     using (var bulk = new SqlBulkCopy(connection, SqlBulkCopyOptions.TableLock, null))
                     {
@@ -185,7 +185,6 @@ namespace Maps
                         bulk.BatchSize = dt_subsectors.Rows.Count;
                         bulk.DestinationTableName = "subsectors";
                         bulk.WriteToServer(dt_subsectors);
-                        bulk.Close();
                     }
                     using (var bulk = new SqlBulkCopy(connection, SqlBulkCopyOptions.TableLock, null))
                     {
@@ -193,7 +192,6 @@ namespace Maps
                         bulk.BatchSize = 4096;
                         bulk.DestinationTableName = "worlds";
                         bulk.WriteToServer(dt_worlds);
-                        bulk.Close();
                     }
                 }
                 callback("Complete!");

@@ -76,6 +76,8 @@ namespace Maps.Rendering
             @"~/res/Vectors/CoreRoute.xml"
         };
 
+        private static Object s_imageInitLock = new Object();
+
         // TODO: Consider not caching these across sessions
         private static XImage s_sillyImageColor;
         private static XImage s_sillyImageGray;
@@ -84,9 +86,9 @@ namespace Maps.Rendering
 
         // These are loaded as GDI+ Images since we need to derive alpha-variants of them;
         // the results are cached as PDFSharp Images (XImage)
-        private static Image s_galaxyImage;
-        private static Image s_galaxyImageGray;
-        private static Image s_riftImage;
+        private static ImageHolder s_galaxyImage;
+        private static ImageHolder s_galaxyImageGray;
+        private static ImageHolder s_riftImage;
         private static Dictionary<string, XImage> s_worldImages;
 
         public class RenderContext
@@ -150,17 +152,17 @@ namespace Maps.Rendering
             using (var fonts = new FontCache(ctx.styles))
             {
                 #region resources
-                lock (ctx.resourceManager.GetType())
+                lock (s_imageInitLock)
                 {
                     if (ctx.styles.useBackgroundImage && s_backgroundImage == null)
                         s_backgroundImage = XImage.FromFile(ctx.resourceManager.Server.MapPath(@"~/res/Candy/Nebula.png"));
 
                     if (ctx.styles.showRifts && s_riftImage == null)
-                        s_riftImage = Image.FromFile(ctx.resourceManager.Server.MapPath(@"~/res/Candy/Rifts.png"));
+                        s_riftImage = new ImageHolder(Image.FromFile(ctx.resourceManager.Server.MapPath(@"~/res/Candy/Rifts.png")));
 
                     if (ctx.styles.useGalaxyImage && s_galaxyImage == null) {
-                        s_galaxyImage = Image.FromFile(ctx.resourceManager.Server.MapPath(@"~/res/Candy/Galaxy.png"));
-                        s_galaxyImageGray = Image.FromFile(ctx.resourceManager.Server.MapPath(@"~/res/Candy/Galaxy_Gray.png"));
+                        s_galaxyImage = new ImageHolder(Image.FromFile(ctx.resourceManager.Server.MapPath(@"~/res/Candy/Galaxy.png")));
+                        s_galaxyImageGray = new ImageHolder(Image.FromFile(ctx.resourceManager.Server.MapPath(@"~/res/Candy/Galaxy_Gray.png")));
                     }
 
                     if (ctx.styles.useWorldImages && s_worldImages == null)
@@ -327,7 +329,7 @@ namespace Maps.Rendering
                         using (RenderUtil.SaveState(ctx.graphics))
                         {
                             ctx.graphics.MultiplyTransform(xformLinehanToMikesh);
-                            Image galaxyImage = ctx.styles.lightBackground ? s_galaxyImageGray : s_galaxyImage;
+                            ImageHolder galaxyImage = ctx.styles.lightBackground ? s_galaxyImageGray : s_galaxyImage;
                             lock (galaxyImage)
                             {
                                 RenderUtil.DrawImageAlpha(ctx.graphics, ctx.styles.deepBackgroundOpacity, galaxyImage, galaxyImageRect);

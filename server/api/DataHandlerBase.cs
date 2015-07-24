@@ -22,9 +22,9 @@ namespace Maps.API
         protected abstract string ServiceName { get; }
         public abstract void Process(HttpContext context);
 
-        bool IHttpHandler.IsReusable { get { return true; } }
+        public bool IsReusable { get { return true; } }
 
-        void IHttpHandler.ProcessRequest(HttpContext context)
+        public void ProcessRequest(HttpContext context)
         {
             if (!ServiceConfiguration.CheckEnabled(ServiceName, context.Response))
                 return;

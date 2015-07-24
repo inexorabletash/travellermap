@@ -55,6 +55,7 @@ namespace Maps
         };
 
         #region Parser
+        [Serializable]
         class ParseException : ApplicationException 
         {
             public ParseException(string message) : base(message) { }
