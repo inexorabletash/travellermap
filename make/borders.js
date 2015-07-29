@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function convertData(text) {
     return getTextViaPOST(
-      Util.makeURL(Traveller.SERVICE_BASE + '/api/sec', {type: 'TabDelimited'}),
+      Traveller.MapService.makeURL('/api/sec', {type: 'TabDelimited'}),
       text
     );
   }

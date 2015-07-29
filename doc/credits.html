@@ -2,9 +2,9 @@
 <title>Credits - Traveller Map</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="shortcut icon" href="../favicon.ico">
-<link rel="stylesheet" href="../site.css?update=2015-01-02">
+<link rel="stylesheet" href="../site.css?update=2015-07-19">
 <meta name="viewport" content="initial-scale=1, width=device-width">
-<script src="../lib/polyfill/polyfill.min.js?update=2015-04-25"></script>
+<script src="../lib/polyfill/polyfill.min.js?update=2015-07-29"></script>
 
 <h1>The Traveller Map - Credits</h1>
 <div class="content">
@@ -474,13 +474,12 @@
     <!-- ================================================================================ -->
 
     <p>
-      Various former licensees published sector supplements. These
-      licensed publications were "Approved For Use With Traveller" by
-      GDW but are not considered part of the Official Traveller
-      Universe. In some cases, the data may still be used on this site
-      when no official data is available. These often capture
-      fantastical visions of the Traveller universe quite different
-      from the canon.
+      Various former licensees published sector supplements "Approved
+      For Use With Traveller" by GDW but are not considered part of
+      the Official Traveller Universe. In some cases, the data may
+      still be used on this site when no official data is available.
+      These often capture fantastical visions of the Traveller
+      universe quite different from the canon.
     </p>
 
     <p>
@@ -501,12 +500,20 @@
     </p>
 
     <p>
+      <a class="sector">Theta Borealis</a> was designed by Bill
+      Bledsaw, Pixie Bledsaw, Mark Holmer, Jeff Johnson, Debi
+      Summerlott and Marc Summerlott, published as <cite>Theta
+      Borealis Sector</cite> by Group One. This data is used on the
+      map, as no later data has been published for this sector.
+    </p>
+
+    <p>
       The Judges Guild published four approved sector supplements
       comprising what was called the Gateway Quadrant:
       <cite>Ley Sector</cite>, <cite>Maranatha-Alkahest</cite>,
       <cite>Glimmerdrift Reaches</cite> and <cite>Crucis
       Margin</cite>. While the names and locations of three of the
-      sectors were retained for the OTU, the data was replaced by
+      sectors were retained for the OTU, most of the data was replaced by
       later publications. The Judges Guild versions of these sectors
       can be found on the <a target="_blank"
       href="http://farfuture.net/Contents%20CDROM%20Apocrypha-2.pdf">Traveller
@@ -519,13 +526,6 @@
       <a class="sector">Maranatha-Alkahest</a>
     </p>
 
-    <p>
-      <a class="sector">Theta Borealis</a> was designed by Bill
-      Bledsaw, Pixie Bledsaw, Mark Holmer, Jeff Johnson, Debi
-      Summerlott and Marc Summerlott, published as <cite>Theta
-      Borealis Sector</cite> by Group One. This data is used on the
-      map, as no later data has been published for this sector.
-    </p>
   </section>
 
   <section id="unofficial">
@@ -890,59 +890,61 @@
 </div>
 
 <script>
-var SERVICE_BASE = (function(l) {
-  if (l.hostname === 'localhost' && l.pathname.indexOf('~') !== -1)
-    return 'http://travellermap.com';
-  return '';
-}(window.location));
+(function() {
+  var $ = function(s) { return document.querySelector(s); };
+  var $$ = function(s) { return document.querySelectorAll(s); };
 
-[].slice.call(document.querySelectorAll('a.sector')).forEach(function(anchor) {
-  var name = anchor.innerText || anchor.textContent;
-  name = name.replace(/^The /, '');
-  anchor.href = SERVICE_BASE + '/go/' + encodeURIComponent(name);
-  anchor.target = "_blank";
-});
-</script>
+  var SERVICE_BASE = (function(l) {
+    if (l.hostname === 'localhost' && l.pathname.indexOf('~') !== -1)
+      return 'http://travellermap.com';
+    return '';
+  }(window.location));
 
-<script>
-  function check() {
-    fetch(SERVICE_BASE + '/api/universe?requireData=1')
-       .then(function(response) {
-         if (response.status !== 200)
-           throw new Error(response.statusText);
-         return response.text();
-       })
-       .then(function(data) {
-         var doc = [].slice.call(document.querySelectorAll('a.sector')).map(function(a) {
-           var name = a.innerText || a.textContent;
-           name = name.replace(/^The /, '');
-           return name;
-         });
+  [].slice.call($$('a.sector')).forEach(function(anchor) {
+    var name = anchor.innerText || anchor.textContent;
+    name = name.replace(/^The /, '');
+    anchor.href = SERVICE_BASE + '/go/' + encodeURIComponent(name);
+    anchor.target = "_blank";
+  });
 
-         var docSet = new Set(doc);
-         var knownSet = new Set();
-         var known = JSON.parse(data).Sectors.filter(function(s) {
-           var tags = s.Tags.split();
-           if (tags.indexOf('ZCR') !== -1) return false;
-           return true;
-         }).map(function(s) {
-           s.Names.forEach(function(name) { knownSet.add(name.Text); });
-           return s;
-         });
+  fetch(SERVICE_BASE + '/api/universe?requireData=1')
+   .then(function(response) {
+     if (!response.ok)
+       throw new Error(response.statusText);
+     return response.json();
+   })
+   .then(function(data) {
+     var doc = [].slice.call($$('a.sector')).map(function(a) {
+       var name = a.innerText || a.textContent;
+       name = name.replace(/^The /, '');
+       return name;
+     });
+     var docSet = new Set(doc);
 
-         known.forEach(function(s) {
-           if (!s.Names.some(function(name) { return docSet.has(name.Text); }))
-             console.log('No credits for known sector: ' + s.Names[0].Text);
-         });
-         doc.forEach(function(s) {
-           if (!knownSet.has(s))
-             console.log('Credits for unknown sector: ' + s);
-         });
-       })
-      .catch(function(reason) {
-        console.error(reason);
-      });
-  }
+     var known = data.Sectors.filter(function(s) {
+       var tags = s.Tags.split();
+       if (tags.indexOf('meta') !== -1) return false;
+       if (tags.indexOf('ZCR') !== -1) return false;
+       return true;
+     });
+     var knownSet = new Set();
+     known.forEach(function(s) {
+       s.Names.forEach(function(name) { knownSet.add(name.Text); });
+     });
+
+     known.forEach(function(s) {
+       if (!s.Names.some(function(name) { return docSet.has(name.Text); }))
+         console.warn('No credits for known sector: ' + s.Names[0].Text);
+     });
+     doc.forEach(function(s) {
+       if (!knownSet.has(s))
+         console.warn('Credits for unknown sector: ' + s);
+     });
+   })
+  .catch(function(reason) {
+    console.error(reason);
+  });
+}());
 </script>
 
 <!-- Google Analytics -->

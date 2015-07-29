@@ -1,7 +1,6 @@
 window.addEventListener('DOMContentLoaded', function() {
   var $ = function(s) { return document.querySelector(s); };
   var $$ = function(s) { return document.querySelectorAll(s); };
-  console.log('hi');
 
   var toc = document.createElement('nav');
   toc.className = 'toc';

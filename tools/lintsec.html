@@ -2,12 +2,12 @@
 <title>Sector Data Checker - Traveller Map</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="shortcut icon" href="../favicon.ico">
-<link rel="stylesheet" href="../site.css?update=2015-01-02">
-<script src="../lib/polyfill/polyfill.min.js?update=2015-04-25"></script>
+<link rel="stylesheet" href="../site.css?update=2015-07-19">
+<script src="../lib/polyfill/polyfill.min.js?update=2015-07-29"></script>
 <script src="../lib/polyfill/es6.js?update=1969-12-31"></script>
 <script src="../lib/polyfill/url.js?update=1969-12-31"></script>
 <script src="../lib/polyfill/fetch.js?update=1969-12-31"></script>
-<script src="../map.js?update=2015-04-14"></script>
+<script src="../map.js?update=2015-07-29"></script>
 <style>
   #input, #output {
     width: 1000px; height: 300px;
@@ -37,12 +37,12 @@
 
     $('#go').addEventListener('click', function () {
       var input = $('#input').value;
-      fetch(Traveller.SERVICE_BASE + '/api/sec' + '?lint=1', {
+      fetch(Traveller.MapService.makeURL('/api/sec', {lint: 1}), {
         method: 'POST',
         body: input,
         headers: {'Content-Type': 'text/plain'}
       }).then(function(response) {
-        if (response.status === 200) {
+        if (response.ok) {
           document.body.classList.add('pass');
           document.body.classList.remove('fail');
           $('#summary').innerHTML = '\u2713 No errors found';

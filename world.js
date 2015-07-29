@@ -532,7 +532,7 @@
       coords = {sector: 'spin', hex: '1910'};
 
     fetch(Util.makeURL(prefix + '/api/coordinates?', coords)).then(function(response) {
-      if (response.status !== 200) return Promise.reject(response.text());
+      if (!response.ok) throw Error(response.text());
       return response.json();
     }).then(function(coords) {
       var JUMP = 2;

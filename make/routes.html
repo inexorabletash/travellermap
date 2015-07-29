@@ -2,11 +2,11 @@
 <title>Route Maker - Traveller Map</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="shortcut icon" href="../favicon.ico">
-<link rel="stylesheet" href="../site.css?update=2015-01-02">
+<link rel="stylesheet" href="../site.css?update=2015-07-19">
 <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.2/handlebars.min.js"></script>
-<script src="../lib/polyfill/polyfill.min.js?update=2015-04-25"></script>
-<script src="../map.js?update=2015-04-14"></script>
-<script src="post.js?update=2014-11-13"></script>
+<script src="../lib/polyfill/polyfill.min.js?update=2015-07-29"></script>
+<script src="../map.js?update=2015-07-29"></script>
+<script src="post.js?update=2015-07-29"></script>
 
 <h1>The Traveller Map - Route Maker</h1>
 <ol>
@@ -106,7 +106,7 @@ function parse() {
   var data = $('#data').value;
   if (!data.length) return;
   getTextViaPOST(
-    Util.makeURL(Traveller.SERVICE_BASE + '/api/sec', {type: 'TabDelimited'}),
+    Traveller.MapService.makeURL('/api/sec', {type: 'TabDelimited'}),
     data)
     .then(function(data) {
       return parseSector(data);
@@ -121,7 +121,7 @@ function parse() {
         scale: 64,
         datauri: 1
       };
-      return getTextViaPOST(Traveller.SERVICE_BASE + '/api/poster', params);
+      return getTextViaPOST(Traveller.MapService.makeURL('/api/poster'), params);
     })
     .then(function(dataURL) {
       $('#canvas').style.backgroundSize = '100% 100%';

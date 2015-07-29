@@ -151,10 +151,10 @@ window.addEventListener('DOMContentLoaded', function() {
     namedOptions.forEach(function(name) {
       snapshotParams[name] = urlParams[name];
     });
-    var snapshotURL = Util.makeURL(Traveller.SERVICE_BASE + '/api/tile', snapshotParams);
+    var snapshotURL = Traveller.MapService.makeURL('/api/tile', snapshotParams);
     $('a#download-snapshot').href = snapshotURL;
     snapshotParams.accept = 'application/pdf';
-    snapshotURL = Util.makeURL(Traveller.SERVICE_BASE + '/api/tile', snapshotParams);
+    snapshotURL = Traveller.MapService.makeURL('/api/tile', snapshotParams);
     $('a#download-snapshot-pdf').href = snapshotURL;
 
   }, PERMALINK_REFRESH_DELAY_MS);
@@ -402,7 +402,7 @@ window.addEventListener('DOMContentLoaded', function() {
       return;
 
     if (dataRequest) {
-      dataRequest.abort();
+      dataRequest.ignore();
       dataRequest = null;
     }
 
@@ -413,10 +413,11 @@ window.addEventListener('DOMContentLoaded', function() {
       lastX = hexX;
       lastY = hexY;
 
-      dataRequest = Traveller.MapService.credits(hexX, hexY, function(data) {
-        dataRequest = null;
-        displayResults(data);
-      });
+      dataRequest = Util.ignorable(Traveller.MapService.credits(hexX, hexY));
+      dataRequest.then(function(data) {
+          dataRequest = null;
+          displayResults(data);
+        });
 
     }, immediate ? 0 : DATA_REQUEST_DELAY_MS);
 
@@ -467,13 +468,12 @@ window.addEventListener('DOMContentLoaded', function() {
     if (!selectedSector)
       return;
 
-    var bookletURL = Traveller.SERVICE_BASE +
-          '/data/' + encodeURIComponent(selectedSector) + '/booklet';
-    var posterURL = Util.makeURL(Traveller.SERVICE_BASE + '/api/poster', {
+    var bookletURL = Traveller.MapService.makeURL(
+          '/data/' + encodeURIComponent(selectedSector) + '/booklet');
+    var posterURL = Traveller.MapService.makeURL('/api/poster', {
       sector: selectedSector, accept: 'application/pdf', style: map.GetStyle()});
-    var dataURL = Util.makeURL(Traveller.SERVICE_BASE + '/api/sec', {
+    var dataURL = Traveller.MapService.makeURL('/api/sec', {
       sector: selectedSector, type: 'SecondSurvey' });
-
 
     var title = selectedSector.replace(/ Sector$/, '') + ' Sector';
     $('#downloadBox #sector-name').innerHTML = Util.escapeHTML(title);
@@ -496,7 +496,7 @@ window.addEventListener('DOMContentLoaded', function() {
           Traveller.MapOptions.WorldColors | Traveller.MapOptions.FilledBorders);
 
       for (var j = 1; j <= 6; ++j) {
-        var jumpMapURL = Util.makeURL(Traveller.SERVICE_BASE + '/api/jumpmap', {
+        var jumpMapURL = Traveller.MapService.makeURL('/api/jumpmap', {
           sector: selectedSector,
           hex: selectedWorld.hex,
           jump: j,
@@ -540,19 +540,22 @@ window.addEventListener('DOMContentLoaded', function() {
     }
 
     if (searchRequest)
-      searchRequest.abort();
+      searchRequest.ignore();
 
-    searchRequest = Traveller.MapService.search(query, function(data) {
-      searchRequest = null;
-      displayResults(data);
-      document.body.classList.remove('search-progress');
-      document.body.classList.add('search-results');
-    }, function() {
-      searchRequest = null;
-      $('#resultsContainer').innerHTML = '<i>Error fetching results.</i>';
-      document.body.classList.remove('search-progress');
-      document.body.classList.add('search-results');
-    });
+    searchRequest = Util.ignorable(Traveller.MapService.search(query));
+    searchRequest
+      .then(function(data) {
+        searchRequest = null;
+        displayResults(data);
+        document.body.classList.remove('search-progress');
+        document.body.classList.add('search-results');
+      })
+      .catch(function() {
+        searchRequest = null;
+        $('#resultsContainer').innerHTML = '<i>Error fetching results.</i>';
+        document.body.classList.remove('search-progress');
+        document.body.classList.add('search-results');
+      });
 
     // Transform the search results into clickable links
     function displayResults(data) {

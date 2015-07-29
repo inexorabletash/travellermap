@@ -9,35 +9,37 @@ window.addEventListener('DOMContentLoaded', function() {
 
   var list = $('#sector');
 
-  Traveller.MapService.universe(populateSectorList, undefined, {requireData: 1});
-
-  function populateSectorList(universe) {
-    universe.Sectors
-      .filter(function(sector) {
-        return Math.abs(sector.X) < 10 && Math.abs(sector.Y) < 5;
-      })
-      .map(function(sector) {
-        return sector.Names[0].Text;
-      })
-      .sort()
-      .forEach(function(name) {
-        var option = document.createElement('option');
-        option.appendChild(document.createTextNode(name));
-        option.value = name;
-        list.appendChild(option);
-      });
-  }
+  Traveller.MapService.universe({requireData: 1})
+    .then(function(universe) {
+      universe.Sectors
+        .filter(function(sector) {
+          return Math.abs(sector.X) < 10 && Math.abs(sector.Y) < 5;
+        })
+        .map(function(sector) {
+          return sector.Names[0].Text;
+        })
+        .sort()
+        .forEach(function(name) {
+          var option = document.createElement('option');
+          option.appendChild(document.createTextNode(name));
+          option.value = name;
+          list.appendChild(option);
+        });
+    });
 
   list.addEventListener('change', function (e) {
     var name = list.value;
-    Traveller.MapService.sectorData(name, function(data) {
-      var target = $('#data');
-      if (target) target.value = data;
-    }, undefined, {type: 'SecondSurvey', metadata: 0});
-    Traveller.MapService.sectorMetaData(name, function(data) {
-      var target = $('#metadata');
-      if (target) target.value = data;
-    }, undefined, {accept: 'text/xml'});
+    Traveller.MapService.sectorData(name, {type: 'SecondSurvey', metadata: 0})
+      .then(function(data) {
+        var target = $('#data');
+        if (target) target.value = data;
+      });
+
+    Traveller.MapService.sectorMetaData(name, {accept: 'text/xml'})
+      .then(function(data) {
+        var target = $('#metadata');
+        if (target) target.value = data;
+      });
   });
 
   Array.from($$('textarea.drag-n-drop')).forEach(function(elem) {
@@ -102,9 +104,12 @@ function getTextViaPOST(url, data) {
     .then(function(values) {
       var response = values[0];
       var text = values[1];
-      if (response.status === 200)
-        return text;
-      else
+      if (!response.ok)
         throw text;
+      return text;
     });
+}
+
+function getJSONViaPOST(url, data) {
+  return getTextViaPOST(url, data).then(function(text) { return JSON.parse(text); });
 }

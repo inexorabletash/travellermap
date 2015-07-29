@@ -7,11 +7,12 @@ var Util = {
   makeURL: function(base, params) {
     'use strict';
     base = String(base).replace(/\?.*/, '');
+    if (!params) return base;
     var keys = Object.keys(params);
     if (keys.length === 0) return base;
-    return base += '?' + keys.filter(function (p) {
+    return base += '?' + keys.filter(function(p) {
       return params[p] !== undefined;
-    }).map(function (p) {
+    }).map(function(p) {
       return encodeURIComponent(p) + '=' + encodeURIComponent(params[p]);
     }).join('&');
   },
@@ -31,51 +32,6 @@ var Util = {
       });
     }
     return o;
-  },
-
-  // Replace with Fetch API (or polyfill)
-  fetch: function(url, options, callback, errback) {
-    // NOTE: Due to proxies/user-agents not respecting Vary tags
-    // prefer URL params instead of headers for specifying 'Accept'
-    // type(s).
-    try {
-      options = options || {};
-      var method = options.method || 'GET';
-      var headers = options.headers || {};
-      var body = options.body || null;
-      var xhr = new XMLHttpRequest(), async = true;
-      xhr.open(method, url, async);
-      Object.keys(headers).forEach(function(key) {
-        xhr.setRequestHeader(key, headers[key]);
-      });
-      xhr.onreadystatechange = function() {
-        if (xhr.readyState !== XMLHttpRequest.DONE) return;
-        if (xhr.status === 200) {
-          if (callback) callback(xhr);
-        } else {
-          if (errback) errback(xhr);
-        }
-      };
-      var original_abort = xhr.abort;
-      xhr.abort = function() {
-        xhr.onreadystatechange = null;
-        if (original_abort)
-          original_abort.call(xhr);
-      };
-      xhr.send(body);
-      return xhr;
-    } catch (ex) {
-      // If cross-domain, blocked by browsers that don't implement CORS.
-      if (errback)
-        setTimeout(function() { errback(ex.message); }, 0);
-      return {
-        abort: function() {},
-        readyState: XMLHttpRequest.DONE,
-        status: 0,
-        statusText: 'Forbidden',
-        responseText: 'Connection error'
-      };
-    }
   },
 
   escapeHTML: function(s) {
@@ -130,11 +86,26 @@ var Util = {
       var key = JSON.stringify([].slice.call(arguments));
       return (key in cache) ? cache[key] : cache[key] = f.apply(this, arguments);
     };
+  },
+
+  // p = ignorable(other_promise);
+  // p.then(...);
+  // p.ignore(); // p will neither resolve nor reject
+  // WARNING: p = ignorable(...).then(...); p.ignore(); will fail
+  // (Promise subclassing is not used)
+  ignorable: function(p) {
+    var ignored = false;
+    var q = new Promise(function(resolve, reject) {
+      p.then(function(r) { if (!ignored) resolve(r); },
+             function(r) { if (!ignored) reject(r); });
+    });
+    q.ignore = function() { ignored = true; };
+    return q;
   }
 };
 
 
-(function (global) {
+(function(global) {
   'use strict';
 
   //----------------------------------------------------------------------
@@ -213,88 +184,72 @@ var Util = {
   // Data Services
   // ======================================================================
 
-  // TODO: Make these ES6-Promise based
   var MapService = (function() {
-    function service(url, contentType, callback, errback) {
-      return Util.fetch(
-        url,
-        {headers: {Accept: contentType}},
-        function(response) {
-          var data = response.responseText;
-          if (contentType === 'application/json') {
-            try {
-              data = JSON.parse(data);
-            } catch (ex) {
-              if (errback)
-                errback(ex);
-              return;
-            }
-          }
-          callback(data);
-        },
-        function(error) {
-          if (errback)
-            errback(Error(error.statusText));
+    function service(url, contentType) {
+      return fetch(url, {headers: {Accept: contentType}})
+        .then(function(response) {
+          if (!response.ok)
+            throw Error(response.statusText);
+          return (contentType === 'application/json') ?
+            response.json() : response.text();
         });
     }
 
+    function url(path, options) {
+      return Util.makeURL(SERVICE_BASE + path, options);
+    }
+
     return {
-      coordinates: function(sector, hex, callback, errback, options) {
-        options = options || {};
-        options.sector = sector;
-        options.hex = hex;
-        return service(Util.makeURL(SERVICE_BASE + '/api/coordinates', options),
-                       options.accept || 'application/json', callback, errback);
+      makeURL: function(path, options) {
+        return url(path, options);
       },
 
-      credits: function (hexX, hexY, callback, errback, options) {
-        options = options || {};
-        options.x = hexX;
-        options.y = hexY;
-        return service(Util.makeURL(SERVICE_BASE + '/api/credits', options),
-                       options.accept || 'application/json', callback, errback);
+      coordinates: function(sector, hex, options) {
+        options = Object.assign({}, options, {sector: sector, hex: hex});
+        return service(url('/api/coordinates', options),
+                       options.accept || 'application/json');
       },
 
-      search: function (query, callback, errback, options) {
-        options = options || {};
-        options.q = query;
-        return service(Util.makeURL(SERVICE_BASE + '/api/search', options),
-                       options.accept || 'application/json', callback, errback);
+      credits: function(hexX, hexY, options) {
+        options = Object.assign({}, options, {x: hexX, y: hexY});
+        return service(url('/api/credits', options),
+                       options.accept || 'application/json');
       },
 
-      sectorData: function (sector, callback, errback, options) {
-        options = options || {};
-        options.sector = sector;
-        return service(Util.makeURL(SERVICE_BASE + '/api/sec', options),
-                       options.accept || 'text/plain', callback, errback);
+      search: function(query, options) {
+        options = Object.assign({}, options, {q: query});
+        return service(url('/api/search', options),
+                       options.accept || 'application/json');
       },
 
-      sectorDataTabDelimited: function (sector, callback, errback, options) {
-        options = options || {};
-        options.sector = sector;
-        options.type = 'TabDelimited';
-        return service(Util.makeURL(SERVICE_BASE + '/api/sec', options),
-                       options.accept || 'text/plain', callback, errback);
+      sectorData: function(sector, options) {
+        options = Object.assign({}, options, {sector: sector});
+        return service(url('/api/sec', options),
+                       options.accept || 'text/plain');
       },
 
-      sectorMetaData: function (sector, callback, errback, options) {
-        options = options || {};
-        options.sector = sector;
-        return service(Util.makeURL(SERVICE_BASE + '/api/metadata', options),
-                       options.accept || 'application/json', callback, errback);
+      sectorDataTabDelimited: function(sector, options) {
+        options = Object.assign({}, options, {sector: sector, type: 'TabDelimited'});
+        return service(url('/api/sec', options),
+                       options.accept || 'text/plain');
       },
 
-      MSEC: function (sector, callback, errback, options) {
-        options = options || {};
-        options.sector = sector;
-        return service(Util.makeURL(SERVICE_BASE + '/api/msec', options),
-                       options.accept || 'text/plain', callback, errback);
+      sectorMetaData: function(sector, options) {
+        options = Object.assign({}, options, {sector: sector});
+        return service(url('/api/metadata', options),
+                       options.accept || 'application/json');
       },
 
-      universe: function (callback, errback, options) {
-        options = options || {};
-        return service(Util.makeURL(SERVICE_BASE + '/api/universe', options),
-                       options.accept || 'application/json', callback, errback);
+      MSEC: function(sector, options) {
+        options = Object.assign({}, options, {sector: sector});
+        return service(url('/api/msec', options),
+                       options.accept || 'text/plain');
+      },
+
+      universe: function(options) {
+        options = Object.assign({}, options);
+        return service(url('/api/universe', options),
+                       options.accept || 'application/json');
       }
     };
   }());
@@ -1164,7 +1119,7 @@ var Util = {
       return undefined;
 
     var params = {x: x, y: y, scale: pow2(scale - 1), options: this.options, style: this.style};
-    Object.keys(this.tileOptions).forEach(function (key) {
+    Object.keys(this.tileOptions).forEach(function(key) {
       params[key] = this.tileOptions[key];
     }, this);
 
@@ -1185,7 +1140,6 @@ var Util = {
     // In progress?
     if (this.loading[url])
       return undefined;
-
 
     if (this.defer_loading)
       return undefined;
@@ -1557,30 +1511,28 @@ var Util = {
       this.AddMarker('you_are_here', int('yah_sx'), int('yah_sy'), int('yah_hx'), int('yah_hy'));
 
     if (has(params, ['yah_sector'])) {
-      MapService.coordinates(
-        params.yah_sector, params.yah_hex,
-        function(location) {
+      MapService.coordinates(params.yah_sector, params.yah_hex)
+        .then(function(location) {
           if (!(location.hx && location.hy)) {
             location.hx = Astrometrics.SectorWidth / 2;
             location.hy = Astrometrics.SectorHeight / 2;
           }
           self.AddMarker('you_are_here', location.sx, location.sy, location.hx, location.hy);
-        },
-        function() {
+        })
+        .catch(function() {
           alert('The requested marker location "' + params.yah_sector + ('yah_hex' in params ? (' ' + params.yah_hex) : '') + '" was not found.');
         });
     }
     if (has(params, ['marker_sector', 'marker_url'])) {
-      MapService.coordinates(
-        params.marker_sector, params.marker_hex,
-        function(location) {
+      MapService.coordinates(params.marker_sector, params.marker_hex)
+        .then(function(location) {
           if (!(location.hx && location.hy)) {
             location.hx = Astrometrics.SectorWidth / 2;
             location.hy = Astrometrics.SectorHeight / 2;
           }
           self.AddMarker('custom', location.sx, location.sy, location.hx, location.hy, params.marker_url);
-        },
-        function() {
+        })
+        .catch(function() {
           alert('The requested marker location "' + params.marker_sector + ('marker_hex' in params ? (' ' + params.marker_hex) : '') + '" was not found.');
         });
     }
@@ -1605,16 +1557,15 @@ var Util = {
       this.ScaleCenterAtSectorHex(
         float('scale'), float('sx'), float('sy'), float('hx'), float('hy'));
     } else if ('sector' in params) {
-      MapService.coordinates(
-        params.sector, params.hex,
-        function(location) {
+      MapService.coordinates(params.sector, params.hex)
+        .then(function(location) {
           if (location.hx && location.hy) { // NOTE: Test for undefined -or- zero
             self.ScaleCenterAtSectorHex(64, location.sx, location.sy, location.hx, location.hy);
           } else {
             self.ScaleCenterAtSectorHex(16, location.sx, location.sy, Astrometrics.SectorWidth / 2, Astrometrics.SectorHeight / 2);
           }
-        },
-        function() {
+        })
+        .catch(function() {
           alert('The requested location "' + params.sector + ('hex' in params ? (' ' + params.hex) : '') + '" was not found.');
         });
     }

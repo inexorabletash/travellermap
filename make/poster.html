@@ -2,10 +2,10 @@
 <title>Poster Maker - Traveller Map</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="shortcut icon" href="../favicon.ico">
-<link rel="stylesheet" href="../site.css?update=2015-01-02">
-<script src="../lib/polyfill/polyfill.min.js?update=2015-04-25"></script>
-<script src="../map.js?update=2015-04-14"></script>
-<script src="post.js?update=2014-11-13"></script>
+<link rel="stylesheet" href="../site.css?update=2015-07-19">
+<script src="../lib/polyfill/polyfill.min.js?update=2015-07-29"></script>
+<script src="../map.js?update=2015-07-29"></script>
+<script src="post.js?update=2015-07-29"></script>
 
 <h1>The Traveller Map - Poster Maker</h1>
 <div id="content" style="width: 660px;">
@@ -203,7 +203,7 @@ Select a sector, or enter your own data below:
 
     var form = $('#form');
     form.target = 'iframe';
-    form.action = Traveller.SERVICE_BASE + '/api/poster';
+    form.action = Traveller.MapService.makeURL('/api/poster');
     $('#thumb').value = '1';
     var accept = $('#accept').value;
     $('#accept').value = '';
@@ -218,7 +218,7 @@ Select a sector, or enter your own data below:
 
     var form = $('#form');
     form.target = '_blank';
-    form.action = Traveller.SERVICE_BASE + '/api/poster';
+    form.action = Traveller.MapService.makeURL('/api/poster');
     form.submit();
   });
 
@@ -228,7 +228,7 @@ Select a sector, or enter your own data below:
 
     var form = $('#form');
     form.target = '_blank';
-    form.action = Traveller.SERVICE_BASE + '/api/jumpmap';
+    form.action = Traveller.MapService.makeURL('/api/jumpmap');
     form.submit();
   });
 }());

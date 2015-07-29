@@ -1,11 +1,10 @@
 ﻿<!DOCTYPE html>
 <title>Border Generation</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="stylesheet" href="../site.css?update=2014-07-31">
+<link rel="stylesheet" href="../site.css?update=2015-07-19">
 
-<script src="../lib/polyfill/polyfill.min.js?update=2014-09-08"></script>
-<script src="../lib/polyfill/url.js?update=2014-09-08"></script>
-<script src="../map.js?update=2014-09-08"></script>
+<script src="../lib/polyfill/polyfill.min.js?update=2015-07-29"></script>
+<script src="../map.js?update=2015-07-29"></script>
 <script src="borders.js"></script>
 <script>
 
@@ -223,34 +222,33 @@ function join(tasks, completion) {
 
 function loadSector(sx, sy, callback) {
   var sectorName = undefined;
-  Traveller.MapService.sectorDataTabDelimited(
-    sectorName,
-    function(data) {
-      var worlds = [];
-      var lines = data.split(/\r?\n/);
-      var header = lines.shift().toLowerCase().split('\t');
-      lines.forEach(function (line) {
-        if (!line.length)
-          return;
+  Traveller.MapService.sectorDataTabDelimited(sectorName, {sx: sx, sy: sy})
+           .then(function(data) {
+             var worlds = [];
+             var lines = data.split(/\r?\n/);
+             var header = lines.shift().toLowerCase().split('\t');
+             lines.forEach(function (line) {
+               if (!line.length)
+                 return;
 
-        var world = {};
-        line.split('\t').forEach(function (field, index) {
-          world[header[index]] = field;
-        });
+               var world = {};
+               line.split('\t').forEach(function (field, index) {
+                 world[header[index]] = field;
+               });
 
-        world.x = parseInt(world.hex.substring(0, 2), 10);
-        world.y = parseInt(world.hex.substring(2, 4), 10);
-        worlds.push(world);
-      });
-      callback(worlds);
-    },
-    function(error) { callback([]); },
-    {sx: sx, sy: sy});
+               world.x = parseInt(world.hex.substring(0, 2), 10);
+               world.y = parseInt(world.hex.substring(2, 4), 10);
+               worlds.push(world);
+             });
+             callback(worlds);
+           })
+           .catch(function(error) { callback([]); });
 }
 
 function sectorCoords(name, callback) {
-  Traveller.MapService.coordinates(
-    name, undefined, callback, function() { callback(); });
+  Traveller.MapService.coordinates(name)
+           .then(callback)
+           .catch(function() { callback(); });
 }
 
 window.onload = function() {

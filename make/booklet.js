@@ -166,38 +166,30 @@
   }
 
   function sectorData(params) {
-    return new Promise(function(resolve, reject) {
-      if ('sector' in params) {
-        Traveller.MapService.sectorDataTabDelimited(params.sector, resolve, reject);
-      } else if ('data' in params) {
-        resolve(getTextViaPOST(
-          Util.makeURL(Traveller.SERVICE_BASE + '/api/sec', {type: 'TabDelimited'}),
-          params.data
-        ));
-      } else {
-        reject('No sector or data specified.');
-      }
-    });
+    if ('sector' in params)
+      return Traveller.MapService.sectorDataTabDelimited(params.sector);
+
+    if ('data' in params) {
+      return getTextViaPOST(
+        Traveller.MapService.makeURL('/api/sec', {type: 'TabDelimited'}),
+        params.data);
+    }
+
+    return Promise.reject(new Error('No sector or data specified.'));
   }
 
   function sectorMetaData(params) {
-    return new Promise(function(resolve, reject) {
-      if ('sector' in params) {
-        Traveller.MapService.sectorMetaData(params.sector, resolve, reject);
-        return;
-      } else if ('metadata' in params) {
-        getTextViaPOST(
-          Util.makeURL(Traveller.SERVICE_BASE + '/api/metadata', {accept: 'application/json'}),
-          params.metadata
-        ).then(function(text) {
-          resolve(JSON.parse(text));
-        }, function(error) {
-          reject(error);
-        });
-      } else {
-        reject('No sector or metadata specified.');
-      }
-    });
+    if ('sector' in params)
+      return Traveller.MapService.sectorMetaData(params.sector);
+
+    if ('metadata' in params) {
+      return getJSONViaPOST(
+        Traveller.MapService.makeURL('/api/metadata', {accept: 'application/json'}),
+        params.metadata
+      );
+    }
+
+    return Promise.reject(new Error('No sector or metadata specified.'));
   }
 
   window.addEventListener('DOMContentLoaded', function() {
@@ -267,12 +259,12 @@
       };
       if ('sector' in params) {
         url_params.sector = params.sector;
-        imageURL = Promise.resolve(Util.makeURL(Traveller.SERVICE_BASE + '/api/poster', url_params));
+        imageURL = Promise.resolve(Traveller.MapService.makeURL('/api/poster', url_params));
       } else {
         url_params.data = params.data;
         url_params.metadata = params.metadata;
         url_params.datauri = 1;
-        imageURL = getTextViaPOST(Traveller.SERVICE_BASE + '/api/poster', url_params);
+        imageURL = getTextViaPOST(Traveller.MapService.makeURL('/api/poster'), url_params);
       }
       pending_promises.push(imageURL.then(function(url) {
         return function() { $('img.sector-image').src = url; };
@@ -384,12 +376,12 @@
         };
         if ('sector' in params) {
           url_params.sector = params.sector;
-          imageURL = Promise.resolve(Util.makeURL(Traveller.SERVICE_BASE + '/api/poster', url_params));
+          imageURL = Promise.resolve(Traveller.MapService.makeURL('/api/poster', url_params));
         } else {
           url_params.data = params.data;
           url_params.metadata = params.metadata;
           url_params.datauri = 1;
-          imageURL = getTextViaPOST(Traveller.SERVICE_BASE + '/api/poster', url_params);
+          imageURL = getTextViaPOST(Traveller.MapService.makeURL('/api/poster'), url_params);
         }
         pending_promises.push(imageURL.then(function(url) {
           return function() {

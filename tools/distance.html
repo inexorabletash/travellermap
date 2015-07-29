@@ -2,10 +2,9 @@
 <title>Distance Calculator - Traveller Map</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="shortcut icon" href="../favicon.ico">
-<link rel="stylesheet" href="../site.css?update=2015-01-02">
-<script src="../lib/polyfill/polyfill.min.js?update=2015-04-25"></script>
-<script src="../lib/polyfill/es6.js?update=1969-12-31"></script>
-<script src="../map.js?update=2015-04-14"></script>
+<link rel="stylesheet" href="../site.css?update=2015-07-19">
+<script src="../lib/polyfill/polyfill.min.js?update=2015-07-29"></script>
+<script src="../map.js?update=2015-07-29"></script>
 <style>
   td, div { padding-top: 0.5em; }
 </style>
@@ -38,12 +37,6 @@ window.addEventListener('DOMContentLoaded', function () {
     $('#'+id).addEventListener('change', refresh);
   });
 
-  function coords(sec, hex) {
-    return new Promise(function(resolve, reject) {
-      Traveller.MapService.coordinates(sec, hex, resolve, reject);
-    });
-  }
-
   function distance(a, b) {
     var dx = b.x - a.x;
     var dy = b.y - a.y;
@@ -65,13 +58,13 @@ window.addEventListener('DOMContentLoaded', function () {
 
   function refresh() {
     Promise.all([
-      coords($('#startsec').value, $('#starthex').value),
-      coords($('#endsec').value, $('#endhex').value)
+      Traveller.MapService.coordinates($('#startsec').value, $('#starthex').value),
+      Traveller.MapService.coordinates($('#endsec').value, $('#endhex').value)
     ]).then(function(coords) {
       var dist = distance(coords[0], coords[1]);
       $('#distance').value = dist;
     }).catch(function(reason) {
-      console.warn('Oops: ' + reason);
+      $('#distance').value = reason.message;
     });
   }
 });
