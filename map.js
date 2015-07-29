@@ -1518,8 +1518,7 @@ var Util = {
             location.hy = Astrometrics.SectorHeight / 2;
           }
           self.AddMarker('you_are_here', location.sx, location.sy, location.hx, location.hy);
-        })
-        .catch(function() {
+        }, function() {
           alert('The requested marker location "' + params.yah_sector + ('yah_hex' in params ? (' ' + params.yah_hex) : '') + '" was not found.');
         });
     }
@@ -1531,8 +1530,7 @@ var Util = {
             location.hy = Astrometrics.SectorHeight / 2;
           }
           self.AddMarker('custom', location.sx, location.sy, location.hx, location.hy, params.marker_url);
-        })
-        .catch(function() {
+        }, function() {
           alert('The requested marker location "' + params.marker_sector + ('marker_hex' in params ? (' ' + params.marker_hex) : '') + '" was not found.');
         });
     }
@@ -1564,8 +1562,7 @@ var Util = {
           } else {
             self.ScaleCenterAtSectorHex(16, location.sx, location.sy, Astrometrics.SectorWidth / 2, Astrometrics.SectorHeight / 2);
           }
-        })
-        .catch(function() {
+        }, function() {
           alert('The requested location "' + params.sector + ('hex' in params ? (' ' + params.hex) : '') + '" was not found.');
         });
     }

@@ -1,6 +1,3 @@
-// Externs
-var Traveller, Util, Handlebars;
-
 window.addEventListener('DOMContentLoaded', function() {
   'use strict';
 
@@ -550,7 +547,7 @@ window.addEventListener('DOMContentLoaded', function() {
         document.body.classList.remove('search-progress');
         document.body.classList.add('search-results');
       })
-      .catch(function() {
+      ['catch'](function() {
         searchRequest = null;
         $('#resultsContainer').innerHTML = '<i>Error fetching results.</i>';
         document.body.classList.remove('search-progress');
