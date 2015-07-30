@@ -546,8 +546,7 @@ window.addEventListener('DOMContentLoaded', function() {
         displayResults(data);
         document.body.classList.remove('search-progress');
         document.body.classList.add('search-results');
-      })
-      ['catch'](function() {
+      }, function() {
         searchRequest = null;
         $('#resultsContainer').innerHTML = '<i>Error fetching results.</i>';
         document.body.classList.remove('search-progress');
