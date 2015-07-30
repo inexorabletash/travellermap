@@ -312,23 +312,6 @@ var Util = {
     style: Styles.Poster
   };
 
-  // ======================================================================
-  // Helper functions to normalize behavior across event models
-  // ======================================================================
-
-  var DOMHelpers = {
-    setCapture: function(element) {
-      // Prevents click events in FF (?!?)
-      var isIE = navigator.userAgent.indexOf('MSIE') !== -1;
-      if (isIE && 'setCapture' in element)
-        element.setCapture(true);
-    },
-    releaseCapture: function(element) {
-      var isIE = navigator.userAgent.indexOf('MSIE') !== -1;
-      if (isIE && 'releaseCapture' in element)
-        element.releaseCapture();
-    }
-  };
 
   // ======================================================================
   // Animation Utilities
@@ -623,7 +606,6 @@ var Util = {
       var coords = eventCoords(e);
       drag_x = coords.x;
       drag_y = coords.y;
-      DOMHelpers.setCapture(container);
       container.classList.add('dragging');
 
       e.preventDefault();
@@ -660,7 +642,6 @@ var Util = {
       if (dragging) {
         dragging = false;
         container.classList.remove('dragging');
-        DOMHelpers.releaseCapture(document);
         e.preventDefault();
         e.stopPropagation();
       }
