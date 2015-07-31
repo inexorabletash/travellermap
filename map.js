@@ -258,23 +258,25 @@ var Util = {
   // Least-Recently-Used Cache
   // ======================================================================
 
-  var LRUCache = function(capacity) {
+  function LRUCache(capacity) {
     this.capacity = capacity;
-    this.cache = {};
+    this.map = {};
     this.queue = [];
-
-    this.ensureCapacity = function(capacity) {
+  }
+  LRUCache.prototype = {
+    ensureCapacity: function(capacity) {
       if (this.capacity < capacity)
         this.capacity = capacity;
-    };
+    },
 
-    this.clear = function() {
-      this.cache = [];
+    clear: function() {
+      this.map = {};
       this.queue = [];
-    };
+    },
 
-    this.fetch = function(key) {
-      var value = this.cache[key];
+    fetch: function(key) {
+      key = '$' + key;
+      var value = this.map[key];
       if (value === undefined)
         return undefined;
 
@@ -283,22 +285,23 @@ var Util = {
         this.queue.splice(index, 1);
       this.queue.push(key);
       return value;
-    };
+    },
 
-    this.insert = function(key, value) {
+    insert: function(key, value) {
+      key = '$' + key;
       // Remove previous instances
       var index = this.queue.indexOf(key);
       if (index !== -1)
         this.queue.splice(index, 1);
 
-      this.cache[key] = value;
+      this.map[key] = value;
       this.queue.push(key);
 
       while (this.queue.length > this.capacity) {
         key = this.queue.shift();
-        delete this.cache[key];
+        delete this.map[key];
       }
-    };
+    }
   };
 
   var Defaults = {
@@ -318,7 +321,6 @@ var Util = {
   // ======================================================================
 
   var Animation = (function() {
-
     function isCallable(o) {
       return typeof o === 'function';
     }
@@ -328,10 +330,13 @@ var Util = {
     // smooth = optional smoothing function
     // set onanimate to function called with animation position (0.0 ... 1.0)
     //
-    var Animation = function(dur, smooth) {
+    function Animation(dur, smooth) {
       var start = Date.now();
-      var self = this;
+      var $this = this;
       this.timerid = requestAnimationFrame(tickFunc);
+      this.onanimate = null;
+      this.oncancel = null;
+      this.oncomplete = null;
 
       function tickFunc() {
         var f = (Date.now() - start) / 1000 / dur;
@@ -342,19 +347,21 @@ var Util = {
         if (isCallable(smooth))
           p = smooth(p);
 
-        if (isCallable(self.onanimate))
-          self.onanimate(p);
+        if (isCallable($this.onanimate))
+          $this.onanimate(p);
 
-        if (f >= 1.0 && isCallable(self.oncomplete))
-          self.oncomplete();
+        if (f >= 1.0 && isCallable($this.oncomplete))
+          $this.oncomplete();
       }
-    };
+    }
 
-    Animation.prototype.cancel = function() {
-      if (this.timerid) {
-        cancelAnimationFrame(this.timerid);
-        if (isCallable(this.oncancel))
-          this.oncancel();
+    Animation.prototype = {
+      cancel: function() {
+        if (this.timerid) {
+          cancelAnimationFrame(this.timerid);
+          if (isCallable(this.oncancel))
+            this.oncancel();
+        }
       }
     };
 
@@ -489,8 +496,7 @@ var Util = {
   var SINK_OFFSET = 1000;
 
   function Map(container) {
-
-    var self = this; // For event closures that may muck with 'this'
+    var self = this;
 
     this.container = container;
 
@@ -826,7 +832,7 @@ var Util = {
   }
 
   // ======================================================================
-  // Private Methods
+  // Internal Methods
   // ======================================================================
 
   Map.prototype.offset = function(dx, dy) {
@@ -1186,8 +1192,7 @@ var Util = {
     var self = this;
     this.animation.onanimate = function(p) {
       // Interpolate scale in log space.
-      self.SetScale(Math.pow(2, Animation.interpolate(
-        Math.log(os)/Math.LN2, Math.log(ts)/Math.LN2, p)));
+      self.SetScale(pow2(Animation.interpolate(log2(os), log2(ts), p)));
       // TODO: If animating scale, this should follow an arc (parabola?) through 3space treating
       // scale as Z and computing a height such that the target is in view at the turnaround.
       self.SetPosition(Animation.interpolate(ox, tx, p), Animation.interpolate(oy, ty, p));
