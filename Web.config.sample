@@ -95,6 +95,8 @@
       <clientCache cacheControlCustom="public" cacheControlMode="UseMaxAge" cacheControlMaxAge="24:00:00"/>
       <remove fileExtension=".json"/> <!-- May be present already in IIS8 -->
       <mimeMap fileExtension=".json" mimeType="application/json" />
+      <remove fileExtension=".svg"/> <!-- May be present already in IIS8 -->
+      <mimeMap fileExtension=".svg" mimeType="image/svg+xml"/>
       <mimeMap fileExtension=".sec" mimeType="text/plain" />
       <mimeMap fileExtension=".msec" mimeType="text/plain" />
       <mimeMap fileExtension=".t5col" mimeType="text/plain" />
