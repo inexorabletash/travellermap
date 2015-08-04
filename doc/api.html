@@ -94,7 +94,6 @@ table#features, #features th, #features td { border: solid 1px black; }
             <ul>
                 <li><a href="#systems">Coordinate Systems</a> &ndash; what the x and y parameters mean in different APIs
                 <li><a href="#jsonp">JSONP</a> &ndash; How to use data from this in your web pages
-                <li><a href="#script">Scripts</a> &ndash; dig into the brains of the site itself
             </ul>
 
     </ul>
@@ -257,8 +256,8 @@ table#features, #features th, #features td { border: solid 1px black; }
       rendering options. In addition, the flags do not correspond 1:1
       to options shown on the main map page as the as the UI has
       evolved and simplified over time. Specifically, the pairs
-      SectorGrid/<wbr>SubsectorGrid, BordersMajor/<wbr>BordersMinor,
-      NamesMajor/<wbr>NamesMinor, and WorldsCapitals/<wbr>WorldsHomeworlds are
+      SectorGrid/&#x200B;SubsectorGrid, BordersMajor/&#x200B;BordersMinor,
+      NamesMajor/&#x200B;NamesMinor, and WorldsCapitals/&#x200B;WorldsHomeworlds are
       always set/cleared together by one checkbox.
     </p>
     <script>
@@ -1448,7 +1447,8 @@ y = ( -map_center_y * scale - ( height / 2 ) ) / height;
     you know your users will be accessing your site using reasonably
     <a target="_blank" href="http://caniuse.com/#search=cors">up-to-date browsers</a>
     you can call the APIs directly via
-    <a href="http://en.wikipedia.org/wiki/XMLHttpRequest">XMLHttpRequest</a>
+    <a href="https://fetch.spec.whatwg.org">fetch</a> or
+    <a href="https://xhr.spec.whatwg.org">XMLHttpRequest</a>
     rather than using JSONP trick described below.
   </p>
   <p>
@@ -1495,76 +1495,72 @@ y = ( -map_center_y * scale - ( height / 2 ) ) / height;
   <p>For example, here's how you could implement a search function on your site:</p>
 
   <pre class="code">
-<span class="comment">// Call this function with a search query:</span>
-function jsonp_example(q) {
-  var url = <span class="string">'http://travellermap.com'</span> +
-            <span class="string">'/api/search?q='</span> + encodeURIComponent(q) + <span class="string">'&amp;jsonp=cbfn'</span>;
+<span class="comment">// Call this function with a search query and callback:</span>
+function jsonp_example(q, cb) {
+  var name = <span class="string">'_cbfun'</span>;
+  var url = <span class="string">'http://travellermap.com/api/search?q='</span> +
+            encodeURIComponent(q) + <span class="string">'&amp;jsonp='</span> + name;
   var script_tag = document.createElement(<span class="string">'script'</span>);
   script_tag.setAttribute(<span class="string">'src'</span>, url);
+  window[name] = function(data) {
+    window[name] = null;
+    document.body.removeChild(script_tag);
+    cb(data);
+  };
   document.body.appendChild(script_tag);
 }
 
-<span class="comment">// This function is called automatically with the results:</span>
-function cbfn(data) {
-  window.alert('Callback, got ' + data.Results.Count + ' results.');
-}
+<span class="comment">// Example:</span>
+jsonp_example('Regina', function(data) {
+    alert(<span class="string">'Result count: '</span> + data.Results.Count);
+});
   </pre>
 
   <h4>Example:</h4>
   <p>
-      <a href="#" onclick="jsonp_example('Regina'); return false;">Make a JSONP call</a>
+      <a href="#" onclick="jsonp_demo(); return false;">Make a JSONP call</a>
   </p>
 
   <script>
-    function jsonp_example(q) {
-      // This is the function you call to make the JSONP request,
-      // for example when the user clicks a link
-      var url = 'http://travellermap.com/api/search' +
-          '?q=' + encodeURIComponent(q) +
-          '&jsonp=cbfn';
-      var script_tag = document.createElement('script');
-      script_tag.setAttribute('src', url);
-      document.body.appendChild(script_tag);
-    }
-    function cbfn(data) {
-      // This is called automatically with the results
-      window.alert('Callback, got ' + data.Results.Count + ' results.');
-    }
+// Call this function with a search query and callback:
+function jsonp_example(q, cb) {
+  var name = '_cbfun';
+  var url = 'http://travellermap.com/api/search?q=' +
+            encodeURIComponent(q) + '&jsonp=' + name;
+  var script_tag = document.createElement('script');
+  script_tag.setAttribute('src', url);
+  window[name] = function(data) {
+    window[name] = null;
+    document.body.removeChild(script_tag);
+    cb(data);
+  };
+  document.body.appendChild(script_tag);
+}
+
+// Example:
+function jsonp_demo() {
+  jsonp_example('Regina', function(data) {
+    alert('Result count: ' + data.Results.Count);
+  });
+}
   </script>
 </section>
 
-  <section id="script">
-    <h3>Script &ndash; dig into the brains of the site itself</h3>
-    <p>
-        The <a href="https://github.com/inexorabletash/travellermap/blob/master/map.js">script file</a> that implements the site logic is full of goodies, such
-        as the mechanism to convert coordinate spaces between the map's internal format and <b><i>Traveller</i></b>
-        parsec numbering, and the definitions of the options that are referenced in various APIs.
-    </p>
-    <p>
-        Specifically, the following scripts are used:
-    </p>
-    <ul>
-        <li><a href="https://github.com/inexorabletash/travellermap/blob/master/map.js">map.js</a> &ndash; the main map logic
-        <li><a href="https://github.com/inexorabletash/travellermap/blob/master/index.js">index.js</a> &ndash; drives the rest of the page
-        <li><a href="http://handlebarsjs.com/">Handlebars.js</a> by Yehuda Katz, for page templating
-    </ul>
-  </section>
   </section>
 
 </div>
 
 <script>
   (function () {
-    function escapeHTML(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
-
-    [].slice.call(document.querySelectorAll('pre')).forEach(function (pre) {
+    // Remove leading/trailing lines from <pre>
+    Array.from(document.querySelectorAll('pre')).forEach(function (pre) {
       pre.innerHTML = pre.innerHTML.replace(/(^ +\r?\n)|(\r?\n +$)/g, '');
     });
 
-    [].slice.call(document.querySelectorAll('a.example')).forEach(function (a) {
-      a.innerHTML = escapeHTML(a.href);
+    // Shortcut: <a class="example" href="foo"></a>
+    Array.from(document.querySelectorAll('a.example')).forEach(function (a) {
+      a.appendChild(document.createTextNode(a.href));
     });
-
   }());
 </script>
 

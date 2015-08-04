@@ -702,7 +702,7 @@ and players. This allows us to establish a canonical data format.
 
 <p>
 The format utilizes the UTF-8 encoding. Therefore, each character may
-take more than one byte, but all of Earth's writing systems can be
+take more than one byte, but most of Earth's writing systems can be
 represented using <a href="http://unicode.org">Unicode</a>.
 
 This is a line-oriented, plain text,
@@ -770,13 +770,14 @@ human-readable plain text format for the
 
 <p>
 The format utilizes the UTF-8 encoding. Therefore, each character may
-take more than one byte, but all of Earth's writing systems can be
+take more than one byte, but most of Earth's writing systems can be
 represented using <a href="http://unicode.org">Unicode</a>.
 This is a variable-width, line-oriented format. Fields are fixed
 width, separated by one space, left aligned and padded by spaces.
 Lines in the file are terminated with either LF
 (U+000A) or CR+LF (U+000D, U+000A).
-There is no escaping mechanism line breaking characters may occur within fields.
+There is no escaping mechanism  &ndash; neither tabs nor
+line breaking characters may occur within fields.
 </p>
 
 <p>
