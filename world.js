@@ -301,6 +301,9 @@
     [ /^[A-Z][A-Za-z']{3}0$/, 'Sophont, Population < 10%'],
     [ /^[A-Z][A-Za-z']{3}([1-9])$/, 'Sophont, Population $1$`0%'],
     [ /^[A-Z][A-Za-z']{3}W$/, 'Sophont, Population 100%']
+
+    // Comments
+    [ /^\{.*\}$/, ''],
   ];
 
   // Legacy Sophont Codes (Aw, A#)
@@ -434,7 +437,7 @@
     }
 
     if (world.Remarks) {
-      world.Remarks = world.Remarks.match(/\([^)]*\)\d*|\[[^\]]*\]\d*|\S+/g).map(function(s){
+      world.Remarks = world.Remarks.match(/\([^)]*\)\d*|\[[^\]]*\]\d*|{[^}]}|\S+/g).map(function(s){
         if (s in REMARKS_TABLE) return {code: s, detail: REMARKS_TABLE[s]};
         for (var i = 0; i < REMARKS_PATTERNS.length; ++i) {
           var pattern = REMARKS_PATTERNS[i][0], replacement = REMARKS_PATTERNS[i][1];
