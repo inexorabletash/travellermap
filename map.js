@@ -160,7 +160,8 @@ var Util = {
     Atlas: 'atlas',
     Print: 'print',
     Candy: 'candy',
-    Draft: 'draft'
+    Draft: 'draft',
+    FASA: 'fasa'
   };
 
   //----------------------------------------------------------------------
@@ -338,6 +339,30 @@ var Util = {
     scale: 2,
     style: Styles.Poster
   };
+
+  var styleLookup = (function() {
+    var sheets = {};
+    var base = {
+      overlay_color: '#8080ff',
+      you_are_here_url: 'res/ui/youarehere.png'
+    };
+    sheets[Styles.Poster] = base;
+    sheets[Styles.Candy] = base;
+    sheets[Styles.Draft] = base;
+    sheets[Styles.Atlas] = Object.assign({}, base, {
+      overlay_color: '#808080',
+      you_are_here_url: 'res/ui/youarehere_gray.png'
+    });
+    sheets[Styles.FASA] = sheets[Styles.Print] =
+      Object.assign({}, base, {
+        you_are_here_url: 'res/ui/youarehere_gray.png'
+      });
+
+    return function(style, property) {
+      var sheet = sheets[style] || sheets[Defaults.style];
+      return sheet[property];
+    };
+  }());
 
   // ======================================================================
   // Animation Utilities
@@ -1264,33 +1289,28 @@ var Util = {
       ctx.save();
       ctx.translate(-this.canvas.offset_x, -this.canvas.offset_y);
       ctx.globalCompositeOperation = 'source-over';
-      ctx.fillStyle = '#8080ff';
+      ctx.fillStyle = styleLookup(this.style, 'overlay_color');
       ctx.globalAlpha = 0.5;
       ctx.fillRect(pt1.x, pt1.y, pt2.x - pt1.x, pt1.y - pt2.y);
       ctx.restore();
       return;
     }
 
-    var div;
-    if (overlay.element && overlay.element.parentNode) {
-      overlay.element.parentNode.removeChild(overlay.element);
-      div = overlay.element;
-    } else {
-      div = document.createElement('div');
-      overlay.element = div;
+    var div = overlay.element;
+    if (!div) {
+      div = overlay.element = document.createElement('div');
+      div.className = 'overlay';
+      div.id = overlay.id;
+      div.style.zIndex = overlay.z;
     }
-
-    div.className = 'overlay';
-    div.id = overlay.id;
 
     div.style.left = String(pt1.x) + 'px';
     div.style.top = String(pt1.y) + 'px';
     div.style.width = String(pt2.x - pt1.x) + 'px';
     div.style.height = String(pt1.y - pt2.y) + 'px';
-    div.style.zIndex = overlay.z;
 
-    overlay.element = div;
-    this.container.appendChild(div);
+    if (div.parentNode !== this.container)
+      this.container.appendChild(div);
   };
 
   TravellerMap.prototype.drawMarker = function(marker) {
@@ -1298,47 +1318,57 @@ var Util = {
     var pt = sectorHexToLogical(marker.sx, marker.sy, marker.hx, marker.hy);
     pt = this.logicalToPixel(pt.x, pt.y);
 
-    // TODO: Draw non-URL markers with canvas.
-
     if (this.ctx && marker.url) {
-      var image = stash.get(marker.url, function() { self.invalidate(); });
-      if (!image) return;
+      (function() {
+        var image = stash.get(marker.url, function() { self.invalidate(); });
+        if (!image) return;
 
-      var SIZE = 128;
-      var ctx = this.ctx;
-      ctx.save();
-      ctx.translate(-this.canvas.offset_x, -this.canvas.offset_y);
-      ctx.globalCompositeOperation = 'source-over';
-      ctx.drawImage(image,
-                    pt.x - SIZE/2, pt.y - SIZE/2,
-                    SIZE, SIZE);
-      ctx.restore();
+        var SIZE = 128;
+        var ctx = self.ctx;
+        ctx.save();
+        ctx.translate(-self.canvas.offset_x, -self.canvas.offset_y);
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.drawImage(image,
+                      pt.x - SIZE/2, pt.y - SIZE/2,
+                      SIZE, SIZE);
+        ctx.restore();
+      }());
       return;
     }
 
-    var div;
-    if (marker.element && marker.element.parentNode) {
-      marker.element.parentNode.removeChild(marker.element);
-      div = marker.element;
-    } else {
-      div = document.createElement('div');
-      marker.element = div;
+    if (this.ctx && styleLookup(self.style, marker.id + '_url')) {
+      (function() {
+       var url = styleLookup(self.style, marker.id + '_url');
+        var image = stash.get(url, function() { self.invalidate(); });
+        if (!image) return;
+
+        var ctx = self.ctx;
+        ctx.save();
+        ctx.translate(-self.canvas.offset_x, -self.canvas.offset_y);
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.drawImage(image, pt.x, pt.y);
+        ctx.restore();
+      }());
+      return;
+    }
+
+    var div = marker.element;
+    if (!div) {
+      div = marker.element = document.createElement('div');
       if (marker.url) {
         var img = document.createElement('img');
         img.src = marker.url;
         div.appendChild(img);
       }
+      div.className = 'marker';
+      div.id = marker.id;
     }
-
-    div.className = 'marker';
-    div.id = marker.id;
 
     div.style.left = String(pt.x) + 'px';
     div.style.top = String(pt.y) + 'px';
     div.style.zIndex = String(marker.z);
-
-    marker.element = div;
-    this.container.appendChild(div);
+    if (div.parentNode !== this.container)
+      this.container.appendChild(div);
   };
 
   TravellerMap.prototype.logicalToPixel = function(lx, ly) {
