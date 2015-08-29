@@ -1271,11 +1271,39 @@ var Util = {
   };
 
   Map.prototype.drawMarker = function(marker) {
+    var self = this;
     var pt = sectorHexToLogical(marker.sx, marker.sy, marker.hx, marker.hy);
     pt = this.logicalToPixel(pt.x, pt.y);
 
-    // TODO: Draw markers with canvas
-    // (tricky if no URL)
+    // TODO: Draw non-URL markers with canvas.
+
+    if (this.ctx && marker.url) {
+      if (!marker.image) {
+        marker.loading = true;
+        marker.image = document.createElement('img');
+        marker.image.src = marker.url;
+        marker.image.onload = function() {
+          marker.loading = false;
+          self.invalidate();
+        };
+        marker.image.onerror = function() {
+          marker.loading = false;
+        };
+        return;
+      }
+      if (marker.loading) return;
+
+      var SIZE = 128;
+      var ctx = this.ctx;
+      ctx.save();
+      ctx.translate(-this.canvas.offset_x, -this.canvas.offset_y);
+      ctx.globalCompositeOperation = 'source-over';
+      ctx.drawImage(marker.image,
+                    pt.x - SIZE/2, pt.y - SIZE/2,
+                    SIZE, SIZE);
+      ctx.restore();
+      return;
+    }
 
     var div;
     if (marker.element && marker.element.parentNode) {
