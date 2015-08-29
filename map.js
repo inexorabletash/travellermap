@@ -584,7 +584,6 @@ var Util = {
         this.canvas.style.top = oy + 'px';
         this.ctx.setTransform(1,0,0,1,0,0);
         this.ctx.scale(dpr, dpr);
-        this.ctx.globalCompositeOperation = 'destination-over';
       };
       this.resetCanvas();
     }
@@ -963,6 +962,31 @@ var Util = {
 
     for (i = 0; i < this.overlays.length; i += 1)
       this.makeOverlay(this.overlays[i]);
+
+
+    // "Empress Wave" Overlay
+    (function() {
+      if (self.tileOptions['ew'] && self.ctx) {
+        var scale = pow2(self.scale - 1);
+        var x = -164, y = 7000, r = 6820;
+        var w = 20;
+
+        self.ctx.save();
+        self.ctx.globalCompositeOperation = 'source-over';
+        self.ctx.globalAlpha = 0.3;
+        self.ctx.lineWidth = w * scale;
+        self.ctx.strokeStyle = 'yellow';
+        self.ctx.beginPath();
+        var pt = self.logicalToPixel(x, y);
+        self.ctx.arc(pt.x - self.canvas.offset_x,
+                     pt.y- self.canvas.offset_y,
+                     scale * r,
+                     Math.PI/2 - Math.PI/12,
+                     Math.PI/2 + Math.PI/12);
+        self.ctx.stroke();
+        self.ctx.restore();
+      }
+    }());
   };
 
   // Draw a rectangle (x1, y1) to (x2, y2) (or,  (l,t) to (r,b))
@@ -1018,6 +1042,7 @@ var Util = {
         var py = y | 0;
         var pw = ((x + w) | 0) - px;
         var ph = ((y + h) | 0) - py;
+        self.ctx.globalCompositeOperation = 'destination-over';
         self.ctx.drawImage(img, px, py, pw, ph);
         return;
       }
@@ -1476,7 +1501,9 @@ var Util = {
     }
 
     function int(prop) {
-      var n = parseInt(params[prop], 10);
+      var v = params[prop];
+      if (typeof v === 'boolean') return v ? 1 : 0;
+      var n = parseInt(v, 10);
       return isNaN(n) ? 0 : n;
     }
 
@@ -1553,7 +1580,7 @@ var Util = {
         });
     }
 
-    ['silly', 'routes', 'dimunofficial'].forEach(function(name) {
+    ['silly', 'routes', 'dimunofficial', 'ew'].forEach(function(name) {
       if (name in params)
         self.tileOptions[name] = int(name);
     });
