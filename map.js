@@ -958,10 +958,10 @@ var Util = {
     // Reposition markers and overlays
     var i;
     for (i = 0; i < this.markers.length; i += 1)
-      this.makeMarker(this.markers[i]);
+      this.drawMarker(this.markers[i]);
 
     for (i = 0; i < this.overlays.length; i += 1)
-      this.makeOverlay(this.overlays[i]);
+      this.drawOverlay(this.overlays[i]);
 
 
     // "Empress Wave" Overlay
@@ -971,20 +971,22 @@ var Util = {
         var x = -164, y = 7000, r = 6820;
         var w = 20;
 
-        self.ctx.save();
-        self.ctx.globalCompositeOperation = 'source-over';
-        self.ctx.globalAlpha = 0.3;
-        self.ctx.lineWidth = w * scale;
-        self.ctx.strokeStyle = 'yellow';
-        self.ctx.beginPath();
+        var ctx = self.ctx;
+        ctx.save();
+        ctx.translate(-this.canvas.offset_x, -this.canvas.offset_y);
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.globalAlpha = 0.3;
+        ctx.lineWidth = w * scale;
+        ctx.strokeStyle = 'yellow';
+        ctx.beginPath();
         var pt = self.logicalToPixel(x, y);
-        self.ctx.arc(pt.x - self.canvas.offset_x,
-                     pt.y- self.canvas.offset_y,
-                     scale * r,
-                     Math.PI/2 - Math.PI/12,
-                     Math.PI/2 + Math.PI/12);
-        self.ctx.stroke();
-        self.ctx.restore();
+        ctx.arc(pt.x,
+                pt.y,
+                scale * r,
+                Math.PI/2 - Math.PI/12,
+                Math.PI/2 + Math.PI/12);
+        ctx.stroke();
+        ctx.restore();
       }
     }());
   };
@@ -1225,9 +1227,26 @@ var Util = {
     };
   };
 
-  Map.prototype.makeOverlay = function(overlay) {
-    if (overlay === null)
+  Map.prototype.drawOverlay = function(overlay) {
+    // Compute physical location
+    var pt1 = this.logicalToPixel(overlay.x, overlay.y);
+    var pt2 = this.logicalToPixel(overlay.x + overlay.w, overlay.y + overlay.h);
+
+    if (this.ctx) {
+      var scale = pow2(self.scale - 1);
+      var x = -164, y = 7000, r = 6820;
+      var w = 20;
+
+      var ctx = this.ctx;
+      ctx.save();
+      ctx.translate(-this.canvas.offset_x, -this.canvas.offset_y);
+      ctx.globalCompositeOperation = 'source-over';
+      ctx.fillStyle = '#8080ff';
+      ctx.globalAlpha = 0.5;
+      ctx.fillRect(pt1.x, pt1.y, pt2.x - pt1.x, pt1.y - pt2.y);
+      ctx.restore();
       return;
+    }
 
     var div;
     if (overlay.element && overlay.element.parentNode) {
@@ -1237,10 +1256,6 @@ var Util = {
       div = document.createElement('div');
       overlay.element = div;
     }
-
-    // Compute physical location
-    var pt1 = this.logicalToPixel(overlay.x, overlay.y);
-    var pt2 = this.logicalToPixel(overlay.x + overlay.w, overlay.y + overlay.h);
 
     div.className = 'overlay';
     div.id = overlay.id;
@@ -1255,9 +1270,12 @@ var Util = {
     this.container.appendChild(div);
   };
 
-  Map.prototype.makeMarker = function(marker) {
-    if (marker === null)
-      return;
+  Map.prototype.drawMarker = function(marker) {
+    var pt = sectorHexToLogical(marker.sx, marker.sy, marker.hx, marker.hy);
+    pt = this.logicalToPixel(pt.x, pt.y);
+
+    // TODO: Draw markers with canvas
+    // (tricky if no URL)
 
     var div;
     if (marker.element && marker.element.parentNode) {
@@ -1272,9 +1290,6 @@ var Util = {
         div.appendChild(img);
       }
     }
-
-    var pt = sectorHexToLogical(marker.sx, marker.sy, marker.hx, marker.hy);
-    pt = this.logicalToPixel(pt.x, pt.y);
 
     div.className = 'marker';
     div.id = marker.id;
@@ -1471,7 +1486,7 @@ var Util = {
     };
 
     this.markers.push(marker);
-    this.makeMarker(marker);
+    this.invalidate();
   };
 
 
@@ -1488,7 +1503,7 @@ var Util = {
     };
 
     this.overlays.push(overlay);
-    this.makeOverlay(overlay);
+    this.invalidate();
   };
 
   Map.prototype.ApplyURLParameters = function() {
