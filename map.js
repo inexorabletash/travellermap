@@ -304,6 +304,30 @@ var Util = {
     }
   };
 
+  // ======================================================================
+  // Image Stash
+  // ======================================================================
+
+  function ImageStash() {
+    this.map = new Map();
+  }
+  ImageStash.prototype = {
+    get: function(url, callback) {
+      if (!this.map.has(url)) {
+        var image = document.createElement('img');
+        image.src = url;
+        this.map.set(url, image);
+        image.onload = function() {
+          image.loaded = true;
+          callback(image);
+        };
+      }
+      image = this.map.get(url);
+      return image.loaded ? image : undefined;
+    }
+  };
+  var stash = new ImageStash();
+
   var Defaults = {
     options:
     MapOptions.SectorGrid | MapOptions.SubsectorGrid |
@@ -314,7 +338,6 @@ var Util = {
     scale: 2,
     style: Styles.Poster
   };
-
 
   // ======================================================================
   // Animation Utilities
@@ -495,7 +518,7 @@ var Util = {
 
   var SINK_OFFSET = 1000;
 
-  function Map(container) {
+  function TravellerMap(container) {
     var self = this;
 
     this.container = container;
@@ -834,7 +857,7 @@ var Util = {
   // Internal Methods
   // ======================================================================
 
-  Map.prototype.offset = function(dx, dy) {
+  TravellerMap.prototype.offset = function(dx, dy) {
     if (dx === 0 && dy === 0)
       return;
 
@@ -846,7 +869,7 @@ var Util = {
     fireEvent(this, 'DisplayChanged');
   };
 
-  Map.prototype.setScale = function(newscale, px, py) {
+  TravellerMap.prototype.setScale = function(newscale, px, py) {
     var cw = this.width,
         ch = this.height;
 
@@ -874,7 +897,7 @@ var Util = {
     }
   };
 
-  Map.prototype.invalidate = function() {
+  TravellerMap.prototype.invalidate = function() {
     this.dirty = true;
     var self = this;
     if (!self._raf_handle) {
@@ -885,7 +908,7 @@ var Util = {
     }
   };
 
-  Map.prototype.redraw = function(force) {
+  TravellerMap.prototype.redraw = function(force) {
     if (!this.dirty && !force)
       return;
 
@@ -994,7 +1017,7 @@ var Util = {
   // Draw a rectangle (x1, y1) to (x2, y2) (or,  (l,t) to (r,b))
   // Recursive. Base Cases are: single tile or vertical|horizontal line
   // Decreasingly find the next-smaller rectangle to draw, then start drawing outward from the smallest rect to draw
-  Map.prototype.drawRectangle = function(x1, y1, x2, y2, scale, mult, ch, cw, cf, zIndex, callback) {
+  TravellerMap.prototype.drawRectangle = function(x1, y1, x2, y2, scale, mult, ch, cw, cf, zIndex, callback) {
     var self = this;
 
     var sizeMult = this.tilesize * mult;
@@ -1033,7 +1056,7 @@ var Util = {
   // are used to fill in the gap until it loads. When loaded, the callback
   // is called (which should redraw the whole map).
   //
-  Map.prototype.drawTile = function(x, y, scale, dx, dy, dw, dh, zIndex, callback) {
+  TravellerMap.prototype.drawTile = function(x, y, scale, dx, dy, dw, dh, zIndex, callback) {
     var self = this; // for closures
 
     function drawImage(img, x, y, w, h, z) {
@@ -1128,7 +1151,7 @@ var Util = {
   // the image is requested and the callback is called with the image
   // once it has successfully loaded.
   //
-  Map.prototype.getTile = function(x, y, scale, callback) {
+  TravellerMap.prototype.getTile = function(x, y, scale, callback) {
     if ('onLine' in navigator && !navigator.onLine)
       return undefined;
 
@@ -1181,7 +1204,7 @@ var Util = {
     return undefined;
   };
 
-  Map.prototype.shouldAnimateToSectorHex = function(scale, sx, sy, hx, hy) {
+  TravellerMap.prototype.shouldAnimateToSectorHex = function(scale, sx, sy, hx, hy) {
     // TODO: Allow scale changes if target is "visible" (zooming in)
     if (scale !== this.scale)
       return false;
@@ -1194,14 +1217,14 @@ var Util = {
     return Math.sqrt(dx * dx + dy * dy) < THRESHOLD;
   };
 
-  Map.prototype.cancelAnimation = function() {
+  TravellerMap.prototype.cancelAnimation = function() {
     if (this.animation) {
       this.animation.cancel();
       this.animation = null;
     }
   };
 
-  Map.prototype.animateToSectorHex = function(scale, sx, sy, hx, hy) {
+  TravellerMap.prototype.animateToSectorHex = function(scale, sx, sy, hx, hy) {
     this.cancelAnimation();
     var target = sectorHexToLogical(sx, sy, hx, hy),
         os = this.GetScale(),
@@ -1227,7 +1250,7 @@ var Util = {
     };
   };
 
-  Map.prototype.drawOverlay = function(overlay) {
+  TravellerMap.prototype.drawOverlay = function(overlay) {
     // Compute physical location
     var pt1 = this.logicalToPixel(overlay.x, overlay.y);
     var pt2 = this.logicalToPixel(overlay.x + overlay.w, overlay.y + overlay.h);
@@ -1270,7 +1293,7 @@ var Util = {
     this.container.appendChild(div);
   };
 
-  Map.prototype.drawMarker = function(marker) {
+  TravellerMap.prototype.drawMarker = function(marker) {
     var self = this;
     var pt = sectorHexToLogical(marker.sx, marker.sy, marker.hx, marker.hy);
     pt = this.logicalToPixel(pt.x, pt.y);
@@ -1278,27 +1301,15 @@ var Util = {
     // TODO: Draw non-URL markers with canvas.
 
     if (this.ctx && marker.url) {
-      if (!marker.image) {
-        marker.loading = true;
-        marker.image = document.createElement('img');
-        marker.image.src = marker.url;
-        marker.image.onload = function() {
-          marker.loading = false;
-          self.invalidate();
-        };
-        marker.image.onerror = function() {
-          marker.loading = false;
-        };
-        return;
-      }
-      if (marker.loading) return;
+      var image = stash.get(marker.url, function() { self.invalidate(); });
+      if (!image) return;
 
       var SIZE = 128;
       var ctx = this.ctx;
       ctx.save();
       ctx.translate(-this.canvas.offset_x, -this.canvas.offset_y);
       ctx.globalCompositeOperation = 'source-over';
-      ctx.drawImage(marker.image,
+      ctx.drawImage(image,
                     pt.x - SIZE/2, pt.y - SIZE/2,
                     SIZE, SIZE);
       ctx.restore();
@@ -1330,7 +1341,7 @@ var Util = {
     this.container.appendChild(div);
   };
 
-  Map.prototype.logicalToPixel = function(lx, ly) {
+  TravellerMap.prototype.logicalToPixel = function(lx, ly) {
     var f = pow2(1 - this.scale) / this.tilesize;
     return {
       x: ((lx / this.tilesize - this.x) / f) + this.width / 2,
@@ -1342,30 +1353,30 @@ var Util = {
   // Public API
   // ======================================================================
 
-  Map.prototype.GetHexX = function() {
+  TravellerMap.prototype.GetHexX = function() {
     return logicalToHex(this.GetX(), this.GetY()).hx;
   };
 
-  Map.prototype.GetHexY = function() {
+  TravellerMap.prototype.GetHexY = function() {
     return logicalToHex(this.GetX(), this.GetY()).hy;
   };
 
-  Map.prototype.GetScale = function() {
+  TravellerMap.prototype.GetScale = function() {
     return pow2(this.scale - 1);
   };
 
-  Map.prototype.SetScale = function(scale) {
+  TravellerMap.prototype.SetScale = function(scale) {
     scale = 1 + log2(Number(scale));
     if (scale === this.scale)
       return;
     this.setScale(scale);
   };
 
-  Map.prototype.GetOptions = function() {
+  TravellerMap.prototype.GetOptions = function() {
     return this.options;
   };
 
-  Map.prototype.SetOptions = function(options) {
+  TravellerMap.prototype.SetOptions = function(options) {
     if (LEGACY_STYLES) {
       // Handle legacy styles specified in options bits
       if ((options & MapOptions.StyleMaskDeprecated) === MapOptions.PrintStyleDeprecated)
@@ -1384,30 +1395,30 @@ var Util = {
     fireEvent(this, 'OptionsChanged', this.options);
   };
 
-  Map.prototype.SetNamedOption = function(name, value) {
+  TravellerMap.prototype.SetNamedOption = function(name, value) {
     this.tileOptions[name] = value;
     this.cache.clear();
     this.invalidate();
     fireEvent(this, 'OptionsChanged', this.options);
   };
-  Map.prototype.GetNamedOption = function(name) {
+  TravellerMap.prototype.GetNamedOption = function(name) {
     return this.tileOptions[name];
   };
-  Map.prototype.ClearNamedOption = function(name) {
+  TravellerMap.prototype.ClearNamedOption = function(name) {
     delete this.tileOptions[name];
     this.cache.clear();
     this.invalidate();
     fireEvent(this, 'OptionsChanged', this.options);
   };
-  Map.prototype.GetNamedOptionNames = function() {
+  TravellerMap.prototype.GetNamedOptionNames = function() {
     return Object.keys(this.tileOptions);
   };
 
-  Map.prototype.GetStyle = function() {
+  TravellerMap.prototype.GetStyle = function() {
     return this.style;
   };
 
-  Map.prototype.SetStyle = function(style) {
+  TravellerMap.prototype.SetStyle = function(style) {
     if (style === this.style)
       return;
 
@@ -1417,15 +1428,15 @@ var Util = {
     this.invalidate();
   };
 
-  Map.prototype.GetX = function() {
+  TravellerMap.prototype.GetX = function() {
     return this.x * this.tilesize;
   };
 
-  Map.prototype.GetY = function() {
+  TravellerMap.prototype.GetY = function() {
     return this.y * -this.tilesize;
   };
 
-  Map.prototype.SetPosition = function(x, y) {
+  TravellerMap.prototype.SetPosition = function(x, y) {
     x /= this.tilesize;
     y /= -this.tilesize;
     if (x === this.x && y === this.y) {
@@ -1440,7 +1451,7 @@ var Util = {
 
   // This places the specified Sector, Hex coordinates (parsec)
   // at the center of the viewport, with a specific scale.
-  Map.prototype.ScaleCenterAtSectorHex = function(scale, sx, sy, hx, hy) {
+  TravellerMap.prototype.ScaleCenterAtSectorHex = function(scale, sx, sy, hx, hy) {
     this.cancelAnimation();
 
     if (this.shouldAnimateToSectorHex(1 + log2(Number(scale)), sx, sy, hx, hy)) {
@@ -1454,14 +1465,14 @@ var Util = {
 
   // This places the specified Sector, Hex coordinates (parsec)
   // at the center of the viewport
-  Map.prototype.CenterAtSectorHex = function(sx, sy, hx, hy) {
+  TravellerMap.prototype.CenterAtSectorHex = function(sx, sy, hx, hy) {
     var target = sectorHexToLogical(sx, sy, hx, hy);
     this.SetPosition(target.x, target.y);
   };
 
 
   // Scroll the map view by the specified dx/dy (in pixels)
-  Map.prototype.Scroll = function(dx, dy, fAnimate) {
+  TravellerMap.prototype.Scroll = function(dx, dy, fAnimate) {
     if (!fAnimate) {
       this.offset(dx, dy);
       return;
@@ -1491,17 +1502,17 @@ var Util = {
     return Math.round(s / ZOOM_DELTA) * ZOOM_DELTA;
   }
 
-  Map.prototype.ZoomIn = function() {
+  TravellerMap.prototype.ZoomIn = function() {
     this.setScale(roundScale(this.scale) + ZOOM_DELTA);
   };
 
-  Map.prototype.ZoomOut = function() {
+  TravellerMap.prototype.ZoomOut = function() {
     this.setScale(roundScale(this.scale) - ZOOM_DELTA);
   };
 
 
   // NOTE: This API is subject to change
-  Map.prototype.AddMarker = function(id, sx, sy, hx, hy, opt_url) {
+  TravellerMap.prototype.AddMarker = function(id, sx, sy, hx, hy, opt_url) {
     var marker = {
       sx: sx,
       sy: sy,
@@ -1518,7 +1529,7 @@ var Util = {
   };
 
 
-  Map.prototype.AddOverlay = function(x, y, w, h) {
+  TravellerMap.prototype.AddOverlay = function(x, y, w, h) {
     // TODO: Take id, like AddMarker
     var overlay = {
       x: x,
@@ -1534,7 +1545,7 @@ var Util = {
     this.invalidate();
   };
 
-  Map.prototype.ApplyURLParameters = function() {
+  TravellerMap.prototype.ApplyURLParameters = function() {
     var self = this;
     var params = Util.parseURLQuery(document.location);
 
@@ -1639,7 +1650,7 @@ var Util = {
     SERVICE_BASE: SERVICE_BASE,
     LEGACY_STYLES: LEGACY_STYLES,
     Astrometrics: Astrometrics,
-    Map: Map,
+    Map: TravellerMap,
     MapOptions: MapOptions,
     Styles: Styles,
     MapService: MapService,
