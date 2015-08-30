@@ -181,6 +181,42 @@ var Util = {
     MaxScale: 512
   };
 
+  var Defaults = {
+    options:
+    MapOptions.SectorGrid | MapOptions.SubsectorGrid |
+      MapOptions.SectorsSelected |
+      MapOptions.BordersMajor | MapOptions.BordersMinor |
+      MapOptions.NamesMajor |
+      MapOptions.WorldsCapitals | MapOptions.WorldsHomeworlds,
+    scale: 2,
+    style: Styles.Poster
+  };
+
+  var styleLookup = (function() {
+    var sheets = {};
+    var base = {
+      overlay_color: '#8080ff',
+      you_are_here_url: 'res/ui/youarehere.png'
+    };
+    sheets[Styles.Poster] = base;
+    sheets[Styles.Candy] = base;
+    sheets[Styles.Draft] = base;
+    sheets[Styles.Atlas] = Object.assign({}, base, {
+      overlay_color: '#808080',
+      you_are_here_url: 'res/ui/youarehere_gray.png'
+    });
+    sheets[Styles.FASA] = sheets[Styles.Print] =
+      Object.assign({}, base, {
+        you_are_here_url: 'res/ui/youarehere_gray.png'
+      });
+
+    return function(style, property) {
+      var sheet = sheets[style] || sheets[Defaults.style];
+      return sheet[property];
+    };
+  }());
+
+
   // ======================================================================
   // Data Services
   // ======================================================================
@@ -329,40 +365,6 @@ var Util = {
   };
   var stash = new ImageStash();
 
-  var Defaults = {
-    options:
-    MapOptions.SectorGrid | MapOptions.SubsectorGrid |
-      MapOptions.SectorsSelected |
-      MapOptions.BordersMajor | MapOptions.BordersMinor |
-      MapOptions.NamesMajor |
-      MapOptions.WorldsCapitals | MapOptions.WorldsHomeworlds,
-    scale: 2,
-    style: Styles.Poster
-  };
-
-  var styleLookup = (function() {
-    var sheets = {};
-    var base = {
-      overlay_color: '#8080ff',
-      you_are_here_url: 'res/ui/youarehere.png'
-    };
-    sheets[Styles.Poster] = base;
-    sheets[Styles.Candy] = base;
-    sheets[Styles.Draft] = base;
-    sheets[Styles.Atlas] = Object.assign({}, base, {
-      overlay_color: '#808080',
-      you_are_here_url: 'res/ui/youarehere_gray.png'
-    });
-    sheets[Styles.FASA] = sheets[Styles.Print] =
-      Object.assign({}, base, {
-        you_are_here_url: 'res/ui/youarehere_gray.png'
-      });
-
-    return function(style, property) {
-      var sheet = sheets[style] || sheets[Defaults.style];
-      return sheet[property];
-    };
-  }());
 
   // ======================================================================
   // Animation Utilities
