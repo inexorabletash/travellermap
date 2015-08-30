@@ -981,14 +981,18 @@ table#features, #features th, #features td { border: solid 1px black; }
 
     <h4>Options:</h4>
     <dl class="params">
-        <dt>era <dd>year, e.g. <code>0</code>, <code>1110</code>, <code>1248</code>
-        <dt>requireData <dd>if <code>1</code>, only sectors with data files will be included
+        <dt>era <dd>Year, e.g. <code>0</code>, <code>1110</code>, <code>1248</code>
+        <dt>requireData <dd>If <code>1</code>, only sectors with data files will be included
+        <dt>tag <dd>Required tags, e.g. <code>Official</code> or <code>InReview</code>.
+          Multiple required tags can be specified using <code>|</code> as a separator, e.g.
+          <code>tag=Official|InReview|Preserve</code>.
     </dl>
 
     <h4>Notes:</h4>
     <ul>
         <li>Returns a list of sectors providing X,Y coordinates and names.
         <li>The <code>era</code> parameter filters on an exact match only; the tagging of sectors with a precise year is sparse
+        <li>The <code>tag</code> matching is case-sensitive.
         <li>
           The default output format is <a href="http://json.org/">JSON</a>. To retrieve results in XML form, specify
           the HTTP header <code>Accept: text/xml</code> or include <code>accept=text/xml</code>
