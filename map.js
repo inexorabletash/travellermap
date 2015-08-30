@@ -1023,7 +1023,7 @@ var Util = {
 
         var ctx = self.ctx;
         ctx.save();
-        ctx.translate(-this.canvas.offset_x, -this.canvas.offset_y);
+        ctx.translate(-self.canvas.offset_x, -self.canvas.offset_y);
         ctx.globalCompositeOperation = 'source-over';
         ctx.globalAlpha = 0.3;
         ctx.lineWidth = w * scale;
@@ -1325,14 +1325,14 @@ var Util = {
         var image = stash.get(marker.url, function() { self.invalidate(); });
         if (!image) return;
 
-        var SIZE = 128;
+        var MARKER_SIZE = 128;
         var ctx = self.ctx;
         ctx.save();
         ctx.translate(-self.canvas.offset_x, -self.canvas.offset_y);
         ctx.globalCompositeOperation = 'source-over';
         ctx.drawImage(image,
-                      pt.x - SIZE/2, pt.y - SIZE/2,
-                      SIZE, SIZE);
+                      pt.x - MARKER_SIZE/2, pt.y - MARKER_SIZE/2,
+                      MARKER_SIZE, MARKER_SIZE);
         ctx.restore();
       }());
       return;
