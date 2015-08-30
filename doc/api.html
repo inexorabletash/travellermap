@@ -588,9 +588,9 @@ table#features, #features th, #features td { border: solid 1px black; }
         <dt>sector <dd>specify the <a href="#system_location">sector location</a> by name, e.g. "Spinward%20Marches"
         <dt>hex <dd>specify <a href="#system_location">hex location</a> within the named sector
         <dt>sx
-        <dt>sy <dd>sector in <a href="#system_sectorhex">sector/hex-space coordinates</a>
+        <dt>sy <dd>sector in <a href="#system_sectorhex">sector/hex coordinates</a>
         <dt>hx
-        <dt>hy <dd>hex in <a href="#system_sectorhex">sector/hex-space coordinates</a>
+        <dt>hy <dd>hex in <a href="#system_sectorhex">sector/hex coordinates</a>
     </dl>
 
     <h4>Notes:</h4>
@@ -645,9 +645,9 @@ table#features, #features th, #features td { border: solid 1px black; }
         <dt>sector <dd>specify the <a href="#system_location">sector location</a> by name, e.g. "Spinward%20Marches"
         <dt>hex <dd>specify <a href="#system_location">hex location</a> within the named sector (defaults to 1620 if unspecified)
         <dt>sx
-        <dt>sy <dd>sector in <a href="#system_sectorhex">sector/hex-space coordinates</a>
+        <dt>sy <dd>sector in <a href="#system_sectorhex">sector/hex coordinates</a>
         <dt>hx
-        <dt>hy <dd>hex in <a href="#system_sectorhex">sector/hex-space coordinates</a>
+        <dt>hy <dd>hex in <a href="#system_sectorhex">sector/hex coordinates</a>
         <dt>x
         <dt>y <dd>location in <a href="#system_world">world-space coordinates</a>
     </dl>
@@ -695,10 +695,10 @@ table#features, #features th, #features td { border: solid 1px black; }
           <h4>Parameters:</h4>
           <dl class="params">
             <dt>sector <dd>sector name or T5SS abbreviation
-            <dt>subsector <dd><code>A</code> &ndash; <code>P</code> or name; optional &ndash; if specified , only UWPs for that subsector will be included
+            <dt>subsector <dd><code>A</code> &ndash; <code>P</code> or name; optional &ndash; if specified, only UWPs for that subsector will be included
             <dt>quadrant <dd>one of <code>Alpha</code>, <code>Beta</code>, <code>Gamma</code> or <code>Delta</code>
             <dt>sx
-            <dt>sy <dd>sector in <a href="#system_sectorhex">sector/hex-space coordinates</a>
+            <dt>sy <dd>sector in <a href="#system_sectorhex">sector/hex coordinates</a>
           </dl>
 
         <dt>POST
@@ -781,7 +781,7 @@ table#features, #features th, #features td { border: solid 1px black; }
         <dl class="params">
           <dt>sector <dd>sector name or T5SS abbreviation
               <dt>sx
-              <dt>sy <dd>sector in <a href="#system_sectorhex">sector/hex-space coordinates</a>
+              <dt>sy <dd>sector in <a href="#system_sectorhex">sector/hex coordinates</a>
         </dl>
 
       <dt>POST
@@ -834,7 +834,7 @@ table#features, #features th, #features td { border: solid 1px black; }
     <dl class="params">
         <dt>sector <dd>sector name
         <dt>sx
-        <dt>sy <dd>sector in <a href="#system_sectorhex">sector/hex-space coordinates</a>
+        <dt>sy <dd>sector in <a href="#system_sectorhex">sector/hex coordinates</a>
     </dl>
 
     <h4>Notes:</h4>
@@ -875,9 +875,9 @@ table#features, #features th, #features td { border: solid 1px black; }
         <dt>sector <dd>specify the <a href="#system_location">sector location</a> by name, e.g. "Spinward%20Marches"
         <dt>hex <dd>specify <a href="#system_location">hex location</a> within the named sector
         <dt>sx
-        <dt>sy <dd>sector in <a href="#system_sectorhex">sector/hex-space coordinates</a>
+        <dt>sy <dd>sector in <a href="#system_sectorhex">sector/hex coordinates</a>
         <dt>hx
-        <dt>hy <dd>hex in <a href="#system_sectorhex">sector/hex-space coordinates</a>
+        <dt>hy <dd>hex in <a href="#system_sectorhex">sector/hex coordinates</a>
         <dt>x
         <dt>y <dd>location in <a href="#system_world">world-space coordinates</a>
     </dl>
@@ -1130,7 +1130,7 @@ table#features, #features th, #features td { border: solid 1px black; }
     <dt>options <dd><a href="#options">rendering options</a>
     <dt>style <dd><a href="#options">rendering style</a>
     <dt>accept <dd>specify <code>application/pdf</code> for PDF output
-    <dt>thumb <dd>specify <code>1</code> to render a thumbnail (16 pixels/parsec)
+    <dt>thumb=1 <dd>render a thumbnail (16 pixels/parsec)
 </dl>
 
 <h4>Notes:</h4>
@@ -1177,9 +1177,9 @@ table#features, #features th, #features td { border: solid 1px black; }
         <dt>sector <dd>specify the <a href="#system_location">sector location</a> by name, e.g. "Spinward%20Marches"
         <dt>hex <dd>specify <a href="#system_location">hex location</a> within the named sector
         <dt>sx
-        <dt>sy <dd>sector in <a href="#system_sectorhex">sector/hex-space coordinates</a>
+        <dt>sy <dd>sector in <a href="#system_sectorhex">sector/hex coordinates</a>
         <dt>hx
-        <dt>hy <dd>hex in <a href="#system_sectorhex">sector/hex-space coordinates</a>
+        <dt>hy <dd>hex in <a href="#system_sectorhex">sector/hex coordinates</a>
         <dt>x
         <dt>y <dd>location in <a href="#system_world">world-space coordinates</a>
       </dl>
@@ -1194,7 +1194,7 @@ table#features, #features th, #features td { border: solid 1px black; }
       <h4>Parameters:</h4>
       <dl class="params">
         <dt>jump <dd>jump distance to render (1 through 12, default is 6)
-        <dt>hex <dd>specify <a href="#system_location">hex location</a> within the named sector
+        <dt>hex <dd>specify <a href="#system_location">hex location</a> within the posted sector
         <dt>lint=1
         <dd>Return an HTTP failure (400) if warnings or errors are found while parsing the sector data.
         The default is to silently ignore any lines with errors.
@@ -1230,7 +1230,7 @@ table#features, #features th, #features td { border: solid 1px black; }
         <dt>scale <dd>scale in pixels/parsec (default is 64)
         <dt>options <dd><a href="#options">rendering options</a>
         <dt>style <dd><a href="#options">rendering style</a>
-        <dt>border <dd>whether or not to render a thick border; specify <code>1</code> (yes, the default) or <code>0</code> (no)
+        <dt>border=0 <dd>don't render a thick border around the jumpmap
         <dt>accept <dd>specify <code>application/pdf</code> for PDF output
     </dl>
 
@@ -1282,7 +1282,7 @@ table#features, #features th, #features td { border: solid 1px black; }
     <p>
         The <a href="#coordinates">Coordinates API</a> will look up a sector/hex location and produce sector/hex
         coordinates suitible for further calculations. For convenience, the <a href="#jumpmap">Jump Map API</a>,
-        <a href="#credits">Credits API</a>, <a href="#iframe">IFRAME API</a>, and Permalinks all accept named locations using
+        <a href="#credits">Credits API</a>, <a href="#iframe">IFRAME API</a>, and <a href="#query">main page</a> all accept named locations using
         <code>sector</code> and <code>hex</code> parameters.
     </p>
     <p>
@@ -1399,7 +1399,7 @@ function worldXYToMapXY(world_x, world_y) {
 }
   </pre>
   <p>
-      This coordinate system is used by Permalinks and the <a href="#iframe">IFRAME API</a> when a precise view
+      This coordinate system is used by the <a href="#query">main page</a> and the <a href="#iframe">IFRAME API</a> when a precise view
       point is required.
       The coordinates are specified as <code>x</code> and <code>y</code> parameters.
   </p>
