@@ -194,7 +194,7 @@ namespace Maps
         }
     }
 
-    sealed public class ListHashSet<T> : IEnumerable<T>
+    sealed public class OrderedHashSet<T> : IEnumerable<T>
     {
         private List<T> m_list = new List<T>();
         private HashSet<T> m_set = new HashSet<T>();

@@ -290,7 +290,7 @@ namespace Maps
         [XmlIgnore, JsonIgnore]
         public IEnumerable<string> Codes { get { return m_codes; } }
 
-        private ListHashSet<string> m_codes = new ListHashSet<string>();
+        private OrderedHashSet<string> m_codes = new OrderedHashSet<string>();
 
         public string LegacyBaseCode
         {

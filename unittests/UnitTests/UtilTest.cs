@@ -57,7 +57,7 @@ namespace UnitTests
         [TestMethod]
         public void ListHashSetTest()
         {
-            ListHashSet<string> set = new ListHashSet<string>();
+            OrderedHashSet<string> set = new OrderedHashSet<string>();
 
             Assert.AreEqual(set.Count(), 0);
             CollectionAssert.AreEqual(new string[] { }, set.ToArray());

@@ -304,8 +304,8 @@ namespace Maps
         }
 
         [XmlIgnore, JsonIgnore]
-        public ListHashSet<string> Tags { get { return m_tags; } }
-        private ListHashSet<string> m_tags = new ListHashSet<string>();
+        public OrderedHashSet<string> Tags { get { return m_tags; } }
+        private OrderedHashSet<string> m_tags = new OrderedHashSet<string>();
 
         public Allegiance GetAllegianceFromCode(string code)
         {

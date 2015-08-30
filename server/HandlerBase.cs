@@ -73,6 +73,14 @@ namespace Maps
             return defaultValue;
         }
 
+        protected string[] GetStringsOption(HttpContext context, string name, string[] defaultValue = null)
+        {
+            string s = GetStringOption(context, name);
+            if (string.IsNullOrWhiteSpace(s))
+                return defaultValue;
+            return s.Split(new char[] { '|' });
+        }
+
         protected int GetIntOption(HttpContext context, string name, int defaultValue)
         {
             return GetIntOption(context.Request, name, Defaults(context), defaultValue);

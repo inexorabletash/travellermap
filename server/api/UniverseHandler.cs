@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web;
 using System.Xml;
 using System.Xml.Serialization;
@@ -25,6 +26,7 @@ namespace Maps.API
             // Filter parameters
             string era = GetStringOption(context, "era");
             bool requireData = GetBoolOption(context, "requireData", defaultValue: false);
+            string[] tags = GetStringsOption(context, "tag");
 
             Result data = new Result();
             foreach (Sector sector in map.Sectors)
@@ -33,6 +35,9 @@ namespace Maps.API
                     continue;
 
                 if (era != null && (sector.DataFile == null || sector.DataFile.Era != era))
+                    continue;
+
+                if (tags != null && !(tags.Any(tag => sector.Tags.Contains(tag))))
                     continue;
 
                 data.Sectors.Add(new SectorResult(sector));
