@@ -2,16 +2,16 @@
 <title>Border Maker - Traveller Map</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="shortcut icon" href="../favicon.ico">
-<link rel="stylesheet" href="../site.css?update=2015-08-04">
+<link rel="stylesheet" href="../site.css?update=2015-08-30">
 <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.1.2/handlebars.min.js"></script>
 <script src="../lib/polyfill/polyfill.min.js?update=2015-08-15"></script>
-<script src="../map.js?update=2015-08-04"></script>
+<script src="../map.js?update=2015-08-29"></script>
 <script src="post.js?update=2015-07-29"></script>
 <script src="../borders/borders.js?update=2015-07-19"></script>
 <script src="borders.js?update=2015-07-29"></script>
 
-<h1>The Traveller Map - Border Maker</h1>
-<ol>
+<h1>Border Maker &mdash; The Traveller Map</h1>
+<ol class="steps">
   <li>
   <select id="sector">
     <option disabled>Select...</option>
@@ -22,7 +22,6 @@
   (<a target="_blank" href="../doc/fileformats">file formats</a>)
 </div>
 <textarea id="data" name="data" class="drag-n-drop"
-          style="width: 650px; height: 120px; white-space: pre;"
           spellcheck="false" wrap="off" cols="80" rows="10"></textarea>
 
   <li>Click
@@ -41,7 +40,6 @@ Pick a file type:
 
   <li>Copy the borders from the box below into your metadata file:<br>
     <textarea id="metadata_generated" name="metadata" class="drag-n-drop"
-              style="width: 650px; height: 120px; white-space: pre;"
               readonly="true"
               spellcheck="false" wrap="off" cols="80" rows="10"></textarea>
 </ol>

@@ -2,10 +2,10 @@
 <title>Sector Booklet - Traveller Map</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="shortcut icon" href="../favicon.ico">
-<link rel="stylesheet" href="../site.css?update=2015-08-04">
+<link rel="stylesheet" href="../site.css?update=2015-08-30">
 <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.2/handlebars.min.js"></script>
 <script src="../lib/polyfill/polyfill.min.js?update=2015-08-15"></script>
-<script src="../map.js?update=2015-08-04"></script>
+<script src="../map.js?update=2015-08-29"></script>
 <script src="post.js?update=2015-07-29"></script>
 <script src="booklet.js?update=2015-07-29"></script>
 <style>
@@ -400,32 +400,35 @@ td.vertical {
       #input { margin: 8px; }
     </style>
 
-    <h1>The Traveller Map - Booklet Maker</h1>
-    <div>Select a sector, or enter your own data below:
-      <select id="sector">
-        <option disabled>Select...</option>
-      </select>
-    </div>
+    <h1>Booklet Maker &mdash; The Traveller Map</h1>
+
+    <ol class="steps">
+      <li>
+        <select id="sector">
+          <option disabled>Select...</option>
+        </select>
+        a sector, or enter custom sector data/metadata:
 
     <form id="form" action="api/poster" method="post" enctype="application/x-www-form-urlencoded">
       <div>Sector Data:
         (<a target="_blank" href="../doc/fileformats">file formats</a>)</div>
       <textarea id="data" name="data" class="drag-n-drop"
-                style="width: 650px; height: 120px; white-space: pre;"
                 spellcheck="false" wrap="off" cols="80" rows="10"></textarea>
 
       <div>Metadata:
         (<a target="_blank" href="../doc/metadata">XML</a> or
         <a target="_blank" href="http://dotclue.org/t20/">MSEC</a>)</div>
       <textarea id="metadata" name="metadata" class="drag-n-drop"
-                style="width: 650px; height: 120px; white-space: pre;"
             spellcheck="false" wrap="off" cols="80" rows="10"></textarea>
-
     </form>
 
+      </li>
+      <li>
+        Click
     <!-- TODO: Add preview? -->
     <button id="compose">Compose Booklet</button>
-
+      </li>
+    </ol>
     <div style="margin-top: 10px; font-size: 80%">
       The <em class="product">Traveller</em> game in all forms is owned by Far
       Future Enterprises. Copyright &copy; 1977 &ndash; 2015 Far Future

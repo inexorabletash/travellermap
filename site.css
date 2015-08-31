@@ -21,10 +21,17 @@ h4, h5, h6 {
 h1 {
   width: 100%;
   margin-bottom: 0;
+  font-size: 30px;
   font-style: italic;
   padding-bottom: 4pt;
   border-bottom: 4pt solid black;
   margin-bottom: 4pt;
+
+  padding-left: 45px;
+  background-image: url(https://s3.amazonaws.com/travellermap/images/ImperialStarburst.png);
+  background-size: 40px 40px;
+  background-repeat: no-repeat;
+
 }
 h2 {
   border-bottom: 2pt solid black;
@@ -57,6 +64,15 @@ p {
 p, li, dd {
   text-align: justify;
   line-height: 1.4;
+}
+
+ol.steps > li {
+  margin-top: 4px;
+  margin-bottom: 4px;
+  font-size: 120%;
+}
+ol.steps > li select {
+  font-size: 120%;
 }
 
 div.aside, p.aside {
@@ -141,6 +157,7 @@ pre.code {
 
 textarea {
   font-family: "Share Tech Mono", monospace;
+  width: 550px; height: 120px; white-space: pre;
 }
 
 /* Table of Contents */

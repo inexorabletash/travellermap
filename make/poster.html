@@ -2,33 +2,34 @@
 <title>Poster Maker - Traveller Map</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="shortcut icon" href="../favicon.ico">
-<link rel="stylesheet" href="../site.css?update=2015-08-04">
+<link rel="stylesheet" href="../site.css?update=2015-08-30">
 <script src="../lib/polyfill/polyfill.min.js?update=2015-08-15"></script>
-<script src="../map.js?update=2015-08-04"></script>
+<script src="../map.js?update=2015-08-29"></script>
 <script src="post.js?update=2015-07-29"></script>
 
-<h1>The Traveller Map - Poster Maker</h1>
-<div id="content" style="width: 660px;">
-<div>
-Select a sector, or enter your own data below:
-<select id="sector">
-  <option disabled>Select...</option>
-</select>
-</div>
-
+<h1>Poster Maker &mdash; The Traveller Map</h1>
 <form id="form" target="_blank" method="POST">
+<ol class="steps">
+  <li>
+    <select id="sector">
+      <option disabled>Select...</option>
+    </select>
+    a sector, or enter custom sector data/metadata:
+
   <div>Sector Data:
     (<a target="_blank" href="../doc/fileformats">file formats</a>)</div>
   <textarea id="data" name="data" class="drag-n-drop"
-            style="width: 650px; height: 120px; white-space: pre;"
             spellcheck="false" wrap="off" cols="80" rows="10"></textarea>
 
   <div>Metadata:
     (<a target="_blank" href="../doc/metadata">XML</a> or
     <a target="_blank" href="http://dotclue.org/t20/">MSEC</a>)</div>
   <textarea id="metadata" name="metadata" class="drag-n-drop"
-            style="width: 650px; height: 120px; white-space: pre;"
             spellcheck="false" wrap="off" cols="80" rows="10"></textarea>
+
+  </li>
+  <li>
+    Select options:
 
   <table id="option_columns">
     <style>
@@ -171,18 +172,33 @@ Select a sector, or enter your own data below:
         </script>
     </tr>
   </table>
-  <div style="margin-top: 15px">
+  </li>
+
+  <li>
+    Click
     <input id="previewBtn" type="submit" value="Quick Preview">
+    to verify your choices.
+  </li>
+
+  <li>
+    Click
     <input id="renderBtn" type="submit" value="Render Poster">
-  </div>
-  <div style="margin-top: 15px">
-    Jump Map:
+    to render the full poster.
+
+    <br>
+
+    For a Jump Map, select:
     J-<input type="number" name="jump" min="0" max="6" value="3">
     Hex: <input type="text" name="hex" size=4  value="" placeholder="XXYY">
+    and click:
     <input id="jumpBtn" type="submit" value="Render Jump Map">
-  </div>
-  <input id="thumb" type="hidden" name="thumb" value="">
-</form>
+
+    <input id="thumb" type="hidden" name="thumb" value="">
+  </form>
+
+
+  </li>
+</ol>
 
 <div style="margin-top: 10px; font-size: 80%">
   The <em class="product">Traveller</em> game in all forms is owned by Far

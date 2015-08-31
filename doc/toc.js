@@ -4,7 +4,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
   var toc = document.createElement('nav');
   toc.className = 'toc';
-  [].slice.call($$('h2,h3,h4,h5,h6')).forEach(function(h) {
+  [].slice.call($$('h2,h3')).forEach(function(h) {
     var a = document.createElement('a');
     var text = h.textContent || h.innerText;
     if (!h.id)
