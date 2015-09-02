@@ -103,7 +103,7 @@ namespace Maps.API
             xs.Serialize(context.Response.OutputStream, o);
         }
 
-        public static void SendText(HttpContext context, object o, Encoding encoding)
+        public static void SendText(HttpContext context, object o, Encoding encoding = null)
         {
             context.Response.ContentType = MediaTypeNames.Text.Plain;
             if (encoding == null)

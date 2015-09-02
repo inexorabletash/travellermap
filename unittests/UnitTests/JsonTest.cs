@@ -1,9 +1,6 @@
 ﻿using Json;
-using Maps;
-using Maps.Serialization;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
-using System.Linq;
 
 namespace UnitTests
 {

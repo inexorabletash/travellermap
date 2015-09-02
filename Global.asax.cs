@@ -192,6 +192,7 @@ namespace Maps
             // Search -------------------------------------------------------
 
             routes.Add(new RegexRoute(@"^/api/search$", new GenericRouteHandler(typeof(SearchHandler)), DEFAULT_JSON));
+            routes.Add(new RegexRoute(@"^/api/route$", new GenericRouteHandler(typeof(RouteHandler)), DEFAULT_JSON));
 
 #if LEGACY_ASPX
             routes.Add(new RegexRoute(@"^/Search.aspx$", new GenericRouteHandler(typeof(SearchHandler)), caseInsensitive: true));

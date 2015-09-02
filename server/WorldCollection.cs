@@ -42,6 +42,7 @@ namespace Maps
                 m_worlds[x - 1, y - 1] = value;
             }
         }
+        public World this[int hex] { get { return this[hex / 100, hex % 100]; } }
 
         public IEnumerator<World> GetEnumerator()
         {

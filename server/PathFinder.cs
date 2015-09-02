@@ -1,0 +1,137 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Maps
+{
+    public class TravellerPathFinder : PathFinder.Map<World>
+    {
+        ResourceManager manager;
+        SectorMap map;
+        int jump;
+
+        public TravellerPathFinder(ResourceManager manager, SectorMap map, int jump)
+        {
+            this.manager = manager;
+            this.map = map;
+            this.jump = jump;
+        }
+
+        public List<World> FindPath(World start, World end)
+        {
+            return PathFinder.FindPath<World>(this, start, end);
+        }
+
+        IEnumerable<World> PathFinder.Map<World>.Adjacent(World world)
+        {
+            return new HexSelector(map, manager, Astrometrics.CoordinatesToLocation(world.Coordinates), jump).Worlds;
+        }
+
+        int PathFinder.Map<World>.Distance(World a, World b)
+        {
+            return Astrometrics.HexDistance(a.Location, b.Location);
+        }
+    }
+
+    public static class PathFinder
+    {
+        // A* Algorithm
+        //
+        // Based on notes in _AI for Game Developers_, Bourg & Seemann,
+        //     O'Reilly Media, Inc., July 2004.
+        private class Node<T> : IComparable<Node<T>>
+        {
+            public Node(T entity, double cost = 0, uint steps = 0, Node<T> parent = null)
+            {
+                this.entity = entity;
+                this.cost = cost;
+                this.steps = steps;
+                this.parent = parent;
+            }
+            public T entity;
+            public double cost;
+            public uint steps;
+            public Node<T> parent;
+
+            public int CompareTo(Node<T> other)
+            {
+                return cost.CompareTo(other.cost);
+            }
+        }
+
+        public interface Map<T>
+        {
+            IEnumerable<T> Adjacent(T entity);
+            int Distance(T a, T b);
+        }
+
+        public static List<T> FindPath<T>(Map<T> map, T start, T end)
+        {
+            var open = new PriorityQueue<Node<T>>();
+            var openSet = new HashSet<T>();
+
+            var closed = new PriorityQueue<Node<T>>();
+            var closedSet = new HashSet<T>();
+
+            // add the starting node to the open list
+            open.Add(new Node<T>(start));
+            openSet.Add(start);
+
+            // while the open list is not empty
+            while (open.Count > 0)
+            {
+                // current node = node from open list with the lowest cost
+                var currentNode = open.Dequeue();
+                openSet.Remove(currentNode.entity);
+
+                // if current node = goal node then path complete
+                if (currentNode.entity.Equals(end)) // TODO: Why not == ?
+                {
+                    var path = new List<T>();
+
+                    var node = currentNode;
+                    path.Insert(0, node.entity);
+
+                    while (node.parent != null)
+                    {
+                        node = node.parent;
+                        path.Insert(0, node.entity);
+                    }
+
+                    return path;
+                }
+
+                // move current node to the closed list
+                closed.Add(currentNode);
+                closedSet.Add(currentNode.entity);
+
+                // examine each node adjacent to the current node
+                IEnumerable<T> adjacent = map.Adjacent(currentNode.entity);
+
+                // for each adjacent node
+                foreach (T t in adjacent)
+                {
+                    // if it isn't on the open list
+                    if (openSet.Contains(t))
+                        continue;
+
+                    // and it isn't on the closed list
+                    if (closedSet.Contains(t))
+                        continue;
+
+                    // and it isn't an obstacle then
+
+                    // move it to open list and calculate cost
+
+                    // TODO: Compute cost using map
+                    uint steps = currentNode.steps + 1;
+                    double cost = steps + map.Distance(t, end);
+                    open.Add(new Node<T>(t, cost, steps, currentNode));
+                    openSet.Add(t);
+                }
+            }
+
+            return null;
+        }
+    }
+}
