@@ -131,13 +131,10 @@ namespace Maps
                 if (this.Sector == null)
                     throw new InvalidOperationException("Can't get coordinates for a world not assigned to a sector");
 
-                return Astrometrics.LocationToCoordinates(this.Sector.Location, this.Location);
+                return Astrometrics.LocationToCoordinates(this.Sector.Location, new Point(this.X, this.Y));
             }
         }
 
-
-        [XmlIgnore, JsonIgnore]
-        public Point Location { get { return new Point(X, Y); } }
 
         [XmlIgnore, JsonIgnore]
         public char Starport { get { return UWP[0]; } }

@@ -113,7 +113,7 @@ namespace Maps
                 throw new ArgumentNullException("world");
 
             Sector = sector.Location;
-            World = world.Location;
+            World = new Point(world.X, world.Y);
         }
 
         public WorldLocation(int sector_x, int sector_y, int hex_x, int hex_y)
