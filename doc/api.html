@@ -80,6 +80,7 @@ table#features, #features th, #features td { border: solid 1px black; }
                 <li><a href="#msec">MSEC</a> &ndash; retrieve <cite>sec2pdf</cite>-compatible sector metadata
                 <li><a href="#jumpworlds">Jump Worlds</a> &ndash; return a list of worlds reachable by Jump-N
                 <li><a href="#search">Search</a> &ndash; search for worlds, subsectors or sectors by name
+                <li><a href="#route">Route</a> &ndash; find jump routes between worlds
                 <li><a href="#universe">Universe</a> &ndash; return a list of sectors, optionally filtered by era
             </ul>
 
@@ -965,6 +966,39 @@ table#features, #features th, #features td { border: solid 1px black; }
     <h4>Example:</h4>
     <p>
         <a class="example" href="/api/search?q=Regina"></a>
+    </p>
+  </section>
+
+  <section id="route">
+    <h3>Route &ndash; find jump routes between worlds</h3>
+    <h4>API URLs:</h4>
+    <p class="code">
+        http://travellermap.com/api/route?start=<var>LOC</var>&amp;end=<var>LOC</var>&amp;jump=<var>N</var>
+    </p>
+
+    <h4>Parameters:</h4>
+    <dl class="params">
+        <dt>start <dd>start location, e.g. <code>SPIN 1910</code>
+        <dt>end <dd>end location, e.g. <code>SOLO 1827</code>
+        <dt>jump <dd>jump distance (<code>0</code> through <code>12</code>, default is <code>2</code>)
+    </dl>
+
+    <h4>Notes:</h4>
+    <ul>
+        <li>Tries to find the shortest path between the start and end worlds.
+        <li>Locations are specified as <var>sector name</var>, a space, <var>hex number</var>, e.g. <code>SPIN 1910</code>, <code>Solomani Rim 1827</code>, etc.
+        <li>If the start or end location cannot be parsed, the request will fail with status <code>400 Bad Request</code> and a diagnostic message in the body.
+        <li>If the source or end location do not exist, the request will fail with status <code>404 Not Found</code> and a diagnostic message in the body.
+        <li>If there is no route found, the request will fail with status <code>404 Not Found</code> and a diagnostic message in the body.
+        <li>
+          The default output format is <a href="http://json.org/">JSON</a>. To retrieve results in XML form, specify
+          the HTTP header <code>Accept: text/xml</code> or include <code>accept=text/xml</code>
+          in the query string.
+    </ul>
+
+    <h4>Example:</h4>
+    <p>
+        <a class="example" href="/api/route?start=spin+1910&end=spin+2110&jump=1"></a>
     </p>
   </section>
 
