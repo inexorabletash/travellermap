@@ -390,21 +390,22 @@ button:hover {
     <style>
     #routeBox {
       left: 15px; top: 50px; width: 200px;
-      min-height: 100px;
+      min-height: 120px;
       max-height: 350px;
-      width: 280px;
+      width: 260px;
     }
     .route-ui #routeBox { display: block; }
 
     #routeBox input[type=text] {
-      height: 30px; width: 260px;
+      height: 30px; width: 242px;
 
       font-size: 12pt;
       padding: 0 10px; margin: 0; border: 1px solid gray;
       margin-bottom: 10px;
     }
-    #routeBox form { margin: -5px -5px 10px -5px; }
-
+    #routeBox form {
+      margin: -5px -5px 10px -5px;
+    }
     input[type=submit] { height: 20px; margin-right: 2px; }
     </style>
     <form id="routeForm" action="get">
@@ -428,12 +429,20 @@ button:hover {
              autocapitalize="off"
              spellcheck="false">
       <br>
-      <input type="submit" name="jump" value="J-1">
-      <input type="submit" name="jump" value="J-2">
-      <input type="submit" name="jump" value="J-3">
-      <input type="submit" name="jump" value="J-4">
-      <input type="submit" name="jump" value="J-5">
-      <input type="submit" name="jump" value="J-6">
+      <input id="J-1" type="submit" name="jump" value="J-1">
+      <input id="J-2" type="submit" name="jump" value="J-2">
+      <input id="J-3" type="submit" name="jump" value="J-3">
+      <input id="J-4" type="submit" name="jump" value="J-4">
+      <input id="J-5" type="submit" name="jump" value="J-5">
+      <input id="J-6" type="submit" name="jump" value="J-6">
+      <style>
+      #routeForm.J-1 #J-1 { background-color: red; }
+      #routeForm.J-2 #J-2 { background-color: red; }
+      #routeForm.J-3 #J-3 { background-color: red; }
+      #routeForm.J-4 #J-4 { background-color: red; }
+      #routeForm.J-5 #J-5 { background-color: red; }
+      #routeForm.J-6 #J-6 { background-color: red; }
+      </style>
     </form>
     <div id="routePath"></div>
 
@@ -451,11 +460,20 @@ button:hover {
       <div><i>{{Message}}</i></div>
     </script>
     <style>
+    #routeBox { overflow: hidden; }
+    #routePath {
+      position: absolute;
+      top: 125px;
+      left: 5px;
+      right: 5px;
+      bottom: 5px;
+      overflow: auto;
+    }
     #routePath .item {
       padding-left: 30px;
       background-image: url(res/ui/route.png);
       background-repeat: no-repeat;
-      padding-top: 2px;
+      background-position: 0 2px;
       padding-bottom: 10px;
       margin-bottom: -10px;
     }
@@ -473,9 +491,16 @@ button:hover {
       Array.from($$("#routeForm input[type=submit]")).forEach(function(submit) {
         submit.addEventListener('click', function(e) {
           e.preventDefault();
+
+          ['J-1','J-2','J-3','J-4','J-5','J-6'].forEach(function(n) {
+            $('#routeForm').classList.remove(n);
+          });
+          $('#routeForm').classList.add(this.value);
+
           var start = $('#routeStart').value;
           var end = $('#routeEnd').value;
           var jump = this.value.replace('J-', '');;
+
           route(start, end, jump);
         });
       });
