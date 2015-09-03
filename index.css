@@ -19,7 +19,7 @@ body {
   -moz-text-size-adjust: 100%;
 }
 
-body { color: white; background-color: black;  }
+body { color: white; background-color: black; }
 body.style-print,
 body.style-fasa,
 body.style-atlas { color: black; background-color: white; }
@@ -36,7 +36,7 @@ a.stealth:hover { text-decoration: underline; }
 
 input[type=text] {
   font-family: Univers, Helvetica, Arial, sans-serif;
-  background-color: white;
+  color: black; background-color: white;
 }
 .style-print input[type=text],
 .style-fasa input[type=text],
