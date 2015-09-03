@@ -47,7 +47,7 @@
 .hide-ui .ui { display: none; }
 .hide-footer #bottom-pane { display: none; }
 
-button {
+button, input[type=submit] {
   font-family: Univers, Helvetica, Arial, sans-serif;
   font-size: 10pt;
   font-weight: bold;
@@ -180,19 +180,13 @@ button:hover {
       <style>
       #searchForm { display: inline; }
       #searchBox {
-        background-color: white;
         height: 30px; width: 200px;
         float: left;
         font-size: 12pt;
-        font-family: Univers, Helvetica, Arial, sans-serif;
         padding: 0 10px; margin: 0; border: none;
         border-radius: 2px;
         box-shadow: 2px 2px 4px #404040;
       }
-      .style-print #searchBox,
-      .style-fasa #searchBox,
-      .style-draft #searchBox,
-      .style-atlas #searchBox { background-color: #e0e0e0; }
       @media only screen and (max-width: 610px) {
         #searchBox { width: 100px; }
       }
@@ -237,6 +231,7 @@ button:hover {
         var $ = function(s) { return document.querySelector(s); };
         $('#closeResultsBtn').addEventListener('click', function() {
           document.body.classList.remove('search-results');
+          document.body.classList.remove('route-ui');
         });
       });
       </script>
@@ -258,6 +253,7 @@ button:hover {
     window.addEventListener('DOMContentLoaded', function() {
       var $ = function(s) { return document.querySelector(s); };
       $("#searchForm").addEventListener('submit', function(e) {
+        document.body.classList.remove('route-ui');
         search($('#searchBox').value);
         e.preventDefault();
       });
@@ -267,11 +263,44 @@ button:hover {
         if (searchTimer)
           clearTimeout(searchTimer);
         searchTimer = setTimeout(function() {
+          document.body.classList.remove('route-ui');
           search($('#searchBox').value, true);
         }, SEARCH_TIMER_DELAY);
       });
       $('#starBtn').addEventListener('click', function() {
+        document.body.classList.remove('route-ui');
         search("(default)");
+      });
+    });
+    </script>
+
+    <button id="routeBtn"
+            title="Compute Route">
+      <style>
+      #routeBtn {
+        width: 17px;
+        height: 30px;
+        float: left;
+        margin-left: 4px;
+        background-image: url(res/ui/button-route.png);
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      .route-ui #routeBtn { background-color: red; }
+      </style>
+    </button>
+    <script>
+    window.addEventListener('DOMContentLoaded', function() {
+      var $ = function(s) { return document.querySelector(s); };
+      $("#routeBtn").addEventListener('click', function(e) {
+      if (document.body.classList.contains('route-ui')) {
+          document.body.classList.remove('route-ui');
+          return;
+        }
+        // TODO: Make these mutually exclusive in a less hacky way.
+        document.body.classList.remove('search-progress');
+        document.body.classList.remove('search-results');
+        document.body.classList.add('route-ui');
       });
     });
     </script>
@@ -348,8 +377,107 @@ button:hover {
         var VK_ESCAPE = 27;
         if (e.keyCode === VK_ESCAPE) {
           document.body.classList.remove('search-results');
+          document.body.classList.remove('route-ui');
           $('#dragContainer').focus();
         }
+      });
+    });
+    </script>
+  </div>
+
+  <div id="routeBox"
+       class="ui hoverbox hoverbox-left">
+    <style>
+    #routeBox {
+      left: 15px; top: 50px; width: 200px;
+      min-height: 100px;
+      max-height: 350px;
+      width: 280px;
+    }
+    .route-ui #routeBox { display: block; }
+
+    #routeBox input[type=text] {
+      height: 30px; width: 260px;
+
+      font-size: 12pt;
+      padding: 0 10px; margin: 0; border: 1px solid gray;
+      margin-bottom: 10px;
+    }
+    #routeBox form { margin: -5px -5px 10px -5px; }
+
+    input[type=submit] { height: 20px; margin-right: 2px; }
+    </style>
+    <form id="routeForm" action="get">
+      <input type="text"
+             name="start"
+             id="routeStart"
+             placeholder="Start (e.g. Spinward Marches 1910)"
+             title=""
+             autocomplete="off"
+             autocorrect="off"
+             autocapitalize="off"
+             spellcheck="false">
+      <br>
+      <input type="text"
+             name="end"
+             id="routeEnd"
+             placeholder="End..."
+             title=""
+             autocomplete="off"
+             autocorrect="off"
+             autocapitalize="off"
+             spellcheck="false">
+      <br>
+      <input type="submit" name="jump" value="J-1">
+      <input type="submit" name="jump" value="J-2">
+      <input type="submit" name="jump" value="J-3">
+      <input type="submit" name="jump" value="J-4">
+      <input type="submit" name="jump" value="J-5">
+      <input type="submit" name="jump" value="J-6">
+    </form>
+    <div id="routePath"></div>
+
+    <script id="RouteResultsTemplate" type="text/x-handlebars-template">
+      {{#Route}}
+      <div class="item">
+        <div class="item-main"><a title="Navigate to {{Name}}" href="{{href}}" onclick="{{onclick}}">{{Name}}</a></div>
+        <div class="item-location">
+          {{Sector}} {{Hex}}
+        </div>
+      </div>
+      {{/Route}}
+    </script>
+    <script id="RouteErrorTemplate" type="text/x-handlebars-template">
+      <div><i>{{Message}}</i></div>
+    </script>
+    <style>
+    #routePath .item {
+      padding-left: 30px;
+      background-image: url(res/ui/route.png);
+      background-repeat: no-repeat;
+      padding-top: 2px;
+      padding-bottom: 10px;
+      margin-bottom: -10px;
+    }
+    #routePath .item:last-of-type {
+      background-image: url(res/ui/route-end.png);
+    }
+    #routePath .item-main { font-size: 125%; }
+    #routePath .item-location { margin-left: 10pt; }
+    #routePath .item-title { margin-left: 10pt; }
+    </style>
+    <script>
+    window.addEventListener('DOMContentLoaded', function() {
+      var $ = function(s) { return document.querySelector(s); };
+      var $$ = function(s) { return document.querySelectorAll(s); };
+      Array.from($$("#routeForm input[type=submit]")).forEach(function(submit) {
+        submit.addEventListener('click', function(e) {
+          e.preventDefault();
+          var start = $('#routeStart').value;
+          var end = $('#routeEnd').value;
+          var jump = this.value.replace('J-', '');;
+          route(start, end, jump);
+        });
       });
     });
     </script>

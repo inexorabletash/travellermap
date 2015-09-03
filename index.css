@@ -34,6 +34,17 @@ a { color: white; }
 a.stealth { text-decoration: none; }
 a.stealth:hover { text-decoration: underline; }
 
+input[type=text] {
+  font-family: Univers, Helvetica, Arial, sans-serif;
+  background-color: white;
+}
+.style-print input[type=text],
+.style-fasa input[type=text],
+.style-draft input[type=text],
+.style-atlas input[type=text] {
+  background-color: #e0e0e0;
+}
+
 .direction {
   font-weight: bold; text-transform: uppercase; font-size: 120%;
   color: red;

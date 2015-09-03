@@ -616,7 +616,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
       $('#resultsContainer').innerHTML = template('#SearchResultsTemplate')(data);
 
-      [].forEach.call(document.querySelectorAll('#resultsContainer a'), function(a) {
+      Array.from(document.querySelectorAll('#resultsContainer a')).forEach(function(a) {
         a.addEventListener('click', function(e) {
           e.preventDefault();
           var params = Util.parseURLQuery(e.target);
@@ -635,6 +635,57 @@ window.addEventListener('DOMContentLoaded', function() {
   // Export
   window.search = search;
 
+
+  //////////////////////////////////////////////////////////////////////
+  //
+  // Route
+  //
+  //////////////////////////////////////////////////////////////////////
+
+
+  window.route = function(start, end, jump) {
+    // TODO: spinner
+    $('#routePath').innerHTML = '';
+
+    fetch(Traveller.MapService.makeURL('/api/route', {
+      start: start, end: end, jump: jump }))
+      .then(function(response) {
+        if (!response.ok) return response.text();
+        return response.json();
+      })
+      .then(function(data) {
+        if (typeof data === 'string') {
+          $('#routePath').innerHTML = template('#RouteErrorTemplate')({Message: data});
+          return;
+        }
+        var base_url = document.location.href.replace(/\?.*/, '');
+
+        data.forEach(function(world) {
+          world.Name = world.Name || '(Unnamed)';
+          var sx = world.SectorX|0;
+          var sy = world.SectorY|0;
+          var hx = world.HexX|0;
+          var hy = world.HexY|0;
+          var scale = 64;
+          world.href = Util.makeURL(base_url, {scale: 64, sx: sx, sy: sy, hx: hx, hy: hy});
+        });
+
+        $('#routePath').innerHTML = template('#RouteResultsTemplate')({Route:data});
+
+        Array.from(document.querySelectorAll('#routePath a')).forEach(function(a) {
+          a.addEventListener('click', function(e) {
+            e.preventDefault();
+            var params = Util.parseURLQuery(e.target);
+            map.ScaleCenterAtSectorHex(params.scale|0, params.sx|0, params.sy|0, params.hx|0, params.hy|0);
+          });
+        });
+
+      })
+      .catch(function(reason) {
+        console.error(reason.message);
+        $('#routePath').innerHTML = template('#RouteResultsTemplate')({});
+      });
+  };
 
   //////////////////////////////////////////////////////////////////////
   //
