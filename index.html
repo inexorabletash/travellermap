@@ -247,7 +247,7 @@ button:hover {
     window.addEventListener('DOMContentLoaded', function() {
       var $ = function(s) { return document.querySelector(s); };
       $("#searchForm").addEventListener('submit', function(e) {
-        document.body.classList.remove('route-ui');
+        document.body.classList.remove('route-ui'); map.SetRoute(null);
         search($('#searchBox').value);
         e.preventDefault();
       });
@@ -257,12 +257,12 @@ button:hover {
         if (searchTimer)
           clearTimeout(searchTimer);
         searchTimer = setTimeout(function() {
-          document.body.classList.remove('route-ui');
+          document.body.classList.remove('route-ui'); map.SetRoute(null);
           search($('#searchBox').value, true);
         }, SEARCH_TIMER_DELAY);
       });
       $('#starBtn').addEventListener('click', function() {
-        document.body.classList.remove('route-ui');
+        document.body.classList.remove('route-ui'); map.SetRoute(null);
         search("(default)");
       });
     });
@@ -308,7 +308,7 @@ button:hover {
       window.addEventListener('DOMContentLoaded', function() {
         var $ = function(s) { return document.querySelector(s); };
         $('#closeRouteBtn').addEventListener('click', function() {
-          document.body.classList.remove('route-ui');
+          document.body.classList.remove('route-ui'); map.SetRoute(null);
         });
       });
       </script>

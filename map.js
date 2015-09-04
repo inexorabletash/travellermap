@@ -640,6 +640,7 @@ var Util = {
 
     this.markers = [];
     this.overlays = [];
+    this.route = null;
 
     // ======================================================================
     // Event Handlers
@@ -1013,6 +1014,8 @@ var Util = {
     for (i = 0; i < this.overlays.length; i += 1)
       this.drawOverlay(this.overlays[i]);
 
+    if (this.route)
+      this.drawRoute(this.route);
 
     // "Empress Wave" Overlay
     (function() {
@@ -1263,7 +1266,7 @@ var Util = {
     if (ox === tx && oy === ty && os === ts)
       return;
 
-    this.animation = new Animation(3.0, function(p) {
+    this.animation = new Animation(2.0, function(p) {
       return Animation.smooth(p, 1.0, 0.1, 0.25);
     });
     var self = this;
@@ -1313,6 +1316,26 @@ var Util = {
 
     if (div.parentNode !== this.container)
       this.container.appendChild(div);
+  };
+
+  TravellerMap.prototype.drawRoute = function(route) {
+    if (!this.ctx) return;
+    var self = this;
+    var ctx = this.ctx;
+    ctx.save();
+    ctx.translate(-self.canvas.offset_x, -self.canvas.offset_y);
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.globalAlpha = 0.5;
+    ctx.strokeStyle = 'green';
+    ctx.lineWidth = 15;
+    ctx.beginPath();
+    route.forEach(function(world, index) {
+      var pt = sectorHexToLogical(world.sx, world.sy, world.hx, world.hy);
+      pt = self.logicalToPixel(pt.x, pt.y);
+      ctx[index ? 'lineTo' : 'moveTo'](pt.x, pt.y);
+    });
+    ctx.stroke();
+    ctx.restore();
   };
 
   TravellerMap.prototype.drawMarker = function(marker) {
@@ -1574,6 +1597,11 @@ var Util = {
     };
 
     this.overlays.push(overlay);
+    this.invalidate();
+  };
+
+  TravellerMap.prototype.SetRoute = function(route) {
+    this.route = route;
     this.invalidate();
   };
 

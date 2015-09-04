@@ -654,12 +654,10 @@ window.addEventListener('DOMContentLoaded', function() {
         return response.json();
       })
       .then(function(data) {
-        if (typeof data === 'string') {
-          $('#routePath').innerHTML = template('#RouteErrorTemplate')({Message: data});
-          return;
-        }
-        var base_url = document.location.href.replace(/\?.*/, '');
+        if (typeof data === 'string') throw new Error(data);
 
+        var base_url = document.location.href.replace(/\?.*/, '');
+        var route = [];
         data.forEach(function(world) {
           world.Name = world.Name || '(Unnamed)';
           var sx = world.SectorX|0;
@@ -668,8 +666,10 @@ window.addEventListener('DOMContentLoaded', function() {
           var hy = world.HexY|0;
           var scale = 64;
           world.href = Util.makeURL(base_url, {scale: 64, sx: sx, sy: sy, hx: hx, hy: hy});
+          route.push({sx:sx, sy:sy, hx:hx, hy:hy});
         });
 
+        map.SetRoute(route);
         $('#routePath').innerHTML = template('#RouteResultsTemplate')({Route:data});
 
         Array.from(document.querySelectorAll('#routePath a')).forEach(function(a) {
@@ -682,8 +682,8 @@ window.addEventListener('DOMContentLoaded', function() {
 
       })
       .catch(function(reason) {
-        console.error(reason.message);
-        $('#routePath').innerHTML = template('#RouteResultsTemplate')({});
+        $('#routePath').innerHTML = template('#RouteErrorTemplate')({Message: reason.message});
+        map.SetRoute(null);
       });
   };
 
