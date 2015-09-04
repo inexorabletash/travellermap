@@ -41,16 +41,14 @@ namespace Maps
         //     O'Reilly Media, Inc., July 2004.
         private class Node<T> : IComparable<Node<T>>
         {
-            public Node(T entity, double cost = 0, uint steps = 0, Node<T> parent = null)
+            public Node(T entity, double cost = 0, Node<T> parent = null)
             {
                 this.entity = entity;
                 this.cost = cost;
-                this.steps = steps;
                 this.parent = parent;
             }
             public T entity;
             public double cost;
-            public uint steps;
             public Node<T> parent;
 
             public int CompareTo(Node<T> other)
@@ -123,10 +121,8 @@ namespace Maps
 
                     // move it to open list and calculate cost
 
-                    // TODO: Compute cost using map
-                    uint steps = currentNode.steps + 1;
-                    double cost = steps + map.Distance(t, end);
-                    open.Add(new Node<T>(t, cost, steps, currentNode));
+                    double cost = currentNode.cost + map.Distance(t, end);
+                    open.Add(new Node<T>(t, cost, currentNode));
                     openSet.Add(t);
                 }
             }
