@@ -648,7 +648,8 @@ window.addEventListener('DOMContentLoaded', function() {
     $('#routePath').innerHTML = '';
 
     fetch(Traveller.MapService.makeURL('/api/route', {
-      start: start, end: end, jump: jump }))
+      start: start, end: end, jump: jump,
+      x: map.GetHexX(), y: map.GetHexY()}))
       .then(function(response) {
         if (!response.ok) return response.text();
         return response.json();

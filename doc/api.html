@@ -983,13 +983,27 @@ table#features, #features th, #features td { border: solid 1px black; }
         <dt>jump <dd>jump distance (<code>0</code> through <code>12</code>, default is <code>2</code>)
     </dl>
 
+    <h4>Options:</h4>
+    <dl class="params">
+        <dt>x
+        <dt>y <dd>search position in <a href="#system_world">world-space coordinates</a>
+
+    </dl>
+
     <h4>Notes:</h4>
     <ul>
-        <li>Tries to find the shortest path between the start and end worlds.
-        <li>Locations are specified as <var>sector name</var>, a space, <var>hex number</var>, e.g. <code>SPIN 1910</code>, <code>Solomani Rim 1827</code>, etc.
-        <li>If the start or end location cannot be parsed, the request will fail with status <code>400 Bad Request</code> and a diagnostic message in the body.
-        <li>If the source or end location do not exist, the request will fail with status <code>404 Not Found</code> and a diagnostic message in the body.
-        <li>If there is no route found, the request will fail with status <code>404 Not Found</code> and a diagnostic message in the body.
+        <li>Returns the shortest path found between the start and end worlds,
+          with the given jump range, if any.
+
+        <li>If the start/end location matches is given as <var>SECTOR HEX</var>,
+          e.g. <code>SPIN 1910</code> or <code>Solomani Rim 1827</code>
+          a world at that position will be used.
+        <li>Otherwise, the nearest matching world with that name will be used, if any.
+          The <code>x</code>, <code>y</code> coordinates are used to determine "nearest"
+          in case of multiple matches.
+        <li>If the source or end location do not exist, or there is no route found given
+          the contraints, the request will fail with status <code>404 Not Found</code>
+          and a diagnostic message in the body.
         <li>
           The default output format is <a href="http://json.org/">JSON</a>. To retrieve results in XML form, specify
           the HTTP header <code>Accept: text/xml</code> or include <code>accept=text/xml</code>
