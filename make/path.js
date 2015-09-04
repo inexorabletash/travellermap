@@ -4,10 +4,9 @@
   // Based on notes in _AI for Game Developers_, Bourg & Seemann,
   //     O'Reilly Media, Inc., July 2004.
 
-  function Node(id, cost, steps, parent) {
+  function Node(id, cost, parent) {
     this.id = id;
     this.cost = cost;
-    this.steps = steps;
     this.parent = parent;
   }
 
@@ -93,7 +92,7 @@
 
         // for each adjacent node
         adjacentHexes.forEach(function(adjacentHex) {
-          var adjacentNode = new Node(adjacentHex, -1, currentNode.steps+1, currentNode);
+          var adjacentNode = new Node(adjacentHex, -1, currentNode);
 
           // if it isn't on the open list
           if (open.contains(adjacentNode))
@@ -110,15 +109,13 @@
           // move it to open list and calculate cost
           open.add(adjacentNode);
 
-          var cost = adjacentNode.steps + dist(adjacentHex, endHex);
-
           // NOTE: Can tweak cost, e.g.
           //   if RedZone   then cost += 2
           //   if AmberZone then cost += 1
           //   if NoWater   then cost += 1
           //   if !Imperial then cost += 1
 
-          adjacentNode.cost = cost;
+          adjacentNode.cost = currentNode.cost + dist(adjacentHex, endHex);
         });
       }
     }
