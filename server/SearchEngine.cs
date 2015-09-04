@@ -69,7 +69,7 @@ namespace Maps
                         dt_subsectors.Columns.Add(new DataColumn());
 
                     DataTable dt_worlds = new DataTable();
-                    for (int i = 0; i < 10; ++i)
+                    for (int i = 0; i < 12; ++i)
                         dt_worlds.Columns.Add(new DataColumn());
 
                     callback("Parsing data...");
@@ -109,6 +109,8 @@ namespace Maps
                         {
                             DataRow row = dt_worlds.NewRow();
                             row.ItemArray = new object[] { 
+                                    world.Coordinates.X,
+                                    world.Coordinates.Y,
                                     sector.X, 
                                     sector.Y, 
                                     world.X, 
@@ -145,6 +147,8 @@ namespace Maps
 
                         "IF EXISTS(SELECT 1 FROM sys.objects WHERE OBJECT_ID = OBJECT_ID(N'worlds') AND type = (N'U')) DROP TABLE worlds",
                         "CREATE TABLE worlds ("
+                            + "x int NOT NULL, "
+                            + "y int NOT NULL, "
                             + "sector_x int NOT NULL, " 
                             + "sector_y int NOT NULL, "
                             + "hex_x int NOT NULL, "
@@ -303,7 +307,30 @@ namespace Maps
             return RE_TERMS.Matches(q).Cast<Match>().Select(m => m.Value).Where(s => !String.IsNullOrWhiteSpace(s));
         }
 
+        public static WorldLocation FindNearestWorldMatch(string name, int x, int y)
+        {
+            string sql = "SELECT sector_x, sector_y, hex_x, hex_y, " +
+                "((@x - x) * (@x - x) + (@y - y) * (@y - y)) AS distance " +
+                "FROM worlds " +
+                "WHERE name = @name " +
+                "ORDER BY distance ASC";
 
+            using (var connection = DBUtil.MakeConnection())
+            {
+                using (var sqlCommand = new SqlCommand(sql, connection))
+                {
+                    sqlCommand.Parameters.AddWithValue("@x", x);
+                    sqlCommand.Parameters.AddWithValue("@y", y);
+                    sqlCommand.Parameters.AddWithValue("@name", name);
+                    using (var row = sqlCommand.ExecuteReader())
+                    {
+                        if (!row.Read())
+                            return null;
+                        return new WorldLocation(row.GetInt32(0), row.GetInt32(1), row.GetInt32(2), row.GetInt32(3));
+                    }
+                }
+            }
+        }
 
         private static SearchResultsType ParseQuery(string query, SearchResultsType types, out List<string> clauses, out List<string> terms)
         {

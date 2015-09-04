@@ -21,12 +21,24 @@ namespace Maps.API
                 return null;
             }
 
-            Match match = Regex.Match(query, @"^\s*(?<sector>.+?)\s+(?<hex>\d\d\d\d)$");
-            if (match == null)
+            query = query.Trim();
+
+            Match match = Regex.Match(query, @"^(?<sector>.+?)\s+(?<hex>\d\d\d\d)$");
+            if (!match.Success)
             {
-                SendError(context.Response, 400, "Bad Request", String.Format("Invalid {0} location: {1}", field, query));
-                return null;
-            }
+                int x = GetIntOption(context, "x", 0);
+                int y = GetIntOption(context, "y", 0);
+                WorldLocation loc = SearchEngine.FindNearestWorldMatch(query, x, y);
+                if (loc == null)
+                {
+                    SendError(context.Response, 404, "Not Found", String.Format("Location not found: {0}", query));
+                    return null;
+                }
+                Sector loc_sector;
+                World loc_world;
+                loc.Resolve(map, manager, out loc_sector, out loc_world);
+                return loc_world;
+            } 
 
             Sector sector = map.FromName(match.Groups["sector"].Value);
             if (sector == null)
@@ -37,8 +49,8 @@ namespace Maps.API
 
             string hexString = match.Groups["hex"].Value;
             int hex = Int32.Parse(hexString);
-            int x = hex / 100, y = hex % 100;
-            if (!Util.InRange(x, 1, Astrometrics.SectorWidth) || !Util.InRange(y, 1, Astrometrics.SectorHeight))
+            int hx = hex / 100, hy = hex % 100;
+            if (!Util.InRange(hx, 1, Astrometrics.SectorWidth) || !Util.InRange(hy, 1, Astrometrics.SectorHeight))
             {
                 SendError(context.Response, 400, "Not Found", String.Format("Invalid hex: {0}", hexString));
                 return null;
