@@ -29,7 +29,7 @@ namespace Maps
 
         int PathFinder.Map<World>.Distance(World a, World b)
         {
-            return Astrometrics.HexDistance(a.Location, b.Location);
+            return Astrometrics.HexDistance(a.Coordinates, b.Coordinates);
         }
     }
 
