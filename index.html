@@ -468,6 +468,7 @@ button:hover {
         </div>
       </div>
       {{/Route}}
+      <span class="summary">{{Distance}} parsecs &mdash; {{Jumps}} jumps</span>
     </script>
     <script id="RouteErrorTemplate" type="text/x-handlebars-template">
       <div><i>{{Message}}</i></div>
@@ -499,6 +500,7 @@ button:hover {
     #routePath .item-main { font-size: 125%; }
     #routePath .item-location { margin-left: 10pt; }
     #routePath .item-title { margin-left: 10pt; }
+    #routePath .summary { display: block; padding-left: 30px; padding-top: 10px; }
     </style>
     <script>
     window.addEventListener('DOMContentLoaded', function() {
