@@ -659,7 +659,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
         var base_url = document.location.href.replace(/\?.*/, '');
         var route = [];
-        data.forEach(function(world) {
+        data.forEach(function(world, index) {
           world.Name = world.Name || '(Unnamed)';
           var sx = world.SectorX|0;
           var sy = world.SectorY|0;
@@ -667,6 +667,16 @@ window.addEventListener('DOMContentLoaded', function() {
           var hy = world.HexY|0;
           var scale = 64;
           world.href = Util.makeURL(base_url, {scale: 64, sx: sx, sy: sy, hx: hx, hy: hy});
+
+          if (index > 0) {
+            var prev = data[index - 1];
+            var a = Traveller.Astrometrics.sectorHexToWorld(
+              prev.SectorX|0, prev.SectorY|0, prev.HexX|0, prev.HexY|0);
+            var b = Traveller.Astrometrics.sectorHexToWorld(sx, sy, hx, hy);
+            var dist = Traveller.Astrometrics.hexDistance(a.x, a.y, b.x, b.y);
+            prev.Distance = dist;
+          }
+
           route.push({sx:sx, sy:sy, hx:hx, hy:hy});
         });
 

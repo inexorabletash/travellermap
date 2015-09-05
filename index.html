@@ -36,8 +36,8 @@
 <!--[if lt IE 8]><script>alert("IE7 is no longer supported.");location = 'http://google.com/chrome';</script><![endif]-->
 <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.2/handlebars.min.js"></script>
 <script src="lib/polyfill/polyfill.min.js?update=2015-08-15"></script>
-<script src="map.js?update=2015-09-03"></script>
-<script src="index.js?update=2015-09-04"></script>
+<script src="map.js?update=2015-09-05"></script>
+<script src="index.js?update=2015-09-05"></script>
 <style>
 .ui {
   z-index: 2000;
@@ -459,6 +459,9 @@ button:hover {
     <script id="RouteResultsTemplate" type="text/x-handlebars-template">
       {{#Route}}
       <div class="item">
+        {{#Distance}}
+        <div class="item-distance">{{.}}</div>
+        {{/Distance}}
         <div class="item-main"><a title="Navigate to {{Name}}" href="{{href}}" onclick="{{onclick}}">{{Name}}</a></div>
         <div class="item-location">
           {{Sector}} {{Hex}}
@@ -480,10 +483,11 @@ button:hover {
       overflow: auto;
     }
     #routePath .item {
+      position: relative;
       padding-left: 30px;
       background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAqCAMAAACNzCuYAAAAclBMVEUAAAAEgAQEgAQAgwAEgAQEgAQEgAQFgAUAgAAFgAUEgQQDgAMFgQUIgggEgAQFgQUFgAUEgAQEgQQEgAQAgAAEgAQFgAUEgQQEgAQFgAUEgAQFgAUEggQGgAYGgAYAfQAAeAAFhwUFiQUEgQQEgwQFiwVnxGEaAAAAIXRSTlMA/vsDg3r4YgjWfFM1H+XPmIh0RRDw3MC1oIxuPS4qGRGyLpaAAAAAqklEQVQoz1SPiQ7DIAxD3VDR+1q7+wyh//+LA7JumiWQ/YSIA8AAy1wU8yvalE3ee2bfTyVMzN3gfEZEfq26SMrKWcqCyLrDAuCyWsmSxLoReO6FUlLUoeGUlRAX2H2ASDjkctQBqBKYUPyDKx763Xa3wMn9xvIRwF28VWAlPjBohFMmlkaXaQdtVd22dTEyEZ+jTSpjO3J1MCoT28WS5gveYh0VAGyQCQAAdCATUQbDIxYAAAAASUVORK5CYII=);
       background-repeat: no-repeat;
-      background-position: 0 3px;
+      background-position: 3px 3px;
       padding-top: 2px;
       padding-bottom: 5px;
       margin-bottom: -5px;
@@ -491,6 +495,7 @@ button:hover {
     #routePath .item:last-of-type {
       background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAY1BMVEUAAAAEgQQEgAQEgAQEgAQEgQQEgAQFgQUGfwYDfwMFgQUEgAQFgAUFgQUFgAUEgQQEgAQFgQUHfgcAfQAEgQQFgAUEgAQEgAQEgAQEgAQEgAQFgQUEfwQEgQQFiAUFiQUEhASbbATQAAAAHXRSTlMA+/34e/Q8Xicc4bSmnZZYRy8jE/DRycWriIFxQjzjP6sAAACGSURBVBjTZY/pEsMgCIQBNdYcTdL7Enj/p6w6pmMn369lYWCBwslbOwfYCA9kEXbTGQrdRSIiUpT+UMadGooJMtznmUFMrBiZANbUqnUSLsCbMf4gnuHYGih2b9g/gz10Ss1STElu3JwdctAkajB1JapXxgwxLfWZqzKz6H2FjeU5jq9PkV+jnBB2/Qv6fAAAAABJRU5ErkJggg==);
     }
+    #routePath .item-distance { position: absolute; left: 0px; top: 22px; }
     #routePath .item-main { font-size: 125%; }
     #routePath .item-location { margin-left: 10pt; }
     #routePath .item-title { margin-left: 10pt; }

@@ -178,7 +178,27 @@ var Util = {
     TileWidth: 256,
     TileHeight: 256,
     MinScale: 0.0078125,
-    MaxScale: 512
+    MaxScale: 512,
+
+    sectorHexToWorld: function(sx, sy, hx, hy) {
+      return {
+        x: (sx * Astrometrics.SectorWidth) + hx - Astrometrics.ReferenceHexX,
+        y: (sy * Astrometrics.SectorHeight) + hy - Astrometrics.ReferenceHexY
+      };
+    },
+
+    // World-space Coordinates (Reference is 0,0)
+    hexDistance: function(ax, ay, bx, by) {
+      function even(x) { return (x % 2) == 0; }
+      function odd (x) { return (x % 2) != 0; }
+      var dx = bx - ax;
+      var dy = by - ay;
+      var adx = Math.abs(dx);
+      var ody = dy + Math.floor(adx / 2);
+      if (even(ax) && odd(bx))
+        ody += 1;
+      return Math.max(adx - ody, ody, adx);
+    }
   };
 
   var Defaults = {
