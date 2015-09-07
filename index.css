@@ -281,7 +281,7 @@ body.style-atlas {
 .hide-ui .ui { display: none; }
 .hide-footer #bottom-pane { display: none; }
 
-button, input[type=submit] {
+button {
   font-family: Univers, Helvetica, Arial, sans-serif;
   font-size: 10pt;
   font-weight: bold;
@@ -384,7 +384,9 @@ button:hover {
   text-align: center;
   margin: 0 0 10px 0;
 }
-input[type=submit] { height: 20px; margin: 0 2px; }
+#routeForm button {
+  height: 20px; margin: 0 2px;
+ }
 
 #routeForm.J-1 #J-1,
 #routeForm.J-2 #J-2,

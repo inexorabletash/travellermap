@@ -233,12 +233,12 @@
              autocapitalize="none"
              spellcheck="false">
       <br>
-      <input id="J-1" type="submit" name="jump" value="J-1" title="Compute a Jump-1 route">
-      <input id="J-2" type="submit" name="jump" value="J-2" title="Compute a Jump-2 route">
-      <input id="J-3" type="submit" name="jump" value="J-3" title="Compute a Jump-3 route">
-      <input id="J-4" type="submit" name="jump" value="J-4" title="Compute a Jump-4 route">
-      <input id="J-5" type="submit" name="jump" value="J-5" title="Compute a Jump-5 route">
-      <input id="J-6" type="submit" name="jump" value="J-6" title="Compute a Jump-6 route">
+      <button id="J-1" name="jump" title="Calculate a Jump-1 route">J-1</button>
+      <button id="J-2" name="jump" title="Calculate a Jump-2 route">J-2</button>
+      <button id="J-3" name="jump" title="Calculate a Jump-3 route">J-3</button>
+      <button id="J-4" name="jump" title="Calculate a Jump-4 route">J-4</button>
+      <button id="J-5" name="jump" title="Calculate a Jump-5 route">J-5</button>
+      <button id="J-6" name="jump" title="Calculate a Jump-6 route">J-6</button>
     </form>
     <div id="routePath"></div>
 
@@ -263,18 +263,18 @@
     window.addEventListener('DOMContentLoaded', function() {
       var $ = function(s) { return document.querySelector(s); };
       var $$ = function(s) { return document.querySelectorAll(s); };
-      Array.from($$("#routeForm input[type=submit]")).forEach(function(submit) {
-        submit.addEventListener('click', function(e) {
+      Array.from($$("#routeForm button")).forEach(function(button) {
+        button.addEventListener('click', function(e) {
           e.preventDefault();
 
           ['J-1','J-2','J-3','J-4','J-5','J-6'].forEach(function(n) {
             $('#routeForm').classList.remove(n);
           });
-          $('#routeForm').classList.add(this.value);
+          $('#routeForm').classList.add(button.id);
 
           var start = $('#routeStart').value;
           var end = $('#routeEnd').value;
-          var jump = this.value.replace('J-', '');;
+          var jump = button.id.replace('J-', '');;
 
           route(start, end, jump);
         });
