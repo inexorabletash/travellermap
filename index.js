@@ -196,7 +196,6 @@ window.addEventListener('DOMContentLoaded', function() {
 
   $("#routeBtn").addEventListener('click', function(e) {
     // TODO: Make these mutually exclusive in a less hacky way.
-    document.body.classList.remove('search-progress');
     document.body.classList.remove('search-results');
     document.body.classList.add('route-ui');
     $('#routeStart').focus();
@@ -629,22 +628,14 @@ window.addEventListener('DOMContentLoaded', function() {
       return;
 
     if (query === lastQuery) {
-      if (!document.body.classList.contains('search-progress') && !typed)
+      if (!searchRequest && !typed)
         document.body.classList.add('search-results');
       return;
     }
     lastQuery = query;
 
-    if (!typed) {
-      // IE stops animated images when submitting a form - restart it
-      if (document.images) {
-        var progressImage = $('#ProgressImage');
-        progressImage.src = progressImage.src;
-      }
-
-      document.body.classList.add('search-progress');
+    if (!typed)
       document.body.classList.remove('search-results');
-    }
 
     if (searchRequest)
       searchRequest.ignore();
@@ -652,14 +643,12 @@ window.addEventListener('DOMContentLoaded', function() {
     searchRequest = Util.ignorable(Traveller.MapService.search(query));
     searchRequest
       .then(function(data) {
-        searchRequest = null;
         displayResults(data);
-        document.body.classList.remove('search-progress');
-        document.body.classList.add('search-results');
       }, function() {
-        searchRequest = null;
         $('#resultsContainer').innerHTML = '<i>Error fetching results.</i>';
-        document.body.classList.remove('search-progress');
+      })
+      .then(function() {
+        searchRequest = null;
         document.body.classList.add('search-results');
       });
 

@@ -340,6 +340,8 @@ button:hover {
   box-shadow: 2px 2px 4px #404040;
 }
 
+/* -- Results */
+
 #resultsBox {
   left: 15px; top: 50px; width: 200px;
   min-height: 50px;
@@ -355,16 +357,6 @@ button:hover {
 #resultsContainer .item-uwp { margin-left: 10pt; }
 #resultsContainer .item-status { font-style: italic; }
 
-
-/* -- Progress */
-
-#progressBox {
-  position: absolute;
-  left: 15px; top: 50px; height: 50px; width: 200px;
-  text-align: center;
-}
-.search-progress #progressBox { display: block; }
-#ProgressImage { margin: 6px; }
 
 /* -- Route */
 
