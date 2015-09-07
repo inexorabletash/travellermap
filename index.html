@@ -30,69 +30,14 @@
 <meta property="og:site_name" content="The Traveller Map">
 <meta property="fb:admins" content="617166358">
 
-<link rel="stylesheet" href="index.css?update=2015-09-03">
+<link rel="stylesheet" href="index.css?update=2015-09-06">
 <link rel="stylesheet" href="lib/add-to-home-screen/addtohomescreen.css">
 
 <!--[if lt IE 8]><script>alert("IE7 is no longer supported.");location = 'http://google.com/chrome';</script><![endif]-->
 <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.2/handlebars.min.js"></script>
 <script src="lib/polyfill/polyfill.min.js?update=2015-08-15"></script>
-<script src="map.js?update=2015-09-05"></script>
+<script src="map.js?update=2015-09-06"></script>
 <script src="index.js?update=2015-09-05"></script>
-<style>
-.ui {
-  z-index: 2000;
-  transform: translateZ(2000px);
-}
-
-.hide-ui .ui { display: none; }
-.hide-footer #bottom-pane { display: none; }
-
-button, input[type=submit] {
-  font-family: Univers, Helvetica, Arial, sans-serif;
-  font-size: 10pt;
-  font-weight: bold;
-  padding: 0 10px; margin: 0; border: none;
-  min-width: 37px;
-  background-color: #606060;
-  box-shadow: 2px 2px 4px #404040;
-  border-radius: 2px;
-}
-button.glyph {
-  font-size: 160%;
-}
-button img {
-  vertical-align: middle;
-}
-button:hover {
-  background-color: red;
-}
-::-moz-focus-inner {
-  padding: 0;
-}
-.hoverbox {
-  display: none;
-  position: absolute;
-  overflow-x: hidden;
-  overflow-y: auto;
-  background-color: inherit;
-  border: 1px solid gray;
-  box-shadow: 2px 2px 4px #404040;
-  padding: 20px;
-}
-
-.hoverbox-right {
-  right: 15px; top: 50px; bottom: 150px;
-}
-.hoverbox-left {
-  left: 15px; top: 50px; bottom: 110px;
-}
-@media only screen and (max-width: 640px) {
-  .hoverbox-right,
-  .hoverbox-left {
-    bottom: 60px;
-  }
-}
-</style>
 
 <!-- Home Screen Icons - iOS and Android -->
 <link rel="apple-touch-icon-precomposed" href="res/ui/regina152.png">
@@ -114,42 +59,6 @@ button:hover {
   <div id="direction-spinward" class="direction">Spinward</div>
   <div id="direction-trailing" class="direction">Trailing</div>
 
-  <style>
-  #mapContainer {
-    overflow: hidden;
-  }
-  #dragContainer {
-    transform: translateZ(500px) perspective(1000px);
-    transition: 1s ease-in-out;
-  }
-  .tilt #dragContainer {
-    -webkit-transform: translateZ(500px) perspective(1000px) rotateX(45deg);
-    transform: translateZ(500px) perspective(1000px) rotateX(45deg);
-    transition: 1s ease-in-out;
-  }
-  .direction {
-    pointer-events: none;
-    position: absolute;
-    text-align: center;
-    z-index: 1000;
-  }
-  #direction-coreward {
-    top: 4px; left: 0; right: 0;
-  }
-  #direction-rimward {
-    bottom: 4px; left: 0; right: 0;
-  }
-  #direction-spinward {
-    top: 50%; left: 0.9em;
-    transform: translateY(-50%) translateX(-50%) rotate(270deg);
-    -webkit-transform: translateY(-50%) translateX(-50%) rotate(270deg);
-  }
-  #direction-trailing {
-    top: 50%; right: 0.9em;
-    transform: translateY(-50%) translateX(50%) rotate(270deg);
-    -webkit-transform: translateY(-50%) translateX(50%) rotate(270deg);
-  }
-  </style>
   <!--[if lt IE 9]>
       <style>
       #direction-spinward,
@@ -161,12 +70,6 @@ button:hover {
   <![endif]-->
 
   <div id="searchBar" class="ui">
-    <style>
-    #searchBar {
-      position: absolute;
-      left: 15px; top: 15px; height: 30px;
-    }
-    </style>
     <form id="searchForm" action="get">
       <input type="text"
              id="searchBox"
@@ -177,51 +80,13 @@ button:hover {
              autocapitalize="off"
              spellcheck="false"
              >
-      <style>
-      #searchForm { display: inline; }
-      #searchBox {
-        height: 30px; width: 200px;
-        float: left;
-        font-size: 12pt;
-        padding: 0 10px; margin: 0; border: none;
-        border-radius: 2px;
-        box-shadow: 2px 2px 4px #404040;
-      }
-      @media only screen and (max-width: 625px) {
-        #searchBox { width: 100px; }
-        #routeBtn { display: none; }
-      }
-      @media only screen and (max-width: 510px) {
-        #legendBtn { display: none; }
-      }
-      @media only screen and (max-width: 440px) {
-        #starBtn { display: none; }
-      }
-      @media only screen and (max-width: 400px) {
-        #searchBox { width: 50px; }
-      }
-      @media only screen and (max-width: 350px) {
-        #downloadBtn { display: none; }
-      }
-      </style>
       <button id="searchBtn"
               title="Search"
               style="background-position: center; background-repeat: no-repeat; background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAMAAAAMs7fIAAAAM1BMVEUAAAAAAAAABQAABQAACAAABQAABQAABQAABgAABAAABAAABQAABAAAAwAABQAABgAAAwByeGHnAAAAD3RSTlMAEJCgIGDsMIDZQHCzUMaidUdwAAAAbklEQVQY023QWwrFIAxFUd8m2nZn/qO95dpAKZ4fD0tCIGGfMkVqfIEAYPUNLWWD00cg309U2iOT5j/Dh9IqF+KSV1HmKhX7L+7Ql0RDyw2K+vYKXAqk4nQ2AE1YD54h0kMxnDx9S0f40DE2p/kByccEjmEXLDUAAAAASUVORK5CYII=);">
-        <style>
-        #searchBtn { width: 40px; height: 30px; float: left; margin-left: 4px; }
-        .search-results #searchBtn { display: none; }
-        </style>
       </button>
     </form>
 
     <button id="closeResultsBtn" style="background-position: center; background-repeat: no-repeat; background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAMAAAAMs7fIAAAAP1BMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACzJYIvAAAAFHRSTlMAPPQo5wSPcMOrDNnNZBi3h3hQSCFE0/gAAABbSURBVBjTjc1JFoAgDANQQEFlcOz9zyodeNnSTfr+InGz1xbN5zTYaBVKVJReIqHUs4rEQ4gheAcKBiCAUmVpgL5GVg8YBAjfDvJamplKFEqy0glrtz754py5H4x5BeoO3VSIAAAAAElFTkSuQmCC);">
-      <style>
-      #closeResultsBtn {
-        width: 40px; height: 30px; float: left; margin-left: 4px;
-        display: none;
-      }
-      .search-results #closeResultsBtn { display: inline-block; }
-      </style>
       <script>
       window.addEventListener('DOMContentLoaded', function() {
         var $ = function(s) { return document.querySelector(s); };
@@ -235,13 +100,6 @@ button:hover {
     <button id="starBtn"
             title="Points of interest"
             style="background-position: center; background-repeat: no-repeat; background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAMAAAAMs7fIAAAAUVBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABcqRVCAAAAGnRSTlMACexeUctAZgEQtTWCrW8eA5L3GHYp24uaY7niTYMAAABwSURBVBjTXZBbCsQgDABTW63a13bfzP0Puq4YKRn8kGECGlGGKIZxsSZ/jEg4MzaBGdtg1XyuAK5eRpHguPB+/atM5xzaW1RMosxUgnS+VJ5d3O5QDr6bADkdHg41J3ss5creRPRL+8qmq0kaP0r6A4lYCK1s5x8tAAAAAElFTkSuQmCC);">
-      <style>
-      #starBtn {
-        height: 30px;
-        float: left;
-        margin-left: 4px;
-      }
-      </style>
     </button>
     <script>
     window.addEventListener('DOMContentLoaded', function() {
@@ -270,18 +128,6 @@ button:hover {
 
     <button id="routeBtn"
             title="Compute Route">
-      <style>
-      #routeBtn {
-        width: 17px;
-        height: 30px;
-        float: left;
-        margin-left: 4px;
-        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAMCAMAAABP7o1HAAAAaVBMVEUAAAAAAAADAwMCAgICAgIDAwMDAwMCAgIAAAACAgICAgIDAwMCAgICAgIFBQUAAAADAwMCAgICAgIDAwMCAgICAgICAgIDAwMAAAAAAAACAgICAgIDAwMDAwMDAwMEBAQAAAAAAAADAwOJH3G+AAAAInRSTlMAA/np2MalfBvf3r2BbTEO89nTsYl0aWEiCeLQmVlQPyoWCS3a3AAAAJZJREFUGNNtUNkSgyAQA7kUULy1d5v//8juVpi+GGCGTZjNBpEheWcsg27//EWywrcVhK3wtQ9ZETdUFUzhG2DK3UwWqGDeWVgqaFkQ2CTJ2iMKGXBnpYXSyhE/q7FBZHuDWYgN/Vsm4iMI9tcjjVie6Ltj+oGtpiPH5wpUXR5OsxC4oLMrvEpQB8KjhNvLe1a8Xk8+5gtXrAloiNiNFgAAAABJRU5ErkJggg==);
-        background-repeat: no-repeat;
-        background-position: center;
-      }
-      .route-ui #routeBtn { display: none; }
-      </style>
     </button>
     <script>
     window.addEventListener('DOMContentLoaded', function() {
@@ -297,13 +143,6 @@ button:hover {
     </script>
 
     <button id="closeRouteBtn" style="background-position: center; background-repeat: no-repeat; background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAMAAAAMs7fIAAAAP1BMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACzJYIvAAAAFHRSTlMAPPQo5wSPcMOrDNnNZBi3h3hQSCFE0/gAAABbSURBVBjTjc1JFoAgDANQQEFlcOz9zyodeNnSTfr+InGz1xbN5zTYaBVKVJReIqHUs4rEQ4gheAcKBiCAUmVpgL5GVg8YBAjfDvJamplKFEqy0glrtz754py5H4x5BeoO3VSIAAAAAElFTkSuQmCC);">
-      <style>
-      #closeRouteBtn {
-        width: 40px; height: 30px; float: left; margin-left: 4px;
-        display: none;
-      }
-      .route-ui #closeRouteBtn { display: inline-block; }
-      </style>
       <script>
       window.addEventListener('DOMContentLoaded', function() {
         var $ = function(s) { return document.querySelector(s); };
@@ -317,16 +156,6 @@ button:hover {
 
   <div id="resultsBox"
        class="ui hoverbox hoverbox-left">
-    <style>
-    #resultsBox {
-      left: 15px; top: 50px; width: 200px;
-      min-height: 50px;
-      max-height: 250px;
-    }
-    .search-results #resultsBox { display: block; }
-    #resultsBox .tip a { text-decoration: none; }
-    #resultsBox .tip a:hover { text-decoration: underline; }
-    </style>
     <div id="resultsContainer"></div>
     <p class="tip"><br><a target="_blank" href="doc/about#search">Search tips...</a></p>
     <script id="SearchResultsTemplate" type="text/x-handlebars-template">
@@ -372,13 +201,6 @@ button:hover {
         <div><i>No matches found.</i></div>
       {{/Results.Items}}
     </script>
-    <style>
-    #resultsContainer .item-main { font-size: 125%; }
-    #resultsContainer .item-location { margin-left: 10pt; }
-    #resultsContainer .item-title { margin-left: 10pt; }
-    #resultsContainer .item-uwp { margin-left: 10pt; }
-    #resultsContainer .item-status { font-style: italic; }
-    </style>
     <script>
     window.addEventListener('DOMContentLoaded', function() {
       var $ = function(s) { return document.querySelector(s); };
@@ -396,28 +218,6 @@ button:hover {
 
   <div id="routeBox"
        class="ui hoverbox hoverbox-left">
-    <style>
-    #routeBox {
-      left: 10px; top: 10px; width: 290px;
-      padding: 10px;
-      min-height: 120px;
-      max-height: 350px;
-    }
-    .route-ui #routeBox { display: block; }
-
-    #routeBox input[type=text] {
-      height: 30px; width: 265px;
-
-      font-size: 12pt;
-      padding: 0 10px; margin: 0; border: 1px solid gray;
-      margin-bottom: 10px;
-    }
-    #routeBox form {
-      text-align: center;
-      margin: 0 0 10px 0;
-    }
-    input[type=submit] { height: 20px; margin: 0 2px; }
-    </style>
     <form id="routeForm" action="get">
       <input type="text"
              name="start"
@@ -445,14 +245,6 @@ button:hover {
       <input id="J-4" type="submit" name="jump" value="J-4" title="Compute a Jump-4 route">
       <input id="J-5" type="submit" name="jump" value="J-5" title="Compute a Jump-5 route">
       <input id="J-6" type="submit" name="jump" value="J-6" title="Compute a Jump-6 route">
-      <style>
-      #routeForm.J-1 #J-1,
-      #routeForm.J-2 #J-2,
-      #routeForm.J-3 #J-3,
-      #routeForm.J-4 #J-4,
-      #routeForm.J-5 #J-5,
-      #routeForm.J-6 #J-6 { background-color: red; }
-      </style>
     </form>
     <div id="routePath"></div>
 
@@ -473,35 +265,6 @@ button:hover {
     <script id="RouteErrorTemplate" type="text/x-handlebars-template">
       <div><i>{{Message}}</i></div>
     </script>
-    <style>
-    #routeBox { overflow: hidden; }
-    #routePath {
-      position: absolute;
-      top: 130px;
-      left: 20px;
-      right: 20px;
-      bottom: 20px;
-      overflow: auto;
-    }
-    #routePath .item {
-      position: relative;
-      padding-left: 30px;
-      background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAqCAMAAACNzCuYAAAAclBMVEUAAAAEgAQEgAQAgwAEgAQEgAQEgAQFgAUAgAAFgAUEgQQDgAMFgQUIgggEgAQFgQUFgAUEgAQEgQQEgAQAgAAEgAQFgAUEgQQEgAQFgAUEgAQFgAUEggQGgAYGgAYAfQAAeAAFhwUFiQUEgQQEgwQFiwVnxGEaAAAAIXRSTlMA/vsDg3r4YgjWfFM1H+XPmIh0RRDw3MC1oIxuPS4qGRGyLpaAAAAAqklEQVQoz1SPiQ7DIAxD3VDR+1q7+wyh//+LA7JumiWQ/YSIA8AAy1wU8yvalE3ee2bfTyVMzN3gfEZEfq26SMrKWcqCyLrDAuCyWsmSxLoReO6FUlLUoeGUlRAX2H2ASDjkctQBqBKYUPyDKx763Xa3wMn9xvIRwF28VWAlPjBohFMmlkaXaQdtVd22dTEyEZ+jTSpjO3J1MCoT28WS5gveYh0VAGyQCQAAdCATUQbDIxYAAAAASUVORK5CYII=);
-      background-repeat: no-repeat;
-      background-position: 3px 3px;
-      padding-top: 2px;
-      padding-bottom: 5px;
-      margin-bottom: -5px;
-    }
-    #routePath .item:last-of-type {
-      background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAY1BMVEUAAAAEgQQEgAQEgAQEgAQEgQQEgAQFgQUGfwYDfwMFgQUEgAQFgAUFgQUFgAUEgQQEgAQFgQUHfgcAfQAEgQQFgAUEgAQEgAQEgAQEgAQEgAQFgQUEfwQEgQQFiAUFiQUEhASbbATQAAAAHXRSTlMA+/34e/Q8Xicc4bSmnZZYRy8jE/DRycWriIFxQjzjP6sAAACGSURBVBjTZY/pEsMgCIQBNdYcTdL7Enj/p6w6pmMn369lYWCBwslbOwfYCA9kEXbTGQrdRSIiUpT+UMadGooJMtznmUFMrBiZANbUqnUSLsCbMf4gnuHYGih2b9g/gz10Ss1STElu3JwdctAkajB1JapXxgwxLfWZqzKz6H2FjeU5jq9PkV+jnBB2/Qv6fAAAAABJRU5ErkJggg==);
-    }
-    #routePath .item-distance { position: absolute; left: 0px; top: 22px; }
-    #routePath .item-main { font-size: 125%; }
-    #routePath .item-location { margin-left: 10pt; }
-    #routePath .item-title { margin-left: 10pt; }
-    #routePath .summary { display: block; padding-left: 30px; padding-top: 10px; }
-    </style>
     <script>
     window.addEventListener('DOMContentLoaded', function() {
       var $ = function(s) { return document.querySelector(s); };
@@ -529,28 +292,9 @@ button:hover {
   <div id="progressBox"
        class="ui hoverbox">
     <img id="ProgressImage" src="res/ui/ajax-loader.gif" alt="" width="32" height="32" style="margin: 6px;">
-    <style>
-    #progressBox {
-      position: absolute;
-      left: 15px; top: 50px; height: 50px; width: 200px;
-      text-align: center;
-    }
-    .search-progress #progressBox { display: block; }
-    </style>
   </div>
 
   <div id="optionsBar" class="ui">
-    <style>
-    #optionsBar {
-      position: absolute;
-      right: 15px; top: 15px; height: 30px;
-    }
-    #optionsBar button {
-      margin-left: 4px;
-      height: 30px;
-      float: left;
-    }
-    </style>
     <button id="homeBtn"
             title="Return to the default view&#x0A;Keyboard: H"
             style="background-position: center; background-repeat: no-repeat; background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAMAAAAMs7fIAAAAP1BMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACzJYIvAAAAFHRSTlMAYpYDv9tw9xIQX4HM8KIFr+U23VrmvHEAAABhSURBVBjTpY9JDoAgDEUrlkFGh97/rBYQIhpXvs1PX9omH76Zn0JtalwQRLQ6361BymgSl9glVZpRmjqO5xTpTkxgcTBo+W050og+h4FmJMD00wTNHACWI2QDS4HL1XhzAkBGCW3YsBI9AAAAAElFTkSuQmCC);">
@@ -602,40 +346,8 @@ button:hover {
     </script>
   </div>
 
-  <style>
-  .show-settings #settingsBox,
-  .show-legend #legendBox,
-  .show-share #shareBox,
-  .show-download #downloadBox,
-  .show-help #helpBox { display: block; }
-  .show-settings #settingsBtn,
-  .show-legend #legendBtn,
-  .show-share #shareBtn,
-  .show-download #downloadBtn,
-  .show-help #helpBtn { background-color: red; }
-  </style>
-
   <div id="settingsBox"
        class="ui hoverbox hoverbox-right">
-    <style>
-    #settingsBox {
-      width: 200px;
-      max-height: 520px;
-    }
-    #styles button {
-      width: 40px; height: 40px;
-      margin: 2px;
-      background-size: cover;
-      box-shadow: none;
-      border: 1px solid gray;
-    }
-    #settingsBox section { margin: 1em 0; }
-    #settingsBox section:first-of-type { margin-top: 0; }
-    #settingsBox section:last-of-type { margin-bottom: 0; }
-
-    /* checkbox/radio buttons are larger on iOS */
-    #settingsBox p { min-height: 24px; }
-    </style>
     <section id="styles">
       <button id="settingsBtn-poster"
               title="Classic black background"
@@ -649,12 +361,6 @@ button:hover {
       <button id="settingsBtn-candy"
               title="Eye candy"
               ></button>
-      <style>
-      #settingsBtn-poster { background-image: url('res/ui/style-poster.png'); }
-      #settingsBtn-atlas  { background-image: url('res/ui/style-atlas.png'); }
-      #settingsBtn-print  { background-image: url('res/ui/style-print.png'); }
-      #settingsBtn-candy  { background-image: url('res/ui/style-candy.png'); }
-      </style>
       <script>
         window.addEventListener('DOMContentLoaded', function() {
           var $ = function(s) { return document.querySelector(s); };
@@ -708,12 +414,6 @@ button:hover {
 
   <div id="legendBox"
        class="ui hoverbox hoverbox-right">
-    <style>
-    #legendBox {
-      width: 200px;
-      max-height: 620px;
-    }
-    </style>
     <section>
       <h2>Map Legend</h2><br>
       <div id="image1"></div>
@@ -782,27 +482,6 @@ button:hover {
 
   <div id="helpBox"
        class="ui hoverbox hoverbox-right">
-    <style>
-    #helpBox {
-      width: 200px;
-      max-height: 450px;
-    }
-    #helpBox section { margin: 1em 0; }
-    #helpBox section:first-of-type { margin-top: 0; }
-    #helpBox section:last-of-type { margin-bottom: 0; }
-
-    #helpBox p { margin: 0.5em 0; }
-    #helpBox p:first-of-type { margin-top: 0; }
-    #helpBox p:last-of-type { margin-bottom: 0; }
-
-    #helpBox h3:first-of-type { margin-top: 0; }
-    #helpBox h3 { font-style: italic; font-weight: normal;
-                  color: red;
-                  border-bottom: 2px solid red;
-                  margin-bottom: 10px; }
-    #helpBox a { text-decoration: none; }
-    #helpBox a:hover { text-decoration: underline; }
-    </style>
 
    <section>
       <h3>Traveller</h3>
@@ -853,18 +532,6 @@ button:hover {
 
   <div id="shareBox"
        class="ui hoverbox hoverbox-right">
-    <style>
-    #shareBox {
-      width: 230px;
-      max-height: 280px;
-    }
-    #shareBox section { margin: 1em 0; }
-    #shareBox section:first-of-type { margin-top: 0; }
-    #shareBox section:last-of-type { margin-bottom: 0; }
-    #shareBox input { width: 210px; padding: 5px; border: 1px solid #404040; }
-    #shareBox section.fb { height: 33px; }
-    </style>
-
     <section>
       <a href="https://twitter.com/share" class="twitter-share-button" data-via="inexorabletash" data-size="large">Tweet</a>
     </section>
@@ -895,28 +562,6 @@ button:hover {
 
   <div id="downloadBox"
        class="ui hoverbox hoverbox-right">
-    <style>
-    #downloadBox {
-      width: 230px;
-      max-height: 205px;
-    }
-    #downloadBox section { margin: 1em 0; }
-    #downloadBox section:first-of-type { margin-top: 0; }
-    #downloadBox section:last-of-type { margin-bottom: 0; }
-    #downloadBox #sector-selected { display: none; }
-    #downloadBox .world-selected { display: none; }
-    #downloadBox.sector-selected #sector-selected { display: block; }
-    #downloadBox.sector-selected #no-sector-selected { display: none; }
-    #downloadBox.sector-selected.world-selected .world-selected { display: block; }
-
-    #downloadBox h3 { font-style: italic; font-weight: normal;
-                      color: red;
-                      border-bottom: 2px solid red;
-                      margin-bottom: 10px; }
-    #downloadBox ul { list-style-type: none; padding-left: 20px; }
-    #downloadBox li { margin: 1em 0; }
-    </style>
-
     <section>
       <a id="download-snapshot" target="_blank" href="#" download="TravellerMapSnapshot">Save Snapshot</a>
       (<a id="download-snapshot-pdf" target="_blank" href="#">or PDF</a>)
@@ -961,25 +606,6 @@ button:hover {
 
   <div id="navBar"
        class="ui">
-    <style>
-    #navBar {
-      position: absolute;
-    }
-    #navBar { right: 15px; bottom: 110px; height: 30px; }
-    .hide-footer #navBar { bottom: 15px; }
-    @media only screen and (max-width: 640px) {
-      #navBar { display: none; }
-    }
-    #navBar canvas {
-      float: left;
-      margin-left: 4px;
-    }
-    #navBar button {
-      height: 30px; width: 30px;
-      float: left;
-      margin-left: 4px;
-    }
-    </style>
     <canvas id="scaleIndicator" width="120" height="30">
     </canvas>
     <button id="zoomInBtn"
@@ -1009,47 +635,6 @@ button:hover {
 
   <div id="bottom-pane"
        class="ui">
-    <style>
-    #bottom-pane { background-color: rgba(0,0,0,0.65); }
-    .style-draft #bottom-pane { background-color: antiquewhite; }
-    .style-atlas #bottom-pane,
-    .style-fasa #bottom-pane,
-    .style-print #bottom-pane { background-color: rgba(255,255,255,0.65); }
-
-    #LogoImage {
-      float: right;
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: top right;
-      width: 416px; height: 71px;
-      background-image: url("res/ui/logo-flat.png");
-    }
-    .style-fasa #LogoImage,
-    .style-draft #LogoImage,
-    .style-print #LogoImage,
-    .style-atlas #LogoImage {
-      background-image: url("res/ui/logo-flat-gray.png");
-    }
-
-    @media only screen and (max-width: 850px) {
-      #LogoImage { width: 210px; height: 71px; background-image: url("res/ui/logo-stacked.png"); }
-      .style-fasa #LogoImage,
-      .style-draft #LogoImage,
-      .style-print #LogoImage,
-      .style-atlas #LogoImage {  background-image: url("res/ui/logo-stacked-gray.png"); }
-    }
-
-    @media only screen and (max-width: 640px) {
-      #bottom-pane { font-size: 75%; height: 45px; padding: 2px;}
-      #stripe { height: 2pt; margin: 2px 0px; }
-      #LogoImage { width: 105px; height: 35.5px; }
-    }
-
-    @media only screen and (max-width: 360px) {
-      #bottom-pane { font-size: 65%; height: 60px; }
-    }
-
-    </style>
     <hr id="stripe">
     <div id="LogoImage" title="Traveller&reg; - Science Fiction Adventure in the Far Future">&nbsp;</div>
     <script>
@@ -1144,26 +729,7 @@ button:hover {
     <div id="popup-click" tabindex="0"></div>
   </div>
 
-  <div id="siteStatus" class="ui hoverbox">
-    <style>
-    #siteStatus {
-      top: 15px;
-      left: 0; right: 0;
-      margin-left: auto; margin-right: auto;
-      max-width: 400px;
-      text-align: center;
-    }
-    @media only screen and (max-width: 640px) {
-      #siteStatus {
-        max-width: 200px;
-      }
-    }
-    #siteStatus a { text-decoration: none; }
-    #siteStatus a:hover { text-decoration: underline; }
-    .show-connection-status #siteStatus { display: block; }
-    </style>
-    <a></a>
-  </div>
+  <div id="siteStatus" class="ui hoverbox"><a></a></div>
 
   <noscript><div>
     This site requires JavaScript.
