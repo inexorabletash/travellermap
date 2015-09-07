@@ -1,3 +1,5 @@
+/*global Traveller,Util,Handlebars */ // for lint and IDEs
+
 window.addEventListener('DOMContentLoaded', function() {
   'use strict';
 
@@ -9,6 +11,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
   // IE8: document.querySelector can't use bind()
   var $ = function(s) { return document.querySelector(s); };
+  var $$ = function(s) { return document.querySelectorAll(s); };
 
   //////////////////////////////////////////////////////////////////////
   //
@@ -24,7 +27,6 @@ window.addEventListener('DOMContentLoaded', function() {
 
   var isIframe = (window != window.top); // != for IE
   var isSmallScreen = mapElement.offsetWidth <= 640; // Arbitrary
-
 
   //////////////////////////////////////////////////////////////////////
   //
@@ -156,10 +158,159 @@ window.addEventListener('DOMContentLoaded', function() {
 
   }, PERMALINK_REFRESH_DELAY_MS);
 
+  //////////////////////////////////////////////////////////////////////
+  //
+  // UI Hookup
+  //
+  //////////////////////////////////////////////////////////////////////
+
+  // Search Bar
+
+  $("#searchForm").addEventListener('submit', function(e) {
+    document.body.classList.remove('route-ui');
+    map.SetRoute(null);
+    search($('#searchBox').value);
+    e.preventDefault();
+  });
+  var searchTimer = null;
+  var SEARCH_TIMER_DELAY = 250; // ms
+  $("#searchBox").addEventListener('keyup', function(e) {
+    if (searchTimer)
+      clearTimeout(searchTimer);
+    searchTimer = setTimeout(function() {
+      document.body.classList.remove('route-ui');
+      map.SetRoute(null);
+      search($('#searchBox').value, true);
+    }, SEARCH_TIMER_DELAY);
+  });
+
+  $('#closeResultsBtn').addEventListener('click', function() {
+    document.body.classList.remove('search-results');
+  });
+
+  $('#starBtn').addEventListener('click', function() {
+    document.body.classList.remove('route-ui');
+    map.SetRoute(null);
+    search("(default)");
+  });
+
+  $("#routeBtn").addEventListener('click', function(e) {
+    // TODO: Make these mutually exclusive in a less hacky way.
+    document.body.classList.remove('search-progress');
+    document.body.classList.remove('search-results');
+    document.body.classList.add('route-ui');
+    $('#routeStart').focus();
+  });
+
+  $('#closeRouteBtn').addEventListener('click', function() {
+    document.body.classList.remove('route-ui');
+    map.SetRoute(null);
+  });
+
+  Array.from($$("#routeForm button")).forEach(function(button) {
+    button.addEventListener('click', function(e) {
+      e.preventDefault();
+
+      ['J-1','J-2','J-3','J-4','J-5','J-6'].forEach(function(n) {
+        $('#routeForm').classList.remove(n);
+      });
+      $('#routeForm').classList.add(button.id);
+
+      var start = $('#routeStart').value;
+      var end = $('#routeEnd').value;
+      var jump = button.id.replace('J-', '');;
+
+      route(start, end, jump);
+    });
+  });
+
+  var VK_ESCAPE = 27;
+
+  document.body.addEventListener('keyup', function(e) {
+    if (e.keyCode === VK_ESCAPE) {
+      document.body.classList.remove('search-results');
+      document.body.classList.remove('route-ui');
+      $('#dragContainer').focus();
+    }
+  });
+
+  // Options Bar
+
+  var PANELS = ['legend', 'settings', 'share', 'download', 'help'];
+  PANELS.forEach(function(b) {
+    $('#'+b+'Btn').addEventListener('click', function() {
+      PANELS.forEach(function(p) {
+        document.body.classList[b === p ? 'toggle' : 'remove']('show-' + p);
+      });
+    });
+  });
+  document.body.addEventListener('keyup', function(e) {
+    if (e.keyCode === VK_ESCAPE) {
+      PANELS.forEach(function(p) {
+        document.body.classList.remove('show-' + p);
+      });
+    }
+  });
+
+  var STYLES = ['poster', 'atlas', 'print', 'candy'];
+  STYLES.forEach(function(s) {
+    $('#settingsBtn-'+s).addEventListener('click', function() { map.SetStyle(s); });
+  });
+
+  $('#homeBtn').addEventListener('click', goHome);
+
+  function goHome() {
+    if (['sx', 'sy', 'hx', 'hy'].every(function(p) { return ('yah_' + p) in urlParams; })) {
+      map.ScaleCenterAtSectorHex(64,
+                                 urlParams.yah_sx|0,
+                                 urlParams.yah_sy|0,
+                                 urlParams.yah_hx|0,
+                                 urlParams.yah_hy|0);
+      return;
+    }
+    map.SetScale(home.scale);
+    map.SetPosition(home.x, home.y);
+  }
+
+  // Nav Bar
+
+  $('#zoomInBtn').addEventListener('click', map.ZoomIn.bind(map));
+  $('#zoomOutBtn').addEventListener('click', map.ZoomOut.bind(map));
+  $('#tiltBtn').addEventListener('click', toggleTilt);
+
+  function toggleTilt() {
+    $('#cbTilt').click();
+  };
+
+  // Bottom Panel
+
+  $("#LogoImage").addEventListener('dblclick', function() {
+    document.body.classList.add('hide-footer');
+  });
+
+  // Keyboard Shortcuts
+
+  mapElement.addEventListener('keydown', function(e) {
+    if (e.ctrlKey || e.altKey || e.metaKey)
+      return;
+    var VK_H = 72, VK_T = 84;
+    if (e.keyCode === VK_H) {
+      e.preventDefault();
+      e.stopPropagation();
+      goHome();
+      return;
+    }
+    if (e.keyCode === VK_T) {
+      e.preventDefault();
+      e.stopPropagation();
+      toggleTilt();
+      return;
+    }
+  });
 
   //////////////////////////////////////////////////////////////////////
   //
-  // UI Binding
+  // Options UI Binding
   //
   //////////////////////////////////////////////////////////////////////
 
@@ -301,7 +452,6 @@ window.addEventListener('DOMContentLoaded', function() {
     }
   }());
 
-
   $('#cbSavePreferences').addEventListener('click', savePreferences);
   $('#cbSaveLocation').addEventListener('click', savePreferences);
 
@@ -340,46 +490,6 @@ window.addEventListener('DOMContentLoaded', function() {
     $('#searchBox').value = urlParams.q;
     search(urlParams.q);
   }
-
-  function goHome() {
-    if (['sx', 'sy', 'hx', 'hy'].every(function(p) { return ('yah_' + p) in urlParams; })) {
-      map.ScaleCenterAtSectorHex(64,
-                                 urlParams.yah_sx|0,
-                                 urlParams.yah_sy|0,
-                                 urlParams.yah_hx|0,
-                                 urlParams.yah_hy|0);
-      return;
-    }
-    map.SetScale(home.scale);
-    map.SetPosition(home.x, home.y);
-  }
-
-  $('#homeBtn').addEventListener('click', goHome);
-
-  $('#tiltBtn').addEventListener('click', toggleTilt);
-
-  function toggleTilt() {
-    $('#cbTilt').click();
-  };
-
-  mapElement.addEventListener('keydown', function(e) {
-    if (e.ctrlKey || e.altKey || e.metaKey)
-      return;
-    var VK_H = 72, VK_T = 84;
-    if (e.keyCode === VK_H) {
-      e.preventDefault();
-      e.stopPropagation();
-      goHome();
-      return;
-    }
-    if (e.keyCode === VK_T) {
-      e.preventDefault();
-      e.stopPropagation();
-      toggleTilt();
-      return;
-    }
-  });
-
 
   //////////////////////////////////////////////////////////////////////
   //
@@ -632,19 +742,13 @@ window.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  // Export
-  window.search = search;
-
-
   //////////////////////////////////////////////////////////////////////
   //
-  // Route
+  // Route Search
   //
   //////////////////////////////////////////////////////////////////////
 
-
-  window.route = function(start, end, jump) {
-    // TODO: spinner
+  function route(start, end, jump) {
     $('#routePath').innerHTML = '';
 
     fetch(Traveller.MapService.makeURL('/api/route', {
@@ -702,11 +806,11 @@ window.addEventListener('DOMContentLoaded', function() {
         $('#routePath').innerHTML = template('#RouteErrorTemplate')({Message: reason.message});
         map.SetRoute(null);
       });
-  };
+  }
 
   //////////////////////////////////////////////////////////////////////
   //
-  // Miscellaneous
+  // Scale Indicator
   //
   //////////////////////////////////////////////////////////////////////
 
@@ -757,7 +861,7 @@ window.addEventListener('DOMContentLoaded', function() {
   //
   //////////////////////////////////////////////////////////////////////
 
-  window.showWorldPopup = function(url) {
+  function showWorldPopup(url) {
     if (isSmallScreen) return true;
     $('#popup-iframe').src = url;
     $('#popup-iframe').onload = function() {
@@ -766,6 +870,7 @@ window.addEventListener('DOMContentLoaded', function() {
     };
     return false;
   };
+
   ['click', 'keydown', 'touchstart'].forEach(function(event) {
     $('#popup-click').addEventListener(event, function(e) {
       e.preventDefault();
@@ -773,6 +878,9 @@ window.addEventListener('DOMContentLoaded', function() {
       mapElement.focus();
     });
   });
+
+  // Export
+  window.showWorldPopup = showWorldPopup;
 
   //////////////////////////////////////////////////////////////////////
   //
@@ -782,4 +890,11 @@ window.addEventListener('DOMContentLoaded', function() {
 
   if (!isIframe) // == for IE
     mapElement.focus();
+
+  // Init all of the "social" UI asynchronously.
+  setTimeout(window.initSharingLinks, 1000);
+  $('#shareBtn').addEventListener('click', function() {
+    window.initSharingLinks();
+  });
+
 });

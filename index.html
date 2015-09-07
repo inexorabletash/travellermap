@@ -30,14 +30,14 @@
 <meta property="og:site_name" content="The Traveller Map">
 <meta property="fb:admins" content="617166358">
 
-<link rel="stylesheet" href="index.css?update=2015-09-06">
+<link rel="stylesheet" href="index.css?update=2015-09-07">
 <link rel="stylesheet" href="lib/add-to-home-screen/addtohomescreen.css">
 
 <!--[if lt IE 8]><script>alert("IE7 is no longer supported.");location = 'http://google.com/chrome';</script><![endif]-->
 <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.2/handlebars.min.js"></script>
 <script src="lib/polyfill/polyfill.min.js?update=2015-08-15"></script>
 <script src="map.js?update=2015-09-06"></script>
-<script src="index.js?update=2015-09-05"></script>
+<script src="index.js?update=2015-09-07"></script>
 
 <!-- Home Screen Icons - iOS and Android -->
 <link rel="apple-touch-icon-precomposed" href="res/ui/regina152.png">
@@ -81,70 +81,20 @@
       </button>
     </form>
 
-    <button id="closeResultsBtn">
-      <script>
-      window.addEventListener('DOMContentLoaded', function() {
-        var $ = function(s) { return document.querySelector(s); };
-        $('#closeResultsBtn').addEventListener('click', function() {
-          document.body.classList.remove('search-results');
-        });
-      });
-      </script>
+    <button id="closeResultsBtn"
+            title="Close search">
     </button>
 
     <button id="starBtn"
             title="Points of interest">
     </button>
-    <script>
-    window.addEventListener('DOMContentLoaded', function() {
-      var $ = function(s) { return document.querySelector(s); };
-      $("#searchForm").addEventListener('submit', function(e) {
-        document.body.classList.remove('route-ui'); map.SetRoute(null);
-        search($('#searchBox').value);
-        e.preventDefault();
-      });
-      var searchTimer = null;
-      var SEARCH_TIMER_DELAY = 250; // ms
-      $("#searchBox").addEventListener('keyup', function(e) {
-        if (searchTimer)
-          clearTimeout(searchTimer);
-        searchTimer = setTimeout(function() {
-          document.body.classList.remove('route-ui'); map.SetRoute(null);
-          search($('#searchBox').value, true);
-        }, SEARCH_TIMER_DELAY);
-      });
-      $('#starBtn').addEventListener('click', function() {
-        document.body.classList.remove('route-ui'); map.SetRoute(null);
-        search("(default)");
-      });
-    });
-    </script>
 
     <button id="routeBtn"
             title="Calculate a jump route between worlds">
     </button>
-    <script>
-    window.addEventListener('DOMContentLoaded', function() {
-      var $ = function(s) { return document.querySelector(s); };
-      $("#routeBtn").addEventListener('click', function(e) {
-        // TODO: Make these mutually exclusive in a less hacky way.
-        document.body.classList.remove('search-progress');
-        document.body.classList.remove('search-results');
-        document.body.classList.add('route-ui');
-        $('#routeStart').focus();
-      });
-    });
-    </script>
 
-    <button id="closeRouteBtn">
-      <script>
-      window.addEventListener('DOMContentLoaded', function() {
-        var $ = function(s) { return document.querySelector(s); };
-        $('#closeRouteBtn').addEventListener('click', function() {
-          document.body.classList.remove('route-ui'); map.SetRoute(null);
-        });
-      });
-      </script>
+    <button id="closeRouteBtn"
+            title="Close route">
     </button>
   </div>
 
@@ -194,19 +144,6 @@
       {{^Results.Items}}
         <div><i>No matches found.</i></div>
       {{/Results.Items}}
-    </script>
-    <script>
-    window.addEventListener('DOMContentLoaded', function() {
-      var $ = function(s) { return document.querySelector(s); };
-      document.body.addEventListener('keyup', function(e) {
-        var VK_ESCAPE = 27;
-        if (e.keyCode === VK_ESCAPE) {
-          document.body.classList.remove('search-results');
-          document.body.classList.remove('route-ui');
-          $('#dragContainer').focus();
-        }
-      });
-    });
     </script>
   </div>
 
@@ -259,28 +196,6 @@
     <script id="RouteErrorTemplate" type="text/x-handlebars-template">
       <div><i>{{Message}}</i></div>
     </script>
-    <script>
-    window.addEventListener('DOMContentLoaded', function() {
-      var $ = function(s) { return document.querySelector(s); };
-      var $$ = function(s) { return document.querySelectorAll(s); };
-      Array.from($$("#routeForm button")).forEach(function(button) {
-        button.addEventListener('click', function(e) {
-          e.preventDefault();
-
-          ['J-1','J-2','J-3','J-4','J-5','J-6'].forEach(function(n) {
-            $('#routeForm').classList.remove(n);
-          });
-          $('#routeForm').classList.add(button.id);
-
-          var start = $('#routeStart').value;
-          var end = $('#routeEnd').value;
-          var jump = button.id.replace('J-', '');;
-
-          route(start, end, jump);
-        });
-      });
-    });
-    </script>
   </div>
 
   <div id="progressBox"
@@ -307,31 +222,6 @@
     <button id="helpBtn"
             title="Help, feedback, and more">
     </button>
-    <script>
-    window.addEventListener('DOMContentLoaded', function() {
-      var $ = function(s) { return document.querySelector(s); };
-      var PANELS = ['legend', 'settings', 'share', 'download', 'help'];
-      PANELS.forEach(function(b) {
-        $('#'+b+'Btn').addEventListener('click', function() {
-          PANELS.forEach(function(p) {
-            document.body.classList[b === p ? 'toggle' : 'remove']('show-' + p);
-          });
-        });
-        document.body.addEventListener('keyup', function(e) {
-          var VK_ESCAPE = 27;
-          if (e.keyCode === VK_ESCAPE) {
-            document.body.classList.remove('show-' + b);
-          }
-        });
-      });
-
-      // Init all of the "social" UI asynchronously.
-      setTimeout(initSharingLinks, 1000);
-      $('#shareBtn').addEventListener('click', function() {
-        initSharingLinks();
-      });
-    });
-    </script>
   </div>
 
   <div id="settingsBox"
@@ -349,14 +239,6 @@
       <button id="settingsBtn-candy"
               title="Eye candy"
               ></button>
-      <script>
-        window.addEventListener('DOMContentLoaded', function() {
-          var $ = function(s) { return document.querySelector(s); };
-          ['poster', 'atlas', 'print', 'candy'].forEach(function(s) {
-            $('#settingsBtn-'+s).addEventListener('click', function() { map.SetStyle(s); });
-          });
-        });
-      </script>
     </section>
 
     <section>
@@ -556,9 +438,7 @@
     </section>
 
     <section id="no-sector-selected">
-      <section>
-        Click on the map to select a sector for more options.
-      </section>
+      Click on the map to select a sector for more options.
     </section>
 
     <section id="sector-selected">
@@ -605,31 +485,12 @@
     <button id="tiltBtn"
             title="Tilt&#x0A;Keyboard: T">
     </button>
-    <script>
-    window.addEventListener('DOMContentLoaded', function() {
-      var $ = function(s) { return document.querySelector(s); };
-      $('#zoomInBtn').addEventListener('click', function() {
-        window.map.ZoomIn();
-      });
-      $('#zoomOutBtn').addEventListener('click', function() {
-        window.map.ZoomOut();
-      });
-    });
-  </script>
   </div>
 
   <div id="bottom-pane"
        class="ui">
     <hr id="stripe">
     <div id="LogoImage" title="Traveller&reg; - Science Fiction Adventure in the Far Future">&nbsp;</div>
-    <script>
-      window.addEventListener('DOMContentLoaded', function() {
-        var $ = function(s) { return document.querySelector(s); };
-        $("#LogoImage").addEventListener('dblclick', function() {
-          document.body.classList.add('hide-footer');
-        });
-      });
-    </script>
 
     <div id="MetadataDisplay">
       <div class="credits">
@@ -720,7 +581,7 @@
 
   <div id="fb-root"></div>
   <script>
-  var initSharingLinks = Util.once(function() {
+  window.initSharingLinks = Util.once(function() {
     // Twitter
     !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
 
@@ -742,7 +603,7 @@
   });
   </script>
 
-  <script type="application/javascript" src="lib/add-to-home-screen/addtohomescreen.min.js"></script>
+  <script src="lib/add-to-home-screen/addtohomescreen.min.js"></script>
   <script>
     if (window == window.top && 'addToHomeScreen' in window) // Skip if in iframe, == for IE
       addToHomescreen({skipFirstVisit: true, maxDisplayCount: 1});

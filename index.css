@@ -31,6 +31,9 @@ a { color: white; }
 .style-print a,
 .style-atlas a { color: black; }
 
+a.stealth { text-decoration: none; }
+a.stealth:hover { text-decoration: underline; }
+
 input[type=text] {
   font-family: Univers, Helvetica, Arial, sans-serif;
   color: black; background-color: white;
