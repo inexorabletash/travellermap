@@ -406,12 +406,11 @@
 
       // Last result is the sector data...
       var sector = results.pop();
-      $('#output').innerHTML = template(sector);
+      document.body.innerHTML = template(sector);
 
       // Other results are tasks to run.
       results.forEach(function(result) { result(); });
 
-      status();
       window.location.hash = hash;
     }, function(error) {
       status('Failed: ' + error);
