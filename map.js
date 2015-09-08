@@ -1347,13 +1347,25 @@ var Util = {
     ctx.globalCompositeOperation = 'source-over';
     ctx.globalAlpha = 0.5;
     ctx.strokeStyle = 'green';
-    ctx.lineWidth = 15;
+    if (this.scale >= 7)
+      ctx.lineWidth = 0.25 * pow2(this.scale - 1);
+    else
+      ctx.lineWidth = 15;
+
     ctx.beginPath();
     route.forEach(function(world, index) {
       var pt = sectorHexToLogical(world.sx, world.sy, world.hx, world.hy);
       pt = self.logicalToPixel(pt.x, pt.y);
       ctx[index ? 'lineTo' : 'moveTo'](pt.x, pt.y);
     });
+    var dots = (this.scale >= 7) ? route : [route[0], route[route.length - 1]];
+    dots.forEach(function(world, index) {
+      var pt = sectorHexToLogical(world.sx, world.sy, world.hx, world.hy);
+      pt = self.logicalToPixel(pt.x, pt.y);
+      ctx.moveTo(pt.x + ctx.lineWidth / 2, pt.y);
+      ctx.arc(pt.x, pt.y, ctx.lineWidth / 2, 0, Math.PI*2);
+    });
+
     ctx.stroke();
     ctx.restore();
   };
