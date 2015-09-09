@@ -162,7 +162,7 @@ test('sec/metadata/poster - blobs', function () {
   fd.append('metadata', getBlob('api/metadata?sector=spin&accept=text/xml', 'text/xml'));
 
   var xhr = new XMLHttpRequest();
-  xhr.open('POST', '/api/poster', false);
+  xhr.open('POST', SERVICE_BASE + '/api/poster', false);
   xhr.send(fd);
 
   assertEquals(xhr.status, 200, 'Expected HTTP 200 OK status, saw: ' + xhr.status);
@@ -177,7 +177,7 @@ test('sec/metadata/poster - form data', function() {
   fd.append('metadata', getBlob('api/metadata?sector=spin&accept=text/xml', 'text/xml'));
 
   var xhr = new XMLHttpRequest();
-  xhr.open('POST', '/api/jumpmap?hex=1910', false);
+  xhr.open('POST', SERVICE_BASE + '/api/jumpmap?hex=1910', false);
   xhr.send(fd);
 
   assertEquals(xhr.status, 200, 'Expected HTTP 200 OK status, saw: ' + xhr.status);
