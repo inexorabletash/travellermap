@@ -1,35 +1,60 @@
 (function(global) {
 
+  function idiff(as, bs) {
+    // Map line -> index
+    var map = new Map();
+    as.forEach(function(a, i) {
+      if (!map.has(a)) map.set(a, []);
+      map.get(a).push(i);
+    });
+
+    var common = [];
+    var ssa = 0;
+    var ssb = 0;
+    var len = 0;
+
+    // Find largest common substring
+    bs.forEach(function(b, idx) {
+      if (!map.has(b)) return;
+      var tmp = [];
+      map.get(b).forEach(function(i) {
+        tmp[i] = ((i && common[i - 1]) || 0) + 1;
+        if (tmp[i] > len) {
+          len = tmp[i];
+          ssa = i - len + 1;
+          ssb = idx - len + 1;
+        }
+      });
+      common = tmp;
+    });
+
+    // Nothing common
+    if (!len) {
+      var result = [];
+      if (as.length) result.push(['-', as]);
+      if (bs.length) result.push(['+', bs]);
+      return result;
+    }
+
+    // Recurse
+    return [].concat(
+      idiff(as.slice(0, ssa), bs.slice(0, ssb)),
+      [['=', bs.slice(ssb, ssb + len)]],
+      idiff(as.slice(ssa + len), bs.slice(ssb + len))
+    );
+  }
+
   function diff(text1, text2) {
     var lines1 = text1.split(/\r?\n/);
     var lines2 = text2.split(/\r?\n/);
-
-    // TODO: Real diff - for now this just ignores leading/trailing matches
-    while (lines1.length && lines2.length) {
-      if (lines1[0] === lines2[0]) {
-        lines1.shift();
-        lines2.shift();
-        continue;
-      }
-      if (lines1[lines1.length - 1] === lines2[lines2.length - 1]) {
-        lines1.pop();
-        lines2.pop();
-        continue;
-      }
-      break;
-    }
-
     var out = [];
-    while (lines1.length && lines2.length) {
-      out.push('- ' + lines1.shift());
-      out.push('+ ' + lines2.shift());
-    }
-    while (lines1.length)
-      out.push('- ' + lines1.shift());
-    while (lines2.length)
-      out.push('+ ' + lines2.shift());
-
-    return out.join('\n');
+    idiff(lines1, lines2)
+      .filter(function(pair) { return pair[0] !== '='; })
+      .forEach(function(pair) {
+        var op = pair[0];
+        pair[1].forEach(function(line) { out.push(op + ' ' + line); });
+      });
+    return out.join('\n');;
   }
 
 
