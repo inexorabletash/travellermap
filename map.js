@@ -773,8 +773,10 @@ var Util = {
     container.addEventListener('DOMMouseScroll', wheelListener); // FF
 
     window.addEventListener('resize', function() {
-      self.width = container.offsetWidth;
-      self.height = container.offsetHeight;
+      var w = container.offsetWidth, h = container.offsetHeight;
+      if (w === self.width && h === self.height) return;
+      self.width = w;
+      self.height = h;
       if (self.canvas)
         self.resetCanvas();
       self.redraw(true);

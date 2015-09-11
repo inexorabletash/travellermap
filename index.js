@@ -185,6 +185,7 @@ window.addEventListener('DOMContentLoaded', function() {
   });
 
   $('#closeResultsBtn').addEventListener('click', function() {
+    $('#searchBox').value = '';
     document.body.classList.remove('search-results');
   });
 
@@ -194,16 +195,31 @@ window.addEventListener('DOMContentLoaded', function() {
     search("(default)");
   });
 
+  function resizeMap() {
+    if (typeof UIEvent === 'function') {
+      var event = new UIEvent('resize');
+    } else {
+      event = document.createEvent('UIEvent');
+      event.initUIEvent('resize', true, false, window, 0);
+    }
+    (window.dispatchEvent || window.fireEvent)(event);
+  }
+
   $("#routeBtn").addEventListener('click', function(e) {
     // TODO: Make these mutually exclusive in a less hacky way.
     document.body.classList.remove('search-results');
     document.body.classList.add('route-ui');
+    resizeMap();
     $('#routeStart').focus();
   });
 
-  $('#closeRouteBtn').addEventListener('click', function() {
+  $('#closeRouteBtn').addEventListener('click', function(e) {
+    $('#routeStart').value = '';
+    $('#routeEnd').value = '';
+
     document.body.classList.remove('route-ui');
     map.SetRoute(null);
+    resizeMap();
   });
 
   Array.from($$("#routeForm button")).forEach(function(button) {

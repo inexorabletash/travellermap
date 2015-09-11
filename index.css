@@ -312,6 +312,7 @@ button:hover {
   border: 1px solid gray;
   box-shadow: 2px 2px 4px #404040;
   padding: 20px;
+  z-index: 2001;
 }
 
 .hoverbox-right {
@@ -654,9 +655,7 @@ button:hover {
 
 #closeRouteBtn {
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAMAAAAMs7fIAAAAP1BMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACzJYIvAAAAFHRSTlMAPPQo5wSPcMOrDNnNZBi3h3hQSCFE0/gAAABbSURBVBjTjc1JFoAgDANQQEFlcOz9zyodeNnSTfr+InGz1xbN5zTYaBVKVJReIqHUs4rEQ4gheAcKBiCAUmVpgL5GVg8YBAjfDvJamplKFEqy0glrtz754py5H4x5BeoO3VSIAAAAAElFTkSuQmCC);
-  display: none;
 }
-.route-ui #closeRouteBtn { display: inline-block; }
 
 /* Options Bar Buttons */
 
@@ -739,19 +738,41 @@ button:hover {
 }
 @media only screen and (max-width: 625px) {
   #searchBox { width: 100px; }
-  #routeBtn { display: none; }
 }
-@media only screen and (max-width: 510px) {
+@media only screen and (max-width: 520px) {
+  .search-results #routeBtn { display: none; }
+}
+@media only screen and (max-width: 480px) {
   #legendBtn { display: none; }
 }
 @media only screen and (max-width: 440px) {
-  #starBtn { display: none; }
-}
-@media only screen and (max-width: 400px) {
+  #searchBtn { display: none; }
   #searchBox { width: 50px; }
+}
+@media only screen and (max-width: 390px) {
+  #starBtn { display: none; }
 }
 @media only screen and (max-width: 360px) {
   #downloadBtn { display: none; }
+}
+
+
+@media only screen and (max-width: 320px) {
+  .route-ui #routeBox {
+    left: 0; top: 0; right: 0; width: auto;
+    height: 250px;
+  }
+  .route-ui #routeBox input[type=text] {
+    width: 275px;
+  }
+  .route-ui #mapContainer {
+    top: 250px;
+  }
+  .route-ui #settingsBox,
+  .route-ui #legendBox,
+  .route-ui #shareBox,
+  .route-ui #downloadBox,
+  .route-ui #helpBox { display: none; }
 }
 
 
@@ -772,4 +793,24 @@ noscript div {
   color: white;
   background-color: inherit;
   border: 2px solid white;
+}
+
+#searchBar #searchBtn,
+#searchBar #closeResultsBtn {
+  margin-left: -30px;
+  padding: 0;
+  min-width: 0;
+  box-shadow: none;
+  background-color: transparent;
+}
+#routeBox #closeRouteBtn {
+  position: absolute;
+  top: 11px;
+  right: 8px;
+  padding: 0;
+  min-width: 0;
+  width: 30px;
+  height: 30px;
+  box-shadow: none;
+  background-color: transparent;
 }

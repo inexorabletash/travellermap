@@ -30,14 +30,14 @@
 <meta property="og:site_name" content="The Traveller Map">
 <meta property="fb:admins" content="617166358">
 
-<link rel="stylesheet" href="index.css?update=2015-09-07">
+<link rel="stylesheet" href="index.css?update=2015-09-10">
 <link rel="stylesheet" href="lib/add-to-home-screen/addtohomescreen.css">
 
 <!--[if lt IE 8]><script>alert("IE7 is no longer supported.");location = 'http://google.com/chrome';</script><![endif]-->
 <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.2/handlebars.min.js"></script>
 <script src="lib/polyfill/polyfill.min.js?update=2015-08-15"></script>
-<script src="map.js?update=2015-09-06"></script>
-<script src="index.js?update=2015-09-07"></script>
+<script src="map.js?update=2015-09-10"></script>
+<script src="index.js?update=2015-09-10"></script>
 
 <!-- Home Screen Icons - iOS and Android -->
 <link rel="apple-touch-icon-precomposed" href="res/ui/regina152.png">
@@ -93,9 +93,6 @@
             title="Calculate a jump route between worlds">
     </button>
 
-    <button id="closeRouteBtn"
-            title="Close route">
-    </button>
   </div>
 
   <div id="resultsBox"
@@ -149,6 +146,9 @@
 
   <div id="routeBox"
        class="ui hoverbox hoverbox-left">
+    <button id="closeRouteBtn"
+            title="Close route">
+    </button>
     <form id="routeForm" action="get">
       <input type="text"
              name="start"
