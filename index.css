@@ -760,13 +760,13 @@ button:hover {
 @media only screen and (max-width: 320px) {
   .route-ui #routeBox {
     left: 0; top: 0; right: 0; width: auto;
-    height: 250px;
+    height: 200px;
   }
   .route-ui #routeBox input[type=text] {
     width: 275px;
   }
   .route-ui #mapContainer {
-    top: 250px;
+    top: 200px;
   }
   .route-ui #settingsBox,
   .route-ui #legendBox,
