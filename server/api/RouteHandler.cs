@@ -12,6 +12,35 @@ namespace Maps.API
 
         protected override string ServiceName { get { return "route"; } }
 
+        private class TravellerPathFinder : PathFinder.Map<World>
+        {
+            ResourceManager manager;
+            SectorMap map;
+            int jump;
+
+            public TravellerPathFinder(ResourceManager manager, SectorMap map, int jump)
+            {
+                this.manager = manager;
+                this.map = map;
+                this.jump = jump;
+            }
+
+            public List<World> FindPath(World start, World end)
+            {
+                return PathFinder.FindPath<World>(this, start, end);
+            }
+
+            IEnumerable<World> PathFinder.Map<World>.Adjacent(World world)
+            {
+                return new HexSelector(map, manager, Astrometrics.CoordinatesToLocation(world.Coordinates), jump).Worlds;
+            }
+
+            int PathFinder.Map<World>.Distance(World a, World b)
+            {
+                return Astrometrics.HexDistance(a.Coordinates, b.Coordinates);
+            }
+        }
+
         private World ResolveLocation(HttpContext context, string field, ResourceManager manager, SectorMap map)
         {
             string query = context.Request.QueryString[field];
