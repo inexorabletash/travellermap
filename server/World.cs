@@ -33,15 +33,12 @@ namespace Maps
 
         public string Hex
         {
-            get { return Astrometrics.IntToHex(X * 100 + Y); }
-            set { int hex = Astrometrics.HexToInt(value); X = (byte)(hex / 100); Y = (byte)(hex % 100); }
+            get { return m_hex.ToString(); }
+            set { m_hex = new Hex(value); }
         }
 
-        [XmlIgnore,JsonIgnore]
-        public string SubsectorHex
-        {
-            get { return Astrometrics.IntToHex(((X - 1) % Astrometrics.SubsectorWidth + 1) * 100 + ((Y - 1) % Astrometrics.SubsectorHeight + 1)); }
-        }
+        [XmlIgnore, JsonIgnore]
+        public string SubsectorHex { get { return m_hex.ToSubsectorString(); } }
 
         [XmlElement("UWP"),JsonName("UWP")]
         public string UWP { get; set; }
@@ -100,11 +97,12 @@ namespace Maps
         public byte Worlds { get; set; }
         public int ResourceUnits { get; set; }
 
+        private Hex m_hex;
         // Derived
         [XmlIgnore, JsonIgnore]
-        public byte X { get; set; }
+        public byte X { get { return m_hex.X; } }
         [XmlIgnore, JsonIgnore]
-        public byte Y { get; set; }
+        public byte Y { get { return m_hex.Y; } }
 
         public int Subsector
         {
@@ -131,7 +129,7 @@ namespace Maps
                 if (this.Sector == null)
                     throw new InvalidOperationException("Can't get coordinates for a world not assigned to a sector");
 
-                return Astrometrics.LocationToCoordinates(this.Sector.Location, new Point(this.X, this.Y));
+                return Astrometrics.LocationToCoordinates(this.Sector.Location, new Hex(this.X, this.Y));
             }
         }
 
@@ -275,30 +273,27 @@ namespace Maps
                 while (pos < m_codes.Length)
                 {
                     int begin = pos;
-                    switch (m_codes[pos++]) {
+                    switch (m_codes[pos++])
+                    {
                         case ' ':
-                            break;                    
+                            continue;
                         case '[':
-                            while (pos < m_codes.Length && m_codes[pos++] != ']') ;
-                            while (pos < m_codes.Length && m_codes[pos++] != ' ') ;
-                            yield return m_codes.Substring(begin, pos - begin);
+                            while (pos < m_codes.Length && m_codes[pos] != ']') ++pos;
+                            while (pos < m_codes.Length && m_codes[pos] != ' ') ++pos;
                             break;
                         case '(':
-                            while (pos < m_codes.Length && m_codes[pos++] != ')') ;
-                            while (pos < m_codes.Length && m_codes[pos++] != ' ') ;
-                            yield return m_codes.Substring(begin, pos - begin);
+                            while (pos < m_codes.Length && m_codes[pos] != ')') ++pos;
+                            while (pos < m_codes.Length && m_codes[pos] != ' ') ++pos;
                             break;
                         case '{':
-                            while (pos < m_codes.Length && m_codes[pos++] != '}') ;
-                            while (pos < m_codes.Length && m_codes[pos++] != ' ') ;
-                            yield return m_codes.Substring(begin, pos - begin);
+                            while (pos < m_codes.Length && m_codes[pos] != '}') ++pos;
+                            while (pos < m_codes.Length && m_codes[pos] != ' ') ++pos;
                             break;
                         default:
-                            while (pos < m_codes.Length && m_codes[pos++] != ' ') ;
-                            yield return m_codes.Substring(begin, pos - begin);
+                            while (pos < m_codes.Length && m_codes[pos] != ' ') ++pos;
                             break;
                     }
-                    begin = pos;
+                    yield return m_codes.Substring(begin, pos - begin);
                 }
             }
 

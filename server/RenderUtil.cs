@@ -354,7 +354,7 @@ namespace Maps.Rendering
             float[] edgeX, edgeY;
             RenderUtil.HexEdges(type, out edgeX, out edgeY);
 
-            int lengthEstimate = border.PathLength * 3;
+            int lengthEstimate = border.Path.Count() * 3;
             List<PointF> borderPathPoints = new List<PointF>(lengthEstimate);
             List<byte> borderPathTypes = new List<byte>(lengthEstimate);
             List<PointF> clipPathPoints = new List<PointF>(lengthEstimate);
@@ -368,10 +368,10 @@ namespace Maps.Rendering
             int checkFirst = 0;
             int checkLast = 5;
 
-            int startHex = 0;
+            Hex startHex = Hex.Empty;
             bool startHexVisited = false;
 
-            foreach (int hex in border.Path)
+            foreach (Hex hex in border.Path)
             {
                 checkLast = checkFirst + 5;
 
@@ -423,7 +423,7 @@ namespace Maps.Rendering
                 for (int check = checkFirst; check <= checkLast; check++)
                 {
                     i = check;
-                    int neighbor = Astrometrics.HexNeighbor(hex, i % 6);
+                    Hex neighbor = Astrometrics.HexNeighbor(hex, i % 6);
 
                     if (border.Path.Contains(neighbor)) // TODO: Consider a hash here
                         break;
@@ -440,7 +440,7 @@ namespace Maps.Rendering
 
                         //curve.Add( newPoint );
 
-                        if (Util.InRange(hex / 100, 1, Astrometrics.SectorWidth) && Util.InRange(hex % 100, 1, Astrometrics.SectorHeight))
+                        if (hex.IsValid)
                         {
                             curve.Add(newPoint);
                         }
@@ -617,12 +617,12 @@ namespace Maps.Rendering
             return rect;
         }
 
-        public static void ComputeBorderPath(List<Point> clip, float[] edgeX, float[] edgeY, out PointF[] clipPathPointCoords, out byte[] clipPathPointTypes)
+        public static void ComputeBorderPath(IEnumerable<Point> clip, float[] edgeX, float[] edgeY, out PointF[] clipPathPointCoords, out byte[] clipPathPointTypes)
         {
             // TODO: Consolidate this with border path generation (which is very sector/hex-centric, alas)
 
-            List<PointF> clipPathPoints = new List<PointF>(clip.Count * 3);
-            List<byte> clipPathTypes = new List<byte>(clip.Count * 3);
+            List<PointF> clipPathPoints = new List<PointF>(clip.Count() * 3);
+            List<byte> clipPathTypes = new List<byte>(clip.Count() * 3);
 
             // Algorithm based on http://dotclue.org/t20/sec2pdf - J Greely rocks my world.
 

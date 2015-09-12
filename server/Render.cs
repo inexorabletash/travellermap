@@ -1410,7 +1410,7 @@ namespace Maps.Rendering
                         if (alleg != null || !string.IsNullOrEmpty(border.Label))
                         {
                             string text = border.Label ?? alleg.Name;
-                            Point labelHex = border.LabelPosition;
+                            Hex labelHex = border.LabelPosition;
                             PointF labelPos = Astrometrics.HexToCenter(Astrometrics.LocationToCoordinates(new Location(sector.Location, labelHex)));
                             // TODO: Replace these with, well, positions!
                             //labelPos.X -= 0.5f;
@@ -1427,7 +1427,7 @@ namespace Maps.Rendering
                     foreach (Label label in sector.Labels)
                     {
                         string text = label.Text;
-                        Point labelHex = new Point(label.Hex / 100, label.Hex % 100);
+                        Hex labelHex = new Hex(label.Hex);
                         PointF labelPos = Astrometrics.HexToCenter(Astrometrics.LocationToCoordinates(new Location(sector.Location, labelHex)));
                         // TODO: Adopt some of the tweaks from .MSEC
                         labelPos.Y -= label.OffsetY * 0.7f;

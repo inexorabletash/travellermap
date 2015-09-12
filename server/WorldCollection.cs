@@ -43,6 +43,7 @@ namespace Maps
             }
         }
         public World this[int hex] { get { return this[hex / 100, hex % 100]; } }
+        public World this[Hex hex] { get { return this[hex.X, hex.Y]; } }
 
         public IEnumerator<World> GetEnumerator()
         {

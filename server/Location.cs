@@ -8,7 +8,7 @@ namespace Maps
 {
     public struct Location
     {
-        public Location(string sectorName, int hexX, int hexY)
+        public Location(string sectorName, byte hexX, byte hexY)
             : this()
         {
             SettingName = SectorMap.DefaultSetting;
@@ -16,7 +16,7 @@ namespace Maps
             SectorName = sectorName;
 
             SectorLocation = Point.Empty;
-            HexLocation = new Point(hexX, hexY);
+            HexLocation = new Hex(hexX, hexY);
         }
 
         public Location(string sectorName, int hex)
@@ -40,7 +40,7 @@ namespace Maps
             Hex = hex;
         }
 
-        public Location(Point sectorLocation, Point hexLocation)
+        public Location(Point sectorLocation, Hex hexLocation)
             : this()
         {
             SettingName = SectorMap.DefaultSetting;
@@ -55,13 +55,13 @@ namespace Maps
 
         public string SettingName { get; set; }
         public string SectorName { get { return m_sectorName; } set { m_sectorName = value; SectorLocation = SectorMap.FromName(SettingName, value).Location; } }
-        public int Hex { get { return HexLocation.X * 100 + HexLocation.Y; } set { HexLocation = new Point(value / 100, value % 100); } }
+        public int Hex { get { return HexLocation.ToInt(); } set { HexLocation = new Hex(value); } }
 
         [XmlIgnore, JsonIgnore]
         public Point SectorLocation { get; set; }
 
         [XmlIgnore, JsonIgnore]
-        public Point HexLocation { get; set; }
+        public Hex HexLocation { get; set; }
 
         public override bool Equals(object obj)
         {
@@ -82,16 +82,12 @@ namespace Maps
 
         public string HexString
         {
-            get { return Astrometrics.PointToHex(HexLocation); }
+            get { return HexLocation.ToString(); }
         }
 
         public string SubsectorHexString
         {
-            get
-            {
-                return Astrometrics.IntToHex((((HexLocation.X - 1) % 8 + 1) * 100 +
-                        ((HexLocation.Y - 1) % 10 + 1)));
-            }
+            get { return HexLocation.ToSubsectorString(); }
         }
 
     }
@@ -113,17 +109,17 @@ namespace Maps
                 throw new ArgumentNullException("world");
 
             Sector = sector.Location;
-            World = new Point(world.X, world.Y);
+            Hex = new Hex(world.X, world.Y);
         }
 
-        public WorldLocation(int sector_x, int sector_y, int hex_x, int hex_y)
+        public WorldLocation(int sector_x, int sector_y, byte hex_x, byte hex_y)
         {
             Sector = new Point(sector_x, sector_y);
-            World = new Point(hex_x, hex_y);
+            Hex = new Hex(hex_x, hex_y);
         }
 
         public Point Sector { get; set; }
-        public Point World { get; set; }
+        public Hex Hex { get; set; }
 
         public void Resolve(SectorMap sectorMap, ResourceManager resourceManager, out Sector sector, out World world)
         {
@@ -139,7 +135,7 @@ namespace Maps
 
             WorldCollection worlds = sector.GetWorlds(resourceManager, cacheResults: true);
             if (worlds != null)
-                world = worlds[World.X, World.Y];
+                world = worlds[Hex];
         }
     }
 

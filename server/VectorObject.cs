@@ -16,7 +16,7 @@ namespace Maps.Rendering
     public class VectorObject : MapObject
     {
         private PointF[] m_pathDataPoints;
-        private byte[] m_pathDataTypes;
+        private Byte[] m_pathDataTypes;
 
         public VectorObject()
         {
@@ -112,19 +112,24 @@ namespace Maps.Rendering
 
         public MapOptions MapOptions { get; set; }
 
-        private byte[] PathDataTypes()
+        public PointF[] PathDataPoints { get { return m_pathDataPoints; } set { m_pathDataPoints = value; } }
+        public Byte[] PathDataTypes
         {
-            if (m_pathDataTypes == null)
+            get
             {
-                List<byte> types = new List<byte>(m_pathDataPoints.Length);
-                types.Add((byte)PathPointType.Start);
-                for (int i = 1; i < m_pathDataPoints.Length; ++i)
-                    types.Add((byte)PathPointType.Line);
-                m_pathDataTypes = types.ToArray();
-            }
+                if (m_pathDataTypes == null)
+                {
+                    List<byte> types = new List<byte>(m_pathDataPoints.Length);
+                    types.Add((byte)PathPointType.Start);
+                    for (int i = 1; i < m_pathDataPoints.Length; ++i)
+                        types.Add((byte)PathPointType.Line);
+                    m_pathDataTypes = types.ToArray();
+                }
 
-            return m_pathDataTypes;
-        }        
+                return m_pathDataTypes;
+            }
+            set { m_pathDataTypes = value; }
+        }
 
         // NOTE: Can't cacheResults a GraphicsPath - not free threaded
         [XmlIgnore]
@@ -132,10 +137,10 @@ namespace Maps.Rendering
         {
             get
             {
-                if (m_pathDataPoints == null)
+                if (PathDataPoints == null)
                     return null;
 
-                return new XGraphicsPath(m_pathDataPoints, PathDataTypes(), XFillMode.Alternate);
+                return new XGraphicsPath(PathDataPoints, PathDataTypes, XFillMode.Alternate);
             }
         }
 

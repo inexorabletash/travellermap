@@ -37,9 +37,9 @@ namespace Maps.API
             {
                 int sx = GetIntOption(context, "sx", 0);
                 int sy = GetIntOption(context, "sy", 0);
-                int hx = GetIntOption(context, "hx", 0);
-                int hy = GetIntOption(context, "hy", 0);
-                loc = new Location(map.FromLocation(sx, sy).Location, hx * 100 + hy);
+                byte hx = (byte)GetIntOption(context, "hx", 0);
+                byte hy = (byte)GetIntOption(context, "hy", 0);
+                loc = new Location(map.FromLocation(sx, sy).Location, new Hex(hx, hy));
             }
             else if (HasOption(context, "x") && HasOption(context, "y"))
             {

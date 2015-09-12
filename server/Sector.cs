@@ -519,22 +519,15 @@ namespace Maps
                 float[] edgex, edgey;
                 RenderUtil.HexEdges(borderPathType, out edgex, out edgey);
 
+                IEnumerable<Hex> hexes = 
+                    Util.Sequence(1, Astrometrics.SectorWidth).Select(x => new Hex((byte)x, 1))
+                    .Concat(Util.Sequence(2, Astrometrics.SectorHeight).Select(y => new Hex(Astrometrics.SectorWidth, (byte)y)))
+                    .Concat(Util.Sequence(Astrometrics.SectorWidth - 1, 1).Select(x => new Hex((byte)x, Astrometrics.SectorHeight)))
+                    .Concat(Util.Sequence(Astrometrics.SectorHeight - 1, 1).Select(y => new Hex(1, (byte)y)));
+
                 Rectangle bounds = sector.Bounds;
-                List<Point> clip = new List<Point>();
-
-                clip.AddRange(Util.Sequence(1, Astrometrics.SectorWidth).Select(x => new Point(x, 1)));
-                clip.AddRange(Util.Sequence(2, Astrometrics.SectorHeight).Select(y => new Point(Astrometrics.SectorWidth, y)));
-                clip.AddRange(Util.Sequence(Astrometrics.SectorWidth - 1, 1).Select(x => new Point(x, Astrometrics.SectorHeight)));
-                clip.AddRange(Util.Sequence(Astrometrics.SectorHeight - 1, 1).Select(y => new Point(1, y)));
-
-                for (int i = 0; i < clip.Count; ++i)
-                {
-                    Point pt = clip[i];
-                    pt.Offset(bounds.Location);
-                    clip[i] = pt;
-                }
-
-                PathUtil.ComputeBorderPath(clip, edgex, edgey, out clipPathPoints, out clipPathPointTypes);
+                IEnumerable<Point> points = (from hex in hexes select new Point(hex.X + bounds.X, hex.Y + bounds.Y)).ToList();
+                PathUtil.ComputeBorderPath(points, edgex, edgey, out clipPathPoints, out clipPathPointTypes);
 
                 PointF min = clipPathPoints[0];
                 PointF max = clipPathPoints[0];
@@ -602,7 +595,7 @@ namespace Maps
         {
             get
             {
-                return Astrometrics.LocationToCoordinates(Location, new Point(Astrometrics.SectorWidth / 2, Astrometrics.SectorHeight / 2));
+                return Astrometrics.LocationToCoordinates(Location, Astrometrics.SectorCenter);
             }
         }
 
@@ -611,7 +604,7 @@ namespace Maps
             int ssx = index % 4;
             int ssy = index / 4;
             return Astrometrics.LocationToCoordinates(this.Location,
-                new Point(Astrometrics.SubsectorWidth * (2 * ssx + 1) / 2, Astrometrics.SubsectorHeight * (2 * ssy + 1) / 2));
+                new Hex((byte)(Astrometrics.SubsectorWidth * (2 * ssx + 1) / 2), (byte)(Astrometrics.SubsectorHeight * (2 * ssy + 1) / 2)));
         }
 
         private static SectorStylesheet s_defaultStyleSheet;
@@ -816,20 +809,17 @@ namespace Maps
         public string Allegiance { get; set; }
 
         [XmlIgnore, JsonIgnore]
-        public IEnumerable<int> Path { get { return m_path; }  }
-        private int[] m_path = new int[0];
-
-        [XmlIgnore, JsonIgnore]
-        public int PathLength { get { return m_path.Length; } }
+        public IEnumerable<Hex> Path { get { return m_path; }  }
+        private List<Hex> m_path = new List<Hex>();
 
         [XmlIgnoreAttribute, JsonIgnore]
-        public Point LabelPosition { get; set; }
+        public Hex LabelPosition { get; set; }
 
         [XmlAttribute("LabelPosition"), JsonName("LabelPosition")]
         public string LabelPositionHex
         {
-            get { return Astrometrics.PointToHex(LabelPosition); }
-            set { LabelPosition = Astrometrics.HexToPoint(value); }
+            get { return LabelPosition.ToString(); }
+            set { LabelPosition = new Hex(value); }
         }
 
         [XmlAttribute]
@@ -847,42 +837,26 @@ namespace Maps
         {
             get
             {
-                return string.Join(" ", from i in m_path select Astrometrics.IntToHex(i));
+                return string.Join(" ", from hex in m_path select hex.ToString());
             }
             set
             {
-                // Track the "bounding box" (in hex space)
-                Point min = new Point(99, 99);
-                Point max = new Point(0, 0);
-
                 string[] hexes = value.Split((char[])null, StringSplitOptions.RemoveEmptyEntries);
-                List<int> list = new List<int>(hexes.Length);
+                m_path = (from hex in hexes select new Hex(hex)).ToList();
 
-                for (int i = 0; i < hexes.Length; i++)
-                {
-                    int hex;
-                    if (int.TryParse(hexes[i], NumberStyles.Integer, CultureInfo.InvariantCulture, out hex))
-                    {
-                        list.Add(hex);
-
-                        int x = hex / 100;
-                        int y = hex % 100;
-
-                        if (x < min.X) min.X = x;
-                        if (y < min.Y) min.Y = y;
-
-                        if (x > max.X) max.X = x;
-                        if (y > max.Y) max.Y = y;
-                    }
-                }
-
-                m_path = list.ToArray();
+                // Compute the "bounding box" (in hex space)
+                Hex min = new Hex(
+                    (from hex in m_path select hex.X).Min(),
+                    (from hex in m_path select hex.Y).Min());
+                Hex max = new Hex(
+                    (from hex in m_path select hex.X).Max(),
+                    (from hex in m_path select hex.Y).Max());
 
                 // If no position was set, use the center of the "bounding box"
                 if (LabelPosition.IsEmpty)
-                    LabelPosition = new Point((min.X + max.X + 1) / 2, (min.Y + max.Y + 1) / 2); // "+ 1" to round up
+                    LabelPosition = new Hex((byte)((min.X + max.X + 1) / 2), (byte)((min.Y + max.Y + 1) / 2)); // "+ 1" to round up
 
-                Extends = (min.X < 1 || min.Y < 1 || max.X > Astrometrics.SectorWidth || max.Y > Astrometrics.SectorHeight);
+                Extends = !min.IsValid || !max.IsValid;
             }
         }
 
@@ -921,43 +895,31 @@ namespace Maps
             : this()
         {
             StartOffset = startOffset ?? Point.Empty;
-            Start = start;
+            Start = new Hex(start);
             EndOffset = endOffset ?? Point.Empty;
-            End = end;
+            End = new Hex(end);
             if (color != null)
                 ColorHtml = color;
         }
 
-        private byte m_startX;
-        private byte m_endX;
-        private byte m_startY;
-        private byte m_endY;
+        [XmlIgnoreAttribute, JsonIgnore]
+        public Hex Start { get; set; }
 
         [XmlIgnoreAttribute, JsonIgnore]
-        public int Start {
-            get { return m_startX * 100 + m_startY; }
-            set { m_startX = (byte)(value / 100); m_startY = (byte)(value % 100); }
-        }
-
-        [XmlIgnoreAttribute, JsonIgnore]
-        public int End
-        {
-            get { return m_endX * 100 + m_endY; }
-            set { m_endX = (byte)(value / 100); m_endY = (byte)(value % 100); }
-        }
+        public Hex End { get; set; }
 
         [XmlAttribute("Start"), JsonName("Start")]
         public string StartHex
         {
-            get { return Astrometrics.IntToHex(Start); }
-            set { Start = Astrometrics.HexToInt(value); }
+            get { return Start.ToString(); }
+            set { Start = new Hex(value); }
         }
 
         [XmlAttribute("End"), JsonName("End")]
         public string EndHex
         {
-            get { return Astrometrics.IntToHex(End); }
-            set { End = Astrometrics.HexToInt(value); }
+            get { return End.ToString(); }
+            set { End = new Hex(value); }
         }
 
         private sbyte m_startOffsetX;
@@ -978,27 +940,21 @@ namespace Maps
             set { m_endOffsetX = (sbyte)value.X; m_endOffsetY = (sbyte)value.Y; }
         }
 
-        [XmlIgnoreAttribute, JsonIgnore]
-        public Point StartPoint { get { return new Point(Start / 100, Start % 100); } }
-
-        [XmlIgnoreAttribute, JsonIgnore]
-        public Point EndPoint { get { return new Point(End / 100, End % 100); } }
-
         [XmlAttribute("StartOffsetX")]
         [DefaultValueAttribute(0)]
-        public sbyte StartOffsetX { get { return m_startOffsetX; } set { m_startOffsetX = value; } }
+        public int StartOffsetX { get { return m_startOffsetX; } set { m_startOffsetX = (sbyte)value; } }
 
         [XmlAttribute("StartOffsetY")]
         [DefaultValueAttribute(0)]
-        public sbyte StartOffsetY { get { return m_startOffsetY; } set { m_startOffsetY = value; } }
+        public int StartOffsetY { get { return m_startOffsetY; } set { m_startOffsetY = (sbyte)value; } }
 
         [XmlAttribute("EndOffsetX")]
         [DefaultValueAttribute(0)]
-        public sbyte EndOffsetX { get { return m_endOffsetX; } set { m_endOffsetX = value; } }
+        public int EndOffsetX { get { return m_endOffsetX; } set { m_endOffsetX = (sbyte)value; } }
 
         [XmlAttribute("EndOffsetY")]
         [DefaultValueAttribute(0)]
-        public sbyte EndOffsetY { get { return m_endOffsetY; } set { m_endOffsetY = value; } }
+        public int EndOffsetY { get { return m_endOffsetY; } set { m_endOffsetY = (sbyte)value; } }
 
 
         [XmlIgnore]

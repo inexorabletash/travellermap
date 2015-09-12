@@ -109,12 +109,12 @@ namespace UnitTests
 
             Assert.AreEqual(2, sector.Routes.Count);
             Assert.AreEqual(new Point(0, 0), sector.Routes[0].StartOffset);
-            Assert.AreEqual(0101, sector.Routes[0].Start);
-            Assert.AreEqual(0202, sector.Routes[0].End);
+            Assert.AreEqual(0101, sector.Routes[0].Start.ToInt());
+            Assert.AreEqual(0202, sector.Routes[0].End.ToInt());
             Assert.AreEqual(new Point(0, 0), sector.Routes[0].EndOffset);
             Assert.AreEqual(new Point(-1, -1), sector.Routes[1].StartOffset);
-            Assert.AreEqual(3240, sector.Routes[1].Start);
-            Assert.AreEqual(0101, sector.Routes[1].End);
+            Assert.AreEqual(3240, sector.Routes[1].Start.ToInt());
+            Assert.AreEqual(0101, sector.Routes[1].End.ToInt());
             Assert.AreEqual(new Point(1, 1), sector.Routes[1].EndOffset);
             Assert.AreEqual("Red", sector.Routes[1].ColorHtml);
 

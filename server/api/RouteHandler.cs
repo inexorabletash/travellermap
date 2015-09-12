@@ -77,15 +77,14 @@ namespace Maps.API
             }
 
             string hexString = match.Groups["hex"].Value;
-            int hex = int.Parse(hexString);
-            int hx = hex / 100, hy = hex % 100;
-            if (!Util.InRange(hx, 1, Astrometrics.SectorWidth) || !Util.InRange(hy, 1, Astrometrics.SectorHeight))
+            Hex hex = new Hex(hexString);
+            if (!hex.IsValid)
             {
                 SendError(context.Response, 400, "Not Found", string.Format("Invalid hex: {0}", hexString));
                 return null;
             }
 
-            World world = sector.GetWorlds(manager)[hex];
+            World world = sector.GetWorlds(manager)[hex.ToInt()];
             if (world == null)
             {
                 SendError(context.Response, 404, "Not Found", string.Format("No such world: {0} {1}", sector.Names[0].Text, hexString));

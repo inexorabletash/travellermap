@@ -242,7 +242,7 @@ namespace Maps
                         if (worlds == null)
                             continue;
 
-                        World world = worlds[loc.HexLocation.X, loc.HexLocation.Y];
+                        World world = worlds[loc.HexLocation];
                         if (world == null)
                             continue;
 
@@ -341,7 +341,7 @@ namespace Maps
                                 if (worlds == null)
                                     continue;
 
-                                World world = worlds[loc.HexLocation.X, loc.HexLocation.Y];
+                                World world = worlds[loc.HexLocation];
                                 if (world == null)
                                     continue;
                                 yield return world;
@@ -358,10 +358,10 @@ namespace Maps
     {
         Sector m_sector;
         ResourceManager m_resourceManager;
-        Point m_coords;
+        Hex m_coords;
         int m_jump;
 
-        public HexSectorSelector(ResourceManager resourceManager, Sector sector, Point coords, int jump)
+        public HexSectorSelector(ResourceManager resourceManager, Sector sector, Hex coords, int jump)
         {
             if (resourceManager == null)
                 throw new ArgumentNullException("resourceManager");

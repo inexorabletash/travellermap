@@ -280,7 +280,7 @@ namespace Maps
                         using (var row = sqlCommand.ExecuteReader())
                         {
                             while (row.Read())
-                                results.Add(new WorldLocation(row.GetInt32(0), row.GetInt32(1), row.GetInt32(2), row.GetInt32(3)));
+                                results.Add(new WorldLocation(row.GetInt32(0), row.GetInt32(1), (byte)row.GetInt32(2), (byte)row.GetInt32(3)));
                         }
                     }
                 }
@@ -324,7 +324,7 @@ namespace Maps
                     {
                         if (!row.Read())
                             return null;
-                        return new WorldLocation(row.GetInt32(0), row.GetInt32(1), row.GetInt32(2), row.GetInt32(3));
+                        return new WorldLocation(row.GetInt32(0), row.GetInt32(1), (byte)row.GetInt32(2), (byte)row.GetInt32(3));
                     }
                 }
             }

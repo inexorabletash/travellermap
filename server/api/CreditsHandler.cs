@@ -38,9 +38,9 @@ namespace Maps.API
             {
                 int sx = GetIntOption(context, "sx", 0);
                 int sy = GetIntOption(context, "sy", 0);
-                int hx = GetIntOption(context, "hx", 0);
-                int hy = GetIntOption(context, "hy", 0);
-                loc = new Location(map.FromLocation(sx, sy).Location, hx * 100 + hy);
+                byte hx = (byte)GetIntOption(context, "hx", 0);
+                byte hy = (byte)GetIntOption(context, "hy", 0);
+                loc = new Location(map.FromLocation(sx, sy).Location, new Hex(hx, hy));
             }
             else if (HasOption(context, "x") && HasOption(context, "y"))
             {
@@ -48,7 +48,7 @@ namespace Maps.API
             }
 
             if (loc.HexLocation.IsEmpty)
-                loc.HexLocation = new Point(Astrometrics.SectorWidth / 2, Astrometrics.SectorHeight / 2);
+                loc.HexLocation = Astrometrics.SectorCenter;
 
             Sector sector = map.FromLocation(loc.SectorLocation.X, loc.SectorLocation.Y);
 
@@ -119,7 +119,7 @@ namespace Maps.API
                 WorldCollection worlds = sector.GetWorlds(resourceManager);
                 if (worlds != null)
                 {
-                    World world = worlds[loc.HexLocation.X, loc.HexLocation.Y];
+                    World world = worlds[loc.HexLocation];
                     if (world != null)
                     {
                         data.WorldName = world.Name;
