@@ -16,7 +16,7 @@ namespace Maps
         public const int SubsectorHeight = 10; // parsecs
 
         // Parsecs are not square - there is horizontal overlap in a hex grid
-        // width:height ratio for parsecs is cos(30)
+        // width:height ratio for parsecs is cos(30deg)
         // (a subsector is 8:10 parsecs but 0.69:1 aspect ratio)
         public const float ParsecScaleX = 0.8660254037844387f; // Math.Cos(Math.PI / 6);
         public const float ParsecScaleY = 1.0f;
