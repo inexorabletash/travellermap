@@ -17,7 +17,7 @@ namespace Maps
         {
             ParseOptions(context.Request, Defaults(context), ref options, ref style);
         }
-        public static void ParseOptions(HttpRequest request, IDictionary<string, Object> queryDefaults, ref MapOptions options, ref Stylesheet.Style style)
+        public static void ParseOptions(HttpRequest request, IDictionary<string, object> queryDefaults, ref MapOptions options, ref Stylesheet.Style style)
         {
             options = (MapOptions)GetIntOption(request, "options", queryDefaults, (int)options);
 
@@ -55,7 +55,7 @@ namespace Maps
         {
             return HasOption(context.Request, name, Defaults(context));
         }
-        public static bool HasOption(HttpRequest request, string name, IDictionary<string, Object> queryDefaults)
+        public static bool HasOption(HttpRequest request, string name, IDictionary<string, object> queryDefaults)
         {
            return request[name] != null || (queryDefaults != null && queryDefaults.ContainsKey(name));
         }
@@ -64,7 +64,7 @@ namespace Maps
         {
             return GetStringOption(context.Request, name, Defaults(context), defaultValue);
         }
-        public static string GetStringOption(HttpRequest request, string name, IDictionary<string, Object> queryDefaults, string defaultValue = null)
+        public static string GetStringOption(HttpRequest request, string name, IDictionary<string, object> queryDefaults, string defaultValue = null)
         {
             if (request[name] != null)
                 return request[name];
@@ -85,10 +85,10 @@ namespace Maps
         {
             return GetIntOption(context.Request, name, Defaults(context), defaultValue);
         }
-        public static int GetIntOption(HttpRequest request, string name, IDictionary<string, Object> queryDefaults, int defaultValue)
+        public static int GetIntOption(HttpRequest request, string name, IDictionary<string, object> queryDefaults, int defaultValue)
         {
             double temp;
-            if (Double.TryParse(GetStringOption(request, name, queryDefaults), NumberStyles.Float, CultureInfo.InvariantCulture, out temp))
+            if (double.TryParse(GetStringOption(request, name, queryDefaults), NumberStyles.Float, CultureInfo.InvariantCulture, out temp))
                 return (int)Math.Round(temp);
             return defaultValue;
         }
@@ -97,10 +97,10 @@ namespace Maps
         {
             return GetDoubleOption(context.Request, name, Defaults(context), defaultValue);
         }
-        public static double GetDoubleOption(HttpRequest request, string name, IDictionary<string, Object> queryDefaults, double defaultValue)
+        public static double GetDoubleOption(HttpRequest request, string name, IDictionary<string, object> queryDefaults, double defaultValue)
         {
             double temp;
-            if (Double.TryParse(GetStringOption(request, name, queryDefaults), NumberStyles.Float, CultureInfo.InvariantCulture, out temp))
+            if (double.TryParse(GetStringOption(request, name, queryDefaults), NumberStyles.Float, CultureInfo.InvariantCulture, out temp))
                 return temp;
             return defaultValue;
         }
@@ -109,10 +109,10 @@ namespace Maps
         {
             return GetBoolOption(context.Request, name, Defaults(context), defaultValue);
         }
-        public static bool GetBoolOption(HttpRequest request, string name, IDictionary<string, Object> queryDefaults, bool defaultValue)
+        public static bool GetBoolOption(HttpRequest request, string name, IDictionary<string, object> queryDefaults, bool defaultValue)
         {
             int temp;
-            if (Int32.TryParse(GetStringOption(request, name, queryDefaults), NumberStyles.Integer, CultureInfo.InvariantCulture, out temp))
+            if (int.TryParse(GetStringOption(request, name, queryDefaults), NumberStyles.Integer, CultureInfo.InvariantCulture, out temp))
                 return temp != 0;
             return defaultValue;
         }

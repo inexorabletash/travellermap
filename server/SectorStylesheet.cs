@@ -345,7 +345,7 @@ namespace Maps
             
             private bool GetValue(string property, out string value)
             {
-                return dict.TryGetValue(property, out value) && !String.IsNullOrEmpty(value);
+                return dict.TryGetValue(property, out value) && !string.IsNullOrEmpty(value);
             }
 
             public string GetString(string property)
@@ -375,7 +375,7 @@ namespace Maps
                 if (!GetValue(property, out value))
                     return null;
                 double result;
-                if (Double.TryParse(value, out result))
+                if (double.TryParse(value, out result))
                     return result;
                 return null;
             }
@@ -386,12 +386,12 @@ namespace Maps
                     throw new Exception("Type must be an enum");
 
                 string value;
-                if (!dict.TryGetValue(property, out value) || String.IsNullOrEmpty(value))
+                if (!dict.TryGetValue(property, out value) || string.IsNullOrEmpty(value))
                     return null;
 
                 bool ignoreCase = true;
                 T result;
-                if (Enum.TryParse<T>(value, ignoreCase, out result))
+                if (Enum.TryParse(value, ignoreCase, out result))
                     return result;
 
                 return null;

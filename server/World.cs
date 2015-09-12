@@ -1,13 +1,12 @@
 ﻿using Json;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Serialization;
-using System.Collections;
 
 namespace Maps
 {
@@ -54,7 +53,7 @@ namespace Maps
             get { return m_zone; }
             set
             {
-                m_zone = (value == " " || value == "G") ? String.Empty : value;
+                m_zone = (value == " " || value == "G") ? string.Empty : value;
             }
         }
         private string m_zone;
@@ -83,7 +82,7 @@ namespace Maps
                 int? value = null;
                 int tmp;
                 string ix = Importance;
-                if (!String.IsNullOrWhiteSpace(ix) && Int32.TryParse(ix.Replace('{', ' ').Replace('}', ' '),
+                if (!string.IsNullOrWhiteSpace(ix) && int.TryParse(ix.Replace('{', ' ').Replace('}', ' '),
                     NumberStyles.AllowLeadingWhite | NumberStyles.AllowTrailingWhite | NumberStyles.Integer,
                     CultureInfo.InvariantCulture, out tmp))
                 {
@@ -309,7 +308,7 @@ namespace Maps
 
         public string Remarks
         {
-            get { return String.Join(" ", m_codes); }
+            get { return string.Join(" ", m_codes); }
             set
             {
                 if (value == null)

@@ -22,7 +22,7 @@ namespace Maps
             if (0 <= c && c < HEX.Length)
                 return HEX[c];
 
-            throw new ArgumentOutOfRangeException(String.Format(CultureInfo.InvariantCulture, "Value out of range: '{0}'", c), "c");
+            throw new ArgumentOutOfRangeException(string.Format(CultureInfo.InvariantCulture, "Value out of range: '{0}'", c), "c");
         }
 
         public static int FromHex(char c, int? valueIfX = null)
@@ -42,7 +42,7 @@ namespace Maps
                 case 'O': return 0; // Typo found in some data files
                 case 'I': return 1; // Typo found in some data files
             }
-            throw new ArgumentOutOfRangeException(String.Format(CultureInfo.InvariantCulture, "Character out of range: '{0}'", c), "c");
+            throw new ArgumentOutOfRangeException(string.Format(CultureInfo.InvariantCulture, "Character out of range: '{0}'", c), "c");
         }
         #endregion // eHex
 
@@ -136,7 +136,7 @@ namespace Maps
         {
             allegiance = AllegianceCodeToBaseAllegianceCode(allegiance);
             string match = s_legacyBaseEncodeTable.Match(allegiance + "." + bases);
-            return (match != default(String)) ? match : bases;
+            return (match != default(string)) ? match : bases;
         }
         #endregion // Bases
 
@@ -194,7 +194,7 @@ namespace Maps
             Allegiance alleg = GetStockAllegianceFromCode(code);
             if (alleg == null)
                 return code;
-            if (String.IsNullOrEmpty(alleg.Base))
+            if (string.IsNullOrEmpty(alleg.Base))
                 return code;
             return alleg.Base;
         }

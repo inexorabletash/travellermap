@@ -27,7 +27,7 @@ namespace Maps.API
                 Sector sec = map.FromName(sectorName);
                 if (sec == null)
                 {
-                    SendError(context.Response, 404, "Not Found", String.Format("The specified sector '{0}' was not found.", sectorName));
+                    SendError(context.Response, 404, "Not Found", string.Format("The specified sector '{0}' was not found.", sectorName));
                     return;
                 }
 

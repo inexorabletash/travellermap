@@ -70,7 +70,7 @@ namespace Maps
     {
         public const string DefaultSetting = "OTU";
 
-        private static Object s_lock = new Object();
+        private static object s_lock = new object();
 
         private static SectorMap s_OTU;
 
@@ -790,8 +790,6 @@ namespace Maps
     {
         public Border()
         {
-            this.ShowLabel = true;
-            this.Path = new int[0];
         }
 
         public Border(string path, string color = null)
@@ -818,7 +816,11 @@ namespace Maps
         public string Allegiance { get; set; }
 
         [XmlIgnore, JsonIgnore]
-        public int[] Path { get; set; }
+        public IEnumerable<int> Path { get { return m_path; }  }
+        private int[] m_path = new int[0];
+
+        [XmlIgnore, JsonIgnore]
+        public int PathLength { get { return m_path.Length; } }
 
         [XmlIgnoreAttribute, JsonIgnore]
         public Point LabelPosition { get; set; }
@@ -845,10 +847,7 @@ namespace Maps
         {
             get
             {
-                string[] hexes = new string[Path.Length];
-                for (int i = 0; i < Path.Length; i++)
-                    hexes[i] = Astrometrics.IntToHex(Path[i]);
-                return string.Join(" ", hexes);
+                return string.Join(" ", from i in m_path select Astrometrics.IntToHex(i));
             }
             set
             {
@@ -862,7 +861,7 @@ namespace Maps
                 for (int i = 0; i < hexes.Length; i++)
                 {
                     int hex;
-                    if (Int32.TryParse(hexes[i], NumberStyles.Integer, CultureInfo.InvariantCulture, out hex))
+                    if (int.TryParse(hexes[i], NumberStyles.Integer, CultureInfo.InvariantCulture, out hex))
                     {
                         list.Add(hex);
 
@@ -877,7 +876,7 @@ namespace Maps
                     }
                 }
 
-                Path = list.ToArray();
+                m_path = list.ToArray();
 
                 // If no position was set, use the center of the "bounding box"
                 if (LabelPosition.IsEmpty)

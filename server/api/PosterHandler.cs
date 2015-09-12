@@ -46,7 +46,7 @@ namespace Maps.API
                 tileRect.Width += 1;
                 tileRect.Height += 1;
 
-                title = String.Format("Poster ({0},{1}) - ({2},{3})", x1, y1, x2, y2);
+                title = string.Format("Poster ({0},{1}) - ({2},{3})", x1, y1, x2, y2);
                 clipOutsectorBorders = true;
             }
             else if (HasOption(context, "domain"))
@@ -77,7 +77,7 @@ namespace Maps.API
                     case "jg": x = 160; y = 0; w = 2; h = 2; title = "Judges Guild"; break;
 
                     default:
-                        SendError(context.Response, 404, "Not Found", String.Format("Unknown domain: {0}", domain));
+                        SendError(context.Response, 404, "Not Found", string.Format("Unknown domain: {0}", domain));
                         return;
                 }
 
@@ -156,7 +156,7 @@ namespace Maps.API
                     sector = map.FromName(sectorName);
                     if (sector == null)
                     {
-                        SendError(context.Response, 404, "Not Found", String.Format("The specified sector '{0}' was not found.", sectorName));
+                        SendError(context.Response, 404, "Not Found", string.Format("The specified sector '{0}' was not found.", sectorName));
                         return;
                     }
 
@@ -170,7 +170,7 @@ namespace Maps.API
                     int index = sector.SubsectorIndexFor(subsector);
                     if (index == -1)
                     {
-                        SendError(context.Response, 404, "Not Found", String.Format("The specified subsector '{0}' was not found.", subsector));
+                        SendError(context.Response, 404, "Not Found", string.Format("The specified subsector '{0}' was not found.", subsector));
                         return;
                     }
 
@@ -180,7 +180,7 @@ namespace Maps.API
 
                     options &= ~(MapOptions.SectorGrid | MapOptions.SubsectorGrid);
 
-                    title = String.Format("{0} - Subsector {1}", title, 'A' + index);
+                    title = string.Format("{0} - Subsector {1}", title, 'A' + index);
                 }
                 else if (sector != null && HasOption(context, "quadrant") && GetStringOption(context, "quadrant").Length > 0)
                 {
@@ -192,7 +192,7 @@ namespace Maps.API
                         case "gamma": index = 2; quadrant = "Gamma"; break;
                         case "delta": index = 3; quadrant = "Delta"; break;
                         default:
-                            SendError(context.Response, 400, "Bad Request", String.Format("The specified quadrant '{0}' is invalid.", quadrant));
+                            SendError(context.Response, 400, "Bad Request", string.Format("The specified quadrant '{0}' is invalid.", quadrant));
                             return;
                     }
 
@@ -201,7 +201,7 @@ namespace Maps.API
 
                     options &= ~(MapOptions.SectorGrid | MapOptions.SubsectorGrid | MapOptions.SectorsMask);
 
-                    title = String.Format("{0} - {1} Quadrant", title, quadrant);
+                    title = string.Format("{0} - {1} Quadrant", title, quadrant);
                 }
                 else
                 {

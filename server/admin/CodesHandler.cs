@@ -44,7 +44,7 @@ namespace Maps.Admin
             "Cs", "Cx", "Ex", "Mr",
             "Pr", "Rs",
 
-            { @"^(" + String.Join("|", s_legacySophontCodes) + @"):?(\d|w)$", "(sophont)" },
+            { @"^(" + string.Join("|", s_legacySophontCodes) + @"):?(\d|w)$", "(sophont)" },
 
             // Leviathan
             "Tp", "Tn", // Terra-prime, Terra-norm
@@ -78,7 +78,7 @@ namespace Maps.Admin
 
             { @"^\[.*?\]\d*$", "(major race homeworld)" },
             { @"^\(.*?\)\d*$", "(minor race homeworld)" },
-            { @"^(" + String.Join("|", SecondSurvey.SophontCodes) + @")(\d|W|\?)$", "(sophont)" },
+            { @"^(" + string.Join("|", SecondSurvey.SophontCodes) + @")(\d|W|\?)$", "(sophont)" },
         };
 
         protected override void Process(System.Web.HttpContext context)

@@ -68,8 +68,8 @@ namespace Maps.Serialization
 
         protected static string EmptyIfDash(string s)
         {
-            if (String.IsNullOrWhiteSpace(s) || s == "-")
-                return String.Empty;
+            if (string.IsNullOrWhiteSpace(s) || s == "-")
+                return string.Empty;
             return s;
         }
     }
@@ -163,7 +163,7 @@ namespace Maps.Serialization
 
                 worlds[world.X, world.Y] = world;
                 string rest = match.Groups["rest"].Value;
-                if (!String.IsNullOrEmpty(rest))
+                if (!string.IsNullOrEmpty(rest))
                     ParseRest(rest, worlds, lineNumber, line, world, errors);
             }
             catch (Exception e)
@@ -183,7 +183,7 @@ namespace Maps.Serialization
             catch (StellarDataParser.InvalidSystemException)
             {
                 if (errors != null)
-                    errors.Warning(String.Format("Invalid stellar data: '{0}'", rest), lineNumber, line);
+                    errors.Warning(string.Format("Invalid stellar data: '{0}'", rest), lineNumber, line);
             }
         }
     }
@@ -235,13 +235,13 @@ namespace Maps.Serialization
                     if (!options.HasFlag(CheckOptions.Warning))
                     {
                         if (errors != null)
-                            errors.Error(String.Format("Unexpected value for {0}: '{1}'", key, dict[key]), lineNumber, line);
+                            errors.Error(string.Format("Unexpected value for {0}: '{1}'", key, dict[key]), lineNumber, line);
                         hadError = true;
                     }
                     else
                     {
                         if (errors != null)
-                            errors.Warning(String.Format("Unexpected value for {0}: '{1}'", key, dict[key]), lineNumber, line);
+                            errors.Warning(string.Format("Unexpected value for {0}: '{1}'", key, dict[key]), lineNumber, line);
                     }
                 }
 
@@ -274,13 +274,13 @@ namespace Maps.Serialization
                         if (!options.HasFlag(CheckOptions.Warning))
                         {
                             if (errors != null)
-                                errors.Error(String.Format("Unexpected value for {0}: '{1}'", key, value), lineNumber, line);
+                                errors.Error(string.Format("Unexpected value for {0}: '{1}'", key, value), lineNumber, line);
                             hadError = true;
                         }
                         else
                         {
                             if (errors != null)
-                                errors.Warning(String.Format("Unexpected value for {0}: '{1}'", key, value), lineNumber, line);
+                                errors.Warning(string.Format("Unexpected value for {0}: '{1}'", key, value), lineNumber, line);
                         }
                     }
 
@@ -313,11 +313,11 @@ namespace Maps.Serialization
                 world.Stellar = checker.Check(new string[] { "Stellar", "Stars", "Stellar Data" }, STARS_REGEX, CheckOptions.Warning);
 
                 byte w;
-                if (Byte.TryParse(checker.Check(new string[] { "W", "Worlds" }), NumberStyles.Integer, CultureInfo.InvariantCulture, out w))
+                if (byte.TryParse(checker.Check(new string[] { "W", "Worlds" }), NumberStyles.Integer, CultureInfo.InvariantCulture, out w))
                     world.Worlds = w;
 
                 int ru;
-                if (Int32.TryParse(dict["RU"], NumberStyles.Integer | NumberStyles.AllowThousands, CultureInfo.InvariantCulture, out ru))
+                if (int.TryParse(dict["RU"], NumberStyles.Integer | NumberStyles.AllowThousands, CultureInfo.InvariantCulture, out ru))
                     world.ResourceUnits = ru;
 
                 // Cleanup known placeholders
@@ -400,7 +400,7 @@ namespace Maps.Serialization
         {
             string[] cols = line.Split(TAB_DELIMITER);
             if (cols.Length != header.Length)
-                throw new Exception(String.Format("ERROR (Tab Parse) ({0}): {1}", lineNumber, line));
+                throw new Exception(string.Format("ERROR (Tab Parse) ({0}): {1}", lineNumber, line));
 
             StringDictionary dict = new StringDictionary();
             for (var i = 0; i < cols.Length; ++i)

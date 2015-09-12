@@ -18,8 +18,8 @@ namespace Maps
         // Parsecs are not square - there is horizontal overlap in a hex grid
         // width:height ratio for parsecs is cos(30)
         // (a subsector is 8:10 parsecs but 0.69:1 aspect ratio)
-        public static readonly float ParsecScaleX = (float)Math.Cos(Math.PI / 6);
-        public static readonly float ParsecScaleY = 1.0f;
+        public const float ParsecScaleX = 0.8660254037844387f; // Math.Cos(Math.PI / 6);
+        public const float ParsecScaleY = 1.0f;
 
         // Reference (Core 0140)
         // Origin of the coordinate system, relative to the containing sector
@@ -136,7 +136,7 @@ namespace Maps
         public static Point HexToPoint(string s)
         {
             int hex;
-            if (Int32.TryParse(s, out hex))
+            if (int.TryParse(s, out hex))
             {
                 return new Point(hex / 100, hex % 100);
             }
@@ -145,7 +145,7 @@ namespace Maps
 
         public static int HexToInt(string s)
         {
-            return Int32.Parse(s, NumberStyles.Integer, CultureInfo.InvariantCulture);
+            return int.Parse(s, NumberStyles.Integer, CultureInfo.InvariantCulture);
         }
     }
 }

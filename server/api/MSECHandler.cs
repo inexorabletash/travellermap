@@ -28,7 +28,7 @@ namespace Maps.API
 
                 if (sector == null)
                 {
-                    SendError(context.Response, 404, "Not Found", String.Format("The sector at {0},{1} was not found.", sx, sy));
+                    SendError(context.Response, 404, "Not Found", string.Format("The sector at {0},{1} was not found.", sx, sy));
                     return;
                 }
             }
@@ -39,7 +39,7 @@ namespace Maps.API
 
                 if (sector == null)
                 {
-                    SendError(context.Response, 404, "Not Found", String.Format("The specified sector '{0}' was not found.", sectorName));
+                    SendError(context.Response, 404, "Not Found", string.Format("The specified sector '{0}' was not found.", sectorName));
                     return;
                 }
             }

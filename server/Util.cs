@@ -283,7 +283,7 @@ namespace Maps
         }
         public void Log(Severity sev, string message, int lineNumber, string line)
         {
-            log.Add(new Record(sev, String.Format("{0}, line {1}: {2}", message, lineNumber, line)));
+            log.Add(new Record(sev, string.Format("{0}, line {1}: {2}", message, lineNumber, line)));
         }
         public void Fatal(string message) { Log(Severity.Fatal, message); }
         public void Fatal(string message, int lineNumber, string line) { Log(Severity.Fatal, message, lineNumber, line); }

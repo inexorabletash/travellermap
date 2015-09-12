@@ -71,7 +71,7 @@ namespace Maps.Serialization
         private List<Row> data = new List<Row>();
         public List<Row> Data { get { return data; } }
 
-        public string[] Fields { get { return (from col in columns select col.name).ToArray(); } }
+        public IEnumerable<string> Fields { get { return (from col in columns select col.name); } }
 
         private void ComputeFields(string header, string separator)
         {

@@ -45,16 +45,16 @@ namespace Maps.Serialization
                 //
                 writer.WriteLine("sector " + sector.Names[0].Text);
 
-                if (!String.IsNullOrEmpty(sector.Domain))
+                if (!string.IsNullOrEmpty(sector.Domain))
                     writer.WriteLine("domain " + sector.Domain);
 
-                if (!String.IsNullOrEmpty(sector.AlphaQuadrant))
+                if (!string.IsNullOrEmpty(sector.AlphaQuadrant))
                     writer.WriteLine("alpha " + sector.AlphaQuadrant);
-                if (!String.IsNullOrEmpty(sector.BetaQuadrant))
+                if (!string.IsNullOrEmpty(sector.BetaQuadrant))
                     writer.WriteLine("beta " + sector.BetaQuadrant);
-                if (!String.IsNullOrEmpty(sector.GammaQuadrant))
+                if (!string.IsNullOrEmpty(sector.GammaQuadrant))
                     writer.WriteLine("gamma " + sector.GammaQuadrant);
-                if (!String.IsNullOrEmpty(sector.DeltaQuadrant))
+                if (!string.IsNullOrEmpty(sector.DeltaQuadrant))
                     writer.WriteLine("delta " + sector.DeltaQuadrant);
 
                 writer.WriteLine();

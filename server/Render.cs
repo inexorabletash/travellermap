@@ -76,7 +76,7 @@ namespace Maps.Rendering
             @"~/res/Vectors/CoreRoute.xml"
         };
 
-        private static Object s_imageInitLock = new Object();
+        private static object s_imageInitLock = new object();
 
         // TODO: Consider not caching these across sessions
         private static XImage s_sillyImageColor;
@@ -615,7 +615,7 @@ namespace Maps.Rendering
                                 int ssy = i / 4;
 
                                 Subsector ss = sector[i];
-                                if (ss == null || String.IsNullOrEmpty(ss.Name))
+                                if (ss == null || string.IsNullOrEmpty(ss.Name))
                                     continue;
 
                                 Point center = sector.SubsectorCenter(i);
@@ -1407,7 +1407,7 @@ namespace Maps.Rendering
                     foreach (Border border in sector.Borders.Where(border => border.ShowLabel))
                     {
                         Allegiance alleg = sector.GetAllegianceFromCode(border.Allegiance);
-                        if (alleg != null || !String.IsNullOrEmpty(border.Label))
+                        if (alleg != null || !string.IsNullOrEmpty(border.Label))
                         {
                             string text = border.Label ?? alleg.Name;
                             Point labelHex = border.LabelPosition;

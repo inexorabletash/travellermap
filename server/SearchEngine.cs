@@ -39,7 +39,7 @@ namespace Maps
 
         public delegate void StatusCallback(string status);
 
-        private static Object s_lock = new Object();
+        private static object s_lock = new object();
 
         public static void PopulateDatabase(ResourceManager resourceManager, StatusCallback callback)
         {
@@ -115,12 +115,10 @@ namespace Maps
                                     sector.Y, 
                                     world.X, 
                                     world.Y, 
-                                    world.Name != null && world.Name.Length > 0
-                                        ? (object)world.Name
-                                        : (object)DBNull.Value,
+                                    string.IsNullOrEmpty(world.Name) ? (object)DBNull.Value : (object)world.Name,
                                     world.UWP,
                                     world.PBG,
-                                    world.Zone == "" ? "G" : world.Zone,
+                                    string.IsNullOrEmpty(world.Zone) ? "G" : world.Zone,
                                     world.Allegiance,
                                     sector.Names.Count > 0 ? (object)sector.Names[0] : (object)DBNull.Value
                             };
@@ -178,21 +176,21 @@ namespace Maps
                     //
                     using (var bulk = new SqlBulkCopy(connection, SqlBulkCopyOptions.TableLock, null))
                     {
-                        callback(String.Format("Writing {0} sectors...", dt_sectors.Rows.Count));
+                        callback(string.Format("Writing {0} sectors...", dt_sectors.Rows.Count));
                         bulk.BatchSize = dt_sectors.Rows.Count;
                         bulk.DestinationTableName = "sectors";
                         bulk.WriteToServer(dt_sectors);
                     }
                     using (var bulk = new SqlBulkCopy(connection, SqlBulkCopyOptions.TableLock, null))
                     {
-                        callback(String.Format("Writing {0} subsectors...", dt_subsectors.Rows.Count));
+                        callback(string.Format("Writing {0} subsectors...", dt_subsectors.Rows.Count));
                         bulk.BatchSize = dt_subsectors.Rows.Count;
                         bulk.DestinationTableName = "subsectors";
                         bulk.WriteToServer(dt_subsectors);
                     }
                     using (var bulk = new SqlBulkCopy(connection, SqlBulkCopyOptions.TableLock, null))
                     {
-                        callback(String.Format("Writing {0} worlds...", dt_worlds.Rows.Count));
+                        callback(string.Format("Writing {0} worlds...", dt_worlds.Rows.Count));
                         bulk.BatchSize = 4096;
                         bulk.DestinationTableName = "worlds";
                         bulk.WriteToServer(dt_worlds);
@@ -213,7 +211,7 @@ namespace Maps
             if (clauses.Count() == 0)
                 return results;
 
-            string where = String.Join(" AND ", clauses.ToArray());
+            string where = string.Join(" AND ", clauses.ToArray());
 
             // NOTE: DISTINCT is to filter out "Ley" and "Ley Sector" (different names, same result). 
             // TODO: Include the searched-for name in the results, and show alternate names in the result set.
@@ -230,11 +228,11 @@ namespace Maps
                 if (types.HasFlag(SearchResultsType.Sectors))
                 {
                     // Note duplicated field names so the results of both queries can come out right.
-                    string sql = String.Format(query_format, "TT.x, TT.y", "x, y", "sectors", where);
+                    string sql = string.Format(query_format, "TT.x, TT.y", "x, y", "sectors", where);
                     using (var sqlCommand = new SqlCommand(sql, connection))
                     {
                         for (int i = 0; i < terms.Count; ++i)
-                            sqlCommand.Parameters.AddWithValue(String.Format("@term{0}", i), terms[i]);
+                            sqlCommand.Parameters.AddWithValue(string.Format("@term{0}", i), terms[i]);
 
                         using (var row = sqlCommand.ExecuteReader())
                         {
@@ -250,11 +248,11 @@ namespace Maps
                 if (types.HasFlag(SearchResultsType.Subsectors))
                 {
                     // Note duplicated field names so the results of both queries can come out right.
-                    string sql = String.Format(query_format, "TT.sector_x, TT.sector_y, TT.subsector_index", "sector_x, sector_y, subsector_index", "subsectors", where);
+                    string sql = string.Format(query_format, "TT.sector_x, TT.sector_y, TT.subsector_index", "sector_x, sector_y, subsector_index", "subsectors", where);
                     using (var sqlCommand = new SqlCommand(sql, connection))
                     {
                         for (int i = 0; i < terms.Count; ++i)
-                            sqlCommand.Parameters.AddWithValue(String.Format("@term{0}", i), terms[i]);
+                            sqlCommand.Parameters.AddWithValue(string.Format("@term{0}", i), terms[i]);
 
                         using (var row = sqlCommand.ExecuteReader())
                         {
@@ -273,11 +271,11 @@ namespace Maps
                 if (types.HasFlag(SearchResultsType.Worlds))
                 {
                     // Note duplicated field names so the results of both queries can come out right.
-                    string sql = String.Format(query_format, "TT.sector_x, TT.sector_y, TT.hex_x, TT.hex_y", "sector_x, sector_y, hex_x, hex_y", "worlds", where);
+                    string sql = string.Format(query_format, "TT.sector_x, TT.sector_y, TT.hex_x, TT.hex_y", "sector_x, sector_y, hex_x, hex_y", "worlds", where);
                     using (var sqlCommand = new SqlCommand(sql, connection))
                     {
                         for (int i = 0; i < terms.Count; ++i)
-                            sqlCommand.Parameters.AddWithValue(String.Format("@term{0}", i), terms[i]);
+                            sqlCommand.Parameters.AddWithValue(string.Format("@term{0}", i), terms[i]);
 
                         using (var row = sqlCommand.ExecuteReader())
                         {
@@ -299,12 +297,12 @@ namespace Maps
                                                    "like:", 
                                                    "in:"
                                                };
-        private static readonly Regex RE_TERMS = new Regex("(" + String.Join("|", OPS) + ")?(\"[^\"]+\"|\\S+)",
+        private static readonly Regex RE_TERMS = new Regex("(" + string.Join("|", OPS) + ")?(\"[^\"]+\"|\\S+)",
             RegexOptions.Compiled | RegexOptions.CultureInvariant);
 
         private static IEnumerable<string> ParseTerms(string q)
         {
-            return RE_TERMS.Matches(q).Cast<Match>().Select(m => m.Value).Where(s => !String.IsNullOrWhiteSpace(s));
+            return RE_TERMS.Matches(q).Cast<Match>().Select(m => m.Value).Where(s => !string.IsNullOrWhiteSpace(s));
         }
 
         public static WorldLocation FindNearestWorldMatch(string name, int x, int y)
@@ -410,7 +408,7 @@ namespace Maps
                     clause = "name LIKE @term + '%' OR name LIKE '% ' + @term + '%'";
                 }
 
-                clause = clause.Replace("@term", String.Format("@term{0}", terms.Count));
+                clause = clause.Replace("@term", string.Format("@term{0}", terms.Count));
                 clauses.Add("(" + clause + ")");
                 terms.Add(term);
             }

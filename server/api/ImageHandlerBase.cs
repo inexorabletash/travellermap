@@ -30,7 +30,7 @@ namespace Maps.API
 
         protected static void ProduceResponse(HttpContext context, ITypeAccepter accepter, string title, Render.RenderContext ctx, Size tileSize,
             int rot = 0, float translateX = 0, float translateY = 0,
-            bool transparent = false, IDictionary<string, Object> queryDefaults = null)
+            bool transparent = false, IDictionary<string, object> queryDefaults = null)
         {
             // New-style Options
             // TODO: move to ParseOptions (maybe - requires options to be parsed after stylesheet creation?)
@@ -272,7 +272,7 @@ namespace Maps.API
                 HttpPostedFile hpf = request.Files["file"];
                 sector = new Sector(hpf.InputStream, hpf.ContentType, errors);
             }
-            else if (!String.IsNullOrEmpty(request.Form["data"]))
+            else if (!string.IsNullOrEmpty(request.Form["data"]))
             {
                 string data = request.Form["data"];
                 sector = new Sector(data.ToStream(), MediaTypeNames.Text.Plain, errors);
@@ -294,7 +294,7 @@ namespace Maps.API
                 Sector meta = SectorMetadataFileParser.ForType(type).Parse(hpf.InputStream);
                 sector.Merge(meta);
             }
-            else if (!String.IsNullOrEmpty(request.Form["metadata"]))
+            else if (!string.IsNullOrEmpty(request.Form["metadata"]))
             {
                 string metadata = request.Form["metadata"];
                 string type = SectorMetadataFileParser.SniffType(metadata.ToStream());

@@ -797,7 +797,7 @@ namespace Maps.Rendering
 
         public float hexContentScale = 1.0f;
 
-        public String preferredMimeType;
+        public string preferredMimeType;
         public bool t5AllegianceCodes;
 
 

@@ -128,14 +128,14 @@ namespace Maps.Admin
             {
                 foreach (string table in new string[] { "sectors", "subsectors", "worlds" })
                 {
-                    string sql = String.Format("SELECT COUNT(*) FROM {0}", table);
+                    string sql = string.Format("SELECT COUNT(*) FROM {0}", table);
                     using (var command = new SqlCommand(sql, connection))
                     {
                         using (var reader = command.ExecuteReader())
                         {
                             while (reader.Read())
                             {
-                                Write(context.Response, String.Format("{0}: {1}", table, reader.GetInt32(0)));
+                                Write(context.Response, string.Format("{0}: {1}", table, reader.GetInt32(0)));
                             }
                         }
                     }

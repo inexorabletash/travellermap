@@ -90,9 +90,9 @@ namespace Maps.Serialization
                     {
                         string[] tokens = value.Split((char[])null, StringSplitOptions.RemoveEmptyEntries);
                         if (!Regex.IsMatch(tokens.Last(), @"^\d{4}$"))
-                            sector.Borders.Add(new Border(String.Join(" ", tokens.Take(tokens.Count() - 1)), tokens.Last()));
+                            sector.Borders.Add(new Border(string.Join(" ", tokens.Take(tokens.Count() - 1)), tokens.Last()));
                         else
-                            sector.Borders.Add(new Border(String.Join(" ", tokens)));
+                            sector.Borders.Add(new Border(string.Join(" ", tokens)));
                         return;
                     }
 
@@ -128,7 +128,7 @@ namespace Maps.Serialization
                             var r = match.Groups[2].Value;
                             var options = match.Groups[3].Value;
                             var text = match.Groups[4].Value;
-                            Label label = new Label(Int32.Parse(c + r), text);
+                            Label label = new Label(int.Parse(c + r), text);
                             foreach (var option in options.ToLowerInvariant().Split(','))
                             {
                                 if (option == "low")
@@ -139,8 +139,8 @@ namespace Maps.Serialization
                                 if (Regex.IsMatch(option, @"[-+](\d+)$"))
                                 {
                                     int offset = 0;
-                                    Int32.TryParse(option, out offset);
-                                    label.OffsetY = offset / 100f;
+                                    if (int.TryParse(option, out offset))
+                                        label.OffsetY = offset / 100f;
                                     continue;
                                 }
                                 if (option == "right" || option == "left")

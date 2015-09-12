@@ -79,7 +79,7 @@ namespace Maps
             parser.Parse(stream, this, errors);
             if (errors != null && !errors.Empty)
             {
-                errors.Prepend(ErrorLogger.Severity.Warning, String.Format("Parsing as: {0}", parser.Name));
+                errors.Prepend(ErrorLogger.Severity.Warning, string.Format("Parsing as: {0}", parser.Name));
             }
         }
 

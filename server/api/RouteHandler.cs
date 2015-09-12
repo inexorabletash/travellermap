@@ -44,9 +44,9 @@ namespace Maps.API
         private World ResolveLocation(HttpContext context, string field, ResourceManager manager, SectorMap map)
         {
             string query = context.Request.QueryString[field];
-            if (String.IsNullOrWhiteSpace(query))
+            if (string.IsNullOrWhiteSpace(query))
             {
-                SendError(context.Response, 400, "Bad Request", String.Format("Missing {0} location", field));
+                SendError(context.Response, 400, "Bad Request", string.Format("Missing {0} location", field));
                 return null;
             }
 
@@ -60,7 +60,7 @@ namespace Maps.API
                 WorldLocation loc = SearchEngine.FindNearestWorldMatch(query, x, y);
                 if (loc == null)
                 {
-                    SendError(context.Response, 404, "Not Found", String.Format("Location not found: {0}", query));
+                    SendError(context.Response, 404, "Not Found", string.Format("Location not found: {0}", query));
                     return null;
                 }
                 Sector loc_sector;
@@ -72,23 +72,23 @@ namespace Maps.API
             Sector sector = map.FromName(match.Groups["sector"].Value);
             if (sector == null)
             {
-                SendError(context.Response, 404, "Not Found", String.Format("Sector not found: {0}", sector));
+                SendError(context.Response, 404, "Not Found", string.Format("Sector not found: {0}", sector));
                 return null;
             }
 
             string hexString = match.Groups["hex"].Value;
-            int hex = Int32.Parse(hexString);
+            int hex = int.Parse(hexString);
             int hx = hex / 100, hy = hex % 100;
             if (!Util.InRange(hx, 1, Astrometrics.SectorWidth) || !Util.InRange(hy, 1, Astrometrics.SectorHeight))
             {
-                SendError(context.Response, 400, "Not Found", String.Format("Invalid hex: {0}", hexString));
+                SendError(context.Response, 400, "Not Found", string.Format("Invalid hex: {0}", hexString));
                 return null;
             }
 
             World world = sector.GetWorlds(manager)[hex];
             if (world == null)
             {
-                SendError(context.Response, 404, "Not Found", String.Format("No such world: {0} {1}", sector.Names[0].Text, hexString));
+                SendError(context.Response, 404, "Not Found", string.Format("No such world: {0} {1}", sector.Names[0].Text, hexString));
                 return null;
             }
 

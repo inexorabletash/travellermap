@@ -170,7 +170,7 @@ namespace Maps.API
         // ITypeAccepter
         public IEnumerable<string> AcceptTypes(HttpContext context)
         {
-            IDictionary<string, Object> queryDefaults = null;
+            IDictionary<string, object> queryDefaults = null;
             if (context.Items.Contains("RouteData"))
                 queryDefaults = (context.Items["RouteData"] as System.Web.Routing.RouteData).Values;
 

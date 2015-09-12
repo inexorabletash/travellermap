@@ -1,9 +1,8 @@
-﻿using System;
-using System.Web;
-using Maps.Serialization;
-using System.Xml.Serialization;
+﻿using Maps.Serialization;
+using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Web;
+using System.Xml.Serialization;
 
 namespace Maps.API
 {
@@ -42,7 +41,7 @@ namespace Maps.API
 
                 if (sector == null)
                 {
-                    SendError(context.Response, 404, "Not Found", String.Format("The sector at {0},{1} was not found.", sx, sy));
+                    SendError(context.Response, 404, "Not Found", string.Format("The sector at {0},{1} was not found.", sx, sy));
                     return;
                 }
             }
@@ -53,7 +52,7 @@ namespace Maps.API
 
                 if (sector == null)
                 {
-                    SendError(context.Response, 404, "Not Found", String.Format("The specified sector '{0}' was not found.", sectorName));
+                    SendError(context.Response, 404, "Not Found", string.Format("The specified sector '{0}' was not found.", sectorName));
                     return;
                 }
             }

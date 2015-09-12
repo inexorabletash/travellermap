@@ -130,7 +130,7 @@ namespace Maps.Serialization
 
         private static string DashIfEmpty(string s)
         {
-            if (String.IsNullOrWhiteSpace(s))
+            if (string.IsNullOrWhiteSpace(s))
                 return "-";
             return s;
         }
@@ -144,13 +144,13 @@ namespace Maps.Serialization
         {
             if (includeHeader)
             {
-                writer.WriteLine(String.Join("\t", new string[] {
+                writer.WriteLine(string.Join("\t", new string[] {
                     "Sector", "SS", "Hex", "Name", "UWP", "Bases", "Remarks", "Zone", "PBG", "Allegiance", "Stars",
                     "{Ix}", "(Ex)", "[Cx]", "Nobility", "W", "RU" }));
             }
             foreach (World world in worlds.OrderBy(world => world.Subsector))
             {
-                writer.WriteLine(String.Join("\t", new string[] {
+                writer.WriteLine(string.Join("\t", new string[] {
                     world.Sector.Abbreviation,
                     world.SS,
                     sscoords ? world.SubsectorHex : world.Hex,

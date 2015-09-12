@@ -354,7 +354,7 @@ namespace Maps.Rendering
             float[] edgeX, edgeY;
             RenderUtil.HexEdges(type, out edgeX, out edgeY);
 
-            int lengthEstimate = border.Path.Length * 3;
+            int lengthEstimate = border.PathLength * 3;
             List<PointF> borderPathPoints = new List<PointF>(lengthEstimate);
             List<byte> borderPathTypes = new List<byte>(lengthEstimate);
             List<PointF> clipPathPoints = new List<PointF>(lengthEstimate);
@@ -425,7 +425,7 @@ namespace Maps.Rendering
                     i = check;
                     int neighbor = Astrometrics.HexNeighbor(hex, i % 6);
 
-                    if (Array.IndexOf<int>(border.Path, neighbor) != -1) // Consider a hash here
+                    if (border.Path.Contains(neighbor)) // TODO: Consider a hash here
                         break;
 
                     PointF newPoint = new PointF(pt.X + edgeX[(i + 1) % 6], pt.Y + edgeY[(i + 1) % 6]);
