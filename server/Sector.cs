@@ -118,7 +118,7 @@ namespace Maps
                         m_nameMap.Add(spaceless, sector);
                 }
 
-                if (!String.IsNullOrEmpty(sector.Abbreviation) && !m_nameMap.ContainsKey(sector.Abbreviation))
+                if (!string.IsNullOrEmpty(sector.Abbreviation) && !m_nameMap.ContainsKey(sector.Abbreviation))
                     m_nameMap.Add(sector.Abbreviation, sector);
             }
         }
@@ -293,11 +293,11 @@ namespace Maps
         [XmlAttribute("Tags"), JsonName("Tags")]
         public string TagString
         {
-            get { return String.Join(" ", m_tags); }
+            get { return string.Join(" ", m_tags); }
             set
             {
                 m_tags.Clear();
-                if (String.IsNullOrWhiteSpace(value))
+                if (string.IsNullOrWhiteSpace(value))
                     return;
                 m_tags.AddRange(value.Split());
             }
@@ -322,7 +322,7 @@ namespace Maps
         public string AllegianceCodeToBaseAllegianceCode(string code)
         {
             var alleg = GetAllegianceFromCode(code);
-            if (alleg != null && !String.IsNullOrEmpty(alleg.Base))
+            if (alleg != null && !string.IsNullOrEmpty(alleg.Base))
                 return alleg.Base;
             return code;
         }
@@ -369,13 +369,13 @@ namespace Maps
 
         public int SubsectorIndexFor(string label)
         {
-            if (String.IsNullOrWhiteSpace(label))
+            if (string.IsNullOrWhiteSpace(label))
                 return -1;
             Subsector subsector;
             if (label.Length == 1 && 'A' <= label.ToUpperInvariant()[0] && label.ToUpperInvariant()[0] <= 'P')
                 return (int)label.ToUpperInvariant()[0] - (int)'A';
 
-            subsector = Subsectors.Where(ss => !String.IsNullOrEmpty(ss.Name) && ss.Name.Equals(label, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
+            subsector = Subsectors.Where(ss => !string.IsNullOrEmpty(ss.Name) && ss.Name.Equals(label, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
             if (subsector == null)
                 return -1;
             return subsector.IndexNumber;
@@ -681,7 +681,7 @@ namespace Maps
     {
         public DataFile()
         {
-            FileName = String.Empty;
+            FileName = string.Empty;
             Type = "SEC";
         }
 
@@ -702,8 +702,8 @@ namespace Maps
     {
         public Subsector()
         {
-            Name = String.Empty;
-            Index = String.Empty;
+            Name = string.Empty;
+            Index = string.Empty;
         }
 
         [XmlText]
@@ -716,7 +716,7 @@ namespace Maps
         {
             get
             {
-                if (String.IsNullOrWhiteSpace(Index))
+                if (string.IsNullOrWhiteSpace(Index))
                     return -1;
                 return (int)Index[0] - (int)'A';
             }
@@ -757,7 +757,7 @@ namespace Maps
         public string T5Code { get; set; }
 
         [XmlIgnore, JsonIgnore]
-        public string LegacyCode { get { return String.IsNullOrEmpty(m_legacyCode) ? T5Code : m_legacyCode; } set { m_legacyCode = value; } }
+        public string LegacyCode { get { return string.IsNullOrEmpty(m_legacyCode) ? T5Code : m_legacyCode; } set { m_legacyCode = value; } }
         private string m_legacyCode;
 
         /// <summary>
@@ -848,7 +848,7 @@ namespace Maps
                 string[] hexes = new string[Path.Length];
                 for (int i = 0; i < Path.Length; i++)
                     hexes[i] = Astrometrics.IntToHex(Path[i]);
-                return String.Join(" ", hexes);
+                return string.Join(" ", hexes);
             }
             set
             {
@@ -929,11 +929,23 @@ namespace Maps
                 ColorHtml = color;
         }
 
-        [XmlIgnoreAttribute, JsonIgnore]
-        public int Start { get; set; }
+        private byte m_startX;
+        private byte m_endX;
+        private byte m_startY;
+        private byte m_endY;
 
         [XmlIgnoreAttribute, JsonIgnore]
-        public int End { get; set; }
+        public int Start {
+            get { return m_startX * 100 + m_startY; }
+            set { m_startX = (byte)(value / 100); m_startY = (byte)(value % 100); }
+        }
+
+        [XmlIgnoreAttribute, JsonIgnore]
+        public int End
+        {
+            get { return m_endX * 100 + m_endY; }
+            set { m_endX = (byte)(value / 100); m_endY = (byte)(value % 100); }
+        }
 
         [XmlAttribute("Start"), JsonName("Start")]
         public string StartHex
@@ -949,11 +961,23 @@ namespace Maps
             set { End = Astrometrics.HexToInt(value); }
         }
 
-        [XmlIgnoreAttribute, JsonIgnore]
-        public Point StartOffset { get; set; }
+        private sbyte m_startOffsetX;
+        private sbyte m_startOffsetY;
+        private sbyte m_endOffsetX;
+        private sbyte m_endOffsetY;
 
         [XmlIgnoreAttribute, JsonIgnore]
-        public Point EndOffset { get; set; }
+        public Point StartOffset {
+            get { return new Point(m_startOffsetX, m_startOffsetY); }
+            set { m_startOffsetX = (sbyte)value.X; m_startOffsetY = (sbyte)value.Y; }
+        }
+
+        [XmlIgnoreAttribute, JsonIgnore]
+        public Point EndOffset
+        {
+            get { return new Point(m_endOffsetX, m_endOffsetY); }
+            set { m_endOffsetX = (sbyte)value.X; m_endOffsetY = (sbyte)value.Y; }
+        }
 
         [XmlIgnoreAttribute, JsonIgnore]
         public Point StartPoint { get { return new Point(Start / 100, Start % 100); } }
@@ -963,19 +987,19 @@ namespace Maps
 
         [XmlAttribute("StartOffsetX")]
         [DefaultValueAttribute(0)]
-        public int StartOffsetX { get { return StartOffset.X; } set { StartOffset = new Point(value, StartOffset.Y); } }
+        public sbyte StartOffsetX { get { return m_startOffsetX; } set { m_startOffsetX = value; } }
 
         [XmlAttribute("StartOffsetY")]
         [DefaultValueAttribute(0)]
-        public int StartOffsetY { get { return StartOffset.Y; } set { StartOffset = new Point(StartOffset.X, value); } }
+        public sbyte StartOffsetY { get { return m_startOffsetY; } set { m_startOffsetY = value; } }
 
         [XmlAttribute("EndOffsetX")]
         [DefaultValueAttribute(0)]
-        public int EndOffsetX { get { return EndOffset.X; } set { EndOffset = new Point(value, EndOffset.Y); } }
+        public sbyte EndOffsetX { get { return m_endOffsetX; } set { m_endOffsetX = value; } }
 
         [XmlAttribute("EndOffsetY")]
         [DefaultValueAttribute(0)]
-        public int EndOffsetY { get { return EndOffset.Y; } set { EndOffset = new Point(EndOffset.X, value); } }
+        public sbyte EndOffsetY { get { return m_endOffsetY; } set { m_endOffsetY = value; } }
 
 
         [XmlIgnore]

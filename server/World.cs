@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Serialization;
+using System.Collections;
 
 namespace Maps
 {
@@ -34,7 +35,7 @@ namespace Maps
         public string Hex
         {
             get { return Astrometrics.IntToHex(X * 100 + Y); }
-            set { int hex = Astrometrics.HexToInt(value); X = hex / 100; Y = hex % 100; }
+            set { int hex = Astrometrics.HexToInt(value); X = (byte)(hex / 100); Y = (byte)(hex % 100); }
         }
 
         [XmlIgnore,JsonIgnore]
@@ -97,14 +98,14 @@ namespace Maps
         [XmlElement("Cx"), JsonName("Cx")]
         public string Cultural { get; set; }
         public string Nobility { get; set; }
-        public int Worlds { get; set; }
+        public byte Worlds { get; set; }
         public int ResourceUnits { get; set; }
 
         // Derived
         [XmlIgnore, JsonIgnore]
-        public int X { get; set; }
+        public byte X { get; set; }
         [XmlIgnore, JsonIgnore]
-        public int Y { get; set; }
+        public byte Y { get; set; }
 
         public int Subsector
         {
@@ -245,7 +246,6 @@ namespace Maps
             if (code == null)
                 throw new ArgumentNullException("code");
 
-            // TODO: Performance impact - this must be an O(n) lookup bypassing the hash
             return m_codes.Any(s => s.Equals(code, StringComparison.InvariantCultureIgnoreCase));
         }
 
@@ -257,21 +257,56 @@ namespace Maps
             return m_codes.Where(s => s.StartsWith(code, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
         }
 
-        public void UpdateCode(string oldCode, string newCode)
-        {
-            if (m_codes.Contains(oldCode))
-            {
-                m_codes.Remove(oldCode);
-                m_codes.Add(newCode);
-            }
-        }
-
+        // Keep storage as a string and parse on demand to reduce memory consumption.
+        // (Many worlds * many codes = lots of strings and container overhead)
         // "[Sophont]" - major race homeworld
         // "(Sophont)" - minor race homeworld
         // "(Sophont)0" - minor race homeworld (population in tenths)
         // "{comment ... }" - arbitrary comment
         // "xyz" - other code
-        private static Regex codeRegex = new Regex(@"(\(.*?\)\S*|\[.*?\]\S*|\{.*?\}\S*|\S+)", RegexOptions.Compiled | RegexOptions.CultureInvariant);
+        private class CodeList : IEnumerable<string>
+        {
+            public CodeList(string codes = "") { m_codes = codes; }
+            private string m_codes;
+
+            #region IEnumerable<T>
+            public IEnumerator<string> GetEnumerator()
+            {
+                int pos = 0;                
+                while (pos < m_codes.Length)
+                {
+                    int begin = pos;
+                    switch (m_codes[pos++]) {
+                        case ' ':
+                            break;                    
+                        case '[':
+                            while (pos < m_codes.Length && m_codes[pos++] != ']') ;
+                            while (pos < m_codes.Length && m_codes[pos++] != ' ') ;
+                            yield return m_codes.Substring(begin, pos - begin);
+                            break;
+                        case '(':
+                            while (pos < m_codes.Length && m_codes[pos++] != ')') ;
+                            while (pos < m_codes.Length && m_codes[pos++] != ' ') ;
+                            yield return m_codes.Substring(begin, pos - begin);
+                            break;
+                        case '{':
+                            while (pos < m_codes.Length && m_codes[pos++] != '}') ;
+                            while (pos < m_codes.Length && m_codes[pos++] != ' ') ;
+                            yield return m_codes.Substring(begin, pos - begin);
+                            break;
+                        default:
+                            while (pos < m_codes.Length && m_codes[pos++] != ' ') ;
+                            yield return m_codes.Substring(begin, pos - begin);
+                            break;
+                    }
+                    begin = pos;
+                }
+            }
+
+            IEnumerator IEnumerable.GetEnumerator() { return GetEnumerator(); }
+            #endregion
+        }
+
         public string Remarks
         {
             get { return String.Join(" ", m_codes); }
@@ -279,15 +314,14 @@ namespace Maps
             {
                 if (value == null)
                     throw new ArgumentNullException("codes");
-                m_codes.Clear();
-                m_codes.AddRange(codeRegex.Matches(value).Cast<Match>().Select(match => match.Groups[1].Value));
+                m_codes = new CodeList(value);
             }
         }
 
         [XmlIgnore, JsonIgnore]
         public IEnumerable<string> Codes { get { return m_codes; } }
 
-        private OrderedHashSet<string> m_codes = new OrderedHashSet<string>();
+        private CodeList m_codes = new CodeList();
 
         public string LegacyBaseCode
         {

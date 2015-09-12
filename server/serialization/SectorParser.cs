@@ -312,8 +312,8 @@ namespace Maps.Serialization
                     a => a.Length != 4 || SecondSurvey.IsKnownT5Allegiance(a));
                 world.Stellar = checker.Check(new string[] { "Stellar", "Stars", "Stellar Data" }, STARS_REGEX, CheckOptions.Warning);
 
-                int w;
-                if (Int32.TryParse(checker.Check(new string[] { "W", "Worlds" }), NumberStyles.Integer, CultureInfo.InvariantCulture, out w))
+                byte w;
+                if (Byte.TryParse(checker.Check(new string[] { "W", "Worlds" }), NumberStyles.Integer, CultureInfo.InvariantCulture, out w))
                     world.Worlds = w;
 
                 int ru;
