@@ -239,7 +239,6 @@ namespace Maps.Rendering
 
             t5AllegianceCodes = scale >= T5AllegianceCodeMinScale;
 
-            float logscale = (float)Math.Log(scale, 2.0);
             riftOpacity = ScaleInterpolate(0f, 0.85f, scale, 1/4f, 4f);
 
             deepBackgroundOpacity = ScaleInterpolate(1f, 0f, scale, 1/8f, 2f);

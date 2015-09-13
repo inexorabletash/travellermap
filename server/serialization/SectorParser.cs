@@ -164,7 +164,7 @@ namespace Maps.Serialization
                 worlds[world.X, world.Y] = world;
                 string rest = match.Groups["rest"].Value;
                 if (!string.IsNullOrEmpty(rest))
-                    ParseRest(rest, worlds, lineNumber, line, world, errors);
+                    ParseRest(rest, lineNumber, line, world, errors);
             }
             catch (Exception e)
             {
@@ -173,7 +173,7 @@ namespace Maps.Serialization
             }
         }
 
-        private static void ParseRest(string rest, WorldCollection worlds, int lineNumber, string line, World world, ErrorLogger errors)
+        private static void ParseRest(string rest, int lineNumber, string line, World world, ErrorLogger errors)
         {
             // Assume stellar data, try to parse it
             try

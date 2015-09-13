@@ -62,7 +62,7 @@ namespace Maps
         };
 
         [Serializable]
-        internal class InvalidSystemException : ApplicationException
+        public class InvalidSystemException : ApplicationException
         {
             public InvalidSystemException() : base("System data is not valid") { }
             public InvalidSystemException(string message) : base(message) { }

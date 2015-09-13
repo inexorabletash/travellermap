@@ -22,9 +22,11 @@ namespace Maps.Admin
 
         public bool IsReusable { get { return true; } }
 
-
         public void ProcessRequest(HttpContext context)
         {
+            if (context == null)
+                throw new ArgumentNullException("context");
+
             context.Response.Cache.SetCacheability(HttpCacheability.NoCache);
             if (!AdminAuthorized(context))
                 return;

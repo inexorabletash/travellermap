@@ -80,11 +80,11 @@ namespace Maps
         private HttpServerUtility m_serverUtility;
         public HttpServerUtility Server { get { return m_serverUtility; } }
 
-        private LRUCache s_cache = new LRUCache(50);
+        private LRUCache m_cache = new LRUCache(50);
 
         // TODO: Quick Fix - clean this up later
         //private Cache m_cache;
-        public LRUCache Cache { get { return s_cache; } }
+        public LRUCache Cache { get { return m_cache; } }
 
         public ResourceManager(HttpServerUtility serverUtility)
         {

@@ -32,11 +32,14 @@ namespace Maps.API
 
             IEnumerable<World> PathFinder.Map<World>.Adjacent(World world)
             {
+                if (world == null) throw new ArgumentNullException("world");
                 return new HexSelector(map, manager, Astrometrics.CoordinatesToLocation(world.Coordinates), jump).Worlds;
             }
 
             int PathFinder.Map<World>.Distance(World a, World b)
             {
+                if (a == null) throw new ArgumentNullException("a");
+                if (b == null) throw new ArgumentNullException("b");
                 return Astrometrics.HexDistance(a.Coordinates, b.Coordinates);
             }
         }
@@ -124,6 +127,8 @@ namespace Maps.API
         public RouteStop() { }
         public RouteStop(World w)
         {
+            if (w == null) throw new ArgumentNullException("w");
+
             Sector = w.SectorName;
             SectorX = w.Sector.X;
             SectorY = w.Sector.Y;

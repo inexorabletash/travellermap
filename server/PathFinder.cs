@@ -24,6 +24,7 @@ namespace Maps
 
             public int CompareTo(Node<T> other)
             {
+                if (other == null) throw new ArgumentNullException("other");
                 return cost.CompareTo(other.cost);
             }
         }

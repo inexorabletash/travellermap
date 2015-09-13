@@ -171,8 +171,6 @@ namespace Maps.API
         public string WorldAllegiance { get; set; }
 
         public string WorldCredits { get; set; }
-        public string LandGrabTitle { get; set; }
-        public string LandGrabURL { get; set; }
 
         public string ProductPublisher { get; set; }
         public string ProductTitle { get; set; }

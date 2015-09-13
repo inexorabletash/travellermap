@@ -182,7 +182,7 @@ namespace Maps.Rendering
 #endif
         #endregion EditingTools
 
-        public void Draw(XGraphics graphics, RectangleF rect, MapOptions options, XPen pen)
+        public void Draw(XGraphics graphics, RectangleF rect, XPen pen)
         {
             if (graphics == null)
                 throw new ArgumentNullException("graphics");
@@ -205,7 +205,7 @@ namespace Maps.Rendering
             }
         }
 
-        internal void DrawName(XGraphics graphics, RectangleF rect, MapOptions options, XFont font, XBrush textBrush, LabelStyle labelStyle)
+        internal void DrawName(XGraphics graphics, RectangleF rect, XFont font, XBrush textBrush, LabelStyle labelStyle)
         {
             if (graphics == null)
                 throw new ArgumentNullException("graphics");
@@ -295,7 +295,7 @@ namespace Maps.Rendering
         public int LabelBiasY { get; set; }
 
 
-        public void Paint(XGraphics graphics, RectangleF rect, MapOptions options, Color dotColor, XBrush labelBrush, XFont labelFont)
+        public void Paint(XGraphics graphics, Color dotColor, XBrush labelBrush, XFont labelFont)
         {
             if (graphics == null)
                 throw new ArgumentNullException("graphics");

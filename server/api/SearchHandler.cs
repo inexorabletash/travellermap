@@ -65,7 +65,7 @@ namespace Maps.API
 
             const int NUM_RESULTS = 160;
 
-            var searchResults = SearchEngine.PerformSearch(query, resourceManager, SearchEngine.SearchResultsType.Default, NUM_RESULTS);
+            var searchResults = SearchEngine.PerformSearch(query, SearchEngine.SearchResultsType.Default, NUM_RESULTS);
 
             SearchResults resultsList = new SearchResults();
 

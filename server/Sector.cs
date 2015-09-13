@@ -372,6 +372,8 @@ namespace Maps
 
         public static int QuadrantIndexFor(string label)
         {
+            if (label == null) throw new ArgumentNullException("label");
+
             switch (label.ToLowerInvariant())
             {
                 case "alpha": return 0;
@@ -813,6 +815,8 @@ namespace Maps
             }
             set
             {
+                if (value == null) throw new ArgumentNullException("value");
+
                 string[] hexes = value.Split((char[])null, StringSplitOptions.RemoveEmptyEntries);
                 m_path = (from hex in hexes select new Hex(hex)).ToList();
 

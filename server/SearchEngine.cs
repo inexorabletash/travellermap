@@ -105,7 +105,7 @@ namespace Maps
                         var world_query = from world in worlds
                                           where !world.IsPlaceholder
                                           select world;
-                        foreach (World world in worlds)
+                        foreach (World world in world_query)
                         {
                             DataRow row = dt_worlds.NewRow();
                             row.ItemArray = new object[] { 
@@ -200,7 +200,7 @@ namespace Maps
             }
         }
 
-        public static IEnumerable<ItemLocation> PerformSearch(string query, ResourceManager resourceManager, SearchResultsType types, int maxResultsPerType)
+        public static IEnumerable<ItemLocation> PerformSearch(string query, SearchResultsType types, int maxResultsPerType)
         {
             List<ItemLocation> results = new List<ItemLocation>();
 

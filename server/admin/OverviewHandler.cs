@@ -38,8 +38,6 @@ namespace Maps.Admin
                 tileRect.Width = (float)(tileSize.Width / (scale * Astrometrics.ParsecScaleX));
                 tileRect.Height = (float)(tileSize.Height / (scale * Astrometrics.ParsecScaleY));
 
-                DateTime dt = DateTime.Now;
-
                 Render.RenderContext ctx = new Render.RenderContext();
                 ctx.resourceManager = resourceManager;
                 ctx.selector = new RectSelector(

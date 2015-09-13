@@ -26,6 +26,9 @@ namespace Maps.API
 
         public void ProcessRequest(HttpContext context)
         {
+            if (context == null)
+                throw new ArgumentNullException("context");
+
             if (!ServiceConfiguration.CheckEnabled(ServiceName, context.Response))
                 return;
 

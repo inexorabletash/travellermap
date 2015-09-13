@@ -138,7 +138,6 @@ namespace Maps.Rendering
 
         public static void RenderTile(RenderContext ctx)
         {
-            DateTime dtStart = DateTime.Now;
             List<Timer> timers = new List<Timer>();
 
             if (ctx.resourceManager == null)
@@ -439,7 +438,7 @@ namespace Maps.Rendering
                             .OfType<VectorObject>()
                             .Where(vec => (vec.MapOptions & ctx.options & MapOptions.BordersMask) != 0))
                         {
-                            vec.Draw(ctx.graphics, ctx.tileRect, ctx.options, pen);
+                            vec.Draw(ctx.graphics, ctx.tileRect, pen);
                         }
 
                     }
@@ -460,7 +459,7 @@ namespace Maps.Rendering
                             .OfType<VectorObject>()
                             .Where(vec => (vec.MapOptions & ctx.options & MapOptions.BordersMask) != 0))
                         {
-                            vec.Draw(ctx.graphics, ctx.tileRect, ctx.options, pen);
+                            vec.Draw(ctx.graphics, ctx.tileRect, pen);
                         }
                     }
 #endregion
@@ -615,9 +614,6 @@ namespace Maps.Rendering
                         {
                             for (int i = 0; i < 16; i++)
                             {
-                                int ssx = i % 4;
-                                int ssy = i / 4;
-
                                 Subsector ss = sector.Subsector(i);
                                 if (ss == null || string.IsNullOrEmpty(ss.Name))
                                     continue;
@@ -650,7 +646,7 @@ namespace Maps.Rendering
 #region micro-routes
 
                     if (ctx.styles.microRoutes.visible)
-                        DrawRoutes(ctx, fonts);
+                        DrawRoutes(ctx);
 
 #endregion
                     timers.Add(new Timer("micro-routes"));
@@ -721,7 +717,7 @@ namespace Maps.Rendering
                             labelStyle.Uppercase = major;
                             XFont font = major ? ctx.styles.macroNames.Font : ctx.styles.macroNames.SmallFont;
                             solidBrush.Color = major ? ctx.styles.macroNames.textColor : ctx.styles.macroNames.textHighlightColor;
-                            vec.DrawName(ctx.graphics, ctx.tileRect, ctx.options, font, solidBrush, labelStyle);
+                            vec.DrawName(ctx.graphics, ctx.tileRect, font, solidBrush, labelStyle);
                         }
 
                         foreach (var vec in riftFiles
@@ -735,7 +731,7 @@ namespace Maps.Rendering
                             labelStyle.Uppercase = major;
                             XFont font = major ? ctx.styles.macroNames.Font : ctx.styles.macroNames.SmallFont;
                             solidBrush.Color = major ? ctx.styles.macroNames.textColor : ctx.styles.macroNames.textHighlightColor;
-                            vec.DrawName(ctx.graphics, ctx.tileRect, ctx.options, font, solidBrush, labelStyle);
+                            vec.DrawName(ctx.graphics, ctx.tileRect, font, solidBrush, labelStyle);
                         }
 
                         if (ctx.styles.macroRoutes.visible)
@@ -750,7 +746,7 @@ namespace Maps.Rendering
                                 labelStyle.Uppercase = major;
                                 XFont font = major ? ctx.styles.macroNames.Font : ctx.styles.macroNames.SmallFont;
                                 solidBrush.Color = major ? ctx.styles.macroRoutes.textColor : ctx.styles.macroRoutes.textHighlightColor;
-                                vec.DrawName(ctx.graphics, ctx.tileRect, ctx.options, font, solidBrush, labelStyle);
+                                vec.DrawName(ctx.graphics, ctx.tileRect, font, solidBrush, labelStyle);
                             }
                         }
 
@@ -795,8 +791,7 @@ namespace Maps.Rendering
                             solidBrush.Color = ctx.styles.capitals.textColor;
                             foreach (WorldObject world in worlds.Worlds.Where(world => (world.MapOptions & ctx.options) != 0))
                             {
-                                world.Paint(ctx.graphics, ctx.tileRect, ctx.options, ctx.styles.capitals.fillColor,
-                                    solidBrush, ctx.styles.macroNames.SmallFont);
+                                world.Paint(ctx.graphics, ctx.styles.capitals.fillColor, solidBrush, ctx.styles.macroNames.SmallFont);
                             }
                         }
                     }
@@ -810,7 +805,7 @@ namespace Maps.Rendering
 #region micro-border-labels
 
                     if (ctx.styles.showMicroNames)
-                        DrawLabels(ctx, fonts);
+                        DrawLabels(ctx);
 
 #endregion
                     timers.Add(new Timer("micro-border labels"));
@@ -1397,7 +1392,7 @@ namespace Maps.Rendering
             ctx.graphics.DrawString(text, font, brush, position.X, position.Y, RenderUtil.StringFormatCentered);
         }
 
-        private static void DrawLabels(RenderContext ctx, FontCache styleRes)
+        private static void DrawLabels(RenderContext ctx)
         {
             using (RenderUtil.SaveState(ctx.graphics))
             {
@@ -1456,7 +1451,7 @@ namespace Maps.Rendering
             }
         }
 
-        private static void DrawRoutes(RenderContext ctx, FontCache styleRes)
+        private static void DrawRoutes(RenderContext ctx)
         {
             using (RenderUtil.SaveState(ctx.graphics))
             {

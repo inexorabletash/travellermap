@@ -237,7 +237,7 @@ namespace Maps.API
             }
 
             int bitmapWidth = tileSize.Width, bitmapHeight = tileSize.Height;
-            float translateX = 0, translateY = 0, angle = rot * 90;
+            float translateX = 0, translateY = 0;
             switch (rot)
             {
                 case 1: // 90 degrees clockwise
