@@ -123,16 +123,6 @@ namespace Maps
 
             return new Point(c, r);
         }
-
-        public static string IntToHex(int i)
-        {
-            return i.ToString("0000", CultureInfo.InvariantCulture);
-        }
-
-        public static int HexToInt(string s)
-        {
-            return int.Parse(s, NumberStyles.Integer, CultureInfo.InvariantCulture);
-        }
     }
 
     internal struct Hex

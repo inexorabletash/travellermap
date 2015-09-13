@@ -138,50 +138,6 @@ namespace Maps.Rendering
             }
         }
 
-        #region EditingTools
-#if DEBUG
-        private bool flattened = false;
-        public void Flatten( XMatrix matrix, double flatness )
-        {
-            lock( this )
-            {
-                if( flattened )
-                    return;
-                flattened = true;
-
-                XGraphicsPath path = this.Path;
-                path.Flatten( matrix, flatness );
-
-                m_pathDataPoints = path.Internals.GdiPath.PathPoints;
-                m_pathDataTypes = path.Internals.GdiPath.PathTypes;
-            }
-        }
-
-        public void Decimate()
-        {
-            if (m_pathDataPoints == null || m_pathDataTypes == null)
-                return;
-
-            int length = m_pathDataPoints.Length;
-            List<PointF> newPoints = new List<PointF>(length);
-            List<byte> newTypes = new List<byte>(length);
-
-            for (int i = 0; i < length; i++)
-            {
-                if (((PathPointType)(m_pathDataTypes[i]) != PathPointType.Line) ||
-                    (i % 2 == 1))
-                {
-                    newPoints.Add(m_pathDataPoints[i]);
-                    newTypes.Add(m_pathDataTypes[i]);
-                }
-            }
-
-            m_pathDataPoints = newPoints.ToArray();
-            m_pathDataTypes = newTypes.ToArray();
-        }
-#endif
-        #endregion EditingTools
-
         public void Draw(XGraphics graphics, RectangleF rect, XPen pen)
         {
             if (graphics == null)

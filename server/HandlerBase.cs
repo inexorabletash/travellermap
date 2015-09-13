@@ -17,6 +17,16 @@ namespace Maps
         {
             ParseOptions(context.Request, Defaults(context), ref options, ref style);
         }
+
+        private static Dictionary<string, Stylesheet.Style> s_nameToStyle = new Dictionary<string, Stylesheet.Style>() {
+            { "poster",Stylesheet.Style.Poster },
+            { "atlas" ,Stylesheet.Style.Atlas },
+            { "print" , Stylesheet.Style.Print },
+            { "candy" ,Stylesheet.Style.Candy },
+            { "draft" ,Stylesheet.Style.Draft },
+            { "fasa"  ,Stylesheet.Style.FASA },
+        };
+
         public static void ParseOptions(HttpRequest request, IDictionary<string, object> queryDefaults, ref MapOptions options, ref Stylesheet.Style style)
         {
             options = (MapOptions)GetIntOption(request, "options", queryDefaults, (int)options);
@@ -31,14 +41,13 @@ namespace Maps
 
             if (HasOption(request, "style", queryDefaults))
             {
-                switch (GetStringOption(request, "style", queryDefaults).ToLowerInvariant())
+                try
                 {
-                    case "poster": style = Stylesheet.Style.Poster; break;
-                    case "atlas": style = Stylesheet.Style.Atlas; break;
-                    case "print": style = Stylesheet.Style.Print; break;
-                    case "candy": style = Stylesheet.Style.Candy; break;
-                    case "draft": style = Stylesheet.Style.Draft; break;
-                    case "fasa": style = Stylesheet.Style.FASA; break;
+                    style = s_nameToStyle[GetStringOption(request, "style", queryDefaults).ToLowerInvariant()];
+                }
+                catch (KeyNotFoundException)
+                {
+                    // TODO: Report error?
                 }
             }
         }
@@ -127,6 +136,5 @@ namespace Maps
         }
 
         public abstract string DefaultContentType { get; }
-
     }
 }
