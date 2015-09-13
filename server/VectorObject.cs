@@ -25,11 +25,8 @@ namespace Maps.Rendering
         public string Name { get; set; }
 
 
-        [XmlIgnore]
-        public float MinScale { get; set; }
-
-        [XmlIgnore]
-        public float MaxScale { get; set; }
+        internal float MinScale { get; set; }
+        internal float MaxScale { get; set; }
 
         public float OriginX { get; set; }
         public float OriginY { get; set; }
@@ -64,8 +61,7 @@ namespace Maps.Rendering
             set { m_bounds = value; }
         }
 
-        [XmlIgnore]
-        public RectangleF TransformedBounds
+        internal RectangleF TransformedBounds
         {
             get
             {
@@ -93,8 +89,7 @@ namespace Maps.Rendering
             }
         }
 
-        [XmlIgnore]
-        public PointF NamePosition
+        internal PointF NamePosition
         {
             get
             {
@@ -132,8 +127,7 @@ namespace Maps.Rendering
         }
 
         // NOTE: Can't cacheResults a GraphicsPath - not free threaded
-        [XmlIgnore]
-        public XGraphicsPath Path
+        internal XGraphicsPath Path
         {
             get
             {
@@ -290,11 +284,8 @@ namespace Maps.Rendering
 
         public string Name { get; set; }
 
-        [XmlIgnore]
-        public float MinScale { get; set; }
-
-        [XmlIgnore]
-        public float MaxScale { get; set; }
+        internal float MinScale { get; set; }
+        internal float MaxScale { get; set; }
 
         public MapOptions MapOptions { get; set; }
 

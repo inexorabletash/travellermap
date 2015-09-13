@@ -77,7 +77,7 @@ namespace Maps.Admin
             response.Flush();
         }
 
-        private void Flush(HttpContext context)
+        private static void Flush(HttpContext context)
         {
             SectorMap.Flush();
 
@@ -91,7 +91,7 @@ namespace Maps.Admin
             Write(context.Response, "<b>&Omega;</b>");
         }
 
-        private void WriteStat<T>(HttpResponse response, string name, T value)
+        private static void WriteStat<T>(HttpResponse response, string name, T value)
         {
             Write(response, name + ": " + value.ToString());
         }
@@ -114,7 +114,7 @@ namespace Maps.Admin
         }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Security", "CA2100:Review SQL queries for security vulnerabilities")]
-        private void Reindex(HttpContext context)
+        private static void Reindex(HttpContext context)
         {
 
             Write(context.Response, "Initializing resource manager...");

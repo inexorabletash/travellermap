@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -244,15 +245,8 @@ namespace Maps
 
         public T this[int index] { get { return m_list[index]; } }
 
-        IEnumerator<T> IEnumerable<T>.GetEnumerator()
-        {
-            return m_list.GetEnumerator();
-        }
-
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-        {
-            return m_list.GetEnumerator();
-        }
+        public IEnumerator<T> GetEnumerator() { return m_list.GetEnumerator(); }
+        IEnumerator IEnumerable.GetEnumerator() { return GetEnumerator(); }
     }
 
     internal class ErrorLogger

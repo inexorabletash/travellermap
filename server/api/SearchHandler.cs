@@ -158,8 +158,7 @@ namespace Maps.API
             [XmlAttribute("sectorTags")]
             public string SectorTags { get; set; }
 
-            [XmlIgnore, JsonIgnore]
-            public int? Importance { get; set; }
+            internal int? Importance { get; set; }
         }
 
         internal static Item LocationToSearchResult(SectorMap map, ResourceManager resourceManager, ItemLocation location)

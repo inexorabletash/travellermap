@@ -57,10 +57,8 @@ namespace Maps
         public string SectorName { get { return m_sectorName; } set { m_sectorName = value; SectorLocation = SectorMap.FromName(SettingName, value).Location; } }
         public int Hex { get { return HexLocation.ToInt(); } set { HexLocation = new Hex(value); } }
 
-        [XmlIgnore, JsonIgnore]
-        public Point SectorLocation { get; set; }
+        internal Point SectorLocation { get; set; }
 
-        [XmlIgnore, JsonIgnore]
         internal Hex HexLocation { get; set; }
 
         public override bool Equals(object obj)

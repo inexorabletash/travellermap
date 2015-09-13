@@ -14,8 +14,7 @@ namespace Maps
 
     public class World
     {
-        [XmlIgnore,JsonIgnore]
-        public Sector Sector { get; set; }
+        internal Sector Sector { get; set; }
 
         public World()
         {
@@ -37,8 +36,7 @@ namespace Maps
             set { m_hex = new Hex(value); }
         }
 
-        [XmlIgnore, JsonIgnore]
-        public string SubsectorHex { get { return m_hex.ToSubsectorString(); } }
+        internal string SubsectorHex { get { return m_hex.ToSubsectorString(); } }
 
         [XmlElement("UWP"),JsonName("UWP")]
         public string UWP { get; set; }
@@ -71,8 +69,7 @@ namespace Maps
         [XmlElement("Ix"), JsonName("Ix")]
         public string Importance { get; set; }
 
-        [XmlIgnore, JsonIgnore]
-        public int? ImportanceValue
+        internal int? ImportanceValue
         {
             get
             {
@@ -98,11 +95,8 @@ namespace Maps
         public int ResourceUnits { get; set; }
 
         private Hex m_hex;
-        // Derived
-        [XmlIgnore, JsonIgnore]
-        public byte X { get { return m_hex.X; } }
-        [XmlIgnore, JsonIgnore]
-        public byte Y { get { return m_hex.Y; } }
+        internal byte X { get { return m_hex.X; } }
+        internal byte Y { get { return m_hex.Y; } }
 
         public int Subsector
         {
@@ -121,8 +115,7 @@ namespace Maps
         }
 
 
-        [XmlIgnore,JsonIgnore]
-        public Point Coordinates
+        internal Point Coordinates
         {
             get
             {
@@ -134,25 +127,16 @@ namespace Maps
         }
 
 
-        [XmlIgnore, JsonIgnore]
-        public char Starport { get { return UWP[0]; } }
-        [XmlIgnore, JsonIgnore]
-        public int Size { get { return Char.ToUpperInvariant(UWP[1]) == 'S' ? -1 : SecondSurvey.FromHex(UWP[1]); } }
-        [XmlIgnore, JsonIgnore]
-        public int Atmosphere { get { return SecondSurvey.FromHex(UWP[2]); } }
-        [XmlIgnore, JsonIgnore]
-        public int Hydrographics { get { return SecondSurvey.FromHex(UWP[3]); } }
-        [XmlIgnore, JsonIgnore]
-        public int PopulationExponent { get { return SecondSurvey.FromHex(UWP[4], valueIfX: 0); } }
-        [XmlIgnore, JsonIgnore]
-        public int Government { get { return SecondSurvey.FromHex(UWP[5]); } }
-        [XmlIgnore, JsonIgnore]
-        public int Law { get { return SecondSurvey.FromHex(UWP[6]); } }
-        [XmlIgnore, JsonIgnore]
-        public int TechLevel { get { return SecondSurvey.FromHex(UWP[8]); } }
+        internal char Starport { get { return UWP[0]; } }
+        internal int Size { get { return Char.ToUpperInvariant(UWP[1]) == 'S' ? -1 : SecondSurvey.FromHex(UWP[1]); } }
+        internal int Atmosphere { get { return SecondSurvey.FromHex(UWP[2]); } }
+        internal int Hydrographics { get { return SecondSurvey.FromHex(UWP[3]); } }
+        internal int PopulationExponent { get { return SecondSurvey.FromHex(UWP[4], valueIfX: 0); } }
+        internal int Government { get { return SecondSurvey.FromHex(UWP[5]); } }
+        internal int Law { get { return SecondSurvey.FromHex(UWP[6]); } }
+        internal int TechLevel { get { return SecondSurvey.FromHex(UWP[8]); } }
 
-        [XmlIgnore, JsonIgnore]
-        public int PopulationMantissa
+        internal int PopulationMantissa
         {
             get
             {
@@ -164,73 +148,41 @@ namespace Maps
             }
         }
 
-        [XmlIgnore, JsonIgnore]
-        public int Belts { get { return SecondSurvey.FromHex(PBG[1]); } }
+        internal int Belts { get { return SecondSurvey.FromHex(PBG[1]); } }
+        internal int GasGiants { get { return SecondSurvey.FromHex(PBG[2]); } }
+        internal double Population { get { return Math.Pow(10, PopulationExponent) * PopulationMantissa; } }
+        internal bool WaterPresent { get { return (Hydrographics > 0) && (Util.InRange(Atmosphere, 2, 9) || Util.InRange(Atmosphere, 0xD, 0xF)); } }
+        internal bool IsBa { get { return PopulationExponent == 0; } }
+        internal bool IsLo { get { return PopulationExponent < 4; } }
+        internal bool IsHi { get { return PopulationExponent >= 9; } }
 
-        [XmlIgnore, JsonIgnore]
-        public int GasGiants { get { return SecondSurvey.FromHex(PBG[2]); } }
+        internal bool IsAg { get { return Util.InRange(Atmosphere, 4, 9) && Util.InRange(Hydrographics, 4, 8) && Util.InRange(PopulationExponent, 5, 7); } }
+        internal bool IsNa { get { return Util.InRange(Atmosphere, 0, 3) && Util.InRange(Hydrographics, 0, 3) && Util.InRange(PopulationExponent, 6, 10); } }
+        internal bool IsIn { get { return Util.InList(Atmosphere, 0, 1, 2, 4, 7, 9) && Util.InList(PopulationExponent, 9, 10); } }
+        internal bool IsNi { get { return Util.InRange(PopulationExponent, 1, 6); } }
+        internal bool IsRi { get { return Util.InList(Atmosphere, 6, 7, 8) && Util.InList(PopulationExponent, 6, 7, 8) && Util.InList(Government, 4, 5, 6, 7, 8, 9); } }
+        internal bool IsPo { get { return Util.InList(Atmosphere, 2, 3, 4, 5) && Util.InList(Hydrographics, 0, 1, 2, 3) && PopulationExponent > 0; } }
 
-        [XmlIgnore, JsonIgnore]
-        public double Population { get { return Math.Pow(10, PopulationExponent) * PopulationMantissa; } }
+        internal bool IsWa { get { return Hydrographics == 10; } }
+        internal bool IsDe { get { return Util.InRange(Atmosphere, 2, 10) && Hydrographics == 0; } }
+        internal bool IsAs { get { return Size == 0; } }
+        internal bool IsVa { get { return Util.InRange(Size, 1, 10) && Atmosphere == 0; } }
+        internal bool IsIc { get { return Util.InList(Atmosphere, 0, 1) && Util.InRange(Hydrographics, 1, 10); } }
+        internal bool IsFl { get { return Atmosphere == 10 && Util.InRange(Hydrographics, 1, 10); } }
 
-        [XmlIgnore, JsonIgnore]
-        public bool WaterPresent { get { return (Hydrographics > 0) && (Util.InRange(Atmosphere, 2, 9) || Util.InRange(Atmosphere, 0xD, 0xF)); } }
+        internal bool IsCp { get { return HasCode("Cp"); } }
+        internal bool IsCs { get { return HasCode("Cs"); } }
+        internal bool IsCx { get { return HasCode("Cx"); } }
 
-        [XmlIgnore, JsonIgnore]
-        public bool IsBa { get { return PopulationExponent == 0; } }
-        [XmlIgnore, JsonIgnore]
-        public bool IsLo { get { return PopulationExponent < 4; } }
-        [XmlIgnore, JsonIgnore]
-        public bool IsHi { get { return PopulationExponent >= 9; } }
-
-        [XmlIgnore, JsonIgnore]
-        public bool IsAg { get { return Util.InRange(Atmosphere, 4, 9) && Util.InRange(Hydrographics, 4, 8) && Util.InRange(PopulationExponent, 5, 7); } }
-        [XmlIgnore, JsonIgnore]
-        public bool IsNa { get { return Util.InRange(Atmosphere, 0, 3) && Util.InRange(Hydrographics, 0, 3) && Util.InRange(PopulationExponent, 6, 10); } }
-        [XmlIgnore, JsonIgnore]
-        public bool IsIn { get { return Util.InList(Atmosphere, 0, 1, 2, 4, 7, 9) && Util.InList(PopulationExponent, 9, 10); } }
-        [XmlIgnore, JsonIgnore]
-        public bool IsNi { get { return Util.InRange(PopulationExponent, 1, 6); } }
-        [XmlIgnore, JsonIgnore]
-        public bool IsRi { get { return Util.InList(Atmosphere, 6, 7, 8) && Util.InList(PopulationExponent, 6, 7, 8) && Util.InList(Government, 4, 5, 6, 7, 8, 9); } }
-        [XmlIgnore, JsonIgnore]
-        public bool IsPo { get { return Util.InList(Atmosphere, 2, 3, 4, 5) && Util.InList(Hydrographics, 0, 1, 2, 3) && PopulationExponent > 0; } }
-
-        [XmlIgnore, JsonIgnore]
-        public bool IsWa { get { return Hydrographics == 10; } }
-        [XmlIgnore, JsonIgnore]
-        public bool IsDe { get { return Util.InRange(Atmosphere, 2, 10) && Hydrographics == 0; } }
-        [XmlIgnore, JsonIgnore]
-        public bool IsAs { get { return Size == 0; } }
-        [XmlIgnore, JsonIgnore]
-        public bool IsVa { get { return Util.InRange(Size, 1, 10) && Atmosphere == 0; } }
-        [XmlIgnore, JsonIgnore]
-        public bool IsIc { get { return Util.InList(Atmosphere, 0, 1) && Util.InRange(Hydrographics, 1, 10); } }
-        [XmlIgnore, JsonIgnore]
-        public bool IsFl { get { return Atmosphere == 10 && Util.InRange(Hydrographics, 1, 10); } }
-
-        [XmlIgnore, JsonIgnore]
-        public bool IsCp { get { return HasCode("Cp"); } }
-        [XmlIgnore, JsonIgnore]
-        public bool IsCs { get { return HasCode("Cs"); } }
-        [XmlIgnore, JsonIgnore]
-        public bool IsCx { get { return HasCode("Cx"); } }
-
-        [XmlIgnore, JsonIgnore]
-        public bool IsPenalColony { get { return HasCode("Pe"); } }
-        [XmlIgnore, JsonIgnore]
-        public bool IsReserve { get { return HasCode("Re"); } }
-        [XmlIgnore, JsonIgnore]
-        public bool IsPrisonExileCamp { get { return HasCode("Px") || HasCode("Ex"); } } // Px is T5, Ex is legacy
+        internal bool IsPenalColony { get { return HasCode("Pe"); } }
+        internal bool IsReserve { get { return HasCode("Re"); } }
+        internal bool IsPrisonExileCamp { get { return HasCode("Px") || HasCode("Ex"); } } // Px is T5, Ex is legacy
         // TODO: "Pr" is used in some legacy files, conflicts with T5 "Pre-Rich" - convert codes on import/export
-        [XmlIgnore, JsonIgnore]
-        public string ResearchStation { get { return HasCodePrefix("Rs"); } }
+        internal string ResearchStation { get { return HasCodePrefix("Rs"); } }
 
-        [XmlIgnore, JsonIgnore]
-        public bool IsPlaceholder { get { return UWP == "XXXXXXX-X"; } }
+        internal bool IsPlaceholder { get { return UWP == "XXXXXXX-X"; } }
 
-        [XmlIgnore, JsonIgnore]
-        public bool IsCapital
+        internal bool IsCapital
         {
             get
             {
@@ -266,7 +218,6 @@ namespace Maps
             public CodeList(string codes = "") { m_codes = codes; }
             private string m_codes;
 
-            #region IEnumerable<T>
             public IEnumerator<string> GetEnumerator()
             {
                 int pos = 0;                
@@ -298,7 +249,6 @@ namespace Maps
             }
 
             IEnumerator IEnumerable.GetEnumerator() { return GetEnumerator(); }
-            #endregion
         }
 
         public string Remarks
@@ -312,9 +262,7 @@ namespace Maps
             }
         }
 
-        [XmlIgnore, JsonIgnore]
-        public IEnumerable<string> Codes { get { return m_codes; } }
-
+        internal IEnumerable<string> Codes { get { return m_codes; } }
         private CodeList m_codes = new CodeList();
 
         public string LegacyBaseCode
@@ -323,12 +271,9 @@ namespace Maps
             set { Bases = SecondSurvey.DecodeLegacyBases(this.Allegiance, value); }
         }
 
-        [XmlIgnore, JsonIgnore]
-        public bool IsAmber { get { return Zone == "A" || Zone == "U"; } }
-        [XmlIgnore, JsonIgnore]
-        public bool IsRed { get { return Zone == "R" || Zone == "F"; } }
-        [XmlIgnore, JsonIgnore]
-        public bool IsBlue { get { return Zone == "B"; } } // TNE Technologically Elevated Dictatorship
+        internal bool IsAmber { get { return Zone == "A" || Zone == "U"; } }
+        internal bool IsRed { get { return Zone == "R" || Zone == "F"; } }
+        internal bool IsBlue { get { return Zone == "B"; } } // TNE Technologically Elevated Dictatorship
 
         [XmlAttribute("Sector"), JsonName("Sector")]
         public string SectorName { get { return this.Sector.Names[0].Text; } }
@@ -353,8 +298,7 @@ namespace Maps
             }
         }
 
-        [XmlIgnore, JsonIgnore]
-        public string BaseAllegiance
+        internal string BaseAllegiance
         {
             get
             {
@@ -364,8 +308,7 @@ namespace Maps
             }
         }
 
-        [XmlIgnore, JsonIgnore]
-        public string LegacyAllegiance
+        internal string LegacyAllegiance
         {
             get
             {

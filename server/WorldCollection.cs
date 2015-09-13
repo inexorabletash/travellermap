@@ -58,11 +58,7 @@ namespace Maps
             }
         }
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
-
+        IEnumerator IEnumerable.GetEnumerator() { return GetEnumerator(); }
 
         private ErrorLogger m_errors = null;
         public ErrorLogger ErrorList { get { return m_errors; } }

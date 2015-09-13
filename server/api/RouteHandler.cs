@@ -41,7 +41,7 @@ namespace Maps.API
             }
         }
 
-        private World ResolveLocation(HttpContext context, string field, ResourceManager manager, SectorMap map)
+        private static World ResolveLocation(HttpContext context, string field, ResourceManager manager, SectorMap map)
         {
             string query = context.Request.QueryString[field];
             if (string.IsNullOrWhiteSpace(query))
