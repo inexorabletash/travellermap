@@ -372,7 +372,6 @@ namespace Maps
     {
         public ParseException() : base("Parse error") { }
         public ParseException(string message) : base(message) { }
-        public ParseException(SerializationInfo info, StreamingContext context) : base(info, context) { }
+        protected ParseException(SerializationInfo info, StreamingContext context) : base(info, context) { }
     }
-
 }

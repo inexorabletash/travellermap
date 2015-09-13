@@ -47,12 +47,12 @@ namespace Maps
     }
 #endif
     [Serializable]
-    internal class MapNotInitializedException : Exception
+    public class MapNotInitializedException : Exception
     {
         public MapNotInitializedException() : base("SectorMap data not initialized") { }
         public MapNotInitializedException(string message) : base(message) { }
         public MapNotInitializedException(string message, Exception innerException) : base(message, innerException) { }
-        public MapNotInitializedException(SerializationInfo info, StreamingContext context) : base(info, context) { }
+        protected MapNotInitializedException(SerializationInfo info, StreamingContext context) : base(info, context) { }
     }
 
     internal struct SectorMetafileEntry

@@ -121,11 +121,11 @@ namespace Maps.Serialization
                     if (item is Allegiance)
                         WriteAllegiance(item as Allegiance);
                     else if (item is Border)
-                        WriteBorder(item as Border, alleg, sector);
+                        WriteBorder(item as Border, alleg);
                     else if (item is Label)
                         WriteLabel(item as Label);
                     else if (item is Route)
-                        WriteRoute(item as Route, sector);
+                        WriteRoute(item as Route);
                 }
             }
 
@@ -138,7 +138,7 @@ namespace Maps.Serialization
                 writer.WriteLine();
             }
 
-            private void WriteRoute(Route route, Sector sector)
+            private void WriteRoute(Route route)
             {
                 writer.Write("route ");
 
@@ -202,7 +202,7 @@ namespace Maps.Serialization
                 // TODO: Other properties
             }
 
-            private void WriteBorder(Border border, Allegiance alleg, Sector sector)
+            private void WriteBorder(Border border, Allegiance alleg)
             {
                 if (border.ShowLabel && (border.Label != null || alleg != null))
                 {
