@@ -54,7 +54,7 @@ namespace Maps.API
             //
             // Do the search
             //
-            ResourceManager resourceManager = new ResourceManager(context.Server, context.Cache);
+            ResourceManager resourceManager = new ResourceManager(context.Server);
             SectorMap map = SectorMap.FromName(SectorMap.DefaultSetting, resourceManager);
 
             query = query.Replace('*', '%'); // Support * and % as wildcards

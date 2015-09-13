@@ -13,7 +13,7 @@ namespace Maps.API
 
         public override void Process(System.Web.HttpContext context)
         {
-            ResourceManager resourceManager = new ResourceManager(context.Server, context.Cache);
+            ResourceManager resourceManager = new ResourceManager(context.Server);
 
             // NOTE: This (re)initializes a static data structure used for 
             // resolving names into sector locations, so needs to be run

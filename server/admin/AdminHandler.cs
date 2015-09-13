@@ -118,7 +118,7 @@ namespace Maps.Admin
         {
 
             Write(context.Response, "Initializing resource manager...");
-            ResourceManager resourceManager = new ResourceManager(context.Server, context.Cache);
+            ResourceManager resourceManager = new ResourceManager(context.Server);
 
             SearchEngine.PopulateDatabase(resourceManager, s => Write(context.Response, s));
 

@@ -21,7 +21,7 @@ namespace Maps.Admin
 
             public override void Process(System.Web.HttpContext context)
             {
-                ResourceManager resourceManager = new ResourceManager(context.Server, context.Cache);
+                ResourceManager resourceManager = new ResourceManager(context.Server);
 
                 MapOptions options = MapOptions.SectorGrid | MapOptions.FilledBorders;
                 Stylesheet.Style style = Stylesheet.Style.Poster;

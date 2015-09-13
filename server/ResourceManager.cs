@@ -86,10 +86,9 @@ namespace Maps
         //private Cache m_cache;
         public LRUCache Cache { get { return s_cache; } }
 
-        public ResourceManager(HttpServerUtility serverUtility, Cache cache)
+        public ResourceManager(HttpServerUtility serverUtility)
         {
             m_serverUtility = serverUtility;
-            //m_cache = cache;
         }
 
         public object GetXmlFileObject(string name, Type type, bool cache = true)
