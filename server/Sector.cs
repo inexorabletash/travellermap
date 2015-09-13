@@ -47,7 +47,7 @@ namespace Maps
     }
 #endif
     [Serializable]
-    public class MapNotInitializedException : Exception
+    internal class MapNotInitializedException : Exception
     {
         public MapNotInitializedException() : base("SectorMap data not initialized") { }
         public MapNotInitializedException(string message) : base(message) { }
@@ -55,7 +55,7 @@ namespace Maps
         public MapNotInitializedException(SerializationInfo info, StreamingContext context) : base(info, context) { }
     }
 
-    public struct SectorMetafileEntry
+    internal struct SectorMetafileEntry
     {
         public string filename;
         public List<string> tags;
@@ -66,7 +66,7 @@ namespace Maps
         }
     }
 
-    public class SectorMap
+    internal class SectorMap
     {
         public const string DefaultSetting = "OTU";
 
@@ -201,10 +201,9 @@ namespace Maps
         public Sector()
         {
             this.Names = new List<Name>();
-
         }
 
-        public Sector(Stream stream, string mediaType, ErrorLogger errors)
+        internal Sector(Stream stream, string mediaType, ErrorLogger errors)
             : this()
         {
             WorldCollection wc = new WorldCollection();
@@ -304,7 +303,7 @@ namespace Maps
         }
 
         [XmlIgnore, JsonIgnore]
-        public OrderedHashSet<string> Tags { get { return m_tags; } }
+        internal OrderedHashSet<string> Tags { get { return m_tags; } }
         private OrderedHashSet<string> m_tags = new OrderedHashSet<string>();
 
         public Allegiance GetAllegianceFromCode(string code)
@@ -384,7 +383,7 @@ namespace Maps
             return -1;
         }
 
-        public WorldCollection GetWorlds(ResourceManager resourceManager, bool cacheResults = true)
+        internal WorldCollection GetWorlds(ResourceManager resourceManager, bool cacheResults = true)
         {
             lock (this)
             {
@@ -408,7 +407,7 @@ namespace Maps
             }
         }
 
-        public void Serialize(ResourceManager resourceManager, TextWriter writer, string mediaType, bool includeMetadata = true, bool includeHeader = true, bool sscoords = false, WorldFilter filter = null)
+        internal void Serialize(ResourceManager resourceManager, TextWriter writer, string mediaType, bool includeMetadata = true, bool includeHeader = true, bool sscoords = false, WorldFilter filter = null)
         {
             WorldCollection worlds = GetWorlds(resourceManager);
 
@@ -499,7 +498,7 @@ namespace Maps
         }
 
         // TODO: Move this elsewhere
-        public class ClipPath
+        internal class ClipPath
         {
             public readonly PointF[] clipPathPoints;
             public readonly byte[] clipPathPointTypes;
@@ -539,7 +538,7 @@ namespace Maps
         }
 
         private ClipPath[] clipPathsCache = new ClipPath[(int)PathUtil.PathType.TypeCount];
-        public ClipPath ComputeClipPath(PathUtil.PathType type)
+        internal ClipPath ComputeClipPath(PathUtil.PathType type)
         {
             lock (this)
             {
@@ -603,9 +602,9 @@ namespace Maps
                 Assembly.GetExecutingAssembly().GetManifestResourceStream(@"Maps.res.styles.otu.css")));
 
         [XmlIgnore, JsonIgnore]
-        public SectorStylesheet Stylesheet { get; set; }
+        internal SectorStylesheet Stylesheet { get; set; }
 
-        public SectorStylesheet.StyleResult ApplyStylesheet(string element, string code)
+        internal SectorStylesheet.StyleResult ApplyStylesheet(string element, string code)
         {
             return (Stylesheet ?? s_defaultStyleSheet).Apply(element, code);
         }
@@ -703,7 +702,7 @@ namespace Maps
         }
     }
 
-    sealed public class Allegiance : IAllegiance
+    public sealed class Allegiance : IAllegiance
     {
         public Allegiance() { }
         public Allegiance(string code, string name)
@@ -791,11 +790,11 @@ namespace Maps
         public string Allegiance { get; set; }
 
         [XmlIgnore, JsonIgnore]
-        public IEnumerable<Hex> Path { get { return m_path; }  }
+        internal IEnumerable<Hex> Path { get { return m_path; }  }
         private List<Hex> m_path = new List<Hex>();
 
         [XmlIgnoreAttribute, JsonIgnore]
-        public Hex LabelPosition { get; set; }
+        internal Hex LabelPosition { get; set; }
 
         [XmlAttribute("LabelPosition"), JsonName("LabelPosition")]
         public string LabelPositionHex
@@ -846,7 +845,7 @@ namespace Maps
         public bool Extends { get; set; }
 
         private BorderPath[] borderPathsCache = new BorderPath[(int)PathUtil.PathType.TypeCount];
-        public BorderPath ComputeGraphicsPath(Sector sector, PathUtil.PathType type)
+        internal BorderPath ComputeGraphicsPath(Sector sector, PathUtil.PathType type)
         {
             lock (this)
             {
@@ -885,10 +884,10 @@ namespace Maps
         }
 
         [XmlIgnoreAttribute, JsonIgnore]
-        public Hex Start { get; set; }
+        internal Hex Start { get; set; }
 
         [XmlIgnoreAttribute, JsonIgnore]
-        public Hex End { get; set; }
+        internal Hex End { get; set; }
 
         [XmlAttribute("Start"), JsonName("Start")]
         public string StartHex

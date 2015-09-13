@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 
 namespace Maps
 {
-    public class LRUCache
+    internal class LRUCache
     {
         public LRUCache(int size)
         {
@@ -70,12 +70,12 @@ namespace Maps
         private List<object> m_values = new List<object>();
     }
 
-    public interface IDeserializable
+    internal interface IDeserializable
     {
         void Deserialize(Stream stream, string mediaType, ErrorLogger errors = null);
     }
 
-    public class ResourceManager
+    internal class ResourceManager
     {
         private HttpServerUtility m_serverUtility;
         public HttpServerUtility Server { get { return m_serverUtility; } }

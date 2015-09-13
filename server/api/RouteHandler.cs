@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Maps.API
 {
-    public class RouteHandler : DataHandlerBase
+    internal class RouteHandler : DataHandlerBase
     {
         public override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Xml; } }
 
@@ -117,34 +117,34 @@ namespace Maps.API
                 route.Select(w => new RouteStop(w)));
             SendResult(context, result);
         }
+    }
 
-        public class RouteStop
+    public class RouteStop
+    {
+        public RouteStop() { }
+        public RouteStop(World w)
         {
-            public RouteStop() { }
-            public RouteStop(World w)
-            {
-                Sector = w.SectorName;
-                SectorX = w.Sector.X;
-                SectorY = w.Sector.Y;
+            Sector = w.SectorName;
+            SectorX = w.Sector.X;
+            SectorY = w.Sector.Y;
 
-                Subsector = w.SubsectorName;
+            Subsector = w.SubsectorName;
 
-                Name = w.Name;
-                Hex = w.Hex;
-                HexX = w.X;
-                HexY = w.Y;
-            }
-
-            public string Sector { get; set; }
-            public int SectorX { get; set; }
-            public int SectorY { get; set; }
-
-            public string Subsector { get; set; }
-
-            public string Name { get; set; }
-            public string Hex { get; set; }
-            public int HexX { get; set; }
-            public int HexY { get; set; }
+            Name = w.Name;
+            Hex = w.Hex;
+            HexX = w.X;
+            HexY = w.Y;
         }
+
+        public string Sector { get; set; }
+        public int SectorX { get; set; }
+        public int SectorY { get; set; }
+
+        public string Subsector { get; set; }
+
+        public string Name { get; set; }
+        public string Hex { get; set; }
+        public int HexX { get; set; }
+        public int HexY { get; set; }
     }
 }

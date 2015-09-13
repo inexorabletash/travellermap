@@ -11,7 +11,7 @@ namespace Maps
     /// <summary>
     /// Summary description for SectorData.
     /// </summary>
-    public class WorldCollection : IDeserializable, IEnumerable<World>
+    internal class WorldCollection : IDeserializable, IEnumerable<World>
     {
         public WorldCollection()
         {

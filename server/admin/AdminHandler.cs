@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Maps.Admin
 {
-    public abstract class AdminHandlerBase : Maps.HandlerBase, IHttpHandler
+    internal abstract class AdminHandlerBase : Maps.HandlerBase, IHttpHandler
     {
         public static bool AdminAuthorized(HttpContext context)
         {
@@ -34,7 +34,7 @@ namespace Maps.Admin
         protected abstract void Process(HttpContext context);
     }
 
-    public class AdminHandler : AdminHandlerBase
+    internal class AdminHandler : AdminHandlerBase
     {
         public override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Plain; } }
 

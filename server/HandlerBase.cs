@@ -9,7 +9,7 @@ using System.Web.Routing;
 
 namespace Maps
 {
-    public abstract class HandlerBase
+    internal abstract class HandlerBase
     {
         // TODO: Enforce verbs (i.e. GET or POST)
 

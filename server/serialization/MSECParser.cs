@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 
 namespace Maps.Serialization
 {
-    public class MSECParser : SectorMetadataFileParser 
+    internal class MSECParser : SectorMetadataFileParser 
     {
         public override Encoding Encoding { get { return Encoding.GetEncoding(1252); } }
 

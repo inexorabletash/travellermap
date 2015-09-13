@@ -10,7 +10,7 @@ using System.Text;
 namespace Json
 {
     [AttributeUsage( AttributeTargets.All )]
-    public sealed class JsonNameAttribute : Attribute
+    internal sealed class JsonNameAttribute : Attribute
     {
         string name;
 
@@ -26,11 +26,11 @@ namespace Json
     }
 
     [AttributeUsage( AttributeTargets.All )]
-    public sealed class JsonIgnoreAttribute : Attribute
+    internal sealed class JsonIgnoreAttribute : Attribute
     {
     }
 
-    public static class JsonConstants
+    internal static class JsonConstants
     {
         public const string MediaType = "application/json";
         public const string StartObject = "{";
@@ -41,7 +41,7 @@ namespace Json
         public const string FieldDelimiter = ",";
     }
 
-    public class JsonSerializer
+    internal class JsonSerializer
     {
         public bool SerializeCollectionsAsArrays { get; set; }
         

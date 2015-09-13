@@ -4,8 +4,7 @@ using System.Globalization;
 
 namespace Maps
 {
-
-    public static class Astrometrics
+    internal static class Astrometrics
     {
         public const int SectorWidth = 32; // parsecs
         public const int SectorHeight = 40; // parsecs
@@ -136,7 +135,7 @@ namespace Maps
         }
     }
 
-    public struct Hex
+    internal struct Hex
     {
         public Hex(int hex) { X = (byte)(hex / 100); Y = (byte)(hex % 100); }
         public Hex(byte x, byte y) { X = x; Y = y; }

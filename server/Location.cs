@@ -8,7 +8,7 @@ namespace Maps
 {
     public struct Location
     {
-        public Location(string sectorName, byte hexX, byte hexY)
+        internal Location(string sectorName, byte hexX, byte hexY)
             : this()
         {
             SettingName = SectorMap.DefaultSetting;
@@ -19,7 +19,7 @@ namespace Maps
             HexLocation = new Hex(hexX, hexY);
         }
 
-        public Location(string sectorName, int hex)
+        internal Location(string sectorName, int hex)
             : this()
         {
             SettingName = SectorMap.DefaultSetting;
@@ -29,7 +29,7 @@ namespace Maps
             Hex = hex;
         }
 
-        public Location(Point sectorLocation, int hex)
+        internal Location(Point sectorLocation, int hex)
             : this()
         {
             SettingName = SectorMap.DefaultSetting;
@@ -40,7 +40,7 @@ namespace Maps
             Hex = hex;
         }
 
-        public Location(Point sectorLocation, Hex hexLocation)
+        internal Location(Point sectorLocation, Hex hexLocation)
             : this()
         {
             SettingName = SectorMap.DefaultSetting;
@@ -61,7 +61,7 @@ namespace Maps
         public Point SectorLocation { get; set; }
 
         [XmlIgnore, JsonIgnore]
-        public Hex HexLocation { get; set; }
+        internal Hex HexLocation { get; set; }
 
         public override bool Equals(object obj)
         {
@@ -93,11 +93,11 @@ namespace Maps
     }
 
     [XmlInclude(typeof(WorldLocation)), XmlInclude(typeof(SubsectorLocation)), XmlInclude(typeof(SectorLocation))]
-    public abstract class ItemLocation
+    internal abstract class ItemLocation
     {
     }
 
-    public class WorldLocation : ItemLocation
+    internal class WorldLocation : ItemLocation
     {
         public WorldLocation() { }
 
@@ -139,7 +139,7 @@ namespace Maps
         }
     }
 
-    public class SubsectorLocation : ItemLocation
+    internal class SubsectorLocation : ItemLocation
     {
         public SubsectorLocation() { }
 
@@ -177,7 +177,7 @@ namespace Maps
         }
     }
 
-    public class SectorLocation : ItemLocation
+    internal class SectorLocation : ItemLocation
     {
         public SectorLocation() { }
 

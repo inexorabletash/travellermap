@@ -1,5 +1,6 @@
 using System;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 
 //
 // General Information about an assembly is controlled through the following 
@@ -63,3 +64,8 @@ using System.Reflection;
 
 [assembly: CLSCompliant(false)]
 [assembly: System.Runtime.InteropServices.ComVisible(false)]
+
+// Allow unit tests to see internals
+[assembly: InternalsVisibleTo("UnitTests")]
+
+

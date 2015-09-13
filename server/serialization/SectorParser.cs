@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 
 namespace Maps.Serialization
 {
-    public abstract class SectorFileParser
+    internal abstract class SectorFileParser
     {
         public const int BUFFER_SIZE = 32768;
 
@@ -74,7 +74,7 @@ namespace Maps.Serialization
         }
     }
 
-    public class SecParser : SectorFileParser
+    internal class SecParser : SectorFileParser
     {
         public override string Name { get { return "SEC (Legacy)"; } }
         public override Encoding Encoding { get { return Encoding.UTF8; } }
@@ -188,7 +188,7 @@ namespace Maps.Serialization
         }
     }
 
-    public abstract class T5ParserBase : SectorFileParser
+    internal abstract class T5ParserBase : SectorFileParser
     {
         private const string HEX = @"[0123456789ABCDEFGHJKLMNPQRSTUVWXYZ]";
 
@@ -339,7 +339,7 @@ namespace Maps.Serialization
         }
     }
 
-    public class SecondSurveyParser : T5ParserBase
+    internal class SecondSurveyParser : T5ParserBase
     {
         public override string Name { get { return "T5 Second Survey - Column Delimited"; } }
         public override Encoding Encoding { get { return Encoding.UTF8; } }
@@ -352,7 +352,7 @@ namespace Maps.Serialization
         }
     }
 
-    public class TabDelimitedParser : T5ParserBase
+    internal class TabDelimitedParser : T5ParserBase
     {
         public override string Name { get { return "T5 Second Survey - Tab Delimited"; } }
         public override Encoding Encoding { get { return Encoding.UTF8; } }
@@ -365,7 +365,7 @@ namespace Maps.Serialization
         }
     }
 
-    public class TSVParser
+    internal class TSVParser
     {
         private static readonly char[] TAB_DELIMITER = { '\t' };
 
@@ -408,7 +408,7 @@ namespace Maps.Serialization
             data.Add(new Row { dict = dict, lineNumber = lineNumber, line = line });
         }
 
-        public struct Row
+        internal struct Row
         {
             public StringDictionary dict;
             public int lineNumber;

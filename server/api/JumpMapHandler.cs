@@ -6,7 +6,7 @@ using System.Drawing;
 
 namespace Maps.API
 {
-    public class JumpMapHandler : ImageHandlerBase
+    internal class JumpMapHandler : ImageHandlerBase
     {
         protected override string ServiceName { get { return "jumpmap"; } }
 

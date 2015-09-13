@@ -6,7 +6,7 @@ using System.Xml.Serialization;
 
 namespace Maps.API
 {
-    public class CreditsHandler : DataHandlerBase
+    internal class CreditsHandler : DataHandlerBase
     {
         public override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Xml; } }
         protected override string ServiceName { get { return "credits"; } }
@@ -52,7 +52,7 @@ namespace Maps.API
 
             Sector sector = map.FromLocation(loc.SectorLocation.X, loc.SectorLocation.Y);
 
-            Result data = new Result();
+            CreditsResult data = new CreditsResult();
 
             if (sector != null)
             {
@@ -137,46 +137,46 @@ namespace Maps.API
 
             SendResult(context, data);
         }
+    }
 
-        [XmlRoot(ElementName = "Data")]
-        // public for XML serialization
-        public class Result
-        {
-            public string Credits { get; set; }
+    [XmlRoot(ElementName = "Data")]
+    // public for XML serialization
+    public class CreditsResult
+    {
+        public string Credits { get; set; }
 
-            public string SectorName { get; set; }
-            public string SectorAuthor { get; set; }
-            public string SectorSource { get; set; }
-            public string SectorPublisher { get; set; }
-            public string SectorCopyright { get; set; }
-            public string SectorRef { get; set; }
-            public string SectorEra { get; set; }
-            public string SectorTags { get; set; }
+        public string SectorName { get; set; }
+        public string SectorAuthor { get; set; }
+        public string SectorSource { get; set; }
+        public string SectorPublisher { get; set; }
+        public string SectorCopyright { get; set; }
+        public string SectorRef { get; set; }
+        public string SectorEra { get; set; }
+        public string SectorTags { get; set; }
 
-            public string RouteCredits { get; set; }
+        public string RouteCredits { get; set; }
 
-            public string SubsectorName { get; set; }
-            public string SubsectorIndex { get; set; }
-            public string SubsectorCredits { get; set; }
+        public string SubsectorName { get; set; }
+        public string SubsectorIndex { get; set; }
+        public string SubsectorCredits { get; set; }
 
-            public string WorldName { get; set; }
-            public string WorldHex { get; set; }
-            public string WorldUwp { get; set; }
-            public string WorldRemarks { get; set; }
-            public string WorldIx { get; set; }
-            public string WorldEx { get; set; }
-            public string WorldCx { get; set; }
-            public string WorldPbg { get; set; }
-            public string WorldAllegiance { get; set; }
+        public string WorldName { get; set; }
+        public string WorldHex { get; set; }
+        public string WorldUwp { get; set; }
+        public string WorldRemarks { get; set; }
+        public string WorldIx { get; set; }
+        public string WorldEx { get; set; }
+        public string WorldCx { get; set; }
+        public string WorldPbg { get; set; }
+        public string WorldAllegiance { get; set; }
 
-            public string WorldCredits { get; set; }
-            public string LandGrabTitle { get; set; }
-            public string LandGrabURL { get; set; }
+        public string WorldCredits { get; set; }
+        public string LandGrabTitle { get; set; }
+        public string LandGrabURL { get; set; }
 
-            public string ProductPublisher { get; set; }
-            public string ProductTitle { get; set; }
-            public string ProductAuthor { get; set; }
-            public string ProductRef { get; set; }
-        }
+        public string ProductPublisher { get; set; }
+        public string ProductTitle { get; set; }
+        public string ProductAuthor { get; set; }
+        public string ProductRef { get; set; }
     }
 }

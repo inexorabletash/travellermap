@@ -8,7 +8,7 @@ using System.Drawing;
 
 namespace Maps
 {
-    public class SectorStylesheet
+    internal class SectorStylesheet
     {
         // Grammar: 
         //   stylesheet       := WS rule-list WS
@@ -325,7 +325,7 @@ namespace Maps
             return sb.ToString();
         }
 
-        public class StyleResult
+        internal class StyleResult
         {
             public string element;
             public string code;

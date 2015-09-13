@@ -4,7 +4,7 @@ using System.Xml.Serialization;
 
 namespace Maps.API
 {
-    public class JumpWorldsHandler : DataHandlerBase
+    internal class JumpWorldsHandler : DataHandlerBase
     {
         public override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Xml; } }
         protected override string ServiceName { get { return "jumpworlds"; } }
@@ -54,23 +54,22 @@ namespace Maps.API
 
             Selector selector = new HexSelector(map, resourceManager, loc, jump);
 
-            Result data = new Result();
+            JumpWorldsResult data = new JumpWorldsResult();
             data.Worlds.AddRange(selector.Worlds);
             SendResult(context, data);
         }
+    }
 
-
-        [XmlRoot(ElementName = "JumpWorlds")]
-        // public for XML serialization
-        public class Result
+    [XmlRoot(ElementName = "JumpWorlds")]
+    // public for XML serialization
+    public class JumpWorldsResult
+    {
+        public JumpWorldsResult()
         {
-            public Result()
-            {
-                Worlds = new List<World>();
-            }
-
-            [XmlElement("World")]
-            public List<World> Worlds { get; }
+            Worlds = new List<World>();
         }
+
+        [XmlElement("World")]
+        public List<World> Worlds { get; }
     }
 }

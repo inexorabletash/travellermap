@@ -5,7 +5,7 @@ using System.Xml.Serialization;
 
 namespace Maps.Serialization
 {
-    public abstract class SectorMetadataFileParser
+    internal abstract class SectorMetadataFileParser
     {
         public const int BUFFER_SIZE = 32768;
 
@@ -52,7 +52,7 @@ namespace Maps.Serialization
         }
     }
 
-    public class XmlSectorMetadataParser : SectorMetadataFileParser
+    internal class XmlSectorMetadataParser : SectorMetadataFileParser
     {
         public override Encoding Encoding { get { return Encoding.UTF8; } }
 

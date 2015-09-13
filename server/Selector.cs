@@ -13,7 +13,7 @@ using System.Linq;
 
 namespace Maps
 {
-    public abstract class Selector
+    internal abstract class Selector
     {
         protected Selector()
         {
@@ -41,7 +41,7 @@ namespace Maps
         }
     }
 
-    public class SectorSelector : Selector
+    internal class SectorSelector : Selector
     {
         Sector m_sector;
         ResourceManager m_resourceManager;
@@ -65,7 +65,7 @@ namespace Maps
     }
 
 
-    public class SubsectorSelector : Selector
+    internal class SubsectorSelector : Selector
     {
         Sector m_sector;
         int m_index;
@@ -112,7 +112,7 @@ namespace Maps
         }
     }
 
-    public class QuadrantSelector : Selector
+    internal class QuadrantSelector : Selector
     {
         Sector m_sector;
         int m_index;
@@ -159,7 +159,7 @@ namespace Maps
         }
     }
 
-    public class RectSelector : Selector
+    internal class RectSelector : Selector
     {
         SectorMap m_map;
         ResourceManager m_resourceManager;
@@ -253,7 +253,7 @@ namespace Maps
         }
     }
 
-    public class HexSelector : Selector
+    internal class HexSelector : Selector
     {
         SectorMap m_map;
         ResourceManager m_resourceManager;
@@ -354,7 +354,7 @@ namespace Maps
         }
     }
 
-    public class HexSectorSelector : Selector
+    internal class HexSectorSelector : Selector
     {
         Sector m_sector;
         ResourceManager m_resourceManager;

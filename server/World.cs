@@ -10,7 +10,7 @@ using System.Xml.Serialization;
 
 namespace Maps
 {
-    public delegate bool WorldFilter(World w);
+    internal delegate bool WorldFilter(World w);
 
     public class World
     {

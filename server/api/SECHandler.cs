@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Maps.API
 {
-    public class SECHandler : DataHandlerBase
+    internal class SECHandler : DataHandlerBase
     {
         public override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Plain; } }
         protected override string ServiceName { get { return "sec"; } }

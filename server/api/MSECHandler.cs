@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Maps.API
 {
-    public class MSECHandler : DataHandlerBase
+    internal class MSECHandler : DataHandlerBase
     {
         public override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Plain; } }
         protected override string ServiceName { get { return "msec"; } }

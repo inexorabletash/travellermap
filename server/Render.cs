@@ -14,7 +14,7 @@ namespace Maps.Rendering
     /// <summary>
     /// Summary description for Render.
     /// </summary>
-    public static class Render
+    internal static class Render
     {
         private class MapLabel
         {
@@ -91,7 +91,7 @@ namespace Maps.Rendering
         private static ImageHolder s_riftImage;
         private static Dictionary<string, XImage> s_worldImages;
 
-        public class RenderContext
+        internal class RenderContext
         {
             public ResourceManager resourceManager = null;
             public Selector selector = null;

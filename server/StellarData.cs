@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace Maps
 {
-    public static class StellarDataParser
+    internal static class StellarDataParser
     {
         // Grammar:
         //
@@ -61,7 +61,7 @@ namespace Maps
         };
 
         [Serializable]
-        public class InvalidSystemException : ApplicationException
+        internal class InvalidSystemException : ApplicationException
         {
             public InvalidSystemException(string message) : base(message) { }
         }

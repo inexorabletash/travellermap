@@ -8,7 +8,7 @@ namespace Maps.Admin
     /// <summary>
     /// Summary description for Search.
     /// </summary>
-    public class ErrorsHandler : AdminHandlerBase
+    internal class ErrorsHandler : AdminHandlerBase
     {
         public override string DefaultContentType { get { return MediaTypeNames.Text.Plain; } }
 

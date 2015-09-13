@@ -9,7 +9,7 @@ using System.Text.RegularExpressions;
 
 namespace Maps.Serialization
 {
-    public class MSECSerializer : SectorMetadataSerializer
+    internal class MSECSerializer : SectorMetadataSerializer
     {
         public MSECSerializer()
         {

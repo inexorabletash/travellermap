@@ -10,7 +10,7 @@ namespace Maps.Admin
     /// <summary>
     /// Summary description for Search.
     /// </summary>
-    public class CodesHandler : AdminHandler
+    internal class CodesHandler : AdminHandler
     {
 
         static List<string> s_legacySophontCodes = new List<string>

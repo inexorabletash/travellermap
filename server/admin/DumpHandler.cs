@@ -6,7 +6,7 @@ namespace Maps.Admin
     /// <summary>
     /// Fetch data about the universe.
     /// </summary>
-    public class DumpHandler : AdminHandlerBase
+    internal class DumpHandler : AdminHandlerBase
     {
         public override string DefaultContentType { get { return MediaTypeNames.Text.Plain; } }
 

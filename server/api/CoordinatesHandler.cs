@@ -4,7 +4,7 @@ using System.Xml.Serialization;
 
 namespace Maps.API
 {
-    public class CoordinatesHandler : DataHandlerBase
+    internal class CoordinatesHandler : DataHandlerBase
     {
         public override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Xml; } }
         protected override string ServiceName { get { return "coordinates"; } }
@@ -55,7 +55,7 @@ namespace Maps.API
 
             Point coords = Astrometrics.LocationToCoordinates(loc);
 
-            Result result = new Result();
+            CoordinatesResult result = new CoordinatesResult();
             result.sx = loc.SectorLocation.X;
             result.sy = loc.SectorLocation.Y;
             result.hx = loc.HexLocation.X;
@@ -64,20 +64,20 @@ namespace Maps.API
             result.y = coords.Y;
             SendResult(context, result);
         }
+    }
 
-        [XmlRoot(ElementName = "Coordinates")]
-        // public for XML serialization
-        public class Result
-        {
-            // Sector/Hex
-            public int sx { get; set; }
-            public int sy { get; set; }
-            public int hx { get; set; }
-            public int hy { get; set; }
+    [XmlRoot(ElementName = "Coordinates")]
+    // public for XML serialization
+    public class CoordinatesResult
+    {
+        // Sector/Hex
+        public int sx { get; set; }
+        public int sy { get; set; }
+        public int hx { get; set; }
+        public int hy { get; set; }
 
-            // World-space X/Y
-            public int x { get; set; }
-            public int y { get; set; }
-        }
+        // World-space X/Y
+        public int x { get; set; }
+        public int y { get; set; }
     }
 }

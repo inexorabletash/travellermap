@@ -4,7 +4,7 @@ using System.Drawing;
 
 namespace Maps.API
 {
-    public class TileHandler : ImageHandlerBase
+    internal class TileHandler : ImageHandlerBase
     {
         protected override string ServiceName { get { return "tile"; } }
 

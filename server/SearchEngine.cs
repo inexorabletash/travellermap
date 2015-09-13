@@ -26,7 +26,7 @@ namespace Maps
     /// <summary>
     /// Summary description for SearchEngine.
     /// </summary>
-    public static class SearchEngine
+    internal static class SearchEngine
     {
         [Flags]
         public enum SearchResultsType : int

@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Maps.Admin
 {
-    public class OverviewHandler : AdminHandler
+    internal class OverviewHandler : AdminHandler
     {
         IHttpHandler impl = new OverviewImpl();
 

@@ -4,7 +4,7 @@ using System.Drawing;
 
 namespace Maps.API
 {
-    public class PosterHandler : ImageHandlerBase
+    internal class PosterHandler : ImageHandlerBase
     {
         protected override string ServiceName { get { return "poster"; } }
 

@@ -211,7 +211,7 @@ namespace Maps.Rendering
             }
         }
 
-        public void DrawName(XGraphics graphics, RectangleF rect, MapOptions options, XFont font, XBrush textBrush, LabelStyle labelStyle)
+        internal void DrawName(XGraphics graphics, RectangleF rect, MapOptions options, XFont font, XBrush textBrush, LabelStyle labelStyle)
         {
             if (graphics == null)
                 throw new ArgumentNullException("graphics");

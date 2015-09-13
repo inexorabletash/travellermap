@@ -17,7 +17,7 @@ namespace Maps.API
         bool Accepts(HttpContext context, string mediaType);
     }
 
-    public abstract class DataHandlerBase : HandlerBase, IHttpHandler, ITypeAccepter
+    internal abstract class DataHandlerBase : HandlerBase, IHttpHandler, ITypeAccepter
     {
         protected abstract string ServiceName { get; }
         public abstract void Process(HttpContext context);

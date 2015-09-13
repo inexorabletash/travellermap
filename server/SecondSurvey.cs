@@ -7,7 +7,7 @@ using System.Globalization;
 
 namespace Maps
 {
-    public static class SecondSurvey
+    internal static class SecondSurvey
     {
         #region eHex
         private const string HEX = "0123456789ABCDEFGHJKLMNPQRSTUVWXYZ";

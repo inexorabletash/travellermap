@@ -68,7 +68,7 @@ namespace Maps.Rendering
         Outline
     }
 
-    public struct FontInfo
+    internal struct FontInfo
     {
         public FontFamily family;
         public string name;
@@ -102,7 +102,7 @@ namespace Maps.Rendering
         }
     }
 
-    public struct PenInfo
+    internal struct PenInfo
     {
         public Color color;
         public float width;
@@ -155,7 +155,7 @@ namespace Maps.Rendering
 
     }
 
-    public struct LabelStyle
+    internal struct LabelStyle
     {
         public float Rotation { get; set; }
         public SizeF Scale { get; set; }
@@ -177,7 +177,7 @@ namespace Maps.Rendering
         Square,
     }
 
-    public class Stylesheet
+    internal class Stylesheet
     {
         public const string DEFAULT_FONT = "Arial";
 
@@ -746,7 +746,7 @@ namespace Maps.Rendering
             placeholder.position = new PointF(0, 0.17f);
         }
 
-        public struct StyleElement
+        internal struct StyleElement
         {
             public bool visible;
 
@@ -943,7 +943,7 @@ namespace Maps.Rendering
 
     }
 
-    public class FontCache : IDisposable
+    internal class FontCache : IDisposable
     {
 
         public FontCache(Stylesheet sheet)

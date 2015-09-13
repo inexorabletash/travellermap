@@ -10,14 +10,14 @@ using System.Linq;
 namespace Maps.Rendering
 {
     // Wrapper to allow locking, since Image is [MarshalByRefObject]
-    public class ImageHolder
+    internal class ImageHolder
     {
         public ImageHolder(Image image) { m_image = image; }
         public Image Image {  get { return m_image; } }
         private Image m_image;
     }
 
-    public static class RenderUtil
+    internal static class RenderUtil
     {
         /*
                     1
@@ -171,7 +171,7 @@ namespace Maps.Rendering
             return new SaveGraphicsState(g);
         }
 
-        sealed public class SaveGraphicsState : IDisposable
+        sealed internal class SaveGraphicsState : IDisposable
         {
             private XGraphics g;
             private XGraphicsState gs;
@@ -205,7 +205,7 @@ namespace Maps.Rendering
         Normal
     }
 
-    public struct Glyph
+    internal struct Glyph
     {
         public enum GlyphBias
         {
@@ -341,7 +341,7 @@ namespace Maps.Rendering
         }
     }
 
-    public class BorderPath
+    internal class BorderPath
     {
         public readonly PointF[] borderPathPoints;
         public readonly byte[] borderPathTypes;
@@ -520,7 +520,7 @@ namespace Maps.Rendering
         }
     }
 
-    public static class ColorUtil
+    internal static class ColorUtil
     {
         public static void RGBtoXYZ(int r, int g, int b, out double x, out double y, out double z)
         {
@@ -574,7 +574,7 @@ namespace Maps.Rendering
         }
 
     }
-    public static class PathUtil
+    internal static class PathUtil
     {
         public enum PathType : int
         {

@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Maps
 {
-    public static class PathFinder
+    internal static class PathFinder
     {
         // A* Algorithm
         //
