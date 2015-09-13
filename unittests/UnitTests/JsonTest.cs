@@ -5,7 +5,7 @@ using System.IO;
 namespace UnitTests
 {
     [TestClass]
-    internal class JsonTest
+    public class JsonTest
     {
         [TestMethod]
         public void StringTest()

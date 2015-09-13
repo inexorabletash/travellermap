@@ -8,7 +8,7 @@ using System.Linq;
 namespace UnitTests
 {
     [TestClass]
-    internal class UtilTest
+    public class UtilTest
     {
         [TestMethod]
         public void SequenceTest()

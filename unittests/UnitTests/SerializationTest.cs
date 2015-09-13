@@ -11,7 +11,7 @@ using System.Text.RegularExpressions;
 namespace UnitTests
 {
     [TestClass]
-    internal class SerializationTest
+    public class SerializationTest
     {
         [TestMethod]
         public void ColumnFormatterTest()
