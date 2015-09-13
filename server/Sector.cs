@@ -248,24 +248,10 @@ namespace Maps
         public MetadataCollection<Product> Products { get { return m_products; } }
 
         public MetadataCollection<Subsector> Subsectors { get { return m_subsectors; } }
-        [XmlIgnore]
-        public bool SubsectorsSpecified { get { return m_subsectors.Count() > 0; } }
-
         public MetadataCollection<Border> Borders { get { return m_borders; } }
-        [XmlIgnore]
-        public bool BordersSpecified { get { return m_borders.Count() > 0; } }
-
         public MetadataCollection<Label> Labels { get { return m_labels; } }
-        [XmlIgnore]
-        public bool LabelsSpecified { get { return m_labels.Count() > 0; } }
-
         public MetadataCollection<Route> Routes { get { return m_routes; } }
-        [XmlIgnore]
-        public bool RoutesSpecified { get { return m_routes.Count() > 0; } }
-
         public MetadataCollection<Allegiance> Allegiances { get { return m_allegiances; } }
-        [XmlIgnore]
-        public bool AllegiancesSpecified { get { return m_allegiances.Count() > 0; } }
 
         public string Credits { get; set; }
 
@@ -759,12 +745,9 @@ namespace Maps
 
     public class Border : IAllegiance
     {
-        public Border()
-        {
-        }
+        public Border() { }
 
-        internal Border(string path, string color = null)
-            : this()
+        internal Border(string path, string color = null) : this()
         {
             this.PathString = path;
             if (color != null)
