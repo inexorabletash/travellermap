@@ -15,7 +15,7 @@ namespace Maps
 {
     public abstract class Selector
     {
-        public Selector()
+        protected Selector()
         {
             Slop = true;
         }
@@ -36,7 +36,7 @@ namespace Maps
         {
             get
             {
-                return Sectors.SelectMany(sector => Enumerable.Range(0, 16).Select(i => sector[i]).OfType<Subsector>());
+                return Sectors.SelectMany(sector => Enumerable.Range(0, 16).Select(i => sector.Subsector(i)).OfType<Subsector>());
             }
         }
     }

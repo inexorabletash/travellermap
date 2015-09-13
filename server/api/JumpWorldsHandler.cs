@@ -70,7 +70,7 @@ namespace Maps.API
             }
 
             [XmlElement("World")]
-            public List<World> Worlds { get; set; }
+            public List<World> Worlds { get; }
         }
     }
 }

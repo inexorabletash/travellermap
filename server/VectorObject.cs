@@ -276,7 +276,7 @@ namespace Maps.Rendering
     public class WorldObjectCollection
     {
         [XmlElement("World")]
-        public List<WorldObject> Worlds { get; set; }
+        public List<WorldObject> Worlds { get; }
     }
 
 

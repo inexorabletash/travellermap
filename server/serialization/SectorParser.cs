@@ -199,7 +199,6 @@ namespace Maps.Serialization
 
         private static readonly Regex BASES_REGEX = new Regex(@"^C?D?E?K?M?N?R?S?T?V?W?X?$");
         private static readonly Regex ZONE_REGEX = new Regex(@"^(|A|R)$");
-        private static readonly Regex ALLEGIANCE_REGEX = new Regex(@"^([A-Za-z0-9]{4}|----)$");
         private static readonly Regex NOBILITY_REGEX = new Regex(@"^[BcCDeEfFGH]*$");
 
         private const string STAR = @"(D|BD|BH|[OBAFGKM][0-9]\x20(?:Ia|Ib|II|III|IV|V|VI))";
@@ -400,7 +399,7 @@ namespace Maps.Serialization
         {
             string[] cols = line.Split(TAB_DELIMITER);
             if (cols.Length != header.Length)
-                throw new Exception(string.Format("ERROR (Tab Parse) ({0}): {1}", lineNumber, line));
+                throw new ParseException(string.Format("ERROR (Tab Parse) ({0}): {1}", lineNumber, line));
 
             StringDictionary dict = new StringDictionary();
             for (var i = 0; i < cols.Length; ++i)

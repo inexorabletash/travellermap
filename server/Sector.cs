@@ -1,6 +1,7 @@
 using Json;
 using Maps.Rendering;
 using System;
+using System.Runtime.Serialization;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -48,11 +49,10 @@ namespace Maps
     [Serializable]
     public class MapNotInitializedException : Exception
     {
-        public MapNotInitializedException()
-            :
-            base("SectorMap data not initialized")
-        {
-        }
+        public MapNotInitializedException() : base("SectorMap data not initialized") { }
+        public MapNotInitializedException(string message) : base(message) { }
+        public MapNotInitializedException(string message, Exception innerException) : base(message, innerException) { }
+        public MapNotInitializedException(SerializationInfo info, StreamingContext context) : base(info, context) { }
     }
 
     public struct SectorMetafileEntry
@@ -126,7 +126,7 @@ namespace Maps
         public static SectorMap FromName(string settingName, ResourceManager resourceManager)
         {
             if (settingName != SectorMap.DefaultSetting)
-                throw new ArgumentException("Only OTU setting is currently supported.");
+                throw new ArgumentException("Only OTU setting is currently supported", "settingName");
 
             lock (SectorMap.s_lock)
             {
@@ -166,7 +166,7 @@ namespace Maps
                 settingName = SectorMap.DefaultSetting;
 
             if (settingName != SectorMap.DefaultSetting)
-                throw new ArgumentException("Only OTU setting is currently supported");
+                throw new ArgumentException("Only OTU setting is currently supported", "settingName");
 
             if (s_OTU == null)
                 throw new MapNotInitializedException();
@@ -225,7 +225,7 @@ namespace Maps
         public string Label { get; set; }
 
         [XmlElement("Name")]
-        public List<Name> Names { get; set; }
+        public List<Name> Names { get; }
 
         public string Domain { get; set; }
 
@@ -277,7 +277,7 @@ namespace Maps
 
             // TODO: This is very fragile; if a new type is added to Sector we need to add more code here.
 
-            if (metadataSource.Names.Any()) this.Names = metadataSource.Names;
+            if (metadataSource.Names.Any()) { this.Names.Clear(); this.Names.AddRange(metadataSource.Names); }
             if (metadataSource.DataFile != null) this.DataFile = metadataSource.DataFile;
 
             this.Subsectors.AddRange(metadataSource.Subsectors);
@@ -333,38 +333,29 @@ namespace Maps
 
         private WorldCollection m_data;
 
-        public Subsector this[char alpha]
+        public Subsector Subsector(char alpha)
         {
-            get
-            {
-                return Subsectors.Where(ss => ss.Index != null && ss.Index[0] == alpha).FirstOrDefault();
-            }
+            return Subsectors.Where(ss => ss.Index != null && ss.Index[0] == alpha).FirstOrDefault();
         }
 
-        public Subsector this[int index]
+        public Subsector Subsector(int index)
         {
-            get
-            {
-                if (index < 0 || index > 15)
-                    throw new ArgumentOutOfRangeException("index");
+            if (index < 0 || index > 15)
+                throw new ArgumentOutOfRangeException("index");
 
-                char alpha = (char)('A' + index);
+            char alpha = (char)('A' + index);
 
-                return this[alpha];
-            }
+            return Subsector(alpha);
         }
 
-        public Subsector this[int x, int y]
+        public Subsector Subsector(int x, int y)
         {
-            get
-            {
-                if (x < 0 || x > 3)
-                    throw new ArgumentOutOfRangeException("x");
-                if (y < 0 || y > 3)
-                    throw new ArgumentOutOfRangeException("y");
+            if (x < 0 || x > 3)
+                throw new ArgumentOutOfRangeException("x");
+            if (y < 0 || y > 3)
+                throw new ArgumentOutOfRangeException("y");
 
-                return this[x + (y * 4)];
-            }
+            return Subsector(x + (y * 4));
         }
 
         public int SubsectorIndexFor(string label)
@@ -477,7 +468,7 @@ namespace Maps
                 for (int i = 0; i < 16; ++i)
                 {
                     char c = (char)('A' + i);
-                    Subsector ss = this[c];
+                    Subsector ss = this.Subsector(c);
                     writer.WriteLine("# Subsector {0}: {1}", c, (ss != null ? ss.Name : ""));
                 }
                 writer.WriteLine();
@@ -607,13 +598,9 @@ namespace Maps
                 new Hex((byte)(Astrometrics.SubsectorWidth * (2 * ssx + 1) / 2), (byte)(Astrometrics.SubsectorHeight * (2 * ssy + 1) / 2)));
         }
 
-        private static SectorStylesheet s_defaultStyleSheet;
-        static Sector()
-        {
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            Stream stream = assembly.GetManifestResourceStream(@"Maps.res.styles.otu.css");
-            s_defaultStyleSheet = SectorStylesheet.Parse(new StreamReader(stream));
-        }
+        private static SectorStylesheet s_defaultStyleSheet =
+            s_defaultStyleSheet = SectorStylesheet.Parse(new StreamReader(
+                Assembly.GetExecutingAssembly().GetManifestResourceStream(@"Maps.res.styles.otu.css")));
 
         [XmlIgnore, JsonIgnore]
         public SectorStylesheet Stylesheet { get; set; }
@@ -765,11 +752,6 @@ namespace Maps
         /// </summary>
         [XmlAttribute]
         public string Base { get; set; }
-
-        private class AllegianceCollection : List<Allegiance>
-        {
-            public void Add(string code, string name) { Add(new Allegiance(code, name)); }
-        }
 
         string IAllegiance.Allegiance { get { return this.T5Code; } }
     }
@@ -1049,17 +1031,20 @@ namespace Maps
     [XmlRoot(ElementName = "Sectors")]
     public class SectorCollection
     {
+        public SectorCollection()
+        {
+            Sectors = new List<Sector>();
+        }
+
         [XmlElement("Sector")]
-        public List<Sector> Sectors { get; set; }
+        public List<Sector> Sectors { get; }
 
         public void Merge(SectorCollection otherCollection)
         {
             if (otherCollection == null)
                 throw new ArgumentNullException("otherCollection");
 
-            if (Sectors == null)
-                Sectors = otherCollection.Sectors;
-            else if (otherCollection.Sectors != null)
+            if (otherCollection.Sectors != null)
                 Sectors.AddRange(otherCollection.Sectors);
         }
     }

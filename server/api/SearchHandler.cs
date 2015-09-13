@@ -100,7 +100,7 @@ namespace Maps.API
             [XmlElement(ElementName = "subsector", Type = typeof(SubsectorResult))]
             [XmlElement(ElementName = "sector", Type = typeof(SectorResult))]
 
-            public List<SearchResultItem> Items { get; set; }
+            public List<SearchResultItem> Items { get; }
 
             public void Add(SearchResultItem item)
             {

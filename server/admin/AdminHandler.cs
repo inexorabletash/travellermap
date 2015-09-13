@@ -69,7 +69,7 @@ namespace Maps.Admin
             Write(context.Response, "<b>&Omega;</b>");
         }
 
-        private void Write(HttpResponse response, string line)
+        private static void Write(HttpResponse response, string line)
         {
             response.Write("<div>");
             response.Write(line);

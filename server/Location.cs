@@ -173,7 +173,7 @@ namespace Maps
 
             sector = sectorMap.FromLocation(SectorLocation.X, SectorLocation.Y);
             if (sector != null)
-                subsector = sector[Index];
+                subsector = sector.Subsector(Index);
         }
     }
 

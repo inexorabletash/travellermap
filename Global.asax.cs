@@ -20,7 +20,7 @@ namespace Maps
             : base(null, defaults, handler)
         {
             if (!pattern.StartsWith("^") || !pattern.EndsWith("$"))
-                throw new ApplicationException("RegexRoute pattern should be pinned with ^..$: " + pattern);
+                throw new FormatException("RegexRoute pattern should be pinned with ^..$: " + pattern);
 
             RegexOptions options = RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.ExplicitCapture;
             if (caseInsensitive) options = options | RegexOptions.IgnoreCase;

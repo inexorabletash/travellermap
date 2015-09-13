@@ -11,7 +11,7 @@ namespace Maps.Serialization
     {
         public override Encoding Encoding { get { return Encoding.GetEncoding(1252); } }
 
-        private void Apply(string line, Sector sector)
+        private static void Apply(string line, Sector sector)
         {
             string[] kv = line.Split(null, 2);
             string key = kv[0].Trim().ToUpperInvariant();

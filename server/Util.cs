@@ -87,12 +87,12 @@ namespace Maps
         // TODO: Could be a variant of Enumerable.Range(...).Select(...)
         public static IEnumerable<int> Sequence(int start, int end)
         {
-            int c = start, d = (start < end) ? 1 : -1;
-            yield return c;
-            while (c != end)
+            int current = start, delta = (start < end) ? 1 : -1;
+            yield return current;
+            while (current != end)
             {
-                c += d;
-                yield return c;
+                current += delta;
+                yield return current;
             }
         }
 
@@ -371,6 +371,14 @@ namespace Maps
         }
 
         public int Count { get { return data.Count; } }
-
     }
+
+    [Serializable]
+    internal class ParseException : ApplicationException
+    {
+        public ParseException() : base("Parse error") { }
+        public ParseException(string message) : base(message) { }
+        public ParseException(SerializationInfo info, StreamingContext context) : base(info, context) { }
+    }
+
 }

@@ -22,7 +22,7 @@ namespace Maps
             if (0 <= c && c < HEX.Length)
                 return HEX[c];
 
-            throw new ArgumentOutOfRangeException(string.Format(CultureInfo.InvariantCulture, "Value out of range: '{0}'", c), "c");
+            throw new ArgumentOutOfRangeException("c", string.Format(CultureInfo.InvariantCulture, "Value out of range: '{0}'", c));
         }
 
         public static int FromHex(char c, int? valueIfX = null)
@@ -42,7 +42,7 @@ namespace Maps
                 case 'O': return 0; // Typo found in some data files
                 case 'I': return 1; // Typo found in some data files
             }
-            throw new ArgumentOutOfRangeException(string.Format(CultureInfo.InvariantCulture, "Character out of range: '{0}'", c), "c");
+            throw new ArgumentOutOfRangeException("c", string.Format(CultureInfo.InvariantCulture, "Character out of range: '{0}'", c));
         }
         #endregion // eHex
 

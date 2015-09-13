@@ -67,7 +67,7 @@ namespace Maps.Serialization
                     writer.WriteLine("#");
                     for (int i = 0; i < 16; i++)
                     {
-                        Subsector ss = sector[i];
+                        Subsector ss = sector.Subsector(i);
                         if (ss != null)
                             writer.WriteLine("" + (char)('a' + i) + " " + ss.Name);
                         else

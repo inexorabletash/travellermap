@@ -101,7 +101,7 @@ namespace Maps.API
                 int ssx = (loc.HexLocation.X - 1) / Astrometrics.SubsectorWidth;
                 int ssy = (loc.HexLocation.Y - 1) / Astrometrics.SubsectorHeight;
                 int ssi = ssx + ssy * 4;
-                Subsector ss = sector[ssi];
+                Subsector ss = sector.Subsector(ssi);
                 if (ss != null)
                 {
                     data.SubsectorIndex = ss.Index;

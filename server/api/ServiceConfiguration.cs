@@ -3,7 +3,7 @@ using System.Web;
 
 namespace Maps.API
 {
-    public class ServiceConfiguration
+    public static class ServiceConfiguration
     {
         private static bool IsEnabled(string api)
         {

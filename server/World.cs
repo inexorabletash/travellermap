@@ -307,7 +307,7 @@ namespace Maps
             set
             {
                 if (value == null)
-                    throw new ArgumentNullException("codes");
+                    throw new ArgumentNullException("value");
                 m_codes = new CodeList(value);
             }
         }
@@ -337,7 +337,7 @@ namespace Maps
         {
             get
             {
-                var ss = this.Sector[this.Subsector];
+                var ss = this.Sector.Subsector(this.Subsector);
                 return ss == null ? "" : ss.Name;
             }
         }

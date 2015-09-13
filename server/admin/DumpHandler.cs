@@ -48,7 +48,7 @@ namespace Maps.Admin
             }
         }
 
-        private void WriteCSV(System.IO.TextWriter output, List<string> values)
+        private static void WriteCSV(System.IO.TextWriter output, List<string> values)
         {
             bool first = true;
             foreach (string value in values)

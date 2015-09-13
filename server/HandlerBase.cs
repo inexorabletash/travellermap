@@ -13,7 +13,7 @@ namespace Maps
     {
         // TODO: Enforce verbs (i.e. GET or POST)
 
-        protected void ParseOptions(HttpContext context, ref MapOptions options, ref Stylesheet.Style style)
+        protected static void ParseOptions(HttpContext context, ref MapOptions options, ref Stylesheet.Style style)
         {
             ParseOptions(context.Request, Defaults(context), ref options, ref style);
         }
@@ -51,7 +51,7 @@ namespace Maps
             return data.Values;
         }
 
-        protected bool HasOption(HttpContext context, string name)
+        protected static bool HasOption(HttpContext context, string name)
         {
             return HasOption(context.Request, name, Defaults(context));
         }
@@ -60,7 +60,7 @@ namespace Maps
            return request[name] != null || (queryDefaults != null && queryDefaults.ContainsKey(name));
         }
 
-        protected string GetStringOption(HttpContext context, string name, string defaultValue = null)
+        protected static string GetStringOption(HttpContext context, string name, string defaultValue = null)
         {
             return GetStringOption(context.Request, name, Defaults(context), defaultValue);
         }
@@ -73,7 +73,7 @@ namespace Maps
             return defaultValue;
         }
 
-        protected string[] GetStringsOption(HttpContext context, string name, string[] defaultValue = null)
+        protected static string[] GetStringsOption(HttpContext context, string name, string[] defaultValue = null)
         {
             string s = GetStringOption(context, name);
             if (string.IsNullOrWhiteSpace(s))
@@ -81,7 +81,7 @@ namespace Maps
             return s.Split(new char[] { '|' });
         }
 
-        protected int GetIntOption(HttpContext context, string name, int defaultValue)
+        protected static int GetIntOption(HttpContext context, string name, int defaultValue)
         {
             return GetIntOption(context.Request, name, Defaults(context), defaultValue);
         }
@@ -93,7 +93,7 @@ namespace Maps
             return defaultValue;
         }
 
-        protected double GetDoubleOption(HttpContext context, string name, double defaultValue)
+        protected static double GetDoubleOption(HttpContext context, string name, double defaultValue)
         {
             return GetDoubleOption(context.Request, name, Defaults(context), defaultValue);
         }
@@ -105,7 +105,7 @@ namespace Maps
             return defaultValue;
         }
 
-        protected bool GetBoolOption(HttpContext context, string name, bool defaultValue)
+        protected static bool GetBoolOption(HttpContext context, string name, bool defaultValue)
         {
             return GetBoolOption(context.Request, name, Defaults(context), defaultValue);
         }
