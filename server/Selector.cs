@@ -229,10 +229,10 @@ namespace Maps
                     {
                         Location loc = Astrometrics.CoordinatesToLocation(coords);
 
-                        if (cachedLoc != loc.SectorLocation)
+                        if (cachedLoc != loc.Sector)
                         {
-                            cachedSector = m_map.FromLocation(loc.SectorLocation.X, loc.SectorLocation.Y);
-                            cachedLoc = loc.SectorLocation;
+                            cachedSector = m_map.FromLocation(loc.Sector.X, loc.Sector.Y);
+                            cachedLoc = loc.Sector;
                         }
 
                         if (cachedSector == null)
@@ -242,7 +242,7 @@ namespace Maps
                         if (worlds == null)
                             continue;
 
-                        World world = worlds[loc.HexLocation];
+                        World world = worlds[loc.Hex];
                         if (world == null)
                             continue;
 
@@ -290,9 +290,9 @@ namespace Maps
                 Location locTL = Astrometrics.CoordinatesToLocation(topLeft);
                 Location locBR = Astrometrics.CoordinatesToLocation(bottomRight);
 
-                for (int y = locTL.SectorLocation.Y; y <= locBR.SectorLocation.Y; ++y)
+                for (int y = locTL.Sector.Y; y <= locBR.Sector.Y; ++y)
                 {
-                    for (int x = locTL.SectorLocation.X; x <= locBR.SectorLocation.X; ++x)
+                    for (int x = locTL.Sector.X; x <= locBR.Sector.X; ++x)
                     {
                         Sector sector = m_map.FromLocation(x, y);
                         if (sector == null)
@@ -328,10 +328,10 @@ namespace Maps
                         {
                             Location loc = Astrometrics.CoordinatesToLocation(coords);
 
-                            if (!cached || cachedLoc != loc.SectorLocation)
+                            if (!cached || cachedLoc != loc.Sector)
                             {
-                                cachedSector = m_map.FromLocation(loc.SectorLocation.X, loc.SectorLocation.Y);
-                                cachedLoc = loc.SectorLocation;
+                                cachedSector = m_map.FromLocation(loc.Sector.X, loc.Sector.Y);
+                                cachedLoc = loc.Sector;
                                 cached = true;
                             }
 
@@ -341,7 +341,7 @@ namespace Maps
                                 if (worlds == null)
                                     continue;
 
-                                World world = worlds[loc.HexLocation];
+                                World world = worlds[loc.Hex];
                                 if (world == null)
                                     continue;
                                 yield return world;

@@ -34,23 +34,15 @@ namespace Maps.API
                 int hex = GetIntOption(context, "hex", Astrometrics.SectorCentralHex);
                 loc = new Location(sec.Location, hex);
             }
-            else if (HasOption(context, "sx") && HasOption(context, "sy"))
+            else if (HasLocation(context))
             {
-                int sx = GetIntOption(context, "sx", 0);
-                int sy = GetIntOption(context, "sy", 0);
-                byte hx = (byte)GetIntOption(context, "hx", 0);
-                byte hy = (byte)GetIntOption(context, "hy", 0);
-                loc = new Location(map.FromLocation(sx, sy).Location, new Hex(hx, hy));
-            }
-            else if (HasOption(context, "x") && HasOption(context, "y"))
-            {
-                loc = Astrometrics.CoordinatesToLocation(GetIntOption(context, "x", 0), GetIntOption(context, "y", 0));
+                loc = GetLocation(context);
             }
 
-            if (loc.HexLocation.IsEmpty)
-                loc.HexLocation = Astrometrics.SectorCenter;
+            if (loc.Hex.IsEmpty)
+                loc.Hex = Astrometrics.SectorCenter;
 
-            Sector sector = map.FromLocation(loc.SectorLocation.X, loc.SectorLocation.Y);
+            Sector sector = map.FromLocation(loc.Sector.X, loc.Sector.Y);
 
             CreditsResult data = new CreditsResult();
 
@@ -98,8 +90,8 @@ namespace Maps.API
                 //
                 // Subsector Credits
                 //
-                int ssx = (loc.HexLocation.X - 1) / Astrometrics.SubsectorWidth;
-                int ssy = (loc.HexLocation.Y - 1) / Astrometrics.SubsectorHeight;
+                int ssx = (loc.Hex.X - 1) / Astrometrics.SubsectorWidth;
+                int ssy = (loc.Hex.Y - 1) / Astrometrics.SubsectorHeight;
                 int ssi = ssx + ssy * 4;
                 Subsector ss = sector.Subsector(ssi);
                 if (ss != null)
@@ -119,7 +111,7 @@ namespace Maps.API
                 WorldCollection worlds = sector.GetWorlds(resourceManager);
                 if (worlds != null)
                 {
-                    World world = worlds[loc.HexLocation];
+                    World world = worlds[loc.Hex];
                     if (world != null)
                     {
                         data.WorldName = world.Name;

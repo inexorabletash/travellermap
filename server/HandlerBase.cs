@@ -3,6 +3,7 @@
 using Maps.Rendering;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Globalization;
 using System.Web;
 using System.Web.Routing;
@@ -135,6 +136,27 @@ namespace Maps
             response.Output.WriteLine(message);
         }
 
-        public abstract string DefaultContentType { get; }
+        public static bool HasLocation(HttpContext context)
+        {
+            return (HasOption(context, "sx") && HasOption(context, "sy")) ||
+                   (HasOption(context, "x") && HasOption(context, "y"));
+        }
+
+        public static Location GetLocation(HttpContext context)
+        {
+            if (HasOption(context, "sx") && HasOption(context, "sy"))
+            {
+                return new Location(new Point(GetIntOption(context, "sx", 0), GetIntOption(context, "sy", 0)),
+                                    new Hex((byte)GetIntOption(context, "hx", 0), (byte)GetIntOption(context, "hy", 0)));
+            }
+
+            if (HasOption(context, "x") && HasOption(context, "y"))
+                return Astrometrics.CoordinatesToLocation(GetIntOption(context, "x", 0), GetIntOption(context, "y", 0));
+
+            throw new ArgumentException("Context is missing required parameters", "context");
+        }
+
+
+    public abstract string DefaultContentType { get; }
     }
 }

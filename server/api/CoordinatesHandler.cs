@@ -33,19 +33,9 @@ namespace Maps.API
                 int hex = GetIntOption(context, "hex", 0);
                 loc = new Location(sector.Location, hex);
             }
-            else if (HasOption(context, "sx") && HasOption(context, "sy"))
+            else if (HasLocation(context))
             {
-                int sx = GetIntOption(context, "sx", 0);
-                int sy = GetIntOption(context, "sy", 0);
-                byte hx = (byte)GetIntOption(context, "hx", 0);
-                byte hy = (byte)GetIntOption(context, "hy", 0);
-                loc = new Location(map.FromLocation(sx, sy).Location, new Hex(hx, hy));
-            }
-            else if (HasOption(context, "x") && HasOption(context, "y"))
-            {
-                int x = GetIntOption(context, "x", 0);
-                int y = GetIntOption(context, "y", 0);
-                loc = Astrometrics.CoordinatesToLocation(x, y);
+                loc = GetLocation(context);
             }
             else
             {
@@ -56,10 +46,10 @@ namespace Maps.API
             Point coords = Astrometrics.LocationToCoordinates(loc);
 
             CoordinatesResult result = new CoordinatesResult();
-            result.sx = loc.SectorLocation.X;
-            result.sy = loc.SectorLocation.Y;
-            result.hx = loc.HexLocation.X;
-            result.hy = loc.HexLocation.Y;
+            result.sx = loc.Sector.X;
+            result.sy = loc.Sector.Y;
+            result.hx = loc.Hex.X;
+            result.hy = loc.Hex.Y;
             result.x = coords.X;
             result.y = coords.Y;
             SendResult(context, result);

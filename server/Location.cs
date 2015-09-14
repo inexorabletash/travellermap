@@ -6,88 +6,52 @@ using System.Xml.Serialization;
 
 namespace Maps
 {
-    public struct Location
+    public struct Location : IEquatable<Location>
     {
-        internal Location(string sectorName, byte hexX, byte hexY)
-            : this()
-        {
-            SettingName = SectorMap.DefaultSetting;
-
-            SectorName = sectorName;
-
-            SectorLocation = Point.Empty;
-            HexLocation = new Hex(hexX, hexY);
-        }
-
-        internal Location(string sectorName, int hex)
-            : this()
-        {
-            SettingName = SectorMap.DefaultSetting;
-
-            SectorName = sectorName;
-
-            Hex = hex;
-        }
-
         internal Location(Point sectorLocation, int hex)
-            : this()
         {
-            SettingName = SectorMap.DefaultSetting;
-
-            SectorLocation = sectorLocation;
-            m_sectorName = null;
-
-            Hex = hex;
+            Sector = sectorLocation;
+            Hex = new Hex(hex);
         }
 
         internal Location(Point sectorLocation, Hex hexLocation)
-            : this()
         {
-            SettingName = SectorMap.DefaultSetting;
-
-            SectorLocation = sectorLocation;
-            m_sectorName = null;
-
-            HexLocation = hexLocation;
+            Sector = sectorLocation;
+            Hex = hexLocation;
         }
 
-        private string m_sectorName;
+        internal Point Sector { get; set; }
+        internal Hex Hex { get; set; }
 
-        public string SettingName { get; set; }
-        public string SectorName { get { return m_sectorName; } set { m_sectorName = value; SectorLocation = SectorMap.FromName(SettingName, value).Location; } }
-        public int Hex { get { return HexLocation.ToInt(); } set { HexLocation = new Hex(value); } }
+        public bool IsEmpty { get { return Sector.IsEmpty && Hex.IsEmpty; } }
+        public bool IsValid { get { return Hex.IsValid; } }
 
-        internal Point SectorLocation { get; set; }
-
-        internal Hex HexLocation { get; set; }
-
-        public override bool Equals(object obj)
+        public bool Equals(Location other)
         {
-            Location loc = (Location)obj;
-
-            return
-                (this.SectorLocation == loc.SectorLocation) &&
-                (this.HexLocation == loc.HexLocation);
+            return other.Sector == Sector && other.Hex == Hex;
         }
-
-        public static bool operator ==(Location location1, Location location2) { return location1.Equals(location2); }
-        public static bool operator !=(Location location1, Location location2) { return !location1.Equals(location2); }
-
+        public override bool Equals(object other)
+        {
+            return other is Location && Equals((Location)other);
+        }
+        public static bool operator ==(Location a, Location b) { return a.Equals(b); }
+        public static bool operator !=(Location a, Location b) { return !a.Equals(b); }
         public override int GetHashCode()
         {
-            return SectorLocation.GetHashCode() ^ HexLocation.GetHashCode();
+            return Sector.GetHashCode() ^ Hex.GetHashCode();
         }
 
         public string HexString
         {
-            get { return HexLocation.ToString(); }
+            get { return Hex.ToString(); }
         }
 
         public string SubsectorHexString
         {
-            get { return HexLocation.ToSubsectorString(); }
+            get { return Hex.ToSubsectorString(); }
         }
 
+        public static readonly Location Empty = new Location();
     }
 
     [XmlInclude(typeof(WorldLocation)), XmlInclude(typeof(SubsectorLocation)), XmlInclude(typeof(SectorLocation))]

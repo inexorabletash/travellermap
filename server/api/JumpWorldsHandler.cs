@@ -39,17 +39,9 @@ namespace Maps.API
                 }
                 loc = new Location(sector.Location, hex);
             }
-            else if (HasOption(context, "sx") && HasOption(context, "sy") && HasOption(context, "hx") && HasOption(context, "hy"))
+            else if (HasLocation(context))
             {
-                int sx = GetIntOption(context, "sx", 0);
-                int sy = GetIntOption(context, "sy", 0);
-                byte hx = (byte)GetIntOption(context, "hx", 0);
-                byte hy = (byte)GetIntOption(context, "hy", 0);
-                loc = new Location(map.FromLocation(sx, sy).Location, new Hex(hx, hy));
-            }
-            else if (HasOption(context, "x") && HasOption(context, "y"))
-            {
-                loc = Astrometrics.CoordinatesToLocation(GetIntOption(context, "x", 0), GetIntOption(context, "y", 0));
+                loc = GetLocation(context);
             }
 
             Selector selector = new HexSelector(map, resourceManager, loc, jump);
