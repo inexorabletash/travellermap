@@ -425,8 +425,10 @@ namespace Maps
 
         #region Sophonts
         private static Dictionary<string, string> s_sophontCodes = new Dictionary<string,string> {
+            // Sophont Table Begin
             { "Adda", "Addaxur" },
-            { "Aqua", "Aquans" },
+            { "Akee", "Akeed" },
+            { "Aqua", "Aquans (Daga)/Aquamorphs (Alph)" },
             { "Asla", "Aslan" },
             { "Bhun", "Brunj" },
             { "Bruh", "Bruhre" },
@@ -434,29 +436,40 @@ namespace Maps
             { "Bwap", "Bwaps" },
             { "Chir", "Chirpers" },
             { "Darm", "Darmine" },
+            { "Dary", "Daryen" },
             { "Dolp", "Dolphins" },
             { "Droy", "Droyne" },
+            { "Esly", "Eslyat" },
+            { "Flor", "Floriani" },
+            { "Gnii", "Gniivi" },
             { "Gray", "Graytch" },
+            { "Guru", "Gurungan" },
             { "Hama", "Hamaran" },
-            { "Huma", "Human" },
+            { "Hive", "Hiver" },
+            { "Huma", "Human" }, // (Vilani/Solomani-mixed)
             { "Jala", "Jala'lak" },
             { "Jend", "Jenda" },
             { "Jonk", "Jonkeereen" },
+            { "Kafo", "Kafoe" },
+            { "Karh", "Karhyri" },
             { "Kiak", "Kiakh'iee" },
             { "Lamu", "Lamura Gav/Teg" },
             { "Lanc", "Lancians" },
             { "Luri", "Luriani" },
             { "Mask", "Maskai" },
+            { "Muri", "Murians" },
             { "Orca", "Orca" },
             { "Ormi", "Ormine" },
             { "Scan", "Scanians" },
             { "Sele", "Selenites" },
-            { "S'mr", "S'mrii" },
+            { "Sred", "Sred*Ni" },
             { "Stal", "Stalkers" },
+            { "Swan", "Swanfei" },
             { "Sydi", "Sydites" },
             { "Syle", "Syleans" },
             { "Tapa", "Tapazmal" },
             { "Tent", "Tentrassi" },
+            { "Tlye", "Tlyetrai" },
             { "UApe", "Uplifted Apes" },
             { "Ulan", "Ulane" },
             { "Ursa", "Ursa" },
@@ -465,6 +478,7 @@ namespace Maps
             { "Vega", "Vegans" },
             { "Zhod", "Zhodani" },
             { "Ziad", "Ziadd" },
+            // Sophont Table End
         };
         public static string SophontCodeToName(string code)
         {
