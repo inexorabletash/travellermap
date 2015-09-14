@@ -390,6 +390,7 @@ namespace Maps
             { "ZyCo", "Zc", null, "Zydarian Codominion" },
             // Allegiance Table End
         };
+        public static IEnumerable<string> AllegianceCodes { get { return s_t5Allegiances.Keys; } }
 
         private static readonly HashSet<string> s_defaultAllegiances = new HashSet<string> {
             // NOTE: Do not use this for autonomous/cultural regional codes (e.g. Vegan, Sylean, etc).
@@ -488,7 +489,7 @@ namespace Maps
                 return s_sophontCodes[code];
             return null;
         }
-        public static IEnumerable<string> SophontCodes { get { return s_sophontCodes.Keys.ToList(); } }
+        public static IEnumerable<string> SophontCodes { get { return s_sophontCodes.Keys; } }
         #endregion // Sophonts
     }
 }

@@ -32,7 +32,7 @@ namespace Maps.Admin
             // General
             { @"^Rs[ABGDEZHT]$", "Rs" },
             { @"^O:[0-9]{4}(-\w+)?$", "O:nnnn" },
-            { @"^O:[A-Za-z]{4}-[0-9]{4}$", "O:nnnn (outsector)" },
+            { @"^O:[A-Za-z]{3,4}-[0-9]{4}$", "O:nnnn (outsector)" },
 
             // Legacy
             "Ag", "As", "Ba", "De",
@@ -79,6 +79,8 @@ namespace Maps.Admin
             { @"^\[.*?\]\d*$", "(major race homeworld)" },
             { @"^\(.*?\)\d*$", "(minor race homeworld)" },
             { @"^(" + string.Join("|", SecondSurvey.SophontCodes) + @")(\d|W|\?)$", "(sophont)" },
+
+            { @"^Mr\((" + string.Join("|", SecondSurvey.AllegianceCodes) + @")\)$", "(military rule)" },
         };
 
         protected override void Process(System.Web.HttpContext context)
