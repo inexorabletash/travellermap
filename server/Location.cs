@@ -23,6 +23,12 @@ namespace Maps
         internal Point Sector { get; set; }
         internal Hex Hex { get; set; }
 
+        // For XML Deserialization:
+        [XmlAttribute("Sector")]
+        public string SectorName { get { return null; } set { Sector = SectorMap.FromName(SectorMap.DefaultSetting, value).Location; } }
+        [XmlAttribute("Hex")]
+        public string HexName { get { return null; } set { Hex = new Hex(value); } }
+
         public bool IsEmpty { get { return Sector.IsEmpty && Hex.IsEmpty; } }
         public bool IsValid { get { return Hex.IsValid; } }
 

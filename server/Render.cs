@@ -786,7 +786,7 @@ namespace Maps.Rendering
                     if (ctx.styles.capitals.visible && (ctx.options & MapOptions.WorldsMask) != 0)
                     {
                         WorldObjectCollection worlds = ctx.resourceManager.GetXmlFileObject(@"~/res/Worlds.xml", typeof(WorldObjectCollection)) as WorldObjectCollection;
-                        if (worlds != null)
+                        if (worlds != null && worlds.Worlds != null)
                         {
                             solidBrush.Color = ctx.styles.capitals.textColor;
                             foreach (WorldObject world in worlds.Worlds.Where(world => (world.MapOptions & ctx.options) != 0))
