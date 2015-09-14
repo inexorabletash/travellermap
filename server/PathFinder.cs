@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Maps
 {
-    public static class PathFinder
+    internal static class PathFinder
     {
         // A* Algorithm
         //
@@ -24,6 +24,7 @@ namespace Maps
 
             public int CompareTo(Node<T> other)
             {
+                if (other == null) throw new ArgumentNullException("other");
                 return cost.CompareTo(other.cost);
             }
         }

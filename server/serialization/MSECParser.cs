@@ -7,11 +7,11 @@ using System.Text.RegularExpressions;
 
 namespace Maps.Serialization
 {
-    public class MSECParser : SectorMetadataFileParser 
+    internal class MSECParser : SectorMetadataFileParser 
     {
         public override Encoding Encoding { get { return Encoding.GetEncoding(1252); } }
 
-        private void Apply(string line, Sector sector)
+        private static void Apply(string line, Sector sector)
         {
             string[] kv = line.Split(null, 2);
             string key = kv[0].Trim().ToUpperInvariant();
@@ -63,18 +63,18 @@ namespace Maps.Serialization
                         Match match = Regex.Match(value, @"^(.)\s+(..)$/"); // Base decodes to two bases
                         if (match.Success)
                         {
-                            var code = match.Groups[1].Value;
-                            var bases = match.Groups[2].Value;
+                            //var code = match.Groups[1].Value;
+                            //var bases = match.Groups[2].Value;
                             // TODO: Base decodes
                             return;
                         }
                         match = Regex.Match(value, @"^(.)\s+(\S+)\s(\S+)\s+(.*)$");
                         if (match.Success)
                         {
-                            var code = match.Groups[1].Value;
-                            var zapf = match.Groups[2].Value;
-                            var color = match.Groups[3].Value;
-                            var name = match.Groups[4].Value;
+                            //var code = match.Groups[1].Value;
+                            //var zapf = match.Groups[2].Value;
+                            //var color = match.Groups[3].Value;
+                            //var name = match.Groups[4].Value;
                             // TODO: Base symbols
                             return;
                         }

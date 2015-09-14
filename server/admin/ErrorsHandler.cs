@@ -8,7 +8,7 @@ namespace Maps.Admin
     /// <summary>
     /// Summary description for Search.
     /// </summary>
-    public class ErrorsHandler : AdminHandlerBase
+    internal class ErrorsHandler : AdminHandlerBase
     {
         public override string DefaultContentType { get { return MediaTypeNames.Text.Plain; } }
 
@@ -17,7 +17,7 @@ namespace Maps.Admin
             context.Response.ContentType = MediaTypeNames.Text.Plain;
             context.Response.BufferOutput = false;
 
-            ResourceManager resourceManager = new ResourceManager(context.Server, context.Cache);
+            ResourceManager resourceManager = new ResourceManager(context.Server);
 
             string sectorName = GetStringOption(context, "sector");
             string type = GetStringOption(context, "type");

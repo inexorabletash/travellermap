@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 
 namespace Maps.Serialization
 {
-    public abstract class SectorFileParser
+    internal abstract class SectorFileParser
     {
         public const int BUFFER_SIZE = 32768;
 
@@ -74,7 +74,7 @@ namespace Maps.Serialization
         }
     }
 
-    public class SecParser : SectorFileParser
+    internal class SecParser : SectorFileParser
     {
         public override string Name { get { return "SEC (Legacy)"; } }
         public override Encoding Encoding { get { return Encoding.UTF8; } }
@@ -164,7 +164,7 @@ namespace Maps.Serialization
                 worlds[world.X, world.Y] = world;
                 string rest = match.Groups["rest"].Value;
                 if (!string.IsNullOrEmpty(rest))
-                    ParseRest(rest, worlds, lineNumber, line, world, errors);
+                    ParseRest(rest, lineNumber, line, world, errors);
             }
             catch (Exception e)
             {
@@ -173,7 +173,7 @@ namespace Maps.Serialization
             }
         }
 
-        private static void ParseRest(string rest, WorldCollection worlds, int lineNumber, string line, World world, ErrorLogger errors)
+        private static void ParseRest(string rest, int lineNumber, string line, World world, ErrorLogger errors)
         {
             // Assume stellar data, try to parse it
             try
@@ -188,7 +188,7 @@ namespace Maps.Serialization
         }
     }
 
-    public abstract class T5ParserBase : SectorFileParser
+    internal abstract class T5ParserBase : SectorFileParser
     {
         private const string HEX = @"[0123456789ABCDEFGHJKLMNPQRSTUVWXYZ]";
 
@@ -199,7 +199,6 @@ namespace Maps.Serialization
 
         private static readonly Regex BASES_REGEX = new Regex(@"^C?D?E?K?M?N?R?S?T?V?W?X?$");
         private static readonly Regex ZONE_REGEX = new Regex(@"^(|A|R)$");
-        private static readonly Regex ALLEGIANCE_REGEX = new Regex(@"^([A-Za-z0-9]{4}|----)$");
         private static readonly Regex NOBILITY_REGEX = new Regex(@"^[BcCDeEfFGH]*$");
 
         private const string STAR = @"(D|BD|BH|[OBAFGKM][0-9]\x20(?:Ia|Ib|II|III|IV|V|VI))";
@@ -340,7 +339,7 @@ namespace Maps.Serialization
         }
     }
 
-    public class SecondSurveyParser : T5ParserBase
+    internal class SecondSurveyParser : T5ParserBase
     {
         public override string Name { get { return "T5 Second Survey - Column Delimited"; } }
         public override Encoding Encoding { get { return Encoding.UTF8; } }
@@ -353,7 +352,7 @@ namespace Maps.Serialization
         }
     }
 
-    public class TabDelimitedParser : T5ParserBase
+    internal class TabDelimitedParser : T5ParserBase
     {
         public override string Name { get { return "T5 Second Survey - Tab Delimited"; } }
         public override Encoding Encoding { get { return Encoding.UTF8; } }
@@ -366,7 +365,7 @@ namespace Maps.Serialization
         }
     }
 
-    public class TSVParser
+    internal class TSVParser
     {
         private static readonly char[] TAB_DELIMITER = { '\t' };
 
@@ -400,7 +399,7 @@ namespace Maps.Serialization
         {
             string[] cols = line.Split(TAB_DELIMITER);
             if (cols.Length != header.Length)
-                throw new Exception(string.Format("ERROR (Tab Parse) ({0}): {1}", lineNumber, line));
+                throw new ParseException(string.Format("ERROR (Tab Parse) ({0}): {1}", lineNumber, line));
 
             StringDictionary dict = new StringDictionary();
             for (var i = 0; i < cols.Length; ++i)
@@ -409,7 +408,7 @@ namespace Maps.Serialization
             data.Add(new Row { dict = dict, lineNumber = lineNumber, line = line });
         }
 
-        public struct Row
+        internal struct Row
         {
             public StringDictionary dict;
             public int lineNumber;

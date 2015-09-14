@@ -4,7 +4,7 @@ using System.Xml.Serialization;
 
 namespace Maps.API
 {
-    public class CoordinatesHandler : DataHandlerBase
+    internal class CoordinatesHandler : DataHandlerBase
     {
         public override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Xml; } }
         protected override string ServiceName { get { return "coordinates"; } }
@@ -14,7 +14,7 @@ namespace Maps.API
             // NOTE: This (re)initializes a static data structure used for 
             // resolving names into sector locations, so needs to be run
             // before any other objects (e.g. Worlds) are loaded.
-            ResourceManager resourceManager = new ResourceManager(context.Server, context.Cache);
+            ResourceManager resourceManager = new ResourceManager(context.Server);
             SectorMap map = SectorMap.FromName(SectorMap.DefaultSetting, resourceManager);
 
             Location loc = new Location(map.FromName("Spinward Marches").Location, 1910);
@@ -33,19 +33,9 @@ namespace Maps.API
                 int hex = GetIntOption(context, "hex", 0);
                 loc = new Location(sector.Location, hex);
             }
-            else if (HasOption(context, "sx") && HasOption(context, "sy"))
+            else if (HasLocation(context))
             {
-                int sx = GetIntOption(context, "sx", 0);
-                int sy = GetIntOption(context, "sy", 0);
-                byte hx = (byte)GetIntOption(context, "hx", 0);
-                byte hy = (byte)GetIntOption(context, "hy", 0);
-                loc = new Location(map.FromLocation(sx, sy).Location, new Hex(hx, hy));
-            }
-            else if (HasOption(context, "x") && HasOption(context, "y"))
-            {
-                int x = GetIntOption(context, "x", 0);
-                int y = GetIntOption(context, "y", 0);
-                loc = Astrometrics.CoordinatesToLocation(x, y);
+                loc = GetLocation(context);
             }
             else
             {
@@ -55,29 +45,29 @@ namespace Maps.API
 
             Point coords = Astrometrics.LocationToCoordinates(loc);
 
-            Result result = new Result();
-            result.sx = loc.SectorLocation.X;
-            result.sy = loc.SectorLocation.Y;
-            result.hx = loc.HexLocation.X;
-            result.hy = loc.HexLocation.Y;
+            CoordinatesResult result = new CoordinatesResult();
+            result.sx = loc.Sector.X;
+            result.sy = loc.Sector.Y;
+            result.hx = loc.Hex.X;
+            result.hy = loc.Hex.Y;
             result.x = coords.X;
             result.y = coords.Y;
             SendResult(context, result);
         }
+    }
 
-        [XmlRoot(ElementName = "Coordinates")]
-        // public for XML serialization
-        public class Result
-        {
-            // Sector/Hex
-            public int sx { get; set; }
-            public int sy { get; set; }
-            public int hx { get; set; }
-            public int hy { get; set; }
+    [XmlRoot(ElementName = "Coordinates")]
+    // public for XML serialization
+    public class CoordinatesResult
+    {
+        // Sector/Hex
+        public int sx { get; set; }
+        public int sy { get; set; }
+        public int hx { get; set; }
+        public int hy { get; set; }
 
-            // World-space X/Y
-            public int x { get; set; }
-            public int y { get; set; }
-        }
+        // World-space X/Y
+        public int x { get; set; }
+        public int y { get; set; }
     }
 }

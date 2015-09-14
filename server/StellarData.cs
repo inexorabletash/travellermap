@@ -4,10 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
 
 namespace Maps
 {
-    public static class StellarDataParser
+    internal static class StellarDataParser
     {
         // Grammar:
         //
@@ -63,7 +64,10 @@ namespace Maps
         [Serializable]
         public class InvalidSystemException : ApplicationException
         {
+            public InvalidSystemException() : base("System data is not valid") { }
             public InvalidSystemException(string message) : base(message) { }
+            public InvalidSystemException(string message, Exception innerException) : base(message, innerException) { }
+            protected InvalidSystemException(SerializationInfo info, StreamingContext context) : base(info, context) { }
         }
 
         private abstract class Unit

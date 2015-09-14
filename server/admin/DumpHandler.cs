@@ -6,13 +6,13 @@ namespace Maps.Admin
     /// <summary>
     /// Fetch data about the universe.
     /// </summary>
-    public class DumpHandler : AdminHandlerBase
+    internal class DumpHandler : AdminHandlerBase
     {
         public override string DefaultContentType { get { return MediaTypeNames.Text.Plain; } }
 
         protected override void Process(System.Web.HttpContext context)
         {
-            ResourceManager resourceManager = new ResourceManager(context.Server, context.Cache);
+            ResourceManager resourceManager = new ResourceManager(context.Server);
 
             // NOTE: This (re)initializes a static data structure used for 
             // resolving names into sector locations, so needs to be run
@@ -48,7 +48,7 @@ namespace Maps.Admin
             }
         }
 
-        private void WriteCSV(System.IO.TextWriter output, List<string> values)
+        private static void WriteCSV(System.IO.TextWriter output, List<string> values)
         {
             bool first = true;
             foreach (string value in values)

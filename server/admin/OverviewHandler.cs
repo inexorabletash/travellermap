@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Maps.Admin
 {
-    public class OverviewHandler : AdminHandler
+    internal class OverviewHandler : AdminHandler
     {
         IHttpHandler impl = new OverviewImpl();
 
@@ -21,7 +21,7 @@ namespace Maps.Admin
 
             public override void Process(System.Web.HttpContext context)
             {
-                ResourceManager resourceManager = new ResourceManager(context.Server, context.Cache);
+                ResourceManager resourceManager = new ResourceManager(context.Server);
 
                 MapOptions options = MapOptions.SectorGrid | MapOptions.FilledBorders;
                 Stylesheet.Style style = Stylesheet.Style.Poster;
@@ -37,8 +37,6 @@ namespace Maps.Admin
                 tileRect.Y = (float)(y * tileSize.Height / (scale * Astrometrics.ParsecScaleY));
                 tileRect.Width = (float)(tileSize.Width / (scale * Astrometrics.ParsecScaleX));
                 tileRect.Height = (float)(tileSize.Height / (scale * Astrometrics.ParsecScaleY));
-
-                DateTime dt = DateTime.Now;
 
                 Render.RenderContext ctx = new Render.RenderContext();
                 ctx.resourceManager = resourceManager;

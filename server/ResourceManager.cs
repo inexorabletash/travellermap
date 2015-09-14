@@ -8,12 +8,12 @@ using System.Xml.Serialization;
 
 namespace Maps
 {
-    public class LRUCache
+    internal class LRUCache
     {
         public LRUCache(int size)
         {
             if (size <= 0)
-                throw new ApplicationException("size must be > 0");
+                throw new ArgumentOutOfRangeException("size", "size must be > 0");
             m_size = size;
         }
 
@@ -70,26 +70,25 @@ namespace Maps
         private List<object> m_values = new List<object>();
     }
 
-    public interface IDeserializable
+    internal interface IDeserializable
     {
         void Deserialize(Stream stream, string mediaType, ErrorLogger errors = null);
     }
 
-    public class ResourceManager
+    internal class ResourceManager
     {
         private HttpServerUtility m_serverUtility;
         public HttpServerUtility Server { get { return m_serverUtility; } }
 
-        private LRUCache s_cache = new LRUCache(50);
+        private LRUCache m_cache = new LRUCache(50);
 
         // TODO: Quick Fix - clean this up later
         //private Cache m_cache;
-        public LRUCache Cache { get { return s_cache; } }
+        public LRUCache Cache { get { return m_cache; } }
 
-        public ResourceManager(HttpServerUtility serverUtility, Cache cache)
+        public ResourceManager(HttpServerUtility serverUtility)
         {
             m_serverUtility = serverUtility;
-            //m_cache = cache;
         }
 
         public object GetXmlFileObject(string name, Type type, bool cache = true)

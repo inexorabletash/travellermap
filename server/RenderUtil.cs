@@ -10,14 +10,14 @@ using System.Linq;
 namespace Maps.Rendering
 {
     // Wrapper to allow locking, since Image is [MarshalByRefObject]
-    public class ImageHolder
+    internal class ImageHolder
     {
         public ImageHolder(Image image) { m_image = image; }
         public Image Image {  get { return m_image; } }
         private Image m_image;
     }
 
-    public static class RenderUtil
+    internal static class RenderUtil
     {
         /*
                     1
@@ -171,7 +171,7 @@ namespace Maps.Rendering
             return new SaveGraphicsState(g);
         }
 
-        sealed public class SaveGraphicsState : IDisposable
+        sealed internal class SaveGraphicsState : IDisposable
         {
             private XGraphics g;
             private XGraphicsState gs;
@@ -205,7 +205,7 @@ namespace Maps.Rendering
         Normal
     }
 
-    public struct Glyph
+    internal struct Glyph
     {
         public enum GlyphBias
         {
@@ -260,38 +260,38 @@ namespace Maps.Rendering
         }
 
 
-        public static Glyph None = new Glyph(GlyphFont.Ding, "");
+        public static readonly Glyph None = new Glyph(GlyphFont.Ding, "");
 
         // NOTE: Windings are often used instead of UNICODE equivalents in a common font 
         // because the glyphs are much higher quality.
         // See http://www.alanwood.net/demos/wingdings.html for a good mapping
 
-        public static Glyph Diamond = new Glyph(GlyphFont.Ding, "\x74"); // U+2666 (BLACK DIAMOND SUIT)
-        public static Glyph DiamondX = new Glyph(GlyphFont.Ding, "\x76"); // U+2756 (BLACK DIAMOND MINUS WHITE X)
-        public static Glyph Circle = new Glyph(GlyphFont.Ding, "\x9f"); // Alternates: U+2022 (BULLET), U+25CF (BLACK CIRCLE)
-        public static Glyph Triangle = new Glyph(GlyphFont.Normal, "\x25B2"); // U+25B2 (BLACK UP-POINTING TRIANGLE)
-        public static Glyph Square = new Glyph(GlyphFont.Normal, "\x25A0"); // U+25A0 (BLACK SQUARE)
-        public static Glyph Star3Point = new Glyph(GlyphFont.Ding, "\xA9"); // U+25B2 (BLACK UP-POINTING TRIANGLE)
-        public static Glyph Star4Point = new Glyph(GlyphFont.Ding, "\xAA"); // U+2726 (BLACK FOUR POINTED STAR)
-        public static Glyph Star5Point = new Glyph(GlyphFont.Ding, "\xAB"); // U+2605 (BLACK STAR)
-        public static Glyph Star6Point = new Glyph(GlyphFont.Ding, "\xAC"); // U+2736 (BLACK SIX POINTED STAR)
-        public static Glyph WhiteStar = new Glyph(GlyphFont.Normal, "\u2606"); // U+2606 (WHITE STAR)
-        public static Glyph StarStar = new Glyph(GlyphFont.Normal, "**"); // Would prefer U+2217 (ASTERISK OPERATOR) but font coverage is poor
+        public static readonly Glyph Diamond = new Glyph(GlyphFont.Ding, "\x74"); // U+2666 (BLACK DIAMOND SUIT)
+        public static readonly Glyph DiamondX = new Glyph(GlyphFont.Ding, "\x76"); // U+2756 (BLACK DIAMOND MINUS WHITE X)
+        public static readonly Glyph Circle = new Glyph(GlyphFont.Ding, "\x9f"); // Alternates: U+2022 (BULLET), U+25CF (BLACK CIRCLE)
+        public static readonly Glyph Triangle = new Glyph(GlyphFont.Normal, "\x25B2"); // U+25B2 (BLACK UP-POINTING TRIANGLE)
+        public static readonly Glyph Square = new Glyph(GlyphFont.Normal, "\x25A0"); // U+25A0 (BLACK SQUARE)
+        public static readonly Glyph Star3Point = new Glyph(GlyphFont.Ding, "\xA9"); // U+25B2 (BLACK UP-POINTING TRIANGLE)
+        public static readonly Glyph Star4Point = new Glyph(GlyphFont.Ding, "\xAA"); // U+2726 (BLACK FOUR POINTED STAR)
+        public static readonly Glyph Star5Point = new Glyph(GlyphFont.Ding, "\xAB"); // U+2605 (BLACK STAR)
+        public static readonly Glyph Star6Point = new Glyph(GlyphFont.Ding, "\xAC"); // U+2736 (BLACK SIX POINTED STAR)
+        public static readonly Glyph WhiteStar = new Glyph(GlyphFont.Normal, "\u2606"); // U+2606 (WHITE STAR)
+        public static readonly Glyph StarStar = new Glyph(GlyphFont.Normal, "**"); // Would prefer U+2217 (ASTERISK OPERATOR) but font coverage is poor
 
         // Research Stations
-        public static Glyph Alpha = new Glyph(GlyphFont.Normal, "\x0391").Highlight;
-        public static Glyph Beta = new Glyph(GlyphFont.Normal, "\x0392").Highlight;
-        public static Glyph Gamma = new Glyph(GlyphFont.Normal, "\x0393").Highlight;
-        public static Glyph Delta = new Glyph(GlyphFont.Normal, "\x0394").Highlight;
-        public static Glyph Epsilon = new Glyph(GlyphFont.Normal, "\x0395").Highlight;
-        public static Glyph Zeta = new Glyph(GlyphFont.Normal, "\x0396").Highlight;
-        public static Glyph Eta = new Glyph(GlyphFont.Normal, "\x0397").Highlight;
-        public static Glyph Theta = new Glyph(GlyphFont.Normal, "\x0398").Highlight;
+        public static readonly Glyph Alpha = new Glyph(GlyphFont.Normal, "\x0391").Highlight;
+        public static readonly Glyph Beta = new Glyph(GlyphFont.Normal, "\x0392").Highlight;
+        public static readonly Glyph Gamma = new Glyph(GlyphFont.Normal, "\x0393").Highlight;
+        public static readonly Glyph Delta = new Glyph(GlyphFont.Normal, "\x0394").Highlight;
+        public static readonly Glyph Epsilon = new Glyph(GlyphFont.Normal, "\x0395").Highlight;
+        public static readonly Glyph Zeta = new Glyph(GlyphFont.Normal, "\x0396").Highlight;
+        public static readonly Glyph Eta = new Glyph(GlyphFont.Normal, "\x0397").Highlight;
+        public static readonly Glyph Theta = new Glyph(GlyphFont.Normal, "\x0398").Highlight;
 
         // Other Textual
-        public static Glyph Prison = new Glyph(GlyphFont.Normal, "P").Highlight;
-        public static Glyph Reserve = new Glyph(GlyphFont.Normal, "R");
-        public static Glyph ExileCamp = new Glyph(GlyphFont.Normal, "X");
+        public static readonly Glyph Prison = new Glyph(GlyphFont.Normal, "P").Highlight;
+        public static readonly Glyph Reserve = new Glyph(GlyphFont.Normal, "R");
+        public static readonly Glyph ExileCamp = new Glyph(GlyphFont.Normal, "X");
 
 
         public static Glyph FromResearchCode(string rs)
@@ -341,7 +341,7 @@ namespace Maps.Rendering
         }
     }
 
-    public class BorderPath
+    internal class BorderPath
     {
         public readonly PointF[] borderPathPoints;
         public readonly byte[] borderPathTypes;
@@ -520,7 +520,7 @@ namespace Maps.Rendering
         }
     }
 
-    public static class ColorUtil
+    internal static class ColorUtil
     {
         public static void RGBtoXYZ(int r, int g, int b, out double x, out double y, out double z)
         {
@@ -574,7 +574,7 @@ namespace Maps.Rendering
         }
 
     }
-    public static class PathUtil
+    internal static class PathUtil
     {
         public enum PathType : int
         {

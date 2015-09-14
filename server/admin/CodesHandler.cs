@@ -10,7 +10,7 @@ namespace Maps.Admin
     /// <summary>
     /// Summary description for Search.
     /// </summary>
-    public class CodesHandler : AdminHandler
+    internal class CodesHandler : AdminHandler
     {
 
         static List<string> s_legacySophontCodes = new List<string>
@@ -86,7 +86,7 @@ namespace Maps.Admin
             context.Response.ContentType = MediaTypeNames.Text.Plain;
             context.Response.StatusCode = 200;
 
-            ResourceManager resourceManager = new ResourceManager(context.Server, context.Cache);
+            ResourceManager resourceManager = new ResourceManager(context.Server);
 
             string sectorName = GetStringOption(context, "sector");
             string type = GetStringOption(context, "type");

@@ -4,7 +4,7 @@ using System.Drawing;
 
 namespace Maps.API
 {
-    public class PosterHandler : ImageHandlerBase
+    internal class PosterHandler : ImageHandlerBase
     {
         protected override string ServiceName { get { return "poster"; } }
 
@@ -13,7 +13,7 @@ namespace Maps.API
             // NOTE: This (re)initializes a static data structure used for
             // resolving names into sector locations, so needs to be run
             // before any other objects (e.g. Worlds) are loaded.
-            ResourceManager resourceManager = new ResourceManager(context.Server, context.Cache);
+            ResourceManager resourceManager = new ResourceManager(context.Server);
 
             Selector selector;
             RectangleF tileRect = new RectangleF();
@@ -237,7 +237,7 @@ namespace Maps.API
             }
 
             int bitmapWidth = tileSize.Width, bitmapHeight = tileSize.Height;
-            float translateX = 0, translateY = 0, angle = rot * 90;
+            float translateX = 0, translateY = 0;
             switch (rot)
             {
                 case 1: // 90 degrees clockwise

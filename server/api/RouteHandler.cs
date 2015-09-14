@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Maps.API
 {
-    public class RouteHandler : DataHandlerBase
+    internal class RouteHandler : DataHandlerBase
     {
         public override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Xml; } }
 
@@ -32,16 +32,19 @@ namespace Maps.API
 
             IEnumerable<World> PathFinder.Map<World>.Adjacent(World world)
             {
+                if (world == null) throw new ArgumentNullException("world");
                 return new HexSelector(map, manager, Astrometrics.CoordinatesToLocation(world.Coordinates), jump).Worlds;
             }
 
             int PathFinder.Map<World>.Distance(World a, World b)
             {
+                if (a == null) throw new ArgumentNullException("a");
+                if (b == null) throw new ArgumentNullException("b");
                 return Astrometrics.HexDistance(a.Coordinates, b.Coordinates);
             }
         }
 
-        private World ResolveLocation(HttpContext context, string field, ResourceManager manager, SectorMap map)
+        private static World ResolveLocation(HttpContext context, string field, ResourceManager manager, SectorMap map)
         {
             string query = context.Request.QueryString[field];
             if (string.IsNullOrWhiteSpace(query))
@@ -96,7 +99,7 @@ namespace Maps.API
 
         public override void Process(HttpContext context)
         {
-            ResourceManager resourceManager = new ResourceManager(context.Server, context.Cache);
+            ResourceManager resourceManager = new ResourceManager(context.Server);
             SectorMap map = SectorMap.FromName(SectorMap.DefaultSetting, resourceManager);
 
             World startWorld = ResolveLocation(context, "start", resourceManager, map);
@@ -117,34 +120,36 @@ namespace Maps.API
                 route.Select(w => new RouteStop(w)));
             SendResult(context, result);
         }
+    }
 
-        public class RouteStop
+    public class RouteStop
+    {
+        public RouteStop() { }
+        public RouteStop(World w)
         {
-            public RouteStop() { }
-            public RouteStop(World w)
-            {
-                Sector = w.SectorName;
-                SectorX = w.Sector.X;
-                SectorY = w.Sector.Y;
+            if (w == null) throw new ArgumentNullException("w");
 
-                Subsector = w.SubsectorName;
+            Sector = w.SectorName;
+            SectorX = w.Sector.X;
+            SectorY = w.Sector.Y;
 
-                Name = w.Name;
-                Hex = w.Hex;
-                HexX = w.X;
-                HexY = w.Y;
-            }
+            Subsector = w.SubsectorName;
 
-            public string Sector { get; set; }
-            public int SectorX { get; set; }
-            public int SectorY { get; set; }
-
-            public string Subsector { get; set; }
-
-            public string Name { get; set; }
-            public string Hex { get; set; }
-            public int HexX { get; set; }
-            public int HexY { get; set; }
+            Name = w.Name;
+            Hex = w.Hex;
+            HexX = w.X;
+            HexY = w.Y;
         }
+
+        public string Sector { get; set; }
+        public int SectorX { get; set; }
+        public int SectorY { get; set; }
+
+        public string Subsector { get; set; }
+
+        public string Name { get; set; }
+        public string Hex { get; set; }
+        public int HexX { get; set; }
+        public int HexY { get; set; }
     }
 }

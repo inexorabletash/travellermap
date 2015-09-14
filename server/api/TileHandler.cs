@@ -4,7 +4,7 @@ using System.Drawing;
 
 namespace Maps.API
 {
-    public class TileHandler : ImageHandlerBase
+    internal class TileHandler : ImageHandlerBase
     {
         protected override string ServiceName { get { return "tile"; } }
 
@@ -16,7 +16,7 @@ namespace Maps.API
 
         public override void Process(System.Web.HttpContext context)
         {
-            ResourceManager resourceManager = new ResourceManager(context.Server, context.Cache);
+            ResourceManager resourceManager = new ResourceManager(context.Server);
 
             MapOptions options = MapOptions.SectorGrid | MapOptions.BordersMajor | MapOptions.NamesMajor | MapOptions.NamesMinor;
             Stylesheet.Style style = Stylesheet.Style.Poster;

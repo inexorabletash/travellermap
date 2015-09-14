@@ -4,8 +4,7 @@ using System.Globalization;
 
 namespace Maps
 {
-
-    public static class Astrometrics
+    internal static class Astrometrics
     {
         public const int SectorWidth = 32; // parsecs
         public const int SectorHeight = 40; // parsecs
@@ -31,7 +30,7 @@ namespace Maps
 
         public static Point LocationToCoordinates(Location location)
         {
-            return LocationToCoordinates(location.SectorLocation, location.HexLocation);
+            return LocationToCoordinates(location.Sector, location.Hex);
         }
         public static Point LocationToCoordinates(Point sector, Hex hex)
         {
@@ -124,19 +123,9 @@ namespace Maps
 
             return new Point(c, r);
         }
-
-        public static string IntToHex(int i)
-        {
-            return i.ToString("0000", CultureInfo.InvariantCulture);
-        }
-
-        public static int HexToInt(string s)
-        {
-            return int.Parse(s, NumberStyles.Integer, CultureInfo.InvariantCulture);
-        }
     }
 
-    public struct Hex
+    internal struct Hex : IEquatable<Hex>
     {
         public Hex(int hex) { X = (byte)(hex / 100); Y = (byte)(hex % 100); }
         public Hex(byte x, byte y) { X = x; Y = y; }
@@ -156,6 +145,7 @@ namespace Maps
 
         public byte X { get; set; }
         public byte Y { get; set; }
+
         public bool IsEmpty { get { return X == 0 && Y == 0; } }
         public bool IsValid { get { return 1 <= X && X <= Astrometrics.SectorWidth && 1 <= Y && Y <= Astrometrics.SectorHeight; } }
 
@@ -176,18 +166,20 @@ namespace Maps
                 ((Y - 1) % Astrometrics.SubsectorHeight + 1)).ToString("0000", CultureInfo.InvariantCulture);
         }
 
-        public override bool Equals(object obj)
+        public override bool Equals(object other)
         {
-            return obj is Hex && ((Hex)obj).X == X && ((Hex)obj).Y == Y;
+            return other is Hex && Equals((Hex)other);
         }
-
+        public bool Equals(Hex other)
+        {
+            return other.X == X && other.Y == Y;
+        }
+        public static bool operator ==(Hex a, Hex b) { return a.Equals(b); }
+        public static bool operator !=(Hex a, Hex b) { return !a.Equals(b); }
         public override int GetHashCode()
         {
             return ToInt();
         }
-
-        public static bool operator ==(Hex a, Hex b) { return a.X == b.X && a.Y == b.Y; }
-        public static bool operator !=(Hex a, Hex b) { return a.X != b.X || a.Y != b.Y; }
 
         public static readonly Hex Empty = new Hex();
     }

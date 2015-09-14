@@ -3,20 +3,31 @@
 using Maps.Rendering;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Globalization;
 using System.Web;
 using System.Web.Routing;
 
 namespace Maps
 {
-    public abstract class HandlerBase
+    internal abstract class HandlerBase
     {
         // TODO: Enforce verbs (i.e. GET or POST)
 
-        protected void ParseOptions(HttpContext context, ref MapOptions options, ref Stylesheet.Style style)
+        protected static void ParseOptions(HttpContext context, ref MapOptions options, ref Stylesheet.Style style)
         {
             ParseOptions(context.Request, Defaults(context), ref options, ref style);
         }
+
+        private static Dictionary<string, Stylesheet.Style> s_nameToStyle = new Dictionary<string, Stylesheet.Style>() {
+            { "poster",Stylesheet.Style.Poster },
+            { "atlas" ,Stylesheet.Style.Atlas },
+            { "print" , Stylesheet.Style.Print },
+            { "candy" ,Stylesheet.Style.Candy },
+            { "draft" ,Stylesheet.Style.Draft },
+            { "fasa"  ,Stylesheet.Style.FASA },
+        };
+
         public static void ParseOptions(HttpRequest request, IDictionary<string, object> queryDefaults, ref MapOptions options, ref Stylesheet.Style style)
         {
             options = (MapOptions)GetIntOption(request, "options", queryDefaults, (int)options);
@@ -31,14 +42,13 @@ namespace Maps
 
             if (HasOption(request, "style", queryDefaults))
             {
-                switch (GetStringOption(request, "style", queryDefaults).ToLowerInvariant())
+                try
                 {
-                    case "poster": style = Stylesheet.Style.Poster; break;
-                    case "atlas": style = Stylesheet.Style.Atlas; break;
-                    case "print": style = Stylesheet.Style.Print; break;
-                    case "candy": style = Stylesheet.Style.Candy; break;
-                    case "draft": style = Stylesheet.Style.Draft; break;
-                    case "fasa": style = Stylesheet.Style.FASA; break;
+                    style = s_nameToStyle[GetStringOption(request, "style", queryDefaults).ToLowerInvariant()];
+                }
+                catch (KeyNotFoundException)
+                {
+                    // TODO: Report error?
                 }
             }
         }
@@ -51,7 +61,7 @@ namespace Maps
             return data.Values;
         }
 
-        protected bool HasOption(HttpContext context, string name)
+        protected static bool HasOption(HttpContext context, string name)
         {
             return HasOption(context.Request, name, Defaults(context));
         }
@@ -60,7 +70,7 @@ namespace Maps
            return request[name] != null || (queryDefaults != null && queryDefaults.ContainsKey(name));
         }
 
-        protected string GetStringOption(HttpContext context, string name, string defaultValue = null)
+        protected static string GetStringOption(HttpContext context, string name, string defaultValue = null)
         {
             return GetStringOption(context.Request, name, Defaults(context), defaultValue);
         }
@@ -73,7 +83,7 @@ namespace Maps
             return defaultValue;
         }
 
-        protected string[] GetStringsOption(HttpContext context, string name, string[] defaultValue = null)
+        protected static string[] GetStringsOption(HttpContext context, string name, string[] defaultValue = null)
         {
             string s = GetStringOption(context, name);
             if (string.IsNullOrWhiteSpace(s))
@@ -81,7 +91,7 @@ namespace Maps
             return s.Split(new char[] { '|' });
         }
 
-        protected int GetIntOption(HttpContext context, string name, int defaultValue)
+        protected static int GetIntOption(HttpContext context, string name, int defaultValue)
         {
             return GetIntOption(context.Request, name, Defaults(context), defaultValue);
         }
@@ -93,7 +103,7 @@ namespace Maps
             return defaultValue;
         }
 
-        protected double GetDoubleOption(HttpContext context, string name, double defaultValue)
+        protected static double GetDoubleOption(HttpContext context, string name, double defaultValue)
         {
             return GetDoubleOption(context.Request, name, Defaults(context), defaultValue);
         }
@@ -105,7 +115,7 @@ namespace Maps
             return defaultValue;
         }
 
-        protected bool GetBoolOption(HttpContext context, string name, bool defaultValue)
+        protected static bool GetBoolOption(HttpContext context, string name, bool defaultValue)
         {
             return GetBoolOption(context.Request, name, Defaults(context), defaultValue);
         }
@@ -126,7 +136,27 @@ namespace Maps
             response.Output.WriteLine(message);
         }
 
-        public abstract string DefaultContentType { get; }
+        public static bool HasLocation(HttpContext context)
+        {
+            return (HasOption(context, "sx") && HasOption(context, "sy")) ||
+                   (HasOption(context, "x") && HasOption(context, "y"));
+        }
 
+        public static Location GetLocation(HttpContext context)
+        {
+            if (HasOption(context, "sx") && HasOption(context, "sy"))
+            {
+                return new Location(new Point(GetIntOption(context, "sx", 0), GetIntOption(context, "sy", 0)),
+                                    new Hex((byte)GetIntOption(context, "hx", 0), (byte)GetIntOption(context, "hy", 0)));
+            }
+
+            if (HasOption(context, "x") && HasOption(context, "y"))
+                return Astrometrics.CoordinatesToLocation(GetIntOption(context, "x", 0), GetIntOption(context, "y", 0));
+
+            throw new ArgumentException("Context is missing required parameters", "context");
+        }
+
+
+    public abstract string DefaultContentType { get; }
     }
 }

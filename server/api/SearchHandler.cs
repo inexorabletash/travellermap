@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 
 namespace Maps.API
 {
-    public class SearchHandler : DataHandlerBase
+    internal class SearchHandler : DataHandlerBase
     {
         public override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Xml; } }
 
@@ -54,7 +54,7 @@ namespace Maps.API
             //
             // Do the search
             //
-            ResourceManager resourceManager = new ResourceManager(context.Server, context.Cache);
+            ResourceManager resourceManager = new ResourceManager(context.Server);
             SectorMap map = SectorMap.FromName(SectorMap.DefaultSetting, resourceManager);
 
             query = query.Replace('*', '%'); // Support * and % as wildcards
@@ -65,164 +65,164 @@ namespace Maps.API
 
             const int NUM_RESULTS = 160;
 
-            var searchResults = SearchEngine.PerformSearch(query, resourceManager, SearchEngine.SearchResultsType.Default, NUM_RESULTS);
+            var searchResults = SearchEngine.PerformSearch(query, SearchEngine.SearchResultsType.Default, NUM_RESULTS);
 
-            Results resultsList = new Results();
+            SearchResults resultsList = new SearchResults();
 
             if (searchResults != null)
             {
                 resultsList.AddRange(searchResults
-                    .Select(loc => Results.LocationToSearchResult(map, resourceManager, loc))
-                    .OfType<Results.SearchResultItem>()
+                    .Select(loc => SearchResults.LocationToSearchResult(map, resourceManager, loc))
+                    .OfType<SearchResults.Item>()
                     .OrderByDescending(item => item.Importance)
                     .Take(NUM_RESULTS));
             }
 
             SendResult(context, resultsList);
         }
+    }
 
-        [JsonName("Results")]
-        [XmlRoot(ElementName = "results")]
-        public class Results
+    [JsonName("Results")]
+    [XmlRoot(ElementName = "results")]
+    public class SearchResults
+    {
+        public SearchResults()
         {
-            public Results()
-            {
-                Items = new List<SearchResultItem>();
-            }
-
-            [XmlAttribute]
-            public int Count { get { return Items.Count; } set { /* We only want to serialize, not deserialize */ } }
-
-            // This is necessary to get "clean" XML serialization of a heterogeneous list;
-            // otherwise the output is sprinkled with xsi:type declarations and the base class
-            // is used as the element name
-            [XmlElement(ElementName = "world", Type = typeof(WorldResult))]
-            [XmlElement(ElementName = "subsector", Type = typeof(SubsectorResult))]
-            [XmlElement(ElementName = "sector", Type = typeof(SectorResult))]
-
-            public List<SearchResultItem> Items { get; set; }
-
-            public void Add(SearchResultItem item)
-            {
-                Items.Add(item);
-            }
-            public void AddRange(IEnumerable<SearchResultItem> items)
-            {
-                Items.AddRange(items);
-            }
-
-            [JsonName("World")]
-            public class WorldResult : SearchResultItem
-            {
-                [XmlAttribute("hexX")]
-                public int HexX { get; set; }
-
-                [XmlAttribute("hexY")]
-                public int HexY { get; set; }
-
-                [XmlAttribute("sector")]
-                public string Sector { get; set; }
-
-                [XmlAttribute("uwp")]
-                public string Uwp { get; set; }
-            }
-
-            [JsonName("Subsector")]
-            public class SubsectorResult : SearchResultItem
-            {
-                [XmlAttribute("sector")]
-                public string Sector { get; set; }
-
-                [XmlAttribute("index")]
-                public string Index { get; set; }
-            }
-
-            [JsonName("Sector")]
-            [XmlRoot(ElementName = "sector")]
-            public class SectorResult : SearchResultItem
-            {
-            }
-
-            public class SearchResultItem
-            {
-                [XmlAttribute("sectorX")]
-                public int SectorX { get; set; }
-
-                [XmlAttribute("sectorY")]
-                public int SectorY { get; set; }
-
-                [XmlAttribute("name")]
-                public string Name { get; set; }
-
-                [XmlAttribute("sectorTags")]
-                public string SectorTags { get; set; }
-
-                [XmlIgnore, JsonIgnore]
-                public int? Importance { get; set; }
-            }
-
-            public static SearchResultItem LocationToSearchResult(SectorMap map, ResourceManager resourceManager, ItemLocation location)
-            {
-                if (location is WorldLocation)
-                {
-                    Sector sector;
-                    World world;
-                    ((WorldLocation)location).Resolve(map, resourceManager, out sector, out world);
-
-                    if (sector == null || world == null)
-                        return null;
-
-                    WorldResult r = new WorldResult();
-                    r.SectorX = sector.X;
-                    r.SectorY = sector.Y;
-                    r.SectorTags = sector.TagString;
-                    r.HexX = world.X;
-                    r.HexY = world.Y;
-                    r.Name = world.Name;
-                    r.Sector = sector.Names[0].Text;
-                    r.Uwp = world.UWP;
-                    r.Importance = world.ImportanceValue;
-
-                    return r;
-                }
-                else if (location is SubsectorLocation)
-                {
-                    Sector sector;
-                    Subsector subsector;
-                    ((SubsectorLocation)location).Resolve(map, out sector, out subsector);
-
-                    if (sector == null || subsector == null)
-                        return null;
-
-                    SubsectorResult r = new SubsectorResult();
-                    r.SectorX = sector.X;
-                    r.SectorY = sector.Y;
-                    r.SectorTags = sector.TagString;
-                    r.Name = subsector.Name;
-                    r.Index = subsector.Index;
-                    r.Sector = sector.Names[0].Text;
-
-                    return r;
-                }
-                else if (location is SectorLocation)
-                {
-                    Sector sector = ((SectorLocation)location).Resolve(map);
-
-                    if (sector == null)
-                        return null;
-
-                    SectorResult r = new SectorResult();
-                    r.SectorX = sector.X;
-                    r.SectorY = sector.Y;
-                    r.SectorTags = sector.TagString;
-                    r.Name = sector.Names[0].Text;
-
-                    return r;
-                }
-
-                return null;
-            }
+            Items = new List<Item>();
         }
 
+        [XmlAttribute]
+        public int Count { get { return Items.Count; } set { /* We only want to serialize, not deserialize */ } }
+
+        // This is necessary to get "clean" XML serialization of a heterogeneous list;
+        // otherwise the output is sprinkled with xsi:type declarations and the base class
+        // is used as the element name
+        [XmlElement(ElementName = "world", Type = typeof(WorldResult))]
+        [XmlElement(ElementName = "subsector", Type = typeof(SubsectorResult))]
+        [XmlElement(ElementName = "sector", Type = typeof(SectorResult))]
+
+        public List<Item> Items { get; }
+
+        public void Add(Item item)
+        {
+            Items.Add(item);
+        }
+        public void AddRange(IEnumerable<Item> items)
+        {
+            Items.AddRange(items);
+        }
+
+        [JsonName("World")]
+        public class WorldResult : Item
+        {
+            [XmlAttribute("hexX")]
+            public int HexX { get; set; }
+
+            [XmlAttribute("hexY")]
+            public int HexY { get; set; }
+
+            [XmlAttribute("sector")]
+            public string Sector { get; set; }
+
+            [XmlAttribute("uwp")]
+            public string Uwp { get; set; }
+        }
+
+        [JsonName("Subsector")]
+        public class SubsectorResult : Item
+        {
+            [XmlAttribute("sector")]
+            public string Sector { get; set; }
+
+            [XmlAttribute("index")]
+            public string Index { get; set; }
+        }
+
+        [JsonName("Sector")]
+        [XmlRoot(ElementName = "sector")]
+        public class SectorResult : Item
+        {
+        }
+
+        public abstract class Item
+        {
+            [XmlAttribute("sectorX")]
+            public int SectorX { get; set; }
+
+            [XmlAttribute("sectorY")]
+            public int SectorY { get; set; }
+
+            [XmlAttribute("name")]
+            public string Name { get; set; }
+
+            [XmlAttribute("sectorTags")]
+            public string SectorTags { get; set; }
+
+            internal int? Importance { get; set; }
+        }
+
+        internal static Item LocationToSearchResult(SectorMap map, ResourceManager resourceManager, ItemLocation location)
+        {
+            if (location is WorldLocation)
+            {
+                Sector sector;
+                World world;
+                ((WorldLocation)location).Resolve(map, resourceManager, out sector, out world);
+
+                if (sector == null || world == null)
+                    return null;
+
+                WorldResult r = new WorldResult();
+                r.SectorX = sector.X;
+                r.SectorY = sector.Y;
+                r.SectorTags = sector.TagString;
+                r.HexX = world.X;
+                r.HexY = world.Y;
+                r.Name = world.Name;
+                r.Sector = sector.Names[0].Text;
+                r.Uwp = world.UWP;
+                r.Importance = world.ImportanceValue;
+
+                return r;
+            }
+
+            if (location is SubsectorLocation)
+            {
+                Sector sector;
+                Subsector subsector;
+                ((SubsectorLocation)location).Resolve(map, out sector, out subsector);
+
+                if (sector == null || subsector == null)
+                    return null;
+
+                SubsectorResult r = new SubsectorResult();
+                r.SectorX = sector.X;
+                r.SectorY = sector.Y;
+                r.SectorTags = sector.TagString;
+                r.Name = subsector.Name;
+                r.Index = subsector.Index;
+                r.Sector = sector.Names[0].Text;
+
+                return r;
+            }
+
+            if (location is SectorLocation)
+            {
+                Sector sector = ((SectorLocation)location).Resolve(map);
+
+                if (sector == null)
+                    return null;
+
+                SectorResult r = new SectorResult();
+                r.SectorX = sector.X;
+                r.SectorY = sector.Y;
+                r.SectorTags = sector.TagString;
+                r.Name = sector.Names[0].Text;
+
+                return r;
+            }
+
+            return null;
+        }
     }
 }

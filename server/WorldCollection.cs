@@ -11,7 +11,7 @@ namespace Maps
     /// <summary>
     /// Summary description for SectorData.
     /// </summary>
-    public class WorldCollection : IDeserializable, IEnumerable<World>
+    internal class WorldCollection : IDeserializable, IEnumerable<World>
     {
         public WorldCollection()
         {
@@ -58,11 +58,7 @@ namespace Maps
             }
         }
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
-
+        IEnumerator IEnumerable.GetEnumerator() { return GetEnumerator(); }
 
         private ErrorLogger m_errors = null;
         public ErrorLogger ErrorList { get { return m_errors; } }

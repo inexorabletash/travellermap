@@ -25,11 +25,8 @@ namespace Maps.Rendering
         public string Name { get; set; }
 
 
-        [XmlIgnore]
-        public float MinScale { get; set; }
-
-        [XmlIgnore]
-        public float MaxScale { get; set; }
+        internal float MinScale { get; set; }
+        internal float MaxScale { get; set; }
 
         public float OriginX { get; set; }
         public float OriginY { get; set; }
@@ -64,8 +61,7 @@ namespace Maps.Rendering
             set { m_bounds = value; }
         }
 
-        [XmlIgnore]
-        public RectangleF TransformedBounds
+        internal RectangleF TransformedBounds
         {
             get
             {
@@ -93,8 +89,7 @@ namespace Maps.Rendering
             }
         }
 
-        [XmlIgnore]
-        public PointF NamePosition
+        internal PointF NamePosition
         {
             get
             {
@@ -132,8 +127,7 @@ namespace Maps.Rendering
         }
 
         // NOTE: Can't cacheResults a GraphicsPath - not free threaded
-        [XmlIgnore]
-        public XGraphicsPath Path
+        internal XGraphicsPath Path
         {
             get
             {
@@ -144,51 +138,7 @@ namespace Maps.Rendering
             }
         }
 
-        #region EditingTools
-#if DEBUG
-        private bool flattened = false;
-        public void Flatten( XMatrix matrix, double flatness )
-        {
-            lock( this )
-            {
-                if( flattened )
-                    return;
-                flattened = true;
-
-                XGraphicsPath path = this.Path;
-                path.Flatten( matrix, flatness );
-
-                m_pathDataPoints = path.Internals.GdiPath.PathPoints;
-                m_pathDataTypes = path.Internals.GdiPath.PathTypes;
-            }
-        }
-
-        public void Decimate()
-        {
-            if (m_pathDataPoints == null || m_pathDataTypes == null)
-                return;
-
-            int length = m_pathDataPoints.Length;
-            List<PointF> newPoints = new List<PointF>(length);
-            List<byte> newTypes = new List<byte>(length);
-
-            for (int i = 0; i < length; i++)
-            {
-                if (((PathPointType)(m_pathDataTypes[i]) != PathPointType.Line) ||
-                    (i % 2 == 1))
-                {
-                    newPoints.Add(m_pathDataPoints[i]);
-                    newTypes.Add(m_pathDataTypes[i]);
-                }
-            }
-
-            m_pathDataPoints = newPoints.ToArray();
-            m_pathDataTypes = newTypes.ToArray();
-        }
-#endif
-        #endregion EditingTools
-
-        public void Draw(XGraphics graphics, RectangleF rect, MapOptions options, XPen pen)
+        public void Draw(XGraphics graphics, RectangleF rect, XPen pen)
         {
             if (graphics == null)
                 throw new ArgumentNullException("graphics");
@@ -211,7 +161,7 @@ namespace Maps.Rendering
             }
         }
 
-        public void DrawName(XGraphics graphics, RectangleF rect, MapOptions options, XFont font, XBrush textBrush, LabelStyle labelStyle)
+        internal void DrawName(XGraphics graphics, RectangleF rect, XFont font, XBrush textBrush, LabelStyle labelStyle)
         {
             if (graphics == null)
                 throw new ArgumentNullException("graphics");
@@ -276,7 +226,7 @@ namespace Maps.Rendering
     public class WorldObjectCollection
     {
         [XmlElement("World")]
-        public List<WorldObject> Worlds { get; set; }
+        public List<WorldObject> Worlds { get; }
     }
 
 
@@ -290,11 +240,8 @@ namespace Maps.Rendering
 
         public string Name { get; set; }
 
-        [XmlIgnore]
-        public float MinScale { get; set; }
-
-        [XmlIgnore]
-        public float MaxScale { get; set; }
+        internal float MinScale { get; set; }
+        internal float MaxScale { get; set; }
 
         public MapOptions MapOptions { get; set; }
 
@@ -304,7 +251,7 @@ namespace Maps.Rendering
         public int LabelBiasY { get; set; }
 
 
-        public void Paint(XGraphics graphics, RectangleF rect, MapOptions options, Color dotColor, XBrush labelBrush, XFont labelFont)
+        public void Paint(XGraphics graphics, Color dotColor, XBrush labelBrush, XFont labelFont)
         {
             if (graphics == null)
                 throw new ArgumentNullException("graphics");

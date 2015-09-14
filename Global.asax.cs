@@ -20,7 +20,7 @@ namespace Maps
             : base(null, defaults, handler)
         {
             if (!pattern.StartsWith("^") || !pattern.EndsWith("$"))
-                throw new ApplicationException("RegexRoute pattern should be pinned with ^..$: " + pattern);
+                throw new FormatException("RegexRoute pattern should be pinned with ^..$: " + pattern);
 
             RegexOptions options = RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.ExplicitCapture;
             if (caseInsensitive) options = options | RegexOptions.IgnoreCase;
@@ -30,6 +30,9 @@ namespace Maps
 
         public override RouteData GetRouteData(HttpContextBase context)
         {
+            if (context == null)
+                throw new ArgumentNullException("context");
+
             Match match = regex.Match(context.Request.Path);
             if (!match.Success)
                 return null;
@@ -60,6 +63,9 @@ namespace Maps
 
         IHttpHandler IRouteHandler.GetHttpHandler(RequestContext context)
         {
+            if (context == null)
+                throw new ArgumentNullException("context");
+
             IHttpHandler handler = Activator.CreateInstance(type) as IHttpHandler;
 
             // Pass in RouteData
@@ -86,9 +92,12 @@ namespace Maps
             this.statusCode = statusCode;
         }
 
-        IHttpHandler IRouteHandler.GetHttpHandler(RequestContext requestContext)
+        IHttpHandler IRouteHandler.GetHttpHandler(RequestContext context)
         {
-            RouteValueDictionary dict = requestContext.RouteData.Values;
+            if (context == null)
+                throw new ArgumentNullException("context");
+
+            RouteValueDictionary dict = context.RouteData.Values;
             var url = replacer.Replace(pattern, new MatchEvaluator(m => dict[m.Groups[1].Value].ToString()));
             return new RedirectHandler(url, statusCode);
         }
@@ -110,6 +119,9 @@ namespace Maps
 
             void IHttpHandler.ProcessRequest(HttpContext context)
             {
+                if (context == null)
+                    throw new ArgumentNullException("context");
+
                 string target = url;
                 if (context.Request.QueryString.Count > 0)
                     target += (target.Contains("?") ? "&" : "?") + context.Request.QueryString;

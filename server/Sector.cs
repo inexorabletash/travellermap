@@ -1,6 +1,7 @@
 using Json;
 using Maps.Rendering;
 using System;
+using System.Runtime.Serialization;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -48,14 +49,13 @@ namespace Maps
     [Serializable]
     public class MapNotInitializedException : Exception
     {
-        public MapNotInitializedException()
-            :
-            base("SectorMap data not initialized")
-        {
-        }
+        public MapNotInitializedException() : base("SectorMap data not initialized") { }
+        public MapNotInitializedException(string message) : base(message) { }
+        public MapNotInitializedException(string message, Exception innerException) : base(message, innerException) { }
+        protected MapNotInitializedException(SerializationInfo info, StreamingContext context) : base(info, context) { }
     }
 
-    public struct SectorMetafileEntry
+    internal struct SectorMetafileEntry
     {
         public string filename;
         public List<string> tags;
@@ -66,7 +66,7 @@ namespace Maps
         }
     }
 
-    public class SectorMap
+    internal class SectorMap
     {
         public const string DefaultSetting = "OTU";
 
@@ -126,7 +126,7 @@ namespace Maps
         public static SectorMap FromName(string settingName, ResourceManager resourceManager)
         {
             if (settingName != SectorMap.DefaultSetting)
-                throw new ArgumentException("Only OTU setting is currently supported.");
+                throw new ArgumentException("Only OTU setting is currently supported", "settingName");
 
             lock (SectorMap.s_lock)
             {
@@ -166,7 +166,7 @@ namespace Maps
                 settingName = SectorMap.DefaultSetting;
 
             if (settingName != SectorMap.DefaultSetting)
-                throw new ArgumentException("Only OTU setting is currently supported");
+                throw new ArgumentException("Only OTU setting is currently supported", "settingName");
 
             if (s_OTU == null)
                 throw new MapNotInitializedException();
@@ -201,10 +201,9 @@ namespace Maps
         public Sector()
         {
             this.Names = new List<Name>();
-
         }
 
-        public Sector(Stream stream, string mediaType, ErrorLogger errors)
+        internal Sector(Stream stream, string mediaType, ErrorLogger errors)
             : this()
         {
             WorldCollection wc = new WorldCollection();
@@ -225,7 +224,7 @@ namespace Maps
         public string Label { get; set; }
 
         [XmlElement("Name")]
-        public List<Name> Names { get; set; }
+        public List<Name> Names { get; }
 
         public string Domain { get; set; }
 
@@ -249,24 +248,10 @@ namespace Maps
         public MetadataCollection<Product> Products { get { return m_products; } }
 
         public MetadataCollection<Subsector> Subsectors { get { return m_subsectors; } }
-        [XmlIgnore]
-        public bool SubsectorsSpecified { get { return m_subsectors.Count() > 0; } }
-
         public MetadataCollection<Border> Borders { get { return m_borders; } }
-        [XmlIgnore]
-        public bool BordersSpecified { get { return m_borders.Count() > 0; } }
-
         public MetadataCollection<Label> Labels { get { return m_labels; } }
-        [XmlIgnore]
-        public bool LabelsSpecified { get { return m_labels.Count() > 0; } }
-
         public MetadataCollection<Route> Routes { get { return m_routes; } }
-        [XmlIgnore]
-        public bool RoutesSpecified { get { return m_routes.Count() > 0; } }
-
         public MetadataCollection<Allegiance> Allegiances { get { return m_allegiances; } }
-        [XmlIgnore]
-        public bool AllegiancesSpecified { get { return m_allegiances.Count() > 0; } }
 
         public string Credits { get; set; }
 
@@ -277,7 +262,7 @@ namespace Maps
 
             // TODO: This is very fragile; if a new type is added to Sector we need to add more code here.
 
-            if (metadataSource.Names.Any()) this.Names = metadataSource.Names;
+            if (metadataSource.Names.Any()) { this.Names.Clear(); this.Names.AddRange(metadataSource.Names); }
             if (metadataSource.DataFile != null) this.DataFile = metadataSource.DataFile;
 
             this.Subsectors.AddRange(metadataSource.Subsectors);
@@ -303,8 +288,7 @@ namespace Maps
             }
         }
 
-        [XmlIgnore, JsonIgnore]
-        public OrderedHashSet<string> Tags { get { return m_tags; } }
+        internal OrderedHashSet<string> Tags { get { return m_tags; } }
         private OrderedHashSet<string> m_tags = new OrderedHashSet<string>();
 
         public Allegiance GetAllegianceFromCode(string code)
@@ -333,38 +317,29 @@ namespace Maps
 
         private WorldCollection m_data;
 
-        public Subsector this[char alpha]
+        public Subsector Subsector(char alpha)
         {
-            get
-            {
-                return Subsectors.Where(ss => ss.Index != null && ss.Index[0] == alpha).FirstOrDefault();
-            }
+            return Subsectors.Where(ss => ss.Index != null && ss.Index[0] == alpha).FirstOrDefault();
         }
 
-        public Subsector this[int index]
+        public Subsector Subsector(int index)
         {
-            get
-            {
-                if (index < 0 || index > 15)
-                    throw new ArgumentOutOfRangeException("index");
+            if (index < 0 || index > 15)
+                throw new ArgumentOutOfRangeException("index");
 
-                char alpha = (char)('A' + index);
+            char alpha = (char)('A' + index);
 
-                return this[alpha];
-            }
+            return Subsector(alpha);
         }
 
-        public Subsector this[int x, int y]
+        public Subsector Subsector(int x, int y)
         {
-            get
-            {
-                if (x < 0 || x > 3)
-                    throw new ArgumentOutOfRangeException("x");
-                if (y < 0 || y > 3)
-                    throw new ArgumentOutOfRangeException("y");
+            if (x < 0 || x > 3)
+                throw new ArgumentOutOfRangeException("x");
+            if (y < 0 || y > 3)
+                throw new ArgumentOutOfRangeException("y");
 
-                return this[x + (y * 4)];
-            }
+            return Subsector(x + (y * 4));
         }
 
         public int SubsectorIndexFor(string label)
@@ -383,6 +358,8 @@ namespace Maps
 
         public static int QuadrantIndexFor(string label)
         {
+            if (label == null) throw new ArgumentNullException("label");
+
             switch (label.ToLowerInvariant())
             {
                 case "alpha": return 0;
@@ -393,7 +370,7 @@ namespace Maps
             return -1;
         }
 
-        public WorldCollection GetWorlds(ResourceManager resourceManager, bool cacheResults = true)
+        internal WorldCollection GetWorlds(ResourceManager resourceManager, bool cacheResults = true)
         {
             lock (this)
             {
@@ -417,7 +394,7 @@ namespace Maps
             }
         }
 
-        public void Serialize(ResourceManager resourceManager, TextWriter writer, string mediaType, bool includeMetadata = true, bool includeHeader = true, bool sscoords = false, WorldFilter filter = null)
+        internal void Serialize(ResourceManager resourceManager, TextWriter writer, string mediaType, bool includeMetadata = true, bool includeHeader = true, bool sscoords = false, WorldFilter filter = null)
         {
             WorldCollection worlds = GetWorlds(resourceManager);
 
@@ -477,7 +454,7 @@ namespace Maps
                 for (int i = 0; i < 16; ++i)
                 {
                     char c = (char)('A' + i);
-                    Subsector ss = this[c];
+                    Subsector ss = this.Subsector(c);
                     writer.WriteLine("# Subsector {0}: {1}", c, (ss != null ? ss.Name : ""));
                 }
                 writer.WriteLine();
@@ -508,7 +485,7 @@ namespace Maps
         }
 
         // TODO: Move this elsewhere
-        public class ClipPath
+        internal class ClipPath
         {
             public readonly PointF[] clipPathPoints;
             public readonly byte[] clipPathPointTypes;
@@ -548,7 +525,7 @@ namespace Maps
         }
 
         private ClipPath[] clipPathsCache = new ClipPath[(int)PathUtil.PathType.TypeCount];
-        public ClipPath ComputeClipPath(PathUtil.PathType type)
+        internal ClipPath ComputeClipPath(PathUtil.PathType type)
         {
             lock (this)
             {
@@ -559,8 +536,7 @@ namespace Maps
             return clipPathsCache[(int)type];
         }
 
-        [XmlIgnore, JsonIgnore]
-        public Rectangle Bounds
+        internal Rectangle Bounds
         {
             get
             {
@@ -590,8 +566,7 @@ namespace Maps
                 Astrometrics.SubsectorHeight * 2);
         }
 
-        [XmlIgnore, JsonIgnore]
-        public Point Center
+        internal Point Center
         {
             get
             {
@@ -607,18 +582,13 @@ namespace Maps
                 new Hex((byte)(Astrometrics.SubsectorWidth * (2 * ssx + 1) / 2), (byte)(Astrometrics.SubsectorHeight * (2 * ssy + 1) / 2)));
         }
 
-        private static SectorStylesheet s_defaultStyleSheet;
-        static Sector()
-        {
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            Stream stream = assembly.GetManifestResourceStream(@"Maps.res.styles.otu.css");
-            s_defaultStyleSheet = SectorStylesheet.Parse(new StreamReader(stream));
-        }
+        private static SectorStylesheet s_defaultStyleSheet =
+            s_defaultStyleSheet = SectorStylesheet.Parse(new StreamReader(
+                Assembly.GetExecutingAssembly().GetManifestResourceStream(@"Maps.res.styles.otu.css")));
 
-        [XmlIgnore, JsonIgnore]
-        public SectorStylesheet Stylesheet { get; set; }
+        internal SectorStylesheet Stylesheet { get; set; }
 
-        public SectorStylesheet.StyleResult ApplyStylesheet(string element, string code)
+        internal SectorStylesheet.StyleResult ApplyStylesheet(string element, string code)
         {
             return (Stylesheet ?? s_defaultStyleSheet).Apply(element, code);
         }
@@ -648,7 +618,7 @@ namespace Maps
     public class Name
     {
         public Name() { }
-        public Name(string text = "", string lang = null)
+        internal Name(string text = "", string lang = null)
         {
             Text = text;
             Lang = lang;
@@ -716,7 +686,7 @@ namespace Maps
         }
     }
 
-    sealed public class Allegiance : IAllegiance
+    public sealed class Allegiance : IAllegiance
     {
         public Allegiance() { }
         public Allegiance(string code, string name)
@@ -749,8 +719,7 @@ namespace Maps
         [XmlAttribute("Code"), JsonName("Code")]
         public string T5Code { get; set; }
 
-        [XmlIgnore, JsonIgnore]
-        public string LegacyCode { get { return string.IsNullOrEmpty(m_legacyCode) ? T5Code : m_legacyCode; } set { m_legacyCode = value; } }
+        internal string LegacyCode { get { return string.IsNullOrEmpty(m_legacyCode) ? T5Code : m_legacyCode; } set { m_legacyCode = value; } }
         private string m_legacyCode;
 
         /// <summary>
@@ -766,11 +735,6 @@ namespace Maps
         [XmlAttribute]
         public string Base { get; set; }
 
-        private class AllegianceCollection : List<Allegiance>
-        {
-            public void Add(string code, string name) { Add(new Allegiance(code, name)); }
-        }
-
         string IAllegiance.Allegiance { get { return this.T5Code; } }
     }
 
@@ -781,12 +745,9 @@ namespace Maps
 
     public class Border : IAllegiance
     {
-        public Border()
-        {
-        }
+        public Border() { }
 
-        public Border(string path, string color = null)
-            : this()
+        internal Border(string path, string color = null) : this()
         {
             this.PathString = path;
             if (color != null)
@@ -800,20 +761,17 @@ namespace Maps
         [XmlAttribute]
         public bool WrapLabel { get; set; }
 
-        [XmlIgnore, JsonIgnore]
-        public Color? Color { get; set; }
+        internal Color? Color { get; set; }
         [XmlAttribute("Color"), JsonName("Color")]
         public string ColorHtml { get { return Color.HasValue ? ColorTranslator.ToHtml(Color.Value) : null; } set { Color = ColorTranslator.FromHtml(value); } }
 
         [XmlAttribute]
         public string Allegiance { get; set; }
 
-        [XmlIgnore, JsonIgnore]
-        public IEnumerable<Hex> Path { get { return m_path; }  }
+        internal IEnumerable<Hex> Path { get { return m_path; }  }
         private List<Hex> m_path = new List<Hex>();
 
-        [XmlIgnoreAttribute, JsonIgnore]
-        public Hex LabelPosition { get; set; }
+        internal Hex LabelPosition { get; set; }
 
         [XmlAttribute("LabelPosition"), JsonName("LabelPosition")]
         public string LabelPositionHex
@@ -825,8 +783,7 @@ namespace Maps
         [XmlAttribute]
         public string Label { get; set; }
 
-        [XmlIgnore]
-        public LineStyle? Style { get; set; }
+        internal LineStyle? Style { get; set; }
         [XmlAttribute("Style"), JsonIgnore]
         public LineStyle _Style { get { return Style.Value; } set { Style = value; } }
         public bool ShouldSerialize_Style() { return Style.HasValue; }
@@ -841,6 +798,8 @@ namespace Maps
             }
             set
             {
+                if (value == null) throw new ArgumentNullException("value");
+
                 string[] hexes = value.Split((char[])null, StringSplitOptions.RemoveEmptyEntries);
                 m_path = (from hex in hexes select new Hex(hex)).ToList();
 
@@ -860,11 +819,10 @@ namespace Maps
             }
         }
 
-        [XmlIgnoreAttribute, JsonIgnore]
-        public bool Extends { get; set; }
+        internal bool Extends { get; set; }
 
         private BorderPath[] borderPathsCache = new BorderPath[(int)PathUtil.PathType.TypeCount];
-        public BorderPath ComputeGraphicsPath(Sector sector, PathUtil.PathType type)
+        internal BorderPath ComputeGraphicsPath(Sector sector, PathUtil.PathType type)
         {
             lock (this)
             {
@@ -891,7 +849,7 @@ namespace Maps
         {
         }
 
-        public Route(Point? startOffset = null, int start = 0, Point? endOffset = null, int end = 0, string color = null)
+        internal Route(Point? startOffset = null, int start = 0, Point? endOffset = null, int end = 0, string color = null)
             : this()
         {
             StartOffset = startOffset ?? Point.Empty;
@@ -902,11 +860,8 @@ namespace Maps
                 ColorHtml = color;
         }
 
-        [XmlIgnoreAttribute, JsonIgnore]
-        public Hex Start { get; set; }
-
-        [XmlIgnoreAttribute, JsonIgnore]
-        public Hex End { get; set; }
+        internal Hex Start { get; set; }
+        internal Hex End { get; set; }
 
         [XmlAttribute("Start"), JsonName("Start")]
         public string StartHex
@@ -927,14 +882,12 @@ namespace Maps
         private sbyte m_endOffsetX;
         private sbyte m_endOffsetY;
 
-        [XmlIgnoreAttribute, JsonIgnore]
-        public Point StartOffset {
+        internal Point StartOffset {
             get { return new Point(m_startOffsetX, m_startOffsetY); }
             set { m_startOffsetX = (sbyte)value.X; m_startOffsetY = (sbyte)value.Y; }
         }
 
-        [XmlIgnoreAttribute, JsonIgnore]
-        public Point EndOffset
+        internal Point EndOffset
         {
             get { return new Point(m_endOffsetX, m_endOffsetY); }
             set { m_endOffsetX = (sbyte)value.X; m_endOffsetY = (sbyte)value.Y; }
@@ -957,20 +910,17 @@ namespace Maps
         public int EndOffsetY { get { return m_endOffsetY; } set { m_endOffsetY = (sbyte)value; } }
 
 
-        [XmlIgnore]
-        public LineStyle? Style { get; set; }
+        internal LineStyle? Style { get; set; }
         [XmlAttribute("Style"), JsonIgnore]
         public LineStyle _Style { get { return Style.Value; } set { Style = value; } }
         public bool ShouldSerialize_Style() { return Style.HasValue; }
 
-        [XmlIgnore]
-        public float? Width { get; set; }
+        internal float? Width { get; set; }
         [XmlAttribute("Width"), JsonIgnore]
         public float _Width { get { return Width.Value; } set { Width = value; } }
         public bool ShouldSerialize_Width() { return Width.HasValue; }
 
-        [XmlIgnore, JsonIgnore]
-        public Color? Color { get; set; }
+        internal Color? Color { get; set; }
         [XmlAttribute("Color"), JsonName("Color")]
         public string ColorHtml { get { return Color.HasValue ? ColorTranslator.ToHtml(Color.Value) : null; } set { Color = ColorTranslator.FromHtml(value); } }
 
@@ -1026,9 +976,7 @@ namespace Maps
         [XmlAttribute]
         public string Allegiance { get; set; }
 
-        [XmlIgnoreAttribute, JsonIgnore]
-        public Color Color { get; set; }
-
+        internal Color Color { get; set; }
         [XmlAttribute("Color"), JsonName("Color")]
         public string ColorHtml { get { return ColorTranslator.ToHtml(Color); } set { Color = ColorTranslator.FromHtml(value); } }
 
@@ -1049,17 +997,20 @@ namespace Maps
     [XmlRoot(ElementName = "Sectors")]
     public class SectorCollection
     {
+        public SectorCollection()
+        {
+            Sectors = new List<Sector>();
+        }
+
         [XmlElement("Sector")]
-        public List<Sector> Sectors { get; set; }
+        public List<Sector> Sectors { get; }
 
         public void Merge(SectorCollection otherCollection)
         {
             if (otherCollection == null)
                 throw new ArgumentNullException("otherCollection");
 
-            if (Sectors == null)
-                Sectors = otherCollection.Sectors;
-            else if (otherCollection.Sectors != null)
+            if (otherCollection.Sectors != null)
                 Sectors.AddRange(otherCollection.Sectors);
         }
     }

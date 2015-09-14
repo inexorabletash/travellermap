@@ -68,7 +68,7 @@ namespace Maps.Rendering
         Outline
     }
 
-    public struct FontInfo
+    internal struct FontInfo
     {
         public FontFamily family;
         public string name;
@@ -102,7 +102,7 @@ namespace Maps.Rendering
         }
     }
 
-    public struct PenInfo
+    internal struct PenInfo
     {
         public Color color;
         public float width;
@@ -142,7 +142,7 @@ namespace Maps.Rendering
         public void Apply(ref XPen pen)
         {
             if (this.width == 0f)
-                throw new ApplicationException("Hairline pens not supported, set width > 0");
+                throw new ArgumentOutOfRangeException("pen", "Hairline pens not supported, set width > 0");
 
             pen.Color = this.color;
             pen.Width = this.width;
@@ -155,7 +155,7 @@ namespace Maps.Rendering
 
     }
 
-    public struct LabelStyle
+    internal struct LabelStyle
     {
         public float Rotation { get; set; }
         public SizeF Scale { get; set; }
@@ -177,7 +177,7 @@ namespace Maps.Rendering
         Square,
     }
 
-    public class Stylesheet
+    internal class Stylesheet
     {
         public const string DEFAULT_FONT = "Arial";
 
@@ -239,7 +239,6 @@ namespace Maps.Rendering
 
             t5AllegianceCodes = scale >= T5AllegianceCodeMinScale;
 
-            float logscale = (float)Math.Log(scale, 2.0);
             riftOpacity = ScaleInterpolate(0f, 0.85f, scale, 1/4f, 4f);
 
             deepBackgroundOpacity = ScaleInterpolate(1f, 0f, scale, 1/8f, 2f);
@@ -746,7 +745,7 @@ namespace Maps.Rendering
             placeholder.position = new PointF(0, 0.17f);
         }
 
-        public struct StyleElement
+        internal struct StyleElement
         {
             public bool visible;
 
@@ -943,7 +942,7 @@ namespace Maps.Rendering
 
     }
 
-    public class FontCache : IDisposable
+    internal class FontCache : IDisposable
     {
 
         public FontCache(Stylesheet sheet)

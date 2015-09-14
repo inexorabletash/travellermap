@@ -8,7 +8,7 @@ using System.Drawing;
 
 namespace Maps
 {
-    public class SectorStylesheet
+    internal class SectorStylesheet
     {
         // Grammar: 
         //   stylesheet       := WS rule-list WS
@@ -55,11 +55,6 @@ namespace Maps
         };
 
         #region Parser
-        [Serializable]
-        class ParseException : ApplicationException 
-        {
-            public ParseException(string message) : base(message) { }
-        }
         class Parser
         {
             public Parser(TextReader reader)
@@ -330,7 +325,7 @@ namespace Maps
             return sb.ToString();
         }
 
-        public class StyleResult
+        internal class StyleResult
         {
             public string element;
             public string code;
@@ -363,7 +358,7 @@ namespace Maps
                 {
                     return ColorTranslator.FromHtml(value);
                 }
-                catch
+                catch (Exception)
                 {
                     return null;
                 }
@@ -383,7 +378,7 @@ namespace Maps
             public T? GetEnum<T>(string property) where T : struct // enum 
             {
                 if (!typeof(T).IsEnum)
-                    throw new Exception("Type must be an enum");
+                    throw new ParseException("Type must be an enum");
 
                 string value;
                 if (!dict.TryGetValue(property, out value) || string.IsNullOrEmpty(value))

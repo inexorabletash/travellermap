@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Maps.Serialization
 {
-    public abstract class SectorFileSerializer
+    internal abstract class SectorFileSerializer
     {
         public abstract Encoding Encoding { get; }
 
@@ -33,7 +33,7 @@ namespace Maps.Serialization
         }
     }
 
-    public class SecSerializer : SectorFileSerializer
+    internal class SecSerializer : SectorFileSerializer
     {
         public override Encoding Encoding { get { return Encoding.GetEncoding(1252); } }
 
@@ -80,7 +80,7 @@ namespace Maps.Serialization
         }
     }
 
-    public class SecondSurveySerializer : SectorFileSerializer
+    internal class SecondSurveySerializer : SectorFileSerializer
     {
         public override Encoding Encoding { get { return Util.UTF8_NO_BOM; } }
 
@@ -136,7 +136,7 @@ namespace Maps.Serialization
         }
     }
 
-    public class TabDelimitedSerializer : SectorFileSerializer
+    internal class TabDelimitedSerializer : SectorFileSerializer
     {
         public override Encoding Encoding { get { return Util.UTF8_NO_BOM; } }
 

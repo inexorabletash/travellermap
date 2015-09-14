@@ -13,7 +13,7 @@ using System.Web;
 
 namespace Maps.API
 {
-    public abstract class ImageHandlerBase : DataHandlerBase
+    internal abstract class ImageHandlerBase : DataHandlerBase
     {
         public override string DefaultContentType { get { return Util.MediaTypeName_Image_Png; } }
 

@@ -6,7 +6,7 @@ using System.Drawing;
 
 namespace Maps.API
 {
-    public class JumpMapHandler : ImageHandlerBase
+    internal class JumpMapHandler : ImageHandlerBase
     {
         protected override string ServiceName { get { return "jumpmap"; } }
 
@@ -15,7 +15,7 @@ namespace Maps.API
             // NOTE: This (re)initializes a static data structure used for 
             // resolving names into sector locations, so needs to be run
             // before any other objects (e.g. Worlds) are loaded.
-            ResourceManager resourceManager = new ResourceManager(context.Server, context.Cache);
+            ResourceManager resourceManager = new ResourceManager(context.Server);
 
             //
             // Jump
@@ -54,7 +54,7 @@ namespace Maps.API
 
                 int hex = GetIntOption(context, "hex", Astrometrics.SectorCentralHex);
                 loc = new Location(new Point(0, 0), hex);
-                selector = new HexSectorSelector(resourceManager, sector, loc.HexLocation, jump);
+                selector = new HexSectorSelector(resourceManager, sector, loc.Hex, jump);
             }
             else
             {
@@ -73,17 +73,9 @@ namespace Maps.API
 
                     loc = new Location(sector.Location, hex);
                 }
-                else if (HasOption(context, "sx") && HasOption(context, "sy") && HasOption(context, "hx") && HasOption(context, "hy"))
+                else if (HasLocation(context))
                 {
-                    int sx = GetIntOption(context, "sx", 0);
-                    int sy = GetIntOption(context, "sy", 0);
-                    byte hx = (byte)GetIntOption(context, "hx", 0);
-                    byte hy = (byte)GetIntOption(context, "hy", 0);
-                    loc = new Location(map.FromLocation(sx, sy).Location, new Hex(hx, hy));
-                }
-                else if (HasOption(context, "x") && HasOption(context, "y"))
-                {
-                    loc = Astrometrics.CoordinatesToLocation(GetIntOption(context, "x", 0), GetIntOption(context, "y", 0));
+                    loc = GetLocation(context);
                 }
                 else
                 {

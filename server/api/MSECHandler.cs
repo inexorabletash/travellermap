@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Maps.API
 {
-    public class MSECHandler : DataHandlerBase
+    internal class MSECHandler : DataHandlerBase
     {
         public override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Plain; } }
         protected override string ServiceName { get { return "msec"; } }
@@ -15,7 +15,7 @@ namespace Maps.API
             // NOTE: This (re)initializes a static data structure used for 
             // resolving names into sector locations, so needs to be run
             // before any other objects (e.g. Worlds) are loaded.
-            ResourceManager resourceManager = new ResourceManager(context.Server, context.Cache);
+            ResourceManager resourceManager = new ResourceManager(context.Server);
             SectorMap map = SectorMap.FromName(SectorMap.DefaultSetting, resourceManager);
             Sector sector;
 

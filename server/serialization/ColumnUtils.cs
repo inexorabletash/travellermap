@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 
 namespace Maps.Serialization
 {
-    public class ColumnParser
+    internal class ColumnParser
     {
         public ColumnParser(TextReader reader)
         {
@@ -60,7 +60,7 @@ namespace Maps.Serialization
             public string name;
         }
 
-        public struct Row
+        internal struct Row
         {
             public StringDictionary dict;
             public int lineNumber;
@@ -95,7 +95,7 @@ namespace Maps.Serialization
         }
     }
 
-    public class ColumnSerializer
+    internal class ColumnSerializer
     {
         public ColumnSerializer(IList<string> header)
         {
@@ -114,7 +114,7 @@ namespace Maps.Serialization
         public void AddRow(IList<string> data)
         {
             if (rows[0].Length != data.Count())
-                throw new ApplicationException("Differing column counts");
+                throw new ParseException("Differing column counts");
 
             string[] row = new string[rows[0].Length];
             for (int i = 0; i < row.Length; ++i)

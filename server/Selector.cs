@@ -13,9 +13,9 @@ using System.Linq;
 
 namespace Maps
 {
-    public abstract class Selector
+    internal abstract class Selector
     {
-        public Selector()
+        protected Selector()
         {
             Slop = true;
         }
@@ -36,12 +36,12 @@ namespace Maps
         {
             get
             {
-                return Sectors.SelectMany(sector => Enumerable.Range(0, 16).Select(i => sector[i]).OfType<Subsector>());
+                return Sectors.SelectMany(sector => Enumerable.Range(0, 16).Select(i => sector.Subsector(i)).OfType<Subsector>());
             }
         }
     }
 
-    public class SectorSelector : Selector
+    internal class SectorSelector : Selector
     {
         Sector m_sector;
         ResourceManager m_resourceManager;
@@ -65,7 +65,7 @@ namespace Maps
     }
 
 
-    public class SubsectorSelector : Selector
+    internal class SubsectorSelector : Selector
     {
         Sector m_sector;
         int m_index;
@@ -112,7 +112,7 @@ namespace Maps
         }
     }
 
-    public class QuadrantSelector : Selector
+    internal class QuadrantSelector : Selector
     {
         Sector m_sector;
         int m_index;
@@ -159,7 +159,7 @@ namespace Maps
         }
     }
 
-    public class RectSelector : Selector
+    internal class RectSelector : Selector
     {
         SectorMap m_map;
         ResourceManager m_resourceManager;
@@ -229,10 +229,10 @@ namespace Maps
                     {
                         Location loc = Astrometrics.CoordinatesToLocation(coords);
 
-                        if (cachedLoc != loc.SectorLocation)
+                        if (cachedLoc != loc.Sector)
                         {
-                            cachedSector = m_map.FromLocation(loc.SectorLocation.X, loc.SectorLocation.Y);
-                            cachedLoc = loc.SectorLocation;
+                            cachedSector = m_map.FromLocation(loc.Sector.X, loc.Sector.Y);
+                            cachedLoc = loc.Sector;
                         }
 
                         if (cachedSector == null)
@@ -242,7 +242,7 @@ namespace Maps
                         if (worlds == null)
                             continue;
 
-                        World world = worlds[loc.HexLocation];
+                        World world = worlds[loc.Hex];
                         if (world == null)
                             continue;
 
@@ -253,7 +253,7 @@ namespace Maps
         }
     }
 
-    public class HexSelector : Selector
+    internal class HexSelector : Selector
     {
         SectorMap m_map;
         ResourceManager m_resourceManager;
@@ -290,9 +290,9 @@ namespace Maps
                 Location locTL = Astrometrics.CoordinatesToLocation(topLeft);
                 Location locBR = Astrometrics.CoordinatesToLocation(bottomRight);
 
-                for (int y = locTL.SectorLocation.Y; y <= locBR.SectorLocation.Y; ++y)
+                for (int y = locTL.Sector.Y; y <= locBR.Sector.Y; ++y)
                 {
-                    for (int x = locTL.SectorLocation.X; x <= locBR.SectorLocation.X; ++x)
+                    for (int x = locTL.Sector.X; x <= locBR.Sector.X; ++x)
                     {
                         Sector sector = m_map.FromLocation(x, y);
                         if (sector == null)
@@ -328,10 +328,10 @@ namespace Maps
                         {
                             Location loc = Astrometrics.CoordinatesToLocation(coords);
 
-                            if (!cached || cachedLoc != loc.SectorLocation)
+                            if (!cached || cachedLoc != loc.Sector)
                             {
-                                cachedSector = m_map.FromLocation(loc.SectorLocation.X, loc.SectorLocation.Y);
-                                cachedLoc = loc.SectorLocation;
+                                cachedSector = m_map.FromLocation(loc.Sector.X, loc.Sector.Y);
+                                cachedLoc = loc.Sector;
                                 cached = true;
                             }
 
@@ -341,7 +341,7 @@ namespace Maps
                                 if (worlds == null)
                                     continue;
 
-                                World world = worlds[loc.HexLocation];
+                                World world = worlds[loc.Hex];
                                 if (world == null)
                                     continue;
                                 yield return world;
@@ -354,7 +354,7 @@ namespace Maps
         }
     }
 
-    public class HexSectorSelector : Selector
+    internal class HexSectorSelector : Selector
     {
         Sector m_sector;
         ResourceManager m_resourceManager;

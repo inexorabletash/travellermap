@@ -9,14 +9,14 @@ namespace Maps.API
     /// <summary>
     /// Fetch data about the universe.
     /// </summary>
-    public class UniverseHandler : DataHandlerBase
+    internal class UniverseHandler : DataHandlerBase
     {
         public override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Xml; } }
         protected override string ServiceName { get { return "universe"; } }
 
         public override void Process(HttpContext context)
         {
-            ResourceManager resourceManager = new ResourceManager(context.Server, context.Cache);
+            ResourceManager resourceManager = new ResourceManager(context.Server);
 
             // NOTE: This (re)initializes a static data structure used for 
             // resolving names into sector locations, so needs to be run
@@ -28,7 +28,7 @@ namespace Maps.API
             bool requireData = GetBoolOption(context, "requireData", defaultValue: false);
             string[] tags = GetStringsOption(context, "tag");
 
-            Result data = new Result();
+            UniverseResult data = new UniverseResult();
             foreach (Sector sector in map.Sectors)
             {
                 if (requireData && sector.DataFile == null)
@@ -40,22 +40,22 @@ namespace Maps.API
                 if (tags != null && !(tags.Any(tag => sector.Tags.Contains(tag))))
                     continue;
 
-                data.Sectors.Add(new SectorResult(sector));
+                data.Sectors.Add(new UniverseResult.SectorResult(sector));
             }
 
             SendResult(context, data);
         }
+    }
 
-        [XmlRoot(ElementName = "Universe")]
-        // public for XML serialization
-        public class Result
-        {
-            public Result() {}
+    [XmlRoot(ElementName = "Universe")]
+    // public for XML serialization
+    public class UniverseResult
+    {
+        public UniverseResult() { }
 
-            [XmlElement("Sector")]
-            public List<SectorResult> Sectors { get { return m_sectors; } }
-            private List<SectorResult> m_sectors = new List<SectorResult>();
-        }
+        [XmlElement("Sector")]
+        public List<SectorResult> Sectors { get { return m_sectors; } }
+        private List<SectorResult> m_sectors = new List<SectorResult>();
 
         [XmlRoot("Sector")]
         public class SectorResult
@@ -72,7 +72,7 @@ namespace Maps.API
             public string Abbreviation { get { return m_sector.Abbreviation; } }
 
             [XmlAttribute]
-            public string Tags { get { return m_sector.TagString;  } }
+            public string Tags { get { return m_sector.TagString; } }
 
             [XmlElement("Name")]
             public List<Name> Names { get { return m_sector.Names; } }

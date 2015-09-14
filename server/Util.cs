@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Text.RegularExpressions;
 
 namespace Maps
 {
-    public static class Util
+    internal static class Util
     {
         public const string MediaTypeName_Image_Png = "image/png";
         public static readonly Encoding UTF8_NO_BOM = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false);
@@ -87,12 +88,12 @@ namespace Maps
         // TODO: Could be a variant of Enumerable.Range(...).Select(...)
         public static IEnumerable<int> Sequence(int start, int end)
         {
-            int c = start, d = (start < end) ? 1 : -1;
-            yield return c;
-            while (c != end)
+            int current = start, delta = (start < end) ? 1 : -1;
+            yield return current;
+            while (current != end)
             {
-                c += d;
-                yield return c;
+                current += delta;
+                yield return current;
             }
         }
 
@@ -128,7 +129,7 @@ namespace Maps
     //  - * matches 0-or-more of anything
     //  - ? matches exactly one of anything
     [Serializable]
-    public class Glob : Regex
+    internal class Glob : Regex
     {
         public Glob(string pattern, RegexOptions options = RegexOptions.IgnoreCase | RegexOptions.Singleline)
             : base("^" + Regex.Escape(pattern).Replace(@"\*", ".*").Replace(@"\?", ".") + "$", options) { }
@@ -136,7 +137,7 @@ namespace Maps
     }
 
     [Serializable]
-    public class RegexDictionary<T> : Dictionary<Regex, T>
+    internal class RegexDictionary<T> : Dictionary<Regex, T>
     {
         public RegexDictionary() { }
         protected RegexDictionary(SerializationInfo info, StreamingContext context) : base(info, context) { }
@@ -155,7 +156,7 @@ namespace Maps
     }
 
     [Serializable]
-    public class GlobDictionary<T> : RegexDictionary<T>
+    internal class GlobDictionary<T> : RegexDictionary<T>
     {
         public GlobDictionary() { }
         protected GlobDictionary(SerializationInfo info, StreamingContext context) : base(info, context) { }
@@ -166,7 +167,7 @@ namespace Maps
 
     // Don't close the underlying stream when disposed; must be disposed
     // before the underlying stream is.
-    public class NoCloseStreamReader : StreamReader
+    internal class NoCloseStreamReader : StreamReader
     {
         public NoCloseStreamReader(Stream stream, Encoding encoding, bool detectEncodingFromByteOrderMarks, int bufferSize)
             : base(stream, encoding, detectEncodingFromByteOrderMarks, bufferSize)
@@ -181,7 +182,7 @@ namespace Maps
 
     // Don't close the underlying stream when disposed; must be disposed
     // before the underlying stream is.
-    public class NoCloseStreamWriter : StreamWriter
+    internal class NoCloseStreamWriter : StreamWriter
     {
         public NoCloseStreamWriter(Stream stream, Encoding encoding)
             : base(stream, encoding)
@@ -194,7 +195,7 @@ namespace Maps
         }
     }
 
-    sealed public class OrderedHashSet<T> : IEnumerable<T>
+    internal sealed class OrderedHashSet<T> : IEnumerable<T>
     {
         private List<T> m_list = new List<T>();
         private HashSet<T> m_set = new HashSet<T>();
@@ -244,18 +245,11 @@ namespace Maps
 
         public T this[int index] { get { return m_list[index]; } }
 
-        IEnumerator<T> IEnumerable<T>.GetEnumerator()
-        {
-            return m_list.GetEnumerator();
-        }
-
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-        {
-            return m_list.GetEnumerator();
-        }
+        public IEnumerator<T> GetEnumerator() { return m_list.GetEnumerator(); }
+        IEnumerator IEnumerable.GetEnumerator() { return GetEnumerator(); }
     }
 
-    public class ErrorLogger
+    internal class ErrorLogger
     {
         public enum Severity {
             Fatal,
@@ -325,7 +319,7 @@ namespace Maps
 
     // Based on:
     // https://visualstudiomagazine.com/Articles/2012/11/01/Priority-Queues-with-C.aspx
-    public class PriorityQueue<T> where T : IComparable<T>
+    internal class PriorityQueue<T> where T : IComparable<T>
     {
         private List<T> data = new List<T>();
 
@@ -371,6 +365,14 @@ namespace Maps
         }
 
         public int Count { get { return data.Count; } }
+    }
 
+    [Serializable]
+    public class ParseException : Exception
+    {
+        public ParseException() : base("Parse error") { }
+        public ParseException(string message) : base(message) { }
+        public ParseException(string message, Exception innerException) : base(message, innerException) { }
+        protected ParseException(SerializationInfo info, StreamingContext context) : base(info, context) { }
     }
 }
