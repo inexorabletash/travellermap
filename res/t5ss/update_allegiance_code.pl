@@ -35,11 +35,12 @@ my @lines;
     die "Unexpected header: $line\n" unless $line =~ /^ALLEGIANCES$/;
     my $line = <$fh>; chomp $line; $line = trim($line);
     die "Unexpected header: $line\n" unless $line =~ /^$/;
+    my $line = <$fh>; chomp $line; $line = trim($line);
+    die "Unexpected header: $line\n" unless $line =~ /^Code\t/;
 
     while (<$fh>) {
         chomp;
-        next unless m/^(\w\w\w\w)\t/;
-        next if $1 eq "Code";
+        die "Unexpected: $_\n" unless m/^([A-Za-z0-9']{4})\t/;
         my ($alleg, $legacy, $base, $desc, $location) = map { trim($_) } split(/\t/);
 
         my $comment;
