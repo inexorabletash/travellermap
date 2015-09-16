@@ -2,9 +2,14 @@ window.addEventListener('DOMContentLoaded', function() {
   var $ = function(s) { return document.querySelector(s); };
   var $$ = function(s) { return document.querySelectorAll(s); };
 
+  var config = $('script[src="toc.js"]');
+  var selector = (config && config.getAttribute('data-toc-selector')) || 'h2,h3';
+
+  console.log(config, selector);
+
   var toc = document.createElement('nav');
   toc.className = 'toc';
-  [].slice.call($$('h2,h3')).forEach(function(h) {
+  [].slice.call($$(selector)).forEach(function(h) {
     var a = document.createElement('a');
     var text = h.textContent || h.innerText;
     if (!h.id)
