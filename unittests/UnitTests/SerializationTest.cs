@@ -1,7 +1,7 @@
 ﻿using Maps;
 using Maps.Serialization;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -128,11 +128,14 @@ namespace UnitTests
             Sector sector = new Sector();
             sector.Names.Add(new Name("Sector Name"));
             sector.Allegiances.Add(new Allegiance("X7", "Seven Evil Exes"));
-            sector.Borders.Add(new Border("0001 0002 0003 0004"));
+            sector.Borders.Add(new Border("0001 0002 0003 0004", "red"));
             sector.Borders.Add(new Border("0000 0001 0002 0003 0004 0005 0006", "blue"));
-            sector.Routes.Add(new Route(start: 0101, end: 0202));
-            sector.Routes.Add(new Route(new Point(-1, -1), 3240, new Point(1, 1), 0101, "red"));
             sector.Labels.Add(new Label(0123, "Your text here"));
+
+            new List<Route> {
+                new Route(new Point(-1, -1), 3240, new Point(1, 1), 0101, "red"),
+                new Route(start: 0101, end: 0202)
+            }.ForEach(route => { route.Allegiance = "Im"; sector.Routes.Add(route); });
 
             StringWriter writer = new StringWriter();
             MSECSerializer msec = new MSECSerializer();
