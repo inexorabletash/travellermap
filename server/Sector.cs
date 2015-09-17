@@ -745,7 +745,10 @@ namespace Maps
 
     public class Border : IAllegiance
     {
-        public Border() { }
+        public Border()
+        {
+            ShowLabel = true;
+        }
 
         internal Border(string path, string color = null) : this()
         {
