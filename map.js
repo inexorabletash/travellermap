@@ -1204,9 +1204,6 @@ var Util = {
   // once it has successfully loaded.
   //
   TravellerMap.prototype.getTile = function(x, y, scale, callback) {
-    if ('onLine' in navigator && !navigator.onLine)
-      return undefined;
-
     var params = {x: x, y: y, scale: pow2(scale - 1), options: this.options, style: this.style};
     Object.keys(this.tileOptions).forEach(function(key) {
       params[key] = this.tileOptions[key];
@@ -1231,6 +1228,9 @@ var Util = {
       return undefined;
 
     if (this.defer_loading)
+      return undefined;
+
+    if ('onLine' in navigator && !navigator.onLine)
       return undefined;
 
     // Nope, better try loading it

@@ -6,7 +6,7 @@
     <html>
         <head>
             <title>Sector Credits</title>
-            <style type="text/css">
+            <style>
                 body, table { font-size: 8pt; font-family: sans-serif; }
                 th, td { white-space: nowrap; text-align: left; vertical-align: top; }
                 th:hover { text-decoration: underline; cursor: pointer; }
