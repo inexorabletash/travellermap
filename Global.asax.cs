@@ -298,4 +298,30 @@ namespace Maps
             routes.Add(new RegexRoute(@"^/data/(?<sector>[^/]+)/(?<subsector>[^/]+)/image$", new GenericRouteHandler(typeof(PosterHandler))));
         }
     }
+
+    // <modules>
+    //   <add name="PageFooterModule" type="Maps.PageFooterModule" />
+    // </modules>
+    // <appSettings>
+    //   <add key="PageFooter" value="your footer here..." />
+    // </appSettings>
+    public class PageFooterModule : IHttpModule
+    {
+        public String ModuleName { get { return "PageFooterModule"; } }
+
+        public void Init(HttpApplication application)
+        {
+            string footer = System.Configuration.ConfigurationManager.AppSettings["PageFooter"];
+            if (string.IsNullOrWhiteSpace(footer))
+                return;
+
+            application.EndRequest += (Object source, EventArgs e) => {
+                HttpContext context = application.Context;
+                if (context.Response.ContentType == System.Net.Mime.MediaTypeNames.Text.Html)
+                    context.Response.Write(footer);
+            };
+        }
+
+        public void Dispose() { }
+    }
 }
