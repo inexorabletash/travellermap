@@ -1,7 +1,4 @@
-﻿using System;
-using System.Drawing;
-using System.Globalization;
-using System.Linq;
+﻿using System.Linq;
 using System.Xml.Serialization;
 
 namespace Maps.API
@@ -44,14 +41,14 @@ namespace Maps.API
 
             Sector sector = map.FromLocation(loc.Sector.X, loc.Sector.Y);
 
-            CreditsResult data = new CreditsResult();
+            var data = new Results.CreditsResult();
 
             if (sector != null)
             {
                 // TODO: Multiple names
                 foreach (var name in sector.Names.Take(1))
                     data.SectorName = name.Text;
-                
+
                 // Raw HTML credits
                 data.Credits = sector.Credits == null ? null : sector.Credits.Trim();
 
@@ -130,7 +127,10 @@ namespace Maps.API
             SendResult(context, data);
         }
     }
+}
 
+namespace Maps.API.Results
+{
     [XmlRoot(ElementName = "Data")]
     // public for XML serialization
     public class CreditsResult

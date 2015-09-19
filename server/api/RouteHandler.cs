@@ -116,12 +116,13 @@ namespace Maps.API
             List<World> route = finder.FindPath(startWorld, endWorld);
             if (route == null) { SendError(context.Response, 404, "Not Found", "No route found"); return; }
 
-            List<RouteStop> result = new List<RouteStop>(
-                route.Select(w => new RouteStop(w)));
-            SendResult(context, result);
+            SendResult(context, route.Select(w => new Results.RouteStop(w)).ToList());
         }
     }
+}
 
+namespace Maps.API.Results
+{
     public class RouteStop
     {
         public RouteStop() { }

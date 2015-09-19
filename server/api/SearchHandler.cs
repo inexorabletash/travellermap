@@ -1,4 +1,5 @@
 ﻿using Json;
+using Maps.API.Results;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -81,7 +82,10 @@ namespace Maps.API
             SendResult(context, resultsList);
         }
     }
+}
 
+namespace Maps.API.Results
+{
     [JsonName("Results")]
     [XmlRoot(ElementName = "results")]
     public class SearchResults

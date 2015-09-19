@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Xml;
 using System.Xml.Serialization;
 
 namespace Maps.API
@@ -46,12 +45,15 @@ namespace Maps.API
 
             Selector selector = new HexSelector(map, resourceManager, loc, jump);
 
-            JumpWorldsResult data = new JumpWorldsResult();
+            var data = new Results.JumpWorldsResult();
             data.Worlds.AddRange(selector.Worlds);
             SendResult(context, data);
         }
     }
+}
 
+namespace Maps.API.Results
+{
     [XmlRoot(ElementName = "JumpWorlds")]
     // public for XML serialization
     public class JumpWorldsResult

@@ -124,6 +124,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="server\api\CodesHandler.cs" />
     <Compile Include="server\api\RouteHandler.cs" />
     <Compile Include="server\PathFinder.cs" />
     <Compile Include="server\WorldCollection.cs" />

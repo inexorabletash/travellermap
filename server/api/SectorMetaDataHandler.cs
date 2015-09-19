@@ -1,5 +1,4 @@
 ﻿using Maps.Serialization;
-using System;
 using System.Collections.Generic;
 using System.Web;
 using System.Xml.Serialization;
@@ -62,11 +61,13 @@ namespace Maps.API
                 return;
             }
 
-            WorldCollection worlds = sector.GetWorlds(resourceManager, cacheResults: true);
-            SendResult(context, new SectorMetadata(sector, worlds));
+            SendResult(context, new Results.SectorMetadata(sector, sector.GetWorlds(resourceManager, cacheResults: true)));
         }
     }
+}
 
+namespace Maps.API.Results
+{
     [XmlRoot("Sector")]
     public class SectorMetadata
     {

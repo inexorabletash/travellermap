@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Maps.API.Results;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Xml;
@@ -46,7 +47,10 @@ namespace Maps.API
             SendResult(context, data);
         }
     }
+}
 
+namespace Maps.API.Results
+{
     [XmlRoot(ElementName = "Universe")]
     // public for XML serialization
     public class UniverseResult

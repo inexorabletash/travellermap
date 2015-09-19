@@ -1,5 +1,4 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Xml.Serialization;
 
 namespace Maps.API
@@ -45,7 +44,7 @@ namespace Maps.API
 
             Point coords = Astrometrics.LocationToCoordinates(loc);
 
-            CoordinatesResult result = new CoordinatesResult();
+            var result = new Results.CoordinatesResult();
             result.sx = loc.Sector.X;
             result.sy = loc.Sector.Y;
             result.hx = loc.Hex.X;
@@ -55,7 +54,10 @@ namespace Maps.API
             SendResult(context, result);
         }
     }
+}
 
+namespace Maps.API.Results
+{ 
     [XmlRoot(ElementName = "Coordinates")]
     // public for XML serialization
     public class CoordinatesResult
