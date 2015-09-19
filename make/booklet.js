@@ -195,7 +195,7 @@
   window.addEventListener('DOMContentLoaded', function() {
     var searchParams = new URL(document.location).searchParams;
     if (searchParams.has('sector')) {
-      $('#input').style.display = 'none';
+      document.body.classList.add('render');
       render({
         sector: searchParams.get('sector')
       });
@@ -208,7 +208,7 @@
         alert('Sector data must be specified.');
         return;
       }
-      $('#input').style.display = 'none';
+      document.body.classList.add('render');
       render({
         data: form['data'].value,
         metadata: form['metadata'].value

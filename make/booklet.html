@@ -11,13 +11,21 @@
 <style>
 @import url(http://fonts.googleapis.com/css?family=Marcellus|PT+Sans+Narrow);
 
+/* Form ============================== */
+
+#input { margin: 8px; }
+
+body.render #input { display: none; }
+
+/* Booklet ============================== */
+
 @media print {
   @page {
     size: landscape;
     margin: 0;
   }
 
-  body {
+  body.render {
     position: absolute; /* Hack for extra margin when printing */
   }
 }
@@ -77,8 +85,8 @@ th, td {
   float: left;
 }
 
-@media only screen and (min-width: 8in) {
-  body {
+@media only screen {
+  body.render {
     text-align: center;
     background-color: gray;
     width: 100%;
@@ -367,6 +375,76 @@ td.vertical {
   text-align: right;
 }
 
+/* Legend  ============================== */
+
+.legend h4 {
+  text-transform: uppercase;
+  margin-bottom: 0;
+}
+
+.legend td {
+  vertical-align: top;
+  padding: 0 0.125in;
+}
+
+.legend ul {
+  padding-left: 0.25in;
+  margin: 0;
+}
+
+.legend li {
+  list-style: none;
+  height: 0.2in;
+}
+
+.legend .glyph {
+  display: inline-block;
+  width: 0.3in;
+  line-height: 12pt;
+  overflow: hidden;
+  text-align: center;
+  vertical-align: text-bottom;
+}
+.legend .highlight { color: red; }
+.legend .glyph.water { color: #00bfff; }
+.legend .amberzone { color: yellow; }
+.legend .redzone { color: red; }
+.legend .popname {
+  display: inline-block;
+  width: 0.75in;
+  text-align: left;
+}
+
+table.field-definitions td:first-of-type {
+  width: 0.75in;
+}
+
+table.allegiances td:first-of-type {
+  width: 0.5in;
+}
+table.allegiances td {
+  white-space: normal;
+  vertical-align: top;
+}
+
+table.subsector-grid {
+  border-collapse: collapse;
+  border: 0.03in solid black;
+  float: left;
+  margin-right: 20px;
+}
+table.subsector-grid td {
+  width: 0.25in;
+  height: 0.4in;
+  border: 0.03in solid black;
+  vertical-align: top;
+  font-weight: bold;
+}
+
+table.subsector-list tr td:first-of-type {
+  width: 0.3in;
+}
+
 /* Index ============================== */
 
 .index-page {
@@ -414,10 +492,6 @@ td.vertical {
 
   <!-- Sector Selector/Input -->
   <div id="input">
-    <style>
-      #input { margin: 8px; }
-    </style>
-
     <h1>Booklet Maker &mdash; The Traveller Map</h1>
 
     <ol class="steps">
@@ -644,45 +718,6 @@ td.vertical {
         <div class="content">
           <div class="details_title">Map Symbols</div>
 
-          <style>
-            .legend h4 {
-              text-transform: uppercase;
-              margin-bottom: 0;
-            }
-            .legend td {
-              vertical-align: top;
-              padding: 0 0.125in;
-            }
-
-            .legend ul {
-              padding-left: 0.25in;
-              margin: 0;
-            }
-
-            .legend li {
-              list-style: none;
-              height: 0.2in;
-            }
-
-            .legend .glyph {
-              display: inline-block;
-              width: 0.3in;
-              line-height: 12pt;
-              overflow: hidden;
-              text-align: center;
-              vertical-align: text-bottom;
-            }
-            .legend .highlight { color: red; }
-            .legend .glyph.water { color: #00bfff; }
-            .legend .amberzone { color: yellow; }
-            .legend .redzone { color: red; }
-            .legend .popname {
-              display: inline-block;
-              width: 0.75in;
-              text-align: left;
-            }
-
-          </style>
           <table class="legend">
             <tr>
               <td>
@@ -749,11 +784,6 @@ td.vertical {
           <p>
             World listings are presented in the format described by the Traveller<sup>5</sup> Second Survey, and include the following fields:
           </p>
-          <style>
-            table.field-definitions td:first-of-type {
-              width: 0.75in;
-            }
-          </style>
           <table class="field-definitions">
             <tr><td>UWP</td><td>Universal World Profile:
                 Starport, Size, Atm, Hyd, Pop, Gov, Law, Tech</td></tr>
@@ -772,15 +802,6 @@ td.vertical {
 
           {{#if metadata.Allegiances}}
             <h4>Allegiances</h4>
-            <style>
-              table.allegiances td:first-of-type {
-                width: 0.5in;
-              }
-              table.allegiances td {
-                white-space: normal;
-                vertical-align: top;
-              }
-            </style>
             <table class="allegiances">
               {{#metadata.Allegiances}}
               <tr><td>{{Code}}</td><td>{{Name}}</td></tr>
@@ -808,21 +829,6 @@ td.vertical {
           <div class="details_title">Subsectors</div>
 
           <h4>&nbsp;</h4>
-          <style>
-            table.subsector-grid {
-              border-collapse: collapse;
-              border: 0.03in solid black;
-              float: left;
-              margin-right: 20px;
-            }
-            table.subsector-grid td {
-              width: 0.25in;
-              height: 0.4in;
-              border: 0.03in solid black;
-              vertical-align: top;
-              font-weight: bold;
-            }
-          </style>
           <table class="subsector-grid">
             <tr><td>A</td><td>B</td><td>C</td><td>D</td></tr>
             <tr><td>E</td><td>F</td><td>G</td><td>H</td></tr>
@@ -830,11 +836,6 @@ td.vertical {
             <tr><td>M</td><td>N</td><td>O</td><td>P</td></tr>
           </table>
 
-          <style>
-            table.subsector-list tr td:first-of-type {
-              width: 0.3in;
-            }
-          </style>
           <table class="subsector-list">
             {{#metadata.Subsectors}}
             <tr><td>{{Index}}</td><td>{{Name}}</td></tr>
