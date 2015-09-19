@@ -7,6 +7,22 @@
 <script src="../map.js?update=2015-08-29"></script>
 <script src="post.js?update=2015-07-29"></script>
 
+<style>
+#option_columns > tbody> tr > td { padding: 0 20px; }
+
+#preview {
+  position: absolute;
+  z-index: 1;
+  right: 10px; top: 10px; width: 450px; height: 651px;
+  border: 1px solid black;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgAQMAAABJtOi3AAAABlBMVEUAAAAoKCj70ajHAAAAE0lEQVQI12P4/5+BgZoEA3VNBADtvT/BrQ+bEwAAAABJRU5ErkJggg==');
+}
+
+#iframe {
+  width: 100%; height: 100%; border: none;
+}
+</style>
+
 <h1>Poster Maker &mdash; The Traveller Map</h1>
 <form id="form" target="_blank" method="POST">
 <ol class="steps">
@@ -32,9 +48,6 @@
     Select options:
 
   <table id="option_columns">
-    <style>
-    table#option_columns > tbody> tr > td { padding: 0 20px; }
-    </style>
     <tr>
       <td>
         <table id="label_grid">
@@ -194,19 +207,17 @@
     <input id="jumpBtn" type="submit" value="Render Jump Map">
 
     <input id="thumb" type="hidden" name="thumb" value="">
-  </form>
-
 
   </li>
 </ol>
+</form>
+
 
 <div style="margin-top: 10px; font-size: 80%">
   The <em class="product">Traveller</em> game in all forms is owned by Far
   Future Enterprises. Copyright &copy; 1977 &ndash; 2015 Far Future
   Enterprises.
   <a href="http://farfuture.net/FFEFairUsePolicy2008.pdf">Fair Use Policy</a>
-</div>
-
 </div>
 
 <script>
@@ -249,18 +260,5 @@
   });
 }());
 </script>
-
-<style>
-#preview {
-  position: absolute;
-  z-index: 1;
-  right: 10px; top: 10px; width: 450px; height: 651px;
-  border: 1px solid black;
-  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgAQMAAABJtOi3AAAABlBMVEUAAAAoKCj70ajHAAAAE0lEQVQI12P4/5+BgZoEA3VNBADtvT/BrQ+bEwAAAABJRU5ErkJggg==');
-}
-#iframe {
-  width: 100%; height: 100%; border: none;
-}
-</style>
 
 <div id="preview"><iframe name="iframe" id="iframe"></iframe></div>
