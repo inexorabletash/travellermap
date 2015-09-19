@@ -299,35 +299,12 @@
     [ /^\[.*\]$/, 'Homeworld'],
     [ /^\(.*\)$/, 'Homeworld'],
     [ /^\(.*\)(\d)$/, 'Homeworld, Population $1$`0%'],
-    [ /^[A-Z][A-Za-z']{3}0$/, 'Sophont, Population < 10%'],
-    [ /^[A-Z][A-Za-z']{3}([1-9])$/, 'Sophont, Population $1$`0%'],
-    [ /^[A-Z][A-Za-z']{3}W$/, 'Sophont, Population 100%'],
+    [ /^([A-Z][A-Za-z']{3})([0-9W])$/, decodeSophontPopulation],
+    [ /^([ACDFHIMVXZ])([0-9w])$/, decodeSophontPopulation],
 
     // Comments
     [ /^\{.*\}$/, '']
   ];
-
-  // Legacy Sophont Codes (Aw, A#)
-  [
-    ['A', 'Aslan'],
-    ['C', 'Chirper'],
-    ['D', 'Droyne'],
-    ['F', 'Non-Hiver'],
-    ['H', 'Hiver'],
-    ['I', 'Ithklur'],
-    ['M', 'Human'],
-    ['V', 'Vargr'],
-    ['X', 'Addaxur'],
-    ['Z', 'Zhodani']
-  ].forEach(function(pair) {
-    [ /^\w\w\w\w0$/, 'Sophont, Population < 10%'],
-    [ /^\w\w\w\w([1-9])$/, 'Sophont, Population $1$`0%'],
-    REMARKS_PATTERNS.push([
-      new RegExp('^' + pair[0] + '0$'), pair[1] + ', Population < 10%']);
-    REMARKS_PATTERNS.push([
-      new RegExp('^' + pair[0] + '([1-9])$'), pair[1] + ', Population $1$`0%']);
-    REMARKS_TABLE[pair[0] + 'w'] = pair[1] + ' World';
-  });
 
   var BASE_TABLE = {
     C: 'Corsair Base',
@@ -346,6 +323,32 @@
     X: 'Relay Station', // Obsolete
     Z: 'Naval/Military Base' // Obsolete
   };
+
+  var SOPHONT_TABLE = {
+    // Legacy codes
+    'A': 'Aslan',
+    'C': 'Chirper',
+    'D': 'Droyne',
+    'F': 'Non-Hiver',
+    'H': 'Hiver',
+    'I': 'Ithklur',
+    'M': 'Human',
+    'V': 'Vargr',
+    'X': 'Addaxur',
+    'Z': 'Zhodani'
+    // T5SS codes populated by live data
+  };
+
+  function decodeSophontPopulation(match, code, pop) {
+    var name = SOPHONT_TABLE[code] || 'Sophont';
+    if (pop === '0')
+      pop = '< 10%';
+    else if (pop === 'W' || pop === 'w')
+      pop = '100%';
+    else
+      pop = pop + '0%';
+    return name + ', Population ' + pop;
+  }
 
   function splitUWP(uwp) {
     return {
@@ -369,7 +372,7 @@
     };
   }
 
-  function renderWorld(data) {
+  function renderWorld(data, sophonts) {
     var world = data.Worlds[0];
     if (!world) return;
 
@@ -535,10 +538,25 @@
     else
       coords = {sector: 'spin', hex: '1910'};
 
-    fetch(Util.makeURL(prefix + '/api/coordinates?', coords)).then(function(response) {
-      if (!response.ok) throw Error(response.text());
-      return response.json();
-    }).then(function(coords) {
+    Promise.all([
+      fetch(Util.makeURL(prefix + '/api/coordinates?', coords))
+        .then(function(response) {
+          if (!response.ok) throw Error(response.statusText);
+          return response.json();
+        }),
+      fetch(Util.makeURL(prefix + '/t5ss/sophonts'))
+        .then(function(response) {
+          if (!response.ok) throw Error(response.statusText);
+          return response.json();
+        })
+        .then(function(sophonts) {
+          sophonts.forEach(function(sophont) {
+            SOPHONT_TABLE[sophont.Code] = sophont.Name;
+          });
+        })
+    ])
+      .then(function(results) { return results[0]; })
+      .then(function(coords) {
       var JUMP = 2;
       var SCALE = 48;
 
@@ -546,6 +564,7 @@
       promises.push(
         fetch(Util.makeURL(prefix + '/api/jumpworlds?', {x: coords.x, y: coords.y, jump: 0}))
           .then(function(response) {
+            if (!response.ok) throw Error(response.statusText);
             return response.json();
           })
           .then(function(json) {
