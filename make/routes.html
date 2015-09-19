@@ -39,7 +39,7 @@ Pick a file type:
     </form>
   <li>Copy the routes from the box below into your metadata file:<br>
 <textarea id="metadata_generated"
-          readonly="true"
+          readonly
           spellcheck="false" wrap="off" cols="80" rows="10"></textarea>
 </ol>
 
@@ -57,7 +57,7 @@ Pick a file type:
                  ">
 </div>
 
-  <script id="xml-template" type="x-handlebars-template">
+  <script id="xml-template" type="text/x-handlebars-template">
 <?xml version="1.0" encoding="utf-8" ?>
 <Sector>
   <Routes>
@@ -66,7 +66,7 @@ Pick a file type:
 </Sector>
   </script>
 
-  <script id="msec-template" type="x-handlebars-template">
+  <script id="msec-template" type="text/x-handlebars-template">
 {{#routes}}route {{start}} {{end}}
 {{/routes}}
   </script>

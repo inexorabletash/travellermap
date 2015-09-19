@@ -40,7 +40,7 @@ Pick a file type:
 
   <li>Copy the borders from the box below into your metadata file:<br>
     <textarea id="metadata_generated" name="metadata" class="drag-n-drop"
-              readonly="true"
+              readonly
               spellcheck="false" wrap="off" cols="80" rows="10"></textarea>
 </ol>
 
@@ -89,7 +89,7 @@ Pick a file type:
   </style>
 
 
-  <script id="xml-template" type="x-handlebars-template">
+  <script id="xml-template" type="text/x-handlebars-template">
 <?xml version="1.0" encoding="utf-8" ?>
 <Sector>
   <Borders>
@@ -98,7 +98,7 @@ Pick a file type:
 </Sector>
   </script>
 
-  <script id="msec-template" type="x-handlebars-template">
+  <script id="msec-template" type="text/x-handlebars-template">
 {{#borders}}
 # Allegiance: {{allegiance}}
 border{{#path}} {{.}}{{/path}}
