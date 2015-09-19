@@ -16,6 +16,8 @@ namespace Maps
 
         public static string FixCapitalization(string s)
         {
+            // TODO: Handle "I'Sred*N..."
+
             StringBuilder sb = new StringBuilder(s.Length);
             bool leading = true;
             foreach (char c in s)
@@ -72,6 +74,15 @@ namespace Maps
             return value.Length <= size ? value : value.Substring(0, size);
         }
 
+        public static string SafeSubstring(this string s, int start, int length)
+        {
+            if (start > s.Length)
+                return string.Empty;
+            if (start + length > s.Length)
+                return s.Substring(start);
+            return s.Substring(start, length);
+        }
+
         public static Stream ToStream(this string str, Encoding encoding = null)
         {
             encoding = encoding ?? Encoding.UTF8;
@@ -95,15 +106,6 @@ namespace Maps
                 current += delta;
                 yield return current;
             }
-        }
-
-        public static string SafeSubstring(string s, int start, int length)
-        {
-            if (start > s.Length)
-                return string.Empty;
-            if (start + length > s.Length)
-                return s.Substring(start);
-            return s.Substring(start, length);
         }
 
 

@@ -1,8 +1,5 @@
-﻿using Json;
-using Maps;
-using Maps.Serialization;
+﻿using Maps;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.IO;
 using System.Linq;
 
 namespace UnitTests
@@ -10,6 +7,51 @@ namespace UnitTests
     [TestClass]
     public class UtilTest
     {
+        [TestMethod]
+        public void FixCapitalizationTest()
+        {
+            Assert.AreEqual("", Util.FixCapitalization(""));
+            Assert.AreEqual("Regina", Util.FixCapitalization("Regina"));
+            Assert.AreEqual("Regina", Util.FixCapitalization("regina"));
+            Assert.AreEqual("Regina", Util.FixCapitalization("REGINA"));
+            Assert.AreEqual("Varen's Planet", Util.FixCapitalization("VAREN'S PLANET"));
+            Assert.AreEqual("St. George", Util.FixCapitalization("ST. GEORGE"));
+            Assert.AreEqual("Airlyrlyu'eas", Util.FixCapitalization("AIRLYRLYU'EAS"));
+            Assert.AreEqual("494-908", Util.FixCapitalization("494-908"));
+        }
+
+        [TestMethod]
+        public void SwapTest()
+        {
+            object o = new object();
+            object p = new object();
+            Assert.AreNotEqual(o, p);
+
+            object a = o;
+            object b = p;
+            Assert.AreEqual(o, a);
+            Assert.AreEqual(p, b);
+            Assert.AreNotEqual(a, b);
+
+            Util.Swap(ref a, ref b);
+            Assert.AreEqual(o, b);
+            Assert.AreEqual(p, a);
+            Assert.AreNotEqual(a, b);
+        }
+
+        [TestMethod]
+        public void ClampTest()
+        {
+            Assert.AreEqual(5, Util.Clamp(5, 1, 10));
+            Assert.AreEqual(1, Util.Clamp(-5, 1, 10));
+            Assert.AreEqual(10, Util.Clamp(15, 1, 10));
+            Assert.AreEqual(10, Util.Clamp(5, 10, 1));
+
+            Assert.AreEqual("c", Util.Clamp("c", "a", "f"));
+            Assert.AreEqual("a", Util.Clamp("@", "a", "f"));
+            Assert.AreEqual("f", Util.Clamp("z", "a", "f"));
+        }
+
         [TestMethod]
         public void SequenceTest()
         {
@@ -22,9 +64,20 @@ namespace UnitTests
         [TestMethod]
         public void SafeSubstringTest()
         {
-            Assert.AreEqual("abc", Util.SafeSubstring("abc", 0, 100));
-            Assert.AreEqual("", Util.SafeSubstring("abc", 100, 100));
-            Assert.AreEqual("c", Util.SafeSubstring("abc", 2, 100));
+            Assert.AreEqual("abc", "abc".SafeSubstring(0, 100));
+            Assert.AreEqual("", "abc".SafeSubstring(100, 100));
+            Assert.AreEqual("c", "abc".SafeSubstring(2, 100));
+        }
+
+        [TestMethod]
+        public void TruncateTest()
+        {
+            Assert.AreEqual("abc", "abc".Truncate(100));
+            Assert.AreEqual("", "".Truncate(100));
+            Assert.AreEqual("a", "abc".Truncate(1));
+            Assert.AreEqual("", "".Truncate(1));
+            Assert.AreEqual("", "abc".Truncate(0));
+            Assert.AreEqual("", "".Truncate(0));
         }
 
         [TestMethod]

@@ -79,7 +79,7 @@ namespace Maps.Serialization
             int c = 0;
             for (int i = 0; i < chunks.Length; i += 2) {
                 int len = chunks[i].Length;
-                columns.Add(new Column { start = c, length = len, name = Util.SafeSubstring(header, c, len).TrimEnd() });
+                columns.Add(new Column { start = c, length = len, name = header.SafeSubstring(c, len).TrimEnd() });
                 c += len;
                 if (i + 1 < chunks.Length)
                     c += chunks[i + 1].Length;
@@ -90,7 +90,7 @@ namespace Maps.Serialization
         {
             StringDictionary dict = new StringDictionary();
             foreach (var column in columns)
-                dict[column.name] = Util.SafeSubstring(line, column.start, column.length).TrimEnd();
+                dict[column.name] = line.SafeSubstring(column.start, column.length).TrimEnd();
             data.Add(new Row { dict = dict, line = line, lineNumber = lineNumber });
         }
     }
