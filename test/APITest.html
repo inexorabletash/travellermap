@@ -121,6 +121,9 @@ function assertFalse(b, msg) {
 function assertEquals(a, b, msg) {
   internal_assert(compare(a, b), msg);
 }
+function assertNotEquals(a, b, msg) {
+  internal_assert(!compare(a, b), msg);
+}
 function assertThrows(func, exception, emsg, msg) {
   try {
     func();
@@ -185,7 +188,7 @@ function runTests(tests) {
   tests.forEach(function(test, i) {
     setTimeout(function() {
       Promise.resolve().then(test.func)
-             .then(function() {
+             .then(function(result) {
                recordSuccess(test.name);
              })
              .catch(function(reason) {

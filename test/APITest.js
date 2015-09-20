@@ -11,69 +11,50 @@ var SERVICE_BASE = (function(l) {
 }(window.location));
 
 function fetchXML(uri) {
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', SERVICE_BASE + '/' + uri, false);
-  xhr.setRequestHeader('Accept', 'text/xml');
-  xhr.send();
-
-  assertEquals(xhr.status, 200, 'Expected HTTP 200 OK status, saw: ' + xhr.status);
-  assertEquals(xhr.getResponseHeader('Content-Type'), 'text/xml', 'Incorrect Content-Type: ' + xhr.getResponseHeader('Content-Type'));
-  return xhr.responseText;
+  return fetch(SERVICE_BASE + '/' + uri, {headers: {'Accept': 'text/xml'}})
+    .then(function(r) {
+      assertEquals(r.status, 200,
+                   'Expected HTTP 200 OK status, saw: ' + r.status);
+      assertEquals(r.headers.get('Content-Type'), 'text/xml',
+                   'Content-Type: ' + r.headers.get('Content-Type'));
+      return r.text();
+    });
 }
 
 function fetchJSON(uri) {
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', SERVICE_BASE + '/' + uri, false);
-  xhr.setRequestHeader('Accept', 'application/json');
-  xhr.send();
-  assertEquals(xhr.status, 200, 'Expected HTTP 200 OK status, saw: ' + xhr.status);
-  assertEquals(xhr.getResponseHeader('Content-Type'), 'application/json', 'Incorrect Content-Type: ' + xhr.getResponseHeader('Content-Type'));
-  return xhr.responseText;
+  return fetch(SERVICE_BASE + '/' + uri, {headers: {'Accept': 'application/json'}})
+    .then(function(r) {
+      assertEquals(r.status, 200, 'Expected HTTP 200 OK status, saw: ' + r.status);
+      assertEquals(r.headers.get('Content-Type'), 'application/json',
+                   'Content-Type: ' + r.headers.get('Content-Type'));
+      return r.json();
+    });
 }
 
 function testXML(uri, expected) {
-  var xml = fetchXML(uri);
-
-  function munge(s) {
-    return s.replace(/(>\s*\r?\n\s*<)/g, '><');
-  }
-
-  assertEquals(munge(xml), munge(expected),
-            'XML response does not match, ' + xml + ' != ' + expected);
+  return fetchXML(uri).then(function(xml) {
+    function munge(s) {
+      return s.replace(/(>\s*\r?\n\s*<)/g, '><');
+    }
+    assertEquals(munge(xml), munge(expected),
+                 'XML response does not match, ' + xml + ' != ' + expected);
+  });
 }
 
 function testJSON(uri, expected) {
-  var json = fetchJSON(uri);
-
-  assertEquals(JSON.parse(json), expected,
-            'JSON response does not match, ' + json + ' != ' + JSON.stringify(expected));
-}
-
-function checkType(uri, expected_type, headers) {
-  var xhr = new XMLHttpRequest(), result_type;
-  xhr.open('GET', SERVICE_BASE + '/' + uri, false);
-  if (headers) {
-    Object.keys(headers).forEach(function(key) {
-      xhr.setRequestHeader(key, headers[key]);
-    });
-  }
-  xhr.send();
-
-  assertEquals(xhr.status, 200, 'Expected HTTP 200 OK status, saw: ' + xhr.status);
-  result_type = xhr.getResponseHeader('Content-Type');
-  assertEquals(result_type, expected_type, 'incorrect Content-Type, expected ' + expected_type + ' saw: ' + result_type);
+  return fetchJSON(uri).then(function(json) {
+    assertEquals(json, expected,
+                 'JSON response does not match, ' + JSON.stringify(json) + ' != ' + JSON.stringify(expected));
+  });
 }
 
 function getBlob(url, type) {
-  // possibly do this using XHR2 with xhr.contentType = 'blob'
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', SERVICE_BASE + '/' + url, false);
-  xhr.send();
-  assertEquals(xhr.status, 200, 'Expected HTTP 200 OK for ' + url + ', saw: ' + xhr.status);
-  assertEquals(xhr.getResponseHeader('Content-Type'), type, 'Incorrect Content-Type for ' + url + ': ' + xhr.getResponseHeader('Content-Type'));
-
-  assertTrue(Blob, 'Browser does not support Blob');
-  return new Blob([xhr.responseText]);
+  return fetch(SERVICE_BASE + '/' + url)
+    .then(function(r) {
+      assertEquals(r.status, 200, 'Expected HTTP 200 OK for ' + url + ', saw: ' + r.status);
+      assertEquals(r.headers.get('Content-Type'), type, 'Content-Type for ' + url + ': ' + r.headers.get('Content-Type'));
+      return r.blob();
+    });
 }
 
 //
@@ -83,28 +64,27 @@ var tests = [];
 function test(name, func) { tests.push({ name: name, func: func }); }
 
 test('Coordinates JSON - Sector Only', function() {
-  testJSON('api/coordinates?sector=spin',
-      { sx: -14, sy: -1, hx: 0, hy: 0, x: -129, y: -80 });
+  return testJSON('api/coordinates?sector=spin',
+                  { sx: -14, sy: -1, hx: 0, hy: 0, x: -129, y: -80 });
 });
 
 test('Coordinates JSON - Sector + Hex', function() {
-  testJSON('api/coordinates?sector=spin&hex=1910',
-      { sx: -4, sy: -1, hx: 19, hy: 10, x: -110, y: -70 });
+  return testJSON('api/coordinates?sector=spin&hex=1910',
+                  { sx: -4, sy: -1, hx: 19, hy: 10, x: -110, y: -70 });
 });
 
 test('Coordinates XML - Sector Only', function() {
-  testXML('api/coordinates?sector=spin',
+  return testXML('api/coordinates?sector=spin',
       '<?xml version="1.0"?><Coordinates xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><sx>-4<\/sx><sy>-1<\/sy><hx>0<\/hx><hy>0<\/hy><x>-129<\/x><y>-80<\/y><\/Coordinates>');
 });
 
 test('Coordinates XML - Sector + Hex', function() {
-  testXML('api/coordinates?sector=spin&hex=1910',
+  return testXML('api/coordinates?sector=spin&hex=1910',
       '<?xml version="1.0"?><Coordinates xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><sx>-4<\/sx><sy>-1<\/sy><hx>19<\/hx><hy>10<\/hy><x>-110<\/x><y>-70<\/y><\/Coordinates>');
 });
 
 
-function substituteParams(api) {
-  var call = api;
+function substituteParams(call) {
   var values = {
     "$sector": "solo",
     "$subsector": "A",
@@ -118,15 +98,21 @@ function substituteParams(api) {
   return call;
 }
 
-function typeTest(api, type) {
+function typeTest(api, expected_type) {
   api = substituteParams(api);
   test(api, function() {
-    checkType(api, type);
+    return fetch(SERVICE_BASE + '/' + api)
+      .then(function(r) {
+        assertEquals(r.status, 200, 'Expected HTTP 200 OK status, saw: ' + r.status);
+        var result_type = r.headers.get('Content-Type');
+        assertEquals(result_type, expected_type,
+                     'Content-Type, expected ' + expected_type + ' saw: ' + result_type);
+      });
   });
 }
 
 typeTest('Coordinates.aspx?sector=$sector', 'text/xml');
-typeTest('JumpWorlds.aspx?sector=$sector&hex=$hex&j=$jump', 'text/xml');
+typeTest('JumpWorlds.aspx?sector=$sector&hex=$hex&j=$jump', 'text/xxml');
 typeTest('JumpWorlds.aspx?sector=$sector&hex=$hex&j=$jump', 'text/xml');
 typeTest('SEC.aspx?sector=$sector', 'text/plain; charset=Windows-1252');
 typeTest('SEC.aspx?sector=$sector&type=SecondSurvey', 'text/plain; charset=utf-8');
@@ -155,33 +141,36 @@ typeTest('api/tile?x=0&y=0&scale=64', 'image/png');
 typeTest('api/tile?x=0&y=0&scale=64&style=candy', 'image/jpeg');
 
 test('sec/metadata/poster - blobs', function () {
-  assertTrue(window.FormData, 'Browser does not support FormData');
+  assertTrue('FormData' in self, 'Browser does not support FormData');
 
-  var fd = new FormData();
-  fd.append('file', getBlob('api/sec?sector=spin', 'text/plain; charset=utf-8'));
-  fd.append('metadata', getBlob('api/metadata?sector=spin&accept=text/xml', 'text/xml'));
-
-  var xhr = new XMLHttpRequest();
-  xhr.open('POST', SERVICE_BASE + '/api/poster', false);
-  xhr.send(fd);
-
-  assertEquals(xhr.status, 200, 'Expected HTTP 200 OK status, saw: ' + xhr.status);
-  assertEquals(xhr.getResponseHeader('Content-Type'), 'image/png', 'incorrect Content-Type: ' + xhr.getResponseHeader('Content-Type'));
+  return Promise.all([
+    getBlob('api/sec?sector=spin', 'text/plain; charset=utf-8'),
+    getBlob('api/metadata?sector=spin&accept=text/xml', 'text/xml')
+  ]).then(function(blobs) {
+    var fd = new FormData();
+    fd.append('file', blobs[0]);
+    fd.append('metadata', blobs[1]);
+    return fetch(SERVICE_BASE + '/api/poster', {method: 'POST', body: fd});
+  }).then(function(r) {
+    assertEquals(r.status, 200, 'Expected HTTP 200 OK status, saw: ' + r.status);
+    assertEquals(r.headers.get('Content-Type'), 'image/pngx', 'Content-Type: ' + r.headers.get('Content-Type'));
+  });
 });
 
 test('sec/metadata/poster - form data', function() {
-  assertTrue(window.FormData, 'Browser does not support FormData');
-
-  var fd = new FormData();
-  fd.append('file', getBlob('api/sec?sector=spin', 'text/plain; charset=utf-8'));
-  fd.append('metadata', getBlob('api/metadata?sector=spin&accept=text/xml', 'text/xml'));
-
-  var xhr = new XMLHttpRequest();
-  xhr.open('POST', SERVICE_BASE + '/api/jumpmap?hex=1910', false);
-  xhr.send(fd);
-
-  assertEquals(xhr.status, 200, 'Expected HTTP 200 OK status, saw: ' + xhr.status);
-  assertEquals(xhr.getResponseHeader('Content-Type'), 'image/png', 'incorrect Content-Type: ' + xhr.getResponseHeader('Content-Type'));
+  assertTrue('FormData' in self, 'Browser does not support FormData');
+  return Promise.all([
+    getBlob('api/sec?sector=spin', 'text/plain; charset=utf-8'),
+    getBlob('api/metadata?sector=spin&accept=text/xml', 'text/xml')
+  ]).then(function(blobs) {
+    var fd = new FormData();
+    fd.append('file', blobs[0]);
+    fd.append('metadata', blobs[1]);
+    return fetch(SERVICE_BASE + '/api/jumpmap?hex=1910', {method: 'POST', body: fd});
+  }).then(function(r) {
+    assertEquals(r.status, 200, 'Expected HTTP 200 OK status, saw: ' + r.status);
+    assertEquals(r.headers.get('Content-Type'), 'image/pngx', 'Content-Type: ' + r.headers.get('Content-Type'));
+  });
 });
 
 typeTest('api/coordinates?sector=$sector', 'application/json');
@@ -241,11 +230,11 @@ typeTest('data/$sector/$hex/jump/$jump/image', 'image/png');
   api = substituteParams(api);
 
   test("No Accept: " + api, function() {
-    var xhr = new XMLHttpRequest(), result_type;
-    xhr.open('GET', SERVICE_BASE + '/' + api, false);
-    xhr.setRequestHeader("Accept", "");
-    xhr.send();
-    assertEquals(xhr.status, 200, 'Expected HTTP 200 OK status, saw: ' + xhr.status);
+    return fetch(SERVICE_BASE + '/' + api, {headers: {'Accept': ''}})
+      .then(function(response) {
+        assertEquals(response.status, 200,
+                     'Expected HTTP 200 OK status, saw: ' + response.status);
+      });
   });
 });
 
