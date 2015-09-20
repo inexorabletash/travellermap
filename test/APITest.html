@@ -113,30 +113,21 @@ function internal_assert(b, msg) {
   if (!b) { throw new AssertionError(msg); }
 }
 function assertTrue(b, msg) {
-  internal_assert(b, msg);
+  internal_assert(b, msg + ': Expected true, was: ' + JSON.stringify(b));
 }
 function assertFalse(b, msg) {
-  internal_assert(!b, msg);
+  internal_assert(!b, msg + ': Expected false, was: ' + JSON.stringify(b));
 }
 function assertEquals(a, b, msg) {
-  internal_assert(compare(a, b), msg);
+  internal_assert(compare(a, b),
+                  msg + ': Expected ' + JSON.stringify(b) + ' was ' + JSON.stringify(a));
 }
 function assertNotEquals(a, b, msg) {
-  internal_assert(!compare(a, b), msg);
-}
-function assertThrows(func, exception, emsg, msg) {
-  try {
-    func();
-    internal_assert(false, msg);
-  } catch (e) {
-    if (typeof e !== exception || emsg !== e.message)
-      internal_assert(false, msg);
-  }
-  internal_assert(true, msg);
+  internal_assert(!compare(a, b),
+                  msg + ': Expected not ' + JSON.stringify(b) + ' but was');
 }
 
 function runTests(tests) {
-
   var tests_total = tests.length, tests_run = 0, tests_passed = 0, tests_failed = 0;
   $('#tests_total').textContent = tests.length;
 
@@ -194,7 +185,7 @@ function runTests(tests) {
              .catch(function(reason) {
                recordFailure(test.name, reason.message);
              });
-    }, 50 * i);
+    }, 10 * i);
   });
 }
 

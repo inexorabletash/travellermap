@@ -13,10 +13,8 @@ var SERVICE_BASE = (function(l) {
 function fetchXML(uri) {
   return fetch(SERVICE_BASE + '/' + uri, {headers: {'Accept': 'text/xml'}})
     .then(function(r) {
-      assertEquals(r.status, 200,
-                   'Expected HTTP 200 OK status, saw: ' + r.status);
-      assertEquals(r.headers.get('Content-Type'), 'text/xml',
-                   'Content-Type: ' + r.headers.get('Content-Type'));
+      assertEquals(r.status, 200, 'HTTP Status');
+      assertEquals(r.headers.get('Content-Type'), 'text/xml', 'Content-Type');
       return r.text();
     });
 }
@@ -24,35 +22,31 @@ function fetchXML(uri) {
 function fetchJSON(uri) {
   return fetch(SERVICE_BASE + '/' + uri, {headers: {'Accept': 'application/json'}})
     .then(function(r) {
-      assertEquals(r.status, 200, 'Expected HTTP 200 OK status, saw: ' + r.status);
-      assertEquals(r.headers.get('Content-Type'), 'application/json',
-                   'Content-Type: ' + r.headers.get('Content-Type'));
+      assertEquals(r.status, 200, 'HTTP Status');
+      assertEquals(r.headers.get('Content-Type'), 'application/json', 'Content-Type');
       return r.json();
     });
 }
 
 function testXML(uri, expected) {
   return fetchXML(uri).then(function(xml) {
-    function munge(s) {
-      return s.replace(/(>\s*\r?\n\s*<)/g, '><');
-    }
-    assertEquals(munge(xml), munge(expected),
-                 'XML response does not match, ' + xml + ' != ' + expected);
+    function munge(s) { return s.replace(/(>\s*\r?\n\s*<)/g, '><'); }
+    assertEquals(munge(xml), munge(expected), 'XML response');
   });
 }
 
 function testJSON(uri, expected) {
   return fetchJSON(uri).then(function(json) {
-    assertEquals(json, expected,
-                 'JSON response does not match, ' + JSON.stringify(json) + ' != ' + JSON.stringify(expected));
+    assertEquals(json, expected, 'JSON response');
   });
 }
 
 function getBlob(url, type) {
+  assertTrue('Blob' in self, 'Blob support');
   return fetch(SERVICE_BASE + '/' + url)
     .then(function(r) {
-      assertEquals(r.status, 200, 'Expected HTTP 200 OK for ' + url + ', saw: ' + r.status);
-      assertEquals(r.headers.get('Content-Type'), type, 'Content-Type for ' + url + ': ' + r.headers.get('Content-Type'));
+      assertEquals(r.status, 200, 'HTTP Status for ' + url);
+      assertEquals(r.headers.get('Content-Type'), type, 'Content-Type for ' + url);
       return r.blob();
     });
 }
@@ -65,7 +59,7 @@ function test(name, func) { tests.push({ name: name, func: func }); }
 
 test('Coordinates JSON - Sector Only', function() {
   return testJSON('api/coordinates?sector=spin',
-                  { sx: -14, sy: -1, hx: 0, hy: 0, x: -129, y: -80 });
+                  { sx: -4, sy: -1, hx: 0, hy: 0, x: -129, y: -80 });
 });
 
 test('Coordinates JSON - Sector + Hex', function() {
@@ -103,16 +97,15 @@ function typeTest(api, expected_type) {
   test(api, function() {
     return fetch(SERVICE_BASE + '/' + api)
       .then(function(r) {
-        assertEquals(r.status, 200, 'Expected HTTP 200 OK status, saw: ' + r.status);
+        assertEquals(r.status, 200, 'HTTP Status');
         var result_type = r.headers.get('Content-Type');
-        assertEquals(result_type, expected_type,
-                     'Content-Type, expected ' + expected_type + ' saw: ' + result_type);
+        assertEquals(result_type, expected_type, 'Content-Type');
       });
   });
 }
 
 typeTest('Coordinates.aspx?sector=$sector', 'text/xml');
-typeTest('JumpWorlds.aspx?sector=$sector&hex=$hex&j=$jump', 'text/xxml');
+typeTest('JumpWorlds.aspx?sector=$sector&hex=$hex&j=$jump', 'text/xml');
 typeTest('JumpWorlds.aspx?sector=$sector&hex=$hex&j=$jump', 'text/xml');
 typeTest('SEC.aspx?sector=$sector', 'text/plain; charset=Windows-1252');
 typeTest('SEC.aspx?sector=$sector&type=SecondSurvey', 'text/plain; charset=utf-8');
@@ -141,7 +134,7 @@ typeTest('api/tile?x=0&y=0&scale=64', 'image/png');
 typeTest('api/tile?x=0&y=0&scale=64&style=candy', 'image/jpeg');
 
 test('sec/metadata/poster - blobs', function () {
-  assertTrue('FormData' in self, 'Browser does not support FormData');
+  assertTrue('FormData' in self, 'FormData support');
 
   return Promise.all([
     getBlob('api/sec?sector=spin', 'text/plain; charset=utf-8'),
@@ -152,13 +145,13 @@ test('sec/metadata/poster - blobs', function () {
     fd.append('metadata', blobs[1]);
     return fetch(SERVICE_BASE + '/api/poster', {method: 'POST', body: fd});
   }).then(function(r) {
-    assertEquals(r.status, 200, 'Expected HTTP 200 OK status, saw: ' + r.status);
-    assertEquals(r.headers.get('Content-Type'), 'image/pngx', 'Content-Type: ' + r.headers.get('Content-Type'));
+    assertEquals(r.status, 200, 'HTTP Status');
+    assertEquals(r.headers.get('Content-Type'), 'image/png', 'Content-Type');
   });
 });
 
 test('sec/metadata/poster - form data', function() {
-  assertTrue('FormData' in self, 'Browser does not support FormData');
+  assertTrue('FormData' in self, 'FormData support');
   return Promise.all([
     getBlob('api/sec?sector=spin', 'text/plain; charset=utf-8'),
     getBlob('api/metadata?sector=spin&accept=text/xml', 'text/xml')
@@ -168,8 +161,8 @@ test('sec/metadata/poster - form data', function() {
     fd.append('metadata', blobs[1]);
     return fetch(SERVICE_BASE + '/api/jumpmap?hex=1910', {method: 'POST', body: fd});
   }).then(function(r) {
-    assertEquals(r.status, 200, 'Expected HTTP 200 OK status, saw: ' + r.status);
-    assertEquals(r.headers.get('Content-Type'), 'image/pngx', 'Content-Type: ' + r.headers.get('Content-Type'));
+    assertEquals(r.status, 200, 'HTTP Status');
+    assertEquals(r.headers.get('Content-Type'), 'image/png', 'Content-Type');
   });
 });
 
@@ -232,8 +225,7 @@ typeTest('data/$sector/$hex/jump/$jump/image', 'image/png');
   test("No Accept: " + api, function() {
     return fetch(SERVICE_BASE + '/' + api, {headers: {'Accept': ''}})
       .then(function(response) {
-        assertEquals(response.status, 200,
-                     'Expected HTTP 200 OK status, saw: ' + response.status);
+        assertEquals(response.status, 200, 'HTTP Status');
       });
   });
 });
