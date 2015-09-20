@@ -81,6 +81,7 @@ table#features, #features th, #features td { border: solid 1px black; }
                 <li><a href="#search">Search</a> &ndash; search for worlds, subsectors or sectors by name
                 <li><a href="#route">Route</a> &ndash; find jump routes between worlds
                 <li><a href="#universe">Universe</a> &ndash; return a list of sectors, optionally filtered by era
+                <li><a href="#t5ss">T5SS</a> &ndash; access stock data - allegiance codes, sophont codes
             </ul>
 
         <li>Image APIs
@@ -1050,6 +1051,36 @@ table#features, #features th, #features td { border: solid 1px black; }
     <h4>Example:</h4>
     <p>
         <a class="example" href="/api/universe?era=1000"></a>
+    </p>
+  </section>
+
+  <section id="t5ss">
+    <h3>T5SS &ndash; return stock data</h3>
+    <h4>Data URLs:</h4>
+    <p class="code">
+        http://travellermap.com/t5ss/allegiances
+    </p>
+    <p class="code">
+        http://travellermap.com/t5ss/sophonts
+    </p>
+
+    <h4>Notes:</h4>
+    <ul>
+        <li><code>/t5ss/allegiances</code> returns a list of items with
+          <code>Code</code> and <code>Name</code> pairs defining the
+          T5SS allegiance codes.
+        <li><code>/t5ss/sophonts</code> returns a list of items with
+          <code>Code</code> and <code>Name</code> pairs defining the
+          T5SS sophont codes.
+        <li>
+          The default output format is <a href="http://json.org/">JSON</a>. To retrieve results in XML form, specify
+          the HTTP header <code>Accept: text/xml</code> or include <code>accept=text/xml</code>
+          in the query string.
+    </ul>
+
+    <h4>Example:</h4>
+    <p>
+        <a class="example" href="/t5ss/sophonts"></a>
     </p>
   </section>
   </section>
