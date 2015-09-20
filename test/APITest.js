@@ -182,7 +182,9 @@ typeTest('api/msec/$sector', 'text/plain; charset=utf-8');
 // T5SS Stock Data ----------
 
 typeTest('t5ss/allegiances', 'application/json');
+typeTest('t5ss/allegiances?accept=text/xml', 'text/xml');
 typeTest('t5ss/sophonts', 'application/json');
+typeTest('t5ss/sophonts?accept=text/xml', 'text/xml');
 
 // Semantic URLs ----------
 
