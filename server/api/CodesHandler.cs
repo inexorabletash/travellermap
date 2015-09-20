@@ -12,7 +12,7 @@ namespace Maps.API
         public override void Process(HttpContext context)
         {
             SendResult(context, 
-                SecondSurvey.SophontCodes.Select(code => new Results.SophontCode(code, SecondSurvey.SophontCodeToName(code))));
+                SecondSurvey.SophontCodes.Select(code => new Results.SophontCode(code, SecondSurvey.SophontCodeToName(code))).ToList());
         }
     }
 
@@ -25,7 +25,7 @@ namespace Maps.API
         public override void Process(HttpContext context)
         {
             SendResult(context, SecondSurvey.AllegianceCodes.Select(
-                code => new Results.AllegianceCode(code, SecondSurvey.GetStockAllegianceFromCode(code).Name)));
+                code => new Results.AllegianceCode(code, SecondSurvey.GetStockAllegianceFromCode(code).Name)).ToList());
         }
     }
 }
