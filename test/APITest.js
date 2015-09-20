@@ -82,6 +82,8 @@ function substituteParams(call) {
   var values = {
     "$sector": "solo",
     "$subsector": "A",
+    "$ssname": "Sol",
+    "$quadrant": "gamma",
     "$hex": "1827",
     "$jump": 2,
     "$query": "terra"
@@ -104,15 +106,8 @@ function typeTest(api, expected_type) {
   });
 }
 
-typeTest('Coordinates.aspx?sector=$sector', 'text/xml');
-typeTest('JumpWorlds.aspx?sector=$sector&hex=$hex&j=$jump', 'text/xml');
-typeTest('JumpWorlds.aspx?sector=$sector&hex=$hex&j=$jump', 'text/xml');
-typeTest('SEC.aspx?sector=$sector', 'text/plain; charset=Windows-1252');
-typeTest('SEC.aspx?sector=$sector&type=SecondSurvey', 'text/plain; charset=utf-8');
-typeTest('SEC.aspx?sector=$sector&type=TabDelimited', 'text/plain; charset=utf-8');
-typeTest('MSEC.aspx?sector=$sector', 'text/plain; charset=utf-8');
-typeTest('SectorMetaData.aspx?sector=$sector', 'text/xml');
-typeTest('Universe.aspx', 'text/xml');
+// Legacy ASPX APIs ----------
+
 typeTest('Search.aspx?q=$query', 'text/xml');
 typeTest('JumpMap.aspx?sector=$sector&hex=$hex&j=$jump', 'image/png');
 typeTest('JumpMap.aspx?sector=$sector&hex=$hex&j=$jump&style=candy', 'image/png');
@@ -121,17 +116,111 @@ typeTest('Poster.aspx?sector=$sector&subsector=$subsector', 'image/png');
 typeTest('Poster.aspx?sector=$sector&subsector=$subsector&style=candy', 'image/jpeg');
 typeTest('Tile.aspx?x=0&y=0&scale=64', 'image/png');
 typeTest('Tile.aspx?x=0&y=0&scale=64&style=candy', 'image/jpeg');
+typeTest('Coordinates.aspx?sector=$sector', 'text/xml');
+typeTest('Credits.aspx?sector=$sector', 'text/xml');
+typeTest('JumpWorlds.aspx?sector=$sector&hex=$hex&j=$jump', 'text/xml');
+typeTest('JumpWorlds.aspx?sector=$sector&hex=$hex&j=$jump', 'text/xml');
+typeTest('Universe.aspx', 'text/xml');
+typeTest('SEC.aspx?sector=$sector', 'text/plain; charset=Windows-1252');
+typeTest('SEC.aspx?sector=$sector&type=SecondSurvey', 'text/plain; charset=utf-8');
+typeTest('SEC.aspx?sector=$sector&type=TabDelimited', 'text/plain; charset=utf-8');
+typeTest('SectorMetaData.aspx?sector=$sector', 'text/xml');
+typeTest('MSEC.aspx?sector=$sector', 'text/plain; charset=utf-8');
 
+// APIs ----------
+
+// Search
+
+typeTest('api/search?q=$query', 'application/json');
+
+typeTest('api/route?start=SPIN+1910&end=SPIN+2207', 'application/json');
+
+// Rendering
 
 typeTest('api/jumpmap?sector=$sector&hex=$hex&j=$jump', 'image/png');
 typeTest('api/jumpmap?sector=$sector&hex=$hex&j=$jump&style=candy', 'image/png');
 typeTest('api/jumpmap?sector=$sector&hex=$hex&j=$jump&style=candy&clip=0', 'image/jpeg');
 
+typeTest('api/poster?sector=$sector', 'image/png');
 typeTest('api/poster?sector=$sector&subsector=$subsector', 'image/png');
 typeTest('api/poster?sector=$sector&subsector=$subsector&style=candy', 'image/jpeg');
+typeTest('api/poster?sector=$sector&quadrant=$quadrant', 'image/png');
+
+typeTest('api/poster/$sector', 'image/png');
+typeTest('api/poster/$sector/$quadrant', 'image/png');
+typeTest('api/poster/$sector/$subsector', 'image/png');
+typeTest('api/poster/$sector/$ssname', 'image/png');
 
 typeTest('api/tile?x=0&y=0&scale=64', 'image/png');
 typeTest('api/tile?x=0&y=0&scale=64&style=candy', 'image/jpeg');
+
+// Location Queries
+
+typeTest('api/coordinates?sector=$sector', 'application/json');
+typeTest('api/credits?sector=$sector', 'application/json');
+typeTest('api/jumpworlds?sector=$sector&hex=$hex&jump=$jump', 'application/json');
+typeTest('api/universe', 'application/json');
+
+// Data Retrieval
+
+typeTest('api/sec?sector=$sector', 'text/plain; charset=utf-8');
+typeTest('api/sec?type=sec&sector=$sector', 'text/plain; charset=Windows-1252');
+typeTest('api/sec?type=TabDelimited&sector=$sector', 'text/plain; charset=utf-8');
+
+typeTest('api/sec/$sector', 'text/plain; charset=utf-8');
+typeTest('api/sec/$sector/$quadrant', 'text/plain; charset=utf-8');
+typeTest('api/sec/$sector/$subsector', 'text/plain; charset=utf-8');
+typeTest('api/sec/$sector/$ssname', 'text/plain; charset=utf-8');
+
+typeTest('api/metadata?sector=$sector', 'application/json');
+typeTest('api/metadata/$sector', 'application/json');
+typeTest('api/metadata?accept=text/xml&sector=$sector', 'text/xml');
+
+typeTest('api/msec?sector=$sector', 'text/plain; charset=utf-8');
+typeTest('api/msec/$sector', 'text/plain; charset=utf-8');
+
+// T5SS Stock Data ----------
+
+typeTest('t5ss/allegiances', 'application/json');
+typeTest('t5ss/sophonts', 'application/json');
+
+// Semantic URLs ----------
+
+typeTest('data', 'application/json');
+
+typeTest('data/$sector', 'text/plain; charset=utf-8');
+typeTest('data/$sector/sec', 'text/plain; charset=Windows-1252');
+typeTest('data/$sector/tab', 'text/plain; charset=utf-8');
+typeTest('data/$sector/coordinates', 'application/json');
+typeTest('data/$sector/credits', 'application/json');
+typeTest('data/$sector/metadata', 'text/xml');
+typeTest('data/$sector/msec', 'text/plain; charset=utf-8');
+typeTest('data/$sector/image', 'image/png');
+typeTest('data/$sector/booklet', 'text/html');
+
+typeTest('data/$sector/$quadrant', 'text/plain; charset=utf-8');
+typeTest('data/$sector/$quadrant/tab', 'text/plain; charset=utf-8');
+typeTest('data/$sector/$quadrant/sec', 'text/plain; charset=Windows-1252');
+typeTest('data/$sector/$quadrant/image', 'image/png');
+
+typeTest('data/$sector/$subsector', 'text/plain; charset=utf-8');
+typeTest('data/$sector/$subsector/tab', 'text/plain; charset=utf-8');
+typeTest('data/$sector/$subsector/sec', 'text/plain; charset=Windows-1252');
+typeTest('data/$sector/$subsector/image', 'image/png');
+
+typeTest('data/$sector/$hex', 'application/json');
+typeTest('data/$sector/$hex/coordinates', 'application/json');
+typeTest('data/$sector/$hex/credits', 'application/json');
+typeTest('data/$sector/$hex/jump/$jump', 'application/json');
+typeTest('data/$sector/$hex/image', 'image/png');
+typeTest('data/$sector/$hex/jump/$jump/image', 'image/png');
+typeTest('data/$sector/$hex/sheet', 'text/html');
+
+typeTest('data/$sector/$ssname', 'text/plain; charset=utf-8');
+typeTest('data/$sector/$ssname/tab', 'text/plain; charset=utf-8');
+typeTest('data/$sector/$ssname/sec', 'text/plain; charset=Windows-1252');
+typeTest('data/$sector/$ssname/image', 'image/png');
+
 
 test('sec/metadata/poster - blobs', function () {
   assertTrue('FormData' in self, 'FormData support');
@@ -165,39 +254,6 @@ test('sec/metadata/poster - form data', function() {
     assertEquals(r.headers.get('Content-Type'), 'image/png', 'Content-Type');
   });
 });
-
-typeTest('api/coordinates?sector=$sector', 'application/json');
-typeTest('api/sec?sector=$sector', 'text/plain; charset=utf-8');
-typeTest('api/sec?type=sec&sector=$sector', 'text/plain; charset=Windows-1252');
-typeTest('api/sec?type=TabDelimited&sector=$sector', 'text/plain; charset=utf-8');
-typeTest('api/metadata?sector=$sector', 'application/json');
-typeTest('api/metadata?accept=text/xml&sector=$sector', 'text/xml');
-typeTest('api/msec?sector=$sector', 'text/plain; charset=utf-8');
-typeTest('api/jumpworlds?sector=$sector&hex=$hex&jump=$jump', 'application/json');
-typeTest('api/search?q=$query', 'application/json');
-typeTest('api/universe', 'application/json');
-
-typeTest('data', 'application/json');
-
-typeTest('data/$sector', 'text/plain; charset=utf-8');
-typeTest('data/$sector/tab', 'text/plain; charset=utf-8');
-typeTest('data/$sector/sec', 'text/plain; charset=Windows-1252');
-typeTest('data/$sector/metadata', 'text/xml');
-typeTest('data/$sector/msec', 'text/plain; charset=utf-8');
-typeTest('data/$sector/image', 'image/png');
-typeTest('data/$sector/coordinates', 'application/json');
-typeTest('data/$sector/credits', 'application/json');
-
-typeTest('data/$sector/$subsector', 'text/plain; charset=utf-8');
-typeTest('data/$sector/$subsector/tab', 'text/plain; charset=utf-8');
-typeTest('data/$sector/$subsector/sec', 'text/plain; charset=Windows-1252');
-typeTest('data/$sector/$subsector/image', 'image/png');
-
-typeTest('data/$sector/$hex/coordinates', 'application/json');
-typeTest('data/$sector/$hex/credits', 'application/json');
-typeTest('data/$sector/$hex/jump/$jump', 'application/json');
-typeTest('data/$sector/$hex/jump/$jump/image', 'image/png');
-
 
 [
   'Coordinates.aspx?sector=$sector',
