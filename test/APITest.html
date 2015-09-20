@@ -80,140 +80,119 @@ var $ = function(s) { return document.querySelector(s); };
 //
 
 function compare(a, b) {
-    var i, aks, bks, ak, bk;
+  // Handle primitive cases
+  if (a !== Object(a))
+    return Object.is(a, b);
 
-    if (a === b) {
-        return a !== 0 || 1 / a === 1 / b; // 0 === -0 but not identical
-    }
-    else if (a !== a && b !== b) {
-        return true; // NaN
-    }
-    else if (typeof a !== typeof b) {
-        return false;
-    }
-    else if (typeof a !== 'object') {
-        return a === b;
-    }
-    else if (a === null || b === null) {
-        return a === b;
-    }
-    else if (a instanceof Date && b instanceof Date) {
+  if (a === null || b === null)
+    return a === b;
+
+  if (a instanceof Date && b instanceof Date)
         return Number(a) === Number(b);
-    }
-    else if (a instanceof Array && b instanceof Array) {
-        if (a.length !== b.length) { return false; }
-        for (i = 0; i < a.length; i += 1) {
-            if (!compare(a[i], b[i])) { return false; }
-        }
-        return true;
-    }
-    else {
-        aks = Object.keys(a).sort();
-        bks = Object.keys(b).sort();
-        if (aks.length !== bks.length) { return false; }
-        for (i = 0; i < aks.length; i += 1) {
-            ak = aks[i];
-            bk = bks[i];
-            if (ak !== bk) { return false; }
-            if (!compare(a[ak], b[bk])) { return false; }
-        }
-        return true;
-    }
+
+  if (a instanceof Array && b instanceof Array) {
+    if (a.length !== b.length) return false;
+    for (var i = 0; i < a.length; ++i)
+      if (!compare(a[i], b[i])) return false;
+    return true;
+  }
+
+  var aks = Object.keys(a).sort();
+  var bks = Object.keys(b).sort();
+  if (!compare(aks, bks)) return false;
+  for (i = 0; i < aks.length; ++i)
+    if (!compare(a[aks[i]], b[bks[i]])) return false;
+  return true;
 }
 
 function AssertionError(msg) {
-    this.name = 'AssertionError';
-    this.message = msg;
+  this.name = 'AssertionError';
+  this.message = msg;
 }
 function internal_assert(b, msg) {
-    if (!b) { throw new AssertionError(msg); }
+  if (!b) { throw new AssertionError(msg); }
 }
 function assertTrue(b, msg) {
-    internal_assert(b, msg);
+  internal_assert(b, msg);
 }
 function assertFalse(b, msg) {
-    internal_assert(!b, msg);
+  internal_assert(!b, msg);
 }
 function assertEquals(a, b, msg) {
-    internal_assert(compare(a, b), msg);
+  internal_assert(compare(a, b), msg);
 }
 function assertThrows(func, exception, emsg, msg) {
-    try {
-        func();
-        internal_assert(false, msg);
-    }
-    catch (e) {
-        if (typeof e !== exception || emsg !== e.message) {
-            internal_assert(false, msg);
-        }
-    }
-    internal_assert(true, msg);
+  try {
+    func();
+    internal_assert(false, msg);
+  } catch (e) {
+    if (typeof e !== exception || emsg !== e.message)
+      internal_assert(false, msg);
+  }
+  internal_assert(true, msg);
 }
 
 function runTests(tests) {
 
-    var tests_total = tests.length, tests_run = 0, tests_passed = 0;
-    $('#tests_total').innerHTML = escapeHTML(tests.length);
+  var tests_total = tests.length, tests_run = 0, tests_passed = 0, tests_failed = 0;
+  $('#tests_total').textContent = tests.length;
 
-    function escapeHTML(string) {
-        return String(string).replace(/&/g, '&amp;').replace(/(<)/g, '&lt;').replace(/>/g, '&gt;');
+  function recordSuccess(name) {
+    var div = document.createElement('div');
+    div.appendChild(document.createTextNode('PASS: ' + name + ' \u00B6'));
+    div.className = 'test pass';
+    $('#results').appendChild(div);
+
+    ++tests_passed;
+    testDone();
+  }
+
+  function recordFailure(name, failure) {
+    var div = document.createElement('div');
+    div.appendChild(document.createTextNode('FAIL: ' + name + ': ' + failure + ' \u00B6'));
+    div.className = 'test fail';
+    $('#results').appendChild(div);
+
+    ++tests_failed;
+    testDone();
+  }
+
+  function setProgress(fraction) {
+    var percent = String(Math.round(fraction * 100)) + '%';
+    $('#progress_meter').style.width = percent;
+    $('#progress_label').innerHTML = '';
+    $('#progress_label').appendChild(document.createTextNode(percent));
+  }
+
+  function testDone() {
+    tests_run += 1;
+
+    if (tests_passed + tests_failed !== tests_run)
+      console.error('Accounting mismatch!', tests_passed, tests_failed, tests_run);
+
+    $('#tests_run').textContent = tests_run;
+    $('#tests_passed').textContent = tests_passed;
+    $('#tests_failed').textContent = tests_failed;
+    setProgress(tests_run / tests_total);
+
+    if (tests_run === tests_total) {
+      $('#summary').className = tests_passed === tests_total ? 'pass' : 'fail';
+      $('#results').appendChild(document.createTextNode('\u03A9'));
     }
-    function recordSuccess(name) {
-        var div = document.createElement('div');
-        div.appendChild(document.createTextNode('PASS: ' + name + ' \u00B6'));
-        div.className = 'test pass';
-        $('#results').appendChild(div);
-    }
+  }
 
-    function recordFailure(name, failure) {
-        var div = document.createElement('div');
-        div.appendChild(document.createTextNode('FAIL: ' + name + ': ' + failure + ' \u00B6'));
-        div.className = 'test fail';
-        $('#results').appendChild(div);
-    }
-
-    function setProgress(fraction) {
-        var percent = String(Math.round(fraction * 100)) + '%';
-        $('#progress_meter').style.width = percent;
-        $('#progress_label').innerHTML = '';
-        $('#progress_label').appendChild(document.createTextNode(percent));
-    }
-
-    function runNextTest() {
-        var test;
-        if (tests.length) {
-            test = tests.shift();
-            tests_run += 1;
-            $('#tests_run').innerHTML = escapeHTML(tests_run);
-
-            try {
-                test.func();
-                tests_passed += 1;
-                recordSuccess(test.name);
-            }
-            catch (e) {
-                if (e instanceof AssertionError) {
-                    recordFailure(test.name, e.message);
-                }
-                else {
-                    throw e;
-                }
-            }
-            $('#tests_passed').innerHTML = escapeHTML(tests_passed);
-            $('#tests_failed').innerHTML = escapeHTML(tests_run - tests_passed);
-
-            setProgress(tests_run / tests_total);
-            setTimeout(runNextTest, 100);
-        }
-        else {
-            setProgress(1);
-            $('#summary').className = tests_passed === tests_total ? 'pass' : 'fail';
-            $('#results').appendChild(document.createTextNode('\u03A9'));
-        }
-    }
-
-    setProgress(0);
-    setTimeout(runNextTest, 0);
+  setProgress(0);
+  tests.forEach(function(test, i) {
+    setTimeout(function() {
+      Promise.resolve().then(test.func)
+             .then(function() {
+               recordSuccess(test.name);
+             })
+             .catch(function(reason) {
+               recordFailure(test.name, reason.message);
+             });
+    }, 50 * i);
+  });
 }
 
 </script>

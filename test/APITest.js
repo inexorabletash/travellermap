@@ -84,7 +84,7 @@ function test(name, func) { tests.push({ name: name, func: func }); }
 
 test('Coordinates JSON - Sector Only', function() {
   testJSON('api/coordinates?sector=spin',
-      { sx: -4, sy: -1, hx: 0, hy: 0, x: -129, y: -80 });
+      { sx: -14, sy: -1, hx: 0, hy: 0, x: -129, y: -80 });
 });
 
 test('Coordinates JSON - Sector + Hex', function() {
