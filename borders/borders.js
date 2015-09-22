@@ -1,7 +1,7 @@
 //
 // Border Generation for Traveller
 //
-// By Joshua Bell (inexorabletash@gmail.com, http://www.travellermap.com)
+// By Joshua Bell (inexorabletash@gmail.com, http://travellermap.com)
 //
 // Based on allygen by J. Greely http://dotclue.org/t20
 //
