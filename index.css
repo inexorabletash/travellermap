@@ -740,6 +740,7 @@ button:hover {
   #searchBox { width: 100px; }
 }
 @media only screen and (max-width: 480px) {
+  .show-legend #legendBox,
   #legendBtn { display: none; }
 }
 @media only screen and (max-width: 440px) {
@@ -750,6 +751,7 @@ button:hover {
   #starBtn { display: none; }
 }
 @media only screen and (max-width: 360px) {
+  .show-download #downloadBox,
   #downloadBtn { display: none; }
 }
 
