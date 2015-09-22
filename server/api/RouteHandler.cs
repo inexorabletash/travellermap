@@ -16,24 +16,43 @@ namespace Maps.API
         {
             ResourceManager manager;
             SectorMap map;
-            int jump;
+
+            public int Jump { get; set; }
+            public bool RequireWildernessRefuelling { get; set; }
+            public bool AvoidRedZones { get; set; }
+            public bool ImperialWorldsOnly { get; set; }
 
             public TravellerPathFinder(ResourceManager manager, SectorMap map, int jump)
             {
                 this.manager = manager;
                 this.map = map;
-                this.jump = jump;
+                this.Jump = jump;
             }
+
+            private World start, end;
 
             public List<World> FindPath(World start, World end)
             {
+                this.start = start;
+                this.end = end;
                 return PathFinder.FindPath<World>(this, start, end);
             }
 
             IEnumerable<World> PathFinder.Map<World>.Adjacent(World world)
             {
                 if (world == null) throw new ArgumentNullException("world");
-                return new HexSelector(map, manager, Astrometrics.CoordinatesToLocation(world.Coordinates), jump).Worlds;
+                foreach (World w in new HexSelector(map, manager, Astrometrics.CoordinatesToLocation(world.Coordinates), Jump).Worlds)
+                {
+                    // Exclude destination from filters.
+                    if (w != end)
+                    {
+                        if (RequireWildernessRefuelling && (w.GasGiants == 0 && !w.WaterPresent)) continue;
+                        if (AvoidRedZones && w.IsRed) continue;
+                        if (ImperialWorldsOnly && !SecondSurvey.IsDefaultAllegiance(w.Allegiance)) continue;
+                    }
+
+                    yield return w;
+                }
             }
 
             int PathFinder.Map<World>.Distance(World a, World b)
@@ -113,6 +132,11 @@ namespace Maps.API
             int jump = Util.Clamp(GetIntOption(context, "jump", 2), 0, 12);
 
             var finder = new TravellerPathFinder(resourceManager, map, jump);
+
+            finder.RequireWildernessRefuelling = GetBoolOption(context, "wild", false);
+            finder.ImperialWorldsOnly = GetBoolOption(context, "im", false);
+            finder.AvoidRedZones = GetBoolOption(context, "nored", false);
+
             List<World> route = finder.FindPath(startWorld, endWorld);
             if (route == null) { SendError(context.Response, 404, "Not Found", "No route found"); return; }
 
