@@ -43,8 +43,8 @@ namespace Maps
 
     internal class SectorSelector : Selector
     {
-        Sector m_sector;
-        ResourceManager m_resourceManager;
+        Sector sector;
+        ResourceManager resourceManager;
 
         public SectorSelector(ResourceManager resourceManager, Sector sector)
         {
@@ -54,22 +54,22 @@ namespace Maps
             if (sector == null)
                 throw new ArgumentNullException("sector");
 
-            m_sector = sector;
-            m_resourceManager = resourceManager;
+            this.sector = sector;
+            this.resourceManager = resourceManager;
         }
 
 
-        public override IEnumerable<Sector> Sectors { get { yield return m_sector; } }
+        public override IEnumerable<Sector> Sectors { get { yield return sector; } }
 
-        public override IEnumerable<World> Worlds { get { return m_sector.GetWorlds(m_resourceManager, cacheResults: true); } }
+        public override IEnumerable<World> Worlds { get { return sector.GetWorlds(resourceManager, cacheResults: true); } }
     }
 
 
     internal class SubsectorSelector : Selector
     {
-        Sector m_sector;
-        int m_index;
-        ResourceManager m_resourceManager;
+        Sector sector;
+        int index;
+        ResourceManager resourceManager;
 
         public SubsectorSelector(ResourceManager resourceManager, Sector sector, int index)
         {
@@ -82,22 +82,22 @@ namespace Maps
             if (index < 0 || index >= 16)
                 throw new ArgumentOutOfRangeException("index", "index must be 0...15");
 
-            m_sector = sector;
-            m_index = index;
-            m_resourceManager = resourceManager;
+            this.sector = sector;
+            this.index = index;
+            this.resourceManager = resourceManager;
         }
 
 
-        public override IEnumerable<Sector> Sectors { get { yield return m_sector; } }
+        public override IEnumerable<Sector> Sectors { get { yield return sector; } }
 
         public override IEnumerable<World> Worlds
         {
             get
             {
-                int ssx = m_index % 4;
-                int ssy = m_index / 4;
+                int ssx = index % 4;
+                int ssy = index / 4;
 
-                WorldCollection worlds = m_sector.GetWorlds(m_resourceManager);
+                WorldCollection worlds = sector.GetWorlds(resourceManager);
                 for (int x = 0; x < Astrometrics.SubsectorWidth; ++x)
                 {
                     for (int y = 0; y < Astrometrics.SubsectorHeight; ++y)
@@ -114,9 +114,9 @@ namespace Maps
 
     internal class QuadrantSelector : Selector
     {
-        Sector m_sector;
-        int m_index;
-        ResourceManager m_resourceManager;
+        Sector sector;
+        int index;
+        ResourceManager resourceManager;
 
         public QuadrantSelector(ResourceManager resourceManager, Sector sector, int index)
         {
@@ -129,22 +129,22 @@ namespace Maps
             if (index < 0 || index >= 4)
                 throw new ArgumentOutOfRangeException("index", "index must be 0...3");
 
-            m_sector = sector;
-            m_index = index;
-            m_resourceManager = resourceManager;
+            this.sector = sector;
+            this.index = index;
+            this.resourceManager = resourceManager;
         }
 
 
-        public override IEnumerable<Sector> Sectors { get { yield return m_sector; } }
+        public override IEnumerable<Sector> Sectors { get { yield return sector; } }
 
         public override IEnumerable<World> Worlds
         {
             get
             {
-                int qx = m_index % 2;
-                int qy = m_index / 2;
+                int qx = index % 2;
+                int qy = index / 2;
 
-                WorldCollection worlds = m_sector.GetWorlds(m_resourceManager);
+                WorldCollection worlds = sector.GetWorlds(resourceManager);
                 for (int x = 0; x < Astrometrics.SubsectorWidth * 2; ++x)
                 {
                     for (int y = 0; y < Astrometrics.SubsectorHeight * 2; ++y)
@@ -161,9 +161,9 @@ namespace Maps
 
     internal class RectSelector : Selector
     {
-        SectorMap m_map;
-        ResourceManager m_resourceManager;
-        private RectangleF m_rect = RectangleF.Empty;
+        SectorMap map;
+        ResourceManager resourceManager;
+        private RectangleF rect = RectangleF.Empty;
 
         public RectSelector(SectorMap map, ResourceManager resourceManager, RectangleF rect)
         {
@@ -173,16 +173,16 @@ namespace Maps
             if (resourceManager == null)
                 throw new ArgumentNullException("resourceManager");
 
-            m_map = map;
-            m_resourceManager = resourceManager;
-            m_rect = rect;
+            this.map = map;
+            this.resourceManager = resourceManager;
+            this.rect = rect;
         }
 
         public override IEnumerable<Sector> Sectors
         {
             get
             {
-                RectangleF rect = m_rect;
+                RectangleF rect = this.rect;
                 if (Slop)
                     rect.Inflate(rect.Width * SLOP_FACTOR, rect.Height * SLOP_FACTOR);
 
@@ -196,7 +196,7 @@ namespace Maps
                 {
                     for (int cy = sy1; cy <= sy2; cy++)
                     {
-                        Sector sector = m_map.FromLocation(cx, cy);
+                        Sector sector = map.FromLocation(cx, cy);
                         if (sector == null)
                             continue;
                         yield return sector;
@@ -209,7 +209,7 @@ namespace Maps
         {
             get
             {
-                RectangleF rect = m_rect;
+                RectangleF rect = this.rect;
                 if (Slop)
                     rect.Inflate(rect.Width * SLOP_FACTOR, rect.Height * SLOP_FACTOR);
                 
@@ -231,14 +231,14 @@ namespace Maps
 
                         if (cachedLoc != loc.Sector)
                         {
-                            cachedSector = m_map.FromLocation(loc.Sector.X, loc.Sector.Y);
+                            cachedSector = map.FromLocation(loc.Sector.X, loc.Sector.Y);
                             cachedLoc = loc.Sector;
                         }
 
                         if (cachedSector == null)
                             continue;
 
-                        WorldCollection worlds = cachedSector.GetWorlds(m_resourceManager);
+                        WorldCollection worlds = cachedSector.GetWorlds(resourceManager);
                         if (worlds == null)
                             continue;
 
@@ -255,10 +255,10 @@ namespace Maps
 
     internal class HexSelector : Selector
     {
-        SectorMap m_map;
-        ResourceManager m_resourceManager;
-        private Location m_location;
-        private int m_jump;
+        SectorMap map;
+        ResourceManager resourceManager;
+        private Location location;
+        private int jump;
 
         public HexSelector(SectorMap map, ResourceManager resourceManager, Location location, int jump)
         {
@@ -271,21 +271,21 @@ namespace Maps
             if (jump < 0 || jump > 36)            
                 throw new ArgumentOutOfRangeException("jump", jump, "jump must be between 0 and 36 inclusive");
 
-            m_map = map;
-            m_resourceManager = resourceManager;
-            m_location = location;
-            m_jump = jump;
+            this.map = map;
+            this.resourceManager = resourceManager;
+            this.location = location;
+            this.jump = jump;
         }
 
         public override IEnumerable<Sector> Sectors
         {
             get
             {
-                Point center = Astrometrics.LocationToCoordinates(m_location);
+                Point center = Astrometrics.LocationToCoordinates(location);
                 Point topLeft = center;
                 Point bottomRight = center;
-                topLeft.Offset(-m_jump - 1, -m_jump - 1);
-                bottomRight.Offset(m_jump + 1, m_jump + 1);
+                topLeft.Offset(-jump - 1, -jump - 1);
+                bottomRight.Offset(jump + 1, jump + 1);
 
                 Location locTL = Astrometrics.CoordinatesToLocation(topLeft);
                 Location locBR = Astrometrics.CoordinatesToLocation(bottomRight);
@@ -294,7 +294,7 @@ namespace Maps
                 {
                     for (int x = locTL.Sector.X; x <= locBR.Sector.X; ++x)
                     {
-                        Sector sector = m_map.FromLocation(x, y);
+                        Sector sector = map.FromLocation(x, y);
                         if (sector == null)
                             continue;
                         yield return sector;
@@ -307,13 +307,13 @@ namespace Maps
         {
             get
             {
-                Point center = Astrometrics.LocationToCoordinates(m_location);
+                Point center = Astrometrics.LocationToCoordinates(location);
 
                 Point topLeft = center;
-                topLeft.Offset(-m_jump - 1, -m_jump - 1);
+                topLeft.Offset(-jump - 1, -jump - 1);
 
                 Point bottomRight = center;
-                bottomRight.Offset(m_jump + 1, m_jump + 1);
+                bottomRight.Offset(jump + 1, jump + 1);
 
                 bool cached = false;
                 Point cachedLoc = Point.Empty;
@@ -324,20 +324,20 @@ namespace Maps
                     for (int x = topLeft.X; x <= bottomRight.X; ++x)
                     {
                         Point coords = new Point(x, y);
-                        if (Astrometrics.HexDistance(center, coords) <= m_jump)
+                        if (Astrometrics.HexDistance(center, coords) <= jump)
                         {
                             Location loc = Astrometrics.CoordinatesToLocation(coords);
 
                             if (!cached || cachedLoc != loc.Sector)
                             {
-                                cachedSector = m_map.FromLocation(loc.Sector.X, loc.Sector.Y);
+                                cachedSector = map.FromLocation(loc.Sector.X, loc.Sector.Y);
                                 cachedLoc = loc.Sector;
                                 cached = true;
                             }
 
                             if (cachedSector != null)
                             {
-                                WorldCollection worlds = cachedSector.GetWorlds(m_resourceManager);
+                                WorldCollection worlds = cachedSector.GetWorlds(resourceManager);
                                 if (worlds == null)
                                     continue;
 
@@ -356,10 +356,10 @@ namespace Maps
 
     internal class HexSectorSelector : Selector
     {
-        Sector m_sector;
-        ResourceManager m_resourceManager;
-        Hex m_coords;
-        int m_jump;
+        Sector sector;
+        ResourceManager resourceManager;
+        Hex coords;
+        int jump;
 
         public HexSectorSelector(ResourceManager resourceManager, Sector sector, Hex coords, int jump)
         {
@@ -369,10 +369,10 @@ namespace Maps
             if (sector == null)
                 throw new ArgumentNullException("sector");
  
-            m_sector = sector;
-            m_resourceManager = resourceManager;
-            m_coords = coords;
-            m_jump = jump;
+            this.sector = sector;
+            this.resourceManager = resourceManager;
+            this.coords = coords;
+            this.jump = jump;
         }
 
 
@@ -380,7 +380,7 @@ namespace Maps
         {
             get
             {
-                yield return m_sector;
+                yield return sector;
             }
         }
 
@@ -388,9 +388,9 @@ namespace Maps
         {
             get
             {
-                Point center = Astrometrics.LocationToCoordinates(new Location(Point.Empty, m_coords));
-                return from world in m_sector.GetWorlds(m_resourceManager, cacheResults: true)
-                       where Astrometrics.HexDistance(center, world.Coordinates) <= m_jump
+                Point center = Astrometrics.LocationToCoordinates(new Location(Point.Empty, coords));
+                return from world in sector.GetWorlds(resourceManager, cacheResults: true)
+                       where Astrometrics.HexDistance(center, world.Coordinates) <= jump
                        select world;
             }
         }

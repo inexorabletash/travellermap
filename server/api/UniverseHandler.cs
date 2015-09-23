@@ -58,28 +58,28 @@ namespace Maps.API.Results
         public UniverseResult() { }
 
         [XmlElement("Sector")]
-        public List<SectorResult> Sectors { get { return m_sectors; } }
-        private List<SectorResult> m_sectors = new List<SectorResult>();
+        public List<SectorResult> Sectors { get { return sectors; } }
+        private List<SectorResult> sectors = new List<SectorResult>();
 
         [XmlRoot("Sector")]
         public class SectorResult
         {
             private SectorResult() { }
 
-            public SectorResult(Sector sector) { m_sector = sector; }
-            private Sector m_sector;
+            public SectorResult(Sector sector) { this.sector = sector; }
+            private Sector sector;
 
-            public int X { get { return m_sector.X; } }
-            public int Y { get { return m_sector.Y; } }
-
-            [XmlAttribute]
-            public string Abbreviation { get { return m_sector.Abbreviation; } }
+            public int X { get { return sector.X; } }
+            public int Y { get { return sector.Y; } }
 
             [XmlAttribute]
-            public string Tags { get { return m_sector.TagString; } }
+            public string Abbreviation { get { return sector.Abbreviation; } }
+
+            [XmlAttribute]
+            public string Tags { get { return sector.TagString; } }
 
             [XmlElement("Name")]
-            public List<Name> Names { get { return m_sector.Names; } }
+            public List<Name> Names { get { return sector.Names; } }
         }
     }
 }

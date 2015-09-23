@@ -15,8 +15,8 @@ namespace Maps.Rendering
 
     public class VectorObject : MapObject
     {
-        private PointF[] m_pathDataPoints;
-        private Byte[] m_pathDataTypes;
+        private PointF[] pathDataPoints;
+        private Byte[] pathDataTypes;
 
         public VectorObject()
         {
@@ -35,30 +35,30 @@ namespace Maps.Rendering
         public float NameX { get; set; }
         public float NameY { get; set; }
 
-        private RectangleF m_bounds;
+        private RectangleF bounds;
         public RectangleF Bounds
         {
             get
             {
                 // Compute bounds if not already set
-                if (m_bounds.IsEmpty && m_pathDataPoints != null && m_pathDataPoints.Length > 0)
+                if (bounds.IsEmpty && pathDataPoints != null && pathDataPoints.Length > 0)
                 {
-                    m_bounds.Location = m_pathDataPoints[0];
+                    bounds.Location = pathDataPoints[0];
 
-                    for (int i = 1; i < m_pathDataPoints.Length; ++i)
+                    for (int i = 1; i < pathDataPoints.Length; ++i)
                     {
-                        PointF pt = m_pathDataPoints[i];
-                        if (pt.X < m_bounds.X) { float d = m_bounds.X - pt.X; m_bounds.X = pt.X; m_bounds.Width += d; }
-                        if (pt.Y < m_bounds.Y) { float d = m_bounds.Y - pt.Y; m_bounds.Y = pt.Y; m_bounds.Height += d; }
+                        PointF pt = pathDataPoints[i];
+                        if (pt.X < bounds.X) { float d = bounds.X - pt.X; bounds.X = pt.X; bounds.Width += d; }
+                        if (pt.Y < bounds.Y) { float d = bounds.Y - pt.Y; bounds.Y = pt.Y; bounds.Height += d; }
 
-                        if (pt.X > m_bounds.Right) { m_bounds.Width = pt.X - m_bounds.X; }
-                        if (pt.Y > m_bounds.Bottom) { m_bounds.Height = pt.Y - m_bounds.Y; }
+                        if (pt.X > bounds.Right) { bounds.Width = pt.X - bounds.X; }
+                        if (pt.Y > bounds.Bottom) { bounds.Height = pt.Y - bounds.Y; }
                     }
                 }
-                return m_bounds;
+                return bounds;
             }
 
-            set { m_bounds = value; }
+            set { bounds = value; }
         }
 
         internal RectangleF TransformedBounds
@@ -107,23 +107,23 @@ namespace Maps.Rendering
 
         public MapOptions MapOptions { get; set; }
 
-        public PointF[] PathDataPoints { get { return m_pathDataPoints; } set { m_pathDataPoints = value; } }
+        public PointF[] PathDataPoints { get { return pathDataPoints; } set { pathDataPoints = value; } }
         public Byte[] PathDataTypes
         {
             get
             {
-                if (m_pathDataTypes == null)
+                if (pathDataTypes == null)
                 {
-                    List<byte> types = new List<byte>(m_pathDataPoints.Length);
+                    List<byte> types = new List<byte>(pathDataPoints.Length);
                     types.Add((byte)PathPointType.Start);
-                    for (int i = 1; i < m_pathDataPoints.Length; ++i)
+                    for (int i = 1; i < pathDataPoints.Length; ++i)
                         types.Add((byte)PathPointType.Line);
-                    m_pathDataTypes = types.ToArray();
+                    pathDataTypes = types.ToArray();
                 }
 
-                return m_pathDataTypes;
+                return pathDataTypes;
             }
-            set { m_pathDataTypes = value; }
+            set { pathDataTypes = value; }
         }
 
         // NOTE: Can't cacheResults a GraphicsPath - not free threaded

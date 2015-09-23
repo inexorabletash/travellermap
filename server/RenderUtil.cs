@@ -12,9 +12,9 @@ namespace Maps.Rendering
     // Wrapper to allow locking, since Image is [MarshalByRefObject]
     internal class ImageHolder
     {
-        public ImageHolder(Image image) { m_image = image; }
-        public Image Image {  get { return m_image; } }
-        private Image m_image;
+        public ImageHolder(Image image) { this.image = image; }
+        public Image Image {  get { return image; } }
+        private Image image;
     }
 
     internal static class RenderUtil

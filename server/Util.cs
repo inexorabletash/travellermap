@@ -199,15 +199,15 @@ namespace Maps
 
     internal sealed class OrderedHashSet<T> : IEnumerable<T>
     {
-        private List<T> m_list = new List<T>();
-        private HashSet<T> m_set = new HashSet<T>();
+        private List<T> list = new List<T>();
+        private HashSet<T> set = new HashSet<T>();
 
         public void Add(T item)
         {
-            if (m_set.Contains(item))
+            if (set.Contains(item))
                 return;
-            m_list.Add(item);
-            m_set.Add(item);
+            list.Add(item);
+            set.Add(item);
         }
 
         public void AddRange(IEnumerable<T> collection)
@@ -218,36 +218,36 @@ namespace Maps
 
         public void Remove(T item)
         {
-            if (m_set.Remove(item))
-                m_list.Remove(item);
+            if (set.Remove(item))
+                list.Remove(item);
         }
 
         public bool Contains(T item)
         {
-            return m_set.Contains(item);
+            return set.Contains(item);
         }
 
         public void Clear()
         {
-            m_list.Clear();
-            m_set.Clear();
+            list.Clear();
+            set.Clear();
         }
 
         public bool Any(Func<T, bool> predicate)
         {
-            return m_set.Any(predicate);
+            return set.Any(predicate);
         }
 
         public IEnumerable<T> Where(Func<T, bool> predicate)
         {
-            return m_list.Where(predicate);
+            return list.Where(predicate);
         }
 
-        public int Count() { return m_set.Count(); }
+        public int Count() { return set.Count(); }
 
-        public T this[int index] { get { return m_list[index]; } }
+        public T this[int index] { get { return list[index]; } }
 
-        public IEnumerator<T> GetEnumerator() { return m_list.GetEnumerator(); }
+        public IEnumerator<T> GetEnumerator() { return list.GetEnumerator(); }
         IEnumerator IEnumerable.GetEnumerator() { return GetEnumerator(); }
     }
 

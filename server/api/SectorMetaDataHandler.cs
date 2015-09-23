@@ -75,50 +75,50 @@ namespace Maps.API.Results
 
         internal SectorMetadata(Sector sector, WorldCollection worlds)
         {
-            this.m_sector = sector;
-            this.m_worlds = worlds;
-            this.m_dataFile = new DataFileMetadata(sector);
+            this.sector = sector;
+            this.worlds = worlds;
+            this.dataFile = new DataFileMetadata(sector);
         }
-        private Sector m_sector;
-        private WorldCollection m_worlds;
-        private DataFileMetadata m_dataFile;
+        private Sector sector;
+        private WorldCollection worlds;
+        private DataFileMetadata dataFile;
 
         [XmlAttribute]
         [System.ComponentModel.DefaultValue(false)]
-        public bool Selected { get { return m_sector.Selected; } }
+        public bool Selected { get { return sector.Selected; } }
 
         [XmlAttribute]
-        public string Tags { get { return m_sector.TagString; } }
+        public string Tags { get { return sector.TagString; } }
 
         [XmlAttribute]
-        public string Abbreviation { get { return m_sector.Abbreviation; } }
+        public string Abbreviation { get { return sector.Abbreviation; } }
 
         [XmlElement("Name")]
-        public List<Name> Names { get { return m_sector.Names; } }
+        public List<Name> Names { get { return sector.Names; } }
 
-        public string Credits { get { return m_sector.Credits; } set { } }
-        public DataFileMetadata DataFile { get { return m_dataFile; } }
+        public string Credits { get { return sector.Credits; } set { } }
+        public DataFileMetadata DataFile { get { return dataFile; } }
 
-        public int X { get { return m_sector.X; } }
-        public int Y { get { return m_sector.Y; } }
+        public int X { get { return sector.X; } }
+        public int Y { get { return sector.Y; } }
 
         [XmlElement("Product")]
-        public MetadataCollection<Product> Products { get { return m_sector.Products; } }
+        public MetadataCollection<Product> Products { get { return sector.Products; } }
 
-        public MetadataCollection<Subsector> Subsectors { get { return m_sector.Subsectors; } }
+        public MetadataCollection<Subsector> Subsectors { get { return sector.Subsectors; } }
 
         public List<Allegiance> Allegiances
         {
             get
             {
-                if (m_worlds == null)
+                if (worlds == null)
                     return null;
 
                 // Ensure the allegiance list documents the codes as used by the worlds
                 var list = new List<Allegiance>();
-                foreach (var code in m_worlds.AllegianceCodes())
+                foreach (var code in worlds.AllegianceCodes())
                 {
-                    var alleg = m_sector.GetAllegianceFromCode(code);
+                    var alleg = sector.GetAllegianceFromCode(code);
                     if (alleg == null)
                         continue;
                     list.Add(new Allegiance(code, alleg.Name));
@@ -127,16 +127,16 @@ namespace Maps.API.Results
             }
         }
 
-        public string Stylesheet { get { return m_sector.StylesheetText; } set { } }
+        public string Stylesheet { get { return sector.StylesheetText; } set { } }
 
-        public MetadataCollection<Label> Labels { get { return m_sector.Labels; } }
-        public bool ShouldSerializeLabels() { return m_sector.Labels.Count > 0; }
+        public MetadataCollection<Label> Labels { get { return sector.Labels; } }
+        public bool ShouldSerializeLabels() { return sector.Labels.Count > 0; }
 
-        public MetadataCollection<Border> Borders { get { return m_sector.Borders; } }
-        public bool ShouldSerializeBorders() { return m_sector.Borders.Count > 0; }
+        public MetadataCollection<Border> Borders { get { return sector.Borders; } }
+        public bool ShouldSerializeBorders() { return sector.Borders.Count > 0; }
 
-        public MetadataCollection<Route> Routes { get { return m_sector.Routes; } }
-        public bool ShouldSerializeRoutes() { return m_sector.Routes.Count > 0; }
+        public MetadataCollection<Route> Routes { get { return sector.Routes; } }
+        public bool ShouldSerializeRoutes() { return sector.Routes.Count > 0; }
 
         [XmlRoot("DataFile")]
         public class DataFileMetadata
@@ -145,30 +145,30 @@ namespace Maps.API.Results
 
             public DataFileMetadata(Sector sector)
             {
-                this.m_sector = sector;
+                this.sector = sector;
             }
-            private Sector m_sector;
+            private Sector sector;
 
             [XmlAttribute]
-            public string Title { get { return (m_sector.DataFile != null ? m_sector.DataFile.Title : null) ?? m_sector.Title; } }
+            public string Title { get { return (sector.DataFile != null ? sector.DataFile.Title : null) ?? sector.Title; } }
 
             [XmlAttribute]
-            public string Author { get { return (m_sector.DataFile != null ? m_sector.DataFile.Author : null) ?? m_sector.Author; } }
+            public string Author { get { return (sector.DataFile != null ? sector.DataFile.Author : null) ?? sector.Author; } }
 
             [XmlAttribute]
-            public string Source { get { return (m_sector.DataFile != null ? m_sector.DataFile.Source : null) ?? m_sector.Source; } }
+            public string Source { get { return (sector.DataFile != null ? sector.DataFile.Source : null) ?? sector.Source; } }
 
             [XmlAttribute]
-            public string Publisher { get { return (m_sector.DataFile != null ? m_sector.DataFile.Publisher : null) ?? m_sector.Publisher; } }
+            public string Publisher { get { return (sector.DataFile != null ? sector.DataFile.Publisher : null) ?? sector.Publisher; } }
 
             [XmlAttribute]
-            public string Copyright { get { return (m_sector.DataFile != null ? m_sector.DataFile.Copyright : null) ?? m_sector.Copyright; } }
+            public string Copyright { get { return (sector.DataFile != null ? sector.DataFile.Copyright : null) ?? sector.Copyright; } }
 
             [XmlAttribute]
-            public string Era { get { return (m_sector.DataFile != null ? m_sector.DataFile.Era : null) ?? m_sector.Era; } }
+            public string Era { get { return (sector.DataFile != null ? sector.DataFile.Era : null) ?? sector.Era; } }
 
             [XmlAttribute]
-            public string Ref { get { return (m_sector.DataFile != null ? m_sector.DataFile.Ref : null) ?? m_sector.Ref; } }
+            public string Ref { get { return (sector.DataFile != null ? sector.DataFile.Ref : null) ?? sector.Ref; } }
         }
     }
 
