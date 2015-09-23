@@ -37,10 +37,7 @@ namespace Maps.API
                     var errors = lint ? new ErrorLogger() : null;
                     sector = new Sector(context.Request.InputStream, new ContentType(context.Request.ContentType).MediaType, errors);
                     if (lint && !errors.Empty)
-                    {
-                        SendError(400, "Bad Request", errors.ToString());
-                        return;
-                    }
+                        throw new HttpError(400, "Bad Request", errors.ToString());
                     includeMetadata = false;
                 }
                 else if (HasOption("sx") && HasOption("sy"))
@@ -51,10 +48,7 @@ namespace Maps.API
                     sector = map.FromLocation(sx, sy);
 
                     if (sector == null)
-                    {
-                        SendError(404, "Not Found", string.Format("The sector at {0},{1} was not found.", sx, sy));
-                        return;
-                    }
+                        throw new HttpError(404, "Not Found", string.Format("The sector at {0},{1} was not found.", sx, sy));
                 }
                 else if (HasOption("sector"))
                 {
@@ -62,15 +56,11 @@ namespace Maps.API
                     sector = map.FromName(sectorName);
 
                     if (sector == null)
-                    {
-                        SendError(404, "Not Found", string.Format("The specified sector '{0}' was not found.", sectorName));
-                        return;
-                    }
+                        throw new HttpError(404, "Not Found", string.Format("The specified sector '{0}' was not found.", sectorName));
                 }
                 else
                 {
-                    SendError(400, "Bad Request", "No sector specified.");
-                    return;
+                    throw new HttpError(400, "Bad Request", "No sector specified.");
                 }
 
                 WorldFilter filter = null;
@@ -79,10 +69,7 @@ namespace Maps.API
                     string subsector = GetStringOption("subsector");
                     int index = sector.SubsectorIndexFor(subsector);
                     if (index == -1)
-                    {
-                        SendError(404, "Not Found", string.Format("The specified subsector '{0}' was not found.", subsector));
-                        return;
-                    }
+                        throw new HttpError(404, "Not Found", string.Format("The specified subsector '{0}' was not found.", subsector));
                     filter = (World world) => (world.Subsector == index);
                 }
                 else if (HasOption("quadrant"))
@@ -90,10 +77,7 @@ namespace Maps.API
                     string quadrant = GetStringOption("quadrant");
                     int index = Sector.QuadrantIndexFor(quadrant);
                     if (index == -1)
-                    {
-                        SendError(400, "Bad Request", string.Format("The specified quadrant '{0}' is invalid.", quadrant));
-                        return;
-                    }
+                        throw new HttpError(400, "Bad Request", string.Format("The specified quadrant '{0}' is invalid.", quadrant));
                     filter = (World world) => (world.Quadrant == index);
                 }
 

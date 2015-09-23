@@ -34,10 +34,7 @@ namespace Maps.API
                     sector = map.FromLocation(sx, sy);
 
                     if (sector == null)
-                    {
-                        SendError(404, "Not Found", string.Format("The sector at {0},{1} was not found.", sx, sy));
-                        return;
-                    }
+                        throw new HttpError(404, "Not Found", string.Format("The sector at {0},{1} was not found.", sx, sy));
                 }
                 else if (HasOption("sector"))
                 {
@@ -45,15 +42,11 @@ namespace Maps.API
                     sector = map.FromName(sectorName);
 
                     if (sector == null)
-                    {
-                        SendError(404, "Not Found", string.Format("The specified sector '{0}' was not found.", sectorName));
-                        return;
-                    }
+                        throw new HttpError(404, "Not Found", string.Format("The specified sector '{0}' was not found.", sectorName));
                 }
                 else
                 {
-                    SendError(400, "Bad Request", "No sector specified.");
-                    return;
+                    throw new HttpError(400, "Bad Request", "No sector specified.");
                 }
 
                 string data;

@@ -73,10 +73,7 @@ namespace Maps.API
             {
                 string query = context.Request.QueryString[field];
                 if (string.IsNullOrWhiteSpace(query))
-                {
-                    SendError(400, "Bad Request", string.Format("Missing {0} location", field));
-                    return null;
-                }
+                    throw new HttpError(400, "Bad Request", string.Format("Missing {0} location", field));
 
                 query = query.Trim();
 
@@ -87,10 +84,8 @@ namespace Maps.API
                     int y = GetIntOption("y", 0);
                     WorldLocation loc = SearchEngine.FindNearestWorldMatch(query, x, y);
                     if (loc == null)
-                    {
-                        SendError(404, "Not Found", string.Format("Location not found: {0}", query));
-                        return null;
-                    }
+                        throw new HttpError(404, "Not Found", string.Format("Location not found: {0}", query));
+
                     Sector loc_sector;
                     World loc_world;
                     loc.Resolve(map, manager, out loc_sector, out loc_world);
@@ -99,25 +94,16 @@ namespace Maps.API
 
                 Sector sector = map.FromName(match.Groups["sector"].Value);
                 if (sector == null)
-                {
-                    SendError(404, "Not Found", string.Format("Sector not found: {0}", sector));
-                    return null;
-                }
+                    throw new HttpError(404, "Not Found", string.Format("Sector not found: {0}", sector));
 
                 string hexString = match.Groups["hex"].Value;
                 Hex hex = new Hex(hexString);
                 if (!hex.IsValid)
-                {
-                    SendError(400, "Not Found", string.Format("Invalid hex: {0}", hexString));
-                    return null;
-                }
+                    throw new HttpError(400, "Not Found", string.Format("Invalid hex: {0}", hexString));
 
                 World world = sector.GetWorlds(manager)[hex.ToInt()];
                 if (world == null)
-                {
-                    SendError(404, "Not Found", string.Format("No such world: {0} {1}", sector.Names[0].Text, hexString));
-                    return null;
-                }
+                    throw new HttpError(404, "Not Found", string.Format("No such world: {0} {1}", sector.Names[0].Text, hexString));
 
                 return world;
             }
@@ -144,7 +130,8 @@ namespace Maps.API
                 finder.AvoidRedZones = GetBoolOption("nored", false);
 
                 List<World> route = finder.FindPath(startWorld, endWorld);
-                if (route == null) { SendError(404, "Not Found", "No route found"); return; }
+                if (route == null)
+                    throw new HttpError(404, "Not Found", "No route found");
 
                 SendResult(context, route.Select(w => new Results.RouteStop(w)).ToList());
             }

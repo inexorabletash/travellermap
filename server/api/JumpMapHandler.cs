@@ -39,27 +39,14 @@ namespace Maps.API
                 if (context.Request.HttpMethod == "POST")
                 {
                     Sector sector;
-                    try
-                    {
-                        bool lint = GetBoolOption("lint", defaultValue: false);
-                        ErrorLogger errors = new ErrorLogger();
-                        sector = GetPostedSector(context.Request, errors);
-                        if (lint && !errors.Empty)
-                        {
-                            SendError(400, "Bad Request", errors.ToString());
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        SendError(400, "Bad Request", ex.Message);
-                        return;
-                    }
+                    bool lint = GetBoolOption("lint", defaultValue: false);
+                    ErrorLogger errors = new ErrorLogger();
+                    sector = GetPostedSector(context.Request, errors);
+                    if (lint && !errors.Empty)
+                        throw new HttpError(400, "Bad Request", errors.ToString());
 
                     if (sector == null)
-                    {
-                        SendError(400, "Bad Request", "Either file or data must be supplied in the POST data.");
-                        return;
-                    }
+                        throw new HttpError(400, "Bad Request", "Either file or data must be supplied in the POST data.");
 
                     int hex = GetIntOption("hex", Astrometrics.SectorCentralHex);
                     loc = new Location(new Point(0, 0), hex);
@@ -75,10 +62,7 @@ namespace Maps.API
                         int hex = GetIntOption("hex", 0);
                         Sector sector = map.FromName(sectorName);
                         if (sector == null)
-                        {
-                            SendError(404, "Not Found", string.Format("The specified sector '{0}' was not found.", sectorName));
-                            return;
-                        }
+                            throw new HttpError(404, "Not Found", string.Format("The specified sector '{0}' was not found.", sectorName));
 
                         loc = new Location(sector.Location, hex);
                     }

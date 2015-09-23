@@ -35,10 +35,7 @@ namespace Maps.API
                     string sectorName = GetStringOption("sector");
                     Sector sector = map.FromName(sectorName);
                     if (sector == null)
-                    {
-                        SendError(404, "Not Found", string.Format("The specified sector '{0}' was not found.", sectorName));
-                        return;
-                    }
+                        throw new HttpError(404, "Not Found", string.Format("The specified sector '{0}' was not found.", sectorName));
 
                     int hex = GetIntOption("hex", 0);
                     loc = new Location(sector.Location, hex);
@@ -49,8 +46,7 @@ namespace Maps.API
                 }
                 else
                 {
-                    SendError(400, "Bad Request", "Must specify either sector name (and optional hex) or sx, sy (and optional hx, hy), or x, y (world-space coordinates).");
-                    return;
+                    throw new HttpError(400, "Bad Request", "Must specify either sector name (and optional hex) or sx, sy (and optional hx, hy), or x, y (world-space coordinates).");
                 }
 
                 Point coords = Astrometrics.LocationToCoordinates(loc);

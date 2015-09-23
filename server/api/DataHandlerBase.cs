@@ -55,8 +55,31 @@ namespace Maps.API
 #endif
             }
 
-            GetResponder(context).Process();
+            try
+            {
+                GetResponder(context).Process();
+            }
+            catch (HttpError error)
+            {
+                SendError(context.Response, error.Code, error.Description, error.Message);
+            }
+            catch (Exception ex)
+            {
+                SendError(context.Response, 400, "Bad Request", ex.Message);
+            }
         }
+
+        protected class HttpError : Exception
+        {
+            public int Code { get; }
+            public string Description { get; }
+            public HttpError(int code, string description, string message) : base(message)
+            {
+                Code = code;
+                Description = description;
+            }
+        }
+
 
         protected abstract DataResponder GetResponder(HttpContext context);
 
@@ -94,10 +117,7 @@ namespace Maps.API
                 if (Context.Request.QueryString["jsonp"] != null)
                 {
                     if (!IsSimpleJSIdentifier(Context.Request.QueryString["jsonp"]))
-                    {
-                        SendError(400, "Bad Request", "The jsonp parameter must be a simple script identifier.");
-                        return;
-                    }
+                        throw new HttpError(400, "Bad Request", "The jsonp parameter must be a simple script identifier.");
 
                     SendJson(o);
                     return;
@@ -183,11 +203,6 @@ namespace Maps.API
                         w.Write(");");
                     }
                 }
-            }
-
-            public void SendError(int code, string description, string message)
-            {
-                HandlerBase.SendError(Context.Response, code, description, message);
             }
             #endregion
 
@@ -306,14 +321,10 @@ namespace Maps.API
 
                 if (HasOption("style", queryDefaults))
                 {
-                    try
-                    {
-                        style = s_nameToStyle[GetStringOption("style", queryDefaults).ToLowerInvariant()];
-                    }
-                    catch (KeyNotFoundException)
-                    {
-                        // TODO: Report error?
-                    }
+                    string opt = GetStringOption("style", queryDefaults).ToLowerInvariant();
+                    if (!s_nameToStyle.ContainsKey(opt))
+                        throw new HttpError(400, "Bad Request", String.Format("Invalid style option: {0}", opt));
+                    style = s_nameToStyle[opt];
                 }
             }
 

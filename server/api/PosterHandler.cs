@@ -86,8 +86,7 @@ namespace Maps.API
                         case "jg": x = 160; y = 0; w = 2; h = 2; title = "Judges Guild"; break;
 
                         default:
-                            SendError(404, "Not Found", string.Format("Unknown domain: {0}", domain));
-                            return;
+                            throw new HttpError(404, "Not Found", string.Format("Unknown domain: {0}", domain));
                     }
 
                     int x1 = x * Astrometrics.SectorWidth - Astrometrics.ReferenceHex.X + 1;
@@ -124,27 +123,14 @@ namespace Maps.API
 
                     if (context.Request.HttpMethod == "POST")
                     {
-                        try
-                        {
-                            bool lint = GetBoolOption("lint", defaultValue: false);
-                            ErrorLogger errors = new ErrorLogger();
-                            sector = GetPostedSector(context.Request, errors);
-                            if (lint && !errors.Empty)
-                            {
-                                SendError(400, "Bad Request", errors.ToString());
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            SendError(400, "Bad Request", ex.Message);
-                            return;
-                        }
+                        bool lint = GetBoolOption("lint", defaultValue: false);
+                        ErrorLogger errors = new ErrorLogger();
+                        sector = GetPostedSector(context.Request, errors);
+                        if (lint && !errors.Empty)
+                            throw new HttpError(400, "Bad Request", errors.ToString());
 
                         if (sector == null)
-                        {
-                            SendError(400, "Bad Request", "Either file or data must be supplied in the POST data.");
-                            return;
-                        }
+                            throw new HttpError(400, "Bad Request", "Either file or data must be supplied in the POST data.");
 
                         title = "User Data";
 
@@ -155,19 +141,13 @@ namespace Maps.API
                     {
                         string sectorName = GetStringOption("sector");
                         if (sectorName == null)
-                        {
-                            SendError(400, "Bad Request", "No sector specified.");
-                            return;
-                        }
+                            throw new HttpError(400, "Bad Request", "No sector specified.");
 
                         SectorMap map = SectorMap.FromName(SectorMap.DefaultSetting, resourceManager);
 
                         sector = map.FromName(sectorName);
                         if (sector == null)
-                        {
-                            SendError(404, "Not Found", string.Format("The specified sector '{0}' was not found.", sectorName));
-                            return;
-                        }
+                            throw new HttpError(404, "Not Found", string.Format("The specified sector '{0}' was not found.", sectorName));
 
                         title = sector.Names[0].Text;
                     }
@@ -178,10 +158,7 @@ namespace Maps.API
                         string subsector = GetStringOption("subsector");
                         int index = sector.SubsectorIndexFor(subsector);
                         if (index == -1)
-                        {
-                            SendError(404, "Not Found", string.Format("The specified subsector '{0}' was not found.", subsector));
-                            return;
-                        }
+                            throw new HttpError(404, "Not Found", string.Format("The specified subsector '{0}' was not found.", subsector));
 
                         selector = new SubsectorSelector(resourceManager, sector, index);
 
@@ -202,8 +179,7 @@ namespace Maps.API
                             case "gamma": index = 2; quadrant = "Gamma"; break;
                             case "delta": index = 3; quadrant = "Delta"; break;
                             default:
-                                SendError(400, "Bad Request", string.Format("The specified quadrant '{0}' is invalid.", quadrant));
-                                return;
+                                throw new HttpError(400, "Bad Request", string.Format("The specified quadrant '{0}' is invalid.", quadrant));
                         }
 
                         selector = new QuadrantSelector(resourceManager, sector, index);

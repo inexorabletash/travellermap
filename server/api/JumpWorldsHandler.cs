@@ -40,10 +40,8 @@ namespace Maps.API
                     int hex = GetIntOption("hex", 0);
                     Sector sector = map.FromName(sectorName);
                     if (sector == null)
-                    {
-                        SendError(404, "Not Found", string.Format("The specified sector '{0}' was not found.", sectorName));
-                        return;
-                    }
+                        throw new HttpError(404, "Not Found", string.Format("The specified sector '{0}' was not found.", sectorName));
+
                     loc = new Location(sector.Location, hex);
                 }
                 else if (HasLocation())
