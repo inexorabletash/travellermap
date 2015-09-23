@@ -6,8 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Globalization;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Maps.Rendering
 {
@@ -1392,6 +1392,8 @@ namespace Maps.Rendering
             ctx.graphics.DrawString(text, font, brush, position.X, position.Y, RenderUtil.StringFormatCentered);
         }
 
+        private static readonly Regex WRAP_REGEX = new Regex(@"\s+(?![a-z])");
+
         private static void DrawLabels(RenderContext ctx)
         {
             using (RenderUtil.SaveState(ctx.graphics))
@@ -1415,9 +1417,8 @@ namespace Maps.Rendering
                             //labelPos.X -= 0.5f;
                             //labelPos.Y -= 0.5f;
 
-                            System.Text.RegularExpressions.Regex r = new System.Text.RegularExpressions.Regex(@"\s+(?![a-z])");
                             if (border.WrapLabel)
-                                text = r.Replace(text, "\n");
+                                text = WRAP_REGEX.Replace(text, "\n");
 
                             RenderUtil.DrawLabel(ctx.graphics, text, labelPos, ctx.styles.microBorders.Font, solidBrush, ctx.styles.microBorders.textStyle);
                         }

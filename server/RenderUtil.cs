@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using System.Drawing.Text;
 using System.Linq;
 
 namespace Maps.Rendering
@@ -154,7 +155,7 @@ namespace Maps.Rendering
                 g.ScaleTransform(labelStyle.Scale.Width, labelStyle.Scale.Height);
 
                 if (labelStyle.Rotation != 0)
-                    g.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+                    g.Graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
 
                 XSize size = g.MeasureString(text, font);
                 size.Width *= 2; // prevent cut-off e.g. when rotated
