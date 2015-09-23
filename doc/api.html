@@ -943,11 +943,15 @@ table#features, #features th, #features td { border: solid 1px black; }
         <li>Add <code>like:</code> as a prefix to do a "sounds like" match, e.g. "<code>like:tear</code>" will find "Terra"
         <li>Specify more than one (space-delimited) word in the query to refine the search. Words are joined as logical <em>and</em> clauses. So "<code>so ri</code>" will match "Solomani Rim"
           (This combines strangely with wildcards; "<code>sol* ri*</code>" tries to find something matching both "<code>sol*</code>" <em>and</em> "<code>ri*</code>" so nothing will be found!)
-        <li>Add <code>uwp:</code> as a prefix to a word to search the UWP field. Examples:
+        <li>Add <code>uwp:</code> as a prefix to a word to search the relevant fields. Examples:
             <dl class="params">
                 <dt>uwp:a* <dd>find worlds with class A starports
                 <dt>t* uwp:*f <dd>find worlds with names beginning with T that are tech level F
             </dl>
+        <li>Similarly, you can use <code>pbg:</code>, <code>zone:</code>, <code>alleg:</code>
+          to match on PBG, Zone or Allegiance respectively.
+        <li>Use <code>remark:</code> to require a specific remark, e.g. <code>remark:Hi</code>
+          to limit the results to high-population worlds.
         <li>Add <code>in:</code> as a prefix to a word to search the sector name. Examples:
             <dl class="params">
                 <dt>t* in:spin <dd>find worlds in Spinward Marches sector begining with T
