@@ -69,7 +69,7 @@ namespace Maps
                         dt_subsectors.Columns.Add(new DataColumn());
 
                     DataTable dt_worlds = new DataTable();
-                    for (int i = 0; i < 12; ++i)
+                    for (int i = 0; i < 13; ++i)
                         dt_worlds.Columns.Add(new DataColumn());
 
                     callback("Parsing data...");
@@ -117,6 +117,7 @@ namespace Maps
                                     world.Y, 
                                     string.IsNullOrEmpty(world.Name) ? (object)DBNull.Value : (object)world.Name,
                                     world.UWP,
+                                    world.Remarks,
                                     world.PBG,
                                     string.IsNullOrEmpty(world.Zone) ? "G" : world.Zone,
                                     world.Allegiance,
@@ -153,6 +154,7 @@ namespace Maps
                             + "hex_y int NOT NULL, "
                             + "name nvarchar(50) NULL, "
                             + "uwp nchar(9) NULL, "
+                            + "remarks nvarchar(50) NULL, "
                             + "pbg nchar(3) NULL, "
                             + "zone nchar(1) NULL, "
                             + "alleg nchar(4) NULL, "
@@ -293,6 +295,7 @@ namespace Maps
                                                    "pbg:", 
                                                    "zone:", 
                                                    "alleg:", 
+                                                   "remark:",
                                                    "exact:", 
                                                    "like:", 
                                                    "in:"
@@ -380,6 +383,11 @@ namespace Maps
                 else if (op == "alleg:")
                 {
                     clause = "alleg LIKE @term";
+                    types = SearchResultsType.Worlds;
+                }
+                else if (op == "remark:")
+                {
+                    clause = "' ' + remarks + ' ' LIKE '% ' + @term + ' %'";
                     types = SearchResultsType.Worlds;
                 }
                 else if (op == "in:")

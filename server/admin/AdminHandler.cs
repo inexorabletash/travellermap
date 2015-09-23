@@ -38,7 +38,12 @@ namespace Maps.Admin
         // TODO: Dedupe w/ DataResponder
         protected static string GetStringOption(HttpContext context, string name)
         {
-            return context.Request[name];
+            if (context.Request[name] != null)
+                return context.Request[name];
+            var queryDefaults = Defaults(context);
+            if (queryDefaults != null && queryDefaults.ContainsKey(name))
+                return queryDefaults[name].ToString();
+            return null;
         }
     }
 

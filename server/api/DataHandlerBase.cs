@@ -328,13 +328,6 @@ namespace Maps.API
                 }
             }
 
-            private static RouteValueDictionary Defaults(HttpContext context)
-            {
-                RouteData data = context.Items["RouteData"] as RouteData;
-                if (data == null)
-                    throw new ApplicationException("RouteData not assigned by RouteHandler");
-                return data.Values;
-            }
             #endregion
 
             #region ITypeAccepter
