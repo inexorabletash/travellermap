@@ -12,9 +12,17 @@ namespace Maps.API
 {
     internal class SearchHandler : DataHandlerBase
     {
-        public override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Xml; } }
+        protected override string ServiceName { get { return "search"; } }
+        protected override DataResponder GetResponder(HttpContext context)
+        {
+            return new Responder(context);
+        }
+        private class Responder : DataResponder
+        {
+            public Responder(HttpContext context) : base(context) { }
+            public override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Xml; } }
 
-        private static Dictionary<string, string> SpecialSearches = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase) {
+            private static Dictionary<string, string> SpecialSearches = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase) {
             { @"(default)", @"~/res/search/Default.json"},
             { @"(grand tour)", @"~/res/search/GrandTour.json"},
             { @"(arrival vengeance)", @"~/res/search/ArrivalVengeance.json"},
@@ -22,64 +30,63 @@ namespace Maps.API
             { @"(cirque)", @"~/res/search/Cirque.json"}
         };
 
-        private static Regex UWP_REGEXP = new Regex(@"^\w{7}-\w$");
+            private static Regex UWP_REGEXP = new Regex(@"^\w{7}-\w$");
 
-        protected override string ServiceName { get { return "search"; } }
-
-        public override void Process(HttpContext context)
-        {
-            string query = context.Request.QueryString["q"];
-            if (query == null)
-                return;
-
-            // Look for special searches
-            if (SpecialSearches.ContainsKey(query))
+            public override void Process()
             {
-                string path = SpecialSearches[query];
+                string query = context.Request.QueryString["q"];
+                if (query == null)
+                    return;
 
-                if (context.Request.QueryString["jsonp"] != null)
+                // Look for special searches
+                if (SpecialSearches.ContainsKey(query))
                 {
-                    // TODO: Does this include the JSONP headers?
-                    SendFile(context, JsonConstants.MediaType, path);
+                    string path = SpecialSearches[query];
+
+                    if (context.Request.QueryString["jsonp"] != null)
+                    {
+                        // TODO: Does this include the JSONP headers?
+                        SendFile(JsonConstants.MediaType, path);
+                        return;
+                    }
+
+                    if (Accepts(context, JsonConstants.MediaType))
+                    {
+                        SendFile(JsonConstants.MediaType, path);
+                        return;
+                    }
                     return;
                 }
 
-                if (Accepts(context, JsonConstants.MediaType))
+                //
+                // Do the search
+                //
+                ResourceManager resourceManager = new ResourceManager(context.Server);
+                SectorMap map = SectorMap.FromName(SectorMap.DefaultSetting, resourceManager);
+
+                query = query.Replace('*', '%'); // Support * and % as wildcards
+                query = query.Replace('?', '_'); // Support ? and _ as wildcards
+
+                if (UWP_REGEXP.IsMatch(query))
+                    query = "uwp:" + query;
+
+                const int NUM_RESULTS = 160;
+
+                var searchResults = SearchEngine.PerformSearch(query, SearchEngine.SearchResultsType.Default, NUM_RESULTS);
+
+                SearchResults resultsList = new SearchResults();
+
+                if (searchResults != null)
                 {
-                    SendFile(context, JsonConstants.MediaType, path);
-                    return;
+                    resultsList.AddRange(searchResults
+                        .Select(loc => SearchResults.LocationToSearchResult(map, resourceManager, loc))
+                        .OfType<SearchResults.Item>()
+                        .OrderByDescending(item => item.Importance)
+                        .Take(NUM_RESULTS));
                 }
-                return;
+
+                SendResult(context, resultsList);
             }
-
-            //
-            // Do the search
-            //
-            ResourceManager resourceManager = new ResourceManager(context.Server);
-            SectorMap map = SectorMap.FromName(SectorMap.DefaultSetting, resourceManager);
-
-            query = query.Replace('*', '%'); // Support * and % as wildcards
-            query = query.Replace('?', '_'); // Support ? and _ as wildcards
-
-            if (UWP_REGEXP.IsMatch(query))
-                query = "uwp:" + query;
-
-            const int NUM_RESULTS = 160;
-
-            var searchResults = SearchEngine.PerformSearch(query, SearchEngine.SearchResultsType.Default, NUM_RESULTS);
-
-            SearchResults resultsList = new SearchResults();
-
-            if (searchResults != null)
-            {
-                resultsList.AddRange(searchResults
-                    .Select(loc => SearchResults.LocationToSearchResult(map, resourceManager, loc))
-                    .OfType<SearchResults.Item>()
-                    .OrderByDescending(item => item.Importance)
-                    .Take(NUM_RESULTS));
-            }
-
-            SendResult(context, resultsList);
         }
     }
 }

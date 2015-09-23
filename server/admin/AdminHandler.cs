@@ -38,8 +38,6 @@ namespace Maps.Admin
 
     internal class AdminHandler : AdminHandlerBase
     {
-        public override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Plain; } }
-
         protected override void Process(HttpContext context)
         {
             context.Server.ScriptTimeout = 3600; // An hour should be plenty

@@ -111,6 +111,7 @@ namespace Maps
 
             bool IHttpHandler.IsReusable
             {
+                // TODO: Why false here?
                 get { return false; }
             }
 

@@ -8,8 +8,6 @@ namespace Maps.Admin
     /// </summary>
     internal class DumpHandler : AdminHandlerBase
     {
-        public override string DefaultContentType { get { return MediaTypeNames.Text.Plain; } }
-
         protected override void Process(System.Web.HttpContext context)
         {
             ResourceManager resourceManager = new ResourceManager(context.Server);

@@ -155,8 +155,5 @@ namespace Maps
 
             throw new ArgumentException("Context is missing required parameters", "context");
         }
-
-
-    public abstract string DefaultContentType { get; }
     }
 }

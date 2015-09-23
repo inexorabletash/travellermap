@@ -12,39 +12,47 @@ namespace Maps.API
     /// </summary>
     internal class UniverseHandler : DataHandlerBase
     {
-        public override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Xml; } }
         protected override string ServiceName { get { return "universe"; } }
 
-        public override void Process(HttpContext context)
+        protected override DataResponder GetResponder(HttpContext context)
         {
-            ResourceManager resourceManager = new ResourceManager(context.Server);
-
-            // NOTE: This (re)initializes a static data structure used for 
-            // resolving names into sector locations, so needs to be run
-            // before any other objects (e.g. Worlds) are loaded.
-            SectorMap map = SectorMap.FromName(SectorMap.DefaultSetting, resourceManager);
-
-            // Filter parameters
-            string era = GetStringOption(context, "era");
-            bool requireData = GetBoolOption(context, "requireData", defaultValue: false);
-            string[] tags = GetStringsOption(context, "tag");
-
-            UniverseResult data = new UniverseResult();
-            foreach (Sector sector in map.Sectors)
+            return new Responder(context);
+        }
+        private class Responder : DataResponder
+        {
+            public Responder(HttpContext context) : base(context) { }
+            public override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Xml; } }
+            public override void Process()
             {
-                if (requireData && sector.DataFile == null)
-                    continue;
+                ResourceManager resourceManager = new ResourceManager(context.Server);
 
-                if (era != null && (sector.DataFile == null || sector.DataFile.Era != era))
-                    continue;
+                // NOTE: This (re)initializes a static data structure used for 
+                // resolving names into sector locations, so needs to be run
+                // before any other objects (e.g. Worlds) are loaded.
+                SectorMap map = SectorMap.FromName(SectorMap.DefaultSetting, resourceManager);
 
-                if (tags != null && !(tags.Any(tag => sector.Tags.Contains(tag))))
-                    continue;
+                // Filter parameters
+                string era = GetStringOption(context, "era");
+                bool requireData = GetBoolOption(context, "requireData", defaultValue: false);
+                string[] tags = GetStringsOption(context, "tag");
 
-                data.Sectors.Add(new UniverseResult.SectorResult(sector));
+                UniverseResult data = new UniverseResult();
+                foreach (Sector sector in map.Sectors)
+                {
+                    if (requireData && sector.DataFile == null)
+                        continue;
+
+                    if (era != null && (sector.DataFile == null || sector.DataFile.Era != era))
+                        continue;
+
+                    if (tags != null && !(tags.Any(tag => sector.Tags.Contains(tag))))
+                        continue;
+
+                    data.Sectors.Add(new UniverseResult.SectorResult(sector));
+                }
+
+                SendResult(context, data);
             }
-
-            SendResult(context, data);
         }
     }
 }

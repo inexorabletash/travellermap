@@ -17,10 +17,9 @@ namespace Maps.API
         bool Accepts(HttpContext context, string mediaType);
     }
 
-    internal abstract class DataHandlerBase : HandlerBase, IHttpHandler, ITypeAccepter
+    internal abstract class DataHandlerBase : HandlerBase, IHttpHandler
     {
         protected abstract string ServiceName { get; }
-        public abstract void Process(HttpContext context);
 
         public bool IsReusable { get { return true; } }
 
@@ -50,149 +49,168 @@ namespace Maps.API
 #endif
             }
 
-            Process(context);
+            GetResponder(context).Process();
         }
 
-        protected void SendResult(HttpContext context, object o, Encoding encoding = null)
-        {
-            SendResult(context, this, o, encoding);
-        }
-            
-        private static readonly Regex simpleJSIdentifierRegex = new Regex(@"^[A-Za-z_][A-Za-z0-9_]*$", RegexOptions.Compiled);
-        public static bool IsSimpleJSIdentifier(string s)
-        {
-            return simpleJSIdentifierRegex.IsMatch(s);
-        }
+        protected abstract DataResponder GetResponder(HttpContext context);
 
-
-        public static void SendResult(HttpContext context, ITypeAccepter accepter, object o, Encoding encoding = null)
+        protected abstract class DataResponder : ITypeAccepter
         {
-            // Vary: * is basically ignored by browsers
-            context.Response.Cache.SetOmitVaryStar(true);
-
-            if (context.Request.QueryString["jsonp"] != null)
+            public DataResponder(HttpContext context)
             {
-                if (!IsSimpleJSIdentifier(context.Request.QueryString["jsonp"]))
+                this.context = context;
+            }
+
+            public abstract string DefaultContentType { get; }
+
+            protected HttpContext context;
+            public HttpContext Context { get { return context; } }
+
+            public abstract void Process();
+
+            protected void SendResult(HttpContext context, object o, Encoding encoding = null)
+            {
+                SendResult(this, o, encoding);
+            }
+
+            private static readonly Regex simpleJSIdentifierRegex = new Regex(@"^[A-Za-z_][A-Za-z0-9_]*$", RegexOptions.Compiled);
+            public static bool IsSimpleJSIdentifier(string s)
+            {
+                return simpleJSIdentifierRegex.IsMatch(s);
+            }
+
+
+            public void SendResult(ITypeAccepter accepter, object o, Encoding encoding = null)
+            {
+                // Vary: * is basically ignored by browsers
+                Context.Response.Cache.SetOmitVaryStar(true);
+
+                if (Context.Request.QueryString["jsonp"] != null)
                 {
-                    SendError(context.Response, 400, "Bad Request", "The jsonp parameter must be a simple script identifier.");
+                    if (!IsSimpleJSIdentifier(Context.Request.QueryString["jsonp"]))
+                    {
+                        SendError(Context.Response, 400, "Bad Request", "The jsonp parameter must be a simple script identifier.");
+                        return;
+                    }
+
+                    SendJson(o);
                     return;
                 }
 
-                SendJson(context, o);
-                return;
-            }
-
-            // Check in priority order, since JSON will always be a default.
-            foreach (var type in accepter.AcceptTypes(context))
-            {
-                if (type == JsonConstants.MediaType)
+                // Check in priority order, since JSON will always be a default.
+                foreach (var type in accepter.AcceptTypes(Context))
                 {
-                    SendJson(context, o);
-                    return;
+                    if (type == JsonConstants.MediaType)
+                    {
+                        SendJson(o);
+                        return;
+                    }
+                    if (type == MediaTypeNames.Text.Xml)
+                    {
+                        SendXml(o);
+                        return;
+                    }
                 }
-                if (type == MediaTypeNames.Text.Xml)
+                SendText(o, encoding);
+            }
+
+            public void SendXml(object o)
+            {
+                Context.Response.ContentType = MediaTypeNames.Text.Xml;
+                XmlSerializer xs = new XmlSerializer(o.GetType());
+                xs.Serialize(Context.Response.OutputStream, o);
+            }
+
+            public void SendText(object o, Encoding encoding = null)
+            {
+                Context.Response.ContentType = MediaTypeNames.Text.Plain;
+                if (encoding == null)
                 {
-                    SendXml(context, o);
-                    return;
+                    Context.Response.Output.Write(o.ToString());
                 }
-            }
-            SendText(context, o, encoding);
-        }
-
-        public static void SendXml(HttpContext context, object o)
-        {
-            context.Response.ContentType = MediaTypeNames.Text.Xml;
-            XmlSerializer xs = new XmlSerializer(o.GetType());
-            xs.Serialize(context.Response.OutputStream, o);
-        }
-
-        public static void SendText(HttpContext context, object o, Encoding encoding = null)
-        {
-            context.Response.ContentType = MediaTypeNames.Text.Plain;
-            if (encoding == null)
-            {
-                context.Response.Output.Write(o.ToString());
-            }
-            else
-            {
-                context.Response.ContentEncoding = encoding;
-                context.Response.Output.Write(o.ToString());
-            }
-        }
-
-        public static void SendFile(HttpContext context, string contentType, string filename)
-        {
-            context.Response.ContentType = contentType;
-            SendPreamble(context, contentType);
-            context.Response.TransmitFile(filename);
-            SendPostamble(context, contentType);
-        }
-
-        public static void SendJson(HttpContext context, object o)
-        {
-            context.Response.ContentType = JsonConstants.MediaType;
-
-            JsonSerializer js = new JsonSerializer();
-
-            // TODO: Subclass this from a DataResponsePage
-            SendPreamble(context, JsonConstants.MediaType);
-            js.Serialize(context.Response.OutputStream, o);
-            SendPostamble(context, JsonConstants.MediaType);
-        }
-
-        private static void SendPreamble(HttpContext context, string contentType)
-        {
-            if (contentType == JsonConstants.MediaType && context.Request.QueryString["jsonp"] != null)
-            {
-                using (var w = new StreamWriter(context.Response.OutputStream))
+                else
                 {
-                    // TODO: Ensure jsonp is just an identifier
-                    w.Write(context.Request.QueryString["jsonp"]);
-                    w.Write("(");
+                    Context.Response.ContentEncoding = encoding;
+                    Context.Response.Output.Write(o.ToString());
                 }
             }
-        }
 
-        private static void SendPostamble(HttpContext context, string contentType)
-        {
-            if (contentType == JsonConstants.MediaType && context.Request.QueryString["jsonp"] != null)
+            public void SendFile(string contentType, string filename)
             {
-                using (var w = new StreamWriter(context.Response.OutputStream))
+                Context.Response.ContentType = contentType;
+                SendPreamble(contentType);
+                Context.Response.TransmitFile(filename);
+                SendPostamble(contentType);
+            }
+
+            public void SendJson(object o)
+            {
+                Context.Response.ContentType = JsonConstants.MediaType;
+
+                JsonSerializer js = new JsonSerializer();
+
+                // TODO: Subclass this from a DataResponsePage
+                SendPreamble(JsonConstants.MediaType);
+                js.Serialize(Context.Response.OutputStream, o);
+                SendPostamble(JsonConstants.MediaType);
+            }
+
+            private void SendPreamble(string contentType)
+            {
+                if (contentType == JsonConstants.MediaType && Context.Request.QueryString["jsonp"] != null)
                 {
-                    w.Write(");");
+                    using (var w = new StreamWriter(Context.Response.OutputStream))
+                    {
+                        // TODO: Ensure jsonp is just an identifier
+                        w.Write(Context.Request.QueryString["jsonp"]);
+                        w.Write("(");
+                    }
                 }
             }
-        }
 
-        // ITypeAccepter
-        public bool Accepts(HttpContext context, string mediaType)
-        {
-            return AcceptTypes(context).Contains(mediaType);
-        }
-
-        // ITypeAccepter
-        public IEnumerable<string> AcceptTypes(HttpContext context)
-        {
-            IDictionary<string, object> queryDefaults = null;
-            if (context.Items.Contains("RouteData"))
-                queryDefaults = (context.Items["RouteData"] as System.Web.Routing.RouteData).Values;
-
-            if (context.Request["accept"] != null)
-                yield return context.Request["accept"];
-
-            if (context.Request.Headers["accept"] != null)
-                yield return context.Request.Headers["accept"];
-
-            if (queryDefaults != null && queryDefaults.ContainsKey("accept"))
-                yield return queryDefaults["accept"].ToString();
-
-            if (context.Request.AcceptTypes != null)
+            private void SendPostamble(string contentType)
             {
-                foreach (var type in context.Request.AcceptTypes)
-                    yield return type;
+                if (contentType == JsonConstants.MediaType && Context.Request.QueryString["jsonp"] != null)
+                {
+                    using (var w = new StreamWriter(Context.Response.OutputStream))
+                    {
+                        w.Write(");");
+                    }
+                }
             }
 
-            yield return DefaultContentType;
+            // ITypeAccepter
+            public bool Accepts(HttpContext context, string mediaType)
+            {
+                return AcceptTypes(context).Contains(mediaType);
+            }
+
+            // ITypeAccepter
+            public IEnumerable<string> AcceptTypes(HttpContext context)
+            {
+                IDictionary<string, object> queryDefaults = null;
+                if (context.Items.Contains("RouteData"))
+                    queryDefaults = (context.Items["RouteData"] as System.Web.Routing.RouteData).Values;
+
+                if (context.Request["accept"] != null)
+                    yield return context.Request["accept"];
+
+                if (context.Request.Headers["accept"] != null)
+                    yield return context.Request.Headers["accept"];
+
+                if (queryDefaults != null && queryDefaults.ContainsKey("accept"))
+                    yield return queryDefaults["accept"].ToString();
+
+                if (context.Request.AcceptTypes != null)
+                {
+                    foreach (var type in context.Request.AcceptTypes)
+                        yield return type;
+                }
+
+                yield return DefaultContentType;
+            }
+
         }
+
     }
 }

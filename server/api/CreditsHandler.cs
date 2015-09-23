@@ -1,130 +1,141 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using System.Web;
 using System.Xml.Serialization;
 
 namespace Maps.API
 {
     internal class CreditsHandler : DataHandlerBase
     {
-        public override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Xml; } }
         protected override string ServiceName { get { return "credits"; } }
 
-        public override void Process(System.Web.HttpContext context)
+        protected override DataResponder GetResponder(HttpContext context)
         {
-            ResourceManager resourceManager = new ResourceManager(context.Server);
+            return new Responder(context);
+        }
 
-            // NOTE: This (re)initializes a static data structure used for 
-            // resolving names into sector locations, so needs to be run
-            // before any other objects (e.g. Worlds) are loaded.
-            SectorMap map = SectorMap.FromName(SectorMap.DefaultSetting, resourceManager);
-            Location loc = new Location(map.FromName("Spinward Marches").Location, 1910);
-
-            if (HasOption(context, "sector"))
+        private class Responder : DataResponder
+        {
+            public Responder(HttpContext context) : base(context) { }
+            public override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Xml; } }
+            public override void Process()
             {
-                string sectorName = GetStringOption(context, "sector");
-                Sector sec = map.FromName(sectorName);
-                if (sec == null)
+                ResourceManager resourceManager = new ResourceManager(context.Server);
+
+                // NOTE: This (re)initializes a static data structure used for 
+                // resolving names into sector locations, so needs to be run
+                // before any other objects (e.g. Worlds) are loaded.
+                SectorMap map = SectorMap.FromName(SectorMap.DefaultSetting, resourceManager);
+                Location loc = new Location(map.FromName("Spinward Marches").Location, 1910);
+
+                if (HasOption(context, "sector"))
                 {
-                    SendError(context.Response, 404, "Not Found", string.Format("The specified sector '{0}' was not found.", sectorName));
-                    return;
-                }
-
-                int hex = GetIntOption(context, "hex", Astrometrics.SectorCentralHex);
-                loc = new Location(sec.Location, hex);
-            }
-            else if (HasLocation(context))
-            {
-                loc = GetLocation(context);
-            }
-
-            if (loc.Hex.IsEmpty)
-                loc.Hex = Astrometrics.SectorCenter;
-
-            Sector sector = map.FromLocation(loc.Sector.X, loc.Sector.Y);
-
-            var data = new Results.CreditsResult();
-
-            if (sector != null)
-            {
-                // TODO: Multiple names
-                foreach (var name in sector.Names.Take(1))
-                    data.SectorName = name.Text;
-
-                // Raw HTML credits
-                data.Credits = sector.Credits == null ? null : sector.Credits.Trim();
-
-                // Product info
-                if (sector.Products.Count > 0)
-                {
-                    data.ProductPublisher = sector.Products[0].Publisher;
-                    data.ProductTitle = sector.Products[0].Title;
-                    data.ProductAuthor = sector.Products[0].Author;
-                    data.ProductRef = sector.Products[0].Ref;
-                }
-
-                // Tags
-                data.SectorTags = sector.TagString;
-
-                //
-                // Sector Credits
-                //
-                data.SectorAuthor = sector.Author;
-                data.SectorSource = sector.Source;
-                data.SectorPublisher = sector.Publisher;
-                data.SectorCopyright = sector.Copyright;
-                data.SectorRef = sector.Ref;
-                data.SectorEra = sector.Era;
-
-                if (sector.DataFile != null)
-                {
-                    data.SectorAuthor = sector.DataFile.Author ?? data.SectorAuthor;
-                    data.SectorSource = sector.DataFile.Source ?? data.SectorSource;
-                    data.SectorPublisher = sector.DataFile.Publisher ?? data.SectorPublisher;
-                    data.SectorCopyright = sector.DataFile.Copyright ?? data.SectorCopyright;
-                    data.SectorRef = sector.DataFile.Ref ?? data.SectorRef;
-                    data.SectorEra = sector.DataFile.Era ?? data.SectorEra;
-                }
-
-                //
-                // Subsector Credits
-                //
-                int ssx = (loc.Hex.X - 1) / Astrometrics.SubsectorWidth;
-                int ssy = (loc.Hex.Y - 1) / Astrometrics.SubsectorHeight;
-                int ssi = ssx + ssy * 4;
-                Subsector ss = sector.Subsector(ssi);
-                if (ss != null)
-                {
-                    data.SubsectorIndex = ss.Index;
-                    data.SubsectorName = ss.Name;
-                }
-
-                //
-                // Routes Credits
-                //
-
-
-                //
-                // World Data
-                // 
-                WorldCollection worlds = sector.GetWorlds(resourceManager);
-                if (worlds != null)
-                {
-                    World world = worlds[loc.Hex];
-                    if (world != null)
+                    string sectorName = GetStringOption(context, "sector");
+                    Sector sec = map.FromName(sectorName);
+                    if (sec == null)
                     {
-                        data.WorldName = world.Name;
-                        data.WorldHex = world.Hex;
-                        data.WorldUwp = world.UWP;
-                        data.WorldRemarks = world.Remarks;
-                        data.WorldIx = world.Importance;
-                        data.WorldEx = world.Economic;
-                        data.WorldCx = world.Cultural;
-                        data.WorldPbg = world.PBG;
-                        data.WorldAllegiance = sector.GetAllegianceFromCode(world.Allegiance).T5Code;
+                        SendError(context.Response, 404, "Not Found", string.Format("The specified sector '{0}' was not found.", sectorName));
+                        return;
+                    }
+
+                    int hex = GetIntOption(context, "hex", Astrometrics.SectorCentralHex);
+                    loc = new Location(sec.Location, hex);
+                }
+                else if (HasLocation(context))
+                {
+                    loc = GetLocation(context);
+                }
+
+                if (loc.Hex.IsEmpty)
+                    loc.Hex = Astrometrics.SectorCenter;
+
+                Sector sector = map.FromLocation(loc.Sector.X, loc.Sector.Y);
+
+                var data = new Results.CreditsResult();
+
+                if (sector != null)
+                {
+                    // TODO: Multiple names
+                    foreach (var name in sector.Names.Take(1))
+                        data.SectorName = name.Text;
+
+                    // Raw HTML credits
+                    data.Credits = sector.Credits == null ? null : sector.Credits.Trim();
+
+                    // Product info
+                    if (sector.Products.Count > 0)
+                    {
+                        data.ProductPublisher = sector.Products[0].Publisher;
+                        data.ProductTitle = sector.Products[0].Title;
+                        data.ProductAuthor = sector.Products[0].Author;
+                        data.ProductRef = sector.Products[0].Ref;
+                    }
+
+                    // Tags
+                    data.SectorTags = sector.TagString;
+
+                    //
+                    // Sector Credits
+                    //
+                    data.SectorAuthor = sector.Author;
+                    data.SectorSource = sector.Source;
+                    data.SectorPublisher = sector.Publisher;
+                    data.SectorCopyright = sector.Copyright;
+                    data.SectorRef = sector.Ref;
+                    data.SectorEra = sector.Era;
+
+                    if (sector.DataFile != null)
+                    {
+                        data.SectorAuthor = sector.DataFile.Author ?? data.SectorAuthor;
+                        data.SectorSource = sector.DataFile.Source ?? data.SectorSource;
+                        data.SectorPublisher = sector.DataFile.Publisher ?? data.SectorPublisher;
+                        data.SectorCopyright = sector.DataFile.Copyright ?? data.SectorCopyright;
+                        data.SectorRef = sector.DataFile.Ref ?? data.SectorRef;
+                        data.SectorEra = sector.DataFile.Era ?? data.SectorEra;
+                    }
+
+                    //
+                    // Subsector Credits
+                    //
+                    int ssx = (loc.Hex.X - 1) / Astrometrics.SubsectorWidth;
+                    int ssy = (loc.Hex.Y - 1) / Astrometrics.SubsectorHeight;
+                    int ssi = ssx + ssy * 4;
+                    Subsector ss = sector.Subsector(ssi);
+                    if (ss != null)
+                    {
+                        data.SubsectorIndex = ss.Index;
+                        data.SubsectorName = ss.Name;
+                    }
+
+                    //
+                    // Routes Credits
+                    //
+
+
+                    //
+                    // World Data
+                    // 
+                    WorldCollection worlds = sector.GetWorlds(resourceManager);
+                    if (worlds != null)
+                    {
+                        World world = worlds[loc.Hex];
+                        if (world != null)
+                        {
+                            data.WorldName = world.Name;
+                            data.WorldHex = world.Hex;
+                            data.WorldUwp = world.UWP;
+                            data.WorldRemarks = world.Remarks;
+                            data.WorldIx = world.Importance;
+                            data.WorldEx = world.Economic;
+                            data.WorldCx = world.Cultural;
+                            data.WorldPbg = world.PBG;
+                            data.WorldAllegiance = sector.GetAllegianceFromCode(world.Allegiance).T5Code;
+                        }
                     }
                 }
-            }
 
-            SendResult(context, data);
+                SendResult(context, data);
+            }
         }
     }
 }

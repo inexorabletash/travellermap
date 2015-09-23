@@ -10,8 +10,6 @@ namespace Maps.Admin
     /// </summary>
     internal class ErrorsHandler : AdminHandlerBase
     {
-        public override string DefaultContentType { get { return MediaTypeNames.Text.Plain; } }
-
         protected override void Process(System.Web.HttpContext context)
         {
             context.Response.ContentType = MediaTypeNames.Text.Plain;
