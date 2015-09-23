@@ -29,7 +29,7 @@ namespace Maps.API
                 //
                 // Jump
                 //
-                int jump = Util.Clamp(GetIntOption(context, "jump", 6), 0, 12);
+                int jump = Util.Clamp(GetIntOption("jump", 6), 0, 12);
 
                 //
                 // Content & Coordinates
@@ -41,27 +41,27 @@ namespace Maps.API
                     Sector sector;
                     try
                     {
-                        bool lint = GetBoolOption(context, "lint", defaultValue: false);
+                        bool lint = GetBoolOption("lint", defaultValue: false);
                         ErrorLogger errors = new ErrorLogger();
                         sector = GetPostedSector(context.Request, errors);
                         if (lint && !errors.Empty)
                         {
-                            SendError(context.Response, 400, "Bad Request", errors.ToString());
+                            SendError(400, "Bad Request", errors.ToString());
                         }
                     }
                     catch (Exception ex)
                     {
-                        SendError(context.Response, 400, "Bad Request", ex.Message);
+                        SendError(400, "Bad Request", ex.Message);
                         return;
                     }
 
                     if (sector == null)
                     {
-                        SendError(context.Response, 400, "Bad Request", "Either file or data must be supplied in the POST data.");
+                        SendError(400, "Bad Request", "Either file or data must be supplied in the POST data.");
                         return;
                     }
 
-                    int hex = GetIntOption(context, "hex", Astrometrics.SectorCentralHex);
+                    int hex = GetIntOption("hex", Astrometrics.SectorCentralHex);
                     loc = new Location(new Point(0, 0), hex);
                     selector = new HexSectorSelector(resourceManager, sector, loc.Hex, jump);
                 }
@@ -69,22 +69,22 @@ namespace Maps.API
                 {
                     SectorMap map = SectorMap.FromName(SectorMap.DefaultSetting, resourceManager);
 
-                    if (HasOption(context, "sector") && HasOption(context, "hex"))
+                    if (HasOption("sector") && HasOption("hex"))
                     {
-                        string sectorName = GetStringOption(context, "sector");
-                        int hex = GetIntOption(context, "hex", 0);
+                        string sectorName = GetStringOption("sector");
+                        int hex = GetIntOption("hex", 0);
                         Sector sector = map.FromName(sectorName);
                         if (sector == null)
                         {
-                            SendError(context.Response, 404, "Not Found", string.Format("The specified sector '{0}' was not found.", sectorName));
+                            SendError(404, "Not Found", string.Format("The specified sector '{0}' was not found.", sectorName));
                             return;
                         }
 
                         loc = new Location(sector.Location, hex);
                     }
-                    else if (HasLocation(context))
+                    else if (HasLocation())
                     {
-                        loc = GetLocation(context);
+                        loc = GetLocation();
                     }
                     else
                     {
@@ -97,24 +97,24 @@ namespace Maps.API
                 //
                 // Scale
                 //
-                double scale = Util.Clamp(GetDoubleOption(context, "scale", 64), MinScale, MaxScale);
+                double scale = Util.Clamp(GetDoubleOption("scale", 64), MinScale, MaxScale);
 
                 //
                 // Options & Style
                 //
                 MapOptions options = MapOptions.BordersMajor | MapOptions.BordersMinor | MapOptions.ForceHexes;
                 Stylesheet.Style style = Stylesheet.Style.Poster;
-                ParseOptions(context, ref options, ref style);
+                ParseOptions(ref options, ref style);
 
                 //
                 // Border
                 //
-                bool border = GetBoolOption(context, "border", defaultValue: true);
+                bool border = GetBoolOption("border", defaultValue: true);
 
                 //
                 // Clip
                 //
-                bool clip = GetBoolOption(context, "clip", defaultValue: true);
+                bool clip = GetBoolOption("clip", defaultValue: true);
 
                 //
                 // What to render

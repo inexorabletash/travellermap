@@ -69,12 +69,12 @@ namespace Maps.API
                 }
             }
 
-            private static World ResolveLocation(HttpContext context, string field, ResourceManager manager, SectorMap map)
+            private World ResolveLocation(HttpContext context, string field, ResourceManager manager, SectorMap map)
             {
                 string query = context.Request.QueryString[field];
                 if (string.IsNullOrWhiteSpace(query))
                 {
-                    SendError(context.Response, 400, "Bad Request", string.Format("Missing {0} location", field));
+                    SendError(400, "Bad Request", string.Format("Missing {0} location", field));
                     return null;
                 }
 
@@ -83,12 +83,12 @@ namespace Maps.API
                 Match match = Regex.Match(query, @"^(?<sector>.+?)\s+(?<hex>\d\d\d\d)$");
                 if (!match.Success)
                 {
-                    int x = GetIntOption(context, "x", 0);
-                    int y = GetIntOption(context, "y", 0);
+                    int x = GetIntOption("x", 0);
+                    int y = GetIntOption("y", 0);
                     WorldLocation loc = SearchEngine.FindNearestWorldMatch(query, x, y);
                     if (loc == null)
                     {
-                        SendError(context.Response, 404, "Not Found", string.Format("Location not found: {0}", query));
+                        SendError(404, "Not Found", string.Format("Location not found: {0}", query));
                         return null;
                     }
                     Sector loc_sector;
@@ -100,7 +100,7 @@ namespace Maps.API
                 Sector sector = map.FromName(match.Groups["sector"].Value);
                 if (sector == null)
                 {
-                    SendError(context.Response, 404, "Not Found", string.Format("Sector not found: {0}", sector));
+                    SendError(404, "Not Found", string.Format("Sector not found: {0}", sector));
                     return null;
                 }
 
@@ -108,14 +108,14 @@ namespace Maps.API
                 Hex hex = new Hex(hexString);
                 if (!hex.IsValid)
                 {
-                    SendError(context.Response, 400, "Not Found", string.Format("Invalid hex: {0}", hexString));
+                    SendError(400, "Not Found", string.Format("Invalid hex: {0}", hexString));
                     return null;
                 }
 
                 World world = sector.GetWorlds(manager)[hex.ToInt()];
                 if (world == null)
                 {
-                    SendError(context.Response, 404, "Not Found", string.Format("No such world: {0} {1}", sector.Names[0].Text, hexString));
+                    SendError(404, "Not Found", string.Format("No such world: {0} {1}", sector.Names[0].Text, hexString));
                     return null;
                 }
 
@@ -135,16 +135,16 @@ namespace Maps.API
                 if (endWorld == null)
                     return;
 
-                int jump = Util.Clamp(GetIntOption(context, "jump", 2), 0, 12);
+                int jump = Util.Clamp(GetIntOption("jump", 2), 0, 12);
 
                 var finder = new TravellerPathFinder(resourceManager, map, jump);
 
-                finder.RequireWildernessRefuelling = GetBoolOption(context, "wild", false);
-                finder.ImperialWorldsOnly = GetBoolOption(context, "im", false);
-                finder.AvoidRedZones = GetBoolOption(context, "nored", false);
+                finder.RequireWildernessRefuelling = GetBoolOption("wild", false);
+                finder.ImperialWorldsOnly = GetBoolOption("im", false);
+                finder.AvoidRedZones = GetBoolOption("nored", false);
 
                 List<World> route = finder.FindPath(startWorld, endWorld);
-                if (route == null) { SendError(context.Response, 404, "Not Found", "No route found"); return; }
+                if (route == null) { SendError(404, "Not Found", "No route found"); return; }
 
                 SendResult(context, route.Select(w => new Results.RouteStop(w)).ToList());
             }

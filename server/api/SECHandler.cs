@@ -27,77 +27,77 @@ namespace Maps.API
                 SectorMap map = SectorMap.FromName(SectorMap.DefaultSetting, resourceManager);
                 Sector sector;
 
-                bool sscoords = GetBoolOption(context, "sscoords", defaultValue: false);
-                bool includeMetadata = GetBoolOption(context, "metadata", defaultValue: true);
-                bool includeHeader = GetBoolOption(context, "header", defaultValue: true);
+                bool sscoords = GetBoolOption("sscoords", defaultValue: false);
+                bool includeMetadata = GetBoolOption("metadata", defaultValue: true);
+                bool includeHeader = GetBoolOption("header", defaultValue: true);
 
                 if (context.Request.HttpMethod == "POST")
                 {
-                    bool lint = GetBoolOption(context, "lint", defaultValue: false);
+                    bool lint = GetBoolOption("lint", defaultValue: false);
                     var errors = lint ? new ErrorLogger() : null;
                     sector = new Sector(context.Request.InputStream, new ContentType(context.Request.ContentType).MediaType, errors);
                     if (lint && !errors.Empty)
                     {
-                        SendError(context.Response, 400, "Bad Request", errors.ToString());
+                        SendError(400, "Bad Request", errors.ToString());
                         return;
                     }
                     includeMetadata = false;
                 }
-                else if (HasOption(context, "sx") && HasOption(context, "sy"))
+                else if (HasOption("sx") && HasOption("sy"))
                 {
-                    int sx = GetIntOption(context, "sx", 0);
-                    int sy = GetIntOption(context, "sy", 0);
+                    int sx = GetIntOption("sx", 0);
+                    int sy = GetIntOption("sy", 0);
 
                     sector = map.FromLocation(sx, sy);
 
                     if (sector == null)
                     {
-                        SendError(context.Response, 404, "Not Found", string.Format("The sector at {0},{1} was not found.", sx, sy));
+                        SendError(404, "Not Found", string.Format("The sector at {0},{1} was not found.", sx, sy));
                         return;
                     }
                 }
-                else if (HasOption(context, "sector"))
+                else if (HasOption("sector"))
                 {
-                    string sectorName = GetStringOption(context, "sector");
+                    string sectorName = GetStringOption("sector");
                     sector = map.FromName(sectorName);
 
                     if (sector == null)
                     {
-                        SendError(context.Response, 404, "Not Found", string.Format("The specified sector '{0}' was not found.", sectorName));
+                        SendError(404, "Not Found", string.Format("The specified sector '{0}' was not found.", sectorName));
                         return;
                     }
                 }
                 else
                 {
-                    SendError(context.Response, 400, "Bad Request", "No sector specified.");
+                    SendError(400, "Bad Request", "No sector specified.");
                     return;
                 }
 
                 WorldFilter filter = null;
-                if (HasOption(context, "subsector"))
+                if (HasOption("subsector"))
                 {
-                    string subsector = GetStringOption(context, "subsector");
+                    string subsector = GetStringOption("subsector");
                     int index = sector.SubsectorIndexFor(subsector);
                     if (index == -1)
                     {
-                        SendError(context.Response, 404, "Not Found", string.Format("The specified subsector '{0}' was not found.", subsector));
+                        SendError(404, "Not Found", string.Format("The specified subsector '{0}' was not found.", subsector));
                         return;
                     }
                     filter = (World world) => (world.Subsector == index);
                 }
-                else if (HasOption(context, "quadrant"))
+                else if (HasOption("quadrant"))
                 {
-                    string quadrant = GetStringOption(context, "quadrant");
+                    string quadrant = GetStringOption("quadrant");
                     int index = Sector.QuadrantIndexFor(quadrant);
                     if (index == -1)
                     {
-                        SendError(context.Response, 400, "Bad Request", string.Format("The specified quadrant '{0}' is invalid.", quadrant));
+                        SendError(400, "Bad Request", string.Format("The specified quadrant '{0}' is invalid.", quadrant));
                         return;
                     }
                     filter = (World world) => (world.Quadrant == index);
                 }
 
-                string mediaType = GetStringOption(context, "type");
+                string mediaType = GetStringOption("type");
                 Encoding encoding;
                 switch (mediaType)
                 {

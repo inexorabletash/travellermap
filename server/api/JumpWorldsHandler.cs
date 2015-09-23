@@ -26,7 +26,7 @@ namespace Maps.API
                 //
                 // Jump
                 //
-                int jump = Util.Clamp(GetIntOption(context, "jump", 6), 0, 12);
+                int jump = Util.Clamp(GetIntOption("jump", 6), 0, 12);
 
                 //
                 // Coordinates
@@ -34,21 +34,21 @@ namespace Maps.API
                 SectorMap map = SectorMap.FromName(SectorMap.DefaultSetting, resourceManager);
                 Location loc = new Location(map.FromName("Spinward Marches").Location, 1910);
 
-                if (HasOption(context, "sector") && HasOption(context, "hex"))
+                if (HasOption("sector") && HasOption("hex"))
                 {
-                    string sectorName = GetStringOption(context, "sector");
-                    int hex = GetIntOption(context, "hex", 0);
+                    string sectorName = GetStringOption("sector");
+                    int hex = GetIntOption("hex", 0);
                     Sector sector = map.FromName(sectorName);
                     if (sector == null)
                     {
-                        SendError(context.Response, 404, "Not Found", string.Format("The specified sector '{0}' was not found.", sectorName));
+                        SendError(404, "Not Found", string.Format("The specified sector '{0}' was not found.", sectorName));
                         return;
                     }
                     loc = new Location(sector.Location, hex);
                 }
-                else if (HasLocation(context))
+                else if (HasLocation())
                 {
-                    loc = GetLocation(context);
+                    loc = GetLocation();
                 }
 
                 Selector selector = new HexSelector(map, resourceManager, loc, jump);

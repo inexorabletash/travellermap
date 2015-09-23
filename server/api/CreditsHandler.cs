@@ -28,22 +28,22 @@ namespace Maps.API
                 SectorMap map = SectorMap.FromName(SectorMap.DefaultSetting, resourceManager);
                 Location loc = new Location(map.FromName("Spinward Marches").Location, 1910);
 
-                if (HasOption(context, "sector"))
+                if (HasOption("sector"))
                 {
-                    string sectorName = GetStringOption(context, "sector");
+                    string sectorName = GetStringOption("sector");
                     Sector sec = map.FromName(sectorName);
                     if (sec == null)
                     {
-                        SendError(context.Response, 404, "Not Found", string.Format("The specified sector '{0}' was not found.", sectorName));
+                        SendError(404, "Not Found", string.Format("The specified sector '{0}' was not found.", sectorName));
                         return;
                     }
 
-                    int hex = GetIntOption(context, "hex", Astrometrics.SectorCentralHex);
+                    int hex = GetIntOption("hex", Astrometrics.SectorCentralHex);
                     loc = new Location(sec.Location, hex);
                 }
-                else if (HasLocation(context))
+                else if (HasLocation())
                 {
-                    loc = GetLocation(context);
+                    loc = GetLocation();
                 }
 
                 if (loc.Hex.IsEmpty)

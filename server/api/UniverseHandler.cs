@@ -32,9 +32,9 @@ namespace Maps.API
                 SectorMap map = SectorMap.FromName(SectorMap.DefaultSetting, resourceManager);
 
                 // Filter parameters
-                string era = GetStringOption(context, "era");
-                bool requireData = GetBoolOption(context, "requireData", defaultValue: false);
-                string[] tags = GetStringsOption(context, "tag");
+                string era = GetStringOption("era");
+                bool requireData = GetBoolOption("requireData", defaultValue: false);
+                string[] tags = GetStringsOption("tag");
 
                 UniverseResult data = new UniverseResult();
                 foreach (Sector sector in map.Sectors)

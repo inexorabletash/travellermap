@@ -38,33 +38,33 @@ namespace Maps.API
                         sector = parser.Parse(reader);
                     }
                 }
-                else if (HasOption(context, "sx") && HasOption(context, "sy"))
+                else if (HasOption("sx") && HasOption("sy"))
                 {
-                    int sx = GetIntOption(context, "sx", 0);
-                    int sy = GetIntOption(context, "sy", 0);
+                    int sx = GetIntOption("sx", 0);
+                    int sy = GetIntOption("sy", 0);
 
                     sector = map.FromLocation(sx, sy);
 
                     if (sector == null)
                     {
-                        SendError(context.Response, 404, "Not Found", string.Format("The sector at {0},{1} was not found.", sx, sy));
+                        SendError(404, "Not Found", string.Format("The sector at {0},{1} was not found.", sx, sy));
                         return;
                     }
                 }
-                else if (HasOption(context, "sector"))
+                else if (HasOption("sector"))
                 {
-                    string sectorName = GetStringOption(context, "sector");
+                    string sectorName = GetStringOption("sector");
                     sector = map.FromName(sectorName);
 
                     if (sector == null)
                     {
-                        SendError(context.Response, 404, "Not Found", string.Format("The specified sector '{0}' was not found.", sectorName));
+                        SendError(404, "Not Found", string.Format("The specified sector '{0}' was not found.", sectorName));
                         return;
                     }
                 }
                 else
                 {
-                    SendError(context.Response, 400, "Bad Request", "No sector specified.");
+                    SendError(400, "Bad Request", "No sector specified.");
                     return;
                 }
 

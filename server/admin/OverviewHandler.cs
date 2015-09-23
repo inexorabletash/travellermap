@@ -30,7 +30,7 @@ namespace Maps.Admin
 
                     MapOptions options = MapOptions.SectorGrid | MapOptions.FilledBorders;
                     Stylesheet.Style style = Stylesheet.Style.Poster;
-                    ParseOptions(context, ref options, ref style);
+                    ParseOptions(ref options, ref style);
 
                     double x = -0.5;
                     double y = -0.5;

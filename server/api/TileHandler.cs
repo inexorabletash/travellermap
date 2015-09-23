@@ -28,13 +28,13 @@ namespace Maps.API
 
                 MapOptions options = MapOptions.SectorGrid | MapOptions.BordersMajor | MapOptions.NamesMajor | MapOptions.NamesMinor;
                 Stylesheet.Style style = Stylesheet.Style.Poster;
-                ParseOptions(context, ref options, ref style);
+                ParseOptions(ref options, ref style);
 
-                double x = GetDoubleOption(context, "x", 0);
-                double y = GetDoubleOption(context, "y", 0);
-                double scale = Util.Clamp(GetDoubleOption(context, "scale", 0), MinScale, MaxScale);
-                int width = Util.Clamp(GetIntOption(context, "w", NormalTileWidth), MinDimension, MaxDimension);
-                int height = Util.Clamp(GetIntOption(context, "h", NormalTileHeight), MinDimension, MaxDimension);
+                double x = GetDoubleOption("x", 0);
+                double y = GetDoubleOption("y", 0);
+                double scale = Util.Clamp(GetDoubleOption("scale", 0), MinScale, MaxScale);
+                int width = Util.Clamp(GetIntOption("w", NormalTileWidth), MinDimension, MaxDimension);
+                int height = Util.Clamp(GetIntOption("h", NormalTileHeight), MinDimension, MaxDimension);
 
                 Size tileSize = new Size(width, height);
 
@@ -46,7 +46,7 @@ namespace Maps.API
 
                 DateTime dt = DateTime.Now;
                 bool silly = (Math.Abs((int)x % 2) == Math.Abs((int)y % 2)) && (dt.Month == 4 && dt.Day == 1);
-                silly = GetBoolOption(context, "silly", silly);
+                silly = GetBoolOption("silly", silly);
 
                 Render.RenderContext ctx = new Render.RenderContext();
                 ctx.resourceManager = resourceManager;

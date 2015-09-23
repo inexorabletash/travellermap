@@ -30,26 +30,26 @@ namespace Maps.API
                 Location loc = new Location(map.FromName("Spinward Marches").Location, 1910);
 
                 // Accept either sector [& hex] or sx,sy [& hx,hy] or x,y
-                if (HasOption(context, "sector"))
+                if (HasOption("sector"))
                 {
-                    string sectorName = GetStringOption(context, "sector");
+                    string sectorName = GetStringOption("sector");
                     Sector sector = map.FromName(sectorName);
                     if (sector == null)
                     {
-                        SendError(context.Response, 404, "Not Found", string.Format("The specified sector '{0}' was not found.", sectorName));
+                        SendError(404, "Not Found", string.Format("The specified sector '{0}' was not found.", sectorName));
                         return;
                     }
 
-                    int hex = GetIntOption(context, "hex", 0);
+                    int hex = GetIntOption("hex", 0);
                     loc = new Location(sector.Location, hex);
                 }
-                else if (HasLocation(context))
+                else if (HasLocation())
                 {
-                    loc = GetLocation(context);
+                    loc = GetLocation();
                 }
                 else
                 {
-                    SendError(context.Response, 400, "Bad Request", "Must specify either sector name (and optional hex) or sx, sy (and optional hx, hy), or x, y (world-space coordinates).");
+                    SendError(400, "Bad Request", "Must specify either sector name (and optional hex) or sx, sy (and optional hx, hy), or x, y (world-space coordinates).");
                     return;
                 }
 

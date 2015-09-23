@@ -34,6 +34,12 @@ namespace Maps.Admin
         }
 
         protected abstract void Process(HttpContext context);
+
+        // TODO: Dedupe w/ DataResponder
+        protected static string GetStringOption(HttpContext context, string name)
+        {
+            return context.Request[name];
+        }
     }
 
     internal class AdminHandler : AdminHandlerBase

@@ -31,27 +31,27 @@ namespace Maps.API
                     (context.Items["RouteData"] as System.Web.Routing.RouteData).Values);
             }
 
-            protected static void ProduceResponse(HttpContext context, ITypeAccepter accepter, string title, Render.RenderContext ctx, Size tileSize,
+            protected void ProduceResponse(HttpContext context, ITypeAccepter accepter, string title, Render.RenderContext ctx, Size tileSize,
                 int rot = 0, float translateX = 0, float translateY = 0,
                 bool transparent = false, IDictionary<string, object> queryDefaults = null)
             {
                 // New-style Options
                 // TODO: move to ParseOptions (maybe - requires options to be parsed after stylesheet creation?)
-                if (HandlerBase.GetBoolOption(context.Request, "sscoords", queryDefaults: queryDefaults, defaultValue: false))
+                if (GetBoolOption("sscoords", queryDefaults: queryDefaults, defaultValue: false))
                     ctx.styles.hexCoordinateStyle = Stylesheet.HexCoordinateStyle.Subsector;
 
-                if (HandlerBase.GetBoolOption(context.Request, "allhexes", queryDefaults: queryDefaults, defaultValue: false))
+                if (GetBoolOption("allhexes", queryDefaults: queryDefaults, defaultValue: false))
                     ctx.styles.numberAllHexes = true;
 
-                if (!HandlerBase.GetBoolOption(context.Request, "routes", queryDefaults: queryDefaults, defaultValue: true))
+                if (!GetBoolOption("routes", queryDefaults: queryDefaults, defaultValue: true))
                 {
                     ctx.styles.macroRoutes.visible = false;
                     ctx.styles.microRoutes.visible = false;
                 }
 
-                ctx.styles.dimUnofficialSectors = HandlerBase.GetBoolOption(context.Request, "dimunofficial", queryDefaults: queryDefaults, defaultValue: false);
+                ctx.styles.dimUnofficialSectors = GetBoolOption("dimunofficial", queryDefaults: queryDefaults, defaultValue: false);
 
-                double devicePixelRatio = HandlerBase.GetDoubleOption(context.Request, "dpr", defaultValue: 1, queryDefaults: queryDefaults);
+                double devicePixelRatio = GetDoubleOption("dpr", defaultValue: 1, queryDefaults: queryDefaults);
                 if (devicePixelRatio <= 0)
                     devicePixelRatio = 1;
 
@@ -113,7 +113,7 @@ namespace Maps.API
                         }
                     }
 
-                    bool dataURI = HandlerBase.GetBoolOption(context.Request, "datauri", queryDefaults: queryDefaults, defaultValue: false);
+                    bool dataURI = GetBoolOption("datauri", queryDefaults: queryDefaults, defaultValue: false);
                     MemoryStream ms = null;
                     if (dataURI)
                         ms = new MemoryStream();
