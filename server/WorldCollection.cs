@@ -16,11 +16,11 @@ namespace Maps
         public WorldCollection()
         {
 #if DEBUG
-            m_errors = new ErrorLogger();
+            errors = new ErrorLogger();
 #endif
         }
         
-        private World[,] m_worlds = new World[Astrometrics.SectorWidth, Astrometrics.SectorHeight];
+        private World[,] worlds = new World[Astrometrics.SectorWidth, Astrometrics.SectorHeight];
         public World this[int x, int y]
         {
             get
@@ -30,7 +30,7 @@ namespace Maps
                 if (y < 1 || y > Astrometrics.SectorHeight)
                     throw new ArgumentOutOfRangeException("y");
 
-                return m_worlds[x - 1, y - 1];
+                return worlds[x - 1, y - 1];
             }
             set
             {
@@ -39,7 +39,7 @@ namespace Maps
                 if (y < 1 || y > Astrometrics.SectorHeight)
                     throw new ArgumentOutOfRangeException("y");
 
-                m_worlds[x - 1, y - 1] = value;
+                worlds[x - 1, y - 1] = value;
             }
         }
         public World this[int hex] { get { return this[hex / 100, hex % 100]; } }
@@ -51,7 +51,7 @@ namespace Maps
             {
                 for (int y = 1; y <= Astrometrics.SectorHeight; ++y)
                 {
-                    World world = m_worlds[x - 1, y - 1];
+                    World world = worlds[x - 1, y - 1];
                     if (world != null)
                         yield return world;
                 }
@@ -60,8 +60,8 @@ namespace Maps
 
         IEnumerator IEnumerable.GetEnumerator() { return GetEnumerator(); }
 
-        private ErrorLogger m_errors = null;
-        public ErrorLogger ErrorList { get { return m_errors; } }
+        private ErrorLogger errors = null;
+        public ErrorLogger ErrorList { get { return errors; } }
 
         public void Serialize(TextWriter writer, string mediaType, bool includeHeader = true, bool sscoords = false, WorldFilter filter = null)
         {

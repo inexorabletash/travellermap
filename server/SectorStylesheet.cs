@@ -354,14 +354,7 @@ namespace Maps
                 string value;
                 if (!GetValue(property, out value))
                     return null;
-                try
-                {
-                    return ColorTranslator.FromHtml(value);
-                }
-                catch (Exception)
-                {
-                    return null;
-                }
+                return ColorTranslator.FromHtml(value);
             }
 
             public double? GetNumber(string property)

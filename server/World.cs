@@ -32,11 +32,11 @@ namespace Maps
 
         public string Hex
         {
-            get { return m_hex.ToString(); }
-            set { m_hex = new Hex(value); }
+            get { return hex.ToString(); }
+            set { hex = new Hex(value); }
         }
 
-        internal string SubsectorHex { get { return m_hex.ToSubsectorString(); } }
+        internal string SubsectorHex { get { return hex.ToSubsectorString(); } }
 
         [XmlElement("UWP"),JsonName("UWP")]
         public string UWP { get; set; }
@@ -45,13 +45,13 @@ namespace Maps
         public string PBG { get; set; }
         public string Zone
         {
-            get { return m_zone; }
+            get { return zone; }
             set
             {
-                m_zone = (value == " " || value == "G") ? string.Empty : value;
+                zone = (value == " " || value == "G") ? string.Empty : value;
             }
         }
-        private string m_zone;
+        private string zone;
 
         public string Bases { get; set; }
         public string Allegiance { get; set; }
@@ -94,9 +94,9 @@ namespace Maps
         public byte Worlds { get; set; }
         public int ResourceUnits { get; set; }
 
-        private Hex m_hex;
-        internal byte X { get { return m_hex.X; } }
-        internal byte Y { get { return m_hex.Y; } }
+        private Hex hex;
+        internal byte X { get { return hex.X; } }
+        internal byte Y { get { return hex.Y; } }
 
         public int Subsector
         {
@@ -186,7 +186,7 @@ namespace Maps
         {
             get
             {
-                return m_codes.Any(s => s == "Cp" || s == "Cs" || s == "Cx" || s == "Capital");
+                return codes.Any(s => s == "Cp" || s == "Cs" || s == "Cx" || s == "Capital");
             }
         }
 
@@ -195,7 +195,7 @@ namespace Maps
             if (code == null)
                 throw new ArgumentNullException("code");
 
-            return m_codes.Any(s => s.Equals(code, StringComparison.InvariantCultureIgnoreCase));
+            return codes.Any(s => s.Equals(code, StringComparison.InvariantCultureIgnoreCase));
         }
 
         public string HasCodePrefix(string code)
@@ -203,7 +203,7 @@ namespace Maps
             if (code == null)
                 throw new ArgumentNullException("code");
 
-            return m_codes.Where(s => s.StartsWith(code, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
+            return codes.Where(s => s.StartsWith(code, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
         }
 
         // Keep storage as a string and parse on demand to reduce memory consumption.
@@ -215,36 +215,36 @@ namespace Maps
         // "xyz" - other code
         private class CodeList : IEnumerable<string>
         {
-            public CodeList(string codes = "") { m_codes = codes; }
-            private string m_codes;
+            public CodeList(string codes = "") { this.codes = codes; }
+            private string codes;
 
             public IEnumerator<string> GetEnumerator()
             {
                 int pos = 0;                
-                while (pos < m_codes.Length)
+                while (pos < codes.Length)
                 {
                     int begin = pos;
-                    switch (m_codes[pos++])
+                    switch (codes[pos++])
                     {
                         case ' ':
                             continue;
                         case '[':
-                            while (pos < m_codes.Length && m_codes[pos] != ']') ++pos;
-                            while (pos < m_codes.Length && m_codes[pos] != ' ') ++pos;
+                            while (pos < codes.Length && codes[pos] != ']') ++pos;
+                            while (pos < codes.Length && codes[pos] != ' ') ++pos;
                             break;
                         case '(':
-                            while (pos < m_codes.Length && m_codes[pos] != ')') ++pos;
-                            while (pos < m_codes.Length && m_codes[pos] != ' ') ++pos;
+                            while (pos < codes.Length && codes[pos] != ')') ++pos;
+                            while (pos < codes.Length && codes[pos] != ' ') ++pos;
                             break;
                         case '{':
-                            while (pos < m_codes.Length && m_codes[pos] != '}') ++pos;
-                            while (pos < m_codes.Length && m_codes[pos] != ' ') ++pos;
+                            while (pos < codes.Length && codes[pos] != '}') ++pos;
+                            while (pos < codes.Length && codes[pos] != ' ') ++pos;
                             break;
                         default:
-                            while (pos < m_codes.Length && m_codes[pos] != ' ') ++pos;
+                            while (pos < codes.Length && codes[pos] != ' ') ++pos;
                             break;
                     }
-                    yield return m_codes.Substring(begin, pos - begin);
+                    yield return codes.Substring(begin, pos - begin);
                 }
             }
 
@@ -253,17 +253,17 @@ namespace Maps
 
         public string Remarks
         {
-            get { return string.Join(" ", m_codes); }
+            get { return string.Join(" ", codes); }
             set
             {
                 if (value == null)
                     throw new ArgumentNullException("value");
-                m_codes = new CodeList(value);
+                codes = new CodeList(value);
             }
         }
 
-        internal IEnumerable<string> Codes { get { return m_codes; } }
-        private CodeList m_codes = new CodeList();
+        internal IEnumerable<string> Codes { get { return codes; } }
+        private CodeList codes = new CodeList();
 
         public string LegacyBaseCode
         {

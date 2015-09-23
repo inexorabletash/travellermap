@@ -74,11 +74,11 @@ namespace Maps
 
         private static SectorMap s_OTU;
 
-        private SectorCollection m_sectors;
-        public IList<Sector> Sectors { get { return m_sectors.Sectors; } }
+        private SectorCollection sectors;
+        public IList<Sector> Sectors { get { return sectors.Sectors; } }
 
-        private Dictionary<string, Sector> m_nameMap = new Dictionary<string, Sector>(StringComparer.InvariantCultureIgnoreCase);
-        private Dictionary<Point, Sector> m_locationMap = new Dictionary<Point, Sector>();
+        private Dictionary<string, Sector> nameMap = new Dictionary<string, Sector>(StringComparer.InvariantCultureIgnoreCase);
+        private Dictionary<Point, Sector> locationMap = new Dictionary<Point, Sector>();
 
         private SectorMap(List<SectorMetafileEntry> metafiles, ResourceManager resourceManager)
         {
@@ -88,16 +88,16 @@ namespace Maps
                 foreach (var sector in collection.Sectors)
                     sector.Tags.AddRange(metafile.tags);
 
-                if (m_sectors == null)
-                    m_sectors = collection;
+                if (sectors == null)
+                    sectors = collection;
                 else
-                    m_sectors.Merge(collection);
+                    sectors.Merge(collection);
             }
 
-            m_nameMap.Clear();
-            m_locationMap.Clear();
+            nameMap.Clear();
+            locationMap.Clear();
 
-            foreach (var sector in m_sectors.Sectors)
+            foreach (var sector in sectors.Sectors)
             {
                 if (sector.MetadataFile != null)
                 {
@@ -105,21 +105,21 @@ namespace Maps
                     sector.Merge(metadata);
                 }
 
-                m_locationMap.Add(sector.Location, sector);
+                locationMap.Add(sector.Location, sector);
 
                 foreach (var name in sector.Names)
                 {
-                    if (!m_nameMap.ContainsKey(name.Text))
-                        m_nameMap.Add(name.Text, sector);
+                    if (!nameMap.ContainsKey(name.Text))
+                        nameMap.Add(name.Text, sector);
 
                     // Automatically alias "SpinwardMarches"
                     string spaceless = name.Text.Replace(" ", "");
-                    if (spaceless != name.Text && !m_nameMap.ContainsKey(spaceless))
-                        m_nameMap.Add(spaceless, sector);
+                    if (spaceless != name.Text && !nameMap.ContainsKey(spaceless))
+                        nameMap.Add(spaceless, sector);
                 }
 
-                if (!string.IsNullOrEmpty(sector.Abbreviation) && !m_nameMap.ContainsKey(sector.Abbreviation))
-                    m_nameMap.Add(sector.Abbreviation, sector);
+                if (!string.IsNullOrEmpty(sector.Abbreviation) && !nameMap.ContainsKey(sector.Abbreviation))
+                    nameMap.Add(sector.Abbreviation, sector);
             }
         }
 
@@ -176,22 +176,22 @@ namespace Maps
 
         public Sector FromName(string sectorName)
         {
-            if (m_sectors == null || m_nameMap == null)
+            if (sectors == null || nameMap == null)
                 throw new MapNotInitializedException();
 
             Sector sector;
-            m_nameMap.TryGetValue(sectorName, out sector); // Using indexer throws exception, this is more performant
+            nameMap.TryGetValue(sectorName, out sector); // Using indexer throws exception, this is more performant
             return sector;
         }
 
         public Sector FromLocation(int x, int y) { return FromLocation(new Point(x, y)); }
         public Sector FromLocation(Point pt)
         {
-            if (m_sectors == null || m_locationMap == null)
+            if (sectors == null || locationMap == null)
                 throw new MapNotInitializedException();
 
             Sector sector;
-            m_locationMap.TryGetValue(pt, out sector);
+            locationMap.TryGetValue(pt, out sector);
             return sector;
         }
     }
@@ -210,7 +210,7 @@ namespace Maps
             wc.Deserialize(stream, mediaType, errors);
             foreach (World world in wc)
                 world.Sector = this;
-            m_data = wc;
+            worlds = wc;
         }
 
         public int X { get { return Location.X; } set { Location = new Point(value, Location.Y); } }
@@ -233,25 +233,25 @@ namespace Maps
         public string GammaQuadrant { get; set; }
         public string DeltaQuadrant { get; set; }
 
-        private MetadataCollection<Subsector> m_subsectors = new MetadataCollection<Subsector>();
-        private MetadataCollection<Route> m_routes = new MetadataCollection<Route>();
-        private MetadataCollection<Label> m_labels = new MetadataCollection<Label>();
-        private MetadataCollection<Border> m_borders = new MetadataCollection<Border>();
-        private MetadataCollection<Allegiance> m_allegiances = new MetadataCollection<Allegiance>();
-        private MetadataCollection<Product> m_products = new MetadataCollection<Product>();
+        private MetadataCollection<Subsector> subsectors = new MetadataCollection<Subsector>();
+        private MetadataCollection<Route> routes = new MetadataCollection<Route>();
+        private MetadataCollection<Label> labels = new MetadataCollection<Label>();
+        private MetadataCollection<Border> borders = new MetadataCollection<Border>();
+        private MetadataCollection<Allegiance> allegiances = new MetadataCollection<Allegiance>();
+        private MetadataCollection<Product> products = new MetadataCollection<Product>();
 
         [XmlAttribute]
         [DefaultValue(false)]
         public bool Selected { get; set; }
 
         [XmlElement("Product")]
-        public MetadataCollection<Product> Products { get { return m_products; } }
+        public MetadataCollection<Product> Products { get { return products; } }
 
-        public MetadataCollection<Subsector> Subsectors { get { return m_subsectors; } }
-        public MetadataCollection<Border> Borders { get { return m_borders; } }
-        public MetadataCollection<Label> Labels { get { return m_labels; } }
-        public MetadataCollection<Route> Routes { get { return m_routes; } }
-        public MetadataCollection<Allegiance> Allegiances { get { return m_allegiances; } }
+        public MetadataCollection<Subsector> Subsectors { get { return subsectors; } }
+        public MetadataCollection<Border> Borders { get { return borders; } }
+        public MetadataCollection<Label> Labels { get { return labels; } }
+        public MetadataCollection<Route> Routes { get { return routes; } }
+        public MetadataCollection<Allegiance> Allegiances { get { return allegiances; } }
 
         public string Credits { get; set; }
 
@@ -278,18 +278,18 @@ namespace Maps
         [XmlAttribute("Tags"), JsonName("Tags")]
         public string TagString
         {
-            get { return string.Join(" ", m_tags); }
+            get { return string.Join(" ", tags); }
             set
             {
-                m_tags.Clear();
+                tags.Clear();
                 if (string.IsNullOrWhiteSpace(value))
                     return;
-                m_tags.AddRange(value.Split());
+                tags.AddRange(value.Split());
             }
         }
 
-        internal OrderedHashSet<string> Tags { get { return m_tags; } }
-        private OrderedHashSet<string> m_tags = new OrderedHashSet<string>();
+        internal OrderedHashSet<string> Tags { get { return tags; } }
+        private OrderedHashSet<string> tags = new OrderedHashSet<string>();
 
         public Allegiance GetAllegianceFromCode(string code)
         {
@@ -315,7 +315,7 @@ namespace Maps
 
         public string MetadataFile { get; set; }
 
-        private WorldCollection m_data;
+        private WorldCollection worlds;
 
         public Subsector Subsector(char alpha)
         {
@@ -375,8 +375,8 @@ namespace Maps
             lock (this)
             {
                 // Have it cached - just return it
-                if (m_data != null)
-                    return m_data;
+                if (worlds != null)
+                    return worlds;
 
                 // Can't look it up; failure case
                 if (DataFile == null)
@@ -388,7 +388,7 @@ namespace Maps
                     world.Sector = this;
 
                 if (cacheResults)
-                    m_data = data;
+                    worlds = data;
 
                 return data;
             }
@@ -719,8 +719,8 @@ namespace Maps
         [XmlAttribute("Code"), JsonName("Code")]
         public string T5Code { get; set; }
 
-        internal string LegacyCode { get { return string.IsNullOrEmpty(m_legacyCode) ? T5Code : m_legacyCode; } set { m_legacyCode = value; } }
-        private string m_legacyCode;
+        internal string LegacyCode { get { return string.IsNullOrEmpty(legacyCode) ? T5Code : legacyCode; } set { legacyCode = value; } }
+        private string legacyCode;
 
         /// <summary>
         /// The code for the fundamental allegiance type. For example, the various MT-era Rebellion
@@ -771,8 +771,8 @@ namespace Maps
         [XmlAttribute]
         public string Allegiance { get; set; }
 
-        internal IEnumerable<Hex> Path { get { return m_path; }  }
-        private List<Hex> m_path = new List<Hex>();
+        internal IEnumerable<Hex> Path { get { return path; }  }
+        private List<Hex> path = new List<Hex>();
 
         internal Hex LabelPosition { get; set; }
 
@@ -797,22 +797,22 @@ namespace Maps
         {
             get
             {
-                return string.Join(" ", from hex in m_path select hex.ToString());
+                return string.Join(" ", from hex in path select hex.ToString());
             }
             set
             {
                 if (value == null) throw new ArgumentNullException("value");
 
                 string[] hexes = value.Split((char[])null, StringSplitOptions.RemoveEmptyEntries);
-                m_path = (from hex in hexes select new Hex(hex)).ToList();
+                path = (from hex in hexes select new Hex(hex)).ToList();
 
                 // Compute the "bounding box" (in hex space)
                 Hex min = new Hex(
-                    (from hex in m_path select hex.X).Min(),
-                    (from hex in m_path select hex.Y).Min());
+                    (from hex in path select hex.X).Min(),
+                    (from hex in path select hex.Y).Min());
                 Hex max = new Hex(
-                    (from hex in m_path select hex.X).Max(),
-                    (from hex in m_path select hex.Y).Max());
+                    (from hex in path select hex.X).Max(),
+                    (from hex in path select hex.Y).Max());
 
                 // If no position was set, use the center of the "bounding box"
                 if (LabelPosition.IsEmpty)
@@ -880,37 +880,37 @@ namespace Maps
             set { End = new Hex(value); }
         }
 
-        private sbyte m_startOffsetX;
-        private sbyte m_startOffsetY;
-        private sbyte m_endOffsetX;
-        private sbyte m_endOffsetY;
+        private sbyte startOffsetX;
+        private sbyte startOffsetY;
+        private sbyte endOffsetX;
+        private sbyte endOffsetY;
 
         internal Point StartOffset {
-            get { return new Point(m_startOffsetX, m_startOffsetY); }
-            set { m_startOffsetX = (sbyte)value.X; m_startOffsetY = (sbyte)value.Y; }
+            get { return new Point(startOffsetX, startOffsetY); }
+            set { startOffsetX = (sbyte)value.X; startOffsetY = (sbyte)value.Y; }
         }
 
         internal Point EndOffset
         {
-            get { return new Point(m_endOffsetX, m_endOffsetY); }
-            set { m_endOffsetX = (sbyte)value.X; m_endOffsetY = (sbyte)value.Y; }
+            get { return new Point(endOffsetX, endOffsetY); }
+            set { endOffsetX = (sbyte)value.X; endOffsetY = (sbyte)value.Y; }
         }
 
         [XmlAttribute("StartOffsetX")]
         [DefaultValueAttribute(0)]
-        public int StartOffsetX { get { return m_startOffsetX; } set { m_startOffsetX = (sbyte)value; } }
+        public int StartOffsetX { get { return startOffsetX; } set { startOffsetX = (sbyte)value; } }
 
         [XmlAttribute("StartOffsetY")]
         [DefaultValueAttribute(0)]
-        public int StartOffsetY { get { return m_startOffsetY; } set { m_startOffsetY = (sbyte)value; } }
+        public int StartOffsetY { get { return startOffsetY; } set { startOffsetY = (sbyte)value; } }
 
         [XmlAttribute("EndOffsetX")]
         [DefaultValueAttribute(0)]
-        public int EndOffsetX { get { return m_endOffsetX; } set { m_endOffsetX = (sbyte)value; } }
+        public int EndOffsetX { get { return endOffsetX; } set { endOffsetX = (sbyte)value; } }
 
         [XmlAttribute("EndOffsetY")]
         [DefaultValueAttribute(0)]
-        public int EndOffsetY { get { return m_endOffsetY; } set { m_endOffsetY = (sbyte)value; } }
+        public int EndOffsetY { get { return endOffsetY; } set { endOffsetY = (sbyte)value; } }
 
 
         internal LineStyle? Style { get; set; }

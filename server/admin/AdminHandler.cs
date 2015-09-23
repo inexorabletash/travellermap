@@ -34,12 +34,16 @@ namespace Maps.Admin
         }
 
         protected abstract void Process(HttpContext context);
+
+        // TODO: Dedupe w/ DataResponder
+        protected static string GetStringOption(HttpContext context, string name)
+        {
+            return context.Request[name];
+        }
     }
 
     internal class AdminHandler : AdminHandlerBase
     {
-        public override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Plain; } }
-
         protected override void Process(HttpContext context)
         {
             context.Server.ScriptTimeout = 3600; // An hour should be plenty

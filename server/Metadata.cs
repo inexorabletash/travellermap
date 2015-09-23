@@ -29,56 +29,56 @@ namespace Maps
 
     public abstract class MetadataItem : IMetadata
     {
-        private Dictionary<string, string> m_metaData = new Dictionary<string, string>();
+        private Dictionary<string, string> metaData = new Dictionary<string, string>();
 
         [XmlAttribute]
-        public string Author { get { string s; m_metaData.TryGetValue("author", out s); return s; } set { m_metaData["author"] = value; } }
+        public string Author { get { string s; metaData.TryGetValue("author", out s); return s; } set { metaData["author"] = value; } }
 
         [XmlAttribute]
-        public string Source { get { string s; m_metaData.TryGetValue("source", out s); return s; } set { m_metaData["source"] = value; } }
+        public string Source { get { string s; metaData.TryGetValue("source", out s); return s; } set { metaData["source"] = value; } }
 
         [XmlAttribute]
-        public string Title{ get { string s; m_metaData.TryGetValue("title", out s); return s; } set { m_metaData["title"] = value; } }
+        public string Title{ get { string s; metaData.TryGetValue("title", out s); return s; } set { metaData["title"] = value; } }
 
         [XmlAttribute]
-        public string Publisher { get { string s; m_metaData.TryGetValue("publisher", out s); return s; } set { m_metaData["publisher"] = value; } }
+        public string Publisher { get { string s; metaData.TryGetValue("publisher", out s); return s; } set { metaData["publisher"] = value; } }
 
         [XmlAttribute]
-        public string Copyright { get { string s; m_metaData.TryGetValue("copyright", out s); return s; } set { m_metaData["copyright"] = value; } }
+        public string Copyright { get { string s; metaData.TryGetValue("copyright", out s); return s; } set { metaData["copyright"] = value; } }
 
         [XmlAttribute]
-        public string Era { get { string s; m_metaData.TryGetValue("era", out s); return s; } set { m_metaData["era"] = value; } }
+        public string Era { get { string s; metaData.TryGetValue("era", out s); return s; } set { metaData["era"] = value; } }
 
         [XmlAttribute]
-        public string Ref { get { string s; m_metaData.TryGetValue("ref", out s); return s; } set { m_metaData["ref"] = value; } }
+        public string Ref { get { string s; metaData.TryGetValue("ref", out s); return s; } set { metaData["ref"] = value; } }
     }
 
     public class MetadataCollection<T> : List<T>, IMetadata
     {
         #region IMetadata Members
 
-        private Dictionary<string, string> m_metaData = new Dictionary<string, string>();
+        private Dictionary<string, string> metaData = new Dictionary<string, string>();
 
         [XmlAttribute]
-        public string Author { get { string s; m_metaData.TryGetValue("author", out s); return s; } set { m_metaData["author"] = value; } }
+        public string Author { get { string s; metaData.TryGetValue("author", out s); return s; } set { metaData["author"] = value; } }
 
         [XmlAttribute]
-        public string Title { get { string s; m_metaData.TryGetValue("title", out s); return s; } set { m_metaData["title"] = value; } }
+        public string Title { get { string s; metaData.TryGetValue("title", out s); return s; } set { metaData["title"] = value; } }
 
         [XmlAttribute]
-        public string Source { get { string s; m_metaData.TryGetValue("source", out s); return s; } set { m_metaData["source"] = value; } }
+        public string Source { get { string s; metaData.TryGetValue("source", out s); return s; } set { metaData["source"] = value; } }
 
         [XmlAttribute]
-        public string Publisher { get { string s; m_metaData.TryGetValue("publisher", out s); return s; } set { m_metaData["publisher"] = value; } }
+        public string Publisher { get { string s; metaData.TryGetValue("publisher", out s); return s; } set { metaData["publisher"] = value; } }
 
         [XmlAttribute]
-        public string Copyright { get { string s; m_metaData.TryGetValue("copyright", out s); return s; } set { m_metaData["copyright"] = value; } }
+        public string Copyright { get { string s; metaData.TryGetValue("copyright", out s); return s; } set { metaData["copyright"] = value; } }
 
         [XmlAttribute]
-        public string Era { get { string s; m_metaData.TryGetValue("era", out s); return s; } set { m_metaData["era"] = value; } }
+        public string Era { get { string s; metaData.TryGetValue("era", out s); return s; } set { metaData["era"] = value; } }
 
         [XmlAttribute]
-        public string Ref { get { string s; m_metaData.TryGetValue("ref", out s); return s; } set { m_metaData["ref"] = value; } }
+        public string Ref { get { string s; metaData.TryGetValue("ref", out s); return s; } set { metaData["ref"] = value; } }
 
         #endregion
     }

@@ -5,27 +5,40 @@ namespace Maps.API
 {
     internal class SophontCodesHandler : DataHandlerBase
     {
-        public override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Xml; } }
-
         protected override string ServiceName { get { return "sophontcodes"; } }
-
-        public override void Process(HttpContext context)
+        protected override DataResponder GetResponder(HttpContext context)
         {
-            SendResult(context, 
-                SecondSurvey.SophontCodes.Select(code => new Results.SophontCode(code, SecondSurvey.SophontCodeToName(code))).ToList());
+            return new Responder(context);
+        }
+        private class Responder : DataResponder
+        {
+            public Responder(HttpContext context) : base(context) { }
+            public override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Xml; } }
+
+            public override void Process()
+            {
+                SendResult(context,
+                    SecondSurvey.SophontCodes.Select(code => new Results.SophontCode(code, SecondSurvey.SophontCodeToName(code))).ToList());
+            }
         }
     }
 
     internal class AllegianceCodesHandler : DataHandlerBase
     {
-        public override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Xml; } }
-
         protected override string ServiceName { get { return "allegiancecodes"; } }
-
-        public override void Process(HttpContext context)
+        protected override DataResponder GetResponder(HttpContext context)
         {
-            SendResult(context, SecondSurvey.AllegianceCodes.Select(
-                code => new Results.AllegianceCode(code, SecondSurvey.GetStockAllegianceFromCode(code).Name)).ToList());
+            return new Responder(context);
+        }
+        private class Responder : DataResponder
+        {
+            public Responder(HttpContext context) : base(context) { }
+            public override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Xml; } }
+            public override void Process()
+            {
+                SendResult(context, SecondSurvey.AllegianceCodes.Select(
+                    code => new Results.AllegianceCode(code, SecondSurvey.GetStockAllegianceFromCode(code).Name)).ToList());
+            }
         }
     }
 }
