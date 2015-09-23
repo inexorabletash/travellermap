@@ -1,5 +1,4 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Web;
 using System.Xml.Serialization;
 
@@ -65,7 +64,7 @@ namespace Maps.API
 }
 
 namespace Maps.API.Results
-{ 
+{
     [XmlRoot(ElementName = "Coordinates")]
     // public for XML serialization
     public class CoordinatesResult
