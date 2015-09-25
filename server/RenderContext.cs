@@ -23,6 +23,13 @@ namespace Maps.Rendering
             this.options = options;
             this.styles = styles;
             this.tileSize = tileSize;
+
+            XMatrix m = new XMatrix();
+            m.TranslatePrepend((float)(-tileRect.Left * scale * Astrometrics.ParsecScaleX), (float)(-tileRect.Top * scale * Astrometrics.ParsecScaleY));
+            m.ScalePrepend((float)scale * Astrometrics.ParsecScaleX, (float)scale * Astrometrics.ParsecScaleY);
+            imageSpaceToWorldSpace = m;
+            m.Invert();
+            worldSpaceToImageSpace = m;
         }
 
         // Required
@@ -47,16 +54,18 @@ namespace Maps.Rendering
 
         public Stylesheet Styles { get { return styles; } }
 
-        public XMatrix ImageSpaceToWorldSpace
-        {
-            get
-            {
-                XMatrix m = new XMatrix();
-                m.TranslatePrepend((float)(-tileRect.Left * scale * Astrometrics.ParsecScaleX), (float)(-tileRect.Top * scale * Astrometrics.ParsecScaleY));
-                m.ScalePrepend((float)scale * Astrometrics.ParsecScaleX, (float)scale * Astrometrics.ParsecScaleY);
-                return m;
-            }
-        }
+        private readonly XMatrix imageSpaceToWorldSpace;
+        private readonly XMatrix worldSpaceToImageSpace;
+        public XMatrix ImageSpaceToWorldSpace { get { return imageSpaceToWorldSpace;  } }
+
+        private static readonly RectangleF galacticBounds = new RectangleF(-14598.67f, -23084.26f, 29234.1133f, 25662.4746f); // TODO: Don't hardcode
+        private static readonly Rectangle galaxyImageRect = new Rectangle(-18257, -26234, 36551, 32462); // Chosen to match T5 pp.416
+
+        // This transforms the Linehan galactic structure to the Mikesh galactic structure
+        // See http://travellermap.blogspot.com/2009/03/galaxy-scale-mismatch.html
+        private static readonly Matrix xformLinehanToMikesh = new Matrix(0.9181034f, 0.0f, 0.0f, 0.855192542f, 120.672432f, 86.34569f);
+
+        private static readonly Rectangle riftImageRect = new Rectangle(-1374, -827, 2769, 1754);
 
         #region labels
         private class MapLabel
@@ -127,7 +136,7 @@ namespace Maps.Rendering
         private static XImage s_sillyImageColor;
         private static XImage s_sillyImageGray;
 
-        private static XImage s_backgroundImage;
+        private static XImage s_nebulaImage;
 
         // These are loaded as GDI+ Images since we need to derive alpha-variants of them;
         // the results are cached as PDFSharp Images (XImage)
@@ -168,13 +177,14 @@ namespace Maps.Rendering
                 #region resources
                 lock (s_imageInitLock)
                 {
-                    if (styles.useBackgroundImage && s_backgroundImage == null)
-                        s_backgroundImage = XImage.FromFile(resourceManager.Server.MapPath(@"~/res/Candy/Nebula.png"));
+                    if (styles.showNebulaBackground && s_nebulaImage == null)
+                        s_nebulaImage = XImage.FromFile(resourceManager.Server.MapPath(@"~/res/Candy/Nebula.png"));
 
-                    if (styles.showRifts && s_riftImage == null)
+                    if (styles.showRiftOverlay && s_riftImage == null)
                         s_riftImage = new ImageHolder(Image.FromFile(resourceManager.Server.MapPath(@"~/res/Candy/Rifts.png")));
 
-                    if (styles.useGalaxyImage && s_galaxyImage == null) {
+                    if (styles.showGalaxyBackground && s_galaxyImage == null) {
+                        // TODO: Don't load both unless necessary
                         s_galaxyImage = new ImageHolder(Image.FromFile(resourceManager.Server.MapPath(@"~/res/Candy/Galaxy.png")));
                         s_galaxyImageGray = new ImageHolder(Image.FromFile(resourceManager.Server.MapPath(@"~/res/Candy/Galaxy_Gray.png")));
                     }
@@ -217,42 +227,24 @@ namespace Maps.Rendering
                 {
                     if (ClipPath != null)
                     {
-                        XMatrix m = ImageSpaceToWorldSpace;
-                        graphics.MultiplyTransform(m);
+                        graphics.MultiplyTransform(imageSpaceToWorldSpace);
                         graphics.IntersectClip(ClipPath);
-                        m.Invert();
-                        graphics.MultiplyTransform(m);
+                        graphics.MultiplyTransform(worldSpaceToImageSpace);
                     }
 
                     // Fill
                     graphics.SmoothingMode = XSmoothingMode.HighSpeed;
                     solidBrush.Color = styles.backgroundColor;
                     graphics.DrawRectangle(solidBrush, 0, 0, tileSize.Width, tileSize.Height);
-
-
-                    //// Draw tile #
-                    //using( var font = new Font( FontFamily.GenericSansSerif, 10 ) )
-                    //{
-                    //  graphics.DrawString( String.Format( "({0},{1})", x, y ), font, foregroundBrush, 0, 0 );
-                    //  graphics.DrawString( String.Format( "{0},{1}-{2}x{3}", tileRect.X, tileRect.Y, tileRect.Width, tileRect.Height ), font, foregroundBrush, 0, 20 );
-                    //}
-
-                    // Frame it
-                    //graphics.DrawRectangle( Pens.Green, 0, 0, tileSize.Width-1, tileSize.Height-1 );
                 }
 
                 timers.Add(new Timer("imagespace"));
+
                 //////////////////////////////////////////////////////////////
                 //
                 // World-Space Rendering
                 //
                 //////////////////////////////////////////////////////////////
-
-                // Transform from image-space to world-space. Set up a reverse transform as well.
-                XMatrix imageSpaceToWorldSpace = ImageSpaceToWorldSpace;
-
-                XMatrix worldSpaceToImageSpace = imageSpaceToWorldSpace;
-                worldSpaceToImageSpace.Invert();
 
                 graphics.MultiplyTransform(imageSpaceToWorldSpace);
 
@@ -269,12 +261,6 @@ namespace Maps.Rendering
                     // Background
                     //------------------------------------------------------------
 
-                    RectangleF galacticBounds = new RectangleF(-14598.67f, -23084.26f, 29234.1133f, 25662.4746f); // TODO: Don't hardcode
-                    Rectangle galaxyImageRect = new Rectangle(-18257, -26234, 36551, 32462); // Chosen to match T5 pp.416
-
-                    // This transforms the Linehan galactic structure to the Mikesh galactic structure
-                    // See http://travellermap.blogspot.com/2009/03/galaxy-scale-mismatch.html
-                    Matrix xformLinehanToMikesh = new Matrix(0.9181034f, 0.0f, 0.0f, 0.855192542f, 120.672432f, 86.34569f);
                     timers.Add(new Timer("prep"));
 
                     #region nebula-background
@@ -286,8 +272,8 @@ namespace Maps.Rendering
                     // first, then overlay the deep background over it, for
                     // basically the same effect since the alphas sum to 1.
 
-                    if (styles.useBackgroundImage && galacticBounds.IntersectsWith(tileRect))
-                        DrawNebulaBackground(worldSpaceToImageSpace, galacticBounds);
+                    if (styles.showNebulaBackground)
+                        DrawNebulaBackground();
                     timers.Add(new Timer("background (nebula)"));
                     #endregion
 
@@ -295,16 +281,13 @@ namespace Maps.Rendering
                     //------------------------------------------------------------
                     // Deep background (Galaxy)
                     //------------------------------------------------------------
-                    if (styles.useGalaxyImage && styles.deepBackgroundOpacity > 0f)
+                    if (styles.showGalaxyBackground && styles.deepBackgroundOpacity > 0f && galacticBounds.IntersectsWith(tileRect))
                     {
                         using (RenderUtil.SaveState(graphics))
                         {
                             graphics.MultiplyTransform(xformLinehanToMikesh);
                             ImageHolder galaxyImage = styles.lightBackground ? s_galaxyImageGray : s_galaxyImage;
-                            lock (galaxyImage)
-                            {
-                                RenderUtil.DrawImageAlpha(graphics, styles.deepBackgroundOpacity, galaxyImage, galaxyImageRect);
-                            }
+                            RenderUtil.DrawImageAlpha(graphics, styles.deepBackgroundOpacity, galaxyImage, galaxyImageRect);
                         }
                     }
                     timers.Add(new Timer("background (galaxy)"));
@@ -323,15 +306,8 @@ namespace Maps.Rendering
                     //------------------------------------------------------------
                     // Rifts in Charted Space
                     //------------------------------------------------------------
-                    if (styles.showRifts && styles.riftOpacity > 0f)
-                    {
-                        Rectangle riftImageRect;
-                        riftImageRect = new Rectangle(-1374, -827, 2769, 1754); // Correct
-                        lock (s_riftImage)
-                        {
-                            RenderUtil.DrawImageAlpha(graphics, styles.riftOpacity, s_riftImage, riftImageRect);
-                        }
-                    }
+                    if (styles.showRiftOverlay && styles.riftOpacity > 0f)
+                        RenderUtil.DrawImageAlpha(graphics, styles.riftOpacity, s_riftImage, riftImageRect);
                     timers.Add(new Timer("rifts"));
                     #endregion
 
@@ -376,7 +352,6 @@ namespace Maps.Rendering
                         {
                             vec.Draw(graphics, tileRect, pen);
                         }
-
                     }
                     timers.Add(new Timer("macro-borders"));
                     #endregion
@@ -835,42 +810,38 @@ namespace Maps.Rendering
             }
         }
 
-        private void DrawNebulaBackground(XMatrix worldSpaceToImageSpace, RectangleF galacticBounds)
+        private void DrawNebulaBackground()
         {
-            // Image-space rendering, so save current context
+            // Render in image-space so it scales/tiles nicely
             using (RenderUtil.SaveState(graphics))
             {
-                // Never fill outside the galaxy
-                graphics.IntersectClip(galacticBounds);
-
-                // Map back to image space so it scales/tiles nicely
                 graphics.MultiplyTransform(worldSpaceToImageSpace);
 
                 const float backgroundImageScale = 2.0f;
 
-                lock (s_backgroundImage)
+                // Scaled size of the background
+                double w = s_nebulaImage.PixelWidth * backgroundImageScale;
+                double h = s_nebulaImage.PixelHeight * backgroundImageScale;
+
+                // Offset of the background, relative to the canvas
+                double ox = (float)(-tileRect.Left * scale * Astrometrics.ParsecScaleX) % w;
+                double oy = (float)(-tileRect.Top * scale * Astrometrics.ParsecScaleY) % h;
+                if (ox > 0) ox -= w;
+                if (oy > 0) oy -= h;
+
+                // Number of copies needed to cover the canvas
+                int nx = 1 + (int)Math.Floor(tileSize.Width / w);
+                int ny = 1 + (int)Math.Floor(tileSize.Height / h);
+                if (ox + nx * w < tileSize.Width) nx += 1;
+                if (oy + ny * h < tileSize.Height) ny += 1;
+
+                lock (s_nebulaImage)
                 {
-                    // Scaled size of the background
-                    double w = s_backgroundImage.PixelWidth * backgroundImageScale;
-                    double h = s_backgroundImage.PixelHeight * backgroundImageScale;
-
-                    // Offset of the background, relative to the canvas
-                    double ox = (float)(-tileRect.Left * scale * Astrometrics.ParsecScaleX) % w;
-                    double oy = (float)(-tileRect.Top * scale * Astrometrics.ParsecScaleY) % h;
-                    if (ox > 0) ox -= w;
-                    if (oy > 0) oy -= h;
-
-                    // Number of copies needed to cover the canvas
-                    int nx = 1 + (int)Math.Floor(tileSize.Width / w);
-                    int ny = 1 + (int)Math.Floor(tileSize.Height / h);
-                    if (ox + nx * w < tileSize.Width) nx += 1;
-                    if (oy + ny * h < tileSize.Height) ny += 1;
-
                     for (int x = 0; x < nx; ++x)
                     {
                         for (int y = 0; y < ny; ++y)
                         {
-                            graphics.DrawImage(s_backgroundImage, ox + x * w, oy + y * h, w + 1, h + 1);
+                            graphics.DrawImage(s_nebulaImage, ox + x * w, oy + y * h, w + 1, h + 1);
                         }
                     }
                 }

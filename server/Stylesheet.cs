@@ -235,7 +235,7 @@ namespace Maps.Rendering
 
             worlds.visible = (scale >= WorldMinScale);
             pseudoRandomStars.visible = (PseudoRandomStarsMinScale <= scale) && (scale <= PseudoRandomStarsMaxScale);
-            showRifts = (scale <= PseudoRandomStarsMaxScale || style == Style.Candy);
+            showRiftOverlay = (scale <= PseudoRandomStarsMaxScale || style == Style.Candy);
 
             t5AllegianceCodes = scale >= T5AllegianceCodeMinScale;
 
@@ -402,8 +402,8 @@ namespace Maps.Rendering
             worlds.textStyle.Translation = worlds.position;
             worlds.textStyle.Uppercase = false;
 
-            useBackgroundImage = false;
-            useGalaxyImage = deepBackgroundOpacity > 0.0f;
+            showNebulaBackground = false;
+            showGalaxyBackground = deepBackgroundOpacity > 0.0f;
             useWorldImages = false;
 
             // Cap pen widths when zooming in
@@ -471,7 +471,7 @@ namespace Maps.Rendering
                     }
                 case Style.FASA:
                     {
-                        useGalaxyImage = false;
+                        showGalaxyBackground = false;
                         deepBackgroundOpacity = 0f;
                         riftOpacity = 0;
 
@@ -559,7 +559,7 @@ namespace Maps.Rendering
                     {
                         int inkOpacity = 0xB0;
 
-                        useGalaxyImage = false;
+                        showGalaxyBackground = false;
                         lightBackground = true;
 
                         deepBackgroundOpacity = 0f;
@@ -645,7 +645,7 @@ namespace Maps.Rendering
                         useWorldImages = true;
                         pseudoRandomStars.visible = false;
 
-                        useBackgroundImage = deepBackgroundOpacity < 0.5f;
+                        showNebulaBackground = deepBackgroundOpacity < 0.5f;
 
                         hexStyle = HexStyle.None;
                         microBorderStyle = MicroBorderStyle.Curve;
@@ -781,8 +781,8 @@ namespace Maps.Rendering
         public Color backgroundColor;
         public Color imageBorderColor;
 
-        public bool useBackgroundImage;
-        public bool useGalaxyImage;
+        public bool showNebulaBackground;
+        public bool showGalaxyBackground;
         public bool useWorldImages;
         public bool dimUnofficialSectors;
 
@@ -791,7 +791,7 @@ namespace Maps.Rendering
         public bool grayscale;
         public bool lightBackground;
 
-        public bool showRifts;
+        public bool showRiftOverlay;
         public float riftOpacity;
 
         public float hexContentScale = 1.0f;

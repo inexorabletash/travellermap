@@ -186,17 +186,6 @@ namespace Maps.API
 
                 using (RenderUtil.SaveState(graphics))
                 {
-                    /*
-                    if (ctx.clipPath != null)
-                    {
-                        XMatrix m = ctx.ImageSpaceToWorldSpace;
-                        graphics.MultiplyTransform(m);
-                        graphics.IntersectClip(ctx.clipPath);
-                        m.Invert();
-                        graphics.MultiplyTransform(m);
-                    }
-                     * */
-
                     ctx.Render(graphics);
                 }
             }
