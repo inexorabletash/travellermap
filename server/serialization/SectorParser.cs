@@ -178,7 +178,7 @@ namespace Maps.Serialization
             // Assume stellar data, try to parse it
             try
             {
-                world.Stellar = StellarDataParser.Parse(rest, StellarDataParser.OutputFormat.Compact);
+                world.Stellar = StellarDataParser.Parse(rest, StellarDataParser.OutputFormat.Basic);
             }
             catch (StellarDataParser.InvalidSystemException)
             {
