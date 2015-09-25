@@ -172,7 +172,7 @@ namespace Maps.Rendering
 
             using (var fonts = new FontCache(styles))
             {
-#region resources
+                #region resources
                 lock (s_imageInitLock)
                 {
                     if (styles.useBackgroundImage && s_backgroundImage == null)
@@ -211,7 +211,7 @@ namespace Maps.Rendering
                         s_sillyImageGray = XImage.FromFile(resourceManager.Server.MapPath(@"~/res/AprilFools/Starburst_Gray.png"));
                     }
                 }
-#endregion
+                #endregion
 
                 timers.Add(new Timer("preload"));
                 //////////////////////////////////////////////////////////////
@@ -263,9 +263,8 @@ namespace Maps.Rendering
 
                 graphics.MultiplyTransform(imageSpaceToWorldSpace);
 
-                using (Maps.Rendering.RenderUtil.SaveState(graphics))
+                using (RenderUtil.SaveState(graphics))
                 {
-
                     //------------------------------------------------------------
                     // Explicit Clipping
                     //------------------------------------------------------------
@@ -273,9 +272,8 @@ namespace Maps.Rendering
                     if (ClipPath != null)
                         graphics.IntersectClip(ClipPath);
 
-                    //styles.showPseudoRandomStars = true;
                     //------------------------------------------------------------
-                    // Backgrounds
+                    // Background
                     //------------------------------------------------------------
 
                     RectangleF galacticBounds = new RectangleF(-14598.67f, -23084.26f, 29234.1133f, 25662.4746f); // TODO: Don't hardcode
@@ -286,10 +284,10 @@ namespace Maps.Rendering
                     Matrix xformLinehanToMikesh = new Matrix(0.9181034f, 0.0f, 0.0f, 0.855192542f, 120.672432f, 86.34569f);
                     timers.Add(new Timer("prep"));
 
+                    #region nebula-background
                     //------------------------------------------------------------
                     // Local background (Nebula)
                     //------------------------------------------------------------
-#region nebula-background
                     // NOTE: Since alpha texture brushes aren't supported without
                     // creating a new image (slow!) we render the local background
                     // first, then overlay the deep background over it, for
@@ -336,13 +334,13 @@ namespace Maps.Rendering
                             }
                         }
                     }
-#endregion
                     timers.Add(new Timer("background (nebula)"));
+                    #endregion
 
+                    #region galaxy-background
                     //------------------------------------------------------------
                     // Deep background (Galaxy)
                     //------------------------------------------------------------
-#region galaxy-background
                     if (styles.useGalaxyImage && styles.deepBackgroundOpacity > 0f)
                     {
                         using (RenderUtil.SaveState(graphics))
@@ -355,13 +353,13 @@ namespace Maps.Rendering
                             }
                         }
                     }
-#endregion
                     timers.Add(new Timer("background (galaxy)"));
+                    #endregion
 
+                    #region pseudorandom-stars
                     //------------------------------------------------------------
                     // Pseudo-Random Stars
                     //------------------------------------------------------------
-#region pseudorandom-stars
                     if (styles.pseudoRandomStars.visible)
                     {
                         // Render pseudorandom stars based on the tile # and
@@ -396,13 +394,13 @@ namespace Maps.Rendering
                             }
                         }
                     }
-#endregion
                     timers.Add(new Timer("pseudorandom"));
+                    #endregion
 
+                    #region rifts
                     //------------------------------------------------------------
                     // Rifts in Charted Space
                     //------------------------------------------------------------
-#region rifts
                     if (styles.showRifts && styles.riftOpacity > 0f)
                     {
                         Rectangle riftImageRect;
@@ -412,13 +410,13 @@ namespace Maps.Rendering
                             RenderUtil.DrawImageAlpha(graphics, styles.riftOpacity, s_riftImage, riftImageRect);
                         }
                     }
-#endregion
                     timers.Add(new Timer("rifts"));
+                    #endregion
 
+                    #region april-fools
                     //------------------------------------------------------------
                     // April Fool's Day
                     //------------------------------------------------------------
-#region april-fools
                     if (Silly)
                     {
                         using (RenderUtil.SaveState(graphics))
@@ -435,12 +433,16 @@ namespace Maps.Rendering
                         }
                         timers.Add(new Timer("silly"));
                     }
-#endregion
+                    #endregion
 
+                    //------------------------------------------------------------
+                    // Foreground
+                    //------------------------------------------------------------
+
+                    #region macro-borders
                     //------------------------------------------------------------
                     // Macro: Borders object
                     //------------------------------------------------------------
-#region macro-borders
                     if (styles.macroBorders.visible)
                     {
                         styles.macroBorders.pen.Apply(ref pen);
@@ -454,14 +456,13 @@ namespace Maps.Rendering
                         }
 
                     }
-#endregion
                     timers.Add(new Timer("macro-borders"));
+                    #endregion
 
+                    #region macro-routes
                     //------------------------------------------------------------
                     // Macro: Route object
                     //------------------------------------------------------------
-#region macro-routes
-
                     if (styles.macroRoutes.visible)
                     {
                         styles.macroRoutes.pen.Apply(ref pen);
@@ -474,16 +475,14 @@ namespace Maps.Rendering
                             vec.Draw(graphics, tileRect, pen);
                         }
                     }
-#endregion
                     timers.Add(new Timer("macro-routes"));
+                    #endregion
 
+                    #region sector-grid
                     //------------------------------------------------------------
                     // Sector Grid
                     //------------------------------------------------------------
-#region sector-grid
-
                     graphics.SmoothingMode = XSmoothingMode.HighSpeed;
-
                     if (styles.sectorGrid.visible)
                     {
                         const int gridSlop = 10;
@@ -495,14 +494,13 @@ namespace Maps.Rendering
                         for (float v = ((float)(Math.Floor((tileRect.Top) / Astrometrics.SectorHeight) - 1) - Astrometrics.ReferenceSector.Y) * Astrometrics.SectorHeight - Astrometrics.ReferenceHex.Y; v <= tileRect.Bottom + Astrometrics.SectorHeight; v += Astrometrics.SectorHeight)
                             graphics.DrawLine(pen, tileRect.Left - gridSlop, v, tileRect.Right + gridSlop, v);
                     }
-
-#endregion
                     timers.Add(new Timer("sector grid"));
+                    #endregion
 
+                    #region subsector-grid
                     //------------------------------------------------------------
                     // Subsector Grid
                     //------------------------------------------------------------
-#region subsector-grid
                     graphics.SmoothingMode = XSmoothingMode.HighSpeed;
                     if (styles.subsectorGrid.visible)
                     {
@@ -527,13 +525,13 @@ namespace Maps.Rendering
                             graphics.DrawLine(pen, tileRect.Left - gridSlop, v, tileRect.Right + gridSlop, v);
                         }
                     }
-#endregion
                     timers.Add(new Timer("subsector grid"));
+                    #endregion
 
+                    #region parsec-grid
                     //------------------------------------------------------------
                     // Parsec Grid
                     //------------------------------------------------------------
-#region parsec-grid
                     // TODO: Optimize - timers indicate this is slow
                     graphics.SmoothingMode = XSmoothingMode.HighQuality;
                     if (styles.parsecGrid.visible)
@@ -611,13 +609,13 @@ namespace Maps.Rendering
                             }
                         }
                     }
-#endregion
                     timers.Add(new Timer("parsec grid"));
+                    #endregion
 
+                    #region subsector-names
                     //------------------------------------------------------------
                     // Subsector Names
                     //------------------------------------------------------------
-#region subsector-names
                     if (styles.subsectorNames.visible)
                     {
                         solidBrush.Color = styles.subsectorNames.textColor;
@@ -634,37 +632,44 @@ namespace Maps.Rendering
                             }
                         }
                     }
-
-#endregion
                     timers.Add(new Timer("subsector names"));
+                    #endregion
 
+                    #region micro-borders
                     //------------------------------------------------------------
                     // Micro: Borders
                     //------------------------------------------------------------
-#region micro-borders
                     if (styles.microBorders.visible)
                     {
                         if (styles.fillMicroBorders)
                             DrawMicroBorders(BorderLayer.Fill);
                         DrawMicroBorders(BorderLayer.Stroke);
                     }
-#endregion
                     timers.Add(new Timer("micro-borders"));
+                    #endregion
 
+                    #region micro-routes
                     //------------------------------------------------------------
                     // Micro: Routes
                     //------------------------------------------------------------
-#region micro-routes
                     if (styles.microRoutes.visible)
                         DrawRoutes();
-
-#endregion
                     timers.Add(new Timer("micro-routes"));
+                    #endregion
 
+                    #region micro-border-labels
+                    //------------------------------------------------------------
+                    // Micro: Border Labels & Explicit Labels
+                    //------------------------------------------------------------
+                    if (styles.showMicroNames)
+                        DrawLabels();
+                    timers.Add(new Timer("micro-border labels"));
+                    #endregion
+
+                    #region sector-names
                     //------------------------------------------------------------
                     // Sector Names
                     //------------------------------------------------------------
-#region sector-names
                     if (styles.showSomeSectorNames || styles.showAllSectorNames)
                     {
                         foreach (Sector sector in selector.Sectors
@@ -677,43 +682,13 @@ namespace Maps.Rendering
                             RenderUtil.DrawLabel(graphics, name, sector.Center, styles.sectorName.Font, solidBrush, styles.sectorName.textStyle);
                         }
                     }
-
-#endregion
                     timers.Add(new Timer("sector names"));
+                    #endregion
 
-                    //------------------------------------------------------------
-                    // Mega: Galaxy-Scale Labels
-                    //------------------------------------------------------------
-#region mega-names
-                    if (styles.megaNames.visible)
-                    {
-                        solidBrush.Color = styles.megaNames.textColor;
-                        foreach (var label in megaLabels)
-                        {
-                            using (RenderUtil.SaveState(graphics))
-                            {
-                                XMatrix matrix = new XMatrix();
-                                matrix.ScalePrepend(1.0f / Astrometrics.ParsecScaleX, 1.0f / Astrometrics.ParsecScaleY);
-                                matrix.TranslatePrepend(label.position.X, label.position.Y);
-                                graphics.MultiplyTransform(matrix, XMatrixOrder.Prepend);
-
-                                XFont font = label.minor ? styles.megaNames.SmallFont : styles.megaNames.Font;
-                                XSize size = graphics.MeasureString(label.text, font);
-                                graphics.TranslateTransform(-size.Width / 2, -size.Height / 2); // Center the text
-                                RectangleF textBounds = new RectangleF(0, 0, (float)size.Width * 1.01f, (float)size.Height * 2); // *2 or it gets cut off at high sizes
-                                XTextFormatter formatter = new XTextFormatter(graphics);
-                                formatter.Alignment = XParagraphAlignment.Center;
-                                formatter.DrawString(label.text, font, solidBrush, textBounds);
-                            }
-                        }
-                    }
-#endregion
-                    timers.Add(new Timer("mega names"));
-
+                    #region government-rift-names
                     //------------------------------------------------------------
                     // Macro: Government / Rift / Route Names
                     //------------------------------------------------------------
-#region government-rift-names
                     if (styles.macroNames.visible)
                     {
                         foreach (var vec in borderFiles
@@ -783,14 +758,13 @@ namespace Maps.Rendering
 
                         }
                     }
-
-#endregion
                     timers.Add(new Timer("macro names"));
+                    #endregion
 
+                    #region capitals-homeworlds
                     //------------------------------------------------------------
                     // Macro: Capitals & Home Worlds
                     //------------------------------------------------------------
-#region capitals-homeworlds
                     if (styles.capitals.visible && (options & MapOptions.WorldsMask) != 0)
                     {
                         WorldObjectCollection worlds = resourceManager.GetXmlFileObject(@"~/res/Worlds.xml", typeof(WorldObjectCollection)) as WorldObjectCollection;
@@ -803,42 +777,62 @@ namespace Maps.Rendering
                             }
                         }
                     }
-
-#endregion
                     timers.Add(new Timer("macro worlds"));
+                    #endregion
 
+                    #region mega-names
                     //------------------------------------------------------------
-                    // Micro: Border Labels & Explicit Labels
+                    // Mega: Galaxy-Scale Labels
                     //------------------------------------------------------------
-#region micro-border-labels
-                    if (styles.showMicroNames)
-                        DrawLabels();
+                    if (styles.megaNames.visible)
+                    {
+                        solidBrush.Color = styles.megaNames.textColor;
+                        foreach (var label in megaLabels)
+                        {
+                            using (RenderUtil.SaveState(graphics))
+                            {
+                                XMatrix matrix = new XMatrix();
+                                matrix.ScalePrepend(1.0f / Astrometrics.ParsecScaleX, 1.0f / Astrometrics.ParsecScaleY);
+                                matrix.TranslatePrepend(label.position.X, label.position.Y);
+                                graphics.MultiplyTransform(matrix, XMatrixOrder.Prepend);
 
-#endregion
-                    timers.Add(new Timer("micro-border labels"));
+                                XFont font = label.minor ? styles.megaNames.SmallFont : styles.megaNames.Font;
+                                XSize size = graphics.MeasureString(label.text, font);
+                                graphics.TranslateTransform(-size.Width / 2, -size.Height / 2); // Center the text
+                                RectangleF textBounds = new RectangleF(0, 0, (float)size.Width * 1.01f, (float)size.Height * 2); // *2 or it gets cut off at high sizes
+                                XTextFormatter formatter = new XTextFormatter(graphics);
+                                formatter.Alignment = XParagraphAlignment.Center;
+                                formatter.DrawString(label.text, font, solidBrush, textBounds);
+                            }
+                        }
+                    }
+                    timers.Add(new Timer("mega names"));
+                    #endregion
                 }
 
                 // End of clipping, so world names are not clipped in jumpmaps.
 
+                #region worlds
                 //------------------------------------------------------------
                 // Worlds
                 //------------------------------------------------------------
-#region worlds
                 if (styles.worlds.visible)
                 {
                     // TODO: selector may be expensive
                     foreach (World world in selector.Worlds) { DrawWorld(fonts, world, WorldLayer.Background); }
                     foreach (World world in selector.Worlds) { DrawWorld(fonts, world, WorldLayer.Foreground); }
                 }
-#endregion
                 timers.Add(new Timer("worlds"));
+                #endregion
 
+                //------------------------------------------------------------
+                // Overlays
+                //------------------------------------------------------------
 
+                #region unofficial
                 //------------------------------------------------------------
                 // Unofficial
                 //------------------------------------------------------------
-#region unofficial
-
                 if (styles.dimUnofficialSectors && styles.worlds.visible)
                 {
                     solidBrush.Color = Color.FromArgb(128, styles.backgroundColor);
@@ -846,9 +840,10 @@ namespace Maps.Rendering
                         .Where(sector => !sector.Tags.Contains("Official") && !sector.Tags.Contains("Preserve") && !sector.Tags.Contains("InReview")))
                         graphics.DrawRectangle(solidBrush, sector.Bounds);
                 }
+                timers.Add(new Timer("unofficial"));
+                #endregion
 
-#endregion
-
+                #region timing
 #if SHOW_TIMING
                 using( RenderUtil.SaveState( graphics ) )
                 {
@@ -873,7 +868,7 @@ namespace Maps.Rendering
                     }
                 }
 #endif
-
+                #endregion
             }
         }
 
