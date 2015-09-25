@@ -48,19 +48,11 @@ namespace Maps.API
                 bool silly = (Math.Abs((int)x % 2) == Math.Abs((int)y % 2)) && (dt.Month == 4 && dt.Day == 1);
                 silly = GetBoolOption("silly", silly);
 
-                Render.RenderContext ctx = new Render.RenderContext();
-                ctx.resourceManager = resourceManager;
-                ctx.selector = new RectSelector(
-                    SectorMap.FromName(SectorMap.DefaultSetting, resourceManager),
-                    resourceManager,
-                    tileRect);
-                ctx.tileRect = tileRect;
-                ctx.scale = scale;
-                ctx.options = options;
-                ctx.styles = new Stylesheet(scale, options, style);
-                ctx.tileSize = tileSize;
-                ctx.silly = silly;
-                ctx.clipOutsectorBorders = true;
+                Selector selector = new RectSelector(SectorMap.FromName(SectorMap.DefaultSetting, resourceManager), resourceManager, tileRect);
+                Stylesheet styles = new Stylesheet(scale, options, style);
+                RenderContext ctx = new RenderContext(resourceManager, selector, tileRect, scale, options, styles, tileSize);
+                ctx.Silly = silly;
+                ctx.ClipOutsectorBorders = true;
                 ProduceResponse(context, "Tile", ctx, tileSize);
             }
         }
