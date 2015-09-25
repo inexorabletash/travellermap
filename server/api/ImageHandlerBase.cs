@@ -152,7 +152,7 @@ namespace Maps.API
 
                 if (ctx.DrawBorder && ctx.ClipPath != null)
                 {
-                    using (Maps.Rendering.RenderUtil.SaveState(graphics))
+                    using (RenderUtil.SaveState(graphics))
                     {
                         // Render border in world space
                         XMatrix m = ctx.ImageSpaceToWorldSpace;
@@ -184,7 +184,7 @@ namespace Maps.API
                     }
                 }
 
-                using (Maps.Rendering.RenderUtil.SaveState(graphics))
+                using (RenderUtil.SaveState(graphics))
                 {
                     /*
                     if (ctx.clipPath != null)
