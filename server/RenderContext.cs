@@ -290,7 +290,6 @@ namespace Maps.Rendering
                     // Local background (Nebula)
                     //------------------------------------------------------------
 #region nebula-background
-
                     // NOTE: Since alpha texture brushes aren't supported without
                     // creating a new image (slow!) we render the local background
                     // first, then overlay the deep background over it, for
@@ -332,7 +331,6 @@ namespace Maps.Rendering
                                     for (int y = 0; y < ny; ++y)
                                     {
                                         graphics.DrawImage(s_backgroundImage, ox + x * w, oy + y * h, w + 1, h + 1);
-                                        //graphics.DrawRectangle( XPens.Orange, ox + x * w, oy + y * h, w, h );
                                     }
                                 }
                             }
@@ -364,7 +362,6 @@ namespace Maps.Rendering
                     // Pseudo-Random Stars
                     //------------------------------------------------------------
 #region pseudorandom-stars
-
                     if (styles.pseudoRandomStars.visible)
                     {
                         // Render pseudorandom stars based on the tile # and
@@ -406,7 +403,6 @@ namespace Maps.Rendering
                     // Rifts in Charted Space
                     //------------------------------------------------------------
 #region rifts
-
                     if (styles.showRifts && styles.riftOpacity > 0f)
                     {
                         Rectangle riftImageRect;
@@ -423,7 +419,6 @@ namespace Maps.Rendering
                     // April Fool's Day
                     //------------------------------------------------------------
 #region april-fools
-
                     if (Silly)
                     {
                         using (RenderUtil.SaveState(graphics))
@@ -440,7 +435,6 @@ namespace Maps.Rendering
                         }
                         timers.Add(new Timer("silly"));
                     }
-
 #endregion
 
                     //------------------------------------------------------------
@@ -624,7 +618,6 @@ namespace Maps.Rendering
                     // Subsector Names
                     //------------------------------------------------------------
 #region subsector-names
-
                     if (styles.subsectorNames.visible)
                     {
                         solidBrush.Color = styles.subsectorNames.textColor;
@@ -662,7 +655,6 @@ namespace Maps.Rendering
                     // Micro: Routes
                     //------------------------------------------------------------
 #region micro-routes
-
                     if (styles.microRoutes.visible)
                         DrawRoutes();
 
@@ -673,7 +665,6 @@ namespace Maps.Rendering
                     // Sector Names
                     //------------------------------------------------------------
 #region sector-names
-
                     if (styles.showSomeSectorNames || styles.showAllSectorNames)
                     {
                         foreach (Sector sector in selector.Sectors
@@ -800,7 +791,6 @@ namespace Maps.Rendering
                     // Macro: Capitals & Home Worlds
                     //------------------------------------------------------------
 #region capitals-homeworlds
-
                     if (styles.capitals.visible && (options & MapOptions.WorldsMask) != 0)
                     {
                         WorldObjectCollection worlds = resourceManager.GetXmlFileObject(@"~/res/Worlds.xml", typeof(WorldObjectCollection)) as WorldObjectCollection;
@@ -821,7 +811,6 @@ namespace Maps.Rendering
                     // Micro: Border Labels & Explicit Labels
                     //------------------------------------------------------------
 #region micro-border-labels
-
                     if (styles.showMicroNames)
                         DrawLabels();
 
