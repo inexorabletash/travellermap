@@ -41,7 +41,9 @@ namespace Maps.Rendering
         public bool ClipOutsectorBorders { get; set; }
 
         // Assigned during Render()
-        public XGraphics graphics = null;
+        private XGraphics graphics = null;
+        private XSolidBrush solidBrush;
+        private XPen pen;
 
         public Stylesheet Styles { get { return styles; } }
 
@@ -156,19 +158,10 @@ namespace Maps.Rendering
         public void Render(XGraphics graphics)
         {
             this.graphics = graphics;
+            solidBrush = new XSolidBrush();
+            pen = new XPen(XColor.Empty);
+
             List<Timer> timers = new List<Timer>();
-
-            if (resourceManager == null)
-                throw new ArgumentNullException("ctx", "ctx.resourceManager");
-
-            if (graphics == null)
-                throw new ArgumentNullException("ctx", "ctx.graphics is null");
-
-            if (selector == null)
-                throw new ArgumentNullException("ctx", "ctx.selector is null");
-
-            XSolidBrush solidBrush = new XSolidBrush();
-            XPen pen = new XPen(XColor.Empty);
 
             using (var fonts = new FontCache(styles))
             {
@@ -294,46 +287,7 @@ namespace Maps.Rendering
                     // basically the same effect since the alphas sum to 1.
 
                     if (styles.useBackgroundImage && galacticBounds.IntersectsWith(tileRect))
-                    {
-                        // Image-space rendering, so save current context
-                        using (RenderUtil.SaveState(graphics))
-                        {
-                            // Never fill outside the galaxy
-                            graphics.IntersectClip(galacticBounds);
-
-                            // Map back to image space so it scales/tiles nicely
-                            graphics.MultiplyTransform(worldSpaceToImageSpace);
-
-                            const float backgroundImageScale = 2.0f;
-
-                            lock (s_backgroundImage)
-                            {
-                                // Scaled size of the background
-                                double w = s_backgroundImage.PixelWidth * backgroundImageScale;
-                                double h = s_backgroundImage.PixelHeight * backgroundImageScale;
-
-                                // Offset of the background, relative to the canvas
-                                double ox = (float)(-tileRect.Left * scale * Astrometrics.ParsecScaleX) % w;
-                                double oy = (float)(-tileRect.Top * scale * Astrometrics.ParsecScaleY) % h;
-                                if (ox > 0) ox -= w;
-                                if (oy > 0) oy -= h;
-
-                                // Number of copies needed to cover the canvas
-                                int nx = 1 + (int)Math.Floor(tileSize.Width / w);
-                                int ny = 1 + (int)Math.Floor(tileSize.Height / h);
-                                if (ox + nx * w < tileSize.Width) nx += 1;
-                                if (oy + ny * h < tileSize.Height) ny += 1;
-
-                                for (int x = 0; x < nx; ++x)
-                                {
-                                    for (int y = 0; y < ny; ++y)
-                                    {
-                                        graphics.DrawImage(s_backgroundImage, ox + x * w, oy + y * h, w + 1, h + 1);
-                                    }
-                                }
-                            }
-                        }
-                    }
+                        DrawNebulaBackground(worldSpaceToImageSpace, galacticBounds);
                     timers.Add(new Timer("background (nebula)"));
                     #endregion
 
@@ -361,39 +315,7 @@ namespace Maps.Rendering
                     // Pseudo-Random Stars
                     //------------------------------------------------------------
                     if (styles.pseudoRandomStars.visible)
-                    {
-                        // Render pseudorandom stars based on the tile # and
-                        // scale factor. Note that these are positioned in
-                        // screen space, not world space.
-
-                        //const int nStars = 75;
-                        int nMinStars = tileSize.Width * tileSize.Height / 300;
-                        int nStars = scale >= 1 ? nMinStars : (int)(nMinStars / scale);
-
-                        // NOTE: For performance's sake, three different cases are considered:
-                        // (1) Tile is entirely within charted space (most common) - just render
-                        //     the pseudorandom stars into the tile
-                        // (2) Tile intersects the galaxy bounds - render pseudorandom stars
-                        //     into a texture, then fill the galaxy vector with it
-                        // (3) Tile is entire outside the galaxy - don't render stars
-
-                        using (RenderUtil.SaveState(graphics))
-                        {
-                            graphics.SmoothingMode = XSmoothingMode.HighQuality;
-                            solidBrush.Color = styles.pseudoRandomStars.fillColor;
-
-                            Random rand = new Random((((int)tileRect.Left) << 8) ^ (int)tileRect.Top);
-                            for (int i = 0; i < nStars; i++)
-                            {
-                                float starX = (float)rand.NextDouble() * tileRect.Width + tileRect.X;
-                                float starY = (float)rand.NextDouble() * tileRect.Height + tileRect.Y;
-                                float d = (float)rand.NextDouble() * 2;
-
-                                //graphics.DrawRectangle( fonts.foregroundBrush, starX, starY, (float)( d / scale * Astrometrics.ParsecScaleX ), (float)( d / scale * Astrometrics.ParsecScaleY ) );
-                                graphics.DrawEllipse(solidBrush, starX, starY, (float)(d / scale * Astrometrics.ParsecScaleX), (float)(d / scale * Astrometrics.ParsecScaleY));
-                            }
-                        }
-                    }
+                        DrawPseudoRandomStars();
                     timers.Add(new Timer("pseudorandom"));
                     #endregion
 
@@ -535,80 +457,7 @@ namespace Maps.Rendering
                     // TODO: Optimize - timers indicate this is slow
                     graphics.SmoothingMode = XSmoothingMode.HighQuality;
                     if (styles.parsecGrid.visible)
-                    {
-                        const int parsecSlop = 1;
-
-                        int hx = (int)Math.Floor(tileRect.Left);
-                        int hw = (int)Math.Ceiling(tileRect.Width);
-                        int hy = (int)Math.Floor(tileRect.Top);
-                        int hh = (int)Math.Ceiling(tileRect.Height);
-
-                        styles.parsecGrid.pen.Apply(ref pen);
-
-                        switch (styles.hexStyle)
-                        {
-                            case HexStyle.Square:
-                                for (int px = hx - parsecSlop; px < hx + hw + parsecSlop; px++)
-                                {
-                                    float yOffset = ((px % 2) != 0) ? 0.0f : 0.5f;
-                                    for (int py = hy - parsecSlop; py < hy + hh + parsecSlop; py++)
-                                    {
-                                        // TODO: use RenderUtil.(Square|Hex)Edges(X|Y) arrays
-                                        const float inset = 0.1f;
-                                        graphics.DrawRectangle(pen, px + inset, py + inset + yOffset, 1 - inset * 2, 1 - inset * 2);
-                                    }
-                                }
-                                break;
-
-                            case HexStyle.Hex:
-                                XPoint[] points = new XPoint[4];
-                                for (int px = hx - parsecSlop; px < hx + hw + parsecSlop; px++)
-                                {
-                                    double yOffset = ((px % 2) != 0) ? 0.0 : 0.5;
-                                    for (int py = hy - parsecSlop; py < hy + hh + parsecSlop; py++)
-                                    {
-                                        points[0] = new XPoint(px + -RenderUtil.HEX_EDGE, py + 0.5 + yOffset);
-                                        points[1] = new XPoint(px + RenderUtil.HEX_EDGE, py + 1.0 + yOffset);
-                                        points[2] = new XPoint(px + 1.0 - RenderUtil.HEX_EDGE, py + 1.0 + yOffset);
-                                        points[3] = new XPoint(px + 1.0 + RenderUtil.HEX_EDGE, py + 0.5 + yOffset);
-                                        graphics.DrawLines(pen, points);
-                                    }
-                                }
-                                break;
-                            case HexStyle.None:
-                                // none
-                                break;
-                        }
-
-                        if (styles.numberAllHexes &&
-                            styles.worldDetails.HasFlag(WorldDetails.Hex))
-                        {
-                            solidBrush.Color = styles.hexNumber.textColor;
-                            for (int px = hx - parsecSlop; px < hx + hw + parsecSlop; px++)
-                            {
-                                double yOffset = ((px % 2) != 0) ? 0.0 : 0.5;
-                                for (int py = hy - parsecSlop; py < hy + hh + parsecSlop; py++)
-                                {
-                                    Location loc = Astrometrics.CoordinatesToLocation(px + 1, py + 1);
-                                    string hex;
-                                    switch (styles.hexCoordinateStyle)
-                                    {
-                                        default:
-                                        case Stylesheet.HexCoordinateStyle.Sector: hex = loc.HexString; break;
-                                        case Stylesheet.HexCoordinateStyle.Subsector: hex = loc.SubsectorHexString; break;
-                                    }
-                                    using (RenderUtil.SaveState(graphics))
-                                    {
-                                        XMatrix matrix = new XMatrix();
-                                        matrix.TranslatePrepend(px + 0.5f, py + yOffset);
-                                        matrix.ScalePrepend(styles.hexContentScale / Astrometrics.ParsecScaleX, styles.hexContentScale / Astrometrics.ParsecScaleY);
-                                        graphics.MultiplyTransform(matrix, XMatrixOrder.Prepend);
-                                        graphics.DrawString(hex, styles.hexNumber.Font, solidBrush, 0, 0, RenderUtil.StringFormatTopCenter);
-                                    }
-                                }
-                            }
-                        }
-                    }
+                        DrawParsecGrid();
                     timers.Add(new Timer("parsec grid"));
                     #endregion
 
@@ -690,74 +539,7 @@ namespace Maps.Rendering
                     // Macro: Government / Rift / Route Names
                     //------------------------------------------------------------
                     if (styles.macroNames.visible)
-                    {
-                        foreach (var vec in borderFiles
-                            .Select(file => resourceManager.GetXmlFileObject(file, typeof(VectorObject)))
-                            .OfType<VectorObject>()
-                            .Where(vec => (vec.MapOptions & options & MapOptions.NamesMask) != 0))
-                        {
-                            bool major = vec.MapOptions.HasFlag(MapOptions.NamesMajor);
-                            LabelStyle labelStyle = new LabelStyle();
-                            labelStyle.Uppercase = major;
-                            XFont font = major ? styles.macroNames.Font : styles.macroNames.SmallFont;
-                            solidBrush.Color = major ? styles.macroNames.textColor : styles.macroNames.textHighlightColor;
-                            vec.DrawName(graphics, tileRect, font, solidBrush, labelStyle);
-                        }
-
-                        foreach (var vec in riftFiles
-                            .Select(file => resourceManager.GetXmlFileObject(file, typeof(VectorObject)))
-                            .OfType<VectorObject>()
-                            .Where(vec => (vec.MapOptions & options & MapOptions.NamesMask) != 0))
-                        {
-                            bool major = vec.MapOptions.HasFlag(MapOptions.NamesMajor);
-                            LabelStyle labelStyle = new LabelStyle();
-                            labelStyle.Rotation = 35;
-                            labelStyle.Uppercase = major;
-                            XFont font = major ? styles.macroNames.Font : styles.macroNames.SmallFont;
-                            solidBrush.Color = major ? styles.macroNames.textColor : styles.macroNames.textHighlightColor;
-                            vec.DrawName(graphics, tileRect, font, solidBrush, labelStyle);
-                        }
-
-                        if (styles.macroRoutes.visible)
-                        {
-                            foreach (var vec in routeFiles
-                                .Select(file => resourceManager.GetXmlFileObject(file, typeof(VectorObject)))
-                                .OfType<VectorObject>()
-                                .Where(vec => (vec.MapOptions & options & MapOptions.NamesMask) != 0))
-                            {
-                                bool major = vec.MapOptions.HasFlag(MapOptions.NamesMajor);
-                                LabelStyle labelStyle = new LabelStyle();
-                                labelStyle.Uppercase = major;
-                                XFont font = major ? styles.macroNames.Font : styles.macroNames.SmallFont;
-                                solidBrush.Color = major ? styles.macroRoutes.textColor : styles.macroRoutes.textHighlightColor;
-                                vec.DrawName(graphics, tileRect, font, solidBrush, labelStyle);
-                            }
-                        }
-
-                        if (options.HasFlag(MapOptions.NamesMinor))
-                        {
-                            XFont font = styles.macroNames.MediumFont;
-                            solidBrush.Color = styles.macroRoutes.textHighlightColor;
-                            foreach (var label in labels)
-                            {
-                                using (RenderUtil.SaveState(graphics))
-                                {
-                                    XMatrix matrix = new XMatrix();
-                                    matrix.ScalePrepend(1.0f / Astrometrics.ParsecScaleX, 1.0f / Astrometrics.ParsecScaleY);
-                                    matrix.TranslatePrepend(label.position.X, label.position.Y);
-                                    graphics.MultiplyTransform(matrix, XMatrixOrder.Prepend);
-
-                                    XSize size = graphics.MeasureString(label.text, font);
-                                    graphics.TranslateTransform(-size.Width / 2, -size.Height / 2); // Center the text
-                                    RectangleF textBounds = new RectangleF(0, 0, (float)size.Width, (float)size.Height * 2); // *2 or it gets cut off at high sizes
-                                    XTextFormatter formatter = new XTextFormatter(graphics);
-                                    formatter.Alignment = XParagraphAlignment.Center;
-                                    formatter.DrawString(label.text, font, solidBrush, textBounds);
-                                }
-                            }
-
-                        }
-                    }
+                        DrawMacroNames();
                     timers.Add(new Timer("macro names"));
                     #endregion
 
@@ -869,6 +651,229 @@ namespace Maps.Rendering
                 }
 #endif
                 #endregion
+            }
+        }
+
+        private void DrawMacroNames()
+        {
+            foreach (var vec in borderFiles
+                .Select(file => resourceManager.GetXmlFileObject(file, typeof(VectorObject)))
+                .OfType<VectorObject>()
+                .Where(vec => (vec.MapOptions & options & MapOptions.NamesMask) != 0))
+            {
+                bool major = vec.MapOptions.HasFlag(MapOptions.NamesMajor);
+                LabelStyle labelStyle = new LabelStyle();
+                labelStyle.Uppercase = major;
+                XFont font = major ? styles.macroNames.Font : styles.macroNames.SmallFont;
+                solidBrush.Color = major ? styles.macroNames.textColor : styles.macroNames.textHighlightColor;
+                vec.DrawName(graphics, tileRect, font, solidBrush, labelStyle);
+            }
+
+            foreach (var vec in riftFiles
+                .Select(file => resourceManager.GetXmlFileObject(file, typeof(VectorObject)))
+                .OfType<VectorObject>()
+                .Where(vec => (vec.MapOptions & options & MapOptions.NamesMask) != 0))
+            {
+                bool major = vec.MapOptions.HasFlag(MapOptions.NamesMajor);
+                LabelStyle labelStyle = new LabelStyle();
+                labelStyle.Rotation = 35;
+                labelStyle.Uppercase = major;
+                XFont font = major ? styles.macroNames.Font : styles.macroNames.SmallFont;
+                solidBrush.Color = major ? styles.macroNames.textColor : styles.macroNames.textHighlightColor;
+                vec.DrawName(graphics, tileRect, font, solidBrush, labelStyle);
+            }
+
+            if (styles.macroRoutes.visible)
+            {
+                foreach (var vec in routeFiles
+                    .Select(file => resourceManager.GetXmlFileObject(file, typeof(VectorObject)))
+                    .OfType<VectorObject>()
+                    .Where(vec => (vec.MapOptions & options & MapOptions.NamesMask) != 0))
+                {
+                    bool major = vec.MapOptions.HasFlag(MapOptions.NamesMajor);
+                    LabelStyle labelStyle = new LabelStyle();
+                    labelStyle.Uppercase = major;
+                    XFont font = major ? styles.macroNames.Font : styles.macroNames.SmallFont;
+                    solidBrush.Color = major ? styles.macroRoutes.textColor : styles.macroRoutes.textHighlightColor;
+                    vec.DrawName(graphics, tileRect, font, solidBrush, labelStyle);
+                }
+            }
+
+            if (options.HasFlag(MapOptions.NamesMinor))
+            {
+                XFont font = styles.macroNames.MediumFont;
+                solidBrush.Color = styles.macroRoutes.textHighlightColor;
+                foreach (var label in labels)
+                {
+                    using (RenderUtil.SaveState(graphics))
+                    {
+                        XMatrix matrix = new XMatrix();
+                        matrix.ScalePrepend(1.0f / Astrometrics.ParsecScaleX, 1.0f / Astrometrics.ParsecScaleY);
+                        matrix.TranslatePrepend(label.position.X, label.position.Y);
+                        graphics.MultiplyTransform(matrix, XMatrixOrder.Prepend);
+
+                        XSize size = graphics.MeasureString(label.text, font);
+                        graphics.TranslateTransform(-size.Width / 2, -size.Height / 2); // Center the text
+                        RectangleF textBounds = new RectangleF(0, 0, (float)size.Width, (float)size.Height * 2); // *2 or it gets cut off at high sizes
+                        XTextFormatter formatter = new XTextFormatter(graphics);
+                        formatter.Alignment = XParagraphAlignment.Center;
+                        formatter.DrawString(label.text, font, solidBrush, textBounds);
+                    }
+                }
+
+            }
+        }
+
+        private void DrawParsecGrid()
+        {
+            const int parsecSlop = 1;
+
+            int hx = (int)Math.Floor(tileRect.Left);
+            int hw = (int)Math.Ceiling(tileRect.Width);
+            int hy = (int)Math.Floor(tileRect.Top);
+            int hh = (int)Math.Ceiling(tileRect.Height);
+
+            styles.parsecGrid.pen.Apply(ref pen);
+
+            switch (styles.hexStyle)
+            {
+                case HexStyle.Square:
+                    for (int px = hx - parsecSlop; px < hx + hw + parsecSlop; px++)
+                    {
+                        float yOffset = ((px % 2) != 0) ? 0.0f : 0.5f;
+                        for (int py = hy - parsecSlop; py < hy + hh + parsecSlop; py++)
+                        {
+                            // TODO: use RenderUtil.(Square|Hex)Edges(X|Y) arrays
+                            const float inset = 0.1f;
+                            graphics.DrawRectangle(pen, px + inset, py + inset + yOffset, 1 - inset * 2, 1 - inset * 2);
+                        }
+                    }
+                    break;
+
+                case HexStyle.Hex:
+                    XPoint[] points = new XPoint[4];
+                    for (int px = hx - parsecSlop; px < hx + hw + parsecSlop; px++)
+                    {
+                        double yOffset = ((px % 2) != 0) ? 0.0 : 0.5;
+                        for (int py = hy - parsecSlop; py < hy + hh + parsecSlop; py++)
+                        {
+                            points[0] = new XPoint(px + -RenderUtil.HEX_EDGE, py + 0.5 + yOffset);
+                            points[1] = new XPoint(px + RenderUtil.HEX_EDGE, py + 1.0 + yOffset);
+                            points[2] = new XPoint(px + 1.0 - RenderUtil.HEX_EDGE, py + 1.0 + yOffset);
+                            points[3] = new XPoint(px + 1.0 + RenderUtil.HEX_EDGE, py + 0.5 + yOffset);
+                            graphics.DrawLines(pen, points);
+                        }
+                    }
+                    break;
+                case HexStyle.None:
+                    // none
+                    break;
+            }
+
+            if (styles.numberAllHexes &&
+                styles.worldDetails.HasFlag(WorldDetails.Hex))
+            {
+                solidBrush.Color = styles.hexNumber.textColor;
+                for (int px = hx - parsecSlop; px < hx + hw + parsecSlop; px++)
+                {
+                    double yOffset = ((px % 2) != 0) ? 0.0 : 0.5;
+                    for (int py = hy - parsecSlop; py < hy + hh + parsecSlop; py++)
+                    {
+                        Location loc = Astrometrics.CoordinatesToLocation(px + 1, py + 1);
+                        string hex;
+                        switch (styles.hexCoordinateStyle)
+                        {
+                            default:
+                            case Stylesheet.HexCoordinateStyle.Sector: hex = loc.HexString; break;
+                            case Stylesheet.HexCoordinateStyle.Subsector: hex = loc.SubsectorHexString; break;
+                        }
+                        using (RenderUtil.SaveState(graphics))
+                        {
+                            XMatrix matrix = new XMatrix();
+                            matrix.TranslatePrepend(px + 0.5f, py + yOffset);
+                            matrix.ScalePrepend(styles.hexContentScale / Astrometrics.ParsecScaleX, styles.hexContentScale / Astrometrics.ParsecScaleY);
+                            graphics.MultiplyTransform(matrix, XMatrixOrder.Prepend);
+                            graphics.DrawString(hex, styles.hexNumber.Font, solidBrush, 0, 0, RenderUtil.StringFormatTopCenter);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void DrawPseudoRandomStars()
+        {
+            // Render pseudorandom stars based on the tile # and
+            // scale factor. Note that these are positioned in
+            // screen space, not world space.
+
+            //const int nStars = 75;
+            int nMinStars = tileSize.Width * tileSize.Height / 300;
+            int nStars = scale >= 1 ? nMinStars : (int)(nMinStars / scale);
+
+            // NOTE: For performance's sake, three different cases are considered:
+            // (1) Tile is entirely within charted space (most common) - just render
+            //     the pseudorandom stars into the tile
+            // (2) Tile intersects the galaxy bounds - render pseudorandom stars
+            //     into a texture, then fill the galaxy vector with it
+            // (3) Tile is entire outside the galaxy - don't render stars
+
+            using (RenderUtil.SaveState(graphics))
+            {
+                graphics.SmoothingMode = XSmoothingMode.HighQuality;
+                solidBrush.Color = styles.pseudoRandomStars.fillColor;
+
+                Random rand = new Random((((int)tileRect.Left) << 8) ^ (int)tileRect.Top);
+                for (int i = 0; i < nStars; i++)
+                {
+                    float starX = (float)rand.NextDouble() * tileRect.Width + tileRect.X;
+                    float starY = (float)rand.NextDouble() * tileRect.Height + tileRect.Y;
+                    float d = (float)rand.NextDouble() * 2;
+
+                    //graphics.DrawRectangle( fonts.foregroundBrush, starX, starY, (float)( d / scale * Astrometrics.ParsecScaleX ), (float)( d / scale * Astrometrics.ParsecScaleY ) );
+                    graphics.DrawEllipse(solidBrush, starX, starY, (float)(d / scale * Astrometrics.ParsecScaleX), (float)(d / scale * Astrometrics.ParsecScaleY));
+                }
+            }
+        }
+
+        private void DrawNebulaBackground(XMatrix worldSpaceToImageSpace, RectangleF galacticBounds)
+        {
+            // Image-space rendering, so save current context
+            using (RenderUtil.SaveState(graphics))
+            {
+                // Never fill outside the galaxy
+                graphics.IntersectClip(galacticBounds);
+
+                // Map back to image space so it scales/tiles nicely
+                graphics.MultiplyTransform(worldSpaceToImageSpace);
+
+                const float backgroundImageScale = 2.0f;
+
+                lock (s_backgroundImage)
+                {
+                    // Scaled size of the background
+                    double w = s_backgroundImage.PixelWidth * backgroundImageScale;
+                    double h = s_backgroundImage.PixelHeight * backgroundImageScale;
+
+                    // Offset of the background, relative to the canvas
+                    double ox = (float)(-tileRect.Left * scale * Astrometrics.ParsecScaleX) % w;
+                    double oy = (float)(-tileRect.Top * scale * Astrometrics.ParsecScaleY) % h;
+                    if (ox > 0) ox -= w;
+                    if (oy > 0) oy -= h;
+
+                    // Number of copies needed to cover the canvas
+                    int nx = 1 + (int)Math.Floor(tileSize.Width / w);
+                    int ny = 1 + (int)Math.Floor(tileSize.Height / h);
+                    if (ox + nx * w < tileSize.Width) nx += 1;
+                    if (oy + ny * h < tileSize.Height) ny += 1;
+
+                    for (int x = 0; x < nx; ++x)
+                    {
+                        for (int y = 0; y < ny; ++y)
+                        {
+                            graphics.DrawImage(s_backgroundImage, ox + x * w, oy + y * h, w + 1, h + 1);
+                        }
+                    }
+                }
             }
         }
 

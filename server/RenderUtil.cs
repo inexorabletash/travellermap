@@ -51,7 +51,7 @@ namespace Maps.Rendering
         {
             if (alpha <= 0f)
                 return;
-            
+         
             // Clamp and Quantize
             alpha = Math.Min(1f, alpha);
             alpha = (float)Math.Round(alpha * 16f) / 16f;
@@ -177,10 +177,10 @@ namespace Maps.Rendering
             private XGraphics g;
             private XGraphicsState gs;
 
-            public SaveGraphicsState(XGraphics g)
+            public SaveGraphicsState(XGraphics graphics)
             {
-                this.g = g;
-                this.gs = g.Save();
+                this.g = graphics;
+                this.gs = graphics.Save();
             }
 
             #region IDisposable Members
