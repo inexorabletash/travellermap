@@ -200,7 +200,7 @@ namespace Maps
     {
         public Sector()
         {
-            this.Names = new List<Name>();
+            Names = new List<Name>();
         }
 
         internal Sector(Stream stream, string mediaType, ErrorLogger errors)
@@ -262,17 +262,17 @@ namespace Maps
 
             // TODO: This is very fragile; if a new type is added to Sector we need to add more code here.
 
-            if (metadataSource.Names.Any()) { this.Names.Clear(); this.Names.AddRange(metadataSource.Names); }
-            if (metadataSource.DataFile != null) this.DataFile = metadataSource.DataFile;
+            if (metadataSource.Names.Any()) { Names.Clear(); Names.AddRange(metadataSource.Names); }
+            if (metadataSource.DataFile != null) DataFile = metadataSource.DataFile;
 
-            this.Subsectors.AddRange(metadataSource.Subsectors);
-            this.Allegiances.AddRange(metadataSource.Allegiances);
-            this.Borders.AddRange(metadataSource.Borders);
-            this.Routes.AddRange(metadataSource.Routes);
-            this.Labels.AddRange(metadataSource.Labels);
-            this.Credits = metadataSource.Credits;
-            this.Products.AddRange(metadataSource.Products);
-            this.StylesheetText = metadataSource.StylesheetText;
+            Subsectors.AddRange(metadataSource.Subsectors);
+            Allegiances.AddRange(metadataSource.Allegiances);
+            Borders.AddRange(metadataSource.Borders);
+            Routes.AddRange(metadataSource.Routes);
+            Labels.AddRange(metadataSource.Labels);
+            Credits = metadataSource.Credits;
+            Products.AddRange(metadataSource.Products);
+            StylesheetText = metadataSource.StylesheetText;
         }
 
         [XmlAttribute("Tags"), JsonName("Tags")]
@@ -416,8 +416,8 @@ namespace Maps
                 writer.WriteLine("# " + DateTime.Now.ToString("yyyy-MM-ddTHH:mm:sszzz", DateTimeFormatInfo.InvariantInfo));
                 writer.WriteLine();
 
-                writer.WriteLine("# {0}", this.Names[0]);
-                writer.WriteLine("# {0},{1}", this.X, this.Y);
+                writer.WriteLine("# {0}", Names[0]);
+                writer.WriteLine("# {0},{1}", X, Y);
 
                 writer.WriteLine();
                 foreach (var name in Names)
@@ -454,7 +454,7 @@ namespace Maps
                 for (int i = 0; i < 16; ++i)
                 {
                     char c = (char)('A' + i);
-                    Subsector ss = this.Subsector(c);
+                    Subsector ss = Subsector(c);
                     writer.WriteLine("# Subsector {0}: {1}", c, (ss != null ? ss.Name : ""));
                 }
                 writer.WriteLine();
@@ -541,8 +541,8 @@ namespace Maps
             get
             {
                 return new Rectangle(
-                        (this.Location.X * Astrometrics.SectorWidth) - Astrometrics.ReferenceHex.X,
-                        (this.Location.Y * Astrometrics.SectorHeight) - Astrometrics.ReferenceHex.Y,
+                        (Location.X * Astrometrics.SectorWidth) - Astrometrics.ReferenceHex.X,
+                        (Location.Y * Astrometrics.SectorHeight) - Astrometrics.ReferenceHex.Y,
                         Astrometrics.SectorWidth, Astrometrics.SectorHeight
                     );
             }
@@ -551,8 +551,8 @@ namespace Maps
         public Rectangle SubsectorBounds(int index)
         {
             return new Rectangle(
-                (this.Location.X * Astrometrics.SectorWidth) - Astrometrics.ReferenceHex.X + (Astrometrics.SubsectorWidth * (index % 4)),
-                (this.Location.Y * Astrometrics.SectorHeight) - Astrometrics.ReferenceHex.Y + (Astrometrics.SubsectorHeight * (index / 4)),
+                (Location.X * Astrometrics.SectorWidth) - Astrometrics.ReferenceHex.X + (Astrometrics.SubsectorWidth * (index % 4)),
+                (Location.Y * Astrometrics.SectorHeight) - Astrometrics.ReferenceHex.Y + (Astrometrics.SubsectorHeight * (index / 4)),
                 Astrometrics.SubsectorWidth,
                 Astrometrics.SubsectorHeight);
         }
@@ -560,8 +560,8 @@ namespace Maps
         public Rectangle QuadrantBounds(int index)
         {
             return new Rectangle(
-                (this.Location.X * Astrometrics.SectorWidth) - Astrometrics.ReferenceHex.X + (Astrometrics.SubsectorWidth * 2 * (index % 2)),
-                (this.Location.Y * Astrometrics.SectorHeight) - Astrometrics.ReferenceHex.Y + (Astrometrics.SubsectorHeight * 2 * (index / 2)),
+                (Location.X * Astrometrics.SectorWidth) - Astrometrics.ReferenceHex.X + (Astrometrics.SubsectorWidth * 2 * (index % 2)),
+                (Location.Y * Astrometrics.SectorHeight) - Astrometrics.ReferenceHex.Y + (Astrometrics.SubsectorHeight * 2 * (index / 2)),
                 Astrometrics.SubsectorWidth * 2,
                 Astrometrics.SubsectorHeight * 2);
         }
@@ -578,7 +578,7 @@ namespace Maps
         {
             int ssx = index % 4;
             int ssy = index / 4;
-            return Astrometrics.LocationToCoordinates(this.Location,
+            return Astrometrics.LocationToCoordinates(Location,
                 new Hex((byte)(Astrometrics.SubsectorWidth * (2 * ssx + 1) / 2), (byte)(Astrometrics.SubsectorHeight * (2 * ssy + 1) / 2)));
         }
 
@@ -691,22 +691,22 @@ namespace Maps
         public Allegiance() { }
         public Allegiance(string code, string name)
         {
-            this.Name = name;
-            this.T5Code = code;
-            this.LegacyCode = code;
+            Name = name;
+            T5Code = code;
+            LegacyCode = code;
         }
         public Allegiance(string t5code, string legacyCode, string name)
         {
-            this.Name = name;
-            this.T5Code = t5code;
-            this.LegacyCode = legacyCode;
+            Name = name;
+            T5Code = t5code;
+            LegacyCode = legacyCode;
         }
         public Allegiance(string t5code, string legacyCode, string baseCode, string name)
         {
-            this.Name = name;
-            this.T5Code = t5code;
-            this.LegacyCode = legacyCode;
-            this.Base = baseCode;
+            Name = name;
+            T5Code = t5code;
+            LegacyCode = legacyCode;
+            Base = baseCode;
         }
 
         [XmlText]
@@ -735,7 +735,7 @@ namespace Maps
         [XmlAttribute]
         public string Base { get; set; }
 
-        string IAllegiance.Allegiance { get { return this.T5Code; } }
+        string IAllegiance.Allegiance { get { return T5Code; } }
     }
 
     public interface IAllegiance
@@ -752,9 +752,9 @@ namespace Maps
 
         internal Border(string path, string color = null) : this()
         {
-            this.PathString = path;
+            PathString = path;
             if (color != null)
-                this.ColorHtml = color;
+                ColorHtml = color;
         }
 
         [XmlAttribute]

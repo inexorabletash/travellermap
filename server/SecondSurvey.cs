@@ -146,7 +146,7 @@ namespace Maps
         {
             public void Add(string code, string name)
             {
-                this.Add(code, new Allegiance(code, name));
+                Add(code, new Allegiance(code, name));
             }
         }
         private static LegacyAllegiances s_stockAllegiances = new LegacyAllegiances {
@@ -244,7 +244,7 @@ namespace Maps
         {
             public void Add(string t5code, string code, string baseCode, string name)
             {
-                this.Add(t5code, new Allegiance(t5code, code, baseCode, name));
+                Add(t5code, new Allegiance(t5code, code, baseCode, name));
             }
         }
         private static T5Allegiances s_t5Allegiances = new T5Allegiances {

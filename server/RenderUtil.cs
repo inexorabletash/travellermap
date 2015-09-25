@@ -179,19 +179,19 @@ namespace Maps.Rendering
 
             public SaveGraphicsState(XGraphics graphics)
             {
-                this.g = graphics;
-                this.gs = graphics.Save();
+                g = graphics;
+                gs = graphics.Save();
             }
 
             #region IDisposable Members
 
             public void Dispose()
             {
-                if (this.g != null && this.gs != null)
+                if (g != null && gs != null)
                 {
-                    this.g.Restore(this.gs);
-                    this.g = null;
-                    this.gs = null;
+                    g.Restore(gs);
+                    g = null;
+                    gs = null;
                 }
             }
 
@@ -229,7 +229,7 @@ namespace Maps.Rendering
         }
         public bool Printable
         {
-            get { return this.Characters.Length > 0; }
+            get { return Characters.Length > 0; }
         }
         public Glyph Highlight
         {
@@ -517,7 +517,7 @@ namespace Maps.Rendering
             if (curve.Count > 1)
                 curves.Add(curve);
 
-            this.curvePoints = curves.Select(c => c.ToArray()).ToArray();
+            curvePoints = curves.Select(c => c.ToArray()).ToArray();
         }
     }
 

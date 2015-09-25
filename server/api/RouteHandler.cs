@@ -32,7 +32,7 @@ namespace Maps.API
                 {
                     this.manager = manager;
                     this.map = map;
-                    this.Jump = jump;
+                    Jump = jump;
                 }
 
                 private World start, end;

@@ -52,8 +52,8 @@ namespace Maps.Rendering
             get
             {
                 XMatrix m = new XMatrix();
-                m.TranslatePrepend((float)(-this.tileRect.Left * this.scale * Astrometrics.ParsecScaleX), (float)(-this.tileRect.Top * this.scale * Astrometrics.ParsecScaleY));
-                m.ScalePrepend((float)this.scale * Astrometrics.ParsecScaleX, (float)this.scale * Astrometrics.ParsecScaleY);
+                m.TranslatePrepend((float)(-tileRect.Left * scale * Astrometrics.ParsecScaleX), (float)(-tileRect.Top * scale * Astrometrics.ParsecScaleY));
+                m.ScalePrepend((float)scale * Astrometrics.ParsecScaleX, (float)scale * Astrometrics.ParsecScaleY);
                 return m;
             }
         }
@@ -61,7 +61,7 @@ namespace Maps.Rendering
         #region labels
         private class MapLabel
         {
-            public MapLabel(string text, float x, float y, bool minor = false) { this.text = text; this.position = new PointF(x, y); this.minor = minor; }
+            public MapLabel(string text, float x, float y, bool minor = false) { this.text = text; position = new PointF(x, y); this.minor = minor; }
             public readonly string text;
             public readonly PointF position;
             public readonly bool minor;

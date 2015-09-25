@@ -77,7 +77,7 @@ namespace Maps.Rendering
 
         public FontInfo(string name, float size, XFontStyle style = XFontStyle.Regular)
         {
-            this.family = null;
+            family = null;
             this.name = name;
             this.size = size;
             this.style = style;
@@ -86,7 +86,7 @@ namespace Maps.Rendering
         public FontInfo(FontFamily family, float size, XFontStyle style = XFontStyle.Regular)
         {
             this.family = family;
-            this.name = null;
+            name = null;
             this.size = size;
             this.style = style;
         }
@@ -94,10 +94,10 @@ namespace Maps.Rendering
         private static XPdfFontOptions s_fontOptions = new XPdfFontOptions(PdfSharp.Pdf.PdfFontEncoding.Unicode, PdfSharp.Pdf.PdfFontEmbedding.Always);
         public XFont makeFont()
         {
-            if (this.family != null)
-                return new XFont(this.family, this.size * 1.4f, this.style, s_fontOptions);
-            if (this.name != null)
-                return new XFont(this.name, this.size * 1.4f, this.style, s_fontOptions);
+            if (family != null)
+                return new XFont(family, size * 1.4f, style, s_fontOptions);
+            if (name != null)
+                return new XFont(name, size * 1.4f, style, s_fontOptions);
             return null;
         }
     }
@@ -115,8 +115,8 @@ namespace Maps.Rendering
         {
             this.color = color;
             this.width = width;
-            this.dashStyle = XDashStyle.Solid;
-            this.dashPattern = null;
+            dashStyle = XDashStyle.Solid;
+            dashPattern = null;
             //this.scaleX = 0;
             //this.scaleY = 0;
         }
@@ -141,15 +141,15 @@ namespace Maps.Rendering
 
         public void Apply(ref XPen pen)
         {
-            if (this.width == 0f)
+            if (width == 0f)
                 throw new ArgumentOutOfRangeException("pen", "Hairline pens not supported, set width > 0");
 
-            pen.Color = this.color;
-            pen.Width = this.width;
-            pen.DashStyle = this.dashStyle;
+            pen.Color = color;
+            pen.Width = width;
+            pen.DashStyle = dashStyle;
 
-            if (this.dashPattern != null)
-                pen.DashPattern = this.dashPattern;
+            if (dashPattern != null)
+                pen.DashPattern = dashPattern;
         }
 
 
@@ -766,13 +766,13 @@ namespace Maps.Rendering
             public PointF position;
 
             private XFont font;
-            public XFont Font { get { if (font == null) { font = this.fontInfo.makeFont(); } return font; } }
+            public XFont Font { get { if (font == null) { font = fontInfo.makeFont(); } return font; } }
             private XFont smallFont;
-            public XFont SmallFont { get { if (smallFont == null) { smallFont = this.smallFontInfo.makeFont(); } return smallFont; } }
+            public XFont SmallFont { get { if (smallFont == null) { smallFont = smallFontInfo.makeFont(); } return smallFont; } }
             private XFont mediumFont;
-            public XFont MediumFont { get { if (mediumFont == null) { mediumFont = this.mediumFontInfo.makeFont(); } return mediumFont; } }
+            public XFont MediumFont { get { if (mediumFont == null) { mediumFont = mediumFontInfo.makeFont(); } return mediumFont; } }
             private XFont largeFont;
-            public XFont LargeFont { get { if (largeFont == null) { largeFont = this.largeFontInfo.makeFont(); } return largeFont; } }
+            public XFont LargeFont { get { if (largeFont == null) { largeFont = largeFontInfo.makeFont(); } return largeFont; } }
         }
 
 
@@ -952,19 +952,19 @@ namespace Maps.Rendering
         private Stylesheet sheet;
 
         private XFont wingdingFont;
-        public XFont WingdingFont { get { if (wingdingFont == null) { wingdingFont = this.sheet.wingdingFont.makeFont(); } return wingdingFont; } }
+        public XFont WingdingFont { get { if (wingdingFont == null) { wingdingFont = sheet.wingdingFont.makeFont(); } return wingdingFont; } }
 
         private XFont glyphFont;
-        public XFont GlyphFont { get { if (glyphFont == null) { glyphFont = this.sheet.glyphFont.makeFont(); } return glyphFont; } }
+        public XFont GlyphFont { get { if (glyphFont == null) { glyphFont = sheet.glyphFont.makeFont(); } return glyphFont; } }
 
         private XFont starportFont;
-        public XFont StarportFont { get { if (starportFont == null) { starportFont = this.sheet.starportFont.makeFont(); } return starportFont; } }
+        public XFont StarportFont { get { if (starportFont == null) { starportFont = sheet.starportFont.makeFont(); } return starportFont; } }
 
         private bool disposed;
         public void Dispose() { Dispose(true); GC.SuppressFinalize(this); }
         private void Dispose(bool disposing)
         {
-            if (!this.disposed)
+            if (!disposed)
             {
 #if DISPOSABLE_RESOURCES
                 if( disposing )
@@ -983,7 +983,7 @@ namespace Maps.Rendering
                     if( this.starportFont != null ) this.starportFont.Dispose();
                 }
 #endif
-                this.disposed = true;
+                disposed = true;
             }
         }
     }

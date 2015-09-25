@@ -57,7 +57,7 @@ namespace Json
 
         public void Serialize( TextWriter writer, object item )
         {
-            if( this.SerializeCollectionsAsArrays && item is IEnumerable )
+            if(SerializeCollectionsAsArrays && item is IEnumerable )
                 SerializeArray( writer, (IEnumerable)item );
             else
                 SerializeValue( writer, item );

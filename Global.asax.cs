@@ -34,7 +34,7 @@ namespace Maps
             if (!match.Success)
                 return null;
 
-            RouteData data = new RouteData(this, this.RouteHandler);
+            RouteData data = new RouteData(this, RouteHandler);
 
             if (Defaults != null)
             {
@@ -85,7 +85,7 @@ namespace Maps
 
         public RedirectRouteHandler(string target, int statusCode = 301)
         {
-            this.pattern = target;
+            pattern = target;
             this.statusCode = statusCode;
         }
 
