@@ -78,7 +78,7 @@ namespace Maps.API.Results
         {
             this.sector = sector;
             this.worlds = worlds;
-            this.dataFile = new DataFileMetadata(sector);
+            dataFile = new DataFileMetadata(sector);
         }
         private Sector sector;
         private WorldCollection worlds;

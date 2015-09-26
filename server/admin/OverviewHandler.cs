@@ -43,32 +43,26 @@ namespace Maps.Admin
                     tileRect.Width = (float)(tileSize.Width / (scale * Astrometrics.ParsecScaleX));
                     tileRect.Height = (float)(tileSize.Height / (scale * Astrometrics.ParsecScaleY));
 
-                    Render.RenderContext ctx = new Render.RenderContext();
-                    ctx.resourceManager = resourceManager;
-                    ctx.selector = new RectSelector(
+                    Selector selector = new RectSelector(
                         SectorMap.FromName(SectorMap.DefaultSetting, resourceManager),
                         resourceManager,
                         tileRect);
-                    ctx.tileRect = tileRect;
-                    ctx.scale = scale;
-                    ctx.options = options;
-                    ctx.styles = new Stylesheet(scale, options, style);
-                    ctx.tileSize = tileSize;
-                    ctx.silly = false;
-                    ctx.clipOutsectorBorders = true;
+                    Stylesheet styles = new Stylesheet(scale, options, style);
+                    styles.microRoutes.visible = true;
+                    styles.macroRoutes.visible = false;
+                    styles.macroBorders.visible = false;
+                    styles.microBorders.visible = true;
+                    styles.capitals.visible = false;
+                    styles.worlds.visible = true;
+                    styles.worldDetails = WorldDetails.Dotmap;
+                    styles.showAllSectorNames = false;
+                    styles.showSomeSectorNames = false;
+                    styles.macroNames.visible = false;
+                    styles.pseudoRandomStars.visible = false;
+                    styles.fillMicroBorders = true;
 
-                    ctx.styles.microRoutes.visible = true;
-                    ctx.styles.macroRoutes.visible = false;
-                    ctx.styles.macroBorders.visible = false;
-                    ctx.styles.microBorders.visible = true;
-                    ctx.styles.capitals.visible = false;
-                    ctx.styles.worlds.visible = true;
-                    ctx.styles.worldDetails = WorldDetails.Dotmap;
-                    ctx.styles.showAllSectorNames = false;
-                    ctx.styles.showSomeSectorNames = false;
-                    ctx.styles.macroNames.visible = false;
-                    ctx.styles.pseudoRandomStars.visible = false;
-                    ctx.styles.fillMicroBorders = true;
+                    RenderContext ctx = new RenderContext(resourceManager, selector, tileRect, scale, options, styles, tileSize);
+                    ctx.ClipOutsectorBorders = true;
 
                     ProduceResponse(context, "Overview", ctx, tileSize);
                 }

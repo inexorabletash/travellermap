@@ -72,7 +72,7 @@ namespace Maps.API
                         case "gateway": x = 2; y = 0; title = "Domain of Gateway"; break;
 
                         // And these aren't domains, but...
-                        case "foreven": x = -6; y = -1; title = "Land Grab / Foreven"; break;
+                        case "foreven": x = -6; y = -1; title = "Land Grant / Foreven"; break;
                         case "imperium": x = -4; y = -1; w = 7; h = 5; title = "Third Imperium"; break;
                         case "solomani": x = -2; y = 2; w = 5; h = 3; title = "Solomani Confederacy"; break;
                         case "zhodani": x = -8; y = -3; w = 5; h = 3; title = "Zhodani Consulate"; break;
@@ -239,15 +239,8 @@ namespace Maps.API
                         break;
                 }
 
-                Render.RenderContext ctx = new Render.RenderContext();
-                ctx.resourceManager = resourceManager;
-                ctx.selector = selector;
-                ctx.tileRect = tileRect;
-                ctx.scale = scale;
-                ctx.options = options;
-                ctx.styles = stylesheet;
-                ctx.tileSize = tileSize;
-                ctx.clipOutsectorBorders = clipOutsectorBorders;
+                RenderContext ctx = new RenderContext(resourceManager, selector, tileRect, scale, options, stylesheet, tileSize);
+                ctx.ClipOutsectorBorders = clipOutsectorBorders;
                 ProduceResponse(context, title, ctx, new Size(bitmapWidth, bitmapHeight), rot, translateX, translateY);
             }
         }

@@ -119,10 +119,10 @@ namespace Maps
         {
             get
             {
-                if (this.Sector == null)
+                if (Sector == null)
                     throw new InvalidOperationException("Can't get coordinates for a world not assigned to a sector");
 
-                return Astrometrics.LocationToCoordinates(this.Sector.Location, new Hex(this.X, this.Y));
+                return Astrometrics.LocationToCoordinates(Sector.Location, new Hex(X, Y));
             }
         }
 
@@ -267,8 +267,8 @@ namespace Maps
 
         public string LegacyBaseCode
         {
-            get { return SecondSurvey.EncodeLegacyBases(this.Allegiance, Bases); }
-            set { Bases = SecondSurvey.DecodeLegacyBases(this.Allegiance, value); }
+            get { return SecondSurvey.EncodeLegacyBases(Allegiance, Bases); }
+            set { Bases = SecondSurvey.DecodeLegacyBases(Allegiance, value); }
         }
 
         internal bool IsAmber { get { return Zone == "A" || Zone == "U"; } }
@@ -276,13 +276,13 @@ namespace Maps
         internal bool IsBlue { get { return Zone == "B"; } } // TNE Technologically Elevated Dictatorship
 
         [XmlAttribute("Sector"), JsonName("Sector")]
-        public string SectorName { get { return this.Sector.Names[0].Text; } }
+        public string SectorName { get { return Sector.Names[0].Text; } }
 
         public string SubsectorName
         {
             get
             {
-                var ss = this.Sector.Subsector(this.Subsector);
+                var ss = Sector.Subsector(Subsector);
                 return ss == null ? "" : ss.Name;
             }
         }
@@ -291,9 +291,9 @@ namespace Maps
         {
             get
             {
-                if (this.Sector == null)
+                if (Sector == null)
                     return "";
-                var allegiance = this.Sector.GetAllegianceFromCode(this.Allegiance);
+                var allegiance = Sector.GetAllegianceFromCode(Allegiance);
                 return allegiance == null ? "" : allegiance.Name;
             }
         }
@@ -302,9 +302,9 @@ namespace Maps
         {
             get
             {
-                if (this.Sector == null)
-                    return this.Allegiance;
-                return Sector.AllegianceCodeToBaseAllegianceCode(this.Allegiance);
+                if (Sector == null)
+                    return Allegiance;
+                return Sector.AllegianceCodeToBaseAllegianceCode(Allegiance);
             }
         }
 
@@ -312,7 +312,7 @@ namespace Maps
         {
             get
             {
-                return SecondSurvey.T5AllegianceCodeToLegacyCode(this.Allegiance);
+                return SecondSurvey.T5AllegianceCodeToLegacyCode(Allegiance);
             }
         }
 

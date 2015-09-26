@@ -23,7 +23,7 @@ namespace Maps.API
             protected ImageResponder(HttpContext context) : base(context) { }
             public override string DefaultContentType { get { return Util.MediaTypeName_Image_Png; } }
 
-            protected void ProduceResponse(HttpContext context, string title, Render.RenderContext ctx, Size tileSize,
+            protected void ProduceResponse(HttpContext context, string title, RenderContext ctx, Size tileSize,
                 int rot = 0, float translateX = 0, float translateY = 0,
                 bool transparent = false)
             {
@@ -31,25 +31,25 @@ namespace Maps.API
                     (context.Items["RouteData"] as System.Web.Routing.RouteData).Values);
             }
 
-            protected void ProduceResponse(HttpContext context, ITypeAccepter accepter, string title, Render.RenderContext ctx, Size tileSize,
+            protected void ProduceResponse(HttpContext context, ITypeAccepter accepter, string title, RenderContext ctx, Size tileSize,
                 int rot = 0, float translateX = 0, float translateY = 0,
                 bool transparent = false, IDictionary<string, object> queryDefaults = null)
             {
                 // New-style Options
                 // TODO: move to ParseOptions (maybe - requires options to be parsed after stylesheet creation?)
                 if (GetBoolOption("sscoords", queryDefaults: queryDefaults, defaultValue: false))
-                    ctx.styles.hexCoordinateStyle = Stylesheet.HexCoordinateStyle.Subsector;
+                    ctx.Styles.hexCoordinateStyle = Stylesheet.HexCoordinateStyle.Subsector;
 
                 if (GetBoolOption("allhexes", queryDefaults: queryDefaults, defaultValue: false))
-                    ctx.styles.numberAllHexes = true;
+                    ctx.Styles.numberAllHexes = true;
 
                 if (!GetBoolOption("routes", queryDefaults: queryDefaults, defaultValue: true))
                 {
-                    ctx.styles.macroRoutes.visible = false;
-                    ctx.styles.microRoutes.visible = false;
+                    ctx.Styles.macroRoutes.visible = false;
+                    ctx.Styles.microRoutes.visible = false;
                 }
 
-                ctx.styles.dimUnofficialSectors = GetBoolOption("dimunofficial", queryDefaults: queryDefaults, defaultValue: false);
+                ctx.Styles.dimUnofficialSectors = GetBoolOption("dimunofficial", queryDefaults: queryDefaults, defaultValue: false);
 
                 double devicePixelRatio = GetDoubleOption("dpr", defaultValue: 1, queryDefaults: queryDefaults);
                 if (devicePixelRatio <= 0)
@@ -76,7 +76,7 @@ namespace Maps.API
                         page.Width = XUnit.FromPoint(tileSize.Width);
                         page.Height = XUnit.FromPoint(tileSize.Height);
 
-                        PdfSharp.Drawing.XGraphics gfx = PdfSharp.Drawing.XGraphics.FromPdfPage(page);
+                        XGraphics gfx = XGraphics.FromPdfPage(page);
 
                         RenderToGraphics(ctx, rot, translateX, translateY, gfx);
 
@@ -118,7 +118,7 @@ namespace Maps.API
                     if (dataURI)
                         ms = new MemoryStream();
 
-                    BitmapResponse(context.Response, dataURI ? ms : context.Response.OutputStream, ctx.styles, bitmap, transparent ? Util.MediaTypeName_Image_Png : null);
+                    BitmapResponse(context.Response, dataURI ? ms : context.Response.OutputStream, ctx.Styles, bitmap, transparent ? Util.MediaTypeName_Image_Png : null);
 
                     if (dataURI)
                     {
@@ -145,29 +145,29 @@ namespace Maps.API
                 }
             }
 
-            private static void RenderToGraphics(Render.RenderContext ctx, int rot, float translateX, float translateY, XGraphics graphics)
+            private static void RenderToGraphics(RenderContext ctx, int rot, float translateX, float translateY, XGraphics graphics)
             {
                 graphics.TranslateTransform(translateX, translateY);
                 graphics.RotateTransform(rot * 90);
 
-                if (ctx.border && ctx.clipPath != null)
+                if (ctx.DrawBorder && ctx.ClipPath != null)
                 {
-                    using (Maps.Rendering.RenderUtil.SaveState(graphics))
+                    using (RenderUtil.SaveState(graphics))
                     {
                         // Render border in world space
                         XMatrix m = ctx.ImageSpaceToWorldSpace;
                         graphics.MultiplyTransform(m);
-                        XPen pen = new XPen(ctx.styles.imageBorderColor, 0.2f);
+                        XPen pen = new XPen(ctx.Styles.imageBorderColor, 0.2f);
 
                         // PdfSharp can't ExcludeClip so we take advantage of the fact that we know
                         // the path starts on the left edge and proceeds clockwise. We extend the
                         // path with a counterclockwise border around it, then use that to exclude
                         // the original path's region for rendering the border.
-                        ctx.clipPath.Flatten();
-                        RectangleF bounds = PathUtil.Bounds(ctx.clipPath);
+                        ctx.ClipPath.Flatten();
+                        RectangleF bounds = PathUtil.Bounds(ctx.ClipPath);
                         bounds.Inflate(2 * (float)pen.Width, 2 * (float)pen.Width);
-                        List<byte> types = new List<byte>(ctx.clipPath.Internals.GdiPath.PathTypes);
-                        List<PointF> points = new List<PointF>(ctx.clipPath.Internals.GdiPath.PathPoints);
+                        List<byte> types = new List<byte>(ctx.ClipPath.Internals.GdiPath.PathTypes);
+                        List<PointF> points = new List<PointF>(ctx.ClipPath.Internals.GdiPath.PathPoints);
 
                         PointF key = points[0];
                         points.Add(new PointF(bounds.Left, key.Y)); types.Add(1);
@@ -180,28 +180,14 @@ namespace Maps.API
 
                         XGraphicsPath path = new XGraphicsPath(points.ToArray(), types.ToArray(), XFillMode.Winding);
                         graphics.IntersectClip(path);
-                        graphics.DrawPath(pen, ctx.clipPath);
+                        graphics.DrawPath(pen, ctx.ClipPath);
                     }
                 }
 
-                using (Maps.Rendering.RenderUtil.SaveState(graphics))
+                using (RenderUtil.SaveState(graphics))
                 {
-                    /*
-                    if (ctx.clipPath != null)
-                    {
-                        XMatrix m = ctx.ImageSpaceToWorldSpace;
-                        graphics.MultiplyTransform(m);
-                        graphics.IntersectClip(ctx.clipPath);
-                        m.Invert();
-                        graphics.MultiplyTransform(m);
-                    }
-                     * */
-
-                    ctx.graphics = graphics;
-                    Maps.Rendering.Render.RenderTile(ctx);
+                    ctx.Render(graphics);
                 }
-
-
             }
 
             private static void BitmapResponse(HttpResponse response, Stream outputStream, Stylesheet styles, Bitmap bitmap, string mimeType)

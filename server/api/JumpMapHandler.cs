@@ -151,19 +151,12 @@ namespace Maps.API
                 byte[] boundingPathTypes;
                 PathUtil.ComputeBorderPath(clipPath, edgeX, edgeY, out boundingPathCoords, out boundingPathTypes);
 
-                Render.RenderContext ctx = new Render.RenderContext();
-                ctx.resourceManager = resourceManager;
-                ctx.selector = selector;
-                ctx.tileRect = tileRect;
-                ctx.scale = scale;
-                ctx.options = options;
-                ctx.styles = styles;
-                ctx.tileSize = tileSize;
-                ctx.border = border;
-                ctx.clipOutsectorBorders = true;
+                RenderContext ctx = new RenderContext(resourceManager, selector, tileRect, scale, options, styles, tileSize);
+                ctx.DrawBorder = border;
+                ctx.ClipOutsectorBorders = true;
 
                 // TODO: Widen path to allow for single-pixel border
-                ctx.clipPath = clip ? new XGraphicsPath(boundingPathCoords, boundingPathTypes, XFillMode.Alternate) : null;
+                ctx.ClipPath = clip ? new XGraphicsPath(boundingPathCoords, boundingPathTypes, XFillMode.Alternate) : null;
                 ProduceResponse(context, "Jump Map", ctx, tileSize, transparent: clip);
             }
         }
