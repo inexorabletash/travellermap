@@ -995,6 +995,14 @@ table#features, #features th, #features td { border: solid 1px black; }
         <dt>x
         <dt>y <dd>search position in <a href="#system_world">world-space coordinates</a>
 
+        <dt>wild=1
+        <dd>stops must have wilderness refueling (gas giant or liquid water present)
+
+        <dt>im=1
+        <dd>stops must be member worlds of the Third Imperium
+
+        <dt>nored=1
+        <dd>stops must not be restricted (TAS Red Zones)
     </dl>
 
     <h4>Notes:</h4>
@@ -1011,6 +1019,8 @@ table#features, #features th, #features td { border: solid 1px black; }
         <li>If the source or end location do not exist, or there is no route found given
           the contraints, the request will fail with status <code>404 Not Found</code>
           and a diagnostic message in the body.
+        <li>Route restrictions (<code>wild</code>, <code>im</code>, <code>nored</code>)
+          only apply to intermediate stops, not the start/end worlds.
         <li>
           The default output format is <a href="http://json.org/">JSON</a>. To retrieve results in XML form, specify
           the HTTP header <code>Accept: text/xml</code> or include <code>accept=text/xml</code>
