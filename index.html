@@ -30,14 +30,14 @@
 <meta property="og:site_name" content="The Traveller Map">
 <meta property="fb:admins" content="617166358">
 
-<link rel="stylesheet" href="index.css?update=2015-09-22">
+<link rel="stylesheet" href="index.css?update=2015-09-27">
 <link rel="stylesheet" href="lib/add-to-home-screen/addtohomescreen.css">
 
 <!--[if lt IE 8]><script>alert("IE7 is no longer supported.");location = 'http://google.com/chrome';</script><![endif]-->
 <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.2/handlebars.min.js"></script>
 <script src="lib/polyfill/polyfill.min.js?update=2015-08-15"></script>
 <script src="map.js?update=2015-09-16"></script>
-<script src="index.js?update=2015-09-10"></script>
+<script src="index.js?update=2015-09-27"></script>
 
 <!-- Home Screen Icons - iOS and Android -->
 <link rel="apple-touch-icon-precomposed" href="res/ui/regina152.png">
@@ -176,8 +176,15 @@
       <button id="J-4" name="jump" title="Calculate a Jump-4 route">J-4</button>
       <button id="J-5" name="jump" title="Calculate a Jump-5 route">J-5</button>
       <button id="J-6" name="jump" title="Calculate a Jump-6 route">J-6</button>
+      <div id="routeDisplay">
+        <div id="routePath"></div>
+        <div id="routeOptions">
+          <p><label><input type="checkbox" id="route-wild" name="wild"> Require Wilderness Fueling</label></p>
+          <p><label><input type="checkbox" id="route-im" name="im"> Only Imperial Worlds</label></p>
+          <p><label><input type="checkbox" id="route-nored" name="nored"> Avoid Red Zones</label></p>
+        </div>
+      </div>
     </form>
-    <div id="routePath"></div>
 
     <script id="RouteResultsTemplate" type="text/x-handlebars-template">
       {{#Route}}

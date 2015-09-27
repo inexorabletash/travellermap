@@ -392,7 +392,7 @@ button:hover {
 #routeForm.J-6 #J-6 { background-color: red; }
 
 #routeBox { overflow: hidden; }
-#routePath {
+#routeDisplay {
   position: absolute;
   top: 130px;
   left: 20px;
@@ -400,6 +400,11 @@ button:hover {
   bottom: 20px;
   overflow: auto;
 }
+
+#routeOptions p { min-height: 24px; }
+
+#routePath { margin-bottom: 10px; }
+
 #routePath .item {
   position: relative;
   padding-left: 30px;

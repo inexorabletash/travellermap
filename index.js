@@ -216,9 +216,13 @@ window.addEventListener('DOMContentLoaded', function() {
   $('#closeRouteBtn').addEventListener('click', function(e) {
     $('#routeStart').value = '';
     $('#routeEnd').value = '';
-
+    $('#routePath').innerHTML = '';
+    ['J-1','J-2','J-3','J-4','J-5','J-6'].forEach(function(n) {
+      $('#routeForm').classList.remove(n);
+    });
     document.body.classList.remove('route-ui');
     map.SetRoute(null);
+    lastRoute = null;
     resizeMap();
   });
 
@@ -236,6 +240,13 @@ window.addEventListener('DOMContentLoaded', function() {
       var jump = button.id.replace('J-', '');;
 
       route(start, end, jump);
+    });
+  });
+
+  Array.from($$('#routeForm input[type="checkbox"]')).forEach(function(input) {
+    input.addEventListener('click', function(e) {
+      if ($('#routePath').innerHTML !== '')
+        reroute();
     });
   });
 
@@ -753,12 +764,22 @@ window.addEventListener('DOMContentLoaded', function() {
   //
   //////////////////////////////////////////////////////////////////////
 
+  var lastRoute = null;
+  function reroute() {
+    if (lastRoute) route(lastRoute.start, lastRoute.end, lastRoute.jump);
+  }
+
   function route(start, end, jump) {
     $('#routePath').innerHTML = '';
+    lastRoute = {start:start, end:end, jump:jump};
 
     fetch(Traveller.MapService.makeURL('/api/route', {
       start: start, end: end, jump: jump,
-      x: map.GetHexX(), y: map.GetHexY()}))
+      x: map.GetHexX(), y: map.GetHexY(),
+      wild: $('#route-wild').checked?1:0,
+      im: $('#route-im').checked?1:0,
+      nored: $('#route-nored').checked?1:0
+    }))
       .then(function(response) {
         if (!response.ok) return response.text();
         return response.json();
