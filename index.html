@@ -179,9 +179,15 @@
       <div id="routeDisplay">
         <div id="routePath"></div>
         <div id="routeOptions">
-          <p><label><input type="checkbox" id="route-wild" name="wild"> Require Wilderness Fueling</label></p>
-          <p><label><input type="checkbox" id="route-im" name="im"> Only Imperial Worlds</label></p>
-          <p><label><input type="checkbox" id="route-nored" name="nored"> Avoid Red Zones</label></p>
+          <p><label title="Stops must have gas giant or liquid water present">
+            <input type="checkbox" id="route-wild" name="wild">
+            Require Wilderness Fueling</label></p>
+          <p><label title="Stops must be member worlds of the Third Imperium">
+            <input type="checkbox" id="route-im" name="im">
+            Only Imperial Worlds</label></p>
+          <p><label title="Stops must not be restricted (TAS Red Zone)">
+            <input type="checkbox" id="route-nored" name="nored">
+            Avoid Red Zones</label></p>
         </div>
       </div>
     </form>
