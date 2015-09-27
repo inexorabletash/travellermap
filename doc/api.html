@@ -2,7 +2,7 @@
 <title>API - Traveller Map</title>
 <meta charset="utf-8">
 <link rel="shortcut icon" href="../favicon.ico">
-<link rel="stylesheet" href="../site.css?update=2015-08-30">
+<link rel="stylesheet" href="../site.css?update=2015-09-27">
 <meta name="viewport" content="initial-scale=1, width=device-width">
 <script src="../lib/polyfill/polyfill.min.js?update=2015-08-15"></script>
 
@@ -17,6 +17,11 @@ table#features, #features th, #features td { border: solid 1px black; }
 
 #sample_markers { margin-left: 1in; }
 #sample_markers td { padding-right: 0.25in; }
+
+@media only screen and (max-width: 6.5in)  {
+  #sample_markers { margin-left: 0; }
+  #sample_markers td { padding-right: 0; }
+}
 </style>
 
 <h1>The Traveller Map API</h1>
@@ -530,15 +535,13 @@ table#features, #features th, #features td { border: solid 1px black; }
     <pre class="code">
 &lt;iframe
    src="http://travellermap.com/go/spin/1910?style=print"
-   style="width: 400px; height: 200px; border: ridge 10px gray;"&gt;
+   style="border: ridge 10px gray;"&gt;
 &lt;/iframe&gt;
     </pre>
 
-    <p>
-        <iframe src="http://travellermap.com/go/spin/1910?style=print"
-          style="width: 400px; height: 200px; border: ridge 10px gray;">
-        </iframe>
-    </p>
+    <iframe src="http://travellermap.com/go/spin/1910?style=print"
+            style="border: ridge 10px gray;">
+    </iframe>
 
    <h4>Beta Features:</h4>
     <ul>
@@ -1646,6 +1649,11 @@ function jsonp_demo() {
     // Shortcut: <a class="example" href="foo"></a>
     Array.from(document.querySelectorAll('a.example')).forEach(function (a) {
       a.appendChild(document.createTextNode(a.href));
+    });
+
+    // Allow breaking after / in examples
+    Array.from(document.querySelectorAll('.code')).forEach(function (p) {
+      p.innerText = p.innerText.replace(/([/?&])/g, '$1\u200B');
     });
   }());
 </script>

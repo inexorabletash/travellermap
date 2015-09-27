@@ -50,13 +50,6 @@ h4 {
   margin-left: 1in;
   width: 6in;
 }
-@media (max-width: 7.5in)  {
-  .content { margin-left: 0; }
-}
-@media (max-width: 6.5in)  {
-  .content { width: auto; }
-  .forkme { display: none; }
-}
 
 p {
   text-indent: 2em;
@@ -158,6 +151,25 @@ pre.code {
 textarea {
   font-family: "Share Tech Mono", monospace;
   width: 550px; height: 120px; white-space: pre;
+}
+
+/* Responsive Layout */
+
+@media only screen and (max-width: 7.5in)  {
+  .content { margin-left: 0; }
+}
+@media only screen and (max-width: 6.5in)  {
+  h1 { font-size: 18pt; line-height: 30pt; }
+  .content { width: auto; }
+  .forkme { display: none; }
+  pre.code {
+    white-space: pre-wrap;
+    width: auto;
+  }
+  ul { -webkit-padding-start: 20px; }
+  dl.params { margin-left: 0; }
+  dl.params > dd { -webkit-margin-start: 10px; }
+  p.code { white-space: normal; }
 }
 
 /* Table of Contents */
