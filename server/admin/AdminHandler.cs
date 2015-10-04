@@ -55,18 +55,20 @@ namespace Maps.Admin
             context.Response.ContentType = System.Net.Mime.MediaTypeNames.Text.Html;
             context.Response.BufferOutput = false;
 
-            context.Response.Write("<!DOCTYPE html>");
-            context.Response.Write("<title>Admin Page</title>");
-            context.Response.Write("<style>");
+            Action<string> WriteLine = (string s) => { context.Response.Write(s); context.Response.Write("\n"); };
+
+            WriteLine("<!DOCTYPE html>");
+            WriteLine("<title>Admin Page</title>");
+            WriteLine("<style>");
             using (var reader = new StreamReader(context.Server.MapPath("~/site.css"), Encoding.UTF8))
             {
                 while (!reader.EndOfStream)
                 {
-                    context.Response.Write(reader.ReadLine());
+                    WriteLine(reader.ReadLine());
                 }
             }
-            context.Response.Write("</style>");
-            context.Response.Write("<h1>Traveller Map - Administration</h1>");
+            WriteLine("</style>");
+            WriteLine("<h1>Traveller Map - Administration</h1>");
             context.Response.Flush();
 
             string action = GetStringOption(context, "action");
@@ -84,7 +86,7 @@ namespace Maps.Admin
         {
             response.Write("<div>");
             response.Write(line);
-            response.Write("</div>");
+            response.Write("</div>\n");
             response.Flush();
         }
 

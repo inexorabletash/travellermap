@@ -320,8 +320,13 @@ namespace Maps
 
             application.EndRequest += (Object source, EventArgs e) => {
                 HttpContext context = application.Context;
-                if (context.Response.ContentType == System.Net.Mime.MediaTypeNames.Text.Html)
-                    context.Response.Write(footer);
+                if (context.Request.Url.Host == "localhost")
+                    return;
+                if (context.Request.Url.AbsolutePath.StartsWith("/admin/"))
+                    return;
+                if (context.Response.ContentType != System.Net.Mime.MediaTypeNames.Text.Html)
+                    return;
+                context.Response.Write(footer);
             };
         }
 

@@ -81,7 +81,7 @@ namespace Maps.Admin
 
             { @"^Mr\((" + string.Join("|", SecondSurvey.AllegianceCodes) + @")\)$", "(military rule)" },
         };
-
+            
         protected override void Process(System.Web.HttpContext context)
         {
             context.Response.ContentType = MediaTypeNames.Text.Plain;
