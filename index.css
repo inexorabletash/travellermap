@@ -358,6 +358,14 @@ button:hover {
 #resultsContainer .item-uwp { margin-left: 10pt; }
 #resultsContainer .item-status { font-style: italic; }
 
+#searchBar #searchBtn,
+#searchBar #closeResultsBtn {
+  margin-left: -30px;
+  padding: 0;
+  min-width: 0;
+  box-shadow: none;
+  background-color: transparent;
+}
 
 /* -- Route */
 
@@ -370,10 +378,10 @@ button:hover {
 .route-ui #routeBox { display: block; }
 
 #routeBox input[type=text] {
-  height: 30px; width: 265px;
+  height: 30px; width: 100%;
 
   font-size: 12pt;
-  padding: 0 10px; margin: 0; border: 1px solid gray;
+  padding: 0 10px; margin: 0 -11px; border: 1px solid gray;
   margin-bottom: 10px;
 }
 #routeBox form {
@@ -390,6 +398,22 @@ button:hover {
 #routeForm.J-4 #J-4,
 #routeForm.J-5 #J-5,
 #routeForm.J-6 #J-6 { background-color: red; }
+
+#routeBox #closeRouteBtn {
+  position: absolute;
+  top: 11px;
+  right: 8px;
+  padding: 0;
+  min-width: 0;
+  width: 30px;
+  height: 30px;
+  box-shadow: none;
+  background-color: transparent;
+}
+
+#routeInputWrapper {
+  padding: 0px 10px;
+}
 
 #routeBox { overflow: hidden; }
 #routeDisplay {
@@ -762,13 +786,10 @@ button:hover {
 }
 
 
-@media only screen and (max-width: 320px) {
+@media only screen and (max-width: 420px) {
   .route-ui #routeBox {
     left: 0; top: 0; right: 0; width: auto;
     height: 200px;
-  }
-  .route-ui #routeBox input[type=text] {
-    width: 275px;
   }
   .route-ui #mapContainer {
     top: 200px;
@@ -798,24 +819,4 @@ noscript div {
   color: white;
   background-color: inherit;
   border: 2px solid white;
-}
-
-#searchBar #searchBtn,
-#searchBar #closeResultsBtn {
-  margin-left: -30px;
-  padding: 0;
-  min-width: 0;
-  box-shadow: none;
-  background-color: transparent;
-}
-#routeBox #closeRouteBtn {
-  position: absolute;
-  top: 11px;
-  right: 8px;
-  padding: 0;
-  min-width: 0;
-  width: 30px;
-  height: 30px;
-  box-shadow: none;
-  background-color: transparent;
 }

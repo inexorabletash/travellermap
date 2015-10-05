@@ -30,7 +30,7 @@
 <meta property="og:site_name" content="The Traveller Map">
 <meta property="fb:admins" content="617166358">
 
-<link rel="stylesheet" href="index.css?update=2015-09-27">
+<link rel="stylesheet" href="index.css?update=2015-10-04">
 <link rel="stylesheet" href="lib/add-to-home-screen/addtohomescreen.css">
 
 <!--[if lt IE 8]><script>alert("IE7 is no longer supported.");location = 'http://google.com/chrome';</script><![endif]-->
@@ -150,26 +150,27 @@
             title="Close route">
     </button>
     <form id="routeForm" action="get">
-      <input type="text"
-             name="start"
-             id="routeStart"
-             placeholder="Start (e.g. Regina)"
-             title="Route start location - world name, or &quot;Sector Hex&quot; e.g. &quot;Spinward Marches 1910&quot;"
-             autocomplete="off"
-             autocorrect="off"
-             autocapitalize="none"
-             spellcheck="false">
-      <br>
-      <input type="text"
-             name="end"
-             id="routeEnd"
-             placeholder="Destination (e.g. Capital)"
-             title="Route end location - world name, or &quot;Sector Hex&quot; e.g. &quot;Solomani Rim 1827&quot;"
-             autocomplete="off"
-             autocorrect="off"
-             autocapitalize="none"
-             spellcheck="false">
-      <br>
+      <div id="routeInputWrapper">
+        <input type="text"
+               name="start"
+               id="routeStart"
+               placeholder="Start (e.g. Regina)"
+               title="Route start location - world name, or &quot;Sector Hex&quot; e.g. &quot;Spinward Marches 1910&quot;"
+               autocomplete="off"
+               autocorrect="off"
+               autocapitalize="none"
+               spellcheck="false">
+        <br>
+        <input type="text"
+               name="end"
+               id="routeEnd"
+               placeholder="Destination (e.g. Capital)"
+               title="Route end location - world name, or &quot;Sector Hex&quot; e.g. &quot;Solomani Rim 1827&quot;"
+               autocomplete="off"
+               autocorrect="off"
+               autocapitalize="none"
+               spellcheck="false">
+      </div>
       <button id="J-1" name="jump" title="Calculate a Jump-1 route">J-1</button>
       <button id="J-2" name="jump" title="Calculate a Jump-2 route">J-2</button>
       <button id="J-3" name="jump" title="Calculate a Jump-3 route">J-3</button>
