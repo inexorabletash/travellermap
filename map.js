@@ -542,20 +542,6 @@ var Util = {
     }
   }
 
-  function eventCoords(event) {
-    // Attempt to get transformed coords; offsetX/Y for Chrome/Safari/IE,
-    // layerX/Y for Firefox. Touch events lack these, so compute untransformed
-    // coords.
-    // TODO: Map touch coordinates back into world-space.
-    var offsetX = 'offsetX' in event ? event.offsetX :
-          'layerX' in event ? event.layerX :
-          event.pageX - event.target.offsetLeft;
-    var offsetY = 'offsetY' in event ? event.offsetY :
-          'layerY' in event ? event.layerY :
-          event.pageY - event.target.offsetTop;
-    return { x: offsetX - SINK_OFFSET, y: offsetY - SINK_OFFSET};
-  }
-
   // ======================================================================
   // Slippy Map using Tiles
   // ======================================================================
@@ -569,9 +555,7 @@ var Util = {
     var self = this;
 
     this.container = container;
-
-    this.width = container.offsetWidth;
-    this.height = container.offsetHeight;
+    this.rect = container.getBoundingClientRect();
 
     this.min_scale = -5;
     this.max_scale = 10;
@@ -619,8 +603,8 @@ var Util = {
       this.canvas = canvas;
 
       this.resetCanvas = function() {
-        var cw = self.width;
-        var ch = self.height;
+        var cw = self.rect.width;
+        var ch = self.rect.height;
 
         var dpr = 'devicePixelRatio' in window ? window.devicePixelRatio : 1;
 
@@ -666,11 +650,29 @@ var Util = {
     // Event Handlers
     // ======================================================================
 
+    function eventCoords(event) {
+      // Attempt to get transformed coords; offsetX/Y for Chrome/Safari/IE,
+      // layerX/Y for Firefox. Touch events lack these, so compute untransformed
+      // coords.
+      // TODO: Map touch coordinates back into world-space.
+      var offsetX = 'offsetX' in event ? event.offsetX :
+            'layerX' in event ? event.layerX :
+            event.pageX - event.target.offsetLeft;
+      var offsetY = 'offsetY' in event ? event.offsetY :
+            'layerY' in event ? event.layerY :
+            event.pageY - event.target.offsetTop;
+
+      return {
+        x: offsetX - SINK_OFFSET - self.rect.left,
+        y: offsetY - SINK_OFFSET - self.rect.top
+      };
+    }
+
     function eventToHexCoords(event) {
       var f = pow2(1 - self.scale) / self.tilesize;
       var coords = eventCoords(event);
-      var cx = self.x + f * (coords.x - self.width / 2),
-          cy = self.y + f * (coords.y - self.height / 2);
+      var cx = self.x + f * (coords.x + self.rect.left - self.rect.width / 2),
+          cy = self.y + f * (coords.y + self.rect.top - self.rect.height / 2);
       return logicalToHex(cx * self.tilesize, cy * -self.tilesize);
     }
 
@@ -750,8 +752,8 @@ var Util = {
       // Compute the physical coordinates
       var f = pow2(1 - self.scale) / self.tilesize,
           coords = eventCoords(e),
-          cx = self.x + f * (coords.x - self.width / 2),
-          cy = self.y + f * (coords.y - self.height / 2),
+          cx = self.x + f * (coords.x - self.rect.width / 2),
+          cy = self.y + f * (coords.y - self.rect.height / 2),
           hex = logicalToHex(cx * self.tilesize, cy * -self.tilesize);
 
       fireEvent(self, 'DoubleClick', { x: hex.hx, y: hex.hy });
@@ -773,10 +775,12 @@ var Util = {
     container.addEventListener('DOMMouseScroll', wheelListener); // FF
 
     window.addEventListener('resize', function() {
-      var w = container.offsetWidth, h = container.offsetHeight;
-      if (w === self.width && h === self.height) return;
-      self.width = w;
-      self.height = h;
+      var rect = container.getBoundingClientRect();
+      if (rect.left === self.rect.left &&
+          rect.top === self.rect.top &&
+          rect.width === self.rect.width &&
+          rect.height === self.rect.height) return;
+      self.rect = rect;
       if (self.canvas)
         self.resetCanvas();
       self.redraw(true);
@@ -920,8 +924,8 @@ var Util = {
   };
 
   TravellerMap.prototype.setScale = function(newscale, px, py) {
-    var cw = this.width,
-        ch = this.height;
+    var cw = this.rect.width,
+        ch = this.rect.height;
 
     newscale = Math.max(Math.min(newscale, this.max_scale), this.min_scale);
     if (newscale !== this.scale) {
@@ -977,8 +981,8 @@ var Util = {
         cf = pow2(tscale - 1), // Coordinate factor (integral)
 
     // Compute edges in tile space
-        cw = this.width,
-        ch = this.height,
+        cw = this.rect.width,
+        ch = this.rect.height,
 
         l = this.x * cf - (cw / 2) / (this.tilesize * tmult),
         r = this.x * cf + (cw / 2) / (this.tilesize * tmult),
@@ -1433,8 +1437,8 @@ var Util = {
   TravellerMap.prototype.logicalToPixel = function(lx, ly) {
     var f = pow2(1 - this.scale) / this.tilesize;
     return {
-      x: ((lx / this.tilesize - this.x) / f) + this.width / 2,
-      y: ((ly / -this.tilesize - this.y) / f) + this.height / 2
+      x: ((lx / this.tilesize - this.x) / f) + this.rect.width / 2,
+      y: ((ly / -this.tilesize - this.y) / f) + this.rect.height / 2
     };
   };
 
