@@ -476,6 +476,10 @@
       world.OtherWorlds = world.Worlds - 1 - world.PBG.Belts - world.PBG.GG;
     }
 
+    function hasCode(c) {
+      return world.Remarks.some(function(r) { return r.code === c; });
+    }
+
     var template = Handlebars.compile($('#world-template').innerHTML);
     $('#world-data').innerHTML = template(world);
 
@@ -496,6 +500,9 @@
         (world.UWP.Siz === '0' ? 'Belt' : 'Hyd' + world.UWP.Hyd) + '.png';
     }
     $('#world-image').style.display = 'block';
+
+    if (hasCode('Sa'))
+      $('#world-image .background').src = 'res/world/gg.jpg';
 
     // Try loading pre-rendered; if it works, use it instead.
     if (!isPlaceholder) {
