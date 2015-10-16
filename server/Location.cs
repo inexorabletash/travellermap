@@ -25,7 +25,7 @@ namespace Maps
 
         // For XML Deserialization:
         [XmlAttribute("Sector")]
-        public string SectorName { get { return null; } set { Sector = SectorMap.FromName(SectorMap.DefaultSetting, value).Location; } }
+        public string SectorName { get { return null; } set { Sector = SectorMap.GetInstance().FromName(value).Location; } }
         [XmlAttribute("Hex")]
         public string HexName { get { return null; } set { Hex = new Hex(value); } }
 

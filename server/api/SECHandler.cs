@@ -23,7 +23,7 @@ namespace Maps.API
                 // resolving names into sector locations, so needs to be run
                 // before any other objects (e.g. Worlds) are loaded.
                 ResourceManager resourceManager = new ResourceManager(context.Server);
-                SectorMap map = SectorMap.FromName(SectorMap.DefaultSetting, resourceManager);
+                SectorMap map = SectorMap.GetInstance(resourceManager);
                 Sector sector;
 
                 bool sscoords = GetBoolOption("sscoords", defaultValue: false);

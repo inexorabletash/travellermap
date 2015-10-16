@@ -14,38 +14,6 @@ using System.Xml.Serialization;
 
 namespace Maps
 {
-
-#if NOT_YET_IMPLEMENTED
-    [XmlRoot( ElementName = "Setting" )]
-    public class Setting
-    {
-        public Setting()
-        {
-            Rifts = new List<string>();
-            Borders = new List<string>();
-            Worlds = new List<string>();
-            SectorCollections = new List<string>();
-        }
-
-        private SectorMap m_map;
-        public SectorMap Map { get { return m_map; } }
-
-        public List<string> Rifts { get; set; }
-        public List<string> Borders { get; set; }
-        public List<string> Worlds { get; set; }
-        public List<string> SectorCollections { get; set; }
-
-        public static Setting GetSetting( string name, ResourceManager resourceManager )
-        {
-            // TODO: Cache these statically
-            Setting setting = resourceManager.GetXmlFileObject( String.Format( @"~/res/Setting_{0}.xml", name ), typeof( Setting ), false ) as Setting;
-
-            setting.m_map = null; // new SectorMap( /*setting.m_sectorCollections*/ );
-
-            return setting;
-        }
-    }
-#endif
     [Serializable]
     public class MapNotInitializedException : Exception
     {
@@ -68,8 +36,6 @@ namespace Maps
 
     internal class SectorMap
     {
-        public const string DefaultSetting = "OTU";
-
         private static object s_lock = new object();
 
         private static SectorMap s_OTU;
@@ -123,11 +89,8 @@ namespace Maps
             }
         }
 
-        public static SectorMap FromName(string settingName, ResourceManager resourceManager)
+        public static SectorMap GetInstance(ResourceManager resourceManager)
         {
-            if (settingName != SectorMap.DefaultSetting)
-                throw new ArgumentException("Only OTU setting is currently supported", "settingName");
-
             lock (SectorMap.s_lock)
             {
                 if (s_OTU == null)
@@ -155,23 +118,12 @@ namespace Maps
             }
         }
 
-        public static Sector FromName(string settingName, string sectorName)
+        public static SectorMap GetInstance()
         {
-            // TODO: Having this method supports deserializing data that refers generically to
-            // sectors by name.
-            //  * Consider decoupling sector *names* from sector data
-            //  * Consider Location (the offender) having a default setting
-
-            if (settingName == null)
-                settingName = SectorMap.DefaultSetting;
-
-            if (settingName != SectorMap.DefaultSetting)
-                throw new ArgumentException("Only OTU setting is currently supported", "settingName");
-
+            // This method supports deserializing of Location instances that reference sectors by name.
             if (s_OTU == null)
                 throw new MapNotInitializedException();
-
-            return s_OTU.FromName(sectorName);
+            return s_OTU;
         }
 
         public Sector FromName(string sectorName)

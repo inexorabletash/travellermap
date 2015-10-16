@@ -44,7 +44,7 @@ namespace Maps.Admin
                     tileRect.Height = (float)(tileSize.Height / (scale * Astrometrics.ParsecScaleY));
 
                     Selector selector = new RectSelector(
-                        SectorMap.FromName(SectorMap.DefaultSetting, resourceManager),
+                        SectorMap.GetInstance(resourceManager),
                         resourceManager,
                         tileRect);
                     Stylesheet styles = new Stylesheet(scale, options, style);
