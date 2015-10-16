@@ -23,7 +23,7 @@ namespace Maps.Admin
             // resolving names into sector locations, so needs to be run
             // before any other objects (e.g. Worlds) are loaded.
             SectorMap.Flush();
-            SectorMap map = SectorMap.FromName(SectorMap.DefaultSetting, resourceManager);
+            SectorMap map = SectorMap.GetInstance(resourceManager);
 
             var sectorQuery = from sector in map.Sectors
                               where (sectorName == null || sector.Names[0].Text.StartsWith(sectorName, ignoreCase: true, culture: CultureInfo.InvariantCulture))

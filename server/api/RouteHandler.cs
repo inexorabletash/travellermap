@@ -111,7 +111,7 @@ namespace Maps.API
             public override void Process()
             {
                 ResourceManager resourceManager = new ResourceManager(context.Server);
-                SectorMap map = SectorMap.FromName(SectorMap.DefaultSetting, resourceManager);
+                SectorMap map = SectorMap.GetInstance(resourceManager);
 
                 World startWorld = ResolveLocation(context, "start", resourceManager, map);
                 if (startWorld == null)
