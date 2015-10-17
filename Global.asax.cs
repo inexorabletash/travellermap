@@ -320,7 +320,7 @@ namespace Maps
 
             application.EndRequest += (Object source, EventArgs e) => {
                 HttpContext context = application.Context;
-                if (context.Request.Url.Host == "localhost")
+                if (context.Request.IsLocal)
                     return;
                 if (context.Request.Url.AbsolutePath.StartsWith("/admin/"))
                     return;

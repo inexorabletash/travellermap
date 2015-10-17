@@ -13,7 +13,7 @@ namespace Maps
     {
         public static SqlConnection MakeConnection()
         {
-            string connectionStringName = (HttpContext.Current.Request.Url.Host == "localhost") ? "SqlDev" : "SqlProd";
+            string connectionStringName = HttpContext.Current.Request.IsLocal ? "SqlDev" : "SqlProd";
             string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings[connectionStringName].ConnectionString;
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();

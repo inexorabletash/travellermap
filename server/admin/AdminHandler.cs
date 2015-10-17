@@ -10,7 +10,7 @@ namespace Maps.Admin
     {
         public static bool AdminAuthorized(HttpContext context)
         {
-            if (context.Request.Url.Host == "localhost")
+            if (context.Request.IsLocal)
                 return true;
 
             if (context.Request["key"] == System.Configuration.ConfigurationManager.AppSettings["AdminKey"])
