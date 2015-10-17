@@ -84,6 +84,9 @@
     <!-- Disable WebDAV so ASP.NET can handle OPTIONS header for CORS requests. -->
     <modules runAllManagedModulesForAllRequests="true">
       <remove name="WebDAVModule" />
+      <!-- <add name="NoWWW" type="Maps.HttpModules.NoWWW"/> -->
+      <!-- <add name="RequireSecureConnection" type="Maps.HttpModules.RequireSecureConnection"/> -->
+      <!-- <add name="PageFooter" type="Maps.HttpModules.PageFooter" /> -->
     </modules>
     <handlers>
       <remove name="WebDAV"/>
@@ -117,5 +120,6 @@
   </connectionStrings>
   <appSettings>
     <add key="AdminKey" value="YOUR_KEY_HERE"/>
+    <!-- <add key="PageFooter" value="PAGE_FOOTER_HERE"/> -->
   </appSettings>
 </configuration>
