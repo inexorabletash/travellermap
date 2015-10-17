@@ -44,7 +44,7 @@ namespace Maps
 
             foreach (var name in regex.GetGroupNames())
                 data.Values[name] = match.Groups[name];
-            
+
             return data;
         }
     }
@@ -209,7 +209,7 @@ namespace Maps
 #endif
 
             // Rendering ----------------------------------------------------
-            
+
             routes.Add(new RegexRoute(@"/api/jumpmap", new GenericRouteHandler(typeof(JumpMapHandler))));
             routes.Add(new RegexRoute(@"/api/poster", new GenericRouteHandler(typeof(PosterHandler))));
             routes.Add(new RegexRoute(@"/api/poster/(?<sector>[^/]+)", new GenericRouteHandler(typeof(PosterHandler))));
@@ -221,9 +221,9 @@ namespace Maps
             routes.Add(new RegexRoute(@"/Poster.aspx", new GenericRouteHandler(typeof(PosterHandler)), caseInsensitive: true));
             routes.Add(new RegexRoute(@"/Tile.aspx", new GenericRouteHandler(typeof(TileHandler)), caseInsensitive: true));
 #endif
-            
+
             // Location Queries ---------------------------------------------
-            
+
             routes.Add(new RegexRoute(@"/api/coordinates", new GenericRouteHandler(typeof(CoordinatesHandler)), DEFAULT_JSON));
             routes.Add(new RegexRoute(@"/api/credits", new GenericRouteHandler(typeof(CreditsHandler)), DEFAULT_JSON));
             routes.Add(new RegexRoute(@"/api/jumpworlds", new GenericRouteHandler(typeof(JumpWorldsHandler)), DEFAULT_JSON));
@@ -232,9 +232,9 @@ namespace Maps
             routes.Add(new RegexRoute(@"/Credits.aspx", new GenericRouteHandler(typeof(CreditsHandler)), caseInsensitive: true));
             routes.Add(new RegexRoute(@"/JumpWorlds.aspx", new GenericRouteHandler(typeof(JumpWorldsHandler)), caseInsensitive: true));
 #endif
-            
+
             // Data Retrieval - API-centric ---------------------------------
-            
+
             routes.Add(new RegexRoute(@"/api/universe", new GenericRouteHandler(typeof(UniverseHandler)), DEFAULT_JSON));
             routes.Add(new RegexRoute(@"/api/sec", new GenericRouteHandler(typeof(SECHandler)), new RouteValueDictionary { { "type", "SecondSurvey" } }));
             routes.Add(new RegexRoute(@"/api/sec/(?<sector>[^/]+)", new GenericRouteHandler(typeof(SECHandler)), new RouteValueDictionary { { "type", "SecondSurvey" } }));
@@ -250,9 +250,9 @@ namespace Maps
             routes.Add(new RegexRoute(@"/SectorMetaData.aspx", new GenericRouteHandler(typeof(SectorMetaDataHandler)), caseInsensitive: true));
             routes.Add(new RegexRoute(@"/MSEC.aspx", new GenericRouteHandler(typeof(MSECHandler)), caseInsensitive: true));
 #endif
-            
+
             // Data Retrieval - RESTful -------------------------------------
-            
+
             routes.Add(new RegexRoute(@"/data", new GenericRouteHandler(typeof(UniverseHandler)), DEFAULT_JSON));
 
             // Sector, e.g. /data/Spinward Marches
@@ -301,21 +301,23 @@ namespace Maps
             routes.Add(new RegexRoute(@"/t5ss/sophonts", new GenericRouteHandler(typeof(SophontCodesHandler)), DEFAULT_JSON));
         }
     }
+}
 
+namespace Maps.HttpModules { 
     // <modules>
-    //   <add name="PageFooterModule" type="Maps.PageFooterModule" />
+    //   <add name="PageFooter" type="Maps.HttpModules.PageFooter" />
     // </modules>
     // <appSettings>
     //   <add key="PageFooter" value="your footer here..." />
     // </appSettings>
-    public class PageFooterModule : IHttpModule
+    public class PageFooter : IHttpModule
     {
-        public String ModuleName { get { return "PageFooterModule"; } }
+        public String ModuleName { get { return "PageFooter"; } }
 
         public void Init(HttpApplication application)
         {
             string footer = System.Configuration.ConfigurationManager.AppSettings["PageFooter"];
-            if (string.IsNullOrWhiteSpace(footer))
+            if (!string.IsNullOrWhiteSpace(footer))
                 return;
 
             application.EndRequest += (Object source, EventArgs e) => {
@@ -327,6 +329,52 @@ namespace Maps
                 if (context.Response.ContentType != System.Net.Mime.MediaTypeNames.Text.Html)
                     return;
                 context.Response.Write(footer);
+            };
+        }
+
+        public void Dispose() { }
+    }
+
+    // <modules>
+    //   <add name="NoWWW" type="Maps.HttpModules.NoWWW" />
+    // </modules>
+    public class NoWWW : IHttpModule
+    {
+        public String ModuleName { get { return "NoWWW"; } }
+
+        public void Init(HttpApplication application)
+        {
+            application.BeginRequest += (Object source, EventArgs e) => {
+                HttpContext context = application.Context;
+                if (context.Request.IsLocal)
+                    return;
+                Uri url = context.Request.Url;
+                if (!url.Authority.StartsWith("www."))
+                    return;
+                context.Response.RedirectPermanent(url.Scheme + Uri.SchemeDelimiter + url.Authority.Substring(4) + url.PathAndQuery, true);
+            };
+        }
+
+        public void Dispose() { }
+    }
+
+    // <modules>
+    //   <add name="RequireSecureConnection" type="Maps.HttpModules.RequireSecureConnection" />
+    // </modules>
+    public class RequireSecureConnection : IHttpModule
+    {
+        public String ModuleName { get { return "RequireSecureConnection"; } }
+
+        public void Init(HttpApplication application)
+        {
+            application.BeginRequest += (Object source, EventArgs e) => {
+                HttpContext context = application.Context;
+                if (context.Request.IsLocal)
+                    return;
+                if (context.Request.IsSecureConnection)
+                    return;
+                Uri url = context.Request.Url;
+                context.Response.RedirectPermanent("https" + Uri.SchemeDelimiter + url.Authority + url.PathAndQuery, true);
             };
         }
 
