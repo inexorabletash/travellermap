@@ -126,6 +126,7 @@
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="server\api\CodesHandler.cs" />
     <Compile Include="server\api\RouteHandler.cs" />
+    <Compile Include="server\httpmodules\HttpModules.cs" />
     <Compile Include="server\PathFinder.cs" />
     <Compile Include="server\WorldCollection.cs" />
     <Content Include="404.html" />
