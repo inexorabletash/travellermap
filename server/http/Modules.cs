@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web;
 
-namespace Maps.HttpModules
+namespace Maps.HTTP.Modules
 {
     // <modules>
     //   <add name="PageFooter" type="Maps.HttpModules.PageFooter" />

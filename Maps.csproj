@@ -126,7 +126,8 @@
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="server\api\CodesHandler.cs" />
     <Compile Include="server\api\RouteHandler.cs" />
-    <Compile Include="server\httpmodules\HttpModules.cs" />
+    <Compile Include="server\http\Modules.cs" />
+    <Compile Include="server\http\Routing.cs" />
     <Compile Include="server\PathFinder.cs" />
     <Compile Include="server\WorldCollection.cs" />
     <Content Include="404.html" />
@@ -837,6 +838,7 @@
     <None Include="res\Sectors\Zhodani Core Route\zietssha.sec" />
     <None Include="res\Sectors\Zhodani Core Route\zii.sec" />
     <None Include="res\Sectors\Zortakh.sec" />
+    <Content Include="Web.config.sample" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
