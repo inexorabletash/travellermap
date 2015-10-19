@@ -370,7 +370,7 @@ button:hover {
 /* -- Route */
 
 #routeBox {
-  left: 10px; top: 10px; width: 285px;
+  left: 10px; top: 10px; width: 290px;
   padding: 10px;
   min-height: 120px;
   max-height: 350px;
@@ -425,9 +425,9 @@ button:hover {
   overflow: auto;
 }
 
-#routeOptions p { min-height: 24px; }
+#routeOptions p { min-height: 24px; text-align: left; }
 
-#routePath { margin-bottom: 10px; }
+#routePath { margin-bottom: 10px; text-align: left; }
 
 #routePath .item {
   position: relative;
