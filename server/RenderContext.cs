@@ -1385,21 +1385,19 @@ namespace Maps.Rendering
                     solidBrush.Color = styles.microBorders.textColor;
                     foreach (Border border in sector.Borders.Where(border => border.ShowLabel))
                     {
-                        Allegiance alleg = sector.GetAllegianceFromCode(border.Allegiance);
-                        if (alleg != null || !string.IsNullOrEmpty(border.Label))
-                        {
-                            string text = border.Label ?? alleg.Name;
-                            Hex labelHex = border.LabelPosition;
-                            PointF labelPos = Astrometrics.HexToCenter(Astrometrics.LocationToCoordinates(new Location(sector.Location, labelHex)));
-                            // TODO: Replace these with, well, positions!
-                            //labelPos.X -= 0.5f;
-                            //labelPos.Y -= 0.5f;
+                        string label = border.GetLabel(sector);
+                        if (label == null)
+                            continue;
+                        Hex labelHex = border.LabelPosition;
+                        PointF labelPos = Astrometrics.HexToCenter(Astrometrics.LocationToCoordinates(new Location(sector.Location, labelHex)));
+                        // TODO: Replace these with, well, positions!
+                        //labelPos.X -= 0.5f;
+                        //labelPos.Y -= 0.5f;
 
-                            if (border.WrapLabel)
-                                text = WRAP_REGEX.Replace(text, "\n");
+                        if (border.WrapLabel)
+                            label = WRAP_REGEX.Replace(label, "\n");
 
-                            RenderUtil.DrawLabel(graphics, text, labelPos, styles.microBorders.Font, solidBrush, styles.microBorders.textStyle);
-                        }
+                        RenderUtil.DrawLabel(graphics, label, labelPos, styles.microBorders.Font, solidBrush, styles.microBorders.textStyle);
                     }
 
                     foreach (Label label in sector.Labels)

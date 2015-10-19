@@ -139,7 +139,7 @@ namespace Maps.Admin
             Write(context.Response, "Summary:");
             using (var connection = DBUtil.MakeConnection())
             {
-                foreach (string table in new string[] { "sectors", "subsectors", "worlds" })
+                foreach (string table in new string[] { "sectors", "subsectors", "worlds", "labels" })
                 {
                     string sql = string.Format("SELECT COUNT(*) FROM {0}", table);
                     using (var command = new SqlCommand(sql, connection))

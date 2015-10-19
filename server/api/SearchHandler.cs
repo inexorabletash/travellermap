@@ -111,6 +111,7 @@ namespace Maps.API.Results
         [XmlElement(ElementName = "world", Type = typeof(WorldResult))]
         [XmlElement(ElementName = "subsector", Type = typeof(SubsectorResult))]
         [XmlElement(ElementName = "sector", Type = typeof(SectorResult))]
+        [XmlElement(ElementName = "label", Type = typeof(LabelResult))]
 
         public List<Item> Items { get; }
 
@@ -153,6 +154,20 @@ namespace Maps.API.Results
         [XmlRoot(ElementName = "sector")]
         public class SectorResult : Item
         {
+        }
+
+        [JsonName("Label")]
+        [XmlRoot(ElementName = "Label")]
+        public class LabelResult : Item
+        {
+            [XmlAttribute("hexX")]
+            public int HexX { get; set; }
+
+            [XmlAttribute("hexY")]
+            public int HexY { get; set; }
+
+            [XmlAttribute("radius")]
+            public double Scale { get; set; }
         }
 
         public abstract class Item
@@ -233,7 +248,28 @@ namespace Maps.API.Results
                 return r;
             }
 
-            return null;
+            if (location is LabelLocation)
+            {
+                LabelLocation label = location as LabelLocation;
+                Location l = Astrometrics.CoordinatesToLocation(label.Coords);
+                Sector sector = label.Resolve(map);
+
+                LabelResult r = new LabelResult();
+                r.Name = label.Label;
+                r.SectorX = l.Sector.X;
+                r.SectorY = l.Sector.Y;
+                r.HexX = l.Hex.X;;
+                r.HexY = l.Hex.Y;
+                r.Scale =
+                    label.Radius > 80 ? 4 :
+                    label.Radius > 40 ? 8 :
+                    label.Radius > 20 ? 32 : 64;
+                r.SectorTags = sector.TagString;
+
+                return r;
+            }
+
+            throw new ArgumentException(string.Format("Unexpected result type: {0}", location.GetType().Name), "location");
         }
     }
 }

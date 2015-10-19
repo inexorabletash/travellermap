@@ -723,7 +723,7 @@ namespace Maps
         [XmlAttribute]
         public string Allegiance { get; set; }
 
-        internal IEnumerable<Hex> Path { get { return path; }  }
+        internal IEnumerable<Hex> Path { get { return path; } }
         private List<Hex> path = new List<Hex>();
 
         internal Hex LabelPosition { get; set; }
@@ -788,6 +788,17 @@ namespace Maps
             return borderPathsCache[(int)type];
         }
 
+        public string GetLabel(Sector sector)
+        {
+            if (!ShowLabel)
+                return null;
+            if (!string.IsNullOrEmpty(Label))
+                return Label;
+            Allegiance alleg = sector.GetAllegianceFromCode(Allegiance);
+            if (alleg == null)
+                return null;
+            return alleg.Name;
+        }
     }
 
     public enum LineStyle

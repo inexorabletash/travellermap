@@ -737,6 +737,15 @@ window.addEventListener('DOMContentLoaded', function() {
           scale = world.Scale || 64;
           world.href = Util.makeURL(base_url, {scale: scale, sx: sx, sy: sy, hx: hx, hy: hy});
           applyTags(world);
+        } else if (item.Label) {
+          var label = item.Label;
+          sx = label.SectorX | 0;
+          sy = label.SectorY | 0;
+          hx = label.HexX | 0;
+          hy = label.HexY | 0;
+          scale = label.Scale || 64;
+          label.href = Util.makeURL(base_url, { scale: scale, sx: sx, sy: sy, hx: hx, hy: hy });
+          applyTags(label);
         }
       }
 

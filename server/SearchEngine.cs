@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
 using System.Web;
-using System.IO;
 using System.Text.RegularExpressions;
 
 namespace Maps
@@ -21,8 +21,6 @@ namespace Maps
         }
     }
 
-
-
     /// <summary>
     /// Summary description for SearchEngine.
     /// </summary>
@@ -34,12 +32,18 @@ namespace Maps
             Sectors = 0x0001,
             Subsectors = 0x0002,
             Worlds = 0x0004,
-            Default = Sectors | Subsectors | Worlds
+            Labels = 0x0008,
+            Default = Sectors | Subsectors | Worlds | Labels
         }
 
         public delegate void StatusCallback(string status);
 
         private static object s_lock = new object();
+
+        private static string SanifyLabel(string s)
+        {
+            return Regex.Replace(s.Trim(), @"\s+", " ");
+        }
 
         public static void PopulateDatabase(ResourceManager resourceManager, StatusCallback callback)
         {
@@ -72,6 +76,19 @@ namespace Maps
                     for (int i = 0; i < 13; ++i)
                         dt_worlds.Columns.Add(new DataColumn());
 
+                    DataTable dt_labels = new DataTable();
+                    for (int i = 0; i < 4; ++i)
+                        dt_labels.Columns.Add(new DataColumn());
+
+                    Dictionary<string, List<Point>> labels = new Dictionary<string, List<Point>>();
+                    Action<string, Point> AddLabel = (string text, Point coords) => {
+                        if (text == null) return;
+                        text = SanifyLabel(text);
+                        if (!labels.ContainsKey(text))
+                            labels.Add(text, new List<Point>());
+                        labels[text].Add(coords);
+                    };
+
                     callback("Parsing data...");
                     foreach (Sector sector in map.Sectors)
                     {
@@ -85,12 +102,22 @@ namespace Maps
                             dt_sectors.Rows.Add(row);
                         }
 
-
                         foreach (Subsector subsector in sector.Subsectors)
                         {
                             DataRow row = dt_subsectors.NewRow();
                             row.ItemArray = new object[] { sector.X, sector.Y, subsector.Index, subsector.Name };
                             dt_subsectors.Rows.Add(row);
+                        }
+
+                        foreach (Border border in sector.Borders.Where(b => b.ShowLabel))
+                        {
+                            AddLabel(border.GetLabel(sector), 
+                                Astrometrics.LocationToCoordinates(new Location(sector.Location, border.LabelPosition)));
+                        }
+
+                        foreach (Label label in sector.Labels)
+                        {
+                            AddLabel(label.Text, Astrometrics.LocationToCoordinates(new Location(sector.Location, label.Hex)));
                         }
 
 #if DEBUG
@@ -128,6 +155,28 @@ namespace Maps
                         }
                     }
 
+                    foreach (KeyValuePair<string, List<Point>> entry in labels)
+                    {
+                        string name = entry.Key;
+                        List<Point> points = entry.Value;
+
+                        Point avg = new Point(
+                            (int)Math.Round(points.Select(p => p.X).Average()),
+                            (int)Math.Round(points.Select(p => p.Y).Average()));
+                        Point min = new Point(points.Select(p => p.X).Min(), points.Select(p => p.Y).Min());
+                        Point max = new Point(points.Select(p => p.X).Max(), points.Select(p => p.Y).Max());
+                        Size size = new Size(max.X - min.X, max.Y - min.Y);
+                        int radius = Math.Max(size.Width, size.Height);
+
+                        DataRow row = dt_labels.NewRow();
+                        row.ItemArray = new object[] {
+                            avg.X,
+                            avg.Y,
+                            radius,
+                            entry.Key
+                        };
+                        dt_labels.Rows.Add(row);
+                    }
 
                     //
                     // Rebuild the tables with fresh schema
@@ -135,16 +184,18 @@ namespace Maps
 
                     const string INDEX_OPTIONS = " WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON)";
 
+                    const string DROP_TABLE_IF_EXISTS = "IF EXISTS(SELECT 1 FROM sys.objects WHERE OBJECT_ID = OBJECT_ID(N'{0}') AND type = (N'U')) DROP TABLE {0}";
+
                     string[] rebuild_schema = {
-                        "IF EXISTS(SELECT 1 FROM sys.objects WHERE OBJECT_ID = OBJECT_ID(N'sectors') AND type = (N'U')) DROP TABLE sectors",
+                        string.Format(DROP_TABLE_IF_EXISTS, "sectors"),
                         "CREATE TABLE sectors (x int NOT NULL, y int NOT NULL, name nvarchar(50) NULL)",
                         "CREATE NONCLUSTERED INDEX sector_name ON sectors ( name ASC )" + INDEX_OPTIONS,
 
-                        "IF EXISTS(SELECT 1 FROM sys.objects WHERE OBJECT_ID = OBJECT_ID(N'subsectors') AND type = (N'U')) DROP TABLE subsectors",
+                        string.Format(DROP_TABLE_IF_EXISTS, "subsectors"),
                         "CREATE TABLE subsectors (sector_x int NOT NULL, sector_y int NOT NULL, subsector_index char(1) NOT NULL, name nvarchar(50) NULL)",
                         "CREATE NONCLUSTERED INDEX subsector_name ON subsectors ( name ASC )" + INDEX_OPTIONS,
 
-                        "IF EXISTS(SELECT 1 FROM sys.objects WHERE OBJECT_ID = OBJECT_ID(N'worlds') AND type = (N'U')) DROP TABLE worlds",
+                        string.Format(DROP_TABLE_IF_EXISTS, "worlds"),
                         "CREATE TABLE worlds ("
                             + "x int NOT NULL, "
                             + "y int NOT NULL, "
@@ -164,6 +215,10 @@ namespace Maps
                         "CREATE NONCLUSTERED INDEX world_pbg ON worlds ( pbg ASC )" + INDEX_OPTIONS,
                         "CREATE NONCLUSTERED INDEX world_alleg ON worlds ( alleg ASC )" + INDEX_OPTIONS,
                         "CREATE NONCLUSTERED INDEX world_sector_name ON worlds ( sector_name ASC )" + INDEX_OPTIONS,
+
+                        string.Format(DROP_TABLE_IF_EXISTS, "labels"),
+                        "CREATE TABLE labels (x int NOT NULL, y int NOT NULL, radius int NOT NULL, name nvarchar(50) NULL)",
+                        "CREATE NONCLUSTERED INDEX name ON labels ( name ASC )" + INDEX_OPTIONS,
                     };
 
                     callback("Rebuilding schema...");
@@ -176,27 +231,20 @@ namespace Maps
                     //
                     // And shovel the data into the database en masse
                     //
-                    using (var bulk = new SqlBulkCopy(connection, SqlBulkCopyOptions.TableLock, null))
-                    {
-                        callback(string.Format("Writing {0} sectors...", dt_sectors.Rows.Count));
-                        bulk.BatchSize = dt_sectors.Rows.Count;
-                        bulk.DestinationTableName = "sectors";
-                        bulk.WriteToServer(dt_sectors);
-                    }
-                    using (var bulk = new SqlBulkCopy(connection, SqlBulkCopyOptions.TableLock, null))
-                    {
-                        callback(string.Format("Writing {0} subsectors...", dt_subsectors.Rows.Count));
-                        bulk.BatchSize = dt_subsectors.Rows.Count;
-                        bulk.DestinationTableName = "subsectors";
-                        bulk.WriteToServer(dt_subsectors);
-                    }
-                    using (var bulk = new SqlBulkCopy(connection, SqlBulkCopyOptions.TableLock, null))
-                    {
-                        callback(string.Format("Writing {0} worlds...", dt_worlds.Rows.Count));
-                        bulk.BatchSize = 4096;
-                        bulk.DestinationTableName = "worlds";
-                        bulk.WriteToServer(dt_worlds);
-                    }
+                    Action<string, DataTable, int> BulkInsert = (string name, DataTable table, int batchSize) => {
+                        using (var bulk = new SqlBulkCopy(connection, SqlBulkCopyOptions.TableLock, null))
+                        {
+                            callback(string.Format("Writing {0} {1}...", table.Rows.Count, name));
+                            bulk.BatchSize = batchSize;
+                            bulk.DestinationTableName = name;
+                            bulk.WriteToServer(table);
+                        }
+                    };
+
+                    BulkInsert("sectors", dt_sectors, dt_sectors.Rows.Count);
+                    BulkInsert("subsectors", dt_subsectors, dt_subsectors.Rows.Count);
+                    BulkInsert("worlds", dt_worlds, 4096);
+                    BulkInsert("labels", dt_labels, dt_labels.Rows.Count);
                 }
                 callback("Complete!");
             }
@@ -283,6 +331,26 @@ namespace Maps
                         {
                             while (row.Read())
                                 results.Add(new WorldLocation(row.GetInt32(0), row.GetInt32(1), (byte)row.GetInt32(2), (byte)row.GetInt32(3)));
+                        }
+                    }
+                }
+
+                // Labels
+                if (types.HasFlag(SearchResultsType.Labels))
+                {
+                    // Note duplicated field names so the results of both queries can come out right.
+                    string sql = string.Format(query_format, "TT.x, TT.y, TT.radius, TT.name", "x, y, radius, name", "labels", where);
+                    using (var sqlCommand = new SqlCommand(sql, connection))
+                    {
+                        for (int i = 0; i < terms.Count; ++i)
+                            sqlCommand.Parameters.AddWithValue(string.Format("@term{0}", i), terms[i]);
+
+                        using (var row = sqlCommand.ExecuteReader())
+                        {
+                            while (row.Read())
+                            {
+                                results.Add(new LabelLocation(row.GetString(3), new Point(row.GetInt32(0), row.GetInt32(1)), row.GetInt32(2)));
+                            }
                         }
                     }
                 }

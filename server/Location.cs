@@ -60,7 +60,10 @@ namespace Maps
         public static readonly Location Empty = new Location();
     }
 
-    [XmlInclude(typeof(WorldLocation)), XmlInclude(typeof(SubsectorLocation)), XmlInclude(typeof(SectorLocation))]
+    [XmlInclude(typeof(WorldLocation)),
+     XmlInclude(typeof(SubsectorLocation)),
+     XmlInclude(typeof(SectorLocation)),
+     XmlInclude(typeof(LabelLocation))]
     internal abstract class ItemLocation
     {
     }
@@ -170,5 +173,30 @@ namespace Maps
 
             return sectorMap.FromLocation(SectorCoords.X, SectorCoords.Y);
         }
+    }
+
+    internal class LabelLocation : ItemLocation
+    {
+        public LabelLocation() { }
+
+        public LabelLocation(string label, Point coords, int radius)
+        {
+            Label = label;
+            Coords = coords;
+            Radius = radius;
+        }
+
+        public string Label { get; set; }
+        public Point Coords { get; set; }
+        public int Radius { get; set; }
+
+        public Sector Resolve(SectorMap sectorMap)
+        {
+            if (sectorMap == null)
+                throw new ArgumentNullException("sectorMap");
+
+            return sectorMap.FromLocation(Astrometrics.CoordinatesToLocation(Coords).Sector);
+        }
+
     }
 }

@@ -124,18 +124,28 @@
             {{#Unofficial}}<span class="item-status">(Unofficial)</span>{{/Unofficial}}
           </div>
           {{#Title}}<div class="item-title">{{.}}</div>{{/Title}}
-          {{/Subsector}}
+        {{/Subsector}}
         {{#Sector}}
-          <div class="item-main"><a title="Navigate to {{Name}}" href="{{href}}" onclick="{{onclick}}">{{Name}}</a></div>
-          <div class="item-location">
+        <div class="item-main"><a title="Navigate to {{Name}}" href="{{href}}" onclick="{{onclick}}">{{Name}}</a></div>
+        <div class="item-location">
             Sector
             {{#InReview}}<span class="item-status">(In Review)</span>{{/InReview}}
             {{#Unreviewed}}<span class="item-status">(Unreviewed)</span>{{/Unreviewed}}
             {{#Apocryphal}}<span class="item-status">(Apocryphal)</span>{{/Apocryphal}}
             {{#Unofficial}}<span class="item-status">(Unofficial)</span>{{/Unofficial}}
-          </div>
-          {{#Title}}<div class="item-title">{{.}}</div>{{/Title}}
+        </div>
+        {{#Title}}<div class="item-title">{{.}}</div>{{/Title}}
         {{/Sector}}
+        {{#Label}}
+        <div class="item-main"><a title="Navigate to {{Name}}" href="{{href}}" onclick="{{onclick}}">{{Name}}</a></div>
+        <div class="item-location">
+            {{#InReview}}<span class="item-status">(In Review)</span>{{/InReview}}
+            {{#Unreviewed}}<span class="item-status">(Unreviewed)</span>{{/Unreviewed}}
+            {{#Apocryphal}}<span class="item-status">(Apocryphal)</span>{{/Apocryphal}}
+            {{#Unofficial}}<span class="item-status">(Unofficial)</span>{{/Unofficial}}
+        </div>
+        {{#Title}}<div class="item-title">{{.}}</div>{{/Title}}
+        {{/Label}}
       </div>
       {{/Results.Items}}
       {{^Results.Items}}
