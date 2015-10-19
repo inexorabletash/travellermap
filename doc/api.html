@@ -83,7 +83,7 @@ table#features, #features th, #features td { border: solid 1px black; }
                 <li><a href="#metadata">Metadata</a> &ndash; retrieve sector metadata
                 <li><a href="#msec">MSEC</a> &ndash; retrieve <cite>sec2pdf</cite>-compatible sector metadata
                 <li><a href="#jumpworlds">Jump Worlds</a> &ndash; return a list of worlds reachable by Jump-N
-                <li><a href="#search">Search</a> &ndash; search for worlds, subsectors or sectors by name
+                <li><a href="#search">Search</a> &ndash; search for worlds, subsectors, sectors or regions by name
                 <li><a href="#route">Route</a> &ndash; find jump routes between worlds
                 <li><a href="#universe">Universe</a> &ndash; return a list of sectors, optionally filtered by era
                 <li><a href="#t5ss">T5SS</a> &ndash; access stock data - allegiance codes, sophont codes
@@ -921,7 +921,7 @@ table#features, #features th, #features td { border: solid 1px black; }
   </section>
 
   <section id="search">
-    <h3>Search &ndash; find worlds, subsectors or sectors by name (or UWP) using free text search</h3>
+    <h3>Search &ndash; find worlds, subsectors, sectors or regions by name (or UWP) using free text search</h3>
     <h4>API URLs:</h4>
     <p class="code">
         http://travellermap.com/api/search?q=<var>QUERY</var>
@@ -934,7 +934,8 @@ table#features, #features th, #features td { border: solid 1px black; }
 
     <h4>Notes:</h4>
     <ul>
-        <li>Perform a search of names for matching sectors, subsectors and worlds.
+        <li>Perform a search of names for matching sectors, subsectors, worlds
+          and labeled regions.
         <li>All searches are <em>case-insensitive</em>.
         <li>By default, only matches at the start of names or after spaces are returned. So "<code>sol</code>" will match "Sol", "Solomani Rim" and "Nowa Sol" but not "Marsol"
         <li>Wildcards:
