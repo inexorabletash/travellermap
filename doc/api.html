@@ -1663,9 +1663,10 @@ function jsonp_demo() {
     });
 
     // Allow breaking after / in examples
-    Array.from(document.querySelectorAll('.code')).forEach(function (p) {
-      p.innerText = p.innerText.replace(/([/?&])/g, '$1\u200B');
-    });
+    //Array.from(document.querySelectorAll('.code')).forEach(function (e) {
+      // TODO: Insert <wbr> tags after '/'s in text nodes
+      // (Inserted ZWJs show up when copied.)
+    //});
   }());
 </script>
 
