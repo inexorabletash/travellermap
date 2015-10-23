@@ -1662,11 +1662,33 @@ function jsonp_demo() {
       a.appendChild(document.createTextNode(a.href));
     });
 
-    // Allow breaking after / in examples
-    //Array.from(document.querySelectorAll('.code')).forEach(function (e) {
-      // TODO: Insert <wbr> tags after '/'s in text nodes
-      // (Inserted ZWJs show up when copied.)
-    //});
+    // Allow breaking after / ? and & in code
+    Array.from(document.querySelectorAll('.code')).forEach(function (e) {
+      function textNodes(e) {
+        var t = [];
+        for (var n = e.firstChild; n; n = n.nextSibling) {
+          switch (n.nodeType) {
+            case Node.TEXT_NODE:
+              t.push(n); break;
+            case Node.ELEMENT_NODE:
+            case Node.DOCUMENT_NODE:
+            case Node.DOCUMENT_FRAGMENT_NODE:
+              t = t.concat(textNodes(n)); break;
+          }
+        }
+        return t;
+      }
+
+      // Inserted ZWJs show up when copied, so insert <wbr>
+      textNodes(e).forEach(function(t) {
+        while (true) {
+          var m = /[/?&]+/.exec(t.nodeValue);
+          if (!m) break;
+          t = t.splitText(m.index + m[0].length);
+          t.parentNode.insertBefore(document.createElement('wbr'), t);
+        }
+      });
+    });
   }());
 </script>
 
