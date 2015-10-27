@@ -799,6 +799,7 @@ namespace Maps.Rendering
         public string preferredMimeType;
         public bool t5AllegianceCodes;
 
+        public bool showDroyneWorlds;
 
         // Worlds
         public StyleElement worlds;
@@ -939,7 +940,6 @@ namespace Maps.Rendering
             float value = minValue + (maxValue - minValue) * p;
             return (int)Math.Round(value);
         }
-
     }
 
     internal class FontCache : IDisposable

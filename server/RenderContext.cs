@@ -586,6 +586,35 @@ namespace Maps.Rendering
                 // Overlays
                 //------------------------------------------------------------
 
+                #region droyne
+                //------------------------------------------------------------
+                // Droyne/Chirper Worlds
+                //------------------------------------------------------------
+                if (styles.showDroyneWorlds)
+                {
+                    solidBrush.Color = styles.worlds.textColor;
+                    foreach (World world in selector.Worlds)
+                    {
+                        bool droyne = world.HasCodePrefix("Droy") != null;
+                        bool chirpers = world.HasCodePrefix("Chir") != null;
+                        if (droyne || chirpers)
+                        {
+                            string glyph = droyne ? "\u2605" : "\u2606";
+                            PointF center = Astrometrics.HexToCenter(world.Coordinates);
+                            using (RenderUtil.SaveState(graphics))
+                            {
+                                XMatrix matrix = new XMatrix();
+                                matrix.TranslatePrepend(center.X, center.Y);
+                                matrix.ScalePrepend(1 / Astrometrics.ParsecScaleX, 1 / Astrometrics.ParsecScaleY);
+                                graphics.MultiplyTransform(matrix, XMatrixOrder.Prepend);
+                                graphics.DrawString(glyph, styles.sectorName.Font, solidBrush, 0, 0, RenderUtil.StringFormatCentered);
+                            }
+                        }
+                    }
+                }
+                timers.Add(new Timer("droyne"));
+                #endregion
+
                 #region unofficial
                 //------------------------------------------------------------
                 // Unofficial

@@ -1732,7 +1732,7 @@ var Util = {
         });
     }
 
-    ['silly', 'routes', 'dimunofficial', 'ew'].forEach(function(name) {
+    ['silly', 'routes', 'dimunofficial', 'ew', 'dw'].forEach(function(name) {
       if (name in params)
         self.tileOptions[name] = int(name);
     });

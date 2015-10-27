@@ -50,6 +50,7 @@ namespace Maps.API
                 }
 
                 ctx.Styles.dimUnofficialSectors = GetBoolOption("dimunofficial", queryDefaults: queryDefaults, defaultValue: false);
+                ctx.Styles.showDroyneWorlds = GetBoolOption("dw", queryDefaults: queryDefaults, defaultValue: false);
 
                 double devicePixelRatio = GetDoubleOption("dpr", defaultValue: 1, queryDefaults: queryDefaults);
                 if (devicePixelRatio <= 0)
