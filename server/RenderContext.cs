@@ -62,7 +62,7 @@ namespace Maps.Rendering
         private static readonly Rectangle galaxyImageRect = new Rectangle(-18257, -26234, 36551, 32462); // Chosen to match T5 pp.416
 
         // This transforms the Linehan galactic structure to the Mikesh galactic structure
-        // See http://travellermap.blogspot.com/2009/03/galaxy-scale-mismatch.html
+        // See https://travellermap.blogspot.com/2009/03/galaxy-scale-mismatch.html
         private static readonly Matrix xformLinehanToMikesh = new Matrix(0.9181034f, 0.0f, 0.0f, 0.855192542f, 120.672432f, 86.34569f);
 
         private static readonly Rectangle riftImageRect = new Rectangle(-1374, -827, 2769, 1754);
@@ -159,7 +159,7 @@ namespace Maps.Rendering
                 this.dt = DateTime.Now;
                 this.label = label;
             }
-#else 
+#else
             public Timer(string label) { }
 #endif
         }

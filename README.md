@@ -1,7 +1,7 @@
 The Traveller Map - Source Code
 ================================
 
-This is the source code behind http://travellermap.com - an online resource for fans
+This is the source code behind https://travellermap.com - an online resource for fans
 of the Traveller role playing game.
 
 The Traveller game in all forms is owned by Far Future Enterprises.
@@ -13,16 +13,14 @@ See LICENSE.md for software licensing details.
 Useful Links
 ------------
 
-* The site itself: http://travellermap.com
-* How the site works: http://travellermap.com/doc/about
-* API documentation: http://travellermap.com/doc/api
-* Credits for the data: http://travellermap.com/doc/credits
-* Blog: http://travellermap.blogspot.com
+* The site itself: https://travellermap.com
+* How the site works: https://travellermap.com/doc/about
+* API documentation: https://travellermap.com/doc/api
+* Credits for the data: https://travellermap.com/doc/credits
+* Blog: https://travellermap.blogspot.com
 * GitHub repo: https://github.com/inexorabletash/travellermap
-* TODO list/bug tracking: https://trello.com/b/y61wmEKJ/travellermap-com-wish-list
-
-Now that the source is on GitHub, issue tracking can migrate for simple items
-although the Trello board is nicer for organizing wishlists.
+* Issue tracker: https://github.com/inexorabletash/travellermap/issues
+* Wish List: https://trello.com/b/y61wmEKJ/travellermap-com-wish-list
 
 
 Dependencies

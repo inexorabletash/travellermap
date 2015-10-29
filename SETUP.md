@@ -1,7 +1,7 @@
 The Traveller Map - Setup Guide
 ================================
 
-This is the setup guide to source code behind http://travellermap.com - an online resource for fans
+This is the setup guide to source code behind https://travellermap.com - an online resource for fans
 of the Traveller role playing game.
 
 This guide assumes basic familiarity with using Visual Studio projects and the Git source control system.
@@ -9,7 +9,7 @@ This guide assumes basic familiarity with using Visual Studio projects and the G
 Prerequisites
 -------------
 * Windows 7 or later
-* [Visual Studio Express 2012 for Web](http://www.microsoft.com/visualstudio/eng/products/visual-studio-express-for-web) or the equivalent
+* [Visual Studio 2015 Community Edition](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx) or the equivalent
 * Git for Windows Windows - options include
 [msysgit](https://code.google.com/p/msysgit/),
 [TortoiseGit](https://code.google.com/p/tortoisegit/) (a GUI wrapper around msysgit)

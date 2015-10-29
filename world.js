@@ -533,10 +533,6 @@
     if ('nopage' in query)
       document.body.classList.add('nopage');
 
-    var prefix = (window.location.hostname === 'localhost'
-                  && window.location.pathname.indexOf('~') !== -1) ?
-          'http://travellermap.com' : '';
-
     var coords;
     if ('sector' in query && 'hex' in query)
       coords = {sector: query.sector, hex: query.hex};
@@ -546,12 +542,12 @@
       coords = {sector: 'spin', hex: '1910'};
 
     Promise.all([
-      fetch(Util.makeURL(prefix + '/api/coordinates?', coords))
+      fetch(Traveller.MapService.makeURL('/api/coordinates?', coords))
         .then(function(response) {
           if (!response.ok) throw Error(response.statusText);
           return response.json();
         }),
-      fetch(Util.makeURL(prefix + '/t5ss/sophonts'))
+      fetch(Traveller.MapService.makeURL('/t5ss/sophonts'))
         .then(function(response) {
           if (!response.ok) throw Error(response.statusText);
           return response.json();
@@ -569,7 +565,8 @@
 
       var promises = [];
       promises.push(
-        fetch(Util.makeURL(prefix + '/api/jumpworlds?', {x: coords.x, y: coords.y, jump: 0}))
+        fetch(Traveller.MapService.makeURL('/api/jumpworlds?',
+                                           {x: coords.x, y: coords.y, jump: 0}))
           .then(function(response) {
             if (!response.ok) throw Error(response.statusText);
             return response.json();
@@ -579,7 +576,8 @@
           }));
 
       if (!('nopage' in query)) promises.push(
-        fetch(Util.makeURL(prefix + '/api/jumpworlds?', {x: coords.x, y: coords.y, jump: JUMP}))
+        fetch(Traveller.MapService.makeURL('/api/jumpworlds?',
+                                           {x: coords.x, y: coords.y, jump: JUMP}))
           .then(function(response) {
             return response.json();
           })
@@ -596,7 +594,7 @@
               border: 0};
             if (window.devicePixelRatio > 1)
               mapParams.dpr = window.devicePixelRatio;
-            $('#jumpmap').src = Util.makeURL(prefix + '/api/jumpmap?', mapParams);
+            $('#jumpmap').src = Traveller.MapService.makeURL('/api/jumpmap?', mapParams);
 
             $('#jumpmap').addEventListener('click', function(event) {
               var result = jmapToCoords(event, JUMP, SCALE, coords.x, coords.y);
