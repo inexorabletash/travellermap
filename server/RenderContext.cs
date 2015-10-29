@@ -590,9 +590,9 @@ namespace Maps.Rendering
                 //------------------------------------------------------------
                 // Droyne/Chirper Worlds
                 //------------------------------------------------------------
-                if (styles.showDroyneWorlds)
+                if (styles.droyneWorlds.visible)
                 {
-                    solidBrush.Color = styles.worlds.textColor;
+                    solidBrush.Color = styles.droyneWorlds.textColor;
                     foreach (World world in selector.Worlds)
                     {
                         bool droyne = world.HasCodePrefix("Droy") != null;
@@ -607,7 +607,7 @@ namespace Maps.Rendering
                                 matrix.TranslatePrepend(center.X, center.Y);
                                 matrix.ScalePrepend(1 / Astrometrics.ParsecScaleX, 1 / Astrometrics.ParsecScaleY);
                                 graphics.MultiplyTransform(matrix, XMatrixOrder.Prepend);
-                                graphics.DrawString(glyph, styles.sectorName.Font, solidBrush, 0, 0, RenderUtil.StringFormatCentered);
+                                graphics.DrawString(glyph, styles.droyneWorlds.Font, solidBrush, 0, 0, RenderUtil.StringFormatCentered);
                             }
                         }
                     }
