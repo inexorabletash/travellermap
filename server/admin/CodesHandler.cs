@@ -80,6 +80,8 @@ namespace Maps.Admin
             { @"^(" + string.Join("|", SecondSurvey.SophontCodes) + @")(\d|W|\?)$", "(sophont)" },
 
             { @"^Mr\((" + string.Join("|", SecondSurvey.AllegianceCodes) + @")\)$", "(military rule)" },
+
+            { @"^{.*}$", "(comment)" }
         };
             
         protected override void Process(System.Web.HttpContext context)
