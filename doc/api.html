@@ -58,52 +58,9 @@ table#features, #features th, #features td { border: solid 1px black; }
     </p>
 
 
-  <section id="contents">
-    <h3>Contents</h3>
-    <ul>
-        <li>
-            Common Concepts
-            <ul>
-                <li><a href="#urls">Functional APIs vs. Semantic Data URLs</a>
-                <li><a href="#options">Rendering Options and Styles</a> &ndash; used by many APIs
-            </ul>
 
-        <li>HTML APIs
-            <ul>
-                <li><a href="#query">Query Parameters</a> &ndash; for the main page
-                <li><a href="#go">Go Links</a> &ndash; short URLs for navigating the main page
-                <li><a href="#iframe">IFRAME</a> &ndash; embed a draggable, zoomable map in your page
-            </ul>
-
-        <li>Data APIs
-            <ul>
-                <li><a href="#coordinates">Coordinates</a> &ndash; look up sector coordinates by name
-                <li><a href="#credits">Credits</a> &ndash; get world data and metadata by location
-                <li><a href="#sec">SEC</a> &ndash; retrieve sector data
-                <li><a href="#metadata">Metadata</a> &ndash; retrieve sector metadata
-                <li><a href="#msec">MSEC</a> &ndash; retrieve <cite>sec2pdf</cite>-compatible sector metadata
-                <li><a href="#jumpworlds">Jump Worlds</a> &ndash; return a list of worlds reachable by Jump-N
-                <li><a href="#search">Search</a> &ndash; search for worlds, subsectors, sectors or regions by name
-                <li><a href="#route">Route</a> &ndash; find jump routes between worlds
-                <li><a href="#universe">Universe</a> &ndash; return a list of sectors, optionally filtered by era
-                <li><a href="#t5ss">T5SS</a> &ndash; access stock data - allegiance codes, sophont codes
-            </ul>
-
-        <li>Image APIs
-            <ul>
-                <li><a href="#poster">Poster</a> &ndash; render an image of a sector, quadrant or subsector
-                <li><a href="#jumpmap">Jump Map</a> &ndash; render a map of worlds reachable by Jump-N
-                <li><a href="#tile">Tile</a> &ndash; render an arbitrary rectangle of space to an image
-            </ul>
-
-        <li>Appendices
-            <ul>
-                <li><a href="#systems">Coordinate Systems</a> &ndash; what the x and y parameters mean in different APIs
-                <li><a href="#jsonp">JSONP</a> &ndash; How to use data from this in your web pages
-            </ul>
-
-    </ul>
-  </section>
+  <section>
+    <h2>Common Concepts</h2>
 
   <section id="urls">
     <h3>Functional APIs vs. Semantic Data URLs</h3>
@@ -194,7 +151,7 @@ table#features, #features th, #features td { border: solid 1px black; }
     </section>
 
   <section id="options">
-    <h3>Rendering Options and Styles &ndash; visual appearance of the map</h3>
+    <h3>Rendering Options and Styles</h3>
     <p>
         All of the APIs that produce images (<a href="#poster">Poster</a>, <a href="#jumpmap">Jump Map</a>,
         <a href="#tile">Tile</a>) as well as the site itself (including <a href="#iframe">IFRAME</a>) take
@@ -411,6 +368,7 @@ table#features, #features th, #features td { border: solid 1px black; }
       sense.</dd>
     </dl>
   </section>
+  </section>
 
   <section id="html-apis" class="apis">
     <h2>HTML APIs</h2>
@@ -550,11 +508,11 @@ table#features, #features th, #features td { border: solid 1px black; }
           will posted to the containing page. The <code>data</code> element of the
           event will have the form:
           <pre class="code">
-{"source": "travellermap", "type": "click", "location": {"x": 19: "y": 10}}
+{source: "travellermap", type: "click", location: {x: 19: y: 10}}
           </pre>
           or:
           <pre class="code">
-{"source": "travellermap", "type": "doubleclick", "location": {"x": 19: "y": 10}}
+{source: "travellermap", type: "doubleclick", location: {x: 19: y: 10}}
           </pre>
     </ul>
 
@@ -595,6 +553,8 @@ table#features, #features th, #features td { border: solid 1px black; }
         <dt>sy <dd>sector in <a href="#system_sectorhex">sector/hex coordinates</a>
         <dt>hx
         <dt>hy <dd>hex in <a href="#system_sectorhex">sector/hex coordinates</a>
+        <dt>x
+        <dt>y <dd>location in <a href="#system_world">world-space coordinates</a>
     </dl>
 
     <h4>Notes:</h4>
@@ -619,7 +579,7 @@ table#features, #features th, #features td { border: solid 1px black; }
   </section>
 
   <section id="credits">
-    <h3>Credits &ndash; get world data and metadata (attributions, etc) for a given location</h3>
+    <h3>Credits &ndash; get world data for a given location</h3>
     <h4>API URLs:</h4>
     <p class="code">
         http://travellermap.com/api/credits?sector=<var>sector</var>
@@ -827,7 +787,7 @@ table#features, #features th, #features td { border: solid 1px black; }
   </section>
 
   <section id="msec">
-    <h3>MSEC &ndash; generate sec2pdf compatible metadata for a sector</h3>
+    <h3>MSEC &ndash; generate sec2pdf metadata for a sector</h3>
     <h4>API URLs:</h4>
     <p class="code">http://travellermap.com/api/msec?sector=<var>sector</var></p>
     <p class="code">http://travellermap.com/api/msec?sx=<var>sx</var>&amp;sy=<var>sy</var></p>
@@ -854,7 +814,7 @@ table#features, #features th, #features td { border: solid 1px black; }
   </section>
 
   <section id="jumpworlds">
-    <h3>Jump Worlds &ndash; return a list of worlds within Jump-N from some location</h3>
+    <h3>Jump Worlds &ndash; return a list of worlds within N parsecs</h3>
     <h4>API URLs:</h4>
     <p class="code">
         http://travellermap.com/api/jumpworlds?x=<var>x</var>&amp;y=<var>y</var>
@@ -921,7 +881,7 @@ table#features, #features th, #features td { border: solid 1px black; }
   </section>
 
   <section id="search">
-    <h3>Search &ndash; find worlds, subsectors, sectors or regions by name (or UWP) using free text search</h3>
+    <h3>Search &ndash; find worlds or regions by name or attributes</h3>
     <h4>API URLs:</h4>
     <p class="code">
         http://travellermap.com/api/search?q=<var>QUERY</var>
@@ -1035,7 +995,7 @@ table#features, #features th, #features td { border: solid 1px black; }
   </section>
 
   <section id="universe">
-    <h3>Universe &ndash; return a list of all sectors, optionally filtered by era</h3>
+    <h3>Universe &ndash; return a list of all sectors</h3>
     <h4>API URLs:</h4>
     <p class="code">
         http://travellermap.com/api/universe
@@ -1106,7 +1066,7 @@ table#features, #features th, #features td { border: solid 1px black; }
   <section id="rendering-apis" class="apis">
     <h2>Rendering APIs</h2>
   <section id="tile">
-    <h3>Tile &ndash; render an image of an arbitrary rectangle of space at any size and scale</h3>
+    <h3>Tile &ndash; render an arbitrary rectangle of space</h3>
     <h4>API URLs:</h4>
     <p class="code">
         http://travellermap.com/api/tile?x=<var>x</var>&amp;y=<var>y</var>&amp;scale=<var>N</var>
@@ -1142,7 +1102,7 @@ table#features, #features th, #features td { border: solid 1px black; }
   </section>
 
   <section id="poster">
-<h3>Poster &ndash; render an image of a sector, quadrant or subsector</h3>
+<h3>Poster &ndash; render a sector, quadrant or subsector</h3>
 <h4>API URLs:</h4>
 <p class="code">
     http://travellermap.com/api/poster
@@ -1249,7 +1209,7 @@ table#features, #features th, #features td { border: solid 1px black; }
 </section>
 
   <section id="jumpmap">
-    <h3>Jump Map &ndash; render an image of hexes within Jump-N of some location</h3>
+    <h3>Jump Map &ndash; render hexes within N parsecs</h3>
     <h4>API URLs:</h4>
     <p class="code">
         http://travellermap.com/api/jumpmap?sector=<var>sector</var>&amp;hex=<var>hex</var>&amp;jump=<var>jump</var>
@@ -1394,7 +1354,7 @@ table#features, #features th, #features td { border: solid 1px black; }
   <h4>Sector/Hex Coordinates</h4>
   <p>
       Sector/Hex are the simplest numeric coordinates. These must be specified as a quartet of (sx, sy, hx, hy).
-      The Core sector is at (0,0), with positive x being Trailing and positive y being Rimward.
+      The Core sector is at (0, 0), with positive X being Trailing and positive Y being Rimward.
       Hex coordinates are 1...32 and 1...40. Note that hx and hy must be specified separately.
     </p>
   <p class="aside">
@@ -1404,8 +1364,7 @@ table#features, #features th, #features td { border: solid 1px black; }
       Use an appropriate parsing function with an explicit radix.</em>
   </p>
   <p>
-      The <a href="#coordinates">Coordinates API</a> will map a <code>sector</code> / <code>hex</code> pair
-    sector/hex name (such as "Spinward Marches", "1910")
+      The <a href="#coordinates">Coordinates API</a> will map a named <code>sector</code> / <code>hex</code> pair (such as "Spinward Marches", "1910")
       to the numeric quartet in this coordinate space.
       The <a href="#jumpmap">Jump Map API</a> and <a href="#credits">Credits API</a> accept these coordinates using
       <code>sx</code>, <code>sy</code>, <code>hx</code> and
@@ -1421,27 +1380,33 @@ table#features, #features th, #features td { border: solid 1px black; }
   <h4>World-Space Coordinates</h4>
   <p>
       World-space coordinates are more compact than Sector/Hex coordinates, requiring just two numbers. The
-      transformation is simple, and based around Reference (Core 0140). In this scheme, Reference is at 0,0,
-      positive x is Trailing and positive Y is Rimward. To convert Sector/Hex to world-space coordinates, simply
+      transformation is simple, and based around Reference (Core 0140). In this scheme, Reference is at (0, 0),
+      positive X is Trailing and positive Y is Rimward. To convert Sector/Hex to world-space coordinates, simply
       compute the distance to Reference:
   </p>
   <pre class="code">
-var REFERENCE_SECTOR_X = 0;
-var REFERENCE_SECTOR_Y = 0;
-var REFERENCE_HEX_X = 1;
-var REFERENCE_HEX_Y = 40;
 var SECTOR_WIDTH = 32;
 var SECTOR_HEIGHT = 40;
 
+// Core sector is (0, 0)
+var REFERENCE_SECTOR_X = 0;
+var REFERENCE_SECTOR_Y = 0;
+
+// Reference is Core 0140
+var REFERENCE_HEX_X = 1;
+var REFERENCE_HEX_Y = 40;
+
 function sectorHexToWorldXY(sx, sy, hx, hy) {
-  var x = ( ( sx - REFERENCE_SECTOR_X ) * SECTOR_WIDTH ) + ( hx - REFERENCE_HEX_X );
-  var y = ( ( sy - REFERENCE_SECTOR_Y ) * SECTOR_HEIGHT ) + ( hy - REFERENCE_HEX_Y );
+  var x = (sx - REFERENCE_SECTOR_X) * SECTOR_WIDTH
+        + (hx - REFERENCE_HEX_X);
+  var y = (sy - REFERENCE_SECTOR_Y) * SECTOR_HEIGHT
+        + (hy - REFERENCE_HEX_Y);
   return {x: x, y: y};
 }
   </pre>
   <p>
       This scheme is roughly comparable to the canonical <cite>Traveller</cite> ring/ray system, but
-      is far more convenient given that the origin is within charted space. This coordinate system is used by the
+      is far more convenient given that the origin is within Charted Space. This coordinate system is used by the
       <a href="#credits">Credits API</a> and the <a href="#jumpmap">Jump Map API</a>, which require selection of a
       specific hex. The coordinates are specified as <code>x</code> and <code>y</code> parameters
   </p>
@@ -1475,13 +1440,13 @@ function sectorHexToWorldXY(sx, sy, hx, hy) {
   <ul>
       <li>
           Account for "odd" hexes being further coreward than "even" hexes &ndash; i.e. hex 1910 is further coreward than hex 2010.
-          Also note that odd/even switch places between Sector/Hex and World-space since Reference is at 0140 and (0,0) respectively.
+          Also note that odd/even switch places between Sector/Hex and World-space since Reference is at 0140 and (0, 0) respectively.
 
       <li>
           Account for hexes being packed more tightly horizontally than vertically, at a ratio of cos(30&deg;):1, and the
-          y axis is inverted.
+          Y-axis is inverted.
 
-        <p class="aside">This is the only coordinate system with an inverted Y axis.
+        <p class="aside">This is the only coordinate system with an inverted Y-axis.
           I don't know what I was thinking. I must have been asleep at the keyboard.</p>
 
   </ul>
@@ -1513,8 +1478,8 @@ function worldXYToMapXY(world_x, world_y) {
   <p>
       Coordinates used by <a href="#tile">Tile API</a> are designed so that the basic operations
       of dragging the map around and requesting new tiles are as simple as possible. If the tile
-      scale, width and height remain constant, the tiles at (0,0) and (0,1) are adjacent, and
-      the origin is the same as map-space coordinates. Positive x is Trailing, positive y is Rimward.
+      scale, width and height remain constant, the tiles at (0, 0) and (0, 1) are adjacent, and
+      the origin is the same as map-space coordinates. Positive X is Trailing, positive Y is Rimward.
   </p>
   <pre class="code">
 x =  map_x * scale / width;
@@ -1525,7 +1490,7 @@ y = -map_y * scale / height;
       can be used. For example, to center a tile rendering on a map-space coordinate, use:
   </p>
   <pre class="code">
-x = ( map_center_x * scale - ( width / 2 ) ) / width;
+x = (  map_center_x * scale - ( width  / 2 ) ) / width;
 y = ( -map_center_y * scale - ( height / 2 ) ) / height;
   </pre>
   <p>
@@ -1540,7 +1505,7 @@ y = ( -map_center_y * scale - ( height / 2 ) ) / height;
 </section>
 
   <section id="jsonp">
-  <h3>JSONP &ndash; How to use this site's data APIs in your Web pages</h3>
+  <h3>JSONP &ndash; Use data APIs in your Web pages</h3>
   <p class="aside">
     APIs on this site
     output <a href="http://www.w3.org/TR/cors/">CORS</a> headers so if
@@ -1701,3 +1666,5 @@ Enterprises.
 </div>
 
 <a class="forkme" href="https://github.com/inexorabletash/travellermap"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
+
+<script src="toc.js"></script>
