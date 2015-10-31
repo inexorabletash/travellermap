@@ -3,9 +3,9 @@ Forn	A	0102	Cianan	B565553-9		Ag Ni Pr		814	ImDc	G3 V	{ 1 }	(C45-2)	[2626]	BcC	1
 Forn	A	0106	Imondec	B580310-B		De Lo		902	ImDc	M0 V M4 V	{ 1 }	(721-3)	[1416]	B	15	10
 Forn	A	0107	Casidhe	B000655-D		As Na Ni Va		315	ImDc	G1 V	{ 1 }	(E55-1)	[473B]	B	13	315
 Forn	A	0109	Gimki	E869569-6		Ni Pr O:0209		100	ImDc	M3 V	{ -3 }	(741-2)	[6267]	Bc	8	22
-Forn	E	0113	Proust	A89A368-B		Lo Wa O:0114		303	ImDc	M1 V	{ 1 }	(821+1)	[345B]	B	13	16
-Forn	E	0114	Empuura	A8B5753-D		Fl		803	ImDc	G4 V	{ 2 }	(C6D-1)	[492A]	B	11	842
-Forn	E	0120	Resh	C692233-9		He Lo		700	ImDc	G5 V M1 V	{ -1 }	(411-4)	[1126]	B	4	2
+Forn	E	0113	Proust	A89A368-B		Lo Wa O:0114		303	ImSy	M1 V	{ 1 }	(821+1)	[345B]	B	13	16
+Forn	E	0114	Empuura	A8B5753-D		Fl		803	ImSy	G4 V	{ 2 }	(C6D-1)	[492A]	B	11	842
+Forn	E	0120	Resh	C692233-9		He Lo		700	ImSy	G5 V M1 V	{ -1 }	(411-4)	[1126]	B	4	2
 Forn	I	0124	Hankel	C654320-9		Lo		502	ImDc	G2 V M5 V	{ -1 }	(721-5)	[1214]	B	10	7
 Forn	I	0127	Alia	A427787-C		Pi		400	ImDc	K0 V	{ 2 }	(96C+2)	[795C]	BD	15	1,296
 Forn	I	0128	Kaar	B998552-9		Ag Ni		810	ImDc	M2 V	{ 1 }	(845-3)	[1615]	BC	16	112
@@ -17,14 +17,14 @@ Forn	M	0140	Noos	A556779-C		Ag		400	ImDc	G6 V	{ 3 }	(96D+4)	[8A6D]	BC	4	2,808
 Forn	A	0202	Giiar Me	E435568-9		Ni O:0302		310	ImDc	K3 V M1 V	{ -2 }	(842-2)	[5359]	B	9	51
 Forn	A	0203	Sefe	C200576-B		Ni Va		212	ImDc	M5 III	{ 0 }	(A44-1)	[454A]	B	13	144
 Forn	A	0208	Holst	C567634-5		Ag Ni Ri		423	ImDc	M1 V	{ 0 }	(854-2)	[4633]	BC	10	128
-Forn	A	0209	Shiirkan	A302885-C	N	Ic Na Va Ph Cp Pi		422	ImDc	K1 V	{ 2 }	(E7C+1)	[6A3A]	BDe	12	1,176
+Forn	A	0209	SHIIRKAN	A302955-E	NW	Hi Ic In Na Va Cp		422	ImDc	K1 V	{ 5 }	(F8H+3)	[7E3C]	BEF	12	6,120
 Forn	E	0211	Geam	C000642-A		As Na Ni Va		621	ImDc	M2 V M9 V M5 V	{ 0 }	(B54-4)	[2616]	B	12	132
 Forn	E	0212	Polor	C658169-9		Lo O:0114		400	ImDc	M3 V	{ -1 }	(311+1)	[216A]	B	13	3
-Forn	E	0214	Rokke	B557633-6		Ag Ni		400	ImDc	M3 V M6 V	{ 0 }	(854-3)	[3623]	BC	3	112
+Forn	E	0214	Rokke	B557633-6		Ag Ni		400	ImSy	M3 V M6 V	{ 0 }	(854-3)	[3623]	BC	3	112
 Forn	E	0216	Rudde	B424503-E		Ni		800	ImDc	M2 V M7 V	{ 1 }	(745-2)	[262B]	B	10	112
 Forn	E	0217	Miidkhim	C899487-A		Ni		400	ImDc	K9 V	{ 0 }	(633+1)	[445A]	B	13	54
 Forn	I	0222	Niall	C54179C-8		He Po Pi		613	ImDc	M2 V	{ -1 }	(D67+2)	[A68B]	BD	10	1,092
-Forn	I	0223	Arenim	A52077A-C	N	De He Na Po Pi		703	ImDc	M0 V	{ 2 }	(C6C+4)	[997E]	BD	11	3,456
+Forn	I	0223	Arenim	A52077A-C	N	De He Na Po Pi		703	ImSy	M0 V	{ 2 }	(C6C+4)	[997E]	BD	11	3,456
 Forn	I	0226	MISHARKIN	D856952-9	S	Hi Ga		512	ImDc	M1 V	{ 0 }	(E8A-4)	[5915]	BE	12	672
 Forn	M	0233	Gaven	C782643-7		Ni Ri		723	ImDc	M1 V G4 V	{ -1 }	(853-4)	[3524]	BC	12	72
 Forn	M	0236	Laraan	C436523-B		Ni		722	ImDc	K3 V M6 V	{ 0 }	(B44-3)	[2528]	B	9	123
@@ -39,7 +39,7 @@ Forn	E	0313	Nagshii Ar	D558200-8	S	Lo		520	ImDc	K8 V M7 V	{ -3 }	(611-5)	[1113]	
 Forn	E	0314	Ricon	C552685-8		Ni Po		224	ImDc	M2 V	{ -2 }	(E52-4)	[4436]	B	9	84
 Forn	E	0317	Berthegad	X89575A-5		Ag Pi Fo	R	100	ImDc	M2 V M5 V	{ -1 }	(966+1)	[9677]		12	324
 Forn	E	0318	Amoli	A694664-C		Ag Ni O:0520		800	ImDc	G1 V M5 V	{ 2 }	(856+1)	[483A]	BC	17	240
-Forn	I	0322	Rustion	B745565-8		Ag Ni O:0223		700	ImDc	F4 V M5 V	{ 0 }	(744-2)	[3536]	BC	9	90
+Forn	I	0322	Rustion	B745565-8		Ag Ni O:0223		700	ImSy	F4 V M5 V	{ 0 }	(744-2)	[3536]	BC	9	90
 Forn	I	0324	Steinegir	E541832-5		He Po Ph Pi		804	ImDc	K1 V M5 V M8 V	{ -2 }	(A75-5)	[4611]	BDe	10	175
 Forn	I	0325	Varag	B8B3411-C	N	Fl Ni		304	ImDc	M2 V	{ 1 }	(A34-3)	[1518]	B	17	84
 Forn	I	0326	Impe	B562112-9		Lo		320	ImDc	M3 V	{ 0 }	(511-4)	[1115]	B	10	3
@@ -58,7 +58,7 @@ Forn	E	0415	Cognious	D573547-5		Ni		622	ImDc	M0 V M4 V	{ -3 }	(741-3)	[5255]	B	1
 Forn	E	0418	Coddington	B798432-B		Ni Pa		704	ImDc	M3 V	{ 1 }	(A34-3)	[1517]	Bc	8	84
 Forn	E	0419	Prestuyf	A6B1677-D		Fl He Ni Cp		314	ImDc	M0 V M5 V	{ 1 }	(D55+1)	[675D]	B	8	325
 Forn	E	0420	Wylkyn	B856340-8		Lo Ga		912	ImDc	M0 V M0 V	{ -1 }	(821-5)	[1213]	B	16	8
-Forn	I	0421	Jada	B75A552-B		Ni Wa		520	ImDc	K4 V	{ 1 }	(945-3)	[1617]	B	14	126
+Forn	I	0421	Jada	B75A552-B		Ni Wa		520	ImSy	K4 V	{ 1 }	(945-3)	[1617]	B	14	126
 Forn	I	0423	Norwalk	A997554-C		Ag Ni		822	ImDc	G1 V	{ 2 }	(B46+1)	[373A]	BC	12	264
 Forn	I	0424	Haley	C576443-9	S	Ni Pa		213	ImDc	M3 V M2 V	{ -1 }	(A32-4)	[1326]	Bc	15	36
 Forn	M	0434	Eshge	B656455-9		Ni Ga Pa		804	ImDc	M1 V	{ 0 }	(A33-2)	[2437]	Bc	11	72
@@ -122,7 +122,7 @@ Forn	A	0806	Salgar	B99A523-D		Ni Wa		604	ImDc	M2 V	{ 1 }	(B45-2)	[262A]	B	14	176
 Forn	A	0807	Lunluu	C541533-8		He Ni Po		923	ImDc	M1 V M3 V	{ -2 }	(C42-5)	[2325]	B	10	48
 Forn	A	0808	Harpam	B310200-E		Lo		515	ImDc	K6 V	{ 1 }	(A11-3)	[1319]	B	10	7
 Forn	A	0809	Lange	D540463-7		De He Ni Po O:0810		823	ImDc	M2 V	{ -3 }	(631-5)	[1124]	B	15	9
-Forn	A	0810	Malfar	A3008BE-D		Na Va Ph Pi		702	ImDc	M3 V M4 V	{ 2 }	(C7D+5)	[CA9H]	BDe	10	5,460
+Forn	A	0810	Malfar	A3008BE-C		Na Va Ph Pi		702	ImDc	M3 V M4 V	{ 2 }	(C7C+5)	[CA9G]	BDe	10	5,040
 Forn	E	0811	Mokanna	E668645-6		Ag Ni Ri		213	ImDc	M3 V M2 V	{ -1 }	(853-3)	[4534]	BC	12	84
 Forn	E	0812	Pyert	CA6A877-7		Oc Ri Wa Ph		800	ImDc	G2 V M5 V	{ 0 }	(A78+1)	[8857]	BCe	11	560
 Forn	E	0813	Argii	B590410-9	N	De He Ni		600	ImDc	M0 V	{ 0 }	(633-4)	[1414]	B	9	32
@@ -165,7 +165,7 @@ Forn	F	1017	Vetius	B544679-8		Ag Ni		410	ImDc	M1 V M6 V	{ 0 }	(954+1)	[7669]	BC	
 Forn	F	1018	Boca	B430364-A		De Lo Po Da O:1116	A	510	ImDc	G7 V G7 V	{ 1 }	(621-1)	[1438]	B	10	11
 Forn	F	1019	Griffith	E788885-6		Ri Pa Ph Pz	A	710	ImDc	K8 V	{ -1 }	(A76-3)	[6734]	BcCe	5	294
 Forn	J	1022	Diirowe	E687742-4		Ag Ga Ri		903	ImDc	K1 V	{ 0 }	(966-4)	[3711]	BC	11	194
-Forn	J	1024	Sampson	B100455-F	N	Ni Va		120	ImDc	F3 V	{ 1 }	(834-1)	[253D]	B	11	86
+Forn	J	1024	SAMPSON	A100955-F	N	Hi In Na Va Cp		120	ImDc	F3 V	{ 4 }	(D8G+2)	[7D3D]	BEF	11	3,328
 Forn	J	1025	Athane	C758121-9	S	Lo		812	ImDc	K3 V M0 V	{ -1 }	(611-5)	[1115]	B	10	3
 Forn	N	1031	Dewitt	C697644-8		Ag Ni		100	ImDc	K1 V	{ -1 }	(853-3)	[4536]	BC	9	84
 Forn	N	1034	Floinn	E73A47B-A		Ni Wa		803	ImDc	G7 V	{ -1 }	(932+1)	[637C]	B	10	54
@@ -184,7 +184,7 @@ Forn	F	1116	Sout	B666688-A		Ag Ni Ga Ri		812	ImDc	M3 V M8 V	{ 3 }	(B57+3)	[695A]
 Forn	F	1117	Guilomar	A000883-F		As Na Va Ph Pi		410	ImDc	M1 V M9 V	{ 2 }	(B7E-1)	[5A2C]	BDe	7	970
 Forn	F	1120	Angora	X752642-2		Ni Po Fo	R	213	ImDc	M0 V K1 V	{ -3 }	(851-5)	[2311]		18	20
 Forn	J	1124	Fenton	X997221-5		Lo Fo	R	103	ImDc	F9 V M8 V	{ -3 }	(411-5)	[1111]		13	2
-Forn	J	1126	Matinger	B588630-A		Ag Ni Ri Cp (Denaar)		522	ImDc	G9 V M8 V	{ 3 }	(C57-1)	[1915]	BCF	10	378
+Forn	J	1126	Matinger	B588630-A		Ag Ni Ri (Denaar)		522	ImDc	G9 V M8 V	{ 3 }	(C57-1)	[1915]	BC	10	378
 Forn	J	1127	PIRESE	C436A75-D		Hi		504	ImDc	K2 V	{ 2 }	(G9E+1)	[8C3B]	BE	7	2,016
 Forn	J	1130	Stut	C877653-9		Ag Ni		703	ImDc	M0 V	{ 0 }	(B54-3)	[3626]	BC	8	154
 Forn	N	1131	Mathieu	A679346-E		Lo		700	ImDc	K6 V	{ 1 }	(521+1)	[244D]	B	9	10
