@@ -10,7 +10,7 @@ Anta	E	0115	Sursir	B87A211-8	N	Lo Wa		604	ImDa	K2 V	{ -1 }	(811-5)	[1114]	B	14	4
 Anta	E	0118	JUBA	E42397A-A		Hi In Na Po		522	ImDa	K5 V	{ 2 }	(F8C+4)	[BB7C]	BE	10	5,760
 Anta	E	0120	Kingfish	B423631-8		Na Ni Po Da	A	911	ImDa	G0 V	{ -1 }	(A53-5)	[2514]	B	8	75
 Anta	I	0123	Laipanna	C428454-C		Ni		604	ImDa	K5 V M9 V	{ 0 }	(A33-2)	[243A]	B	7	72
-Anta	I	0124	Ogguengan	A564777-B		Ag Ri Urun9 Varg1		400	ImDa	G3 V M2 V	{ 4 }	(96E+4)	[7B5B]	BCf	8	3,024
+Anta	I	0124	Ogguengan	A564777-B		Ag Ri Urun9 Varg1		400	ImDa	G3 V M2 V	{ 4 }	-9.60E+05	[7B5B]	BCf	8	3,024
 Anta	I	0125	Anmi	B8B3564-B	N	Fl Ni Mr		700	ImDa	K6 IV M8 V	{ 1 }	(745-1)	[3639]	B	9	126
 Anta	I	0126	Lyrihnele	B515436-8	N	Ic Ni		304	ImDa	M3 V M5 V	{ -1 }	(A32-2)	[3347]	B	15	48
 Anta	I	0127	Kaze	C85A588-8	S	Ni Wa		704	ImDa	F3 V	{ -2 }	(B42-2)	[5358]	B	11	70
@@ -18,7 +18,7 @@ Anta	I	0128	Akuu	C510689-9	S	Na Ni		600	ImDa	K4 V	{ -1 }	(853+1)	[756A]	B	12	120
 Anta	M	0131	Fogdonvef	B587200-C	N	Lo		704	ImDa	G2 V M9 V	{ 1 }	(811-3)	[1317]	B	13	6
 Anta	M	0132	Mudir	C56557A-9		Ag Ni Pr		915	ImDa	M2 V	{ 0 }	(D44+2)	[757B]	BcC	13	416
 Anta	M	0133	Kargigar	A433257-F		Lo Po		512	ImDa	M1 V M4 V	{ 1 }	(711+1)	[235F]	B	10	7
-Anta	M	0134	LOUNGEL	B6959DD-9		Hi In		612	ImDa	G5 V M5 V	{ 3 }	(E8D+5)	[DC9D]	BE	7	7,280
+Anta	M	0134	LOUNGEL	B6959DD-9		Hi In Pz	A	612	ImDa	G5 V M5 V	{ 3 }	(E8D+5)	[DC9D]	BE	7	7,280
 Anta	M	0135	GAMMA	B544984-C	N	Hi In		500	ImDa	M0 V	{ 4 }	(B8F+2)	[7D3A]	BEf	13	2,640
 Anta	A	0203	OCCULUN	C5429DA-8	S	He Hi In Po		900	ImDa	K3 V M1 V	{ 1 }	(B8A+3)	[BA7A]	BE	11	2,640
 Anta	A	0204	Anashakila	E6748AA-6		Pa Ph Pi		803	ImDa	F8 V	{ -2 }	(A75+1)	[A678]	BcDe	7	350
@@ -85,7 +85,7 @@ Anta	A	0507	Kuz	B758866-6		Pa Ph O:0607		410	ImDa	K3 V	{ 0 }	(A77-1)	[7845]	Bce	
 Anta	A	0508	Iiruda	C858555-8	S	Ag Ni		724	ImDa	G4 V M9 V	{ -1 }	(D43-3)	[3436]	BC	12	109
 Anta	E	0513	Irgirkar	E847587-7		Ag Ni		500	ImDa	G8 V M0 V	{ -2 }	(742-2)	[5357]	BC	8	45
 Anta	E	0516	Marathon	X546458-5		Ni Pa Fo	R	105	ImDa	G0 V M5 V	{ -3 }	(631-3)	[4155]		13	13
-Anta	E	0519	LEJEUNE	E437ADD-A		Hi		203	ImDa	F4 V M0 V	{ 1 }	(F9B+5)	[EB9E]	BE	9	7,425
+Anta	E	0519	LEJEUNE	E437ADD-A		Hi Pz	A	203	ImDa	F4 V M0 V	{ 1 }	(F9B+5)	[EB9E]	BE	9	7,425
 Anta	E	0520	Tabaristan	B423222-A		Lo Po		200	ImDa	K7 V M6 V	{ 1 }	(411-3)	[1316]	B	13	3
 Anta	I	0524	Nakiowa	A557520-A	N	Ag Ni		910	ImDa	M2 V M7 V	{ 2 }	(846-2)	[1715]	BC	8	154
 Anta	I	0527	Akude	D433677-8		Na Ni Po		822	ImDa	K1 V	{ -3 }	(C51-3)	[6358]	B	12	42
@@ -253,7 +253,7 @@ Anta	N	1334	Honre	A300621-E	N	Na Ni Va		913	ImDa	G3 V M8 V	{ 1 }	(C55-3)	[271A]	
 Anta	N	1337	Arirumkhar	C633422-9	S	Ni Po		503	ImDa	M2 V M1 V	{ -1 }	(932-5)	[1315]	B	7	27
 Anta	B	1403	Khanmishim	E666656-4		Ag Ni Ga Ri		512	NaVa	G8 V	{ -1 }	(853-2)	[5543]		9	96
 Anta	B	1404	Rala	C572432-8		He Ni		314	NaVa	G0 V M0 V	{ -2 }	(B31-5)	[1214]		17	17
-Anta	F	1412	DOGD	E5419ED-8		He Hi In Po		723	ImDa	M1 V M7 V	{ 0 }	(G89+4)	[D99C]	BE	7	4,608
+Anta	F	1412	DOGD	E5419ED-8		He Hi In Po Pz	A	723	ImDa	M1 V M7 V	{ 0 }	(G89+4)	[D99C]	BE	7	4,608
 Anta	F	1413	Na	C000552-B		As Ni Va		601	ImDa	M1 V M2 V	{ 0 }	(844-4)	[1517]	B	14	77
 Anta	F	1420	Steindenik	A402464-E	N	Ic Ni Va Mr		701	ImDa	K9 V	{ 1 }	(734-1)	[253C]	B	10	76
 Anta	J	1424	Niwse	A310879-B		Na Ph Pi		501	ImDa	M2 V M0 V	{ 2 }	(B7C+3)	[9A6C]	BDe	11	2,772
@@ -308,7 +308,7 @@ Anta	N	1635	Ishkhasaki	B6748BB-8		Pa Ph Pi		211	ImDa	K3 V	{ 0 }	(C78+2)	[A87A]	B
 Anta	N	1638	Tiotukeo	B555201-A		Lo		203	ImDa	G5 V M8 V	{ 1 }	(711-3)	[1316]	B	9	5
 Anta	N	1639	Ontyg	E564200-8		Lo		202	ImDa	G1 V M9 V	{ -3 }	(611-5)	[1113]	B	9	3
 Anta	C	1701	Rugad	D540365-5		De He Lo Po O:1802		800	CsIm	G9 V M0 V	{ -3 }	(521-5)	[1133]		3	5
-Anta	C	1703	CONIRE	B4349BF-B		Hi		303	NaHu	G9 V	{ 3 }	(E8E+5)	[ECAG]		12	7,840
+Anta	C	1703	CONIRE	B4349BF-B		Hi Pz	A	303	NaHu	G9 V	{ 3 }	(E8E+5)	[ECAG]		12	7,840
 Anta	C	1704	Ger	B431230-B		Lo Po		500	NaVa	G6 IV	{ 1 }	(411-3)	[1316]		8	3
 Anta	C	1709	Wyfawhag	C100565-B		Ni Va O:1808		601	ImDa	K3 V	{ 0 }	(844-2)	[3539]	B	4	102
 Anta	G	1711	Nakkmong	B635312-9		Lo		802	ImDa	G3 V M9 V	{ 0 }	(721-4)	[1315]	B	11	8
@@ -391,7 +391,7 @@ Anta	K	2030	Ararruedz	B637115-B		Lo		312	ImDa	G9 V M0 V	{ 1 }	(611-1)	[1239]	B	1
 Anta	O	2031	Bes	C626534-9		Ni		500	ImDa	M1 V M2 V	{ -1 }	(743-3)	[3437]	B	16	59
 Anta	O	2038	Meventapboo	B565653-9		Ag Ni Ri		113	ImDa	G3 V	{ 2 }	(C56-1)	[3826]	BC	9	324
 Anta	O	2039	Kawhuti	B7546A9-A		Ag Ni		304	ImDa	M0 V	{ 2 }	(C56+3)	[786B]	BC	12	1,080
-Anta	O	2040	Usigekiki	A6368BG-D		Ph		820	ImDa	K8 V	{ 2 }	(C7D+5)	[DAAJ]	Be	8	5,460
+Anta	O	2040	Usigekiki	A6368BG-D		Ph Pz	A	820	ImDa	K8 V	{ 2 }	(C7D+5)	[DAAJ]	Be	8	5,460
 Anta	C	2105	Ka	C8B6867-9		Fl Ph O:2406		603	ImDa	F2 V	{ 0 }	(D79+1)	[8859]	Be	18	819
 Anta	C	2110	Aswa	C88A685-9	S	Ni Ri Wa		604	ImDa	M2 V M3 V	{ 0 }	(C54-2)	[4637]	BC	4	192
 Anta	G	2111	Rroth	BA9A210-8		Lo Oc Wa		703	ImDa	F9 V M2 V	{ -1 }	(711-5)	[1113]	B	11	4
@@ -539,7 +539,7 @@ Anta	P	3037	Limaarnudu	B632335-A	N	Lo Po		103	ImDa	K5 V	{ 1 }	(821-1)	[1438]	B	8
 Anta	P	3038	Cesten	B6B5533-A		Fl Ni		722	ImDa	M5 III D	{ 1 }	(B45-2)	[2627]	B	10	176
 Anta	D	3106	Iraw	E400544-8	M	Ni Va		702	JuRu	M0 V	{ -3 }	(941-5)	[3236]		7	18
 Anta	D	3108	Ornwyll	A7C6410-E		Fl Ni		403	JuRu	K1 V M6 V	{ 1 }	(934-3)	[1519]		12	76
-Anta	L	3129	MUKUSI	C557AEG-C		Hi		412	ImDa	G1 V	{ 2 }	(F9D+5)	[FCAH]	BE	10	8,775
+Anta	L	3129	MUKUSI	C557AEG-C		Hi Pz	A	412	ImDa	G1 V	{ 2 }	(F9D+5)	[FCAH]	BE	10	8,775
 Anta	P	3131	Shashgugim	X768874-2		Ri Pa Ph Fo	R	323	ImDa	G4 V M3 V M6 V	{ -1 }	(A74-3)	[6731]		13	196
 Anta	P	3135	Swar	C777300-A	S	Lo		813	ImDa	G6 V M4 V	{ 0 }	(921-4)	[1315]	B	10	11
 Anta	P	3139	DINI	C582A99-C		Hi		113	ImDa	F6 V M5 V	{ 2 }	(G9D+3)	[BC6D]	BE	8	5,616

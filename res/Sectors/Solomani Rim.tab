@@ -1,6 +1,6 @@
 Sector	SS	Hex	Name	UWP	Bases	Remarks	Zone	PBG	Allegiance	Stars	{Ix}	(Ex)	[Cx]	Nobility	W	RU
 Solo	A	0105	Faiwyd	E500589-7		Ni Va Da	A	712	ImDs	M0 V M2 V	{ -3 }	(741-2)	[6268]	B	9	22
-Solo	A	0106	DARRUKESH	A5859CF-D	N	Hi Pr		823	ImDs	M0 V M4 V M0 V	{ 3 }	(G8C+5)	[ECAJ]	BcE	11	7,680
+Solo	A	0106	DARRUKESH	A5859CF-D	N	Hi Pr Pz	A	823	ImDs	M0 V M4 V M0 V	{ 3 }	(G8C+5)	[ECAJ]	BcE	11	7,680
 Solo	A	0110	IDDAMAKUR	A7799AB-A		Hi In Asla0		303	ImDs	M1 V M0 V	{ 4 }	(E8B+5)	[BD7C]	BEf	11	6,160
 Solo	E	0111	GRENDEL	A96A98B-E		Hi Wa An Pr		802	ImDs	F4 V M2 V	{ 3 }	(D8C+4)	[BC7G]	BcE	10	4,992
 Solo	E	0116	Purdishi	D611168-8		Ic Lo O:0215		834	ImDs	M1 V	{ -3 }	(A11-3)	[1158]	B	10	7
@@ -44,7 +44,7 @@ Solo	M	0434	Durgha	B612400-D		Ic Ni		205	SoCf	F8 IV M0 V	{ 1 }	(B33-3)	[1518]		1
 Solo	M	0437	Dolor	B311887-C	KM	Ic Na Ph Pi Sa		934	SoCf	M1 V M4 V	{ 3 }	(H7A+2)	[8B5C]		15	2,380
 Solo	M	0438	Zhongguo	B544722-A		Ag Pi		123	SoCf	K8 V	{ 3 }	(E6A-2)	[3A16]		14	672
 Solo	M	0440	Ormadz	B300599-C		Ni Va		813	SoCf	M0 V M3 V	{ 1 }	(B44+2)	[666D]		7	352
-Solo	A	0501	Morgana	BA9A861-C		Oc Wa Ph Pi Guru? O:0502		823	ImDs	M2 V	{ 2 }	(F79-3)	[4A18]	BDe	8	662
+Solo	A	0501	Morgana	BA9A861-C		Oc Wa Ph Pi Guru4 O:0502		823	ImDs	M2 V	{ 2 }	(F79-3)	[4A18]	BDe	8	662
 Solo	A	0502	Ugarup	B89A8BE-C		Wa Ph Pi (Gurungan) Huma0 Tz		102	ImDs	M1 V	{ 2 }	(C79+5)	[CA9G]	BDe	8	3,780
 Solo	A	0509	Ixtloc	B530487-C		De Ni Po		100	ImDs	K4 V M6 V	{ 1 }	(633+1)	[455C]	B	13	54
 Solo	E	0511	YRSAI	A663A9B-F		Hi		402	ImDs	G0 V M5 V	{ 3 }	(E9B+4)	[CD7H]	BE	10	5,544
@@ -93,7 +93,7 @@ Solo	I	0825	DURIIM	A588AA7-C	N	Hi		100	ImDs	A2 V M9 V	{ 3 }	(C9A+2)	[AD5C]	BE	12
 Solo	I	0826	MUNILGAN	A55499D-D		Hi		322	ImDs	K2 V M3 V	{ 3 }	(F8C+5)	[DC9H]	BE	15	7,200
 Solo	M	0832	Wallach	D578452-8		Ni Pa		604	SoCf	M0 V	{ -3 }	(A31-5)	[1114]		10	15
 Solo	M	0833	Thalassa	A58A78A-E		Ri Wa		210	SoCf	M1 V	{ 3 }	(A6C+4)	[9A7G]		12	2,880
-Solo	M	0835	Odysseus	A6598DE-B		Ph		502	SoCf	M2 V M6 V	{ 2 }	(C79+5)	[CA9F]		8	3,780
+Solo	M	0835	Odysseus	A6598DE-B		Ph Pz	A	502	SoCf	M2 V M6 V	{ 2 }	(C79+5)	[CA9F]		8	3,780
 Solo	B	0902	Porlock	C433855-9		Na Po Ph		813	ImDs	M3 V M8 V	{ 0 }	(E76-3)	[6837]	Be	10	412
 Solo	B	0903	Bethe	B422677-A		He Na Ni Po		512	ImDs	M0 V M6 V	{ 1 }	(B53+1)	[675A]	B	14	165
 Solo	B	0907	Llewellyn	B20058A-D		Ni Va RsD Sa		522	ImDs	M3 V M8 V	{ 1 }	(B44+3)	[767F]	B	10	528
@@ -187,7 +187,7 @@ Solo	F	1517	FLANDERS	A755A86-E		Hi Ga Vega0		102	ImVd	F7 V M0 V	{ 3 }	(E9B+1)	[9
 Solo	F	1519	BELLEROPHON	A88A986-E		Hi Wa Pr Vega0		233	ImVd	M1 V	{ 3 }	(H8C+1)	[8C4D]	BcE	9	1,632
 Solo	J	1522	Altair	X000000-0		As Ba Va Fo	R	020	ImDs	A7 V	{ -3 }	(200-5)	[0000]		8	0
 Solo	J	1523	ZAGGISI	A79998C-E		Hi In		401	ImDs	K0 V K4 V	{ 4 }	(C8D+5)	[CD8H]	BEf	12	6,240
-Solo	J	1526	MESHAN	A4359CF-E	N	Hi		801	ImDs	K5 V D	{ 3 }	(C8C+5)	[ECAK]	BE	17	5,760
+Solo	J	1526	MESHAN	A4359CF-E	N	Hi Pz	A	801	ImDs	K5 V D	{ 3 }	(C8C+5)	[ECAK]	BE	17	5,760
 Solo	J	1529	Markhashi	A3018CB-D		Ic Na Va Ph Pi Pz Sa	A	705	ImDs	M1 V M6 V	{ 2 }	(F7A+3)	[AA7F]	BDe	11	3,150
 Solo	J	1530	SHULIMIK	A783969-E		Hi Pr Mr		502	ImDs	K2 V	{ 3 }	(D8C+3)	[AC6F]	BcE	13	3,744
 Solo	N	1533	Sarpedon	A312869-D	N	Ic Na Ph Pi Mr		601	ImDs	K1 V M4 V D	{ 2 }	(B7A+2)	[9A6E]	BDe	9	1,540
@@ -357,7 +357,7 @@ Solo	L	2928	Epirus	B4387B6-C		Sa Tz		322	ImDs	G3 V M7 V	{ 2 }	(D6A+1)	[694B]	B	1
 Solo	P	2932	Skanderbeg	A5448A7-C	KM	Pa Ph Pi		502	SoCf	F6 V	{ 3 }	(C7A+2)	[8B5C]		12	1,680
 Solo	P	2937	Cyan	A552767-C		Po O:3035		603	SoCf	M0 V M4 V	{ 2 }	(C6A+1)	[795C]		12	720
 Solo	P	2938	Santorini	A689856-D		Ri Ph		305	SoCf	M1 V	{ 3 }	(F7B+1)	[7B4C]		14	1,155
-Solo	P	2939	Hasdrubal	A5548CF-C		Pa Ph		920	SoCf	M0 V M4 V	{ 2 }	(C79+5)	[DAAH]		10	3,780
+Solo	P	2939	Hasdrubal	A5548CF-C		Pa Ph Pz	A	920	SoCf	M0 V M4 V	{ 2 }	(C79+5)	[DAAH]		10	3,780
 Solo	D	3001	KARPATY	A583954-F		Hi Pr		813	ImDs	M3 V M6 V	{ 3 }	(F8C+1)	[7C3D]	BcE	10	1,440
 Solo	D	3006	Syzygy	C100721-8		Na Va Pi Sa		832	ImDs	F0 V	{ -1 }	(E65-5)	[3614]	BD	17	210
 Solo	D	3008	JANOSZ	A564978-B	S	Hi Pr		821	ImDs	M2 V M6 V	{ 3 }	(E8B+2)	[9C5B]	BcE	12	2,464
@@ -387,7 +387,7 @@ Solo	D	3201	PALNU	A584999-E		Hi Pr		923	ImDs	G3 V	{ 3 }	(G8C+3)	[AC6F]	BcE	9	4,6
 Solo	D	3202	Opar	E5AA267-A		Fl Lo O:3201		210	ImDs	G7 V M6 V	{ -1 }	(511-1)	[215A]	B	8	5
 Solo	D	3203	Irashnar	B431438-D		Ni Po Sa		802	ImDs	G8 V	{ 1 }	(833+1)	[455D]	B	9	72
 Solo	D	3204	Rith	C536875-9		Ph Pz	A	823	ImDs	M2 V	{ 0 }	(F76-3)	[6837]	Be	16	441
-Solo	D	3208	Kilennur	B5958BE-A		Pa Ph Pi		522	ImDs	M2 V M2 V	{ 2 }	(E78+5)	[CA9E]	BcDe	15	3,920
+Solo	D	3208	Kilennur	B5958BE-A		Pa Ph Pi Droy0		522	ImDs	M2 V M2 V	{ 2 }	(E78+5)	[CA9E]	BcDe	15	3,920
 Solo	D	3209	Pagliacci	C754733-6		Ag		913	ImDs	M1 V M4 V	{ 0 }	(965-4)	[4723]	BC	13	162
 Solo	H	3213	LUDOVIC	A665977-D		Hi Ga Pr Pz	A	804	ImDs	M3 V M4 V	{ 3 }	(F8C+2)	[9C5D]	BcE	14	2,880
 Solo	H	3217	Cephesa	B422431-D		He Ni Po		602	ImDs	K2 III	{ 1 }	(833-3)	[1519]	B	10	50

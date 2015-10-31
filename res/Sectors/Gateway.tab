@@ -1,7 +1,7 @@
 Sector	SS	Hex	Name	UWP	Bases	Remarks	Zone	PBG	Allegiance	Stars	{Ix}	(Ex)	[Cx]	Nobility	W	RU
 Gate	I	0127	Tanis	DA89654-8		Ni Ri		220	NaHu	F0 V	{ -2 }	(A52-4)	[4436]		8	60
 Gate	I	0130	Far Portal	A438546-A	K	Ni		823	NaHu	M4 III	{ 1 }	(C45+1)	[4649]		12	240
-Gate	M	0135	HARPER	E647ABC-9		Hi In		115	NaHu	F9 V G9 V	{ 1 }	(J9B+4)	[DB8C]		14	7,128
+Gate	M	0135	HARPER	E647ABC-9		Hi In Pz	A	115	NaHu	F9 V G9 V	{ 1 }	(J9B+4)	[DB8C]		14	7,128
 Gate	M	0140	Brevin	D563310-7		Lo		120	NaHu	F7 V	{ -3 }	(521-5)	[1112]		9	5
 Gate	I	0230	Costavan	C560431-9		De Ni		601	NaHu	G0 V F4 V	{ -1 }	(732-5)	[1315]		7	21
 Gate	M	0233	Renaldo	C430668-9		De Na Ni Po O:0332		323	NaHu	K2 V M6 V	{ -1 }	(D53-1)	[6559]		16	176
@@ -10,8 +10,8 @@ Gate	M	0239	Hadley Station	CABA241-8		Fl Lo		913	NaHu	M3 V	{ -2 }	(811-5)	[1114]
 Gate	I	0323	Newpontere	D597488-7		Ni Pa		724	NaHu	F2 V M8 V	{ -3 }	(631-3)	[4157]		16	13
 Gate	I	0327	Castamaria	C64A672-A		Ni Wa		201	NaHu	F6 V	{ 0 }	(954-4)	[2616]		7	108
 Gate	M	0332	Caldwell	A401654-A	K	Ic Na Ni Va		423	NaHu	M3 V	{ 1 }	(D55-1)	[4738]		12	293
-Gate	M	0334	Baker	A87679B-8	K	Ag Pi		105	NaHu	F9 V	{ 1 }	(E69+3)	[987A]		9	2,268
-Gate	M	0337	Thomwell	B7768AB-8		Pa Ph Pi		601	NaHu	G3 V A3 V	{ 0 }	(B78+2)	[A87A]		13	1,232
+Gate	M	0334	Baker	A87679B-8	K	Ag Pi Pz	A	105	NaHu	F9 V	{ 1 }	(E69+3)	[987A]		9	2,268
+Gate	M	0337	Thomwell	B7768AB-8		Pa Ph Pi Pz	A	601	NaHu	G3 V A3 V	{ 0 }	(B78+2)	[A87A]		13	1,232
 Gate	M	0340	Mork	C558445-4		Ni Pa		711	NaHu	F3 V	{ -2 }	(631-4)	[2232]		12	11
 Gate	A	0407	Isolation	C7C2500-B		Fl He Ni		714	NaHu	K1 V K8 V	{ 0 }	(C44-4)	[1516]		15	115
 Gate	I	0425	Redstorm	D626888-7		Ph Pi		900	GaFd	F7 V	{ -2 }	(A76-2)	[8657]		11	336
@@ -46,7 +46,7 @@ Gate	B	0901	Hishan	C200478-9		Ni Va		211	NaHu	G6 V	{ -1 }	(832-1)	[4359]		12	43
 Gate	B	0908	Ploor	C553310-7		Lo Po		821	NaHu	F4 V A6 V	{ -2 }	(521-5)	[1112]		13	5
 Gate	J	0921	SALUR	B746989-A	K	Hi In		911	GaFd	M2 V M0 V	{ 4 }	(D8E+5)	[AD6B]		9	7,280
 Gate	J	0928	GALESTA	C797988-9		Hi In		310	GaFd	F3 V	{ 2 }	(C8C+2)	[9B59]		7	2,304
-Gate	N	0934	Vinie's World	C4357CC-6				401	NaHu	M3 II D	{ -1 }	(966+2)	[A689]		7	648
+Gate	N	0934	Vinie's World	C4357CC-6		Pz	A	401	NaHu	M3 II D	{ -1 }	(966+2)	[A689]		7	648
 Gate	N	0938	Crostan	C543642-5		Ni Po		202	NaHu	F4 V A3 V	{ -2 }	(852-5)	[2411]		15	40
 Gate	F	1012	Gulf	D679443-7		Ni		913	NaHu	F3 V	{ -3 }	(631-5)	[1124]		11	9
 Gate	F	1016	Pasternak	B301698-A		Ic Na Ni Va		214	NaHu	G3 V	{ 1 }	(D55+1)	[675A]		13	325
@@ -108,7 +108,7 @@ Gate	J	1527	TARAVESH	B799955-C	K	Hi In		124	TrCo	G6 V	{ 4 }	(H8F+2)	[7D3A]		18	4
 Gate	J	1530	Gaspar Belt	C000684-B		As Na Ni Va		732	ViCo	M2 V	{ 0 }	(D54-2)	[4639]		14	208
 Gate	N	1531	Ariel	C684584-7		Ag Ni Pr		913	ViCo	F6 V K6 V	{ -1 }	(743-3)	[3435]		8	59
 Gate	N	1535	Plinth	B553310-8		Lo Po		913	ViCo	F8 V M2 V	{ -1 }	(921-5)	[1213]		8	9
-Gate	B	1601	GRANTH	B8779EE-A		Hi In Cx		910	HoPA	F6 V F7 V	{ 4 }	(C8E+5)	[DD9E]		7	6,720
+Gate	B	1601	GRANTH	B8779EE-A		Hi In Cx Pz	A	910	HoPA	F6 V F7 V	{ 4 }	(C8E+5)	[DD9E]		7	6,720
 Gate	B	1604	Tarvad	D6758DA-5		Pa Ph Pi		912	HoPA	F3 V M3 V	{ -2 }	(A75+1)	[A677]		10	350
 Gate	B	1609	Duresthan	C6235AE-A		Ni Po		910	HoPA	M1 V M2 V	{ 0 }	(844+4)	[959E]		10	512
 Gate	F	1612	Ganyvar	C766684-8		Ag Ni Ga Ri		412	PlLe	F9 V	{ 0 }	(B54-2)	[4636]		13	176
@@ -123,7 +123,7 @@ Gate	N	1633	Junction	C560536-9		De Ni Pr		112	ViCo	F3 V	{ -1 }	(A43-2)	[4448]		1
 Gate	N	1637	BALACLARON	A867989-A		Hi Ga Pr		414	ViCo	F4 V M8 V	{ 3 }	(G8D+4)	[AC6B]		17	6,656
 Gate	N	1639	Thanderbrac	C550759-9		De Po		210	ViCo	K6 V	{ 0 }	(A69+1)	[876A]		5	540
 Gate	C	1706	Caladan	D6737CA-6		Pi		915	HoPA	F3 V F5 V	{ -2 }	(965+1)	[9578]		12	270
-Gate	C	1709	Valkyr	BA598DE-9		Ph		913	HoPA	K0 V	{ 1 }	(E7A+5)	[C99D]		7	4,900
+Gate	C	1709	Valkyr	BA598DE-9		Ph Pz	A	913	HoPA	K0 V	{ 1 }	(E7A+5)	[C99D]		7	4,900
 Gate	G	1715	QUETZAL	C68299A-5		Hi Pr		112	PlLe	F4 V	{ 0 }	(B88+2)	[B977]		6	1,408
 Gate	K	1721	Lanu	C410410-9		Ni		213	NaHu	M2 II M8 V	{ -1 }	(A32-5)	[1314]		9	30
 Gate	K	1724	Marina	E77A769-7		Wa Pi O:1725		712	TrCo	F6 V A5 V	{ -2 }	(966-1)	[8568]		11	292

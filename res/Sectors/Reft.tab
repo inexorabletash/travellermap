@@ -1,7 +1,7 @@
 Sector	SS	Hex	Name	UWP	Bases	Remarks	Zone	PBG	Allegiance	Stars	{Ix}	(Ex)	[Cx]	Nobility	W	RU
 Reft	A	0102	Cauldron	D988222-4		Lo		403	ImDd	M0 V	{ -3 }	(411-5)	[1111]	B	7	2
 Reft	A	0105	Iselen	A543678-9		Ni Po		403	ImDd	G0 V	{ 0 }	(B54+1)	[6659]	B	7	220
-Reft	A	0106	Reudden	B5536BG-7		Ni Po		400	ImDd	G4 V	{ -1 }	(853+4)	[B5AC]	B	9	480
+Reft	A	0106	Reudden	B5536BG-7		Ni Po Da	A	400	ImDd	G4 V	{ -1 }	(853+4)	[B5AC]	B	9	480
 Reft	A	0108	Kukaa	C544100-A		Lo		503	ImDd	G1 V	{ 0 }	(611-4)	[1115]	B	7	4
 Reft	A	0109	Amoirve	B565476-B	N	Ni Pa		704	ImDd	G8 V	{ 1 }	(A34+1)	[354A]	Bc	10	120
 Reft	E	0111	Grudovo	B560453-C		De Ni		914	ImDd	K0 IV D	{ 1 }	(B34-2)	[1529]	B	13	106
@@ -21,7 +21,7 @@ Reft	A	0410	Ambossa	B684459-9		Ni Pa		700	ImDd	G2 V	{ 0 }	(633+1)	[546A]	Bc	9	54
 Reft	E	0416	Tonnurad	B563695-7		Ni Ri		803	NaHu	G3 V M5 V G5 V	{ 0 }	(854-2)	[4635]		7	128
 Reft	M	0435	Garden	B755578-A		Ag Ni Ga Di (Salika)		404	NaHu	K4 V M4 V	{ 2 }	(B46+2)	[575A]		8	528
 Reft	A	0502	Corp Town	B574211-B		Lo		100	ImDd	F6 V M1 V	{ 1 }	(411-3)	[1317]	B	15	3
-Reft	A	0503	LINTL	B739AEE-C		Hi		404	ImDd	K2 V	{ 3 }	(G9E+5)	[ED9G]	BE	10	10,080
+Reft	A	0503	LINTL	B739AEE-C		Hi Pz	A	404	ImDd	K2 V	{ 3 }	(G9E+5)	[ED9G]	BE	10	10,080
 Reft	E	0511	Fraaga	B691420-B		He Ni		702	ImDd	K2 V M9 V M1 V	{ 1 }	(834-3)	[1516]	B	15	67
 Reft	A	0602	Whisp	C551110-6		Lo Po		204	ImDd	A6 V F7 V	{ -2 }	(311-5)	[1111]	B	13	2
 Reft	A	0604	Gaspar	B436337-D		Lo		801	ImDd	M2 V	{ 1 }	(621+1)	[345D]	B	9	12
@@ -43,7 +43,7 @@ Reft	B	1103	Yvette	A79A633-D		Ni Wa		133	ImDd	G2 V	{ 1 }	(E55-2)	[372A]	B	9	280
 Reft	J	1123	Gloire	C764567-9		Ag Ni Pr O:1323		904	NaHu	M0 III M0 V	{ 0 }	(B44+1)	[5559]		14	176
 Reft	B	1204	Oleiros	B000457-D		As Ni Va		300	NaHu	M1 V	{ 1 }	(634+1)	[455D]		8	72
 Reft	B	1301	Sestao	A420675-C	N	De He Na Ni Po		611	ImDd	M0 V	{ 1 }	(A55-1)	[473A]	B	9	225
-Reft	B	1302	GOROD	D6689CG-7		Hi Pr		111	ImDd	K4 V M1 V	{ -1 }	(B88+4)	[E8AC]	BcE	10	2,816
+Reft	B	1302	GOROD	D6689CG-7		Hi Pr Pz	A	111	ImDd	K4 V M1 V	{ -1 }	(B88+4)	[E8AC]	BcE	10	2,816
 Reft	F	1314	R'Bak	X587777-2		Ag Ri Fo	R	721	NaHu	G3 V	{ 0 }	(965+1)	[7752]		9	270
 Reft	J	1323	SERENDIP BELT	A000949-C	KM	As Hi In Na Va		512	NaHu	G1 V K1 V	{ 5 }	(E8G+5)	[AE6D]		15	8,960
 Reft	J	1327	NEW COLCHIS	A8959AA-C	KM	Hi In		100	NaHu	F8 V	{ 5 }	(B8G+5)	[BE7E]		6	7,040
@@ -61,7 +61,7 @@ Reft	K	1822	NEUBAYERN	A7889C9-C	KM	Hi Pr		610	NaHu	M3 V	{ 4 }	(C8F+5)	[AD6D]		8	
 Reft	C	1907	AUM-RHAR	A857948-C		Hi Ga (Tezcat) Di (Varaku)		824	NaXX	K9 V	{ 3 }	(H8E+3)	[9C5C]		14	5,712
 Reft	K	1923	Schlesien Belt	C000367-B	M	As Lo Va O:1822		111	NaHu	K4 V	{ 0 }	(721+1)	[335B]		6	14
 Reft	K	1925	New Home	A565857-D	KM	Ri Pa Ph		714	NaHu	G0 V	{ 4 }	(F7F+4)	[8C5D]		15	6,300
-Reft	K	2026	Colchis	B676898-9	M	Pa Ph Pi		901	NaHu	F7 V M5 V	{ 1 }	(B7A+1)	[8959]		5	770
+Reft	K	2026	Colchis	B676898-9	M	Pa Ph Pi		901	NaHu	F7 V M5 V	{ 1 }	(B7A+1)	[8959]		13	770
 Reft	C	2108	Zamoran	B674675-A	M	Ag Ni Droy4		904	NaHu	F5 V	{ 2 }	(C56+1)	[4838]		11	360
 Reft	K	2123	St. Genevieve	C560100-A	M	De Lo		404	NaHu	M1 V	{ 0 }	(711-4)	[1115]		10	4
 Reft	O	2139	Arraste	B59368B-6		Ni		604	ImDv	K7 V M5 V	{ -1 }	(853+1)	[8578]	B	13	120

@@ -1279,12 +1279,12 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <DataFile Publisher="HIWG Australia" Author="David Schneider, Grant Sinclair" Era="1200" Ref="http://zho.berka.com/data/TNE/sector.pl?sector=YIKLER">yiklerzdanzh.sec</DataFile>
     <MetadataFile Publisher="HIWG Australia" Author="David Schneider, Grant Sinclair" Era="1200" Ref="http://zho.berka.com/data/TNE/sector.pl?sector=YIKLER">Yiklerzdanzh.xml</MetadataFile>
   </Sector>
-  <Sector Abbreviation="FarF" Tags="Apocryphal">
+  <Sector Abbreviation="Farf" Tags="InReview">
     <Y>-1</Y>
     <X>-6</X>
     <Name>Far Frontiers</Name>
     <Name Lang="zh">Afachtiabr</Name>
-    <DataFile Author="Dale Kemper; James Kundert" Source="Ares Magazine, The Traveller Chronicle">Far Frontiers.sec</DataFile>
+    <DataFile Author="Dale Kemper; James Kundert" Source="Ares Magazine, The Traveller Chronicle" Type="TabDelimited">Far Frontiers.tab</DataFile>
     <MetadataFile Author="Dale Kemper; James Kundert" Source="Ares Magazine; The Traveller Chronicle">Far Frontiers.xml</MetadataFile>
   </Sector>
   <Sector Abbreviation="Fore" Tags="Preserve" Selected="true">

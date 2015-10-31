@@ -68,7 +68,7 @@ Vlan	A	0701	Taegzdueg	C665552-9		Ag Ni Ga Pr		314	NaHu	G0 V M5 V	{ 0 }	(C44-4)	[
 Vlan	A	0703	Khigapka	B797457-C		Ni Pa		902	NaHu	M2 V	{ 1 }	(834+1)	[455C]		9	96
 Vlan	A	0705	Shukhuge	C727830-9		Ph Pi		110	ImDv	M1 V	{ 0 }	(B79-4)	[3814]	BDe	11	416
 Vlan	A	0707	Lenordi	D000487-8	S	As Ni Va		310	ImDv	M2 V	{ -3 }	(731-3)	[4158]	B	8	15
-Vlan	A	0708	VOSKHOD	B3109ED-E	W	Hi In Na Cp		101	ImDv	M1 V M0 V	{ 5 }	(C8H+5)	[DE9J]	BEF	12	8,160
+Vlan	A	0708	VOSKHOD	B3109ED-E	W	Hi In Na Cp Pz	A	101	ImDv	M1 V M0 V	{ 5 }	(C8H+5)	[DE9J]	BEF	12	8,160
 Vlan	A	0709	Kharzet	A565597-D		Ag Ni Pr		601	ImDv	M0 V G3 V	{ 2 }	(846+2)	[575D]	BcC	17	384
 Vlan	E	0711	Rishiin	C539332-B	S	Lo		610	ImDv	M2 V M7 V	{ 0 }	(621-4)	[1317]	B	14	7
 Vlan	M	0732	Pirumush	E524410-8		Ni		622	ImDv	G4 V M2 V	{ -3 }	(A31-5)	[1113]	B	13	15
@@ -384,7 +384,7 @@ Vlan	L	2527	Kaple	E421656-9		He Na Ni Po		811	ImDv	K9 V	{ -2 }	(A52-3)	[5448]	B	
 Vlan	L	2528	Shuurnnish	C202225-B	S	Ic Lo Va		701	ImDv	M1 V	{ 0 }	(511-2)	[1239]	B	12	4
 Vlan	L	2530	Thaggesh	B6668A8-A		Ga Ri Pa Ph (Thaggeshi)		601	ImDv	F6 V M7 V M6 V	{ 3 }	(B7C+3)	[8B5A]	BcCe	14	2,772
 Vlan	P	2531	Kiddinu	B555553-C		Ag Ni		434	ImDv	M0 V	{ 2 }	(E46-1)	[2729]	BC	11	302
-Vlan	P	2533	AKI	D697AFF-A		Hi In		110	ImDv	F5 V M0 V	{ 2 }	(D9C+5)	[FCAF]	BE	13	7,020
+Vlan	P	2533	AKI	D697AFF-A		Hi In Pz	A	110	ImDv	F5 V M0 V	{ 2 }	(D9C+5)	[FCAF]	BE	13	7,020
 Vlan	P	2534	Zerapii	C411774-A	S	Ic Na Pi		822	ImDv	M1 V	{ 1 }	(D6A-1)	[5838]	BD	12	702
 Vlan	P	2536	Linissa	E200777-8		Na Va Pi		710	ImDv	G9 V	{ -2 }	(A66-2)	[7558]	BD	12	288
 Vlan	P	2539	Nunaat	B624248-C	N	Lo		924	ImDv	M0 V	{ 1 }	(A11+1)	[235C]	B	9	10
@@ -441,7 +441,7 @@ Vlan	L	2829	LUUKON	A5779B6-C	N	Hi In Cp		601	ImDv	K3 V M1 V	{ 4 }	(C8F+3)	[8D4B]
 Vlan	L	2830	Lezaneraz	E547455-8		Ni Pa		202	ImDv	M2 V	{ -3 }	(831-5)	[2136]	Bc	7	12
 Vlan	P	2831	Kiimzhal	C55455A-A		Ag Ni		801	ImDv	M3 V M7 V	{ 1 }	(845+3)	[767C]	BC	8	480
 Vlan	P	2832	Telkaa	C635515-A		Ni		721	ImDv	M2 V K3 V K3 V	{ 0 }	(A44-2)	[3538]	B	10	128
-Vlan	P	2836	INUSHIR	E989ADE-7		Hi		623	ImDv	K0 V	{ -1 }	(C98+3)	[E99B]	BE	17	2,592
+Vlan	P	2836	INUSHIR	E989ADE-7		Hi Pz	A	623	ImDv	K0 V	{ -1 }	(C98+3)	[E99B]	BE	17	2,592
 Vlan	P	2837	Piazza	C794685-6		Ag Ni		822	ImDv	K4 V M3 V	{ -1 }	(853-3)	[4534]	BC	12	84
 Vlan	P	2839	Zombagu	A684730-B		Ag Ri An		924	ImDv	F7 V	{ 4 }	(F6E+1)	[2B16]	BCf	9	1,260
 Vlan	D	2905	Zupilak	D553353-8		Lo Po		634	ImDv	K8 V	{ -3 }	(C21-5)	[1125]	B	10	12
