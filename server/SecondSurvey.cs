@@ -376,8 +376,8 @@ namespace Maps
             { "SyRe", "Sy", null, "Syzlin Republic" },
             { "TeCl", "Tc", null, "Tellerian Cluster" },
             { "TrCo", "Tr", null, "Trindel Confederacy" },
-            { "TrCo", "Tr", null, "Trooles Confederation" },
             { "TrDo", "Td", null, "Trelyn Domain" },
+            { "TroC", "Tr", null, "Trooles Confederation" },
             { "UnGa", "Ug", "U", "Union of Garth" },
             { "UnHa", "Uh", null, "Union of Harmony" },
             { "V40S", "Ve", "Va", "40th Squadron" }, // (Ekhelle Ksafi)
