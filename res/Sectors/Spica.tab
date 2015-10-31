@@ -151,8 +151,8 @@ Spic	F	1120	Rhiza	E564442-4		Ni Pa		100	SoCf	K0 V M7 V M1 V	{ -3 }	(631-5)	[1111
 Spic	J	1123	Domecile	C533535-7		Ni Po		803	SoCf	K0 V M5 V	{ -2 }	(742-4)	[3335]		8	34
 Spic	J	1126	Aequine	A75A344-D		Lo Wa		300	SoCf	K8 IV	{ 1 }	(521-1)	[143B]		10	9
 Spic	J	1128	Evermore	A864320-8	KM	Lo		824	SoCf	M3 V M3 V M7 V	{ 0 }	(B21-4)	[1313]		11	13
-Spic	J	1129	Portends	E663000-0	KM	Ba		2	SoCf	M2 V	{ -2 }	(200-5)	[0000]		11	0
-Spic	N	1133	Solitude	E557000-0		Ba		0	SoCf	K5 V M7 V	{ -3 }	(200-5)	[0000]		12	0
+Spic	J	1129	Portends	E663000-0	KM	Ba		002	SoCf	M2 V	{ -2 }	(200-5)	[0000]		11	0
+Spic	N	1133	Solitude	E557000-0		Ba		000	SoCf	K5 V M7 V	{ -3 }	(200-5)	[0000]		12	0
 Spic	N	1134	Lass	B645500-8	KM	Ag Ni		904	SoCf	K4 III	{ 1 }	(B45-3)	[1613]		8	154
 Spic	N	1137	Sirrinn	B551457-8	KM	Ni Po		100	SoCf	M3 V M6 V	{ 0 }	(633+1)	[4458]		11	54
 Spic	N	1139	Front Yards	B577614-A	K	Ag Ni		100	HvFd	M2 V K8 V	{ 2 }	(856+1)	[4838]		13	240
@@ -194,7 +194,7 @@ Spic	B	1410	Larellum	C535587-6		Ni		503	NaHu	M2 V	{ -2 }	(742-2)	[5356]		14	45
 Spic	F	1416	Distal	B541223-8		He Lo Po		720	NaHu	A8 V	{ -1 }	(611-4)	[1125]		10	4
 Spic	F	1417	Duomo	D5328DE-6		Na Po Ph Pz	A	903	NaHu	M0 V M0 V	{ -2 }	(A75+2)	[C69A]		11	700
 Spic	J	1423	Xezelfarb	D544723-6		Ag Pi Pz	A	610	HvFd	K2 V M9 V	{ -1 }	(966-4)	[4623]		13	194
-Spic	J	1427	Aow'Post	E7B4000-0		Ba Fl (minor)		10	HvFd	M2 V	{ -3 }	(200-5)	[0000]		12	0
+Spic	J	1427	Aow'Post	E7B4000-0		Ba Fl (minor)		010	HvFd	M2 V	{ -3 }	(200-5)	[0000]		12	0
 Spic	N	1431	Lyihtar	D423752-9		Na Po Pi		100	HvFd	M1 V M5 V	{ -1 }	(968-5)	[3615]		10	216
 Spic	N	1432	Peris	B545876-6	KM	Pa Ph Pi Pz	A	913	SoCf	A3 V	{ 1 }	(A78+1)	[7945]		13	560
 Spic	N	1433	Tongariro	E568557-6		Ag Ni Pr		420	SoCf	M2 V	{ -2 }	(742-2)	[5356]		5	45
@@ -210,7 +210,7 @@ Spic	J	1522	Waft	B511835-B	KM	Ic Na Ph Pi		914	HvFd	G0 V M4 V	{ 3 }	(F7D+1)	[6B3
 Spic	J	1527	House Lu	B301423-D		Ic Ni Va An		800	HvFd	K3 V	{ 1 }	(634-2)	[152A]		14	58
 Spic	J	1528	Raxt Durb	B000761-D		As Na Va Pi O:1828		412	HvFd	M2 V	{ 2 }	(C6D-2)	[3919]		6	749
 Spic	N	1539	Lehkak	D896622-6		Ag Ni		500	HvFd	M2 V M4 V	{ -2 }	(852-5)	[2412]		9	40
-Spic	N	1540	Bazat	E540000-0		Ba De He Po		4	HvFd	G0 V	{ -3 }	(200-5)	[0000]		8	0
+Spic	N	1540	Bazat	E540000-0		Ba De He Po		004	HvFd	G0 V	{ -3 }	(200-5)	[0000]		8	0
 Spic	B	1601	Trivia	C101540-B		Ic Ni Va		800	NaHu	M3 III	{ 0 }	(744-4)	[1516]		5	67
 Spic	B	1604	Rippel	D843547-7		Ni Po		400	NaHu	M2 V	{ -3 }	(741-3)	[5257]		12	20
 Spic	B	1605	Pugeot	D542626-6		He Ni Po		200	NaHu	M2 V	{ -3 }	(851-4)	[5345]		11	24
@@ -271,7 +271,7 @@ Spic	K	1927	Wrengex IV	B789265-C		Lo O:2026		500	HvFd	A7 V	{ 1 }	(411-1)	[133A]	
 Spic	K	1930	Kurzon Dax	D798656-7		Ag Ni		503	HvFd	G1 V	{ -2 }	(852-3)	[5446]		9	56
 Spic	O	1934	Sealene	XA7A501-6		Ni Oc Fo (minor)	R	415	HvFd	K1 V M2 V	{ -3 }	(741-5)	[1212]		10	14
 Spic	O	1938	Danan	B677556-B		Ag Ni		335	HvFd	M0 V	{ 2 }	(F46+1)	[474A]		11	360
-Spic	C	2002	Liam	E899000-0		Ba		2	NaHu	M2 V M3 V	{ -3 }	(200-5)	[0000]		14	0
+Spic	C	2002	Liam	E899000-0		Ba		002	NaHu	M2 V M3 V	{ -3 }	(200-5)	[0000]		14	0
 Spic	C	2003	TYROLIA	A41199B-C		Hi Ic In Na		703	NaHu	K3 V	{ 4 }	(E8F+5)	[BD7E]		10	8,400
 Spic	C	2010	NUGENT	A431975-F	KM	Hi Na Po		304	NaHu	K2 V	{ 4 }	(F8G+2)	[7D3D]		7	3,840
 Spic	G	2015	Aesop	C895356-7		Lo		600	NaHu	M0 V M6 V	{ -2 }	(521-3)	[2146]		11	7
@@ -287,7 +287,7 @@ Spic	G	2113	Adamantium	A101354-D		Ic Lo Va		300	NaHu	K8 V M8 V	{ 1 }	(521-1)	[14
 Spic	G	2117	Rasomb	B564202-C		Lo		602	HvFd	M2 V K4 V	{ 1 }	(611-3)	[1318]		12	4
 Spic	G	2118	Deru Nooq	A8638A5-C		Ri Ph		210	HvFd	M6 III	{ 3 }	(B7D+1)	[6B3A]		6	1,001
 Spic	G	2120	Zokel	C634853-A		Ph		534	HvFd	K2 V	{ 1 }	(H7A-2)	[5927]		10	952
-Spic	K	2122	Bolehlz	E7BA000-0		Ba Fl		0	HvFd	M1 V K7 V	{ -3 }	(200-5)	[0000]		10	0
+Spic	K	2122	Bolehlz	E7BA000-0		Ba Fl		000	HvFd	M1 V K7 V	{ -3 }	(200-5)	[0000]		10	0
 Spic	K	2124	Delf III	C6A4432-8		Fl Ni		402	HvFd	G1 III D	{ -2 }	(831-5)	[1214]		10	12
 Spic	K	2125	Bapeng	D6AA732-8		Fl		402	HvFd	G0 V M3 V	{ -2 }	(B66-5)	[3514]		8	198
 Spic	K	2127	Pekihr	E6A7463-8		Fl Ni O:2026		610	HvFd	M0 V	{ -3 }	(731-5)	[1125]		12	11
@@ -350,7 +350,7 @@ Spic	L	2523	Rebang	C896455-7		Ni Pa		914	HvFd	M1 V M9 V	{ -2 }	(631-4)	[2235]		8
 Spic	L	2524	Deso	B655734-A		Ag Ga		220	HvFd	K1 V	{ 3 }	(B6C+1)	[5A38]		6	792
 Spic	L	2525	Bendus	D100656-A		Na Ni Va		305	HvFd	G3 V	{ -1 }	(D53-2)	[5549]		11	156
 Spic	L	2529	Erest	A695723-C		Ag Pi		424	HvFd	M0 V M0 V	{ 3 }	(F6D+1)	[4A29]		11	1,170
-Spic	L	2530	Nehron	E699000-0		Ba		0	HvFd	M3 V	{ -3 }	(200-5)	[0000]		8	0
+Spic	L	2530	Nehron	E699000-0		Ba		000	HvFd	M3 V	{ -3 }	(200-5)	[0000]		8	0
 Spic	P	2532	SHIPSBOAT	B668942-C	KM	Hi Pr		503	HvFd	F4 V M6 V	{ 4 }	(E8F+1)	[5D18]		9	1,680
 Spic	P	2536	Nehlar	A843755-D		Po Pi		400	HvFd	G1 V M3 V	{ 2 }	(96D+1)	[593B]		9	702
 Spic	P	2537	Raghehk	A956563-D		Ag Ni O:2536		424	HvFd	F4 V	{ 2 }	(D46-1)	[272A]		12	281
