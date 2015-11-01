@@ -675,6 +675,9 @@ button:hover {
 }
 .search-results #closeResultsBtn { display: inline-block; }
 
+#searchBtn, #closeRouteBtn, #closeResultsBtn { opacity: 0.5; }
+#searchBtn:hover, #closeRouteBtn:hover, #closeResultsBtn:hover { opacity: 1; }
+
 #starBtn {
   height: 30px;
   float: left;
