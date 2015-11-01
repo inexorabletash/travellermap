@@ -36,8 +36,24 @@ namespace Maps.API
                     if (sector == null)
                         throw new HttpError(404, "Not Found", string.Format("The specified sector '{0}' was not found.", sectorName));
 
-                    int hex = GetIntOption("hex", 0);
-                    loc = new Location(sector.Location, hex);
+                    if (HasOption("subsector"))
+                    {
+                        string subsector = GetStringOption("subsector");
+                        int index = sector.SubsectorIndexFor(subsector);
+                        if (index == -1)
+                            throw new HttpError(404, "Not Found", string.Format("The specified subsector '{0}' was not found.", subsector));
+                        int ssx = index % 4;
+                        int ssy = index / 4;
+                        Hex hex = new Hex(
+                            (byte)(ssx * Astrometrics.SubsectorWidth + Astrometrics.SubsectorWidth / 2),
+                            (byte)(ssy * Astrometrics.SubsectorHeight + Astrometrics.SubsectorHeight / 2));
+                        loc = new Location(sector.Location, hex);
+                    }
+                    else
+                    {
+                        int hex = GetIntOption("hex", 0);
+                        loc = new Location(sector.Location, hex);
+                    }
                 }
                 else if (HasLocation())
                 {

@@ -1720,7 +1720,7 @@ var Util = {
       this.ScaleCenterAtSectorHex(
         float('scale'), float('sx'), float('sy'), float('hx'), float('hy'));
     } else if ('sector' in params) {
-      MapService.coordinates(params.sector, params.hex)
+      MapService.coordinates(params.sector, params.hex, {subsector: params.subsector})
         .then(function(location) {
           if (location.hx && location.hy) { // NOTE: Test for undefined -or- zero
             self.ScaleCenterAtSectorHex(64, location.sx, location.sy, location.hx, location.hy);

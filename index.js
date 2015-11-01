@@ -108,6 +108,7 @@ window.addEventListener('DOMContentLoaded', function() {
     });
 
     delete urlParams.sector;
+    delete urlParams.subsector;
     delete urlParams.hex;
     ['x', 'y', 'options', 'scale', 'style'].concat(namedOptions).forEach(function(p) {
       if (urlParams[p] === defaults[p]) delete urlParams[p];

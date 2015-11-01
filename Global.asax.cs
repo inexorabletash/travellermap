@@ -63,6 +63,7 @@ namespace Maps
 
             routes.Add(new RegexRoute(@"/go/(?<sector>[^/]+)", new RedirectRouteHandler("/?sector={sector}", statusCode: 302)));
             routes.Add(new RegexRoute(@"/go/(?<sector>[^/]+)/(?<hex>[0-9]{4})", new RedirectRouteHandler("/?sector={sector}&hex={hex}", statusCode: 302)));
+            routes.Add(new RegexRoute(@"/go/(?<sector>[^/]+)/(?<subsector>[A-Pa-p])", new RedirectRouteHandler("/?sector={sector}&subsector={subsector}", statusCode: 302)));
 
             routes.Add(new RegexRoute(@"/booklet/(?<sector>[^/]+)", new RedirectRouteHandler("/make/booklet?sector={sector}", statusCode: 302)));
             routes.Add(new RegexRoute(@"/sheet/(?<sector>[^/]+)/(?<hex>[0-9]{4})", new RedirectRouteHandler("/world?sector={sector}&hex={hex}", statusCode: 302)));
