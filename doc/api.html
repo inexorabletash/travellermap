@@ -532,6 +532,9 @@ table#features, #features th, #features td { border: solid 1px black; }
         http://travellermap.com/api/coordinates?sector=<var>sector</var>&amp;hex=<var>hex</var>
     </p>
     <p class="code">
+        http://travellermap.com/api/coordinates?sector=<var>sector</var>&amp;subsector=<var>subsector</var>
+    </p>
+    <p class="code">
         http://travellermap.com/api/coordinates?sx=<var>sx</var>&amp;sy=<var>sy</var>
     </p>
     <p class="code">
@@ -548,7 +551,8 @@ table#features, #features th, #features td { border: solid 1px black; }
     <h4>Parameters:</h4>
     <dl class="params">
         <dt>sector <dd>specify the <a href="#system_location">sector location</a> by name, e.g. "Spinward%20Marches"
-        <dt>hex <dd>specify <a href="#system_location">hex location</a> within the named sector
+        <dt>hex <dd>specify <a href="#system_location">hex location</a>; optional
+        <dt>subsector <dd>specify subsector (<code>A</code> &ndash; <code>P</code> or name); optional
         <dt>sx
         <dt>sy <dd>sector in <a href="#system_sectorhex">sector/hex coordinates</a>
         <dt>hx
@@ -565,6 +569,10 @@ table#features, #features th, #features td { border: solid 1px black; }
                 <li><a href="#system_world">World-Space Coordinates</a> x, y
             </ul>
 
+        <li>If <code>sector</code> is specified without <code>hex</code> or <code>subsector</code>,
+          the coordinates of the top-left corner of the sector are returned.
+        <li>If <code>sector</code> and <code>subsector</code> are specified,
+          the coordinates of the center of of the subsector are returned.
         <li>
           The default output format is <a href="http://json.org/">JSON</a>. To retrieve results in XML form, specify
           the HTTP header <code>Accept: text/xml</code> or include <code>accept=text/xml</code>
@@ -1135,7 +1143,7 @@ table#features, #features th, #features td { border: solid 1px black; }
       <dl class="params">
         <dt>sector <dd>sector name
         <dt>quadrant <dd>one of <code>Alpha</code>, <code>Beta</code>, <code>Gamma</code> or <code>Delta</code>
-        <dt>subsector <dd>subsector index (<code>A</code> &ndash; <code>P</code> or name)
+        <dt>subsector <dd>subsector (<code>A</code> &ndash; <code>P</code> or name)
         <dt>domain <dd>one of the <a target="_blank" href="http://wiki.travellerrpg.com/Domain">domains of the Third Imperium</a> (Sylea, Vland, Gateway, Ilelish, Antares, Sol, Deneb)
         <dt>x1
         <dt>y1 <dd>top-left hex (inclusive) of the rectangle in <a href="#system_world">World-Space Coordinates</a>
