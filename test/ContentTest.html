@@ -74,6 +74,14 @@ check('text/xml', 'refs/coordinates_spin.xml', SERVICE_BASE + '/api/coordinates?
 check('application/json', 'refs/coordinates_spin_1910.json', SERVICE_BASE + '/api/coordinates?sector=spin&hex=1910');
 check('text/xml', 'refs/coordinates_spin_1910.xml', SERVICE_BASE + '/api/coordinates?sector=spin&hex=1910');
 
+check('application/json', 'refs/coordinates_spin_c.json', SERVICE_BASE + '/api/coordinates?sector=spin&subsector=c');
+check('text/xml', 'refs/coordinates_spin_c.xml', SERVICE_BASE + '/api/coordinates?sector=spin&subsector=c');
+
+check('application/json', 'refs/coordinates_spin_regina.json', SERVICE_BASE + '/api/coordinates?sector=spin&subsector=regina');
+check('text/xml', 'refs/coordinates_spin_regina.xml', SERVICE_BASE + '/api/coordinates?sector=spin&subsector=regina');
+
+// Credits API
+
 check('application/json', 'refs/credits_legend.json', SERVICE_BASE + '/api/credits?sector=legend');
 check('text/xml', 'refs/credits_legend.xml', SERVICE_BASE + '/api/credits?sector=legend');
 

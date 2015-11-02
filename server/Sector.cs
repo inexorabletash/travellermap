@@ -299,8 +299,12 @@ namespace Maps
             if (string.IsNullOrWhiteSpace(label))
                 return -1;
             Subsector subsector;
-            if (label.Length == 1 && 'A' <= label.ToUpperInvariant()[0] && label.ToUpperInvariant()[0] <= 'P')
-                return (int)label.ToUpperInvariant()[0] - (int)'A';
+            if (label.Length == 1)
+            {
+                char c = char.ToUpperInvariant(label[0]);
+                if (Util.InRange(c, 'A', 'P'))
+                    return (int)c - (int)'A';
+            }
 
             subsector = Subsectors.Where(ss => !string.IsNullOrEmpty(ss.Name) && ss.Name.Equals(label, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
             if (subsector == null)
