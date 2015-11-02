@@ -5,8 +5,6 @@ window.addEventListener('DOMContentLoaded', function() {
   var config = $('script[src="toc.js"]');
   var selector = (config && config.getAttribute('data-toc-selector')) || 'h2,h3';
 
-  console.log(config, selector);
-
   var toc = document.createElement('nav');
   toc.className = 'toc';
   [].slice.call($$(selector)).forEach(function(h) {
