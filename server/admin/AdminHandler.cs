@@ -13,6 +13,9 @@ namespace Maps.Admin
             if (context.Request.IsLocal)
                 return true;
 
+            if (!context.Request.IsSecureConnection)
+                return false;
+
             if (context.Request["key"] == System.Configuration.ConfigurationManager.AppSettings["AdminKey"])
                 return true;
 
@@ -29,7 +32,15 @@ namespace Maps.Admin
 
             context.Response.Cache.SetCacheability(HttpCacheability.NoCache);
             if (!AdminAuthorized(context))
+            {
+                context.Response.TrySkipIisCustomErrors = true;
+                context.Response.StatusCode = 403;
+                context.Response.StatusDescription = "Forbidden";
+                context.Response.ContentType = System.Net.Mime.MediaTypeNames.Text.Plain;
+                context.Response.Output.WriteLine("Incorrect secret or connection not secure.");
+                context.Response.Flush();
                 return;
+            }
             Process(context);
         }
 
