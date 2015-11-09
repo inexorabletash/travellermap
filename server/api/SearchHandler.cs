@@ -62,7 +62,7 @@ namespace Maps.API
                 // Do the search
                 //
                 ResourceManager resourceManager = new ResourceManager(context.Server);
-                SectorMap map = SectorMap.GetInstance(resourceManager);
+                SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, GetStringOption("milieu"));
 
                 query = query.Replace('*', '%'); // Support * and % as wildcards
                 query = query.Replace('?', '_'); // Support ? and _ as wildcards
@@ -187,7 +187,7 @@ namespace Maps.API.Results
             internal int? Importance { get; set; }
         }
 
-        internal static Item LocationToSearchResult(SectorMap map, ResourceManager resourceManager, ItemLocation location)
+        internal static Item LocationToSearchResult(SectorMap.Milieu map, ResourceManager resourceManager, ItemLocation location)
         {
             if (location is WorldLocation)
             {

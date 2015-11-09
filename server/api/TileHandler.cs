@@ -48,7 +48,7 @@ namespace Maps.API
                 bool silly = (Math.Abs((int)x % 2) == Math.Abs((int)y % 2)) && (dt.Month == 4 && dt.Day == 1);
                 silly = GetBoolOption("silly", silly);
 
-                Selector selector = new RectSelector(SectorMap.GetInstance(resourceManager), resourceManager, tileRect);
+                Selector selector = new RectSelector(SectorMap.ForMilieu(resourceManager, GetStringOption("milieu")), resourceManager, tileRect);
                 Stylesheet styles = new Stylesheet(scale, options, style);
                 RenderContext ctx = new RenderContext(resourceManager, selector, tileRect, scale, options, styles, tileSize);
                 ctx.Silly = silly;

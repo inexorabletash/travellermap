@@ -30,7 +30,7 @@ namespace Maps.API
                 //
                 // Coordinates
                 //
-                SectorMap map = SectorMap.GetInstance(resourceManager);
+                SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, GetStringOption("milieu"));
                 Location loc = new Location(map.FromName("Spinward Marches").Location, 1910);
 
                 if (HasOption("sector") && HasOption("hex"))

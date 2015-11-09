@@ -24,7 +24,7 @@ namespace Maps.API
                 // NOTE: This (re)initializes a static data structure used for 
                 // resolving names into sector locations, so needs to be run
                 // before any other objects (e.g. Worlds) are loaded.
-                SectorMap map = SectorMap.GetInstance(resourceManager);
+                SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, GetStringOption("milieu"));
                 Location loc = new Location(map.FromName("Spinward Marches").Location, 1910);
 
                 if (HasOption("sector"))

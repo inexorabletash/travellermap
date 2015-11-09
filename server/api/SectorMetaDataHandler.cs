@@ -26,7 +26,7 @@ namespace Maps.API
                 // resolving names into sector locations, so needs to be run
                 // before any other objects (e.g. Worlds) are loaded.
                 ResourceManager resourceManager = new ResourceManager(context.Server);
-                SectorMap map = SectorMap.GetInstance(resourceManager);
+                SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, GetStringOption("milieu"));
                 Sector sector;
 
                 if (context.Request.HttpMethod == "POST")

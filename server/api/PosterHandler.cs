@@ -46,7 +46,7 @@ namespace Maps.API
                     tileRect.Width = Math.Max(x1, x2) - tileRect.X;
                     tileRect.Height = Math.Max(y1, y2) - tileRect.Y;
 
-                    SectorMap map = SectorMap.GetInstance(resourceManager);
+                    SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, GetStringOption("milieu"));
                     selector = new RectSelector(map, resourceManager, tileRect);
                     selector.Slop = false;
 
@@ -99,7 +99,7 @@ namespace Maps.API
                     tileRect.Width = Math.Max(x1, x2) - tileRect.X;
                     tileRect.Height = Math.Max(y1, y2) - tileRect.Y;
 
-                    SectorMap map = SectorMap.GetInstance(resourceManager);
+                    SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, GetStringOption("milieu"));
                     selector = new RectSelector(map, resourceManager, tileRect);
                     selector.Slop = false;
 
@@ -143,7 +143,7 @@ namespace Maps.API
                         if (sectorName == null)
                             throw new HttpError(400, "Bad Request", "No sector specified.");
 
-                        SectorMap map = SectorMap.GetInstance(resourceManager);
+                        SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, GetStringOption("milieu"));
 
                         sector = map.FromName(sectorName);
                         if (sector == null)

@@ -25,7 +25,7 @@ namespace Maps
 
         // For XML Deserialization:
         [XmlAttribute("Sector")]
-        public string SectorName { get { return null; } set { Sector = SectorMap.GetInstance().FromName(value).Location; } }
+        public string SectorName { get { return null; } set { Sector = SectorMap.GetSectorCoordinatesByName(value); } }
         [XmlAttribute("Hex")]
         public string HexName { get { return null; } set { Hex = new Hex(value); } }
 
@@ -92,7 +92,7 @@ namespace Maps
         public Point Sector { get; set; }
         public Hex Hex { get; set; }
 
-        public void Resolve(SectorMap sectorMap, ResourceManager resourceManager, out Sector sector, out World world)
+        public void Resolve(SectorMap.Milieu sectorMap, ResourceManager resourceManager, out Sector sector, out World world)
         {
             if (sectorMap == null)
                 throw new ArgumentNullException("sectorMap");
@@ -134,7 +134,7 @@ namespace Maps
         public Point SectorLocation { get; set; }
         public char Index { get; set; }
 
-        public void Resolve(SectorMap sectorMap, out Sector sector, out Subsector subsector)
+        public void Resolve(SectorMap.Milieu sectorMap, out Sector sector, out Subsector subsector)
         {
             if (sectorMap == null)
                 throw new ArgumentNullException("sectorMap");
@@ -166,7 +166,7 @@ namespace Maps
 
         public Point SectorCoords { get; set; }
 
-        public Sector Resolve(SectorMap sectorMap)
+        public Sector Resolve(SectorMap.Milieu sectorMap)
         {
             if (sectorMap == null)
                 throw new ArgumentNullException("sectorMap");
@@ -190,7 +190,7 @@ namespace Maps
         public Point Coords { get; set; }
         public int Radius { get; set; }
 
-        public Sector Resolve(SectorMap sectorMap)
+        public Sector Resolve(SectorMap.Milieu sectorMap)
         {
             if (sectorMap == null)
                 throw new ArgumentNullException("sectorMap");

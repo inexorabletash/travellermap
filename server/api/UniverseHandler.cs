@@ -32,7 +32,7 @@ namespace Maps.API
                 SectorMap map = SectorMap.GetInstance(resourceManager);
 
                 // Filter parameters
-                string era = GetStringOption("era");
+                string milieu = GetStringOption("milieu") ?? GetStringOption("era");
                 bool requireData = GetBoolOption("requireData", defaultValue: false);
                 string[] tags = GetStringsOption("tag");
 
@@ -42,7 +42,7 @@ namespace Maps.API
                     if (requireData && sector.DataFile == null)
                         continue;
 
-                    if (era != null && sector?.DataFile.Era != era)
+                    if (milieu != null && sector.DataFile?.Era != milieu)
                         continue;
 
                     if (tags != null && !tags.Any(tag => sector.Tags.Contains(tag)))

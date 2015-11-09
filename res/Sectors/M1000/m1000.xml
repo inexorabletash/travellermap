@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Sectors>
+	<Sector>
+		<Y>0</Y>
+		<X>2</X>
+		<Name>Ley Sector</Name>
+		<Name>Ley</Name>
+		<Name Lang="vi">Makhuniim</Name>
+		<DataFile Publisher="QLI" Source="Gateway to Destiny" Ref="http://dotclue.org/t20/" Era="1000">M1000/Ley.sec</DataFile>
+		<Allegiances Publisher="QLI" Source="Gateway to Destiny" Era="1000">
+			<Allegiance Code="IC" Base="Cs">Imperial Client State</Allegiance>
+			<Allegiance Code="Id" Base="Im">Imperial (Domain of Sylea, or "Delphi Worlds")</Allegiance>
+			<Allegiance Code="IL" Base="Im">Imperial, culturally Luriani</Allegiance>
+			<Allegiance Code="IU" Base="Im">Imperial, Ursa world</Allegiance>
+			<Allegiance Code="Xx" Base="Na">Independent</Allegiance>
+			
+			<Allegiance Code="Hc">Hiver Client</Allegiance>
+			<Allegiance Code="KL">Khuur League</Allegiance>
+		</Allegiances>
+		<Borders Source="J Greely" Ref="http://dotclue.org/t20" Era="1000">
+			<Border Allegiance="Im" LabelPosition="0831">
+				0000 0100 0200 0300 0400 0500 0600 0700 0800 0900 1000 1100 1200 1300
+				1400 1500 1600 1700 1800 1701 1702 1703 1704 1804 1705 1605 1506 1507 1607
+				1708 1808 1909 2009 1910 1911 1912 2012 2013 2014 2115 2214 2314 2313
+				2314 2315 2415 2316 2216 2217 2318 2218 2219 2320 2420 2320 2220 2221
+				2222 2122 2022 2023 2024 1925 1926 1927 2027 2128 2227 2327 2326 2327
+				2227 2128 2129 2029 2030 2131 2132 2133 2033 2034 1935 1936 2036 2137
+				2236 2336 2435 2336 2236 2137 2037 1938 1939 1940 1941 1841 1741 1641
+				1541 1441 1341 1340 1239 1139 1039 1038 0938 0937 0936 0835 0735 0634
+				0535 0434 0335 0336 0236 0237 0138 0139 0038 0037 0036 0035 0034 0033
+				0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019
+				0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005
+				0004 0003 0002 0001 0000
+			</Border>
+			<Border Allegiance="Im" ShowLabel="false">
+				2724 2725 2724
+			</Border>
+			<Border Allegiance="Im" ShowLabel="false">
+				2717
+			</Border>
+			<Border Allegiance="KL" Color="blue" LabelPosition="3028">
+				2530 2629 2729 2728 2727 2827 2927 3026 3127 3226 3127 3026 2927 2827
+				2828 2829 2729 2629 2630 2530
+			</Border>
+		</Borders>
+		<Subsectors Source="Gateway to Destiny">
+			<Subsector Index="A">Ikhnaton</Subsector>
+			<Subsector Index="B">Nightmare</Subsector>
+			<Subsector Index="C">Noir Deep</Subsector>
+			<Subsector Index="D">Zagrathian</Subsector>
+			<Subsector Index="E">Spearhead</Subsector>
+			<Subsector Index="F">Guadix Drift</Subsector>
+			<Subsector Index="G">Titanstorm</Subsector>
+			<Subsector Index="H">Osiris Deep</Subsector>
+			<Subsector Index="I">Highlord</Subsector>
+			<Subsector Index="J">Matarishan</Subsector>
+			<Subsector Index="K">Frontier Worlds</Subsector>
+			<Subsector Index="L">Sydymic</Subsector>
+			<Subsector Index="M">Satyressia</Subsector>
+			<Subsector Index="N">Outreaumer</Subsector>
+			<Subsector Index="O">Diamond-Prince</Subsector>
+			<Subsector Index="P">Outworld</Subsector>
+		</Subsectors>
+		<Routes Source="Gateway to Destiny">
+			<Route StartOffsetX="-1" StartOffsetY="0" Start="2902" End="0201" />
+			<Route StartOffsetX="-1" StartOffsetY="0" Start="3229" End="0231" />
+			<Route StartOffsetX="0" StartOffsetY="-1" Start="0338" End="0201" />
+			<Route Start="0201" End="0504" />
+			<Route Start="0504" End="0606" />
+			<Route Start="0606" End="0408" />
+			<Route Start="0408" End="0109" />
+			<Route Start="0606" End="0609" />
+			<Route Start="0609" End="0512" />
+			<Route Start="0609" End="0810" />
+			<Route Start="0512" End="0111" />
+			<Route Start="0512" End="0214" />
+			<Route Start="0512" End="0812" />
+			<Route Start="0812" End="0815" />
+			<Route Start="0815" End="0817" />
+			<Route Start="0817" End="0618" />
+			<Route Start="0618" End="0318" />
+			<Route Start="0817" End="1217" />
+			<Route Start="1217" End="1420" />
+			<Route Start="1217" End="1520" />
+			<Route Start="0812" End="1113" />
+			<Route Start="1113" End="1315" />
+			<Route Start="1113" End="1313" />
+			<Route Start="1313" End="1613" />
+			<Route Start="0606" End="0905" />
+			<Route Start="0905" End="1002" />
+			<Route Start="0905" End="1107" />
+			<Route Start="1107" End="1210" />
+			<Route Start="1210" End="1313" />
+			<Route Start="1107" End="1406" />
+			<Route Start="1406" End="1304" />
+			<Route Start="1304" End="1202" />
+			<Route Start="1613" End="1814" />
+			<Route Start="0618" End="0921" />
+			<Route Start="1814" End="1911" />
+			<Route Start="1814" End="1816" />
+			<Route Start="1816" End="2117" />
+			<Route Start="2117" End="1919" />
+			<Route Start="1919" End="2221" />
+			<Route Start="0122" End="0224" />
+			<Route Start="0224" End="0322" />
+			<Route Start="0224" End="0226" />
+			<Route Start="0226" End="0328" />
+			<Route Start="0328" End="0530" />
+			<Route Start="0530" End="0231" />
+			<Route Start="0231" End="0533" />
+			<Route Start="0533" End="0933" />
+			<Route Start="0933" End="1334" />
+			<Route Start="1334" End="1435" />
+			<Route Start="1435" End="1339" />
+			<Route Start="1435" End="1437" />
+			<Route Start="1437" End="1540" />
+			<Route Start="1437" End="1637" />
+
+			<Route Start="1334" End="1230" />
+			<Route Start="1230" End="1528" />
+			<Route Start="1528" End="1228" />
+			<Route Start="1528" End="1425" />
+			<Route Start="1425" End="1623" />
+			<Route Start="1425" End="1023" />
+			<Route Start="1023" End="0921" />
+			<Route Start="1637" End="1936" />
+			<Route Start="1528" End="1728" />
+			<Route Start="1528" End="1730" />
+			<Route Start="1540" EndOffsetY="1" End="1601" />
+			<Route Start="2221" End="2724" />
+
+			<Route Start="1730" End="2129" />
+			<Route Start="2129" End="2227" />
+
+			<Route Start="1730" End="2032" />
+			<Route Start="2032" End="2133" />
+			<Route Start="2133" End="2435" />
+
+			<Route Start="2032" End="1936" />
+		</Routes>
+	</Sector>
+	<Sector>
+		<Y>0</Y>
+		<X>3</X>
+		<Name>Gateway</Name>
+		<DataFile Publisher="QLI" Source="Gateway to Destiny" Ref="http://dotclue.org/t20/" Era="1000">M1000/Gateway.sec</DataFile>
+		<Allegiances Publisher="QLI" Source="Gateway to Destiny" Era="1000">
+			<Allegiance Code="IC">Imperial Client State</Allegiance>
+			<Allegiance Code="Id" Base="Im">Imperial (Domain of Sylea, or "Delphi Worlds")</Allegiance>
+			<Allegiance Code="IL" Base="Im">Imperial, culturally Luriani</Allegiance>
+			<Allegiance Code="IU" Base="Im">Imperial, Ursa world</Allegiance>
+			<Allegiance Code="Xx" Base="Na">Independent</Allegiance>
+			
+			<Allegiance Code="Ak">Akeena Union</Allegiance>
+			<Allegiance Code="Ga">Galian Federation</Allegiance>
+			<Allegiance Code="Ho">Hochiken People's Assembly</Allegiance>
+			<Allegiance Code="Me">Megusard Corporate</Allegiance>
+			<Allegiance Code="Pl">Plavian League</Allegiance>
+			<Allegiance Code="Re">Renkard Union</Allegiance>
+			<Allegiance Code="Sw">Swanfei Free Worlds</Allegiance>
+			<Allegiance Code="Tr">Trindel Confederacy</Allegiance>
+			<Allegiance Code="Vi">Viyard Concourse</Allegiance>
+		</Allegiances>
+		<Borders>
+			<Border Allegiance="Ho" Color="darkgreen">
+				1101 1201 1302 1401 1501 1601 1702 1801 1902 2001 2101 2001 2002 2003
+				1904 1804 1705 1706 1806 1907 1908 2008 1908 1807 1708 1709 1609 1608
+				1508 1407 1308 1407 1406 1506 1505 1504 1403 1303 1202 1201 1101
+			</Border>
+			<Border Allegiance="Pl" Color="hotpink">
+				1412 1512 1612 1613 1614 1715 1815 1915 2014 2013 1913 1912 2011 2010
+				2011 2012 2113 2013 2014 1915 1916 2016 2017 1917 1817 1818 1817 1717
+				1617 1717 1716 1615 1614 1514 1413 1412
+			</Border>
+			<Border Allegiance="Ga" Color="darkred">
+				0425 0526 0625 0725 0724 0824 0924 1023 1022 1021 0921 1020 1019 1120
+				1219 1218 1319 1219 1220 1221 1322 1222 1223 1124 1024 1025 1126 1026
+				0927 0928 0929 1029 1129 1029 1030 0930 0830 0831 0832 0732 0631 0532
+				0533 0534 0433 0533 0532 0531 0430 0530 0629 0628 0528 0527 0526 0425
+			</Border>
+			<Border Allegiance="Ak" Color="darkkhaki">
+				2409 2509 2508 2607 2606 2506 2605 2706 2806 2707 2708 2608 2609 2710
+				2810 2710 2610 2611 2610 2609 2509 2409
+			</Border>
+			<Border Allegiance="Sw" Color="white">
+				2520 2619 2618 2719 2818 2817 2918 2818 2819 2820 2921 2820 2721 2722
+				2721 2620 2521 2520
+			</Border>
+			<Border Allegiance="Tr" Color="darkblue">
+				1423 1523 1622 1623 1724 1824 1924 1824 1825 1926 1825 1725 1624 1525
+				1526 1527 1627 1628 1629 1628 1627 1527 1526 1525 1424 1423
+			</Border>
+			<Border Allegiance="Vi" Color="orange">
+				1338 1437 1436 1536 1535 1634 1633 1632 1532 1432 1532 1531 1530 1531
+				1631 1731 1830 1829 1930 1931 1831 1832 1733 1734 1834 1835 1736 1737
+				1837 1938 2037 2138 2038 2039 2140 2039 1939 1839 1739 1639 1539 1438
+				1339 1338
+			</Border>
+			<Border Allegiance="Me" Color="darkslategray">
+				2329 2429 2529 2628 2728 2827 2928 2827 2728 2628 2629 2630 2531 2530
+				2429 2329
+			</Border>
+			<Border Allegiance="Re" Color="purple">
+				3029 3129 3128 3227 3226 3327 3328 3329 3330 3230 3131 3132 3133 3233
+				3134 3135 3235 3135 3034 3134 3133 3132 3031 3131 3130 3029
+			</Border>
+		</Borders>
+		<Subsectors Source="Gateway to Destiny">
+			<Subsector Index="A">Darksky</Subsector>
+			<Subsector Index="B">Atoon</Subsector>
+			<Subsector Index="C">Denkard</Subsector>
+			<Subsector Index="D">Lowton</Subsector>
+			<Subsector Index="E">Abysm</Subsector>
+			<Subsector Index="F">Windfleet</Subsector>
+			<Subsector Index="G">Castra</Subsector>
+			<Subsector Index="H">Forcett</Subsector>
+			<Subsector Index="I">Arconna</Subsector>
+			<Subsector Index="J">Beckann</Subsector>
+			<Subsector Index="K">Ashton</Subsector>
+			<Subsector Index="L">Riftin</Subsector>
+			<Subsector Index="M">Ownsbee</Subsector>
+			<Subsector Index="N">Ariel</Subsector>
+			<Subsector Index="O">Cinder</Subsector>
+			<Subsector Index="P">Farina</Subsector>
+		</Subsectors>
+	</Sector>
+	<Sector>
+		<Y>1</Y>
+		<X>2</X>
+		<Name>Glimmerdrift Reaches</Name>
+		<DataFile Publisher="QLI" Source="Gateway to Destiny" Ref="http://dotclue.org/t20/" Era="1000">M1000/GlimmerdriftReaches.sec</DataFile>
+		<Allegiances Publisher="QLI" Source="Gateway to Destiny" Era="1000">
+			<Allegiance Code="IC" Base="Cs">Imperial Client State</Allegiance>
+			<Allegiance Code="Id" Base="Im">Imperial (Domain of Sylea, or "Delphi Worlds")</Allegiance>
+			<Allegiance Code="IL" Base="Im">Imperial, culturally Luriani</Allegiance>
+			<Allegiance Code="IU" Base="Im">Imperial, Ursa world</Allegiance>
+			<Allegiance Code="Xx" Base="Na">Independent</Allegiance>
+			
+			<Allegiance Code="Bk">Beree Kanval</Allegiance>
+			<Allegiance Code="FH">Federation of Heron</Allegiance>
+			<Allegiance Code="Fm">Farreach Margravate</Allegiance>
+			<Allegiance Code="Fr">Federate Republic</Allegiance>
+			<Allegiance Code="GS">Grand Duchy of Stoner</Allegiance>
+			<Allegiance Code="GT">Glimmerdrift Trade Consortium</Allegiance>
+			<Allegiance Code="L9">Loyal Nineworld Republic</Allegiance>
+			<Allegiance Code="Mk">Maskai Empire</Allegiance>
+		</Allegiances>
+		<Borders>
+			<Border Allegiance="Im" LabelPosition="1102" WrapLabel="true">
+				0905 1004 1003 1103 1202 1302 1301 1300 1400 1500 1600 1700 1800 1900
+				1901 1801 1702 1602 1503 1403 1404 1403 1303 1202 1103 1104 1105 1004
+				0905
+			</Border>
+			<Border Allegiance="Im" LabelPosition="0339">
+				0031 0131 0230 0331 0430 0531 0631 0732 0733 0734
+				0735 0736 0737 0837 0838 0839 0840 0740 0639 0540
+				0440 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031
+			</Border>
+			<Border Allegiance="GS" Color="purple" LabelPosition="1010">
+				1013 1113 1112 1211 1311 1211 1212 1313 1213 1114 1014 1013
+			</Border>
+			<Border Allegiance="FH" Color="orange" WrapLabel="true">
+				0520 0521 0522 0622 0722 0821 0921 0821 0722 0622 0623 0622 0522 0521
+				0520
+			</Border>
+			<Border Allegiance="GT" Color="darkgreen" ShowLabel="false">
+				2304
+			</Border>
+			<Border Allegiance="GT" Color="darkgreen" ShowLabel="false">
+				2107
+			</Border>
+			<Border Allegiance="GT" Color="darkgreen" ShowLabel="false">
+				2309
+			</Border>
+			<Border Allegiance="GT" Color="darkgreen" ShowLabel="false">
+				2611
+			</Border>
+			<Border Allegiance="GT" Color="darkgreen" ShowLabel="false">
+				2617 2718 2818 2718 2617
+			</Border>
+			<Border Allegiance="GT" Color="darkgreen" LabelPosition="2914" WrapLabel="true">
+				3008 3109 3110 3210 3111 3112 3113 3114 3113 3112 3111 3110 3109 3008
+			</Border>
+			<Border Allegiance="Fr" Color="darkslategray" LabelPosition="2906" WrapLabel="true">
+				2602 2703 2803 2904 3004 2904 2804 2705 2706 2707 2708 2808 2809 2910
+				2810 2809 2808 2708 2707 2706 2705 2804 2803 2703 2602
+			</Border>
+			<Border Allegiance="Mk" Color="hotpink" LabelPosition="1523" WrapLabel="true">
+				1323 1422 1522 1422 1423 1324 1323
+			</Border>
+			<Border Allegiance="Fm" Color="darkkhaki" LabelPosition="2328" WrapLabel="true">
+				2025 2125 2124 2223 2222 2322 2321 2322 2222 2223 2324 2325 2425 2426
+				2527 2626 2627 2728 2628 2529 2429 2330 2429 2529 2528 2527 2426 2326
+				2226 2127 2027 2127 2126 2025
+			</Border>
+			<Border Allegiance="L9" Color="darkslategray" LabelPosition="2532" WrapLabel="true">
+				1932 2031 2132 2231 2230 2231 2332 2232 2233 2334 2434 2535 2434 2334
+				2234 2235 2336 2236 2235 2135 2134 2133 2132 2031 1932
+			</Border>
+		</Borders>
+		<Subsectors Source="Gateway to Destiny">
+			<Subsector Index="A">Darkling</Subsector>
+			<Subsector Index="B">Thorstone</Subsector>
+			<Subsector Index="C">Tri-Empire</Subsector>
+			<Subsector Index="D">Marla</Subsector>
+			<Subsector Index="E">Glowing</Subsector>
+			<Subsector Index="F">Kraxin</Subsector>
+			<Subsector Index="G">Williamsburg</Subsector>
+			<Subsector Index="H">Tasman</Subsector>
+			<Subsector Index="I">Even</Subsector>
+			<Subsector Index="J">Poonch</Subsector>
+			<Subsector Index="K">Sosie</Subsector>
+			<Subsector Index="L">Ryazan</Subsector>
+			<Subsector Index="M">Verge</Subsector>
+			<Subsector Index="N">Zairae</Subsector>
+			<Subsector Index="O">Sepik</Subsector>
+			<Subsector Index="P">Daro</Subsector>
+		</Subsectors>
+		<Routes Source="Gateway to Destiny">
+			<Route Start="1601" EndOffsetY="-1" End="1540" />
+			<Route Start="1302" End="1104" />
+			<Route Start="1302" End="1404" />
+			<Route Start="1302" End="1601" />
+			<Route Start="0131" End="0432" />
+			<Route Start="0432" End="0635" />
+			<Route Start="0635" End="0436" />
+			<Route Start="0635" End="0837" />
+		</Routes>
+	</Sector>
+	<Sector>
+		<Y>1</Y>
+		<X>3</X>
+		<Name>Crucis Margin</Name>
+		<DataFile Publisher="QLI" Source="Gateway to Destiny" Ref="http://dotclue.org/t20/" Era="1000">M1000/CrucisMargin.sec</DataFile>
+		<Allegiances Publisher="QLI" Source="Gateway to Destiny" Era="1000">
+			<Allegiance Code="IC">Imperial Client State</Allegiance>
+			<Allegiance Code="Id" Base="Im">Imperial (Domain of Sylea, or "Delphi Worlds")</Allegiance>
+			<Allegiance Code="IL" Base="Im">Imperial, culturally Luriani</Allegiance>
+			<Allegiance Code="IU" Base="Im">Imperial, Ursa world</Allegiance>
+			<Allegiance Code="Xx" Base="Na">Independent</Allegiance>
+
+			<Allegiance Code="GT">Glimmerdrift Trade Consortium</Allegiance>
+			<Allegiance Code="CK">Corporate Republic of Kobe</Allegiance>
+			<Allegiance Code="FA">Free and Holy Federation of Amil</Allegiance>
+			<Allegiance Code="Go">Greater Osaka</Allegiance>
+			<Allegiance Code="Hc">Hiver Client</Allegiance>
+			<Allegiance Code="Kc">K'Kree Client</Allegiance>
+			<Allegiance Code="KC">Katowice Conquest</Allegiance>
+			<Allegiance Code="KD">Kafoe Dominate</Allegiance>
+			<Allegiance Code="KW">Karhyri Worlds</Allegiance>
+			<Allegiance Code="LT">Lords of Thunder</Allegiance>
+			<Allegiance Code="MC">Mercantile Concord</Allegiance>
+			<Allegiance Code="Mi">Mische Conglomerate</Allegiance>
+			<Allegiance Code="Oe">Empire of Olduvai</Allegiance>
+			<Allegiance Code="Ow">Old Worlds</Allegiance>
+			<Allegiance Code="Oy">Oytrip of Tubroyllufotyusk</Allegiance>
+			<Allegiance Code="Rh">The Reach</Allegiance>
+			<Allegiance Code="Rm">Raidermarch</Allegiance>
+			<Allegiance Code="Sy">Syzlin Republic</Allegiance>
+		</Allegiances>
+		<Borders>
+			<Border Allegiance="Mi" Color="darkred">
+				0601 0702 0801 0901 0801 0802 0903 0904 0804 0704 0803 0802 0702 0601
+			</Border>
+			<Border Allegiance="FA" Color="olivedrab">
+				1502 1602 1702 1701 1702 1802 1902 1802 1702 1602 1502
+			</Border>
+			<Border Allegiance="Rm" Color="darkkhaki">
+				0214 0314 0413 0412 0413 0414 0515 0614 0515 0516 0616 0617 0616 0516
+				0416 0316 0215 0214
+			</Border>
+			<Border Allegiance="KD" Color="white">
+				1117 1217 1117
+			</Border>
+			<Border Allegiance="Ow" Color="darkslategray">
+				1417 1518 1617 1616 1516 1616 1717 1816 1717 1617 1618 1719 1819 1920
+				2019 2018 2019 2020 2021 2122 2021 1921 1821 1822 1722 1622 1523 1622
+				1621 1620 1520 1619 1618 1518 1417
+			</Border>
+			<Border Allegiance="KC" Color="darkblue">
+				1813 1914 2013 2012 2013 2114 2214 2215 2316 2215 2116 2016 2116 2115
+				2014 1914 1813
+			</Border>
+			<Border Allegiance="MC" Color="purple">
+				2405 2505 2504 2603 2602 2702 2701 2702 2802 2902 2903 3003 3104 3003
+				2903 2803 2804 2805 2806 2907 3006 2907 2908 2808 2809 2810 2811 2812
+				2813 2713 2612 2713 2812 2811 2810 2710 2610 2609 2608 2607 2507 2407
+				2507 2506 2405
+			</Border>
+			<Border Allegiance="LT" Color="hotpink">
+				3101
+			</Border>
+			<Border Allegiance="GT" Color="darkgreen" ShowLabel="false">
+				0121
+			</Border>
+			<Border Allegiance="GT" Color="darkgreen" ShowLabel="false">
+				0222
+			</Border>
+			<Border Allegiance="CK" Color="white">
+				0225 0326 0225
+			</Border>
+			<Border Allegiance="Go" Color="white">
+				0627 0727 0827 0727 0627
+			</Border>
+			<Border Allegiance="Sy" Color="darkblue">
+				0729 0829 0929 0930 1030 1130 1030 1031 1132 1133 1233 1134 1135 1034
+				0934 0834 0835 0836 0937 0938 1038 0938 0937 0836 0736 0835 0834 0833
+				0832 0831 0830 0829 0729
+			</Border>
+			<Border Allegiance="KW" Color="darkkhaki">
+				0140 0239 0238 0239 0340 0439 0540 0640 0540 0440 0340 0240 0140
+			</Border>
+			<Border Allegiance="Oy" Color="darkred">
+				2623
+			</Border>
+			<Border Allegiance="Rh" Color="orange">
+				2329 2428 2528 2627 2728 2627 2528 2428 2329
+			</Border>
+			<Border Allegiance="Oe" Color="darkslategray">
+				2638 2738 2638
+			</Border>
+		</Borders>
+		<Subsectors Source="Gateway to Destiny">
+			<Subsector Index="A">Ostermann</Subsector>
+			<Subsector Index="B">Vandir</Subsector>
+			<Subsector Index="C">Outrun</Subsector>
+			<Subsector Index="D">Chin Shan</Subsector>
+			<Subsector Index="E">Raidermarch</Subsector>
+			<Subsector Index="F">NewSun</Subsector>
+			<Subsector Index="G">Old Worlds</Subsector>
+			<Subsector Index="H">Peril's Edge</Subsector>
+			<Subsector Index="I">Kobe</Subsector>
+			<Subsector Index="J">Bright Heavens</Subsector>
+			<Subsector Index="K">Reach</Subsector>
+			<Subsector Index="L">No Return</Subsector>
+			<Subsector Index="M">Syzlin</Subsector>
+			<Subsector Index="N">Taitin</Subsector>
+			<Subsector Index="O">Scatter</Subsector>
+			<Subsector Index="P">Kixum</Subsector>
+		</Subsectors>
+	</Sector>
+</Sectors>

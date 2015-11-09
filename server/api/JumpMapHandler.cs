@@ -54,7 +54,7 @@ namespace Maps.API
                 }
                 else
                 {
-                    SectorMap map = SectorMap.GetInstance(resourceManager);
+                    SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, GetStringOption("milieu"));
 
                     if (HasOption("sector") && HasOption("hex"))
                     {
