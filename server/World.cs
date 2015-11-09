@@ -282,8 +282,7 @@ namespace Maps
         {
             get
             {
-                var ss = Sector.Subsector(Subsector);
-                return ss == null ? "" : ss.Name;
+                return Sector.Subsector(Subsector)?.Name ?? "";
             }
         }
 
@@ -291,10 +290,7 @@ namespace Maps
         {
             get
             {
-                if (Sector == null)
-                    return "";
-                var allegiance = Sector.GetAllegianceFromCode(Allegiance);
-                return allegiance == null ? "" : allegiance.Name;
+                return Sector?.GetAllegianceFromCode(Allegiance)?.Name ?? "";
             }
         }
 

@@ -151,25 +151,25 @@ namespace Maps.API.Results
             private Sector sector;
 
             [XmlAttribute]
-            public string Title { get { return (sector.DataFile != null ? sector.DataFile.Title : null) ?? sector.Title; } }
+            public string Title { get { return sector.DataFile?.Title ?? sector.Title; } }
 
             [XmlAttribute]
-            public string Author { get { return (sector.DataFile != null ? sector.DataFile.Author : null) ?? sector.Author; } }
+            public string Author { get { return sector.DataFile?.Author ?? sector.Author; } }
 
             [XmlAttribute]
-            public string Source { get { return (sector.DataFile != null ? sector.DataFile.Source : null) ?? sector.Source; } }
+            public string Source { get { return sector.DataFile?.Source ?? sector.Source; } }
 
             [XmlAttribute]
-            public string Publisher { get { return (sector.DataFile != null ? sector.DataFile.Publisher : null) ?? sector.Publisher; } }
+            public string Publisher { get { return sector.DataFile?.Publisher ?? sector.Publisher; } }
 
             [XmlAttribute]
-            public string Copyright { get { return (sector.DataFile != null ? sector.DataFile.Copyright : null) ?? sector.Copyright; } }
+            public string Copyright { get { return sector.DataFile?.Copyright ?? sector.Copyright; } }
 
             [XmlAttribute]
-            public string Era { get { return (sector.DataFile != null ? sector.DataFile.Era : null) ?? sector.Era; } }
+            public string Era { get { return sector.DataFile?.Era ?? sector.Era; } }
 
             [XmlAttribute]
-            public string Ref { get { return (sector.DataFile != null ? sector.DataFile.Ref : null) ?? sector.Ref; } }
+            public string Ref { get { return sector.DataFile?.Ref ?? sector.Ref; } }
         }
     }
 

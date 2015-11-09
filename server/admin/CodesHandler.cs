@@ -105,7 +105,8 @@ namespace Maps.Admin
                               where (sectorName == null || sector.Names[0].Text.StartsWith(sectorName, ignoreCase: true, culture: CultureInfo.InvariantCulture))
                               && (sector.DataFile != null)
                               && (type == null || sector.DataFile.Type == type)
-                              && (!sector.DataFile.FileName.Contains(System.IO.Path.PathSeparator)) // Skip ZCR sectors
+                              && (!sector.Tags.Contains("ZCR"))
+                              && (!sector.Tags.Contains("meta"))
                               orderby sector.Names[0].Text
                               select sector;
 

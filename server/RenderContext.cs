@@ -846,26 +846,26 @@ namespace Maps.Rendering
             {
                 graphics.MultiplyTransform(worldSpaceToImageSpace);
 
-                const float backgroundImageScale = 2.0f;
-
-                // Scaled size of the background
-                double w = s_nebulaImage.PixelWidth * backgroundImageScale;
-                double h = s_nebulaImage.PixelHeight * backgroundImageScale;
-
-                // Offset of the background, relative to the canvas
-                double ox = (float)(-tileRect.Left * scale * Astrometrics.ParsecScaleX) % w;
-                double oy = (float)(-tileRect.Top * scale * Astrometrics.ParsecScaleY) % h;
-                if (ox > 0) ox -= w;
-                if (oy > 0) oy -= h;
-
-                // Number of copies needed to cover the canvas
-                int nx = 1 + (int)Math.Floor(tileSize.Width / w);
-                int ny = 1 + (int)Math.Floor(tileSize.Height / h);
-                if (ox + nx * w < tileSize.Width) nx += 1;
-                if (oy + ny * h < tileSize.Height) ny += 1;
-
                 lock (s_nebulaImage)
                 {
+                    const float backgroundImageScale = 2.0f;
+
+                    // Scaled size of the background
+                    double w = s_nebulaImage.PixelWidth * backgroundImageScale;
+                    double h = s_nebulaImage.PixelHeight * backgroundImageScale;
+
+                    // Offset of the background, relative to the canvas
+                    double ox = (float)(-tileRect.Left * scale * Astrometrics.ParsecScaleX) % w;
+                    double oy = (float)(-tileRect.Top * scale * Astrometrics.ParsecScaleY) % h;
+                    if (ox > 0) ox -= w;
+                    if (oy > 0) oy -= h;
+
+                    // Number of copies needed to cover the canvas
+                    int nx = 1 + (int)Math.Floor(tileSize.Width / w);
+                    int ny = 1 + (int)Math.Floor(tileSize.Height / h);
+                    if (ox + nx * w < tileSize.Width) nx += 1;
+                    if (oy + ny * h < tileSize.Height) ny += 1;
+
                     for (int x = 0; x < nx; ++x)
                     {
                         for (int y = 0; y < ny; ++y)

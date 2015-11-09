@@ -187,6 +187,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
   $('#closeResultsBtn').addEventListener('click', function() {
     $('#searchBox').value = '';
+    lastQuery = null;
     document.body.classList.remove('search-results');
   });
 

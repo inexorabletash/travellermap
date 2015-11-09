@@ -122,10 +122,8 @@ namespace Maps
         /// <returns>The base allegiance code, e.g. "Im", or the original code if none.</returns>
         public string AllegianceCodeToBaseAllegianceCode(string code)
         {
-            var alleg = GetAllegianceFromCode(code);
-            if (alleg != null && !string.IsNullOrEmpty(alleg.Base))
-                return alleg.Base;
-            return code;
+            var alleg = GetAllegianceFromCode(code)?.Base;
+            return !string.IsNullOrEmpty(alleg) ? alleg : code;
         }
 
         public DataFile DataFile { get; set; }
@@ -276,7 +274,7 @@ namespace Maps
                 {
                     char c = (char)('A' + i);
                     Subsector ss = Subsector(c);
-                    writer.WriteLine("# Subsector {0}: {1}", c, (ss != null ? ss.Name : ""));
+                    writer.WriteLine("# Subsector {0}: {1}", c, ss?.Name ?? "");
                 }
                 writer.WriteLine();
             }

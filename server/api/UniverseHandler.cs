@@ -42,10 +42,10 @@ namespace Maps.API
                     if (requireData && sector.DataFile == null)
                         continue;
 
-                    if (era != null && (sector.DataFile == null || sector.DataFile.Era != era))
+                    if (era != null && sector?.DataFile.Era != era)
                         continue;
 
-                    if (tags != null && !(tags.Any(tag => sector.Tags.Contains(tag))))
+                    if (tags != null && !tags.Any(tag => sector.Tags.Contains(tag)))
                         continue;
 
                     data.Sectors.Add(new UniverseResult.SectorResult(sector));

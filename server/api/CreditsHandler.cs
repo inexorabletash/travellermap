@@ -56,7 +56,7 @@ namespace Maps.API
                         data.SectorName = name.Text;
 
                     // Raw HTML credits
-                    data.Credits = sector.Credits == null ? null : sector.Credits.Trim();
+                    data.Credits = sector.Credits?.Trim();
 
                     // Product info
                     if (sector.Products.Count > 0)
