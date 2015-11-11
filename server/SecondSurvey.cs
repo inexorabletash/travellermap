@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Linq;
-using System.Web;
 using System.Globalization;
 
 namespace Maps
@@ -429,6 +427,7 @@ namespace Maps
             "ImDs", // Third Imperium, Domain of Sol (Alph/Dias/Magy/Olde/Solo)
             "ImDv", // Third Imperium, Domain of Vland (Corr/Dagu/Gush/Reft/Vlan)
             "ImLa", // Third Imperium, League of Antares (Anta)
+            "ImLc", // Third Imperium, Lancian Cultural Region (Corr/Dagu/Gush)
             "ImLu", // Third Imperium, Luriani Cultural Association (Ley/Forn)
             "ImSy", // Third Imperium, Sylean Worlds (Core)
             "ImVd", // Third Imperium, Vegan Autonomous District (Solo)
