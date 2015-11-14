@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<title>Custom Data - Traveller Map</title>
+<meta charset="utf-8">
+<link rel="shortcut icon" href="../favicon.ico">
+<link rel="stylesheet" href="../site.css?update=2015-10-28">
+<meta name="viewport" content="initial-scale=1, width=device-width">
+<script src="../lib/polyfill/polyfill.min.js?update=2015-10-28"></script>
+<style>
+dt { font-weight: bold; }
+dd { margin-bottom: 1em; }
+</style>
+
+<h1>Using Custom Data With The Traveller Map</h1>
+<div class="content">
+
+  <div>
+    <p>
+      While the Traveller Map displays the sectors of the <cite>Official
+      Traveller Universe</cite> (OTU), it also provides tools for referees who have
+      created custom sectors.
+    </p>
+
+    <p class="aside">
+      It is not possible to display custom data on the main map
+      itself. But if you have created custom data and wish to include
+      it on the map, consider <a href="./submit">submitting your data</a>
+      for inclusion.
+    </p>
+  </div>
+
+  <section>
+    <h2>Using Custom Data</h2>
+    <p>
+      While the following tools can be used with OTU sectors, they also
+      let you enter custom data and metadata for your own sectors:
+    </p>
+
+    <dl>
+      <dt><a target=_blank href="../make/poster">Poster Maker</a></dt>
+      <dd>Create posters for display on screen or print-quality PDFs.</dd>
+
+      <dt><a target=_blank href="../make/booklet">Booklet Maker</a></dt>
+      <dd>Create printable booklets describing each subsector in the sector.</dd>
+
+      <dt><a target=_blank href="../make/poster">Path Finder</a></dt>
+      <dd>Find paths across a sector for ships with a given Jump rating.</dd>
+    </dl>
+  </section>
+
+
+  <section>
+    <h2>Creating Sector Data</h2>
+    <p>
+      Sectors in <cite>Traveller</cite> are described using the
+      <a href="./secondsurvey">Second Survey Data</a> format. This defines
+      the fields such as UWP, Remarks, Bases and so forth. It is assumed
+      that referees are familiar with these fields from the various
+      <cite>Traveller</cite> rules.
+    </p>
+
+    <section>
+      <h3>Data File Formats</h3>
+      <p>
+        Several sector data formats can be used with the Traveller Map:
+      </p>
+      <ul>
+        <li><a target=_blank href="./fileformats#genie-format-sunbane">GEnie</a></li>
+        <li><a target=_blank href="./fileformats#legacy-sec-format">SEC</a></li>
+        <li><a target=_blank href="./fileformats#t5-tab-delimited-format">T5 Tab Delimited</a></li>
+        <li><a target=_blank href="./fileformats#t5-column-delimited-format">T5 Column Delimited</a></li>
+      </ul>
+      <p>
+        The T5 formats (Tab and Column delimited) are the most precisely specified,
+        support any field lengths (important for names and remarks) and the easiest
+        to create with tools such as spreadsheets.
+      </p>
+    </section>
+
+    <section>
+      <h3>Checking Your Data</h3>
+      <p>
+        To ensure your data has no errors, use the
+        <a target=_blank href="../tools/lintsec.html">Sector "Lint" Tool</a>.
+        It will provide detailed feedback on issues noted in the sector data,
+        such as missing columns and unexpected values, and will report which
+        file format was detected.
+      </p>
+      <p class="aside">
+        Note that even if T5 data formats are used, custom allegiance
+        codes should still be only two characters. Four-character
+        codes are assigned by the T5SS and unknown codes are treated
+        as errors.
+      </p>
+    </section>
+  </section>
+
+  <section>
+    <h2>Creating Sector Metadata</h2>
+    <p>
+      Beyond the Second Survey Data (described above) which details the
+      worlds, additional information is needed to fully describe out sectors.
+      This is known as <dfn>metadata</dfn> and includes subsector names,
+      routes, borders and labels.
+    </p>
+
+    <section>
+      <h3>Metadata File Formats</h3>
+      <p>
+        The Traveller Map supports two data formats for metadata:
+        MSEC and XML.
+      </p>
+
+      <p>
+        The MSEC format was created by J. Greely and is used in his
+        <a target="_blank" href="http://dotclue.org/t20/">sec2pdf</a> tool
+        for generating PDF sector maps. The format is a plain text file,
+        defined by example:
+        <a target="_blank" href="http://dotclue.org/t20/SpinwardMarches.txt">SpinwardMarches.txt</a>.
+        Note that most but not all features of MSEC are supported by the
+        Traveller Map.
+      </p>
+
+      <p>
+        The XML format is defined for the Traveller Map and is specified
+        in detail in the <a href="./metadata">Sector Metadata File Format</a>
+        document. The XML format is more complicated, but is recommended
+        and fully supported by the Traveller Map, and includes additional
+        features beyond those in MSEC.
+      </p>
+    </section>
+
+    <section>
+      <h3>Authoring Metadata</h3>
+
+      <p>
+        To author XML metadata, follow the template in
+        <a href="./metadata">Sector Metadata File Format</a>. You can use
+        these tools to help author the route and border sections:
+      </p>
+      <ul>
+        <li><a target=_blank href="../make/borders">Border Maker</a></li>
+        <li><a target=_blank href="../make/routes">Route Maker</a></li>
+      </ul>
+    </section>
+
+  </section>
+
+
+</div>
+
+<div class="editorial">
+  <p>
+    The <em class="product">Traveller</em> game in all forms is owned by Far
+Future Enterprises. Copyright &copy; 1977 &ndash; 2015 Far Future
+Enterprises.
+    <a href="http://farfuture.net/FFEFairUsePolicy2008.pdf">Fair Use Policy</a>
+</div>
+
+<script src="toc.js"></script>
