@@ -44,6 +44,7 @@ namespace Maps
             "/doc/about",
             "/doc/api",
             "/doc/credits",
+            "/doc/custom",
             "/doc/fileformats",
             "/doc/metadata",
             "/doc/secondsurvey",
