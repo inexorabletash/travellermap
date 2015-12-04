@@ -22,46 +22,41 @@
     <Subsector Index="P">Bengalaz</Subsector>
   </Subsectors>
   <Allegiances Source="Theta Borealis Sector" Publisher="Group One">
-	  <Allegiance Code="Pe">Peladon</Allegiance>
-    <Allegiance Code="Tr">Trooles</Allegiance>
-    <Allegiance Code="Ko">Korsumug Empire</Allegiance>
-    <Allegiance Code="Pm">Percavid Marches</Allegiance>
-
     <!-- Transport Companies -->
     <Allegiance Code="Ps">Polygraham Shipping</Allegiance>
     <Allegiance Code="Bl">Baylor-Ator Lines</Allegiance>
     <Allegiance Code="Cl">Continental Lines Limited</Allegiance>
   </Allegiances>
   <Stylesheet>
-    route.Ko { color: red; }
+    route.KoEm { color: red; }
     route.Cl { color: red; style: dotted; }
     route.Ps { color: white; }
     route.Bl { color: white; style: dotted; }
   </Stylesheet>
   <Borders>
-    <Border Allegiance="Pe" LabelPosition="0310" Color="White">0110 0209 0309 0408 0509 0609 0610 0511 0512 0411 0312 0212 0113 0112 0111 0110</Border>
-    <Border Allegiance="Ko" LabelPosition="0215" WrapLabel="true" Color="White">0014 0114 0214 0315 0415 0416 0517 0518 0519 0520 0521 0522 0523 0623 0624 0625 0526 0527 0427 0428 0329 0229 0230 0130 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014</Border>
-    <Border Allegiance="Tr" LabelPosition="1704" Color="White">1101 1201 1302 1402 1502 1602 1702 1802 1903 1904 1804 1705 1706 1606 1506 1406 1405 1305 1204 1203 1202 1102 1101</Border>
-    <Border Allegiance="Pm" LabelPosition="1224" WrapLabel="true" Color="White">0724 0823 0923 0922 1021 1020 1120 1220 1221 1222 1323 1324 1224 1225 1126 1026 0926 0826 0726 0725 0724</Border>
+    <Border Allegiance="Kpel" LabelPosition="0310" Color="White">0110 0209 0309 0408 0509 0609 0610 0511 0512 0411 0312 0212 0113 0112 0111 0110</Border>
+    <Border Allegiance="KoEm" LabelPosition="0215" WrapLabel="true" Color="White">0014 0114 0214 0315 0415 0416 0517 0518 0519 0520 0521 0522 0523 0623 0624 0625 0526 0527 0427 0428 0329 0229 0230 0130 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014</Border>
+    <Border Allegiance="TroC" LabelPosition="1704" Color="White">1101 1201 1302 1402 1502 1602 1702 1802 1903 1904 1804 1705 1706 1606 1506 1406 1405 1305 1204 1203 1202 1102 1101</Border>
+    <Border Allegiance="KoPm" LabelPosition="1224" WrapLabel="true" Color="White">0724 0823 0923 0922 1021 1020 1120 1220 1221 1222 1323 1324 1224 1225 1126 1026 0926 0826 0726 0725 0724</Border>
   </Borders>
   <Routes>
-    <Route Start="0317" End="0319" Type="Trade" Allegiance="Ko"/>
-    <Route Start="0319" End="0320" Type="Trade" Allegiance="Ko"/>
-    <Route Start="0320" End="0321" Type="Trade" Allegiance="Ko"/>
-    <Route Start="0321" End="0322" Type="Trade" Allegiance="Ko"/>
-    <Route Start="0322" End="0326" Type="Trade" Allegiance="Ko"/>
-    <Route Start="0320" End="0119" Type="Trade" Allegiance="Ko"/>
-    <Route Start="0119" End="0018" Type="Trade" Allegiance="Ko"/>
-    <Route Start="0326" End="0127" Type="Trade" Allegiance="Ko"/>
-    <Route Start="0127" End="0027" Type="Trade" Allegiance="Ko"/>
-    <Route Start="0326" End="0425" Type="Trade" Allegiance="Ko"/>
-    <Route Start="0425" End="0525" Type="Trade" Allegiance="Ko"/>
-    <Route Start="0525" End="0624" Type="Trade" Allegiance="Ko"/>
-    <Route Start="0624" End="0724" Type="Trade" Allegiance="Ko"/>
-    <Route Start="0724" End="0823" Type="Trade" Allegiance="Ko"/>
-    <Route Start="0823" End="0923" Type="Trade" Allegiance="Ko"/>
-    <Route Start="0923" End="1022" Type="Trade" Allegiance="Ko"/>
-    <Route Start="1022" End="1122" Type="Trade" Allegiance="Ko"/>
+    <Route Start="0317" End="0319" Type="Trade" Allegiance="KoEm"/>
+    <Route Start="0319" End="0320" Type="Trade" Allegiance="KoEm"/>
+    <Route Start="0320" End="0321" Type="Trade" Allegiance="KoEm"/>
+    <Route Start="0321" End="0322" Type="Trade" Allegiance="KoEm"/>
+    <Route Start="0322" End="0326" Type="Trade" Allegiance="KoEm"/>
+    <Route Start="0320" End="0119" Type="Trade" Allegiance="KoEm"/>
+    <Route Start="0119" End="0018" Type="Trade" Allegiance="KoEm"/>
+    <Route Start="0326" End="0127" Type="Trade" Allegiance="KoEm"/>
+    <Route Start="0127" End="0027" Type="Trade" Allegiance="KoEm"/>
+    <Route Start="0326" End="0425" Type="Trade" Allegiance="KoEm"/>
+    <Route Start="0425" End="0525" Type="Trade" Allegiance="KoEm"/>
+    <Route Start="0525" End="0624" Type="Trade" Allegiance="KoEm"/>
+    <Route Start="0624" End="0724" Type="Trade" Allegiance="KoEm"/>
+    <Route Start="0724" End="0823" Type="Trade" Allegiance="KoEm"/>
+    <Route Start="0823" End="0923" Type="Trade" Allegiance="KoEm"/>
+    <Route Start="0923" End="1022" Type="Trade" Allegiance="KoEm"/>
+    <Route Start="1022" End="1122" Type="Trade" Allegiance="KoEm"/>
 
     <Route Start="1101" End="1102" Type="Shipping" Allegiance="Cl"/>
     <Route Start="1102" End="1201" Type="Shipping" Allegiance="Cl"/>

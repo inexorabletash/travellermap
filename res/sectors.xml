@@ -951,12 +951,12 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <DataFile Source="Traveller 5 Second Survey" Author="J. Andrew Keith, Marc Miller and John Harshman" Era="1105" Type="TabDelimited">Gvurrdon.tab</DataFile>
     <MetadataFile>Gvurrdon.xml</MetadataFile>
   </Sector>
-  <Sector>
+  <Sector Abbreviation="Tugl" Tags="InReview">
     <Y>-2</Y>
     <X>-3</X>
     <Name Lang="va">Tuglikki</Name>
     <Name Lang="zh">Dravr</Name>
-    <DataFile Author="David Drazul" Source="Traveller in the DED Zone" Ref="http://www.dedzone.net/traveller/sectors/tuglikki/">tuglikki.sec</DataFile>
+    <DataFile Author="David Drazul"  Source="Traveller 5 Sector Survey" Era="1105" Type="TabDelimited">Tuglikki.tab</DataFile>
     <Subsectors Author="David Drazul" Source="Traveller in the DED Zone" Ref="http://www.dedzone.net/traveller/sectors/tuglikki/">
       <Subsector Index="A">Dokh</Subsector>
       <Subsector Index="B">Saerrgh</Subsector>
@@ -976,39 +976,32 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
       <Subsector Index="P">Aegaek</Subsector>
     </Subsectors>
     <Borders>
-      <Border Allegiance="V2" Color="olivedrab">1926 2025 2024 2023 2022 2122 2221 2322 2421 2422 2423 2524 2525 2425 2426 2427 2428 2329 2330 2329 2228 2128 2127 2026 1926</Border>
-      <Border Allegiance="V2" Color="olivedrab">2234 2334 2433 2533 2632 2732 2832 2733 2734 2735 2736 2737 2637 2537 2437 2436 2336 2335 2234</Border>
-      <Border Allegiance="V2" Color="olivedrab">2415</Border>
+      <Border Allegiance="VWP2" Color="olivedrab">1926 2025 2024 2023 2022 2122 2221 2322 2421 2422 2423 2524 2525 2425 2426 2427 2428 2329 2330 2329 2228 2128 2127 2026 1926</Border>
+      <Border Allegiance="VWP2" Color="olivedrab">2234 2334 2433 2533 2632 2732 2832 2733 2734 2735 2736 2737 2637 2537 2437 2436 2336 2335 2234</Border>
+      <Border Allegiance="VWP22" Color="olivedrab">2415</Border>
       <Border Allegiance="V6" Color="olivedrab">0734 0833 0832 0933 0934 0935 1035 1136 1236 1337 1436 1537 1637 1738 1837 1937 1938 1939 1940 2040 1940 1839 1739 1639 1540 1439 1339 1239 1139 1039 0940 0939 0938 0837 0737 0736 0735 0734</Border>
-      <Border Allegiance="VW" Color="olivedrab">0103 0202 0201 0202 0303 0304 0305 0205 0105 0104 0103</Border>
-      <Border Allegiance="Vb" Color="olivedrab">0210 0310 0309 0408 0508 0507 0506 0605 0604 0603 0602 0601 0600 0500 0600 0700 0800 0900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1701 1601 1602 1603 1604 1605 1606 1607 1708 1709 1809 1910 2010 2111 2112 2212 2112 2012 1913 1813 1713 1613 1513 1412 1312 1211 1112 1012 1011 0911 0810 0710 0609 0510 0409 0310 0210</Border>
-      <Border Allegiance="Ve" Color="olivedrab">2500 2600 2700 2800 2900 3000 3001 3002 3003 3104 3105 3106 3206 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3218 3119 3018 3017 3016 3015 3014 3013 3012 3011 2911 2810 2710 2609 2608 2607 2606 2605 2604 2504 2503 2502 2501 2500</Border>
-      <Border Allegiance="Vf" Color="olivedrab">2730 2829 2828 2827 2927 2926 2925 3024 3124 3223 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3240 3239 3238 3237 3236 3235 3234 3233 3133 3132 3031 2931 2830 2730</Border>
-      <Border Allegiance="Vi" Color="olivedrab">3201 3301 3302 3303 3302 3201</Border>
-      <Border Allegiance="Vt" Color="olivedrab">0011 0112 0212 0313 0412 0512 0612 0713 0714 0715 0615 0616 0617 0518 0519 0520 0521 0522 0523 0623 0624 0625 0626 0627 0628 0629 0530 0531 0532 0533 0433 0333 0233 0134 0133 0132 0131 0130 0129 0128 0127 0126 0125 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011</Border>
+      <Border Allegiance="VRrS" Color="olivedrab">0103 0202 0201 0202 0303 0304 0305 0205 0105 0104 0103</Border>
+      <Border Allegiance="VBkA" Color="olivedrab">0210 0310 0309 0408 0508 0507 0506 0605 0604 0603 0602 0601 0600 0500 0600 0700 0800 0900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1701 1601 1602 1603 1604 1605 1606 1607 1708 1709 1809 1910 2010 2111 2112 2212 2112 2012 1913 1813 1713 1613 1513 1412 1312 1211 1112 1012 1011 0911 0810 0710 0609 0510 0409 0310 0210</Border>
+      <Border Allegiance="VVar" Color="olivedrab">2500 2600 2700 2800 2900 3000 3001 3002 3003 3104 3105 3106 3206 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3218 3119 3018 3017 3016 3015 3014 3013 3012 3011 2911 2810 2710 2609 2608 2607 2606 2605 2604 2504 2503 2502 2501 2500</Border>
+      <Border Allegiance="VDzF" Color="olivedrab">2730 2829 2828 2827 2927 2926 2925 3024 3124 3223 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3240 3239 3238 3237 3236 3235 3234 3233 3133 3132 3031 2931 2830 2730</Border>
+      <Border Allegiance="VLIn" Color="olivedrab">3201 3301 3302 3303 3302 3201</Border>
+      <Border Allegiance="VThE" Color="olivedrab">0011 0112 0212 0313 0412 0512 0612 0713 0714 0715 0615 0616 0617 0518 0519 0520 0521 0522 0523 0623 0624 0625 0626 0627 0628 0629 0530 0531 0532 0533 0433 0333 0233 0134 0133 0132 0131 0130 0129 0128 0127 0126 0125 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011</Border>
       <Border Allegiance="Vu" Color="olivedrab">2741 2840 2839 2939 2938 2937 3036 3035 3036 3037 3038 3039 2940 2840 2741</Border>
       <Border Allegiance="Vw" Color="olivedrab">0921 1020 1120 1119 1118 1117 1216 1316 1315 1316 1416 1517 1617 1718 1817 1917 1918 2018 2019 1920 1820 1821 1822 1723 1724 1623 1524 1424 1325 1225 1226 1126 1025 1024 1023 1022 0922 0921</Border>
     </Borders>
     <Allegiances Source="Vilani and Vargr">
-      <Allegiance Code="V2">Windhorn Pact of Two</Allegiance>
       <Allegiance Code="V6">Assemblage of 1116</Allegiance>
-      <Allegiance Code="VW">Rranglloez Stronghold</Allegiance>
-      <Allegiance Code="Vb">Bakne Alliance</Allegiance>
-      <Allegiance Code="Ve">Empire of Varroerth</Allegiance>
-      <Allegiance Code="Vf">Dzarrgh Federate</Allegiance>
-      <Allegiance Code="Vi">Llaeghskath Interacterate</Allegiance>
-      <Allegiance Code="Vt">Thoengling Empire</Allegiance>
       <Allegiance Code="Vu">United Followers of Augurgh</Allegiance>
       <Allegiance Code="Vw">Rar Errall (The Wolves Warren)</Allegiance>
     </Allegiances>
   </Sector>
-  <Sector>
+  <Sector Abbreviation="Prov" Tags="InReview">
     <Y>-2</Y>
     <X>-2</X>
     <Name>Provence</Name>
     <Name Lang="va">Orraenang</Name>
     <Name Lang="vi">Amshagi</Name>
-    <DataFile Author="David Drazul" Source="Traveller in the DED Zone" Ref="http://www.dedzone.net/traveller/sectors/provence/">provence.sec</DataFile>
+    <DataFile Author="David Drazul" Source="Traveller 5 Sector Survey" Era="1105" Type="TabDelimited">Provence</DataFile>
     <Subsectors>
       <Subsector Index="A">Llaezgaen</Subsector>
       <Subsector Index="B">Vorvoun</Subsector>
@@ -1029,35 +1022,24 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     </Subsectors>
 
     <Borders>
-      <Border Allegiance="Ve" Color="olivedrab">0006 0107 0207 0308 0408 0509 0608 0709 0808 0908 1007 1107 1106 1105 1104 1003 1002 0902 0801 0702 0601 0501 0400 0300 0400 0500 0600 0700 0800 0900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3312 3311 3210 3110 3009 2910 2810 2711 2611 2511 2410 2311 2211 2111 2010 1910 1810 1711 1712 1612 1613 1513 1413 1314 1214 1115 1015 0916 0815 0715 0615 0516 0416 0317 0217 0118 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006</Border>
-      <Border Allegiance="Vf" Color="olivedrab">0023 0123 0222 0322 0321 0421 0422 0523 0524 0624 0625 0626 0627 0728 0828 0829 0830 0831 0732 0733 0633 0534 0434 0335 0235 0236 0237 0238 0239 0240 0141 0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023</Border>
-      <Border Allegiance="Vg" Color="olivedrab">1040 1140 1040</Border>
-      <Border Allegiance="Vg" Color="olivedrab">1439 1539 1638 1637 1737 1736 1735 1734 1733 1732 1731 1732 1832 1933 1934 2034 2135 2034 1935 1835 1836 1737 1738 1638 1539 1540 1440 1439</Border>
-      <Border Allegiance="Vh" Color="olivedrab">0537 0636 0635 0634 0734 0833 0933 0932 0931 1030 1029 1028 1027 0927 0826 0825 0824 0823 0723 0822 0821 0820 0920 1020 1121 1220 1320 1419 1420 1421 1522 1523 1524 1525 1526 1527 1627 1728 1828 1729 1629 1530 1531 1532 1533 1433 1434 1335 1336 1337 1237 1138 1038 1039 0939 0839 0740 0739 0738 0637 0537</Border>
-      <Border Allegiance="Vh" Color="olivedrab">1936 2036 2137 2236 2337 2437 2537 2636 2737 2738 2838 2939 2940 2840 2740 2640 2540 2439 2340 2240 2239 2139 2138 2037 2036 1936</Border>
-      <Border Allegiance="Vi" Color="olivedrab">0001 0101 0201 0302 0401 0502 0503 0603 0604 0605 0606 0507 0508 0507 0406 0306 0205 0204 0203 0103 0102 0001</Border>
-      <Border Allegiance="Vj" Color="olivedrab">0704 0803 0903 0904 0905 0906 0806 0707 0706 0705 0704</Border>
-      <Border Allegiance="Vl" Color="olivedrab">2001 2101 2201 2301 2401 2501 2401 2402 2302 2201 2102 2001</Border>
+      <Border Allegiance="VVar" Color="olivedrab">0006 0107 0207 0308 0408 0509 0608 0709 0808 0908 1007 1107 1106 1105 1104 1003 1002 0902 0801 0702 0601 0501 0400 0300 0400 0500 0600 0700 0800 0900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3312 3311 3210 3110 3009 2910 2810 2711 2611 2511 2410 2311 2211 2111 2010 1910 1810 1711 1712 1612 1613 1513 1413 1314 1214 1115 1015 0916 0815 0715 0615 0516 0416 0317 0217 0118 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006</Border>
+      <Border Allegiance="VDzF" Color="olivedrab">0023 0123 0222 0322 0321 0421 0422 0523 0524 0624 0625 0626 0627 0728 0828 0829 0830 0831 0732 0733 0633 0534 0434 0335 0235 0236 0237 0238 0239 0240 0141 0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023</Border>
+      <Border Allegiance="VGoT" Color="olivedrab">1040 1140 1040</Border>
+      <Border Allegiance="VGoT" Color="olivedrab">1439 1539 1638 1637 1737 1736 1735 1734 1733 1732 1731 1732 1832 1933 1934 2034 2135 2034 1935 1835 1836 1737 1738 1638 1539 1540 1440 1439</Border>
+      <Border Allegiance="VIrM" Color="olivedrab">0537 0636 0635 0634 0734 0833 0933 0932 0931 1030 1029 1028 1027 0927 0826 0825 0824 0823 0723 0822 0821 0820 0920 1020 1121 1220 1320 1419 1420 1421 1522 1523 1524 1525 1526 1527 1627 1728 1828 1729 1629 1530 1531 1532 1533 1433 1434 1335 1336 1337 1237 1138 1038 1039 0939 0839 0740 0739 0738 0637 0537</Border>
+      <Border Allegiance="VIrM" Color="olivedrab">1936 2036 2137 2236 2337 2437 2537 2636 2737 2738 2838 2939 2940 2840 2740 2640 2540 2439 2340 2240 2239 2139 2138 2037 2036 1936</Border>
+      <Border Allegiance="VLIn" Color="olivedrab">0001 0101 0201 0302 0401 0502 0503 0603 0604 0605 0606 0507 0508 0507 0406 0306 0205 0204 0203 0103 0102 0001</Border>
+      <Border Allegiance="VJoF" Color="olivedrab">0704 0803 0903 0904 0905 0906 0806 0707 0706 0705 0704</Border>
+      <Border Allegiance="VLPr" Color="olivedrab">2001 2101 2201 2301 2401 2501 2401 2402 2302 2201 2102 2001</Border>
     </Borders>
-    <Allegiances Source="Vilani and Vargr">
-      <Allegiance Code="Ve">Empire of Varroerth</Allegiance>
-      <Allegiance Code="Vf">Dzarrgh Federate</Allegiance>
-      <Allegiance Code="Vg">Glory of Taarskoerzn</Allegiance>
-      <Allegiance Code="Vg">Glory of Taarskoerzn</Allegiance>
-      <Allegiance Code="Vh">Irrgh Manifest</Allegiance>
-      <Allegiance Code="Vh">Irrgh Manifest</Allegiance>
-      <Allegiance Code="Vi">Llaeghskath Interacterate</Allegiance>
-      <Allegiance Code="Vj">Jihad of Faarzgaen</Allegiance>
-      <Allegiance Code="Vl">Lair Protectorate</Allegiance>
-    </Allegiances>
   </Sector>
-  <Sector>
+  <Sector Abbreviation="Wind" Tags="InReview">
     <Y>-2</Y>
     <X>-1</X>
     <Name>Windhorn</Name>
     <Name Lang="va">Gotzdzo</Name>
     <Name Lang="vi">Kishadikhu</Name>
-    <DataFile Author="John Wood" Ref="http://www.elvw.demon.co.uk/Traveller/Sectors/Windhorn.html">windhorn.sec</DataFile>
+    <DataFile Author="John Wood" Source="Traveller 5 Sector Survey" Era="1105" Type="TabDelimited">Windhorn.tab</DataFile>
     <Subsectors>
       <Subsector Index="A">Dakoeng</Subsector>
       <Subsector Index="B">Khonsu</Subsector>
@@ -1078,24 +1060,18 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     </Subsectors>
 
     <Borders>
-      <Border Allegiance="V7" Color="olivedrab">2031 2131 2230 2229 2228 2227 2226 2126 2226 2326 2426 2526 2625 2725 2724 2723 2722 2821 2921 2920 2919 3018 3017 3016 3015 3014 3013 3014 3115 3116 3117 3217 3218 3219 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3230 3231 3232 3233 3334 3234 3135 3136 3137 3138 3238 3239 3240 3140 3040 2940 2840 2740 2639 2638 2538 2437 2337 2336 2235 2135 2034 2033 2032 2031</Border>
-      <Border Allegiance="V7" Color="olivedrab">2140</Border>
-      <Border Allegiance="Ve" Color="olivedrab">0000 0100 0200 0300 0400 0500 0600 0700 0800 0900 1000 1100 1200 1300 1400 1301 1302 1303 1304 1305 1205 1106 1107 1108 1109 1009 0910 0810 0711 0712 0612 0513 0413 0414 0314 0213 0113 0112 0111 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001 0000</Border>
-      <Border Allegiance="Vn" Color="olivedrab">0137 0236 0336 0435 0535 0534 0633 0734 0833 0934 1033 1133 1232 1332 1331 1431 1531 1630 1730 1830 1931 1932 1832 1833 1834 1835 1836 1937 1938 2038 2039 2040 1940 1840 1740 1640 1540 1440 1340 1239 1140 1040 0940 0839 0740 0640 0540 0440 0439 0438 0338 0237 0137</Border>
+      <Border Allegiance="V17D" Color="olivedrab">2031 2131 2230 2229 2228 2227 2226 2126 2226 2326 2426 2526 2625 2725 2724 2723 2722 2821 2921 2920 2919 3018 3017 3016 3015 3014 3013 3014 3115 3116 3117 3217 3218 3219 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3230 3231 3232 3233 3334 3234 3135 3136 3137 3138 3238 3239 3240 3140 3040 2940 2840 2740 2639 2638 2538 2437 2337 2336 2235 2135 2034 2033 2032 2031</Border>
+      <Border Allegiance="V17D" Color="olivedrab">2140</Border>
+      <Border Allegiance="VVar" Color="olivedrab">0000 0100 0200 0300 0400 0500 0600 0700 0800 0900 1000 1100 1200 1300 1400 1301 1302 1303 1304 1305 1205 1106 1107 1108 1109 1009 0910 0810 0711 0712 0612 0513 0413 0414 0314 0213 0113 0112 0111 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001 0000</Border>
+      <Border Allegiance="VNgC" Color="olivedrab">0137 0236 0336 0435 0535 0534 0633 0734 0833 0934 1033 1133 1232 1332 1331 1431 1531 1630 1730 1830 1931 1932 1832 1833 1834 1835 1836 1937 1938 2038 2039 2040 1940 1840 1740 1640 1540 1440 1340 1239 1140 1040 0940 0839 0740 0640 0540 0440 0439 0438 0338 0237 0137</Border>
     </Borders>
-    <Allegiances Source="Vilani and Vargr">
-      <Allegiance Code="V7">17th Disjuncture</Allegiance>
-      <Allegiance Code="V7">17th Disjuncture</Allegiance>
-      <Allegiance Code="Ve">Empire of Varroerth</Allegiance>
-      <Allegiance Code="Vn">Ngath Confederation</Allegiance>
-    </Allegiances>
   </Sector>
-  <Sector>
+  <Sector Abbreviation="Mesh" Tags="InReview">
     <Y>-2</Y>
     <X>0</X>
     <Name>Meshan</Name>
     <Name Lang="va">Arzul</Name>
-    <DataFile Author="Michael R. Mikesh" Publisher="HIWG" Ref="http://www.zho.berka.com/data/CLASSIC/sector.pl?sector=MESHAN">meshan.sec</DataFile>
+    <DataFile Author="Michael R. Mikesh" Source="Traveller 5 Sector Survey" Era="1105" Type="TabDelimited">Meshan.tab</DataFile>
     <Subsectors>
       <Subsector Index="A">Raen</Subsector>
       <Subsector Index="B">Lues</Subsector>
@@ -1114,38 +1090,29 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
       <Subsector Index="O">Ekso</Subsector>
       <Subsector Index="P" Source="Challenge #49">Sudzum</Subsector>
     </Subsectors>
-    <Allegiances Source="Vilani and Vargr">
-      <Allegiance Code="V1">First Fleet of Dzo</Allegiance>
-      <Allegiance Code="V5">Ruler of Five</Allegiance>
-      <Allegiance Code="V7">17th Disjuncture</Allegiance>
-      <Allegiance Code="Vo">Opposition Alliance</Allegiance>
-      <Allegiance Code="Vv">Voekhaeb Society</Allegiance>
-      <Allegiance Code="Vx">Antares Pact</Allegiance>
-      <Allegiance Code="Ga">Third Empire of Gashikan</Allegiance>
-    </Allegiances>
     <Borders>
-      <Border Allegiance="V1" Color="olivedrab">2039 2139 2238 2338 2437 2538 2638 2739 2838 2939 2940 3040 2940 2840 2740 2640 2540 2439 2340 2240 2140 2039</Border>
-      <Border Allegiance="V5" Color="olivedrab">0506 0605 0604 0704 0803 0903 0902 1001 1101 1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 2901 2902 2802 2803 2804 2805 2806 2807 2908 2909 2809 2810 2711 2712 2713 2612 2513 2412 2313 2213 2114 2115 2116 2216 2317 2417 2517 2417 2418 2319 2219 2119 2019 1920 1820 1721 1722 1622 1621 1521 1420 1320 1219 1218 1217 1117 1016 1015 1014 1013 1012 1011 1010 0910 0909 0808 0807 0707 0606 0506</Border>
-      <Border Allegiance="V7" Color="olivedrab">0017 0018 0019 0120 0121 0122 0123 0223 0324 0424 0524 0424 0425 0326 0226 0227 0228 0229 0130 0030 0031 0032 0033 0134 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017</Border>
-      <Border Allegiance="Vo" Color="olivedrab">0115 0214 0314 0313 0312 0311 0210 0310 0409 0509 0508 0509 0609 0610 0711 0811 0712 0713 0714 0715 0716 0816 0817 0818 0819 0920 1020 1121 1221 1322 1323 1324 1325 1425 1526 1625 1725 1824 1924 1923 1922 2022 2122 2221 2321 2420 2520 2619 2719 2718 2717 2716 2815 2915 2914 3014 2915 2916 2917 2918 2919 2920 2921 2922 2923 3023 2924 2925 2825 2826 2827 2828 2728 2628 2529 2429 2430 2431 2432 2433 2434 2535 2536 2435 2336 2236 2136 2036 1937 1836 1736 1635 1535 1434 1335 1235 1236 1237 1137 1037 0937 0836 0736 0735 0734 0633 0632 0631 0531 0630 0629 0628 0627 0626 0625 0624 0623 0523 0422 0421 0321 0320 0319 0318 0317 0216 0116 0115</Border>
-      <Border Allegiance="Vv" Color="olivedrab">0236 0336 0335 0334 0333 0332 0333 0433 0434 0435 0536 0537 0637 0738 0838 0939 1039 1139 1238 1338 1337 1336 1436 1537 1637 1738 1838 1839 1940 1840 1740 1640 1540 1439 1340 1240 1140 1040 0940 0840 0740 0640 0540 0439 0340 0339 0338 0237 0236</Border>
-      <Border Allegiance="Vx" Color="olivedrab">2633 2733 2732 2831 2931 2930 3029 3028 3027 3026 3126 3226 3227 3228 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3240 3239 3238 3138 3037 2937 2836 2835 2834 2734 2633</Border>
+      <Border Allegiance="VFFD" Color="olivedrab">2039 2139 2238 2338 2437 2538 2638 2739 2838 2939 2940 3040 2940 2840 2740 2640 2540 2439 2340 2240 2140 2039</Border>
+      <Border Allegiance="VRo5" Color="olivedrab">0506 0605 0604 0704 0803 0903 0902 1001 1101 1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 2901 2902 2802 2803 2804 2805 2806 2807 2908 2909 2809 2810 2711 2712 2713 2612 2513 2412 2313 2213 2114 2115 2116 2216 2317 2417 2517 2417 2418 2319 2219 2119 2019 1920 1820 1721 1722 1622 1621 1521 1420 1320 1219 1218 1217 1117 1016 1015 1014 1013 1012 1011 1010 0910 0909 0808 0807 0707 0606 0506</Border>
+      <Border Allegiance="V17D" Color="olivedrab">0017 0018 0019 0120 0121 0122 0123 0223 0324 0424 0524 0424 0425 0326 0226 0227 0228 0229 0130 0030 0031 0032 0033 0134 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017</Border>
+      <Border Allegiance="VOpp" Color="olivedrab">0115 0214 0314 0313 0312 0311 0210 0310 0409 0509 0508 0509 0609 0610 0711 0811 0712 0713 0714 0715 0716 0816 0817 0818 0819 0920 1020 1121 1221 1322 1323 1324 1325 1425 1526 1625 1725 1824 1924 1923 1922 2022 2122 2221 2321 2420 2520 2619 2719 2718 2717 2716 2815 2915 2914 3014 2915 2916 2917 2918 2919 2920 2921 2922 2923 3023 2924 2925 2825 2826 2827 2828 2728 2628 2529 2429 2430 2431 2432 2433 2434 2535 2536 2435 2336 2236 2136 2036 1937 1836 1736 1635 1535 1434 1335 1235 1236 1237 1137 1037 0937 0836 0736 0735 0734 0633 0632 0631 0531 0630 0629 0628 0627 0626 0625 0624 0623 0523 0422 0421 0321 0320 0319 0318 0317 0216 0116 0115</Border>
+      <Border Allegiance="VVoS" Color="olivedrab">0236 0336 0335 0334 0333 0332 0333 0433 0434 0435 0536 0537 0637 0738 0838 0939 1039 1139 1238 1338 1337 1336 1436 1537 1637 1738 1838 1839 1940 1840 1740 1640 1540 1439 1340 1240 1140 1040 0940 0840 0740 0640 0540 0439 0340 0339 0338 0237 0236</Border>
+      <Border Allegiance="VAnP" Color="olivedrab">2633 2733 2732 2831 2931 2930 3029 3028 3027 3026 3126 3226 3227 3228 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3240 3239 3238 3138 3037 2937 2836 2835 2834 2734 2633</Border>
     </Borders>
   </Sector>
-  <Sector Tags="Unreviewed">
+  <Sector Abbreviation="Mend" Tags="InReview">
     <Y>-2</Y>
     <X>1</X>
     <Name>Mendan</Name>
     <Name Lang="va">Gotzdzo</Name>
-    <DataFile Source="Challenge #49" Author="Michael R. Mikesh" Publisher="GDW" Ref="http://traveller.mu.org/archive/General/sectors/mendan.vmb" Era="1120">Mendan.sec</DataFile>
-    <MetadataFile Source="Challenge #49" Author="Michael R. Mikesh" Publisher="GDW" Ref="http://traveller.mu.org/archive/General/sectors/mendan.vmb" Era="1120">Mendan.xml</MetadataFile>
+    <DataFile Author="Michael R. Mikesh" Source="Traveller 5 Sector Survey" Era="1105" Type="TabDelimited">Mendan.tab</DataFile>
+    <MetadataFile Source="Challenge #49" Author="Michael R. Mikesh" Publisher="GDW" Ref="http://traveller.mu.org/archive/General/sectors/mendan.vmb" Era="1105">Mendan.xml</MetadataFile>
   </Sector>
-  <Sector>
+  <Sector Abbreviation="Amdu" Tags="InReview">
     <Y>-2</Y>
     <X>2</X>
     <Name>Amdukan</Name>
     <Name Lang="va">Outhofos</Name>
-    <DataFile Author="Michael R. Mikesh" Source="Challenge #52 (Subsector G)" Publisher="GDW, HIWG" Ref="http://www.ocean-of-storms.com/core/astrogat/dI.htm">amdukan.sec</DataFile>
+    <DataFile Author="Michael R. Mikesh" Source="Traveller 5 Sector Survey" Era="1105" Type="TabDelimited">Amdukan.tab</DataFile>
     <MetadataFile Author="Michael R. Mikesh" Source="Challenge #52 (Subsector G)" Publisher="GDW, HIWG" Ref="http://www.ocean-of-storms.com/core/astrogat/dI.htm">Amdukan.xml</MetadataFile>
   </Sector>
   <Sector>
@@ -1671,11 +1638,11 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <X>-9</X>
     <Name Publisher="HIWG">Mavuzog</Name>
   </Sector>
-  <Sector Abbreviation="Thet" Tags="Apocryphal">
+  <Sector Abbreviation="Thet" Tags="InReview">
     <Y>1</Y>
     <X>-8</X>
     <Name>Theta Borealis</Name>
-    <DataFile Source="Theta Borealis Sector" Publisher="Group One" Author="Bill Bledsaw, Pixie Bledsaw, Mark Holmer, Jeff Johnson, Debi Summerlott and Marc Summerlott">Theta Borealis.sec</DataFile>
+    <DataFile Source="Traveller 5 Second Survey" Author="Bill Bledsaw, Pixie Bledsaw, Mark Holmer, Jeff Johnson, Debi Summerlott and Marc Summerlott" Era="1105" Type="TabDelimited">Theta Borealis.tab</DataFile>
     <MetadataFile Source="Theta Borealis Sector" Publisher="Group One" Author="Bill Bledsaw, Pixie Bledsaw, Mark Holmer, Jeff Johnson, Debi Summerlott and Marc Summerlott">Theta Borealis.xml</MetadataFile>
   </Sector>
   <Sector>

@@ -248,6 +248,7 @@ namespace Maps
         private static T5Allegiances s_t5Allegiances = new T5Allegiances {
             // T5Code, LegacyCode, BaseCode, Name
             // Allegiance Table Begin
+            { "3EoG", "Ga", "Ga", "Third Empire of Gashikan" },
             { "4Wor", "Fw", "FW", "Four Worlds" },
             { "AkUn", "Ak", null, "Akeena Union" },
             { "AlCo", "Al", null, "Altarean Confederation" },
@@ -281,6 +282,7 @@ namespace Maps
             { "CaAs", "Cb", null, "Carrillian Assembly" },
             { "CaPr", "Ca", null, "Principality of Caledon" },
             { "CaTe", "Ct", null, "Carter Technocracy" },
+            { "CoBa", "Ba", "Ba", "Confederation of Bammesuka" },
             { "CoLp", "Lp", null, "Council of Leh Perash" },
             { "CsCa", "Ca", null, "Client state, Principality of Caledon" },
             { "CsHv", "Hc", null, "Client state, Hiver Federation" },
@@ -327,16 +329,26 @@ namespace Maps
             { "ImSy", "Im", "Im", "Third Imperium, Sylean Worlds" },
             { "ImVd", "Ve", "Im", "Third Imperium, Vegan Autonomous District" },
             { "IsDo", "Id", null, "Islaiat Dominate" },
+            { "JAoZ", "Jo", "Jp", "Julian Protectorate, Alliance of Ozuvon" },
+            { "JAsi", "Ja", "Jp", "Julian Protectorate, Asimikigir Confederation" },
+            { "JCoK", "Jc", "Jp", "Julian Protectorate, Constitution of Koekhon" },
+            { "JHhk", "Jh", "Jp", "Julian Protectorate, Hhkar Sphere" },
+            { "JLum", "Jd/Jl", "Jp", "Julian Protectorate, Lumda Dower" },
+            { "JMen", "Jm", "Jp", "Julian Protectorate, Commonwealth of Mendan" },
+            { "JPSt", "Jp", "Jp", "Julian Protectorate, Pirbarish Starlane" },
+            { "JRar", "Vw", "Jp", "Julian Protectorate, Rar Errall/Wolves Warren" },
+            { "JUkh", "Ju", "Jp", "Julian Protectorate, Ukhanzi Coordinate" },
+            { "JVug", "Jv", "Jp", "Julian Protectorate, Vugurar Dominion" },
             { "JaPa", "Ja", null, "Jarnac Pashalic" },
             { "JuHl", "Hl", "Jp", "Julian Protectorate, Hegemony of Lorean" },
-            { "JuPr", "Jp", "Jp", "Julian Protectorate" }, // independent
+            { "JuPr", "Jp/J-", "Jp", "Julian Protectorate" }, // independent
             { "JuRu", "Jr", "Jp", "Julian Protectorate, Rukadukaz Republic" },
             { "KaCo", "KC", null, "Katowice Conquest" },
             { "KaWo", "KW", null, "Karhyri Worlds" },
             { "KhLe", "Kl", null, "Khuur League" },
-            { "KoEm", "Ko", null, "Korsumug Empire" },
-            { "KoPm", "Pm", null, "Percavid Marches" },
-            { "Kpel", "Pe", null, "Kingdom of Peladon" },
+            { "KoEm", "Ko", "Ko", "Korsumug Empire" },
+            { "KoPm", "Pm", "Pm", "Percavid Marches" },
+            { "Kpel", "Pe", "Pe", "Kingdom of Peladon" },
             { "KrBu", "Kr", null, "Kranzbund" },
             { "LaCo", "Lc", null, "Langemarck Coalition" },
             { "LeSu", "Ls", "L", "League of Suns" },
@@ -351,7 +363,9 @@ namespace Maps
             { "MrCo", "MC", null, "Mercantile Concord" },
             { "NaAs", "As", "As", "Non-Aligned, Aslan-dominated" }, // (outside Hierate)
             { "NaHu", "Na", "Na", "Non-Aligned, Human-dominated" },
-            { "NaVa", "Va", null, "Non-Aligned, Vargr-dominated" },
+            { "NaHu", "Na", "Na", "Non-Aligned, Human-dominated" },
+            { "NaVa", "Va", "Va", "Non-Aligned, Vargr-dominated" },
+            { "NaVa", "Va", "Va", "Non-Aligned, Vargr-dominated" },
             { "NaXX", "Na", "Na", "Non-Aligned, unclaimed" },
             { "OcWs", "Ow", null, "Outcasts of the Whispering Sky" },
             { "OlWo", "Ow", null, "Old Worlds" },
@@ -362,6 +376,7 @@ namespace Maps
             { "ReUn", "Re", null, "Renkard Union" },
             { "Reac", "Rh", null, "The Reach" },
             { "SaCo", "Sc", "S", "Salinaikin Concordance" },
+            { "Sark", "Sc", "Sc", "Sarkan Constellation" },
             { "SeFo", "Sf", null, "Senlis Foederate" },
             { "SlLg", "Sl", null, "Shukikikar League" },
             { "SoCf", "So", "So", "Solomani Confederation" },
@@ -375,27 +390,39 @@ namespace Maps
             { "TeCl", "Tc", null, "Tellerian Cluster" },
             { "TrCo", "Tr", null, "Trindel Confederacy" },
             { "TrDo", "Td", null, "Trelyn Domain" },
-            { "TroC", "Tr", null, "Trooles Confederation" },
+            { "TroC", "Tr", "Tr", "Trooles Confederation" },
             { "UnGa", "Ug", "U", "Union of Garth" },
             { "UnHa", "Uh", null, "Union of Harmony" },
-            { "V40S", "Ve", "Va", "40th Squadron" }, // (Ekhelle Ksafi)
-            { "VARC", "Vr", "Va", "Anti-Rukh Coalition" }, // (Gnoerrgh Rukh Lloell)
-            { "VAug", "Vu", "Va", "United Followers of Augurgh" },
-            { "VBkA", "Vb", "Va", "Bakne Alliance" },
-            { "VCKd", "Vk", "Va", "Commonality of Kedzudh" }, // (Kedzudh Aeng)
-            { "VDzF", "Vf", "Va", "Dzarrgh Federate" },
-            { "VLIn", "Vi", "Va", "Llaeghskath Interacterate" },
-            { "VPGa", "Vg", "Va", "Pact of Gaerr" }, // (Gaerr Thue)
-            { "VRrS", "VW", "Va", "Rranglloez Stronghold" },
-            { "VRuk", "Vn", "Va", "Worlds of Leader Rukh" }, // (Rukh Aegz)
-            { "VSDp", "Vs", "Va", "Saeknouth Dependency" }, // (Saeknouth Igz)
-            { "VSEq", "Vd", "Va", "Society of Equals" }, // (Dzen Aeng Kho)
-            { "VThE", "Vt", "Va", "Thoengling Empire" }, // (Thoengling Raghz)
-            { "VTzE", "Vp", "Va", "Thirz Empire" }, // (Thirz Uerra)
-            { "VUru", "Vu", "Va", "Urukhu" },
-            { "VVar", "Ve", "Va", "Empire of Varroerth" },
-            { "VWP2", "V2", "Va", "Windhorn Pact of Two" },
-            { "VWan", "Vw", "Va", "People of Wanz" },
+            { "V17D", "V7", null, "17th Disjucture" },
+            { "V40S", "Ve", null, "40th Squadron" }, // (Ekhelle Ksafi)
+            { "VARC", "Vr", null, "Anti-Rukh Coalition" }, // (Gnoerrgh Rukh Lloell)
+            { "VAnP", "Vx", null, "Antares Pact" },
+            { "VAnP", "Vx", null, "Antares Pact" },
+            { "VAug", "Vu", null, "United Followers of Augurgh" },
+            { "VBkA", "Vb", null, "Bakne Alliance" },
+            { "VCKd", "Vk", null, "Commonality of Kedzudh" }, // (Kedzudh Aeng)
+            { "VDzF", "Vf", null, "Dzarrgh Federate" },
+            { "VFFD", "V1", null, "First Fleet of Dzo" },
+            { "VGoT", "Vg", null, "Glory of Taarskoerzn" },
+            { "VIrM", "Vh", null, "Irrgh Manifest" },
+            { "VJoF", "Vj", null, "Jihad of Faarzgaen" },
+            { "VLIn", "Vi", null, "Llaeghskath Interacterate" },
+            { "VLPr", "Vl", null, "Lair Protectorate" },
+            { "VNgC", "Vn", null, "Ngath Confederation" },
+            { "VOpp", "Vo", null, "Opposition Alliance" },
+            { "VPGa", "Vg", null, "Pact of Gaerr" }, // (Gaerr Thue)
+            { "VRo5", "V5", null, "Ruler of Five" },
+            { "VRrS", "VW", null, "Rranglloez Stronghold" },
+            { "VRuk", "Vn", null, "Worlds of Leader Rukh" }, // (Rukh Aegz)
+            { "VSDp", "Vs", null, "Saeknouth Dependency" }, // (Saeknouth Igz)
+            { "VSEq", "Vd", null, "Society of Equals" }, // (Dzen Aeng Kho)
+            { "VThE", "Vt", null, "Thoengling Empire" }, // (Thoengling Raghz)
+            { "VTzE", "Vp", null, "Thirz Empire" }, // (Thirz Uerra)
+            { "VUru", "Vu", null, "Urukhu" },
+            { "VVar", "Ve", null, "Empire of Varroerth" },
+            { "VVoS", "Vv", null, "Voekhaeb Society" },
+            { "VWP2", "V2", null, "Windhorn Pact of Two" },
+            { "VWan", "Vw", null, "People of Wanz" },
             { "ViCo", "Vi", null, "Viyard Concourse" },
             { "XXXX", "Xx", null, "Unknown" },
             { "ZePr", "Zp", "Z", "Zelphic Primacy" },
@@ -409,6 +436,7 @@ namespace Maps
             { "ZhOb", "Zh", "Zh", "Zhodani Consulate, Obrefripl Province" },
             { "ZhSh", "Zh", "Zh", "Zhodani Consulate, Shtochiadr Province" },
             { "ZhVQ", "Zh", "Zh", "Zhodani Consulate, Vlanchiets Qlom Province" },
+            { "Zuug", "Zu", "Zu", "Zuugabish Tripartite" },
             { "ZyCo", "Zc", null, "Zydarian Codominion" },
             // Allegiance Table End
         };
@@ -472,10 +500,12 @@ namespace Maps
             { "Hama", "Hamaran" },
             { "Hive", "Hiver" },
             { "Huma", "Human" }, // (Vilani/Solomani-mixed)
+            { "Jaib", "Jaibok" },
             { "Jala", "Jala'lak" },
             { "Jend", "Jenda" },
             { "Jonk", "Jonkeereen" },
             { "Kafo", "Kafoe" },
+            { "Kagg", "Kaggushus" },
             { "Karh", "Karhyri" },
             { "Kiak", "Kiakh'iee" },
             { "Lamu", "Lamura Gav/Teg" },
@@ -492,6 +522,8 @@ namespace Maps
             { "Sele", "Selenites" },
             { "Sred", "Sred*Ni" },
             { "Stal", "Stalkers" },
+            { "Suer", "Suerrat" },
+            { "Sull", "Sulliji" },
             { "Swan", "Swanfei" },
             { "Sydi", "Sydites" },
             { "Syle", "Syleans" },

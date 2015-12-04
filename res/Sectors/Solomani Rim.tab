@@ -44,14 +44,14 @@ Solo	M	0434	Durgha	B612400-D		Ic Ni		205	SoCf	F8 IV M0 V	{ 1 }	(B33-3)	[1518]		1
 Solo	M	0437	Dolor	B311887-C	KM	Ic Na Ph Pi Sa		934	SoCf	M1 V M4 V	{ 3 }	(H7A+2)	[8B5C]		15	2,380
 Solo	M	0438	Zhongguo	B544722-A		Ag Pi		123	SoCf	K8 V	{ 3 }	(E6A-2)	[3A16]		14	672
 Solo	M	0440	Ormadz	B300599-C		Ni Va		813	SoCf	M0 V M3 V	{ 1 }	(B44+2)	[666D]		7	352
-Solo	A	0501	Morgana	BA9A861-C		Oc Wa Ph Pi Guru4 O:0502		823	ImDs	M2 V	{ 2 }	(F79-3)	[4A18]	BDe	8	662
+Solo	A	0501	Morgana	BA9A861-C		Oc Ph Pi Guru4 O:0502		823	ImDs	M2 V	{ 2 }	(F79-3)	[4A18]	BDe	8	662
 Solo	A	0502	Ugarup	B89A8BE-C		Wa Ph Pi (Gurungan) Huma0 Tz		102	ImDs	M1 V	{ 2 }	(C79+5)	[CA9G]	BDe	8	3,780
 Solo	A	0509	Ixtloc	B530487-C		De Ni Po		100	ImDs	K4 V M6 V	{ 1 }	(633+1)	[455C]	B	13	54
 Solo	E	0511	YRSAI	A663A9B-F		Hi		402	ImDs	G0 V M5 V	{ 3 }	(E9B+4)	[CD7H]	BE	10	5,544
 Solo	E	0518	Arukhur	E200365-9		Lo Va O:0617		522	ImDs	M3 V	{ -2 }	(921-4)	[1137]	B	7	11
 Solo	I	0524	Irashdaa	A689869-D	S	Ri Ph Dolp0 Mr Tz		513	ImDs	M2 V M8 V	{ 3 }	(E7B+3)	[9B6E]	BCe	14	3,234
 Solo	I	0527	BASSE TERRE	A6699AC-E		Hi Pr		823	ImDs	K6 V M0 V	{ 3 }	(G8C+5)	[CC8H]	BcE	16	7,680
-Solo	I	0528	KIDASHI	A557A69-E	N	Hi Pz Lk Mr Sa	A	824	ImDs	M2 V	{ 3 }	(J9B+3)	[BD6F]	BE	11	5,346
+Solo	I	0528	KIDASHI	A557A69-E	N	Hi Pz Mr Lk Sa	A	824	ImDs	M2 V	{ 3 }	(J9B+3)	[BD6F]	BE	11	5,346
 Solo	M	0532	Cadmus	C532423-A		Ni Po		822	SoCf	K8 V M7 V	{ 0 }	(A32-3)	[1427]		13	42
 Solo	M	0533	Skyron	B312433-C		Ic Ni Sa		302	SoCf	M1 V M8 V	{ 1 }	(833-2)	[1529]		11	58
 Solo	M	0536	Chinon	C696846-8		Pa Ph Pi		322	SoCf	M1 V M7 V	{ -1 }	(E74-3)	[7747]		11	274
@@ -249,7 +249,7 @@ Solo	K	2027	PROMETHEUS	A785969-E	S	Hi Ga Pr Mr		723	ImDs	G2 V K1 V M5 V	{ 3 }	(G
 Solo	K	2028	Peraspera	B7A2536-C		Fl He Ni		920	ImDs	M1 V	{ 1 }	(944+1)	[464B]	B	11	144
 Solo	K	2029	Midway	B699552-D		Ni		722	ImDs	M2 V	{ 1 }	(B44-3)	[1619]	B	8	123
 Solo	K	2030	Hades	B432366-D		Lo Po O:1830 Sa		412	ImDs	M2 V	{ 1 }	(821+1)	[244C]	B	13	16
-Solo	O	2031	Calgary	CA9A49C-B		Ni Oc Wa Dolp0		525	ImDs	M2 V	{ 0 }	(D32+3)	[748E]	B	10	234
+Solo	O	2031	Calgary	CA9A49C-B		Ni Oc Dolp0		525	ImDs	M2 V	{ 0 }	(D32+3)	[748E]	B	10	234
 Solo	C	2102	Jackoyo	B000510-B		As Ni Va		510	ImDs	F8 V M0 V	{ 1 }	(844-3)	[1616]	B	13	90
 Solo	C	2104	Sishera	B433854-D		Na Po Ph		802	ImDs	M0 V	{ 2 }	(C7A-1)	[6A3B]	Be	12	756
 Solo	C	2105	GUNASHNAN	A854996-E	N	Hi		102	ImDs	M0 V M1 V	{ 3 }	(D8C+1)	[8C4D]	BE	14	1,248
@@ -324,7 +324,7 @@ Solo	D	2704	Okotah	D425103-A		Lo		400	ImDs	K9 V	{ -1 }	(311-4)	[1127]	B	8	2
 Solo	D	2708	Azure	B4348CF-B		Ph Pz	A	221	ImDs	G2 V M3 V	{ 2 }	(D79+5)	[DAAG]	Be	16	4,095
 Solo	H	2713	Khugi	X000000-0		As Ba Va Fo	R	020	ImDs	G8 III K2 V	{ -3 }	(200-5)	[0000]		6	0
 Solo	H	2714	Pinnashdug	B578888-A		Pa Ph Pi		822	ImDs	M0 V	{ 2 }	(E78+1)	[8A5A]	BcDe	10	784
-Solo	H	2720	Nyarlathotep	C000267-C		As Lo Va RsB O:2920		623	ImDs	K1 V M1 V	{ 0 }	(911+1)	[225C]	B	10	9
+Solo	H	2720	Nyarlathotep	C000267-C		As Lo Va O:2920 RsB		623	ImDs	K1 V M1 V	{ 0 }	(911+1)	[225C]	B	10	9
 Solo	L	2722	Tunguska	C422720-A		He Na Po Pi		614	ImDs	F6 IV	{ 1 }	(E68-4)	[2815]	BD	8	403
 Solo	L	2723	Anenerkuk	A56A764-E	N	Ri Wa O:2623		813	ImDs	M1 V	{ 3 }	(D6C+1)	[5A3C]	BC	16	936
 Solo	L	2729	Tamarind	C9A4869-9		Fl Ph Mr		620	ImDs	M2 V M6 V	{ 0 }	(C76+1)	[986A]	Be	12	504

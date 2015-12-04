@@ -1,6 +1,7 @@
 ALLEGIANCES				
 				
 Code	Legacy	Base	Description	Location
+3EoG	Ga	Ga	Third Empire of Gashikan	Mend
 4Wor	Fw	FW	Four Worlds	Farf
 AkUn	Ak		Akeena Union	Gate
 AlCo	Al		Altarean Confederation	Vang
@@ -34,6 +35,7 @@ CAin	Co		Comsentient Alliance, independent	Vang
 CAKT	Kt		Comsentient Alliance, Kajaani Triumverate	Vang
 CaPr	Ca		Principality of Caledon	Reav
 CaTe	Ct		Carter Technocracy	Reav
+CoBa	Ba	Ba	Confederation of Bammesuka	Mend
 CoLp	Lp		Council of Leh Perash	Hint
 CsCa	Ca		Client state, Principality of Caledon	Reav
 CsHv	Hc		Client state, Hiver Federation	Cruc/Spic
@@ -41,7 +43,7 @@ CsIm	Cs		Client state, Third Imperium	various
 CsMP	Ms		Client state, Ma'Gnar Primarchic	Beyo
 CsZh	Cz		Client state, Zhodani Consulate	Spin/Troj
 CyUn	Cu		Cytralin Unity	Hint
-DaCf	Da		Darrian Confederation	Spin/Troj
+DaCf	Da		Darrian Confederation	Spin
 DeHg	Dh	D	Descarothe Hegemony	Farf
 DiWb	Dw		Die Weltbund	Beyo
 DoAl	Az	A	Domain of Alntzar	Farf
@@ -80,16 +82,26 @@ ImLu	Im	Im	Third Imperium, Luriani Cultural Association	Ley/Forn
 ImSy	Im	Im	Third Imperium, Sylean Worlds	Core
 ImVd	Ve	Im	Third Imperium, Vegan Autonomous District	Solo
 IsDo	Id		Islaiat Dominate	Eali
+JAoZ	Jo	Jp	Julian Protectorate, Alliance of Ozuvon	Mend
 JaPa	Ja		Jarnac Pashalic	Beyo/Vang
-JuHl	Hl	Jp	Julian Protectorate, Hegemony of Lorean	Empt
-JuPr	Jp	Jp	Julian Protectorate, independent	Empt
-JuRu	Jr	Jp	Julian Protectorate, Rukadukaz Republic	Empt
+JAsi	Ja	Jp	Julian Protectorate, Asimikigir Confederation	Amdu/Mend
+JCoK	Jc	Jp	Julian Protectorate, Constitution of Koekhon	Amdu/Mend
+JHhk	Jh	Jp	Julian Protectorate, Hhkar Sphere	Amdu/Mend
+JLum	Jd/Jl	Jp	Julian Protectorate, Lumda Dower	Mend
+JMen	Jm	Jp	Julian Protectorate, Commonwealth of Mendan	Mend
+JPSt	Jp	Jp	Julian Protectorate, Pirbarish Starlane	Mend
+JRar	Vw	Jp	Julian Protectorate, Rar Errall/Wolves Warren	Mend
+JuHl	Hl	Jp	Julian Protectorate, Hegemony of Lorean	Amdu/Empt/Mend
+JUkh	Ju	Jp	Julian Protectorate, Ukhanzi Coordinate	Mend
+JuPr	Jp/J-	Jp	Julian Protectorate, independent	Amdu/Empt/Mend
+JuRu	Jr	Jp	Julian Protectorate, Rukadukaz Republic	Empt/Mend
+JVug	Jv	Jp	Julian Protectorate, Vugurar Dominion	Mend
 KaCo	KC		Katowice Conquest	Cruc
 KaWo	KW		Karhyri Worlds	Cruc
 KhLe	Kl		Khuur League	Ley
-KoEm	Ko		Korsumug Empire	Thet
-KoPm	Pm		Percavid Marches	Thet
-Kpel	Pe		Kingdom of Peladon	Thet
+KoEm	Ko	Ko	Korsumug Empire	Thet
+KoPm 	Pm	Pm	Percavid Marches	Thet
+Kpel	Pe	Pe	Kingdom of Peladon	Thet
 KrBu	Kr		Kranzbund	Vang
 LaCo	Lc		Langemarck Coalition	Vang
 LeSu	Ls	L	League of Suns	Farf
@@ -104,7 +116,9 @@ MnPr	Mn	N	Mnemosyne Principality	Farf
 MrCo	MC		Mercantile Concord	Cruc
 NaAs	As	As	Non-Aligned, Aslan-dominated (outside Hierate)	Akti/Dark/Eali/Rift/Uist/Ustr
 NaHu	Na	Na	Non-Aligned, Human-dominated	various
-NaVa	Va		Non-Aligned, Vargr-dominated	Anta/Corr/Dene/Empt/Gvur/Lish/Vlan/Ziaf
+NaHu	Na	Na	Non-Aligned, Human-dominated	various
+NaVa	Va	Va	Non-Aligned, Vargr-dominated	Anta/Corr/Dene/Empt/Gvur/Lish/Mesh/Prov/Tugl/Vlan/Wind/Ziaf
+NaVa	Va	Va	Non-Aligned, Vargr-dominated	various
 NaXX	Na	Na	Non-Aligned, unclaimed	various
 OcWs	Ow		Outcasts of the Whispering Sky	Hint
 OlWo	Ow		Old Worlds	Cruc
@@ -115,6 +129,7 @@ RaRa	Ra		Ral Ranta	Hint
 Reac	Rh		The Reach	Cruc
 ReUn	Re		Renkard Union	Gate
 SaCo	Sc	S	Salinaikin Concordance	Farf
+Sark	Sc	Sc	Sarkan Constellation	Mend
 SeFo	Sf		Senlis Foederate	Troj
 SlLg	Sl		Shukikikar League	Glim
 SoCf	So	So	Solomani Confederation	Alph/Diab/Dark/Hint/Magy/Olde/Reav/Solo/Spic/Ustr
@@ -127,29 +142,41 @@ SwFW	Sw		Swanfei Free Worlds	Gate
 SyRe	Sy		Syzlin Republic	Cruc
 TeCl	Tc		Tellerian Cluster	Vang
 TrCo	Tr		Trindel Confederacy	Gate
-TroC	Tr		Trooles Confederation	Thet
 TrDo	Td		Trelyn Domain	Vang/Farf
+TroC	Tr	Tr	Trooles Confederation	Thet
 UnGa	Ug	U	Union of Garth	Farf
 UnHa	Uh		Union of Harmony	Dark/Reav
-V40S	Ve	Va	40th Squadron (Ekhelle Ksafi)	Gvur
-VARC	Vr	Va	Anti-Rukh Coalition (Gnoerrgh Rukh Lloell)	Gvur
-VAug	Vu	Va	United Followers of Augurgh	Dene
-VBkA	Vb	Va	Bakne Alliance	
-VCKd	Vk	Va	Commonality of Kedzudh (Kedzudh Aeng)	Gvur
-VDzF	Vf	Va	Dzarrgh Federate	Dene
+V17D	V7		17th Disjucture	Mesh/Wind
+V40S	Ve		40th Squadron (Ekhelle Ksafi)	Gvur
+VAnP	Vx		Antares Pact	Mesh
+VAnP	Vx		Antares Pact	Mesh/Mend
+VARC	Vr		Anti-Rukh Coalition (Gnoerrgh Rukh Lloell)	Gvur
+VAug	Vu		United Followers of Augurgh	Dene/Tugl
+VBkA	Vb		Bakne Alliance	Tugl
+VCKd	Vk		Commonality of Kedzudh (Kedzudh Aeng)	Gvur
+VDzF	Vf		Dzarrgh Federate	Dene/Prov/Tugl
+VFFD	V1		First Fleet of Dzo	Mesh
+VGoT	Vg		Glory of Taarskoerzn	Prov
 ViCo	Vi		Viyard Concourse	Gate
-VLIn	Vi	Va	Llaeghskath Interacterate	
-VPGa	Vg	Va	Pact of Gaerr (Gaerr Thue)	Gvur
-VRrS	VW	Va	Rranglloez Stronghold 	
-VRuk	Vn	Va	Worlds of Leader Rukh (Rukh Aegz)	Gvur
-VSDp	Vs	Va	Saeknouth Dependency (Saeknouth Igz)	Gvur
-VSEq	Vd	Va	Society of Equals (Dzen Aeng Kho)	Gvur
-VThE	Vt	Va	Thoengling Empire (Thoengling Raghz)	Gvur
-VTzE	Vp	Va	Thirz Empire (Thirz Uerra)	Gvur/Ziaf
-VUru	Vu	Va	Urukhu	Gvur
-VVar	Ve	Va	Empire of Varroerth 	
-VWan	Vw	Va	People of Wanz	
-VWP2	V2	Va	Windhorn Pact of Two	
+VIrM	Vh		Irrgh Manifest	Prov
+VJoF	Vj		Jihad of Faarzgaen	Prov
+VLIn	Vi		Llaeghskath Interacterate	Prov/Tugl
+VLPr	Vl		Lair Protectorate	Prov
+VNgC	Vn		Ngath Confederation	Wind
+VOpp	Vo		Opposition Alliance	Mesh
+VPGa	Vg		Pact of Gaerr (Gaerr Thue)	Gvur
+VRo5	V5		Ruler of Five	Mesh
+VRrS	VW		Rranglloez Stronghold 	Tugl
+VRuk	Vn		Worlds of Leader Rukh (Rukh Aegz)	Gvur
+VSDp	Vs		Saeknouth Dependency (Saeknouth Igz)	Gvur
+VSEq	Vd		Society of Equals (Dzen Aeng Kho)	Gvur/Tugl
+VThE	Vt		Thoengling Empire (Thoengling Raghz)	Gvur/Tugl
+VTzE	Vp		Thirz Empire (Thirz Uerra)	Gvur/Ziaf
+VUru	Vu		Urukhu	Gvur
+VVar	Ve		Empire of Varroerth 	Prov/Tugl/Wind
+VVoS	Vv		Voekhaeb Society	Mesh
+VWan	Vw		People of Wanz	Tugl
+VWP2	V2		Windhorn Pact of Two	Tugl
 XXXX	Xx		Unknown	various
 ZePr	Zp	Z	Zelphic Primacy	Farf
 ZhCa	Ca	Zh	Zhodani Consulate, Colonnade Province	Vang/Farf
@@ -162,4 +189,5 @@ ZhMe	Zh	Zh	Zhodani Consulate, Meqlemianz Province	Eiap/Sidi/Eiap
 ZhOb	Zh	Zh	Zhodani Consulate, Obrefripl Province	various
 ZhSh	Zh	Zh	Zhodani Consulate, Shtochiadr Province	Itvi/Tlab
 ZhVQ	Zh	Zh	Zhodani Consulate, Vlanchiets Qlom Province	various
+Zuug	Zu	Zu	Zuugabish Tripartite	Mend
 ZyCo	Zc		Zydarian Codominion	Beyo
