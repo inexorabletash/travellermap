@@ -80,6 +80,13 @@ namespace Maps
             // TODO: This is very fragile; if a new type is added to Sector we need to add more code here.
 
             if (metadataSource.Names.Any()) { Names.Clear(); Names.AddRange(metadataSource.Names); }
+
+            if (metadataSource.DataFile != null && DataFile != null &&
+                (metadataSource.DataFile.FileName != DataFile.FileName ||
+                metadataSource.DataFile.Type != DataFile.Type)) {
+                throw new Exception(string.Format("Mismatching DataFile entries for {0}", this.Names[0].Text));
+            }
+
             if (metadataSource.DataFile != null) DataFile = metadataSource.DataFile;
 
             Subsectors.AddRange(metadataSource.Subsectors);

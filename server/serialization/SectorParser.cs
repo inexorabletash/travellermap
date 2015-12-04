@@ -194,7 +194,7 @@ namespace Maps.Serialization
 
         // Regex checks are only done in Debug - data is trusted otherwise
         private static readonly Regex HEX_REGEX = new Regex(@"^\d\d\d\d$");
-        private static readonly Regex UWP_REGEX = new Regex("^[ABCDEX]" + HEX + @"{6}-" + HEX + @"$");
+        private static readonly Regex UWP_REGEX = new Regex("^[ABCDEX]" + HEX + HEX + @"[0-AX]" + HEX + @"{3}-" + HEX + @"$");
         private static readonly Regex PBG_REGEX = new Regex("^[0-9X]{3}$");
 
         private static readonly Regex BASES_REGEX = new Regex(@"^C?D?E?K?M?N?R?S?T?V?W?X?$");

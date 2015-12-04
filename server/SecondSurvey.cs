@@ -363,8 +363,6 @@ namespace Maps
             { "MrCo", "MC", null, "Mercantile Concord" },
             { "NaAs", "As", "As", "Non-Aligned, Aslan-dominated" }, // (outside Hierate)
             { "NaHu", "Na", "Na", "Non-Aligned, Human-dominated" },
-            { "NaHu", "Na", "Na", "Non-Aligned, Human-dominated" },
-            { "NaVa", "Va", "Va", "Non-Aligned, Vargr-dominated" },
             { "NaVa", "Va", "Va", "Non-Aligned, Vargr-dominated" },
             { "NaXX", "Na", "Na", "Non-Aligned, unclaimed" },
             { "OcWs", "Ow", null, "Outcasts of the Whispering Sky" },
@@ -396,7 +394,6 @@ namespace Maps
             { "V17D", "V7", null, "17th Disjucture" },
             { "V40S", "Ve", null, "40th Squadron" }, // (Ekhelle Ksafi)
             { "VARC", "Vr", null, "Anti-Rukh Coalition" }, // (Gnoerrgh Rukh Lloell)
-            { "VAnP", "Vx", null, "Antares Pact" },
             { "VAnP", "Vx", null, "Antares Pact" },
             { "VAug", "Vu", null, "United Followers of Augurgh" },
             { "VBkA", "Vb", null, "Bakne Alliance" },

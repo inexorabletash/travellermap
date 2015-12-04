@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<Sector Tags="Unreviewed">
+<Sector Tags="InReview">
   <Y>-2</Y>
   <X>1</X>
   <Name>Mendan</Name>
   <Name Lang="va">Gotzdzo</Name>
-  <DataFile Source="Challenge #49" Author="Michael R. Mikesh" Publisher="GDW" Ref="http://traveller.mu.org/archive/General/sectors/mendan.vmb" Era="1120">Mendan.sec</DataFile>
+  <DataFile Author="Michael R. Mikesh" Source="Traveller 5 Sector Survey" Era="1105" Type="TabDelimited">Mendan.tab</DataFile>
   <Subsectors Source="Challenge #49">
     <Subsector Index="A">Zuugabish</Subsector>
     <Subsector Index="B">Gainla</Subsector>

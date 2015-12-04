@@ -24,7 +24,7 @@ namespace Maps.Admin
             // before any other objects (e.g. Worlds) are loaded.
             SectorMap.Flush();
             SectorMap map = SectorMap.GetInstance(resourceManager);
-
+            
             var sectorQuery = from sector in map.Sectors
                               where (sectorName == null || sector.Names[0].Text.StartsWith(sectorName, ignoreCase: true, culture: CultureInfo.InvariantCulture))
                               && (sector.DataFile != null)
