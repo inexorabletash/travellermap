@@ -296,9 +296,10 @@
     [ /^Mr:\d\d\d\d$/, 'Military rule'],
 
     // Sophonts
-    [ /^\[.*\]$/, 'Homeworld'],
-    [ /^\(.*\)$/, 'Homeworld'],
+    [ /^\[.*\]\??$/, 'Homeworld'],
+    [ /^\(.*\)\??$/, 'Homeworld'],
     [ /^\(.*\)(\d)$/, 'Homeworld, Population $1$`0%'],
+    [ /^Di\(.*\)$/, 'Homeworld, Extinct'],
     [ /^([A-Z][A-Za-z']{3})([0-9W])$/, decodeSophontPopulation],
     [ /^([ACDFHIMVXZ])([0-9w])$/, decodeSophontPopulation],
 
@@ -441,7 +442,7 @@
     }
 
     if (world.Remarks) {
-      world.Remarks = world.Remarks.match(/\([^)]*\)\d*|\[[^\]]*\]\d*|{[^}]*}|\S+/g).map(function(s){
+      world.Remarks = world.Remarks.match(/(Di)?\([^)]*\)[0-9?]?|\[[^\]]*\][0-9?]?|{[^}]*}|\S+/g).map(function(s){
         if (s in REMARKS_TABLE) return {code: s, detail: REMARKS_TABLE[s]};
         for (var i = 0; i < REMARKS_PATTERNS.length; ++i) {
           var pattern = REMARKS_PATTERNS[i][0], replacement = REMARKS_PATTERNS[i][1];
