@@ -60,7 +60,7 @@ namespace Maps.API
                 else if (HasOption("domain"))
                 {
                     string domain = GetStringOption("domain");
-                    int x, y, w = 2, h = 2;
+                    double x, y, w = 2, h = 2;
                     switch (domain.ToLowerInvariant())
                     {
                         case "deneb": x = -4; y = -1; title = "Domain of Deneb"; break;
@@ -80,6 +80,7 @@ namespace Maps.API
                         case "hiver": x = 2; y = 1; w = 6; h = 4; title = "Hiver Federation"; break;
                         case "aslan": x = -8; y = 1; w = 7; h = 4; title = "Aslan Hierate"; break;
                         case "vargr": x = -4; y = -4; w = 8; h = 3; title = "Vargr Extents"; break;
+                        case "jp": x = 1.25; y = -2.25; w = 2.5; h = 2; title = "Julian Protectorate"; break;
                         // TODO: K'kree
                         // TODO: Zhodani provinces
 
@@ -89,10 +90,10 @@ namespace Maps.API
                             throw new HttpError(404, "Not Found", string.Format("Unknown domain: {0}", domain));
                     }
 
-                    int x1 = x * Astrometrics.SectorWidth - Astrometrics.ReferenceHex.X + 1;
-                    int y1 = y * Astrometrics.SectorHeight - Astrometrics.ReferenceHex.Y + 1;
-                    int x2 = x1 + w * Astrometrics.SectorWidth - 1;
-                    int y2 = y1 + h * Astrometrics.SectorHeight - 1;
+                    int x1 = (int)Math.Round(x * Astrometrics.SectorWidth - Astrometrics.ReferenceHex.X + 1);
+                    int y1 = (int)Math.Round(y * Astrometrics.SectorHeight - Astrometrics.ReferenceHex.Y + 1);
+                    int x2 = (int)Math.Round(x1 + w * Astrometrics.SectorWidth - 1);
+                    int y2 = (int)Math.Round(y1 + h * Astrometrics.SectorHeight - 1);
 
                     tileRect.X = Math.Min(x1, x2);
                     tileRect.Y = Math.Min(y1, y2);

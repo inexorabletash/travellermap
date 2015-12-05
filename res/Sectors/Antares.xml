@@ -33,9 +33,6 @@
 
     <Border Allegiance="JuPr" ShowLabel="false" Color="blue">2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3210 3110 3009 2909 2908 2907 2806 2805 2905 2904 2903 2902 2801 2701 2600 2500</Border>
   </Borders>
-  <Stylesheet>
-    border.JuRu { color: cyan; }
-  </Stylesheet>
   <Routes Author="Jeff Zeitlin" Ref="http://zho.berka.com/data/CLASSIC/sector.pl?sector=ANTARES">
     <Route Start="0124" End="0524" />
     <Route Start="0124" End="3126" EndOffsetX="-1" />
@@ -128,21 +125,21 @@
     <Route Start="2324" End="2421" />
     <Route Start="2324" End="2427" />
     <Route Start="2427" End="2730" />
-    <Route Start="2504" End="2905" Allegiance="JuPr" />
+    <Route Start="2504" End="2905" Allegiance="JuRu" />
     <Route Start="2634" End="2638" />
     <Route Start="2634" End="2935" />
     <Route Start="2638" End="2940" />
     <Route Start="2730" End="3129" />
-    <Route Start="2905" End="3108" Allegiance="JuPr" />
+    <Route Start="2905" End="3108" Allegiance="JuRu" />
     <Route Start="2940" End="3139" />
     <!--<Route Start="3010" End="0213" EndOffsetX="1" Allegiance="JuPr" />-->
-    <Route Start="3010" End="3108" Allegiance="JuPr" />
-    <Route Start="3108" End="0208" EndOffsetX="1" Allegiance="JuPr" />
-    <Route Start="3108" End="3204" Allegiance="JuPr" />
+    <Route Start="3010" End="3108" Allegiance="JuRu" />
+    <Route Start="3108" End="0208" EndOffsetX="1" Allegiance="JuRu" />
+    <Route Start="3108" End="3204" Allegiance="JuRu" />
     <Route Start="3129" End="0128" EndOffsetX="1" />
     <Route Start="3129" End="0132" EndOffsetX="1" />
     <Route Start="3139" End="0338" EndOffsetX="1" />
-    <Route Start="3201" End="3204" Allegiance="JuPr" />
-    <Route Start="3201" End="3239" EndOffsetY="-1" Allegiance="JuPr" />
+    <Route Start="3201" End="3204" Allegiance="JuRu" />
+    <Route Start="3201" End="3239" EndOffsetY="-1" Allegiance="JuRu" />
   </Routes>
 </Sector>
