@@ -75,8 +75,9 @@ namespace Maps.Admin
             "Cp", "Cs", "Cx", "Cy", // Political
             "Sa", "Fo", "Pz", "Da", "Ab", "An", // Special 
 
-            { @"^\[.*?\]\d*$", "(major race homeworld)" },
-            { @"^\(.*?\)\d*$", "(minor race homeworld)" },
+            { @"^\[.*?\][0-9?]?$", "(major race homeworld)" },
+            { @"^\(.*?\)[0-9?]?$", "(minor race homeworld)" },
+            { @"^Di\(.*?\)$", "(extinct minor race homeworld)" },
             { @"^(" + string.Join("|", SecondSurvey.SophontCodes) + @")(\d|W|\?)$", "(sophont)" },
 
             { @"^Mr\((" + string.Join("|", SecondSurvey.AllegianceCodes) + @")\)$", "(military rule)" },
