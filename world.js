@@ -300,7 +300,7 @@
     [ /^\(.*\)\??$/, 'Homeworld'],
     [ /^\(.*\)(\d)$/, 'Homeworld, Population $1$`0%'],
     [ /^Di\(.*\)$/, 'Homeworld, Extinct'],
-    [ /^([A-Z][A-Za-z']{3})([0-9W])$/, decodeSophontPopulation],
+    [ /^([A-Z][A-Za-z']{3})([0-9W?])$/, decodeSophontPopulation],
     [ /^([ACDFHIMVXZ])([0-9w])$/, decodeSophontPopulation],
 
     // Comments
@@ -346,6 +346,8 @@
       pop = '< 10%';
     else if (pop === 'W' || pop === 'w')
       pop = '100%';
+    else if (pop === '?')
+      pop = 'Unknown';
     else
       pop = pop + '0%';
     return name + ', Population ' + pop;
