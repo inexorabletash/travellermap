@@ -72,6 +72,8 @@ die "Unexpected header: $line\n" unless $line =~ /^WORLD DATA$/;
 
 $line = <$in>; chomp $line; $line =~ s/\s+$//;
 die "Unexpected header: $line\n" unless $line =~ /^$/;
+$line = <$in>; chomp $line; $line =~ s/\s+$//;
+die "Unexpected header: $line\n" unless $line =~ /^$/;
 
 $line = <$in>; chomp $line;
 die "Unexpected header: $line\n" unless $line =~ /^Sector\tHex\tName\tUWP\t/;
