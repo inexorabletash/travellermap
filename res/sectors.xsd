@@ -106,11 +106,13 @@
                         <xs:attribute name="Hex" type="xs:unsignedShort" use="required" />
                         <xs:attribute name="Color" type="xs:string" use="optional" />
                         <xs:attribute name="Size" type="xs:string" use="optional" />
+                        <xs:attributeGroup ref="metadata"/>
                       </xs:extension>
                     </xs:simpleContent>
                   </xs:complexType>
                 </xs:element>
               </xs:sequence>
+              <xs:attributeGroup ref="metadata"/>
             </xs:complexType>
           </xs:element>
           <xs:element name="Routes">
