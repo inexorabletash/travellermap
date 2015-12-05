@@ -51,6 +51,8 @@ my @lines;
             $comment = $2;
         }
 
+        $legacy =~ s|/.*||g;
+
         $alleg = quote($alleg);
         $legacy = quote($legacy);
         $base = $base ? quote($base) : 'null';
