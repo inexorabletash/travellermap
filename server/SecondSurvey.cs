@@ -511,6 +511,7 @@ namespace Maps
             { "Luri", "Luriani" },
             { "Mal'", "Mal'Gnar" },
             { "Mask", "Maskai" },
+            { "Mitz", "Mitzene" },
             { "Muri", "Murians" },
             { "Orca", "Orca" },
             { "Ormi", "Ormine" },
