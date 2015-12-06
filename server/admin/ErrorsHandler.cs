@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net.Mime;
 
@@ -47,6 +48,17 @@ namespace Maps.Admin
                 else
                 {
                     context.Response.Output.WriteLine("{0} world(s)", 0);
+                }
+
+                foreach (IAllegiance item in sector.Borders.AsEnumerable<IAllegiance>()
+                    .Concat(sector.Routes.AsEnumerable<IAllegiance>())
+                    .Concat(sector.Labels.AsEnumerable<IAllegiance>()))
+                {
+                    if (string.IsNullOrWhiteSpace(item.Allegiance))
+                        continue;
+                    if (sector.GetAllegianceFromCode(item.Allegiance) == null)
+                        context.Response.Output.WriteLine("Undefined allegiance code: {0} (on {1})", item.Allegiance,
+                            item.GetType().Name);
                 }
 
                 foreach (var route in sector.Routes)
