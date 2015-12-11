@@ -1,8 +1,8 @@
 Sector	SS	Hex	Name	UWP	Bases	Remarks	Zone	PBG	Allegiance	Stars	{Ix}	(Ex)	[Cx]	Nobility	W	RU
-Dias	A	0103	ALADON	B6579CB-C		Hi Ga		404	ImDs	G0 V	{ 3 }	(F8E+5)	[BC7E]	BE	13	8,400
+Dias	A	0103	ALADON	B6579CB-C		Hi Ga Pz	A	404	ImDs	G0 V	{ 3 }	(F8E+5)	[BC7E]	BE	13	8,400
 Dias	A	0104	Maxalla	A596444-D		Ni Pa		115	ImDs	M1 V	{ 1 }	(C34-1)	[253B]	Bc	13	130
 Dias	A	0108	Sikora	E874626-6		Ag Ni		104	ImDs	K2 V	{ -2 }	(852-3)	[5445]	BC	11	56
-Dias	E	0111	Mosul	C5868B9-8		Ri Pa Ph		401	ImDs	M1 V	{ 0 }	(B78+1)	[9869]	BcCe	9	616
+Dias	E	0111	Mosul	C5868B9-8		Ri Pa Ph Pz	A	401	ImDs	M1 V	{ 0 }	(B78+1)	[9869]	BcCe	9	616
 Dias	E	0113	Toga	X674200-5		Lo Fo	R	812	ImDs	K8 V M4 V	{ -3 }	(411-5)	[1111]		14	2
 Dias	E	0114	Ainor Lisea	C777510-9		Ag Ni		704	ImDs	M3 V M9 V	{ 0 }	(B44-4)	[1514]	BC	11	106
 Dias	E	0116	Karaguuka	D789655-8		Ni Ri		214	ImDs	G1 V M4 V	{ -2 }	(D52-4)	[4436]	BC	8	78
@@ -21,7 +21,7 @@ Dias	E	0213	Khaavu	C427631-A	S	Ni		404	ImDs	K4 V	{ 0 }	(C54-4)	[2616]	B	9	144
 Dias	E	0214	Baanis	C100120-C		Lo Va		903	ImDs	K5 V	{ 0 }	(611-4)	[1117]	B	13	4
 Dias	E	0215	Jalhoun	E310320-9		Lo		704	ImDs	K9 V M6 V	{ -2 }	(921-5)	[1114]	B	13	9
 Dias	E	0218	Yidii	E435577-9		Ni		912	ImDs	M3 V	{ -2 }	(A42-2)	[5359]	B	12	64
-Dias	E	0220	Kyzyl	E57649D-7		Ni Pa		103	ImDs	M2 V M2 V	{ -3 }	(631+1)	[819B]	Bc	15	18
+Dias	E	0220	Kyzyl	E57649D-7		Ni Pa Da	A	103	ImDs	M2 V M2 V	{ -3 }	(631+1)	[819B]	Bc	15	18
 Dias	I	0225	Karakaara	E642356-8		He Lo Po		603	ImDs	G8 V	{ -3 }	(821-4)	[2147]	B	12	10
 Dias	I	0227	Waken	D100762-9		Na Va Pi O:Daib-3226		602	ImDs	F0 IV M2 V	{ -1 }	(B68-5)	[3615]	BD	12	264
 Dias	I	0228	Ebasha	A579546-E		Ni Cp		423	ImDs	M2 V M3 V	{ 1 }	(C45+1)	[464D]	B	8	240
@@ -50,7 +50,7 @@ Dias	A	0410	Vita Levu	B6938CE-A		Ph Pi Pz	A	300	ImDs	K4 V M2 V	{ 2 }	(A7B+5)	[CA
 Dias	E	0413	Allenwald	D310400-A		Ni		303	ImDs	M1 V M8 V M3 V	{ -1 }	(932-5)	[1315]	B	7	27
 Dias	E	0414	Kashaashii	D574400-8	S	Ni Pa		703	ImDs	M1 V	{ -3 }	(931-5)	[1113]	Bc	6	14
 Dias	E	0415	Ninja	C685862-8		Ga Ri Pa Ph Pz Chir6 O:0416	A	303	ImDs	K6 V M1 V	{ 0 }	(D78-4)	[4814]	BcCe	15	437
-Dias	E	0416	Terra Far	A5448AF-C		Pa Ph Pi		113	ImDs	M2 V G5 V	{ 2 }	(E7C+5)	[DAAH]	BcDe	13	5,880
+Dias	E	0416	Terra Far	A5448AF-C		Pa Ph Pi Pz	A	113	ImDs	M2 V G5 V	{ 2 }	(E7C+5)	[DAAH]	BcDe	13	5,880
 Dias	E	0417	Kosmo	C549799-9		Pi		703	ImDs	K3 V	{ 0 }	(C69+1)	[876A]	BD	11	648
 Dias	E	0418	Cuttack	E575521-7		Ag Ni		810	ImDs	G3 V	{ -2 }	(742-5)	[1313]	BC	10	28
 Dias	I	0422	Hideous	C422798-A		He Na Po Pi Pz	A	302	ImDs	G4 V	{ 1 }	(B6A+1)	[785A]	BD	11	660
@@ -69,7 +69,7 @@ Dias	E	0512	FERRY	A647955-F		Hi In Cp Pz	A	203	ImDs	F3 V	{ 4 }	(E8G+2)	[7D3D]	BE
 Dias	E	0514	Kovuu	D574373-7		Lo		800	ImDs	G6 V	{ -3 }	(521-5)	[1124]	B	7	5
 Dias	E	0515	Gai	C310673-A		Na Ni Da	A	534	ImDs	M0 V M6 V	{ 0 }	(F54-3)	[3627]	B	12	210
 Dias	E	0516	Niilushaga	C773559-A		Ni		803	ImDs	M2 V M7 V	{ 0 }	(A44+1)	[656B]	B	15	160
-Dias	E	0518	Khuugar	E68758C-7		Ag Ni Ga Pr		615	ImDs	G2 V M8 V	{ -2 }	(742+1)	[838A]	BcC	9	56
+Dias	E	0518	Khuugar	E68758C-7		Ag Ni Ga Pr Da	A	615	ImDs	G2 V M8 V	{ -2 }	(742+1)	[838A]	BcC	9	56
 Dias	E	0519	Futatsu	B542221-B	N	He Lo Po		510	ImDs	K1 V	{ 1 }	(511-3)	[1317]	B	13	4
 Dias	I	0521	Vigo	D552664-6		Ni Po O:0422		615	ImDs	M2 V	{ -3 }	(851-5)	[4334]	B	12	20
 Dias	I	0524	Pesuuzu	B766559-C	N	Ag Ni Ga Pr		204	ImDs	G1 V	{ 2 }	(B46+3)	[676D]	BcC	9	792
@@ -77,7 +77,7 @@ Dias	I	0526	Aahasu	C423100-C		Lo Po		600	ImDs	M2 V	{ 0 }	(311-4)	[1117]	B	12	2
 Dias	I	0529	Jinchi	C581212-9		Lo		523	ImDs	K5 V	{ -1 }	(911-5)	[1115]	B	12	5
 Dias	I	0530	Zokku	B575444-B		Ni Pa		504	ImDs	K2 V	{ 1 }	(A34-1)	[2539]	Bc	12	108
 Dias	M	0531	Attax	B5875AE-B		Ag Ni Pr Da	A	413	ImDs	K0 V	{ 2 }	(B46+5)	[979F]	BcC	7	1,320
-Dias	M	0532	CUMBER	B3109CB-E		Hi In Na Cp		813	ImDs	F4 V	{ 4 }	(F8G+5)	[BD7G]	BEF	8	9,600
+Dias	M	0532	CUMBER	B3109CB-E		Hi In Na Cp Pz	A	813	ImDs	F4 V	{ 4 }	(F8G+5)	[BD7G]	BEF	8	9,600
 Dias	M	0533	Sheshene	B100733-D		Na Va Pi		614	ImDs	M2 V M2 V	{ 2 }	(E6D-1)	[492A]	BD	16	983
 Dias	M	0534	Alone	E559532-8		Ni		323	ImDs	K9 V G2 V	{ -3 }	(C41-5)	[1214]	B	13	24
 Dias	M	0535	Jue-ni	B756358-C		Lo Ga		512	ImDs	M1 V M5 V	{ 1 }	(821+1)	[345C]	B	10	16
@@ -85,7 +85,7 @@ Dias	M	0536	Akureyri	C000555-D		As Ni Va		714	ImDs	M0 V	{ 0 }	(C44-2)	[353B]	B	9
 Dias	M	0537	Fazed	D310724-8		Na Pi		124	ImDs	K4 V M1 V	{ -2 }	(F66-4)	[5536]	BD	9	324
 Dias	M	0538	Sanzbur	C522743-9		He Na Po Pi Pz	A	500	ImDs	M4 V	{ 0 }	(969-3)	[4726]	BD	8	340
 Dias	A	0601	Rakhaasha	B310884-C		Na Ph Pi		100	ImDs	M1 V	{ 2 }	(A7C+1)	[6A3A]	BDe	8	840
-Dias	A	0605	GASUDARSK	B100ABE-F		Hi In Na Va		102	ImDs	M3 V	{ 4 }	(E9G+5)	[EE9K]	BEf	6	10,080
+Dias	A	0605	GASUDARSK	B100ABE-F		Hi In Na Va Pz	A	102	ImDs	M3 V	{ 4 }	(E9G+5)	[EE9K]	BEf	6	10,080
 Dias	A	0607	Feeble	B573331-B	N	Lo		700	ImDs	K5 V	{ 1 }	(521-3)	[1417]	B	15	7
 Dias	A	0608	Sadiishumar	B8D3685-B		Ni		910	ImDs	G0 V	{ 1 }	(955-1)	[4739]	B	15	203
 Dias	A	0609	Quelleff	A624753-E		Pi		505	ImDs	G1 V	{ 2 }	(E6D-1)	[492B]	BD	8	983
@@ -121,7 +121,7 @@ Dias	E	0820	Beeridashal	C100410-C		Ni Va		910	ImDs	G3 V M3 V	{ 0 }	(733-4)	[1417
 Dias	I	0821	Bones	B778635-A		Ag Ni		603	ImDs	M2 V	{ 2 }	(B56+1)	[4838]	BC	16	330
 Dias	I	0823	Justabit	D545689-6	S	Ag Ni		804	ImDs	M2 V M4 V M6 V	{ -2 }	(852-1)	[7467]	BC	13	72
 Dias	I	0828	Szeged	C9B7335-A		Fl Lo		702	ImDs	K5 V	{ 0 }	(721-2)	[1338]	B	6	11
-Dias	I	0830	572-108	D8C1200-9		Fl He Lo Fo	R	524	ImDs	K8 V M3 V	{ -2 }	(A11-5)	[1114]		9	5
+Dias	I	0830	572-108	D8C1200-9		Fl He Lo Da	A	524	ImDs	K8 V M3 V	{ -2 }	(A11-5)	[1114]	B	9	5
 Dias	M	0831	Domo	A564536-D		Ag Ni Pr		200	ImDs	G3 V M4 V	{ 2 }	(746+1)	[474C]	BcC	12	168
 Dias	M	0832	Cunning	C788530-9		Ag Ni Pr		602	ImDs	M1 V	{ 0 }	(944-4)	[1514]	BcC	16	86
 Dias	M	0833	Isee	C434840-A		Ph		112	ImDs	M0 V	{ 1 }	(D7A-3)	[3915]	Be	7	637
@@ -134,7 +134,7 @@ Dias	B	0905	Otimmatu	D553655-7		Ni Po		604	ImDs	M0 V	{ -3 }	(851-5)	[4335]	B	11	
 Dias	F	0913	Wapiti	B426353-E		Lo		913	ImDs	M2 V	{ 1 }	(921-2)	[142B]	B	8	14
 Dias	F	0915	Byrna	B8A5440-C		Fl Ni		905	ImDs	K0 V M3 V	{ 1 }	(B34-3)	[1517]	B	8	92
 Dias	F	0917	Dasekha	CA65237-9		Lo		835	ImDs	M2 V	{ -1 }	(C11-1)	[2159]	B	11	11
-Dias	F	0918	Mohavi	A5567CD-C	W	Ag Cp		122	ImDs	M0 V	{ 4 }	(D6E+5)	[BB9G]	BCF	12	5,460
+Dias	F	0918	Mohavi	A5567CD-C	W	Ag Cp Pz	A	122	ImDs	M0 V	{ 4 }	(D6E+5)	[BB9G]	BCF	12	5,460
 Dias	J	0927	Naknek	DAC9788-9		Fl		602	ImDs	K1 V	{ -1 }	(B68-1)	[7659]	B	14	475
 Dias	J	0928	Palastrup	A10077A-F		Na Va Pi		500	ImDs	K0 V M9 V	{ 2 }	(96E+4)	[997H]	BD	8	3,024
 Dias	J	0929	Poldepi	E667101-8		Lo Ga		603	ImDs	G8 V M5 V	{ -3 }	(611-5)	[1114]	B	8	3
@@ -146,10 +146,10 @@ Dias	N	0938	Chamawa	C743689-8		Ni Po		302	ImDs	M3 V	{ -2 }	(A52-1)	[7469]	B	10	9
 Dias	N	0940	Dilkon	E529675-7		Ni		900	ImDs	M0 V	{ -3 }	(851-5)	[4335]	B	14	20
 Dias	B	1007	Quafe	C433267-B		Lo Po O:1109		323	ImDs	K1 V	{ 0 }	(911+1)	[225B]	B	8	9
 Dias	F	1012	Ramashii	E879554-9		Ni		302	ImDs	K6 V	{ -2 }	(942-4)	[3337]	B	15	43
-Dias	F	1017	Darryl	B7796BB-B		Ni		424	ImDs	G2 V M1 V	{ 1 }	(E55+3)	[877D]	B	9	1,050
+Dias	F	1017	Darryl	B7796BB-B		Ni Da	A	424	ImDs	G2 V M1 V	{ 1 }	(E55+3)	[877D]	B	9	1,050
 Dias	F	1019	Last Exit	A100776-F		Na Va Pi		103	ImDs	M4 V M8 V	{ 2 }	(C6E+1)	[694E]	BD	16	1,008
 Dias	F	1020	Fisher	E794475-7		Ni Pa		405	ImDs	K7 III	{ -3 }	(631-5)	[2135]	Bc	10	9
-Dias	J	1021	Gegaasha	C7647BC-8		Ag Ri		612	ImDs	K0 V M1 V	{ 1 }	(C69+4)	[A88B]	BC	9	2,592
+Dias	J	1021	Gegaasha	C7647BC-8		Ag Ri Pz	A	612	ImDs	K0 V M1 V	{ 1 }	(C69+4)	[A88B]	BC	9	2,592
 Dias	N	1031	Grace	B551510-B		Ni Po		113	ImDs	M3 V	{ 1 }	(B45-3)	[1616]	B	12	154
 Dias	N	1034	Gus	D654401-8		Ni Pa		204	ImDs	M0 V	{ -3 }	(A31-5)	[1114]	Bc	13	15
 Dias	N	1035	Cole	A310227-F		Lo		603	ImDs	M3 V	{ 1 }	(711+1)	[235F]	B	6	7
@@ -158,8 +158,8 @@ Dias	B	1103	Klenoy	A623532-E		Ni Po		712	ImDs	M4 V	{ 1 }	(A45-3)	[161A]	B	13	140
 Dias	B	1104	Khunan	A432554-F		Ni Po		823	ImDs	M3 V	{ 1 }	(C45-1)	[363D]	B	11	216
 Dias	B	1106	Laahii	C100644-B		Na Ni Va Da	A	604	ImDs	M2 III M1 V	{ 0 }	(C54-2)	[4639]	B	16	192
 Dias	B	1108	Kyzir	C671422-9		He Ni		804	ImDs	M1 V M1 V	{ -1 }	(A32-5)	[1315]	B	10	30
-Dias	B	1109	LIBERT	A3109BC-F		Hi In Na Cs (Liberts)		102	ImDs	K8 III	{ 4 }	(D8G+5)	[CD8J]	BEF	6	8,320
-Dias	F	1111	MESSIER	B5639AB-C	N	Hi Pr		314	ImDs	G2 V M6 V M3 V	{ 3 }	(G8E+5)	[BC7E]	BcE	10	8,960
+Dias	B	1109	LIBERT	A3109BC-F		Hi In Na Cs Pz (Liberts)	A	102	ImDs	K8 III	{ 4 }	(D8G+5)	[CD8J]	BEF	6	8,320
+Dias	F	1111	MESSIER	B5639AB-C	N	Hi Pr Pz	A	314	ImDs	G2 V M6 V M3 V	{ 3 }	(G8E+5)	[BC7E]	BcE	10	8,960
 Dias	F	1117	Arriba	C789537-A		Ni Pr		502	ImDs	M0 V	{ 0 }	(944+1)	[555A]	Bc	12	144
 Dias	F	1118	Ikhareshu	B42267B-C		He Na Ni Po		202	ImDs	G1 V	{ 1 }	(A55+3)	[877E]	B	12	750
 Dias	J	1123	Shoehorn	C200322-B		Lo Va		804	ImDs	G5 V M6 V	{ 0 }	(921-4)	[1317]	B	9	11
@@ -170,20 +170,20 @@ Dias	N	1136	Alki	B100847-D	N	Na Va Ph Pi		704	ImDs	K8 V	{ 2 }	(E7D+2)	[8A5D]	BDe
 Dias	N	1138	Usheriima	D534333-8		Lo		513	ImDs	M3 V	{ -3 }	(921-5)	[1125]	B	12	9
 Dias	N	1139	Adryanne	D530554-7		De Ni Po		711	ImDs	F6 V	{ -3 }	(741-5)	[3235]	B	12	14
 Dias	B	1202	Taken	D675300-8		Lo		503	ImDs	M0 V	{ -3 }	(821-5)	[1113]	B	8	8
-Dias	B	1203	Stanton	D9898B9-7	S	Ri Ph		611	ImDs	M0 V M9 V	{ -1 }	(A77+1)	[9768]	BCe	11	490
+Dias	B	1203	Stanton	D9898B9-7	S	Ri Ph Pz	A	611	ImDs	M0 V M9 V	{ -1 }	(A77+1)	[9768]	BCe	11	490
 Dias	B	1206	Arkhaapar	D555746-6		Ag		112	ImDs	M2 V	{ -1 }	(966-2)	[6645]	BC	12	259
 Dias	B	1207	Kaanu	E421498-9		He Ni Po		914	ImDs	A2 IV K4 V	{ -2 }	(B31-2)	[4259]	B	10	26
 Dias	B	1208	Gate	B659374-C		Lo		702	ImDs	M2 V	{ 1 }	(721-1)	[143A]	B	11	13
 Dias	B	1210	Ridge	A77A112-F		Lo Wa		514	ImDs	M2 V	{ 1 }	(811-3)	[121B]	B	11	6
-Dias	F	1213	Tantelos	E7928B9-6		He Ph Pi		804	ImDs	M3 V	{ -2 }	(A75-1)	[9667]	BDe	8	315
+Dias	F	1213	Tantelos	E7928B9-6		He Ph Pi Pz	A	804	ImDs	M3 V	{ -2 }	(A75-1)	[9667]	BDe	8	315
 Dias	F	1216	Lerun	D67A888-8	S	Wa Ph Pi		302	ImDs	M2 V	{ -2 }	(C76-2)	[8658]	BDe	12	403
 Dias	F	1219	Twinsong	E85A544-9		Ni Wa		110	ImDs	M0 V	{ -2 }	(842-4)	[3337]	B	9	38
-Dias	J	1223	LEDGE	E658A9B-A		Hi		201	ImDs	M1 V M0 V	{ 1 }	(D9B+3)	[CB7C]	BE	12	3,861
+Dias	J	1223	LEDGE	E658A9B-A		Hi Pz	A	201	ImDs	M1 V M0 V	{ 1 }	(D9B+3)	[CB7C]	BE	12	3,861
 Dias	J	1229	Nani	D657414-7		Ni Ga Pa		512	ImDs	G1 V M6 V	{ -3 }	(631-5)	[2135]	Bc	13	9
 Dias	J	1230	Helena	D532420-8		Ni Po		703	ImDs	F4 V M9 V	{ -3 }	(931-5)	[1113]	B	11	14
 Dias	N	1233	Musiiba	D544201-8		Lo		924	ImDs	M2 V	{ -3 }	(A11-5)	[1114]	B	11	5
 Dias	N	1236	Snoqualmie	B786500-C		Ag Ni Ga Pr		400	ImDs	M0 V	{ 2 }	(746-2)	[1717]	BcC	12	134
-Dias	B	1305	BERLIN	D2009BE-A		Hi In Na Va		803	ImDs	M4 V	{ 2 }	(E8C+5)	[DB9E]	BE	14	6,720
+Dias	B	1305	BERLIN	D2009BE-A		Hi In Na Va Pz	A	803	ImDs	M4 V	{ 2 }	(E8C+5)	[DB9E]	BE	14	6,720
 Dias	B	1306	Medellin	D645221-7		Lo		704	ImDs	M1 V	{ -3 }	(411-5)	[1113]	B	12	2
 Dias	B	1307	Jesicar	A564486-D	N	Ni Pa		503	ImDs	M1 V M9 V	{ 1 }	(934+1)	[354C]	Bc	8	108
 Dias	B	1308	Mixem	C685830-8		Ga Ri Pa Ph		804	ImDs	M2 V	{ 0 }	(E78-4)	[3813]	BcCe	9	470
@@ -207,7 +207,7 @@ Dias	F	1412	Sasli	C9C5640-9		Fl Ni		104	ImDs	A1 V	{ -1 }	(C53-5)	[1514]	B	12	90
 Dias	F	1415	Viedma	A200899-E	N	Na Va Ph Pi		203	ImDs	K3 III	{ 2 }	(D7D+3)	[9A6F]	BDe	14	3,549
 Dias	F	1417	Affuel	A883520-D	N	Ni Pr		402	ImDs	G2 V	{ 1 }	(945-3)	[1618]	Bc	5	126
 Dias	F	1419	Livermore	B200400-E		Ni Va		504	ImDs	K1 V M1 V	{ 1 }	(A34-3)	[1519]	B	7	84
-Dias	J	1422	Rocha	E6A2522-8		Fl He Ni Fo	R	103	ImDs	G3 V	{ -3 }	(A41-5)	[1214]		9	20
+Dias	J	1422	Rocha	E6A2522-8		Fl He Ni Da	A	103	ImDs	G3 V	{ -3 }	(A41-5)	[1214]	B	9	20
 Dias	J	1426	Iqorr	B435488-D		Ni		612	ImDs	M0 V	{ 1 }	(934+1)	[455D]	B	11	108
 Dias	N	1433	Semaachi	C5547B8-8		Ag		503	ImDs	G0 V	{ 0 }	(C68+1)	[7758]	BC	10	576
 Dias	N	1435	Burien	C201566-B		Ic Ni Va O:1133		303	ImDs	A9 V K8 V	{ 0 }	(A44-1)	[454A]	B	6	144
@@ -216,7 +216,7 @@ Dias	N	1440	Obidos	C000754-A		As Na Va Pi		822	ImDs	G9 IV M7 V	{ 1 }	(D6A-1)	[58
 Dias	B	1502	Uneshuu	D10088C-9		Na Va Ph Pi Pz	A	610	ImDs	M3 V	{ -1 }	(B78+2)	[B78C]	BDe	12	1,232
 Dias	B	1503	Channel	B694557-C		Ag Ni		912	ImDs	G0 V	{ 2 }	(A46+2)	[575C]	BC	8	480
 Dias	B	1505	Verona	E400112-9		Lo Va		804	ImDs	M9 V	{ -2 }	(711-5)	[1115]	B	9	4
-Dias	B	1508	PUGET	E7989C9-8		Hi In		202	ImDs	M2 V	{ 0 }	(D89+1)	[A969]	BE	6	936
+Dias	B	1508	PUGET	E7989C9-8		Hi In Pz	A	202	ImDs	M2 V	{ 0 }	(D89+1)	[A969]	BE	6	936
 Dias	B	1510	Cayene	D425338-9		Lo		520	ImDs	K1 V	{ -2 }	(721-2)	[3159]	B	10	11
 Dias	F	1512	Gretus	X310750-7		Na Pi Fo	R	724	ImDs	M4 III	{ -2 }	(966-5)	[2512]		9	162
 Dias	F	1513	Iris	D552210-7		Lo Po		112	ImDs	K8 V M5 V	{ -3 }	(411-5)	[1112]	B	7	2
@@ -228,26 +228,26 @@ Dias	J	1522	Cheetah	B100877-D	N	Na Va Ph Pi		310	ImDs	M5 III	{ 2 }	(B7D+2)	[8A5D
 Dias	J	1524	Bezan	A663100-E		Lo		604	ImDs	K9 V	{ 1 }	(711-3)	[1219]	B	7	5
 Dias	J	1525	Martinique	E565314-7		Lo Da	A	312	ImDs	G6 V	{ -3 }	(521-5)	[1135]	B	12	5
 Dias	J	1530	Kennebunk	C69469D-8		Ag Ni Da	A	801	ImDs	G2 V M6 V	{ -1 }	(953+3)	[A59C]	BC	12	405
-Dias	N	1536	Prosser	EA887BB-6		Ag Ri		910	ImDs	K2 V	{ 0 }	(967+2)	[9778]	BC	4	756
+Dias	N	1536	Prosser	EA887BB-6		Ag Ri Pz	A	910	ImDs	K2 V	{ 0 }	(967+2)	[9778]	BC	4	756
 Dias	B	1602	ZEELAND	E989AA9-B		Hi Pz	A	504	ImDs	K2 V	{ 1 }	(G9C+2)	[BB6C]	BE	9	3,456
-Dias	B	1610	Unsuited	E0008AE-9		As Na Va Ph Pi		204	ImDs	M3 V M1 V	{ -1 }	(E78+3)	[C79D]	BDe	8	2,352
+Dias	B	1610	Unsuited	E0008AE-9		As Na Va Ph Pi Pz	A	204	ImDs	M3 V M1 V	{ -1 }	(E78+3)	[C79D]	BDe	8	2,352
 Dias	F	1611	Teslin	D433687-8		Na Ni Po		214	ImDs	M1 V	{ -3 }	(D51-3)	[6358]	B	8	46
-Dias	F	1612	EROBI	E8939CD-8		Hi In		503	ImDs	M2 V	{ 0 }	(E89+4)	[D99C]	BE	10	4,032
+Dias	F	1612	EROBI	E8939CD-8		Hi In Pz	A	503	ImDs	M2 V	{ 0 }	(E89+4)	[D99C]	BE	10	4,032
 Dias	F	1613	Accokeek	C548675-8		Ag Ni		212	ImDs	K1 V	{ -1 }	(B53-3)	[4536]	BC	16	116
 Dias	F	1614	Nike	A693677-C		Ni		113	ImDs	M0 V	{ 1 }	(C55+1)	[675C]	B	7	300
 Dias	F	1617	Dudenii	B421134-D		He Lo Po		200	ImDs	M1 V	{ 1 }	(311-1)	[123B]	B	11	3
 Dias	F	1620	Shelagyote	X5896B9-3		Ni Ri An Fo (Shela)	R	611	ImDs	M0 V	{ -2 }	(852-1)	[7464]		7	72
 Dias	J	1621	Nilaa	B697733-A	N	Ag Pi		804	ImDs	M1 V M8 V	{ 3 }	(D6C+1)	[4A27]	BCD	11	936
 Dias	J	1622	Wellfleet	C100533-C		Ni Va		402	ImDs	G9 III	{ 0 }	(944-3)	[2529]	B	12	101
-Dias	J	1624	Whereitsat	C1006B9-B		Na Ni Va		302	ImDs	M2 V M7 V	{ 0 }	(A54+1)	[766C]	B	12	200
+Dias	J	1624	Whereitsat	C1006B9-B		Na Ni Va Da	A	302	ImDs	M2 V M7 V	{ 0 }	(A54+1)	[766C]	B	12	200
 Dias	J	1628	Ebekhar	C989642-9		Ni Ri		802	ImDs	F1 V	{ 0 }	(A54-4)	[2615]	BC	10	120
-Dias	J	1630	ST. DENIS	C3109CB-C		Hi In Na		902	ImDs	A3 III	{ 3 }	(D8E+5)	[BC7E]	BE	9	7,280
+Dias	J	1630	ST. DENIS	C3109CB-C		Hi In Na Pz	A	902	ImDs	A3 III	{ 3 }	(D8E+5)	[BC7E]	BE	9	7,280
 Dias	N	1639	Prestwick	C7A6558-8		Fl Ni		502	ImDs	F5 V	{ -2 }	(942-2)	[5358]	B	9	58
-Dias	N	1640	Biremeruun	C9B67BB-8		Fl		610	ImDs	M1 V	{ -1 }	(A67+1)	[967A]	B	14	420
+Dias	N	1640	Biremeruun	C9B67BB-8		Fl Pz	A	610	ImDs	M1 V	{ -1 }	(A67+1)	[967A]	B	14	420
 Dias	C	1701	Grourard	A896566-D		Ag Ni O:Mass-2039		400	ImDs	G2 V M4 V	{ 2 }	(746+1)	[474C]	BC	14	168
 Dias	C	1704	Onliu	C310433-B		Ni		324	ImDs	M1 V M6 V M0 V	{ 0 }	(C33-3)	[1428]	B	11	76
 Dias	C	1707	Boyne	B562546-B		Ni Pr		603	ImDs	M1 V	{ 1 }	(A45+1)	[464A]	Bc	12	200
-Dias	C	1708	Erakhuu	B89688C-A		Pa Ph Pi		902	ImDs	G1 V	{ 2 }	(C7B+5)	[BA8D]	BcDe	13	4,620
+Dias	C	1708	Erakhuu	B89688C-A		Pa Ph Pi Pz	A	902	ImDs	G1 V	{ 2 }	(C7B+5)	[BA8D]	BcDe	13	4,620
 Dias	G	1713	Avat	E200534-9		Ni Va		123	ImDs	M2 V M9 V	{ -2 }	(C42-4)	[3337]	B	10	58
 Dias	G	1717	Weyburn	E437444-9		Ni		701	ImDs	G7 V	{ -2 }	(731-4)	[2237]	B	11	13
 Dias	O	1733	Waverly	BAF7203-D	N	Lo		800	ImDs	G4 V	{ 1 }	(411-2)	[132A]	B	14	3
@@ -259,7 +259,7 @@ Dias	C	1805	Maelstrom	B421210-D		He Lo Po		903	ImDs	K3 V	{ 1 }	(711-3)	[1318]	B	
 Dias	C	1807	Sturgis	A544203-E	N	Lo		102	ImDs	K0 V	{ 1 }	(611-2)	[132B]	B	9	5
 Dias	G	1814	Shaanii	C557442-9		Ni Pa		804	ImDs	M2 V	{ -1 }	(A32-5)	[1315]	Bc	12	30
 Dias	G	1815	Waboni	C672776-8		He Pi		913	ImDs	M2 V	{ -1 }	(D67-2)	[6647]	BD	12	437
-Dias	G	1816	Umorphutwyo	C5507CB-8		De Po DroyW		121	ImDs	M2 V M1 V	{ -1 }	(C67+1)	[967A]	B	12	504
+Dias	G	1816	Umorphutwyo	C5507CB-8		De Po Pz DroyW	A	121	ImDs	M2 V M1 V	{ -1 }	(C67+1)	[967A]	B	12	504
 Dias	G	1818	Dryden	D75969A-7		Ni Da	A	113	ImDs	M0 V M5 V	{ -3 }	(851-1)	[8379]	B	10	36
 Dias	G	1819	Megelina	D300668-8		Na Ni Va O:1621		104	ImDs	K3 V	{ -3 }	(C51-3)	[6358]	B	13	42
 Dias	G	1820	Remington	A896565-D		Ag Ni O:1621		202	ImDs	M2 V M8 V	{ 2 }	(946+1)	[373B]	BC	16	216
@@ -327,7 +327,7 @@ Dias	C	2304	White Sea	C100537-C		Ni Va		500	ImDs	M3 V	{ 0 }	(744+1)	[555C]	B	10	
 Dias	C	2309	Jummy	E100145-A		Lo Va		914	ImDs	K3 V M7 V	{ -1 }	(811-3)	[1138]	B	12	6
 Dias	C	2310	HERVESTIA	C554A76-C		Hi		703	ImDs	K3 V	{ 2 }	(F9D+1)	[9C4B]	BE	17	1,755
 Dias	G	2311	Guild	C200459-C		Ni Va		903	ImDs	M1 V	{ 0 }	(933+1)	[546D]	B	10	81
-Dias	G	2312	Oath	C3108BD-A		Na Ph Pi		103	ImDs	M1 V	{ 1 }	(D7A+5)	[C99E]	BDe	8	4,550
+Dias	G	2312	Oath	C3108BD-A		Na Ph Pi Pz	A	103	ImDs	M1 V	{ 1 }	(D7A+5)	[C99E]	BDe	8	4,550
 Dias	G	2314	Raasara	B679663-B		Ni O:2414		812	ImDs	M2 V M5 V	{ 1 }	(B55-2)	[3728]	B	15	220
 Dias	G	2317	Gilgamesh	D100796-9	S	Na Va Pi		101	ImDs	K0 V	{ -1 }	(A68-2)	[6648]	BD	12	384
 Dias	K	2321	Veejay	BAD5364-C	N	Lo Mr		503	ImDs	K6 V M0 V	{ 1 }	(821-1)	[143A]	B	6	14
@@ -335,7 +335,7 @@ Dias	K	2322	Wescap	D5738BD-6		Ph Pi Pz	A	514	ImDs	M0 V	{ -2 }	(A75+2)	[C69A]	BDe
 Dias	O	2333	Saagii	B544736-A		Ag Pi		514	ImDs	M2 V M0 V	{ 3 }	(E6C+2)	[6A49]	BCD	12	2,016
 Dias	O	2334	Kiiki	C425666-A		Ni Da O:2333	A	524	ImDs	K9 V	{ 0 }	(E54-1)	[5649]	B	12	252
 Dias	O	2338	Saratov	D559348-8		Lo		803	ImDs	M2 V	{ -3 }	(821-3)	[3158]	B	9	11
-Dias	O	2340	KELVIN	B6419BB-9		He Hi In Po Cp		604	ImDs	M0 V M2 V	{ 3 }	(F8D+5)	[BC7B]	BEF	15	7,800
+Dias	O	2340	KELVIN	B6419BB-9		He Hi In Po Cp Pz	A	604	ImDs	M0 V M2 V	{ 3 }	(F8D+5)	[BC7B]	BEF	15	7,800
 Dias	C	2401	Korona	B523648-B		Na Ni Po Da	A	713	ImDs	K2 V	{ 1 }	(C55+1)	[675B]	B	10	300
 Dias	C	2402	Mazuun	DA7A630-8		Ni Oc		402	ImDs	G0 V	{ -3 }	(A51-5)	[1313]	B	10	25
 Dias	C	2405	Aazuni	B310463-D	N	Ni O:2605		211	ImDs	M3 V M7 V	{ 1 }	(834-2)	[152A]	B	10	77
@@ -345,15 +345,15 @@ Dias	G	2414	Hewes	A436645-E		Ni		114	ImDs	K3 V M3 V	{ 1 }	(D55-1)	[473C]	B	12	29
 Dias	G	2415	Trot	C310464-B		Ni O:2414		301	ImDs	M4 V M0 V	{ 0 }	(733-2)	[2439]	B	13	50
 Dias	G	2417	Chief	B100246-E		Lo Va		814	ImDs	K0 V	{ 1 }	(911+1)	[134D]	B	8	9
 Dias	G	2419	Didinka	D578200-8	S	Lo		803	ImDs	F7 V	{ -3 }	(711-5)	[1113]	B	13	4
-Dias	G	2420	LAYNE	C796A9C-C		Hi In		305	ImDs	G2 V M3 V	{ 3 }	(H9E+5)	[DD8F]	BE	13	10,710
+Dias	G	2420	LAYNE	C796A9C-C		Hi In Pz	A	305	ImDs	G2 V M3 V	{ 3 }	(H9E+5)	[DD8F]	BE	13	10,710
 Dias	K	2423	Ayden	C100312-C		Lo Va		701	ImDs	G1 V M3 V	{ 0 }	(621-4)	[1318]	B	15	7
-Dias	K	2424	THICKET	D55199C-8	S	Hi Po		914	ImDs	M1 V	{ -1 }	(G88+2)	[C88B]	BE	8	2,048
+Dias	K	2424	THICKET	D55199C-8	S	Hi Po Pz	A	914	ImDs	M1 V	{ -1 }	(G88+2)	[C88B]	BE	8	2,048
 Dias	K	2426	Elusive	C31037A-B		Lo		513	ImDs	K9 V	{ 0 }	(921+2)	[537D]	B	12	36
 Dias	K	2429	Daariida	D556443-7		Ni Pa		300	ImDs	K5 V M6 V	{ -3 }	(631-5)	[1124]	Bc	6	9
 Dias	K	2430	Aaneru	C978875-8		Pa Ph Pi		823	ImDs	M2 V	{ -1 }	(F77-3)	[6736]	BcDe	12	515
 Dias	O	2434	Lexol	B100664-D		Na Ni Va O:2333		110	ImDs	M3 V M9 V	{ 1 }	(955-1)	[473B]	B	9	203
 Dias	O	2438	Forgotten	E530886-6		De Na Po Ph		401	ImDs	K1 V	{ -2 }	(A75-3)	[7645]	Be	9	245
-Dias	O	2440	Genevens	E5508C8-5		De Po Ph		500	ImDs	G2 V M9 V	{ -2 }	(A75-2)	[8655]	Be	13	280
+Dias	O	2440	Genevens	E5508C8-5		De Po Ph Pz	A	500	ImDs	G2 V M9 V	{ -2 }	(A75-2)	[8655]	Be	13	280
 Dias	D	2501	Medora	A422553-F		He Ni Po		403	ImDs	K1 V	{ 1 }	(A45-2)	[262C]	B	7	160
 Dias	D	2503	Jinan	C572676-8		He Ni		904	ImDs	M0 V	{ -2 }	(C52-3)	[5447]	B	9	84
 Dias	D	2504	FORWARD	C83899A-B		Hi		513	ImDs	M2 V M9 V	{ 2 }	(F8D+4)	[BB7D]	BE	14	6,240
@@ -384,7 +384,7 @@ Dias	D	2709	Gorakpur	C000325-C		As Lo Va		904	ImDs	M4 V D	{ 0 }	(921-2)	[133A]	B
 Dias	H	2711	Feme	C556300-A		Lo		912	ImDs	M2 V	{ 0 }	(821-4)	[1315]	B	6	10
 Dias	H	2713	Beso	D000301-B		As Lo Va		321	ImDs	K2 IV M9 V	{ -1 }	(821-5)	[1217]	B	11	8
 Dias	H	2714	Campobello	A00046A-F		As Ni Va Da O:2716	A	703	ImDs	M1 V M2 V	{ 1 }	(934+3)	[657H]	B	8	324
-Dias	H	2716	JEDELL	C4349BC-C		Hi		915	ImDs	M2 V	{ 2 }	(H8D+5)	[CB8F]	BE	9	8,840
+Dias	H	2716	JEDELL	C4349BC-C		Hi Pz	A	915	ImDs	M2 V	{ 2 }	(H8D+5)	[CB8F]	BE	9	8,840
 Dias	H	2717	Jodhpur	D432445-9		Ni Po Da	A	304	ImDs	M1 V	{ -2 }	(A31-4)	[2237]	B	12	18
 Dias	H	2720	Riishu	D425333-9		Lo		914	ImDs	M2 V	{ -2 }	(A21-5)	[1126]	B	15	10
 Dias	L	2724	Ferenira	B100165-E		Lo Va O:2827		123	ImDs	M3 V	{ 1 }	(811-1)	[123C]	B	11	7
@@ -443,7 +443,7 @@ Dias	L	3027	530-053	X543201-5		Lo Po Fo (Sst'ankh'rii)	R	822	ImDs	K3 V M3 V	{ -3
 Dias	L	3029	Davao	D100677-9		Na Ni Va		113	ImDs	M3 V	{ -2 }	(C52-2)	[6459]	B	9	96
 Dias	L	3030	Nysorb	C9B6525-A		Fl Ni		733	ImDs	K2 V M4 V	{ 0 }	(D44-2)	[3538]	B	10	166
 Dias	P	3033	Taumotu	X100436-7		Ni Va Fo Di (Taumotuo)	R	305	ImDs	F0 V	{ -3 }	(631-4)	[3146]		12	11
-Dias	P	3034	Mitchell	A10078C-F		Na Va Pi		903	ImDs	M3 V	{ 2 }	(C6E+5)	[A98J]	BD	6	5,040
+Dias	P	3034	Mitchell	A10078C-F		Na Va Pi Pz	A	903	ImDs	M3 V	{ 2 }	(C6E+5)	[A98J]	BD	6	5,040
 Dias	P	3036	Agiruur	C9A3565-A		Fl Ni O:3138		803	ImDs	M3 V	{ 0 }	(A44-2)	[3538]	B	11	128
 Dias	D	3102	Dehrapur	B423474-D		Ni Po		901	ImDs	G3 V M4 V	{ 1 }	(734-1)	[253B]	B	8	76
 Dias	D	3104	Farm	C656622-8		Ag Ni Ga		404	ImDs	M2 V	{ -1 }	(C53-5)	[2514]	BC	8	90
@@ -459,8 +459,8 @@ Dias	L	3129	Sittahr	C766530-9		Ag Ni Ga Pr RsG		405	ImDs	K0 V M3 V	{ 0 }	(C44-4)
 Dias	P	3131	Kide	C684675-8		Ag Ni Ri		920	ImDs	M2 V	{ 0 }	(A54-2)	[4636]	BC	16	160
 Dias	P	3132	Lefiguura	C868552-A	S	Ag Ni Pr Da	A	410	ImDs	G2 V M9 V	{ 1 }	(845-3)	[1616]	BcC	10	112
 Dias	P	3134	Kipper	D310110-9		Lo		923	ImDs	M3 V	{ -2 }	(811-5)	[1114]	B	12	4
-Dias	P	3138	GRESHAM	A3109BE-F		Hi In Na Cp		804	ImDs	M1 V	{ 4 }	(F8G+5)	[DD9K]	BEF	8	9,600
-Dias	P	3139	Uppsala	C9795AB-6		Ni		512	ImDs	F4 V M8 V	{ -2 }	(742+1)	[7378]	B	11	56
+Dias	P	3138	GRESHAM	A3109BE-F		Hi In Na Cp Pz	A	804	ImDs	M1 V	{ 4 }	(F8G+5)	[DD9K]	BEF	8	9,600
+Dias	P	3139	Uppsala	C9795AB-6		Ni Da	A	512	ImDs	F4 V M8 V	{ -2 }	(742+1)	[7378]	B	11	56
 Dias	P	3140	Futok	B594633-A		Ag Ni		901	ImDs	M1 V M8 V	{ 2 }	(956-1)	[3827]	BC	17	243
 Dias	D	3201	183-361	X694889-5		Pa Ph Pi Fo (Ashiin)	R	312	ImDs	G4 V	{ -2 }	(A75-1)	[9666]		16	315
 Dias	D	3202	Savan	D544637-6		Ag Ni		703	ImDs	M2 V	{ -2 }	(852-2)	[6456]	BC	9	64
@@ -473,5 +473,5 @@ Dias	H	3219	Nantes	C200442-B		Ni Va		602	ImDs	M0 V M6 V	{ 0 }	(833-4)	[1417]	B	1
 Dias	L	3224	Ijiwa	B300864-C		Na Va Ph Pi O:Olde-0125		202	ImDs	M2 V M6 V	{ 2 }	(C7C+1)	[6A3A]	BDe	13	1,008
 Dias	L	3225	Lekhaana	E100223-A		Lo Va		424	ImDs	G6 V	{ -1 }	(A11-4)	[1127]	B	9	6
 Dias	L	3228	Cosenza	B527485-C		Ni		312	ImDs	K2 V M2 V	{ 1 }	(934-1)	[253A]	B	10	97
-Dias	P	3231	Desel	C1006BC-B		Na Ni Va		403	ImDs	M3 V M2 V	{ 0 }	(B54+3)	[968E]	B	10	660
+Dias	P	3231	Desel	C1006BC-B		Na Ni Va Da	A	403	ImDs	M3 V M2 V	{ 0 }	(B54+3)	[968E]	B	10	660
 Dias	P	3236	Lebherz	C657834-8		Ga Pa Ph		213	ImDs	G1 V	{ -1 }	(E77-3)	[6736]	Bce	14	480

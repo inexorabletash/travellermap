@@ -1,7 +1,7 @@
 Sector	SS	Hex	Name	UWP	Bases	Remarks	Zone	PBG	Allegiance	Stars	{Ix}	(Ex)	[Cx]	Nobility	W	RU
 Troj	A	0103	Taltern	E530240-6		De Lo Po		202	NaHu	M2 V M2 V	{ -3 }	(411-5)	[1111]		7	2
 Troj	A	0110	Bilke	D987341-7		Lo FlorW		202	FlLe	F0 V	{ -3 }	(521-5)	[1113]		6	5
-Troj	E	0116	Daruf	D540358-5		De He Lo Po Fo FlorW Px	R	213	FlLe	F6 V	{ -3 }	(521-3)	[3155]		12	7
+Troj	E	0116	Daruf	D540358-5		De He Lo Po FlorW Px		213	FlLe	F6 V	{ -3 }	(521-3)	[3155]		12	7
 Troj	E	0119	Bolsush	D585741-6		Ag Ri FlorW		111	FlLe	F2 V M0 V	{ 0 }	(967-4)	[3712]		7	227
 Troj	I	0122	Aftye	A560343-D		De Lo		313	AsVc	F8 V	{ 1 }	(921-2)	[142A]		7	14
 Troj	I	0126	Ahaikhea	B422423-9	R	He Ni Po		101	AsMw	F7 III M7 V	{ 0 }	(733-3)	[1426]		14	44
@@ -27,7 +27,7 @@ Troj	I	0227	H’a	D657449-6		Ni Ga Pa		802	AsMw	F4 V	{ -3 }	(631-2)	[5167]		13	1
 Troj	I	0229	HREAHRYA	B433A79-D		Hi Na Po		924	AsSc	K0 V	{ 3 }	(J9F+4)	[BD6E]		12	9,720
 Troj	M	0232	Yekhtia	B423376-B		Lo Po		211	AsSc	G0 V M8 V	{ 1 }	(721+1)	[244A]		11	14
 Troj	M	0234	Aehahr	B100449-C		Ni Va Rs		522	AsVc	M7 V M9 V	{ 1 }	(A34+2)	[556D]		15	240
-Troj	M	0236	FTOAKH	E673A8C-A		Hi In		200	AsWc	F4 V M9 V M7 V	{ 2 }	(C9C+5)	[DC8D]		10	6,480
+Troj	M	0236	FTOAKH	E673A8C-A		Hi In Pz	A	200	AsWc	F4 V M9 V M7 V	{ 2 }	(C9C+5)	[DC8D]		10	6,480
 Troj	M	0240	Aohfeau	B998784-A		Ag Pi		620	AsVc	F3 V M8 V	{ 3 }	(B6C+1)	[5A38]		14	792
 Troj	A	0307	Crescent	B420778-7		De He Na Po Pi		904	NaHu	M1 V	{ 0 }	(968+1)	[7757]		16	432
 Troj	A	0310	TROSSACHS	B897A54-C		Hi In FlorW		202	FlLe	F6 V	{ 4 }	(E9F+2)	[8E3A]		7	3,780
@@ -86,7 +86,7 @@ Troj	M	0738	Eiwakh	D200777-8		Na Va Pi		200	AsSc	M5 V	{ -2 }	(966-2)	[7558]		7	2
 Troj	M	0739	Hkeleiakh	E310000-0		Ba		005	AsXX	K5 V	{ -3 }	(200-5)	[0000]		15	0
 Troj	A	0802	Fomalhaut	B510200-D		Lo		204	NaHu	M7 V	{ 1 }	(811-3)	[1318]		11	6
 Troj	A	0809	Hadara	E311796-7		Ic Na Pi		103	NaHu	A3 V	{ -2 }	(966-3)	[6546]		11	227
-Troj	E	0811	Odin	B20149B-8		Ic Ni Va		504	NaHu	M0 V M5 V	{ -1 }	(A32+1)	[637A]		13	60
+Troj	E	0811	Odin	B20149B-8		Ic Ni Va Da	A	504	NaHu	M0 V M5 V	{ -1 }	(A32+1)	[637A]		13	60
 Troj	E	0813	Thor	D669577-5		Ni Pr		702	NaHu	F6 V M0 V	{ -3 }	(741-3)	[5255]		8	20
 Troj	E	0815	Yggdrasil	B5507CD-8		De Po Pz	A	310	CsIm	F5 V	{ 0 }	(A68+4)	[B79C]		12	1,920
 Troj	E	0820	Sif	A765867-7		Ga Ri Pa Ph O:1220		112	NaHu	K4 V M4 V	{ 1 }	(A79+1)	[8957]		12	630
@@ -116,7 +116,7 @@ Troj	J	1022	Ftulrois	B56866A-9		Ag Ni Ri O:1027		200	GlEm	K8 V	{ 2 }	(856+4)	[88
 Troj	J	1023	Oatre	B532336-C	R	Lo Po		312	GlEm	K8 II M2 V	{ 1 }	(821+1)	[244B]		13	16
 Troj	J	1025	Hea’a	E54026A-5		De He Lo Po O:1027		603	GlEm	F5 V	{ -3 }	(411-1)	[4177]		13	4
 Troj	J	1026	Eiaihiy	B500132-B	R	Lo Va		923	GlEm	M4 V	{ 1 }	(811-3)	[1217]		13	6
-Troj	J	1027	Syoakh	A6968BC-C	R	Pa Ph Cx Pi		500	GlEm	F5 V D	{ 2 }	(A7C+5)	[BA8F]		10	4,200
+Troj	J	1027	Syoakh	A6968BC-C	R	Pa Ph Cx Pi Pz	A	500	GlEm	F5 V D	{ 2 }	(A7C+5)	[BA8F]		10	4,200
 Troj	J	1028	HTOURLAO	B311978-E	R	Hi Ic In Na		512	GlEm	K7 V	{ 4 }	(E8G+4)	[9D5E]		9	7,168
 Troj	J	1030	Keawoaw	B430433-9		De Ni Po		413	GlEm	M0 V M9 V	{ 0 }	(A33-3)	[1426]		12	63
 Troj	N	1034	Eiyehwehakhea	B79A57B-B	R	Ni Wa		103	AsSc	F9 V	{ 1 }	(A45+3)	[767D]		11	600
@@ -129,7 +129,7 @@ Troj	F	1118	Dostoevsky	B678673-A		Ag Ni An RsD		220	CsIm	F4 V	{ 2 }	(A56-1)	[382
 Troj	J	1121	Asyuh	B8C3225-9	R	Fl Lo		912	GlEm	M4 V M9 V	{ 0 }	(711-2)	[1237]		12	6
 Troj	J	1124	Yero’ilra	D500897-7		Na Va Ph Pi		103	GlEm	F8 V M1 V M7 V	{ -2 }	(A76-2)	[8657]		13	336
 Troj	J	1126	Oihu	B300454-9	R	Ni Va		702	GlEm	M4 V	{ 0 }	(833-2)	[2437]		10	58
-Troj	J	1128	Eikhaaw	C88978C-9		Ri		903	GlEm	F1 V	{ 1 }	(C6A+4)	[A88C]		13	2,880
+Troj	J	1128	Eikhaaw	C88978C-9		Ri Pz	A	903	GlEm	F1 V	{ 1 }	(C6A+4)	[A88C]		13	2,880
 Troj	B	1201	Kaldamar	E745326-7		Lo		403	NaHu	F4 V	{ -3 }	(521-4)	[2146]		12	6
 Troj	B	1202	Nabeth	D426579-8	S	Ni		823	CsIm	M4 V	{ -3 }	(C41-2)	[6269]		10	38
 Troj	B	1209	985-373	X775000-0		Ba Fo	R	020	NaXX	K6 V M3 V	{ -3 }	(200-5)	[0000]		15	0
@@ -141,14 +141,14 @@ Troj	J	1222	Goertel	B6688DC-6		Ri Pa Ph Pz	A	122	NaHu	F7 V	{ 1 }	(A78+4)	[B989]	
 Troj	J	1223	Hteakya	B423426-D		Ni Po		413	AsWc	K6 V M3 V	{ 1 }	(A34+1)	[354C]		9	120
 Troj	J	1226	Khau	C687598-9		Ag Ni Ga Pr		222	AsTv	F8 V M5 V	{ 0 }	(B44+1)	[5559]		10	176
 Troj	J	1230	Erasaso	B68A136-C	T	Lo Wa		113	AsT4	F2 V M3 V	{ 1 }	(711+1)	[124B]		14	7
-Troj	N	1235	Aoiyras	B54068C-9		De He Ni Po		813	AsMw	F0 V	{ 0 }	(C54+3)	[968C]		14	720
+Troj	N	1235	Aoiyras	B54068C-9		De He Ni Po Da	A	813	AsMw	F0 V	{ 0 }	(C54+3)	[968C]		14	720
 Troj	N	1236	IRLAIW	C436A75-D		Hi		813	AsSc	M4 V M6 V	{ 2 }	(G9E+1)	[8C3B]		8	2,016
 Troj	B	1305	Gollere	D574756-7		Ag Pi		720	NaHu	F5 V	{ -1 }	(967-2)	[6646]		6	302
 Troj	B	1307	Ganulph	X500000-0		Ba Va Fo	R	011	NaXX	M3 V	{ -3 }	(200-5)	[0000]		9	0
 Troj	B	1308	Eleson	E541100-8		He Lo Po		323	BlSo	F8 V M2 V	{ -3 }	(811-5)	[1113]		12	4
 Troj	F	1317	Caldos	B530879-6		De Na Po Ph		824	NaHu	F2 V	{ 0 }	(A77+1)	[9867]		9	490
 Troj	F	1319	Lacidaeus	D100786-7		Na Va Pi		502	NaHu	M9 V	{ -2 }	(966-3)	[6546]		8	227
-Troj	J	1322	Hrahraiu	B42068C-C	T	De He Na Ni Po		800	AsT8	M6 V	{ 1 }	(855+4)	[978F]		7	800
+Troj	J	1322	Hrahraiu	B42068C-C	T	De He Na Ni Po Da	A	800	AsT8	M6 V	{ 1 }	(855+4)	[978F]		7	800
 Troj	J	1323	HLIYH	B200AB7-E	R	Hi In Na Va		102	AsMw	F8 V	{ 4 }	(E9G+4)	[AE5E]		12	8,064
 Troj	J	1324	Eilaeah	B863267-B		Lo O:1323		414	AsMw	G6 V	{ 1 }	(911+1)	[235B]		12	9
 Troj	N	1333	Rileakh	C437855-A		Ph		702	AsTv	F7 V M6 V M6 V	{ 1 }	(C7A-1)	[6938]		12	756
@@ -161,7 +161,7 @@ Troj	B	1410	Goria	E422475-7		He Ni Po		200	NaHu	M1 V	{ -3 }	(631-5)	[2135]		6	9
 Troj	F	1417	Sagan	C796453-8		Ni Pa		204	NaHu	F1 V	{ -2 }	(A31-5)	[1225]		13	15
 Troj	J	1426	Yestahwye	B9A4656-C		Fl Ni		602	AsVc	M4 V	{ 1 }	(A55+1)	[574B]		12	250
 Troj	J	1429	Fiyleakh	B41389A-C	R	Ic Na Ph Pi		604	AsVc	F6 V M0 V	{ 2 }	(E7C+4)	[AA7E]		13	4,704
-Troj	N	1436	Huaholr	B42049C-9	R	De He Ni Po		823	AsTv	G2 IV	{ 0 }	(B33+3)	[748C]		18	297
+Troj	N	1436	Huaholr	B42049C-9	R	De He Ni Po Da	A	823	AsTv	G2 IV	{ 0 }	(B33+3)	[748C]		18	297
 Troj	N	1438	Teiseirle	BA9A377-8		Lo Oc		703	AsSc	F9 V	{ -1 }	(821-1)	[3258]		7	14
 Troj	B	1502	Carben	X5555A9-2		Ag Ni Fo	R	114	NaHu	K6 V M9 V	{ -2 }	(742-1)	[6363]		18	50
 Troj	F	1514	TLAZOLTEOTL	D5409CD-7		De He Hi In Po Pz	A	412	NaHu	M6 V D	{ 0 }	(B89+4)	[D99B]		13	3,168
@@ -175,7 +175,7 @@ Troj	N	1535	Sosuasaoh	B100858-B	R	Na Va Ph Pi		203	AsTv	G7 V	{ 2 }	(D7C+2)	[8A5B
 Troj	N	1537	Kheiyyo	C5257B7-9		Pi		803	AsWc	K6 V	{ 0 }	(C69+1)	[7759]		14	648
 Troj	B	1601	Ashley’s Rock	D100120-7		Lo Va		614	NaHu	K0 IV	{ -3 }	(311-5)	[1112]		12	2
 Troj	B	1602	T’yana	E568752-7		Ag Ri		200	NaHu	G4 V M2 V	{ 0 }	(968-4)	[3713]		11	259
-Troj	B	1605	Vior	D500401-7		Ni Va Fo	R	301	NaHu	M4 V	{ -3 }	(631-5)	[1113]		6	9
+Troj	B	1605	Vior	D500401-7		Ni Va		301	NaHu	M4 V	{ -3 }	(631-5)	[1113]		6	9
 Troj	B	1608	Braudel	X543200-5		Lo Po Fo	R	903	NaHu	K4 V	{ -3 }	(411-5)	[1111]		10	2
 Troj	F	1613	Thalassa	B88A889-8		Ri Wa Ph		505	NaHu	F8 V M9 V	{ 1 }	(F79+2)	[9969]		15	1,890
 Troj	F	1618	Tktk	D542640-6		He Ni Po Chir4		502	NaHu	F5 V M3 V	{ -3 }	(851-5)	[1311]		8	20
@@ -187,7 +187,7 @@ Troj	N	1631	Yai’ilrao	B85836B-B		Lo O:1634		604	AsMw	F7 V D	{ 1 }	(921+3)	[547
 Troj	N	1634	Aiuite	B645747-A	R	Ag Pi		223	AsMw	F5 V M3 V	{ 3 }	(E6C+3)	[7A5A]		16	3,024
 Troj	N	1637	Awaweaw	E855859-7		Ga Pa Ph (Yont)		121	AsTv	F8 V M9 V	{ -2 }	(A76-1)	[9668]		12	378
 Troj	G	1715	Homestead	D561250-6		Lo		524	NaHu	F9 V	{ -3 }	(411-5)	[1111]		16	2
-Troj	G	1719	Ace	E7A08B9-8		He Ph		700	NaHu	M0 V D	{ -2 }	(A76-1)	[9669]		7	378
+Troj	G	1719	Ace	E7A08B9-8		He Ph Pz	A	700	NaHu	M0 V D	{ -2 }	(A76-1)	[9669]		7	378
 Troj	K	1723	Oiwoiieaw	B787897-A		Ga Ri Pa Ph		711	AsVc	F0 V M7 V	{ 3 }	(C7C+3)	[8B5A]		13	3,024
 Troj	K	1728	Asoieteal	B697688-A	R	Ag Ni		604	AsWc	F2 V	{ 2 }	(C56+2)	[685A]		16	720
 Troj	O	1731	Wesiyeah	D641259-8		He Lo Po		823	AsMw	K4 V	{ -3 }	(911-2)	[3169]		16	7
@@ -210,14 +210,14 @@ Troj	O	1931	Ralaiw	B420534-D		De He Ni Po		422	AsVc	F4 V	{ 1 }	(B45-1)	[363B]		1
 Troj	O	1933	Ereah	B67A369-D		Lo Wa O:1634		531	AsMw	K8 V	{ 1 }	(921+2)	[446E]		10	36
 Troj	C	2002	KRYSLION	D583AA9-9		Hi		520	ImDd	F6 V	{ 0 }	(E9A+1)	[BA6A]	BE	11	1,260
 Troj	C	2008	Orsasch	E541364-7	M	He Lo Po Mr		223	SeFo	M1 V	{ -3 }	(521-5)	[1135]		13	5
-Troj	G	2018	Noricum	D8867BB-1		Ag Ga Ri		804	NaHu	G2 V M9 V M6 V	{ 0 }	(965+2)	[9773]		14	540
+Troj	G	2018	Noricum	D8867BB-1		Ag Ga Ri Pz	A	804	NaHu	G2 V M9 V M6 V	{ 0 }	(965+2)	[9773]		14	540
 Troj	G	2020	Oghma	B534754-9				404	NaHu	K5 V M5 V M4 V	{ 1 }	(D6A-1)	[5837]		11	702
 Troj	K	2023	Khusai	A576655-C	R	Ag Ni		724	AsVc	F7 V	{ 2 }	(E56+1)	[483A]		19	420
 Troj	K	2029	Staha	B755486-B	R	Ni Ga Pa		313	AsMw	F3 V D	{ 1 }	(A34+1)	[354A]		13	120
-Troj	C	2102	CYAN	C5689B9-A	W	Hi Pr		510	ImDd	F6 V M7 V	{ 3 }	(C8D+4)	[AC6B]	BcE	12	4,992
+Troj	C	2102	CYAN	C5689B9-A	W	Hi Pr Pz	A	510	ImDd	F6 V M7 V	{ 3 }	(C8D+4)	[AC6B]	BcE	12	4,992
 Troj	C	2105	Berengaria	B566644-7	NS	Ag Ni Ri		304	ImDd	F7 V	{ 2 }	(856+1)	[4835]	BC	12	240
 Troj	C	2108	Senlis	B671633-A	KM	He Ni Cx		510	SeFo	F6 V	{ 2 }	(956-1)	[3827]		13	243
-Troj	G	2113	Dolberg	BAF889D-B		Ph		300	NaHu	F7 V	{ 2 }	(A7C+5)	[CA9F]		9	4,200
+Troj	G	2113	Dolberg	BAF889D-B		Ph Pz	A	300	NaHu	F7 V	{ 2 }	(A7C+5)	[CA9F]		9	4,200
 Troj	G	2115	Vume	B100477-C		Ni Va An		123	NaHu	K7 II	{ 1 }	(B34+1)	[455C]		15	132
 Troj	G	2116	Theev	A434500-E	K	Ni Da	A	934	NaHu	G0 V	{ 1 }	(E45-3)	[1619]		16	196
 Troj	G	2120	Marduk	C577436-5		Ni Pa		503	NaHu	K7 V	{ -2 }	(631-3)	[3244]		11	13
@@ -239,7 +239,7 @@ Troj	K	2226	TYOKH	B566A77-E		Hi		204	AsSc	F4 V M7 V	{ 3 }	(G9F+3)	[AD5E]		11	6,4
 Troj	K	2227	Iroioah	B530113-C		De Lo Po		823	AsMw	M4 V M3 V	{ 1 }	(811-2)	[1229]		12	6
 Troj	K	2229	Hleakhayes	E54348B-7		Ni Po		812	AsMw	F2 V M0 V	{ -3 }	(631-1)	[6179]		9	16
 Troj	K	2230	Akoaft	E898000-0		Ba		031	AsXX	F3 V	{ -3 }	(200-5)	[0000]		17	0
-Troj	O	2232	Khtiyrlo	DA887CA-6		Ag Ri		222	AsMw	M2 V M6 V	{ 0 }	(967+2)	[9778]		10	756
+Troj	O	2232	Khtiyrlo	DA887CA-6		Ag Ri Pz	A	222	AsMw	M2 V M6 V	{ 0 }	(967+2)	[9778]		10	756
 Troj	O	2233	Eaohfose	B6736A7-A	T	Ni		105	AsT1	K6 V D	{ 1 }	(D55+1)	[675A]		17	325
 Troj	O	2234	Gikarlum	B310587-9		Ni		714	NaHu	F0 IV	{ 0 }	(C44+1)	[5559]		11	192
 Troj	C	2304	Rhysk	X413730-7		Ic Na Pi Fo	R	613	ImDd	M1 V M4 V	{ -2 }	(966-5)	[2512]		16	162
@@ -249,7 +249,7 @@ Troj	G	2314	Chalchiutlicue	B76A787-7		Ri Wa		423	NaHu	G9 V M3 V	{ 1 }	(969+1)	[7
 Troj	K	2322	Clarke	B899753-8		Pi		820	NaHu	F1 V M9 V	{ 0 }	(B68-3)	[4725]		9	370
 Troj	K	2324	Pourne	A9B2887-A		Fl He Ph		902	NaHu	F3 V	{ 2 }	(C7B+2)	[8A5A]		11	1,848
 Troj	K	2327	The World	E100551-7		Ni Va		223	NaHu	M5 V	{ -3 }	(741-5)	[1213]		10	14
-Troj	K	2329	VORITO	E595ABB-A		Hi In		105	CsIm	F4 V M6 V	{ 2 }	(H9C+4)	[CC7C]		10	7,344
+Troj	K	2329	VORITO	E595ABB-A		Hi In Pz	A	105	CsIm	F4 V M6 V	{ 2 }	(H9C+4)	[CC7C]		10	7,344
 Troj	O	2332	Burgess	B796633-6		Ag Ni		703	NaHu	F6 V M0 V	{ 0 }	(854-3)	[3623]		8	112
 Troj	C	2402	Islent	BAC0789-9		He Pz	A	103	ImDd	A4 V	{ 1 }	(C6A+2)	[886A]	B	11	1,440
 Troj	C	2405	Alexin	B000420-C		As Ni Va		220	ImDd	F5 V	{ 1 }	(834-3)	[1517]	B	11	67
@@ -276,7 +276,7 @@ Troj	D	2704	Corben	E545455-8	N	Ni Pa		814	ImDd	F5 V M9 V M7 V	{ -3 }	(B31-5)	[21
 Troj	D	2708	Gazulin	AA86887-B	NS	Ri Pa Ph An Cp		213	ImDd	F3 V	{ 4 }	(E7E+4)	[8C5B]	BcCeF	12	5,488
 Troj	D	2709	O'Keefe	D879625-7	S	Ni		604	ImDd	F4 V	{ -3 }	(851-5)	[4335]	B	11	20
 Troj	H	2711	Empire	B679334-C	N	Lo		503	ImDd	G2 V M4 V	{ 1 }	(821-1)	[143A]	B	11	14
-Troj	H	2714	HRADUS	B54699B-7	S	Hi In Asla8		223	ImDd	F1 V M6 V	{ 2 }	(B8B+4)	[BB79]	BE	11	3,872
+Troj	H	2714	HRADUS	B54699B-7	S	Hi In Pz Asla8	A	223	ImDd	F1 V M6 V	{ 2 }	(B8B+4)	[BB79]	BE	11	3,872
 Troj	H	2715	Hexx	B78A577-D	N	Ni Wa Pr		314	ImDd	F6 V	{ 1 }	(C45+1)	[565D]	Bc	11	240
 Troj	H	2719	Iilgan	C567787-8		Ag Ri		812	NaHu	G7 V	{ 1 }	(C69+1)	[7858]		14	648
 Troj	L	2721	Tanith	A589342-B		Lo		105	NaHu	M3 V M8 V	{ 1 }	(A21-3)	[1417]		11	14
@@ -317,11 +317,11 @@ Troj	L	3030	BROWNE	B550A96-9		De Hi Po		903	NaHu	G4 V M2 V	{ 2 }	(F9C+1)	[9C48]	
 Troj	D	3105	NEUMANN	B876AA9-D	N	Hi In		123	ImDd	G3 V	{ 4 }	(H9G+5)	[BE6E]	BEf	13	12,240
 Troj	D	3107	Ploderash	D303696-8		Ic Na Ni Va		520	ImDd	F1 V M9 V	{ -3 }	(A51-4)	[5347]	B	10	30
 Troj	H	3111	Khaliki	D31156B-9		Ic Ni O:2912 Px		215	ImDd	F5 V	{ -2 }	(D42+1)	[737B]	B	10	104
-Troj	H	3113	Simok	D9A08CC-8		He Ph		701	ImDd	F0 V	{ -2 }	(B76+1)	[B68B]	Be	10	462
-Troj	H	3116	ATTEE	C7529AE-5		Hi Po		404	ImDd	F9 V	{ 0 }	(B88+4)	[D999]	BE	10	2,816
+Troj	H	3113	Simok	D9A08CC-8		He Ph Pz	A	701	ImDd	F0 V	{ -2 }	(B76+1)	[B68B]	Be	10	462
+Troj	H	3116	ATTEE	C7529AE-5		Hi Po Pz	A	404	ImDd	F9 V	{ 0 }	(B88+4)	[D999]	BE	10	2,816
 Troj	H	3117	Eshadi	B431358-E		Lo Po		311	ImDd	M7 V	{ 1 }	(721+1)	[345E]	B	10	14
 Troj	H	3119	New Moscow	B76779A-7		Ag Ga Ri		513	ImDd	F8 V	{ 2 }	(96A+4)	[9979]	BC	10	2,160
-Troj	P	3140	Auitawry	A56689A-C	KM	Ri Pa Ph An Fo DroyW	R	514	NaXX	G6 V	{ 4 }	(F7E+5)	[AC7E]		10	7,350
+Troj	P	3140	Auitawry	A56689A-C	KM	Ri Pa Ph An Pz DroyW	A	514	NaXX	G6 V	{ 4 }	(F7E+5)	[AC7E]		10	7,350
 Troj	H	3212	Berg	A675542-B	N	Ag Ni		805	ImDd	F5 V	{ 2 }	(C46-2)	[1717]	BC	10	230
 Troj	H	3213	Kedus	D867400-3		Ni Ga Pa		913	ImDd	F8 V	{ -3 }	(631-5)	[1111]	Bc	10	9
 Troj	H	3215	TOBIA	A544A55-F	N	Hi In Cs		203	ImDd	F7 V	{ 4 }	(F9G+2)	[8E3D]	BEF	10	4,320

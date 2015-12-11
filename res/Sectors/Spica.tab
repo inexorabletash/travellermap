@@ -1,6 +1,6 @@
 Sector	SS	Hex	Name	UWP	Bases	Remarks	Zone	PBG	Allegiance	Stars	{Ix}	(Ex)	[Cx]	Nobility	W	RU
 Spic	A	0102	Meridian	E550887-5		De Po Ph Pz	A	135	SoCf	M3 V	{ -2 }	(A75-2)	[8655]		11	280
-Spic	A	0103	Naav	A53289D-B	KM	Na Po Ph Cp		114	SoCf	K3 V	{ 3 }	(F7D+5)	[CB9F]		15	6,825
+Spic	A	0103	Naav	A53289D-B	KM	Na Po Ph Cp Pz	A	114	SoCf	K3 V	{ 3 }	(F7D+5)	[CB9F]		15	6,825
 Spic	A	0106	Skyserpentine	E6A6300-8		Fl Lo		711	SoCf	M3 V	{ -3 }	(721-5)	[1113]		13	7
 Spic	A	0107	Feldon	C9A8121-9		Fl Lo		704	SoCf	M2 V	{ -1 }	(711-5)	[1115]		12	4
 Spic	A	0108	Elk Grove	B597550-9		Ag Ni		300	SoCf	M2 V M3 V	{ 1 }	(745-3)	[1614]		9	98
@@ -10,7 +10,7 @@ Spic	E	0113	Schemley	B89A365-D	KM	Lo Wa Mr		715	SoCf	M2 V	{ 2 }	(B21+1)	[153B]		
 Spic	I	0122	Nereides	E79A79A-7		Wa Pi		604	SoCf	M2 V	{ -2 }	(966+1)	[9579]		13	324
 Spic	I	0123	Kapybarrdos	D422621-7		He Na Ni Po		305	SoCf	M2 V	{ -3 }	(851-5)	[2313]		8	20
 Spic	I	0124	Athabasca	A534535-C	KM	Ni		500	SoCf	M0 V	{ 2 }	(746+1)	[373A]		11	168
-Spic	I	0125	Newbandar	C5508CC-5		De Po Ph		800	SoCf	M2 II	{ -1 }	(A76+2)	[B788]		15	840
+Spic	I	0125	Newbandar	C5508CC-5		De Po Ph Pz	A	800	SoCf	M2 II	{ -1 }	(A76+2)	[B788]		15	840
 Spic	I	0127	Cook's World	C57A851-7		Wa Ph Pi		700	SoCf	M0 V	{ -1 }	(A77-5)	[4713]		7	245
 Spic	I	0129	Cataldyne	D547755-6		Ag Pi		903	SoCf	M2 V M2 V	{ -1 }	(966-3)	[5634]		10	227
 Spic	I	0130	Yingyang	C545433-5		Ni Pa		920	SoCf	G1 III	{ -2 }	(631-5)	[1222]		9	9
@@ -19,7 +19,7 @@ Spic	M	0136	Bestine	B8CA546-9		Fl Ni		624	SoCf	M2 V	{ 0 }	(D44-1)	[4548]		14	187
 Spic	A	0202	Antairtic	B3018BE-7		Ic Na Va Ph Pi Pz	A	920	SoCf	M7 III	{ 0 }	(A78+4)	[C89B]		14	2,240
 Spic	A	0204	Nadir	A522520-A		He Ni Po		700	SoCf	M2 V	{ 1 }	(745-3)	[1615]		6	98
 Spic	A	0208	Craterville	E732238-6		Lo Po		925	SoCf	G5 V	{ -3 }	(411-3)	[2156]		10	3
-Spic	A	0209	New Colchis	C4337AB-6		Na Po		314	SoCf	M0 V M3 V	{ -1 }	(966+1)	[9678]		10	324
+Spic	A	0209	New Colchis	C4337AB-6		Na Po Pz	A	314	SoCf	M0 V M3 V	{ -1 }	(966+1)	[9678]		10	324
 Spic	A	0210	700-210	E311741-7		Ic Na Pi		903	SoCf	M3 V	{ -2 }	(966-5)	[3513]		9	162
 Spic	E	0217	Horizon	E631511-8		Ni Po		404	SoCf	M2 II	{ -3 }	(B41-5)	[1214]		13	22
 Spic	E	0220	Theen	B310887-9		Na Ph Pi		702	SoCf	M2 V	{ 1 }	(C7A+1)	[8959]		13	840
@@ -32,9 +32,9 @@ Spic	M	0238	Pyrolysia	A7B3269-C	KM	Fl Lo Mr		123	SoCf	M1 V M4 V	{ 2 }	(911+3)	[3
 Spic	M	0240	KEEPOUT	X757978-1		Hi Ga Fo	R	404	SoCf	K3 V	{ -1 }	(B85-1)	[9851]		17	396
 Spic	A	0307	Dandee	B674424-8		Ni Pa		303	SoCf	M1 V	{ -1 }	(932-3)	[2336]		10	38
 Spic	A	0309	Nagg'Astphay	C42287A-7		He Na Po Ph Pi		702	SoCf	M3 V	{ -1 }	(A77+1)	[A779]		12	490
-Spic	E	0313	TERN	C0009BB-B		As Hi In Na Va		610	SoCf	G0 V	{ 3 }	(C8E+5)	[BC7D]		14	6,720
+Spic	E	0313	TERN	C0009BB-B		As Hi In Na Va Pz	A	610	SoCf	G0 V	{ 3 }	(C8E+5)	[BC7D]		14	6,720
 Spic	E	0315	Crown	A42179A-D		He Na Po Pi		800	SoCf	M3 V	{ 2 }	(96D+4)	[997F]		5	2,808
-Spic	E	0317	TUPINDUR	A54399C-A	KM	Hi In Po Cs		403	SoCf	K3 V	{ 5 }	(E8F+5)	[CE8D]		11	8,400
+Spic	E	0317	TUPINDUR	A54399C-A	KM	Hi In Po Cs Pz	A	403	SoCf	K3 V	{ 5 }	(E8F+5)	[CE8D]		11	8,400
 Spic	I	0321	Hommonculus	B596126-7		Lo		404	SoCf	G4 V M9 V	{ -1 }	(311-2)	[1146]		16	2
 Spic	I	0322	Renfrew	C867355-7		Lo Ga		312	SoCf	G9 V	{ -2 }	(521-4)	[1135]		10	6
 Spic	I	0323	Striped	B550897-9		De Po Ph		304	SoCf	M2 V M8 V	{ 1 }	(E7A+1)	[8959]		15	980
@@ -51,11 +51,11 @@ Spic	A	0401	Clan Mccracken	A5545A9-B		Ag Ni		703	SoCf	G1 V M6 V	{ 2 }	(A46+3)	[6
 Spic	A	0405	Spairn	B558698-6	KM	Ag Ni		202	SoCf	M0 V M6 V	{ 1 }	(855+1)	[6756]		8	200
 Spic	E	0411	Vortex	C58A845-8		Ri Wa Ph		311	SoCf	M2 V M5 V	{ 0 }	(C78-2)	[6836]		12	538
 Spic	E	0415	Quadrille	C645667-5		Ag Ni O:0317		413	SoCf	M2 V	{ -1 }	(853-1)	[6555]		13	108
-Spic	E	0416	MONTANNA	B7B39BA-C		Fl Hi In		813	SoCf	M3 V M6 V	{ 4 }	(F8F+5)	[BD7E]		12	9,000
+Spic	E	0416	MONTANNA	B7B39BA-C		Fl Hi In Pz	A	813	SoCf	M3 V M6 V	{ 4 }	(F8F+5)	[BD7E]		12	9,000
 Spic	E	0419	Smithall	D755237-2		Lo Ga		703	SoCf	G9 V M4 V	{ -3 }	(411-3)	[2152]		8	3
 Spic	I	0429	Arquiro	C7B2687-8		Fl He Ni		711	SoCf	K2 V M5 V	{ -2 }	(A52-2)	[6458]		7	80
 Spic	M	0431	Kestral	B89A775-B		Wa Pi		300	SoCf	G4 V M1 V	{ 2 }	(96C+1)	[5939]		10	648
-Spic	M	0432	Massaro	C6558CB-8		Ga Pa Ph		704	SoCf	M3 V M6 V M8 V	{ -1 }	(E77+1)	[A77A]		7	686
+Spic	M	0432	Massaro	C6558CB-8		Ga Pa Ph Pz	A	704	SoCf	M3 V M6 V M8 V	{ -1 }	(E77+1)	[A77A]		7	686
 Spic	M	0435	Purdee	B552100-A		Lo Po		110	SoCf	M1 V	{ 1 }	(411-3)	[1215]		5	3
 Spic	M	0437	Cravity	C311599-7		Ic Ni		314	SoCf	M2 V	{ -2 }	(742-1)	[6368]		14	50
 Spic	M	0439	FILE	C43099A-C		De Hi Na Po		503	SoCf	M0 V	{ 2 }	(E8D+4)	[BB7E]		12	5,824
@@ -76,10 +76,10 @@ Spic	E	0615	Shiprock	B000634-9	KM	As Na Ni Va		813	SoCf	G0 V	{ 1 }	(C55-1)	[4737
 Spic	E	0619	Indigo	D89A100-6		Lo Wa		805	SoCf	K4 V M6 V	{ -3 }	(311-5)	[1111]		10	2
 Spic	I	0621	Port Arthur	C662100-A		Lo		400	SoCf	F9 V M5 V	{ 0 }	(311-4)	[1115]		8	2
 Spic	I	0622	Taniaustralis	CA69755-A		Ri		323	SoCf	M5 III	{ 2 }	(E6B+1)	[5938]		12	924
-Spic	I	0623	BOREAL	A4309C9-E	KM	De Hi Na Po Cp		205	SoCf	K0 V M6 V	{ 4 }	(G8G+5)	[AD6F]		15	10,240
-Spic	I	0626	TIGR	C8C899C-9		Fl Hi In		903	SoCf	G4 V	{ 2 }	(E8C+5)	[CB8C]		12	6,720
+Spic	I	0623	BOREAL	A4309C9-E	KM	De Hi Na Po Cp Pz	A	205	SoCf	K0 V M6 V	{ 4 }	(G8G+5)	[AD6F]		15	10,240
+Spic	I	0626	TIGR	C8C899C-9		Fl Hi In Pz	A	903	SoCf	G4 V	{ 2 }	(E8C+5)	[CB8C]		12	6,720
 Spic	M	0631	Longstreet	C421423-B		He Ni Po		105	SoCf	M3 V	{ 0 }	(B33-3)	[1428]		9	69
-Spic	M	0634	TRILION	A8C899C-F	KM	Fl Hi In Cp		312	SoCf	M2 V	{ 5 }	(E8H+5)	[CE8J]		12	9,520
+Spic	M	0634	TRILION	A8C899C-F	KM	Fl Hi In Cp Pz	A	312	SoCf	M2 V	{ 5 }	(E8H+5)	[CE8J]		12	9,520
 Spic	M	0635	Jedson	E31137A-8		Ic Lo		700	SoCf	K4 V M4 V	{ -3 }	(521-1)	[517A]		8	9
 Spic	M	0639	Davis	B540555-C		De He Ni Po		204	SoCf	K3 V M3 V	{ 1 }	(B45-1)	[363A]		9	198
 Spic	A	0701	Turaak	C101632-A		Ic Na Ni Va		900	NaHu	A1 V M9 V	{ 0 }	(854-4)	[2616]		15	96
@@ -94,7 +94,7 @@ Spic	I	0728	Little Jove	CAE979A-8				710	SoCf	F0 V M7 V	{ -1 }	(A67+1)	[967A]		7
 Spic	M	0731	Harmaline	A6A6359-E		Fl Lo		813	SoCf	K9 V	{ 1 }	(921+2)	[446F]		13	36
 Spic	M	0733	Caloris	A550320-C		De Lo Po		800	SoCf	G6 IV	{ 1 }	(521-3)	[1417]		10	7
 Spic	M	0739	Ion Atoll	D87A410-9		Ni Wa		112	SoCf	K4 V	{ -2 }	(931-5)	[1214]		6	14
-Spic	A	0803	HYBOREA	A54699C-A	KM	Hi In		403	NaHu	F5 V M4 V	{ 5 }	(E8F+5)	[CE8D]		6	8,400
+Spic	A	0803	HYBOREA	A54699C-A	KM	Hi In Pz	A	403	NaHu	F5 V M4 V	{ 5 }	(E8F+5)	[CE8D]		6	8,400
 Spic	E	0816	Alebee	B868854-8		Ri Pa Ph		402	SoCf	M1 V	{ 1 }	(C79-1)	[6936]		11	680
 Spic	E	0817	Aeolus	B555640-7		Ag Ni		914	SoCf	G0 V	{ 0 }	(854-4)	[1612]		12	96
 Spic	E	0818	Jumpbuckle	A200679-9	KM	Na Ni Va		300	SoCf	M4 III	{ 1 }	(855+2)	[776A]		12	400
@@ -145,7 +145,7 @@ Spic	N	1038	Nedlest Gog	C547584-9	M	Ag Ni Da	A	710	HvFd	K4 II D	{ 0 }	(844-2)	[3
 Spic	N	1040	Fornax	B565345-B		Lo		314	HvFd	A0 V M7 V	{ 1 }	(A21-1)	[1439]		8	18
 Spic	B	1104	Oscura	A665663-A	KM	Ag Ni Ga Ri Mr		523	NaHu	M2 V	{ 4 }	(D58+1)	[3A27]		13	520
 Spic	B	1106	Shireene	B433798-B		Na Po		500	NaHu	G2 V	{ 2 }	(96C+2)	[795B]		15	1,296
-Spic	F	1111	BEVIN	B4329CA-D	KM	Hi Na Po		714	NaHu	M1 V M3 V	{ 4 }	(G8G+5)	[BD7F]		8	10,240
+Spic	F	1111	BEVIN	B4329CA-D	KM	Hi Na Po Pz	A	714	NaHu	M1 V M3 V	{ 4 }	(G8G+5)	[BD7F]		8	10,240
 Spic	F	1116	Circassia	C201885-9		Ic Na Va Ph Pi		613	SoCf	M2 V M0 V	{ 0 }	(E79-2)	[6837]		10	706
 Spic	F	1120	Rhiza	E564442-4		Ni Pa		100	SoCf	K0 V M7 V M1 V	{ -3 }	(631-5)	[1111]		8	9
 Spic	J	1123	Domecile	C533535-7		Ni Po		803	SoCf	K0 V M5 V	{ -2 }	(742-4)	[3335]		8	34
@@ -173,7 +173,7 @@ Spic	B	1302	Evermere	BA9A677-B		Ni Oc		115	NaHu	K9 V M8 V	{ 1 }	(E55+1)	[675B]		
 Spic	B	1303	Icestop	C201447-9		Ic Ni Va		520	NaHu	M2 V	{ -1 }	(832-1)	[4359]		9	43
 Spic	B	1307	Gomez	C550778-6		De Po		803	NaHu	M2 V M6 V	{ -1 }	(966-1)	[7656]		14	292
 Spic	F	1311	Sephor	C544336-9		Lo		402	NaHu	G4 V M6 V	{ -1 }	(721-2)	[2248]		8	11
-Spic	F	1318	Lucullan	B7975AB-A		Ag Ni		400	NaHu	K2 V	{ 2 }	(746+4)	[777C]		14	672
+Spic	F	1318	Lucullan	B7975AB-A		Ag Ni Da	A	400	NaHu	K2 V	{ 2 }	(746+4)	[777C]		14	672
 Spic	F	1319	Quatre	B421565-A		He Ni Po (minor) O:1522		914	HvFd	G5 IV M2 V M9 V	{ 1 }	(C45-1)	[3638]		15	216
 Spic	J	1322	Gropie	C799313-7		Lo		305	HvFd	M0 V	{ -2 }	(521-5)	[1124]		9	5
 Spic	J	1323	Nax'Hah'Nor	C7B877B-8		Fl Pz	A	804	SoCf	M0 V	{ -1 }	(D67+1)	[967A]		7	546
@@ -184,7 +184,7 @@ Spic	N	1332	Dezand	A894644-C	E	Ag Ni		205	HvFd	M2 V M3 V	{ 2 }	(D56+1)	[483A]		1
 Spic	N	1333	Murkur Folp	BA9A253-E	K	Lo Oc		800	HvFd	M4 II M3 V	{ 1 }	(411-2)	[132B]		11	3
 Spic	N	1335	TOHIRA	C0009BA-8		As Hi In Na Va Pz	A	910	SoCf	K3 V	{ 1 }	(C8A+3)	[BA7A]		10	2,880
 Spic	N	1336	New Freedom	A541620-C		He Ni Po		120	SoCf	M4 III D	{ 1 }	(A55-3)	[1717]		5	175
-Spic	N	1337	Korkov	B4306AD-A	KM	De Na Ni Po		210	SoCf	M2 V	{ 2 }	(956+5)	[A89E]		6	1,350
+Spic	N	1337	Korkov	B4306AD-A	KM	De Na Ni Po Da	A	210	SoCf	M2 V	{ 2 }	(956+5)	[A89E]		6	1,350
 Spic	N	1338	Nyihldeng	B101273-E	K	Ic Lo Va		600	HvFd	M1 V	{ 1 }	(411-2)	[132B]		6	3
 Spic	N	1340	Dozihld	D557333-7		Lo		602	HvFd	M3 V M2 V	{ -3 }	(521-5)	[1124]		7	5
 Spic	B	1401	Freeport	C411500-B		Ic Ni		900	NaHu	K0 V	{ 0 }	(744-4)	[1516]		7	67
@@ -226,9 +226,9 @@ Spic	N	1637	Karbane	B56A385-C		Lo Wa		324	HvFd	M1 V	{ 1 }	(B21-1)	[143A]		15	20
 Spic	N	1638	Nimbas	C433631-A		Na Ni Po		410	HvFd	G0 V	{ 0 }	(954-4)	[2616]		13	108
 Spic	C	1702	Nightshield	E101665-9		Ic Na Ni Va O:2003		703	NaHu	M0 V	{ -2 }	(B52-4)	[4437]		12	66
 Spic	C	1705	Gronin	C884665-8		Ag Ni Ri O:2003		710	NaHu	K2 V	{ 0 }	(954-2)	[4636]		8	144
-Spic	C	1706	Skull Hills	E7A38AD-8		Fl Ph		904	NaHu	M2 V	{ -2 }	(E76+2)	[C69C]		13	1,176
+Spic	C	1706	Skull Hills	E7A38AD-8		Fl Ph Pz	A	904	NaHu	M2 V	{ -2 }	(E76+2)	[C69C]		13	1,176
 Spic	G	1712	Foreseven	C5678A8-4		Ri Pa Ph		200	NaHu	G4 V	{ 0 }	(A76+1)	[8854]		11	420
-Spic	G	1714	Xoar Zeta	C3115AB-8		Ic Ni		402	NaHu	M1 V	{ -2 }	(942+1)	[737A]		16	72
+Spic	G	1714	Xoar Zeta	C3115AB-8		Ic Ni Da	A	402	NaHu	M1 V	{ -2 }	(942+1)	[737A]		16	72
 Spic	G	1717	Nehndil	C550205-A		De Lo Po		105	HvFd	M3 V	{ 0 }	(911-2)	[1238]		11	7
 Spic	G	1718	Egesta	E7B8386-8		Fl Lo		720	HvFd	K7 V M9 V	{ -3 }	(721-4)	[2147]		9	8
 Spic	K	1721	Tasimkin	D540323-7		De He Lo Po		710	HvFd	K8 V	{ -3 }	(521-5)	[1124]		11	5
@@ -238,9 +238,9 @@ Spic	O	1731	Mihne	B430353-9	K	De Lo Po		504	HvFd	F8 V	{ 0 }	(921-3)	[1326]		11	1
 Spic	O	1736	Buron	E688422-7		Ni Pa		510	HvFd	M3 V M0 V	{ -3 }	(631-5)	[1113]		15	9
 Spic	O	1738	Waxatha	C8C6567-9		Fl Ni (minor) O:1638		413	HvFd	M3 V K7 V	{ -1 }	(B43-1)	[5459]		16	119
 Spic	O	1740	Doduk	A663104-E		Lo		304	HvFd	M0 V	{ 1 }	(711-1)	[123C]		10	6
-Spic	C	1802	Storewell	C5208AA-7		De He Na Po Ph Pi		803	NaHu	M7 II	{ -1 }	(A77+1)	[A779]		13	490
+Spic	C	1802	Storewell	C5208AA-7		De He Na Po Ph Pi Pz	A	803	NaHu	M7 II	{ -1 }	(A77+1)	[A779]		13	490
 Spic	C	1805	Xoar Beta	E310332-7		Lo Da	A	600	NaHu	G8 III M8 V	{ -3 }	(521-5)	[1113]		10	5
-Spic	G	1811	Upsilon	C4017BB-9		Ic Na Va Pi		904	NaHu	G4 III M9 V	{ 0 }	(D69+2)	[977B]		7	1,404
+Spic	G	1811	Upsilon	C4017BB-9		Ic Na Va Pi Pz	A	904	NaHu	G4 III M9 V	{ 0 }	(D69+2)	[977B]		7	1,404
 Spic	G	1818	Tsent	A765561-A		Ag Ni Ga Pr O:2118		703	HvFd	K3 V M9 V	{ 2 }	(A46-2)	[1716]		9	192
 Spic	G	1819	Lelihr	B798654-9		Ag Ni		323	HvFd	M1 V M2 V	{ 1 }	(D55-1)	[4737]		8	293
 Spic	G	1820	Raral	E58A562-9		Ni Wa Pr O:1922		510	HvFd	M0 V	{ -2 }	(842-5)	[1315]		9	32
@@ -252,7 +252,7 @@ Spic	K	1830	Cetic II	A7BA313-D	KM	Fl Lo		202	HvFd	M1 V M1 V	{ 2 }	(721-1)	[152A]
 Spic	O	1831	Damol II	B675753-B	K	Ag Pi		705	HvFd	K2 III D	{ 3 }	(E6D+1)	[4A28]		10	1,092
 Spic	O	1832	Amflax Ops	A541476-D		He Ni Po		313	HvFd	M0 V	{ 1 }	(A34+1)	[354C]		12	120
 Spic	O	1833	Breadbasket	E694753-6		Ag Pi		704	HvFd	G4 V M9 V	{ -1 }	(966-4)	[4623]		10	194
-Spic	C	1901	Dobson Parish	C8765AA-6		Ag Ni		213	NaHu	K8 III	{ -1 }	(743+1)	[7478]		7	84
+Spic	C	1901	Dobson Parish	C8765AA-6		Ag Ni Da	A	213	NaHu	K8 III	{ -1 }	(743+1)	[7478]		7	84
 Spic	C	1904	Xoar Alpha	X411753-7		Ic Na Pi Fo	R	720	NaHu	G3 V M4 V	{ -2 }	(966-5)	[4524]		5	162
 Spic	C	1905	Ringwald	D72278B-7		He Na Po Pi Pz	A	900	NaHu	M2 V M5 V	{ -2 }	(966+1)	[9579]		8	324
 Spic	C	1906	Padre	B430432-D		De Ni Po Da	A	200	NaHu	M0 V M5 V	{ 1 }	(634-3)	[1519]		6	50
@@ -272,7 +272,7 @@ Spic	K	1930	Kurzon Dax	D798656-7		Ag Ni		503	HvFd	G1 V	{ -2 }	(852-3)	[5446]		9	
 Spic	O	1934	Sealene	XA7A501-6		Ni Oc Fo (minor)	R	415	HvFd	K1 V M2 V	{ -3 }	(741-5)	[1212]		10	14
 Spic	O	1938	Danan	B677556-B		Ag Ni		335	HvFd	M0 V	{ 2 }	(F46+1)	[474A]		11	360
 Spic	C	2002	Liam	E899000-0		Ba		002	NaHu	M2 V M3 V	{ -3 }	(200-5)	[0000]		14	0
-Spic	C	2003	TYROLIA	A41199B-C		Hi Ic In Na		703	NaHu	K3 V	{ 4 }	(E8F+5)	[BD7E]		10	8,400
+Spic	C	2003	TYROLIA	A41199B-C		Hi Ic In Na Pz	A	703	NaHu	K3 V	{ 4 }	(E8F+5)	[BD7E]		10	8,400
 Spic	C	2010	NUGENT	A431975-F	KM	Hi Na Po		304	NaHu	K2 V	{ 4 }	(F8G+2)	[7D3D]		7	3,840
 Spic	G	2015	Aesop	C895356-7		Lo		600	NaHu	M0 V M6 V	{ -2 }	(521-3)	[2146]		11	7
 Spic	K	2026	Nelyo	B532836-B		Na Po Ph		205	HvFd	M1 V	{ 2 }	(F7C+1)	[7A4A]		10	1,260
@@ -281,7 +281,7 @@ Spic	O	2033	Gorong	CAEA855-B		Ph		704	HvFd	M1 V	{ 1 }	(E7B-1)	[6939]		9	970
 Spic	O	2034	Amrad	C423364-8		Lo Po (minor) O:2235		200	HvFd	M7 III	{ -2 }	(521-4)	[1136]		9	6
 Spic	O	2037	Baral	C550656-9		De Ni Po		803	HvFd	K1 V	{ -1 }	(B53-2)	[5548]		11	132
 Spic	C	2103	Strictland	B550676-7	M	De Ni Po		603	NaHu	M3 V M5 V	{ -1 }	(853-2)	[5546]		11	96
-Spic	C	2105	Malley	C6A98AA-8		Fl Ph		802	NaHu	M2 V M7 V	{ -1 }	(C77+1)	[A77A]		8	588
+Spic	C	2105	Malley	C6A98AA-8		Fl Ph Pz	A	802	NaHu	M2 V M7 V	{ -1 }	(C77+1)	[A77A]		8	588
 Spic	C	2109	Good Place	C6A9731-8		Fl		314	NaHu	M2 V	{ -1 }	(E67-5)	[3614]		8	294
 Spic	G	2113	Adamantium	A101354-D		Ic Lo Va		300	NaHu	K8 V M8 V	{ 1 }	(521-1)	[143B]		5	9
 Spic	G	2117	Rasomb	B564202-C		Lo		602	HvFd	M2 V K4 V	{ 1 }	(611-3)	[1318]		12	4
@@ -312,7 +312,7 @@ Spic	C	2307	Spyral	B556730-A	KM	Ag		703	NaHu	K2 V	{ 4 }	(C6D+1)	[2B15]		9	936
 Spic	C	2310	Term Tukera	B6A6213-C	K	Fl Lo		804	NaHu	G8 V	{ 1 }	(811-2)	[1329]		10	6
 Spic	G	2312	Raphael	C550545-6		De Ni Po		303	NaHu	M2 V M1 V	{ -2 }	(742-4)	[3334]		6	34
 Spic	G	2313	Gabriel	C7C9444-B		Fl Ni		804	NaHu	M3 V M0 V	{ 0 }	(A33-2)	[2439]		8	72
-Spic	G	2314	CACHE	C8B99BA-A		Fl Hi In		704	NaHu	K2 V	{ 3 }	(F8D+5)	[BC7C]		14	7,800
+Spic	G	2314	CACHE	C8B99BA-A		Fl Hi In Pz	A	704	NaHu	K2 V	{ 3 }	(F8D+5)	[BC7C]		14	7,800
 Spic	G	2317	Triarchos	C520477-9		De He Ni Po		412	NaHu	K0 V	{ -1 }	(932-1)	[4359]		9	49
 Spic	G	2318	Baren	A651464-B	E	Ni Po O:2118		400	HvFd	G3 V M7 V	{ 1 }	(634-1)	[2539]		14	65
 Spic	G	2320	Piyrul	E530554-8		De Ni Po		700	HvFd	K3 V M0 V M1 V	{ -3 }	(741-5)	[3236]		8	14
@@ -356,7 +356,7 @@ Spic	P	2536	Nehlar	A843755-D		Po Pi		400	HvFd	G1 V M3 V	{ 2 }	(96D+1)	[593B]		9	
 Spic	P	2537	Raghehk	A956563-D		Ag Ni O:2536		424	HvFd	F4 V	{ 2 }	(D46-1)	[272A]		12	281
 Spic	P	2539	Kinyar VI	B57A754-D		Wa Pi		904	HvFd	K4 II M6 V	{ 2 }	(D6D+1)	[593B]		14	1,014
 Spic	D	2606	Basque	B736858-9		Ph		300	NaHu	F7 IV M1 V	{ 1 }	(A7A+1)	[8959]		6	700
-Spic	D	2607	Lierne	C5538B9-7		Po Ph		101	NaHu	K2 V M2 V	{ -1 }	(A77+1)	[9768]		9	490
+Spic	D	2607	Lierne	C5538B9-7		Po Ph Pz	A	101	NaHu	K2 V M2 V	{ -1 }	(A77+1)	[9768]		9	490
 Spic	D	2609	Proximal	C431204-8		Lo Po		810	NaHu	G0 V	{ -2 }	(511-4)	[1136]		8	3
 Spic	D	2610	Crescendo	E559559-7		Ni		905	NaHu	K0 V	{ -3 }	(741-2)	[6268]		11	22
 Spic	H	2612	Slater	B887765-A	KM	Ag Ga Ri Mr		921	NaHu	K0 V M6 V	{ 5 }	(C6E+3)	[5C38]		15	3,024
@@ -394,7 +394,7 @@ Spic	L	2823	Untion	C562554-A		Ni Pr		500	HvFd	M0 V M6 V	{ 0 }	(744-2)	[3538]		10
 Spic	L	2828	Item	D7A6356-9		Fl Lo		300	HvFd	M0 V	{ -2 }	(521-3)	[2148]		8	7
 Spic	P	2833	Pehnon	D556254-8		Lo Da	A	513	HvFd	K4 V	{ -3 }	(811-5)	[1136]		10	4
 Spic	P	2834	Hrilll	X9DA734-5		Fo	R	815	HvFd	K4 V M2 V	{ -2 }	(965-4)	[5533]		9	162
-Spic	D	2906	Marginal	B7547CC-5		Ag		400	NaHu	K4 V M4 V	{ 1 }	(968+4)	[A888]		9	1,728
+Spic	D	2906	Marginal	B7547CC-5		Ag Pz	A	400	NaHu	K4 V M4 V	{ 1 }	(968+4)	[A888]		9	1,728
 Spic	H	2914	Paros	C6898CD-4		Ri Ph Pz	A	900	NaHu	K4 V M4 V M7 V	{ 0 }	(A76+4)	[C898]		5	1,680
 Spic	H	2917	Nggele	D550764-6		De Po O:2716		400	HvFd	K1 V M4 V	{ -2 }	(965-4)	[5534]		16	162
 Spic	L	2921	Melzigh II	B598556-C		Ag Ni		904	HvFd	M8 II	{ 2 }	(B46+1)	[474B]		8	264
@@ -407,11 +407,11 @@ Spic	P	2934	Roror	B799161-C	KM	Lo Mr		913	HvFd	A2 V	{ 2 }	(711-2)	[1318]		13	6
 Spic	P	2936	Bilda	C57A154-C		Lo Wa		403	HvFd	F4 V M1 V	{ 0 }	(611-2)	[113A]		12	5
 Spic	P	2938	Yard Explorer	A8CA561-F		Fl Ni O:2640		404	HvFd	G3 V	{ 1 }	(B45-3)	[161B]		8	154
 Spic	P	2940	Pixhemp	B7B8465-8	KM	Fl Ni (minor) Mr		411	HvFd	K2 V M9 V	{ 0 }	(833-2)	[2436]		11	58
-Spic	D	3001	Feral	B6A48BD-9	KM	Fl Ph		604	NaHu	M1 V	{ 2 }	(E7B+5)	[CA9D]		8	5,390
-Spic	D	3004	Bountiful	C6678AA-7		Ga Ri Pa Ph		105	NaHu	M0 V M8 V	{ 0 }	(A78+2)	[A879]		8	1,120
+Spic	D	3001	Feral	B6A48BD-9	KM	Fl Ph Pz	A	604	NaHu	M1 V	{ 2 }	(E7B+5)	[CA9D]		8	5,390
+Spic	D	3004	Bountiful	C6678AA-7		Ga Ri Pa Ph Pz	A	105	NaHu	M0 V M8 V	{ 0 }	(A78+2)	[A879]		8	1,120
 Spic	D	3010	Jumpers	B7B4544-8		Fl Ni		620	NaHu	M1 V	{ -1 }	(943-3)	[3436]		13	76
 Spic	H	3012	Aventicum Vaud	A568452-E	K	Ni Pa		713	NaHu	G2 V	{ 1 }	(A34-3)	[151A]		9	84
-Spic	H	3018	Viscera	B8978B9-5	M	Pa Ph Pi		114	NaHu	M3 V M2 V	{ 0 }	(A77+1)	[9866]		9	490
+Spic	H	3018	Viscera	B8978B9-5	M	Pa Ph Pi Pz	A	114	NaHu	M3 V M2 V	{ 0 }	(A77+1)	[9866]		9	490
 Spic	H	3020	Manihl	B400752-D		Na Va Pi		904	HvFd	K9 III	{ 2 }	(D6D-2)	[3919]		13	811
 Spic	L	3021	Yombe IV	C561652-9		Ni Ri		605	HvFd	K0 II	{ 0 }	(D54-4)	[2615]		12	156
 Spic	L	3023	Vensel	C88A356-C		Lo Wa		700	HvFd	M2 V	{ 0 }	(521-1)	[234B]		7	9
@@ -436,7 +436,7 @@ Spic	P	3134	Ridhi	D638752-7				300	HvFd	K1 V M3 V M2 V	{ -2 }	(966-5)	[3513]		13
 Spic	P	3138	Zonggand	C795261-9		Lo O:3238		420	HvFd	M2 V M7 V	{ -1 }	(611-5)	[1115]		11	3
 Spic	D	3201	Pentarchus	A786476-D	K	Ni Ga Pa		703	NaHu	M1 V	{ 1 }	(934+1)	[354C]		10	108
 Spic	D	3202	Sullivan	B430115-D	K	De Lo Po		604	NaHu	A0 V	{ 1 }	(711-1)	[123B]		10	6
-Spic	D	3207	Claytown	C43089C-6		De Na Po Ph		601	NaHu	K3 V M5 V	{ -1 }	(A76+2)	[B789]		10	840
+Spic	D	3207	Claytown	C43089C-6		De Na Po Ph Pz	A	601	NaHu	K3 V M5 V	{ -1 }	(A76+2)	[B789]		10	840
 Spic	D	3210	Phylum	C689367-7		Lo O:3214		704	NaHu	K7 V	{ -2 }	(521-2)	[3157]		10	8
 Spic	H	3211	Bedlam	C8C4368-9		Fl Lo O:3214		603	NaHu	G6 V	{ -1 }	(821-1)	[3259]		12	14
 Spic	H	3214	SLINE	B4319A7-E	KM	Hi Na Po		502	NaHu	F1 III	{ 4 }	(D8G+4)	[9D5E]		7	6,656
