@@ -49,6 +49,11 @@ namespace Maps.API
                     ctx.Styles.microRoutes.visible = false;
                 }
 
+                if (!GetBoolOption("rifts", queryDefaults: queryDefaults, defaultValue: true))
+                {
+                    ctx.Styles.showRiftOverlay = false;
+                }
+
                 ctx.Styles.dimUnofficialSectors = GetBoolOption("dimunofficial", queryDefaults: queryDefaults, defaultValue: false);
                 ctx.Styles.droyneWorlds.visible = GetBoolOption("dw", queryDefaults: queryDefaults, defaultValue: false);
 
