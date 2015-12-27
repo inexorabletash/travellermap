@@ -17,6 +17,7 @@ namespace Maps
         public static string FixCapitalization(string s)
         {
             // TODO: Handle "I'Sred*N..."
+            // TODO: Consider using System.Globalization.TextInfo.ToTitleCase
 
             StringBuilder sb = new StringBuilder(s.Length);
             bool leading = true;
@@ -74,6 +75,13 @@ namespace Maps
             return value.Length <= size ? value : value.Substring(0, size);
         }
 
+        /// <summary>
+        /// Retrieves a substring from this instance. The substring starts at
+        /// a specified character position and has a specified maximum length.
+        /// If the start is a position not within the instance an empty
+        /// string is returned. If start plus length is greater than the length
+        /// of this instance, a shorter substring is returned.
+        /// </summary>
         public static string SafeSubstring(this string s, int start, int length)
         {
             if (start > s.Length)

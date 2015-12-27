@@ -101,6 +101,12 @@ namespace Maps
                             row.ItemArray = new object[] { sector.X, sector.Y, name.Text };
                             dt_sectors.Rows.Add(row);
                         }
+                        if (!string.IsNullOrEmpty(sector.Abbreviation))
+                        {
+                            DataRow row = dt_sectors.NewRow();
+                            row.ItemArray = new object[] { sector.X, sector.Y, sector.Abbreviation };
+                            dt_sectors.Rows.Add(row);
+                        }
 
                         foreach (Subsector subsector in sector.Subsectors)
                         {

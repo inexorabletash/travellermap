@@ -35,7 +35,26 @@ namespace Maps
         public Point Location { get; set; }
 
         [XmlAttribute]
-        public string Abbreviation { get; set; }
+        public string Abbreviation {
+            get
+            {
+                if (!string.IsNullOrEmpty(abbreviation))
+                    return abbreviation;
+                if (!Tags.Contains("OTU") || Names.Count == 0)
+                    return null;
+                // For OTU sectors, synthesize an abbreviation if not specified.
+                string name = Names[0].Text;
+                name = Regex.Replace(name, @"[^A-Z]", "", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
+                if (name.Length == 0)
+                    return null;
+                name = name.SafeSubstring(0, 4);
+                name = name.Substring(0, 1).ToString().ToUpperInvariant() + name.Substring(1).ToLowerInvariant();
+                abbreviation = name;
+                return abbreviation;
+            }
+            set { abbreviation = value; }
+        }
+        private string abbreviation;
 
         [XmlAttribute]
         public string Label { get; set; }
