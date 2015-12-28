@@ -19,7 +19,8 @@
     F: 'Good',
     G: 'Poor',
     H: 'Primitive',
-    Y: 'None'
+    Y: 'None',
+    '?': 'Unknown'
   };
 
   var SIZ_TABLE = {
@@ -40,8 +41,9 @@
     D: '20,800km',
     E: '22,400km',
     F: '24,000km',
-    X: 'Unknown'
-  };
+    X: 'Unknown',
+    '?': 'Unknown'
+};
 
   var ATM_TABLE = {
     0: 'No atmosphere',
@@ -60,8 +62,9 @@
     D: 'Dense, high',
     E: 'Thin, low',
     F: 'Unusual',
-    X: 'Unknown'
-  };
+    X: 'Unknown',
+    '?': 'Unknown'
+};
 
   var HYD_TABLE = {
     0: 'Desert World',
@@ -75,8 +78,9 @@
     8: '80%',
     9: '90%',
     A: 'Water World',
-    X: 'Unknown'
-  };
+    X: 'Unknown',
+    '?': 'Unknown'
+};
 
   var POP_TABLE = {
     0: 'Unpopulated',
@@ -95,8 +99,9 @@
     D: 'Tens of trillions',
     E: 'Hundreds of tillions',
     F: 'Quadrillions',
-    X: 'Unknown'
-  };
+    X: 'Unknown',
+    '?': 'Unknown'
+};
 
   var GOV_TABLE = {
     0: 'No Government Structure',
@@ -116,6 +121,7 @@
     E: 'Religious Autocracy',
     F: 'Totalitarian Oligarchy',
     X: 'Unknown',
+    '?': 'Unknown',
 
     // Legacy/Non-Human
     G: 'Small Station or Facility',
@@ -159,8 +165,9 @@
     K: 'Excessively oppressive and restrictive',
     L: 'Totally oppressive and restrictive',
     S: 'Special/Variable situation',
-    X: 'Unknown'
-  };
+    X: 'Unknown',
+    '?': 'Unknown'
+};
 
   var TECH_TABLE = {
     0: 'Stone Age',
@@ -184,8 +191,9 @@
     J: 'Personal Disintegrators',
     K: 'Plastic Metals',
     L: 'Comprehensible only as technological magic',
-    X: 'Unknown'
-  };
+    X: 'Unknown',
+    '?': 'Unknown'
+};
 
   var NOBILITY_TABLE = {
     B: 'Knight',
@@ -366,7 +374,7 @@
     };
   }
   function splitPBG(pbg) {
-    if (pbg === 'XXX')
+    if (pbg === 'XXX' || pbg === '???')
       return { Pop: -1, Belts: '???', GG: '???' };
     return {
       Pop: Traveller.fromHex(pbg.substring(0, 1)),
@@ -379,7 +387,7 @@
     var world = data.Worlds[0];
     if (!world) return;
 
-    var isPlaceholder = world.UWP === 'XXXXXXX-X';
+    var isPlaceholder = (world.UWP === 'XXXXXXX-X' || world.UWP === '???????-?');
 
     world.UWP = splitUWP(world.UWP);
     world.UWP.StarportBlurb = STARPORT_TABLE[world.UWP.Starport];
@@ -387,7 +395,7 @@
     world.UWP.AtmBlurb = ATM_TABLE[world.UWP.Atm];
     world.UWP.HydBlurb = HYD_TABLE[world.UWP.Hyd];
     world.UWP.PopBlurb = POP_TABLE[world.UWP.Pop];
-    world.UWP.GovBlurb = isPlaceholder ? 'Unknown' : GOV_TABLE[world.UWP.Gov];
+    world.UWP.GovBlurb = GOV_TABLE[world.UWP.Gov];
     world.UWP.LawBlurb = LAW_TABLE[world.UWP.Law];
     world.UWP.TechBlurb = TECH_TABLE[world.UWP.Tech];
 

@@ -107,11 +107,11 @@ namespace Maps.Serialization
         private static readonly Regex worldRegex = new Regex(@"^" +
             @"( \s*       (?<name>        .*                           ) )  " + // Name
             @"( \s*       (?<hex>         \d{4}                        ) )  " + // Hex
-            @"( \s{1,2}   (?<uwp>         [ABCDEX][0-9A-Z]{6}-[0-9A-Z] ) )  " + // UWP (Universal World Profile)
+            @"( \s{1,2}   (?<uwp>         [ABCDEX?][0-9A-Z?]{6}-[0-9A-Z?] ) )  " + // UWP (Universal World Profile)
             @"( \s{1,2}   (?<base>        [A-Zr1-9* \-]                ) )  " + // Base
             @"( \s{1,2}   (?<codes>       .{10,}?                      ) )  " + // Remarks
             @"( \s+       (?<zone>        [GARBFU \-]                  ) )? " + // Zone
-            @"( \s{1,2}   (?<pbg>         [0-9X][0-9A-FX][0-9A-FX]     ) )  " + // PGB (Population multiplier, Belts, Gas giants)
+            @"( \s{1,2}   (?<pbg>         [0-9X?][0-9A-FX?][0-9A-FX?]     ) )  " + // PGB (Population multiplier, Belts, Gas giants)
             @"( \s{1,2}   (?<allegiance>  ([A-Za-z0-9][A-Za-z0-9?\-]|--)  ) )  " + // Allegiance
             @"( \s*       (?<rest>        .*?                          ) )  " + // Stellar data (etc)
             @"\s*$"
@@ -190,12 +190,12 @@ namespace Maps.Serialization
 
     internal abstract class T5ParserBase : SectorFileParser
     {
-        private const string HEX = @"[0123456789ABCDEFGHJKLMNPQRSTUVWXYZ]";
+        private const string HEX = @"[0123456789ABCDEFGHJKLMNPQRSTUVWXYZ?]";
 
         // Regex checks are only done in Debug - data is trusted otherwise
         private static readonly Regex HEX_REGEX = new Regex(@"^\d\d\d\d$");
-        private static readonly Regex UWP_REGEX = new Regex("^[ABCDEX]" + HEX + HEX + @"[0-AX]" + HEX + @"{3}-" + HEX + @"$");
-        private static readonly Regex PBG_REGEX = new Regex("^[0-9X]{3}$");
+        private static readonly Regex UWP_REGEX = new Regex("^[ABCDEX?]" + HEX + HEX + @"[0-AX?]" + HEX + @"{3}-" + HEX + @"$");
+        private static readonly Regex PBG_REGEX = new Regex("^[0-9X?]{3}$");
 
         private static readonly Regex BASES_REGEX = new Regex(@"^C?D?E?K?M?N?R?S?T?V?W?X?$");
         private static readonly Regex ZONE_REGEX = new Regex(@"^(|A|R)$");

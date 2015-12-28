@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Linq;
 using System.Globalization;
 
 namespace Maps
@@ -23,20 +24,18 @@ namespace Maps
             throw new ArgumentOutOfRangeException("c", string.Format(CultureInfo.InvariantCulture, "Value out of range: '{0}'", c));
         }
 
-        public static int FromHex(char c, int? valueIfX = null)
+        public static int FromHex(char c, int? valueIfUnknown = null)
         {
             c = Char.ToUpperInvariant(c);
 
-            if (c == 'X' && valueIfX.HasValue)
-                return valueIfX.Value;
+            if ((c == 'X' || c == '?' || c == '_') && valueIfUnknown.HasValue)
+                return valueIfUnknown.Value;
 
             int value = HEX.IndexOf(c);
             if (value != -1)
                 return value;
             switch (c)
             {
-                case '_': return 0; // Unknown
-                case '?': return 0; // Unknown
                 case 'O': return 0; // Typo found in some data files
                 case 'I': return 1; // Typo found in some data files
             }
@@ -45,7 +44,7 @@ namespace Maps
         #endregion // eHex
 
         #region Bases
-        // Bases should be string containing zero or more of: CDKMNRSTWXZ (plus nonstandard E, O)
+        // Bases should be string containing zero or more of: CDEKMNRSTWXZ (plus nonstandard O)
 
         // Code  Owner      Description
         // ----  ---------  ------------------------
@@ -140,49 +139,58 @@ namespace Maps
 
         #region Allegiance
 
-        private class LegacyAllegiances : Dictionary<string, Allegiance>
+        private class AllegianceDictionary : Dictionary<string, Allegiance>
         {
             public void Add(string code, string name)
             {
                 Add(code, new Allegiance(code, name));
             }
-        }
-        private static LegacyAllegiances s_stockAllegiances = new LegacyAllegiances {
-            { "As", "Aslan Hierate" },
-            { "Cs", "Imperial Client State" },
-            { "Dr", "Droyne" },
-            { "Hv", "Hiver Federation" },
-            { "Im", "Third Imperium" },
-            { "J-", "Julian Protectorate" },
-            { "Jp", "Julian Protectorate" },
-            { "Kk", "The Two Thousand Worlds" },
-            { "Na", "Non-Aligned" },
-            { "So", "Solomani Confederation" },
-            { "Va", "Vargr (Non-Aligned)" },
-            { "Zh", "Zhodani Consulate" },
 
-            { "A0", "Yerlyaruiwo Tlaukhu Bloc" },
-            { "A1", "Khaukeairl Tlaukhu Bloc" },
-            { "A2", "Syoisuis Tlaukhu Bloc" },
-            { "A3", "Tralyeaeawi Tlaukhu Bloc" },
-            { "A4", "Eakhtiyho Tlaukhu Bloc" },
-            { "A5", "Hlyueawi/Isoitiyro Tlaukhu Bloc" },
-            { "A6", "Uiktawa Tlaukhu Bloc" },
-            { "A7", "Ikhtealyo Tlaukhu Bloc" },
-            { "A8", "Seieakh Tlaukhu Bloc" },
-            { "A9", "Aokhalte Tlaukhu Bloc" }
+            public void Add(string code, string legacy, string baseCode, string name)
+            {
+                Add(code, new Allegiance(code, legacy, baseCode, name));
+            }
+        }
+
+        // Overrides or additions where Legacy -> T5SS code mapping is ambiguous.
+        private static StringDictionary s_legacyAllegianceToT5Overrides = new StringDictionary {
+            { "J-", "JuPr" },
+            { "Jp", "JuPr" },
+            { "Ju", "JuPr" },
+            { "Na", "NaHu" },
+            { "So", "SoCf" },
+            { "Va", "NaVa" },
+            { "Zh", "ZhCo" },
+            { "--", "XXXX" }
         };
 
+        // Cases where T5SS codes don't apply: e.g. the Hierate or Imperium, or where no codes exist yet
+        private static AllegianceDictionary s_legacyAllegiances = new AllegianceDictionary {
+            { "As", "Aslan Hierate" }, // T5SS: Clan, client state, or unknown; no generic code
+            { "Dr", "Droyne" }, // T5SS: Polity name or unaligned w/ Droyne population
+            { "Im", "Third Imperium" }, // T5SS: Domain or cultural region; no generic code
+            { "Kk", "The Two Thousand Worlds" }, // T5SS: (Not yet assigned)
+        };
+
+        // In priority order:
+        // * T5 Allegiance code (T5SS)
+        // * Legacy -> T5 overrides
+        // * Legacy stock codes
+        // * Legacy -> T5 (T5SS)
         public static Allegiance GetStockAllegianceFromCode(string code)
         {
             if (code == null)
                 return null;
+
             if (s_t5Allegiances.ContainsKey(code))
                 return s_t5Allegiances[code];
-            if (s_legacyAllegianceToT5.ContainsKey(code))
-                return s_t5Allegiances[s_legacyAllegianceToT5[code]];
-            if (s_stockAllegiances.ContainsKey(code))
-                return s_stockAllegiances[code];
+            if (s_legacyAllegianceToT5Overrides.ContainsKey(code))
+                return s_t5Allegiances[s_legacyAllegianceToT5Overrides[code]];
+            if (s_legacyAllegiances.ContainsKey(code))
+                return s_legacyAllegiances[code];
+            if (s_legacyToT5Allegiance.ContainsKey(code))
+                return s_legacyToT5Allegiance[code];
+
             return null;
         }
 
@@ -204,48 +212,8 @@ namespace Maps
             return s_t5Allegiances[t5code].LegacyCode;
         }
 
-        private static StringDictionary s_legacyAllegianceToT5 = new StringDictionary {
-            // { "As", "AsXX" }, // Acceptable for a world, but not a polity
-            { "A0", "AsT0" },
-            { "A1", "AsT1" },
-            { "A2", "AsT2" },
-            { "A3", "AsT3" },
-            { "A4", "AsT4" },
-            { "A5", "AsT5" },
-            { "A6", "AsT6" },
-            { "A7", "AsT7" },
-            { "A8", "AsT8" },
-            { "A9", "AsT9" },
-            { "Cs", "CsIm" },
-            { "Cz", "CsZh" },
-            { "Hv", "HvFd" },
-            { "J-", "JuPr" },
-            { "Jp", "JuPr" },
-            { "Ju", "JuPr" },
-            { "Na", "NaHu" }, // Reasonable? NaXX is "unclaimed"
-            { "So", "SoCf" },
-            { "Va", "NaVa" },
-            { "Zh", "ZhCo" },
-            { "--", "XXXX" }
-        };
-        public static string LegacyAllegianceToT5(string code, Sector unused)
-        {
-            // unused sector argument to force conversion to only take place when done in the context of a sector
-            // which may define overrides
-            if (s_legacyAllegianceToT5.ContainsKey(code))
-                return s_legacyAllegianceToT5[code];
-            return code;
-        }
-
         // TODO: Parse this from data file
-        private class T5Allegiances : Dictionary<string, Allegiance>
-        {
-            public void Add(string t5code, string code, string baseCode, string name)
-            {
-                Add(t5code, new Allegiance(t5code, code, baseCode, name));
-            }
-        }
-        private static T5Allegiances s_t5Allegiances = new T5Allegiances {
+        private static AllegianceDictionary s_t5Allegiances = new AllegianceDictionary {
             // T5Code, LegacyCode, BaseCode, Name
             // Allegiance Table Begin
             { "3EoG", "Ga", "Ga", "Third Empire of Gashikan" },
@@ -439,9 +407,11 @@ namespace Maps
         };
         public static IEnumerable<string> AllegianceCodes { get { return s_t5Allegiances.Keys; } }
 
+        // May need GroupBy to handle duplicates
+        private static Dictionary<string, Allegiance> s_legacyToT5Allegiance = s_t5Allegiances.Values
+            .GroupBy(a => a.LegacyCode).Select(g => g.First()).ToDictionary(a => a.LegacyCode);
+
         private static readonly HashSet<string> s_defaultAllegiances = new HashSet<string> {
-            // NOTE: Do not use this for autonomous/cultural regional codes (e.g. Vegan, Sylean, etc).
-            // Use <Allegiance Code="Ve" Base="Im">Vegan Autonomous Region</Allegiance> in metadata instead
             "Im", // Classic Imperium
             "ImAp", // Third Imperium, Amec Protectorate (Dagu)
             "ImDa", // Third Imperium, Domain of Antares (Anta/Empt/Lish)
