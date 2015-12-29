@@ -14,8 +14,11 @@ tbody#results textarea { margin: 0; border: 0;
                          width: 256px;
                          white-space: pre;
                          overflow: scroll; }
-tbody#results tr.pass td { border: 1px solid green; }
-tbody#results tr.fail td { border: 1px solid red; }
+tbody#results .pass.content td { border: 1px solid green; }
+tbody#results .fail.content td { border: 1px solid red; }
+
+body.hide_pass .pass,
+body.hide_fail .fail { display: none; }
 
 #status_tests, #status_passed, #status_failed { font-weight: bold; }
 
@@ -31,8 +34,20 @@ tbody#results tr.fail td { border: 1px solid red; }
     </p>
     <p>
       Tests: <span id="status_tests"></span>
+
+      <input type=checkbox id="show_pass" checked>
       Passed: <span id="status_passed"></span>
+
+      <input type=checkbox id="show_fail" checked>
       Failed: <span id="status_failed"></span>
+
+      <script>
+      ['pass', 'fail'].forEach(function(s) {
+        document.querySelector('#show_' + s).addEventListener('click', function(e) {
+          document.body.classList[!e.target.checked ? 'add' : 'remove']('hide_' + s);
+        });
+      });
+      </script>
     </p>
   </section>
   <section>

@@ -121,18 +121,22 @@
   global.check = function(contentType, url1, url2, filter) {
     ++status.tests;
 
-    var tr = $('#results').appendChild(elem('tr'));
-    tr.appendChild(elem('td')).appendChild(link(url1));
-    tr.appendChild(elem('td')).appendChild(link(url2));
-    tr.appendChild(elem('td')).appendChild(text('diff'));
+    var tr1 = $('#results').appendChild(elem('tr'));
+    tr1.classList.add('source');
+    tr1.appendChild(elem('td')).appendChild(link(url1));
+    tr1.appendChild(elem('td')).appendChild(link(url2));
+    tr1.appendChild(elem('td')).appendChild(text('diff'));
 
-    tr = $('#results').appendChild(elem('tr'));
+    var tr2 = $('#results').appendChild(elem('tr'));
+    tr2.classList.add('content');
 
     compareContent(contentType, url1, url2, filter, function(a, b, c, pass) {
-      tr.appendChild(elem('td')).appendChild(elem('textarea')).value = a;
-      tr.appendChild(elem('td')).appendChild(elem('textarea')).value = b;
-      tr.appendChild(elem('td')).appendChild(elem('textarea')).value = c;
-      tr.classList.add(pass ? 'pass' : 'fail');
+      tr1.classList.add(pass ? 'pass' : 'fail');
+      tr2.classList.add(pass ? 'pass' : 'fail');
+
+      tr2.appendChild(elem('td')).appendChild(elem('textarea')).value = a;
+      tr2.appendChild(elem('td')).appendChild(elem('textarea')).value = b;
+      tr2.appendChild(elem('td')).appendChild(elem('textarea')).value = c;
     }).then(function(result) {
       ++status.completed;
       if (result) {
