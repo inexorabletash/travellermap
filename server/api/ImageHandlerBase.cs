@@ -70,7 +70,7 @@ namespace Maps.API
                         document.Info.Author = "Joshua Bell";
                         document.Info.Creator = "TravellerMap.com";
                         document.Info.Subject = DateTime.Now.ToString("F", CultureInfo.InvariantCulture);
-                        document.Info.Keywords = "The Traveller game in all forms is owned by Far Future Enterprises. Copyright (C) 1977 - 2015 Far Future Enterprises. Traveller is a registered trademark of Far Future Enterprises.";
+                        document.Info.Keywords = "The Traveller game in all forms is owned by Far Future Enterprises. Copyright (C) 1977 - 2016 Far Future Enterprises. Traveller is a registered trademark of Far Future Enterprises.";
 
                         // TODO: Credits/Copyright
                         // This is close, but doesn't define the namespace correctly:
