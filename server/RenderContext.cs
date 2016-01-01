@@ -578,6 +578,7 @@ namespace Maps.Rendering
                     // TODO: selector may be expensive
                     foreach (World world in selector.Worlds) { DrawWorld(fonts, world, WorldLayer.Background); }
                     foreach (World world in selector.Worlds) { DrawWorld(fonts, world, WorldLayer.Foreground); }
+                    foreach (World world in selector.Worlds) { DrawWorld(fonts, world, WorldLayer.Overlay); }
                 }
                 timers.Add(new Timer("worlds"));
                 #endregion
@@ -877,7 +878,7 @@ namespace Maps.Rendering
             }
         }
 
-        private enum WorldLayer { Background, Foreground };
+        private enum WorldLayer { Background, Foreground, Overlay };
         private void DrawWorld(FontCache styleRes, World world, WorldLayer layer)
         {
             bool isPlaceholder = world.IsPlaceholder;
@@ -901,6 +902,19 @@ namespace Maps.Rendering
                 matrix.TranslatePrepend(center.X, center.Y);
                 matrix.ScalePrepend(styles.hexContentScale / Astrometrics.ParsecScaleX, styles.hexContentScale / Astrometrics.ParsecScaleY);
                 graphics.MultiplyTransform(matrix, XMatrixOrder.Prepend);
+
+                if (layer == WorldLayer.Overlay)
+                {
+                    #region Population Underlay 
+                    if (styles.showPopulationOverlay && world.Population > 0)
+                    {
+                        // TODO: Don't hardcode the color
+                        solidBrush.Color = XColor.FromArgb(0x80ffff00);
+                        float r = (float)Math.Sqrt(world.Population / Math.PI) * 0.00002f;
+                        graphics.DrawEllipse(solidBrush, -r, -r, r * 2, r * 2);
+                    }
+                    #endregion
+                }
 
                 if (!styles.useWorldImages)
                 {

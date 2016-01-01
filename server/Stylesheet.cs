@@ -805,6 +805,7 @@ namespace Maps.Rendering
         // Worlds
         public StyleElement worlds;
         public bool showWorldDetailColors;
+        public bool showPopulationOverlay;
 
         public PointF StarportPosition;
         public PointF GasGiantPosition;

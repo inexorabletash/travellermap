@@ -1736,7 +1736,7 @@ var Util = {
         });
     }
 
-    ['silly', 'routes', 'dimunofficial', 'ew', 'dw', 'milieu'].forEach(function(name) {
+    ['silly', 'routes', 'dimunofficial', 'ew', 'dw', 'rifts', 'po', 'milieu'].forEach(function(name) {
       if (name in params)
         self.tileOptions[name] = int(name);
     });
