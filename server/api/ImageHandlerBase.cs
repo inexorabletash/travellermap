@@ -54,6 +54,11 @@ namespace Maps.API
                     ctx.Styles.showRiftOverlay = false;
                 }
 
+                if (GetBoolOption("po", queryDefaults:queryDefaults, defaultValue: false))
+                {
+                    ctx.Styles.showPopulationOverlay = true;
+                }
+
                 ctx.Styles.dimUnofficialSectors = GetBoolOption("dimunofficial", queryDefaults: queryDefaults, defaultValue: false);
                 ctx.Styles.droyneWorlds.visible = GetBoolOption("dw", queryDefaults: queryDefaults, defaultValue: false);
 

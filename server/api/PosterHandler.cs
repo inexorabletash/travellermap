@@ -80,8 +80,8 @@ namespace Maps.API
                         case "hiver": x = 2; y = 1; w = 6; h = 4; title = "Hiver Federation"; break;
                         case "aslan": x = -8; y = 1; w = 7; h = 4; title = "Aslan Hierate"; break;
                         case "vargr": x = -4; y = -4; w = 8; h = 3; title = "Vargr Extents"; break;
+                        case "kkree": x = 4; y = -2; w = 4; h = 4; title = "Two Thousand Worlds"; break;
                         case "jp": x = 1.25; y = -2.25; w = 2.5; h = 2; title = "Julian Protectorate"; break;
-                        // TODO: K'kree
                         // TODO: Zhodani provinces
 
                         case "jg": x = 160; y = 0; w = 2; h = 2; title = "Judges Guild"; break;
