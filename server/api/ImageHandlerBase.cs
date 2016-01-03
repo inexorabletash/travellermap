@@ -50,14 +50,13 @@ namespace Maps.API
                 }
 
                 if (!GetBoolOption("rifts", queryDefaults: queryDefaults, defaultValue: true))
-                {
                     ctx.Styles.showRiftOverlay = false;
-                }
 
-                if (GetBoolOption("po", queryDefaults:queryDefaults, defaultValue: false))
-                {
+                if (GetBoolOption("po", queryDefaults: queryDefaults, defaultValue: false))
                     ctx.Styles.showPopulationOverlay = true;
-                }
+
+                if (GetBoolOption("im", queryDefaults: queryDefaults, defaultValue: false))
+                    ctx.Styles.showImportanceOverlay = true;
 
                 ctx.Styles.dimUnofficialSectors = GetBoolOption("dimunofficial", queryDefaults: queryDefaults, defaultValue: false);
                 ctx.Styles.droyneWorlds.visible = GetBoolOption("dw", queryDefaults: queryDefaults, defaultValue: false);

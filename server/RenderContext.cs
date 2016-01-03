@@ -914,6 +914,20 @@ namespace Maps.Rendering
                         graphics.DrawEllipse(solidBrush, -r, -r, r * 2, r * 2);
                     }
                     #endregion
+
+                    #region Importance Overlay
+                    if (styles.showImportanceOverlay)
+                    {
+                        int im = SecondSurvey.Importance(world);
+                        if (im > 0)
+                        {
+                            // TODO: Don't hardcode the color
+                            solidBrush.Color = XColor.FromArgb(0x8080ff00);
+                            float r = im * 0.33f;
+                            graphics.DrawEllipse(solidBrush, -r, -r, r * 2, r * 2);
+                        }
+                    }
+                    #endregion
                 }
 
                 if (!styles.useWorldImages)

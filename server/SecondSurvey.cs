@@ -516,5 +516,41 @@ namespace Maps
         }
         public static IEnumerable<string> SophontCodes { get { return s_sophontCodes.Keys; } }
         #endregion // Sophonts
+
+        #region World Details
+        public static int Importance(World world)
+        {
+            if (world.ImportanceValue.HasValue)
+                return world.ImportanceValue.Value;
+
+            int i = 0;
+            if (world.Starport == 'A' || world.Starport == 'B')
+                i += 1;
+            if (world.Starport >= 'D')
+                i -= 1;
+            if (world.TechLevel >= 16)
+                i += 1;
+            if (world.TechLevel >= 10)
+                i += 1;
+            if (world.TechLevel <= 8)
+                i -= 1;
+            if (world.IsAg)
+                i += 1;
+            if (world.IsHi)
+                i += 1;
+            if (world.IsIn)
+                i += 1;
+            if (world.IsRi)
+                i += 1;
+            if (world.PopulationExponent <= 6)
+                i -= 1;
+            if ((world.Bases.Contains('N') || world.Bases.Contains('K')) &&
+                (world.Bases.Contains('S') || world.Bases.Contains('V')))
+                i += 1;
+            if (world.Bases.Contains('W'))
+                i += 1;
+            return i;
+        }
+        #endregion
     }
 }
