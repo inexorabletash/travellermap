@@ -905,7 +905,7 @@ namespace Maps.Rendering
 
                 if (layer == WorldLayer.Overlay)
                 {
-                    #region Population Underlay 
+                    #region Population Overlay 
                     if (styles.showPopulationOverlay && world.Population > 0)
                     {
                         // TODO: Don't hardcode the color
@@ -922,8 +922,8 @@ namespace Maps.Rendering
                         if (im > 0)
                         {
                             // TODO: Don't hardcode the color
-                            solidBrush.Color = XColor.FromArgb(0x8080ff00);
-                            float r = im * 0.33f;
+                            solidBrush.Color = XColor.FromArgb(0x2080ff00);
+                            float r = (im - 0.5f) * Astrometrics.ParsecScaleX;
                             graphics.DrawEllipse(solidBrush, -r, -r, r * 2, r * 2);
                         }
                     }
