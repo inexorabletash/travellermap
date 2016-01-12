@@ -409,6 +409,7 @@
 
     var UNICODE_MINUS = '\u2212'; // U+2212 MINUS SIGN
 
+    if (!world.Ix) delete world.Ix;
     if (world.Ix) {
       var ix = (world.Ix || '').replace(/^{\s*|\s*}$/g, '');
       ix = ix.replace('-', UNICODE_MINUS);
@@ -417,6 +418,7 @@
       };
     }
 
+    if (!world.Ex) delete world.Ex;
     if (world.Ex) {
       var ex = world.Ex.replace(/^\(\s*|\s*\)$/g, '');
       ex = ex.replace('-', UNICODE_MINUS);
@@ -432,6 +434,7 @@
       world.Ex.EffBlurb = world.Ex.Eff;
     }
 
+    if (!world.Cx) delete world.Cx;
     if (world.Cx) {
       var cx = world.Cx.replace(/^\[\s*|\s*\]$/g, '');
       world.Cx = {
