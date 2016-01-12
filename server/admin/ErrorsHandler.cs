@@ -42,7 +42,9 @@ namespace Maps.Admin
 
                 if (worlds != null)
                 {
-                    context.Response.Output.WriteLine("{0} world(s)", worlds.Count());
+                    context.Response.Output.WriteLine("{0} world(s) - population: {1:#,###.##} billion", 
+                        worlds.Count(),
+                        worlds.Select(w => w.Population).Sum() / 1e9);
                     worlds.ErrorList.Report(context.Response.Output);
                 }
                 else
