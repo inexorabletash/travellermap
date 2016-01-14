@@ -44,7 +44,8 @@ namespace Maps
                     return null;
                 // For OTU sectors, synthesize an abbreviation if not specified.
                 string name = Names[0].Text;
-                name = Regex.Replace(name, @"[^A-Z]", "", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
+                name = name.Replace(" ", "");
+                name = Regex.Replace(name, @"[^A-Z]", "x", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
                 if (name.Length == 0)
                     return null;
                 name = name.SafeSubstring(0, 4);

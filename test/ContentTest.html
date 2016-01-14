@@ -148,4 +148,13 @@ check('application/json',
       'refs/jumpworlds_legend_0602.json',
       SERVICE_BASE + '/api/jumpworlds?sector=legend&hex=0602&jump=1');
 
+// Universe API
+
+check('text/xml',
+      'refs/universe_meta.xml',
+      SERVICE_BASE + '/api/universe?tag=meta');
+check('application/json',
+      'refs/universe_meta.json',
+      SERVICE_BASE + '/api/universe?tag=meta');
+
 </script>

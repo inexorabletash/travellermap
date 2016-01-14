@@ -77,17 +77,17 @@ namespace Maps.API.Results
             public SectorResult(Sector sector) { this.sector = sector; }
             private Sector sector;
 
-            public int X { get { return sector.X; } }
-            public int Y { get { return sector.Y; } }
+            public int X { get { return sector.X; } set { } }
+            public int Y { get { return sector.Y; } set { } }
 
             [XmlAttribute]
-            public string Abbreviation { get { return sector.Abbreviation; } }
+            public string Abbreviation { get { return sector.Abbreviation; } set { } }
 
             [XmlAttribute]
-            public string Tags { get { return sector.TagString; } }
+            public string Tags { get { return sector.TagString; } set { } }
 
             [XmlElement("Name")]
-            public List<Name> Names { get { return sector.Names; } }
+            public List<Name> Names { get { return sector.Names; } set { } }
         }
     }
 }
