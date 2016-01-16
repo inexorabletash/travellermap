@@ -290,7 +290,8 @@
     St: 'Steppeworld',
     Ex: 'Exile Camp',
     //Pr: 'Prison World', // Conflicts with T5: Pre-Rich.
-    Xb: 'Xboat Station'
+    Xb: 'Xboat Station',
+    Cr: 'Reserve Capital'
   };
 
   var REMARKS_PATTERNS = [
