@@ -898,9 +898,9 @@ window.addEventListener('DOMContentLoaded', function() {
   //
   //////////////////////////////////////////////////////////////////////
 
-  function showWorldPopup(url) {
+  function showWorldPopup(target) {
     if (isSmallScreen) return true;
-    $('#popup-iframe').src = url;
+    $('#popup-iframe').src = target.href + '&nopage&nohood';
     $('#popup-iframe').onload = function() {
       $('#popup-overlay').classList.add('visible');
       $('#popup-click').focus();
