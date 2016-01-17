@@ -201,7 +201,9 @@
     <Content Include="res\markers\README.txt" />
     <Content Include="res\markers\scout.png" />
     <Content Include="res\markers\submerchant.png" />
-    <Content Include="res\Sectors\Aldebaran.xml" />
+    <Content Include="res\Sectors\Aldebaran.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="res\Sectors\Alpha Crucis.xml" />
     <Content Include="res\Sectors\Amderstun.xml" />
     <Content Include="res\Sectors\Amdukan.xml" />
@@ -271,6 +273,9 @@
     <Content Include="res\Sectors\Mendan.xml" />
     <Content Include="res\Sectors\Meshan.xml" />
     <Content Include="res\Sectors\Nadir.txt" />
+    <Content Include="res\Sectors\Neworld.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="res\Sectors\Nooq.xml" />
     <Content Include="res\Sectors\Old Expanses.xml">
       <SubType>Designer</SubType>
@@ -591,6 +596,7 @@
     <Content Include="res\Sectors\Nooq.sec" />
     <Content Include="res\Sectors\Mendan.tab" />
     <Content Include="res\Sectors\Meshan.tab" />
+    <Content Include="res\Sectors\Neworld.tab" />
     <None Include="res\Sectors\Old Expanses.tab" />
     <None Include="res\Sectors\Pliabriebl.sec" />
     <Content Include="res\Sectors\Porlock.sec" />
@@ -688,7 +694,6 @@
     <None Include="res\Sectors\Lorspane.sec" />
     <None Include="res\Sectors\malorn.sec" />
     <None Include="res\Sectors\muarne.sec" />
-    <None Include="res\Sectors\neworld.sec" />
     <None Include="res\Sectors\Ngathksirz.sec" />
     <None Include="res\Sectors\OeghzVaerrghr.sec" />
     <None Include="res\Sectors\Ogadogorz.sec" />
