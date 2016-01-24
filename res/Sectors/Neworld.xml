@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 <Sector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Name>Neworld</Name>
-  <DataFile Author="Randy Dorman" Type="TabDelimited">Neworld.tab</DataFile>
   <Subsectors>
     <Subsector Index="A">Splendour</Subsector>
     <Subsector Index="B">Kostov</Subsector>
@@ -21,10 +20,10 @@
     <Subsector Index="P">Deinbach</Subsector>
   </Subsectors>
   <Allegiances>
-    <Allegiance Code="Wd">Winston Democracy</Allegiance>
-    <Allegiance Code="Kv">Solomani Confederation, Kostov Confederate Republic</Allegiance>
-    <Allegiance Code="Dn">Demos of Nobles</Allegiance>
     <Allegiance Code="Dg">Dienabach Grüpen</Allegiance>
+    <Allegiance Code="Dn">Demos of Nobles</Allegiance>
+    <Allegiance Code="Kv">Solomani Confederation, Kostov Confederate Republic</Allegiance>
+    <Allegiance Code="Wd">Winston Democracy</Allegiance>
   </Allegiances>
   <Borders>
     <Border WrapLabel="true" Color="Cyan" Allegiance="Dg" LabelPosition="3031">2730 2830 2930 3029 3030 3031 3032 3033 3134 3033 2933 2832 2831 2830 2730</Border>
