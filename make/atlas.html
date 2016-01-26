@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html mozNoMarginBoxes>
+<title>Atlas - Traveller Map</title>
+<meta charset="utf-8">
+<link rel="shortcut icon" href="../favicon.ico">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.2/handlebars.min.js"></script>
+<script src="../lib/polyfill/polyfill.min.js?update=2015-10-28"></script>
+<script src="../map.js?update=2015-10-26"></script>
+<script src="atlas.js?update=2015-10-28"></script>
+<style>
+@import url(https://fonts.googleapis.com/css?family=Marcellus);
+
+/* Booklet ============================== */
+
+@media print {
+  @page {
+    size: portrait;
+    margin: 0;
+  }
+
+  body {
+    position: absolute; /* Hack for extra margin when printing */
+  }
+}
+
+html, body {
+  margin: 0;
+}
+
+body {
+  color: black;
+}
+body, table, select {
+  font-size: 10pt;
+  font-family: Univers, Arial, sans-serif;
+}
+
+a { text-decoration: underline; }
+p { text-indent: 0.1in; }
+
+.page {
+  page-break-inside: avoid;
+  page-break-after: always;
+  clear: both;
+  width: 8.5in;
+  height: 11in;
+  padding: 0; margin: 0; border: 0; overflow: hidden;
+  position: relative;
+}
+
+@media only screen {
+  body {
+    text-align: center;
+    background-color: gray;
+    width: 100%;
+  }
+  .page {
+    text-align: left;
+    margin: 0.25in auto;
+    box-shadow: 0 0 30px 5px #202020;
+    background-color: white;
+    color: black;
+  }
+}
+
+body { counter-reset: page 1; }
+
+.pagenum:before {
+  position: absolute;
+  bottom: 0.2in;
+  left: 0.5in; right: 0.5in; text-align: center;
+
+  counter-increment: page;
+  content: "\2014 " counter(page) " \2014";
+}
+
+/* Title Page ============================== */
+
+.title {
+  position: absolute;
+  left: 0.5in;
+  right: 0.5in;
+  top: 6in;
+}
+
+.title_title {
+  font-style: italic;
+  font-size: 32pt;
+  font-family: Optima, Marcellus, serif;
+  font-weight: normal;
+
+  padding-bottom: 4pt;
+  border-bottom: 6pt solid black;
+  margin-bottom: -4pt;
+}
+
+.title_logo {
+  text-align: left;
+  float: right;
+}
+.title_trav {
+  font-style: italic;
+  font-size: 52pt;
+  font-family: Optima, Marcellus, serif;
+  font-weight: bold;
+  margin-top: -4pt;
+  margin-bottom: -10pt;
+  letter-spacing: -1pt;
+}
+.title_reg {
+  font-size: 25%;
+  font-style: normal;
+}
+.title_adventure {
+  font-style: italic;
+  font-size: 22pt;
+  font-family: Optima, Marcellus, serif;
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+  padding-left: 6pt;
+}
+
+.title_publisher {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  right: 0.5in;
+  bottom: 0.5in;
+
+  font-style: normal;
+  font-size: 24pt;
+  font-family: Optima, Marcellus, serif;
+  font-weight: bold;
+}
+
+/* Credits ============================== */
+
+.credits {
+  margin: 0.5in;
+  padding-top: 4in;
+}
+
+.credits h1 {
+  font-style: italic;
+  font-size: 18pt;
+  font-family: Optima, Marcellus, serif;
+  font-weight: normal;
+  margin-bottom: 0;
+}
+
+.credits p {
+  text-align: justify;
+}
+
+/* Sector Map ============================== */
+
+.sector-map {
+  margin: 0.5in;
+}
+
+.sector-image {
+  display: block;
+  border: solid 2pt black;
+  position: absolute;
+  top: 0.5in;
+  left: 0.65in;
+  height: 10in;
+}
+
+.sector-map h1 {
+  position: absolute;
+  transform-origin: left top;
+  transform: rotate(90deg);
+  width: 10.5in;
+  left: 8.25in; top: 0.5in;
+
+  font-style: normal;
+  font-size: 36pt;
+  font-family: Optima, Marcellus, serif;
+  font-weight: bold;
+  font-style: italic;
+  margin: 0;
+}
+
+/* Sector Data ============================== */
+
+.sector_data { margin: 0.5in; }
+
+.sector_data h2 { margin-top: 0; }
+
+.column { float: left; }
+.column:nth-last-child(2) { padding-right: 4pt; border-right: 1pt solid black; margin-right: 4pt; }
+
+table.uwp-data {
+  border-collapse: collapse;
+  overflow: visible;
+}
+.uwp-data th {
+  text-align: left;
+  font-weight: bold;
+}
+.uwp-data th,
+.uwp-data td {
+  vertical-align: top;
+  padding: 0 1px;
+
+  max-width: 75px;
+  /*
+     Leads to vertical truncation in Chrome ~48
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  */
+
+  font-family: "Helvetica Narrow", "Arial Narrow", Tahoma, sans-serif;
+  font-size: 5pt;
+  white-space: nowrap;
+}
+
+.uwp-data .hipop { text-transform: uppercase; }
+
+
+</style>
+
+<body>
+<img style="position: absolute; margin: auto; left: 0; right: 0; bottom: 0; top: 0;" src="spin.gif">
+</body>
+
+  <!-- Document Template -->
+  <script id="template" type="text/x-handlebars-template">
+
+    <!-- Cover Page -->
+    <div id="cover_page" class="page">
+
+      <div class="title">
+        <div class="title_title">The Atlas of the Imperium<br>Second Survey</div>
+        <div class="title_logo">
+          <div class="title_trav">TRAVELLER<span class="title_reg">&reg;</span></div>
+          <div class="title_adventure">Science-Fiction Adventure<br>in the Far Future</div>
+        </div>
+      </div>
+      <div class="title_publisher">Far Future Enterprises</div>
+    </div>
+
+    <!-- Title Page -->
+    <div id="title_page" class="page">
+
+      <div class="credits">
+
+        <h1>Atlas of the Imperium: Second Survey</h1>
+
+        <p>
+          The <b><i>TRAVELLER</i></b> game in all forms is owned
+          by Far Future Enterprises. Copyright &copy; 1977 &ndash; 2016
+          Far Future Enterprises. <b><i>TRAVELLER</i></b> is a
+          registered trademark of Far Future Enterprises. Far
+          Future permits web sites and fanzines for this game,
+          provided it contains this notice, that Far Future is
+          notified, and subject to a withdrawal of permission on
+          90 days notice. The contents of this site are for
+          personal, non-commercial use only. Any use of Far Future
+          Enterprises's copyrighted material or trademarks
+          anywhere on this web site and its files should not be
+          viewed as a challenge to those copyrights or
+          trademarks. In addition, any program/articles/file on
+          this site cannot be republished or distributed without
+          the consent of the author who contributed it.
+        </p>
+
+        <p>
+          Full credits for the <cite>Second Survey</cite> data
+          can be found online at: <a>http://travellermap.com/doc/credits</a>
+        </p>
+
+        <p>
+          An explanation of the <cite>Second Survey</cite> data
+          format can be found online at: <a>http://travellermap.com/doc/secondsurvey</a>
+        </p>
+
+        <p>
+          <b>Dates:</b> The assumed date of publication of the <cite>Second Survey</cite>
+          data is 1105: the 1105th year since the founding of the Imperium.
+          Information is current as of that date.
+        </p>
+
+        <p>Generated by <a>http://travellermap.com</a> - {{date}}</p>
+
+        <p style="margin-top: 0.5in;">
+          Dedicated to the memory of Donald McKinney.
+        </p>
+
+
+      </div>
+    </div>
+
+    <!-- http://travellermap.com/api/poster?scale=4&style=print&domain=imperium&options=59 -->
+
+    {{#sectors}}
+
+    <!-- Sector Map -->
+    <div class="page">
+      <div class="sector-map">
+        <h1>{{name}}</h1>
+        <img src="{{img_src}}" alt="" class="sector-image">
+      </div>
+      <div class=pagenum></div>
+    </div>
+
+    {{#pages}}
+    <!-- Data Page -->
+    <div class="page">
+      <div class="sector_data">
+        <h2>{{../name}} - Sector Data (page {{index}} of {{../page_count}})</h2>
+        {{#columns}}
+        <div class="column">
+          <table class="uwp-data">
+            <tr>
+              <th>Hex</th>
+              <th>Name</th>
+              <th>UWP</th>
+              <th>Remarks</th>
+              <th>{Ix}</th>
+              <th>(Ex)</th>
+              <th>[Cx]</th>
+              <th>N</th>
+              <th>B</th>
+              <th>Z</th>
+              <th>PBG</th>
+              <th>W</th>
+              <th>A</th>
+              <th>Stellar</th>
+            </tr>
+            {{#worlds}}
+            <tr>
+              <td>{{hex}}</td>
+              <td {{#hipop}}class=hipop{{/hipop}}>{{name}}</td>
+              <td>{{uwp}}</td>
+              <td>{{remarks}}</td>
+              <td>{{ix}}</td>
+              <td>{{ex}}</td>
+              <td>{{cx}}</td>
+              <td>{{nobility}}</td>
+              <td>{{bases}}</td>
+              <td>{{zone}}</td>
+              <td>{{pbg}}</td>
+              <td>{{w}}</td>
+              <td>{{allegiance}}</td>
+              <td>{{stars}}</td>
+            </tr>
+            {{/worlds}}
+          </table>
+        </div>
+      {{/columns}}
+      </div>
+      <div class=pagenum></div>
+    </div>
+    {{/pages}}
+
+    {{/sectors}}
+
+  </script>
+</html>
