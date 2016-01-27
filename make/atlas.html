@@ -8,7 +8,7 @@
 <script src="../map.js?update=2015-10-26"></script>
 <script src="atlas.js?update=2015-10-28"></script>
 <style>
-@import url(https://fonts.googleapis.com/css?family=Marcellus);
+@import url(https://fonts.googleapis.com/css?family=Marcellus|Roboto+Condensed);
 
 /* Booklet ============================== */
 
@@ -71,8 +71,10 @@ body { counter-reset: page 1; }
   left: 0.5in; right: 0.5in; text-align: center;
 
   counter-increment: page;
-  content: "\2014 " counter(page) " \2014";
+  content: "\2014\00A0" counter(page) "\00A0\2014";
 }
+
+td { vertical-align: top; }
 
 /* Title Page ============================== */
 
@@ -153,6 +155,21 @@ body { counter-reset: page 1; }
   text-align: justify;
 }
 
+/* Charted Space  ============================== */
+
+.charted-space {
+  margin: 0.5in;
+}
+
+.charted-space-image {
+  display: block;
+  border: solid 2pt black;
+  position: absolute;
+  top: 0.5in;
+  left: 0.65in;
+  height: 10in;
+}
+
 /* Sector Map ============================== */
 
 .sector-map {
@@ -189,8 +206,9 @@ body { counter-reset: page 1; }
 
 .sector_data h2 { margin-top: 0; }
 
-.column { float: left; }
-.column:nth-last-child(2) { padding-right: 4pt; border-right: 1pt solid black; margin-right: 4pt; }
+.column { }
+.column:nth-last-child(2) { padding-right: 4pt; border-right: 1pt solid black; }
+.column:nth-child(2) { padding-left: 4pt; }
 
 table.uwp-data {
   border-collapse: collapse;
@@ -202,18 +220,19 @@ table.uwp-data {
 }
 .uwp-data th,
 .uwp-data td {
-  vertical-align: top;
   padding: 0 1px;
 
   max-width: 75px;
+
   /*
-     Leads to vertical truncation in Chrome ~48
+  Leads to vertical truncation in Chrome ~48
   overflow-x: hidden;
   text-overflow: ellipsis;
   */
 
-  font-family: "Helvetica Narrow", "Arial Narrow", Tahoma, sans-serif;
-  font-size: 5pt;
+  font-family: "Arial Narrow", "Roboto Condensed", Tahoma, sans-serif;
+  font-size: 5.5pt;
+  line-height: 100%;
   white-space: nowrap;
 }
 
@@ -293,7 +312,13 @@ table.uwp-data {
       </div>
     </div>
 
-    <!-- http://travellermap.com/api/poster?scale=4&style=print&domain=imperium&options=59 -->
+    <!-- Charted Space -->
+    <div class="page">
+      <div class="charted-space">
+        <img src="{{charted_space_src}}" alt="" class="charted-space-image">
+      </div>
+      <div class=pagenum></div>
+    </div>
 
     {{#sectors}}
 
@@ -311,48 +336,52 @@ table.uwp-data {
     <div class="page">
       <div class="sector_data">
         <h2>{{../name}} - Sector Data (page {{index}} of {{../page_count}})</h2>
-        {{#columns}}
-        <div class="column">
-          <table class="uwp-data">
-            <tr>
-              <th>Hex</th>
-              <th>Name</th>
-              <th>UWP</th>
-              <th>Remarks</th>
-              <th>{Ix}</th>
-              <th>(Ex)</th>
-              <th>[Cx]</th>
-              <th>N</th>
-              <th>B</th>
-              <th>Z</th>
-              <th>PBG</th>
-              <th>W</th>
-              <th>A</th>
-              <th>Stellar</th>
-            </tr>
-            {{#worlds}}
-            <tr>
-              <td>{{hex}}</td>
-              <td {{#hipop}}class=hipop{{/hipop}}>{{name}}</td>
-              <td>{{uwp}}</td>
-              <td>{{remarks}}</td>
-              <td>{{ix}}</td>
-              <td>{{ex}}</td>
-              <td>{{cx}}</td>
-              <td>{{nobility}}</td>
-              <td>{{bases}}</td>
-              <td>{{zone}}</td>
-              <td>{{pbg}}</td>
-              <td>{{w}}</td>
-              <td>{{allegiance}}</td>
-              <td>{{stars}}</td>
-            </tr>
-            {{/worlds}}
-          </table>
-        </div>
-      {{/columns}}
+        <table>
+          <tr>
+            {{#columns}}
+            <td class="column">
+              <table class="uwp-data">
+                <tr>
+                  <th>Hex</th>
+                  <th>Name</th>
+                  <th>UWP</th>
+                  <th>Remarks</th>
+                  <th>{Ix}</th>
+                  <th>(Ex)</th>
+                  <th>[Cx]</th>
+                  <th>N</th>
+                  <th>B</th>
+                  <th>Z</th>
+                  <th>PBG</th>
+                  <th>W</th>
+                  <th>A</th>
+                  <th>Stellar</th>
+                </tr>
+                {{#worlds}}
+                <tr>
+                  <td>{{hex}}</td>
+                  <td {{#hipop}}class=hipop{{/hipop}}>{{name}}</td>
+                  <td>{{uwp}}</td>
+                  <td>{{remarks}}</td>
+                  <td>{{ix}}</td>
+                  <td>{{ex}}</td>
+                  <td>{{cx}}</td>
+                  <td>{{nobility}}</td>
+                  <td>{{bases}}</td>
+                  <td>{{zone}}</td>
+                  <td>{{pbg}}</td>
+                  <td>{{w}}</td>
+                  <td>{{allegiance}}</td>
+                  <td>{{stars}}</td>
+                </tr>
+                {{/worlds}}
+              </table>
+            </td>
+            {{/columns}}
+          </tr>
+        </table>
+        <div class=pagenum></div>
       </div>
-      <div class=pagenum></div>
     </div>
     {{/pages}}
 

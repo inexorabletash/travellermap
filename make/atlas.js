@@ -68,11 +68,13 @@
 
   window.addEventListener('DOMContentLoaded', function() {
     var sectors = [
-      'spin', 'dene', 'corr', 'vlan', 'lish', 'anta', 'empt',
-      'troj', 'reft', 'gush', 'dagu', 'core', 'forn', 'ley',
-      /*   */ 'verg', 'ilel', 'zaru', 'mass', 'delp', 'glim',
-      /*           */ 'reav', 'daib', 'dias', 'olde', 'hint',
-      /*           */ 'magy', 'solo', 'alph'
+      /*   */ 'ziaf', 'gvur', 'tugl', 'prov', 'wind', 'mesh', 'mend', 'amdu',
+//      'farf', 'fore', 'spin', 'dene', 'corr', 'vlan', 'lish', 'anta', 'empt',
+//      'vang', 'beyo', 'troj', 'reft', 'gush', 'dagu', 'core', 'forn', 'ley',  'gate',
+//      'thet', /*   */ 'rift', 'verg', 'ilel', 'zaru', 'mass', 'delp', 'glim', 'cruc',
+//      /*           */ 'hlak', 'eali', 'reav', 'daib', 'dias', 'olde', 'hint',
+//      /*           */ 'stai', 'iwah', 'dark', 'magy', 'solo', 'alph', 'spic',
+//      /*           */ 'akti', 'uist', 'ustr'
     ];
     Promise.all(sectors.map(function(name) {
       return Promise.all([
@@ -86,22 +88,26 @@
   function render(sectors) {
     var data = {};
 
+    data.charted_space_src = Traveller.MapService.makeURL(
+      '/api/poster', { x1: -256, x2: 255, y1: -159, y2: 160,
+                       options: 41975, scale: 8, style: 'print',
+                       dimunofficial: 1, rotation: 3 });
+
     data.sectors = sectors.map(function(tuple) {
       var name = tuple[0], data = tuple[1], metadata = tuple[2];
       var sector = parseSector(data, metadata);
 
       sector.img_src = Traveller.MapService.makeURL(
-        '/api/poster', {sector: name, style: 'print'});
+        '/api/poster', {sector: name, style: 'print', dpr: 1});
 
       return sector;
     });
 
-    data.date = (new Date).toISOString();
+    data.date = (new Date).toLocaleDateString(
+      'en-US', {year: 'numeric', month:'long', day: 'numeric'});
 
     var template = Handlebars.compile($('#template').innerHTML);
-
     document.body.innerHTML = template(data);
-    window.data = data;
   };
 
 }(self));
