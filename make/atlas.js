@@ -69,12 +69,12 @@
   window.addEventListener('DOMContentLoaded', function() {
     var sectors = [
       /*   */ 'ziaf', 'gvur', 'tugl', 'prov', 'wind', 'mesh', 'mend', 'amdu',
-//      'farf', 'fore', 'spin', 'dene', 'corr', 'vlan', 'lish', 'anta', 'empt',
-//      'vang', 'beyo', 'troj', 'reft', 'gush', 'dagu', 'core', 'forn', 'ley',  'gate',
-//      'thet', /*   */ 'rift', 'verg', 'ilel', 'zaru', 'mass', 'delp', 'glim', 'cruc',
-//      /*           */ 'hlak', 'eali', 'reav', 'daib', 'dias', 'olde', 'hint',
-//      /*           */ 'stai', 'iwah', 'dark', 'magy', 'solo', 'alph', 'spic',
-//      /*           */ 'akti', 'uist', 'ustr'
+      'farf', 'fore', 'spin', 'dene', 'corr', 'vlan', 'lish', 'anta', 'empt',
+      'vang', 'beyo', 'troj', 'reft', 'gush', 'dagu', 'core', 'forn', 'ley',  'gate',
+      'thet', /*   */ 'rift', 'verg', 'ilel', 'zaru', 'mass', 'delp', 'glim', 'cruc',
+      /*           */ 'hlak', 'eali', 'reav', 'daib', 'dias', 'olde', 'hint',
+      /*           */ 'stai', 'iwah', 'dark', 'magy', 'solo', 'alph', 'spic',
+      /*           */ 'akti', 'uist', 'ustr'
     ];
     Promise.all(sectors.map(function(name) {
       return Promise.all([
@@ -98,7 +98,7 @@
       var sector = parseSector(data, metadata);
 
       sector.img_src = Traveller.MapService.makeURL(
-        '/api/poster', {sector: name, style: 'print', dpr: 1});
+        '/api/poster', {sector: name, style: 'print', dpr: 2});
 
       return sector;
     });
@@ -108,6 +108,13 @@
 
     var template = Handlebars.compile($('#template').innerHTML);
     document.body.innerHTML = template(data);
+
+    // Retry failed images, if server was overwhelmed.
+    Array.from(document.querySelectorAll('img')).forEach(function(img) {
+      img.addEventListener('error', function() {
+        setTimeout(function() { img.src = img.src + '&dummy'; }, 1000);
+      });
+    });
   };
 
 }(self));
