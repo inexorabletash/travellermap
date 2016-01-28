@@ -77,6 +77,7 @@
       /*           */ 'stai', 'iwah', 'dark', 'magy', 'solo', 'alph', 'spic',
       /*           */ 'akti', 'uist', 'ustr'
     ];
+    //sectors=['spin'];
     Promise.all(sectors.map(function(name) {
       return Promise.all([
         name,
@@ -111,11 +112,11 @@
     document.body.innerHTML = template(data);
 
     // Retry failed images, if server was overwhelmed.
-//    $$('img').forEach(function(img) {
-//      img.addEventListener('error', function() {
-//        setTimeout(function() { img.src = img.src + '&dummy'; }, 1000);
-//      });
-//    });
+    $$('img').forEach(function(img) {
+      img.addEventListener('error', function() {
+        setTimeout(function() { img.src = img.src + '&dummy'; }, 5000 * Math.random());
+      });
+    });
   };
 
 }(self));
