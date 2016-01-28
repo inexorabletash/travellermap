@@ -106,10 +106,13 @@ namespace Maps.API
                     }
                 }
 
-                using (var bitmap = TryConstructBitmap((int)Math.Floor(tileSize.Width * devicePixelRatio), (int)Math.Floor(tileSize.Height * devicePixelRatio), PixelFormat.Format32bppArgb))
+                int width = (int)Math.Floor(tileSize.Width * devicePixelRatio);
+                int height = (int)Math.Floor(tileSize.Height * devicePixelRatio);
+                using (var bitmap = TryConstructBitmap(width, height, PixelFormat.Format32bppArgb))
                 {
                     if (bitmap == null)
-                        throw new HttpException(500, "Internal Server Error");
+                        throw new HttpError(500, "Internal Server Error", 
+                            String.Format("Failed to allocate bitmap ({0}x{1}). Insufficient memory?", width, height));
 
                     if (transparent)
                         bitmap.MakeTransparent();
@@ -280,10 +283,11 @@ namespace Maps.API
                         bitmap.Save(outputStream, ImageFormat.Gif);
                     }
                 }
-                catch (System.Runtime.InteropServices.ExternalException ex)
+                catch (System.Runtime.InteropServices.ExternalException)
                 {
                     // Saving seems to throw "A generic error occurred in GDI+." on low memory.
-                    throw new HttpException(500, "Internal Server Error", ex);
+                    throw new HttpError(500, "Internal Server Error",
+                        String.Format("Unknown GDI error encoding bitmap ({0}x{1}). Insufficient memory?", bitmap.Width, bitmap.Height));
                 }
             }
 
