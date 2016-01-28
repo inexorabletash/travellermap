@@ -2,6 +2,7 @@
   'use strict';
 
   var $ = function(s) { return document.querySelector(s); };
+  var $$ = function(s) { return Array.from(document.querySelectorAll(s)); };
 
   function capitalize(s) {
     return s.substring(0, 1).toUpperCase() + s.substring(1);
@@ -110,11 +111,11 @@
     document.body.innerHTML = template(data);
 
     // Retry failed images, if server was overwhelmed.
-    Array.from(document.querySelectorAll('img')).forEach(function(img) {
-      img.addEventListener('error', function() {
-        setTimeout(function() { img.src = img.src + '&dummy'; }, 1000);
-      });
-    });
+//    $$('img').forEach(function(img) {
+//      img.addEventListener('error', function() {
+//        setTimeout(function() { img.src = img.src + '&dummy'; }, 1000);
+//      });
+//    });
   };
 
 }(self));
