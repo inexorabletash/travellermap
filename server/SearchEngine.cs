@@ -38,7 +38,7 @@ namespace Maps
 
         public delegate void StatusCallback(string status);
 
-        private static object s_lock = new object();
+        private static readonly object s_lock = new object();
 
         private static string SanifyLabel(string s)
         {

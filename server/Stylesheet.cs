@@ -91,7 +91,7 @@ namespace Maps.Rendering
             this.style = style;
         }
 
-        private static XPdfFontOptions s_fontOptions = new XPdfFontOptions(PdfSharp.Pdf.PdfFontEncoding.Unicode, PdfSharp.Pdf.PdfFontEmbedding.Always);
+        private static readonly XPdfFontOptions s_fontOptions = new XPdfFontOptions(PdfSharp.Pdf.PdfFontEncoding.Unicode, PdfSharp.Pdf.PdfFontEmbedding.Always);
         public XFont makeFont()
         {
             if (family != null)

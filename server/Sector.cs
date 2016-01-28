@@ -428,7 +428,7 @@ namespace Maps
                 new Hex((byte)(Astrometrics.SubsectorWidth * (2 * ssx + 1) / 2), (byte)(Astrometrics.SubsectorHeight * (2 * ssy + 1) / 2)));
         }
 
-        private static SectorStylesheet s_defaultStyleSheet =
+        private static readonly SectorStylesheet s_defaultStyleSheet =
             s_defaultStyleSheet = SectorStylesheet.Parse(new StreamReader(
                 Assembly.GetExecutingAssembly().GetManifestResourceStream(@"Maps.res.styles.otu.css")));
 

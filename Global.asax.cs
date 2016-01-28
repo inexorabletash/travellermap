@@ -39,7 +39,7 @@ namespace Maps
             }
         }
 
-        private static HashSet<string> s_extensionless = new HashSet<string> {
+        private static readonly HashSet<string> s_extensionless = new HashSet<string> {
             "/world",
             "/doc/about",
             "/doc/api",

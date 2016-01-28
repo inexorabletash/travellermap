@@ -35,9 +35,9 @@ namespace Maps.Serialization
             }
         }
 
-        private static Regex comment = new Regex(@"^[#$@]", RegexOptions.Compiled | RegexOptions.CultureInvariant);
-        private static Regex sniff_tab = new Regex(@"^[^\t]*(\t[^\t]*){9,}$", RegexOptions.Compiled | RegexOptions.CultureInvariant);
-        private static Regex sniff_ss = new Regex(@"\{.*\} +\(.*\) +\[.*\]", RegexOptions.Compiled | RegexOptions.CultureInvariant);
+        private static readonly Regex comment = new Regex(@"^[#$@]", RegexOptions.Compiled | RegexOptions.CultureInvariant);
+        private static readonly Regex sniff_tab = new Regex(@"^[^\t]*(\t[^\t]*){9,}$", RegexOptions.Compiled | RegexOptions.CultureInvariant);
+        private static readonly Regex sniff_ss = new Regex(@"\{.*\} +\(.*\) +\[.*\]", RegexOptions.Compiled | RegexOptions.CultureInvariant);
 
         public static string SniffType(Stream stream)
         {

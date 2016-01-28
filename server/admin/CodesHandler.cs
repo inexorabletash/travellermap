@@ -12,7 +12,7 @@ namespace Maps.Admin
     internal class CodesHandler : AdminHandler
     {
 
-        static List<string> s_legacySophontCodes = new List<string>
+        static readonly IReadOnlyList<string> s_legacySophontCodes = new List<string>
         {
             "A", // Aslan
             "C", // Chirper
@@ -26,7 +26,7 @@ namespace Maps.Admin
             "Z", // Zhodani
         };
 
-        static RegexDictionary<string> s_knownCodes = new RegexDictionary<string>
+        static readonly RegexDictionary<string> s_knownCodes = new RegexDictionary<string>
         {
             // General
             { @"^Rs[ABGDEZHT]$", "Rs" },

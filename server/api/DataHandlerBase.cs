@@ -298,7 +298,7 @@ namespace Maps.API
                 ParseOptions(context.Request, Defaults(context), ref options, ref style);
             }
 
-            private static Dictionary<string, Stylesheet.Style> s_nameToStyle = new Dictionary<string, Stylesheet.Style>() {
+            private static readonly IReadOnlyDictionary<string, Stylesheet.Style> s_nameToStyle = new Dictionary<string, Stylesheet.Style>() {
             { "poster",Stylesheet.Style.Poster },
             { "atlas" ,Stylesheet.Style.Atlas },
             { "print" , Stylesheet.Style.Print },

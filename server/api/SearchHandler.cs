@@ -22,7 +22,7 @@ namespace Maps.API
             public Responder(HttpContext context) : base(context) { }
             public override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Xml; } }
 
-            private static Dictionary<string, string> SpecialSearches = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase) {
+            private static readonly IReadOnlyDictionary<string, string> SpecialSearches = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase) {
             { @"(default)", @"~/res/search/Default.json"},
             { @"(grand tour)", @"~/res/search/GrandTour.json"},
             { @"(arrival vengeance)", @"~/res/search/ArrivalVengeance.json"},
@@ -30,7 +30,7 @@ namespace Maps.API
             { @"(cirque)", @"~/res/search/Cirque.json"}
         };
 
-            private static Regex UWP_REGEXP = new Regex(@"^\w{7}-\w$");
+            private static readonly Regex UWP_REGEXP = new Regex(@"^\w{7}-\w$");
 
             public override void Process()
             {

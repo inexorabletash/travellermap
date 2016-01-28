@@ -61,7 +61,7 @@ namespace Maps
         // V     Any        Exploration base
         // W     Any        Way station
 
-        private static RegexDictionary<string> s_legacyBaseDecodeTable = new GlobDictionary<string> {
+        private static readonly RegexDictionary<string> s_legacyBaseDecodeTable = new GlobDictionary<string> {
             { "*.2", "NS" },  // Imperial Naval base + Scout base
             { "*.A", "NS" },  // Imperial Naval base + Scout base
             { "*.B", "NW" },  // Imperial Naval base + Scout Way station
@@ -128,7 +128,7 @@ namespace Maps
             { "*.W", "W" },   // Imperial Scout Way Station
             { "Zh.KM", "Z" }, // Zhodani Naval/Military Base
         };
-
+        
         public static string EncodeLegacyBases(string allegiance, string bases)
         {
             allegiance = AllegianceCodeToBaseAllegianceCode(allegiance);
@@ -153,7 +153,7 @@ namespace Maps
         }
 
         // Overrides or additions where Legacy -> T5SS code mapping is ambiguous.
-        private static StringDictionary s_legacyAllegianceToT5Overrides = new StringDictionary {
+        private static readonly StringDictionary s_legacyAllegianceToT5Overrides = new StringDictionary {
             { "J-", "JuPr" },
             { "Jp", "JuPr" },
             { "Ju", "JuPr" },
@@ -165,7 +165,7 @@ namespace Maps
         };
 
         // Cases where T5SS codes don't apply: e.g. the Hierate or Imperium, or where no codes exist yet
-        private static AllegianceDictionary s_legacyAllegiances = new AllegianceDictionary {
+        private static readonly AllegianceDictionary s_legacyAllegiances = new AllegianceDictionary {
             { "As", "Aslan Hierate" }, // T5SS: Clan, client state, or unknown; no generic code
             { "Dr", "Droyne" }, // T5SS: Polity name or unaligned w/ Droyne population
             { "Im", "Third Imperium" }, // T5SS: Domain or cultural region; no generic code
@@ -213,7 +213,7 @@ namespace Maps
         }
 
         // TODO: Parse this from data file
-        private static AllegianceDictionary s_t5Allegiances = new AllegianceDictionary {
+        private static readonly AllegianceDictionary s_t5Allegiances = new AllegianceDictionary {
             // T5Code, LegacyCode, BaseCode, Name
             // Allegiance Table Begin
             { "3EoG", "Ga", "Ga", "Third Empire of Gashikan" },
@@ -408,7 +408,7 @@ namespace Maps
         public static IEnumerable<string> AllegianceCodes { get { return s_t5Allegiances.Keys; } }
 
         // May need GroupBy to handle duplicates
-        private static Dictionary<string, Allegiance> s_legacyToT5Allegiance = s_t5Allegiances.Values
+        private static readonly IReadOnlyDictionary<string, Allegiance> s_legacyToT5Allegiance = s_t5Allegiances.Values
             .GroupBy(a => a.LegacyCode).Select(g => g.First()).ToDictionary(a => a.LegacyCode);
 
         private static readonly HashSet<string> s_defaultAllegiances = new HashSet<string> {
@@ -443,7 +443,7 @@ namespace Maps
         #endregion Allegiance
 
         #region Sophonts
-        private static Dictionary<string, string> s_sophontCodes = new Dictionary<string,string> {
+        private static readonly IReadOnlyDictionary<string, string> s_sophontCodes = new Dictionary<string,string> {
             // Sophont Table Begin
             { "Adda", "Addaxur" },
             { "Akee", "Akeed" },

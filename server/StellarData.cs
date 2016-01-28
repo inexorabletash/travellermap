@@ -289,12 +289,12 @@ namespace Maps
                 return res;
             }
 
-            private static string[] STAR_TYPES = { "O", "B", "A", "F", "G", "K", "M" };
-            private static string[] STAR_TENTHS = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
-            private static string[] STAR_SIZES = { "D", "Ia", "Ib", "II", "III", "IV", "V", "VI", "VII" };
-            private static string[] DWARF_SIZE = { "D" };
-            private static string[] DWARF_TYPES = { "DB", "DA", "DF", "DG", "DK", "DM", "D" };
-            private static string[] OTHER_TYPES = { "BD", "BH", "Un" };
+            private static readonly string[] STAR_TYPES = { "O", "B", "A", "F", "G", "K", "M" };
+            private static readonly string[] STAR_TENTHS = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+            private static readonly string[] STAR_SIZES = { "D", "Ia", "Ib", "II", "III", "IV", "V", "VI", "VII" };
+            private static readonly string[] DWARF_SIZE = { "D" };
+            private static readonly string[] DWARF_TYPES = { "DB", "DA", "DF", "DG", "DK", "DM", "D" };
+            private static readonly string[] OTHER_TYPES = { "BD", "BH", "Un" };
 
             public static bool Parse(TextReader r, out Star star)
             {

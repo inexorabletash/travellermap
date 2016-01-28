@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -384,7 +385,8 @@ namespace Maps
             }
         }
 
-        private Dictionary<Tuple<string, string>, StyleResult> memo = new Dictionary<Tuple<string, string>, StyleResult>();
+        // Concurrent to allow static instance in Sector
+        private ConcurrentDictionary<Tuple<string, string>, StyleResult> memo = new ConcurrentDictionary<Tuple<string, string>, StyleResult>();
 
         private List<SectorStylesheet> Chain()
         {
@@ -443,6 +445,6 @@ namespace Maps
             return 2;
         }
 
-        private List<Rule> rules;
+        private readonly List<Rule> rules;
     }
 }
