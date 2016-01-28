@@ -168,7 +168,10 @@ namespace Maps.Serialization
             }
             catch (Exception e)
             {
-                errors.Error("Parse error: " + e.Message, lineNumber, line);
+                if (errors != null)
+                    errors.Error("Parse error: " + e.Message, lineNumber, line);
+                else
+                    throw;
                 //throw new Exception(String.Format("UWP Parse Error in line {0}:\n{1}\n{2}", lineNumber, e.Message, line));
             }
         }
@@ -316,7 +319,7 @@ namespace Maps.Serialization
                     world.Worlds = w;
 
                 int ru;
-                if (int.TryParse(dict["RU"], NumberStyles.Integer | NumberStyles.AllowThousands, CultureInfo.InvariantCulture, out ru))
+                if (dict.ContainsKey("RU") && int.TryParse(dict["RU"], NumberStyles.Integer | NumberStyles.AllowThousands, CultureInfo.InvariantCulture, out ru))
                     world.ResourceUnits = ru;
 
                 // Cleanup known placeholders
@@ -333,7 +336,10 @@ namespace Maps.Serialization
             }
             catch (Exception e)
             {
-                errors.Error("Parse Error: " + e.Message, lineNumber, line);
+                if (errors != null)
+                    errors.Error("Parse Error: " + e.Message, lineNumber, line);
+                else
+                    throw;
                 //throw new Exception(String.Format("UWP Parse Error in line {0}:\n{1}\n{2}", lineNumber, e.Message, line));
             }
         }
