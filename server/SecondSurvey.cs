@@ -153,7 +153,7 @@ namespace Maps
         }
 
         // Overrides or additions where Legacy -> T5SS code mapping is ambiguous.
-        private static readonly StringDictionary s_legacyAllegianceToT5Overrides = new StringDictionary {
+        private static readonly IReadOnlyDictionary<string, string> s_legacyAllegianceToT5Overrides = new Dictionary<string, string> {
             { "J-", "JuPr" },
             { "Jp", "JuPr" },
             { "Ju", "JuPr" },

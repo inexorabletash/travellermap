@@ -43,7 +43,7 @@ namespace Maps
         }
 
         private const string DEFAULT_MILIEU = "1105";
-        private static readonly string[] FALLBACK_MILIEUX = new string[] { "1100", "1110", "1000", "1117", "1120", "1200" };
+        private static readonly IEnumerable<string> FALLBACK_MILIEUX = new List<string> { "1100", "1110", "1000", "1117", "1120", "1200" };
 
         private Dictionary<string, MilieuMap> milieux = new Dictionary<string, MilieuMap>();
 

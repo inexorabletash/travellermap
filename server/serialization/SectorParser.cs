@@ -213,14 +213,14 @@ namespace Maps.Serialization
 
         private class FieldChecker
         {
-            private StringDictionary dict;
+            private Dictionary<string, string> dict;
             private ErrorLogger errors;
             private int lineNumber;
             private string line;
             bool hadError = false;
 
             public bool HadError { get { return hadError; } }
-            public FieldChecker(StringDictionary dict, ErrorLogger errors, int lineNumber, string line)
+            public FieldChecker(Dictionary<string, string> dict, ErrorLogger errors, int lineNumber, string line)
             {
                 this.dict = dict;
                 this.errors = errors;
@@ -289,7 +289,7 @@ namespace Maps.Serialization
             }
         }
 
-        protected static void ParseWorld(WorldCollection worlds, StringDictionary dict, string line, int lineNumber, ErrorLogger errors)
+        protected static void ParseWorld(WorldCollection worlds, Dictionary<string, string> dict, string line, int lineNumber, ErrorLogger errors)
         {
             try
             {
@@ -401,7 +401,7 @@ namespace Maps.Serialization
             if (cols.Length != header.Length)
                 throw new ParseException(string.Format("ERROR (Tab Parse) ({0}): {1}", lineNumber, line));
 
-            StringDictionary dict = new StringDictionary();
+            Dictionary<string, string> dict = new Dictionary<string, string>();
             for (var i = 0; i < cols.Length; ++i)
                 dict[header[i]] = cols[i].Trim();
 
@@ -410,7 +410,7 @@ namespace Maps.Serialization
 
         internal struct Row
         {
-            public StringDictionary dict;
+            public Dictionary<string, string> dict;
             public int lineNumber;
             public string line;
         }
