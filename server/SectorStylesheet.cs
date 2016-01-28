@@ -326,11 +326,11 @@ namespace Maps
 
         internal class StyleResult
         {
-            public string element;
-            public string code;
-            public Dictionary<string, string> dict;
+            public readonly string element;
+            public readonly string code;
+            public readonly IReadOnlyDictionary<string, string> dict;
 
-            public StyleResult(string element, string code, Dictionary<string, string> dict)
+            public StyleResult(string element, string code, IReadOnlyDictionary<string, string> dict)
             {
                 this.element = element;
                 this.code = code;
@@ -427,9 +427,10 @@ namespace Maps
                     }
                 }
             }
-            result = new StyleResult(element, code, new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase));
+            Dictionary<string, string> resultDictionary = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
             foreach (var entry in dict)
-                result.dict[entry.Key] = entry.Value.Item2;
+                resultDictionary[entry.Key] = entry.Value.Item2;
+            result = new StyleResult(element, code, resultDictionary);
             memo[key] = result;
             return result;
         }
@@ -445,6 +446,6 @@ namespace Maps
             return 2;
         }
 
-        private readonly List<Rule> rules;
+        private readonly IList<Rule> rules;
     }
 }

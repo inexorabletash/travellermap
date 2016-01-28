@@ -454,7 +454,6 @@ namespace Maps
             }
         }
         private string stylesheetText;
-
     }
 
     public class Product : MetadataItem
