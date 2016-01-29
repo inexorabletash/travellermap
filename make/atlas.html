@@ -210,9 +210,25 @@ table.glyphs td { padding: 2px; }
   border: solid 2pt black;
   position: absolute;
   top: 0.5in;
-  left: 0.65in;
+  left: 0.5in;
   height: 10in; width: 693px;
 }
+
+.charted-space h1 {
+  position: absolute;
+  transform-origin: left bottom;
+  transform: rotate(-90deg);
+  width: 10in;
+  left: 8.15in; bottom: 0.5in;
+
+  text-align: center;
+  font-style: normal;
+  font-size: 20pt;
+  font-family: Optima, Marcellus, serif;
+  font-weight: bold;
+  margin: 0;
+}
+
 
 /* Sector Map ============================== */
 
@@ -519,6 +535,7 @@ table.uwp-data {
     <div class="page">
       <div class="charted-space">
         <img src="{{charted_space_src}}" alt="" class="charted-space-image">
+        <h1>Charted Space: Sectors of the Imperium and Surrounds</h1>
       </div>
       <div class=pagenum></div>
     </div>
