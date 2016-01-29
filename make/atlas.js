@@ -78,7 +78,7 @@
       /*           */ 'stai', 'iwah', 'dark', 'magy', 'solo', 'alph', 'spic',
       /*           */ 'akti', 'uist', 'ustr'
     ];
-    //sectors=['spin', 'dene', 'corr'];
+    //sectors=['spin'];
     Promise.all(sectors.map(function(name) {
       return Promise.all([
         name,
