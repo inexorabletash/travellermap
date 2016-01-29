@@ -225,23 +225,46 @@ table.glyphs td { padding: 2px; }
   border: solid 2pt black;
   position: absolute;
   top: 0.5in;
-  left: 0.65in;
+  left: 0.5in;
   height: 10in; width: 664px;
 }
 
 .sector-map h1 {
   position: absolute;
-  transform-origin: left top;
-  transform: rotate(90deg);
-  width: 10.5in;
-  left: 8.25in; top: 0.5in;
+  transform-origin: left bottom;
+  transform: rotate(-90deg);
+  width: 10in;
+  left: 8.25in; bottom: 0.5in;
 
   font-style: normal;
-  font-size: 36pt;
+  font-size: 48pt;
   font-family: Optima, Marcellus, serif;
   font-weight: bold;
   font-style: italic;
   margin: 0;
+}
+
+.subsectors {
+  position: absolute;
+  left: 7.55in;
+  top: 0.5in;
+
+  font-size: 6pt;
+  font-weight: bold;
+}
+.ss-grid {
+  font-size: 6pt;
+  font-weight: bold;
+}
+.ss-grid td {
+  border: 1px solid black;
+  width: 12px;
+  height: 20px;
+}
+.ss-names td {
+  font-size: 6pt;
+  font-weight: bold;
+  min-width: 1.25em;
 }
 
 /* Sector Data ============================== */
@@ -696,6 +719,34 @@ table.uwp-data {
     <div class="page">
       <div class="sector-map">
         <h1>{{name}}</h1>
+        <div class="subsectors">
+          <table class="ss-grid">
+            <tr><td>A</td><td>B</td><td>C</td><td>D</td></tr>
+            <tr><td>E</td><td>F</td><td>G</td><td>H</td></tr>
+            <tr><td>I</td><td>J</td><td>K</td><td>L</td></tr>
+            <tr><td>M</td><td>N</td><td>O</td><td>P</td></tr>
+          </table>
+          <br>
+          <table class="ss-names">
+            <tr><td>A</td><td>{{metadata.Subsectors.0.Name}}</td></tr>
+            <tr><td>B</td><td>{{metadata.Subsectors.1.Name}}</td></tr>
+            <tr><td>C</td><td>{{metadata.Subsectors.2.Name}}</td></tr>
+            <tr><td>D</td><td>{{metadata.Subsectors.3.Name}}</td></tr>
+            <tr><td>E</td><td>{{metadata.Subsectors.4.Name}}</td></tr>
+            <tr><td>F</td><td>{{metadata.Subsectors.5.Name}}</td></tr>
+            <tr><td>G</td><td>{{metadata.Subsectors.6.Name}}</td></tr>
+            <tr><td>H</td><td>{{metadata.Subsectors.7.Name}}</td></tr>
+            <tr><td>I</td><td>{{metadata.Subsectors.8.Name}}</td></tr>
+            <tr><td>J</td><td>{{metadata.Subsectors.9.Name}}</td></tr>
+            <tr><td>K</td><td>{{metadata.Subsectors.10.Name}}</td></tr>
+            <tr><td>L</td><td>{{metadata.Subsectors.11.Name}}</td></tr>
+            <tr><td>M</td><td>{{metadata.Subsectors.12.Name}}</td></tr>
+            <tr><td>N</td><td>{{metadata.Subsectors.13.Name}}</td></tr>
+            <tr><td>O</td><td>{{metadata.Subsectors.14.Name}}</td></tr>
+            <tr><td>P</td><td>{{metadata.Subsectors.15.Name}}</td></tr>
+          </table>
+        </div>
+
         <img src="{{img_src}}" alt="" class="sector-image">
       </div>
       <div class=pagenum></div>
