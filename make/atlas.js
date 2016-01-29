@@ -14,6 +14,7 @@
     return null;
   }
 
+  function cmp(a, b) { return a < b ? -1 : a > b ? 1 : 0; }
 
   function parseSector(tabDelimitedData, metadata) {
     var i, sector = {
@@ -40,7 +41,7 @@
       sector.worlds.push(world);
     });
 
-    sector.worlds.sort(function(a, b) { return a.hex < b.hex ? -1 : a.hex > b.hex ? 1 : 0; });
+    sector.worlds.sort(function(a, b) { return cmp(a.hex, b.hex); });
 
     var LINES = 128, COLUMNS = 2;
 
@@ -77,7 +78,7 @@
       /*           */ 'stai', 'iwah', 'dark', 'magy', 'solo', 'alph', 'spic',
       /*           */ 'akti', 'uist', 'ustr'
     ];
-    //sectors=['spin'];
+    //sectors=['spin', 'dene', 'corr'];
     Promise.all(sectors.map(function(name) {
       return Promise.all([
         name,
@@ -95,6 +96,8 @@
                        options: 41975, scale: 8, style: 'print',
                        dimunofficial: 1, rotation: 3 });
 
+    var index = [];
+    var page_count = 3;
     data.sectors = sectors.map(function(tuple) {
       var name = tuple[0], data = tuple[1], metadata = tuple[2];
       var sector = parseSector(data, metadata);
@@ -102,14 +105,20 @@
       sector.img_src = Traveller.MapService.makeURL(
         '/api/poster', {sector: name, style: 'print', dpr: 2});
 
+      index.push({name: sector.name, page: ++page_count});
+      page_count += sector.pages.length;
+
       return sector;
     });
+    index.sort(function(a, b) { return cmp(a.name, b.name); });
+    data.index = index;
 
     data.date = (new Date).toLocaleDateString(
       'en-US', {year: 'numeric', month:'long', day: 'numeric'});
 
     var template = Handlebars.compile($('#template').innerHTML);
     document.body.innerHTML = template(data);
+    window.data = data;
 
     // Retry failed images, if server was overwhelmed.
     $$('img').forEach(function(img) {
