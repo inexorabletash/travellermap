@@ -120,10 +120,24 @@
     document.body.innerHTML = template(data);
     window.data = data;
 
-    // Retry failed images, if server was overwhelmed.
-    $$('img').forEach(function(img) {
+    // Show image loading progress, and retry if server was overloaded.
+    var images = $$('img');
+    var progress = document.createElement('progress');
+    progress.style = 'position: fixed; left: 0; top: 0; width: 100%;';
+    progress.max = images.length;
+    progress.value = 0;
+    document.body.appendChild(progress);
+    images.forEach(function(img) {
+      img.addEventListener('load', function() {
+        ++progress.value;
+        if (progress.value === progress.max)
+          progress.parentElement.removeChild(progress);
+      });
       img.addEventListener('error', function() {
-        setTimeout(function() { img.src = img.src + '&dummy'; }, 5000 * Math.random());
+        setTimeout(function() {
+          console.warn('retrying ' + img.src);
+          img.src = img.src + '&retry';
+        }, 1000 + 5000 * Math.random());
       });
     });
   };
