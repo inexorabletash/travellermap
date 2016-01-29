@@ -259,6 +259,9 @@ table.glyphs td { padding: 2px; }
   font-style: italic;
   margin: 0;
 }
+.sector-map h1 small {
+  font-size: 20pt;
+}
 
 .subsectors {
   position: absolute;
@@ -735,7 +738,10 @@ table.uwp-data {
     <!-- Sector Map -->
     <div class="page">
       <div class="sector-map">
-        <h1>{{name}}</h1>
+        <h1>
+          {{name}}
+          <small>({{metadata.X}}, {{metadata.Y}})</small>
+        </h1>
         <div class="subsectors">
           <table class="ss-grid">
             <tr><td>A</td><td>B</td><td>C</td><td>D</td></tr>
