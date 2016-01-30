@@ -103,7 +103,24 @@ h1.underline {
   padding-left: 0.5in;
 }
 
-/* Title Page ============================== */
+/* Cover & Title Page ============================== */
+
+#cover_page {
+  background-image: url(../res/ui/aoti.jpg);
+  background-position: 40% 0%;
+}
+#cover_page .title_adventure,
+#cover_page .title_title {
+  color: white;
+  border-bottom-color: #3366ff;
+}
+#cover_page .title_logo,
+#cover_page .title_publisher
+{
+  color: #3366ff;
+}
+#cover_page .title { top: 7in; left: 1.5in; }
+#cover_page .title_title { margin-left: -1.5in; padding-left: 1.5in; }
 
 .title {
   position: absolute;
@@ -371,6 +388,19 @@ table.uwp-data {
 
     <!-- Title Page -->
     <div id="title_page" class="page">
+
+      <div class="title">
+        <div class="title_title">The Atlas of the Imperium<br>Second Survey</div>
+        <div class="title_logo">
+          <div class="title_trav">TRAVELLER<span class="title_reg">&reg;</span></div>
+          <div class="title_adventure">Science-Fiction Adventure<br>in the Far Future</div>
+        </div>
+      </div>
+      <div class="title_publisher">Far Future Enterprises</div>
+    </div>
+
+    <!-- Colophon Page -->
+    <div id="colophon" class="page">
 
       <div class="content credits">
 
