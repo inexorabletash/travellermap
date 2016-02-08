@@ -1667,14 +1667,12 @@ namespace Maps.Rendering
 
                             if (layer == BorderLayer.Stroke)
                             {
-                                foreach (PointF[] curve in borderPath.curvePoints)
+                                foreach (var segment in borderPath.curves)
                                 {
-                                    // TODO: Investigate DrawClosedCurve to handle endings
-                                    // Would need to have path computer tell whether
-                                    // or not the path was actually a closed loop
-                                    // Can do it by clipping borders to sector, but that loses
-                                    // bottom/right overlaps
-                                    graphics.DrawCurve(pen, curve, 0.6f);
+                                    if (segment.closed)
+                                        graphics.DrawClosedCurve(pen, segment.points, 0.6f);
+                                    else
+                                        graphics.DrawCurve(pen, segment.points, 0.6f);
                                 }
                             }
                         }

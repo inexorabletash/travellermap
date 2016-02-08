@@ -342,13 +342,31 @@ namespace Maps.Rendering
         }
     }
 
+    // BorderPath is a render-ready representation of a Border.
+    // It contains three separate chunks of data:
+    // * Pair of (points, types) arrays for the "straight" borders to draw
+    // * Pair of (points, types) arrays for the clipping bounds
+    // * List of curves (open or closed plus array of control points) for "curved" borders
+    // Curved borders must be segmented since simple clipping against sector bounds
+    // is insufficient (they weave against the hexes).
     internal class BorderPath
     {
+        public class CurveSegment
+        {
+            public CurveSegment(IEnumerable<PointF> points, Boolean closed)
+            {
+                this.points = points.ToArray();
+                this.closed = closed;
+            }
+            public readonly PointF[] points;
+            public readonly Boolean closed;
+        }
+
         public readonly PointF[] borderPathPoints;
         public readonly byte[] borderPathTypes;
         public readonly PointF[] clipPathPoints;
         public readonly byte[] clipPathTypes;
-        public readonly PointF[][] curvePoints;
+        public readonly IEnumerable<CurveSegment> curves;
 
         public BorderPath(Border border, Sector sector, PathUtil.PathType type)
         {
@@ -356,12 +374,14 @@ namespace Maps.Rendering
             RenderUtil.HexEdges(type, out edgeX, out edgeY);
 
             int lengthEstimate = border.Path.Count() * 3;
+
+            // TODO: Are these always identical?
             List<PointF> borderPathPoints = new List<PointF>(lengthEstimate);
             List<byte> borderPathTypes = new List<byte>(lengthEstimate);
             List<PointF> clipPathPoints = new List<PointF>(lengthEstimate);
             List<byte> clipPathTypes = new List<byte>(lengthEstimate);
-            List<List<PointF>> curves = new List<List<PointF>>(lengthEstimate);
-            List<PointF> curve = new List<PointF>(lengthEstimate);
+            LinkedList<LinkedList<PointF>> curves = new LinkedList<LinkedList<PointF>>();
+            LinkedList<PointF> curve = new LinkedList<PointF>();
 
 
             // Based on http://dotclue.org/t20/sec2pdf - J Greely rocks my world.
@@ -405,17 +425,13 @@ namespace Maps.Rendering
                     clipPathPoints.Add(newPoint);
                     clipPathTypes.Add((byte)PathPointType.Start);
 
+                    // MOVETO
                     if (curve.Count > 1)
                     {
-                        curves.Add(curve);
-                        curve = new List<PointF>(lengthEstimate);
-                        curve.Add(newPoint);
+                        curves.AddLast(curve);
+                        curve = new LinkedList<PointF>();
                     }
-                    else
-                    {
-                        curve.Clear();
-                        curve.Add(newPoint);
-                    }
+                    curve.AddLast(newPoint);
                 }
 
                 PointF pt = Astrometrics.HexToCenter(Astrometrics.LocationToCoordinates(new Location(sector.Location, hex)));
@@ -431,67 +447,30 @@ namespace Maps.Rendering
 
                     PointF newPoint = new PointF(pt.X + edgeX[(i + 1) % 6], pt.Y + edgeY[(i + 1) % 6]);
 
-                    // TODO: Replace this by clipping borders to sector bounds; problem - bottom/right edges protrude
-                    // Only actually render edges within the sector
-                    //if( 1 <= ( hex / 100 ) && ( hex / 100 ) <= 32 && 1 <= ( hex % 100 ) && ( hex % 100 ) <= 40 )
-                    {
-                        // LINETO
-                        borderPathPoints.Add(newPoint);
-                        borderPathTypes.Add((byte)PathPointType.Line);
+                    // LINETO
+                    borderPathPoints.Add(newPoint);
+                    borderPathTypes.Add((byte)PathPointType.Line);
 
-                        //curve.Add( newPoint );
-
-                        if (hex.IsValid)
-                        {
-                            curve.Add(newPoint);
-                        }
-                        else
-                        {
-                            if (curve.Count > 1)
-                            {
-                                curves.Add(curve);
-                                curve = new List<PointF>(lengthEstimate);
-                                curve.Add(newPoint);
-                            }
-                            else
-                            {
-                                curve.Clear();
-                                curve.Add(newPoint);
-                            }
-                        }
-
-                    }
-                    /*
-                    else
-                    {
-                        // MOVETO
-                        if( borderPathTypes[ borderPathTypes.Count - 1 ] == (byte)PathPointType.Start )
-                        {
-                            // Collapse multiple MOVETOs - makes GDI+ happy
-                            borderPathPoints[ borderPathPoints.Count - 1 ] = newPoint;
-                        }
-                        else
-                        {
-                            borderPathPoints.Add( newPoint );
-                            borderPathTypes.Add( (byte)PathPointType.Start );
-                        }
-
-                        if( curve.Count > 1 )
-                        {
-                            curves.Add( curve );
-                            curve = new List<PointF>( lengthEstimate );
-                            curve.Add( newPoint );
-                        }
-                        else
-                        {
-                            curve.Clear();
-                            curve.Add( newPoint );
-                        }
-                    }
-                     * */
                     // LINETO
                     clipPathPoints.Add(newPoint);
                     clipPathTypes.Add((byte)PathPointType.Line);
+
+                    if (hex.IsValid)
+                    {
+                        // MOVETO
+                        curve.AddLast(newPoint);
+                    }
+                    else
+                    {
+                        // LINETO
+                        if (curve.Count > 1)
+                        {
+                            curves.AddLast(curve);
+                            curve = new LinkedList<PointF>();
+                        }
+                        curve.AddLast(newPoint);
+                    }
+
                 }
                 i = i % 6;
                 // i is the direction to the next border hex,
@@ -506,8 +485,15 @@ namespace Maps.Rendering
                 borderPathTypes.RemoveAt(borderPathTypes.Count - 1);
                 borderPathPoints.RemoveAt(borderPathPoints.Count - 1);
             }
+            // Trim trailing MOVETOs - makes GDI+ happy
+            while (clipPathTypes.Count > 0 && clipPathTypes[clipPathTypes.Count - 1] == (byte)PathPointType.Start)
+            {
+                clipPathTypes.RemoveAt(clipPathTypes.Count - 1);
+                clipPathPoints.RemoveAt(clipPathPoints.Count - 1);
+            }
 
             borderPathTypes[borderPathTypes.Count - 1] |= (byte)PathPointType.CloseSubpath;
+            clipPathTypes[borderPathTypes.Count - 1] |= (byte)PathPointType.CloseSubpath;
 
             this.borderPathPoints = borderPathPoints.ToArray();
             this.borderPathTypes = borderPathTypes.ToArray();
@@ -515,9 +501,32 @@ namespace Maps.Rendering
             this.clipPathTypes = clipPathTypes.ToArray();
 
             if (curve.Count > 1)
-                curves.Add(curve);
+                curves.AddLast(curve);
 
-            curvePoints = curves.Select(c => c.ToArray()).ToArray();
+            if (curves.Count >= 2 && curves.First().First() == curves.Last().Last())
+            {
+                var first = curves.First();
+                var last = curves.Last();
+                curves.RemoveFirst();
+                first.RemoveFirst();
+                foreach (var point in first)
+                    last.AddLast(point);
+            }
+
+            List<CurveSegment> segments = new List<CurveSegment>();
+            foreach (var c in curves)
+            {
+                if (c.First() == c.Last())
+                {
+                    c.RemoveLast();
+                    segments.Add(new CurveSegment(c, true));
+                }
+                else
+                {
+                    segments.Add(new CurveSegment(c, false));
+                }
+            }
+            this.curves = segments;
         }
     }
 
