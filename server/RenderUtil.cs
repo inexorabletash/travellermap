@@ -354,18 +354,18 @@ namespace Maps.Rendering
     {
         public class CurveSegment
         {
-            public CurveSegment(IEnumerable<PointF> points, Boolean closed)
+            public CurveSegment(IEnumerable<PointF> points, bool closed)
             {
                 this.points = points.ToArray();
                 this.closed = closed;
             }
             public readonly PointF[] points;
-            public readonly Boolean closed;
+            public readonly bool closed;
         }
 
         public readonly PointF[] points;
         public readonly byte[] types;
-        public readonly IEnumerable<CurveSegment> curves;
+        public readonly List<CurveSegment> curves;
 
         public BorderPath(Border border, Sector sector, PathUtil.PathType type)
         {
@@ -490,7 +490,7 @@ namespace Maps.Rendering
                 {
                     return new CurveSegment(c, false);
                 }
-            });
+            }).ToList();
         }
     }
 
