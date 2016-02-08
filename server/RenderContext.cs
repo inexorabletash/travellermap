@@ -1619,8 +1619,7 @@ namespace Maps.Rendering
                     {
                         BorderPath borderPath = border.ComputeGraphicsPath(sector, borderPathType);
 
-                        XGraphicsPath drawPath = borderPath.borderPathPoints.Length > 0 ? new XGraphicsPath(borderPath.borderPathPoints, borderPath.borderPathTypes, XFillMode.Alternate) : null;
-                        XGraphicsPath clipPath = new XGraphicsPath(borderPath.clipPathPoints, borderPath.clipPathTypes, XFillMode.Alternate);
+                        XGraphicsPath drawPath = new XGraphicsPath(borderPath.points, borderPath.types, XFillMode.Alternate);
 
                         Color? borderColor = border.Color;
                         LineStyle? borderStyle = border.Style;
@@ -1646,34 +1645,37 @@ namespace Maps.Rendering
                             // Clip to the path itself - this means adjacent borders don't clash
                             using (RenderUtil.SaveState(graphics))
                             {
-                                graphics.IntersectClip(clipPath);
-                                if (layer == BorderLayer.Fill)
+                                graphics.IntersectClip(drawPath);
+                                switch (layer)
                                 {
-                                    solidBrush.Color = Color.FromArgb(FILL_ALPHA, borderColor.Value);
-                                    graphics.DrawPath(solidBrush, clipPath);
+                                    case BorderLayer.Fill:
+                                        solidBrush.Color = Color.FromArgb(FILL_ALPHA, borderColor.Value);
+                                        graphics.DrawPath(solidBrush, drawPath);
+                                        break;
+                                    case BorderLayer.Stroke:
+                                        graphics.DrawPath(pen, drawPath);
+                                        break;
                                 }
-
-                                if (layer == BorderLayer.Stroke && drawPath != null)
-                                    graphics.DrawPath(pen, drawPath);
                             }
                         }
                         else
                         {
-                            if (layer == BorderLayer.Fill)
+                            switch (layer)
                             {
-                                solidBrush.Color = Color.FromArgb(FILL_ALPHA, borderColor.Value);
-                                graphics.DrawClosedCurve(solidBrush, borderPath.clipPathPoints);
-                            }
+                                case BorderLayer.Fill:
+                                    solidBrush.Color = Color.FromArgb(FILL_ALPHA, borderColor.Value);
+                                    graphics.DrawClosedCurve(solidBrush, borderPath.points);
+                                    break;
 
-                            if (layer == BorderLayer.Stroke)
-                            {
-                                foreach (var segment in borderPath.curves)
-                                {
-                                    if (segment.closed)
-                                        graphics.DrawClosedCurve(pen, segment.points, 0.6f);
-                                    else
-                                        graphics.DrawCurve(pen, segment.points, 0.6f);
-                                }
+                                case BorderLayer.Stroke:
+                                    foreach (var segment in borderPath.curves)
+                                    {
+                                        if (segment.closed)
+                                            graphics.DrawClosedCurve(pen, segment.points, 0.6f);
+                                        else
+                                            graphics.DrawCurve(pen, segment.points, 0.6f);
+                                    }
+                                    break;
                             }
                         }
                     }
