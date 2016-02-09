@@ -50,11 +50,14 @@
                                  .map(function(w) { return { worlds: w }; })}; });
 
     sector.pages.forEach(function(page, index) {
+      // TODO: Replace with a counter?
       page.index = index + 1;
     });
     sector.page_count = sector.pages.length;
 
     sector.name = metadata.Names[0].Text;
+
+    sector.credits = metadata.Credits;
 
     return sector;
   }
@@ -69,7 +72,8 @@
   }
 
   window.addEventListener('DOMContentLoaded', function() {
-    var sectors = [
+    var sectors;
+    sectors = [
       /*   */ 'ziaf', 'gvur', 'tugl', 'prov', 'wind', 'mesh', 'mend', 'amdu',
       'farf', 'fore', 'spin', 'dene', 'corr', 'vlan', 'lish', 'anta', 'empt',
       'vang', 'beyo', 'troj', 'reft', 'gush', 'dagu', 'core', 'forn', 'ley',  'gate',
@@ -78,7 +82,6 @@
       /*           */ 'stai', 'iwah', 'dark', 'magy', 'solo', 'alph', 'spic',
       /*           */ 'akti', 'uist', 'ustr'
     ];
-    //sectors=['spin'];
     Promise.all(sectors.map(function(name) {
       return Promise.all([
         name,
@@ -97,6 +100,7 @@
                        dimunofficial: 1, rotation: 3 });
 
     var index = [];
+    var credits = [];
     var page_count = 3;
     data.sectors = sectors.map(function(tuple) {
       var name = tuple[0], data = tuple[1], metadata = tuple[2];
@@ -105,19 +109,32 @@
       sector.img_src = Traveller.MapService.makeURL(
         '/api/poster', {sector: name, style: 'print', dpr: 2});
 
-      index.push({name: sector.name, page: ++page_count});
-      page_count += sector.pages.length;
+      var short_name = sector.name.replace(/^The /, '');
+
+      index.push({name: short_name, page: ++page_count});
+      if (sector.credits)
+        credits.push({name: short_name, credits: sector.credits});
+      else
+        console.warn(sector.name + ' credits missing');
 
       return sector;
     });
     index.sort(function(a, b) { return cmp(a.name, b.name); });
     data.index = index;
+    data.credits = partition(
+      credits
+        .sort(function(a, b) { return cmp(a.name, b.name); })
+        .map(function(o) { return o.credits; })
+      , 30);
 
     data.date = (new Date).toLocaleDateString(
       'en-US', {year: 'numeric', month:'long', day: 'numeric'});
 
     var template = Handlebars.compile($('#template').innerHTML);
     document.body.innerHTML = template(data);
+
+    window.credits = credits;
+    window.sectors = sectors;
     window.data = data;
 
     // Show image loading progress, and retry if server was overloaded.
