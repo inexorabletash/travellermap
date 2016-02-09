@@ -300,6 +300,14 @@ window.addEventListener('DOMContentLoaded', function() {
     map.SetPosition(home.x, home.y);
   }
 
+  Array.from($$('#share-url,#share-embed')).forEach(function(input) {
+    input.addEventListener('click', function(e) {
+      e.preventDefault();
+      input.focus();
+      input.setSelectionRange(0, input.value.length); // .select() fails on iOS
+    });
+  });
+
   // Nav Bar
 
   $('#zoomInBtn').addEventListener('click', map.ZoomIn.bind(map));
