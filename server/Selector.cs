@@ -161,11 +161,11 @@ namespace Maps
 
     internal class RectSelector : Selector
     {
-        SectorMap map;
+        SectorMap.Milieu map;
         ResourceManager resourceManager;
         private RectangleF rect = RectangleF.Empty;
 
-        public RectSelector(SectorMap map, ResourceManager resourceManager, RectangleF rect)
+        public RectSelector(SectorMap.Milieu map, ResourceManager resourceManager, RectangleF rect)
         {
             if (map == null)
                 throw new ArgumentNullException("map");
@@ -255,12 +255,12 @@ namespace Maps
 
     internal class HexSelector : Selector
     {
-        SectorMap map;
+        SectorMap.Milieu map;
         ResourceManager resourceManager;
         private Location location;
         private int jump;
 
-        public HexSelector(SectorMap map, ResourceManager resourceManager, Location location, int jump)
+        public HexSelector(SectorMap.Milieu map, ResourceManager resourceManager, Location location, int jump)
         {
             if (map == null)
                 throw new ArgumentNullException("map");

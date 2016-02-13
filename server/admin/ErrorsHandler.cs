@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net.Mime;
 
@@ -24,7 +25,7 @@ namespace Maps.Admin
             // before any other objects (e.g. Worlds) are loaded.
             SectorMap.Flush();
             SectorMap map = SectorMap.GetInstance(resourceManager);
-
+            
             var sectorQuery = from sector in map.Sectors
                               where (sectorName == null || sector.Names[0].Text.StartsWith(sectorName, ignoreCase: true, culture: CultureInfo.InvariantCulture))
                               && (sector.DataFile != null)
@@ -41,12 +42,25 @@ namespace Maps.Admin
 
                 if (worlds != null)
                 {
-                    context.Response.Output.WriteLine("{0} world(s)", worlds.Count());
+                    context.Response.Output.WriteLine("{0} world(s) - population: {1:#,###.##} billion", 
+                        worlds.Count(),
+                        worlds.Select(w => w.Population).Sum() / 1e9);
                     worlds.ErrorList.Report(context.Response.Output);
                 }
                 else
                 {
                     context.Response.Output.WriteLine("{0} world(s)", 0);
+                }
+
+                foreach (IAllegiance item in sector.Borders.AsEnumerable<IAllegiance>()
+                    .Concat(sector.Routes.AsEnumerable<IAllegiance>())
+                    .Concat(sector.Labels.AsEnumerable<IAllegiance>()))
+                {
+                    if (string.IsNullOrWhiteSpace(item.Allegiance))
+                        continue;
+                    if (sector.GetAllegianceFromCode(item.Allegiance) == null)
+                        context.Response.Output.WriteLine("Undefined allegiance code: {0} (on {1})", item.Allegiance,
+                            item.GetType().Name);
                 }
 
                 foreach (var route in sector.Routes)

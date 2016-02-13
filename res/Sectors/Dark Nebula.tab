@@ -98,8 +98,8 @@ Dark	M	0636	Sualriyw	C68A857-B		Ri Wa Ph		823	AsMw	M3 V M8 V	{ 2 }	(F7C+2)	[8A5B
 Dark	A	0707	Oiwohas	A100686-B		Na Ni Va		503	AsT2	K4 V M7 V M4 V	{ 1 }	(B55+1)	[574A]		9	275
 Dark	A	0710	Aleikhes	A755657-D		Ag Ni Ga		804	AsT0	M2 V M2 V	{ 2 }	(C56+2)	[685D]		9	720
 Dark	E	0716	Parolere	C652458-6		Ni Po Da OrmiW	A	501	GeOr	K2 V M6 V	{ -2 }	(631-2)	[4256]		11	14
-Dark	E	0717	Tahwyafe	E3108CB-7		Na Ph Pi		120	NaAs	M6 II	{ -2 }	(A76+1)	[A679]		12	420
-Dark	E	0720	Rosal	E66788C-2		Ga Ri Pa Ph Droy5		704	NaAs	M2 V	{ -1 }	(A74+2)	[B785]		11	560
+Dark	E	0717	Tahwyafe	E3108CB-7		Na Ph Pi Pz	A	120	NaAs	M6 II	{ -2 }	(A76+1)	[A679]		12	420
+Dark	E	0720	Rosal	E66788C-2		Ga Ri Pa Ph Pz Droy5	A	704	NaAs	M2 V	{ -1 }	(A74+2)	[B785]		11	560
 Dark	I	0721	Stui	D562477-7		Ni		523	AsSc	M0 V M6 V	{ -3 }	(631-3)	[4157]		14	13
 Dark	I	0722	Yasai	EA76312-6		Lo		904	AsMw	M1 V	{ -3 }	(521-5)	[1112]		11	5
 Dark	I	0724	Iyuasea	E541646-6		He Ni Po		325	AsWc	K2 V	{ -3 }	(851-4)	[5345]		14	24
@@ -136,9 +136,9 @@ Dark	B	0903	Chesall	C200688-7		Na Ni Va		704	NaHu	M2 V	{ -2 }	(852-2)	[6457]		12
 Dark	B	0907	Aoaki	D310759-8		Na Pi Pz	A	605	NaAs	G0 V	{ -2 }	(E66-1)	[8569]		9	454
 Dark	B	0909	Syasaral	DAA5499-8		Fl Ni		704	NaAs	K4 V M3 V M4 V	{ -3 }	(A31-2)	[5169]		13	24
 Dark	F	0914	Kipelaresh	B100358-B	KM	Lo Va OrmiW		705	GeOr	K7 II	{ 2 }	(A21+2)	[355B]		11	40
-Dark	F	0915	Rormepeni	E8B4443-8		Fl Ni Fo OrmiW	R	102	GeOr	M1 V	{ -3 }	(831-5)	[1125]		9	12
+Dark	F	0915	Rormepeni	E8B4443-8		Fl Ni OrmiW		102	GeOr	M1 V	{ -3 }	(831-5)	[1125]		9	12
 Dark	F	0916	I'etle	B100247-C		Lo Va		121	NaAs	G5 V	{ 1 }	(711+1)	[235C]		8	7
-Dark	F	0918	Ewuia	D30089D-7		Na Va Ph Pi		303	NaAs	A1 V	{ -2 }	(A76+2)	[C69B]		13	840
+Dark	F	0918	Ewuia	D30089D-7		Na Va Ph Pi Pz	A	303	NaAs	A1 V	{ -2 }	(A76+2)	[C69B]		13	840
 Dark	J	0922	Foiheliy	C310411-A		Ni		202	NaAs	M2 V M7 V	{ 0 }	(833-4)	[1416]		13	43
 Dark	J	0926	Taikheia'io	A77A777-A	KM	Wa Pi		903	NaAs	K0 V	{ 3 }	(C6C+3)	[7A5A]		14	2,592
 Dark	N	0931	AIRLYRLYU'EAS	C538AA9-A		Hi		104	AsVc	K2 V	{ 2 }	(G9C+3)	[BC6B]		12	5,184
@@ -148,7 +148,7 @@ Dark	N	0938	Fiyhiyha'	B43248A-B		Ni Po		624	AsMw	K3 V M3 V	{ 1 }	(C34+3)	[657D]	
 Dark	N	0939	Seiyasar	B410687-A		Na Ni		412	AsVc	M0 V	{ 1 }	(B55+1)	[675A]		13	275
 Dark	N	0940	Ouifauhai	B77A546-D		Ni Wa		112	AsWc	K1 V	{ 1 }	(A45+1)	[464C]		9	200
 Dark	B	1002	Oldhall	C000200-C		As Lo Va		214	NaHu	M1 V M4 V	{ 0 }	(911-4)	[1217]		14	5
-Dark	B	1003	PANNUSGARIO	A5829DB-A		Hi Pr		503	NaAs	G0 V	{ 3 }	(E8D+5)	[BC7C]		6	7,280
+Dark	B	1003	PANNUSGARIO	A5829DB-A		Hi Pr Pz	A	503	NaAs	G0 V	{ 3 }	(E8D+5)	[BC7C]		6	7,280
 Dark	B	1004	Walryaei	C436541-7		Ni		810	NaAs	M2 V	{ -2 }	(742-5)	[1313]		6	28
 Dark	B	1005	Helene	C665866-7		Ga Ri Pa Ph Chir5 O:1003		502	NaHu	K4 III	{ 0 }	(A78-1)	[7846]		11	504
 Dark	B	1008	Arahao	C544733-5		Ag Pi		104	NaAs	M1 V M3 V	{ 0 }	(967-3)	[4722]		13	265
@@ -180,8 +180,8 @@ Dark	B	1205	Uaweisa	B7B2676-A		Fl He Ni		603	NaAs	K0 V	{ 1 }	(B55+1)	[5749]		12	
 Dark	B	1207	Hfieao	E576000-0		Ba		004	NaXX	A1 IV F7 V	{ -3 }	(200-5)	[0000]		13	0
 Dark	B	1208	Ftahalr	B522853-7	M	He Na Po Ph Pi		603	NaAs	M3 V M4 V	{ 0 }	(A78-3)	[5824]		13	392
 Dark	F	1213	Thometha	C427688-7		Ni OrmiW		125	GeOr	K3 V	{ -2 }	(852-2)	[6457]		16	64
-Dark	F	1215	Meshmo	B1006BB-8		Na Ni Va OrmiW		915	GeOr	K4 IV	{ -1 }	(E53+1)	[857A]		13	210
-Dark	F	1217	IOPFEN	D310ACC-8		Hi In Na		201	NaAs	M2 V	{ 0 }	(D99+3)	[DA8B]		11	3,159
+Dark	F	1215	Meshmo	B1006BB-8		Na Ni Va Da OrmiW	A	915	GeOr	K4 IV	{ -1 }	(E53+1)	[857A]		13	210
+Dark	F	1217	IOPFEN	D310ACC-8		Hi In Na Pz	A	201	NaAs	M2 V	{ 0 }	(D99+3)	[DA8B]		11	3,159
 Dark	J	1221	Troli'ih	B000526-9		As Ni Va		923	NaAs	M2 V	{ 0 }	(C44-1)	[4548]		8	173
 Dark	J	1223	Hoirhesyea	C755748-8		Ag Ga		303	AsMw	G2 V	{ 0 }	(C68+1)	[7758]		8	576
 Dark	J	1224	Hlitilar	E100646-7		Na Ni Va		914	AsT9	M2 V M8 V	{ -3 }	(851-4)	[5346]		16	24
@@ -202,7 +202,7 @@ Dark	F	1320	Weaiyiy	A646497-B	KM	Ni Pa		404	NaAs	A4 V M2 V	{ 2 }	(A35+2)	[465B]	
 Dark	J	1321	Naco	A310557-B		Ni		313	NaAs	M0 V M1 V	{ 1 }	(B45+1)	[565B]		15	220
 Dark	J	1327	Weisaow	B656677-A		Ag Ni Ga		624	AsSc	M3 V	{ 2 }	(E56+2)	[685A]		14	840
 Dark	N	1331	Htakaoea	C435789-9				400	AsT7	M2 V	{ 0 }	(969+1)	[876A]		8	486
-Dark	N	1335	Heaeakh	E9487AB-6		Ag Pi		303	AsMw	M0 V M3 V	{ -1 }	(966+1)	[9678]		10	324
+Dark	N	1335	Heaeakh	E9487AB-6		Ag Pi Pz	A	303	AsMw	M0 V M3 V	{ -1 }	(966+1)	[9678]		10	324
 Dark	N	1337	SUIKHIYEISELA	C200987-C		Hi In Na Va		313	AsMw	M1 V M0 V	{ 3 }	(F8E+3)	[9C5C]		10	5,040
 Dark	B	1402	Reawaiy	C647234-8		Lo		502	NaAs	M3 III	{ -2 }	(611-4)	[1136]		10	4
 Dark	B	1405	Kofyikh	A599758-9		Pi		203	NaAs	G0 V	{ 1 }	(C6A+1)	[7859]		10	720
@@ -267,9 +267,9 @@ Dark	C	1805	Bathanfel	C788143-4		Lo		503	NaAs	M1 V M6 V	{ -2 }	(311-5)	[1121]		1
 Dark	G	1813	Ye	D423547-7		Ni Po		825	NaAs	M2 V	{ -3 }	(741-3)	[5257]		15	20
 Dark	K	1821	Aiwaosois	C100476-B		Ni Va		304	AsSc	A0 V	{ 0 }	(A33-1)	[344A]		9	81
 Dark	K	1825	Tenarna	B436233-B	KM	Lo		704	NaAs	K9 V	{ 2 }	(811-1)	[1428]		17	7
-Dark	K	1826	Aftea	D20079B-8		Na Va Pi		813	AsMw	K3 V M2 V	{ -2 }	(D66+1)	[957A]		13	468
+Dark	K	1826	Aftea	D20079B-8		Na Va Pi Pz	A	813	AsMw	K3 V M2 V	{ -2 }	(D66+1)	[957A]		13	468
 Dark	K	1829	Yelrailr	C10026A-B		Lo Va O:1830		110	AsMw	M0 V	{ 0 }	(511+2)	[427D]		10	10
-Dark	K	1830	Eieiau	A5436AA-C		Ni Po		710	AsMw	K6 IV	{ 1 }	(955+3)	[877E]		6	675
+Dark	K	1830	Eieiau	A5436AA-C		Ni Po Da	A	710	AsMw	K6 IV	{ 1 }	(955+3)	[877E]		6	675
 Dark	O	1832	Hiwoieikh	D893435-6		Ni		204	AsT8	M1 V	{ -3 }	(631-5)	[2134]		12	9
 Dark	C	1901	Eariure	C73A332-A		Lo Wa		100	NaAs	K6 V M5 V	{ 0 }	(521-4)	[1316]		5	6
 Dark	C	1902	MURPHY	D200A98-7		Hi In Na Va		312	NaHu	K1 V M2 V	{ 0 }	(C99+1)	[AA57]		12	972
@@ -308,9 +308,9 @@ Dark	O	2033	Eahkihkao	E574265-7		Lo O:1934		624	AsMw	K3 V	{ -3 }	(411-5)	[1135]	
 Dark	O	2037	Tloueaeiei	B310879-C		Na Ph Pi		323	AsSc	G6 III D	{ 2 }	(F7C+3)	[9A6D]		13	3,780
 Dark	O	2038	Htao'ewyalr	C423588-7		Ni Po		422	AsWc	M3 V M6 V	{ -2 }	(742-2)	[5357]		12	45
 Dark	O	2039	Eiaohe	C100588-A		Ni Va		723	AsMw	K0 III D	{ 0 }	(C44+1)	[555A]		17	192
-Dark	O	2040	Riyai	E7526AC-6		Ni Po		711	AsTv	K3 V	{ -3 }	(851+1)	[9389]		14	40
+Dark	O	2040	Riyai	E7526AC-6		Ni Po Da	A	711	AsTv	K3 V	{ -3 }	(851+1)	[9389]		14	40
 Dark	C	2105	Cuoon	B96A621-7	M	Ni Ri Wa Chir4		803	NaAs	M0 V	{ 0 }	(854-4)	[2613]		9	96
-Dark	C	2106	Obalsa	B5858C8-6		Ri Pa Ph		204	NaAs	G5 V M2 V	{ 1 }	(A78+1)	[8956]		9	560
+Dark	C	2106	Obalsa	B5858C8-6		Ri Pa Ph Pz	A	204	NaAs	G5 V M2 V	{ 1 }	(A78+1)	[8956]		9	560
 Dark	C	2108	Febung	B572312-9		He Lo		713	NaAs	M1 V	{ 0 }	(921-4)	[1315]		11	11
 Dark	C	2109	Tauoilais	C799111-8		Lo		204	NaAs	M0 V M5 V	{ -2 }	(711-5)	[1114]		14	4
 Dark	G	2111	Ikhaeal	C653131-8		Lo Po		714	NaAs	M0 V	{ -2 }	(811-5)	[1114]		12	4
@@ -324,7 +324,7 @@ Dark	K	2125	Iyhahorl	E437366-6		Lo O:2126		112	AsMw	M2 V M1 V	{ -3 }	(521-4)	[21
 Dark	K	2126	Aohitao	B534843-B		Ph		404	AsMw	M3 V M2 V	{ 2 }	(E7C-1)	[5A28]		9	1,058
 Dark	K	2128	Louhtah	C66A884-A		Ri Wa Ph		802	AsTv	M1 V M3 V	{ 2 }	(C7B+1)	[6A38]		10	924
 Dark	O	2131	Ehalriwa	A72657B-A		Ni		802	AsSc	M2 V	{ 1 }	(945+3)	[767C]		7	540
-Dark	O	2132	Hkyosali	E55669B-6		Ag Ni		602	AsVc	M2 V M4 V M9 V	{ -2 }	(852+1)	[8478]		12	80
+Dark	O	2132	Hkyosali	E55669B-6		Ag Ni Da	A	602	AsVc	M2 V M4 V M9 V	{ -2 }	(852+1)	[8478]		12	80
 Dark	O	2136	EWAUSIAKTIY	E310988-7		Hi In Na		924	AsTv	M2 V	{ 0 }	(B89+1)	[9957]		15	792
 Dark	O	2138	YOHKUI	A000978-E		As Hi In Na Va		803	AsSc	K0 V	{ 4 }	(E8G+4)	[9D5E]		10	7,168
 Dark	O	2139	Hteaokhewi	C59A168-9		Lo Wa O:2138		603	AsSc	M1 V K7 V	{ -1 }	(611-1)	[1159]		9	5
@@ -346,7 +346,7 @@ Dark	O	2239	Hwiliwaoh	D694774-6		Ag Pi		414	AsSc	K3 V	{ -1 }	(966-3)	[5634]		10	
 Dark	C	2302	Datja	E673122-5		Lo		814	SoCf	G5 V M4 V	{ -3 }	(311-5)	[1111]		11	2
 Dark	C	2308	Meskok	C654768-5		Ag O:2610		314	SoCf	M3 V M7 V	{ 0 }	(967+1)	[7755]		13	378
 Dark	G	2315	Van Kemp	B500596-B	KM	Ni Va Da	A	904	NaHu	A1 V	{ 2 }	(B46+1)	[474A]		11	264
-Dark	G	2316	STRIN	C1009AD-8		Hi In Na Va		205	NaHu	M0 V M7 V	{ 1 }	(G8A+5)	[DA9C]		16	6,400
+Dark	G	2316	STRIN	C1009AD-8		Hi In Na Va Pz	A	205	NaHu	M0 V M7 V	{ 1 }	(G8A+5)	[DA9C]		16	6,400
 Dark	G	2317	Shiro	C433211-8		Lo Po		101	SoCf	G6 V	{ -2 }	(511-5)	[1114]		6	3
 Dark	K	2321	Ha'yesfer	C100743-8		Na Va Pi		501	AsT5	K4 V M9 V	{ -1 }	(A67-4)	[4625]		6	252
 Dark	K	2322	Khtyasitrao	B436448-D		Ni		922	AsMw	M1 V M7 V	{ 1 }	(A34+1)	[455D]		11	120
@@ -368,18 +368,18 @@ Dark	G	2416	Stop Gap	C684200-9		Lo		202	SoCf	M2 II	{ -1 }	(611-5)	[1114]		10	3
 Dark	K	2422	Oskvo	X31038D-7		Lo Fo	R	800	NaAs	K5 V M8 V	{ -3 }	(521+1)	[719B]		9	10
 Dark	K	2426	Iweakhte	C554888-8		Pa Ph		915	AsWc	M2 V M4 V	{ -1 }	(G77-1)	[8758]		13	706
 Dark	K	2427	Eiouktoh	C433685-A		Na Ni Po		923	AsT8	M0 V	{ 0 }	(D54-2)	[4638]		11	208
-Dark	K	2430	OIIRL	A553AAB-E		Hi Po		713	AsWc	M0 V M2 V	{ 3 }	(G9F+5)	[CD7G]		13	10,800
+Dark	K	2430	OIIRL	A553AAB-E		Hi Po Pz	A	713	AsWc	M0 V M2 V	{ 3 }	(G9F+5)	[CD7G]		13	10,800
 Dark	O	2432	Irihroalea	B553578-B		Ni Po		304	AsSc	K7 III	{ 1 }	(B45+1)	[565B]		15	220
-Dark	O	2434	Euhisai	D5678AA-6		Ri Pa Ph		705	AsVc	M2 V M1 V	{ -1 }	(A76+1)	[A778]		17	420
+Dark	O	2434	Euhisai	D5678AA-6		Ri Pa Ph Pz	A	705	AsVc	M2 V M1 V	{ -1 }	(A76+1)	[A778]		17	420
 Dark	O	2435	Uiwealirlao	D424445-9		Ni		204	AsT7	K0 V	{ -2 }	(A31-4)	[2237]		12	18
-Dark	O	2438	Reierekh	E88A7AB-7		Ri Wa		304	AsWc	K0 V	{ -1 }	(967+1)	[9679]		13	378
+Dark	O	2438	Reierekh	E88A7AB-7		Ri Wa Pz	A	304	AsWc	K0 V	{ -1 }	(967+1)	[9679]		13	378
 Dark	D	2501	Lachbes	D73A146-6		Lo Wa		610	SoCf	M2 V	{ -3 }	(311-4)	[1145]		12	2
 Dark	D	2503	Chacimu	C664453-5		Ni Pa		204	SoCf	K4 V	{ -2 }	(631-5)	[1222]		17	9
 Dark	D	2506	Wang	D789899-2		Ri Ph		222	SoCf	K3 V M8 V	{ -1 }	(A74+1)	[9763]		8	280
 Dark	D	2510	Springflow	B777465-8		Ni Pa O:2610		314	SoCf	M2 V M0 V	{ -1 }	(B32-3)	[2336]		12	46
 Dark	H	2511	Lima	B426431-A		Ni		204	SoCf	M3 V M8 V M6 V M0 V	{ 1 }	(A34-3)	[1516]		8	84
 Dark	H	2516	Torisad	C100446-9		Ni Va		422	SoCf	K0 V	{ -1 }	(A32-2)	[3348]		8	48
-Dark	L	2523	Besmam	B64159B-A	KM	He Ni Po		902	NaAs	M2 V	{ 2 }	(946+4)	[777C]		10	864
+Dark	L	2523	Besmam	B64159B-A	KM	He Ni Po Da	A	902	NaAs	M2 V	{ 2 }	(946+4)	[777C]		10	864
 Dark	L	2524	Sovkhersk	E726742-7		Pi		412	SoCf	F2 V M1 V	{ -2 }	(966-5)	[3513]		11	162
 Dark	L	2525	O'awiy	E84A897-8		Wa Ph Pi		223	AsTv	K4 V M3 V	{ -2 }	(F76-2)	[8658]		13	504
 Dark	L	2527	EARLTRAS	B6A1965-8	M	Fl He Hi In Asla2 Mr		205	SoCf	M1 V	{ 2 }	(G8B+1)	[7B36]		12	1,408
@@ -388,7 +388,7 @@ Dark	P	2537	OEAFOWYAHLULR	E6A2945-9		Fl He Hi In		304	AsTv	M2 V M1 V M2 V	{ 1 }	
 Dark	P	2539	Eiar	C884788-8		Ag Ri		920	AsVc	M1 V M5 V	{ 1 }	(B69+1)	[7858]		12	594
 Dark	P	2540	Steahryoha	E863855-7		Ri Ph		100	AsMw	M2 III	{ -1 }	(A77-3)	[6735]		9	343
 Dark	D	2601	541-668	X541668-5		He Ni Po Fo O:Reav-2540 Px	R	104	SoCf	K2 V	{ -3 }	(851-3)	[6355]		17	28
-Dark	D	2603	Karziv	D4318BC-7		Na Po Ph		201	SoCf	K3 V	{ -2 }	(A76+1)	[B68A]		7	420
+Dark	D	2603	Karziv	D4318BC-7		Na Po Ph Pz	A	201	SoCf	K3 V	{ -2 }	(A76+1)	[B68A]		7	420
 Dark	D	2605	Dengmi	CA88486-4		Ni Pa		320	SoCf	G1 V M1 V	{ -2 }	(631-3)	[3243]		8	13
 Dark	D	2606	Fonfado	EAA856A-8		Fl Ni O:2610		400	SoCf	M1 V M3 V	{ -3 }	(741-1)	[727A]		7	25
 Dark	D	2607	Caprona	D77A404-5		Ni Wa		332	SoCf	K7 II M6 V	{ -3 }	(631-5)	[2133]		9	9
@@ -410,7 +410,7 @@ Dark	H	2717	Krasiynsk	C100587-A		Ni Va		804	SoCf	K4 V	{ 0 }	(B44+1)	[555A]		13	1
 Dark	H	2718	Liggair	C676687-5		Ag Ni		603	SoCf	K2 V	{ -1 }	(853-1)	[6555]		8	108
 Dark	L	2722	Dejeran	B775887-5	M	Pa Ph Pi		504	SoCf	A4 V M7 V	{ 0 }	(A77+1)	[8855]		13	490
 Dark	L	2728	Aokhiyfti	C100149-9		Lo Va		604	AsTv	G9 V	{ -1 }	(711+1)	[216A]		12	7
-Dark	L	2729	Arakhal	C5688BB-8		Ri Pa Ph		723	AsVc	M2 V	{ 0 }	(F78+2)	[A87A]		12	1,680
+Dark	L	2729	Arakhal	C5688BB-8		Ri Pa Ph Pz	A	723	AsVc	M2 V	{ 0 }	(F78+2)	[A87A]		12	1,680
 Dark	P	2732	JINGLESWELT	B574AB8-D	KM	Hi In Cp		304	SoCf	M1 V	{ 5 }	(G9H+5)	[AF5D]		15	12,240
 Dark	P	2734	Ohkiylyo	A310846-E		Na Ph Pi		600	AsVc	M1 V	{ 2 }	(A7D+1)	[7A4D]		7	910
 Dark	P	2737	Ikhalil	E764786-6		Ag Ri		813	AsMw	K2 V M1 V	{ 0 }	(967-1)	[6745]		14	340
@@ -436,7 +436,7 @@ Dark	D	2904	Renfrew	A8B3541-9	KM	Fl Ni		601	SoCf	M2 V	{ 1 }	(845-3)	[1615]		7	11
 Dark	H	2911	Shobind	A794689-8		Ag Ni		113	SoCf	M2 V	{ 0 }	(C54+1)	[7669]		13	240
 Dark	H	2913	Gakdorjaro	A622756-B		He Na Po Pi		205	SoCf	K1 V	{ 2 }	(E6C+1)	[694A]		11	1,008
 Dark	L	2921	Gilead	X586879-1		Ri Pa Ph Fo	R	603	NaHu	M3 V	{ -1 }	(A74+1)	[9762]		12	280
-Dark	L	2922	NEW LIBDIS	C87AABB-C	M	Hi In Wa Cp		200	SoCf	K4 V	{ 3 }	(C9E+5)	[CD7E]		11	7,560
+Dark	L	2922	NEW LIBDIS	C87AABB-C	M	Hi In Wa Cp Pz	A	200	SoCf	K4 V	{ 3 }	(C9E+5)	[CD7E]		11	7,560
 Dark	P	2936	Tua'aiou	B787449-B		Ni Ga Pa		213	AsWc	K5 V	{ 1 }	(A34+2)	[556C]		14	240
 Dark	P	2937	Ilalt	A759300-A		Lo		614	SoCf	M3 V	{ 1 }	(A21-3)	[1415]		12	14
 Dark	P	2938	Gimemuh	E310000-0		Ba		015	SoCf	M2 V	{ -3 }	(200-5)	[0000]		18	0
@@ -468,7 +468,7 @@ Dark	L	3123	Shin	B100421-C	KM	Ni Va		203	SoCf	M2 V	{ 2 }	(935-2)	[1618]		14	108
 Dark	L	3125	Jodar	C576631-7		Ag Ni		312	SoCf	K2 V M3 V M6 V	{ -1 }	(853-5)	[2513]		9	60
 Dark	L	3128	Terenn	C674559-7		Ag Ni		304	SoCf	M1 V M6 V	{ -1 }	(743+1)	[6468]		15	84
 Dark	L	3129	Garnenshold	A886436-9		Ni Ga Pa		414	SoCf	M3 V	{ 0 }	(B33-1)	[3448]		15	89
-Dark	P	3132	TREEGE	B542ABA-C		He Hi In Po		712	SoCf	M3 V	{ 4 }	(F9F+5)	[CE7E]		12	10,125
+Dark	P	3132	TREEGE	B542ABA-C		He Hi In Po Pz	A	712	SoCf	M3 V	{ 4 }	(F9F+5)	[CE7E]		12	10,125
 Dark	P	3138	Kintato	C544551-5		Ag Ni		704	SoCf	G1 V M9 V	{ -1 }	(743-5)	[1411]		14	42
 Dark	D	3202	COLUMN	B537988-D	KM	Hi Cp		110	SoCf	A2 V M7 V	{ 4 }	(C8G+4)	[9D5D]		12	6,144
 Dark	D	3204	Linate	A200544-E		Ni Va Da	A	304	SoCf	G1 V M2 V	{ 1 }	(B45-1)	[363C]		13	198

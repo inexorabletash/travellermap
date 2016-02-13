@@ -35,9 +35,9 @@ namespace Maps.Serialization
             }
         }
 
-        private static Regex comment = new Regex(@"^[#$@]", RegexOptions.Compiled | RegexOptions.CultureInvariant);
-        private static Regex sniff_tab = new Regex(@"^[^\t]*(\t[^\t]*){9,}$", RegexOptions.Compiled | RegexOptions.CultureInvariant);
-        private static Regex sniff_ss = new Regex(@"\{.*\} +\(.*\) +\[.*\]", RegexOptions.Compiled | RegexOptions.CultureInvariant);
+        private static readonly Regex comment = new Regex(@"^[#$@]", RegexOptions.Compiled | RegexOptions.CultureInvariant);
+        private static readonly Regex sniff_tab = new Regex(@"^[^\t]*(\t[^\t]*){9,}$", RegexOptions.Compiled | RegexOptions.CultureInvariant);
+        private static readonly Regex sniff_ss = new Regex(@"\{.*\} +\(.*\) +\[.*\]", RegexOptions.Compiled | RegexOptions.CultureInvariant);
 
         public static string SniffType(Stream stream)
         {
@@ -107,11 +107,11 @@ namespace Maps.Serialization
         private static readonly Regex worldRegex = new Regex(@"^" +
             @"( \s*       (?<name>        .*                           ) )  " + // Name
             @"( \s*       (?<hex>         \d{4}                        ) )  " + // Hex
-            @"( \s{1,2}   (?<uwp>         [ABCDEX][0-9A-Z]{6}-[0-9A-Z] ) )  " + // UWP (Universal World Profile)
+            @"( \s{1,2}   (?<uwp>         [ABCDEX?][0-9A-Z?]{6}-[0-9A-Z?] ) )  " + // UWP (Universal World Profile)
             @"( \s{1,2}   (?<base>        [A-Zr1-9* \-]                ) )  " + // Base
             @"( \s{1,2}   (?<codes>       .{10,}?                      ) )  " + // Remarks
             @"( \s+       (?<zone>        [GARBFU \-]                  ) )? " + // Zone
-            @"( \s{1,2}   (?<pbg>         [0-9X][0-9A-FX][0-9A-FX]     ) )  " + // PGB (Population multiplier, Belts, Gas giants)
+            @"( \s{1,2}   (?<pbg>         [0-9X?][0-9A-FX?][0-9A-FX?]     ) )  " + // PGB (Population multiplier, Belts, Gas giants)
             @"( \s{1,2}   (?<allegiance>  ([A-Za-z0-9][A-Za-z0-9?\-]|--)  ) )  " + // Allegiance
             @"( \s*       (?<rest>        .*?                          ) )  " + // Stellar data (etc)
             @"\s*$"
@@ -168,7 +168,10 @@ namespace Maps.Serialization
             }
             catch (Exception e)
             {
-                errors.Error("Parse error: " + e.Message, lineNumber, line);
+                if (errors != null)
+                    errors.Error("Parse error: " + e.Message, lineNumber, line);
+                else
+                    throw;
                 //throw new Exception(String.Format("UWP Parse Error in line {0}:\n{1}\n{2}", lineNumber, e.Message, line));
             }
         }
@@ -190,15 +193,15 @@ namespace Maps.Serialization
 
     internal abstract class T5ParserBase : SectorFileParser
     {
-        private const string HEX = @"[0123456789ABCDEFGHJKLMNPQRSTUVWXYZ]";
+        private const string HEX = @"[0123456789ABCDEFGHJKLMNPQRSTUVWXYZ?]";
 
         // Regex checks are only done in Debug - data is trusted otherwise
         private static readonly Regex HEX_REGEX = new Regex(@"^\d\d\d\d$");
-        private static readonly Regex UWP_REGEX = new Regex("^[ABCDEX]" + HEX + @"{6}-" + HEX + @"$");
-        private static readonly Regex PBG_REGEX = new Regex("^[0-9X]{3}$");
+        private static readonly Regex UWP_REGEX = new Regex("^[ABCDEX?]" + HEX + HEX + @"[0-AX?]" + HEX + @"{3}-" + HEX + @"$");
+        private static readonly Regex PBG_REGEX = new Regex("^[0-9X?]{3}$");
 
         private static readonly Regex BASES_REGEX = new Regex(@"^C?D?E?K?M?N?R?S?T?V?W?X?$");
-        private static readonly Regex ZONE_REGEX = new Regex(@"^(|A|R)$");
+        private static readonly Regex ZONE_REGEX = new Regex(@"^(|A|R|F|U)$");
         private static readonly Regex NOBILITY_REGEX = new Regex(@"^[BcCDeEfFGH]*$");
 
         private const string STAR = @"(D|BD|BH|[OBAFGKM][0-9]\x20(?:Ia|Ib|II|III|IV|V|VI))";
@@ -213,14 +216,14 @@ namespace Maps.Serialization
 
         private class FieldChecker
         {
-            private StringDictionary dict;
+            private Dictionary<string, string> dict;
             private ErrorLogger errors;
             private int lineNumber;
             private string line;
             bool hadError = false;
 
             public bool HadError { get { return hadError; } }
-            public FieldChecker(StringDictionary dict, ErrorLogger errors, int lineNumber, string line)
+            public FieldChecker(Dictionary<string, string> dict, ErrorLogger errors, int lineNumber, string line)
             {
                 this.dict = dict;
                 this.errors = errors;
@@ -289,7 +292,7 @@ namespace Maps.Serialization
             }
         }
 
-        protected static void ParseWorld(WorldCollection worlds, StringDictionary dict, string line, int lineNumber, ErrorLogger errors)
+        protected static void ParseWorld(WorldCollection worlds, Dictionary<string, string> dict, string line, int lineNumber, ErrorLogger errors)
         {
             try
             {
@@ -316,7 +319,7 @@ namespace Maps.Serialization
                     world.Worlds = w;
 
                 int ru;
-                if (int.TryParse(dict["RU"], NumberStyles.Integer | NumberStyles.AllowThousands, CultureInfo.InvariantCulture, out ru))
+                if (dict.ContainsKey("RU") && int.TryParse(dict["RU"], NumberStyles.Integer | NumberStyles.AllowThousands, CultureInfo.InvariantCulture, out ru))
                     world.ResourceUnits = ru;
 
                 // Cleanup known placeholders
@@ -333,7 +336,10 @@ namespace Maps.Serialization
             }
             catch (Exception e)
             {
-                errors.Error("Parse Error: " + e.Message, lineNumber, line);
+                if (errors != null)
+                    errors.Error("Parse Error: " + e.Message, lineNumber, line);
+                else
+                    throw;
                 //throw new Exception(String.Format("UWP Parse Error in line {0}:\n{1}\n{2}", lineNumber, e.Message, line));
             }
         }
@@ -401,7 +407,7 @@ namespace Maps.Serialization
             if (cols.Length != header.Length)
                 throw new ParseException(string.Format("ERROR (Tab Parse) ({0}): {1}", lineNumber, line));
 
-            StringDictionary dict = new StringDictionary();
+            Dictionary<string, string> dict = new Dictionary<string, string>();
             for (var i = 0; i < cols.Length; ++i)
                 dict[header[i]] = cols[i].Trim();
 
@@ -410,7 +416,7 @@ namespace Maps.Serialization
 
         internal struct Row
         {
-            public StringDictionary dict;
+            public Dictionary<string, string> dict;
             public int lineNumber;
             public string line;
         }

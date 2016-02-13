@@ -578,6 +578,7 @@ namespace Maps.Rendering
                     // TODO: selector may be expensive
                     foreach (World world in selector.Worlds) { DrawWorld(fonts, world, WorldLayer.Background); }
                     foreach (World world in selector.Worlds) { DrawWorld(fonts, world, WorldLayer.Foreground); }
+                    foreach (World world in selector.Worlds) { DrawWorld(fonts, world, WorldLayer.Overlay); }
                 }
                 timers.Add(new Timer("worlds"));
                 #endregion
@@ -846,26 +847,26 @@ namespace Maps.Rendering
             {
                 graphics.MultiplyTransform(worldSpaceToImageSpace);
 
-                const float backgroundImageScale = 2.0f;
-
-                // Scaled size of the background
-                double w = s_nebulaImage.PixelWidth * backgroundImageScale;
-                double h = s_nebulaImage.PixelHeight * backgroundImageScale;
-
-                // Offset of the background, relative to the canvas
-                double ox = (float)(-tileRect.Left * scale * Astrometrics.ParsecScaleX) % w;
-                double oy = (float)(-tileRect.Top * scale * Astrometrics.ParsecScaleY) % h;
-                if (ox > 0) ox -= w;
-                if (oy > 0) oy -= h;
-
-                // Number of copies needed to cover the canvas
-                int nx = 1 + (int)Math.Floor(tileSize.Width / w);
-                int ny = 1 + (int)Math.Floor(tileSize.Height / h);
-                if (ox + nx * w < tileSize.Width) nx += 1;
-                if (oy + ny * h < tileSize.Height) ny += 1;
-
                 lock (s_nebulaImage)
                 {
+                    const float backgroundImageScale = 2.0f;
+
+                    // Scaled size of the background
+                    double w = s_nebulaImage.PixelWidth * backgroundImageScale;
+                    double h = s_nebulaImage.PixelHeight * backgroundImageScale;
+
+                    // Offset of the background, relative to the canvas
+                    double ox = (float)(-tileRect.Left * scale * Astrometrics.ParsecScaleX) % w;
+                    double oy = (float)(-tileRect.Top * scale * Astrometrics.ParsecScaleY) % h;
+                    if (ox > 0) ox -= w;
+                    if (oy > 0) oy -= h;
+
+                    // Number of copies needed to cover the canvas
+                    int nx = 1 + (int)Math.Floor(tileSize.Width / w);
+                    int ny = 1 + (int)Math.Floor(tileSize.Height / h);
+                    if (ox + nx * w < tileSize.Width) nx += 1;
+                    if (oy + ny * h < tileSize.Height) ny += 1;
+
                     for (int x = 0; x < nx; ++x)
                     {
                         for (int y = 0; y < ny; ++y)
@@ -877,7 +878,7 @@ namespace Maps.Rendering
             }
         }
 
-        private enum WorldLayer { Background, Foreground };
+        private enum WorldLayer { Background, Foreground, Overlay };
         private void DrawWorld(FontCache styleRes, World world, WorldLayer layer)
         {
             bool isPlaceholder = world.IsPlaceholder;
@@ -901,6 +902,33 @@ namespace Maps.Rendering
                 matrix.TranslatePrepend(center.X, center.Y);
                 matrix.ScalePrepend(styles.hexContentScale / Astrometrics.ParsecScaleX, styles.hexContentScale / Astrometrics.ParsecScaleY);
                 graphics.MultiplyTransform(matrix, XMatrixOrder.Prepend);
+
+                if (layer == WorldLayer.Overlay)
+                {
+                    #region Population Overlay 
+                    if (styles.showPopulationOverlay && world.Population > 0)
+                    {
+                        // TODO: Don't hardcode the color
+                        solidBrush.Color = XColor.FromArgb(0x80ffff00);
+                        float r = (float)Math.Sqrt(world.Population / Math.PI) * 0.00002f;
+                        graphics.DrawEllipse(solidBrush, -r, -r, r * 2, r * 2);
+                    }
+                    #endregion
+
+                    #region Importance Overlay
+                    if (styles.showImportanceOverlay)
+                    {
+                        int im = SecondSurvey.Importance(world);
+                        if (im > 0)
+                        {
+                            // TODO: Don't hardcode the color
+                            solidBrush.Color = XColor.FromArgb(0x2080ff00);
+                            float r = (im - 0.5f) * Astrometrics.ParsecScaleX;
+                            graphics.DrawEllipse(solidBrush, -r, -r, r * 2, r * 2);
+                        }
+                    }
+                    #endregion
+                }
 
                 if (!styles.useWorldImages)
                 {
@@ -1591,8 +1619,7 @@ namespace Maps.Rendering
                     {
                         BorderPath borderPath = border.ComputeGraphicsPath(sector, borderPathType);
 
-                        XGraphicsPath drawPath = borderPath.borderPathPoints.Length > 0 ? new XGraphicsPath(borderPath.borderPathPoints, borderPath.borderPathTypes, XFillMode.Alternate) : null;
-                        XGraphicsPath clipPath = new XGraphicsPath(borderPath.clipPathPoints, borderPath.clipPathTypes, XFillMode.Alternate);
+                        XGraphicsPath drawPath = new XGraphicsPath(borderPath.points, borderPath.types, XFillMode.Alternate);
 
                         Color? borderColor = border.Color;
                         LineStyle? borderStyle = border.Style;
@@ -1618,36 +1645,37 @@ namespace Maps.Rendering
                             // Clip to the path itself - this means adjacent borders don't clash
                             using (RenderUtil.SaveState(graphics))
                             {
-                                graphics.IntersectClip(clipPath);
-                                if (layer == BorderLayer.Fill)
+                                graphics.IntersectClip(drawPath);
+                                switch (layer)
                                 {
-                                    solidBrush.Color = Color.FromArgb(FILL_ALPHA, borderColor.Value);
-                                    graphics.DrawPath(solidBrush, clipPath);
+                                    case BorderLayer.Fill:
+                                        solidBrush.Color = Color.FromArgb(FILL_ALPHA, borderColor.Value);
+                                        graphics.DrawPath(solidBrush, drawPath);
+                                        break;
+                                    case BorderLayer.Stroke:
+                                        graphics.DrawPath(pen, drawPath);
+                                        break;
                                 }
-
-                                if (layer == BorderLayer.Stroke && drawPath != null)
-                                    graphics.DrawPath(pen, drawPath);
                             }
                         }
                         else
                         {
-                            if (layer == BorderLayer.Fill)
+                            switch (layer)
                             {
-                                solidBrush.Color = Color.FromArgb(FILL_ALPHA, borderColor.Value);
-                                graphics.DrawClosedCurve(solidBrush, borderPath.clipPathPoints);
-                            }
+                                case BorderLayer.Fill:
+                                    solidBrush.Color = Color.FromArgb(FILL_ALPHA, borderColor.Value);
+                                    graphics.DrawClosedCurve(solidBrush, borderPath.points);
+                                    break;
 
-                            if (layer == BorderLayer.Stroke)
-                            {
-                                foreach (PointF[] curve in borderPath.curvePoints)
-                                {
-                                    // TODO: Investigate DrawClosedCurve to handle endings
-                                    // Would need to have path computer tell whether
-                                    // or not the path was actually a closed loop
-                                    // Can do it by clipping borders to sector, but that loses
-                                    // bottom/right overlaps
-                                    graphics.DrawCurve(pen, curve, 0.6f);
-                                }
+                                case BorderLayer.Stroke:
+                                    foreach (var segment in borderPath.curves)
+                                    {
+                                        if (segment.closed)
+                                            graphics.DrawClosedCurve(pen, segment.points, 0.6f);
+                                        else
+                                            graphics.DrawCurve(pen, segment.points, 0.6f);
+                                    }
+                                    break;
                             }
                         }
                     }

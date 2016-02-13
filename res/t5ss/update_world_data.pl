@@ -48,7 +48,7 @@ my %sectors = (
     Stai => "Staihaia'yo",
     Thet => "Theta Borealis",
     Troj => "Trojan Reach",
-    Tugl => 'Tugliki',
+    Tugl => 'Tuglikki',
     Uist => "Uistilrao",
     Ustr => "Ustral Quadrant",
     Vang => "Vanguard Reaches",
@@ -70,6 +70,8 @@ my $line;
 $line = <$in>; chomp $line; $line =~ s/\s+$//;
 die "Unexpected header: $line\n" unless $line =~ /^WORLD DATA$/;
 
+$line = <$in>; chomp $line; $line =~ s/\s+$//;
+die "Unexpected header: $line\n" unless $line =~ /^$/;
 $line = <$in>; chomp $line; $line =~ s/\s+$//;
 die "Unexpected header: $line\n" unless $line =~ /^$/;
 

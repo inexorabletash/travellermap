@@ -22,7 +22,7 @@ namespace Maps.API
             public Responder(HttpContext context) : base(context) { }
             public override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Xml; } }
 
-            private static Dictionary<string, string> SpecialSearches = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase) {
+            private static readonly IReadOnlyDictionary<string, string> SpecialSearches = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase) {
             { @"(default)", @"~/res/search/Default.json"},
             { @"(grand tour)", @"~/res/search/GrandTour.json"},
             { @"(arrival vengeance)", @"~/res/search/ArrivalVengeance.json"},
@@ -30,7 +30,7 @@ namespace Maps.API
             { @"(cirque)", @"~/res/search/Cirque.json"}
         };
 
-            private static Regex UWP_REGEXP = new Regex(@"^\w{7}-\w$");
+            private static readonly Regex UWP_REGEXP = new Regex(@"^\w{7}-\w$");
 
             public override void Process()
             {
@@ -62,7 +62,7 @@ namespace Maps.API
                 // Do the search
                 //
                 ResourceManager resourceManager = new ResourceManager(context.Server);
-                SectorMap map = SectorMap.GetInstance(resourceManager);
+                SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, GetStringOption("milieu"));
 
                 query = query.Replace('*', '%'); // Support * and % as wildcards
                 query = query.Replace('?', '_'); // Support ? and _ as wildcards
@@ -187,7 +187,7 @@ namespace Maps.API.Results
             internal int? Importance { get; set; }
         }
 
-        internal static Item LocationToSearchResult(SectorMap map, ResourceManager resourceManager, ItemLocation location)
+        internal static Item LocationToSearchResult(SectorMap.Milieu map, ResourceManager resourceManager, ItemLocation location)
         {
             if (location is WorldLocation)
             {

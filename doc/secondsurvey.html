@@ -4,7 +4,7 @@
 <link rel="shortcut icon" href="../favicon.ico">
 <link rel="stylesheet" href="../site.css">
 <meta name="viewport" content="initial-scale=1, width=device-width">
-<script src="../lib/polyfill/polyfill.min.js?update=2015-10-28"></script>
+<script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.14/polyfill.min.js"></script>
 
 <style>
   table {
@@ -1169,9 +1169,11 @@
 
       <tr><td><code>[<var>Sophont</var>]</code><td>Homeworld of major race.
       <tr><td><code>(<var>Sophont</var>)</code><td rowspan="2">Homeworld of minor race.  <code>0</code>-<code>9</code> indicates tenths of population if &lt; 100%.
-      <tr><td><code>(<var>Sophont</var>)0</code>
+      <tr><td><code>(<var>Sophont</var>)#</code>
+      <tr><td><code>Di(<var>Sophont</var>)</code><td>Homeworld of extinct minor race (Dieback).
       <tr><td><code><var>Soph</var>0</code><td rowspan="2">Sophont Population. <code>Soph</code> is an <a href="#sophont">abbreviation for the sophont name</a>. <code>0</code>-<code>9</code> indicates tenths of population; <code>W</code> is 100%, e.g. <code>DroyW</code>.
       <tr><td><code><var>Soph</var>W</code>
+
       <tr><th colspan="2" class="section">Non-Standard / Legacy Codes
 
       <tr><td><code><var>S</var>0</code><td rowspan="3">Sophont Population. <code>S</code> is an <a href="#sophont">abbreviation for the sophont name</a>. <code>0</code>-<code>9</code> indicates tenths of population; <code>w</code> is 100%, e.g. <code>Dw</code>
@@ -1190,6 +1192,13 @@
       <tr><td><code>Ex</code><td>Exile Camp.<span>Imperial.</span>
       <tr><td><code>Pr</code><td>Prison World.<span>Imperial.</span>
       <tr><td><code>Xb</code><td>Xboat Station.<span>Imperial.</span>
+      <tr><td><code>Cr</code><td>Reserve Capital.<span>Zhodani.</span>
+
+      <tr><td><code>S#</code><td rowspan=2>Stellar companion orbits
+        (<code>F</code> = far),
+        e.g. <code>S19</code> indicates companion stars are in orbits 1 and 9;
+        <code>SF1</code> indicates far companion is binary (companion in orbit 1)
+      <tr><td><code>S##</code>
 
       <tr><td><code>{...}</code><td>Other comments or annotations.
     </table>
@@ -1236,10 +1245,12 @@
       <tr><td><code>Hama</code><td>Hamaran<td>Dagu
       <tr><td><code>Hive</code><td>Hiver<td>Hiver space
       <tr><td><code>Huma</code><td>Human (Vilani/&#x200B;Solomani-mixed)<td>Imperial/&#x200B;Solomani space
+      <tr><td><code>Jaib</code><td>Jaibok<td>Thet
       <tr><td><code>Jala</code><td>Jala'lak<td>Dagu
       <tr><td><code>Jend</code><td>Jenda<td>Hint
       <tr><td><code>Jonk</code><td>Jonkeereen<td>Dene/&#x200B;Spin
       <tr><td><code>Kafo</code><td>Kafoe<td>Cruc
+      <tr><td><code>Kagg</code><td>Kaggushus<td>Mass
       <tr><td><code>Karh</code><td>Karhyri<td>Cruc
       <tr><td><code>Kiak</code><td>Kiakh'iee<td>Dagu
       <tr><td><code>Lamu</code><td>Lamura Gav/&#x200B;Teg<td>Hint
@@ -1248,6 +1259,7 @@
       <tr><td><code>Luri</code><td>Luriani<td>Forn/&#x200B;Ley
       <tr><td><code>Mal'</code><td>Mal'Gnar<td>Beyo
       <tr><td><code>Mask</code><td>Maskai<td>Glim
+      <tr><td><code>Mitz</code><td>Mitzene<td>Thet
       <tr><td><code>Muri</code><td>Murians<td>Vang
       <tr><td><code>Orca</code><td>Orca<td>Imperial/&#x200B;Solomani space
       <tr><td><code>Ormi</code><td>Ormine<td>Dark
@@ -1256,6 +1268,8 @@
       <tr><td><code>Sele</code><td>Selenites<td>Alph
       <tr><td><code>Sred</code><td>Sred*Ni<td>Beyo
       <tr><td><code>Stal</code><td>Stalkers<td>Hint
+      <tr><td><code>Suer</code><td>Suerrat<td>Ilel
+      <tr><td><code>Sull</code><td>Sulliji<td>Dene
       <tr><td><code>Swan</code><td>Swanfei<td>Gate
       <tr><td><code>Sydi</code><td>Sydites<td>Ley
       <tr><td><code>Syle</code><td>Syleans<td>Core
@@ -1699,6 +1713,7 @@
     <table>
       <tr><th>Code<th>Description<th>Location
         <!-- Allegiance Table Begin -->
+      <tr><td><code>3EoG</code><td>Third Empire of Gashikan<td>Mend
       <tr><td><code>4Wor</code><td>Four Worlds<td>Farf
       <tr><td><code>AkUn</code><td>Akeena Union<td>Gate
       <tr><td><code>AlCo</code><td>Altarean Confederation<td>Vang
@@ -1732,6 +1747,7 @@
       <tr><td><code>CaAs</code><td>Carrillian Assembly<td>Reav
       <tr><td><code>CaPr</code><td>Principality of Caledon<td>Reav
       <tr><td><code>CaTe</code><td>Carter Technocracy<td>Reav
+      <tr><td><code>CoBa</code><td>Confederation of Bammesuka<td>Mend
       <tr><td><code>CoLp</code><td>Council of Leh Perash<td>Hint
       <tr><td><code>CsCa</code><td>Client state, Principality of Caledon<td>Reav
       <tr><td><code>CsHv</code><td>Client state, Hiver Federation<td>Cruc/&#x200B;Spic
@@ -1739,7 +1755,7 @@
       <tr><td><code>CsMP</code><td>Client state, Ma'Gnar Primarchic<td>Beyo
       <tr><td><code>CsZh</code><td>Client state, Zhodani Consulate<td>Spin/&#x200B;Troj
       <tr><td><code>CyUn</code><td>Cytralin Unity<td>Hint
-      <tr><td><code>DaCf</code><td>Darrian Confederation<td>Spin/&#x200B;Troj
+      <tr><td><code>DaCf</code><td>Darrian Confederation<td>Spin
       <tr><td><code>DeHg</code><td>Descarothe Hegemony<td>Farf
       <tr><td><code>DiWb</code><td>Die Weltbund<td>Beyo
       <tr><td><code>DoAl</code><td>Domain of Alntzar<td>Farf
@@ -1778,16 +1794,26 @@
       <tr><td><code>ImSy</code><td>Third Imperium, Sylean Worlds<td>Core
       <tr><td><code>ImVd</code><td>Third Imperium, Vegan Autonomous District<td>Solo
       <tr><td><code>IsDo</code><td>Islaiat Dominate<td>Eali
+      <tr><td><code>JAOz</code><td>Julian Protectorate, Alliance of Ozuvon<td>Mend
+      <tr><td><code>JAsi</code><td>Julian Protectorate, Asimikigir Confederation<td>Amdu/&#x200B;Mend
+      <tr><td><code>JCoK</code><td>Julian Protectorate, Constitution of Koekhon<td>Amdu/&#x200B;Mend
+      <tr><td><code>JHhk</code><td>Julian Protectorate, Hhkar Sphere<td>Amdu/&#x200B;Mend
+      <tr><td><code>JLum</code><td>Julian Protectorate, Lumda Dower<td>Mend
+      <tr><td><code>JMen</code><td>Julian Protectorate, Commonwealth of Mendan<td>Mend
+      <tr><td><code>JPSt</code><td>Julian Protectorate, Pirbarish Starlane<td>Mend
+      <tr><td><code>JRar</code><td>Julian Protectorate, Rar Errall/Wolves Warren<td>Mend
+      <tr><td><code>JUkh</code><td>Julian Protectorate, Ukhanzi Coordinate<td>Mend
+      <tr><td><code>JVug</code><td>Julian Protectorate, Vugurar Dominion<td>Mend
       <tr><td><code>JaPa</code><td>Jarnac Pashalic<td>Beyo/&#x200B;Vang
-      <tr><td><code>JuHl</code><td>Julian Protectorate, Hegemony of Lorean<td>Empt
-      <tr><td><code>JuPr</code><td>Julian Protectorate, independent<td>Empt
-      <tr><td><code>JuRu</code><td>Julian Protectorate, Rukadukaz Republic<td>Empt
+      <tr><td><code>JuHl</code><td>Julian Protectorate, Hegemony of Lorean<td>Amdu/&#x200B;Empt/&#x200B;Mend
+      <tr><td><code>JuPr</code><td>Julian Protectorate, independent<td>Amdu/&#x200B;Empt/&#x200B;Mend
+      <tr><td><code>JuRu</code><td>Julian Protectorate, Rukadukaz Republic<td>Empt/&#x200B;Mend
+      <tr><td><code>KPel</code><td>Kingdom of Peladon<td>Thet
       <tr><td><code>KaCo</code><td>Katowice Conquest<td>Cruc
       <tr><td><code>KaWo</code><td>Karhyri Worlds<td>Cruc
       <tr><td><code>KhLe</code><td>Khuur League<td>Ley
       <tr><td><code>KoEm</code><td>Korsumug Empire<td>Thet
       <tr><td><code>KoPm</code><td>Percavid Marches<td>Thet
-      <tr><td><code>Kpel</code><td>Kingdom of Peladon<td>Thet
       <tr><td><code>KrBu</code><td>Kranzbund<td>Vang
       <tr><td><code>LaCo</code><td>Langemarck Coalition<td>Vang
       <tr><td><code>LeSu</code><td>League of Suns<td>Farf
@@ -1802,7 +1828,7 @@
       <tr><td><code>MrCo</code><td>Mercantile Concord<td>Cruc
       <tr><td><code>NaAs</code><td>Non-Aligned, Aslan-dominated (outside Hierate)<td>Akti/&#x200B;Dark/&#x200B;Eali/&#x200B;Rift/&#x200B;Uist/&#x200B;Ustr
       <tr><td><code>NaHu</code><td>Non-Aligned, Human-dominated<td>various
-      <tr><td><code>NaVa</code><td>Non-Aligned, Vargr-dominated<td>Anta/&#x200B;Corr/&#x200B;Dene/&#x200B;Empt/&#x200B;Gvur/&#x200B;Lish/&#x200B;Vlan/&#x200B;Ziaf
+      <tr><td><code>NaVa</code><td>Non-Aligned, Vargr-dominated<td>various
       <tr><td><code>NaXX</code><td>Non-Aligned, unclaimed<td>various
       <tr><td><code>OcWs</code><td>Outcasts of the Whispering Sky<td>Hint
       <tr><td><code>OlWo</code><td>Old Worlds<td>Cruc
@@ -1813,6 +1839,7 @@
       <tr><td><code>ReUn</code><td>Renkard Union<td>Gate
       <tr><td><code>Reac</code><td>The Reach<td>Cruc
       <tr><td><code>SaCo</code><td>Salinaikin Concordance<td>Farf
+      <tr><td><code>Sark</code><td>Sarkan Constellation<td>Mend
       <tr><td><code>SeFo</code><td>Senlis Foederate<td>Troj
       <tr><td><code>SlLg</code><td>Shukikikar League<td>Glim
       <tr><td><code>SoCf</code><td>Solomani Confederation<td>Alph/&#x200B;Diab/&#x200B;Dark/&#x200B;Hint/&#x200B;Magy/&#x200B;Olde/&#x200B;Reav/&#x200B;Solo/&#x200B;Spic/&#x200B;Ustr
@@ -1829,24 +1856,35 @@
       <tr><td><code>TroC</code><td>Trooles Confederation<td>Thet
       <tr><td><code>UnGa</code><td>Union of Garth<td>Farf
       <tr><td><code>UnHa</code><td>Union of Harmony<td>Dark/&#x200B;Reav
+      <tr><td><code>V17D</code><td>17th Disjucture<td>Mesh/&#x200B;Wind
       <tr><td><code>V40S</code><td>40th Squadron (Ekhelle Ksafi)<td>Gvur
       <tr><td><code>VARC</code><td>Anti-Rukh Coalition (Gnoerrgh Rukh Lloell)<td>Gvur
-      <tr><td><code>VAug</code><td>United Followers of Augurgh<td>Dene
-      <tr><td><code>VBkA</code><td>Bakne Alliance<td>
+      <tr><td><code>VAnP</code><td>Antares Pact<td>Mesh/&#x200B;Mend
+      <tr><td><code>VAug</code><td>United Followers of Augurgh<td>Dene/&#x200B;Tugl
+      <tr><td><code>VBkA</code><td>Bakne Alliance<td>Tugl
       <tr><td><code>VCKd</code><td>Commonality of Kedzudh (Kedzudh Aeng)<td>Gvur
-      <tr><td><code>VDzF</code><td>Dzarrgh Federate<td>Dene
-      <tr><td><code>VLIn</code><td>Llaeghskath Interacterate<td>
+      <tr><td><code>VDzF</code><td>Dzarrgh Federate<td>Dene/&#x200B;Prov/&#x200B;Tugl
+      <tr><td><code>VFFD</code><td>First Fleet of Dzo<td>Mesh
+      <tr><td><code>VGoT</code><td>Glory of Taarskoerzn<td>Prov
+      <tr><td><code>VIrM</code><td>Irrgh Manifest<td>Prov
+      <tr><td><code>VJoF</code><td>Jihad of Faarzgaen<td>Prov
+      <tr><td><code>VLIn</code><td>Llaeghskath Interacterate<td>Prov/&#x200B;Tugl
+      <tr><td><code>VLPr</code><td>Lair Protectorate<td>Prov
+      <tr><td><code>VNgC</code><td>Ngath Confederation<td>Wind
+      <tr><td><code>VOpp</code><td>Opposition Alliance<td>Mesh
       <tr><td><code>VPGa</code><td>Pact of Gaerr (Gaerr Thue)<td>Gvur
-      <tr><td><code>VRrS</code><td>Rranglloez Stronghold<td>
+      <tr><td><code>VRo5</code><td>Ruler of Five<td>Mesh
+      <tr><td><code>VRrS</code><td>Rranglloez Stronghold<td>Tugl
       <tr><td><code>VRuk</code><td>Worlds of Leader Rukh (Rukh Aegz)<td>Gvur
       <tr><td><code>VSDp</code><td>Saeknouth Dependency (Saeknouth Igz)<td>Gvur
-      <tr><td><code>VSEq</code><td>Society of Equals (Dzen Aeng Kho)<td>Gvur
-      <tr><td><code>VThE</code><td>Thoengling Empire (Thoengling Raghz)<td>Gvur
+      <tr><td><code>VSEq</code><td>Society of Equals (Dzen Aeng Kho)<td>Gvur/&#x200B;Tugl
+      <tr><td><code>VThE</code><td>Thoengling Empire (Thoengling Raghz)<td>Gvur/&#x200B;Tugl
       <tr><td><code>VTzE</code><td>Thirz Empire (Thirz Uerra)<td>Gvur/&#x200B;Ziaf
       <tr><td><code>VUru</code><td>Urukhu<td>Gvur
-      <tr><td><code>VVar</code><td>Empire of Varroerth<td>
-      <tr><td><code>VWP2</code><td>Windhorn Pact of Two<td>
-      <tr><td><code>VWan</code><td>People of Wanz<td>
+      <tr><td><code>VVar</code><td>Empire of Varroerth<td>Prov/&#x200B;Tugl/&#x200B;Wind
+      <tr><td><code>VVoS</code><td>Voekhaeb Society<td>Mesh
+      <tr><td><code>VWP2</code><td>Windhorn Pact of Two<td>Tugl
+      <tr><td><code>VWan</code><td>People of Wanz<td>Tugl
       <tr><td><code>ViCo</code><td>Viyard Concourse<td>Gate
       <tr><td><code>XXXX</code><td>Unknown<td>various
       <tr><td><code>ZePr</code><td>Zelphic Primacy<td>Farf
@@ -1860,6 +1898,7 @@
       <tr><td><code>ZhOb</code><td>Zhodani Consulate, Obrefripl Province<td>various
       <tr><td><code>ZhSh</code><td>Zhodani Consulate, Shtochiadr Province<td>Itvi/&#x200B;Tlab
       <tr><td><code>ZhVQ</code><td>Zhodani Consulate, Vlanchiets Qlom Province<td>various
+      <tr><td><code>Zuug</code><td>Zuugabish Tripartite<td>Mend
       <tr><td><code>ZyCo</code><td>Zydarian Codominion<td>Beyo
         <!-- Allegiance Table End -->
     </table>
@@ -2219,7 +2258,7 @@
 <div class="editorial">
   <p>
     The <em class="product">Traveller</em> game in all forms is owned
-    by Far Future Enterprises. Copyright &copy; 1977 &ndash; 2015 Far
+    by Far Future Enterprises. Copyright &copy; 1977 &ndash; 2016 Far
     Future Enterprises.
     <a href="http://farfuture.net/FFEFairUsePolicy2008.pdf">Fair Use Policy</a>
 </div>

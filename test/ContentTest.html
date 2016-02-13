@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <link rel="shortcut icon" href="../favicon.ico">
 <link rel="stylesheet" href="../site.css?update=2015-07-19">
-<script src="../lib/polyfill/polyfill.min.js?update=2015-07-29"></script>
+<script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.14/polyfill.min.js"></script>
 
 <style>
 tbody#results td,
@@ -14,8 +14,11 @@ tbody#results textarea { margin: 0; border: 0;
                          width: 256px;
                          white-space: pre;
                          overflow: scroll; }
-tbody#results tr.pass td { border: 1px solid green; }
-tbody#results tr.fail td { border: 1px solid red; }
+tbody#results .pass.content td { border: 1px solid green; }
+tbody#results .fail.content td { border: 1px solid red; }
+
+body.hide_pass .pass,
+body.hide_fail .fail { display: none; }
 
 #status_tests, #status_passed, #status_failed { font-weight: bold; }
 
@@ -31,8 +34,20 @@ tbody#results tr.fail td { border: 1px solid red; }
     </p>
     <p>
       Tests: <span id="status_tests"></span>
+
+      <input type=checkbox id="show_pass" checked>
       Passed: <span id="status_passed"></span>
+
+      <input type=checkbox id="show_fail" checked>
       Failed: <span id="status_failed"></span>
+
+      <script>
+      ['pass', 'fail'].forEach(function(s) {
+        document.querySelector('#show_' + s).addEventListener('click', function(e) {
+          document.body.classList[!e.target.checked ? 'add' : 'remove']('hide_' + s);
+        });
+      });
+      </script>
     </p>
   </section>
   <section>
@@ -132,5 +147,14 @@ check('text/xml',
 check('application/json',
       'refs/jumpworlds_legend_0602.json',
       SERVICE_BASE + '/api/jumpworlds?sector=legend&hex=0602&jump=1');
+
+// Universe API
+
+check('text/xml',
+      'refs/universe_meta.xml',
+      SERVICE_BASE + '/api/universe?tag=meta');
+check('application/json',
+      'refs/universe_meta.json',
+      SERVICE_BASE + '/api/universe?tag=meta');
 
 </script>

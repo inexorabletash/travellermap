@@ -9,9 +9,3 @@ lightbox
 --------
 * Simple image lightbox
 * Public Domain - by Joshua Bell
-
-polyfill
---------
-* Assorted Web (HTML, DOM, ...) and ECMAScript (5, 6, ...) shims
-* Public Domain - by Joshua Bell
-* https://github.com/inexorabletash/polyfill

@@ -34,7 +34,7 @@ my @lines;
 
     while (<$fh>) {
         chomp;
-        die "Unexpected: $_\n" unless m/^([A-Za-z0-9']{4})\t/;
+        die "Unexpected: $_\n" unless m/^([A-Za-z0-9']{4}) *\t/;
         my ($code, $sophont, $location) = map { trim($_) } split(/\t/);
         $sophont =~ s|/|/&#x200B;|g;
         $location =~ s|/|/&#x200B;|g;

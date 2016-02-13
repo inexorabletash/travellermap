@@ -7,13 +7,20 @@
  *   element.allegiance { ... }
  */
 
+/* THIS FILE IS INCLUDED IN ASSEMBLY AS A RESOURCE - REBUILD/RESTAGE AFTER CHANGING */
+
+border.ImDa, border.ImDc, border.ImDd, border.ImDg, border.ImDi, border.ImDs, border.ImDv,
 border.Im { color: red }
 route.Im { color: green }
+border.ImLa, border.ImSy, border.ImLc, border.ImAp, border.ImLu, border.ImVd { color: blue; }
 
 border.SoCf { color: orange }
 route.SoCf { color: green }
+border.SoNS, border.SoRD, border.SoWu { color: blue; }
 
-border.ZhCo { color: blue }
+border.ZhCa, border.ZhCh, border.ZhCo, border.ZhIa, border.ZhIN,
+border.ZhJp, border.ZhMe, border.ZhOb, border.ZhSh, border.ZhVQ,
+border.Zh { color: blue }
 route.ZhCo { color: lightblue }
 
 border.As { color: yellow }
@@ -26,6 +33,30 @@ border.Kk { color: green }
 route.Kk { color: gray }
 
 border.JuPr { color: blue }
-route.JuPr { color: lightblue }
+route.JuPr { color: lightgreen }
+route.JAOz,
+route.JAsi,
+route.JCoK,
+route.JHhk,
+route.JLum,
+route.JMen,
+route.JPSt,
+route.JRar,
+route.JUkh,
+route.JVug,
+route.JuHl,
+route.JuRu { color: lightblue }
+border.JAOz { color: teal }
+border.JAsi { color: lightblue }
+border.JCoK { color: cyan }
+border.JHhk { color: lightblue }
+border.JLum { color: cyan }
+border.JMen { color: teal }
+border.JPSt { color: aquamarine }
+border.JRar { color: olivedrab }
+border.JUkh { color: teal }
+border.JVug { color: lightblue }
+border.JuHl { color: steelblue }
+border.JuRu { color: cyan }
 
 route.Core\ Route { color: purple; style: dashed }

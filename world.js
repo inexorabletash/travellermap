@@ -19,7 +19,8 @@
     F: 'Good',
     G: 'Poor',
     H: 'Primitive',
-    Y: 'None'
+    Y: 'None',
+    '?': 'Unknown'
   };
 
   var SIZ_TABLE = {
@@ -40,8 +41,9 @@
     D: '20,800km',
     E: '22,400km',
     F: '24,000km',
-    X: 'Unknown'
-  };
+    X: 'Unknown',
+    '?': 'Unknown'
+};
 
   var ATM_TABLE = {
     0: 'No atmosphere',
@@ -60,8 +62,9 @@
     D: 'Dense, high',
     E: 'Thin, low',
     F: 'Unusual',
-    X: 'Unknown'
-  };
+    X: 'Unknown',
+    '?': 'Unknown'
+};
 
   var HYD_TABLE = {
     0: 'Desert World',
@@ -75,8 +78,9 @@
     8: '80%',
     9: '90%',
     A: 'Water World',
-    X: 'Unknown'
-  };
+    X: 'Unknown',
+    '?': 'Unknown'
+};
 
   var POP_TABLE = {
     0: 'Unpopulated',
@@ -95,8 +99,9 @@
     D: 'Tens of trillions',
     E: 'Hundreds of tillions',
     F: 'Quadrillions',
-    X: 'Unknown'
-  };
+    X: 'Unknown',
+    '?': 'Unknown'
+};
 
   var GOV_TABLE = {
     0: 'No Government Structure',
@@ -116,6 +121,7 @@
     E: 'Religious Autocracy',
     F: 'Totalitarian Oligarchy',
     X: 'Unknown',
+    '?': 'Unknown',
 
     // Legacy/Non-Human
     G: 'Small Station or Facility',
@@ -159,8 +165,9 @@
     K: 'Excessively oppressive and restrictive',
     L: 'Totally oppressive and restrictive',
     S: 'Special/Variable situation',
-    X: 'Unknown'
-  };
+    X: 'Unknown',
+    '?': 'Unknown'
+};
 
   var TECH_TABLE = {
     0: 'Stone Age',
@@ -184,8 +191,9 @@
     J: 'Personal Disintegrators',
     K: 'Plastic Metals',
     L: 'Comprehensible only as technological magic',
-    X: 'Unknown'
-  };
+    X: 'Unknown',
+    '?': 'Unknown'
+};
 
   var NOBILITY_TABLE = {
     B: 'Knight',
@@ -282,7 +290,8 @@
     St: 'Steppeworld',
     Ex: 'Exile Camp',
     //Pr: 'Prison World', // Conflicts with T5: Pre-Rich.
-    Xb: 'Xboat Station'
+    Xb: 'Xboat Station',
+    Cr: 'Reserve Capital'
   };
 
   var REMARKS_PATTERNS = [
@@ -296,10 +305,11 @@
     [ /^Mr:\d\d\d\d$/, 'Military rule'],
 
     // Sophonts
-    [ /^\[.*\]$/, 'Homeworld'],
-    [ /^\(.*\)$/, 'Homeworld'],
+    [ /^\[.*\]\??$/, 'Homeworld'],
+    [ /^\(.*\)\??$/, 'Homeworld'],
     [ /^\(.*\)(\d)$/, 'Homeworld, Population $1$`0%'],
-    [ /^([A-Z][A-Za-z']{3})([0-9W])$/, decodeSophontPopulation],
+    [ /^Di\(.*\)$/, 'Homeworld, Extinct'],
+    [ /^([A-Z][A-Za-z']{3})([0-9W?])$/, decodeSophontPopulation],
     [ /^([ACDFHIMVXZ])([0-9w])$/, decodeSophontPopulation],
 
     // Comments
@@ -345,6 +355,8 @@
       pop = '< 10%';
     else if (pop === 'W' || pop === 'w')
       pop = '100%';
+    else if (pop === '?')
+      pop = 'Unknown';
     else
       pop = pop + '0%';
     return name + ', Population ' + pop;
@@ -363,7 +375,7 @@
     };
   }
   function splitPBG(pbg) {
-    if (pbg === 'XXX')
+    if (pbg === 'XXX' || pbg === '???')
       return { Pop: -1, Belts: '???', GG: '???' };
     return {
       Pop: Traveller.fromHex(pbg.substring(0, 1)),
@@ -376,7 +388,7 @@
     var world = data.Worlds[0];
     if (!world) return;
 
-    var isPlaceholder = world.UWP === 'XXXXXXX-X';
+    var isPlaceholder = (world.UWP === 'XXXXXXX-X' || world.UWP === '???????-?');
 
     world.UWP = splitUWP(world.UWP);
     world.UWP.StarportBlurb = STARPORT_TABLE[world.UWP.Starport];
@@ -384,7 +396,7 @@
     world.UWP.AtmBlurb = ATM_TABLE[world.UWP.Atm];
     world.UWP.HydBlurb = HYD_TABLE[world.UWP.Hyd];
     world.UWP.PopBlurb = POP_TABLE[world.UWP.Pop];
-    world.UWP.GovBlurb = isPlaceholder ? 'Unknown' : GOV_TABLE[world.UWP.Gov];
+    world.UWP.GovBlurb = GOV_TABLE[world.UWP.Gov];
     world.UWP.LawBlurb = LAW_TABLE[world.UWP.Law];
     world.UWP.TechBlurb = TECH_TABLE[world.UWP.Tech];
 
@@ -398,6 +410,7 @@
 
     var UNICODE_MINUS = '\u2212'; // U+2212 MINUS SIGN
 
+    if (!world.Ix) delete world.Ix;
     if (world.Ix) {
       var ix = (world.Ix || '').replace(/^{\s*|\s*}$/g, '');
       ix = ix.replace('-', UNICODE_MINUS);
@@ -406,6 +419,7 @@
       };
     }
 
+    if (!world.Ex) delete world.Ex;
     if (world.Ex) {
       var ex = world.Ex.replace(/^\(\s*|\s*\)$/g, '');
       ex = ex.replace('-', UNICODE_MINUS);
@@ -421,6 +435,7 @@
       world.Ex.EffBlurb = world.Ex.Eff;
     }
 
+    if (!world.Cx) delete world.Cx;
     if (world.Cx) {
       var cx = world.Cx.replace(/^\[\s*|\s*\]$/g, '');
       world.Cx = {
@@ -441,7 +456,7 @@
     }
 
     if (world.Remarks) {
-      world.Remarks = world.Remarks.match(/\([^)]*\)\d*|\[[^\]]*\]\d*|{[^}]*}|\S+/g).map(function(s){
+      world.Remarks = world.Remarks.match(/(Di)?\([^)]*\)[0-9?]?|\[[^\]]*\][0-9?]?|{[^}]*}|\S+/g).map(function(s){
         if (s in REMARKS_TABLE) return {code: s, detail: REMARKS_TABLE[s]};
         for (var i = 0; i < REMARKS_PATTERNS.length; ++i) {
           var pattern = REMARKS_PATTERNS[i][0], replacement = REMARKS_PATTERNS[i][1];

@@ -12,7 +12,7 @@ namespace Maps.Admin
     internal class CodesHandler : AdminHandler
     {
 
-        static List<string> s_legacySophontCodes = new List<string>
+        static readonly IReadOnlyList<string> s_legacySophontCodes = new List<string>
         {
             "A", // Aslan
             "C", // Chirper
@@ -26,7 +26,7 @@ namespace Maps.Admin
             "Z", // Zhodani
         };
 
-        static RegexDictionary<string> s_knownCodes = new RegexDictionary<string>
+        static readonly RegexDictionary<string> s_knownCodes = new RegexDictionary<string>
         {
             // General
             { @"^Rs[ABGDEZHT]$", "Rs" },
@@ -75,8 +75,9 @@ namespace Maps.Admin
             "Cp", "Cs", "Cx", "Cy", // Political
             "Sa", "Fo", "Pz", "Da", "Ab", "An", // Special 
 
-            { @"^\[.*?\]\d*$", "(major race homeworld)" },
-            { @"^\(.*?\)\d*$", "(minor race homeworld)" },
+            { @"^\[.*?\][0-9?]?$", "(major race homeworld)" },
+            { @"^\(.*?\)[0-9?]?$", "(minor race homeworld)" },
+            { @"^Di\(.*?\)$", "(extinct minor race homeworld)" },
             { @"^(" + string.Join("|", SecondSurvey.SophontCodes) + @")(\d|W|\?)$", "(sophont)" },
 
             { @"^Mr\((" + string.Join("|", SecondSurvey.AllegianceCodes) + @")\)$", "(military rule)" },
@@ -105,7 +106,8 @@ namespace Maps.Admin
                               where (sectorName == null || sector.Names[0].Text.StartsWith(sectorName, ignoreCase: true, culture: CultureInfo.InvariantCulture))
                               && (sector.DataFile != null)
                               && (type == null || sector.DataFile.Type == type)
-                              && (!sector.DataFile.FileName.Contains(System.IO.Path.PathSeparator)) // Skip ZCR sectors
+                              && (!sector.Tags.Contains("ZCR"))
+                              && (!sector.Tags.Contains("meta"))
                               orderby sector.Names[0].Text
                               select sector;
 

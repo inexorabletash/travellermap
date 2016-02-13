@@ -40,7 +40,7 @@ my @lines;
 
     while (<$fh>) {
         chomp;
-        die "Unexpected: $_\n" unless m/^([A-Za-z0-9']{4})\t/;
+        die "Unexpected: $_\n" unless m/^([A-Za-z0-9']{4}) *\t/;
         my ($alleg, $legacy, $base, $desc, $location) = map { trim($_) } split(/\t/);
 
         my $comment;
@@ -50,6 +50,8 @@ my @lines;
             $desc = $1;
             $comment = $2;
         }
+
+        $legacy =~ s|/.*||g;
 
         $alleg = quote($alleg);
         $legacy = quote($legacy);

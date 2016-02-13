@@ -29,7 +29,7 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>4.0</OldToolsVersion>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -153,24 +153,24 @@
     <Content Include="borders\bd_images\image022.gif" />
     <Content Include="borders\bd_images\image023.gif" />
     <Content Include="borders\borders.js" />
-    <Content Include="borders\default.htm" />
     <Content Include="borders\demo.htm" />
     <Content Include="borders\doc.htm" />
+    <Content Include="borders\index.html" />
     <Content Include="borders\regen.htm" />
     <Content Include="doc\about.html" />
     <Content Include="doc\api.html" />
     <Content Include="doc\credits.html" />
+    <Content Include="doc\custom.html" />
     <Content Include="doc\fileformats.html" />
+    <Content Include="doc\metadata.html" />
     <Content Include="doc\secondsurvey.html" />
     <Content Include="doc\submit.html" />
+    <Content Include="doc\toc.js" />
     <Content Include="doc\trader_format.html" />
     <Content Include="Global.asax" />
     <Content Include="index.css" />
     <Content Include="lib\lightbox\lightbox.css" />
     <Content Include="lib\lightbox\lightbox.js" />
-    <Content Include="lib\polyfill\experimental\fetch.js" />
-    <Content Include="lib\polyfill\polyfill.js" />
-    <Content Include="lib\polyfill\polyfill.min.js" />
     <Content Include="make\booklet.html" />
     <Content Include="make\booklet.js" />
     <Content Include="make\borders.html" />
@@ -198,6 +198,9 @@
     <Content Include="res\markers\README.txt" />
     <Content Include="res\markers\scout.png" />
     <Content Include="res\markers\submerchant.png" />
+    <Content Include="res\Sectors\Aldebaran.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="res\Sectors\Alpha Crucis.xml" />
     <Content Include="res\Sectors\Amderstun.xml" />
     <Content Include="res\Sectors\Amdukan.xml" />
@@ -206,6 +209,7 @@
     <Content Include="res\Sectors\Avereguar.xml" />
     <Content Include="res\Sectors\Beyond.xml" />
     <Content Include="res\Sectors\blaskon.xml" />
+    <Content Include="res\Sectors\Caesillian.txt" />
     <Content Include="res\Sectors\Centrax.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -235,11 +239,15 @@
     </Content>
     <Content Include="res\Sectors\Gateway.xml" />
     <Content Include="res\Sectors\Glimmerdrift.xml" />
+    <Content Include="res\Sectors\Gur.txt" />
+    <Content Include="res\Sectors\Gur.xml" />
     <Content Include="res\Sectors\Gushemege.xml" />
     <Content Include="res\Sectors\Gvurrdon.xml" />
     <Content Include="res\Sectors\Gzirr!k%27l.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="res\Sectors\Harbinger.txt" />
+    <Content Include="res\Sectors\Hfiywitir.txt" />
     <Content Include="res\Sectors\Hinterworlds.xml" />
     <Content Include="res\Sectors\Holowon.xml" />
     <Content Include="res\Sectors\Ilelish.xml" />
@@ -247,22 +255,32 @@
     <Content Include="res\Sectors\kidunal.xml" />
     <Content Include="res\Sectors\Koog.txt" />
     <Content Include="res\Sectors\Koog.xml" />
+    <Content Include="res\Sectors\Kteex!.txt" />
+    <Content Include="res\Sectors\Langere.xml" />
     <Content Include="res\Sectors\Ley.xml">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="res\Sectors\Lishun.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="res\Sectors\Luretiir!girr.xml" />
+    <Content Include="res\Sectors\M1000\m1000.xml" />
     <Content Include="res\Sectors\Magyar.xml" />
     <Content Include="res\Sectors\Massilia.xml">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="res\Sectors\Mendan.xml" />
+    <Content Include="res\Sectors\Meshan.xml" />
+    <Content Include="res\Sectors\Nadir.txt" />
+    <Content Include="res\Sectors\Neworld.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="res\Sectors\Nooq.xml" />
     <Content Include="res\Sectors\Old Expanses.xml">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="res\Sectors\Porlock.xml" />
+    <Content Include="res\Sectors\Provence.xml" />
     <Content Include="res\Sectors\Reavers Deep.xml" />
     <Content Include="res\Sectors\Reft.xml" />
     <Content Include="res\Sectors\Ricenden.xml" />
@@ -275,10 +293,16 @@
     <Content Include="res\Sectors\Star%27s End.xml" />
     <Content Include="res\Sectors\Stiatlchepr.xml" />
     <Content Include="res\Sectors\Theta Borealis.xml" />
+    <Content Include="res\Sectors\Tienspevnekr.txt" />
+    <Content Include="res\Sectors\Tienspevnekr.xml" />
     <Content Include="res\Sectors\Trojan Reach.xml" />
+    <Content Include="res\Sectors\Tuglikki.xml" />
+    <Content Include="res\Sectors\Un%27k!!k%27ng.txt" />
+    <Content Include="res\Sectors\Un%27k!!k%27ng.xml" />
     <Content Include="res\Sectors\Vanguard Reaches.xml" />
     <Content Include="res\Sectors\Verge.xml" />
     <Content Include="res\Sectors\Vland.xml" />
+    <Content Include="res\Sectors\Windhorn.xml" />
     <Content Include="res\Sectors\Wrenton.xml" />
     <Content Include="res\Sectors\Yiklerzdanzh.xml" />
     <Content Include="res\Sectors\Zarushagar.xml">
@@ -305,6 +329,8 @@
     <Content Include="res\ui\button-star.png" />
     <Content Include="res\ui\button-tilt.png" />
     <Content Include="res\ui\button-upload.png" />
+    <Content Include="res\ui\CT_Logo_Color.png" />
+    <Content Include="res\ui\CT_Logo_Gray.png" />
     <Content Include="res\ui\fb.png" />
     <Content Include="res\ui\grab.cur" />
     <Content Include="res\ui\grabbing.cur" />
@@ -351,45 +377,59 @@
     <Content Include="res\AprilFools\Starburst_Gray.png" />
     <Content Include="res\world\cx.png" />
     <Content Include="res\world\ex.png" />
+    <Content Include="res\world\gg.jpg" />
+    <Content Include="res\world\stars.png" />
     <Content Include="res\world\uwp.png" />
     <Content Include="test\APITest.html" />
     <Content Include="test\APITest.js" />
+    <Content Include="test\ContentTest.html" />
+    <Content Include="test\ContentTest.js" />
     <Content Include="test\ImageTest.html" />
-    <Content Include="test\ref1.png" />
-    <Content Include="test\ref10.png" />
-    <Content Include="test\ref11.png" />
-    <Content Include="test\ref12.png" />
-    <Content Include="test\ref13.png" />
-    <Content Include="test\ref14.png" />
-    <Content Include="test\ref15.png" />
-    <Content Include="test\ref16.png" />
-    <Content Include="test\ref17.png" />
-    <Content Include="test\ref18.png" />
-    <Content Include="test\ref19.png" />
-    <Content Include="test\ref2.png" />
-    <Content Include="test\ref20.png" />
-    <Content Include="test\ref21.png" />
-    <Content Include="test\ref22.png" />
-    <Content Include="test\ref23.png" />
-    <Content Include="test\ref24.png" />
-    <Content Include="test\ref25.png" />
-    <Content Include="test\ref26.png" />
-    <Content Include="test\ref27.png" />
-    <Content Include="test\ref28.jpg" />
-    <Content Include="test\ref29.png" />
-    <Content Include="test\ref3.png" />
-    <Content Include="test\ref30.png" />
-    <Content Include="test\ref31.png" />
-    <Content Include="test\ref32.png" />
-    <Content Include="test\ref33.jpg" />
-    <Content Include="test\ref34.png" />
-    <Content Include="test\ref4.png" />
-    <Content Include="test\ref5.png" />
-    <Content Include="test\ref6.png" />
-    <Content Include="test\ref7.png" />
-    <Content Include="test\ref8.png" />
-    <Content Include="test\ref9.png" />
-    <Content Include="test\ref_bad_example.png" />
+    <Content Include="test\refs\coordinates_spin.xml" />
+    <Content Include="test\refs\coordinates_spin_1910.xml" />
+    <Content Include="test\refs\coordinates_spin_c.xml" />
+    <Content Include="test\refs\coordinates_spin_regina.xml" />
+    <Content Include="test\refs\credits_0_0.xml" />
+    <Content Include="test\refs\credits_legend.xml" />
+    <Content Include="test\refs\data_spin_1910.xml" />
+    <Content Include="test\refs\jumpworlds_legend_0602.xml" />
+    <Content Include="test\refs\metadata_legend.xml" />
+    <Content Include="test\refs\msec_legend.txt" />
+    <Content Include="test\refs\ref1.png" />
+    <Content Include="test\refs\ref10.png" />
+    <Content Include="test\refs\ref11.png" />
+    <Content Include="test\refs\ref12.png" />
+    <Content Include="test\refs\ref13.png" />
+    <Content Include="test\refs\ref14.png" />
+    <Content Include="test\refs\ref15.png" />
+    <Content Include="test\refs\ref16.png" />
+    <Content Include="test\refs\ref17.png" />
+    <Content Include="test\refs\ref18.png" />
+    <Content Include="test\refs\ref19.png" />
+    <Content Include="test\refs\ref2.png" />
+    <Content Include="test\refs\ref20.png" />
+    <Content Include="test\refs\ref21.png" />
+    <Content Include="test\refs\ref22.png" />
+    <Content Include="test\refs\ref23.png" />
+    <Content Include="test\refs\ref24.png" />
+    <Content Include="test\refs\ref25.png" />
+    <Content Include="test\refs\ref26.png" />
+    <Content Include="test\refs\ref27.png" />
+    <Content Include="test\refs\ref28.jpg" />
+    <Content Include="test\refs\ref29.png" />
+    <Content Include="test\refs\ref3.png" />
+    <Content Include="test\refs\ref30.png" />
+    <Content Include="test\refs\ref31.png" />
+    <Content Include="test\refs\ref32.png" />
+    <Content Include="test\refs\ref33.jpg" />
+    <Content Include="test\refs\ref34.png" />
+    <Content Include="test\refs\ref4.png" />
+    <Content Include="test\refs\ref5.png" />
+    <Content Include="test\refs\ref6.png" />
+    <Content Include="test\refs\ref7.png" />
+    <Content Include="test\refs\ref8.png" />
+    <Content Include="test\refs\ref9.png" />
+    <Content Include="test\refs\ref_bad_example.png" />
     <Content Include="map.js" />
     <Content Include="favicon.ico" />
     <Content Include="res\Candy\Belt.png" />
@@ -498,8 +538,10 @@
     <Content Include="lib\README.md" />
     <None Include="res\sectors.xsd" />
     <Content Include="res\Sectors\Aktifao.tab" />
+    <Content Include="res\Sectors\Aldebaran.tab" />
     <None Include="res\Sectors\Alpha Crucis.tab" />
     <None Include="res\Sectors\Amderstun.sec" />
+    <Content Include="res\Sectors\Amdukan.tab" />
     <None Include="res\Sectors\Antares.tab" />
     <Content Include="res\Sectors\centrax.sec" />
     <Content Include="res\Sectors\blaskon.sec" />
@@ -524,6 +566,7 @@
     <Content Include="res\Sectors\Faraway\Maranatha-Alkahest.sec" />
     <Content Include="res\Sectors\Far Frontiers.sec" />
     <Content Include="res\Sectors\Faraway\Varan.t5" />
+    <Content Include="res\Sectors\Far Frontiers.tab" />
     <None Include="res\Sectors\Fornast.tab" />
     <Content Include="res\Sectors\Gateway.tab" />
     <None Include="res\Sectors\Glimmerdrift.tab" />
@@ -541,16 +584,25 @@
     <None Include="res\Sectors\Kaa G!kul.sec" />
     <None Include="res\Sectors\Katoonah.sec" />
     <Content Include="res\Sectors\kidunal.sec" />
+    <Content Include="res\Sectors\Langere.tab" />
     <None Include="res\Sectors\legend.sec" />
     <None Include="res\Sectors\Ley.tab" />
     <None Include="res\Sectors\Lishun.tab" />
-    <Content Include="res\Sectors\Luretiir!girr.sec" />
+    <Content Include="res\Sectors\M1000\CrucisMargin.sec" />
+    <Content Include="res\Sectors\M1000\Gateway.sec" />
+    <Content Include="res\Sectors\M1000\GlimmerdriftReaches.sec" />
+    <Content Include="res\Sectors\M1000\Ley.sec" />
+    <Content Include="res\Sectors\Luretiir!girr.txt" />
     <None Include="res\Sectors\Magyar.tab" />
     <None Include="res\Sectors\Massilia.tab" />
     <Content Include="res\Sectors\Nooq.sec" />
+    <Content Include="res\Sectors\Mendan.tab" />
+    <Content Include="res\Sectors\Meshan.tab" />
+    <Content Include="res\Sectors\Neworld.tab" />
     <None Include="res\Sectors\Old Expanses.tab" />
     <None Include="res\Sectors\Pliabriebl.sec" />
     <Content Include="res\Sectors\Porlock.sec" />
+    <Content Include="res\Sectors\Provence.tab" />
     <None Include="res\Sectors\Reavers Deep.tab" />
     <None Include="res\Sectors\Reft.tab" />
     <Content Include="res\Sectors\Ricenden.sec" />
@@ -563,16 +615,19 @@
     <Content Include="res\Sectors\Staihaia%27yo.tab" />
     <None Include="res\Sectors\TarGkellp.sec" />
     <Content Include="res\Sectors\Theta Borealis.sec" />
+    <Content Include="res\Sectors\Theta Borealis.tab" />
     <None Include="res\Sectors\Tlyasea.sec" />
     <None Include="res\Sectors\Trojan Reach.tab" />
     <Content Include="res\Sectors\Ukaarriitb.sec" />
-    <Content Include="res\Sectors\Vanguard Reaches.sec" />
     <Content Include="res\Sectors\Tsadra.sec" />
     <Content Include="res\Sectors\Uistilrao.tab" />
     <Content Include="res\Sectors\Ustral Quadrant.tab" />
+    <Content Include="res\Sectors\Vanguard Reaches.tab" />
+    <Content Include="res\Sectors\Tuglikki.tab" />
     <None Include="res\Sectors\Verge.tab" />
     <None Include="res\Sectors\Vland.tab" />
     <Content Include="res\Sectors\Wrenton.sec" />
+    <Content Include="res\Sectors\Windhorn.tab" />
     <None Include="res\Sectors\Zarushagar.tab" />
     <Content Include="res\Sectors\Ziafrplians.tab" />
     <Content Include="res\ui\youarehere.pdn" />
@@ -585,12 +640,11 @@
     <Content Include="res\t5ss\update_sophont_docs.pl" />
     <Content Include="res\t5ss\update_world_data.pl" />
     <Content Include="res\t5ss\world_data.tsv" />
+    <Content Include="res\t5ss\update_sophont_code.pl" />
     <None Include="res\Vectors\Galaxy_Positive.xvf" />
     <None Include="res\Sectors\Aerenfors.sec" />
     <None Include="res\Sectors\afawahisa.sec" />
     <None Include="res\Sectors\Ahkiweahi.sec" />
-    <None Include="res\Sectors\aldebaran.sec" />
-    <None Include="res\Sectors\amdukan.sec" />
     <None Include="res\Sectors\Angfutsag.sec" />
     <None Include="res\Sectors\arzul.sec" />
     <None Include="res\Sectors\astron.sec" />
@@ -621,7 +675,6 @@
     <None Include="res\Sectors\hadji.sec" />
     <None Include="res\Sectors\hanstone.sec" />
     <None Include="res\Sectors\Heakhafaw.sec" />
-    <None Include="res\Sectors\Hfiywitir.sec" />
     <None Include="res\Sectors\hkakhaeaw.sec" />
     <None Include="res\Sectors\iphigenaia.sec" />
     <None Include="res\Sectors\Irlaftalea.sec" />
@@ -641,16 +694,12 @@
     <None Include="res\Sectors\Listanaya.sec" />
     <None Include="res\Sectors\Lorspane.sec" />
     <None Include="res\Sectors\malorn.sec" />
-    <None Include="res\Sectors\Mendan.sec" />
-    <None Include="res\Sectors\meshan.sec" />
     <None Include="res\Sectors\muarne.sec" />
-    <None Include="res\Sectors\neworld.sec" />
     <None Include="res\Sectors\Ngathksirz.sec" />
     <None Include="res\Sectors\OeghzVaerrghr.sec" />
     <None Include="res\Sectors\Ogadogorz.sec" />
     <None Include="res\Sectors\Ohieraoi.sec" />
     <None Include="res\Sectors\Phlask.sec" />
-    <None Include="res\Sectors\provence.sec" />
     <None Include="res\Sectors\Rfigh.sec" />
     <None Include="res\Sectors\Rzakki.sec" />
     <None Include="res\Sectors\star-s_end.sec" />
@@ -658,14 +707,11 @@
     <None Include="res\Sectors\Teahloarifu.sec" />
     <None Include="res\Sectors\ThakuFung.sec" />
     <None Include="res\Sectors\Theron.sec" />
-    <None Include="res\Sectors\tienspevnekr.sec" />
     <None Include="res\Sectors\touchstone.sec" />
     <None Include="res\Sectors\trenchans.sec" />
-    <None Include="res\Sectors\tuglikki.sec" />
     <None Include="res\Sectors\Ugoede.sec" />
     <None Include="res\Sectors\VegVergakh.sec" />
     <None Include="res\Sectors\waroatah.sec" />
-    <None Include="res\Sectors\windhorn.sec" />
     <None Include="res\Sectors\Yahehwe.sec" />
     <None Include="res\Sectors\yiklerzdanzh.sec" />
     <None Include="res\Sectors\ZaoKfengIgGrilokh.sec" />
@@ -840,6 +886,21 @@
     <None Include="res\Sectors\Zhodani Core Route\zii.sec" />
     <None Include="res\Sectors\Zortakh.sec" />
     <Content Include="Web.config.sample" />
+    <Content Include="test\refs\coordinates_spin.json" />
+    <Content Include="test\refs\coordinates_spin_1910.json" />
+    <Content Include="test\refs\coordinates_spin_c.json" />
+    <Content Include="test\refs\coordinates_spin_regina.json" />
+    <Content Include="test\refs\credits_0_0.json" />
+    <Content Include="test\refs\credits_legend.json" />
+    <Content Include="test\refs\data_spin_1910.json" />
+    <Content Include="test\refs\jumpworlds_legend_0602.json" />
+    <Content Include="test\refs\metadata_legend.json" />
+    <Content Include="test\refs\sec_legend.sec" />
+    <Content Include="test\refs\sec_legend.t5col" />
+    <Content Include="test\refs\sec_legend.t5tab" />
+    <Content Include="test\refs\sec_legend_noheader.sec" />
+    <Content Include="test\refs\sec_legend_nometa.sec" />
+    <Content Include="test\refs\sec_legend_sscoords.sec" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

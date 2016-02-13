@@ -30,7 +30,7 @@ namespace Maps.Serialization
             }
         }
 
-        private static Regex sniff_xml = new Regex(@"<\?xml", RegexOptions.Compiled | RegexOptions.CultureInvariant);
+        private static readonly Regex sniff_xml = new Regex(@"<\?xml", RegexOptions.Compiled | RegexOptions.CultureInvariant);
 
         public static string SniffType(Stream stream)
         {

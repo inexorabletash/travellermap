@@ -20,75 +20,83 @@
     <Subsector Source="Randy Dorman" Index="P">Hesperia</Subsector>
   </Subsectors>
   <Allegiances>
-    <Allegiance Code="SoCf">Solomani Confederation</Allegiance>
+    <Allegiance Code="Bo">Solomani Confederation, Bootean Federation</Allegiance>
+    <Allegiance Code="Fr">Solomani Confederation, Third Reformed French Confederate Rebublic</Allegiance>
     <Allegiance Code="Mu">Malorn Union</Allegiance>
-    <Allegiance Code="NaHu">Non-Aligned, Human-dominated</Allegiance>
-    <Allegiance Code="NaXX">Non-Aligned, unclaimed</Allegiance>
+    <Allegiance Code="Qu">Solomani Confederation, Grand United States of Quesada</Allegiance>
     <Allegiance Code="Wd">Winston Democracy</Allegiance>
   </Allegiances>
   <Borders>
-    <Border Color="White" Allegiance="Mu" LabelPosition="0539" WrapLabel="true">0038 0138 0237 0238 0339 0439 0540 0541 0441 0341 0241 0141 0041 0040 0039 0038</Border>
-    <Border Allegiance="SoCf" LabelPosition="1921">0000 0100 0200 0300 0400 0500 0600 0700 0800 0900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3228 3129 3029 2930 2830 2730 2629 2529 2429 2330 2331 2332 2231 2131 2030 1931 1830 1731 1630 1531 1431 1331 1230 1131 1031 0931 0831 0731 0630 0531 0430 0331 0231 0131 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001 0000</Border>
-    <Border Color="Purple" Allegiance="Wd" LabelPosition="3037" WrapLabel="true">3039 3139 3238 3338 3339 3340 3341 3240 3140 3039</Border>
+    <Border WrapLabel="true" Color="White" Allegiance="Mu" LabelPosition="0539">0038 0138 0237 0238 0339 0439 0540 0541 0441 0341 0241 0141 0041 0040 0039 0038</Border>
+    <Border WrapLabel="false" Allegiance="SoCf" LabelPosition="1921">0000 0100 0200 0300 0400 0500 0600 0700 0800 0900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3228 3129 3029 2930 2830 2730 2629 2529 2429 2330 2331 2332 2231 2131 2030 1931 1830 1731 1630 1531 1431 1331 1230 1131 1031 0931 0831 0731 0630 0531 0430 0331 0231 0131 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001 0000</Border>
+    <Border WrapLabel="true" Color="Blue" Allegiance="Bo" LabelPosition="1601" Label="Bootean Federation">1400 1401 1400 </Border>
+    <Border WrapLabel="true" Color="Blue" Allegiance="Fr" LabelPosition="2527" Label="Third Reformed French Republic">2222 2323 2423 2523 2622 2722 2721 2821 2922 3021 3121 3220 3219 3220 3121 3021 2922 2923 2924 2925 3025 2926 2826 2827 2828 2829 2930 2829 2729 2628 2529 2429 2428 2328 2427 2527 2626 2625 2525 2424 2324 2223 2222 </Border>
+    <Border WrapLabel="true" Color="Blue" Allegiance="Qu" LabelPosition="2115" Label="Grand United States of Quesada">2010 2110 2210 2310 2409 2509 2508 2509 2510 2410 2411 2312 2313 2314 2315 2316 2317 2318 2418 2519 2619 2719 2619 2519 2419 2418 2318 2317 2216 2215 2214 2114 2013 2012 2011 2010 </Border>
+    <Border WrapLabel="true" Color="Purple" Allegiance="Wd" LabelPosition="3037">3039 3139 3238 3338 3339 3340 3341 3240 3140 3039</Border>
   </Borders>
- <Routes>
-    <Route Start="0111" End="0413"/>
-    <Route Start="0201" End="0203"/>
-    <Route Start="0203" End="0506"/>
-    <Route Start="0413" End="0715"/>
-    <Route Start="0506" End="0806"/>
-    <Route Start="0619" End="0816"/>
-    <Route Start="0619" End="1019"/>
-    <Route Start="0712" End="0715"/>
-    <Route Start="0715" End="0816"/>
-    <Route Start="0806" End="1009"/>
-    <Route Start="0806" End="1105"/>
-    <Route Start="0816" End="1013"/>
-    <Route Start="1009" End="1013"/>
-    <Route Start="1009" End="1206"/>
-    <Route Start="1009" End="1409"/>
-    <Route Start="1013" End="1314"/>
-    <Route Start="1019" End="1220"/>
-    <Route Start="1022" End="1220"/>
-    <Route Start="1105" End="1303"/>
-    <Route Start="1206" End="1303"/>
-    <Route Start="1206" End="1404"/>
-    <Route Start="1211" End="1314"/>
-    <Route Start="1211" End="1409"/>
-    <Route Start="1211" End="1611"/>
-    <Route Start="1216" End="1220"/>
-    <Route Start="1216" End="1314"/>
-    <Route Start="1216" End="1615"/>
-    <Route Start="1404" End="1705"/>
-    <Route Start="1409" End="1808"/>
-    <Route Start="1611" End="2010"/>
-    <Route Start="1705" End="1706"/>
-    <Route Start="1706" End="1906"/>
-    <Route Start="1808" End="2111"/>
-    <Route Start="1808" End="2208"/>
-    <Route Start="1906" End="2208"/>
-    <Route Start="2010" End="2111"/>
-    <Route Start="2111" End="2313"/>
-    <Route Start="2208" End="2405"/>
-    <Route Start="2313" End="2315"/>
-    <Route Start="2313" End="2615"/>
-    <Route Start="2328" End="2429"/>
-    <Route Start="2328" End="2625"/>
-    <Route Start="2405" End="2704"/>
-    <Route Start="2405" End="2707"/>
-    <Route Start="2625" End="2724"/>
-    <Route Start="2615" End="2719"/>
-    <Route Start="2625" End="2628"/>
-    <Route Start="2704" End="3004"/>
-    <Route Start="2707" End="2805"/>
-    <Route Start="2707" End="3007"/>
-    <Route Start="2719" End="2721"/>
-    <Route Start="2721" End="2724"/>
-    <Route Start="3004" End="3103"/>
-    <Route Start="0201" End="3040" EndOffsetY="-1" EndOffsetX="-1" />
+  <Routes>
+    <Route Start="0111" End="0413" />
+    <Route Start="0201" End="0203" />
+    <Route Start="0203" End="0506" />
+    <Route Start="0413" End="0715" />
+    <Route Start="0506" End="0806" />
+    <Route Start="0619" End="0816" />
+    <Route Start="0619" End="1019" />
+    <Route Start="0712" End="0715" />
+    <Route Start="0715" End="0816" />
+    <Route Start="0806" End="1009" />
+    <Route Start="0806" End="1105" />
+    <Route Start="0816" End="1013" />
+    <Route Start="1009" End="1013" />
+    <Route Start="1009" End="1206" />
+    <Route Start="1009" End="1409" />
+    <Route Start="1013" End="1314" />
+    <Route Start="1019" End="1220" />
+    <Route Start="1022" End="1220" />
+    <Route Start="1105" End="1303" />
+    <Route Start="1206" End="1303" />
+    <Route Start="1206" End="1404" />
+    <Route Start="1211" End="1314" />
+    <Route Start="1211" End="1409" />
+    <Route Start="1211" End="1611" />
+    <Route Start="1216" End="1220" />
+    <Route Start="1216" End="1314" />
+    <Route Start="1216" End="1615" />
+    <Route Start="1404" End="1705" />
+    <Route Start="1409" End="1808" />
+    <Route Start="1611" End="2010" />
+    <Route Start="1705" End="1706" />
+    <Route Start="1706" End="1906" />
+    <Route Start="1808" End="2111" />
+    <Route Start="1808" End="2208" />
+    <Route Start="1906" End="2208" />
+    <Route Start="2010" End="2111" />
+    <Route Start="2111" End="2313" />
+    <Route Start="2208" End="2405" />
+    <Route Start="2313" End="2315" />
+    <Route Start="2313" End="2615" />
+    <Route Start="2328" End="2429" />
+    <Route Start="2328" End="2625" />
+    <Route Start="2405" End="2704" />
+    <Route Start="2405" End="2707" />
+    <Route Start="2625" End="2724" />
+    <Route Start="2615" End="2719" />
+    <Route Start="2615" End="2913" />
+    <Route Start="2625" End="2628" />
+    <Route Start="2704" End="3004" />
+    <Route Start="2707" End="2805" />
+    <Route Start="2707" End="3007" />
+    <Route Start="2719" End="2721" />
+    <Route Start="2721" End="2724" />
+    <Route Start="3004" End="3103" />
+    <Route Start="0506" End="0309" />
+    <Route Start="0111" End="0309" />
+    <Route Start="0201" End="3040" EndOffsetX="-1" EndOffsetY="-1" />
     <Route Start="0201" End="0239" EndOffsetY="-1" />
     <Route Start="1303" End="1540" EndOffsetY="-1" />
     <Route Start="2704" End="2740" EndOffsetY="-1" />
-    <Route Start="3103" End="0240" EndOffsetY="-1" EndOffsetX="1" />
+    <Route Start="2913" End="0115" EndOffsetX="1" />
+    <Route Start="3007" End="0106" EndOffsetX="1" />
+    <Route Start="3103" End="0240" EndOffsetX="1" EndOffsetY="-1" />
   </Routes>
 </Sector>

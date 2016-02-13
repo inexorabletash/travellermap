@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <link rel="shortcut icon" href="../favicon.ico">
 <link rel="stylesheet" href="../site.css?update=2015-10-28">
-<script src="../lib/polyfill/polyfill.min.js?update=2015-10-28"></script>
+<script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.14/polyfill.min.js"></script>
 <script src="../map.js?update=2015-10-26"></script>
 <script src="post.js?update=2015-07-29"></script>
 
@@ -18,9 +18,6 @@
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgAQMAAABJtOi3AAAABlBMVEUAAAAoKCj70ajHAAAAE0lEQVQI12P4/5+BgZoEA3VNBADtvT/BrQ+bEwAAAABJRU5ErkJggg==');
 }
 
-#iframe {
-  width: 100%; height: 100%; border: none;
-}
 </style>
 
 <h1>Poster Maker &mdash; The Traveller Map</h1>
@@ -145,7 +142,8 @@
         <label><input type="checkbox" id="options-borders" checked>Borders</label><br>
         &nbsp;&nbsp;&nbsp;&nbsp;<label><input type="checkbox" id="options-filled-borders"> Filled</label><br>
         <label><input type="checkbox" id="options-force-hexes" checked>Force Hexes</label><br>
-        <label><input type="checkbox" id="options-world-colors">World Colors</label>
+        <label><input type="checkbox" id="options-world-colors">World Colors</label><br>
+        <label><input type="checkbox" id="ignore-errors">Ignore Errors</label>
         <script>
         (function() {
           var $ = function(s) { return document.querySelector(s); };
@@ -215,7 +213,7 @@
 
 <div style="margin-top: 10px; font-size: 80%">
   The <em class="product">Traveller</em> game in all forms is owned by Far
-  Future Enterprises. Copyright &copy; 1977 &ndash; 2015 Far Future
+  Future Enterprises. Copyright &copy; 1977 &ndash; 2016 Far Future
   Enterprises.
   <a href="http://farfuture.net/FFEFairUsePolicy2008.pdf">Fair Use Policy</a>
 </div>
@@ -228,15 +226,25 @@
     e.preventDefault();
     e.stopPropagation();
 
-    var form = $('#form');
-    form.target = 'iframe';
-    form.action = Traveller.MapService.makeURL('/api/poster');
-    $('#thumb').value = '1';
-    var accept = $('#accept').value;
-    $('#accept').value = '';
-    form.submit();
-    $('#thumb').value = '';
-    $('#accept').value = accept;
+    var data = new FormData($('#form'));
+    data.append('datauri', '1');
+    data.append('thumb', '1');
+    data.append('accept', '');
+    data.append('lint', $('#ignore-errors').checked ? 0 : 1);
+
+    fetch(Traveller.MapService.makeURL('/api/poster'), {method: 'POST', body: data})
+      .then(function(response) {
+        return Promise.all([response, response.text()]);
+      })
+      .then(function(results) {
+        var response = results[0], text = results[1];
+        if (response.ok) {
+          $('#preview').src = text;
+        } else {
+          console.warn(text);
+          alert(text);
+        }
+      });
   });
 
   $('#renderBtn').addEventListener('click', function(e) {
@@ -261,4 +269,4 @@
 }());
 </script>
 
-<div id="preview"><iframe name="iframe" id="iframe"></iframe></div>
+<img id="preview">

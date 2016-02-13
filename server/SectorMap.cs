@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Runtime.Serialization;
 using System.Xml.Serialization;
 
@@ -30,13 +31,21 @@ namespace Maps
     {
         private static object s_lock = new object();
 
-        private static SectorMap s_OTU;
+        private static SectorMap s_instance;
 
         private SectorCollection sectors;
         public IList<Sector> Sectors { get { return sectors.Sectors; } }
 
-        private Dictionary<string, Sector> nameMap = new Dictionary<string, Sector>(StringComparer.InvariantCultureIgnoreCase);
-        private Dictionary<Point, Sector> locationMap = new Dictionary<Point, Sector>();
+        private class MilieuMap
+        {
+            public Dictionary<string, Sector> nameMap = new Dictionary<string, Sector>(StringComparer.InvariantCultureIgnoreCase);
+            public Dictionary<Point, Sector> locationMap = new Dictionary<Point, Sector>();
+        }
+
+        private const string DEFAULT_MILIEU = "1105";
+        private static readonly IEnumerable<string> FALLBACK_MILIEUX = new List<string> { "1100", "1110", "1000", "1117", "1120", "1200" };
+
+        private Dictionary<string, MilieuMap> milieux = new Dictionary<string, MilieuMap>();
 
         private SectorMap(List<SectorMetafileEntry> metafiles, ResourceManager resourceManager)
         {
@@ -52,8 +61,7 @@ namespace Maps
                     sectors.Merge(collection);
             }
 
-            nameMap.Clear();
-            locationMap.Clear();
+            milieux.Clear();
 
             foreach (var sector in sectors.Sectors)
             {
@@ -63,21 +71,26 @@ namespace Maps
                     sector.Merge(metadata);
                 }
 
-                locationMap.Add(sector.Location, sector);
+                string milieu = sector.Era ?? sector.DataFile?.Era ?? DEFAULT_MILIEU;
+                if (!milieux.ContainsKey(milieu))
+                    milieux.Add(milieu, new MilieuMap());
+
+                MilieuMap m = milieux[milieu];
+                m.locationMap.Add(sector.Location, sector);
 
                 foreach (var name in sector.Names)
                 {
-                    if (!nameMap.ContainsKey(name.Text))
-                        nameMap.Add(name.Text, sector);
+                    if (!m.nameMap.ContainsKey(name.Text))
+                        m.nameMap.Add(name.Text, sector);
 
                     // Automatically alias "SpinwardMarches"
                     string spaceless = name.Text.Replace(" ", "");
-                    if (spaceless != name.Text && !nameMap.ContainsKey(spaceless))
-                        nameMap.Add(spaceless, sector);
+                    if (spaceless != name.Text && !m.nameMap.ContainsKey(spaceless))
+                        m.nameMap.Add(spaceless, sector);
                 }
 
-                if (!string.IsNullOrEmpty(sector.Abbreviation) && !nameMap.ContainsKey(sector.Abbreviation))
-                    nameMap.Add(sector.Abbreviation, sector);
+                if (!string.IsNullOrEmpty(sector.Abbreviation) && !m.nameMap.ContainsKey(sector.Abbreviation))
+                    m.nameMap.Add(sector.Abbreviation, sector);
             }
         }
 
@@ -85,58 +98,111 @@ namespace Maps
         {
             lock (SectorMap.s_lock)
             {
-                if (s_OTU == null)
+                if (s_instance == null)
                 {
                     List<SectorMetafileEntry> files = new List<SectorMetafileEntry>
                     {
+                        // Meta
                         new SectorMetafileEntry(@"~/res/legend.xml", new List<string> { "meta" } ),
+
+                        // OTU - Default Milieu
                         new SectorMetafileEntry(@"~/res/sectors.xml", new List<string> { "OTU" } ),
+                        new SectorMetafileEntry(@"~/res/ZhodaniCoreRoute.xml", new List<string> { "ZCR" } ),
+
+                        // OTU - Other Milieu
+                        new SectorMetafileEntry(@"~/res/Sectors/M1000/m1000.xml", new List<string> {} ),
+
+                        // Non-OTU
                         new SectorMetafileEntry(@"~/res/faraway.xml", new List<string> { "Faraway" } ),
-                        new SectorMetafileEntry(@"~/res/ZhodaniCoreRoute.xml", new List<string> { "ZCR" } )
                     };
 
-                    s_OTU = new SectorMap(files, resourceManager);
+                    s_instance = new SectorMap(files, resourceManager);
                 }
             }
 
-            return s_OTU;
+            return s_instance;
         }
 
         public static void Flush()
         {
             lock (SectorMap.s_lock)
             {
-                s_OTU = null;
+                s_instance = null;
+            }
+        }
+        
+        // This method supports deserializing of Location instances that reference sectors by name.
+        // Throws if the map is not initialized.
+        public static Point GetSectorCoordinatesByName(string name)
+        {
+            SectorMap instance;
+            lock (SectorMap.s_lock)
+            {
+                instance = s_instance;
+            }
+            if (instance == null)
+                throw new MapNotInitializedException();
+            return instance.FromName(name, null).Location;
+        }
+
+        public class Milieu
+        {
+            private SectorMap map;
+            private string milieu;
+            public Milieu(SectorMap map, string milieu)
+            {
+                this.map = map;
+                this.milieu = milieu;
+            }
+            public Sector FromLocation(int x, int y) { return map.FromLocation(x, y, milieu); }
+            public Sector FromLocation(Point pt) { return map.FromLocation(pt, milieu); }
+            public Sector FromName(string name) { return map.FromName(name, milieu); }
+        }
+
+        public static Milieu ForMilieu(ResourceManager resourceManager, string milieu)
+        {
+            return new Milieu(SectorMap.GetInstance(resourceManager), milieu);
+        }
+
+        private IEnumerable<MilieuMap> SelectMilieux(string m)
+        {
+            if (milieux == null)
+                throw new MapNotInitializedException();
+
+            if (m != null)
+            {
+                if (milieux.ContainsKey(m))
+                    yield return milieux[m];
+                yield break;
+            }
+
+            yield return milieux[DEFAULT_MILIEU];
+            foreach (string milieu in FALLBACK_MILIEUX)
+            {
+                if (milieux.ContainsKey(milieu))
+                    yield return milieux[milieu];
             }
         }
 
-        public static SectorMap GetInstance()
+        private Sector FromName(string name, string milieu)
         {
-            // This method supports deserializing of Location instances that reference sectors by name.
-            if (s_OTU == null)
+            if (sectors == null)
                 throw new MapNotInitializedException();
-            return s_OTU;
+            return SelectMilieux(milieu)
+                .Select(m => m.nameMap.ContainsKey(name) ? m.nameMap[name] : null)
+                .Where(s => s != null)
+                .FirstOrDefault();
         }
 
-        public Sector FromName(string sectorName)
+        private Sector FromLocation(int x, int y, string milieu) { return FromLocation(new Point(x, y), milieu); }
+        private Sector FromLocation(Point pt, string milieu)
         {
-            if (sectors == null || nameMap == null)
+            if (sectors == null)
                 throw new MapNotInitializedException();
-
-            Sector sector;
-            nameMap.TryGetValue(sectorName, out sector); // Using indexer throws exception, this is more performant
-            return sector;
-        }
-
-        public Sector FromLocation(int x, int y) { return FromLocation(new Point(x, y)); }
-        public Sector FromLocation(Point pt)
-        {
-            if (sectors == null || locationMap == null)
-                throw new MapNotInitializedException();
-
-            Sector sector;
-            locationMap.TryGetValue(pt, out sector);
-            return sector;
+            return SelectMilieux(milieu)
+                .Select(m => m.locationMap.ContainsKey(pt) ? m.locationMap[pt] : null)
+                .Where(s => s != null)
+                .FirstOrDefault();
         }
     }
 

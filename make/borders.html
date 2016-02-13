@@ -2,15 +2,21 @@
 <title>Border Maker - Traveller Map</title>
 <meta charset="utf-8">
 <link rel="shortcut icon" href="../favicon.ico">
-<link rel="stylesheet" href="../site.css?update=2015-10-28">
+<link rel="stylesheet" href="../site.css?update=2015-12-19">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.2/handlebars.min.js"></script>
-<script src="../lib/polyfill/polyfill.min.js?update=2015-10-28"></script>
-<script src="../map.js?update=2015-10-26"></script>
+<script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.14/polyfill.min.js"></script>
+<script src="../map.js?update=2016-02-07"></script>
 <script src="post.js?update=2015-07-29"></script>
 <script src="../borders/borders.js?update=2015-09-21"></script>
-<script src="borders.js?update=2015-07-29"></script>
+<script src="borders.js?update=2016-02-08"></script>
 
 <h1>Border Maker &mdash; The Traveller Map</h1>
+<p style="font-size: 120%; width: 600px;">
+  This tool lets you create border entries for custom sectors,
+  part of the <a target=_blank href="../doc/metadata">metadata</a> needed
+  to create <a href="poster">posters</a> or <a href="booklet">booklets</a>.
+</p>
+
 <ol class="steps">
   <li>
   <select id="sector">
@@ -34,7 +40,7 @@
   <li>
     <form id="form">
 Pick a file type:
-<label><input id="xml" type="radio" name="metatype" value="xml" checked><a target="_blank" href="doc/metadata">XML</a></label> or
+<label><input id="xml" type="radio" name="metatype" value="xml" checked><a target="_blank" href="../doc/metadata">XML</a></label> or
     <label><input id="msec" type="radio" name="metatype" value="msec"><a target="_blank" href="http://dotclue.org/t20/">MSEC</a></label>
     </form>
 
@@ -58,6 +64,7 @@ Pick a file type:
     text-align: center;
     line-height: 100%;
   }
+  .hex.outside { border: solid 1px lightgray; }
   .hexNumber {
     font-size: 3pt;
     font-family: Univers, Arial, sans-serif;
@@ -107,7 +114,7 @@ border{{#path}} {{.}}{{/path}}
 
 <div style="margin-top: 10px; font-size: 80%">
   The <em class="product">Traveller</em> game in all forms is owned by Far
-  Future Enterprises. Copyright &copy; 1977 &ndash; 2015 Far Future
+  Future Enterprises. Copyright &copy; 1977 &ndash; 2016 Far Future
   Enterprises.
   <a href="http://farfuture.net/FFEFairUsePolicy2008.pdf">Fair Use Policy</a>
 </div>

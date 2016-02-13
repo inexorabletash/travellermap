@@ -4,11 +4,17 @@
 <link rel="shortcut icon" href="../favicon.ico">
 <link rel="stylesheet" href="../site.css?update=2015-10-28">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.2/handlebars.min.js"></script>
-<script src="../lib/polyfill/polyfill.min.js?update=2015-10-28"></script>
+<script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.14/polyfill.min.js"></script>
 <script src="../map.js?update=2015-10-26"></script>
 <script src="post.js?update=2015-07-29"></script>
 
 <h1>Route Maker &mdash; The Traveller Map</h1>
+<p style="font-size: 120%; width: 600px;">
+  This tool lets you create route entries for custom sectors,
+  part of the <a target=_blank href="../doc/metadata">metadata</a> needed
+  to create <a href="poster">posters</a> or <a href="booklet">booklets</a>.
+</p>
+
 <ol class="steps">
   <li>
   <select id="sector">
@@ -21,7 +27,7 @@
 <textarea id="data" name="data" class="drag-n-drop"
           spellcheck="false" wrap="off" cols="80" rows="10"></textarea>
 
-<div>Metadata:
+<div>Existing Metadata:
   (<a target="_blank" href="../doc/metadata">XML</a> or
   <a target="_blank" href="http://dotclue.org/t20/">MSEC</a>)</div>
 <textarea id="metadata" name="metadata" class="drag-n-drop"
@@ -34,8 +40,8 @@
   <li>
     <form id="form">
 Pick a file type:
-<label><input id="xml" type="radio" name="metatype" value="xml" checked><a target="_blank" href="doc/api#metadata">XML</a></label> or
-    <label><input id="msec" type="radio" name="metatype" value="msec"><a target="_blank" href="doc/api#msec">MSEC</a></label>
+<label><input id="xml" type="radio" name="metatype" value="xml" checked><a target="_blank" href="../doc/api#metadata">XML</a></label> or
+    <label><input id="msec" type="radio" name="metatype" value="msec"><a target="_blank" href="../doc/api#msec">MSEC</a></label>
     </form>
   <li>Copy the routes from the box below into your metadata file:<br>
 <textarea id="metadata_generated"
@@ -73,7 +79,7 @@ Pick a file type:
 
 <div style="margin-top: 10px; font-size: 80%">
   The <em class="product">Traveller</em> game in all forms is owned by Far
-  Future Enterprises. Copyright &copy; 1977 &ndash; 2015 Far Future
+  Future Enterprises. Copyright &copy; 1977 &ndash; 2016 Far Future
   Enterprises.
   <a href="http://farfuture.net/FFEFairUsePolicy2008.pdf">Fair Use Policy</a>
 </div>

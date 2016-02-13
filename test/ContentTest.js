@@ -1,46 +1,45 @@
 (function(global) {
 
-  function idiff(as, bs) {
-    // Map line -> index
-    var map = new Map();
-    as.forEach(function(a, i) {
-      if (!map.has(a)) map.set(a, []);
-      map.get(a).push(i);
-    });
+  // http://rosettacode.org/wiki/Longest_Common_Substring
+  function lcs(a, b) {
+    var len = 0, oa = 0, ob = 0;;
 
-    var common = [];
-    var ssa = 0;
-    var ssb = 0;
-    var len = 0;
+    var lengths = [];
+    lengths.length = a.length * b.length;
+    lengths.fill(0);
 
-    // Find largest common substring
-    bs.forEach(function(b, idx) {
-      if (!map.has(b)) return;
-      var tmp = [];
-      map.get(b).forEach(function(i) {
-        tmp[i] = ((i && common[i - 1]) || 0) + 1;
-        if (tmp[i] > len) {
-          len = tmp[i];
-          ssa = i - len + 1;
-          ssb = idx - len + 1;
+    for (var i = 0; i < a.length; ++i) {
+      for (var j = 0; j < b.length; j++) {
+        if (a[i] === b[j]) {
+          lengths[i * a.length + j] =
+            (i === 0 || j === 0) ? 1 : lengths[(i - 1) * a.length + (j - 1)] + 1;
+          if (lengths[i * a.length + j] > len) {
+            len = lengths[i * a.length + j];
+            oa = i - len + 1;
+            ob = j - len + 1;
+          }
+        } else {
+          lengths[i * a.length + j] = 0;
         }
-      });
-      common = tmp;
-    });
+      }
+    }
+    return {len: len, oa: oa, ob: ob};
+  }
 
+  function idiff(as, bs) {
+    var r = lcs(as, bs);
     // Nothing common
-    if (!len) {
+    if (!r.len) {
       var result = [];
       if (as.length) result.push(['-', as]);
       if (bs.length) result.push(['+', bs]);
       return result;
     }
-
     // Recurse
     return [].concat(
-      idiff(as.slice(0, ssa), bs.slice(0, ssb)),
-      [['=', bs.slice(ssb, ssb + len)]],
-      idiff(as.slice(ssa + len), bs.slice(ssb + len))
+      idiff(as.slice(0, r.oa), bs.slice(0, r.ob)),
+      [['=', bs.slice(r.ob, r.ob + r.len)]],
+      idiff(as.slice(r.oa + r.len), bs.slice(r.ob + r.len))
     );
   }
 
@@ -80,11 +79,9 @@
               + responses[1].text;
         if (filter) {
           a = filter(a);
-          window.b_1 = b;
           b = filter(b);
-          window.b_2 = b;
-          window.f = filter;
         }
+
         var d = diff(a, b);
         callback(a, b, d, !d);
         return !d;
@@ -124,18 +121,22 @@
   global.check = function(contentType, url1, url2, filter) {
     ++status.tests;
 
-    var tr = $('#results').appendChild(elem('tr'));
-    tr.appendChild(elem('td')).appendChild(link(url1));
-    tr.appendChild(elem('td')).appendChild(link(url2));
-    tr.appendChild(elem('td')).appendChild(text('diff'));
+    var tr1 = $('#results').appendChild(elem('tr'));
+    tr1.classList.add('source');
+    tr1.appendChild(elem('td')).appendChild(link(url1));
+    tr1.appendChild(elem('td')).appendChild(link(url2));
+    tr1.appendChild(elem('td')).appendChild(text('diff'));
 
-    tr = $('#results').appendChild(elem('tr'));
+    var tr2 = $('#results').appendChild(elem('tr'));
+    tr2.classList.add('content');
 
     compareContent(contentType, url1, url2, filter, function(a, b, c, pass) {
-      tr.appendChild(elem('td')).appendChild(elem('textarea')).value = a;
-      tr.appendChild(elem('td')).appendChild(elem('textarea')).value = b;
-      tr.appendChild(elem('td')).appendChild(elem('textarea')).value = c;
-      tr.classList.add(pass ? 'pass' : 'fail');
+      tr1.classList.add(pass ? 'pass' : 'fail');
+      tr2.classList.add(pass ? 'pass' : 'fail');
+
+      tr2.appendChild(elem('td')).appendChild(elem('textarea')).value = a;
+      tr2.appendChild(elem('td')).appendChild(elem('textarea')).value = b;
+      tr2.appendChild(elem('td')).appendChild(elem('textarea')).value = c;
     }).then(function(result) {
       ++status.completed;
       if (result) {

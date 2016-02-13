@@ -116,7 +116,12 @@ document.addEventListener('DOMContentLoaded', function() {
       for (y = map.origin_y + inset; y < map.origin_y + map.height - inset; ++y) {
         top += (sz + pad);
 
-        fragment = '<div class="hex" data-hex="' + hexLabel(x, y) + '" style="left: ' + left + 'px; top: ' + top + 'px;">';
+        var className = 'hex' +
+              ((x < 1 || x > Traveller.Astrometrics.SectorWidth ||
+               y < 1 || y > Traveller.Astrometrics.SectorHeight) ? ' outside' : '');
+
+        fragment = '<div class="' + className +
+          '" data-hex="' + hexLabel(x, y) + '" style="left: ' + left + 'px; top: ' + top + 'px;">';
         fragment += hexContents(x, y, map);
         fragment += '<' + '/div>';
 

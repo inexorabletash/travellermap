@@ -49,6 +49,15 @@ namespace Maps.API
                     ctx.Styles.microRoutes.visible = false;
                 }
 
+                if (!GetBoolOption("rifts", queryDefaults: queryDefaults, defaultValue: true))
+                    ctx.Styles.showRiftOverlay = false;
+
+                if (GetBoolOption("po", queryDefaults: queryDefaults, defaultValue: false))
+                    ctx.Styles.showPopulationOverlay = true;
+
+                if (GetBoolOption("im", queryDefaults: queryDefaults, defaultValue: false))
+                    ctx.Styles.showImportanceOverlay = true;
+
                 ctx.Styles.dimUnofficialSectors = GetBoolOption("dimunofficial", queryDefaults: queryDefaults, defaultValue: false);
                 ctx.Styles.droyneWorlds.visible = GetBoolOption("dw", queryDefaults: queryDefaults, defaultValue: false);
 
@@ -65,7 +74,7 @@ namespace Maps.API
                         document.Info.Author = "Joshua Bell";
                         document.Info.Creator = "TravellerMap.com";
                         document.Info.Subject = DateTime.Now.ToString("F", CultureInfo.InvariantCulture);
-                        document.Info.Keywords = "The Traveller game in all forms is owned by Far Future Enterprises. Copyright (C) 1977 - 2015 Far Future Enterprises. Traveller is a registered trademark of Far Future Enterprises.";
+                        document.Info.Keywords = "The Traveller game in all forms is owned by Far Future Enterprises. Copyright (C) 1977 - 2016 Far Future Enterprises. Traveller is a registered trademark of Far Future Enterprises.";
 
                         // TODO: Credits/Copyright
                         // This is close, but doesn't define the namespace correctly:
@@ -97,8 +106,14 @@ namespace Maps.API
                     }
                 }
 
-                using (var bitmap = new Bitmap((int)Math.Floor(tileSize.Width * devicePixelRatio), (int)Math.Floor(tileSize.Height * devicePixelRatio), PixelFormat.Format32bppArgb))
+                int width = (int)Math.Floor(tileSize.Width * devicePixelRatio);
+                int height = (int)Math.Floor(tileSize.Height * devicePixelRatio);
+                using (var bitmap = TryConstructBitmap(width, height, PixelFormat.Format32bppArgb))
                 {
+                    if (bitmap == null)
+                        throw new HttpError(500, "Internal Server Error", 
+                            String.Format("Failed to allocate bitmap ({0}x{1}). Insufficient memory?", width, height));
+
                     if (transparent)
                         bitmap.MakeTransparent();
 
@@ -143,6 +158,20 @@ namespace Maps.API
                         }
                         context.Response.OutputStream.Flush();
                     }
+                }
+            }
+
+            private static Bitmap TryConstructBitmap(int width, int height, PixelFormat pixelFormat)
+            {
+                try
+                {
+                    return new Bitmap(width, height, pixelFormat);
+                }
+                catch (ArgumentException)
+                {
+                    // See http://stackoverflow.com/questions/1949045/net-bitmap-class-constructor-int-int-and-int-int-pixelformat-throws-argu
+                    return null;
+
                 }
             }
 
@@ -193,63 +222,72 @@ namespace Maps.API
 
             private static void BitmapResponse(HttpResponse response, Stream outputStream, Stylesheet styles, Bitmap bitmap, string mimeType)
             {
-                // JPEG or PNG if not specified, based on style
-                mimeType = mimeType ?? styles.preferredMimeType;
-
-                response.ContentType = mimeType;
-
-                // Searching for a matching encoder
-                ImageCodecInfo encoder = null;
-                ImageCodecInfo[] encoders = ImageCodecInfo.GetImageEncoders();
-                for (int i = 0; i < encoders.Length; ++i)
+                try
                 {
-                    if (encoders[i].MimeType == response.ContentType)
-                    {
-                        encoder = encoders[i];
-                        break;
-                    }
-                }
+                    // JPEG or PNG if not specified, based on style
+                    mimeType = mimeType ?? styles.preferredMimeType;
 
-                if (encoder != null)
-                {
-                    EncoderParameters encoderParams;
-                    if (mimeType == MediaTypeNames.Image.Jpeg)
-                    {
-                        encoderParams = new EncoderParameters(1);
-                        encoderParams.Param[0] = new EncoderParameter(Encoder.Quality, (long)95);
-                    }
-                    else if (mimeType == Util.MediaTypeName_Image_Png)
-                    {
-                        encoderParams = new EncoderParameters(1);
-                        encoderParams.Param[0] = new EncoderParameter(Encoder.ColorDepth, 8);
-                    }
-                    else
-                    {
-                        encoderParams = new EncoderParameters(0);
-                    }
+                    response.ContentType = mimeType;
 
-                    if (mimeType == Util.MediaTypeName_Image_Png)
+                    // Searching for a matching encoder
+                    ImageCodecInfo encoder = null;
+                    ImageCodecInfo[] encoders = ImageCodecInfo.GetImageEncoders();
+                    for (int i = 0; i < encoders.Length; ++i)
                     {
-                        // PNG encoder is picky about streams - need to do an indirection
-                        // http://www.west-wind.com/WebLog/posts/8230.aspx
-                        using (var ms = new MemoryStream())
+                        if (encoders[i].MimeType == response.ContentType)
                         {
-                            bitmap.Save(ms, encoder, encoderParams);
-                            ms.WriteTo(outputStream);
+                            encoder = encoders[i];
+                            break;
                         }
                     }
+
+                    if (encoder != null)
+                    {
+                        EncoderParameters encoderParams;
+                        if (mimeType == MediaTypeNames.Image.Jpeg)
+                        {
+                            encoderParams = new EncoderParameters(1);
+                            encoderParams.Param[0] = new EncoderParameter(Encoder.Quality, (long)95);
+                        }
+                        else if (mimeType == Util.MediaTypeName_Image_Png)
+                        {
+                            encoderParams = new EncoderParameters(1);
+                            encoderParams.Param[0] = new EncoderParameter(Encoder.ColorDepth, 8);
+                        }
+                        else
+                        {
+                            encoderParams = new EncoderParameters(0);
+                        }
+
+                        if (mimeType == Util.MediaTypeName_Image_Png)
+                        {
+                            // PNG encoder is picky about streams - need to do an indirection
+                            // http://www.west-wind.com/WebLog/posts/8230.aspx
+                            using (var ms = new MemoryStream())
+                            {
+                                bitmap.Save(ms, encoder, encoderParams);
+                                ms.WriteTo(outputStream);
+                            }
+                        }
+                        else
+                        {
+                            bitmap.Save(outputStream, encoder, encoderParams);
+                        }
+
+                        encoderParams.Dispose();
+                    }
                     else
                     {
-                        bitmap.Save(outputStream, encoder, encoderParams);
+                        // Default to GIF if we can't find anything
+                        response.ContentType = MediaTypeNames.Image.Gif;
+                        bitmap.Save(outputStream, ImageFormat.Gif);
                     }
-
-                    encoderParams.Dispose();
                 }
-                else
+                catch (System.Runtime.InteropServices.ExternalException)
                 {
-                    // Default to GIF if we can't find anything
-                    response.ContentType = MediaTypeNames.Image.Gif;
-                    bitmap.Save(outputStream, ImageFormat.Gif);
+                    // Saving seems to throw "A generic error occurred in GDI+." on low memory.
+                    throw new HttpError(500, "Internal Server Error",
+                        String.Format("Unknown GDI error encoding bitmap ({0}x{1}). Insufficient memory?", bitmap.Width, bitmap.Height));
                 }
             }
 

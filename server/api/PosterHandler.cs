@@ -46,7 +46,7 @@ namespace Maps.API
                     tileRect.Width = Math.Max(x1, x2) - tileRect.X;
                     tileRect.Height = Math.Max(y1, y2) - tileRect.Y;
 
-                    SectorMap map = SectorMap.GetInstance(resourceManager);
+                    SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, GetStringOption("milieu"));
                     selector = new RectSelector(map, resourceManager, tileRect);
                     selector.Slop = false;
 
@@ -60,7 +60,7 @@ namespace Maps.API
                 else if (HasOption("domain"))
                 {
                     string domain = GetStringOption("domain");
-                    int x, y, w = 2, h = 2;
+                    double x, y, w = 2, h = 2;
                     switch (domain.ToLowerInvariant())
                     {
                         case "deneb": x = -4; y = -1; title = "Domain of Deneb"; break;
@@ -80,7 +80,8 @@ namespace Maps.API
                         case "hiver": x = 2; y = 1; w = 6; h = 4; title = "Hiver Federation"; break;
                         case "aslan": x = -8; y = 1; w = 7; h = 4; title = "Aslan Hierate"; break;
                         case "vargr": x = -4; y = -4; w = 8; h = 3; title = "Vargr Extents"; break;
-                        // TODO: K'kree
+                        case "kkree": x = 4; y = -2; w = 4; h = 4; title = "Two Thousand Worlds"; break;
+                        case "jp": x = 0; y = -3; w = 4; h = 3; title = "Julian Protectorate"; break;
                         // TODO: Zhodani provinces
 
                         case "jg": x = 160; y = 0; w = 2; h = 2; title = "Judges Guild"; break;
@@ -89,17 +90,17 @@ namespace Maps.API
                             throw new HttpError(404, "Not Found", string.Format("Unknown domain: {0}", domain));
                     }
 
-                    int x1 = x * Astrometrics.SectorWidth - Astrometrics.ReferenceHex.X + 1;
-                    int y1 = y * Astrometrics.SectorHeight - Astrometrics.ReferenceHex.Y + 1;
-                    int x2 = x1 + w * Astrometrics.SectorWidth - 1;
-                    int y2 = y1 + h * Astrometrics.SectorHeight - 1;
+                    int x1 = (int)Math.Round(x * Astrometrics.SectorWidth - Astrometrics.ReferenceHex.X + 1);
+                    int y1 = (int)Math.Round(y * Astrometrics.SectorHeight - Astrometrics.ReferenceHex.Y + 1);
+                    int x2 = (int)Math.Round(x1 + w * Astrometrics.SectorWidth - 1);
+                    int y2 = (int)Math.Round(y1 + h * Astrometrics.SectorHeight - 1);
 
                     tileRect.X = Math.Min(x1, x2);
                     tileRect.Y = Math.Min(y1, y2);
                     tileRect.Width = Math.Max(x1, x2) - tileRect.X;
                     tileRect.Height = Math.Max(y1, y2) - tileRect.Y;
 
-                    SectorMap map = SectorMap.GetInstance(resourceManager);
+                    SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, GetStringOption("milieu"));
                     selector = new RectSelector(map, resourceManager, tileRect);
                     selector.Slop = false;
 
@@ -143,7 +144,7 @@ namespace Maps.API
                         if (sectorName == null)
                             throw new HttpError(400, "Bad Request", "No sector specified.");
 
-                        SectorMap map = SectorMap.GetInstance(resourceManager);
+                        SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, GetStringOption("milieu"));
 
                         sector = map.FromName(sectorName);
                         if (sector == null)

@@ -21,14 +21,14 @@ namespace Maps.API
             private class TravellerPathFinder : PathFinder.Map<World>
             {
                 ResourceManager manager;
-                SectorMap map;
+                SectorMap.Milieu map;
 
                 public int Jump { get; set; }
                 public bool RequireWildernessRefuelling { get; set; }
                 public bool AvoidRedZones { get; set; }
                 public bool ImperialWorldsOnly { get; set; }
 
-                public TravellerPathFinder(ResourceManager manager, SectorMap map, int jump)
+                public TravellerPathFinder(ResourceManager manager, SectorMap.Milieu map, int jump)
                 {
                     this.manager = manager;
                     this.map = map;
@@ -69,7 +69,7 @@ namespace Maps.API
                 }
             }
 
-            private World ResolveLocation(HttpContext context, string field, ResourceManager manager, SectorMap map)
+            private World ResolveLocation(HttpContext context, string field, ResourceManager manager, SectorMap.Milieu map)
             {
                 string query = context.Request.QueryString[field];
                 if (string.IsNullOrWhiteSpace(query))
@@ -111,7 +111,7 @@ namespace Maps.API
             public override void Process()
             {
                 ResourceManager resourceManager = new ResourceManager(context.Server);
-                SectorMap map = SectorMap.GetInstance(resourceManager);
+                SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, GetStringOption("milieu"));
 
                 World startWorld = ResolveLocation(context, "start", resourceManager, map);
                 if (startWorld == null)

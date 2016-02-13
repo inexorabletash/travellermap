@@ -38,7 +38,7 @@ namespace Maps
 
         public delegate void StatusCallback(string status);
 
-        private static object s_lock = new object();
+        private static readonly object s_lock = new object();
 
         private static string SanifyLabel(string s)
         {
@@ -99,6 +99,12 @@ namespace Maps
                         {
                             DataRow row = dt_sectors.NewRow();
                             row.ItemArray = new object[] { sector.X, sector.Y, name.Text };
+                            dt_sectors.Rows.Add(row);
+                        }
+                        if (!string.IsNullOrEmpty(sector.Abbreviation))
+                        {
+                            DataRow row = dt_sectors.NewRow();
+                            row.ItemArray = new object[] { sector.X, sector.Y, sector.Abbreviation };
                             dt_sectors.Rows.Add(row);
                         }
 

@@ -10,8 +10,13 @@ window.addEventListener('DOMContentLoaded', function() {
   [].slice.call($$(selector)).forEach(function(h) {
     var a = document.createElement('a');
     var text = h.textContent || h.innerText;
-    if (!h.id)
-      h.id = text.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');;
+    if (!h.id) {
+      h.id = text
+        .toLowerCase()
+        .replace(/[^a-z0-9 -]/g, '')
+        .trim()
+        .replace(/\s+/g, '-');
+    }
     a.href = '#' + h.id;
     a.className = h.tagName;
     a.appendChild(document.createTextNode(text));

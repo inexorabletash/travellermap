@@ -1,6 +1,6 @@
 Sector	SS	Hex	Name	UWP	Bases	Remarks	Zone	PBG	Allegiance	Stars	{Ix}	(Ex)	[Cx]	Nobility	W	RU
 Spin	A	0101	Zeycude	C430698-9		De Na Ni Po		613	ZhIN	K9 V	{ -1 }	(C53-1)	[6559]		8	162
-Spin	A	0102	Reno	C4207B9-A		De He Na Po Pi		603	ZhIN	G8 V M1 V	{ 1 }	(C6A+2)	[886B]		12	1,440
+Spin	A	0102	Reno	C4207B9-A		De He Na Po Pi Pz	A	603	ZhIN	G8 V M1 V	{ 1 }	(C6A+2)	[886B]		12	1,440
 Spin	A	0103	Errere	B563664-B	KM	Ni Ri O:0304		910	ZhIN	M1 V M4 V	{ 3 }	(957+1)	[4939]		9	315
 Spin	A	0104	Cantrel	C566243-9		Lo		520	ZhIN	F1 V	{ -1 }	(611-4)	[1126]		12	4
 Spin	A	0108	Gyomar	C8B2889-8		Fl He Ph (Tethmari)		824	NaHu	A8 V	{ -1 }	(G77+1)	[9769]		14	784
@@ -9,7 +9,7 @@ Spin	E	0114	Yiktor	C6B6431-A		Fl Ni		123	NaHu	G4 V M4 V	{ 0 }	(B33-4)	[1416]		12
 Spin	E	0115	Xhosa	EA95124-5		Lo		910	NaHu	M0 V	{ -3 }	(311-5)	[1133]		8	2
 Spin	I	0122	Junction	D550441-4		De Ni Po		210	NaHu	M2 V M3 V	{ -3 }	(631-5)	[1111]		10	9
 Spin	I	0129	Uniqua	E62556B-7		Ni O:0130		210	NaHu	K9 V M9 V	{ -3 }	(741-1)	[7279]		8	25
-Spin	I	0130	Garoo	A2008CB-A		Na Va Ph Pi (Garoo)		210	NaHu	M1 V M5 V	{ 2 }	(B7B+4)	[AA7C]		9	3,388
+Spin	I	0130	Garoo	A2008CB-A		Na Va Ph Pi Pz (Garoo)	A	210	NaHu	M1 V M5 V	{ 2 }	(B7B+4)	[AA7C]		9	3,388
 Spin	M	0133	Emape	B564500-B	N	Ag Ni Pr Da	A	503	ImDd	M0 V	{ 2 }	(A46-2)	[1716]	BcC	6	192
 Spin	M	0139	Raweh	B430300-B	N	De Lo Po Da	A	920	ImDd	G3 V M1 V	{ 1 }	(721-3)	[1416]	B	5	10
 Spin	M	0140	876-574	E687200-3		Lo Ga		702	NaHu	K7 V	{ -3 }	(411-5)	[1111]		11	2
@@ -23,20 +23,20 @@ Spin	M	0231	Saxe	EAA5543-8		Fl Ni		910	NaHu	A2 V	{ -3 }	(841-5)	[2225]		9	16
 Spin	M	0236	Andor	C695735-9		Ag An Pi Fo DroyW	R	603	ImDd	F3 V	{ 1 }	(C6A-1)	[5837]		6	648
 Spin	M	0240	769-422	E754401-8		Ni Pa (minor)		924	NaHu	G2 V	{ -3 }	(C31-5)	[1114]		10	18
 Spin	A	0301	Rio	C686648-8		Ag Ni Ga Ri		201	NaHu	M0 V M1 V	{ 0 }	(954+1)	[6658]		8	180
-Spin	A	0303	Gesentown	B31169B-C	KM	Ic Na Ni		801	ZhIN	M2 V M9 V	{ 2 }	(956+4)	[887E]		12	1,080
+Spin	A	0303	Gesentown	B31169B-C	KM	Ic Na Ni Da	A	801	ZhIN	M2 V M9 V	{ 2 }	(956+4)	[887E]		12	1,080
 Spin	A	0304	CHRONOR	A6369A5-D	KM	Hi Cp		810	ZhIN	F8 V	{ 4 }	(C8G+2)	[7D3B]		5	3,072
-Spin	A	0307	Atsa	B4337CA-A	KM	Na Po An		810	ZhIN	F7 V M3 V	{ 3 }	(A6C+5)	[9A7C]		8	3,600
+Spin	A	0307	Atsa	B4337CA-A	KM	Na Po An Pz	A	810	ZhIN	F7 V M3 V	{ 3 }	(A6C+5)	[9A7C]		8	3,600
 Spin	E	0311	Mizan-fel	B56258A-8		Ni Pr		323	NaHu	F3 V	{ -1 }	(C43+1)	[747A]		13	144
 Spin	I	0321	Nonym	C433898-A	M	Na Po Ph		623	NaHu	G0 V	{ 1 }	(F7A+1)	[895A]		14	1,050
 Spin	I	0325	Laberv	B554443-7	M	Ni Pa DaryW		834	DaCf	G0 V	{ -1 }	(632-4)	[1324]		12	22
 Spin	I	0326	Ektron	C432652-9		Na Ni Po Asla1 Dary8		423	DaCf	M1 V	{ -1 }	(D53-5)	[2515]		14	98
-Spin	M	0332	Gothe	E42159B-7		He Ni Po		310	ImDd	F5 V	{ -3 }	(741-1)	[7279]	B	9	25
+Spin	M	0332	Gothe	E42159B-7		He Ni Po Da	A	310	ImDd	F5 V	{ -3 }	(741-1)	[7279]	B	9	25
 Spin	M	0333	Mirriam	B9998A6-A	NW	Ph Pi Pz	A	514	ImDd	G6 V	{ 3 }	(F7C+2)	[7B49]	BDe	13	2,520
 Spin	M	0336	Candory	C593634-8		Ni An Fo DroyW	R	920	ImDd	F6 V M3 V	{ -2 }	(A52-4)	[4436]		5	60
 Spin	M	0340	Wonderay	E88A47A-4		Ni Wa		210	NaHu	M1 V M3 V	{ -3 }	(631-1)	[6176]		7	16
 Spin	E	0412	Sansibar	B200310-A	KM	Lo Va Droy4		701	ZhIN	M3 V M3 V	{ 2 }	(621-2)	[1515]		12	10
 Spin	E	0414	Attica	C400546-8		Ni Va		810	NaHu	K1 V M6 V	{ -2 }	(842-3)	[4347]		8	45
-Spin	E	0416	RETINAE	E8C69AA-9		Fl Hi In (Tashaki) RsD		910	CsIm	M1 V	{ 1 }	(C8B+3)	[BA7B]		11	3,168
+Spin	E	0416	RETINAE	E8C69AA-9		Fl Hi In Pz (Tashaki) RsD	A	910	CsIm	M1 V	{ 1 }	(C8B+3)	[BA7B]		11	3,168
 Spin	I	0421	ZAMINE	C897977-A		Hi In Dary9		223	DaCf	M3 V	{ 3 }	(G8D+3)	[9C5A]		12	4,992
 Spin	I	0425	Engrange	C554769-8		Ag Asla1 Dary8 O:0426		701	DaCf	M1 V M3 V	{ 0 }	(A68+1)	[8769]		10	480
 Spin	I	0426	Ilium	B544831-9	KM	Pa Ph Pi DaryW		401	DaCf	G3 V M8 V	{ 2 }	(B7B-2)	[4A15]		6	678
@@ -51,7 +51,7 @@ Spin	E	0512	Asmodeus	E596400-5		Ni Pa		205	ZhIN	K8 V	{ -3 }	(631-5)	[1111]		11	9
 Spin	E	0518	Faisal	D545436-5		Ni Pa		810	CsIm	K9 V M7 V	{ -3 }	(631-4)	[3144]		9	11
 Spin	I	0526	Rorre	D765657-3		Ag Ni Ga Ri DaryW		103	DaCf	F4 V M2 V	{ -1 }	(853-1)	[6553]		13	108
 Spin	I	0527	MIRE	A665A95-C	KM	Hi Ga Cx Dary8 Asla1		110	DaCf	K6 V	{ 4 }	(D9F+2)	[8E3A]		10	3,510
-Spin	I	0528	Condaria	E54779B-5		Ag Pi		901	NaHu	K3 V M0 V	{ -1 }	(966+1)	[9677]		12	324
+Spin	I	0528	Condaria	E54779B-5		Ag Pi Pz	A	901	NaHu	K3 V M0 V	{ -1 }	(966+1)	[9677]		12	324
 Spin	I	0530	Dorannia	E42158A-8		He Ni Po		510	NaHu	K4 V	{ -3 }	(841-1)	[727A]		9	29
 Spin	M	0532	Ucella	D574654-7		Ag Ni		410	CsIm	F2 V M2 V	{ -2 }	(852-4)	[4435]		8	48
 Spin	M	0533	Penelope	C560642-4		De Ni Ri		323	ImDd	F6 V M2 V	{ -1 }	(853-5)	[2511]	BC	10	60
@@ -72,7 +72,7 @@ Spin	I	0624	Jacent	A433744-D		Na Po DaryW		710	DaCf	M0 V	{ 2 }	(A6D+1)	[593B]		7
 Spin	I	0625	494-908	X893000-0		Ba Fo Re	R	010	DaCf	M1 V	{ -3 }	(200-5)	[0000]		6	0
 Spin	I	0627	DARRIAN	A463955-G		Hi An Pr (Daryen)8 Asla0		225	DaCf	G1 V D	{ 3 }	(J8F+1)	[7C3E]		10	2,160
 Spin	M	0632	Gohature	C754766-7	S	Ag O:0732		523	ImDd	F8 V	{ 0 }	(968-1)	[6746]	BC	15	389
-Spin	M	0637	Quhaiathat	C31479B-9		Ic Pi		210	ImDd	K8 V	{ 0 }	(A69+2)	[977B]	BD	6	1,080
+Spin	M	0637	Quhaiathat	C31479B-9		Ic Pi Pz	A	210	ImDd	K8 V	{ 0 }	(A69+2)	[977B]	BD	6	1,080
 Spin	M	0638	Lakou	E779454-7		Ni Da	A	601	ImDd	M2 V	{ -3 }	(631-5)	[2135]	B	13	9
 Spin	A	0703	Indo	E434662-6		Ni O:0605		320	NaHu	F6 V	{ -3 }	(851-5)	[2312]		11	20
 Spin	A	0704	Nerewhon	E738475-7		Ni		820	NaHu	K5 V	{ -3 }	(631-5)	[2135]		10	9
@@ -80,10 +80,10 @@ Spin	A	0705	Cipango	A886865-C	KM	Ga Ri Pa Ph O:0304		121	ZhIN	G2 V	{ 4 }	(D7E+2)
 Spin	A	0710	Stave	E7667A8-2		Ag Ga Ri (Obeyery)		801	NaHu	K9 V M2 V	{ 0 }	(965+1)	[7752]		8	270
 Spin	E	0712	Rapp's World	C592320-8	M	He Lo		402	ZhIN	K5 V M8 V	{ -2 }	(721-5)	[1113]		9	7
 Spin	E	0717	Thanber	B543653-C		Ni Po		210	CsIm	M0 V M1 V	{ 1 }	(955-2)	[3729]		9	180
-Spin	E	0720	ENTROPE	E436AAA-B		Hi		110	SwCf	G6 V M1 V	{ 1 }	(D9C+3)	[CB7D]		10	4,212
+Spin	E	0720	ENTROPE	E436AAA-B		Hi Pz	A	110	SwCf	G6 V M1 V	{ 1 }	(D9C+3)	[CB7D]		10	4,212
 Spin	I	0721	Torment	X433268-6		Lo Po Fo DaryW Px	R	820	DaCf	M0 V	{ -3 }	(411-3)	[2156]		12	3
 Spin	I	0723	Trifuge	C546556-9		Ag Ni (Dphone) Dary9		210	DaCf	F0 V	{ 0 }	(844-1)	[4548]		10	115
-Spin	I	0724	Nosea	B4326BB-C		Na Ni Po DaryW		620	DaCf	M2 V	{ 1 }	(A55+3)	[877E]		13	750
+Spin	I	0724	Nosea	B4326BB-C		Na Ni Po Da DaryW	A	620	DaCf	M2 V	{ 1 }	(A55+3)	[877E]		13	750
 Spin	I	0727	Spume	C540200-A	M	De He Lo Po DaryW		434	DaCf	M2 V	{ 0 }	(B11-4)	[1215]		12	7
 Spin	I	0729	Ator	D426258-7		Lo An		821	NaHu	F7 V M2 V	{ -3 }	(411-3)	[2157]		6	3
 Spin	M	0731	Ralhe	E424574-8		Ni		801	NaHu	M2 V M3 V	{ -3 }	(841-5)	[3236]		9	16
@@ -119,7 +119,7 @@ Spin	B	1004	Esalin	C565673-8		Ag Ni Ri Da	A	223	NaHu	F3 V M2 V	{ 0 }	(D54-3)	[36
 Spin	B	1005	Ruby	B400445-B	S	Ni Va		201	ImDd	M1 V M3 V	{ 1 }	(734-1)	[2539]	B	9	76
 Spin	B	1006	Emerald	B766555-B	S	Ag Ni Ga Pr		534	ImDd	M1 V	{ 2 }	(E46+1)	[3739]	BcC	12	336
 Spin	B	1010	Zenopit	D430546-7		De Ni Po		622	NaHu	M3 V	{ -3 }	(741-4)	[4246]		7	17
-Spin	F	1011	ARDEN	B5549CB-9		Hi		110	NaHu	G4 V M5 V	{ 2 }	(C8C+4)	[BB7B]		12	4,608
+Spin	F	1011	ARDEN	B5549CB-9		Hi Pz	A	110	NaHu	G4 V M5 V	{ 2 }	(C8C+4)	[BB7B]		12	4,608
 Spin	F	1018	Choleosti	C200100-9		Lo Va		101	ImDd	K9 V M4 V	{ -1 }	(411-5)	[1114]	B	5	2
 Spin	F	1020	Margesi	C575677-6		Ag Ni Da	A	910	ImDd	K4 V M7 V	{ -1 }	(853-1)	[6556]	BC	10	108
 Spin	J	1022	Colada	B564685-B	KM	Ag Ni Ri		211	SwCf	K2 V M8 V	{ 4 }	(A58+2)	[4A39]		10	800
@@ -137,7 +137,7 @@ Spin	F	1119	VILIS	A593943-A		Hi In		820	ImDd	G5 V M8 V	{ 4 }	(D8E+1)	[6D27]	BEf	
 Spin	J	1121	Mjolnir	B530544-A	KM	De Ni Po		522	SwCf	A5 V G0 V	{ 2 }	(B46+1)	[3738]		12	264
 Spin	J	1123	Joyeuse	B564778-A	KM	Ag Ri Pz	A	401	SwCf	M3 V M9 V	{ 5 }	(A6E+5)	[7C5A]		13	4,200
 Spin	J	1126	Orcrist	B8A6733-A	KM	Fl Lk		401	SwCf	K7 V M7 V	{ 3 }	(A6C+1)	[4A27]		8	720
-Spin	J	1130	Enos	E35059B-4	M	De Ni Po		710	SwCf	M1 V	{ -3 }	(741-1)	[7276]		8	25
+Spin	J	1130	Enos	E35059B-4	M	De Ni Po Da	A	710	SwCf	M1 V	{ -3 }	(741-1)	[7276]		8	25
 Spin	N	1131	Faldor	E5936A7-5		Ni (Otarri)		520	NaHu	M2 V	{ -3 }	(851-3)	[6355]		7	28
 Spin	N	1132	Bowman	D000300-9	S	As Lo Va		831	CsIm	M0 V	{ -2 }	(921-5)	[1114]		13	9
 Spin	N	1133	Squallia	C438679-9		Ni		320	NaHu	F0 V	{ -1 }	(A53+1)	[756A]		8	150
@@ -145,7 +145,7 @@ Spin	N	1138	Tarsus	B584620-A		Ag Ni Ri		202	CsIm	K9 V	{ 3 }	(A57-1)	[1915]		7	31
 Spin	B	1201	Ao-dai	E410644-7		Na Ni		312	ZhIN	K2 V M3 V	{ -3 }	(851-5)	[4335]		10	20
 Spin	B	1204	Mongo	A568685-A	NS	Ag Ni Ri		603	ImDd	M6 III M0 V	{ 4 }	(B58+2)	[4A38]	BCf	7	880
 Spin	B	1209	Utoland	C573464-7	M	Ni O:1011		410	NaHu	M0 V	{ -2 }	(631-4)	[2235]		8	11
-Spin	B	1210	Pequan	E5656B9-4		Ag Ni Ri		710	NaHu	K5 V	{ -1 }	(853+1)	[7565]		5	120
+Spin	B	1210	Pequan	E5656B9-4		Ag Ni Ri Da	A	710	NaHu	K5 V	{ -1 }	(853+1)	[7565]		5	120
 Spin	F	1212	Digitis	E53668A-6		Ni		920	NaHu	M3 V	{ -3 }	(851-1)	[8378]		8	36
 Spin	F	1213	Edinina	E400220-7		Lo Va Da	A	401	CsIm	K6 V M0 V	{ -3 }	(411-5)	[1112]		6	2
 Spin	F	1214	728-907	E955000-0		Ba		010	ImDd	F1 V M2 V	{ -3 }	(200-5)	[0000]		10	0
@@ -210,8 +210,8 @@ Spin	N	1634	Pagaton	C769873-4		Ri Ph		913	NaHu	F0 V	{ 0 }	(A76-3)	[5821]		11	294
 Spin	N	1635	Binges	A500231-A		Lo Va		720	NaHu	M0 V	{ 1 }	(611-3)	[1316]		6	4
 Spin	N	1637	Mille Falcs	B9A2469-C	NS	Fl He Ni Mr		301	ImDd	M2 V	{ 2 }	(735+3)	[566D]	B	12	315
 Spin	C	1705	EFATE	A646930-D	NW	Hi In An		800	ImDd	K4 V	{ 5 }	(B8H+1)	[4E18]	BEf	8	1,496
-Spin	C	1706	Alell	B56789C-A		Ri Pa Ph		210	ImDd	M1 V M7 V	{ 3 }	(B7C+5)	[BB8D]	BcCe	6	4,620
-Spin	G	1711	Extolay	B55589A-A	N	Pa Ph		110	ImDd	M2 V M4 V	{ 2 }	(B7B+4)	[AA7C]	Bce	8	3,388
+Spin	C	1706	Alell	B56789C-A		Ri Pa Ph Pz	A	210	ImDd	M1 V M7 V	{ 3 }	(B7C+5)	[BB8D]	BcCe	6	4,620
+Spin	G	1711	Extolay	B55589A-A	N	Pa Ph Varg2		110	ImDd	M2 V M4 V	{ 2 }	(B7B+4)	[AA7C]	Bce	8	3,388
 Spin	G	1719	Lanth	A879533-B	NS	Ni Cp		710	ImDd	F5 IV M1 V	{ 2 }	(846-1)	[2728]	B	14	173
 Spin	K	1721	Arba	C200200-C		Lo Va		610	ImDd	M2 V	{ 0 }	(511-4)	[1217]	B	11	3
 Spin	K	1727	Wardn	B756486-B	S	Ni Ga Pa		502	ImDd	K2 V	{ 1 }	(834+1)	[354A]	Bc	7	96
@@ -228,13 +228,13 @@ Spin	C	1805	Uakye	B439598-D		Ni		320	ImDd	M3 V	{ 1 }	(945+1)	[565D]	B	12	180
 Spin	C	1806	Whanga	E676126-7		Lo		224	ImDd	G1 V M1 V	{ -3 }	(311-4)	[1146]	B	14	2
 Spin	C	1807	Knorbes	E888765-2		Ag Ri An Re		834	ImDd	G3 V	{ 0 }	(965-2)	[5731]	BC	15	216
 Spin	C	1808	Forboldn	D893614-5		Ni		312	ImDd	G0 V	{ -3 }	(851-5)	[4333]	B	14	20
-Spin	C	1809	RUIE	C776977-7		Hi In Pz	A	701	NaHu	G5 V	{ 1 }	(B8A+1)	[9A57]		9	880
+Spin	C	1809	RUIE	C776977-7		Hi In Pz Di (Daccamites)	A	701	NaHu	G5 V	{ 1 }	(B8A+1)	[9A57]		9	880
 Spin	C	1810	Jenghe	C799663-9	S	Ni O:1910		323	ImDd	M0 V	{ -1 }	(D53-4)	[3526]	B	11	117
 Spin	G	1811	Dinom	D300535-A		Ni Va Sa		201	ImDd	A4 V	{ -1 }	(843-3)	[3438]	B	16	67
 Spin	G	1815	Ghandi	B311455-A	N	Ic Ni		303	ImDd	F8 V M3 V	{ 1 }	(934-1)	[2538]	B	13	97
 Spin	G	1817	Victoria	D6D7772-2		An Fo	R	112	ImDd	K6 V	{ -2 }	(963-5)	[3511]		8	81
-Spin	K	1822	Rabwhar	D5448BA-6	S	Pa Ph Pi		313	ImDd	K5 V	{ -2 }	(A75+1)	[A678]	BcDe	12	350
-Spin	K	1824	Adabicci	A57189B-B	N	He Ph Pi		801	ImDd	K8 V M8 V	{ 2 }	(B7C+4)	[AA7D]	BDe	6	3,696
+Spin	K	1822	Rabwhar	D5448BA-6	S	Pa Ph Pi Pz	A	313	ImDd	K5 V	{ -2 }	(A75+1)	[A678]	BcDe	12	350
+Spin	K	1824	Adabicci	A57189B-B	N	He Ph Pi Pz	A	801	ImDd	K8 V M8 V	{ 2 }	(B7C+4)	[AA7D]	BDe	6	3,696
 Spin	K	1825	Zaibon	B000544-B		As Ni Va		502	ImDd	M6 III M3 V	{ 1 }	(945-1)	[3639]	B	9	162
 Spin	K	1826	Tenalphi	A774722-E		Ag An Pi		610	ImDd	F7 V	{ 3 }	(A6E-1)	[3A1A]	BCD	12	756
 Spin	O	1836	Callia	E550852-6		De Po Ph		810	ImDd	M3 V	{ -2 }	(A75-5)	[4612]	Be	11	175
@@ -244,7 +244,7 @@ Spin	C	1909	Hefry	C200423-7	S	Ni Va		320	ImDd	K6 II M2 V	{ -2 }	(631-5)	[1224]	B
 Spin	C	1910	Regina	A788899-C	NS	Ri Pa Ph An Cp (Amindii)2 Varg0 Asla0 Sa		703	ImDd	F7 V BD M3 V	{ 4 }	(D7E+5)	[9C6D]	BcCeF	8	6,370
 Spin	G	1912	Dinomn	B674632-9	S	Ag Ni		204	ImDd	G8 V	{ 1 }	(C55-3)	[2715]	BC	11	210
 Spin	G	1916	Ylaven	X587552-4		Ag Ni Pr Fo	R	922	ImDd	F9 V	{ -2 }	(742-5)	[1311]		11	28
-Spin	G	1918	Sonthert	D6266AB-7		Ni Fo	R	314	ImDd	K6 V M0 V	{ -3 }	(851-1)	[8379]		8	36
+Spin	G	1918	Sonthert	D6266AB-7		Ni Da	A	314	ImDd	K6 V M0 V	{ -3 }	(851-1)	[8379]	B	8	36
 Spin	G	1920	D'Ganzio	B420410-D	N	De He Ni Po		312	ImDd	M0 V M3 V	{ 1 }	(934-3)	[1518]	B	6	76
 Spin	K	1924	Ianic	E560697-5		De Ni Ri		924	ImDd	M3 V M7 V	{ -2 }	(852-2)	[6455]	BC	9	64
 Spin	K	1927	Spirelle	C766846-8	S	Ga Ri Pa Ph		715	ImDd	G7 V	{ 0 }	(G78-1)	[7847]	BcCe	14	806
@@ -264,10 +264,10 @@ Spin	O	2038	Trane	C639422-B		Ni An		704	ImDd	F4 V M3 V	{ 0 }	(A33-4)	[1417]	B	12
 Spin	C	2106	Pscias	X555423-2		Ni Pa Fo	R	501	ImDd	K5 V	{ -3 }	(631-5)	[1121]		15	9
 Spin	C	2110	Yori	C560757-A		De Ri An (Zhurphani) RsB		713	ImDd	F1 V	{ 2 }	(D6B+2)	[795A]	BC	15	1,716
 Spin	G	2111	Djinni	X559000-0		Ba Fo	R	022	ImDd	K5 V	{ -3 }	(200-5)	[0000]		11	0
-Spin	G	2112	Rech	D9957AA-6		Ag Pi		501	ImDd	M0 V	{ -1 }	(966+1)	[9678]	BCD	15	324
+Spin	G	2112	Rech	D9957AA-6		Ag Pi Pz	A	501	ImDd	M0 V	{ -1 }	(966+1)	[9678]	BCD	15	324
 Spin	K	2124	LUNION	A995984-D	NS	Hi In Cp		810	ImDd	G5 V	{ 5 }	(C8H+3)	[7E3B]	BEF	11	4,896
 Spin	K	2125	Shirene	B984510-B	S	Ag Ni Pr Da	A	723	ImDd	G4 V M1 V M1 V	{ 2 }	(C46-2)	[1716]	BcC	12	230
-Spin	K	2128	Penkwhar	D978310-5		Lo Fo	R	320	ImDd	M0 V	{ -3 }	(521-5)	[1111]		9	5
+Spin	K	2128	Penkwhar	D978310-5		Lo Da	A	320	ImDd	M0 V	{ -3 }	(521-5)	[1111]	B	9	5
 Spin	K	2129	Harvosette	C430737-9		De Na Po		910	ImDd	M0 V M5 V	{ 0 }	(A69+1)	[7759]	B	11	540
 Spin	O	2132	Centry	E422447-7		He Ni Po		220	ImDd	K3 V	{ -3 }	(631-3)	[4157]	B	10	13
 Spin	O	2134	Caledonia	C541636-5		He Ni Po		910	ImDd	M4 III M0 V	{ -2 }	(852-3)	[5444]	B	10	56
@@ -276,15 +276,15 @@ Spin	O	2138	Horosho	C4378A6-A	S	Ph		920	ImDd	F4 V	{ 1 }	(C7A+1)	[7949]	Be	10	840
 Spin	O	2140	Romar	B550456-8	NS	De Ni Po		112	ImDd	K2 V M3 V	{ 0 }	(933-1)	[3447]	B	6	73
 Spin	C	2201	Dentus	C979500-A	S	Ni		920	ImDd	M2 V	{ 0 }	(944-4)	[1515]	B	10	86
 Spin	C	2202	Kinorb	A663659-8		Ni Ri		622	ImDd	G7 V	{ 0 }	(C54+1)	[7669]	BC	7	240
-Spin	C	2204	Beck's World	D88349D-4		Ni An		701	ImDd	K0 V M2 V	{ -3 }	(631+1)	[8198]	B	10	18
+Spin	C	2204	Beck's World	D88349D-4		Ni An Da	A	701	ImDd	K0 V M2 V	{ -3 }	(631+1)	[8198]	B	10	18
 Spin	C	2205	ENOPE	C411988-7		Hi Ic In Na		600	ImDd	K6 V M5 V	{ 1 }	(B8A+1)	[9A57]	BE	8	880
-Spin	C	2207	Wochiers	EAC28CC-9		Fl He Ph		703	ImDd	F0 V	{ -1 }	(D78+2)	[B78C]	Be	17	1,456
+Spin	C	2207	Wochiers	EAC28CC-9		Fl He Ph Pz	A	703	ImDd	F0 V	{ -1 }	(D78+2)	[B78C]	Be	17	1,456
 Spin	G	2212	K'Kirka	CAA5345-8		Fl Lo		102	ImDd	M2 V	{ -2 }	(721-4)	[1136]	B	7	8
 Spin	G	2215	Quopist	B551679-A		Ni Po Da	A	721	ImDd	M3 V	{ 1 }	(B55+2)	[776B]	B	8	550
 Spin	K	2224	Carse	C563325-9		Lo		601	ImDd	M3 V M6 V	{ -1 }	(621-3)	[1237]	B	13	8
 Spin	K	2228	Persephone	B775833-A	W	Pa Ph Pi		922	ImDd	M2 V	{ 3 }	(E7C+1)	[5B27]	BcDe	10	1,176
 Spin	O	2231	Marastan	D868764-5	S	Ag Ri Pz Re	A	924	ImDd	K7 V	{ 0 }	(967-2)	[5733]	BC	12	302
-Spin	O	2232	CROUT	E4359CA-7		Hi		314	ImDd	M7 III M2 V	{ -1 }	(B88+1)	[B879]	BE	9	704
+Spin	O	2232	CROUT	E4359CA-7		Hi Pz	A	314	ImDd	M7 III M2 V	{ -1 }	(B88+1)	[B879]	BE	9	704
 Spin	O	2233	TIREM	C7B5975-B		Fl Hi In		621	ImDd	K5 V	{ 3 }	(E8E+1)	[7C39]	BE	13	1,568
 Spin	O	2234	Inthe	C100598-B		Ni Va		924	ImDd	K3 V	{ 0 }	(D44+1)	[555B]	B	14	208
 Spin	O	2236	Tsarina	D420636-7		De He Na Ni Po		301	ImDd	M2 V M2 V	{ -3 }	(851-4)	[5346]	B	10	24
@@ -305,11 +305,11 @@ Spin	K	2324	Capon	B747748-A	N	Ag Pi		610	ImDd	F9 V	{ 3 }	(A6C+3)	[7A5A]	BCD	10	2
 Spin	K	2325	Sharrip	C575101-A		Lo		503	ImDd	K5 V	{ 0 }	(611-4)	[1116]	B	16	4
 Spin	K	2327	STROUDEN	A745988-D	N	Hi In		920	ImDd	G5 V M4 V	{ 4 }	(D8G+4)	[9D5D]	BEf	8	6,656
 Spin	O	2331	Bicornn	E563576-2		Ni Pr		210	ImDd	F3 V M3 V	{ -3 }	(741-4)	[4241]	Bc	11	17
-Spin	O	2334	Ffudn	A41489D-C		Ic Ph Pi		904	ImDd	M0 V	{ 2 }	(E7C+5)	[CA9G]	BDe	12	5,880
+Spin	O	2334	Ffudn	A41489D-C		Ic Ph Pi Pz	A	904	ImDd	M0 V	{ 2 }	(E7C+5)	[CA9G]	BDe	12	5,880
 Spin	O	2336	Bendor	A756656-C	NS	Ag Ni Ga		820	ImDd	F5 V	{ 3 }	(A57+2)	[594B]	BC	8	700
 Spin	C	2402	Heya	B687745-5		Ag Ga Ri		734	ImDd	K6 III M3 V	{ 2 }	(969+1)	[5933]	BC	16	486
-Spin	C	2405	Keng	E5718CA-5		He Ph Pi		812	ImDd	G5 V M9 V	{ -2 }	(A75+1)	[A677]	BDe	6	350
-Spin	C	2406	Moughas	CA5A588-B		Ni Oc Wa		801	ImDd	K9 V M9 V	{ 0 }	(844+1)	[555B]	B	13	128
+Spin	C	2405	Keng	E5718CA-5		He Ph Pi Pz	A	812	ImDd	G5 V M9 V	{ -2 }	(A75+1)	[A677]	BDe	6	350
+Spin	C	2406	Moughas	CA5A588-B		Ni Oc		801	ImDd	K9 V M9 V	{ 0 }	(844+1)	[555B]	B	13	128
 Spin	C	2408	RETHE	E430AA8-8		De Hi Na Po		323	ImDd	G7 V	{ -1 }	(H98-1)	[A958]	BE	11	1,102
 Spin	C	2410	Inthe	B575776-9	NS	Ag An Pi		423	ImDd	F8 V	{ 3 }	(E6C+2)	[6A48]	BCD	8	2,016
 Spin	G	2411	Keanou	C792348-7	S	He Lo		213	ImDd	M3 III M2 V	{ -2 }	(521-2)	[3157]	B	12	8
@@ -318,34 +318,34 @@ Spin	G	2415	Vreibefger	E581542-3		Ni Pr RsE		901	ImDd	K9 V	{ -3 }	(741-5)	[1211]
 Spin	G	2416	La'Belle	C564112-4		Lo		701	ImDd	F2 V M3 V	{ -2 }	(311-5)	[1111]	B	11	2
 Spin	G	2417	Equus	B55A858-B	S	Wa Ph Dolp1		202	ImDd	F6 V M1 V	{ 2 }	(C7C+2)	[8A5B]	Be	12	2,016
 Spin	G	2418	Icetina	B5245A9-7	N	Ni		301	ImDd	K9 V M8 V	{ -1 }	(743+1)	[6468]	B	13	84
-Spin	G	2419	Cogri	CA6A643-9		Ni Oc Ri Wa		432	ImDd	M1 V	{ 0 }	(D54-3)	[3626]	BC	8	182
+Spin	G	2419	Cogri	CA6A643-9		Ni Oc Ri		432	ImDd	M1 V	{ 0 }	(D54-3)	[3626]	BC	8	182
 Spin	G	2420	Skull	C4237C7-9	N	Na Po Pi		601	ImDd	M0 V M1 V	{ 0 }	(A69+1)	[7759]	BD	12	540
 Spin	K	2425	Gandr	E000347-8		As Lo Va		803	ImDd	M1 V	{ -3 }	(821-3)	[3158]	B	9	11
 Spin	K	2426	Drolraw	EAB6311-8		Fl Lo		904	ImDd	F1 V	{ -3 }	(921-5)	[1114]	B	12	9
 Spin	D	2509	Paya	A655241-9	N	Lo Ga		603	ImDd	F3 V	{ 0 }	(711-4)	[1215]	B	14	4
-Spin	D	2510	Dhian	C9A769D-8		Fl Ni		202	ImDd	K5 V	{ -2 }	(A52+2)	[A49C]	B	13	200
+Spin	D	2510	Dhian	C9A769D-8		Fl Ni Da	A	202	ImDd	K5 V	{ -2 }	(A52+2)	[A49C]	B	13	200
 Spin	H	2512	Kinorb	C549433-9		Ni		502	ImDd	F0 V K9 V	{ -1 }	(832-4)	[1326]	B	14	29
 Spin	H	2514	Gileden	C583103-6		Lo		203	ImDd	M1 V	{ -2 }	(311-5)	[1123]	B	13	2
 Spin	H	2519	Pannet	E9C5677-9		Fl Ni		224	ImDd	K5 V	{ -2 }	(E52-2)	[6459]	B	11	112
 Spin	H	2520	Garrincski	B632520-7	S	Ni Po		410	ImDd	M0 V M7 V	{ -1 }	(743-5)	[1412]	B	9	42
-Spin	L	2521	HERONI	B6449B9-8		Hi In		721	ImDd	F3 V	{ 2 }	(E8B+3)	[AB69]	BE	14	3,696
+Spin	L	2521	HERONI	B6449B9-8		Hi In Pz	A	721	ImDd	F3 V	{ 2 }	(E8B+3)	[AB69]	BE	14	3,696
 Spin	L	2523	Byret	B585697-6		Ag Ni Ri (Larianz)		812	ImDd	G9 V	{ 1 }	(855+1)	[6756]	BC	7	200
 Spin	L	2527	Pimane	E500343-7		Lo Va		903	ImDd	K0 V	{ -3 }	(521-5)	[1124]	B	10	5
 Spin	P	2534	Burtson	C562667-8		Ni Ri O:2733		402	ImDd	G4 V	{ -1 }	(A53-1)	[6558]	BC	13	135
 Spin	P	2536	Squanine	A300550-B		Ni Va		303	ImDd	F4 V M2 V	{ 1 }	(A45-3)	[1616]	B	8	140
 Spin	P	2537	Dobham	A550457-A	S	De Ni Po		523	ImDd	G0 V	{ 1 }	(B34+1)	[455A]	B	11	132
 Spin	P	2538	Pyramus	E566335-2		Lo		214	ImDd	K6 V	{ -3 }	(521-5)	[1131]	B	11	5
-Spin	P	2539	Thisbe	E4305AD-6		De Ni Po		322	ImDd	F8 V	{ -3 }	(741+1)	[929A]	B	10	28
+Spin	P	2539	Thisbe	E4305AD-6		De Ni Po Da	A	322	ImDd	F8 V	{ -3 }	(741+1)	[929A]	B	10	28
 Spin	P	2540	Aramis	B659772-6				924	ImDd	K5 V	{ 0 }	(967-4)	[3712]	B	9	227
-Spin	D	2602	Corfu	C895674-8		Ag Ni An Fo	R	222	ImDd	M0 V	{ -1 }	(C53-3)	[4536]		7	126
+Spin	D	2602	Corfu	C895674-8		Ag Ni An Da	A	222	ImDd	M0 V	{ -1 }	(C53-3)	[4536]	BC	7	126
 Spin	D	2607	Focaline	EA88544-7		Ag Ni Pr		724	ImDd	F3 V	{ -2 }	(742-4)	[3335]	BcC	11	34
 Spin	H	2612	Macene	B000453-E	N	As Ni Va		901	ImDd	G8 V M8 V	{ 1 }	(734-2)	[152B]	B	11	67
 Spin	H	2613	Fulacin	A674210-D		Lo An		810	ImDd	G3 V	{ 1 }	(511-3)	[1318]	B	12	4
-Spin	H	2620	NATOKO	C8879AB-9		Hi Ga An Pr		204	ImDd	F4 V	{ 1 }	(F8B+3)	[BA7B]	BcE	9	3,960
+Spin	H	2620	NATOKO	C8879AB-9		Hi Ga An Pr Pz	A	204	ImDd	F4 V	{ 1 }	(F8B+3)	[BA7B]	BcE	9	3,960
 Spin	L	2621	Fosey	A633656-A		Na Ni Po		620	ImDd	M3 V	{ 1 }	(A55+1)	[5749]	B	11	250
 Spin	L	2624	Mercury	B658663-8	NS	Ag Ni Mr		304	ImDd	F7 V	{ 1 }	(C55-2)	[3725]	BC	13	240
 Spin	L	2627	Tivid	C534477-8		Ni		401	ImDd	M3 V	{ -2 }	(731-2)	[4258]	B	11	17
-Spin	P	2637	Robin	C00059C-C		As Ni Va		202	ImDd	M2 V	{ 0 }	(944+3)	[858F]	B	6	432
+Spin	P	2637	Robin	C00059C-C		As Ni Va Da	A	202	ImDd	M2 V	{ 0 }	(944+3)	[858F]	B	6	432
 Spin	P	2638	D'Mara	E75A798-5		Wa		910	ImDd	F4 V	{ -2 }	(965-2)	[7555]	B	18	216
 Spin	P	2639	Keltchner	C525567-9		Ni O:Troj-2402		602	ImDd	K6 V	{ -1 }	(943-1)	[5459]	B	15	97
 Spin	D	2701	Lablon	B646589-A		Ag Ni		503	ImDd	M2 III M4 V	{ 2 }	(A46+3)	[676B]	BC	14	720
@@ -356,16 +356,16 @@ Spin	H	2715	POROZLO	A867A74-B		Hi Ga		201	ImDd	M1 V M9 V	{ 3 }	(D9E+1)	[8D39]	BE
 Spin	H	2716	RHYLANOR	A434934-F	NS	Hi Cp		810	ImDd	M2 V	{ 4 }	(C8G+2)	[7D3D]	BEF	12	3,072
 Spin	H	2720	Loneseda	C86A215-7		Lo Wa		705	ImDd	K9 V	{ -2 }	(411-4)	[1135]	B	14	2
 Spin	L	2726	Carey	C579221-9		Lo		910	ImDd	M2 V M2 V	{ -1 }	(511-5)	[1115]	B	4	3
-Spin	L	2728	Duale	A5437BF-B		Po Pi RsA		401	ImDd	M0 V M2 V	{ 2 }	(A6C+5)	[C9AG]	BD	5	3,600
+Spin	L	2728	Duale	A5437BF-B		Po Pi Pz RsA	A	401	ImDd	M0 V M2 V	{ 2 }	(A6C+5)	[C9AG]	BD	5	3,600
 Spin	P	2731	Tussinian	B678324-7		Lo		520	ImDd	K0 V	{ -1 }	(521-3)	[1235]	B	7	7
-Spin	P	2733	Edenelt	A5638BD-B		Ri Ph		934	ImDd	G7 V	{ 3 }	(H7D+5)	[CB9F]	BCe	10	7,735
+Spin	P	2733	Edenelt	A5638BD-B		Ri Ph Pz	A	934	ImDd	G7 V	{ 3 }	(H7D+5)	[CB9F]	BCe	10	7,735
 Spin	P	2735	Conway	D894586-7	S	Ag Ni		311	ImDd	F0 V M0 V	{ -2 }	(742-3)	[4346]	BC	12	39
 Spin	P	2739	DODDS	C5439DF-7	S	Hi In Po Pz	A	423	ImDd	G7 V	{ 1 }	(B8A+5)	[EAAC]	BE	13	4,400
 Spin	H	2811	Valhalla	E565432-5		Ni Pa		622	ImDd	G4 V	{ -3 }	(631-5)	[1111]	Bc	9	9
-Spin	H	2812	ZIVIJE	C6B199C-B		Fl He Hi In		421	ImDd	G6 V	{ 3 }	(E8E+5)	[CC8E]	BE	11	7,840
+Spin	H	2812	ZIVIJE	C6B199C-B		Fl He Hi In Pz	A	421	ImDd	G6 V	{ 3 }	(E8E+5)	[CC8E]	BE	11	7,840
 Spin	H	2814	Jae Tellona	A560565-8	N	De Ni Pr Mr		913	ImDd	F9 V	{ -1 }	(B43-3)	[3436]	Bc	9	92
 Spin	H	2818	Gerome	X573000-0		Ba Fo	R	001	ImDd	K2 V	{ -3 }	(200-5)	[0000]		11	0
-Spin	L	2824	Catuz	C42048C-9		De He Ni Po		510	ImDd	K8 V M6 V	{ -1 }	(732+2)	[738C]	B	5	84
+Spin	L	2824	Catuz	C42048C-9		De He Ni Po Da	A	510	ImDd	K8 V M6 V	{ -1 }	(732+2)	[738C]	B	5	84
 Spin	L	2827	Meleto	C675100-5	S	Lo		724	ImDd	F9 V	{ -2 }	(311-5)	[1111]	B	9	2
 Spin	L	2828	Hexos	B534420-8	N	Ni		123	ImDd	K1 V M2 V	{ -1 }	(B32-5)	[1313]	B	10	33
 Spin	L	2830	Pedase	C415346-7	S	Ic Lo		101	ImDd	M2 V M7 V	{ -2 }	(521-3)	[2146]	B	11	7
@@ -385,14 +385,14 @@ Spin	L	2930	Mainz	C553352-A	S	Lo Po		803	ImDd	K2 V M7 V	{ 0 }	(821-4)	[1316]	B	1
 Spin	P	2933	Raydrad	E99467A-6		Ag Ni		303	ImDd	M7 III M2 V	{ -2 }	(852+1)	[8478]	BC	10	80
 Spin	P	2934	Zyra	B555448-7		Ni Pa		601	ImDd	K8 V	{ -1 }	(632-1)	[4357]	Bc	7	32
 Spin	P	2935	Murchison	B544433-6	N	Ni Pa		305	ImDd	M5 III M3 V	{ -1 }	(632-4)	[1323]	Bc	8	22
-Spin	P	2936	Hammermium	A5525AB-B		Ni Po		535	ImDd	M3 V	{ 1 }	(F45+3)	[767D]	B	11	900
+Spin	P	2936	Hammermium	A5525AB-B		Ni Po Da	A	535	ImDd	M3 V	{ 1 }	(F45+3)	[767D]	B	11	900
 Spin	P	2940	Thornnastor	D534443-8	S	Ni		804	ImDd	M1 V	{ -3 }	(A31-5)	[1125]	B	12	15
 Spin	D	3001	Jesedipere	C775300-7		Lo Varg3		611	ImDd	F4 V	{ -2 }	(521-5)	[1112]	B	12	5
 Spin	D	3002	Yebab	C9A489A-8		Fl Ph (Ebokin)		712	ImDd	G9 V	{ -1 }	(D77+1)	[A77A]	Be	10	637
 Spin	D	3003	Nasemin	B98A422-B	S	Ni Wa		612	ImDd	F5 V	{ 1 }	(934-3)	[1517]	B	10	76
-Spin	D	3004	Zykoca	D994542-6		Ag Ni Fo	R	320	ImDd	K9 V	{ -2 }	(742-5)	[1312]		12	28
+Spin	D	3004	Zykoca	D994542-6		Ag Ni Da	A	320	ImDd	K9 V	{ -2 }	(742-5)	[1312]	BC	12	28
 Spin	D	3005	ARAMANX	B657974-7		Hi Ga Pz	A	210	ImDd	G0 V	{ 1 }	(B8A-1)	[7A35]	BE	13	792
-Spin	D	3008	Pysadi	C5766D8-5		Ag Ni		201	ImDd	F9 V M1 V	{ -1 }	(853-1)	[6555]	BC	8	108
+Spin	D	3008	Pysadi	C5766D8-5		Ag Ni Da	A	201	ImDd	F9 V M1 V	{ -1 }	(853-1)	[6555]	BC	8	108
 Spin	D	3010	L'oeul d'Dieu	B98A510-B	N	Ni Wa Pr		502	ImDd	G1 V M9 V	{ 1 }	(945-3)	[1616]	Bc	6	126
 Spin	H	3015	Belizo	B895646-5		Ag Ni Asla3		923	ImDd	K1 V	{ 0 }	(854-1)	[5644]	BC	11	144
 Spin	H	3016	Kegena	E869569-3		Ni Pr Da O:2716	A	224	ImDd	F6 V	{ -3 }	(741-2)	[6264]	Bc	12	22
@@ -401,7 +401,7 @@ Spin	H	3019	457-973	X572776-5		He Pi Fo (minor)	R	334	ImDd	G9 V	{ -2 }	(965-3)	[
 Spin	H	3020	Somem	C301340-B		Ic Lo Va		201	ImDd	M2 V M7 V	{ 0 }	(621-4)	[1316]	B	14	7
 Spin	L	3021	Brodie	C410468-7		Ni O:3124		114	ImDd	M1 III M7 V	{ -2 }	(631-2)	[4257]	B	15	14
 Spin	L	3022	Rorise	C994100-A		Lo		502	ImDd	M1 V	{ 0 }	(511-4)	[1115]	B	8	3
-Spin	L	3024	Jokotre	B6548D9-7		Pa Ph		810	ImDd	K6 V	{ 0 }	(A78+1)	[9868]	Bce	9	560
+Spin	L	3024	Jokotre	B6548D9-7		Pa Ph Pz	A	810	ImDd	K6 V	{ 0 }	(A78+1)	[9868]	Bce	9	560
 Spin	L	3025	FORNICE	A554A87-C		Hi		202	ImDd	M0 V	{ 3 }	(E9E+3)	[AD5C]	BE	13	5,292
 Spin	L	3026	Grille	E410335-7		Lo		701	ImDd	M2 V M2 V	{ -3 }	(521-5)	[1135]	B	12	5
 Spin	L	3029	PALIQUE	A511965-E		Hi Ic In Na Pz O:3025	A	320	ImDd	M0 V M1 V	{ 4 }	(D8G+2)	[7D3C]	BEf	5	3,328
@@ -423,14 +423,14 @@ Spin	H	3118	Cipatwe	B55879A-6		Ag		623	ImDd	M1 V	{ 1 }	(968+3)	[9878]	BC	12	1,29
 Spin	H	3119	Vanejen	C686854-5		Ga Ri Pa Ph Chir1 RsG		520	ImDd	G1 V M0 V	{ 0 }	(A77-2)	[6833]	BcCe	11	392
 Spin	L	3123	Nadrin	D420203-7	S	De He Lo Po		920	ImDd	K5 V M1 V	{ -3 }	(411-5)	[1124]	B	16	2
 Spin	L	3124	MORA	AA99AC7-F	NS	Hi In Cs		112	ImDd	F0 V	{ 5 }	(F9H+5)	[AF5F]	BEF	9	11,475
-Spin	P	3138	Zephyr	C89556A-5		Ag Ni Fo O:3235	R	404	ImDd	K5 V	{ -1 }	(743+1)	[7477]		9	84
+Spin	P	3138	Zephyr	C89556A-5		Ag Ni Da O:3235	A	404	ImDd	K5 V	{ -1 }	(743+1)	[7477]	BC	9	84
 Spin	P	3139	Chamois	B544642-5	S	Ag Ni		723	ImDd	F9 V	{ 0 }	(854-4)	[2611]	BC	8	96
-Spin	D	3202	JUNIDY	B434ABD-B	W	Hi (Llellewyloly)5		310	ImDd	F7 V M2 V	{ 4 }	(D9F+5)	[EE9F]	BEf	17	8,775
+Spin	D	3202	JUNIDY	B434ABD-B	W	Hi Pz (Llellewyloly)5	A	310	ImDd	F7 V M2 V	{ 4 }	(D9F+5)	[EE9F]	BEf	17	8,775
 Spin	D	3207	Patinir	C000632-9		As Na Ni Va An		213	ImDd	F3 V	{ -1 }	(C53-5)	[2515]	B	15	90
 Spin	D	3209	Natoko	B582211-8	N	Lo		801	ImDd	M2 V M6 V	{ -1 }	(511-5)	[1114]	B	18	3
 Spin	D	3210	Reacher	C9A8542-8		Fl Ni Da	A	233	ImDd	G4 V	{ -2 }	(D42-5)	[1314]	B	12	52
 Spin	H	3212	Margesi	A576257-C	NS	Lo		920	ImDd	F0 V	{ 2 }	(611+2)	[245C]	B	12	12
-Spin	H	3216	BEVEY	D4209CC-A	S	De He Hi In Na Po		224	ImDd	F4 V	{ 2 }	(H8C+5)	[CB8D]	BE	9	8,160
+Spin	H	3216	BEVEY	D4209CC-A	S	De He Hi In Na Po Pz	A	224	ImDd	F4 V	{ 2 }	(H8C+5)	[CB8D]	BE	9	8,160
 Spin	H	3218	Tacaxeb	C430411-B		De Ni Po		801	ImDd	A5 V M2 V	{ 0 }	(733-4)	[1417]	B	10	38
 Spin	H	3220	Powaza	C787566-5		Ag Ni Ga Pr O:3124		332	ImDd	K4 V M2 V	{ -1 }	(743-2)	[4444]	BcC	13	67
 Spin	L	3223	Dojodo	C512311-7	S	Ic Lo		710	ImDd	M0 V	{ -2 }	(521-5)	[1113]	B	14	5

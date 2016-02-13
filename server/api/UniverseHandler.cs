@@ -32,7 +32,7 @@ namespace Maps.API
                 SectorMap map = SectorMap.GetInstance(resourceManager);
 
                 // Filter parameters
-                string era = GetStringOption("era");
+                string milieu = GetStringOption("milieu") ?? GetStringOption("era");
                 bool requireData = GetBoolOption("requireData", defaultValue: false);
                 string[] tags = GetStringsOption("tag");
 
@@ -42,10 +42,10 @@ namespace Maps.API
                     if (requireData && sector.DataFile == null)
                         continue;
 
-                    if (era != null && (sector.DataFile == null || sector.DataFile.Era != era))
+                    if (milieu != null && sector.DataFile?.Era != milieu)
                         continue;
 
-                    if (tags != null && !(tags.Any(tag => sector.Tags.Contains(tag))))
+                    if (tags != null && !tags.Any(tag => sector.Tags.Contains(tag)))
                         continue;
 
                     data.Sectors.Add(new UniverseResult.SectorResult(sector));
@@ -77,17 +77,17 @@ namespace Maps.API.Results
             public SectorResult(Sector sector) { this.sector = sector; }
             private Sector sector;
 
-            public int X { get { return sector.X; } }
-            public int Y { get { return sector.Y; } }
+            public int X { get { return sector.X; } set { } }
+            public int Y { get { return sector.Y; } set { } }
 
             [XmlAttribute]
-            public string Abbreviation { get { return sector.Abbreviation; } }
+            public string Abbreviation { get { return sector.Abbreviation; } set { } }
 
             [XmlAttribute]
-            public string Tags { get { return sector.TagString; } }
+            public string Tags { get { return sector.TagString; } set { } }
 
             [XmlElement("Name")]
-            public List<Name> Names { get { return sector.Names; } }
+            public List<Name> Names { get { return sector.Names; } set { } }
         }
     }
 }

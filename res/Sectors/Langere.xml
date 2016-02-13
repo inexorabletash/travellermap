@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<Sector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name Lang="hv">Langere</Name>
+  <Subsectors>
+    <Subsector Index="A">Langley</Subsector>
+    <Subsector Index="B">Brom</Subsector>
+    <Subsector Index="C">Cillacyclon</Subsector>
+    <Subsector Index="D">Dax</Subsector>
+    <Subsector Index="E">Soheil</Subsector>
+    <Subsector Index="F">Nanoonil </Subsector>
+    <Subsector Index="G">Glyah</Subsector>
+    <Subsector Index="H">Ho </Subsector>
+    <Subsector Index="I">Last Frontier</Subsector>
+    <Subsector Index="J">Jafr</Subsector>
+    <Subsector Index="K">Kobol</Subsector>
+    <Subsector Index="L">Phact</Subsector>
+    <Subsector Index="M">Jerico</Subsector>
+    <Subsector Index="N">Karg</Subsector>
+    <Subsector Index="O">Oryx</Subsector>
+    <Subsector Index="P">Palantir</Subsector>
+  </Subsectors>
+  <Allegiances>
+    <Allegiance Code="Hn">Solomani Confederation, Hanuman Systems</Allegiance>
+  </Allegiances>
+  <Borders>
+    <Border WrapLabel="true" Color="Blue" Allegiance="Hn" LabelPosition="0311" Label="Hanuman Systems">0308 0408 0509 0510 0610 0710 0809 0710 0711 0610 0510 0409 0408 0308</Border>
+    <Border WrapLabel="false" Allegiance="HvFd" LabelPosition="2118">0418 0518 0617 0717 0716 0815 0915 1014 1013 1113 1112 1111 1110 1109 1108 1207 1206 1306 1305 1304 1303 1302 1201 1101 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3233 3134 3034 2935 2936 2835 2735 2635 2634 2534 2533 2432 2332 2231 2230 2229 2129 2028 1928 1827 1728 1628 1627 1527 1426 1326 1425 1525 1624 1623 1723 1722 1721 1720 1619 1519 1419 1320 1220 1121 1020 0920 0819 0720 0619 0519 0418 </Border>
+    <Border WrapLabel="false" Allegiance="SoCf" LabelPosition="0404">0000 0100 0200 0300 0400 0500 0600 0700 0800 0900 0901 0902 0903 0904 0905 1005 0906 0907 0807 0808 0809 0710 0711 0611 0612 0613 0514 0414 0415 0416 0317 0217 0218 0119 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001 0000</Border>
+  </Borders>
+  <Routes>
+    <Route Start="0109" End="0509"/>
+    <Route Start="0509" End="0711"/>
+    <Route Start="0509" End="0907"/>
+    <Route Start="0214" End="3013" EndOffsetX="-1"/>
+    <Route Start="0109" End="3211" EndOffsetX="-1"/>
+  </Routes>
+</Sector>

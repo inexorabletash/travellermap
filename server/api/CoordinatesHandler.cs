@@ -24,7 +24,7 @@ namespace Maps.API
                 // resolving names into sector locations, so needs to be run
                 // before any other objects (e.g. Worlds) are loaded.
                 ResourceManager resourceManager = new ResourceManager(Context.Server);
-                SectorMap map = SectorMap.GetInstance(resourceManager);
+                SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, GetStringOption("milieu"));
 
                 Location loc = new Location(map.FromName("Spinward Marches").Location, 1910);
 

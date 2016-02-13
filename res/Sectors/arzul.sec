@@ -3,6 +3,8 @@ Alt:    Sector dJ
 DOS:    arzul
 Coord:  dJ
 
+# 2015-01-02 - Joshua Bell - Reduced very high world populations/exponents 
+
 A: Rraz
 B: Kikhu
 C: Voeraghz
@@ -52,7 +54,7 @@ Aengaze            0231 D684667-4   Ag                801 Hl G9 V
 Kellgaekaedae      0232 X300000-0   Ba Lo Va          022 Hl M3 V M0 D
 Ungar              0234 A443630-C                     405 Hl F3 V
 Si                 0240 C423300-9 S Lo                902 Hl M8 V M7 D
-Caska              0303 A765A9B-B 2 Hi                904 J- G6 V M7 D
+Caska              0303 A765A9B-B 2 Hi                104 J- G6 V M7 D
 Khaz               0305 E68727B-1   Lo Ni             403 J- F7 V
 Ghirrzik           0307 D210457-C   Ni                705 J- M1 V M0 D
 Cis-rabir          0310 B4957C9-C   Ag                920 J- F9 V
@@ -107,7 +109,7 @@ Byddklob           0724 B998999-7 N Hi                304 Hl F2 V
 Le                 0728 B663ACF-9 N Hi                514 Hl F8 V M1 D
 Rraeng             0735 A538999-C   Hi                724 Hl G9 V M7 D
 Paukjatnik         0736 C89A7CF-8   Ag Wa             905 Hl M9 V
-Oruengzila         0738 A765ABB-D N Hi                912 Hl F7 V
+Oruengzila         0738 A765ABB-D N Hi                112 Hl F7 V
 Khurrgh            0802 B65A99C-8 N Hi Wa             404 J- F7 V
 Sikhi              0803 D8C3418-B   Fl Ni             302 J- M1 V M8 D
 Canta              0804 D575A88-7 S Hi In             410 J- G4 V M3 D
@@ -152,7 +154,7 @@ Digh               1109 A556785-8 N Ag                601 J- F4 V M5 D
 Talrotis           1113 X310000-0   Ba Lo Ni          004 Na G0 V
 Kikigulagabi       1114 B669576-7 S Ni                604 Na F7 V M3 D
 Isgakikuga         1118 A8C5AA8-B   Fl Hi             202 Na K8 V M2 D
-Kha                1119 C460A98-B S De Hi             600 Na F7 V
+Kha                1119 C460A98-B S De Hi             100 Na F7 V
 Gulila             1122 C455484-6 S                   824 Na F9 V
 Ston               1124 XAC7000-0   Ba Fl Lo          023 Hl M1 V
 Rob                1128 X332000-0   Ba Lo             000 Hl M4 V
@@ -177,10 +179,10 @@ Rudzkha            1307 A475420-D 2 Ni                300 J- F1 V
 Ragh               1308 A8B688A-B   Fl                623 J- F9 V
 Digharrgh          1309 B693688-5 N Ni                902 J- F1 V
 Suth               1313 A8B3667-B   Fl Ni             903 Na K7 V M0 D
-Thigz              1319 A756ADC-B   Hi                902 Na G9 V M4 D
+Thigz              1319 A7569DC-B   Hi                902 Na G9 V M4 D
 Giapeimiwch        1321 X273000-0   Ba Lo             004 Na G8 V
 Miirkha            1322 B323464-B 2                   401 Na M1 V
-Gharrgh            1323 A764AED-C   Hi                814 Na F1 V
+Gharrgh            1323 A7649ED-C   Hi                814 Na F1 V
 Sakimdurgani       1328 A673353-B   Lo                304 Hl F2 V M1 D
 Ligish             1329 C777585-9   Ag                704 Hl F9 V M0 D
 Emimgadii          1332 X341257-5   Lo                302 Hl M3 V
@@ -201,10 +203,10 @@ Katowuepe          1522 X648000-0   Ba Lo             000 Na F4 V
 Dung               1523 C445267-5   Lo                405 Na G1 V M3 V
 Bednystek          1524 X100000-0   Ba Lo Va          004 Na M6 IV
 Ashila             1540 B7857A9-9 N Ag                903 Na F9 V
-Dioco              1602 C462AEE-7 S Hi                213 Na K4 V
+Dioco              1602 C4629EE-7 S Hi                213 Na K4 V
 Sigurroegh         1604 A86A687-C   Lo Ni Wa          305 J- F0 V
 Uta                1608 B636441-A   Ni                203 Na M4 V M8 D
-Kotsfa             1615 B669A77-A   Hi                200 Na G8 V M5 D
+Kotsfa             1615 B669977-A   Hi                200 Na G8 V M5 D
 Outoudzduez        1616 B659859-A 2                   414 Na F5 V M3 D
 Omverendtto        1617 D6A5584-9 S Fl Ni             504 Na G2 V
 Ab                 1622 B84A964-9   Hi Wa             104 Na F6 V
@@ -212,7 +214,7 @@ Ikgzoeroulurr      1701 X5A0000-0   Ba De Lo Ni       002 Na M4 V
 Voeraghz           1705 A344573-D   Ag Ni             120 J- F4 V M4 D
 Aekokago           1707 D578785-5   Ag                400 Na F8 V M4 D
 Cregen             1715 X200000-0   Ba Lo Va          013 Na K2 V M5 D
-Postytos           1718 B566A9D-9 S Hi                313 Na F0 V
+Postytos           1718 B56699D-9 S Hi                313 Na F0 V
 Tapaslan           1722 X444000-0   Ba Lo             002 Na M9 V
 Ugar               1801 D200325-9   Lo Ni Va          604 Na K1 V M9 V
 Lizashlik          1806 A593694-8   Ni                325 Na F2 V M0 D
@@ -226,20 +228,20 @@ Sovanjaak          1902 X400000-0   Ba Lo Ni Va       010 Na M1 V M7 D
 Kerkiilamu         1903 E230300-A   De Lo Ni Po       504 Na M1 V
 Pynuotkuos         1906 C6468A8-C                     803 Na F4 V
 Ada                1910 C541999-5   Hi In Po          603 Na F1 V
-Kesittanma         1915 A98AABB-A   Hi Wa             105 Na F0 V M6 D
+Kesittanma         1915 A98A9BB-A   Hi Wa             105 Na F0 V M6 D
 Nna                1916 X000000-0   As Ba Lo          000 Na K8 V M3 V
 Iriputanga         1917 A587755-B S Ag                614 Na F9 V
 Lannieton          1918 X340000-0   Ba De Lo          002 Na F2 V
 Emuula             1933 X300000-0   Ba Lo Va          012 Na M4 III K1 V
-Satih              2003 A658A84-B   Hi                803 Na F2 V M3 D
-Naenaruel          2004 A564AB8-B S Hi                900 Na G3 V M4 D
+Satih              2003 A658984-B   Hi                803 Na F2 V M3 D
+Naenaruel          2004 A5649B8-B S Hi                900 Na G3 V M4 D
 Rhonhi             2005 B4628B8-6 N                   704 Na F7 V
 Ouzaell            2007 B433558-9 N Ni Po             220 Na G5 V M1 D
 Ul                 2013 B52A587-D N Wa                200 Na M5 IV M0 D
 Sharagirukis       2016 A774861-7                     613 Na F3 V M4 D
 Diduddbas          2019 C310346-A S Lo                615 Na M3 V
 Aiwunupe           2101 C6978A6-5                     404 Na F1 V M8 D
-Udkhaaziirash      2102 A777ADE-B   Hi In             703 Na F3 V
+Udkhaaziirash      2102 A7779DE-B   Hi In             703 Na F3 V
 Mohy               2103 A4588DC-7 N                   100 Na G5 V M1 D
 Gzodaegdoedz       2104 D443232-7 S Lo Ni Po          912 Na F4 V M2 D
 Ek                 2107 X000000-0   As Ba Lo Ni       003 Na M1 V M1 D
@@ -247,7 +249,7 @@ Dilushka           2112 C344300-A S Lo                305 Na F5 V
 Ghatsghaeg         2113 XAFA000-0   Ba Lo Wa          014 Na M2 V M4 D
 Khaekarr           2115 X000000-0   As Ba Lo          013 Na M8 V M7 D
 Ke                 2117 B452300-7 2 Lo                720 Na F9 V
-He                 2120 A462A57-A N Hi                614 Na F8 V
+He                 2120 A462957-A N Hi                614 Na F8 V
 Dourrgh            2125 X548000-0   Ba Lo             014 Na F1 V M8 D
 Miimish            2139 X444000-0   Ba Lo             012 Na F0 V
 Lykukihavyt        2203 C533458-8   Ni Po             203 Na M4 V
@@ -255,33 +257,33 @@ Gumushu            2204 C682753-6   Ri                303 Na F5 V M4 D
 Kigaakigum         2205 D556768-2 S Ag                823 Na F6 V
 Ychmiwryr          2209 B999510-C   Ni                823 Na F5 V
 Repstotjijk        2211 A446869-C                     604 Na F3 V M2 D
-Mepdiisharig       2217 B563A8C-A 2 Hi                903 Na F7 V
+Mepdiisharig       2217 B56398C-A 2 Hi                903 Na F7 V
 Brybintw           2219 B433889-7 N                   514 Na G8 V
 Dusa               2302 C322545-9   Ni Po             303 Na F2 V M8 D
 Maga               2303 A675640-C N Ag Ni             904 Na F9 V M5 D
 Gagiizidiiga       2305 C586786-6   Ag Ri             105 Na K1 V
 Mor                2310 B996421-A   Ni                505 Na F8 V
 Dimijn             2311 C554678-6 S Ag Ni             924 Na F1 V M8 D
-Dy                 2313 A697AA7-B N Hi                203 Na F1 V M6 D
+Dy                 2313 A6979A7-B N Hi                203 Na F1 V M6 D
 Urki               2315 C30389E-7   Ic Na Va          804 Na F5 V
-Kunzikikunuza      2316 AA6AA8A-D   Hi Wa             413 Na F1 V M3 D
+Kunzikikunuza      2316 AA6A98A-D   Hi Wa             413 Na F1 V M3 D
 All                2317 C487434-8                     115 Na K9 V
 Arraegue           2318 B241233-9 N Lo                712 Na F3 V
-Oghaers            2319 A857A88-D   Hi                413 Na F0 V
+Oghaers            2319 A857988-D   Hi                413 Na F0 V
 Aabe               2338 X539000-0   Lo Ni             000 Na M9 V
 Amimuum            2403 C84797A-8   Hi In             904 Na F1 V
 Oudhuegvae         2405 C625448-7 S Ni                704 Na M9 III M4 V
 Argag              2406 E332656-7   Na Ni Po          204 Na G7 V
 Kumakiiga          2408 A988642-B N Ag Ni Ri          400 Na F0 V M9 D
 Ghersong           2410 A4536A9-A   Ni Po             803 Na F3 V
-Updashidiram       2412 A879AEA-A N Hi                920 Na F9 V
+Updashidiram       2412 A8799EA-A N Hi                920 Na F9 V
 Aenurrgaekou       2415 X8A2000-0   Ba Fl Lo          013 Na M0 IV
-Mun                2418 C666A68-6   Hi                400 Na F6 V M7 D
+Mun                2418 C666968-6   Hi                400 Na F6 V M7 D
 Mutitoa            2419 X5A5000-0   Ba Fl Lo          003 Na K0 V
 Slelerkinwest      2421 X657000-0   Ba Lo             010 Na F2 V M1 D
 Nuri               2501 D371200-7 S Lo Ni             614 Na F2 V
 Dekeli             2503 C775553-9   Ag Ni             413 Na F9 V
-Resopem            2504 B884ABC-B   Hi                603 Na F9 V
+Resopem            2504 B8849BC-B   Hi                603 Na F9 V
 Maa                2508 C428538-9   Ni                104 Na K2 V M2 D
 Uirvrijn           2514 A77A863-C   Wa                704 Na F6 V
 Midishmumur        2515 C757566-3   Ag                110 Na F4 V
@@ -289,7 +291,7 @@ Zoentuegh          2518 C556543-8   Ag                323 Na G1 V
 Nir                2520 C545576-8 S Ag                103 Na F5 V
 Kewhukape          2531 X787000-0   Ba Lo             001 Na F2 V
 Guuzi              2538 X428000-0   Ba Lo             015 Na M4 V M2 V
-Ullizo             2605 AA77A9B-A   Hi In             210 Na G5 V M1 D
+Ullizo             2605 AA7799B-A   Hi In             210 Na G5 V M1 D
 Farraghufueka      2606 B473755-7 S                   702 Na G3 V M1 D
 Uekhoeng           2607 D510539-A   Ni                204 Na M9 V M2 D
 Sefinar            2610 D234443-8   Ni                402 Na M8 V
@@ -298,11 +300,11 @@ Iraad              2619 B777468-9 2                   704 Na F9 V
 Enoggvokhs         2701 D344542-6 S Ag Ni             601 Na G1 V
 Benadd             2702 A441631-8 2 Ni Po             414 Na F1 V
 Gvueruk            2703 E352438-9   Ni Po             302 Na K8 V
-Khefs Dzo          2704 A569A89-8 N Hi                805 Na F1 V
+Khefs Dzo          2704 A569989-8 N Hi                805 Na F1 V
 Daegthor           2705 X300000-0   Ba Lo Ni Va       004 Na G3 V
 Naddes             2709 C554441-8   Ni                104 Na F4 V
-Akhgaeng           2714 A569A89-C N Hi                513 Na F7 V
-Lupushshir         2805 B797AEF-8 S Hi In             400 Na M2 V
+Akhgaeng           2714 A569989-C N Hi                513 Na F7 V
+Lupushshir         2805 B7979EF-8 S Hi In             400 Na M2 V
 Vy                 2809 B545625-9 N Ag Ni             302 Na K4 V
 Koungue            2824 X7B5000-0   Ba Fl Lo          005 Na M7 V
 Udenga             2902 X120000-0   Ba De Lo Ni Po    004 Na M8 V
@@ -310,7 +312,7 @@ Regu               2907 B000686-B   As Na Ni          302 Na F8 V
 Gagur              2908 D647877-8                     512 Na F1 V
 Raroota            2910 C610514-A   Ni                302 Na M2 V K0 D
 Doeleir            2911 C5A4320-9 S Fl Lo             513 Na K9 V
-Deiddat            2912 B554A63-9 2 Hi                701 Na G0 V
+Deiddat            2912 B554963-9 2 Hi                701 Na G0 V
 Gjittnaeng         2915 AAC6668-9 N Fl                824 Na M5 V
 Linajisme          2918 A788876-C N                   514 Na F8 V M4 D
 Wunsmook           2921 X668000-0   Ba Lo             003 Na F2 V
@@ -318,7 +320,7 @@ Khaa               2934 X264000-0   Ba Lo             021 Na G6 V
 Aerrggeng          3002 A526665-B 2 Ni                103 Na M9 V M3 D
 Ibugug             3003 E554436-3   Ni                913 Na F2 V
 Urnaakashig        3005 E6A2321-B   Fl Lo Ni          904 Na M1 V
-Oneluevueknou      3007 A656ADG-7 N Hi                902 Na F6 V
+Oneluevueknou      3007 A6569DG-7 N Hi                902 Na F6 V
 Terkpedherhi       3009 B679844-6                     612 Na M6 V M4 D
 Taildahre          3012 B4569CG-B   Hi                414 Na F8 V M6 D
 Nuukhanir          3015 D324613-7 S                   602 Na K2 V M1 D
@@ -332,7 +334,7 @@ Kikashinnipi       3108 X500000-0   Ba Lo Ni Va       000 Na M4 V M7 D
 Manoaani           3114 C6889BD-6 S Hi                402 Na F5 V M8 D
 Khii               3115 C42956A-9                     204 Na M8 V M4 D
 Aeg                3116 C6847AD-6 S Ag                302 Na F3 V M9 D
-Kiirkinkirizi      3117 A767A78-D N Hi                902 Na G0 V
+Kiirkinkirizi      3117 A767978-D N Hi                902 Na G0 V
 Be                 3119 C654645-4 S Ag                205 Na F5 V
 Okghuthtsuegh      3202 C435451-8 S Ni                803 Na G7 V
 Pualemaski         3203 X110000-0   Ba Lo Ni          014 Na K8 V

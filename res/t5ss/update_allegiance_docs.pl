@@ -34,7 +34,7 @@ my @lines;
 
     while (<$fh>) {
         chomp;
-        die "Unexpected: $_\n" unless m/^([A-Za-z0-9']{4})\t/;
+        die "Unexpected: $_\n" unless m/^([A-Za-z0-9']{4}) *\t/;
         my ($code, $legacy, $base, $name, $location) = map { trim($_) } split(/\t/);
         $location =~ s|/|/&#x200B;|g;
         push @lines, "      <tr><td><code>$code</code><td>$name<td>$location";

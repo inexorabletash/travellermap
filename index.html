@@ -15,9 +15,6 @@
 <meta name="format-detection" content="telephone=no">
 <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=0, width=device-width">
 
-<!--[if lt IE 9]><meta http-equiv="X-UA-Compatible" content="chrome=1"><![endif]-->
-<!--[if lt IE 9]><meta http-equiv="imagetoolbar" content="no"><![endif]-->
-
 <link rel="alternate" type="application/atom+xml" title="Traveller Map News - Atom" href="https://travellermap.blogspot.com/feeds/posts/default">
 <link rel="alternate" type="application/rss+xml" title="Traveller Map News - RSS" href="https://travellermap.blogspot.com/feeds/posts/default?alt=rss">
 <link rel="canonical" href="http://travellermap.com">
@@ -30,14 +27,14 @@
 <meta property="og:site_name" content="The Traveller Map">
 <meta property="fb:admins" content="617166358">
 
-<link rel="stylesheet" href="index.css?update=2015-11-01">
+<link rel="stylesheet" href="index.css?update=2015-11-14">
 <link rel="stylesheet" href="lib/add-to-home-screen/addtohomescreen.css">
 
-<!--[if lt IE 8]><script>alert("IE7 is no longer supported.");location = 'http://google.com/chrome';</script><![endif]-->
+<!--[if lt IE 9]><script>alert("IE8 is no longer supported.");location = 'http://google.com/chrome';</script><![endif]-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.2/handlebars.min.js"></script>
-<script src="lib/polyfill/polyfill.min.js?update=2015-10-28"></script>
-<script src="map.js?update=2015-11-01"></script>
-<script src="index.js?update=2015-11-01"></script>
+<script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.14/polyfill.min.js"></script>
+<script src="map.js?update=2016-02-07"></script>
+<script src="index.js?update=2016-02-08"></script>
 
 <!-- Home Screen Icons - iOS and Android -->
 <link rel="apple-touch-icon-precomposed" href="res/ui/regina152.png">
@@ -54,16 +51,6 @@
   <div id="direction-rimward" class="direction">Rimward</div>
   <div id="direction-spinward" class="direction">Spinward</div>
   <div id="direction-trailing" class="direction">Trailing</div>
-
-  <!--[if lt IE 9]>
-      <style>
-      #direction-spinward,
-      #direction-trailing {
-        -ms-writing-mode: bt-rl;
-        filter: flipv fliph; /* IE10 emulation of IE8 blocks this for untrusted sites */
-      }
-      </style>
-  <![endif]-->
 
   <div id="searchBar" class="ui">
     <form id="searchForm" action="get">
@@ -378,8 +365,6 @@
       <p><a target="_blank" href="http://travellerrpg.com/">Citizens of the Imperium Forum</a></p>
       <p><a target="_blank" href="http://www.mongoosepublishing.com/rpgs/traveller.html">Mongoose Publishing</a>
         &bull; <a target="_blank" href="http://forum.mongoosepublishing.com/viewforum.php?f=89">Forum</a></p>
-      <p><a target="_blank" href="http://www.sjgames.com/traveller/">Steve Jackson Games</a>
-        &bull; <a target="_blank" href="http://forums.sjgames.com/forumdisplay.php?f=16">Forum</a></p>
     </section>
 
     <section>
@@ -396,17 +381,13 @@
 
     <section>
       <h3>Players &amp; Referees</h3>
-      <p><a target="_blank" href="doc/secondsurvey">Understanding the data</a></p>
-      <p><a target="_blank" href="doc/fileformats">Data file formats</a></p>
+      <p><a target="_blank" href="doc/secondsurvey">About Second Survey Data</a></p>
       <p>
         <a target="_blank" href="make/booklet">Booklet Maker</a> &bull;
         <a target="_blank" href="make/poster">Poster Maker</a>
       </p>
       <p>
-        <a target="_blank" href="make/borders">Border Maker</a> &bull;
-        <a target="_blank" href="make/routes">Route Maker</a>
-      </p>
-      <p>
+        <a target="_blank" href="doc/custom">Custom Data</a> &bull;
         <a target="_blank" href="doc/submit">Submissions</a>
       </p>
     </section>
@@ -439,12 +420,12 @@
 
     <section>
       Share this link:
-      <input readonly id="share-url" onclick="this.select();" title="Copy and paste">
+      <input readonly id="share-url" title="Copy and paste">
     </section>
 
     <section>
       Embed this HTML:
-      <input readonly id="share-embed" onclick="this.select();" title="Copy and paste">
+      <input readonly id="share-embed" title="Copy and paste">
     </section>
 
   </div>
@@ -515,10 +496,10 @@
       <div class="credits">
         The Traveller game in all forms is owned by
         <a target="_blank" href="http://farfuture.net">Far Future Enterprises</a>.
-        Copyright &copy; 1977 &ndash; 2015 Far Future Enterprises.
+        Copyright &copy; 1977 &ndash; 2016 Far Future Enterprises.
       </div>
-      <div>
-        <br>Back <a class=stealth style="font-style: italic" target=_blank href="https://www.kickstarter.com/projects/traveller5/agent-of-the-imperium-marc-millers-traveller-novel">Agent of the Imperium: Marc Miller's Traveller Novel</a> on Kickstarter!
+      <div id="promo"><br>
+        In memoriam: Donald McKinney, 1967 - 2015
       </div>
     </div>
     <script id="SectorMetadataTemplate" type="text/x-handlebars-template">
@@ -530,7 +511,7 @@
     <script id="WorldMetadataTemplate" type="text/x-handlebars-template">
       <div>
         <a class="stealth" target="_blank" href="world?sector={{SectorName}}&hex={{WorldHex}}"
-           onclick="return showWorldPopup('world?sector={{SectorName}}&hex={{WorldHex}}&nopage&nohood');">
+           onclick="return showWorldPopup(this);">
           {{SectorName}}
           {{WorldHex}}
           <b>{{WorldName}}</b>

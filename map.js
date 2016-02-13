@@ -1016,7 +1016,11 @@ var Util = {
     // TODO: Defer loading of new tiles while in the middle of a zoom gesture
     // Draw a rectanglular area of the map in a spiral from the center of the requested map outward
     if (this.ctx) {
+      this.ctx.save();
+      this.ctx.setTransform(1, 0, 0, 1, 0, 0);
+      this.ctx.globalCompositeOperation = 'source-over';
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      this.ctx.restore();
     }
 
     this.drawRectangle(l, t, r, b, tscale, tmult, ch, cw, cf, z, this._rd_cb);
@@ -1047,7 +1051,7 @@ var Util = {
     (function() {
       if (self.tileOptions['ew'] && self.ctx) {
         var scale = pow2(self.scale - 1);
-        var x = -164, y = 7000, r = 6820;
+        var x = 0, y = 7000, r = 6820;
         var w = 20;
 
         var ctx = self.ctx;
@@ -1732,7 +1736,7 @@ var Util = {
         });
     }
 
-    ['silly', 'routes', 'dimunofficial', 'ew', 'dw'].forEach(function(name) {
+    ['silly', 'routes', 'dimunofficial', 'ew', 'dw', 'rifts', 'po', 'im', 'milieu'].forEach(function(name) {
       if (name in params)
         self.tileOptions[name] = int(name);
     });

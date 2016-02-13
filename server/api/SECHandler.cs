@@ -23,7 +23,7 @@ namespace Maps.API
                 // resolving names into sector locations, so needs to be run
                 // before any other objects (e.g. Worlds) are loaded.
                 ResourceManager resourceManager = new ResourceManager(context.Server);
-                SectorMap map = SectorMap.GetInstance(resourceManager);
+                SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, GetStringOption("milieu"));
                 Sector sector;
 
                 bool sscoords = GetBoolOption("sscoords", defaultValue: false);
@@ -52,7 +52,7 @@ namespace Maps.API
                 else if (HasOption("sector"))
                 {
                     string sectorName = GetStringOption("sector");
-                    sector = map.FromName(sectorName);
+                    sector = map.FromName(sectorName);  
 
                     if (sector == null)
                         throw new HttpError(404, "Not Found", string.Format("The specified sector '{0}' was not found.", sectorName));

@@ -187,6 +187,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
   $('#closeResultsBtn').addEventListener('click', function() {
     $('#searchBox').value = '';
+    lastQuery = null;
     document.body.classList.remove('search-results');
   });
 
@@ -298,6 +299,14 @@ window.addEventListener('DOMContentLoaded', function() {
     map.SetScale(home.scale);
     map.SetPosition(home.x, home.y);
   }
+
+  Array.from($$('#share-url,#share-embed')).forEach(function(input) {
+    input.addEventListener('click', function(e) {
+      e.preventDefault();
+      input.focus();
+      input.setSelectionRange(0, input.value.length); // .select() fails on iOS
+    });
+  });
 
   // Nav Bar
 
@@ -897,9 +906,9 @@ window.addEventListener('DOMContentLoaded', function() {
   //
   //////////////////////////////////////////////////////////////////////
 
-  function showWorldPopup(url) {
+  function showWorldPopup(target) {
     if (isSmallScreen) return true;
-    $('#popup-iframe').src = url;
+    $('#popup-iframe').src = target.href + '&nopage&nohood';
     $('#popup-iframe').onload = function() {
       $('#popup-overlay').classList.add('visible');
       $('#popup-click').focus();

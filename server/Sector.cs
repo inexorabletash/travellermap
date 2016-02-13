@@ -35,7 +35,27 @@ namespace Maps
         public Point Location { get; set; }
 
         [XmlAttribute]
-        public string Abbreviation { get; set; }
+        public string Abbreviation {
+            get
+            {
+                if (!string.IsNullOrEmpty(abbreviation))
+                    return abbreviation;
+                if (!Tags.Contains("OTU") || Names.Count == 0)
+                    return null;
+                // For OTU sectors, synthesize an abbreviation if not specified.
+                string name = Names[0].Text;
+                name = name.Replace(" ", "");
+                name = Regex.Replace(name, @"[^A-Z]", "x", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
+                if (name.Length == 0)
+                    return null;
+                name = name.SafeSubstring(0, 4);
+                name = name.Substring(0, 1).ToString().ToUpperInvariant() + name.Substring(1).ToLowerInvariant();
+                abbreviation = name;
+                return abbreviation;
+            }
+            set { abbreviation = value; }
+        }
+        private string abbreviation;
 
         [XmlAttribute]
         public string Label { get; set; }
@@ -80,6 +100,13 @@ namespace Maps
             // TODO: This is very fragile; if a new type is added to Sector we need to add more code here.
 
             if (metadataSource.Names.Any()) { Names.Clear(); Names.AddRange(metadataSource.Names); }
+
+            if (metadataSource.DataFile != null && DataFile != null &&
+                (metadataSource.DataFile.FileName != DataFile.FileName ||
+                metadataSource.DataFile.Type != DataFile.Type)) {
+                throw new Exception(string.Format("Mismatching DataFile entries for {0}", this.Names[0].Text));
+            }
+
             if (metadataSource.DataFile != null) DataFile = metadataSource.DataFile;
 
             Subsectors.AddRange(metadataSource.Subsectors);
@@ -122,10 +149,8 @@ namespace Maps
         /// <returns>The base allegiance code, e.g. "Im", or the original code if none.</returns>
         public string AllegianceCodeToBaseAllegianceCode(string code)
         {
-            var alleg = GetAllegianceFromCode(code);
-            if (alleg != null && !string.IsNullOrEmpty(alleg.Base))
-                return alleg.Base;
-            return code;
+            var alleg = GetAllegianceFromCode(code)?.Base;
+            return !string.IsNullOrEmpty(alleg) ? alleg : code;
         }
 
         public DataFile DataFile { get; set; }
@@ -276,7 +301,7 @@ namespace Maps
                 {
                     char c = (char)('A' + i);
                     Subsector ss = Subsector(c);
-                    writer.WriteLine("# Subsector {0}: {1}", c, (ss != null ? ss.Name : ""));
+                    writer.WriteLine("# Subsector {0}: {1}", c, ss?.Name ?? "");
                 }
                 writer.WriteLine();
             }
@@ -403,7 +428,7 @@ namespace Maps
                 new Hex((byte)(Astrometrics.SubsectorWidth * (2 * ssx + 1) / 2), (byte)(Astrometrics.SubsectorHeight * (2 * ssy + 1) / 2)));
         }
 
-        private static SectorStylesheet s_defaultStyleSheet =
+        private static readonly SectorStylesheet s_defaultStyleSheet =
             s_defaultStyleSheet = SectorStylesheet.Parse(new StreamReader(
                 Assembly.GetExecutingAssembly().GetManifestResourceStream(@"Maps.res.styles.otu.css")));
 
@@ -429,7 +454,6 @@ namespace Maps
             }
         }
         private string stylesheetText;
-
     }
 
     public class Product : MetadataItem

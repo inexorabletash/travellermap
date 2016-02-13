@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html mozNoMarginBoxes>
+<title>Atlas - Traveller Map</title>
+<meta charset="utf-8">
+<link rel="shortcut icon" href="../favicon.ico">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.2/handlebars.min.js"></script>
+<script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.14/polyfill.min.js"></script>
+<script src="../map.js?update=2015-10-26"></script>
+<script src="atlas.js?update=2015-10-28"></script>
+<style>
+@import url(https://fonts.googleapis.com/css?family=Marcellus|Roboto+Condensed);
+
+/* Pagination ============================== */
+
+@media print {
+  @page {
+    size: portrait;
+    margin: 0;
+  }
+
+  body {
+    position: absolute; /* Hack for extra margin when printing */
+  }
+
+  .page {
+    page-break-inside: avoid;
+    page-break-after: always;
+  }
+}
+
+html, body {
+  margin: 0;
+}
+
+.page {
+  clear: both;
+
+  position: relative;
+  padding: 0; margin: 0; border: 0; overflow: hidden;
+  width: 8.5in;
+  height: 11in;
+
+  background-color: white;
+  color: black;
+}
+
+@media only screen {
+  body {
+    text-align: center;
+    background-color: gray;
+    width: 100%;
+  }
+  .page {
+    text-align: left;
+    margin: 0.25in auto;
+    box-shadow: 0 0 30px 5px #202020;
+  }
+}
+
+body { counter-reset: page 1; }
+
+.pagenum:before {
+  position: absolute;
+  bottom: 0.2in;
+  left: 0.5in; right: 0.5in; text-align: center;
+
+  counter-increment: page;
+  content: "\2014\00A0" counter(page) "\00A0\2014";
+}
+
+/* Content ============================== */
+
+body, table {
+  font-size: 9.5pt;
+  font-family: Univers, Helvetica, Arial, sans-serif;
+}
+
+.content {
+  margin: 0.5in;
+}
+
+p {
+  text-align: justify;
+  text-indent: 0.1in;
+  line-height: 120%;
+  margin: 0;
+}
+
+table { border-collapse: collapse; }
+td { vertical-align: top; padding: 0; }
+
+a { text-decoration: underline; }
+
+
+h1.underline {
+  font-size: 24pt;
+  font-family: Optima, Marcellus, serif;
+  font-weight: bold;
+
+  margin-bottom: 6pt;
+  border-bottom: 6pt solid black;
+  margin-left: -0.5in;
+  padding-left: 0.5in;
+}
+
+/* Cover & Title Page ============================== */
+
+#cover_page {
+  background-image: url(../res/ui/aoti.jpg);
+  background-position: 40% 0%;
+  -webkit-print-color-adjust: exact;
+}
+#cover_page .title_adventure,
+#cover_page .title_title {
+  color: white;
+  border-bottom-color: #3366ff;
+}
+#cover_page .title_logo,
+#cover_page .title_publisher
+{
+  color: #3366ff;
+}
+#cover_page .title { top: 7in; left: 1.5in; }
+#cover_page .title_title { margin-left: -1.5in; padding-left: 1.5in; }
+
+.title {
+  position: absolute;
+  left: 0.5in;
+  right: 0.5in;
+  top: 6in;
+}
+
+.title_title {
+  font-style: italic;
+  font-size: 32pt;
+  font-family: Optima, Marcellus, serif;
+  font-weight: normal;
+
+  padding-bottom: 4pt;
+  border-bottom: 6pt solid black;
+  margin-bottom: -4pt;
+
+  margin-left: -0.5in;
+  padding-left: 0.5in;
+}
+
+.title_logo {
+  float: right;
+}
+.title_trav {
+  font-style: italic;
+  font-size: 52pt;
+  font-family: Optima, Marcellus, serif;
+  font-weight: bold;
+  margin-top: -4pt;
+  margin-bottom: -10pt;
+  letter-spacing: -1pt;
+}
+.title_reg {
+  font-size: 25%;
+  font-style: normal;
+}
+.title_adventure {
+  margin: 0;
+  padding: 0;
+  padding-left: 6pt;
+
+  font-style: italic;
+  font-size: 22pt;
+  font-family: Optima, Marcellus, serif;
+  font-weight: normal;
+}
+
+.title_publisher {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  left: 0.5in;
+  bottom: 0.5in;
+
+  font-style: normal;
+  font-size: 24pt;
+  font-family: Optima, Marcellus, serif;
+  font-weight: bold;
+}
+
+/* Credits ============================== */
+
+.credits {
+  padding-top: 1.5in;
+}
+
+.credits h1 {
+  font-style: italic;
+  font-size: 18pt;
+  font-family: Optima, Marcellus, serif;
+  font-weight: normal;
+
+  margin: 0;
+}
+
+.credits p {
+  x-margin-bottom: 1em;
+}
+
+/* Introduction ============================== */
+
+.introduction h2 {
+  text-transform: uppercase;
+  font-size: 10pt;
+  font-weight: bold;
+  margin-bottom: 6pt;
+}
+
+table.glyphs td:nth-child(1) { text-align: center; }
+table.glyphs td { padding: 2px; }
+.introduction .red { color: red; }
+.introduction .blue { color: #00bfff; }
+
+/* Charted Space  ============================== */
+
+.charted-space {
+  margin: 0.5in;
+}
+
+.charted-space-image {
+  display: block;
+  border: solid 2pt black;
+  position: absolute;
+  top: 0.5in;
+  left: 0.5in;
+  height: 10in; width: 693px;
+}
+
+.charted-space h1 {
+  position: absolute;
+  transform-origin: left bottom;
+  transform: rotate(-90deg);
+  width: 10in;
+  left: 8.15in; bottom: 0.5in;
+
+  text-align: center;
+  font-style: normal;
+  font-size: 20pt;
+  font-family: Optima, Marcellus, serif;
+  font-weight: bold;
+  margin: 0;
+}
+
+
+/* Sector Map ============================== */
+
+.sector-map {
+  margin: 0.5in;
+}
+
+.sector-image {
+  display: block;
+  border: solid 2pt black;
+  position: absolute;
+  top: 0.5in;
+  left: 0.5in;
+  height: 10in; width: 664px;
+}
+
+.sector-map h1 {
+  position: absolute;
+  transform-origin: left bottom;
+  transform: rotate(-90deg);
+  width: 10in;
+  left: 8.25in; bottom: 0.5in;
+
+  font-style: normal;
+  font-size: 48pt;
+  font-family: Optima, Marcellus, serif;
+  font-weight: bold;
+  font-style: italic;
+  margin: 0;
+}
+.sector-map h1 small {
+  font-size: 20pt;
+}
+
+.subsectors {
+  position: absolute;
+  left: 7.55in;
+  top: 0.5in;
+
+  font-size: 6pt;
+  font-weight: bold;
+}
+.ss-grid {
+  font-size: 6pt;
+  font-weight: bold;
+}
+.ss-grid td {
+  border: 1px solid black;
+  width: 10px;
+  height: 18px;
+  padding: 1px;
+}
+.ss-names td {
+  font-size: 6pt;
+  font-weight: bold;
+  min-width: 1.25em;
+}
+
+/* Sector Data ============================== */
+
+.sector_data { margin: 0.5in; }
+
+.sector_data h2 { margin-top: 0; }
+
+.column { }
+.column:nth-last-child(2) { padding-right: 4pt; border-right: 1pt solid black; }
+.column:nth-child(2) { padding-left: 4pt; }
+
+table.uwp-data {
+  border-collapse: collapse;
+  overflow: visible;
+}
+.uwp-data th {
+  text-align: left;
+  font-weight: bold;
+}
+.uwp-data th,
+.uwp-data td {
+  padding: 0 1px;
+
+  max-width: 75px;
+
+  /*
+  Leads to vertical truncation in Chrome ~48
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  */
+
+  font-family: "Arial Narrow", "Roboto Condensed", Tahoma, sans-serif;
+  font-size: 5.5pt;
+  line-height: 100%;
+  white-space: nowrap;
+}
+
+.uwp-data .hipop { text-transform: uppercase; }
+
+/* Index ============================== */
+
+.index {
+  font-size: 10pt;
+  font-family: Optima, Marcellus, serif;
+}
+.dot-leaders { overflow-x: hidden; }
+.dot-leaders :first-child { background-color: white; }
+.dot-leaders :nth-child(2) { background-color: white; float: right; }
+.dot-leaders :first-child:before {
+  float: left;
+  width: 0;
+  white-space: nowrap;
+  content:
+  ". . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . "
+  ". . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . "
+  ". . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . "
+  ". . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ";
+}
+
+
+
+</style>
+
+<body>
+<img style="position: absolute; margin: auto; left: 0; right: 0; bottom: 0; top: 0;" src="../res/ui/spin.gif">
+</body>
+
+  <!-- Document Template -->
+  <script id="template" type="text/x-handlebars-template">
+
+    <!-- Cover Page -->
+    <div id="cover_page" class="page">
+
+      <div class="title">
+        <div class="title_title">The Atlas of the Imperium<br>Second Survey</div>
+        <div class="title_logo">
+          <div class="title_trav">TRAVELLER<span class="title_reg">&reg;</span></div>
+          <div class="title_adventure">Science-Fiction Adventure<br>in the Far Future</div>
+        </div>
+      </div>
+      <div class="title_publisher">Far Future Enterprises</div>
+    </div>
+
+    <!-- Title Page -->
+    <div id="title_page" class="page">
+
+      <div class="title">
+        <div class="title_title">The Atlas of the Imperium<br>Second Survey</div>
+        <div class="title_logo">
+          <div class="title_trav">TRAVELLER<span class="title_reg">&reg;</span></div>
+          <div class="title_adventure">Science-Fiction Adventure<br>in the Far Future</div>
+        </div>
+      </div>
+      <div class="title_publisher">Far Future Enterprises</div>
+    </div>
+
+    <!-- Colophon Page -->
+    <div id="colophon" class="page">
+
+      <div class="content credits">
+
+        <h1>Atlas of the Imperium: Second Survey</h1>
+
+        <p>
+          The <b>Traveller</b> game in all forms is owned
+          by Far Future Enterprises. Copyright &copy; 1977 &ndash; 2016
+          Far Future Enterprises. <b>Traveller</b> is a
+          registered trademark of Far Future Enterprises.
+        </p>
+
+        <br>
+        <br>
+        <br>
+
+        <!-- Land Grants -->
+
+        <p>
+          <b>Old Expanses</b> sector designed by Jim Cunningham and
+          Gordon Sheridan. Portions of Old Expanses sector originally
+          appears in <cite>High Passage Magazine.</cite>
+        </p>
+
+        <p>
+          <b>Reaver's Deep</b> sector was designed by J. Andrew Keith.
+          Portions of Reaver's Deep sector appears in
+          <cite>High Passage Magazine</cite>, and in
+          <cite>Far Traveller Magazine</cite>. Additional data and
+          adventures set in Reaver's Deep sector were published by
+          Gamelords, Ltd.
+        </p>
+
+        <p>
+          <b>The Beyond</b> and <b>Vanguard Reaches</b> sectors were
+          designed by Donald P. Rapp and Chuck Kallenbach II
+          respectively, and appear in supplements of the same names
+          (Paranoia Press).
+        </p>
+
+        <p>
+          <b>Theta Borealis</b> was designed by Bill Bledsaw, Pixie Bledsaw,
+          Mark Holmer, Jeff Johnson, Debi Summerlott and Marc Summerlott,
+          and appears in <cite>Theta Borealis Sector</cite> (Group One).
+        </p>
+
+        <p>
+          One subsector of <b>Far Frontiers</b> was designed by J. Andrew Keith and
+          appears in <cite>Trail of the Sky Raiders</cite> (FASA).
+
+          Another subsector was designed by Bill Fawcett and
+          appears in <cite>Gameplay</cite>.
+
+          Six more subsectors were designed by Dale L. Kemper and
+          appear in <cite>Ares Magazine</cite>.
+
+          The remaining eight subsectors were designed by Jim Kundert and
+          appear in <cite>The Traveller Chronicle</cite>.
+        </p>
+
+        <!-- Classic Traveller -->
+
+        <p>
+          Two subsectors of <b>Reft Sector</b> were designed by John Harshman,
+          and appear in
+          <b>Traveller</b> Adventure 5: <cite>Trillion Credit Squadron</cite> (GDW).
+        </p>
+        <p>
+          <b>Solomani Rim</b> sector was designed by John Harshman and
+          appears in <b>Traveller</b> Supplement 10, <cite>The Solomani Rim</cite> (GDW).
+        </p>
+        <p>
+          <b>The Spinward Marches</b> were designed by Marc W. Miller
+          and appears in <b>Traveller</b> Supplement 3,
+          <cite>The Spinward Marches</cite> (GDW).
+        </p>
+        <p>
+          Two subsectors of <b>Trojan Reach</b> sector were designed by
+          Bob McWilliams and appear in <b>Traveller</b> Adventure 4, <cite>Leviathan</cite> (GDW).
+        </p>
+        <p>
+          <b>Deneb</b>, <b>Corridor</b>, <b>Vland</b>,
+          <b>Lishun</b>, <b>Antares</b>, <b>The Empty Quarter</b>, <b>Trojan Reach</b>,
+          <b>Reft</b>, <b>Gushemege</b>, <b>Dagudashag</b>, <b>Core</b>,
+          <b>Fornast</b>, <b>Ley</b>, <b>Riftspan Reaches</b>, <b>Verge</b>,
+          <b>Ilelish</b>, <b>Zarushagar</b>, <b>Massila</b>, <b>Delphi</b>,
+          <b>Glimmerdrift Reaches</b>, <b>Hlakhoi</b>, <b>Ealiyasiyw</b>,
+          <b>Daibei</b>, <b>Diaspora</b>,
+          <b>Hinterworlds</b>, <b>Staihaia'yo</b>, <b>Iwahfuah</b>, <b>Dark Nebula</b>,
+          <b>Magyar</b>, <b>Alpha Crucis</b>, and <b>Spica</b> sectors
+          were designed by Marc W. Miller
+          and appear in the original <cite>Atlas of the Imperium</cite> (GDW),
+          with later refinement by Joe Fugate and many others.
+        </p>
+
+        <p>
+          <b>Gvurrdon</b> sector was designed by J. Andrew Keith, Marc Miller
+          and John Harshman and appears in <b>Traveller</b> Alien Module 3: <cite>Vargr</cite> (GDW).
+        </p>
+
+        <!-- MegaTraveller -->
+
+        <p>
+          <b>Meshan</b>, <b>Mendan</b>, and <b>Amdukan</b> sectors
+          were designed by Michael R. Mikesh. Mendan sector appeared
+          in <cite>Challege #49</cite> (GDW). One subsector of Amdukan sector
+          appear in <cite>Challenge #52</cite> (GDW).
+        </p>
+
+        <p>
+          <b>Gateway</b> sector was designed by William H. Keith, Jr.
+          and appears in <cite>The MegaTraveller Journal</cite> (Digest Group Publications).
+        </p>
+
+        <!-- T20 -->
+
+        <p>
+          <b>Crucis Margin</b> sectors was designed by
+          Martin J. Dougherty and Hunter Gordon and appears in
+          <cite>Gateway to Destiny</cite> (QuickLink Interactive).
+        </p>
+
+        <!-- Mongoose -->
+
+        <p>
+          <b>Ziafrplians</b> sector was designed by Donald McKinney
+          and appears in <cite>Alien Module 4: Zhodani</cite> (Mongoose Publishing)
+        </p>
+
+        <!-- Internet -->
+
+        <p>
+          <b>Ustral Quadrant</b> sector was designed by Douglas G. Snyder.
+        </p>
+        <p>
+          <b>Tuglikki</b> and <b>Provence</b> sectors were designed by David Drazul.
+        </p>
+        <p>
+          <b>Windhorn</b> sector was designed by John G. Wood.
+        </p>
+
+        <br>
+
+        <p>
+          <b>Foreven</b> sector has been set aside as a "referee's preserve,"
+          with no further official development to be done within the sector.
+          Stellar positions were developed by Greg Videll and Mike Mikesh and
+          appear in <cite>Imperial Lines</cite>.
+        </p>
+
+        <br>
+
+        <p>Generated by <a>https://travellermap.com</a> - {{date}}</p>
+
+        <br>
+
+        <p>
+          Dedicated to the memory of Donald McKinney.
+        </p>
+
+
+      </div>
+    </div>
+
+    <!-- Charted Space -->
+    <div class="page">
+      <div class="charted-space">
+        <img src="{{charted_space_src}}" alt="" class="charted-space-image">
+        <h1>Charted Space: Sectors of the Imperium and Surrounds</h1>
+      </div>
+      <div class=pagenum></div>
+    </div>
+
+    <!-- Introduction Page -->
+    <div class="page">
+      <div class="content introduction">
+        <h1 class="underline">Mapping The Imperium</h1>
+        <p>
+          Early in the history of the Third Imperium, it became clear
+          to the Imperial bureaucracy that detailed maps of its
+          interstellar territories would be necessary. Indeed, one
+          whole service was created just to oversee the creation and
+          maintenance of these maps. Inherent in the Imperial
+          Interstellar Scout Service mission of recontact of settled
+          worlds and exploration of new worlds was the maintenance of
+          records of those worlds. As an office within the Scout
+          Service, the Imperial Grand Survey handles navigational
+          charts for the Imperium &mdash; and beyond.
+        </p>
+        <p>
+          The first comprehensive survey of the Imperium brought many
+          of the fragmented charts and maps under one authority and
+          made them available to government and commercial agencies.
+          Published in 420, the First Survey represented more than one
+          hundred years of work.
+        </p>
+        <p>
+          By 990, the First Survey was long obsolete, and as an
+          observance of the millennium of the Imperium, a Second Survey
+          was commissioned by the Emperor. Over seventy years in
+          compilation, the Second Survey expanded and refined the data
+          of the First Survey and was finally published in 1065.
+        </p>
+        <p>
+          In the following years, the survey data has been refined and
+          expanded upon. Trade of navigational data with neighboring
+          polities and the inclusion of reports from far-flung
+          explorations has pushed the boundaries of the published data
+          many sectors beyond the Imperial frontier, and updated
+          editions of the Second Survey data are regularly published.
+          It should be noted that data beyond the Imperial border is
+          provided as a best effort, and may include errors and
+          omissions.
+        </p>
+        <p>
+          <b>For Use With Traveller:</b>
+          <cite>The Atlas of the Imperium: Second Survey</cite>
+          is a compilation of starmaps showing the broad expanse of
+          the Imperium and nearby sectors in Charted Space. More than
+          50 sectors (of 16 subsectors each) show the star systems of
+          the empire and many star systems which border it as well.
+        </p>
+        <p>
+          The maps of the <cite>Atlas</cite> are intended as a
+          navigational guide. Data on star systems shows the
+          information necessary to allow interstellar navigation: fuel
+          sources, starport types, bases, and allegiance. Following
+          each map are the full details of each system, presented
+          according to the <b>Traveller 5 Core Rules</b> but applicable
+          to any edition.
+        </p>
+
+        <p>
+          <b>Dates:</b> The assumed date of publication of the <cite>Second Survey</cite>
+          data is 1105: the 1105th year since the founding of the Imperium.
+          Information is current as of that date.
+        </p>
+
+        <table>
+          <tr>
+            <td style="width: 50%; padding-right: 6pt;">
+              <h2>Using the Atlas</h2>
+
+              <p>
+                The map on the preceding page presents an overview of
+                Charted Space, showing the positions of the sectors of
+                the Imperium and adjacent regions. Dimmed sectors are
+                not covered by the <cite>Atlas</cite>.
+              </p>
+
+              <p>
+                <b>Map Symbols:</b>
+                Each hex on the sector map represents one parsec (3.27
+                light-years). Hexes containing star systems are
+                numbered to assist in specifying locations within a
+                sector.
+              </p>
+
+              <p>
+                The central symbol in a hex shows the type of world:
+                solid dots (<span class="blue">&#x25CF;</span>)
+                indicate worlds with water present; open circles
+                (&#x25CB;) represent desert worlds (with a
+                hydrographic percentage of zero, or without easily
+                accessible water); a group of dots (:::) indicates an
+                asteroid belt.
+              </p>
+
+              <p>
+                The upper right of the hex is reserved for the
+                gas giant symbol: if a dot (&bull;) is present in the
+                upper right, then the system has one or more gas giants
+                suitable for starship refuelling.
+              </p>
+
+              <p>
+                The left side of the hex is reserved for base
+                and related symbols:
+              </p>
+
+              <table class="glyphs">
+                <tr><td>&#x2605;</td><td>Imperial Naval Base</td>
+                  <td class="red"><b>&Gamma;</b></td><td>Research Station</td></tr>
+                <tr><td>&#x25B2;</td><td>Scout Base</td>
+                  <td><b>R</b></td><td>Imperial Reserve</td></tr>
+                <tr><td class="red">&#x25B2;</td><td>Scout Way Station</td>
+                  <td class="red"><b>P</b></td><td>Penal Colony</td></tr>
+                <tr><td>&#x25A0;</td><td>Naval Depot</td>
+                  <td><b>X</b></td><td>Prison, Exile Camp</td></tr>
+
+                <tr><td>&diams;</td><td>Zhodani Base</td></tr>
+                <tr><td class="red">&diams;</td><td>Zhodani Relay Station</td></tr>
+
+                <tr><td class="red">&#x2605;</td><td>Other Naval / Tlauku Base</td></tr>
+                <tr><td class="red">&#x25A0;</td><td>Other Outpost / Depot</td></tr>
+                <tr><td>&#x2217;&#x2217;</td><td>Corsair / Clan / Embassy</td></tr>
+
+                <tr><td>&#x2726;</td><td>Military Base / Garrison</td></tr>
+                <tr><td>&bull;</td><td>Independent Base</td></tr>
+              </table>
+
+            </td>
+            <td style="width: 50%; padding-left: 6pt;">
+              <p>
+                The top center of the hex is reserved for the
+                starport type: starport letter codes from A to E plus X.
+              </p>
+              <p>
+                The bottom of the hex contains the world name.
+                If the world shown has a population factor of 9+
+                (at least one billion) the name of the world is
+                shown in UPPERCASE.
+              </p>
+              <p>
+                The lower right corner of the hex is reserved for
+                allegiance &ndash; the government of the system.
+                If there is no indication present then the system
+                is within the Imperium. Other four letter groups
+                indicate non-Imperial interstellar governments, or
+                Imperial cultural regions. Labels on the map
+                identify the full name of the region.
+              </p>
+              <p>
+                A ring within the hex indicates a travel advisory:
+                amber (caution) or red (forbidden).
+              </p>
+              <p>
+                <b>Data Format:</b> A full explanation of the
+                <cite>Second Survey</cite> data
+                format can be found in the <b>Traveller 5 Core Rules</b> or
+                online at: <a>https://travellermap.com/doc/secondsurvey</a>.
+                The fields are:
+              </p>
+              <p><b>Hex:</b> Position within the sector (XXYY).</p>
+              <p><b>Name:</b> Name of the MainWorld in the system.</p>
+              <p><b>UWP:</b> Universal World Profile:
+                Starport,
+                Size, Atmosphere, Hydrographics,
+                Population (exponent), Government, Law level,
+                Tech level.
+              </p>
+              <p><b>Remarks:</b> Trade codes and other attributes.</p>
+              <p><b>{Ix}:</b> Importance.</p>
+              <p><b>(Ex):</b> Economics: Resources, Labor, Infrastructure.</p>
+              <p><b>[Cx]:</b> Culture: Homogeneity, Acceptance, Strangness, Symbols.</p>
+              <p><b>N:</b> Nobility (Imperium).</p>
+              <p><b>B:</b> Bases: N=Naval, S=Scout, D=Depot, W=Way, etc.</p>
+              <p><b>Z:</b> Travel zone: A=Amber (caution), R=Red (forbidden).</p>
+              <p><b>PBG:</b> Population (multiplier), Belts, Gas giants.</p>
+              <p><b>W:</b> Total world count in system.</p>
+              <p><b>A:</b> Allegiance: government, province, or region.</p>
+              <p><b>Stellar:</b> Stars in the system.</p>
+
+
+            </td>
+          </tr>
+        </table>
+
+      </div>
+      <div class=pagenum></div>
+    </div>
+
+
+    {{#sectors}}
+
+    <!-- Sector Map -->
+    <div class="page">
+      <div class="sector-map">
+        <h1>
+          {{name}}
+          <small>({{metadata.X}}, {{metadata.Y}})</small>
+        </h1>
+        <div class="subsectors">
+          <table class="ss-grid">
+            <tr><td>A</td><td>B</td><td>C</td><td>D</td></tr>
+            <tr><td>E</td><td>F</td><td>G</td><td>H</td></tr>
+            <tr><td>I</td><td>J</td><td>K</td><td>L</td></tr>
+            <tr><td>M</td><td>N</td><td>O</td><td>P</td></tr>
+          </table>
+          <br>
+          <table class="ss-names">
+            <tr><td>A</td><td>{{metadata.Subsectors.0.Name}}</td></tr>
+            <tr><td>B</td><td>{{metadata.Subsectors.1.Name}}</td></tr>
+            <tr><td>C</td><td>{{metadata.Subsectors.2.Name}}</td></tr>
+            <tr><td>D</td><td>{{metadata.Subsectors.3.Name}}</td></tr>
+            <tr><td>E</td><td>{{metadata.Subsectors.4.Name}}</td></tr>
+            <tr><td>F</td><td>{{metadata.Subsectors.5.Name}}</td></tr>
+            <tr><td>G</td><td>{{metadata.Subsectors.6.Name}}</td></tr>
+            <tr><td>H</td><td>{{metadata.Subsectors.7.Name}}</td></tr>
+            <tr><td>I</td><td>{{metadata.Subsectors.8.Name}}</td></tr>
+            <tr><td>J</td><td>{{metadata.Subsectors.9.Name}}</td></tr>
+            <tr><td>K</td><td>{{metadata.Subsectors.10.Name}}</td></tr>
+            <tr><td>L</td><td>{{metadata.Subsectors.11.Name}}</td></tr>
+            <tr><td>M</td><td>{{metadata.Subsectors.12.Name}}</td></tr>
+            <tr><td>N</td><td>{{metadata.Subsectors.13.Name}}</td></tr>
+            <tr><td>O</td><td>{{metadata.Subsectors.14.Name}}</td></tr>
+            <tr><td>P</td><td>{{metadata.Subsectors.15.Name}}</td></tr>
+          </table>
+        </div>
+
+        <img src="{{img_src}}" alt="" class="sector-image">
+      </div>
+      <div class=pagenum></div>
+    </div>
+
+    {{#pages}}
+    <!-- Data Page -->
+    <div class="page">
+      <div class="sector_data">
+        <h2>{{../name}} &mdash; Page {{index}} of {{../page_count}}</h2>
+        <table>
+          <tr>
+            {{#columns}}
+            <td class="column">
+              <table class="uwp-data">
+                <tr>
+                  <th>Hex</th>
+                  <th>Name</th>
+                  <th>UWP</th>
+                  <th>Remarks</th>
+                  <th>{Ix}</th>
+                  <th>(Ex)</th>
+                  <th>[Cx]</th>
+                  <th>N</th>
+                  <th>B</th>
+                  <th>Z</th>
+                  <th>PBG</th>
+                  <th>W</th>
+                  <th>A</th>
+                  <th>Stellar</th>
+                </tr>
+                {{#worlds}}
+                <tr>
+                  <td>{{hex}}</td>
+                  <td {{#hipop}}class=hipop{{/hipop}}>{{name}}</td>
+                  <td>{{uwp}}</td>
+                  <td>{{remarks}}</td>
+                  <td>{{ix}}</td>
+                  <td>{{ex}}</td>
+                  <td>{{cx}}</td>
+                  <td>{{nobility}}</td>
+                  <td>{{bases}}</td>
+                  <td>{{zone}}</td>
+                  <td>{{pbg}}</td>
+                  <td>{{w}}</td>
+                  <td>{{allegiance}}</td>
+                  <td>{{stars}}</td>
+                </tr>
+                {{/worlds}}
+              </table>
+            </td>
+            {{/columns}}
+          </tr>
+        </table>
+        <div class=pagenum></div>
+      </div>
+    </div>
+    {{/pages}}
+
+    {{/sectors}}
+
+    <!-- Index -->
+    <div class="page">
+      <div class="content index">
+        <h1 class="underline">Sector Index</h1>
+        {{#index}}
+        <div class="dot-leaders">
+          <span>{{name}}</span>
+          <span>{{page}}</span>
+        </div>
+        {{/index}}
+        </ol>
+      </div>
+      <div class=pagenum></div>
+    </div>
+
+  </script>
+</html>

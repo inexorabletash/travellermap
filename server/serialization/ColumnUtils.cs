@@ -62,7 +62,7 @@ namespace Maps.Serialization
 
         internal struct Row
         {
-            public StringDictionary dict;
+            public Dictionary<string, string> dict;
             public int lineNumber;
             public string line;
         }
@@ -88,7 +88,7 @@ namespace Maps.Serialization
 
         private void ParseLine(string line, int lineNumber)
         {
-            StringDictionary dict = new StringDictionary();
+            Dictionary<string, string> dict = new Dictionary<string, string>();
             foreach (var column in columns)
                 dict[column.name] = line.SafeSubstring(column.start, column.length).TrimEnd();
             data.Add(new Row { dict = dict, line = line, lineNumber = lineNumber });

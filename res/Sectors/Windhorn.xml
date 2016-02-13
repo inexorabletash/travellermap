@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Sector Abbreviation="Wind" Tags="InReview">
+  <Y>-2</Y>
+  <X>-1</X>
+  <Name>Windhorn</Name>
+  <Name Lang="va">Gotzdzo</Name>
+  <Name Lang="vi">Kishadikhu</Name>
+  <DataFile Author="John Wood" Source="Traveller 5 Sector Survey" Era="1105" Type="TabDelimited">Windhorn.tab</DataFile>
+  <Subsectors>
+    <Subsector Index="A">Dakoeng</Subsector>
+    <Subsector Index="B">Khonsu</Subsector>
+    <Subsector Index="C">Urrgae</Subsector>
+    <Subsector Index="D">Urzkhoe</Subsector>
+    <Subsector Index="E">Nanthou</Subsector>
+    <Subsector Index="F">Elours</Subsector>
+    <Subsector Index="G">Uroez</Subsector>
+    <Subsector Index="H">Tsougak</Subsector>
+    <Subsector Index="I">Urarz</Subsector>
+    <Subsector Index="J">Urkae</Subsector>
+    <Subsector Index="K">Khaellung</Subsector>
+    <Subsector Index="L">Sunggoe</Subsector>
+    <Subsector Index="M">Aekhgal</Subsector>
+    <Subsector Index="N">Gvadhoe</Subsector>
+    <Subsector Index="O">Voenggaks</Subsector>
+    <Subsector Index="P">Kishadiku</Subsector>
+  </Subsectors>
+
+  <Borders>
+    <Border Allegiance="V17D" Color="olivedrab" LabelPosition="2929">2031 2131 2230 2229 2228 2227 2226 2126 2226 2326 2426 2526 2625 2725 2724 2723 2722 2821 2921 2920 2919 3018 3017 3016 3015 3014 3013 3014 3115 3116 3117 3217 3218 3219 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3230 3231 3232 3233 3334 3234 3135 3136 3137 3138 3238 3239 3240 3140 3040 2940 2840 2740 2639 2638 2538 2437 2337 2336 2235 2135 2034 2033 2032 2031</Border>
+    <Border Allegiance="V17D" Color="olivedrab" ShowLabel="false">2140</Border>
+    <Border Allegiance="VVar" Color="olivedrab" LabelPosition="0309">0000 0100 0200 0300 0400 0500 0600 0700 0800 0900 1000 1100 1200 1300 1400 1301 1302 1303 1304 1305 1205 1106 1107 1108 1109 1009 0910 0810 0711 0712 0612 0513 0413 0414 0314 0213 0113 0112 0111 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001 0000</Border>
+    <Border Allegiance="VNgC" Color="olivedrab" LabelPosition="1433">0137 0236 0336 0435 0535 0534 0633 0734 0833 0934 1033 1133 1232 1332 1331 1431 1531 1630 1730 1830 1931 1932 1832 1833 1834 1835 1836 1937 1938 2038 2039 2040 1940 1840 1740 1640 1540 1440 1340 1239 1140 1040 0940 0839 0740 0640 0540 0440 0439 0438 0338 0237 0137</Border>
+  </Borders>
+</Sector>

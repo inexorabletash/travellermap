@@ -126,21 +126,20 @@ namespace Maps
             }
         }
 
-
         internal char Starport { get { return UWP[0]; } }
-        internal int Size { get { return Char.ToUpperInvariant(UWP[1]) == 'S' ? -1 : SecondSurvey.FromHex(UWP[1]); } }
-        internal int Atmosphere { get { return SecondSurvey.FromHex(UWP[2]); } }
-        internal int Hydrographics { get { return SecondSurvey.FromHex(UWP[3]); } }
-        internal int PopulationExponent { get { return SecondSurvey.FromHex(UWP[4], valueIfX: 0); } }
-        internal int Government { get { return SecondSurvey.FromHex(UWP[5]); } }
-        internal int Law { get { return SecondSurvey.FromHex(UWP[6]); } }
-        internal int TechLevel { get { return SecondSurvey.FromHex(UWP[8]); } }
+        internal int Size { get { return Char.ToUpperInvariant(UWP[1]) == 'S' ? -1 : SecondSurvey.FromHex(UWP[1], valueIfUnknown: -1); } }
+        internal int Atmosphere { get { return SecondSurvey.FromHex(UWP[2], valueIfUnknown: -1); } }
+        internal int Hydrographics { get { return SecondSurvey.FromHex(UWP[3], valueIfUnknown: -1); } }
+        internal int PopulationExponent { get { return SecondSurvey.FromHex(UWP[4], valueIfUnknown: 0); } }
+        internal int Government { get { return SecondSurvey.FromHex(UWP[5], valueIfUnknown: 0); } }
+        internal int Law { get { return SecondSurvey.FromHex(UWP[6], valueIfUnknown: 0); } }
+        internal int TechLevel { get { return SecondSurvey.FromHex(UWP[8], valueIfUnknown: 0); } }
 
         internal int PopulationMantissa
         {
             get
             {
-                int mantissa = SecondSurvey.FromHex(PBG[0], valueIfX: 0);
+                int mantissa = SecondSurvey.FromHex(PBG[0], valueIfUnknown: 0);
                 // Hack for legacy data w/o PBG
                 if (mantissa == 0 && PopulationExponent > 0)
                     return 1;
@@ -148,8 +147,8 @@ namespace Maps
             }
         }
 
-        internal int Belts { get { return SecondSurvey.FromHex(PBG[1]); } }
-        internal int GasGiants { get { return SecondSurvey.FromHex(PBG[2]); } }
+        internal int Belts { get { return SecondSurvey.FromHex(PBG[1], valueIfUnknown: 0); } }
+        internal int GasGiants { get { return SecondSurvey.FromHex(PBG[2], valueIfUnknown: 0); } }
         internal double Population { get { return Math.Pow(10, PopulationExponent) * PopulationMantissa; } }
         internal bool WaterPresent { get { return (Hydrographics > 0) && (Util.InRange(Atmosphere, 2, 9) || Util.InRange(Atmosphere, 0xD, 0xF)); } }
         internal bool IsBa { get { return PopulationExponent == 0; } }
@@ -180,7 +179,7 @@ namespace Maps
         // TODO: "Pr" is used in some legacy files, conflicts with T5 "Pre-Rich" - convert codes on import/export
         internal string ResearchStation { get { return HasCodePrefix("Rs"); } }
 
-        internal bool IsPlaceholder { get { return UWP == "XXXXXXX-X"; } }
+        internal bool IsPlaceholder { get { return UWP == "XXXXXXX-X" || UWP == "???????-?"; } }
 
         internal bool IsCapital
         {
@@ -282,8 +281,7 @@ namespace Maps
         {
             get
             {
-                var ss = Sector.Subsector(Subsector);
-                return ss == null ? "" : ss.Name;
+                return Sector.Subsector(Subsector)?.Name ?? "";
             }
         }
 
@@ -291,10 +289,7 @@ namespace Maps
         {
             get
             {
-                if (Sector == null)
-                    return "";
-                var allegiance = Sector.GetAllegianceFromCode(Allegiance);
-                return allegiance == null ? "" : allegiance.Name;
+                return Sector?.GetAllegianceFromCode(Allegiance)?.Name ?? "";
             }
         }
 
