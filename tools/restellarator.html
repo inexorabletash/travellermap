@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<title>Re-Stellarator - Traveller Map</title>
+<meta charset="utf-8">
+<link rel="shortcut icon" href="../favicon.ico">
+<script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.14/polyfill.min.js"></script>
+<link rel="stylesheet" href="../site.css?update=2015-08-30">
+<style>
+  #in, #out {
+    width: 1000px; height: 300px;
+    white-space: pre;
+    overflow: scroll;
+  }
+</style>
+<h1>Re-Stellarator &mdash; The Traveller Map</h1>
+<textarea id=in>
+</textarea>
+<br><button id=go>Go</button><br>
+<textarea id=out>
+</textarea>
+
+<script>
+function $(s) { return document.querySelector(s); }
+
+var FIELDS;
+function parse(s) {
+  var lines = s.split('\n').filter(function(s) { return !/^\s*$/.test(s); });
+  var fields = lines.shift();
+  var separator = lines.shift(), col = 0, cols = [];
+  separator.split(/(\s+)/).forEach(function(s) {
+    if (/-+/.test(s))
+      cols.push([col, s.length]);
+    col += s.length;
+  });
+
+  function colsplit(s) {
+    return cols.map(function(pair) {
+      return s.substr(pair[0], pair[1]).trimRight();
+    });
+  }
+
+  fields = colsplit(fields);
+  FIELDS = fields; // Horrible hack.
+  return lines.map(function(line) {
+    line = colsplit(line);
+    var world = {};
+    fields.forEach(function(field, index) {
+      world[field] = line[index] || '';
+    });
+    return world;
+  });
+}
+
+function format(worlds) {
+  var fields = FIELDS; // Horrible hack.
+  var widths = fields.map(function(f) { return f.length; });
+  worlds.forEach(function(world) {
+    fields.forEach(function(field, index) {
+      var value = world[field];
+      widths[index] = Math.max(widths[index], value.length);
+    });
+  });
+
+  var out = [];
+  var header = [], separator = [];
+  fields.forEach(function(field, index) {
+    header.push(field + ' '.repeat(widths[index] - field.length));
+    separator.push('-'.repeat(widths[index]));
+  });
+  out.push(header.join(' '));
+  out.push(separator.join(' '));
+  worlds.forEach(function(world) {
+    var row = [];
+    fields.forEach(function(field, index) {
+      row.push((world[field] || '')  + ' '.repeat(widths[index] - world[field].length));
+    });
+    out.push(row.join(' '));
+  });
+
+  return out.join('\n') + '\n';
+}
+
+function fix(world) {
+  // Stellar
+  var stars = [], s = world.Stellar, m;
+  while (m = /^([OBAFGKM][0-9] ?(?:Ia|Ib|II|III|IV|V|VI|VII|D)|D|BD|BH)\s*/.exec(s)) {
+    stars.push(m[1]);
+    s = s.substring(m[0].length);
+  }
+  stars = stars.map(function(star, index) {
+    if (m = /^([OBAFGKM][0-9]) ?(Ia|Ib|II|III|IV|V|VI|VII|D)/.exec(star)) {
+      var spec = m[1], lum = m[2];
+
+      // VI -> V
+      if (lum === 'VI')
+        lum = 'V';
+
+      // VII -> D
+      if (lum === 'VII')
+        lum = 'D';
+
+      // D -> V, if not the last star
+      if (lum === 'D' && index + 1 !== stars.length) {
+        lum = 'V';
+      }
+
+      star = lum === 'D' ? lum : spec + ' ' + lum;
+    }
+
+    return star;
+  });
+  world.Stellar = stars.join(' ');
+}
+
+$('#go').addEventListener('click', function() {
+  var worlds = parse($('#in').value);
+
+  worlds.forEach(fix);
+
+  $('#out').value = format(worlds);
+});
+
+</script>
