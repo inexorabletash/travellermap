@@ -37,7 +37,7 @@ Hex	Name	UWP	Remarks	{Ix}	(Ex)	[Cx]	N	B	Z	PBG	W	A	Stellar
 1705	Wovoka	A887785-C	Ga Ag Ri Cp Dolp3	{ 4 }	(96C+2)	[9B9D]	-	-	-	202	10	SoCf	G6 V K7 V
 1706	Rayah	C8739A6-A	Hi In Tz	{ 3 }	(68C+0)	[9C3A]	-	-	-	202	11	SoCf	M7 V M6 V
 1708	Arcalod	B510687-B	Ni Na Lk	{ 1 }	(952+0)	[475G]	-	-	-	202	12	SoCf	M9 V
-1709	Salamis	A310663-D	Ni Na Ho Tz Cy O:2111	{ 1 }	(D56+0)	[978C]	-	-	-	232	12	SoCf	K0 V M2 V
+1709	Salamis	A300663-D	Ni Na Ho Tz Cy O:2111	{ 1 }	(D56+0)	[978C]	-	-	-	232	12	SoCf	K0 V M2 V
 1804	Shidad	B645887-A	Ph Pa Pi	{ 2 }	(97A-2)	[8A78]	-	-	-	110	11	SoCf	G7 V
 1808	Orient	B7A68CH-B	Fl Ph Pz	{ 2 }	(B78-1)	[DA49]	-	-	A	201	12	SoCf	G0 V M3 V
 1809	Marava	C758632-8	Ni Ag	{ -1 }	(750-5)	[6585]	-	-	-	220	13	SoCf	G6 V K6 V
@@ -183,9 +183,9 @@ Hex	Name	UWP	Remarks	{Ix}	(Ex)	[Cx]	N	B	Z	PBG	W	A	Stellar
 1430	Perseverans	C9A2200-8	Fl He Lo Fr	{ -2 }	(710+1)	[1116]	-	-	-	701	13	SoCf	K5 V K2 V
 1526	Trieumf	D6A258A-8	Fl He Ni Fr	{ -3 }	(C40+3)	[1239]	-	-	-	432	14	SoCf	M7 V G7 V
 1621	Chartreuse	D65A410-7	Wa Ni	{ -3 }	(833-4)	[6156]	-	-	-	132	14	SoCf	G1 V K4 IV
-1628	Epsilon Tauri	X000000-0	As Va Ba Ho	{ -3 }	(B00-5)	[0000]	-	-	-	001	10	SoCf	K0 III
-1726	Beta Tauri	X100000-0	Va Ba	{ -3 }	(400-5)	[0000]	-	-	-	000	5	SoCf	B7 III
-1826	Hoep	X721000-0	He Ba Po Tz	{ -3 }	(600-5)	[0000]	-	-	-	001	5	SoCf	M9 V
+1628	Epsilon Tauri	E000000-0	As Va Ba Ho	{ -3 }	(B00-5)	[0000]	-	-	-	001	10	SoCf	K0 III
+1726	Beta Tauri	E100000-0	Va Ba	{ -3 }	(400-5)	[0000]	-	-	-	000	5	SoCf	B7 III
+1826	Hoep	X721000-0	He Ba Po Tz	{ -3 }	(600-5)	[0000]	-	-	R	001	5	SoCf	M9 V
 1923	Wolfe	B788455-A	Ni Pa	{ 1 }	(D33+0)	[153B]	-	-	-	131	12	SoCf	G3 V
 2026	Cybele	D759966-6	Hi O:2328	{ -1 }	(786+1)	[8851]	-	-	-	213	8	SoCf	K3 V
 2028	Tiajama	C8D6497-9	Ni Ho Tz	{ -1 }	(A35+4)	[5359]	-	-	-	120	9	SoCf	K3 V M4 V
@@ -211,7 +211,7 @@ Hex	Name	UWP	Remarks	{Ix}	(Ex)	[Cx]	N	B	Z	PBG	W	A	Stellar
 3123	SCSS-D2	C51036A-A	Lo Fo Mr	{ 0 }	(A20+0)	[8315]	-	M	R	402	6	SoCf	M5 V
 3223	SCSS-D3	B74436A-B	Lo Lk Rs Fo Mr	{ 1 }	(721+2)	[8418]	-	M	R	900	7	SoCf	G4 V
 3224	SCSS-D4	C20136A-B	Ic Va Lo Tz Fo Mr	{ 0 }	(B20+0)	[8316]	-	M	R	502	10	SoCf	M0 V M3 V
-3228	Onjou	X410000-0	Ba	{ -3 }	(200-5)	[0000]	-	-	-	002	13	SoCf	K0 V
+3228	Onjou	E410000-0	Ba	{ -3 }	(200-5)	[0000]	-	-	-	002	13	SoCf	K0 V
 0139	Elias Six	A776244-D	Lo Tu Tz	{ 2 }	(F12-4)	[146A]	-	KM	-	623	10	Mu	M3 V
 0140	Kleid	C749323-A	Lo	{ 0 }	(E20-1)	[3328]	-	-	-	924	16	Mu	F5 V
 0231	Morrigan	C737343-A	Lo Tz	{ 0 }	(620+5)	[337A]	-	-	-	602	6	SoCf	M1 V
@@ -231,7 +231,7 @@ Hex	Name	UWP	Remarks	{Ix}	(Ex)	[Cx]	N	B	Z	PBG	W	A	Stellar
 0637	Timor	X7AA120-8	Fl He Lo Ho Fo	{ -3 }	(500-5)	[1118]	-	-	R	103	15	NaHu	G3 V
 0734	Refuge	B768987-A	Hi Pr	{ 3 }	(F85+0)	[BC6B]	-	-	-	503	11	NaHu	G8 V G3 V
 0738	Judgement	B883523-9	Ni Pr Tz	{ 0 }	(D42+2)	[157A]	-	-	-	134	19	NaHu	M9 V
-0739	258-191	X6B5000-0	Fl Ba Fr	{ -3 }	(200-5)	[0000]	-	-	-	002	11	NaXX	M5 V
+0739	258-191	X6B5000-0	Fl Ba Fr	{ -3 }	(200-5)	[0000]	-	-	R	002	11	NaXX	M5 V
 0831	Celephais	C723100-9	Lo Po Tz	{ -1 }	(E00+1)	[21A6]	-	-	-	633	14	SoCf	M3 V M3 V
 0834	Hamral	E20358C-9	Ic Va Ni	{ -2 }	(D43-5)	[5319]	-	-	-	522	11	NaHu	M2 V
 0836	Orsino	DAB3455-9	Fl He Ni Fr	{ -2 }	(F33+1)	[5217]	-	-	-	504	10	NaHu	M0 V
@@ -242,8 +242,8 @@ Hex	Name	UWP	Remarks	{Ix}	(Ex)	[Cx]	N	B	Z	PBG	W	A	Stellar
 1232	Lavi	A763776-A	Ri Tz	{ 4 }	(66C+0)	[AB1B]	-	KM	-	100	9	NaHu	M9 V K0 V
 1233	Indravati	C857A96-A	Ga Hi	{ 2 }	(C9E+0)	[9C6B]	-	-	-	110	8	NaHu	G4 V M6 V
 1238	Theta Aurigae	B648598-A	Ni Ag	{ 2 }	(B47-4)	[5716]	-	-	-	112	13	NaHu	G2 V A0 III
-1333	355-846	X5A5000-0	Fl Ba Fr Sa	{ -3 }	(800-5)	[0000]	-	-	-	001	10	NaXX	M5 V
-1334	Hekla	X202000-0	Ic Va Ba	{ -3 }	(400-5)	[0000]	-	-	-	022	14	NaXX	A7 III
+1333	355-846	X5A5000-0	Fl Ba Fr Sa	{ -3 }	(800-5)	[0000]	-	-	R	001	10	NaXX	M5 V
+1334	Hekla	E202000-0	Ic Va Ba	{ -3 }	(400-5)	[0000]	-	-	-	022	14	NaXX	A7 III
 1431	Kwan	A786231-8	Ga Lo	{ -1 }	(810+3)	[514A]	-	-	-	611	8	SoCf	K5 V M4 V
 1537	Deng	B6D8238-9	Lo Tz	{ 0 }	(910+0)	[321C]	-	-	-	333	9	NaHu	M1 V
 1538	Desolate	B642612-6	He Ni Po	{ -1 }	(750+2)	[35A4]	-	-	-	103	11	NaHu	G3 V M6 V
@@ -253,7 +253,7 @@ Hex	Name	UWP	Remarks	{Ix}	(Ex)	[Cx]	N	B	Z	PBG	W	A	Stellar
 1731	Margate	A753352-9	Lo Po	{ 0 }	(620+1)	[1328]	-	-	-	110	10	SoCf	F8 V M9 II
 1738	Merrick's Sorrow	C842256-7	He Lo Po Sa	{ -2 }	(A10-1)	[7163]	-	-	-	104	11	NaHu	G9 V M8 V
 1739	Binyamin	C723155-7	Lo Po	{ -2 }	(900-5)	[1194]	-	-	-	230	11	NaHu	G3 IV
-1931	Theta Tauri	X202000-0	Ic Va Ba	{ -3 }	(400-5)	[0000]	-	-	-	022	14	SoCf	A7 III
+1931	Theta Tauri	E202000-0	Ic Va Ba	{ -3 }	(400-5)	[0000]	-	-	-	022	14	SoCf	A7 III
 1933	Katya	C200114-7	Va Lo	{ -2 }	(700-1)	[2167]	-	-	-	202	13	NaHu	M3 V
 1934	Narmada	A767621-B	Ga Ni Ag Ri	{ 4 }	(A55+0)	[7A99]	-	KM	-	503	12	NaHu	F9 V M4 V M7 V
 1939	Clover	B794641-8	Ni Ag Tr Tz	{ 0 }	(C54+2)	[2653]	-	-	-	124	16	NaHu	K4 V
@@ -265,7 +265,7 @@ Hex	Name	UWP	Remarks	{Ix}	(Ex)	[Cx]	N	B	Z	PBG	W	A	Stellar
 2139	Tengfei	D6D4767-7	O:1934	{ -2 }	(665-1)	[3595]	-	-	-	112	8	NaHu	G7 V
 2240	Hamakhaave	C84178A-7	He Pi Po Px	{ -1 }	(265-1)	[7643]	-	-	-	603	10	NaHu	F1 V M1 V
 2332	Cardinal	C410253-7	Lo Lk	{ -2 }	(810-1)	[1166]	-	-	-	323	9	SoCf	M8 V
-2333	724-314	X623000-0	Ba Po Sa	{ -3 }	(700-5)	[0000]	-	-	-	022	11	NaXX	K7 V
+2333	724-314	E623000-0	Ba Po Sa	{ -3 }	(700-5)	[0000]	-	-	-	022	11	NaXX	K7 V
 2335	Metis	B866AEB-B	Ga Hi Fo	{ 3 }	(B97+1)	[8D9F]	-	-	R	321	10	NaHu	G4 V M7 V
 2434	Hipparchus	C000278-A	As Va Lo	{ 0 }	(910+0)	[125A]	-	-	-	821	7	NaHu	G4 V
 2435	Causticus	C8A9430-8	Fl Ni	{ -2 }	(D34-1)	[7277]	-	-	-	231	13	NaHu	M7 V
@@ -278,7 +278,7 @@ Hex	Name	UWP	Remarks	{Ix}	(Ex)	[Cx]	N	B	Z	PBG	W	A	Stellar
 2538	Hesperia	B7659BE-C	Ga Hi Pr Fo	{ 3 }	(C88+4)	[9C59]	-	-	R	221	9	NaHu	F7 V M4 V
 2540	Tamora	A664743-9	Ag Ri Tr Tz	{ 3 }	(56B+3)	[2A45]	-	-	-	101	5	NaHu	K8 V M1 V
 2634	Devi	B757540-A	Ga Ni Ag	{ 3 }	(746+0)	[784A]	-	KM	-	212	7	NaHu	G4 V
-2638	488-064	X100000-0	Va Ba Ho Tz	{ -3 }	(B00-5)	[0000]	-	-	-	014	15	NaXX	K8 V
+2638	488-064	E100000-0	Va Ba Ho Tz	{ -3 }	(B00-5)	[0000]	-	-	-	014	15	NaXX	K8 V
 2640	Namal	B7587CB-7	Ag Fo UApe4	{ 2 }	(B6A+2)	[8957]	-	KM	R	121	12	NaHu	G0 V
 2733	Veiled	C6A5400-A	Fl Ni Lk	{ 0 }	(A31+0)	[8479]	-	-	-	131	17	NaHu	K0 V
 2739	Tucson	A746245-B	Lo Tr	{ 2 }	(912+0)	[545C]	-	KM	-	312	10	NaHu	G0 V

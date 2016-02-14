@@ -19,7 +19,7 @@ Hex	Name	UWP	Remarks	{Ix}	(Ex)	[Cx]	N	B	Z	PBG	W	A	Stellar
 0604	Baccarin	B55689A-9	Ph Pa	{ 1 }	(474-2)	[6945]	-	-	-	401	13	SoCf	G0 V
 0704	Poire	A674773-A	Ag Pi	{ 3 }	(F6B+0)	[8A5D]	-	-	-	213	17	SoCf	G5 V G3 V
 0706	Bathsheba	E575369-5	Lo O:0404	{ -3 }	(820-2)	[1114]	-	-	-	831	12	SoCf	G0 V
-0707	Harrow	C3A6325-A	Fl Lo Ho Lk	{ 0 }	(C20-1)	[438D]	-	K	-	334	16	SoCf	K9 V M7 V
+0707	Harrow	C316325-A	Ic Lo Ho Lk	{ 0 }	(C20-1)	[438D]	-	K	-	334	16	SoCf	K9 V M7 V
 0807	Poltava	E8C635A-9	Fl Lo	{ -2 }	(F20+4)	[2138]	-	-	-	323	10	SoCf	K1 V
 0809	Fakhri	C9A5323-8	Fl Lo Tz	{ -2 }	(D20+0)	[314A]	-	K	-	101	4	SoCf	M7 V G4 V
 0903	Taronga	C648463-7	Ni Pa O:1203	{ -2 }	(533+4)	[9255]	-	-	-	933	15	SoCf	K7 V
@@ -38,8 +38,8 @@ Hex	Name	UWP	Remarks	{Ix}	(Ex)	[Cx]	N	B	Z	PBG	W	A	Stellar
 1109	Lelaina	E410000-0	Ba Co Tz	{ -3 }	(600-5)	[0000]	-	-	-	030	10	SoCf	M1 V
 1203	Alta Minato	A96A786-C	Wa Ri Ho	{ 3 }	(B66-1)	[4A48]	-	-	-	213	10	SoCf	F6 V
 1207	Revere	E410200-8	Lo	{ -3 }	(C10-5)	[6106]	-	-	-	132	16	SoCf	G9 V
-1210	Glindoni	B988940-8	Hi Pr	{ 1 }	(888-1)	[AA5B]	-	-	-	402	6	SoCf	G2 V
-1306	Flavius	E403157-8	Ic Va Lo Lk	{ -3 }	(C00+2)	[113A]	-	-	-	130	11	SoCf	M5 V M4 V
+1210	Vestal	B988940-8	Hi Pr	{ 1 }	(888-1)	[AA5B]	-	-	-	402	6	SoCf	G2 V
+1306	Flavius	E403157-8	Ic Va Lo Lk	{ -3 }	(D00+2)	[113A]	-	-	-	131	11	SoCf	M5 V M4 V
 1308	Liu Qi	B669884-8	Ph Ri	{ 1 }	(97B+0)	[C92B]	-	-	-	101	6	SoCf	K6 V
 1310	Erzsi	X200000-0	Va Ba Sa Fo	{ -3 }	(600-5)	[0000]	-	-	R	011	7	SoCf	M6 III
 1401	Kochab	D400155-7	Va Lo Ho	{ -3 }	(400-2)	[118A]	-	-	-	621	9	SoCf	K4 III
@@ -50,11 +50,11 @@ Hex	Name	UWP	Remarks	{Ix}	(Ex)	[Cx]	N	B	Z	PBG	W	A	Stellar
 1605	Sextus	B7B5625-A	Fl Ni Lk	{ 1 }	(957+2)	[4739]	-	K	-	113	13	SoCf	M3 V
 1606	Malebranche	C4A2746-8	Fl He Tz	{ -1 }	(965-4)	[761A]	-	-	-	102	9	SoCf	M0 V
 1609	Louvain	A544ABB-B	Hi In Co Cp	{ 5 }	(79C-3)	[AF29]	-	KM	-	202	8	SoCf	K8 V
-1802	Borodino	E3A8126-8	Fl Lo Tz	{ -3 }	(E00-2)	[1169]	-	-	-	734	19	SoCf	M8 V
+1802	Borodino	E318126-8	Ic Lo Tz	{ -3 }	(E00-2)	[1169]	-	-	-	734	19	SoCf	M8 V
 1806	Concepcion 	C945779-6	Ag Pi	{ 0 }	(86B+2)	[7754]	-	-	-	131	12	SoCf	K5 V
 1809	Aden	B69A6A9-7	Wa Ni Ho Sa	{ -1 }	(450+1)	[5546]	-	-	-	302	9	SoCf	G4 V
 1901	Anemone	C988766-3	Ag Ri O:Magy-1438	{ 1 }	(868-2)	[5847]	-	-	-	503	10	SoCf	G7 V M0 V
-1904	Werdau	E510477-7	Ni Sa	{ -3 }	(833+2)	[413A]	-	-	-	220	7	SoCf	M9 V
+1904	Werdau	E510477-7	Ni Sa	{ -3 }	(833+2)	[413A]	-	-	-	221	7	SoCf	M9 V
 1908	Cretensis	E310233-7	Lo Tz	{ -3 }	(810+0)	[1157]	-	-	-	114	16	SoCf	M1 V M8 V
 1909	Xiping	E410145-7	Lo Sa	{ -3 }	(900+3)	[1165]	-	-	-	112	14	SoCf	F0 IV K5 V
 2001	Klimovsk	A4A6735-C	Fl	{ 2 }	(C6A+2)	[597C]	-	-	-	102	6	SoCf	G0 V
@@ -96,17 +96,17 @@ Hex	Name	UWP	Remarks	{Ix}	(Ex)	[Cx]	N	B	Z	PBG	W	A	Stellar
 2908	Helicanus	A203442-B	Ic Va Ni Co Tz	{ 1 }	(A32+2)	[4549]	-	-	-	623	14	SoCf	M4 V
 2909	Sarapul	E59A147-5	Wa Lo Ho Tz	{ -3 }	(900+1)	[5165]	-	-	-	403	14	SoCf	K4 V G0 V
 3003	Pieri	A897877-A	Ph Pa Pi Cp	{ 2 }	(777-3)	[BA1C]	-	M	-	122	9	SoCf	G8 V
-3101	Beta Martius	B500376-7	Va Lo Tz	{ -1 }	(720-3)	[2265]	-	K	-	424	12	SoCf	M1 V M2 V
+3101	Beta Martius	B510376-7	Lo Tz	{ -1 }	(720-3)	[2265]	-	K	-	424	12	SoCf	M1 V M2 V
 3102	Magadan	E201211-9	Ic Va Lo	{ -2 }	(410-5)	[410B]	-	-	-	100	10	SoCf	K3 V
-3108	Horicon	E3A5125-8	Fl Lo Ho Tz	{ -3 }	(700+0)	[3176]	-	-	-	501	10	SoCf	K4 V
-3109	Rehovot	E631386-6	Lo Po Tz Px	{ -3 }	(820+0)	[1157]	-	-	-	103	8	SoCf	M1 V M4 V
-3201	Amberjack	A69A889-D	Wa Ph Pi Dolp1	{ 2 }	(974-3)	[8A5G]	-	-	-	124	10	SoCf	K9 V
+3108	Horicon	E315125-8	Ic Lo Ho Tz	{ -3 }	(700+0)	[3176]	-	-	-	501	10	SoCf	K4 V
+3109	Noor	E631386-6	Lo Po Tz Px	{ -3 }	(820+0)	[1157]	-	-	-	103	8	SoCf	M1 V M4 V
+3201	Ambergris	A69A889-D	Wa Ph Pi Dolp1	{ 2 }	(974-3)	[8A5G]	-	-	-	124	10	SoCf	K9 V
 3203	Megrez	C302520-9	Ic Va Ni	{ -1 }	(940+3)	[74AA]	-	-	-	702	10	SoCf	A3 V
 3207	Hypericum	B544544-8	Ni Ag	{ 0 }	(A42+0)	[2576]	-	-	-	621	15	SoCf	K7 V
 3208	Maegret	E300338-7	Va Lo Co	{ -3 }	(420-1)	[4175]	-	-	-	201	8	SoCf	K3 V A5 V
 0111	Sahuarita	B520698-7	De He Ni Na Po	{ -1 }	(851+1)	[4576]	-	K	-	832	15	SoCf	F1 V
 0112	Shiver	E648214-5	Lo Fr	{ -3 }	(510+0)	[1117]	-	-	-	713	8	SoCf	M1 V
-0118	Hipponax	A889A8A-E	Hi Co Sa Cp	{ 3 }	(A9F+2)	[7D4A]	-	-	-	220	11	SoCf	K0 V M0 V
+0118	Hipponax	A889A8A-E	Hi Co Sa Cp	{ 3 }	(B9F+2)	[7D4A]	-	-	-	221	11	SoCf	K0 V M0 V
 0213	Nuember	E410000-0	Ba Co Tz	{ -3 }	(300-5)	[0000]	-	-	-	002	10	SoCf	M6 V
 0218	Sulabha	D410361-8	Lo Co Tz Mr AslaW	{ -3 }	(E20+2)	[2175]	-	K	-	102	12	SoCf	M7 V
 0311	Corbine IV	E400965-7	Va Hi Na In Co Tz O:Ustr-2909	{ 0 }	(C89-5)	[8907]	-	-	-	612	13	SoCf	M6 V
@@ -118,10 +118,10 @@ Hex	Name	UWP	Remarks	{Ix}	(Ex)	[Cx]	N	B	Z	PBG	W	A	Stellar
 0613	Simcoe	C79A210-A	Wa Lo	{ 1 }	(911+0)	[234E]	-	KM	-	603	13	SoCf	G2 V
 0615	Pontus	B87A542-A	Wa Ni Ho	{ 1 }	(A45+4)	[762E]	-	-	-	331	15	SoCf	G4 V K2 V M8 V
 0715	Bedelia	E854502-5	Ni Ag Tu	{ -2 }	(542-1)	[7362]	-	-	-	103	9	SoCf	K6 V F3 V
-0716	Bathgate	C201566-7	Ic Va Ni Co Tz Mr Asla6	{ -2 }	(542+2)	[2317]	-	K	-	630	12	SoCf	M8 V M0 V M9 V
+0716	Telemachus	C201566-7	Ic Va Ni Co Tz Mr Asla6	{ -2 }	(542+2)	[2317]	-	K	-	630	12	SoCf	M8 V M0 V M9 V
 0718	Plummet	X630000-0	De Ba Po Tz Fo	{ -3 }	(800-5)	[0000]	-	-	R	000	8	SoCf	M5 V
 0812	Plangent	E303226-8	Ic Va Lo Tz	{ -3 }	(910-1)	[215B]	-	-	-	102	10	SoCf	M1 V
-0913	Mortlake	B79A345-8	Wa Lo	{ 0 }	(B20+1)	[537A]	-	KM	-	530	11	SoCf	G1 V
+0913	Fathom	B79A345-8	Wa Lo	{ 0 }	(B20+1)	[537A]	-	KM	-	530	11	SoCf	G1 V
 1012	Chastain	E410000-0	Ba	{ -3 }	(800-5)	[0000]	-	-	-	001	10	SoCf	M8 V
 1020	Tacitus	A720338-9	De He Lo Po Co Tz	{ 0 }	(720+3)	[138B]	-	K	-	412	12	SoCf	M6 V M7 V
 1115	Amphirite	E57A537-8	Wa Ni Ho	{ -3 }	(740-1)	[7234]	-	-	-	201	5	SoCf	F1 V M9 V
@@ -151,12 +151,12 @@ Hex	Name	UWP	Remarks	{Ix}	(Ex)	[Cx]	N	B	Z	PBG	W	A	Stellar
 2116	Thrawn	B720567-7	De He Ni Po Lk O:1918	{ -1 }	(745-1)	[844A]	-	-	-	404	9	SoCf	M7 V K4 V
 2117	Pariti	C310135-7	Lo Tz	{ -2 }	(700+0)	[1134]	-	-	-	500	11	SoCf	M2 V
 2118	Hecatomb	X530000-0	De Ba Po Tz Fo	{ -3 }	(700-5)	[0000]	-	-	R	002	11	SoCf	M2 V M0 V
-2211	Birkwood	D89557A-5	Ni Ag	{ -2 }	(743+1)	[1366]	-	-	-	113	12	SoCf	G6 V
+2211	Aroostook	D89557A-5	Ni Ag	{ -2 }	(743+1)	[1366]	-	-	-	113	12	SoCf	G6 V
 2212	Deter	X200000-0	Va Ba Co Lk Fo	{ -3 }	(600-5)	[0000]	-	-	R	033	15	SoCf	M9 V
 2217	Temuka	E520302-7	De He Lo Po Tz	{ -3 }	(B20+5)	[4138]	-	-	-	921	9	SoCf	M1 V
 2313	Rangiriri	B66588B-5	Ga Ph Pa Ri Tz Dolp2	{ 2 }	(67B-4)	[9A88]	-	KM	-	211	12	SoCf	M4 V M9 V
 2314	Arable	D646400-5	Ni Pa	{ -3 }	(630+0)	[2185]	-	-	-	600	10	SoCf	G3 V
-2315	Waitaki	C3A4548-8	Fl Ni Co Tz Px	{ -2 }	(840+5)	[4398]	-	K	-	402	13	SoCf	M6 V
+2315	Waitaki	C5A4548-8	Fl Ni Co Tz Px	{ -2 }	(840+5)	[4398]	-	K	-	402	13	SoCf	M6 V
 2317	Stanza Belt	E000100-8	As Va Lo Co	{ -3 }	(400-2)	[411B]	-	-	-	202	14	SoCf	M8 V G5 V
 2413	Anvik	C641200-7	He Lo Po	{ -1 }	(510+1)	[515C]	-	KM	-	400	8	SoCf	G1 V
 2414	Redwine	D778500-5	Ni Ag	{ -2 }	(744-2)	[43A5]	-	-	-	601	9	SoCf	K3 V
@@ -175,11 +175,11 @@ Hex	Name	UWP	Remarks	{Ix}	(Ex)	[Cx]	N	B	Z	PBG	W	A	Stellar
 2720	Kratu	E300100-7	Va Lo	{ -3 }	(700+1)	[3146]	-	-	-	502	13	SoCf	F0 V K0 III
 2811	Metellus	C201644-7	Ic Va Ni Na Tz	{ -2 }	(850+0)	[9445]	-	K	-	200	12	SoCf	M8 V M7 V
 2816	Graphite	E830220-6	De Lo Po	{ -3 }	(B10-1)	[7152]	-	-	-	603	12	SoCf	M0 V
-2817	Hull	B402357-D	Ic Va Lo Lk	{ 1 }	(E21-3)	[247B]	-	-	-	232	16	SoCf	K3 V
+2817	Keel	B402357-D	Ic Va Lo Lk	{ 1 }	(E21-3)	[247B]	-	-	-	232	16	SoCf	K3 V
 2820	Billow	X8CA000-0	Fl Ba Tz Fo	{ -3 }	(500-5)	[0000]	-	-	R	033	14	SoCf	M2 V M6 V
 2911	Jianwu	D410256-7	Lo Sa	{ -3 }	(710+2)	[6167]	-	-	-	403	10	SoCf	M8 V M6 V
 2912	Velden	E97A303-9	Wa Lo	{ -2 }	(C20-2)	[2156]	-	-	-	514	13	SoCf	K5 V
-2915	Corazon 4	D20098A-8	Va Hi Na In Tz	{ 0 }	(D87-2)	[5999]	-	-	-	333	15	SoCf	M3 V
+2915	Coraxon 4	D20098A-8	Va Hi Na In Tz	{ 0 }	(D87-2)	[5999]	-	-	-	333	15	SoCf	M3 V
 2916	Ominous	E540131-5	De He Lo Po	{ -3 }	(600+1)	[1174]	-	-	-	303	10	SoCf	K9 V
 2920	Thermus	B676599-A	Ni Ag Tr Tz	{ 2 }	(743+3)	[374C]	-	-	-	200	8	SoCf	K0 V
 3013	Heremac	X410000-0	Ba Co Fo	{ -3 }	(600-5)	[0000]	-	-	R	002	5	SoCf	M0 III K8 V
@@ -201,28 +201,28 @@ Hex	Name	UWP	Remarks	{Ix}	(Ex)	[Cx]	N	B	Z	PBG	W	A	Stellar
 0326	Meliboea	E78A501-9	Wa Ni Pr	{ -2 }	(841+3)	[3325]	-	-	-	802	9	SoCf	K5 V
 0327	Guyane	D202130-8	Ic Va Lo Co Tz	{ -3 }	(E00-2)	[1178]	-	-	-	633	17	SoCf	M7 V M3 V
 0422	Kobuk	C200422-7	Va Ni Co Tz	{ -2 }	(732+0)	[724C]	-	K	-	301	8	SoCf	M7 V
-0425	Rancor	E3A3201-8	Fl Lo Ho Sa	{ -3 }	(710-4)	[4168]	-	-	-	102	13	SoCf	M3 V
+0425	Rancor	E313201-8	Ic Lo Ho Sa	{ -3 }	(710-4)	[4168]	-	-	-	102	13	SoCf	M3 V
 0427	Rosaline	A56676B-9	Ag Ri Mr Asla7	{ 3 }	(E68+2)	[6A5B]	-	M	-	111	5	SoCf	G3 V M8 V
-0428	Cynoscion	C89A346-8	Wa Lo	{ -1 }	(A20+1)	[6268]	-	KM	-	501	8	SoCf	K5 V M5 III M7 V
+0428	Cynoscion	D88A79A-4	Wa Ri	{ -1 }	(967+2)	[B639]	-	-	-	132	16	SoCf	G1 V G6 V K4 V
 0429	Bequest	B769689-8	Ni Ri Co	{ 0 }	(851-2)	[4659]	-	-	-	711	12	SoCf	G9 V M4 V
 0622	Futile	X9B5000-0	Fl Ba Fo	{ -3 }	(700-5)	[0000]	-	-	R	000	6	SoCf	F8 V
 0629	Opelika	C586457-9	Ni Pa	{ 0 }	(E31-3)	[242C]	-	KM	-	423	10	SoCf	G3 V M6 V
 0729	Sorocaba	B644613-6	Ni Ag	{ 0 }	(455+1)	[4682]	-	-	-	600	9	SoCf	G5 V
-0730	CN192	X200000-0	Va Ba Lk Fo	{ -3 }	(600-5)	[0000]	-	-	R	012	15	SoCf	G4 V
+0730	CN112	X200000-0	Va Ba Lk Fo	{ -3 }	(600-5)	[0000]	-	-	R	012	15	SoCf	G4 V
 0822	Cyaneus	C100536-9	Va Ni Co Tz	{ -1 }	(F45-1)	[145B]	-	-	-	834	19	SoCf	M1 V
 0825	Vitchizna	E776333-5	Lo Tr Tz	{ -3 }	(620-3)	[2154]	-	-	-	724	12	SoCf	K9 V M9 V
 0828	Piedmont	B20067A-7	Va Ni Na	{ -1 }	(A55+2)	[1585]	-	K	-	103	11	SoCf	G2 V M6 V
-0921	Alastor	X520353-7	De He Lo Po Co Lk Fo	{ -3 }	(820-3)	[119B]	-	-	R	530	8	SoCf	M3 V M3 V
+0921	Alastor	X520353-7	De He Lo Po Co Lk Fo	{ -3 }	(820-3)	[119B]	-	-	R	531	8	SoCf	M3 V M3 V
 0922	Leipzig	X9D8000-0	Fl Ba Ho Fo	{ -3 }	(300-5)	[0000]	-	-	R	034	19	SoCf	G3 V
 1023	Imogen	B000433-B	As Va Ni	{ 1 }	(736+0)	[456A]	-	-	-	502	10	SoCf	M7 V
 1025	Sulawesi	D6846A6-9	Ni Ag Ri	{ 0 }	(B52-1)	[6618]	-	-	-	231	15	SoCf	K6 V
 1122	Wave	A76A6AD-9	Wa Ni Ri Tz Fo	{ 1 }	(B54-2)	[877D]	-	-	R	124	16	SoCf	M0 V
-1127	Susheela	BA53588-A	Ni Po	{ 1 }	(847+1)	[8649]	-	-	-	203	13	SoCf	G3 V M5 V
+1127	Susheela	BA63588-A	Ni Pr	{ 1 }	(847+1)	[8649]	-	-	-	203	13	SoCf	G3 V M5 V
 1128	Canaveral	C675338-5	Lo Tr	{ -1 }	(720+0)	[1251]	-	KM	-	403	14	SoCf	G1 V M8 V
 1225	Aumerle	B555410-9	Ni Pa Ho	{ 1 }	(C33-2)	[2555]	-	KM	-	832	11	SoCf	G1 V
 1324	Minotaur	X410000-0	Ba Co Tz Fo	{ -3 }	(500-5)	[0000]	-	-	R	023	15	SoCf	M6 V
 1325	Ulmen III	CADA430-A	Fl Oc Ni Lk	{ 0 }	(A36-1)	[145D]	-	-	-	433	15	SoCf	M6 V
-1330	CN329	E200000-0	Va Ba Tz	{ -3 }	(400-5)	[0000]	-	-	-	002	14	SoCf	M3 V
+1330	CN269	E200000-0	Va Ba Tz	{ -3 }	(400-5)	[0000]	-	-	-	002	14	SoCf	M3 V
 1430	Severomorsk	D545214-5	Lo Fr	{ -3 }	(610+0)	[1124]	-	-	-	103	11	SoCf	M3 V
 1528	Mirny	E000000-0	As Va Ba	{ -3 }	(600-5)	[0000]	-	-	-	003	9	SoCf	M0 V
 1626	Shiori	C400856-9	Va Ph Na Pi Lk	{ 0 }	(D7C+3)	[683C]	-	-	-	332	14	SoCf	M5 V
@@ -231,7 +231,7 @@ Hex	Name	UWP	Remarks	{Ix}	(Ex)	[Cx]	N	B	Z	PBG	W	A	Stellar
 1725	Bijou	D200453-7	Va Ni Tz	{ -3 }	(B32-2)	[1186]	-	-	-	831	13	SoCf	M1 V
 1726	Pollard	A551477-7	Ni Po	{ 0 }	(935+4)	[942A]	-	KM	-	502	10	SoCf	K1 V
 1728	Tybalt	C544541-6	Ni Ag	{ 0 }	(744+2)	[4536]	-	KM	-	501	6	SoCf	G2 V
-1824	CN463	E400000-0	Va Ba	{ -3 }	(600-5)	[0000]	-	-	-	031	15	SoCf	K3 V M5 V
+1824	CN623	E400000-0	Va Ba	{ -3 }	(600-5)	[0000]	-	-	-	031	15	SoCf	K3 V M5 V
 1826	Solace	D779330-6	Lo	{ -3 }	(A20-1)	[4153]	-	-	-	812	8	SoCf	F1 V
 1828	Katrine	A697651-A	Ni Ag Tz	{ 2 }	(855-1)	[7848]	-	-	-	303	11	SoCf	M6 V
 1829	Essence	E200301-7	Va Lo Lk	{ -3 }	(620+0)	[616A]	-	-	-	202	11	SoCf	M7 V
@@ -239,10 +239,10 @@ Hex	Name	UWP	Remarks	{Ix}	(Ex)	[Cx]	N	B	Z	PBG	W	A	Stellar
 1923	Hanah	C566465-5	Ni Pa Re O:1627	{ -2 }	(630-3)	[2258]	-	-	-	613	12	SoCf	G1 V M4 V
 1926	Perdix	E200103-7	Va Lo Sa	{ -3 }	(300-2)	[2139]	-	-	-	204	16	SoCf	M3 V
 2024	Corcyrea	E410000-0	Ba Ho Tz	{ -3 }	(900-5)	[0000]	-	-	-	000	9	SoCf	K8 V M7 V
-2025	Caius	A6A67A5-B	Fl Cp	{ 2 }	(96C+0)	[994B]	-	K	-	822	10	SoCf	G6 V M4 V
+2025	Alameda	A6A67A5-B	Fl Cp	{ 2 }	(96C+0)	[994B]	-	K	-	822	10	SoCf	G6 V M4 V
 2030	Norden	E000000-0	As Va Ba Co	{ -3 }	(800-5)	[0000]	-	-	-	011	7	SoCf	M2 V M4 V
 2125	Mammon	X100000-0	Va Ba Co Lk Fo	{ -3 }	(500-5)	[0000]	-	-	R	002	12	SoCf	M5 V
-2126	Gaozu	B559797-A	Sa	{ 2 }	(867-2)	[A947]	-	-	-	700	9	SoCf	K6 V
+2126	Gaozu	B559797-A	Sa	{ 2 }	(967-2)	[A947]	-	-	-	701	9	SoCf	K6 V
 2127	Yefram	E8C8358-9	Fl Lo Tz	{ -2 }	(420-2)	[114B]	-	-	-	410	10	SoCf	M8 V
 2129	Lustre	B7A4A88-A	Fl Hi In	{ 4 }	(D98-2)	[AE89]	-	-	-	101	11	SoCf	G8 V M3 V
 2224	Alberto	D4107BC-7	Na Pi Co Tz Fo	{ -2 }	(A64+3)	[6558]	-	-	R	321	16	SoCf	M4 V M3 V
@@ -257,8 +257,8 @@ Hex	Name	UWP	Remarks	{Ix}	(Ex)	[Cx]	N	B	Z	PBG	W	A	Stellar
 2425	Soljajic	B200111-B	Va Lo Tz	{ 1 }	(B01-1)	[523C]	-	-	-	124	13	SoCf	M0 V
 2429	Solms	E551300-7	Lo Po Ho Tz	{ -3 }	(720+1)	[1158]	-	-	-	114	14	SoCf	K4 V M7 V
 2430	Netanya	E530231-6	De Lo Po Co Lk	{ -3 }	(910-2)	[2125]	-	-	-	902	11	SoCf	M1 V K2 V
-2524	CN799	E410000-0	Ba Ho	{ -3 }	(600-5)	[0000]	-	-	-	020	12	SoCf	F4 V K5 V
-2529	CN658	X9C8000-0	Fl Ba Tz Fo	{ -3 }	(600-5)	[0000]	-	-	R	003	10	SoCf	M5 V M2 V
+2524	CN296	E410000-0	Ba Ho	{ -3 }	(600-5)	[0000]	-	-	-	020	12	SoCf	F4 V K5 V
+2529	CN274	X9C8000-0	Fl Ba Tz Fo	{ -3 }	(600-5)	[0000]	-	-	R	003	10	SoCf	M5 V M2 V
 2625	Ortrand	E530130-6	De Lo Po Tz	{ -3 }	(700+2)	[1124]	-	-	-	522	10	SoCf	M7 V K7 V M5 V
 2626	Wilcox	D677311-5	Lo Lk	{ -3 }	(320-2)	[3142]	-	-	-	112	10	SoCf	K0 V
 2722	Vannes	B310201-C	Lo	{ 1 }	(711-4)	[136E]	-	-	-	921	12	SoCf	K7 V
@@ -268,7 +268,7 @@ Hex	Name	UWP	Remarks	{Ix}	(Ex)	[Cx]	N	B	Z	PBG	W	A	Stellar
 2827	Aimi	C555424-8	Ni Pa	{ -2 }	(532+4)	[4279]	-	-	-	503	6	SoCf	G4 V
 2828	Ochropus	X100000-0	Va Ba Tz Fo	{ -3 }	(500-5)	[0000]	-	-	R	001	6	SoCf	M3 V
 2924	Cerimon	X100530-7	Va Ni Ho Tz Fo	{ -3 }	(840+2)	[4286]	-	-	R	102	9	SoCf	K3 V
-2928	CN348	E310000-0	Ba Sa	{ -3 }	(500-5)	[0000]	-	-	-	032	12	SoCf	K6 V
+2928	CN427	E310000-0	Ba Sa	{ -3 }	(500-5)	[0000]	-	-	-	032	12	SoCf	K6 V
 3023	Ursula	C565666-3	Ni Ag Ri O:3224	{ 0 }	(755+1)	[7656]	-	-	-	302	10	SoCf	G0 V
 3026	Hangar	B200243-9	Va Lo Co	{ 0 }	(810+0)	[629B]	-	-	-	102	7	SoCf	G2 V
 3122	Pelotus	E777210-5	Lo	{ -3 }	(A10+3)	[214A]	-	-	-	502	5	SoCf	K5 V
@@ -283,7 +283,7 @@ Hex	Name	UWP	Remarks	{Ix}	(Ex)	[Cx]	N	B	Z	PBG	W	A	Stellar
 0134	Hwilrea	E756549-6	Ga Ni Ag Lk	{ -2 }	(543+0)	[7325]	-	-	-	401	10	AsOf	G6 V
 0137	Asalah	B587558-B	Ni Ag Pr Fr	{ 2 }	(C43+1)	[575D]	-	-	-	202	8	NaAs	M9 V
 0232	Suiaoyuais	D58A576-B	Wa Ni Pr Huma4	{ -1 }	(744-1)	[245E]	-	-	-	501	6	NaAs	G9 V
-0236	Hliy'oieaer	D3A59BC-B	Fl Hi In Ho Fo	{ 2 }	(E8B-2)	[AB4D]	-	-	R	402	8	NaAs	G9 V M8 V
+0236	Hliy'oieaer	D5A59BC-B	Fl Hi In Ho Fo	{ 2 }	(E8B-2)	[AB4D]	-	-	R	402	8	NaAs	G9 V M8 V
 0238	Yuhelralr	E9A562B-9	Fl Ni	{ -2 }	(550+0)	[3459]	-	-	-	201	7	NaAs	G7 V
 0240	Eakhatryu	C410425-9	Ni Co Tz	{ -1 }	(834-5)	[131A]	-	-	-	713	13	NaAs	M6 V
 0335	Sunita	D654416-9	Ni Pa Tr Lk	{ -2 }	(B30-1)	[225C]	-	-	-	601	8	NaAs	G6 V
@@ -293,32 +293,32 @@ Hex	Name	UWP	Remarks	{Ix}	(Ex)	[Cx]	N	B	Z	PBG	W	A	Stellar
 0532	Hkoawe	BAA8535-B	Fl Ni	{ 1 }	(744-1)	[767D]	-	-	-	301	11	NaAs	K0 V M3 V
 0537	Hteralr	DA96673-7	Ni Ag Huma3	{ -2 }	(950-1)	[7445]	-	-	-	101	10	NaAs	F1 V
 0540	Eaukhir	A200457-B	Va Ni Tz	{ 1 }	(D37+0)	[859B]	-	-	-	804	15	NaAs	M7 V
-0633	Teloi'	A9A2687-E	Fl He Ni	{ 1 }	(C57+1)	[676F]	-	K	-	502	11	NaAs	F0 V
+0633	Teloi'	A9A2687-D	Fl He Ni	{ 1 }	(C57+1)	[676E]	-	K	-	502	11	NaAs	F0 V
 0635	Sau	C200897-A	Va Ph Na Pi Co Tz	{ 1 }	(A75-2)	[796C]	-	-	-	202	12	NaAs	M5 V M4 V
 0636	Americo	E9CA684-9	Fl Ni Ho	{ -2 }	(B53+1)	[547A]	-	-	-	231	12	NaHu	G8 V F4 V
-0639	Auric	C6A58B5-E	Fl Ph Ho	{ 1 }	(676+0)	[795E]	-	K	-	202	12	NaAs	F8 V
+0639	Auric	C6A58B5-D	Fl Ph Ho	{ 1 }	(676+0)	[795D]	-	K	-	202	12	NaAs	F8 V
 0732	Tatyana	E4A4688-8	Fl Ni	{ -3 }	(751-1)	[9337]	-	-	-	921	8	NaHu	G3 V
 0733	Oiyuil	C572996-D	He Hi In Ho Tz	{ 3 }	(B8A-1)	[9C7A]	-	-	-	902	13	NaAs	K6 V
-0734	Aekhar	B310787-E	Na Pi	{ 2 }	(865-4)	[594F]	-	K	-	201	12	NaAs	K9 V
+0734	Aekhar	B310787-D	Na Pi	{ 2 }	(865-4)	[594E]	-	K	-	201	12	NaAs	K9 V
 0738	Hkawi	E100888-7	Va Ph Na Pi Co	{ -2 }	(672-2)	[5667]	-	-	-	402	9	NaAs	G8 V
 0739	Yuhtalikel	A59A236-D	Wa Lo Ho	{ 1 }	(A11-1)	[134E]	-	-	-	303	9	NaAs	G0 V
-0831	Woikha'eah	B3A6559-B	Fl Ni Tz	{ 1 }	(745-5)	[A619]	-	-	-	402	9	NaAs	M9 V G4 V
-0832	Yulreale	A88A554-E	Wa Ni Pr Co	{ 1 }	(A42-5)	[867D]	-	-	-	122	12	NaAs	G8 V
+0831	Woikha'eah	B5A6559-B	Fl Ni Tz	{ 1 }	(745-5)	[A619]	-	-	-	402	9	NaAs	M9 V G4 V
+0832	Yulreale	A88A554-D	Wa Ni Pr Co	{ 1 }	(A42-5)	[867C]	-	-	-	122	12	NaAs	G8 V
 0834	Tiloiiya	E200373-7	Va Lo Tz Huma2	{ -3 }	(320-4)	[3156]	-	-	-	131	9	NaAs	M4 V
 0835	Asea	A630677-C	De Ni Na Po Co Huma4	{ 1 }	(657+0)	[A79D]	-	-	-	502	8	NaAs	F6 V
 0839	Hfeoil	B731226-B	Lo Po Sa	{ 1 }	(A11+2)	[333F]	-	-	-	201	6	NaAs	M5 V M5 V
 0840	Kaihwarefeea	A8AA699-C	Fl Ni	{ 1 }	(854-4)	[4719]	-	-	-	700	6	NaAs	K2 V
-0932	Larus	E202435-9	Ic Va Ni Tz	{ -2 }	(331+1)	[324B]	-	-	-	800	7	NaHu	M8 V
+0932	New Larus	E202435-9	Ic Va Ni Tz	{ -2 }	(331+1)	[324B]	-	-	-	800	7	NaHu	M8 V
 0933	Stirling	E310230-7	Lo Tz	{ -3 }	(410+2)	[2149]	-	-	-	231	8	NaHu	M9 V
-0935	Htui	X3A4000-0	Fl Ba Co Tz Fo	{ -3 }	(700-5)	[0000]	-	-	R	004	7	NaAs	M1 V
-0938	Shrinivas	A6569BB-B	Ga Hi Tu Sa Fo	{ 3 }	(688+2)	[DC39]	-	M	R	100	5	Tb	F4 V M2 V
+0935	Htui	X314000-0	Ic Ba Co Tz Fo	{ -3 }	(700-5)	[0000]	-	-	R	004	7	NaAs	M1 V
+0938	Sadri	A6569BB-B	Ga Hi Tu Sa Fo	{ 3 }	(788+2)	[DC39]	-	M	R	101	5	Tb	F4 V M2 V
 1031	Roshni	C200897-7	Va Ph Na Pi	{ -1 }	(A76+3)	[B758]	-	-	-	412	10	SoCf	K1 V M1 V
-1036	Tritus	A968A8B-E	Hi	{ 3 }	(997-3)	[AD6C]	-	-	-	112	8	Tb	G2 V
-1037	Telemachus	C200344-7	Va Lo Co Tz	{ -2 }	(420+0)	[1133]	-	K	-	803	12	Tb	M9 V
+1036	Trita	A968A8B-D	Hi Cx	{ 3 }	(997-3)	[AD6B]	-	-	-	112	8	Tb	G2 V
+1037	Navid	C200344-7	Va Lo Co Tz	{ -2 }	(420+0)	[1133]	-	K	-	803	12	Tb	M9 V
 1132	Orontes	A88868B-A	Ga Ni Ag Ri	{ 3 }	(654-4)	[691B]	-	-	-	103	7	SoCf	G2 V
 1140	Primula	D200256-7	Va Lo	{ -3 }	(B10+0)	[1185]	-	-	-	100	10	NaAs	F3 V
 1238	Remagen	X830000-0	De Ba Po Co Sa Fo	{ -3 }	(700-5)	[0000]	-	-	R	013	11	NaXX	M8 V
-1332	CN668	X7A5000-0	Fl Ba Co Tz Fo	{ -3 }	(600-5)	[0000]	-	-	R	003	14	SoCf	M0 V M0 V
+1332	CN285	X7A5000-0	Fl Ba Co Tz Fo	{ -3 }	(600-5)	[0000]	-	-	R	003	14	SoCf	M0 V M0 V
 1334	Qubei	B650779-5	De Po	{ 0 }	(86A+0)	[8736]	-	-	-	501	12	NaHu	G0 V
 1335	Cuculus	E404101-7	Ic Va Lo	{ -3 }	(800-2)	[1156]	-	-	-	100	8	NaHu	K2 V
 1338	Aoaikhe	E400000-0	Va Ba Ho Sa	{ -3 }	(900-5)	[0000]	-	-	-	033	10	NaXX	A7 V
@@ -327,11 +327,11 @@ Hex	Name	UWP	Remarks	{Ix}	(Ex)	[Cx]	N	B	Z	PBG	W	A	Stellar
 1440	Avril	D531445-6	Ni Po Tz	{ -3 }	(630+0)	[1177]	-	-	-	312	12	Jn	M6 V
 1532	Glace	C99A511-6	Wa Ni Co	{ -2 }	(440+0)	[533A]	-	-	-	922	15	SoCf	G5 V
 1535	Gorgoneion	X878479-7	Ni Pa Co Fo	{ -3 }	(B30-1)	[515B]	-	-	R	122	8	NaHu	G8 V M0 V
-1536	Olinda	C597698-5	Ni Ag Lk	{ -1 }	(A52+1)	[3596]	-	-	-	230	13	NaHu	G1 V M3 V
-1537	559-987	E410000-0	Ba	{ -3 }	(700-5)	[0000]	-	-	-	002	6	NaXX	F8 V
+1536	Olinda	C597698-5	Ni Ag Lk	{ -1 }	(A52+1)	[3596]	-	-	-	231	13	NaHu	G1 V M3 V
+1537	979-665	E410000-0	Ba	{ -3 }	(700-5)	[0000]	-	-	-	002	6	NaXX	F8 V
 1540	Emelia	C564510-8	Ni Ag Pr	{ 0 }	(A42+0)	[457C]	-	KM	-	704	13	Jn	K3 V
-1631	Sevran	B966432-7	Ni Pa	{ -1 }	(834+2)	[2312]	-	-	-	301	6	SoCf	F5 V
-1632	Brion	C5A8575-8	Fl Ni Tz	{ -2 }	(743+0)	[634A]	-	-	-	100	11	SoCf	M0 V
+1631	Sephran	B966432-7	Ni Pa	{ -1 }	(834+2)	[2312]	-	-	-	301	6	SoCf	F5 V
+1632	Brion II	C5A8575-8	Fl Ni Tz	{ -2 }	(743+0)	[634A]	-	-	-	100	11	SoCf	M0 V
 1636	Augusta	C301214-7	Ic Va Lo	{ -2 }	(910-1)	[1156]	-	K	-	713	15	NaHu	A9 V
 1639	Tea'ua	C8A5101-9	Fl Lo Co	{ -1 }	(A00-1)	[118D]	-	K	-	303	15	Jn	K2 V M3 V
 1732	Dimona	A759888-8	Ph	{ 0 }	(576-1)	[A88D]	-	-	-	411	15	SoCf	G1 V G3 V
@@ -340,44 +340,44 @@ Hex	Name	UWP	Remarks	{Ix}	(Ex)	[Cx]	N	B	Z	PBG	W	A	Stellar
 1737	Montero	C763657-6	Ni Ri	{ 0 }	(454+2)	[1647]	-	KM	-	513	9	NaHu	F1 V K0 V
 1832	Thrush	C51059D-8	Ni Sa Fo	{ -2 }	(B40+0)	[9364]	-	-	R	123	13	SoCf	M6 V
 1833	Flaxen	B755774-9	Ga Ag Tr Tz	{ 3 }	(665-1)	[7A98]	-	KM	-	602	8	SoCf	K3 V
-1834	Nikolai	C200234-7	Va Lo Lk	{ -2 }	(710+1)	[118A]	-	K	-	711	12	SoCf	M6 V M1 V
+1834	Nikolai	E401130-7	Ic Va Lo Fr	{ -3 }	(500+0)	[2144]	-	-	-	312	9	SoCf	M6 V
 1838	Ualyuliiys	BABA248-B	Fl Oc Lo Ho Tz	{ 1 }	(C11+4)	[334A]	-	-	-	302	8	NaHu	K0 V
 1931	Hyperia	B88A753-C	Wa Ri	{ 3 }	(A6A-1)	[7A88]	-	-	-	523	12	SoCf	F0 V
-1932	Reform	C598301-6	Lo Tz	{ -1 }	(520+4)	[6284]	-	KM	-	522	13	SoCf	M0 V M8 V
+1932	Rephorm	C598301-6	Lo Tz	{ -1 }	(520+4)	[6284]	-	KM	-	522	13	SoCf	M0 V M8 V
 1934	Yuwen	E699258-8	Lo	{ -3 }	(D10+3)	[1115]	-	-	-	423	17	SoCf	G0 V M1 V
-1936	Vela	E9A6374-8	Fl Lo Co Tz	{ -3 }	(D20+0)	[3146]	-	-	-	433	19	NaHu	M6 V
+1936	Vela 7	E9A6374-8	Fl Lo Co Tz	{ -3 }	(D20+0)	[3146]	-	-	-	433	19	NaHu	M6 V
 2033	Variable	E20048D-8	Va Ni Ho Da	{ -3 }	(532+0)	[8135]	-	-	A	111	10	SoCf	M7 III K8 V
-2034	Noctua	E401130-7	Ic Va Lo Fr	{ -3 }	(500+0)	[2144]	-	-	-	312	9	SoCf	M6 V
-2035	Ao Guang	D88A79A-4	Wa Ri	{ -1 }	(967+2)	[B639]	-	-	-	132	16	NaHu	G1 V G6 V K4 V
+2034	Noctua	C200234-7	Va Lo Lk	{ -2 }	(710+1)	[118A]	-	K	-	711	12	SoCf	M6 V M1 V
+2035	Ao Guang	C89A346-8	Wa Lo	{ -1 }	(A20+1)	[6268]	-	KM	-	501	8	NaHu	K5 V M5 III M7 V
 2036	Fugit	A595976-A	Hi In	{ 5 }	(D8D+4)	[6E59]	-	KM	-	122	11	NaHu	K5 V
 2037	Dispater	C720100-7	De He Lo Po	{ -2 }	(A00-2)	[1156]	-	-	-	631	12	NaHu	G6 V K7 V
 2038	Shan	C100403-C	Va Ni Tz	{ 0 }	(E32+0)	[341B]	-	K	-	704	16	NaHu	M1 V D M5 V
 2132	Istres	C776840-5	Ph Pa Pi	{ -1 }	(773+2)	[8724]	-	-	-	530	9	SoCf	G8 V
 2135	Londrina	C551514-6	Ni Po	{ -2 }	(643+3)	[6366]	-	-	-	132	14	SoCf	G4 V M6 V
 2140	Raja	C532555-B	Ni Po	{ 0 }	(A45-3)	[656A]	-	K	-	300	4	NaHu	K0 V
-2234	Arad	A630565-D	De Ni Po O:2332	{ 1 }	(A46+4)	[665D]	-	-	-	100	5	SoCf	M7 V
+2234	Arad	E9C3103-9	Fl Lo Fr Lk	{ -2 }	(C00-1)	[3159]	-	-	-	303	10	SoCf	M7 V
 2235	Iblis	X530110-6	De Lo Po Fo	{ -3 }	(800+0)	[2185]	-	-	R	120	11	SoCf	K7 V
 2240	Erithacus	E200000-0	Va Ba	{ -3 }	(800-5)	[0000]	-	-	-	022	10	NaXX	G0 V M6 V
 2332	Salient	B544ADE-B	Hi In Co Lk Fo	{ 4 }	(D9C-3)	[8E3C]	-	M	R	103	11	SoCf	K2 V D
 2333	Cleopatra	D655320-5	Ga Lo	{ -3 }	(B20+0)	[6166]	-	-	-	103	9	SoCf	G0 V
 2340	Itsuki	D841776-6	He Pi Po Sa	{ -2 }	(A64-1)	[5533]	-	-	-	531	17	NaHu	K3 V
-2432	Vitriol	E9C3103-9	Fl Lo Fr Lk	{ -2 }	(C00-1)	[3159]	-	-	-	303	10	SoCf	M7 V
+2432	Vitriol	A630565-D	De Ni Po O:2332	{ 1 }	(A46+4)	[665D]	-	-	-	100	5	SoCf	M7 V
 2436	Viola	E657225-3	Ga Lo	{ -3 }	(710+4)	[1131]	-	-	-	202	11	NaHu	K4 V
-2437	Elena	C410556-B	Ni Co Sa	{ 0 }	(841+1)	[4569]	-	K	-	520	10	NaHu	M9 V M3 V
+2437	Elena	C410556-B	Ni Co Sa	{ 0 }	(941+1)	[4569]	-	K	-	521	10	NaHu	M9 V M3 V
 2534	Downer	C684432-8	Ni Pa Fr	{ -2 }	(A31+0)	[2286]	-	-	-	130	12	NaHu	M7 V K8 V
 2537	Ravenna	BA79979-8	Hi In Ho	{ 2 }	(78C-1)	[BB29]	-	M	-	321	12	NaHu	G0 V M2 V
 2538	Largess	A986778-7	Ag Ri Tr	{ 2 }	(46C-3)	[7936]	-	-	-	623	11	NaHu	G5 V
 2631	Mesa	C720234-8	De He Lo Po Tz	{ -2 }	(610+1)	[4149]	-	-	-	101	11	SoCf	M2 V
 2634	Malphas	X310400-7	Ni Tz Fo	{ -3 }	(731+1)	[218B]	-	-	R	100	11	NaHu	M3 V
 2635	Cornell	B4A9676-A	Fl Ni	{ 1 }	(756-4)	[978C]	-	-	-	711	13	NaHu	G7 V K0 V
-2638	685-930	E410000-0	Ba Tz	{ -3 }	(800-5)	[0000]	-	-	-	032	14	NaXX	M1 V M8 V
+2638	208-238	E410000-0	Ba Tz	{ -3 }	(800-5)	[0000]	-	-	-	032	14	NaXX	M1 V M8 V
 2639	Muscida	B00057C-C	As Va Ni Co	{ 1 }	(C42-2)	[264C]	-	K	-	703	14	NaHu	G5 III
-2732	CN298	E510000-0	Ba Co Sa	{ -3 }	(600-5)	[0000]	-	-	-	002	7	SoCf	M2 V G9 V M6 V
+2732	CN117	E510000-0	Ba Co Sa	{ -3 }	(600-5)	[0000]	-	-	-	002	7	SoCf	M2 V G9 V M6 V
 2734	Fever	D77878B-5	Ag Pi Ho	{ -1 }	(867-1)	[3664]	-	-	-	812	13	NaHu	G4 V K4 V
 2735	Kali	X410000-0	Ba Tz Fo	{ -3 }	(500-5)	[0000]	-	-	R	013	16	NaXX	M2 V
-2833	238-927	EAB5000-0	Fl Ba Tz	{ -3 }	(600-5)	[0000]	-	-	-	001	12	NaXX	M8 V
+2833	295-540	EAB5000-0	Fl Ba Tz	{ -3 }	(600-5)	[0000]	-	-	-	001	12	NaXX	M8 V
 2836	Lyov	C532323-6	Lo Po Co Tz	{ -2 }	(920-4)	[4135]	-	K	-	103	6	NaHu	M9 V
-2837	Aleutian	B69A854-A	Wa Ph Pi Co	{ 2 }	(C7B+2)	[7A6D]	-	-	-	210	11	NaHu	G0 V
+2837	Aleutia	B69A854-A	Wa Ph Pi Co	{ 2 }	(C7B+2)	[7A6D]	-	-	-	210	11	NaHu	G0 V
 2838	Wieland	C653323-8	Lo Po Fr	{ -1 }	(C20+0)	[4279]	-	KM	-	503	10	NaHu	M2 V
 2839	Suandrach	EA66437-3	Ni Pa	{ -3 }	(A32+1)	[6123]	-	-	-	200	12	Mu	G7 V
 2931	Arras	E9995A9-5	Ni Ho Lk	{ -3 }	(840+0)	[5216]	-	-	-	531	7	SoCf	F2 V
@@ -386,9 +386,9 @@ Hex	Name	UWP	Remarks	{Ix}	(Ex)	[Cx]	N	B	Z	PBG	W	A	Stellar
 2940	Melinduil	C520412-7	De He Ni Po Tz	{ -2 }	(633-2)	[6227]	-	K	-	103	8	Mu	M5 V
 3032	Marrakesh	C100866-9	Va Ph Na Pi Ho Sa O:3229	{ 0 }	(C76-2)	[685A]	-	-	-	402	12	SoCf	K2 II
 3039	Lyovren	C200410-7	Va Ni Sa	{ -2 }	(931-3)	[2288]	-	K	-	311	10	Mu	G5 V
-3131	Glomma	C59A354-B	Wa Lo Co	{ 0 }	(C20-3)	[735F]	-	-	-	424	14	SoCf	G9 V
+3131	Hardwater	C59A354-B	Wa Lo Co	{ 0 }	(C20-3)	[735F]	-	-	-	424	14	SoCf	G9 V
 3132	Merula	X400000-0	Va Ba Tz Fo	{ -3 }	(500-5)	[0000]	-	-	R	003	13	SoCf	M3 V
-3231	CN289	X520000-0	De He Ba Po Co Tz Fo	{ -3 }	(600-5)	[0000]	-	-	R	002	7	SoCf	M1 V
+3231	CN423	X520000-0	De He Ba Po Co Tz Fo	{ -3 }	(600-5)	[0000]	-	-	R	002	7	SoCf	M1 V
 3236	Maddox	E304138-7	Ic Va Lo Tz	{ -3 }	(400+1)	[6168]	-	-	-	612	12	NaHu	M7 V
 3237	Sylvia	X300233-7	Va Lo Fo	{ -3 }	(510+0)	[1162]	-	-	R	603	10	NaHu	G6 V
 3240	Silidel	X200000-0	Va Ba Lk Fo	{ -3 }	(700-5)	[0000]	-	-	R	030	12	Mu	G8 V
