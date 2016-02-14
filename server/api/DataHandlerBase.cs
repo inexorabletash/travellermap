@@ -63,10 +63,12 @@ namespace Maps.API
             {
                 SendError(context.Response, error.Code, error.Description, error.Message);
             }
+#if !DEBUG
             catch (Exception ex)
             {
                 SendError(context.Response, 400, "Bad Request", ex.Message);
             }
+#endif
         }
 
         protected class HttpError : Exception

@@ -74,7 +74,7 @@ namespace Maps.API
                         // And these aren't domains, but...
                         case "foreven": x = -6; y = -1; title = "Land Grant / Foreven"; break;
                         case "imperium": x = -4; y = -1; w = 7; h = 5; title = "Third Imperium"; break;
-                        case "solomani": x = -2; y = 2; w = 5; h = 3; title = "Solomani Confederacy"; break;
+                        case "solomani": x = -1.5; y = 2.75; w = 4; h = 2.25; title = "Solomani Confederacy"; break;
                         case "zhodani": x = -8; y = -3; w = 5; h = 3; title = "Zhodani Consulate"; break;
                         case "hive":
                         case "hiver": x = 2; y = 1; w = 6; h = 4; title = "Hiver Federation"; break;

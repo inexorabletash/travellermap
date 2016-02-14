@@ -101,26 +101,26 @@ namespace Maps.Serialization
             }
         }
 
-        private static readonly Regex uwpRegex = new Regex(@"\w\w\w\w\w\w\w-\w", RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.Singleline);
+        private static readonly Regex uwpRegex = new Regex(@"[ABCDEX?][0-9A-Z?]{6}-[0-9A-Z?]", 
+            RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.Singleline);
 
-        // PERF: Big time sucker; consider optimizing (can save 5% by eliminating Unicode char classes)
         private static readonly Regex worldRegex = new Regex(@"^" +
-            @"( \s*       (?<name>        .*                           ) )  " + // Name
-            @"( \s*       (?<hex>         \d{4}                        ) )  " + // Hex
-            @"( \s{1,2}   (?<uwp>         [ABCDEX?][0-9A-Z?]{6}-[0-9A-Z?] ) )  " + // UWP (Universal World Profile)
-            @"( \s{1,2}   (?<base>        [A-Zr1-9* \-]                ) )  " + // Base
-            @"( \s{1,2}   (?<codes>       .{10,}?                      ) )  " + // Remarks
-            @"( \s+       (?<zone>        [GARBFU \-]                  ) )? " + // Zone
-            @"( \s{1,2}   (?<pbg>         [0-9X?][0-9A-FX?][0-9A-FX?]     ) )  " + // PGB (Population multiplier, Belts, Gas giants)
-            @"( \s{1,2}   (?<allegiance>  ([A-Za-z0-9][A-Za-z0-9?\-]|--)  ) )  " + // Allegiance
-            @"( \s*       (?<rest>        .*?                          ) )  " + // Stellar data (etc)
-            @"\s*$"
+            @"( [ \t]*       (?<name>        .*                              ) )  " + // Name
+            @"( [ \t]*       (?<hex>         [0-9]{4}                        ) )  " + // Hex
+            @"( [ \t]{1,2}   (?<uwp>         [ABCDEX?][0-9A-Z?]{6}-[0-9A-Z?] ) )  " + // UWP (Universal World Profile)
+            @"( [ \t]{1,2}   (?<base>        [A-Zr1-9* \-]                   ) )  " + // Base
+            @"( [ \t]{1,2}   (?<codes>       .{10,}?                         ) )  " + // Remarks
+            @"( [ \t]+       (?<zone>        [GARBFU \-]                     ) )? " + // Zone
+            @"( [ \t]{1,2}   (?<pbg>         [0-9X?][0-9A-FX?][0-9A-FX?]     ) )  " + // PGB (Population multiplier, Belts, Gas giants)
+            @"( [ \t]{1,2}   (?<allegiance>  ([A-Za-z0-9][A-Za-z0-9?\-]|--)  ) )  " + // Allegiance
+            @"( [ \t]*       (?<rest>        .*?                             ) )  " + // Stellar data (etc)
+            @"[ \t]*$"
             , RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.Singleline | RegexOptions.ExplicitCapture | RegexOptions.IgnorePatternWhitespace);
 
         private static readonly Regex nameFixupRegex = new Regex(@"[\.\+]*$", RegexOptions.Compiled);
 
         private static readonly Regex placeholderNameRegex = new Regex(
-            @"^[A-P]-\d{1,2}$",
+            @"^[A-P]-[0-9]{1,2}$",
             RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.Singleline | RegexOptions.ExplicitCapture | RegexOptions.IgnorePatternWhitespace);
 
         private static void ParseWorld(WorldCollection worlds, string line, int lineNumber, ErrorLogger errors)
@@ -196,11 +196,12 @@ namespace Maps.Serialization
         private const string HEX = @"[0123456789ABCDEFGHJKLMNPQRSTUVWXYZ?]";
 
         // Regex checks are only done in Debug - data is trusted otherwise
-        private static readonly Regex HEX_REGEX = new Regex(@"^\d\d\d\d$");
+        private static readonly Regex HEX_REGEX = new Regex(@"^[0-9]{4}$");
         private static readonly Regex UWP_REGEX = new Regex("^[ABCDEX?]" + HEX + HEX + @"[0-AX?]" + HEX + @"{3}-" + HEX + @"$");
         private static readonly Regex PBG_REGEX = new Regex("^[0-9X?]{3}$");
 
-        private static readonly Regex BASES_REGEX = new Regex(@"^C?D?E?K?M?N?R?S?T?V?W?X?$");
+        // TODO: 'O' for K'kree Outpost is nonstandard, temporarily allowed for round-tripping data.
+        private static readonly Regex BASES_REGEX = new Regex(@"^C?D?E?K?M?N?O?R?S?T?V?W?X?$");
         private static readonly Regex ZONE_REGEX = new Regex(@"^(|A|R|F|U)$");
         private static readonly Regex NOBILITY_REGEX = new Regex(@"^[BcCDeEfFGH]*$");
 
