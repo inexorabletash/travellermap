@@ -14,6 +14,7 @@
 <h1>Re-Stellarator &mdash; The Traveller Map</h1>
 <textarea id=in>
 </textarea>
+<br><label><input type=checkbox id=expand> Expand fields </label>
 <br><button id=go>Go</button><br>
 <textarea id=out>
 </textarea>
@@ -59,6 +60,33 @@ function format(worlds) {
       widths[index] = Math.max(widths[index], value.length);
     });
   });
+
+  if ($('#expand').checked) {
+    fields.forEach(function(field, index) {
+      switch (field) {
+        case 'Name':
+        case 'Remarks':
+        case 'Stellar':
+          widths[index] += 15;
+          break;
+
+        case '{Ix}':
+        case '(Ex)':
+        case '[Cx]':
+        case 'N':
+          widths[index] = Math.max(widths[index] || 0, 7);
+          break;
+
+        case 'B':
+          widths[index] = Math.max(widths[index] || 0, 2);
+          break;
+
+        case 'A':
+          widths[index] = Math.max(widths[index] || 0, 4);
+          break;
+      }
+    });
+  }
 
   var out = [];
   var header = [], separator = [];
@@ -112,11 +140,16 @@ function fix(world) {
 }
 
 $('#go').addEventListener('click', function() {
-  var worlds = parse($('#in').value);
+  try {
+    var worlds = parse($('#in').value);
 
-  worlds.forEach(fix);
+    worlds.forEach(fix);
 
-  $('#out').value = format(worlds);
+    $('#out').value = format(worlds);
+  } catch (ex) {
+    alert('Error encountered:\n\n' + ex.message +
+          '\n\nReport to the author (include the input data).');
+  }
 });
 
 </script>
