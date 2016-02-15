@@ -23,7 +23,7 @@ function $(s) { return document.querySelector(s); }
 
 var FIELDS;
 function parse(s) {
-  var lines = s.split('\n').filter(function(s) { return !/^\s*$/.test(s); });
+  var lines = s.split('\n').filter(function(s) { return !/^\s*$|^#/.test(s); });
   var fields = lines.shift();
   var separator = lines.shift(), col = 0, cols = [];
   separator.split(/(\s+)/).forEach(function(s) {
@@ -34,7 +34,7 @@ function parse(s) {
 
   function colsplit(s) {
     return cols.map(function(pair) {
-      return s.substr(pair[0], pair[1]).trimRight();
+      return s.substr(pair[0], pair[1]).replace(/\s+$/, '');
     });
   }
 
