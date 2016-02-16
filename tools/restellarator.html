@@ -21,9 +21,35 @@
 
 <script>
 function $(s) { return document.querySelector(s); }
+function pad(s, len) { return s + ' '.repeat(len - s.length); }
+function trim(s) { return s.replace(/\s+$/, ''); }
 
-var FIELDS;
+var FIELDS, TYPE;
 function parse(s) {
+  if (/\t/.test(s)) {
+    TYPE = 'tab'; // Horrible hack
+    return parseTabDelimited(s);
+  } else {
+    TYPE = 'col'; // Horrible hack
+    return parseColumnDelimited(s);
+  }
+}
+
+function parseTabDelimited(s) {
+  var lines = s.split('\n').filter(function(s) { return !/^\s*$|^#/.test(s); });
+  var fields = lines.shift().split('\t');
+  FIELDS = fields; // Horrible hack
+  return lines.map(function(line) {
+    var cols = line.split('\t');
+    var world = {};
+    fields.forEach(function(field, index) {
+      world[field] = cols[index];
+    });
+    return world;
+  });
+}
+
+function parseColumnDelimited(s) {
   var lines = s.split('\n').filter(function(s) { return !/^\s*$|^#/.test(s); });
   var fields = lines.shift();
   var separator = lines.shift(), col = 0, cols = [];
@@ -35,7 +61,7 @@ function parse(s) {
 
   function colsplit(s) {
     return cols.map(function(pair) {
-      return s.substr(pair[0], pair[1]).replace(/\s+$/, '');
+      return trim(s.substr(pair[0], pair[1]));
     });
   }
 
@@ -52,6 +78,26 @@ function parse(s) {
 }
 
 function format(worlds) {
+  if (TYPE === 'tab') {
+    return formatTabDelimited(worlds);
+  } else {
+    return formatColDelimited(worlds);
+  }
+}
+
+function formatTabDelimited(worlds) {
+  var fields = FIELDS; // Horrible hack.
+  var out = [];
+  out.push(fields.join('\t'));
+  worlds.forEach(function(world) {
+    out.push(fields.map(function(field) {
+      return world[field] || '';
+    }).join('\t'));
+  });
+  return out.join('\n') + '\n';
+}
+
+function formatColDelimited(worlds) {
   var fields = FIELDS; // Horrible hack.
   var widths = fields.map(function(f) { return f.length; });
   worlds.forEach(function(world) {
@@ -89,19 +135,16 @@ function format(worlds) {
   }
 
   var out = [];
-  var header = [], separator = [];
-  fields.forEach(function(field, index) {
-    header.push(field + ' '.repeat(widths[index] - field.length));
-    separator.push('-'.repeat(widths[index]));
-  });
-  out.push(header.join(' '));
-  out.push(separator.join(' '));
+  out.push(fields.map(function(field, index) {
+    return pad(field, widths[index]);
+  }).join(' '));
+  out.push(widths.map(function(width) {
+    return '-'.repeat(width);
+  }).join(' '));
   worlds.forEach(function(world) {
-    var row = [];
-    fields.forEach(function(field, index) {
-      row.push((world[field] || '')  + ' '.repeat(widths[index] - world[field].length));
-    });
-    out.push(row.join(' '));
+    out.push(fields.map(function(field, index) {
+      return (world[field] || '')  + ' '.repeat(widths[index] - world[field].length);;
+    }).join(' '));
   });
 
   return out.join('\n') + '\n';
@@ -109,7 +152,8 @@ function format(worlds) {
 
 function fix(world) {
   // Stellar
-  var stars = [], s = world.Stellar, m;
+  var key = ['Stellar', 'Stars'].filter(function(key) { return key in world; })[0];
+  var stars = [], s = world[key], m;
   while (m = /^([OBAFGKM][0-9] ?(?:Ia|Ib|II|III|IV|V|VI|VII|D)|D|BD|BH)\s*/.exec(s)) {
     stars.push(m[1]);
     s = s.substring(m[0].length);
@@ -136,7 +180,7 @@ function fix(world) {
 
     return star;
   });
-  world.Stellar = stars.join(' ');
+  world[key] = stars.join(' ');
 }
 
 $('#go').addEventListener('click', function() {
