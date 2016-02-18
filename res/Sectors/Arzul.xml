@@ -2,8 +2,19 @@
 <Sector>
   <Y>-2</Y>
   <X>3</X>
-  <Name Lang="kk">Ingukrax</Name>
   <Name Lang="va">Arzul</Name>
+  <Name Lang="kk">Ingukrax</Name>
+  <Credits>
+    <![CDATA[
+
+             <b>Arzul</b> sector was designed by Jeff Zeitlin.
+
+             Stellar positions were developed by Joe D. Fugate Sr. and
+             appear in <cite>The MegaTraveller Alien, Volume 1: Vilani
+             &amp; Vargr</cite> (Digest Group Publications, 1990).
+
+    ]]>
+  </Credits>
   <DataFile Author="Jeff Zeitlin" Source="The Zhodani Base" Ref="http://zho.berka.com/data/CLASSIC/sector.pl?sector=ARZUL">arzul.sec</DataFile>
   <Subsectors Source="CORE">
     <Subsector Index="A">Rraz</Subsector>

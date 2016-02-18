@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<title>Re-Stellarator - Traveller Map</title>
+<meta charset="utf-8">
+<link rel="shortcut icon" href="../favicon.ico">
+<script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.14/polyfill.min.js"></script>
+<script src="serialize.js"></script>
+<link rel="stylesheet" href="../site.css?update=2015-08-30">
+<style>
+  #in, #out {
+    width: 1000px; height: 300px;
+    white-space: pre;
+    overflow: scroll;
+  }
+</style>
+<h1>Re-Stellarator &mdash; The Traveller Map</h1>
+<textarea id=in>
+</textarea>
+<br><label><input type=checkbox id=expand> Expand fields </label>
+<br><button id=go>Go</button><br>
+<textarea id=out>
+</textarea>
+
+<script>
+function $(s) { return document.querySelector(s); }
+
+function fix(world) {
+  // Stellar
+  var key = ['Stellar', 'Stars'].filter(function(key) { return key in world; })[0];
+  world[key] = fixStellar(world[key]);
+}
+
+function fixStellar(s) {
+  var stars = [], m;
+  while (m = /^([OBAFGKM][0-9] ?(?:Ia|Ib|II|III|IV|V|VI|VII|D)|D|BD|BH|M D)\b\s*/.exec(s)) {
+    stars.push(m[1]);
+    s = s.substring(m[0].length);
+  }
+  stars = stars.map(function(star, index) {
+    if (m = (/^([OBAFGKM][0-9]) ?(Ia|Ib|II|III|IV|V|VI|VII|D)\b/.exec(star) || /^(M) (D)/.exec(star))) {
+      var spec = m[1], lum = m[2];
+
+      // VI -> V
+      if (lum === 'VI')
+        lum = 'V';
+
+      // VII -> D
+      if (lum === 'VII')
+        lum = 'D';
+
+      // D -> V, if not the last star
+      if (lum === 'D' && index + 1 !== stars.length) {
+        lum = 'V';
+      }
+
+      star = lum === 'D' ? lum : spec + ' ' + lum;
+    }
+
+    return star;
+  });
+  return stars.join(' ');
+}
+
+$('#go').addEventListener('click', function() {
+  try {
+    var data = parse($('#in').value);
+
+    data.worlds.forEach(fix);
+
+    $('#out').value = format(data, {expand: $('#expand').checked});
+  } catch (ex) {
+    alert('Error encountered:\n\n' + ex.message +
+          '\n\nReport to the author (include the input data).');
+  }
+});
+
+</script>
