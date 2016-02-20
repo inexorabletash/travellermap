@@ -21,7 +21,11 @@
 </style>
 <h1>Sector Data Checker &mdash; The Traveller Map</h1>
 <div><textarea id="input" wrap="off" placeholder="Copy and paste data or drag and drop a file here - (SEC, T5 tab delimited, or T5 column delimited)"></textarea></div>
-<div><button id="go">Check</button></div>
+<div><button id="go">Check</button>
+
+&nbsp; &nbsp; &nbsp; &nbsp; <label><input type=checkbox id=tab> Tab Delimited Output</label>
+
+</div>
 <div id="results">
   <h3>Results: <span id="summary"></span></h3>
   <div><textarea id="output" wrap="off" readonly></textarea></div>
@@ -66,7 +70,8 @@
 
     $('#go').addEventListener('click', function () {
       var input = $('#input').value;
-      fetch(Traveller.MapService.makeURL('/api/sec', {lint: 1}), {
+      fetch(Traveller.MapService.makeURL(
+        '/api/sec', {lint: 1, type: $('#tab').checked ? 'TabDelimited' : 'SecondSurvey',}), {
         method: 'POST',
         body: input,
         headers: {'Content-Type': 'text/plain'}
