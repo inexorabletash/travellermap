@@ -578,7 +578,14 @@ namespace Maps.Rendering
                     // TODO: selector may be expensive
                     foreach (World world in selector.Worlds) { DrawWorld(fonts, world, WorldLayer.Background); }
                     foreach (World world in selector.Worlds) { DrawWorld(fonts, world, WorldLayer.Foreground); }
-                    foreach (World world in selector.Worlds) { DrawWorld(fonts, world, WorldLayer.Overlay); }
+
+                    if (styles.HasWorldOverlays)
+                    {
+                        float slop = selector.SlopFactor;
+                        selector.SlopFactor = (float)Math.Max(slop, Math.Log(scale, 2.0) - 4);
+                        foreach (World world in selector.Worlds) { DrawWorld(fonts, world, WorldLayer.Overlay); }
+                        selector.SlopFactor = slop;
+                    }
                 }
                 timers.Add(new Timer("worlds"));
                 #endregion

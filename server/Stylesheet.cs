@@ -808,6 +808,8 @@ namespace Maps.Rendering
         public bool showPopulationOverlay;
         public bool showImportanceOverlay;
 
+        public bool HasWorldOverlays { get { return showPopulationOverlay || showImportanceOverlay;  } }
+
         public PointF StarportPosition;
         public PointF GasGiantPosition;
         public PointF AllegiancePosition;

@@ -47,8 +47,7 @@ namespace Maps.API
                     tileRect.Height = Math.Max(y1, y2) - tileRect.Y;
 
                     SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, GetStringOption("milieu"));
-                    selector = new RectSelector(map, resourceManager, tileRect);
-                    selector.Slop = false;
+                    selector = new RectSelector(map, resourceManager, tileRect, slop: false);
 
                     tileRect.Offset(-1, -1);
                     tileRect.Width += 1;
@@ -101,8 +100,7 @@ namespace Maps.API
                     tileRect.Height = Math.Max(y1, y2) - tileRect.Y;
 
                     SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, GetStringOption("milieu"));
-                    selector = new RectSelector(map, resourceManager, tileRect);
-                    selector.Slop = false;
+                    selector = new RectSelector(map, resourceManager, tileRect, slop: false);
 
                     tileRect.Offset(-1, -1);
                     tileRect.Width += 1;

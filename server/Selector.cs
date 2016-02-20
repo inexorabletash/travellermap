@@ -17,11 +17,10 @@ namespace Maps
     {
         protected Selector()
         {
-            Slop = true;
         }
 
         public bool Slop { get; set; }
-        protected const float SLOP_FACTOR = 0.25f;
+        public float SlopFactor { get; set; }
 
         public abstract IEnumerable<Sector> Sectors { get; }
         public abstract IEnumerable<World> Worlds { get; }
@@ -165,7 +164,7 @@ namespace Maps
         ResourceManager resourceManager;
         private RectangleF rect = RectangleF.Empty;
 
-        public RectSelector(SectorMap.Milieu map, ResourceManager resourceManager, RectangleF rect)
+        public RectSelector(SectorMap.Milieu map, ResourceManager resourceManager, RectangleF rect, bool slop = true)
         {
             if (map == null)
                 throw new ArgumentNullException("map");
@@ -176,6 +175,9 @@ namespace Maps
             this.map = map;
             this.resourceManager = resourceManager;
             this.rect = rect;
+
+            Slop = slop;
+            SlopFactor = 0.25f;
         }
 
         public override IEnumerable<Sector> Sectors
@@ -184,7 +186,7 @@ namespace Maps
             {
                 RectangleF rect = this.rect;
                 if (Slop)
-                    rect.Inflate(rect.Width * SLOP_FACTOR, rect.Height * SLOP_FACTOR);
+                    rect.Inflate(rect.Width * SlopFactor, rect.Height * SlopFactor);
 
                 int sx1 = (int)Math.Floor((rect.Left + Astrometrics.ReferenceHex.X) / Astrometrics.SectorWidth);
                 int sx2 = (int)Math.Floor((rect.Right + Astrometrics.ReferenceHex.X) / Astrometrics.SectorWidth);
@@ -211,7 +213,7 @@ namespace Maps
             {
                 RectangleF rect = this.rect;
                 if (Slop)
-                    rect.Inflate(rect.Width * SLOP_FACTOR, rect.Height * SLOP_FACTOR);
+                    rect.Inflate(rect.Width * SlopFactor, rect.Height * SlopFactor);
                 
                 int hx1 = (int)Math.Floor(rect.Left);
                 int hx2 = (int)Math.Ceiling(rect.Right);
