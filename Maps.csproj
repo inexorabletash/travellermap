@@ -198,6 +198,7 @@
     <Content Include="res\markers\README.txt" />
     <Content Include="res\markers\scout.png" />
     <Content Include="res\markers\submerchant.png" />
+    <Content Include="res\Sectors\Ahkiweahi.txt" />
     <Content Include="res\Sectors\Aldebaran.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -207,12 +208,16 @@
     <Content Include="res\Sectors\Antares.xml" />
     <Content Include="res\Sectors\Arzul.xml" />
     <Content Include="res\Sectors\Avereguar.xml" />
+    <Content Include="res\Sectors\Bar%27kakr.txt" />
+    <Content Include="res\Sectors\Bar%27kakr.xml" />
     <Content Include="res\Sectors\Beyond.xml" />
     <Content Include="res\Sectors\blaskon.xml" />
     <Content Include="res\Sectors\Caesillian.txt" />
+    <Content Include="res\Sectors\Canopus.xml" />
     <Content Include="res\Sectors\Centrax.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="res\Sectors\Chit Botshti.txt" />
     <Content Include="res\Sectors\Chtierabl.xml" />
     <Content Include="res\Sectors\Core.xml" />
     <Content Include="res\Sectors\Corridor.xml" />
@@ -255,6 +260,8 @@
     <Content Include="res\Sectors\kidunal.xml" />
     <Content Include="res\Sectors\Koog.txt" />
     <Content Include="res\Sectors\Koog.xml" />
+    <Content Include="res\Sectors\Kring Noor.txt" />
+    <Content Include="res\Sectors\Kring Noor.xml" />
     <Content Include="res\Sectors\Kteex!.txt" />
     <Content Include="res\Sectors\Langere.xml" />
     <Content Include="res\Sectors\Ley.xml">
@@ -279,6 +286,8 @@
     <Content Include="res\Sectors\Old Expanses.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="res\Sectors\Orion OB1\Joyce%27s Void.xml" />
+    <Content Include="res\Sectors\Orion OB1\orion.xml" />
     <Content Include="res\Sectors\Porlock.xml" />
     <Content Include="res\Sectors\Provence.xml" />
     <Content Include="res\Sectors\Reavers Deep.xml" />
@@ -299,11 +308,15 @@
     <Content Include="res\Sectors\Tuglikki.xml" />
     <Content Include="res\Sectors\Un%27k!!k%27ng.txt" />
     <Content Include="res\Sectors\Un%27k!!k%27ng.xml" />
+    <Content Include="res\Sectors\Uuk.txt" />
+    <Content Include="res\Sectors\Uuk.xml" />
     <Content Include="res\Sectors\Vanguard Reaches.xml" />
     <Content Include="res\Sectors\Verge.xml" />
     <Content Include="res\Sectors\Vland.xml" />
     <Content Include="res\Sectors\Windhorn.xml" />
     <Content Include="res\Sectors\Wrenton.xml" />
+    <Content Include="res\Sectors\Xaagr.txt" />
+    <Content Include="res\Sectors\Xaagr.xml" />
     <Content Include="res\Sectors\Yiklerzdanzh.xml" />
     <Content Include="res\Sectors\Zarushagar.xml">
       <SubType>Designer</SubType>
@@ -547,6 +560,7 @@
     <Content Include="res\Sectors\blaskon.sec" />
     <Content Include="res\Sectors\Avereguar.sec" />
     <Content Include="res\Sectors\Beyond.tab" />
+    <Content Include="res\Sectors\Canopus.tab" />
     <None Include="res\Sectors\Core.tab" />
     <None Include="res\Sectors\Corridor.tab" />
     <Content Include="res\Sectors\Dagudashaag.tab" />
@@ -569,6 +583,7 @@
     <Content Include="res\Sectors\Far Frontiers.tab" />
     <None Include="res\Sectors\Fornast.tab" />
     <Content Include="res\Sectors\Gateway.tab" />
+    <Content Include="res\Sectors\Ghoekhnael.tab" />
     <None Include="res\Sectors\Glimmerdrift.tab" />
     <None Include="res\Sectors\Grikrng.sec" />
     <None Include="res\Sectors\Gushemege.tab" />
@@ -585,6 +600,8 @@
     <None Include="res\Sectors\Katoonah.sec" />
     <Content Include="res\Sectors\kidunal.sec" />
     <Content Include="res\Sectors\Langere.tab" />
+    <Content Include="res\Sectors\Kfazz Ghik.tab" />
+    <Content Include="res\Sectors\Knoellighz.tab" />
     <None Include="res\Sectors\legend.sec" />
     <None Include="res\Sectors\Ley.tab" />
     <None Include="res\Sectors\Lishun.tab" />
@@ -600,6 +617,7 @@
     <Content Include="res\Sectors\Meshan.tab" />
     <Content Include="res\Sectors\Neworld.tab" />
     <None Include="res\Sectors\Old Expanses.tab" />
+    <Content Include="res\Sectors\Orion OB1\Joyce%27s Void.tab" />
     <None Include="res\Sectors\Pliabriebl.sec" />
     <Content Include="res\Sectors\Porlock.sec" />
     <Content Include="res\Sectors\Provence.tab" />
@@ -628,6 +646,7 @@
     <None Include="res\Sectors\Vland.tab" />
     <Content Include="res\Sectors\Wrenton.sec" />
     <Content Include="res\Sectors\Windhorn.tab" />
+    <Content Include="res\Sectors\Zao Kfeng Ig Grilokh.tab" />
     <None Include="res\Sectors\Zarushagar.tab" />
     <Content Include="res\Sectors\Ziafrplians.tab" />
     <Content Include="res\ui\youarehere.pdn" />
@@ -644,13 +663,11 @@
     <None Include="res\Vectors\Galaxy_Positive.xvf" />
     <None Include="res\Sectors\Aerenfors.sec" />
     <None Include="res\Sectors\afawahisa.sec" />
-    <None Include="res\Sectors\Ahkiweahi.sec" />
     <None Include="res\Sectors\Angfutsag.sec" />
     <None Include="res\Sectors\arzul.sec" />
     <None Include="res\Sectors\astron.sec" />
     <None Include="res\Sectors\ataurre.sec" />
     <None Include="res\Sectors\banners.sec" />
-    <None Include="res\Sectors\canopus.sec" />
     <None Include="res\Sectors\chtierab.sec" />
     <None Include="res\Sectors\Darret.sec" />
     <None Include="res\Sectors\Datsatl.sec" />
@@ -670,7 +687,6 @@
     <None Include="res\Sectors\gashikan.sec" />
     <None Include="res\Sectors\Gelath.sec" />
     <None Include="res\Sectors\Gh1hken.sec" />
-    <None Include="res\Sectors\Ghoekhnael.sec" />
     <None Include="res\Sectors\Gzaekfueg.sec" />
     <None Include="res\Sectors\hadji.sec" />
     <None Include="res\Sectors\hanstone.sec" />
@@ -681,11 +697,9 @@
     <None Include="res\Sectors\Irugangong.sec" />
     <None Include="res\Sectors\karleaya.sec" />
     <None Include="res\Sectors\Kefiykhta.sec" />
-    <None Include="res\Sectors\KfazzGhik.sec" />
     <None Include="res\Sectors\khaeaw.sec" />
     <None Include="res\Sectors\Kharrthon.sec" />
     <None Include="res\Sectors\Knaeleng.sec" />
-    <None Include="res\Sectors\Knoellighz.sec" />
     <None Include="res\Sectors\Ksinanirz.sec" />
     <None Include="res\Sectors\Ktiingzat.sec" />
     <None Include="res\Sectors\lancask.sec" />
@@ -709,12 +723,10 @@
     <None Include="res\Sectors\Theron.sec" />
     <None Include="res\Sectors\touchstone.sec" />
     <None Include="res\Sectors\trenchans.sec" />
-    <None Include="res\Sectors\Ugoede.sec" />
     <None Include="res\Sectors\VegVergakh.sec" />
     <None Include="res\Sectors\waroatah.sec" />
     <None Include="res\Sectors\Yahehwe.sec" />
     <None Include="res\Sectors\yiklerzdanzh.sec" />
-    <None Include="res\Sectors\ZaoKfengIgGrilokh.sec" />
     <None Include="res\Sectors\zdiedeia.sec" />
     <None Include="res\Sectors\zhdant.sec" />
     <None Include="res\Sectors\Zhodani Core Route\ablaz.sec" />

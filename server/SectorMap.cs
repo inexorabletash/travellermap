@@ -108,6 +108,7 @@ namespace Maps
                         // OTU - Default Milieu
                         new SectorMetafileEntry(@"~/res/sectors.xml", new List<string> { "OTU" } ),
                         new SectorMetafileEntry(@"~/res/ZhodaniCoreRoute.xml", new List<string> { "ZCR" } ),
+                        new SectorMetafileEntry(@"~/res/Sectors/Orion OB1/orion.xml", new List<string> { "OrionOB1" } ),
 
                         // OTU - Other Milieu
                         new SectorMetafileEntry(@"~/res/Sectors/M1000/m1000.xml", new List<string> {} ),
