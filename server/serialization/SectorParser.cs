@@ -212,7 +212,8 @@ namespace Maps.Serialization
         private enum CheckOptions
         {
             EmptyIfDash = 1,
-            Warning = 2
+            Warning = 2,
+            Optional = 4
         };
 
         private class FieldChecker
@@ -231,9 +232,20 @@ namespace Maps.Serialization
                 this.lineNumber = lineNumber;
                 this.line = line;
             }
-            public string Check(string key, Regex regex, CheckOptions options = 0)
+            public string Check(string key, Regex regex = null, CheckOptions options = 0)
             {
-                if (!regex.IsMatch(dict[key]))
+                if (!dict.ContainsKey(key))
+                {
+                    if (!options.HasFlag(CheckOptions.Optional))
+                    {
+                        if (errors != null)
+                            errors.Error(string.Format("Missing required column {0}", key), lineNumber, line);
+                        hadError = true;
+                    }
+                    return null;
+                }
+
+                if (regex != null && !regex.IsMatch(dict[key]))
                 {
                     if (!options.HasFlag(CheckOptions.Warning))
                     {
@@ -256,12 +268,12 @@ namespace Maps.Serialization
                 return value;
             }
 
-            public string Check(IEnumerable<string> keys, Regex regex = null, CheckOptions options = 0)
+            public string Check(ICollection<string> keys, Regex regex = null, CheckOptions options = 0)
             {
                 return Check(keys, value => regex == null || regex.IsMatch(value), options);
             }
 
-            public string Check(IEnumerable<string> keys, Func<string, bool> validate, CheckOptions options = 0)
+            public string Check(ICollection<string> keys, Func<string, bool> validate, CheckOptions options = 0)
             {
                 foreach (var key in keys)
                 {
@@ -289,6 +301,15 @@ namespace Maps.Serialization
 
                     return value;
                 }
+
+                if (!options.HasFlag(CheckOptions.Optional))
+                {
+                    if (errors != null)
+                        errors.Error(string.Format("Missing required column {0}",
+                            string.Join("/", keys)), lineNumber, line);
+                    hadError = true;
+                }
+
                 return null;
             }
         }
@@ -300,13 +321,13 @@ namespace Maps.Serialization
                 FieldChecker checker = new FieldChecker(dict, errors, lineNumber, line);
                 World world = new World();
                 world.Hex = checker.Check("Hex", HEX_REGEX);
-                world.Name = dict["Name"];
+                world.Name = checker.Check("Name");
                 world.UWP = checker.Check("UWP", UWP_REGEX);
                 world.Remarks = checker.Check(new string[] { "Remarks", "Trade Codes", "Comments" });
-                world.Importance = checker.Check(new string[] { "{Ix}", "{ Ix }", "Ix" });
-                world.Economic = checker.Check(new string[] { "(Ex)", "( Ex )", "Ex" });
-                world.Cultural = checker.Check(new string[] { "[Cx]", "[ Cx ]", "Cx" });
-                world.Nobility = checker.Check(new string[] { "N", "Nobility" }, NOBILITY_REGEX, CheckOptions.EmptyIfDash);
+                world.Importance = checker.Check(new string[] { "{Ix}", "{ Ix }", "Ix" }, options:CheckOptions.Optional);
+                world.Economic = checker.Check(new string[] { "(Ex)", "( Ex )", "Ex" }, options: CheckOptions.Optional);
+                world.Cultural = checker.Check(new string[] { "[Cx]", "[ Cx ]", "Cx" }, options: CheckOptions.Optional);
+                world.Nobility = checker.Check(new string[] { "N", "Nobility" }, NOBILITY_REGEX, CheckOptions.EmptyIfDash | CheckOptions.Optional);
                 world.Bases = checker.Check(new string[] { "B", "Bases" }, BASES_REGEX, CheckOptions.EmptyIfDash);
                 world.Zone = checker.Check(new string[] { "Z", "Zone" }, ZONE_REGEX, CheckOptions.EmptyIfDash);
                 world.PBG = checker.Check("PBG", PBG_REGEX);
@@ -316,11 +337,11 @@ namespace Maps.Serialization
                 world.Stellar = checker.Check(new string[] { "Stellar", "Stars", "Stellar Data" }, STARS_REGEX, CheckOptions.Warning);
 
                 byte w;
-                if (byte.TryParse(checker.Check(new string[] { "W", "Worlds" }), NumberStyles.Integer, CultureInfo.InvariantCulture, out w))
+                if (byte.TryParse(checker.Check(new string[] { "W", "Worlds" }, options:CheckOptions.Optional), NumberStyles.Integer, CultureInfo.InvariantCulture, out w))
                     world.Worlds = w;
 
                 int ru;
-                if (dict.ContainsKey("RU") && int.TryParse(dict["RU"], NumberStyles.Integer | NumberStyles.AllowThousands, CultureInfo.InvariantCulture, out ru))
+                if (int.TryParse(checker.Check("RU", options:CheckOptions.Optional), NumberStyles.Integer | NumberStyles.AllowThousands, CultureInfo.InvariantCulture, out ru))
                     world.ResourceUnits = ru;
 
                 // Cleanup known placeholders
