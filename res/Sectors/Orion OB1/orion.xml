@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Sectors>
   <Sector>
-    <Y>12</Y>
-    <X>8</X>
-    <Name>Joyce's Void</Name>
-    <DataFile Author="WG Zeist" Ref="https://explorerbase.wordpress.com" Type="TabDelimited">Orion OB1/Joyce's Void.tab</DataFile>
-    <MetadataFile>Orion OB1/Joyce's Void.xml</MetadataFile>
+    <Y>8</Y>
+    <X>6</X>
+    <Name>Nievoak</Name>
+    <DataFile Author="WG Zeist" Ref="https://explorerbase.wordpress.com" Type="SecondSurvey">Orion OB1/Nievoak.txt</DataFile>
+    <MetadataFile>Orion OB1/Nievoak.xml</MetadataFile>
+  </Sector>
+  <Sector>
+    <Y>9</Y>
+    <X>6</X>
+    <Name>Alnitak</Name>
+    <DataFile Author="WG Zeist" Ref="https://explorerbase.wordpress.com" Type="SecondSurvey">Orion OB1/Alnitak.txt</DataFile>
+    <MetadataFile>Orion OB1/Alnitak.xml</MetadataFile>
   </Sector>
   <Sector>
     <Y>10</Y>
@@ -13,5 +20,12 @@
     <Name>Mintaka</Name>
     <DataFile Author="WG Zeist" Ref="https://explorerbase.wordpress.com" Type="TabDelimited">Orion OB1/Mintaka.tab</DataFile>
     <MetadataFile>Orion OB1/Mintaka.xml</MetadataFile>
+  </Sector>
+  <Sector>
+    <Y>12</Y>
+    <X>8</X>
+    <Name>Joyce's Void</Name>
+    <DataFile Author="WG Zeist" Ref="https://explorerbase.wordpress.com" Type="TabDelimited">Orion OB1/Joyce's Void.tab</DataFile>
+    <MetadataFile>Orion OB1/Joyce's Void.xml</MetadataFile>
   </Sector>
 </Sectors>

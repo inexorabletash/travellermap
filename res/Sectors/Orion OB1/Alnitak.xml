@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Sector>
+  <Y>9</Y>
+  <X>6</X>
+  <Name>Alnitak</Name>
+  <Credits>
+    <![CDATA[
+
+             <b>Alnitak</b> sector was designed by WG Zeist.
+
+    ]]>
+  </Credits>
+  <Subsectors>
+    <Subsector Index="A"></Subsector>
+    <Subsector Index="B"></Subsector>
+    <Subsector Index="C"></Subsector>
+    <Subsector Index="D"></Subsector>
+    <Subsector Index="E"></Subsector>
+    <Subsector Index="F"></Subsector>
+    <Subsector Index="G">48 G. Orionis</Subsector>
+    <Subsector Index="H"></Subsector>
+    <Subsector Index="I">Alnitak</Subsector>
+    <Subsector Index="J"></Subsector>
+    <Subsector Index="K"></Subsector>
+    <Subsector Index="L"></Subsector>
+    <Subsector Index="M"></Subsector>
+    <Subsector Index="N"></Subsector>
+    <Subsector Index="O"></Subsector>
+    <Subsector Index="P"></Subsector>
+  </Subsectors>
+  <Routes>
+    <Route Start="1502" StartOffsetY="1" End="1637" Color="Orange" />
+    <Route Start="1502" StartOffsetY="1" End="1738" />
+    <Route Start="1502" StartOffsetY="1" End="1439" />
+    <Route Start="2702" StartOffsetY="1" End="2639" />
+    <Route Start="1637" End="1434" Color="Orange" />
+    <Route Start="1434" End="1232" Color="Orange" />
+    <Route Start="1232" End="0930" Color="Orange" />
+    <Route Start="0930" End="0926" Color="Orange" />
+    <Route Start="0926" End="0723" Color="Orange" />
+    <Route Start="0723" End="0421" Color="Orange" />
+    <Route Start="0421" End="0820" Color="Orange" />
+    <Route Start="0421" End="0318" Color="Orange" />
+    <Route Start="0318" End="0514" Color="Orange" />
+    <Route Start="0514" End="0511" Color="Orange" />
+    <Route Start="0511" End="0308" Color="Orange" />
+    <Route Start="0308" End="0405" Color="Orange" />
+    <Route Start="0405" End="0702" Color="Orange" />
+    <Route Start="0702" EndOffsetY="-1" End="0738" Color="Orange" />
+    <Route Start="0820" End="1220" Color="Orange" />
+    <Route Start="1220" End="1518" Color="Orange" />
+    <Route Start="1518" End="1818" Color="Orange" />
+    <Route Start="1818" End="2217" Color="Orange" />
+    <Route Start="2217" End="2315" Color="Orange" />
+    <Route Start="2315" End="2411" Color="Orange" />
+    <Route Start="2411" End="2710" Color="Orange" />
+    <Route Start="2710" End="2907" Color="Orange" />
+    <Route Start="2907" End="3002" Color="Orange" />
+    <Route Start="3002" EndOffsetX="1" End="0201" Color="Orange" />
+  </Routes>
+  <Allegiances>
+    <Allegiance Code="Mc">M'norr Client State</Allegiance>
+  </Allegiances>
+</Sector>

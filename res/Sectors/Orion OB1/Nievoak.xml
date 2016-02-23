@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Sector>
+  <Y>8</Y>
+  <X>6</X>
+  <Name>Nievoak</Name>
+  <Credits>
+    <![CDATA[
+
+             <b>Nievoak</b> sector was designed by WG Zeist.
+
+    ]]>
+  </Credits>
+  <Subsectors>
+    <Subsector Index="A">75 G. Orionis</Subsector>
+    <Subsector Index="B">Nievoak</Subsector>
+    <Subsector Index="C"></Subsector>
+    <Subsector Index="D"></Subsector>
+    <Subsector Index="E"></Subsector>
+    <Subsector Index="F"></Subsector>
+    <Subsector Index="G">Saiph</Subsector>
+    <Subsector Index="H"></Subsector>
+    <Subsector Index="I">59 G. Orionis</Subsector>
+    <Subsector Index="J"></Subsector>
+    <Subsector Index="K"></Subsector>
+    <Subsector Index="L"></Subsector>
+    <Subsector Index="M"></Subsector>
+    <Subsector Index="N"></Subsector>
+    <Subsector Index="O"></Subsector>
+    <Subsector Index="P"></Subsector>
+  </Subsectors>
+  <Routes>
+    <Route Start="0702" StartOffsetY="1" End="0738" Color="Orange" />
+    <Route Start="0738" End="0935" Color="Orange" />
+    <Route Start="0935" End="0832" Color="Orange" />
+    <Route Start="0832" End="0829" Color="Orange" />
+    <Route Start="0829" End="1127" Color="Orange" />
+    <Route Start="1127" End="1323" Color="Orange" />
+    <Route Start="1323" End="1721" Color="Orange" />
+    <Route Start="1721" End="1818" Color="Orange" />
+    <Route Start="1818" End="1615" Color="Orange" />
+    <Route Start="1615" End="1313" Color="Orange" />
+    <Route Start="1313" End="1012" Color="Orange" />
+    <Route Start="1012" End="0909" Color="Orange" />
+  </Routes>
+  <Allegiances>
+    <Allegiance Code="Mc">M'norr Client State</Allegiance>
+  </Allegiances>
+</Sector>
