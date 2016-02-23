@@ -43,7 +43,7 @@
     );
   }
 
-  function diff(text1, text2) {
+  global.diff = function(text1, text2) {
     var lines1 = text1.split(/\r?\n/);
     var lines2 = text2.split(/\r?\n/);
     var out = [];
@@ -54,10 +54,10 @@
         pair[1].forEach(function(line) { out.push(op + ' ' + line); });
       });
     return out.join('\n');;
-  }
+  };
 
 
-  function compareContent(contentType, url1, url2, filter, callback) {
+  function fetchPair(contentType, url1, url2) {
 
     function getHeaderAndBody(response) {
       return response.text().then(function(text) {
@@ -77,17 +77,8 @@
               + responses[0].text;
         var b = 'Content-Type: ' + responses[1].headers.get('Content-Type') + '\n'
               + responses[1].text;
-        if (filter) {
-          a = filter(a);
-          b = filter(b);
-        }
 
-        var d = diff(a, b);
-        callback(a, b, d, !d);
-        return !d;
-      }, function(error) {
-        callback('', '', 'Fetch failed: ' + error);
-        return false;
+        return [a, b];
       });
   }
 
@@ -118,31 +109,48 @@
     $('#status_failed').innerHTML = String(status.completed - status.passed);
   }
 
-  global.check = function(contentType, url1, url2, filter) {
+  global.runTest = function(leftTitle, rightTitle, func) {
     ++status.tests;
 
     var tr1 = $('#results').appendChild(elem('tr'));
     tr1.classList.add('source');
-    tr1.appendChild(elem('td')).appendChild(link(url1));
-    tr1.appendChild(elem('td')).appendChild(link(url2));
+    tr1.appendChild(elem('td')).appendChild(link(leftTitle));
+    tr1.appendChild(elem('td')).appendChild(link(rightTitle));
     tr1.appendChild(elem('td')).appendChild(text('diff'));
 
     var tr2 = $('#results').appendChild(elem('tr'));
     tr2.classList.add('content');
 
-    compareContent(contentType, url1, url2, filter, function(a, b, c, pass) {
-      tr1.classList.add(pass ? 'pass' : 'fail');
-      tr2.classList.add(pass ? 'pass' : 'fail');
+    func().then(function(results) {
+        tr1.classList.add(results.pass ? 'pass' : 'fail');
+        tr2.classList.add(results.pass ? 'pass' : 'fail');
 
-      tr2.appendChild(elem('td')).appendChild(elem('textarea')).value = a;
-      tr2.appendChild(elem('td')).appendChild(elem('textarea')).value = b;
-      tr2.appendChild(elem('td')).appendChild(elem('textarea')).value = c;
-    }).then(function(result) {
-      ++status.completed;
-      if (result) {
-        ++status.passed;
-      }
-      update();
+        tr2.appendChild(elem('td')).appendChild(elem('textarea', {wrap: 'off'})).value = results.left;
+        tr2.appendChild(elem('td')).appendChild(elem('textarea', {wrap: 'off'})).value = results.right;
+        tr2.appendChild(elem('td')).appendChild(elem('textarea', {wrap: 'off'})).value = results.diff;
+
+        ++status.completed;
+        if (results.pass)
+          ++status.passed;
+        update();
+      });
+  };
+
+  global.check = function(contentType, url1, url2, filter) {
+    global.runTest(url1, url2, function() {
+      return fetchPair(contentType, url1, url2)
+        .then(function(pair) {
+          var a = pair[0], b = pair[1];
+          if (filter) {
+            a = filter(a);
+            b = filter(b);
+          }
+
+          var d = global.diff(a, b);
+          return {left: a, right: b, diff: d, pass: !d};
+        }, function(error) {
+          return {left: '', right: '', diff: 'Fetch failed: ' + error, pass: false};
+        });
     });
   };
 
