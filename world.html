@@ -6,8 +6,8 @@
 <link rel="stylesheet" href="site.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.2/handlebars.min.js"></script>
 <script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.14/polyfill.min.js"></script>
-<script src="map.js?update=2015-11-10"></script>
-<script src="world.js?update=2015-12-05"></script>
+<script src="map.js?update=2016-02-08"></script>
+<script src="world.js?update=2016-02-24"></script>
 
 <style>
 @import url(https://fonts.googleapis.com/css?family=PT+Sans+Narrow);
@@ -48,13 +48,17 @@ td { vertical-align: top; }
 /* World Image */
 
 .image {
-  display: none;
+  visibility: hidden;
   position: absolute;
   top: 0; right: 0;
   width: 140px;
   height: 140px;
   border: 2px solid black;
 }
+.image.ready {
+  visibility: visible;
+}
+
 .image .background {
   position: absolute;
   width: 100%; height: 100%;
@@ -148,7 +152,7 @@ td { vertical-align: top; }
 
 <div id="world-image" class="image">
 <img class="background" alt="" src="res/world/stars.png">
-<img class="disc" alt="" src="res/Candy/Hyd8.png">
+<canvas class="disc" width=120 height=120></canvas>
 <div class="placeholder">?</div>
 </div>
 
