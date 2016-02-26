@@ -537,29 +537,12 @@
             return result;
           }
 
-          // References:
-          // http://www.vendian.org/mncharity/dir3/starcolor/
-          // http://www.uni.edu/morgans/astro/course/Notes/section2/spectraltemps.html
-
-          // TODO: Better curve.
-          // TODO: Distinguish I/III/V curves - this is only for V (Main Sequence).
-          var CLASS = {
-            O: {min: 30000, max: 78000},
-            B: {min: 10000, max: 30000},
-            A: {min:  7500, max: 10000},
-            F: {min:  6000, max:  7500},
-            G: {min:  5200, max:  6000},
-            K: {min:  3700, max:  5200},
-            M: {min:  2400, max:  3700}
-          };
-
           if (!isRender &&
               checkMode('destination-in') && checkMode('multiply') &&
               world.Stars && /^([OBAFGKM])([0-9])/.test(world.Stars[0])) {
-            var range = CLASS[RegExp.$1], f = RegExp.$2;
-            var t = range.min + (range.max - range.min) * (10-f) / 10;
+            var t = class2temp(RegExp.$1, RegExp.$2);
             var c = temp2color(t);
-            ctx.fillStyle = 'rgb(' + (c.r|0) + ',' + (c.g|0) + ',' + (c.b|0) + ')';
+            ctx.fillStyle = 'rgb(' + c.r + ',' + c.g + ',' + c.b + ')';
 
             ctx.fillRect(0, 0, w, h);
             ctx.globalCompositeOperation = 'destination-in';
@@ -705,9 +688,18 @@
     });
   }
 
+  // Convert stellar class (e.g. 'G', '2') to temperature (Kelvin).
+  // Curve fit based on data from:
+  // http://www.uni.edu/morgans/astro/course/Notes/section2/spectraltemps.html
+  function class2temp(c, f) {
+    var n = 'OBAFGKM'.indexOf(c) + Number(f) / 10;
+    return 26684.83 * Math.pow(n, -1.127977);
+  }
+
+  // Convert temperature (Kelvin) to color {r, g, b} in 0...255.
+  // Based on: http://www.zombieprototypes.com/?p=210
   function temp2color(kelvin) {
-    // http://www.zombieprototypes.com/?p=210
-    function fit(a, b, c, x) { return a + b*x + c * Math.log(x); }
+    function fit(a, b, c, x) { return Math.floor(a + b*x + c * Math.log(x)); }
     var r, g, b;
 
     if (kelvin < 6600)
