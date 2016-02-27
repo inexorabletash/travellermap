@@ -543,6 +543,8 @@ window.addEventListener('DOMContentLoaded', function() {
     var DATA_REQUEST_DELAY_MS = 500;
     if (lastX === hexX && lastY === hexY)
       return;
+    lastX = hexX;
+    lastY = hexY;
 
     if (dataRequest) {
       dataRequest.ignore();
@@ -553,9 +555,6 @@ window.addEventListener('DOMContentLoaded', function() {
       window.clearTimeout(dataTimeout);
 
     dataTimeout = setTimeout(function() {
-      lastX = hexX;
-      lastY = hexY;
-
       dataRequest = Util.ignorable(Traveller.MapService.credits(hexX, hexY));
       dataRequest.then(function(data) {
           dataRequest = null;
