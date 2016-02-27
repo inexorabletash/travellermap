@@ -216,6 +216,8 @@ var Util = {
     var sheets = {};
     var base = {
       overlay_color: '#8080ff',
+      route_color: 'green',
+      ew_color: 'yellow',
       you_are_here_url: 'res/ui/youarehere.png'
     };
     sheets[Styles.Poster] = base;
@@ -468,38 +470,67 @@ var Util = {
   }());
 
 
+  // ======================================================================
+  // Observable name/value map
+  // ======================================================================
+
+  function NamedOptions(notify) {
+    this._options = {};
+    this._notify = notify;
+  }
+  NamedOptions.prototype = {
+    keys: function() { return Object.keys(this._options); },
+    get: function(key) { return this._options[key]; },
+    set: function(key, value) { this._options[key] = value; this._notify(); },
+    delete: function(key) { delete this._options[key]; this._notify(); },
+    forEach: function(fn, thisArg) {
+      Object.keys(this._options).forEach(function(k, i) {
+        fn.call(thisArg, this._options[k], k, i);
+      }, this);
+    }
+  };
+
   //----------------------------------------------------------------------
   //
   // Usage:
   //
   //   var map = new Map( document.getElementById('YourMapDiv') );
   //
-  //   map.OnScaleChanged   = function() { update scale indicator }
-  //   map.OnOptionsChanged = function() { update control panel }
-  //   map.OnStyleChanged   = function() { update control panel }
-  //   map.OnDisplayChanged = function() { update permalink }
-  //   map.OnHover          = function( {x, y} ) { show data }
-  //   map.OnClick          = function( {x, y} ) { show data }
-  //   map.OnDoubleClick    = function( {x, y} ) { show data }
+  //   map.OnPositionChanged = function() { update permalink }
+  //   map.OnScaleChanged    = function() { update scale indicator }
+  //   map.OnStyleChanged    = function() { update control panel }
+  //   map.OnOptionsChanged  = function() { update control panel }
   //
-  //   var hx = map.GetHexX();
-  //   var hy = map.GetHexY();
-  //   var x = map.GetX();
-  //   var y = map.GetY();
-  //   var s = map.GetScale();
-  //   var o = map.GetOptions();
+  //   map.OnHover           = function( {x, y} ) { show data }
+  //   map.OnClick           = function( {x, y} ) { show data }
+  //   map.OnDoubleClick     = function( {x, y} ) { show data }
   //
-  //   map.SetScale( scale, bRefresh );
-  //   map.SetOptions( flags, bRefresh );
-  //   map.SetStyle( style, bRefresh );
-  //   map.SetPosition( x, y );
+  //   Read-Only:
+  //     map.hexX
+  //     map.hexY
   //
-  //   map.ScaleCenterAtSectorHex( scale, sx, sy, hx, hy );
-  //   map.CenterAtSectorHex( sx, sy, hx, hy );
+  //   Read/Write:
+  //     map.x
+  //     map.y
+  //     map.scale
+  //     map.style
+  //     map.options
+  //
+  //   map.namedOptions
+  //      .keys()
+  //      .get(k)
+  //      .set(k, v)
+  //      .delete(k)
+  //      .forEach(function(value, key, index) { ... });
+  //
+  //   map.CenterAtSectorHex( sx, sy, hx, hy, {scale, immediate} );
   //   map.Scroll( dx, dy, fAnimate );
   //   map.ZoomIn();
   //   map.ZoomOut();
   //
+  //   map.ApplyURLParameters()
+  //
+  //   map.SetRoute()
   //   map.AddMarker(id, sx, sy, hx, hy, opt_url); // should have CSS style for .marker#<id>
   //   map.AddOverlay(x, y, w, h); // should have CSS style for .overlay
   //
@@ -507,8 +538,9 @@ var Util = {
 
   function sectorHexToLogical(sx, sy, hx, hy) {
     // Offset from origin
-    var x = (sx * Astrometrics.SectorWidth) + hx - Astrometrics.ReferenceHexX;
-    var y = (sy * Astrometrics.SectorHeight) + hy - Astrometrics.ReferenceHexY;
+    var world = Astrometrics.sectorHexToWorld(sx, sy, hx, hy);
+    var x = world.x;
+    var y = world.y;
 
     // Offset from the "corner" of the hex
     x -= 0.5;
@@ -532,14 +564,8 @@ var Util = {
   }
 
   function fireEvent(target, event, data) {
-    if (typeof target['On' + event] === 'function') {
-      try {
-        target['On' + event](data);
-      } catch (ex) {
-        if (console && console.error)
-          console.error('Event handler for ' + event + ' threw:', ex);
-      }
-    }
+    if (typeof target['On' + event] !== 'function') return;
+    setTimeout(target['On' + event], 0, data);
   }
 
   // ======================================================================
@@ -548,29 +574,34 @@ var Util = {
 
   function log2(v) { return Math.log(v) / Math.LN2; }
   function pow2(v) { return Math.pow(2, v); }
+  function dist(x, y) { return Math.sqrt(x*x + y*y); }
 
   var SINK_OFFSET = 1000;
 
   function TravellerMap(container) {
-    var self = this;
-
     this.container = container;
     this.rect = container.getBoundingClientRect();
 
     this.min_scale = -5;
     this.max_scale = 10;
 
-    this.options = Defaults.options;
-    this.style = Defaults.style;
-    this.tileOptions = {};
+    // Exposed via getters/setters
+    this._options = Defaults.options;
+    this._style = Defaults.style;
 
-    this.scale = 1;
-    this.x = 0;
-    this.y = 0;
+    this._logScale = 1;
+    this._tx = 0;
+    this._ty = 0;
 
     this.tilesize = 256;
 
     this.cache = new LRUCache(64);
+
+    this.namedOptions = new NamedOptions((function() {
+      this.cache.clear();
+      this.invalidate();
+      fireEvent(this, 'OptionsChanged', this.options);
+    }).bind(this));
 
     this.loading = {};
     this.pass = 0;
@@ -603,8 +634,8 @@ var Util = {
       this.canvas = canvas;
 
       this.resetCanvas = function() {
-        var cw = self.rect.width;
-        var ch = self.rect.height;
+        var cw = this.rect.width;
+        var ch = this.rect.height;
 
         var dpr = 'devicePixelRatio' in window ? window.devicePixelRatio : 1;
 
@@ -650,54 +681,28 @@ var Util = {
     // Event Handlers
     // ======================================================================
 
-    function eventCoords(event) {
-      // Attempt to get transformed coords; offsetX/Y for Chrome/Safari/IE,
-      // layerX/Y for Firefox. Touch events lack these, so compute untransformed
-      // coords.
-      // TODO: Map touch coordinates back into world-space.
-      var offsetX = 'offsetX' in event ? event.offsetX :
-            'layerX' in event ? event.layerX :
-            event.pageX - event.target.offsetLeft;
-      var offsetY = 'offsetY' in event ? event.offsetY :
-            'layerY' in event ? event.layerY :
-            event.pageY - event.target.offsetTop;
-
-      return {
-        x: offsetX - SINK_OFFSET - self.rect.left,
-        y: offsetY - SINK_OFFSET - self.rect.top
-      };
-    }
-
-    function eventToHexCoords(event) {
-      var f = pow2(1 - self.scale) / self.tilesize;
-      var coords = eventCoords(event);
-      var cx = self.x + f * (coords.x + self.rect.left - self.rect.width / 2),
-          cy = self.y + f * (coords.y + self.rect.top - self.rect.height / 2);
-      return logicalToHex(cx * self.tilesize, cy * -self.tilesize);
-    }
-
     var dragging, drag_x, drag_y;
-    container.addEventListener('mousedown', function(e) {
-      self.cancelAnimation();
+    container.addEventListener('mousedown', (function(e) {
+      this.cancelAnimation();
       container.focus();
       dragging = true;
-      var coords = eventCoords(e);
+      var coords = this.eventCoords(e);
       drag_x = coords.x;
       drag_y = coords.y;
       container.classList.add('dragging');
 
       e.preventDefault();
       e.stopPropagation();
-    }, true);
+    }).bind(this), true);
 
     var hover_x, hover_y;
-    container.addEventListener('mousemove', function(e) {
+    container.addEventListener('mousemove', (function(e) {
       if (dragging) {
-        var coords = eventCoords(e);
+        var coords = this.eventCoords(e);
         var dx = drag_x - coords.x;
         var dy = drag_y - coords.y;
 
-        self.offset(dx, dy);
+        this._offset(dx, dy);
 
         drag_x = coords.x;
         drag_y = coords.y;
@@ -705,16 +710,16 @@ var Util = {
         e.stopPropagation();
       }
 
-      var hex = eventToHexCoords(e);
+      var hex = this.eventToHexCoords(e);
 
       // Throttle the events
-      if (hover_x !== hex.hx || hover_y !== hex.hy) {
-        hover_x = hex.hx;
-        hover_y = hex.hy;
-        fireEvent(self, 'Hover', { x: hex.hx, y: hex.hy });
-      }
+      if (hover_x === hex.hx && hover_y === hex.hy)
+        return;
 
-    }, true);
+      hover_x = hex.hx;
+      hover_y = hex.hy;
+      fireEvent(this, 'Hover', { x: hex.hx, y: hex.hy });
+    }).bind(this), true);
 
     document.addEventListener('mouseup', function(e) {
       if (dragging) {
@@ -725,139 +730,128 @@ var Util = {
       }
     });
 
-    container.addEventListener('click', function(e) {
+    container.addEventListener('click', (function(e) {
       e.preventDefault();
       e.stopPropagation();
 
-      var hex = eventToHexCoords(e);
-      fireEvent(self, 'Click', { x: hex.hx, y: hex.hy });
-    });
+      var hex = this.eventToHexCoords(e);
+      fireEvent(this, 'Click', { x: hex.hx, y: hex.hy });
+    }).bind(this));
 
-    container.addEventListener('dblclick', function(e) {
-      self.cancelAnimation();
+    container.addEventListener('dblclick', (function(e) {
+      this.cancelAnimation();
 
       e.preventDefault();
       e.stopPropagation();
 
       var MAX_DOUBLECLICK_SCALE = 9;
-      if (self.scale >= MAX_DOUBLECLICK_SCALE)
+      if (this._logScale >= MAX_DOUBLECLICK_SCALE)
         return;
 
-      var newscale = self.scale + CLICK_SCALE_DELTA * ((e.altKey) ? 1 : -1);
+      var newscale = this._logScale + CLICK_SCALE_DELTA * ((e.altKey) ? 1 : -1);
       newscale = Math.min(newscale, MAX_DOUBLECLICK_SCALE);
 
-      coords = eventCoords(e);
-      self.setScale(newscale, coords.x, coords.y);
+      var coords = this.eventCoords(e);
+      this._setScale(newscale, coords.x, coords.y);
 
-      // Compute the physical coordinates
-      var f = pow2(1 - self.scale) / self.tilesize,
-          coords = eventCoords(e),
-          cx = self.x + f * (coords.x - self.rect.width / 2),
-          cy = self.y + f * (coords.y - self.rect.height / 2),
-          hex = logicalToHex(cx * self.tilesize, cy * -self.tilesize);
+      var hex = this.eventToHexCoords(e);
+      fireEvent(this, 'DoubleClick', { x: hex.hx, y: hex.hy });
+    }).bind(this));
 
-      fireEvent(self, 'DoubleClick', { x: hex.hx, y: hex.hy });
-    });
-
-    var wheelListener = function(e) {
-      self.cancelAnimation();
+    var wheelListener = (function(e) {
+      this.cancelAnimation();
       var delta = e.detail ? e.detail * -40 : e.wheelDelta;
 
-      var newscale = self.scale + SCROLL_SCALE_DELTA * ((delta > 0) ? -1 : (delta < 0) ? 1 : 0);
+      var newscale = this._logScale + SCROLL_SCALE_DELTA * ((delta > 0) ? -1 : (delta < 0) ? 1 : 0);
 
-      var coords = eventCoords(e);
-      self.setScale(newscale, coords.x, coords.y);
+      var coords = this.eventCoords(e);
+      this._setScale(newscale, coords.x, coords.y);
 
       e.preventDefault();
       e.stopPropagation();
-    };
+    }).bind(this);
     container.addEventListener('mousewheel', wheelListener); // IE/Chrome/Safari/Opera
     container.addEventListener('DOMMouseScroll', wheelListener); // FF
 
-    window.addEventListener('resize', function() {
+    window.addEventListener('resize', (function() {
       var rect = container.getBoundingClientRect();
-      if (rect.left === self.rect.left &&
-          rect.top === self.rect.top &&
-          rect.width === self.rect.width &&
-          rect.height === self.rect.height) return;
-      self.rect = rect;
-      if (self.canvas)
-        self.resetCanvas();
-      self.redraw(true);
-    });
+      if (rect.left === this.rect.left &&
+          rect.top === this.rect.top &&
+          rect.width === this.rect.width &&
+          rect.height === this.rect.height) return;
+      this.rect = rect;
+      if (this.canvas)
+        this.resetCanvas();
+      this.redraw(true);
+    }).bind(this));
 
     var pinch_x1, pinch_y1, pinch_x2, pinch_y2;
     var touch_x, touch_y;
 
-    container.addEventListener('touchmove', function(e) {
-      function dist(x1, y1, x2, y2) {
-        var dx = x2 - x1, dy = y2 - y1;
-        return Math.sqrt(dx * dx + dy * dy);
-      }
-
+    container.addEventListener('touchmove', (function(e) {
       if (e.touches.length === 1) {
 
-        var coords = eventCoords(e.touches[0]);
+        var coords = this.eventCoords(e.touches[0]);
         var dx = touch_x - coords.x;
         var dy = touch_y - coords.y;
 
-        self.offset(dx, dy);
+        this._offset(dx, dy);
 
         touch_x = coords.x;
         touch_y = coords.y;
 
       } else if (e.touches.length === 2) {
 
-        var od = dist(pinch_x1, pinch_y1, pinch_x2, pinch_y2),
+        var od = dist(pinch_x2 - pinch_x1, pinch_y2 - pinch_y1),
             ocx = (pinch_x1 + pinch_x2) / 2,
             ocy = (pinch_y1 + pinch_y2) / 2;
 
-        var coords0 = eventCoords(e.touches[0]),
-            coords1 = eventCoords(e.touches[1]);
+        var coords0 = this.eventCoords(e.touches[0]),
+            coords1 = this.eventCoords(e.touches[1]);
         pinch_x1 = coords0.x;
         pinch_y1 = coords0.y;
         pinch_x2 = coords1.x;
         pinch_y2 = coords1.y;
 
-        var nd = dist(pinch_x1, pinch_y1, pinch_x2, pinch_y2),
+        var nd = dist(pinch_x2 - pinch_x1, pinch_y2 - pinch_y1),
             ncx = (pinch_x1 + pinch_x2) / 2,
             ncy = (pinch_y1 + pinch_y2) / 2;
 
-        self.offset(ocx - ncx, ocy - ncy);
+        this._offset(ocx - ncx, ocy - ncy);
 
-        var newscale = self.scale + log2(nd / od);
-        self.setScale(newscale, ncx, ncy);
+        var newscale = this._logScale + log2(nd / od);
+        this._setScale(newscale, ncx, ncy);
       }
 
       e.preventDefault();
       e.stopPropagation();
-    }, true);
+    }).bind(this), true);
 
-    container.addEventListener('touchend', function(e) {
+    container.addEventListener('touchend', (function(e) {
       if (e.touches.length < 2) {
-        self.defer_loading = false;
-        self.invalidate();
+        this.defer_loading = false;
+        this.invalidate();
       }
 
       if (e.touches.length === 1) {
-        var coords = eventCoords(e.touches[0]);
+        var coords = this.eventCoords(e.touches[0]);
         touch_x = coords.x;
         touch_y = coords.y;
       }
 
       e.preventDefault();
       e.stopPropagation();
-    }, true);
+    }).bind(this), true);
 
-    container.addEventListener('touchstart', function(e) {
+    container.addEventListener('touchstart', (function(e) {
       if (e.touches.length === 1) {
-        var coords = eventCoords(e.touches[0]);
+        var coords = this.eventCoords(e.touches[0]);
         touch_x = coords.x;
         touch_y = coords.y;
       } else if (e.touches.length === 2) {
-        self.defer_loading = true;
-        var coords0 = eventCoords(e.touches[0]),
-            coords1 = eventCoords(e.touches[1]);
+        this.defer_loading = true;
+        var coords0 = this.eventCoords(e.touches[0]),
+            coords1 = this.eventCoords(e.touches[1]);
         pinch_x1 = coords0.x;
         pinch_y1 = coords0.y;
         pinch_x2 = coords1.x;
@@ -866,9 +860,9 @@ var Util = {
 
       e.preventDefault();
       e.stopPropagation();
-    }, true);
+    }).bind(this), true);
 
-    container.addEventListener('keydown', function(e) {
+    container.addEventListener('keydown', (function(e) {
       if (e.ctrlKey || e.altKey || e.metaKey)
         return;
 
@@ -885,23 +879,23 @@ var Util = {
 
       switch (e.keyCode) {
         case VK_UP:
-        case VK_I: self.Scroll(0, -KEY_SCROLL_DELTA); break;
+        case VK_I: this.Scroll(0, -KEY_SCROLL_DELTA); break;
         case VK_LEFT:
-        case VK_J: self.Scroll(-KEY_SCROLL_DELTA, 0); break;
+        case VK_J: this.Scroll(-KEY_SCROLL_DELTA, 0); break;
         case VK_DOWN:
-        case VK_K: self.Scroll(0, KEY_SCROLL_DELTA); break;
+        case VK_K: this.Scroll(0, KEY_SCROLL_DELTA); break;
         case VK_RIGHT:
-        case VK_L: self.Scroll(KEY_SCROLL_DELTA, 0); break;
-        case VK_SUBTRACT: self.ZoomOut(); break;
-        case VK_EQUALS: self.ZoomIn(); break;
+        case VK_L: this.Scroll(KEY_SCROLL_DELTA, 0); break;
+        case VK_SUBTRACT: this.ZoomOut(); break;
+        case VK_EQUALS: this.ZoomIn(); break;
         default: return;
       }
 
       e.preventDefault();
       e.stopPropagation();
-    });
+    }).bind(this));
 
-    self.invalidate();
+    this.invalidate();
 
     if (window == window.top) // == for IE
       container.focus();
@@ -911,55 +905,45 @@ var Util = {
   // Internal Methods
   // ======================================================================
 
-  TravellerMap.prototype.offset = function(dx, dy) {
-    if (dx === 0 && dy === 0)
-      return;
-
-    var f = pow2(1 - this.scale) / this.tilesize;
-
-    this.x = this.x + dx * f;
-    this.y = this.y + dy * f;
-    this.invalidate();
-    fireEvent(this, 'DisplayChanged');
+  TravellerMap.prototype._offset = function(dx, dy) {
+    this.x += dx / this.scale;
+    this.y -= dy / this.scale;
   };
 
-  TravellerMap.prototype.setScale = function(newscale, px, py) {
+  TravellerMap.prototype._setScale = function(newscale, px, py) {
+    newscale = Math.max(Math.min(newscale, this.max_scale), this.min_scale);
+    if (newscale === this._logScale)
+      return;
+
     var cw = this.rect.width,
         ch = this.rect.height;
 
-    newscale = Math.max(Math.min(newscale, this.max_scale), this.min_scale);
-    if (newscale !== this.scale) {
-      // Mathmagic to preserve hover coordinates
-      var f, hx, hy;
-      if (arguments.length >= 3) {
-        f = pow2(1 - this.scale) / this.tilesize;
-        hx = this.x + (px - cw / 2) * f;
-        hy = this.y + (py - ch / 2) * f;
-      }
-
-      this.scale = newscale;
-
-      if (arguments.length >= 3) {
-        f = pow2(1 - this.scale) / this.tilesize;
-        this.x = hx - (px - cw / 2) * f;
-        this.y = hy - (py - ch / 2) * f;
-        fireEvent(this, 'DisplayChanged');
-      }
-
-      this.invalidate();
-      fireEvent(this, 'ScaleChanged', this.GetScale());
+    // Mathmagic to preserve hover coordinates
+    var hx, hy;
+    if (arguments.length >= 3) {
+      hx = (this.x + (px - cw / 2) / this.scale) / this.tilesize;
+      hy = (-this.y + (py - ch / 2) / this.scale) / this.tilesize;
     }
+
+    this._logScale = newscale;
+
+    if (arguments.length >= 3) {
+      this.x = hx * this.tilesize - (px - cw / 2) / this.scale;
+      this.y = -(hy * this.tilesize - (py - ch / 2) / this.scale);
+    }
+
+    this.invalidate();
+    fireEvent(this, 'ScaleChanged', this.scale);
   };
 
   TravellerMap.prototype.invalidate = function() {
     this.dirty = true;
-    var self = this;
-    if (!self._raf_handle) {
-      self._raf_handle = requestAnimationFrame(function invalidationRAF(ms) {
-        self._raf_handle = null;
-        self.redraw();
-      });
-    }
+    if (this._raf_handle) return;
+
+    this._raf_handle = requestAnimationFrame((function invalidationRAF(ms) {
+      this._raf_handle = null;
+      this.redraw();
+    }).bind(this));
   };
 
   TravellerMap.prototype.redraw = function(force) {
@@ -968,13 +952,11 @@ var Util = {
 
     this.dirty = false;
 
-    var self = this,
-
     // Integral scale (the tiles that will be used)
-        tscale = Math.round(this.scale),
+    var tscale = Math.round(this._logScale),
 
     // How the tiles themselves are scaled (naturally 1, unless pinched)
-        tmult = pow2(this.scale - tscale),
+        tmult = pow2(this._logScale - tscale),
 
     // From map space to tile space
     // (Traveller map coords change at each integral zoom level)
@@ -984,10 +966,10 @@ var Util = {
         cw = this.rect.width,
         ch = this.rect.height,
 
-        l = this.x * cf - (cw / 2) / (this.tilesize * tmult),
-        r = this.x * cf + (cw / 2) / (this.tilesize * tmult),
-        t = this.y * cf - (ch / 2) / (this.tilesize * tmult),
-        b = this.y * cf + (ch / 2) / (this.tilesize * tmult),
+        l = this._tx * cf - (cw / 2) / (this.tilesize * tmult),
+        r = this._tx * cf + (cw / 2) / (this.tilesize * tmult),
+        t = this._ty * cf - (ch / 2) / (this.tilesize * tmult),
+        b = this._ty * cf + (ch / 2) / (this.tilesize * tmult),
 
     // Initial z - leave room for lower/higher scale tiles
         z = 10 + this.max_scale - this.min_scale,
@@ -1008,7 +990,7 @@ var Util = {
     this.pass = (this.pass + 1) % 256;
 
     if (!this._rd_cb)
-      this._rd_cb = function() { self.invalidate(); };
+      this._rd_cb = (function() { this.invalidate(); }).bind(this);
 
     var tileCount = (r - l + 1) * (b - t + 1);
     this.cache.ensureCapacity(tileCount * 2);
@@ -1037,49 +1019,43 @@ var Util = {
     }
 
     // Reposition markers and overlays
-    var i;
-    for (i = 0; i < this.markers.length; i += 1)
-      this.drawMarker(this.markers[i]);
-
-    for (i = 0; i < this.overlays.length; i += 1)
-      this.drawOverlay(this.overlays[i]);
+    this.markers.forEach(this.drawMarker, this);
+    this.overlays.forEach(this.drawOverlay, this);
 
     if (this.route)
       this.drawRoute(this.route);
 
     // "Empress Wave" Overlay
     (function() {
-      if (self.tileOptions['ew'] && self.ctx) {
-        var scale = pow2(self.scale - 1);
+      if (this.namedOptions.get('ew') && this.ctx) {
+        var ctx = this.ctx;
         var x = 0, y = 7000, r = 6820;
         var w = 20;
 
-        var ctx = self.ctx;
         ctx.save();
-        ctx.translate(-self.canvas.offset_x, -self.canvas.offset_y);
+        ctx.translate(-this.canvas.offset_x, -this.canvas.offset_y);
         ctx.globalCompositeOperation = 'source-over';
         ctx.globalAlpha = 0.3;
-        ctx.lineWidth = w * scale;
-        ctx.strokeStyle = 'yellow';
+        ctx.lineWidth = w * this.scale;
+        ctx.strokeStyle = styleLookup(this.style, 'ew_color');
         ctx.beginPath();
-        var pt = self.logicalToPixel(x, y);
+        var pt = this.logicalToPixel(x, y);
         ctx.arc(pt.x,
                 pt.y,
-                scale * r,
+                this.scale * r,
                 Math.PI/2 - Math.PI/12,
                 Math.PI/2 + Math.PI/12);
         ctx.stroke();
         ctx.restore();
       }
-    }());
+    }).bind(this)();
   };
 
   // Draw a rectangle (x1, y1) to (x2, y2) (or,  (l,t) to (r,b))
   // Recursive. Base Cases are: single tile or vertical|horizontal line
   // Decreasingly find the next-smaller rectangle to draw, then start drawing outward from the smallest rect to draw
   TravellerMap.prototype.drawRectangle = function(x1, y1, x2, y2, scale, mult, ch, cw, cf, zIndex, callback) {
-    var self = this;
-
+    var $this = this;
     var sizeMult = this.tilesize * mult;
 
     var dw = sizeMult;
@@ -1102,9 +1078,9 @@ var Util = {
     function fill(x1, y1, x2, y2) {
       for (var x = x1; x <= x2; ++x) {
         for (var y = y1; y <= y2; ++y) {
-          var dx = (x - self.x * cf) * self.tilesize * mult + (cw / 2);
-          var dy = (y - self.y * cf) * self.tilesize * mult + (ch / 2);
-          self.drawTile(x, y, scale, dx, dy, dw, dh, zIndex, callback);
+          var dx = (x - $this._tx * cf) * $this.tilesize * mult + (cw / 2);
+          var dy = (y - $this._ty * cf) * $this.tilesize * mult + (ch / 2);
+          $this.drawTile(x, y, scale, dx, dy, dw, dh, zIndex, callback);
         }
       }
     }
@@ -1117,22 +1093,22 @@ var Util = {
   // is called (which should redraw the whole map).
   //
   TravellerMap.prototype.drawTile = function(x, y, scale, dx, dy, dw, dh, zIndex, callback) {
-    var self = this; // for closures
+    var $this = this; // for closures
 
     function drawImage(img, x, y, w, h, z) {
-      if (self.ctx) {
-        x -= self.canvas.offset_x;
-        y -= self.canvas.offset_y;
+      if ($this.ctx) {
+        x -= $this.canvas.offset_x;
+        y -= $this.canvas.offset_y;
         var px = x | 0;
         var py = y | 0;
         var pw = ((x + w) | 0) - px;
         var ph = ((y + h) | 0) - py;
-        self.ctx.globalCompositeOperation = 'destination-over';
-        self.ctx.drawImage(img, px, py, pw, ph);
+        $this.ctx.globalCompositeOperation = 'destination-over';
+        $this.ctx.drawImage(img, px, py, pw, ph);
         return;
       }
 
-      if (img.parentNode !== self.container) self.container.appendChild(img);
+      if (img.parentNode !== $this.container) $this.container.appendChild(img);
 
       img.style.left = Math.floor(x) + 'px';
       img.style.top = Math.floor(y) + 'px';
@@ -1140,7 +1116,7 @@ var Util = {
       img.style.height = Math.ceil(h) + 'px';
 
       img.style.zIndex = z;
-      img.pass = self.pass;
+      img.pass = $this.pass;
     }
 
     var img = this.getTile(x, y, scale, callback);
@@ -1153,7 +1129,7 @@ var Util = {
     // Otherwise, while we're waiting, see if we have upscale/downscale versions to draw instead
 
     function drawLower(x, y, scale, dx, dy, dw, dh, zIndex) {
-      if (scale <= self.min_scale)
+      if (scale <= $this.min_scale)
         return;
 
       var tscale = scale - 1;
@@ -1167,7 +1143,7 @@ var Util = {
       var aw = dw * factor;
       var ah = dh * factor;
 
-      var img = self.getTile(tx, ty, tscale);
+      var img = $this.getTile(tx, ty, tscale);
       if (img)
         drawImage(img, ax, ay, aw, ah, zIndex);
       else
@@ -1176,7 +1152,7 @@ var Util = {
     drawLower(x, y, scale, dx, dy, dw, dh, zIndex - 1);
 
     function drawHigher(x, y, scale, dx, dy, dw, dh, zIndex) {
-      if (scale >= self.max_scale)
+      if (scale >= $this.max_scale)
         return;
 
       var tscale = scale + 1;
@@ -1187,7 +1163,7 @@ var Util = {
 
           var tx = (x / factor) + ox;
           var ty = (y / factor) + oy;
-          var img = self.getTile(tx, ty, tscale);
+          var img = $this.getTile(tx, ty, tscale);
 
           var ax = dx + ox * dw * factor;
           var ay = dy + oy * dh * factor;
@@ -1213,9 +1189,9 @@ var Util = {
   //
   TravellerMap.prototype.getTile = function(x, y, scale, callback) {
     var params = {x: x, y: y, scale: pow2(scale - 1), options: this.options, style: this.style};
-    Object.keys(this.tileOptions).forEach(function(key) {
-      params[key] = this.tileOptions[key];
-    }, this);
+    this.namedOptions.forEach(function(value, key) {
+      params[key] = value;
+    });
 
     if ('devicePixelRatio' in window && window.devicePixelRatio > 1)
       params.dpr = window.devicePixelRatio;
@@ -1243,20 +1219,20 @@ var Util = {
 
     // Nope, better try loading it
     this.loading[url] = true;
-    var self = this; // for event handler closures
+
     img = document.createElement('img');
-    img.onload = function() {
-      delete self.loading[url];
-      self.cache.insert(url, img);
+    img.onload = (function() {
+      delete this.loading[url];
+      this.cache.insert(url, img);
       callback(img);
       img.onload = null;
       img.onerror = null;
-    };
-    img.onerror = function() {
-      delete self.loading[url];
+    }).bind(this);
+    img.onerror = (function() {
+      delete this.loading[url];
       img.onload = null;
       img.onerror = null;
-    };
+    }).bind(this);
     img.className = 'tile';
     img.src = url;
     img.style.position = 'absolute';
@@ -1264,17 +1240,13 @@ var Util = {
     return undefined;
   };
 
-  TravellerMap.prototype.shouldAnimateToSectorHex = function(scale, sx, sy, hx, hy) {
+  TravellerMap.prototype.shouldAnimateTo = function(scale, x, y) {
     // TODO: Allow scale changes if target is "visible" (zooming in)
-    if (scale !== this.scale)
+    if (scale !== this._logScale)
       return false;
 
-    var target = sectorHexToLogical(sx, sy, hx, hy),
-        dx = target.x - this.GetX(),
-        dy = target.y - this.GetY();
-
-    var THRESHOLD = 2 * Astrometrics.SectorHeight;
-    return Math.sqrt(dx * dx + dy * dy) < THRESHOLD;
+    var threshold = 2 * Astrometrics.SectorHeight * 64 / this.scale;
+    return dist(x - this.x, y - this.y) < threshold;
   };
 
   TravellerMap.prototype.cancelAnimation = function() {
@@ -1284,30 +1256,27 @@ var Util = {
     }
   };
 
-  TravellerMap.prototype.animateToSectorHex = function(scale, sx, sy, hx, hy) {
+  TravellerMap.prototype.animateTo = function(scale, x, y) {
     this.cancelAnimation();
-    var target = sectorHexToLogical(sx, sy, hx, hy),
-        os = this.GetScale(),
-        ox = this.GetX(),
-        oy = this.GetY(),
-        ts = scale,
-        tx = target.x,
-        ty = target.y;
-    if (ox === tx && oy === ty && os === ts)
+    var os = this.scale,
+        ox = this.x,
+        oy = this.y;
+    if (ox === x && oy === y && os === scale)
       return;
 
     this.animation = new Animation(2.0, function(p) {
       return Animation.smooth(p, 1.0, 0.1, 0.25);
     });
-    var self = this;
-    this.animation.onanimate = function(p) {
+
+    this.animation.onanimate = (function(p) {
       // Interpolate scale in log space.
-      self.SetScale(pow2(Animation.interpolate(log2(os), log2(ts), p)));
+      this.scale = pow2(Animation.interpolate(log2(os), log2(scale), p));
       // TODO: If animating scale, this should follow an arc (parabola?) through 3space treating
       // scale as Z and computing a height such that the target is in view at the turnaround.
-      self.SetPosition(Animation.interpolate(ox, tx, p), Animation.interpolate(oy, ty, p));
-      self.redraw();
-    };
+      this.x = Animation.interpolate(ox, x, p);
+      this.y = Animation.interpolate(oy, y, p);
+      this.redraw();
+    }).bind(this);
   };
 
   TravellerMap.prototype.drawOverlay = function(overlay) {
@@ -1316,7 +1285,7 @@ var Util = {
     var pt2 = this.logicalToPixel(overlay.x + overlay.w, overlay.y + overlay.h);
 
     if (this.ctx) {
-      var scale = pow2(self.scale - 1);
+      var scale = this.scale;
       var x = -164, y = 7000, r = 6820;
       var w = 20;
 
@@ -1350,72 +1319,70 @@ var Util = {
 
   TravellerMap.prototype.drawRoute = function(route) {
     if (!this.ctx) return;
-    var self = this;
     var ctx = this.ctx;
     ctx.save();
-    ctx.translate(-self.canvas.offset_x, -self.canvas.offset_y);
+    ctx.translate(-this.canvas.offset_x, -this.canvas.offset_y);
     ctx.globalCompositeOperation = 'source-over';
     ctx.globalAlpha = 0.5;
-    ctx.strokeStyle = 'green';
-    if (this.scale >= 7)
-      ctx.lineWidth = 0.25 * pow2(this.scale - 1);
+    ctx.strokeStyle = styleLookup(this.style, 'route_color');
+    if (this._logScale >= 7)
+      ctx.lineWidth = 0.25 * this.scale;
     else
       ctx.lineWidth = 15;
 
     ctx.beginPath();
     route.forEach(function(world, index) {
       var pt = sectorHexToLogical(world.sx, world.sy, world.hx, world.hy);
-      pt = self.logicalToPixel(pt.x, pt.y);
+      pt = this.logicalToPixel(pt.x, pt.y);
       ctx[index ? 'lineTo' : 'moveTo'](pt.x, pt.y);
-    });
-    var dots = (this.scale >= 7) ? route : [route[0], route[route.length - 1]];
+    }, this);
+    var dots = (this._logScale >= 7) ? route : [route[0], route[route.length - 1]];
     dots.forEach(function(world, index) {
       var pt = sectorHexToLogical(world.sx, world.sy, world.hx, world.hy);
-      pt = self.logicalToPixel(pt.x, pt.y);
+      pt = this.logicalToPixel(pt.x, pt.y);
       ctx.moveTo(pt.x + ctx.lineWidth / 2, pt.y);
       ctx.arc(pt.x, pt.y, ctx.lineWidth / 2, 0, Math.PI*2);
-    });
+    }, this);
 
     ctx.stroke();
     ctx.restore();
   };
 
   TravellerMap.prototype.drawMarker = function(marker) {
-    var self = this;
     var pt = sectorHexToLogical(marker.sx, marker.sy, marker.hx, marker.hy);
     pt = this.logicalToPixel(pt.x, pt.y);
 
     if (this.ctx && marker.url) {
       (function() {
-        var image = stash.get(marker.url, function() { self.invalidate(); });
+        var image = stash.get(marker.url, this.invalidate.bind(this));
         if (!image) return;
 
         var MARKER_SIZE = 128;
-        var ctx = self.ctx;
+        var ctx = this.ctx;
         ctx.save();
-        ctx.translate(-self.canvas.offset_x, -self.canvas.offset_y);
+        ctx.translate(-this.canvas.offset_x, -this.canvas.offset_y);
         ctx.globalCompositeOperation = 'source-over';
         ctx.drawImage(image,
                       pt.x - MARKER_SIZE/2, pt.y - MARKER_SIZE/2,
                       MARKER_SIZE, MARKER_SIZE);
         ctx.restore();
-      }());
+      }).bind(this)();
       return;
     }
 
-    if (this.ctx && styleLookup(self.style, marker.id + '_url')) {
+    if (this.ctx && styleLookup(this.style, marker.id + '_url')) {
       (function() {
-       var url = styleLookup(self.style, marker.id + '_url');
-        var image = stash.get(url, function() { self.invalidate(); });
+       var url = styleLookup(this.style, marker.id + '_url');
+        var image = stash.get(url, this.invalidate.bind(this));
         if (!image) return;
 
-        var ctx = self.ctx;
+        var ctx = this.ctx;
         ctx.save();
-        ctx.translate(-self.canvas.offset_x, -self.canvas.offset_y);
+        ctx.translate(-this.canvas.offset_x, -this.canvas.offset_y);
         ctx.globalCompositeOperation = 'source-over';
         ctx.drawImage(image, pt.x, pt.y);
         ctx.restore();
-      }());
+      }).bind(this)();
       return;
     }
 
@@ -1439,159 +1406,170 @@ var Util = {
   };
 
   TravellerMap.prototype.logicalToPixel = function(lx, ly) {
-    var f = pow2(1 - this.scale) / this.tilesize;
     return {
-      x: ((lx / this.tilesize - this.x) / f) + this.rect.width / 2,
-      y: ((ly / -this.tilesize - this.y) / f) + this.rect.height / 2
+      x: (lx - this._tx / this.tilesize) * this.scale + this.rect.width / 2,
+      y: (-ly - this._ty / this.tilesize) * this.scale + this.rect.height / 2
     };
   };
+
+  TravellerMap.prototype.eventCoords = function(event) {
+    // Attempt to get transformed coords; offsetX/Y for Chrome/Safari/IE,
+    // layerX/Y for Firefox. Touch events lack these, so compute untransformed
+    // coords.
+    // TODO: Map touch coordinates back into world-space.
+    var offsetX = 'offsetX' in event ? event.offsetX :
+          'layerX' in event ? event.layerX :
+          event.pageX - event.target.offsetLeft;
+    var offsetY = 'offsetY' in event ? event.offsetY :
+          'layerY' in event ? event.layerY :
+          event.pageY - event.target.offsetTop;
+
+    return {
+      x: offsetX - SINK_OFFSET - this.rect.left,
+      y: offsetY - SINK_OFFSET - this.rect.top
+    };
+    };
+
+  TravellerMap.prototype.eventToHexCoords = function(event) {
+    var s = this.scale * this.tilesize;
+    var coords = this.eventCoords(event);
+    var cx = this._tx + (coords.x + this.rect.left - this.rect.width / 2) / s,
+        cy = this._ty + (coords.y + this.rect.top - this.rect.height / 2) / s;
+    return logicalToHex(cx * this.tilesize, cy * -this.tilesize);
+  };
+
 
   // ======================================================================
   // Public API
   // ======================================================================
 
-  TravellerMap.prototype.GetHexX = function() {
-    return logicalToHex(this.GetX(), this.GetY()).hx;
-  };
+  Object.defineProperties(TravellerMap.prototype, {
+    scale: {
+      get: function() { return pow2(this._logScale - 1); },
+      set: function(value) {
+        value = 1 + log2(Number(value));
+        if (value === this._logScale)
+          return;
+        this._setScale(value);
+      },
+      enumerable: true, configurable: true
+    },
 
-  TravellerMap.prototype.GetHexY = function() {
-    return logicalToHex(this.GetX(), this.GetY()).hy;
-  };
+    options: {
+      get: function() { return this._options; },
+      set: function(value) {
+        if (LEGACY_STYLES) {
+          // Handle legacy styles specified in options bits
+          if ((value & MapOptions.StyleMaskDeprecated) === MapOptions.PrintStyleDeprecated)
+            this.style = 'atlas';
+          else if ((value & MapOptions.StyleMaskDeprecated) === MapOptions.CandyStyleDeprecated)
+            this.style = 'candy';
+          value = value & ~MapOptions.StyleMaskDeprecated;
+        }
 
-  TravellerMap.prototype.GetScale = function() {
-    return pow2(this.scale - 1);
-  };
+        if (value === this._options) return;
 
-  TravellerMap.prototype.SetScale = function(scale) {
-    scale = 1 + log2(Number(scale));
-    if (scale === this.scale)
-      return;
-    this.setScale(scale);
-  };
+        this._options = value & MapOptions.Mask;
+        this.cache.clear();
+        this.invalidate();
+        fireEvent(this, 'OptionsChanged', this._options);
+      },
+      enumerable: true, configurable: true
+    },
 
-  TravellerMap.prototype.GetOptions = function() {
-    return this.options;
-  };
+    style: {
+      get: function() { return this._style; },
+      set: function(value) {
+        if (value === this._style) return;
 
-  TravellerMap.prototype.SetOptions = function(options) {
-    if (LEGACY_STYLES) {
-      // Handle legacy styles specified in options bits
-      if ((options & MapOptions.StyleMaskDeprecated) === MapOptions.PrintStyleDeprecated)
-        this.SetStyle('atlas');
-      else if ((options & MapOptions.StyleMaskDeprecated) === MapOptions.CandyStyleDeprecated)
-        this.SetStyle('candy');
-      options = options & ~MapOptions.StyleMaskDeprecated;
+        this._style = value;
+        this.cache.clear();
+        this.invalidate();
+        fireEvent(this, 'StyleChanged', this._style);
+      },
+      enumerable: true, configurable: true
+    },
+
+    x: {
+      get: function() { return this._tx * this.tilesize; },
+      set: function(value) {
+        value /= this.tilesize;
+        if (value === this._tx) return;
+        this._tx = value;
+        this.invalidate();
+        fireEvent(this, 'PositionChanged');
+      },
+      enumerable: true, configurable: true
+    },
+
+    y: {
+      get: function() { return this._ty * -this.tilesize; },
+      set: function(value) {
+        value /= -this.tilesize;
+        if (value === this._ty) return;
+        this._ty = value;
+        this.invalidate();
+        fireEvent(this, 'PositionChanged');
+      },
+      enumerable: true, configurable: true
+    },
+
+    hexX: {
+      get: function() { return logicalToHex(this.x, this.y).hx; },
+      enumerable: true, configurable: true
+    },
+
+    hexY: {
+      get: function() { return logicalToHex(this.x, this.y).hy; },
+      enumerable: true, configurable: true
     }
-
-    if (options === this.options)
-      return;
-
-    this.options = options & MapOptions.Mask;
-    this.cache.clear();
-    this.invalidate();
-    fireEvent(this, 'OptionsChanged', this.options);
-  };
-
-  TravellerMap.prototype.SetNamedOption = function(name, value) {
-    this.tileOptions[name] = value;
-    this.cache.clear();
-    this.invalidate();
-    fireEvent(this, 'OptionsChanged', this.options);
-  };
-  TravellerMap.prototype.GetNamedOption = function(name) {
-    return this.tileOptions[name];
-  };
-  TravellerMap.prototype.ClearNamedOption = function(name) {
-    delete this.tileOptions[name];
-    this.cache.clear();
-    this.invalidate();
-    fireEvent(this, 'OptionsChanged', this.options);
-  };
-  TravellerMap.prototype.GetNamedOptionNames = function() {
-    return Object.keys(this.tileOptions);
-  };
-
-  TravellerMap.prototype.GetStyle = function() {
-    return this.style;
-  };
-
-  TravellerMap.prototype.SetStyle = function(style) {
-    if (style === this.style)
-      return;
-
-    this.style = style;
-    this.cache.clear();
-    fireEvent(this, 'StyleChanged', this.style);
-    this.invalidate();
-  };
-
-  TravellerMap.prototype.GetX = function() {
-    return this.x * this.tilesize;
-  };
-
-  TravellerMap.prototype.GetY = function() {
-    return this.y * -this.tilesize;
-  };
-
-  TravellerMap.prototype.SetPosition = function(x, y) {
-    x /= this.tilesize;
-    y /= -this.tilesize;
-    if (x === this.x && y === this.y) {
-      return;
-    }
-    this.x = x;
-    this.y = y;
-    fireEvent(this, 'DisplayChanged');
-    this.invalidate();
-  };
+  });
 
 
   // This places the specified Sector, Hex coordinates (parsec)
-  // at the center of the viewport, with a specific scale.
-  TravellerMap.prototype.ScaleCenterAtSectorHex = function(scale, sx, sy, hx, hy) {
+  // at the center of the viewport.
+  TravellerMap.prototype.CenterAtSectorHex = function(sx, sy, hx, hy, options) {
+    options = Object.assign({}, options);
+
     this.cancelAnimation();
-
-    if (this.shouldAnimateToSectorHex(1 + log2(Number(scale)), sx, sy, hx, hy)) {
-      this.animateToSectorHex(scale, sx, sy, hx, hy);
-    } else {
-      this.SetScale(scale);
-      this.CenterAtSectorHex(sx, sy, hx, hy);
-    }
-  };
-
-
-  // This places the specified Sector, Hex coordinates (parsec)
-  // at the center of the viewport
-  TravellerMap.prototype.CenterAtSectorHex = function(sx, sy, hx, hy) {
     var target = sectorHexToLogical(sx, sy, hx, hy);
-    this.SetPosition(target.x, target.y);
+
+    if (!options.immediate &&
+        'scale' in options &&
+        this.shouldAnimateTo(1 + log2(options.scale), target.x, target.y)) {
+      this.animateTo(options.scale, target.x, target.y);
+      return;
+    }
+
+    if ('scale' in options)
+      this.scale = options.scale;
+    this.x = target.x;
+    this.y = target.y;
   };
 
 
   // Scroll the map view by the specified dx/dy (in pixels)
   TravellerMap.prototype.Scroll = function(dx, dy, fAnimate) {
+    this.cancelAnimation();
+
     if (!fAnimate) {
-      this.offset(dx, dy);
+      this._offset(dx, dy);
       return;
     }
 
-    this.cancelAnimation();
-    var f = pow2(1 - this.scale) / this.tilesize,
+    var s = this.scale * this.tilesize,
         ox = this.x,
         oy = this.y,
-        tx = ox + dx * f,
-        ty = oy + dy * f;
+        tx = ox + dx / s,
+        ty = oy + dy / s;
 
     this.animation = new Animation(1.0, function(p) {
       return Animation.smooth(p, 1.0, 0.1, 0.25);
     });
-    var self = this;
-    this.animation.onanimate = function(p) {
-      self.x = Animation.interpolate(ox, tx, p);
-      self.y = Animation.interpolate(oy, ty, p);
-      self.redraw(true);
-      fireEvent(self, 'DisplayChanged');
-    };
+    this.animation.onanimate = (function(p) {
+      this.x = Animation.interpolate(ox, tx, p);
+      this.y = Animation.interpolate(oy, ty, p);
+    }).bind(this);
   };
 
   var ZOOM_DELTA = 0.5;
@@ -1600,11 +1578,11 @@ var Util = {
   }
 
   TravellerMap.prototype.ZoomIn = function() {
-    this.setScale(roundScale(this.scale) + ZOOM_DELTA);
+    this._setScale(roundScale(this._logScale) + ZOOM_DELTA);
   };
 
   TravellerMap.prototype.ZoomOut = function() {
-    this.setScale(roundScale(this.scale) - ZOOM_DELTA);
+    this._setScale(roundScale(this._logScale) - ZOOM_DELTA);
   };
 
 
@@ -1648,7 +1626,7 @@ var Util = {
   };
 
   TravellerMap.prototype.ApplyURLParameters = function() {
-    var self = this;
+    var $this = this;
     var params = Util.parseURLQuery(document.location);
 
     function float(prop) {
@@ -1668,13 +1646,13 @@ var Util = {
     }
 
     if ('scale' in params)
-      this.SetScale(float('scale'));
+      this.scale = float('scale');
 
     if ('options' in params)
-      this.SetOptions(int('options'));
+      this.options = int('options');
 
     if ('style' in params)
-      this.SetStyle(params.style);
+      this.style = params.style;
 
     if (has(params, ['yah_sx', 'yah_sy', 'yah_hx', 'yah_hx']))
       this.AddMarker('you_are_here', int('yah_sx'), int('yah_sy'), int('yah_hx'), int('yah_hy'));
@@ -1686,7 +1664,7 @@ var Util = {
             location.hx = Astrometrics.SectorWidth / 2;
             location.hy = Astrometrics.SectorHeight / 2;
           }
-          self.AddMarker('you_are_here', location.sx, location.sy, location.hx, location.hy);
+          $this.AddMarker('you_are_here', location.sx, location.sy, location.hx, location.hy);
         }, function() {
           alert('The requested marker location "' + params.yah_sector + ('yah_hex' in params ? (' ' + params.yah_hex) : '') + '" was not found.');
         });
@@ -1698,7 +1676,7 @@ var Util = {
             location.hx = Astrometrics.SectorWidth / 2;
             location.hy = Astrometrics.SectorHeight / 2;
           }
-          self.AddMarker('custom', location.sx, location.sy, location.hx, location.hy, params.marker_url);
+          $this.AddMarker('custom', location.sx, location.sy, location.hx, location.hy, params.marker_url);
         }, function() {
           alert('The requested marker location "' + params.marker_sector + ('marker_hex' in params ? (' ' + params.marker_hex) : '') + '" was not found.');
         });
@@ -1719,27 +1697,31 @@ var Util = {
 
     // Various coordinate schemes - ordered by priority
     if (has(params, ['x', 'y'])) {
-      this.SetPosition(float('x'), float('y'));
+      this.x = float('x');
+      this.y = float('y');
     } else if (has(params, ['sx', 'sy', 'hx', 'hy', 'scale'])) {
-      this.ScaleCenterAtSectorHex(
-        float('scale'), float('sx'), float('sy'), float('hx'), float('hy'));
+      this.CenterAtSectorHex(
+        float('sx'), float('sy'), float('hx'), float('hy'), {scale: float('scale')});
     } else if ('sector' in params) {
       MapService.coordinates(params.sector, params.hex, {subsector: params.subsector})
         .then(function(location) {
           if (location.hx && location.hy) { // NOTE: Test for undefined -or- zero
-            self.ScaleCenterAtSectorHex(64, location.sx, location.sy, location.hx, location.hy);
+            $this.CenterAtSectorHex(location.sx, location.sy, location.hx, location.hy, {scale: 64});
           } else {
-            self.ScaleCenterAtSectorHex(16, location.sx, location.sy, Astrometrics.SectorWidth / 2, Astrometrics.SectorHeight / 2);
+            $this.CenterAtSectorHex(location.sx, location.sy,
+                                   Astrometrics.SectorWidth / 2, Astrometrics.SectorHeight / 2,
+                                   {scale: 16});
           }
         }, function() {
-          alert('The requested location "' + params.sector + ('hex' in params ? (' ' + params.hex) : '') + '" was not found.');
+          alert('The requested location "' + params.sector +
+                ('hex' in params ? (' ' + params.hex) : '') + '" was not found.');
         });
     }
 
     ['silly', 'routes', 'dimunofficial', 'ew', 'dw', 'rifts', 'po', 'im', 'milieu'].forEach(function(name) {
       if (name in params)
-        self.tileOptions[name] = int(name);
-    });
+        this.namedOptions.set(name, int(name));
+    }, this);
 
     return params;
   };
