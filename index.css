@@ -501,7 +501,7 @@ button:hover {
 /* Legend Box */
 
 #legendBox {
-  width: 200px;
+  width: 215px;
   max-height: 620px;
 
   text-align: center;
@@ -535,7 +535,7 @@ button:hover {
 }
 
 #legendBox section li {
-    line-height: 12pt;
+    line-height: 13pt;
 }
 
 #legendBox .glyph { display: inline-block; width: 20px; text-align: center; }
@@ -650,7 +650,7 @@ button:hover {
 #helpBox p:last-of-type { margin-bottom: 0; }
 
 #helpBox h3:first-of-type { margin-top: 0; }
-#helpBox h3 { font-style: italic; font-weight: normal;
+#helpBox h3 { x-font-style: italic; x-font-weight: normal;
               color: red;
               border-bottom: 2px solid red;
               margin-bottom: 10px; }
