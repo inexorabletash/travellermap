@@ -1407,8 +1407,8 @@ var Util = {
 
   TravellerMap.prototype.logicalToPixel = function(lx, ly) {
     return {
-      x: (lx - this._tx / this.tilesize) * this.scale + this.rect.width / 2,
-      y: (-ly - this._ty / this.tilesize) * this.scale + this.rect.height / 2
+      x: (lx - this._tx * this.tilesize) * this.scale + this.rect.width / 2,
+      y: (-ly - this._ty * this.tilesize) * this.scale + this.rect.height / 2
     };
   };
 
