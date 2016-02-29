@@ -604,7 +604,6 @@ var Util = {
     }).bind(this));
 
     this.loading = {};
-    this.pass = 0;
 
     this.defer_loading = false;
 
@@ -621,57 +620,12 @@ var Util = {
     sink.style.zIndex = 1000;
     container.appendChild(sink);
 
-    this.canvas = null;
-    this.ctx = null;
-    var canvas = document.createElement('canvas');
-    if ('getContext' in canvas && canvas.getContext('2d')) {
-      canvas.style.position = 'absolute';
-      canvas.style.zIndex = 0;
-      container.appendChild(canvas);
+    this.canvas = document.createElement('canvas');
+    this.canvas.style.position = 'absolute';
+    this.canvas.style.zIndex = 0;
+    container.appendChild(this.canvas);
 
-      var ctx = canvas.getContext('2d');
-      this.ctx = ctx;
-      this.canvas = canvas;
-
-      this.resetCanvas = function() {
-        var cw = this.rect.width;
-        var ch = this.rect.height;
-
-        var dpr = 'devicePixelRatio' in window ? window.devicePixelRatio : 1;
-
-        // iOS devices have a limit of 3 or 5 megapixels for canvas backing
-        // store; given screen resolution * ~3x size for "tilt" display this
-        // can easily be reached, so reduce effective dpr.
-        if (dpr > 1 && /\biPad\b/.test(navigator.userAgent) &&
-            (cw * ch * dpr * dpr * 2 * 2) > 3e6) {
-          dpr = 1;
-        }
-
-        // Scale factor for canvas to accomodate tilt.
-        var sx = 1.75;
-        var sy = 1.85;
-
-        // Pixel size of the canvas backing store.
-        var pw = (cw * sx * dpr) | 0;
-        var ph = (ch * sy * dpr) | 0;
-
-        // Offset of the canvas against the container.
-        var ox = (-((cw * sx) - cw) / 2) | 0;
-        var oy = (-((ch * sy) - ch) * 0.8) | 0;
-
-        this.canvas.width = pw;
-        this.canvas.height = ph;
-        this.canvas.style.width = ((cw * sx) | 0) + 'px';
-        this.canvas.style.height = ((ch * sy) | 0) + 'px';
-        this.canvas.offset_x = ox;
-        this.canvas.offset_y = oy;
-        this.canvas.style.left = ox + 'px';
-        this.canvas.style.top = oy + 'px';
-        this.ctx.setTransform(1,0,0,1,0,0);
-        this.ctx.scale(dpr, dpr);
-      };
-      this.resetCanvas();
-    }
+    this.ctx = this.canvas.getContext('2d');
 
     this.markers = [];
     this.overlays = [];
@@ -780,9 +734,7 @@ var Util = {
           rect.width === this.rect.width &&
           rect.height === this.rect.height) return;
       this.rect = rect;
-      if (this.canvas)
-        this.resetCanvas();
-      this.redraw(true);
+      this.resetCanvas();
     }).bind(this));
 
     var pinch_x1, pinch_y1, pinch_x2, pinch_y2;
@@ -895,7 +847,7 @@ var Util = {
       e.stopPropagation();
     }).bind(this));
 
-    this.invalidate();
+    this.resetCanvas();
 
     if (window == window.top) // == for IE
       container.focus();
@@ -936,6 +888,46 @@ var Util = {
     fireEvent(this, 'ScaleChanged', this.scale);
   };
 
+  TravellerMap.prototype.resetCanvas = function() {
+    var cw = this.rect.width;
+    var ch = this.rect.height;
+
+    var dpr = 'devicePixelRatio' in window ? window.devicePixelRatio : 1;
+
+    // iOS devices have a limit of 3 or 5 megapixels for canvas backing
+    // store; given screen resolution * ~3x size for "tilt" display this
+    // can easily be reached, so reduce effective dpr.
+    if (dpr > 1 && /\biPad\b/.test(navigator.userAgent) &&
+        (cw * ch * dpr * dpr * 2 * 2) > 3e6) {
+      dpr = 1;
+    }
+
+    // Scale factor for canvas to accomodate tilt.
+    var sx = 1.75;
+    var sy = 1.85;
+
+    // Pixel size of the canvas backing store.
+    var pw = (cw * sx * dpr) | 0;
+    var ph = (ch * sy * dpr) | 0;
+
+    // Offset of the canvas against the container.
+    var ox = (-((cw * sx) - cw) / 2) | 0;
+    var oy = (-((ch * sy) - ch) * 0.8) | 0;
+
+    this.canvas.width = pw;
+    this.canvas.height = ph;
+    this.canvas.style.width = ((cw * sx) | 0) + 'px';
+    this.canvas.style.height = ((ch * sy) | 0) + 'px';
+    this.canvas.offset_x = ox;
+    this.canvas.offset_y = oy;
+    this.canvas.style.left = ox + 'px';
+    this.canvas.style.top = oy + 'px';
+    this.ctx.setTransform(1,0,0,1,0,0);
+    this.ctx.scale(dpr, dpr);
+
+    this.redraw(true);
+  };
+
   TravellerMap.prototype.invalidate = function() {
     this.dirty = true;
     if (this._raf_handle) return;
@@ -972,8 +964,7 @@ var Util = {
         b = this._ty * cf + (ch / 2) / (this.tilesize * tmult),
 
     // Initial z - leave room for lower/higher scale tiles
-        z = 10 + this.max_scale - this.min_scale,
-        child, next;
+        z = 10 + this.max_scale - this.min_scale;
 
     // Quantize to bounding tiles
     l = Math.floor(l) - 1;
@@ -986,75 +977,34 @@ var Util = {
     t -= 2;
     r += 1;
 
-    // Mark used tiles with this
-    this.pass = (this.pass + 1) % 256;
-
-    if (!this._rd_cb)
-      this._rd_cb = (function() { this.invalidate(); }).bind(this);
-
     var tileCount = (r - l + 1) * (b - t + 1);
     this.cache.ensureCapacity(tileCount * 2);
 
     // TODO: Defer loading of new tiles while in the middle of a zoom gesture
     // Draw a rectanglular area of the map in a spiral from the center of the requested map outward
-    if (this.ctx) {
-      this.ctx.save();
-      this.ctx.setTransform(1, 0, 0, 1, 0, 0);
-      this.ctx.globalCompositeOperation = 'source-over';
-      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-      this.ctx.restore();
-    }
+    this.ctx.save();
+    this.ctx.setTransform(1, 0, 0, 1, 0, 0);
+    this.ctx.globalCompositeOperation = 'source-over';
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.ctx.restore();
 
-    this.drawRectangle(l, t, r, b, tscale, tmult, ch, cw, cf, z, this._rd_cb);
+    this.drawRectangle(l, t, r, b, tscale, tmult, ch, cw, cf, z);
 
-    // Hide unused tiles
-    if (!this.ctx) {
-      child = this.container.firstChild;
-      while (child) {
-        next = child.nextSibling;
-        if (child.tagName === 'IMG' && child.pass !== this.pass)
-          this.container.removeChild(child);
-        child = next;
-      }
-    }
-
-    // Reposition markers and overlays
+    // Draw markers and overlays.
     this.markers.forEach(this.drawMarker, this);
     this.overlays.forEach(this.drawOverlay, this);
 
     if (this.route)
       this.drawRoute(this.route);
 
-    // "Empress Wave" Overlay
-    (function() {
-      if (this.namedOptions.get('ew') && this.ctx) {
-        var ctx = this.ctx;
-        var x = 0, y = 7000, r = 6820;
-        var w = 20;
-
-        ctx.save();
-        ctx.translate(-this.canvas.offset_x, -this.canvas.offset_y);
-        ctx.globalCompositeOperation = 'source-over';
-        ctx.globalAlpha = 0.3;
-        ctx.lineWidth = w * this.scale;
-        ctx.strokeStyle = styleLookup(this.style, 'ew_color');
-        ctx.beginPath();
-        var pt = this.logicalToPixel(x, y);
-        ctx.arc(pt.x,
-                pt.y,
-                this.scale * r,
-                Math.PI/2 - Math.PI/12,
-                Math.PI/2 + Math.PI/12);
-        ctx.stroke();
-        ctx.restore();
-      }
-    }).bind(this)();
+    if (this.namedOptions.get('ew'))
+      this.drawEmpressWave();
   };
 
   // Draw a rectangle (x1, y1) to (x2, y2) (or,  (l,t) to (r,b))
   // Recursive. Base Cases are: single tile or vertical|horizontal line
   // Decreasingly find the next-smaller rectangle to draw, then start drawing outward from the smallest rect to draw
-  TravellerMap.prototype.drawRectangle = function(x1, y1, x2, y2, scale, mult, ch, cw, cf, zIndex, callback) {
+  TravellerMap.prototype.drawRectangle = function(x1, y1, x2, y2, scale, mult, ch, cw, cf, zIndex) {
     var $this = this;
     var sizeMult = this.tilesize * mult;
 
@@ -1066,7 +1016,7 @@ var Util = {
       fill(x1, y1, x2, y2);
     } else {
       // Recurse - draw inner rectangle 1 dimension smaller.
-      this.drawRectangle(x1 + 1, y1 + 1, x2 - 1, y2 - 1, scale, mult, ch, cw, cf, zIndex, callback);
+      this.drawRectangle(x1 + 1, y1 + 1, x2 - 1, y2 - 1, scale, mult, ch, cw, cf, zIndex);
 
       // Now draw the perimeter of our own rect.
       fill(x1, y1, x2, y1);
@@ -1080,7 +1030,7 @@ var Util = {
         for (var y = y1; y <= y2; ++y) {
           var dx = (x - $this._tx * cf) * $this.tilesize * mult + (cw / 2);
           var dy = (y - $this._ty * cf) * $this.tilesize * mult + (ch / 2);
-          $this.drawTile(x, y, scale, dx, dy, dw, dh, zIndex, callback);
+          $this.drawTile(x, y, scale, dx, dy, dw, dh, zIndex);
         }
       }
     }
@@ -1089,37 +1039,23 @@ var Util = {
   //
   // Draw the specified tile (scale, x, y) into the rectangle (dx, dy, dw, dh);
   // if the tile is not available it is requested, and higher/lower rez tiles
-  // are used to fill in the gap until it loads. When loaded, the callback
-  // is called (which should redraw the whole map).
+  // are used to fill in the gap until it loads.
   //
-  TravellerMap.prototype.drawTile = function(x, y, scale, dx, dy, dw, dh, zIndex, callback) {
+  TravellerMap.prototype.drawTile = function(x, y, scale, dx, dy, dw, dh, zIndex) {
     var $this = this; // for closures
 
     function drawImage(img, x, y, w, h, z) {
-      if ($this.ctx) {
-        x -= $this.canvas.offset_x;
-        y -= $this.canvas.offset_y;
-        var px = x | 0;
-        var py = y | 0;
-        var pw = ((x + w) | 0) - px;
-        var ph = ((y + h) | 0) - py;
-        $this.ctx.globalCompositeOperation = 'destination-over';
-        $this.ctx.drawImage(img, px, py, pw, ph);
-        return;
-      }
-
-      if (img.parentNode !== $this.container) $this.container.appendChild(img);
-
-      img.style.left = Math.floor(x) + 'px';
-      img.style.top = Math.floor(y) + 'px';
-      img.style.width = Math.ceil(w) + 'px';
-      img.style.height = Math.ceil(h) + 'px';
-
-      img.style.zIndex = z;
-      img.pass = $this.pass;
+      x -= $this.canvas.offset_x;
+      y -= $this.canvas.offset_y;
+      var px = x | 0;
+      var py = y | 0;
+      var pw = ((x + w) | 0) - px;
+      var ph = ((y + h) | 0) - py;
+      $this.ctx.globalCompositeOperation = 'destination-over';
+      $this.ctx.drawImage(img, px, py, pw, ph);
     }
 
-    var img = this.getTile(x, y, scale, callback);
+    var img = this.getTile(x, y, scale, this.invalidate.bind(this));
 
     if (img) {
       drawImage(img, dx, dy, dw, dh, zIndex);
@@ -1233,16 +1169,14 @@ var Util = {
       img.onload = null;
       img.onerror = null;
     }).bind(this);
-    img.className = 'tile';
     img.src = url;
-    img.style.position = 'absolute';
 
     return undefined;
   };
 
   TravellerMap.prototype.shouldAnimateTo = function(scale, x, y) {
     // TODO: Allow scale changes if target is "visible" (zooming in)
-    if (scale !== this._logScale)
+    if (scale !== this.scale)
       return false;
 
     var threshold = 2 * Astrometrics.SectorHeight * 64 / this.scale;
@@ -1284,41 +1218,21 @@ var Util = {
     var pt1 = this.logicalToPixel(overlay.x, overlay.y);
     var pt2 = this.logicalToPixel(overlay.x + overlay.w, overlay.y + overlay.h);
 
-    if (this.ctx) {
-      var scale = this.scale;
-      var x = -164, y = 7000, r = 6820;
-      var w = 20;
+    var scale = this.scale;
+    var x = -164, y = 7000, r = 6820;
+    var w = 20;
 
-      var ctx = this.ctx;
-      ctx.save();
-      ctx.translate(-this.canvas.offset_x, -this.canvas.offset_y);
-      ctx.globalCompositeOperation = 'source-over';
-      ctx.fillStyle = styleLookup(this.style, 'overlay_color');
-      ctx.globalAlpha = 0.5;
-      ctx.fillRect(pt1.x, pt1.y, pt2.x - pt1.x, pt1.y - pt2.y);
-      ctx.restore();
-      return;
-    }
-
-    var div = overlay.element;
-    if (!div) {
-      div = overlay.element = document.createElement('div');
-      div.className = 'overlay';
-      div.id = overlay.id;
-      div.style.zIndex = overlay.z;
-    }
-
-    div.style.left = String(pt1.x) + 'px';
-    div.style.top = String(pt1.y) + 'px';
-    div.style.width = String(pt2.x - pt1.x) + 'px';
-    div.style.height = String(pt1.y - pt2.y) + 'px';
-
-    if (div.parentNode !== this.container)
-      this.container.appendChild(div);
+    var ctx = this.ctx;
+    ctx.save();
+    ctx.translate(-this.canvas.offset_x, -this.canvas.offset_y);
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.globalAlpha = 0.5;
+    ctx.fillStyle = styleLookup(this.style, 'overlay_color');
+    ctx.fillRect(pt1.x, pt1.y, pt2.x - pt1.x, pt1.y - pt2.y);
+    ctx.restore();
   };
 
   TravellerMap.prototype.drawRoute = function(route) {
-    if (!this.ctx) return;
     var ctx = this.ctx;
     ctx.save();
     ctx.translate(-this.canvas.offset_x, -this.canvas.offset_y);
@@ -1352,57 +1266,57 @@ var Util = {
     var pt = sectorHexToLogical(marker.sx, marker.sy, marker.hx, marker.hy);
     pt = this.logicalToPixel(pt.x, pt.y);
 
-    if (this.ctx && marker.url) {
-      (function() {
-        var image = stash.get(marker.url, this.invalidate.bind(this));
-        if (!image) return;
+    var ctx = this.ctx;
+    var image;
 
-        var MARKER_SIZE = 128;
-        var ctx = this.ctx;
-        ctx.save();
-        ctx.translate(-this.canvas.offset_x, -this.canvas.offset_y);
-        ctx.globalCompositeOperation = 'source-over';
-        ctx.drawImage(image,
-                      pt.x - MARKER_SIZE/2, pt.y - MARKER_SIZE/2,
-                      MARKER_SIZE, MARKER_SIZE);
-        ctx.restore();
-      }).bind(this)();
+    if (marker.url) {
+      image = stash.get(marker.url, this.invalidate.bind(this));
+      if (!image) return;
+
+      var MARKER_SIZE = 128;
+      ctx.save();
+      ctx.translate(-this.canvas.offset_x, -this.canvas.offset_y);
+      ctx.globalCompositeOperation = 'source-over';
+      ctx.drawImage(image,
+                    pt.x - MARKER_SIZE/2, pt.y - MARKER_SIZE/2,
+                    MARKER_SIZE, MARKER_SIZE);
+      ctx.restore();
       return;
     }
 
-    if (this.ctx && styleLookup(this.style, marker.id + '_url')) {
-      (function() {
-       var url = styleLookup(this.style, marker.id + '_url');
-        var image = stash.get(url, this.invalidate.bind(this));
-        if (!image) return;
+    if (styleLookup(this.style, marker.id + '_url')) {
+      var url = styleLookup(this.style, marker.id + '_url');
+      image = stash.get(url, this.invalidate.bind(this));
+      if (!image) return;
 
-        var ctx = this.ctx;
-        ctx.save();
-        ctx.translate(-this.canvas.offset_x, -this.canvas.offset_y);
-        ctx.globalCompositeOperation = 'source-over';
-        ctx.drawImage(image, pt.x, pt.y);
-        ctx.restore();
-      }).bind(this)();
-      return;
+      ctx.save();
+      ctx.translate(-this.canvas.offset_x, -this.canvas.offset_y);
+      ctx.globalCompositeOperation = 'source-over';
+      ctx.drawImage(image, pt.x, pt.y);
+      ctx.restore();
     }
+  };
 
-    var div = marker.element;
-    if (!div) {
-      div = marker.element = document.createElement('div');
-      if (marker.url) {
-        var img = document.createElement('img');
-        img.src = marker.url;
-        div.appendChild(img);
-      }
-      div.className = 'marker';
-      div.id = marker.id;
-    }
+  TravellerMap.prototype.drawEmpressWave = function() {
+    var ctx = this.ctx;
+    var x = 0, y = 7000, r = 6820;
+    var w = 20;
 
-    div.style.left = String(pt.x) + 'px';
-    div.style.top = String(pt.y) + 'px';
-    div.style.zIndex = String(marker.z);
-    if (div.parentNode !== this.container)
-      this.container.appendChild(div);
+    ctx.save();
+    ctx.translate(-this.canvas.offset_x, -this.canvas.offset_y);
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.globalAlpha = 0.3;
+    ctx.lineWidth = w * this.scale;
+    ctx.strokeStyle = styleLookup(this.style, 'ew_color');
+    ctx.beginPath();
+    var pt = this.logicalToPixel(x, y);
+    ctx.arc(pt.x,
+            pt.y,
+            this.scale * r,
+            Math.PI/2 - Math.PI/12,
+            Math.PI/2 + Math.PI/12);
+    ctx.stroke();
+    ctx.restore();
   };
 
   TravellerMap.prototype.logicalToPixel = function(lx, ly) {
@@ -1428,7 +1342,7 @@ var Util = {
       x: offsetX - SINK_OFFSET - this.rect.left,
       y: offsetY - SINK_OFFSET - this.rect.top
     };
-    };
+  };
 
   TravellerMap.prototype.eventToHexCoords = function(event) {
     var s = this.scale * this.tilesize;
@@ -1536,7 +1450,7 @@ var Util = {
 
     if (!options.immediate &&
         'scale' in options &&
-        this.shouldAnimateTo(1 + log2(options.scale), target.x, target.y)) {
+        this.shouldAnimateTo(options.scale, target.x, target.y)) {
       this.animateTo(options.scale, target.x, target.y);
       return;
     }
