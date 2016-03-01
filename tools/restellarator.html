@@ -31,12 +31,12 @@ function fix(world) {
 
 function fixStellar(s) {
   var stars = [], m;
-  while (m = /^([OBAFGKM][0-9] ?(?:Ia|Ib|II|III|IV|V|VI|VII|D)|D|BD|BH|M D)\b\s*/.exec(s)) {
+  while (m = /^([OBAFGKM][0-9] ?(?:Ia|Ib|II|III|IV|V|VI|VII|D)|[OAFGKM] ?D|D|BD|BH)\b\s*/.exec(s)) {
     stars.push(m[1]);
     s = s.substring(m[0].length);
   }
   stars = stars.map(function(star, index) {
-    if (m = (/^([OBAFGKM][0-9]) ?(Ia|Ib|II|III|IV|V|VI|VII|D)\b/.exec(star) || /^(M) (D)/.exec(star))) {
+    if (m = (/^([OBAFGKM][0-9]) ?(Ia|Ib|II|III|IV|V|VI|VII|D)\b/.exec(star) || /^([OAFGKM]) ?(D)/.exec(star))) {
       var spec = m[1], lum = m[2];
 
       // VI -> V
@@ -47,10 +47,13 @@ function fixStellar(s) {
       if (lum === 'VII')
         lum = 'D';
 
-      // D -> V, if not the last star
-      if (lum === 'D' && index + 1 !== stars.length) {
+      // D -> V, if not the last star (unless only star)
+      if (lum === 'D' && (index < stars.length - 1 || stars.length === 1)) {
         lum = 'V';
       }
+
+      if (spec.length === 1)
+        spec += String(Math.floor(Math.random() * 10));
 
       star = lum === 'D' ? lum : spec + ' ' + lum;
     }
