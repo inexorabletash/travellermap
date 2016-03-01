@@ -31,12 +31,12 @@ function fix(world) {
 
 function fixStellar(s) {
   var stars = [], m;
-  while (m = /^([OBAFGKM][0-9] ?(?:Ia|Ib|II|III|IV|V|VI|VII|D)|[OAFGKM] ?D|D|BD|BH)\b\s*/.exec(s)) {
+  while (m = /^([OBAFGKM][0-9] ?(?:Ia|Ib|II|III|IV|V|VI|VII|D)|[OAFGKML] ?D|D|BD|BH)\b\s*/.exec(s)) {
     stars.push(m[1]);
     s = s.substring(m[0].length);
   }
   stars = stars.map(function(star, index) {
-    if (m = (/^([OBAFGKM][0-9]) ?(Ia|Ib|II|III|IV|V|VI|VII|D)\b/.exec(star) || /^([OAFGKM]) ?(D)/.exec(star))) {
+    if (m = (/^([OBAFGKM][0-9]) ?(Ia|Ib|II|III|IV|V|VI|VII|D)\b/.exec(star) || /^([OAFGKML]) ?(D)/.exec(star))) {
       var spec = m[1], lum = m[2];
 
       // VI -> V
@@ -52,6 +52,11 @@ function fixStellar(s) {
         lum = 'V';
       }
 
+      // LD -> MD
+      if (spec === 'L')
+        spec = 'M';
+
+      // Random fraction (for MD, etc)
       if (spec.length === 1)
         spec += String(Math.floor(Math.random() * 10));
 
