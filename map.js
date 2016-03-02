@@ -565,7 +565,7 @@ var Util = {
 
   function fireEvent(target, event, data) {
     if (typeof target['On' + event] !== 'function') return;
-    setTimeout(target['On' + event], 0, data);
+    setTimeout(function() { target['On' + event](data); }, 0);
   }
 
   // ======================================================================
