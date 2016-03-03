@@ -466,13 +466,13 @@ button:hover {
 /* Share Box */
 
 #shareBox {
-  width: 230px;
+  width: 250px;
   max-height: 280px;
 }
 #shareBox section { margin: 1em 0; }
 #shareBox section:first-of-type { margin-top: 0; }
 #shareBox section:last-of-type { margin-bottom: 0; }
-#shareBox input { width: 210px; padding: 5px; border: 1px solid #404040; }
+#shareBox input { width: 230px; padding: 5px; border: 1px solid #404040; }
 #shareBox section.fb { height: 33px; }
 
 /* Download Box */
@@ -612,7 +612,7 @@ button:hover {
 /* Settings Box */
 
 #settingsBox {
-  width: 200px;
+  width: 215px;
   max-height: 520px;
 }
 #styles button {
@@ -638,7 +638,7 @@ button:hover {
 /* Help Box */
 
 #helpBox {
-  width: 200px;
+  width: 215px;
   max-height: 390px;
 }
 #helpBox section { margin: 1em 0; }
