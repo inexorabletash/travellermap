@@ -83,6 +83,7 @@ namespace Maps.API
                         case "jp": x = 0; y = -3; w = 4; h = 3; title = "Julian Protectorate"; break;
                         // TODO: Zhodani provinces
 
+                        case "chartedspace": x = -8; y = -3; w = 16; h = 8; title = "Charted Space"; break;
                         case "jg": x = 160; y = 0; w = 2; h = 2; title = "Judges Guild"; break;
 
                         default:

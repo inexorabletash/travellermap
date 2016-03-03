@@ -575,26 +575,31 @@ namespace Maps.Rendering
                 //------------------------------------------------------------
                 if (styles.worlds.visible)
                 {
-                    // TODO: selector may be expensive
-                    foreach (World world in selector.Worlds) { DrawWorld(fonts, world, WorldLayer.Background); }
-                    foreach (World world in selector.Worlds) { DrawWorld(fonts, world, WorldLayer.Foreground); }
-
-                    if (styles.HasWorldOverlays)
+                    if (styles.showStellarOverlay)
                     {
-                        float slop = selector.SlopFactor;
-                        selector.SlopFactor = (float)Math.Max(slop, Math.Log(scale, 2.0) - 4);
-                        foreach (World world in selector.Worlds) { DrawWorld(fonts, world, WorldLayer.Overlay); }
-                        selector.SlopFactor = slop;
+                        foreach (World world in selector.Worlds) { DrawStars(world); }
+                    }
+                    else {
+                        foreach (World world in selector.Worlds) { DrawWorld(fonts, world, WorldLayer.Background); }
+                        foreach (World world in selector.Worlds) { DrawWorld(fonts, world, WorldLayer.Foreground); }
+
+                        if (styles.HasWorldOverlays)
+                        {
+                            float slop = selector.SlopFactor;
+                            selector.SlopFactor = (float)Math.Max(slop, Math.Log(scale, 2.0) - 4);
+                            foreach (World world in selector.Worlds) { DrawWorld(fonts, world, WorldLayer.Overlay); }
+                            selector.SlopFactor = slop;
+                        }
                     }
                 }
                 timers.Add(new Timer("worlds"));
-                #endregion
+#endregion
 
                 //------------------------------------------------------------
                 // Overlays
                 //------------------------------------------------------------
 
-                #region droyne
+#region droyne
                 //------------------------------------------------------------
                 // Droyne/Chirper Worlds
                 //------------------------------------------------------------
@@ -621,9 +626,9 @@ namespace Maps.Rendering
                     }
                 }
                 timers.Add(new Timer("droyne"));
-                #endregion
+#endregion
 
-                #region unofficial
+#region unofficial
                 //------------------------------------------------------------
                 // Unofficial
                 //------------------------------------------------------------
@@ -635,9 +640,9 @@ namespace Maps.Rendering
                         graphics.DrawRectangle(solidBrush, sector.Bounds);
                 }
                 timers.Add(new Timer("unofficial"));
-                #endregion
+#endregion
 
-                #region timing
+#region timing
 #if SHOW_TIMING
                 using( RenderUtil.SaveState( graphics ) )
                 {
@@ -662,7 +667,7 @@ namespace Maps.Rendering
                     }
                 }
 #endif
-                #endregion
+#endregion
             }
         }
 
@@ -912,7 +917,7 @@ namespace Maps.Rendering
 
                 if (layer == WorldLayer.Overlay)
                 {
-                    #region Population Overlay 
+#region Population Overlay 
                     if (styles.showPopulationOverlay && world.Population > 0)
                     {
                         // TODO: Don't hardcode the color
@@ -920,9 +925,9 @@ namespace Maps.Rendering
                         float r = (float)Math.Sqrt(world.Population / Math.PI) * 0.00002f;
                         graphics.DrawEllipse(solidBrush, -r, -r, r * 2, r * 2);
                     }
-                    #endregion
+#endregion
 
-                    #region Importance Overlay
+#region Importance Overlay
                     if (styles.showImportanceOverlay)
                     {
                         int im = SecondSurvey.Importance(world);
@@ -934,7 +939,7 @@ namespace Maps.Rendering
                             graphics.DrawEllipse(solidBrush, -r, -r, r * 2, r * 2);
                         }
                     }
-                    #endregion
+#endregion
                 }
 
                 if (!styles.useWorldImages)
@@ -1365,6 +1370,38 @@ namespace Maps.Rendering
                 }
             }
         }
+
+        private static readonly Regex STELLAR_REGEX = new Regex(@"([OBAFGKM][0-9] ?(?:Ia|Ib|II|III|IV|V|VI|VII|D)|D|BD|BH)", RegexOptions.Compiled | RegexOptions.CultureInvariant);
+        private void DrawStars(World world)
+        {
+            using (RenderUtil.SaveState(graphics))
+            {
+                graphics.SmoothingMode = XSmoothingMode.AntiAlias;
+                PointF center = Astrometrics.HexToCenter(world.Coordinates);
+
+                XMatrix matrix = new XMatrix();
+                matrix.TranslatePrepend(center.X, center.Y);
+                matrix.ScalePrepend(styles.hexContentScale / Astrometrics.ParsecScaleX, styles.hexContentScale / Astrometrics.ParsecScaleY);
+                graphics.MultiplyTransform(matrix, XMatrixOrder.Prepend);
+
+                // TODO: Proper stellar parsing
+                List<string> ss = new List<string>();
+                foreach (Match m in STELLAR_REGEX.Matches(world.Stellar))
+                {
+                    ss.Add(m.Value);
+                }
+
+                int i = 0;
+                foreach (var props in ss.Select(s => StellarRendering.star2props(s)).OrderByDescending(p => p.radius)) {
+                    solidBrush.Color = props.color;
+                    PointF offset = StellarRendering.Offset(i++);
+                    const float offsetScale = 0.3f;
+                    float r = 0.15f * props.radius;
+                    graphics.DrawEllipse(solidBrush, offset.X * offsetScale - r, offset.Y * offsetScale - r, r*2, r*2);
+                }
+            }
+        }
+
 
         private Stylesheet.StyleElement? ZoneStyle(World world)
         {

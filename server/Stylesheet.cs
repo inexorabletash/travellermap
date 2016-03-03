@@ -807,8 +807,9 @@ namespace Maps.Rendering
         public bool showWorldDetailColors;
         public bool showPopulationOverlay;
         public bool showImportanceOverlay;
+        public bool showStellarOverlay;
 
-        public bool HasWorldOverlays { get { return showPopulationOverlay || showImportanceOverlay;  } }
+        public bool HasWorldOverlays { get { return showPopulationOverlay || showImportanceOverlay || showStellarOverlay; } }
 
         public PointF StarportPosition;
         public PointF GasGiantPosition;

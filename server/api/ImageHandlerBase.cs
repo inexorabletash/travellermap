@@ -58,6 +58,9 @@ namespace Maps.API
                 if (GetBoolOption("im", queryDefaults: queryDefaults, defaultValue: false))
                     ctx.Styles.showImportanceOverlay = true;
 
+                if (GetBoolOption("stellar", queryDefaults: queryDefaults, defaultValue: false))
+                    ctx.Styles.showStellarOverlay = true;
+
                 ctx.Styles.dimUnofficialSectors = GetBoolOption("dimunofficial", queryDefaults: queryDefaults, defaultValue: false);
                 ctx.Styles.droyneWorlds.visible = GetBoolOption("dw", queryDefaults: queryDefaults, defaultValue: false);
 
