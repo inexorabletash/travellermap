@@ -1394,10 +1394,13 @@ namespace Maps.Rendering
                 int i = 0;
                 foreach (var props in ss.Select(s => StellarRendering.star2props(s)).OrderByDescending(p => p.radius)) {
                     solidBrush.Color = props.color;
+                    pen.Color = props.borderColor;
+                    pen.DashStyle = XDashStyle.Solid;
+                    pen.Width = styles.worlds.pen.width;
                     PointF offset = StellarRendering.Offset(i++);
                     const float offsetScale = 0.3f;
                     float r = 0.15f * props.radius;
-                    graphics.DrawEllipse(solidBrush, offset.X * offsetScale - r, offset.Y * offsetScale - r, r*2, r*2);
+                    graphics.DrawEllipse(pen, solidBrush, offset.X * offsetScale - r, offset.Y * offsetScale - r, r*2, r*2);
                 }
             }
         }

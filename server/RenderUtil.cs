@@ -719,16 +719,16 @@ namespace Maps.Rendering
             }
             else if (star == "BH")
             {
-                return new StarProps(Color.Black, Color.White, 0.3f);
+                return new StarProps(Color.Black, Color.White, 0.8f);
             }
             else if (star == "BD")
             {
-                return new StarProps(Color.Brown, Color.Black, 0.2f);
+                return new StarProps(Color.Brown, Color.Black, 0.3f);
             }
             else
             {
                 // Assume white dwarf
-                return new StarProps(Color.White, Color.Black, 0.2f);
+                return new StarProps(Color.White, Color.Black, 0.3f);
             }
         }
 
