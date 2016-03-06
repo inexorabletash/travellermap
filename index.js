@@ -276,7 +276,7 @@ window.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  var STYLES = ['poster', 'atlas', 'print', 'candy'];
+  var STYLES = ['poster', 'atlas', 'print', 'candy', 'draft', 'fasa'];
   STYLES.forEach(function(s) {
     $('#settingsBtn-'+s).addEventListener('click', function() { map.style = s; });
   });
@@ -405,7 +405,7 @@ window.addEventListener('DOMContentLoaded', function() {
   };
 
   map.OnStyleChanged = function(style) {
-    ['poster', 'atlas', 'print', 'candy', 'draft', 'fasa'].forEach(function(s) {
+    STYLES.forEach(function(s) {
       document.body.classList[s === style ? 'add' : 'remove']('style-' + s);
     });
     updatePermalink();

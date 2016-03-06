@@ -195,6 +195,8 @@ input[type=text] {
 
 .credits { font-style: italic; }
 
+.style-fasa #bottom-pane { color: #5C4033; }
+
 .metadata-status a { text-decoration: none; font-weight: bold; }
 .metadata-status .official { visibility: hidden; }
 .metadata-status .inreview { color: orange; }
@@ -633,6 +635,8 @@ button:hover {
 #settingsBtn-atlas  { background-image: url('res/ui/style-atlas.png'); }
 #settingsBtn-print  { background-image: url('res/ui/style-print.png'); }
 #settingsBtn-candy  { background-image: url('res/ui/style-candy.png'); }
+#settingsBtn-fasa  { background-image: url('res/ui/style-fasa.png'); }
+#settingsBtn-draft  { background-image: url('res/ui/style-draft.png'); }
 
 
 /* Help Box */
