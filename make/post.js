@@ -9,6 +9,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
   var list = $('#sector');
 
+  var seen = new Set();
   Traveller.MapService.universe({requireData: 1})
     .then(function(universe) {
       universe.Sectors
@@ -17,6 +18,11 @@ window.addEventListener('DOMContentLoaded', function() {
         })
         .map(function(sector) {
           return sector.Names[0].Text;
+        })
+        .filter(function(name) {
+          if (seen.has(name)) return false;
+          seen.add(name);
+          return true;
         })
         .sort()
         .forEach(function(name) {
