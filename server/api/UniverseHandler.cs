@@ -42,6 +42,9 @@ namespace Maps.API
                     if (requireData && sector.DataFile == null)
                         continue;
 
+                    if (sector.Tags.Contains("meta"))
+                        continue;
+
                     if (milieu != null && sector.DataFile?.Era != milieu)
                         continue;
 
@@ -79,6 +82,7 @@ namespace Maps.API.Results
 
             public int X { get { return sector.X; } set { } }
             public int Y { get { return sector.Y; } set { } }
+            public string Milieu { get { return sector.Era ?? sector.DataFile?.Era; } set { } }
 
             [XmlAttribute]
             public string Abbreviation { get { return sector.Abbreviation; } set { } }
