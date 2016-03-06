@@ -107,14 +107,14 @@ namespace Maps
 
                         // OTU - Default Milieu
                         new SectorMetafileEntry(@"~/res/sectors.xml", new List<string> { "OTU" } ),
-                        new SectorMetafileEntry(@"~/res/ZhodaniCoreRoute.xml", new List<string> { "ZCR" } ),
+                        new SectorMetafileEntry(@"~/res/Sectors/Zhodani Core Route/ZhodaniCoreRoute.xml", new List<string> { "ZCR" } ),
                         new SectorMetafileEntry(@"~/res/Sectors/Orion OB1/orion.xml", new List<string> { "OrionOB1" } ),
 
                         // OTU - Other Milieu
                         new SectorMetafileEntry(@"~/res/Sectors/M1000/m1000.xml", new List<string> {} ),
 
                         // Non-OTU
-                        new SectorMetafileEntry(@"~/res/faraway.xml", new List<string> { "Faraway" } ),
+                        new SectorMetafileEntry(@"~/res/Sectors/Faraway/faraway.xml", new List<string> { "Faraway" } ),
                     };
 
                     s_instance = new SectorMap(files, resourceManager);

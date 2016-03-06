@@ -191,7 +191,6 @@
     <Content Include="res\Candy\worlds\README.txt" />
     <Content Include="res\Candy\worlds\Solomani Rim 1827.png" />
     <Content Include="res\Candy\worlds\Spinward Marches 1910.png" />
-    <Content Include="res\faraway.xml" />
     <Content Include="res\legend.xml" />
     <Content Include="res\markers\beowulf.png" />
     <Content Include="res\markers\fartrader.png" />
@@ -234,6 +233,8 @@
     <Content Include="res\Sectors\Empty Quarter.xml" />
     <Content Include="res\Sectors\extolian.xml" />
     <Content Include="res\Sectors\Far Frontiers.xml" />
+    <Content Include="res\Sectors\Faraway\faraway.xml" />
+    <Content Include="res\Sectors\Faraway\Precipice.txt" />
     <Content Include="res\Sectors\Faraway\Varan.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -286,8 +287,17 @@
     <Content Include="res\Sectors\Old Expanses.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="res\Sectors\Orion OB1\Alnitak.txt" />
+    <Content Include="res\Sectors\Orion OB1\Alnitak.xml" />
     <Content Include="res\Sectors\Orion OB1\Joyce%27s Void.xml" />
+    <Content Include="res\Sectors\Orion OB1\Mintaka.xml" />
+    <Content Include="res\Sectors\Orion OB1\Nievoak.txt" />
+    <Content Include="res\Sectors\Orion OB1\Nievoak.xml" />
     <Content Include="res\Sectors\Orion OB1\orion.xml" />
+    <Content Include="res\Sectors\Orion OB1\Pi-4 Orionis.txt" />
+    <Content Include="res\Sectors\Orion OB1\Pi-4 Orionis.xml" />
+    <Content Include="res\Sectors\Orion OB1\Sigma Orionis.txt" />
+    <Content Include="res\Sectors\Orion OB1\Sigma Orionis.xml" />
     <Content Include="res\Sectors\Porlock.xml" />
     <Content Include="res\Sectors\Provence.xml" />
     <Content Include="res\Sectors\Reavers Deep.xml" />
@@ -322,6 +332,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="res\Sectors\Zdiedeiant.xml" />
+    <Content Include="res\Sectors\Zhodani Core Route\ZhodaniCoreRoute.xml" />
     <Content Include="res\Sectors\Ziafrplians.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -481,7 +492,6 @@
     <Content Include="res\Vectors\ZhdantRift.xml" />
     <Content Include="res\Worlds.xml" />
     <Content Include="res\Vectors\Zhodani.xml" />
-    <Content Include="res\ZhodaniCoreRoute.xml" />
     <Content Include="site.css" />
     <Content Include="tools\lintsec.html" />
     <Content Include="Web.config">
@@ -618,6 +628,7 @@
     <Content Include="res\Sectors\Neworld.tab" />
     <None Include="res\Sectors\Old Expanses.tab" />
     <Content Include="res\Sectors\Orion OB1\Joyce%27s Void.tab" />
+    <Content Include="res\Sectors\Orion OB1\Mintaka.tab" />
     <None Include="res\Sectors\Pliabriebl.sec" />
     <Content Include="res\Sectors\Porlock.sec" />
     <Content Include="res\Sectors\Provence.tab" />
