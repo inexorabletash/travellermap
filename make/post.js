@@ -7,6 +7,8 @@ window.addEventListener('DOMContentLoaded', function() {
   var $ = function(s) { return document.querySelector(s); };
   var $$ = function(s) { return document.querySelectorAll(s); };
 
+  function cmp(a, b) { return a < b ? -1 : b < a ? 1 : 0; }
+
   var list = $('#sector');
 
   var seen = new Set();
@@ -17,31 +19,34 @@ window.addEventListener('DOMContentLoaded', function() {
           return Math.abs(sector.X) < 10 && Math.abs(sector.Y) < 5;
         })
         .map(function(sector) {
-          return sector.Names[0].Text;
-        })
-        .filter(function(name) {
-          if (seen.has(name)) return false;
+          var name = sector.Names[0].Text;
+          if (seen.has(name))
+            name += ' (M' + sector.Milieu + ')';
           seen.add(name);
-          return true;
+          return {display: name,
+                  name: sector.Names[0].Text,
+                  milieu: sector.Milieu || ''};
         })
-        .sort()
-        .forEach(function(name) {
+        .sort(function(a, b) { return cmp(a.display, b.display); })
+        .forEach(function(record) {
           var option = document.createElement('option');
-          option.appendChild(document.createTextNode(name));
-          option.value = name;
+          option.appendChild(document.createTextNode(record.display));
+          option.value = record.name + '|' + record.milieu;
           list.appendChild(option);
         });
     });
 
   list.addEventListener('change', function (e) {
-    var name = list.value;
-    Traveller.MapService.sectorData(name, {type: 'SecondSurvey', metadata: 0})
+    var s = list.value.split('|'), name = s[0], milieu = s[1] || undefined;
+    Traveller.MapService.sectorData(name, {
+      type: 'SecondSurvey', metadata: 0, milieu: milieu})
       .then(function(data) {
         var target = $('#data');
         if (target) target.value = data;
       });
 
-    Traveller.MapService.sectorMetaData(name, {accept: 'text/xml'})
+    Traveller.MapService.sectorMetaData(name, {
+      accept: 'text/xml', milieu: milieu})
       .then(function(data) {
         var target = $('#metadata');
         if (target) target.value = data;
