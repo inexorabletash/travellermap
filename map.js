@@ -512,6 +512,7 @@ var Util = {
   //   Read/Write:
   //     map.x
   //     map.y
+  //     map.position ~= [map.x, map.y]
   //     map.scale
   //     map.style
   //     map.options
@@ -858,8 +859,7 @@ var Util = {
   // ======================================================================
 
   TravellerMap.prototype._offset = function(dx, dy) {
-    this.x += dx / this.scale;
-    this.y -= dy / this.scale;
+    this.position = [this.x + dx / this.scale, this.y - dy / this.scale];
   };
 
   TravellerMap.prototype._setScale = function(newscale, px, py) {
@@ -880,8 +880,8 @@ var Util = {
     this._logScale = newscale;
 
     if (arguments.length >= 3) {
-      this.x = hx * this.tilesize - (px - cw / 2) / this.scale;
-      this.y = -(hy * this.tilesize - (py - ch / 2) / this.scale);
+      this.position = [hx * this.tilesize - (px - cw / 2) / this.scale,
+                       -(hy * this.tilesize - (py - ch / 2) / this.scale)];
     }
 
     this.invalidate();
@@ -1207,8 +1207,7 @@ var Util = {
       this.scale = pow2(Animation.interpolate(log2(os), log2(scale), p));
       // TODO: If animating scale, this should follow an arc (parabola?) through 3space treating
       // scale as Z and computing a height such that the target is in view at the turnaround.
-      this.x = Animation.interpolate(ox, x, p);
-      this.y = Animation.interpolate(oy, y, p);
+      this.position = [Animation.interpolate(ox, x, p), Animation.interpolate(oy, y, p)];
       this.redraw();
     }).bind(this);
   };
@@ -1406,22 +1405,23 @@ var Util = {
 
     x: {
       get: function() { return this._tx * this.tilesize; },
-      set: function(value) {
-        value /= this.tilesize;
-        if (value === this._tx) return;
-        this._tx = value;
-        this.invalidate();
-        fireEvent(this, 'PositionChanged');
-      },
+      set: function(value) { this.position = [value, this.y]; },
       enumerable: true, configurable: true
     },
 
     y: {
       get: function() { return this._ty * -this.tilesize; },
+      set: function(value) { this.position = [this.x, value]; },
+      enumerable: true, configurable: true
+    },
+
+    position: {
+      get: function() { return [this._tx * this.tilesize, this._ty * -this.tilesize]; },
       set: function(value) {
-        value /= -this.tilesize;
-        if (value === this._ty) return;
-        this._ty = value;
+        var x = value[0] / this.tilesize, y = value[1] / -this.tilesize;
+        if (x === this._tx && y === this._ty) return;
+        this._tx = x;
+        this._ty = y;
         this.invalidate();
         fireEvent(this, 'PositionChanged');
       },
@@ -1457,8 +1457,7 @@ var Util = {
 
     if ('scale' in options)
       this.scale = options.scale;
-    this.x = target.x;
-    this.y = target.y;
+    this.position = [target.x, target.y];
   };
 
 
@@ -1481,8 +1480,7 @@ var Util = {
       return Animation.smooth(p, 1.0, 0.1, 0.25);
     });
     this.animation.onanimate = (function(p) {
-      this.x = Animation.interpolate(ox, tx, p);
-      this.y = Animation.interpolate(oy, ty, p);
+      this.position = [Animation.interpolate(ox, tx, p), Animation.interpolate(oy, ty, p)];
     }).bind(this);
   };
 
@@ -1611,8 +1609,7 @@ var Util = {
 
     // Various coordinate schemes - ordered by priority
     if (has(params, ['x', 'y'])) {
-      this.x = float('x');
-      this.y = float('y');
+      this.position = [float('x'), float('y')];
     } else if (has(params, ['sx', 'sy', 'hx', 'hy', 'scale'])) {
       this.CenterAtSectorHex(
         float('sx'), float('sy'), float('hx'), float('hy'), {scale: float('scale')});
