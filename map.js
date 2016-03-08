@@ -8,13 +8,13 @@ var Util = {
     'use strict';
     base = String(base).replace(/\?.*/, '');
     if (!params) return base;
-    var keys = Object.keys(params);
-    if (keys.length === 0) return base;
-    return base += '?' + keys.filter(function(p) {
-      return params[p] !== undefined;
-    }).map(function(p) {
-      return encodeURIComponent(p) + '=' + encodeURIComponent(params[p]);
-    }).join('&');
+    var keys = Object.keys(params), args = '';
+    for (var i = 0; i < keys.length; ++i) {
+      var key = keys[i], value = params[key];
+      if (value === undefined) continue;
+      args += (args ? '&' : '') + encodeURIComponent(key) + '=' + encodeURIComponent(value);
+    }
+    return args ? base + '?' + args : base;
   },
 
   // Replace with URL/searchParams
@@ -484,9 +484,11 @@ var Util = {
     set: function(key, value) { this._options[key] = value; this._notify(); },
     delete: function(key) { delete this._options[key]; this._notify(); },
     forEach: function(fn, thisArg) {
-      Object.keys(this._options).forEach(function(k, i) {
+      var keys = Object.keys(this._options);
+      for (var i = 0; i < keys.length; ++i) {
+        var k = keys[i];
         fn.call(thisArg, this._options[k], k, i);
-      }, this);
+      }
     }
   };
 
