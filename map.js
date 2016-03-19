@@ -947,10 +947,17 @@ var Util = {
     this.dirty = false;
 
     // Integral scale (the tiles that will be used)
-    var tscale = Math.round(this._logScale),
+    var tscale = Math.round(this._logScale);
+
+    // Tile URL (apart from x/y)
+    var params = {scale: pow2(tscale - 1), options: this.options, style: this.style};
+    this.namedOptions.forEach(function(value, key) { params[key] = value; });
+    if ('devicePixelRatio' in window && window.devicePixelRatio > 1)
+      params.dpr = window.devicePixelRatio;
+    this._tile_url_base = Util.makeURL(SERVICE_BASE + '/api/tile', params);
 
     // How the tiles themselves are scaled (naturally 1, unless pinched)
-        tmult = pow2(this._logScale - tscale),
+    var tmult = pow2(this._logScale - tscale),
 
     // From map space to tile space
     // (Traveller map coords change at each integral zoom level)
@@ -1003,9 +1010,7 @@ var Util = {
       this.drawEmpressWave();
   };
 
-  // Draw a rectangle (x1, y1) to (x2, y2) (or,  (l,t) to (r,b))
-  // Recursive. Base Cases are: single tile or vertical|horizontal line
-  // Decreasingly find the next-smaller rectangle to draw, then start drawing outward from the smallest rect to draw
+  // Draw a rectangle (x1, y1) to (x2, y2)
   TravellerMap.prototype.drawRectangle = function(x1, y1, x2, y2, scale, mult, ch, cw, cf, zIndex) {
     var $this = this;
     var sizeMult = this.tilesize * mult;
@@ -1013,28 +1018,29 @@ var Util = {
     var dw = sizeMult;
     var dh = sizeMult;
 
-    if ((x2 - x1) < 2 || (y2 - y1) < 2) {
-      // Base case
-      fill(x1, y1, x2, y2);
-    } else {
-      // Recurse - draw inner rectangle 1 dimension smaller.
-      this.drawRectangle(x1 + 1, y1 + 1, x2 - 1, y2 - 1, scale, mult, ch, cw, cf, zIndex);
+    var ox = $this._tx * -cf * dw + (cw / 2);
+    var oy = $this._ty * -cf * dh + (ch / 2);
 
-      // Now draw the perimeter of our own rect.
-      fill(x1, y1, x2, y1);
-      fill(x1, y2, x2, y2);
-      fill(x1, y1 + 1, x1, y2 - 1);
-      fill(x2, y1 + 1, x2, y2 - 1);
+    // Start from the center, work outwards, so center tiles load first.
+    for (var dd = Math.floor((Math.min(x2 - x1 + 1, y2 - y1 + 1) + 1) / 2) - 1; dd >= 0; --dd)
+      frame(x1 + dd, y1 + dd, x2 - dd, y2 - dd);
+
+    function frame(x1, y1, x2, y2) {
+      var x, y;
+      if (y1 === y2) {
+        for (x = x1; x <= x2; ++x) draw(x, y1);
+      } else if (x1 === x2) {
+        for (y = y1; y <= y2; ++y) draw(x1, y);
+      } else {
+        for (x = x1; x <= x2; ++x) { draw(x, y1); draw(x, y2); }
+        for (y = y1 + 1; y <= y2 - 1; ++y) { draw(x1, y); draw(x2, y); }
+      }
     }
 
-    function fill(x1, y1, x2, y2) {
-      for (var x = x1; x <= x2; ++x) {
-        for (var y = y1; y <= y2; ++y) {
-          var dx = (x - $this._tx * cf) * $this.tilesize * mult + (cw / 2);
-          var dy = (y - $this._ty * cf) * $this.tilesize * mult + (ch / 2);
-          $this.drawTile(x, y, scale, dx, dy, dw, dh, zIndex);
-        }
-      }
+    function draw(x, y) {
+      var dx = x * dw + ox;
+      var dy = y * dh + oy;
+      $this.drawTile(x, y, scale, dx, dy, dw, dh, zIndex);
     }
   };
 
@@ -1126,15 +1132,7 @@ var Util = {
   // once it has successfully loaded.
   //
   TravellerMap.prototype.getTile = function(x, y, scale, callback) {
-    var params = {x: x, y: y, scale: pow2(scale - 1), options: this.options, style: this.style};
-    this.namedOptions.forEach(function(value, key) {
-      params[key] = value;
-    });
-
-    if ('devicePixelRatio' in window && window.devicePixelRatio > 1)
-      params.dpr = window.devicePixelRatio;
-
-    var url = Util.makeURL(SERVICE_BASE + '/api/tile', params);
+    var url = this._tile_url_base + '&x=' + String(x) + '&y=' + String(y);
 
     // Have it? Great, get out fast!
     var img = this.cache.fetch(url);
