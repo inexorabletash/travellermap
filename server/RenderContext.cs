@@ -626,9 +626,37 @@ namespace Maps.Rendering
                     }
                 }
                 timers.Add(new Timer("droyne"));
-#endregion
+                #endregion
 
-#region unofficial
+                #region droyne
+                //------------------------------------------------------------
+                // Non-Hiver Worlds
+                //------------------------------------------------------------
+                if (styles.nonHiverWorlds.visible)
+                {
+                    solidBrush.Color = styles.nonHiverWorlds.textColor;
+                    foreach (World world in selector.Worlds)
+                    {
+                        if (world.HasCode("Nh"))
+                        {
+                            string glyph = "\u2605";
+                            PointF center = Astrometrics.HexToCenter(world.Coordinates);
+                            using (RenderUtil.SaveState(graphics))
+                            {
+                                XMatrix matrix = new XMatrix();
+                                matrix.TranslatePrepend(center.X, center.Y);
+                                matrix.ScalePrepend(1 / Astrometrics.ParsecScaleX, 1 / Astrometrics.ParsecScaleY);
+                                graphics.MultiplyTransform(matrix, XMatrixOrder.Prepend);
+                                graphics.DrawString(glyph, styles.nonHiverWorlds.Font, solidBrush, 0, 0, RenderUtil.StringFormatCentered);
+                            }
+                        }
+                    }
+                }
+                timers.Add(new Timer("nonhiver"));
+                #endregion
+
+
+                #region unofficial
                 //------------------------------------------------------------
                 // Unofficial
                 //------------------------------------------------------------
