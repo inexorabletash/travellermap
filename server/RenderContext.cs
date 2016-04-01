@@ -637,24 +637,30 @@ namespace Maps.Rendering
                     solidBrush.Color = styles.nonHiverWorlds.textColor;
                     foreach (World world in selector.Worlds)
                     {
-                        if (world.HasCode("Nh"))
+                        var allegiance = world.Allegiance;
+
+                        if ((world.Allegiance == "Hv") || (world.Allegiance == "HvFd") || 
+                            (world.Allegiance == "H1") || (world.Allegiance == "H2") ||
+                            (world.Allegiance == "H3") || (world.Allegiance == "H4"))
                         {
-                            string glyph = "\u273B";  
-                            PointF center = Astrometrics.HexToCenter(world.Coordinates);
-                            using (RenderUtil.SaveState(graphics))
+                            if (world.HasCodePrefix("(") != null)
                             {
-                                XMatrix matrix = new XMatrix();
-                                matrix.TranslatePrepend(center.X, center.Y);
-                                matrix.ScalePrepend(1 / Astrometrics.ParsecScaleX, 1 / Astrometrics.ParsecScaleY);
-                                graphics.MultiplyTransform(matrix, XMatrixOrder.Prepend);
-                                graphics.DrawString(glyph, styles.nonHiverWorlds.Font, solidBrush, 0, 0, RenderUtil.StringFormatCentered);
+                                string glyph = "\u273B";
+                                PointF center = Astrometrics.HexToCenter(world.Coordinates);
+                                using (RenderUtil.SaveState(graphics))
+                                {
+                                    XMatrix matrix = new XMatrix();
+                                    matrix.TranslatePrepend(center.X, center.Y);
+                                    matrix.ScalePrepend(1 / Astrometrics.ParsecScaleX, 1 / Astrometrics.ParsecScaleY);
+                                    graphics.MultiplyTransform(matrix, XMatrixOrder.Prepend);
+                                    graphics.DrawString(glyph, styles.nonHiverWorlds.Font, solidBrush, 0, 0, RenderUtil.StringFormatCentered);
+                                }
                             }
                         }
                     }
                 }
                 timers.Add(new Timer("nonhiver"));
                 #endregion
-
 
                 #region unofficial
                 //------------------------------------------------------------
