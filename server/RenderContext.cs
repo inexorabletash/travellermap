@@ -639,7 +639,7 @@ namespace Maps.Rendering
                     {
                         if (world.HasCode("Nh"))
                         {
-                            string glyph = "\u2605";
+                            string glyph = "\u273B";  
                             PointF center = Astrometrics.HexToCenter(world.Coordinates);
                             using (RenderUtil.SaveState(graphics))
                             {
