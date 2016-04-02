@@ -949,8 +949,8 @@ var Util = {
     // Integral scale (the tiles that will be used)
     var tscale = Math.round(this._logScale);
 
-    // Tile URL (apart from x/y)
-    var params = {scale: pow2(tscale - 1), options: this.options, style: this.style};
+    // Tile URL (apart from x/y/scale)
+    var params = {options: this.options, style: this.style};
     this.namedOptions.forEach(function(value, key) { params[key] = value; });
     if ('devicePixelRatio' in window && window.devicePixelRatio > 1)
       params.dpr = window.devicePixelRatio;
@@ -970,10 +970,7 @@ var Util = {
         l = this._tx * cf - (cw / 2) / (this.tilesize * tmult),
         r = this._tx * cf + (cw / 2) / (this.tilesize * tmult),
         t = this._ty * cf - (ch / 2) / (this.tilesize * tmult),
-        b = this._ty * cf + (ch / 2) / (this.tilesize * tmult),
-
-    // Initial z - leave room for lower/higher scale tiles
-        z = 10 + this.max_scale - this.min_scale;
+        b = this._ty * cf + (ch / 2) / (this.tilesize * tmult);
 
     // Quantize to bounding tiles
     l = Math.floor(l) - 1;
@@ -997,7 +994,7 @@ var Util = {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.ctx.restore();
 
-    this.drawRectangle(l, t, r, b, tscale, tmult, ch, cw, cf, z);
+    this.drawRectangle(l, t, r, b, tscale, tmult, ch, cw, cf);
 
     // Draw markers and overlays.
     this.markers.forEach(this.drawMarker, this);
@@ -1011,7 +1008,7 @@ var Util = {
   };
 
   // Draw a rectangle (x1, y1) to (x2, y2)
-  TravellerMap.prototype.drawRectangle = function(x1, y1, x2, y2, scale, mult, ch, cw, cf, zIndex) {
+  TravellerMap.prototype.drawRectangle = function(x1, y1, x2, y2, scale, mult, ch, cw, cf) {
     var $this = this;
     var sizeMult = this.tilesize * mult;
 
@@ -1040,7 +1037,7 @@ var Util = {
     function draw(x, y) {
       var dx = x * dw + ox;
       var dy = y * dh + oy;
-      $this.drawTile(x, y, scale, dx, dy, dw, dh, zIndex);
+      $this.drawTile(x, y, scale, dx, dy, dw, dh);
     }
   };
 
@@ -1049,10 +1046,10 @@ var Util = {
   // if the tile is not available it is requested, and higher/lower rez tiles
   // are used to fill in the gap until it loads.
   //
-  TravellerMap.prototype.drawTile = function(x, y, scale, dx, dy, dw, dh, zIndex) {
+  TravellerMap.prototype.drawTile = function(x, y, scale, dx, dy, dw, dh) {
     var $this = this; // for closures
 
-    function drawImage(img, x, y, w, h, z) {
+    function drawImage(img, x, y, w, h) {
       x -= $this.canvas.offset_x;
       y -= $this.canvas.offset_y;
       var px = x | 0;
@@ -1066,13 +1063,13 @@ var Util = {
     var img = this.getTile(x, y, scale, this.invalidate.bind(this));
 
     if (img) {
-      drawImage(img, dx, dy, dw, dh, zIndex);
+      drawImage(img, dx, dy, dw, dh);
       return;
     }
 
     // Otherwise, while we're waiting, see if we have upscale/downscale versions to draw instead
 
-    function drawLower(x, y, scale, dx, dy, dw, dh, zIndex) {
+    function drawLower(x, y, scale, dx, dy, dw, dh) {
       if (scale <= $this.min_scale)
         return;
 
@@ -1089,13 +1086,13 @@ var Util = {
 
       var img = $this.getTile(tx, ty, tscale);
       if (img)
-        drawImage(img, ax, ay, aw, ah, zIndex);
+        drawImage(img, ax, ay, aw, ah);
       else
-        drawLower(tx, ty, tscale, ax, ay, aw, ah, zIndex - 1);
+        drawLower(tx, ty, tscale, ax, ay, aw, ah);
     }
-    drawLower(x, y, scale, dx, dy, dw, dh, zIndex - 1);
+    drawLower(x, y, scale, dx, dy, dw, dh);
 
-    function drawHigher(x, y, scale, dx, dy, dw, dh, zIndex) {
+    function drawHigher(x, y, scale, dx, dy, dw, dh) {
       if (scale >= $this.max_scale)
         return;
 
@@ -1115,13 +1112,13 @@ var Util = {
           var ah = dh * factor;
 
           if (img)
-            drawImage(img, ax, ay, aw, ah, zIndex);
+            drawImage(img, ax, ay, aw, ah);
           // NOTE:  Don't recurse if not found as it would try an exponential number of tiles
-          // e.g. drawHigher(tx, ty, tscale, ax, ay, aw, ah, zIndex + 1);
+          // e.g. drawHigher(tx, ty, tscale, ax, ay, aw, ah);
         }
       }
     }
-    drawHigher(x, y, scale, dx, dy, dw, dh, zIndex + 1);
+    drawHigher(x, y, scale, dx, dy, dw, dh);
   };
 
 
@@ -1132,7 +1129,8 @@ var Util = {
   // once it has successfully loaded.
   //
   TravellerMap.prototype.getTile = function(x, y, scale, callback) {
-    var url = this._tile_url_base + '&x=' + String(x) + '&y=' + String(y);
+    var url = this._tile_url_base +
+          '&x=' + String(x) + '&y=' + String(y) + '&scale=' + String(pow2(scale - 1));
 
     // Have it? Great, get out fast!
     var img = this.cache.fetch(url);
