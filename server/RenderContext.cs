@@ -628,7 +628,7 @@ namespace Maps.Rendering
                 timers.Add(new Timer("droyne"));
                 #endregion
 
-                #region droyne
+                #region nonhiverworlds
                 //------------------------------------------------------------
                 // Non-Hiver Worlds
                 //------------------------------------------------------------
