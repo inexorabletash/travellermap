@@ -1629,7 +1629,7 @@ var Util = {
         });
     }
 
-    ['silly', 'routes', 'dimunofficial', 'ew', 'dw', 'nh', 'rifts', 'po', 'im', 'milieu', 'stellar'].forEach(function(name) {
+    ['silly', 'routes', 'dimunofficial', 'ew', 'dw', 'nh', 'rifts', 'po', 'im', 'milieu', 'stellar'].forEach(function (name) {
       if (name in params)
         this.namedOptions.set(name, int(name));
     }, this);

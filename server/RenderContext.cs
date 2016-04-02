@@ -628,38 +628,38 @@ namespace Maps.Rendering
                 timers.Add(new Timer("droyne"));
                 #endregion
 
-                #region nonhiverworlds
+                #region minorHomeWorlds
                 //------------------------------------------------------------
-                // Non-Hiver Worlds
+                // Minor Homeworlds 
                 //------------------------------------------------------------
-                if (styles.nonHiverWorlds.visible)
+                if (styles.minorHomeWorlds.visible)
                 {
-                    solidBrush.Color = styles.nonHiverWorlds.textColor;
+                    solidBrush.Color = styles.minorHomeWorlds.textColor;
                     foreach (World world in selector.Worlds)
                     {
-                        var allegiance = world.Allegiance;
-
-                        if ((world.Allegiance == "Hv") || (world.Allegiance == "HvFd") || 
-                            (world.Allegiance == "H1") || (world.Allegiance == "H2") ||
-                            (world.Allegiance == "H3") || (world.Allegiance == "H4"))
+                        if (world.HasCodePrefix("(") != null)
                         {
-                            if (world.HasCodePrefix("(") != null)
+                            var hiverWorld = ((world.Allegiance == "Hv") || (world.Allegiance == "HvFd") ||
+                                             (world.Allegiance == "H1") || (world.Allegiance == "H2") ||
+                                             (world.Allegiance == "H3") || (world.Allegiance == "H4") ||
+                                             (world.Allegiance == "Hf") || 
+                                             (world.Allegiance == "H5") || (world.Allegiance == "H6"));
+
+                            string glyph = hiverWorld ? "\u273B" : "\u2717";
+
+                            PointF center = Astrometrics.HexToCenter(world.Coordinates);
+                            using (RenderUtil.SaveState(graphics))
                             {
-                                string glyph = "\u273B";
-                                PointF center = Astrometrics.HexToCenter(world.Coordinates);
-                                using (RenderUtil.SaveState(graphics))
-                                {
-                                    XMatrix matrix = new XMatrix();
-                                    matrix.TranslatePrepend(center.X, center.Y);
-                                    matrix.ScalePrepend(1 / Astrometrics.ParsecScaleX, 1 / Astrometrics.ParsecScaleY);
-                                    graphics.MultiplyTransform(matrix, XMatrixOrder.Prepend);
-                                    graphics.DrawString(glyph, styles.nonHiverWorlds.Font, solidBrush, 0, 0, RenderUtil.StringFormatCentered);
-                                }
+                                XMatrix matrix = new XMatrix();
+                                matrix.TranslatePrepend(center.X, center.Y);
+                                matrix.ScalePrepend(1 / Astrometrics.ParsecScaleX, 1 / Astrometrics.ParsecScaleY);
+                                graphics.MultiplyTransform(matrix, XMatrixOrder.Prepend);
+                                graphics.DrawString(glyph, styles.minorHomeWorlds.Font, solidBrush, 0, 0, RenderUtil.StringFormatCentered);
                             }
                         }
                     }
                 }
-                timers.Add(new Timer("nonhiver"));
+                timers.Add(new Timer("minor"));
                 #endregion
 
                 #region unofficial
