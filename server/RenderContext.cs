@@ -639,13 +639,7 @@ namespace Maps.Rendering
                     {
                         if (world.HasCodePrefix("(") != null)
                         {
-                            var hiverWorld = ((world.Allegiance == "Hv") || (world.Allegiance == "HvFd") ||
-                                             (world.Allegiance == "H1") || (world.Allegiance == "H2") ||
-                                             (world.Allegiance == "H3") || (world.Allegiance == "H4") ||
-                                             (world.Allegiance == "Hf") || 
-                                             (world.Allegiance == "H5") || (world.Allegiance == "H6"));
-
-                            string glyph = hiverWorld ? "\u273B" : "\u2717";
+                            string glyph = "\u273B";
 
                             PointF center = Astrometrics.HexToCenter(world.Coordinates);
                             using (RenderUtil.SaveState(graphics))
