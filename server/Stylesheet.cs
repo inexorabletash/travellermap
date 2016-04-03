@@ -344,6 +344,7 @@ namespace Maps.Rendering
             sectorName.fontInfo = new FontInfo(DEFAULT_FONT, 5.5f);
             subsectorNames.fontInfo = new FontInfo(DEFAULT_FONT, 1.5f);
             droyneWorlds.fontInfo = new FontInfo(DEFAULT_FONT, onePixel * 12f);
+            minorHomeWorlds.fontInfo = new FontInfo(DEFAULT_FONT, onePixel * 12f);
 
             microBorders.fontInfo = new FontInfo(DEFAULT_FONT, (scale == MicroNameMinScale) ? 0.6f : 0.25f, XFontStyle.Bold);
             microBorders.smallFontInfo = new FontInfo(DEFAULT_FONT, 0.15f, XFontStyle.Bold);
@@ -724,6 +725,7 @@ namespace Maps.Rendering
 
             pseudoRandomStars.fillColor = foregroundColor;
             droyneWorlds.textColor = foregroundColor;
+            minorHomeWorlds.textColor = foregroundColor;
 
             megaNames.textColor = foregroundColor;
             megaNames.textHighlightColor = highlightColor;
@@ -801,6 +803,7 @@ namespace Maps.Rendering
         public bool t5AllegianceCodes;
 
         public StyleElement droyneWorlds;
+        public StyleElement minorHomeWorlds;
 
         // Worlds
         public StyleElement worlds;

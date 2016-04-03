@@ -267,6 +267,7 @@ namespace Maps.API
             {
                 return GetBoolOption(name, Defaults(context), defaultValue);
             }
+
             public bool GetBoolOption(string name, IDictionary<string, object> queryDefaults, bool defaultValue)
             {
                 int temp;
