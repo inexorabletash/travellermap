@@ -60,11 +60,13 @@ namespace Maps.Rendering
 
             Image image = holder.Image;
             XImage ximage;
-
-            int w = image.Width, h = image.Height;
+            int w, h;
 
             lock (holder)
             {
+                w = image.Width;
+                h = image.Height;
+
                 if (image.Tag == null || !(image.Tag is Dictionary<int, XImage>))
                     image.Tag = new Dictionary<int, XImage>();
 
