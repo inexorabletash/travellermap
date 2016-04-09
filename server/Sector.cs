@@ -700,6 +700,17 @@ namespace Maps
 
     public class Region : Border
     {
+        public Region()
+        {
+            ShowLabel = true;
+        }
+
+        internal Region(string path, string color = null) : this()
+        {
+            PathString = path;
+            if (color != null)
+                ColorHtml = color;
+        }
     }
 
     public enum LineStyle
