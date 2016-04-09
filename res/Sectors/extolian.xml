@@ -73,9 +73,10 @@
   <Route Start="1926" End="1924" Type="Trade"/>
   <Route Start="1723" End="1924" Type="Trade"/>
   <Route Start="1622" End="1520" Type="Trade"/>
-  <Route Start="1017" End="1520" Type="Trade"/>
+  <Route Start="1017" End="1118" Type="Trade"/>
+    <Route Start="1118" End="1520" Type="Trade"/>
 
-  <Route Start="1723" End="1622" Type="Trade"/>
+    <Route Start="1723" End="1622" Type="Trade"/>
   <Route Start="1624" End="1924" Type="Trade"/>
 
   <Route Start="1622" End="1821" Type="Trade"/>
@@ -97,5 +98,12 @@
     <Allegiance Code="H2">Hive Federation Member</Allegiance>
     <Allegiance Code="H3">Hive Federation Member</Allegiance>
   </Allegiances>
+  <Regions>
+    <Region Color="Aquamarine" Style="Dotted" Label="Ithklur Cultural Reserve">
+       2211 2312 2412 2413 2514 2515 2516
+       2416 2316 2215 2214 2213 2113 2012 
+       2113 2212 
+    </Region>
+  </Regions>
   <DataFile Author="Leroy W. L. Guatney" Source="Federation Development Agency" Ref="http://web.archive.org/web/20071029174129/http://home.earthlink.net/~ngc5139/FDA/" Type="SEC">extolian.sec</DataFile>
 </Sector>
