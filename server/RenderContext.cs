@@ -466,8 +466,13 @@ namespace Maps.Rendering
                     if (styles.microBorders.visible)
                     {
                         if (styles.fillMicroBorders)
+                        {
                             DrawMicroBorders(BorderLayer.Fill);
+                            DrawRegions(BorderLayer.Fill);
+                        }
+
                         DrawMicroBorders(BorderLayer.Stroke);
+                        DrawRegions(BorderLayer.Stroke);
                     }
                     timers.Add(new Timer("micro-borders"));
                     #endregion
@@ -640,7 +645,6 @@ namespace Maps.Rendering
                         if (world.HasCodePrefix("(") != null)
                         {
                             string glyph = "\u273B";
-
                             PointF center = Astrometrics.HexToCenter(world.Coordinates);
                             using (RenderUtil.SaveState(graphics))
                             {
@@ -654,6 +658,34 @@ namespace Maps.Rendering
                     }
                 }
                 timers.Add(new Timer("minor"));
+                #endregion
+
+                #region ancients
+                //------------------------------------------------------------
+                // Ancients Worlds
+                //------------------------------------------------------------
+                if (styles.ancientsWorlds.visible)
+                {
+                    solidBrush.Color = styles.ancientsWorlds.textColor;
+                    foreach (World world in selector.Worlds)
+                    {
+                        string glyph = "\u2600";
+
+                        if (world.HasCode("An"))
+                        {
+                            PointF center = Astrometrics.HexToCenter(world.Coordinates);
+                            using (RenderUtil.SaveState(graphics))
+                            {
+                                XMatrix matrix = new XMatrix();
+                                matrix.TranslatePrepend(center.X, center.Y);
+                                matrix.ScalePrepend(1 / Astrometrics.ParsecScaleX, 1 / Astrometrics.ParsecScaleY);
+                                graphics.MultiplyTransform(matrix, XMatrixOrder.Prepend);
+                                graphics.DrawString(glyph, styles.ancientsWorlds.Font, solidBrush, 0, 0, RenderUtil.StringFormatCentered);
+                            }
+                        }
+                    }
+                }
+                timers.Add(new Timer("ancients"));
                 #endregion
 
                 #region unofficial
@@ -768,7 +800,7 @@ namespace Maps.Rendering
 
             }
         }
-
+        
         private void DrawParsecGrid()
         {
             const int parsecSlop = 1;
@@ -1532,6 +1564,23 @@ namespace Maps.Rendering
                         RenderUtil.DrawLabel(graphics, label, labelPos, styles.microBorders.Font, solidBrush, styles.microBorders.textStyle);
                     }
 
+                    foreach (Region region in sector.Regions.Where(region => region.ShowLabel))
+                    {
+                        string label = region.GetLabel(sector);
+                        if (label == null)
+                            continue;
+                        Hex labelHex = region.LabelPosition;
+                        PointF labelPos = Astrometrics.HexToCenter(Astrometrics.LocationToCoordinates(new Location(sector.Location, labelHex)));
+                        // TODO: Replace these with, well, positions!
+                        //labelPos.X -= 0.5f;
+                        //labelPos.Y -= 0.5f;
+
+                        if (region.WrapLabel)
+                            label = WRAP_REGEX.Replace(label, "\n");
+
+                        RenderUtil.DrawLabel(graphics, label, labelPos, styles.microBorders.Font, solidBrush, styles.microBorders.textStyle);
+                    }
+
                     foreach (Label label in sector.Labels)
                     {
                         string text = label.Text;
@@ -1700,6 +1749,112 @@ namespace Maps.Rendering
                         LineStyle? borderStyle = border.Style;
 
                         SectorStylesheet.StyleResult ssr = sector.ApplyStylesheet("border", border.Allegiance);
+                        borderStyle = borderStyle ?? ssr.GetEnum<LineStyle>("style") ?? LineStyle.Solid;
+                        borderColor = borderColor ?? ssr.GetColor("color") ?? styles.microBorders.pen.color;
+
+                        if (layer == BorderLayer.Stroke && borderStyle.Value == LineStyle.None)
+                            continue;
+
+                        if (styles.grayscale ||
+                            !ColorUtil.NoticeableDifference(borderColor.Value, styles.backgroundColor))
+                        {
+                            borderColor = styles.microBorders.pen.color; // default
+                        }
+
+                        pen.Color = borderColor.Value;
+                        pen.DashStyle = LineStyleToDashStyle(borderStyle.Value);
+
+                        if (styles.microBorderStyle != MicroBorderStyle.Curve)
+                        {
+                            // Clip to the path itself - this means adjacent borders don't clash
+                            using (RenderUtil.SaveState(graphics))
+                            {
+                                graphics.IntersectClip(drawPath);
+                                switch (layer)
+                                {
+                                    case BorderLayer.Fill:
+                                        solidBrush.Color = Color.FromArgb(FILL_ALPHA, borderColor.Value);
+                                        graphics.DrawPath(solidBrush, drawPath);
+                                        break;
+                                    case BorderLayer.Stroke:
+                                        graphics.DrawPath(pen, drawPath);
+                                        break;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            switch (layer)
+                            {
+                                case BorderLayer.Fill:
+                                    solidBrush.Color = Color.FromArgb(FILL_ALPHA, borderColor.Value);
+                                    graphics.DrawClosedCurve(solidBrush, borderPath.points);
+                                    break;
+
+                                case BorderLayer.Stroke:
+                                    foreach (var segment in borderPath.curves)
+                                    {
+                                        if (segment.closed)
+                                            graphics.DrawClosedCurve(pen, segment.points, 0.6f);
+                                        else
+                                            graphics.DrawCurve(pen, segment.points, 0.6f);
+                                    }
+                                    break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Draw the regions
+        /// </summary>
+        /// <param name="layer">The layer</param>
+        private void DrawRegions(BorderLayer layer)
+        {
+            const byte FILL_ALPHA = 64;
+
+            float[] edgex, edgey;
+            PathUtil.PathType borderPathType = styles.microBorderStyle == MicroBorderStyle.Square ?
+                PathUtil.PathType.Square : PathUtil.PathType.Hex;
+            RenderUtil.HexEdges(borderPathType, out edgex, out edgey);
+
+            XSolidBrush solidBrush = new XSolidBrush();
+            XPen pen = new XPen(XColor.Empty);
+            styles.microBorders.pen.Apply(ref pen);
+
+            foreach (Sector sector in selector.Sectors)
+            {
+                XGraphicsPath sectorClipPath = null;
+
+                using (RenderUtil.SaveState(graphics))
+                {
+                    // This looks craptacular for Candy style borders :(
+                    if (ClipOutsectorBorders &&
+                        (layer == BorderLayer.Fill || styles.microBorderStyle != MicroBorderStyle.Curve))
+                    {
+                        Sector.ClipPath clip = sector.ComputeClipPath(borderPathType);
+                        if (!tileRect.IntersectsWith(clip.bounds))
+                            continue;
+
+                        sectorClipPath = new XGraphicsPath(clip.clipPathPoints, clip.clipPathPointTypes, XFillMode.Alternate);
+                        if (sectorClipPath != null)
+                            graphics.IntersectClip(sectorClipPath);
+                    }
+
+                    graphics.SmoothingMode = XSmoothingMode.AntiAlias;
+
+                    foreach (Region region in sector.Regions)
+                    {
+                        BorderPath borderPath = region.ComputeGraphicsPath(sector, borderPathType);
+
+                        XGraphicsPath drawPath = new XGraphicsPath(borderPath.points, borderPath.types, XFillMode.Alternate);
+
+                        Color? borderColor = region.Color;
+                        LineStyle? borderStyle = region.Style;
+
+                        SectorStylesheet.StyleResult ssr = sector.ApplyStylesheet("border", region.Allegiance);
                         borderStyle = borderStyle ?? ssr.GetEnum<LineStyle>("style") ?? LineStyle.Solid;
                         borderColor = borderColor ?? ssr.GetColor("color") ?? styles.microBorders.pen.color;
 
