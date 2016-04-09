@@ -466,13 +466,10 @@ namespace Maps.Rendering
                     if (styles.microBorders.visible)
                     {
                         if (styles.fillMicroBorders)
-                        {
                             DrawMicroBorders(BorderLayer.Fill);
-                            DrawRegions(BorderLayer.Fill);
-                        }
 
                         DrawMicroBorders(BorderLayer.Stroke);
-                        DrawRegions(BorderLayer.Stroke);
+                        DrawRegions(BorderLayer.Fill);
                     }
                     timers.Add(new Timer("micro-borders"));
                     #endregion
