@@ -612,18 +612,12 @@ namespace Maps.Rendering
                     {
                         bool droyne = world.HasCodePrefix("Droy") != null;
                         bool chirpers = world.HasCodePrefix("Chir") != null;
+
+                        string glyph = droyne ? "\u2605" : "\u2606";
+
                         if (droyne || chirpers)
                         {
-                            string glyph = droyne ? "\u2605" : "\u2606";
-                            PointF center = Astrometrics.HexToCenter(world.Coordinates);
-                            using (RenderUtil.SaveState(graphics))
-                            {
-                                XMatrix matrix = new XMatrix();
-                                matrix.TranslatePrepend(center.X, center.Y);
-                                matrix.ScalePrepend(1 / Astrometrics.ParsecScaleX, 1 / Astrometrics.ParsecScaleY);
-                                graphics.MultiplyTransform(matrix, XMatrixOrder.Prepend);
-                                graphics.DrawString(glyph, styles.droyneWorlds.Font, solidBrush, 0, 0, RenderUtil.StringFormatCentered);
-                            }
+                            OverlayGlyph(glyph, styles.droyneWorlds.Font, world.Coordinates);
                         }
                     }
                 }
@@ -639,18 +633,11 @@ namespace Maps.Rendering
                     solidBrush.Color = styles.minorHomeWorlds.textColor;
                     foreach (World world in selector.Worlds)
                     {
+                        string glyph = "\u273B";
+
                         if (world.HasCodePrefix("(") != null)
                         {
-                            string glyph = "\u273B";
-                            PointF center = Astrometrics.HexToCenter(world.Coordinates);
-                            using (RenderUtil.SaveState(graphics))
-                            {
-                                XMatrix matrix = new XMatrix();
-                                matrix.TranslatePrepend(center.X, center.Y);
-                                matrix.ScalePrepend(1 / Astrometrics.ParsecScaleX, 1 / Astrometrics.ParsecScaleY);
-                                graphics.MultiplyTransform(matrix, XMatrixOrder.Prepend);
-                                graphics.DrawString(glyph, styles.minorHomeWorlds.Font, solidBrush, 0, 0, RenderUtil.StringFormatCentered);
-                            }
+                            OverlayGlyph(glyph, styles.minorHomeWorlds.Font, world.Coordinates);
                         }
                     }
                 }
@@ -670,15 +657,7 @@ namespace Maps.Rendering
 
                         if (world.HasCode("An"))
                         {
-                            PointF center = Astrometrics.HexToCenter(world.Coordinates);
-                            using (RenderUtil.SaveState(graphics))
-                            {
-                                XMatrix matrix = new XMatrix();
-                                matrix.TranslatePrepend(center.X, center.Y);
-                                matrix.ScalePrepend(1 / Astrometrics.ParsecScaleX, 1 / Astrometrics.ParsecScaleY);
-                                graphics.MultiplyTransform(matrix, XMatrixOrder.Prepend);
-                                graphics.DrawString(glyph, styles.ancientsWorlds.Font, solidBrush, 0, 0, RenderUtil.StringFormatCentered);
-                            }
+                            OverlayGlyph(glyph, styles.ancientsWorlds.Font, world.Coordinates);
                         }
                     }
                 }
@@ -725,6 +704,19 @@ namespace Maps.Rendering
                 }
 #endif
 #endregion
+            }
+        }
+
+        private void OverlayGlyph(string glyph, XFont font, Point coordinates)
+        {
+            PointF center = Astrometrics.HexToCenter(coordinates);
+            using (RenderUtil.SaveState(graphics))
+            {
+                XMatrix matrix = new XMatrix();
+                matrix.TranslatePrepend(center.X, center.Y);
+                matrix.ScalePrepend(1 / Astrometrics.ParsecScaleX, 1 / Astrometrics.ParsecScaleY);
+                graphics.MultiplyTransform(matrix, XMatrixOrder.Prepend);
+                graphics.DrawString(glyph, font, solidBrush, 0, 0, RenderUtil.StringFormatCentered);
             }
         }
 
