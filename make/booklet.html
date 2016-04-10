@@ -3,12 +3,12 @@
 <title>Sector Booklet - Traveller Map</title>
 <meta charset="utf-8">
 <link rel="shortcut icon" href="../favicon.ico">
-<link rel="stylesheet" href="../site.css?update=2015-10-28">
+<link rel="stylesheet" href="../site.css?update=2016-03-04">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.2/handlebars.min.js"></script>
-<script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.14/polyfill.min.js"></script>
-<script src="../map.js?update=2015-10-26"></script>
-<script src="post.js?update=2015-07-29"></script>
-<script src="booklet.js?update=2015-10-28"></script>
+<script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.18/polyfill.min.js"></script>
+<script src="../map.js?update=2016-03-04"></script>
+<script src="post.js?update=2016-03-06"></script>
+<script src="booklet.js?update=2016-03-04"></script>
 <style>
 @import url(https://fonts.googleapis.com/css?family=Marcellus|PT+Sans+Narrow);
 
@@ -504,7 +504,10 @@ table.subsector-list tr td:first-of-type {
 
     <form id="form" action="api/poster" method="post" enctype="application/x-www-form-urlencoded">
       <div>Sector Data:
-        (<a target="_blank" href="../doc/fileformats">file formats</a>)</div>
+        (<a target="_blank" href="../doc/fileformats">file formats</a>)
+        &mdash;
+        <em>tip: <a target="_blank" href="../tools/lintsec.html">check your data</a> first</em>
+      </div>
       <textarea id="data" name="data" class="drag-n-drop"
                 spellcheck="false" wrap="off" cols="80" rows="10"></textarea>
 

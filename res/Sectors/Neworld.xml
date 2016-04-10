@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
-<Sector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<Sector>
   <Name>Neworld</Name>
   <Credits>
     <![CDATA[
 
-             <b>Neworld</b> sector was designed by Randy Dorman,
+             <b>Neworld</b> sector was designed by Randy Dorman.
 
              Stellar positions were developed by Joe D. Fugate Sr. and
              appear in <cite>The MegaTraveller Alien, Volume 2:
@@ -20,7 +20,7 @@
     <Subsector Index="D">Theta Eridani</Subsector>
     <Subsector Index="E">Borethane</Subsector>
     <Subsector Index="F">Gamma Leonis</Subsector>
-    <Subsector Index="G">Zeta Hydrae</Subsector>
+    <Subsector Index="G">Subra</Subsector>
     <Subsector Index="H">Fortuna</Subsector>
     <Subsector Index="I">Asphodel</Subsector>
     <Subsector Index="J">Delos</Subsector>
@@ -29,14 +29,14 @@
     <Subsector Index="M">Quatuor</Subsector>
     <Subsector Index="N">Ionia</Subsector>
     <Subsector Index="O">Oppenheimer</Subsector>
-    <Subsector Index="P">Deinbach</Subsector>
+    <Subsector Index="P">Dienbach</Subsector>
   </Subsectors>
   <Allegiances>
-    <Allegiance Code="Dg">Dienabach Grüpen</Allegiance>
-    <Allegiance Code="Dn">Demos of Nobles</Allegiance>
     <Allegiance Code="Fr">Solomani Confederation, Third Reformed French Confederate Rebublic</Allegiance>
-    <Allegiance Code="Kv">Solomani Confederation, Kostov Confederate Republic</Allegiance>
     <Allegiance Code="Wd">Winston Democracy</Allegiance>
+    <Allegiance Code="Kv">Solomani Confederation, Kostov Confederate Republic</Allegiance>
+    <Allegiance Code="Dn">Demos of Nobles</Allegiance>
+    <Allegiance Code="Dg">Dienbach Grüpen</Allegiance>
   </Allegiances>
   <Borders>
     <Border WrapLabel="true" Color="Cyan" Allegiance="Dg" LabelPosition="3031">2730 2830 2930 3029 3030 3031 3032 3033 3134 3033 2933 2832 2831 2830 2730</Border>
@@ -88,8 +88,8 @@
     <Route Start="3013" End="3211" />
     <Route Start="2815" End="2819" />
     <Route Start="2921" End="2819" />
-    <Route Start="3211" End="0109" EndOffsetX="1"/>
-    <Route Start="3013" End="0214" EndOffsetX="1"/>
+    <Route Start="3211" End="0109" EndOffsetX="1" />
+    <Route Start="3013" End="0214" EndOffsetX="1" />
     <Route Start="0106" End="3007" EndOffsetX="-1" />
     <Route Start="0115" End="2913" EndOffsetX="-1" />
     <Route Start="0603" End="0540" EndOffsetY="-1" />

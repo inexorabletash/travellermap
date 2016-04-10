@@ -467,6 +467,7 @@ namespace Maps.Rendering
                     {
                         if (styles.fillMicroBorders)
                             DrawMicroBorders(BorderLayer.Fill);
+
                         DrawMicroBorders(BorderLayer.Stroke);
                     }
                     timers.Add(new Timer("micro-borders"));
@@ -575,19 +576,31 @@ namespace Maps.Rendering
                 //------------------------------------------------------------
                 if (styles.worlds.visible)
                 {
-                    // TODO: selector may be expensive
-                    foreach (World world in selector.Worlds) { DrawWorld(fonts, world, WorldLayer.Background); }
-                    foreach (World world in selector.Worlds) { DrawWorld(fonts, world, WorldLayer.Foreground); }
-                    foreach (World world in selector.Worlds) { DrawWorld(fonts, world, WorldLayer.Overlay); }
+                    if (styles.showStellarOverlay)
+                    {
+                        foreach (World world in selector.Worlds) { DrawStars(world); }
+                    }
+                    else {
+                        foreach (World world in selector.Worlds) { DrawWorld(fonts, world, WorldLayer.Background); }
+                        foreach (World world in selector.Worlds) { DrawWorld(fonts, world, WorldLayer.Foreground); }
+
+                        if (styles.HasWorldOverlays)
+                        {
+                            float slop = selector.SlopFactor;
+                            selector.SlopFactor = (float)Math.Max(slop, Math.Log(scale, 2.0) - 4);
+                            foreach (World world in selector.Worlds) { DrawWorld(fonts, world, WorldLayer.Overlay); }
+                            selector.SlopFactor = slop;
+                        }
+                    }
                 }
                 timers.Add(new Timer("worlds"));
-                #endregion
+#endregion
 
                 //------------------------------------------------------------
                 // Overlays
                 //------------------------------------------------------------
 
-                #region droyne
+#region droyne
                 //------------------------------------------------------------
                 // Droyne/Chirper Worlds
                 //------------------------------------------------------------
@@ -598,22 +611,56 @@ namespace Maps.Rendering
                     {
                         bool droyne = world.HasCodePrefix("Droy") != null;
                         bool chirpers = world.HasCodePrefix("Chir") != null;
+
+                        string glyph = droyne ? "\u2605" : "\u2606";
+
                         if (droyne || chirpers)
                         {
-                            string glyph = droyne ? "\u2605" : "\u2606";
-                            PointF center = Astrometrics.HexToCenter(world.Coordinates);
-                            using (RenderUtil.SaveState(graphics))
-                            {
-                                XMatrix matrix = new XMatrix();
-                                matrix.TranslatePrepend(center.X, center.Y);
-                                matrix.ScalePrepend(1 / Astrometrics.ParsecScaleX, 1 / Astrometrics.ParsecScaleY);
-                                graphics.MultiplyTransform(matrix, XMatrixOrder.Prepend);
-                                graphics.DrawString(glyph, styles.droyneWorlds.Font, solidBrush, 0, 0, RenderUtil.StringFormatCentered);
-                            }
+                            OverlayGlyph(glyph, styles.droyneWorlds.Font, world.Coordinates);
                         }
                     }
                 }
                 timers.Add(new Timer("droyne"));
+                #endregion
+
+                #region minorHomeWorlds
+                //------------------------------------------------------------
+                // Minor Homeworlds 
+                //------------------------------------------------------------
+                if (styles.minorHomeWorlds.visible)
+                {
+                    solidBrush.Color = styles.minorHomeWorlds.textColor;
+                    foreach (World world in selector.Worlds)
+                    {
+                        string glyph = "\u273B";
+
+                        if (world.HasCodePrefix("(") != null)
+                        {
+                            OverlayGlyph(glyph, styles.minorHomeWorlds.Font, world.Coordinates);
+                        }
+                    }
+                }
+                timers.Add(new Timer("minor"));
+                #endregion
+
+                #region ancients
+                //------------------------------------------------------------
+                // Ancients Worlds
+                //------------------------------------------------------------
+                if (styles.ancientsWorlds.visible)
+                {
+                    solidBrush.Color = styles.ancientsWorlds.textColor;
+                    foreach (World world in selector.Worlds)
+                    {
+                        string glyph = "\u2600";
+
+                        if (world.HasCode("An"))
+                        {
+                            OverlayGlyph(glyph, styles.ancientsWorlds.Font, world.Coordinates);
+                        }
+                    }
+                }
+                timers.Add(new Timer("ancients"));
                 #endregion
 
                 #region unofficial
@@ -628,9 +675,9 @@ namespace Maps.Rendering
                         graphics.DrawRectangle(solidBrush, sector.Bounds);
                 }
                 timers.Add(new Timer("unofficial"));
-                #endregion
+#endregion
 
-                #region timing
+#region timing
 #if SHOW_TIMING
                 using( RenderUtil.SaveState( graphics ) )
                 {
@@ -655,7 +702,20 @@ namespace Maps.Rendering
                     }
                 }
 #endif
-                #endregion
+#endregion
+            }
+        }
+
+        private void OverlayGlyph(string glyph, XFont font, Point coordinates)
+        {
+            PointF center = Astrometrics.HexToCenter(coordinates);
+            using (RenderUtil.SaveState(graphics))
+            {
+                XMatrix matrix = new XMatrix();
+                matrix.TranslatePrepend(center.X, center.Y);
+                matrix.ScalePrepend(1 / Astrometrics.ParsecScaleX, 1 / Astrometrics.ParsecScaleY);
+                graphics.MultiplyTransform(matrix, XMatrixOrder.Prepend);
+                graphics.DrawString(glyph, font, solidBrush, 0, 0, RenderUtil.StringFormatCentered);
             }
         }
 
@@ -728,7 +788,7 @@ namespace Maps.Rendering
 
             }
         }
-
+        
         private void DrawParsecGrid()
         {
             const int parsecSlop = 1;
@@ -905,7 +965,7 @@ namespace Maps.Rendering
 
                 if (layer == WorldLayer.Overlay)
                 {
-                    #region Population Overlay 
+#region Population Overlay 
                     if (styles.showPopulationOverlay && world.Population > 0)
                     {
                         // TODO: Don't hardcode the color
@@ -913,9 +973,9 @@ namespace Maps.Rendering
                         float r = (float)Math.Sqrt(world.Population / Math.PI) * 0.00002f;
                         graphics.DrawEllipse(solidBrush, -r, -r, r * 2, r * 2);
                     }
-                    #endregion
+#endregion
 
-                    #region Importance Overlay
+#region Importance Overlay
                     if (styles.showImportanceOverlay)
                     {
                         int im = SecondSurvey.Importance(world);
@@ -927,7 +987,7 @@ namespace Maps.Rendering
                             graphics.DrawEllipse(solidBrush, -r, -r, r * 2, r * 2);
                         }
                     }
-                    #endregion
+#endregion
                 }
 
                 if (!styles.useWorldImages)
@@ -1359,6 +1419,41 @@ namespace Maps.Rendering
             }
         }
 
+        private static readonly Regex STELLAR_REGEX = new Regex(@"([OBAFGKM][0-9] ?(?:Ia|Ib|II|III|IV|V|VI|VII|D)|D|BD|BH)", RegexOptions.Compiled | RegexOptions.CultureInvariant);
+        private void DrawStars(World world)
+        {
+            using (RenderUtil.SaveState(graphics))
+            {
+                graphics.SmoothingMode = XSmoothingMode.AntiAlias;
+                PointF center = Astrometrics.HexToCenter(world.Coordinates);
+
+                XMatrix matrix = new XMatrix();
+                matrix.TranslatePrepend(center.X, center.Y);
+                matrix.ScalePrepend(styles.hexContentScale / Astrometrics.ParsecScaleX, styles.hexContentScale / Astrometrics.ParsecScaleY);
+                graphics.MultiplyTransform(matrix, XMatrixOrder.Prepend);
+
+                // TODO: Proper stellar parsing
+                List<string> ss = new List<string>();
+                foreach (Match m in STELLAR_REGEX.Matches(world.Stellar))
+                {
+                    ss.Add(m.Value);
+                }
+
+                int i = 0;
+                foreach (var props in ss.Select(s => StellarRendering.star2props(s)).OrderByDescending(p => p.radius)) {
+                    solidBrush.Color = props.color;
+                    pen.Color = props.borderColor;
+                    pen.DashStyle = XDashStyle.Solid;
+                    pen.Width = styles.worlds.pen.width;
+                    PointF offset = StellarRendering.Offset(i++);
+                    const float offsetScale = 0.3f;
+                    float r = 0.15f * props.radius;
+                    graphics.DrawEllipse(pen, solidBrush, offset.X * offsetScale - r, offset.Y * offsetScale - r, r*2, r*2);
+                }
+            }
+        }
+
+
         private Stylesheet.StyleElement? ZoneStyle(World world)
         {
             if (world.IsAmber || world.IsRed || world.IsBlue)
@@ -1452,6 +1547,23 @@ namespace Maps.Rendering
                         //labelPos.Y -= 0.5f;
 
                         if (border.WrapLabel)
+                            label = WRAP_REGEX.Replace(label, "\n");
+
+                        RenderUtil.DrawLabel(graphics, label, labelPos, styles.microBorders.Font, solidBrush, styles.microBorders.textStyle);
+                    }
+
+                    foreach (Region region in sector.Regions.Where(region => region.ShowLabel))
+                    {
+                        string label = region.GetLabel(sector);
+                        if (label == null)
+                            continue;
+                        Hex labelHex = region.LabelPosition;
+                        PointF labelPos = Astrometrics.HexToCenter(Astrometrics.LocationToCoordinates(new Location(sector.Location, labelHex)));
+                        // TODO: Replace these with, well, positions!
+                        //labelPos.X -= 0.5f;
+                        //labelPos.Y -= 0.5f;
+
+                        if (region.WrapLabel)
                             label = WRAP_REGEX.Replace(label, "\n");
 
                         RenderUtil.DrawLabel(graphics, label, labelPos, styles.microBorders.Font, solidBrush, styles.microBorders.textStyle);
@@ -1625,6 +1737,71 @@ namespace Maps.Rendering
                         LineStyle? borderStyle = border.Style;
 
                         SectorStylesheet.StyleResult ssr = sector.ApplyStylesheet("border", border.Allegiance);
+                        borderStyle = borderStyle ?? ssr.GetEnum<LineStyle>("style") ?? LineStyle.Solid;
+                        borderColor = borderColor ?? ssr.GetColor("color") ?? styles.microBorders.pen.color;
+
+                        if (layer == BorderLayer.Stroke && borderStyle.Value == LineStyle.None)
+                            continue;
+
+                        if (styles.grayscale ||
+                            !ColorUtil.NoticeableDifference(borderColor.Value, styles.backgroundColor))
+                        {
+                            borderColor = styles.microBorders.pen.color; // default
+                        }
+
+                        pen.Color = borderColor.Value;
+                        pen.DashStyle = LineStyleToDashStyle(borderStyle.Value);
+
+                        if (styles.microBorderStyle != MicroBorderStyle.Curve)
+                        {
+                            // Clip to the path itself - this means adjacent borders don't clash
+                            using (RenderUtil.SaveState(graphics))
+                            {
+                                graphics.IntersectClip(drawPath);
+                                switch (layer)
+                                {
+                                    case BorderLayer.Fill:
+                                        solidBrush.Color = Color.FromArgb(FILL_ALPHA, borderColor.Value);
+                                        graphics.DrawPath(solidBrush, drawPath);
+                                        break;
+                                    case BorderLayer.Stroke:
+                                        graphics.DrawPath(pen, drawPath);
+                                        break;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            switch (layer)
+                            {
+                                case BorderLayer.Fill:
+                                    solidBrush.Color = Color.FromArgb(FILL_ALPHA, borderColor.Value);
+                                    graphics.DrawClosedCurve(solidBrush, borderPath.points);
+                                    break;
+
+                                case BorderLayer.Stroke:
+                                    foreach (var segment in borderPath.curves)
+                                    {
+                                        if (segment.closed)
+                                            graphics.DrawClosedCurve(pen, segment.points, 0.6f);
+                                        else
+                                            graphics.DrawCurve(pen, segment.points, 0.6f);
+                                    }
+                                    break;
+                            }
+                        }
+                    }
+
+                    foreach (Region region in sector.Regions)
+                    {
+                        BorderPath borderPath = region.ComputeGraphicsPath(sector, borderPathType);
+
+                        XGraphicsPath drawPath = new XGraphicsPath(borderPath.points, borderPath.types, XFillMode.Alternate);
+
+                        Color? borderColor = region.Color;
+                        LineStyle? borderStyle = region.Style;
+
+                        SectorStylesheet.StyleResult ssr = sector.ApplyStylesheet("region", region.Allegiance);
                         borderStyle = borderStyle ?? ssr.GetEnum<LineStyle>("style") ?? LineStyle.Solid;
                         borderColor = borderColor ?? ssr.GetColor("color") ?? styles.microBorders.pen.color;
 

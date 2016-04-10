@@ -506,26 +506,54 @@
       window.history.replaceState(null, document.title, url);
     }
 
+
     if (isPlaceholder) {
       $('#world-image').classList.add('unknown');
     } else {
-      $('#world-image').classList.add('Hyd' + world.UWP.Hyd);
       $('#world-image').classList.add('Siz' + world.UWP.Siz);
-      $('#world-image .disc').src = 'res/Candy/' +
-        (world.UWP.Siz === '0' ? 'Belt' : 'Hyd' + world.UWP.Hyd) + '.png';
-    }
-    $('#world-image').style.display = 'block';
+      if (hasCode('Sa'))
+        $('#world-image .background').src = 'res/world/gg.jpg';
 
-    if (hasCode('Sa'))
-      $('#world-image .background').src = 'res/world/gg.jpg';
+      var render = 'res/Candy/worlds/'
+            + encodeURIComponent(world.Sector + ' ' + world.Hex) + '.png';
+      var generic = 'res/Candy/'
+            + (world.UWP.Siz === '0' ? 'Belt' : 'Hyd' + world.UWP.Hyd) + '.png';
 
-    // Try loading pre-rendered; if it works, use it instead.
-    if (!isPlaceholder) {
-      var img = document.createElement('img');
-      img.src = 'res/Candy/worlds/' + encodeURIComponent(world.Sector + ' ' + world.Hex) + '.png';
-      img.onload = function() {
-        $('#world-image .disc').src = img.src;
-      };
+      var isRender = true;
+      fetchImage(render)
+        .catch(function() {
+          isRender = false;
+          return fetchImage(generic);
+        })
+        .then(function(img) {
+          var canvas = $('#world-image .disc'), w = canvas.width, h = canvas.height;
+          var ctx = canvas.getContext('2d');
+
+          function checkMode(mode) {
+            var orig = ctx.globalCompositeOperation;
+            ctx.globalCompositeOperation = mode;
+            var result = ctx.globalCompositeOperation === mode;
+            ctx.globalCompositeOperation = orig;
+            return result;
+          }
+
+          if (!isRender &&
+              checkMode('destination-in') && checkMode('multiply') &&
+              world.Stars && /^([OBAFGKM])([0-9])/.test(world.Stars[0])) {
+            var t = class2temp(RegExp.$1, RegExp.$2);
+            var c = temp2color(t);
+            ctx.fillStyle = 'rgb(' + c.r + ',' + c.g + ',' + c.b + ')';
+
+            ctx.fillRect(0, 0, w, h);
+            ctx.globalCompositeOperation = 'destination-in';
+            ctx.drawImage(img, 0, 0, w, h);
+            ctx.globalCompositeOperation = 'multiply';
+          }
+
+          ctx.drawImage(img, 0, 0, w, h);
+
+          $('#world-image').classList.add('ready');
+       });
     }
   }
 
@@ -649,6 +677,51 @@
     dy = Math.round(dy);
 
     return { x: x + dx, y: y + dy };
+  }
+
+  function fetchImage(url) {
+    return new Promise(function(resolve, reject) {
+      var img = document.createElement('img');
+      img.src = url;
+      img.onload = function() { resolve(img); };
+      img.onerror = function() { reject(Error('failed')); };
+    });
+  }
+
+  // Convert stellar class (e.g. 'G', '2') to temperature (Kelvin).
+  // Curve fit based on data from:
+  // http://www.uni.edu/morgans/astro/course/Notes/section2/spectraltemps.html
+  function class2temp(c, f) {
+    var n = 'OBAFGKM'.indexOf(c) + Number(f) / 10;
+    return 26684.83 * Math.pow(n, -1.127977);
+  }
+
+  // Convert temperature (Kelvin) to color {r, g, b} in 0...255.
+  // Based on: http://www.zombieprototypes.com/?p=210
+  function temp2color(kelvin) {
+    function fit(a, b, c, x) { return Math.floor(a + b*x + c * Math.log(x)); }
+    var r, g, b;
+
+    if (kelvin < 6600)
+      r = 255;
+    else
+      r = fit(351.97690566805693, 0.114206453784165, -40.25366309332127, (kelvin/100) - 55);
+
+    if (kelvin <= 1000)
+      g = 0;
+    else if (kelvin < 6600)
+      g = fit(-155.25485562709179, -0.44596950469579133, 104.49216199393888, (kelvin/100) - 2);
+    else
+      g = fit(325.4494125711974, 0.07943456536662342, -28.0852963507957, (kelvin/100) - 50);
+
+    if (kelvin <= 2000)
+      b = 0;
+    else if (kelvin < 6600)
+      b = fit(-254.76935184120902, 0.8274096064007395, 115.67994401066147, (kelvin/100) - 10);
+    else
+      b = 255;
+
+    return {r:r, g:g, b:b};
   }
 
 }(this));

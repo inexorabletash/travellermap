@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Sector>
+  <Y>11</Y>
+  <X>6</X>
+  <Name>Pi-4 Orionis</Name>
+  <Credits>
+    <![CDATA[
+
+             <b>Pi-4 Orionis</b> sector was designed by WG Zeist.
+
+    ]]>
+  </Credits>
+  <Subsectors>
+    <Subsector Index="A"></Subsector>
+    <Subsector Index="B"></Subsector>
+    <Subsector Index="C"></Subsector>
+    <Subsector Index="D"></Subsector>
+    <Subsector Index="E">Pi-4 Orionis</Subsector>
+    <Subsector Index="F"></Subsector>
+    <Subsector Index="G"></Subsector>
+    <Subsector Index="H"></Subsector>
+    <Subsector Index="I">106 G. Orionis</Subsector>
+    <Subsector Index="J"></Subsector>
+    <Subsector Index="K"></Subsector>
+    <Subsector Index="L">145 G. Orionis</Subsector>
+    <Subsector Index="M"></Subsector>
+    <Subsector Index="N"></Subsector>
+    <Subsector Index="O"></Subsector>
+    <Subsector Index="P"></Subsector>
+  </Subsectors>
+  <Routes>
+    <Route Start="3039" StartOffsetY="-1" End="2903" Color="Orange" />
+    <Route Start="0738" StartOffsetY="-1" End="0801" Color="Orange" />
+    <Route Start="0801" End="1004" Color="Orange" />
+    <Route Start="1004" End="1009" Color="Orange" />
+    <Route Start="1009" End="0913" Color="Orange" />
+    <Route Start="0913" End="0817" Color="Orange" />
+    <Route Start="0817" End="0619" Color="Orange" />
+    <Route Start="0619" End="0723" Color="Orange" />
+    <Route Start="0723" End="0526" Color="Orange" />
+    <Route Start="0526" End="0530" Color="Orange" />
+    <Route Start="0530" End="0633" Color="Orange" />
+    <Route Start="0633" End="0835" Color="Orange" />
+    <Route Start="0835" End="1139" Color="Orange" />
+    <Route Start="1139" EndOffsetY="1" End="1202" Color="Orange" />
+    <Route Start="2903" End="2805" Color="Orange" />
+    <Route Start="2805" End="2508" Color="Orange" />
+    <Route Start="2508" End="2312" Color="Orange" />
+    <Route Start="2312" End="2014" Color="Orange" />
+    <Route Start="2014" End="1817" Color="Orange" />
+    <Route Start="1817" End="1519" Color="Orange" />
+    <Route Start="1519" End="1218" Color="Orange" />
+    <Route Start="1218" End="0817" Color="Orange" />
+    <Route Start="0224" StartOffsetX="1" End="3023" Color="Orange" />
+    <Route Start="3023" End="2623" Color="Orange" />
+    <Route Start="2623" End="2324" Color="Orange" />
+    <Route Start="2324" End="1925" Color="Orange" />
+    <Route Start="1925" End="1424" Color="Orange" />
+    <Route Start="1424" End="0926" Color="Orange" />
+    <Route Start="0926" End="0526" Color="Orange" />
+    <Route Start="0526" End="0226" Color="Orange" />
+    <Route Start="0226" EndOffsetX="-1" End="3027" Color="Orange" />
+  </Routes>
+  <Allegiances>
+    <Allegiance Code="Mc">M'norr Client State</Allegiance>
+  </Allegiances>
+  <Borders>
+  </Borders>
+</Sector>

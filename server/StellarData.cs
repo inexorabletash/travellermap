@@ -72,7 +72,7 @@ namespace Maps
 
         private abstract class Unit
         {
-            public static bool Parse(TextReader r, out Unit unit)
+            public static bool Parse(SeekableReader r, out Unit unit)
             {
 #if EXTENDED_SYSTEM_PARSING
                 Pair p;
@@ -115,7 +115,7 @@ namespace Maps
                 }
             }
 
-            public static bool Parse( TextReader r, out Pair pair )
+            public static bool Parse( SeekableReader r, out Pair pair )
             {
                 if( r.Peek() != '(' )
                 {
@@ -147,7 +147,7 @@ namespace Maps
 
         private abstract class Companion
         {
-            public static bool Parse(TextReader r, out Companion companion)
+            public static bool Parse(SeekableReader r, out Companion companion)
             {
                 NearCompanion nc;
                 if (NearCompanion.Parse(r, out nc))
@@ -177,7 +177,7 @@ namespace Maps
             {
                 return Companion.ToString(format);
             }
-            public static bool Parse(TextReader r, out NearCompanion near)
+            public static bool Parse(SeekableReader r, out NearCompanion near)
             {
                 Unit u;
                 if (Unit.Parse(r, out u))
@@ -209,7 +209,7 @@ namespace Maps
                         return "[" + Companion.ToString( format ) + "]";
                 }
             }
-            public static bool Parse( TextReader r, out FarCompanion far )
+            public static bool Parse( SeekableReader r, out FarCompanion far )
             {
                 if( r.Peek() != '[' )
                 {
@@ -243,7 +243,7 @@ namespace Maps
                 return s;
             }
 
-            public static bool Parse(TextReader r, out System system)
+            public static bool Parse(SeekableReader r, out System system)
             {
 
                 Unit u;
@@ -278,7 +278,7 @@ namespace Maps
             public override string ToString(OutputFormat format)
             {
                 string res;
-                if (Type.Length > 1)
+                if (Type.Length > 1 || Type == "D")
                     res = Type;
                 else
                     res = Type + Tenths.ToString() + (format == OutputFormat.Compact ? "" : " ") + Size;
@@ -296,7 +296,7 @@ namespace Maps
             private static readonly string[] DWARF_TYPES = { "DB", "DA", "DF", "DG", "DK", "DM", "D" };
             private static readonly string[] OTHER_TYPES = { "BD", "BH", "Un" };
 
-            public static bool Parse(TextReader r, out Star star)
+            public static bool Parse(SeekableReader r, out Star star)
             {
                 string m;
 
@@ -377,16 +377,16 @@ namespace Maps
 
         /// <summary>
         /// Match one of a set of string options. Will return one of the options or null
-        /// if there is no match. If the stream produces a partial match (e.g. options
-        /// are [ "aa", "ab" ] but the stream is "ac" then an InvalidSystemException
-        /// will be thrown.
+        /// if there is no match.
         /// </summary>
         /// <param name="r">Text to parse</param>
         /// <param name="options">List of accepted options</param>
         /// <returns>Matched string, or null</returns>
-        private static string Match(TextReader r, string[] options)
+        private static string Match(SeekableReader r, string[] options)
         {
             string found = "";
+
+            int pos = r.Position;
 
             while (r.Peek() != -1 && IsPrefixIn(found + (char)r.Peek(), options))
             {
@@ -396,9 +396,7 @@ namespace Maps
             if (options.Any(o => found == o))
                 return found;
 
-            if (found.Length > 0)
-                throw new InvalidSystemException("Invalid character in match sequence");
-
+            r.Position = pos;
             return null;
         }
 
@@ -412,7 +410,7 @@ namespace Maps
         /// <exception cref="">InvalidSystemException</exception>
         public static string Parse(string rest, OutputFormat format)
         {
-            TextReader reader = new StringReader(rest);
+            SeekableReader reader = new SeekableStringReader(rest);
             System system;
             bool success = System.Parse(reader, out system);
 
@@ -423,6 +421,36 @@ namespace Maps
                 throw new InvalidSystemException(string.Format("Saw unexpected character: {0}", (char)reader.Read()));
 
             return system.ToString(format);
+        }
+
+        private abstract class SeekableReader
+        {
+            public abstract int Peek();
+            public abstract int Read();
+            public abstract int Position { get; set; }
+        }
+
+        private class SeekableStringReader : SeekableReader
+        {
+            private string s;
+
+            public SeekableStringReader(string s)
+            {
+                this.s = s;
+                Position = 0;
+            }
+
+            public override int Peek()
+            {
+                return (0 <= Position && Position < s.Length) ? s[Position] : -1;
+            }
+
+            public override int Read()
+            {
+                return (0 <= Position && Position < s.Length) ? s[Position++] : -1;
+            }
+
+            public override int Position { get; set; }
         }
     }
 }

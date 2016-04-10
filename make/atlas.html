@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <link rel="shortcut icon" href="../favicon.ico">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.2/handlebars.min.js"></script>
-<script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.14/polyfill.min.js"></script>
+<script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.18/polyfill.min.js"></script>
 <script src="../map.js?update=2015-10-26"></script>
 <script src="atlas.js?update=2015-10-28"></script>
 <style>
@@ -186,11 +186,11 @@ h1.underline {
 
 /* Credits ============================== */
 
-.credits {
-  padding-top: 1.5in;
+.colophon {
+  padding-top: 4.5in;
 }
 
-.credits h1 {
+.colophon h1 {
   font-style: italic;
   font-size: 18pt;
   font-family: Optima, Marcellus, serif;
@@ -199,9 +199,14 @@ h1.underline {
   margin: 0;
 }
 
-.credits p {
-  x-margin-bottom: 1em;
+.colophon p {
+  margin-bottom: 1em;
 }
+
+/* Credits ============================== */
+
+.credits h1 { visibility: hidden; }
+.credits.instance0 h1 { visibility: visible; }
 
 /* Introduction ============================== */
 
@@ -335,7 +340,7 @@ table.uwp-data {
   text-overflow: ellipsis;
   */
 
-  font-family: "Arial Narrow", "Roboto Condensed", Tahoma, sans-serif;
+  font-family: "Univers Condensed", "Arial Narrow", "Roboto Condensed", Tahoma, sans-serif;
   font-size: 5.5pt;
   line-height: 100%;
   white-space: nowrap;
@@ -346,7 +351,7 @@ table.uwp-data {
 /* Index ============================== */
 
 .index {
-  font-size: 10pt;
+  font-size: 9.5pt;
   font-family: Optima, Marcellus, serif;
 }
 .dot-leaders { overflow-x: hidden; }
@@ -401,9 +406,9 @@ table.uwp-data {
     </div>
 
     <!-- Colophon Page -->
-    <div id="colophon" class="page">
+    <div id="colophon_page" class="page">
 
-      <div class="content credits">
+      <div class="content colophon">
 
         <h1>Atlas of the Imperium: Second Survey</h1>
 
@@ -414,142 +419,28 @@ table.uwp-data {
           registered trademark of Far Future Enterprises.
         </p>
 
-        <br>
-        <br>
-        <br>
-
-        <!-- Land Grants -->
-
         <p>
-          <b>Old Expanses</b> sector designed by Jim Cunningham and
-          Gordon Sheridan. Portions of Old Expanses sector originally
-          appears in <cite>High Passage Magazine.</cite>
+          Sector data revised and reviewed by:
+
+          Andrea Vallance,
+          Bob Toy,
+          Craig A. Glesner,
+          David Smart,
+          Don McKinney,
+          Greg Lee,
+          Jim Fetters,
+          Jim Kundert,
+          Marc W. Miller,
+          Robert Eaglestone,
+          Tom Osborne,
+
+          and
+
+          William Hostman.
         </p>
 
         <p>
-          <b>Reaver's Deep</b> sector was designed by J. Andrew Keith.
-          Portions of Reaver's Deep sector appears in
-          <cite>High Passage Magazine</cite>, and in
-          <cite>Far Traveller Magazine</cite>. Additional data and
-          adventures set in Reaver's Deep sector were published by
-          Gamelords, Ltd.
-        </p>
-
-        <p>
-          <b>The Beyond</b> and <b>Vanguard Reaches</b> sectors were
-          designed by Donald P. Rapp and Chuck Kallenbach II
-          respectively, and appear in supplements of the same names
-          (Paranoia Press).
-        </p>
-
-        <p>
-          <b>Theta Borealis</b> was designed by Bill Bledsaw, Pixie Bledsaw,
-          Mark Holmer, Jeff Johnson, Debi Summerlott and Marc Summerlott,
-          and appears in <cite>Theta Borealis Sector</cite> (Group One).
-        </p>
-
-        <p>
-          One subsector of <b>Far Frontiers</b> was designed by J. Andrew Keith and
-          appears in <cite>Trail of the Sky Raiders</cite> (FASA).
-
-          Another subsector was designed by Bill Fawcett and
-          appears in <cite>Gameplay</cite>.
-
-          Six more subsectors were designed by Dale L. Kemper and
-          appear in <cite>Ares Magazine</cite>.
-
-          The remaining eight subsectors were designed by Jim Kundert and
-          appear in <cite>The Traveller Chronicle</cite>.
-        </p>
-
-        <!-- Classic Traveller -->
-
-        <p>
-          Two subsectors of <b>Reft Sector</b> were designed by John Harshman,
-          and appear in
-          <b>Traveller</b> Adventure 5: <cite>Trillion Credit Squadron</cite> (GDW).
-        </p>
-        <p>
-          <b>Solomani Rim</b> sector was designed by John Harshman and
-          appears in <b>Traveller</b> Supplement 10, <cite>The Solomani Rim</cite> (GDW).
-        </p>
-        <p>
-          <b>The Spinward Marches</b> were designed by Marc W. Miller
-          and appears in <b>Traveller</b> Supplement 3,
-          <cite>The Spinward Marches</cite> (GDW).
-        </p>
-        <p>
-          Two subsectors of <b>Trojan Reach</b> sector were designed by
-          Bob McWilliams and appear in <b>Traveller</b> Adventure 4, <cite>Leviathan</cite> (GDW).
-        </p>
-        <p>
-          <b>Deneb</b>, <b>Corridor</b>, <b>Vland</b>,
-          <b>Lishun</b>, <b>Antares</b>, <b>The Empty Quarter</b>, <b>Trojan Reach</b>,
-          <b>Reft</b>, <b>Gushemege</b>, <b>Dagudashag</b>, <b>Core</b>,
-          <b>Fornast</b>, <b>Ley</b>, <b>Riftspan Reaches</b>, <b>Verge</b>,
-          <b>Ilelish</b>, <b>Zarushagar</b>, <b>Massila</b>, <b>Delphi</b>,
-          <b>Glimmerdrift Reaches</b>, <b>Hlakhoi</b>, <b>Ealiyasiyw</b>,
-          <b>Daibei</b>, <b>Diaspora</b>,
-          <b>Hinterworlds</b>, <b>Staihaia'yo</b>, <b>Iwahfuah</b>, <b>Dark Nebula</b>,
-          <b>Magyar</b>, <b>Alpha Crucis</b>, and <b>Spica</b> sectors
-          were designed by Marc W. Miller
-          and appear in the original <cite>Atlas of the Imperium</cite> (GDW),
-          with later refinement by Joe Fugate and many others.
-        </p>
-
-        <p>
-          <b>Gvurrdon</b> sector was designed by J. Andrew Keith, Marc Miller
-          and John Harshman and appears in <b>Traveller</b> Alien Module 3: <cite>Vargr</cite> (GDW).
-        </p>
-
-        <!-- MegaTraveller -->
-
-        <p>
-          <b>Meshan</b>, <b>Mendan</b>, and <b>Amdukan</b> sectors
-          were designed by Michael R. Mikesh. Mendan sector appeared
-          in <cite>Challege #49</cite> (GDW). One subsector of Amdukan sector
-          appear in <cite>Challenge #52</cite> (GDW).
-        </p>
-
-        <p>
-          <b>Gateway</b> sector was designed by William H. Keith, Jr.
-          and appears in <cite>The MegaTraveller Journal</cite> (Digest Group Publications).
-        </p>
-
-        <!-- T20 -->
-
-        <p>
-          <b>Crucis Margin</b> sectors was designed by
-          Martin J. Dougherty and Hunter Gordon and appears in
-          <cite>Gateway to Destiny</cite> (QuickLink Interactive).
-        </p>
-
-        <!-- Mongoose -->
-
-        <p>
-          <b>Ziafrplians</b> sector was designed by Donald McKinney
-          and appears in <cite>Alien Module 4: Zhodani</cite> (Mongoose Publishing)
-        </p>
-
-        <!-- Internet -->
-
-        <p>
-          <b>Ustral Quadrant</b> sector was designed by Douglas G. Snyder.
-        </p>
-        <p>
-          <b>Tuglikki</b> and <b>Provence</b> sectors were designed by David Drazul.
-        </p>
-        <p>
-          <b>Windhorn</b> sector was designed by John G. Wood.
-        </p>
-
-        <br>
-
-        <p>
-          <b>Foreven</b> sector has been set aside as a "referee's preserve,"
-          with no further official development to be done within the sector.
-          Stellar positions were developed by Greg Videll and Mike Mikesh and
-          appear in <cite>Imperial Lines</cite>.
+          Edited by Joshua Bell.
         </p>
 
         <br>
@@ -764,7 +655,6 @@ table.uwp-data {
       <div class=pagenum></div>
     </div>
 
-
     {{#sectors}}
 
     <!-- Sector Map -->
@@ -862,6 +752,22 @@ table.uwp-data {
     {{/pages}}
 
     {{/sectors}}
+
+    <!-- Credits -->
+    {{#credits}}
+    <div class="page">
+      <div class="content credits instance{{@index}}">
+        <h1 class="underline">Credits</h1>
+        {{#each this}}
+        <p>
+          {{{.}}}
+        </p>
+        {{/each}}
+        </ol>
+      </div>
+      <div class=pagenum></div>
+    </div>
+    {{/credits}}
 
     <!-- Index -->
     <div class="page">

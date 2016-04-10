@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Sector>
+  <Y>12</Y>
+  <X>8</X>
+  <Name>Joyce's Void</Name>
+  <Credits>
+    <![CDATA[
+
+             <b>Joyce's Void</b> sector was designed by WG Zeist.
+
+    ]]>
+  </Credits>
+  <Subsectors>
+    <Subsector Index="A">Turine</Subsector>
+    <Subsector Index="B">Zegenuis</Subsector>
+    <Subsector Index="C">Depths of C</Subsector>
+    <Subsector Index="D">Neonkasa</Subsector>
+    <Subsector Index="E">Depths of E</Subsector>
+    <Subsector Index="F">Depths of F</Subsector>
+    <Subsector Index="G">Tpenako</Subsector>
+    <Subsector Index="H">Tpenako Void</Subsector>
+    <Subsector Index="I">Above Torneg</Subsector>
+    <Subsector Index="J">Loneworld</Subsector>
+    <Subsector Index="K">Sel Monisi</Subsector>
+    <Subsector Index="L">Denadamur</Subsector>
+    <Subsector Index="M">Torneg</Subsector>
+    <Subsector Index="N">New Joyce</Subsector>
+    <Subsector Index="O">Oliman</Subsector>
+    <Subsector Index="P">Gubrigen</Subsector>
+  </Subsectors>
+  <Routes>
+    <Route Start="0432" End="0732" />
+    <Route Start="0432" End="0732" />
+    <Route Start="0732" End="0832" />
+    <Route Start="0732" End="1032" />
+    <Route Start="0832" End="1032" />
+    <Route Start="1032" End="1333" />
+    <Route Start="1333" End="1731" />
+    <Route Start="1333" End="1633" />
+    <Route Start="1633" End="1731" />
+    <Route Start="1731" End="1829" />
+    <Route Start="1829" End="2128" />
+    <Route Start="2128" End="2426" />
+    <Route Start="2426" End="2527" />
+    <Route Start="2426" End="2926" />
+    <Route Start="2926" EndOffsetX="1" End="0127" />
+    <Route Start="3239" EndOffsetX="1" End="0338" />
+    <Route Start="3239" EndOffsetX="1" EndOffsetY="1" End="0202" />
+    <Route Start="3102" EndOffsetY="-1" End="2938" />
+    <Route Start="3102" EndOffsetX="1" End="0302" />
+  </Routes>
+  <Allegiances>
+    <Allegiance Code="JU">Joyce Unity</Allegiance>
+  </Allegiances>
+  <Borders>
+    <Border Allegiance="JU" Color="purple">
+      0332 0431 0532 0631 0732 0831 0932 1032 1132 1232 1332 1432 1533 1633 1534 1433 1333 1232 1133 1032 0932 0832 0732 0632 0532 0432 0333 0332
+    </Border>
+  </Borders>
+</Sector>

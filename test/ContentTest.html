@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <link rel="shortcut icon" href="../favicon.ico">
 <link rel="stylesheet" href="../site.css?update=2015-07-19">
-<script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.14/polyfill.min.js"></script>
+<script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.18/polyfill.min.js"></script>
 
 <style>
 tbody#results td,
@@ -156,5 +156,34 @@ check('text/xml',
 check('application/json',
       'refs/universe_meta.json',
       SERVICE_BASE + '/api/universe?tag=meta');
+
+// Sector Parsing
+
+function sectorParserTest(input, expected) {
+  runTest('SEC Source', 'Parsed Output', function() {
+    return fetch(SERVICE_BASE + '/api/sec', {method: 'POST', body: input})
+    .then(function(response) {
+      if (!response.ok) throw new Error(response.statusText);
+      return response.text();
+    })
+    .then(function(body) {
+      var d = diff(expected, body);
+      return {left: input,
+              right: body,
+              diff: d,
+              pass: !d};
+    });
+  });
+}
+
+// SEC -> SecondSurvey
+sectorParserTest(
+  'B-Class Star       0101 ???????-?                    ??? Na B2 II\n' +
+  'Belts and Giants   0102 ???????-?                    ?BF Na\n',
+  'Hex  Name                 UWP       Remarks              {Ix} (Ex) [Cx] N B Z PBG W A  Stellar\n' +
+  '---- -------------------- --------- -------------------- ---- ---- ---- - - - --- - -- -------\n' +
+  '0101 B-Class Star         ???????-?                                     - - - ???   Na B2 II  \n' +
+  '0102 Belts and Giants     ???????-?                                     - - - ?BF   Na        \n');
+
 
 </script>

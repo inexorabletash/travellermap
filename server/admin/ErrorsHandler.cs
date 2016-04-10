@@ -42,9 +42,11 @@ namespace Maps.Admin
 
                 if (worlds != null)
                 {
-                    context.Response.Output.WriteLine("{0} world(s) - population: {1:#,###.##} billion", 
-                        worlds.Count(),
-                        worlds.Select(w => w.Population).Sum() / 1e9);
+                    double pop = worlds.Select(w => w.Population).Sum();
+                    if (pop > 0)
+                        context.Response.Output.WriteLine("{0} world(s) - population: {1:#,###.##} billion", worlds.Count(), pop / 1e9);
+                    else
+                        context.Response.Output.WriteLine("{0} world(s) - population: N/A", worlds.Count());
                     worlds.ErrorList.Report(context.Response.Output);
                 }
                 else
@@ -74,7 +76,7 @@ namespace Maps.Admin
                     int distance = Astrometrics.HexDistance(Astrometrics.LocationToCoordinates(startLocation),
                         Astrometrics.LocationToCoordinates(endLocation));
                     if (distance > 4)
-                        context.Response.Output.WriteLine("Route length {0}: {1}", distance, route.ToString());
+                        context.Response.Output.WriteLine("Warning: Route length {0}: {1}", distance, route.ToString());
                     /*
                      * This fails because of routes that use e.g. 3341-style coordinates
                      * It will also be extremely slow due to loading world lists w/o caching

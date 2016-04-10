@@ -35,17 +35,17 @@ window.addEventListener('DOMContentLoaded', function() {
   //////////////////////////////////////////////////////////////////////
 
   // Tweak defaults
-  map.SetOptions(map.GetOptions() | Traveller.MapOptions.NamesMinor | Traveller.MapOptions.ForceHexes);
-  map.SetScale(isSmallScreen ? 1 : 2);
+  map.options = map.options | Traveller.MapOptions.NamesMinor | Traveller.MapOptions.ForceHexes;
+  map.scale = isSmallScreen ? 1 : 2;
   map.CenterAtSectorHex(0, 0, Traveller.Astrometrics.ReferenceHexX, Traveller.Astrometrics.ReferenceHexY);
   var defaults = {
-    x: map.GetX(),
-    y: map.GetY(),
-    scale: map.GetScale(),
-    options: map.GetOptions(),
+    x: map.x,
+    y: map.y,
+    scale: map.scale,
+    options: map.options,
     routes: 1,
     dimunofficial: 0,
-    style: map.GetStyle()
+    style: map.style
   };
   var home = {
     x: defaults.x,
@@ -63,18 +63,18 @@ window.addEventListener('DOMContentLoaded', function() {
     }
 
     var prefs = {
-      style: map.GetStyle(),
-      options: map.GetOptions(),
-      routes: map.GetNamedOption('routes'),
-      dimunofficial: map.GetNamedOption('dimunofficial')
+      style: map.style,
+      options: map.options,
+      routes: map.namedOptions.get('routes'),
+      dimunofficial: map.namedOptions.get('dimunofficial')
     };
       PARAM_OPTIONS.forEach(function(option) {
         prefs[option.param] = document.body.classList.contains(option.className);
       });
     maybeSave($('#cbSavePreferences').checked, 'preferences', prefs);
     maybeSave($('#cbSaveLocation').checked, 'location', {
-      position: { x: map.GetX(), y: map.GetY() },
-      scale: map.GetScale()
+      position: { x: map.x, y: map.y },
+      scale: map.scale
     });
   }, SAVE_PREFERENCES_DELAY_MS);
 
@@ -96,16 +96,14 @@ window.addEventListener('DOMContentLoaded', function() {
       return Math.round(n * d) / d;
     }
 
-    urlParams.x = round(map.GetX(), 1/1000);
-    urlParams.y = round(map.GetY(), 1/1000);
-    urlParams.scale = round(map.GetScale(), 1/128);
-    urlParams.options = map.GetOptions();
-    urlParams.style = map.GetStyle();
+    urlParams.x = round(map.x, 1/1000);
+    urlParams.y = round(map.y, 1/1000);
+    urlParams.scale = round(map.scale, 1/128);
+    urlParams.options = map.options;
+    urlParams.style = map.style;
 
-    var namedOptions = map.GetNamedOptionNames();
-    namedOptions.forEach(function(name) {
-      urlParams[name] = map.GetNamedOption(name);
-    });
+    var namedOptions = map.namedOptions.keys();
+    map.namedOptions.forEach(function(value, key) { urlParams[key] = value; });
 
     delete urlParams.sector;
     delete urlParams.subsector;
@@ -133,9 +131,9 @@ window.addEventListener('DOMContentLoaded', function() {
     $('#share-embed').value = '<iframe width=400 height=300 src="' + pageURL + '">';
 
     var snapshotParams = (function() {
-      var map_center_x = map.GetX(),
-          map_center_y = map.GetY(),
-          scale = map.GetScale(),
+      var map_center_x = map.x,
+          map_center_y = map.y,
+          scale = map.scale,
           rect = mapElement.getBoundingClientRect(),
           width = Math.round(rect.width),
           height = Math.round(rect.height),
@@ -146,11 +144,9 @@ window.addEventListener('DOMContentLoaded', function() {
     snapshotParams.x = round(snapshotParams.x, 1/1000);
     snapshotParams.y = round(snapshotParams.y, 1/1000);
     snapshotParams.scale = round(snapshotParams.scale, 1/128);
-    snapshotParams.options = map.GetOptions();
-    snapshotParams.style = map.GetStyle();
-    namedOptions.forEach(function(name) {
-      snapshotParams[name] = urlParams[name];
-    });
+    snapshotParams.options = map.options;
+    snapshotParams.style = map.style;
+    namedOptions.forEach(function(name) { snapshotParams[name] = urlParams[name]; });
     var snapshotURL = Traveller.MapService.makeURL('/api/tile', snapshotParams);
     $('a#download-snapshot').href = snapshotURL;
     snapshotParams.accept = 'application/pdf';
@@ -280,24 +276,24 @@ window.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  var STYLES = ['poster', 'atlas', 'print', 'candy'];
+  var STYLES = ['poster', 'atlas', 'print', 'candy', 'draft', 'fasa'];
   STYLES.forEach(function(s) {
-    $('#settingsBtn-'+s).addEventListener('click', function() { map.SetStyle(s); });
+    $('#settingsBtn-'+s).addEventListener('click', function() { map.style = s; });
   });
 
   $('#homeBtn').addEventListener('click', goHome);
 
   function goHome() {
     if (['sx', 'sy', 'hx', 'hy'].every(function(p) { return ('yah_' + p) in urlParams; })) {
-      map.ScaleCenterAtSectorHex(64,
-                                 urlParams.yah_sx|0,
-                                 urlParams.yah_sy|0,
-                                 urlParams.yah_hx|0,
-                                 urlParams.yah_hy|0);
+      map.CenterAtSectorHex(
+        urlParams.yah_sx|0, urlParams.yah_sy|0,
+        urlParams.yah_hx|0, urlParams.yah_hy|0,
+        {scale: 64});
       return;
     }
-    map.SetScale(home.scale);
-    map.SetPosition(home.x, home.y);
+    map.scale = home.scale;
+    map.x = home.x;
+    map.y = home.y;
   }
 
   Array.from($$('#share-url,#share-embed')).forEach(function(input) {
@@ -351,7 +347,7 @@ window.addEventListener('DOMContentLoaded', function() {
   //////////////////////////////////////////////////////////////////////
 
   function setOptions(mask, flags) {
-    map.SetOptions((map.GetOptions() & ~mask) | flags);
+    map.options = (map.options & ~mask) | flags;
   }
 
   var optionObservers = [];
@@ -394,10 +390,10 @@ window.addEventListener('DOMContentLoaded', function() {
   }
   function bindCheckedToNamedOption(selector, name) {
     bindChecked(selector,
-                function() { var v = map.GetNamedOption(name);
+                function() { var v = map.namedOptions.get(name);
                              return v === undefined ? defaults[name] : v; },
-                function(c) { if (c === defaults[name]) map.ClearNamedOption(name);
-                              else map.SetNamedOption(name, c ? 1 : 0); });
+                function(c) { if (c === defaults[name]) map.namedOptions.delete(name);
+                              else map.namedOptions.set(name, c ? 1 : 0); });
   }
 
   map.OnOptionsChanged = function(options) {
@@ -409,7 +405,7 @@ window.addEventListener('DOMContentLoaded', function() {
   };
 
   map.OnStyleChanged = function(style) {
-    ['poster', 'atlas', 'print', 'candy', 'draft', 'fasa'].forEach(function(s) {
+    STYLES.forEach(function(s) {
       document.body.classList[s === style ? 'add' : 'remove']('style-' + s);
     });
     updatePermalink();
@@ -425,8 +421,8 @@ window.addEventListener('DOMContentLoaded', function() {
     savePreferences();
   };
 
-  map.OnDisplayChanged = function() {
-    showCredits(map.GetHexX(), map.GetHexY());
+  map.OnPositionChanged = function() {
+    showCredits(map.hexX, map.hexY);
     updatePermalink();
     savePreferences();
   };
@@ -469,10 +465,10 @@ window.addEventListener('DOMContentLoaded', function() {
     var location = JSON.parse(localStorage.getItem('location'));
     if (preferences) {
       $('#cbSavePreferences').checked = true;
-      if ('style' in preferences) map.SetStyle(preferences.style);
-      if ('options' in preferences) map.SetOptions(preferences.options);
+      if ('style' in preferences) map.style = preferences.style;
+      if ('options' in preferences) map.options = preferences.options;
       ['routes', 'dimunofficial'].forEach(function(name) {
-        if (name in preferences) map.SetNamedOption(name, preferences[name]);
+        if (name in preferences) map.namedOptions.set(name, preferences[name]);
       });
 
       PARAM_OPTIONS.forEach(function(option) {
@@ -483,8 +479,8 @@ window.addEventListener('DOMContentLoaded', function() {
 
     if (location) {
       $('#cbSaveLocation').checked = true;
-      if ('scale' in location) map.SetScale(location.scale);
-      if ('position' in location) map.SetPosition(location.position.x, location.position.y);
+      if ('scale' in location) map.scale = location.scale;
+      if ('position' in location) { map.x = location.position.x; map.y = location.position.y; }
     }
   }());
 
@@ -500,7 +496,7 @@ window.addEventListener('DOMContentLoaded', function() {
   var urlParams = standalone ? {} : map.ApplyURLParameters();
 
   // Force UI to synchronize in case URL parameters didn't do it
-  map.OnOptionsChanged(map.GetOptions());
+  map.OnOptionsChanged(map.options);
 
   if (isIframe) {
     var forceui = ('forceui' in urlParams) && Boolean(Number(urlParams.forceui));
@@ -543,6 +539,8 @@ window.addEventListener('DOMContentLoaded', function() {
     var DATA_REQUEST_DELAY_MS = 500;
     if (lastX === hexX && lastY === hexY)
       return;
+    lastX = hexX;
+    lastY = hexY;
 
     if (dataRequest) {
       dataRequest.ignore();
@@ -553,9 +551,6 @@ window.addEventListener('DOMContentLoaded', function() {
       window.clearTimeout(dataTimeout);
 
     dataTimeout = setTimeout(function() {
-      lastX = hexX;
-      lastY = hexY;
-
       dataRequest = Util.ignorable(Traveller.MapService.credits(hexX, hexY));
       dataRequest.then(function(data) {
           dataRequest = null;
@@ -589,7 +584,7 @@ window.addEventListener('DOMContentLoaded', function() {
       // Other UI
       if ('SectorName' in data && 'SectorTags' in data) {
         selectedSector = data.SectorName;
-        selectedWorld = (map.GetScale() >= 16 && 'WorldHex' in data) ? { name: data.WorldName, hex: data.WorldHex } : null;
+        selectedWorld = (map.scale >= 16 && 'WorldHex' in data) ? { name: data.WorldName, hex: data.WorldHex } : null;
         updateSectorLinks();
         $('#downloadBox').classList.add('sector-selected');
         $('#downloadBox').classList[selectedWorld ? 'add' : 'remove']('world-selected');
@@ -614,7 +609,7 @@ window.addEventListener('DOMContentLoaded', function() {
     var bookletURL = Traveller.MapService.makeURL(
           '/data/' + encodeURIComponent(selectedSector) + '/booklet');
     var posterURL = Traveller.MapService.makeURL('/api/poster', {
-      sector: selectedSector, accept: 'application/pdf', style: map.GetStyle()});
+      sector: selectedSector, accept: 'application/pdf', style: map.style});
     var dataURL = Traveller.MapService.makeURL('/api/sec', {
       sector: selectedSector, type: 'SecondSurvey' });
 
@@ -634,7 +629,7 @@ window.addEventListener('DOMContentLoaded', function() {
       $('#downloadBox a#world-data-sheet').innerHTML = 'Data Sheet: ' +
         selectedWorld.name + ' (' + selectedWorld.hex + ')';
 
-      var options = map.GetOptions() & (
+      var options = map.options & (
         Traveller.MapOptions.BordersMask | Traveller.MapOptions.NamesMask |
           Traveller.MapOptions.WorldColors | Traveller.MapOptions.FilledBorders);
 
@@ -643,7 +638,7 @@ window.addEventListener('DOMContentLoaded', function() {
           sector: selectedSector,
           hex: selectedWorld.hex,
           jump: j,
-          style: map.GetStyle(),
+          style: map.style,
           options: options
         });
         $('#downloadBox a#world-jump-map-' + j).href = jumpMapURL;
@@ -765,7 +760,7 @@ window.addEventListener('DOMContentLoaded', function() {
         a.addEventListener('click', function(e) {
           e.preventDefault();
           var params = Util.parseURLQuery(e.target);
-          map.ScaleCenterAtSectorHex(params.scale|0, params.sx|0, params.sy|0, params.hx|0, params.hy|0);
+          map.CenterAtSectorHex(params.sx|0, params.sy|0, params.hx|0, params.hy|0, {scale: params.scale|0});
           if (mapElement.offsetWidth < 640)
             document.body.classList.remove('search-results');
         });
@@ -794,7 +789,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
     fetch(Traveller.MapService.makeURL('/api/route', {
       start: start, end: end, jump: jump,
-      x: map.GetHexX(), y: map.GetHexY(),
+      x: map.hexX, y: map.hexY,
       wild: $('#route-wild').checked?1:0,
       im: $('#route-im').checked?1:0,
       nored: $('#route-nored').checked?1:0
@@ -842,7 +837,7 @@ window.addEventListener('DOMContentLoaded', function() {
           a.addEventListener('click', function(e) {
             e.preventDefault();
             var params = Util.parseURLQuery(e.target);
-            map.ScaleCenterAtSectorHex(params.scale|0, params.sx|0, params.sy|0, params.hx|0, params.hy|0);
+            map.CenterAtSectorHex(params.sx|0, params.sy|0, params.hx|0, params.hy|0, {scale: params.scale|0});
           });
         });
 
@@ -866,12 +861,12 @@ window.addEventListener('DOMContentLoaded', function() {
 
     cancelAnimationFrame(animId);
     animId = requestAnimationFrame(function() {
-      var scale = map.GetScale(),
+      var scale = map.scale,
           canvas = $('#scaleIndicator'),
           ctx = canvas.getContext('2d'),
           w = parseFloat(canvas.width),
           h = parseFloat(canvas.height),
-          style = map.GetStyle(),
+          style = map.style,
           color = ['atlas', 'print', 'draft', 'fasa'].indexOf(style) !== -1 ? 'black' : 'white';
 
       ctx.clearRect(0, 0, w, h);

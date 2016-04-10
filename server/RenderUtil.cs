@@ -7,6 +7,7 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Drawing.Text;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Maps.Rendering
 {
@@ -14,7 +15,7 @@ namespace Maps.Rendering
     internal class ImageHolder
     {
         public ImageHolder(Image image) { this.image = image; }
-        public Image Image {  get { return image; } }
+        public Image Image { get { return image; } }
         private Image image;
     }
 
@@ -51,7 +52,7 @@ namespace Maps.Rendering
         {
             if (alpha <= 0f)
                 return;
-         
+
             // Clamp and Quantize
             alpha = Math.Min(1f, alpha);
             alpha = (float)Math.Round(alpha * 16f) / 16f;
@@ -59,14 +60,16 @@ namespace Maps.Rendering
 
             Image image = holder.Image;
             XImage ximage;
-
-            int w = image.Width, h = image.Height;
+            int w, h;
 
             lock (holder)
             {
+                w = image.Width;
+                h = image.Height;
+
                 if (image.Tag == null || !(image.Tag is Dictionary<int, XImage>))
                     image.Tag = new Dictionary<int, XImage>();
-                
+
                 Dictionary<int, XImage> dict = image.Tag as Dictionary<int, XImage>;
                 if (dict.ContainsKey(key))
                 {
@@ -146,7 +149,7 @@ namespace Maps.Rendering
                 if (labelStyle.Uppercase)
                     text = text.ToUpper();
                 if (labelStyle.Wrap)
-                    text = text.Replace(' ', '\n');                
+                    text = text.Replace(' ', '\n');
 
                 g.TranslateTransform(labelPos.X, labelPos.Y);
                 g.ScaleTransform(1.0f / Astrometrics.ParsecScaleX, 1.0f / Astrometrics.ParsecScaleY);
@@ -402,7 +405,7 @@ namespace Maps.Rendering
                     if (checkFirst < 3)
                         break;
                 }
-                else if (!startHexVisited)  
+                else if (!startHexVisited)
                 {
                     startHex = hex;
                     startHexVisited = true;
@@ -571,8 +574,8 @@ namespace Maps.Rendering
                 PointF pt = points[i];
                 if (pt.X < rect.X)
                 {
-                    float d = rect.X - pt.X; 
-                    rect.X = pt.X; 
+                    float d = rect.X - pt.X;
+                    rect.X = pt.X;
                     rect.Width += d;
                 }
                 if (pt.Y < rect.Y)
@@ -582,7 +585,7 @@ namespace Maps.Rendering
                     rect.Height += d;
                 }
 
-                if (pt.X > rect.Right) 
+                if (pt.X > rect.Right)
                     rect.Width = pt.X - rect.X;
                 if (pt.Y > rect.Bottom)
                     rect.Height = pt.Y - rect.Y;
@@ -668,4 +671,84 @@ namespace Maps.Rendering
 
     }
 
+    internal struct StarProps
+    {
+        public StarProps(Color color, Color border, float radius) { this.color = color; this.borderColor = border;  this.radius = radius; }
+        public Color color;
+        public Color borderColor;
+        public float radius;
+    }
+
+    internal static class StellarRendering
+    {
+        // Match a single non-degenerate star.
+        private static Regex STAR_REGEX = new Regex(@"^([OBAFGKM])([0-9]) ?(Ia|Ib|II|III|IV|V)$",
+                RegexOptions.Compiled | RegexOptions.CultureInvariant);
+
+        // Additions to radius based on luminosity.
+        private static Dictionary<string, float> LUM = new Dictionary<string, float>
+            {
+                { "Ia", 7 },
+                { "Ib", 5 },
+                { "II", 3 },
+                { "III", 2 },
+                { "IV", 1 },
+                { "V", 0 }
+            };
+
+        // Base radius for spectral class.
+        private static Dictionary<string, float> RAD = new Dictionary<string, float>
+            { { "O", 4 }, { "B", 3 }, { "A", 2 }, { "F", 1.5f }, { "G", 1 }, { "K", 0.7f }, { "M", 0.5f } };
+
+        // Maps spectral class to color.
+        private static Dictionary<string, Color> COLOR = new Dictionary<string, Color> {
+                { "O", Color.FromArgb(0x9d, 0xb4, 0xff) },
+                { "B", Color.FromArgb(0xbb, 0xcc, 0xff) },
+                { "A", Color.FromArgb(0xfb, 0xf8, 0xff) },
+                { "F", Color.FromArgb(0xff, 0xff, 0xed) },
+                { "G", Color.FromArgb(0xff, 0xff, 0x00) },
+                { "K", Color.FromArgb(0xff, 0x98, 0x33) },
+                { "M", Color.FromArgb(0xff, 0x00, 0x00) },
+            };
+
+        public static StarProps star2props(string star)
+        {
+            Match m = STAR_REGEX.Match(star);
+            if (m.Success)
+            {
+                string c = m.Groups[1].Value, f = m.Groups[2].Value, l = m.Groups[3].Value;
+                return new StarProps(COLOR[c], Color.Black, RAD[c] + LUM[l]);
+            }
+            else if (star == "BH")
+            {
+                return new StarProps(Color.Black, Color.White, 0.8f);
+            }
+            else if (star == "BD")
+            {
+                return new StarProps(Color.Brown, Color.Black, 0.3f);
+            }
+            else
+            {
+                // Assume white dwarf
+                return new StarProps(Color.White, Color.Black, 0.3f);
+            }
+        }
+
+        private static float sinf(double r) { return (float)Math.Sin(r); }
+        private static float cosf(double r) { return (float)Math.Cos(r); }
+        private static float[] dx = new float[] {
+                    0.0f,
+                    cosf(Math.PI * 1 / 3),cosf(Math.PI * 2 / 3),cosf(Math.PI * 3 / 3),
+                    cosf(Math.PI * 4 / 3),cosf(Math.PI * 5 / 3),cosf(Math.PI * 6 / 3) };
+        private static float[] dy = new float[] {
+                    0.0f,
+                    sinf(Math.PI * 1 / 3),sinf(Math.PI * 2 / 3),sinf(Math.PI * 3 / 3),
+                    sinf(Math.PI * 4 / 3),sinf(Math.PI * 5 / 3),sinf(Math.PI * 6 / 3) };
+        public static PointF Offset(int index)
+        {
+            if (index >= dx.Length)
+                index = (index % (dx.Length - 1)) + 1;
+            return new PointF(dx[index], dy[index]);
+        }
+    }
 }
