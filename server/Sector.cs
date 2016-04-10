@@ -703,6 +703,7 @@ namespace Maps
         public Region()
         {
             ShowLabel = true;
+            Style = LineStyle.Dashed;
         }
 
         internal Region(string path, string color = null) : this()

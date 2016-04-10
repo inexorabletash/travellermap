@@ -469,7 +469,6 @@ namespace Maps.Rendering
                             DrawMicroBorders(BorderLayer.Fill);
 
                         DrawMicroBorders(BorderLayer.Stroke);
-                        DrawRegions(BorderLayer.Fill);
                     }
                     timers.Add(new Timer("micro-borders"));
                     #endregion
@@ -1792,47 +1791,6 @@ namespace Maps.Rendering
                             }
                         }
                     }
-                }
-            }
-        }
-
-        /// <summary>
-        /// Draw the regions
-        /// </summary>
-        /// <param name="layer">The layer</param>
-        private void DrawRegions(BorderLayer layer)
-        {
-            const byte FILL_ALPHA = 64;
-
-            float[] edgex, edgey;
-            PathUtil.PathType borderPathType = styles.microBorderStyle == MicroBorderStyle.Square ?
-                PathUtil.PathType.Square : PathUtil.PathType.Hex;
-            RenderUtil.HexEdges(borderPathType, out edgex, out edgey);
-
-            XSolidBrush solidBrush = new XSolidBrush();
-            XPen pen = new XPen(XColor.Empty);
-            styles.microBorders.pen.Apply(ref pen);
-
-            foreach (Sector sector in selector.Sectors)
-            {
-                XGraphicsPath sectorClipPath = null;
-
-                using (RenderUtil.SaveState(graphics))
-                {
-                    // This looks craptacular for Candy style borders :(
-                    if (ClipOutsectorBorders &&
-                        (layer == BorderLayer.Fill || styles.microBorderStyle != MicroBorderStyle.Curve))
-                    {
-                        Sector.ClipPath clip = sector.ComputeClipPath(borderPathType);
-                        if (!tileRect.IntersectsWith(clip.bounds))
-                            continue;
-
-                        sectorClipPath = new XGraphicsPath(clip.clipPathPoints, clip.clipPathPointTypes, XFillMode.Alternate);
-                        if (sectorClipPath != null)
-                            graphics.IntersectClip(sectorClipPath);
-                    }
-
-                    graphics.SmoothingMode = XSmoothingMode.AntiAlias;
 
                     foreach (Region region in sector.Regions)
                     {
@@ -1843,7 +1801,7 @@ namespace Maps.Rendering
                         Color? borderColor = region.Color;
                         LineStyle? borderStyle = region.Style;
 
-                        SectorStylesheet.StyleResult ssr = sector.ApplyStylesheet("border", region.Allegiance);
+                        SectorStylesheet.StyleResult ssr = sector.ApplyStylesheet("region", region.Allegiance);
                         borderStyle = borderStyle ?? ssr.GetEnum<LineStyle>("style") ?? LineStyle.Solid;
                         borderColor = borderColor ?? ssr.GetColor("color") ?? styles.microBorders.pen.color;
 
