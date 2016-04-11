@@ -1537,6 +1537,7 @@ namespace Maps.Rendering
                     solidBrush.Color = styles.microBorders.textColor;
                     foreach (Border border in sector.Borders.Where(border => border.ShowLabel))
                     {
+                        /*
                         string label = border.GetLabel(sector);
                         if (label == null)
                             continue;
@@ -1550,10 +1551,13 @@ namespace Maps.Rendering
                             label = WRAP_REGEX.Replace(label, "\n");
 
                         RenderUtil.DrawLabel(graphics, label, labelPos, styles.microBorders.Font, solidBrush, styles.microBorders.textStyle);
+                        */
+                        DrawLabel(border, sector);
                     }
 
                     foreach (Region region in sector.Regions.Where(region => region.ShowLabel))
                     {
+                        /*
                         string label = region.GetLabel(sector);
                         if (label == null)
                             continue;
@@ -1567,6 +1571,8 @@ namespace Maps.Rendering
                             label = WRAP_REGEX.Replace(label, "\n");
 
                         RenderUtil.DrawLabel(graphics, label, labelPos, styles.microBorders.Font, solidBrush, styles.microBorders.textStyle);
+                         */
+                        DrawLabel(region, sector);
                     }
 
                     foreach (Label label in sector.Labels)
@@ -1594,6 +1600,24 @@ namespace Maps.Rendering
                         RenderUtil.DrawLabel(graphics, text, labelPos, font, solidBrush, styles.microBorders.textStyle);
                     }
                 }
+            }
+        }
+
+        private void DrawLabel(Border border, Sector sector)
+        {
+            string label = border.GetLabel(sector);
+            if (label != null)
+            {
+                Hex labelHex = border.LabelPosition;
+                PointF labelPos = Astrometrics.HexToCenter(Astrometrics.LocationToCoordinates(new Location(sector.Location, labelHex)));
+                // TODO: Replace these with, well, positions!
+                //labelPos.X -= 0.5f;
+                //labelPos.Y -= 0.5f;
+
+                if (border.WrapLabel)
+                    label = WRAP_REGEX.Replace(label, "\n");
+
+                RenderUtil.DrawLabel(graphics, label, labelPos, styles.microBorders.Font, solidBrush, styles.microBorders.textStyle);
             }
         }
 
@@ -1692,11 +1716,76 @@ namespace Maps.Rendering
             }
         }
 
-        private enum BorderLayer { Fill, Stroke };
-        private void DrawMicroBorders(BorderLayer layer)
+        private void DrawMicroBorder (Border border, Sector sector, BorderLayer layer, PathUtil.PathType borderPathType)
         {
             const byte FILL_ALPHA = 64;
 
+            BorderPath borderPath = border.ComputeGraphicsPath(sector, borderPathType);
+
+            XGraphicsPath drawPath = new XGraphicsPath(borderPath.points, borderPath.types, XFillMode.Alternate);
+
+            Color? borderColor = border.Color;
+            LineStyle? borderStyle = border.Style;
+
+            SectorStylesheet.StyleResult ssr = sector.ApplyStylesheet("border", border.Allegiance);
+            borderStyle = borderStyle ?? ssr.GetEnum<LineStyle>("style") ?? LineStyle.Solid;
+            borderColor = borderColor ?? ssr.GetColor("color") ?? styles.microBorders.pen.color;
+
+            if (layer != BorderLayer.Stroke && borderStyle.Value != LineStyle.None)
+            {
+                if (styles.grayscale ||
+                    !ColorUtil.NoticeableDifference(borderColor.Value, styles.backgroundColor))
+                {
+                    borderColor = styles.microBorders.pen.color; // default
+                }
+
+                pen.Color = borderColor.Value;
+                pen.DashStyle = LineStyleToDashStyle(borderStyle.Value);
+
+                if (styles.microBorderStyle != MicroBorderStyle.Curve)
+                {
+                    // Clip to the path itself - this means adjacent borders don't clash
+                    using (RenderUtil.SaveState(graphics))
+                    {
+                        graphics.IntersectClip(drawPath);
+                        switch (layer)
+                        {
+                            case BorderLayer.Fill:
+                                solidBrush.Color = Color.FromArgb(FILL_ALPHA, borderColor.Value);
+                                graphics.DrawPath(solidBrush, drawPath);
+                                break;
+                            case BorderLayer.Stroke:
+                                graphics.DrawPath(pen, drawPath);
+                                break;
+                        }
+                    }
+                }
+                else
+                {
+                    switch (layer)
+                    {
+                        case BorderLayer.Fill:
+                            solidBrush.Color = Color.FromArgb(FILL_ALPHA, borderColor.Value);
+                            graphics.DrawClosedCurve(solidBrush, borderPath.points);
+                            break;
+
+                        case BorderLayer.Stroke:
+                            foreach (var segment in borderPath.curves)
+                            {
+                                if (segment.closed)
+                                    graphics.DrawClosedCurve(pen, segment.points, 0.6f);
+                                else
+                                    graphics.DrawCurve(pen, segment.points, 0.6f);
+                            }
+                            break;
+                    }
+                }
+            }
+        }
+
+        private enum BorderLayer { Fill, Stroke };
+        private void DrawMicroBorders(BorderLayer layer)
+        {
             float[] edgex, edgey;
             PathUtil.PathType borderPathType = styles.microBorderStyle == MicroBorderStyle.Square ?
                 PathUtil.PathType.Square : PathUtil.PathType.Hex;
@@ -1729,132 +1818,12 @@ namespace Maps.Rendering
 
                     foreach (Border border in sector.Borders)
                     {
-                        BorderPath borderPath = border.ComputeGraphicsPath(sector, borderPathType);
-
-                        XGraphicsPath drawPath = new XGraphicsPath(borderPath.points, borderPath.types, XFillMode.Alternate);
-
-                        Color? borderColor = border.Color;
-                        LineStyle? borderStyle = border.Style;
-
-                        SectorStylesheet.StyleResult ssr = sector.ApplyStylesheet("border", border.Allegiance);
-                        borderStyle = borderStyle ?? ssr.GetEnum<LineStyle>("style") ?? LineStyle.Solid;
-                        borderColor = borderColor ?? ssr.GetColor("color") ?? styles.microBorders.pen.color;
-
-                        if (layer == BorderLayer.Stroke && borderStyle.Value == LineStyle.None)
-                            continue;
-
-                        if (styles.grayscale ||
-                            !ColorUtil.NoticeableDifference(borderColor.Value, styles.backgroundColor))
-                        {
-                            borderColor = styles.microBorders.pen.color; // default
-                        }
-
-                        pen.Color = borderColor.Value;
-                        pen.DashStyle = LineStyleToDashStyle(borderStyle.Value);
-
-                        if (styles.microBorderStyle != MicroBorderStyle.Curve)
-                        {
-                            // Clip to the path itself - this means adjacent borders don't clash
-                            using (RenderUtil.SaveState(graphics))
-                            {
-                                graphics.IntersectClip(drawPath);
-                                switch (layer)
-                                {
-                                    case BorderLayer.Fill:
-                                        solidBrush.Color = Color.FromArgb(FILL_ALPHA, borderColor.Value);
-                                        graphics.DrawPath(solidBrush, drawPath);
-                                        break;
-                                    case BorderLayer.Stroke:
-                                        graphics.DrawPath(pen, drawPath);
-                                        break;
-                                }
-                            }
-                        }
-                        else
-                        {
-                            switch (layer)
-                            {
-                                case BorderLayer.Fill:
-                                    solidBrush.Color = Color.FromArgb(FILL_ALPHA, borderColor.Value);
-                                    graphics.DrawClosedCurve(solidBrush, borderPath.points);
-                                    break;
-
-                                case BorderLayer.Stroke:
-                                    foreach (var segment in borderPath.curves)
-                                    {
-                                        if (segment.closed)
-                                            graphics.DrawClosedCurve(pen, segment.points, 0.6f);
-                                        else
-                                            graphics.DrawCurve(pen, segment.points, 0.6f);
-                                    }
-                                    break;
-                            }
-                        }
+                        DrawMicroBorder(border, sector, layer, borderPathType);
                     }
 
                     foreach (Region region in sector.Regions)
                     {
-                        BorderPath borderPath = region.ComputeGraphicsPath(sector, borderPathType);
-
-                        XGraphicsPath drawPath = new XGraphicsPath(borderPath.points, borderPath.types, XFillMode.Alternate);
-
-                        Color? borderColor = region.Color;
-                        LineStyle? borderStyle = region.Style;
-
-                        SectorStylesheet.StyleResult ssr = sector.ApplyStylesheet("region", region.Allegiance);
-                        borderStyle = borderStyle ?? ssr.GetEnum<LineStyle>("style") ?? LineStyle.Solid;
-                        borderColor = borderColor ?? ssr.GetColor("color") ?? styles.microBorders.pen.color;
-
-                        if (layer == BorderLayer.Stroke && borderStyle.Value == LineStyle.None)
-                            continue;
-
-                        if (styles.grayscale ||
-                            !ColorUtil.NoticeableDifference(borderColor.Value, styles.backgroundColor))
-                        {
-                            borderColor = styles.microBorders.pen.color; // default
-                        }
-
-                        pen.Color = borderColor.Value;
-                        pen.DashStyle = LineStyleToDashStyle(borderStyle.Value);
-
-                        if (styles.microBorderStyle != MicroBorderStyle.Curve)
-                        {
-                            // Clip to the path itself - this means adjacent borders don't clash
-                            using (RenderUtil.SaveState(graphics))
-                            {
-                                graphics.IntersectClip(drawPath);
-                                switch (layer)
-                                {
-                                    case BorderLayer.Fill:
-                                        solidBrush.Color = Color.FromArgb(FILL_ALPHA, borderColor.Value);
-                                        graphics.DrawPath(solidBrush, drawPath);
-                                        break;
-                                    case BorderLayer.Stroke:
-                                        graphics.DrawPath(pen, drawPath);
-                                        break;
-                                }
-                            }
-                        }
-                        else
-                        {
-                            switch (layer)
-                            {
-                                case BorderLayer.Fill:
-                                    solidBrush.Color = Color.FromArgb(FILL_ALPHA, borderColor.Value);
-                                    graphics.DrawClosedCurve(solidBrush, borderPath.points);
-                                    break;
-
-                                case BorderLayer.Stroke:
-                                    foreach (var segment in borderPath.curves)
-                                    {
-                                        if (segment.closed)
-                                            graphics.DrawClosedCurve(pen, segment.points, 0.6f);
-                                        else
-                                            graphics.DrawCurve(pen, segment.points, 0.6f);
-                                    }
-                                    break;
-                            }
-                        }
+                        DrawMicroBorder(region, sector, layer, borderPathType);
                     }
                 }
             }
