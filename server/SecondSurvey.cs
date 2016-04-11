@@ -464,9 +464,11 @@ namespace Maps
             { "Gnii", "Gniivi" },
             { "Gray", "Graytch" },
             { "Guru", "Gurungan" },
+            { "Gurv", "Gurvin" },
             { "Hama", "Hamaran" },
             { "Hive", "Hiver" },
             { "Huma", "Human" }, // (Vilani/Solomani-mixed)
+            { "Ithk", "Ithklur" },
             { "Jaib", "Jaibok" },
             { "Jala", "Jala'lak" },
             { "Jend", "Jenda" },
@@ -504,6 +506,7 @@ namespace Maps
             { "Urun", "Urunishani" },
             { "Varg", "Vargr" },
             { "Vega", "Vegans" },
+            { "Za’t", "Za'tachk" },
             { "Zhod", "Zhodani" },
             { "Ziad", "Ziadd" },
             // Sophont Table End
