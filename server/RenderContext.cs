@@ -1579,25 +1579,7 @@ namespace Maps.Rendering
                 }
             }
         }
-
-        private void DrawLabel(Border border, Sector sector)
-        {
-            string label = border.GetLabel(sector);
-            if (label != null)
-            {
-                Hex labelHex = border.LabelPosition;
-                PointF labelPos = Astrometrics.HexToCenter(Astrometrics.LocationToCoordinates(new Location(sector.Location, labelHex)));
-                // TODO: Replace these with, well, positions!
-                //labelPos.X -= 0.5f;
-                //labelPos.Y -= 0.5f;
-
-                if (border.WrapLabel)
-                    label = WRAP_REGEX.Replace(label, "\n");
-
-                RenderUtil.DrawLabel(graphics, label, labelPos, styles.microBorders.Font, solidBrush, styles.microBorders.textStyle);
-            }
-        }
-
+        
         private void DrawRoutes()
         {
             using (RenderUtil.SaveState(graphics))

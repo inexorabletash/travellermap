@@ -82,6 +82,7 @@ namespace Maps.Serialization
                     }
                 case "REGION":
                     {
+                        // TODO: Support regions - like borders, but filled rather than stroked 
                         return;
                     }
 
