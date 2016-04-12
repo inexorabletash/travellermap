@@ -611,11 +611,11 @@ namespace Maps.Rendering
                     {
                         bool droyne = world.HasCodePrefix("Droy") != null;
                         bool chirpers = world.HasCodePrefix("Chir") != null;
-
-                        string glyph = droyne ? "\u2605" : "\u2606";
-
+                        
                         if (droyne || chirpers)
                         {
+                            string glyph = droyne ? "\u2605" : "\u2606";
+
                             OverlayGlyph(glyph, styles.droyneWorlds.Font, world.Coordinates);
                         }
                     }
