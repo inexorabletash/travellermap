@@ -82,11 +82,6 @@ namespace Maps.Serialization
                     }
                 case "REGION":
                     {
-                        string[] tokens = value.Split((char[])null, StringSplitOptions.RemoveEmptyEntries);
-                        if (!Regex.IsMatch(tokens.Last(), @"^\d{4}$"))
-                            sector.Regions.Add(new Region(string.Join(" ", tokens.Take(tokens.Count() - 1)), tokens.Last()));
-                        else
-                            sector.Regions.Add(new Region(string.Join(" ", tokens)));
                         return;
                     }
 

@@ -74,7 +74,6 @@ namespace Maps
         private MetadataCollection<Route> routes = new MetadataCollection<Route>();
         private MetadataCollection<Label> labels = new MetadataCollection<Label>();
         private MetadataCollection<Border> borders = new MetadataCollection<Border>();
-        private MetadataCollection<Region> regions = new MetadataCollection<Region>();
         private MetadataCollection<Allegiance> allegiances = new MetadataCollection<Allegiance>();
         private MetadataCollection<Product> products = new MetadataCollection<Product>();
 
@@ -87,7 +86,6 @@ namespace Maps
 
         public MetadataCollection<Subsector> Subsectors { get { return subsectors; } }
         public MetadataCollection<Border> Borders { get { return borders; } }
-        public MetadataCollection<Region> Regions { get { return regions; } }
         public MetadataCollection<Label> Labels { get { return labels; } }
         public MetadataCollection<Route> Routes { get { return routes; } }
         public MetadataCollection<Allegiance> Allegiances { get { return allegiances; } }
@@ -115,7 +113,6 @@ namespace Maps
             Allegiances.AddRange(metadataSource.Allegiances);
             Borders.AddRange(metadataSource.Borders);
             Routes.AddRange(metadataSource.Routes);
-            Regions.AddRange(metadataSource.Regions);
             Labels.AddRange(metadataSource.Labels);
             Credits = metadataSource.Credits;
             Products.AddRange(metadataSource.Products);
@@ -697,23 +694,7 @@ namespace Maps
             return alleg.Name;
         }
     }
-
-    public class Region : Border
-    {
-        public Region()
-        {
-            ShowLabel = true;
-            Style = LineStyle.Dashed;
-        }
-
-        internal Region(string path, string color = null) : this()
-        {
-            PathString = path;
-            if (color != null)
-                ColorHtml = color;
-        }
-    }
-
+    
     public enum LineStyle
     {
         Solid = 0, // Default
