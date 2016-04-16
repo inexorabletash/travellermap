@@ -177,7 +177,7 @@ namespace Maps
         internal bool IsReserve { get { return HasCode("Re"); } }
         internal bool IsPrisonExileCamp { get { return HasCode("Px") || HasCode("Ex"); } } // Px is T5, Ex is legacy
         // TODO: "Pr" is used in some legacy files, conflicts with T5 "Pre-Rich" - convert codes on import/export
-        internal string ResearchStation { get { return HasCodePrefix("Rs"); } }
+        internal string ResearchStation { get { return GetCodePrefix("Rs"); } }
 
         internal bool IsPlaceholder { get { return UWP == "XXXXXXX-X" || UWP == "???????-?"; } }
 
@@ -197,12 +197,20 @@ namespace Maps
             return codes.Any(s => s.Equals(code, StringComparison.InvariantCultureIgnoreCase));
         }
 
-        public string HasCodePrefix(string code)
+        public string GetCodePrefix(string code)
         {
             if (code == null)
                 throw new ArgumentNullException("code");
 
             return codes.Where(s => s.StartsWith(code, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
+        }
+
+        public bool HasCodePrefix(string code)
+        {
+            if (code == null)
+                throw new ArgumentNullException("code");
+
+            return codes.Any(s => s.StartsWith(code, StringComparison.InvariantCultureIgnoreCase));
         }
 
         // Keep storage as a string and parse on demand to reduce memory consumption.

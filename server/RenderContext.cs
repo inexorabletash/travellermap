@@ -600,7 +600,7 @@ namespace Maps.Rendering
                 // Overlays
                 //------------------------------------------------------------
 
-#region droyne
+                #region droyne
                 //------------------------------------------------------------
                 // Droyne/Chirper Worlds
                 //------------------------------------------------------------
@@ -609,13 +609,12 @@ namespace Maps.Rendering
                     solidBrush.Color = styles.droyneWorlds.textColor;
                     foreach (World world in selector.Worlds)
                     {
-                        bool droyne = world.HasCodePrefix("Droy") != null;
-                        bool chirpers = world.HasCodePrefix("Chir") != null;
+                        bool droyne = world.HasCodePrefix("Droy");
+                        bool chirpers = world.HasCodePrefix("Chir");
                         
                         if (droyne || chirpers)
                         {
-                            string glyph = droyne ? "\u2605" : "\u2606";
-
+                            string glyph = droyne ? styles.droyneWorlds.content.Substring(0, 1) : styles.droyneWorlds.content.Substring(1, 1);
                             OverlayGlyph(glyph, styles.droyneWorlds.Font, world.Coordinates);
                         }
                     }
@@ -630,14 +629,9 @@ namespace Maps.Rendering
                 if (styles.minorHomeWorlds.visible)
                 {
                     solidBrush.Color = styles.minorHomeWorlds.textColor;
-                    foreach (World world in selector.Worlds)
+                    foreach (World world in selector.Worlds.Where(w => w.HasCodePrefix("(")))
                     {
-                        string glyph = "\u273B";
-
-                        if (world.HasCodePrefix("(") != null)
-                        {
-                            OverlayGlyph(glyph, styles.minorHomeWorlds.Font, world.Coordinates);
-                        }
+                        OverlayGlyph(styles.minorHomeWorlds.content, styles.minorHomeWorlds.Font, world.Coordinates);
                     }
                 }
                 timers.Add(new Timer("minor"));
@@ -650,14 +644,9 @@ namespace Maps.Rendering
                 if (styles.ancientsWorlds.visible)
                 {
                     solidBrush.Color = styles.ancientsWorlds.textColor;
-                    foreach (World world in selector.Worlds)
+                    foreach (World world in selector.Worlds.Where(w=>w.HasCode("An")))
                     {
-                        string glyph = "\u2600";
-
-                        if (world.HasCode("An"))
-                        {
-                            OverlayGlyph(glyph, styles.ancientsWorlds.Font, world.Coordinates);
-                        }
+                        OverlayGlyph(styles.ancientsWorlds.content, styles.ancientsWorlds.Font, world.Coordinates);
                     }
                 }
                 timers.Add(new Timer("ancients"));
@@ -675,9 +664,9 @@ namespace Maps.Rendering
                         graphics.DrawRectangle(solidBrush, sector.Bounds);
                 }
                 timers.Add(new Timer("unofficial"));
-#endregion
+                #endregion
 
-#region timing
+                #region timing
 #if SHOW_TIMING
                 using( RenderUtil.SaveState( graphics ) )
                 {
@@ -702,7 +691,7 @@ namespace Maps.Rendering
                     }
                 }
 #endif
-#endregion
+                #endregion
             }
         }
 
