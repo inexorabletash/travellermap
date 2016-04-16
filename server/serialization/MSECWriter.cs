@@ -225,7 +225,7 @@ namespace Maps.Serialization
                 }
                 writer.WriteLine();
             }
-
+            
             private static int CompareAllegiances(IAllegiance a, IAllegiance b)
             {
                 if (a == null)

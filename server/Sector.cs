@@ -588,6 +588,7 @@ namespace Maps
         string Allegiance { get; }
     }
 
+
     public class Border : IAllegiance
     {
         public Border()
@@ -693,7 +694,7 @@ namespace Maps
             return alleg.Name;
         }
     }
-
+    
     public enum LineStyle
     {
         Solid = 0, // Default

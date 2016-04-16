@@ -60,10 +60,11 @@ namespace Maps.API
 
                 if (GetBoolOption("stellar", queryDefaults: queryDefaults, defaultValue: false))
                     ctx.Styles.showStellarOverlay = true;
-                
+
                 ctx.Styles.dimUnofficialSectors = GetBoolOption("dimunofficial", queryDefaults: queryDefaults, defaultValue: false);
                 ctx.Styles.droyneWorlds.visible = GetBoolOption("dw", queryDefaults: queryDefaults, defaultValue: false);
                 ctx.Styles.minorHomeWorlds.visible = GetBoolOption("mh", queryDefaults: queryDefaults, defaultValue: false);
+                ctx.Styles.ancientsWorlds.visible = GetBoolOption("an", queryDefaults: queryDefaults, defaultValue: false);
 
                 double devicePixelRatio = GetDoubleOption("dpr", defaultValue: 1, queryDefaults: queryDefaults);
                 if (devicePixelRatio <= 0)
