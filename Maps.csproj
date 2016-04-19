@@ -123,7 +123,6 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="server\api\CodesHandler.cs" />
     <Compile Include="server\api\RouteHandler.cs" />
     <Compile Include="server\http\Modules.cs" />
@@ -260,6 +259,7 @@
     <Content Include="res\Sectors\Holowon.xml" />
     <Content Include="res\Sectors\Ilelish.xml" />
     <Content Include="res\Sectors\K%27trekreer.xml" />
+    <Content Include="res\Sectors\Kaa G!%27kul.xml" />
     <Content Include="res\Sectors\kidunal.xml" />
     <Content Include="res\Sectors\Koog.txt" />
     <Content Include="res\Sectors\Koog.xml" />

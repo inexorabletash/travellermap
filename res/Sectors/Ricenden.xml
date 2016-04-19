@@ -83,6 +83,10 @@
     <Route Start="1433" End="1134" Type="Trade"/>
     <Route Start="0937" End="0739" Type="Trade"/>
 
+    <Route Start="0011" End="0210" Type="Trade"/>
+    <Route Start="0408" End="0406" Type="Trade"/>
+    <Route Start="0405" End="0406" Type="Trade"/>
+
     <Route Start="1433" End="1734" Type="Trade"/>
 
     <Route Start="1734" End="1934" Type="Trade"/>
@@ -113,10 +117,10 @@
     <Route Start="0618" End="0317" Type="Trade"/>
 
     <Route Start="0317" End="0514" Type="Trade"/>
-    <Route Start="0514" End="0511" Type="Trade"/>
-    <Route Start="0511" End="0408" Type="Trade"/>
-    <Route Start="0511" End="0210" Type="Trade"/>
-    <Route Start="0511" End="0709" Type="Trade"/>
+    <Route Start="0514" End="0412" Type="Trade"/>
+    <Route Start="0210" End="0412" Type="Trade"/>
+    <Route Start="0210" End="0408" Type="Trade"/>
+    <Route Start="0709" End="0408" Type="Trade"/>
     <Route Start="0709" End="1009" Type="Trade"/>
 
     <Route Start="1107" End="1009" Type="Trade"/>
@@ -174,9 +178,12 @@
     <Route Start="0917" End="1215" Type="Trade"/>
     <Route Start="1215" End="1314" Type="Trade"/>
     <Route Start="1314" End="1513" Type="Trade"/>
-    <Route Start="1513" End="1410" Type="Trade"/>
-    <Route Start="1410" End="1009" Type="Trade"/>
+    <Route Start="1009" End="1410" Type="Trade"/>
+    <Route Start="1611" End="1410" Type="Trade"/>
     <Route Start="1410" End="1509" Type="Trade"/>
+
+    <Route Start="1513" End="1611" Type="Trade"/>
+    <Route Start="1912" End="1611" Type="Trade"/>
 
     <Route Start="1137" End="0937" Type="Trade"/>
     <Route Start="1137" End="1238" Type="Trade"/>
