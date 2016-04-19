@@ -30,7 +30,7 @@
     <Subsector Index="P"></Subsector>
   </Subsectors>
   <Allegiances>
-    <Allegiance Code="Hv">Hive Federation</Allegiance>
+    <Allegiance Code="HvFd">Hive Federation</Allegiance>
     <Allegiance Code="Hf">Hive FDA Uplift/Observation Site</Allegiance>
     <Allegiance Code="Xh">Hive FDA extra-Federation operation</Allegiance>
     <Allegiance Code="Kk">The Two Thousand Worlds</Allegiance>
@@ -40,10 +40,6 @@
     <Allegiance Code="Hb">Hiver Client State</Allegiance>
     <Allegiance Code="Hc">Hiver Client State</Allegiance>
     <Allegiance Code="Sc">Inheritor Space</Allegiance>
-    <Allegiance Code="H0">Hive Federation Member</Allegiance>
-    <Allegiance Code="H1">Hive Federation Member</Allegiance>
-    <Allegiance Code="H2">Hive Federation Member</Allegiance>
-    <Allegiance Code="H3">Hive Federation Member</Allegiance>
   </Allegiances>
   <Borders>
     <Border Allegiance="Sc" Color="red" ShowLabel="true" WrapLabel="true" LabelPosition="3103">
@@ -65,4 +61,19 @@
 0714 0713 0813 0914 1014 0915 0814 0714
 </Border>
   </Borders>
+  <Routes>
+    <Route Start="0121" End="0222" Type="Trade"/>
+    <Route Start="0521" End="0121" Type="Trade"/>
+    <Route Start="0125" End="0222" Type="Trade"/>
+    <Route Start="0324" End="0222" Type="Trade"/>
+    <Route Start="0237" End="0037" Type="Trade"/>
+    <Route Start="0237" End="0637" Type="Trade"/>
+    <Route Start="0637" End="0738" Type="Trade"/>
+    <Route Start="0237" End="0139" Type="Trade"/>
+    <Route Start="0141" End="0139" Type="Trade"/>
+  
+    <Route Start="0324" End="0526" Type="Trade"/>
+    <Route Start="0526" End="0627" Type="Trade"/>
+
+  </Routes>
 </Sector>

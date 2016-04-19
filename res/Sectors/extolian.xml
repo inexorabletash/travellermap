@@ -7,7 +7,7 @@
   <Credits>
     <![CDATA[
 
-             <b>Tienspevnekr</b> sector was designed by Leroy W. L. Guatney.
+             <b>Extolian</b> sector was designed by Leroy W. L. Guatney.
 
     ]]>
   </Credits>
@@ -29,70 +29,8 @@
     <Subsector Index="O">Slooda</Subsector>
     <Subsector Index="P">Ixinsk</Subsector>
   </Subsectors>
-  <Borders>
-    <Border WrapLabel="false" Color="Blue" Allegiance="6w" LabelPosition="937">0737 0836 0937 1036 1037 0937 0837 0738 0737</Border>
-    <Border WrapLabel="false" Color="Yellow" Allegiance="Ca" LabelPosition="632">0631 0632 0631</Border>
-    <Border WrapLabel="false" Color="Goldenrod" Allegiance="Cr" LabelPosition="208">0001 0102 0201 0301 0300 0301 0302 0202 0203 0204 0205 0306 0206 0107 0108 0109 0110 0111 0112 0113 0114 0115 0116 0115 0114 0113 0112 0111 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001</Border>
-    <Border WrapLabel="false" Allegiance="HvFd" LabelPosition="1921">0407 0507 0606 0605 0604 0603 0602 0502 0601 0600 0700 0800 0900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 2901 2902 2903 2904 3004 3105 3205 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1041 1040 1039 1139 1138 1137 1136 1135 1134 1133 1132 1231 1230 1229 1228 1227 1226 1225 1224 1124 1223 1323 1322 1321 1320 1219 1218 1118 1017 1016 0916 0816 0815 0814 0714 0613 0612 0611 0511 0410 0409 0408 0407</Border>
-    <Border ShowLabel="false" WrapLabel="false" Allegiance="HvFd" LabelPosition="420">0420</Border>
-    <Border WrapLabel="true" Color="Pink" Allegiance="Ia" LabelPosition="337">0033 0133 0232 0233 0234 0235 0236 0337 0338 0438 0539 0540 0541 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036 0035 0034 0033</Border>
-
-    <Border Color="Aquamarine" Label="Ithklur Cultural Reserve">
-      2211 2312 2412 2413 2514 2515 2516
-      2416 2316 2215 2214 2213 2113 2012
-      2113 2212
-    </Border>
-
-  </Borders>
-  <Labels />
-  <Routes>
-  <Route Start="3039" End="3041" Type="Trade"/>
-  <Route Start="3039" End="3338" Type="Trade"/>
-  <Route Start="1040" End="1041" Type="Trade"/>
-  <Route Start="1040" End="1340" Type="Trade"/>
-  <Route Start="3221" End="3421" Type="Trade"/>
-  <Route Start="3039" End="3137" Type="Trade"/>
-  <Route Start="2834" End="3137" Type="Trade"/>
-  <Route Start="2834" End="2833" Type="Trade"/>
-  <Route Start="2834" End="2633" Type="Trade"/>
-  <Route Start="2834" End="3233" Type="Trade"/>
-  <Route Start="3130" End="3233" Type="Trade"/>
-  <Route Start="2633" End="2334" Type="Trade"/>
-  <Route Start="2133" End="2334" Type="Trade"/>
-
-  <Route Start="2133" End="1831" Type="Trade"/>
-  <Route Start="1632" End="1831" Type="Trade"/>
-
-  <Route Start="1632" End="1831" Type="Trade"/>
-  <Route Start="1729" End="1831" Type="Trade"/>
-
-  <Route Start="2133" End="1735" Type="Trade"/>
-
-  <Route Start="2338" End="2334" Type="Trade"/>
-  <Route Start="2338" End="2539" Type="Trade"/>
-
-  <Route Start="1929" End="1729" Type="Trade"/>
-  <Route Start="2128" End="1929" Type="Trade"/>
-
-  <Route Start="2128" End="2329" Type="Trade"/>
-  <Route Start="2128" End="1926" Type="Trade"/>
-
-  <Route Start="1926" End="1924" Type="Trade"/>
-  <Route Start="1723" End="1924" Type="Trade"/>
-  <Route Start="1622" End="1520" Type="Trade"/>
-  <Route Start="1017" End="1118" Type="Trade"/>
-    <Route Start="1118" End="1520" Type="Trade"/>
-
-    <Route Start="1723" End="1622" Type="Trade"/>
-  <Route Start="1624" End="1924" Type="Trade"/>
-
-  <Route Start="1622" End="1821" Type="Trade"/>
-
-  <Route Start="1523" End="1622" Type="Trade"/>
-  <Route Start="1523" End="1323" Type="Trade"/>
-
-  </Routes>
   <Allegiances>
+    <Allegiance Code="HvFd">Hive Federation</Allegiance>
     <Allegiance Code="Hf">Hive FDA Uplift/Observation Site</Allegiance>
     <Allegiance Code="Xh">Hive FDA extra-Federation operation</Allegiance>
     <Allegiance Code="Ca">Cambre Accord</Allegiance>
@@ -105,5 +43,129 @@
     <Allegiance Code="H2">Hive Federation Member</Allegiance>
     <Allegiance Code="H3">Hive Federation Member</Allegiance>
   </Allegiances>
+  <Borders>
+    <Border WrapLabel="false" Color="Blue" Allegiance="6w" LabelPosition="937">0737 0836 0937 1036 1037 0937 0837 0738 0737</Border>
+    <Border WrapLabel="false" Color="Yellow" Allegiance="Ca" LabelPosition="632">0631 0632 0631</Border>
+    <Border WrapLabel="false" Color="Goldenrod" Allegiance="Cr" LabelPosition="208">0001 0102 0201 0301 0300 0301 0302 0202 0203 0204 0205 0306 0206 0107 0108 0109 0110 0111 0112 0113 0114 0115 0116 0115 0114 0113 0112 0111 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001</Border>
+    <Border WrapLabel="false" Allegiance="HvFd" LabelPosition="1921">0407 0507 0606 0605 0604 0603 0602 0502 0601 0600 0700 0800 0900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 2901 2902 2903 2904 3004 3105 3205 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1041 1040 1039 1139 1138 1137 1136 1135 1134 1133 1132 1231 1230 1229 1228 1227 1226 1225 1224 1124 1223 1323 1322 1321 1320 1219 1218 1118 1017 1016 0916 0816 0815 0814 0714 0613 0612 0611 0511 0410 0409 0408 0407</Border>
+    <Border ShowLabel="false" WrapLabel="false" Allegiance="HvFd" LabelPosition="420">0420</Border>
+    <Border WrapLabel="true" Color="Pink" Allegiance="Ia" LabelPosition="0337">0033 0133 0232 0233 0234 0235 0236 0337 0338 0438 0539 0540 0541 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036 0035 0034 0033</Border>
+  </Borders>
+  <Labels />
+  <Routes>
+    <Route Start="3039" End="3041" Type="Trade"/>
+    <Route Start="3039" End="3338" Type="Trade"/>
+    <Route Start="1040" End="1041" Type="Trade"/>
+    <Route Start="3221" End="3421" Type="Trade"/>
+    <Route Start="3039" End="3137" Type="Trade"/>
+    <Route Start="2834" End="3137" Type="Trade"/>
+    <Route Start="2834" End="2833" Type="Trade"/>
+    <Route Start="2834" End="2633" Type="Trade"/>
+    <Route Start="2834" End="3233" Type="Trade"/>
+    <Route Start="3130" End="3233" Type="Trade"/>
+    <Route Start="2633" End="2334" Type="Trade"/>
+    <Route Start="2133" End="2334" Type="Trade"/>
+    <Route Start="2032" End="1831" Type="Trade"/>
+    <Route Start="2133" End="2032" Type="Trade"/>
+    <Route Start="1632" End="1831" Type="Trade"/>
+    <Route Start="1632" End="1732" Type="Trade"/>
+    <Route Start="1732" End="1831" Type="Trade"/>
+    <Route Start="1729" End="1831" Type="Trade"/>
+    <Route Start="1632" End="1431" Type="Trade"/>
+    <Route Start="1231" End="1431" Type="Trade"/>
+    <Route Start="2521" End="2719" Type="Trade"/>
+    <Route Start="2821" End="2719" Type="Trade"/>
+    <Route Start="2521" End="2420" Type="Trade"/>
+    <Route Start="2133" End="2033" Type="Trade"/>
+    <Route Start="1934" End="2033" Type="Trade"/>
+    <Route Start="1934" End="1735" Type="Trade"/>
+    <Route Start="2338" End="2334" Type="Trade"/>
+    <Route Start="2338" End="2539" Type="Trade"/>
+    <Route Start="1929" End="1729" Type="Trade"/>
+    <Route Start="2128" End="1929" Type="Trade"/>
+    <Route Start="2128" End="2329" Type="Trade"/>
+    <Route Start="2128" End="1926" Type="Trade"/>
+    <Route Start="1926" End="1924" Type="Trade"/>
+    <Route Start="1723" End="1924" Type="Trade"/>
+    <Route Start="1622" End="1520" Type="Trade"/>
+    <Route Start="1017" End="1118" Type="Trade"/>
+    <Route Start="1118" End="1219" Type="Trade"/>
+    <Route Start="1321" End="1219" Type="Trade"/>
+    <Route Start="1321" End="1520" Type="Trade"/>
+    <Route Start="1118" End="1117" Type="Trade"/>
+    <Route Start="1116" End="1117" Type="Trade"/>
+    <Route Start="1116" End="0914" Type="Trade"/>
+    <Route Start="0711" End="0914" Type="Trade"/>
+    <Route Start="1723" End="1622" Type="Trade"/>
+    <Route Start="1624" End="1924" Type="Trade"/>
+    <Route Start="1622" End="1821" Type="Trade"/>
+    <Route Start="1523" End="1622" Type="Trade"/>
+    <Route Start="1523" End="1323" Type="Trade"/>
+    <Route Start="1520" End="1618" Type="Trade"/>
+    <Route Start="1616" End="1618" Type="Trade"/>
+    <Route Start="1616" End="1615" Type="Trade"/>
+    <Route Start="1615" End="1614" Type="Trade"/>
+    <Route Start="1615" End="1514" Type="Trade"/>
+    <Route Start="1514" End="1312" Type="Trade"/>
+    <Route Start="3130" End="2829" Type="Trade"/>
+    <Route Start="2729" End="2829" Type="Trade"/>
+    <Route Start="2729" End="2527" Type="Trade"/>
+    <Route Start="2725" End="2527" Type="Trade"/>
+    <Route Start="2725" End="2624" Type="Trade"/>
+    <Route Start="2725" End="2923" Type="Trade"/>
+    <Route Start="2821" End="2923" Type="Trade"/>
+    <Route Start="2523" End="2624" Type="Trade"/>
+    <Route Start="2521" End="2523" Type="Trade"/>
+    <Route Start="2128" End="2527" Type="Trade"/>
+    <Route Start="1924" End="2323" Type="Trade"/>
+    <Route Start="2323" End="2523" Type="Trade"/>
+
+    <Route Start="1610" End="1612" Type="Trade"/>
+    <Route Start="1514" End="1612" Type="Trade"/>
+
+    <Route Start="2204" End="2407" Type="Trade"/>
+    <Route Start="2204" End="2401" Type="Trade"/>
+    <Route Start="2204" End="2005" Type="Trade"/>
+    <Route Start="1807" End="2005" Type="Trade"/>
+    <Route Start="1807" End="1610" Type="Trade"/>
+    <Route Start="0711" End="0809" Type="Trade"/>
+    <Route Start="0707" End="0809" Type="Trade"/>
+    <Route Start="0914" End="1312" Type="Trade"/>
+    <Route Start="2210" End="2407" Type="Trade"/>
+
+    <Route Start="3108" End="3009" Type="Trade"/>
+    <Route Start="3009" End="2912" Type="Trade"/>
+    <Route Start="1807" End="1604" Type="Trade"/>
+    <Route Start="1402" End="1604" Type="Trade"/>
+    <Route Start="1402" End="1201" Type="Trade"/>
+
+    <Route Start="3017" End="3116" Type="Trade"/>
+
+    <Route Start="2218" End="2416" Type="Trade"/>
+
+    <Route Start="2218" End="2416" Type="Trade"/>
+
+    <Route Start="2420" End="2218" Type="Trade"/>
+
+    <Route Start="2416" End="2515" Type="Trade"/>
+    <Route Start="2412" End="2515" Type="Trade"/>
+    <Route Start="2412" End="2210" Type="Trade"/>
+    <Route Start="2515" End="2813" Type="Trade"/>
+
+    <Route Start="2412" End="2610" Type="Trade"/>
+    <Route Start="2912" End="2813" Type="Trade"/>
+    <Route Start="2912" End="3211" Type="Trade"/>
+
+    <Route Start="2719" End="3017" Type="Trade"/>
+    <Route Start="2719" End="2815" Type="Trade"/>
+    <Route Start="2813" End="2815" Type="Trade"/>
+  </Routes>
+  <Regions>
+    <Region Color="Aquamarine" Label="Ithklur Cultural Reserve">
+       2211 2312 2412 2413 2514 2515 2516
+       2416 2316 2215 2214 2213 2113 2012 
+       2113 2212 
+    </Region>
+  </Regions>
   <DataFile Author="Leroy W. L. Guatney" Source="Federation Development Agency" Ref="http://web.archive.org/web/20071029174129/http://home.earthlink.net/~ngc5139/FDA/" Type="SEC">extolian.sec</DataFile>
 </Sector>
