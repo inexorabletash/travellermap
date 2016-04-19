@@ -2648,54 +2648,14 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <X>3</X>
     <Name Lang="hv">Drakken</Name>
     <DataFile Source="The Core Route Project" Type="SecondSurvey" Author="Bari Z. Stafford Sr." Ref="http://web.archive.org/web/20030406042613/http://www.geocities.com/traveller_core_route/proj004/proj004.html">Drakken.txt</DataFile>
-    <Subsectors>
-      <Subsector Index="A">Akke</Subsector>
-      <Subsector Index="B">Brakkez</Subsector>
-      <Subsector Index="C">Cikken</Subsector>
-      <Subsector Index="D">Drakka</Subsector>
-      <Subsector Index="E">Ekkur</Subsector>
-      <Subsector Index="F">Flokkam</Subsector>
-      <Subsector Index="G">Ghorkk</Subsector>
-      <Subsector Index="H">Hakken</Subsector>
-      <Subsector Index="I">Irakkom</Subsector>
-      <Subsector Index="J">Jekkem</Subsector>
-      <Subsector Index="K">Klokken</Subsector>
-      <Subsector Index="L">Lotrakk</Subsector>
-      <Subsector Index="M">Mukkur</Subsector>
-      <Subsector Index="N">Nidekker</Subsector>
-      <Subsector Index="O">Okken</Subsector>
-      <Subsector Index="P">Pakks</Subsector>
-    </Subsectors>
-    <Allegiances>
-      <Allegiance Code="H0">Hive Federation Member</Allegiance>
-      <Allegiance Code="H1">Hive Federation Member</Allegiance>
-      <Allegiance Code="H2">Hive Federation Member</Allegiance>
-      <Allegiance Code="H3">Hive Federation Member</Allegiance>
-    </Allegiances>
-    <!--
-    <Routes Source="Turokan's Expedition" Ref="http://web.archive.org/web/20030406042613/http://www.geocities.com/traveller_core_route/proj004/proj004.html">
-      <Route Start="2302" End="2238" EndOffsetX="0" EndOffsetY="-1" />
-      <Route Start="2302" End="2504" />
-      <Route Start="2302" End="2504" />
-      <Route Start="2504" End="2607" />
-      <Route Start="2607" End="2711" />
-      <Route Start="2607" End="2711" />
-      <Route Start="2711" End="2814" />
-      <Route Start="2814" End="3017" />
-      <Route Start="3017" End="3220" />
-      <Route Start="3220" End="0323" EndOffsetX="1" EndOffsetY="0" />
-    </Routes>
-    -->
-    <Borders>
-      <Border Allegiance="HvFd">0000 0100 0200 0300 0400 0500 0600 0700 0800 0900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3230 3231 3232 3133 3033 2934 2833 2734 2634 2535 2435 2336 2235 2135 2035 1936 1836 1736 1635 1536 1436 1336 1235 1135 1034 0934 0834 0734 0634 0534 0433 0334 0234 0134 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001 0000</Border>
-    </Borders>
+    <MetadataFile Author="Mark Humphreys">Drakken.xml</MetadataFile>
   </Sector>
   <Sector>
     <Y>4</Y>
     <X>4</X>
     <Name Lang="hv">Lorspane</Name>
     <DataFile Source="The Core Route Project" Type="SecondSurvey" Author="Bari Z. Stafford Sr." Ref="http://web.archive.org/web/20030406042613/http://www.geocities.com/traveller_core_route/proj004/proj004.html">Lorspane.txt</DataFile>
-    <MetadataFile>Lorspane.xml</MetadataFile>
+    <MetadataFile Author="Mark Humphreys">Lorspane.xml</MetadataFile>
   </Sector>
   <Sector>
     <Y>4</Y>
