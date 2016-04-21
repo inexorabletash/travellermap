@@ -92,7 +92,7 @@
   <ItemGroup>
     <Reference Include="PdfSharp, Version=1.32.2608.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\PDFsharp\code\PdfSharp\bin\Release\PdfSharp.dll</HintPath>
+      <HintPath>..\..\..\Documents\Visual Studio 2015\Projects\PDFsharp-master\code\PdfSharp\bin\Debug\PdfSharp.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <Name>System</Name>
@@ -232,7 +232,9 @@
     <Content Include="res\Sectors\Drakken.xml" />
     <Content Include="res\Sectors\Ealiyasiyw.xml" />
     <Content Include="res\Sectors\Empty Quarter.xml" />
-    <Content Include="res\Sectors\extolian.xml" />
+    <Content Include="res\Sectors\extolian.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="res\Sectors\Far Frontiers.xml" />
     <Content Include="res\Sectors\Faraway\faraway.xml" />
     <Content Include="res\Sectors\Faraway\Precipice.txt" />
@@ -321,6 +323,7 @@
     <Content Include="res\Sectors\Theta Borealis.xml" />
     <Content Include="res\Sectors\Tienspevnekr.txt" />
     <Content Include="res\Sectors\Tienspevnekr.xml" />
+    <Content Include="res\Sectors\Treece.txt" />
     <Content Include="res\Sectors\Trojan Reach.xml" />
     <Content Include="res\Sectors\Tuglikki.xml" />
     <Content Include="res\Sectors\Un%27k!!k%27ng.txt" />
