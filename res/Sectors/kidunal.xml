@@ -29,10 +29,6 @@
     <Subsector Index="O"></Subsector>
     <Subsector Index="P"></Subsector>
   </Subsectors>
-  <Stylesheet>
-    border.Kidunal { color: green; }
-    route.Kidunal { color: green; }
-  </Stylesheet>
   <Allegiances>
     <Allegiance Code="HvFd">Hive Federation</Allegiance>
     <Allegiance Code="Ka">Kidunal Abeyance</Allegiance>
@@ -47,7 +43,7 @@
       0213 0214 0215 0115 0015
       0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001
     </Border>
-    <Border WrapLabel="true" Allegiance="Kidunal" LabelPosition="2010">
+    <Border WrapLabel="true" Allegiance="Ka" Color="Green" LabelPosition="2010">
       2610 2511 2411 2312 2313 2314 2414 2515 2614 2715 2815 2816 2717 2617 2618 2619 2620 2721 2722 2822 2923 2924 2824 2724 2624 2524 2423
       2422 2322 2222 2123 2023 1923 1823 1822 1722 1622 1522 1421 1321 1221 1121 1021 0921 0820 0819 0818 0718 0618 0617 0717 0716
       0715 0714 0713 0712 0711 0810 0809 0909 0908 0907
@@ -80,35 +76,35 @@
     <Route Start="0404" End="0207" Type="Trade"/>
     <Route Start="0404" End="0502" Type="Trade"/>
     <Route Start="0404" End="0304" Type="Trade"/>
-    <Route Start="1814" End="1915" Allegiance="Kidunal" />
-    <Route Start="2215" End="1915" Allegiance="Kidunal" />
-    <Route Start="2215" End="2515" Allegiance="Kidunal" />
-    <Route Start="2816" End="2515" Allegiance="Kidunal" />
-    <Route Start="1814" End="1515" Allegiance="Kidunal" />
-    <Route Start="1316" End="1515" Allegiance="Kidunal" />
-    <Route Start="1316" End="1016" Allegiance="Kidunal" />
-    <Route Start="0917" End="1016" Allegiance="Kidunal" />
-    <Route Start="0917" End="0919" Allegiance="Kidunal" />
-    <Route Start="1021" End="0919" Allegiance="Kidunal" />
-    <Route Start="0917" End="0617" Allegiance="Kidunal" />
-    <Route Start="2215" End="2318" Allegiance="Kidunal" />
-    <Route Start="2318" End="2419" Allegiance="Kidunal" />
-    <Route Start="1814" End="1612" Allegiance="Kidunal" />
-    <Route Start="1612" End="1410" Allegiance="Kidunal" />
-    <Route Start="1410" End="1009" Allegiance="Kidunal" />
-    <Route Start="1009" End="0908" Allegiance="Kidunal" />
-    <Route Start="0908" End="0905" Allegiance="Kidunal" />
-    <Route Start="2215" End="2312" Allegiance="Kidunal" />
-    <Route Start="2312" End="2408" Allegiance="Kidunal" />
-    <Route Start="2408" End="2609" Allegiance="Kidunal" />
-    <Route Start="2408" End="2506" Allegiance="Kidunal" />
-    <Route Start="2506" End="2304" Allegiance="Kidunal" />
-    <Route Start="2304" End="2204" Allegiance="Kidunal" />
-    <Route Start="2204" End="2005" Allegiance="Kidunal" />
-    <Route Start="2005" End="1604" Allegiance="Kidunal" />
-    <Route Start="1604" End="1703" Allegiance="Kidunal" />
-    <Route Start="1604" End="1202" Allegiance="Kidunal" />
-    <Route Start="1202" End="1002" Allegiance="Kidunal" />
-    <Route Start="1907" End="2005" Allegiance="Kidunal" />
+    <Route Start="1814" End="1915" Color="Green" />
+    <Route Start="2215" End="1915" Color="Green" />
+    <Route Start="2215" End="2515" Color="Green" />
+    <Route Start="2816" End="2515" Color="Green" />
+    <Route Start="1814" End="1515" Color="Green" />
+    <Route Start="1316" End="1515" Color="Green" />
+    <Route Start="1316" End="1016" Color="Green" />
+    <Route Start="0917" End="1016" Color="Green" />
+    <Route Start="0917" End="0919" Color="Green" />
+    <Route Start="1021" End="0919" Color="Green" />
+    <Route Start="0917" End="0617" Color="Green" />
+    <Route Start="2215" End="2318" Color="Green" />
+    <Route Start="2318" End="2419" Color="Green" />
+    <Route Start="1814" End="1612" Color="Green" />
+    <Route Start="1612" End="1410" Color="Green" />
+    <Route Start="1410" End="1009" Color="Green" />
+    <Route Start="1009" End="0908" Color="Green" />
+    <Route Start="0908" End="0905" Color="Green" />
+    <Route Start="2215" End="2312" Color="Green" />
+    <Route Start="2312" End="2408" Color="Green" />
+    <Route Start="2408" End="2609" Color="Green" />
+    <Route Start="2408" End="2506" Color="Green" />
+    <Route Start="2506" End="2304" Color="Green" />
+    <Route Start="2304" End="2204" Color="Green" />
+    <Route Start="2204" End="2005" Color="Green" />
+    <Route Start="2005" End="1604" Color="Green" />
+    <Route Start="1604" End="1703" Color="Green" />
+    <Route Start="1604" End="1202" Color="Green" />
+    <Route Start="1202" End="1002" Color="Green" />
+    <Route Start="1907" End="2005" Color="Green" />
   </Routes>
 </Sector>
