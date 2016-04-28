@@ -1593,6 +1593,9 @@ namespace Maps.Rendering
                         PointF startPoint = Astrometrics.HexToCenter(Astrometrics.LocationToCoordinates(startLocation));
                         PointF endPoint = Astrometrics.HexToCenter(Astrometrics.LocationToCoordinates(endLocation));
 
+                        if (startPoint == endPoint)
+                            continue;
+
                         // If drawing dashed lines twice and the start/end are swapped the
                         // dashes don't overlap correctly. So "sort" the points.
                         if ((startPoint.X > endPoint.X) ||
