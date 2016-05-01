@@ -144,7 +144,7 @@ table#features, #features th, #features td { border: solid 1px black; }
           <li>http://travellermap.com/data/<var>sector</var>/<var>hex</var>/sheet &ndash; alias for <a target="_blank" href="../world">world</a>
           <li><var>sector</var> is name e.g. <code>Spinward Marches</code> or T5SS abbreviation e.g. <code>spin</code>
           <li><var>hex</var> is <code>XXYY</code> e.g. <code>1910</code>
-          <li><var>jump</var> is a number in the range <code>0</code> - <code>12</code>
+          <li><var>jump</var> is a number in the range <code>0</code> &mdash; <code>12</code>
         </ul>
       </li>
     </ul>
@@ -323,12 +323,49 @@ table#features, #features th, #features td { border: solid 1px black; }
     <a href="#iframe">IFRAME</a> API.</p>
 
     <dl class="params">
-      <dt>routes=0</dt>
-      <dd>Routes are not rendered (macro-scale or micro-scale)</dd>
-
       <dt>dimunofficial=1</dt>
       <dd>At scales where worlds are shown (dotmap or more), sectors with unofficial
         data will be dimmed</dd>
+
+      <dt>routes=0</dt>
+      <dd>Routes are not rendered (macro-scale or micro-scale)</dd>
+
+      <dt>rifts=0</dt>
+      <dd>Don't shade rifts. The default is to shade rifts.</dd>
+
+      <dt>ew=1</dt>
+      <dd><b>Empress Wave overlay:</b> the Empress Wave
+        phenomenon is shown, with its estimated position circa 1105.</dd>
+
+      <dt>po=1</dt>
+      <dd><b>Population overlay:</b> a yellow circle with
+        area proportional to the
+        <a href="./secondsurvey#pbg">population</a>
+        of each world is overlayed.</dd>
+
+      <dt>im=1</dt>
+      <dd><b>Importance overlay:</b> a green circle representing
+        the world's <a href="./secondsurvey#ix">Importance</a> is
+        overlayed.</dd>
+
+      <dt>dw=1</dt>
+      <dd><b>Droyne World overlay:</b> worlds with Droyne
+        populations are annotated with &#x2605;, and worlds with
+        Chirper populations are annotated with &#x2606;.</dd>
+
+      <dt>an=1</dt>
+      <dd><b>Ancient World overlay:</b> worlds with
+        known Ancient sites are annotated with &#x2600;.</dd>
+
+      <dt>mh=1</dt>
+      <dd><b>Minor Race Homeworld overlay:</b> homeworlds
+        of minor races are annotated with &#x273B;.</dd>
+
+      <dt>stellar=1</dt>
+      <dd>A representation of the system's stars is shown
+        instead of rendering world details. Sizes are not to scale.
+      <dd></dd>
+
     </dl>
 
     <h4>API Only</h4>
@@ -355,9 +392,6 @@ table#features, #features th, #features td { border: solid 1px black; }
         <a target="_blank" href="http://en.wikipedia.org/wiki/Data_URI_scheme">Data URI</a>
         rather than as binary data. This is useful when requesting images via POST via XHR
         to insert into HTML.</dd>
-
-      <dt>rifts=0</dt>
-      <dd>Don't shade rifts. The default is to shade rifts.</dd>
     </dl>
 
     <h4>IFRAME Only</h4>
@@ -859,7 +893,7 @@ table#features, #features th, #features td { border: solid 1px black; }
 
     <h4>Notes:</h4>
     <ul>
-      <li>The short Data URL form (<code>/data/<var>sector</var>/<var>hex</var></code>) is an alias for jump 0 - only details for the specified
+      <li>The short Data URL form (<code>/data/<var>sector</var>/<var>hex</var></code>) is an alias for jump 0 &mdash; only details for the specified
         system are returned.
       <li>Returns a list of worlds. Each world has the following fields (in no particular order), although fields may be omitted if blank:
         <ul>
