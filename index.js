@@ -177,7 +177,7 @@ window.addEventListener('DOMContentLoaded', function() {
     searchTimer = setTimeout(function() {
       document.body.classList.remove('route-ui');
       map.SetRoute(null);
-      search($('#searchBox').value, true);
+      search($('#searchBox').value, {typed: true});
     }, SEARCH_TIMER_DELAY);
   });
 
@@ -518,10 +518,12 @@ window.addEventListener('DOMContentLoaded', function() {
   });
   if (dirty) updatePermalink();
 
-  if ('q' in urlParams) {
-    $('#searchBox').value = urlParams.q;
-    search(urlParams.q);
-  }
+  ['q', 'qn'].forEach(function(key) {
+    if (key in urlParams) {
+      $('#searchBox').value = urlParams[key];
+    search(urlParams[key], {navigate: key === 'qn'});
+    }
+  });
 
   //////////////////////////////////////////////////////////////////////
   //
@@ -655,18 +657,20 @@ window.addEventListener('DOMContentLoaded', function() {
   var searchRequest = null;
   var lastQuery = null;
 
-  function search(query, typed) {
+  function search(query, options) {
+    options = Object(options);
+
     if (query === '')
       return;
 
     if (query === lastQuery) {
-      if (!searchRequest && !typed)
+      if (!searchRequest && !options.typed)
         document.body.classList.add('search-results');
       return;
     }
     lastQuery = query;
 
-    if (!typed)
+    if (!options.typed)
       document.body.classList.remove('search-results');
 
     if (searchRequest)
@@ -682,6 +686,11 @@ window.addEventListener('DOMContentLoaded', function() {
       .then(function() {
         searchRequest = null;
         document.body.classList.add('search-results');
+        if (options.navigate) {
+          var first = $('#resultsContainer a');
+          if (first)
+            first.click();
+        }
       });
 
     // Transform the search results into clickable links
@@ -767,7 +776,7 @@ window.addEventListener('DOMContentLoaded', function() {
       });
 
       var first = $('#resultsContainer a');
-      if (first && !typed)
+      if (first && !options.typed)
         setTimeout(function() { first.focus(); }, 0);
     }
   }
