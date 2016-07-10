@@ -333,9 +333,19 @@ table#features, #features th, #features td { border: solid 1px black; }
       <dt>rifts=0</dt>
       <dd>Don't shade rifts. The default is to shade rifts.</dd>
 
-      <dt>ew=1</dt>
-      <dd><b>Empress Wave overlay:</b> the Empress Wave
-        phenomenon is shown, with its estimated position circa 1105.</dd>
+      <dt>ew=<var>date</var></dt>
+      <dd><b>Empress Wave overlay:</b> the position of the Empress Wave
+        at the given date is shown. The date can be specified as one of:
+        <dl class="params">
+          <dt>ddd-yyyy</dt><dd>Day and Year of the Imperial Calendar, e.g. <code>ew=132-1116</code></dd>
+          <dt>yyyy.f...</dt><dd>Decimal date, e.g. <code>ew=1116.359</code></dd>
+          <dt>yyyy</dt><dd>Year, e.g. <code>ew=1105</code></dd>
+        </dl>
+        If a whole year is specified the actual width of the active
+        effects of the phenomenon is shown when zoomed in far enough
+        to see entire hexes. If a more specific date is specified, an
+        approximation of the progress across parsecs is presented.
+      </dd>
 
       <dt>po=1</dt>
       <dd><b>Population overlay:</b> a yellow circle with

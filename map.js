@@ -1004,7 +1004,7 @@ var Util = {
       this.drawRoute(this.route);
 
     if (this.namedOptions.get('ew'))
-      this.drawEmpressWave();
+      this.drawEmpressWave(this.namedOptions.get('ew'));
   };
 
   // Draw a rectangle (x1, y1) to (x2, y2)
@@ -1294,22 +1294,45 @@ var Util = {
     }
   };
 
-  TravellerMap.prototype.drawEmpressWave = function() {
-    var ctx = this.ctx;
-    var x = 0, y = 7000, r = 6820;
-    var w = 20;
+  TravellerMap.prototype.drawEmpressWave = function(date) {
+    var year = 1105;
+    var w = 1; /*pc*/
+    if (/^(\d+)-(\d+)$/.exec(date)) {
+      // day-year, e.g. 001-1105
+      year = Number(RegExp.$2) + (Number(RegExp.$1) - 1) / 365;
+      w = 0.1;
+    } else if (/^(\d+)\.(\d*)$/.exec(date)) {
+      // decimal year, e.g. 1105.5
+      year = Number(date);
+      w = 0.1;
+    } else if (/^\d+$/.exec(date)) {
+      // year
+      year = Number(date);
+      w = 1;
+    }
 
+    // Per MWM: Velocity of wave is PI * c
+    var vel /*pc/y*/ = Math.PI /*ly/y*/ / 3.26 /*ly/pc*/;
+
+    // Assumption: center is 7000pc coreward
+    var x = 0, y = 7000;
+
+    // Per MWM: Wave crosses Ring 10,000 [Reference] on 045-1281
+    var radius = (year - (1281 + (45-1) / 365)) * vel + y;
+
+    var ctx = this.ctx;
     ctx.save();
     ctx.translate(-this.canvas.offset_x, -this.canvas.offset_y);
     ctx.globalCompositeOperation = 'source-over';
     ctx.globalAlpha = 0.3;
-    ctx.lineWidth = w * this.scale;
+    ctx.lineWidth = Math.max(w * this.scale, 5);
     ctx.strokeStyle = styleLookup(this.style, 'ew_color');
     ctx.beginPath();
-    var pt = this.logicalToPixel(x, y);
+    var px_offset = 0.5; // offset from corner to center of hex
+    var pt = this.logicalToPixel(x + px_offset, y + px_offset);
     ctx.arc(pt.x,
             pt.y,
-            this.scale * r,
+            this.scale * radius,
             Math.PI/2 - Math.PI/12,
             Math.PI/2 + Math.PI/12);
     ctx.stroke();
@@ -1627,9 +1650,15 @@ var Util = {
         });
     }
 
-    ['silly', 'routes', 'dimunofficial', 'ew', 'dw', 'an', 'mh', 'rifts', 'po', 'im', 'milieu', 'stellar'].forEach(function (name) {
+    // Int/Boolean options
+    ['silly', 'routes', 'rifts', 'dimunofficial', 'dw', 'an', 'mh', 'po', 'im', 'stellar'].forEach(function (name) {
       if (name in params)
         this.namedOptions.set(name, int(name));
+    }, this);
+    // String options
+    ['ew', 'milieu'].forEach(function (name) {
+      if (name in params)
+        this.namedOptions.set(name, params[name]);
     }, this);
 
     return params;
