@@ -1307,7 +1307,7 @@ var Util = {
       w = 0.1;
     } else if (/^\d+$/.exec(date)) {
       // year
-      year = Number(date);
+      year = Number(date) + 0.5;
       w = 1;
     }
 
