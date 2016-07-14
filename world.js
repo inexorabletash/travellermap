@@ -495,8 +495,8 @@
       return 'http://wiki.travellerrpg.com/' + encodeURIComponent(suffix.replace(/ /g, '_'));
     }
     world.world_url = makeWikiURL(world.Name + ' (world)');
-    world.ss_url = makeWikiURL(world.SubsectorName) + ' Subsector';
-    world.sector_url = makeWikiURL(world.Sector) + ' Sector';;
+    world.ss_url = makeWikiURL(world.SubsectorName + ' Subsector');
+    world.sector_url = makeWikiURL(world.Sector + ' Sector');
 
     var template = Handlebars.compile($('#world-template').innerHTML);
     $('#world-data').innerHTML = template(world);
