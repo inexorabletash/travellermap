@@ -491,9 +491,12 @@
       world.OtherWorlds = world.Worlds - 1 - world.PBG.Belts - world.PBG.GG;
     }
 
-    function hasCode(c) {
-      return world.Remarks.some(function(r) { return r.code === c; });
+    function makeWikiURL(suffix) {
+      return 'http://wiki.travellerrpg.com/' + encodeURIComponent(suffix.replace(/ /g, '_'));
     }
+    world.world_url = makeWikiURL(world.Name + ' (world)');
+    world.ss_url = makeWikiURL(world.SubsectorName) + ' Subsector';
+    world.sector_url = makeWikiURL(world.Sector) + ' Sector';;
 
     var template = Handlebars.compile($('#world-template').innerHTML);
     $('#world-data').innerHTML = template(world);
@@ -506,6 +509,9 @@
       window.history.replaceState(null, document.title, url);
     }
 
+    function hasCode(c) {
+      return world.Remarks.some(function(r) { return r.code === c; });
+    }
 
     if (isPlaceholder) {
       $('#world-image').classList.add('unknown');
