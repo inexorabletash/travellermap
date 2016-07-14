@@ -27,14 +27,14 @@
 <meta property="og:site_name" content="The Traveller Map">
 <meta property="fb:admins" content="617166358">
 
-<link rel="stylesheet" href="index.css?update=2016-03-24">
+<link rel="stylesheet" href="index.css?update=2016-07-13">
 <link rel="stylesheet" href="lib/add-to-home-screen/addtohomescreen.css">
 
 <!--[if lt IE 9]><script>alert("IE8 is no longer supported.");location = 'http://google.com/chrome';</script><![endif]-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.2/handlebars.min.js"></script>
 <script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.18/polyfill.min.js"></script>
 <script src="map.js?update=2016-07-09"></script>
-<script src="index.js?update=2016-06-28"></script>
+<script src="index.js?update=2016-07-13"></script>
 
 <!-- Home Screen Icons - iOS and Android -->
 <link rel="apple-touch-icon-precomposed" href="res/ui/regina152.png">
@@ -218,6 +218,9 @@
     </button>
     <button id="downloadBtn"
             title="Download maps, data, and more">
+    </button>
+    <button id="wikiBtn"
+            title="Links to the Traveller Wiki">
     </button>
     <button id="legendBtn"
             title="Map legend and symbols">
@@ -446,11 +449,11 @@
       (<a id="download-snapshot-pdf" target="_blank" href="#">or PDF</a>)
     </section>
 
-    <section id="no-sector-selected">
+    <section class="inactive-content">
       Click on the map to select a sector for more options.
     </section>
 
-    <section id="sector-selected">
+    <section class="active-content">
       <h3 id="sector-name"></h3>
       <ul>
         <li>
@@ -474,6 +477,36 @@
           <a id="world-jump-map-4" target="_blank" href="#">J-4</a> &bull;
           <a id="world-jump-map-5" target="_blank" href="#">J-5</a> &bull;
           <a id="world-jump-map-6" target="_blank" href="#">J-6</a>
+        </li>
+
+      </ul>
+    </section>
+
+  </div>
+
+  <div id="wikiBox"
+       class="ui hoverbox hoverbox-right">
+
+    <h3>The Traveller Wiki</h3>
+
+    <section class="inactive-content">
+      Click on the map to select a world or sector for
+      links to more details on the wiki.
+    </section>
+
+    <section class="active-content">
+      <ul>
+
+        <li>
+          <a id="wiki-sector-link" target="wiki" href="#"></a>
+        </li>
+
+        <li class="world-selected">
+          <a id="wiki-subsector-link" target="wiki" href="#"></a>
+        </li>
+
+        <li class="world-selected">
+          <a id="wiki-world-link" target="wiki" href="#"></a>
         </li>
 
       </ul>

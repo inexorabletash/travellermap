@@ -260,7 +260,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
   // Options Bar
 
-  var PANELS = ['legend', 'settings', 'share', 'download', 'help'];
+  var PANELS = ['legend', 'settings', 'share', 'download', 'wiki', 'help'];
   PANELS.forEach(function(b) {
     $('#'+b+'Btn').addEventListener('click', function() {
       PANELS.forEach(function(p) {
@@ -535,6 +535,7 @@ window.addEventListener('DOMContentLoaded', function() {
   var dataTimeout = 0;
   var lastX, lastY;
   var selectedSector = null;
+  var selectedSubsector = null;
   var selectedWorld = null;
 
   function showCredits(hexX, hexY, immediate) {
@@ -585,16 +586,23 @@ window.addEventListener('DOMContentLoaded', function() {
 
       // Other UI
       if ('SectorName' in data && 'SectorTags' in data) {
-        selectedSector = data.SectorName;
+        selectedSector = data.SectorName.replace(/ Sector$/, '');
+        selectedSubsector = data.SubsectorName;
         selectedWorld = (map.scale >= 16 && 'WorldHex' in data) ? { name: data.WorldName, hex: data.WorldHex } : null;
         updateSectorLinks();
         $('#downloadBox').classList.add('sector-selected');
         $('#downloadBox').classList[selectedWorld ? 'add' : 'remove']('world-selected');
+
+        $('#wikiBox').classList.add('sector-selected');
+        $('#wikiBox').classList[selectedWorld ? 'add' : 'remove']('world-selected');
       } else {
         selectedSector = null;
         selectedWorld = null;
         $('#downloadBox').classList.remove('sector-selected');
         $('#downloadBox').classList.remove('world-selected');
+
+        $('#wikiBox').classList.remove('sector-selected');
+        $('#wikiBox').classList.remove('world-selected');
       }
 
       $('#MetadataDisplay').innerHTML =
@@ -608,6 +616,10 @@ window.addEventListener('DOMContentLoaded', function() {
     if (!selectedSector)
       return;
 
+    function makeWikiURL(suffix) {
+      return 'http://wiki.travellerrpg.com/' + encodeURIComponent(suffix.replace(/ /g, '_'));
+    }
+
     var bookletURL = Traveller.MapService.makeURL(
           '/data/' + encodeURIComponent(selectedSector) + '/booklet');
     var posterURL = Traveller.MapService.makeURL('/api/poster', {
@@ -615,11 +627,13 @@ window.addEventListener('DOMContentLoaded', function() {
     var dataURL = Traveller.MapService.makeURL('/api/sec', {
       sector: selectedSector, type: 'SecondSurvey' });
 
-    var title = selectedSector.replace(/ Sector$/, '') + ' Sector';
-    $('#downloadBox #sector-name').innerHTML = Util.escapeHTML(title);
+    $('#downloadBox #sector-name').innerHTML = Util.escapeHTML(selectedSector + ' Sector');
     $('#downloadBox a#download-booklet').href = bookletURL;
     $('#downloadBox a#download-poster').href = posterURL;
     $('#downloadBox a#download-data').href = dataURL;
+
+    $('#wiki-sector-link').innerHTML = Util.escapeHTML(selectedSector + ' Sector');
+    $('#wiki-sector-link').href = makeWikiURL(selectedSector + ' Sector');
 
     if (selectedWorld) {
       var worldURL = Util.makeURL('world.html', {
@@ -645,6 +659,12 @@ window.addEventListener('DOMContentLoaded', function() {
         });
         $('#downloadBox a#world-jump-map-' + j).href = jumpMapURL;
       }
+
+      $('#wiki-subsector-link').innerHTML = Util.escapeHTML(selectedSubsector + ' Subsector');
+      $('#wiki-subsector-link').href = makeWikiURL(selectedSubsector + ' Subsector');
+
+      $('#wiki-world-link').innerHTML = Util.escapeHTML(selectedWorld.name + ' (world)');
+      $('#wiki-world-link').href = makeWikiURL(selectedWorld.name + ' (world)');
     }
   }
 
