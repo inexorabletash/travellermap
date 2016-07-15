@@ -489,10 +489,10 @@ button:hover {
 #wikiBox section:first-of-type { margin-top: 0; }
 #wikiBox section:last-of-type { margin-bottom: 0; }
 #wikiBox .active-content { display: none; }
-#wikiBox .world-selected { display: none; }
-#wikiBox.sector-selected .active-content { display: block; }
-#wikiBox.sector-selected .inactive-content { display: none; }
-#wikiBox.sector-selected.world-selected .world-selected { display: block; }
+#wikiBox .world-content { display: none; }
+.sector-selected #wikiBox .active-content { display: block; }
+.sector-selected #wikiBox .inactive-content { display: none; }
+.world-selected #wikiBox .world-content { display: block; }
 
 #wikiBox h3 { font-style: italic; font-weight: normal;
               color: red;
@@ -512,10 +512,10 @@ button:hover {
 #downloadBox section:first-of-type { margin-top: 0; }
 #downloadBox section:last-of-type { margin-bottom: 0; }
 #downloadBox .active-content { display: none; }
-#downloadBox .world-selected { display: none; }
-#downloadBox.sector-selected .active-content { display: block; }
-#downloadBox.sector-selected .inactive-content { display: none; }
-#downloadBox.sector-selected.world-selected .world-selected { display: block; }
+#downloadBox .world-content { display: none; }
+.sector-selected #downloadBox .active-content { display: block; }
+.sector-selected #downloadBox .inactive-content { display: none; }
+.world-selected #downloadBox .world-content { display: block; }
 
 #downloadBox h3 { font-style: italic; font-weight: normal;
                   color: red;
