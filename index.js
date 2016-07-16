@@ -955,6 +955,8 @@ window.addEventListener('DOMContentLoaded', function() {
   if (!isIframe) // == for IE
     mapElement.focus();
 
+  $('#searchBox').disabled = false;
+
   // Init all of the "social" UI asynchronously.
   setTimeout(window.initSharingLinks, 1000);
   $('#shareBtn').addEventListener('click', function() {
