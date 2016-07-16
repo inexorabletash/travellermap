@@ -59,6 +59,9 @@
 
     sector.credits = metadata.Credits;
 
+    // TM's Y coordinates are inverted relative to FFE publications.
+    metadata.Y = -metadata.Y;
+
     return sector;
   }
 
