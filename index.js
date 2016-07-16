@@ -398,7 +398,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
   map.OnOptionsChanged = function(options) {
     optionObservers.forEach(function(o) { o(options); });
-    $('#legendBox').classList[(options & Traveller.MapOptions.WorldColors) ? 'add' : 'remove']('world_colors');
+    $('#legendBox').classList.toggle('world_colors', options & Traveller.MapOptions.WorldColors);
     updatePermalink();
     updateSectorLinks();
     savePreferences();
@@ -406,7 +406,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
   map.OnStyleChanged = function(style) {
     STYLES.forEach(function(s) {
-      document.body.classList[s === style ? 'add' : 'remove']('style-' + s);
+      document.body.classList.toggle('style-' + s, s === style);
     });
     updatePermalink();
     updateSectorLinks();
@@ -451,9 +451,9 @@ window.addEventListener('DOMContentLoaded', function() {
   ];
   PARAM_OPTIONS.forEach(function(option) {
     $(option.selector).checked = option['default'];
-    document.body.classList[option['default'] ? 'add' : 'remove'](option.className);
+    document.body.classList.toggle(option.className, option['default']);
     $(option.selector).addEventListener('click', function() {
-      document.body.classList[this.checked ? 'add' : 'remove'](option.className);
+      document.body.classList.toggle(option.className, this.checked);
       updatePermalink();
       savePreferences();
     });
@@ -473,7 +473,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
       PARAM_OPTIONS.forEach(function(option) {
         if (option.param in preferences)
-          document.body.classList[preferences[option.param] ? 'add' : 'remove'](option.className);
+          document.body.classList.toggle(option.className, preferences[option.param]);
       });
     }
 
@@ -511,7 +511,7 @@ window.addEventListener('DOMContentLoaded', function() {
   PARAM_OPTIONS.forEach(function(option) {
     if (option.param in urlParams) {
       var show = Boolean(Number(urlParams[option.param]));
-      document.body.classList[show ? 'add' : 'remove'](option.className);
+      document.body.classList.toggle(option.className, show);
       dirty = true;
     }
     $(option.selector).checked = document.body.classList.contains(option.className);
@@ -596,8 +596,8 @@ window.addEventListener('DOMContentLoaded', function() {
         selectedWorld = null;
       }
 
-      document.body.classList[selectedSector ? 'add' : 'remove']('sector-selected');
-      document.body.classList[selectedWorld ? 'add' : 'remove']('world-selected');
+      document.body.classList.toggle('sector-selected', selectedSector);
+      document.body.classList.toggle('world-selected', selectedWorld);
 
       $('#MetadataDisplay').innerHTML =
         template(selectedWorld ? '#WorldMetadataTemplate' : '#SectorMetadataTemplate')(data)
