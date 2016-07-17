@@ -6,8 +6,16 @@
                Traveller role playing game, incorporating official data and fan
                submissions. The site also provides services for generating custom
                maps and Web APIs for incorporating maps into other sites.">
+
+
 <link rel="shortcut icon" href="favicon.ico">
-<link rel="manifest" href="manifest.json">
+<link rel="manifest" href="res/app/manifest.json">
+<!-- Microsoft/Edge -->
+<meta name="msapplication-config" content="res/app/browserconfig.xml">
+<meta name="theme-color" content="#ff0000">
+<!-- Apple/Safari -->
+<link rel="mask-icon" href="res/app/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="apple-touch-icon" sizes="180x180" href="res/app/regina180.png">
 
 <!-- Mobile -->
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -23,7 +31,7 @@
 <meta property="og:title" content="The Traveller Map">
 <meta property="og:type" content="website">
 <meta property="og:url" content="http://travellermap.com">
-<meta property="og:image" content="http://travellermap.com/res/ui/fb.png">
+<meta property="og:image" content="http://travellermap.com/res/app/fb.png">
 <meta property="og:site_name" content="The Traveller Map">
 <meta property="fb:admins" content="617166358">
 
@@ -35,10 +43,6 @@
 <script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.24/polyfill.min.js"></script>
 <script src="map.js?update=2016-07-09"></script>
 <script src="index.js?update=2016-07-16"></script>
-
-<!-- Home Screen Icons - iOS and Android -->
-<link rel="apple-touch-icon-precomposed" href="res/ui/regina152.png">
-<link rel="apple-touch-icon"             href="res/ui/regina152.png">
 
 <body class="hide-ui hide-footer">
   <div id="mapContainer">
