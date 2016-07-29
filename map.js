@@ -101,6 +101,15 @@ var Util = {
     });
     q.ignore = function() { ignored = true; };
     return q;
+  },
+
+  fetchImage: function(url, img) {
+    return new Promise(function(resolve, reject) {
+      img = img || document.createElement('img');
+      img.src = url;
+      img.onload = function() { resolve(img); };
+      img.onerror = function() { reject(Error('Image failed to load')); };
+    });
   }
 };
 
