@@ -403,7 +403,7 @@ var Traveller, Util, Handlebars;
     return world.Remarks.some(function(r) { return r.code === c; });
   }
 
-  Traveller.renderWorld = function renderWorld(world) {
+  Traveller.renderWorld = function(world, template, container) {
     if (!world) return undefined;
     return SOPHONTS_FETCHED.then(function() {
       world.isPlaceholder = (world.UWP === 'XXXXXXX-X' || world.UWP === '???????-?');
@@ -528,124 +528,118 @@ var Traveller, Util, Handlebars;
       world.ss_url = makeWikiURL(world.SubsectorName + ' Subsector');
       world.sector_url = makeWikiURL(world.Sector + ' Sector');
 
-      // Render data
-      var template = Handlebars.compile($('#wds-world-template').innerHTML);
-      $('#wds-world-data').innerHTML = template(world);
-
-      // Render image
-      renderWorldImage(world, $('#wds-world-image')).then(function() {
-        $('#wds-world-image').classList.add('wds-ready');
-      });
+      container.innerHTML = Handlebars.compile(template)(world);
 
       return world;
     });
+  };
 
-    function supportsCompositeMode(ctx, mode) {
-      var orig = ctx.globalCompositeOperation;
-      ctx.globalCompositeOperation = mode;
-      var result = ctx.globalCompositeOperation === mode;
-      ctx.globalCompositeOperation = orig;
-      return result;
-    }
 
-    function renderWorldImage(world, canvas) {
-      return new Promise(function(resolve, reject) {
-        var w = canvas.width, h = canvas.height;
+  function supportsCompositeMode(ctx, mode) {
+    var orig = ctx.globalCompositeOperation;
+    ctx.globalCompositeOperation = mode;
+    var result = ctx.globalCompositeOperation === mode;
+    ctx.globalCompositeOperation = orig;
+    return result;
+  }
 
-        var bg = (!world.isPlaceholder && hasCode(world, 'Sa'))
-              ? 'res/world/gg.jpg' : 'res/world/stars.png';
+  Traveller.renderWorldImage = function(world, canvas) {
+    var w = canvas.width, h = canvas.height;
 
-        var SIZES = [
-          { width: 0.80, height: 0.45 },
-          { width: 0.25, height: 0.25 },
-          { width: 0.30, height: 0.30 },
-          { width: 0.35, height: 0.35 },
-          { width: 0.40, height: 0.40 },
-          { width: 0.45, height: 0.45 },
-          { width: 0.50, height: 0.50 },
-          { width: 0.55, height: 0.55 },
-          { width: 0.60, height: 0.60 },
-          { width: 0.65, height: 0.65 },
-          { width: 0.70, height: 0.70 },
-          { width: 0.75, height: 0.75 },
-          { width: 0.80, height: 0.80 },
-          { width: 0.85, height: 0.85 },
-          { width: 0.90, height: 0.90 },
-          { width: 0.95, height: 0.95 }
-        ];
+    var bg = (!world.isPlaceholder && hasCode(world, 'Sa'))
+          ? 'res/world/gg.jpg' : 'res/world/stars.png';
 
-        var render = 'res/Candy/worlds/'
-              + encodeURIComponent(world.Sector + ' ' + world.Hex) + '.png';
-        var generic = 'res/Candy/'
-              + (world.UWP.Siz === '0' ? 'Belt' : 'Hyd' + world.UWP.Hyd) + '.png';
+    var SIZES = [
+      { width: 0.80, height: 0.45 },
+      { width: 0.25, height: 0.25 },
+      { width: 0.30, height: 0.30 },
+      { width: 0.35, height: 0.35 },
+      { width: 0.40, height: 0.40 },
+      { width: 0.45, height: 0.45 },
+      { width: 0.50, height: 0.50 },
+      { width: 0.55, height: 0.55 },
+      { width: 0.60, height: 0.60 },
+      { width: 0.65, height: 0.65 },
+      { width: 0.70, height: 0.70 },
+      { width: 0.75, height: 0.75 },
+      { width: 0.80, height: 0.80 },
+      { width: 0.85, height: 0.85 },
+      { width: 0.90, height: 0.90 },
+      { width: 0.95, height: 0.95 }
+    ];
 
-        var isRender = true;
+    var render = 'res/Candy/worlds/'
+          + encodeURIComponent(world.Sector + ' ' + world.Hex) + '.png';
+    var generic = 'res/Candy/'
+          + (world.UWP.Siz === '0' ? 'Belt' : 'Hyd' + world.UWP.Hyd) + '.png';
+    var isRender = true;
 
-        Promise.all([
-          // Background
-          Util.fetchImage(bg),
+    return Promise.all([
+      // Background
+      Util.fetchImage(bg),
 
-          // Foreground
-          world.isPlaceholder ? null : Util.fetchImage(render)
-            .catch(function() { isRender = false; return Util.fetchImage(generic); })
-        ])
-          .then(function(images) {
-            var bgimg = images[0];
-            var fgimg = images[1]; // null if isPlaceholder
+      // Foreground
+      world.isPlaceholder
+        ? null
+        : Util.fetchImage(render).catch(function() {
+          isRender = false;
+          return Util.fetchImage(generic);
+        })
+    ])
+      .then(function(images) {
+        var bgimg = images[0];
+        var fgimg = images[1]; // null if isPlaceholder
 
-            var ctx = canvas.getContext('2d');
-            ctx.save();
-            try {
-              ctx.imageSmoothingEnabled = true;
+        var ctx = canvas.getContext('2d');
+        ctx.save();
+        try {
+          ctx.imageSmoothingEnabled = true;
 
-              if (!fgimg) {
-                ctx.drawImage(bgimg, 0, 0, w, h);
-                var label = '?';
-                var th = h * 2/3;
-                ctx.font = String(th) + 'px sans-serif';
-                ctx.fillStyle = 'white';
-                ctx.textAlign = 'center';
-                ctx.textBaseline = 'middle';
-                ctx.fillText(label, w/2, h/2);
-                return resolve();
-              }
+          if (!fgimg) {
+            ctx.drawImage(bgimg, 0, 0, w, h);
+            var label = '?';
+            var th = h * 2/3;
+            ctx.font = String(th) + 'px sans-serif';
+            ctx.fillStyle = 'white';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(label, w/2, h/2);
+            return;
+          }
 
-              var size = SIZES[world.UWP.Siz] || {width: 0.5, height: 0.5};
-              var iw = w * size.width, ih = h * size.height;
-              var ix = (w - iw) / 2, iy = (h - ih) / 2;
+          var size = SIZES[world.UWP.Siz] || {width: 0.5, height: 0.5};
+          var iw = w * size.width, ih = h * size.height;
+          var ix = (w - iw) / 2, iy = (h - ih) / 2;
 
-              if (!isRender &&
-                  supportsCompositeMode(ctx, 'destination-in') &&
-                  supportsCompositeMode(ctx, 'destination-over') &&
-                  supportsCompositeMode(ctx, 'multiply') &&
-                  world.Stars && /^([OBAFGKM])([0-9])/.test(world.Stars[0])) {
-                // Advanced - color blend image.
-                var t = class2temp(RegExp.$1, RegExp.$2);
-                var c = temp2color(t);
-                ctx.fillStyle = 'rgb(' + c.r + ',' + c.g + ',' + c.b + ')';
+          if (!isRender &&
+              supportsCompositeMode(ctx, 'destination-in') &&
+              supportsCompositeMode(ctx, 'destination-over') &&
+              supportsCompositeMode(ctx, 'multiply') &&
+              world.Stars && /^([OBAFGKM])([0-9])/.test(world.Stars[0])) {
+            // Advanced - color blend image.
+            var t = class2temp(RegExp.$1, RegExp.$2);
+            var c = temp2color(t);
+            ctx.fillStyle = 'rgb(' + c.r + ',' + c.g + ',' + c.b + ')';
 
-                ctx.fillRect(ix, iy, iw, ih);
-                ctx.globalCompositeOperation = 'destination-in';
-                ctx.drawImage(fgimg, ix, iy, iw, ih);
-                ctx.globalCompositeOperation = 'multiply';
+            ctx.fillRect(ix, iy, iw, ih);
+            ctx.globalCompositeOperation = 'destination-in';
+            ctx.drawImage(fgimg, ix, iy, iw, ih);
+            ctx.globalCompositeOperation = 'multiply';
 
-                ctx.drawImage(fgimg, ix, iy, iw, ih);
+            ctx.drawImage(fgimg, ix, iy, iw, ih);
 
-                ctx.globalCompositeOperation = 'destination-over';
-                ctx.drawImage(bgimg, 0, 0, w, h);
-              } else {
-                // Basic - background then foreground.
-                ctx.drawImage(bgimg, 0, 0, w, h);
-                ctx.drawImage(fgimg, ix, iy, iw, ih);
-              }
+            ctx.globalCompositeOperation = 'destination-over';
+            ctx.drawImage(bgimg, 0, 0, w, h);
+          } else {
+            // Basic - background then foreground.
+            ctx.drawImage(bgimg, 0, 0, w, h);
+            ctx.drawImage(fgimg, ix, iy, iw, ih);
+          }
 
-              return resolve();
-            } finally {
-              ctx.restore();
-            }
-          });
-      });
-    }
+        } finally {
+          ctx.restore();
+        }
+    });
   };
 
   // Convert stellar class (e.g. 'G', '2') to temperature (Kelvin).
