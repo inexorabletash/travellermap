@@ -381,17 +381,16 @@ var Util = {
   }
   ImageStash.prototype = {
     get: function(url, callback) {
-      if (!this.map.has(url)) {
-        var image = document.createElement('img');
-        image.src = url;
-        this.map.set(url, image);
-        image.onload = function() {
-          image.loaded = true;
-          callback(image);
-        };
-      }
-      image = this.map.get(url);
-      return image.loaded ? image : undefined;
+      if (this.map.has(url))
+        return this.map.get(url);
+
+      this.map.set(url, undefined);
+      Util.fetchImage(url).then(function(img) {
+        this.map.set(url, img);
+        callback(img);
+      }.bind(this));
+
+      return undefined;
     }
   };
   var stash = new ImageStash();
@@ -609,11 +608,11 @@ var Util = {
 
     this.cache = new LRUCache(64);
 
-    this.namedOptions = new NamedOptions((function() {
+    this.namedOptions = new NamedOptions(function() {
       this.cache.clear();
       this.invalidate();
       fireEvent(this, 'OptionsChanged', this.options);
-    }).bind(this));
+    }.bind(this));
 
     this.loading = {};
 
@@ -648,7 +647,7 @@ var Util = {
     // ======================================================================
 
     var dragging, drag_x, drag_y;
-    container.addEventListener('mousedown', (function(e) {
+    container.addEventListener('mousedown', function(e) {
       this.cancelAnimation();
       container.focus();
       dragging = true;
@@ -659,10 +658,10 @@ var Util = {
 
       e.preventDefault();
       e.stopPropagation();
-    }).bind(this), true);
+    }.bind(this), true);
 
     var hover_x, hover_y;
-    container.addEventListener('mousemove', (function(e) {
+    container.addEventListener('mousemove', function(e) {
       if (dragging) {
         var coords = this.eventCoords(e);
         var dx = drag_x - coords.x;
@@ -685,7 +684,7 @@ var Util = {
       hover_x = hex.hx;
       hover_y = hex.hy;
       fireEvent(this, 'Hover', { x: hex.hx, y: hex.hy });
-    }).bind(this), true);
+    }.bind(this), true);
 
     document.addEventListener('mouseup', function(e) {
       if (dragging) {
@@ -696,15 +695,15 @@ var Util = {
       }
     });
 
-    container.addEventListener('click', (function(e) {
+    container.addEventListener('click', function(e) {
       e.preventDefault();
       e.stopPropagation();
 
       var hex = this.eventToHexCoords(e);
       fireEvent(this, 'Click', { x: hex.hx, y: hex.hy });
-    }).bind(this));
+    }.bind(this));
 
-    container.addEventListener('dblclick', (function(e) {
+    container.addEventListener('dblclick', function(e) {
       this.cancelAnimation();
 
       e.preventDefault();
@@ -722,9 +721,9 @@ var Util = {
 
       var hex = this.eventToHexCoords(e);
       fireEvent(this, 'DoubleClick', { x: hex.hx, y: hex.hy });
-    }).bind(this));
+    }.bind(this));
 
-    var wheelListener = (function(e) {
+    var wheelListener = function(e) {
       this.cancelAnimation();
       var delta = e.detail ? e.detail * -40 : e.wheelDelta;
 
@@ -735,11 +734,11 @@ var Util = {
 
       e.preventDefault();
       e.stopPropagation();
-    }).bind(this);
+    }.bind(this);
     container.addEventListener('mousewheel', wheelListener); // IE/Chrome/Safari/Opera
     container.addEventListener('DOMMouseScroll', wheelListener); // FF
 
-    window.addEventListener('resize', (function() {
+    window.addEventListener('resize', function() {
       var rect = container.getBoundingClientRect();
       if (rect.left === this.rect.left &&
           rect.top === this.rect.top &&
@@ -747,12 +746,12 @@ var Util = {
           rect.height === this.rect.height) return;
       this.rect = rect;
       this.resetCanvas();
-    }).bind(this));
+    }.bind(this));
 
     var pinch_x1, pinch_y1, pinch_x2, pinch_y2;
     var touch_x, touch_y;
 
-    container.addEventListener('touchmove', (function(e) {
+    container.addEventListener('touchmove', function(e) {
       if (e.touches.length === 1) {
 
         var coords = this.eventCoords(e.touches[0]);
@@ -789,9 +788,9 @@ var Util = {
 
       e.preventDefault();
       e.stopPropagation();
-    }).bind(this), true);
+    }.bind(this), true);
 
-    container.addEventListener('touchend', (function(e) {
+    container.addEventListener('touchend', function(e) {
       if (e.touches.length < 2) {
         this.defer_loading = false;
         this.invalidate();
@@ -805,9 +804,9 @@ var Util = {
 
       e.preventDefault();
       e.stopPropagation();
-    }).bind(this), true);
+    }.bind(this), true);
 
-    container.addEventListener('touchstart', (function(e) {
+    container.addEventListener('touchstart', function(e) {
       if (e.touches.length === 1) {
         var coords = this.eventCoords(e.touches[0]);
         touch_x = coords.x;
@@ -824,9 +823,9 @@ var Util = {
 
       e.preventDefault();
       e.stopPropagation();
-    }).bind(this), true);
+    }.bind(this), true);
 
-    container.addEventListener('keydown', (function(e) {
+    container.addEventListener('keydown', function(e) {
       if (e.ctrlKey || e.altKey || e.metaKey)
         return;
 
@@ -857,7 +856,7 @@ var Util = {
 
       e.preventDefault();
       e.stopPropagation();
-    }).bind(this));
+    }.bind(this));
 
     this.resetCanvas();
 
@@ -943,10 +942,10 @@ var Util = {
     this.dirty = true;
     if (this._raf_handle) return;
 
-    this._raf_handle = requestAnimationFrame((function invalidationRAF(ms) {
+    this._raf_handle = requestAnimationFrame(function invalidationRAF(ms) {
       this._raf_handle = null;
       this.redraw();
-    }).bind(this));
+    }.bind(this));
   };
 
   TravellerMap.prototype.redraw = function(force) {
@@ -1163,20 +1162,14 @@ var Util = {
     // Nope, better try loading it
     this.loading[url] = true;
 
-    img = document.createElement('img');
-    img.onload = (function() {
-      delete this.loading[url];
-      this.cache.insert(url, img);
-      callback(img);
-      img.onload = null;
-      img.onerror = null;
-    }).bind(this);
-    img.onerror = (function() {
-      delete this.loading[url];
-      img.onload = null;
-      img.onerror = null;
-    }).bind(this);
-    img.src = url;
+    Util.fetchImage(url)
+      .then(function(img) {
+        delete this.loading[url];
+        this.cache.insert(url, img);
+        callback(img);
+      }.bind(this), function() {
+        delete this.loading[url];
+      }.bind(this));
 
     return undefined;
   };
@@ -1209,14 +1202,14 @@ var Util = {
       return Animation.smooth(p, 1.0, 0.1, 0.25);
     });
 
-    this.animation.onanimate = (function(p) {
+    this.animation.onanimate = function(p) {
       // Interpolate scale in log space.
       this.scale = pow2(Animation.interpolate(log2(os), log2(scale), p));
       // TODO: If animating scale, this should follow an arc (parabola?) through 3space treating
       // scale as Z and computing a height such that the target is in view at the turnaround.
       this.position = [Animation.interpolate(ox, x, p), Animation.interpolate(oy, y, p)];
       this.redraw();
-    }).bind(this);
+    }.bind(this);
   };
 
   TravellerMap.prototype.drawOverlay = function(overlay) {
@@ -1509,9 +1502,9 @@ var Util = {
     this.animation = new Animation(1.0, function(p) {
       return Animation.smooth(p, 1.0, 0.1, 0.25);
     });
-    this.animation.onanimate = (function(p) {
+    this.animation.onanimate = function(p) {
       this.position = [Animation.interpolate(ox, tx, p), Animation.interpolate(oy, ty, p)];
-    }).bind(this);
+    }.bind(this);
   };
 
   var ZOOM_DELTA = 0.5;
