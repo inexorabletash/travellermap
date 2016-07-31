@@ -434,6 +434,8 @@ namespace Maps.Rendering
             macroRoutes.pen.width = borderPenWidth;
             macroRoutes.pen.DashStyle = XDashStyle.Dash;
 
+            populationOverlay.fillColor = Color.FromArgb(0x80, 0xff, 0xff, 0x00);
+            importanceOverlay.fillColor = Color.FromArgb(0x20, 0x80, 0xff, 0x00);
 
             switch (style)
             {
@@ -473,6 +475,14 @@ namespace Maps.Rendering
                         riftOpacity = Math.Min(riftOpacity, 0.70f);
 
                         showWorldDetailColors = false;
+
+                        populationOverlay.fillColor = Color.FromArgb(0x40, highlightColor);
+                        populationOverlay.pen = new PenInfo(Color.Gray, 0.03f * penScale);
+                        populationOverlay.pen.DashStyle = XDashStyle.Dash;
+
+                        importanceOverlay.fillColor = Color.FromArgb(0x20, highlightColor);
+                        importanceOverlay.pen = new PenInfo(Color.Gray, 0.03f * penScale);
+                        importanceOverlay.pen.DashStyle = XDashStyle.Dot;
 
                         break;
                     }
@@ -539,6 +549,14 @@ namespace Maps.Rendering
                         hexCoordinateStyle = HexCoordinateStyle.Subsector;
                         overrideLineStyle = LineStyle.Solid;
 
+                        populationOverlay.fillColor = Color.FromArgb(0x40, highlightColor);
+                        populationOverlay.pen = new PenInfo(Color.Gray, 0.03f * penScale);
+                        populationOverlay.pen.DashStyle = XDashStyle.Dash;
+
+                        importanceOverlay.fillColor = Color.FromArgb(0x20, highlightColor);
+                        importanceOverlay.pen = new PenInfo(Color.Gray, 0.03f * penScale);
+                        importanceOverlay.pen.DashStyle = XDashStyle.Dot;
+
                         break;
                     }
                 case Style.Print:
@@ -559,6 +577,14 @@ namespace Maps.Rendering
                         worldNoWater.pen = new PenInfo(Color.Black, onePixel);
 
                         riftOpacity = Math.Min(riftOpacity, 0.70f);
+
+                        populationOverlay.fillColor = Color.FromArgb(0x40, 0xff, 0xff, 0x00);
+                        populationOverlay.pen = new PenInfo(Color.Gray, 0.03f * penScale);
+                        populationOverlay.pen.DashStyle = XDashStyle.Dash;
+
+                        importanceOverlay.fillColor = Color.FromArgb(0x20, 0x80, 0xff, 0x00);
+                        importanceOverlay.pen = new PenInfo(Color.Gray, 0.03f * penScale);
+                        importanceOverlay.pen.DashStyle = XDashStyle.Dot;
 
                         break;
                     }
@@ -644,6 +670,14 @@ namespace Maps.Rendering
                         riftOpacity = Math.Min(riftOpacity, 0.30f);
 
                         numberAllHexes = true;
+
+                        populationOverlay.fillColor = Color.FromArgb(0x40, 0xff, 0xff, 0x00);
+                        populationOverlay.pen = new PenInfo(Color.Gray, 0.03f * penScale);
+                        populationOverlay.pen.DashStyle = XDashStyle.Dash;
+
+                        importanceOverlay.fillColor = Color.FromArgb(0x20, 0x80, 0xff, 0x00);
+                        importanceOverlay.pen = new PenInfo(Color.Gray, 0.03f * penScale);
+                        importanceOverlay.pen.DashStyle = XDashStyle.Dot;
 
                         break;
                     }
@@ -815,11 +849,11 @@ namespace Maps.Rendering
         // Worlds
         public StyleElement worlds;
         public bool showWorldDetailColors;
-        public bool showPopulationOverlay;
-        public bool showImportanceOverlay;
+        public StyleElement populationOverlay;
+        public StyleElement importanceOverlay;
         public bool showStellarOverlay;
 
-        public bool HasWorldOverlays { get { return showPopulationOverlay || showImportanceOverlay || showStellarOverlay; } }
+        public bool HasWorldOverlays { get { return populationOverlay.visible || importanceOverlay.visible|| showStellarOverlay; } }
 
         public PointF StarportPosition;
         public PointF GasGiantPosition;

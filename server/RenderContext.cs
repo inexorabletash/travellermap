@@ -955,25 +955,43 @@ namespace Maps.Rendering
                 if (layer == WorldLayer.Overlay)
                 {
 #region Population Overlay 
-                    if (styles.showPopulationOverlay && world.Population > 0)
+                    if (styles.populationOverlay.visible && world.Population > 0)
                     {
                         // TODO: Don't hardcode the color
-                        solidBrush.Color = XColor.FromArgb(0x80ffff00);
                         float r = (float)Math.Sqrt(world.Population / Math.PI) * 0.00002f;
-                        graphics.DrawEllipse(solidBrush, -r, -r, r * 2, r * 2);
+                        Stylesheet.StyleElement elem = styles.populationOverlay;
+                        if (!elem.fillColor.IsEmpty)
+                        {
+                            solidBrush.Color = elem.fillColor;
+                            graphics.DrawEllipse(solidBrush, -r, -r, r * 2, r * 2);
+                        }
+                        if (!elem.pen.color.IsEmpty)
+                        {
+                            elem.pen.Apply(ref pen);
+                            graphics.DrawEllipse(pen, -r, -r, r * 2, r * 2);
+                        }
                     }
 #endregion
 
 #region Importance Overlay
-                    if (styles.showImportanceOverlay)
+                    if (styles.importanceOverlay.visible)
                     {
                         int im = SecondSurvey.Importance(world);
                         if (im > 0)
                         {
                             // TODO: Don't hardcode the color
-                            solidBrush.Color = XColor.FromArgb(0x2080ff00);
                             float r = (im - 0.5f) * Astrometrics.ParsecScaleX;
-                            graphics.DrawEllipse(solidBrush, -r, -r, r * 2, r * 2);
+                            Stylesheet.StyleElement elem = styles.importanceOverlay;
+                            if (!elem.fillColor.IsEmpty)
+                            {
+                                solidBrush.Color = elem.fillColor;
+                                graphics.DrawEllipse(solidBrush, -r, -r, r * 2, r * 2);
+                            }
+                            if (!elem.pen.color.IsEmpty)
+                            {
+                                elem.pen.Apply(ref pen);
+                                graphics.DrawEllipse(pen, -r, -r, r * 2, r * 2);
+                            }
                         }
                     }
 #endregion

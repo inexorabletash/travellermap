@@ -53,10 +53,10 @@ namespace Maps.API
                     ctx.Styles.showRiftOverlay = false;
 
                 if (GetBoolOption("po", queryDefaults: queryDefaults, defaultValue: false))
-                    ctx.Styles.showPopulationOverlay = true;
+                    ctx.Styles.populationOverlay.visible = true;
 
                 if (GetBoolOption("im", queryDefaults: queryDefaults, defaultValue: false))
-                    ctx.Styles.showImportanceOverlay = true;
+                    ctx.Styles.importanceOverlay.visible = true;
 
                 if (GetBoolOption("stellar", queryDefaults: queryDefaults, defaultValue: false))
                     ctx.Styles.showStellarOverlay = true;
