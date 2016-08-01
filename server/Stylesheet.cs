@@ -1057,17 +1057,17 @@ namespace Maps.Rendering
 
         private static bool ParseField(string s, ref Field f)
         {
-            switch(s)
+            switch(s.ToLowerInvariant())
             {
-                case "St": f = Field.Starport; return true;
-                case "S": f = Field.Size; return true;
-                case "A": f = Field.Atmosphere; return true;
-                case "H": f = Field.Hydrosphere; return true;
-                case "P": f = Field.Population; return true;
-                case "G": f = Field.Government; return true;
-                case "L": f = Field.Law; return true;
-                case "T": f = Field.Tech; return true;
-                case "Ix": f = Field.Importance; return true;
+                case "st": f = Field.Starport; return true;
+                case "s": f = Field.Size; return true;
+                case "a": f = Field.Atmosphere; return true;
+                case "h": f = Field.Hydrosphere; return true;
+                case "p": f = Field.Population; return true;
+                case "g": f = Field.Government; return true;
+                case "l": f = Field.Law; return true;
+                case "t": f = Field.Tech; return true;
+                case "ix": f = Field.Importance; return true;
                 default: return false;
             }
         }
