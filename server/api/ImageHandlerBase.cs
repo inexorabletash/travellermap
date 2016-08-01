@@ -53,10 +53,10 @@ namespace Maps.API
                     ctx.Styles.showRiftOverlay = false;
 
                 if (GetBoolOption("po", queryDefaults: queryDefaults, defaultValue: false))
-                    ctx.Styles.showPopulationOverlay = true;
+                    ctx.Styles.populationOverlay.visible = true;
 
                 if (GetBoolOption("im", queryDefaults: queryDefaults, defaultValue: false))
-                    ctx.Styles.showImportanceOverlay = true;
+                    ctx.Styles.importanceOverlay.visible = true;
 
                 if (GetBoolOption("stellar", queryDefaults: queryDefaults, defaultValue: false))
                     ctx.Styles.showStellarOverlay = true;
@@ -65,6 +65,11 @@ namespace Maps.API
                 ctx.Styles.droyneWorlds.visible = GetBoolOption("dw", queryDefaults: queryDefaults, defaultValue: false);
                 ctx.Styles.minorHomeWorlds.visible = GetBoolOption("mh", queryDefaults: queryDefaults, defaultValue: false);
                 ctx.Styles.ancientsWorlds.visible = GetBoolOption("an", queryDefaults: queryDefaults, defaultValue: false);
+
+                // TODO: Return an error if pattern is invalid?
+                ctx.Styles.highlightWorldsPattern = HighlightWorldPattern.Parse(
+                    GetStringOption("hw", queryDefaults: queryDefaults, defaultValue: String.Empty).Replace(' ', '+'));
+                ctx.Styles.highlightWorlds.visible = ctx.Styles.highlightWorldsPattern != null;
 
                 double devicePixelRatio = GetDoubleOption("dpr", defaultValue: 1, queryDefaults: queryDefaults);
                 if (devicePixelRatio <= 0)

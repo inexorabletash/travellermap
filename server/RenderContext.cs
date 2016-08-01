@@ -954,29 +954,30 @@ namespace Maps.Rendering
 
                 if (layer == WorldLayer.Overlay)
                 {
-#region Population Overlay 
-                    if (styles.showPopulationOverlay && world.Population > 0)
+                    #region Population Overlay 
+                    if (styles.populationOverlay.visible && world.Population > 0)
                     {
-                        // TODO: Don't hardcode the color
-                        solidBrush.Color = XColor.FromArgb(0x80ffff00);
-                        float r = (float)Math.Sqrt(world.Population / Math.PI) * 0.00002f;
-                        graphics.DrawEllipse(solidBrush, -r, -r, r * 2, r * 2);
+                        DrawOverlay(styles.populationOverlay, (float)Math.Sqrt(world.Population / Math.PI) * 0.00002f, ref solidBrush, ref pen);
                     }
-#endregion
+                    #endregion
 
-#region Importance Overlay
-                    if (styles.showImportanceOverlay)
+                    #region Importance Overlay
+                    if (styles.importanceOverlay.visible)
                     {
                         int im = SecondSurvey.Importance(world);
                         if (im > 0)
                         {
-                            // TODO: Don't hardcode the color
-                            solidBrush.Color = XColor.FromArgb(0x2080ff00);
-                            float r = (im - 0.5f) * Astrometrics.ParsecScaleX;
-                            graphics.DrawEllipse(solidBrush, -r, -r, r * 2, r * 2);
+                            DrawOverlay(styles.importanceOverlay, (im - 0.5f) * Astrometrics.ParsecScaleX, ref solidBrush, ref pen);
                         }
                     }
-#endregion
+                    #endregion
+
+                    #region Highlight Worlds
+                    if (styles.highlightWorlds.visible && styles.highlightWorldsPattern.Matches(world))
+                    {
+                        DrawOverlay(styles.highlightWorlds, Astrometrics.ParsecScaleX, ref solidBrush, ref pen);
+                    }
+                    #endregion
                 }
 
                 if (!styles.useWorldImages)
@@ -1653,6 +1654,20 @@ namespace Maps.Rendering
             startPoint.Y += ddy;
             endPoint.X -= ddx;
             endPoint.Y -= ddy;
+        }
+
+        private void DrawOverlay(Stylesheet.StyleElement elem, float r, ref XSolidBrush solidBrush, ref XPen pen)
+        {
+            if (!elem.fillColor.IsEmpty)
+            {
+                solidBrush.Color = elem.fillColor;
+                graphics.DrawEllipse(solidBrush, -r, -r, r * 2, r * 2);
+            }
+            if (!elem.pen.color.IsEmpty)
+            {
+                elem.pen.Apply(ref pen);
+                graphics.DrawEllipse(pen, -r, -r, r * 2, r * 2);
+            }
         }
 
         private static XDashStyle LineStyleToDashStyle(LineStyle style)
