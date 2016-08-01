@@ -1,6 +1,7 @@
 using PdfSharp.Drawing;
 using System;
 using System.Drawing;
+using System.Text.RegularExpressions;
 
 namespace Maps.Rendering
 {
@@ -108,17 +109,13 @@ namespace Maps.Rendering
         public float width;
         public XDashStyle dashStyle;
         public double[] dashPattern;
-        //public float scaleX;
-        //public float scaleY;
 
-        public PenInfo(Color color, float width)
+        public PenInfo(Color color, float width, XDashStyle style = XDashStyle.Solid)
         {
             this.color = color;
             this.width = width;
-            dashStyle = XDashStyle.Solid;
+            dashStyle = style;
             dashPattern = null;
-            //this.scaleX = 0;
-            //this.scaleY = 0;
         }
 
         public XDashStyle DashStyle
@@ -436,6 +433,11 @@ namespace Maps.Rendering
 
             populationOverlay.fillColor = Color.FromArgb(0x80, 0xff, 0xff, 0x00);
             importanceOverlay.fillColor = Color.FromArgb(0x20, 0x80, 0xff, 0x00);
+            highlightWorlds.fillColor = Color.FromArgb(0x80, 0xff, 0x00, 0x00);
+
+            populationOverlay.pen = new PenInfo(Color.Empty, 0.03f * penScale, XDashStyle.Dash);
+            importanceOverlay.pen = new PenInfo(Color.Empty, 0.03f * penScale, XDashStyle.Dot);
+            highlightWorlds.pen = new PenInfo(Color.Empty, 0.03f * penScale, XDashStyle.DashDot);
 
             switch (style)
             {
@@ -477,12 +479,13 @@ namespace Maps.Rendering
                         showWorldDetailColors = false;
 
                         populationOverlay.fillColor = Color.FromArgb(0x40, highlightColor);
-                        populationOverlay.pen = new PenInfo(Color.Gray, 0.03f * penScale);
-                        populationOverlay.pen.DashStyle = XDashStyle.Dash;
+                        populationOverlay.pen.color = Color.Gray;
 
                         importanceOverlay.fillColor = Color.FromArgb(0x20, highlightColor);
-                        importanceOverlay.pen = new PenInfo(Color.Gray, 0.03f * penScale);
-                        importanceOverlay.pen.DashStyle = XDashStyle.Dot;
+                        importanceOverlay.pen.color = Color.Gray;
+
+                        highlightWorlds.fillColor = Color.FromArgb(0x30, highlightColor);
+                        highlightWorlds.pen.color = Color.Gray;
 
                         break;
                     }
@@ -550,12 +553,13 @@ namespace Maps.Rendering
                         overrideLineStyle = LineStyle.Solid;
 
                         populationOverlay.fillColor = Color.FromArgb(0x40, highlightColor);
-                        populationOverlay.pen = new PenInfo(Color.Gray, 0.03f * penScale);
-                        populationOverlay.pen.DashStyle = XDashStyle.Dash;
+                        populationOverlay.pen.color = Color.Gray;
 
                         importanceOverlay.fillColor = Color.FromArgb(0x20, highlightColor);
-                        importanceOverlay.pen = new PenInfo(Color.Gray, 0.03f * penScale);
-                        importanceOverlay.pen.DashStyle = XDashStyle.Dot;
+                        importanceOverlay.pen.color = Color.Gray;
+
+                        highlightWorlds.fillColor = Color.FromArgb(0x30, highlightColor);
+                        highlightWorlds.pen.color = Color.Gray;
 
                         break;
                     }
@@ -578,13 +582,14 @@ namespace Maps.Rendering
 
                         riftOpacity = Math.Min(riftOpacity, 0.70f);
 
-                        populationOverlay.fillColor = Color.FromArgb(0x40, 0xff, 0xff, 0x00);
-                        populationOverlay.pen = new PenInfo(Color.Gray, 0.03f * penScale);
-                        populationOverlay.pen.DashStyle = XDashStyle.Dash;
+                        populationOverlay.fillColor = Color.FromArgb(0x40, populationOverlay.fillColor);
+                        populationOverlay.pen.color = Color.Gray;
 
-                        importanceOverlay.fillColor = Color.FromArgb(0x20, 0x80, 0xff, 0x00);
-                        importanceOverlay.pen = new PenInfo(Color.Gray, 0.03f * penScale);
-                        importanceOverlay.pen.DashStyle = XDashStyle.Dot;
+                        importanceOverlay.fillColor = Color.FromArgb(0x20, importanceOverlay.fillColor);
+                        importanceOverlay.pen.color = Color.Gray;
+
+                        highlightWorlds.fillColor = Color.FromArgb(0x30, highlightWorlds.fillColor);
+                        highlightWorlds.pen.color = Color.Gray;
 
                         break;
                     }
@@ -671,13 +676,14 @@ namespace Maps.Rendering
 
                         numberAllHexes = true;
 
-                        populationOverlay.fillColor = Color.FromArgb(0x40, 0xff, 0xff, 0x00);
-                        populationOverlay.pen = new PenInfo(Color.Gray, 0.03f * penScale);
-                        populationOverlay.pen.DashStyle = XDashStyle.Dash;
+                        populationOverlay.fillColor = Color.FromArgb(0x40, populationOverlay.fillColor);
+                        populationOverlay.pen.color = Color.Gray;
 
-                        importanceOverlay.fillColor = Color.FromArgb(0x20, 0x80, 0xff, 0x00);
-                        importanceOverlay.pen = new PenInfo(Color.Gray, 0.03f * penScale);
-                        importanceOverlay.pen.DashStyle = XDashStyle.Dot;
+                        importanceOverlay.fillColor = Color.FromArgb(0x20, importanceOverlay.fillColor);
+                        importanceOverlay.pen.color = Color.Gray;
+
+                        highlightWorlds.fillColor = Color.FromArgb(0x30, highlightWorlds.fillColor);
+                        highlightWorlds.pen.color = Color.Gray;
 
                         break;
                     }
@@ -842,6 +848,9 @@ namespace Maps.Rendering
         public string preferredMimeType;
         public bool t5AllegianceCodes;
 
+        public StyleElement highlightWorlds;
+        public HighlightWorldPattern highlightWorldsPattern;
+
         public StyleElement droyneWorlds;
         public StyleElement ancientsWorlds;
         public StyleElement minorHomeWorlds;
@@ -853,7 +862,7 @@ namespace Maps.Rendering
         public StyleElement importanceOverlay;
         public bool showStellarOverlay;
 
-        public bool HasWorldOverlays { get { return populationOverlay.visible || importanceOverlay.visible|| showStellarOverlay; } }
+        public bool HasWorldOverlays { get { return populationOverlay.visible || importanceOverlay.visible|| highlightWorlds.visible || showStellarOverlay; } }
 
         public PointF StarportPosition;
         public PointF GasGiantPosition;
@@ -989,6 +998,119 @@ namespace Maps.Rendering
             float p = (logscale - logmin) / (logmax - logmin);
             float value = minValue + (maxValue - minValue) * p;
             return (int)Math.Round(value);
+        }
+    }
+
+    internal class HighlightWorldPattern
+    {
+        public enum Field
+        {
+            Starport,
+            Size,
+            Atmosphere,
+            Hydrosphere,
+            Population,
+            Government,
+            Law,
+            Tech,
+            Importance
+        }
+
+
+        public Field field = Field.Starport;
+        public int? min = null;
+        public int? max = null;
+
+        public HighlightWorldPattern() { }
+
+        private bool InRange(int value)
+        {
+            if (min.HasValue && value < min.Value)
+                return false;
+            if (max.HasValue && value > max.Value)
+                return false;
+            return true;
+        }
+        public bool Matches(World world)
+        {
+            int v;
+            switch (field)
+            {
+                case Field.Starport: v = "XEDCBA".IndexOf(world.Starport); break;
+                case Field.Size: v = world.Size; break;
+                case Field.Atmosphere: v = world.Atmosphere; break;
+                case Field.Hydrosphere: v = world.Hydrographics; break;
+                case Field.Population: v = world.PopulationExponent; break;
+                case Field.Government: v = world.Government; break;
+                case Field.Law: v = world.Law; break;
+                case Field.Tech: v = world.TechLevel; break;
+                case Field.Importance: v = SecondSurvey.Importance(world); break;
+                default: throw new ApplicationException("Invalid pattern");
+            }
+            return InRange(v);
+        }
+
+        private static Regex basicRegex = new Regex(@"^([A-Za-z]+)(-?\d+)$", RegexOptions.Compiled);
+        private static Regex minRegex = new Regex(@"^([A-Za-z]+)(-?\d+)\+$", RegexOptions.Compiled);
+        private static Regex maxRegex = new Regex(@"^([A-Za-z]+)(-?\d+)\-$", RegexOptions.Compiled);
+        private static Regex rangeRegex = new Regex(@"^([A-Za-z]+)(-?\d+)\-(-?\d+)$", RegexOptions.Compiled);
+
+        private static bool ParseField(string s, ref Field f)
+        {
+            switch(s)
+            {
+                case "St": f = Field.Starport; return true;
+                case "S": f = Field.Size; return true;
+                case "A": f = Field.Atmosphere; return true;
+                case "H": f = Field.Hydrosphere; return true;
+                case "P": f = Field.Population; return true;
+                case "G": f = Field.Government; return true;
+                case "L": f = Field.Law; return true;
+                case "T": f = Field.Tech; return true;
+                case "Ix": f = Field.Importance; return true;
+                default: return false;
+            }
+        }
+
+        public static HighlightWorldPattern Parse(string s)
+        {
+            if (string.IsNullOrWhiteSpace(s)) return null;
+
+            HighlightWorldPattern p = new HighlightWorldPattern();
+            int min, max;
+
+            Match m;
+            if ((m = basicRegex.Match(s)).Success)
+            {
+                if (!ParseField(m.Groups[1].Value, ref p.field)) return null;
+                if (!Int32.TryParse(m.Groups[2].Value, out min)) return null;
+                p.min = p.max = min;
+                return p;
+            }
+            if ((m = minRegex.Match(s)).Success)
+            {
+                if (!ParseField(m.Groups[1].Value, ref p.field)) return null;
+                if (!Int32.TryParse(m.Groups[2].Value, out min)) return null;
+                p.min = min;
+                return p;
+            }
+            if ((m = maxRegex.Match(s)).Success)
+            {
+                if (!ParseField(m.Groups[1].Value, ref p.field)) return null;
+                if (!Int32.TryParse(m.Groups[2].Value, out max)) return null;
+                p.max = max;
+                return p;
+            }
+            if ((m = rangeRegex.Match(s)).Success)
+            {
+                if (!ParseField(m.Groups[1].Value, ref p.field)) return null;
+                if (!Int32.TryParse(m.Groups[2].Value, out min)) return null;
+                if (!Int32.TryParse(m.Groups[3].Value, out max)) return null;
+                p.min = min;
+                p.max = max;
+                return p;
+            }
+            return null;
         }
     }
 

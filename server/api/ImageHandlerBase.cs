@@ -66,6 +66,11 @@ namespace Maps.API
                 ctx.Styles.minorHomeWorlds.visible = GetBoolOption("mh", queryDefaults: queryDefaults, defaultValue: false);
                 ctx.Styles.ancientsWorlds.visible = GetBoolOption("an", queryDefaults: queryDefaults, defaultValue: false);
 
+                // TODO: Return an error if pattern is invalid?
+                ctx.Styles.highlightWorldsPattern = HighlightWorldPattern.Parse(
+                    GetStringOption("hw", queryDefaults: queryDefaults, defaultValue: String.Empty).Replace(' ', '+'));
+                ctx.Styles.highlightWorlds.visible = ctx.Styles.highlightWorldsPattern != null;
+
                 double devicePixelRatio = GetDoubleOption("dpr", defaultValue: 1, queryDefaults: queryDefaults);
                 if (devicePixelRatio <= 0)
                     devicePixelRatio = 1;
