@@ -48,7 +48,7 @@ namespace Maps.Rendering
         public bool ClipOutsectorBorders { get; set; }
 
         // Assigned during Render()
-        private XGraphics graphics = null;
+        private MGraphics graphics = null;
         private XSolidBrush solidBrush;
         private XPen pen;
 
@@ -164,7 +164,7 @@ namespace Maps.Rendering
 #endif
         }
 
-        public void Render(XGraphics graphics)
+        public void Render(MGraphics graphics)
         {
             this.graphics = graphics;
             solidBrush = new XSolidBrush();
@@ -552,13 +552,13 @@ namespace Maps.Rendering
                                 XMatrix matrix = new XMatrix();
                                 matrix.ScalePrepend(1.0f / Astrometrics.ParsecScaleX, 1.0f / Astrometrics.ParsecScaleY);
                                 matrix.TranslatePrepend(label.position.X, label.position.Y);
-                                graphics.MultiplyTransform(matrix, XMatrixOrder.Prepend);
+                                graphics.MultiplyTransform(matrix);
 
                                 XFont font = label.minor ? styles.megaNames.SmallFont : styles.megaNames.Font;
                                 XSize size = graphics.MeasureString(label.text, font);
                                 graphics.TranslateTransform(-size.Width / 2, -size.Height / 2); // Center the text
                                 RectangleF textBounds = new RectangleF(0, 0, (float)size.Width * 1.01f, (float)size.Height * 2); // *2 or it gets cut off at high sizes
-                                XTextFormatter formatter = new XTextFormatter(graphics);
+                                var formatter = new MTextFormatter(graphics);
                                 formatter.Alignment = XParagraphAlignment.Center;
                                 formatter.DrawString(label.text, font, solidBrush, textBounds);
                             }
@@ -703,7 +703,7 @@ namespace Maps.Rendering
                 XMatrix matrix = new XMatrix();
                 matrix.TranslatePrepend(center.X, center.Y);
                 matrix.ScalePrepend(1 / Astrometrics.ParsecScaleX, 1 / Astrometrics.ParsecScaleY);
-                graphics.MultiplyTransform(matrix, XMatrixOrder.Prepend);
+                graphics.MultiplyTransform(matrix);
                 graphics.DrawString(glyph, font, solidBrush, 0, 0, RenderUtil.StringFormatCentered);
             }
         }
@@ -764,12 +764,12 @@ namespace Maps.Rendering
                         XMatrix matrix = new XMatrix();
                         matrix.ScalePrepend(1.0f / Astrometrics.ParsecScaleX, 1.0f / Astrometrics.ParsecScaleY);
                         matrix.TranslatePrepend(label.position.X, label.position.Y);
-                        graphics.MultiplyTransform(matrix, XMatrixOrder.Prepend);
+                        graphics.MultiplyTransform(matrix);
 
                         XSize size = graphics.MeasureString(label.text, font);
                         graphics.TranslateTransform(-size.Width / 2, -size.Height / 2); // Center the text
                         RectangleF textBounds = new RectangleF(0, 0, (float)size.Width, (float)size.Height * 2); // *2 or it gets cut off at high sizes
-                        XTextFormatter formatter = new XTextFormatter(graphics);
+                        var formatter = new MTextFormatter(graphics);
                         formatter.Alignment = XParagraphAlignment.Center;
                         formatter.DrawString(label.text, font, solidBrush, textBounds);
                     }
@@ -846,7 +846,7 @@ namespace Maps.Rendering
                             XMatrix matrix = new XMatrix();
                             matrix.TranslatePrepend(px + 0.5f, py + yOffset);
                             matrix.ScalePrepend(styles.hexContentScale / Astrometrics.ParsecScaleX, styles.hexContentScale / Astrometrics.ParsecScaleY);
-                            graphics.MultiplyTransform(matrix, XMatrixOrder.Prepend);
+                            graphics.MultiplyTransform(matrix);
                             graphics.DrawString(hex, styles.hexNumber.Font, solidBrush, 0, 0, RenderUtil.StringFormatTopCenter);
                         }
                     }
@@ -950,7 +950,7 @@ namespace Maps.Rendering
                 XMatrix matrix = new XMatrix();
                 matrix.TranslatePrepend(center.X, center.Y);
                 matrix.ScalePrepend(styles.hexContentScale / Astrometrics.ParsecScaleX, styles.hexContentScale / Astrometrics.ParsecScaleY);
-                graphics.MultiplyTransform(matrix, XMatrixOrder.Prepend);
+                graphics.MultiplyTransform(matrix);
 
                 if (layer == WorldLayer.Overlay)
                 {
@@ -1398,7 +1398,7 @@ namespace Maps.Rendering
                                 imageMatrix.TranslatePrepend(decorationRadius, 0.0f);
                                 imageMatrix.ScalePrepend(styles.worlds.textStyle.Scale.Width, styles.worlds.textStyle.Scale.Height);
                                 imageMatrix.TranslatePrepend(graphics.MeasureString(name, styles.worlds.Font).Width / 2, 0.0f); // Left align
-                                graphics.MultiplyTransform(imageMatrix, XMatrixOrder.Prepend);
+                                graphics.MultiplyTransform(imageMatrix);
 
                                 DrawWorldLabel(styles.worlds.textBackgroundStyle, solidBrush, textColor, styles.worlds.textStyle.Translation, styles.worlds.Font, name);
                             }
@@ -1420,7 +1420,7 @@ namespace Maps.Rendering
                 XMatrix matrix = new XMatrix();
                 matrix.TranslatePrepend(center.X, center.Y);
                 matrix.ScalePrepend(styles.hexContentScale / Astrometrics.ParsecScaleX, styles.hexContentScale / Astrometrics.ParsecScaleY);
-                graphics.MultiplyTransform(matrix, XMatrixOrder.Prepend);
+                graphics.MultiplyTransform(matrix);
 
                 // TODO: Proper stellar parsing
                 List<string> ss = new List<string>();

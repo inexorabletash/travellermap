@@ -138,7 +138,7 @@ namespace Maps.Rendering
             }
         }
 
-        public void Draw(XGraphics graphics, RectangleF rect, XPen pen)
+        public void Draw(MGraphics graphics, RectangleF rect, XPen pen)
         {
             if (graphics == null)
                 throw new ArgumentNullException("graphics");
@@ -155,13 +155,13 @@ namespace Maps.Rendering
                     XMatrix matrix = new XMatrix();
                     matrix.ScalePrepend(ScaleX, ScaleY);
                     matrix.TranslatePrepend(-OriginX, -OriginY);
-                    graphics.MultiplyTransform(matrix, XMatrixOrder.Prepend);
+                    graphics.MultiplyTransform(matrix);
                     graphics.DrawPath(pen, path);
                 }
             }
         }
 
-        internal void DrawName(XGraphics graphics, RectangleF rect, XFont font, XBrush textBrush, LabelStyle labelStyle)
+        internal void DrawName(MGraphics graphics, RectangleF rect, XFont font, XSolidBrush textBrush, LabelStyle labelStyle)
         {
             if (graphics == null)
                 throw new ArgumentNullException("graphics");
@@ -184,13 +184,13 @@ namespace Maps.Rendering
                         matrix.TranslatePrepend(pos.X, pos.Y);
                         matrix.ScalePrepend(1.0f / Astrometrics.ParsecScaleX, 1.0f / Astrometrics.ParsecScaleY);
                         matrix.RotatePrepend(-labelStyle.Rotation); // Rotate it
-                        graphics.MultiplyTransform(matrix, XMatrixOrder.Prepend);
+                        graphics.MultiplyTransform(matrix);
 
                         XSize size = graphics.MeasureString(str, font);
                         graphics.TranslateTransform(-size.Width / 2, -size.Height / 2); // Center the text
                         RectangleF textBounds = new RectangleF(0, 0, (float)size.Width, (float)size.Height * 2); // *2 or it gets cut off at high sizes
 
-                        XTextFormatter tf = new XTextFormatter(graphics);
+                        var tf = new MTextFormatter(graphics);
                         tf.Alignment = XParagraphAlignment.Center;
                         tf.DrawString(str, font, textBrush, textBounds);
                     }
@@ -198,7 +198,7 @@ namespace Maps.Rendering
             }
         }
 
-        public void Fill(XGraphics graphics, RectangleF rect, Brush fillBrush)
+        public void Fill(MGraphics graphics, RectangleF rect, XSolidBrush fillBrush)
         {
             if (graphics == null)
                 throw new ArgumentNullException("graphics");
@@ -256,7 +256,7 @@ namespace Maps.Rendering
         public int LabelBiasY { get; set; }
 
 
-        public void Paint(XGraphics graphics, Color dotColor, XBrush labelBrush, XFont labelFont)
+        public void Paint(MGraphics graphics, Color dotColor, XSolidBrush labelBrush, XFont labelFont)
         {
             if (graphics == null)
                 throw new ArgumentNullException("graphics");
@@ -272,7 +272,7 @@ namespace Maps.Rendering
 
                 const float radius = 3;
 
-                XBrush brush = new XSolidBrush(dotColor);
+                XSolidBrush brush = new XSolidBrush(dotColor);
                 XPen pen = new XPen(dotColor);
                 graphics.DrawEllipse(brush, -radius / 2, -radius / 2, radius, radius);
 

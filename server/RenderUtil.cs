@@ -11,6 +11,144 @@ using System.Text.RegularExpressions;
 
 namespace Maps.Rendering
 {
+    public interface MGraphics : IDisposable
+    {
+        XSmoothingMode SmoothingMode { get; set; }
+        Graphics Graphics { get; }
+
+        void ScaleTransform(double scaleXY);
+        void ScaleTransform(double scaleX, double scaleY);
+        void TranslateTransform(double dx, double dy);
+        void RotateTransform(double angle);
+        void MultiplyTransform(XMatrix m);
+
+        void IntersectClip(XGraphicsPath path);
+        void IntersectClip(RectangleF rect);
+
+        void DrawLine(XPen pen, double x1, double y1, double x2, double y2);
+        void DrawLine(XPen pen, PointF pt1, PointF pt2);
+        void DrawLines(XPen pen, XPoint[] points);
+        void DrawPath(XPen pen, XGraphicsPath path);
+        void DrawPath(XSolidBrush brush, XGraphicsPath path);
+        void DrawCurve(XPen pen, PointF[] points, double tension = 0.5);
+        void DrawClosedCurve(XPen pen, PointF[] points, double tension = 0.5);
+        void DrawClosedCurve(XSolidBrush brush, PointF[] points, double tension = 0.5);
+        void DrawRectangle(XPen pen, double x, double y, double width, double height);
+        void DrawRectangle(XSolidBrush brush, double x, double y, double width, double height);
+        void DrawRectangle(XSolidBrush brush, RectangleF rect);
+        void DrawEllipse(XPen pen, double x, double y, double width, double height);
+        void DrawEllipse(XSolidBrush brush, double x, double y, double width, double height);
+        void DrawEllipse(XPen pen, XSolidBrush brush, double x, double y, double width, double height);
+        void DrawArc(XPen pen, double x, double y, double width, double height, double startAngle, double sweepAngle);
+        void DrawImage(XImage image, double x, double y, double width, double height);
+        void DrawImage(XImage image, RectangleF destRect, RectangleF srcRect, XGraphicsUnit srcUnit);
+
+        XSize MeasureString(string text, XFont font);
+        void DrawString(string s, XFont font, XSolidBrush brush, double x, double y, XStringFormat format);
+        void DrawStringWithAlignment(string s, XFont font, XSolidBrush brush, RectangleF textBounds, XParagraphAlignment alignment);
+
+        MGraphicsState Save();
+        void Restore(MGraphicsState state);
+    }
+    public interface MGraphicsState { }
+    public class MTextFormatter
+    {
+        private MGraphics g;
+        public MTextFormatter(MGraphics g) { this.g = g; }
+        public XParagraphAlignment Alignment { get; set; }
+        public void DrawString(string s, XFont font, XSolidBrush brush, RectangleF textBounds)
+        {
+            g.DrawStringWithAlignment(s, font, brush, textBounds, Alignment);
+        }
+    }
+
+    internal class MXGraphics : MGraphics
+    {
+        private XGraphics g;
+        public MXGraphics(XGraphics g) { this.g = g; }
+
+        public XSmoothingMode SmoothingMode { get { return g.SmoothingMode; } set { g.SmoothingMode = value; } }
+        public Graphics Graphics { get { return g.Graphics; } }
+
+        public void ScaleTransform(double scaleXY) { g.ScaleTransform(scaleXY); }
+        public void ScaleTransform(double scaleX, double scaleY) { g.ScaleTransform(scaleX, scaleY); }
+        public void TranslateTransform(double dx, double dy) { g.TranslateTransform(dx, dy); }
+        public void RotateTransform(double angle) { g.RotateTransform(angle); }
+        public void MultiplyTransform(XMatrix m) { g.MultiplyTransform(m); }
+
+        public void IntersectClip(XGraphicsPath path) { g.IntersectClip(path); }
+        public void IntersectClip(RectangleF rect) { g.IntersectClip(rect); }
+
+        public void DrawLine(XPen pen, double x1, double y1, double x2, double y2) { g.DrawLine(pen, x1, y1, x2, y2); }
+        public void DrawLine(XPen pen, PointF pt1, PointF pt2) { g.DrawLine(pen, pt1, pt2); }
+        public void DrawLines(XPen pen, XPoint[] points) { g.DrawLines(pen, points); }
+        public void DrawPath(XPen pen, XGraphicsPath path) { g.DrawPath(pen, path); }
+        public void DrawPath(XSolidBrush brush, XGraphicsPath path) { g.DrawPath(brush, path); }
+        public void DrawCurve(XPen pen, PointF[] points, double tension) { g.DrawCurve(pen, points, tension); }
+        public void DrawClosedCurve(XPen pen, PointF[] points, double tension) { g.DrawClosedCurve(pen, points, tension); }
+        public void DrawClosedCurve(XSolidBrush brush, PointF[] points, double tension) { g.DrawClosedCurve(brush, points, XFillMode.Alternate, tension); }
+        public void DrawRectangle(XPen pen, double x, double y, double width, double height) { g.DrawRectangle(pen, x, y, width, height); }
+        public void DrawRectangle(XSolidBrush brush, double x, double y, double width, double height) { g.DrawRectangle(brush, x, y, width, height); }
+        public void DrawRectangle(XSolidBrush brush, RectangleF rect) { g.DrawRectangle(brush, rect); }
+        public void DrawEllipse(XPen pen, double x, double y, double width, double height) { g.DrawEllipse(pen, x, y, width, height); }
+        public void DrawEllipse(XSolidBrush brush, double x, double y, double width, double height) { g.DrawEllipse(brush, x, y, width, height); }
+        public void DrawEllipse(XPen pen, XSolidBrush brush, double x, double y, double width, double height) { g.DrawEllipse(pen, brush, x, y, width, height); }
+        public void DrawArc(XPen pen, double x, double y, double width, double height, double startAngle, double sweepAngle) { g.DrawArc(pen, x, y, width, height, startAngle, sweepAngle); }
+        public void DrawImage(XImage image, double x, double y, double width, double height) { g.DrawImage(image, x, y, width, height); }
+        public void DrawImage(XImage image, RectangleF destRect, RectangleF srcRect, XGraphicsUnit srcUnit) { g.DrawImage(image, destRect, srcRect, srcUnit); }
+
+        public XSize MeasureString(string text, XFont font) { return g.MeasureString(text, font); }
+        public void DrawString(string s, XFont font, XSolidBrush brush, double x, double y, XStringFormat format) { g.DrawString(s, font, brush, x, y, format); }
+        public void DrawStringWithAlignment(string s, XFont font, XSolidBrush brush, RectangleF textBounds, XParagraphAlignment alignment)
+        {
+            XTextFormatter format = new XTextFormatter(g);
+            format.Alignment = alignment;
+            format.DrawString(s, font, brush, textBounds);
+
+        }
+
+        public MGraphicsState Save() { return new MXGraphicsState(g.Save()); }
+        public void Restore(MGraphicsState state) { g.Restore(((MXGraphicsState)state).state); }
+
+        #region IDisposable Support
+        private bool disposedValue = false; // To detect redundant calls
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    g.Dispose();
+                }
+                disposedValue = true;
+            }
+        }
+
+        // TODO: override a finalizer only if Dispose(bool disposing) above has code to free unmanaged resources.
+        // ~MXGraphics() {
+        //   // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+        //   Dispose(false);
+        // }
+
+        // This code added to correctly implement the disposable pattern.
+        void IDisposable.Dispose()
+        {
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(true);
+            // TODO: uncomment the following line if the finalizer is overridden above.
+            // GC.SuppressFinalize(this);
+        }
+        #endregion
+
+        private class MXGraphicsState : MGraphicsState
+        {
+            public XGraphicsState state;
+            public MXGraphicsState(XGraphicsState state) { this.state = state; }
+        }
+
+    }
+
     // Wrapper to allow locking, since Image is [MarshalByRefObject]
     internal class ImageHolder
     {
@@ -48,7 +186,7 @@ namespace Maps.Rendering
             edgeY = (type == PathUtil.PathType.Hex) ? RenderUtil.HexEdgesY : RenderUtil.SquareEdgesY;
         }
 
-        public static void DrawImageAlpha(XGraphics graphics, float alpha, ImageHolder holder, Rectangle targetRect)
+        public static void DrawImageAlpha(MGraphics graphics, float alpha, ImageHolder holder, Rectangle targetRect)
         {
             if (alpha <= 0f)
                 return;
@@ -108,11 +246,11 @@ namespace Maps.Rendering
 
             lock (ximage)
             {
-                graphics.DrawImage(ximage, targetRect, new XRect(0, 0, w, h), XGraphicsUnit.Point);
+                graphics.DrawImage(ximage, targetRect, new Rectangle(0, 0, w, h), XGraphicsUnit.Point);
             }
         }
 
-        public static void DrawGlyph(XGraphics g, Glyph glyph, FontCache styleRes, XBrush brush, float x, float y)
+        public static void DrawGlyph(MGraphics g, Glyph glyph, FontCache styleRes, XSolidBrush brush, float x, float y)
         {
             XFont font = glyph.Font == GlyphFont.Ding ? styleRes.WingdingFont : styleRes.GlyphFont;
             g.DrawString(glyph.Characters, font, brush, x, y, StringFormatCentered);
@@ -142,7 +280,7 @@ namespace Maps.Rendering
         public static XStringFormat StringFormatCenterLeft { get { return centerLeftFormat; } }
         private static readonly XStringFormat centerLeftFormat = CreateStringFormat(XStringAlignment.Near, XLineAlignment.Center);
 
-        public static void DrawLabel(XGraphics g, string text, PointF labelPos, XFont font, XBrush brush, LabelStyle labelStyle)
+        public static void DrawLabel(MGraphics g, string text, PointF labelPos, XFont font, XSolidBrush brush, LabelStyle labelStyle)
         {
             using (RenderUtil.SaveState(g))
             {
@@ -157,30 +295,30 @@ namespace Maps.Rendering
                 g.RotateTransform(labelStyle.Rotation);
                 g.ScaleTransform(labelStyle.Scale.Width, labelStyle.Scale.Height);
 
-                if (labelStyle.Rotation != 0)
+                if (labelStyle.Rotation != 0 && g.Graphics != null)
                     g.Graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
 
                 XSize size = g.MeasureString(text, font);
                 size.Width *= 2; // prevent cut-off e.g. when rotated
-                XRect bounds = new XRect(-size.Width / 2, -size.Height / 2, size.Width, size.Height);
+                var bounds = new RectangleF((float)(-size.Width / 2), (float)(-size.Height / 2), (float)size.Width, (float)size.Height);
 
-                XTextFormatter tf = new XTextFormatter(g);
+                var tf = new MTextFormatter(g);
                 tf.Alignment = XParagraphAlignment.Center;
                 tf.DrawString(text, font, brush, bounds);
             }
         }
 
-        public static SaveGraphicsState SaveState(XGraphics g)
+        public static SaveGraphicsState SaveState(MGraphics g)
         {
             return new SaveGraphicsState(g);
         }
 
         sealed internal class SaveGraphicsState : IDisposable
         {
-            private XGraphics g;
-            private XGraphicsState gs;
+            private MGraphics g;
+            private MGraphicsState gs;
 
-            public SaveGraphicsState(XGraphics graphics)
+            public SaveGraphicsState(MGraphics graphics)
             {
                 g = graphics;
                 gs = graphics.Save();

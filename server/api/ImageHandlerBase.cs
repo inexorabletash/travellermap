@@ -92,11 +92,11 @@ namespace Maps.API
 
                         PdfPage page = document.AddPage();
 
-                        // NOTE: only PageUnit currently supported in XGraphics is Points
+                        // NOTE: only PageUnit currently supported in MGraphics is Points
                         page.Width = XUnit.FromPoint(tileSize.Width);
                         page.Height = XUnit.FromPoint(tileSize.Height);
 
-                        XGraphics gfx = XGraphics.FromPdfPage(page);
+                        MGraphics gfx = new MXGraphics(XGraphics.FromPdfPage(page));
 
                         RenderToGraphics(ctx, rot, translateX, translateY, gfx);
 
@@ -131,7 +131,7 @@ namespace Maps.API
                     {
                         g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
 
-                        using (var graphics = XGraphics.FromGraphics(g, new XSize(tileSize.Width * devicePixelRatio, tileSize.Height * devicePixelRatio)))
+                        using (var graphics = new MXGraphics(XGraphics.FromGraphics(g, new XSize(tileSize.Width * devicePixelRatio, tileSize.Height * devicePixelRatio))))
                         {
                             graphics.ScaleTransform(devicePixelRatio);
 
@@ -185,7 +185,7 @@ namespace Maps.API
                 }
             }
 
-            private static void RenderToGraphics(RenderContext ctx, int rot, float translateX, float translateY, XGraphics graphics)
+            private static void RenderToGraphics(RenderContext ctx, int rot, float translateX, float translateY, MGraphics graphics)
             {
                 graphics.TranslateTransform(translateX, translateY);
                 graphics.RotateTransform(rot * 90);
