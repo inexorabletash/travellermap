@@ -75,6 +75,25 @@ namespace Maps.API
                 if (devicePixelRatio <= 0)
                     devicePixelRatio = 1;
 
+                if (accepter.Accepts(context, SVGGraphics.MediaTypeName))
+                {
+                    SVGGraphics svg = new SVGGraphics(tileSize.Width, tileSize.Height);
+                    RenderToGraphics(ctx, rot, translateX, translateY, svg);
+
+                    using (var stream = new MemoryStream())
+                    {
+                        svg.Serialize(new StreamWriter(stream));
+
+                        context.Response.ContentType = SVGGraphics.MediaTypeName;
+                        context.Response.AddHeader("content-length", stream.Length.ToString());
+                        context.Response.AddHeader("content-disposition", "inline;filename=\"map.pdf\"");
+                        context.Response.BinaryWrite(stream.ToArray());
+                        context.Response.Flush();
+                        context.Response.Close();
+                    }
+                    return;
+                }
+
                 if (accepter.Accepts(context, MediaTypeNames.Application.Pdf))
                 {
                     using (var document = new PdfDocument())

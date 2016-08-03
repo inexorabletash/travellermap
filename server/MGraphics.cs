@@ -148,6 +148,8 @@ namespace Maps.Rendering
 
     internal class SVGGraphics : MGraphics
     {
+        public const string MediaTypeName = "image/svg+xml";
+
         private class Element
         {
             public string name;
@@ -228,6 +230,7 @@ namespace Maps.Rendering
                 width, height));
             root.Serialize(writer);
             writer.Write("</svg>");
+            writer.Flush();
         }
 
         private double width;
@@ -236,6 +239,16 @@ namespace Maps.Rendering
         private Stack<Element> stack = new Stack<Element>();
 
         private Element Current {  get { return stack.Peek(); } }
+
+        private Element Open(Element element)
+        {
+            stack.Push(Current.Append(element));
+            return element;
+        }
+        private Element Append(Element element)
+        {
+            return Current.Append(element);
+        }
 
         public SVGGraphics(double width, double height)
         {
@@ -251,7 +264,7 @@ namespace Maps.Rendering
 
         public void DrawLine(XPen pen, double x1, double y1, double x2, double y2)
         {
-            var e = Current.Append(new Element("line"));
+            var e = Append(new Element("line"));
             e.Set("x1", x1);
             e.Set("y1", y1);
             e.Set("x2", x2);
@@ -261,30 +274,34 @@ namespace Maps.Rendering
 
         public void DrawLines(XPen pen, XPoint[] points)
         {
-            var e = Current.Append(new Element("polyline"));
-            e.Set("points", string.Join(" ", points.Select(pt => String.Format("{0},{1}", pt.X, pt.Y)));
+            var e = Append(new Element("polyline"));
+            e.Set("points", string.Join(" ", points.Select(pt => String.Format("{0},{1}", pt.X, pt.Y))));
             e.Apply(pen);
         }
 
         public void DrawArc(XPen pen, double x, double y, double width, double height, double startAngle, double sweepAngle)
         {
+            // TODO
         }
 
         public void DrawPath(XPen pen, XSolidBrush brush, XGraphicsPath path)
         {
+            // TODO
         }
 
         public void DrawCurve(XPen pen, PointF[] points, double tension)
         {
+            // TODO
         }
 
         public void DrawClosedCurve(XPen pen, XSolidBrush brush, PointF[] points, double tension)
         {
+            // TODO
         }
 
         public void DrawRectangle(XPen pen, XSolidBrush brush, double x, double y, double width, double height)
         {
-            var e = Current.Append(new Element("rect"));
+            var e = Append(new Element("rect"));
             e.Set("x", x);
             e.Set("y", y);
             e.Set("width", width);
@@ -294,7 +311,7 @@ namespace Maps.Rendering
 
         public void DrawEllipse(XPen pen, XSolidBrush brush, double x, double y, double width, double height)
         {
-            var e = Current.Append(new Element("ellipse"));
+            var e = Append(new Element("ellipse"));
             e.Set("cx", x + width / 2);
             e.Set("cy", y + height / 2);
             e.Set("rx", width / 2);
@@ -341,20 +358,20 @@ namespace Maps.Rendering
         // TODO: If last element added (not on stack) is a <g> then concatenate transforms
         public void ScaleTransform(double scaleX, double scaleY)
         {
-            stack.Push(new Element("g", String.Format("scale({0} {1})", scaleX, scaleY)));
+            Open(new Element("g", String.Format("scale({0} {1})", scaleX, scaleY)));
         }
         public void TranslateTransform(double dx, double dy)
         {
-            stack.Push(new Element("g", String.Format("translate({0} {1})", dx, dy)));
+            Open(new Element("g", String.Format("translate({0} {1})", dx, dy)));
         }
         public void RotateTransform(double angle)
         {
-            stack.Push(new Element("g", String.Format("rotate({0})", angle)));
+            Open(new Element("g", String.Format("rotate({0})", angle)));
         }
         public void MultiplyTransform(XMatrix m)
         {
             // TODO: Verify matrix order
-            stack.Push(new Element("g", String.Format("matrix({0} {1} {2} {3} {4} {5})", 
+            Open(new Element("g", String.Format("matrix({0} {1} {2} {3} {4} {5})", 
                 m.M11, m.M12, m.M21, m.M22, m.OffsetX, m.OffsetY)));
         }
         #endregion
@@ -363,13 +380,14 @@ namespace Maps.Rendering
         public MGraphicsState Save()
         {
             var state = new State(new Element("g"));
-            stack.Push(state.element);
+            Open(state.element);
             return state;
         }
         public void Restore(MGraphicsState state)
         {
             while (stack.Peek() != ((State)state).element)
                 stack.Pop();
+            stack.Pop();
         }
 
         private class State : MGraphicsState
