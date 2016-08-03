@@ -149,6 +149,7 @@ namespace Maps.Rendering
     internal class SVGGraphics : MGraphics
     {
         public const string MediaTypeName = "image/svg+xml";
+        private const string NumberFormat = "G6";
 
         private class Element
         {
@@ -189,7 +190,7 @@ namespace Maps.Rendering
             }
 
             public void Set(string name, string value) { attributes[name] = value; }
-            public void Set(string name, double value) { attributes[name] = value.ToString(CultureInfo.InvariantCulture); }
+            public void Set(string name, double value) { attributes[name] = value.ToString(NumberFormat, CultureInfo.InvariantCulture); }
             public void Set(string name, XColor color) {
                 if (color.IsEmpty || color.A == 0)
                     attributes[name] = "None";
@@ -275,7 +276,7 @@ namespace Maps.Rendering
         public void DrawLines(XPen pen, XPoint[] points)
         {
             var e = Append(new Element("polyline"));
-            e.Set("points", string.Join(" ", points.Select(pt => String.Format("{0},{1}", pt.X, pt.Y))));
+            e.Set("points", string.Join(" ", points.Select(pt => String.Format("{0:G6},{1:G6}", pt.X, pt.Y))));
             e.Apply(pen);
         }
 
@@ -358,20 +359,20 @@ namespace Maps.Rendering
         // TODO: If last element added (not on stack) is a <g> then concatenate transforms
         public void ScaleTransform(double scaleX, double scaleY)
         {
-            Open(new Element("g", String.Format("scale({0} {1})", scaleX, scaleY)));
+            Open(new Element("g", String.Format("scale({0:G6} {1:G6})", scaleX, scaleY)));
         }
         public void TranslateTransform(double dx, double dy)
         {
-            Open(new Element("g", String.Format("translate({0} {1})", dx, dy)));
+            Open(new Element("g", String.Format("translate({0:G6} {1:G6})", dx, dy)));
         }
         public void RotateTransform(double angle)
         {
-            Open(new Element("g", String.Format("rotate({0})", angle)));
+            Open(new Element("g", String.Format("rotate({0:G6})", angle)));
         }
         public void MultiplyTransform(XMatrix m)
         {
             // TODO: Verify matrix order
-            Open(new Element("g", String.Format("matrix({0} {1} {2} {3} {4} {5})", 
+            Open(new Element("g", String.Format("matrix({0:G6} {1:G6} {2:G6} {3:G6} {4:G6} {5:G6})", 
                 m.M11, m.M12, m.M21, m.M22, m.OffsetX, m.OffsetY)));
         }
         #endregion
