@@ -189,6 +189,7 @@ namespace Maps.Rendering
                 b.Write(">");
             }
 
+            public bool Has(string name) { return attributes.ContainsKey(name); }
             public string Get(string name) { return attributes[name]; }
             public void Set(string name, string value) { attributes[name] = value; }
             public void Set(string name, double value) { attributes[name] = value.ToString(NumberFormat, CultureInfo.InvariantCulture); }
@@ -222,10 +223,56 @@ namespace Maps.Rendering
                 Apply(pen);
                 Apply(brush);
             }
+
+            public int NodeCount { get { return 1 + children.Sum(c => c.NodeCount); } }
+        }
+
+        private void Optimize(Element e)
+        {
+            // TODO: Remove unreferenced definitions!
+
+            // Simplify subtrees first
+            foreach (var child in e.children)
+                Optimize(child);
+
+            // Remove <g>s with no children
+            e.children.RemoveAll(child => child.name == "g" && child.children.Count == 0);
+
+            // Flatten <g> with no properties
+            List<Element> c = new List<Element>();
+            foreach (var child in e.children)
+            {
+                if (child.name == "g" && child.attributes.Count == 0)
+                    c.AddRange(child.children);
+                else
+                    c.Add(child);
+            }
+            e.children = c;
+            
+            // If a <g> has only a single child, merge
+            if (e.name == "g" && e.children.Count == 1)
+            {
+                var child = e.children.First();
+                if (!(e.Has("clip-path") && child.Has("clip-path")))
+                {
+                    e.name = child.name;
+                    e.children = child.children;
+                    foreach (var entry in child.attributes)
+                    {
+                        if (e.attributes.ContainsKey(entry.Key))
+                            e.attributes[entry.Key] += " " + entry.Value;
+                        else
+                            e.attributes[entry.Key] = entry.Value;
+                    }
+                }
+            }
+
         }
 
         public void Serialize(TextWriter writer)
         {
+            Optimize(root);
+
             writer.WriteLine("<?xml version = \"1.0\" encoding=\"utf-8\"?>");
             writer.Write(String.Format("<svg version=\"1.1\" baseProfile=\"full\" xmlns=\"http://www.w3.org/2000/svg\" " +
                                 "width=\"{0}\" height=\"{1}\">",
@@ -243,7 +290,7 @@ namespace Maps.Rendering
         private Element defs = new Element("defs");
 
         private int def_id = 0;
-        private Element Def(Element element)
+        private Element AddDefinition(Element element)
         {
             element.Set("id", "did" + (++def_id).ToString(CultureInfo.InvariantCulture));
             defs.Append(element);
@@ -349,7 +396,7 @@ namespace Maps.Rendering
         #region Clipping - TODO
         public void IntersectClip(RectangleF rect)
         {
-            var clipPath = Def(new Element("clipPath"));
+            var clipPath = AddDefinition(new Element("clipPath"));
             var r = clipPath.Append(new Element("rect"));
             r.Set("x", rect.X);
             r.Set("y", rect.Y);
@@ -362,7 +409,7 @@ namespace Maps.Rendering
 
         public void IntersectClip(XGraphicsPath path)
         {
-            var clipPath = Def(new Element("clipPath"));
+            var clipPath = AddDefinition(new Element("clipPath"));
             var p = clipPath.Append(new Element("path"));
             p.Set("d", ToSVG(path));
 
