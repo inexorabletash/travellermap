@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Globalization;
 using System.Linq;
+using System.Text;
 
 namespace Maps.Rendering
 {
@@ -158,7 +159,6 @@ namespace Maps.Rendering
             public List<Element> children = new List<Element>();
 
             public Element(string name) { this.name = name; }
-            public Element(string name, string transform) { this.name = name; attributes["transform"] = transform; }
 
             public Element Append(Element child) { children.Add(child); return child; }
 
@@ -189,6 +189,7 @@ namespace Maps.Rendering
                 b.Write(">");
             }
 
+            public string Get(string name) { return attributes[name]; }
             public void Set(string name, string value) { attributes[name] = value; }
             public void Set(string name, double value) { attributes[name] = value.ToString(NumberFormat, CultureInfo.InvariantCulture); }
             public void Set(string name, XColor color) {
@@ -229,6 +230,8 @@ namespace Maps.Rendering
             writer.Write(String.Format("<svg version=\"1.1\" baseProfile=\"full\" xmlns=\"http://www.w3.org/2000/svg\" " +
                                 "width=\"{0}\" height=\"{1}\">",
                 width, height));
+            if (defs.children.Count > 0)
+                defs.Serialize(writer);
             root.Serialize(writer);
             writer.Write("</svg>");
             writer.Flush();
@@ -237,6 +240,16 @@ namespace Maps.Rendering
         private double width;
         private double height;
         private Element root = new Element("g");
+        private Element defs = new Element("defs");
+
+        private int def_id = 0;
+        private Element Def(Element element)
+        {
+            element.Set("id", "did" + (++def_id).ToString(CultureInfo.InvariantCulture));
+            defs.Append(element);
+            return element;
+        }
+
         private Stack<Element> stack = new Stack<Element>();
 
         private Element Current {  get { return stack.Peek(); } }
@@ -261,7 +274,7 @@ namespace Maps.Rendering
         Graphics MGraphics.Graphics { get { return null; } }
         XSmoothingMode MGraphics.SmoothingMode { get; set; }
 
-        #region Drawing
+        #region Drawing - WIP
 
         public void DrawLine(XPen pen, double x1, double y1, double x2, double y2)
         {
@@ -282,22 +295,24 @@ namespace Maps.Rendering
 
         public void DrawArc(XPen pen, double x, double y, double width, double height, double startAngle, double sweepAngle)
         {
-            // TODO
+            // TODO - only used for Candy style
         }
 
         public void DrawPath(XPen pen, XSolidBrush brush, XGraphicsPath path)
         {
-            // TODO
+            var e = Append(new Element("path"));
+            e.Set("d", ToSVG(path));
+            e.Apply(pen, brush);
         }
 
         public void DrawCurve(XPen pen, PointF[] points, double tension)
         {
-            // TODO
+            // TODO - only used for FASA/Candy styles
         }
 
         public void DrawClosedCurve(XPen pen, XSolidBrush brush, PointF[] points, double tension)
         {
-            // TODO
+            // TODO - only used for FASA/Candy styles
         }
 
         public void DrawRectangle(XPen pen, XSolidBrush brush, double x, double y, double width, double height)
@@ -334,10 +349,25 @@ namespace Maps.Rendering
         #region Clipping - TODO
         public void IntersectClip(RectangleF rect)
         {
+            var clipPath = Def(new Element("clipPath"));
+            var r = clipPath.Append(new Element("rect"));
+            r.Set("x", rect.X);
+            r.Set("y", rect.Y);
+            r.Set("width", rect.Width);
+            r.Set("height", rect.Height);
+
+            var e = Open(new Element("g"));
+            e.Set("clip-path", String.Format("url(#{0})", clipPath.Get("id")));
         }
 
         public void IntersectClip(XGraphicsPath path)
         {
+            var clipPath = Def(new Element("clipPath"));
+            var p = clipPath.Append(new Element("path"));
+            p.Set("d", ToSVG(path));
+
+            var e = Open(new Element("g"));
+            e.Set("clip-path", String.Format("url(#{0})", clipPath.Get("id")));
         }
         #endregion
 
@@ -356,24 +386,27 @@ namespace Maps.Rendering
         #endregion
 
         #region Transforms - DONE but could optimize
-        // TODO: If last element added (not on stack) is a <g> then concatenate transforms
         public void ScaleTransform(double scaleX, double scaleY)
         {
-            Open(new Element("g", String.Format("scale({0:G6} {1:G6})", scaleX, scaleY)));
+            var e = Open(new Element("g"));
+            e.Set("transform", String.Format("scale({0:G6} {1:G6})", scaleX, scaleY));
         }
         public void TranslateTransform(double dx, double dy)
         {
-            Open(new Element("g", String.Format("translate({0:G6} {1:G6})", dx, dy)));
+            var e = Open(new Element("g"));
+            e.Set("transform", String.Format("translate({0:G6} {1:G6})", dx, dy));
         }
         public void RotateTransform(double angle)
         {
-            Open(new Element("g", String.Format("rotate({0:G6})", angle)));
+            var e = Open(new Element("g"));
+            e.Set("transform", String.Format("rotate({0:G6})", angle));
         }
         public void MultiplyTransform(XMatrix m)
         {
             // TODO: Verify matrix order
-            Open(new Element("g", String.Format("matrix({0:G6} {1:G6} {2:G6} {3:G6} {4:G6} {5:G6})", 
-                m.M11, m.M12, m.M21, m.M22, m.OffsetX, m.OffsetY)));
+            var e = Open(new Element("g"));
+            e.Set("transform", String.Format("matrix({0:G6} {1:G6} {2:G6} {3:G6} {4:G6} {5:G6})", 
+                m.M11, m.M12, m.M21, m.M22, m.OffsetX, m.OffsetY));
         }
         #endregion
 
@@ -443,6 +476,36 @@ namespace Maps.Rendering
         public void ScaleTransform(double scaleXY)
         {
             ScaleTransform(scaleXY, scaleXY);
+        }
+        #endregion
+
+        #region Utilities
+        private string ToSVG(XGraphicsPath x)
+        {
+            var gp = x.Internals.GdiPath.PathData;
+
+            StringBuilder b = new StringBuilder();
+
+            for (int i = 0; i < gp.Points.Length; ++i)
+            {
+                byte type = gp.Types[i];
+                PointF point = gp.Points[i];
+                switch (type & 0x7)
+                {
+                    case 0: b.Append("M "); break;
+                    case 1: b.Append("L "); break;
+                    case 3: throw new ApplicationException("Unsupported path point type: " + type);
+                }
+                b.Append(String.Format("{0:G6} {1:G6} ", point.X, point.Y));
+
+                if ((type & 0x20) != 0)
+                    throw new ApplicationException("Unsupported path flag type: " + type);
+
+                if ((type & 0x80) != 0)
+                    b.Append("Z ");
+            }
+
+            return b.ToString();
         }
         #endregion
 
