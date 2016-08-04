@@ -345,10 +345,10 @@ namespace Maps.API
             {
                 IDictionary<string, object> queryDefaults = null;
                 if (context.Items.Contains("RouteData"))
-                    queryDefaults = (context.Items["RouteData"] as System.Web.Routing.RouteData).Values;
+                    queryDefaults = (context.Items["RouteData"] as RouteData).Values;
 
                 if (context.Request["accept"] != null)
-                    yield return context.Request["accept"];
+                    yield return context.Request["accept"].Replace(' ', '+'); // Hack to allow "image/svg+xml" w/o escaping
 
                 if (context.Request.Headers["accept"] != null)
                     yield return context.Request.Headers["accept"];
