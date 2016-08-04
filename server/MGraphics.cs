@@ -155,6 +155,7 @@ namespace Maps.Rendering
         private class Element
         {
             public string name;
+            public string content;
             public Dictionary<string, string> attributes = new Dictionary<string, string>();
             public List<Element> children = new List<Element>();
 
@@ -174,16 +175,19 @@ namespace Maps.Rendering
                     b.Write(System.Security.SecurityElement.Escape(entry.Value));
                     b.Write("\"");
                 }
-                if (children.Count == 0)
+                if (children.Count == 0 && string.IsNullOrWhiteSpace(content))
                 {
                     b.Write("/>");
                     return;
                 }
                 b.Write(">");
+
                 foreach (var child in children)
-                {
                     child.Serialize(b);
-                }
+
+                if (!string.IsNullOrWhiteSpace(content))
+                    b.Write(System.Security.SecurityElement.Escape(content));
+
                 b.Write("</");
                 b.Write(name);
                 b.Write(">");
@@ -253,10 +257,12 @@ namespace Maps.Rendering
             if (e.name == "g" && e.children.Count == 1)
             {
                 var child = e.children.First();
+                // TODO: Other exclusive elements?
                 if (!(e.Has("clip-path") && child.Has("clip-path")))
                 {
                     e.name = child.name;
                     e.children = child.children;
+                    e.content = child.content;
                     foreach (var entry in child.attributes)
                     {
                         if (e.attributes.ContainsKey(entry.Key))
@@ -266,7 +272,6 @@ namespace Maps.Rendering
                     }
                 }
             }
-
         }
 
         public void Serialize(TextWriter writer)
@@ -337,7 +342,7 @@ namespace Maps.Rendering
         {
             var e = Append(new Element("polyline"));
             e.Set("points", string.Join(" ", points.Select(pt => String.Format("{0:G6},{1:G6}", pt.X, pt.Y))));
-            e.Apply(pen);
+            e.Apply(pen, null);
         }
 
         public void DrawArc(XPen pen, double x, double y, double width, double height, double startAngle, double sweepAngle)
@@ -383,7 +388,7 @@ namespace Maps.Rendering
         }
         #endregion
 
-        #region Images - TODO
+        #region Images - NYI
         public void DrawImage(XImage image, RectangleF destRect, RectangleF srcRect, XGraphicsUnit srcUnit)
         {
         }
@@ -393,7 +398,7 @@ namespace Maps.Rendering
         }
         #endregion
 
-        #region Clipping - TODO
+        #region Clipping - DONE
         public void IntersectClip(RectangleF rect)
         {
             var clipPath = AddDefinition(new Element("clipPath"));
@@ -418,21 +423,57 @@ namespace Maps.Rendering
         }
         #endregion
 
-        #region Text - TODO
+        #region Text - WIP
+        private XGraphics scratch;
         public XSize MeasureString(string text, XFont font)
         {
-            return new XSize(0, 0);
+            if (scratch == null) scratch = XGraphics.FromGraphics(Graphics.FromImage(new Bitmap(1, 1)), new XSize(1, 1));
+            return scratch.MeasureString(text, font);
         }
+
         public void DrawString(string s, XFont font, XSolidBrush brush, double x, double y, XStringFormat format)
         {
+            var e = Append(new Element("text"));
+            e.content = s;
+
+            e.Set("font-family", font.Name);
+            e.Set("font-size", font.Size);
+            if (font.Italic)
+                e.Set("font-style", "italic");
+            if (font.Bold)
+                e.Set("font-weight", "bold");
+            if (font.Underline)
+                e.Set("text-decoration", "underline");
+            else if (font.Strikeout)
+                e.Set("text-decoration", "line-through");
+
+            switch (format.Alignment)
+            {
+                case XStringAlignment.Near: break;
+                case XStringAlignment.Center: e.Set("text-anchor", "middle"); break;
+                case XStringAlignment.Far: e.Set("text-anchor", "end"); break;
+            }
+
+            switch (format.LineAlignment)
+            {
+                case XLineAlignment.Center: e.Set("dominant-baseline", "middle"); break;
+                case XLineAlignment.Far: e.Set("dominant-baseline", "hanging"); break; // TODO: Fix for hex numbers
+                case XLineAlignment.Near: break;
+                case XLineAlignment.BaseLine: break;
+            }
+
+            e.Set("x", x);
+            e.Set("y", y);
+            e.Apply(brush);
         }
 
         public void DrawStringWithAlignment(string s, XFont font, XSolidBrush brush, RectangleF textBounds, XParagraphAlignment alignment)
         {
+            // TODO
         }
         #endregion
 
-        #region Transforms - DONE but could optimize
+        #region Transforms - DONE
         public void ScaleTransform(double scaleX, double scaleY)
         {
             var e = Open(new Element("g"));

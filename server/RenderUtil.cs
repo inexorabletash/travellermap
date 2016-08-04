@@ -264,12 +264,13 @@ namespace Maps.Rendering
         }
 
 
-        public static readonly Glyph None = new Glyph(GlyphFont.Ding, "");
+        public static readonly Glyph None = new Glyph(GlyphFont.Normal, "");
 
         // NOTE: Windings are often used instead of UNICODE equivalents in a common font 
         // because the glyphs are much higher quality.
         // See http://www.alanwood.net/demos/wingdings.html for a good mapping
 
+#if USE_WINGDINGS
         public static readonly Glyph Diamond = new Glyph(GlyphFont.Ding, "\x74"); // U+2666 (BLACK DIAMOND SUIT)
         public static readonly Glyph DiamondX = new Glyph(GlyphFont.Ding, "\x76"); // U+2756 (BLACK DIAMOND MINUS WHITE X)
         public static readonly Glyph Circle = new Glyph(GlyphFont.Ding, "\x9f"); // Alternates: U+2022 (BULLET), U+25CF (BLACK CIRCLE)
@@ -281,6 +282,19 @@ namespace Maps.Rendering
         public static readonly Glyph Star6Point = new Glyph(GlyphFont.Ding, "\xAC"); // U+2736 (BLACK SIX POINTED STAR)
         public static readonly Glyph WhiteStar = new Glyph(GlyphFont.Normal, "\u2606"); // U+2606 (WHITE STAR)
         public static readonly Glyph StarStar = new Glyph(GlyphFont.Normal, "**"); // Would prefer U+2217 (ASTERISK OPERATOR) but font coverage is poor
+#else
+        public static readonly Glyph Diamond = new Glyph(GlyphFont.Normal, "\x2666"); // U+2666 (BLACK DIAMOND SUIT)
+        public static readonly Glyph DiamondX = new Glyph(GlyphFont.Normal, "\x2756"); // U+2756 (BLACK DIAMOND MINUS WHITE X)
+        public static readonly Glyph Circle = new Glyph(GlyphFont.Normal, "\x2022"); // Alternates: U+2022 (BULLET), U+25CF (BLACK CIRCLE)
+        public static readonly Glyph Triangle = new Glyph(GlyphFont.Normal, "\x25B2"); // U+25B2 (BLACK UP-POINTING TRIANGLE)
+        public static readonly Glyph Square = new Glyph(GlyphFont.Normal, "\x25A0"); // U+25A0 (BLACK SQUARE)
+        public static readonly Glyph Star3Point = new Glyph(GlyphFont.Normal, "\x25B2"); // U+25B2 (BLACK UP-POINTING TRIANGLE)
+        public static readonly Glyph Star4Point = new Glyph(GlyphFont.Normal, "\x2726"); // U+2726 (BLACK FOUR POINTED STAR)
+        public static readonly Glyph Star5Point = new Glyph(GlyphFont.Normal, "\x2605"); // U+2605 (BLACK STAR)
+        public static readonly Glyph Star6Point = new Glyph(GlyphFont.Normal, "\x2736"); // U+2736 (BLACK SIX POINTED STAR)
+        public static readonly Glyph WhiteStar = new Glyph(GlyphFont.Normal, "\u2606"); // U+2606 (WHITE STAR)
+        public static readonly Glyph StarStar = new Glyph(GlyphFont.Normal, "**"); // Would prefer U+2217 (ASTERISK OPERATOR) but font coverage is poor
+#endif
 
         // Research Stations
         public static readonly Glyph Alpha = new Glyph(GlyphFont.Normal, "\x0391").Highlight;
