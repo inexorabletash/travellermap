@@ -333,7 +333,36 @@ namespace Maps.Rendering
 
         public void DrawArc(XPen pen, double x, double y, double width, double height, double startAngle, double sweepAngle)
         {
-            // TODO - only used for Candy style
+            // Convert from center to endpoint parameterization
+            // https://www.w3.org/TR/SVG/implnote.html#ArcImplementationNotes
+
+            double rx = width / 2;
+            double ry = height / 2;
+            double cx = x + rx;
+            double cy = y + ry;
+
+            // GDI+ uses angles in degrees, clockwise from x axis
+            startAngle = -startAngle * Math.PI / 180;
+            sweepAngle = -sweepAngle * Math.PI / 180;
+
+            // Since phi is always 0, conversion is simplified
+            const double phi = 0;
+
+            double x1 = rx * Math.Cos(startAngle) + cx;
+            double y1 = -ry * Math.Sin(startAngle) + cy;
+            double x2 = rx * Math.Cos(startAngle + sweepAngle) + cx;
+            double y2 = -ry * Math.Sin(startAngle + sweepAngle) + cy;
+
+            int fA = Math.Abs(sweepAngle) > Math.PI ? 1 : 0;
+            int fS = sweepAngle < 0 ? 1 : 0;
+
+            var e = Append(new Element("path"));
+            e.Set("d", String.Format(
+                "M {0:G6} {1:G6} " +
+                "A {2:G6} {3:G6} {4:G6} {5} {6} {7:G6} {8:G6}",
+                x1, y1,
+                rx, ry, phi, fA, fS, x2, y2));
+            e.Apply(pen, null);
         }
 
         public void DrawPath(XPen pen, XSolidBrush brush, XGraphicsPath path)

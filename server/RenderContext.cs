@@ -1327,7 +1327,6 @@ namespace Maps.Rendering
                                     world.IsRed ? styles.redZone.pen : styles.blueZone.pen;
                                 pi.Apply(ref pen);
 
-                                // TODO: Try and accomplish this using dash pattern
                                 decorationRadius += 0.1f;
                                 graphics.DrawArc(pen, -decorationRadius, -decorationRadius, decorationRadius * 2, decorationRadius * 2, 5, 80);
                                 graphics.DrawArc(pen, -decorationRadius, -decorationRadius, decorationRadius * 2, decorationRadius * 2, 95, 80);
