@@ -14,6 +14,7 @@ namespace Maps.Rendering
     {
         XSmoothingMode SmoothingMode { get; set; }
         Graphics Graphics { get; }
+        bool SupportsWingdings { get; }
 
         void ScaleTransform(double scaleXY);
         void ScaleTransform(double scaleX, double scaleY);
@@ -54,6 +55,7 @@ namespace Maps.Rendering
     {
         private XGraphics g;
         public MXGraphics(XGraphics g) { this.g = g; }
+        public bool SupportsWingdings { get { return true; } }
 
         public XSmoothingMode SmoothingMode { get { return g.SmoothingMode; } set { g.SmoothingMode = value; } }
         public Graphics Graphics { get { return g.Graphics; } }
@@ -184,7 +186,7 @@ namespace Maps.Rendering
                 if (color.IsEmpty || color.A == 0)
                     attributes[name] = "None";
                 else if (color.A != 1.0)
-                    attributes[name] = String.Format("rgba({0},{1},{2},{3})", color.R, color.G, color.B, color.A);
+                    attributes[name] = String.Format("rgba({0},{1},{2},{3:G6})", color.R, color.G, color.B, color.A);
                 else
                     attributes[name] = String.Format("rgb({0},{1},{2})", color.R, color.G, color.B);
             }
@@ -308,6 +310,7 @@ namespace Maps.Rendering
 
         Graphics MGraphics.Graphics { get { return null; } }
         XSmoothingMode MGraphics.SmoothingMode { get; set; }
+        public bool SupportsWingdings { get { return false; } }
 
         #region Drawing - WIP
 

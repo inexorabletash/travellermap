@@ -112,10 +112,36 @@ namespace Maps.Rendering
             }
         }
 
+        // NOTE: Windings are often used instead of UNICODE equivalents in a common font 
+        // because the glyphs are much higher quality.
+        // See http://www.alanwood.net/demos/wingdings.html for a good mapping
+
+        private static Dictionary<char, char> DING_MAP = new Dictionary<char, char>
+        {
+            { '\x2666', '\x74' }, // U+2666 (BLACK DIAMOND SUIT)
+            { '\x2756', '\x76' }, // U+2756 (BLACK DIAMOND MINUS WHITE X)
+            { '\x2022', '\x9f' }, // U+2022 (BULLET), U+25CF (BLACK CIRCLE)
+            { '\x25B2', '\xA9' }, // U+25B2 (BLACK UP-POINTING TRIANGLE)
+            { '\x2726', '\xAA' }, // U+2726 (BLACK FOUR POINTED STAR)
+            { '\x2605', '\xAB' }, // U+2605 (BLACK STAR)
+            { '\x2736', '\xAC' }, // U+2736 (BLACK SIX POINTED STAR)
+        };
+
         public static void DrawGlyph(MGraphics g, Glyph glyph, FontCache styleRes, XSolidBrush brush, float x, float y)
         {
-            XFont font = glyph.Font == GlyphFont.Ding ? styleRes.WingdingFont : styleRes.GlyphFont;
-            g.DrawString(glyph.Characters, font, brush, x, y, StringFormatCentered);
+            XFont font;
+            string s = glyph.Characters;
+            if (g.SupportsWingdings && s.All(c => DING_MAP.ContainsKey(c)))
+            {
+                s = string.Join("", s.Select(c => DING_MAP[c]));
+                font = styleRes.WingdingFont;
+            }
+            else
+            {
+                font = styleRes.GlyphFont;
+            }
+
+            g.DrawString(s, font, brush, x, y, StringFormatCentered);
         }
 
 
@@ -273,12 +299,6 @@ namespace Maps.Rendering
 
     }
 
-    public enum GlyphFont
-    {
-        Ding,
-        Normal
-    }
-
     internal struct Glyph
     {
         public enum GlyphBias
@@ -287,15 +307,13 @@ namespace Maps.Rendering
             Top,
             Bottom
         }
-        public GlyphFont Font { get; set; }
         public string Characters { get; set; }
         public GlyphBias Bias { get; set; }
         public bool IsHighlighted { get; set; }
 
-        public Glyph(GlyphFont font, string chars)
+        public Glyph(string chars)
             : this()
         {
-            Font = font;
             Characters = chars;
             Bias = GlyphBias.None;
             IsHighlighted = false;
@@ -334,52 +352,33 @@ namespace Maps.Rendering
         }
 
 
-        public static readonly Glyph None = new Glyph(GlyphFont.Normal, "");
-
-        // NOTE: Windings are often used instead of UNICODE equivalents in a common font 
-        // because the glyphs are much higher quality.
-        // See http://www.alanwood.net/demos/wingdings.html for a good mapping
-
-#if USE_WINGDINGS
-        public static readonly Glyph Diamond = new Glyph(GlyphFont.Ding, "\x74"); // U+2666 (BLACK DIAMOND SUIT)
-        public static readonly Glyph DiamondX = new Glyph(GlyphFont.Ding, "\x76"); // U+2756 (BLACK DIAMOND MINUS WHITE X)
-        public static readonly Glyph Circle = new Glyph(GlyphFont.Ding, "\x9f"); // Alternates: U+2022 (BULLET), U+25CF (BLACK CIRCLE)
-        public static readonly Glyph Triangle = new Glyph(GlyphFont.Normal, "\x25B2"); // U+25B2 (BLACK UP-POINTING TRIANGLE)
-        public static readonly Glyph Square = new Glyph(GlyphFont.Normal, "\x25A0"); // U+25A0 (BLACK SQUARE)
-        public static readonly Glyph Star3Point = new Glyph(GlyphFont.Ding, "\xA9"); // U+25B2 (BLACK UP-POINTING TRIANGLE)
-        public static readonly Glyph Star4Point = new Glyph(GlyphFont.Ding, "\xAA"); // U+2726 (BLACK FOUR POINTED STAR)
-        public static readonly Glyph Star5Point = new Glyph(GlyphFont.Ding, "\xAB"); // U+2605 (BLACK STAR)
-        public static readonly Glyph Star6Point = new Glyph(GlyphFont.Ding, "\xAC"); // U+2736 (BLACK SIX POINTED STAR)
-        public static readonly Glyph WhiteStar = new Glyph(GlyphFont.Normal, "\u2606"); // U+2606 (WHITE STAR)
-        public static readonly Glyph StarStar = new Glyph(GlyphFont.Normal, "**"); // Would prefer U+2217 (ASTERISK OPERATOR) but font coverage is poor
-#else
-        public static readonly Glyph Diamond = new Glyph(GlyphFont.Normal, "\x2666"); // U+2666 (BLACK DIAMOND SUIT)
-        public static readonly Glyph DiamondX = new Glyph(GlyphFont.Normal, "\x2756"); // U+2756 (BLACK DIAMOND MINUS WHITE X)
-        public static readonly Glyph Circle = new Glyph(GlyphFont.Normal, "\x2022"); // Alternates: U+2022 (BULLET), U+25CF (BLACK CIRCLE)
-        public static readonly Glyph Triangle = new Glyph(GlyphFont.Normal, "\x25B2"); // U+25B2 (BLACK UP-POINTING TRIANGLE)
-        public static readonly Glyph Square = new Glyph(GlyphFont.Normal, "\x25A0"); // U+25A0 (BLACK SQUARE)
-        public static readonly Glyph Star3Point = new Glyph(GlyphFont.Normal, "\x25B2"); // U+25B2 (BLACK UP-POINTING TRIANGLE)
-        public static readonly Glyph Star4Point = new Glyph(GlyphFont.Normal, "\x2726"); // U+2726 (BLACK FOUR POINTED STAR)
-        public static readonly Glyph Star5Point = new Glyph(GlyphFont.Normal, "\x2605"); // U+2605 (BLACK STAR)
-        public static readonly Glyph Star6Point = new Glyph(GlyphFont.Normal, "\x2736"); // U+2736 (BLACK SIX POINTED STAR)
-        public static readonly Glyph WhiteStar = new Glyph(GlyphFont.Normal, "\u2606"); // U+2606 (WHITE STAR)
-        public static readonly Glyph StarStar = new Glyph(GlyphFont.Normal, "**"); // Would prefer U+2217 (ASTERISK OPERATOR) but font coverage is poor
-#endif
+        public static readonly Glyph None = new Glyph("");
+        public static readonly Glyph Diamond = new Glyph("\x2666"); // U+2666 (BLACK DIAMOND SUIT)
+        public static readonly Glyph DiamondX = new Glyph("\x2756"); // U+2756 (BLACK DIAMOND MINUS WHITE X)
+        public static readonly Glyph Circle = new Glyph("\x2022"); // U+2022 (BULLET); alternate:  U+25CF (BLACK CIRCLE)
+        public static readonly Glyph Triangle = new Glyph("\x25B2"); // U+25B2 (BLACK UP-POINTING TRIANGLE)
+        public static readonly Glyph Square = new Glyph("\x25A0"); // U+25A0 (BLACK SQUARE)
+        public static readonly Glyph Star3Point = new Glyph("\x25B2"); // U+25B2 (BLACK UP-POINTING TRIANGLE)
+        public static readonly Glyph Star4Point = new Glyph("\x2726"); // U+2726 (BLACK FOUR POINTED STAR)
+        public static readonly Glyph Star5Point = new Glyph("\x2605"); // U+2605 (BLACK STAR)
+        public static readonly Glyph Star6Point = new Glyph("\x2736"); // U+2736 (BLACK SIX POINTED STAR)
+        public static readonly Glyph WhiteStar = new Glyph("\u2606"); // U+2606 (WHITE STAR)
+        public static readonly Glyph StarStar = new Glyph("**"); // Would prefer U+2217 (ASTERISK OPERATOR) but font coverage is poor
 
         // Research Stations
-        public static readonly Glyph Alpha = new Glyph(GlyphFont.Normal, "\x0391").Highlight;
-        public static readonly Glyph Beta = new Glyph(GlyphFont.Normal, "\x0392").Highlight;
-        public static readonly Glyph Gamma = new Glyph(GlyphFont.Normal, "\x0393").Highlight;
-        public static readonly Glyph Delta = new Glyph(GlyphFont.Normal, "\x0394").Highlight;
-        public static readonly Glyph Epsilon = new Glyph(GlyphFont.Normal, "\x0395").Highlight;
-        public static readonly Glyph Zeta = new Glyph(GlyphFont.Normal, "\x0396").Highlight;
-        public static readonly Glyph Eta = new Glyph(GlyphFont.Normal, "\x0397").Highlight;
-        public static readonly Glyph Theta = new Glyph(GlyphFont.Normal, "\x0398").Highlight;
+        public static readonly Glyph Alpha = new Glyph("\x0391").Highlight;
+        public static readonly Glyph Beta = new Glyph("\x0392").Highlight;
+        public static readonly Glyph Gamma = new Glyph("\x0393").Highlight;
+        public static readonly Glyph Delta = new Glyph("\x0394").Highlight;
+        public static readonly Glyph Epsilon = new Glyph("\x0395").Highlight;
+        public static readonly Glyph Zeta = new Glyph("\x0396").Highlight;
+        public static readonly Glyph Eta = new Glyph("\x0397").Highlight;
+        public static readonly Glyph Theta = new Glyph("\x0398").Highlight;
 
         // Other Textual
-        public static readonly Glyph Prison = new Glyph(GlyphFont.Normal, "P").Highlight;
-        public static readonly Glyph Reserve = new Glyph(GlyphFont.Normal, "R");
-        public static readonly Glyph ExileCamp = new Glyph(GlyphFont.Normal, "X");
+        public static readonly Glyph Prison = new Glyph("P").Highlight;
+        public static readonly Glyph Reserve = new Glyph("R");
+        public static readonly Glyph ExileCamp = new Glyph("X");
 
 
         public static Glyph FromResearchCode(string rs)
