@@ -456,9 +456,9 @@ namespace Maps.Rendering
 
             switch (format.LineAlignment)
             {
-                case XLineAlignment.Center: e.Set("dominant-baseline", "middle"); break;
-                case XLineAlignment.Far: e.Set("dominant-baseline", "hanging"); break; // TODO: Fix for hex numbers
-                case XLineAlignment.Near: break;
+                case XLineAlignment.Near: y += font.Size * 0.9; break;
+                case XLineAlignment.Center: y += (font.Size * 0.9) / 2; break;
+                case XLineAlignment.Far: break;
                 case XLineAlignment.BaseLine: break;
             }
 
@@ -469,7 +469,6 @@ namespace Maps.Rendering
 
         public void DrawStringWithAlignment(string s, XFont font, XSolidBrush brush, RectangleF textBounds, XParagraphAlignment alignment)
         {
-            // TODO
         }
         #endregion
 
