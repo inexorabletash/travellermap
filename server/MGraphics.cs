@@ -345,12 +345,16 @@ namespace Maps.Rendering
 
         public void DrawCurve(XPen pen, PointF[] points, double tension)
         {
-            // TODO - only used for FASA/Candy styles
+            var e = Append(new Element("path"));
+            e.Set("d", ToSVG(points, tension, false));
+            e.Apply(pen, null);
         }
 
         public void DrawClosedCurve(XPen pen, XSolidBrush brush, PointF[] points, double tension)
         {
-            // TODO - only used for FASA/Candy styles
+            var e = Append(new Element("path"));
+            e.Set("d", ToSVG(points, tension, true));
+            e.Apply(pen, brush);
         }
 
         public void DrawRectangle(XPen pen, XSolidBrush brush, double x, double y, double width, double height)
@@ -571,10 +575,72 @@ namespace Maps.Rendering
                     throw new ApplicationException("Unsupported path flag type: " + type);
 
                 if ((type & 0x80) != 0)
-                    b.Append("Z ");
+                    b.Append("Z");
             }
 
-            return b.ToString();
+            return b.ToString().TrimEnd();
+        }
+
+        private string ToSVG(PointF[] points, double tension, bool closed)
+        {
+            StringBuilder b = new StringBuilder();
+
+            float a = (float)(tension + 1);
+            PointF last = PointF.Empty;
+            PointF lastd = PointF.Empty;
+
+            Func<int, PointF> deriv = (int i) =>
+            {
+                if (closed)
+                {
+                    int j = (i + 1) % points.Length;
+                    int k = (i > 0) ? i - 1 : points.Length - 1;
+                    return new PointF((points[j].X - points[k].X) / a, (points[j].Y - points[k].Y) / a);
+                }
+
+                if (i == 0)
+                    return new PointF((points[1].X - points[0].X) / a, (points[1].Y - points[0].Y) / a);
+                else if (i == points.Length - 1)
+                    return new PointF((points[i].X - points[i - 1].X) / a, (points[i].Y - points[i - 1].Y) / a);
+                else
+                    return new PointF((points[i + 1].X - points[i - 1].X) / a, (points[i + 1].Y - points[i - 1].Y) / a);
+            };
+               
+            for (int i = 0; i < points.Length; ++i)
+            {
+                PointF point = points[i];
+                PointF pointd = deriv(i);
+
+                if (i == 0)
+                {
+                    b.Append(String.Format("M {0:G6} {1:G6} ", point.X, point.Y));
+                }
+                else
+                {
+                    PointF cp1 = new PointF(last.X + lastd.X / 3, last.Y + lastd.Y / 3);
+                    PointF cp2 = new PointF(point.X - pointd.X / 3, point.Y - pointd.Y / 3);
+                    b.Append(String.Format("C {0:G6} {1:G6} {2:G6} {3:G6} {4:G6} {5:G6} ",
+                        cp1.X, cp1.Y, cp2.X, cp2.Y, point.X, point.Y));
+                }
+
+                last = point;
+                lastd = pointd;
+            }
+
+            if (closed)
+            {
+                PointF point = points[0];
+                PointF pointd = deriv(0);
+
+                PointF cp1 = new PointF(last.X + lastd.X / 3, last.Y + lastd.Y / 3);
+                PointF cp2 = new PointF(point.X - pointd.X / 3, point.Y - pointd.Y / 3);
+                b.Append(String.Format("C {0:G6} {1:G6} {2:G6} {3:G6} {4:G6} {5:G6} ",
+                    cp1.X, cp1.Y, cp2.X, cp2.Y, point.X, point.Y));
+
+                b.Append("Z");
+            }
+
+            return b.ToString().TrimEnd();
         }
         #endregion
 
