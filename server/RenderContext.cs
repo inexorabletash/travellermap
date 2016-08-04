@@ -549,18 +549,13 @@ namespace Maps.Rendering
                         {
                             using (RenderUtil.SaveState(graphics))
                             {
+                                XFont font = label.minor ? styles.megaNames.SmallFont : styles.megaNames.Font;
                                 XMatrix matrix = new XMatrix();
                                 matrix.ScalePrepend(1.0f / Astrometrics.ParsecScaleX, 1.0f / Astrometrics.ParsecScaleY);
                                 matrix.TranslatePrepend(label.position.X, label.position.Y);
                                 graphics.MultiplyTransform(matrix);
 
-                                XFont font = label.minor ? styles.megaNames.SmallFont : styles.megaNames.Font;
-                                XSize size = graphics.MeasureString(label.text, font);
-                                graphics.TranslateTransform(-size.Width / 2, -size.Height / 2); // Center the text
-                                RectangleF textBounds = new RectangleF(0, 0, (float)size.Width * 1.01f, (float)size.Height * 2); // *2 or it gets cut off at high sizes
-                                var formatter = new MTextFormatter(graphics);
-                                formatter.Alignment = XParagraphAlignment.Center;
-                                formatter.DrawString(label.text, font, solidBrush, textBounds);
+                                RenderUtil.DrawString(graphics, label.text, font, solidBrush, 0, 0, RenderUtil.TextFormat.Center);
                             }
                         }
                     }
@@ -766,15 +761,9 @@ namespace Maps.Rendering
                         matrix.TranslatePrepend(label.position.X, label.position.Y);
                         graphics.MultiplyTransform(matrix);
 
-                        XSize size = graphics.MeasureString(label.text, font);
-                        graphics.TranslateTransform(-size.Width / 2, -size.Height / 2); // Center the text
-                        RectangleF textBounds = new RectangleF(0, 0, (float)size.Width, (float)size.Height * 2); // *2 or it gets cut off at high sizes
-                        var formatter = new MTextFormatter(graphics);
-                        formatter.Alignment = XParagraphAlignment.Center;
-                        formatter.DrawString(label.text, font, solidBrush, textBounds);
+                        RenderUtil.DrawString(graphics, label.text, font, solidBrush, 0, 0, RenderUtil.TextFormat.Center);
                     }
                 }
-
             }
         }
         

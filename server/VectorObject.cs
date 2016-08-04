@@ -186,13 +186,7 @@ namespace Maps.Rendering
                         matrix.RotatePrepend(-labelStyle.Rotation); // Rotate it
                         graphics.MultiplyTransform(matrix);
 
-                        XSize size = graphics.MeasureString(str, font);
-                        graphics.TranslateTransform(-size.Width / 2, -size.Height / 2); // Center the text
-                        RectangleF textBounds = new RectangleF(0, 0, (float)size.Width, (float)size.Height * 2); // *2 or it gets cut off at high sizes
-
-                        var tf = new MTextFormatter(graphics);
-                        tf.Alignment = XParagraphAlignment.Center;
-                        tf.DrawString(str, font, textBrush, textBounds);
+                        RenderUtil.DrawString(graphics, str, font, textBrush, 0, 0, RenderUtil.TextFormat.Center);
                     }
                 }
             }
@@ -279,19 +273,18 @@ namespace Maps.Rendering
                 graphics.SmoothingMode = XSmoothingMode.HighQuality;
                 graphics.DrawEllipse(pen, -radius / 2, -radius / 2, radius, radius);
 
-                XStringFormat format = (LabelBiasX == -1) ? RenderUtil.StringFormatTopRight :
-                    (LabelBiasX == 1) ? RenderUtil.StringFormatTopLeft : RenderUtil.StringFormatTopCenter;
+                RenderUtil.TextFormat format;
+                if (LabelBiasX > 0)
+                    format = LabelBiasY < 0 ? RenderUtil.TextFormat.BottomLeft : LabelBiasY > 0 ? RenderUtil.TextFormat.TopLeft : RenderUtil.TextFormat.MiddleLeft;
+                else if (LabelBiasX < 0)
+                    format = LabelBiasY < 0 ? RenderUtil.TextFormat.BottomRight : LabelBiasY > 0 ? RenderUtil.TextFormat.TopRight : RenderUtil.TextFormat.MiddleRight;
+                else
+                    format = LabelBiasY < 0 ? RenderUtil.TextFormat.BottomCenter : LabelBiasY > 0 ? RenderUtil.TextFormat.TopCenter : RenderUtil.TextFormat.Center;
 
-                XSize size = graphics.MeasureString(Name, labelFont);
-                XPoint pos = new XPoint(0, 0);
+                double y = (LabelBiasY * radius / 2);
+                double x = (LabelBiasX * radius / 2);
 
-                //pos.X += ( LabelBiasX * radius / 2 ) + ( -size.Width  * ( 1 - LabelBiasX ) / 2.0f );
-                pos.Y += (LabelBiasY * radius / 2) + (-size.Height * (1 - LabelBiasY) / 2.0f);
-                pos.X += (LabelBiasX * radius / 2);
-                //pos.Y += ( LabelBiasY * radius / 2 );
-
-                graphics.DrawString(Name, labelFont, labelBrush, pos.X, pos.Y, format);
-
+                RenderUtil.DrawString(graphics, Name, labelFont, labelBrush, x, y, format);
             }
         }
 

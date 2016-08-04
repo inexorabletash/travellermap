@@ -142,6 +142,78 @@ namespace Maps.Rendering
         public static XStringFormat StringFormatCenterLeft { get { return centerLeftFormat; } }
         private static readonly XStringFormat centerLeftFormat = CreateStringFormat(XStringAlignment.Near, XLineAlignment.Center);
 
+
+        
+        public static XSize MeasureString(XGraphics g, string text, XFont font)
+        {
+            var sizes = text
+                .Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None)
+                .Select(s => g.MeasureString(s, font));
+            return new XSize(sizes.Max(s => s.Width), font.GetHeight() * sizes.Count());
+        }
+
+        public enum TextFormat
+        {
+            TopLeft,
+            TopCenter,
+            TopRight,
+            MiddleLeft,
+            Center,
+            MiddleRight,
+            BottomLeft,
+            BottomCenter,
+            BottomRight
+        }
+
+        // TextFormat controls both the interpretation of the drawing origin and text alignment.
+        public static void DrawString(MGraphics g, string text, XFont font, XSolidBrush brush, double x, double y, TextFormat format = TextFormat.Center)
+        {
+            if (string.IsNullOrWhiteSpace(text))
+                return;
+
+            var lines = text.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None).ToList();
+            var sizes = lines.Select(s => g.MeasureString(s, font)).ToList();
+            double h = font.GetHeight();
+            XSize size = new XSize(sizes.Max(s => s.Width), h * sizes.Count());
+
+            // Offset from baseline to top-left. Include a scale factor since glyphs are not fully height.
+            // TODO: Get true glyph measurement.
+            y += sizes.First().Height* 0.8;
+            double fw = 0;
+            switch (format)
+            {
+                case TextFormat.MiddleLeft:
+                case TextFormat.Center:
+                case TextFormat.MiddleRight:
+                    y -= size.Height / 2;
+                    break;
+                case TextFormat.BottomLeft:
+                case TextFormat.BottomCenter:
+                case TextFormat.BottomRight:
+                    y -= size.Height;
+                    break;
+            }
+            switch (format)
+            {
+                case TextFormat.TopCenter:
+                case TextFormat.Center:
+                case TextFormat.BottomCenter:
+                    fw = -0.5;
+                    break;
+                case TextFormat.TopRight:
+                case TextFormat.MiddleRight:
+                case TextFormat.BottomRight:
+                    fw = -1;
+                    break;
+            }
+
+            Util.ForEachZip(lines, sizes, (line, sz) =>
+            {
+                g.DrawString(line, font, brush, x + fw* sz.Width, y, XStringFormats.Default);
+                y += h;
+            });
+        }
+
         public static void DrawLabel(MGraphics g, string text, PointF labelPos, XFont font, XSolidBrush brush, LabelStyle labelStyle)
         {
             using (RenderUtil.SaveState(g))
@@ -164,9 +236,7 @@ namespace Maps.Rendering
                 size.Width *= 2; // prevent cut-off e.g. when rotated
                 var bounds = new RectangleF((float)(-size.Width / 2), (float)(-size.Height / 2), (float)size.Width, (float)size.Height);
 
-                var tf = new MTextFormatter(g);
-                tf.Alignment = XParagraphAlignment.Center;
-                tf.DrawString(text, font, brush, bounds);
+                DrawString(g, text, font, brush, 0, 0);
             }
         }
 

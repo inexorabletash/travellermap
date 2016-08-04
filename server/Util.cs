@@ -132,6 +132,18 @@ namespace Maps
             };
         }
 
+        // http://stackoverflow.com/questions/18395943/using-foreach-to-iterate-simultaneously-through-multiple-lists-syntax-sugar
+        public static void ForEachZip<T1, T2>(this IEnumerable<T1> first, IEnumerable<T2> second, Action<T1, T2> action)
+        {
+            using (var e1 = first.GetEnumerator())
+            using (var e2 = second.GetEnumerator())
+            {
+                while (e1.MoveNext() && e2.MoveNext())
+                {
+                    action(e1.Current, e2.Current);
+                }
+            }
+        }
     }
 
     // Like Regex, but takes shell-style globs:

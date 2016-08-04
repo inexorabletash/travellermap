@@ -44,22 +44,11 @@ namespace Maps.Rendering
 
         XSize MeasureString(string text, XFont font);
         void DrawString(string s, XFont font, XSolidBrush brush, double x, double y, XStringFormat format);
-        void DrawStringWithAlignment(string s, XFont font, XSolidBrush brush, RectangleF textBounds, XParagraphAlignment alignment);
 
         MGraphicsState Save();
         void Restore(MGraphicsState state);
     }
     public interface MGraphicsState { }
-    public class MTextFormatter
-    {
-        private MGraphics g;
-        public MTextFormatter(MGraphics g) { this.g = g; }
-        public XParagraphAlignment Alignment { get; set; }
-        public void DrawString(string s, XFont font, XSolidBrush brush, RectangleF textBounds)
-        {
-            g.DrawStringWithAlignment(s, font, brush, textBounds, Alignment);
-        }
-    }
 
     internal class MXGraphics : MGraphics
     {
@@ -98,12 +87,6 @@ namespace Maps.Rendering
 
         public XSize MeasureString(string text, XFont font) { return g.MeasureString(text, font); }
         public void DrawString(string s, XFont font, XSolidBrush brush, double x, double y, XStringFormat format) { g.DrawString(s, font, brush, x, y, format); }
-        public void DrawStringWithAlignment(string s, XFont font, XSolidBrush brush, RectangleF textBounds, XParagraphAlignment alignment)
-        {
-            XTextFormatter format = new XTextFormatter(g);
-            format.Alignment = alignment;
-            format.DrawString(s, font, brush, textBounds);
-        }
 
         public MGraphicsState Save() { return new MXGraphicsState(g.Save()); }
         public void Restore(MGraphicsState state) { g.Restore(((MXGraphicsState)state).state); }
@@ -423,7 +406,7 @@ namespace Maps.Rendering
         }
         #endregion
 
-        #region Text - WIP
+        #region Text - DONE
         private XGraphics scratch;
         public XSize MeasureString(string text, XFont font)
         {
@@ -465,10 +448,6 @@ namespace Maps.Rendering
             e.Set("x", x);
             e.Set("y", y);
             e.Apply(brush);
-        }
-
-        public void DrawStringWithAlignment(string s, XFont font, XSolidBrush brush, RectangleF textBounds, XParagraphAlignment alignment)
-        {
         }
         #endregion
 
