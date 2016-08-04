@@ -312,7 +312,7 @@ namespace Maps.Rendering
         XSmoothingMode MGraphics.SmoothingMode { get; set; }
         public bool SupportsWingdings { get { return false; } }
 
-        #region Drawing - WIP
+        #region Drawing
 
         public void DrawLine(XPen pen, double x1, double y1, double x2, double y2)
         {
@@ -417,7 +417,7 @@ namespace Maps.Rendering
         }
         #endregion
 
-        #region Clipping - DONE
+        #region Clipping
         public void IntersectClip(RectangleF rect)
         {
             var clipPath = AddDefinition(new Element("clipPath"));
@@ -442,7 +442,7 @@ namespace Maps.Rendering
         }
         #endregion
 
-        #region Text - DONE
+        #region Text
         private XGraphics scratch;
         public XSize MeasureString(string text, XFont font)
         {
@@ -487,7 +487,7 @@ namespace Maps.Rendering
         }
         #endregion
 
-        #region Transforms - DONE
+        #region Transforms
         public void ScaleTransform(double scaleX, double scaleY)
         {
             var e = Open(new Element("g"));
@@ -512,7 +512,7 @@ namespace Maps.Rendering
         }
         #endregion
 
-        #region State - DONE
+        #region State
         public MGraphicsState Save()
         {
             var state = new State(new Element("g"));
