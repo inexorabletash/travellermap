@@ -1,8 +1,8 @@
 ﻿using PdfSharp.Drawing;
-using PdfSharp.Drawing.Layout;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Globalization;
 using System.Linq;
@@ -10,7 +10,7 @@ using System.Text;
 
 namespace Maps.Rendering
 {
-    public interface MGraphics : IDisposable
+    internal interface MGraphics : IDisposable
     {
         XSmoothingMode SmoothingMode { get; set; }
         Graphics Graphics { get; }
@@ -40,8 +40,8 @@ namespace Maps.Rendering
         void DrawEllipse(XSolidBrush brush, double x, double y, double width, double height);
         void DrawEllipse(XPen pen, XSolidBrush brush, double x, double y, double width, double height);
         void DrawArc(XPen pen, double x, double y, double width, double height, double startAngle, double sweepAngle);
-        void DrawImage(XImage image, double x, double y, double width, double height);
-        void DrawImage(XImage image, RectangleF destRect, RectangleF srcRect, XGraphicsUnit srcUnit);
+        void DrawImage(MImage image, double x, double y, double width, double height);
+        void DrawImageAlpha(float alpha, MImage image, Rectangle targetRect);
 
         XSize MeasureString(string text, XFont font);
         void DrawString(string s, XFont font, XSolidBrush brush, double x, double y, XStringFormat format);
@@ -49,7 +49,46 @@ namespace Maps.Rendering
         MGraphicsState Save();
         void Restore(MGraphicsState state);
     }
-    public interface MGraphicsState { }
+    internal interface MGraphicsState { }
+    internal class MImage
+    {
+        private string path;
+        private string url;
+        private Image image;
+        private XImage ximage;
+
+        public string Url { get { return url; } }
+        public XImage XImage
+        {
+            get
+            {
+                lock (this)
+                {
+                    if (ximage == null)
+                        ximage = XImage.FromGdiPlusImage(Image);
+                    return ximage;
+                }
+            }
+        }
+        public Image Image
+        {
+            get
+            {
+                lock (this)
+                {
+                    if (image == null)
+                        image = Image.FromFile(path);
+                    return image;
+                }
+            }
+        }
+
+        public MImage(string path, string url)
+        {
+            this.path = path;
+            this.url = url;
+        }
+    }
 
     internal class MXGraphics : MGraphics
     {
@@ -84,8 +123,70 @@ namespace Maps.Rendering
         public void DrawEllipse(XSolidBrush brush, double x, double y, double width, double height) { g.DrawEllipse(brush, x, y, width, height); }
         public void DrawEllipse(XPen pen, XSolidBrush brush, double x, double y, double width, double height) { g.DrawEllipse(pen, brush, x, y, width, height); }
         public void DrawArc(XPen pen, double x, double y, double width, double height, double startAngle, double sweepAngle) { g.DrawArc(pen, x, y, width, height, startAngle, sweepAngle); }
-        public void DrawImage(XImage image, double x, double y, double width, double height) { g.DrawImage(image, x, y, width, height); }
-        public void DrawImage(XImage image, RectangleF destRect, RectangleF srcRect, XGraphicsUnit srcUnit) { g.DrawImage(image, destRect, srcRect, srcUnit); }
+        public void DrawImage(MImage image, double x, double y, double width, double height) { g.DrawImage(image.XImage, x, y, width, height); }
+
+        public void DrawImageAlpha(float alpha, MImage mimage, Rectangle targetRect)
+        {
+            // Clamp and Quantize
+            alpha = Util.Clamp(alpha, 0f, 1f);
+            alpha = (float)Math.Round(alpha * 16f) / 16f;
+            if (alpha <= 0f)
+                return;
+            if (alpha >= 1f)
+            {
+                g.DrawImage(mimage.XImage, targetRect);
+                return;
+            }
+
+            int key = (int)Math.Round(alpha * 16);
+
+            Image image = mimage.Image;
+            XImage ximage;
+            int w, h;
+
+            lock (image)
+            {
+                w = image.Width;
+                h = image.Height;
+
+                if (image.Tag == null || !(image.Tag is Dictionary<int, XImage>))
+                    image.Tag = new Dictionary<int, XImage>();
+
+                Dictionary<int, XImage> dict = image.Tag as Dictionary<int, XImage>;
+                if (dict.ContainsKey(key))
+                {
+                    ximage = dict[key];
+                }
+                else
+                {
+                    // Need to construct a new image (PdfSharp can't alpha-render images)
+                    // Memoize these in the image itself, since most requests will be from
+                    // a small set
+
+                    Bitmap scratchBitmap = new Bitmap(w, h, PixelFormat.Format32bppArgb);
+                    using (var scratchGraphics = Graphics.FromImage(scratchBitmap))
+                    {
+                        ColorMatrix matrix = new ColorMatrix();
+                        matrix.Matrix00 = matrix.Matrix11 = matrix.Matrix22 = 1;
+                        matrix.Matrix33 = alpha;
+
+                        ImageAttributes attr = new ImageAttributes();
+                        attr.SetColorMatrix(matrix);
+
+                        scratchGraphics.DrawImage(image, new Rectangle(0, 0, w, h), 0, 0, w, h, GraphicsUnit.Pixel, attr);
+                    }
+
+                    ximage = XImage.FromGdiPlusImage(scratchBitmap);
+                    dict[key] = ximage;
+                }
+            }
+
+            lock (ximage)
+            {
+                g.DrawImage(ximage, targetRect);
+            }
+        }
+
 
         public XSize MeasureString(string text, XFont font) { return g.MeasureString(text, font); }
         public void DrawString(string s, XFont font, XSolidBrush brush, double x, double y, XStringFormat format) { g.DrawString(s, font, brush, x, y, format); }
@@ -264,7 +365,9 @@ namespace Maps.Rendering
             Optimize(root);
 
             writer.WriteLine("<?xml version = \"1.0\" encoding=\"utf-8\"?>");
-            writer.Write(String.Format("<svg version=\"1.1\" baseProfile=\"full\" xmlns=\"http://www.w3.org/2000/svg\" " +
+            writer.Write(String.Format("<svg version=\"1.1\" baseProfile=\"full\" " +
+                                "xmlns=\"http://www.w3.org/2000/svg\" " +
+                                "xmlns:xlink=\"http://www.w3.org/1999/xlink\" " +
                                 "width=\"{0}\" height=\"{1}\">",
                 width, height));
             if (defs.children.Count > 0)
@@ -407,13 +510,26 @@ namespace Maps.Rendering
         }
         #endregion
 
-        #region Images - NYI
-        public void DrawImage(XImage image, RectangleF destRect, RectangleF srcRect, XGraphicsUnit srcUnit)
+        #region Images
+        public void DrawImage(MImage image, double x, double y, double width, double height)
         {
+            var e = Append(new Element("image"));
+            e.Set("x", x);
+            e.Set("y", y);
+            e.Set("width", width);
+            e.Set("height", height);
+            e.Set("xlink:href", image.Url);
         }
 
-        public void DrawImage(XImage image, double x, double y, double width, double height)
+        public void DrawImageAlpha(float alpha, MImage image, Rectangle targetRect)
         {
+            var e = Append(new Element("image"));
+            e.Set("x", targetRect.X);
+            e.Set("y", targetRect.Y);
+            e.Set("width", targetRect.Width);
+            e.Set("height", targetRect.Height);
+            e.Set("opacity", alpha);
+            e.Set("xlink:href", image.Url);
         }
         #endregion
 

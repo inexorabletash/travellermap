@@ -131,19 +131,16 @@ namespace Maps.Rendering
 
         #region Static Caches
         private static object s_imageInitLock = new object();
+        private static bool s_imagesInitialized = false;
 
         // TODO: Consider not caching these across sessions
-        private static XImage s_sillyImageColor;
-        private static XImage s_sillyImageGray;
-
-        private static XImage s_nebulaImage;
-
-        // These are loaded as GDI+ Images since we need to derive alpha-variants of them;
-        // the results are cached as PDFSharp Images (XImage)
-        private static ImageHolder s_galaxyImage;
-        private static ImageHolder s_galaxyImageGray;
-        private static ImageHolder s_riftImage;
-        private static Dictionary<string, XImage> s_worldImages;
+        private static MImage s_sillyImageColor;
+        private static MImage s_sillyImageGray;
+        private static MImage s_nebulaImage;
+        private static MImage s_galaxyImage;
+        private static MImage s_galaxyImageGray;
+        private static MImage s_riftImage;
+        private static Dictionary<string, MImage> s_worldImages;
         #endregion
 
         /// <summary>
@@ -164,6 +161,11 @@ namespace Maps.Rendering
 #endif
         }
 
+        private MImage PrepareImage(string urlPath)
+        {
+            return new MImage(resourceManager.Server.MapPath("~" + urlPath), urlPath);
+        }
+
         public void Render(MGraphics graphics)
         {
             this.graphics = graphics;
@@ -175,45 +177,7 @@ namespace Maps.Rendering
             using (var fonts = new FontCache(styles))
             {
                 #region resources
-                lock (s_imageInitLock)
-                {
-                    if (styles.showNebulaBackground && s_nebulaImage == null)
-                        s_nebulaImage = XImage.FromFile(resourceManager.Server.MapPath(@"~/res/Candy/Nebula.png"));
-
-                    if (styles.showRiftOverlay && s_riftImage == null)
-                        s_riftImage = new ImageHolder(Image.FromFile(resourceManager.Server.MapPath(@"~/res/Candy/Rifts.png")));
-
-                    if (styles.showGalaxyBackground && s_galaxyImage == null) {
-                        // TODO: Don't load both unless necessary
-                        s_galaxyImage = new ImageHolder(Image.FromFile(resourceManager.Server.MapPath(@"~/res/Candy/Galaxy.png")));
-                        s_galaxyImageGray = new ImageHolder(Image.FromFile(resourceManager.Server.MapPath(@"~/res/Candy/Galaxy_Gray.png")));
-                    }
-
-                    if (styles.useWorldImages && s_worldImages == null)
-                    {
-                        s_worldImages = new Dictionary<string, XImage> {
-                            { "Hyd0", XImage.FromFile(resourceManager.Server.MapPath(@"~/res/Candy/Hyd0.png")) },
-                            { "Hyd1", XImage.FromFile(resourceManager.Server.MapPath(@"~/res/Candy/Hyd1.png")) },
-                            { "Hyd2", XImage.FromFile(resourceManager.Server.MapPath(@"~/res/Candy/Hyd2.png")) },
-                            { "Hyd3", XImage.FromFile(resourceManager.Server.MapPath(@"~/res/Candy/Hyd3.png")) },
-                            { "Hyd4", XImage.FromFile(resourceManager.Server.MapPath(@"~/res/Candy/Hyd4.png")) },
-                            { "Hyd5", XImage.FromFile(resourceManager.Server.MapPath(@"~/res/Candy/Hyd5.png")) },
-                            { "Hyd6", XImage.FromFile(resourceManager.Server.MapPath(@"~/res/Candy/Hyd6.png")) },
-                            { "Hyd7", XImage.FromFile(resourceManager.Server.MapPath(@"~/res/Candy/Hyd7.png")) },
-                            { "Hyd8", XImage.FromFile(resourceManager.Server.MapPath(@"~/res/Candy/Hyd8.png")) },
-                            { "Hyd9", XImage.FromFile(resourceManager.Server.MapPath(@"~/res/Candy/Hyd9.png")) },
-                            { "HydA", XImage.FromFile(resourceManager.Server.MapPath(@"~/res/Candy/HydA.png")) },
-                            { "Belt", XImage.FromFile(resourceManager.Server.MapPath(@"~/res/Candy/Belt.png")) }
-                        };
-                    }
-
-                    if (Silly && s_sillyImageColor == null)
-                    {
-                        // Happy face c/o http://bighappyfaces.com/
-                        s_sillyImageColor = XImage.FromFile(resourceManager.Server.MapPath(@"~/res/AprilFools/Starburst.png"));
-                        s_sillyImageGray = XImage.FromFile(resourceManager.Server.MapPath(@"~/res/AprilFools/Starburst_Gray.png"));
-                    }
-                }
+                InitializeImages();
                 #endregion
 
                 timers.Add(new Timer("preload"));
@@ -286,8 +250,8 @@ namespace Maps.Rendering
                         using (RenderUtil.SaveState(graphics))
                         {
                             graphics.MultiplyTransform(xformLinehanToMikesh);
-                            ImageHolder galaxyImage = styles.lightBackground ? s_galaxyImageGray : s_galaxyImage;
-                            RenderUtil.DrawImageAlpha(graphics, styles.deepBackgroundOpacity, galaxyImage, galaxyImageRect);
+                            MImage galaxyImage = styles.lightBackground ? s_galaxyImageGray : s_galaxyImage;
+                            graphics.DrawImageAlpha(styles.deepBackgroundOpacity, galaxyImage, galaxyImageRect);
                         }
                     }
                     timers.Add(new Timer("background (galaxy)"));
@@ -307,7 +271,7 @@ namespace Maps.Rendering
                     // Rifts in Charted Space
                     //------------------------------------------------------------
                     if (styles.showRiftOverlay && styles.riftOpacity > 0f)
-                        RenderUtil.DrawImageAlpha(graphics, styles.riftOpacity, s_riftImage, riftImageRect);
+                        graphics.DrawImageAlpha(styles.riftOpacity, s_riftImage, riftImageRect);
                     timers.Add(new Timer("rifts"));
                     #endregion
 
@@ -322,7 +286,7 @@ namespace Maps.Rendering
                             // Render in image-space
                             graphics.MultiplyTransform(worldSpaceToImageSpace);
 
-                            XImage sillyImage = styles.grayscale ? s_sillyImageGray : s_sillyImageColor;
+                            MImage sillyImage = styles.grayscale ? s_sillyImageGray : s_sillyImageColor;
 
                             lock (sillyImage)
                             {
@@ -589,7 +553,7 @@ namespace Maps.Rendering
                     }
                 }
                 timers.Add(new Timer("worlds"));
-#endregion
+                #endregion
 
                 //------------------------------------------------------------
                 // Overlays
@@ -606,7 +570,7 @@ namespace Maps.Rendering
                     {
                         bool droyne = world.HasCodePrefix("Droy");
                         bool chirpers = world.HasCodePrefix("Chir");
-                        
+
                         if (droyne || chirpers)
                         {
                             string glyph = droyne ? styles.droyneWorlds.content.Substring(0, 1) : styles.droyneWorlds.content.Substring(1, 1);
@@ -639,7 +603,7 @@ namespace Maps.Rendering
                 if (styles.ancientsWorlds.visible)
                 {
                     solidBrush.Color = styles.ancientsWorlds.textColor;
-                    foreach (World world in selector.Worlds.Where(w=>w.HasCode("An")))
+                    foreach (World world in selector.Worlds.Where(w => w.HasCode("An")))
                     {
                         OverlayGlyph(styles.ancientsWorlds.content, styles.ancientsWorlds.Font, world.Coordinates);
                     }
@@ -687,6 +651,40 @@ namespace Maps.Rendering
                 }
 #endif
                 #endregion
+            }
+        }
+
+        private void InitializeImages()
+        {
+            lock (s_imageInitLock)
+            {
+                if (s_imagesInitialized)
+                    return;
+                s_imagesInitialized = true;
+
+                // Actual images are loaded lazily.
+                s_nebulaImage = PrepareImage("/res/Candy/Nebula.png");
+                s_riftImage = PrepareImage("/res/Candy/Rifts.png");
+                s_galaxyImage = PrepareImage("/res/Candy/Galaxy.png");
+                s_galaxyImageGray = PrepareImage("/res/Candy/Galaxy_Gray.png");
+                s_worldImages = new Dictionary<string, MImage> {
+                            { "Hyd0", PrepareImage("/res/Candy/Hyd0.png") },
+                            { "Hyd1", PrepareImage("/res/Candy/Hyd1.png") },
+                            { "Hyd2", PrepareImage("/res/Candy/Hyd2.png") },
+                            { "Hyd3", PrepareImage("/res/Candy/Hyd3.png") },
+                            { "Hyd4", PrepareImage("/res/Candy/Hyd4.png") },
+                            { "Hyd5", PrepareImage("/res/Candy/Hyd5.png") },
+                            { "Hyd6", PrepareImage("/res/Candy/Hyd6.png") },
+                            { "Hyd7", PrepareImage("/res/Candy/Hyd7.png") },
+                            { "Hyd8", PrepareImage("/res/Candy/Hyd8.png") },
+                            { "Hyd9", PrepareImage("/res/Candy/Hyd9.png") },
+                            { "HydA", PrepareImage("/res/Candy/HydA.png") },
+                            { "Belt", PrepareImage("/res/Candy/Belt.png") },
+                        };
+
+                // Happy face c/o http://bighappyfaces.com/
+                s_sillyImageColor = PrepareImage("/res/AprilFools/Starburst.png");
+                s_sillyImageGray = PrepareImage("/res/AprilFools/Starburst_Gray.png");
             }
         }
 
@@ -888,10 +886,10 @@ namespace Maps.Rendering
                 lock (s_nebulaImage)
                 {
                     const float backgroundImageScale = 2.0f;
-
+                    const int nebulaImageWidth = 1024, nebulaImageHeight = 1024;
                     // Scaled size of the background
-                    double w = s_nebulaImage.PixelWidth * backgroundImageScale;
-                    double h = s_nebulaImage.PixelHeight * backgroundImageScale;
+                    double w = nebulaImageWidth * backgroundImageScale;
+                    double h = nebulaImageHeight * backgroundImageScale;
 
                     // Offset of the background, relative to the canvas
                     double ox = (float)(-tileRect.Left * scale * Astrometrics.ParsecScaleX) % w;
@@ -1269,7 +1267,7 @@ namespace Maps.Rendering
                             {
                                 const float scaleX = 1.5f;
                                 const float scaleY = 1.0f;
-                                XImage img = s_worldImages["Belt"];
+                                MImage img = s_worldImages["Belt"];
 
                                 lock (img)
                                 {
@@ -1278,7 +1276,7 @@ namespace Maps.Rendering
                             }
                             else
                             {
-                                XImage img;
+                                MImage img;
                                 switch (world.Hydrographics)
                                 {
                                     default:

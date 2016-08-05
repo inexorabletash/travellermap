@@ -1,24 +1,14 @@
 ﻿using PdfSharp.Drawing;
-using PdfSharp.Drawing.Layout;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Drawing.Imaging;
 using System.Drawing.Text;
 using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace Maps.Rendering
 {
-    // Wrapper to allow locking, since Image is [MarshalByRefObject]
-    internal class ImageHolder
-    {
-        public ImageHolder(Image image) { this.image = image; }
-        public Image Image { get { return image; } }
-        private Image image;
-    }
-
     internal static class RenderUtil
     {
         /*
@@ -46,70 +36,6 @@ namespace Maps.Rendering
         {
             edgeX = (type == PathUtil.PathType.Hex) ? RenderUtil.HexEdgesX : RenderUtil.SquareEdgesX;
             edgeY = (type == PathUtil.PathType.Hex) ? RenderUtil.HexEdgesY : RenderUtil.SquareEdgesY;
-        }
-
-        public static void DrawImageAlpha(MGraphics graphics, float alpha, ImageHolder holder, Rectangle targetRect)
-        {
-            if (alpha <= 0f)
-                return;
-
-            // Clamp and Quantize
-            alpha = Math.Min(1f, alpha);
-            alpha = (float)Math.Round(alpha * 16f) / 16f;
-            int key = (int)Math.Round(alpha * 16);
-
-            Image image = holder.Image;
-            XImage ximage;
-            int w, h;
-
-            lock (holder)
-            {
-                w = image.Width;
-                h = image.Height;
-
-                if (image.Tag == null || !(image.Tag is Dictionary<int, XImage>))
-                    image.Tag = new Dictionary<int, XImage>();
-
-                Dictionary<int, XImage> dict = image.Tag as Dictionary<int, XImage>;
-                if (dict.ContainsKey(key))
-                {
-                    ximage = dict[key];
-                }
-                else
-                {
-                    if (alpha >= 1f)
-                    {
-                        ximage = XImage.FromGdiPlusImage(image);
-                    }
-                    else
-                    {
-                        // Need to construct a new image (PdfSharp can't alpha-render images)
-                        // Memoize these in the image itself, since most requests will be from
-                        // a small set
-
-                        Bitmap scratchBitmap = new Bitmap(w, h, PixelFormat.Format32bppArgb);
-                        using (var scratchGraphics = Graphics.FromImage(scratchBitmap))
-                        {
-                            ColorMatrix matrix = new ColorMatrix();
-                            matrix.Matrix00 = matrix.Matrix11 = matrix.Matrix22 = 1;
-                            matrix.Matrix33 = alpha;
-
-                            ImageAttributes attr = new ImageAttributes();
-                            attr.SetColorMatrix(matrix);
-
-                            scratchGraphics.DrawImage(image, new Rectangle(0, 0, w, h), 0, 0, w, h, GraphicsUnit.Pixel, attr);
-                        }
-
-                        ximage = XImage.FromGdiPlusImage(scratchBitmap);
-                    }
-                    dict[key] = ximage;
-                }
-            }
-
-            lock (ximage)
-            {
-                graphics.DrawImage(ximage, targetRect, new Rectangle(0, 0, w, h), XGraphicsUnit.Point);
-            }
         }
 
         // NOTE: Windings are often used instead of UNICODE equivalents in a common font 
