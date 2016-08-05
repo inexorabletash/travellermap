@@ -187,7 +187,6 @@ namespace Maps.Rendering
             }
         }
 
-
         public XSize MeasureString(string text, XFont font) { return g.MeasureString(text, font); }
         public void DrawString(string s, XFont font, XSolidBrush brush, double x, double y, XStringFormat format) { g.DrawString(s, font, brush, x, y, format); }
 
@@ -234,6 +233,7 @@ namespace Maps.Rendering
     }
 
     // TODO: Fix vertical text alignment
+    // TODO: Remove unreferenced definitions!
 
     internal class SVGGraphics : MGraphics
     {
@@ -423,8 +423,6 @@ namespace Maps.Rendering
 
         private void Optimize(Element e)
         {
-            // TODO: Remove unreferenced definitions!
-
             // Simplify subtrees first
             foreach (var child in e.children)
                 Optimize(child);
@@ -533,9 +531,12 @@ namespace Maps.Rendering
 
         public void DrawLines(XPen pen, XPoint[] points)
         {
-            // TODO: Use path instead, for relative coords.
-            var e = Append(new Element(ElementNames.POLYLINE));
-            e.Set("points", string.Join(" ", points.Select(pt => string.Format("{0:G6},{1:G6}", pt.X, pt.Y))));
+            var e = Append(new Element(ElementNames.PATH));
+            var path = new PathBuilder();
+            path.MoveTo(points[0].X, points[0].Y);
+            for (var i = 0; i < points.Length; ++i)
+                    path.LineTo(points[i].X, points[i].Y);
+            e.Set("d", path.ToString());
             e.Apply(pen, null);
         }
 
