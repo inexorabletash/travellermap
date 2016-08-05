@@ -642,10 +642,10 @@ namespace Maps.Rendering
                             for( int dy = -1; dy <= 1; ++dy )
                             {
 
-                                graphics.DrawString( String.Format( "{0} {1}", Math.Round( ts.TotalMilliseconds ), s.label ), font, XBrushes.Black, cursorX + dx, cursorY + dy );
+                                graphics.DrawString( string.Format( "{0} {1}", Math.Round( ts.TotalMilliseconds ), s.label ), font, XBrushes.Black, cursorX + dx, cursorY + dy );
                             }
                         }
-                        graphics.DrawString( String.Format("{0} {1}", Math.Round(ts.TotalMilliseconds), s.label), font, XBrushes.Yellow, cursorX, cursorY );
+                        graphics.DrawString( string.Format("{0} {1}", Math.Round(ts.TotalMilliseconds), s.label), font, XBrushes.Yellow, cursorX, cursorY );
                         cursorY += 14;
                     }
                 }

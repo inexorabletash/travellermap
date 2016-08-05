@@ -233,6 +233,8 @@ namespace Maps.Rendering
 
     }
 
+    // TODO: Fix vertical text alignment
+
     internal class SVGGraphics : MGraphics
     {
         public const string MediaTypeName = "image/svg+xml";
@@ -287,9 +289,9 @@ namespace Maps.Rendering
                 if (color.IsEmpty || color.A == 0)
                     attributes[name] = "None";
                 else if (color.A != 1.0)
-                    attributes[name] = String.Format("rgba({0},{1},{2},{3:G6})", color.R, color.G, color.B, color.A);
+                    attributes[name] = string.Format("rgba({0},{1},{2},{3:G6})", color.R, color.G, color.B, color.A);
                 else
-                    attributes[name] = String.Format("rgb({0},{1},{2})", color.R, color.G, color.B);
+                    attributes[name] = string.Format("rgb({0},{1},{2})", color.R, color.G, color.B);
             }
 
             public void Apply(XPen pen)
@@ -316,6 +318,108 @@ namespace Maps.Rendering
 
             public int NodeCount { get { return 1 + children.Sum(c => c.NodeCount); } }
         }
+        
+        private class ElementNames
+        {
+            public const string DEFS = "defs";
+            public const string CLIPPATH = "clipPath";
+
+            public const string G = "g";
+            public const string PATH = "path";
+            public const string LINE = "line";
+            public const string POLYLINE = "polyline";
+            public const string RECT = "rect";
+            public const string ELLIPSE = "ellipse";
+            public const string TEXT = "text";
+            public const string IMAGE = "image";
+        }
+
+        // Builds paths, using relative coordinates to reduce space.
+        private class PathBuilder
+        {
+            private StringBuilder b = new StringBuilder();
+            private double lastX = 0;
+            private double lastY = 0;
+            private bool used = false;
+
+            public override string ToString() { return b.ToString().Trim(); }
+
+            public PathBuilder() { }
+
+            public void MoveTo(double x, double y)
+            {
+                if (!used)
+                {
+                    b.Append(string.Format("M {0:G6} {1:G6}", x, y));
+                    used = true;
+                }
+                else
+                {
+                    b.Append(string.Format(" m {0:G6} {1:G6}", x - lastX, y - lastY));
+                }
+                lastX = x;
+                lastY = y;
+            }
+            public void LineTo(double x, double y)
+            {
+                if (!used)
+                {
+                    b.Append(string.Format("L {0:G6} {1:G6}", x, y));
+                    used = true;
+                }
+                else if (x == lastX)
+                {
+                    b.Append(string.Format(" v {0:G6}", y - lastY));
+                }
+                else if (y == lastY)
+                {
+                    b.Append(string.Format(" h {0:G6}", x - lastX));
+                }
+                else
+                {
+                    b.Append(string.Format(" l {0:G6} {1:G6}", x - lastX, y - lastY));
+                }
+                lastX = x;
+                lastY = y;
+            }
+            public void ArcTo(double rx, double ry, double phi, int arcFlag, int sweepFlag, double x, double y)
+            {
+                if (!used)
+                {
+                    b.Append(string.Format("A {0:G6} {1:G6} {2:G6} {3} {4} {5:G6} {6:G6}",
+                        rx, ry, phi, arcFlag, sweepFlag, x, y));
+                    used = true;
+                }
+                else
+                {
+                    b.Append(string.Format(" a {0:G6} {1:G6} {2:G6} {3} {4} {5:G6} {6:G6}",
+                        rx, ry, phi, arcFlag, sweepFlag, x - lastX, y - lastY));
+                }
+                lastX = x;
+                lastY = y;
+            }
+            public void CurveTo(double x1, double y1, double x2, double y2, double x, double y)
+            {
+                if (!used)
+                {
+                    b.Append(string.Format("C {0:G6} {1:G6} {2:G6} {3:G6} {4:G6} {5:G6} ",
+                        x1, y1, x2, y2, x, y));
+                    used = true;
+                }
+                else
+                {
+                    b.Append(string.Format(" c {0:G6} {1:G6} {2:G6} {3:G6} {4:G6} {5:G6} ",
+                        x1 - lastX, y1 - lastY, x2 - lastX, y2 - lastY, x - lastX, y - lastY));
+                }
+                lastX = x;
+                lastY = y;
+            }
+
+            public void Close()
+            {
+                b.Append(" Z");
+            }
+        }
 
         private void Optimize(Element e)
         {
@@ -326,13 +430,13 @@ namespace Maps.Rendering
                 Optimize(child);
 
             // Remove <g>s with no children
-            e.children.RemoveAll(child => child.name == "g" && child.children.Count == 0);
+            e.children.RemoveAll(child => child.name == ElementNames.G && child.children.Count == 0);
 
             // Flatten <g> with no properties
             List<Element> c = new List<Element>();
             foreach (var child in e.children)
             {
-                if (child.name == "g" && child.attributes.Count == 0)
+                if (child.name == ElementNames.G && child.attributes.Count == 0)
                     c.AddRange(child.children);
                 else
                     c.Add(child);
@@ -340,7 +444,7 @@ namespace Maps.Rendering
             e.children = c;
             
             // If a <g> has only a single child, merge
-            if (e.name == "g" && e.children.Count == 1)
+            if (e.name == ElementNames.G && e.children.Count == 1)
             {
                 var child = e.children.First();
                 // TODO: Other exclusive elements?
@@ -365,7 +469,7 @@ namespace Maps.Rendering
             Optimize(root);
 
             writer.WriteLine("<?xml version = \"1.0\" encoding=\"utf-8\"?>");
-            writer.Write(String.Format("<svg version=\"1.1\" baseProfile=\"full\" " +
+            writer.Write(string.Format("<svg version=\"1.1\" baseProfile=\"full\" " +
                                 "xmlns=\"http://www.w3.org/2000/svg\" " +
                                 "xmlns:xlink=\"http://www.w3.org/1999/xlink\" " +
                                 "width=\"{0}\" height=\"{1}\">",
@@ -379,8 +483,8 @@ namespace Maps.Rendering
 
         private double width;
         private double height;
-        private Element root = new Element("g");
-        private Element defs = new Element("defs");
+        private Element root = new Element(ElementNames.G);
+        private Element defs = new Element(ElementNames.DEFS);
 
         private int def_id = 0;
         private Element AddDefinition(Element element)
@@ -419,7 +523,7 @@ namespace Maps.Rendering
 
         public void DrawLine(XPen pen, double x1, double y1, double x2, double y2)
         {
-            var e = Append(new Element("line"));
+            var e = Append(new Element(ElementNames.LINE));
             e.Set("x1", x1);
             e.Set("y1", y1);
             e.Set("x2", x2);
@@ -429,8 +533,9 @@ namespace Maps.Rendering
 
         public void DrawLines(XPen pen, XPoint[] points)
         {
-            var e = Append(new Element("polyline"));
-            e.Set("points", string.Join(" ", points.Select(pt => String.Format("{0:G6},{1:G6}", pt.X, pt.Y))));
+            // TODO: Use path instead, for relative coords.
+            var e = Append(new Element(ElementNames.POLYLINE));
+            e.Set("points", string.Join(" ", points.Select(pt => string.Format("{0:G6},{1:G6}", pt.X, pt.Y))));
             e.Apply(pen, null);
         }
 
@@ -459,39 +564,38 @@ namespace Maps.Rendering
             int fA = Math.Abs(sweepAngle) > Math.PI ? 1 : 0;
             int fS = sweepAngle < 0 ? 1 : 0;
 
-            var e = Append(new Element("path"));
-            e.Set("d", String.Format(
-                "M {0:G6} {1:G6} " +
-                "A {2:G6} {3:G6} {4:G6} {5} {6} {7:G6} {8:G6}",
-                x1, y1,
-                rx, ry, phi, fA, fS, x2, y2));
+            var e = Append(new Element(ElementNames.PATH));
+            var path = new PathBuilder();
+            path.MoveTo(x1, y1);
+            path.ArcTo(rx, ry, phi, fA, fS, x2, y2);
+            e.Set("d", path.ToString());
             e.Apply(pen, null);
         }
 
         public void DrawPath(XPen pen, XSolidBrush brush, XGraphicsPath path)
         {
-            var e = Append(new Element("path"));
+            var e = Append(new Element(ElementNames.PATH));
             e.Set("d", ToSVG(path));
             e.Apply(pen, brush);
         }
 
         public void DrawCurve(XPen pen, PointF[] points, double tension)
         {
-            var e = Append(new Element("path"));
+            var e = Append(new Element(ElementNames.PATH));
             e.Set("d", ToSVG(points, tension, false));
             e.Apply(pen, null);
         }
 
         public void DrawClosedCurve(XPen pen, XSolidBrush brush, PointF[] points, double tension)
         {
-            var e = Append(new Element("path"));
+            var e = Append(new Element(ElementNames.PATH));
             e.Set("d", ToSVG(points, tension, true));
             e.Apply(pen, brush);
         }
 
         public void DrawRectangle(XPen pen, XSolidBrush brush, double x, double y, double width, double height)
         {
-            var e = Append(new Element("rect"));
+            var e = Append(new Element(ElementNames.RECT));
             e.Set("x", x);
             e.Set("y", y);
             e.Set("width", width);
@@ -501,7 +605,7 @@ namespace Maps.Rendering
 
         public void DrawEllipse(XPen pen, XSolidBrush brush, double x, double y, double width, double height)
         {
-            var e = Append(new Element("ellipse"));
+            var e = Append(new Element(ElementNames.ELLIPSE));
             e.Set("cx", x + width / 2);
             e.Set("cy", y + height / 2);
             e.Set("rx", width / 2);
@@ -513,7 +617,7 @@ namespace Maps.Rendering
         #region Images
         public void DrawImage(MImage image, double x, double y, double width, double height)
         {
-            var e = Append(new Element("image"));
+            var e = Append(new Element(ElementNames.IMAGE));
             e.Set("x", x);
             e.Set("y", y);
             e.Set("width", width);
@@ -523,7 +627,7 @@ namespace Maps.Rendering
 
         public void DrawImageAlpha(float alpha, MImage image, Rectangle targetRect)
         {
-            var e = Append(new Element("image"));
+            var e = Append(new Element(ElementNames.IMAGE));
             e.Set("x", targetRect.X);
             e.Set("y", targetRect.Y);
             e.Set("width", targetRect.Width);
@@ -536,25 +640,25 @@ namespace Maps.Rendering
         #region Clipping
         public void IntersectClip(RectangleF rect)
         {
-            var clipPath = AddDefinition(new Element("clipPath"));
-            var r = clipPath.Append(new Element("rect"));
+            var clipPath = AddDefinition(new Element(ElementNames.CLIPPATH));
+            var r = clipPath.Append(new Element(ElementNames.RECT));
             r.Set("x", rect.X);
             r.Set("y", rect.Y);
             r.Set("width", rect.Width);
             r.Set("height", rect.Height);
 
-            var e = Open(new Element("g"));
-            e.Set("clip-path", String.Format("url(#{0})", clipPath.Get("id")));
+            var e = Open(new Element(ElementNames.G));
+            e.Set("clip-path", string.Format("url(#{0})", clipPath.Get("id")));
         }
 
         public void IntersectClip(XGraphicsPath path)
         {
-            var clipPath = AddDefinition(new Element("clipPath"));
-            var p = clipPath.Append(new Element("path"));
+            var clipPath = AddDefinition(new Element(ElementNames.CLIPPATH));
+            var p = clipPath.Append(new Element(ElementNames.PATH));
             p.Set("d", ToSVG(path));
 
-            var e = Open(new Element("g"));
-            e.Set("clip-path", String.Format("url(#{0})", clipPath.Get("id")));
+            var e = Open(new Element(ElementNames.G));
+            e.Set("clip-path", string.Format("url(#{0})", clipPath.Get("id")));
         }
         #endregion
 
@@ -568,7 +672,7 @@ namespace Maps.Rendering
 
         public void DrawString(string s, XFont font, XSolidBrush brush, double x, double y, XStringFormat format)
         {
-            var e = Append(new Element("text"));
+            var e = Append(new Element(ElementNames.TEXT));
             e.content = s;
 
             e.Set("font-family", font.Name);
@@ -606,24 +710,24 @@ namespace Maps.Rendering
         #region Transforms
         public void ScaleTransform(double scaleX, double scaleY)
         {
-            var e = Open(new Element("g"));
-            e.Set("transform", String.Format("scale({0:G6} {1:G6})", scaleX, scaleY));
+            var e = Open(new Element(ElementNames.G));
+            e.Set("transform", string.Format("scale({0:G6} {1:G6})", scaleX, scaleY));
         }
         public void TranslateTransform(double dx, double dy)
         {
-            var e = Open(new Element("g"));
-            e.Set("transform", String.Format("translate({0:G6} {1:G6})", dx, dy));
+            var e = Open(new Element(ElementNames.G));
+            e.Set("transform", string.Format("translate({0:G6} {1:G6})", dx, dy));
         }
         public void RotateTransform(double angle)
         {
-            var e = Open(new Element("g"));
-            e.Set("transform", String.Format("rotate({0:G6})", angle));
+            var e = Open(new Element(ElementNames.G));
+            e.Set("transform", string.Format("rotate({0:G6})", angle));
         }
         public void MultiplyTransform(XMatrix m)
         {
             // TODO: Verify matrix order
-            var e = Open(new Element("g"));
-            e.Set("transform", String.Format("matrix({0:G6} {1:G6} {2:G6} {3:G6} {4:G6} {5:G6})", 
+            var e = Open(new Element(ElementNames.G));
+            e.Set("transform", string.Format("matrix({0:G6} {1:G6} {2:G6} {3:G6} {4:G6} {5:G6})", 
                 m.M11, m.M12, m.M21, m.M22, m.OffsetX, m.OffsetY));
         }
         #endregion
@@ -631,10 +735,11 @@ namespace Maps.Rendering
         #region State
         public MGraphicsState Save()
         {
-            var state = new State(new Element("g"));
+            var state = new State(new Element(ElementNames.G));
             Open(state.element);
             return state;
         }
+
         public void Restore(MGraphicsState state)
         {
             while (stack.Peek() != ((State)state).element)
@@ -702,7 +807,7 @@ namespace Maps.Rendering
         {
             var gp = x.Internals.GdiPath.PathData;
 
-            StringBuilder b = new StringBuilder();
+            PathBuilder path = new PathBuilder();
 
             for (int i = 0; i < gp.Points.Length; ++i)
             {
@@ -710,25 +815,24 @@ namespace Maps.Rendering
                 PointF point = gp.Points[i];
                 switch (type & 0x7)
                 {
-                    case 0: b.Append("M "); break;
-                    case 1: b.Append("L "); break;
+                    case 0: path.MoveTo(point.X, point.Y); break;
+                    case 1: path.LineTo(point.X, point.Y); break;
                     case 3: throw new ApplicationException("Unsupported path point type: " + type);
                 }
-                b.Append(String.Format("{0:G6} {1:G6} ", point.X, point.Y));
 
                 if ((type & 0x20) != 0)
                     throw new ApplicationException("Unsupported path flag type: " + type);
 
                 if ((type & 0x80) != 0)
-                    b.Append("Z");
+                    path.Close();
             }
 
-            return b.ToString().TrimEnd();
+            return path.ToString();
         }
 
         private string ToSVG(PointF[] points, double tension, bool closed)
         {
-            StringBuilder b = new StringBuilder();
+            PathBuilder path = new PathBuilder();
 
             float a = (float)(tension + 1);
             PointF last = PointF.Empty;
@@ -758,14 +862,14 @@ namespace Maps.Rendering
 
                 if (i == 0)
                 {
-                    b.Append(String.Format("M {0:G6} {1:G6} ", point.X, point.Y));
+                    path.MoveTo(point.X, point.Y);
                 }
                 else
                 {
-                    PointF cp1 = new PointF(last.X + lastd.X / 3, last.Y + lastd.Y / 3);
-                    PointF cp2 = new PointF(point.X - pointd.X / 3, point.Y - pointd.Y / 3);
-                    b.Append(String.Format("C {0:G6} {1:G6} {2:G6} {3:G6} {4:G6} {5:G6} ",
-                        cp1.X, cp1.Y, cp2.X, cp2.Y, point.X, point.Y));
+                    path.CurveTo(
+                        last.X + lastd.X / 3, last.Y + lastd.Y / 3,
+                        point.X - pointd.X / 3, point.Y - pointd.Y / 3,
+                        point.X, point.Y);
                 }
 
                 last = point;
@@ -777,15 +881,14 @@ namespace Maps.Rendering
                 PointF point = points[0];
                 PointF pointd = deriv(0);
 
-                PointF cp1 = new PointF(last.X + lastd.X / 3, last.Y + lastd.Y / 3);
-                PointF cp2 = new PointF(point.X - pointd.X / 3, point.Y - pointd.Y / 3);
-                b.Append(String.Format("C {0:G6} {1:G6} {2:G6} {3:G6} {4:G6} {5:G6} ",
-                    cp1.X, cp1.Y, cp2.X, cp2.Y, point.X, point.Y));
-
-                b.Append("Z");
+                path.CurveTo(
+                    last.X + lastd.X / 3, last.Y + lastd.Y / 3, 
+                    point.X - pointd.X / 3, point.Y - pointd.Y / 3,
+                    point.X, point.Y);
+                path.Close();
             }
 
-            return b.ToString().TrimEnd();
+            return path.ToString();
         }
         #endregion
 
