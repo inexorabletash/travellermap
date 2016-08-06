@@ -144,9 +144,6 @@ namespace Maps.Rendering
                 throw new ArgumentNullException("graphics");
 
             RectangleF bounds = TransformedBounds;
-
-            //graphics.DrawRectangle( new XPen(XColors.Yellow, 1), bounds.X, bounds.Y, bounds.Width, bounds.Height );
-
             if (bounds.IntersectsWith(rect))
             {
                 XGraphicsPath path = Path;
@@ -259,8 +256,6 @@ namespace Maps.Rendering
 
             using (RenderUtil.SaveState(graphics))
             {
-
-                graphics.SmoothingMode = XSmoothingMode.HighSpeed;
                 graphics.TranslateTransform(pt.X, pt.Y);
                 graphics.ScaleTransform(1.0f / Astrometrics.ParsecScaleX, 1.0f / Astrometrics.ParsecScaleY);
 
@@ -268,10 +263,8 @@ namespace Maps.Rendering
 
                 XSolidBrush brush = new XSolidBrush(dotColor);
                 XPen pen = new XPen(dotColor);
-                graphics.DrawEllipse(brush, -radius / 2, -radius / 2, radius, radius);
-
                 graphics.SmoothingMode = XSmoothingMode.HighQuality;
-                graphics.DrawEllipse(pen, -radius / 2, -radius / 2, radius, radius);
+                graphics.DrawEllipse(pen, brush, -radius / 2, -radius / 2, radius, radius);
 
                 RenderUtil.TextFormat format;
                 if (LabelBiasX > 0)

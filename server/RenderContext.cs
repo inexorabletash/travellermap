@@ -870,7 +870,6 @@ namespace Maps.Rendering
                     float starY = (float)rand.NextDouble() * tileRect.Height + tileRect.Y;
                     float d = (float)rand.NextDouble() * 2;
 
-                    //graphics.DrawRectangle( fonts.foregroundBrush, starX, starY, (float)( d / scale * Astrometrics.ParsecScaleX ), (float)( d / scale * Astrometrics.ParsecScaleY ) );
                     graphics.DrawEllipse(solidBrush, starX, starY, (float)(d / scale * Astrometrics.ParsecScaleX), (float)(d / scale * Astrometrics.ParsecScaleY));
                 }
             }
@@ -1225,13 +1224,19 @@ namespace Maps.Rendering
                                     XColor penColor, brushColor;
                                     styles.WorldColors(world, out penColor, out brushColor);
 
-                                    if (!brushColor.IsEmpty)
+                                    if (!brushColor.IsEmpty && !penColor.IsEmpty)
+                                    {
+                                        solidBrush.Color = brushColor;
+                                        styles.worldWater.pen.Apply(ref pen);
+                                        pen.Color = penColor;
+                                        graphics.DrawEllipse(pen, solidBrush, -0.1f, -0.1f, 0.2f, 0.2f);
+                                    } 
+                                    else if (!brushColor.IsEmpty)
                                     {
                                         solidBrush.Color = brushColor;
                                         graphics.DrawEllipse(solidBrush, -0.1f, -0.1f, 0.2f, 0.2f);
                                     }
-
-                                    if (!penColor.IsEmpty)
+                                    else if (!penColor.IsEmpty)
                                     {
                                         styles.worldWater.pen.Apply(ref pen);
                                         pen.Color = penColor;
@@ -1644,12 +1649,18 @@ namespace Maps.Rendering
 
         private void DrawOverlay(Stylesheet.StyleElement elem, float r, ref XSolidBrush solidBrush, ref XPen pen)
         {
-            if (!elem.fillColor.IsEmpty)
+            if (!elem.fillColor.IsEmpty && !elem.pen.color.IsEmpty)
+            {
+                solidBrush.Color = elem.fillColor;
+                elem.pen.Apply(ref pen);
+                graphics.DrawEllipse(pen, solidBrush, -r, -r, r * 2, r * 2);
+            }
+            else if (!elem.fillColor.IsEmpty)
             {
                 solidBrush.Color = elem.fillColor;
                 graphics.DrawEllipse(solidBrush, -r, -r, r * 2, r * 2);
             }
-            if (!elem.pen.color.IsEmpty)
+            else if (!elem.pen.color.IsEmpty)
             {
                 elem.pen.Apply(ref pen);
                 graphics.DrawEllipse(pen, -r, -r, r * 2, r * 2);

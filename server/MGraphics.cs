@@ -203,24 +203,15 @@ namespace Maps.Rendering
                 if (disposing)
                 {
                     g.Dispose();
+                    g = null;
                 }
                 disposedValue = true;
             }
         }
 
-        // TODO: override a finalizer only if Dispose(bool disposing) above has code to free unmanaged resources.
-        // ~MXGraphics() {
-        //   // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
-        //   Dispose(false);
-        // }
-
-        // This code added to correctly implement the disposable pattern.
         void IDisposable.Dispose()
         {
-            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
             Dispose(true);
-            // TODO: uncomment the following line if the finalizer is overridden above.
-            // GC.SuppressFinalize(this);
         }
         #endregion
 
@@ -304,6 +295,29 @@ namespace Maps.Rendering
                 {
                     Set("stroke", pen.Color);
                     Set("stroke-width", pen.Width);
+
+                    switch (pen.DashStyle)
+                    {
+                        case XDashStyle.Solid:
+                            // "solid" is SVG default
+                            break;
+                        case XDashStyle.Dot:
+                            Set("stroke-linecap", "square");
+                            Set("stroke-dasharray", string.Format("0 {0:G2}", pen.Width * 2));
+                            break;
+                        case XDashStyle.Dash:
+                            Set("stroke-linecap", "square");
+                            Set("stroke-dasharray", string.Format("{0:G2} {0:G2}", pen.Width * 2));
+                            break;
+                        case XDashStyle.DashDot:
+                            Set("stroke-linecap", "square");
+                            Set("stroke-dasharray", string.Format("{0:G2} {0:G2} 0 {0:G2}", pen.Width * 2));
+                            break;
+                        case XDashStyle.DashDotDot:
+                            Set("stroke-linecap", "square");
+                            Set("stroke-dasharray", string.Format("{0:G2} {0:G2} 0 {0:G2} 0 {0:G2}", pen.Width * 2));
+                            break;
+                    }
                 }
             }
             public void Apply(XSolidBrush brush)
@@ -745,7 +759,6 @@ namespace Maps.Rendering
         }
         public void MultiplyTransform(XMatrix m)
         {
-            // TODO: Verify matrix order
             var e = Open(new Element(ElementNames.G));
             e.Set("transform", string.Format("matrix({0:G5},{1:G5},{2:G5},{3:G5},{4:G5},{5:G5})", 
                 m.M11, m.M12, m.M21, m.M22, m.OffsetX, m.OffsetY));
@@ -921,29 +934,16 @@ namespace Maps.Rendering
             {
                 if (disposing)
                 {
-                    // TODO: dispose managed state (managed objects).
+                    scratch.Dispose();
+                    scratch = null;
                 }
-
-                // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
-                // TODO: set large fields to null.
-
                 disposedValue = true;
             }
         }
 
-        // TODO: override a finalizer only if Dispose(bool disposing) above has code to free unmanaged resources.
-        // ~SVGGraphics() {
-        //   // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
-        //   Dispose(false);
-        // }
-
-        // This code added to correctly implement the disposable pattern.
         void IDisposable.Dispose()
         {
-            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
             Dispose(true);
-            // TODO: uncomment the following line if the finalizer is overridden above.
-            // GC.SuppressFinalize(this);
         }
         #endregion
 
