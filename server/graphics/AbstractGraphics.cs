@@ -21,7 +21,7 @@ namespace Maps.Rendering
 
         void DrawLine(AbstractPen pen, double x1, double y1, double x2, double y2);
         void DrawLine(AbstractPen pen, PointF pt1, PointF pt2);
-        void DrawLines(AbstractPen pen, XPoint[] points);
+        void DrawLines(AbstractPen pen, PointF[] points);
         void DrawPath(AbstractPen pen, XGraphicsPath path);
         void DrawPath(AbstractBrush brush, XGraphicsPath path);
         void DrawCurve(AbstractPen pen, PointF[] points, double tension = 0.5);
@@ -35,7 +35,7 @@ namespace Maps.Rendering
         void DrawEllipse(AbstractPen pen, AbstractBrush brush, double x, double y, double width, double height);
         void DrawArc(AbstractPen pen, double x, double y, double width, double height, double startAngle, double sweepAngle);
         void DrawImage(AbstractImage image, double x, double y, double width, double height);
-        void DrawImageAlpha(float alpha, AbstractImage image, Rectangle targetRect);
+        void DrawImageAlpha(float alpha, AbstractImage image, RectangleF targetRect);
 
         XSize MeasureString(string text, XFont font);
         void DrawString(string s, XFont font, AbstractBrush brush, double x, double y, XStringFormat format);
@@ -43,7 +43,9 @@ namespace Maps.Rendering
         AbstractGraphicsState Save();
         void Restore(AbstractGraphicsState state);
     }
+
     internal interface AbstractGraphicsState { }
+
     internal class AbstractImage
     {
         private string path;

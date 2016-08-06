@@ -336,7 +336,7 @@ namespace Maps.Rendering
             e.Apply(pen);
         }
 
-        public void DrawLines(AbstractPen pen, XPoint[] points)
+        public void DrawLines(AbstractPen pen, PointF[] points)
         {
             var e = Append(new Element(ElementNames.PATH));
             var path = new PathBuilder();
@@ -442,7 +442,7 @@ namespace Maps.Rendering
             e.Set("xlink:href", image.Url);
         }
 
-        public void DrawImageAlpha(float alpha, AbstractImage image, Rectangle targetRect)
+        public void DrawImageAlpha(float alpha, AbstractImage image, RectangleF targetRect)
         {
             var e = Append(new Element(ElementNames.IMAGE));
             e.Set("x", targetRect.X);

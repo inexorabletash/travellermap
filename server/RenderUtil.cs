@@ -23,10 +23,9 @@ namespace Maps.Rendering
             |\              /|
             +-*------------*-+
         */
-        public static readonly double HEX_EDGE = Math.Tan(Math.PI / 6) / 4 / Astrometrics.ParsecScaleX;
-        public static readonly float HEX_EDGE_F = (float)HEX_EDGE;
+        public static readonly float HEX_EDGE = (float)(Math.Tan(Math.PI / 6) / 4 / Astrometrics.ParsecScaleX);
 
-        private static readonly float[] HexEdgesX = { -0.5f + HEX_EDGE_F, -0.5f - HEX_EDGE_F, -0.5f + HEX_EDGE_F, 0.5f - HEX_EDGE_F, 0.5f + HEX_EDGE_F, 0.5f - HEX_EDGE_F };
+        private static readonly float[] HexEdgesX = { -0.5f + HEX_EDGE, -0.5f - HEX_EDGE, -0.5f + HEX_EDGE, 0.5f - HEX_EDGE, 0.5f + HEX_EDGE, 0.5f - HEX_EDGE };
         private static readonly float[] HexEdgesY = { 0.5f, 0f, -0.5f, -0.5f, 0, 0.5f };
 
         private static readonly float[] SquareEdgesX = { -0.5f, -0.5f, -0.5f, 0.5f, 0.5f, 0.5f };

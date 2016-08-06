@@ -790,16 +790,16 @@ namespace Maps.Rendering
                     break;
 
                 case HexStyle.Hex:
-                    XPoint[] points = new XPoint[4];
+                    PointF[] points = new PointF[4];
                     for (int px = hx - parsecSlop; px < hx + hw + parsecSlop; px++)
                     {
-                        double yOffset = ((px % 2) != 0) ? 0.0 : 0.5;
+                        float yOffset = ((px % 2) != 0) ? 0.0f : 0.5f;
                         for (int py = hy - parsecSlop; py < hy + hh + parsecSlop; py++)
                         {
-                            points[0] = new XPoint(px + -RenderUtil.HEX_EDGE, py + 0.5 + yOffset);
-                            points[1] = new XPoint(px + RenderUtil.HEX_EDGE, py + 1.0 + yOffset);
-                            points[2] = new XPoint(px + 1.0 - RenderUtil.HEX_EDGE, py + 1.0 + yOffset);
-                            points[3] = new XPoint(px + 1.0 + RenderUtil.HEX_EDGE, py + 0.5 + yOffset);
+                            points[0] = new PointF(px + -RenderUtil.HEX_EDGE, py + 0.5f + yOffset);
+                            points[1] = new PointF(px + RenderUtil.HEX_EDGE, py + 1.0f + yOffset);
+                            points[2] = new PointF(px + 1.0f - RenderUtil.HEX_EDGE, py + 1.0f + yOffset);
+                            points[3] = new PointF(px + 1.0f + RenderUtil.HEX_EDGE, py + 0.5f + yOffset);
                             graphics.DrawLines(pen, points);
                         }
                     }

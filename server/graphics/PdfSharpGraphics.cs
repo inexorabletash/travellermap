@@ -37,7 +37,7 @@ namespace Maps.Rendering
 
         public void DrawLine(AbstractPen pen, double x1, double y1, double x2, double y2) { Apply(pen); g.DrawLine(this.pen, x1, y1, x2, y2); }
         public void DrawLine(AbstractPen pen, PointF pt1, PointF pt2) { Apply(pen); g.DrawLine(this.pen, pt1, pt2); }
-        public void DrawLines(AbstractPen pen, XPoint[] points) { Apply(pen); g.DrawLines(this.pen, points); }
+        public void DrawLines(AbstractPen pen, PointF[] points) { Apply(pen); g.DrawLines(this.pen, points); }
         public void DrawPath(AbstractPen pen, XGraphicsPath path) { Apply(pen);  g.DrawPath(this.pen, path); }
         public void DrawPath(AbstractBrush brush, XGraphicsPath path) { Apply(brush); g.DrawPath(this.brush, path); }
         public void DrawCurve(AbstractPen pen, PointF[] points, double tension) { Apply(pen); g.DrawCurve(this.pen, points, tension); }
@@ -52,7 +52,7 @@ namespace Maps.Rendering
         public void DrawArc(AbstractPen pen, double x, double y, double width, double height, double startAngle, double sweepAngle) { Apply(pen); g.DrawArc(this.pen, x, y, width, height, startAngle, sweepAngle); }
         public void DrawImage(AbstractImage image, double x, double y, double width, double height) { g.DrawImage(image.XImage, x, y, width, height); }
 
-        public void DrawImageAlpha(float alpha, AbstractImage mimage, Rectangle targetRect)
+        public void DrawImageAlpha(float alpha, AbstractImage mimage, RectangleF targetRect)
         {
             // Clamp and Quantize
             alpha = Util.Clamp(alpha, 0f, 1f);
