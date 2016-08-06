@@ -538,11 +538,11 @@ namespace Maps.Rendering
             TypeCount = 2
         };
 
-        public static RectangleF Bounds(XGraphicsPath path)
+        public static RectangleF Bounds(AbstractPath path)
         {
             RectangleF rect = new RectangleF();
 
-            PointF[] points = path.Internals.GdiPath.PathPoints;
+            PointF[] points = path.Points;
 
             rect.X = points[0].X;
             rect.Y = points[0].Y;

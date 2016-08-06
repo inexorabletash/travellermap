@@ -16,14 +16,14 @@ namespace Maps.Rendering
         void RotateTransform(double angle);
         void MultiplyTransform(XMatrix m);
 
-        void IntersectClip(XGraphicsPath path);
+        void IntersectClip(AbstractPath path);
         void IntersectClip(RectangleF rect);
 
         void DrawLine(AbstractPen pen, double x1, double y1, double x2, double y2);
         void DrawLine(AbstractPen pen, PointF pt1, PointF pt2);
         void DrawLines(AbstractPen pen, PointF[] points);
-        void DrawPath(AbstractPen pen, XGraphicsPath path);
-        void DrawPath(AbstractBrush brush, XGraphicsPath path);
+        void DrawPath(AbstractPen pen, AbstractPath path);
+        void DrawPath(AbstractBrush brush, AbstractPath path);
         void DrawCurve(AbstractPen pen, PointF[] points, double tension = 0.5);
         void DrawClosedCurve(AbstractPen pen, PointF[] points, double tension = 0.5);
         void DrawClosedCurve(AbstractBrush brush, PointF[] points, double tension = 0.5);
@@ -44,6 +44,7 @@ namespace Maps.Rendering
         void Restore(AbstractGraphicsState state);
     }
 
+    // TODO: Make this IDisposable
     internal interface AbstractGraphicsState { }
 
     internal class AbstractImage
@@ -120,4 +121,15 @@ namespace Maps.Rendering
         CenterLeft,
     };
 
+    internal class AbstractPath
+    {
+        public PointF[] Points { get; set; }
+        public byte[] Types { get; set; }
+
+        public AbstractPath(PointF[] points, byte[] types)
+        {
+            Points = points;
+            Types = types;
+        }
+    }
 }

@@ -216,6 +216,7 @@ namespace Maps.Rendering
             public void Close()
             {
                 b.Append("Z");
+                used = false; // Since initial point isn't remembered.
             }
         }
 
@@ -380,7 +381,7 @@ namespace Maps.Rendering
             e.Apply(pen, null);
         }
 
-        public void DrawPath(AbstractPen pen, AbstractBrush brush, XGraphicsPath path)
+        public void DrawPath(AbstractPen pen, AbstractBrush brush, AbstractPath path)
         {
             var e = Append(new Element(ElementNames.PATH));
             e.Set("d", ToSVG(path));
@@ -468,7 +469,7 @@ namespace Maps.Rendering
             e.Set("clip-path", string.Format("url(#{0})", clipPath.Get("id")));
         }
 
-        public void IntersectClip(XGraphicsPath path)
+        public void IntersectClip(AbstractPath path)
         {
             var clipPath = AddDefinition(new Element(ElementNames.CLIPPATH));
             var p = clipPath.Append(new Element(ElementNames.PATH));
@@ -571,11 +572,11 @@ namespace Maps.Rendering
         {
             DrawLine(pen, pt1.X, pt1.Y, pt2.X, pt2.Y);
         }
-        public void DrawPath(AbstractBrush brush, XGraphicsPath path)
+        public void DrawPath(AbstractBrush brush, AbstractPath path)
         {
             DrawPath(null, brush, path);
         }
-        public void DrawPath(AbstractPen pen, XGraphicsPath path)
+        public void DrawPath(AbstractPen pen, AbstractPath path)
         {
             DrawPath(pen, null, path);
         }
@@ -615,16 +616,14 @@ namespace Maps.Rendering
         #endregion
 
         #region Utilities
-        private string ToSVG(XGraphicsPath x)
+        private string ToSVG(AbstractPath ap)
         {
-            var gp = x.Internals.GdiPath.PathData;
-
             PathBuilder path = new PathBuilder();
 
-            for (int i = 0; i < gp.Points.Length; ++i)
+            for (int i = 0; i < ap.Points.Length; ++i)
             {
-                byte type = gp.Types[i];
-                PointF point = gp.Points[i];
+                byte type = ap.Types[i];
+                PointF point = ap.Points[i];
                 switch (type & 0x7)
                 {
                     case 0: path.MoveTo(point.X, point.Y); break;

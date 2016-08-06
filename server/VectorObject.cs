@@ -125,15 +125,14 @@ namespace Maps.Rendering
             set { pathDataTypes = value; }
         }
 
-        // NOTE: Can't cacheResults a GraphicsPath - not free threaded
-        internal XGraphicsPath Path
+        internal AbstractPath Path
         {
             get
             {
                 if (PathDataPoints == null)
                     return null;
 
-                return new XGraphicsPath(PathDataPoints, PathDataTypes, XFillMode.Alternate);
+                return new AbstractPath(PathDataPoints, PathDataTypes);
             }
         }
 
@@ -145,7 +144,7 @@ namespace Maps.Rendering
             RectangleF bounds = TransformedBounds;
             if (bounds.IntersectsWith(rect))
             {
-                XGraphicsPath path = Path;
+                var path = Path;
                 using (RenderUtil.SaveState(graphics))
                 {
                     XMatrix matrix = new XMatrix();
@@ -197,7 +196,7 @@ namespace Maps.Rendering
 
             if (bounds.IntersectsWith(rect))
             {
-                XGraphicsPath path = Path;
+                var path = Path;
 
                 using (RenderUtil.SaveState(graphics))
                 {

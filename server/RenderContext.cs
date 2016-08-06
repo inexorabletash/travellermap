@@ -40,7 +40,7 @@ namespace Maps.Rendering
         private readonly Size tileSize;
 
         // Options
-        public XGraphicsPath ClipPath { get; set; }
+        public AbstractPath ClipPath { get; set; }
         public bool DrawBorder { get; set; }
         public bool Silly { get; set; }
         public bool ClipOutsectorBorders { get; set; }
@@ -1693,7 +1693,7 @@ namespace Maps.Rendering
 
             foreach (Sector sector in selector.Sectors)
             {
-                XGraphicsPath sectorClipPath = null;
+                AbstractPath sectorClipPath = null;
 
                 using (RenderUtil.SaveState(graphics))
                 {
@@ -1705,7 +1705,7 @@ namespace Maps.Rendering
                         if (!tileRect.IntersectsWith(clip.bounds))
                             continue;
 
-                        sectorClipPath = new XGraphicsPath(clip.clipPathPoints, clip.clipPathPointTypes, XFillMode.Alternate);
+                        sectorClipPath = new AbstractPath(clip.clipPathPoints, clip.clipPathPointTypes);
                         if (sectorClipPath != null)
                             graphics.IntersectClip(sectorClipPath);
                     }
@@ -1716,7 +1716,7 @@ namespace Maps.Rendering
                     {
                         BorderPath borderPath = border.ComputeGraphicsPath(sector, borderPathType);
 
-                        XGraphicsPath drawPath = new XGraphicsPath(borderPath.points, borderPath.types, XFillMode.Alternate);
+                        AbstractPath drawPath = new AbstractPath(borderPath.points, borderPath.types);
 
                         Color? borderColor = border.Color;
                         LineStyle? borderStyle = border.Style;

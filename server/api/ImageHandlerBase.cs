@@ -219,15 +219,14 @@ namespace Maps.API
                         graphics.MultiplyTransform(m);
                         AbstractPen pen = new AbstractPen(ctx.Styles.imageBorderColor, 0.2f);
 
-                        // PdfSharp can't ExcludeClip so we take advantage of the fact that we know
+                        // SVG/PdfSharp can't ExcludeClip so we take advantage of the fact that we know
                         // the path starts on the left edge and proceeds clockwise. We extend the
                         // path with a counterclockwise border around it, then use that to exclude
                         // the original path's region for rendering the border.
-                        ctx.ClipPath.Flatten();
                         RectangleF bounds = PathUtil.Bounds(ctx.ClipPath);
                         bounds.Inflate(2 * (float)pen.Width, 2 * (float)pen.Width);
-                        List<byte> types = new List<byte>(ctx.ClipPath.Internals.GdiPath.PathTypes);
-                        List<PointF> points = new List<PointF>(ctx.ClipPath.Internals.GdiPath.PathPoints);
+                        List<byte> types = new List<byte>(ctx.ClipPath.Types);
+                        List<PointF> points = new List<PointF>(ctx.ClipPath.Points);
 
                         PointF key = points[0];
                         points.Add(new PointF(bounds.Left, key.Y)); types.Add(1);
@@ -238,8 +237,7 @@ namespace Maps.API
                         points.Add(new PointF(bounds.Left, key.Y)); types.Add(1);
                         points.Add(new PointF(key.X, key.Y)); types.Add(1);
 
-                        XGraphicsPath path = new XGraphicsPath(points.ToArray(), types.ToArray(), XFillMode.Winding);
-                        graphics.IntersectClip(path);
+                        graphics.IntersectClip(new AbstractPath(points.ToArray(), types.ToArray()));
                         graphics.DrawPath(pen, ctx.ClipPath);
                     }
                 }
