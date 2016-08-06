@@ -126,9 +126,11 @@
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="server\api\CodesHandler.cs" />
     <Compile Include="server\api\RouteHandler.cs" />
+    <Compile Include="server\graphics\AbstractGraphics.cs" />
+    <Compile Include="server\graphics\PdfSharpGraphics.cs" />
+    <Compile Include="server\graphics\SVGGraphics.cs" />
     <Compile Include="server\http\Modules.cs" />
     <Compile Include="server\http\Routing.cs" />
-    <Compile Include="server\MGraphics.cs" />
     <Compile Include="server\PathFinder.cs" />
     <Compile Include="server\SectorMap.cs" />
     <Compile Include="server\WorldCollection.cs" />

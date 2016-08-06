@@ -53,7 +53,7 @@ namespace Maps.Rendering
             { '\x2736', '\xAC' }, // U+2736 (BLACK SIX POINTED STAR)
         };
 
-        public static void DrawGlyph(MGraphics g, Glyph glyph, FontCache styleRes, XSolidBrush brush, float x, float y)
+        public static void DrawGlyph(AbstractGraphics g, Glyph glyph, FontCache styleRes, XSolidBrush brush, float x, float y)
         {
             XFont font;
             string s = glyph.Characters;
@@ -118,7 +118,7 @@ namespace Maps.Rendering
         }
 
         // TextFormat controls both the interpretation of the drawing origin and text alignment.
-        public static void DrawString(MGraphics g, string text, XFont font, XSolidBrush brush, double x, double y, TextFormat format = TextFormat.Center)
+        public static void DrawString(AbstractGraphics g, string text, XFont font, XSolidBrush brush, double x, double y, TextFormat format = TextFormat.Center)
         {
             if (string.IsNullOrWhiteSpace(text))
                 return;
@@ -166,7 +166,7 @@ namespace Maps.Rendering
             });
         }
 
-        public static void DrawLabel(MGraphics g, string text, PointF labelPos, XFont font, XSolidBrush brush, LabelStyle labelStyle)
+        public static void DrawLabel(AbstractGraphics g, string text, PointF labelPos, XFont font, XSolidBrush brush, LabelStyle labelStyle)
         {
             using (RenderUtil.SaveState(g))
             {
@@ -192,17 +192,17 @@ namespace Maps.Rendering
             }
         }
 
-        public static SaveGraphicsState SaveState(MGraphics g)
+        public static SaveGraphicsState SaveState(AbstractGraphics g)
         {
             return new SaveGraphicsState(g);
         }
 
         sealed internal class SaveGraphicsState : IDisposable
         {
-            private MGraphics g;
-            private MGraphicsState gs;
+            private AbstractGraphics g;
+            private AbstractGraphicsState gs;
 
-            public SaveGraphicsState(MGraphics graphics)
+            public SaveGraphicsState(AbstractGraphics graphics)
             {
                 g = graphics;
                 gs = graphics.Save();

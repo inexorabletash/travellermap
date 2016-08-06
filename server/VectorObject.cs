@@ -138,7 +138,7 @@ namespace Maps.Rendering
             }
         }
 
-        internal void Draw(MGraphics graphics, RectangleF rect, XPen pen)
+        internal void Draw(AbstractGraphics graphics, RectangleF rect, XPen pen)
         {
             if (graphics == null)
                 throw new ArgumentNullException("graphics");
@@ -158,7 +158,7 @@ namespace Maps.Rendering
             }
         }
 
-        internal void DrawName(MGraphics graphics, RectangleF rect, XFont font, XSolidBrush textBrush, LabelStyle labelStyle)
+        internal void DrawName(AbstractGraphics graphics, RectangleF rect, XFont font, XSolidBrush textBrush, LabelStyle labelStyle)
         {
             if (graphics == null)
                 throw new ArgumentNullException("graphics");
@@ -189,7 +189,7 @@ namespace Maps.Rendering
             }
         }
 
-        internal void Fill(MGraphics graphics, RectangleF rect, XSolidBrush fillBrush)
+        internal void Fill(AbstractGraphics graphics, RectangleF rect, XSolidBrush fillBrush)
         {
             if (graphics == null)
                 throw new ArgumentNullException("graphics");
@@ -247,7 +247,7 @@ namespace Maps.Rendering
         public int LabelBiasY { get; set; }
 
 
-        internal void Paint(MGraphics graphics, Color dotColor, XSolidBrush labelBrush, XFont labelFont)
+        internal void Paint(AbstractGraphics graphics, Color dotColor, XSolidBrush labelBrush, XFont labelFont)
         {
             if (graphics == null)
                 throw new ArgumentNullException("graphics");

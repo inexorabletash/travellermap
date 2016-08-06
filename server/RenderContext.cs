@@ -48,7 +48,7 @@ namespace Maps.Rendering
         public bool ClipOutsectorBorders { get; set; }
 
         // Assigned during Render()
-        private MGraphics graphics = null;
+        private AbstractGraphics graphics = null;
         private XSolidBrush solidBrush;
         private XPen pen;
 
@@ -134,13 +134,13 @@ namespace Maps.Rendering
         private static bool s_imagesInitialized = false;
 
         // TODO: Consider not caching these across sessions
-        private static MImage s_sillyImageColor;
-        private static MImage s_sillyImageGray;
-        private static MImage s_nebulaImage;
-        private static MImage s_galaxyImage;
-        private static MImage s_galaxyImageGray;
-        private static MImage s_riftImage;
-        private static Dictionary<string, MImage> s_worldImages;
+        private static AbstractImage s_sillyImageColor;
+        private static AbstractImage s_sillyImageGray;
+        private static AbstractImage s_nebulaImage;
+        private static AbstractImage s_galaxyImage;
+        private static AbstractImage s_galaxyImageGray;
+        private static AbstractImage s_riftImage;
+        private static Dictionary<string, AbstractImage> s_worldImages;
         #endregion
 
         /// <summary>
@@ -161,12 +161,12 @@ namespace Maps.Rendering
 #endif
         }
 
-        private MImage PrepareImage(string urlPath)
+        private AbstractImage PrepareImage(string urlPath)
         {
-            return new MImage(resourceManager.Server.MapPath("~" + urlPath), urlPath);
+            return new AbstractImage(resourceManager.Server.MapPath("~" + urlPath), urlPath);
         }
 
-        public void Render(MGraphics graphics)
+        public void Render(AbstractGraphics graphics)
         {
             this.graphics = graphics;
             solidBrush = new XSolidBrush();
@@ -250,7 +250,7 @@ namespace Maps.Rendering
                         using (RenderUtil.SaveState(graphics))
                         {
                             graphics.MultiplyTransform(xformLinehanToMikesh);
-                            MImage galaxyImage = styles.lightBackground ? s_galaxyImageGray : s_galaxyImage;
+                            AbstractImage galaxyImage = styles.lightBackground ? s_galaxyImageGray : s_galaxyImage;
                             graphics.DrawImageAlpha(styles.deepBackgroundOpacity, galaxyImage, galaxyImageRect);
                         }
                     }
@@ -286,7 +286,7 @@ namespace Maps.Rendering
                             // Render in image-space
                             graphics.MultiplyTransform(worldSpaceToImageSpace);
 
-                            MImage sillyImage = styles.grayscale ? s_sillyImageGray : s_sillyImageColor;
+                            AbstractImage sillyImage = styles.grayscale ? s_sillyImageGray : s_sillyImageColor;
 
                             lock (sillyImage)
                             {
@@ -667,7 +667,7 @@ namespace Maps.Rendering
                 s_riftImage = PrepareImage("/res/Candy/Rifts.png");
                 s_galaxyImage = PrepareImage("/res/Candy/Galaxy.png");
                 s_galaxyImageGray = PrepareImage("/res/Candy/Galaxy_Gray.png");
-                s_worldImages = new Dictionary<string, MImage> {
+                s_worldImages = new Dictionary<string, AbstractImage> {
                             { "Hyd0", PrepareImage("/res/Candy/Hyd0.png") },
                             { "Hyd1", PrepareImage("/res/Candy/Hyd1.png") },
                             { "Hyd2", PrepareImage("/res/Candy/Hyd2.png") },
@@ -1272,7 +1272,7 @@ namespace Maps.Rendering
                             {
                                 const float scaleX = 1.5f;
                                 const float scaleY = 1.0f;
-                                MImage img = s_worldImages["Belt"];
+                                AbstractImage img = s_worldImages["Belt"];
 
                                 lock (img)
                                 {
@@ -1281,7 +1281,7 @@ namespace Maps.Rendering
                             }
                             else
                             {
-                                MImage img;
+                                AbstractImage img;
                                 switch (world.Hydrographics)
                                 {
                                     default:
