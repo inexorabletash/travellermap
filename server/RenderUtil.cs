@@ -47,13 +47,12 @@ namespace Maps.Rendering
             { '\x2666', '\x74' }, // U+2666 (BLACK DIAMOND SUIT)
             { '\x2756', '\x76' }, // U+2756 (BLACK DIAMOND MINUS WHITE X)
             { '\x2022', '\x9f' }, // U+2022 (BULLET), U+25CF (BLACK CIRCLE)
-            { '\x25B2', '\xA9' }, // U+25B2 (BLACK UP-POINTING TRIANGLE)
             { '\x2726', '\xAA' }, // U+2726 (BLACK FOUR POINTED STAR)
             { '\x2605', '\xAB' }, // U+2605 (BLACK STAR)
             { '\x2736', '\xAC' }, // U+2736 (BLACK SIX POINTED STAR)
         };
 
-        public static void DrawGlyph(AbstractGraphics g, Glyph glyph, FontCache styleRes, XSolidBrush brush, float x, float y)
+        public static void DrawGlyph(AbstractGraphics g, Glyph glyph, FontCache styleRes, AbstractBrush brush, float x, float y)
         {
             XFont font;
             string s = glyph.Characters;
@@ -118,7 +117,7 @@ namespace Maps.Rendering
         }
 
         // TextFormat controls both the interpretation of the drawing origin and text alignment.
-        public static void DrawString(AbstractGraphics g, string text, XFont font, XSolidBrush brush, double x, double y, TextFormat format = TextFormat.Center)
+        public static void DrawString(AbstractGraphics g, string text, XFont font, AbstractBrush brush, double x, double y, TextFormat format = TextFormat.Center)
         {
             if (string.IsNullOrWhiteSpace(text))
                 return;
@@ -166,7 +165,7 @@ namespace Maps.Rendering
             });
         }
 
-        public static void DrawLabel(AbstractGraphics g, string text, PointF labelPos, XFont font, XSolidBrush brush, LabelStyle labelStyle)
+        public static void DrawLabel(AbstractGraphics g, string text, PointF labelPos, XFont font, AbstractBrush brush, LabelStyle labelStyle)
         {
             using (RenderUtil.SaveState(g))
             {
@@ -284,11 +283,8 @@ namespace Maps.Rendering
         public static readonly Glyph Circle = new Glyph("\x2022"); // U+2022 (BULLET); alternate:  U+25CF (BLACK CIRCLE)
         public static readonly Glyph Triangle = new Glyph("\x25B2"); // U+25B2 (BLACK UP-POINTING TRIANGLE)
         public static readonly Glyph Square = new Glyph("\x25A0"); // U+25A0 (BLACK SQUARE)
-        public static readonly Glyph Star3Point = new Glyph("\x25B2"); // U+25B2 (BLACK UP-POINTING TRIANGLE)
         public static readonly Glyph Star4Point = new Glyph("\x2726"); // U+2726 (BLACK FOUR POINTED STAR)
         public static readonly Glyph Star5Point = new Glyph("\x2605"); // U+2605 (BLACK STAR)
-        public static readonly Glyph Star6Point = new Glyph("\x2736"); // U+2736 (BLACK SIX POINTED STAR)
-        public static readonly Glyph WhiteStar = new Glyph("\u2606"); // U+2606 (WHITE STAR)
         public static readonly Glyph StarStar = new Glyph("**"); // Would prefer U+2217 (ASTERISK OPERATOR) but font coverage is poor
 
         // Research Stations

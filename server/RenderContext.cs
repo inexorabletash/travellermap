@@ -1,11 +1,9 @@
 //#define SHOW_TIMING
 
 using PdfSharp.Drawing;
-using PdfSharp.Drawing.Layout;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text.RegularExpressions;
 
@@ -49,8 +47,8 @@ namespace Maps.Rendering
 
         // Assigned during Render()
         private AbstractGraphics graphics = null;
-        private XSolidBrush solidBrush;
-        private XPen pen;
+        private AbstractBrush solidBrush;
+        private AbstractPen pen;
 
         public Stylesheet Styles { get { return styles; } }
 
@@ -63,7 +61,7 @@ namespace Maps.Rendering
 
         // This transforms the Linehan galactic structure to the Mikesh galactic structure
         // See https://travellermap.blogspot.com/2009/03/galaxy-scale-mismatch.html
-        private static readonly Matrix xformLinehanToMikesh = new Matrix(0.9181034f, 0.0f, 0.0f, 0.855192542f, 120.672432f, 86.34569f);
+        private static readonly XMatrix xformLinehanToMikesh = new XMatrix(0.9181034f, 0.0f, 0.0f, 0.855192542f, 120.672432f, 86.34569f);
 
         private static readonly Rectangle riftImageRect = new Rectangle(-1374, -827, 2769, 1754);
 
@@ -169,8 +167,8 @@ namespace Maps.Rendering
         public void Render(AbstractGraphics graphics)
         {
             this.graphics = graphics;
-            solidBrush = new XSolidBrush();
-            pen = new XPen(XColor.Empty);
+            solidBrush = new AbstractBrush();
+            pen = new AbstractPen(Color.Empty);
 
             List<Timer> timers = new List<Timer>();
 
@@ -925,8 +923,8 @@ namespace Maps.Rendering
 
             using (RenderUtil.SaveState(graphics))
             {
-                XPen pen = new XPen(XColor.Empty);
-                XSolidBrush solidBrush = new XSolidBrush();
+                AbstractPen pen = new AbstractPen(Color.Empty);
+                AbstractBrush solidBrush = new AbstractBrush();
 
                 graphics.SmoothingMode = XSmoothingMode.AntiAlias;
 
@@ -1221,7 +1219,7 @@ namespace Maps.Rendering
                                 }
                                 else
                                 {
-                                    XColor penColor, brushColor;
+                                    Color penColor, brushColor;
                                     styles.WorldColors(world, out penColor, out brushColor);
 
                                     if (!brushColor.IsEmpty && !penColor.IsEmpty)
@@ -1447,7 +1445,7 @@ namespace Maps.Rendering
             return null;
         }
 
-        private void DrawWorldLabel(TextBackgroundStyle backgroundStyle, XSolidBrush brush, Color color, PointF position, XFont font, string text)
+        private void DrawWorldLabel(TextBackgroundStyle backgroundStyle, AbstractBrush brush, Color color, PointF position, XFont font, string text)
         {
             XSize size = graphics.MeasureString(text, font);
 
@@ -1509,7 +1507,7 @@ namespace Maps.Rendering
         {
             using (RenderUtil.SaveState(graphics))
             {
-                XSolidBrush solidBrush = new XSolidBrush();
+                AbstractBrush solidBrush = new AbstractBrush();
 
                 graphics.SmoothingMode = XSmoothingMode.AntiAlias;
 
@@ -1566,7 +1564,7 @@ namespace Maps.Rendering
             using (RenderUtil.SaveState(graphics))
             {
                 graphics.SmoothingMode = XSmoothingMode.AntiAlias;
-                XPen pen = new XPen(XColor.Empty);
+                AbstractPen pen = new AbstractPen(Color.Empty);
                 styles.microRoutes.pen.Apply(ref pen);
                 float baseWidth = styles.microRoutes.pen.width;
 
@@ -1647,7 +1645,7 @@ namespace Maps.Rendering
             endPoint.Y -= ddy;
         }
 
-        private void DrawOverlay(Stylesheet.StyleElement elem, float r, ref XSolidBrush solidBrush, ref XPen pen)
+        private void DrawOverlay(Stylesheet.StyleElement elem, float r, ref AbstractBrush solidBrush, ref AbstractPen pen)
         {
             if (!elem.fillColor.IsEmpty && !elem.pen.color.IsEmpty)
             {
@@ -1689,8 +1687,8 @@ namespace Maps.Rendering
                 PathUtil.PathType.Square : PathUtil.PathType.Hex;
             RenderUtil.HexEdges(borderPathType, out edgex, out edgey);
 
-            XSolidBrush solidBrush = new XSolidBrush();
-            XPen pen = new XPen(XColor.Empty);
+            AbstractBrush solidBrush = new AbstractBrush();
+            AbstractPen pen = new AbstractPen(Color.Empty);
             styles.microBorders.pen.Apply(ref pen);
 
             foreach (Sector sector in selector.Sectors)

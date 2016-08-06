@@ -136,7 +136,7 @@ namespace Maps.Rendering
         //    this.scaleY = y;
         //}
 
-        public void Apply(ref XPen pen)
+        public void Apply(ref AbstractPen pen)
         {
             if (width == 0f)
                 throw new ArgumentOutOfRangeException("pen", "Hairline pens not supported, set width > 0");
@@ -144,12 +144,7 @@ namespace Maps.Rendering
             pen.Color = color;
             pen.Width = width;
             pen.DashStyle = dashStyle;
-
-            if (dashPattern != null)
-                pen.DashPattern = dashPattern;
         }
-
-
     }
 
     internal struct LabelStyle
@@ -918,7 +913,7 @@ namespace Maps.Rendering
         public HexStyle hexStyle;
         public LineStyle? overrideLineStyle;
 
-        public void WorldColors(World world, out XColor penColorOut, out XColor brushColorOut)
+        public void WorldColors(World world, out Color penColorOut, out Color brushColorOut)
         {
             Color penColor = Color.Empty;
             Color brushColor = Color.Empty;
@@ -970,8 +965,8 @@ namespace Maps.Rendering
                 penColor = (world.WaterPresent) ? worldWater.pen.color : worldNoWater.pen.color;
             }
 
-            penColorOut = penColor.IsEmpty ? XColor.Empty : penColor;
-            brushColorOut = brushColor.IsEmpty ? XColor.Empty : brushColor;
+            penColorOut = penColor.IsEmpty ? Color.Empty : penColor;
+            brushColorOut = brushColor.IsEmpty ? Color.Empty : brushColor;
         }
 
         public static float ScaleInterpolate(float minValue, float maxValue, double scale, float minScale, float maxScale)

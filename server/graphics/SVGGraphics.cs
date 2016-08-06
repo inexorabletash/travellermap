@@ -2,8 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -59,20 +59,20 @@ namespace Maps.Rendering
             public string Get(string name) { return attributes[name]; }
             public void Set(string name, string value) { attributes[name] = value; }
             public void Set(string name, double value) { attributes[name] = value.ToString(NumberFormat, CultureInfo.InvariantCulture); }
-            public void Set(string name, XColor color) {
+            public void Set(string name, Color color) {
                 if (color.IsEmpty || color.A == 0)
                     return; // Inherits "None" from root
-                else if (color.A < 1)
-                    attributes[name] = string.Format("rgba({0},{1},{2},{3:G5})", color.R, color.G, color.B, color.A);
+                else if (color.A < 255)
+                    attributes[name] = string.Format("rgba({0},{1},{2},{3:G5})", color.R, color.G, color.B, color.A/255f);
                 else
                     attributes[name] = string.Format("rgb({0},{1},{2})", color.R, color.G, color.B);
             }
 
-            public void Apply(XPen pen)
+            public void Apply(AbstractPen pen)
             {
                 if (pen == null)
                 {
-                    Set("stroke", XColor.Empty);
+                    Set("stroke", Color.Empty);
                 }
                 else
                 {
@@ -103,11 +103,11 @@ namespace Maps.Rendering
                     }
                 }
             }
-            public void Apply(XSolidBrush brush)
+            public void Apply(AbstractBrush brush)
             {
-                Set("fill", brush == null ? XColor.Empty : brush.Color);
+                Set("fill", brush == null ? Color.Empty : brush.Color);
             }
-            public void Apply(XPen pen, XSolidBrush brush)
+            public void Apply(AbstractPen pen, AbstractBrush brush)
             {
                 Apply(pen);
                 Apply(brush);
@@ -326,7 +326,7 @@ namespace Maps.Rendering
 
         #region Drawing
 
-        public void DrawLine(XPen pen, double x1, double y1, double x2, double y2)
+        public void DrawLine(AbstractPen pen, double x1, double y1, double x2, double y2)
         {
             var e = Append(new Element(ElementNames.LINE));
             e.Set("x1", x1);
@@ -336,7 +336,7 @@ namespace Maps.Rendering
             e.Apply(pen);
         }
 
-        public void DrawLines(XPen pen, XPoint[] points)
+        public void DrawLines(AbstractPen pen, XPoint[] points)
         {
             var e = Append(new Element(ElementNames.PATH));
             var path = new PathBuilder();
@@ -347,7 +347,7 @@ namespace Maps.Rendering
             e.Apply(pen, null);
         }
 
-        public void DrawArc(XPen pen, double x, double y, double width, double height, double startAngle, double sweepAngle)
+        public void DrawArc(AbstractPen pen, double x, double y, double width, double height, double startAngle, double sweepAngle)
         {
             // Convert from center to endpoint parameterization
             // https://www.w3.org/TR/SVG/implnote.html#ArcImplementationNotes
@@ -380,28 +380,28 @@ namespace Maps.Rendering
             e.Apply(pen, null);
         }
 
-        public void DrawPath(XPen pen, XSolidBrush brush, XGraphicsPath path)
+        public void DrawPath(AbstractPen pen, AbstractBrush brush, XGraphicsPath path)
         {
             var e = Append(new Element(ElementNames.PATH));
             e.Set("d", ToSVG(path));
             e.Apply(pen, brush);
         }
 
-        public void DrawCurve(XPen pen, PointF[] points, double tension)
+        public void DrawCurve(AbstractPen pen, PointF[] points, double tension)
         {
             var e = Append(new Element(ElementNames.PATH));
             e.Set("d", ToSVG(points, tension, false));
             e.Apply(pen, null);
         }
 
-        public void DrawClosedCurve(XPen pen, XSolidBrush brush, PointF[] points, double tension)
+        public void DrawClosedCurve(AbstractPen pen, AbstractBrush brush, PointF[] points, double tension)
         {
             var e = Append(new Element(ElementNames.PATH));
             e.Set("d", ToSVG(points, tension, true));
             e.Apply(pen, brush);
         }
 
-        public void DrawRectangle(XPen pen, XSolidBrush brush, double x, double y, double width, double height)
+        public void DrawRectangle(AbstractPen pen, AbstractBrush brush, double x, double y, double width, double height)
         {
             var e = Append(new Element(ElementNames.RECT));
             e.Set("x", x);
@@ -411,7 +411,7 @@ namespace Maps.Rendering
             e.Apply(pen, brush);
         }
 
-        public void DrawEllipse(XPen pen, XSolidBrush brush, double x, double y, double width, double height)
+        public void DrawEllipse(AbstractPen pen, AbstractBrush brush, double x, double y, double width, double height)
         {
             Element e;
             if (width == height)
@@ -487,7 +487,7 @@ namespace Maps.Rendering
             return scratch.MeasureString(text, font);
         }
 
-        public void DrawString(string s, XFont font, XSolidBrush brush, double x, double y, XStringFormat format)
+        public void DrawString(string s, XFont font, AbstractBrush brush, double x, double y, XStringFormat format)
         {
             var e = Append(new Element(ElementNames.TEXT));
             e.content = s;
@@ -571,43 +571,43 @@ namespace Maps.Rendering
         #endregion
 
         #region Relay Methods
-        public void DrawLine(XPen pen, PointF pt1, PointF pt2)
+        public void DrawLine(AbstractPen pen, PointF pt1, PointF pt2)
         {
             DrawLine(pen, pt1.X, pt1.Y, pt2.X, pt2.Y);
         }
-        public void DrawPath(XSolidBrush brush, XGraphicsPath path)
+        public void DrawPath(AbstractBrush brush, XGraphicsPath path)
         {
             DrawPath(null, brush, path);
         }
-        public void DrawPath(XPen pen, XGraphicsPath path)
+        public void DrawPath(AbstractPen pen, XGraphicsPath path)
         {
             DrawPath(pen, null, path);
         }
-        public void DrawRectangle(XSolidBrush brush, RectangleF rect)
+        public void DrawRectangle(AbstractBrush brush, RectangleF rect)
         {
             DrawRectangle(null, brush, rect.X, rect.Y, rect.Width, rect.Height);
         }
-        public void DrawRectangle(XSolidBrush brush, double x, double y, double width, double height)
+        public void DrawRectangle(AbstractBrush brush, double x, double y, double width, double height)
         {
             DrawRectangle(null, brush, x, y, width, height);
         }
-        public void DrawRectangle(XPen pen, double x, double y, double width, double height)
+        public void DrawRectangle(AbstractPen pen, double x, double y, double width, double height)
         {
             DrawRectangle(pen, null, x, y, width, height);
         }
-        public void DrawEllipse(XSolidBrush brush, double x, double y, double width, double height)
+        public void DrawEllipse(AbstractBrush brush, double x, double y, double width, double height)
         {
             DrawEllipse(null, brush, x, y, width, height);
         }
-        public void DrawEllipse(XPen pen, double x, double y, double width, double height)
+        public void DrawEllipse(AbstractPen pen, double x, double y, double width, double height)
         {
             DrawEllipse(pen, null, x, y, width, height);
         }
-        public void DrawClosedCurve(XSolidBrush brush, PointF[] points, double tension)
+        public void DrawClosedCurve(AbstractBrush brush, PointF[] points, double tension)
         {
             DrawClosedCurve(null, brush, points, tension);
         }
-        public void DrawClosedCurve(XPen pen, PointF[] points, double tension)
+        public void DrawClosedCurve(AbstractPen pen, PointF[] points, double tension)
         {
             DrawClosedCurve(pen, null, points, tension);
         }

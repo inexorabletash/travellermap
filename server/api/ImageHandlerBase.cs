@@ -5,6 +5,7 @@ using PdfSharp.Pdf;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Globalization;
 using System.IO;
@@ -216,7 +217,7 @@ namespace Maps.API
                         // Render border in world space
                         XMatrix m = ctx.ImageSpaceToWorldSpace;
                         graphics.MultiplyTransform(m);
-                        XPen pen = new XPen(ctx.Styles.imageBorderColor, 0.2f);
+                        AbstractPen pen = new AbstractPen(ctx.Styles.imageBorderColor, 0.2f);
 
                         // PdfSharp can't ExcludeClip so we take advantage of the fact that we know
                         // the path starts on the left edge and proceeds clockwise. We extend the

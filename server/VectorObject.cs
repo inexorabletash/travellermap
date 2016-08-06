@@ -1,5 +1,4 @@
 using PdfSharp.Drawing;
-using PdfSharp.Drawing.Layout;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -138,7 +137,7 @@ namespace Maps.Rendering
             }
         }
 
-        internal void Draw(AbstractGraphics graphics, RectangleF rect, XPen pen)
+        internal void Draw(AbstractGraphics graphics, RectangleF rect, AbstractPen pen)
         {
             if (graphics == null)
                 throw new ArgumentNullException("graphics");
@@ -158,7 +157,7 @@ namespace Maps.Rendering
             }
         }
 
-        internal void DrawName(AbstractGraphics graphics, RectangleF rect, XFont font, XSolidBrush textBrush, LabelStyle labelStyle)
+        internal void DrawName(AbstractGraphics graphics, RectangleF rect, XFont font, AbstractBrush textBrush, LabelStyle labelStyle)
         {
             if (graphics == null)
                 throw new ArgumentNullException("graphics");
@@ -189,7 +188,7 @@ namespace Maps.Rendering
             }
         }
 
-        internal void Fill(AbstractGraphics graphics, RectangleF rect, XSolidBrush fillBrush)
+        internal void Fill(AbstractGraphics graphics, RectangleF rect, AbstractBrush fillBrush)
         {
             if (graphics == null)
                 throw new ArgumentNullException("graphics");
@@ -247,7 +246,7 @@ namespace Maps.Rendering
         public int LabelBiasY { get; set; }
 
 
-        internal void Paint(AbstractGraphics graphics, Color dotColor, XSolidBrush labelBrush, XFont labelFont)
+        internal void Paint(AbstractGraphics graphics, Color dotColor, AbstractBrush labelBrush, XFont labelFont)
         {
             if (graphics == null)
                 throw new ArgumentNullException("graphics");
@@ -261,8 +260,8 @@ namespace Maps.Rendering
 
                 const float radius = 3;
 
-                XSolidBrush brush = new XSolidBrush(dotColor);
-                XPen pen = new XPen(dotColor);
+                AbstractBrush brush = new AbstractBrush(dotColor);
+                AbstractPen pen = new AbstractPen(dotColor);
                 graphics.SmoothingMode = XSmoothingMode.HighQuality;
                 graphics.DrawEllipse(pen, brush, -radius / 2, -radius / 2, radius, radius);
 
