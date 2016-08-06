@@ -729,8 +729,8 @@ namespace Maps.Rendering
 
             switch (format.LineAlignment)
             {
-                case XLineAlignment.Near: y += font.Size * 0.9; break;
-                case XLineAlignment.Center: y += (font.Size * 0.9) / 2; break;
+                case XLineAlignment.Near: y += font.Size * 0.85; break;
+                case XLineAlignment.Center: y += (font.Size * 0.85) / 2; break;
                 case XLineAlignment.Far: break;
                 case XLineAlignment.BaseLine: break;
             }
