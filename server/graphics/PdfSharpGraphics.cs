@@ -115,10 +115,41 @@ namespace Maps.Rendering
         }
 
         public XSize MeasureString(string text, XFont font) { return g.MeasureString(text, font); }
-        public void DrawString(string s, XFont font, AbstractBrush brush, double x, double y, XStringFormat format) { Apply(brush); g.DrawString(s, font, this.brush, x, y, format); }
+        public void DrawString(string s, XFont font, AbstractBrush brush, double x, double y, StringAlignment format) { Apply(brush); g.DrawString(s, font, this.brush, x, y, Format(format)); }
 
         public AbstractGraphicsState Save() { return new MXGraphicsState(g.Save()); }
         public void Restore(AbstractGraphicsState state) { g.Restore(((MXGraphicsState)state).state); }
+
+        #region StringFormats
+        private static XStringFormat CreateStringFormat(XStringAlignment alignment, XLineAlignment lineAlignment)
+        {
+            XStringFormat format = new XStringFormat();
+            format.Alignment = alignment;
+            format.LineAlignment = lineAlignment;
+            return format;
+        }
+
+        private XStringFormat Format(StringAlignment alignment)
+        {
+            switch (alignment)
+            {
+                case StringAlignment.Centered: return centeredFormat;
+                case StringAlignment.TopLeft: return topLeftFormat;
+                case StringAlignment.TopCenter: return topCenterFormat;
+                case StringAlignment.TopRight: return topRightFormat;
+                case StringAlignment.CenterLeft: return centerLeftFormat;
+                case StringAlignment.Default: return defaultFormat;
+                default: throw new ApplicationException("Unhandled string alignment");
+            }
+        }
+
+        private readonly XStringFormat defaultFormat = CreateStringFormat(XStringAlignment.Near, XLineAlignment.BaseLine);
+        private readonly XStringFormat centeredFormat = CreateStringFormat(XStringAlignment.Center, XLineAlignment.Center);
+        private readonly XStringFormat topLeftFormat = CreateStringFormat(XStringAlignment.Near, XLineAlignment.Near);
+        private readonly XStringFormat topCenterFormat = CreateStringFormat(XStringAlignment.Center, XLineAlignment.Near);
+        private readonly XStringFormat topRightFormat = CreateStringFormat(XStringAlignment.Far, XLineAlignment.Near);
+        private readonly XStringFormat centerLeftFormat = CreateStringFormat(XStringAlignment.Near, XLineAlignment.Center);
+        #endregion
 
         #region IDisposable Support
         private bool disposedValue = false; // To detect redundant calls

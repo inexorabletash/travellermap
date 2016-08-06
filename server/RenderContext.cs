@@ -695,7 +695,7 @@ namespace Maps.Rendering
                 matrix.TranslatePrepend(center.X, center.Y);
                 matrix.ScalePrepend(1 / Astrometrics.ParsecScaleX, 1 / Astrometrics.ParsecScaleY);
                 graphics.MultiplyTransform(matrix);
-                graphics.DrawString(glyph, font, solidBrush, 0, 0, RenderUtil.StringFormatCentered);
+                graphics.DrawString(glyph, font, solidBrush, 0, 0, StringAlignment.Centered);
             }
         }
 
@@ -832,7 +832,7 @@ namespace Maps.Rendering
                             matrix.TranslatePrepend(px + 0.5f, py + yOffset);
                             matrix.ScalePrepend(styles.hexContentScale / Astrometrics.ParsecScaleX, styles.hexContentScale / Astrometrics.ParsecScaleY);
                             graphics.MultiplyTransform(matrix);
-                            graphics.DrawString(hex, styles.hexNumber.Font, solidBrush, 0, 0, RenderUtil.StringFormatTopCenter);
+                            graphics.DrawString(hex, styles.hexNumber.Font, solidBrush, 0, 0, StringAlignment.TopCenter);
                         }
                     }
                 }
@@ -1015,7 +1015,7 @@ namespace Maps.Rendering
                                 case Stylesheet.HexCoordinateStyle.Subsector: hex = world.SubsectorHex; break;
                             }
                             solidBrush.Color = styles.hexNumber.textColor;
-                            graphics.DrawString(hex, styles.hexNumber.Font, solidBrush, 0.0f, -0.5f, RenderUtil.StringFormatTopCenter);
+                            graphics.DrawString(hex, styles.hexNumber.Font, solidBrush, 0.0f, -0.5f, StringAlignment.TopCenter);
                         }
 #endregion
                     }
@@ -1057,7 +1057,7 @@ namespace Maps.Rendering
                                 if (styles.lowerCaseAllegiance)
                                     alleg = alleg.ToLowerInvariant();
 
-                                graphics.DrawString(alleg, styles.worlds.SmallFont, solidBrush, styles.AllegiancePosition.X, styles.AllegiancePosition.Y, RenderUtil.StringFormatCentered);
+                                graphics.DrawString(alleg, styles.worlds.SmallFont, solidBrush, styles.AllegiancePosition.X, styles.AllegiancePosition.Y, StringAlignment.Centered);
                             }
                         }
 #endregion
@@ -1089,7 +1089,7 @@ namespace Maps.Rendering
                                 string uwp = world.UWP;
                                 solidBrush.Color = styles.worlds.textColor;
 
-                                graphics.DrawString(uwp, styles.hexNumber.Font, solidBrush, styles.StarportPosition.X, -styles.StarportPosition.Y, RenderUtil.StringFormatCentered);
+                                graphics.DrawString(uwp, styles.hexNumber.Font, solidBrush, styles.StarportPosition.X, -styles.StarportPosition.Y, StringAlignment.Centered);
                             }
 #endregion
 
@@ -1362,7 +1362,7 @@ namespace Maps.Rendering
                                 uwpMatrix.TranslatePrepend(decorationRadius, 0.0f);
                                 uwpMatrix.ScalePrepend(styles.worlds.textStyle.Scale.Width, styles.worlds.textStyle.Scale.Height);
                                 uwpMatrix.Multiply(uwpMatrix, XMatrixOrder.Prepend);
-                                graphics.DrawString(uwp, styles.hexNumber.Font, solidBrush, styles.StarportPosition.X, -styles.StarportPosition.Y, RenderUtil.StringFormatCenterLeft);
+                                graphics.DrawString(uwp, styles.hexNumber.Font, solidBrush, styles.StarportPosition.X, -styles.StarportPosition.Y, StringAlignment.CenterLeft);
                             }
                         }
 #endregion
@@ -1490,7 +1490,7 @@ namespace Maps.Rendering
                         {
                             for (int dy = outlineStart; dy <= outlineSize; dy += outlineSkip)
                             {
-                                graphics.DrawString(text, font, brush, position.X + sx * dx, position.Y + sy * dy, RenderUtil.StringFormatCentered);
+                                graphics.DrawString(text, font, brush, position.X + sx * dx, position.Y + sy * dy, StringAlignment.Centered);
                             }
                         }
                         break;
@@ -1498,7 +1498,7 @@ namespace Maps.Rendering
             }
 
             brush.Color = color;
-            graphics.DrawString(text, font, brush, position.X, position.Y, RenderUtil.StringFormatCentered);
+            graphics.DrawString(text, font, brush, position.X, position.Y, StringAlignment.Centered);
         }
 
         private static readonly Regex WRAP_REGEX = new Regex(@"\s+(?![a-z])");

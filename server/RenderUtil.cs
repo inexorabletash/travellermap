@@ -65,34 +65,8 @@ namespace Maps.Rendering
                 font = styleRes.GlyphFont;
             }
 
-            g.DrawString(s, font, brush, x, y, StringFormatCentered);
+            g.DrawString(s, font, brush, x, y, StringAlignment.Centered);
         }
-
-
-        private static XStringFormat CreateStringFormat(XStringAlignment alignment, XLineAlignment lineAlignment)
-        {
-            XStringFormat format = new XStringFormat();
-            format.Alignment = alignment;
-            format.LineAlignment = lineAlignment;
-            return format;
-        }
-
-        public static XStringFormat StringFormatCentered { get { return centeredFormat; } }
-        private static readonly XStringFormat centeredFormat = CreateStringFormat(XStringAlignment.Center, XLineAlignment.Center);
-
-        public static XStringFormat StringFormatTopLeft { get { return topLeftFormat; } }
-        private static readonly XStringFormat topLeftFormat = CreateStringFormat(XStringAlignment.Near, XLineAlignment.Near);
-
-        public static XStringFormat StringFormatTopCenter { get { return topCenterFormat; } }
-        private static readonly XStringFormat topCenterFormat = CreateStringFormat(XStringAlignment.Center, XLineAlignment.Near);
-
-        public static XStringFormat StringFormatTopRight { get { return topRightFormat; } }
-        private static readonly XStringFormat topRightFormat = CreateStringFormat(XStringAlignment.Far, XLineAlignment.Near);
-
-        public static XStringFormat StringFormatCenterLeft { get { return centerLeftFormat; } }
-        private static readonly XStringFormat centerLeftFormat = CreateStringFormat(XStringAlignment.Near, XLineAlignment.Center);
-
-
         
         public static XSize MeasureString(XGraphics g, string text, XFont font)
         {
@@ -159,7 +133,7 @@ namespace Maps.Rendering
 
             Util.ForEachZip(lines, sizes, (line, sz) =>
             {
-                g.DrawString(line, font, brush, x + fw* sz.Width, y, XStringFormats.Default);
+                g.DrawString(line, font, brush, x + fw* sz.Width, y, StringAlignment.Default);
                 y += h;
             });
         }

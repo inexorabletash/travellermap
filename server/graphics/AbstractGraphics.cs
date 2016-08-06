@@ -38,7 +38,7 @@ namespace Maps.Rendering
         void DrawImageAlpha(float alpha, AbstractImage image, RectangleF targetRect);
 
         XSize MeasureString(string text, XFont font);
-        void DrawString(string s, XFont font, AbstractBrush brush, double x, double y, XStringFormat format);
+        void DrawString(string s, XFont font, AbstractBrush brush, double x, double y, StringAlignment format);
 
         AbstractGraphicsState Save();
         void Restore(AbstractGraphicsState state);
@@ -109,4 +109,15 @@ namespace Maps.Rendering
             Color = color;
         }
     }
+
+    internal enum StringAlignment
+    {
+        Default,
+        Centered,
+        TopLeft,
+        TopCenter,
+        TopRight,
+        CenterLeft,
+    };
+
 }

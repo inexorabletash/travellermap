@@ -487,7 +487,7 @@ namespace Maps.Rendering
             return scratch.MeasureString(text, font);
         }
 
-        public void DrawString(string s, XFont font, AbstractBrush brush, double x, double y, XStringFormat format)
+        public void DrawString(string s, XFont font, AbstractBrush brush, double x, double y, StringAlignment alignment)
         {
             var e = Append(new Element(ElementNames.TEXT));
             e.content = s;
@@ -503,19 +503,15 @@ namespace Maps.Rendering
             else if (font.Strikeout)
                 e.Set("text-decoration", "line-through");
 
-            switch (format.Alignment)
+            switch (alignment)
             {
-                case XStringAlignment.Near: break;
-                case XStringAlignment.Center: e.Set("text-anchor", "middle"); break;
-                case XStringAlignment.Far: e.Set("text-anchor", "end"); break;
-            }
-
-            switch (format.LineAlignment)
-            {
-                case XLineAlignment.Near: y += font.Size * 0.85; break;
-                case XLineAlignment.Center: y += (font.Size * 0.85) / 2; break;
-                case XLineAlignment.Far: break;
-                case XLineAlignment.BaseLine: break;
+                case StringAlignment.Centered: y += (font.Size * 0.85) / 2; e.Set("text-anchor", "middle"); break;
+                case StringAlignment.TopLeft: y += font.Size * 0.85; break;
+                case StringAlignment.TopCenter: y += font.Size * 0.85; e.Set("text-anchor", "middle"); break;
+                case StringAlignment.TopRight: y += font.Size * 0.85; e.Set("text-anchor", "end"); break;
+                case StringAlignment.CenterLeft: y += (font.Size * 0.85) / 2; break;
+                case StringAlignment.Default: break;
+                default: throw new ApplicationException("Unhandled string alignment");
             }
 
             e.Set("x", x);
