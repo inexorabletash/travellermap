@@ -238,7 +238,7 @@ namespace Maps.Rendering
     internal class SVGGraphics : MGraphics
     {
         public const string MediaTypeName = "image/svg+xml";
-        private const string NumberFormat = "G6";
+        private const string NumberFormat = "G5";
 
         private class Element
         {
@@ -287,9 +287,9 @@ namespace Maps.Rendering
             public void Set(string name, double value) { attributes[name] = value.ToString(NumberFormat, CultureInfo.InvariantCulture); }
             public void Set(string name, XColor color) {
                 if (color.IsEmpty || color.A == 0)
-                    attributes[name] = "None";
-                else if (color.A != 1.0)
-                    attributes[name] = string.Format("rgba({0},{1},{2},{3:G6})", color.R, color.G, color.B, color.A);
+                    return; // Inherits "None" from root
+                else if (color.A < 1)
+                    attributes[name] = string.Format("rgba({0},{1},{2},{3:G5})", color.R, color.G, color.B, color.A);
                 else
                     attributes[name] = string.Format("rgb({0},{1},{2})", color.R, color.G, color.B);
             }
@@ -330,6 +330,7 @@ namespace Maps.Rendering
             public const string POLYLINE = "polyline";
             public const string RECT = "rect";
             public const string ELLIPSE = "ellipse";
+            public const string CIRCLE = "circle";
             public const string TEXT = "text";
             public const string IMAGE = "image";
         }
@@ -350,12 +351,12 @@ namespace Maps.Rendering
             {
                 if (!used)
                 {
-                    b.Append(string.Format("M {0:G6} {1:G6}", x, y));
+                    b.Append(string.Format("M{0:G5},{1:G5}", x, y));
                     used = true;
                 }
                 else
                 {
-                    b.Append(string.Format(" m {0:G6} {1:G6}", x - lastX, y - lastY));
+                    b.Append(string.Format("m{0:G5},{1:G5}", x - lastX, y - lastY));
                 }
                 lastX = x;
                 lastY = y;
@@ -364,20 +365,20 @@ namespace Maps.Rendering
             {
                 if (!used)
                 {
-                    b.Append(string.Format("L {0:G6} {1:G6}", x, y));
+                    b.Append(string.Format("L{0:G5},{1:G5}", x, y));
                     used = true;
                 }
                 else if (x == lastX)
                 {
-                    b.Append(string.Format(" v {0:G6}", y - lastY));
+                    b.Append(string.Format("v{0:G5}", y - lastY));
                 }
                 else if (y == lastY)
                 {
-                    b.Append(string.Format(" h {0:G6}", x - lastX));
+                    b.Append(string.Format("h{0:G5}", x - lastX));
                 }
                 else
                 {
-                    b.Append(string.Format(" l {0:G6} {1:G6}", x - lastX, y - lastY));
+                    b.Append(string.Format("l{0:G5},{1:G5}", x - lastX, y - lastY));
                 }
                 lastX = x;
                 lastY = y;
@@ -386,13 +387,13 @@ namespace Maps.Rendering
             {
                 if (!used)
                 {
-                    b.Append(string.Format("A {0:G6} {1:G6} {2:G6} {3} {4} {5:G6} {6:G6}",
+                    b.Append(string.Format("A{0:G5},{1:G5},{2:G5},{3},{4},{5:G5},{6:G5}",
                         rx, ry, phi, arcFlag, sweepFlag, x, y));
                     used = true;
                 }
                 else
                 {
-                    b.Append(string.Format(" a {0:G6} {1:G6} {2:G6} {3} {4} {5:G6} {6:G6}",
+                    b.Append(string.Format("a{0:G5},{1:G5},{2:G5},{3},{4},{5:G5},{6:G5}",
                         rx, ry, phi, arcFlag, sweepFlag, x - lastX, y - lastY));
                 }
                 lastX = x;
@@ -402,13 +403,13 @@ namespace Maps.Rendering
             {
                 if (!used)
                 {
-                    b.Append(string.Format("C {0:G6} {1:G6} {2:G6} {3:G6} {4:G6} {5:G6} ",
+                    b.Append(string.Format("C,{0:G5},{1:G5},{2:G5},{3:G5},{4:G5},{5:G5}",
                         x1, y1, x2, y2, x, y));
                     used = true;
                 }
                 else
                 {
-                    b.Append(string.Format(" c {0:G6} {1:G6} {2:G6} {3:G6} {4:G6} {5:G6} ",
+                    b.Append(string.Format("c{0:G5},{1:G5},{2:G5},{3:G5},{4:G5},{5:G5}",
                         x1 - lastX, y1 - lastY, x2 - lastX, y2 - lastY, x - lastX, y - lastY));
                 }
                 lastX = x;
@@ -417,7 +418,7 @@ namespace Maps.Rendering
 
             public void Close()
             {
-                b.Append(" Z");
+                b.Append("Z");
             }
         }
 
@@ -454,9 +455,15 @@ namespace Maps.Rendering
                     foreach (var entry in child.attributes)
                     {
                         if (e.attributes.ContainsKey(entry.Key))
+                        {
+                            if (entry.Key != "transform")
+                                throw new ApplicationException("Only know how to combine 'transform' attributes");
                             e.attributes[entry.Key] += " " + entry.Value;
+                        }
                         else
+                        {
                             e.attributes[entry.Key] = entry.Value;
+                        }
                     }
                 }
             }
@@ -510,6 +517,9 @@ namespace Maps.Rendering
         {
             this.width = width;
             this.height = height;
+
+            root.Set("fill", "None");
+            root.Set("stroke", "None");
             stack.Push(root);
         }
 
@@ -606,11 +616,20 @@ namespace Maps.Rendering
 
         public void DrawEllipse(XPen pen, XSolidBrush brush, double x, double y, double width, double height)
         {
-            var e = Append(new Element(ElementNames.ELLIPSE));
+            Element e;
+            if (width == height)
+            {
+                e = Append(new Element(ElementNames.CIRCLE));
+                e.Set("r", width / 2);
+            }
+            else
+            {
+                e = Append(new Element(ElementNames.ELLIPSE));
+                e.Set("rx", width / 2);
+                e.Set("ry", height / 2);
+            }
             e.Set("cx", x + width / 2);
             e.Set("cy", y + height / 2);
-            e.Set("rx", width / 2);
-            e.Set("ry", height / 2);
             e.Apply(pen, brush);
         }
         #endregion
@@ -712,23 +731,23 @@ namespace Maps.Rendering
         public void ScaleTransform(double scaleX, double scaleY)
         {
             var e = Open(new Element(ElementNames.G));
-            e.Set("transform", string.Format("scale({0:G6} {1:G6})", scaleX, scaleY));
+            e.Set("transform", string.Format("scale({0:G5} {1:G5})", scaleX, scaleY));
         }
         public void TranslateTransform(double dx, double dy)
         {
             var e = Open(new Element(ElementNames.G));
-            e.Set("transform", string.Format("translate({0:G6} {1:G6})", dx, dy));
+            e.Set("transform", string.Format("translate({0:G5},{1:G5})", dx, dy));
         }
         public void RotateTransform(double angle)
         {
             var e = Open(new Element(ElementNames.G));
-            e.Set("transform", string.Format("rotate({0:G6})", angle));
+            e.Set("transform", string.Format("rotate({0:G5})", angle));
         }
         public void MultiplyTransform(XMatrix m)
         {
             // TODO: Verify matrix order
             var e = Open(new Element(ElementNames.G));
-            e.Set("transform", string.Format("matrix({0:G6} {1:G6} {2:G6} {3:G6} {4:G6} {5:G6})", 
+            e.Set("transform", string.Format("matrix({0:G5},{1:G5},{2:G5},{3:G5},{4:G5},{5:G5})", 
                 m.M11, m.M12, m.M21, m.M22, m.OffsetX, m.OffsetY));
         }
         #endregion
