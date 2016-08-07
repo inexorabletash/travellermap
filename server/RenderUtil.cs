@@ -68,14 +68,6 @@ namespace Maps.Rendering
             g.DrawString(s, font, brush, x, y, StringAlignment.Centered);
         }
         
-        public static XSize MeasureString(XGraphics g, string text, XFont font)
-        {
-            var sizes = text
-                .Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None)
-                .Select(s => g.MeasureString(s, font));
-            return new XSize(sizes.Max(s => s.Width), font.GetHeight() * sizes.Count());
-        }
-
         public enum TextFormat
         {
             TopLeft,
@@ -97,12 +89,12 @@ namespace Maps.Rendering
 
             var lines = text.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None).ToList();
             var sizes = lines.Select(s => g.MeasureString(s, font)).ToList();
-            double h = font.GetHeight();
-            XSize size = new XSize(sizes.Max(s => s.Width), h * sizes.Count());
+            float h = (float)font.GetHeight();
+            SizeF size = new SizeF(sizes.Max(s => s.Width), h * sizes.Count());
 
             // Offset from baseline to top-left. Include a scale factor since glyphs are not fully height.
             // TODO: Get true glyph measurement.
-            y += sizes.First().Height* 0.8;
+            y += sizes.First().Height * 0.8;
             double fw = 0;
             switch (format)
             {
