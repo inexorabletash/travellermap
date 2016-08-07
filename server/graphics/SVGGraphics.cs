@@ -85,20 +85,22 @@ namespace Maps.Rendering
                             // "solid" is SVG default
                             break;
                         case XDashStyle.Dot:
-                            Set("stroke-linecap", "square");
-                            Set("stroke-dasharray", string.Format("0 {0:G2}", pen.Width * 2));
+                            Set("stroke-dasharray", string.Format("{0:G2} {0:G2}", pen.Width));
                             break;
                         case XDashStyle.Dash:
-                            Set("stroke-linecap", "square");
-                            Set("stroke-dasharray", string.Format("{0:G2} {0:G2}", pen.Width * 2));
+                            Set("stroke-dasharray", string.Format("{0:G2} {1:G2}", pen.Width * 2, pen.Width));
                             break;
                         case XDashStyle.DashDot:
-                            Set("stroke-linecap", "square");
-                            Set("stroke-dasharray", string.Format("{0:G2} {0:G2} 0 {0:G2}", pen.Width * 2));
+                            Set("stroke-dasharray", string.Format("{0:G2} {1:G2} {1:G2} {1:G2}", pen.Width * 2, pen.Width));
                             break;
                         case XDashStyle.DashDotDot:
-                            Set("stroke-linecap", "square");
-                            Set("stroke-dasharray", string.Format("{0:G2} {0:G2} 0 {0:G2} 0 {0:G2}", pen.Width * 2));
+                            Set("stroke-dasharray", string.Format("{0:G2} {1:G2} {1:G2} {1:G2} {1:G2} {1:G2}", pen.Width * 2, pen.Width));
+                            break;
+                        case XDashStyle.Custom:
+                            if (pen.CustomDashPattern == null)
+                                throw new ApplicationException("Custom dash style specified but no pattern set");
+                            Set("stroke-dasharray",
+                                string.Join(" ", pen.CustomDashPattern.Select(w => (w * pen.Width).ToString(NumberFormat))));
                             break;
                     }
                 }

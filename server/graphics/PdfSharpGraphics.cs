@@ -17,8 +17,18 @@ namespace Maps.Rendering
             this.pen = new XPen(Color.Empty);
         }
 
-        private void Apply(AbstractBrush brush) { this.brush.Color = brush.Color; }
-        private void Apply(AbstractPen pen) { this.pen.Color = pen.Color; this.pen.Width = pen.Width; this.pen.DashStyle = pen.DashStyle; }
+        private void Apply(AbstractBrush brush)
+        {
+            this.brush.Color = brush.Color;
+        }
+        private void Apply(AbstractPen pen)
+        {
+            this.pen.Color = pen.Color;
+            this.pen.Width = pen.Width;
+            this.pen.DashStyle = pen.DashStyle;
+            if (pen.CustomDashPattern != null)
+                this.pen.DashPattern = pen.CustomDashPattern;
+        }
         private void Apply(AbstractPen pen, AbstractBrush brush) { Apply(pen); Apply(brush); }
 
         public bool SupportsWingdings { get { return true; } }

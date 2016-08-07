@@ -120,6 +120,8 @@ namespace Maps.Rendering
         public Color Color { get; set; }
         public double Width { get; set; }
         public XDashStyle DashStyle { get; set; }
+        public double[] CustomDashPattern { get; set; }
+
         public AbstractPen() { }
         public AbstractPen(Color color, double width = 1)
         {

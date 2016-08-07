@@ -118,24 +118,6 @@ namespace Maps.Rendering
             dashPattern = null;
         }
 
-        public XDashStyle DashStyle
-        {
-            get { return dashStyle; }
-            set { dashStyle = value; }
-        }
-
-        public double[] DashPattern
-        {
-            get { return dashPattern; }
-            set { dashPattern = value; }
-        }
-
-        //public void ScaleTransform( float x, float y )
-        //{
-        //    this.scaleX = x;
-        //    this.scaleY = y;
-        //}
-
         public void Apply(ref AbstractPen pen)
         {
             if (width == 0f)
@@ -144,6 +126,7 @@ namespace Maps.Rendering
             pen.Color = color;
             pen.Width = width;
             pen.DashStyle = dashStyle;
+            pen.CustomDashPattern = dashPattern;
         }
     }
 
@@ -424,7 +407,7 @@ namespace Maps.Rendering
             amberZone.pen.width = redZone.pen.width = blueZone.pen.width = 0.05f * penScale;
 
             macroRoutes.pen.width = borderPenWidth;
-            macroRoutes.pen.DashStyle = XDashStyle.Dash;
+            macroRoutes.pen.dashStyle = XDashStyle.Dash;
 
             populationOverlay.fillColor = Color.FromArgb(0x80, 0xff, 0xff, 0x00);
             importanceOverlay.fillColor = Color.FromArgb(0x20, 0x80, 0xff, 0x00);
@@ -697,10 +680,12 @@ namespace Maps.Rendering
                         parsecGrid.visible = false;
 
                         subsectorGrid.pen.width = 0.03f * (64.0f / (float)scale);
-                        subsectorGrid.pen.DashPattern = new double[] { 10.0, 8.0 };
+                        subsectorGrid.pen.dashStyle = XDashStyle.Custom;
+                        subsectorGrid.pen.dashPattern = new double[] { 10.0, 8.0 };
 
                         sectorGrid.pen.width = 0.03f * (64.0f / (float)scale);
-                        sectorGrid.pen.DashPattern = new double[] { 10.0, 8.0 };
+                        sectorGrid.pen.dashStyle = XDashStyle.Custom;
+                        sectorGrid.pen.dashPattern = new double[] { 10.0, 8.0 };
 
                         worlds.textBackgroundStyle = TextBackgroundStyle.Shadow;
 
