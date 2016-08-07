@@ -212,7 +212,7 @@ namespace Maps.API
 
                 if (ctx.DrawBorder && ctx.ClipPath != null)
                 {
-                    using (RenderUtil.SaveState(graphics))
+                    using (graphics.Save())
                     {
                         // Render border in world space
                         XMatrix m = ctx.ImageSpaceToWorldSpace;
@@ -242,7 +242,7 @@ namespace Maps.API
                     }
                 }
 
-                using (RenderUtil.SaveState(graphics))
+                using (graphics.Save())
                 {
                     ctx.Render(graphics);
                 }

@@ -145,7 +145,7 @@ namespace Maps.Rendering
             if (bounds.IntersectsWith(rect))
             {
                 var path = Path;
-                using (RenderUtil.SaveState(graphics))
+                using (graphics.Save())
                 {
                     XMatrix matrix = new XMatrix();
                     matrix.ScalePrepend(ScaleX, ScaleY);
@@ -173,7 +173,7 @@ namespace Maps.Rendering
             
                     PointF pos = NamePosition;// PointF( bounds.Left + bounds.Width / 2, bounds.Top + bounds.Height / 2 );
 
-                    using (RenderUtil.SaveState(graphics))
+                    using (graphics.Save())
                     {
                         XMatrix matrix = new XMatrix();
                         matrix.TranslatePrepend(pos.X, pos.Y);
@@ -198,7 +198,7 @@ namespace Maps.Rendering
             {
                 var path = Path;
 
-                using (RenderUtil.SaveState(graphics))
+                using (graphics.Save())
                 {
                     XMatrix matrix = new XMatrix();
                     matrix.ScalePrepend(ScaleX, ScaleY);
@@ -252,7 +252,7 @@ namespace Maps.Rendering
 
             Point pt = Astrometrics.LocationToCoordinates(Location);
 
-            using (RenderUtil.SaveState(graphics))
+            using (graphics.Save())
             {
                 graphics.TranslateTransform(pt.X, pt.Y);
                 graphics.ScaleTransform(1.0f / Astrometrics.ParsecScaleX, 1.0f / Astrometrics.ParsecScaleY);

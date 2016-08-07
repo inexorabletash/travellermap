@@ -45,7 +45,35 @@ namespace Maps.Rendering
     }
 
     // TODO: Make this IDisposable
-    internal interface AbstractGraphicsState { }
+    internal abstract class AbstractGraphicsState : IDisposable {
+
+        private AbstractGraphics g;
+        private bool restored = false;
+
+        protected AbstractGraphicsState(AbstractGraphics graphics)
+        {
+            g = graphics;
+        }
+
+        public void Restore()
+        {
+            g.Restore(this);
+            g = null;
+        }
+
+        #region IDisposable Members
+
+        public void Dispose()
+        {
+            if (g != null)
+            {
+                g.Restore(this);
+                g = null;
+            }
+        }
+
+        #endregion
+    }
 
     internal class AbstractImage
     {
@@ -132,4 +160,6 @@ namespace Maps.Rendering
             Types = types;
         }
     }
+
+    // TODO: Abstract out Font, Matrix
 }

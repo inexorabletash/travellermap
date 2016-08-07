@@ -1145,7 +1145,7 @@ table#features, #features th, #features td { border: solid 1px black; }
         <dt>style <dd><a href="#options">rendering style</a>
         <dt>w <dd>width of image to generate (pixels, default 256)
         <dt>h <dd>height of image to generate (pixels, default 256)
-        <dt>accept <dd>specify <code>application/pdf</code> for PDF output; otherwise output depends on options
+        <dt>accept <dd>specify <code>application/pdf</code> for PDF output or <code>image/svg+xml</code> for SVG; otherwise output depends on options
     </dl>
 
     <h4>Notes:</h4>
@@ -1153,7 +1153,7 @@ table#features, #features th, #features td { border: solid 1px black; }
         <li>Generate a PNG or JPEG image of the specified region.
         <li>Coordinates are in tile-space coordinates (optimized for tile rendering, not navigation); conversion functions are in the script
         <li>Bitmap image format depends on selected options ("Candy" produces JPEG, otherwise PNG)
-        <li>The HTTP <code>Accept</code> header can be used to specify <code>application/pdf</code> instead of the query parameter.
+        <li>The HTTP <code>Accept</code> header can be used to specify <code>application/pdf</code> or <code>image/svg+xml</code>instead of the query parameter.
     </ul>
 
     <h4>Example:</h4>
@@ -1250,7 +1250,7 @@ table#features, #features th, #features td { border: solid 1px black; }
     <dt>rotation <dd>rotate the image, 1 for 90&deg; clockwise, 2 for 180&deg;, 3 for 90&deg; counterclockwise
     <dt>options <dd><a href="#options">rendering options</a>
     <dt>style <dd><a href="#options">rendering style</a>
-    <dt>accept <dd>specify <code>application/pdf</code> for PDF output
+    <dt>accept <dd>specify <code>application/pdf</code> for PDF output or <code>image/svg+xml</code> for SVG
     <dt>thumb=1 <dd>render a thumbnail (16 pixels/parsec)
 </dl>
 
@@ -1258,7 +1258,7 @@ table#features, #features th, #features td { border: solid 1px black; }
 <ul>
     <li>Generate a PNG or JPEG image of the specified sector (or just subsector), or an arbitrary rectangle of space.
     <li>Image format depends on selected options ("Candy" produces JPEG, otherwise PNG)
-    <li>The HTTP <code>Accept</code> header can be used to specify <code>application/pdf</code> instead of the query parameter.
+    <li>The HTTP <code>Accept</code> header can be used to specify <code>application/pdf</code> or <code>image/svg+xml</code> instead of the query parameter.
     <li>The <a href="../poster">Poster Maker</a> provides a friendly user interface to this API.
 </ul>
 
@@ -1352,14 +1352,14 @@ table#features, #features th, #features td { border: solid 1px black; }
         <dt>options <dd><a href="#options">rendering options</a>
         <dt>style <dd><a href="#options">rendering style</a>
         <dt>border=0 <dd>don't render a thick border around the jumpmap
-        <dt>accept <dd>specify <code>application/pdf</code> for PDF output
+        <dt>accept <dd>specify <code>application/pdf</code> for PDF output or <code>image/svg+xml</code> for SVG
     </dl>
 
     <h4>Notes:</h4>
     <ul>
         <li>Generate a PNG image of the specified region.
         <li>PNG images (indexed, 8-bits per pixel) are returned unless PDF is requested; areas outside the hex borders will be transparent.
-        <li>The HTTP <code>Accept</code> header can be used to specify <code>application/pdf</code> instead of the query parameter.
+        <li>The HTTP <code>Accept</code> header can be used to specify <code>application/pdf</code> or <code>image/svg+xml</code> instead of the query parameter.
         <li>The <a href="../poster">Poster Maker</a> provides a friendly user interface to this API.
     </ul>
 

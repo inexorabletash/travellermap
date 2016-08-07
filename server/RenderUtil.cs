@@ -140,7 +140,7 @@ namespace Maps.Rendering
 
         public static void DrawLabel(AbstractGraphics g, string text, PointF labelPos, XFont font, AbstractBrush brush, LabelStyle labelStyle)
         {
-            using (RenderUtil.SaveState(g))
+            using (g.Save())
             {
                 if (labelStyle.Uppercase)
                     text = text.ToUpper();
@@ -163,38 +163,6 @@ namespace Maps.Rendering
                 DrawString(g, text, font, brush, 0, 0);
             }
         }
-
-        public static SaveGraphicsState SaveState(AbstractGraphics g)
-        {
-            return new SaveGraphicsState(g);
-        }
-
-        sealed internal class SaveGraphicsState : IDisposable
-        {
-            private AbstractGraphics g;
-            private AbstractGraphicsState gs;
-
-            public SaveGraphicsState(AbstractGraphics graphics)
-            {
-                g = graphics;
-                gs = graphics.Save();
-            }
-
-            #region IDisposable Members
-
-            public void Dispose()
-            {
-                if (g != null && gs != null)
-                {
-                    g.Restore(gs);
-                    g = null;
-                    gs = null;
-                }
-            }
-
-            #endregion
-        }
-
     }
 
     internal struct Glyph
@@ -209,46 +177,23 @@ namespace Maps.Rendering
         public GlyphBias Bias { get; set; }
         public bool IsHighlighted { get; set; }
 
-        public Glyph(string chars)
-            : this()
+        public Glyph(string chars, bool highlight = false)
         {
             Characters = chars;
             Bias = GlyphBias.None;
-            IsHighlighted = false;
+            IsHighlighted = highlight;
         }
-        public bool Printable
+        public Glyph(Glyph other, bool highlight = false, GlyphBias bias = GlyphBias.None)
+        {
+            this.Characters = other.Characters;
+            this.IsHighlighted = highlight;
+            this.Bias = bias;
+        }
+
+        public bool IsPrintable
         {
             get { return Characters.Length > 0; }
         }
-        public Glyph Highlight
-        {
-            get
-            {
-                Glyph g = this;
-                g.IsHighlighted = true;
-                return g;
-            }
-        }
-        public Glyph BiasBottom
-        {
-            get
-            {
-                Glyph g = this;
-                g.Bias = GlyphBias.Bottom;
-                return g;
-            }
-        }
-
-        public Glyph BiasTop
-        {
-            get
-            {
-                Glyph g = this;
-                g.Bias = GlyphBias.Top;
-                return g;
-            }
-        }
-
 
         public static readonly Glyph None = new Glyph("");
         public static readonly Glyph Diamond = new Glyph("\x2666"); // U+2666 (BLACK DIAMOND SUIT)
@@ -261,17 +206,17 @@ namespace Maps.Rendering
         public static readonly Glyph StarStar = new Glyph("**"); // Would prefer U+2217 (ASTERISK OPERATOR) but font coverage is poor
 
         // Research Stations
-        public static readonly Glyph Alpha = new Glyph("\x0391").Highlight;
-        public static readonly Glyph Beta = new Glyph("\x0392").Highlight;
-        public static readonly Glyph Gamma = new Glyph("\x0393").Highlight;
-        public static readonly Glyph Delta = new Glyph("\x0394").Highlight;
-        public static readonly Glyph Epsilon = new Glyph("\x0395").Highlight;
-        public static readonly Glyph Zeta = new Glyph("\x0396").Highlight;
-        public static readonly Glyph Eta = new Glyph("\x0397").Highlight;
-        public static readonly Glyph Theta = new Glyph("\x0398").Highlight;
+        public static readonly Glyph Alpha = new Glyph("\x0391", highlight: true);
+        public static readonly Glyph Beta = new Glyph("\x0392", highlight: true);
+        public static readonly Glyph Gamma = new Glyph("\x0393", highlight: true);
+        public static readonly Glyph Delta = new Glyph("\x0394", highlight: true);
+        public static readonly Glyph Epsilon = new Glyph("\x0395", highlight: true);
+        public static readonly Glyph Zeta = new Glyph("\x0396", highlight: true);
+        public static readonly Glyph Eta = new Glyph("\x0397", highlight: true);
+        public static readonly Glyph Theta = new Glyph("\x0398", highlight: true);
 
         // Other Textual
-        public static readonly Glyph Prison = new Glyph("P").Highlight;
+        public static readonly Glyph Prison = new Glyph("P", highlight: true);
         public static readonly Glyph Reserve = new Glyph("R");
         public static readonly Glyph ExileCamp = new Glyph("X");
 
@@ -299,20 +244,20 @@ namespace Maps.Rendering
         }
 
         private static readonly RegexDictionary<Glyph> s_baseGlyphTable = new GlobDictionary<Glyph> {
-            { "*.C", Glyph.StarStar.BiasBottom }, // Vargr Corsair Base
-            { "Im.D", Glyph.Square.BiasBottom }, // Imperial Depot
-            { "*.D", Glyph.Square.Highlight}, // Depot
-            { "*.E", Glyph.StarStar.BiasBottom }, // Hiver Embassy
-            { "*.K", Glyph.Star5Point.Highlight.BiasTop }, // Naval Base
-            { "*.M", Glyph.Star4Point.BiasBottom }, // Military Base
-            { "*.N", Glyph.Star5Point.BiasTop }, // Imperial Naval Base
-            { "*.O", Glyph.Square.Highlight.BiasTop }, // K'kree Naval Outpost (non-standard)
-            { "*.R", Glyph.StarStar.BiasBottom }, // Aslan Clan Base
-            { "*.S", Glyph.Triangle.BiasBottom }, // Imperial Scout Base
-            { "*.T", Glyph.Star5Point.Highlight.BiasTop }, // Aslan Tlaukhu Base
-            { "*.V", Glyph.Circle.BiasBottom }, // Exploration Base
-            { "Zh.W", Glyph.Diamond.Highlight }, // Zhodani Relay Station
-            { "*.W", Glyph.Triangle.Highlight.BiasBottom }, // Imperial Scout Waystation
+            { "*.C", new Glyph(Glyph.StarStar, bias:GlyphBias.Bottom) }, // Vargr Corsair Base
+            { "Im.D", new Glyph(Glyph.Square, bias:GlyphBias.Bottom) }, // Imperial Depot
+            { "*.D", new Glyph(Glyph.Square, highlight:true)}, // Depot
+            { "*.E", new Glyph(Glyph.StarStar, bias:GlyphBias.Bottom) }, // Hiver Embassy
+            { "*.K", new Glyph(Glyph.Star5Point, highlight:true, bias:GlyphBias.Top) }, // Naval Base
+            { "*.M", new Glyph(Glyph.Star4Point, bias:GlyphBias.Bottom) }, // Military Base
+            { "*.N", new Glyph(Glyph.Star5Point, bias:GlyphBias.Top) }, // Imperial Naval Base
+            { "*.O", new Glyph(Glyph.Square, highlight:true, bias:GlyphBias.Top) }, // K'kree Naval Outpost (non-standard)
+            { "*.R", new Glyph(Glyph.StarStar, bias:GlyphBias.Bottom) }, // Aslan Clan Base
+            { "*.S", new Glyph(Glyph.Triangle, bias:GlyphBias.Bottom) }, // Imperial Scout Base
+            { "*.T", new Glyph(Glyph.Star5Point, highlight:true, bias:GlyphBias.Top) }, // Aslan Tlaukhu Base
+            { "*.V", new Glyph(Glyph.Circle, bias:GlyphBias.Bottom) }, // Exploration Base
+            { "Zh.W", new Glyph(Glyph.Diamond, highlight:true)}, // Zhodani Relay Station
+            { "*.W", new Glyph(Glyph.Triangle, highlight:true, bias:GlyphBias.Bottom) }, // Imperial Scout Waystation
             { "Zh.Z", Glyph.Diamond }, // Zhodani Base (Special case for "Zh.KM")
             { "*.*", Glyph.Circle }, // Independent Base
         };
@@ -646,9 +591,9 @@ namespace Maps.Rendering
             clipPathPointTypes = clipPathTypes.ToArray();
             clipPathPointTypes[clipPathPointTypes.Length - 1] |= (byte)PathPointType.CloseSubpath;
         }
-
     }
 
+    #region Stellar Rendering
     internal struct StarProps
     {
         public StarProps(Color color, Color border, float radius) { this.color = color; this.borderColor = border;  this.radius = radius; }
@@ -729,4 +674,5 @@ namespace Maps.Rendering
             return new PointF(dx[index], dy[index]);
         }
     }
+    #endregion
 }

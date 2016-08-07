@@ -548,7 +548,7 @@ namespace Maps.Rendering
         #region State
         public AbstractGraphicsState Save()
         {
-            var state = new State(new Element(ElementNames.G));
+            var state = new State(this, new Element(ElementNames.G));
             Open(state.element);
             return state;
         }
@@ -563,7 +563,7 @@ namespace Maps.Rendering
         private class State : AbstractGraphicsState
         {
             public Element element;
-            public State(Element e) { element = e; }
+            public State(AbstractGraphics g, Element e) : base(g) { element = e; }
         }
         #endregion
 
@@ -724,6 +724,5 @@ namespace Maps.Rendering
             Dispose(true);
         }
         #endregion
-
     }
 }

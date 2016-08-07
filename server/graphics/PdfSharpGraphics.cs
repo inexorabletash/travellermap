@@ -117,8 +117,8 @@ namespace Maps.Rendering
         public XSize MeasureString(string text, XFont font) { return g.MeasureString(text, font); }
         public void DrawString(string s, XFont font, AbstractBrush brush, double x, double y, StringAlignment format) { Apply(brush); g.DrawString(s, font, this.brush, x, y, Format(format)); }
 
-        public AbstractGraphicsState Save() { return new MXGraphicsState(g.Save()); }
-        public void Restore(AbstractGraphicsState state) { g.Restore(((MXGraphicsState)state).state); }
+        public AbstractGraphicsState Save() { return new State(this, g.Save()); }
+        public void Restore(AbstractGraphicsState state) { g.Restore(((State)state).state); }
 
         #region StringFormats
         private static XStringFormat CreateStringFormat(XStringAlignment alignment, XLineAlignment lineAlignment)
@@ -173,10 +173,10 @@ namespace Maps.Rendering
         }
         #endregion
 
-        private class MXGraphicsState : AbstractGraphicsState
+        private class State : AbstractGraphicsState
         {
             public XGraphicsState state;
-            public MXGraphicsState(XGraphicsState state) { this.state = state; }
+            public State(AbstractGraphics g, XGraphicsState state) : base(g) { this.state = state; }
         }
 
     }

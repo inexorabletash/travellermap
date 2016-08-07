@@ -185,7 +185,7 @@ namespace Maps.Rendering
                 //
                 //////////////////////////////////////////////////////////////
 
-                using (RenderUtil.SaveState(graphics))
+                using (graphics.Save())
                 {
                     if (ClipPath != null)
                     {
@@ -210,7 +210,7 @@ namespace Maps.Rendering
 
                 graphics.MultiplyTransform(imageSpaceToWorldSpace);
 
-                using (RenderUtil.SaveState(graphics))
+                using (graphics.Save())
                 {
                     //------------------------------------------------------------
                     // Explicit Clipping
@@ -245,7 +245,7 @@ namespace Maps.Rendering
                     //------------------------------------------------------------
                     if (styles.showGalaxyBackground && styles.deepBackgroundOpacity > 0f && galacticBounds.IntersectsWith(tileRect))
                     {
-                        using (RenderUtil.SaveState(graphics))
+                        using (graphics.Save())
                         {
                             graphics.MultiplyTransform(xformLinehanToMikesh);
                             AbstractImage galaxyImage = styles.lightBackground ? s_galaxyImageGray : s_galaxyImage;
@@ -279,7 +279,7 @@ namespace Maps.Rendering
                     //------------------------------------------------------------
                     if (Silly)
                     {
-                        using (RenderUtil.SaveState(graphics))
+                        using (graphics.Save())
                         {
                             // Render in image-space
                             graphics.MultiplyTransform(worldSpaceToImageSpace);
@@ -509,7 +509,7 @@ namespace Maps.Rendering
                         solidBrush.Color = styles.megaNames.textColor;
                         foreach (var label in megaLabels)
                         {
-                            using (RenderUtil.SaveState(graphics))
+                            using (graphics.Save())
                             {
                                 XFont font = label.minor ? styles.megaNames.SmallFont : styles.megaNames.Font;
                                 XMatrix matrix = new XMatrix();
@@ -689,7 +689,7 @@ namespace Maps.Rendering
         private void OverlayGlyph(string glyph, XFont font, Point coordinates)
         {
             PointF center = Astrometrics.HexToCenter(coordinates);
-            using (RenderUtil.SaveState(graphics))
+            using (graphics.Save())
             {
                 XMatrix matrix = new XMatrix();
                 matrix.TranslatePrepend(center.X, center.Y);
@@ -750,7 +750,7 @@ namespace Maps.Rendering
                 solidBrush.Color = styles.macroRoutes.textHighlightColor;
                 foreach (var label in labels)
                 {
-                    using (RenderUtil.SaveState(graphics))
+                    using (graphics.Save())
                     {
                         XMatrix matrix = new XMatrix();
                         matrix.ScalePrepend(1.0f / Astrometrics.ParsecScaleX, 1.0f / Astrometrics.ParsecScaleY);
@@ -826,7 +826,7 @@ namespace Maps.Rendering
                             case Stylesheet.HexCoordinateStyle.Sector: hex = loc.HexString; break;
                             case Stylesheet.HexCoordinateStyle.Subsector: hex = loc.SubsectorHexString; break;
                         }
-                        using (RenderUtil.SaveState(graphics))
+                        using (graphics.Save())
                         {
                             XMatrix matrix = new XMatrix();
                             matrix.TranslatePrepend(px + 0.5f, py + yOffset);
@@ -856,7 +856,7 @@ namespace Maps.Rendering
             //     into a texture, then fill the galaxy vector with it
             // (3) Tile is entire outside the galaxy - don't render stars
 
-            using (RenderUtil.SaveState(graphics))
+            using (graphics.Save())
             {
                 graphics.SmoothingMode = XSmoothingMode.HighQuality;
                 solidBrush.Color = styles.pseudoRandomStars.fillColor;
@@ -876,7 +876,7 @@ namespace Maps.Rendering
         private void DrawNebulaBackground()
         {
             // Render in image-space so it scales/tiles nicely
-            using (RenderUtil.SaveState(graphics))
+            using (graphics.Save())
             {
                 graphics.MultiplyTransform(worldSpaceToImageSpace);
 
@@ -921,7 +921,7 @@ namespace Maps.Rendering
                 (styles.worldDetails.HasFlag(WorldDetails.KeyNames) && (isCapital || isHiPop));
             bool renderUWP = styles.worldDetails.HasFlag(WorldDetails.Uwp);
 
-            using (RenderUtil.SaveState(graphics))
+            using (graphics.Save())
             {
                 AbstractPen pen = new AbstractPen(Color.Empty);
                 AbstractBrush solidBrush = new AbstractBrush();
@@ -988,7 +988,7 @@ namespace Maps.Rendering
 
                                     if (renderName && styles.fillMicroBorders)
                                     {
-                                        using (RenderUtil.SaveState(graphics))
+                                        using (graphics.Save())
                                         {
                                             graphics.IntersectClip(new RectangleF(-.5f, -.5f, 1f, renderUWP ? 0.65f : 0.75f));
                                             graphics.DrawEllipse(pen, -0.4f, -0.4f, 0.8f, 0.8f);
@@ -1108,7 +1108,7 @@ namespace Maps.Rendering
                                 if (bases.Length > 0)
                                 {
                                     Glyph glyph = Glyph.FromBaseCode(world.BaseAllegiance, bases[0]);
-                                    if (glyph.Printable)
+                                    if (glyph.IsPrintable)
                                     {
                                         PointF pt = styles.BaseTopPosition;
                                         if (glyph.Bias == Glyph.GlyphBias.Bottom)
@@ -1126,7 +1126,7 @@ namespace Maps.Rendering
                                 if (bases.Length > 1)
                                 {
                                     Glyph glyph = Glyph.FromBaseCode(world.LegacyAllegiance, bases[1]);
-                                    if (glyph.Printable)
+                                    if (glyph.IsPrintable)
                                     {
                                         PointF pt = bottomUsed ? styles.BaseTopPosition : styles.BaseBottomPosition;
                                         solidBrush.Color = glyph.IsHighlighted ? styles.worlds.textHighlightColor : styles.worlds.textColor;
@@ -1356,7 +1356,7 @@ namespace Maps.Rendering
                             string uwp = world.UWP;
                             solidBrush.Color = styles.worlds.textColor;
 
-                            using (RenderUtil.SaveState(graphics))
+                            using (graphics.Save())
                             {
                                 XMatrix uwpMatrix = new XMatrix();
                                 uwpMatrix.TranslatePrepend(decorationRadius, 0.0f);
@@ -1374,7 +1374,7 @@ namespace Maps.Rendering
                             if (isHiPop)
                                 name = name.ToUpperInvariant();
 
-                            using (RenderUtil.SaveState(graphics))
+                            using (graphics.Save())
                             {
                                 Color textColor = (isCapital && styles.worldDetails.HasFlag(WorldDetails.Highlight))
                                     ? styles.worlds.textHighlightColor : styles.worlds.textColor;
@@ -1401,7 +1401,7 @@ namespace Maps.Rendering
         private static readonly Regex STELLAR_REGEX = new Regex(@"([OBAFGKM][0-9] ?(?:Ia|Ib|II|III|IV|V|VI|VII|D)|D|BD|BH)", RegexOptions.Compiled | RegexOptions.CultureInvariant);
         private void DrawStars(World world)
         {
-            using (RenderUtil.SaveState(graphics))
+            using (graphics.Save())
             {
                 graphics.SmoothingMode = XSmoothingMode.AntiAlias;
                 PointF center = Astrometrics.HexToCenter(world.Coordinates);
@@ -1505,7 +1505,7 @@ namespace Maps.Rendering
 
         private void DrawLabels()
         {
-            using (RenderUtil.SaveState(graphics))
+            using (graphics.Save())
             {
                 AbstractBrush solidBrush = new AbstractBrush();
 
@@ -1561,7 +1561,7 @@ namespace Maps.Rendering
         
         private void DrawRoutes()
         {
-            using (RenderUtil.SaveState(graphics))
+            using (graphics.Save())
             {
                 graphics.SmoothingMode = XSmoothingMode.AntiAlias;
                 AbstractPen pen = new AbstractPen(Color.Empty);
@@ -1695,7 +1695,7 @@ namespace Maps.Rendering
             {
                 AbstractPath sectorClipPath = null;
 
-                using (RenderUtil.SaveState(graphics))
+                using (graphics.Save())
                 {
                     // This looks craptacular for Candy style borders :(
                     if (ClipOutsectorBorders &&
@@ -1740,7 +1740,7 @@ namespace Maps.Rendering
                         if (styles.microBorderStyle != MicroBorderStyle.Curve)
                         {
                             // Clip to the path itself - this means adjacent borders don't clash
-                            using (RenderUtil.SaveState(graphics))
+                            using (graphics.Save())
                             {
                                 graphics.IntersectClip(drawPath);
                                 switch (layer)
