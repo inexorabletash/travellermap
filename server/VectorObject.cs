@@ -156,7 +156,7 @@ namespace Maps.Rendering
             }
         }
 
-        internal void DrawName(AbstractGraphics graphics, RectangleF rect, XFont font, AbstractBrush textBrush, LabelStyle labelStyle)
+        internal void DrawName(AbstractGraphics graphics, RectangleF rect, Font font, AbstractBrush textBrush, LabelStyle labelStyle)
         {
             if (graphics == null)
                 throw new ArgumentNullException("graphics");
@@ -245,7 +245,7 @@ namespace Maps.Rendering
         public int LabelBiasY { get; set; }
 
 
-        internal void Paint(AbstractGraphics graphics, Color dotColor, AbstractBrush labelBrush, XFont labelFont)
+        internal void Paint(AbstractGraphics graphics, Color dotColor, AbstractBrush labelBrush, Font labelFont)
         {
             if (graphics == null)
                 throw new ArgumentNullException("graphics");

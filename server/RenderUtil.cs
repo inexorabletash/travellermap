@@ -53,7 +53,7 @@ namespace Maps.Rendering
 
         public static void DrawGlyph(AbstractGraphics g, Glyph glyph, FontCache styleRes, AbstractBrush brush, float x, float y)
         {
-            XFont font;
+            Font font;
             string s = glyph.Characters;
             if (g.SupportsWingdings && s.All(c => DING_MAP.ContainsKey(c)))
             {
@@ -82,7 +82,7 @@ namespace Maps.Rendering
         }
 
         // TextFormat controls both the interpretation of the drawing origin and text alignment.
-        public static void DrawString(AbstractGraphics g, string text, XFont font, AbstractBrush brush, double x, double y, TextFormat format = TextFormat.Center)
+        public static void DrawString(AbstractGraphics g, string text, Font font, AbstractBrush brush, double x, double y, TextFormat format = TextFormat.Center)
         {
             if (string.IsNullOrWhiteSpace(text))
                 return;
@@ -130,7 +130,7 @@ namespace Maps.Rendering
             });
         }
 
-        public static void DrawLabel(AbstractGraphics g, string text, PointF labelPos, XFont font, AbstractBrush brush, LabelStyle labelStyle)
+        public static void DrawLabel(AbstractGraphics g, string text, PointF labelPos, Font font, AbstractBrush brush, LabelStyle labelStyle)
         {
             using (g.Save())
             {

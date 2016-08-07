@@ -38,8 +38,8 @@ namespace Maps.Rendering
         void DrawImage(AbstractImage image, double x, double y, double width, double height);
         void DrawImageAlpha(float alpha, AbstractImage image, RectangleF targetRect);
 
-        SizeF MeasureString(string text, XFont font);
-        void DrawString(string s, XFont font, AbstractBrush brush, double x, double y, StringAlignment format);
+        SizeF MeasureString(string text, Font font);
+        void DrawString(string s, Font font, AbstractBrush brush, double x, double y, StringAlignment format);
 
         AbstractGraphicsState Save();
         void Restore(AbstractGraphicsState state);
@@ -175,5 +175,5 @@ namespace Maps.Rendering
         Custom,
     }
 
-    // TODO: Abstract out Font, Matrix
+    // TODO: Abstract out XMatrix
 }

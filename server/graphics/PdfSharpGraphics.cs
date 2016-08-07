@@ -1,4 +1,5 @@
 ﻿using PdfSharp.Drawing;
+using PdfSharp.Pdf;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -38,6 +39,16 @@ namespace Maps.Rendering
                 this.pen.DashPattern = pen.CustomDashPattern;
         }
         private void Apply(AbstractPen pen, AbstractBrush brush) { Apply(pen); Apply(brush); }
+
+        private Dictionary<Font, XFont> fontMap = new Dictionary<Font, XFont>();
+        private XFont Convert(Font font)
+        {
+            if (fontMap.ContainsKey(font))
+                return fontMap[font];
+            XFont xfont = new XFont(font, new XPdfFontOptions(PdfFontEncoding.Unicode, PdfFontEmbedding.Always));
+            fontMap.Add(font, xfont);
+            return xfont;
+        }
 
         public bool SupportsWingdings { get { return true; } }
 
@@ -132,8 +143,8 @@ namespace Maps.Rendering
             }
         }
 
-        public SizeF MeasureString(string text, XFont font) { return g.MeasureString(text, font).ToSizeF(); }
-        public void DrawString(string s, XFont font, AbstractBrush brush, double x, double y, StringAlignment format) { Apply(brush); g.DrawString(s, font, this.brush, x, y, Format(format)); }
+        public SizeF MeasureString(string text, Font font) { return g.MeasureString(text, font).ToSizeF(); }
+        public void DrawString(string s, Font font, AbstractBrush brush, double x, double y, StringAlignment format) { Apply(brush); g.DrawString(s, font, this.brush, x, y, Format(format)); }
 
         public AbstractGraphicsState Save() { return new State(this, g.Save()); }
         public void Restore(AbstractGraphicsState state) { g.Restore(((State)state).state); }

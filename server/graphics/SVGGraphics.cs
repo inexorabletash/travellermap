@@ -484,13 +484,13 @@ namespace Maps.Rendering
 
         #region Text
         private XGraphics scratch;
-        public SizeF MeasureString(string text, XFont font)
+        public SizeF MeasureString(string text, Font font)
         {
             if (scratch == null) scratch = XGraphics.FromGraphics(Graphics.FromImage(new Bitmap(1, 1)), new XSize(1, 1));
             return scratch.MeasureString(text, font).ToSizeF();
         }
 
-        public void DrawString(string s, XFont font, AbstractBrush brush, double x, double y, StringAlignment alignment)
+        public void DrawString(string s, Font font, AbstractBrush brush, double x, double y, StringAlignment alignment)
         {
             var e = Append(new Element(ElementNames.TEXT));
             e.content = s;

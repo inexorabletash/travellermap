@@ -511,7 +511,7 @@ namespace Maps.Rendering
                         {
                             using (graphics.Save())
                             {
-                                XFont font = label.minor ? styles.megaNames.SmallFont : styles.megaNames.Font;
+                                Font font = label.minor ? styles.megaNames.SmallFont : styles.megaNames.Font;
                                 XMatrix matrix = new XMatrix();
                                 matrix.ScalePrepend(1.0f / Astrometrics.ParsecScaleX, 1.0f / Astrometrics.ParsecScaleY);
                                 matrix.TranslatePrepend(label.position.X, label.position.Y);
@@ -627,7 +627,7 @@ namespace Maps.Rendering
 #if SHOW_TIMING
                 using( RenderUtil.SaveState( graphics ) )
                 {
-                    XFont font = new XFont( FontFamily.GenericSansSerif, 12, XFontStyle.Regular, new XPdfFontOptions(PdfSharp.Pdf.PdfFontEncoding.Unicode) );
+                    Font font = new Font( FontFamily.GenericSansSerif, 12, FontStyle.Regular, new XPdfFontOptions(PdfSharp.Pdf.PdfFontEncoding.Unicode) );
                     graphics.MultiplyTransform( worldSpaceToImageSpace );
                     double cursorX = 20.0, cursorY = 20.0;
                     DateTime last = dtStart;
@@ -686,7 +686,7 @@ namespace Maps.Rendering
             }
         }
 
-        private void OverlayGlyph(string glyph, XFont font, Point coordinates)
+        private void OverlayGlyph(string glyph, Font font, Point coordinates)
         {
             PointF center = Astrometrics.HexToCenter(coordinates);
             using (graphics.Save())
@@ -709,7 +709,7 @@ namespace Maps.Rendering
                 bool major = vec.MapOptions.HasFlag(MapOptions.NamesMajor);
                 LabelStyle labelStyle = new LabelStyle();
                 labelStyle.Uppercase = major;
-                XFont font = major ? styles.macroNames.Font : styles.macroNames.SmallFont;
+                Font font = major ? styles.macroNames.Font : styles.macroNames.SmallFont;
                 solidBrush.Color = major ? styles.macroNames.textColor : styles.macroNames.textHighlightColor;
                 vec.DrawName(graphics, tileRect, font, solidBrush, labelStyle);
             }
@@ -723,7 +723,7 @@ namespace Maps.Rendering
                 LabelStyle labelStyle = new LabelStyle();
                 labelStyle.Rotation = 35;
                 labelStyle.Uppercase = major;
-                XFont font = major ? styles.macroNames.Font : styles.macroNames.SmallFont;
+                Font font = major ? styles.macroNames.Font : styles.macroNames.SmallFont;
                 solidBrush.Color = major ? styles.macroNames.textColor : styles.macroNames.textHighlightColor;
                 vec.DrawName(graphics, tileRect, font, solidBrush, labelStyle);
             }
@@ -738,7 +738,7 @@ namespace Maps.Rendering
                     bool major = vec.MapOptions.HasFlag(MapOptions.NamesMajor);
                     LabelStyle labelStyle = new LabelStyle();
                     labelStyle.Uppercase = major;
-                    XFont font = major ? styles.macroNames.Font : styles.macroNames.SmallFont;
+                    Font font = major ? styles.macroNames.Font : styles.macroNames.SmallFont;
                     solidBrush.Color = major ? styles.macroRoutes.textColor : styles.macroRoutes.textHighlightColor;
                     vec.DrawName(graphics, tileRect, font, solidBrush, labelStyle);
                 }
@@ -746,7 +746,7 @@ namespace Maps.Rendering
 
             if (options.HasFlag(MapOptions.NamesMinor))
             {
-                XFont font = styles.macroNames.MediumFont;
+                Font font = styles.macroNames.MediumFont;
                 solidBrush.Color = styles.macroRoutes.textHighlightColor;
                 foreach (var label in labels)
                 {
@@ -1035,7 +1035,7 @@ namespace Maps.Rendering
 
                             Color textColor = (isCapital && styles.worldDetails.HasFlag(WorldDetails.Highlight))
                                 ? styles.worlds.textHighlightColor : styles.worlds.textColor;
-                            XFont font = ((isHiPop || isCapital) && styles.worldDetails.HasFlag(WorldDetails.Highlight))
+                            Font font = ((isHiPop || isCapital) && styles.worldDetails.HasFlag(WorldDetails.Highlight))
                                 ? styles.worlds.LargeFont : styles.worlds.Font;
 
                             DrawWorldLabel(worldTextBackgroundStyle, solidBrush, textColor, styles.worlds.textStyle.Translation, font, name);
@@ -1445,7 +1445,7 @@ namespace Maps.Rendering
             return null;
         }
 
-        private void DrawWorldLabel(TextBackgroundStyle backgroundStyle, AbstractBrush brush, Color color, PointF position, XFont font, string text)
+        private void DrawWorldLabel(TextBackgroundStyle backgroundStyle, AbstractBrush brush, Color color, PointF position, Font font, string text)
         {
             var size = graphics.MeasureString(text, font);
 
@@ -1539,7 +1539,7 @@ namespace Maps.Rendering
                         // TODO: Adopt some of the tweaks from .MSEC
                         labelPos.Y -= label.OffsetY * 0.7f;
 
-                        XFont font;
+                        Font font;
                         switch (label.Size)
                         {
                             case "small": font = styles.microBorders.SmallFont; break;
