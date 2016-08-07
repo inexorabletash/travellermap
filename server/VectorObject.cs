@@ -261,7 +261,7 @@ namespace Maps.Rendering
 
                 AbstractBrush brush = new AbstractBrush(dotColor);
                 AbstractPen pen = new AbstractPen(dotColor);
-                graphics.SmoothingMode = XSmoothingMode.HighQuality;
+                graphics.SmoothingMode = SmoothingMode.HighQuality;
                 graphics.DrawEllipse(pen, brush, -radius / 2, -radius / 2, radius, radius);
 
                 RenderUtil.TextFormat format;
@@ -272,8 +272,8 @@ namespace Maps.Rendering
                 else
                     format = LabelBiasY < 0 ? RenderUtil.TextFormat.BottomCenter : LabelBiasY > 0 ? RenderUtil.TextFormat.TopCenter : RenderUtil.TextFormat.Center;
 
-                double y = (LabelBiasY * radius / 2);
-                double x = (LabelBiasX * radius / 2);
+                float y = (LabelBiasY * radius / 2);
+                float x = (LabelBiasX * radius / 2);
 
                 RenderUtil.DrawString(graphics, Name, labelFont, labelBrush, x, y, format);
             }

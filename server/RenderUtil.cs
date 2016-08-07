@@ -82,7 +82,7 @@ namespace Maps.Rendering
         }
 
         // TextFormat controls both the interpretation of the drawing origin and text alignment.
-        public static void DrawString(AbstractGraphics g, string text, Font font, AbstractBrush brush, double x, double y, TextFormat format = TextFormat.Center)
+        public static void DrawString(AbstractGraphics g, string text, Font font, AbstractBrush brush, float x, float y, TextFormat format = TextFormat.Center)
         {
             if (string.IsNullOrWhiteSpace(text))
                 return;
@@ -94,8 +94,8 @@ namespace Maps.Rendering
 
             // Offset from baseline to top-left. Include a scale factor since glyphs are not fully height.
             // TODO: Get true glyph measurement.
-            y += sizes.First().Height * 0.8;
-            double fw = 0;
+            y += sizes.First().Height * 0.8f;
+            float fw = 0;
             switch (format)
             {
                 case TextFormat.MiddleLeft:
@@ -114,7 +114,7 @@ namespace Maps.Rendering
                 case TextFormat.TopCenter:
                 case TextFormat.Center:
                 case TextFormat.BottomCenter:
-                    fw = -0.5;
+                    fw = -0.5f;
                     break;
                 case TextFormat.TopRight:
                 case TextFormat.MiddleRight:

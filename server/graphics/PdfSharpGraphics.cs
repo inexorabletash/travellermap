@@ -3,7 +3,9 @@ using PdfSharp.Pdf;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using System.Linq;
 
 namespace Maps.Rendering
 {
@@ -36,7 +38,7 @@ namespace Maps.Rendering
                 case DashStyle.Custom: this.pen.DashStyle = XDashStyle.Custom; break;
             }
             if (pen.CustomDashPattern != null)
-                this.pen.DashPattern = pen.CustomDashPattern;
+                this.pen.DashPattern = pen.CustomDashPattern.Select(f => (double)f).ToArray();
         }
         private void Apply(AbstractPen pen, AbstractBrush brush) { Apply(pen); Apply(brush); }
 
@@ -52,35 +54,35 @@ namespace Maps.Rendering
 
         public bool SupportsWingdings { get { return true; } }
 
-        public XSmoothingMode SmoothingMode { get { return g.SmoothingMode; } set { g.SmoothingMode = value; } }
+        public SmoothingMode SmoothingMode { get { return (SmoothingMode)g.SmoothingMode; } set { g.SmoothingMode = (XSmoothingMode)value; } }
         public Graphics Graphics { get { return g.Graphics; } }
 
-        public void ScaleTransform(double scaleXY) { g.ScaleTransform(scaleXY); }
-        public void ScaleTransform(double scaleX, double scaleY) { g.ScaleTransform(scaleX, scaleY); }
-        public void TranslateTransform(double dx, double dy) { g.TranslateTransform(dx, dy); }
-        public void RotateTransform(double angle) { g.RotateTransform(angle); }
+        public void ScaleTransform(float scaleXY) { g.ScaleTransform(scaleXY); }
+        public void ScaleTransform(float scaleX, float scaleY) { g.ScaleTransform(scaleX, scaleY); }
+        public void TranslateTransform(float dx, float dy) { g.TranslateTransform(dx, dy); }
+        public void RotateTransform(float angle) { g.RotateTransform(angle); }
         public void MultiplyTransform(XMatrix m) { g.MultiplyTransform(m); }
 
         public void IntersectClip(AbstractPath path) { g.IntersectClip(new XGraphicsPath(path.Points, path.Types, XFillMode.Winding)); }
         public void IntersectClip(RectangleF rect) { g.IntersectClip(rect); }
 
-        public void DrawLine(AbstractPen pen, double x1, double y1, double x2, double y2) { Apply(pen); g.DrawLine(this.pen, x1, y1, x2, y2); }
+        public void DrawLine(AbstractPen pen, float x1, float y1, float x2, float y2) { Apply(pen); g.DrawLine(this.pen, x1, y1, x2, y2); }
         public void DrawLine(AbstractPen pen, PointF pt1, PointF pt2) { Apply(pen); g.DrawLine(this.pen, pt1, pt2); }
         public void DrawLines(AbstractPen pen, PointF[] points) { Apply(pen); g.DrawLines(this.pen, points); }
         public void DrawPath(AbstractPen pen, AbstractPath path) { Apply(pen);  g.DrawPath(this.pen, new XGraphicsPath(path.Points, path.Types, XFillMode.Winding)); }
         public void DrawPath(AbstractBrush brush, AbstractPath path) { Apply(brush); g.DrawPath(this.brush, new XGraphicsPath(path.Points, path.Types, XFillMode.Winding)); }
-        public void DrawCurve(AbstractPen pen, PointF[] points, double tension) { Apply(pen); g.DrawCurve(this.pen, points, tension); }
-        public void DrawClosedCurve(AbstractPen pen, PointF[] points, double tension) { Apply(pen); g.DrawClosedCurve(this.pen, points, tension); }
-        public void DrawClosedCurve(AbstractBrush brush, PointF[] points, double tension) { Apply(brush); g.DrawClosedCurve(this.brush, points, XFillMode.Alternate, tension); }
-        public void DrawRectangle(AbstractPen pen, double x, double y, double width, double height) { Apply(pen); g.DrawRectangle(this.pen, x, y, width, height); }
-        public void DrawRectangle(AbstractBrush brush, double x, double y, double width, double height) { Apply(brush); g.DrawRectangle(this.brush, x, y, width, height); }
+        public void DrawCurve(AbstractPen pen, PointF[] points, float tension) { Apply(pen); g.DrawCurve(this.pen, points, tension); }
+        public void DrawClosedCurve(AbstractPen pen, PointF[] points, float tension) { Apply(pen); g.DrawClosedCurve(this.pen, points, tension); }
+        public void DrawClosedCurve(AbstractBrush brush, PointF[] points, float tension) { Apply(brush); g.DrawClosedCurve(this.brush, points, XFillMode.Alternate, tension); }
+        public void DrawRectangle(AbstractPen pen, float x, float y, float width, float height) { Apply(pen); g.DrawRectangle(this.pen, x, y, width, height); }
+        public void DrawRectangle(AbstractBrush brush, float x, float y, float width, float height) { Apply(brush); g.DrawRectangle(this.brush, x, y, width, height); }
         public void DrawRectangle(AbstractBrush brush, RectangleF rect) { Apply(brush); g.DrawRectangle(this.brush, rect); }
-        public void DrawEllipse(AbstractPen pen, double x, double y, double width, double height) { Apply(pen); g.DrawEllipse(this.pen, x, y, width, height); }
-        public void DrawEllipse(AbstractBrush brush, double x, double y, double width, double height) { Apply(brush); g.DrawEllipse(this.brush, x, y, width, height); }
-        public void DrawEllipse(AbstractPen pen, AbstractBrush brush, double x, double y, double width, double height) { Apply(pen, brush); g.DrawEllipse(this.pen, this.brush, x, y, width, height); }
-        public void DrawArc(AbstractPen pen, double x, double y, double width, double height, double startAngle, double sweepAngle) { Apply(pen); g.DrawArc(this.pen, x, y, width, height, startAngle, sweepAngle); }
+        public void DrawEllipse(AbstractPen pen, float x, float y, float width, float height) { Apply(pen); g.DrawEllipse(this.pen, x, y, width, height); }
+        public void DrawEllipse(AbstractBrush brush, float x, float y, float width, float height) { Apply(brush); g.DrawEllipse(this.brush, x, y, width, height); }
+        public void DrawEllipse(AbstractPen pen, AbstractBrush brush, float x, float y, float width, float height) { Apply(pen, brush); g.DrawEllipse(this.pen, this.brush, x, y, width, height); }
+        public void DrawArc(AbstractPen pen, float x, float y, float width, float height, float startAngle, float sweepAngle) { Apply(pen); g.DrawArc(this.pen, x, y, width, height, startAngle, sweepAngle); }
 
-        public void DrawImage(AbstractImage image, double x, double y, double width, double height) { g.DrawImage(image.XImage, x, y, width, height); }
+        public void DrawImage(AbstractImage image, float x, float y, float width, float height) { g.DrawImage(image.XImage, x, y, width, height); }
         public void DrawImageAlpha(float alpha, AbstractImage mimage, RectangleF targetRect)
         {
             // Clamp and Quantize
@@ -144,7 +146,7 @@ namespace Maps.Rendering
         }
 
         public SizeF MeasureString(string text, Font font) { return g.MeasureString(text, font).ToSizeF(); }
-        public void DrawString(string s, Font font, AbstractBrush brush, double x, double y, StringAlignment format) { Apply(brush); g.DrawString(s, font, this.brush, x, y, Format(format)); }
+        public void DrawString(string s, Font font, AbstractBrush brush, float x, float y, StringAlignment format) { Apply(brush); g.DrawString(s, font, this.brush, x, y, Format(format)); }
 
         public AbstractGraphicsState Save() { return new State(this, g.Save()); }
         public void Restore(AbstractGraphicsState state) { g.Restore(((State)state).state); }

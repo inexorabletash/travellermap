@@ -107,7 +107,7 @@ namespace Maps.Rendering
         public Color color;
         public float width;
         public DashStyle dashStyle;
-        public double[] dashPattern;
+        public float[] dashPattern;
 
         public PenInfo(Color color, float width, DashStyle style = DashStyle.Solid)
         {
@@ -680,11 +680,11 @@ namespace Maps.Rendering
 
                         subsectorGrid.pen.width = 0.03f * (64.0f / (float)scale);
                         subsectorGrid.pen.dashStyle = DashStyle.Custom;
-                        subsectorGrid.pen.dashPattern = new double[] { 10.0, 8.0 };
+                        subsectorGrid.pen.dashPattern = new float[] { 10.0f, 8.0f };
 
                         sectorGrid.pen.width = 0.03f * (64.0f / (float)scale);
                         sectorGrid.pen.dashStyle = DashStyle.Custom;
-                        sectorGrid.pen.dashPattern = new double[] { 10.0, 8.0 };
+                        sectorGrid.pen.dashPattern = new float[] { 10.0f, 8.0f };
 
                         worlds.textBackgroundStyle = TextBackgroundStyle.Shadow;
 

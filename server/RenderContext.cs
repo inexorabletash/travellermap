@@ -4,6 +4,7 @@ using PdfSharp.Drawing;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text.RegularExpressions;
 
@@ -195,7 +196,7 @@ namespace Maps.Rendering
                     }
 
                     // Fill
-                    graphics.SmoothingMode = XSmoothingMode.HighSpeed;
+                    graphics.SmoothingMode = SmoothingMode.HighSpeed;
                     solidBrush.Color = styles.backgroundColor;
                     graphics.DrawRectangle(solidBrush, 0, 0, tileSize.Width, tileSize.Height);
                 }
@@ -306,7 +307,7 @@ namespace Maps.Rendering
                     if (styles.macroBorders.visible)
                     {
                         styles.macroBorders.pen.Apply(ref pen);
-                        graphics.SmoothingMode = XSmoothingMode.AntiAlias;
+                        graphics.SmoothingMode = SmoothingMode.AntiAlias;
                         foreach (var vec in borderFiles
                             .Select(file => resourceManager.GetXmlFileObject(file, typeof(VectorObject)))
                             .OfType<VectorObject>()
@@ -325,7 +326,7 @@ namespace Maps.Rendering
                     if (styles.macroRoutes.visible)
                     {
                         styles.macroRoutes.pen.Apply(ref pen);
-                        graphics.SmoothingMode = XSmoothingMode.AntiAlias;
+                        graphics.SmoothingMode = SmoothingMode.AntiAlias;
                         foreach (var vec in routeFiles
                             .Select(file => resourceManager.GetXmlFileObject(file, typeof(VectorObject)))
                             .OfType<VectorObject>()
@@ -341,7 +342,7 @@ namespace Maps.Rendering
                     //------------------------------------------------------------
                     // Sector Grid
                     //------------------------------------------------------------
-                    graphics.SmoothingMode = XSmoothingMode.HighSpeed;
+                    graphics.SmoothingMode = SmoothingMode.HighSpeed;
                     if (styles.sectorGrid.visible)
                     {
                         const int gridSlop = 10;
@@ -360,7 +361,7 @@ namespace Maps.Rendering
                     //------------------------------------------------------------
                     // Subsector Grid
                     //------------------------------------------------------------
-                    graphics.SmoothingMode = XSmoothingMode.HighSpeed;
+                    graphics.SmoothingMode = SmoothingMode.HighSpeed;
                     if (styles.subsectorGrid.visible)
                     {
                         const int gridSlop = 10;
@@ -392,7 +393,7 @@ namespace Maps.Rendering
                     // Parsec Grid
                     //------------------------------------------------------------
                     // TODO: Optimize - timers indicate this is slow
-                    graphics.SmoothingMode = XSmoothingMode.HighQuality;
+                    graphics.SmoothingMode = SmoothingMode.HighQuality;
                     if (styles.parsecGrid.visible)
                         DrawParsecGrid();
                     timers.Add(new Timer("parsec grid"));
@@ -858,7 +859,7 @@ namespace Maps.Rendering
 
             using (graphics.Save())
             {
-                graphics.SmoothingMode = XSmoothingMode.HighQuality;
+                graphics.SmoothingMode = SmoothingMode.HighQuality;
                 solidBrush.Color = styles.pseudoRandomStars.fillColor;
 
                 Random rand = new Random((((int)tileRect.Left) << 8) ^ (int)tileRect.Top);
@@ -885,12 +886,12 @@ namespace Maps.Rendering
                     const float backgroundImageScale = 2.0f;
                     const int nebulaImageWidth = 1024, nebulaImageHeight = 1024;
                     // Scaled size of the background
-                    double w = nebulaImageWidth * backgroundImageScale;
-                    double h = nebulaImageHeight * backgroundImageScale;
+                    float w = nebulaImageWidth * backgroundImageScale;
+                    float h = nebulaImageHeight * backgroundImageScale;
 
                     // Offset of the background, relative to the canvas
-                    double ox = (float)(-tileRect.Left * scale * Astrometrics.ParsecScaleX) % w;
-                    double oy = (float)(-tileRect.Top * scale * Astrometrics.ParsecScaleY) % h;
+                    float ox = (float)(-tileRect.Left * scale * Astrometrics.ParsecScaleX) % w;
+                    float oy = (float)(-tileRect.Top * scale * Astrometrics.ParsecScaleY) % h;
                     if (ox > 0) ox -= w;
                     if (oy > 0) oy -= h;
 
@@ -926,7 +927,7 @@ namespace Maps.Rendering
                 AbstractPen pen = new AbstractPen(Color.Empty);
                 AbstractBrush solidBrush = new AbstractBrush();
 
-                graphics.SmoothingMode = XSmoothingMode.AntiAlias;
+                graphics.SmoothingMode = SmoothingMode.AntiAlias;
 
                 // Center on the parsec
                 PointF center = Astrometrics.HexToCenter(world.Coordinates);
@@ -1403,7 +1404,7 @@ namespace Maps.Rendering
         {
             using (graphics.Save())
             {
-                graphics.SmoothingMode = XSmoothingMode.AntiAlias;
+                graphics.SmoothingMode = SmoothingMode.AntiAlias;
                 PointF center = Astrometrics.HexToCenter(world.Coordinates);
 
                 XMatrix matrix = new XMatrix();
@@ -1509,7 +1510,7 @@ namespace Maps.Rendering
             {
                 AbstractBrush solidBrush = new AbstractBrush();
 
-                graphics.SmoothingMode = XSmoothingMode.AntiAlias;
+                graphics.SmoothingMode = SmoothingMode.AntiAlias;
 
                 foreach (Sector sector in selector.Sectors)
                 {
@@ -1563,7 +1564,7 @@ namespace Maps.Rendering
         {
             using (graphics.Save())
             {
-                graphics.SmoothingMode = XSmoothingMode.AntiAlias;
+                graphics.SmoothingMode = SmoothingMode.AntiAlias;
                 AbstractPen pen = new AbstractPen(Color.Empty);
                 styles.microRoutes.pen.Apply(ref pen);
                 float baseWidth = styles.microRoutes.pen.width;
@@ -1710,7 +1711,7 @@ namespace Maps.Rendering
                             graphics.IntersectClip(sectorClipPath);
                     }
 
-                    graphics.SmoothingMode = XSmoothingMode.AntiAlias;
+                    graphics.SmoothingMode = SmoothingMode.AntiAlias;
 
                     foreach (Border border in sector.Borders)
                     {

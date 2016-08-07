@@ -1,45 +1,46 @@
 ﻿using PdfSharp.Drawing;
 using System;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 
 namespace Maps.Rendering
 {
     internal interface AbstractGraphics : IDisposable
     {
-        XSmoothingMode SmoothingMode { get; set; }
+        SmoothingMode SmoothingMode { get; set; }
         Graphics Graphics { get; }
         bool SupportsWingdings { get; }
 
-        void ScaleTransform(double scaleXY);
-        void ScaleTransform(double scaleX, double scaleY);
-        void TranslateTransform(double dx, double dy);
-        void RotateTransform(double angle);
+        void ScaleTransform(float scaleXY);
+        void ScaleTransform(float scaleX, float scaleY);
+        void TranslateTransform(float dx, float dy);
+        void RotateTransform(float angle);
         void MultiplyTransform(XMatrix m);
 
         void IntersectClip(AbstractPath path);
         void IntersectClip(RectangleF rect);
 
-        void DrawLine(AbstractPen pen, double x1, double y1, double x2, double y2);
+        void DrawLine(AbstractPen pen, float x1, float y1, float x2, float y2);
         void DrawLine(AbstractPen pen, PointF pt1, PointF pt2);
         void DrawLines(AbstractPen pen, PointF[] points);
         void DrawPath(AbstractPen pen, AbstractPath path);
         void DrawPath(AbstractBrush brush, AbstractPath path);
-        void DrawCurve(AbstractPen pen, PointF[] points, double tension = 0.5);
-        void DrawClosedCurve(AbstractPen pen, PointF[] points, double tension = 0.5);
-        void DrawClosedCurve(AbstractBrush brush, PointF[] points, double tension = 0.5);
-        void DrawRectangle(AbstractPen pen, double x, double y, double width, double height);
-        void DrawRectangle(AbstractBrush brush, double x, double y, double width, double height);
+        void DrawCurve(AbstractPen pen, PointF[] points, float tension = 0.5f);
+        void DrawClosedCurve(AbstractPen pen, PointF[] points, float tension = 0.5f);
+        void DrawClosedCurve(AbstractBrush brush, PointF[] points, float tension = 0.5f);
+        void DrawRectangle(AbstractPen pen, float x, float y, float width, float height);
+        void DrawRectangle(AbstractBrush brush, float x, float y, float width, float height);
         void DrawRectangle(AbstractBrush brush, RectangleF rect);
-        void DrawEllipse(AbstractPen pen, double x, double y, double width, double height);
-        void DrawEllipse(AbstractBrush brush, double x, double y, double width, double height);
-        void DrawEllipse(AbstractPen pen, AbstractBrush brush, double x, double y, double width, double height);
-        void DrawArc(AbstractPen pen, double x, double y, double width, double height, double startAngle, double sweepAngle);
+        void DrawEllipse(AbstractPen pen, float x, float y, float width, float height);
+        void DrawEllipse(AbstractBrush brush, float x, float y, float width, float height);
+        void DrawEllipse(AbstractPen pen, AbstractBrush brush, float x, float y, float width, float height);
+        void DrawArc(AbstractPen pen, float x, float y, float width, float height, float startAngle, float sweepAngle);
 
-        void DrawImage(AbstractImage image, double x, double y, double width, double height);
+        void DrawImage(AbstractImage image, float x, float y, float width, float height);
         void DrawImageAlpha(float alpha, AbstractImage image, RectangleF targetRect);
 
         SizeF MeasureString(string text, Font font);
-        void DrawString(string s, Font font, AbstractBrush brush, double x, double y, StringAlignment format);
+        void DrawString(string s, Font font, AbstractBrush brush, float x, float y, StringAlignment format);
 
         AbstractGraphicsState Save();
         void Restore(AbstractGraphicsState state);
@@ -120,12 +121,12 @@ namespace Maps.Rendering
     internal class AbstractPen
     {
         public Color Color { get; set; }
-        public double Width { get; set; }
+        public float Width { get; set; }
         public DashStyle DashStyle { get; set; }
-        public double[] CustomDashPattern { get; set; }
+        public float[] CustomDashPattern { get; set; }
 
         public AbstractPen() { }
-        public AbstractPen(Color color, double width = 1)
+        public AbstractPen(Color color, float width = 1)
         {
             Color = color;
             Width = 1;
