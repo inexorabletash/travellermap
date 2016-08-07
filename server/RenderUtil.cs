@@ -125,7 +125,7 @@ namespace Maps.Rendering
 
             Util.ForEachZip(lines, sizes, (line, sz) =>
             {
-                g.DrawString(line, font, brush, x + fw* sz.Width, y, StringAlignment.Default);
+                g.DrawString(line, font, brush, x + fw * sz.Width, y, StringAlignment.Default);
                 y += h;
             });
         }
