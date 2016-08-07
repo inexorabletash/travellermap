@@ -1422,7 +1422,7 @@ namespace Maps.Rendering
                 foreach (var props in ss.Select(s => StellarRendering.star2props(s)).OrderByDescending(p => p.radius)) {
                     solidBrush.Color = props.color;
                     pen.Color = props.borderColor;
-                    pen.DashStyle = XDashStyle.Solid;
+                    pen.DashStyle = DashStyle.Solid;
                     pen.Width = styles.worlds.pen.width;
                     PointF offset = StellarRendering.Offset(i++);
                     const float offsetScale = 0.3f;
@@ -1447,7 +1447,7 @@ namespace Maps.Rendering
 
         private void DrawWorldLabel(TextBackgroundStyle backgroundStyle, AbstractBrush brush, Color color, PointF position, XFont font, string text)
         {
-            XSize size = graphics.MeasureString(text, font);
+            var size = graphics.MeasureString(text, font);
 
             switch (backgroundStyle)
             {
@@ -1665,14 +1665,14 @@ namespace Maps.Rendering
             }
         }
 
-        private static XDashStyle LineStyleToDashStyle(LineStyle style)
+        private static DashStyle LineStyleToDashStyle(LineStyle style)
         {
             switch (style)
             {
                 default:
-                case LineStyle.Solid: return XDashStyle.Solid;
-                case LineStyle.Dashed: return XDashStyle.Dash;
-                case LineStyle.Dotted: return XDashStyle.Dot;
+                case LineStyle.Solid: return DashStyle.Solid;
+                case LineStyle.Dashed: return DashStyle.Dash;
+                case LineStyle.Dotted: return DashStyle.Dot;
                 case LineStyle.None: throw new ApplicationException("LineStyle.None should be detected earlier");
             }
         }

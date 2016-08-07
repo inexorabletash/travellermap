@@ -34,17 +34,17 @@ namespace Maps.Rendering
         void DrawEllipse(AbstractBrush brush, double x, double y, double width, double height);
         void DrawEllipse(AbstractPen pen, AbstractBrush brush, double x, double y, double width, double height);
         void DrawArc(AbstractPen pen, double x, double y, double width, double height, double startAngle, double sweepAngle);
+
         void DrawImage(AbstractImage image, double x, double y, double width, double height);
         void DrawImageAlpha(float alpha, AbstractImage image, RectangleF targetRect);
 
-        XSize MeasureString(string text, XFont font);
+        SizeF MeasureString(string text, XFont font);
         void DrawString(string s, XFont font, AbstractBrush brush, double x, double y, StringAlignment format);
 
         AbstractGraphicsState Save();
         void Restore(AbstractGraphicsState state);
     }
 
-    // TODO: Make this IDisposable
     internal abstract class AbstractGraphicsState : IDisposable {
 
         private AbstractGraphics g;
@@ -75,6 +75,8 @@ namespace Maps.Rendering
         #endregion
     }
 
+    // This is a concrete class (despite the name) since we want static instances held by the server which
+    // span different concrete instances.
     internal class AbstractImage
     {
         private string path;
@@ -119,7 +121,7 @@ namespace Maps.Rendering
     {
         public Color Color { get; set; }
         public double Width { get; set; }
-        public XDashStyle DashStyle { get; set; }
+        public DashStyle DashStyle { get; set; }
         public double[] CustomDashPattern { get; set; }
 
         public AbstractPen() { }
@@ -127,7 +129,7 @@ namespace Maps.Rendering
         {
             Color = color;
             Width = 1;
-            DashStyle = XDashStyle.Solid;
+            DashStyle = DashStyle.Solid;
         }
     }
 
@@ -161,6 +163,16 @@ namespace Maps.Rendering
             Points = points;
             Types = types;
         }
+    }
+
+    internal enum DashStyle
+    {
+        Solid,
+        Dot,
+        Dash,
+        DashDot,
+        DashDotDot,
+        Custom,
     }
 
     // TODO: Abstract out Font, Matrix

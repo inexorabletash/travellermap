@@ -78,21 +78,23 @@ namespace Maps.API
 
                 if (accepter.Accepts(context, SVGGraphics.MediaTypeName))
                 {
-                    SVGGraphics svg = new SVGGraphics(tileSize.Width, tileSize.Height);
-                    RenderToGraphics(ctx, rot, translateX, translateY, svg);
-
-                    using (var stream = new MemoryStream())
+                    using (var svg = new SVGGraphics(tileSize.Width, tileSize.Height))
                     {
-                        svg.Serialize(new StreamWriter(stream));
+                        RenderToGraphics(ctx, rot, translateX, translateY, svg);
 
-                        context.Response.ContentType = SVGGraphics.MediaTypeName;
-                        context.Response.AddHeader("content-length", stream.Length.ToString());
-                        context.Response.AddHeader("content-disposition", "inline;filename=\"map.pdf\"");
-                        context.Response.BinaryWrite(stream.ToArray());
-                        context.Response.Flush();
-                        context.Response.Close();
+                        using (var stream = new MemoryStream())
+                        {
+                            svg.Serialize(new StreamWriter(stream));
+
+                            context.Response.ContentType = SVGGraphics.MediaTypeName;
+                            context.Response.AddHeader("content-length", stream.Length.ToString());
+                            context.Response.AddHeader("content-disposition", "inline;filename=\"map.svg\"");
+                            context.Response.BinaryWrite(stream.ToArray());
+                            context.Response.Flush();
+                            context.Response.Close();
+                            return;
+                        }
                     }
-                    return;
                 }
 
                 if (accepter.Accepts(context, MediaTypeNames.Application.Pdf))
@@ -116,23 +118,23 @@ namespace Maps.API
                         page.Width = XUnit.FromPoint(tileSize.Width);
                         page.Height = XUnit.FromPoint(tileSize.Height);
 
-                        AbstractGraphics gfx = new PdfSharpGraphics(XGraphics.FromPdfPage(page));
-
-                        RenderToGraphics(ctx, rot, translateX, translateY, gfx);
-
-                        using (var stream = new MemoryStream())
+                        using (var gfx = new PdfSharpGraphics(XGraphics.FromPdfPage(page)))
                         {
-                            document.Save(stream, closeStream: false);
+                            RenderToGraphics(ctx, rot, translateX, translateY, gfx);
 
-                            context.Response.ContentType = MediaTypeNames.Application.Pdf;
-                            context.Response.AddHeader("content-length", stream.Length.ToString());
-                            context.Response.AddHeader("content-disposition", "inline;filename=\"map.pdf\"");
-                            context.Response.BinaryWrite(stream.ToArray());
-                            context.Response.Flush();
-                            context.Response.Close();
+                            using (var stream = new MemoryStream())
+                            {
+                                document.Save(stream, closeStream: false);
+
+                                context.Response.ContentType = MediaTypeNames.Application.Pdf;
+                                context.Response.AddHeader("content-length", stream.Length.ToString());
+                                context.Response.AddHeader("content-disposition", "inline;filename=\"map.pdf\"");
+                                context.Response.BinaryWrite(stream.ToArray());
+                                context.Response.Flush();
+                                context.Response.Close();
+                                return;
+                            }
                         }
-
-                        return;
                     }
                 }
 
@@ -201,7 +203,6 @@ namespace Maps.API
                 {
                     // See http://stackoverflow.com/questions/1949045/net-bitmap-class-constructor-int-int-and-int-int-pixelformat-throws-argu
                     return null;
-
                 }
             }
 

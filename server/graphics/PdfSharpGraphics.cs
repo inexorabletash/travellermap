@@ -25,7 +25,15 @@ namespace Maps.Rendering
         {
             this.pen.Color = pen.Color;
             this.pen.Width = pen.Width;
-            this.pen.DashStyle = pen.DashStyle;
+            switch (pen.DashStyle)
+            {
+                case DashStyle.Solid: this.pen.DashStyle = XDashStyle.Solid; break;
+                case DashStyle.Dot: this.pen.DashStyle = XDashStyle.Dot; break;
+                case DashStyle.Dash: this.pen.DashStyle = XDashStyle.Dash; break;
+                case DashStyle.DashDot: this.pen.DashStyle = XDashStyle.DashDot; break;
+                case DashStyle.DashDotDot: this.pen.DashStyle = XDashStyle.DashDotDot; break;
+                case DashStyle.Custom: this.pen.DashStyle = XDashStyle.Custom; break;
+            }
             if (pen.CustomDashPattern != null)
                 this.pen.DashPattern = pen.CustomDashPattern;
         }
@@ -60,8 +68,8 @@ namespace Maps.Rendering
         public void DrawEllipse(AbstractBrush brush, double x, double y, double width, double height) { Apply(brush); g.DrawEllipse(this.brush, x, y, width, height); }
         public void DrawEllipse(AbstractPen pen, AbstractBrush brush, double x, double y, double width, double height) { Apply(pen, brush); g.DrawEllipse(this.pen, this.brush, x, y, width, height); }
         public void DrawArc(AbstractPen pen, double x, double y, double width, double height, double startAngle, double sweepAngle) { Apply(pen); g.DrawArc(this.pen, x, y, width, height, startAngle, sweepAngle); }
-        public void DrawImage(AbstractImage image, double x, double y, double width, double height) { g.DrawImage(image.XImage, x, y, width, height); }
 
+        public void DrawImage(AbstractImage image, double x, double y, double width, double height) { g.DrawImage(image.XImage, x, y, width, height); }
         public void DrawImageAlpha(float alpha, AbstractImage mimage, RectangleF targetRect)
         {
             // Clamp and Quantize
@@ -124,7 +132,7 @@ namespace Maps.Rendering
             }
         }
 
-        public XSize MeasureString(string text, XFont font) { return g.MeasureString(text, font); }
+        public SizeF MeasureString(string text, XFont font) { return g.MeasureString(text, font).ToSizeF(); }
         public void DrawString(string s, XFont font, AbstractBrush brush, double x, double y, StringAlignment format) { Apply(brush); g.DrawString(s, font, this.brush, x, y, Format(format)); }
 
         public AbstractGraphicsState Save() { return new State(this, g.Save()); }

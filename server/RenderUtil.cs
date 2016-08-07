@@ -156,7 +156,7 @@ namespace Maps.Rendering
                 if (labelStyle.Rotation != 0 && g.Graphics != null)
                     g.Graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
 
-                XSize size = g.MeasureString(text, font);
+                var size = g.MeasureString(text, font);
                 size.Width *= 2; // prevent cut-off e.g. when rotated
                 var bounds = new RectangleF((float)(-size.Width / 2), (float)(-size.Height / 2), (float)size.Width, (float)size.Height);
 

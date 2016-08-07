@@ -107,10 +107,10 @@ namespace Maps.Rendering
     {
         public Color color;
         public float width;
-        public XDashStyle dashStyle;
+        public DashStyle dashStyle;
         public double[] dashPattern;
 
-        public PenInfo(Color color, float width, XDashStyle style = XDashStyle.Solid)
+        public PenInfo(Color color, float width, DashStyle style = DashStyle.Solid)
         {
             this.color = color;
             this.width = width;
@@ -407,15 +407,15 @@ namespace Maps.Rendering
             amberZone.pen.width = redZone.pen.width = blueZone.pen.width = 0.05f * penScale;
 
             macroRoutes.pen.width = borderPenWidth;
-            macroRoutes.pen.dashStyle = XDashStyle.Dash;
+            macroRoutes.pen.dashStyle = DashStyle.Dash;
 
             populationOverlay.fillColor = Color.FromArgb(0x80, 0xff, 0xff, 0x00);
             importanceOverlay.fillColor = Color.FromArgb(0x20, 0x80, 0xff, 0x00);
             highlightWorlds.fillColor = Color.FromArgb(0x80, 0xff, 0x00, 0x00);
 
-            populationOverlay.pen = new PenInfo(Color.Empty, 0.03f * penScale, XDashStyle.Dash);
-            importanceOverlay.pen = new PenInfo(Color.Empty, 0.03f * penScale, XDashStyle.Dot);
-            highlightWorlds.pen = new PenInfo(Color.Empty, 0.03f * penScale, XDashStyle.DashDot);
+            populationOverlay.pen = new PenInfo(Color.Empty, 0.03f * penScale, DashStyle.Dash);
+            importanceOverlay.pen = new PenInfo(Color.Empty, 0.03f * penScale, DashStyle.Dot);
+            highlightWorlds.pen = new PenInfo(Color.Empty, 0.03f * penScale, DashStyle.DashDot);
 
             switch (style)
             {
@@ -635,7 +635,7 @@ namespace Maps.Rendering
                         worlds.largeFontInfo.style |= XFontStyle.Underline;
 
                         microBorders.pen.width = onePixel * 4;
-                        microBorders.pen.dashStyle = XDashStyle.Dot;
+                        microBorders.pen.dashStyle = DashStyle.Dot;
 
                         worldNoWater.fillColor = foregroundColor;
                         worldWater.fillColor = Color.Empty;
@@ -680,11 +680,11 @@ namespace Maps.Rendering
                         parsecGrid.visible = false;
 
                         subsectorGrid.pen.width = 0.03f * (64.0f / (float)scale);
-                        subsectorGrid.pen.dashStyle = XDashStyle.Custom;
+                        subsectorGrid.pen.dashStyle = DashStyle.Custom;
                         subsectorGrid.pen.dashPattern = new double[] { 10.0, 8.0 };
 
                         sectorGrid.pen.width = 0.03f * (64.0f / (float)scale);
-                        sectorGrid.pen.dashStyle = XDashStyle.Custom;
+                        sectorGrid.pen.dashStyle = DashStyle.Custom;
                         sectorGrid.pen.dashPattern = new double[] { 10.0, 8.0 };
 
                         worlds.textBackgroundStyle = TextBackgroundStyle.Shadow;

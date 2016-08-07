@@ -81,22 +81,22 @@ namespace Maps.Rendering
 
                     switch (pen.DashStyle)
                     {
-                        case XDashStyle.Solid:
+                        case DashStyle.Solid:
                             // "solid" is SVG default
                             break;
-                        case XDashStyle.Dot:
+                        case DashStyle.Dot:
                             Set("stroke-dasharray", string.Format("{0:G2} {0:G2}", pen.Width));
                             break;
-                        case XDashStyle.Dash:
+                        case DashStyle.Dash:
                             Set("stroke-dasharray", string.Format("{0:G2} {1:G2}", pen.Width * 2, pen.Width));
                             break;
-                        case XDashStyle.DashDot:
+                        case DashStyle.DashDot:
                             Set("stroke-dasharray", string.Format("{0:G2} {1:G2} {1:G2} {1:G2}", pen.Width * 2, pen.Width));
                             break;
-                        case XDashStyle.DashDotDot:
+                        case DashStyle.DashDotDot:
                             Set("stroke-dasharray", string.Format("{0:G2} {1:G2} {1:G2} {1:G2} {1:G2} {1:G2}", pen.Width * 2, pen.Width));
                             break;
-                        case XDashStyle.Custom:
+                        case DashStyle.Custom:
                             if (pen.CustomDashPattern == null)
                                 throw new ApplicationException("Custom dash style specified but no pattern set");
                             Set("stroke-dasharray",
@@ -484,10 +484,10 @@ namespace Maps.Rendering
 
         #region Text
         private XGraphics scratch;
-        public XSize MeasureString(string text, XFont font)
+        public SizeF MeasureString(string text, XFont font)
         {
             if (scratch == null) scratch = XGraphics.FromGraphics(Graphics.FromImage(new Bitmap(1, 1)), new XSize(1, 1));
-            return scratch.MeasureString(text, font);
+            return scratch.MeasureString(text, font).ToSizeF();
         }
 
         public void DrawString(string s, XFont font, AbstractBrush brush, double x, double y, StringAlignment alignment)
