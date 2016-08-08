@@ -145,7 +145,9 @@ namespace Maps.Rendering
             }
         }
 
-        public SizeF MeasureString(string text, Font font) { return g.MeasureString(text, font).ToSizeF(); }
+        public SizeF MeasureString(string text, Font font) {
+            return g.MeasureString(text, font).ToSizeF();
+        }
         public void DrawString(string s, Font font, AbstractBrush brush, float x, float y, StringAlignment format) { Apply(brush); g.DrawString(s, font, this.brush, x, y, Format(format)); }
 
         public AbstractGraphicsState Save() { return new State(this, g.Save()); }
@@ -169,7 +171,7 @@ namespace Maps.Rendering
                 case StringAlignment.TopCenter: return topCenterFormat;
                 case StringAlignment.TopRight: return topRightFormat;
                 case StringAlignment.CenterLeft: return centerLeftFormat;
-                case StringAlignment.Default: return defaultFormat;
+                case StringAlignment.Baseline: return defaultFormat;
                 default: throw new ApplicationException("Unhandled string alignment");
             }
         }

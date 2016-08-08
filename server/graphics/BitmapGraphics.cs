@@ -44,16 +44,6 @@ namespace Maps.Rendering
         }
         private void Apply(AbstractPen pen, AbstractBrush brush) { Apply(pen); Apply(brush); }
 
-        private Dictionary<Font, XFont> fontMap = new Dictionary<Font, XFont>();
-        private XFont Convert(Font font)
-        {
-            if (fontMap.ContainsKey(font))
-                return fontMap[font];
-            XFont xfont = new XFont(font, new XPdfFontOptions(PdfFontEncoding.Unicode, PdfFontEmbedding.Always));
-            fontMap.Add(font, xfont);
-            return xfont;
-        }
-
         public bool SupportsWingdings { get { return true; } }
 
         public SmoothingMode SmoothingMode { get { return g.SmoothingMode; } set { g.SmoothingMode = value; } }
@@ -116,8 +106,25 @@ namespace Maps.Rendering
             }
         }
 
-        public SizeF MeasureString(string text, Font font) { return g.MeasureString(text, font); }
-        public void DrawString(string s, Font font, AbstractBrush brush, float x, float y, StringAlignment format) { Apply(brush); g.DrawString(s, font, this.brush, x, y, Format(format)); }
+        public SizeF MeasureString(string text, Font font)
+        {
+            return g.MeasureString(text, font);
+        }
+
+        public void DrawString(string s, Font font, AbstractBrush brush, float x, float y, StringAlignment format)
+        {
+            Apply(brush);
+            if (format == StringAlignment.Baseline)
+            {
+                float fontUnitsToWorldUnits = font.Size / font.FontFamily.GetEmHeight(font.Style);
+                float ascent = font.FontFamily.GetCellAscent(font.Style) * fontUnitsToWorldUnits;
+                g.DrawString(s, font, this.brush, x, y - ascent);
+            }
+            else
+            {
+                g.DrawString(s, font, this.brush, x, y, Format(format));
+            }
+        }
 
         public AbstractGraphicsState Save() { return new State(this, g.Save()); }
         public void Restore(AbstractGraphicsState state) { g.Restore(((State)state).state); }
@@ -140,12 +147,12 @@ namespace Maps.Rendering
                 case StringAlignment.TopCenter: return topCenterFormat;
                 case StringAlignment.TopRight: return topRightFormat;
                 case StringAlignment.CenterLeft: return centerLeftFormat;
-                case StringAlignment.Default: return defaultFormat;
+                case StringAlignment.Baseline: return defaultFormat;
                 default: throw new ApplicationException("Unhandled string alignment");
             }
         }
 
-        private readonly StringFormat defaultFormat = CreateStringFormat(System.Drawing.StringAlignment.Near, System.Drawing.StringAlignment.Far);
+        private readonly StringFormat defaultFormat = StringFormat.GenericDefault;//CreateStringFormat(System.Drawing.StringAlignment.Near, System.Drawing.StringAlignment.Far);
         private readonly StringFormat centeredFormat = CreateStringFormat(System.Drawing.StringAlignment.Center, System.Drawing.StringAlignment.Center);
         private readonly StringFormat topLeftFormat = CreateStringFormat(System.Drawing.StringAlignment.Near, System.Drawing.StringAlignment.Near);
         private readonly StringFormat topCenterFormat = CreateStringFormat(System.Drawing.StringAlignment.Center, System.Drawing.StringAlignment.Near);

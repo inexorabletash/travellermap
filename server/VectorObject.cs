@@ -156,6 +156,7 @@ namespace Maps.Rendering
             }
         }
 
+        // Used for names from vector files (macro borders, rifts)
         internal void DrawName(AbstractGraphics graphics, RectangleF rect, Font font, AbstractBrush textBrush, LabelStyle labelStyle)
         {
             if (graphics == null)
@@ -181,7 +182,7 @@ namespace Maps.Rendering
                         matrix.RotatePrepend(-labelStyle.Rotation); // Rotate it
                         graphics.MultiplyTransform(matrix);
 
-                        RenderUtil.DrawString(graphics, str, font, textBrush, 0, 0, RenderUtil.TextFormat.Center);
+                        RenderUtil.DrawString(graphics, str, font, textBrush, 0, 0);
                     }
                 }
             }

@@ -45,7 +45,6 @@ namespace Maps.Rendering
         {
             { '\x2666', '\x74' }, // U+2666 (BLACK DIAMOND SUIT)
             { '\x2756', '\x76' }, // U+2756 (BLACK DIAMOND MINUS WHITE X)
-            { '\x2022', '\x9f' }, // U+2022 (BULLET), U+25CF (BLACK CIRCLE)
             { '\x2726', '\xAA' }, // U+2726 (BLACK FOUR POINTED STAR)
             { '\x2605', '\xAB' }, // U+2605 (BLACK STAR)
             { '\x2736', '\xAC' }, // U+2736 (BLACK SIX POINTED STAR)
@@ -67,7 +66,16 @@ namespace Maps.Rendering
 
             g.DrawString(s, font, brush, x, y, StringAlignment.Centered);
         }
-        
+
+        //               |          |
+        //           Top |   Top    | Top
+        //          Left |  Center  | Right
+        // --------------+----------+----------------
+        //   Middle Left |  Center  | Middle Right
+        // --------------+----------+-----------------
+        //        Bottom |  Bottom  | Bottom
+        //          Left |  Center  | Right
+        //               |          |
         public enum TextFormat
         {
             TopLeft,
@@ -81,7 +89,9 @@ namespace Maps.Rendering
             BottomRight
         }
 
-        // TextFormat controls both the interpretation of the drawing origin and text alignment.
+        // String is positioned relative to x,y according to TextFormat.
+        // TextFormat also controls text alignment (left, center, right).
+        // Handles embedded newlines.
         public static void DrawString(AbstractGraphics g, string text, Font font, AbstractBrush brush, float x, float y, TextFormat format = TextFormat.Center)
         {
             if (string.IsNullOrWhiteSpace(text))
@@ -89,24 +99,29 @@ namespace Maps.Rendering
 
             var lines = text.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None).ToList();
             var sizes = lines.Select(s => g.MeasureString(s, font)).ToList();
-            float h = (float)font.GetHeight();
-            SizeF size = new SizeF(sizes.Max(s => s.Width), h * sizes.Count());
 
-            // Offset from baseline to top-left. Include a scale factor since glyphs are not fully height.
-            // TODO: Get true glyph measurement.
-            y += sizes.First().Height * 0.8f;
-            float fw = 0;
+            float fontUnitsToWorldUnits = font.Size / font.FontFamily.GetEmHeight(font.Style);
+            float lineSpacing = font.FontFamily.GetLineSpacing(font.Style) * fontUnitsToWorldUnits;
+            float ascent = font.FontFamily.GetCellAscent(font.Style) * fontUnitsToWorldUnits;
+            float descent = font.FontFamily.GetCellDescent(font.Style) * fontUnitsToWorldUnits;
+
+            SizeF boundingSize = new SizeF(sizes.Max(s => s.Width), lineSpacing * sizes.Count());
+
+            // Offset from baseline to top-left.
+            y += ascent;
+
+            float widthFactor = 0;
             switch (format)
             {
                 case TextFormat.MiddleLeft:
                 case TextFormat.Center:
                 case TextFormat.MiddleRight:
-                    y -= size.Height / 2;
+                    y -= boundingSize.Height / 2;
                     break;
                 case TextFormat.BottomLeft:
                 case TextFormat.BottomCenter:
                 case TextFormat.BottomRight:
-                    y -= size.Height;
+                    y -= boundingSize.Height;
                     break;
             }
             switch (format)
@@ -114,23 +129,25 @@ namespace Maps.Rendering
                 case TextFormat.TopCenter:
                 case TextFormat.Center:
                 case TextFormat.BottomCenter:
-                    fw = -0.5f;
+                    widthFactor = -0.5f;
                     break;
                 case TextFormat.TopRight:
                 case TextFormat.MiddleRight:
                 case TextFormat.BottomRight:
-                    fw = -1;
+                    widthFactor = -1;
                     break;
             }
 
             Util.ForEachZip(lines, sizes, (line, sz) =>
             {
-                g.DrawString(line, font, brush, x + fw * sz.Width, y, StringAlignment.Default);
-                y += h;
+                g.DrawString(line, font, brush, x + widthFactor * sz.Width, y, StringAlignment.Baseline);                
+                y += lineSpacing;
             });
         }
 
-        public static void DrawLabel(AbstractGraphics g, string text, PointF labelPos, Font font, AbstractBrush brush, LabelStyle labelStyle)
+        // Used for Sector/Subsector names and labels (borders and explicit).
+        // Always centered on given coordinates.
+        public static void DrawLabel(AbstractGraphics g, string text, PointF center, Font font, AbstractBrush brush, LabelStyle labelStyle)
         {
             using (g.Save())
             {
@@ -139,7 +156,7 @@ namespace Maps.Rendering
                 if (labelStyle.Wrap)
                     text = text.Replace(' ', '\n');
 
-                g.TranslateTransform(labelPos.X, labelPos.Y);
+                g.TranslateTransform(center.X, center.Y);
                 g.ScaleTransform(1.0f / Astrometrics.ParsecScaleX, 1.0f / Astrometrics.ParsecScaleY);
                 g.TranslateTransform(labelStyle.Translation.X, labelStyle.Translation.Y);
                 g.RotateTransform(labelStyle.Rotation);
@@ -147,10 +164,6 @@ namespace Maps.Rendering
 
                 if (labelStyle.Rotation != 0 && g.Graphics != null)
                     g.Graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
-
-                var size = g.MeasureString(text, font);
-                size.Width *= 2; // prevent cut-off e.g. when rotated
-                var bounds = new RectangleF((float)(-size.Width / 2), (float)(-size.Height / 2), (float)size.Width, (float)size.Height);
 
                 DrawString(g, text, font, brush, 0, 0);
             }

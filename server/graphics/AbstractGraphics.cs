@@ -129,7 +129,7 @@ namespace Maps.Rendering
         public AbstractPen(Color color, float width = 1)
         {
             Color = color;
-            Width = 1;
+            Width = width;
             DashStyle = DashStyle.Solid;
         }
     }
@@ -146,7 +146,7 @@ namespace Maps.Rendering
 
     internal enum StringAlignment
     {
-        Default,
+        Baseline,
         Centered,
         TopLeft,
         TopCenter,

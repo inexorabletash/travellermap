@@ -514,11 +514,11 @@ namespace Maps.Rendering
                             {
                                 Font font = label.minor ? styles.megaNames.SmallFont : styles.megaNames.Font;
                                 XMatrix matrix = new XMatrix();
+                                // TODO: Order here looks sketchy
                                 matrix.ScalePrepend(1.0f / Astrometrics.ParsecScaleX, 1.0f / Astrometrics.ParsecScaleY);
                                 matrix.TranslatePrepend(label.position.X, label.position.Y);
                                 graphics.MultiplyTransform(matrix);
-
-                                RenderUtil.DrawString(graphics, label.text, font, solidBrush, 0, 0, RenderUtil.TextFormat.Center);
+                                RenderUtil.DrawString(graphics, label.text, font, solidBrush, 0, 0);
                             }
                         }
                     }
@@ -754,11 +754,12 @@ namespace Maps.Rendering
                     using (graphics.Save())
                     {
                         XMatrix matrix = new XMatrix();
+                        // TODO: Order here looks sketchy
                         matrix.ScalePrepend(1.0f / Astrometrics.ParsecScaleX, 1.0f / Astrometrics.ParsecScaleY);
                         matrix.TranslatePrepend(label.position.X, label.position.Y);
                         graphics.MultiplyTransform(matrix);
 
-                        RenderUtil.DrawString(graphics, label.text, font, solidBrush, 0, 0, RenderUtil.TextFormat.Center);
+                        RenderUtil.DrawString(graphics, label.text, font, solidBrush, 0, 0);
                     }
                 }
             }
@@ -1354,17 +1355,8 @@ namespace Maps.Rendering
 #region UWP
                         if (renderUWP)
                         {
-                            string uwp = world.UWP;
                             solidBrush.Color = styles.worlds.textColor;
-
-                            using (graphics.Save())
-                            {
-                                XMatrix uwpMatrix = new XMatrix();
-                                uwpMatrix.TranslatePrepend(decorationRadius, 0.0f);
-                                uwpMatrix.ScalePrepend(styles.worlds.textStyle.Scale.Width, styles.worlds.textStyle.Scale.Height);
-                                uwpMatrix.Multiply(uwpMatrix, XMatrixOrder.Prepend);
-                                graphics.DrawString(uwp, styles.hexNumber.Font, solidBrush, styles.StarportPosition.X, -styles.StarportPosition.Y, StringAlignment.CenterLeft);
-                            }
+                            graphics.DrawString(world.UWP, styles.hexNumber.Font, solidBrush, styles.StarportPosition.X, -styles.StarportPosition.Y, StringAlignment.CenterLeft);
                         }
 #endregion
 

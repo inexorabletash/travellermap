@@ -484,11 +484,11 @@ namespace Maps.Rendering
         #endregion
 
         #region Text
-        private XGraphics scratch;
+        private Graphics scratch;
         public SizeF MeasureString(string text, Font font)
         {
-            if (scratch == null) scratch = XGraphics.FromGraphics(Graphics.FromImage(new Bitmap(1, 1)), new XSize(1, 1));
-            return scratch.MeasureString(text, font).ToSizeF();
+            if (scratch == null) scratch = Graphics.FromImage(new Bitmap(1, 1));
+            return scratch.MeasureString(text, font);
         }
 
         public void DrawString(string s, Font font, AbstractBrush brush, float x, float y, StringAlignment alignment)
@@ -514,7 +514,7 @@ namespace Maps.Rendering
                 case StringAlignment.TopCenter: y += font.Size * 0.85f; e.Set("text-anchor", "middle"); break;
                 case StringAlignment.TopRight: y += font.Size * 0.85f; e.Set("text-anchor", "end"); break;
                 case StringAlignment.CenterLeft: y += (font.Size * 0.85f) / 2; break;
-                case StringAlignment.Default: break;
+                case StringAlignment.Baseline: break;
                 default: throw new ApplicationException("Unhandled string alignment");
             }
 
