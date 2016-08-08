@@ -74,9 +74,9 @@ namespace Maps.Rendering
         public FontFamily family;
         public string name;
         public float size;
-        public XFontStyle style;
+        public FontStyle style;
 
-        public FontInfo(string name, float size, XFontStyle style = XFontStyle.Regular)
+        public FontInfo(string name, float size, FontStyle style = FontStyle.Regular)
         {
             family = null;
             this.name = name;
@@ -84,7 +84,7 @@ namespace Maps.Rendering
             this.style = style;
         }
 
-        public FontInfo(FontFamily family, float size, XFontStyle style = XFontStyle.Regular)
+        public FontInfo(FontFamily family, float size, FontStyle style = FontStyle.Regular)
         {
             this.family = family;
             name = null;
@@ -92,13 +92,12 @@ namespace Maps.Rendering
             this.style = style;
         }
 
-        private static readonly XPdfFontOptions s_fontOptions = new XPdfFontOptions(PdfSharp.Pdf.PdfFontEncoding.Unicode, PdfSharp.Pdf.PdfFontEmbedding.Always);
-        public XFont makeFont()
+        public Font makeFont()
         {
             if (family != null)
-                return new XFont(family, size * 1.4f, style, s_fontOptions);
+                return new Font(family, size * 1.4f, style, GraphicsUnit.World);
             if (name != null)
-                return new XFont(name, size * 1.4f, style, s_fontOptions);
+                return new Font(name, size * 1.4f, style, GraphicsUnit.World);
             return null;
         }
     }
@@ -108,7 +107,7 @@ namespace Maps.Rendering
         public Color color;
         public float width;
         public DashStyle dashStyle;
-        public double[] dashPattern;
+        public float[] dashPattern;
 
         public PenInfo(Color color, float width, DashStyle style = DashStyle.Solid)
         {
@@ -307,11 +306,11 @@ namespace Maps.Rendering
             {
                 float fontScale = (scale <= 96f || style == Style.Candy) ? 1f : 96f / Math.Min((float)scale, 192f);
 
-                worlds.fontInfo = new FontInfo(DEFAULT_FONT, scale < WorldFullMinScale ? 0.2f : 0.15f * fontScale, XFontStyle.Bold);
+                worlds.fontInfo = new FontInfo(DEFAULT_FONT, scale < WorldFullMinScale ? 0.2f : 0.15f * fontScale, FontStyle.Bold);
                 wingdingFont = new FontInfo("Wingdings", scale < WorldFullMinScale ? 0.2f : 0.175f * fontScale);
-                glyphFont = new FontInfo(DEFAULT_FONT, scale < WorldFullMinScale ? 0.175f : 0.15f * fontScale, XFontStyle.Bold);
+                glyphFont = new FontInfo(DEFAULT_FONT, scale < WorldFullMinScale ? 0.175f : 0.15f * fontScale, FontStyle.Bold);
                 hexNumber.fontInfo = new FontInfo(DEFAULT_FONT, 0.1f * fontScale);
-                worlds.smallFontInfo = new FontInfo(DEFAULT_FONT, scale < WorldFullMinScale ? 0.2f : 0.1f * fontScale, XFontStyle.Regular);
+                worlds.smallFontInfo = new FontInfo(DEFAULT_FONT, scale < WorldFullMinScale ? 0.2f : 0.1f * fontScale, FontStyle.Regular);
                 worlds.largeFontInfo = worlds.fontInfo;
                 starportFont = (scale < WorldFullMinScale) ? worlds.smallFontInfo : worlds.fontInfo;
             }
@@ -326,18 +325,18 @@ namespace Maps.Rendering
             minorHomeWorlds.content = "\u273B"; // TEARDROP-SPOKED ASTERISK
             ancientsWorlds.content = "\u2600"; // BLACK SUN WITH RAYS
 
-            microBorders.fontInfo = new FontInfo(DEFAULT_FONT, (scale == MicroNameMinScale) ? 0.6f : 0.25f, XFontStyle.Bold);
-            microBorders.smallFontInfo = new FontInfo(DEFAULT_FONT, 0.15f, XFontStyle.Bold);
-            microBorders.largeFontInfo = new FontInfo(DEFAULT_FONT, 0.75f, XFontStyle.Bold);
+            microBorders.fontInfo = new FontInfo(DEFAULT_FONT, (scale == MicroNameMinScale) ? 0.6f : 0.25f, FontStyle.Bold);
+            microBorders.smallFontInfo = new FontInfo(DEFAULT_FONT, 0.15f, FontStyle.Bold);
+            microBorders.largeFontInfo = new FontInfo(DEFAULT_FONT, 0.75f, FontStyle.Bold);
 
-            macroNames.fontInfo = new FontInfo(DEFAULT_FONT, 8f / 1.4f, XFontStyle.Bold);
-            macroNames.smallFontInfo = new FontInfo(DEFAULT_FONT, 5f / 1.4f, XFontStyle.Regular);
-            macroNames.mediumFontInfo = new FontInfo(DEFAULT_FONT, 6.5f / 1.4f, XFontStyle.Italic);
+            macroNames.fontInfo = new FontInfo(DEFAULT_FONT, 8f / 1.4f, FontStyle.Bold);
+            macroNames.smallFontInfo = new FontInfo(DEFAULT_FONT, 5f / 1.4f, FontStyle.Regular);
+            macroNames.mediumFontInfo = new FontInfo(DEFAULT_FONT, 6.5f / 1.4f, FontStyle.Italic);
 
             float megaNameScaleFactor = 1.0f * onePixel;
-            megaNames.fontInfo = new FontInfo(DEFAULT_FONT, 24f * megaNameScaleFactor, XFontStyle.Bold);
-            megaNames.mediumFontInfo = new FontInfo(DEFAULT_FONT, 22f * megaNameScaleFactor, XFontStyle.Regular);
-            megaNames.smallFontInfo = new FontInfo(DEFAULT_FONT, 20f * megaNameScaleFactor, XFontStyle.Italic);
+            megaNames.fontInfo = new FontInfo(DEFAULT_FONT, 24f * megaNameScaleFactor, FontStyle.Bold);
+            megaNames.mediumFontInfo = new FontInfo(DEFAULT_FONT, 22f * megaNameScaleFactor, FontStyle.Regular);
+            megaNames.smallFontInfo = new FontInfo(DEFAULT_FONT, 20f * megaNameScaleFactor, FontStyle.Italic);
 
             capitals.fillColor = Color.Wheat;
             capitals.textColor = Color.Red;
@@ -495,7 +494,7 @@ namespace Maps.Rendering
                         microBorders.pen.color = inkColor;
                         microBorders.pen.width = onePixel * 2;
                         microBorders.fontInfo.size *= 0.6f;
-                        microBorders.fontInfo.style = XFontStyle.Regular;
+                        microBorders.fontInfo.style = FontStyle.Regular;
 
                         microRoutes.pen.color = inkColor;
 
@@ -632,7 +631,7 @@ namespace Maps.Rendering
                         subsectorNames.fontInfo.name = FONT_NAME;
                         sectorName.fontInfo.name = FONT_NAME;
 
-                        worlds.largeFontInfo.style |= XFontStyle.Underline;
+                        worlds.largeFontInfo.style |= FontStyle.Underline;
 
                         microBorders.pen.width = onePixel * 4;
                         microBorders.pen.dashStyle = DashStyle.Dot;
@@ -681,11 +680,11 @@ namespace Maps.Rendering
 
                         subsectorGrid.pen.width = 0.03f * (64.0f / (float)scale);
                         subsectorGrid.pen.dashStyle = DashStyle.Custom;
-                        subsectorGrid.pen.dashPattern = new double[] { 10.0, 8.0 };
+                        subsectorGrid.pen.dashPattern = new float[] { 10.0f, 8.0f };
 
                         sectorGrid.pen.width = 0.03f * (64.0f / (float)scale);
                         sectorGrid.pen.dashStyle = DashStyle.Custom;
-                        sectorGrid.pen.dashPattern = new double[] { 10.0, 8.0 };
+                        sectorGrid.pen.dashPattern = new float[] { 10.0f, 8.0f };
 
                         worlds.textBackgroundStyle = TextBackgroundStyle.Shadow;
 
@@ -794,14 +793,14 @@ namespace Maps.Rendering
 
             public PointF position;
 
-            private XFont font;
-            public XFont Font { get { if (font == null) { font = fontInfo.makeFont(); } return font; } }
-            private XFont smallFont;
-            public XFont SmallFont { get { if (smallFont == null) { smallFont = smallFontInfo.makeFont(); } return smallFont; } }
-            private XFont mediumFont;
-            public XFont MediumFont { get { if (mediumFont == null) { mediumFont = mediumFontInfo.makeFont(); } return mediumFont; } }
-            private XFont largeFont;
-            public XFont LargeFont { get { if (largeFont == null) { largeFont = largeFontInfo.makeFont(); } return largeFont; } }
+            private Font font;
+            public Font Font { get { if (font == null) { font = fontInfo.makeFont(); } return font; } }
+            private Font smallFont;
+            public Font SmallFont { get { if (smallFont == null) { smallFont = smallFontInfo.makeFont(); } return smallFont; } }
+            private Font mediumFont;
+            public Font MediumFont { get { if (mediumFont == null) { mediumFont = mediumFontInfo.makeFont(); } return mediumFont; } }
+            private Font largeFont;
+            public Font LargeFont { get { if (largeFont == null) { largeFont = largeFontInfo.makeFont(); } return largeFont; } }
         }
 
 
@@ -1103,14 +1102,14 @@ namespace Maps.Rendering
         }
         private Stylesheet sheet;
 
-        private XFont wingdingFont;
-        public XFont WingdingFont { get { if (wingdingFont == null) { wingdingFont = sheet.wingdingFont.makeFont(); } return wingdingFont; } }
+        private Font wingdingFont;
+        public Font WingdingFont { get { if (wingdingFont == null) { wingdingFont = sheet.wingdingFont.makeFont(); } return wingdingFont; } }
 
-        private XFont glyphFont;
-        public XFont GlyphFont { get { if (glyphFont == null) { glyphFont = sheet.glyphFont.makeFont(); } return glyphFont; } }
+        private Font glyphFont;
+        public Font GlyphFont { get { if (glyphFont == null) { glyphFont = sheet.glyphFont.makeFont(); } return glyphFont; } }
 
-        private XFont starportFont;
-        public XFont StarportFont { get { if (starportFont == null) { starportFont = sheet.starportFont.makeFont(); } return starportFont; } }
+        private Font starportFont;
+        public Font StarportFont { get { if (starportFont == null) { starportFont = sheet.starportFont.makeFont(); } return starportFont; } }
 
         private bool disposed;
         public void Dispose() { Dispose(true); GC.SuppressFinalize(this); }

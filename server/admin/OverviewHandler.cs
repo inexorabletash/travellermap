@@ -32,16 +32,16 @@ namespace Maps.Admin
                     Stylesheet.Style style = Stylesheet.Style.Poster;
                     ParseOptions(ref options, ref style);
 
-                    double x = -0.5;
-                    double y = -0.5;
-                    double scale = 2;
+                    float x = -0.5f;
+                    float y = -0.5f;
+                    float scale = 2;
                     Size tileSize = new Size(1000, 1000);
 
                     RectangleF tileRect = new RectangleF();
-                    tileRect.X = (float)(x * tileSize.Width / (scale * Astrometrics.ParsecScaleX));
-                    tileRect.Y = (float)(y * tileSize.Height / (scale * Astrometrics.ParsecScaleY));
-                    tileRect.Width = (float)(tileSize.Width / (scale * Astrometrics.ParsecScaleX));
-                    tileRect.Height = (float)(tileSize.Height / (scale * Astrometrics.ParsecScaleY));
+                    tileRect.X = x * tileSize.Width / (scale * Astrometrics.ParsecScaleX);
+                    tileRect.Y = y * tileSize.Height / (scale * Astrometrics.ParsecScaleY);
+                    tileRect.Width = tileSize.Width / (scale * Astrometrics.ParsecScaleX);
+                    tileRect.Height = tileSize.Height / (scale * Astrometrics.ParsecScaleY);
 
                     Selector selector = new RectSelector(
                         SectorMap.ForMilieu(resourceManager, GetStringOption("milieu")),
