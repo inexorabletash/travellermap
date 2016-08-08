@@ -156,7 +156,8 @@ namespace Maps.Rendering
             }
         }
 
-        internal void DrawName(AbstractGraphics graphics, RectangleF rect, XFont font, AbstractBrush textBrush, LabelStyle labelStyle)
+        // Used for names from vector files (macro borders, rifts)
+        internal void DrawName(AbstractGraphics graphics, RectangleF rect, Font font, AbstractBrush textBrush, LabelStyle labelStyle)
         {
             if (graphics == null)
                 throw new ArgumentNullException("graphics");
@@ -181,7 +182,7 @@ namespace Maps.Rendering
                         matrix.RotatePrepend(-labelStyle.Rotation); // Rotate it
                         graphics.MultiplyTransform(matrix);
 
-                        RenderUtil.DrawString(graphics, str, font, textBrush, 0, 0, RenderUtil.TextFormat.Center);
+                        RenderUtil.DrawString(graphics, str, font, textBrush, 0, 0);
                     }
                 }
             }
@@ -245,7 +246,7 @@ namespace Maps.Rendering
         public int LabelBiasY { get; set; }
 
 
-        internal void Paint(AbstractGraphics graphics, Color dotColor, AbstractBrush labelBrush, XFont labelFont)
+        internal void Paint(AbstractGraphics graphics, Color dotColor, AbstractBrush labelBrush, Font labelFont)
         {
             if (graphics == null)
                 throw new ArgumentNullException("graphics");
@@ -261,7 +262,7 @@ namespace Maps.Rendering
 
                 AbstractBrush brush = new AbstractBrush(dotColor);
                 AbstractPen pen = new AbstractPen(dotColor);
-                graphics.SmoothingMode = XSmoothingMode.HighQuality;
+                graphics.SmoothingMode = SmoothingMode.HighQuality;
                 graphics.DrawEllipse(pen, brush, -radius / 2, -radius / 2, radius, radius);
 
                 RenderUtil.TextFormat format;
@@ -272,8 +273,8 @@ namespace Maps.Rendering
                 else
                     format = LabelBiasY < 0 ? RenderUtil.TextFormat.BottomCenter : LabelBiasY > 0 ? RenderUtil.TextFormat.TopCenter : RenderUtil.TextFormat.Center;
 
-                double y = (LabelBiasY * radius / 2);
-                double x = (LabelBiasX * radius / 2);
+                float y = (LabelBiasY * radius / 2);
+                float x = (LabelBiasX * radius / 2);
 
                 RenderUtil.DrawString(graphics, Name, labelFont, labelBrush, x, y, format);
             }

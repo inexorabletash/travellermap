@@ -4,6 +4,7 @@ using PdfSharp.Drawing;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text.RegularExpressions;
 
@@ -195,7 +196,7 @@ namespace Maps.Rendering
                     }
 
                     // Fill
-                    graphics.SmoothingMode = XSmoothingMode.HighSpeed;
+                    graphics.SmoothingMode = SmoothingMode.HighSpeed;
                     solidBrush.Color = styles.backgroundColor;
                     graphics.DrawRectangle(solidBrush, 0, 0, tileSize.Width, tileSize.Height);
                 }
@@ -306,7 +307,7 @@ namespace Maps.Rendering
                     if (styles.macroBorders.visible)
                     {
                         styles.macroBorders.pen.Apply(ref pen);
-                        graphics.SmoothingMode = XSmoothingMode.AntiAlias;
+                        graphics.SmoothingMode = SmoothingMode.AntiAlias;
                         foreach (var vec in borderFiles
                             .Select(file => resourceManager.GetXmlFileObject(file, typeof(VectorObject)))
                             .OfType<VectorObject>()
@@ -325,7 +326,7 @@ namespace Maps.Rendering
                     if (styles.macroRoutes.visible)
                     {
                         styles.macroRoutes.pen.Apply(ref pen);
-                        graphics.SmoothingMode = XSmoothingMode.AntiAlias;
+                        graphics.SmoothingMode = SmoothingMode.AntiAlias;
                         foreach (var vec in routeFiles
                             .Select(file => resourceManager.GetXmlFileObject(file, typeof(VectorObject)))
                             .OfType<VectorObject>()
@@ -341,7 +342,7 @@ namespace Maps.Rendering
                     //------------------------------------------------------------
                     // Sector Grid
                     //------------------------------------------------------------
-                    graphics.SmoothingMode = XSmoothingMode.HighSpeed;
+                    graphics.SmoothingMode = SmoothingMode.HighSpeed;
                     if (styles.sectorGrid.visible)
                     {
                         const int gridSlop = 10;
@@ -360,7 +361,7 @@ namespace Maps.Rendering
                     //------------------------------------------------------------
                     // Subsector Grid
                     //------------------------------------------------------------
-                    graphics.SmoothingMode = XSmoothingMode.HighSpeed;
+                    graphics.SmoothingMode = SmoothingMode.HighSpeed;
                     if (styles.subsectorGrid.visible)
                     {
                         const int gridSlop = 10;
@@ -392,7 +393,7 @@ namespace Maps.Rendering
                     // Parsec Grid
                     //------------------------------------------------------------
                     // TODO: Optimize - timers indicate this is slow
-                    graphics.SmoothingMode = XSmoothingMode.HighQuality;
+                    graphics.SmoothingMode = SmoothingMode.HighQuality;
                     if (styles.parsecGrid.visible)
                         DrawParsecGrid();
                     timers.Add(new Timer("parsec grid"));
@@ -511,13 +512,13 @@ namespace Maps.Rendering
                         {
                             using (graphics.Save())
                             {
-                                XFont font = label.minor ? styles.megaNames.SmallFont : styles.megaNames.Font;
+                                Font font = label.minor ? styles.megaNames.SmallFont : styles.megaNames.Font;
                                 XMatrix matrix = new XMatrix();
+                                // TODO: Order here looks sketchy
                                 matrix.ScalePrepend(1.0f / Astrometrics.ParsecScaleX, 1.0f / Astrometrics.ParsecScaleY);
                                 matrix.TranslatePrepend(label.position.X, label.position.Y);
                                 graphics.MultiplyTransform(matrix);
-
-                                RenderUtil.DrawString(graphics, label.text, font, solidBrush, 0, 0, RenderUtil.TextFormat.Center);
+                                RenderUtil.DrawString(graphics, label.text, font, solidBrush, 0, 0);
                             }
                         }
                     }
@@ -627,7 +628,7 @@ namespace Maps.Rendering
 #if SHOW_TIMING
                 using( RenderUtil.SaveState( graphics ) )
                 {
-                    XFont font = new XFont( FontFamily.GenericSansSerif, 12, XFontStyle.Regular, new XPdfFontOptions(PdfSharp.Pdf.PdfFontEncoding.Unicode) );
+                    Font font = new Font( FontFamily.GenericSansSerif, 12, FontStyle.Regular, new XPdfFontOptions(PdfSharp.Pdf.PdfFontEncoding.Unicode) );
                     graphics.MultiplyTransform( worldSpaceToImageSpace );
                     double cursorX = 20.0, cursorY = 20.0;
                     DateTime last = dtStart;
@@ -686,7 +687,7 @@ namespace Maps.Rendering
             }
         }
 
-        private void OverlayGlyph(string glyph, XFont font, Point coordinates)
+        private void OverlayGlyph(string glyph, Font font, Point coordinates)
         {
             PointF center = Astrometrics.HexToCenter(coordinates);
             using (graphics.Save())
@@ -709,7 +710,7 @@ namespace Maps.Rendering
                 bool major = vec.MapOptions.HasFlag(MapOptions.NamesMajor);
                 LabelStyle labelStyle = new LabelStyle();
                 labelStyle.Uppercase = major;
-                XFont font = major ? styles.macroNames.Font : styles.macroNames.SmallFont;
+                Font font = major ? styles.macroNames.Font : styles.macroNames.SmallFont;
                 solidBrush.Color = major ? styles.macroNames.textColor : styles.macroNames.textHighlightColor;
                 vec.DrawName(graphics, tileRect, font, solidBrush, labelStyle);
             }
@@ -723,7 +724,7 @@ namespace Maps.Rendering
                 LabelStyle labelStyle = new LabelStyle();
                 labelStyle.Rotation = 35;
                 labelStyle.Uppercase = major;
-                XFont font = major ? styles.macroNames.Font : styles.macroNames.SmallFont;
+                Font font = major ? styles.macroNames.Font : styles.macroNames.SmallFont;
                 solidBrush.Color = major ? styles.macroNames.textColor : styles.macroNames.textHighlightColor;
                 vec.DrawName(graphics, tileRect, font, solidBrush, labelStyle);
             }
@@ -738,7 +739,7 @@ namespace Maps.Rendering
                     bool major = vec.MapOptions.HasFlag(MapOptions.NamesMajor);
                     LabelStyle labelStyle = new LabelStyle();
                     labelStyle.Uppercase = major;
-                    XFont font = major ? styles.macroNames.Font : styles.macroNames.SmallFont;
+                    Font font = major ? styles.macroNames.Font : styles.macroNames.SmallFont;
                     solidBrush.Color = major ? styles.macroRoutes.textColor : styles.macroRoutes.textHighlightColor;
                     vec.DrawName(graphics, tileRect, font, solidBrush, labelStyle);
                 }
@@ -746,18 +747,19 @@ namespace Maps.Rendering
 
             if (options.HasFlag(MapOptions.NamesMinor))
             {
-                XFont font = styles.macroNames.MediumFont;
+                Font font = styles.macroNames.MediumFont;
                 solidBrush.Color = styles.macroRoutes.textHighlightColor;
                 foreach (var label in labels)
                 {
                     using (graphics.Save())
                     {
                         XMatrix matrix = new XMatrix();
+                        // TODO: Order here looks sketchy
                         matrix.ScalePrepend(1.0f / Astrometrics.ParsecScaleX, 1.0f / Astrometrics.ParsecScaleY);
                         matrix.TranslatePrepend(label.position.X, label.position.Y);
                         graphics.MultiplyTransform(matrix);
 
-                        RenderUtil.DrawString(graphics, label.text, font, solidBrush, 0, 0, RenderUtil.TextFormat.Center);
+                        RenderUtil.DrawString(graphics, label.text, font, solidBrush, 0, 0);
                     }
                 }
             }
@@ -858,7 +860,7 @@ namespace Maps.Rendering
 
             using (graphics.Save())
             {
-                graphics.SmoothingMode = XSmoothingMode.HighQuality;
+                graphics.SmoothingMode = SmoothingMode.HighQuality;
                 solidBrush.Color = styles.pseudoRandomStars.fillColor;
 
                 Random rand = new Random((((int)tileRect.Left) << 8) ^ (int)tileRect.Top);
@@ -885,12 +887,12 @@ namespace Maps.Rendering
                     const float backgroundImageScale = 2.0f;
                     const int nebulaImageWidth = 1024, nebulaImageHeight = 1024;
                     // Scaled size of the background
-                    double w = nebulaImageWidth * backgroundImageScale;
-                    double h = nebulaImageHeight * backgroundImageScale;
+                    float w = nebulaImageWidth * backgroundImageScale;
+                    float h = nebulaImageHeight * backgroundImageScale;
 
                     // Offset of the background, relative to the canvas
-                    double ox = (float)(-tileRect.Left * scale * Astrometrics.ParsecScaleX) % w;
-                    double oy = (float)(-tileRect.Top * scale * Astrometrics.ParsecScaleY) % h;
+                    float ox = (float)(-tileRect.Left * scale * Astrometrics.ParsecScaleX) % w;
+                    float oy = (float)(-tileRect.Top * scale * Astrometrics.ParsecScaleY) % h;
                     if (ox > 0) ox -= w;
                     if (oy > 0) oy -= h;
 
@@ -926,7 +928,7 @@ namespace Maps.Rendering
                 AbstractPen pen = new AbstractPen(Color.Empty);
                 AbstractBrush solidBrush = new AbstractBrush();
 
-                graphics.SmoothingMode = XSmoothingMode.AntiAlias;
+                graphics.SmoothingMode = SmoothingMode.AntiAlias;
 
                 // Center on the parsec
                 PointF center = Astrometrics.HexToCenter(world.Coordinates);
@@ -1035,7 +1037,7 @@ namespace Maps.Rendering
 
                             Color textColor = (isCapital && styles.worldDetails.HasFlag(WorldDetails.Highlight))
                                 ? styles.worlds.textHighlightColor : styles.worlds.textColor;
-                            XFont font = ((isHiPop || isCapital) && styles.worldDetails.HasFlag(WorldDetails.Highlight))
+                            Font font = ((isHiPop || isCapital) && styles.worldDetails.HasFlag(WorldDetails.Highlight))
                                 ? styles.worlds.LargeFont : styles.worlds.Font;
 
                             DrawWorldLabel(worldTextBackgroundStyle, solidBrush, textColor, styles.worlds.textStyle.Translation, font, name);
@@ -1353,17 +1355,8 @@ namespace Maps.Rendering
 #region UWP
                         if (renderUWP)
                         {
-                            string uwp = world.UWP;
                             solidBrush.Color = styles.worlds.textColor;
-
-                            using (graphics.Save())
-                            {
-                                XMatrix uwpMatrix = new XMatrix();
-                                uwpMatrix.TranslatePrepend(decorationRadius, 0.0f);
-                                uwpMatrix.ScalePrepend(styles.worlds.textStyle.Scale.Width, styles.worlds.textStyle.Scale.Height);
-                                uwpMatrix.Multiply(uwpMatrix, XMatrixOrder.Prepend);
-                                graphics.DrawString(uwp, styles.hexNumber.Font, solidBrush, styles.StarportPosition.X, -styles.StarportPosition.Y, StringAlignment.CenterLeft);
-                            }
+                            graphics.DrawString(world.UWP, styles.hexNumber.Font, solidBrush, styles.StarportPosition.X, -styles.StarportPosition.Y, StringAlignment.CenterLeft);
                         }
 #endregion
 
@@ -1403,7 +1396,7 @@ namespace Maps.Rendering
         {
             using (graphics.Save())
             {
-                graphics.SmoothingMode = XSmoothingMode.AntiAlias;
+                graphics.SmoothingMode = SmoothingMode.AntiAlias;
                 PointF center = Astrometrics.HexToCenter(world.Coordinates);
 
                 XMatrix matrix = new XMatrix();
@@ -1445,7 +1438,7 @@ namespace Maps.Rendering
             return null;
         }
 
-        private void DrawWorldLabel(TextBackgroundStyle backgroundStyle, AbstractBrush brush, Color color, PointF position, XFont font, string text)
+        private void DrawWorldLabel(TextBackgroundStyle backgroundStyle, AbstractBrush brush, Color color, PointF position, Font font, string text)
         {
             var size = graphics.MeasureString(text, font);
 
@@ -1509,7 +1502,7 @@ namespace Maps.Rendering
             {
                 AbstractBrush solidBrush = new AbstractBrush();
 
-                graphics.SmoothingMode = XSmoothingMode.AntiAlias;
+                graphics.SmoothingMode = SmoothingMode.AntiAlias;
 
                 foreach (Sector sector in selector.Sectors)
                 {
@@ -1539,7 +1532,7 @@ namespace Maps.Rendering
                         // TODO: Adopt some of the tweaks from .MSEC
                         labelPos.Y -= label.OffsetY * 0.7f;
 
-                        XFont font;
+                        Font font;
                         switch (label.Size)
                         {
                             case "small": font = styles.microBorders.SmallFont; break;
@@ -1563,7 +1556,7 @@ namespace Maps.Rendering
         {
             using (graphics.Save())
             {
-                graphics.SmoothingMode = XSmoothingMode.AntiAlias;
+                graphics.SmoothingMode = SmoothingMode.AntiAlias;
                 AbstractPen pen = new AbstractPen(Color.Empty);
                 styles.microRoutes.pen.Apply(ref pen);
                 float baseWidth = styles.microRoutes.pen.width;
@@ -1710,7 +1703,7 @@ namespace Maps.Rendering
                             graphics.IntersectClip(sectorClipPath);
                     }
 
-                    graphics.SmoothingMode = XSmoothingMode.AntiAlias;
+                    graphics.SmoothingMode = SmoothingMode.AntiAlias;
 
                     foreach (Border border in sector.Borders)
                     {

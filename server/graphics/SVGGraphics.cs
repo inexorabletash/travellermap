@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -58,7 +59,7 @@ namespace Maps.Rendering
             public bool Has(string name) { return attributes.ContainsKey(name); }
             public string Get(string name) { return attributes[name]; }
             public void Set(string name, string value) { attributes[name] = value; }
-            public void Set(string name, double value) { attributes[name] = value.ToString(NumberFormat, CultureInfo.InvariantCulture); }
+            public void Set(string name, float value) { attributes[name] = value.ToString(NumberFormat, CultureInfo.InvariantCulture); }
             public void Set(string name, Color color) {
                 if (color.IsEmpty || color.A == 0)
                     return; // Inherits "None" from root
@@ -138,15 +139,15 @@ namespace Maps.Rendering
         private class PathBuilder
         {
             private StringBuilder b = new StringBuilder();
-            private double lastX = 0;
-            private double lastY = 0;
+            private float lastX = 0;
+            private float lastY = 0;
             private bool used = false;
 
             public override string ToString() { return b.ToString().Trim(); }
 
             public PathBuilder() { }
 
-            public void MoveTo(double x, double y)
+            public void MoveTo(float x, float y)
             {
                 if (!used)
                 {
@@ -160,7 +161,7 @@ namespace Maps.Rendering
                 lastX = x;
                 lastY = y;
             }
-            public void LineTo(double x, double y)
+            public void LineTo(float x, float y)
             {
                 if (!used)
                 {
@@ -182,7 +183,7 @@ namespace Maps.Rendering
                 lastX = x;
                 lastY = y;
             }
-            public void ArcTo(double rx, double ry, double phi, int arcFlag, int sweepFlag, double x, double y)
+            public void ArcTo(float rx, float ry, float phi, int arcFlag, int sweepFlag, float x, float y)
             {
                 if (!used)
                 {
@@ -198,7 +199,7 @@ namespace Maps.Rendering
                 lastX = x;
                 lastY = y;
             }
-            public void CurveTo(double x1, double y1, double x2, double y2, double x, double y)
+            public void CurveTo(float x1, float y1, float x2, float y2, float x, float y)
             {
                 if (!used)
                 {
@@ -286,8 +287,8 @@ namespace Maps.Rendering
             writer.Flush();
         }
 
-        private double width;
-        private double height;
+        private float width;
+        private float height;
         private Element root = new Element(ElementNames.G);
         private Element defs = new Element(ElementNames.DEFS);
 
@@ -313,7 +314,7 @@ namespace Maps.Rendering
             return Current.Append(element);
         }
 
-        public SVGGraphics(double width, double height)
+        public SVGGraphics(float width, float height)
         {
             this.width = width;
             this.height = height;
@@ -324,12 +325,12 @@ namespace Maps.Rendering
         }
 
         Graphics AbstractGraphics.Graphics { get { return null; } }
-        XSmoothingMode AbstractGraphics.SmoothingMode { get; set; }
+        SmoothingMode AbstractGraphics.SmoothingMode { get; set; }
         public bool SupportsWingdings { get { return false; } }
 
         #region Drawing
 
-        public void DrawLine(AbstractPen pen, double x1, double y1, double x2, double y2)
+        public void DrawLine(AbstractPen pen, float x1, float y1, float x2, float y2)
         {
             var e = Append(new Element(ElementNames.LINE));
             e.Set("x1", x1);
@@ -350,27 +351,27 @@ namespace Maps.Rendering
             e.Apply(pen, null);
         }
 
-        public void DrawArc(AbstractPen pen, double x, double y, double width, double height, double startAngle, double sweepAngle)
+        public void DrawArc(AbstractPen pen, float x, float y, float width, float height, float startAngle, float sweepAngle)
         {
             // Convert from center to endpoint parameterization
             // https://www.w3.org/TR/SVG/implnote.html#ArcImplementationNotes
 
-            double rx = width / 2;
-            double ry = height / 2;
-            double cx = x + rx;
-            double cy = y + ry;
+            float rx = width / 2;
+            float ry = height / 2;
+            float cx = x + rx;
+            float cy = y + ry;
 
             // GDI+ uses angles in degrees, clockwise from x axis
-            startAngle = -startAngle * Math.PI / 180;
-            sweepAngle = -sweepAngle * Math.PI / 180;
+            startAngle = -startAngle * (float)Math.PI / 180;
+            sweepAngle = -sweepAngle * (float)Math.PI / 180;
 
             // Since phi is always 0, conversion is simplified
-            const double phi = 0;
+            const float phi = 0;
 
-            double x1 = rx * Math.Cos(startAngle) + cx;
-            double y1 = -ry * Math.Sin(startAngle) + cy;
-            double x2 = rx * Math.Cos(startAngle + sweepAngle) + cx;
-            double y2 = -ry * Math.Sin(startAngle + sweepAngle) + cy;
+            float x1 = rx * (float)Math.Cos(startAngle) + cx;
+            float y1 = -ry * (float)Math.Sin(startAngle) + cy;
+            float x2 = rx * (float)Math.Cos(startAngle + sweepAngle) + cx;
+            float y2 = -ry * (float)Math.Sin(startAngle + sweepAngle) + cy;
 
             int fA = Math.Abs(sweepAngle) > Math.PI ? 1 : 0;
             int fS = sweepAngle < 0 ? 1 : 0;
@@ -390,21 +391,21 @@ namespace Maps.Rendering
             e.Apply(pen, brush);
         }
 
-        public void DrawCurve(AbstractPen pen, PointF[] points, double tension)
+        public void DrawCurve(AbstractPen pen, PointF[] points, float tension)
         {
             var e = Append(new Element(ElementNames.PATH));
             e.Set("d", ToSVG(points, tension, false));
             e.Apply(pen, null);
         }
 
-        public void DrawClosedCurve(AbstractPen pen, AbstractBrush brush, PointF[] points, double tension)
+        public void DrawClosedCurve(AbstractPen pen, AbstractBrush brush, PointF[] points, float tension)
         {
             var e = Append(new Element(ElementNames.PATH));
             e.Set("d", ToSVG(points, tension, true));
             e.Apply(pen, brush);
         }
 
-        public void DrawRectangle(AbstractPen pen, AbstractBrush brush, double x, double y, double width, double height)
+        public void DrawRectangle(AbstractPen pen, AbstractBrush brush, float x, float y, float width, float height)
         {
             var e = Append(new Element(ElementNames.RECT));
             e.Set("x", x);
@@ -414,7 +415,7 @@ namespace Maps.Rendering
             e.Apply(pen, brush);
         }
 
-        public void DrawEllipse(AbstractPen pen, AbstractBrush brush, double x, double y, double width, double height)
+        public void DrawEllipse(AbstractPen pen, AbstractBrush brush, float x, float y, float width, float height)
         {
             Element e;
             if (width == height)
@@ -435,7 +436,7 @@ namespace Maps.Rendering
         #endregion
 
         #region Images
-        public void DrawImage(AbstractImage image, double x, double y, double width, double height)
+        public void DrawImage(AbstractImage image, float x, float y, float width, float height)
         {
             var e = Append(new Element(ElementNames.IMAGE));
             e.Set("x", x);
@@ -483,14 +484,14 @@ namespace Maps.Rendering
         #endregion
 
         #region Text
-        private XGraphics scratch;
-        public SizeF MeasureString(string text, XFont font)
+        private Graphics scratch;
+        public SizeF MeasureString(string text, Font font)
         {
-            if (scratch == null) scratch = XGraphics.FromGraphics(Graphics.FromImage(new Bitmap(1, 1)), new XSize(1, 1));
-            return scratch.MeasureString(text, font).ToSizeF();
+            if (scratch == null) scratch = Graphics.FromImage(new Bitmap(1, 1));
+            return scratch.MeasureString(text, font);
         }
 
-        public void DrawString(string s, XFont font, AbstractBrush brush, double x, double y, StringAlignment alignment)
+        public void DrawString(string s, Font font, AbstractBrush brush, float x, float y, StringAlignment alignment)
         {
             var e = Append(new Element(ElementNames.TEXT));
             e.content = s;
@@ -508,12 +509,12 @@ namespace Maps.Rendering
 
             switch (alignment)
             {
-                case StringAlignment.Centered: y += (font.Size * 0.85) / 2; e.Set("text-anchor", "middle"); break;
-                case StringAlignment.TopLeft: y += font.Size * 0.85; break;
-                case StringAlignment.TopCenter: y += font.Size * 0.85; e.Set("text-anchor", "middle"); break;
-                case StringAlignment.TopRight: y += font.Size * 0.85; e.Set("text-anchor", "end"); break;
-                case StringAlignment.CenterLeft: y += (font.Size * 0.85) / 2; break;
-                case StringAlignment.Default: break;
+                case StringAlignment.Centered: y += (font.Size * 0.85f) / 2; e.Set("text-anchor", "middle"); break;
+                case StringAlignment.TopLeft: y += font.Size * 0.85f; break;
+                case StringAlignment.TopCenter: y += font.Size * 0.85f; e.Set("text-anchor", "middle"); break;
+                case StringAlignment.TopRight: y += font.Size * 0.85f; e.Set("text-anchor", "end"); break;
+                case StringAlignment.CenterLeft: y += (font.Size * 0.85f) / 2; break;
+                case StringAlignment.Baseline: break;
                 default: throw new ApplicationException("Unhandled string alignment");
             }
 
@@ -524,17 +525,17 @@ namespace Maps.Rendering
         #endregion
 
         #region Transforms
-        public void ScaleTransform(double scaleX, double scaleY)
+        public void ScaleTransform(float scaleX, float scaleY)
         {
             var e = Open(new Element(ElementNames.G));
             e.Set("transform", string.Format("scale({0:G5} {1:G5})", scaleX, scaleY));
         }
-        public void TranslateTransform(double dx, double dy)
+        public void TranslateTransform(float dx, float dy)
         {
             var e = Open(new Element(ElementNames.G));
             e.Set("transform", string.Format("translate({0:G5},{1:G5})", dx, dy));
         }
-        public void RotateTransform(double angle)
+        public void RotateTransform(float angle)
         {
             var e = Open(new Element(ElementNames.G));
             e.Set("transform", string.Format("rotate({0:G5})", angle));
@@ -586,32 +587,32 @@ namespace Maps.Rendering
         {
             DrawRectangle(null, brush, rect.X, rect.Y, rect.Width, rect.Height);
         }
-        public void DrawRectangle(AbstractBrush brush, double x, double y, double width, double height)
+        public void DrawRectangle(AbstractBrush brush, float x, float y, float width, float height)
         {
             DrawRectangle(null, brush, x, y, width, height);
         }
-        public void DrawRectangle(AbstractPen pen, double x, double y, double width, double height)
+        public void DrawRectangle(AbstractPen pen, float x, float y, float width, float height)
         {
             DrawRectangle(pen, null, x, y, width, height);
         }
-        public void DrawEllipse(AbstractBrush brush, double x, double y, double width, double height)
+        public void DrawEllipse(AbstractBrush brush, float x, float y, float width, float height)
         {
             DrawEllipse(null, brush, x, y, width, height);
         }
-        public void DrawEllipse(AbstractPen pen, double x, double y, double width, double height)
+        public void DrawEllipse(AbstractPen pen, float x, float y, float width, float height)
         {
             DrawEllipse(pen, null, x, y, width, height);
         }
-        public void DrawClosedCurve(AbstractBrush brush, PointF[] points, double tension)
+        public void DrawClosedCurve(AbstractBrush brush, PointF[] points, float tension)
         {
             DrawClosedCurve(null, brush, points, tension);
         }
-        public void DrawClosedCurve(AbstractPen pen, PointF[] points, double tension)
+        public void DrawClosedCurve(AbstractPen pen, PointF[] points, float tension)
         {
             DrawClosedCurve(pen, null, points, tension);
         }
 
-        public void ScaleTransform(double scaleXY)
+        public void ScaleTransform(float scaleXY)
         {
             ScaleTransform(scaleXY, scaleXY);
         }
@@ -643,11 +644,11 @@ namespace Maps.Rendering
             return path.ToString();
         }
 
-        private string ToSVG(PointF[] points, double tension, bool closed)
+        private string ToSVG(PointF[] points, float tension, bool closed)
         {
             PathBuilder path = new PathBuilder();
 
-            float a = (float)(tension + 1);
+            float a = tension + 1;
             PointF last = PointF.Empty;
             PointF lastd = PointF.Empty;
 

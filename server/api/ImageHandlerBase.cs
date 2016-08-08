@@ -153,9 +153,9 @@ namespace Maps.API
                     {
                         g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
 
-                        using (var graphics = new PdfSharpGraphics(XGraphics.FromGraphics(g, new XSize(tileSize.Width * devicePixelRatio, tileSize.Height * devicePixelRatio))))
+                        using (var graphics = new BitmapGraphics(g))
                         {
-                            graphics.ScaleTransform(devicePixelRatio);
+                            graphics.ScaleTransform((float)devicePixelRatio);
 
                             RenderToGraphics(ctx, rot, translateX, translateY, graphics);
                         }
