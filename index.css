@@ -857,3 +857,7 @@ noscript div {
   background-color: inherit;
   border: 2px solid white;
 }
+
+/* Browser-specific Hacks */
+
+input[type=text]::-ms-clear { display: none; }
