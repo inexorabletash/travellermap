@@ -86,7 +86,7 @@ namespace Maps.API
                     ms = new MemoryStream();
                 Stream outputStream = dataURI ? ms : Context.Response.OutputStream;
 
-                if (accepter.Accepts(context, Util.MediaTypeName_Image_Svg))
+                if (accepter.Accepts(context, Util.MediaTypeName_Image_Svg, ignoreHeaderFallbacks: true))
                 {
                     #region SVG Generation
                     using (var svg = new SVGGraphics(tileSize.Width, tileSize.Height))
@@ -108,7 +108,7 @@ namespace Maps.API
                     #endregion
                 }
 
-                else if (accepter.Accepts(context, MediaTypeNames.Application.Pdf))
+                else if (accepter.Accepts(context, MediaTypeNames.Application.Pdf, ignoreHeaderFallbacks: true))
                 {
                     #region PDF Generation
                     using (var document = new PdfDocument())
