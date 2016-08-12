@@ -103,11 +103,13 @@ h1.underline {
   padding-left: 0.5in;
 }
 
-/* Cover & Title Page ============================== */
+/* Cover, Back Cover & Title Page ============================== */
 
 #cover_page {
-  background-image: url(../res/ui/aoti.jpg);
-  background-position: 40% 0%;
+  background-color: black;
+  background-image: url(../res/atlas/cover-ian.jpg);
+  background-position: 100% 0%;
+  background-size: auto 100%;
   -webkit-print-color-adjust: exact;
 }
 #cover_page .title_adventure,
@@ -120,8 +122,80 @@ h1.underline {
 {
   color: #3366ff;
 }
-#cover_page .title { top: 7in; left: 1.5in; }
+#cover_page .title {
+  top: 7.64in; left: 1.5in;
+ }
 #cover_page .title_title { margin-left: -1.5in; padding-left: 1.5in; }
+
+#backcover_page {
+  background-color: black;
+  background-image: url(../res/atlas/cover-ian.jpg);
+  background-position: 18% 0%;
+  background-size: auto 100%;
+  -webkit-print-color-adjust: exact;
+}
+#backcover_page .blurb {
+  position: absolute;
+  left: 1in;
+  right: 1in;
+  top: 0.25in;
+}
+#backcover_page .blurb,
+#backcover_page .blurb table {
+  color: white;
+  font-size: 11pt;
+  font-family: Optima, Marcellus, serif;
+}
+#backcover_page .blurb td {
+  padding-right: 12pt;
+  padding-bottom: 5pt;
+}
+#backcover_page .blurb h1 {
+  color: #3366ff;
+  margin-bottom: 0.1in;
+  font-size: 36pt;
+  font-style: italic;
+  line-height: 36pt;
+}
+#backcover_page .blurb h2 {
+  color: #ffaa00;
+  font-size: 18pt;
+  font-style: italic;
+  margin-top: 0;
+  margin-bottom: 12pt;
+}
+#backcover_page .blurb p {
+  text-indent: 0.2in;
+  line-height: 150%;
+  text-shadow: 2px 2px black;
+}
+
+#backcover_page .blurb .highlight {
+  margin-top: 0.5in;
+  color: #ffaa00;
+}
+
+#backcover_page .title {
+  position: absolute;
+  left: 0.5in;
+  right: 0.5in;
+  top: 8.75in;
+}
+
+#backcover_page .credits {
+  margin-top: 0.5in;
+}
+
+#backcover_page .title_adventure,
+#backcover_page .title_title {
+  color: #ffaa00;
+  border-bottom-color: #ffaa00;
+}
+#backcover_page .title_logo,
+#backcover_page .title_publisher
+{
+  color: #ffaa00;
+}
 
 .title {
   position: absolute;
@@ -389,7 +463,10 @@ table.uwp-data {
           <div class="title_adventure">Science-Fiction Adventure<br>in the Far Future</div>
         </div>
       </div>
-      <div class="title_publisher">Far Future Enterprises</div>
+      <div class="title_publisher">
+        <!--Far Future Enterprises-->
+        <img src="../res/atlas/ffe.svg" alt="Far Future Enterprises" style="width: 1.5in">
+      </div>
     </div>
 
     <!-- Title Page -->
@@ -402,7 +479,10 @@ table.uwp-data {
           <div class="title_adventure">Science-Fiction Adventure<br>in the Far Future</div>
         </div>
       </div>
-      <div class="title_publisher">Far Future Enterprises</div>
+      <div class="title_publisher">
+        <!--Far Future Enterprises-->
+        <img src="../res/atlas/ffe.svg" alt="Far Future Enterprises" style="width: 1.5in">
+      </div>
     </div>
 
     <!-- Colophon Page -->
@@ -440,7 +520,12 @@ table.uwp-data {
         </p>
 
         <p>
-          Edited by Joshua Bell.
+          Includes text from <i>The Atlas of the Imperium</i>
+          by Marc. W. Miller (Game Designers' Workshop, 1984.)
+        </p>
+
+        <p>
+          Edited by Joshua Bell. Cover illustration by Ian Stead.
         </p>
 
         <br>
@@ -782,6 +867,84 @@ table.uwp-data {
         </ol>
       </div>
       <div class=pagenum></div>
+    </div>
+
+    <!-- Back Cover Page -->
+    <div id="backcover_page" class="page">
+
+      <div class=blurb>
+        <h1>The Atlas of the Imperium:<br>
+          &nbsp; Second Survey</h1>
+        <h2>Star Maps of {{sectors.length}} Sectors in and Around the Imperium</h2>
+        <div style="float: left; width: 0.75in; height: 1.2in;"></div>
+        <div style="float: right; width: 1.5in; height: 7in;
+                    shape-outside: circle(110% at 400% 50%);
+                    shape-margin: 1em;
+                    display: block;"></div>
+        <p>
+          The Imperial Interstellar Scout Service's famed Second
+          Survey of the Imperium (originally published in 1065) now is available
+          in an updated commercial edition mapping {{sectors.length}} sectors
+          in and around the Third Imperium. All pertinent astrographic data is
+          presented on full page (8 1/2 by 11 inch) maps showing every Imperial
+          sector from the fabled Core (the center of the empire) to the Vland,
+          Corridor, Deneb, and Spinward Marches sectors; from Verge on the edge
+          of the Rift to Ilelish, Magyar and Daibei sectors; from distant
+          Antares to the Delphi, Old Expanses, and Solomani Rim sectors. Every
+          world of the Imperium is shown, each in its proper location.
+        </p>
+
+        <p>
+          Expanding on previous editions, the <i>Atlas</i> includes details on
+          many sectors beyond the Imperium, from the remote Far Frontiers,
+          Vanguard Reaches and Theta Borealis sectors to the Mendan
+          and Amdukan sectors of the Julian Protectorate, and many sectors
+          in the Vargr Extents and Aslan Hierate.
+        </p>
+
+        <p>
+          Each world on the map is shown with base, starport,
+          and world type (standard, desert, or asteroid belt) and
+          all are named with high-population worlds and capitals
+          highlighted. Communication and trade routes are also shown
+          where possible. Accompanying each map are tables containing
+          full Second Survey details on every world in the sector.
+        </p>
+
+        <p>
+          Additional text deals with the history
+          of the Imperium and information on how to use the <i>Atlas</i>.
+        </p>
+
+        <p class=highlight>
+          The <i>Atlas</i> is intended for use with <b>Traveller 5</b>,
+          but can be used with any prior edition of the <b>Traveller</b> rules.
+        </p>
+
+        <table class=credits>
+          <tr>
+            <td>Editor:</td>
+            <td>Joshua Bell</td>
+          </tr>
+          <tr>
+            <td>Cover Illustration:</td>
+            <td>Ian Stead</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="title">
+        <div class="title_title"></div>
+        <div class="title_logo">
+          <div class="title_trav">TRAVELLER<span class="title_reg">&reg;</span></div>
+          <div class="title_adventure">Science-Fiction Adventure<br>in the Far Future</div>
+        </div>
+      </div>
+
+      <div class="title_publisher">
+        <!--Far Future Enterprises-->
+        <img src="../res/atlas/ffe.svg" alt="Far Future Enterprises" style="width: 1.5in">
+      </div>
     </div>
 
   </script>
