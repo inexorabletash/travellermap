@@ -37,6 +37,8 @@ namespace Maps.API
                 bool transparent = false, IDictionary<string, object> queryDefaults = null)
             {
                 // New-style Options
+
+                #region URL Parameters
                 // TODO: move to ParseOptions (maybe - requires options to be parsed after stylesheet creation?)
                 if (GetBoolOption("sscoords", queryDefaults: queryDefaults, defaultValue: false))
                     ctx.Styles.hexCoordinateStyle = Stylesheet.HexCoordinateStyle.Subsector;
@@ -76,8 +78,17 @@ namespace Maps.API
                 if (devicePixelRatio <= 0)
                     devicePixelRatio = 1;
 
-                if (accepter.Accepts(context, SVGGraphics.MediaTypeName))
+                bool dataURI = GetBoolOption("datauri", queryDefaults: queryDefaults, defaultValue: false);
+                #endregion
+
+                MemoryStream ms = null;
+                if (dataURI)
+                    ms = new MemoryStream();
+                Stream outputStream = dataURI ? ms : Context.Response.OutputStream;
+
+                if (accepter.Accepts(context, Util.MediaTypeName_Image_Svg))
                 {
+                    #region SVG Generation
                     using (var svg = new SVGGraphics(tileSize.Width, tileSize.Height))
                     {
                         RenderToGraphics(ctx, rot, translateX, translateY, svg);
@@ -85,20 +96,21 @@ namespace Maps.API
                         using (var stream = new MemoryStream())
                         {
                             svg.Serialize(new StreamWriter(stream));
-
-                            context.Response.ContentType = SVGGraphics.MediaTypeName;
-                            context.Response.AddHeader("content-length", stream.Length.ToString());
-                            context.Response.AddHeader("content-disposition", "inline;filename=\"map.svg\"");
-                            context.Response.BinaryWrite(stream.ToArray());
-                            context.Response.Flush();
-                            context.Response.Close();
-                            return;
+                            context.Response.ContentType = Util.MediaTypeName_Image_Svg;
+                            if (!dataURI)
+                            {
+                                context.Response.AddHeader("content-length", stream.Length.ToString());
+                                context.Response.AddHeader("content-disposition", "inline;filename=\"map.svg\"");
+                            }
+                            stream.WriteTo(outputStream);
                         }
                     }
+                    #endregion
                 }
 
-                if (accepter.Accepts(context, MediaTypeNames.Application.Pdf))
+                else if (accepter.Accepts(context, MediaTypeNames.Application.Pdf))
                 {
+                    #region PDF Generation
                     using (var document = new PdfDocument())
                     {
                         document.Version = 14; // 1.4 for opacity
@@ -125,72 +137,72 @@ namespace Maps.API
                             using (var stream = new MemoryStream())
                             {
                                 document.Save(stream, closeStream: false);
-
                                 context.Response.ContentType = MediaTypeNames.Application.Pdf;
-                                context.Response.AddHeader("content-length", stream.Length.ToString());
-                                context.Response.AddHeader("content-disposition", "inline;filename=\"map.pdf\"");
-                                context.Response.BinaryWrite(stream.ToArray());
-                                context.Response.Flush();
-                                context.Response.Close();
-                                return;
+                                if (!dataURI)
+                                {
+                                    context.Response.AddHeader("content-length", stream.Length.ToString());
+                                    context.Response.AddHeader("content-disposition", "inline;filename=\"map.pdf\"");
+                                }
+                                stream.WriteTo(outputStream);
                             }
                         }
                     }
+                    #endregion
                 }
-
-                int width = (int)Math.Floor(tileSize.Width * devicePixelRatio);
-                int height = (int)Math.Floor(tileSize.Height * devicePixelRatio);
-                using (var bitmap = TryConstructBitmap(width, height, PixelFormat.Format32bppArgb))
+                else
                 {
-                    if (bitmap == null)
-                        throw new HttpError(500, "Internal Server Error",
-                            string.Format("Failed to allocate bitmap ({0}x{1}). Insufficient memory?", width, height));
-
-                    if (transparent)
-                        bitmap.MakeTransparent();
-
-                    using (var g = Graphics.FromImage(bitmap))
+                    #region Bitmap Generation
+                    int width = (int)Math.Floor(tileSize.Width * devicePixelRatio);
+                    int height = (int)Math.Floor(tileSize.Height * devicePixelRatio);
+                    using (var bitmap = TryConstructBitmap(width, height, PixelFormat.Format32bppArgb))
                     {
-                        g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+                        if (bitmap == null)
+                            throw new HttpError(500, "Internal Server Error",
+                                string.Format("Failed to allocate bitmap ({0}x{1}). Insufficient memory?", width, height));
 
-                        using (var graphics = new BitmapGraphics(g))
+                        if (transparent)
+                            bitmap.MakeTransparent();
+
+                        using (var g = Graphics.FromImage(bitmap))
                         {
-                            graphics.ScaleTransform((float)devicePixelRatio);
+                            g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
 
-                            RenderToGraphics(ctx, rot, translateX, translateY, graphics);
+                            using (var graphics = new BitmapGraphics(g))
+                            {
+                                graphics.ScaleTransform((float)devicePixelRatio);
+                                RenderToGraphics(ctx, rot, translateX, translateY, graphics);
+                            }
                         }
+
+                        BitmapResponse(context.Response, outputStream, ctx.Styles, bitmap, transparent ? Util.MediaTypeName_Image_Png : null);
+
                     }
+                    #endregion
+                }
 
-                    bool dataURI = GetBoolOption("datauri", queryDefaults: queryDefaults, defaultValue: false);
-                    MemoryStream ms = null;
-                    if (dataURI)
-                        ms = new MemoryStream();
+                if (dataURI)
+                {
+                    string contentType = context.Response.ContentType;
+                    context.Response.ContentType = System.Net.Mime.MediaTypeNames.Text.Plain;
+                    ms.Seek(0, SeekOrigin.Begin);
 
-                    BitmapResponse(context.Response, dataURI ? ms : context.Response.OutputStream, ctx.Styles, bitmap, transparent ? Util.MediaTypeName_Image_Png : null);
+                    context.Response.Output.Write("data:");
+                    context.Response.Output.Write(contentType);
+                    context.Response.Output.Write(";base64,");
+                    context.Response.Output.Flush();
 
-                    if (dataURI)
+                    byte[] buffer = new byte[4096];
+                    System.Security.Cryptography.ICryptoTransform transform = new System.Security.Cryptography.ToBase64Transform();
+                    using (System.Security.Cryptography.CryptoStream cs = new System.Security.Cryptography.CryptoStream(context.Response.OutputStream, transform, System.Security.Cryptography.CryptoStreamMode.Write))
                     {
-                        string contentType = context.Response.ContentType;
-                        context.Response.ContentType = System.Net.Mime.MediaTypeNames.Text.Plain;
-                        ms.Seek(0, SeekOrigin.Begin);
-
-                        context.Response.Output.Write("data:");
-                        context.Response.Output.Write(contentType);
-                        context.Response.Output.Write(";base64,");
-                        context.Response.Output.Flush();
-
-                        byte[] buffer = new byte[4096];
-                        System.Security.Cryptography.ICryptoTransform transform = new System.Security.Cryptography.ToBase64Transform();
-                        using (System.Security.Cryptography.CryptoStream cs = new System.Security.Cryptography.CryptoStream(context.Response.OutputStream, transform, System.Security.Cryptography.CryptoStreamMode.Write))
-                        {
-                            int bytesRead;
-                            while ((bytesRead = ms.Read(buffer, 0, buffer.Length)) > 0)
-                                cs.Write(buffer, 0, bytesRead);
-                            cs.FlushFinalBlock();
-                        }
-                        context.Response.OutputStream.Flush();
+                        ms.WriteTo(cs);
+                        cs.FlushFinalBlock();
                     }
                 }
+
+                context.Response.Flush();
+                context.Response.Close();
+                return;
             }
 
             private static Bitmap TryConstructBitmap(int width, int height, PixelFormat pixelFormat)

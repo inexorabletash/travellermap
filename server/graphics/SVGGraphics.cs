@@ -12,7 +12,6 @@ namespace Maps.Rendering
 {
     internal class SVGGraphics : AbstractGraphics
     {
-        public const string MediaTypeName = "image/svg+xml";
         private const string NumberFormat = "G5";
 
         private class Element

@@ -12,6 +12,8 @@ namespace Maps
     internal static class Util
     {
         public const string MediaTypeName_Image_Png = "image/png";
+        public const string MediaTypeName_Image_Svg = "image/svg+xml";
+
         public static readonly Encoding UTF8_NO_BOM = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false);
 
         public static string FixCapitalization(string s)
