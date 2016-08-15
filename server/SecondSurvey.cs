@@ -347,7 +347,7 @@ namespace Maps
             { "SlLg", "Sl", null, "Shukikikar League" },
             { "SoBF", "So", "So", "Solomani Confederation, Bootean Federation" },
             { "SoCf", "So", "So", "Solomani Confederation" },
-            { "SoCo", "So", "So", "Solomani Confederation, Consolidation" },
+            { "SoCT", "So", "So", "Solomani Confederation, Consolidation of Turin" },
             { "SoNS", "So", "So", "Solomani Confederation, New Slavic Solidarity" },
             { "SoRD", "So", "So", "Solomani Confederation, Reformed Dootchen Estates" },
             { "SoWu", "So", "So", "Solomani Confederation, Wuan Technology Association" },
