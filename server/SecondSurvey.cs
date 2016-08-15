@@ -500,6 +500,7 @@ namespace Maps
             { "Sydi", "Sydites" },
             { "Syle", "Syleans" },
             { "Tapa", "Tapazmal" },
+            { "Taur", "Taureans" },
             { "Tent", "Tentrassi" },
             { "Tlye", "Tlyetrai" },
             { "UApe", "Uplifted Apes" },
@@ -508,7 +509,7 @@ namespace Maps
             { "Urun", "Urunishani" },
             { "Varg", "Vargr" },
             { "Vega", "Vegans" },
-            { "Za’t", "Za'tachk" },
+            { "Za't", "Za'tachk" },
             { "Zhod", "Zhodani" },
             { "Ziad", "Ziadd" },
             // Sophont Table End
