@@ -75,7 +75,9 @@ namespace Maps.Admin
                     Location endLocation = new Location(endSector, route.End);
                     int distance = Astrometrics.HexDistance(Astrometrics.LocationToCoordinates(startLocation),
                         Astrometrics.LocationToCoordinates(endLocation));
-                    if (distance > 4)
+                    if (distance == 0)
+                        context.Response.Output.WriteLine("Error: Route length {0}: {1}", distance, route.ToString());
+                    else if (distance > 4)
                         context.Response.Output.WriteLine("Warning: Route length {0}: {1}", distance, route.ToString());
                     /*
                      * This fails because of routes that use e.g. 3341-style coordinates

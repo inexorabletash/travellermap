@@ -1,6 +1,7 @@
 using PdfSharp.Drawing;
 using System;
 using System.Drawing;
+using System.Text.RegularExpressions;
 
 namespace Maps.Rendering
 {
@@ -73,9 +74,9 @@ namespace Maps.Rendering
         public FontFamily family;
         public string name;
         public float size;
-        public XFontStyle style;
+        public FontStyle style;
 
-        public FontInfo(string name, float size, XFontStyle style = XFontStyle.Regular)
+        public FontInfo(string name, float size, FontStyle style = FontStyle.Regular)
         {
             family = null;
             this.name = name;
@@ -83,7 +84,7 @@ namespace Maps.Rendering
             this.style = style;
         }
 
-        public FontInfo(FontFamily family, float size, XFontStyle style = XFontStyle.Regular)
+        public FontInfo(FontFamily family, float size, FontStyle style = FontStyle.Regular)
         {
             this.family = family;
             name = null;
@@ -91,13 +92,12 @@ namespace Maps.Rendering
             this.style = style;
         }
 
-        private static readonly XPdfFontOptions s_fontOptions = new XPdfFontOptions(PdfSharp.Pdf.PdfFontEncoding.Unicode, PdfSharp.Pdf.PdfFontEmbedding.Always);
-        public XFont makeFont()
+        public Font makeFont()
         {
             if (family != null)
-                return new XFont(family, size * 1.4f, style, s_fontOptions);
+                return new Font(family, size * 1.4f, style, GraphicsUnit.World);
             if (name != null)
-                return new XFont(name, size * 1.4f, style, s_fontOptions);
+                return new Font(name, size * 1.4f, style, GraphicsUnit.World);
             return null;
         }
     }
@@ -106,40 +106,18 @@ namespace Maps.Rendering
     {
         public Color color;
         public float width;
-        public XDashStyle dashStyle;
-        public double[] dashPattern;
-        //public float scaleX;
-        //public float scaleY;
+        public DashStyle dashStyle;
+        public float[] dashPattern;
 
-        public PenInfo(Color color, float width)
+        public PenInfo(Color color, float width, DashStyle style = DashStyle.Solid)
         {
             this.color = color;
             this.width = width;
-            dashStyle = XDashStyle.Solid;
+            dashStyle = style;
             dashPattern = null;
-            //this.scaleX = 0;
-            //this.scaleY = 0;
         }
 
-        public XDashStyle DashStyle
-        {
-            get { return dashStyle; }
-            set { dashStyle = value; }
-        }
-
-        public double[] DashPattern
-        {
-            get { return dashPattern; }
-            set { dashPattern = value; }
-        }
-
-        //public void ScaleTransform( float x, float y )
-        //{
-        //    this.scaleX = x;
-        //    this.scaleY = y;
-        //}
-
-        public void Apply(ref XPen pen)
+        public void Apply(ref AbstractPen pen)
         {
             if (width == 0f)
                 throw new ArgumentOutOfRangeException("pen", "Hairline pens not supported, set width > 0");
@@ -147,12 +125,8 @@ namespace Maps.Rendering
             pen.Color = color;
             pen.Width = width;
             pen.DashStyle = dashStyle;
-
-            if (dashPattern != null)
-                pen.DashPattern = dashPattern;
+            pen.CustomDashPattern = dashPattern;
         }
-
-
     }
 
     internal struct LabelStyle
@@ -332,11 +306,11 @@ namespace Maps.Rendering
             {
                 float fontScale = (scale <= 96f || style == Style.Candy) ? 1f : 96f / Math.Min((float)scale, 192f);
 
-                worlds.fontInfo = new FontInfo(DEFAULT_FONT, scale < WorldFullMinScale ? 0.2f : 0.15f * fontScale, XFontStyle.Bold);
+                worlds.fontInfo = new FontInfo(DEFAULT_FONT, scale < WorldFullMinScale ? 0.2f : 0.15f * fontScale, FontStyle.Bold);
                 wingdingFont = new FontInfo("Wingdings", scale < WorldFullMinScale ? 0.2f : 0.175f * fontScale);
-                glyphFont = new FontInfo(DEFAULT_FONT, scale < WorldFullMinScale ? 0.175f : 0.15f * fontScale, XFontStyle.Bold);
+                glyphFont = new FontInfo(DEFAULT_FONT, scale < WorldFullMinScale ? 0.175f : 0.15f * fontScale, FontStyle.Bold);
                 hexNumber.fontInfo = new FontInfo(DEFAULT_FONT, 0.1f * fontScale);
-                worlds.smallFontInfo = new FontInfo(DEFAULT_FONT, scale < WorldFullMinScale ? 0.2f : 0.1f * fontScale, XFontStyle.Regular);
+                worlds.smallFontInfo = new FontInfo(DEFAULT_FONT, scale < WorldFullMinScale ? 0.2f : 0.1f * fontScale, FontStyle.Regular);
                 worlds.largeFontInfo = worlds.fontInfo;
                 starportFont = (scale < WorldFullMinScale) ? worlds.smallFontInfo : worlds.fontInfo;
             }
@@ -351,18 +325,18 @@ namespace Maps.Rendering
             minorHomeWorlds.content = "\u273B"; // TEARDROP-SPOKED ASTERISK
             ancientsWorlds.content = "\u2600"; // BLACK SUN WITH RAYS
 
-            microBorders.fontInfo = new FontInfo(DEFAULT_FONT, (scale == MicroNameMinScale) ? 0.6f : 0.25f, XFontStyle.Bold);
-            microBorders.smallFontInfo = new FontInfo(DEFAULT_FONT, 0.15f, XFontStyle.Bold);
-            microBorders.largeFontInfo = new FontInfo(DEFAULT_FONT, 0.75f, XFontStyle.Bold);
+            microBorders.fontInfo = new FontInfo(DEFAULT_FONT, (scale == MicroNameMinScale) ? 0.6f : 0.25f, FontStyle.Bold);
+            microBorders.smallFontInfo = new FontInfo(DEFAULT_FONT, 0.15f, FontStyle.Bold);
+            microBorders.largeFontInfo = new FontInfo(DEFAULT_FONT, 0.75f, FontStyle.Bold);
 
-            macroNames.fontInfo = new FontInfo(DEFAULT_FONT, 8f / 1.4f, XFontStyle.Bold);
-            macroNames.smallFontInfo = new FontInfo(DEFAULT_FONT, 5f / 1.4f, XFontStyle.Regular);
-            macroNames.mediumFontInfo = new FontInfo(DEFAULT_FONT, 6.5f / 1.4f, XFontStyle.Italic);
+            macroNames.fontInfo = new FontInfo(DEFAULT_FONT, 8f / 1.4f, FontStyle.Bold);
+            macroNames.smallFontInfo = new FontInfo(DEFAULT_FONT, 5f / 1.4f, FontStyle.Regular);
+            macroNames.mediumFontInfo = new FontInfo(DEFAULT_FONT, 6.5f / 1.4f, FontStyle.Italic);
 
             float megaNameScaleFactor = 1.0f * onePixel;
-            megaNames.fontInfo = new FontInfo(DEFAULT_FONT, 24f * megaNameScaleFactor, XFontStyle.Bold);
-            megaNames.mediumFontInfo = new FontInfo(DEFAULT_FONT, 22f * megaNameScaleFactor, XFontStyle.Regular);
-            megaNames.smallFontInfo = new FontInfo(DEFAULT_FONT, 20f * megaNameScaleFactor, XFontStyle.Italic);
+            megaNames.fontInfo = new FontInfo(DEFAULT_FONT, 24f * megaNameScaleFactor, FontStyle.Bold);
+            megaNames.mediumFontInfo = new FontInfo(DEFAULT_FONT, 22f * megaNameScaleFactor, FontStyle.Regular);
+            megaNames.smallFontInfo = new FontInfo(DEFAULT_FONT, 20f * megaNameScaleFactor, FontStyle.Italic);
 
             capitals.fillColor = Color.Wheat;
             capitals.textColor = Color.Red;
@@ -432,8 +406,15 @@ namespace Maps.Rendering
             amberZone.pen.width = redZone.pen.width = blueZone.pen.width = 0.05f * penScale;
 
             macroRoutes.pen.width = borderPenWidth;
-            macroRoutes.pen.DashStyle = XDashStyle.Dash;
+            macroRoutes.pen.dashStyle = DashStyle.Dash;
 
+            populationOverlay.fillColor = Color.FromArgb(0x80, 0xff, 0xff, 0x00);
+            importanceOverlay.fillColor = Color.FromArgb(0x20, 0x80, 0xff, 0x00);
+            highlightWorlds.fillColor = Color.FromArgb(0x80, 0xff, 0x00, 0x00);
+
+            populationOverlay.pen = new PenInfo(Color.Empty, 0.03f * penScale, DashStyle.Dash);
+            importanceOverlay.pen = new PenInfo(Color.Empty, 0.03f * penScale, DashStyle.Dot);
+            highlightWorlds.pen = new PenInfo(Color.Empty, 0.03f * penScale, DashStyle.DashDot);
 
             switch (style)
             {
@@ -474,6 +455,15 @@ namespace Maps.Rendering
 
                         showWorldDetailColors = false;
 
+                        populationOverlay.fillColor = Color.FromArgb(0x40, highlightColor);
+                        populationOverlay.pen.color = Color.Gray;
+
+                        importanceOverlay.fillColor = Color.FromArgb(0x20, highlightColor);
+                        importanceOverlay.pen.color = Color.Gray;
+
+                        highlightWorlds.fillColor = Color.FromArgb(0x30, highlightColor);
+                        highlightWorlds.pen.color = Color.Gray;
+
                         break;
                     }
                 case Style.FASA:
@@ -504,7 +494,7 @@ namespace Maps.Rendering
                         microBorders.pen.color = inkColor;
                         microBorders.pen.width = onePixel * 2;
                         microBorders.fontInfo.size *= 0.6f;
-                        microBorders.fontInfo.style = XFontStyle.Regular;
+                        microBorders.fontInfo.style = FontStyle.Regular;
 
                         microRoutes.pen.color = inkColor;
 
@@ -539,6 +529,15 @@ namespace Maps.Rendering
                         hexCoordinateStyle = HexCoordinateStyle.Subsector;
                         overrideLineStyle = LineStyle.Solid;
 
+                        populationOverlay.fillColor = Color.FromArgb(0x40, highlightColor);
+                        populationOverlay.pen.color = Color.Gray;
+
+                        importanceOverlay.fillColor = Color.FromArgb(0x20, highlightColor);
+                        importanceOverlay.pen.color = Color.Gray;
+
+                        highlightWorlds.fillColor = Color.FromArgb(0x30, highlightColor);
+                        highlightWorlds.pen.color = Color.Gray;
+
                         break;
                     }
                 case Style.Print:
@@ -559,6 +558,15 @@ namespace Maps.Rendering
                         worldNoWater.pen = new PenInfo(Color.Black, onePixel);
 
                         riftOpacity = Math.Min(riftOpacity, 0.70f);
+
+                        populationOverlay.fillColor = Color.FromArgb(0x40, populationOverlay.fillColor);
+                        populationOverlay.pen.color = Color.Gray;
+
+                        importanceOverlay.fillColor = Color.FromArgb(0x20, importanceOverlay.fillColor);
+                        importanceOverlay.pen.color = Color.Gray;
+
+                        highlightWorlds.fillColor = Color.FromArgb(0x30, highlightWorlds.fillColor);
+                        highlightWorlds.pen.color = Color.Gray;
 
                         break;
                     }
@@ -623,10 +631,10 @@ namespace Maps.Rendering
                         subsectorNames.fontInfo.name = FONT_NAME;
                         sectorName.fontInfo.name = FONT_NAME;
 
-                        worlds.largeFontInfo.style |= XFontStyle.Underline;
+                        worlds.largeFontInfo.style |= FontStyle.Underline;
 
                         microBorders.pen.width = onePixel * 4;
-                        microBorders.pen.dashStyle = XDashStyle.Dot;
+                        microBorders.pen.dashStyle = DashStyle.Dot;
 
                         worldNoWater.fillColor = foregroundColor;
                         worldWater.fillColor = Color.Empty;
@@ -645,6 +653,15 @@ namespace Maps.Rendering
 
                         numberAllHexes = true;
 
+                        populationOverlay.fillColor = Color.FromArgb(0x40, populationOverlay.fillColor);
+                        populationOverlay.pen.color = Color.Gray;
+
+                        importanceOverlay.fillColor = Color.FromArgb(0x20, importanceOverlay.fillColor);
+                        importanceOverlay.pen.color = Color.Gray;
+
+                        highlightWorlds.fillColor = Color.FromArgb(0x30, highlightWorlds.fillColor);
+                        highlightWorlds.pen.color = Color.Gray;
+
                         break;
                     }
                 case Style.Candy:
@@ -662,10 +679,12 @@ namespace Maps.Rendering
                         parsecGrid.visible = false;
 
                         subsectorGrid.pen.width = 0.03f * (64.0f / (float)scale);
-                        subsectorGrid.pen.DashPattern = new double[] { 10.0, 8.0 };
+                        subsectorGrid.pen.dashStyle = DashStyle.Custom;
+                        subsectorGrid.pen.dashPattern = new float[] { 10.0f, 8.0f };
 
                         sectorGrid.pen.width = 0.03f * (64.0f / (float)scale);
-                        sectorGrid.pen.DashPattern = new double[] { 10.0, 8.0 };
+                        sectorGrid.pen.dashStyle = DashStyle.Custom;
+                        sectorGrid.pen.dashPattern = new float[] { 10.0f, 8.0f };
 
                         worlds.textBackgroundStyle = TextBackgroundStyle.Shadow;
 
@@ -774,14 +793,14 @@ namespace Maps.Rendering
 
             public PointF position;
 
-            private XFont font;
-            public XFont Font { get { if (font == null) { font = fontInfo.makeFont(); } return font; } }
-            private XFont smallFont;
-            public XFont SmallFont { get { if (smallFont == null) { smallFont = smallFontInfo.makeFont(); } return smallFont; } }
-            private XFont mediumFont;
-            public XFont MediumFont { get { if (mediumFont == null) { mediumFont = mediumFontInfo.makeFont(); } return mediumFont; } }
-            private XFont largeFont;
-            public XFont LargeFont { get { if (largeFont == null) { largeFont = largeFontInfo.makeFont(); } return largeFont; } }
+            private Font font;
+            public Font Font { get { if (font == null) { font = fontInfo.makeFont(); } return font; } }
+            private Font smallFont;
+            public Font SmallFont { get { if (smallFont == null) { smallFont = smallFontInfo.makeFont(); } return smallFont; } }
+            private Font mediumFont;
+            public Font MediumFont { get { if (mediumFont == null) { mediumFont = mediumFontInfo.makeFont(); } return mediumFont; } }
+            private Font largeFont;
+            public Font LargeFont { get { if (largeFont == null) { largeFont = largeFontInfo.makeFont(); } return largeFont; } }
         }
 
 
@@ -808,6 +827,9 @@ namespace Maps.Rendering
         public string preferredMimeType;
         public bool t5AllegianceCodes;
 
+        public StyleElement highlightWorlds;
+        public HighlightWorldPattern highlightWorldsPattern;
+
         public StyleElement droyneWorlds;
         public StyleElement ancientsWorlds;
         public StyleElement minorHomeWorlds;
@@ -815,11 +837,11 @@ namespace Maps.Rendering
         // Worlds
         public StyleElement worlds;
         public bool showWorldDetailColors;
-        public bool showPopulationOverlay;
-        public bool showImportanceOverlay;
+        public StyleElement populationOverlay;
+        public StyleElement importanceOverlay;
         public bool showStellarOverlay;
 
-        public bool HasWorldOverlays { get { return showPopulationOverlay || showImportanceOverlay || showStellarOverlay; } }
+        public bool HasWorldOverlays { get { return populationOverlay.visible || importanceOverlay.visible|| highlightWorlds.visible || showStellarOverlay; } }
 
         public PointF StarportPosition;
         public PointF GasGiantPosition;
@@ -875,7 +897,7 @@ namespace Maps.Rendering
         public HexStyle hexStyle;
         public LineStyle? overrideLineStyle;
 
-        public void WorldColors(World world, out XColor penColorOut, out XColor brushColorOut)
+        public void WorldColors(World world, out Color penColorOut, out Color brushColorOut)
         {
             Color penColor = Color.Empty;
             Color brushColor = Color.Empty;
@@ -927,8 +949,8 @@ namespace Maps.Rendering
                 penColor = (world.WaterPresent) ? worldWater.pen.color : worldNoWater.pen.color;
             }
 
-            penColorOut = penColor.IsEmpty ? XColor.Empty : penColor;
-            brushColorOut = brushColor.IsEmpty ? XColor.Empty : brushColor;
+            penColorOut = penColor.IsEmpty ? Color.Empty : penColor;
+            brushColorOut = brushColor.IsEmpty ? Color.Empty : brushColor;
         }
 
         public static float ScaleInterpolate(float minValue, float maxValue, double scale, float minScale, float maxScale)
@@ -958,6 +980,119 @@ namespace Maps.Rendering
         }
     }
 
+    internal class HighlightWorldPattern
+    {
+        public enum Field
+        {
+            Starport,
+            Size,
+            Atmosphere,
+            Hydrosphere,
+            Population,
+            Government,
+            Law,
+            Tech,
+            Importance
+        }
+
+
+        public Field field = Field.Starport;
+        public int? min = null;
+        public int? max = null;
+
+        public HighlightWorldPattern() { }
+
+        private bool InRange(int value)
+        {
+            if (min.HasValue && value < min.Value)
+                return false;
+            if (max.HasValue && value > max.Value)
+                return false;
+            return true;
+        }
+        public bool Matches(World world)
+        {
+            int v;
+            switch (field)
+            {
+                case Field.Starport: v = "XEDCBA".IndexOf(world.Starport); break;
+                case Field.Size: v = world.Size; break;
+                case Field.Atmosphere: v = world.Atmosphere; break;
+                case Field.Hydrosphere: v = world.Hydrographics; break;
+                case Field.Population: v = world.PopulationExponent; break;
+                case Field.Government: v = world.Government; break;
+                case Field.Law: v = world.Law; break;
+                case Field.Tech: v = world.TechLevel; break;
+                case Field.Importance: v = SecondSurvey.Importance(world); break;
+                default: throw new ApplicationException("Invalid pattern");
+            }
+            return InRange(v);
+        }
+
+        private static Regex basicRegex = new Regex(@"^([A-Za-z]+)(-?\d+)$", RegexOptions.Compiled);
+        private static Regex minRegex = new Regex(@"^([A-Za-z]+)(-?\d+)\+$", RegexOptions.Compiled);
+        private static Regex maxRegex = new Regex(@"^([A-Za-z]+)(-?\d+)\-$", RegexOptions.Compiled);
+        private static Regex rangeRegex = new Regex(@"^([A-Za-z]+)(-?\d+)\-(-?\d+)$", RegexOptions.Compiled);
+
+        private static bool ParseField(string s, ref Field f)
+        {
+            switch(s.ToLowerInvariant())
+            {
+                case "st": f = Field.Starport; return true;
+                case "s": f = Field.Size; return true;
+                case "a": f = Field.Atmosphere; return true;
+                case "h": f = Field.Hydrosphere; return true;
+                case "p": f = Field.Population; return true;
+                case "g": f = Field.Government; return true;
+                case "l": f = Field.Law; return true;
+                case "t": f = Field.Tech; return true;
+                case "ix": f = Field.Importance; return true;
+                default: return false;
+            }
+        }
+
+        public static HighlightWorldPattern Parse(string s)
+        {
+            if (string.IsNullOrWhiteSpace(s)) return null;
+
+            HighlightWorldPattern p = new HighlightWorldPattern();
+            int min, max;
+
+            Match m;
+            if ((m = basicRegex.Match(s)).Success)
+            {
+                if (!ParseField(m.Groups[1].Value, ref p.field)) return null;
+                if (!Int32.TryParse(m.Groups[2].Value, out min)) return null;
+                p.min = p.max = min;
+                return p;
+            }
+            if ((m = minRegex.Match(s)).Success)
+            {
+                if (!ParseField(m.Groups[1].Value, ref p.field)) return null;
+                if (!Int32.TryParse(m.Groups[2].Value, out min)) return null;
+                p.min = min;
+                return p;
+            }
+            if ((m = maxRegex.Match(s)).Success)
+            {
+                if (!ParseField(m.Groups[1].Value, ref p.field)) return null;
+                if (!Int32.TryParse(m.Groups[2].Value, out max)) return null;
+                p.max = max;
+                return p;
+            }
+            if ((m = rangeRegex.Match(s)).Success)
+            {
+                if (!ParseField(m.Groups[1].Value, ref p.field)) return null;
+                if (!Int32.TryParse(m.Groups[2].Value, out min)) return null;
+                if (!Int32.TryParse(m.Groups[3].Value, out max)) return null;
+                p.min = min;
+                p.max = max;
+                return p;
+            }
+            return null;
+        }
+    }
+
     internal class FontCache : IDisposable
     {
 
@@ -967,14 +1102,14 @@ namespace Maps.Rendering
         }
         private Stylesheet sheet;
 
-        private XFont wingdingFont;
-        public XFont WingdingFont { get { if (wingdingFont == null) { wingdingFont = sheet.wingdingFont.makeFont(); } return wingdingFont; } }
+        private Font wingdingFont;
+        public Font WingdingFont { get { if (wingdingFont == null) { wingdingFont = sheet.wingdingFont.makeFont(); } return wingdingFont; } }
 
-        private XFont glyphFont;
-        public XFont GlyphFont { get { if (glyphFont == null) { glyphFont = sheet.glyphFont.makeFont(); } return glyphFont; } }
+        private Font glyphFont;
+        public Font GlyphFont { get { if (glyphFont == null) { glyphFont = sheet.glyphFont.makeFont(); } return glyphFont; } }
 
-        private XFont starportFont;
-        public XFont StarportFont { get { if (starportFont == null) { starportFont = sheet.starportFont.makeFont(); } return starportFont; } }
+        private Font starportFont;
+        public Font StarportFont { get { if (starportFont == null) { starportFont = sheet.starportFont.makeFont(); } return starportFont; } }
 
         private bool disposed;
         public void Dispose() { Dispose(true); GC.SuppressFinalize(this); }

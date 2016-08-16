@@ -59,6 +59,9 @@
 
     sector.credits = metadata.Credits;
 
+    // TM's Y coordinates are inverted relative to FFE publications.
+    metadata.Y = -metadata.Y;
+
     return sector;
   }
 
@@ -95,9 +98,11 @@
     var data = {};
 
     data.charted_space_src = Traveller.MapService.makeURL(
-      '/api/poster', { x1: -256, x2: 255, y1: -159, y2: 160,
-                       options: 41975, scale: 8, style: 'print',
-                       dimunofficial: 1, rotation: 3 });
+      '/api/poster', {
+        x1: -256, x2: 255, y1: -159, y2: 160,
+        options: 41975, scale: 8, style: 'print',
+        accept: 'image/svg+xml',
+        dimunofficial: 1, rotation: 3 });
 
     var index = [];
     var credits = [];
@@ -107,7 +112,11 @@
       var sector = parseSector(data, metadata);
 
       sector.img_src = Traveller.MapService.makeURL(
-        '/api/poster', {sector: name, style: 'print', dpr: 2});
+        '/api/poster', {
+          sector: name,
+          style: 'print',
+          accept: 'image/svg+xml'
+        });
 
       var short_name = sector.name.replace(/^The /, '');
 

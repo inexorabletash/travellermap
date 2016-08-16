@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html mozNoMarginBoxes>
+<title>World Data Sheet - Traveller Map</title>
+<meta charset="utf-8">
+<link rel="shortcut icon" href="favicon.ico">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+<script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.25/polyfill.min.js"></script>
+<script src="map.js?update=2016-07-29"></script>
+<script src="world_util.js?update=2016-07-29"></script>
+<script src="world.js?update=2016-07-29"></script>
+
+
+<style>
+@import url(https://fonts.googleapis.com/css?family=Marcellus|Share+Tech+Mono);
+
+html, body { margin: 0; padding: 0; }
+
+body {
+  background-color: gray; width: 100%;
+}
+
+body, table, select {
+  font-size: 10pt;
+  font-family: Univers, Arial, sans-serif;
+}
+
+a { color: black; }
+
+.nowrap { white-space: nowrap; }
+
+#wds-frame {
+  position: absolute;
+  left: 20px; top: 20px; width: 300px; bottom: 20px;
+  border: 1px solid black;
+  color: black;
+  background-color: white;
+  overflow-y: scroll;
+}
+
+#closebtn {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  width: 20px;
+  height: 20px;
+
+  padding: 0; margin: 0;
+  border: none;
+  background-color: transparent;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANCAMAAABFNRROAAAAPFBMVEUAAAAEBAQDAwMAAAACAgIEBAQCAgIDAwMDAwMAAAACAgICAgIDAwMAAAADAwMCAgICAgIDAwMEBAQDAwPQczG9AAAAE3RSTlMAPPQo549ww6sM2c1kGLeHeFBIVkwaZQAAAFBJREFUCNctzEkWgCAMA9CAgsrg1PvflbZpFsn7mwAYGzzv1KqyO4u0iU/EWXQ7cDoNOYHMAZJgumkEqoHPBBnI/0EmHlzGBhQDlNxHy3gnLPTJBXzfVCglAAAAAElFTkSuQmCC);
+}
+#closebtn { opacity: 0.5; }
+#closebtn:hover { opacity: 1; }
+
+
+/* Mini Mode */
+
+#wds-mini-toggle {
+  clear: both;
+  text-align: center;
+  font-size: 14px;
+  opacity: 0.5;
+}
+#wds-mini-toggle:hover {
+  opacity: 1;
+}
+#wds-frame.mini #wds-mini-toggle:before { content: "\25BC"; /* U+25BC BLACK DOWN-POINTING TRIANGLE */ }
+#wds-mini-toggle:before { content: "\25B2"; /* U+25B2 BLACK UP-POINTING TRIANGLE */ }
+
+#wds-frame.mini { height: 150px; }
+#wds-frame.mini .wds-properties { display: none; }
+
+/* Title */
+
+.wds-names {
+  height: 104px; margin: 10px 10px 5px;
+ }
+
+.wds-worldname {
+  font-family: Optima, Marcellus, "Times New Roman", serif;
+  font-size: 26px;
+  font-weight: bold;
+  font-style: italic;
+  padding-bottom: 1px;
+  border-bottom: 4px solid black;
+  margin-bottom: 8px;
+}
+.wds-ssname {
+  font-family: Optima, Marcellus, "Times New Roman", serif;
+  x-font-family: Univers, Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+}
+.wds-sectorhex {
+  font-family: Optima, Marcellus, "Times New Roman", serif;
+  x-font-family: Univers, Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.wds-names a { text-decoration: none; }
+.wds-names a:hover { text-decoration: underline; }
+
+/* World Image */
+
+#wds-world-image {
+  position: relative;
+  visibility: hidden;
+  float: left;
+  width: 100px;
+  height: 100px;
+  margin: 10px 10px 5px;
+  border: 2px solid black;
+}
+#wds-world-image.wds-ready {
+  visibility: visible;
+}
+
+
+/* Data Blocks */
+
+.wds-properties {
+  margin: 5px 5px;
+  border-collapse: collapse;
+  clear: both;
+}
+.wds-properties td {
+  margin: 0;
+  padding: 10px 0 4px;
+  font-size: 11px; line-height: 14px;
+  font-weight: bold;
+  vertical-align: top;
+}
+.wds-properties tbody:first-child td { padding-top: 0; }
+
+.wds-properties td:first-child { text-align: right; padding-right: 4px; width: 75px; }
+.wds-properties td:last-child { text-align: left; padding-left: 4px; width: auto; }
+
+.wds-properties big { font-size: 14px; }
+.wds-properties small { font-size: 10px; }
+
+.wds-properties .wds-decode tr:nth-child(odd) { background-color: #ddd; }
+.wds-properties .wds-decode tr:nth-child(even) { background-color: #eee; }
+.wds-properties .wds-decode td {
+  padding-top: 2px; padding-bottom: 2px;
+  font-size: 11px; font-weight: normal;
+  vertical-align: middle;
+}
+.wds-properties .wds-decode td:nth-child(2) {
+  width: 25px;
+  font-size: 14px; font-weight: bold;
+  text-align: center;
+}
+
+/* Expand/Collapse */
+
+.wds-expandy { cursor: pointer; }
+.wds-hidden { display: none; }
+.wds-toggle { opacity: 0.5; }
+.wds-toggle:hover { opacity: 1; }
+.wds-toggle { float: right; }
+.wds-toggle:before { content: "\25BC"; /* U+25BC BLACK DOWN-POINTING TRIANGLE */ }
+.wds-expanded .wds-toggle:before { content: "\25B2"; /* U+25B2 BLACK UP-POINTING TRIANGLE */ }
+
+/* Specific Data Fields */
+
+.wds-stars .wds-star:after,
+.wds-bases .wds-base:after,
+.wds-nobility .wds-noble:after { content: ' \2014 '; } /* U+2014 EM DASH */
+
+.wds-stars .wds-star:last-child:after,
+.wds-bases .wds-base:last-child:after,
+.wds-nobility .wds-noble:last-child:after { content: ''; }
+
+.wds-zone-amber { background-color: yellow; padding: 2px 20px; display: inline-block; }
+.wds-zone-red { background-color: red; padding: 2px 20px; display: inline-block; }
+
+</style>
+
+<div id=wds-frame>
+
+<canvas id=wds-world-image width=200 height=200></canvas>
+
+<button id=closebtn></button>
+
+<div id=wds-world-data></div>
+<script id=wds-world-template type="text/x-handlebars-template">
+
+<div class=wds-names>
+<div class=wds-worldname>
+{{#if Name}}
+  <a target=wiki href="{{world_url}}">{{Name}}</a>
+{{else}}
+  (Unnamed)
+{{/if}}
+</div>
+
+{{#if SubsectorName}}
+<div class=wds-ssname><a target=wiki href="{{ss_url}}">{{SubsectorName}} Subsector</a></div>
+{{/if}}
+
+<div class=wds-sectorhex><a target=wiki href="{{sector_url}}">{{Sector}}</a> {{Hex}}</div>
+
+<div style="font-size: 10px; margin-top: 8px">Wiki:
+{{#if Name}}
+  <a target=wiki href="{{world_url}}">World</a> &ndash;
+{{/if}}
+{{#if SubsectorName}}
+  <a target=wiki href="{{ss_url}}">Subsector</a> &ndash;
+{{/if}}
+  <a target=wiki href="{{sector_url}}">Sector</a>
+</div>
+
+</div>
+
+<div id=mini-toggle></div>
+
+<table class=wds-properties>
+{{#if AllegianceName}}
+<tbody>
+<tr class=wds-deets>
+<td>Allegiance:
+<td colspan=2><big>{{AllegianceName}}</big> ({{Allegiance}})
+</tbody>
+{{/if}}
+
+<tbody>
+<tr class=wds-deets>
+<td>System:
+<td colspan=2>
+    <div class=wds-stars>
+    {{#Stars}} <span class=wds-star><big>{{.}}</big></span> {{/Stars}}
+    </div>
+    <div>
+      <big>{{PBG.GG}}</big> <small>Gas Giants</small>
+      &mdash;
+      <big>{{PBG.Belts}}</big> <small>Planetoid Belts</small>
+      {{#if OtherWorlds}}
+      &mdash;
+      <big>{{OtherWorlds}}</big> <small>Other Worlds</small>
+      {{/if}}
+    </div>
+    <div class=wds-bases>
+      {{#Bases}} <span class=wds-base>{{.}}</span> {{/Bases}}
+    </div>
+</tbody>
+
+{{#UWP}}
+<tbody class=wds-expandy>
+<tr class=wds-deets><td>UWP:<td colspan=2><big>{{Starport}} {{Siz}} {{Atm}} {{Hyd}} {{Pop}} {{Gov}} {{Law}} &ndash; {{Tech}}<span class=wds-toggle></span></big>
+</tbody>
+<tbody class="wds-decode wds-hidden">
+<tr><td>Starport<td>{{Starport}}<td>{{StarportBlurb}}
+<tr><td>Size<td>{{Siz}}<td>{{SizBlurb}}
+<tr><td>Atmosphere<td>{{Atm}}<td>{{AtmBlurb}}
+<tr><td>Hydrosphere<td>{{Hyd}}<td>{{HydBlurb}}
+<tr><td>Population<td>{{Pop}}<td>{{PopBlurb}}
+<tr><td>Government Type<td>{{Gov}}<td>{{GovBlurb}}
+<tr><td>Law Level<td>{{Law}}<td>{{LawBlurb}}
+<tr><td>Technology Level<td>{{Tech}}<td>{{TechBlurb}}
+</tbody>
+{{/UWP}}
+
+{{#Ix}}
+<tbody>
+<tr class=wds-deets><td>Importance: <td colspan=2><big>{ {{Imp}} }</big>
+</tbody>
+{{/Ix}}
+
+{{#Ex}}
+<tbody class=wds-expandy>
+<tr class=wds-deets><td>Economics: <td colspan=2><big>( {{Res}} {{Lab}} {{Inf}} {{Eff}} )<span class=wds-toggle></span></big>
+</tbody>
+<tbody class="wds-decode wds-hidden">
+<tr><td>Resources<td>{{Res}}<td>{{ResBlurb}}
+<tr><td>Labor<td>{{Lab}}<td>{{LabBlurb}}
+<tr><td>Infrastructure<td>{{Inf}}<td>{{InfBlurb}}
+<tr><td>Efficiency<td>{{Eff}}<td>{{EffBlurb}}
+</tbody>
+{{/Ex}}
+
+{{#Cx}}
+<tbody class=wds-expandy>
+<tr class=wds-deets><td>Culture: <td colspan=2><big>[ {{Hom}} {{Acc}} {{Str}} {{Sym}} ]<span class=wds-toggle></span></big>
+</tbody>
+<tbody class="wds-decode wds-hidden">
+<tr><td>Homogeneity<td>{{Hom}}<td>{{HomBlurb}}
+<tr><td>Acceptance<td>{{Acc}}<td>{{AccBlurb}}
+<tr><td>Strangeness<td>{{Str}}<td>{{StrBlurb}}
+<tr><td>Symbols<td>{{Sym}}<td>{{SymBlurb}}
+</tbody>
+{{/Cx}}
+
+{{#if TotalPopulation }}
+<tbody>
+<tr class=wds-deets>
+<td style="vertical-align: bottom">Population:
+<td colspan=2><big>{{PopMult}} &times; 10<sup>{{PopExp}}</sup> = {{TotalPopulation}}</big>
+</tbody>
+{{/if}}
+
+{{#if Nobility}}
+<tbody>
+<tr class=wds-deets>
+<td>Nobility:
+<td colspan=2><big class=wds-nobility>{{#Nobility}} <span class=wds-noble>{{.}}</span> {{/Nobility}}</big>
+</tbody>
+{{/if}}
+
+{{#if Remarks}}
+<tbody>
+<tr class=wds-deets>
+<td>Remarks:
+<td colspan=2>
+  {{#Remarks}}
+  <span class=nowrap><big>{{code}}</big> <small>{{detail}}</small></span>
+  {{/Remarks}}
+</tbody>
+{{/if}}
+
+{{#Zone}}
+<tbody>
+<tr class=wds-deets>
+<td>Travel Zone:
+<td colspan=2><big class="wds-zone-{{className}}">{{rule}}</big> <br> <small>Travellers' Aid Society Rating: {{rating}}</small>
+</tbody>
+{{/Zone}}
+</table>
+
+</script>
+
+
+</div>
+</html>

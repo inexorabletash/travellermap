@@ -156,7 +156,7 @@ namespace Maps.API
                 ctx.ClipOutsectorBorders = true;
 
                 // TODO: Widen path to allow for single-pixel border
-                ctx.ClipPath = clip ? new XGraphicsPath(boundingPathCoords, boundingPathTypes, XFillMode.Alternate) : null;
+                ctx.ClipPath = clip ? new AbstractPath(boundingPathCoords, boundingPathTypes) : null;
                 ProduceResponse(context, "Jump Map", ctx, tileSize, transparent: clip);
             }
         }
