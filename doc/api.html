@@ -365,8 +365,32 @@ table#features, #features th, #features td { border: solid 1px black; }
 
       <dt>stellar=1</dt>
       <dd>A representation of the system's stars is shown
-        instead of rendering world details. Sizes are not to scale.
-      <dd></dd>
+        instead of rendering world details. Sizes are not to scale.</dd>
+
+      <dt>hw=<var>S</var><var>N</var></dt>
+      <dt>hw=<var>S</var><var>N</var>+</dt>
+      <dt>hw=<var>S</var><var>N</var>-</dt>
+      <dt>hw=<var>S</var><var>M</var>-<var>M</var></dt>
+      <dd><b>Highlight Worlds overlay:</b>
+        Worlds with a matching characteristic are highlighted. The argument
+        starts with a field name, one of
+        <code>St</code>
+        <code>S</code>
+        <code>A</code>
+        <code>H</code>
+        <code>P</code>
+        <code>G</code>
+        <code>L</code>
+        <code>T</code>
+        <code>Ix</code>.
+        This is followed by either
+        a value (field is <var>N</var>),
+        a value and - (field is <var>N</var> or lower),
+        a value and + (field is <var>N</var> or higher),
+        or a value and - and another value (field in the range <var>N</var> to <var>M</var>).
+        Note that values are decimal integers (possibly negative), not eHex.
+        (<a target="_blank" href="../?hw=Ix4+">example</a>)
+      </dd>
 
     </dl>
 
@@ -435,7 +459,7 @@ table#features, #features th, #features td { border: solid 1px black; }
     <h4>Markers:</h4>
 
     <dl class="params">
-      <dt>marker_url=URL
+      <dt>marker_url=<var>URL</var>
         <dd>Marker image URL.
 
       <dt>marker_sector
@@ -455,7 +479,7 @@ table#features, #features th, #features td { border: solid 1px black; }
         <dd>Show a marker at <a href="#system_map">Map-space coordinates</a>
           (<a target="_blank" href="../?marker_x=-95.914&amp;marker_y=70.5&amp;marker_url=res/markers/beowulf.png">example</a>)
 
-      <dt>marker=URL
+      <dt>marker=<var>URL</var>
         <dd>Shortcut: The marker will be placed at the initial map location if the
           <code>sector</code> and <code>hex</code> options or a <code>/go/</code>
           link are used.

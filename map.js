@@ -1687,7 +1687,7 @@ var Util = {
         this.namedOptions.set(name, int(name));
     }, this);
     // String options
-    ['ew', 'milieu'].forEach(function (name) {
+    ['ew', 'hw', 'milieu'].forEach(function (name) {
       if (name in params)
         this.namedOptions.set(name, params[name]);
     }, this);
