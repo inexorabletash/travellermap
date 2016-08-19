@@ -12,6 +12,8 @@ namespace Maps
     internal static class Util
     {
         public const string MediaTypeName_Image_Png = "image/png";
+        public const string MediaTypeName_Image_Svg = "image/svg+xml";
+
         public static readonly Encoding UTF8_NO_BOM = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false);
 
         public static string FixCapitalization(string s)
@@ -132,6 +134,18 @@ namespace Maps
             };
         }
 
+        // http://stackoverflow.com/questions/18395943/using-foreach-to-iterate-simultaneously-through-multiple-lists-syntax-sugar
+        public static void ForEachZip<T1, T2>(this IEnumerable<T1> first, IEnumerable<T2> second, Action<T1, T2> action)
+        {
+            using (var e1 = first.GetEnumerator())
+            using (var e2 = second.GetEnumerator())
+            {
+                while (e1.MoveNext() && e2.MoveNext())
+                {
+                    action(e1.Current, e2.Current);
+                }
+            }
+        }
     }
 
     // Like Regex, but takes shell-style globs:

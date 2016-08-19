@@ -4,7 +4,7 @@
 <link rel="shortcut icon" href="../favicon.ico">
 <link rel="stylesheet" href="../site.css?update=2015-10-28">
 <meta name="viewport" content="initial-scale=1, width=device-width">
-<script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.18/polyfill.min.js"></script>
+<script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.25/polyfill.min.js"></script>
 
 <style>
 h3 { text-decoration: underline; }
@@ -144,7 +144,7 @@ table#features, #features th, #features td { border: solid 1px black; }
           <li>http://travellermap.com/data/<var>sector</var>/<var>hex</var>/sheet &ndash; alias for <a target="_blank" href="../world">world</a>
           <li><var>sector</var> is name e.g. <code>Spinward Marches</code> or T5SS abbreviation e.g. <code>spin</code>
           <li><var>hex</var> is <code>XXYY</code> e.g. <code>1910</code>
-          <li><var>jump</var> is a number in the range <code>0</code> - <code>12</code>
+          <li><var>jump</var> is a number in the range <code>0</code> &mdash; <code>12</code>
         </ul>
       </li>
     </ul>
@@ -323,12 +323,45 @@ table#features, #features th, #features td { border: solid 1px black; }
     <a href="#iframe">IFRAME</a> API.</p>
 
     <dl class="params">
-      <dt>routes=0</dt>
-      <dd>Routes are not rendered (macro-scale or micro-scale)</dd>
-
       <dt>dimunofficial=1</dt>
       <dd>At scales where worlds are shown (dotmap or more), sectors with unofficial
         data will be dimmed</dd>
+
+      <dt>routes=0</dt>
+      <dd>Routes are not rendered (macro-scale or micro-scale)</dd>
+
+      <dt>rifts=0</dt>
+      <dd>Don't shade rifts. The default is to shade rifts.</dd>
+
+      <dt>po=1</dt>
+      <dd><b>Population overlay:</b> a yellow circle with
+        area proportional to the
+        <a href="./secondsurvey#pbg">population</a>
+        of each world is overlayed.</dd>
+
+      <dt>im=1</dt>
+      <dd><b>Importance overlay:</b> a green circle representing
+        the world's <a href="./secondsurvey#ix">Importance</a> is
+        overlayed.</dd>
+
+      <dt>dw=1</dt>
+      <dd><b>Droyne World overlay:</b> worlds with Droyne
+        populations are annotated with &#x2605;, and worlds with
+        Chirper populations are annotated with &#x2606;.</dd>
+
+      <dt>an=1</dt>
+      <dd><b>Ancient World overlay:</b> worlds with
+        known Ancient sites are annotated with &#x2600;.</dd>
+
+      <dt>mh=1</dt>
+      <dd><b>Minor Race Homeworld overlay:</b> homeworlds
+        of minor races are annotated with &#x273B;.</dd>
+
+      <dt>stellar=1</dt>
+      <dd>A representation of the system's stars is shown
+        instead of rendering world details. Sizes are not to scale.
+      <dd></dd>
+
     </dl>
 
     <h4>API Only</h4>
@@ -355,9 +388,6 @@ table#features, #features th, #features td { border: solid 1px black; }
         <a target="_blank" href="http://en.wikipedia.org/wiki/Data_URI_scheme">Data URI</a>
         rather than as binary data. This is useful when requesting images via POST via XHR
         to insert into HTML.</dd>
-
-      <dt>rifts=0</dt>
-      <dd>Don't shade rifts. The default is to shade rifts.</dd>
     </dl>
 
     <h4>IFRAME Only</h4>
@@ -392,6 +422,26 @@ table#features, #features th, #features td { border: solid 1px black; }
       <dt>x
       <dt>y <dd>specify a location in <a href="#system_map">Map-space coordinates</a>
       <dt>galdir=0 <dd>Turn off the overlay of galactic directions (Spinward, Coreward, etc)
+      <dt>ew=<var>date</var></dt>
+      <dd><b>Empress Wave overlay:</b> the position of the Empress Wave
+        at the given date is shown. The date can be specified as one of:
+        <dl class="params">
+          <dt>ddd-yyyy</dt><dd>Day and Year of the Imperial Calendar, e.g. <code>ew=132-1116</code></dd>
+          <dt>yyyy.f...</dt><dd>Decimal date, e.g. <code>ew=1116.359</code></dd>
+          <dt>yyyy</dt><dd>Year, e.g. <code>ew=1105</code></dd>
+        </dl>
+        If a whole year is specified the actual width of the active
+        effects of the phenomenon is shown when zoomed in far enough
+        to see entire hexes. If a more specific date is specified, an
+        approximation of the progress across parsecs is presented.
+      </dd>
+
+      <dt>q
+      <dd>perform a search for the given query
+        (<a target="_blank" href="../?q=regina">example</a>)
+      <dt>qn
+      <dd>perform a search for the given query, and navigate to the first result
+        (<a target="_blank" href="../?qn=regina">example</a>)
     </dl>
 
 
@@ -495,12 +545,12 @@ table#features, #features th, #features td { border: solid 1px black; }
     <h4>Example:</h4>
     <pre class="code">
 &lt;iframe
-   src="http://travellermap.com/go/spin/1910?style=print"
+   src="https://travellermap.com/go/spin/1910?style=print"
    style="border: ridge 10px gray;"&gt;
 &lt;/iframe&gt;
     </pre>
 
-    <iframe src="http://travellermap.com/go/spin/1910?style=print"
+    <iframe src="https://travellermap.com/go/spin/1910?style=print"
             style="border: ridge 10px gray;">
     </iframe>
 
@@ -859,7 +909,7 @@ table#features, #features th, #features td { border: solid 1px black; }
 
     <h4>Notes:</h4>
     <ul>
-      <li>The short Data URL form (<code>/data/<var>sector</var>/<var>hex</var></code>) is an alias for jump 0 - only details for the specified
+      <li>The short Data URL form (<code>/data/<var>sector</var>/<var>hex</var></code>) is an alias for jump 0 &mdash; only details for the specified
         system are returned.
       <li>Returns a list of worlds. Each world has the following fields (in no particular order), although fields may be omitted if blank:
         <ul>
@@ -887,7 +937,7 @@ table#features, #features th, #features td { border: solid 1px black; }
 
     <h4>Example:</h4>
     <p>
-        <a href="http://travellermap.com/api/jumpworlds?sector=Spinward%20Marches&amp;hex=1910&amp;jump=4">Worlds within Jump-4 of Regina</a>
+        <a href="https://travellermap.com/api/jumpworlds?sector=Spinward%20Marches&amp;hex=1910&amp;jump=4">Worlds within Jump-4 of Regina</a>
     </p>
   </section>
 
@@ -1095,7 +1145,7 @@ table#features, #features th, #features td { border: solid 1px black; }
         <dt>style <dd><a href="#options">rendering style</a>
         <dt>w <dd>width of image to generate (pixels, default 256)
         <dt>h <dd>height of image to generate (pixels, default 256)
-        <dt>accept <dd>specify <code>application/pdf</code> for PDF output; otherwise output depends on options
+        <dt>accept <dd>specify <code>application/pdf</code> for PDF output or <code>image/svg+xml</code> for SVG; otherwise output depends on options
     </dl>
 
     <h4>Notes:</h4>
@@ -1103,7 +1153,7 @@ table#features, #features th, #features td { border: solid 1px black; }
         <li>Generate a PNG or JPEG image of the specified region.
         <li>Coordinates are in tile-space coordinates (optimized for tile rendering, not navigation); conversion functions are in the script
         <li>Bitmap image format depends on selected options ("Candy" produces JPEG, otherwise PNG)
-        <li>The HTTP <code>Accept</code> header can be used to specify <code>application/pdf</code> instead of the query parameter.
+        <li>The HTTP <code>Accept</code> header can be used to specify <code>application/pdf</code> or <code>image/svg+xml</code>instead of the query parameter.
     </ul>
 
     <h4>Example:</h4>
@@ -1200,7 +1250,7 @@ table#features, #features th, #features td { border: solid 1px black; }
     <dt>rotation <dd>rotate the image, 1 for 90&deg; clockwise, 2 for 180&deg;, 3 for 90&deg; counterclockwise
     <dt>options <dd><a href="#options">rendering options</a>
     <dt>style <dd><a href="#options">rendering style</a>
-    <dt>accept <dd>specify <code>application/pdf</code> for PDF output
+    <dt>accept <dd>specify <code>application/pdf</code> for PDF output or <code>image/svg+xml</code> for SVG
     <dt>thumb=1 <dd>render a thumbnail (16 pixels/parsec)
 </dl>
 
@@ -1208,7 +1258,7 @@ table#features, #features th, #features td { border: solid 1px black; }
 <ul>
     <li>Generate a PNG or JPEG image of the specified sector (or just subsector), or an arbitrary rectangle of space.
     <li>Image format depends on selected options ("Candy" produces JPEG, otherwise PNG)
-    <li>The HTTP <code>Accept</code> header can be used to specify <code>application/pdf</code> instead of the query parameter.
+    <li>The HTTP <code>Accept</code> header can be used to specify <code>application/pdf</code> or <code>image/svg+xml</code> instead of the query parameter.
     <li>The <a href="../poster">Poster Maker</a> provides a friendly user interface to this API.
 </ul>
 
@@ -1302,14 +1352,14 @@ table#features, #features th, #features td { border: solid 1px black; }
         <dt>options <dd><a href="#options">rendering options</a>
         <dt>style <dd><a href="#options">rendering style</a>
         <dt>border=0 <dd>don't render a thick border around the jumpmap
-        <dt>accept <dd>specify <code>application/pdf</code> for PDF output
+        <dt>accept <dd>specify <code>application/pdf</code> for PDF output or <code>image/svg+xml</code> for SVG
     </dl>
 
     <h4>Notes:</h4>
     <ul>
         <li>Generate a PNG image of the specified region.
         <li>PNG images (indexed, 8-bits per pixel) are returned unless PDF is requested; areas outside the hex borders will be transparent.
-        <li>The HTTP <code>Accept</code> header can be used to specify <code>application/pdf</code> instead of the query parameter.
+        <li>The HTTP <code>Accept</code> header can be used to specify <code>application/pdf</code> or <code>image/svg+xml</code> instead of the query parameter.
         <li>The <a href="../poster">Poster Maker</a> provides a friendly user interface to this API.
     </ul>
 

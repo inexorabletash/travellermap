@@ -101,6 +101,15 @@ var Util = {
     });
     q.ignore = function() { ignored = true; };
     return q;
+  },
+
+  fetchImage: function(url, img) {
+    return new Promise(function(resolve, reject) {
+      img = img || document.createElement('img');
+      img.src = url;
+      img.onload = function() { resolve(img); };
+      img.onerror = function() { reject(Error('Image failed to load')); };
+    });
   }
 };
 
@@ -372,17 +381,16 @@ var Util = {
   }
   ImageStash.prototype = {
     get: function(url, callback) {
-      if (!this.map.has(url)) {
-        var image = document.createElement('img');
-        image.src = url;
-        this.map.set(url, image);
-        image.onload = function() {
-          image.loaded = true;
-          callback(image);
-        };
-      }
-      image = this.map.get(url);
-      return image.loaded ? image : undefined;
+      if (this.map.has(url))
+        return this.map.get(url);
+
+      this.map.set(url, undefined);
+      Util.fetchImage(url).then(function(img) {
+        this.map.set(url, img);
+        callback(img);
+      }.bind(this));
+
+      return undefined;
     }
   };
   var stash = new ImageStash();
@@ -600,11 +608,11 @@ var Util = {
 
     this.cache = new LRUCache(64);
 
-    this.namedOptions = new NamedOptions((function() {
+    this.namedOptions = new NamedOptions(function() {
       this.cache.clear();
       this.invalidate();
       fireEvent(this, 'OptionsChanged', this.options);
-    }).bind(this));
+    }.bind(this));
 
     this.loading = {};
 
@@ -639,7 +647,7 @@ var Util = {
     // ======================================================================
 
     var dragging, drag_x, drag_y;
-    container.addEventListener('mousedown', (function(e) {
+    container.addEventListener('mousedown', function(e) {
       this.cancelAnimation();
       container.focus();
       dragging = true;
@@ -650,10 +658,10 @@ var Util = {
 
       e.preventDefault();
       e.stopPropagation();
-    }).bind(this), true);
+    }.bind(this), true);
 
     var hover_x, hover_y;
-    container.addEventListener('mousemove', (function(e) {
+    container.addEventListener('mousemove', function(e) {
       if (dragging) {
         var coords = this.eventCoords(e);
         var dx = drag_x - coords.x;
@@ -676,7 +684,7 @@ var Util = {
       hover_x = hex.hx;
       hover_y = hex.hy;
       fireEvent(this, 'Hover', { x: hex.hx, y: hex.hy });
-    }).bind(this), true);
+    }.bind(this), true);
 
     document.addEventListener('mouseup', function(e) {
       if (dragging) {
@@ -687,15 +695,15 @@ var Util = {
       }
     });
 
-    container.addEventListener('click', (function(e) {
+    container.addEventListener('click', function(e) {
       e.preventDefault();
       e.stopPropagation();
 
       var hex = this.eventToHexCoords(e);
       fireEvent(this, 'Click', { x: hex.hx, y: hex.hy });
-    }).bind(this));
+    }.bind(this));
 
-    container.addEventListener('dblclick', (function(e) {
+    container.addEventListener('dblclick', function(e) {
       this.cancelAnimation();
 
       e.preventDefault();
@@ -713,9 +721,9 @@ var Util = {
 
       var hex = this.eventToHexCoords(e);
       fireEvent(this, 'DoubleClick', { x: hex.hx, y: hex.hy });
-    }).bind(this));
+    }.bind(this));
 
-    var wheelListener = (function(e) {
+    var wheelListener = function(e) {
       this.cancelAnimation();
       var delta = e.detail ? e.detail * -40 : e.wheelDelta;
 
@@ -726,11 +734,11 @@ var Util = {
 
       e.preventDefault();
       e.stopPropagation();
-    }).bind(this);
+    }.bind(this);
     container.addEventListener('mousewheel', wheelListener); // IE/Chrome/Safari/Opera
     container.addEventListener('DOMMouseScroll', wheelListener); // FF
 
-    window.addEventListener('resize', (function() {
+    window.addEventListener('resize', function() {
       var rect = container.getBoundingClientRect();
       if (rect.left === this.rect.left &&
           rect.top === this.rect.top &&
@@ -738,12 +746,12 @@ var Util = {
           rect.height === this.rect.height) return;
       this.rect = rect;
       this.resetCanvas();
-    }).bind(this));
+    }.bind(this));
 
     var pinch_x1, pinch_y1, pinch_x2, pinch_y2;
     var touch_x, touch_y;
 
-    container.addEventListener('touchmove', (function(e) {
+    container.addEventListener('touchmove', function(e) {
       if (e.touches.length === 1) {
 
         var coords = this.eventCoords(e.touches[0]);
@@ -780,9 +788,9 @@ var Util = {
 
       e.preventDefault();
       e.stopPropagation();
-    }).bind(this), true);
+    }.bind(this), true);
 
-    container.addEventListener('touchend', (function(e) {
+    container.addEventListener('touchend', function(e) {
       if (e.touches.length < 2) {
         this.defer_loading = false;
         this.invalidate();
@@ -796,9 +804,9 @@ var Util = {
 
       e.preventDefault();
       e.stopPropagation();
-    }).bind(this), true);
+    }.bind(this), true);
 
-    container.addEventListener('touchstart', (function(e) {
+    container.addEventListener('touchstart', function(e) {
       if (e.touches.length === 1) {
         var coords = this.eventCoords(e.touches[0]);
         touch_x = coords.x;
@@ -815,9 +823,9 @@ var Util = {
 
       e.preventDefault();
       e.stopPropagation();
-    }).bind(this), true);
+    }.bind(this), true);
 
-    container.addEventListener('keydown', (function(e) {
+    container.addEventListener('keydown', function(e) {
       if (e.ctrlKey || e.altKey || e.metaKey)
         return;
 
@@ -848,7 +856,7 @@ var Util = {
 
       e.preventDefault();
       e.stopPropagation();
-    }).bind(this));
+    }.bind(this));
 
     this.resetCanvas();
 
@@ -934,10 +942,10 @@ var Util = {
     this.dirty = true;
     if (this._raf_handle) return;
 
-    this._raf_handle = requestAnimationFrame((function invalidationRAF(ms) {
+    this._raf_handle = requestAnimationFrame(function invalidationRAF(ms) {
       this._raf_handle = null;
       this.redraw();
-    }).bind(this));
+    }.bind(this));
   };
 
   TravellerMap.prototype.redraw = function(force) {
@@ -1004,7 +1012,7 @@ var Util = {
       this.drawRoute(this.route);
 
     if (this.namedOptions.get('ew'))
-      this.drawEmpressWave();
+      this.drawEmpressWave(this.namedOptions.get('ew'));
   };
 
   // Draw a rectangle (x1, y1) to (x2, y2)
@@ -1154,20 +1162,14 @@ var Util = {
     // Nope, better try loading it
     this.loading[url] = true;
 
-    img = document.createElement('img');
-    img.onload = (function() {
-      delete this.loading[url];
-      this.cache.insert(url, img);
-      callback(img);
-      img.onload = null;
-      img.onerror = null;
-    }).bind(this);
-    img.onerror = (function() {
-      delete this.loading[url];
-      img.onload = null;
-      img.onerror = null;
-    }).bind(this);
-    img.src = url;
+    Util.fetchImage(url)
+      .then(function(img) {
+        delete this.loading[url];
+        this.cache.insert(url, img);
+        callback(img);
+      }.bind(this), function() {
+        delete this.loading[url];
+      }.bind(this));
 
     return undefined;
   };
@@ -1200,14 +1202,14 @@ var Util = {
       return Animation.smooth(p, 1.0, 0.1, 0.25);
     });
 
-    this.animation.onanimate = (function(p) {
+    this.animation.onanimate = function(p) {
       // Interpolate scale in log space.
       this.scale = pow2(Animation.interpolate(log2(os), log2(scale), p));
       // TODO: If animating scale, this should follow an arc (parabola?) through 3space treating
       // scale as Z and computing a height such that the target is in view at the turnaround.
       this.position = [Animation.interpolate(ox, x, p), Animation.interpolate(oy, y, p)];
       this.redraw();
-    }).bind(this);
+    }.bind(this);
   };
 
   TravellerMap.prototype.drawOverlay = function(overlay) {
@@ -1294,22 +1296,45 @@ var Util = {
     }
   };
 
-  TravellerMap.prototype.drawEmpressWave = function() {
-    var ctx = this.ctx;
-    var x = 0, y = 7000, r = 6820;
-    var w = 20;
+  TravellerMap.prototype.drawEmpressWave = function(date) {
+    var year = 1105;
+    var w = 1; /*pc*/
+    if (/^(\d+)-(\d+)$/.exec(date)) {
+      // day-year, e.g. 001-1105
+      year = Number(RegExp.$2) + (Number(RegExp.$1) - 1) / 365;
+      w = 0.1;
+    } else if (/^(\d+)\.(\d*)$/.exec(date)) {
+      // decimal year, e.g. 1105.5
+      year = Number(date);
+      w = 0.1;
+    } else if (/^\d+$/.exec(date)) {
+      // year
+      year = Number(date) + 0.5;
+      w = 1;
+    }
 
+    // Per MWM: Velocity of wave is PI * c
+    var vel /*pc/y*/ = Math.PI /*ly/y*/ / 3.26 /*ly/pc*/;
+
+    // Assumption: center is 7000pc coreward
+    var x = 0, y = 7000;
+
+    // Per MWM: Wave crosses Ring 10,000 [Reference] on 045-1281
+    var radius = (year - (1281 + (45-1) / 365)) * vel + y;
+
+    var ctx = this.ctx;
     ctx.save();
     ctx.translate(-this.canvas.offset_x, -this.canvas.offset_y);
     ctx.globalCompositeOperation = 'source-over';
     ctx.globalAlpha = 0.3;
-    ctx.lineWidth = w * this.scale;
+    ctx.lineWidth = Math.max(w * this.scale, 5);
     ctx.strokeStyle = styleLookup(this.style, 'ew_color');
     ctx.beginPath();
-    var pt = this.logicalToPixel(x, y);
+    var px_offset = 0.5; // offset from corner to center of hex
+    var pt = this.logicalToPixel(x + px_offset, y + px_offset);
     ctx.arc(pt.x,
             pt.y,
-            this.scale * r,
+            this.scale * radius,
             Math.PI/2 - Math.PI/12,
             Math.PI/2 + Math.PI/12);
     ctx.stroke();
@@ -1477,9 +1502,9 @@ var Util = {
     this.animation = new Animation(1.0, function(p) {
       return Animation.smooth(p, 1.0, 0.1, 0.25);
     });
-    this.animation.onanimate = (function(p) {
+    this.animation.onanimate = function(p) {
       this.position = [Animation.interpolate(ox, tx, p), Animation.interpolate(oy, ty, p)];
-    }).bind(this);
+    }.bind(this);
   };
 
   var ZOOM_DELTA = 0.5;
@@ -1627,9 +1652,15 @@ var Util = {
         });
     }
 
-    ['silly', 'routes', 'dimunofficial', 'ew', 'dw', 'an', 'mh', 'rifts', 'po', 'im', 'milieu', 'stellar'].forEach(function (name) {
+    // Int/Boolean options
+    ['silly', 'routes', 'rifts', 'dimunofficial', 'dw', 'an', 'mh', 'po', 'im', 'stellar'].forEach(function (name) {
       if (name in params)
         this.namedOptions.set(name, int(name));
+    }, this);
+    // String options
+    ['ew', 'milieu'].forEach(function (name) {
+      if (name in params)
+        this.namedOptions.set(name, params[name]);
     }, this);
 
     return params;

@@ -49,6 +49,7 @@ namespace Maps
             "/doc/metadata",
             "/doc/secondsurvey",
             "/doc/submit",
+            "/make/atlas",
             "/make/borders",
             "/make/booklet",
             "/make/poster",

@@ -457,11 +457,13 @@ button:hover {
 .show-legend #legendBox,
 .show-share #shareBox,
 .show-download #downloadBox,
+.show-wiki #wikiBox,
 .show-help #helpBox { display: block; }
 .show-settings #settingsBtn,
 .show-legend #legendBtn,
 .show-share #shareBtn,
 .show-download #downloadBtn,
+.show-wiki #wikiBtn,
 .show-help #helpBtn { background-color: red; }
 
 
@@ -477,6 +479,29 @@ button:hover {
 #shareBox input { width: 230px; padding: 5px; border: 1px solid #404040; }
 #shareBox section.fb { height: 33px; }
 
+/* Wiki Box */
+
+#wikiBox {
+  width: 250px;
+  max-height: 130px;
+}
+#wikiBox section { margin: 1em 0; }
+#wikiBox section:first-of-type { margin-top: 0; }
+#wikiBox section:last-of-type { margin-bottom: 0; }
+#wikiBox .active-content { display: none; }
+#wikiBox .world-content { display: none; }
+.sector-selected #wikiBox .active-content { display: block; }
+.sector-selected #wikiBox .inactive-content { display: none; }
+.world-selected #wikiBox .world-content { display: block; }
+
+#wikiBox h3 { font-style: italic; font-weight: normal;
+              color: red;
+              border-bottom: 2px solid red;
+              margin-top: 0;
+              margin-bottom: 10px; }
+#wikiBox ul { list-style-type: none; padding-left: 20px; }
+#wikiBox li { margin: 1em 0; }
+
 /* Download Box */
 
 #downloadBox {
@@ -486,11 +511,11 @@ button:hover {
 #downloadBox section { margin: 1em 0; }
 #downloadBox section:first-of-type { margin-top: 0; }
 #downloadBox section:last-of-type { margin-bottom: 0; }
-#downloadBox #sector-selected { display: none; }
-#downloadBox .world-selected { display: none; }
-#downloadBox.sector-selected #sector-selected { display: block; }
-#downloadBox.sector-selected #no-sector-selected { display: none; }
-#downloadBox.sector-selected.world-selected .world-selected { display: block; }
+#downloadBox .active-content { display: none; }
+#downloadBox .world-content { display: none; }
+.sector-selected #downloadBox .active-content { display: block; }
+.sector-selected #downloadBox .inactive-content { display: none; }
+.world-selected #downloadBox .world-content { display: block; }
 
 #downloadBox h3 { font-style: italic; font-weight: normal;
                   color: red;
@@ -704,6 +729,10 @@ button:hover {
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAQCAMAAADH72RtAAAANlBMVEUAAAAEBAQCAgIFBQUAAAAAAAADAwMCAgICAgIDAwMDAwMDAwMAAAACAgIDAwMCAgIDAwMDAwPH0tW3AAAAEXRSTlMAQYAzKBr46trGpVsO0aloUlej6yoAAABbSURBVBjTjY5JDoAwDAOdLkApW/7/WRKVqIs4dC6WR1VjNOwHBnj1o2F2bb83FlKExgME6QU1GSCJagDExfoZirnYBftZQp/4cp3wmUy20EwdRklNP3LSdPyaF6jxB4sTvWWFAAAAAElFTkSuQmCC);
 }
 
+#wikiBtn {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAAQCAMAAADK8RQqAAAAe1BMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC9eBywAAAAKHRSTlMA+QUD7mkn8d2UfhbNpSDYz8BSPgzTvYpeWExDNiQR9OSzqZ+dj3YwwhIOMgAAAM9JREFUGNM9j1mWwjAQA9V24gQSspFhh9ln6v4nxDYE/Viq1vPr1hdwdZKca2ml5GZqnYGjT6mDoktOJaWad9goxT1wynygkx/B5OLE7NmYGZ20xrhK2lIBiuTAOuZ/LL+bqjRjSo6gqMLsTbrVbXKt/K2vlbTCiiZ+c9QvZo0PlJkHjFOcyjVYZH+4fI8K2ItVdAN86mOnxL1+YDdxiaGEquOghyYo+nr2csFgtPDkoTL4Ts4NEJdb1JtxWXbLx2hJlXxyZ4zmxbe8SlidG3eX+RHHXa0pcQAAAABJRU5ErkJggg==);
+}
+
 #downloadBtn {
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAIVBMVEUAAAAAAAACAgIAAAADAwMCAgICAgIDAwMDAwMEBAQDAwPvSKVJAAAACnRSTlMAEoAs9tvOqKVBBAy8pgAAADtJREFUCNdjAIJVq4AEuQz2VUDQAGQwAuklAiChWatWLQbLMa1apQCkgAqjlgEpEMNqIYQBBGAGBCAYAL3GI6238XWoAAAAAElFTkSuQmCC);
 }
@@ -775,6 +804,7 @@ button:hover {
 }
 @media only screen and (max-width: 625px) {
   #searchBox { width: 100px; }
+  #wikiBtn { display: none; }
 }
 @media only screen and (max-width: 480px) {
   .show-legend #legendBox,
@@ -827,3 +857,7 @@ noscript div {
   background-color: inherit;
   border: 2px solid white;
 }
+
+/* Browser-specific Hacks */
+
+input[type=text]::-ms-clear { display: none; }

@@ -5,6 +5,7 @@ using PdfSharp.Pdf;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Globalization;
 using System.IO;
@@ -36,6 +37,8 @@ namespace Maps.API
                 bool transparent = false, IDictionary<string, object> queryDefaults = null)
             {
                 // New-style Options
+
+                #region URL Parameters
                 // TODO: move to ParseOptions (maybe - requires options to be parsed after stylesheet creation?)
                 if (GetBoolOption("sscoords", queryDefaults: queryDefaults, defaultValue: false))
                     ctx.Styles.hexCoordinateStyle = Stylesheet.HexCoordinateStyle.Subsector;
@@ -53,10 +56,10 @@ namespace Maps.API
                     ctx.Styles.showRiftOverlay = false;
 
                 if (GetBoolOption("po", queryDefaults: queryDefaults, defaultValue: false))
-                    ctx.Styles.showPopulationOverlay = true;
+                    ctx.Styles.populationOverlay.visible = true;
 
                 if (GetBoolOption("im", queryDefaults: queryDefaults, defaultValue: false))
-                    ctx.Styles.showImportanceOverlay = true;
+                    ctx.Styles.importanceOverlay.visible = true;
 
                 if (GetBoolOption("stellar", queryDefaults: queryDefaults, defaultValue: false))
                     ctx.Styles.showStellarOverlay = true;
@@ -66,12 +69,48 @@ namespace Maps.API
                 ctx.Styles.minorHomeWorlds.visible = GetBoolOption("mh", queryDefaults: queryDefaults, defaultValue: false);
                 ctx.Styles.ancientsWorlds.visible = GetBoolOption("an", queryDefaults: queryDefaults, defaultValue: false);
 
+                // TODO: Return an error if pattern is invalid?
+                ctx.Styles.highlightWorldsPattern = HighlightWorldPattern.Parse(
+                    GetStringOption("hw", queryDefaults: queryDefaults, defaultValue: String.Empty).Replace(' ', '+'));
+                ctx.Styles.highlightWorlds.visible = ctx.Styles.highlightWorldsPattern != null;
+
                 double devicePixelRatio = GetDoubleOption("dpr", defaultValue: 1, queryDefaults: queryDefaults);
                 if (devicePixelRatio <= 0)
                     devicePixelRatio = 1;
 
-                if (accepter.Accepts(context, MediaTypeNames.Application.Pdf))
+                bool dataURI = GetBoolOption("datauri", queryDefaults: queryDefaults, defaultValue: false);
+                #endregion
+
+                MemoryStream ms = null;
+                if (dataURI)
+                    ms = new MemoryStream();
+                Stream outputStream = dataURI ? ms : Context.Response.OutputStream;
+
+                if (accepter.Accepts(context, Util.MediaTypeName_Image_Svg, ignoreHeaderFallbacks: true))
                 {
+                    #region SVG Generation
+                    using (var svg = new SVGGraphics(tileSize.Width, tileSize.Height))
+                    {
+                        RenderToGraphics(ctx, rot, translateX, translateY, svg);
+
+                        using (var stream = new MemoryStream())
+                        {
+                            svg.Serialize(new StreamWriter(stream));
+                            context.Response.ContentType = Util.MediaTypeName_Image_Svg;
+                            if (!dataURI)
+                            {
+                                context.Response.AddHeader("content-length", stream.Length.ToString());
+                                context.Response.AddHeader("content-disposition", "inline;filename=\"map.svg\"");
+                            }
+                            stream.WriteTo(outputStream);
+                        }
+                    }
+                    #endregion
+                }
+
+                else if (accepter.Accepts(context, MediaTypeNames.Application.Pdf, ignoreHeaderFallbacks: true))
+                {
+                    #region PDF Generation
                     using (var document = new PdfDocument())
                     {
                         document.Version = 14; // 1.4 for opacity
@@ -87,83 +126,83 @@ namespace Maps.API
 
                         PdfPage page = document.AddPage();
 
-                        // NOTE: only PageUnit currently supported in XGraphics is Points
+                        // NOTE: only PageUnit currently supported in MGraphics is Points
                         page.Width = XUnit.FromPoint(tileSize.Width);
                         page.Height = XUnit.FromPoint(tileSize.Height);
 
-                        XGraphics gfx = XGraphics.FromPdfPage(page);
-
-                        RenderToGraphics(ctx, rot, translateX, translateY, gfx);
-
-                        using (var stream = new MemoryStream())
+                        using (var gfx = new PdfSharpGraphics(XGraphics.FromPdfPage(page)))
                         {
-                            document.Save(stream, closeStream: false);
+                            RenderToGraphics(ctx, rot, translateX, translateY, gfx);
 
-                            context.Response.ContentType = MediaTypeNames.Application.Pdf;
-                            context.Response.AddHeader("content-length", stream.Length.ToString());
-                            context.Response.AddHeader("content-disposition", "inline;filename=\"map.pdf\"");
-                            context.Response.BinaryWrite(stream.ToArray());
-                            context.Response.Flush();
-                            context.Response.Close();
+                            using (var stream = new MemoryStream())
+                            {
+                                document.Save(stream, closeStream: false);
+                                context.Response.ContentType = MediaTypeNames.Application.Pdf;
+                                if (!dataURI)
+                                {
+                                    context.Response.AddHeader("content-length", stream.Length.ToString());
+                                    context.Response.AddHeader("content-disposition", "inline;filename=\"map.pdf\"");
+                                }
+                                stream.WriteTo(outputStream);
+                            }
                         }
-
-                        return;
                     }
+                    #endregion
                 }
-
-                int width = (int)Math.Floor(tileSize.Width * devicePixelRatio);
-                int height = (int)Math.Floor(tileSize.Height * devicePixelRatio);
-                using (var bitmap = TryConstructBitmap(width, height, PixelFormat.Format32bppArgb))
+                else
                 {
-                    if (bitmap == null)
-                        throw new HttpError(500, "Internal Server Error", 
-                            String.Format("Failed to allocate bitmap ({0}x{1}). Insufficient memory?", width, height));
-
-                    if (transparent)
-                        bitmap.MakeTransparent();
-
-                    using (var g = Graphics.FromImage(bitmap))
+                    #region Bitmap Generation
+                    int width = (int)Math.Floor(tileSize.Width * devicePixelRatio);
+                    int height = (int)Math.Floor(tileSize.Height * devicePixelRatio);
+                    using (var bitmap = TryConstructBitmap(width, height, PixelFormat.Format32bppArgb))
                     {
-                        g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+                        if (bitmap == null)
+                            throw new HttpError(500, "Internal Server Error",
+                                string.Format("Failed to allocate bitmap ({0}x{1}). Insufficient memory?", width, height));
 
-                        using (var graphics = XGraphics.FromGraphics(g, new XSize(tileSize.Width * devicePixelRatio, tileSize.Height * devicePixelRatio)))
+                        if (transparent)
+                            bitmap.MakeTransparent();
+
+                        using (var g = Graphics.FromImage(bitmap))
                         {
-                            graphics.ScaleTransform(devicePixelRatio);
+                            g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
 
-                            RenderToGraphics(ctx, rot, translateX, translateY, graphics);
+                            using (var graphics = new BitmapGraphics(g))
+                            {
+                                graphics.ScaleTransform((float)devicePixelRatio);
+                                RenderToGraphics(ctx, rot, translateX, translateY, graphics);
+                            }
                         }
+
+                        BitmapResponse(context.Response, outputStream, ctx.Styles, bitmap, transparent ? Util.MediaTypeName_Image_Png : null);
+
                     }
+                    #endregion
+                }
 
-                    bool dataURI = GetBoolOption("datauri", queryDefaults: queryDefaults, defaultValue: false);
-                    MemoryStream ms = null;
-                    if (dataURI)
-                        ms = new MemoryStream();
+                if (dataURI)
+                {
+                    string contentType = context.Response.ContentType;
+                    context.Response.ContentType = System.Net.Mime.MediaTypeNames.Text.Plain;
+                    ms.Seek(0, SeekOrigin.Begin);
 
-                    BitmapResponse(context.Response, dataURI ? ms : context.Response.OutputStream, ctx.Styles, bitmap, transparent ? Util.MediaTypeName_Image_Png : null);
+                    context.Response.Output.Write("data:");
+                    context.Response.Output.Write(contentType);
+                    context.Response.Output.Write(";base64,");
+                    context.Response.Output.Flush();
 
-                    if (dataURI)
+                    byte[] buffer = new byte[4096];
+                    System.Security.Cryptography.ICryptoTransform transform = new System.Security.Cryptography.ToBase64Transform();
+                    using (System.Security.Cryptography.CryptoStream cs = new System.Security.Cryptography.CryptoStream(context.Response.OutputStream, transform, System.Security.Cryptography.CryptoStreamMode.Write))
                     {
-                        string contentType = context.Response.ContentType;
-                        context.Response.ContentType = System.Net.Mime.MediaTypeNames.Text.Plain;
-                        ms.Seek(0, SeekOrigin.Begin);
-
-                        context.Response.Output.Write("data:");
-                        context.Response.Output.Write(contentType);
-                        context.Response.Output.Write(";base64,");
-                        context.Response.Output.Flush();
-
-                        byte[] buffer = new byte[4096];
-                        System.Security.Cryptography.ICryptoTransform transform = new System.Security.Cryptography.ToBase64Transform();
-                        using (System.Security.Cryptography.CryptoStream cs = new System.Security.Cryptography.CryptoStream(context.Response.OutputStream, transform, System.Security.Cryptography.CryptoStreamMode.Write))
-                        {
-                            int bytesRead;
-                            while ((bytesRead = ms.Read(buffer, 0, buffer.Length)) > 0)
-                                cs.Write(buffer, 0, bytesRead);
-                            cs.FlushFinalBlock();
-                        }
-                        context.Response.OutputStream.Flush();
+                        ms.WriteTo(cs);
+                        cs.FlushFinalBlock();
                     }
                 }
+
+                context.Response.Flush();
+                context.Response.Close();
+                return;
             }
 
             private static Bitmap TryConstructBitmap(int width, int height, PixelFormat pixelFormat)
@@ -176,33 +215,31 @@ namespace Maps.API
                 {
                     // See http://stackoverflow.com/questions/1949045/net-bitmap-class-constructor-int-int-and-int-int-pixelformat-throws-argu
                     return null;
-
                 }
             }
 
-            private static void RenderToGraphics(RenderContext ctx, int rot, float translateX, float translateY, XGraphics graphics)
+            private static void RenderToGraphics(RenderContext ctx, int rot, float translateX, float translateY, AbstractGraphics graphics)
             {
                 graphics.TranslateTransform(translateX, translateY);
                 graphics.RotateTransform(rot * 90);
 
                 if (ctx.DrawBorder && ctx.ClipPath != null)
                 {
-                    using (RenderUtil.SaveState(graphics))
+                    using (graphics.Save())
                     {
                         // Render border in world space
                         XMatrix m = ctx.ImageSpaceToWorldSpace;
                         graphics.MultiplyTransform(m);
-                        XPen pen = new XPen(ctx.Styles.imageBorderColor, 0.2f);
+                        AbstractPen pen = new AbstractPen(ctx.Styles.imageBorderColor, 0.2f);
 
-                        // PdfSharp can't ExcludeClip so we take advantage of the fact that we know
+                        // SVG/PdfSharp can't ExcludeClip so we take advantage of the fact that we know
                         // the path starts on the left edge and proceeds clockwise. We extend the
                         // path with a counterclockwise border around it, then use that to exclude
                         // the original path's region for rendering the border.
-                        ctx.ClipPath.Flatten();
                         RectangleF bounds = PathUtil.Bounds(ctx.ClipPath);
                         bounds.Inflate(2 * (float)pen.Width, 2 * (float)pen.Width);
-                        List<byte> types = new List<byte>(ctx.ClipPath.Internals.GdiPath.PathTypes);
-                        List<PointF> points = new List<PointF>(ctx.ClipPath.Internals.GdiPath.PathPoints);
+                        List<byte> types = new List<byte>(ctx.ClipPath.Types);
+                        List<PointF> points = new List<PointF>(ctx.ClipPath.Points);
 
                         PointF key = points[0];
                         points.Add(new PointF(bounds.Left, key.Y)); types.Add(1);
@@ -213,13 +250,12 @@ namespace Maps.API
                         points.Add(new PointF(bounds.Left, key.Y)); types.Add(1);
                         points.Add(new PointF(key.X, key.Y)); types.Add(1);
 
-                        XGraphicsPath path = new XGraphicsPath(points.ToArray(), types.ToArray(), XFillMode.Winding);
-                        graphics.IntersectClip(path);
+                        graphics.IntersectClip(new AbstractPath(points.ToArray(), types.ToArray()));
                         graphics.DrawPath(pen, ctx.ClipPath);
                     }
                 }
 
-                using (RenderUtil.SaveState(graphics))
+                using (graphics.Save())
                 {
                     ctx.Render(graphics);
                 }
@@ -292,7 +328,7 @@ namespace Maps.API
                 {
                     // Saving seems to throw "A generic error occurred in GDI+." on low memory.
                     throw new HttpError(500, "Internal Server Error",
-                        String.Format("Unknown GDI error encoding bitmap ({0}x{1}). Insufficient memory?", bitmap.Width, bitmap.Height));
+                        string.Format("Unknown GDI error encoding bitmap ({0}x{1}). Insufficient memory?", bitmap.Width, bitmap.Height));
                 }
             }
 

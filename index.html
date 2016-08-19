@@ -6,8 +6,16 @@
                Traveller role playing game, incorporating official data and fan
                submissions. The site also provides services for generating custom
                maps and Web APIs for incorporating maps into other sites.">
+
+
 <link rel="shortcut icon" href="favicon.ico">
-<link rel="manifest" href="manifest.json">
+<link rel="manifest" href="res/app/manifest.json">
+<!-- Microsoft/Edge -->
+<meta name="msapplication-config" content="res/app/browserconfig.xml">
+<meta name="theme-color" content="#ff0000">
+<!-- Apple/Safari -->
+<link rel="mask-icon" href="res/app/safari-pinned-tab.svg" color="#000000">
+<link rel="apple-touch-icon" sizes="180x180" href="res/app/regina180.png">
 
 <!-- Mobile -->
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -23,22 +31,18 @@
 <meta property="og:title" content="The Traveller Map">
 <meta property="og:type" content="website">
 <meta property="og:url" content="http://travellermap.com">
-<meta property="og:image" content="http://travellermap.com/res/ui/fb.png">
+<meta property="og:image" content="http://travellermap.com/res/app/fb.png">
 <meta property="og:site_name" content="The Traveller Map">
 <meta property="fb:admins" content="617166358">
 
-<link rel="stylesheet" href="index.css?update=2016-03-24">
+<link rel="stylesheet" href="index.css?update=2016-07-14">
 <link rel="stylesheet" href="lib/add-to-home-screen/addtohomescreen.css">
 
 <!--[if lt IE 9]><script>alert("IE8 is no longer supported.");location = 'http://google.com/chrome';</script><![endif]-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.2/handlebars.min.js"></script>
-<script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.18/polyfill.min.js"></script>
-<script src="map.js?update=2016-04-02"></script>
-<script src="index.js?update=2016-03-24"></script>
-
-<!-- Home Screen Icons - iOS and Android -->
-<link rel="apple-touch-icon-precomposed" href="res/ui/regina152.png">
-<link rel="apple-touch-icon"             href="res/ui/regina152.png">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+<script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.25/polyfill.min.js"></script>
+<script src="map.js?update=2016-07-29"></script>
+<script src="index.js?update=2016-07-16"></script>
 
 <body class="hide-ui hide-footer">
   <div id="mapContainer">
@@ -58,6 +62,7 @@
              id="searchBox"
              placeholder="Search for..."
              title="Search by world, subsector, sector or region name.&#x0A; &bull; * and ? as wildcards&#x0A; &bull; Use uwp: pbg: zone: alleg: or remark: to search data (e.g. uwp:A*)&#x0A; &bull; Use in: to search in a sector (e.g. uwp:*-F in:Deneb)&#x0A; &bull; Use like: for sounds-like matches&#x0A; &bull; Use exact: or &quot;quotes&quot; to find exact matches"
+             disabled
              autocomplete="off"
              autocorrect="off"
              autocapitalize="none"
@@ -218,6 +223,9 @@
     </button>
     <button id="downloadBtn"
             title="Download maps, data, and more">
+    </button>
+    <button id="wikiBtn"
+            title="Links to the Traveller Wiki">
     </button>
     <button id="legendBtn"
             title="Map legend and symbols">
@@ -446,11 +454,11 @@
       (<a id="download-snapshot-pdf" target="_blank" href="#">or PDF</a>)
     </section>
 
-    <section id="no-sector-selected">
+    <section class="inactive-content">
       Click on the map to select a sector for more options.
     </section>
 
-    <section id="sector-selected">
+    <section class="active-content">
       <h3 id="sector-name"></h3>
       <ul>
         <li>
@@ -463,17 +471,47 @@
           <a id="download-data" target="_blank" href="#">Raw Sector Data</a>
         </li>
 
-        <li class="world-selected">
+        <li class="world-content">
           <a id="world-data-sheet" target="_blank" href="#">World Data Sheet</a>
         </li>
 
-        <li class="world-selected">
+        <li class="world-content">
           <a id="world-jump-map-1" target="_blank" href="#">J-1</a> &bull;
           <a id="world-jump-map-2" target="_blank" href="#">J-2</a> &bull;
           <a id="world-jump-map-3" target="_blank" href="#">J-3</a> &bull;
           <a id="world-jump-map-4" target="_blank" href="#">J-4</a> &bull;
           <a id="world-jump-map-5" target="_blank" href="#">J-5</a> &bull;
           <a id="world-jump-map-6" target="_blank" href="#">J-6</a>
+        </li>
+
+      </ul>
+    </section>
+
+  </div>
+
+  <div id="wikiBox"
+       class="ui hoverbox hoverbox-right">
+
+    <h3>The Traveller Wiki</h3>
+
+    <section class="inactive-content">
+      Click on the map to select a world or sector for
+      links to more details on the wiki.
+    </section>
+
+    <section class="active-content">
+      <ul>
+
+        <li>
+          <a id="wiki-sector-link" target="wiki" href="#"></a>
+        </li>
+
+        <li class="world-content">
+          <a id="wiki-subsector-link" target="wiki" href="#"></a>
+        </li>
+
+        <li class="world-content">
+          <a id="wiki-world-link" target="wiki" href="#"></a>
         </li>
 
       </ul>
