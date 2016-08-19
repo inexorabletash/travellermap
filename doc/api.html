@@ -422,19 +422,6 @@ table#features, #features th, #features td { border: solid 1px black; }
       <dt>x
       <dt>y <dd>specify a location in <a href="#system_map">Map-space coordinates</a>
       <dt>galdir=0 <dd>Turn off the overlay of galactic directions (Spinward, Coreward, etc)
-      <dt>ew=<var>date</var></dt>
-      <dd><b>Empress Wave overlay:</b> the position of the Empress Wave
-        at the given date is shown. The date can be specified as one of:
-        <dl class="params">
-          <dt>ddd-yyyy</dt><dd>Day and Year of the Imperial Calendar, e.g. <code>ew=132-1116</code></dd>
-          <dt>yyyy.f...</dt><dd>Decimal date, e.g. <code>ew=1116.359</code></dd>
-          <dt>yyyy</dt><dd>Year, e.g. <code>ew=1105</code></dd>
-        </dl>
-        If a whole year is specified the actual width of the active
-        effects of the phenomenon is shown when zoomed in far enough
-        to see entire hexes. If a more specific date is specified, an
-        approximation of the progress across parsecs is presented.
-      </dd>
 
       <dt>q
       <dd>perform a search for the given query
@@ -445,42 +432,44 @@ table#features, #features th, #features td { border: solid 1px black; }
     </dl>
 
 
-    <h4>Beta Features:</h4>
-    <p>Beta API features may be revoked or changed at any time, but I'll post updates
-    to the <a href="https://travellermap.blogspot.com">blog</a> first.</p>
-    <dl class="params">
-      <dt>yah_sector
-      <dt>yah_hex
-        <dd><a href="#system_location">Named coordinates</a> to place a "You Are Here" graphical
-            marker. (<a target="_blank" href="../?yah_sector=spin&amp;yah_hex=1910">example</a>)
+    <h4>Markers:</h4>
 
-      <dt>yah_sx
-      <dt>yah_sy
-      <dt>yah_hx
-      <dt>yah_hy
-        <dd><a href="#system_sectorhex">Sector/Hex coordinates</a> to place a "You Are Here" graphical
-            marker. (<a target="_blank" href="../?yah_sx=-4&amp;yah_sy=-1&amp;yah_hx=19&amp;yah_hy=10">example</a>)
+    <dl class="params">
+      <dt>marker_url=URL
+        <dd>Marker image URL.
 
       <dt>marker_sector
       <dt>marker_hex
-      <dt>marker_url
-        <dd><a href="#system_location">Named coordinates</a> and image URL for a custom marker.
-          The image should be a 256px &times; 256px PNG and will be centered on the given coordinates.
+        <dd>Show a marker at <a href="#system_location">named coordinates</a>
           (<a target="_blank" href="../?marker_sector=spin&amp;marker_hex=1910&amp;marker_url=res/markers/beowulf.png">example</a>)
 
-      <dt>ox
-      <dt>oy
-      <dt>ow
-      <dt>oh
-        <dd><a href="#system_map">Map-space coordinates</a> for the left, top, width, and height of an overlay or highlight rectangle to place over the map.To specify additional overlay rectangles, include
-            <code>ox1</code> (etc) for the first additional overlay, <code>ox2</code> (etc) for the
-            second additional overlay, and so on. For example, here's the
-            <a target="_blank" href="../?ox=-111.95&amp;oy=80&amp;ow=194.2&amp;oh=200">Atlas of the Imperium coverage area</a>.
+      <dt>marker_sx
+      <dt>marker_sy
+      <dt>marker_hx
+      <dt>marker_hy
+        <dd>Show a marker at <a href="#system_sectorhex">Sector/Hex coordinates</a>
+            (<a target="_blank" href="../?marker_sx=-4&amp;marker_sy=-1&amp;marker_hx=19&amp;marker_hy=10&amp;marker_url=res/markers/beowulf.png">example</a>)
 
+      <dt>marker_x
+      <dt>marker_y
+        <dd>Show a marker at <a href="#system_map">Map-space coordinates</a>
+          (<a target="_blank" href="../?marker_x=-95.914&amp;marker_y=70.5&amp;marker_url=res/markers/beowulf.png">example</a>)
+
+      <dt>marker=URL
+        <dd>Shortcut: The marker will be placed at the initial map location if the
+          <code>sector</code> and <code>hex</code> options or a <code>/go/</code>
+          link are used.
+          (<a target="_blank" href="../?sector=VLAN&amp;hex=1717&amp;marker=res/markers/submerchant.png">example</a>)
     </dl>
 
-    A handful of example markers are available; relative URLs can be used for these.
-    Images by Andrew Boulton, c/o FFE.
+
+    <p>
+      Marker images should be a 256px &times; 256px PNG and will be
+      centered on the specified coordinates. A handful of example
+      markers are available; relative URLs can be used for these.
+      Images by Andrew Boulton, c/o FFE.
+    </p>
+
     <table id="sample_markers">
       <tr>
         <td><img src="../res/markers/beowulf.png" style="width: 64px;" alt="Beowulf-Class Free Trader">
@@ -507,6 +496,67 @@ table#features, #features th, #features td { border: solid 1px black; }
         <td><img src="../res/markers/labship.png" style="width: 64px;" alt="Laboratory Ship">
         <td><code>res/markers/labship.png</code>
     </table>
+
+    <h4>You Are Here:</h4>
+
+    <p>A built-in marker type that is style-aware and shows "You Are Here".</p>
+
+    <dl class="params">
+
+      <dt>yah_sector
+      <dt>yah_hex
+        <dd>Show a marker at <a href="#system_location">named coordinates</a>
+            (<a target="_blank" href="../?yah_sector=spin&amp;yah_hex=1910">example</a>)
+
+      <dt>yah_sx
+      <dt>yah_sy
+      <dt>yah_hx
+      <dt>yah_hy
+        <dd>Show a marker at <a href="#system_sectorhex">Sector/Hex coordinates</a>
+            (<a target="_blank" href="../?yah_sx=-4&amp;yah_sy=-1&amp;yah_hx=19&amp;yah_hy=10">example</a>)
+
+      <dt>yah_x
+      <dt>yah_y
+        <dd>Show a marker at <a href="#system_map">Map-space coordinates</a>
+            (<a target="_blank" href="../?yah_x=-95.914&amp;yah_y=70.5">example</a>)
+
+      <dt>yah
+        <dd>Shortcut: The marker will be placed at the initial map location if the
+          <code>sector</code> and <code>hex</code> options or a <code>/go/</code>
+          link are used.
+          (<a target="_blank" href="../?sector=VLAN&amp;hex=1717&amp;yah">example</a>)
+    </dl>
+
+    <h4>Overlays:</h4>
+
+    <dl class="params">
+      <dt>ew=<var>date</var></dt>
+      <dd><b>Empress Wave overlay:</b> the position of the Empress Wave
+        at the given date is shown. The date can be specified as one of:
+        <dl class="params">
+          <dt>ddd-yyyy</dt><dd>Day and Year of the Imperial Calendar, e.g. <code>ew=132-1116</code></dd>
+          <dt>yyyy.f...</dt><dd>Decimal date, e.g. <code>ew=1116.359</code></dd>
+          <dt>yyyy</dt><dd>Year, e.g. <code>ew=1105</code></dd>
+        </dl>
+        If a whole year is specified the actual width of the active
+        effects of the phenomenon is shown when zoomed in far enough
+        to see entire hexes. If a more specific date is specified, an
+        approximation of the progress across parsecs is presented.
+      </dd>
+
+      <dt>ox
+      <dt>oy
+      <dt>ow
+      <dt>oh
+        <dd><a href="#system_map">Map-space coordinates</a> for the left, top, width, and height of an overlay or highlight rectangle to place over the map.To specify additional overlay rectangles, include
+            <code>ox1</code>/<code>oy1</code>/<code>ow1</code>/<code>oh1</code>
+            for the first additional overlay
+            <code>ox2</code>/<code>oy2</code>/<code>ow2</code>/<code>oh2</code>
+            for the second additional overlay, and so on. For example, here's the
+            <a target="_blank" href="../?ox=-111.95&amp;oy=80&amp;ow=194.2&amp;oh=200">Atlas of the Imperium coverage area</a>.
+
+    </dl>
+
 
 
   </section>

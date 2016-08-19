@@ -542,7 +542,7 @@ var Util = {
   //   map.ApplyURLParameters()
   //
   //   map.SetRoute()
-  //   map.AddMarker(id, sx, sy, hx, hy, opt_url); // should have CSS style for .marker#<id>
+  //   map.AddMarker(id, x, y, opt_url); // should have CSS style for .marker#<id>
   //   map.AddOverlay(x, y, w, h); // should have CSS style for .overlay
   //
   //----------------------------------------------------------------------
@@ -550,12 +550,16 @@ var Util = {
   function sectorHexToLogical(sx, sy, hx, hy) {
     // Offset from origin
     var world = Astrometrics.sectorHexToWorld(sx, sy, hx, hy);
-    var x = world.x;
-    var y = world.y;
+    return worldToLogical(world.x, world.y);
+  }
+
+  function worldToLogical(wx, wy) {
+    var x = wx;
+    var y = wy;
 
     // Offset from the "corner" of the hex
     x -= 0.5;
-    y -= ((hx % 2) === 0) ? 0 : 0.5;
+    y -= ((wx % 2) === 1) ? 0 : 0.5;
 
     // Scale to non-homogenous coordinates
     x *= Astrometrics.ParsecScaleX;
@@ -1262,8 +1266,7 @@ var Util = {
   };
 
   TravellerMap.prototype.drawMarker = function(marker) {
-    var pt = sectorHexToLogical(marker.sx, marker.sy, marker.hx, marker.hy);
-    pt = this.logicalToPixel(pt.x, pt.y);
+    var pt = this.logicalToPixel(marker.x, marker.y);
 
     var ctx = this.ctx;
     var image;
@@ -1522,13 +1525,11 @@ var Util = {
 
 
   // NOTE: This API is subject to change
-  TravellerMap.prototype.AddMarker = function(id, sx, sy, hx, hy, opt_url) {
+  // |x| and |y| are map-space coordinates
+  TravellerMap.prototype.AddMarker = function(id, x, y, opt_url) {
     var marker = {
-      sx: sx,
-      sy: sy,
-      hx: hx,
-      hy: hy,
-
+      x: x,
+      y: y,
       id: id,
       url: opt_url,
       z: 909
@@ -1589,31 +1590,39 @@ var Util = {
     if ('style' in params)
       this.style = params.style;
 
-    if (has(params, ['yah_sx', 'yah_sy', 'yah_hx', 'yah_hx']))
-      this.AddMarker('you_are_here', int('yah_sx'), int('yah_sy'), int('yah_hx'), int('yah_hy'));
+    var pt;
 
-    if (has(params, ['yah_sector'])) {
+   if (has(params, ['yah_sx', 'yah_sy', 'yah_hx', 'yah_hx'])) {
+     pt = sectorHexToLogical(int('yah_sx'), int('yah_sy'), int('yah_hx'), int('yah_hy'));
+      this.AddMarker('you_are_here', pt.x, pt.y);
+    } else if (has(params, ['yah_x', 'yah_y'])) {
+      this.AddMarker('you_are_here', float('yah_x'), float('yah_y'));
+    } else if (has(params, ['yah_sector'])) {
       MapService.coordinates(params.yah_sector, params.yah_hex)
         .then(function(location) {
-          if (!(location.hx && location.hy)) {
-            location.hx = Astrometrics.SectorWidth / 2;
-            location.hy = Astrometrics.SectorHeight / 2;
-          }
-          $this.AddMarker('you_are_here', location.sx, location.sy, location.hx, location.hy);
+          var pt = worldToLogical(location.x, location.y);
+          $this.AddMarker('you_are_here', pt.x, pt.y);
         }, function() {
-          alert('The requested marker location "' + params.yah_sector + ('yah_hex' in params ? (' ' + params.yah_hex) : '') + '" was not found.');
+          alert('The requested marker location "' + params.yah_sector +
+                ('yah_hex' in params ? (' ' + params.yah_hex) : '') +
+                '" was not found.');
         });
     }
-    if (has(params, ['marker_sector', 'marker_url'])) {
+
+    if (has(params, ['marker_sx', 'marker_sy', 'marker_hx', 'marker_hx', 'marker_url'])) {
+      pt = sectorHexToLogical(int('marker_sx'), int('marker_sy'), int('marker_hx'), int('marker_hy'));
+      this.AddMarker('custom', pt.x, pt.y, params.marker_url);
+    } else if (has(params, ['marker_x', 'marker_y', 'marker_url'])) {
+      this.AddMarker('custom', float('marker_x'), float('marker_y'), params.marker_url);
+    } else if (has(params, ['marker_sector', 'marker_url'])) {
       MapService.coordinates(params.marker_sector, params.marker_hex)
         .then(function(location) {
-          if (!(location.hx && location.hy)) {
-            location.hx = Astrometrics.SectorWidth / 2;
-            location.hy = Astrometrics.SectorHeight / 2;
-          }
-          $this.AddMarker('custom', location.sx, location.sy, location.hx, location.hy, params.marker_url);
+          var pt = worldToLogical(location.x, location.y);
+          $this.AddMarker('custom', pt.x, pt.y, params.marker_url);
         }, function() {
-          alert('The requested marker location "' + params.marker_sector + ('marker_hex' in params ? (' ' + params.marker_hex) : '') + '" was not found.');
+          alert('The requested marker location "' + params.marker_sector +
+                ('marker_hex' in params ? (' ' + params.marker_hex) : '') +
+                '" was not found.');
         });
     }
 
@@ -1646,6 +1655,22 @@ var Util = {
                                    Astrometrics.SectorWidth / 2, Astrometrics.SectorHeight / 2,
                                    {scale: 16});
           }
+
+          if ('yah' in params) {
+            $this.AddMarker('you_are_here', $this.position[0], $this.position[1]);
+            params.yah_x = String($this.position[0]);
+            params.yah_y = String($this.position[1]);
+            delete params.yah;
+          }
+
+          if ('marker' in params) {
+            $this.AddMarker('custom', $this.position[0], $this.position[1], params['marker']);
+            params.marker_url = params.marker;
+            params.marker_x = String($this.position[0]);
+            params.marker_y = String($this.position[1]);
+            delete params.marker;
+          }
+
         }, function() {
           alert('The requested location "' + params.sector +
                 ('hex' in params ? (' ' + params.hex) : '') + '" was not found.');
