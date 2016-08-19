@@ -314,7 +314,7 @@ table#features, #features th, #features td { border: solid 1px black; }
 
     <dt style="clear: both;"><img style="float: right; width: 48px; height: 48px; margin: 10px;" src="../res/ui/style-fasa.png"  alt="FASA example">
       style=fasa</dt>
-    <dd>A style reminiscent of FASA's classic supplements and magazines.)</dd>
+    <dd>A style reminiscent of FASA's classic supplements and magazines.</dd>
     </dl>
 
     <h4>Page and API</h4>
@@ -332,6 +332,12 @@ table#features, #features th, #features td { border: solid 1px black; }
 
       <dt>rifts=0</dt>
       <dd>Don't shade rifts. The default is to shade rifts.</dd>
+
+      <dt>sscoords=1</dt>
+      <dd>Hexes are numbered subsector style (0101-0810) instead of sector style (0101-3240)</dd>
+
+      <dt>allhexes=1</dt>
+      <dd>All hexes are numbered. The default is just to number hexes with worlds.</dd>
 
       <dt>po=1</dt>
       <dd><b>Population overlay:</b> a yellow circle with
@@ -370,12 +376,6 @@ table#features, #features th, #features td { border: solid 1px black; }
     <a href="#iframe">IFRAME</a> API.</p>
 
     <dl class="params">
-      <dt>sscoords=1</dt>
-      <dd>Hexes are numbered subsector style (0101-0810) instead of sector style (0101-3240)</dd>
-
-      <dt>allhexes=1</dt>
-      <dd>All hexes are numbered. The default is just to number hexes with worlds.</dd>
-
       <dt>dpr=<var>number</var></dt>
       <dd>The image is rendered for the specified
         <a target="_blank" href="http://www.quirksmode.org/blog/archives/2012/07/more_about_devi.html">device pixel ratio</a>.

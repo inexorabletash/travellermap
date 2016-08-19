@@ -1678,7 +1678,11 @@ var Util = {
     }
 
     // Int/Boolean options
-    ['silly', 'routes', 'rifts', 'dimunofficial', 'dw', 'an', 'mh', 'po', 'im', 'stellar'].forEach(function (name) {
+    [
+      'silly', 'routes', 'rifts', 'dimunofficial',
+      'sscoords', 'allhexes',
+      'dw', 'an', 'mh', 'po', 'im', 'stellar'
+    ].forEach(function (name) {
       if (name in params)
         this.namedOptions.set(name, int(name));
     }, this);
