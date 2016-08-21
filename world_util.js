@@ -400,7 +400,7 @@ var Traveller, Util, Handlebars;
   };
 
   function hasCode(world, c) {
-    return world.Remarks.some(function(r) { return r.code === c; });
+    return world.Remarks && world.Remarks.some(function(r) { return r.code === c; });
   }
 
   Traveller.renderWorld = function(world, template, container) {
@@ -543,6 +543,7 @@ var Traveller, Util, Handlebars;
     return result;
   }
 
+  var renderWorldImageFirstTime = true;
   Traveller.renderWorldImage = function(world, canvas) {
     var w = canvas.width, h = canvas.height;
 
@@ -582,6 +583,12 @@ var Traveller, Util, Handlebars;
       world.isPlaceholder
         ? null
         : Util.fetchImage(render).catch(function() {
+          if (renderWorldImageFirstTime) {
+            if (console && console.log)
+              console.log('The "404 (Not Found)" for res/Candy/worlds/*.png is expected, and is not a bug.');
+            renderWorldImageFirstTime = false;
+          }
+
           isRender = false;
           return Util.fetchImage(generic);
         })

@@ -108,7 +108,7 @@ var Util = {
       img = img || document.createElement('img');
       img.src = url;
       img.onload = function() { resolve(img); };
-      img.onerror = function() { reject(Error('Image failed to load')); };
+      img.onerror = function(e) { reject(Error('Image failed to load')); };
     });
   }
 };
@@ -278,8 +278,8 @@ var Util = {
                        options.accept || 'application/json');
       },
 
-      credits: function(hexX, hexY, options) {
-        options = Object.assign({}, options, {x: hexX, y: hexY});
+      credits: function(worldX, worldY, options) {
+        options = Object.assign({}, options, {x: worldX, y: worldY});
         return service(url('/api/credits', options),
                        options.accept || 'application/json');
       },
@@ -516,8 +516,8 @@ var Util = {
   //   map.OnDoubleClick     = function( {x, y} ) { show data }
   //
   //   Read-Only:
-  //     map.hexX
-  //     map.hexY
+  //     map.worldX
+  //     map.worldY
   //
   //   Read/Write:
   //     map.x
@@ -547,19 +547,19 @@ var Util = {
   //
   //----------------------------------------------------------------------
 
-  function sectorHexToLogical(sx, sy, hx, hy) {
+  function sectorHexToMap(sx, sy, hx, hy) {
     // Offset from origin
     var world = Astrometrics.sectorHexToWorld(sx, sy, hx, hy);
-    return worldToLogical(world.x, world.y);
+    return worldToMap(world.x, world.y);
   }
 
-  function worldToLogical(wx, wy) {
+  function worldToMap(wx, wy) {
     var x = wx;
     var y = wy;
 
     // Offset from the "corner" of the hex
     x -= 0.5;
-    y -= ((wx % 2) === 1) ? 0 : 0.5;
+    y -= ((wx % 2) !== 0) ? 0 : 0.5;
 
     // Scale to non-homogenous coordinates
     x *= Astrometrics.ParsecScaleX;
@@ -572,10 +572,10 @@ var Util = {
     return {x: x, y: y};
   }
 
-  function logicalToHex(x, y) {
-    var hx = Math.round((x / Astrometrics.ParsecScaleX) + 0.5);
-    var hy = Math.round((-y / Astrometrics.ParsecScaleY) + ((hx % 2 === 0) ? 0.5 : 0));
-    return {hx: hx, hy: hy};
+  function mapToWorld(x, y) {
+    var wx = Math.round((x / Astrometrics.ParsecScaleX) + 0.5);
+    var wy = Math.round((-y / Astrometrics.ParsecScaleY) + ((wx % 2 === 0) ? 0.5 : 0));
+    return {x: wx, y: wy};
   }
 
   function fireEvent(target, event, data) {
@@ -679,15 +679,15 @@ var Util = {
         e.stopPropagation();
       }
 
-      var hex = this.eventToHexCoords(e);
+      var wc = this.eventToWorldCoords(e);
 
       // Throttle the events
-      if (hover_x === hex.hx && hover_y === hex.hy)
+      if (hover_x === wc.x && hover_y === wc.y)
         return;
 
-      hover_x = hex.hx;
-      hover_y = hex.hy;
-      fireEvent(this, 'Hover', { x: hex.hx, y: hex.hy });
+      hover_x = wc.x;
+      hover_y = wc.y;
+      fireEvent(this, 'Hover', { x: wc.x, y: wc.y });
     }.bind(this), true);
 
     document.addEventListener('mouseup', function(e) {
@@ -703,8 +703,8 @@ var Util = {
       e.preventDefault();
       e.stopPropagation();
 
-      var hex = this.eventToHexCoords(e);
-      fireEvent(this, 'Click', { x: hex.hx, y: hex.hy });
+      var wc = this.eventToWorldCoords(e);
+      fireEvent(this, 'Click', { x: wc.x, y: wc.y });
     }.bind(this));
 
     container.addEventListener('dblclick', function(e) {
@@ -723,8 +723,8 @@ var Util = {
       var coords = this.eventCoords(e);
       this._setScale(newscale, coords.x, coords.y);
 
-      var hex = this.eventToHexCoords(e);
-      fireEvent(this, 'DoubleClick', { x: hex.hx, y: hex.hy });
+      var wc = this.eventToWorldCoords(e);
+      fireEvent(this, 'DoubleClick', { x: wc.x, y: wc.y });
     }.bind(this));
 
     var wheelListener = function(e) {
@@ -833,16 +833,17 @@ var Util = {
       if (e.ctrlKey || e.altKey || e.metaKey)
         return;
 
-      var VK_I = 0x49,
-          VK_J = 0x4A,
-          VK_K = 0x4B,
-          VK_L = 0x4C,
-          VK_LEFT = 0x25,
-          VK_UP = 0x26,
-          VK_RIGHT = 0x27,
-          VK_DOWN = 0x28,
-          VK_SUBTRACT = ('DOM_VK_HYPHEN_MINUS' in e) ? e.DOM_VK_HYPHEN_MINUS : 0xBD,
-          VK_EQUALS = ('DOM_VK_EQUALS' in e) ? e.DOM_VK_EQUALS : 0xBB;
+      // TODO: Use KeyboardEvent.prototype.key if available
+      var VK_I = KeyboardEvent.DOM_VK_I || 0x49,
+          VK_J = KeyboardEvent.DOM_VK_J || 0x4A,
+          VK_K = KeyboardEvent.DOM_VK_K || 0x4B,
+          VK_L = KeyboardEvent.DOM_VK_L || 0x4C,
+          VK_LEFT = KeyboardEvent.DOM_VK_LEFT || 0x25,
+          VK_UP = KeyboardEvent.DOM_VK_UP || 0x26,
+          VK_RIGHT = KeyboardEvent.DOM_VK_RIGHT || 0x27,
+          VK_DOWN = KeyboardEvent.DOM_VK_DOWN || 0x28,
+          VK_SUBTRACT = KeyboardEvent.DOM_VK_HYPHEN_MINUS || 0xBD,
+          VK_EQUALS = KeyboardEvent.DOM_VK_EQUALS || 0xBB;
 
       switch (e.keyCode) {
         case VK_UP:
@@ -1218,8 +1219,8 @@ var Util = {
 
   TravellerMap.prototype.drawOverlay = function(overlay) {
     // Compute physical location
-    var pt1 = this.logicalToPixel(overlay.x, overlay.y);
-    var pt2 = this.logicalToPixel(overlay.x + overlay.w, overlay.y + overlay.h);
+    var pt1 = this.mapToPixel(overlay.x, overlay.y);
+    var pt2 = this.mapToPixel(overlay.x + overlay.w, overlay.y + overlay.h);
 
     var scale = this.scale;
     var x = -164, y = 7000, r = 6820;
@@ -1248,15 +1249,15 @@ var Util = {
       ctx.lineWidth = 15;
 
     ctx.beginPath();
-    route.forEach(function(world, index) {
-      var pt = sectorHexToLogical(world.sx, world.sy, world.hx, world.hy);
-      pt = this.logicalToPixel(pt.x, pt.y);
+    route.forEach(function(stop, index) {
+      var pt = sectorHexToMap(stop.sx, stop.sy, stop.hx, stop.hy);
+      pt = this.mapToPixel(pt.x, pt.y);
       ctx[index ? 'lineTo' : 'moveTo'](pt.x, pt.y);
     }, this);
     var dots = (this._logScale >= 7) ? route : [route[0], route[route.length - 1]];
-    dots.forEach(function(world, index) {
-      var pt = sectorHexToLogical(world.sx, world.sy, world.hx, world.hy);
-      pt = this.logicalToPixel(pt.x, pt.y);
+    dots.forEach(function(stop, index) {
+      var pt = sectorHexToMap(stop.sx, stop.sy, stop.hx, stop.hy);
+      pt = this.mapToPixel(pt.x, pt.y);
       ctx.moveTo(pt.x + ctx.lineWidth / 2, pt.y);
       ctx.arc(pt.x, pt.y, ctx.lineWidth / 2, 0, Math.PI*2);
     }, this);
@@ -1266,7 +1267,7 @@ var Util = {
   };
 
   TravellerMap.prototype.drawMarker = function(marker) {
-    var pt = this.logicalToPixel(marker.x, marker.y);
+    var pt = this.mapToPixel(marker.x, marker.y);
 
     var ctx = this.ctx;
     var image;
@@ -1334,7 +1335,7 @@ var Util = {
     ctx.strokeStyle = styleLookup(this.style, 'ew_color');
     ctx.beginPath();
     var px_offset = 0.5; // offset from corner to center of hex
-    var pt = this.logicalToPixel(x + px_offset, y + px_offset);
+    var pt = this.mapToPixel(x + px_offset, y + px_offset);
     ctx.arc(pt.x,
             pt.y,
             this.scale * radius,
@@ -1344,10 +1345,17 @@ var Util = {
     ctx.restore();
   };
 
-  TravellerMap.prototype.logicalToPixel = function(lx, ly) {
+  TravellerMap.prototype.mapToPixel = function(mx, my) {
     return {
-      x: (lx - this._tx * this.tilesize) * this.scale + this.rect.width / 2,
-      y: (-ly - this._ty * this.tilesize) * this.scale + this.rect.height / 2
+      x: (mx - this._tx * this.tilesize) * this.scale + this.rect.width / 2,
+      y: (-my - this._ty * this.tilesize) * this.scale + this.rect.height / 2
+    };
+  };
+
+  TravellerMap.prototype.pixelToMap = function(px, py) {
+    return {
+      x: this._tx * this.tilesize + (px - this.rect.width  / 2) / this.scale,
+      y: -(this._ty * this.tilesize + (py - this.rect.height / 2) / this.scale)
     };
   };
 
@@ -1369,12 +1377,10 @@ var Util = {
     };
   };
 
-  TravellerMap.prototype.eventToHexCoords = function(event) {
-    var s = this.scale * this.tilesize;
+  TravellerMap.prototype.eventToWorldCoords = function(event) {
     var coords = this.eventCoords(event);
-    var cx = this._tx + (coords.x + this.rect.left - this.rect.width / 2) / s,
-        cy = this._ty + (coords.y + this.rect.top - this.rect.height / 2) / s;
-    return logicalToHex(cx * this.tilesize, cy * -this.tilesize);
+    var map = this.pixelToMap(coords.x + this.rect.left, coords.y + this.rect.top);
+    return mapToWorld(map.x, map.y);
   };
 
 
@@ -1454,13 +1460,13 @@ var Util = {
       enumerable: true, configurable: true
     },
 
-    hexX: {
-      get: function() { return logicalToHex(this.x, this.y).hx; },
+    worldX: {
+      get: function() { return mapToWorld(this.x, this.y).x; },
       enumerable: true, configurable: true
     },
 
-    hexY: {
-      get: function() { return logicalToHex(this.x, this.y).hy; },
+    worldY: {
+      get: function() { return mapToWorld(this.x, this.y).y; },
       enumerable: true, configurable: true
     }
   });
@@ -1472,7 +1478,7 @@ var Util = {
     options = Object.assign({}, options);
 
     this.cancelAnimation();
-    var target = sectorHexToLogical(sx, sy, hx, hy);
+    var target = sectorHexToMap(sx, sy, hx, hy);
 
     if (!options.immediate &&
         'scale' in options &&
@@ -1593,14 +1599,14 @@ var Util = {
     var pt;
 
    if (has(params, ['yah_sx', 'yah_sy', 'yah_hx', 'yah_hx'])) {
-     pt = sectorHexToLogical(int('yah_sx'), int('yah_sy'), int('yah_hx'), int('yah_hy'));
+     pt = sectorHexToMap(int('yah_sx'), int('yah_sy'), int('yah_hx'), int('yah_hy'));
       this.AddMarker('you_are_here', pt.x, pt.y);
     } else if (has(params, ['yah_x', 'yah_y'])) {
       this.AddMarker('you_are_here', float('yah_x'), float('yah_y'));
     } else if (has(params, ['yah_sector'])) {
       MapService.coordinates(params.yah_sector, params.yah_hex)
         .then(function(location) {
-          var pt = worldToLogical(location.x, location.y);
+          var pt = worldToMap(location.x, location.y);
           $this.AddMarker('you_are_here', pt.x, pt.y);
         }, function() {
           alert('The requested marker location "' + params.yah_sector +
@@ -1610,14 +1616,14 @@ var Util = {
     }
 
     if (has(params, ['marker_sx', 'marker_sy', 'marker_hx', 'marker_hx', 'marker_url'])) {
-      pt = sectorHexToLogical(int('marker_sx'), int('marker_sy'), int('marker_hx'), int('marker_hy'));
+      pt = sectorHexToMap(int('marker_sx'), int('marker_sy'), int('marker_hx'), int('marker_hy'));
       this.AddMarker('custom', pt.x, pt.y, params.marker_url);
     } else if (has(params, ['marker_x', 'marker_y', 'marker_url'])) {
       this.AddMarker('custom', float('marker_x'), float('marker_y'), params.marker_url);
     } else if (has(params, ['marker_sector', 'marker_url'])) {
       MapService.coordinates(params.marker_sector, params.marker_hex)
         .then(function(location) {
-          var pt = worldToLogical(location.x, location.y);
+          var pt = worldToMap(location.x, location.y);
           $this.AddMarker('custom', pt.x, pt.y, params.marker_url);
         }, function() {
           alert('The requested marker location "' + params.marker_sector +

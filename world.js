@@ -55,25 +55,6 @@ var Traveller, Util, Handlebars;
               document.title = Handlebars.compile(
                 '{{{Name}}} ({{{Sector}}} {{{Hex}}}) - World Data Sheet')(world);
 
-              // Hook up any generated "expandy" fields
-              Array.from($$('.wds-expandy')).forEach(function(elem) {
-                elem.addEventListener('click', function(event) {
-                  var t = elem;
-                  do {
-                    t = t.nextSibling;
-                  } while (t.nodeType !== Node.ELEMENT_NODE);
-                  t.classList.toggle('wds-hidden');
-                  elem.classList.toggle('wds-expanded');
-                });
-              });
-
-              // Hook up toggle
-              if ($('#wds-mini-toggle')) {
-                $('#wds-mini-toggle').addEventListener('click', function(event) {
-                  $('#wds-frame').classList.toggle('wds-mini');
-                });
-              }
-
               // Prettify URL
               if ('history' in window && 'replaceState' in window.history) {
                 var url = window.location.href.replace(/\?.*$/, '') + '?sector=' + world.Sector + '&hex=' + world.Hex;

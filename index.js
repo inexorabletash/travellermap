@@ -260,7 +260,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
   // Options Bar
 
-  var PANELS = ['legend', 'settings', 'share', 'download', 'wiki', 'help'];
+  var PANELS = ['legend', 'settings', 'share', 'download', 'help'];
   PANELS.forEach(function(b) {
     $('#'+b+'Btn').addEventListener('click', function() {
       PANELS.forEach(function(p) {
@@ -422,7 +422,7 @@ window.addEventListener('DOMContentLoaded', function() {
   };
 
   map.OnPositionChanged = function() {
-    showCredits(map.hexX, map.hexY);
+    showCredits(map.worldX, map.worldY);
     updatePermalink();
     savePreferences();
   };
@@ -538,12 +538,12 @@ window.addEventListener('DOMContentLoaded', function() {
   var selectedSubsector = null;
   var selectedWorld = null;
 
-  function showCredits(hexX, hexY, immediate) {
+  function showCredits(worldX, worldY, immediate) {
     var DATA_REQUEST_DELAY_MS = 500;
-    if (lastX === hexX && lastY === hexY)
+    if (lastX === worldX && lastY === worldY)
       return;
-    lastX = hexX;
-    lastY = hexY;
+    lastX = worldX;
+    lastY = worldY;
 
     if (dataRequest) {
       dataRequest.ignore();
@@ -554,7 +554,7 @@ window.addEventListener('DOMContentLoaded', function() {
       window.clearTimeout(dataTimeout);
 
     dataTimeout = setTimeout(function() {
-      dataRequest = Util.ignorable(Traveller.MapService.credits(hexX, hexY));
+      dataRequest = Util.ignorable(Traveller.MapService.credits(worldX, worldY));
       dataRequest.then(function(data) {
           dataRequest = null;
           displayResults(data);
@@ -599,26 +599,13 @@ window.addEventListener('DOMContentLoaded', function() {
       document.body.classList.toggle('sector-selected', selectedSector);
       document.body.classList.toggle('world-selected', selectedWorld);
 
-      $('#MetadataDisplay').innerHTML =
-        template(selectedWorld ? '#WorldMetadataTemplate' : '#SectorMetadataTemplate')(data)
-        + template('#CommonMetadataTemplate')(data)
-        + template('#StatusMetadataTemplate')(data);
+      $('#MetadataDisplay').innerHTML = template('#MetadataTemplate')(data);
     }
   }
 
   function updateSectorLinks() {
     if (!selectedSector)
       return;
-
-    function makeWikiURL(title) {
-      return 'http://wiki.travellerrpg.com/' + encodeURIComponent(title.replace(/ /g, '_'));
-    }
-
-    function updateWikiLink(selector, name, suffix) {
-      var anchor = $(selector);
-      anchor.innerHTML = name ? Util.escapeHTML(name + suffix) : '';
-      anchor.href = name ? makeWikiURL(name + suffix) : '';
-    }
 
     var bookletURL = Traveller.MapService.makeURL(
           '/data/' + encodeURIComponent(selectedSector) + '/booklet');
@@ -631,10 +618,6 @@ window.addEventListener('DOMContentLoaded', function() {
     $('#downloadBox a#download-booklet').href = bookletURL;
     $('#downloadBox a#download-poster').href = posterURL;
     $('#downloadBox a#download-data').href = dataURL;
-
-    updateWikiLink('#wiki-sector-link', selectedSector, ' Sector');
-    updateWikiLink('#wiki-subsector-link', selectedSubsector, ' Subsector');
-    updateWikiLink('#wiki-world-link', selectedWorld && selectedWorld.name, ' (world)');
 
     if (selectedWorld) {
       var worldURL = Util.makeURL('world.html', {
@@ -660,8 +643,63 @@ window.addEventListener('DOMContentLoaded', function() {
         });
         $('#downloadBox a#world-jump-map-' + j).href = jumpMapURL;
       }
+
+
+      fetch(Traveller.MapService.makeURL(
+        '/api/jumpworlds?',
+        {sector: selectedSector, hex: selectedWorld.hex, jump: 0}))
+        .then(function(response) {
+          if (!response.ok) throw Error(response.statusText);
+          return response.json();
+        })
+        .then(function(data) {
+          return data.Worlds[0];
+        })
+        .then(function(world) {
+          if (!world) return undefined;
+          return Traveller.renderWorld(
+            world, $('#wds-world-template').innerHTML, $('#wds-world-data'));
+        })
+        .then(function(world) {
+          if (!world) return;
+
+          // Hook up any generated "expandy" fields
+          Array.from($$('.wds-expandy')).forEach(function(elem) {
+            elem.addEventListener('click', function(event) {
+              var t = elem;
+              do {
+                t = t.nextSibling;
+              } while (t.nodeType !== Node.ELEMENT_NODE);
+              t.classList.toggle('wds-hidden');
+              elem.classList.toggle('wds-expanded');
+            });
+          });
+
+          // Hook up toggle
+          if ($('#wds-mini-toggle')) {
+            $('#wds-mini-toggle').addEventListener('click', function(event) {
+              $('#wds-frame').classList.toggle('wds-mini');
+            });
+          }
+
+          Traveller.renderWorldImage(world, $('#wds-world-image'))
+            .then(function() {
+              $('#wds-world-image').classList.add('wds-ready');
+            });
+
+          // TODO: hook up buttons, etc
+        })
+        .catch(function(error) {
+          console.warn('WDS error: ' + error.message);
+        });
+
     }
   }
+
+  $('#wds-closebtn').addEventListener('click', function(event) {
+    document.body.classList.remove('world-selected');
+  });
+
 
   //////////////////////////////////////////////////////////////////////
   //
@@ -813,7 +851,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
     fetch(Traveller.MapService.makeURL('/api/route', {
       start: start, end: end, jump: jump,
-      x: map.hexX, y: map.hexY,
+      x: map.worldX, y: map.worldY,
       wild: $('#route-wild').checked?1:0,
       im: $('#route-im').checked?1:0,
       nored: $('#route-nored').checked?1:0
@@ -919,32 +957,6 @@ window.addEventListener('DOMContentLoaded', function() {
   }
   updateScaleIndicator();
 
-  //////////////////////////////////////////////////////////////////////
-  //
-  // Popup Displays
-  //
-  //////////////////////////////////////////////////////////////////////
-
-  function showWorldPopup(target) {
-    if (isSmallScreen) return true;
-    $('#popup-iframe').src = target.href + '&nopage&nohood';
-    $('#popup-iframe').onload = function() {
-      $('#popup-overlay').classList.add('visible');
-      $('#popup-click').focus();
-    };
-    return false;
-  };
-
-  ['click', 'keydown', 'touchstart'].forEach(function(event) {
-    $('#popup-click').addEventListener(event, function(e) {
-      e.preventDefault();
-      $('#popup-overlay').classList.remove('visible');
-      mapElement.focus();
-    });
-  });
-
-  // Export
-  window.showWorldPopup = showWorldPopup;
 
   //////////////////////////////////////////////////////////////////////
   //

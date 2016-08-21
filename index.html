@@ -36,6 +36,7 @@
 <meta property="fb:admins" content="617166358">
 
 <link rel="stylesheet" href="index.css?update=2016-08-11">
+<link rel="stylesheet" href="world.css?update=2016-08-11">
 <link rel="stylesheet" href="lib/add-to-home-screen/addtohomescreen.css">
 
 <!--[if lt IE 9]><script>alert("IE8 is no longer supported.");location = 'http://google.com/chrome';</script><![endif]-->
@@ -43,6 +44,7 @@
 <script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.25/polyfill.min.js"></script>
 <script src="map.js?update=2016-08-19"></script>
 <script src="index.js?update=2016-07-30"></script>
+<script src="world_util.js?update=2016-07-30"></script>
 
 <body class="hide-ui hide-footer">
   <div id="mapContainer">
@@ -223,9 +225,6 @@
     </button>
     <button id="downloadBtn"
             title="Download maps, data, and more">
-    </button>
-    <button id="wikiBtn"
-            title="Links to the Traveller Wiki">
     </button>
     <button id="legendBtn"
             title="Map legend and symbols">
@@ -489,36 +488,6 @@
 
   </div>
 
-  <div id="wikiBox"
-       class="ui hoverbox hoverbox-right">
-
-    <h3>The Traveller Wiki</h3>
-
-    <section class="inactive-content">
-      Click on the map to select a world or sector for
-      links to more details on the wiki.
-    </section>
-
-    <section class="active-content">
-      <ul>
-
-        <li>
-          <a id="wiki-sector-link" target="wiki" href="#"></a>
-        </li>
-
-        <li class="world-content">
-          <a id="wiki-subsector-link" target="wiki" href="#"></a>
-        </li>
-
-        <li class="world-content">
-          <a id="wiki-world-link" target="wiki" href="#"></a>
-        </li>
-
-      </ul>
-    </section>
-
-  </div>
-
   <div id="navBar"
        class="ui">
     <canvas id="scaleIndicator" width="120" height="30">
@@ -549,25 +518,22 @@
         In memoriam: Donald McKinney, 1967 - 2015
       </div>
     </div>
-    <script id="SectorMetadataTemplate" type="text/x-handlebars-template">
+    <script id="MetadataTemplate" type="text/x-handlebars-template">
       <div>
         {{SectorName}}
         {{#SectorEra}}(circa {{.}}){{/SectorEra}}
       </div>
-    </script>
-    <script id="WorldMetadataTemplate" type="text/x-handlebars-template">
-      <div>
-        <a class="stealth" target="_blank" href="world?sector={{SectorName}}&hex={{WorldHex}}"
-           onclick="return showWorldPopup(this);">
-          {{SectorName}}
-          {{WorldHex}}
-          <b>{{WorldName}}</b>
-          {{WorldUwp}}
-          &nbsp; (more...)
-        </a>
+      <div class="credits">
+        {{Attribution}}
+
+        {{#SectorRef}}&mdash; <a target="_blank" href="{{.}}">Source</a>{{/SectorRef}}
+        {{#ProductRef}}
+          &mdash; <a title="Publisher's Catalog" target="_blank" href="{{.}}">
+          {{../ProductTitle}}
+          {{#../ProductAuthor}} by {{.}}{{/../ProductAuthor}}
+          ({{../ProductPublisher}})</a>
+        {{/ProductRef}}
       </div>
-    </script>
-    <script id="StatusMetadataTemplate" type="text/x-handlebars-template">
       <div class="metadata-status">
         {{#Official}}
           <a class="official" target="_blank"
@@ -604,26 +570,165 @@
         {{/Unmapped}}
       </div>
     </script>
-    <script id="CommonMetadataTemplate" type="text/x-handlebars-template">
-      <div class="credits">
-        {{Attribution}}
-
-        {{#SectorRef}}&mdash; <a target="_blank" href="{{.}}">Source</a>{{/SectorRef}}
-        {{#ProductRef}}
-          &mdash; <a title="Publisher's Catalog" target="_blank" href="{{.}}">
-          {{../ProductTitle}}
-          {{#../ProductAuthor}} by {{.}}{{/../ProductAuthor}}
-          ({{../ProductPublisher}})</a>
-        {{/ProductRef}}
-      </div>
-    </script>
-
   </div>
 
-  <div id="popup-overlay">
-    <iframe id="popup-iframe" src="about:blank"></iframe>
-    <div id="popup-click" tabindex="0"></div>
+  <div id=wds-frame class=wds-mini>
+    <canvas id=wds-world-image width=200 height=200></canvas>
+    <button id=wds-closebtn></button>
+    <div id=wds-world-data></div>
   </div>
+
+<script id=wds-world-template type="text/x-handlebars-template">
+
+<div class=wds-names>
+<div class=wds-worldname>
+{{#if Name}}
+  <a target=wiki href="{{world_url}}">{{Name}}</a>
+{{else}}
+  (Unnamed)
+{{/if}}
+</div>
+
+{{#if SubsectorName}}
+<div class=wds-ssname><a target=wiki href="{{ss_url}}">{{SubsectorName}} Subsector</a></div>
+{{/if}}
+
+<div class=wds-sectorhex><a target=wiki href="{{sector_url}}">{{Sector}}</a> {{Hex}}</div>
+
+<div style="font-size: 10px; margin-top: 8px">Wiki:
+{{#if Name}}
+  <a target=wiki href="{{world_url}}">World</a> &ndash;
+{{/if}}
+{{#if SubsectorName}}
+  <a target=wiki href="{{ss_url}}">Subsector</a> &ndash;
+{{/if}}
+  <a target=wiki href="{{sector_url}}">Sector</a>
+</div>
+
+</div>
+
+<div id=wds-mini-toggle></div>
+
+<table class=wds-properties>
+{{#if AllegianceName}}
+<tbody>
+<tr class=wds-deets>
+<td>Allegiance:
+<td colspan=2><big>{{AllegianceName}}</big> ({{Allegiance}})
+</tbody>
+{{/if}}
+
+<tbody>
+<tr class=wds-deets>
+<td>System:
+<td colspan=2>
+    <div class=wds-stars>
+    {{#Stars}} <span class=wds-star><big>{{.}}</big></span> {{/Stars}}
+    </div>
+    <div>
+      <span class=nowrap>
+        <big>{{PBG.GG}}</big> <small>Gas Giants</small>
+      </span>
+      &mdash;
+      <span class=nowrap>
+        <big>{{PBG.Belts}}</big> <small>Planetoid Belts</small>
+      </span>
+      {{#if OtherWorlds}}
+      &mdash;
+      <span class=nowrap>
+        <big>{{OtherWorlds}}</big> <small>Other Worlds</small>
+      </span>
+      {{/if}}
+    </div>
+    <div class=wds-bases>
+      {{#Bases}} <span class=wds-base>{{.}}</span> {{/Bases}}
+    </div>
+</tbody>
+
+{{#UWP}}
+<tbody class=wds-expandy>
+<tr class=wds-deets><td>UWP:<td colspan=2><big>{{Starport}} {{Siz}} {{Atm}} {{Hyd}} {{Pop}} {{Gov}} {{Law}} &ndash; {{Tech}}<span class=wds-toggle></span></big>
+</tbody>
+<tbody class="wds-decode wds-hidden">
+<tr><td>Starport<td>{{Starport}}<td>{{StarportBlurb}}
+<tr><td>Size<td>{{Siz}}<td>{{SizBlurb}}
+<tr><td>Atmosphere<td>{{Atm}}<td>{{AtmBlurb}}
+<tr><td>Hydrosphere<td>{{Hyd}}<td>{{HydBlurb}}
+<tr><td>Population<td>{{Pop}}<td>{{PopBlurb}}
+<tr><td>Government Type<td>{{Gov}}<td>{{GovBlurb}}
+<tr><td>Law Level<td>{{Law}}<td>{{LawBlurb}}
+<tr><td>Technology Level<td>{{Tech}}<td>{{TechBlurb}}
+</tbody>
+{{/UWP}}
+
+{{#Ix}}
+<tbody>
+<tr class=wds-deets><td>Importance: <td colspan=2><big>{ {{Imp}} }</big>
+</tbody>
+{{/Ix}}
+
+{{#Ex}}
+<tbody class=wds-expandy>
+<tr class=wds-deets><td>Economics: <td colspan=2><big>( {{Res}} {{Lab}} {{Inf}} {{Eff}} )<span class=wds-toggle></span></big>
+</tbody>
+<tbody class="wds-decode wds-hidden">
+<tr><td>Resources<td>{{Res}}<td>{{ResBlurb}}
+<tr><td>Labor<td>{{Lab}}<td>{{LabBlurb}}
+<tr><td>Infrastructure<td>{{Inf}}<td>{{InfBlurb}}
+<tr><td>Efficiency<td>{{Eff}}<td>{{EffBlurb}}
+</tbody>
+{{/Ex}}
+
+{{#Cx}}
+<tbody class=wds-expandy>
+<tr class=wds-deets><td>Culture: <td colspan=2><big>[ {{Hom}} {{Acc}} {{Str}} {{Sym}} ]<span class=wds-toggle></span></big>
+</tbody>
+<tbody class="wds-decode wds-hidden">
+<tr><td>Homogeneity<td>{{Hom}}<td>{{HomBlurb}}
+<tr><td>Acceptance<td>{{Acc}}<td>{{AccBlurb}}
+<tr><td>Strangeness<td>{{Str}}<td>{{StrBlurb}}
+<tr><td>Symbols<td>{{Sym}}<td>{{SymBlurb}}
+</tbody>
+{{/Cx}}
+
+{{#if TotalPopulation }}
+<tbody>
+<tr class=wds-deets>
+<td style="vertical-align: bottom">Population:
+<td colspan=2><big>{{PopMult}} &times; 10<sup>{{PopExp}}</sup> = {{TotalPopulation}}</big>
+</tbody>
+{{/if}}
+
+{{#if Nobility}}
+<tbody>
+<tr class=wds-deets>
+<td>Nobility:
+<td colspan=2><big class=wds-nobility>{{#Nobility}} <span class=wds-noble>{{.}}</span> {{/Nobility}}</big>
+</tbody>
+{{/if}}
+
+{{#if Remarks}}
+<tbody>
+<tr class=wds-deets>
+<td>Remarks:
+<td colspan=2>
+  {{#Remarks}}
+  <span class=nowrap><big>{{code}}</big> <small>{{detail}}</small></span>
+  {{/Remarks}}
+</tbody>
+{{/if}}
+
+{{#Zone}}
+<tbody>
+<tr class=wds-deets>
+<td>Travel Zone:
+<td colspan=2><big class="wds-zone-{{className}}">{{rule}}</big> <br> <small>Travellers' Aid Society Rating: {{rating}}</small>
+</tbody>
+{{/Zone}}
+</table>
+
+</script>
+
 
   <noscript><div>
     This site requires JavaScript.

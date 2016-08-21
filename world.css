@@ -1,0 +1,101 @@
+
+
+/* Title */
+
+.wds-names {
+  min-height: 104px;
+  max-height: 110px;
+  margin: 10px 10px 5px;
+  overflow: hidden;
+}
+
+.wds-worldname {
+  font-family: Optima, Marcellus, "Times New Roman", serif;
+  font-size: 26px;
+  font-weight: bold;
+  font-style: italic;
+  padding-bottom: 1px;
+  border-bottom: 4px solid black;
+  margin-bottom: 8px;
+}
+.wds-ssname {
+  font-family: Optima, Marcellus, "Times New Roman", serif;
+  x-font-family: Univers, Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+}
+.wds-sectorhex {
+  font-family: Optima, Marcellus, "Times New Roman", serif;
+  x-font-family: Univers, Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.wds-names a { text-decoration: none; }
+.wds-names a:hover { text-decoration: underline; }
+
+/* World Image */
+
+#wds-world-image {
+  position: relative;
+  visibility: hidden;
+  float: left;
+  width: 100px;
+  height: 100px;
+  margin: 10px 10px 5px;
+  border: 2px solid black;
+}
+#wds-world-image.wds-ready {
+  visibility: visible;
+}
+
+
+/* Data Blocks */
+
+.wds-properties {
+  margin: 5px 5px;
+  border-collapse: collapse;
+  clear: both;
+}
+.wds-properties td {
+  margin: 0;
+  padding: 10px 0 4px;
+  font-size: 11px; line-height: 14px;
+  font-weight: bold;
+  vertical-align: top;
+}
+.wds-properties tbody:first-child td { padding-top: 0; }
+
+.wds-properties td:first-child { text-align: right; padding-right: 4px; width: 75px; }
+.wds-properties td:last-child { text-align: left; padding-left: 4px; width: auto; }
+
+.wds-properties big { font-size: 14px; }
+.wds-properties small { font-size: 10px; }
+
+.wds-properties .wds-decode tr:nth-child(odd) { background-color: #ddd; }
+.wds-properties .wds-decode tr:nth-child(even) { background-color: #eee; }
+.wds-properties .wds-decode td {
+  padding-top: 2px; padding-bottom: 2px;
+  font-size: 11px; font-weight: normal;
+  vertical-align: middle;
+}
+.wds-properties .wds-decode td:nth-child(2) {
+  width: 25px;
+  font-size: 14px; font-weight: bold;
+  text-align: center;
+}
+
+/* Specific Data Fields */
+
+.wds-stars .wds-star:after,
+.wds-bases .wds-base:after,
+.wds-nobility .wds-noble:after { content: ' \2014 '; } /* U+2014 EM DASH */
+
+.wds-stars .wds-star:last-child:after,
+.wds-bases .wds-base:last-child:after,
+.wds-nobility .wds-noble:last-child:after { content: ''; }
+
+.wds-zone-amber { background-color: yellow; padding: 2px 20px; display: inline-block; }
+.wds-zone-red { background-color: red; padding: 2px 20px; display: inline-block; }
