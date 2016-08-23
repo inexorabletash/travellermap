@@ -33,8 +33,20 @@ namespace Maps.API
                 double x = GetDoubleOption("x", 0);
                 double y = GetDoubleOption("y", 0);
                 double scale = Util.Clamp(GetDoubleOption("scale", 0), MinScale, MaxScale);
-                int width = Util.Clamp(GetIntOption("w", NormalTileWidth), MinDimension, MaxDimension);
-                int height = Util.Clamp(GetIntOption("h", NormalTileHeight), MinDimension, MaxDimension);
+
+                int width = GetIntOption("w", NormalTileWidth);
+                int height = GetIntOption("h", NormalTileHeight);
+                if (width < 0 || height < 1)
+                {
+                    throw new HttpError(400, "Bad Request",
+                          string.Format("Requested dimensions ({0}x{1}) invalid.", width, height));
+                }
+                if (width * height > MaxDimension * MaxDimension)
+                {
+                    throw new HttpError(400, "Bad Request",
+                         string.Format("Requested dimensions ({0}x{1}) too large.", width, height));
+                }
+
 
                 Size tileSize = new Size(width, height);
 
