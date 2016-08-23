@@ -676,18 +676,16 @@ window.addEventListener('DOMContentLoaded', function() {
           });
 
           // Hook up toggle
-          if ($('#wds-mini-toggle')) {
-            $('#wds-mini-toggle').addEventListener('click', function(event) {
-              $('#wds-frame').classList.toggle('wds-mini');
-            });
-          }
+          $('#wds-mini-toggle').addEventListener('click', function(event) {
+            $('#wds-frame').classList.toggle('wds-mini');
+          });
+
+          $('#wds-print-link').href = worldURL;
 
           Traveller.renderWorldImage(world, $('#wds-world-image'))
             .then(function() {
               $('#wds-world-image').classList.add('wds-ready');
             });
-
-          // TODO: hook up buttons, etc
         })
         .catch(function(error) {
           console.warn('WDS error: ' + error.message);

@@ -261,6 +261,12 @@ input[type=text] {
 #wds-closebtn { opacity: 0.5; }
 #wds-closebtn:hover { opacity: 1; }
 
+#wds-print-link {
+  display: block;
+  margin-top: 10px;
+  text-align: center;
+  text-decoration: underline;
+}
 
 /* Mini Mode */
 
