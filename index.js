@@ -733,8 +733,12 @@ window.addEventListener('DOMContentLoaded', function() {
       return;
 
     if (query === lastQuery) {
-      if (!searchRequest && !options.typed)
+      if (!searchRequest && !options.typed) {
+        // TODO: Make these mutually exclusive in a less hacky way.
         document.body.classList.add('search-results');
+        document.body.classList.remove('route-ui');
+        document.body.classList.remove('wds-visible');
+      }
       return;
     }
     lastQuery = query;
@@ -754,7 +758,12 @@ window.addEventListener('DOMContentLoaded', function() {
       })
       .then(function() {
         searchRequest = null;
+
+        // TODO: Make these mutually exclusive in a less hacky way.
         document.body.classList.add('search-results');
+        document.body.classList.remove('route-ui');
+        document.body.classList.remove('wds-visible');
+
         if (options.navigate) {
           var first = $('#resultsContainer a');
           if (first)
