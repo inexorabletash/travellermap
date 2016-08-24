@@ -188,6 +188,8 @@ window.addEventListener('DOMContentLoaded', function() {
   });
 
   $('#starBtn').addEventListener('click', function() {
+    // TODO: Make these mutually exclusive in a less hacky way.
+    document.body.classList.remove('wds-visible');
     document.body.classList.remove('route-ui');
     map.SetRoute(null);
     search("(default)");
@@ -206,6 +208,7 @@ window.addEventListener('DOMContentLoaded', function() {
   $("#routeBtn").addEventListener('click', function(e) {
     // TODO: Make these mutually exclusive in a less hacky way.
     document.body.classList.remove('search-results');
+    document.body.classList.remove('wds-visible');
     document.body.classList.add('route-ui');
     resizeMap();
     $('#routeStart').focus();
@@ -248,12 +251,16 @@ window.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  var VK_ESCAPE = 27;
+  var VK_ESCAPE = KeyboardEvent.DOM_VK_ESCAPE || 0x1B,
+      VK_C = KeyboardEvent.DOM_VK_C || 0x43,
+      VK_H = KeyboardEvent.DOM_VK_H || 0x48,
+      VK_T = KeyboardEvent.DOM_VK_T || 0x54;
 
   document.body.addEventListener('keyup', function(e) {
     if (e.keyCode === VK_ESCAPE) {
       document.body.classList.remove('search-results');
       document.body.classList.remove('route-ui');
+      document.body.classList.remove('wds-visible');
       $('#dragContainer').focus();
     }
   });
@@ -325,7 +332,12 @@ window.addEventListener('DOMContentLoaded', function() {
   mapElement.addEventListener('keydown', function(e) {
     if (e.ctrlKey || e.altKey || e.metaKey)
       return;
-    var VK_H = 72, VK_T = 84;
+    if (e.keyCode === VK_C) {
+      e.preventDefault();
+      e.stopPropagation();
+      showCredits(map.worldX, map.worldY, /*directAction*/true);
+      return;
+    }
     if (e.keyCode === VK_H) {
       e.preventDefault();
       e.stopPropagation();
@@ -434,14 +446,14 @@ window.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  map.OnClick = function(hex) {
-    showCredits(hex.x, hex.y, /*immediate*/true);
-    post({source: 'travellermap', type: 'click', location: hex});
+  map.OnClick = function(world) {
+    showCredits(world.x, world.y, /*directAction*/true);
+    post({source: 'travellermap', type: 'click', location: world});
   };
 
-  map.OnDoubleClick = function(hex) {
-    showCredits(hex.x, hex.y, /*immediate*/true);
-    post({source: 'travellermap', type: 'doubleclick', location: hex});
+  map.OnDoubleClick = function(world) {
+    showCredits(world.x, world.y, /*directAction*/true);
+    post({source: 'travellermap', type: 'doubleclick', location: world});
   };
 
   // TODO: Generalize URLParam<->Control and URLParam<->Style binding
@@ -535,12 +547,12 @@ window.addEventListener('DOMContentLoaded', function() {
   var dataTimeout = 0;
   var lastX, lastY;
   var selectedSector = null;
-  var selectedSubsector = null;
   var selectedWorld = null;
 
-  function showCredits(worldX, worldY, immediate) {
+  function showCredits(worldX, worldY, directAction) {
     var DATA_REQUEST_DELAY_MS = 500;
-    if (lastX === worldX && lastY === worldY)
+
+    if (!directAction && lastX === worldX && lastY === worldY)
       return;
     lastX = worldX;
     lastY = worldY;
@@ -560,7 +572,7 @@ window.addEventListener('DOMContentLoaded', function() {
           displayResults(data);
         });
 
-    }, immediate ? 0 : DATA_REQUEST_DELAY_MS);
+    }, directAction ? 0 : DATA_REQUEST_DELAY_MS);
 
     function displayResults(data) {
       if ('SectorTags' in data) {
@@ -587,8 +599,7 @@ window.addEventListener('DOMContentLoaded', function() {
       // Other UI
       if ('SectorName' in data && 'SectorTags' in data) {
         selectedSector = data.SectorName.replace(/ Sector$/, '');
-        selectedSubsector = data.SubsectorName;
-        selectedWorld = (map.scale >= 16 && 'WorldHex' in data)
+        selectedWorld = (directAction && map.scale > 16 && 'WorldHex' in data)
           ? { name: data.WorldName, hex: data.WorldHex } : null;
         updateSectorLinks();
       } else {
@@ -598,6 +609,12 @@ window.addEventListener('DOMContentLoaded', function() {
 
       document.body.classList.toggle('sector-selected', selectedSector);
       document.body.classList.toggle('world-selected', selectedWorld);
+      document.body.classList.toggle('wds-visible', selectedWorld);
+      if (selectedWorld) {
+        // TODO: Make these mutually exclusive in a less hacky way.
+        document.body.classList.remove('search-results');
+        document.body.classList.remove('route-ui');
+      }
 
       $('#MetadataDisplay').innerHTML = template('#MetadataTemplate')(data);
     }
@@ -620,19 +637,20 @@ window.addEventListener('DOMContentLoaded', function() {
     $('#downloadBox a#download-data').href = dataURL;
 
     if (selectedWorld) {
-      var worldURL = Util.makeURL('world.html', {
+
+      // Downloads > Data Sheet
+      var dataSheetURL = Util.makeURL('world.html', {
         sector: selectedSector,
         hex: selectedWorld.hex
       });
+      $('#world-data-sheet').href = dataSheetURL;
+      $('#world-data-sheet').innerHTML = Util.escapeHTML(
+        'Data Sheet: ' + selectedWorld.name + ' (' + selectedWorld.hex + ')');
 
-      $('#world-data-sheet').href = worldURL;
-      $('#world-data-sheet').innerHTML = 'Data Sheet: ' +
-        selectedWorld.name + ' (' + selectedWorld.hex + ')';
-
+      // Downloads > Jump Maps
       var options = map.options & (
         Traveller.MapOptions.BordersMask | Traveller.MapOptions.NamesMask |
           Traveller.MapOptions.WorldColors | Traveller.MapOptions.FilledBorders);
-
       for (var j = 1; j <= 6; ++j) {
         var jumpMapURL = Traveller.MapService.makeURL('/api/jumpmap', {
           sector: selectedSector,
@@ -644,7 +662,7 @@ window.addEventListener('DOMContentLoaded', function() {
         $('#downloadBox a#world-jump-map-' + j).href = jumpMapURL;
       }
 
-
+      // World Data Sheet ("Info Card")
       fetch(Traveller.MapService.makeURL(
         '/api/jumpworlds?',
         {sector: selectedSector, hex: selectedWorld.hex, jump: 0}))
@@ -680,7 +698,7 @@ window.addEventListener('DOMContentLoaded', function() {
             $('#wds-frame').classList.toggle('wds-mini');
           });
 
-          $('#wds-print-link').href = worldURL;
+          $('#wds-print-link').href = dataSheetURL;
 
           Traveller.renderWorldImage(world, $('#wds-world-image'))
             .then(function() {
@@ -695,7 +713,7 @@ window.addEventListener('DOMContentLoaded', function() {
   }
 
   $('#wds-closebtn').addEventListener('click', function(event) {
-    document.body.classList.remove('world-selected');
+    document.body.classList.remove('wds-visible');
   });
 
 

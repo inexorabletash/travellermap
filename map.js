@@ -189,11 +189,43 @@ var Util = {
     MinScale: 0.0078125,
     MaxScale: 512,
 
+    // World-space: Hex coordinate, centered on Reference
     sectorHexToWorld: function(sx, sy, hx, hy) {
       return {
         x: (sx * Astrometrics.SectorWidth) + hx - Astrometrics.ReferenceHexX,
         y: (sy * Astrometrics.SectorHeight) + hy - Astrometrics.ReferenceHexY
       };
+    },
+
+    // Map-space: Cartesian coordinates, centered on Reference
+    sectorHexToMap: function(sx, sy, hx, hy) {
+      var world = Astrometrics.sectorHexToWorld(sx, sy, hx, hy);
+      return Astrometrics.worldToMap(world.x, world.y);
+    },
+
+    worldToMap: function(wx, wy) {
+      var x = wx;
+      var y = wy;
+
+      // Offset from the "corner" of the hex
+      x -= 0.5;
+      y -= ((wx % 2) !== 0) ? 0 : 0.5;
+
+      // Scale to non-homogenous coordinates
+      x *= Astrometrics.ParsecScaleX;
+      y *= -Astrometrics.ParsecScaleY;
+
+      // Drop precision (avoid animations, etc)
+      x = Math.round(x * 1000) / 1000;
+      y = Math.round(y * 1000) / 1000;
+
+      return {x: x, y: y};
+    },
+
+    mapToWorld: function(x, y) {
+      var wx = Math.round((x / Astrometrics.ParsecScaleX) + 0.5);
+      var wy = Math.round((-y / Astrometrics.ParsecScaleY) + ((wx % 2 === 0) ? 0.5 : 0));
+      return {x: wx, y: wy};
     },
 
     // World-space Coordinates (Reference is 0,0)
@@ -412,13 +444,12 @@ var Util = {
     //
     function Animation(dur, smooth) {
       var start = Date.now();
-      var $this = this;
-      this.timerid = requestAnimationFrame(tickFunc);
+
       this.onanimate = null;
       this.oncancel = null;
       this.oncomplete = null;
 
-      function tickFunc() {
+      var tickFunc = function() {
         var f = (Date.now() - start) / 1000 / dur;
         if (f < 1.0)
           requestAnimationFrame(tickFunc);
@@ -427,13 +458,15 @@ var Util = {
         if (isCallable(smooth))
           p = smooth(p);
 
-        if (isCallable($this.onanimate))
-          $this.onanimate(p);
+        if (isCallable(this.onanimate))
+          this.onanimate(p);
 
-        if (f >= 1.0 && isCallable($this.oncomplete))
-          $this.oncomplete();
-      }
-    }
+        if (f >= 1.0 && isCallable(this.oncomplete))
+          this.oncomplete();
+      }.bind(this);
+
+      this.timerid = requestAnimationFrame(tickFunc);
+   }
 
     Animation.prototype = {
       cancel: function() {
@@ -547,37 +580,6 @@ var Util = {
   //
   //----------------------------------------------------------------------
 
-  function sectorHexToMap(sx, sy, hx, hy) {
-    // Offset from origin
-    var world = Astrometrics.sectorHexToWorld(sx, sy, hx, hy);
-    return worldToMap(world.x, world.y);
-  }
-
-  function worldToMap(wx, wy) {
-    var x = wx;
-    var y = wy;
-
-    // Offset from the "corner" of the hex
-    x -= 0.5;
-    y -= ((wx % 2) !== 0) ? 0 : 0.5;
-
-    // Scale to non-homogenous coordinates
-    x *= Astrometrics.ParsecScaleX;
-    y *= -Astrometrics.ParsecScaleY;
-
-    // Drop precision (avoid animations, etc)
-    x = Math.round(x * 1000) / 1000;
-    y = Math.round(y * 1000) / 1000;
-
-    return {x: x, y: y};
-  }
-
-  function mapToWorld(x, y) {
-    var wx = Math.round((x / Astrometrics.ParsecScaleX) + 0.5);
-    var wy = Math.round((-y / Astrometrics.ParsecScaleY) + ((wx % 2 === 0) ? 0.5 : 0));
-    return {x: wx, y: wy};
-  }
-
   function fireEvent(target, event, data) {
     if (typeof target['On' + event] !== 'function') return;
     setTimeout(function() { target['On' + event](data); }, 0);
@@ -650,11 +652,12 @@ var Util = {
     // Event Handlers
     // ======================================================================
 
-    var dragging, drag_x, drag_y;
+    var dragging, drag_x, drag_y, was_dragged;
     container.addEventListener('mousedown', function(e) {
       this.cancelAnimation();
       container.focus();
       dragging = true;
+      was_dragged = false;
       var coords = this.eventCoords(e);
       drag_x = coords.x;
       drag_y = coords.y;
@@ -667,6 +670,8 @@ var Util = {
     var hover_x, hover_y;
     container.addEventListener('mousemove', function(e) {
       if (dragging) {
+        was_dragged = true;
+
         var coords = this.eventCoords(e);
         var dx = drag_x - coords.x;
         var dy = drag_y - coords.y;
@@ -703,8 +708,10 @@ var Util = {
       e.preventDefault();
       e.stopPropagation();
 
-      var wc = this.eventToWorldCoords(e);
-      fireEvent(this, 'Click', { x: wc.x, y: wc.y });
+      if (!was_dragged) {
+        var wc = this.eventToWorldCoords(e);
+        fireEvent(this, 'Click', { x: wc.x, y: wc.y });
+      }
     }.bind(this));
 
     container.addEventListener('dblclick', function(e) {
@@ -1250,13 +1257,13 @@ var Util = {
 
     ctx.beginPath();
     route.forEach(function(stop, index) {
-      var pt = sectorHexToMap(stop.sx, stop.sy, stop.hx, stop.hy);
+      var pt = Astrometrics.sectorHexToMap(stop.sx, stop.sy, stop.hx, stop.hy);
       pt = this.mapToPixel(pt.x, pt.y);
       ctx[index ? 'lineTo' : 'moveTo'](pt.x, pt.y);
     }, this);
     var dots = (this._logScale >= 7) ? route : [route[0], route[route.length - 1]];
     dots.forEach(function(stop, index) {
-      var pt = sectorHexToMap(stop.sx, stop.sy, stop.hx, stop.hy);
+      var pt = Astrometrics.sectorHexToMap(stop.sx, stop.sy, stop.hx, stop.hy);
       pt = this.mapToPixel(pt.x, pt.y);
       ctx.moveTo(pt.x + ctx.lineWidth / 2, pt.y);
       ctx.arc(pt.x, pt.y, ctx.lineWidth / 2, 0, Math.PI*2);
@@ -1380,7 +1387,7 @@ var Util = {
   TravellerMap.prototype.eventToWorldCoords = function(event) {
     var coords = this.eventCoords(event);
     var map = this.pixelToMap(coords.x + this.rect.left, coords.y + this.rect.top);
-    return mapToWorld(map.x, map.y);
+    return Astrometrics.mapToWorld(map.x, map.y);
   };
 
 
@@ -1461,12 +1468,12 @@ var Util = {
     },
 
     worldX: {
-      get: function() { return mapToWorld(this.x, this.y).x; },
+      get: function() { return Astrometrics.mapToWorld(this.x, this.y).x; },
       enumerable: true, configurable: true
     },
 
     worldY: {
-      get: function() { return mapToWorld(this.x, this.y).y; },
+      get: function() { return Astrometrics.mapToWorld(this.x, this.y).y; },
       enumerable: true, configurable: true
     }
   });
@@ -1478,7 +1485,7 @@ var Util = {
     options = Object.assign({}, options);
 
     this.cancelAnimation();
-    var target = sectorHexToMap(sx, sy, hx, hy);
+    var target = Astrometrics.sectorHexToMap(sx, sy, hx, hy);
 
     if (!options.immediate &&
         'scale' in options &&
@@ -1568,7 +1575,6 @@ var Util = {
   };
 
   TravellerMap.prototype.ApplyURLParameters = function() {
-    var $this = this;
     var params = Util.parseURLQuery(document.location);
 
     function float(prop) {
@@ -1599,16 +1605,16 @@ var Util = {
     var pt;
 
    if (has(params, ['yah_sx', 'yah_sy', 'yah_hx', 'yah_hx'])) {
-     pt = sectorHexToMap(int('yah_sx'), int('yah_sy'), int('yah_hx'), int('yah_hy'));
+     pt = Astrometrics.sectorHexToMap(int('yah_sx'), int('yah_sy'), int('yah_hx'), int('yah_hy'));
       this.AddMarker('you_are_here', pt.x, pt.y);
     } else if (has(params, ['yah_x', 'yah_y'])) {
       this.AddMarker('you_are_here', float('yah_x'), float('yah_y'));
     } else if (has(params, ['yah_sector'])) {
       MapService.coordinates(params.yah_sector, params.yah_hex)
         .then(function(location) {
-          var pt = worldToMap(location.x, location.y);
-          $this.AddMarker('you_are_here', pt.x, pt.y);
-        }, function() {
+          var pt = Astrometrics.worldToMap(location.x, location.y);
+          this.AddMarker('you_are_here', pt.x, pt.y);
+        }.bind(this), function() {
           alert('The requested marker location "' + params.yah_sector +
                 ('yah_hex' in params ? (' ' + params.yah_hex) : '') +
                 '" was not found.');
@@ -1616,16 +1622,16 @@ var Util = {
     }
 
     if (has(params, ['marker_sx', 'marker_sy', 'marker_hx', 'marker_hx', 'marker_url'])) {
-      pt = sectorHexToMap(int('marker_sx'), int('marker_sy'), int('marker_hx'), int('marker_hy'));
+      pt = Astrometrics.sectorHexToMap(int('marker_sx'), int('marker_sy'), int('marker_hx'), int('marker_hy'));
       this.AddMarker('custom', pt.x, pt.y, params.marker_url);
     } else if (has(params, ['marker_x', 'marker_y', 'marker_url'])) {
       this.AddMarker('custom', float('marker_x'), float('marker_y'), params.marker_url);
     } else if (has(params, ['marker_sector', 'marker_url'])) {
       MapService.coordinates(params.marker_sector, params.marker_hex)
         .then(function(location) {
-          var pt = worldToMap(location.x, location.y);
-          $this.AddMarker('custom', pt.x, pt.y, params.marker_url);
-        }, function() {
+          var pt = Astrometrics.worldToMap(location.x, location.y);
+          this.AddMarker('custom', pt.x, pt.y, params.marker_url);
+        }.bind(this), function() {
           alert('The requested marker location "' + params.marker_sector +
                 ('marker_hex' in params ? (' ' + params.marker_hex) : '') +
                 '" was not found.');
@@ -1655,29 +1661,29 @@ var Util = {
       MapService.coordinates(params.sector, params.hex, {subsector: params.subsector})
         .then(function(location) {
           if (location.hx && location.hy) { // NOTE: Test for undefined -or- zero
-            $this.CenterAtSectorHex(location.sx, location.sy, location.hx, location.hy, {scale: 64});
+            this.CenterAtSectorHex(location.sx, location.sy, location.hx, location.hy, {scale: 64});
           } else {
-            $this.CenterAtSectorHex(location.sx, location.sy,
+            this.CenterAtSectorHex(location.sx, location.sy,
                                    Astrometrics.SectorWidth / 2, Astrometrics.SectorHeight / 2,
                                    {scale: 16});
           }
 
           if ('yah' in params) {
-            $this.AddMarker('you_are_here', $this.position[0], $this.position[1]);
-            params.yah_x = String($this.position[0]);
-            params.yah_y = String($this.position[1]);
+            this.AddMarker('you_are_here', this.position[0], this.position[1]);
+            params.yah_x = String(this.position[0]);
+            params.yah_y = String(this.position[1]);
             delete params.yah;
           }
 
           if ('marker' in params) {
-            $this.AddMarker('custom', $this.position[0], $this.position[1], params['marker']);
+            this.AddMarker('custom', this.position[0], this.position[1], params['marker']);
             params.marker_url = params.marker;
-            params.marker_x = String($this.position[0]);
-            params.marker_y = String($this.position[1]);
+            params.marker_x = String(this.position[0]);
+            params.marker_y = String(this.position[1]);
             delete params.marker;
           }
 
-        }, function() {
+        }.bind(this), function() {
           alert('The requested location "' + params.sector +
                 ('hex' in params ? (' ' + params.hex) : '') + '" was not found.');
         });
