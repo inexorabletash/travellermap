@@ -194,23 +194,23 @@ var Traveller, Util, Handlebars;
   };
 
   var EX_RESOURCES_TABLE = {
-    2: 'Extremely low',
-    3: 'Extremely low',
-    4: 'Very low',
-    5: 'Very low',
-    6: 'Low',
-    7: 'Low',
+    2: 'Very scarce',
+    3: 'Very scarce',
+    4: 'Scarce',
+    5: 'Scarce',
+    6: 'Few',
+    7: 'Few',
     8: 'Moderate',
     9: 'Moderate',
-    A: 'High',
-    B: 'High',
-    C: 'Very high',
-    D: 'Very high',
-    E: 'Extremely high',
-    F: 'Extremely high',
-    G: 'Extremely high',
-    H: 'Extremely high',
-    J: 'Extremely high',
+    A: 'Abundant',
+    B: 'Abundant',
+    C: 'Very abundant',
+    D: 'Very abundant',
+    E: 'Extremely abundant',
+    F: 'Extremely abundant',
+    G: 'Extremely abundant',
+    H: 'Extremely abundant',
+    J: 'Extremely abundant',
     '?': 'Unknown'
   };
 
@@ -218,23 +218,23 @@ var Traveller, Util, Handlebars;
 
   var EX_INFRASTRUCTURE_TABLE = {
     0: 'Non-existent',
-    1: 'Extremely poor',
-    2: 'Extremely poor',
-    3: 'Very poor',
-    4: 'Very poor',
-    5: 'Poor',
-    6: 'Poor',
-    7: 'Fair',
-    8: 'Fair',
-    9: 'Good',
-    A: 'Good',
-    B: 'Very good',
-    C: 'Very good',
-    D: 'Excellent',
-    E: 'Excellent',
-    F: 'Superb',
-    G: 'Superb',
-    H: 'Superb',
+    1: 'Extremely limited',
+    2: 'Extremely limited',
+    3: 'Very limited',
+    4: 'Very limited',
+    5: 'Limited',
+    6: 'Limited',
+    7: 'Generally available',
+    8: 'Generally available',
+    9: 'Extensive',
+    A: 'Extensive',
+    B: 'Very extensive',
+    C: 'Very extensive',
+    D: 'Comprehensive',
+    E: 'Comprehensive',
+    F: 'Very comprehensive',
+    G: 'Very comprehensive',
+    H: 'Very comprehensive',
     '?': 'Unknown'
   };
 
@@ -247,11 +247,55 @@ var Traveller, Util, Handlebars;
     '0': 'Average',
     '+1': 'Average',
     '+2': 'Good',
-    '+3': 'Very good',
-    '+4': 'Excellent',
-    '+5': 'Superb',
+    '+3': 'Improved',
+    '+4': 'Advanced',
+    '+5': 'Very advanced',
     '?': 'Unknown'
   };
+
+  var CX_HOMOGENEITY_TABLE = {
+    0: 'N/A',
+    1: 'Monolithic',
+    2: 'Monolithic',
+    3: 'Monolithic',
+    4: 'Harmonious',
+    5: 'Harmonious',
+    6: 'Harmonious',
+    7: 'Discordant',
+    8: 'Discordant',
+    9: 'Discordant',
+    A: 'Discordant',
+    B: 'Discordant',
+    C: 'Fragmented',
+    D: 'Fragmented',
+    E: 'Fragmented',
+    F: 'Fragmented',
+    G: 'Fragmented',
+    '?': 'Unknown'
+  };
+
+  var CX_ACCEPTANCE_TABLE = {
+    0: 'N/A',
+    1: 'Xenophilic',
+    2: 'Xenophilic',
+    3: 'Xenophilic',
+    4: 'Friendly',
+    5: 'Friendly',
+    6: 'Friendly',
+    7: 'Friendly',
+    8: 'Aloof',
+    9: 'Aloof',
+    A: 'Aloof',
+    B: 'Aloof',
+    C: 'Xenophobic',
+    D: 'Xenophobic',
+    E: 'Xenophobic',
+    F: 'Xenophobic',
+    '?': 'Unknown'
+  };
+
+  // TODO: Cx: Strangeness
+  // TODO: Cx: Symbols
 
   var NOBILITY_TABLE = {
     B: 'Knight',
@@ -263,7 +307,8 @@ var Traveller, Util, Handlebars;
     f: 'Duke',
     F: 'Subsector Duke',
     G: 'Archduke',
-    H: 'Emperor'
+    H: 'Emperor',
+    '?': 'Unknown'
   };
 
   var REMARKS_TABLE = {
@@ -529,9 +574,11 @@ var Traveller, Util, Handlebars;
           Str: cx.substring(2, 3),
           Sym: cx.substring(3, 4)
         };
-        ['Hom', 'Acc', 'Str', 'Sym'].forEach(function(s) {
-          world.Cx[s + 'Blurb'] = Traveller.fromHex(world.Cx[s]);
-        });
+
+        world.Cx.HomBlurb = CX_HOMOGENEITY_TABLE[world.Cx.Hom];
+        world.Cx.AccBlurb = CX_ACCEPTANCE_TABLE[world.Cx.Acc];
+        world.Cx.StrBlurb = Traveller.fromHex(world.Cx.Str);
+        world.Cx.SymBlurb = Traveller.fromHex(world.Cx.Sym);
       }
 
       // Nobility
