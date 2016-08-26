@@ -193,6 +193,66 @@ var Traveller, Util, Handlebars;
     '?': 'Unknown'
   };
 
+  var EX_RESOURCES_TABLE = {
+    2: 'Extremely low',
+    3: 'Extremely low',
+    4: 'Very low',
+    5: 'Very low',
+    6: 'Low',
+    7: 'Low',
+    8: 'Moderate',
+    9: 'Moderate',
+    A: 'High',
+    B: 'High',
+    C: 'Very high',
+    D: 'Very high',
+    E: 'Extremely high',
+    F: 'Extremely high',
+    G: 'Extremely high',
+    H: 'Extremely high',
+    J: 'Extremely high',
+    '?': 'Unknown'
+  };
+
+  var EX_LABOR_TABLE = POP_TABLE;
+
+  var EX_INFRASTRUCTURE_TABLE = {
+    0: 'Non-existent',
+    1: 'Extremely poor',
+    2: 'Extremely poor',
+    3: 'Very poor',
+    4: 'Very poor',
+    5: 'Poor',
+    6: 'Poor',
+    7: 'Fair',
+    8: 'Fair',
+    9: 'Good',
+    A: 'Good',
+    B: 'Very good',
+    C: 'Very good',
+    D: 'Excellent',
+    E: 'Excellent',
+    F: 'Superb',
+    G: 'Superb',
+    H: 'Superb',
+    '?': 'Unknown'
+  };
+
+  var EX_EFFICIENCY_TABLE = {
+    '-5': 'Extremely poor',
+    '-4': 'Very poor',
+    '-3': 'Poor',
+    '-2': 'Fair',
+    '-1': 'Average',
+    '0': 'Average',
+    '+1': 'Average',
+    '+2': 'Good',
+    '+3': 'Very good',
+    '+4': 'Excellent',
+    '+5': 'Superb',
+    '?': 'Unknown'
+  };
+
   var NOBILITY_TABLE = {
     B: 'Knight',
     c: 'Baronet',
@@ -434,27 +494,29 @@ var Traveller, Util, Handlebars;
       if (!world.Ix) delete world.Ix;
       if (world.Ix) {
         var ix = (world.Ix || '').replace(/^{\s*|\s*}$/g, '');
-        ix = ix.replace('-', UNICODE_MINUS);
         world.Ix = {
           Imp: ix
         };
+
+        world.Ix.Imp = world.Ix.Imp.replace('-', UNICODE_MINUS);
       }
 
       // Economics (Ex)
       if (!world.Ex) delete world.Ex;
       if (world.Ex) {
         var ex = world.Ex.replace(/^\(\s*|\s*\)$/g, '');
-        ex = ex.replace('-', UNICODE_MINUS);
         world.Ex = {
           Res: ex.substring(0, 1),
           Lab: ex.substring(1, 2),
           Inf: ex.substring(2, 3),
           Eff: ex.substring(3)
         };
-        ['Res', 'Lab', 'Inf'].forEach(function(s) {
-          world.Ex[s + 'Blurb'] = Traveller.fromHex(world.Ex[s]);
-        });
-        world.Ex.EffBlurb = world.Ex.Eff;
+        world.Ex.ResBlurb = EX_RESOURCES_TABLE[world.Ex.Res];
+        world.Ex.LabBlurb = EX_LABOR_TABLE[world.Ex.Lab];
+        world.Ex.InfBlurb = EX_INFRASTRUCTURE_TABLE[world.Ex.Inf];
+        world.Ex.EffBlurb = EX_EFFICIENCY_TABLE[world.Ex.Eff];
+
+        world.Ex.Eff = world.Ex.Eff.replace('-', UNICODE_MINUS);
       }
 
       // Culture [Cx]

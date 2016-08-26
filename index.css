@@ -288,13 +288,23 @@ input[type=text] {
 /* Expand/Collapse */
 
 .wds-expandy { cursor: pointer; }
-.wds-hidden { display: none; }
-.wds-toggle { opacity: 0.5; }
-.wds-toggle:hover { opacity: 1; }
-.wds-toggle { float: right; }
+.wds-toggle { float: right; opacity: 0.5; }
+.wds-expandy:hover .wds-toggle { opacity: 1; }
 .wds-toggle:before { content: "\25BC"; /* U+25BC BLACK DOWN-POINTING TRIANGLE */ }
-.wds-expanded .wds-toggle:before { content: "\25B2"; /* U+25B2 BLACK UP-POINTING TRIANGLE */ }
 
+#wds-uwp,
+#wds-ex,
+#wds-cx { display: none; }
+
+.wds-expand-uwp #wds-uwp,
+.wds-expand-ex #wds-ex,
+.wds-expand-cx #wds-cx { display: table-row-group; }
+
+.wds-expand-uwp .wds-expandy[data-wds-expand="wds-expand-uwp"] .wds-toggle:before,
+.wds-expand-ex .wds-expandy[data-wds-expand="wds-expand-ex"] .wds-toggle:before,
+.wds-expand-cx .wds-expandy[data-wds-expand="wds-expand-cx"] .wds-toggle:before {
+  content: "\25B2"; /* U+25B2 BLACK UP-POINTING TRIANGLE */
+}
 
 /* ============================================================ */
 /* UI Elements */

@@ -684,12 +684,9 @@ window.addEventListener('DOMContentLoaded', function() {
           // Hook up any generated "expandy" fields
           Array.from($$('.wds-expandy')).forEach(function(elem) {
             elem.addEventListener('click', function(event) {
-              var t = elem;
-              do {
-                t = t.nextSibling;
-              } while (t.nodeType !== Node.ELEMENT_NODE);
-              t.classList.toggle('wds-hidden');
-              elem.classList.toggle('wds-expanded');
+              var c = elem.getAttribute('data-wds-expand');
+              console.log('toggling', c);
+              $('#wds-frame').classList.toggle(c);
             });
           });
 

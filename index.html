@@ -35,7 +35,7 @@
 <meta property="og:site_name" content="The Traveller Map">
 <meta property="fb:admins" content="617166358">
 
-<link rel="stylesheet" href="index.css?update=2016-08-23">
+<link rel="stylesheet" href="index.css?update=2016-08-25">
 <link rel="stylesheet" href="world.css?update=2016-08-21">
 <link rel="stylesheet" href="lib/add-to-home-screen/addtohomescreen.css">
 
@@ -43,8 +43,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
 <script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.25/polyfill.min.js"></script>
 <script src="map.js?update=2016-08-23"></script>
-<script src="index.js?update=2016-08-23"></script>
-<script src="world_util.js?update=2016-08-21"></script>
+<script src="index.js?update=2016-08-25"></script>
+<script src="world_util.js?update=2016-08-25"></script>
 
 <body class="hide-ui hide-footer">
   <div id="mapContainer">
@@ -646,10 +646,10 @@
 </tbody>
 
 {{#UWP}}
-<tbody class=wds-expandy>
+<tbody class=wds-expandy data-wds-expand=wds-expand-uwp>
 <tr class=wds-deets><td>UWP:<td colspan=2><big>{{Starport}} {{Siz}} {{Atm}} {{Hyd}} {{Pop}} {{Gov}} {{Law}} &ndash; {{Tech}}<span class=wds-toggle></span></big>
 </tbody>
-<tbody class="wds-decode wds-hidden">
+<tbody id=wds-uwp class=wds-decode>
 <tr><td>Starport<td>{{Starport}}<td>{{StarportBlurb}}
 <tr><td>Size<td>{{Siz}}<td>{{SizBlurb}}
 <tr><td>Atmosphere<td>{{Atm}}<td>{{AtmBlurb}}
@@ -668,10 +668,10 @@
 {{/Ix}}
 
 {{#Ex}}
-<tbody class=wds-expandy>
+<tbody class=wds-expandy data-wds-expand=wds-expand-ex>
 <tr class=wds-deets><td>Economics: <td colspan=2><big>( {{Res}} {{Lab}} {{Inf}} {{Eff}} )<span class=wds-toggle></span></big>
 </tbody>
-<tbody class="wds-decode wds-hidden">
+<tbody id=wds-ex class=wds-decode>
 <tr><td>Resources<td>{{Res}}<td>{{ResBlurb}}
 <tr><td>Labor<td>{{Lab}}<td>{{LabBlurb}}
 <tr><td>Infrastructure<td>{{Inf}}<td>{{InfBlurb}}
@@ -680,10 +680,10 @@
 {{/Ex}}
 
 {{#Cx}}
-<tbody class=wds-expandy>
+<tbody class=wds-expandy data-wds-expand=wds-expand-cx>
 <tr class=wds-deets><td>Culture: <td colspan=2><big>[ {{Hom}} {{Acc}} {{Str}} {{Sym}} ]<span class=wds-toggle></span></big>
 </tbody>
-<tbody class="wds-decode wds-hidden">
+<tbody id=wds-cx class=wds-decode>
 <tr><td>Homogeneity<td>{{Hom}}<td>{{HomBlurb}}
 <tr><td>Acceptance<td>{{Acc}}<td>{{AccBlurb}}
 <tr><td>Strangeness<td>{{Str}}<td>{{StrBlurb}}
