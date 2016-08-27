@@ -193,6 +193,19 @@ var Traveller, Util, Handlebars;
     '?': 'Unknown'
   };
 
+  var IX_IMP_TABLE = {
+    '-3': 'Very unimportant',
+    '-2': 'Very unimportant',
+    '-1': 'Unimportant',
+    '0': 'Unimportant',
+    '1': 'Ordinary',
+    '2': 'Ordinary',
+    '3': 'Ordinary',
+    '4': 'Important',
+    '5': 'Very important',
+    '?': 'Unknown'
+  };
+
   var EX_RESOURCES_TABLE = {
     2: 'Very scarce',
     3: 'Very scarce',
@@ -276,21 +289,21 @@ var Traveller, Util, Handlebars;
 
   var CX_ACCEPTANCE_TABLE = {
     0: 'N/A',
-    1: 'Xenophilic',
-    2: 'Xenophilic',
-    3: 'Xenophilic',
-    4: 'Friendly',
-    5: 'Friendly',
-    6: 'Friendly',
-    7: 'Friendly',
-    8: 'Aloof',
-    9: 'Aloof',
-    A: 'Aloof',
-    B: 'Aloof',
-    C: 'Xenophobic',
-    D: 'Xenophobic',
-    E: 'Xenophobic',
-    F: 'Xenophobic',
+    1: 'Extremely xenophobic',
+    2: 'Very xenophobic',
+    3: 'Xenophobic',
+    4: 'Extremely aloof',
+    5: 'Very aloof',
+    6: 'Aloof',
+    7: 'Aloof',
+    8: 'Friendly',
+    9: 'Friendly',
+    A: 'Very friendly',
+    B: 'Extremely friendly',
+    C: 'Xenophilic',
+    D: 'Very Xenophilic',
+    E: 'Extremely xenophilic',
+    F: 'Extremely xenophilic',
     '?': 'Unknown'
   };
 
@@ -542,6 +555,7 @@ var Traveller, Util, Handlebars;
         world.Ix = {
           Imp: ix
         };
+        world.Ix.ImpBlurb = IX_IMP_TABLE[world.Ix.Imp];
 
         world.Ix.Imp = world.Ix.Imp.replace('-', UNICODE_MINUS);
       }
