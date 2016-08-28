@@ -678,7 +678,7 @@ window.addEventListener('DOMContentLoaded', function() {
           return Traveller.renderWorldImage(world, $('#wds-world-image'));
         })
         .then(function(world) {
-          return Traveller.renderWorld(
+          Traveller.renderWorld(
             world, $('#wds-world-template').innerHTML, $('#wds-world-data'));
 
           // Hook up any generated "expandy" fields

@@ -241,9 +241,9 @@ input[type=text] {
 }
 
 #wds-closebtn {
-  position: absolute;
-  right: 5px;
-  top: 5px;
+  position: fixed;
+  left: 310px;
+  top: 55px;
   width: 20px;
   min-width: 0;
   height: 20px;
