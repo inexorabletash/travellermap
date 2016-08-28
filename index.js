@@ -383,6 +383,13 @@ window.addEventListener('DOMContentLoaded', function() {
   bindCheckedToOption('#cbFilledBorders',Traveller.MapOptions.FilledBorders);
   bindCheckedToNamedOption('#cbDimUnofficial', 'dimunofficial');
 
+  bindCheckedToNamedOption('#cbImpOverlay', 'im');
+  bindCheckedToNamedOption('#cbPopOverlay', 'po');
+  bindCheckedToNamedOption('#cbDroyneWorlds', 'dw');
+  bindCheckedToNamedOption('#cbAncientWorlds', 'an');
+  bindCheckedToNamedOption('#cbMinorHomeworlds', 'mh');
+  bindCheckedToNamedOption('#cbStellar', 'stellar');
+
   function bindControl(selector, property, onChange, event, onEvent) {
     var element = $(selector);
     optionObservers.push(function(o) { element[property] = onChange(o); });
