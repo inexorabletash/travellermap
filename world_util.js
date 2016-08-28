@@ -521,7 +521,7 @@ var Traveller, Util, Handlebars;
     return world.Remarks && world.Remarks.some(function(r) { return r.code === c; });
   }
 
-  Traveller.renderWorld = function(world, template, container) {
+  Traveller.prepareWorld = function(world) {
     if (!world) return undefined;
     return SOPHONTS_FETCHED.then(function() {
       world.isPlaceholder = (world.UWP === 'XXXXXXX-X' || world.UWP === '???????-?');
@@ -651,12 +651,15 @@ var Traveller, Util, Handlebars;
       world.ss_url = makeWikiURL(world.SubsectorName + ' Subsector');
       world.sector_url = makeWikiURL(world.Sector + ' Sector');
 
-      container.innerHTML = Handlebars.compile(template)(world);
-
       return world;
     });
   };
 
+  Traveller.renderWorld = function(world, template, container) {
+    if (!world) return;
+    container.innerHTML = Handlebars.compile(template)(world);
+    return world;
+  };
 
   function supportsCompositeMode(ctx, mode) {
     var orig = ctx.globalCompositeOperation;
@@ -668,6 +671,8 @@ var Traveller, Util, Handlebars;
 
   var renderWorldImageFirstTime = true;
   Traveller.renderWorldImage = function(world, canvas) {
+    if (!world) return undefined;
+
     var w = canvas.width, h = canvas.height;
 
     var bg = (!world.isPlaceholder && hasCode(world, 'Sa'))
@@ -734,7 +739,7 @@ var Traveller, Util, Handlebars;
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
             ctx.fillText(label, w/2, h/2);
-            return;
+            return world;
           }
 
           var size = SIZES[world.UWP.Siz] || {width: 0.5, height: 0.5};
@@ -766,6 +771,7 @@ var Traveller, Util, Handlebars;
             ctx.drawImage(fgimg, ix, iy, iw, ih);
           }
 
+          return world;
         } finally {
           ctx.restore();
         }

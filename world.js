@@ -37,19 +37,18 @@ var Traveller, Util, Handlebars;
               return response.json();
             })
             .then(function(data) {
-              return data.Worlds[0];
+              return Traveller.prepareWorld(data.Worlds[0]);
             })
             .then(function(world) {
-              return Traveller.renderWorld(
-                world, $('#wds-world-template').innerHTML, $('#wds-world-data'));
+              if (!world) return undefined;
+              return Traveller.renderWorldImage(world, $('#wds-world-image'));
             })
             .then(function(world) {
               if (!world) return;
 
-              Traveller.renderWorldImage(world, $('#wds-world-image'))
-                .then(function() {
-                  $('#wds-world-image').classList.add('wds-ready');
-                });
+              $('#wds-world-image').classList.add('wds-ready');
+              Traveller.renderWorld(
+                world, $('#wds-world-template').innerHTML, $('#wds-world-data'));
 
               // Document title
               document.title = Handlebars.compile(

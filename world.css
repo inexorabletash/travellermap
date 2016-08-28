@@ -40,17 +40,12 @@
 
 #wds-world-image {
   position: relative;
-  visibility: hidden;
   float: left;
   width: 100px;
   height: 100px;
   margin: 10px 10px 5px;
   border: 2px solid black;
 }
-#wds-world-image.wds-ready {
-  visibility: visible;
-}
-
 
 /* Data Blocks */
 
