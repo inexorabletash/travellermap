@@ -83,6 +83,8 @@ td { vertical-align: top; }
 
 /* Specific Data Fields */
 
+.wds-imp-blurb { font-weight: normal; }
+
 .wds-stars { font-size: 117%; }
 .wds-stars .wds-star:after,
 .wds-bases .wds-base:after,
@@ -164,7 +166,7 @@ td { vertical-align: top; }
 
 {{#Ix}}
 <table class=wds-decode>
-<tr><td>Importance {Ix}:<td>{<td>{{Imp}}<td>}<td>
+<tr><td>Importance {Ix}:<td>{<td>{{Imp}}<td>} <td> <span class=wds-imp-blurb>{{ImpBlurb}}</span>
 </table>
 {{/Ix}}
 
