@@ -19,8 +19,8 @@ window.addEventListener('DOMContentLoaded', function() {
   //
   //////////////////////////////////////////////////////////////////////
 
-  var mapElement = $('#dragContainer');
-  var map = new Traveller.Map(mapElement);
+  var mapElement = $('#dragContainer'), sizeElement = mapElement.parentNode;
+  var map = new Traveller.Map(mapElement, sizeElement);
 
   // Export
   window.map = map;

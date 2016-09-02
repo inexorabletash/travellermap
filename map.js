@@ -595,9 +595,9 @@ var Util = {
 
   var SINK_OFFSET = 1000;
 
-  function TravellerMap(container) {
+  function TravellerMap(container, boundingElement) {
     this.container = container;
-    this.rect = container.getBoundingClientRect();
+    this.rect = boundingElement.getBoundingClientRect();
 
     this.min_scale = -5;
     this.max_scale = 10;
@@ -750,7 +750,7 @@ var Util = {
     container.addEventListener('DOMMouseScroll', wheelListener); // FF
 
     window.addEventListener('resize', function() {
-      var rect = container.getBoundingClientRect();
+      var rect = boundingElement.getBoundingClientRect();
       if (rect.left === this.rect.left &&
           rect.top === this.rect.top &&
           rect.width === this.rect.width &&
