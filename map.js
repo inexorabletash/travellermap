@@ -920,21 +920,28 @@ var Util = {
     // store; given screen resolution * ~3x size for "tilt" display this
     // can easily be reached, so reduce effective dpr.
     if (dpr > 1 && /\biPad\b/.test(navigator.userAgent) &&
+        this.tilt_enabled &&
         (cw * ch * dpr * dpr * 2 * 2) > 3e6) {
       dpr = 1;
     }
 
     // Scale factor for canvas to accomodate tilt.
-    var sx = 1.75;
-    var sy = 1.85;
+    var sx = 1, sy = 1;
+    if (this.tilt_enabled) {
+      sx = 1.75;
+      sy = 1.85;
+    }
 
     // Pixel size of the canvas backing store.
     var pw = (cw * sx * dpr) | 0;
     var ph = (ch * sy * dpr) | 0;
 
     // Offset of the canvas against the container.
-    var ox = (-((cw * sx) - cw) / 2) | 0;
-    var oy = (-((ch * sy) - ch) * 0.8) | 0;
+    var ox = 0, oy = 0;
+    if (this.tilt_enabled) {
+      ox = (-((cw * sx) - cw) / 2) | 0;
+      oy = (-((ch * sy) - ch) * 0.8) | 0;
+    }
 
     this.canvas.width = pw;
     this.canvas.height = ph;
@@ -999,9 +1006,11 @@ var Util = {
     b = Math.floor(b) + 1;
 
     // Add extra around l/t/r edges for "tilt" effect
-    l -= 1;
-    t -= 2;
-    r += 1;
+    if (this.tilt_enabled) {
+      l -= 1;
+      t -= 2;
+      r += 1;
+    }
 
     var tileCount = (r - l + 1) * (b - t + 1);
     this.cache.ensureCapacity(tileCount * 2);
@@ -1014,6 +1023,7 @@ var Util = {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.ctx.restore();
 
+    this.ctx.globalCompositeOperation = 'destination-over';
     this.drawRectangle(l, t, r, b, tscale, tmult, ch, cw, cf);
 
     // Draw markers and overlays.
@@ -1076,7 +1086,6 @@ var Util = {
       var py = y | 0;
       var pw = ((x + w) | 0) - px;
       var ph = ((y + h) | 0) - py;
-      $this.ctx.globalCompositeOperation = 'destination-over';
       $this.ctx.drawImage(img, px, py, pw, ph);
     }
 
@@ -1572,6 +1581,11 @@ var Util = {
   TravellerMap.prototype.SetRoute = function(route) {
     this.route = route;
     this.invalidate();
+  };
+
+  TravellerMap.prototype.EnableTilt = function() {
+    this.tilt_enabled = true;
+    this.resetCanvas();
   };
 
   TravellerMap.prototype.ApplyURLParameters = function() {

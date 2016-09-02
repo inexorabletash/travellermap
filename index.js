@@ -466,7 +466,9 @@ window.addEventListener('DOMContentLoaded', function() {
   // TODO: Generalize URLParam<->Control and URLParam<->Style binding
   var PARAM_OPTIONS = [
     {param: 'galdir', selector: '#cbGalDir', className: 'show-directions', 'default': true},
-    {param: 'tilt', selector: '#cbTilt', className: 'tilt', 'default': false}
+    {param: 'tilt', selector: '#cbTilt', className: 'tilt', 'default': false,
+     onchange: function(flag) { if (flag) map.EnableTilt(); }
+    }
   ];
   PARAM_OPTIONS.forEach(function(option) {
     $(option.selector).checked = option['default'];
@@ -475,6 +477,8 @@ window.addEventListener('DOMContentLoaded', function() {
       document.body.classList.toggle(option.className, this.checked);
       updatePermalink();
       savePreferences();
+      if (option.onchange)
+        option.onchange(this.checked);
     });
   });
 
@@ -491,8 +495,11 @@ window.addEventListener('DOMContentLoaded', function() {
       });
 
       PARAM_OPTIONS.forEach(function(option) {
-        if (option.param in preferences)
+        if (option.param in preferences) {
           document.body.classList.toggle(option.className, preferences[option.param]);
+          if (option.onchange)
+            option.onchange(preferences[option.param]);
+        }
       });
     }
 
@@ -692,7 +699,6 @@ window.addEventListener('DOMContentLoaded', function() {
           Array.from($$('.wds-expandy')).forEach(function(elem) {
             elem.addEventListener('click', function(event) {
               var c = elem.getAttribute('data-wds-expand');
-              console.log('toggling', c);
               $('#wds-frame').classList.toggle(c);
             });
           });
