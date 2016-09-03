@@ -286,7 +286,7 @@ namespace Maps
                 if (DataFile != null)
                 {
                     writer.WriteLine();
-                    if (DataFile.Era != null) { writer.WriteLine("# Era: {0}", DataFile.Era); }
+                    if (DataFile.Milieu != null) { writer.WriteLine("# Milieu: {0}", DataFile.Milieu); }
                     writer.WriteLine();
 
                     if (DataFile.Author != null) { writer.WriteLine("# Author:    {0}", DataFile.Author); }

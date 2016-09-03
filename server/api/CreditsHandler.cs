@@ -78,7 +78,7 @@ namespace Maps.API
                     data.SectorPublisher = sector.Publisher;
                     data.SectorCopyright = sector.Copyright;
                     data.SectorRef = sector.Ref;
-                    data.SectorEra = sector.Era;
+                    data.SectorMilieu = sector.Milieu;
 
                     if (sector.DataFile != null)
                     {
@@ -87,7 +87,7 @@ namespace Maps.API
                         data.SectorPublisher = sector.DataFile.Publisher ?? data.SectorPublisher;
                         data.SectorCopyright = sector.DataFile.Copyright ?? data.SectorCopyright;
                         data.SectorRef = sector.DataFile.Ref ?? data.SectorRef;
-                        data.SectorEra = sector.DataFile.Era ?? data.SectorEra;
+                        data.SectorMilieu = sector.DataFile.Milieu ?? data.SectorMilieu;
                     }
 
                     //
@@ -150,7 +150,7 @@ namespace Maps.API.Results
         public string SectorPublisher { get; set; }
         public string SectorCopyright { get; set; }
         public string SectorRef { get; set; }
-        public string SectorEra { get; set; }
+        public string SectorMilieu { get; set; }
         public string SectorTags { get; set; }
 
         public string RouteCredits { get; set; }

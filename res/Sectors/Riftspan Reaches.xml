@@ -16,8 +16,8 @@
 
     ]]>
   </Credits>
-  <DataFile Source="Traveller 5 Second Survey" Era="1105" Author="Joe Fugate" Type="TabDelimited">Riftspan Reaches.tab</DataFile>
-  <Subsectors Publisher="DGP" Source="The Travellers' Digest #19" Era="1120">
+  <DataFile Source="Traveller 5 Second Survey" Milieu="1105" Author="Joe Fugate" Type="TabDelimited">Riftspan Reaches.tab</DataFile>
+  <Subsectors Publisher="DGP" Source="The Travellers' Digest #19" Milieu="1120">
     <Subsector Index="A">Aulryakh</Subsector>
     <Subsector Index="B">Hwiwuiyo</Subsector>
     <Subsector Index="C">Tyehlai</Subsector>
@@ -68,7 +68,7 @@
       <Border Allegiance="As">3131</Border>
       -->
   </Borders>
-  <Routes Publisher="DGP" Source="The Travellers' Digest #19" Era="1120">
+  <Routes Publisher="DGP" Source="The Travellers' Digest #19" Milieu="1120">
     <Route Start="0507" End="0711" Type="J-5" Color="White" Style="Dashed" />
     <Route Start="0711" End="0913" Type="J-5" Color="White" Style="Dashed" />
     <Route Start="0913" End="1115" Type="J-5" Color="White" Style="Dashed" />

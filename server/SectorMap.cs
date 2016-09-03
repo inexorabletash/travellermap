@@ -71,7 +71,7 @@ namespace Maps
                     sector.Merge(metadata);
                 }
 
-                string milieu = sector.Era ?? sector.DataFile?.Era ?? DEFAULT_MILIEU;
+                string milieu = sector.Milieu ?? sector.DataFile?.Milieu ?? DEFAULT_MILIEU;
                 if (!milieux.ContainsKey(milieu))
                     milieux.Add(milieu, new MilieuMap());
 
@@ -131,7 +131,7 @@ namespace Maps
                 s_instance = null;
             }
         }
-        
+
         // This method supports deserializing of Location instances that reference sectors by name.
         // Throws if the map is not initialized.
         public static Point GetSectorCoordinatesByName(string name)

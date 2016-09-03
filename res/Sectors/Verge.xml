@@ -14,7 +14,7 @@
 
     ]]>
   </Credits>
-  <DataFile Source="Traveller 5 Second Survey" Era="1105" Type="TabDelimited">Verge.tab</DataFile>
+  <DataFile Source="Traveller 5 Second Survey" Milieu="1105" Type="TabDelimited">Verge.tab</DataFile>
   <Subsectors>
     <Subsector Index="A">Piimigeka</Subsector>
     <Subsector Index="B" Ref="http://wiki.travellerrpg.com/Verge_Sector">Draco Abyss</Subsector>
@@ -33,7 +33,7 @@
     <Subsector Index="O">Imkhuruuka</Subsector>
     <Subsector Index="P">Naakhulige</Subsector>
   </Subsectors>
-  <Routes Era="1110" Author="Joshua Bell">
+  <Routes Milieu="1110" Author="Joshua Bell">
     <Route Start="3230" End="3328" />
     <Route Start="3230" End="2829" />
     <Route Start="2829" End="2726" />

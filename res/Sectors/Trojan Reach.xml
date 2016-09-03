@@ -26,8 +26,8 @@
             ]]>
   </Credits>
   <Product Publisher="Mongoose Publishing" Author="Gareth Hanrahan" Title="Alien Module 1: Aslan" Ref="http://www.mongoosepublishing.com/alien-module-1-aslan.html" />
-  <DataFile Source="Traveller 5 Second Survey" Era="1105" Type="TabDelimited">Trojan Reach.tab</DataFile>
-  <Subsectors Publisher="DGP" Source="The Travellers' Digest #20" Era="1120">
+  <DataFile Source="Traveller 5 Second Survey" Milieu="1105" Type="TabDelimited">Trojan Reach.tab</DataFile>
+  <Subsectors Publisher="DGP" Source="The Travellers' Digest #20" Milieu="1120">
     <Subsector Index="A">Menorial</Subsector>
     <Subsector Index="B">Egyrn</Subsector>
     <Subsector Index="C">Pax Rulin</Subsector>
@@ -50,7 +50,7 @@
     route.FlLe { color: LightGreen; }
   </Stylesheet>
   <!--
-        <Routes Publisher="DGP" Source="The Travellers' Digest #20" Era="1120">
+        <Routes Publisher="DGP" Source="The Travellers' Digest #20" Milieu="1120">
         <Route Start="0122" End="0223" Allegiance="As" />
         <Route Start="0126" End="0132" Allegiance="As" />
         <Route Start="0126" End="0224" Allegiance="As" />
@@ -174,7 +174,7 @@
         <Route Start="2708" End="2805" />
         </Routes>
     -->
-  <Routes Author="Mike Jackson" Source="Third Imperium #5" Era="1100">
+  <Routes Author="Mike Jackson" Source="Third Imperium #5" Milieu="1100">
     <Route Start="2711" End="2909" />
     <Route Start="2711" End="2714" />
     <Route Start="2714" End="2715" />
@@ -281,7 +281,7 @@
 
   </Routes>
   <!--
-        <Borders Source="Based on allegiances from MTJ Domain of Deneb Supplement" Era="1120">
+        <Borders Source="Based on allegiances from MTJ Domain of Deneb Supplement" Milieu="1120">
         <Border Allegiance="FlLe" Color="lightblue">0110 0210 0310 0410 0510 0511 0512 0612 0713 0714 0715 0716 0616 0517 0417 0418 0319 0218 0119 0118 0117 0116 0115 0114 0113 0112 0111 0110</Border>
         <Border Allegiance="BlSo" Color="blue">1005 1106 1206 1207 1308 1207 1206 1106 1005</Border>
 
@@ -301,7 +301,7 @@
 </Border>
 </Borders>
     -->
-  <Borders Source="Based on allegiances from Atlas of the Imperium" Author="Joshua Bell" Era="1065">
+  <Borders Source="Based on allegiances from Atlas of the Imperium" Author="Joshua Bell" Milieu="1065">
     <Border Allegiance="As" LabelPosition="0732">0026 0126 0125 0124 0123 0122 0123 0223 0323 0322 0323 0324 0424 0525 0625 0725 0824 0823 0824 0725 0726 0727 0728 0729 0829 0930 0931 1031 1131 1230 1229 1228 1227 1226 1225 1224 1223 1323 1322 1422 1522 1621 1722 1822 1923 2023 2024 2125 2126 2226 2227 2228 2229 2230 2231 2232 2233 2134 2034 1935 1835 1736 1636 1637 1538 1438 1339 1340 1341 1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027</Border>
     <Border Allegiance="BlSo" Color="blue" LabelPosition="1007" WrapLabel="true">1005 1106 1206 1207 1308 1207 1206 1106 1005</Border>
     <Border Allegiance="FlLe" Color="green" LabelPosition="0412">0010 0110 0210 0310 0410 0510 0511 0611 0612 0713 0613 0614 0615 0716 0616 0517 0417 0418 0319 0320 0420 0521 0621 0722 0723 0724 0623 0523 0422 0421 0321 0221 0222 0221 0121 0120 0119 0118 0017 0016 0015 0014 0013 0012 0011 0010</Border>

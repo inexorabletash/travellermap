@@ -40,7 +40,7 @@
                         <th>Source</th>
                         <th>Publisher</th>
                         <th>Copyright</th>
-                        <th>Era</th>
+                        <th>Milieu</th>
                         <th>Ref</th>
                     </tr>
                     <xsl:apply-templates select="Sectors/Sector">
@@ -94,7 +94,7 @@
             <xsl:value-of select="DataFile/@Copyright"/>
         </td>
         <td>
-            <xsl:value-of select="DataFile/@Era"/>
+            <xsl:value-of select="DataFile/@Milieu"/>
         </td>
         <td>
             <a>

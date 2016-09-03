@@ -6,7 +6,7 @@
     <xs:attribute name="Author" type="xs:string" use="optional" />
     <xs:attribute name="Publisher" type="xs:string" use="optional" />
     <xs:attribute name="Ref" type="xs:anyURI" use="optional" />
-    <xs:attribute name="Era" type="xs:unsignedShort" use="optional" />
+    <xs:attribute name="Milieu" type="xs:string" use="optional" />
     <xs:attribute name="Note" type="xs:string" use="optional" />
   </xs:attributeGroup>
 
