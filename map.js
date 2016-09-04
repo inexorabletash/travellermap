@@ -680,7 +680,7 @@ var Util = {
       var wc = this.eventToWorldCoords(e);
 
       // Throttle the events
-      if (hover_coords.x === wc.x && hover_coords.y === wc.y)
+      if (hover_coords && hover_coords.x === wc.x && hover_coords.y === wc.y)
         return;
 
       hover_coords = wc;
@@ -712,7 +712,7 @@ var Util = {
 
       var MAX_DOUBLECLICK_SCALE = 9;
       if (this._logScale < MAX_DOUBLECLICK_SCALE) {
-        var newscale = this._logScale + CLICK_SCALE_DELTA * ((e.altKey) ? 1 : -1);
+        var newscale = this._logScale + CLICK_SCALE_DELTA * (e.altKey ? 1 : -1);
         newscale = Math.min(newscale, MAX_DOUBLECLICK_SCALE);
 
         var coords = this.eventCoords(e);
@@ -722,21 +722,16 @@ var Util = {
       fireEvent(this, 'DoubleClick', this.eventToWorldCoords(e));
     }.bind(this));
 
-    // TODO: Convert to standard 'wheel' event (IE9+).
-    var wheelListener = function(e) {
+    container.addEventListener('wheel', function(e) {
       this.cancelAnimation();
-      var delta = e.detail ? e.detail * -40 : e.wheelDelta;
 
-      var newscale = this._logScale + SCROLL_SCALE_DELTA * ((delta > 0) ? -1 : (delta < 0) ? 1 : 0);
-
+      var newscale = this._logScale + SCROLL_SCALE_DELTA * Math.sign(e.deltaY);
       var coords = this.eventCoords(e);
       this._setScale(newscale, coords.x, coords.y);
 
       e.preventDefault();
       e.stopPropagation();
-    }.bind(this);
-    container.addEventListener('mousewheel', wheelListener); // IE/Chrome/Safari/Opera
-    container.addEventListener('DOMMouseScroll', wheelListener); // FF
+    }.bind(this));
 
     window.addEventListener('resize', function() {
       var rect = boundingElement.getBoundingClientRect();
