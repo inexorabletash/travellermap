@@ -124,7 +124,7 @@ var Util = {
   var SERVICE_BASE = (function(l) {
     'use strict';
     if (l.hostname === 'localhost' && l.pathname.indexOf('~') !== -1)
-      return 'http://travellermap.com';
+      return 'https://travellermap.com';
     return '';
   }(window.location));
 
@@ -652,34 +652,27 @@ var Util = {
     // Event Handlers
     // ======================================================================
 
-    var dragging, drag_x, drag_y, was_dragged;
+    var dragging, drag_coords, was_dragged;
     container.addEventListener('mousedown', function(e) {
       this.cancelAnimation();
       container.focus();
       dragging = true;
       was_dragged = false;
-      var coords = this.eventCoords(e);
-      drag_x = coords.x;
-      drag_y = coords.y;
+      drag_coords = this.eventCoords(e);
       container.classList.add('dragging');
 
       e.preventDefault();
       e.stopPropagation();
     }.bind(this), true);
 
-    var hover_x, hover_y;
+    var hover_coords;
     container.addEventListener('mousemove', function(e) {
       if (dragging) {
         was_dragged = true;
 
         var coords = this.eventCoords(e);
-        var dx = drag_x - coords.x;
-        var dy = drag_y - coords.y;
-
-        this._offset(dx, dy);
-
-        drag_x = coords.x;
-        drag_y = coords.y;
+        this._offset(drag_coords.x - coords.x, drag_coords.y - coords.y);
+        drag_coords = coords;
         e.preventDefault();
         e.stopPropagation();
       }
@@ -687,12 +680,11 @@ var Util = {
       var wc = this.eventToWorldCoords(e);
 
       // Throttle the events
-      if (hover_x === wc.x && hover_y === wc.y)
+      if (hover_coords.x === wc.x && hover_coords.y === wc.y)
         return;
 
-      hover_x = wc.x;
-      hover_y = wc.y;
-      fireEvent(this, 'Hover', { x: wc.x, y: wc.y });
+      hover_coords = wc;
+      fireEvent(this, 'Hover', hover_coords);
     }.bind(this), true);
 
     document.addEventListener('mouseup', function(e) {
@@ -708,32 +700,29 @@ var Util = {
       e.preventDefault();
       e.stopPropagation();
 
-      if (!was_dragged) {
-        var wc = this.eventToWorldCoords(e);
-        fireEvent(this, 'Click', { x: wc.x, y: wc.y });
-      }
+      if (!was_dragged)
+        fireEvent(this, 'Click', this.eventToWorldCoords(e));
     }.bind(this));
 
     container.addEventListener('dblclick', function(e) {
-      this.cancelAnimation();
-
       e.preventDefault();
       e.stopPropagation();
 
+      this.cancelAnimation();
+
       var MAX_DOUBLECLICK_SCALE = 9;
-      if (this._logScale >= MAX_DOUBLECLICK_SCALE)
-        return;
+      if (this._logScale < MAX_DOUBLECLICK_SCALE) {
+        var newscale = this._logScale + CLICK_SCALE_DELTA * ((e.altKey) ? 1 : -1);
+        newscale = Math.min(newscale, MAX_DOUBLECLICK_SCALE);
 
-      var newscale = this._logScale + CLICK_SCALE_DELTA * ((e.altKey) ? 1 : -1);
-      newscale = Math.min(newscale, MAX_DOUBLECLICK_SCALE);
+        var coords = this.eventCoords(e);
+        this._setScale(newscale, coords.x, coords.y);
+      }
 
-      var coords = this.eventCoords(e);
-      this._setScale(newscale, coords.x, coords.y);
-
-      var wc = this.eventToWorldCoords(e);
-      fireEvent(this, 'DoubleClick', { x: wc.x, y: wc.y });
+      fireEvent(this, 'DoubleClick', this.eventToWorldCoords(e));
     }.bind(this));
 
+    // TODO: Convert to standard 'wheel' event (IE9+).
     var wheelListener = function(e) {
       this.cancelAnimation();
       var delta = e.detail ? e.detail * -40 : e.wheelDelta;
@@ -759,37 +748,31 @@ var Util = {
       this.resetCanvas();
     }.bind(this));
 
-    var pinch_x1, pinch_y1, pinch_x2, pinch_y2;
-    var touch_x, touch_y;
+
+    var pinch1, pinch2;
+    var touch_coords, touch_wx, touch_wc, was_touch_dragged;
 
     container.addEventListener('touchmove', function(e) {
+      was_touch_dragged = true;
       if (e.touches.length === 1) {
 
         var coords = this.eventCoords(e.touches[0]);
-        var dx = touch_x - coords.x;
-        var dy = touch_y - coords.y;
-
-        this._offset(dx, dy);
-
-        touch_x = coords.x;
-        touch_y = coords.y;
+        this._offset(touch_coords.x - coords.x, touch_coords.y - coords.y);
+        touch_coords = coords;
+        touch_wc = this.eventToWorldCoords(e.touches[0]);
 
       } else if (e.touches.length === 2) {
 
-        var od = dist(pinch_x2 - pinch_x1, pinch_y2 - pinch_y1),
-            ocx = (pinch_x1 + pinch_x2) / 2,
-            ocy = (pinch_y1 + pinch_y2) / 2;
+        var od = dist(pinch2.x - pinch1.x, pinch2.y - pinch1.y),
+            ocx = (pinch1.x + pinch2.x) / 2,
+            ocy = (pinch1.y + pinch2.y) / 2;
 
-        var coords0 = this.eventCoords(e.touches[0]),
-            coords1 = this.eventCoords(e.touches[1]);
-        pinch_x1 = coords0.x;
-        pinch_y1 = coords0.y;
-        pinch_x2 = coords1.x;
-        pinch_y2 = coords1.y;
+        pinch1 = this.eventCoords(e.touches[0]),
+        pinch2 = this.eventCoords(e.touches[1]);
 
-        var nd = dist(pinch_x2 - pinch_x1, pinch_y2 - pinch_y1),
-            ncx = (pinch_x1 + pinch_x2) / 2,
-            ncy = (pinch_y1 + pinch_y2) / 2;
+        var nd = dist(pinch2.x - pinch1.x, pinch2.y - pinch1.y),
+            ncx = (pinch1.x + pinch2.x) / 2,
+            ncy = (pinch1.y + pinch2.y) / 2;
 
         this._offset(ocx - ncx, ocy - ncy);
 
@@ -807,29 +790,26 @@ var Util = {
         this.invalidate();
       }
 
-      if (e.touches.length === 1) {
-        var coords = this.eventCoords(e.touches[0]);
-        touch_x = coords.x;
-        touch_y = coords.y;
-      }
+      if (e.touches.length === 1)
+        touch_coords = this.eventCoords(e.touches[0]);
+
+      if (e.touches.length === 0 && !was_touch_dragged)
+        fireEvent(this, 'Click', touch_wc);
 
       e.preventDefault();
       e.stopPropagation();
     }.bind(this), true);
 
     container.addEventListener('touchstart', function(e) {
+      was_touch_dragged = false;
+
       if (e.touches.length === 1) {
-        var coords = this.eventCoords(e.touches[0]);
-        touch_x = coords.x;
-        touch_y = coords.y;
+        touch_coords = this.eventCoords(e.touches[0]);
+        touch_wc = this.eventToWorldCoords(e.touches[0]);
       } else if (e.touches.length === 2) {
         this.defer_loading = true;
-        var coords0 = this.eventCoords(e.touches[0]),
-            coords1 = this.eventCoords(e.touches[1]);
-        pinch_x1 = coords0.x;
-        pinch_y1 = coords0.y;
-        pinch_x2 = coords1.x;
-        pinch_y2 = coords1.y;
+        pinch1 = this.eventCoords(e.touches[0]),
+        pinch2 = this.eventCoords(e.touches[1]);
       }
 
       e.preventDefault();
