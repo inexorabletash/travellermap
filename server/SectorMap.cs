@@ -111,7 +111,7 @@ namespace Maps
                         new SectorMetafileEntry(@"~/res/Sectors/Orion OB1/orion.xml", new List<string> { "OrionOB1" } ),
 
                         // OTU - Other Milieu
-                        new SectorMetafileEntry(@"~/res/Sectors/M1000/m1000.xml", new List<string> {} ),
+                        new SectorMetafileEntry(@"~/res/Sectors/M990/M990.xml", new List<string> {} ),
 
                         // Non-OTU
                         new SectorMetafileEntry(@"~/res/Sectors/Faraway/faraway.xml", new List<string> { "Faraway" } ),
