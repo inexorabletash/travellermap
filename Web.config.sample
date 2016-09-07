@@ -111,6 +111,11 @@
           </conditions>
           <action type="Redirect" url="https://{HTTP_HOST}/{R:1}" redirectType="Permanent" />
         </rule>
+
+        <rule name="Extensionless Pages" stopProcessing="true">
+          <match url="^(world|(doc|make|tools)/\w+)$"/>
+          <action type="Rewrite" url="{R:0}.html"/>
+        </rule>
       </rules>
     </rewrite>
 
