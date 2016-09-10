@@ -31,7 +31,7 @@ namespace Maps.API
                 // Coordinates
                 //
                 SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, GetStringOption("milieu"));
-                Location loc = new Location(map.FromName("Spinward Marches").Location, 1910);
+                Location loc = Location.Empty;
 
                 if (HasOption("sector") && HasOption("hex"))
                 {
