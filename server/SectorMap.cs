@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
 using System.Xml.Serialization;
 
@@ -53,7 +54,10 @@ namespace Maps
             {
                 SectorCollection collection = resourceManager.GetXmlFileObject(metafile.filename, typeof(SectorCollection), cache: false) as SectorCollection;
                 foreach (var sector in collection.Sectors)
+                {
                     sector.Tags.AddRange(metafile.tags);
+                    sector.AdjustRelativePaths(metafile.filename);
+                }
 
                 if (sectors == null)
                     sectors = collection;
@@ -67,7 +71,8 @@ namespace Maps
             {
                 if (sector.MetadataFile != null)
                 {
-                    Sector metadata = resourceManager.GetXmlFileObject(@"~/res/Sectors/" + sector.MetadataFile, typeof(Sector), cache: false) as Sector;
+                    Sector metadata = resourceManager.GetXmlFileObject(sector.MetadataFile, typeof(Sector), cache: false) as Sector;
+                    metadata.AdjustRelativePaths(sector.MetadataFile);
                     sector.Merge(metadata);
                 }
 
