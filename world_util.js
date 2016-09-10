@@ -656,7 +656,7 @@ var Traveller, Util, Handlebars;
   };
 
   Traveller.renderWorld = function(world, template, container) {
-    if (!world) return;
+    if (!world) return undefined;
     container.innerHTML = Handlebars.compile(template)(world);
     return world;
   };
@@ -703,6 +703,13 @@ var Traveller, Util, Handlebars;
           + (world.UWP.Siz === '0' ? 'Belt' : 'Hyd' + world.UWP.Hyd) + '.png';
     var isRender = true;
 
+    var size = SIZES[world.UWP.Siz] || {width: 0.5, height: 0.5};
+
+    var showConsoleNotice = Util.once(function() {
+      if (!console || !console.log) return;
+      console.log('The "404 (Not Found)" for res/Candy/worlds/*.png is expected, and is not a bug.');
+    });
+
     return Promise.all([
       // Background
       Util.fetchImage(bg),
@@ -710,16 +717,16 @@ var Traveller, Util, Handlebars;
       // Foreground
       world.isPlaceholder
         ? null
-        : Util.fetchImage(render).catch(function() {
-          if (renderWorldImageFirstTime) {
-            if (console && console.log)
-              console.log('The "404 (Not Found)" for res/Candy/worlds/*.png is expected, and is not a bug.');
-            renderWorldImageFirstTime = false;
-          }
-
-          isRender = false;
-          return Util.fetchImage(generic);
-        })
+        : Util.fetchImage(render).then(
+          function(image) {
+            size.height = size.width * image.naturalHeight / image.naturalWidth;
+            return image;
+          },
+          function() {
+            showConsoleNotice();
+            isRender = false;
+            return Util.fetchImage(generic);
+          })
     ])
       .then(function(images) {
         var bgimg = images[0];
@@ -742,7 +749,6 @@ var Traveller, Util, Handlebars;
             return world;
           }
 
-          var size = SIZES[world.UWP.Siz] || {width: 0.5, height: 0.5};
           var iw = w * size.width, ih = h * size.height;
           var ix = (w - iw) / 2, iy = (h - ih) / 2;
 
