@@ -1,4 +1,4 @@
-var Traveller, Util, Handlebars;
+/*global Traveller, Util, Handlebars */ // for lint and IDEs
 (function(global) {
   'use strict';
 

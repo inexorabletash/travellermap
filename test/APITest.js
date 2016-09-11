@@ -1,3 +1,4 @@
+/*global assertEquals, assertTrue, runTests */
 
 //
 // Test Helpers

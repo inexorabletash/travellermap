@@ -11,7 +11,7 @@ var Util = {
     var keys = Object.keys(params), args = '';
     for (var i = 0; i < keys.length; ++i) {
       var key = keys[i], value = params[key];
-      if (value === undefined) continue;
+      if (value === undefined || value === null) continue;
       args += (args ? '&' : '') + encodeURIComponent(key) + '=' + encodeURIComponent(value);
     }
     return args ? base + '?' + args : base;
@@ -1683,12 +1683,12 @@ var Util = {
       'silly', 'routes', 'rifts', 'dimunofficial',
       'sscoords', 'allhexes',
       'dw', 'an', 'mh', 'po', 'im', 'stellar'
-    ].forEach(function (name) {
+    ].forEach(function(name) {
       if (name in params)
         this.namedOptions.set(name, int(name));
     }, this);
     // String options
-    ['ew', 'hw', 'milieu'].forEach(function (name) {
+    ['ew', 'hw', 'milieu'].forEach(function(name) {
       if (name in params)
         this.namedOptions.set(name, params[name]);
     }, this);

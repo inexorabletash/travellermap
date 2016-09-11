@@ -1,3 +1,5 @@
+/*global Traveller */ // for lint and IDEs
+
 // Common routines between Poster Maker and Booklet Maker
 // * Populate sector selector, and load data on demand
 // * Add drag-and-drop handlers for TEXTAREA elements
@@ -101,7 +103,11 @@ function getTextViaPOST(url, data) {
   } else {
     data = Object(data);
     var fd = new FormData();
-    Object.keys(data).forEach(function(key) { fd.append(key, data[key]); });
+    Object.keys(data).forEach(function(key) {
+      var value = data[key];
+      if (value !== undefined && value !== null)
+        fd.append(key, data[key]);
+    });
     request = fetch(url, {
       method: 'POST',
       body: fd

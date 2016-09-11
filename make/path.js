@@ -1,3 +1,4 @@
+/*global Traveller */
 (function(global) {
   // A* Algorithm
   //

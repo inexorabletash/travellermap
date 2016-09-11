@@ -1,3 +1,4 @@
+/*global Traveller, Handlebars */
 (function(global) {
   'use strict';
 
