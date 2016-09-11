@@ -32,24 +32,63 @@ namespace Maps
     {
         private static object s_lock = new object();
 
+        /// <summary>
+        /// Singleton - initialized once and retained for the life of the application.
+        /// </summary>
         private static SectorMap s_instance;
 
-        private SectorCollection sectors;
+        /// <summary>
+        /// Holds all known sectors across all milieux. Callers should generally not use this, since it
+        /// will contain duplicate sectors across milieux.
+        /// </summary>
+        private SectorCollection sectors = new SectorCollection();
         public IList<Sector> Sectors { get { return sectors.Sectors; } }
 
+        /// <summary>
+        /// Represents a single milieu. Contains maps from name to Sector and coordinates to Sector.
+        /// </summary>
         private class MilieuMap
         {
             public Dictionary<string, Sector> nameMap = new Dictionary<string, Sector>(StringComparer.InvariantCultureIgnoreCase);
             public Dictionary<Point, Sector> locationMap = new Dictionary<Point, Sector>();
+
+            public void Add(Sector sector)
+            {
+                locationMap.Add(sector.Location, sector);
+
+                foreach (var name in sector.Names)
+                {
+                    if (!nameMap.ContainsKey(name.Text))
+                        nameMap.Add(name.Text, sector);
+
+                    // Automatically alias "SpinwardMarches"
+                    string spaceless = name.Text.Replace(" ", "");
+                    if (spaceless != name.Text && !nameMap.ContainsKey(spaceless))
+                        nameMap.Add(spaceless, sector);
+                }
+
+                if (!string.IsNullOrEmpty(sector.Abbreviation) && !nameMap.ContainsKey(sector.Abbreviation))
+                    nameMap.Add(sector.Abbreviation, sector);
+            }
         }
 
         private const string DEFAULT_MILIEU = "1105";
         private static readonly IEnumerable<string> FALLBACK_MILIEUX = new List<string> { "1100", "1110", "1000", "1117", "1120", "1200" };
 
+        /// <summary>
+        /// Holds all milieu, keyed by name (e.g. "M0").
+        /// </summary>
         private Dictionary<string, MilieuMap> milieux = new Dictionary<string, MilieuMap>();
-
-        private SectorMap(List<SectorMetafileEntry> metafiles, ResourceManager resourceManager)
+        private MilieuMap GetMilieuMap(string name)
         {
+            if (!milieux.ContainsKey(name))
+                milieux.Add(name, new MilieuMap());
+            return milieux[name];
+        }
+
+        private SectorMap(IEnumerable<SectorMetafileEntry> metafiles, ResourceManager resourceManager)
+        {
+            // Load all sectors from all metafiles.
             foreach (var metafile in metafiles)
             {
                 SectorCollection collection = resourceManager.GetXmlFileObject(metafile.filename, typeof(SectorCollection), cache: false) as SectorCollection;
@@ -58,15 +97,10 @@ namespace Maps
                     sector.Tags.AddRange(metafile.tags);
                     sector.AdjustRelativePaths(metafile.filename);
                 }
-
-                if (sectors == null)
-                    sectors = collection;
-                else
-                    sectors.Merge(collection);
+                sectors.Merge(collection);
             }
 
-            milieux.Clear();
-
+            // Create/populate individual milieu maps.
             foreach (var sector in sectors.Sectors)
             {
                 if (sector.MetadataFile != null)
@@ -76,26 +110,7 @@ namespace Maps
                     sector.Merge(metadata);
                 }
 
-                string milieu = sector.Milieu ?? sector.DataFile?.Milieu ?? DEFAULT_MILIEU;
-                if (!milieux.ContainsKey(milieu))
-                    milieux.Add(milieu, new MilieuMap());
-
-                MilieuMap m = milieux[milieu];
-                m.locationMap.Add(sector.Location, sector);
-
-                foreach (var name in sector.Names)
-                {
-                    if (!m.nameMap.ContainsKey(name.Text))
-                        m.nameMap.Add(name.Text, sector);
-
-                    // Automatically alias "SpinwardMarches"
-                    string spaceless = name.Text.Replace(" ", "");
-                    if (spaceless != name.Text && !m.nameMap.ContainsKey(spaceless))
-                        m.nameMap.Add(spaceless, sector);
-                }
-
-                if (!string.IsNullOrEmpty(sector.Abbreviation) && !m.nameMap.ContainsKey(sector.Abbreviation))
-                    m.nameMap.Add(sector.Abbreviation, sector);
+                GetMilieuMap(sector.Milieu ?? sector.DataFile?.Milieu ?? DEFAULT_MILIEU).Add(sector);
             }
         }
 
@@ -152,6 +167,10 @@ namespace Maps
             return instance.FromName(name, null).Location;
         }
 
+        /// <summary>
+        /// Proxy for clients that want to perform lookups within a milieu (the most common case).
+        /// This holds a SectorMap/milieu name pair.
+        /// </summary>
         public class Milieu
         {
             private SectorMap map;
@@ -171,6 +190,12 @@ namespace Maps
             return new Milieu(SectorMap.GetInstance(resourceManager), milieu);
         }
 
+        /// <summary>
+        /// Helper to find MilieuMaps by name (considering fallbacks).
+        /// </summary>
+        /// <param name="m">Specific milieu. If specified, at most one milieu will be returned.
+        /// If null, default/fallback milieu will be returned</param>
+        /// <returns>Enumerable yielding all matching MilieuMap instances.</returns>
         private IEnumerable<MilieuMap> SelectMilieux(string m)
         {
             if (milieux == null)
@@ -178,19 +203,28 @@ namespace Maps
 
             if (m != null)
             {
+                // If milieu name is specified, return matching MilieuMap if found.
                 if (milieux.ContainsKey(m))
                     yield return milieux[m];
-                yield break;
             }
-
-            yield return milieux[DEFAULT_MILIEU];
-            foreach (string milieu in FALLBACK_MILIEUX)
+            else
             {
-                if (milieux.ContainsKey(milieu))
-                    yield return milieux[milieu];
+                // Return default and fallback MilieuMaps (if they exist).
+                yield return milieux[DEFAULT_MILIEU];
+                foreach (string milieu in FALLBACK_MILIEUX)
+                {
+                    if (milieux.ContainsKey(milieu))
+                        yield return milieux[milieu];
+                }
             }
         }
 
+        /// <summary>
+        /// Finds sector by name in the named milieu (using default/fallbacks if null)
+        /// </summary>
+        /// <param name="name">Sector name</param>
+        /// <param name="milieu">Milieu name, null for default/fallbacks</param>
+        /// <returns>Sector if found, or null</returns>
         private Sector FromName(string name, string milieu)
         {
             if (sectors == null)
@@ -201,6 +235,13 @@ namespace Maps
                 .FirstOrDefault();
         }
 
+        /// <summary>
+        /// Finds sector by location in the named milieu (using default/fallbacks if null)
+        /// </summary>
+        /// <param name="x">Sector x coordinate</param>
+        /// <param name="y">Sector y coordinate</param>
+        /// <param name="milieu">Milieu name, null for default/fallbacks</param>
+        /// <returns>Sector if found, or null</returns>
         private Sector FromLocation(int x, int y, string milieu) { return FromLocation(new Point(x, y), milieu); }
         private Sector FromLocation(Point pt, string milieu)
         {
