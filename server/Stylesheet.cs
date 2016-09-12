@@ -522,6 +522,7 @@ namespace Maps.Rendering
                         worldDetails = worldDetails & ~WorldDetails.Bases;
                         worldDetails = worldDetails & ~WorldDetails.GasGiant;
                         worldDetails = worldDetails & ~WorldDetails.Highlight;
+                        worldDetails = worldDetails & ~WorldDetails.Uwp;
                         worlds.fontInfo.size *= 0.85f;
                         worlds.textStyle.Translation = new PointF(0, 0.25f);
 
