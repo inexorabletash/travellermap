@@ -73,12 +73,12 @@ namespace Maps
         }
 
         private const string DEFAULT_MILIEU = "1105";
-        private static readonly IEnumerable<string> FALLBACK_MILIEUX = new List<string> { "1100", "1110", "1000", "1117", "1120", "1200" };
+        private static readonly IEnumerable<string> FALLBACK_MILIEUX = new List<string> { "1100", "1120", "1200" };
 
         /// <summary>
         /// Holds all milieu, keyed by name (e.g. "M0").
         /// </summary>
-        private Dictionary<string, MilieuMap> milieux = new Dictionary<string, MilieuMap>();
+        private Dictionary<string, MilieuMap> milieux = new Dictionary<string, MilieuMap>(StringComparer.InvariantCultureIgnoreCase);
         private MilieuMap GetMilieuMap(string name)
         {
             if (!milieux.ContainsKey(name))
@@ -133,6 +133,7 @@ namespace Maps
                         // OTU - Other Milieu
                         new SectorMetafileEntry(@"~/res/Sectors/IW/iw.xml", new List<string> {} ),
                         new SectorMetafileEntry(@"~/res/Sectors/M990/M990.xml", new List<string> {} ),
+                        new SectorMetafileEntry(@"~/res/Sectors/M1900/M1900.xml", new List<string> {} ),
 
                         // Non-OTU
                         new SectorMetafileEntry(@"~/res/Sectors/Faraway/faraway.xml", new List<string> { "Faraway" } ),
