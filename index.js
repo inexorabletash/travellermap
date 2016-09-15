@@ -45,6 +45,7 @@ window.addEventListener('DOMContentLoaded', function() {
     options: map.options,
     routes: 1,
     dimunofficial: 0,
+    milieu: '',
     style: map.style
   };
   var home = {
@@ -64,18 +65,20 @@ window.addEventListener('DOMContentLoaded', function() {
 
     var prefs = {
       style: map.style,
-      options: map.options,
-      routes: map.namedOptions.get('routes'),
-      dimunofficial: map.namedOptions.get('dimunofficial')
+      options: map.options
     };
-      PARAM_OPTIONS.forEach(function(option) {
-        prefs[option.param] = document.body.classList.contains(option.className);
-      });
+    NAMED_OPTIONS.forEach(function(name) {
+      prefs[name] = map.namedOptions.get(name);
+    });
+    PARAM_OPTIONS.forEach(function(option) {
+      prefs[option.param] = document.body.classList.contains(option.className);
+    });
     maybeSave($('#cbSavePreferences').checked, 'preferences', prefs);
     maybeSave($('#cbSaveLocation').checked, 'location', {
       position: { x: map.x, y: map.y },
       scale: map.scale
     });
+    maybeSave($('#cbExperiments').checked, 'experiments', {});
   }, SAVE_PREFERENCES_DELAY_MS);
 
   var template = Util.memoize(function(sel) {
@@ -96,6 +99,10 @@ window.addEventListener('DOMContentLoaded', function() {
       return Math.round(n * d) / d;
     }
 
+    delete urlParams.sector;
+    delete urlParams.subsector;
+    delete urlParams.hex;
+
     urlParams.x = round(map.x, 1/1000);
     urlParams.y = round(map.y, 1/1000);
     urlParams.scale = round(map.scale, 1/128);
@@ -105,10 +112,7 @@ window.addEventListener('DOMContentLoaded', function() {
     var namedOptions = map.namedOptions.keys();
     map.namedOptions.forEach(function(value, key) { urlParams[key] = value; });
 
-    delete urlParams.sector;
-    delete urlParams.subsector;
-    delete urlParams.hex;
-    ['x', 'y', 'options', 'scale', 'style'].concat(namedOptions).forEach(function(p) {
+    Object.keys(defaults).forEach(function(p) {
       if (urlParams[p] === defaults[p]) delete urlParams[p];
     });
 
@@ -146,6 +150,7 @@ window.addEventListener('DOMContentLoaded', function() {
     snapshotParams.scale = round(snapshotParams.scale, 1/128);
     snapshotParams.options = map.options;
     snapshotParams.style = map.style;
+    snapshotParams.milieu = map.namedOptions.get('milieu');
     namedOptions.forEach(function(name) { snapshotParams[name] = urlParams[name]; });
     var snapshotURL = Traveller.MapService.makeURL('/api/tile', snapshotParams);
     $('a#download-snapshot').href = snapshotURL;
@@ -267,7 +272,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
   // Options Bar
 
-  var PANELS = ['legend', 'settings', 'share', 'download', 'help'];
+  var PANELS = ['legend', 'lab', 'settings', 'share', 'download', 'help'];
   PANELS.forEach(function(b) {
     $('#'+b+'Btn').addEventListener('click', function() {
       PANELS.forEach(function(p) {
@@ -383,6 +388,8 @@ window.addEventListener('DOMContentLoaded', function() {
   bindCheckedToOption('#cbFilledBorders',Traveller.MapOptions.FilledBorders);
   bindCheckedToNamedOption('#cbDimUnofficial', 'dimunofficial');
 
+  bindRadioToNamedOption('input[type=radio][name=milieu]', 'milieu');
+
   bindCheckedToNamedOption('#cbImpOverlay', 'im');
   bindCheckedToNamedOption('#cbPopOverlay', 'po');
   bindCheckedToNamedOption('#cbDroyneWorlds', 'dw');
@@ -411,8 +418,29 @@ window.addEventListener('DOMContentLoaded', function() {
     bindChecked(selector,
                 function() { var v = map.namedOptions.get(name);
                              return v === undefined ? defaults[name] : v; },
-                function(c) { if (c === defaults[name]) map.namedOptions.delete(name);
-                              else map.namedOptions.set(name, c ? 1 : 0); });
+                function(c) {
+                  if (!!c === !!defaults[name]) {
+                    delete urlParams[name];
+                    map.namedOptions.delete(name);
+                  } else map.namedOptions.set(name, c ? 1 : 0); });
+  }
+  function bindRadioToNamedOption(selector, name) {
+    optionObservers.push(function(o) {
+      var v = map.namedOptions.get(name);
+      if (v === undefined) v = defaults[name];
+      var e = $(selector + '[value="' +  v + '"]');
+      if (e) e.checked = true;
+    });
+    Array.from($$(selector)).forEach(function(elem) {
+      elem.addEventListener('click', function(event) {
+        if (elem.value === defaults[name]) {
+          delete urlParams[name];
+          map.namedOptions.delete(name);
+        } else {
+          map.namedOptions.set(name, elem.value);
+        }
+      });
+    });
   }
 
   map.OnOptionsChanged = function(options) {
@@ -463,6 +491,13 @@ window.addEventListener('DOMContentLoaded', function() {
     post({source: 'travellermap', type: 'doubleclick', location: world});
   };
 
+
+  var NAMED_OPTIONS = [
+    'routes', 'dimunofficial',
+    'milieu',
+    'im', 'po', 'dw', 'an', 'mh', 'stellar'
+  ];
+
   // TODO: Generalize URLParam<->Control and URLParam<->Style binding
   var PARAM_OPTIONS = [
     {param: 'galdir', selector: '#cbGalDir', className: 'show-directions', 'default': true},
@@ -486,11 +521,12 @@ window.addEventListener('DOMContentLoaded', function() {
     if (isIframe) return;
     var preferences = JSON.parse(localStorage.getItem('preferences'));
     var location = JSON.parse(localStorage.getItem('location'));
+    var experiments = JSON.parse(localStorage.getItem('experiments'));
     if (preferences) {
       $('#cbSavePreferences').checked = true;
       if ('style' in preferences) map.style = preferences.style;
       if ('options' in preferences) map.options = preferences.options;
-      ['routes', 'dimunofficial'].forEach(function(name) {
+      NAMED_OPTIONS.forEach(function(name) {
         if (name in preferences) map.namedOptions.set(name, preferences[name]);
       });
 
@@ -508,10 +544,20 @@ window.addEventListener('DOMContentLoaded', function() {
       if ('scale' in location) map.scale = location.scale;
       if ('position' in location) { map.x = location.position.x; map.y = location.position.y; }
     }
+
+    if (experiments) {
+      $('#cbExperiments').checked = true;
+      document.body.classList.add('enable-experiments');
+    }
   }());
 
   $('#cbSavePreferences').addEventListener('click', savePreferences);
   $('#cbSaveLocation').addEventListener('click', savePreferences);
+  $('#cbExperiments').addEventListener('click', function() {
+    savePreferences();
+    document.body.classList.toggle('enable-experiments', this.checked);
+  });
+
 
   //
   // Pull in options from URL - from permalinks
@@ -580,7 +626,9 @@ window.addEventListener('DOMContentLoaded', function() {
       window.clearTimeout(dataTimeout);
 
     dataTimeout = setTimeout(function() {
-      dataRequest = Util.ignorable(Traveller.MapService.credits(worldX, worldY));
+      dataRequest = Util.ignorable(Traveller.MapService.credits(worldX, worldY, {
+        milieu: map.namedOptions.get('milieu')
+      }));
       dataRequest.then(function(data) {
           dataRequest = null;
           displayResults(data);
@@ -639,11 +687,17 @@ window.addEventListener('DOMContentLoaded', function() {
       return;
 
     var bookletURL = Traveller.MapService.makeURL(
-          '/data/' + encodeURIComponent(selectedSector) + '/booklet');
+      '/data/' + encodeURIComponent(selectedSector) + '/booklet', {
+        milieu: map.namedOptions.get('milieu')
+      });
     var posterURL = Traveller.MapService.makeURL('/api/poster', {
-      sector: selectedSector, accept: 'application/pdf', style: map.style});
+      sector: selectedSector, accept: 'application/pdf', style: map.style,
+      milieu: map.namedOptions.get('milieu')
+    });
     var dataURL = Traveller.MapService.makeURL('/api/sec', {
-      sector: selectedSector, type: 'SecondSurvey' });
+      sector: selectedSector, type: 'SecondSurvey',
+      milieu: map.namedOptions.get('milieu')
+    });
 
     $('#downloadBox #sector-name').innerHTML = Util.escapeHTML(selectedSector + ' Sector');
     $('#downloadBox a#download-booklet').href = bookletURL;
@@ -653,9 +707,10 @@ window.addEventListener('DOMContentLoaded', function() {
     if (selectedWorld) {
 
       // Downloads > Data Sheet
-      var dataSheetURL = Util.makeURL('world.html', {
+      var dataSheetURL = Util.makeURL('world', {
         sector: selectedSector,
-        hex: selectedWorld.hex
+        hex: selectedWorld.hex,
+        milieu: map.namedOptions.get('milieu')
       });
       $('#world-data-sheet').href = dataSheetURL;
       $('#world-data-sheet').innerHTML = Util.escapeHTML(
@@ -669,6 +724,7 @@ window.addEventListener('DOMContentLoaded', function() {
         var jumpMapURL = Traveller.MapService.makeURL('/api/jumpmap', {
           sector: selectedSector,
           hex: selectedWorld.hex,
+          milieu: map.namedOptions.get('milieu'),
           jump: j,
           style: map.style,
           options: options
@@ -678,8 +734,11 @@ window.addEventListener('DOMContentLoaded', function() {
 
       // World Data Sheet ("Info Card")
       fetch(Traveller.MapService.makeURL(
-        '/api/jumpworlds?',
-        {sector: selectedSector, hex: selectedWorld.hex, jump: 0}))
+        '/api/jumpworlds?', {
+          sector: selectedSector, hex: selectedWorld.hex,
+          milieu: map.namedOptions.get('milieu'),
+          jump: 0
+        }))
         .then(function(response) {
           if (!response.ok) throw Error(response.statusText);
           return response.json();
@@ -754,7 +813,9 @@ window.addEventListener('DOMContentLoaded', function() {
     if (searchRequest)
       searchRequest.ignore();
 
-    searchRequest = Util.ignorable(Traveller.MapService.search(query));
+    searchRequest = Util.ignorable(Traveller.MapService.search(query, {
+      milieu: map.namedOptions.get('milieu')
+    }));
     searchRequest
       .then(function(data) {
         displayResults(data);
@@ -882,6 +943,7 @@ window.addEventListener('DOMContentLoaded', function() {
     fetch(Traveller.MapService.makeURL('/api/route', {
       start: start, end: end, jump: jump,
       x: map.worldX, y: map.worldY,
+      milieu: map.namedOptions.get('milieu'),
       wild: $('#route-wild').checked?1:0,
       im: $('#route-im').checked?1:0,
       nored: $('#route-nored').checked?1:0
