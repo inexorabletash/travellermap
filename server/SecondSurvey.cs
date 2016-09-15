@@ -429,6 +429,7 @@ namespace Maps
             "ImSy", // Third Imperium, Sylean Worlds (Core)
             "ImVd", // Third Imperium, Vegan Autonomous District (Solo)
             "XXXX", // Unknown
+            "??", // Placeholder - show as blank
             "--", // Placeholder - show as blank
         };
 

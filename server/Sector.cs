@@ -230,7 +230,7 @@ namespace Maps
             return -1;
         }
 
-        internal WorldCollection GetWorlds(ResourceManager resourceManager, bool cacheResults = true)
+        internal virtual WorldCollection GetWorlds(ResourceManager resourceManager, bool cacheResults = true)
         {
             lock (this)
             {
@@ -468,6 +468,46 @@ namespace Maps
             }
         }
         private string stylesheetText;
+
+    }
+
+    internal class Dotmap : Sector
+    {
+        private Sector basis;
+        private WorldCollection worlds = null;
+
+        public Dotmap(Sector basis) {
+            this.X = basis.X;
+            this.Y = basis.Y;
+            this.basis = basis;
+        }
+
+        internal override WorldCollection GetWorlds(ResourceManager resourceManager, bool cacheResults = true)
+        {
+            if (this.worlds != null)
+                return this.worlds;
+
+            WorldCollection worlds = basis.GetWorlds(resourceManager, cacheResults);
+            if (worlds == null)
+                return null;
+
+            WorldCollection dots = new WorldCollection();
+            foreach (var world in worlds)
+            {
+                var dot = new World();
+                dot.Hex = world.Hex;
+                dot.UWP = "???????-?";
+                dot.PBG = "???";
+                dot.Allegiance = "??";
+                dot.Sector = this;
+                dots[dot.X, dot.Y] = dot;
+            }
+
+            if (cacheResults)
+                this.worlds = dots;
+
+            return dots;
+        }
     }
 
     public class Product : MetadataItem

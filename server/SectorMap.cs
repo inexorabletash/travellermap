@@ -52,6 +52,20 @@ namespace Maps
             public Dictionary<string, Sector> nameMap = new Dictionary<string, Sector>(StringComparer.InvariantCultureIgnoreCase);
             public Dictionary<Point, Sector> locationMap = new Dictionary<Point, Sector>();
 
+            public Sector FromName(string name)
+            {
+                Sector sector;
+                nameMap.TryGetValue(name, out sector);
+                return sector;
+            }
+
+            public Sector FromLocation(Point coords)
+            {
+                Sector sector;
+                locationMap.TryGetValue(coords, out sector);
+                return sector;
+            }
+
             public void Add(Sector sector)
             {
                 locationMap.Add(sector.Location, sector);
@@ -231,7 +245,7 @@ namespace Maps
             if (sectors == null)
                 throw new MapNotInitializedException();
             return SelectMilieux(milieu)
-                .Select(m => m.nameMap.ContainsKey(name) ? m.nameMap[name] : null)
+                .Select(m => m.FromName(name))
                 .Where(s => s != null)
                 .FirstOrDefault();
         }
@@ -248,10 +262,19 @@ namespace Maps
         {
             if (sectors == null)
                 throw new MapNotInitializedException();
-            return SelectMilieux(milieu)
-                .Select(m => m.locationMap.ContainsKey(pt) ? m.locationMap[pt] : null)
+            Sector sector = SelectMilieux(milieu)
+                .Select(m => m.FromLocation(pt))
                 .Where(s => s != null)
                 .FirstOrDefault();
+            if (sector != null)
+                return sector;
+            sector = milieux[DEFAULT_MILIEU].FromLocation(pt);
+            if (sector == null)
+                return null;
+            sector = new Dotmap(sector);
+            if (milieux.ContainsKey(milieu))
+                milieux[milieu].Add(sector);
+            return sector;
         }
     }
 
