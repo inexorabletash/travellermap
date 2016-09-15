@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Sectors>
+  <Sector Abbreviation="Gvur" Tags="Apocryphal" Selected="true" Milieu="M1900">
+    <Y>-2</Y>
+    <X>-4</X>
+    <Name Lang="va">Gvurrdon</Name>
+    <Name Lang="zh">Briakqra'</Name>
+    <DataFile Author="Robert Eaglestone">Gvur.sec</DataFile>
+  </Sector>
+  <Sector Abbreviation="Spin" Tags="Apocryphal" Selected="true" Milieu="M1900">
+    <Y>-1</Y>
+    <X>-4</X>
+    <Name>Spinward Marches</Name>
+    <Name Lang="zh">Tloql</Name>
+    <DataFile Author="Robert Eaglestone" Type="SecondSurvey">Spin.txt</DataFile>
+    <MetadataFile>Spinward Marches.xml</MetadataFile>
+  </Sector>
+</Sectors>

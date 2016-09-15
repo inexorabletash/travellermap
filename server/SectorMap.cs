@@ -118,6 +118,7 @@ namespace Maps
                         // OTU - Other Milieu
                         new SectorMetafileEntry(@"~/res/Sectors/IW/iw.xml", new List<string> {} ),
                         new SectorMetafileEntry(@"~/res/Sectors/M990/M990.xml", new List<string> {} ),
+                        new SectorMetafileEntry(@"~/res/Sectors/M1900/M1900.xml", new List<string> {} ),
 
                         // Non-OTU
                         new SectorMetafileEntry(@"~/res/Sectors/Faraway/faraway.xml", new List<string> { "Faraway" } ),

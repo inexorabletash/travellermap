@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<Sector>
+  <Name>Spinward Marches</Name>
+
+  <!-- most common -->
+  <Subsectors>
+    <Subsector Index="A">Cronor</Subsector>
+    <Subsector Index="B">Jewell</Subsector>
+    <Subsector Index="C">Regina</Subsector>
+    <Subsector Index="D">Aramis</Subsector>
+    <Subsector Index="E">Querion</Subsector>
+    <Subsector Index="F">Vilis</Subsector>
+    <Subsector Index="G">Lanth</Subsector>
+    <Subsector Index="H">Rhylanor</Subsector>
+    <Subsector Index="I">Daryen</Subsector>
+    <Subsector Index="J">Gram</Subsector>
+    <Subsector Index="K">Derchon</Subsector>
+    <Subsector Index="L">Mora</Subsector>
+    <Subsector Index="M">Andor</Subsector>
+    <Subsector Index="N">Trexalon</Subsector>
+    <Subsector Index="O">Sorel</Subsector>
+    <Subsector Index="P">Trin</Subsector>
+  </Subsectors>
+  <Routes>
+     <Route Start="1909" End="1910" />
+   <Route Start="1909" End="2005" />
+   <Route Start="1909" End="1705" />
+   <Route Start="1909" End="1611" />
+   <Route Start="1910" End="2411" />
+   <Route Start="2411" End="2410" />
+   <Route Start="1909" End="2306" />
+   <Route Start="1705" End="1307" />
+   <Route Start="2005" End="1904" />
+   <Route Start="2005" End="2202" />
+   <Route Start="2202" End="2200" />
+
+  </Routes>
+  <Borders>...</Borders>
+
+  <!-- less common -->
+  <Allegiances>
+     <Allegiance Code="Rr">Republic of Regina</Allegiance>
+  </Allegiances>
+</Sector>
+
