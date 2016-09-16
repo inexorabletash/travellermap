@@ -161,6 +161,7 @@ namespace Maps
             { "So", "SoCf" },
             { "Va", "NaVa" },
             { "Zh", "ZhCo" },
+            { "??", "XXXX" },
             { "--", "XXXX" }
         };
 

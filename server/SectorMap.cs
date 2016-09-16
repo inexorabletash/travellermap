@@ -195,8 +195,8 @@ namespace Maps
                 this.map = map;
                 this.milieu = milieu;
             }
-            public Sector FromLocation(int x, int y) { return map.FromLocation(x, y, milieu); }
-            public Sector FromLocation(Point pt) { return map.FromLocation(pt, milieu); }
+            public Sector FromLocation(int x, int y, bool useMilieuFallbacks=false) { return map.FromLocation(new Point(x, y), milieu, useMilieuFallbacks); }
+            public Sector FromLocation(Point pt, bool useMilieuFallbacks=false) { return map.FromLocation(pt, milieu, useMilieuFallbacks); }
             public Sector FromName(string name) { return map.FromName(name, milieu); }
         }
 
@@ -257,8 +257,7 @@ namespace Maps
         /// <param name="y">Sector y coordinate</param>
         /// <param name="milieu">Milieu name, null for default/fallbacks</param>
         /// <returns>Sector if found, or null</returns>
-        private Sector FromLocation(int x, int y, string milieu) { return FromLocation(new Point(x, y), milieu); }
-        private Sector FromLocation(Point pt, string milieu)
+        private Sector FromLocation(Point pt, string milieu, bool useMilieuFallbacks=false)
         {
             if (sectors == null)
                 throw new MapNotInitializedException();
@@ -266,9 +265,10 @@ namespace Maps
                 .Select(m => m.FromLocation(pt))
                 .Where(s => s != null)
                 .FirstOrDefault();
-            if (sector != null)
+
+            if (sector != null || milieu == null || !useMilieuFallbacks)
                 return sector;
-            sector = milieux[DEFAULT_MILIEU].FromLocation(pt);
+            sector = FromLocation(pt, null);
             if (sector == null)
                 return null;
             sector = new Dotmap(sector);
