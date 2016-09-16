@@ -219,8 +219,7 @@ input[type=text] {
 /* ============================================================ */
 /* World Data Sheet (Modeless Side Panel) */
 
-#wds-frame { display: none; }
-.wds-visible #wds-frame { display: block; }
+body:not(.wds-visible) #wds-frame { display: none; }
 .hide-footer #wds-frame { bottom: 15px; }
 @media only screen and (max-width: 640px) {
   .wds-visible #wds-frame { display: none; }
@@ -292,13 +291,9 @@ input[type=text] {
 .wds-expandy:hover .wds-toggle { opacity: 1; }
 .wds-toggle:before { content: "\25BC"; /* U+25BC BLACK DOWN-POINTING TRIANGLE */ }
 
-#wds-uwp,
-#wds-ex,
-#wds-cx { display: none; }
-
-.wds-expand-uwp #wds-uwp,
-.wds-expand-ex #wds-ex,
-.wds-expand-cx #wds-cx { display: table-row-group; }
+#wds-frame:not(.wds-expand-uwp) #wds-uwp,
+#wds-frame:not(.wds-expand-ex) #wds-ex,
+#wds-frame:not(.wds-expand-cx) #wds-cx { display: none; }
 
 .wds-expand-uwp .wds-expandy[data-wds-expand="wds-expand-uwp"] .wds-toggle:before,
 .wds-expand-ex .wds-expandy[data-wds-expand="wds-expand-ex"] .wds-toggle:before,
@@ -485,15 +480,18 @@ button:hover {
 
 .show-settings #settingsBox,
 .show-legend #legendBox,
+.show-lab #labBox,
 .show-share #shareBox,
 .show-download #downloadBox,
 .show-help #helpBox { display: block; }
+.show-lab #labBtn,
 .show-settings #settingsBtn,
 .show-legend #legendBtn,
 .show-share #shareBtn,
 .show-download #downloadBtn,
 .show-help #helpBtn { background-color: red; }
 
+body:not(.enable-experiments) #labBtn { display: none; }
 
 /* ============================================================ */
 /* Share Box */
@@ -519,11 +517,10 @@ button:hover {
 #downloadBox section { margin: 1em 0; }
 #downloadBox section:first-of-type { margin-top: 0; }
 #downloadBox section:last-of-type { margin-bottom: 0; }
-#downloadBox .active-content { display: none; }
-#downloadBox .world-content { display: none; }
-.sector-selected #downloadBox .active-content { display: block; }
-.sector-selected #downloadBox .inactive-content { display: none; }
-.world-selected #downloadBox .world-content { display: block; }
+
+body.sector-selected #downloadBox .inactive-content { display: none; }
+body:not(.sector-selected) #downloadBox .active-content { display: none; }
+body:not(.world-selected) #downloadBox .world-content { display: none; }
 
 #downloadBox h3 { font-style: italic; font-weight: normal;
                   color: red;
@@ -597,10 +594,8 @@ button:hover {
 #legendBox .glyph.g10 { font-size: 100%; }
 #legendBox .glyph.g12 { font-size: 120%; }
 
-#legendBox ul.basic_world_colors { display: inline-block; }
-#legendBox ul.extended_world_colors { display: none; }
+#legendBox:not(.world_colors) ul.extended_world_colors,
 #legendBox.world_colors ul.basic_world_colors { display: none; }
-#legendBox.world_colors ul.extended_world_colors { display: inline-block; }
 
 /* Extended World Colors */
 #legendBox .glyph.RiAg { color: rgb(241,194,50); }
@@ -648,9 +643,14 @@ button:hover {
 /* ============================================================ */
 /* Settings Box */
 
+#labBox {
+  width: 255px;
+  max-height: 325px;
+}
+
 #settingsBox {
   width: 215px;
-  max-height: 520px;
+  max-height: 540px;
 }
 #styles button {
   width: 40px; height: 40px;
@@ -659,11 +659,15 @@ button:hover {
   box-shadow: none;
   border: 1px solid gray;
 }
+#labBox section,
 #settingsBox section { margin: 1em 0; }
+#labBox section:first-of-type,
 #settingsBox section:first-of-type { margin-top: 0; }
+#labBox section:last-of-type,
 #settingsBox section:last-of-type { margin-bottom: 0; }
 
 /* checkbox/radio buttons are larger on iOS */
+#labBox p,
 #settingsBox p { min-height: 24px; }
 
 #settingsBtn-poster { background-image: url('res/ui/style-poster.png'); }
@@ -711,10 +715,7 @@ button:hover {
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANCAMAAABFNRROAAAAPFBMVEUAAAAEBAQDAwMAAAACAgIEBAQCAgIDAwMDAwMAAAACAgICAgIDAwMAAAADAwMCAgICAgIDAwMEBAQDAwPQczG9AAAAE3RSTlMAPPQo549ww6sM2c1kGLeHeFBIVkwaZQAAAFBJREFUCNctzEkWgCAMA9CAgsrg1PvflbZpFsn7mwAYGzzv1KqyO4u0iU/EWXQ7cDoNOYHMAZJgumkEqoHPBBnI/0EmHlzGBhQDlNxHy3gnLPTJBXzfVCglAAAAAElFTkSuQmCC);
 }
 
-#closeResultsBtn {
-  display: none;
-}
-.search-results #closeResultsBtn { display: inline-block; }
+body:not(.search-results) #closeResultsBtn { display: none; }
 
 #searchBtn, #closeRouteBtn, #closeResultsBtn { opacity: 0.5; }
 #searchBtn:hover, #closeRouteBtn:hover, #closeResultsBtn:hover { opacity: 1; }
@@ -752,6 +753,10 @@ button:hover {
 
 #settingsBtn {
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPBAMAAADJ+Ih5AAAAIVBMVEUAAAAAAAAEBAQEBAQDAwMEBAQEBAQEBAQFBQUFBQUEBARB2+12AAAACnRSTlMACj3y44qCw6VgKlpB6AAAAFRJREFUCNdjAAJNBQYQYGTwcmAEMbRSVy3NUgAKrAKBhUCRrFXmVqsSgIyoFQISqwIYGFRWGTIwWi1RYJi1qoCBoWrVBLgITA1cF9wcuMkIu+C2AwA6Dx8tizUktQAAAABJRU5ErkJggg==);
+}
+
+#labBtn {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAARCAMAAADjcdz2AAAAeFBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVyEiIAAAAJ3RSTlMA1Kzn+UD1RDrLhXEoAeu1l5BVMyETEQ4L4dvQvLuko4p3SjkvFALcP6lIAAAAfUlEQVQY01XLWRaDIABD0RQVVMSxVTvPzf53WEsF9H7m5OFHldGkbOEUgkKw7uB1cZpyRJDGScIdgqcbwkMl7OGZnO+XvMMrqIGGWzin4wD0+8zgT/OBiaKeA3mF1UQ2MhXPwqpYfwC0MQMFDAcuRCNyrlwguSKRZ5uF7PYFlXQOctf11XoAAAAASUVORK5CYII=);
 }
 
 #helpBtn {
@@ -812,12 +817,13 @@ button:hover {
 
 @media only screen and (max-width: 640px) {
   #navBar { display: none; }
-}
-@media only screen and (max-width: 625px) {
   #searchBox { width: 100px; }
 }
+@media only screen and (max-width: 520px) {
+  .show-lab #labBox, #labBtn { display: none; }
+}
 @media only screen and (max-width: 480px) {
-  .show-legend #legendBox,
+  .show-legend #legendBox, #labBtn { display: none; }
   #legendBtn { display: none; }
 }
 @media only screen and (max-width: 440px) {
@@ -828,8 +834,7 @@ button:hover {
   #starBtn { display: none; }
 }
 @media only screen and (max-width: 360px) {
-  .show-download #downloadBox,
-  #downloadBtn { display: none; }
+  .show-download #downloadBox, #downloadBtn { display: none; }
 }
 
 
@@ -842,6 +847,7 @@ button:hover {
     top: 220px;
   }
   .route-ui #settingsBox,
+  .route-ui #labBox,
   .route-ui #legendBox,
   .route-ui #shareBox,
   .route-ui #downloadBox,

@@ -118,7 +118,6 @@ namespace Maps
             }
         }
 
-
         public static Func<A1, A2, R> Memoize2<A1, A2, R>(this Func<A1, A2, R> f)
         {
             var map = new Dictionary<Tuple<A1, A2>, R>();

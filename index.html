@@ -35,16 +35,16 @@
 <meta property="og:site_name" content="The Traveller Map">
 <meta property="fb:admins" content="617166358">
 
-<link rel="stylesheet" href="index.css?update=2016-09-09">
+<link rel="stylesheet" href="index.css?update=2016-09-14">
 <link rel="stylesheet" href="world.css?update=2016-09-09">
 <link rel="stylesheet" href="lib/add-to-home-screen/addtohomescreen.css">
 
 <!--[if lt IE 9]><script>alert("IE8 is no longer supported.");location = 'http://google.com/chrome';</script><![endif]-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
 <script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.25/polyfill.min.js"></script>
-<script src="map.js?update=2016-09-09"></script>
-<script src="index.js?update=2016-09-09"></script>
-<script src="world_util.js?update=2016-09-09"></script>
+<script src="map.js?update=2016-09-10"></script>
+<script src="index.js?update=2016-09-14"></script>
+<script src="world_util.js?update=2016-09-10"></script>
 
 <body class="hide-ui hide-footer">
   <div id="mapContainer">
@@ -229,6 +229,9 @@
     <button id="legendBtn"
             title="Map legend and symbols">
     </button>
+    <button id="labBtn"
+            title="Experimental features">
+    </button>
     <button id="settingsBtn"
             title="Change the map appearance">
     </button>
@@ -291,15 +294,35 @@
     </section>
 
     <section>
-      <p><strong>Save:</strong></p>
+      <p><strong>Options:</strong></p>
       <div class="indent">
-        <p><label title="Remember your style and appearance settings for your next visit"><input type="checkbox" id="cbSavePreferences"> Preferences</label>
-        <p><label title="Remember your location for your next visit"><input type="checkbox" id="cbSaveLocation"> Location</label>
+        <p><label title="Remember your style and appearance settings for your next visit"><input type="checkbox" id="cbSavePreferences"> Save Preferences</label>
+        <p><label title="Remember your location for your next visit"><input type="checkbox" id="cbSaveLocation"> Save Location</label>
+        <p><label title="Enable experimental features"><input type="checkbox" id="cbExperiments"> Enable Experiments</label>
+      </div>
+    </section>
+
+    <!-- Hidden options, controlled by other UI elements but retained for binding. -->
+    <div style="display: none">
+      <input type="checkbox" id="cbTilt">
+    </div>
+  </div>
+
+  <div id="labBox"
+       class="ui hoverbox hoverbox-right">
+    <section>
+      <p><strong>Milieu:</strong></p>
+      <div class="indent">
+        <p><label><input type="radio" name="milieu" value="IW"   > The Interstellar Wars</label></p>
+        <!--<p><label><input type="radio" name="milieu" value="M0"   > Milieu 0 - Early Imperium</label></p>-->
+        <p><label><input type="radio" name="milieu" value="M990" > 990 - Solomani Rim War</label></p>
+        <p><label><input type="radio" name="milieu" value=""     > 1105 - The Golden Age (default)</label></p>
+        <p><label><input type="radio" name="milieu" value="M1900"> 1900 - The Far Far Future</label></p>
       </div>
     </section>
 
     <section>
-      <p><strong>Overlays: (experimental)</strong></p>
+      <p><strong>Overlays:</strong></p>
       <div class="indent">
         <p><label title="Highlight world importance"><input type="checkbox" id="cbImpOverlay"> Importance</label>
         <p><label title="Highlight world population"><input type="checkbox" id="cbPopOverlay"> Population</label>
@@ -309,12 +332,6 @@
         <p><label title="Render stars rather than world details"><input type="checkbox" id="cbStellar"> Stellar</label>
       </div>
     </section>
-
-
-    <!-- Hidden options, controlled by other UI elements but retained for binding. -->
-    <div style="display: none">
-      <input type="checkbox" id="cbTilt">
-    </div>
   </div>
 
   <div id="legendBox"

@@ -21,6 +21,7 @@ namespace Maps
 
         public bool Slop { get; set; }
         public float SlopFactor { get; set; }
+        public bool UseMilieuFallbacks { get; set; }
 
         public abstract IEnumerable<Sector> Sectors { get; }
         public abstract IEnumerable<World> Worlds { get; }
@@ -198,7 +199,7 @@ namespace Maps
                 {
                     for (int cy = sy1; cy <= sy2; cy++)
                     {
-                        Sector sector = map.FromLocation(cx, cy);
+                        Sector sector = map.FromLocation(cx, cy, UseMilieuFallbacks);
                         if (sector == null)
                             continue;
                         yield return sector;
@@ -233,7 +234,7 @@ namespace Maps
 
                         if (cachedLoc != loc.Sector)
                         {
-                            cachedSector = map.FromLocation(loc.Sector.X, loc.Sector.Y);
+                            cachedSector = map.FromLocation(loc.Sector.X, loc.Sector.Y, UseMilieuFallbacks);
                             cachedLoc = loc.Sector;
                         }
 
@@ -296,7 +297,7 @@ namespace Maps
                 {
                     for (int x = locTL.Sector.X; x <= locBR.Sector.X; ++x)
                     {
-                        Sector sector = map.FromLocation(x, y);
+                        Sector sector = map.FromLocation(x, y, UseMilieuFallbacks);
                         if (sector == null)
                             continue;
                         yield return sector;
@@ -332,7 +333,7 @@ namespace Maps
 
                             if (!cached || cachedLoc != loc.Sector)
                             {
-                                cachedSector = map.FromLocation(loc.Sector.X, loc.Sector.Y);
+                                cachedSector = map.FromLocation(loc.Sector.X, loc.Sector.Y, UseMilieuFallbacks);
                                 cachedLoc = loc.Sector;
                                 cached = true;
                             }
