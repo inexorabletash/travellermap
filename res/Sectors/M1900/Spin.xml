@@ -1,6 +1,8 @@
 <?xml version="1.0"?>
 <Sector>
   <Name>Spinward Marches</Name>
+
+  <!-- most common -->
   <Subsectors>
     <Subsector Index="A">Cronor</Subsector>
     <Subsector Index="B">Jewell</Subsector>
@@ -24,18 +26,38 @@
     <Route Start="1909" End="2005" />
     <Route Start="1909" End="1705" />
     <Route Start="1909" End="1611" />
+    <Route Start="1611" End="1213" />
+    <Route Start="1213" End="1116" />
+    <Route Start="1116" End="1119" />
     <Route Start="1910" End="2411" />
     <Route Start="2411" End="2410" />
+    <Route Start="2411" End="2708" />
+    <Route Start="2411" End="2716" />
+    <Route Start="2708" End="3110" />
     <Route Start="1909" End="2306" />
-    <Route Start="1705" End="1307" />
+    <Route Start="2306" End="2706" />
+    <Route Start="2706" End="3103" />
+    <Route Start="1705" End="1106" />
+    <Route Start="1705" End="1401" />
+    <Route Start="1106" End="0605" />
+    <Route Start="0605" End="0303" />
     <Route Start="2005" End="1904" />
     <Route Start="2005" End="2202" />
     <Route Start="2202" End="2200" />
+    <Route Start="1401" End="1400" />
+    <Route Color="Orange" Start="2716" End="2720" />
+    <Route Color="Orange" Start="2720" End="3021" />
+    <Route Color="Orange" Start="3021" End="3024" />
   </Routes>
-  <Borders>    
+
+  <Borders>
+    <Border Color="Blue" Allegiance="Rr">0303 0403 0503 0504 0505 0605 0706 0805 0905 1004 1104 1203 1202 1102 1101 1100 1200 1300 1400 1500 1600 1501 1502 1602 1703 1802 1903 2002 2001 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3001 3102 3202 3103 3104 3004 3005 2906 2907 2908 2909 3009 3110 3009 2910 2911 3011 3112 3012 3013 3014 3015 3016 2916 2815 2716 2616 2517 2417 2317 2316 2215 2214 2213 2212 2112 2011 1912 1811 1711 1611 1512 1412 1413 1314 1315 1215 1116 1215 1214 1213 1212 1211 1210 1110 1109 1108 1107 1106 1005 0905 0805 0706 0605 0505 0404 0304 0303 </Border>
+    <Border Color="Blue" Allegiance="Rr">1018 1119 1018 </Border>
   </Borders>
+
+  <!-- less common -->
   <Allegiances>
      <Allegiance Code="Rr">Republic of Regina</Allegiance>
+     <Allegiance Code="Mo">Duchy of Mora</Allegiance>
   </Allegiances>
 </Sector>
-
