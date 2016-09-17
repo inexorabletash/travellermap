@@ -671,11 +671,12 @@ window.addEventListener('DOMContentLoaded', function() {
 
       document.body.classList.toggle('sector-selected', selectedSector);
       document.body.classList.toggle('world-selected', selectedWorld);
-      document.body.classList.toggle('wds-visible', selectedWorld);
       if (selectedWorld) {
         // TODO: Make these mutually exclusive in a less hacky way.
         document.body.classList.remove('search-results');
         document.body.classList.remove('route-ui');
+      } else {
+        document.body.classList.remove('wds-visible');
       }
 
       $('#MetadataDisplay').innerHTML = template('#MetadataTemplate')(data);
@@ -751,6 +752,7 @@ window.addEventListener('DOMContentLoaded', function() {
           return Traveller.renderWorldImage(world, $('#wds-world-image'));
         })
         .then(function(world) {
+          if (!world) return;
           Traveller.renderWorld(
             world, $('#wds-world-template').innerHTML, $('#wds-world-data'));
 
@@ -768,6 +770,7 @@ window.addEventListener('DOMContentLoaded', function() {
           });
 
           $('#wds-print-link').href = dataSheetURL;
+          document.body.classList.add('wds-visible');
         })
         .catch(function(error) {
           console.warn('WDS error: ' + error.message);
