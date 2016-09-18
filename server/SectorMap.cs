@@ -263,7 +263,7 @@ namespace Maps
                 throw new MapNotInitializedException();
             Sector sector = SelectMilieux(milieu)
                 .Select(m => m.FromLocation(pt))
-                .Where(s => s != null)
+                .Where(s => s != null && (useMilieuFallbacks || !(s is Dotmap)))
                 .FirstOrDefault();
 
             if (sector != null || milieu == null || !useMilieuFallbacks)
