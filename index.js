@@ -340,7 +340,7 @@ window.addEventListener('DOMContentLoaded', function() {
     if (e.keyCode === VK_C) {
       e.preventDefault();
       e.stopPropagation();
-      showCredits(map.worldX, map.worldY, /*directAction*/true);
+      showCredits(map.worldX, map.worldY, {directAction: true});
       return;
     }
     if (e.keyCode === VK_H) {
@@ -446,8 +446,8 @@ window.addEventListener('DOMContentLoaded', function() {
   map.OnOptionsChanged = function(options) {
     optionObservers.forEach(function(o) { o(options); });
     $('#legendBox').classList.toggle('world_colors', options & Traveller.MapOptions.WorldColors);
+    showCredits(lastX || map.worldX, lastY || map.worldY, {refresh: true});
     updatePermalink();
-    updateSectorLinks();
     savePreferences();
   };
 
@@ -482,12 +482,12 @@ window.addEventListener('DOMContentLoaded', function() {
   }
 
   map.OnClick = function(world) {
-    showCredits(world.x, world.y, /*directAction*/true);
+    showCredits(world.x, world.y, {directAction: true});
     post({source: 'travellermap', type: 'click', location: world});
   };
 
   map.OnDoubleClick = function(world) {
-    showCredits(world.x, world.y, /*directAction*/true);
+    showCredits(world.x, world.y, {directAction: true});
     post({source: 'travellermap', type: 'doubleclick', location: world});
   };
 
@@ -605,17 +605,21 @@ window.addEventListener('DOMContentLoaded', function() {
 
   var dataRequest = null;
   var dataTimeout = 0;
-  var lastX, lastY;
+  var lastX, lastY, lastMilieu;
   var selectedSector = null;
   var selectedWorld = null;
 
-  function showCredits(worldX, worldY, directAction) {
-    var DATA_REQUEST_DELAY_MS = 500;
+  function showCredits(worldX, worldY, options) {
+    options = options || {};
 
-    if (!directAction && lastX === worldX && lastY === worldY)
+    var DATA_REQUEST_DELAY_MS = 500;
+    var milieu = map.namedOptions.get('milieu');
+
+    if (!options.directAction && lastX === worldX && lastY === worldY && lastMilieu === milieu)
       return;
     lastX = worldX;
     lastY = worldY;
+    lastMilieu = milieu;
 
     if (dataRequest) {
       dataRequest.ignore();
@@ -627,41 +631,44 @@ window.addEventListener('DOMContentLoaded', function() {
 
     dataTimeout = setTimeout(function() {
       dataRequest = Util.ignorable(Traveller.MapService.credits(worldX, worldY, {
-        milieu: map.namedOptions.get('milieu')
+        milieu: milieu
       }));
       dataRequest.then(function(data) {
           dataRequest = null;
           displayResults(data);
         });
 
-    }, directAction ? 0 : DATA_REQUEST_DELAY_MS);
+    }, options.directAction || options.refresh ? 0 : DATA_REQUEST_DELAY_MS);
 
     function displayResults(data) {
       if ('SectorTags' in data) {
         var tags =  String(data.SectorTags).split(/\s+/);
         data.Unofficial = true;
-        ['Official', 'InReview', 'Unreviewed', 'Apocryphal', 'Preserve'].forEach(function(tag) {
-          if (tags.indexOf(tag) !== -1) {
+        ['Official', 'InReview', 'Unreviewed', 'Apocryphal', 'Preserve']
+          .filter(function(tag) { return tags.includes(tag); })
+          .forEach(function(tag) {
             delete data.Unofficial;
             data[tag] = true;
-          }
-        });
+          });
       } else {
         data.Unmapped = true;
       }
 
-      data.Attribution = (function() {
-        var r = [];
-        ['SectorAuthor', 'SectorSource', 'SectorPublisher'].forEach(function(p) {
-          if (p in data) { r.push(data[p]); }
-        });
-        return r.join(', ');
-      }());
+      data.Attribution = ['SectorAuthor', 'SectorSource', 'SectorPublisher']
+        .filter(function(p) { return p in data; })
+        .map(function(p) { return data[p]; })
+        .join(', ');
 
       // Other UI
       if ('SectorName' in data && 'SectorTags' in data) {
         selectedSector = data.SectorName.replace(/ Sector$/, '');
-        selectedWorld = (directAction && map.scale > 16 && 'WorldHex' in data)
+
+        // Treat world as "selected" if (1) in the data, (2) scale is appropriate,
+        // and (3) either this is a direct action (e.g. click) or a refresh
+        selectedWorld =
+          'WorldHex' in data &&
+          map.scale > 16 &&
+          (options.directAction || selectedWorld)
           ? { name: data.WorldName, hex: data.WorldHex } : null;
         updateSectorLinks();
       } else {
@@ -686,18 +693,19 @@ window.addEventListener('DOMContentLoaded', function() {
   function updateSectorLinks() {
     if (!selectedSector)
       return;
+    var milieu = map.namedOptions.get('milieu');
 
     var bookletURL = Traveller.MapService.makeURL(
       '/data/' + encodeURIComponent(selectedSector) + '/booklet', {
-        milieu: map.namedOptions.get('milieu')
+        milieu: milieu
       });
     var posterURL = Traveller.MapService.makeURL('/api/poster', {
       sector: selectedSector, accept: 'application/pdf', style: map.style,
-      milieu: map.namedOptions.get('milieu')
+      milieu: milieu
     });
     var dataURL = Traveller.MapService.makeURL('/api/sec', {
       sector: selectedSector, type: 'SecondSurvey',
-      milieu: map.namedOptions.get('milieu')
+      milieu: milieu
     });
 
     $('#downloadBox #sector-name').innerHTML = Util.escapeHTML(selectedSector + ' Sector');
@@ -711,7 +719,7 @@ window.addEventListener('DOMContentLoaded', function() {
       var dataSheetURL = Util.makeURL('world', {
         sector: selectedSector,
         hex: selectedWorld.hex,
-        milieu: map.namedOptions.get('milieu')
+        milieu: milieu
       });
       $('#world-data-sheet').href = dataSheetURL;
       $('#world-data-sheet').innerHTML = Util.escapeHTML(
@@ -725,7 +733,7 @@ window.addEventListener('DOMContentLoaded', function() {
         var jumpMapURL = Traveller.MapService.makeURL('/api/jumpmap', {
           sector: selectedSector,
           hex: selectedWorld.hex,
-          milieu: map.namedOptions.get('milieu'),
+          milieu: milieu,
           jump: j,
           style: map.style,
           options: options
@@ -737,7 +745,7 @@ window.addEventListener('DOMContentLoaded', function() {
       fetch(Traveller.MapService.makeURL(
         '/api/jumpworlds?', {
           sector: selectedSector, hex: selectedWorld.hex,
-          milieu: map.namedOptions.get('milieu'),
+          milieu: milieu,
           jump: 0
         }))
         .then(function(response) {
@@ -775,7 +783,6 @@ window.addEventListener('DOMContentLoaded', function() {
         .catch(function(error) {
           console.warn('WDS error: ' + error.message);
         });
-
     }
   }
 
