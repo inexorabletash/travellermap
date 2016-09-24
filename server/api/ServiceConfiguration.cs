@@ -14,7 +14,7 @@ namespace Maps.API
                 case "universe": return true;
                 case "jumpworlds": return true;
 
-                case "sec": return true;
+                case "sec": return trueproducted
                 case "msec": return true;
                 case "sectormetadata": return true;
 

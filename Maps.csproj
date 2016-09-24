@@ -92,7 +92,7 @@
   <ItemGroup>
     <Reference Include="PdfSharp, Version=1.32.2608.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Documents\Visual Studio 2015\Projects\PDFsharp-master\code\PdfSharp\bin\Debug\PdfSharp.dll</HintPath>
+      <HintPath>..\PDFsharp\code\PdfSharp\bin\Release\PdfSharp.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <Name>System</Name>
@@ -123,6 +123,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="server\api\CodesHandler.cs" />
     <Compile Include="server\api\RouteHandler.cs" />
     <Compile Include="server\graphics\AbstractGraphics.cs" />
@@ -254,9 +255,7 @@
     <Content Include="res\Sectors\Drakken.xml" />
     <Content Include="res\Sectors\Ealiyasiyw.xml" />
     <Content Include="res\Sectors\Empty Quarter.xml" />
-    <Content Include="res\Sectors\extolian.xml">
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="res\Sectors\extolian.xml" />
     <Content Include="res\Sectors\Far Frontiers.xml" />
     <Content Include="res\Sectors\Faraway\faraway.xml" />
     <Content Include="res\Sectors\Faraway\Precipice.txt" />
@@ -729,7 +728,7 @@
     <None Include="res\Sectors\Dhuerorrg.sec" />
     <None Include="res\Sectors\esai-yo.sec" />
     <None Include="res\Sectors\Etakhasoa.sec" />
-    <Content Include="res\Sectors\Extolian.txt" />
+    <None Include="res\Sectors\Extolian.txt" />
     <None Include="res\Sectors\Fa Dzaets.sec" />
     <None Include="res\Sectors\Fahreahluis.sec" />
     <None Include="res\Sectors\faoheiroi-iyhao.sec" />
