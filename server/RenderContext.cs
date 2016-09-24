@@ -1,7 +1,6 @@
 //#define SHOW_TIMING
 
 using PdfSharp.Drawing;
-using PdfSharp.Drawing.Layout;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -24,6 +23,8 @@ namespace Maps.Rendering
             this.styles = styles;
             this.tileSize = tileSize;
 
+            selector.UseMilieuFallbacks = true;
+
             XMatrix m = new XMatrix();
             m.TranslatePrepend((float)(-tileRect.Left * scale * Astrometrics.ParsecScaleX), (float)(-tileRect.Top * scale * Astrometrics.ParsecScaleY));
             m.ScalePrepend((float)scale * Astrometrics.ParsecScaleX, (float)scale * Astrometrics.ParsecScaleY);
@@ -42,15 +43,15 @@ namespace Maps.Rendering
         private readonly Size tileSize;
 
         // Options
-        public XGraphicsPath ClipPath { get; set; }
+        public AbstractPath ClipPath { get; set; }
         public bool DrawBorder { get; set; }
         public bool Silly { get; set; }
         public bool ClipOutsectorBorders { get; set; }
 
         // Assigned during Render()
-        private XGraphics graphics = null;
-        private XSolidBrush solidBrush;
-        private XPen pen;
+        private AbstractGraphics graphics = null;
+        private AbstractBrush solidBrush;
+        private AbstractPen pen;
 
         public Stylesheet Styles { get { return styles; } }
 
@@ -63,7 +64,7 @@ namespace Maps.Rendering
 
         // This transforms the Linehan galactic structure to the Mikesh galactic structure
         // See https://travellermap.blogspot.com/2009/03/galaxy-scale-mismatch.html
-        private static readonly Matrix xformLinehanToMikesh = new Matrix(0.9181034f, 0.0f, 0.0f, 0.855192542f, 120.672432f, 86.34569f);
+        private static readonly XMatrix xformLinehanToMikesh = new XMatrix(0.9181034f, 0.0f, 0.0f, 0.855192542f, 120.672432f, 86.34569f);
 
         private static readonly Rectangle riftImageRect = new Rectangle(-1374, -827, 2769, 1754);
 
@@ -131,19 +132,16 @@ namespace Maps.Rendering
 
         #region Static Caches
         private static object s_imageInitLock = new object();
+        private static bool s_imagesInitialized = false;
 
         // TODO: Consider not caching these across sessions
-        private static XImage s_sillyImageColor;
-        private static XImage s_sillyImageGray;
-
-        private static XImage s_nebulaImage;
-
-        // These are loaded as GDI+ Images since we need to derive alpha-variants of them;
-        // the results are cached as PDFSharp Images (XImage)
-        private static ImageHolder s_galaxyImage;
-        private static ImageHolder s_galaxyImageGray;
-        private static ImageHolder s_riftImage;
-        private static Dictionary<string, XImage> s_worldImages;
+        private static AbstractImage s_sillyImageColor;
+        private static AbstractImage s_sillyImageGray;
+        private static AbstractImage s_nebulaImage;
+        private static AbstractImage s_galaxyImage;
+        private static AbstractImage s_galaxyImageGray;
+        private static AbstractImage s_riftImage;
+        private static Dictionary<string, AbstractImage> s_worldImages;
         #endregion
 
         /// <summary>
@@ -164,56 +162,23 @@ namespace Maps.Rendering
 #endif
         }
 
-        public void Render(XGraphics graphics)
+        private AbstractImage PrepareImage(string urlPath)
+        {
+            return new AbstractImage(resourceManager.Server.MapPath("~" + urlPath), urlPath);
+        }
+
+        public void Render(AbstractGraphics graphics)
         {
             this.graphics = graphics;
-            solidBrush = new XSolidBrush();
-            pen = new XPen(XColor.Empty);
+            solidBrush = new AbstractBrush();
+            pen = new AbstractPen(Color.Empty);
 
             List<Timer> timers = new List<Timer>();
 
             using (var fonts = new FontCache(styles))
             {
                 #region resources
-                lock (s_imageInitLock)
-                {
-                    if (styles.showNebulaBackground && s_nebulaImage == null)
-                        s_nebulaImage = XImage.FromFile(resourceManager.Server.MapPath(@"~/res/Candy/Nebula.png"));
-
-                    if (styles.showRiftOverlay && s_riftImage == null)
-                        s_riftImage = new ImageHolder(Image.FromFile(resourceManager.Server.MapPath(@"~/res/Candy/Rifts.png")));
-
-                    if (styles.showGalaxyBackground && s_galaxyImage == null) {
-                        // TODO: Don't load both unless necessary
-                        s_galaxyImage = new ImageHolder(Image.FromFile(resourceManager.Server.MapPath(@"~/res/Candy/Galaxy.png")));
-                        s_galaxyImageGray = new ImageHolder(Image.FromFile(resourceManager.Server.MapPath(@"~/res/Candy/Galaxy_Gray.png")));
-                    }
-
-                    if (styles.useWorldImages && s_worldImages == null)
-                    {
-                        s_worldImages = new Dictionary<string, XImage> {
-                            { "Hyd0", XImage.FromFile(resourceManager.Server.MapPath(@"~/res/Candy/Hyd0.png")) },
-                            { "Hyd1", XImage.FromFile(resourceManager.Server.MapPath(@"~/res/Candy/Hyd1.png")) },
-                            { "Hyd2", XImage.FromFile(resourceManager.Server.MapPath(@"~/res/Candy/Hyd2.png")) },
-                            { "Hyd3", XImage.FromFile(resourceManager.Server.MapPath(@"~/res/Candy/Hyd3.png")) },
-                            { "Hyd4", XImage.FromFile(resourceManager.Server.MapPath(@"~/res/Candy/Hyd4.png")) },
-                            { "Hyd5", XImage.FromFile(resourceManager.Server.MapPath(@"~/res/Candy/Hyd5.png")) },
-                            { "Hyd6", XImage.FromFile(resourceManager.Server.MapPath(@"~/res/Candy/Hyd6.png")) },
-                            { "Hyd7", XImage.FromFile(resourceManager.Server.MapPath(@"~/res/Candy/Hyd7.png")) },
-                            { "Hyd8", XImage.FromFile(resourceManager.Server.MapPath(@"~/res/Candy/Hyd8.png")) },
-                            { "Hyd9", XImage.FromFile(resourceManager.Server.MapPath(@"~/res/Candy/Hyd9.png")) },
-                            { "HydA", XImage.FromFile(resourceManager.Server.MapPath(@"~/res/Candy/HydA.png")) },
-                            { "Belt", XImage.FromFile(resourceManager.Server.MapPath(@"~/res/Candy/Belt.png")) }
-                        };
-                    }
-
-                    if (Silly && s_sillyImageColor == null)
-                    {
-                        // Happy face c/o http://bighappyfaces.com/
-                        s_sillyImageColor = XImage.FromFile(resourceManager.Server.MapPath(@"~/res/AprilFools/Starburst.png"));
-                        s_sillyImageGray = XImage.FromFile(resourceManager.Server.MapPath(@"~/res/AprilFools/Starburst_Gray.png"));
-                    }
-                }
+                InitializeImages();
                 #endregion
 
                 timers.Add(new Timer("preload"));
@@ -223,7 +188,7 @@ namespace Maps.Rendering
                 //
                 //////////////////////////////////////////////////////////////
 
-                using (RenderUtil.SaveState(graphics))
+                using (graphics.Save())
                 {
                     if (ClipPath != null)
                     {
@@ -233,7 +198,7 @@ namespace Maps.Rendering
                     }
 
                     // Fill
-                    graphics.SmoothingMode = XSmoothingMode.HighSpeed;
+                    graphics.SmoothingMode = SmoothingMode.HighSpeed;
                     solidBrush.Color = styles.backgroundColor;
                     graphics.DrawRectangle(solidBrush, 0, 0, tileSize.Width, tileSize.Height);
                 }
@@ -248,7 +213,7 @@ namespace Maps.Rendering
 
                 graphics.MultiplyTransform(imageSpaceToWorldSpace);
 
-                using (RenderUtil.SaveState(graphics))
+                using (graphics.Save())
                 {
                     //------------------------------------------------------------
                     // Explicit Clipping
@@ -283,11 +248,11 @@ namespace Maps.Rendering
                     //------------------------------------------------------------
                     if (styles.showGalaxyBackground && styles.deepBackgroundOpacity > 0f && galacticBounds.IntersectsWith(tileRect))
                     {
-                        using (RenderUtil.SaveState(graphics))
+                        using (graphics.Save())
                         {
                             graphics.MultiplyTransform(xformLinehanToMikesh);
-                            ImageHolder galaxyImage = styles.lightBackground ? s_galaxyImageGray : s_galaxyImage;
-                            RenderUtil.DrawImageAlpha(graphics, styles.deepBackgroundOpacity, galaxyImage, galaxyImageRect);
+                            AbstractImage galaxyImage = styles.lightBackground ? s_galaxyImageGray : s_galaxyImage;
+                            graphics.DrawImageAlpha(styles.deepBackgroundOpacity, galaxyImage, galaxyImageRect);
                         }
                     }
                     timers.Add(new Timer("background (galaxy)"));
@@ -307,7 +272,7 @@ namespace Maps.Rendering
                     // Rifts in Charted Space
                     //------------------------------------------------------------
                     if (styles.showRiftOverlay && styles.riftOpacity > 0f)
-                        RenderUtil.DrawImageAlpha(graphics, styles.riftOpacity, s_riftImage, riftImageRect);
+                        graphics.DrawImageAlpha(styles.riftOpacity, s_riftImage, riftImageRect);
                     timers.Add(new Timer("rifts"));
                     #endregion
 
@@ -317,12 +282,12 @@ namespace Maps.Rendering
                     //------------------------------------------------------------
                     if (Silly)
                     {
-                        using (RenderUtil.SaveState(graphics))
+                        using (graphics.Save())
                         {
                             // Render in image-space
                             graphics.MultiplyTransform(worldSpaceToImageSpace);
 
-                            XImage sillyImage = styles.grayscale ? s_sillyImageGray : s_sillyImageColor;
+                            AbstractImage sillyImage = styles.grayscale ? s_sillyImageGray : s_sillyImageColor;
 
                             lock (sillyImage)
                             {
@@ -344,7 +309,7 @@ namespace Maps.Rendering
                     if (styles.macroBorders.visible)
                     {
                         styles.macroBorders.pen.Apply(ref pen);
-                        graphics.SmoothingMode = XSmoothingMode.AntiAlias;
+                        graphics.SmoothingMode = SmoothingMode.AntiAlias;
                         foreach (var vec in borderFiles
                             .Select(file => resourceManager.GetXmlFileObject(file, typeof(VectorObject)))
                             .OfType<VectorObject>()
@@ -363,7 +328,7 @@ namespace Maps.Rendering
                     if (styles.macroRoutes.visible)
                     {
                         styles.macroRoutes.pen.Apply(ref pen);
-                        graphics.SmoothingMode = XSmoothingMode.AntiAlias;
+                        graphics.SmoothingMode = SmoothingMode.AntiAlias;
                         foreach (var vec in routeFiles
                             .Select(file => resourceManager.GetXmlFileObject(file, typeof(VectorObject)))
                             .OfType<VectorObject>()
@@ -379,7 +344,7 @@ namespace Maps.Rendering
                     //------------------------------------------------------------
                     // Sector Grid
                     //------------------------------------------------------------
-                    graphics.SmoothingMode = XSmoothingMode.HighSpeed;
+                    graphics.SmoothingMode = SmoothingMode.HighSpeed;
                     if (styles.sectorGrid.visible)
                     {
                         const int gridSlop = 10;
@@ -398,7 +363,7 @@ namespace Maps.Rendering
                     //------------------------------------------------------------
                     // Subsector Grid
                     //------------------------------------------------------------
-                    graphics.SmoothingMode = XSmoothingMode.HighSpeed;
+                    graphics.SmoothingMode = SmoothingMode.HighSpeed;
                     if (styles.subsectorGrid.visible)
                     {
                         const int gridSlop = 10;
@@ -430,7 +395,7 @@ namespace Maps.Rendering
                     // Parsec Grid
                     //------------------------------------------------------------
                     // TODO: Optimize - timers indicate this is slow
-                    graphics.SmoothingMode = XSmoothingMode.HighQuality;
+                    graphics.SmoothingMode = SmoothingMode.HighQuality;
                     if (styles.parsecGrid.visible)
                         DrawParsecGrid();
                     timers.Add(new Timer("parsec grid"));
@@ -547,20 +512,15 @@ namespace Maps.Rendering
                         solidBrush.Color = styles.megaNames.textColor;
                         foreach (var label in megaLabels)
                         {
-                            using (RenderUtil.SaveState(graphics))
+                            using (graphics.Save())
                             {
+                                Font font = label.minor ? styles.megaNames.SmallFont : styles.megaNames.Font;
                                 XMatrix matrix = new XMatrix();
+                                // TODO: Order here looks sketchy
                                 matrix.ScalePrepend(1.0f / Astrometrics.ParsecScaleX, 1.0f / Astrometrics.ParsecScaleY);
                                 matrix.TranslatePrepend(label.position.X, label.position.Y);
-                                graphics.MultiplyTransform(matrix, XMatrixOrder.Prepend);
-
-                                XFont font = label.minor ? styles.megaNames.SmallFont : styles.megaNames.Font;
-                                XSize size = graphics.MeasureString(label.text, font);
-                                graphics.TranslateTransform(-size.Width / 2, -size.Height / 2); // Center the text
-                                RectangleF textBounds = new RectangleF(0, 0, (float)size.Width * 1.01f, (float)size.Height * 2); // *2 or it gets cut off at high sizes
-                                XTextFormatter formatter = new XTextFormatter(graphics);
-                                formatter.Alignment = XParagraphAlignment.Center;
-                                formatter.DrawString(label.text, font, solidBrush, textBounds);
+                                graphics.MultiplyTransform(matrix);
+                                RenderUtil.DrawString(graphics, label.text, font, solidBrush, 0, 0);
                             }
                         }
                     }
@@ -594,7 +554,7 @@ namespace Maps.Rendering
                     }
                 }
                 timers.Add(new Timer("worlds"));
-#endregion
+                #endregion
 
                 //------------------------------------------------------------
                 // Overlays
@@ -611,7 +571,7 @@ namespace Maps.Rendering
                     {
                         bool droyne = world.HasCodePrefix("Droy");
                         bool chirpers = world.HasCodePrefix("Chir");
-                        
+
                         if (droyne || chirpers)
                         {
                             string glyph = droyne ? styles.droyneWorlds.content.Substring(0, 1) : styles.droyneWorlds.content.Substring(1, 1);
@@ -644,7 +604,7 @@ namespace Maps.Rendering
                 if (styles.ancientsWorlds.visible)
                 {
                     solidBrush.Color = styles.ancientsWorlds.textColor;
-                    foreach (World world in selector.Worlds.Where(w=>w.HasCode("An")))
+                    foreach (World world in selector.Worlds.Where(w => w.HasCode("An")))
                     {
                         OverlayGlyph(styles.ancientsWorlds.content, styles.ancientsWorlds.Font, world.Coordinates);
                     }
@@ -670,7 +630,7 @@ namespace Maps.Rendering
 #if SHOW_TIMING
                 using( RenderUtil.SaveState( graphics ) )
                 {
-                    XFont font = new XFont( FontFamily.GenericSansSerif, 12, XFontStyle.Regular, new XPdfFontOptions(PdfSharp.Pdf.PdfFontEncoding.Unicode) );
+                    Font font = new Font( FontFamily.GenericSansSerif, 12, FontStyle.Regular, new XPdfFontOptions(PdfSharp.Pdf.PdfFontEncoding.Unicode) );
                     graphics.MultiplyTransform( worldSpaceToImageSpace );
                     double cursorX = 20.0, cursorY = 20.0;
                     DateTime last = dtStart;
@@ -683,10 +643,10 @@ namespace Maps.Rendering
                             for( int dy = -1; dy <= 1; ++dy )
                             {
 
-                                graphics.DrawString( String.Format( "{0} {1}", Math.Round( ts.TotalMilliseconds ), s.label ), font, XBrushes.Black, cursorX + dx, cursorY + dy );
+                                graphics.DrawString( string.Format( "{0} {1}", Math.Round( ts.TotalMilliseconds ), s.label ), font, XBrushes.Black, cursorX + dx, cursorY + dy );
                             }
                         }
-                        graphics.DrawString( String.Format("{0} {1}", Math.Round(ts.TotalMilliseconds), s.label), font, XBrushes.Yellow, cursorX, cursorY );
+                        graphics.DrawString( string.Format("{0} {1}", Math.Round(ts.TotalMilliseconds), s.label), font, XBrushes.Yellow, cursorX, cursorY );
                         cursorY += 14;
                     }
                 }
@@ -695,16 +655,50 @@ namespace Maps.Rendering
             }
         }
 
-        private void OverlayGlyph(string glyph, XFont font, Point coordinates)
+        private void InitializeImages()
+        {
+            lock (s_imageInitLock)
+            {
+                if (s_imagesInitialized)
+                    return;
+                s_imagesInitialized = true;
+
+                // Actual images are loaded lazily.
+                s_nebulaImage = PrepareImage("/res/Candy/Nebula.png");
+                s_riftImage = PrepareImage("/res/Candy/Rifts.png");
+                s_galaxyImage = PrepareImage("/res/Candy/Galaxy.png");
+                s_galaxyImageGray = PrepareImage("/res/Candy/Galaxy_Gray.png");
+                s_worldImages = new Dictionary<string, AbstractImage> {
+                            { "Hyd0", PrepareImage("/res/Candy/Hyd0.png") },
+                            { "Hyd1", PrepareImage("/res/Candy/Hyd1.png") },
+                            { "Hyd2", PrepareImage("/res/Candy/Hyd2.png") },
+                            { "Hyd3", PrepareImage("/res/Candy/Hyd3.png") },
+                            { "Hyd4", PrepareImage("/res/Candy/Hyd4.png") },
+                            { "Hyd5", PrepareImage("/res/Candy/Hyd5.png") },
+                            { "Hyd6", PrepareImage("/res/Candy/Hyd6.png") },
+                            { "Hyd7", PrepareImage("/res/Candy/Hyd7.png") },
+                            { "Hyd8", PrepareImage("/res/Candy/Hyd8.png") },
+                            { "Hyd9", PrepareImage("/res/Candy/Hyd9.png") },
+                            { "HydA", PrepareImage("/res/Candy/HydA.png") },
+                            { "Belt", PrepareImage("/res/Candy/Belt.png") },
+                        };
+
+                // Happy face c/o http://bighappyfaces.com/
+                s_sillyImageColor = PrepareImage("/res/AprilFools/Starburst.png");
+                s_sillyImageGray = PrepareImage("/res/AprilFools/Starburst_Gray.png");
+            }
+        }
+
+        private void OverlayGlyph(string glyph, Font font, Point coordinates)
         {
             PointF center = Astrometrics.HexToCenter(coordinates);
-            using (RenderUtil.SaveState(graphics))
+            using (graphics.Save())
             {
                 XMatrix matrix = new XMatrix();
                 matrix.TranslatePrepend(center.X, center.Y);
                 matrix.ScalePrepend(1 / Astrometrics.ParsecScaleX, 1 / Astrometrics.ParsecScaleY);
-                graphics.MultiplyTransform(matrix, XMatrixOrder.Prepend);
-                graphics.DrawString(glyph, font, solidBrush, 0, 0, RenderUtil.StringFormatCentered);
+                graphics.MultiplyTransform(matrix);
+                graphics.DrawString(glyph, font, solidBrush, 0, 0, StringAlignment.Centered);
             }
         }
 
@@ -718,7 +712,7 @@ namespace Maps.Rendering
                 bool major = vec.MapOptions.HasFlag(MapOptions.NamesMajor);
                 LabelStyle labelStyle = new LabelStyle();
                 labelStyle.Uppercase = major;
-                XFont font = major ? styles.macroNames.Font : styles.macroNames.SmallFont;
+                Font font = major ? styles.macroNames.Font : styles.macroNames.SmallFont;
                 solidBrush.Color = major ? styles.macroNames.textColor : styles.macroNames.textHighlightColor;
                 vec.DrawName(graphics, tileRect, font, solidBrush, labelStyle);
             }
@@ -732,7 +726,7 @@ namespace Maps.Rendering
                 LabelStyle labelStyle = new LabelStyle();
                 labelStyle.Rotation = 35;
                 labelStyle.Uppercase = major;
-                XFont font = major ? styles.macroNames.Font : styles.macroNames.SmallFont;
+                Font font = major ? styles.macroNames.Font : styles.macroNames.SmallFont;
                 solidBrush.Color = major ? styles.macroNames.textColor : styles.macroNames.textHighlightColor;
                 vec.DrawName(graphics, tileRect, font, solidBrush, labelStyle);
             }
@@ -747,7 +741,7 @@ namespace Maps.Rendering
                     bool major = vec.MapOptions.HasFlag(MapOptions.NamesMajor);
                     LabelStyle labelStyle = new LabelStyle();
                     labelStyle.Uppercase = major;
-                    XFont font = major ? styles.macroNames.Font : styles.macroNames.SmallFont;
+                    Font font = major ? styles.macroNames.Font : styles.macroNames.SmallFont;
                     solidBrush.Color = major ? styles.macroRoutes.textColor : styles.macroRoutes.textHighlightColor;
                     vec.DrawName(graphics, tileRect, font, solidBrush, labelStyle);
                 }
@@ -755,26 +749,21 @@ namespace Maps.Rendering
 
             if (options.HasFlag(MapOptions.NamesMinor))
             {
-                XFont font = styles.macroNames.MediumFont;
+                Font font = styles.macroNames.MediumFont;
                 solidBrush.Color = styles.macroRoutes.textHighlightColor;
                 foreach (var label in labels)
                 {
-                    using (RenderUtil.SaveState(graphics))
+                    using (graphics.Save())
                     {
                         XMatrix matrix = new XMatrix();
+                        // TODO: Order here looks sketchy
                         matrix.ScalePrepend(1.0f / Astrometrics.ParsecScaleX, 1.0f / Astrometrics.ParsecScaleY);
                         matrix.TranslatePrepend(label.position.X, label.position.Y);
-                        graphics.MultiplyTransform(matrix, XMatrixOrder.Prepend);
+                        graphics.MultiplyTransform(matrix);
 
-                        XSize size = graphics.MeasureString(label.text, font);
-                        graphics.TranslateTransform(-size.Width / 2, -size.Height / 2); // Center the text
-                        RectangleF textBounds = new RectangleF(0, 0, (float)size.Width, (float)size.Height * 2); // *2 or it gets cut off at high sizes
-                        XTextFormatter formatter = new XTextFormatter(graphics);
-                        formatter.Alignment = XParagraphAlignment.Center;
-                        formatter.DrawString(label.text, font, solidBrush, textBounds);
+                        RenderUtil.DrawString(graphics, label.text, font, solidBrush, 0, 0);
                     }
                 }
-
             }
         }
         
@@ -805,16 +794,16 @@ namespace Maps.Rendering
                     break;
 
                 case HexStyle.Hex:
-                    XPoint[] points = new XPoint[4];
+                    PointF[] points = new PointF[4];
                     for (int px = hx - parsecSlop; px < hx + hw + parsecSlop; px++)
                     {
-                        double yOffset = ((px % 2) != 0) ? 0.0 : 0.5;
+                        float yOffset = ((px % 2) != 0) ? 0.0f : 0.5f;
                         for (int py = hy - parsecSlop; py < hy + hh + parsecSlop; py++)
                         {
-                            points[0] = new XPoint(px + -RenderUtil.HEX_EDGE, py + 0.5 + yOffset);
-                            points[1] = new XPoint(px + RenderUtil.HEX_EDGE, py + 1.0 + yOffset);
-                            points[2] = new XPoint(px + 1.0 - RenderUtil.HEX_EDGE, py + 1.0 + yOffset);
-                            points[3] = new XPoint(px + 1.0 + RenderUtil.HEX_EDGE, py + 0.5 + yOffset);
+                            points[0] = new PointF(px + -RenderUtil.HEX_EDGE, py + 0.5f + yOffset);
+                            points[1] = new PointF(px + RenderUtil.HEX_EDGE, py + 1.0f + yOffset);
+                            points[2] = new PointF(px + 1.0f - RenderUtil.HEX_EDGE, py + 1.0f + yOffset);
+                            points[3] = new PointF(px + 1.0f + RenderUtil.HEX_EDGE, py + 0.5f + yOffset);
                             graphics.DrawLines(pen, points);
                         }
                     }
@@ -841,13 +830,13 @@ namespace Maps.Rendering
                             case Stylesheet.HexCoordinateStyle.Sector: hex = loc.HexString; break;
                             case Stylesheet.HexCoordinateStyle.Subsector: hex = loc.SubsectorHexString; break;
                         }
-                        using (RenderUtil.SaveState(graphics))
+                        using (graphics.Save())
                         {
                             XMatrix matrix = new XMatrix();
                             matrix.TranslatePrepend(px + 0.5f, py + yOffset);
                             matrix.ScalePrepend(styles.hexContentScale / Astrometrics.ParsecScaleX, styles.hexContentScale / Astrometrics.ParsecScaleY);
-                            graphics.MultiplyTransform(matrix, XMatrixOrder.Prepend);
-                            graphics.DrawString(hex, styles.hexNumber.Font, solidBrush, 0, 0, RenderUtil.StringFormatTopCenter);
+                            graphics.MultiplyTransform(matrix);
+                            graphics.DrawString(hex, styles.hexNumber.Font, solidBrush, 0, 0, StringAlignment.TopCenter);
                         }
                     }
                 }
@@ -871,9 +860,9 @@ namespace Maps.Rendering
             //     into a texture, then fill the galaxy vector with it
             // (3) Tile is entire outside the galaxy - don't render stars
 
-            using (RenderUtil.SaveState(graphics))
+            using (graphics.Save())
             {
-                graphics.SmoothingMode = XSmoothingMode.HighQuality;
+                graphics.SmoothingMode = SmoothingMode.HighQuality;
                 solidBrush.Color = styles.pseudoRandomStars.fillColor;
 
                 Random rand = new Random((((int)tileRect.Left) << 8) ^ (int)tileRect.Top);
@@ -883,7 +872,6 @@ namespace Maps.Rendering
                     float starY = (float)rand.NextDouble() * tileRect.Height + tileRect.Y;
                     float d = (float)rand.NextDouble() * 2;
 
-                    //graphics.DrawRectangle( fonts.foregroundBrush, starX, starY, (float)( d / scale * Astrometrics.ParsecScaleX ), (float)( d / scale * Astrometrics.ParsecScaleY ) );
                     graphics.DrawEllipse(solidBrush, starX, starY, (float)(d / scale * Astrometrics.ParsecScaleX), (float)(d / scale * Astrometrics.ParsecScaleY));
                 }
             }
@@ -892,21 +880,21 @@ namespace Maps.Rendering
         private void DrawNebulaBackground()
         {
             // Render in image-space so it scales/tiles nicely
-            using (RenderUtil.SaveState(graphics))
+            using (graphics.Save())
             {
                 graphics.MultiplyTransform(worldSpaceToImageSpace);
 
                 lock (s_nebulaImage)
                 {
                     const float backgroundImageScale = 2.0f;
-
+                    const int nebulaImageWidth = 1024, nebulaImageHeight = 1024;
                     // Scaled size of the background
-                    double w = s_nebulaImage.PixelWidth * backgroundImageScale;
-                    double h = s_nebulaImage.PixelHeight * backgroundImageScale;
+                    float w = nebulaImageWidth * backgroundImageScale;
+                    float h = nebulaImageHeight * backgroundImageScale;
 
                     // Offset of the background, relative to the canvas
-                    double ox = (float)(-tileRect.Left * scale * Astrometrics.ParsecScaleX) % w;
-                    double oy = (float)(-tileRect.Top * scale * Astrometrics.ParsecScaleY) % h;
+                    float ox = (float)(-tileRect.Left * scale * Astrometrics.ParsecScaleX) % w;
+                    float oy = (float)(-tileRect.Top * scale * Astrometrics.ParsecScaleY) % h;
                     if (ox > 0) ox -= w;
                     if (oy > 0) oy -= h;
 
@@ -937,12 +925,12 @@ namespace Maps.Rendering
                 (styles.worldDetails.HasFlag(WorldDetails.KeyNames) && (isCapital || isHiPop));
             bool renderUWP = styles.worldDetails.HasFlag(WorldDetails.Uwp);
 
-            using (RenderUtil.SaveState(graphics))
+            using (graphics.Save())
             {
-                XPen pen = new XPen(XColor.Empty);
-                XSolidBrush solidBrush = new XSolidBrush();
+                AbstractPen pen = new AbstractPen(Color.Empty);
+                AbstractBrush solidBrush = new AbstractBrush();
 
-                graphics.SmoothingMode = XSmoothingMode.AntiAlias;
+                graphics.SmoothingMode = SmoothingMode.AntiAlias;
 
                 // Center on the parsec
                 PointF center = Astrometrics.HexToCenter(world.Coordinates);
@@ -950,33 +938,34 @@ namespace Maps.Rendering
                 XMatrix matrix = new XMatrix();
                 matrix.TranslatePrepend(center.X, center.Y);
                 matrix.ScalePrepend(styles.hexContentScale / Astrometrics.ParsecScaleX, styles.hexContentScale / Astrometrics.ParsecScaleY);
-                graphics.MultiplyTransform(matrix, XMatrixOrder.Prepend);
+                graphics.MultiplyTransform(matrix);
 
                 if (layer == WorldLayer.Overlay)
                 {
-#region Population Overlay 
-                    if (styles.showPopulationOverlay && world.Population > 0)
+                    #region Population Overlay 
+                    if (styles.populationOverlay.visible && world.Population > 0)
                     {
-                        // TODO: Don't hardcode the color
-                        solidBrush.Color = XColor.FromArgb(0x80ffff00);
-                        float r = (float)Math.Sqrt(world.Population / Math.PI) * 0.00002f;
-                        graphics.DrawEllipse(solidBrush, -r, -r, r * 2, r * 2);
+                        DrawOverlay(styles.populationOverlay, (float)Math.Sqrt(world.Population / Math.PI) * 0.00002f, ref solidBrush, ref pen);
                     }
-#endregion
+                    #endregion
 
-#region Importance Overlay
-                    if (styles.showImportanceOverlay)
+                    #region Importance Overlay
+                    if (styles.importanceOverlay.visible)
                     {
                         int im = SecondSurvey.Importance(world);
                         if (im > 0)
                         {
-                            // TODO: Don't hardcode the color
-                            solidBrush.Color = XColor.FromArgb(0x2080ff00);
-                            float r = (im - 0.5f) * Astrometrics.ParsecScaleX;
-                            graphics.DrawEllipse(solidBrush, -r, -r, r * 2, r * 2);
+                            DrawOverlay(styles.importanceOverlay, (im - 0.5f) * Astrometrics.ParsecScaleX, ref solidBrush, ref pen);
                         }
                     }
-#endregion
+                    #endregion
+
+                    #region Highlight Worlds
+                    if (styles.highlightWorlds.visible && styles.highlightWorldsPattern.Matches(world))
+                    {
+                        DrawOverlay(styles.highlightWorlds, Astrometrics.ParsecScaleX, ref solidBrush, ref pen);
+                    }
+                    #endregion
                 }
 
                 if (!styles.useWorldImages)
@@ -1003,7 +992,7 @@ namespace Maps.Rendering
 
                                     if (renderName && styles.fillMicroBorders)
                                     {
-                                        using (RenderUtil.SaveState(graphics))
+                                        using (graphics.Save())
                                         {
                                             graphics.IntersectClip(new RectangleF(-.5f, -.5f, 1f, renderUWP ? 0.65f : 0.75f));
                                             graphics.DrawEllipse(pen, -0.4f, -0.4f, 0.8f, 0.8f);
@@ -1030,7 +1019,7 @@ namespace Maps.Rendering
                                 case Stylesheet.HexCoordinateStyle.Subsector: hex = world.SubsectorHex; break;
                             }
                             solidBrush.Color = styles.hexNumber.textColor;
-                            graphics.DrawString(hex, styles.hexNumber.Font, solidBrush, 0.0f, -0.5f, RenderUtil.StringFormatTopCenter);
+                            graphics.DrawString(hex, styles.hexNumber.Font, solidBrush, 0.0f, -0.5f, StringAlignment.TopCenter);
                         }
 #endregion
                     }
@@ -1050,7 +1039,7 @@ namespace Maps.Rendering
 
                             Color textColor = (isCapital && styles.worldDetails.HasFlag(WorldDetails.Highlight))
                                 ? styles.worlds.textHighlightColor : styles.worlds.textColor;
-                            XFont font = ((isHiPop || isCapital) && styles.worldDetails.HasFlag(WorldDetails.Highlight))
+                            Font font = ((isHiPop || isCapital) && styles.worldDetails.HasFlag(WorldDetails.Highlight))
                                 ? styles.worlds.LargeFont : styles.worlds.Font;
 
                             DrawWorldLabel(worldTextBackgroundStyle, solidBrush, textColor, styles.worlds.textStyle.Translation, font, name);
@@ -1072,7 +1061,7 @@ namespace Maps.Rendering
                                 if (styles.lowerCaseAllegiance)
                                     alleg = alleg.ToLowerInvariant();
 
-                                graphics.DrawString(alleg, styles.worlds.SmallFont, solidBrush, styles.AllegiancePosition.X, styles.AllegiancePosition.Y, RenderUtil.StringFormatCentered);
+                                graphics.DrawString(alleg, styles.worlds.SmallFont, solidBrush, styles.AllegiancePosition.X, styles.AllegiancePosition.Y, StringAlignment.Centered);
                             }
                         }
 #endregion
@@ -1104,7 +1093,7 @@ namespace Maps.Rendering
                                 string uwp = world.UWP;
                                 solidBrush.Color = styles.worlds.textColor;
 
-                                graphics.DrawString(uwp, styles.hexNumber.Font, solidBrush, styles.StarportPosition.X, -styles.StarportPosition.Y, RenderUtil.StringFormatCentered);
+                                graphics.DrawString(uwp, styles.hexNumber.Font, solidBrush, styles.StarportPosition.X, -styles.StarportPosition.Y, StringAlignment.Centered);
                             }
 #endregion
 
@@ -1123,7 +1112,7 @@ namespace Maps.Rendering
                                 if (bases.Length > 0)
                                 {
                                     Glyph glyph = Glyph.FromBaseCode(world.BaseAllegiance, bases[0]);
-                                    if (glyph.Printable)
+                                    if (glyph.IsPrintable)
                                     {
                                         PointF pt = styles.BaseTopPosition;
                                         if (glyph.Bias == Glyph.GlyphBias.Bottom)
@@ -1141,7 +1130,7 @@ namespace Maps.Rendering
                                 if (bases.Length > 1)
                                 {
                                     Glyph glyph = Glyph.FromBaseCode(world.LegacyAllegiance, bases[1]);
-                                    if (glyph.Printable)
+                                    if (glyph.IsPrintable)
                                     {
                                         PointF pt = bottomUsed ? styles.BaseTopPosition : styles.BaseBottomPosition;
                                         solidBrush.Color = glyph.IsHighlighted ? styles.worlds.textHighlightColor : styles.worlds.textColor;
@@ -1234,16 +1223,22 @@ namespace Maps.Rendering
                                 }
                                 else
                                 {
-                                    XColor penColor, brushColor;
+                                    Color penColor, brushColor;
                                     styles.WorldColors(world, out penColor, out brushColor);
 
-                                    if (!brushColor.IsEmpty)
+                                    if (!brushColor.IsEmpty && !penColor.IsEmpty)
+                                    {
+                                        solidBrush.Color = brushColor;
+                                        styles.worldWater.pen.Apply(ref pen);
+                                        pen.Color = penColor;
+                                        graphics.DrawEllipse(pen, solidBrush, -0.1f, -0.1f, 0.2f, 0.2f);
+                                    } 
+                                    else if (!brushColor.IsEmpty)
                                     {
                                         solidBrush.Color = brushColor;
                                         graphics.DrawEllipse(solidBrush, -0.1f, -0.1f, 0.2f, 0.2f);
                                     }
-
-                                    if (!penColor.IsEmpty)
+                                    else if (!penColor.IsEmpty)
                                     {
                                         styles.worldWater.pen.Apply(ref pen);
                                         pen.Color = penColor;
@@ -1279,7 +1274,7 @@ namespace Maps.Rendering
                             {
                                 const float scaleX = 1.5f;
                                 const float scaleY = 1.0f;
-                                XImage img = s_worldImages["Belt"];
+                                AbstractImage img = s_worldImages["Belt"];
 
                                 lock (img)
                                 {
@@ -1288,7 +1283,7 @@ namespace Maps.Rendering
                             }
                             else
                             {
-                                XImage img;
+                                AbstractImage img;
                                 switch (world.Hydrographics)
                                 {
                                     default:
@@ -1337,7 +1332,6 @@ namespace Maps.Rendering
                                     world.IsRed ? styles.redZone.pen : styles.blueZone.pen;
                                 pi.Apply(ref pen);
 
-                                // TODO: Try and accomplish this using dash pattern
                                 decorationRadius += 0.1f;
                                 graphics.DrawArc(pen, -decorationRadius, -decorationRadius, decorationRadius * 2, decorationRadius * 2, 5, 80);
                                 graphics.DrawArc(pen, -decorationRadius, -decorationRadius, decorationRadius * 2, decorationRadius * 2, 95, 80);
@@ -1363,17 +1357,8 @@ namespace Maps.Rendering
 #region UWP
                         if (renderUWP)
                         {
-                            string uwp = world.UWP;
                             solidBrush.Color = styles.worlds.textColor;
-
-                            using (RenderUtil.SaveState(graphics))
-                            {
-                                XMatrix uwpMatrix = new XMatrix();
-                                uwpMatrix.TranslatePrepend(decorationRadius, 0.0f);
-                                uwpMatrix.ScalePrepend(styles.worlds.textStyle.Scale.Width, styles.worlds.textStyle.Scale.Height);
-                                uwpMatrix.Multiply(uwpMatrix, XMatrixOrder.Prepend);
-                                graphics.DrawString(uwp, styles.hexNumber.Font, solidBrush, styles.StarportPosition.X, -styles.StarportPosition.Y, RenderUtil.StringFormatCenterLeft);
-                            }
+                            graphics.DrawString(world.UWP, styles.hexNumber.Font, solidBrush, styles.StarportPosition.X, -styles.StarportPosition.Y, StringAlignment.CenterLeft);
                         }
 #endregion
 
@@ -1384,7 +1369,7 @@ namespace Maps.Rendering
                             if (isHiPop)
                                 name = name.ToUpperInvariant();
 
-                            using (RenderUtil.SaveState(graphics))
+                            using (graphics.Save())
                             {
                                 Color textColor = (isCapital && styles.worldDetails.HasFlag(WorldDetails.Highlight))
                                     ? styles.worlds.textHighlightColor : styles.worlds.textColor;
@@ -1397,7 +1382,7 @@ namespace Maps.Rendering
                                 imageMatrix.TranslatePrepend(decorationRadius, 0.0f);
                                 imageMatrix.ScalePrepend(styles.worlds.textStyle.Scale.Width, styles.worlds.textStyle.Scale.Height);
                                 imageMatrix.TranslatePrepend(graphics.MeasureString(name, styles.worlds.Font).Width / 2, 0.0f); // Left align
-                                graphics.MultiplyTransform(imageMatrix, XMatrixOrder.Prepend);
+                                graphics.MultiplyTransform(imageMatrix);
 
                                 DrawWorldLabel(styles.worlds.textBackgroundStyle, solidBrush, textColor, styles.worlds.textStyle.Translation, styles.worlds.Font, name);
                             }
@@ -1411,15 +1396,15 @@ namespace Maps.Rendering
         private static readonly Regex STELLAR_REGEX = new Regex(@"([OBAFGKM][0-9] ?(?:Ia|Ib|II|III|IV|V|VI|VII|D)|D|BD|BH)", RegexOptions.Compiled | RegexOptions.CultureInvariant);
         private void DrawStars(World world)
         {
-            using (RenderUtil.SaveState(graphics))
+            using (graphics.Save())
             {
-                graphics.SmoothingMode = XSmoothingMode.AntiAlias;
+                graphics.SmoothingMode = SmoothingMode.AntiAlias;
                 PointF center = Astrometrics.HexToCenter(world.Coordinates);
 
                 XMatrix matrix = new XMatrix();
                 matrix.TranslatePrepend(center.X, center.Y);
                 matrix.ScalePrepend(styles.hexContentScale / Astrometrics.ParsecScaleX, styles.hexContentScale / Astrometrics.ParsecScaleY);
-                graphics.MultiplyTransform(matrix, XMatrixOrder.Prepend);
+                graphics.MultiplyTransform(matrix);
 
                 // TODO: Proper stellar parsing
                 List<string> ss = new List<string>();
@@ -1432,7 +1417,7 @@ namespace Maps.Rendering
                 foreach (var props in ss.Select(s => StellarRendering.star2props(s)).OrderByDescending(p => p.radius)) {
                     solidBrush.Color = props.color;
                     pen.Color = props.borderColor;
-                    pen.DashStyle = XDashStyle.Solid;
+                    pen.DashStyle = DashStyle.Solid;
                     pen.Width = styles.worlds.pen.width;
                     PointF offset = StellarRendering.Offset(i++);
                     const float offsetScale = 0.3f;
@@ -1455,9 +1440,9 @@ namespace Maps.Rendering
             return null;
         }
 
-        private void DrawWorldLabel(TextBackgroundStyle backgroundStyle, XSolidBrush brush, Color color, PointF position, XFont font, string text)
+        private void DrawWorldLabel(TextBackgroundStyle backgroundStyle, AbstractBrush brush, Color color, PointF position, Font font, string text)
         {
-            XSize size = graphics.MeasureString(text, font);
+            var size = graphics.MeasureString(text, font);
 
             switch (backgroundStyle)
             {
@@ -1500,7 +1485,7 @@ namespace Maps.Rendering
                         {
                             for (int dy = outlineStart; dy <= outlineSize; dy += outlineSkip)
                             {
-                                graphics.DrawString(text, font, brush, position.X + sx * dx, position.Y + sy * dy, RenderUtil.StringFormatCentered);
+                                graphics.DrawString(text, font, brush, position.X + sx * dx, position.Y + sy * dy, StringAlignment.Centered);
                             }
                         }
                         break;
@@ -1508,18 +1493,18 @@ namespace Maps.Rendering
             }
 
             brush.Color = color;
-            graphics.DrawString(text, font, brush, position.X, position.Y, RenderUtil.StringFormatCentered);
+            graphics.DrawString(text, font, brush, position.X, position.Y, StringAlignment.Centered);
         }
 
         private static readonly Regex WRAP_REGEX = new Regex(@"\s+(?![a-z])");
 
         private void DrawLabels()
         {
-            using (RenderUtil.SaveState(graphics))
+            using (graphics.Save())
             {
-                XSolidBrush solidBrush = new XSolidBrush();
+                AbstractBrush solidBrush = new AbstractBrush();
 
-                graphics.SmoothingMode = XSmoothingMode.AntiAlias;
+                graphics.SmoothingMode = SmoothingMode.AntiAlias;
 
                 foreach (Sector sector in selector.Sectors)
                 {
@@ -1549,7 +1534,7 @@ namespace Maps.Rendering
                         // TODO: Adopt some of the tweaks from .MSEC
                         labelPos.Y -= label.OffsetY * 0.7f;
 
-                        XFont font;
+                        Font font;
                         switch (label.Size)
                         {
                             case "small": font = styles.microBorders.SmallFont; break;
@@ -1571,10 +1556,10 @@ namespace Maps.Rendering
         
         private void DrawRoutes()
         {
-            using (RenderUtil.SaveState(graphics))
+            using (graphics.Save())
             {
-                graphics.SmoothingMode = XSmoothingMode.AntiAlias;
-                XPen pen = new XPen(XColor.Empty);
+                graphics.SmoothingMode = SmoothingMode.AntiAlias;
+                AbstractPen pen = new AbstractPen(Color.Empty);
                 styles.microRoutes.pen.Apply(ref pen);
                 float baseWidth = styles.microRoutes.pen.width;
 
@@ -1592,6 +1577,9 @@ namespace Maps.Rendering
 
                         PointF startPoint = Astrometrics.HexToCenter(Astrometrics.LocationToCoordinates(startLocation));
                         PointF endPoint = Astrometrics.HexToCenter(Astrometrics.LocationToCoordinates(endLocation));
+
+                        if (startPoint == endPoint)
+                            continue;
 
                         // If drawing dashed lines twice and the start/end are swapped the
                         // dashes don't overlap correctly. So "sort" the points.
@@ -1652,14 +1640,34 @@ namespace Maps.Rendering
             endPoint.Y -= ddy;
         }
 
-        private static XDashStyle LineStyleToDashStyle(LineStyle style)
+        private void DrawOverlay(Stylesheet.StyleElement elem, float r, ref AbstractBrush solidBrush, ref AbstractPen pen)
+        {
+            if (!elem.fillColor.IsEmpty && !elem.pen.color.IsEmpty)
+            {
+                solidBrush.Color = elem.fillColor;
+                elem.pen.Apply(ref pen);
+                graphics.DrawEllipse(pen, solidBrush, -r, -r, r * 2, r * 2);
+            }
+            else if (!elem.fillColor.IsEmpty)
+            {
+                solidBrush.Color = elem.fillColor;
+                graphics.DrawEllipse(solidBrush, -r, -r, r * 2, r * 2);
+            }
+            else if (!elem.pen.color.IsEmpty)
+            {
+                elem.pen.Apply(ref pen);
+                graphics.DrawEllipse(pen, -r, -r, r * 2, r * 2);
+            }
+        }
+
+        private static DashStyle LineStyleToDashStyle(LineStyle style)
         {
             switch (style)
             {
                 default:
-                case LineStyle.Solid: return XDashStyle.Solid;
-                case LineStyle.Dashed: return XDashStyle.Dash;
-                case LineStyle.Dotted: return XDashStyle.Dot;
+                case LineStyle.Solid: return DashStyle.Solid;
+                case LineStyle.Dashed: return DashStyle.Dash;
+                case LineStyle.Dotted: return DashStyle.Dot;
                 case LineStyle.None: throw new ApplicationException("LineStyle.None should be detected earlier");
             }
         }
@@ -1674,15 +1682,15 @@ namespace Maps.Rendering
                 PathUtil.PathType.Square : PathUtil.PathType.Hex;
             RenderUtil.HexEdges(borderPathType, out edgex, out edgey);
 
-            XSolidBrush solidBrush = new XSolidBrush();
-            XPen pen = new XPen(XColor.Empty);
+            AbstractBrush solidBrush = new AbstractBrush();
+            AbstractPen pen = new AbstractPen(Color.Empty);
             styles.microBorders.pen.Apply(ref pen);
 
             foreach (Sector sector in selector.Sectors)
             {
-                XGraphicsPath sectorClipPath = null;
+                AbstractPath sectorClipPath = null;
 
-                using (RenderUtil.SaveState(graphics))
+                using (graphics.Save())
                 {
                     // This looks craptacular for Candy style borders :(
                     if (ClipOutsectorBorders &&
@@ -1692,18 +1700,18 @@ namespace Maps.Rendering
                         if (!tileRect.IntersectsWith(clip.bounds))
                             continue;
 
-                        sectorClipPath = new XGraphicsPath(clip.clipPathPoints, clip.clipPathPointTypes, XFillMode.Alternate);
+                        sectorClipPath = new AbstractPath(clip.clipPathPoints, clip.clipPathPointTypes);
                         if (sectorClipPath != null)
                             graphics.IntersectClip(sectorClipPath);
                     }
 
-                    graphics.SmoothingMode = XSmoothingMode.AntiAlias;
+                    graphics.SmoothingMode = SmoothingMode.AntiAlias;
 
                     foreach (Border border in sector.Borders)
                     {
                         BorderPath borderPath = border.ComputeGraphicsPath(sector, borderPathType);
 
-                        XGraphicsPath drawPath = new XGraphicsPath(borderPath.points, borderPath.types, XFillMode.Alternate);
+                        AbstractPath drawPath = new AbstractPath(borderPath.points, borderPath.types);
 
                         Color? borderColor = border.Color;
                         LineStyle? borderStyle = border.Style;
@@ -1727,7 +1735,7 @@ namespace Maps.Rendering
                         if (styles.microBorderStyle != MicroBorderStyle.Curve)
                         {
                             // Clip to the path itself - this means adjacent borders don't clash
-                            using (RenderUtil.SaveState(graphics))
+                            using (graphics.Save())
                             {
                                 graphics.IntersectClip(drawPath);
                                 switch (layer)

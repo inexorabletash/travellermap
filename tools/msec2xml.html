@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<title>MSEC to XML - Traveller Map</title>
+<meta charset="utf-8">
+<link rel="shortcut icon" href="../favicon.ico">
+<link rel="stylesheet" href="../site.css?update=2015-08-30">
+<script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.25/polyfill.min.js"></script>
+<script src="../map.js?update=2015-08-29"></script>
+<style>
+  #input, #output {
+    width: 1000px; height: 300px;
+    white-space: pre;
+    overflow: scroll;
+  }
+
+  .pass #summary { color: #008000; }
+  .fail #summary { color: #800000; }
+
+  #results { display: none; }
+  .pass #results, .fail #results { display: block; }
+
+</style>
+<h1>MSEC to XML &mdash; The Traveller Map</h1>
+<div><textarea id="input" wrap="off" placeholder="Copy and paste data or drag and drop a file here - (SEC, T5 tab delimited, or T5 column delimited)"></textarea></div>
+<div><button id="go">Convert</button>
+
+
+</div>
+<div id="results">
+  <h3>Results: <span id="summary"></span></h3>
+  <div><textarea id="output" wrap="off" readonly></textarea></div>
+</div>
+
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    'use strict';
+    var $ = function (s) { return document.querySelector(s); };
+
+    var elem = $('#input');
+    elem.addEventListener('dragover', function (e) {
+      e.stopPropagation();
+      e.preventDefault();
+      e.dataTransfer.dropEffect = 'copy';
+    });
+    elem.addEventListener('drop', function (e) {
+      e.stopPropagation();
+      e.preventDefault();
+      blobToString(e.dataTransfer.files[0]).then(function(s) {
+        elem.value = s;
+      });
+    });
+
+    function blobToString(blob) {
+      return new Promise(function(resolve, reject) {
+        var encodings = ['utf-8', 'windows-1252'];
+        (function tryNextEncoding() {
+          var encoding = encodings.shift();
+          var reader = new FileReader();
+          reader.readAsText(blob, encoding);
+          reader.onload = function(e) {
+            var result = reader.result;
+            if (result.indexOf('\uFFFD') !== -1 && encodings.length)
+              tryNextEncoding();
+            else
+              resolve(result);
+          };
+        }());
+      });
+    }
+
+    $('#go').addEventListener('click', function () {
+      var input = $('#input').value;
+      fetch(Traveller.MapService.makeURL('/api/metadata'), {
+        method: 'POST',
+        body: input,
+        headers: {'Content-Type': 'text/plain', 'Accept': 'text/xml'}
+      }).then(function(response) {
+        if (response.ok) {
+          document.body.classList.add('pass');
+          document.body.classList.remove('fail');
+          $('#summary').innerHTML = '\u2713 No errors found';
+        } else {
+          document.body.classList.add('fail');
+          document.body.classList.remove('pass');
+          $('#summary').innerHTML = '\u2717 Errors found';
+        }
+        return response.text();
+      }).then(function(text) {
+        $('#output').value = text;
+      }).catch(function(error) {
+        document.body.classList.add('fail');
+        document.body.classList.remove('pass');
+        $('#summary').innerHTML = '\u2717 SERVICE ERROR \u2717';
+        $('#output').value = error;
+      });
+    });
+  });
+
+</script>
+<div class="editorial">
+  <p>
+    The <em class="product">Traveller</em> game in all forms is owned by Far
+    Future Enterprises. Copyright &copy; 1977 &ndash; 2016 Far Future
+    Enterprises.
+    <a href="http://farfuture.net/FFEFairUsePolicy2008.pdf">Fair Use Policy</a>
+</div>

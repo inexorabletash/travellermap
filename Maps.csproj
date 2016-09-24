@@ -126,6 +126,10 @@
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="server\api\CodesHandler.cs" />
     <Compile Include="server\api\RouteHandler.cs" />
+    <Compile Include="server\graphics\AbstractGraphics.cs" />
+    <Compile Include="server\graphics\BitmapGraphics.cs" />
+    <Compile Include="server\graphics\PdfSharpGraphics.cs" />
+    <Compile Include="server\graphics\SVGGraphics.cs" />
     <Compile Include="server\http\Modules.cs" />
     <Compile Include="server\http\Routing.cs" />
     <Compile Include="server\PathFinder.cs" />
@@ -171,6 +175,8 @@
     <Content Include="index.css" />
     <Content Include="lib\lightbox\lightbox.css" />
     <Content Include="lib\lightbox\lightbox.js" />
+    <Content Include="make\atlas.html" />
+    <Content Include="make\atlas.js" />
     <Content Include="make\booklet.html" />
     <Content Include="make\booklet.js" />
     <Content Include="make\borders.html" />
@@ -180,6 +186,21 @@
     <Content Include="make\post.js" />
     <Content Include="make\poster.html" />
     <Content Include="make\routes.html" />
+    <Content Include="res\app\browserconfig.xml" />
+    <Content Include="res\app\fb.png" />
+    <Content Include="res\app\mstile-150x150.png" />
+    <Content Include="res\app\regina114.png" />
+    <Content Include="res\app\regina120.png" />
+    <Content Include="res\app\regina144.png" />
+    <Content Include="res\app\regina152.png" />
+    <Content Include="res\app\regina180.png" />
+    <Content Include="res\app\regina192.png" />
+    <Content Include="res\app\regina512.png" />
+    <Content Include="res\app\regina57.png" />
+    <Content Include="res\app\regina72.png" />
+    <Content Include="res\app\regina76.png" />
+    <Content Include="res\app\safari-pinned-tab.svg" />
+    <Content Include="res\app\starburst.png" />
     <Content Include="res\Candy\Galaxy.jpg" />
     <Content Include="res\Candy\Galaxy.png" />
     <Content Include="res\Candy\Galaxy_Gray.png" />
@@ -188,6 +209,7 @@
     <Content Include="res\Candy\Rifts.png" />
     <Content Include="res\Candy\worlds\Core 0140.png" />
     <Content Include="res\Candy\worlds\Corridor 1511.png" />
+    <Content Include="res\Candy\worlds\Hinterworlds 1432.png" />
     <Content Include="res\Candy\worlds\README.txt" />
     <Content Include="res\Candy\worlds\Solomani Rim 1827.png" />
     <Content Include="res\Candy\worlds\Spinward Marches 1910.png" />
@@ -258,6 +280,8 @@
     <Content Include="res\Sectors\Hinterworlds.xml" />
     <Content Include="res\Sectors\Holowon.xml" />
     <Content Include="res\Sectors\Ilelish.xml" />
+    <Content Include="res\Sectors\IW\iw.xml" />
+    <Content Include="res\Sectors\IW\solo-iw.xml" />
     <Content Include="res\Sectors\K%27trekreer.xml" />
     <Content Include="res\Sectors\kidunal.xml" />
     <Content Include="res\Sectors\Koog.txt" />
@@ -275,7 +299,10 @@
     <Content Include="res\Sectors\Lorspane.txt" />
     <Content Include="res\Sectors\Lorspane.xml" />
     <Content Include="res\Sectors\Luretiir!girr.xml" />
-    <Content Include="res\Sectors\M1000\m1000.xml" />
+    <Content Include="res\Sectors\M1900\m1900.xml" />
+    <Content Include="res\Sectors\M1900\Spin.txt" />
+    <Content Include="res\Sectors\M1900\Spin.xml" />
+    <Content Include="res\Sectors\M990\M990.xml" />
     <Content Include="res\Sectors\Magyar.xml" />
     <Content Include="res\Sectors\Massilia.xml">
       <SubType>Designer</SubType>
@@ -305,6 +332,7 @@
     <Content Include="res\Sectors\Phlask.txt" />
     <Content Include="res\Sectors\Porlock.xml" />
     <Content Include="res\Sectors\Provence.xml" />
+    <Content Include="res\Sectors\Raakaan.xml" />
     <Content Include="res\Sectors\Reavers Deep.xml" />
     <Content Include="res\Sectors\Reft.xml" />
     <Content Include="res\Sectors\Ricenden.xml" />
@@ -341,7 +369,9 @@
     <Content Include="res\Sectors\Ziafrplians.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="world_util.js" />
     <EmbeddedResource Include="res\styles\otu.css" />
+    <Content Include="res\ui\aoti.jpg" />
     <Content Include="res\ui\background.png" />
     <Content Include="res\ui\background_light.png" />
     <Content Include="res\ui\button-close.png" />
@@ -358,9 +388,9 @@
     <Content Include="res\ui\button-star.png" />
     <Content Include="res\ui\button-tilt.png" />
     <Content Include="res\ui\button-upload.png" />
+    <Content Include="res\ui\button-wiki.png" />
     <Content Include="res\ui\CT_Logo_Color.png" />
     <Content Include="res\ui\CT_Logo_Gray.png" />
-    <Content Include="res\ui\fb.png" />
     <Content Include="res\ui\grab.cur" />
     <Content Include="res\ui\grabbing.cur" />
     <Content Include="res\ui\legend.html" />
@@ -378,16 +408,10 @@
     <Content Include="res\ui\logo-flat.png" />
     <Content Include="res\ui\logo-stacked-gray.png" />
     <Content Include="res\ui\logo-stacked.png" />
-    <Content Include="res\ui\regina114.png" />
-    <Content Include="res\ui\regina120.png" />
-    <Content Include="res\ui\regina144.png" />
-    <Content Include="res\ui\regina152.png" />
-    <Content Include="res\ui\regina57.png" />
-    <Content Include="res\ui\regina72.png" />
-    <Content Include="res\ui\regina76.png" />
     <Content Include="res\ui\route-end.png" />
     <Content Include="res\ui\route.png" />
     <Content Include="res\ui\sector-spinner.gif" />
+    <Content Include="res\ui\spin.gif" />
     <Content Include="res\ui\style-atlas.png" />
     <Content Include="res\ui\style-candy.png" />
     <Content Include="res\ui\style-draft.png" />
@@ -567,6 +591,8 @@
     <Content Include="res\search\Cirque.json" />
     <Content Include="res\Candy\Galaxy.pdn" />
     <Content Include="lib\README.md" />
+    <Content Include="res\app\manifest.json" />
+    <Content Include="res\app\regina.pdf" />
     <None Include="res\sectors.xsd" />
     <Content Include="res\Sectors\Aktifao.tab" />
     <Content Include="res\Sectors\Aldebaran.tab" />
@@ -614,6 +640,7 @@
     <None Include="res\Sectors\Ilelish.tab" />
     <Content Include="res\Sectors\K%27trekreer.sec" />
     <Content Include="res\Sectors\Iwahfuah.tab" />
+    <Content Include="res\Sectors\IW\solo-iw.tab" />
     <None Include="res\Sectors\Kaa G!kul.sec" />
     <None Include="res\Sectors\Katoonah.sec" />
     <Content Include="res\Sectors\kidunal.sec" />
@@ -623,11 +650,12 @@
     <None Include="res\Sectors\legend.sec" />
     <None Include="res\Sectors\Ley.tab" />
     <None Include="res\Sectors\Lishun.tab" />
-    <Content Include="res\Sectors\M1000\CrucisMargin.sec" />
-    <Content Include="res\Sectors\M1000\Gateway.sec" />
-    <Content Include="res\Sectors\M1000\GlimmerdriftReaches.sec" />
-    <Content Include="res\Sectors\M1000\Ley.sec" />
     <Content Include="res\Sectors\Luretiir!girr.txt" />
+    <Content Include="res\Sectors\M990\CrucisMargin.sec" />
+    <Content Include="res\Sectors\M990\Gateway.sec" />
+    <Content Include="res\Sectors\M990\GlimmerdriftReaches.sec" />
+    <Content Include="res\Sectors\M990\Ley.sec" />
+    <Content Include="res\Sectors\M1900\Gvur.sec" />
     <None Include="res\Sectors\Magyar.tab" />
     <None Include="res\Sectors\Massilia.tab" />
     <Content Include="res\Sectors\Nooq.sec" />
@@ -641,6 +669,7 @@
     <None Include="res\Sectors\Pliabriebl.sec" />
     <Content Include="res\Sectors\Porlock.sec" />
     <Content Include="res\Sectors\Provence.tab" />
+    <Content Include="res\Sectors\Raakaan.tab" />
     <None Include="res\Sectors\Reavers Deep.tab" />
     <None Include="res\Sectors\Reft.tab" />
     <Content Include="res\Sectors\Ricenden.sec" />
@@ -670,7 +699,6 @@
     <None Include="res\Sectors\Zarushagar.tab" />
     <Content Include="res\Sectors\Ziafrplians.tab" />
     <Content Include="res\ui\youarehere.pdn" />
-    <Content Include="res\ui\regina.pdf" />
     <Content Include="res\t5ss\allegiance_codes.tsv" />
     <Content Include="res\t5ss\base_codes.tsv" />
     <Content Include="res\t5ss\sophont_codes.tsv" />

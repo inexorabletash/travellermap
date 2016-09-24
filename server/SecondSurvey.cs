@@ -161,6 +161,7 @@ namespace Maps
             { "So", "SoCf" },
             { "Va", "NaVa" },
             { "Zh", "ZhCo" },
+            { "??", "XXXX" },
             { "--", "XXXX" }
         };
 
@@ -345,7 +346,9 @@ namespace Maps
             { "Sark", "Sc", "Sc", "Sarkan Constellation" },
             { "SeFo", "Sf", null, "Senlis Foederate" },
             { "SlLg", "Sl", null, "Shukikikar League" },
+            { "SoBF", "So", "So", "Solomani Confederation, Bootean Federation" },
             { "SoCf", "So", "So", "Solomani Confederation" },
+            { "SoCT", "So", "So", "Solomani Confederation, Consolidation of Turin" },
             { "SoNS", "So", "So", "Solomani Confederation, New Slavic Solidarity" },
             { "SoRD", "So", "So", "Solomani Confederation, Reformed Dootchen Estates" },
             { "SoWu", "So", "So", "Solomani Confederation, Wuan Technology Association" },
@@ -427,6 +430,7 @@ namespace Maps
             "ImSy", // Third Imperium, Sylean Worlds (Core)
             "ImVd", // Third Imperium, Vegan Autonomous District (Solo)
             "XXXX", // Unknown
+            "??", // Placeholder - show as blank
             "--", // Placeholder - show as blank
         };
 
@@ -498,6 +502,7 @@ namespace Maps
             { "Sydi", "Sydites" },
             { "Syle", "Syleans" },
             { "Tapa", "Tapazmal" },
+            { "Taur", "Taureans" },
             { "Tent", "Tentrassi" },
             { "Tlye", "Tlyetrai" },
             { "UApe", "Uplifted Apes" },
@@ -506,7 +511,7 @@ namespace Maps
             { "Urun", "Urunishani" },
             { "Varg", "Vargr" },
             { "Vega", "Vegans" },
-            { "Za’t", "Za'tachk" },
+            { "Za't", "Za'tachk" },
             { "Zhod", "Zhodani" },
             { "Ziad", "Ziadd" },
             // Sophont Table End

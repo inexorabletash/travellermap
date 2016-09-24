@@ -11,7 +11,7 @@
                 th, td { white-space: nowrap; text-align: left; vertical-align: top; }
                 th:hover { text-decoration: underline; cursor: pointer; }
             </style>
-            <script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.18/polyfill.min.js"></script>
+            <script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.25/polyfill.min.js"></script>
             <script src="credits.js"></script>
         </head>
         <body>
@@ -40,7 +40,7 @@
                         <th>Source</th>
                         <th>Publisher</th>
                         <th>Copyright</th>
-                        <th>Era</th>
+                        <th>Milieu</th>
                         <th>Ref</th>
                     </tr>
                     <xsl:apply-templates select="Sectors/Sector">
@@ -94,7 +94,7 @@
             <xsl:value-of select="DataFile/@Copyright"/>
         </td>
         <td>
-            <xsl:value-of select="DataFile/@Era"/>
+            <xsl:value-of select="DataFile/@Milieu"/>
         </td>
         <td>
             <a>

@@ -21,7 +21,7 @@
     ]]>
   </Credits>
   <Product Publisher="Mongoose Publishing" Author="Martin Dougherty" Title="Reft Sector" Ref="http://www.mongoosepublishing.com/reft-sector-1.html" />
-  <DataFile Source="Traveller 5 Second Survey" Era="1105" Type="TabDelimited">Reft.tab</DataFile>
+  <DataFile Source="Traveller 5 Second Survey" Milieu="1105" Type="TabDelimited">Reft.tab</DataFile>
   <Subsectors Publisher="DGP" Source="The Travellers' Digest #20">
     <Subsector Index="A">Vestus</Subsector>
     <Subsector Index="B">Macon</Subsector>
@@ -65,7 +65,7 @@
     <Route Start="3237" End="0136" EndOffsetX="1" />
   </Routes>
   <!--
-      <Borders Source="Based on allegiances from MTJ Domain of Deneb Supplement" Era="1120">
+      <Borders Source="Based on allegiances from MTJ Domain of Deneb Supplement" Milieu="1120">
       <Border Allegiance="Im">
       0000 0100 0200 0300 0400 0500 0600 0700 0800 0900 1000 1100 1200 1300 1400 1500 1600
       1501 1401 1302 1202 1103 1003 1004 0905 0805 0706 0707 0607 0508 0509 0510 0511 0410 0310 0210 0111
@@ -82,7 +82,7 @@
       </Border>
       </Borders>
   -->
-  <Borders Source="Based on allegiances from Atlas of the Imperium" Author="Joshua Bell" Era="1065">
+  <Borders Source="Based on allegiances from Atlas of the Imperium" Author="Joshua Bell" Milieu="1065">
     <Border Allegiance="ImDd" Label="Third Imperium" LabelPosition="0608" WrapLabel="true">0000 0100 0200 0300 0400 0500 0600 0700 0800 0900 1000 1100 1200 1300 1400 1500 1600 1501 1401 1302 1202 1103 1002 0903 0803 0704 0604 0605 0606 0707 0708 0709 0710 0610 0511 0411 0312 0313 0213 0214 0215 0216 0217 0118 0018 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001 0000</Border>
     <Border Allegiance="ImDv" Label="Third Imperium" LabelPosition="2532" WrapLabel="true">2139 2238 2338 2337 2436 2435 2535 2534 2633 2733 2732 2731 2830 2930 3029 3028 3128 3227 3327 3326 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2140 2139</Border>
   </Borders>

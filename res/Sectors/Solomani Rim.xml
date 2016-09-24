@@ -14,7 +14,7 @@
     ]]>
   </Credits>
   <Product Publisher="Mongoose Publishing" Author="David Pulver" Title="Solomani Rim Sector" Ref="http://www.mongoosepublishing.com/solomani-rim.html" />
-  <DataFile Source="Traveller 5 Second Survey" Era="1105" Type="TabDelimited">Solomani Rim.tab</DataFile>
+  <DataFile Source="Traveller 5 Second Survey" Milieu="1105" Type="TabDelimited">Solomani Rim.tab</DataFile>
   <Subsectors Source="Supplement 10 - The Solomani Rim">
     <Subsector Index="A">Ultima</Subsector>
     <Subsector Index="B">Suleiman</Subsector>
@@ -146,7 +146,7 @@
     <Border Allegiance="Na" Color="orange" ShowLabel="false">2433</Border>
     <Border
         Source="Imperial Lines #2" Author="Steven Eric Schwartz"
-        Allegiance="Bo" ShowLabel="true" WrapLabel="false" LabelPosition="1238" Label="Bootean Federation" Color="Blue">
+        Allegiance="SoBF" ShowLabel="true" WrapLabel="false" LabelPosition="1238" Label="Bootean Federation" Color="Blue">
       1136 1236 1336 1435 1536 1636 1736 1836 1737 1738 1739 1740 1639 1540 1440 1441 1440 1340 1239 1140 1239 1238 1237 1137 1136
     </Border>
   </Borders>

@@ -1,24 +1,14 @@
 ﻿using PdfSharp.Drawing;
-using PdfSharp.Drawing.Layout;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Drawing.Imaging;
 using System.Drawing.Text;
 using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace Maps.Rendering
 {
-    // Wrapper to allow locking, since Image is [MarshalByRefObject]
-    internal class ImageHolder
-    {
-        public ImageHolder(Image image) { this.image = image; }
-        public Image Image { get { return image; } }
-        private Image image;
-    }
-
     internal static class RenderUtil
     {
         /*
@@ -33,10 +23,9 @@ namespace Maps.Rendering
             |\              /|
             +-*------------*-+
         */
-        public static readonly double HEX_EDGE = Math.Tan(Math.PI / 6) / 4 / Astrometrics.ParsecScaleX;
-        public static readonly float HEX_EDGE_F = (float)HEX_EDGE;
+        public static readonly float HEX_EDGE = (float)(Math.Tan(Math.PI / 6) / 4 / Astrometrics.ParsecScaleX);
 
-        private static readonly float[] HexEdgesX = { -0.5f + HEX_EDGE_F, -0.5f - HEX_EDGE_F, -0.5f + HEX_EDGE_F, 0.5f - HEX_EDGE_F, 0.5f + HEX_EDGE_F, 0.5f - HEX_EDGE_F };
+        private static readonly float[] HexEdgesX = { -0.5f + HEX_EDGE, -0.5f - HEX_EDGE, -0.5f + HEX_EDGE, 0.5f - HEX_EDGE, 0.5f + HEX_EDGE, 0.5f - HEX_EDGE };
         private static readonly float[] HexEdgesY = { 0.5f, 0f, -0.5f, -0.5f, 0, 0.5f };
 
         private static readonly float[] SquareEdgesX = { -0.5f, -0.5f, -0.5f, 0.5f, 0.5f, 0.5f };
@@ -48,165 +37,137 @@ namespace Maps.Rendering
             edgeY = (type == PathUtil.PathType.Hex) ? RenderUtil.HexEdgesY : RenderUtil.SquareEdgesY;
         }
 
-        public static void DrawImageAlpha(XGraphics graphics, float alpha, ImageHolder holder, Rectangle targetRect)
+        // NOTE: Windings are often used instead of UNICODE equivalents in a common font 
+        // because the glyphs are much higher quality.
+        // See http://www.alanwood.net/demos/wingdings.html for a good mapping
+
+        private static Dictionary<char, char> DING_MAP = new Dictionary<char, char>
         {
-            if (alpha <= 0f)
+            { '\x2666', '\x74' }, // U+2666 (BLACK DIAMOND SUIT)
+            { '\x2756', '\x76' }, // U+2756 (BLACK DIAMOND MINUS WHITE X)
+            { '\x2726', '\xAA' }, // U+2726 (BLACK FOUR POINTED STAR)
+            { '\x2605', '\xAB' }, // U+2605 (BLACK STAR)
+            { '\x2736', '\xAC' }, // U+2736 (BLACK SIX POINTED STAR)
+        };
+
+        public static void DrawGlyph(AbstractGraphics g, Glyph glyph, FontCache styleRes, AbstractBrush brush, float x, float y)
+        {
+            Font font;
+            string s = glyph.Characters;
+            if (g.SupportsWingdings && s.All(c => DING_MAP.ContainsKey(c)))
+            {
+                s = string.Join("", s.Select(c => DING_MAP[c]));
+                font = styleRes.WingdingFont;
+            }
+            else
+            {
+                font = styleRes.GlyphFont;
+            }
+
+            g.DrawString(s, font, brush, x, y, StringAlignment.Centered);
+        }
+
+        //               |          |
+        //           Top |   Top    | Top
+        //          Left |  Center  | Right
+        // --------------+----------+----------------
+        //   Middle Left |  Center  | Middle Right
+        // --------------+----------+-----------------
+        //        Bottom |  Bottom  | Bottom
+        //          Left |  Center  | Right
+        //               |          |
+        public enum TextFormat
+        {
+            TopLeft,
+            TopCenter,
+            TopRight,
+            MiddleLeft,
+            Center,
+            MiddleRight,
+            BottomLeft,
+            BottomCenter,
+            BottomRight
+        }
+
+        // String is positioned relative to x,y according to TextFormat.
+        // TextFormat also controls text alignment (left, center, right).
+        // Handles embedded newlines.
+        public static void DrawString(AbstractGraphics g, string text, Font font, AbstractBrush brush, float x, float y, TextFormat format = TextFormat.Center)
+        {
+            if (string.IsNullOrWhiteSpace(text))
                 return;
 
-            // Clamp and Quantize
-            alpha = Math.Min(1f, alpha);
-            alpha = (float)Math.Round(alpha * 16f) / 16f;
-            int key = (int)Math.Round(alpha * 16);
+            var lines = text.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None).ToList();
+            var sizes = lines.Select(s => g.MeasureString(s, font)).ToList();
 
-            Image image = holder.Image;
-            XImage ximage;
-            int w, h;
+            float fontUnitsToWorldUnits = font.Size / font.FontFamily.GetEmHeight(font.Style);
+            float lineSpacing = font.FontFamily.GetLineSpacing(font.Style) * fontUnitsToWorldUnits;
+            float ascent = font.FontFamily.GetCellAscent(font.Style) * fontUnitsToWorldUnits;
+            float descent = font.FontFamily.GetCellDescent(font.Style) * fontUnitsToWorldUnits;
 
-            lock (holder)
+            SizeF boundingSize = new SizeF(sizes.Max(s => s.Width), lineSpacing * sizes.Count());
+
+            // Offset from baseline to top-left.
+            y += ascent;
+
+            float widthFactor = 0;
+            switch (format)
             {
-                w = image.Width;
-                h = image.Height;
-
-                if (image.Tag == null || !(image.Tag is Dictionary<int, XImage>))
-                    image.Tag = new Dictionary<int, XImage>();
-
-                Dictionary<int, XImage> dict = image.Tag as Dictionary<int, XImage>;
-                if (dict.ContainsKey(key))
-                {
-                    ximage = dict[key];
-                }
-                else
-                {
-                    if (alpha >= 1f)
-                    {
-                        ximage = XImage.FromGdiPlusImage(image);
-                    }
-                    else
-                    {
-                        // Need to construct a new image (PdfSharp can't alpha-render images)
-                        // Memoize these in the image itself, since most requests will be from
-                        // a small set
-
-                        Bitmap scratchBitmap = new Bitmap(w, h, PixelFormat.Format32bppArgb);
-                        using (var scratchGraphics = Graphics.FromImage(scratchBitmap))
-                        {
-                            ColorMatrix matrix = new ColorMatrix();
-                            matrix.Matrix00 = matrix.Matrix11 = matrix.Matrix22 = 1;
-                            matrix.Matrix33 = alpha;
-
-                            ImageAttributes attr = new ImageAttributes();
-                            attr.SetColorMatrix(matrix);
-
-                            scratchGraphics.DrawImage(image, new Rectangle(0, 0, w, h), 0, 0, w, h, GraphicsUnit.Pixel, attr);
-                        }
-
-                        ximage = XImage.FromGdiPlusImage(scratchBitmap);
-                    }
-                    dict[key] = ximage;
-                }
+                case TextFormat.MiddleLeft:
+                case TextFormat.Center:
+                case TextFormat.MiddleRight:
+                    y -= boundingSize.Height / 2;
+                    break;
+                case TextFormat.BottomLeft:
+                case TextFormat.BottomCenter:
+                case TextFormat.BottomRight:
+                    y -= boundingSize.Height;
+                    break;
+            }
+            switch (format)
+            {
+                case TextFormat.TopCenter:
+                case TextFormat.Center:
+                case TextFormat.BottomCenter:
+                    widthFactor = -0.5f;
+                    break;
+                case TextFormat.TopRight:
+                case TextFormat.MiddleRight:
+                case TextFormat.BottomRight:
+                    widthFactor = -1;
+                    break;
             }
 
-            lock (ximage)
+            Util.ForEachZip(lines, sizes, (line, sz) =>
             {
-                graphics.DrawImage(ximage, targetRect, new XRect(0, 0, w, h), XGraphicsUnit.Point);
-            }
+                g.DrawString(line, font, brush, x + widthFactor * sz.Width, y, StringAlignment.Baseline);                
+                y += lineSpacing;
+            });
         }
 
-        public static void DrawGlyph(XGraphics g, Glyph glyph, FontCache styleRes, XBrush brush, float x, float y)
+        // Used for Sector/Subsector names and labels (borders and explicit).
+        // Always centered on given coordinates.
+        public static void DrawLabel(AbstractGraphics g, string text, PointF center, Font font, AbstractBrush brush, LabelStyle labelStyle)
         {
-            XFont font = glyph.Font == GlyphFont.Ding ? styleRes.WingdingFont : styleRes.GlyphFont;
-            g.DrawString(glyph.Characters, font, brush, x, y, StringFormatCentered);
-        }
-
-
-        private static XStringFormat CreateStringFormat(XStringAlignment alignment, XLineAlignment lineAlignment)
-        {
-            XStringFormat format = new XStringFormat();
-            format.Alignment = alignment;
-            format.LineAlignment = lineAlignment;
-            return format;
-        }
-
-        public static XStringFormat StringFormatCentered { get { return centeredFormat; } }
-        private static readonly XStringFormat centeredFormat = CreateStringFormat(XStringAlignment.Center, XLineAlignment.Center);
-
-        public static XStringFormat StringFormatTopLeft { get { return topLeftFormat; } }
-        private static readonly XStringFormat topLeftFormat = CreateStringFormat(XStringAlignment.Near, XLineAlignment.Near);
-
-        public static XStringFormat StringFormatTopCenter { get { return topCenterFormat; } }
-        private static readonly XStringFormat topCenterFormat = CreateStringFormat(XStringAlignment.Center, XLineAlignment.Near);
-
-        public static XStringFormat StringFormatTopRight { get { return topRightFormat; } }
-        private static readonly XStringFormat topRightFormat = CreateStringFormat(XStringAlignment.Far, XLineAlignment.Near);
-
-        public static XStringFormat StringFormatCenterLeft { get { return centerLeftFormat; } }
-        private static readonly XStringFormat centerLeftFormat = CreateStringFormat(XStringAlignment.Near, XLineAlignment.Center);
-
-        public static void DrawLabel(XGraphics g, string text, PointF labelPos, XFont font, XBrush brush, LabelStyle labelStyle)
-        {
-            using (RenderUtil.SaveState(g))
+            using (g.Save())
             {
                 if (labelStyle.Uppercase)
                     text = text.ToUpper();
                 if (labelStyle.Wrap)
                     text = text.Replace(' ', '\n');
 
-                g.TranslateTransform(labelPos.X, labelPos.Y);
+                g.TranslateTransform(center.X, center.Y);
                 g.ScaleTransform(1.0f / Astrometrics.ParsecScaleX, 1.0f / Astrometrics.ParsecScaleY);
                 g.TranslateTransform(labelStyle.Translation.X, labelStyle.Translation.Y);
                 g.RotateTransform(labelStyle.Rotation);
                 g.ScaleTransform(labelStyle.Scale.Width, labelStyle.Scale.Height);
 
-                if (labelStyle.Rotation != 0)
+                if (labelStyle.Rotation != 0 && g.Graphics != null)
                     g.Graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
 
-                XSize size = g.MeasureString(text, font);
-                size.Width *= 2; // prevent cut-off e.g. when rotated
-                XRect bounds = new XRect(-size.Width / 2, -size.Height / 2, size.Width, size.Height);
-
-                XTextFormatter tf = new XTextFormatter(g);
-                tf.Alignment = XParagraphAlignment.Center;
-                tf.DrawString(text, font, brush, bounds);
+                DrawString(g, text, font, brush, 0, 0);
             }
         }
-
-        public static SaveGraphicsState SaveState(XGraphics g)
-        {
-            return new SaveGraphicsState(g);
-        }
-
-        sealed internal class SaveGraphicsState : IDisposable
-        {
-            private XGraphics g;
-            private XGraphicsState gs;
-
-            public SaveGraphicsState(XGraphics graphics)
-            {
-                g = graphics;
-                gs = graphics.Save();
-            }
-
-            #region IDisposable Members
-
-            public void Dispose()
-            {
-                if (g != null && gs != null)
-                {
-                    g.Restore(gs);
-                    g = null;
-                    gs = null;
-                }
-            }
-
-            #endregion
-        }
-
-    }
-
-    public enum GlyphFont
-    {
-        Ding,
-        Normal
     }
 
     internal struct Glyph
@@ -217,85 +178,52 @@ namespace Maps.Rendering
             Top,
             Bottom
         }
-        public GlyphFont Font { get; set; }
         public string Characters { get; set; }
         public GlyphBias Bias { get; set; }
         public bool IsHighlighted { get; set; }
 
-        public Glyph(GlyphFont font, string chars)
-            : this()
+        public Glyph(string chars, bool highlight = false)
         {
-            Font = font;
             Characters = chars;
             Bias = GlyphBias.None;
-            IsHighlighted = false;
+            IsHighlighted = highlight;
         }
-        public bool Printable
+        public Glyph(Glyph other, bool highlight = false, GlyphBias bias = GlyphBias.None)
+        {
+            this.Characters = other.Characters;
+            this.IsHighlighted = highlight;
+            this.Bias = bias;
+        }
+
+        public bool IsPrintable
         {
             get { return Characters.Length > 0; }
         }
-        public Glyph Highlight
-        {
-            get
-            {
-                Glyph g = this;
-                g.IsHighlighted = true;
-                return g;
-            }
-        }
-        public Glyph BiasBottom
-        {
-            get
-            {
-                Glyph g = this;
-                g.Bias = GlyphBias.Bottom;
-                return g;
-            }
-        }
 
-        public Glyph BiasTop
-        {
-            get
-            {
-                Glyph g = this;
-                g.Bias = GlyphBias.Top;
-                return g;
-            }
-        }
-
-
-        public static readonly Glyph None = new Glyph(GlyphFont.Ding, "");
-
-        // NOTE: Windings are often used instead of UNICODE equivalents in a common font 
-        // because the glyphs are much higher quality.
-        // See http://www.alanwood.net/demos/wingdings.html for a good mapping
-
-        public static readonly Glyph Diamond = new Glyph(GlyphFont.Ding, "\x74"); // U+2666 (BLACK DIAMOND SUIT)
-        public static readonly Glyph DiamondX = new Glyph(GlyphFont.Ding, "\x76"); // U+2756 (BLACK DIAMOND MINUS WHITE X)
-        public static readonly Glyph Circle = new Glyph(GlyphFont.Ding, "\x9f"); // Alternates: U+2022 (BULLET), U+25CF (BLACK CIRCLE)
-        public static readonly Glyph Triangle = new Glyph(GlyphFont.Normal, "\x25B2"); // U+25B2 (BLACK UP-POINTING TRIANGLE)
-        public static readonly Glyph Square = new Glyph(GlyphFont.Normal, "\x25A0"); // U+25A0 (BLACK SQUARE)
-        public static readonly Glyph Star3Point = new Glyph(GlyphFont.Ding, "\xA9"); // U+25B2 (BLACK UP-POINTING TRIANGLE)
-        public static readonly Glyph Star4Point = new Glyph(GlyphFont.Ding, "\xAA"); // U+2726 (BLACK FOUR POINTED STAR)
-        public static readonly Glyph Star5Point = new Glyph(GlyphFont.Ding, "\xAB"); // U+2605 (BLACK STAR)
-        public static readonly Glyph Star6Point = new Glyph(GlyphFont.Ding, "\xAC"); // U+2736 (BLACK SIX POINTED STAR)
-        public static readonly Glyph WhiteStar = new Glyph(GlyphFont.Normal, "\u2606"); // U+2606 (WHITE STAR)
-        public static readonly Glyph StarStar = new Glyph(GlyphFont.Normal, "**"); // Would prefer U+2217 (ASTERISK OPERATOR) but font coverage is poor
+        public static readonly Glyph None = new Glyph("");
+        public static readonly Glyph Diamond = new Glyph("\x2666"); // U+2666 (BLACK DIAMOND SUIT)
+        public static readonly Glyph DiamondX = new Glyph("\x2756"); // U+2756 (BLACK DIAMOND MINUS WHITE X)
+        public static readonly Glyph Circle = new Glyph("\x2022"); // U+2022 (BULLET); alternate:  U+25CF (BLACK CIRCLE)
+        public static readonly Glyph Triangle = new Glyph("\x25B2"); // U+25B2 (BLACK UP-POINTING TRIANGLE)
+        public static readonly Glyph Square = new Glyph("\x25A0"); // U+25A0 (BLACK SQUARE)
+        public static readonly Glyph Star4Point = new Glyph("\x2726"); // U+2726 (BLACK FOUR POINTED STAR)
+        public static readonly Glyph Star5Point = new Glyph("\x2605"); // U+2605 (BLACK STAR)
+        public static readonly Glyph StarStar = new Glyph("**"); // Would prefer U+2217 (ASTERISK OPERATOR) but font coverage is poor
 
         // Research Stations
-        public static readonly Glyph Alpha = new Glyph(GlyphFont.Normal, "\x0391").Highlight;
-        public static readonly Glyph Beta = new Glyph(GlyphFont.Normal, "\x0392").Highlight;
-        public static readonly Glyph Gamma = new Glyph(GlyphFont.Normal, "\x0393").Highlight;
-        public static readonly Glyph Delta = new Glyph(GlyphFont.Normal, "\x0394").Highlight;
-        public static readonly Glyph Epsilon = new Glyph(GlyphFont.Normal, "\x0395").Highlight;
-        public static readonly Glyph Zeta = new Glyph(GlyphFont.Normal, "\x0396").Highlight;
-        public static readonly Glyph Eta = new Glyph(GlyphFont.Normal, "\x0397").Highlight;
-        public static readonly Glyph Theta = new Glyph(GlyphFont.Normal, "\x0398").Highlight;
+        public static readonly Glyph Alpha = new Glyph("\x0391", highlight: true);
+        public static readonly Glyph Beta = new Glyph("\x0392", highlight: true);
+        public static readonly Glyph Gamma = new Glyph("\x0393", highlight: true);
+        public static readonly Glyph Delta = new Glyph("\x0394", highlight: true);
+        public static readonly Glyph Epsilon = new Glyph("\x0395", highlight: true);
+        public static readonly Glyph Zeta = new Glyph("\x0396", highlight: true);
+        public static readonly Glyph Eta = new Glyph("\x0397", highlight: true);
+        public static readonly Glyph Theta = new Glyph("\x0398", highlight: true);
 
         // Other Textual
-        public static readonly Glyph Prison = new Glyph(GlyphFont.Normal, "P").Highlight;
-        public static readonly Glyph Reserve = new Glyph(GlyphFont.Normal, "R");
-        public static readonly Glyph ExileCamp = new Glyph(GlyphFont.Normal, "X");
+        public static readonly Glyph Prison = new Glyph("P", highlight: true);
+        public static readonly Glyph Reserve = new Glyph("R");
+        public static readonly Glyph ExileCamp = new Glyph("X");
 
 
         public static Glyph FromResearchCode(string rs)
@@ -321,20 +249,20 @@ namespace Maps.Rendering
         }
 
         private static readonly RegexDictionary<Glyph> s_baseGlyphTable = new GlobDictionary<Glyph> {
-            { "*.C", Glyph.StarStar.BiasBottom }, // Vargr Corsair Base
-            { "Im.D", Glyph.Square.BiasBottom }, // Imperial Depot
-            { "*.D", Glyph.Square.Highlight}, // Depot
-            { "*.E", Glyph.StarStar.BiasBottom }, // Hiver Embassy
-            { "*.K", Glyph.Star5Point.Highlight.BiasTop }, // Naval Base
-            { "*.M", Glyph.Star4Point.BiasBottom }, // Military Base
-            { "*.N", Glyph.Star5Point.BiasTop }, // Imperial Naval Base
-            { "*.O", Glyph.Square.Highlight.BiasTop }, // K'kree Naval Outpost (non-standard)
-            { "*.R", Glyph.StarStar.BiasBottom }, // Aslan Clan Base
-            { "*.S", Glyph.Triangle.BiasBottom }, // Imperial Scout Base
-            { "*.T", Glyph.Star5Point.Highlight.BiasTop }, // Aslan Tlaukhu Base
-            { "*.V", Glyph.Circle.BiasBottom }, // Exploration Base
-            { "Zh.W", Glyph.Diamond.Highlight }, // Zhodani Relay Station
-            { "*.W", Glyph.Triangle.Highlight.BiasBottom }, // Imperial Scout Waystation
+            { "*.C", new Glyph(Glyph.StarStar, bias:GlyphBias.Bottom) }, // Vargr Corsair Base
+            { "Im.D", new Glyph(Glyph.Square, bias:GlyphBias.Bottom) }, // Imperial Depot
+            { "*.D", new Glyph(Glyph.Square, highlight:true)}, // Depot
+            { "*.E", new Glyph(Glyph.StarStar, bias:GlyphBias.Bottom) }, // Hiver Embassy
+            { "*.K", new Glyph(Glyph.Star5Point, highlight:true, bias:GlyphBias.Top) }, // Naval Base
+            { "*.M", new Glyph(Glyph.Star4Point, bias:GlyphBias.Bottom) }, // Military Base
+            { "*.N", new Glyph(Glyph.Star5Point, bias:GlyphBias.Top) }, // Imperial Naval Base
+            { "*.O", new Glyph(Glyph.Square, highlight:true, bias:GlyphBias.Top) }, // K'kree Naval Outpost (non-standard)
+            { "*.R", new Glyph(Glyph.StarStar, bias:GlyphBias.Bottom) }, // Aslan Clan Base
+            { "*.S", new Glyph(Glyph.Triangle, bias:GlyphBias.Bottom) }, // Imperial Scout Base
+            { "*.T", new Glyph(Glyph.Star5Point, highlight:true, bias:GlyphBias.Top) }, // Aslan Tlaukhu Base
+            { "*.V", new Glyph(Glyph.Circle, bias:GlyphBias.Bottom) }, // Exploration Base
+            { "Zh.W", new Glyph(Glyph.Diamond, highlight:true)}, // Zhodani Relay Station
+            { "*.W", new Glyph(Glyph.Triangle, highlight:true, bias:GlyphBias.Bottom) }, // Imperial Scout Waystation
             { "Zh.Z", Glyph.Diamond }, // Zhodani Base (Special case for "Zh.KM")
             { "*.*", Glyph.Circle }, // Independent Base
         };
@@ -560,11 +488,11 @@ namespace Maps.Rendering
             TypeCount = 2
         };
 
-        public static RectangleF Bounds(XGraphicsPath path)
+        public static RectangleF Bounds(AbstractPath path)
         {
             RectangleF rect = new RectangleF();
 
-            PointF[] points = path.Internals.GdiPath.PathPoints;
+            PointF[] points = path.Points;
 
             rect.X = points[0].X;
             rect.Y = points[0].Y;
@@ -668,9 +596,9 @@ namespace Maps.Rendering
             clipPathPointTypes = clipPathTypes.ToArray();
             clipPathPointTypes[clipPathPointTypes.Length - 1] |= (byte)PathPointType.CloseSubpath;
         }
-
     }
 
+    #region Stellar Rendering
     internal struct StarProps
     {
         public StarProps(Color color, Color border, float radius) { this.color = color; this.borderColor = border;  this.radius = radius; }
@@ -751,4 +679,5 @@ namespace Maps.Rendering
             return new PointF(dx[index], dy[index]);
         }
     }
+    #endregion
 }

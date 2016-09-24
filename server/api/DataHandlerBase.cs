@@ -19,8 +19,8 @@ namespace Maps.API
 {
     public interface ITypeAccepter
     {
-        IEnumerable<string> AcceptTypes(HttpContext context);
-        bool Accepts(HttpContext context, string mediaType);
+        IEnumerable<string> AcceptTypes(HttpContext context, bool ignoreHeaderFallbacks = false);
+        bool Accepts(HttpContext context, string mediaType, bool ignoreHeaderFallbacks = false);
     }
 
     internal abstract class DataHandlerBase : HandlerBase, IHttpHandler
@@ -326,7 +326,7 @@ namespace Maps.API
                 {
                     string opt = GetStringOption("style", queryDefaults).ToLowerInvariant();
                     if (!s_nameToStyle.ContainsKey(opt))
-                        throw new HttpError(400, "Bad Request", String.Format("Invalid style option: {0}", opt));
+                        throw new HttpError(400, "Bad Request", string.Format("Invalid style option: {0}", opt));
                     style = s_nameToStyle[opt];
                 }
             }
@@ -335,20 +335,20 @@ namespace Maps.API
 
             #region ITypeAccepter
             // ITypeAccepter
-            public bool Accepts(HttpContext context, string mediaType)
+            public bool Accepts(HttpContext context, string mediaType, bool ignoreHeaderFallbacks = false)
             {
-                return AcceptTypes(context).Contains(mediaType);
+                return AcceptTypes(context, ignoreHeaderFallbacks).Contains(mediaType);
             }
 
             // ITypeAccepter
-            public IEnumerable<string> AcceptTypes(HttpContext context)
+            public IEnumerable<string> AcceptTypes(HttpContext context, bool ignoreHeaderFallbacks = false)
             {
                 IDictionary<string, object> queryDefaults = null;
                 if (context.Items.Contains("RouteData"))
-                    queryDefaults = (context.Items["RouteData"] as System.Web.Routing.RouteData).Values;
+                    queryDefaults = (context.Items["RouteData"] as RouteData).Values;
 
                 if (context.Request["accept"] != null)
-                    yield return context.Request["accept"];
+                    yield return context.Request["accept"].Replace(' ', '+'); // Hack to allow "image/svg+xml" w/o escaping
 
                 if (context.Request.Headers["accept"] != null)
                     yield return context.Request.Headers["accept"];
@@ -356,7 +356,7 @@ namespace Maps.API
                 if (queryDefaults != null && queryDefaults.ContainsKey("accept"))
                     yield return queryDefaults["accept"].ToString();
 
-                if (context.Request.AcceptTypes != null)
+                if (!ignoreHeaderFallbacks && context.Request.AcceptTypes != null)
                 {
                     foreach (var type in context.Request.AcceptTypes)
                         yield return type;

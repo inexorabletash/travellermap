@@ -1,5 +1,4 @@
 using PdfSharp.Drawing;
-using PdfSharp.Drawing.Layout;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -126,42 +125,39 @@ namespace Maps.Rendering
             set { pathDataTypes = value; }
         }
 
-        // NOTE: Can't cacheResults a GraphicsPath - not free threaded
-        internal XGraphicsPath Path
+        internal AbstractPath Path
         {
             get
             {
                 if (PathDataPoints == null)
                     return null;
 
-                return new XGraphicsPath(PathDataPoints, PathDataTypes, XFillMode.Alternate);
+                return new AbstractPath(PathDataPoints, PathDataTypes);
             }
         }
 
-        public void Draw(XGraphics graphics, RectangleF rect, XPen pen)
+        internal void Draw(AbstractGraphics graphics, RectangleF rect, AbstractPen pen)
         {
             if (graphics == null)
                 throw new ArgumentNullException("graphics");
 
             RectangleF bounds = TransformedBounds;
-
-            //graphics.DrawRectangle( new XPen(XColors.Yellow, 1), bounds.X, bounds.Y, bounds.Width, bounds.Height );
-
             if (bounds.IntersectsWith(rect))
             {
-                XGraphicsPath path = Path;
-                using (RenderUtil.SaveState(graphics))
+                var path = Path;
+                using (graphics.Save())
                 {
                     XMatrix matrix = new XMatrix();
                     matrix.ScalePrepend(ScaleX, ScaleY);
                     matrix.TranslatePrepend(-OriginX, -OriginY);
-                    graphics.MultiplyTransform(matrix, XMatrixOrder.Prepend);
+                    graphics.MultiplyTransform(matrix);
                     graphics.DrawPath(pen, path);
                 }
             }
         }
 
-        internal void DrawName(XGraphics graphics, RectangleF rect, XFont font, XBrush textBrush, LabelStyle labelStyle)
+        // Used for names from vector files (macro borders, rifts)
+        internal void DrawName(AbstractGraphics graphics, RectangleF rect, Font font, AbstractBrush textBrush, LabelStyle labelStyle)
         {
             if (graphics == null)
                 throw new ArgumentNullException("graphics");
@@ -178,27 +174,21 @@ namespace Maps.Rendering
             
                     PointF pos = NamePosition;// PointF( bounds.Left + bounds.Width / 2, bounds.Top + bounds.Height / 2 );
 
-                    using (RenderUtil.SaveState(graphics))
+                    using (graphics.Save())
                     {
                         XMatrix matrix = new XMatrix();
                         matrix.TranslatePrepend(pos.X, pos.Y);
                         matrix.ScalePrepend(1.0f / Astrometrics.ParsecScaleX, 1.0f / Astrometrics.ParsecScaleY);
                         matrix.RotatePrepend(-labelStyle.Rotation); // Rotate it
-                        graphics.MultiplyTransform(matrix, XMatrixOrder.Prepend);
+                        graphics.MultiplyTransform(matrix);
 
-                        XSize size = graphics.MeasureString(str, font);
-                        graphics.TranslateTransform(-size.Width / 2, -size.Height / 2); // Center the text
-                        RectangleF textBounds = new RectangleF(0, 0, (float)size.Width, (float)size.Height * 2); // *2 or it gets cut off at high sizes
-
-                        XTextFormatter tf = new XTextFormatter(graphics);
-                        tf.Alignment = XParagraphAlignment.Center;
-                        tf.DrawString(str, font, textBrush, textBounds);
+                        RenderUtil.DrawString(graphics, str, font, textBrush, 0, 0);
                     }
                 }
             }
         }
 
-        public void Fill(XGraphics graphics, RectangleF rect, Brush fillBrush)
+        internal void Fill(AbstractGraphics graphics, RectangleF rect, AbstractBrush fillBrush)
         {
             if (graphics == null)
                 throw new ArgumentNullException("graphics");
@@ -207,9 +197,9 @@ namespace Maps.Rendering
 
             if (bounds.IntersectsWith(rect))
             {
-                XGraphicsPath path = Path;
+                var path = Path;
 
-                using (RenderUtil.SaveState(graphics))
+                using (graphics.Save())
                 {
                     XMatrix matrix = new XMatrix();
                     matrix.ScalePrepend(ScaleX, ScaleY);
@@ -256,42 +246,37 @@ namespace Maps.Rendering
         public int LabelBiasY { get; set; }
 
 
-        public void Paint(XGraphics graphics, Color dotColor, XBrush labelBrush, XFont labelFont)
+        internal void Paint(AbstractGraphics graphics, Color dotColor, AbstractBrush labelBrush, Font labelFont)
         {
             if (graphics == null)
                 throw new ArgumentNullException("graphics");
 
             Point pt = Astrometrics.LocationToCoordinates(Location);
 
-            using (RenderUtil.SaveState(graphics))
+            using (graphics.Save())
             {
-
-                graphics.SmoothingMode = XSmoothingMode.HighSpeed;
                 graphics.TranslateTransform(pt.X, pt.Y);
                 graphics.ScaleTransform(1.0f / Astrometrics.ParsecScaleX, 1.0f / Astrometrics.ParsecScaleY);
 
                 const float radius = 3;
 
-                XBrush brush = new XSolidBrush(dotColor);
-                XPen pen = new XPen(dotColor);
-                graphics.DrawEllipse(brush, -radius / 2, -radius / 2, radius, radius);
+                AbstractBrush brush = new AbstractBrush(dotColor);
+                AbstractPen pen = new AbstractPen(dotColor);
+                graphics.SmoothingMode = SmoothingMode.HighQuality;
+                graphics.DrawEllipse(pen, brush, -radius / 2, -radius / 2, radius, radius);
 
-                graphics.SmoothingMode = XSmoothingMode.HighQuality;
-                graphics.DrawEllipse(pen, -radius / 2, -radius / 2, radius, radius);
+                RenderUtil.TextFormat format;
+                if (LabelBiasX > 0)
+                    format = LabelBiasY < 0 ? RenderUtil.TextFormat.BottomLeft : LabelBiasY > 0 ? RenderUtil.TextFormat.TopLeft : RenderUtil.TextFormat.MiddleLeft;
+                else if (LabelBiasX < 0)
+                    format = LabelBiasY < 0 ? RenderUtil.TextFormat.BottomRight : LabelBiasY > 0 ? RenderUtil.TextFormat.TopRight : RenderUtil.TextFormat.MiddleRight;
+                else
+                    format = LabelBiasY < 0 ? RenderUtil.TextFormat.BottomCenter : LabelBiasY > 0 ? RenderUtil.TextFormat.TopCenter : RenderUtil.TextFormat.Center;
 
-                XStringFormat format = (LabelBiasX == -1) ? RenderUtil.StringFormatTopRight :
-                    (LabelBiasX == 1) ? RenderUtil.StringFormatTopLeft : RenderUtil.StringFormatTopCenter;
+                float y = (LabelBiasY * radius / 2);
+                float x = (LabelBiasX * radius / 2);
 
-                XSize size = graphics.MeasureString(Name, labelFont);
-                XPoint pos = new XPoint(0, 0);
-
-                //pos.X += ( LabelBiasX * radius / 2 ) + ( -size.Width  * ( 1 - LabelBiasX ) / 2.0f );
-                pos.Y += (LabelBiasY * radius / 2) + (-size.Height * (1 - LabelBiasY) / 2.0f);
-                pos.X += (LabelBiasX * radius / 2);
-                //pos.Y += ( LabelBiasY * radius / 2 );
-
-                graphics.DrawString(Name, labelFont, labelBrush, pos.X, pos.Y, format);
-
+                RenderUtil.DrawString(graphics, Name, labelFont, labelBrush, x, y, format);
             }
         }
 

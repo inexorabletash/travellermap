@@ -4,32 +4,35 @@
 <meta charset="utf-8">
 <link rel="shortcut icon" href="favicon.ico">
 <link rel="stylesheet" href="site.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.2/handlebars.min.js"></script>
-<script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.18/polyfill.min.js"></script>
-<script src="map.js?update=2016-02-08"></script>
-<script src="world.js?update=2016-02-25"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+<script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.25/polyfill.min.js"></script>
+<script src="map.js?update=2016-09-10"></script>
+<script src="world_util.js?update=2016-09-10"></script>
+<script src="world.js?update=2016-09-14"></script>
 
 <style>
 @import url(https://fonts.googleapis.com/css?family=PT+Sans+Narrow);
 
 html, body { margin: 0; padding: 0; }
 body.nopage { margin: 0; padding: 0; overflow: hidden; }
-#paper { text-align: left; background-color: white; color: black; overflow: hidden;  }
-#page { position: relative; width: 7in; height: 9in;}
+#wds-paper { text-align: left; background-color: white; color: black; overflow: hidden;  }
+#wds-page { position: relative; width: 7in; height: 9in;}
 
+h1 a { text-decoration: none; }
+h1 a:hover { text-decoration: underline; }
 h1 small { font-size: 75%; }
 
 @media only screen {
-  #page { margin: 0.25in; }
+  #wds-page { margin: 0.25in; }
 }
 
 @media only screen and (min-width: 8in) {
   body { text-align: center; background-color: gray; width: 100%; }
-  #paper { width: 8in; height: 9.75in; margin: 0.25in auto; box-shadow: 0 0 30px 5px #202020;}
-  #page { margin: 0.5in; }
+  #wds-paper { width: 8in; height: 9.75in; margin: 0.25in auto; box-shadow: 0 0 30px 5px #202020;}
+  #wds-page { margin: 0.5in; }
 
-  .nopage #paper { width: 8in; height: 6.5in; margin: 0; }
-  .nopage #page { width: 7in; height: 5.5in; }
+  .nopage #wds-paper { width: 8in; height: 6.5in; margin: 0; }
+  .nopage #wds-page { width: 7in; height: 5.5in; }
 }
 
 .nopage #footer { display: none; }
@@ -39,7 +42,7 @@ h1 small { font-size: 75%; }
     size: portrait;
     margin: 0.5in;
   }
-  #page, #paper { margin: 0; padding: 0; }
+  #wds-page, #wds-paper { margin: 0; padding: 0; }
 }
 
 td { vertical-align: top; }
@@ -47,7 +50,7 @@ td { vertical-align: top; }
 
 /* World Image */
 
-.image {
+#wds-world-image {
   visibility: hidden;
   position: absolute;
   top: 0; right: 0;
@@ -55,131 +58,86 @@ td { vertical-align: top; }
   height: 140px;
   border: 2px solid black;
 }
-.image.ready {
+#wds-world-image.wds-ready {
   visibility: visible;
 }
 
-.image .background {
-  position: absolute;
-  width: 100%; height: 100%;
-  z-index: 1;
-}
-.image .disc {
-  position: absolute;
-  left: 0; right: 0; top: 0; bottom: 0;
-  margin: auto;
-  z-index: 2;
-}
-.image .placeholder {
-  display: none;
-  color: white;
-  font-size: 60px;
-  margin-top: -30px;
-  position: absolute;
-  top: 50%;
-  width: 100%;
-  text-align: center;
-  z-index: 2;
-}
-.image.unknown .disc { display: none; }
-.image.unknown .placeholder { display: table-cell; }
-
-
-.Siz0 .disc { width: 80%; height: 45%; }
-.Siz1 .disc { width: 25%; height: 25%; }
-.Siz2 .disc { width: 30%; height: 30%; }
-.Siz3 .disc { width: 35%; height: 35%; }
-.Siz4 .disc { width: 40%; height: 40%; }
-.Siz5 .disc { width: 45%; height: 45%; }
-.Siz6 .disc { width: 50%; height: 50%; }
-.Siz7 .disc { width: 55%; height: 55%; }
-.Siz8 .disc { width: 60%; height: 60%; }
-.Siz9 .disc { width: 65%; height: 65%; }
-.SizA .disc { width: 70%; height: 70%; }
-.SizB .disc { width: 75%; height: 75%; }
-.SizC .disc { width: 80%; height: 80%; }
-.SizD .disc { width: 85%; height: 85%; }
-.SizE .disc { width: 90%; height: 90%; }
-.SizF .disc { width: 95%; height: 95%; }
-
 /* Data Blocks */
 
-.decode { white-space: nowrap; margin: 10px 10px; }
-.decode tr:first-of-type td { padding-bottom: 4px; font-weight: bold;}
-.decode td {
+.wds-decode { white-space: nowrap; margin: 10px 10px; }
+.wds-decode tr:first-of-type td { padding-bottom: 4px; font-weight: bold;}
+.wds-decode td {
   padding: 0; margin: 0; width: 16px; font-size: 14px; line-height: 14px;
   x-vertical-align: middle;
   text-align: center;
   overflow: hidden;
 }
-.decode img {
+.wds-decode img {
   margin-top: 2px;
 }
 
-.decode td:first-of-type { text-align: right; padding-right: 4px; font-size: 11px;
-                           width: 150px; }
-.decode td:last-of-type { text-align: left; padding-left: 4px; font-size: 11px; width: auto; }
+.wds-decode td:first-of-type {
+  text-align: right; padding-right: 4px; font-size: 11px; width: 150px; }
+.wds-decode td:last-of-type {
+  text-align: left; padding-left: 4px; font-size: 11px; width: auto; }
 
 /* Specific Data Fields */
 
-.stars { font-size: 117%; }
-.stars .star:after,
-.bases .base:after,
-.nobility .noble:after { content: ' \2014 '; } /* U+2014 EM DASH */
+.wds-imp-blurb { font-weight: normal; }
 
-.stars .star:last-child:after,
-.bases .base:last-child:after,
-.nobility .noble:last-child:after { content: ''; }
+.wds-stars { font-size: 117%; }
+.wds-stars .wds-star:after,
+.wds-bases .wds-base:after,
+.wds-nobility .wds-noble:after { content: ' \2014 '; } /* U+2014 EM DASH */
 
-.zone-amber { background-color: yellow; padding: 2px 20px; display: inline-block; }
-.zone-red { background-color: red; padding: 2px 20px; display: inline-block; }
+.wds-stars .wds-star:last-child:after,
+.wds-bases .wds-base:last-child:after,
+.wds-nobility .wds-noble:last-child:after { content: ''; }
+
+.wds-zone-amber { background-color: yellow; padding: 2px 20px; display: inline-block; }
+.wds-zone-red { background-color: red; padding: 2px 20px; display: inline-block; }
 
 /* UWP Table */
 
-.uwp th { font-size: 9pt; text-align: left; }
-.uwp td, .uwp th { padding-right: 0.5em; white-space: nowrap}
-.uwp td { font-family: "PT Sans Narrow"; font-size: 8.5pt; }
-#jumpmap { width: 236px; height: 254px; cursor: pointer; }
-#neighborhood { width: 100%; }
-.uwp a { text-decoration: none; }
-.uwp a:hover { text-decoration: underline; }
+.wds-uwp th { font-size: 9pt; text-align: left; }
+.wds-uwp td, .wds-uwp th { padding-right: 0.5em; white-space: nowrap}
+.wds-uwp td { font-family: "PT Sans Narrow"; font-size: 8.5pt; }
+#wds-jumpmap { width: 236px; height: 254px; cursor: pointer; }
+#wds-neighborhood { width: 100%; }
+.wds-uwp a { text-decoration: none; }
+.wds-uwp a:hover { text-decoration: underline; }
 
 </style>
 
-<div id="paper">
-<div id="page">
+<div id=wds-paper>
+<div id=wds-page>
 
 
-<div id="world-image" class="image">
-<img class="background" alt="" src="res/world/stars.png">
-<canvas class="disc" width=120 height=120></canvas>
-<div class="placeholder">?</div>
-</div>
+<canvas id=wds-world-image width=280 height=280></canvas>
 
-
-<div id="world-data"></div>
-<script id="world-template" type="text/x-handlebars-template">
+<div id=wds-world-data></div>
+<script id=wds-world-template type="text/x-handlebars-template">
 
 <h1>
-{{#if Name}} {{Name}} {{else}} (Unnamed) {{/if}}
+{{#if Name}} <a target=wiki href="{{world_url}}">{{Name}}</a> {{else}} (Unnamed) {{/if}}
 <small>
-{{#if SubsectorName}} / {{SubsectorName}} {{/if}}
-({{Sector}} {{Hex}})
+{{#if SubsectorName}} / <a target=wiki href="{{ss_url}}">{{SubsectorName}}</a> {{/if}}
+<a target=wiki href="{{sector_url}}">({{Sector}}</a> {{Hex}})
 </small>
 </h1>
 
 {{#if AllegianceName}}
-<table class="decode"><tr>
+<table class=wds-decode><tr>
 <td>Allegiance:
 <td><big>{{AllegianceName}}</big> ({{Allegiance}})
 </table>
 {{/if}}
 
-<table class="decode"><tr>
+<table class=wds-decode><tr>
 <td>System:
 <td>
-    <div class="stars">
-    {{#Stars}} <span class="star">{{.}}</span> {{/Stars}}
+    <div class=wds-stars>
+    {{#Stars}} <span class=wds-star>{{.}}</span> {{/Stars}}
     </div>
     <div>
       <big>{{PBG.GG}}</big> <small>Gas Giants</small>
@@ -190,14 +148,14 @@ td { vertical-align: top; }
       <big>{{OtherWorlds}}</big> <small>Other Worlds</small>
       {{/if}}
     </div>
-    <div class="bases">
-      {{#Bases}} <span class="base">{{.}}</span> {{/Bases}}
+    <div class=wds-bases>
+      {{#Bases}} <span class=wds-base>{{.}}</span> {{/Bases}}
     </div>
 </table>
 
 
 {{#UWP}}
-<table class="decode">
+<table class=wds-decode>
 <tr><td>Universal World Profile:<td>{{Starport}}<td>{{Siz}}<td>{{Atm}}<td>{{Hyd}}<td>{{Pop}}<td>{{Gov}}<td>{{Law}}<td>&ndash;<td>{{Tech}}<td>
     <tr><td>Starport ({{StarportBlurb}})<td colspan=9 rowspan=4><img width="144" height="49" src="res/world/uwp.svg" alt=""><td>Technology Level ({{TechBlurb}})
 <tr><td>Size ({{SizBlurb}})<td>Law Level ({{LawBlurb}})
@@ -207,13 +165,13 @@ td { vertical-align: top; }
 {{/UWP}}
 
 {{#Ix}}
-<table class="decode">
-<tr><td>Importance {Ix}:<td>{<td>{{Imp}}<td>}<td>
+<table class=wds-decode>
+<tr><td>Importance {Ix}:<td>{<td>{{Imp}}<td>} <td> <span class=wds-imp-blurb>{{ImpBlurb}}</span>
 </table>
 {{/Ix}}
 
 {{#Ex}}
-<table class="decode">
+<table class=wds-decode>
 <tr><td>Economics (Ex):<td>(<td>{{Res}}<td>{{Lab}}<td>{{Inf}}<td>{{Eff}}<td>)<td>
 <tr><td>Resources ({{ResBlurb}})<td colspan=6 rowspan=2><img width="96" height="21" src="res/world/ex.svg" alt=""><td>Efficiency ({{EffBlurb}})
 <tr><td>Labor ({{LabBlurb}})<td>Infrastructure ({{InfBlurb}})
@@ -221,7 +179,7 @@ td { vertical-align: top; }
 {{/Ex}}
 
 {{#Cx}}
-<table class="decode">
+<table class=wds-decode>
 <tr><td>Culture [Cx]:<td>[<td>{{Hom}}<td>{{Acc}}<td>{{Str}}<td>{{Sym}}<td>]<td>
 <tr><td>Homogeneity ({{HomBlurb}})<td colspan=6 rowspan=2><img width="96" height="21" src="res/world/cx.svg" alt=""><td>Symbols ({{SymBlurb}})
 <tr><td>Acceptance ({{AccBlurb}})<td>Strangeness ({{StrBlurb}})
@@ -229,44 +187,44 @@ td { vertical-align: top; }
 {{/Cx}}
 
 {{#if TotalPopulation }}
-<table class="decode"><tr>
+<table class=wds-decode><tr>
 <td style="vertical-align: bottom">Total Population:
 <td><big>{{PopMult}} &times; 10<sup>{{PopExp}}</sup> = {{TotalPopulation}}</big>
 </table>
 {{/if}}
 
 {{#if Nobility}}
-<table class="decode"><tr>
+<table class=wds-decode><tr>
 <td>Nobility:
-<td><big class="nobility">{{#Nobility}} <span class="noble">{{.}}</span> {{/Nobility}}</big>
+<td><big class=wds-nobility>{{#Nobility}} <span class=wds-noble>{{.}}</span> {{/Nobility}}</big>
 </table>
 {{/if}}
 
 {{#if Remarks}}
-<table class="decode"><tr>
+<table class=wds-decode><tr>
 <td>Remarks:
 <td style="white-space: normal">
-{{#Remarks}}<span class="nowrap"><big>{{code}}</big> <small>{{detail}}</small></span>&#x20;{{/Remarks}}
+{{#Remarks}}<span class=nowrap><big>{{code}}</big> <small>{{detail}}</small></span>&#x20;{{/Remarks}}
 </table>
 {{/if}}
 
 {{#Zone}}
-<table class="decode"><tr>
+<table class=wds-decode><tr>
 <td>Travel Zone:
-<td><big class="zone-{{className}}">{{rule}}</big> <br> <small>Travellers' Aid Society Rating: {{rating}}</small>
+<td><big class="wds-zone-{{className}}">{{rule}}</big> <br> <small>Travellers' Aid Society Rating: {{rating}}</small>
 </table>
 {{/Zone}}
 
 </script>
 
-<div id="neighborhood-data"></div>
-<script id="neighborhood-template" type="text/x-handlebars-template">
+<div id=wds-neighborhood-data></div>
+<script id=wds-neighborhood-template type="text/x-handlebars-template">
   <h2 style="margin-top: 0;">Jump-2 Neighborhood</h2>
-  <table id="neighborhood">
+  <table id=wds-neighborhood>
     <tr>
-      <td><img id="jumpmap"></td>
-      <td><div class="uwp">
-          <table class="uwp">
+      <td><img id=wds-jumpmap></td>
+      <td><div class=wds-uwp>
+          <table class=wds-uwp>
             <tr><th>Name<th>Hex<th>UWP<th>B<th>Remarks<th>Z<th>PBG<th>A<th>Stellar</tr>
             {{#Worlds}}
             <tr>
@@ -286,8 +244,8 @@ td { vertical-align: top; }
   </table>
 </script>
 
-<div id="footer" style="text-align: center; font-size: 8pt;">
-  The <em class="product">Traveller</em> game in all forms is owned by Far
+<div id=footer style="text-align: center; font-size: 8pt;">
+  The <em class=product>Traveller</em> game in all forms is owned by Far
   Future Enterprises. Copyright &copy; 1977 &ndash; 2016 Far Future
   Enterprises.
   <a href="http://farfuture.net/FFEFairUsePolicy2008.pdf">Fair Use Policy</a>

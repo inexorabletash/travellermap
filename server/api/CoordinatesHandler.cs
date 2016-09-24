@@ -26,7 +26,7 @@ namespace Maps.API
                 ResourceManager resourceManager = new ResourceManager(Context.Server);
                 SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, GetStringOption("milieu"));
 
-                Location loc = new Location(map.FromName("Spinward Marches").Location, 1910);
+                Location loc = Location.Empty;
 
                 // Accept either sector [& hex] or sx,sy [& hx,hy] or x,y
                 if (HasOption("sector"))

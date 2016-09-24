@@ -1,3 +1,4 @@
+/*global Traveller, Util, getTextViaPOST, Handlebars, AllegianceMap, walk, neighbor, processMap, UNALIGNED, NON_ALIGNED */
 document.addEventListener('DOMContentLoaded', function() {
   'use strict';
   var $ = function(s) { return document.querySelector(s); };
