@@ -1,4 +1,4 @@
-var Traveller, Util, Handlebars;
+/*global Traveller, Util, Handlebars */ // for lint and IDEs
 (function(global) {
   'use strict';
 
@@ -6,18 +6,19 @@ var Traveller, Util, Handlebars;
   var $$ = function(s) { return document.querySelectorAll(s); };
 
   window.addEventListener('DOMContentLoaded', function() {
-    var query = Util.parseURLQuery(document.location);
+    var searchParams = new URL(document.location).searchParams;
 
-    if ('nopage' in query)
+    if (searchParams.has('nopage'))
       document.body.classList.add('nopage');
 
     var coords;
-    if ('sector' in query && 'hex' in query)
-      coords = {sector: query.sector, hex: query.hex};
-    else if ('x' in query && 'y' in query)
-      coords = {x: query.x, y: query.y};
+    if (searchParams.has('sector') && searchParams.has('hex'))
+      coords = {sector: searchParams.get('sector'), hex: searchParams.get('hex')};
+    else if (searchParams.has('x') && searchParams.has('y'))
+      coords = {x: searchParams.get('x'), y: searchParams.get('y')};
     else
       coords = {sector: 'spin', hex: '1910'};
+    coords.milieu = searchParams.get('milieu');
 
     // Look up canonical location.
     fetch(Traveller.MapService.makeURL('/api/coordinates?', coords))
@@ -30,66 +31,54 @@ var Traveller, Util, Handlebars;
 
         // Fetch world data and fill in sheet.
         promises.push(
-          fetch(Traveller.MapService.makeURL('/api/jumpworlds?',
-                                             {x: coords.x, y: coords.y, jump: 0}))
+          fetch(Traveller.MapService.makeURL('/api/jumpworlds?', {
+            x: coords.x, y: coords.y,
+            milieu: searchParams.get('milieu'),
+            jump: 0
+          }))
             .then(function(response) {
               if (!response.ok) throw Error(response.statusText);
               return response.json();
             })
             .then(function(data) {
-              return data.Worlds[0];
+              return Traveller.prepareWorld(data.Worlds[0]);
             })
             .then(function(world) {
-              return Traveller.renderWorld(
-                world, $('#wds-world-template').innerHTML, $('#wds-world-data'));
+              if (!world) return undefined;
+              return Traveller.renderWorldImage(world, $('#wds-world-image'));
             })
             .then(function(world) {
               if (!world) return;
 
-              Traveller.renderWorldImage(world, $('#wds-world-image'))
-                .then(function() {
-                  $('#wds-world-image').classList.add('wds-ready');
-                });
+              $('#wds-world-image').classList.add('wds-ready');
+              Traveller.renderWorld(
+                world, $('#wds-world-template').innerHTML, $('#wds-world-data'));
 
               // Document title
               document.title = Handlebars.compile(
                 '{{{Name}}} ({{{Sector}}} {{{Hex}}}) - World Data Sheet')(world);
 
-              // Hook up any generated "expandy" fields
-              Array.from($$('.wds-expandy')).forEach(function(elem) {
-                elem.addEventListener('click', function(event) {
-                  var t = elem;
-                  do {
-                    t = t.nextSibling;
-                  } while (t.nodeType !== Node.ELEMENT_NODE);
-                  t.classList.toggle('wds-hidden');
-                  elem.classList.toggle('wds-expanded');
-                });
-              });
-
-              // Hook up toggle
-              if ($('#wds-mini-toggle')) {
-                $('#wds-mini-toggle').addEventListener('click', function(event) {
-                  $('#wds-frame').classList.toggle('wds-mini');
-                });
-              }
-
               // Prettify URL
               if ('history' in window && 'replaceState' in window.history) {
                 var url = window.location.href.replace(/\?.*$/, '') + '?sector=' + world.Sector + '&hex=' + world.Hex;
+                if (searchParams.has('milieu'))
+                  url += '&milieu=' + encodeURIComponent(searchParams.get('milieu'));
                 window.history.replaceState(null, document.title, url);
               }
             })
           );
 
         // Fill in neighborhood/jumpmap.
-        if (!('nohood' in query) && $('#wds-neighborhood-data')) {
+        if (!searchParams.has('nohood') && $('#wds-neighborhood-data')) {
           var JUMP = 2;
           var SCALE = 48;
 
           promises.push(
-            fetch(Traveller.MapService.makeURL('/api/jumpworlds?',
-                                               {x: coords.x, y: coords.y, jump: JUMP}))
+            fetch(Traveller.MapService.makeURL('/api/jumpworlds?', {
+              x: coords.x, y: coords.y,
+              milieu: searchParams.get('milieu'),
+              jump: JUMP
+            }))
               .then(function(response) { return response.json(); })
               .then(function(data) {
                 // Make hi-pop worlds uppercase
@@ -106,6 +95,7 @@ var Traveller, Util, Handlebars;
               var mapParams = {
                 x: coords.x,
                 y: coords.y,
+                milieu: searchParams.get('milieu'),
                 jump: JUMP,
                 scale: SCALE,
                 border: 0};
@@ -117,8 +107,12 @@ var Traveller, Util, Handlebars;
             .then(function(image) {
               image.addEventListener('click', function(event) {
                 var result = jmapToCoords(event, JUMP, SCALE, coords.x, coords.y);
-                if (result)
-                  window.location.search = '?x=' + result.x + '&y=' + result.y;
+                if (result) {
+                  var search = '?x=' + result.x + '&y=' + result.y;
+                  if (searchParams.has('milieu'))
+                    search += '&milieu=' + encodeURIComponent(searchParams.get('milieu'));
+                  window.location.search = search;
+                }
               });
             }));
         }

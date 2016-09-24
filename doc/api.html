@@ -314,7 +314,7 @@ table#features, #features th, #features td { border: solid 1px black; }
 
     <dt style="clear: both;"><img style="float: right; width: 48px; height: 48px; margin: 10px;" src="../res/ui/style-fasa.png"  alt="FASA example">
       style=fasa</dt>
-    <dd>A style reminiscent of FASA's classic supplements and magazines.)</dd>
+    <dd>A style reminiscent of FASA's classic supplements and magazines.</dd>
     </dl>
 
     <h4>Page and API</h4>
@@ -332,6 +332,12 @@ table#features, #features th, #features td { border: solid 1px black; }
 
       <dt>rifts=0</dt>
       <dd>Don't shade rifts. The default is to shade rifts.</dd>
+
+      <dt>sscoords=1</dt>
+      <dd>Hexes are numbered subsector style (0101-0810) instead of sector style (0101-3240)</dd>
+
+      <dt>allhexes=1</dt>
+      <dd>All hexes are numbered. The default is just to number hexes with worlds.</dd>
 
       <dt>po=1</dt>
       <dd><b>Population overlay:</b> a yellow circle with
@@ -359,8 +365,32 @@ table#features, #features th, #features td { border: solid 1px black; }
 
       <dt>stellar=1</dt>
       <dd>A representation of the system's stars is shown
-        instead of rendering world details. Sizes are not to scale.
-      <dd></dd>
+        instead of rendering world details. Sizes are not to scale.</dd>
+
+      <dt>hw=<var>S</var><var>N</var></dt>
+      <dt>hw=<var>S</var><var>N</var>+</dt>
+      <dt>hw=<var>S</var><var>N</var>-</dt>
+      <dt>hw=<var>S</var><var>M</var>-<var>M</var></dt>
+      <dd><b>Highlight Worlds overlay:</b>
+        Worlds with a matching characteristic are highlighted. The argument
+        starts with a field name, one of
+        <code>St</code>
+        <code>S</code>
+        <code>A</code>
+        <code>H</code>
+        <code>P</code>
+        <code>G</code>
+        <code>L</code>
+        <code>T</code>
+        <code>Ix</code>.
+        This is followed by either
+        a value (field is <var>N</var>),
+        a value and - (field is <var>N</var> or lower),
+        a value and + (field is <var>N</var> or higher),
+        or a value and - and another value (field in the range <var>N</var> to <var>M</var>).
+        Note that values are decimal integers (possibly negative), not eHex.
+        (<a target="_blank" href="../?hw=Ix4+">example</a>)
+      </dd>
 
     </dl>
 
@@ -370,12 +400,6 @@ table#features, #features th, #features td { border: solid 1px black; }
     <a href="#iframe">IFRAME</a> API.</p>
 
     <dl class="params">
-      <dt>sscoords=1</dt>
-      <dd>Hexes are numbered subsector style (0101-0810) instead of sector style (0101-3240)</dd>
-
-      <dt>allhexes=1</dt>
-      <dd>All hexes are numbered. The default is just to number hexes with worlds.</dd>
-
       <dt>dpr=<var>number</var></dt>
       <dd>The image is rendered for the specified
         <a target="_blank" href="http://www.quirksmode.org/blog/archives/2012/07/more_about_devi.html">device pixel ratio</a>.
@@ -422,6 +446,114 @@ table#features, #features th, #features td { border: solid 1px black; }
       <dt>x
       <dt>y <dd>specify a location in <a href="#system_map">Map-space coordinates</a>
       <dt>galdir=0 <dd>Turn off the overlay of galactic directions (Spinward, Coreward, etc)
+
+      <dt>q
+      <dd>perform a search for the given query
+        (<a target="_blank" href="../?q=regina">example</a>)
+      <dt>qn
+      <dd>perform a search for the given query, and navigate to the first result
+        (<a target="_blank" href="../?qn=regina">example</a>)
+    </dl>
+
+
+    <h4>Markers:</h4>
+
+    <dl class="params">
+      <dt>marker_url=<var>URL</var>
+        <dd>Marker image URL.
+
+      <dt>marker_sector
+      <dt>marker_hex
+        <dd>Show a marker at <a href="#system_location">named coordinates</a>
+          (<a target="_blank" href="../?marker_sector=spin&amp;marker_hex=1910&amp;marker_url=res/markers/beowulf.png">example</a>)
+
+      <dt>marker_sx
+      <dt>marker_sy
+      <dt>marker_hx
+      <dt>marker_hy
+        <dd>Show a marker at <a href="#system_sectorhex">Sector/Hex coordinates</a>
+            (<a target="_blank" href="../?marker_sx=-4&amp;marker_sy=-1&amp;marker_hx=19&amp;marker_hy=10&amp;marker_url=res/markers/beowulf.png">example</a>)
+
+      <dt>marker_x
+      <dt>marker_y
+        <dd>Show a marker at <a href="#system_map">Map-space coordinates</a>
+          (<a target="_blank" href="../?marker_x=-95.914&amp;marker_y=70.5&amp;marker_url=res/markers/beowulf.png">example</a>)
+
+      <dt>marker=<var>URL</var>
+        <dd>Shortcut: The marker will be placed at the initial map location if the
+          <code>sector</code> and <code>hex</code> options or a <code>/go/</code>
+          link are used.
+          (<a target="_blank" href="../?sector=VLAN&amp;hex=1717&amp;marker=res/markers/submerchant.png">example</a>)
+    </dl>
+
+
+    <p>
+      Marker images should be a 256px &times; 256px PNG and will be
+      centered on the specified coordinates. A handful of example
+      markers are available; relative URLs can be used for these.
+      Images by Andrew Boulton, c/o FFE.
+    </p>
+
+    <table id="sample_markers">
+      <tr>
+        <td><img src="../res/markers/beowulf.png" style="width: 64px;" alt="Beowulf-Class Free Trader">
+        <td><code>res/markers/beowulf.png</code>
+      <tr>
+        <td><img src="../res/markers/scout.png" style="width: 64px;" alt="Sulieman-Class Scout/Courier">
+        <td><code>res/markers/scout.png</code>
+      <tr>
+        <td><img src="../res/markers/fartrader.png" style="width: 64px;" alt="Empress Marava-Class Far Trader">
+        <td><code>res/markers/fartrader.png</code>
+      <tr>
+        <td><img src="../res/markers/submerchant.png" style="width: 64px;" alt="Akkigish-class Subsidized Merchant">
+        <td><code>res/markers/submerchant.png</code>
+      <tr>
+        <td><img src="../res/markers/subliner.png" style="width: 64px;" alt="Subsidized Liner">
+        <td><code>res/markers/subliner.png</code>
+      <tr>
+        <td><img src="../res/markers/merccruiser.png" style="width: 64px;" alt="Mercenary Cruiser">
+        <td><code>res/markers/merccruiser.png</code>
+      <tr>
+        <td><img src="../res/markers/sdb.png" style="width: 64px;" alt="System Defense Boat">
+        <td><code>res/markers/sdb.png</code>
+      <tr>
+        <td><img src="../res/markers/labship.png" style="width: 64px;" alt="Laboratory Ship">
+        <td><code>res/markers/labship.png</code>
+    </table>
+
+    <h4>You Are Here:</h4>
+
+    <p>A built-in marker type that is style-aware and shows "You Are Here".</p>
+
+    <dl class="params">
+
+      <dt>yah_sector
+      <dt>yah_hex
+        <dd>Show a marker at <a href="#system_location">named coordinates</a>
+            (<a target="_blank" href="../?yah_sector=spin&amp;yah_hex=1910">example</a>)
+
+      <dt>yah_sx
+      <dt>yah_sy
+      <dt>yah_hx
+      <dt>yah_hy
+        <dd>Show a marker at <a href="#system_sectorhex">Sector/Hex coordinates</a>
+            (<a target="_blank" href="../?yah_sx=-4&amp;yah_sy=-1&amp;yah_hx=19&amp;yah_hy=10">example</a>)
+
+      <dt>yah_x
+      <dt>yah_y
+        <dd>Show a marker at <a href="#system_map">Map-space coordinates</a>
+            (<a target="_blank" href="../?yah_x=-95.914&amp;yah_y=70.5">example</a>)
+
+      <dt>yah
+        <dd>Shortcut: The marker will be placed at the initial map location if the
+          <code>sector</code> and <code>hex</code> options or a <code>/go/</code>
+          link are used.
+          (<a target="_blank" href="../?sector=VLAN&amp;hex=1717&amp;yah">example</a>)
+    </dl>
+
+    <h4>Overlays:</h4>
+
+    <dl class="params">
       <dt>ew=<var>date</var></dt>
       <dd><b>Empress Wave overlay:</b> the position of the Empress Wave
         at the given date is shown. The date can be specified as one of:
@@ -436,65 +568,19 @@ table#features, #features th, #features td { border: solid 1px black; }
         approximation of the progress across parsecs is presented.
       </dd>
 
-      <dt>q
-      <dd>perform a search for the given query
-        (<a target="_blank" href="../?q=regina">example</a>)
-      <dt>qn
-      <dd>perform a search for the given query, and navigate to the first result
-        (<a target="_blank" href="../?qn=regina">example</a>)
-    </dl>
-
-
-    <h4>Beta Features:</h4>
-    <p>Beta API features may be revoked or changed at any time, but I'll post updates
-    to the <a href="https://travellermap.blogspot.com">blog</a> first.</p>
-    <dl class="params">
-      <dt>yah_sector
-      <dt>yah_hex
-        <dd><a href="#system_location">Named coordinates</a> to place a "You Are Here" graphical
-            marker. (<a target="_blank" href="../?yah_sector=spin&amp;yah_hex=1910">example</a>)
-
-      <dt>yah_sx
-      <dt>yah_sy
-      <dt>yah_hx
-      <dt>yah_hy
-        <dd><a href="#system_sectorhex">Sector/Hex coordinates</a> to place a "You Are Here" graphical
-            marker. (<a target="_blank" href="../?yah_sx=-4&amp;yah_sy=-1&amp;yah_hx=19&amp;yah_hy=10">example</a>)
-
-      <dt>marker_sector
-      <dt>marker_hex
-      <dt>marker_url
-        <dd><a href="#system_location">Named coordinates</a> and image URL for a custom marker.
-          The image should be a 256px &times; 256px PNG and will be centered on the given coordinates.
-          (<a target="_blank" href="../?marker_sector=spin&amp;marker_hex=1910&amp;marker_url=res/markers/beowulf.png">example</a>)
-
       <dt>ox
       <dt>oy
       <dt>ow
       <dt>oh
         <dd><a href="#system_map">Map-space coordinates</a> for the left, top, width, and height of an overlay or highlight rectangle to place over the map.To specify additional overlay rectangles, include
-            <code>ox1</code> (etc) for the first additional overlay, <code>ox2</code> (etc) for the
-            second additional overlay, and so on. For example, here's the
+            <code>ox1</code>/<code>oy1</code>/<code>ow1</code>/<code>oh1</code>
+            for the first additional overlay
+            <code>ox2</code>/<code>oy2</code>/<code>ow2</code>/<code>oh2</code>
+            for the second additional overlay, and so on. For example, here's the
             <a target="_blank" href="../?ox=-111.95&amp;oy=80&amp;ow=194.2&amp;oh=200">Atlas of the Imperium coverage area</a>.
 
     </dl>
 
-    A handful of example markers are available; relative URLs can be used for these.
-    Images by Andrew Boulton, c/o FFE.
-    <table id="sample_markers">
-      <tr>
-        <td><img src="../res/markers/beowulf.png" style="width: 64px;" alt="Beowulf-Class Free Trader">
-        <td><code>res/markers/beowulf.png</code>
-      <tr>
-        <td><img src="../res/markers/scout.png" style="width: 64px;" alt="Sulieman-Class Scout/Courier">
-        <td><code>res/markers/scout.png</code>
-      <tr>
-        <td><img src="../res/markers/fartrader.png" style="width: 64px;" alt="Empress Marava-Class Far Trader">
-        <td><code>res/markers/fartrader.png</code>
-      <tr>
-        <td><img src="../res/markers/submerchant.png" style="width: 64px;" alt="Akkigish-class Subsidized Merchant">
-        <td><code>res/markers/submerchant.png</code>
-    </table>
 
 
   </section>
@@ -612,6 +698,7 @@ table#features, #features th, #features td { border: solid 1px black; }
         <dt>hy <dd>hex in <a href="#system_sectorhex">sector/hex coordinates</a>
         <dt>x
         <dt>y <dd>location in <a href="#system_world">world-space coordinates</a>
+        <dt>milieu <dd>data milieu (e.g. <code>M1900</code>); optional
     </dl>
 
     <h4>Notes:</h4>
@@ -675,6 +762,7 @@ table#features, #features th, #features td { border: solid 1px black; }
         <dt>hy <dd>hex in <a href="#system_sectorhex">sector/hex coordinates</a>
         <dt>x
         <dt>y <dd>location in <a href="#system_world">world-space coordinates</a>
+        <dt>milieu <dd>data milieu (e.g. <code>M1900</code>); optional
     </dl>
 
     <h4>Notes:</h4>
@@ -724,6 +812,7 @@ table#features, #features th, #features td { border: solid 1px black; }
             <dt>quadrant <dd>one of <code>Alpha</code>, <code>Beta</code>, <code>Gamma</code> or <code>Delta</code>
             <dt>sx
             <dt>sy <dd>sector in <a href="#system_sectorhex">sector/hex coordinates</a>
+            <dt>milieu <dd>data milieu (e.g. <code>M1900</code>); optional
           </dl>
 
         <dt>POST
@@ -807,6 +896,7 @@ table#features, #features th, #features td { border: solid 1px black; }
           <dt>sector <dd>sector name or T5SS abbreviation
               <dt>sx
               <dt>sy <dd>sector in <a href="#system_sectorhex">sector/hex coordinates</a>
+              <dt>milieu <dd>data milieu (e.g. <code>M1900</code>); optional
         </dl>
 
       <dt>POST
@@ -860,6 +950,7 @@ table#features, #features th, #features td { border: solid 1px black; }
         <dt>sector <dd>sector name
         <dt>sx
         <dt>sy <dd>sector in <a href="#system_sectorhex">sector/hex coordinates</a>
+        <dt>milieu <dd>data milieu (e.g. <code>M1900</code>); optional
     </dl>
 
     <h4>Notes:</h4>
@@ -905,6 +996,7 @@ table#features, #features th, #features td { border: solid 1px black; }
         <dt>hy <dd>hex in <a href="#system_sectorhex">sector/hex coordinates</a>
         <dt>x
         <dt>y <dd>location in <a href="#system_world">world-space coordinates</a>
+        <dt>milieu <dd>data milieu (e.g. <code>M1900</code>); optional
     </dl>
 
     <h4>Notes:</h4>
@@ -1068,7 +1160,8 @@ table#features, #features th, #features td { border: solid 1px black; }
 
     <h4>Options:</h4>
     <dl class="params">
-        <dt>era <dd>Year, e.g. <code>0</code>, <code>1110</code>, <code>1248</code>
+        <dt>era
+        <dt>milieu <dd>data milieu (e.g. <code>M1900</code>); optional
         <dt>requireData <dd>If <code>1</code>, only sectors with data files will be included
         <dt>tag <dd>Required tags, e.g. <code>Official</code> or <code>InReview</code>.
           Multiple required tags can be specified using <code>|</code> as a separator, e.g.
@@ -1138,6 +1231,7 @@ table#features, #features th, #features td { border: solid 1px black; }
         <dt>x
         <dt>y <dd><a href="#system_tile">tile-space coordinate</a>
         <dt>scale <dd>scale in pixels/parsec
+        <dt>milieu <dd>data milieu (e.g. <code>M1900</code>); optional
     </dl>
     <h4>Options:</h4>
     <dl class="params">
@@ -1202,6 +1296,7 @@ table#features, #features th, #features td { border: solid 1px black; }
         <dt>y1 <dd>top-left hex (inclusive) of the rectangle in <a href="#system_world">World-Space Coordinates</a>
         <dt>x2
         <dt>y2 <dd>bottom-right hex (inclusive) of the rectangle in <a href="#system_world">World-Space Coordinates</a>
+        <dt>milieu <dd>data milieu (e.g. <code>M1900</code>); optional
       </dl>
 
   <dt>POST
@@ -1303,6 +1398,7 @@ table#features, #features th, #features td { border: solid 1px black; }
         <dt>hy <dd>hex in <a href="#system_sectorhex">sector/hex coordinates</a>
         <dt>x
         <dt>y <dd>location in <a href="#system_world">world-space coordinates</a>
+        <dt>milieu <dd>data milieu (e.g. <code>M1900</code>); optional
       </dl>
 
   <dt>POST

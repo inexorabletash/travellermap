@@ -1,12 +1,8 @@
-﻿#define LEGACY_ASPX
-
-using Json;
+﻿using Json;
 using Maps.Admin;
 using Maps.API;
 using Maps.HTTP;
 using System;
-using System.Collections.Generic;
-using System.Web;
 using System.Web.Routing;
 
 namespace Maps
@@ -17,46 +13,7 @@ namespace Maps
         {
             RegisterRoutes(RouteTable.Routes);
         }
-
-        protected void Application_BeginRequest(object sender, EventArgs e)
-        {
-            HttpContext.Current.Response.AddHeader("Access-Control-Allow-Origin", "*");
-
-            if (HttpContext.Current.Request.HttpMethod == "OPTIONS")
-            {
-                //These headers are handling the "pre-flight" OPTIONS call sent by the browser
-                HttpContext.Current.Response.AddHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-                HttpContext.Current.Response.AddHeader("Access-Control-Allow-Headers", "Content-Type, Accept");
-                HttpContext.Current.Response.AddHeader("Access-Control-Max-Age", "3600");
-                HttpContext.Current.Response.End();
-            }
-
-            // Make ".html" suffix optional for certain pages
-            if (s_extensionless.Contains(Context.Request.Path.ToLowerInvariant()))
-            {
-                Context.RewritePath(Context.Request.Path + ".html");
-                return;
-            }
-        }
-
-        private static readonly HashSet<string> s_extensionless = new HashSet<string> {
-            "/world",
-            "/doc/about",
-            "/doc/api",
-            "/doc/credits",
-            "/doc/custom",
-            "/doc/fileformats",
-            "/doc/metadata",
-            "/doc/secondsurvey",
-            "/doc/submit",
-            "/make/atlas",
-            "/make/borders",
-            "/make/booklet",
-            "/make/poster",
-            "/make/routes",
-            "/make/path",
-        };
-
+        
         private static void RegisterRoutes(RouteCollection routes)
         {
             var DEFAULT_JSON = new RouteValueDictionary { { "accept", JsonConstants.MediaType } };
@@ -89,10 +46,6 @@ namespace Maps
             routes.Add(new RegexRoute(@"/api/search", new GenericRouteHandler(typeof(SearchHandler)), DEFAULT_JSON));
             routes.Add(new RegexRoute(@"/api/route", new GenericRouteHandler(typeof(RouteHandler)), DEFAULT_JSON));
 
-#if LEGACY_ASPX
-            routes.Add(new RegexRoute(@"/Search.aspx", new GenericRouteHandler(typeof(SearchHandler)), caseInsensitive: true));
-#endif
-
             // Rendering ----------------------------------------------------
 
             routes.Add(new RegexRoute(@"/api/jumpmap", new GenericRouteHandler(typeof(JumpMapHandler))));
@@ -101,22 +54,12 @@ namespace Maps
             routes.Add(new RegexRoute(@"/api/poster/(?<sector>[^/]+)/(?<quadrant>(?:alpha|beta|gamma|delta))", new GenericRouteHandler(typeof(PosterHandler))));
             routes.Add(new RegexRoute(@"/api/poster/(?<sector>[^/]+)/(?<subsector>[^/]+)", new GenericRouteHandler(typeof(PosterHandler))));
             routes.Add(new RegexRoute(@"/api/tile", new GenericRouteHandler(typeof(TileHandler))));
-#if LEGACY_ASPX
-            routes.Add(new RegexRoute(@"/JumpMap.aspx", new GenericRouteHandler(typeof(JumpMapHandler)), caseInsensitive: true));
-            routes.Add(new RegexRoute(@"/Poster.aspx", new GenericRouteHandler(typeof(PosterHandler)), caseInsensitive: true));
-            routes.Add(new RegexRoute(@"/Tile.aspx", new GenericRouteHandler(typeof(TileHandler)), caseInsensitive: true));
-#endif
 
             // Location Queries ---------------------------------------------
 
             routes.Add(new RegexRoute(@"/api/coordinates", new GenericRouteHandler(typeof(CoordinatesHandler)), DEFAULT_JSON));
             routes.Add(new RegexRoute(@"/api/credits", new GenericRouteHandler(typeof(CreditsHandler)), DEFAULT_JSON));
             routes.Add(new RegexRoute(@"/api/jumpworlds", new GenericRouteHandler(typeof(JumpWorldsHandler)), DEFAULT_JSON));
-#if LEGACY_ASPX
-            routes.Add(new RegexRoute(@"/Coordinates.aspx", new GenericRouteHandler(typeof(CoordinatesHandler)), caseInsensitive: true));
-            routes.Add(new RegexRoute(@"/Credits.aspx", new GenericRouteHandler(typeof(CreditsHandler)), caseInsensitive: true));
-            routes.Add(new RegexRoute(@"/JumpWorlds.aspx", new GenericRouteHandler(typeof(JumpWorldsHandler)), caseInsensitive: true));
-#endif
 
             // Data Retrieval - API-centric ---------------------------------
 
@@ -129,12 +72,6 @@ namespace Maps
             routes.Add(new RegexRoute(@"/api/metadata/(?<sector>[^/]+)", new GenericRouteHandler(typeof(SectorMetaDataHandler)), DEFAULT_JSON));
             routes.Add(new RegexRoute(@"/api/msec", new GenericRouteHandler(typeof(MSECHandler))));
             routes.Add(new RegexRoute(@"/api/msec/(?<sector>[^/]+)", new GenericRouteHandler(typeof(MSECHandler))));
-#if LEGACY_ASPX
-            routes.Add(new RegexRoute(@"/Universe.aspx", new GenericRouteHandler(typeof(UniverseHandler)), caseInsensitive: true));
-            routes.Add(new RegexRoute(@"/SEC.aspx", new GenericRouteHandler(typeof(SECHandler)), caseInsensitive: true));
-            routes.Add(new RegexRoute(@"/SectorMetaData.aspx", new GenericRouteHandler(typeof(SectorMetaDataHandler)), caseInsensitive: true));
-            routes.Add(new RegexRoute(@"/MSEC.aspx", new GenericRouteHandler(typeof(MSECHandler)), caseInsensitive: true));
-#endif
 
             // Data Retrieval - RESTful -------------------------------------
 

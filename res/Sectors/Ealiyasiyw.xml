@@ -15,8 +15,8 @@
 
     ]]>
   </Credits>
-  <DataFile Source="Traveller 5 Second Survey" Era="1105" Type="TabDelimited">Ealiyasiyw.tab</DataFile>
-  <Subsectors Publisher="DGP" Source="The Travellers' Digest #18" Era="1120">
+  <DataFile Source="Traveller 5 Second Survey" Milieu="1105" Type="TabDelimited">Ealiyasiyw.tab</DataFile>
+  <Subsectors Publisher="DGP" Source="The Travellers' Digest #18" Milieu="1120">
     <Subsector Index="A">Truiheiw</Subsector>
     <Subsector Index="B">Airiyrlyu'</Subsector>
     <Subsector Index="C">Fye'iyra</Subsector>
@@ -38,7 +38,7 @@
     <Border Allegiance="As">0000 0100 0200 0300 0400 0500 0600 0700 0800 0900 1000 1100 1200 1301 1302 1402 1502 1602 1702 1802 1903 1904 1905 1906 2006 2107 2207 2308 2408 2509 2609 2710 2809 2910 3010 3111 3210 3211 3212 3213 3214 3215 3216 3116 3015 2915 2814 2813 2713 2613 2514 2515 2415 2416 2417 2418 2419 2420 2521 2621 2722 2723 2724 2725 2726 2727 2728 2828 2929 3028 3128 3227 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001 0000</Border>
     <Border Allegiance="IsDo" Color="cyan">2817 2918 3018 3118 3217 3317 3318 3319 3320 3321 3322 3323 3324 3325 3224 3125 3024 2924 2823 2822 2821 2820 2819 2818 2817</Border>
   </Borders>
-  <Routes Publisher="DGP" Source="The Travellers' Digest #18" Era="1120">
+  <Routes Publisher="DGP" Source="The Travellers' Digest #18" Milieu="1120">
     <Route Start="0104" End="0106" Allegiance="As" />
     <Route Start="0106" End="0206" Allegiance="As" />
     <Route Start="0206" End="0307" Allegiance="As" />

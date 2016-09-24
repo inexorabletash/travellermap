@@ -1,4 +1,3 @@
-﻿
 window.onload = function() {
   var headers = document.querySelectorAll('th'),
       i, len = headers.length;

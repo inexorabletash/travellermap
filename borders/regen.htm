@@ -36,6 +36,7 @@ var ALLEGIANCE_SETS = [
   ['Na', // Non-aligned
    'Dr', // Droyne
    '--', // Unknown
+   '??', // Unknown
    'Va', // Vargr
    'va', // "
    'Cs', // Client State
@@ -196,61 +197,36 @@ function hexContents(x, y, map) {
 //
 //----------------------------------------------------------------------
 
-function run(tasks, completion) {
-  function do_next() {
-    if (tasks.length) {
-      var task = tasks.shift();
-      task(do_next);
-    } else {
-      completion();
-    }
-  }
-  nextTask();
-}
-
-function join(tasks, completion) {
-  var completed = 0;
-  function done_task() {
-    completed += 1;
-    if (completed === tasks.length) {
-      completion();
-    }
-  }
-  tasks.forEach(function(task) { task(done_task); });
-}
-
-
-function loadSector(sx, sy, callback) {
+function loadSector(sx, sy, milieu) {
   var sectorName = undefined;
-  Traveller.MapService.sectorDataTabDelimited(sectorName, {sx: sx, sy: sy})
-           .then(function(data) {
-             var worlds = [];
-             var lines = data.split(/\r?\n/);
-             var header = lines.shift().toLowerCase().split('\t');
-             lines.forEach(function (line) {
-               if (!line.length)
-                 return;
+  return Traveller.MapService.sectorDataTabDelimited(sectorName, {sx: sx, sy: sy, milieu: milieu}).then(
+    function(data) {
+      var worlds = [];
+      var lines = data.split(/\r?\n/);
+      var header = lines.shift().toLowerCase().split('\t');
+      lines.forEach(function (line) {
+        if (!line.length)
+          return;
 
-               var world = {};
-               line.split('\t').forEach(function (field, index) {
-                 world[header[index]] = field;
-               });
+        var world = {};
+        line.split('\t').forEach(function (field, index) {
+          world[header[index]] = field;
+        });
 
-               world.x = parseInt(world.hex.substring(0, 2), 10);
-               world.y = parseInt(world.hex.substring(2, 4), 10);
-               worlds.push(world);
-             });
-             callback(worlds);
-           })
-           .catch(function(error) { callback([]); });
+        world.x = parseInt(world.hex.substring(0, 2), 10);
+        world.y = parseInt(world.hex.substring(2, 4), 10);
+        worlds.push(world);
+      });
+      return worlds;
+    },
+    function(error) { return []; });
 }
 
-function sectorCoords(name, callback) {
-  Traveller.MapService.coordinates(name)
-           .then(callback)
-           .catch(function() { callback(); });
+function showError(message) {
+  document.body.appendChild(document.createElement('div')).appendChild(document.createTextNode(message));
 }
 
+var searchParams = new URL(document.location).searchParams;
 window.onload = function() {
 
   function status(message) {
@@ -259,89 +235,85 @@ window.onload = function() {
     display.scrollTop = display.scrollHeight
   }
 
-  var searchParams = new URL(document.location).searchParams;
   if (!searchParams.has('sector')) {
-    alert("Missing sector in URL");
+    showError("Missing sector in URL");
     return;
   }
+  var sector = searchParams.get('sector');
+  var milieu =  searchParams.get('milieu');
 
-  sectorCoords(searchParams.get('sector'), function(coords) {
-    if (!coords) {
-      alert("No such sector");
-      return;
-    }
+  Traveller.MapService.coordinates(sector, {
+    milieu: milieu
+  }).then(
+    function(coords) {
+      var bigmap = new AllegianceMap(SECTOR_WIDTH * 3, SECTOR_HEIGHT * 3, 1, 1);
 
 
-    var bigmap = new AllegianceMap(SECTOR_WIDTH * 3, SECTOR_HEIGHT * 3, 1, 1);
+      var loadTasks = [];
+      var ox, oy, hx, hy;
 
+      for (ox = -1; ox <= 1; ox += 1) {
+        for (oy = -1; oy <= 1; oy += 1) {
+          (function(ox, oy) {
+            loadTasks.push(
+              loadSector(coords.sx + ox, coords.sy + oy, milieu)
+                .then(function(worlds) {
+                  status('Loaded sector at ' + (coords.sx + ox) + ',' + (coords.sy + oy));
+                  worlds.forEach(function(world) {
 
-    var loadTasks = [];
-    var ox, oy, hx, hy;
+                    ALLEGIANCE_SETS.forEach(function(alleg_set) {
+                      if (alleg_set.indexOf(world.allegiance) !== -1) {
+                        world.allegiance = alleg_set[0];
+                      }
+                    });
 
-    for (ox = -1; ox <= 1; ox += 1) {
-      for (oy = -1; oy <= 1; oy += 1) {
+                    hx = world.x + ((ox + 1) * SECTOR_WIDTH);
+                    hy = world.y + ((oy + 1) * SECTOR_HEIGHT);
 
-        loadTasks.push((function(ox, oy) {
-
-          return function(completion) {
-
-            loadSector(coords.sx + ox, coords.sy + oy, function(worlds) {
-              status('Loaded sector at ' + (coords.sx + ox) + ',' + (coords.sy + oy));
-              worlds.forEach(function(world) {
-
-                ALLEGIANCE_SETS.forEach(function(alleg_set) {
-                  if (alleg_set.indexOf(world.allegiance) !== -1) {
-                    world.allegiance = alleg_set[0];
-                  }
-                });
-
-                hx = world.x + ((ox + 1) * SECTOR_WIDTH);
-                hy = world.y + ((oy + 1) * SECTOR_HEIGHT);
-
-                bigmap.setOccupied(hx, hy, true);
-                bigmap.setAllegiance(hx, hy, world.allegiance);
-              });
-              completion();
-            });
-          };
-        } (ox, oy)));
-      }
-    }
-
-    join(loadTasks, function() {
-
-      processMap(
-        bigmap,
-        function complete() {
-          var secmap = new AllegianceMap(SECTOR_WIDTH + 2, SECTOR_HEIGHT + 2, 0, 0);
-          for (hx = 0; hx <= SECTOR_WIDTH + 1; hx += 1) {
-            for (hy = 0; hy <= SECTOR_HEIGHT + 1; hy += 1) {
-              secmap.setOccupied(hx, hy, bigmap.isOccupied(hx + SECTOR_WIDTH, hy + SECTOR_HEIGHT));
-              secmap.setAllegiance(hx, hy, bigmap.getAllegiance(hx + SECTOR_WIDTH, hy + SECTOR_HEIGHT));
-            }
-          }
-
-          makeMapDisplay(document.getElementById('map'), secmap, 1);
-          //makeMapDisplay(document.getElementById('map'), bigmap, 0);
-          updateWalks(secmap);
-        },
-      function progress(message) {
-        var secmap = new AllegianceMap(SECTOR_WIDTH + 2, SECTOR_HEIGHT + 2, 0, 0);
-        for (hx = 0; hx <= SECTOR_WIDTH + 1; hx += 1) {
-          for (hy = 0; hy <= SECTOR_HEIGHT + 1; hy += 1) {
-            secmap.setOccupied(hx, hy, bigmap.isOccupied(hx + SECTOR_WIDTH, hy + SECTOR_HEIGHT));
-            secmap.setAllegiance(hx, hy, bigmap.getAllegiance(hx + SECTOR_WIDTH, hy + SECTOR_HEIGHT));
-          }
+                    bigmap.setOccupied(hx, hy, true);
+                    bigmap.setAllegiance(hx, hy, world.allegiance);
+                  });
+                })
+            );
+          } (ox, oy));
         }
+      }
 
-        makeMapDisplay(document.getElementById('map'), secmap, 1);
-        status(message);
+      Promise.all(loadTasks).then(function() {
+
+        processMap(
+          bigmap,
+          function complete() {
+            var secmap = new AllegianceMap(SECTOR_WIDTH + 2, SECTOR_HEIGHT + 2, 0, 0);
+            for (hx = 0; hx <= SECTOR_WIDTH + 1; hx += 1) {
+              for (hy = 0; hy <= SECTOR_HEIGHT + 1; hy += 1) {
+                secmap.setOccupied(hx, hy, bigmap.isOccupied(hx + SECTOR_WIDTH, hy + SECTOR_HEIGHT));
+                secmap.setAllegiance(hx, hy, bigmap.getAllegiance(hx + SECTOR_WIDTH, hy + SECTOR_HEIGHT));
+              }
+            }
+
+            makeMapDisplay(document.getElementById('map'), secmap, 1);
+            //makeMapDisplay(document.getElementById('map'), bigmap, 0);
+            updateWalks(secmap);
+          },
+          function progress(message) {
+            var secmap = new AllegianceMap(SECTOR_WIDTH + 2, SECTOR_HEIGHT + 2, 0, 0);
+            for (hx = 0; hx <= SECTOR_WIDTH + 1; hx += 1) {
+              for (hy = 0; hy <= SECTOR_HEIGHT + 1; hy += 1) {
+                secmap.setOccupied(hx, hy, bigmap.isOccupied(hx + SECTOR_WIDTH, hy + SECTOR_HEIGHT));
+                secmap.setAllegiance(hx, hy, bigmap.getAllegiance(hx + SECTOR_WIDTH, hy + SECTOR_HEIGHT));
+              }
+            }
+
+            makeMapDisplay(document.getElementById('map'), secmap, 1);
+            status(message);
+          });
       });
-    });
-  });
+    },
+    function() {
+      showError('No such sector: ' + sector);
+    }).catch(function(error) { showError('error: ' + error.message); });
 };
-
-
 
     </script>
 <style>

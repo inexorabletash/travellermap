@@ -19,7 +19,7 @@
     ]]>
   </Credits>
   <Product Publisher="Mongoose Publishing" Author="Rob Eaglestone" Title="Deneb Sector" Ref="http://www.mongoosepublishing.com/deneb-sector-1.html" />
-  <DataFile Source="Traveller 5 Second Survey" Era="1105" Type="TabDelimited">Deneb.tab</DataFile>
+  <DataFile Source="Traveller 5 Second Survey" Milieu="1105" Type="TabDelimited">Deneb.tab</DataFile>
   <Subsectors Source="MegaTraveller Journal #1">
     <Subsector Index="A">Pretoria</Subsector>
     <Subsector Index="B">Lamas</Subsector>
@@ -108,11 +108,11 @@
           <Route Start="2913" End="3015" />
           <Route Start="3015" End="3016" />
       -->
-    <Route Start="2913" End="3116" Publisher="DGP" Source="The Travellers' Digest #2" Era="1100" />
-    <Route Start="3116" End="2717" Publisher="DGP" Source="The Travellers' Digest #2" Era="1100" />
-    <Route Start="2717" End="2520" Publisher="DGP" Source="The Travellers' Digest #2" Era="1100" />
-    <Route Start="2520" End="2521" Publisher="DGP" Source="The Travellers' Digest #2" Era="1100" />
-    <Route Start="2413" End="2813" Publisher="DGP" Source="The Travellers' Digest #2" Era="1100" />
+    <Route Start="2913" End="3116" Publisher="DGP" Source="The Travellers' Digest #2" Milieu="1100" />
+    <Route Start="3116" End="2717" Publisher="DGP" Source="The Travellers' Digest #2" Milieu="1100" />
+    <Route Start="2717" End="2520" Publisher="DGP" Source="The Travellers' Digest #2" Milieu="1100" />
+    <Route Start="2520" End="2521" Publisher="DGP" Source="The Travellers' Digest #2" Milieu="1100" />
+    <Route Start="2413" End="2813" Publisher="DGP" Source="The Travellers' Digest #2" Milieu="1100" />
   </Routes>
   <Borders>
     <Border Allegiance="ImDd" Label="Third Imperium" Source="http://travellermap.com/borders" LabelPosition="2021" WrapLabel="true">

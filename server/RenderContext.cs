@@ -23,6 +23,8 @@ namespace Maps.Rendering
             this.styles = styles;
             this.tileSize = tileSize;
 
+            selector.UseMilieuFallbacks = true;
+
             XMatrix m = new XMatrix();
             m.TranslatePrepend((float)(-tileRect.Left * scale * Astrometrics.ParsecScaleX), (float)(-tileRect.Top * scale * Astrometrics.ParsecScaleY));
             m.ScalePrepend((float)scale * Astrometrics.ParsecScaleX, (float)scale * Astrometrics.ParsecScaleY);

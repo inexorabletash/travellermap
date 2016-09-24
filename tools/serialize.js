@@ -66,7 +66,7 @@ function parseSec(s) {
 
   s.split('\n').forEach(function(line) {
     var m;
-    if (m = /^(.*?)\s+(\d\d\d\d)\s+([ABCDEX?][0-9A-Z?]{6}-[0-9A-Z?])\s{1,2}([A-Z1-9* ])\s+(.{10,})\s+([GARBFU])?\s+(\d[0-9A-F][0-9A-F])\s+(\S\S)\s+(.*?)\s*$/.exec(line)) {
+    if ((m = /^(.*?)\s+(\d\d\d\d)\s+([ABCDEX?][0-9A-Z?]{6}-[0-9A-Z?])\s{1,2}([A-Z1-9* ])\s+(.{10,})\s+([GARBFU])?\s+(\d[0-9A-F][0-9A-F])\s+(\S\S)\s+(.*?)\s*$/.exec(line))) {
       worlds.push({
         Name:        m[1],
         Hex:         m[2],

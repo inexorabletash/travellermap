@@ -21,7 +21,7 @@ namespace Maps
         string Copyright { get; set; }
 
         [XmlAttribute]
-        string Era { get; set; }
+        string Milieu { get; set; }
 
         [XmlAttribute]
         string Ref { get; set; }
@@ -47,7 +47,7 @@ namespace Maps
         public string Copyright { get { string s; metaData.TryGetValue("copyright", out s); return s; } set { metaData["copyright"] = value; } }
 
         [XmlAttribute]
-        public string Era { get { string s; metaData.TryGetValue("era", out s); return s; } set { metaData["era"] = value; } }
+        public string Milieu { get { string s; metaData.TryGetValue("era", out s); return s; } set { metaData["era"] = value; } }
 
         [XmlAttribute]
         public string Ref { get { string s; metaData.TryGetValue("ref", out s); return s; } set { metaData["ref"] = value; } }
@@ -75,7 +75,7 @@ namespace Maps
         public string Copyright { get { string s; metaData.TryGetValue("copyright", out s); return s; } set { metaData["copyright"] = value; } }
 
         [XmlAttribute]
-        public string Era { get { string s; metaData.TryGetValue("era", out s); return s; } set { metaData["era"] = value; } }
+        public string Milieu { get { string s; metaData.TryGetValue("era", out s); return s; } set { metaData["era"] = value; } }
 
         [XmlAttribute]
         public string Ref { get { string s; metaData.TryGetValue("ref", out s); return s; } set { metaData["ref"] = value; } }

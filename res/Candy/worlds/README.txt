@@ -19,3 +19,7 @@ Spinward Marches 1910.png
 * Regina
 * Credit: Copyright (C) 2005 FFE
 * Ref: http://www.farfuture.net/cards/ [OFFLINE]
+
+Hinterworlds 1432.png
+* Leenitakot (ancient Ringworld)
+* Author: Joshua Bell

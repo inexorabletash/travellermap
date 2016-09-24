@@ -208,6 +208,7 @@
     <Content Include="res\Candy\Rifts.png" />
     <Content Include="res\Candy\worlds\Core 0140.png" />
     <Content Include="res\Candy\worlds\Corridor 1511.png" />
+    <Content Include="res\Candy\worlds\Hinterworlds 1432.png" />
     <Content Include="res\Candy\worlds\README.txt" />
     <Content Include="res\Candy\worlds\Solomani Rim 1827.png" />
     <Content Include="res\Candy\worlds\Spinward Marches 1910.png" />
@@ -281,6 +282,8 @@
     <Content Include="res\Sectors\Hinterworlds.xml" />
     <Content Include="res\Sectors\Holowon.xml" />
     <Content Include="res\Sectors\Ilelish.xml" />
+    <Content Include="res\Sectors\IW\iw.xml" />
+    <Content Include="res\Sectors\IW\solo-iw.xml" />
     <Content Include="res\Sectors\K%27trekreer.xml" />
     <Content Include="res\Sectors\Kaa G!%27kul.xml" />
     <Content Include="res\Sectors\kidunal.xml" />
@@ -299,7 +302,10 @@
     <Content Include="res\Sectors\Lorspane.txt" />
     <Content Include="res\Sectors\Lorspane.xml" />
     <Content Include="res\Sectors\Luretiir!girr.xml" />
-    <Content Include="res\Sectors\M1000\m1000.xml" />
+    <Content Include="res\Sectors\M1900\m1900.xml" />
+    <Content Include="res\Sectors\M1900\Spin.txt" />
+    <Content Include="res\Sectors\M1900\Spin.xml" />
+    <Content Include="res\Sectors\M990\M990.xml" />
     <Content Include="res\Sectors\Magyar.xml" />
     <Content Include="res\Sectors\Massilia.xml">
       <SubType>Designer</SubType>
@@ -639,6 +645,7 @@
     <None Include="res\Sectors\Ilelish.tab" />
     <Content Include="res\Sectors\K%27trekreer.sec" />
     <Content Include="res\Sectors\Iwahfuah.tab" />
+    <Content Include="res\Sectors\IW\solo-iw.tab" />
     <None Include="res\Sectors\Kaa G!kul.sec" />
     <None Include="res\Sectors\Katoonah.sec" />
     <Content Include="res\Sectors\kidunal.sec" />
@@ -648,11 +655,12 @@
     <None Include="res\Sectors\legend.sec" />
     <None Include="res\Sectors\Ley.tab" />
     <None Include="res\Sectors\Lishun.tab" />
-    <Content Include="res\Sectors\M1000\CrucisMargin.sec" />
-    <Content Include="res\Sectors\M1000\Gateway.sec" />
-    <Content Include="res\Sectors\M1000\GlimmerdriftReaches.sec" />
-    <Content Include="res\Sectors\M1000\Ley.sec" />
     <Content Include="res\Sectors\Luretiir!girr.txt" />
+    <Content Include="res\Sectors\M990\CrucisMargin.sec" />
+    <Content Include="res\Sectors\M990\Gateway.sec" />
+    <Content Include="res\Sectors\M990\GlimmerdriftReaches.sec" />
+    <Content Include="res\Sectors\M990\Ley.sec" />
+    <Content Include="res\Sectors\M1900\Gvur.sec" />
     <None Include="res\Sectors\Magyar.tab" />
     <None Include="res\Sectors\Massilia.tab" />
     <Content Include="res\Sectors\Nooq.sec" />

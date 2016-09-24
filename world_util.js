@@ -1,4 +1,4 @@
-var Traveller, Util, Handlebars;
+/*global Traveller, Util, Handlebars */ // for lint and IDEs
 (function(global) {
   'use strict';
 
@@ -193,6 +193,123 @@ var Traveller, Util, Handlebars;
     '?': 'Unknown'
   };
 
+  var IX_IMP_TABLE = {
+    '-3': 'Very unimportant',
+    '-2': 'Very unimportant',
+    '-1': 'Unimportant',
+    '0': 'Unimportant',
+    '1': 'Ordinary',
+    '2': 'Ordinary',
+    '3': 'Ordinary',
+    '4': 'Important',
+    '5': 'Very important',
+    '?': 'Unknown'
+  };
+
+  var EX_RESOURCES_TABLE = {
+    2: 'Very scarce',
+    3: 'Very scarce',
+    4: 'Scarce',
+    5: 'Scarce',
+    6: 'Few',
+    7: 'Few',
+    8: 'Moderate',
+    9: 'Moderate',
+    A: 'Abundant',
+    B: 'Abundant',
+    C: 'Very abundant',
+    D: 'Very abundant',
+    E: 'Extremely abundant',
+    F: 'Extremely abundant',
+    G: 'Extremely abundant',
+    H: 'Extremely abundant',
+    J: 'Extremely abundant',
+    '?': 'Unknown'
+  };
+
+  var EX_LABOR_TABLE = POP_TABLE;
+
+  var EX_INFRASTRUCTURE_TABLE = {
+    0: 'Non-existent',
+    1: 'Extremely limited',
+    2: 'Extremely limited',
+    3: 'Very limited',
+    4: 'Very limited',
+    5: 'Limited',
+    6: 'Limited',
+    7: 'Generally available',
+    8: 'Generally available',
+    9: 'Extensive',
+    A: 'Extensive',
+    B: 'Very extensive',
+    C: 'Very extensive',
+    D: 'Comprehensive',
+    E: 'Comprehensive',
+    F: 'Very comprehensive',
+    G: 'Very comprehensive',
+    H: 'Very comprehensive',
+    '?': 'Unknown'
+  };
+
+  var EX_EFFICIENCY_TABLE = {
+    '-5': 'Extremely poor',
+    '-4': 'Very poor',
+    '-3': 'Poor',
+    '-2': 'Fair',
+    '-1': 'Average',
+    '0': 'Average',
+    '+1': 'Average',
+    '+2': 'Good',
+    '+3': 'Improved',
+    '+4': 'Advanced',
+    '+5': 'Very advanced',
+    '?': 'Unknown'
+  };
+
+  var CX_HOMOGENEITY_TABLE = {
+    0: 'N/A',
+    1: 'Monolithic',
+    2: 'Monolithic',
+    3: 'Monolithic',
+    4: 'Harmonious',
+    5: 'Harmonious',
+    6: 'Harmonious',
+    7: 'Discordant',
+    8: 'Discordant',
+    9: 'Discordant',
+    A: 'Discordant',
+    B: 'Discordant',
+    C: 'Fragmented',
+    D: 'Fragmented',
+    E: 'Fragmented',
+    F: 'Fragmented',
+    G: 'Fragmented',
+    '?': 'Unknown'
+  };
+
+  var CX_ACCEPTANCE_TABLE = {
+    0: 'N/A',
+    1: 'Extremely xenophobic',
+    2: 'Very xenophobic',
+    3: 'Xenophobic',
+    4: 'Extremely aloof',
+    5: 'Very aloof',
+    6: 'Aloof',
+    7: 'Aloof',
+    8: 'Friendly',
+    9: 'Friendly',
+    A: 'Very friendly',
+    B: 'Extremely friendly',
+    C: 'Xenophilic',
+    D: 'Very Xenophilic',
+    E: 'Extremely xenophilic',
+    F: 'Extremely xenophilic',
+    '?': 'Unknown'
+  };
+
+  // TODO: Cx: Strangeness
+  // TODO: Cx: Symbols
+
   var NOBILITY_TABLE = {
     B: 'Knight',
     c: 'Baronet',
@@ -203,7 +320,8 @@ var Traveller, Util, Handlebars;
     f: 'Duke',
     F: 'Subsector Duke',
     G: 'Archduke',
-    H: 'Emperor'
+    H: 'Emperor',
+    '?': 'Unknown'
   };
 
   var REMARKS_TABLE = {
@@ -400,10 +518,10 @@ var Traveller, Util, Handlebars;
   };
 
   function hasCode(world, c) {
-    return world.Remarks.some(function(r) { return r.code === c; });
+    return world.Remarks && world.Remarks.some(function(r) { return r.code === c; });
   }
 
-  Traveller.renderWorld = function(world, template, container) {
+  Traveller.prepareWorld = function(world) {
     if (!world) return undefined;
     return SOPHONTS_FETCHED.then(function() {
       world.isPlaceholder = (world.UWP === 'XXXXXXX-X' || world.UWP === '???????-?');
@@ -434,27 +552,30 @@ var Traveller, Util, Handlebars;
       if (!world.Ix) delete world.Ix;
       if (world.Ix) {
         var ix = (world.Ix || '').replace(/^{\s*|\s*}$/g, '');
-        ix = ix.replace('-', UNICODE_MINUS);
         world.Ix = {
           Imp: ix
         };
+        world.Ix.ImpBlurb = IX_IMP_TABLE[world.Ix.Imp];
+
+        world.Ix.Imp = world.Ix.Imp.replace('-', UNICODE_MINUS);
       }
 
       // Economics (Ex)
       if (!world.Ex) delete world.Ex;
       if (world.Ex) {
         var ex = world.Ex.replace(/^\(\s*|\s*\)$/g, '');
-        ex = ex.replace('-', UNICODE_MINUS);
         world.Ex = {
           Res: ex.substring(0, 1),
           Lab: ex.substring(1, 2),
           Inf: ex.substring(2, 3),
           Eff: ex.substring(3)
         };
-        ['Res', 'Lab', 'Inf'].forEach(function(s) {
-          world.Ex[s + 'Blurb'] = Traveller.fromHex(world.Ex[s]);
-        });
-        world.Ex.EffBlurb = world.Ex.Eff;
+        world.Ex.ResBlurb = EX_RESOURCES_TABLE[world.Ex.Res];
+        world.Ex.LabBlurb = EX_LABOR_TABLE[world.Ex.Lab];
+        world.Ex.InfBlurb = EX_INFRASTRUCTURE_TABLE[world.Ex.Inf];
+        world.Ex.EffBlurb = EX_EFFICIENCY_TABLE[world.Ex.Eff];
+
+        world.Ex.Eff = world.Ex.Eff.replace('-', UNICODE_MINUS);
       }
 
       // Culture [Cx]
@@ -467,9 +588,11 @@ var Traveller, Util, Handlebars;
           Str: cx.substring(2, 3),
           Sym: cx.substring(3, 4)
         };
-        ['Hom', 'Acc', 'Str', 'Sym'].forEach(function(s) {
-          world.Cx[s + 'Blurb'] = Traveller.fromHex(world.Cx[s]);
-        });
+
+        world.Cx.HomBlurb = CX_HOMOGENEITY_TABLE[world.Cx.Hom];
+        world.Cx.AccBlurb = CX_ACCEPTANCE_TABLE[world.Cx.Acc];
+        world.Cx.StrBlurb = Traveller.fromHex(world.Cx.Str);
+        world.Cx.SymBlurb = Traveller.fromHex(world.Cx.Sym);
       }
 
       // Nobility
@@ -528,12 +651,15 @@ var Traveller, Util, Handlebars;
       world.ss_url = makeWikiURL(world.SubsectorName + ' Subsector');
       world.sector_url = makeWikiURL(world.Sector + ' Sector');
 
-      container.innerHTML = Handlebars.compile(template)(world);
-
       return world;
     });
   };
 
+  Traveller.renderWorld = function(world, template, container) {
+    if (!world) return undefined;
+    container.innerHTML = Handlebars.compile(template)(world);
+    return world;
+  };
 
   function supportsCompositeMode(ctx, mode) {
     var orig = ctx.globalCompositeOperation;
@@ -543,7 +669,10 @@ var Traveller, Util, Handlebars;
     return result;
   }
 
+  var renderWorldImageFirstTime = true;
   Traveller.renderWorldImage = function(world, canvas) {
+    if (!world) return undefined;
+
     var w = canvas.width, h = canvas.height;
 
     var bg = (!world.isPlaceholder && hasCode(world, 'Sa'))
@@ -574,6 +703,13 @@ var Traveller, Util, Handlebars;
           + (world.UWP.Siz === '0' ? 'Belt' : 'Hyd' + world.UWP.Hyd) + '.png';
     var isRender = true;
 
+    var size = SIZES[world.UWP.Siz] || {width: 0.5, height: 0.5};
+
+    var showConsoleNotice = Util.once(function() {
+      if (!console || !console.log) return;
+      console.log('The "404 (Not Found)" for res/Candy/worlds/*.png is expected, and is not a bug.');
+    });
+
     return Promise.all([
       // Background
       Util.fetchImage(bg),
@@ -581,10 +717,16 @@ var Traveller, Util, Handlebars;
       // Foreground
       world.isPlaceholder
         ? null
-        : Util.fetchImage(render).catch(function() {
-          isRender = false;
-          return Util.fetchImage(generic);
-        })
+        : Util.fetchImage(render).then(
+          function(image) {
+            size.height = size.width * image.naturalHeight / image.naturalWidth;
+            return image;
+          },
+          function() {
+            showConsoleNotice();
+            isRender = false;
+            return Util.fetchImage(generic);
+          })
     ])
       .then(function(images) {
         var bgimg = images[0];
@@ -604,10 +746,9 @@ var Traveller, Util, Handlebars;
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
             ctx.fillText(label, w/2, h/2);
-            return;
+            return world;
           }
 
-          var size = SIZES[world.UWP.Siz] || {width: 0.5, height: 0.5};
           var iw = w * size.width, ih = h * size.height;
           var ix = (w - iw) / 2, iy = (h - ih) / 2;
 
@@ -636,6 +777,7 @@ var Traveller, Util, Handlebars;
             ctx.drawImage(fgimg, ix, iy, iw, ih);
           }
 
+          return world;
         } finally {
           ctx.restore();
         }

@@ -101,10 +101,15 @@ namespace Maps
 
             if (metadataSource.Names.Any()) { Names.Clear(); Names.AddRange(metadataSource.Names); }
 
-            if (metadataSource.DataFile != null && DataFile != null &&
-                (metadataSource.DataFile.FileName != DataFile.FileName ||
-                metadataSource.DataFile.Type != DataFile.Type)) {
-                throw new Exception(string.Format("Mismatching DataFile entries for {0}", this.Names[0].Text));
+            if (metadataSource.DataFile != null && DataFile != null)
+            {
+                if (metadataSource.DataFile.FileName != DataFile.FileName)
+                    throw new Exception(string.Format("Mismatching DataFile.Name entries for {0}: {1} vs. {2}",
+                        this.Names[0].Text, metadataSource.DataFile.FileName, DataFile.FileName));
+
+                if (metadataSource.DataFile.Type != DataFile.Type)
+                    throw new Exception(string.Format("Mismatching DataFile.Type entries for {0}", 
+                        this.Names[0].Text, metadataSource.DataFile.Type, DataFile.Type));
             }
 
             if (metadataSource.DataFile != null) DataFile = metadataSource.DataFile;
@@ -156,6 +161,15 @@ namespace Maps
         public DataFile DataFile { get; set; }
 
         public string MetadataFile { get; set; }
+
+        public void AdjustRelativePaths(string baseFileName)
+        {
+            string dir = Path.GetDirectoryName(baseFileName);
+            if (DataFile != null)
+                DataFile.FileName = Path.Combine(dir, DataFile.FileName).Replace(Path.DirectorySeparatorChar, '/');
+            if (MetadataFile != null)
+                MetadataFile = Path.Combine(dir, MetadataFile).Replace(Path.DirectorySeparatorChar, '/');
+        }
 
         private WorldCollection worlds;
 
@@ -216,7 +230,7 @@ namespace Maps
             return -1;
         }
 
-        internal WorldCollection GetWorlds(ResourceManager resourceManager, bool cacheResults = true)
+        internal virtual WorldCollection GetWorlds(ResourceManager resourceManager, bool cacheResults = true)
         {
             lock (this)
             {
@@ -229,7 +243,7 @@ namespace Maps
                     return null;
 
                 // Otherwise, look it up
-                WorldCollection data = resourceManager.GetDeserializableFileObject(@"~/res/Sectors/" + DataFile, typeof(WorldCollection), cacheResults: false, mediaType: DataFile.Type) as WorldCollection;
+                WorldCollection data = resourceManager.GetDeserializableFileObject(DataFile.FileName, typeof(WorldCollection), cacheResults: false, mediaType: DataFile.Type) as WorldCollection;
                 foreach (World world in data)
                     world.Sector = this;
 
@@ -286,7 +300,7 @@ namespace Maps
                 if (DataFile != null)
                 {
                     writer.WriteLine();
-                    if (DataFile.Era != null) { writer.WriteLine("# Era: {0}", DataFile.Era); }
+                    if (DataFile.Milieu != null) { writer.WriteLine("# Milieu: {0}", DataFile.Milieu); }
                     writer.WriteLine();
 
                     if (DataFile.Author != null) { writer.WriteLine("# Author:    {0}", DataFile.Author); }
@@ -454,6 +468,46 @@ namespace Maps
             }
         }
         private string stylesheetText;
+
+    }
+
+    internal class Dotmap : Sector
+    {
+        private Sector basis;
+        private WorldCollection worlds = null;
+
+        public Dotmap(Sector basis) {
+            this.X = basis.X;
+            this.Y = basis.Y;
+            this.basis = basis;
+        }
+
+        internal override WorldCollection GetWorlds(ResourceManager resourceManager, bool cacheResults = true)
+        {
+            if (this.worlds != null)
+                return this.worlds;
+
+            WorldCollection worlds = basis.GetWorlds(resourceManager, cacheResults);
+            if (worlds == null)
+                return null;
+
+            WorldCollection dots = new WorldCollection();
+            foreach (var world in worlds)
+            {
+                var dot = new World();
+                dot.Hex = world.Hex;
+                dot.UWP = "???????-?";
+                dot.PBG = "???";
+                dot.Allegiance = "??";
+                dot.Sector = this;
+                dots[dot.X, dot.Y] = dot;
+            }
+
+            if (cacheResults)
+                this.worlds = dots;
+
+            return dots;
+        }
     }
 
     public class Product : MetadataItem

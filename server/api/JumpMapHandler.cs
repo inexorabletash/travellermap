@@ -72,7 +72,7 @@ namespace Maps.API
                     }
                     else
                     {
-                        loc = new Location(map.FromName("Spinward Marches").Location, 1910);
+                        loc = Location.Empty;
                     }
                     selector = new HexSelector(map, resourceManager, loc, jump);
                 }

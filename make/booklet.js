@@ -1,3 +1,4 @@
+/*global Traveller, Util, getTextViaPOST, getJSONViaPOST, Handlebars */ // for lint and IDEs
 (function(global) {
   'use strict';
 
@@ -161,8 +162,10 @@
   }
 
   function sectorData(params) {
-    if ('sector' in params)
-      return Traveller.MapService.sectorDataTabDelimited(params.sector);
+    if ('sector' in params) {
+      return Traveller.MapService.sectorDataTabDelimited(
+        params.sector, {milieu: params.milieu});
+    }
 
     if ('data' in params) {
       return getTextViaPOST(
@@ -174,8 +177,10 @@
   }
 
   function sectorMetaData(params) {
-    if ('sector' in params)
-      return Traveller.MapService.sectorMetaData(params.sector);
+    if ('sector' in params) {
+      return Traveller.MapService.sectorMetaData(
+        params.sector, {milieu: params.milieu});
+    }
 
     if ('metadata' in params) {
       return getJSONViaPOST(
@@ -192,7 +197,8 @@
     if (searchParams.has('sector')) {
       document.body.classList.add('render');
       render({
-        sector: searchParams.get('sector')
+        sector: searchParams.get('sector'),
+        milieu: searchParams.get('milieu')
       });
       return;
     }
@@ -254,6 +260,7 @@
       };
       if ('sector' in params) {
         url_params.sector = params.sector;
+        url_params.milieu = params.milieu;
         imageURL = Promise.resolve(Traveller.MapService.makeURL('/api/poster', url_params));
       } else {
         url_params.data = params.data;
@@ -371,6 +378,7 @@
         };
         if ('sector' in params) {
           url_params.sector = params.sector;
+          url_params.milieu = params.milieu;
           imageURL = Promise.resolve(Traveller.MapService.makeURL('/api/poster', url_params));
         } else {
           url_params.data = params.data;

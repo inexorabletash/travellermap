@@ -84,10 +84,41 @@
     <!-- Disable WebDAV so ASP.NET can handle OPTIONS header for CORS requests. -->
     <modules runAllManagedModulesForAllRequests="true">
       <remove name="WebDAVModule" />
-      <!-- <add name="NoWWW" type="Maps.HTTP.NoWWW"/> -->
-      <!-- <add name="RequireSecureConnection" type="Maps.HTTP.RequireSecureConnection"/> -->
       <!-- <add name="PageFooter" type="Maps.HTTP.PageFooter" /> -->
     </modules>
+
+    <httpProtocol>
+      <customHeaders>
+        <add name="Access-Control-Allow-Origin" value="*" />
+      </customHeaders>
+    </httpProtocol>
+
+    <rewrite>
+      <rules>
+        <rule name="Remove www" stopProcessing="true">
+          <match url="(.*)" ignoreCase="true" />
+          <conditions logicalGrouping="MatchAll">
+            <add input="{HTTP_HOST}" pattern="^www\.(.+)$" />
+          </conditions>
+          <action type="Redirect" url="https://{C:1}/{R:1}" redirectType="Permanent" />
+        </rule>
+
+        <rule name="Redirect to HTTPS" stopProcessing="true">
+          <match url="(.*)" />
+          <conditions logicalGrouping="MatchAll" trackAllCaptures="false">
+            <add input="{HTTPS}" pattern="off" />
+            <add input="{HTTP_HOST}" pattern="localhost" negate="true" />
+          </conditions>
+          <action type="Redirect" url="https://{HTTP_HOST}/{R:1}" redirectType="Permanent" />
+        </rule>
+
+        <rule name="Extensionless Pages" stopProcessing="true">
+          <match url="^(world|(doc|make|tools)/\w+)$"/>
+          <action type="Rewrite" url="{R:0}.html"/>
+        </rule>
+      </rules>
+    </rewrite>
+
     <handlers>
       <remove name="WebDAV"/>
       <remove name="OPTIONSVerbHandler"/>
