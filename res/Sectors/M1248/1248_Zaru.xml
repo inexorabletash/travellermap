@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<Sector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>Zarushagar</Name>
+  <Credits>
+
+             &lt;b&gt;Zarushagar&lt;/b&gt; sector was designed by Marc W. Miller
+             and appears in &lt;cite&gt;Atlas of the Imperium&lt;/cite&gt; (GDW,
+             1984).
+
+             It was refined by Greg Videll. Portions appear in
+             &lt;cite&gt;The Travellers Digest&lt;/cite&gt; and the
+             &lt;cite&gt;MegaTraveller Referee's Gaming Kit&lt;/cite&gt; (Digest
+             Group Publications, 1989).
+
+             It was refined by Martin J. Dougherty and appears in
+             &lt;cite&gt;1248 Sourcebook 2: Bearers of the Flame&lt;/cite&gt;
+             (ComStar Media/Avenger Enterprises, 2006).
+
+    </Credits>
+  <Subsectors>
+    <Subsector Index="A"></Subsector>
+    <Subsector Index="B"></Subsector>
+    <Subsector Index="C"></Subsector>
+    <Subsector Index="D"></Subsector>
+    <Subsector Index="E"></Subsector>
+    <Subsector Index="F"></Subsector>
+    <Subsector Index="G"></Subsector>
+    <Subsector Index="H"></Subsector>
+    <Subsector Index="I"></Subsector>
+    <Subsector Index="J"></Subsector>
+    <Subsector Index="K"></Subsector>
+    <Subsector Index="L"></Subsector>
+    <Subsector Index="M"></Subsector>
+    <Subsector Index="N"></Subsector>
+    <Subsector Index="O"></Subsector>
+    <Subsector Index="P"></Subsector>
+  </Subsectors>
+  <Allegiances>
+    <Allegiance Code="Ga">Gaidraan Coalition</Allegiance>
+    <Allegiance Code="Im">Imperial</Allegiance>
+    <Allegiance Code="Kp">Kdept Protectorate</Allegiance>
+    <Allegiance Code="Lz">Lords of New Zarushagar</Allegiance>
+    <Allegiance Code="Na">Non-Aligned</Allegiance>
+    <Allegiance Code="Ne">Nalaashii Empire</Allegiance>
+    <Allegiance Code="Nw">New Worlds Alliance</Allegiance>
+  </Allegiances>
+  <Borders>
+    <Border WrapLabel="true" Color="#ee1c25" Allegiance="Ga" LabelPosition="2632" Label="Gaidraan Coalition">2832 2932 2931 2930 3030 3130 3230 3330 3331 3332 3333 3334 3335 3336 3337 3237 3138 3038 2939 2938 2937 2936 2935 2934 2933 2832</Border>
+    <Border WrapLabel="true" Color="#ee1c25" Allegiance="Kp" LabelPosition="1925" Label="Kdept Protectorate">1721 1820 1920 2020 1921 1821 1822 1923 2023 2123 2222 2223 2324 2223 2124 2023 1924 1823 1822 1722 1721</Border>
+    <Border WrapLabel="true" Color="#ee1c25" Allegiance="Lz" LabelPosition="1317" Label="Lords of New Zarushagar">1415 1516 1616 1716 1715 1614 1714 1813 1812 1712 1811 1810 1910 1911 2011 2112 2211 2210 2110 2210 2311 2312 2313 2413 2513 2612 2611 2610 2609 2610 2611 2612 2613 2514 2414 2415 2516 2615 2516 2416 2417 2418 2419 2520 2620 2721 2722 2721 2620 2521 2522 2422 2421 2420 2419 2319 2318 2317 2316 2215 2115 2015 2115 2215 2315 2314 2313 2212 2113 2012 1913 1813 1714 1715 1716 1717 1817 1918 2018 2019 1919 1818 1719 1618 1617 1517 1516 1415</Border>
+    <Border WrapLabel="true" Color="#ee1c25" Allegiance="Ne" LabelPosition="3113" Label="Nalaashii Empire">2617 2717 2816 2815 2814 2914 2915 2916 3016 3117 3118 3018 3019 2919 2818 2718 2617</Border>
+    <Border WrapLabel="true" Color="#ee1c25" Allegiance="Nw" LabelPosition="2601" Label="New Worlds Alliance">2606 2706 2805 2804 2803 2803 2802 2801 2701 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3209 3210 3110 3010 3110 3209 3208 3108 3007 2907 2807 2808 2809 2709 2708 2807 2806 2706 2606</Border>
+    <Border ShowLabel="false" WrapLabel="false" Color="#00a651" Allegiance="Im" LabelPosition="0000" Label="Fourth Imperium">0000 0100 0200 0300 0400 0500 0400 0301 0200 0100 0000 0001 0002 0001 0000</Border>
+    <Border ShowLabel="false" WrapLabel="false" Color="#00a651" Allegiance="Im" LabelPosition="0000" Label="Fourth Imperium">0700 0800 0900 0800 0700</Border>
+    <Border ShowLabel="false" WrapLabel="false" Color="#ee1c25" Allegiance="Na" LabelPosition="3003">3003 3103 3003</Border>
+  </Borders>
+</Sector>

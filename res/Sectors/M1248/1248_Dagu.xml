@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<Sector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>Dagudashaag</Name>
+  <Credits>
+
+             &lt;b&gt;Dagudashaag&lt;/b&gt; sector was designed by Marc W. Miller
+             and appears in &lt;cite&gt;Atlas of the Imperium&lt;/cite&gt; (GDW,
+             1984).
+
+             It was refined by Duncan Law-Green, Leighton Piper and
+             Jae Campbell. Portions appear in &lt;cite&gt;Signal GK
+             Magazine&lt;/cite&gt;.
+
+             It was further refined by Martin J. Dougherty and appears in
+             &lt;cite&gt;1248 Sourcebook 2: Bearers of the Flame&lt;/cite&gt;
+             (ComStar Media/Avenger Enterprises, 2006).
+
+    </Credits>
+  <Subsectors>
+    <Subsector Index="A"></Subsector>
+    <Subsector Index="B"></Subsector>
+    <Subsector Index="C"></Subsector>
+    <Subsector Index="D"></Subsector>
+    <Subsector Index="E"></Subsector>
+    <Subsector Index="F"></Subsector>
+    <Subsector Index="G"></Subsector>
+    <Subsector Index="H"></Subsector>
+    <Subsector Index="I"></Subsector>
+    <Subsector Index="J"></Subsector>
+    <Subsector Index="K"></Subsector>
+    <Subsector Index="L"></Subsector>
+    <Subsector Index="M"></Subsector>
+    <Subsector Index="N"></Subsector>
+    <Subsector Index="O"></Subsector>
+    <Subsector Index="P"></Subsector>
+  </Subsectors>
+  <Allegiances>
+    <Allegiance Code="Cs">Imperial Client State</Allegiance>
+    <Allegiance Code="Ie">Ikabi Exchange</Allegiance>
+    <Allegiance Code="Im">Imperial</Allegiance>
+    <Allegiance Code="Lk">Legacy of Khazaathun</Allegiance>
+    <Allegiance Code="Md">Munlamer Duchy</Allegiance>
+    <Allegiance Code="Na">Non-Aligned</Allegiance>
+    <Allegiance Code="Nw">New Worlds Alliance</Allegiance>
+    <Allegiance Code="Zs">New Ziru Sirka</Allegiance>
+  </Allegiances>
+  <Stylesheet>
+    route.Xboat { color: green; }
+  </Stylesheet>
+  <Borders>
+    <Border WrapLabel="true" Color="#ee1c25" Allegiance="Ie" LabelPosition="1426" Label="Ikabi Exchange">1528 1529 1629 1730 1829 1828 1728 1827 1826 1926 1927 1928 2028 1929 1829 1730 1731 1631 1531 1530 1529 1528</Border>
+    <Border WrapLabel="false" Color="#00a651" Allegiance="Im" LabelPosition="0334" Label="Fourth Imperium">0004 0104 0103 0104 0105 0106 0106 0107 0108 0208 0109 0110 0210 0311 0312 0412 0513 0613 0714 0614 0615 0716 0815 0716 0616 0617 0518 0418 0419 0520 0619 0719 0720 0820 0721 0720 0619 0520 0420 0321 0221 0122 0123 0223 0323 0423 0523 0623 0624 0725 0825 0725 0625 0624 0524 0423 0323 0223 0224 0325 0425 0326 0327 0227 0228 0329 0330 0430 0531 0630 0730 0729 0828 0829 0830 0831 0932 0933 0833 0834 0935 0936 0836 0837 0738 0739 0839 0940 1039 0940 0840 0740 0639 0540 0440 0341 0240 0140 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 0109 0108 0007 0006 0005 0004</Border>
+    <Border WrapLabel="true" Color="#ee1c25" Allegiance="Lk" LabelPosition="2214" Label="Legacy of Khazaathun">2317 2416 2415 2515 2514 2614 2715 2615 2516 2416 2417 2518 2617 2718 2818 2919 3018 3119 3219 3220 3120 3019 2920 2819 2719 2618 2518 2418 2318 2317</Border>
+    <Border WrapLabel="true" Color="#ee1c25" Allegiance="Md" LabelPosition="1137" Label="Munlamer Duchy">1235 1335 1334 1433 1432 1533 1534 1434 1435 1336 1235</Border>
+    <Border WrapLabel="false" Color="#ee1c25" Allegiance="Nw" LabelPosition="2740" Label="New Worlds Alliance">2741 2840 2940 3039 3139 3238 3339 3340 3341 3241 3141 3041 2941 2841 2741</Border>
+    <Border WrapLabel="false" Color="#fff100" Allegiance="Zs" LabelPosition="2301" Label="New Ziru Sirka">1701 1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3101 3001 2901 2800 2701 2702 2703 2803 2904 3004 3105 3106 3206 3107 3006 2906 2806 2706 2605 2505 2405 2406 2405 2305 2204 2305 2404 2403 2402 2302 2201 2101 2001 2000 1900 1800 1801 1702 1701</Border>
+    <Border ShowLabel="false" WrapLabel="false" Color="#00a651" Allegiance="Na" LabelPosition="0017">0017</Border>
+    <Border ShowLabel="false" WrapLabel="false" Color="#00a651" Allegiance="Na" LabelPosition="0031">0031</Border>
+    <Border ShowLabel="false" WrapLabel="false" Color="#00a651" Allegiance="Na" LabelPosition="0036">0036</Border>
+    <Border ShowLabel="false" WrapLabel="false" Color="#00a651" Allegiance="Na" LabelPosition="0138">0138</Border>
+    <Border ShowLabel="false" WrapLabel="false" Color="#00a651" Allegiance="Na" LabelPosition="0635">0635</Border>
+  </Borders>
+  <Routes>
+    <Route Start="0110" End="3211" EndOffsetX="-1" Type="Xboat" />
+    <Route Start="0123" End="0320" Type="Xboat" />
+    <Route Start="0123" End="0325" Type="Xboat" />
+    <Route Start="0212" End="0613" Type="Xboat" />
+    <Route Start="0212" End="3211" EndOffsetX="-1" Type="Xboat" />
+    <Route Start="0320" End="0517" Type="Xboat" />
+    <Route Start="0325" End="3126" EndOffsetX="-1" Type="Xboat" />
+    <Route Start="0329" End="0531" Type="Xboat" />
+    <Route Start="0329" End="3230" EndOffsetX="-1" Type="Xboat" />
+    <Route Start="0440" End="0539" Type="Xboat" />
+    <Route Start="0440" End="3240" EndOffsetX="-1" Type="Xboat" />
+    <Route Start="0517" End="0613" Type="Xboat" />
+    <Route Start="0531" End="0833" Type="Xboat" />
+    <Route Start="0539" End="0736" Type="Xboat" />
+    <Route Start="0736" End="0833" Type="Xboat" />
+    <Route Start="2402" End="2437" EndOffsetY="-1" Type="Xboat" />
+    <Route Start="2402" End="2405" Type="Xboat" />
+    <Route Start="2402" End="2803" Type="Xboat" />
+    <Route Start="2706" End="2803" Type="Xboat" />
+  </Routes>
+</Sector>

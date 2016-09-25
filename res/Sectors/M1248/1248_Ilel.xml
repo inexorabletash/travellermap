@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<Sector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>Ilelish</Name>
+  <Credits>
+
+             &lt;b&gt;Ilelish&lt;/b&gt; sector was designed by Marc W. Miller
+             and appears in &lt;cite&gt;Atlas of the Imperium&lt;/cite&gt; (GDW,
+             1984).
+
+             It was refined by Martin J. Dougherty and appears in
+             &lt;cite&gt;1248 Sourcebook 2: Bearers of the Flame&lt;/cite&gt;
+             (ComStar Media/Avenger Enterprises, 2006).
+
+    </Credits>
+  <Subsectors>
+    <Subsector Index="A"></Subsector>
+    <Subsector Index="B"></Subsector>
+    <Subsector Index="C"></Subsector>
+    <Subsector Index="D"></Subsector>
+    <Subsector Index="E"></Subsector>
+    <Subsector Index="F"></Subsector>
+    <Subsector Index="G"></Subsector>
+    <Subsector Index="H"></Subsector>
+    <Subsector Index="I"></Subsector>
+    <Subsector Index="J"></Subsector>
+    <Subsector Index="K"></Subsector>
+    <Subsector Index="L"></Subsector>
+    <Subsector Index="M"></Subsector>
+    <Subsector Index="N"></Subsector>
+    <Subsector Index="O"></Subsector>
+    <Subsector Index="P"></Subsector>
+  </Subsectors>
+  <Allegiances>
+    <Allegiance Code="Cs">Imperial Client State</Allegiance>
+    <Allegiance Code="Hw">Hongydeff Worlds</Allegiance>
+    <Allegiance Code="Im">Imperial</Allegiance>
+    <Allegiance Code="Ju">Jubilee Confederation</Allegiance>
+    <Allegiance Code="Lu">Ludamikha Territories</Allegiance>
+    <Allegiance Code="Na">Non-Aligned</Allegiance>
+  </Allegiances>
+  <Borders>
+    <Border WrapLabel="true" Color="#ee1c25" Allegiance="Hw" LabelPosition="2020" Label="Hongydeff Worlds">1721 1820 1821 1922 1923 1922 1821 1721</Border>
+    <Border WrapLabel="false" Color="#00a651" Allegiance="Im" LabelPosition="0701" Label="Fourth Imperium">1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2300 2400 2500 2400 2401 2402 2503 2402 2302 2201 2102 2103 2102 2001 1902 1801 1702 1703 1704 1603 1504 1505 1605 1505 1504 1503 1402 1401 1301 1200 1101 1001 1000</Border>
+    <Border WrapLabel="false" Color="#00a651" Allegiance="Im" LabelPosition="0701" Label="Fourth Imperium">2702 2801 2800 2700 2800 2900 3000 3100 3200 3201 3202 3103 3002 2903 2803 2802 2702</Border>
+    <Border WrapLabel="true" Color="#ee1c25" Allegiance="Ju" LabelPosition="1205" Label="Jubilee Confederation">0905 1004 1003 1004 1005 0906 0905</Border>
+    <Border WrapLabel="true" Color="#ee1c25" Allegiance="Lu" LabelPosition="1422" Label="Ludamikha Territories">1018 1118 1217 1317 1217 1118 1119 1219 1120 1121 1221 1122 1022 1021 1020 1019 1018</Border>
+    <Border ShowLabel="false" WrapLabel="false" Color="#00a651" Allegiance="Na" LabelPosition="1700" Label="1700">1701 1700 1800 1701</Border>
+    <Border ShowLabel="false" WrapLabel="false" Color="#00a651" Allegiance="Na" LabelPosition="2101" Label="2101">2101</Border>
+  </Borders>
+</Sector>
