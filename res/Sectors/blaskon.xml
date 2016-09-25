@@ -12,25 +12,25 @@
   </Credits>
   <Subsectors>
 
-<Subsector Index="A"></Subsector>
-<Subsector Index="B"></Subsector>
-<Subsector Index="C">Lotrutan</Subsector>
-<Subsector Index="D"></Subsector>
-<Subsector Index="E"></Subsector>
-<Subsector Index="F"></Subsector>
-<Subsector Index="G">Ldoocox</Subsector>
-<Subsector Index="H"></Subsector>
-<Subsector Index="I"></Subsector>
-<Subsector Index="J"></Subsector>
-<Subsector Index="K"></Subsector>
-<Subsector Index="L"></Subsector>
-<Subsector Index="M"></Subsector>
-<Subsector Index="N">Kipnasko</Subsector>
-<Subsector Index="O"></Subsector>
-<Subsector Index="P">Dradrip</Subsector>
+    <Subsector Index="A"></Subsector>
+    <Subsector Index="B"></Subsector>
+    <Subsector Index="C">Lotrutan</Subsector>
+    <Subsector Index="D"></Subsector>
+    <Subsector Index="E">Valaar</Subsector>
+    <Subsector Index="F">Inasko</Subsector>
+    <Subsector Index="G">Ldoocox</Subsector>
+    <Subsector Index="H"></Subsector>
+    <Subsector Index="I"></Subsector>
+    <Subsector Index="J">Laxsetker</Subsector>
+    <Subsector Index="K">Guuqal</Subsector>
+    <Subsector Index="L"></Subsector>
+    <Subsector Index="M"></Subsector>
+    <Subsector Index="N">Kipnasko</Subsector>
+    <Subsector Index="O"></Subsector>
+    <Subsector Index="P">Dradrip</Subsector>
   </Subsectors>
   <Allegiances>
-    <Allegiance Code="Hv">Hive Federation</Allegiance>
+    <Allegiance Code="HvFd">Hive Federation</Allegiance>
     <Allegiance Code="Hf">Hive FDA Uplift/Observation Site</Allegiance>
     <Allegiance Code="Xh">Hive FDA extra-Federation operation</Allegiance>
     <Allegiance Code="Na">Non-aligned</Allegiance>
@@ -42,28 +42,81 @@
     <Allegiance Code="H3">Hive Federation Member</Allegiance>
   </Allegiances>
   <Borders>
-<Border Allegiance="Hl" Color="green" LabelPosition="1914">
-1811 1812 1913 1813 1812
-</Border>
+    <Border Allegiance="Hl" Color="green" LabelPosition="1914">
+      1811 1812 1913 1813 1812
+    </Border>
     <Border Allegiance="HvFd" ShowLabel="true">
-0000 0100 0200 0300 0400 0500 0600 0700 0800 0900
-1000 1100 1200 1300 1400 1500 1600 1700 1800 1900
-2000 2100 2200 2300 2400 2401 2402 2403 2404 2405
-2406 2507 2508 2509 2409 2410 2411 2412 2413 2414
-2415 2516 2615 2715 2814 2914 3013 3113 3213 3314 3315
-3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326
-3327 3328 3329 3330 3331 3332 3333 3334 3335 3336
-3337 3338 3339 3340 3341 3241 3141 3041 2941 2841
-2741 2641 2541 2441 2341 2241 2141 2041 1941 1841
-1741 1641 1541 1441 1341 1241 1141 1041 0941 0841
-0741 0641 0541 0441 0341 0241 0141 0041 0040 0039
-0038 0037 0036 0035 0034 0033 0032 0031 0030 0029
-0028 0027 0026 0025 0024 0023 0022 0021 0020 0019
-0018 0017 0016 0015 0014 0013 0012 0011 0010 0009
-0008 0007 0006 0005 0004 0003 0002 0001 0000
-</Border>
+      0000 0100 0200 0300 0400 0500 0600 0700 0800 0900
+      1000 1100 1200 1300 1400 1500 1600 1700 1800 1900
+      2000 2100 2200 2300 2400 2401 2402 2403 2404 2405
+      2406 2507 2508 2509 2409 2410 2411 2412 2413 2414
+      2415 2516 2615 2715 2814 2914 3013 3113 3213 3314 3315
+      3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326
+      3327 3328 3329 3330 3331 3332 3333 3334 3335 3336
+      3337 3338 3339 3340 3341 3241 3141 3041 2941 2841
+      2741 2641 2541 2441 2341 2241 2141 2041 1941 1841
+      1741 1641 1541 1441 1341 1241 1141 1041 0941 0841
+      0741 0641 0541 0441 0341 0241 0141 0041 0040 0039
+      0038 0037 0036 0035 0034 0033 0032 0031 0030 0029
+      0028 0027 0026 0025 0024 0023 0022 0021 0020 0019
+      0018 0017 0016 0015 0014 0013 0012 0011 0010 0009
+      0008 0007 0006 0005 0004 0003 0002 0001 0000
+    </Border>
+
   </Borders>
   <Routes>
+    <Route Start="0327" End="0525" Type="Trade"/>
+    <Route Start="0327" End="0024" Type="Trade"/>
+    <Route Start="0327" End="0428" Type="Trade"/>
+    <Route Start="0531" End="0428" Type="Trade"/>
+    <Route Start="0333" End="0034" Type="Trade"/>
+    <Route Start="0333" End="0531" Type="Trade"/>
+    <Route Start="0507" End="0307" Type="Trade"/>
+    <Route Start="0307" End="0107" Type="Trade"/>
+    <Route Start="0507" End="0806" Type="Trade"/>
+    <Route Start="0327" End="0024" Type="Trade"/>
+    <Route Start="0107" End="0007" Type="Trade"/>
+    <Route Start="0806" End="1106" Type="Trade"/>
+    <Route Start="1106" End="1406" Type="Trade"/>
+    <Route Start="1406" End="1606" Type="Trade"/>
+    <Route Start="1606" End="1808" Type="Trade"/>
+    <Route Start="1808" End="2110" Type="Trade"/>
+    <Route Start="1808" End="1811" Type="Trade"/>
+    <Route Start="1811" End="2113" Type="Trade"/>
+    <Route Start="0806" End="0905" Type="Trade"/>
+    <Route Start="0905" End="1003" Type="Trade"/>
+    <Route Start="1003" End="1303" Type="Trade"/>
+    <Route Start="1303" End="1400" Type="Trade"/>
+    <Route Start="1811" End="1612" Type="Trade"/>
+    <Route Start="1612" End="1614" Type="Trade"/>
+    <Route Start="0428" End="0728" Type="Trade"/>
+    <Route Start="0728" End="0928" Type="Trade"/>
+    <Route Start="0928" End="1227" Type="Trade"/>
+    <Route Start="1614" End="1716" Type="Trade"/>
+    <Route Start="1716" End="1818" Type="Trade"/>
+    <Route Start="1818" End="1920" Type="Trade"/>
+    <Route Start="1920" End="2219" Type="Trade"/>
+    <Route Start="1920" End="2022" Type="Trade"/>
+    <Route Start="2740" End="2641" Type="Trade"/>
+    <Route Start="2740" End="2838" Type="Trade"/>
+    <Route Start="3237" End="2838" Type="Trade"/>
+    <Route Start="2740" End="2538" Type="Trade"/>
+    <Route Start="2235" End="2538" Type="Trade"/>
+    <Route Start="2219" End="2519" Type="Trade"/>
+    <Route Start="2519" End="2618" Type="Trade"/>
+    <Route Start="2618" End="3018" Type="Trade"/>
+    <Route Start="3018" End="3216" Type="Trade"/>
+    <Route Start="3018" End="3020" Type="Trade"/>
+    <Route Start="3020" End="3321" Type="Trade"/>
+    <Route Start="3237" End="3437" Type="Trade"/>
+    <Route Start="2240" End="2139" Type="Trade"/>
+    <Route Start="2110" End="2509" Type="Trade"/>
+    <Route Start="2235" End="2434" Type="Trade"/>
+    <Route Start="2235" End="2036" Type="Trade"/>
+    <Route Start="1606" End="1408" Type="Trade"/>
+    <Route Start="2235" End="2036" Type="Trade"/>
+    <Route Start="1911" End="2110" Type="Trade"/>
+    <Route Start="1911" End="1811" Type="Trade"/>
   </Routes>
-<Labels/>
+  <Labels/>
 </Sector>
