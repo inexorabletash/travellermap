@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<Sector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>Deneb</Name>
+  <Credits>
+
+             &lt;b&gt;Deneb&lt;/b&gt; sector was designed by Marc W. Miller and
+             appears in &lt;cite&gt;Atlas of the Imperium&lt;/cite&gt; (GDW,
+             1984).
+
+             It was refined by James Holden. Portions appear in
+             &lt;cite&gt;The Travellers Digest&lt;/cite&gt; and &lt;cite&gt;The
+             MegaTraveller Journal #3&lt;/cite&gt; (Digest Group
+             Publications, 1992).
+
+             It was further refined by Dave Nilsen and appears in
+             &lt;cite&gt;Regency Sourcebook: Keepers of the Flame&lt;/cite&gt;
+             (GDW Inc., 1995).
+
+             It was further refined by Mike West and appears in
+             &lt;cite&gt;1248 Sourcebook 3: The Spinward States&lt;/cite&gt;
+             (ComStar Media/Avenger Enterprises, 2008).
+
+    </Credits>
+  <Product Author="Mike West" Title="1248 Sourcebook 3: The Spinward States" Publisher="Avenger Enterprises in association with Comstar Media, LLC." Ref="http://www.farfuture.net/Contents%20CDROM%20TNE-2.pdf" />
+  <Subsectors>
+    <Subsector Index="A">Pretoria</Subsector>
+    <Subsector Index="B">Lamas</Subsector>
+    <Subsector Index="C">Antra</Subsector>
+    <Subsector Index="D">Million</Subsector>
+    <Subsector Index="E">Sabine</Subsector>
+    <Subsector Index="F">Inar</Subsector>
+    <Subsector Index="G">Namidshur</Subsector>
+    <Subsector Index="H">Atsah</Subsector>
+    <Subsector Index="I">Star Lane</Subsector>
+    <Subsector Index="J">Vincennes</Subsector>
+    <Subsector Index="K">Usani</Subsector>
+    <Subsector Index="L">Geniishir</Subsector>
+    <Subsector Index="M">Gulf</Subsector>
+    <Subsector Index="N">Zeng</Subsector>
+    <Subsector Index="O">Kamlar</Subsector>
+    <Subsector Index="P">Vast Heavens</Subsector>
+  </Subsectors>
+  <Allegiances>
+    <Allegiance Code="As">Aslan Aorlakht, Other Unaligned Clan</Allegiance>
+    <Allegiance Code="Au">Askigaak Union</Allegiance>
+    <Allegiance Code="Cs">Client State</Allegiance>
+    <Allegiance Code="De">League of Deneb</Allegiance>
+    <Allegiance Code="Dr">Droyne, unaligned</Allegiance>
+    <Allegiance Code="Gf">Gateway Federation</Allegiance>
+    <Allegiance Code="Na">Non-aligned (human)</Allegiance>
+    <Allegiance Code="Re">Imperial Regency</Allegiance>
+    <Allegiance Code="Va">Vargr, unaligned</Allegiance>
+  </Allegiances>
+  <Stylesheet>
+    route.Xboat { color: green; }
+  </Stylesheet>
+  <Borders>
+    <Border WrapLabel="true" Color=" #37ab4e" Allegiance="Au" LabelPosition="0628" Label="Askigaak Union">0529 0628 0627 0626 0727 0827 0828 0929 0930 0830 0731 0730 0629 0529</Border>
+    <Border WrapLabel="false" Color="#303192" Allegiance="De" LabelPosition="1120" Label="League of Deneb">0007 0108 0207 0206 0205 0204 0203 0202 0201 0302 0402 0502 0602 0603 0704 0804 0905 1004 1105 1204 1304 1403 1504 1505 1506 1507 1607 1708 1808 1909 2009 2109 2110 2210 2311 2411 2412 2413 2414 2415 2416 2417 2418 2519 2520 2521 2522 2523 2423 2424 2425 2326 2226 2127 2128 2129 2130 2131 2031 1932 1832 1733 1633 1534 1434 1335 1336 1335 1334 1333 1332 1231 1230 1229 1228 1128 1127 1026 0926 0825 0725 0624 0524 0423 0422 0421 0420 0419 0319 0218 0217 0216 0116 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007</Border>
+    <Border WrapLabel="true" Color="Lavender" Allegiance="Gf" LabelPosition="2811" Label="Gateway Federation">2713 2812 2811 2810 2911 3011 2912 2913 3013 2913 2813 2713</Border>
+    <Border WrapLabel="true" Color="#f7941d" Allegiance="Re" LabelPosition="0225" Label="Imperial Regency">0020 0121 0221 0222 0223 0224 0125 0025 0024 0023 0022 0021 0020</Border>
+    <Border WrapLabel="true" Color="#f7941d" Allegiance="Re" LabelPosition="0240" Label="Imperial Regency">0036 0137 0237 0238 0339 0439 0440 0541 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036</Border>
+  </Borders>
+  <Routes>
+    <Route Start="0009" End="0208" Type="Xboat"/>
+    <Route Start="0201" End="0304" Type="Xboat"/>
+    <Route Start="0208" End="0406" Type="Xboat"/>
+    <Route Start="0304" End="0406" Type="Xboat"/>
+    <Route Start="0316" End="0016" Type="Xboat"/>
+    <Route Start="0316" End="0518" Type="Xboat"/>
+    <Route Start="0316" End="0715" Type="Xboat"/>
+    <Route Start="0406" End="0805" Type="Xboat"/>
+    <Route Start="0514" End="0316" Type="Xboat"/>
+    <Route Start="0518" End="0715" Type="Xboat"/>
+    <Route Start="0715" End="0514" Type="Xboat"/>
+    <Route Start="0805" End="1006" Type="Xboat"/>
+    <Route Start="0917" End="0715" Type="Xboat"/>
+    <Route Start="0917" End="1016" Type="Xboat"/>
+    <Route Start="0921" End="0917" Type="Xboat"/>
+    <Route Start="1006" End="1309" Type="Xboat"/>
+    <Route Start="1016" End="0715" Type="Xboat"/>
+    <Route Start="1122" End="0921" Type="Xboat"/>
+    <Route Start="1122" End="1522" Type="Xboat"/>
+    <Route Start="1128" End="1224" Type="Xboat"/>
+    <Route Start="1224" End="1122" Type="Xboat"/>
+    <Route Start="1309" End="1609" Type="Xboat"/>
+    <Route Start="1417" End="1520" Type="Xboat"/>
+    <Route Start="1429" End="1128" Type="Xboat"/>
+    <Route Start="1429" End="1630" Type="Xboat"/>
+    <Route Start="1520" End="1522" Type="Xboat"/>
+    <Route Start="1522" End="1623" Type="Xboat"/>
+    <Route Start="1609" End="1613" Type="Xboat"/>
+    <Route Start="1609" End="1808" Type="Xboat"/>
+    <Route Start="1613" End="1615" Type="Xboat"/>
+    <Route Start="1615" End="1417" Type="Xboat"/>
+    <Route Start="1615" End="1618" Type="Xboat"/>
+    <Route Start="1618" End="1520" Type="Xboat"/>
+    <Route Start="1618" End="1917" Type="Xboat"/>
+    <Route Start="1623" End="1925" Type="Xboat"/>
+    <Route Start="1630" End="1633" Type="Xboat"/>
+    <Route Start="1633" End="1334" Type="Xboat"/>
+    <Route Start="1808" End="1910" Type="Xboat"/>
+    <Route Start="1826" End="1829" Type="Xboat"/>
+    <Route Start="1829" End="1429" Type="Xboat"/>
+    <Route Start="1917" End="2316" Type="Xboat"/>
+    <Route Start="1925" End="1826" Type="Xboat"/>
+    <Route Start="1925" End="1923" Type="Xboat"/>
+    <Route Start="1925" End="2225" Type="Xboat"/>
+    <Route Start="2225" End="2323" Type="Xboat"/>
+    <Route Start="2323" End="2521" Type="Xboat"/>
+    <Route Start="2521" End="2520" Type="Xboat"/>
+  </Routes>
+</Sector>

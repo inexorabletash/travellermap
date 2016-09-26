@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<Sector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>Trojan Reach</Name>
+  <Name>Trojan Reaches</Name>
+  <Name Lang="as">Hlaoirloahaurl</Name>
+  <Name Lang="zh">Idrflanta</Name>
+  <Credits>
+
+             Egyrn and Pax Rulin subsectors of &lt;b&gt;Trojan Reach&lt;/b&gt;
+             sector were designed by Bob McWilliams and appear in
+             &lt;cite&gt;Traveller Adventure 4: Leviathan&lt;/cite&gt; (GDW,
+             1980).
+
+             The rest of Trojan Reach sector was designed by Marc W.
+             Miller and appears in &lt;cite&gt;Atlas of the Imperium&lt;/cite&gt;
+             (GDW, 1984).
+
+             The remaining subsectors were refined by Mike Jackson and
+             appear in &lt;cite&gt;Third Imperium Magazine&lt;/cite&gt;
+             (1986-1988) and &lt;cite&gt;The MegaTraveller Journal #3&lt;/cite&gt;
+             (Digest Group Publications, 1992).
+
+             It was further refined by Dave Nilsen and appears in
+             &lt;cite&gt;Regency Sourcebook: Keepers of the Flame&lt;/cite&gt;
+             (GDW Inc., 1995).
+
+             It was further refined by Mike West and appears in
+             &lt;cite&gt;1248 Sourcebook 3: The Spinward States&lt;/cite&gt;
+             (ComStar Media/Avenger Enterprises, 2008).
+
+            </Credits>
+  <Product Author="Mike West" Title="1248 Sourcebook 3: The Spinward States" Publisher="Avenger Enterprises in association with Comstar Media, LLC." Ref="http://www.farfuture.net/Contents%20CDROM%20TNE-2.pdf" />
+  <Subsectors>
+    <Subsector Index="A">Menorial</Subsector>
+    <Subsector Index="B">Egyrn</Subsector>
+    <Subsector Index="C">Pax Rulin</Subsector>
+    <Subsector Index="D">Gazulin</Subsector>
+    <Subsector Index="E">Yggdrasil</Subsector>
+    <Subsector Index="F">Dpres</Subsector>
+    <Subsector Index="G">Sindal</Subsector>
+    <Subsector Index="H">Tobia</Subsector>
+    <Subsector Index="I">Nora'a</Subsector>
+    <Subsector Index="J">Goertel</Subsector>
+    <Subsector Index="K">Tlaiowaha</Subsector>
+    <Subsector Index="L">Borderland</Subsector>
+    <Subsector Index="M">Ranib</Subsector>
+    <Subsector Index="N">Silraaihe</Subsector>
+    <Subsector Index="O">Hkea'as</Subsector>
+    <Subsector Index="P">Binary</Subsector>
+  </Subsectors>
+  <Allegiances>
+    <Allegiance Code="A0">Aslan Aorlakht, Aorekhohuiha control, Yerlyaruiwo clan</Allegiance>
+    <Allegiance Code="A1">Aslan Aorlakht, Aorekhohuiha control, Khaukeairl clan</Allegiance>
+    <Allegiance Code="A2">Aslan Aorlakht, Aorekhohuiha control, Stohyushiuiha clan</Allegiance>
+    <Allegiance Code="A3">Aslan Aorlakht, Aorekhohuiha control, Soarlhuiha clan</Allegiance>
+    <Allegiance Code="A6">Aslan Aorlakht, Aorekhohuiha control, Aosiha clan</Allegiance>
+    <Allegiance Code="A9">Aslan Aorlakht, Unaligned, Hreakhari clan</Allegiance>
+    <Allegiance Code="As">Aslan Aorlakht, Other Unaligned Clan</Allegiance>
+    <Allegiance Code="Cs">Client State</Allegiance>
+    <Allegiance Code="Dr">Droyne, unaligned</Allegiance>
+    <Allegiance Code="Fl">Florian League</Allegiance>
+    <Allegiance Code="Ft">Fteirsyar Empire</Allegiance>
+    <Allegiance Code="Lu">League of Spinward States, Mondes Unis</Allegiance>
+    <Allegiance Code="Na">Non-aligned (human)</Allegiance>
+    <Allegiance Code="Re">Imperial Regency</Allegiance>
+  </Allegiances>
+  <Stylesheet>
+    route.Xboat { color: green; }
+  </Stylesheet>
+  <Borders>
+    <Border WrapLabel="false" Color="Yellow" LabelPosition="1428" Label="Aslan Aorlakht">0021 0122 0222 0322 0323 0324 0424 0525 0624 0724 0823 0923 1022 1122 1121 1122 1222 1322 1421 1521 1620 1619 1720 1819 1919 2019 2120 2121 2122 2123 2124 2224 2325 2425 2526 2625 2526 2426 2427 2428 2329 2229 2230 2231 2232 2233 2134 2034 1935 1835 1736 1636 1637 1538 1438 1339 1238 1138 1038 0939 0940 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021</Border>
+    <Border WrapLabel="true" Color="Tan" Allegiance="A0" LabelPosition="0237" Label="Yerlyaruiwo">0236 0336 0335 0336 0236</Border>
+    <Border WrapLabel="true" Color="Tan" Allegiance="A1" LabelPosition="0228" Label="Khaukeairl">0028 0129 0229 0130 0030 0029 0028</Border>
+    <Border WrapLabel="true" Color="Tan" Allegiance="A2" LabelPosition="0735" Label="Stohyushiuiha">0835 0936 0836 0837 0836 0835</Border>
+    <Border WrapLabel="true" Color="Tan" Allegiance="A3" LabelPosition="1227" Label="Soarlhuiha">1027 1128 1028 1027</Border>
+    <Border WrapLabel="true" Color="Tan" Allegiance="A6" LabelPosition="1337" Label="Aosiha">1333 1334 1335 1336 1337 1338 1438 1339 1338 1337 1336 1335 1334 1333</Border>
+    <Border WrapLabel="true" Color="Tan" Allegiance="A9" LabelPosition="1523" Label="Hreakhari">1222 1322 1323 1324 1223 1222</Border>
+    <Border WrapLabel="false" Color="Orange" Allegiance="Fl" LabelPosition="0412" Label="Florian League">0110 0210 0310 0410 0510 0511 0512 0612 0713 0714 0715 0716 0616 0517 0417 0418 0319 0320 0321 0220 0219 0119 0118 0117 0116 0115 0114 0113 0112 0111 0110</Border>
+    <Border WrapLabel="false" Color="Tan" Allegiance="Ft" LabelPosition="2128" Label="Fteirsyar Empire">1728 1827 1927 2026 2025 2024 2023 2123 2124 2224 2325 2425 2426 2427 2428 2329 2229 2230 2130 2029 1929 1828 1728</Border>
+    <Border WrapLabel="false" Color="Green" Allegiance="Lu" LabelPosition="0506" Label="Mondes Unis">0403 0503 0504 0505 0404 0403</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="Yellow" Allegiance="Na" LabelPosition="1823" Label="">1823</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="Yellow" Allegiance="Na" LabelPosition="2020" Label="">2020</Border>
+    <Border WrapLabel="false" Color="#f7941d" Allegiance="Re" LabelPosition="2510" Label="Imperial Regency">2002 2102 2101 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3218 3219 3119 3018 2918 2817 2717 2616 2615 2515 2414 2314 2213 2113 2212 2211 2311 2410 2510 2509 2508 2507 2406 2306 2205 2105 2104 2103 2002</Border>
+  </Borders>
+  <Routes>
+    <Route Start="0210" End="0213" Type="Xboat"/>
+    <Route Start="0213" End="0415" Type="Xboat"/>
+    <Route Start="0218" End="0220" Type="Xboat"/>
+    <Route Start="0220" End="0321" Type="Xboat"/>
+    <Route Start="0310" End="0210" Type="Xboat"/>
+    <Route Start="0317" End="0218" Type="Xboat"/>
+    <Route Start="0415" End="0317" Type="Xboat"/>
+    <Route Start="0415" End="0516" Type="Xboat"/>
+    <Route Start="0415" End="0614" Type="Xboat"/>
+    <Route Start="0516" End="0616" Type="Xboat"/>
+    <Route Start="1728" End="1928" Type="Xboat"/>
+    <Route Start="1928" End="2029" Type="Xboat"/>
+    <Route Start="1928" End="2226" Type="Xboat"/>
+    <Route Start="2029" End="2329" Type="Xboat"/>
+    <Route Start="2125" End="2023" Type="Xboat"/>
+    <Route Start="2226" End="2125" Type="Xboat"/>
+    <Route Start="2226" End="2425" Type="Xboat"/>
+  </Routes>
+</Sector>

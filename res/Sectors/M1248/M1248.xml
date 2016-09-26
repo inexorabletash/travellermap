@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Sectors>
-  <Sector Abbreviation="Gush" Tags="Unreviewed" Milieu="M1248">
+  <Sector Abbreviation="Gush" Tags="Unreviewed" Selected="true" Milieu="M1248">
     <Y>0</Y>
     <X>-2</X>
     <Name>Gushemege</Name>
     <DataFile Author="Martin J. Dougherty" Source="1248 Sourcebook 2: Bearers of the Flame">1248_Gush.sec</DataFile>
     <MetadataFile>1248_Gush.xml</MetadataFile>
   </Sector>
-  <Sector Abbreviation="Dagu" Tags="Unreviewed" Milieu="M1248">
+  <Sector Abbreviation="Dagu" Tags="Unreviewed" Selected="true" Milieu="M1248">
     <Y>0</Y>
     <X>-1</X>
     <Name>Dagudashaag</Name>
@@ -16,18 +16,55 @@
     <DataFile Author="Martin J. Dougherty" Source="1248 Sourcebook 2: Bearers of the Flame">1248_Dagu.sec</DataFile>
     <MetadataFile>1248_Dagu.xml</MetadataFile>
   </Sector>
-  <Sector Abbreviation="Ilel" Tags="Unreviewed" Milieu="M1248">
+  <Sector Abbreviation="Ilel" Tags="Unreviewed" Selected="true" Milieu="M1248">
     <Y>1</Y>
     <X>-2</X>
     <Name>Ilelish</Name>
     <DataFile Author="Martin J. Dougherty" Source="1248 Sourcebook 2: Bearers of the Flame">1248_Ilel.sec</DataFile>
     <MetadataFile>1248_Ilel.xml</MetadataFile>
   </Sector>
-  <Sector Abbreviation="Zaru" Tags="Unreviewed" Milieu="M1248">
+  <Sector Abbreviation="Zaru" Tags="Unreviewed" Selected="true" Milieu="M1248">
     <Y>1</Y>
     <X>-1</X>
     <Name>Zarushagar</Name>
     <DataFile Author="Martin J. Dougherty" Source="1248 Sourcebook 2: Bearers of the Flame">1248_Zaru.sec</DataFile>
     <MetadataFile>1248_Zaru.xml</MetadataFile>
+  </Sector>
+
+  <Sector Abbreviation="Spin" Tags="Unreviewed" Selected="true" Milieu="M1248">
+    <Y>-1</Y>
+    <X>-4</X>
+    <Name>Spinward Marches</Name>
+    <Name Lang="zh">Tloql</Name>
+    <DataFile Author="Mike West" Source="1248 Sourcebook 3: The Spinward States">1248_Spin.sec</DataFile>
+    <MetadataFile>1248_Spin.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Dene" Tags="Unreviewed" Selected="true" Milieu="M1248">
+    <Y>-1</Y>
+    <X>-3</X>
+    <Name>Deneb</Name>
+    <Name Lang="zh">Nieklsdia</Name>
+    <DataFile Author="Mike West" Source="1248 Sourcebook 3: The Spinward States">1248_Dene.sec</DataFile>
+    <MetadataFile>1248_Dene.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Troj" Tags="Unreviewed" Selected="true" Milieu="M1248">
+    <Y>0</Y>
+    <X>-4</X>
+    <Name>Trojan Reach</Name>
+    <Name>Trojan Reaches</Name>
+    <Name Lang="as">Hlaoirloahaurl</Name>
+    <Name Lang="zh">Idrflanta</Name>
+    <DataFile Author="Mike West" Source="1248 Sourcebook 3: The Spinward States">1248_Troj.sec</DataFile>
+    <MetadataFile>1248_Troj.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Reft" Tags="Unreviewed" Selected="true" Milieu="M1248">
+    <Y>0</Y>
+    <X>-3</X>
+    <Name>Reft Sector</Name>
+    <Name>Reft</Name>
+    <Name Lang="zh">Bransakral</Name>
+    <Name Lang="vi">Sushinar</Name>
+    <DataFile Author="Mike West" Source="1248 Sourcebook 3: The Spinward States">1248_Reft.sec</DataFile>
+    <MetadataFile>1248_Reft.xml</MetadataFile>
   </Sector>
 </Sectors>
