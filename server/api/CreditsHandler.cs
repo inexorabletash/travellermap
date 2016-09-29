@@ -78,7 +78,7 @@ namespace Maps.API
                     data.SectorPublisher = sector.Publisher;
                     data.SectorCopyright = sector.Copyright;
                     data.SectorRef = sector.Ref;
-                    data.SectorMilieu = sector.Milieu;
+                    data.SectorMilieu = sector.CanonicalMilieu;
 
                     if (sector.DataFile != null)
                     {
@@ -87,7 +87,7 @@ namespace Maps.API
                         data.SectorPublisher = sector.DataFile.Publisher ?? data.SectorPublisher;
                         data.SectorCopyright = sector.DataFile.Copyright ?? data.SectorCopyright;
                         data.SectorRef = sector.DataFile.Ref ?? data.SectorRef;
-                        data.SectorMilieu = sector.DataFile.Milieu ?? data.SectorMilieu;
+                        data.SectorMilieu = sector.CanonicalMilieu;
                     }
 
                     //

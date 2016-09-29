@@ -62,7 +62,8 @@ namespace Maps.API
                 // Do the search
                 //
                 ResourceManager resourceManager = new ResourceManager(context.Server);
-                SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, GetStringOption("milieu"));
+                string milieu = GetStringOption("milieu", SectorMap.DEFAULT_MILIEU);
+                SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, milieu);
 
                 query = query.Replace('*', '%'); // Support * and % as wildcards
                 query = query.Replace('?', '_'); // Support ? and _ as wildcards
@@ -72,7 +73,7 @@ namespace Maps.API
 
                 const int NUM_RESULTS = 160;
 
-                var searchResults = SearchEngine.PerformSearch(query, SearchEngine.SearchResultsType.Default, NUM_RESULTS);
+                var searchResults = SearchEngine.PerformSearch(milieu, query, SearchEngine.SearchResultsType.Default, NUM_RESULTS);
 
                 SearchResults resultsList = new SearchResults();
 
