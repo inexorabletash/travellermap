@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<Sector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>Alpha Crucis</Name>
+  <Name Lang="vi">Amkarim</Name>
+  <Credits>
+
+             &lt;b&gt;Alpha Crucis&lt;/b&gt; sector was designed by Marc W. Miller
+             and appears in &lt;cite&gt;Atlas of the Imperium&lt;/cite&gt; (GDW,
+             1984).
+
+             It was further refined by Daniel Hammersley, Richard Perks and Grahame Muliss and appears in
+             &lt;cite&gt;1248 Sourcebook 4: The Freedom League&lt;/cite&gt;
+             (ComStar Media/Avenger Enterprises, 2008).
+
+    </Credits>
+  <Product Author="Daniel Hammersley, Richard Perks and Grahame Muliss" Title="1248 Sourcebook 4: The Freedom League" Publisher="Avenger Enterprises in association with Comstar Media, LLC." Ref="http://www.farfuture.net/Contents%20CDROM%20TNE-2.pdf" />
+  <Subsectors>
+    <Subsector Index="A">Ximenes</Subsector>
+    <Subsector Index="B">McKenzie</Subsector>
+    <Subsector Index="C">Dagir</Subsector>
+    <Subsector Index="D">Alba</Subsector>
+    <Subsector Index="E"></Subsector>
+    <Subsector Index="F"></Subsector>
+    <Subsector Index="G"></Subsector>
+    <Subsector Index="H"></Subsector>
+    <Subsector Index="I"></Subsector>
+    <Subsector Index="J"></Subsector>
+    <Subsector Index="K"></Subsector>
+    <Subsector Index="L"></Subsector>
+    <Subsector Index="M"></Subsector>
+    <Subsector Index="N"></Subsector>
+    <Subsector Index="O"></Subsector>
+    <Subsector Index="P"></Subsector>
+  </Subsectors>
+  <Allegiances>
+    <Allegiance Code="Al"> New Alban Protectorate</Allegiance>
+    <Allegiance Code="Cf">Colfax Freehold</Allegiance>
+    <Allegiance Code="Dg">Dagir Commonwealth</Allegiance>
+    <Allegiance Code="La">Freedom League, Affiliate</Allegiance>
+    <Allegiance Code="Na">Non-aligned</Allegiance>
+    <Allegiance Code="Rr">Republic of Renj</Allegiance>
+  </Allegiances>
+  <Borders>
+    <Border Color="#5555ff" Allegiance="Al" LabelPosition="2907">2805 2905 3004 3003 3103 3104 3105 3005 2906 2805 </Border>
+    <Border Color="#bbffbb" Allegiance="Cf" LabelPosition="1407">1406 1506 1505 1605 1606 1506 1406 </Border>
+    <Border Color="#ffbbff" Allegiance="Dg" LabelPosition="2202">1602 1702 1801 1901 2001 2101 2201 2301 2201 2102 2103 2003 1904 1804 1704 1603 1602 </Border>
+    <Border WrapLabel="false" ShowLabel="false" Color="#ee1c25" Allegiance="La">0202 0302 0402 0302 0202 0203 0204 0305 0204 0203 0202 </Border>
+    <Border WrapLabel="false" ShowLabel="true" Color="#ee1c25" Allegiance="La" LabelPosition="1102" Label="Freedom League">0600 0700 0800 0900 1000 1100 1101 1201 1202 1303 1304 1203 1103 1002 0903 0802 0702 0601 0600 </Border>
+    <Border WrapLabel="false" ShowLabel="false" Color="#ee1c25" Allegiance="La">1500 1600 1701 1600 1500</Border>
+    <Border WrapLabel="false" Color="#00aa00" Allegiance="Rr" LabelPosition="2602">2600 2701 2600 </Border>
+    <Border WrapLabel="false" ShowLabel="false" Color="#00aa00" Allegiance="Rr">2401</Border>
+  </Borders>
+  <Routes>
+    <Route Start="0203" End="0204"/>
+    <Route Start="0203" End="0302"/>
+    <Route Start="0204" End="0305"/>
+    <Route Start="0302" End="0402"/>
+    <Route Start="0402" End="0601"/>
+    <Route Start="0600" End="0601"/>
+    <Route Start="0601" End="0801"/>
+    <Route Start="0800" End="0801"/>
+    <Route Start="0801" End="0903"/>
+    <Route Start="0801" End="1101"/>
+    <Route Start="1101" End="1303"/>
+    <Route Start="1303" End="1304"/>
+    <Route Start="1304" End="1605"/>
+    <Route Start="1600" End="1701"/>
+    <Route Start="1603" End="1803"/>
+    <Route Start="1605" End="1804"/>
+    <Route Start="1701" End="1903"/>
+    <Route Start="1803" End="1804"/>
+    <Route Start="1803" End="1903"/>
+    <Route Start="1903" End="2001"/>
+    <Route Start="2001" End="2201"/>
+    <Route Start="2505" End="2805"/>
+    <Route Start="2600" End="2701"/>
+    <Route Start="2805" End="2905"/>
+    <Route Start="2805" End="2906"/>
+    <Route Start="2905" End="3004"/>
+    <Route Start="2906" End="3008"/>
+    <Route Start="3004" End="3105"/>
+  </Routes>
+</Sector>
