@@ -67,4 +67,38 @@
     <DataFile Author="Mike West" Source="1248 Sourcebook 3: The Spinward States">1248_Reft.sec</DataFile>
     <MetadataFile>1248_Reft.xml</MetadataFile>
   </Sector>
+
+  <Sector Abbreviation="Dias" Tags="Unreviewed" Selected="true" Milieu="M1248">
+    <Y>2</Y>
+    <X>0</X>
+    <Name>Diaspora</Name>
+    <Name Lang="vi">Nakulakak</Name>
+    <DataFile Author="Daniel Hammersley, Richard Perks and Grahame Muliss" Source="1248 Sourcebook 4: The Freedom League">1248_Dias.sec</DataFile>
+    <MetadataFile>1248_Dias.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Olde" Tags="Unreviewed" Selected="true" Milieu="M1248">
+    <Y>2</Y>
+    <X>1</X>
+    <Name>Old Expanses</Name>
+    <Name Lang="vi">Mikadira</Name>
+    <DataFile Author="Daniel Hammersley, Richard Perks and Grahame Muliss" Source="1248 Sourcebook 4: The Freedom League">1248_OldE.sec</DataFile>
+    <MetadataFile>1248_OldE.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Solo" Tags="Unreviewed" Selected="true" Milieu="M1248">
+    <Y>3</Y>
+    <X>0</X>
+    <Name>Solomani Rim</Name>
+    <Name Lang="vi">Kushuggi</Name>
+    <DataFile Author="Daniel Hammersley, Richard Perks and Grahame Muliss" Source="1248 Sourcebook 4: The Freedom League">1248_Solo.sec</DataFile>
+    <MetadataFile>1248_Solo.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Alph" Tags="Unreviewed" Selected="true" Milieu="M1248">
+    <Y>3</Y>
+    <X>1</X>
+    <Name>Alpha Crucis</Name>
+    <Name Lang="vi">Amkarim</Name>
+    <DataFile Author="Daniel Hammersley, Richard Perks and Grahame Muliss" Source="1248 Sourcebook 4: The Freedom League">1248_Alph.sec</DataFile>
+    <MetadataFile>1248_Alph.xml</MetadataFile>
+  </Sector>
+
 </Sectors>

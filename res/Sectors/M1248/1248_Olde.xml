@@ -1,0 +1,344 @@
+<?xml version="1.0"?>
+<Sector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>Old Expanses</Name>
+  <Name Lang="vi">Mikadira</Name>
+  <Credits>
+
+             &lt;b&gt;Old Expanses&lt;/b&gt; sector was designed by Jim Cunningham
+             and Gordon Sheridan. Portions of Old Expanses sector
+             appear in &lt;cite&gt;High Passage Magazine&lt;/cite&gt;.
+
+             Aubane and Oriflamme subsectors were updated by Dave Nilsen for The New Era and appeared in
+             &lt;cite&gt;Path of Tears: The Star Vikings Sourcebook&lt;/cite&gt;
+             (GDW Inc., 1995).
+
+             It was further refined by Daniel Hammersley, Richard Perks and Grahame Muliss and appears in
+             &lt;cite&gt;1248 Sourcebook 4: The Freedom League&lt;/cite&gt;
+             (ComStar Media/Avenger Enterprises, 2008).
+
+    </Credits>
+  <Product Author="Daniel Hammersley, Richard Perks and Grahame Muliss" Title="1248 Sourcebook 4: The Freedom League" Publisher="Avenger Enterprises in association with Comstar Media, LLC." Ref="http://www.farfuture.net/Contents%20CDROM%20TNE-2.pdf" />
+  <Subsectors>
+    <Subsector Index="A">Dethenes</Subsector>
+    <Subsector Index="B">Quinoid</Subsector>
+    <Subsector Index="C">Ahrhi</Subsector>
+    <Subsector Index="D">Voskl</Subsector>
+    <Subsector Index="E">Surya</Subsector>
+    <Subsector Index="F">Jayna</Subsector>
+    <Subsector Index="G">21-Worlds</Subsector>
+    <Subsector Index="H">Ile</Subsector>
+    <Subsector Index="I">Thoezennt</Subsector>
+    <Subsector Index="J">Shenk</Subsector>
+    <Subsector Index="K">Karse</Subsector>
+    <Subsector Index="L">Vendtup</Subsector>
+    <Subsector Index="M">Aubaine</Subsector>
+    <Subsector Index="N">Oriflamme</Subsector>
+    <Subsector Index="O">So Skire</Subsector>
+    <Subsector Index="P">Sitah</Subsector>
+  </Subsectors>
+  <Allegiances>
+    <Allegiance Code="Cd">Crowell Defense Pact</Allegiance>
+    <Allegiance Code="Cw">Freedom League, Core Member</Allegiance>
+    <Allegiance Code="Dc">Drand Compact</Allegiance>
+    <Allegiance Code="Dr">Droyne World</Allegiance>
+    <Allegiance Code="Fs">Freedom League, Calibration Point</Allegiance>
+    <Allegiance Code="La">Freedom League, Affiliate</Allegiance>
+    <Allegiance Code="Lm">Freedom League, Member</Allegiance>
+    <Allegiance Code="Na">Non-Aligned</Allegiance>
+    <Allegiance Code="Pc">Crowell Defense Pact Client State</Allegiance>
+    <Allegiance Code="Rr">Republic of Renj</Allegiance>
+    <Allegiance Code="Tv">Trade Union of Voskl</Allegiance>  
+    <Allegiance Code="Uc">Trade Union of Voskl Client State</Allegiance>  
+ </Allegiances>
+  <Borders>
+    <Border WrapLabel="false" Color="#bb00b9" Allegiance="Cd" LabelPosition= "3002">3002 3102 3002 3003 3002 </Border>
+    <Border WrapLabel="false" Color="#00a651" Allegiance="Dc" LabelPosition="2102">2003 2103 2203 2103 2003 </Border>
+    <Border WrapLabel="true" Color="#55ff55" Allegiance="Pc" LabelPosition="2901" Label="CDP Client">2801</Border>
+    <Border WrapLabel="true" Color="#55ff55" Allegiance="Pc" LabelPosition="3205" Label="CDP Client">3204</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="#00aa00" Allegiance="Rr">2640 2741 2640</Border>
+    <Border WrapLabel="true" Color="#00aa00" Allegiance="Rr" LabelPosition="2634">2537 2636 2736 2835 2834 2833 2832 2732 2632 2732 2832 2932 3031 3131 3132 3133 3233 3134 3135 3136 3036 2937 2837 2838 2739 2638 2538 2537 </Border>
+    <Border WrapLabel="true" Color="#ff5555" Allegiance="Tv" LabelPosition="2708">2605 2705 2704 2705 2805 2906 3006 2907 2807 2707 2607 2606 2605 </Border>
+    <Border WrapLabel="true" Color=" #5555ff" Allegiance="Uc" LabelPosition="2503" Label="TUoV Client">2502</Border>
+    <Border WrapLabel="true" Color=" #5555ff" Allegiance="Uc" LabelPosition="2910" Label="TUoV Client">2909</Border>
+    <Border WrapLabel="true" Color=" #5555ff" Allegiance="Uc" LabelPosition="3005" Label="TUoV Client">3004</Border>
+    <Border Color="#ee1c25" LabelPosition="0627" Label="Freedom League">0013 0113 0212 0312 0412 0512 0612 0712 0811 0911 0910 0909 0808 0708 0607 0507 0406 0306 0405 0404 0403 0402 0302 0201 0302 0402 0503 0603 0504 0505 0506 0507 0607 0708 0808 0909 1009 1110 1209 1309 1408 1409 1310 1209 1110 1010 1011 1012 1113 1213 1214 1315 1415 1516 1616 1717 1817 1917 2016 2116 2216 2316 2315 2316 2216 2116 2016 2017 2018 2019 2020 2121 2221 2222 2323 2423 2523 2622 2621 2622 2523 2524 2424 2425 2426 2427 2428 2529 2428 2329 2229 2129 2029 2030 2031 1932 1933 1934 1935 2035 2136 2236 2136 2036 1937 1936 1835 1736 1737 1738 1838 1739 1639 1640 1741 1640 1540 1439 1339 1238 1139 1039 1040 1141 1041 0941 0841 0741 0641 0640 0540 0439 0340 0240 0239 0139 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="#ee1c25" Allegiance="La">1605</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="#ee1c25" Allegiance="La">1610</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="#ee1c25" Allegiance="La">2828</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="#ee1c25" Allegiance="La">3015</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="#ee1c25" Allegiance="La">2333</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="#00aa00" Allegiance="Na">2933</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="#ee1c25" Allegiance="Na">0131</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="#ee1c25" Allegiance="Na">0221</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="#ee1c25" Allegiance="Na">0224</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="#ee1c25" Allegiance="Na">0231</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="#ee1c25" Allegiance="Na">0236</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="#ee1c25" Allegiance="Na">0318</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="#ee1c25" Allegiance="Na">0327</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="#ee1c25" Allegiance="Na">0521</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="#ee1c25" Allegiance="Na">0621</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="#ee1c25" Allegiance="Na">0713</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="#ee1c25" Allegiance="Na">0714</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="#ee1c25" Allegiance="Na">0716</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="#ee1c25" Allegiance="Na">0721</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="#ee1c25" Allegiance="Na">0722</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="#ee1c25" Allegiance="Na">0812</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="#ee1c25" Allegiance="Na">0813</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="#ee1c25" Allegiance="Na">0823</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="#ee1c25" Allegiance="Na">0913</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="#ee1c25" Allegiance="Na">0918</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="#ee1c25" Allegiance="Na">0922</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="#ee1c25" Allegiance="Na">0924</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="#ee1c25" Allegiance="Na">0929</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="#ee1c25" Allegiance="Na">1021</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="#ee1c25" Allegiance="Na">1215</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="#ee1c25" Allegiance="Na">1227</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="#ee1c25" Allegiance="Na">1320</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="#ee1c25" Allegiance="Na">1422</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="#ee1c25" Allegiance="Na">1426</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="#ee1c25" Allegiance="Na">1528</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="#ee1c25" Allegiance="Na">1628</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="#ee1c25" Allegiance="Na">1633</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="#ee1c25" Allegiance="Na">1636</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="#ee1c25" Allegiance="Na">1733</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="#ee1c25" Allegiance="Na">1734</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="#ee1c25" Allegiance="Na">1821</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="#ee1c25" Allegiance="Na">1925</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="#ee1c25" Allegiance="Na">1928</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="#ee1c25" Allegiance="Na">2024</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="#ee1c25" Allegiance="Na">2124</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="#ee1c25" Allegiance="Na">2126</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="#ee1c25" Allegiance="Na">2127</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="#ee1c25" Allegiance="Na">2225</Border>
+  </Borders>
+  <Routes>
+    <Route Start="0001" End="0201"/>
+    <Route Start="0031" End="0132"/>
+    <Route Start="0113" End="0011"/>
+    <Route Start="0113" End="0114"/>
+    <Route Start="0114" End="3116" EndOffsetX="-1"/>
+    <Route Start="0118" End="3118" EndOffsetX="-1"/>
+    <Route Start="0121" End="0222"/>
+    <Route Start="0121" End="0419"/>
+    <Route Start="0121" End="3121" EndOffsetX="-1"/>
+    <Route Start="0123" End="0125"/>
+    <Route Start="0123" End="0222"/>
+    <Route Start="0125" End="0024"/>
+    <Route Start="0125" End="0127"/>
+    <Route Start="0125" End="0325"/>
+    <Route Start="0127" End="0128"/>
+    <Route Start="0128" End="0229"/>
+    <Route Start="0132" End="0134"/>
+    <Route Start="0132" End="0334"/>
+    <Route Start="0134" End="0135"/>
+    <Route Start="0135" End="0036"/>
+    <Route Start="0135" End="0336"/>
+    <Route Start="0137" End="0036"/>
+    <Route Start="0137" End="0138"/>
+    <Route Start="0138" End="0240"/>
+    <Route Start="0138" End="3138" EndOffsetX="-1"/>
+    <Route Start="0201" End="0302"/>
+    <Route Start="0209" End="0311"/>
+    <Route Start="0209" End="3109" EndOffsetX="-1"/>
+    <Route Start="0222" End="0424"/>
+    <Route Start="0229" End="0031"/>
+    <Route Start="0229" End="0330"/>
+    <Route Start="0240" End="0439"/>
+    <Route Start="0302" End="0403"/>
+    <Route Start="0306" End="0607"/>
+    <Route Start="0311" End="0312"/>
+    <Route Start="0312" End="0113"/>
+    <Route Start="0312" End="0412"/>
+    <Route Start="0317" End="0118"/>
+    <Route Start="0325" End="0424"/>
+    <Route Start="0334" End="0434"/>
+    <Route Start="0336" End="0434"/>
+    <Route Start="0336" End="0436"/>
+    <Route Start="0403" End="0306"/>
+    <Route Start="0403" End="0603"/>
+    <Route Start="0412" End="0413"/>
+    <Route Start="0412" End="0512"/>
+    <Route Start="0416" End="0317"/>
+    <Route Start="0416" End="0418"/>
+    <Route Start="0418" End="0419"/>
+    <Route Start="0418" End="0518"/>
+    <Route Start="0419" End="0520"/>
+    <Route Start="0424" End="0723"/>
+    <Route Start="0434" End="0535"/>
+    <Route Start="0436" End="0437"/>
+    <Route Start="0437" End="0439"/>
+    <Route Start="0439" End="0640"/>
+    <Route Start="0512" End="0613"/>
+    <Route Start="0516" End="0416"/>
+    <Route Start="0520" End="0620"/>
+    <Route Start="0535" End="0632"/>
+    <Route Start="0535" End="0636"/>
+    <Route Start="0535" End="0735"/>
+    <Route Start="0607" End="0909"/>
+    <Route Start="0613" End="0614"/>
+    <Route Start="0613" End="0712"/>
+    <Route Start="0614" End="0516"/>
+    <Route Start="0632" End="0732"/>
+    <Route Start="0636" End="0738"/>
+    <Route Start="0640" End="0641"/>
+    <Route Start="0640" End="0738"/>
+    <Route Start="0640" End="0840"/>
+    <Route Start="0712" End="0811"/>
+    <Route Start="0712" End="0813"/>
+    <Route Start="0716" End="0817"/>
+    <Route Start="0716" End="1015"/>
+    <Route Start="0723" End="0922"/>
+    <Route Start="0726" End="0825"/>
+    <Route Start="0729" End="0829"/>
+    <Route Start="0732" End="0931"/>
+    <Route Start="0735" End="0737"/>
+    <Route Start="0735" End="0934"/>
+    <Route Start="0735" End="1035"/>
+    <Route Start="0738" End="0737"/>
+    <Route Start="0738" End="0840"/>
+    <Route Start="0811" End="1011"/>
+    <Route Start="0813" End="1114"/>
+    <Route Start="0817" End="0818"/>
+    <Route Start="0818" End="1118"/>
+    <Route Start="0825" End="0926"/>
+    <Route Start="0829" End="0931"/>
+    <Route Start="0840" End="0841"/>
+    <Route Start="0840" End="1039"/>
+    <Route Start="0909" End="1010"/>
+    <Route Start="0922" End="1223"/>
+    <Route Start="0926" End="1128"/>
+    <Route Start="0931" End="0932"/>
+    <Route Start="0932" End="1032"/>
+    <Route Start="0934" End="1032"/>
+    <Route Start="1010" End="1011"/>
+    <Route Start="1010" End="1310"/>
+    <Route Start="1011" End="1213"/>
+    <Route Start="1015" End="1114"/>
+    <Route Start="1015" End="1118"/>
+    <Route Start="1032" End="1131"/>
+    <Route Start="1032" End="1234"/>
+    <Route Start="1035" End="1235"/>
+    <Route Start="1037" End="1039"/>
+    <Route Start="1037" End="1235"/>
+    <Route Start="1039" End="1139"/>
+    <Route Start="1114" End="1213"/>
+    <Route Start="1118" End="1320"/>
+    <Route Start="1128" End="1229"/>
+    <Route Start="1131" End="1229"/>
+    <Route Start="1139" End="1338"/>
+    <Route Start="1213" End="1415"/>
+    <Route Start="1223" End="1224"/>
+    <Route Start="1223" End="1424"/>
+    <Route Start="1229" End="1328"/>
+    <Route Start="1229" End="1331"/>
+    <Route Start="1234" End="1235"/>
+    <Route Start="1234" End="1333"/>
+    <Route Start="1235" End="1437"/>
+    <Route Start="1235" End="1535"/>
+    <Route Start="1309" End="1310"/>
+    <Route Start="1309" End="1408"/>
+    <Route Start="1310" End="1510"/>
+    <Route Start="1320" End="1321"/>
+    <Route Start="1320" End="1519"/>
+    <Route Start="1321" End="1322"/>
+    <Route Start="1322" End="1223"/>
+    <Route Start="1328" End="1427"/>
+    <Route Start="1331" End="1431"/>
+    <Route Start="1333" End="1432"/>
+    <Route Start="1338" End="1339"/>
+    <Route Start="1338" End="1437"/>
+    <Route Start="1339" End="1540"/>
+    <Route Start="1408" End="1508"/>
+    <Route Start="1424" End="1623"/>
+    <Route Start="1424" End="1626"/>
+    <Route Start="1427" End="1527"/>
+    <Route Start="1431" End="1532"/>
+    <Route Start="1431" End="1629"/>
+    <Route Start="1432" End="1532"/>
+    <Route Start="1507" End="1508"/>
+    <Route Start="1507" End="1605"/>
+    <Route Start="1510" End="1610"/>
+    <Route Start="1519" End="1520"/>
+    <Route Start="1519" End="1718"/>
+    <Route Start="1527" End="1626"/>
+    <Route Start="1532" End="1732"/>
+    <Route Start="1535" End="1834"/>
+    <Route Start="1540" End="1741"/>
+    <Route Start="1540" End="1838"/>
+    <Route Start="1605" End="1904"/>
+    <Route Start="1623" End="1721"/>
+    <Route Start="1717" End="1718"/>
+    <Route Start="1718" End="1817"/>
+    <Route Start="1718" End="1920"/>
+    <Route Start="1721" End="1920"/>
+    <Route Start="1732" End="1833"/>
+    <Route Start="1736" End="1835"/>
+    <Route Start="1817" End="2116"/>
+    <Route Start="1833" End="1834"/>
+    <Route Start="1834" End="1835"/>
+    <Route Start="1834" End="1934"/>
+    <Route Start="1835" End="1936"/>
+    <Route Start="1838" End="1937"/>
+    <Route Start="1904" End="2003"/>
+    <Route Start="1920" End="2019"/>
+    <Route Start="1934" End="2134"/>
+    <Route Start="1936" End="1937"/>
+    <Route Start="1936" End="2036"/>
+    <Route Start="2003" End="2103"/>
+    <Route Start="2030" End="2031"/>
+    <Route Start="2030" End="2130"/>
+    <Route Start="2103" End="2203"/>
+    <Route Start="2116" End="2315"/>
+    <Route Start="2123" End="2125"/>
+    <Route Start="2125" End="2227"/>
+    <Route Start="2130" End="2229"/>
+    <Route Start="2134" End="2333"/>
+    <Route Start="2203" End="2502"/>
+    <Route Start="2227" End="2228"/>
+    <Route Start="2228" End="2229"/>
+    <Route Start="2229" End="2329"/>
+    <Route Start="2236" End="2036"/>
+    <Route Start="2315" End="2416"/>
+    <Route Start="2329" End="2428"/>
+    <Route Start="2333" End="2434"/>
+    <Route Start="2333" End="2632"/>
+    <Route Start="2428" End="2529"/>
+    <Route Start="2537" End="2236"/>
+    <Route Start="2538" End="2537"/>
+    <Route Start="2640" End="2741"/>
+    <Route Start="2705" End="2706"/>
+    <Route Start="2706" End="2707"/>
+    <Route Start="2706" End="2806"/>
+    <Route Start="2739" End="2538"/>
+    <Route Start="2739" End="2640"/>
+    <Route Start="2801" End="2502"/>
+    <Route Start="2801" End="3003"/>
+    <Route Start="2806" End="2907"/>
+    <Route Start="2835" End="3036"/>
+    <Route Start="2838" End="2739"/>
+    <Route Start="2838" End="3039"/>
+    <Route Start="2934" End="2835"/>
+    <Route Start="3003" End="2705"/>
+    <Route Start="3006" End="2907"/>
+    <Route Start="3006" End="2909"/>
+    <Route Start="3015" End="3316"/>
+    <Route Start="3031" End="2934"/>
+    <Route Start="3036" End="2838"/>
+    <Route Start="3036" End="3136"/>
+    <Route Start="3039" End="3040"/>
+    <Route Start="3131" End="3031"/>
+    <Route Start="3136" End="3233"/>
+    <Route Start="3229" End="3131"/>
+    <Route Start="2711" End="2909"/>
+    <Route Start="1721" End="1822"/>
+    <Route Start="1822" End="2123"/>
+    <Route Start="1727" End="1825"/>
+    <Route Start="1626" End="1727"/>
+    <Route Start="1727" End="1827"/>
+    <Route Start="1827" End="1829"/>
+    <Route Start="1829" End="2030"/>
+    <Route Start="1732" End="2030"/>
+    <Route Start="3039" End="3040"/>
+    <Route Start="0516" End="0716"/>
+  </Routes>
+</Sector>

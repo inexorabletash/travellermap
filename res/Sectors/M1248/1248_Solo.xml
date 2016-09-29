@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<Sector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>Solomani Rim</Name>
+  <Name Lang="vi">Kushuggi</Name>
+  <Credits>
+
+             &lt;b&gt;Solomani Rim&lt;/b&gt; sector was designed by John Harshman
+             and appears in &lt;cite&gt;Traveller Supplement 10: The
+             Solomani Rim&lt;/cite&gt; (GDW, 1982).
+
+             It was further refined by Daniel Hammersley, Richard Perks and Grahame Muliss and appears in
+             &lt;cite&gt;1248 Sourcebook 4: The Freedom League&lt;/cite&gt;
+             (ComStar Media/Avenger Enterprises, 2008).
+
+    </Credits>
+  <Product Author="Daniel Hammersley, Richard Perks and Grahame Muliss" Title="1248 Sourcebook 4: The Freedom League" Publisher="Avenger Enterprises in association with Comstar Media, LLC." Ref="http://www.farfuture.net/Contents%20CDROM%20TNE-2.pdf" />
+  <Subsectors>
+    <Subsector Index="A">Ultima</Subsector>
+    <Subsector Index="B">Suleiman</Subsector>
+    <Subsector Index="C">Charuth</Subsector>
+    <Subsector Index="D">Gashurzid</Subsector>
+    <Subsector Index="E"></Subsector>
+    <Subsector Index="F"></Subsector>
+    <Subsector Index="G"></Subsector>
+    <Subsector Index="H"></Subsector>
+    <Subsector Index="I"></Subsector>
+    <Subsector Index="J"></Subsector>
+    <Subsector Index="K"></Subsector>
+    <Subsector Index="L"></Subsector>
+    <Subsector Index="M"></Subsector>
+    <Subsector Index="N"></Subsector>
+    <Subsector Index="O"></Subsector>
+    <Subsector Index="P"></Subsector>
+  </Subsectors>
+  <Allegiances>
+    <Allegiance Code="Ea">Terran Commonwealth, Easter Concord</Allegiance>
+    <Allegiance Code="La">Freedom League, Affiliate</Allegiance>
+    <Allegiance Code="Na">Non-Aligned</Allegiance>
+    <Allegiance Code="Ra">Terran Commonwealth, Rann Republic</Allegiance>
+    <Allegiance Code="Tc">Terran Commonwealth, Independent</Allegiance>
+    <Allegiance Code="Te">Terran Confederatiom</Allegiance>
+  </Allegiances>
+<Labels>
+  <Label Hex="1408" Color="Yellow">Terran Commonwealth States</Label>
+</Labels>
+  <Borders>
+    <Border WrapLabel="false" Color="#00adee" Allegiance="Ea" LabelPosition="1706" Label="Easter Concord">0509 0608 0708 0807 0907 1006 1106 1105 1204 1304 1404 1504 1603 1703 1802 1803 1904 2004 2105 2205 2306 2405 2506 2406 2407 2307 2206 2106 2005 1906 1806 1707 1607 1507 1406 1307 1207 1108 1008 0909 0910 0809 0710 0610 0609 0509 </Border>
+    <Border WrapLabel="false" ShowLabel="true" Color="#ee1c25" Allegiance="La" LabelPosition="2801" Label="Freedom League">2602</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="#ee1c25" Allegiance="La">3102</Border>
+    <Border WrapLabel="true" Color="#00adee" Allegiance="Ra" LabelPosition="2809" Label="Republic of Rann">2708 2807 2907 2906 2905 3005 3106 3107 3108 3208 3209 3110 3010 2910 2909 2808 2708 </Border>
+    <Border WrapLabel="true" ShowLabel="true" Color=" #00adee" Allegiance="Tc" LabelPosition="0306" Label="Independent">0106</Border>
+    <Border WrapLabel="false" Color="#00adee" Allegiance="Te" LabelPosition="2310" >1610 1710 1809 1909 2009 2109 2209 2310 2410 2310 2210 2110 2010 1910 1810 1710 1610</Border>
+    <Border WrapLabel="false" Color="LightGray" Label="Wilds">0000 0100 0200 0300 0400 0500 0600 0700 0800 0900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001 0000 </Border>
+  </Borders>
+  <Routes>
+    <Route Start="0610" End="0909"/>
+    <Route Start="0909" End="1207"/>
+    <Route Start="1202" End="1304"/>
+    <Route Start="1207" End="1507"/>
+    <Route Start="1304" End="1405"/>
+    <Route Start="1304" End="1504"/>
+    <Route Start="1405" End="1207"/>
+    <Route Start="1405" End="1504"/>
+    <Route Start="1405" End="1507"/>
+    <Route Start="1405" End="1804"/>
+    <Route Start="1504" End="1804"/>
+    <Route Start="1507" End="1804"/>
+    <Route Start="1804" End="2004"/>
+    <Route Start="2004" End="2105"/>
+    <Route Start="2004" End="2303"/>
+    <Route Start="2010" End="2012"/>
+    <Route Start="2105" End="2205"/>
+    <Route Start="2109" End="2010"/>
+    <Route Start="2205" End="2303"/>
+    <Route Start="2205" End="2506"/>
+    <Route Start="2303" End="2402"/>
+    <Route Start="2402" End="2602"/>
+    <Route Start="2506" End="2807"/>
+    <Route Start="2602" End="2800"/>
+    <Route Start="2807" End="2908"/>
+    <Route Start="2812" End="2910"/>
+    <Route Start="2908" End="3008"/>
+    <Route Start="3008" End="2910"/>
+    <Route Start="3008" End="3107"/>
+    <Route Start="3008" End="3109"/>
+    <Route Start="3107" End="3106"/>
+  </Routes>
+</Sector>
