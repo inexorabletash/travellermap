@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Sector Selected="true">
+  <Y>0</Y>
+  <X>3</X>
+  <Name>Gateway</Name>
+  <Allegiances Publisher="QLI" Source="Gateway to Destiny" Milieu="M990">
+    <Allegiance Code="IC">Imperial Client State</Allegiance>
+    <Allegiance Code="Id" Base="Im">Imperial (Domain of Sylea, or "Delphi Worlds")</Allegiance>
+    <Allegiance Code="IL" Base="Im">Imperial, culturally Luriani</Allegiance>
+    <Allegiance Code="IU" Base="Im">Imperial, Ursa world</Allegiance>
+    <Allegiance Code="Xx" Base="Na">Independent</Allegiance>
+
+    <Allegiance Code="Ak">Akeena Union</Allegiance>
+    <Allegiance Code="Ga">Galian Federation</Allegiance>
+    <Allegiance Code="Ho">Hochiken People's Assembly</Allegiance>
+    <Allegiance Code="Me">Megusard Corporate</Allegiance>
+    <Allegiance Code="Pl">Plavian League</Allegiance>
+    <Allegiance Code="Re">Renkard Union</Allegiance>
+    <Allegiance Code="Sw">Swanfei Free Worlds</Allegiance>
+    <Allegiance Code="Tr">Trindel Confederacy</Allegiance>
+    <Allegiance Code="Vi">Viyard Concourse</Allegiance>
+  </Allegiances>
+  <Borders>
+    <Border Allegiance="Ho" Color="darkgreen">
+      1101 1201 1302 1401 1501 1601 1702 1801 1902 2001 2101 2001 2002 2003
+      1904 1804 1705 1706 1806 1907 1908 2008 1908 1807 1708 1709 1609 1608
+      1508 1407 1308 1407 1406 1506 1505 1504 1403 1303 1202 1201 1101
+    </Border>
+    <Border Allegiance="Pl" Color="hotpink">
+      1412 1512 1612 1613 1614 1715 1815 1915 2014 2013 1913 1912 2011 2010
+      2011 2012 2113 2013 2014 1915 1916 2016 2017 1917 1817 1818 1817 1717
+      1617 1717 1716 1615 1614 1514 1413 1412
+    </Border>
+    <Border Allegiance="Ga" Color="darkred">
+      0425 0526 0625 0725 0724 0824 0924 1023 1022 1021 0921 1020 1019 1120
+      1219 1218 1319 1219 1220 1221 1322 1222 1223 1124 1024 1025 1126 1026
+      0927 0928 0929 1029 1129 1029 1030 0930 0830 0831 0832 0732 0631 0532
+      0533 0534 0433 0533 0532 0531 0430 0530 0629 0628 0528 0527 0526 0425
+    </Border>
+    <Border Allegiance="Ak" Color="darkkhaki">
+      2409 2509 2508 2607 2606 2506 2605 2706 2806 2707 2708 2608 2609 2710
+      2810 2710 2610 2611 2610 2609 2509 2409
+    </Border>
+    <Border Allegiance="Sw" Color="white">
+      2520 2619 2618 2719 2818 2817 2918 2818 2819 2820 2921 2820 2721 2722
+      2721 2620 2521 2520
+    </Border>
+    <Border Allegiance="Tr" Color="darkblue">
+      1423 1523 1622 1623 1724 1824 1924 1824 1825 1926 1825 1725 1624 1525
+      1526 1527 1627 1628 1629 1628 1627 1527 1526 1525 1424 1423
+    </Border>
+    <Border Allegiance="Vi" Color="orange">
+      1338 1437 1436 1536 1535 1634 1633 1632 1532 1432 1532 1531 1530 1531
+      1631 1731 1830 1829 1930 1931 1831 1832 1733 1734 1834 1835 1736 1737
+      1837 1938 2037 2138 2038 2039 2140 2039 1939 1839 1739 1639 1539 1438
+      1339 1338
+    </Border>
+    <Border Allegiance="Me" Color="darkslategray">
+      2329 2429 2529 2628 2728 2827 2928 2827 2728 2628 2629 2630 2531 2530
+      2429 2329
+    </Border>
+    <Border Allegiance="Re" Color="purple">
+      3029 3129 3128 3227 3226 3327 3328 3329 3330 3230 3131 3132 3133 3233
+      3134 3135 3235 3135 3034 3134 3133 3132 3031 3131 3130 3029
+    </Border>
+  </Borders>
+  <Subsectors Source="Gateway to Destiny">
+    <Subsector Index="A">Darksky</Subsector>
+    <Subsector Index="B">Atoon</Subsector>
+    <Subsector Index="C">Denkard</Subsector>
+    <Subsector Index="D">Lowton</Subsector>
+    <Subsector Index="E">Abysm</Subsector>
+    <Subsector Index="F">Windfleet</Subsector>
+    <Subsector Index="G">Castra</Subsector>
+    <Subsector Index="H">Forcett</Subsector>
+    <Subsector Index="I">Arconna</Subsector>
+    <Subsector Index="J">Beckann</Subsector>
+    <Subsector Index="K">Ashton</Subsector>
+    <Subsector Index="L">Riftin</Subsector>
+    <Subsector Index="M">Ownsbee</Subsector>
+    <Subsector Index="N">Ariel</Subsector>
+    <Subsector Index="O">Cinder</Subsector>
+    <Subsector Index="P">Farina</Subsector>
+  </Subsectors>
+</Sector>

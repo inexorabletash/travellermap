@@ -30,6 +30,34 @@
     <Route Start="2910" End="2713" />
     <Route Start="3206" End="2910" />
     -->
+    <Route Start="3001" End="2838" Type="Trade" EndOffsetX="0" EndOffsetY="-1"/>
+    <Route Start="2400" End="2502" Type="Trade"/>
+    <Route Start="2803" End="2502" Type="Trade"/>
+
+    <Route Start="2803" End="2903" Type="Trade"/>
+    <Route Start="3001" End="2903" Type="Trade"/>
+    <Route Start="3001" End="3202" Type="Trade"/>
+
+    <Route Start="0101" End="0301" Type="Trade"/>
+    <Route Start="0301" End="0439" Type="Trade" EndOffsetX="0" EndOffsetY="-1"/>
+    <Route Start="0402" End="0301" Type="Trade"/>
+
+    <Route Start="3202" End="0301" Type="Trade" EndOffsetX="+1" EndOffsetY="0"/>
+    <Route Start="3202" End="0204" Type="Trade" EndOffsetX="+1" EndOffsetY="0"/>
+    <Route Start="0101" End="2902" Type="Trade" EndOffsetX="-1" EndOffsetY="0"/>
+    <Route Start="0101" End="3239" Type="Trade" EndOffsetX="-1" EndOffsetY="-1"/>
+
+    <Route Start="1200" End="1201" Type="Trade"/>
+    <Route Start="1402" End="1201" Type="Trade"/>
+
+    <Route Start="0213" End="3014" Type="Trade" EndOffsetX="-1" EndOffsetY="0"/>
+
+    <Route Start="0213" End="0311" Type="Trade" />
+    <Route Start="0213" End="0514" Type="Trade" />
+    <Route Start="0915" End="0514" Type="Trade" />
+
+    <Route Start="0221" End="3220" Type="Trade" EndOffsetX="-1" EndOffsetY="0"/>
+    
   </Routes>
   <!--
     <Routes Source="Turokan's Expedition" Ref="http://web.archive.org/web/20030406042613/http://www.geocities.com/traveller_core_route/proj004/proj004.html">

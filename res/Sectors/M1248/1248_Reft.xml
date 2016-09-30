@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<Sector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>Reft Sector</Name>
+  <Name>Reft</Name>
+  <Name Lang="zh">Bransakral</Name>
+  <Name Lang="vi">Sushinar</Name>
+  <Credits>
+
+             Old Islands and New Islands subsectors of &lt;b&gt;Reft&lt;/b&gt;
+             sector were designed by John Harshman, and appeared in
+             &lt;b&gt;Traveller&lt;/b&gt; Adventure 5: &lt;cite&gt;Trillion Credit
+             Squadron&lt;/cite&gt;.
+
+             The rest of Reft sector was designed by Marc W. Miller
+             and appears in &lt;cite&gt;Atlas of the Imperium&lt;/cite&gt; (GDW,
+             1984).
+
+             It was further refined by Dave Nilsen and appears in
+             &lt;cite&gt;Regency Sourcebook: Keepers of the Flame&lt;/cite&gt;
+             (GDW Inc., 1995).
+
+             It was further refined by Mike West and appears in
+             &lt;cite&gt;1248 Sourcebook 3: The Spinward States&lt;/cite&gt;
+             (ComStar Media/Avenger Enterprises, 2008).
+
+            </Credits>
+  <Product Author="Mike West" Title="1248 Sourcebook 3: The Spinward States" Publisher="Avenger Enterprises in association with Comstar Media, LLC." Ref="http://www.farfuture.net/Contents%20CDROM%20TNE-2.pdf" />
+  <Subsectors>
+    <Subsector Index="A">Vestus</Subsector>
+    <Subsector Index="B">Macon</Subsector>
+    <Subsector Index="C">Two Little</Subsector>
+    <Subsector Index="D">Barker</Subsector>
+    <Subsector Index="E">Usher</Subsector>
+    <Subsector Index="F">Sagittarian</Subsector>
+    <Subsector Index="G">Lost Way</Subsector>
+    <Subsector Index="H"></Subsector>
+    <Subsector Index="I"></Subsector>
+    <Subsector Index="J">New Islands</Subsector>
+    <Subsector Index="K">Old Islands</Subsector>
+    <Subsector Index="L">Limon</Subsector>
+    <Subsector Index="M">Alone</Subsector>
+    <Subsector Index="N"></Subsector>
+    <Subsector Index="O">Arcrant</Subsector>
+    <Subsector Index="P">Moibin</Subsector>
+  </Subsectors>
+  <Allegiances>
+    <Allegiance Code="Dr">Droyne, unaligned</Allegiance>
+    <Allegiance Code="Na">Non-aligned (human)</Allegiance>
+    <Allegiance Code="Re">Imperial Regency</Allegiance>
+    <Allegiance Code="Vl">Duchy of Vlad</Allegiance>
+    <Allegiance Code="Wi">Wilds</Allegiance>
+  </Allegiances>
+  <Labels>
+  </Labels>
+  <Borders>
+    <Border WrapLabel="false" Color="#f7941d" Allegiance="Re" LabelPosition="0407" Label="Imperial Regency">0000 0100 0200 0300 0400 0500 0501 0601 0701 0801 0702 0703 0704 0705 0706 0707 0708 0709 0710 0610 0511 0512 0513 0514 0515 0516 0517 0518 0519 0418 0318 0217 0118 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001 0000</Border>
+    <Border WrapLabel="false" Color="#f7941d" Allegiance="Re" LabelPosition="1727" Label="Imperial Regency">0921 1021 1122 1222 1323 1422 1522 1621 1722 1822 1923 2023 2123 2222 2322 2323 2423 2324 2325 2326 2327 2328 2329 2328 2227 2127 2027 1928 1828 1729 1628 1529 1429 1428 1427 1327 1326 1325 1324 1223 1123 1122 1021 0921</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="#f7941d" Allegiance="Re" LabelPosition="3030" Label="Imperial Regency">3030</Border>
+    <Border WrapLabel="true" Color="#f7941d" Allegiance="Re" LabelPosition="2730" Label="Imperial Regency">2731 2831 2932 2831 2731</Border>
+    <Border WrapLabel="true" Color="Maroon" Allegiance="Vl" LabelPosition="2839" Label="Duchy of Vlad">2739 2838 2837 2838 2739 2740 2739</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="LightGray" Allegiance="Wi" LabelPosition="2139" Label="Wilds">2139</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="LightGray" Allegiance="Wi" LabelPosition="2536" Label="Wilds">2536</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="LightGray" Allegiance="Wi" LabelPosition="2539" Label="Wilds">2539</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="LightGray" Allegiance="Wi" LabelPosition="2935" Label="Wilds">2935</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="LightGray" Allegiance="Wi" LabelPosition="3135" Label="Wilds">3135</Border>
+    <Border WrapLabel="true" ShowLabel="false" Color="LightGray" Allegiance="Wi" LabelPosition="3140" Label="Wilds">3140</Border>
+  </Borders>
+  <Routes>
+  </Routes>
+</Sector>

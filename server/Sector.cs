@@ -34,6 +34,16 @@ namespace Maps
         public int Y { get { return Location.Y; } set { Location = new Point(Location.X, value); } }
         public Point Location { get; set; }
 
+        // TODO: Better name for this, possibly just by cleaning up the data.
+        public string CanonicalMilieu
+        {
+            get
+            {
+                string milieu = DataFile?.Milieu ?? Milieu;
+                return (SectorMap.IsDefaultMilieu(milieu)) ? SectorMap.DEFAULT_MILIEU : milieu;
+            }
+        }
+
         [XmlAttribute]
         public string Abbreviation {
             get
@@ -288,6 +298,9 @@ namespace Maps
                         writer.WriteLine("# Name: {0}", name);
                 }
 
+                writer.WriteLine();
+                writer.WriteLine("# Milieu: {0}", CanonicalMilieu);
+
                 if (Credits != null)
                 {
                     string stripped = Regex.Replace(Credits, "<.*?>", "");
@@ -300,9 +313,6 @@ namespace Maps
                 if (DataFile != null)
                 {
                     writer.WriteLine();
-                    if (DataFile.Milieu != null) { writer.WriteLine("# Milieu: {0}", DataFile.Milieu); }
-                    writer.WriteLine();
-
                     if (DataFile.Author != null) { writer.WriteLine("# Author:    {0}", DataFile.Author); }
                     if (DataFile.Publisher != null) { writer.WriteLine("# Publisher: {0}", DataFile.Publisher); }
                     if (DataFile.Copyright != null) { writer.WriteLine("# Copyright: {0}", DataFile.Copyright); }

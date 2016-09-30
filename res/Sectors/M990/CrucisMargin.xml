@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Sector Selected="true">
+  <Y>1</Y>
+  <X>3</X>
+  <Name>Crucis Margin</Name>
+  <Allegiances Publisher="QLI" Source="Gateway to Destiny" Milieu="M990">
+    <Allegiance Code="IC">Imperial Client State</Allegiance>
+    <Allegiance Code="Id" Base="Im">Imperial (Domain of Sylea, or "Delphi Worlds")</Allegiance>
+    <Allegiance Code="IL" Base="Im">Imperial, culturally Luriani</Allegiance>
+    <Allegiance Code="IU" Base="Im">Imperial, Ursa world</Allegiance>
+    <Allegiance Code="Xx" Base="Na">Independent</Allegiance>
+
+    <Allegiance Code="GT">Glimmerdrift Trade Consortium</Allegiance>
+    <Allegiance Code="CK">Corporate Republic of Kobe</Allegiance>
+    <Allegiance Code="FA">Free and Holy Federation of Amil</Allegiance>
+    <Allegiance Code="Go">Greater Osaka</Allegiance>
+    <Allegiance Code="Hc">Hiver Client</Allegiance>
+    <Allegiance Code="Kc">K'Kree Client</Allegiance>
+    <Allegiance Code="KC">Katowice Conquest</Allegiance>
+    <Allegiance Code="KD">Kafoe Dominate</Allegiance>
+    <Allegiance Code="KW">Karhyri Worlds</Allegiance>
+    <Allegiance Code="LT">Lords of Thunder</Allegiance>
+    <Allegiance Code="MC">Mercantile Concord</Allegiance>
+    <Allegiance Code="Mi">Mische Conglomerate</Allegiance>
+    <Allegiance Code="Oe">Empire of Olduvai</Allegiance>
+    <Allegiance Code="Ow">Old Worlds</Allegiance>
+    <Allegiance Code="Oy">Oytrip of Tubroyllufotyusk</Allegiance>
+    <Allegiance Code="Rh">The Reach</Allegiance>
+    <Allegiance Code="Rm">Raidermarch</Allegiance>
+    <Allegiance Code="Sy">Syzlin Republic</Allegiance>
+  </Allegiances>
+  <Borders>
+    <Border Allegiance="Mi" Color="darkred">
+      0601 0702 0801 0901 0801 0802 0903 0904 0804 0704 0803 0802 0702 0601
+    </Border>
+    <Border Allegiance="FA" Color="olivedrab">
+      1502 1602 1702 1701 1702 1802 1902 1802 1702 1602 1502
+    </Border>
+    <Border Allegiance="Rm" Color="darkkhaki">
+      0214 0314 0413 0412 0413 0414 0515 0614 0515 0516 0616 0617 0616 0516
+      0416 0316 0215 0214
+    </Border>
+    <Border Allegiance="KD" Color="white">
+      1117 1217 1117
+    </Border>
+    <Border Allegiance="Ow" Color="darkslategray">
+      1417 1518 1617 1616 1516 1616 1717 1816 1717 1617 1618 1719 1819 1920
+      2019 2018 2019 2020 2021 2122 2021 1921 1821 1822 1722 1622 1523 1622
+      1621 1620 1520 1619 1618 1518 1417
+    </Border>
+    <Border Allegiance="KC" Color="darkblue">
+      1813 1914 2013 2012 2013 2114 2214 2215 2316 2215 2116 2016 2116 2115
+      2014 1914 1813
+    </Border>
+    <Border Allegiance="MC" Color="purple">
+      2405 2505 2504 2603 2602 2702 2701 2702 2802 2902 2903 3003 3104 3003
+      2903 2803 2804 2805 2806 2907 3006 2907 2908 2808 2809 2810 2811 2812
+      2813 2713 2612 2713 2812 2811 2810 2710 2610 2609 2608 2607 2507 2407
+      2507 2506 2405
+    </Border>
+    <Border Allegiance="LT" Color="hotpink">
+      3101
+    </Border>
+    <Border Allegiance="GT" Color="darkgreen" ShowLabel="false">
+      0121
+    </Border>
+    <Border Allegiance="GT" Color="darkgreen" ShowLabel="false">
+      0222
+    </Border>
+    <Border Allegiance="CK" Color="white">
+      0225 0326 0225
+    </Border>
+    <Border Allegiance="Go" Color="white">
+      0627 0727 0827 0727 0627
+    </Border>
+    <Border Allegiance="Sy" Color="darkblue">
+      0729 0829 0929 0930 1030 1130 1030 1031 1132 1133 1233 1134 1135 1034
+      0934 0834 0835 0836 0937 0938 1038 0938 0937 0836 0736 0835 0834 0833
+      0832 0831 0830 0829 0729
+    </Border>
+    <Border Allegiance="KW" Color="darkkhaki">
+      0140 0239 0238 0239 0340 0439 0540 0640 0540 0440 0340 0240 0140
+    </Border>
+    <Border Allegiance="Oy" Color="darkred">
+      2623
+    </Border>
+    <Border Allegiance="Rh" Color="orange">
+      2329 2428 2528 2627 2728 2627 2528 2428 2329
+    </Border>
+    <Border Allegiance="Oe" Color="darkslategray">
+      2638 2738 2638
+    </Border>
+  </Borders>
+  <Subsectors Source="Gateway to Destiny">
+    <Subsector Index="A">Ostermann</Subsector>
+    <Subsector Index="B">Vandir</Subsector>
+    <Subsector Index="C">Outrun</Subsector>
+    <Subsector Index="D">Chin Shan</Subsector>
+    <Subsector Index="E">Raidermarch</Subsector>
+    <Subsector Index="F">NewSun</Subsector>
+    <Subsector Index="G">Old Worlds</Subsector>
+    <Subsector Index="H">Peril's Edge</Subsector>
+    <Subsector Index="I">Kobe</Subsector>
+    <Subsector Index="J">Bright Heavens</Subsector>
+    <Subsector Index="K">Reach</Subsector>
+    <Subsector Index="L">No Return</Subsector>
+    <Subsector Index="M">Syzlin</Subsector>
+    <Subsector Index="N">Taitin</Subsector>
+    <Subsector Index="O">Scatter</Subsector>
+    <Subsector Index="P">Kixum</Subsector>
+  </Subsectors>
+</Sector>

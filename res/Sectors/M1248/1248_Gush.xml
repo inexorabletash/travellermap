@@ -1,0 +1,138 @@
+<?xml version="1.0"?>
+<Sector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>Gushemege</Name>
+  <Credits>
+
+             &lt;b&gt;Gushemege&lt;/b&gt; sector was designed by Marc W. Miller
+             and appears in &lt;cite&gt;Atlas of the Imperium&lt;/cite&gt; (GDW,
+             1984).
+
+             It was refined by Martin J. Dougherty and appears in
+             &lt;cite&gt;1248 Sourcebook 2: Bearers of the Flame&lt;/cite&gt;
+             (ComStar Media/Avenger Enterprises, 2006).
+
+    </Credits>
+  <Subsectors>
+    <Subsector Index="A"></Subsector>
+    <Subsector Index="B"></Subsector>
+    <Subsector Index="C"></Subsector>
+    <Subsector Index="D"></Subsector>
+    <Subsector Index="E"></Subsector>
+    <Subsector Index="F"></Subsector>
+    <Subsector Index="G"></Subsector>
+    <Subsector Index="H"></Subsector>
+    <Subsector Index="I"></Subsector>
+    <Subsector Index="J"></Subsector>
+    <Subsector Index="K"></Subsector>
+    <Subsector Index="L"></Subsector>
+    <Subsector Index="M"></Subsector>
+    <Subsector Index="N"></Subsector>
+    <Subsector Index="O"></Subsector>
+    <Subsector Index="P"></Subsector>
+  </Subsectors>
+  <Allegiances>
+    <Allegiance Code="Dr">Droyne World</Allegiance>
+    <Allegiance Code="Im">Imperial</Allegiance>
+    <Allegiance Code="Na">Non-Aligned</Allegiance>
+  </Allegiances>
+  <Stylesheet>
+    route.Xboat { color: green; }
+  </Stylesheet>
+  <Borders>
+    <Border WrapLabel="false" Color="#00a651" Allegiance="Im" LabelPosition="1709" Label="Fourth Imperium">0130 0230 0330 0329 0328 0227 0226 0126 0125 0224 0223 0222 0323 0422 0523 0623 0723 0722 0721 0720 0719 0718 0617 0517 0516 0615 0614 0613 0613 0612 0611 0610 0711 0810 0911 1010 1110 1209 1208 1308 1407 1406 1506 1605 1606 1607 1608 1609 1710 1810 1911 2011 2111 2210 2209 2208 2207 2206 2106 2206 2307 2406 2307 2207 2208 2309 2409 2509 2609 2709 2609 2510 2511 2611 2711 2810 2910 3009 3110 3209 3309 3308 3207 3107 3007 3107 3206 3205 3105 3004 2905 3004 3105 3204 3304 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3240 3241 3141 3041 2941 2840 2740 2639 2540 2440 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1041 1040 0940 0839 0939 0938 0937 0936 0935 0934 0833 0733 0732 0631 0532 0432 0333 0233 0232 0132 0131 0130</Border>
+    <Border ShowLabel="false" WrapLabel="false" Color="#00a651" Allegiance="Dr" LabelPosition="1227">1227</Border>
+    <Border ShowLabel="false" WrapLabel="false" Color="#00a651" Allegiance="Na" LabelPosition="0827">0827</Border>
+    <Border ShowLabel="false" WrapLabel="false" Color="#00a651" Allegiance="Na" LabelPosition="1023">1023</Border>
+    <Border ShowLabel="false" WrapLabel="false" Color="#00a651" Allegiance="Na" LabelPosition="1328">1328</Border>
+    <Border ShowLabel="false" WrapLabel="false" Color="#00a651" Allegiance="Na" LabelPosition="1432">1432 1433 1432</Border>
+    <Border ShowLabel="false" WrapLabel="false" Color="#00a651" Allegiance="Na" LabelPosition="1735">1735</Border>
+    <Border ShowLabel="false" WrapLabel="false" Color="#00a651" Allegiance="Na" LabelPosition="1740">1740 1840 1741 1740</Border>
+    <Border ShowLabel="false" WrapLabel="false" Color="#00a651" Allegiance="Na" LabelPosition="1921">1921</Border>
+    <Border ShowLabel="false" WrapLabel="false" Color="#00a651" Allegiance="Na" LabelPosition="2131">2131</Border>
+    <Border ShowLabel="false" WrapLabel="false" Color="#00a651" Allegiance="Na" LabelPosition="2141">2141</Border>
+    <Border ShowLabel="false" WrapLabel="false" Color="#00a651" Allegiance="Na" LabelPosition="2427">2427 2428 2429 2428 2427</Border>
+    <Border ShowLabel="false" WrapLabel="false" Color="#00a651" Allegiance="Na" LabelPosition="2538">2538</Border>
+    <Border ShowLabel="false" WrapLabel="false" Color="#00a651" Allegiance="Na" LabelPosition="2737">2737</Border>
+    <Border ShowLabel="false" WrapLabel="false" Color="#00a651" Allegiance="Na" LabelPosition="3015">3015</Border>
+    <Border ShowLabel="false" WrapLabel="false" Color="#00a651" Allegiance="Na" LabelPosition="3039">3039</Border>
+    <Border ShowLabel="false" WrapLabel="false" Color="#00a651" Allegiance="Na" LabelPosition="3112">3112</Border>
+    <Border ShowLabel="false" WrapLabel="false" Color="#00a651" Allegiance="Na" LabelPosition="3217">3217</Border>
+    <Border ShowLabel="false" WrapLabel="false" Color="#00a651" Allegiance="Na" LabelPosition="3231">3231</Border>
+    <Border ShowLabel="false" WrapLabel="false" Color="#00a651" Allegiance="Na" LabelPosition="3236">3236</Border>
+    <Border ShowLabel="false" WrapLabel="false" Color="#00a651" Allegiance="Na" LabelPosition="3338">3338</Border>
+  </Borders>
+  <Routes>
+    <Route Start="0718" End="1015" Type="Xboat" />
+    <Route Start="0912" End="1013" Type="Xboat" />
+    <Route Start="1015" End="1013" Type="Xboat" />
+    <Route Start="1015" End="1019" Type="Xboat" />
+    <Route Start="1015" End="1414" Type="Xboat" />
+    <Route Start="1019" End="0923" Type="Xboat" />
+    <Route Start="1019" End="1319" Type="Xboat" />
+    <Route Start="1319" End="1619" Type="Xboat" />
+    <Route Start="1414" End="1512" Type="Xboat" />
+    <Route Start="1414" End="1616" Type="Xboat" />
+    <Route Start="1616" End="1816" Type="Xboat" />
+    <Route Start="1619" End="2018" Type="Xboat" />
+    <Route Start="0223" End="0327" Type="Xboat" />
+    <Route Start="0230" End="0428" Type="Xboat" />
+    <Route Start="0327" End="0527" Type="Xboat" />
+    <Route Start="0428" End="0527" Type="Xboat" />
+    <Route Start="0527" End="0826" Type="Xboat" />
+    <Route Start="0630" End="0527" Type="Xboat" />
+    <Route Start="0826" End="0926" Type="Xboat" />
+    <Route Start="0923" End="0926" Type="Xboat" />
+    <Route Start="0923" End="1322" Type="Xboat" />
+    <Route Start="1038" End="1236" Type="Xboat" />
+    <Route Start="1236" End="1534" Type="Xboat" />
+    <Route Start="1322" End="1423" Type="Xboat" />
+    <Route Start="1423" End="1722" Type="Xboat" />
+    <Route Start="1722" End="2022" Type="Xboat" />
+    <Route Start="1426" End="1530" Type="Xboat" />
+    <Route Start="1426" End="1826" Type="Xboat" />
+    <Route Start="1530" End="1534" Type="Xboat" />
+    <Route Start="1530" End="1733" Type="Xboat" />
+    <Route Start="1530" End="1930" Type="Xboat" />
+    <Route Start="1534" End="1637" Type="Xboat" />
+    <Route Start="1637" End="1439" Type="Xboat" />
+    <Route Start="1811" End="1814" Type="Xboat" />
+    <Route Start="1814" End="1816" Type="Xboat" />
+    <Route Start="1816" End="2018" Type="Xboat" />
+    <Route Start="2018" End="2418" Type="Xboat" />
+    <Route Start="2210" End="1811" Type="Xboat" />
+    <Route Start="2415" End="2614" Type="Xboat" />
+    <Route Start="2614" End="2815" Type="Xboat" />
+    <Route Start="2018" End="2022" Type="Xboat" />
+    <Route Start="2418" End="2415" Type="Xboat" />
+    <Route Start="2815" End="3013" Type="Xboat" />
+    <Route Start="3013" End="3211" Type="Xboat" />
+    <Route Start="0110" End="3211" StartOffsetX="1" Type="Xboat" />
+    <Route Start="0212" End="3211" StartOffsetX="1" Type="Xboat" />
+    <Route Start="1733" End="1835" Type="Xboat" />
+    <Route Start="1826" End="1926" Type="Xboat" />
+    <Route Start="1835" End="2036" Type="Xboat" />
+    <Route Start="1926" End="2127" Type="Xboat" />
+    <Route Start="1930" End="2231" Type="Xboat" />
+    <Route Start="2022" End="1926" Type="Xboat" />
+    <Route Start="2036" End="2037" Type="Xboat" />
+    <Route Start="2037" End="2439" Type="Xboat" />
+    <Route Start="2127" End="2325" Type="Xboat" />
+    <Route Start="2231" End="2632" Type="Xboat" />
+    <Route Start="2325" End="2424" Type="Xboat" />
+    <Route Start="2424" End="2725" Type="Xboat" />
+    <Route Start="2439" End="2539" Type="Xboat" />
+    <Route Start="2539" End="2839" Type="Xboat" />
+    <Route Start="2632" End="2730" Type="Xboat" />
+    <Route Start="2725" End="2822" Type="Xboat" />
+    <Route Start="2725" End="2925" Type="Xboat" />
+    <Route Start="2730" End="3029" Type="Xboat" />
+    <Route Start="2839" End="3240" Type="Xboat" />
+    <Route Start="2925" End="3126" Type="Xboat" />
+    <Route Start="3029" End="3230" Type="Xboat" />
+    <Route Start="3126" End="3029" Type="Xboat" />
+    <Route Start="3137" End="3240" Type="Xboat" />
+    <Route Start="0325" End="3126" StartOffsetX="1" Type="Xboat" />
+    <Route Start="0329" End="3230" StartOffsetX="1" Type="Xboat" />
+    <Route Start="0240" End="3240" StartOffsetX="1" Type="Xboat" />
+  </Routes>
+</Sector>

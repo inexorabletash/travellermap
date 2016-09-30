@@ -166,7 +166,7 @@ namespace Maps.API.Results
             public string Copyright { get { return sector.DataFile?.Copyright ?? sector.Copyright; } }
 
             [XmlAttribute]
-            public string Milieu { get { return sector.DataFile?.Milieu ?? sector.Milieu; } }
+            public string Milieu { get { return sector.CanonicalMilieu; } }
 
             [XmlAttribute]
             public string Ref { get { return sector.DataFile?.Ref ?? sector.Ref; } }

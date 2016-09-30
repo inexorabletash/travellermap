@@ -86,8 +86,13 @@ namespace Maps
             }
         }
 
-        private const string DEFAULT_MILIEU = "1105";
+        public const string DEFAULT_MILIEU = "1105";
         private static readonly IEnumerable<string> FALLBACK_MILIEUX = new List<string> { "1100", "1120", "1200" };
+
+        public static bool IsDefaultMilieu(string m)
+        {
+            return string.IsNullOrWhiteSpace(m) || m == DEFAULT_MILIEU || FALLBACK_MILIEUX.Contains(m);
+        }
 
         /// <summary>
         /// Holds all milieu, keyed by name (e.g. "M0").
@@ -124,7 +129,7 @@ namespace Maps
                     sector.Merge(metadata);
                 }
 
-                GetMilieuMap(sector.Milieu ?? sector.DataFile?.Milieu ?? DEFAULT_MILIEU).Add(sector);
+                GetMilieuMap(sector.CanonicalMilieu).Add(sector);
             }
         }
 
@@ -145,9 +150,10 @@ namespace Maps
                         new SectorMetafileEntry(@"~/res/Sectors/Orion OB1/orion.xml", new List<string> { "OrionOB1" } ),
 
                         // OTU - Other Milieu
-                        new SectorMetafileEntry(@"~/res/Sectors/IW/iw.xml", new List<string> {} ),
-                        new SectorMetafileEntry(@"~/res/Sectors/M990/M990.xml", new List<string> {} ),
-                        new SectorMetafileEntry(@"~/res/Sectors/M1900/M1900.xml", new List<string> {} ),
+                        new SectorMetafileEntry(@"~/res/Sectors/IW/iw.xml", new List<string> { "OTU" } ),
+                        new SectorMetafileEntry(@"~/res/Sectors/M990/M990.xml", new List<string> { "OTU" } ),
+                        new SectorMetafileEntry(@"~/res/Sectors/M1248/M1248.xml", new List<string> { "OTU" } ),
+                        new SectorMetafileEntry(@"~/res/Sectors/M1900/M1900.xml", new List<string> { "OTU" } ),
 
                         // Non-OTU
                         new SectorMetafileEntry(@"~/res/Sectors/Faraway/faraway.xml", new List<string> { "Faraway" } ),

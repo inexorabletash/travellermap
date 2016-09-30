@@ -82,7 +82,7 @@ namespace Maps.API
                 {
                     int x = GetIntOption("x", 0);
                     int y = GetIntOption("y", 0);
-                    WorldLocation loc = SearchEngine.FindNearestWorldMatch(query, x, y);
+                    WorldLocation loc = SearchEngine.FindNearestWorldMatch(query, GetStringOption("milieu"), x, y);
                     if (loc == null)
                         throw new HttpError(404, "Not Found", string.Format("Location not found: {0}", query));
 

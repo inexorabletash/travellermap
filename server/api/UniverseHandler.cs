@@ -45,7 +45,7 @@ namespace Maps.API
                     if (sector.Tags.Contains("meta"))
                         continue;
 
-                    if (milieu != null && sector.DataFile?.Milieu != milieu)
+                    if (milieu != null && sector.CanonicalMilieu != milieu)
                         continue;
 
                     if (tags != null && !tags.Any(tag => sector.Tags.Contains(tag)))
@@ -82,7 +82,7 @@ namespace Maps.API.Results
 
             public int X { get { return sector.X; } set { } }
             public int Y { get { return sector.Y; } set { } }
-            public string Milieu { get { return sector.Milieu ?? sector.DataFile?.Milieu; } set { } }
+            public string Milieu { get { return sector.CanonicalMilieu; } set { } }
 
             [XmlAttribute]
             public string Abbreviation { get { return sector.Abbreviation; } set { } }
