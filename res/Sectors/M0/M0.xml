@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Sectors>
+  <Sector Abbreviation="Corr" Tags="Unreviewed" Selected="true" Milieu="M0">
+    <Y>-1</Y>
+    <X>-2</X>
+    <Name>Corridor</Name>
+    <Name Lang="vi">Amshagi</Name>
+    <Name Lang="vi">Eneri</Name>
+    <Name Lang="va">Roughantz</Name>
+    <Name Lang="va">Llananae Tourz</Name>
+    <DataFile Source="Marc Miller's Traveller: First Survey">M0_Corr.sec</DataFile>
+    <MetadataFile>M0_Corr.xml</MetadataFile>
+  </Sector>
   <Sector Abbreviation="Vlan" Tags="Unreviewed" Selected="true" Milieu="M0">
     <Y>-1</Y>
     <X>-1</X>
@@ -7,7 +18,6 @@
     <DataFile Source="Marc Miller's Traveller: First Survey">M0_Vlan.sec</DataFile>
     <MetadataFile>M0_Vlan.xml</MetadataFile>
   </Sector>
-
   <Sector Abbreviation="Lish" Tags="Unreviewed" Selected="true" Milieu="M0">
     <Y>-1</Y>
     <X>0</X>
@@ -23,6 +33,7 @@
     <DataFile Source="Marc Miller's Traveller: First Survey">M0_Anta.sec</DataFile>
     <MetadataFile>M0_Anta.xml</MetadataFile>
   </Sector>
+
   <Sector Abbreviation="Gush" Tags="Unreviewed" Selected="true" Milieu="M0">
     <Y>0</Y>
     <X>-2</X>
@@ -38,7 +49,6 @@
     <DataFile Source="Marc Miller's Traveller: First Survey">M0_Dagu.sec</DataFile>
     <MetadataFile>M0_Dagu.xml</MetadataFile>
   </Sector>
-
   <Sector Abbreviation="Core" Tags="Unreviewed" Selected="true" Milieu="M0">
     <Y>0</Y>
     <X>0</X>
@@ -47,6 +57,7 @@
     <DataFile Source="Marc Miller's Traveller: First Survey">M0_Core.sec</DataFile>
     <MetadataFile>M0_Core.xml</MetadataFile>
   </Sector>
+
   <Sector Abbreviation="Ilel" Tags="Unreviewed" Selected="true" Milieu="M0">
     <Y>1</Y>
     <X>-2</X>
