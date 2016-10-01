@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<Sector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>Corridor</Name>
+  <Name Lang="vi">Amshagi</Name>
+  <Name Lang="vi">Eneri</Name>
+  <Name Lang="va">Roughantz</Name>
+  <Name Lang="va">Llananae Tourz</Name>
+  <Credits>
+
+             &lt;b&gt;Corridor&lt;/b&gt; sector was designed by Marc W. Miller and
+             appears in &lt;cite&gt;Atlas of the Imperium&lt;/cite&gt; (GDW,
+             1984).
+
+             It was refined by David Riddell. Portions appear in
+             &lt;cite&gt;The Travellers Digest&lt;/cite&gt;.
+
+             It was refined for Milieu 0 by Marc Miller and appears in
+             &lt;cite&gt;First Survey&lt;/cite&gt; (Imperium Games, 1996).
+
+    </Credits>
+  <Product Author="Marc Miller" Title="First Survey" Publisher="Game Designers' Workshop" Ref="http://www.drivethrurpg.com/product/130/T4-First-Survey?it=1" />
+  <Subsectors>
+    <Subsector Index="A"></Subsector>
+    <Subsector Index="B"></Subsector>
+    <Subsector Index="C"></Subsector>
+    <Subsector Index="D"></Subsector>
+    <Subsector Index="E"></Subsector>
+    <Subsector Index="F"></Subsector>
+    <Subsector Index="G"></Subsector>
+    <Subsector Index="H"></Subsector>
+    <Subsector Index="I"></Subsector>
+    <Subsector Index="J"></Subsector>
+    <Subsector Index="K"></Subsector>
+    <Subsector Index="L"></Subsector>
+    <Subsector Index="M"></Subsector>
+    <Subsector Index="N"></Subsector>
+    <Subsector Index="O"></Subsector>
+    <Subsector Index="P"></Subsector>
+  </Subsectors>
+  <Allegiances>
+    <Allegiance Code="Fd">Full Data Available To Public</Allegiance>
+  </Allegiances>
+  <Borders>
+    <Border Allegiance="Fd" Color="Orange" ShowLabel="false" LabelPosition="1231">0931</Border>
+    <Border Allegiance="Fd" Color="Orange" ShowLabel="false" LabelPosition="2630">2733</Border>
+    <Border Allegiance="Fd" Color="Orange" ShowLabel="false">2735</Border>
+    <Border Allegiance="Fd" Color="Orange" ShowLabel="false">2833</Border>
+    <Border Allegiance="Fd" Color="Orange" ShowLabel="false">2836</Border>
+  </Borders>
+</Sector>

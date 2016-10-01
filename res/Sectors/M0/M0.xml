@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Sectors>
+  <Sector Abbreviation="Vlan" Tags="Unreviewed" Selected="true" Milieu="M0">
+    <Y>-1</Y>
+    <X>-1</X>
+    <Name>Vland</Name>
+    <DataFile Source="Marc Miller's Traveller: First Survey">M0_Vlan.sec</DataFile>
+    <MetadataFile>M0_Vlan.xml</MetadataFile>
+  </Sector>
+
+  <Sector Abbreviation="Lish" Tags="Unreviewed" Selected="true" Milieu="M0">
+    <Y>-1</Y>
+    <X>0</X>
+    <Name>Lishun</Name>
+    <DataFile Source="Marc Miller's Traveller: First Survey">M0_Lish.sec</DataFile>
+    <MetadataFile>M0_Lish.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Anta" Tags="Unreviewed" Selected="true" Milieu="M0">
+    <Y>-1</Y>
+    <X>1</X>
+    <Name>Antares</Name>
+    <Name Lang="vi">Mikasirka</Name>
+    <DataFile Source="Marc Miller's Traveller: First Survey">M0_Anta.sec</DataFile>
+    <MetadataFile>M0_Anta.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Gush" Tags="Unreviewed" Selected="true" Milieu="M0">
+    <Y>0</Y>
+    <X>-2</X>
+    <Name>Gushemege</Name>
+    <DataFile Source="Marc Miller's Traveller: First Survey">M0_Gush.sec</DataFile>
+    <MetadataFile>M0_Gush.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Dagu" Tags="Unreviewed" Selected="true" Milieu="M0">
+    <Y>0</Y>
+    <X>-1</X>
+    <Name>Dagudashaag</Name>
+    <Name>Dagudashag</Name>
+    <DataFile Source="Marc Miller's Traveller: First Survey">M0_Dagu.sec</DataFile>
+    <MetadataFile>M0_Dagu.xml</MetadataFile>
+  </Sector>
+
+  <Sector Abbreviation="Core" Tags="Unreviewed" Selected="true" Milieu="M0">
+    <Y>0</Y>
+    <X>0</X>
+    <Name>Core</Name>
+    <Name Lang="vi">Ukan</Name>
+    <DataFile Source="Marc Miller's Traveller: First Survey">M0_Core.sec</DataFile>
+    <MetadataFile>M0_Core.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Ilel" Tags="Unreviewed" Selected="true" Milieu="M0">
+    <Y>1</Y>
+    <X>-2</X>
+    <Name>Ilelish</Name>
+    <DataFile Source="Marc Miller's Traveller: First Survey">M0_Ilel.sec</DataFile>
+    <MetadataFile>M0_Ilel.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Mass" Tags="Unreviewed" Selected="true" Milieu="M0">
+    <Y>1</Y>
+    <X>0</X>
+    <Name Source="DGP">Massilia</Name>
+    <Name Source="GDW">Massila</Name>
+    <Name Lang="vi">Masilaa</Name>
+    <DataFile Source="Marc Miller's Traveller: First Survey">M0_Mass.sec</DataFile>
+    <MetadataFile>M0_Mass.xml</MetadataFile>
+  </Sector>
+</Sectors>
