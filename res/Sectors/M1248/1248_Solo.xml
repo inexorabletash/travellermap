@@ -22,7 +22,7 @@
     <Subsector Index="E"></Subsector>
     <Subsector Index="F"></Subsector>
     <Subsector Index="G"></Subsector>
-    <Subsector Index="H"></Subsector>
+    <Subsector Index="H">Banasdan</Subsector>
     <Subsector Index="I"></Subsector>
     <Subsector Index="J"></Subsector>
     <Subsector Index="K"></Subsector>
@@ -47,9 +47,10 @@
     <Border WrapLabel="false" Color="#00adee" Allegiance="Ea" LabelPosition="1706" Label="Easter Concord">0509 0608 0708 0807 0907 1006 1106 1105 1204 1304 1404 1504 1603 1703 1802 1803 1904 2004 2105 2205 2306 2405 2506 2406 2407 2307 2206 2106 2005 1906 1806 1707 1607 1507 1406 1307 1207 1108 1008 0909 0910 0809 0710 0610 0609 0509 </Border>
     <Border WrapLabel="false" ShowLabel="true" Color="#ee1c25" Allegiance="La" LabelPosition="2801" Label="Freedom League">2602</Border>
     <Border WrapLabel="true" ShowLabel="false" Color="#ee1c25" Allegiance="La">3102</Border>
-    <Border WrapLabel="true" Color="#00adee" Allegiance="Ra" LabelPosition="2809" Label="Republic of Rann">2708 2807 2907 2906 2905 3005 3106 3107 3108 3208 3209 3110 3010 2910 2909 2808 2708 </Border>
+    <Border WrapLabel="true" Color="#00adee" Allegiance="Ra" LabelPosition="2809" Label="Republic of Rann">2708 2807 2907 2906 2905 3005 3106 3107 3108 3208 3308 3309 3310 3209 3110 3010 2910 2810 2811 2812 2811 2810 2809 2808 2708 </Border>
     <Border WrapLabel="true" ShowLabel="true" Color=" #00adee" Allegiance="Tc" LabelPosition="0306" Label="Independent">0106</Border>
-    <Border WrapLabel="false" Color="#00adee" Allegiance="Te" LabelPosition="2310" >1610 1710 1809 1909 2009 2109 2209 2310 2410 2310 2210 2110 2010 1910 1810 1710 1610</Border>
+    <Border WrapLabel="false" Color="#00adee" Allegiance="Te" Label="Terran Commonwealth State">0230 0330 0429 0529 0528 0527 0626 0726 0826 0827 0828 0829 0830 0831 0832 0833 0733 0633 0534 0434 0433 0432 0332 0231 0230 </Border>
+    <Border WrapLabel="false" Color="#00adee" Allegiance="Te">0722 0821 0921 0920 0919 0918 1017 1117 1116 1215 1214 1314 1413 1513 1512 1611 1711 1710 1809 1909 2009 2109 2110 2210 2311 2411 2412 2513 2514 2614 2615 2716 2816 2817 2918 2919 3019 3020 2921 2821 2722 2723 2623 2624 2625 2626 2627 2728 2828 2929 3029 3130 3131 3231 3232 3233 3234 3135 3136 3036 3037 3138 3139 3038 2939 2838 2738 2637 2538 2437 2337 2237 2138 2038 1939 1839 1840 1741 1641 1541 1441 1341 1340 1239 1238 1237 1137 1136 1235 1234 1334 1333 1332 1231 1230 1130 1129 1228 1227 1327 1326 1225 1125 1024 0924 0823 0723 0722 </Border>
   </Borders>
   <Routes>
     <Route Start="0610" End="0909"/>
