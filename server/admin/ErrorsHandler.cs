@@ -19,6 +19,7 @@ namespace Maps.Admin
 
             string sectorName = GetStringOption(context, "sector");
             string type = GetStringOption(context, "type");
+            string milieu = GetStringOption(context, "milieu");
 
             // NOTE: This (re)initializes a static data structure used for 
             // resolving names into sector locations, so needs to be run
@@ -30,6 +31,7 @@ namespace Maps.Admin
                               where (sectorName == null || sector.Names[0].Text.StartsWith(sectorName, ignoreCase: true, culture: CultureInfo.InvariantCulture))
                               && (sector.DataFile != null)
                               && (type == null || sector.DataFile.Type == type)
+                              && (milieu == null || sector.CanonicalMilieu == milieu)
                               && (sector.Tags.Contains("OTU") || sector.Tags.Contains("Apocryphal") || sector.Tags.Contains("Faraway"))
                               orderby sector.Names[0].Text
                               select sector;

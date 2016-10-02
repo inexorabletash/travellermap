@@ -456,6 +456,7 @@ namespace Maps
 
         private static SearchResultsType ParseQuery(string query, SearchResultsType types, out List<string> clauses, out List<string> terms)
         {
+            query = query.ToLowerInvariant();
             clauses = new List<string>();
             terms = new List<string>();
             foreach (string t in ParseTerms(query))

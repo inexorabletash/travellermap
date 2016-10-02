@@ -95,6 +95,7 @@ namespace Maps.Admin
             string sectorName = GetStringOption(context, "sector");
             string type = GetStringOption(context, "type");
             string regex = GetStringOption(context, "regex");
+            string milieu = GetStringOption(context, "milieu");
 
             // NOTE: This (re)initializes a static data structure used for 
             // resolving names into sector locations, so needs to be run
@@ -108,6 +109,7 @@ namespace Maps.Admin
                               && (type == null || sector.DataFile.Type == type)
                               && (!sector.Tags.Contains("ZCR"))
                               && (!sector.Tags.Contains("meta"))
+                              && (milieu == null || sector.CanonicalMilieu == milieu) 
                               orderby sector.Names[0].Text
                               select sector;
 
@@ -128,13 +130,9 @@ namespace Maps.Admin
                     if (!codes.ContainsKey(code))
                     {
                         HashSet<string> hash = new HashSet<string>();
-                        hash.Add(sector.Names[0].Text);
                         codes.Add(code, hash);
                     }
-                    else
-                    {
-                        codes[code].Add(sector.Names[0].Text);
-                    }
+                    codes[code].Add(string.Format("{0} [{1}]", sector.Names[0].Text, sector.CanonicalMilieu));
                 }
             }
 
