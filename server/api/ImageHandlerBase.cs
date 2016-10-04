@@ -79,6 +79,18 @@ namespace Maps.API
                     devicePixelRatio = 1;
 
                 bool dataURI = GetBoolOption("datauri", queryDefaults: queryDefaults, defaultValue: false);
+
+                if (GetStringOption("milieu", SectorMap.DEFAULT_MILIEU) != SectorMap.DEFAULT_MILIEU)
+                {
+                    // TODO: Make this declarative in resource files.
+                    if (ctx.Styles.macroBorders.visible)
+                    {
+                        ctx.Styles.macroBorders.visible = false;
+                        ctx.Styles.microBorders.visible = true;
+                    }
+                    ctx.Styles.macroNames.visible = false;
+                    ctx.Styles.macroRoutes.visible = false;
+                }
                 #endregion
 
                 MemoryStream ms = null;

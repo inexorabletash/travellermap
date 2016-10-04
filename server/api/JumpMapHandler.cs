@@ -1,5 +1,4 @@
 ﻿using Maps.Rendering;
-using PdfSharp.Drawing;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
