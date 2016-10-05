@@ -7,4 +7,11 @@
     <DataFile Type="TabDelimited">solo-iw.tab</DataFile>
     <MetadataFile>solo-iw.xml</MetadataFile>
   </Sector>
+  <Sector Abbreviation="Magy" Selected="true" Milieu="IW">
+    <Y>3</Y>
+    <X>-1</X>
+    <Name>Magyar</Name>
+    <DataFile Type="TabDelimited">magy-iw.tab</DataFile>
+    <MetadataFile>magy-iw.xml</MetadataFile>
+  </Sector>
 </Sectors>
