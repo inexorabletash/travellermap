@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Sectors>
+  <Sector Abbreviation="Daib" Selected="true" Milieu="IW">
+    <Y>2</Y>
+    <X>-1</X>
+    <Name>Daibei</Name>
+    <Name Lang="vi">Lankhisidam</Name>
+    <DataFile Type="TabDelimited">daib-iw.tab</DataFile>
+    <MetadataFile>daib-iw.xml</MetadataFile>
+  </Sector>
   <Sector Abbreviation="Solo" Selected="true" Milieu="IW">
     <Y>3</Y>
     <X>0</X>

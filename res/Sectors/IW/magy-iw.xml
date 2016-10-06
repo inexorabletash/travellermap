@@ -1,12 +1,9 @@
 <?xml version="1.0"?>
-<Sector Abbreviation="Magy" Tags="Unofficial" Milieu="IW">
-  <Y>3</Y>
-  <X>-1</X>
+<Sector Abbreviation="Magy" Tags="Unofficial" Selected="true" Milieu="IW">
   <Name>Magyar</Name>
-    <Name Lang="vi">Magaar</Name>
+  <Name Lang="vi">Magaar</Name>
   <Credits>
     <![CDATA[
-
              <b>Magyar</b> sector was designed by Marc W. Miller and
              appears in <cite>Atlas of the Imperium</cite> (GDW,
              1984).
@@ -16,31 +13,33 @@
     ]]>
   </Credits>
   <Subsectors>
-    <Subsector Index="A">Clan</Subsector>
-    <Subsector Index="B">Eery</Subsector>
-    <Subsector Index="C">Clown</Subsector>
-    <Subsector Index="D">Anise</Subsector>
-    <Subsector Index="E">Nemo</Subsector>
-    <Subsector Index="F">New Town</Subsector>
-    <Subsector Index="G">Voyager</Subsector>
-    <Subsector Index="H">Kline</Subsector>
-    <Subsector Index="I">Iouo</Subsector>
-    <Subsector Index="J">Valhalla</Subsector>
-    <Subsector Index="K">Swan</Subsector>
-    <Subsector Index="L">New Mars</Subsector>
-    <Subsector Index="M">Last Chance</Subsector>
-    <Subsector Index="N">Black Jack</Subsector>
-    <Subsector Index="O">Olympus</Subsector>
-    <Subsector Index="P">Cluster</Subsector>
+    <Subsector Index="A">Uncharted</Subsector>
+    <Subsector Index="B">Uncharted</Subsector>
+    <Subsector Index="C">Aiish</Subsector>
+    <Subsector Index="D">Gadarur</Subsector>
+    <Subsector Index="E">Uncharted</Subsector>
+    <Subsector Index="F">Uncharted</Subsector>
+    <Subsector Index="G">Girii</Subsector>
+    <Subsector Index="H">Lemrukiri</Subsector>
+    <Subsector Index="I">Uncharted</Subsector>
+    <Subsector Index="J">Uncharted</Subsector>
+    <Subsector Index="K">Uncharted</Subsector>
+    <Subsector Index="L">Ceti</Subsector>
+    <Subsector Index="M">Uncharted</Subsector>
+    <Subsector Index="N">Uncharted</Subsector>
+    <Subsector Index="O">Uncharted</Subsector>
+    <Subsector Index="P">Nova Pacifica</Subsector>
   </Subsectors>
   <Allegiances>
-    <Allegiance Code="TC">Terran Confederation</Allegiance>
-    <Allegiance Code="ZS">Ziru Sirka</Allegiance>
+    <Allegiance Code="Na">Non-Aligned, Human-dominated</Allegiance>
     <Allegiance Code="ZSk">Ziru Sirka (Kimashargur)</Allegiance>
+    <Allegiance Code="ZS">Ziru Sirka</Allegiance>
+    <Allegiance Code="TC">Terran Confederation</Allegiance>
   </Allegiances>
   <Borders>
-    <Border Allegiance="TC" Color="Blue">3029 3129 3128 3227 3128 3129 3029</Border>
-    <Border Allegiance="ZS" Color="Red">1815 1915 2015 2116 2216 2316 2415 2515 2614 2714 2813 2812 2811 2711 2610 2510 2409 2408 2407 2406 2405 2404 2304 2303 2302 2301 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3225 3125 3124 3123 3122 3121 3020 3019 2919 2818 2718 2618 2519 2419 2319 2219 2119 2019 1919 1818 1817 1816 1815</Border>
-    <Border Allegiance="ZSk" Color="Yellow">1815 1915 2015 2116 2216 2316 2416 2316 2216 2117 2017 2018 2019 1919 1818 1817 1816 1815</Border>
+    <Border WrapLabel="false" Color="Blue" Allegiance="TC" LabelPosition="3128">3029 3129 3128 3227 3128 3129 3029</Border>
+    <Border WrapLabel="false" Color="Red" Allegiance="ZS" LabelPosition="2613">1815 1915 1916 1917 1918 2018 2118 2218 2318 2317 2316 2415 2416 2517 2616 2716 2715 2814 2813 2812 2811 2810 2809 2709 2609 2510 2409 2509 2508 2507 2406 2405 2404 2304 2303 2402 2502 2501 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3225 3125 3124 3123 3222 3221 3220 3120 3020 3019 3119 3118 3017 2917 2817 2718 2618 2519 2419 2319 2219 2119 2019 1919 1818 1817 1816 1815</Border>
+    <Border WrapLabel="false" Color="Yellow" Allegiance="ZSk" LabelPosition="2117">1815 1915 1916 1917 1918 1919 2019 1919 1818 1817 1816 1815</Border>
+    <Border WrapLabel="false" Color="Yellow" Allegiance="ZSk" LabelPosition="2117">3222 3323 3223 3222</Border>
   </Borders>
 </Sector>
