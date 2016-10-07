@@ -501,7 +501,7 @@ namespace Maps.Rendering
                         }
                     }
                     timers.Add(new Timer("macro worlds"));
-                    #endregion
+                    #endregion  
 
                     #region mega-names
                     //------------------------------------------------------------
