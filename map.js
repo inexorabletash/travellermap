@@ -576,7 +576,8 @@ var Util = {
   //
   //   map.SetRoute()
   //   map.AddMarker(id, x, y, opt_url); // should have CSS style for .marker#<id>
-  //   map.AddOverlay(x, y, w, h); // should have CSS style for .overlay
+  //   map.AddOverlay({type:'rectangle', x, y, w, h}); // should have CSS style for .overlay
+  //   map.AddOverlay({type:'circle', x, y, r}); // should have CSS style for .overlay
   //
   //----------------------------------------------------------------------
 
@@ -1209,21 +1210,24 @@ var Util = {
   };
 
   TravellerMap.prototype.drawOverlay = function(overlay) {
-    // Compute physical location
-    var pt1 = this.mapToPixel(overlay.x, overlay.y);
-    var pt2 = this.mapToPixel(overlay.x + overlay.w, overlay.y + overlay.h);
-
-    var scale = this.scale;
-    var x = -164, y = 7000, r = 6820;
-    var w = 20;
-
     var ctx = this.ctx;
     ctx.save();
     ctx.translate(-this.canvas.offset_x, -this.canvas.offset_y);
     ctx.globalCompositeOperation = 'source-over';
     ctx.globalAlpha = 0.5;
     ctx.fillStyle = styleLookup(this.style, 'overlay_color');
-    ctx.fillRect(pt1.x, pt1.y, pt2.x - pt1.x, pt1.y - pt2.y);
+    if (overlay.type === 'rectangle') {
+      // Compute physical location
+      var pt1 = this.mapToPixel(overlay.x, overlay.y);
+      var pt2 = this.mapToPixel(overlay.x + overlay.w, overlay.y + overlay.h);
+      ctx.fillRect(pt1.x, pt1.y, pt2.x - pt1.x, pt1.y - pt2.y);
+    } else if (overlay.type === 'circle') {
+      var pt = this.mapToPixel(overlay.x, overlay.y);
+      var r = Math.abs(this.mapToPixel(overlay.x, overlay.y + overlay.r).y - pt.y);
+      ctx.beginPath();
+      ctx.ellipse(pt.x, pt.y, r, r, 0, 0, Math.PI*2);
+      ctx.fill();
+    }
     ctx.restore();
   };
 
@@ -1537,17 +1541,12 @@ var Util = {
   };
 
 
-  TravellerMap.prototype.AddOverlay = function(x, y, w, h) {
+  TravellerMap.prototype.AddOverlay = function(o) {
     // TODO: Take id, like AddMarker
-    var overlay = {
-      x: x,
-      y: y,
-      w: w,
-      h: h,
-
+    var overlay = Object.assign({
       id: 'overlay',
       z: 910
-    };
+    }, o);
 
     this.overlays.push(overlay);
     this.invalidate();
@@ -1634,7 +1633,19 @@ var Util = {
         var y = float(oys);
         var w = float(ows);
         var h = float(ohs);
-        this.AddOverlay(x, y, w, h);
+        this.AddOverlay({type: 'rectangle', x:x, y:y, w:w, h:h});
+      } else {
+        break;
+      }
+    }
+    for ( i = 0; ; ++i) {
+      n = (i === 0) ? '' : i;
+      var ocxs = 'ocx' + n, ocys = 'ocy' + n, ocrs = 'ocr' + n;
+      if (has(params, [ocxs, ocys, ocrs])) {
+        var cx = float(ocxs);
+        var cy = float(ocys);
+        var cr = float(ocrs);
+        this.AddOverlay({type: 'circle', x:cx, y:cy, r:cr});
       } else {
         break;
       }
