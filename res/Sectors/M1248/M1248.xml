@@ -100,7 +100,7 @@
     <DataFile Author="Daniel Hammersley, Richard Perks and Grahame Muliss" Source="1248 Sourcebook 4: The Freedom League">1248_Alph.sec</DataFile>
     <MetadataFile>1248_Alph.xml</MetadataFile>
   </Sector>
-  <Sector Abbreviation="Gvur" Tags="Unreviewed" Selected="true" Milieu="M1248">
+  <Sector Abbreviation="Gvur" Tags="Unreviewed" Selected="false" Milieu="M1248">
     <Y>-2</Y>
     <X>-4</X>
     <Name Lang="va">Gvurrdon</Name>
@@ -108,7 +108,7 @@
     <DataFile Author="Martin J. Dougherty" Source="1248 Sourcebook 1: Out of Darkness">1248_Gvur.sec</DataFile>
     <MetadataFile>1248_Gvur.xml</MetadataFile>
   </Sector>
-  <Sector Abbreviation="Rift" Tags="Unreviewed" Selected="true" Milieu="M1248">
+  <Sector Abbreviation="Rift" Tags="Unreviewed" Selected="false" Milieu="M1248">
     <Y>1</Y>
     <X>-4</X>
     <Name>Riftspan Reaches</Name>
@@ -116,28 +116,28 @@
     <DataFile Author="Martin J. Dougherty" Source="1248 Sourcebook 1: Out of Darkness">1248_Rift.sec</DataFile>
     <MetadataFile>1248_Rift.xml</MetadataFile>
   </Sector>
-  <Sector Abbreviation="Hlak" Tags="Unreviewed" Selected="true" Milieu="M1248">
+  <Sector Abbreviation="Hlak" Tags="Unreviewed" Selected="false" Milieu="M1248">
     <Y>2</Y>
     <X>-4</X>
     <Name Lang="as">Hlakhoi</Name>
     <DataFile Author="Martin J. Dougherty" Source="1248 Sourcebook 1: Out of Darkness">1248_Hlak.sec</DataFile>
     <MetadataFile>1248_Hlak.xml</MetadataFile>
   </Sector>
-  <Sector Abbreviation="Stai" Tags="Unreviewed" Selected="true" Milieu="M1248">
+  <Sector Abbreviation="Stai" Tags="Unreviewed" Selected="false" Milieu="M1248">
     <Y>3</Y>
     <X>-4</X>
     <Name Lang="as">Staihaia'yo</Name>
     <DataFile Author="Martin J. Dougherty" Source="1248 Sourcebook 1: Out of Darkness">1248_Stai.sec</DataFile>
     <MetadataFile>1248_Stai.xml</MetadataFile>
   </Sector>
-  <Sector Abbreviation="Akti" Tags="Unreviewed" Selected="true" Milieu="M1248">
+  <Sector Abbreviation="Akti" Tags="Unreviewed" Selected="false" Milieu="M1248">
     <Y>4</Y>
     <X>-4</X>
     <Name Lang="as">Aktifao</Name>
     <DataFile Author="Martin J. Dougherty" Source="1248 Sourcebook 1: Out of Darkness">1248_Akti.sec</DataFile>
     <MetadataFile>1248_Akti.xml</MetadataFile>
   </Sector>
-  <Sector Abbreviation="Tugl" Tags="Unreviewed" Selected="true" Milieu="M1248">
+  <Sector Abbreviation="Tugl" Tags="Unreviewed" Selected="false" Milieu="M1248">
     <Y>-2</Y>
     <X>-3</X>
     <Name Lang="va">Tuglikki</Name>
@@ -145,7 +145,7 @@
     <DataFile Author="Martin J. Dougherty" Source="1248 Sourcebook 1: Out of Darkness">1248_Tugl.sec</DataFile>
     <MetadataFile>1248_Tugl.xml</MetadataFile>
   </Sector>
-  <Sector Abbreviation="Verg" Tags="Unreviewed" Selected="true" Milieu="M1248">
+  <Sector Abbreviation="Verg" Tags="Unreviewed" Selected="false" Milieu="M1248">
     <Y>1</Y>
     <X>-3</X>
   <Name>Verge</Name>
@@ -155,14 +155,14 @@
     <DataFile Author="Martin J. Dougherty" Source="1248 Sourcebook 1: Out of Darkness">1248_Verg.sec</DataFile>
     <MetadataFile>1248_Verg.xml</MetadataFile>
   </Sector>
-  <Sector Abbreviation="Eali" Tags="Unreviewed" Selected="true" Milieu="M1248">
+  <Sector Abbreviation="Eali" Tags="Unreviewed" Selected="false" Milieu="M1248">
     <Y>2</Y>
     <X>-3</X>
     <Name Lang="as">Ealiyasiyw</Name>
     <DataFile Author="Martin J. Dougherty" Source="1248 Sourcebook 1: Out of Darkness">1248_Eali.sec</DataFile>
     <MetadataFile>1248_Eali.xml</MetadataFile>
   </Sector>
-  <Sector Abbreviation="Iwah" Tags="Unreviewed" Selected="true" Milieu="M1248">
+  <Sector Abbreviation="Iwah" Tags="Unreviewed" Selected="false" Milieu="M1248">
     <Y>3</Y>
     <X>-3</X>
     <Name Lang="as">Iwahfuah</Name>
@@ -170,12 +170,98 @@
     <DataFile Author="Martin J. Dougherty" Source="1248 Sourcebook 1: Out of Darkness">1248_Iwah.sec</DataFile>
     <MetadataFile>1248_Iwah.xml</MetadataFile>
   </Sector>
-  <Sector Abbreviation="Uist" Tags="Unreviewed" Selected="true" Milieu="M1248">
+  <Sector Abbreviation="Uist" Tags="Unreviewed" Selected="false" Milieu="M1248">
     <Y>4</Y>
     <X>-3</X>
     <Name Lang="as">Uistilrao</Name>
     <Name Lang="as">Uistilao</Name>
     <DataFile Author="Martin J. Dougherty" Source="1248 Sourcebook 1: Out of Darkness">1248_Uist.sec</DataFile>
     <MetadataFile>1248_Uist.xml</MetadataFile>
+  </Sector>
+
+  <Sector Abbreviation="Prov" Tags="Unreviewed" Selected="false" Milieu="M1248">
+    <Y>-2</Y>
+    <X>-2</X>
+    <Name>Provence</Name>
+    <Name Lang="va">Orraenang</Name>
+    <Name Lang="vi">Amshagi</Name>
+    <DataFile Author="Martin J. Dougherty" Source="1248 Sourcebook 1: Out of Darkness">1248_Prov.sec</DataFile>
+    <MetadataFile>1248_Prov.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Corr" Tags="Unreviewed" Selected="false" Milieu="M1248">
+    <Y>-1</Y>
+    <X>-2</X>
+    <Name>Corridor</Name>
+    <Name Lang="vi">Amshagi</Name>
+    <Name Lang="vi">Eneri</Name>
+    <Name Lang="va">Roughantz</Name>
+    <Name Lang="va">Llananae Tourz</Name>
+    <DataFile Author="Martin J. Dougherty" Source="1248 Sourcebook 1: Out of Darkness">1248_Corr.sec</DataFile>
+    <MetadataFile>1248_Corr.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Reav" Tags="Unreviewed" Selected="false" Milieu="M1248">
+    <Y>2</Y>
+    <X>-2</X>
+    <Name>Reaver's Deep</Name>
+    <Name>Reavers' Deep</Name>
+    <Name>Reavers Deep</Name>
+    <Name Lang="as">Aeitle Sakh</Name>
+    <DataFile Author="Martin J. Dougherty" Source="1248 Sourcebook 1: Out of Darkness">1248_Reav.sec</DataFile>
+    <MetadataFile>1248_Reav..xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Dark" Tags="Unreviewed" Selected="false" Milieu="M1248">
+    <Y>3</Y>
+    <X>-2</X>
+    <Name>Dark Nebula</Name>
+    <Name Lang="as">I'aheako</Name>
+    <DataFile Author="Martin J. Dougherty" Source="1248 Sourcebook 1: Out of Darkness">1248_Dark.sec</DataFile>
+    <MetadataFile>1248_Dark.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Ustr" Tags="Unreviewed" Selected="false" Milieu="M1248">
+    <Y>4</Y>
+    <X>-2</X>
+    <Name>Ustral Quadrant</Name>
+    <Name Lang="as">Ftahtuak</Name>
+    <DataFile Author="Martin J. Dougherty" Source="1248 Sourcebook 1: Out of Darkness">1248_Ustr.sec</DataFile>
+    <MetadataFile>1248_Ustr.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Wind" Tags="Unreviewed" Selected="false" Milieu="M1248">
+    <Y>-2</Y>
+    <X>-1</X>
+    <Name>Windhorn</Name>
+    <Name Lang="va">Gotzdzo</Name>
+    <Name Lang="vi">Kishadikhu</Name>
+    <DataFile Author="Martin J. Dougherty" Source="1248 Sourcebook 1: Out of Darkness">1248_Wind.sec</DataFile>
+    <MetadataFile>1248_Wind.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Vlan" Tags="Unreviewed" Selected="false" Milieu="M1248">
+    <Y>-1</Y>
+    <X>-1</X>
+    <Name>Vland</Name>
+    <DataFile Author="Martin J. Dougherty" Source="1248 Sourcebook 1: Out of Darkness">1248_Vlan.sec</DataFile>
+    <MetadataFile>1248_Vlan.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Daib" Tags="Unreviewed" Selected="false" Milieu="M1248">
+    <Y>2</Y>
+    <X>-1</X>
+    <Name>Daibei</Name>
+    <Name Lang="vi">Lankhisidam</Name>
+    <DataFile Author="Martin J. Dougherty" Source="1248 Sourcebook 1: Out of Darkness">1248_Daib.sec</DataFile>
+    <MetadataFile>1248_Daib.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Magy" Tags="Unreviewed" Selected="false" Milieu="M1248">
+    <Y>3</Y>
+    <X>-1</X>
+    <Name>Magyar</Name>
+    <Name Lang="vi">Magaar</Name>
+    <DataFile Author="Martin J. Dougherty" Source="1248 Sourcebook 1: Out of Darkness">1248_Magy.sec</DataFile>
+    <MetadataFile>1248_Magy.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Cano" Tags="Unreviewed" Selected="false" Milieu="M1248">
+    <Y>4</Y>
+    <X>-1</X>
+    <Name>Canopus</Name>
+    <DataFile Author="Martin J. Dougherty" Source="1248 Sourcebook 1: Out of Darkness">1248_Cano.sec</DataFile>
+    <MetadataFile>1248_Cano.xml</MetadataFile>
   </Sector>
 </Sectors>
