@@ -1298,15 +1298,16 @@ var Util = {
   TravellerMap.prototype.drawEmpressWave = function(date) {
     var year = 1105;
     var w = 1; /*pc*/
-    if (/^(\d+)-(\d+)$/.exec(date)) {
+    var m;
+    if ((m = /^(\d+)-(\d+)$/.exec(date))) {
       // day-year, e.g. 001-1105
-      year = Number(RegExp.$2) + (Number(RegExp.$1) - 1) / 365;
+      year = Number(m[2]) + (Number(m[1]) - 1) / 365;
       w = 0.1;
-    } else if (/^(\d+)\.(\d*)$/.exec(date)) {
+    } else if (/^(\d+)\.(\d*)$/.test(date)) {
       // decimal year, e.g. 1105.5
       year = Number(date);
       w = 0.1;
-    } else if (/^\d+$/.exec(date)) {
+    } else if (/^\d+$/.test(date)) {
       // year
       year = Number(date) + 0.5;
       w = 1;

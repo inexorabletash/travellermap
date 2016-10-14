@@ -752,13 +752,14 @@
           var iw = w * size.width, ih = h * size.height;
           var ix = (w - iw) / 2, iy = (h - ih) / 2;
 
+          var m;
           if (!isRender &&
               supportsCompositeMode(ctx, 'destination-in') &&
               supportsCompositeMode(ctx, 'destination-over') &&
               supportsCompositeMode(ctx, 'multiply') &&
-              world.Stars && /^([OBAFGKM])([0-9])/.test(world.Stars[0])) {
+              world.Stars && (m = /^([OBAFGKM])([0-9])/.exec(world.Stars[0]))) {
             // Advanced - color blend image.
-            var t = class2temp(RegExp.$1, RegExp.$2);
+            var t = class2temp(m[1], m[2]);
             var c = temp2color(t);
             ctx.fillStyle = 'rgb(' + c.r + ',' + c.g + ',' + c.b + ')';
 
