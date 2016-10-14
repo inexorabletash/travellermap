@@ -15,6 +15,13 @@
     <DataFile Type="TabDelimited">solo-iw.tab</DataFile>
     <MetadataFile>solo-iw.xml</MetadataFile>
   </Sector>
+  <Sector Abbreviation="Solo" Selected="true" Milieu="IW">
+    <Y>3</Y>
+    <X>1</X>
+    <Name>Alpha Crucis</Name>
+    <DataFile Type="TabDelimited">alph-iw.tab</DataFile>
+    <MetadataFile>alph-iw.xml</MetadataFile>
+  </Sector>
   <Sector Abbreviation="Magy" Selected="true" Milieu="IW">
     <Y>3</Y>
     <X>-1</X>
