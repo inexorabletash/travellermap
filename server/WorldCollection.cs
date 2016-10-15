@@ -13,13 +13,15 @@ namespace Maps
     /// </summary>
     internal class WorldCollection : IDeserializable, IEnumerable<World>
     {
-        public WorldCollection()
+        public WorldCollection(bool isUserData = false)
         {
+            IsUserData = isUserData;
 #if DEBUG
             errors = new ErrorLogger();
 #endif
         }
         
+        public bool IsUserData { get; }
         private World[,] worlds = new World[Astrometrics.SectorWidth, Astrometrics.SectorHeight];
         public World this[int x, int y]
         {

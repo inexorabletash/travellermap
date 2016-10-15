@@ -23,7 +23,7 @@ namespace Maps
         internal Sector(Stream stream, string mediaType, ErrorLogger errors)
             : this()
         {
-            WorldCollection wc = new WorldCollection();
+            WorldCollection wc = new WorldCollection(isUserData: true);
             wc.Deserialize(stream, mediaType, errors);
             foreach (World world in wc)
                 world.Sector = this;

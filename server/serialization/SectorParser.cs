@@ -332,8 +332,7 @@ namespace Maps.Serialization
                 world.Zone = checker.Check(new string[] { "Z", "Zone" }, ZONE_REGEX, CheckOptions.EmptyIfDash);
                 world.PBG = checker.Check("PBG", PBG_REGEX);
                 world.Allegiance = checker.Check(new string[] { "A", "Al", "Allegiance" },
-                    // TODO: Allow unofficial sectors to have locally declared allegiances.
-                    a => a.Length != 4 || SecondSurvey.IsKnownT5Allegiance(a));
+                    a => worlds.IsUserData || a.Length != 4 || SecondSurvey.IsKnownT5Allegiance(a));
                 world.Stellar = checker.Check(new string[] { "Stellar", "Stars", "Stellar Data" }, STARS_REGEX, CheckOptions.Warning);
 
                 byte w;
