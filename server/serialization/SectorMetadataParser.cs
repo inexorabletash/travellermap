@@ -64,8 +64,17 @@ namespace Maps.Serialization
 
         public override Sector Parse(TextReader reader)
         {
-            XmlSerializer xs = new XmlSerializer(typeof(Sector));
-            return xs.Deserialize(reader) as Sector;
+            try
+            {
+                XmlSerializer xs = new XmlSerializer(typeof(Sector));
+                return xs.Deserialize(reader) as Sector;
+            }
+            catch (System.InvalidOperationException ex)
+            {
+                if (ex.InnerException is System.Xml.XmlException)
+                    throw ex.InnerException;
+                throw;
+            }
         }
     }
 }
