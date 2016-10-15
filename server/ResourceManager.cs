@@ -96,11 +96,20 @@ namespace Maps
             {
                 using (var stream = new FileStream(Server.MapPath(name), FileMode.Open, FileAccess.Read, FileShare.Read))
                 {
-                    XmlSerializer xs = new XmlSerializer(type);
-                    object o = xs.Deserialize(stream);
-                    if (o.GetType() != type)
-                        throw new InvalidOperationException();
-                    return o;
+                    try
+                    {
+                        XmlSerializer xs = new XmlSerializer(type);
+                        object o = xs.Deserialize(stream);
+                        if (o.GetType() != type)
+                            throw new InvalidOperationException();
+                        return o;
+                    }
+                    catch (InvalidOperationException ex)
+                    {
+                        if (ex.InnerException is System.Xml.XmlException)
+                            throw ex.InnerException;
+                        throw;
+                    }
                 }
             }
 
