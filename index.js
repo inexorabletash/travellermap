@@ -950,14 +950,15 @@ window.addEventListener('DOMContentLoaded', function() {
     $('#routePath').innerHTML = '';
     lastRoute = {start:start, end:end, jump:jump};
 
-    fetch(Traveller.MapService.makeURL('/api/route', {
+    var options = {
       start: start, end: end, jump: jump,
       x: map.worldX, y: map.worldY,
       milieu: map.namedOptions.get('milieu'),
       wild: $('#route-wild').checked?1:0,
       im: $('#route-im').checked?1:0,
       nored: $('#route-nored').checked?1:0
-    }))
+    };
+    fetch(Traveller.MapService.makeURL('/api/route', options))
       .then(function(response) {
         if (!response.ok) return response.text();
         return response.json();
@@ -994,10 +995,11 @@ window.addEventListener('DOMContentLoaded', function() {
         $('#routePath').innerHTML = template('#RouteResultsTemplate')({
           Route: data,
           Distance: total,
-          Jumps: data.length - 1
+          Jumps: data.length - 1,
+          PrintURL: Util.makeURL('./print/route.html', options)
         });
 
-        Array.from(document.querySelectorAll('#routePath a')).forEach(function(a) {
+        Array.from(document.querySelectorAll('#routePath .item a')).forEach(function(a) {
           a.addEventListener('click', function(e) {
             e.preventDefault();
             var params = Util.parseURLQuery(e.target);
