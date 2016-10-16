@@ -148,7 +148,11 @@ namespace Maps.Rendering
         public SizeF MeasureString(string text, Font font) {
             return g.MeasureString(text, font).ToSizeF();
         }
-        public void DrawString(string s, Font font, AbstractBrush brush, float x, float y, StringAlignment format) { Apply(brush); g.DrawString(s, font, this.brush, x, y, Format(format)); }
+        public void DrawString(string s, Font font, AbstractBrush brush, float x, float y, StringAlignment format)
+        {
+            Apply(brush);
+            g.DrawString(s, Convert(font), this.brush, x, y, Format(format));
+        }
 
         public AbstractGraphicsState Save() { return new State(this, g.Save()); }
         public void Restore(AbstractGraphicsState state) { g.Restore(((State)state).state); }
