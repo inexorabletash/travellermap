@@ -113,7 +113,7 @@
         </rule>
 
         <rule name="Extensionless Pages" stopProcessing="true">
-          <match url="^(world|(doc|make|tools)/\w+)$"/>
+          <match url="^(world|(doc|make|print|tools)/\w+)$"/>
           <action type="Rewrite" url="{R:0}.html"/>
         </rule>
       </rules>
