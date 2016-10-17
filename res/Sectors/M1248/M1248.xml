@@ -264,4 +264,82 @@
     <DataFile Author="Martin J. Dougherty" Source="1248 Sourcebook 1: Out of Darkness">1248_Cano.sec</DataFile>
     <MetadataFile>1248_Cano.xml</MetadataFile>
   </Sector>
+
+  <Sector Abbreviation="Mesh" Tags="Unreviewed" Selected="false" Milieu="M1248">
+    <Y>-2</Y>
+    <X>0</X>
+    <Name>Meshan</Name>
+    <DataFile Author="Martin J. Dougherty" Source="1248 Sourcebook 1: Out of Darkness">1248_Mesh.sec</DataFile>
+    <MetadataFile>1248_Mesh.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Lish" Tags="Unreviewed" Selected="false" Milieu="M1248">
+    <Y>-1</Y>
+    <X>0</X>
+    <Name>Lishun</Name>
+    <DataFile Author="Martin J. Dougherty" Source="1248 Sourcebook 1: Out of Darkness">1248_Lish.sec</DataFile>
+    <MetadataFile>1248_Lish.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Core" Tags="Unreviewed" Selected="false" Milieu="M1248">
+    <Y>0</Y>
+    <X>0</X>
+    <Name>Core</Name>
+    <Name Lang="vi">Ukan</Name>
+    <DataFile Author="Martin J. Dougherty" Source="1248 Sourcebook 1: Out of Darkness">1248_Core.sec</DataFile>
+    <MetadataFile>1248_Core.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Mass" Tags="Unreviewed" Selected="false" Milieu="M1248">
+    <Y>1</Y>
+    <X>0</X>
+    <Name Source="DGP">Massilia</Name>
+    <Name Source="GDW">Massila</Name>
+    <Name Lang="vi">Masilaa</Name>
+    <DataFile Author="Martin J. Dougherty" Source="1248 Sourcebook 1: Out of Darkness">1248_Mass.sec</DataFile>
+    <MetadataFile>1248_Mass.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Alde" Tags="Unreviewed" Selected="false" Milieu="M1248">
+    <Y>4</Y>
+    <X>0</X>
+    <Name>Aldebaran</Name>
+    <DataFile Author="Martin J. Dougherty" Source="1248 Sourcebook 1: Out of Darkness">1248_Alde.sec</DataFile>
+    <MetadataFile>1248_Alde.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Mend" Tags="Unreviewed" Selected="false" Milieu="M1248">
+    <Y>-2</Y>
+    <X>1</X>
+    <Name>Mendan</Name>
+    <Name Lang="va">Gotzdzo</Name>
+    <DataFile Author="Martin J. Dougherty" Source="1248 Sourcebook 1: Out of Darkness">1248_Mend.sec</DataFile>
+    <MetadataFile>1248_Mend.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Anta" Tags="Unreviewed" Selected="false" Milieu="M1248">
+    <Y>-1</Y>
+    <X>1</X>
+    <Name>Antares</Name>
+    <Name Lang="vi">Mikasirka</Name>
+    <DataFile Author="Martin J. Dougherty" Source="1248 Sourcebook 1: Out of Darkness">1248_Anta.sec</DataFile>
+    <MetadataFile>1248_Anta.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Forn" Tags="Unreviewed" Selected="false" Milieu="M1248">
+    <Y>0</Y>
+    <X>1</X>
+    <Name>Fornast</Name>
+    <Name Lang="vi">Rishurir</Name>
+    <DataFile Author="Martin J. Dougherty" Source="1248 Sourcebook 1: Out of Darkness">1248_Forn.sec</DataFile>
+    <MetadataFile>1248_Forn.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Delp" Tags="Unreviewed" Selected="false" Milieu="M1248">
+    <Y>1</Y>
+    <X>1</X>
+    <Name>Delphi</Name>
+    <Name Lang="vi">Manadish Khurem</Name>
+    <DataFile Author="Martin J. Dougherty" Source="1248 Sourcebook 1: Out of Darkness">1248_Delp.sec</DataFile>
+    <MetadataFile>1248_Delp.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Newo" Tags="Unreviewed" Selected="false" Milieu="M1248">
+    <Y>4</Y>
+    <X>1</X>
+    <Name>Neworld</Name>
+    <DataFile Author="Martin J. Dougherty" Source="1248 Sourcebook 1: Out of Darkness">1248_Newo.sec</DataFile>
+    <MetadataFile>1248_Newo.xml</MetadataFile>
+  </Sector>
 </Sectors>
