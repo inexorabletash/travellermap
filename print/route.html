@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<title>Printable Route - Traveller Map</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+<script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.27/polyfill.min.js"></script>
+<script src="../map.js?update=2016-10-13"></script>
+<script>
+window.addEventListener('DOMContentLoaded', function() {
+  var $ = document.querySelector.bind(document);
+  var $$ = document.querySelectorAll.bind(document);
+
+  var params = new URL(document.location.href).searchParams;
+
+  fetch(Traveller.MapService.makeURL('/api/route', {
+    start: params.get('start'),
+    end: params.get('end'),
+    jump: params.get('jump'),
+    x: params.get('x'),
+    y: params.get('y'),
+    milieu: params.get('milieu'),
+    wild: !!Number(params.get('wild'))?1:0,
+    im: !!Number(params.get('im'))?1:0,
+    nored: !!Number(params.get('nored'))?1:0
+  }))
+    .then(function(response) {
+      if (!response.ok) return response.text();
+      return response.json();
+    })
+    .then(function(data) {
+      if (typeof data === 'string') throw new Error(data);
+
+      var route = [];
+      var total = 0;
+      data.forEach(function(world, index) {
+        world.Name = world.Name || '(Unnamed)';
+        var sx = world.SectorX|0;
+        var sy = world.SectorY|0;
+        var hx = world.HexX|0;
+        var hy = world.HexY|0;
+
+        if (index > 0) {
+          var prev = data[index - 1];
+          var a = Traveller.Astrometrics.sectorHexToWorld(
+            prev.SectorX|0, prev.SectorY|0, prev.HexX|0, prev.HexY|0);
+          var b = Traveller.Astrometrics.sectorHexToWorld(sx, sy, hx, hy);
+          var dist = Traveller.Astrometrics.hexDistance(a.x, a.y, b.x, b.y);
+          prev.Distance = dist;
+          total += dist;
+        }
+
+        world.Starport = world.UWP.substr(0, 1);
+        world.GasGiant = Number(world.PBG.substr(2, 1)) > 0;
+        world.AmberZone = world.Zone === 'A';
+        world.RedZone = world.Zone === 'R';
+      });
+
+      $('#routePath').innerHTML = Handlebars.compile($('#RouteResultsTemplate').innerHTML)({
+        Route: data,
+        From: data[0],
+        To: data[data.length - 1],
+        Jump: params.get('jump'),
+        Distance: total,
+        Jumps: data.length - 1
+      });
+
+      document.title = data[0].Name + ' to ' + data[data.length - 1].Name;
+
+      return Promise.all(Array.from($$('#routePath img')).map(function(img) {
+        return new Promise(function(resolve, reject) {
+          img.onload = function() { resolve(img); };
+          img.onerror = function(e) { reject(Error('Image failed to load')); };
+        });
+      }));
+    })
+    .then(function() {
+      //window.print();
+    })
+    .catch(function(reason) {
+      alert(reason.message);
+    });
+});
+</script>
+
+
+<script id="RouteResultsTemplate" type="text/x-handlebars-template">
+  <h1 id=caption>
+    {{From.Name}} <small>({{From.Sector}} {{From.Hex}})</small>
+    to
+    {{To.Name}} <small>({{To.Sector}} {{To.Hex}})</small>
+  </h1>
+  <h2 id=summary>Jump-{{Jump}}, {{Distance}} parsecs, {{Jumps}} jumps</h2>
+
+  {{#Route}}
+  <div class="item">
+    {{#Distance}}
+    <div class="item-distance">{{.}}</div>
+    {{/Distance}}
+    <div class="item-main">{{Name}}</div>
+    <div class="item-location">
+      <span class="item-sectorhex">{{Sector}} {{Hex}}</span>
+      <span class="item-uwp">
+        Class {{Starport}}
+      </span>
+      <span class="item-pbg">{{#if GasGiant}}Gas Giant{{/if}}</span>
+      <span class="item-zone zone-{{Zone}}">
+        {{#if AmberZone}}Amber Zone{{/if}}
+        {{#if RedZone}}Red Zone{{/if}}
+      </span>
+      <span class="item-alleg">{{AllegianceName}}</span>
+    </div>
+  </div>
+  {{/Route}}
+</script>
+<style>
+@import url(https://fonts.googleapis.com/css?family=Marcellus);
+
+@media only screen and (min-width: 8in) {
+  html { text-align: center; background-color: gray; width: 100%; }
+  body { width: 8in; margin: 0.25in auto; box-shadow: 0 0 30px 5px #202020;}
+}
+@media only print {
+  @page { size: portrait; margin: 0.25in;  }
+  html, body { margin: 0; padding: 0; -webkit-print-color-adjust: exact; }
+}
+
+body {
+  padding: 0.25in;
+  font-size: 12px;
+  font-family: Univers, Helvetica, Arial, sans-serif;
+  color: black;
+  background-color: white;
+}
+
+#routePath {
+  margin-bottom: 10px; text-align: left;
+}
+
+h1 {
+  font-size: 28px;
+  line-height: 35px;
+  padding-bottom: 6px;
+  font-family: Optima, Marcellus, "Times New Roman", serif;
+  border-bottom: 4px solid black;
+
+  padding-left: 45px;
+  background-image: url(https://s3.amazonaws.com/travellermap/images/ImperialStarburst.png);
+  background-size: 40px 40px;
+  background-repeat: no-repeat;
+}
+h1 small { font-size: 18px; }
+
+h2 {
+  font-size: 18px;
+  font-family: Univers, Helvetica, Arial, sans-serif;
+  margin-left: 30px;
+}
+
+#routePath .item {
+  margin-left: 30px;
+  position: relative;
+  padding-left: 30px;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAqCAMAAACNzCuYAAAAclBMVEUAAAAEgAQEgAQAgwAEgAQEgAQEgAQFgAUAgAAFgAUEgQQDgAMFgQUIgggEgAQFgQUFgAUEgAQEgQQEgAQAgAAEgAQFgAUEgQQEgAQFgAUEgAQFgAUEggQGgAYGgAYAfQAAeAAFhwUFiQUEgQQEgwQFiwVnxGEaAAAAIXRSTlMA/vsDg3r4YgjWfFM1H+XPmIh0RRDw3MC1oIxuPS4qGRGyLpaAAAAAqklEQVQoz1SPiQ7DIAxD3VDR+1q7+wyh//+LA7JumiWQ/YSIA8AAy1wU8yvalE3ee2bfTyVMzN3gfEZEfq26SMrKWcqCyLrDAuCyWsmSxLoReO6FUlLUoeGUlRAX2H2ASDjkctQBqBKYUPyDKx763Xa3wMn9xvIRwF28VWAlPjBohFMmlkaXaQdtVd22dTEyEZ+jTSpjO3J1MCoT28WS5gveYh0VAGyQCQAAdCATUQbDIxYAAAAASUVORK5CYII=);
+  background-repeat: no-repeat;
+  background-position: 3px 3px;
+  padding-top: 2px;
+  padding-bottom: 5px;
+  margin-bottom: -5px;
+}
+#routePath .item:last-of-type {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAY1BMVEUAAAAEgQQEgAQEgAQEgAQEgQQEgAQFgQUGfwYDfwMFgQUEgAQFgAUFgQUFgAUEgQQEgAQFgQUHfgcAfQAEgQQFgAUEgAQEgAQEgAQEgAQEgAQFgQUEfwQEgQQFiAUFiQUEhASbbATQAAAAHXRSTlMA+/34e/Q8Xicc4bSmnZZYRy8jE/DRycWriIFxQjzjP6sAAACGSURBVBjTZY/pEsMgCIQBNdYcTdL7Enj/p6w6pmMn369lYWCBwslbOwfYCA9kEXbTGQrdRSIiUpT+UMadGooJMtznmUFMrBiZANbUqnUSLsCbMf4gnuHYGih2b9g/gz10Ss1STElu3JwdctAkajB1JapXxgwxLfWZqzKz6H2FjeU5jq9PkV+jnBB2/Qv6fAAAAABJRU5ErkJggg==);
+}
+#routePath .item-distance { position: absolute; left: 0px; top: 22px; font-weight: bold; }
+#routePath .item-main { font-size: 16px; font-weight: bold }
+#routePath .item-location { margin-left: 10pt; }
+#routePath .item-title { margin-left: 10pt; }
+
+#routePath .item-location span {display: inline-block; }
+#routePath .item-sectorhex { width: 1.75in; }
+#routePath .item-uwp { width: 0.6in; }
+#routePath .item-pbg { width: 0.7in; }
+#routePath .item-zone { width: 0.9in; font-weight: bold; text-transform: uppercase; }
+#routePath .item-zone.zone-A { color: #FFCC00; }
+#routePath .item-zone.zone-R { color: red; }
+
+#footer { margin: 20px auto; width: 5.5in; text-align: justify; font-size: 12px; }
+</style>
+
+<div id=routePath></div>
+
+<div>
+</div>
+
+<div id=footer>
+  Navigation directions are another benefit of membership in the
+  <b>Travellers' Aid Society</b> &mdash;
+  <i>Faithfully Serving Travellers Since The Year Zero</i>.
+  TAS facilities are available at your local class A or B starport.
+
+  The <em class=product>Traveller</em> game in all forms is owned by Far
+  Future Enterprises. Copyright &copy; 1977 &ndash; 2016 Far Future
+  Enterprises.
+</div>
