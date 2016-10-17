@@ -158,6 +158,12 @@ namespace Maps.API.Results
             Hex = w.Hex;
             HexX = w.X;
             HexY = w.Y;
+
+            UWP = w.UWP;
+            PBG = w.PBG;            
+            Zone = w.Zone;
+            AllegianceName = w.AllegianceName;
+
         }
 
         public string Sector { get; set; }
@@ -170,5 +176,10 @@ namespace Maps.API.Results
         public string Hex { get; set; }
         public int HexX { get; set; }
         public int HexY { get; set; }
+
+        public string UWP { get; set; }
+        public string PBG { get; set; }
+        public string Zone { get; set; }
+        public string AllegianceName { get; set; }
     }
 }
