@@ -996,7 +996,7 @@ window.addEventListener('DOMContentLoaded', function() {
           Route: data,
           Distance: total,
           Jumps: data.length - 1,
-          PrintURL: Util.makeURL('./print/route.html', options)
+          PrintURL: Util.makeURL('./print/route', options)
         });
 
         Array.from(document.querySelectorAll('#routePath .item a')).forEach(function(a) {
