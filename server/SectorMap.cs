@@ -49,6 +49,8 @@ namespace Maps
         /// </summary>
         private class MilieuMap
         {
+            public MilieuMap(string name) { Name = name; }
+            public string Name { get; }
             public Dictionary<string, Sector> nameMap = new Dictionary<string, Sector>(StringComparer.InvariantCultureIgnoreCase);
             public Dictionary<Point, Sector> locationMap = new Dictionary<Point, Sector>();
 
@@ -68,6 +70,13 @@ namespace Maps
 
             public void Add(Sector sector)
             {
+                if (locationMap.ContainsKey(sector.Location))
+                {
+                    throw new ArgumentException(string.Format("[{0}]: Sector already added at ({1},{2}): {3} (was {4})",
+                        Name, sector.Location.X, sector.Location.Y, sector.Names[0].Text,                        
+                        locationMap[sector.Location].Names[0].Text));
+                }
+
                 locationMap.Add(sector.Location, sector);
 
                 foreach (var name in sector.Names)
@@ -101,7 +110,7 @@ namespace Maps
         private MilieuMap GetMilieuMap(string name)
         {
             if (!milieux.ContainsKey(name))
-                milieux.Add(name, new MilieuMap());
+                milieux.Add(name, new MilieuMap(name));
             return milieux[name];
         }
 
