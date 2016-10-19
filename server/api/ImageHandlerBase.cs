@@ -5,7 +5,6 @@ using PdfSharp.Pdf;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Globalization;
 using System.IO;
@@ -240,7 +239,7 @@ namespace Maps.API
                     using (graphics.Save())
                     {
                         // Render border in world space
-                        XMatrix m = ctx.ImageSpaceToWorldSpace;
+                        AbstractMatrix m = ctx.ImageSpaceToWorldSpace;
                         graphics.MultiplyTransform(m);
                         AbstractPen pen = new AbstractPen(ctx.Styles.imageBorderColor, 0.2f);
 

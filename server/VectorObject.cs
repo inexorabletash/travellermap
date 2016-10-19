@@ -1,4 +1,3 @@
-using PdfSharp.Drawing;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -147,7 +146,7 @@ namespace Maps.Rendering
                 var path = Path;
                 using (graphics.Save())
                 {
-                    XMatrix matrix = new XMatrix();
+                    var matrix = new AbstractMatrix();
                     matrix.ScalePrepend(ScaleX, ScaleY);
                     matrix.TranslatePrepend(-OriginX, -OriginY);
                     graphics.MultiplyTransform(matrix);
@@ -176,7 +175,7 @@ namespace Maps.Rendering
 
                     using (graphics.Save())
                     {
-                        XMatrix matrix = new XMatrix();
+                        var matrix = new AbstractMatrix();
                         matrix.TranslatePrepend(pos.X, pos.Y);
                         matrix.ScalePrepend(1.0f / Astrometrics.ParsecScaleX, 1.0f / Astrometrics.ParsecScaleY);
                         matrix.RotatePrepend(-labelStyle.Rotation); // Rotate it
@@ -201,7 +200,7 @@ namespace Maps.Rendering
 
                 using (graphics.Save())
                 {
-                    XMatrix matrix = new XMatrix();
+                    var matrix = new AbstractMatrix();
                     matrix.ScalePrepend(ScaleX, ScaleY);
                     matrix.TranslatePrepend(-OriginX, -OriginY);
                     graphics.MultiplyTransform(matrix);

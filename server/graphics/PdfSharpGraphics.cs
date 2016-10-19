@@ -61,7 +61,7 @@ namespace Maps.Rendering
         public void ScaleTransform(float scaleX, float scaleY) { g.ScaleTransform(scaleX, scaleY); }
         public void TranslateTransform(float dx, float dy) { g.TranslateTransform(dx, dy); }
         public void RotateTransform(float angle) { g.RotateTransform(angle); }
-        public void MultiplyTransform(XMatrix m) { g.MultiplyTransform(m); }
+        public void MultiplyTransform(AbstractMatrix m) { g.MultiplyTransform(m.XMatrix); }
 
         public void IntersectClip(AbstractPath path) { g.IntersectClip(new XGraphicsPath(path.Points, path.Types, XFillMode.Winding)); }
         public void IntersectClip(RectangleF rect) { g.IntersectClip(rect); }
@@ -215,6 +215,5 @@ namespace Maps.Rendering
             public XGraphicsState state;
             public State(AbstractGraphics g, XGraphicsState state) : base(g) { this.state = state; }
         }
-
     }
 }

@@ -1,6 +1,5 @@
 //#define SHOW_TIMING
 
-using PdfSharp.Drawing;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -25,7 +24,7 @@ namespace Maps.Rendering
 
             selector.UseMilieuFallbacks = true;
 
-            XMatrix m = new XMatrix();
+            AbstractMatrix m = new AbstractMatrix();
             m.TranslatePrepend((float)(-tileRect.Left * scale * Astrometrics.ParsecScaleX), (float)(-tileRect.Top * scale * Astrometrics.ParsecScaleY));
             m.ScalePrepend((float)scale * Astrometrics.ParsecScaleX, (float)scale * Astrometrics.ParsecScaleY);
             imageSpaceToWorldSpace = m;
@@ -55,16 +54,16 @@ namespace Maps.Rendering
 
         public Stylesheet Styles { get { return styles; } }
 
-        private readonly XMatrix imageSpaceToWorldSpace;
-        private readonly XMatrix worldSpaceToImageSpace;
-        public XMatrix ImageSpaceToWorldSpace { get { return imageSpaceToWorldSpace;  } }
+        private readonly AbstractMatrix imageSpaceToWorldSpace;
+        private readonly AbstractMatrix worldSpaceToImageSpace;
+        public AbstractMatrix ImageSpaceToWorldSpace { get { return imageSpaceToWorldSpace;  } }
 
         private static readonly RectangleF galacticBounds = new RectangleF(-14598.67f, -23084.26f, 29234.1133f, 25662.4746f); // TODO: Don't hardcode
         private static readonly Rectangle galaxyImageRect = new Rectangle(-18257, -26234, 36551, 32462); // Chosen to match T5 pp.416
 
         // This transforms the Linehan galactic structure to the Mikesh galactic structure
         // See https://travellermap.blogspot.com/2009/03/galaxy-scale-mismatch.html
-        private static readonly XMatrix xformLinehanToMikesh = new XMatrix(0.9181034f, 0.0f, 0.0f, 0.855192542f, 120.672432f, 86.34569f);
+        private static readonly AbstractMatrix xformLinehanToMikesh = new AbstractMatrix(0.9181034f, 0.0f, 0.0f, 0.855192542f, 120.672432f, 86.34569f);
 
         private static readonly Rectangle riftImageRect = new Rectangle(-1374, -827, 2769, 1754);
 
@@ -169,6 +168,10 @@ namespace Maps.Rendering
 
         public void Render(AbstractGraphics graphics)
         {
+#if SHOW_TIMING
+            DateTime dtStart = DateTime.Now;
+#endif
+
             this.graphics = graphics;
             solidBrush = new AbstractBrush();
             pen = new AbstractPen(Color.Empty);
@@ -515,7 +518,7 @@ namespace Maps.Rendering
                             using (graphics.Save())
                             {
                                 Font font = label.minor ? styles.megaNames.SmallFont : styles.megaNames.Font;
-                                XMatrix matrix = new XMatrix();
+                                var matrix = new AbstractMatrix();
                                 // TODO: Order here looks sketchy
                                 matrix.ScalePrepend(1.0f / Astrometrics.ParsecScaleX, 1.0f / Astrometrics.ParsecScaleY);
                                 matrix.TranslatePrepend(label.position.X, label.position.Y);
@@ -628,25 +631,31 @@ namespace Maps.Rendering
 
                 #region timing
 #if SHOW_TIMING
-                using( RenderUtil.SaveState( graphics ) )
+                using( graphics.Save() )
                 {
-                    Font font = new Font( FontFamily.GenericSansSerif, 12, FontStyle.Regular, new XPdfFontOptions(PdfSharp.Pdf.PdfFontEncoding.Unicode) );
+                    Font font = new Font( FontFamily.GenericSansSerif, 12, FontStyle.Regular);
                     graphics.MultiplyTransform( worldSpaceToImageSpace );
-                    double cursorX = 20.0, cursorY = 20.0;
+                    float cursorX = 20.0f, cursorY = 20.0f;
                     DateTime last = dtStart;
-                    foreach( Timer s in timers )
+                    foreach ( Timer s in timers )
                     {
                         TimeSpan ts = s.dt - last;
                         last = s.dt;
-                        for( int dx = -1; dx <= 1; ++dx )
+                        double rounded = Math.Round(ts.TotalMilliseconds);
+                        if (rounded == 0)
+                            continue;
+
+                        string str = string.Format("{0} {1}", rounded, s.label);
+                        for ( int dx = -1; dx <= 1; ++dx )
                         {
                             for( int dy = -1; dy <= 1; ++dy )
                             {
-
-                                graphics.DrawString( string.Format( "{0} {1}", Math.Round( ts.TotalMilliseconds ), s.label ), font, XBrushes.Black, cursorX + dx, cursorY + dy );
+                                solidBrush.Color = Color.Black;
+                                graphics.DrawString(str, font, solidBrush, cursorX + dx, cursorY + dy, StringAlignment.TopLeft);
                             }
                         }
-                        graphics.DrawString( string.Format("{0} {1}", Math.Round(ts.TotalMilliseconds), s.label), font, XBrushes.Yellow, cursorX, cursorY );
+                        solidBrush.Color = Color.Yellow;
+                        graphics.DrawString(str, font, solidBrush, cursorX, cursorY, StringAlignment.TopLeft);
                         cursorY += 14;
                     }
                 }
@@ -694,7 +703,7 @@ namespace Maps.Rendering
             PointF center = Astrometrics.HexToCenter(coordinates);
             using (graphics.Save())
             {
-                XMatrix matrix = new XMatrix();
+                var matrix = new AbstractMatrix();
                 matrix.TranslatePrepend(center.X, center.Y);
                 matrix.ScalePrepend(1 / Astrometrics.ParsecScaleX, 1 / Astrometrics.ParsecScaleY);
                 graphics.MultiplyTransform(matrix);
@@ -755,7 +764,7 @@ namespace Maps.Rendering
                 {
                     using (graphics.Save())
                     {
-                        XMatrix matrix = new XMatrix();
+                        var matrix = new AbstractMatrix();
                         // TODO: Order here looks sketchy
                         matrix.ScalePrepend(1.0f / Astrometrics.ParsecScaleX, 1.0f / Astrometrics.ParsecScaleY);
                         matrix.TranslatePrepend(label.position.X, label.position.Y);
@@ -819,7 +828,7 @@ namespace Maps.Rendering
                 solidBrush.Color = styles.hexNumber.textColor;
                 for (int px = hx - parsecSlop; px < hx + hw + parsecSlop; px++)
                 {
-                    double yOffset = ((px % 2) != 0) ? 0.0 : 0.5;
+                    float yOffset = ((px % 2) != 0) ? 0.0f : 0.5f;
                     for (int py = hy - parsecSlop; py < hy + hh + parsecSlop; py++)
                     {
                         Location loc = Astrometrics.CoordinatesToLocation(px + 1, py + 1);
@@ -832,7 +841,7 @@ namespace Maps.Rendering
                         }
                         using (graphics.Save())
                         {
-                            XMatrix matrix = new XMatrix();
+                            var matrix = new AbstractMatrix();
                             matrix.TranslatePrepend(px + 0.5f, py + yOffset);
                             matrix.ScalePrepend(styles.hexContentScale / Astrometrics.ParsecScaleX, styles.hexContentScale / Astrometrics.ParsecScaleY);
                             graphics.MultiplyTransform(matrix);
@@ -935,7 +944,7 @@ namespace Maps.Rendering
                 // Center on the parsec
                 PointF center = Astrometrics.HexToCenter(world.Coordinates);
 
-                XMatrix matrix = new XMatrix();
+                var matrix = new AbstractMatrix();
                 matrix.TranslatePrepend(center.X, center.Y);
                 matrix.ScalePrepend(styles.hexContentScale / Astrometrics.ParsecScaleX, styles.hexContentScale / Astrometrics.ParsecScaleY);
                 graphics.MultiplyTransform(matrix);
@@ -1378,7 +1387,7 @@ namespace Maps.Rendering
                                     name = name.ToUpper();
 
                                 decorationRadius += 0.1f;
-                                XMatrix imageMatrix = new XMatrix();
+                                var imageMatrix = new AbstractMatrix();
                                 imageMatrix.TranslatePrepend(decorationRadius, 0.0f);
                                 imageMatrix.ScalePrepend(styles.worlds.textStyle.Scale.Width, styles.worlds.textStyle.Scale.Height);
                                 imageMatrix.TranslatePrepend(graphics.MeasureString(name, styles.worlds.Font).Width / 2, 0.0f); // Left align
@@ -1401,7 +1410,7 @@ namespace Maps.Rendering
                 graphics.SmoothingMode = SmoothingMode.AntiAlias;
                 PointF center = Astrometrics.HexToCenter(world.Coordinates);
 
-                XMatrix matrix = new XMatrix();
+                var matrix = new AbstractMatrix();
                 matrix.TranslatePrepend(center.X, center.Y);
                 matrix.ScalePrepend(styles.hexContentScale / Astrometrics.ParsecScaleX, styles.hexContentScale / Astrometrics.ParsecScaleY);
                 graphics.MultiplyTransform(matrix);

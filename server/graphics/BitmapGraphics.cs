@@ -1,5 +1,4 @@
-﻿using PdfSharp.Drawing;
-using System;
+﻿using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
@@ -50,7 +49,7 @@ namespace Maps.Rendering
         public void ScaleTransform(float scaleX, float scaleY) { g.ScaleTransform(scaleX, scaleY); }
         public void TranslateTransform(float dx, float dy) { g.TranslateTransform(dx, dy); }
         public void RotateTransform(float angle) { g.RotateTransform(angle); }
-        public void MultiplyTransform(XMatrix m) { g.MultiplyTransform(m.ToGdiMatrix()); }
+        public void MultiplyTransform(AbstractMatrix m) { g.MultiplyTransform(m.Matrix); }
 
         public void IntersectClip(AbstractPath path) { g.IntersectClip(new Region(new GraphicsPath(path.Points, path.Types, FillMode.Winding))); }
         public void IntersectClip(RectangleF rect) { g.IntersectClip(rect); }
@@ -186,6 +185,5 @@ namespace Maps.Rendering
             public GraphicsState state;
             public State(AbstractGraphics g, GraphicsState state) : base(g) { this.state = state; }
         }
-
     }
 }

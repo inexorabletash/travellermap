@@ -1,5 +1,4 @@
-﻿using PdfSharp.Drawing;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -539,7 +538,7 @@ namespace Maps.Rendering
             var e = Open(new Element(ElementNames.G));
             e.Set("transform", string.Format("rotate({0:G5})", angle));
         }
-        public void MultiplyTransform(XMatrix m)
+        public void MultiplyTransform(AbstractMatrix m)
         {
             var e = Open(new Element(ElementNames.G));
             e.Set("transform", string.Format("matrix({0:G5},{1:G5},{2:G5},{3:G5},{4:G5},{5:G5})", 

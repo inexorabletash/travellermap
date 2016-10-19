@@ -15,7 +15,7 @@ namespace Maps.Rendering
         void ScaleTransform(float scaleX, float scaleY);
         void TranslateTransform(float dx, float dy);
         void RotateTransform(float angle);
-        void MultiplyTransform(XMatrix m);
+        void MultiplyTransform(AbstractMatrix m);
 
         void IntersectClip(AbstractPath path);
         void IntersectClip(RectangleF rect);
@@ -75,6 +75,31 @@ namespace Maps.Rendering
 
         #endregion
     }
+
+
+    // This is a concrete class (despite the name) since we want instances without a factory
+    internal struct AbstractMatrix
+    {
+        public XMatrix matrix;
+
+        public AbstractMatrix(float m11, float m12, float m21, float m22, float dx, float dy) { matrix = new XMatrix(m11, m12, m21, m22, dx, dy); }
+
+        public float M11 { get { return (float)matrix.M11; } }
+        public float M12 { get { return (float)matrix.M12; } }
+        public float M21 { get { return (float)matrix.M21; } }
+        public float M22 { get { return (float)matrix.M22; } }
+        public float OffsetX { get { return (float)matrix.OffsetX; } }
+        public float OffsetY { get { return (float)matrix.OffsetY; } }
+
+        public void Invert() { matrix.Invert(); }
+        public void RotatePrepend(float angle) { matrix.RotatePrepend(angle); }
+        public void ScalePrepend(float sx, float sy) { matrix.ScalePrepend(sx, sy); }
+        public void TranslatePrepend(float dx, float dy) { matrix.TranslatePrepend(dx, dy); }
+
+        public XMatrix XMatrix { get { return matrix; } }
+        public Matrix Matrix { get { return matrix.ToGdiMatrix(); } }
+    }
+
 
     // This is a concrete class (despite the name) since we want static instances held by the server which
     // span different concrete instances.
@@ -175,6 +200,4 @@ namespace Maps.Rendering
         DashDotDot,
         Custom,
     }
-
-    // TODO: Abstract out XMatrix
 }
