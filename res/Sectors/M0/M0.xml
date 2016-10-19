@@ -74,4 +74,28 @@
     <DataFile Source="Marc Miller's Traveller: First Survey">M0_Mass.sec</DataFile>
     <MetadataFile>M0_Mass.xml</MetadataFile>
   </Sector>
+
+  <Sector Abbreviation="Delp" Tags="Preserve" Selected="true" Milieu="M0">
+    <Y>1</Y>
+    <X>1</X>
+    <Name>Delphi</Name>
+    <Name Lang="vi">Manadish Khurem</Name>
+    <DataFile Source="Marc Miller's Traveller: First Survey">M0_Delp.sec</DataFile>
+    <MetadataFile>M0_Delp.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Forn" Tags="Preserve" Selected="true" Milieu="M0">
+    <Y>0</Y>
+    <X>1</X>
+    <Name>Fornast</Name>
+    <Name Lang="vi">Rishurir</Name>
+    <DataFile Source="Marc Miller's Traveller: First Survey">M0_Forn.sec</DataFile>
+    <MetadataFile>M0_Forn.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Zaru" Tags="Preserve" Selected="true" Milieu="M0">
+    <Y>1</Y>
+    <X>-1</X>
+    <Name>Zarushagar</Name>
+    <DataFile Source="Marc Miller's Traveller: First Survey">M0_Zaru.sec</DataFile>
+    <MetadataFile>M0_Zaru.xml</MetadataFile>
+  </Sector>
 </Sectors>
