@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Sector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>Magyar</Name>
+  <Name Lang="vi">Magaar 990</Name>
+  <Credits>
+    <![CDATA[
+             <b>Magyar</b> sector was designed by Marc W. Miller and
+             appears in <cite>Atlas of the Imperium</cite> (GDW,
+             1984).
+
+             Adapted for M990 by Randy Dorman.
+    ]]>
+  </Credits>
+  <Subsectors>
+    <Subsector Index="A">Clan</Subsector>
+    <Subsector Index="B">Eery</Subsector>
+    <Subsector Index="C">Clown</Subsector>
+    <Subsector Index="D">Anise</Subsector>
+    <Subsector Index="E">Nemo</Subsector>
+    <Subsector Index="F">New Town</Subsector>
+    <Subsector Index="G">Voyager</Subsector>
+    <Subsector Index="H">Kline</Subsector>
+    <Subsector Index="I">Iouo</Subsector>
+    <Subsector Index="J">Valhalla</Subsector>
+    <Subsector Index="K">Swan</Subsector>
+    <Subsector Index="L">New Mars</Subsector>
+    <Subsector Index="M">Last Chance</Subsector>
+    <Subsector Index="N">Black Jack</Subsector>
+    <Subsector Index="O">Olympus</Subsector>
+    <Subsector Index="P">Cluster</Subsector>
+  </Subsectors>
+  <Allegiances Milieu="M990">
+    <Allegiance Code="SoCf">Solomani Confederation</Allegiance>
+    <Allegiance Code="SoWu">Solomani Confederation, Wuan Technology Association</Allegiance>
+    <Allegiance Code="SoNS">Solomani Confederation, New Slavic Solidarity</Allegiance>
+    <Allegiance Code="SoRD">Solomani Confederation, Reformed Dootchen Estates</Allegiance>
+    <Allegiance Code="Ac">Solomani Confederation, Acaran Allied Worlds</Allegiance>
+    <Allegiance Code="TK">Solomani Confederation, Tolson Interstellar Kingdom</Allegiance>
+  </Allegiances>
+  <Borders>
+    <Border WrapLabel="true" Allegiance="SoNS" LabelPosition="1210" Label="New Slavic Solidarity">1113 1212 1211 1210 1209 1310 1409 1408 1407 1307 1407 1408 1409 1410 1511 1512 1513 1413 1313 1213 1214 1115 1116 1115 1114 1113</Border>
+    <Border WrapLabel="true" Allegiance="SoRD" LabelPosition="1914" Label="Reformed Dootchen Estates">1713 1812 1811 1810 1809 1808 1909 1910 2010 2110 2210 2310 2409 2510 2511 2512 2412 2413 2414 2415 2416 2417 2518 2519 2419 2418 2318 2218 2119 2019 1919 1918 1817 1816 1815 1814 1714 1713</Border>
+    <Border WrapLabel="true" Allegiance="SoWu" LabelPosition="0406" Label="Wuan Technology Association">0203 0304 0404 0305 0205 0204 0203</Border>
+    <Border ShowLabel="false" WrapLabel="false" Allegiance="SoWu" LabelPosition="0701">0601 0701 0601</Border>
+    <Border ShowLabel="false" WrapLabel="false" Allegiance="SoWu" LabelPosition="0211">0210 0211 0210</Border>
+    <Border ShowLabel="false" WrapLabel="false" Allegiance="SoWu" LabelPosition="0803">0804</Border>
+    <Border WrapLabel="true" Allegiance="TK" Color="Blue" Label="Tolson Interstellar Kingdom" LabelPosition="2305">2004 2105 2204 2304 2403 2404 2405 2406 2307 2207 2206 2106 2105 2004</Border>
+    <Border WrapLabel="true" Allegiance="Ac" Color="Blue" LabelPosition="1829" Label="Acaran Allied Worlds">1627 1727 1826 1825 1926 2026 2126 2127 2128 2027 1928 1828 1728 1627</Border>
+  </Borders>
+<Routes>
+    <Route Start="0203" End="0205"/>
+    <Route Start="0203" End="0605"/>
+    <Route Start="0605" End="0903"/>
+    <Route Start="0903" End="1302"/>
+    <Route Start="1302" End="1403"/>
+    <Route Start="1403" End="1605"/>
+    <Route Start="1605" End="1905"/>
+    <Route Start="1905" End="2103"/>
+    <Route Start="2103" End="2503"/>
+    <Route Start="2503" End="2706"/>
+    <Route Start="2503" End="2904"/>
+    <Route Start="1913" End="1512"/>
+    <Route Start="0120" End="0216"/>
+    <Route Start="0216" End="0113"/>
+    <Route Start="0216" End="0413"/>
+    <Route Start="0413" End="0409"/>
+    <Route Start="0409" End="0708"/>
+    <Route Start="0708" End="0605"/>
+    <Route Start="0413" End="0814"/>
+    <Route Start="0814" End="1016"/>
+    <Route Start="1016" End="1218"/>
+    <Route Start="1218" End="1521"/>
+    <Route Start="0120" End="0223"/>
+    <Route Start="0223" End="0624"/>
+    <Route Start="2616" End="2218"/>
+    <Route Start="2218" End="1917"/>
+    <Route Start="1917" End="1913"/>
+    <Route Start="2631" End="2628"/>
+    <Route Start="2229" End="2631"/>
+    <Route Start="2229" End="2026"/>
+    <Route Start="2026" End="1824"/>
+    <Route Start="2026" End="1627"/>
+    <Route Start="1824" End="1423"/>
+    <Route Start="1423" End="1022"/>
+    <Route Start="1022" End="0624"/>
+    <Route Start="1423" End="1521"/>
+    <Route Start="0223" End="0227"/>
+    <Route Start="0227" End="0131"/>
+    <Route Start="0131" End="0233"/>
+    <Route Start="0233" End="0337"/>
+    <Route Start="2923" End="2927"/>
+    <Route Start="2927" End="2628"/>
+    <Route Start="2927" End="3128"/>
+    <Route Start="3128" End="3129"/>
+    <Route Start="3019" End="2923"/>
+    <Route Start="2811" End="2808"/>
+    <Route Start="2808" End="2706"/>
+    <Route Start="1736" End="1438"/>
+    <Route Start="1438" End="1236"/>
+    <Route Start="1736" End="1833"/>
+    <Route Start="1833" End="2234"/>
+    <Route Start="0934" End="1236"/>
+    <Route Start="0934" End="0636"/>
+    <Route Start="0636" End="0337"/>
+    <Route Start="0337" End="0340"/>
+    <Route Start="1438" End="1240"/>
+    <Route Start="1030" End="0934"/>
+    <Route Start="0827" End="1030"/>
+    <Route Start="0827" End="0624"/>
+    <Route Start="1030" End="1329"/>
+    <Route Start="1329" End="1627"/>
+    <Route Start="1833" End="1830"/>
+    <Route Start="1830" End="2229"/>
+    <Route Start="1824" End="2122"/>
+    <Route Start="2122" End="2218"/>
+    <Route Start="1917" End="1720"/>
+    <Route Start="1720" End="1521"/>
+    <Route Start="0701" End="0903"/>
+    <Route Start="1208" End="1407"/>
+    <Route Start="1208" End="0809"/>
+    <Route Start="1407" End="1605"/>
+    <Route Start="0708" End="0809"/>
+    <Route Start="0712" End="0809"/>
+    <Route Start="0712" End="0814"/>
+    <Route Start="1016" End="1314"/>
+    <Route Start="1314" End="1512"/>
+    <Route Start="3213" End="2811"/>
+    <Route Start="2811" End="2512"/>
+    <Route Start="2512" End="2213"/>
+    <Route Start="2817" End="3019"/>
+    <Route Start="3101" End="2904"/>
+    <Route Start="1701" End="2103"/>
+    <Route Start="1701" End="1302"/>
+    <Route Start="2904" End="3206"/>
+    <Route Start="2631" End="2933"/>
+    <Route Start="2933" End="3135"/>
+    <Route Start="3135" End="3237"/>
+    <Route Start="3237" End="3239"/>
+    <Route Start="3135" End="2736"/>
+    <Route Start="2338" End="2736"/>
+    <Route Start="2338" End="2234"/>
+    <Route Start="2122" End="2423"/>
+    <Route Start="2423" End="2725"/>
+    <Route Start="2725" End="2923"/>
+    <Route Start="2915" End="2616"/>
+    <Route Start="2817" End="2915"/>
+    <Route Start="2915" End="3213"/>
+    <Route Start="2213" End="1913"/>
+    <Route Start="1407" End="1807"/>
+    <Route Start="1807" End="2106"/>
+    <Route Start="2106" End="2507"/>
+    <Route Start="2507" End="2706"/>
+    <Route Start="2206" End="1905"/>
+  </Routes>
+</Sector>
