@@ -90,6 +90,9 @@ namespace Maps
             { "*.X", "W" },   // Zhodani Relay Station
             { "*.Y", "D" },   // Zhodani Depot
             { "*.Z", "KM" },  // Zhodani Naval/Military Base
+            { "Sc.H", "H" },  // Hiver Supply Base 
+            { "*.I", "I" },  // Interface 
+            { "*.T", "T" },  // Terminus 
         };
 
         public static string DecodeLegacyBases(string allegiance, string code)
@@ -127,8 +130,12 @@ namespace Maps
             { "Zh.W", "X" },  // Zhodani Relay Station
             { "*.W", "W" },   // Imperial Scout Way Station
             { "Zh.KM", "Z" }, // Zhodani Naval/Military Base
+            // TNE
+            { "Sc.H", "H" },  // Hiver Supply Base 
+            { "*.I", "I" },  // Interface 
+            { "*.T", "T" },  // Terminus 
         };
-        
+
         public static string EncodeLegacyBases(string allegiance, string bases)
         {
             allegiance = AllegianceCodeToBaseAllegianceCode(allegiance);
@@ -447,7 +454,7 @@ namespace Maps
         #endregion Allegiance
 
         #region Sophonts
-        private static readonly IReadOnlyDictionary<string, string> s_sophontCodes = new Dictionary<string,string> {
+        private static readonly IReadOnlyDictionary<string, string> s_sophontCodes = new Dictionary<string, string> {
             // Sophont Table Begin
             { "Adda", "Addaxur" },
             { "Akee", "Akeed" },

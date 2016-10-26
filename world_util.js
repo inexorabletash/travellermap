@@ -433,21 +433,24 @@
   ];
 
   var BASE_TABLE = {
-    C: 'Corsair Base',
-    D: 'Naval Depot',
-    E: 'Embassy',
-    K: 'Naval Base',
-    L: 'Naval Base', // Obsolete
-    M: 'Military Base',
-    N: 'Naval Base',
-    O: 'Naval Outpost', // Obsolete
-    R: 'Clan Base',
-    S: 'Scout Base',
-    T: 'Tlauku Base',
-    V: 'Exploration Base',
-    W: 'Way Station',
-    X: 'Relay Station', // Obsolete
-    Z: 'Naval/Military Base' // Obsolete
+      C: 'Corsair Base',
+      D: 'Naval Depot',
+      E: 'Embassy',
+      H: 'Hiver Supply Base', // For TNE
+      I: 'Interface', // For TNE
+      K: 'Naval Base',
+      L: 'Naval Base', // Obsolete
+      M: 'Military Base',
+      N: 'Naval Base',
+      O: 'Naval Outpost', // Obsolete
+      R: 'Clan Base',
+      S: 'Scout Base',
+      //    T: 'Terminus',   // For TNE - name Collision 
+      T: 'Tlauku Base',
+      V: 'Exploration Base',
+      W: 'Way Station',
+      X: 'Relay Station', // Obsolete
+      Z: 'Naval/Military Base' // Obsolete
   };
 
   var SOPHONT_TABLE = {

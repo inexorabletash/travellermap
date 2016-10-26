@@ -73,7 +73,7 @@ namespace Maps
                 if (locationMap.ContainsKey(sector.Location))
                 {
                     throw new ArgumentException(string.Format("[{0}]: Sector already added at ({1},{2}): {3} (was {4})",
-                        Name, sector.Location.X, sector.Location.Y, sector.Names[0].Text,                        
+                        Name, sector.Location.X, sector.Location.Y, sector.Names[0].Text,
                         locationMap[sector.Location].Names[0].Text));
                 }
 
@@ -162,6 +162,7 @@ namespace Maps
                         new SectorMetafileEntry(@"~/res/Sectors/IW/iw.xml", new List<string> { "OTU" } ),
                         new SectorMetafileEntry(@"~/res/Sectors/M0/M0.xml", new List<string> { "OTU" } ),
                         new SectorMetafileEntry(@"~/res/Sectors/M990/M990.xml", new List<string> { "OTU" } ),
+                        new SectorMetafileEntry(@"~/res/Sectors/M1201/M1201.xml", new List<string> { "OTU" } ),
                         new SectorMetafileEntry(@"~/res/Sectors/M1248/M1248.xml", new List<string> { "OTU" } ),
                         new SectorMetafileEntry(@"~/res/Sectors/M1900/M1900.xml", new List<string> { "OTU" } ),
 
@@ -211,8 +212,8 @@ namespace Maps
                 this.map = map;
                 this.milieu = milieu;
             }
-            public Sector FromLocation(int x, int y, bool useMilieuFallbacks=false) { return map.FromLocation(new Point(x, y), milieu, useMilieuFallbacks); }
-            public Sector FromLocation(Point pt, bool useMilieuFallbacks=false) { return map.FromLocation(pt, milieu, useMilieuFallbacks); }
+            public Sector FromLocation(int x, int y, bool useMilieuFallbacks = false) { return map.FromLocation(new Point(x, y), milieu, useMilieuFallbacks); }
+            public Sector FromLocation(Point pt, bool useMilieuFallbacks = false) { return map.FromLocation(pt, milieu, useMilieuFallbacks); }
             public Sector FromName(string name) { return map.FromName(name, milieu); }
         }
 
@@ -273,7 +274,7 @@ namespace Maps
         /// <param name="y">Sector y coordinate</param>
         /// <param name="milieu">Milieu name, null for default/fallbacks</param>
         /// <returns>Sector if found, or null</returns>
-        private Sector FromLocation(Point pt, string milieu, bool useMilieuFallbacks=false)
+        private Sector FromLocation(Point pt, string milieu, bool useMilieuFallbacks = false)
         {
             if (sectors == null)
                 throw new MapNotInitializedException();

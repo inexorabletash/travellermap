@@ -101,7 +101,7 @@ namespace Maps.Serialization
             }
         }
 
-        private static readonly Regex uwpRegex = new Regex(@"[ABCDEX?][0-9A-Z?]{6}-[0-9A-Z?]", 
+        private static readonly Regex uwpRegex = new Regex(@"[ABCDEX?][0-9A-Z?]{6}-[0-9A-Z?]",
             RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.Singleline);
 
         private static readonly Regex worldRegex = new Regex(@"^" +
@@ -201,8 +201,9 @@ namespace Maps.Serialization
         private static readonly Regex PBG_REGEX = new Regex("^[0-9X?][0-9A-FX?]{2}$");
 
         // TODO: 'O' for K'kree Outpost is nonstandard, temporarily allowed for round-tripping data.
-        private static readonly Regex BASES_REGEX = new Regex(@"^C?D?E?K?M?N?O?R?S?T?V?W?X?$");
-        private static readonly Regex ZONE_REGEX = new Regex(@"^(|A|R|F|U)$");
+        // TODO: 'H' (for Hiver Supply Base) and 'I' (Interface) are nonstandard, for TNE data.
+        private static readonly Regex BASES_REGEX = new Regex(@"^C?D?E?H?I?K?M?N?O?R?S?T?V?W?X?$");
+        private static readonly Regex ZONE_REGEX = new Regex(@"^(|A|R|F|U|B)$");
         private static readonly Regex NOBILITY_REGEX = new Regex(@"^[BcCDeEfFGH]*$");
 
         private const string STAR = @"(D|BD|BH|[OBAFGKM][0-9]\x20(?:Ia|Ib|II|III|IV|V|VI))";
@@ -324,7 +325,7 @@ namespace Maps.Serialization
                 world.Name = checker.Check("Name");
                 world.UWP = checker.Check("UWP", UWP_REGEX);
                 world.Remarks = checker.Check(new string[] { "Remarks", "Trade Codes", "Comments" });
-                world.Importance = checker.Check(new string[] { "{Ix}", "{ Ix }", "Ix" }, options:CheckOptions.Optional);
+                world.Importance = checker.Check(new string[] { "{Ix}", "{ Ix }", "Ix" }, options: CheckOptions.Optional);
                 world.Economic = checker.Check(new string[] { "(Ex)", "( Ex )", "Ex" }, options: CheckOptions.Optional);
                 world.Cultural = checker.Check(new string[] { "[Cx]", "[ Cx ]", "Cx" }, options: CheckOptions.Optional);
                 world.Nobility = checker.Check(new string[] { "N", "Nobility" }, NOBILITY_REGEX, CheckOptions.EmptyIfDash | CheckOptions.Optional);
@@ -336,11 +337,11 @@ namespace Maps.Serialization
                 world.Stellar = checker.Check(new string[] { "Stellar", "Stars", "Stellar Data" }, STARS_REGEX, CheckOptions.Warning);
 
                 byte w;
-                if (byte.TryParse(checker.Check(new string[] { "W", "Worlds" }, options:CheckOptions.Optional), NumberStyles.Integer, CultureInfo.InvariantCulture, out w))
+                if (byte.TryParse(checker.Check(new string[] { "W", "Worlds" }, options: CheckOptions.Optional), NumberStyles.Integer, CultureInfo.InvariantCulture, out w))
                     world.Worlds = w;
 
                 int ru;
-                if (int.TryParse(checker.Check("RU", options:CheckOptions.Optional), NumberStyles.Integer | NumberStyles.AllowThousands, CultureInfo.InvariantCulture, out ru))
+                if (int.TryParse(checker.Check("RU", options: CheckOptions.Optional), NumberStyles.Integer | NumberStyles.AllowThousands, CultureInfo.InvariantCulture, out ru))
                     world.ResourceUnits = ru;
 
                 // Cleanup known placeholders

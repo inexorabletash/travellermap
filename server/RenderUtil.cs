@@ -139,7 +139,7 @@ namespace Maps.Rendering
 
             Util.ForEachZip(lines, sizes, (line, sz) =>
             {
-                g.DrawString(line, font, brush, x + widthFactor * sz.Width, y, StringAlignment.Baseline);                
+                g.DrawString(line, font, brush, x + widthFactor * sz.Width, y, StringAlignment.Baseline);
                 y += lineSpacing;
             });
         }
@@ -224,6 +224,10 @@ namespace Maps.Rendering
         public static readonly Glyph Reserve = new Glyph("R");
         public static readonly Glyph ExileCamp = new Glyph("X");
 
+        // TNE 
+        public static readonly Glyph HiverSupplyBase = new Glyph("\x2297");
+        public static readonly Glyph Terminus = new Glyph("\x2297");
+        public static readonly Glyph Interface = new Glyph("\x2297");
 
         public static Glyph FromResearchCode(string rs)
         {
@@ -264,6 +268,10 @@ namespace Maps.Rendering
             { "*.W", new Glyph(Glyph.Triangle, highlight:true, bias:GlyphBias.Bottom) }, // Imperial Scout Waystation
             { "Zh.Z", Glyph.Diamond }, // Zhodani Base (Special case for "Zh.KM")
             { "*.*", Glyph.Circle }, // Independent Base
+            // For TNE
+            { "Sc.H", Glyph.HiverSupplyBase }, // Hiver Supply Base  
+            { "*.I", Glyph.Interface }, // Interface 
+            { "*.T", Glyph.Terminus }, // Terminus 
         };
 
         public static Glyph FromBaseCode(string allegiance, char code)
@@ -600,7 +608,7 @@ namespace Maps.Rendering
     #region Stellar Rendering
     internal struct StarProps
     {
-        public StarProps(Color color, Color border, float radius) { this.color = color; this.borderColor = border;  this.radius = radius; }
+        public StarProps(Color color, Color border, float radius) { this.color = color; this.borderColor = border; this.radius = radius; }
         public Color color;
         public Color borderColor;
         public float radius;
