@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Sector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>Daibei</Name>
+  <Name Lang="vi">Lankhisidam</Name>
+  <Credits>
+    <![CDATA[
+             <b>Daibei</b> sector was designed by Marc W. Miller and
+             appears in <cite>Atlas of the Imperium</cite> (GDW,
+             1984).
+
+             It was refined by Nancy Parker, and portions appear in
+             <cite>The Travellers Digest</cite>
+
+             Adapted for M990 by Randy Dorman.
+    ]]>
+  </Credits>
+  <Subsectors>
+    <Subsector Index="A">Edge</Subsector>
+    <Subsector Index="B">Alun</Subsector>
+    <Subsector Index="C">Standish</Subsector>
+    <Subsector Index="D">Iingar</Subsector>
+    <Subsector Index="E">Woomera</Subsector>
+    <Subsector Index="F">Outback</Subsector>
+    <Subsector Index="G">Amdani</Subsector>
+    <Subsector Index="H">Conda</Subsector>
+    <Subsector Index="I">Zhemi</Subsector>
+    <Subsector Index="J">Mulaar</Subsector>
+    <Subsector Index="K">Dudin</Subsector>
+    <Subsector Index="L">Cruxway</Subsector>
+    <Subsector Index="M">Gaalorn</Subsector>
+    <Subsector Index="N">Hermes</Subsector>
+    <Subsector Index="O">Narya</Subsector>
+    <Subsector Index="P">Orvon</Subsector>
+  </Subsectors>
+  <Allegiances>
+    <Allegiance Code="ImDi">Third Imperium, Domain of Ilelish</Allegiance>
+    <Allegiance Code="SoCf">Solomani Confederation</Allegiance>
+    <Allegiance Code="SoWu">Solomani Confederation, Wuan Technology Association</Allegiance>
+    <Allegiance Code="NaHu">Non-Aligned, Human-dominated</Allegiance>
+    <Allegiance Code="OS">Solomani Confederation, Occupied Systems</Allegiance>
+  </Allegiances>
+  <Borders>
+    <Border WrapLabel="false" Allegiance="ImDi" LabelPosition="1210" Label="Third Imperium">0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0008 0009 0110 0209 0309 0408 0508 0507 0606 0706 0705 0804 0904 1003 1103 1102 1101 1201 1302 1402 1502 1602 1702 1801 1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3220 3121 3021 2922 2822 2723 2623 2624 2525 2425 2426 2326 2225 2126 2026 1927 1827 1728 1729 1629 1530 1430 1331 1231 1132 1032 1033 0933 0833 0734 0634 0535 0435 0335 0334 0233 0133 0032 0031</Border>
+    <Border WrapLabel="false" Allegiance="SoCf" LabelPosition="2238" Label="Solomani Confederation">0038 0138 0237 0236 0337 0436 0536 0636 0736 0836 0937 1037 1137 1236 1336 1436  1536 1535 1534 1533 1532 1431 1531 1630 1730 1829 1929 2028 2129 2228 2329 2428 2528 2627 2626 2727 2826 2926 3025 3024 3125 3224 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041 0040 0039 0038</Border>
+    <Border ShowLabel="false" WrapLabel="false" Allegiance="SoWu" LabelPosition="0139">0139</Border>
+    <Border Allegiance="OS" Color="Yellow" LabelPosition="1723" Label="Solomani Occupied Territories">0031 0131 0230 0330 0429 0529 0628 0627 0728 0827 0927 1026 1126 1226 1326 1425 1525 1624 1724 1824 1924 2023 2123 2222 2322 2422 2522 2621 2722 2821 2921 3020 3121 3220 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031</Border>
+    <Border Color="Green" Label="Solomani Autonomous Region">0140 0239 0238 0338 0337 0436 0536 0635 0634 0734 0833 0832 0932 1031 1131 1130 1229 1329 1428 1528 1527 1626 1726 1825 1925 2024 2124 2223 2323 2422 2522 2621 2722 2821 2921 3020 3120 3219 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041 0140</Border>
+  </Borders>
+  <Routes>
+    <Route Start="1508" End="1108"/>
+    <Route Start="1108" End="0709"/>
+    <Route Start="0709" End="0507"/>
+    <Route Start="1508" End="1708"/>
+    <Route Start="1708" End="2007"/>
+    <Route Start="2007" End="2004"/>
+    <Route Start="2004" End="2001"/>
+    <Route Start="2007" End="2408"/>
+    <Route Start="2408" End="2708"/>
+    <Route Start="2708" End="3010"/>
+    <Route Start="2718" End="2714"/>
+    <Route Start="2714" End="2912"/>
+    <Route Start="2912" End="3010"/>
+    <Route Start="2408" End="2311"/>
+    <Route Start="2311" End="2212"/>
+    <Route Start="2212" End="2014"/>
+    <Route Start="2926" End="2930"/>
+    <Route Start="2028" End="2429"/>
+    <Route Start="2429" End="2627"/>
+    <Route Start="2627" End="2930"/>
+    <Route Start="1934" End="2031"/>
+    <Route Start="2031" End="2028"/>
+    <Route Start="1934" End="1737"/>
+    <Route Start="2028" End="1730"/>
+    <Route Start="1730" End="1431"/>
+    <Route Start="1934" End="2136"/>
+    <Route Start="2136" End="2337"/>
+    <Route Start="2337" End="2239"/>
+    <Route Start="2337" End="2737"/>
+    <Route Start="2737" End="2935"/>
+    <Route Start="2737" End="2938"/>
+    <Route Start="2938" End="3140"/>
+    <Route Start="1737" End="1537"/>
+    <Route Start="1537" End="1137"/>
+    <Route Start="1537" End="1533"/>
+    <Route Start="1533" End="1431"/>
+    <Route Start="3132" End="2935"/>
+    <Route Start="3132" End="2930"/>
+    <Route Start="2623" End="2627"/>
+    <Route Start="2623" End="2922"/>
+    <Route Start="2922" End="3020"/>
+    <Route Start="1028" End="0627"/>
+    <Route Start="1026" End="1028"/>
+    <Route Start="1028" End="1230"/>
+    <Route Start="1230" End="1431"/>
+    <Route Start="1730" End="1729"/>
+    <Route Start="0326" End="0624"/>
+    <Route Start="0922" End="0624"/>
+    <Route Start="1322" End="0922"/>
+    <Route Start="1322" End="1520"/>
+    <Route Start="1520" End="1818"/>
+    <Route Start="1818" End="1916"/>
+    <Route Start="1916" End="2014"/>
+    <Route Start="2014" End="2415"/>
+    <Route Start="2415" End="2718"/>
+    <Route Start="3132" End="3129"/>
+    <Route Start="0139" End="0237"/>
+    <Route Start="0237" End="0536"/>
+    <Route Start="0536" End="0333"/>
+    <Route Start="0333" End="0731"/>
+    <Route Start="0731" End="1031"/>
+    <Route Start="1031" End="1230"/>
+    <Route Start="1033" End="1137"/>
+    <Route Start="1031" End="1033"/>
+    <Route Start="1114" End="0913"/>
+    <Route Start="0913" End="0810"/>
+    <Route Start="0810" End="0709"/>
+    <Route Start="0810" End="0410"/>
+    <Route Start="0410" End="0112"/>
+    <Route Start="0112" End="0114"/>
+    <Route Start="2718" End="2720"/>
+    <Route Start="1818" End="2119"/>
+    <Route Start="2119" End="2319"/>
+    <Route Start="1520" End="1317"/>
+    <Route Start="1317" End="1114"/>
+    <Route Start="3201" End="2904"/>
+    <Route Start="2904" End="2706"/>
+    <Route Start="2706" End="2708"/>
+    <Route Start="1137" End="1039"/>
+    <Route Start="0440" End="0237"/>
+  </Routes>
+</Sector>
