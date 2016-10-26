@@ -201,7 +201,8 @@ namespace Maps.Serialization
         private static readonly Regex PBG_REGEX = new Regex("^[0-9X?][0-9A-FX?]{2}$");
 
         // TODO: 'O' for K'kree Outpost is nonstandard, temporarily allowed for round-tripping data.
-        private static readonly Regex BASES_REGEX = new Regex(@"^C?D?E?I?K?M?N?O?R?S?T?V?W?X?H?I?$");
+        // TODO: 'H' (for Hiver Supply Base) and 'I' (Interface) are nonstandard, for TNE data.
+        private static readonly Regex BASES_REGEX = new Regex(@"^C?D?E?H?I?K?M?N?O?R?S?T?V?W?X?$");
         private static readonly Regex ZONE_REGEX = new Regex(@"^(|A|R|F|U|B)$");
         private static readonly Regex NOBILITY_REGEX = new Regex(@"^[BcCDeEfFGH]*$");
 
