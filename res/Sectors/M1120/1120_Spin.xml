@@ -3,12 +3,14 @@
   <Name>Spinward Marches</Name>
   <Name Lang="zh">Tloql</Name>
   <Credits>
+    <![CDATA[
+             <b>The Spinward Marches</b> were designed by Marc W.
+             Miller and appear in <cite>Traveller Supplement 3: The
+             Spinward Marches</cite> (GDW, 1979).
 
-             &lt;b&gt;The Spinward Marches&lt;/b&gt; were designed by Marc W.
-             Miller and appeared in &lt;cite&gt;Traveller Supplement 3: The
-             Spinward Marches&lt;/cite&gt; (GDW, 1979).
-
-    </Credits>
+             Adapted for M1120 by Michael Gonzalez.
+    ]]>
+  </Credits>
   <Product Author="Marc W Miller" Title="MegaTraveller Imperial Encyclopedia" Publisher="GDW" Ref="http://www.drivethrurpg.com/product/429/MT-MegaTraveller-Imperial-Encyclopedia.html" />
   <Subsectors>
     <Subsector Index="A">Cronor</Subsector>
@@ -28,20 +30,6 @@
     <Subsector Index="O">Glisten</Subsector>
     <Subsector Index="P">Trin's Veil</Subsector>
   </Subsectors>
-  <Allegiances>
-    <Allegiance Code="AsXX">Aslan Hierate, unknown</Allegiance>
-    <Allegiance Code="BoWo">Border Worlds</Allegiance>
-    <Allegiance Code="CsIm">Client state, Third Imperium</Allegiance>
-    <Allegiance Code="CsZh">Client state, Zhodani Consulate</Allegiance>
-    <Allegiance Code="DaCf">Darrian Confederation</Allegiance>
-    <Allegiance Code="FeAr">Federation of Arden</Allegiance>
-    <Allegiance Code="ImDd">Third Imperium, Domain of Deneb</Allegiance>
-    <Allegiance Code="NaHu">Non-Aligned, Human-dominated</Allegiance>
-    <Allegiance Code="NaVa">Non-Aligned, Vargr-dominated</Allegiance>
-    <Allegiance Code="NaXX">Non-Aligned, unclaimed</Allegiance>
-    <Allegiance Code="SwCf">Sword Worlds Confederation</Allegiance>
-    <Allegiance Code="ZhIN">Zhodani Consulate, Iadr Nsobl Province</Allegiance>
-  </Allegiances>
   <Stylesheet>
     border.DaCf { color: lightblue; }
     route.DaCf { color: lightgreen; }
@@ -63,7 +51,7 @@
     <Border Allegiance="ImDd" LabelPosition="1430" ShowLabel="false" Label="Third Imperium">1329 1429 1430 1330 1329</Border>
     <Border Allegiance="NaVa" LabelPosition="2704" Label="Vargr Raiders">2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3202 3103 3104 3004 3005 3006 3007 3008 3007 3006 2906 2806 2707 2708 2607 2606 2605 2604 2504 2403 2303 2202 2201 2200</Border>
     <Border Allegiance="SwCf" LabelPosition="1327" WrapLabel="true">0921 1021 1121 1221 1222 1223 1224 1325 1424 1524 1424 1425 1526 1527 1528 1628 1529 1528 1427 1327 1227 1128 1129 1130 1129 1128 1027 0927 0926 0925 0924 0923 0922 0921 </Border>
-    <Border Allegiance="ZhIn" LabelPosition="0205" WrapLabel="true" Color="Blue" Label="Zhodani Consulate">0000 0100 0200 0101 0102 0202 0303 0403 0504 0604 0705 0804 0904 1003 1103 1102 1201 1302 1401 1402 1303 1202 1103 1003 0904 0804 0705 0604 0505 0506 0507 0508 0608 0609 0610 0611 0712 0612 0613 0614 0514 0413 0412 0512 0511 0610 0609 0608 0508 0407 0307 0206 0106 0006 0005 0004 0003 0002 0001 0000 </Border>
+    <Border Allegiance="ZhIN" LabelPosition="0205" WrapLabel="true" Color="Blue" Label="Zhodani Consulate">0000 0100 0200 0101 0102 0202 0303 0403 0504 0604 0705 0804 0904 1003 1103 1102 1201 1302 1401 1402 1303 1202 1103 1003 0904 0804 0705 0604 0505 0506 0507 0508 0608 0609 0610 0611 0712 0612 0613 0614 0514 0413 0412 0512 0511 0610 0609 0608 0508 0407 0307 0206 0106 0006 0005 0004 0003 0002 0001 0000 </Border>
   </Borders>
   <Routes>
     <Route Start="1106" End="1006" />

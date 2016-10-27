@@ -414,6 +414,15 @@ namespace Maps
             { "Zuug", "Zu", "Zu", "Zuugabish Tripartite" },
             { "ZyCo", "Zc", null, "Zydarian Codominion" },
             // Allegiance Table End
+
+            // -----------------------
+            // Unofficial/Unreviewed
+            // -----------------------
+
+            // M1120
+            { "FdAr", "Fa", null, "Federation of Arden" },
+            { "BoWo", "Bw", null, "Border Worlds" },
+
         };
         public static IEnumerable<string> AllegianceCodes { get { return s_t5Allegiances.Keys; } }
 
