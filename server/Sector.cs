@@ -39,8 +39,7 @@ namespace Maps
         {
             get
             {
-                string milieu = DataFile?.Milieu ?? Milieu;
-                return (SectorMap.IsDefaultMilieu(milieu)) ? SectorMap.DEFAULT_MILIEU : milieu;
+                return DataFile?.Milieu ?? Milieu ?? SectorMap.DEFAULT_MILIEU;
             }
         }
 

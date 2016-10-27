@@ -96,11 +96,10 @@ namespace Maps
         }
 
         public const string DEFAULT_MILIEU = "M1105";
-        private static readonly IEnumerable<string> FALLBACK_MILIEUX = new List<string> { "1100", "1120", "1200" };
 
         public static bool IsDefaultMilieu(string m)
         {
-            return string.IsNullOrWhiteSpace(m) || m == DEFAULT_MILIEU || FALLBACK_MILIEUX.Contains(m);
+            return string.IsNullOrWhiteSpace(m) || m == DEFAULT_MILIEU;
         }
 
         /// <summary>
@@ -224,7 +223,7 @@ namespace Maps
         }
 
         /// <summary>
-        /// Helper to find MilieuMaps by name (considering fallbacks).
+        /// Helper to find MilieuMaps by name.
         /// </summary>
         /// <param name="m">Specific milieu. If specified, at most one milieu will be returned.
         /// If null, default/fallback milieu will be returned</param>
@@ -242,13 +241,7 @@ namespace Maps
             }
             else
             {
-                // Return default and fallback MilieuMaps (if they exist).
                 yield return milieux[DEFAULT_MILIEU];
-                foreach (string milieu in FALLBACK_MILIEUX)
-                {
-                    if (milieux.ContainsKey(milieu))
-                        yield return milieux[milieu];
-                }
             }
         }
 
@@ -273,7 +266,7 @@ namespace Maps
         /// </summary>
         /// <param name="x">Sector x coordinate</param>
         /// <param name="y">Sector y coordinate</param>
-        /// <param name="milieu">Milieu name, null for default/fallbacks</param>
+        /// <param name="milieu">Milieu name, null for default</param>
         /// <returns>Sector if found, or null</returns>
         private Sector FromLocation(Point pt, string milieu, bool useMilieuFallbacks = false)
         {
