@@ -95,7 +95,7 @@ namespace Maps
             }
         }
 
-        public const string DEFAULT_MILIEU = "1105";
+        public const string DEFAULT_MILIEU = "M1105";
         private static readonly IEnumerable<string> FALLBACK_MILIEUX = new List<string> { "1100", "1120", "1200" };
 
         public static bool IsDefaultMilieu(string m)
