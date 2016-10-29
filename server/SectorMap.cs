@@ -150,10 +150,10 @@ namespace Maps
                     List<SectorMetafileEntry> files = new List<SectorMetafileEntry>
                     {
                         // Meta
-                        new SectorMetafileEntry(@"~/res/legend.xml", new List<string> { "meta" } ),
+                        new SectorMetafileEntry(@"~/res/Sectors/Meta/legend.xml", new List<string> { "meta" } ),
 
                         // OTU - Default Milieu
-                        new SectorMetafileEntry(@"~/res/sectors.xml", new List<string> { "OTU" } ),
+                        new SectorMetafileEntry(@"~/res/Sectors/M1105/M1105.xml", new List<string> { "OTU" } ),
                         new SectorMetafileEntry(@"~/res/Sectors/Zhodani Core Route/ZhodaniCoreRoute.xml", new List<string> { "ZCR" } ),
                         new SectorMetafileEntry(@"~/res/Sectors/Orion OB1/orion.xml", new List<string> { "OrionOB1" } ),
 
