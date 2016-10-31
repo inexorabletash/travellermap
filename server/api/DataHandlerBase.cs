@@ -34,9 +34,6 @@ namespace Maps.API
             if (context == null)
                 throw new ArgumentNullException("context");
 
-            if (!ServiceConfiguration.CheckEnabled(ServiceName, context.Response))
-                return;
-
             // Configure caching
             if (context.Request.HttpMethod == "POST")
             {
