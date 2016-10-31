@@ -161,17 +161,21 @@ namespace Maps.Rendering
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!disposedValue)
+            if (disposedValue)
+                return;
+            if (disposing)
             {
-                if (disposing)
-                {
-                    g.Dispose();
-                    g = null;
-                }
-                brush = null;
-                pen = null;
-                disposedValue = true;
+                if (g != null)
+                    g.Dispose(); 
+                if (brush != null)
+                    brush.Dispose();
+                if (pen != null)
+                    pen.Dispose();
             }
+            g = null;
+            brush = null;
+            pen = null;
+            disposedValue = true;
         }
 
         void IDisposable.Dispose()

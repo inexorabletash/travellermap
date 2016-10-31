@@ -120,7 +120,7 @@ namespace Maps.Admin
             Write(response, name + ": " + value.ToString());
         }
 
-        private void Profile(HttpContext context)
+        private static void Profile(HttpContext context)
         {
             WriteStat(context.Response, "Cache.Count", context.Cache.Count);
             WriteStat(context.Response, "Cache.EffectivePercentagePhysicalMemoryLimit", context.Cache.EffectivePercentagePhysicalMemoryLimit);

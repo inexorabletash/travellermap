@@ -227,7 +227,7 @@ namespace Maps
                             avg.X,
                             avg.Y,
                             radius,
-                            entry.Key
+                            name
                         };
                         dt_labels.Rows.Add(row);
                     }

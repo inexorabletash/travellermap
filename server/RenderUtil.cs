@@ -102,7 +102,7 @@ namespace Maps.Rendering
             float fontUnitsToWorldUnits = font.Size / font.FontFamily.GetEmHeight(font.Style);
             float lineSpacing = font.FontFamily.GetLineSpacing(font.Style) * fontUnitsToWorldUnits;
             float ascent = font.FontFamily.GetCellAscent(font.Style) * fontUnitsToWorldUnits;
-            float descent = font.FontFamily.GetCellDescent(font.Style) * fontUnitsToWorldUnits;
+            //float descent = font.FontFamily.GetCellDescent(font.Style) * fontUnitsToWorldUnits;
 
             SizeF boundingSize = new SizeF(sizes.Max(s => s.Width), lineSpacing * sizes.Count());
 
@@ -651,7 +651,9 @@ namespace Maps.Rendering
             Match m = STAR_REGEX.Match(star);
             if (m.Success)
             {
-                string c = m.Groups[1].Value, f = m.Groups[2].Value, l = m.Groups[3].Value;
+                string c = m.Groups[1].Value;
+                //string f = m.Groups[2].Value;
+                string l = m.Groups[3].Value;
                 return new StarProps(COLOR[c], Color.Black, RAD[c] + LUM[l]);
             }
             else if (star == "BH")

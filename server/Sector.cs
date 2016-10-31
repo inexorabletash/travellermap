@@ -117,7 +117,7 @@ namespace Maps
                         this.Names[0].Text, metadataSource.DataFile.FileName, DataFile.FileName));
 
                 if (metadataSource.DataFile.Type != DataFile.Type)
-                    throw new Exception(string.Format("Mismatching DataFile.Type entries for {0}", 
+                    throw new Exception(string.Format("Mismatching DataFile.Type entries for {0}: {1} vs. {2}", 
                         this.Names[0].Text, metadataSource.DataFile.Type, DataFile.Type));
             }
 
@@ -745,7 +745,7 @@ namespace Maps
             return borderPathsCache[(int)type];
         }
 
-        public string GetLabel(Sector sector)
+        internal string GetLabel(Sector sector)
         {
             if (!ShowLabel)
                 return null;
