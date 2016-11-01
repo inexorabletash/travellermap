@@ -223,6 +223,7 @@ namespace Maps
         // TODO: Parse this from data file
         private static readonly AllegianceDictionary s_t5Allegiances = new AllegianceDictionary {
             // T5Code, LegacyCode, BaseCode, Name
+            #region T5SS Allegiances
             // Allegiance Table Begin
             { "3EoG", "Ga", "Ga", "Third Empire of Gashikan" },
             { "4Wor", "Fw", "FW", "Four Worlds" },
@@ -414,6 +415,7 @@ namespace Maps
             { "Zuug", "Zu", "Zu", "Zuugabish Tripartite" },
             { "ZyCo", "Zc", null, "Zydarian Codominion" },
             // Allegiance Table End
+            #endregion  
 
             // -----------------------
             // Unofficial/Unreviewed
@@ -422,7 +424,8 @@ namespace Maps
             // M1120
             { "FdAr", "Fa", null, "Federation of Arden" },
             { "BoWo", "Bw", null, "Border Worlds" },
-
+            { "LuIm", "Li", null, "Lucan's Imperium" },
+            { "MaSt", "Ma", null, "Maragaret's Domain" },
         };
         public static IEnumerable<string> AllegianceCodes { get { return s_t5Allegiances.Keys; } }
 
