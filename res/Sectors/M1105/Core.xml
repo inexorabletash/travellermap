@@ -1,0 +1,208 @@
+<?xml version="1.0"?>
+<Sector Abbreviation="Core" Tags="Official">
+  <Y>0</Y>
+  <X>0</X>
+  <Name>Core</Name>
+  <Name Lang="vi">Ukan</Name>
+  <Credits>
+    <![CDATA[
+
+             <b>Core</b> sector was designed by Marc W. Miller and
+             appears in <cite>Atlas of the Imperium</cite> (GDW,
+             1984).
+
+    ]]>
+  </Credits>
+  <DataFile Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Core.tab</DataFile>
+  <Borders>
+    <Border Allegiance="ImDc" Label="Third Imperium" ShowLabel="false">0000 0100 0200 0300 0400 0500 0600 0700 0800 0900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001 0000</Border>
+    <Border Allegiance="ImSy" Label="Sylean Worlds" LabelPosition="2614" WrapLabel="true">2118 2217 2216 2215 2214 2213 2314 2413 2513 2613 2714 2813 2913 3013 3113 3114 3115 3116 3216 3117 3016 2916 2816 2716 2616 2517 2417 2318 2217 2118</Border>
+  </Borders>
+  <Subsectors Publisher="DGP" Source="The Travellers' Digest #10">
+    <Subsector Index="A">Apge</Subsector>
+    <Subsector Index="B">Perite</Subsector>
+    <Subsector Index="C">Ameros</Subsector>
+    <Subsector Index="D">Shinkan</Subsector>
+    <Subsector Index="E">Sanches</Subsector>
+    <Subsector Index="F">Mekee</Subsector>
+    <Subsector Index="G">Core</Subsector>
+    <Subsector Index="H">Kaskii</Subsector>
+    <Subsector Index="I">Bunkeria</Subsector>
+    <Subsector Index="J">Cemplas</Subsector>
+    <Subsector Index="K">Chant</Subsector>
+    <Subsector Index="L">Dingtra</Subsector>
+    <Subsector Index="M">Cadion</Subsector>
+    <Subsector Index="N">Ch'naar</Subsector>
+    <Subsector Index="O">Dunea</Subsector>
+    <Subsector Index="P">Saregon</Subsector>
+  </Subsectors>
+  <Routes Publisher="DGP" Source="The Travellers' Digest #9">
+    <Route Start="0302" End="0202" />
+    <Route Start="0202" End="0203" />
+    <Route Start="0203" End="0305" />
+    <Route Start="0305" End="0106" />
+    <Route Start="0305" End="0308" />
+    <Route Start="0305" End="0505" />
+    <Route Start="0308" End="0210" />
+    <Route Start="0210" End="0112" />
+    <Route Start="0302" End="0402" />
+    <Route Start="0402" End="0505" />
+    <Route Start="0505" End="0806" />
+    <Route Start="0806" End="1009" />
+    <Route Start="1009" End="0811" />
+    <Route Start="0811" End="0812" />
+    <Route Start="0812" End="0512" />
+    <Route Start="0512" End="0112" />
+    <Route Start="0901" End="1102" />
+    <Route Start="1102" End="1204" />
+    <Route Start="1204" End="1205" />
+    <Route Start="1205" End="1108" />
+    <Route Start="1108" End="1309" />
+    <Route Start="1309" End="1410" />
+    <Route Start="1410" End="1009" />
+    <Route Start="1703" End="1605" />
+    <Route Start="1605" End="1204" />
+    <Route Start="1605" End="2006" />
+    <Route Start="2006" End="2008" />
+    <Route Start="2008" End="2211" />
+    <Route Start="2211" End="2408" />
+    <Route Start="2408" End="2507" />
+    <Route Start="2507" End="2403" />
+    <Route Start="2403" End="2401" />
+    <Route Start="2803" End="2706" />
+    <Route Start="2706" End="2608" />
+    <Route Start="2608" End="2507" />
+    <Route Start="2608" End="2910" />
+    <Route Start="2910" End="3008" />
+    <Route Start="3008" End="3106" />
+    <Route Start="2910" End="3210" />
+    <Route Start="3210" End="2912" />
+    <Route Start="2912" End="2914" />
+    <Route Start="2914" End="3015" />
+    <Route Start="3015" End="2816" />
+    <Route Start="2816" End="2914" />
+    <Route Start="2816" End="2616" />
+    <Route Start="2616" End="2414" />
+    <Route Start="2414" End="2115" />
+    <Route Start="2115" End="2211" />
+    <Route Start="2115" End="1812" />
+    <Route Start="1812" End="1410" />
+    <Route Start="2115" End="1916" />
+    <Route Start="1916" End="1715" />
+    <Route Start="1715" End="1812" />
+    <Route Start="1715" End="1518" />
+    <Route Start="1518" End="1317" />
+    <Route Start="1317" End="1116" />
+    <Route Start="1116" End="0915" />
+    <Route Start="0915" End="1114" />
+    <Route Start="1114" End="1012" />
+    <Route Start="1012" End="0812" />
+    <Route Start="0812" End="0915" />
+    <Route Start="0915" End="0517" />
+    <Route Start="0517" End="0416" />
+    <Route Start="0416" End="0216" />
+    <Route Start="0517" End="0519" />
+    <Route Start="0519" End="0420" />
+    <Route Start="0420" End="0421" />
+    <Route Start="0421" End="0221" />
+    <Route Start="0421" End="0622" />
+    <Route Start="0622" End="0922" />
+    <Route Start="0922" End="1123" />
+    <Route Start="1123" End="1219" />
+    <Route Start="1219" End="1418" />
+    <Route Start="1418" End="1518" />
+    <Route Start="1518" End="1819" />
+    <Route Start="1819" End="2021" />
+    <Route Start="2021" End="1822" />
+    <Route Start="1822" End="1623" />
+    <Route Start="1623" End="1523" />
+    <Route Start="1623" End="1323" />
+    <Route Start="1323" End="1123" />
+    <Route Start="1123" End="1124" />
+    <Route Start="1124" End="1226" />
+    <Route Start="1226" End="1328" />
+    <Route Start="1328" End="1428" />
+    <Route Start="1428" End="1424" />
+    <Route Start="1424" End="1623" />
+    <Route Start="1424" End="1226" />
+    <Route Start="2118" End="1916" />
+    <Route Start="2118" End="2115" />
+    <Route Start="2118" End="2216" />
+    <Route Start="2216" End="2414" />
+    <Route Start="2118" End="2218" />
+    <Route Start="2218" End="2419" />
+    <Route Start="2118" End="2021" />
+    <Route Start="2021" End="2322" />
+    <Route Start="2322" End="2419" />
+    <Route Start="2419" End="2422" />
+    <Route Start="2422" End="2322" />
+    <Route Start="2419" End="2616" />
+    <Route Start="2419" End="2720" />
+    <Route Start="2720" End="3021" />
+    <Route Start="3021" End="3218" />
+    <Route Start="2422" End="2526" />
+    <Route Start="2526" End="2928" />
+    <Route Start="2928" End="3028" />
+    <Route Start="3028" End="3131" />
+    <Route Start="3131" End="2933" />
+    <Route Start="2933" End="2730" />
+    <Route Start="2730" End="2928" />
+    <Route Start="2933" End="3034" />
+    <Route Start="2933" End="2936" />
+    <Route Start="2936" End="2938" />
+    <Route Start="2938" End="3140" />
+    <Route Start="2021" End="2224" />
+    <Route Start="2224" End="2125" />
+    <Route Start="2125" End="2028" />
+    <Route Start="2021" End="1925" />
+    <Route Start="2028" End="1930" />
+    <Route Start="1930" End="1732" />
+    <Route Start="1732" End="1534" />
+    <Route Start="1534" End="1536" />
+    <Route Start="1536" End="1538" />
+    <Route Start="1534" End="1233" />
+    <Route Start="1233" End="1430" />
+    <Route Start="1430" End="1428" />
+    <Route Start="1233" End="0931" />
+    <Route Start="0931" End="0529" />
+    <Route Start="0529" End="0428" />
+    <Route Start="0428" End="0527" />
+    <Route Start="0527" End="0624" />
+    <Route Start="0624" End="0622" />
+    <Route Start="0428" End="0332" />
+    <Route Start="0332" End="0334" />
+    <Route Start="0334" End="0135" />
+    <Route Start="0135" End="0138" />
+    <Route Start="0138" End="0139" />
+    <Route Start="0334" End="0635" />
+    <Route Start="0635" End="0737" />
+    <Route Start="0737" End="0839" />
+    <Route Start="0737" End="1035" />
+    <Route Start="1035" End="1134" />
+    <Route Start="1134" End="1233" />
+    <!-- Routes off the edge of the sector -->
+    <Route Start="0106" End="3206" EndOffsetX="-1" />
+    <Route Start="0210" End="3110" EndOffsetX="-1" />
+    <Route Start="0112" End="3111" EndOffsetX="-1" />
+    <Route Start="0112" End="3114" EndOffsetX="-1" />
+    <Route Start="0216" End="3115" EndOffsetX="-1" />
+    <Route Start="0221" End="3120" EndOffsetX="-1" />
+    <Route Start="0221" End="0022" />
+    <Route Start="0139" End="3202" EndOffsetX="-1" EndOffsetY="1" />
+    <Route Start="1538" End="1641" />
+    <Route Start="3140" End="3003" EndOffsetY="1" />
+    <Route Start="3140" End="0140" EndOffsetX="1" />
+    <Route Start="3034" End="3336" />
+    <Route Start="3218" End="0318" EndOffsetX="1" />
+    <Route Start="3015" End="0214" EndOffsetX="1" />
+    <Route Start="3210" End="0209" EndOffsetX="1" />
+    <Route Start="3210" End="0113" EndOffsetX="1" />
+    <Route Start="2803" End="3000" />
+    <Route Start="2401" End="2500" />
+    <Route Start="2101" End="2200" />
+    <Route Start="2101" End="2000" />
+    <Route Start="1703" End="1600" />
+    <Route Start="0901" End="1039" EndOffsetY="-1" />
+    <Route Start="0302" End="0338" EndOffsetY="-1" />
+  </Routes>
+</Sector>

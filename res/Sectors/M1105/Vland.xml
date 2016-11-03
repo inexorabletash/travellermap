@@ -1,0 +1,162 @@
+<?xml version="1.0"?>
+<Sector Abbreviation="Vlan" Tags="Official">
+  <Y>-1</Y>
+  <X>-1</X>
+  <Name>Vland</Name>
+  <Credits>
+    <![CDATA[
+
+             <b>Vland</b> sector was designed by Marc W. Miller and
+             appears in <cite>Atlas of the Imperium</cite> (GDW,
+             1984).
+
+             It was refined by Joe D. Fugate Sr. and appears in
+             <cite>The Travellers Digest</cite> and <cite>The
+             MegaTraveller Alien, Volume 1: Vilani &amp; Vargr</cite>
+             (DGP, 1990)
+
+    ]]>
+  </Credits>
+  <DataFile Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Vland.tab</DataFile>
+  <Subsectors Source="Vilani and Vargr">
+    <Subsector Index="A">Voskhod</Subsector>
+    <Subsector Index="B">Vhodan</Subsector>
+    <Subsector Index="C">Anarsi</Subsector>
+    <Subsector Index="D">Theton</Subsector>
+    <Subsector Index="E">Lalaki Kharir</Subsector>
+    <Subsector Index="F">Kagamira</Subsector>
+    <Subsector Index="G">Vland</Subsector>
+    <Subsector Index="H">Shiigus</Subsector>
+    <Subsector Index="I">Dusa</Subsector>
+    <Subsector Index="J">Akumid</Subsector>
+    <Subsector Index="K">Kasear</Subsector>
+    <Subsector Index="L">Anakod</Subsector>
+    <Subsector Index="M">Parsi</Subsector>
+    <Subsector Index="N">Daangiilu</Subsector>
+    <Subsector Index="O">Nulisud</Subsector>
+    <Subsector Index="P">Kakadan</Subsector>
+  </Subsectors>
+  <Routes Source="Vilani and Vargr">
+    <Route Start="0107" End="0408" />
+    <Route Start="0107" End="3208" EndOffsetX="-1" />
+    <Route Start="0234" End="0333" />
+    <Route Start="0234" End="0436" />
+    <Route Start="0234" End="3232" EndOffsetX="-1" />
+    <Route Start="0311" End="0408" />
+    <Route Start="0436" End="0536" />
+    <Route Start="0340" End="0640" />
+    <Route Start="0404" End="0408" />
+    <Route Start="0404" End="0605" />
+    <Route Start="0408" End="0708" />
+    <Route Start="0422" End="0619" />
+    <Route Start="0431" End="0530" />
+    <Route Start="0530" End="0831" />
+    <Route Start="0536" End="0637" />
+    <Route Start="0605" End="0807" />
+    <Route Start="0619" End="0921" />
+    <Route Start="0637" End="0640" />
+    <Route Start="0640" End="0402" EndOffsetY="1" />
+    <Route Start="0708" End="0709" />
+    <Route Start="0708" End="0807" />
+    <Route Start="0709" End="1011" />
+    <Route Start="0807" End="1208" />
+    <Route Start="0831" End="0934" />
+    <Route Start="0921" End="1120" />
+    <Route Start="0923" End="1323" />
+    <Route Start="0934" End="1136" />
+    <Route Start="0934" End="1332" />
+    <Route Start="1011" End="1112" />
+    <Route Start="1112" End="1211" />
+    <Route Start="1112" End="1414" />
+    <Route Start="1114" End="1414" />
+    <Route Start="1120" End="1520" />
+    <Route Start="1136" End="1235" />
+    <Route Start="1136" End="1437" />
+    <Route Start="1208" End="1211" />
+    <Route Start="1208" End="1408" />
+    <Route Start="1211" End="1414" />
+    <Route Start="1217" End="1519" />
+    <Route Start="1235" End="1533" />
+    <Route Start="1323" End="1520" />
+    <Route Start="1323" End="1625" />
+    <Route Start="1332" End="1530" />
+    <Route Start="1339" End="1202" EndOffsetY="1" />
+    <Route Start="1408" End="1505" />
+    <Route Start="1408" End="1509" />
+    <Route Start="1414" End="1717" />
+    <Route Start="1509" End="1709" />
+    <Route Start="1519" End="1520" />
+    <Route Start="1519" End="1717" />
+    <Route Start="1520" End="1822" />
+    <Route Start="1530" End="1533" />
+    <Route Start="1530" End="1628" />
+    <Route Start="1533" End="1735" />
+    <Route Start="1533" End="1735" />
+    <Route Start="1735" End="1937" />
+    <Route Start="1625" End="1628" />
+    <Route Start="1625" End="1822" />
+    <Route Start="1709" End="1909" />
+    <Route Start="1717" End="1817" />
+    <Route Start="1717" End="1820" />
+    <Route Start="1717" End="1916" />
+    <Route Start="1817" End="2117" />
+    <Route Start="1817" End="1919" />
+    <Route Start="1919" End="2020" />
+    <Route Start="2020" End="2221" />
+    <Route Start="1820" End="1822" />
+    <Route Start="1820" End="1821" />
+    <Route Start="1821" End="1822" />
+    <Route Start="1822" End="1825" />
+    <Route Start="1825" End="1928" />
+    <Route Start="1825" End="2225" />
+    <Route Start="1909" End="2111" />
+    <Route Start="1916" End="2013" />
+    <Route Start="1928" End="1930" />
+    <Route Start="1928" End="2227" />
+    <Route Start="1930" End="2132" />
+    <Route Start="2013" End="2111" />
+    <Route Start="2111" End="2409" />
+    <Route Start="2117" End="2316" />
+    <Route Start="2117" End="2319" />
+    <Route Start="2132" End="2232" />
+    <Route Start="2205" End="2308" />
+    <Route Start="2225" End="2227" />
+    <Route Start="2225" End="2426" />
+    <Route Start="2240" End="2540" />
+    <Route Start="2308" End="2409" />
+    <Route Start="2316" End="2416" />
+    <Route Start="2316" End="2513" />
+    <Route Start="2319" End="2620" />
+    <Route Start="2337" End="2438" />
+    <Route Start="2409" End="2513" />
+    <Route Start="2409" End="2808" />
+    <Route Start="2416" End="2616" />
+    <Route Start="2426" End="2728" />
+    <Route Start="2438" End="2540" />
+    <Route Start="2438" End="2637" />
+    <Route Start="2513" End="2912" />
+    <Route Start="2540" End="2602" EndOffsetY="1" />
+    <Route Start="2540" End="2739" />
+    <Route Start="2739" End="2938" />
+    <Route Start="2938" End="3037" />
+    <Route Start="2616" End="2816" />
+    <Route Start="2636" End="2637" />
+    <Route Start="2728" End="2926" />
+    <Route Start="2728" End="2931" />
+    <Route Start="2806" End="2808" />
+    <Route Start="2806" End="3107" />
+    <Route Start="2816" End="3117" />
+    <Route Start="2829" End="2931" />
+    <Route Start="2912" End="3211" />
+    <Route Start="2926" End="3224" />
+    <Route Start="3107" End="0309" EndOffsetX="1" />
+    <Route Start="3117" End="0118" EndOffsetX="1" />
+    <Route Start="3137" End="0236" EndOffsetX="1" />
+    <Route Start="3211" End="0111" EndOffsetX="1" />
+    <Route Start="3232" End="0132" EndOffsetX="1" />
+    <Route Start="3232" End="0134" EndOffsetX="1" />
+  </Routes>
+  <Borders>
+    <Border Allegiance="ImDv" Label="Third Imperium" LabelPosition="1122">0004 0104 0103 0102 0101 0201 0302 0402 0502 0601 0602 0603 0604 0705 0805 0906 1006 1107 1206 1306 1405 1505 1605 1705 1805 1906 2005 2105 2205 2306 2406 2506 2605 2706 2805 2905 3005 3106 3205 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0030 0131 0231 0331 0430 0530 0630 0730 0829 0929 0928 0927 0926 0925 0924 0823 0723 0622 0522 0422 0322 0221 0321 0420 0520 0619 0720 0820 0921 1020 1120 1119 1118 1117 1116 1115 1114 1113 1012 0912 0811 0711 0610 0510 0410 0311 0211 0210 0110 0009 0008 0007 0006 0005 0004</Border>
+  </Borders>
+</Sector>

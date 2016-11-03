@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Sector Abbreviation="Cruc" Tags="InReview">
+  <Y>1</Y>
+  <X>3</X>
+  <Name>Crucis Margin</Name>
+  <Credits>
+    <![CDATA[
+
+             <b>Crucis Margin</b> sector was designed by Dave Sering
+             and appears in <cite>Crucis Margin</cite> (Judges Guild,
+             1981). It was later revised by Martin J. Dougherty and
+             Hunter Gordon and appears in <cite>Gateway to
+             Destiny</cite> (QuickLink Interactive, 2006).
+
+    ]]>
+  </Credits>
+  <DataFile Author="Martin J. Dougherty and Hunter Gordon" Source="Traveller 5 Sector Survey" Milieu="M1105" Type="TabDelimited">Crucis Margin.tab</DataFile>
+  <Borders>
+    <Border Allegiance="GlFe" Color="blue" LabelPosition="0122" WrapLabel="true" ShowLabel="false">
+      0020 0121 0122 0222 0122 0022 0021 0020
+    </Border>
+    <Border Allegiance="MiCo" Color="darkred" LabelPosition="0703" WrapLabel="true">
+      0601 0702 0801 0901 1001 1102 1002 0903 0904 0804 0704 0703 0702 0601
+    </Border>
+    <Border Allegiance="FeAm" Color="olivedrab" LabelPosition="1703">
+      1502 1601 1701 1801 1902 1802 1702 1602 1502
+    </Border>
+    <Border Allegiance="GdKa" Color="darkkhaki" LabelPosition="0413">
+      0214 0314 0413 0412 0413 0514 0614 0615 0616 0617 0517 0416 0316 0215 0214
+    </Border>
+    <Border Allegiance="OlWo" Color="darkslategray">
+      1417 1517 1516 1616 1717 1816 1817 1918 2018 2019 2020 2021 2122 2021 1922 1822 1722 1622 1523 1522 1521 1520 1519 1518 1417
+    </Border>
+    <Border Allegiance="KaCo" Color="darkblue">
+      1813 1913 2012 2013 2114 2214 2215 2316 2215 2116 2016 2015 2014 1914 1813
+    </Border>
+    <Border Allegiance="MrCo" Color="purple" LabelPosition="3005" WrapLabel="true">
+      2405 2505 2504 2603 2602 2702 2701 2801 2902 3002 3103 3202 3203 3204 3205 3106 3107 3108 3008 2909 2809 2810 2811 2812 2813 2713 2612 2611 2610 2609 2608 2508 2407 2406 2405
+    </Border>
+    <Border Allegiance="SyRe" Color="darkblue" LabelPosition="0936">
+      0729 0829 0929 1029 1130 1131 1132 1133 1233 1134 1135 1136 1137 1037 1038 1037 0937 0836 0736 0835 0834 0833 0832 0831 0830 0829 0729
+    </Border>
+    <Border Allegiance="KaWo" Color="darkkhaki" LabelPosition="0639">
+      0140 0239 0238 0339 0439 0540 0640 0540 0440 0340 0240 0140
+    </Border>
+    <Border Allegiance="Reac" Color="orange" LabelPosition="2729">
+      2329 2428 2528 2627 2728 2627 2528 2428 2329
+    </Border>
+  </Borders>
+  <Subsectors Source="Gateway to Destiny">
+    <Subsector Index="A">Ostermann</Subsector>
+    <Subsector Index="B">Vandir</Subsector>
+    <Subsector Index="C">Outrun</Subsector>
+    <Subsector Index="D">Chin Shan</Subsector>
+    <Subsector Index="E">Raidermarch</Subsector>
+    <Subsector Index="F">NewSun</Subsector>
+    <Subsector Index="G">Old Worlds</Subsector>
+    <Subsector Index="H">Peril's Edge</Subsector>
+    <Subsector Index="I">Kobe</Subsector>
+    <Subsector Index="J">Bright Heavens</Subsector>
+    <Subsector Index="K">Reach</Subsector>
+    <Subsector Index="L">No Return</Subsector>
+    <Subsector Index="M">Syzlin</Subsector>
+    <Subsector Index="N">Taitin</Subsector>
+    <Subsector Index="O">Scatter</Subsector>
+    <Subsector Index="P">Kixum</Subsector>
+  </Subsectors>
+</Sector>

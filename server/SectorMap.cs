@@ -95,12 +95,11 @@ namespace Maps
             }
         }
 
-        public const string DEFAULT_MILIEU = "1105";
-        private static readonly IEnumerable<string> FALLBACK_MILIEUX = new List<string> { "1100", "1120", "1200" };
+        public const string DEFAULT_MILIEU = "M1105";
 
         public static bool IsDefaultMilieu(string m)
         {
-            return string.IsNullOrWhiteSpace(m) || m == DEFAULT_MILIEU || FALLBACK_MILIEUX.Contains(m);
+            return string.IsNullOrWhiteSpace(m) || m == DEFAULT_MILIEU;
         }
 
         /// <summary>
@@ -151,10 +150,10 @@ namespace Maps
                     List<SectorMetafileEntry> files = new List<SectorMetafileEntry>
                     {
                         // Meta
-                        new SectorMetafileEntry(@"~/res/legend.xml", new List<string> { "meta" } ),
+                        new SectorMetafileEntry(@"~/res/Sectors/Meta/legend.xml", new List<string> { "meta" } ),
 
                         // OTU - Default Milieu
-                        new SectorMetafileEntry(@"~/res/sectors.xml", new List<string> { "OTU" } ),
+                        new SectorMetafileEntry(@"~/res/Sectors/M1105/M1105.xml", new List<string> { "OTU" } ),
                         new SectorMetafileEntry(@"~/res/Sectors/Zhodani Core Route/ZhodaniCoreRoute.xml", new List<string> { "ZCR" } ),
                         new SectorMetafileEntry(@"~/res/Sectors/Orion OB1/orion.xml", new List<string> { "OrionOB1" } ),
 
@@ -162,6 +161,7 @@ namespace Maps
                         new SectorMetafileEntry(@"~/res/Sectors/IW/iw.xml", new List<string> { "OTU" } ),
                         new SectorMetafileEntry(@"~/res/Sectors/M0/M0.xml", new List<string> { "OTU" } ),
                         new SectorMetafileEntry(@"~/res/Sectors/M990/M990.xml", new List<string> { "OTU" } ),
+                        new SectorMetafileEntry(@"~/res/Sectors/M1120/M1120.xml", new List<string> { "OTU" } ),
                         new SectorMetafileEntry(@"~/res/Sectors/M1201/M1201.xml", new List<string> { "OTU" } ),
                         new SectorMetafileEntry(@"~/res/Sectors/M1248/M1248.xml", new List<string> { "OTU" } ),
                         new SectorMetafileEntry(@"~/res/Sectors/M1900/M1900.xml", new List<string> { "OTU" } ),
@@ -223,7 +223,7 @@ namespace Maps
         }
 
         /// <summary>
-        /// Helper to find MilieuMaps by name (considering fallbacks).
+        /// Helper to find MilieuMaps by name.
         /// </summary>
         /// <param name="m">Specific milieu. If specified, at most one milieu will be returned.
         /// If null, default/fallback milieu will be returned</param>
@@ -241,13 +241,7 @@ namespace Maps
             }
             else
             {
-                // Return default and fallback MilieuMaps (if they exist).
                 yield return milieux[DEFAULT_MILIEU];
-                foreach (string milieu in FALLBACK_MILIEUX)
-                {
-                    if (milieux.ContainsKey(milieu))
-                        yield return milieux[milieu];
-                }
             }
         }
 
@@ -272,7 +266,7 @@ namespace Maps
         /// </summary>
         /// <param name="x">Sector x coordinate</param>
         /// <param name="y">Sector y coordinate</param>
-        /// <param name="milieu">Milieu name, null for default/fallbacks</param>
+        /// <param name="milieu">Milieu name, null for default</param>
         /// <returns>Sector if found, or null</returns>
         private Sector FromLocation(Point pt, string milieu, bool useMilieuFallbacks = false)
         {

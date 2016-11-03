@@ -1,0 +1,3232 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<?xml-stylesheet type="text/xsl" href="../../credits.xslt"?>
+<!--
+XML metadata for Traveller sectors
+by Joshua Bell, 2006-2016
+
+The Traveller game in all forms is owned by Far Future Enterprises.
+Copyright (C) 1977 - 2016 Far Future Enterprises.
+
+This evolved from a copy of "The Consolidated Traveller Region Name List"
+by Steve Bonneville, and has grown to incorporate finer grained metadata.
+Thanks to J Greely (http://dotclue.org/t20) for his inspirational work on
+the "MSEC" sector metadata format used by his sec2pdf and allygen tools.
+
+Schema can be found at: https://travellermap.com/res/sectors.xsd
+
+Sector coordinates are per the region name list; an X Y pair with
+Core at 0 0, X increasing to Trailing and Y increasing to Rimward.
+-->
+<!--
+
+THE CONSOLIDATED _TRAVELLER_ REGION NAME LIST     version 3.1
+by Steve Bonneville                               5 November 1996
+
+
+This list contains names of all areas of space a sector or larger in
+_Traveller_ which have a specific name associated with them.  This
+does not include names of major astrographical features of the galaxy
+(Sagitarrius Arm, Great Rift, etc.).  The names used below were all
+consolidated from products in print (primarily the GDW alien modules
+and DGP's _Vilani & Vargr_ and _Solomani & Aslan_) and HIWG reference
+materials.
+
+The main Traveller play-area is a region 500 parsecs across centered
+roughly on Reference/Cadion (Core 0140), called "Charted Space" in
+MegaTraveller's _Referee's Manual_.
+
+Multi-Sector Region Names and Included Sectors
+
+Domains of the Third Imperium
+SYLEA:    Core, Delphi, Fornast, Massilia
+ANTARES:  Antares, Lishun, Mendan, Meshan
+GATEWAY:  Crucis Margin, Gateway, Glimmerdrift Reaches, Ley
+ILELISH:  Daibei, Ilelish, Reaver's Deep, Zarushagar
+SOL:      Alpha Crucis, Diaspora, Old Expanses, Solomani Rim
+VLAND:    Corridor, Dagudashaag, Gushemege, Vland
+DENEB:    Deneb, Reft, Spinward Marches, Trojan Reach
+
+Provinces of the Zhodani Consulate
+JADLAPRIANTS:     Tienspevnekr, Zhdant
+CHTIERABL:        Chtierabl {coreward of Zhdant, about -8,-7}
+IABRENSH:         Statldhepr, Zdiedeidant
+IADR NSOBL:       Afachtiabr, Iakr, Tloql, Yiklerzdanzh, Ziafrplianz
+MEQLEMIANZ:       Eiaplial, Sidiadl, Tsadra
+OBREFRIPL:        {region between Zdiedeidant and Chtierabl}
+SHTOCHIADR:       Itvikiastf, Tlabrieish
+VLANCHIETS QLOM:  {all Zhodani territory coreward of Chtierabl}
+-->
+
+<!--
+Generic outer borders for a sector:
+
+Top:    0000 0100 0200 0300 0400 0500 0600 0700 0800 0900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300
+Right:  3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341
+Bottom: 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041
+Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001 0000
+-->
+
+<Sectors>
+  <Sector Abbreviation="Caes" Tags="Official">
+    <Y>-21</Y>
+    <X>0</X>
+    <Name>Caesillian</Name>
+    <DataFile Source="Agent of the Imperium" Author="Marc Miller" Type="SecondSurvey">Caesillian.txt</DataFile>
+  </Sector>
+  <Sector>
+    <Y>-8</Y>
+    <X>-7</X>
+    <Name Lang="zh">Chtierabl</Name>
+    <DataFile Source="The Zhodani Base" Author="P-O Bergstedt" Ref="http://www.zho.berka.com/data/chtierabl/">chtierab.sec</DataFile>
+    <MetadataFile Source="The Zhodani Base" Author="P-O Bergstedt" Ref="http://www.zho.berka.com/data/chtierabl/">Chtierabl.xml</MetadataFile>
+  </Sector>
+  <Sector>
+    <Y>-5</Y>
+    <X>-9</X>
+    <Name Lang="zh">Stinj Tianz</Name>
+  </Sector>
+  <Sector>
+    <Y>-5</Y>
+    <X>-8</X>
+    <Name Lang="zh">Bliardlie</Name>
+  </Sector>
+  <Sector>
+    <Y>-5</Y>
+    <X>-7</X>
+    <Name Lang="zh">Zhiensh</Name>
+  </Sector>
+  <Sector>
+    <Y>-5</Y>
+    <X>-6</X>
+    <Name Lang="zh">Savria</Name>
+  </Sector>
+  <Sector>
+    <Y>-5</Y>
+    <X>-5</X>
+    <Name Lang="zh">Datsatl</Name>
+    <DataFile Author="John G. Wood" Source="Underdeveloped Sectors" Ref="https://web.archive.org/web/20160205040546/http://homepage.ntlworld.com/elvwood/Traveller/Sectors/">datsatl.sec</DataFile>
+  </Sector>
+  <Sector>
+    <Y>-5</Y>
+    <X>-4</X>
+    <Name Lang="zh">Ianshaplzdier</Name>
+    <Name Lang="va">Gakghang</Name>
+    <DataFile Author="John G. Wood" Source="Underdeveloped Sectors" Ref="https://web.archive.org/web/20160205040546/http://homepage.ntlworld.com/elvwood/Traveller/Sectors/">gakghang.sec</DataFile>
+  </Sector>
+  <Sector>
+    <Y>-5</Y>
+    <X>-3</X>
+    <Name Lang="zh">Zhiaqrqiats</Name>
+    <Name Lang="va">Thaku Fung</Name>
+    <Name Publisher="HIWG">Sigma Zephyrus</Name>
+    <DataFile Author="John G. Wood" Source="Underdeveloped Sectors" Ref="https://web.archive.org/web/20160205040546/http://homepage.ntlworld.com/elvwood/Traveller/Sectors/">thakufung.sec</DataFile>
+  </Sector>
+  <Sector>
+    <Y>-5</Y>
+    <X>-2</X>
+    <Name Lang="va">Rzakki</Name>
+    <DataFile Author="John G. Wood" Source="Underdeveloped Sectors" Ref="https://web.archive.org/web/20160205040546/http://homepage.ntlworld.com/elvwood/Traveller/Sectors/">rzakki.sec</DataFile>
+    <Borders>
+      <Border Allegiance="VU" Color="olivedrab">1330 1429 1529 1528 1529 1629 1529 1429 1330</Border>
+      <Border Allegiance="VZ" Color="olivedrab">2631 2632 2633 2632 2631</Border>
+    </Borders>
+    <Allegiances Source="Vilani and Vargr">
+      <Allegiance Code="VU">Union of Seekers</Allegiance>
+      <Allegiance Code="VZ">Ruzz Confederation</Allegiance>
+    </Allegiances>
+  </Sector>
+  <Sector>
+    <Y>-5</Y>
+    <X>-1</X>
+    <Name Lang="va">Listanaya</Name>
+    <DataFile Author="John G. Wood" Source="Underdeveloped Sectors" Ref="https://web.archive.org/web/20160205040546/http://homepage.ntlworld.com/elvwood/Traveller/Sectors/">listanaya.sec</DataFile>
+    <Borders>
+      <Border Allegiance="VE" Color="olivedrab">1615 1716 1717 1718 1618 1619 1618 1617 1616 1615</Border>
+      <Border Allegiance="VL" Color="olivedrab">1931 2030 2130 2230 2331 2430 2530 2630 2731 2830 2931 2932 2933 2833 2733 2632 2532 2432 2332 2232 2132 2032 1933 1932 1931</Border>
+    </Borders>
+    <Allegiances Source="Vilani and Vargr">
+      <Allegiance Code="VE">Agents of Eloeghoe</Allegiance>
+      <Allegiance Code="VL">League Alliance</Allegiance>
+    </Allegiances>
+  </Sector>
+  <Sector>
+    <Y>-5</Y>
+    <X>0</X>
+    <Name Lang="va">Veg Fergakh</Name>
+    <Name Lang="va" Source="Underdeveloped">Veg Vergakh</Name>
+    <DataFile Author="John G. Wood" Source="Underdeveloped Sectors" Ref="https://web.archive.org/web/20160205040546/http://homepage.ntlworld.com/elvwood/Traveller/Sectors/">vegvergakh.sec</DataFile>
+  </Sector>
+  <Sector>
+    <Y>-5</Y>
+    <X>1</X>
+    <Name Lang="va">Dfotseth</Name>
+    <Name Lang="va" Publisher="HIWG">Ugulorkurr</Name>
+    <DataFile Author="John G. Wood" Source="Underdeveloped Sectors" Ref="https://web.archive.org/web/20160205040546/http://homepage.ntlworld.com/elvwood/Traveller/Sectors/">dfotseth.sec</DataFile>
+  </Sector>
+  <Sector>
+    <Y>-5</Y>
+    <X>2</X>
+    <Name Lang="va">Irugangog</Name>
+    <Name Lang="va" Source="Underdeveloped">Irugangong</Name>
+    <Name Lang="va" Publisher="HIWG">Ksongrru</Name>
+    <DataFile Author="John G. Wood" Source="Underdeveloped Sectors" Ref="https://web.archive.org/web/20160205040546/http://homepage.ntlworld.com/elvwood/Traveller/Sectors/">irugangong.sec</DataFile>
+  </Sector>
+  <Sector>
+    <Y>-5</Y>
+    <X>3</X>
+    <Name Lang="va" Publisher="HIWG">Finggvakhou</Name>
+    <DataFile Author="John G. Wood" Source="Underdeveloped Sectors" Ref="https://web.archive.org/web/20160205040546/http://homepage.ntlworld.com/elvwood/Traveller/Sectors/">finggvakhou.sec</DataFile>
+  </Sector>
+  <Sector>
+    <Y>-5</Y>
+    <X>4</X>
+    <Name Publisher="HIWG">Zortakh</Name>
+    <DataFile Author="John G. Wood" Source="Underdeveloped Sectors" Ref="https://web.archive.org/web/20160205040546/http://homepage.ntlworld.com/elvwood/Traveller/Sectors/">zortakh.sec</DataFile>
+  </Sector>
+  <Sector>
+    <Y>-5</Y>
+    <X>5</X>
+    <Name Publisher="HIWG">Spangele</Name>
+    <Credits>
+      <![CDATA[
+
+               <b>Spangele</b> sector was designed by WG Zeist.
+
+      ]]>
+    </Credits>
+    <DataFile Author="WG Zeist" Source="explorerbase" Ref="https://explorerbase.wordpress.com/spangele-sector-data/">Spangele.sec</DataFile>
+    <Subsectors Author="WG Zeist" Ref="https://explorerbase.wordpress.com/spangele-sector-data/">
+      <Subsector Index="A">Upper Icons</Subsector>
+      <Subsector Index="B">Divisions</Subsector>
+      <Subsector Index="C">Triplets</Subsector>
+      <Subsector Index="D">Hyeean Fringe</Subsector>
+      <Subsector Index="E">Temples</Subsector>
+      <Subsector Index="F">Pathways</Subsector>
+      <Subsector Index="G">Inner Bay</Subsector>
+      <Subsector Index="H">Beyond Life</Subsector>
+      <Subsector Index="I">Clusterdance</Subsector>
+      <Subsector Index="J">Wavebreaker</Subsector>
+      <Subsector Index="K">The Fringe</Subsector>
+      <Subsector Index="L">Floater</Subsector>
+      <Subsector Index="M">Narrow Edge</Subsector>
+      <Subsector Index="N">The Wharf</Subsector>
+      <Subsector Index="O">The Bridge</Subsector>
+      <Subsector Index="P">Lone Pair</Subsector>
+    </Subsectors>
+  </Sector>
+  <Sector>
+    <Y>-5</Y>
+    <X>6</X>
+    <Name Publisher="HIWG">Nadir</Name>
+    <DataFile Author="David Blalock" Type="SecondSurvey" Ref="https://travellermap.com/data/Nadir">Nadir.txt</DataFile>
+  </Sector>
+  <Sector>
+    <Y>-5</Y>
+    <X>7</X>
+    <Name Publisher="HIWG">Harbinger</Name>
+    <DataFile Author="David Blalock" Type="SecondSurvey" Ref="https://travellermap.com/data/Harbinger">Harbinger.txt</DataFile>
+  </Sector>
+  <Sector>
+    <Y>-5</Y>
+    <X>8</X>
+    <Name Publisher="HIWG">Extremus</Name>
+  </Sector>
+  <Sector>
+    <Y>-4</Y>
+    <X>-9</X>
+    <Name Lang="zh">Viajlefliez</Name>
+  </Sector>
+  <Sector>
+    <Y>-4</Y>
+    <X>-8</X>
+    <Name Lang="zh">Bleblqansh</Name>
+  </Sector>
+  <Sector>
+    <Y>-4</Y>
+    <X>-7</X>
+    <Name Lang="zh">Driasera</Name>
+  </Sector>
+  <Sector>
+    <Y>-4</Y>
+    <X>-6</X>
+    <Name Lang="zh">Dalchie Jdatl</Name>
+  </Sector>
+  <Sector>
+    <Y>-4</Y>
+    <X>-5</X>
+    <Name Lang="zh">Chit Botshti</Name>
+    <Name Lang="va">Ugoede</Name>
+    <Credits>
+      <![CDATA[
+
+               <b>Chit Botshti</b> sector was designed by John G.
+               Wood and WG Zeist.
+
+               Stellar positions were developed by Joe D. Fugate Sr.
+               and appear in <cite>The MegaTraveller Alien, Volume 1:
+               Vilani &amp; Vargr</cite> (Digest Group Publications,
+               1990).
+
+      ]]>
+    </Credits>
+    <DataFile Source="Underdeveloped Sectors" Author="John G. Wood, WG Zeist" Ref="https://web.archive.org/web/20160205040546/http://homepage.ntlworld.com/elvwood/Traveller/Sectors/" Type="SecondSurvey">Chit Botshti.txt</DataFile>
+    <Borders>
+      <Border Allegiance="TY" Color="purple">2722 2821 2922 3022 3122 3221 3321 3322 3323 3324 3325 3326 3226 3127 3027 3026 3025 3024 3023 2923 2822 2722</Border>
+      <Border Allegiance="ZhCo">0016 0116 0216 0316 0415 0515 0614 0714 0813 0913 0912 0911 1010 1110 1111 1211 1312 1412 1512 1611 1612 1713 1813 1714 1614 1515 1516 1517 1518 1618 1719 1720 1721 1821 1822 1923 1924 2024 2025 2126 2127 2128 2228 2329 2429 2530 2630 2730 2830 2831 2932 2933 3033 3134 3234 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016</Border>
+    </Borders>
+    <Allegiances>
+      <Allegiance Code="TY">Taakas Yh'Drak</Allegiance>
+    </Allegiances>
+  </Sector>
+  <Sector>
+    <Y>-4</Y>
+    <X>-4</X>
+    <Name Lang="va">Ghoekhnael</Name>
+    <Name Lang="zh">Anzsidiadl</Name>
+    <Credits>
+      <![CDATA[
+
+               <b>Ghoeknael</b> sector was designed by John G.
+               Wood and WG Zeist.
+
+               Stellar positions were developed by Joe D. Fugate Sr.
+               and appear in <cite>The MegaTraveller Alien, Volume 1:
+               Vilani &amp; Vargr</cite> (Digest Group Publications,
+               1990).
+
+      ]]>
+    </Credits>
+    <DataFile Author="John G. Wood, WG Zeist" Source="Underdeveloped Sectors" Ref="https://web.archive.org/web/20160205040546/http://homepage.ntlworld.com/elvwood/Traveller/Sectors/" Type="TabDelimited">Ghoekhnael.tab</DataFile>
+    <Borders>
+      <Border Allegiance="TY" Color="purple">0021 0121 0120 0119 0219 0320 0420 0521 0620 0720 0721 0821 0922 0923 0924 0925 0824 0724 0623 0523 0423 0324 0224 0125 0126 0026 0025 0024 0023 0022 0021</Border>
+      <Border Allegiance="VB" Color="olivedrab">1526 1625 1725 1724 1823 1923 1922 2022 2123 2223 2324 2423 2523 2622 2723 2724 2824 2825 2826 2827 2728 2729 2730 2731 2732 2632 2633 2534 2535 2536 2436 2336 2235 2136 2036 1936 1835 1735 1634 1534 1533 1532 1531 1630 1629 1628 1627 1626 1526</Border>
+      <Border Allegiance="ZhCo">0034 0135 0235 0236 0237 0238 0239 0340 0440 0541 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036 0035 0034</Border>
+    </Borders>
+    <Allegiances Source="Vilani and Vargr">
+      <Allegiance Code="TY">Taakas Yh'Drak</Allegiance>
+      <Allegiance Code="VB">Brzeh Council</Allegiance>
+    </Allegiances>
+  </Sector>
+  <Sector>
+    <Y>-4</Y>
+    <X>-3</X>
+    <Name Lang="va">Ksinanirz</Name>
+    <Name Lang="zh">Zheranzanj</Name>
+    <DataFile Author="John G. Wood" Source="Underdeveloped Sectors" Ref="https://web.archive.org/web/20160205040546/http://homepage.ntlworld.com/elvwood/Traveller/Sectors/">ksinanirz.sec</DataFile>
+    <Borders>
+      <Border Allegiance="VP" Color="olivedrab">0803 0904 1004 1104 1204 1304 1305 1405 1506 1507 1508 1608 1609 1610 1611 1712 1812 1713 1613 1514 1413 1412 1411 1410 1310 1209 1208 1207 1206 1106 1005 0905 0804 0803</Border>
+      <Border Allegiance="VR" Color="olivedrab">0506 0606 0706 0806 0907 1007 0908 0808 0809 0709 0609 0608 0607 0606 0506</Border>
+      <Border Allegiance="Ve" Color="olivedrab">1232 1332 1431 1531 1530 1529 1428 1528 1628 1729 1829 1930 2030 2131 2231 2331 2430 2331 2332 2333 2334 2434 2535 2635 2736 2836 2937 2938 2939 2940 3040 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1240 1340 1339 1338 1337 1336 1235 1234 1233 1232</Border>
+    </Borders>
+    <Allegiances Source="Vilani and Vargr">
+      <Allegiance Code="VP">Kechk Pact</Allegiance>
+      <Allegiance Code="VR">Kechk Reversion</Allegiance>
+      <Allegiance Code="Ve">Empire of Varroerth</Allegiance>
+    </Allegiances>
+  </Sector>
+  <Sector>
+    <Y>-4</Y>
+    <X>-2</X>
+    <Name Lang="va">Zao Kfeng Ig Grilokh</Name>
+    <Credits>
+      <![CDATA[
+
+               <b>Zao Kfeng Ig Grilokh</b> sector was designed by John G.
+               Wood and WG Zeist.
+
+               Stellar positions were developed by Joe D. Fugate Sr.
+               and appear in <cite>The MegaTraveller Alien, Volume 1:
+               Vilani &amp; Vargr</cite> (Digest Group Publications,
+               1990).
+
+      ]]>
+    </Credits>
+    <DataFile Author="John G. Wood, WG Zeist" Source="Underdeveloped Sectors" Ref="https://web.archive.org/web/20160205040546/http://homepage.ntlworld.com/elvwood/Traveller/Sectors/" Type="TabDelimited">Zao Kfeng Ig Grilokh.tab</DataFile>
+    <Borders>
+      <Border Allegiance="VF" Color="olivedrab">1004 1104 1103 1202 1201 1202 1303 1403 1304 1305 1205 1106 1107 1108 1107 1106 1105 1004</Border>
+      <Border Allegiance="VK" Color="olivedrab">2617 2717 2716 2715 2815 2916 3015 3115 3214 3213 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3227 3128 3027 2928 2828 2728 2627 2626 2726 2725 2724 2723 2722 2621 2620 2619 2618 2617</Border>
+      <Border Allegiance="VS" Color="olivedrab">0225 0326 0426 0526 0527 0627 0628 0629 0630 0631 0732 0832 0933 0833 0733 0633 0534 0434 0335 0334 0233 0232 0231 0230 0330 0329 0328 0327 0326 0225</Border>
+      <Border Allegiance="Ve" Color="olivedrab">1841 1941 2040 2140 2239 2238 2338 2337 2437 2537 2636 2736 2835 2935 3034 3134 3133 3132 3131 3030 3029 3130 3229 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841</Border>
+    </Borders>
+    <Allegiances Source="Vilani and Vargr">
+      <Allegiance Code="VF">Far Stars Unanimity</Allegiance>
+      <Allegiance Code="VK">Koenotz Empire</Allegiance>
+      <Allegiance Code="VS">Jarrgh Subjugate</Allegiance>
+      <Allegiance Code="Ve">Empire of Varroerth</Allegiance>
+    </Allegiances>
+  </Sector>
+  <Sector>
+    <Y>-4</Y>
+    <X>-1</X>
+    <Name Lang="va">Knaeleng</Name>
+    <DataFile Author="John G. Wood" Source="Underdeveloped Sectors" Ref="https://web.archive.org/web/20160205040546/http://homepage.ntlworld.com/elvwood/Traveller/Sectors/">knaeleng.sec</DataFile>
+    <Borders>
+      <Border Allegiance="VA" Color="olivedrab">1722 1821 1921 2021 2121 2220 2320 2419 2418 2417 2416 2516 2615 2715 2714 2813 2812 2912 3011 3111 3210 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3328 3227 3127 3026 3025 2925 2824 2724 2623 2524 2424 2325 2224 2124 2023 1923 1823 1723 1722</Border>
+      <Border Allegiance="VK" Color="olivedrab">0013 0114 0214 0315 0414 0514 0513 0512 0612 0713 0813 0913 1013 1114 1213 1313 1412 1512 1511 1512 1513 1514 1515 1415 1416 1317 1217 1218 1219 1220 1221 1222 1223 1124 1125 1126 1026 0927 0928 0827 0728 0628 0528 0427 0327 0226 0127 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013</Border>
+      <Border Allegiance="Ve" Color="olivedrab">0029 0129 0229 0330 0430 0531 0630 0730 0830 0931 1031 1132 1231 1331 1430 1530 1630 1731 1830 1930 2029 2129 2228 2328 2427 2527 2528 2628 2729 2829 2929 3028 3128 3129 3130 3230 3331 3230 3130 3030 2931 2831 2732 2632 2533 2534 2535 2435 2436 2437 2438 2439 2540 2640 2741 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1440 1341 1240 1140 1039 0939 0839 0740 0640 0541 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029</Border>
+    </Borders>
+    <Allegiances Source="Vilani and Vargr">
+      <Allegiance Code="VA">Alliance of Tju</Allegiance>
+      <Allegiance Code="VK">Koenotz Empire</Allegiance>
+      <Allegiance Code="Ve">Empire of Varroerth</Allegiance>
+    </Allegiances>
+  </Sector>
+  <Sector>
+    <Y>-4</Y>
+    <X>0</X>
+    <Name Lang="va">Kharrthon</Name>
+    <DataFile Author="John G. Wood" Source="Underdeveloped Sectors" Ref="https://web.archive.org/web/20160205040546/http://homepage.ntlworld.com/elvwood/Traveller/Sectors/">kharrthon.sec</DataFile>
+    <Borders>
+      <Border Allegiance="VA" Color="olivedrab">0010 0110 0209 0309 0308 0307 0306 0205 0105 0104 0103 0203 0303 0403 0504 0604 0705 0805 0905 0906 1006 1007 1008 1109 1110 1210 1211 1312 1313 1314 1315 1215 1116 1117 1118 1119 1120 1121 1122 1022 0923 0823 0824 0825 0826 0827 0728 0628 0528 0428 0329 0228 0129 0128 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010</Border>
+      <Border Allegiance="VD" Color="olivedrab">1726 1825 1925 1924 2023 2123 2122 2121 2221 2321 2420 2520 2619 2719 2819 2920 3020 3121 3021 3022 3023 3024 3025 2926 2927 2826 2726 2625 2526 2426 2327 2227 2127 2026 1927 1826 1726</Border>
+      <Border Allegiance="VG" Color="olivedrab">1541 1640 1639 1638 1738 1837 1937 1936 1935 2035 2136 2137 2138 2139 2140 2240 2241 2141 2041 1941 1841 1741 1641 1541</Border>
+      <Border Allegiance="VX" Color="olivedrab">3140 3239 3238 3338 3339 3239 3240 3140</Border>
+      <Border Allegiance="Ve" Color="olivedrab">0030 0131 0231 0332 0431 0531 0532 0533 0633 0734 0834 0934 0935 0835 0736 0737 0738 0739 0740 0741 0641 0541 0441 0341 0241 0141 0041 0141 0140 0139 0138 0137 0237 0337 0436 0536 0635 0634 0633 0533 0432 0332 0231 0131 0030</Border>
+    </Borders>
+    <Allegiances Source="Vilani and Vargr">
+      <Allegiance Code="VA">Alliance of Tju</Allegiance>
+      <Allegiance Code="VD">Delegation of Targhae</Allegiance>
+      <Allegiance Code="VG">Glorious Sons of Raek</Allegiance>
+      <Allegiance Code="VX">Vaoekghirkhr Exchange</Allegiance>
+      <Allegiance Code="Ve">Empire of Varroerth</Allegiance>
+    </Allegiances>
+  </Sector>
+  <Sector>
+    <Y>-4</Y>
+    <X>1</X>
+    <Name Lang="va">Oeghz Vaerrghr</Name>
+    <DataFile Author="John G. Wood" Source="Underdeveloped Sectors" Ref="https://web.archive.org/web/20160205040546/http://homepage.ntlworld.com/elvwood/Traveller/Sectors/">oeghzvaerrghr.sec</DataFile>
+    <Borders>
+      <Border Allegiance="VX" Color="olivedrab">0038 0138 0237 0337 0336 0337 0338 0238 0139 0039 0040 0039 0038</Border>
+    </Borders>
+    <Allegiances Source="Vilani and Vargr">
+      <Allegiance Code="VX">Vaoekghirkhr Exchange</Allegiance>
+    </Allegiances>
+  </Sector>
+  <Sector>
+    <Y>-4</Y>
+    <X>2</X>
+    <Name Lang="va">Kfazz Ghik</Name>
+    <Credits>
+      <![CDATA[
+
+               <b>Kfazz Ghik</b> sector was designed by John G.
+               Wood and WG Zeist.
+
+               Stellar positions were developed by Joe D. Fugate Sr.
+               and appear in <cite>The MegaTraveller Alien, Volume 1:
+               Vilani &amp; Vargr</cite> (Digest Group Publications,
+               1990).
+
+      ]]>
+    </Credits>
+    <DataFile Author="John G. Wood, WG Zeist" Source="Underdeveloped Sectors" Ref="https://web.archive.org/web/20160205040546/http://homepage.ntlworld.com/elvwood/Traveller/Sectors/" Type="TabDelimited">Kfazz Ghik.tab</DataFile>
+    <Borders>
+      <Border Allegiance="VJ" Color="olivedrab">2033 2133 2232 2231 2332 2333 2433 2534 2634 2635 2536 2537 2436 2337 2236 2136 2036 2035 2034 2033</Border>
+    </Borders>
+    <Allegiances Source="Vilani and Vargr">
+      <Allegiance Code="VJ">Authority of Joekghr</Allegiance>
+    </Allegiances>
+  </Sector>
+  <Sector>
+    <Y>-4</Y>
+    <X>3</X>
+    <Name Lang="va">Angfutsag</Name>
+    <Name Lang="va" Publisher="HIWG">Gzerzarssou</Name>
+    <Name Publisher="HIWG">Puragaaku</Name>
+    <DataFile Author="John G. Wood" Source="Underdeveloped Sectors" Ref="https://web.archive.org/web/20160205040546/http://homepage.ntlworld.com/elvwood/Traveller/Sectors/">angfutsag.sec</DataFile>
+  </Sector>
+  <Sector>
+    <Y>-4</Y>
+    <X>4</X>
+    <Name Lang="va" Publisher="HIWG">Rfigh</Name>
+    <DataFile Author="John G. Wood" Source="Underdeveloped Sectors" Ref="https://web.archive.org/web/20160205040546/http://homepage.ntlworld.com/elvwood/Traveller/Sectors/">rfigh.sec</DataFile>
+  </Sector>
+  <Sector>
+    <Y>-4</Y>
+    <X>5</X>
+    <Name Lang="kk" Publisher="HIWG">Tar'G'kell'p</Name>
+    <Credits>
+      <![CDATA[
+
+               <b>Tar'G'kell'p</b> sector was designed by WG Zeist.
+
+      ]]>
+    </Credits>
+    <DataFile Author="WG Zeist" Source="explorerbase" Ref="https://explorerbase.wordpress.com/targkellp-sector-data/">TarGkellp.sec</DataFile>
+    <Subsectors Author="WG Zeist" Ref="https://explorerbase.wordpress.com/targkellp-sector-data/">
+      <Subsector Index="A">Alpha Zone</Subsector>
+      <Subsector Index="B">Bravo Zone</Subsector>
+      <Subsector Index="C">Charlie Zone</Subsector>
+      <Subsector Index="D">Delta Zone</Subsector>
+      <Subsector Index="E">Echo Zone</Subsector>
+      <Subsector Index="F">Foxtrot Zone</Subsector>
+      <Subsector Index="G">Golf Zone</Subsector>
+      <Subsector Index="H">Hotel Zone</Subsector>
+      <Subsector Index="I">India Zone</Subsector>
+      <Subsector Index="J">Juliet Zone</Subsector>
+      <Subsector Index="K">Kilo Zone</Subsector>
+      <Subsector Index="L">Lima Zone</Subsector>
+      <Subsector Index="M">Mike Zone</Subsector>
+      <Subsector Index="N">November Zone</Subsector>
+      <Subsector Index="O">Oscar Zone</Subsector>
+      <Subsector Index="P">Papa Zone</Subsector>
+    </Subsectors>
+  </Sector>
+  <Sector>
+    <Y>-4</Y>
+    <X>6</X>
+    <Name Lang="kk" Publisher="HIWG">Kteex!</Name>
+    <DataFile Author="David Blalock" Type="SecondSurvey" Ref="https://travellermap.com/data/Kteex!">Kteex!.txt</DataFile>
+  </Sector>
+  <Sector>
+    <Y>-4</Y>
+    <X>7</X>
+    <Name Lang="kk" Publisher="HIWG">Koog</Name>
+    <DataFile Author="David Blalock" Type="SecondSurvey" Ref="https://travellermap.com/data/Koog">Koog.txt</DataFile>
+    <MetadataFile Author="David Blalock" Ref="https://travellermap.com/data/Koog/metadata">Koog.xml</MetadataFile>
+  </Sector>
+  <Sector>
+    <Y>-4</Y>
+    <X>8</X>
+    <Name Lang="kk" Publisher="HIWG">Xeeleer</Name>
+    <Name Lang="kk" Publisher="HIWG">Xeeler</Name>
+  </Sector>
+  <Sector>
+    <Y>-3</Y>
+    <X>-9</X>
+    <Name Lang="zh">Brieplanz</Name>
+  </Sector>
+  <Sector>
+    <Y>-3</Y>
+    <X>-8</X>
+    <Name Lang="zh">Sidiadl</Name>
+    <Borders>
+      <Border Allegiance="ZhCo" ShowLabel="false">0000 0100 0200 0300 0400 0500 0600 0700 0800 0900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001 0000</Border>
+    </Borders>
+  </Sector>
+  <Sector>
+    <Y>-3</Y>
+    <X>-7</X>
+    <Name Lang="zh">Zdiedeiant</Name>
+    <DataFile Source="The Zhodani Base" Author="P-O Bergstedt" Ref="http://zho.berka.com/data/CLASSIC/sector.pl?sector=ZDIEDEIA">zdiedeia.sec</DataFile>
+    <MetadataFile Source="The Zhodani Base" Author="P-O Bergstedt" Ref="http://zho.berka.com/data/CLASSIC/sector.pl?sector=ZDIEDEIA">Zdiedeiant.xml</MetadataFile>
+  </Sector>
+  <Sector>
+    <Y>-3</Y>
+    <X>-6</X>
+    <Name Lang="zh">Stiatlchepr</Name>
+    <DataFile Author="Dale Jenkins" Type="SEC">Stiatlchepr.sec</DataFile>
+    <MetadataFile Author="Dale Jenkins">Stiatlchepr.xml</MetadataFile>
+  </Sector>
+  <Sector>
+    <Y>-3</Y>
+    <X>-5</X>
+    <Name Lang="zh">Itvikiastaf</Name>
+    <Name Lang="va">Aerenfors</Name>
+    <DataFile Author="John G. Wood" Source="Underdeveloped Sectors" Ref="https://web.archive.org/web/20160205040546/http://homepage.ntlworld.com/elvwood/Traveller/Sectors/">aerenfors.sec</DataFile>
+    <Subsectors Source="http://wiki.travellerrpg.com/Itvikiastaf_Sector">
+      <Subsector Index="A">Tlitllitle</Subsector>
+      <Subsector Index="B">Stetsie</Subsector>
+      <Subsector Index="C">Stefllients</Subsector>
+      <Subsector Index="D">Ezhdets</Subsector>
+      <Subsector Index="E">Prablvrdl</Subsector>
+      <Subsector Index="F">Shianjrel</Subsector>
+      <Subsector Index="G">Itzhinshnia</Subsector>
+      <Subsector Index="H">Ieprote</Subsector>
+      <Subsector Index="I">Iavrr</Subsector>
+      <Subsector Index="J">Eyiiafr</Subsector>
+      <Subsector Index="K">Iarchrsh</Subsector>
+      <Subsector Index="L">Entplens</Subsector>
+      <Subsector Index="M">Bieprvrapr</Subsector>
+      <Subsector Index="N">Iade</Subsector>
+      <Subsector Index="O">Zhdanshianch</Subsector>
+      <Subsector Index="P">Sierfiens</Subsector>
+    </Subsectors>
+    <Borders>
+      <Border Allegiance="ZhCo" ShowLabel="false">0000 0100 0200 0300 0400 0500 0600 0700 0800 0900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001 0000</Border>
+    </Borders>
+  </Sector>
+  <Sector>
+    <Y>-3</Y>
+    <X>-4</X>
+    <Name Lang="va">Knoellighz</Name>
+    <Name Lang="va" Source="Consolidated Traveller Region Name List">Khoellighz</Name>
+    <Name Lang="zh">Tlabrieish</Name>
+    <DataFile Author="John G. Wood, Pakkrat" Source="Underdeveloped Sectors" Ref="https://web.archive.org/web/20160205040546/http://homepage.ntlworld.com/elvwood/Traveller/Sectors/" Type="TabDelimited">Knoellighz.tab</DataFile>
+    <Subsectors Author="Mike Davis" Ref="http://www.elvwood.org/Traveller/Sectors/Knoellighz.html">
+      <Subsector Index="A">Riadr</Subsector>
+      <Subsector Index="B">Dzighkafe</Subsector>
+      <Subsector Index="C">Rourukhae</Subsector>
+      <Subsector Index="D">Ourdzoeg</Subsector>
+      <Subsector Index="E">Etlieejibia</Subsector>
+      <Subsector Index="F">Engakhs</Subsector>
+      <Subsector Index="G">Oguegh</Subsector>
+      <Subsector Index="H">Elkhaghaza</Subsector>
+      <Subsector Index="I">Yeplzhaf</Subsector>
+      <Subsector Index="J">Irrarrdhang</Subsector>
+      <Subsector Index="K">Thoeg</Subsector>
+      <Subsector Index="L">Goengsakh</Subsector>
+      <Subsector Index="M">Piprninsh</Subsector>
+      <Subsector Index="N">Khuzedhoth</Subsector>
+      <Subsector Index="O">Raelas</Subsector>
+      <Subsector Index="P">Zarthurrue</Subsector>
+    </Subsectors>
+    <Borders>
+      <Border Allegiance="V9" Color="olivedrab">0832 0932 1031 1131 1031 1032 1033 1034 1035 1036 1137 1237 1238 1239 1340 1239 1140 1040 0941 0940 0939 0938 0837 0836 0835 0834 0833 0832</Border>
+      <Border Allegiance="Vd" Color="olivedrab">1316 1415 1515 1614 1613 1612 1611 1511 1410 1409 1408 1407 1508 1607 1708 1807 1907 2006 2106 2206 2306 2406 2506 2605 2705 2804 2904 3004 3104 3204 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3227 3128 3028 2929 2829 2729 2628 2529 2528 2527 2526 2525 2424 2324 2323 2222 2221 2121 2020 2019 1919 1818 1817 1717 1616 1516 1416 1316</Border>
+      <Border Allegiance="Vo" Color="olivedrab">2740 2839 2939 3038 3138 3237 3238 3339 3340 3239 3140 3040 2941 2841 2741 2740</Border>
+      <Border Allegiance="Vx" Color="olivedrab">1027 1127 1226 1225 1224 1324 1323 1423 1524 1623 1624 1625 1726 1727 1827 1828 1929 2029 2030 2031 2132 2133 2134 2135 2136 2137 2237 2338 2238 2239 2240 2140 2039 1940 1839 1740 1639 1539 1538 1537 1536 1535 1534 1533 1432 1431 1331 1330 1329 1228 1128 1027</Border>
+      <Border Allegiance="ZhCo">0000 0100 0200 0300 0400 0501 0502 0503 0504 0505 0506 0507 0508 0509 0609 0710 0711 0712 0713 0714 0715 0815 0816 0817 0918 0919 0920 0921 0821 0722 0723 0724 0725 0825 0826 0827 0828 0829 0730 0630 0531 0532 0533 0534 0535 0536 0537 0437 0338 0238 0239 0240 0241 0141 0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001 0000</Border>
+    </Borders>
+    <Allegiances Source="Vilani and Vargr">
+      <Allegiance Code="V9">Infinity League</Allegiance>
+      <Allegiance Code="Vd">Democracy of Greats</Allegiance>
+      <Allegiance Code="Vo">Opposition Alliance</Allegiance>
+      <Allegiance Code="Vx">Antares Pact</Allegiance>
+    </Allegiances>
+  </Sector>
+  <Sector>
+    <Y>-3</Y>
+    <X>-3</X>
+    <Name Lang="va">Dhuerorrg</Name>
+    <Name Lang="zh">Tazhdapl</Name>
+    <DataFile Author="John G. Wood" Source="Underdeveloped Sectors" Ref="https://web.archive.org/web/20160205040546/http://homepage.ntlworld.com/elvwood/Traveller/Sectors/">dhuerorrg.sec</DataFile>
+    <Subsectors Author="Mike Davis" Ref="http://www.elvwood.org/Traveller/Sectors/Dhuerorrg.html">
+      <Subsector Index="A">Ugaethi</Subsector>
+      <Subsector Index="B">Sogae</Subsector>
+      <Subsector Index="C">Oekhsith</Subsector>
+      <Subsector Index="D">Voetsgouz</Subsector>
+      <Subsector Index="E">Vatsu</Subsector>
+      <Subsector Index="F">Gadhognae</Subsector>
+      <Subsector Index="G">Khoeng</Subsector>
+      <Subsector Index="H">Dhaetsae</Subsector>
+      <Subsector Index="I">Udzginger</Subsector>
+      <Subsector Index="J">Agzaengaez</Subsector>
+      <Subsector Index="K">Rangrrourae</Subsector>
+      <Subsector Index="L">Aegroul</Subsector>
+      <Subsector Index="M">Llako</Subsector>
+      <Subsector Index="N">Dagvigae</Subsector>
+      <Subsector Index="O">Utheng</Subsector>
+      <Subsector Index="P">Ithueng</Subsector>
+    </Subsectors>
+    <Borders>
+      <Border Allegiance="Vb" Color="olivedrab">0430 0530 0529 0629 0729 0829 0929 1029 1130 1229 1329 1330 1430 1531 1631 1732 1831 1932 2032 2132 2231 2331 2430 2530 2529 2528 2628 2728 2827 2828 2929 2829 2730 2630 2631 2632 2633 2534 2535 2536 2537 2437 2337 2236 2137 2037 1938 1838 1839 1840 1741 1641 1541 1441 1341 1241 1141 1041 0941 0841 0741 0641 0640 0540 0439 0438 0538 0537 0536 0535 0534 0533 0532 0531 0430</Border>
+      <Border Allegiance="Vd" Color="olivedrab">0004 0104 0203 0303 0304 0404 0505 0605 0706 0707 0708 0709 0809 0910 1010 1011 1012 1113 1213 1114 1115 1116 1016 1017 1018 1019 1020 1021 1022 1123 1124 1023 0924 0824 0725 0625 0626 0526 0426 0327 0227 0127 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004</Border>
+      <Border Allegiance="Ve" Color="olivedrab">1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3001 3102 3202 3203 3204 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3214 3115 3014 2915 2914 2813 2713 2612 2513 2413 2314 2214 2115 2014 1914 1813 1713 1712 1711 1710 1709 1708 1707 1606 1605 1604 1504 1403 1402 1401 1301 1200</Border>
+      <Border Allegiance="Ve" Color="olivedrab">2540 2639 2739 2738 2737 2837 2937 3036 3136 3235 3335 3336 3337 3338 3339 3238 3139 3039 3040 3041 2941 2841 2741 2641 2541 2540</Border>
+      <Border Allegiance="Vm" Color="olivedrab">1525 1624 1623 1622 1621 1620 1619 1720 1819 1919 2018 2118 2217 2216 2317 2417 2518 2618 2718 2817 2718 2719 2720 2721 2722 2723 2724 2624 2525 2526 2426 2327 2227 2127 2026 1926 1826 1726 1625 1525</Border>
+      <Border Allegiance="Vo" Color="olivedrab">0037 0038 0139 0140 0039 0038 0037</Border>
+    </Borders>
+    <Allegiances Source="Vilani and Vargr">
+      <Allegiance Code="Vb">Bakne Alliance</Allegiance>
+      <Allegiance Code="Vd">Democracy of Greats</Allegiance>
+      <Allegiance Code="Ve">Empire of Varroerth</Allegiance>
+      <Allegiance Code="Vm">Members of Knaeleng</Allegiance>
+      <Allegiance Code="Vo">Opposition Alliance</Allegiance>
+    </Allegiances>
+  </Sector>
+  <Sector>
+    <Y>-3</Y>
+    <X>-2</X>
+    <Name Lang="va">Ngathksirz</Name>
+    <DataFile Author="John G. Wood" Source="Underdeveloped Sectors" Ref="https://web.archive.org/web/20160205040546/http://homepage.ntlworld.com/elvwood/Traveller/Sectors/">ngathksirz.sec</DataFile>
+    <Subsectors Author="Mike Davis" Ref="http://www.elvwood.org/Traveller/Sectors/Ngathksirz.html">
+      <Subsector Index="A">Odzgoegh</Subsector>
+      <Subsector Index="B">Kfirzin</Subsector>
+      <Subsector Index="C">Kueroe</Subsector>
+      <Subsector Index="D">Aengangvuer</Subsector>
+      <Subsector Index="E">Dhaendzouts</Subsector>
+      <Subsector Index="F">Ruevoga</Subsector>
+      <Subsector Index="G">Aenael</Subsector>
+      <Subsector Index="H">Roenvoegazdu</Subsector>
+      <Subsector Index="I">Zarrkoe</Subsector>
+      <Subsector Index="J">Thafo</Subsector>
+      <Subsector Index="K">Uengou</Subsector>
+      <Subsector Index="L">Raez</Subsector>
+      <Subsector Index="M">Vaerr</Subsector>
+      <Subsector Index="N">Nouksaezor</Subsector>
+      <Subsector Index="O">Oegerag</Subsector>
+      <Subsector Index="P">Serrken</Subsector>
+    </Subsectors>
+    <Borders>
+      <Border Allegiance="Ve" Color="olivedrab">0002 0003 0004 0105 0205 0306 0406 0507 0606 0707 0708 0808 0809 0910 1010 1111 1210 1310 1409 1408 1407 1406 1306 1205 1306 1405 1505 1604 1603 1602 1702 1801 1901 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2640 2540 2440 2340 2240 2140 2040 1941 1841 1741 1641 1541 1441 1341 1241 1141 1041 0941 0841 0741 0641 0541 0440 0340 0239 0139 0038 0037 0036 0035 0135 0234 0233 0232 0332 0331 0330 0429 0529 0528 0527 0526 0525 0424 0524 0623 0622 0621 0620 0619 0618 0518 0517 0516 0415 0315 0214 0115 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002</Border>
+    </Borders>
+    <Allegiances Source="Vilani and Vargr">
+      <Allegiance Code="Ve">Empire of Varroerth</Allegiance>
+    </Allegiances>
+  </Sector>
+  <Sector>
+    <Y>-3</Y>
+    <X>-1</X>
+    <Name Lang="va">Fa Dzaets</Name>
+    <DataFile Author="John G. Wood" Source="Underdeveloped Sectors" Ref="https://web.archive.org/web/20160205040546/http://homepage.ntlworld.com/elvwood/Traveller/Sectors/">fa dzaets.sec</DataFile>
+    <Subsectors Author="Dale Jenkins">
+      <Subsector Index="A">Veakouna</Subsector>
+      <Subsector Index="B">Akhorgh</Subsector>
+      <Subsector Index="C">Gnokdhis</Subsector>
+      <Subsector Index="D">Thaengg</Subsector>
+      <Subsector Index="E">Uroedhfuez</Subsector>
+      <Subsector Index="F">Oughzkur</Subsector>
+      <Subsector Index="G">Gvaellai</Subsector>
+      <Subsector Index="H">Noeuekf</Subsector>
+      <Subsector Index="I">Dhaerzae</Subsector>
+      <Subsector Index="J">Agzorrue</Subsector>
+      <Subsector Index="K">Llarrkelkokh</Subsector>
+      <Subsector Index="L">Ounnon</Subsector>
+      <Subsector Index="M">Agzedz</Subsector>
+      <Subsector Index="N">Thalrue</Subsector>
+      <Subsector Index="O">Zuzog</Subsector>
+      <Subsector Index="P">Uefaekhs</Subsector>
+    </Subsectors>
+    <Borders>
+      <Border Allegiance="V0" Color="olivedrab">0702 0801 0901 1001 1102 1202 1303 1403 1504 1603 1504 1404 1305 1205 1105 1005 0905 0804 0803 0802 0702</Border>
+      <Border Allegiance="Ve" Color="olivedrab">0000 0100 0200 0300 0400 0500 0600 0700 0600 0501 0401 0402 0403 0404 0505 0605 0706 0806 0907 1007 1107 1207 1307 1406 1506 1605 1705 1704 1703 1702 1601 1501 1400 1301 1200 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2300 2400 2500 2600 2701 2801 2902 3002 3102 3201 3301 3300 3301 3302 3303 3304 3305 3306 3307 3308 3208 3109 3009 2910 2911 2912 2913 2914 3014 2914 2913 2812 2811 2711 2610 2510 2410 2311 2210 2111 2011 1912 1812 1713 1714 1715 1716 1616 1617 1618 1519 1520 1521 1522 1523 1524 1525 1625 1626 1727 1827 1928 1929 1930 2030 1930 1830 1731 1631 1532 1533 1534 1535 1536 1537 1437 1438 1439 1440 1341 1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001 0000</Border>
+    </Borders>
+    <Allegiances Source="Vilani and Vargr">
+      <Allegiance Code="V0">Akhorgh Seperate</Allegiance>
+      <Allegiance Code="Ve">Empire of Varroerth</Allegiance>
+    </Allegiances>
+  </Sector>
+  <Sector>
+    <Y>-3</Y>
+    <X>0</X>
+    <Name Lang="va">Gzaefueg</Name>
+    <Name Lang="va" Source="Underdeveloped">Gzaekfueg</Name>
+    <DataFile Author="John G. Wood" Source="Underdeveloped Sectors" Ref="https://web.archive.org/web/20160205040546/http://homepage.ntlworld.com/elvwood/Traveller/Sectors/">gzaekfueg.sec</DataFile>
+    <Subsectors Author="Alvin Plummer">
+      <Subsector Index="A" Lang="Urzaeng">Dortokh</Subsector>
+      <Subsector Index="B" Lang="Urzaeng">Gvineks</Subsector>
+      <Subsector Index="C" Lang="Urzaeng">Gzos</Subsector>
+      <Subsector Index="D" Lang="Urzaeng">Terruerr</Subsector>
+      <Subsector Index="E" Lang="Urzaeng">Gueghedudun</Subsector>
+      <Subsector Index="F" Lang="Urzaeng">Teksuelats</Subsector>
+      <Subsector Index="G" Lang="Urzaeng">Gadoeth</Subsector>
+      <Subsector Index="H" Lang="Urzaeng">Noung</Subsector>
+      <Subsector Index="I" Lang="Ovaghoun-Logaksu">Athin</Subsector>
+      <Subsector Index="J" Lang="Ovaghoun">Reofhunkdzo's</Subsector>
+      <Subsector Index="K" Lang="Ovaghoun">'soenk</Subsector>
+      <Subsector Index="L" Lang="Vilani">Siigikhakma</Subsector>
+      <Subsector Index="M" Lang="Ovaghoun-Logasku">Aghoukone</Subsector>
+      <Subsector Index="N" Lang="Ovaghoun">Okhuemgir</Subsector>
+      <Subsector Index="O" Lang="Ovaghoun">Ungludh</Subsector>
+      <Subsector Index="P" Lang="Vilani">Nikhigireki</Subsector>
+    </Subsectors>
+    <Borders>
+      <Border Allegiance="Ga" Color="yellow">2727 2826 2825 2824 2924 3023 3022 3021 3020 3019 3018 3118 3218 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3240 3140 3139 3038 2938 2837 2836 2835 2834 2833 2832 2831 2830 2829 2828 2728 2727</Border>
+      <Border Allegiance="V5" Color="olivedrab">0210 0310 0309 0308 0307 0306 0405 0404 0504 0603 0703 0802 0801 0902 1002 1103 1203 1303 1402 1403 1504 1604 1705 1805 1905 2005 2106 2205 2306 2307 2407 2508 2608 2708 2709 2710 2711 2611 2612 2513 2514 2515 2516 2517 2617 2518 2519 2520 2521 2421 2422 2423 2424 2425 2426 2427 2528 2428 2429 2330 2331 2332 2333 2334 2434 2535 2635 2636 2637 2638 2739 2839 2940 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1041 1141 1240 1340 1339 1338 1337 1336 1335 1234 1334 1333 1332 1331 1330 1329 1328 1327 1326 1225 1224 1223 1323 1322 1321 1320 1319 1218 1217 1216 1116 1115 1014 0914 0913 0912 0811 0711 0610 0510 0410 0310 0210</Border>
+      <Border Allegiance="VG" Color="olivedrab">1501 1600 1700 1800 1900 2000 2100 2200 2201 2302 2402 2503 2402 2303 2203 2103 2002 1902 1802 1703 1602 1601 1501</Border>
+      <Border Allegiance="VN" Color="olivedrab">3007 3008 3109 3209 3310 3311 3312 3313 3212 3112 3012 3011 3010 3009 3008 3007</Border>
+      <Border Allegiance="Ve" Color="olivedrab">0001 0101 0100 0200 0300 0400 0500 0600 0700 0701 0601 0501 0401 0302 0202 0203 0204 0105 0106 0107 0108 0008 0007 0006 0005 0004 0003 0002 0001</Border>
+    </Borders>
+    <Allegiances Source="Vilani and Vargr">
+      <Allegiance Code="Ga">Third Empire of Gashikan</Allegiance>
+      <Allegiance Code="V5">Ruler of Five</Allegiance>
+      <Allegiance Code="VG">Glorious Sons of Raek</Allegiance>
+      <Allegiance Code="VN">Drr'lana Network</Allegiance>
+      <Allegiance Code="Ve">Empire of Varroerth</Allegiance>
+    </Allegiances>
+  </Sector>
+  <Sector>
+    <Y>-3</Y>
+    <X>1</X>
+    <Name>Gashikan</Name>
+    <Name Lang="va">Lloellerz</Name>
+    <Credits>
+      <![CDATA[
+
+               <b>Gashikan</b> sector was designed by Jeff Zeitlin.
+
+               Stellar positions were developed by Joe D. Fugate Sr. and
+               appear in <cite>The MegaTraveller Alien, Volume 1: Vilani
+               &amp; Vargr</cite> (Digest Group Publications, 1990).
+
+      ]]>
+    </Credits>
+    <DataFile Author="Jeff Zeitlin" Source="The Zhodani Base" Ref="http://www.zho.berka.com/data/CLASSIC/sector.pl?sector=GASHIKAN">gashikan.sec</DataFile>
+    <Subsectors>
+      <Subsector Index="A">Gali</Subsector>
+      <Subsector Index="B">Arim</Subsector>
+      <Subsector Index="C">Kikurarkaga</Subsector>
+      <Subsector Index="D">Apdashi</Subsector>
+      <Subsector Index="E">Arirmida</Subsector>
+      <Subsector Index="F">Khishpe</Subsector>
+      <Subsector Index="G">Gikharbe</Subsector>
+      <Subsector Index="H">Edmagali</Subsector>
+      <Subsector Index="I">Ishigisi</Subsector>
+      <Subsector Index="J">Bugkhir</Subsector>
+      <Subsector Index="K">Urshu</Subsector>
+      <Subsector Index="L">Gashikan</Subsector>
+      <Subsector Index="M" Source="Challenge #49">Stand</Subsector>
+      <Subsector Index="N" Source="Challenge #49">Paanir</Subsector>
+      <Subsector Index="O" Source="Challenge #49">Karuin</Subsector>
+      <Subsector Index="P" Source="Challenge #49">Gashilean</Subsector>
+    </Subsectors>
+    <Borders>
+      <Border Allegiance="Ga" Color="yellow">0018 0118 0217 0317 0417 0517 0616 0716 0815 0915 1014 1114 1213 1314 1414 1515 1615 1716 1816 1916 2016 2117 2217 2317 2416 2516 2615 2614 2613 2714 2814 2915 3014 3114 3214 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3240 3141 3040 2940 2839 2740 2640 2540 2440 2439 2339 2238 2138 2038 1939 1839 1739 1638 1539 1439 1340 1240 1140 1039 0940 0839 0740 0640 0541 0441 0341 0241 0141 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018</Border>
+      <Border Allegiance="Jm" ShowLabel="false" Color="teal">1841 1941 2040 2141 2241 2141 2041 1941 1841</Border>
+      <Border Allegiance="VN" Color="olivedrab">0009 0110 0210 0310 0410 0510 0609 0709 0808 0908 1007 1107 1206 1306 1405 1505 1506 1406 1307 1207 1208 1109 1009 0910 0911 0811 0712 0713 0613 0514 0515 0414 0315 0314 0213 0113 0012 0011 0010 0009</Border>
+      <Border Allegiance="VQ" Color="olivedrab">0421 0522 0523 0422 0421</Border>
+      <Border Allegiance="JP" Color="blue" ShowLabel="false">1841 1941 2040 2141 2241 2141 2041 1941 1841</Border>
+    </Borders>
+    <Allegiances>
+      <Allegiance Code="Ga">Third Empire of Gashikan</Allegiance>
+      <Allegiance Code="Jm">Commonwealth of Mendan</Allegiance>
+      <Allegiance Code="VN">Drr'lana Network</Allegiance>
+      <Allegiance Code="VQ">Union of Yoetyqq</Allegiance>
+    </Allegiances>
+  </Sector>
+  <Sector>
+    <Y>-3</Y>
+    <X>2</X>
+    <Name>Trenchans</Name>
+    <Name>Trenchan</Name>
+    <Name Lang="va">Rukhs Dall</Name>
+    <Credits>
+      <![CDATA[
+
+               <b>Trenchans</b> sector was designed by Jeff Zeitlin.
+
+               Stellar positions were developed by Joe D. Fugate Sr. and
+               appear in <cite>The MegaTraveller Alien, Volume 1: Vilani
+               &amp; Vargr</cite> (Digest Group Publications, 1990).
+
+      ]]>
+    </Credits>
+    <DataFile Author="Jeff Zeitlin"     Source="The Zhodani Base" Ref="http://www.zho.berka.com/data/CLASSIC/sector.pl?sector=TRENCHAN">trenchans.sec</DataFile>
+    <Subsectors>
+      <Subsector Index="A">Mumari</Subsector>
+      <Subsector Index="B">Liiriirda</Subsector>
+      <Subsector Index="C">Karlanshi</Subsector>
+      <Subsector Index="D">Kaginaku</Subsector>
+      <Subsector Index="E">Iishur</Subsector>
+      <Subsector Index="F">Shasedimini</Subsector>
+      <Subsector Index="G">Ugamipli</Subsector>
+      <Subsector Index="H">Alariki</Subsector>
+      <Subsector Index="I">Gaar</Subsector>
+      <Subsector Index="J">Akir</Subsector>
+      <Subsector Index="K">Didushilii</Subsector>
+      <Subsector Index="L">Namirkika</Subsector>
+      <Subsector Index="M">Nankishii</Subsector>
+      <Subsector Index="N">Ikii</Subsector>
+      <Subsector Index="O">Ishbigii</Subsector>
+      <Subsector Index="P">Idudika</Subsector>
+    </Subsectors>
+    <Borders>
+      <Border Allegiance="Ga" Color="yellow">0014 0115 0215 0316 0416 0516 0615 0614 0715 0815 0916 0917 1017 1118 1218 1319 1418 1519 1618 1718 1817 1917 2016 2015 2014 1914 2013 2114 2213 2313 2413 2514 2614 2715 2815 2916 3015 3116 3216 3217 3118 3018 3019 3020 3021 3022 3123 3124 3024 3025 3026 3027 3028 3029 3130 3030 3031 2932 2933 2833 2834 2734 2634 2535 2434 2334 2233 2134 2034 1935 1835 1736 1636 1537 1538 1539 1438 1338 1237 1138 1038 0939 0838 0739 0639 0539 0439 0339 0239 0140 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014</Border>
+      <Border Allegiance="VT" Color="olivedrab">0207 0308 0208 0209 0208 0207</Border>
+
+      <Border Allegiance="Vw" Color="olivedrab" WrapLabel="true" Label="Rar Errall">2338 2437 2537 2637 2738 2837 2838 2839 2840 2941 2841 2741 2641 2541 2540 2539 2438 2338</Border>
+      <Border Allegiance="JP" ShowLabel="false" Color="blue">1140 1239 1339 1439 1540 1640 1741 1840 1940 1939 1938 2037 2036 2037 2138 2238 2338 2437 2537 2637 2738 2837 2937 3036 3136 3135 3134 3233 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1140</Border>
+
+    </Borders>
+    <Allegiances>
+      <Allegiance Code="Ga">Third Empire of Gashikan</Allegiance>
+      <Allegiance Code="VT">Trae Aggregation</Allegiance>
+      <Allegiance Code="Vw">Rar Errall (The Wolves Warren)</Allegiance>
+    </Allegiances>
+  </Sector>
+  <Sector>
+    <Y>-3</Y>
+    <X>3</X>
+    <Name Lang="kk">Ktiin'gzat</Name>
+    <Name Lang="va">Ogzuekhfos</Name>
+    <Credits>
+      <![CDATA[
+
+               <b>Ktiin'gzat</b> sector was designed by Leroy W. L. Guatney.
+
+               Stellar positions were developed by Joe D. Fugate Sr. and
+               appear in <cite>The MegaTraveller Alien, Volume 1: Vilani
+               &amp; Vargr</cite> (Digest Group Publications, 1990).
+
+      ]]>
+    </Credits>
+    <DataFile Source="Federation Development Agency" Author="Leroy W. L. Guatney" Ref="http://web.archive.org/web/20071029174129/http://home.earthlink.net/~ngc5139/FDA/">ktiingzat.sec</DataFile>
+    <Subsectors>
+      <Subsector Index="A">Gaengrerdhoerk</Subsector>
+      <Subsector Index="B">Kikakhamkishis</Subsector>
+      <Subsector Index="C">Madaakuklunaa</Subsector>
+      <Subsector Index="D">Ithesea</Subsector>
+      <Subsector Index="E">Mikikuma</Subsector>
+      <Subsector Index="F">Ru Lan</Subsector>
+      <Subsector Index="G">Eru Atso</Subsector>
+      <Subsector Index="H">Asotonitrodes</Subsector>
+      <Subsector Index="I">Ilakhegiki</Subsector>
+      <Subsector Index="J">Andakeg</Subsector>
+      <Subsector Index="K">Mming</Subsector>
+      <Subsector Index="L">Ad Esfazapo</Subsector>
+      <Subsector Index="M">Uztsaadzuelleng</Subsector>
+      <Subsector Index="N">Gzeengoumez</Subsector>
+      <Subsector Index="O">Lalurderzirkuda</Subsector>
+      <Subsector Index="P">Inunugishshaa</Subsector>
+    </Subsectors>
+    <Borders>
+      <Border Allegiance="Ef" Color="purple">0339 0438 0437 0537 0636 0736 0735 0734 0633 0734 0833 0934 1033 1134 1034 1035 1036 1037 1038 1139 1140 1039 0939 0839 0740 0640 0540 0439 0339</Border>
+      <Border Allegiance="VC" Color="olivedrab">2019 2119 2218 2318 2317 2316 2315 2314 2313 2312 2311 2310 2209 2208 2308 2407 2507 2506 2505 2604 2704 2804 2905 3005 3006 3007 3008 3009 3010 3011 3112 3211 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3224 3124 3023 2924 2824 2725 2625 2626 2526 2425 2325 2224 2124 2024 2023 2022 2021 2020 2019</Border>
+
+      <Border Allegiance="JP" ShowLabel="false" Color="blue">0033 0134 0135 0235 0236 0237 0238 0239 0240 0241 0141 0041 0040 0039 0038 0037 0036 0035 0034 0033</Border>
+      <Border Allegiance="JP" ShowLabel="false" Color="blue">1041 1141 1240 1239 1238 1239 1340 1341 1241 1141 1041</Border>
+      <Border Allegiance="JP" ShowLabel="false" Color="blue">1137</Border>
+    </Borders>
+    <Allegiances>
+      <Allegiance Code="Ef">Enclave Famuurueroergoghz</Allegiance>
+      <Allegiance Code="VC">Hezeraek Connective</Allegiance>
+    </Allegiances>
+  </Sector>
+  <Sector>
+    <Y>-3</Y>
+    <X>4</X>
+    <Name Lang="kk">Mugheen't</Name>
+    <Name Lang="va">Ogadogorz</Name>
+    <DataFile Author="John G. Wood" Source="Underdeveloped Sectors" Ref="https://web.archive.org/web/20160205040546/http://homepage.ntlworld.com/elvwood/Traveller/Sectors/">ogadogorz.sec</DataFile>
+    <Borders>
+      <Border Allegiance="VC" Color="olivedrab">0011 0111 0210 0310 0409 0408 0508 0607 0707 0806 0805 0905 1004 1105 1205 1305 1405 1506 1507 1607 1708 1709 1710 1711 1611 1612 1613 1614 1615 1516 1416 1417 1318 1218 1119 1019 0919 0819 0720 0619 0520 0420 0321 0221 0222 0223 0124 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011</Border>
+      <Border Allegiance="VM" Color="olivedrab">0423 0523 0622 0723 0823 0924 0925 0926 0826 0727 0627 0527 0526 0425 0424 0423</Border>
+    </Borders>
+    <Allegiances Source="Vilani and Vargr">
+      <Allegiance Code="VC">Hezeraek Connective</Allegiance>
+      <Allegiance Code="VM">Mazaroegh Dominion</Allegiance>
+    </Allegiances>
+  </Sector>
+  <Sector>
+    <Y>-3</Y>
+    <X>5</X>
+    <Name Lang="kk">Grikr!ng</Name>
+    <Credits>
+      <![CDATA[
+
+               <b>Grikr!ng</b> sector was designed by WG Zeist.
+
+      ]]>
+    </Credits>
+    <DataFile Source="explorerbase" Author="WG Zeist" Ref="https://explorerbase.wordpress.com/grikrng-sector-data/">Grikrng.sec</DataFile>
+    <Subsectors Author="WG Zeist" Ref="https://explorerbase.wordpress.com/grikrng-sector-data/">
+      <Subsector Index="A">Upper Edge</Subsector>
+      <Subsector Index="B">Barren Edge</Subsector>
+      <Subsector Index="C">One System</Subsector>
+      <Subsector Index="D">Above Rock</Subsector>
+      <Subsector Index="E">Hoeknaeth</Subsector>
+      <Subsector Index="F">Starlord Trail</Subsector>
+      <Subsector Index="G">Jungleworld</Subsector>
+      <Subsector Index="H">Rock and Ring</Subsector>
+      <Subsector Index="I">Perdumon</Subsector>
+      <Subsector Index="J">Umsky</Subsector>
+      <Subsector Index="K">Densky Void</Subsector>
+      <Subsector Index="L">Densky</Subsector>
+      <Subsector Index="M">Grikr!ng</Subsector>
+      <Subsector Index="N">Norlee</Subsector>
+      <Subsector Index="O">World Pair</Subsector>
+      <Subsector Index="P">Waterdrop</Subsector>
+    </Subsectors>
+    <Allegiances Author="WG Zeist" Ref="https://explorerbase.wordpress.com/grikrng-sector-data/">
+      <Allegiance Code="V-">Worlds of the Nine Starlords</Allegiance>
+      <Allegiance Code="Pe">Perdumon Alliance</Allegiance>
+      <Allegiance Code="KO">K'kree Outpost</Allegiance>
+    </Allegiances>
+    <Borders Author="WG Zeist" Ref="https://explorerbase.wordpress.com/grikrng-sector-data/">
+      <Border Allegiance="V-" Color="olivedrab">
+        0413 0514 0614 0715 0815 0915 0916 1016 0917 0816 0716 0615 0515 0415 0316 0415 0414 0413
+      </Border>
+      <Border Allegiance="Pe" Color="yellow">
+        0527 0528 0628 0629 0529 0528 0527
+      </Border>
+      <Border Allegiance="KO" Color="lightgreen">
+        0337 0437 0538 0437 0337
+      </Border>
+    </Borders>
+  </Sector>
+  <Sector>
+    <Y>-3</Y>
+    <X>6</X>
+    <Name Lang="kk">Ukaarriit!!b</Name>
+    <Name Lang="kk">Ukoarriit!!b</Name>
+    <Credits>
+      <![CDATA[
+
+               <b>Ukaarriit!!b</b> sector was designed by WG Zeist.
+
+      ]]>
+    </Credits>
+    <DataFile Source="explorerbase" Author="WG Zeist" Ref="https://explorerbase.wordpress.com/ukaarriitb-sector-data/">Ukaarriitb.sec</DataFile>
+    <Subsectors Author="WG Zeist" Ref="https://explorerbase.wordpress.com/ukaarriitb-sector-data/">
+      <Subsector Index="A">Upward Void</Subsector>
+      <Subsector Index="B">System Solo</Subsector>
+      <Subsector Index="C">Above Corner</Subsector>
+      <Subsector Index="D">Inside Island</Subsector>
+      <Subsector Index="E">Snowballs</Subsector>
+      <Subsector Index="F">Surrounded Space</Subsector>
+      <Subsector Index="G">The Corner</Subsector>
+      <Subsector Index="H">Edge Starside</Subsector>
+      <Subsector Index="I">Beltspot</Subsector>
+      <Subsector Index="J">Ring on Edge</Subsector>
+      <Subsector Index="K">Between Stars</Subsector>
+      <Subsector Index="L">Island Fringe</Subsector>
+      <Subsector Index="M">The Fork</Subsector>
+      <Subsector Index="N">Shallow Depths</Subsector>
+      <Subsector Index="O">Shore Barrens</Subsector>
+      <Subsector Index="P">Alsnias</Subsector>
+    </Subsectors>
+  </Sector>
+  <Sector>
+    <Y>-3</Y>
+    <X>7</X>
+    <Name Lang="kk">Kring Noor</Name>
+    <DataFile Author="Jim Kundert" Type="SecondSurvey">Kring Noor.txt</DataFile>
+    <MetadataFile>Kring Noor.xml</MetadataFile>
+  </Sector>
+  <Sector>
+    <Y>-3</Y>
+    <X>8</X>
+    <Name Lang="kk">Mbil!!gh</Name>
+  </Sector>
+  <Sector>
+    <Y>-2</Y>
+    <X>-9</X>
+    <Name Lang="zh">Pliabriebl</Name>
+    <DataFile Author="Marc Miller" Ref="http://farfuture.net/">Pliabriebl.sec</DataFile>
+  </Sector>
+  <Sector>
+    <Y>-2</Y>
+    <X>-8</X>
+    <Name Lang="zh">Eiaplial</Name>
+    <Borders>
+      <Border Allegiance="ZhCo" ShowLabel="false">0000 0100 0200 0300 0400 0500 0600 0700 0800 0900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001 0000</Border>
+    </Borders>
+  </Sector>
+  <Sector>
+    <Y>-2</Y>
+    <X>-7</X>
+    <Name>Zhodane</Name>
+    <Name Lang="zh">Zhdant</Name>
+    <DataFile Author="William Dover and Clay Bush" Publisher="HIWG" Ref="http://www.zho.berka.com/data/CLASSIC/sector.pl?sector=ZHODANE">zhdant.sec</DataFile>
+    <Subsectors Author="William Dover" Publisher="HIWG">
+      <Subsector Index="A">Drevlishienz</Subsector>
+      <Subsector Index="B">Chiashov</Subsector>
+      <Subsector Index="C">Ienjefroda</Subsector>
+      <Subsector Index="D">Chtabra Stonche</Subsector>
+      <Subsector Index="E">Dashipr</Subsector>
+      <Subsector Index="F">Tliaqbravets</Subsector>
+      <Subsector Index="G">Flonzebrienzh</Subsector>
+      <Subsector Index="H" Source="Supplement 11">Gaval</Subsector>
+      <Subsector Index="I">Qlentileche</Subsector>
+      <Subsector Index="J">Adriantkev</Subsector>
+      <Subsector Index="K">Zdefrients</Subsector>
+      <Subsector Index="L">Plelinchier</Subsector>
+      <Subsector Index="M">Mekrashozh</Subsector>
+      <Subsector Index="N">Yevriblrz</Subsector>
+      <Subsector Index="O">Iezranspa</Subsector>
+      <Subsector Index="P">Stieniazhir</Subsector>
+    </Subsectors>
+    <Allegiances>
+      <Allegiance Code="Cw">Chirper World</Allegiance>
+    </Allegiances>
+    <Borders>
+      <Border Allegiance="ZhCo">0009 0109 0208 0308 0307 0306 0305 0304 0203 0303 0302 0402 0502 0601 0701 0801 0901 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009</Border>
+    </Borders>
+  </Sector>
+  <Sector>
+    <Y>-2</Y>
+    <X>-6</X>
+    <Name Lang="zh">Tienspevnekr</Name>
+    <DataFile Author="James Kundert" Type="SecondSurvey">Tienspevnekr.txt</DataFile>
+    <MetadataFile Author="James Kundert">Tienspevnekr.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Ziaf" Tags="Official" Selected="true">
+    <Y>-2</Y>
+    <X>-5</X>
+    <Name Lang="zh">Ziafrplians</Name>
+    <Name Lang="va">Usingou</Name>
+    <DataFile Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Ziafrplians.tab</DataFile>
+    <MetadataFile>Ziafrplians.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Gvur" Tags="Official" Selected="true">
+    <Y>-2</Y>
+    <X>-4</X>
+    <Name Lang="va">Gvurrdon</Name>
+    <Name Lang="zh">Briakqra'</Name>
+    <DataFile Source="Traveller 5 Second Survey" Author="J. Andrew Keith, Marc Miller and John Harshman" Milieu="M1105" Type="TabDelimited">Gvurrdon.tab</DataFile>
+    <MetadataFile>Gvurrdon.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Tugl" Tags="InReview">
+    <Y>-2</Y>
+    <X>-3</X>
+    <Name Lang="va">Tuglikki</Name>
+    <Name Lang="zh">Dravr</Name>
+    <DataFile Author="David Drazul"  Source="Traveller 5 Sector Survey" Milieu="M1105" Type="TabDelimited">Tuglikki.tab</DataFile>
+    <MetadataFile>Tuglikki.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Prov" Tags="InReview">
+    <Y>-2</Y>
+    <X>-2</X>
+    <Name>Provence</Name>
+    <Name Lang="va">Orraenang</Name>
+    <Name Lang="vi">Amshagi</Name>
+    <DataFile Author="David Drazul" Source="Traveller 5 Sector Survey" Milieu="M1105" Type="TabDelimited">Provence.tab</DataFile>
+    <MetadataFile>Provence.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Wind" Tags="InReview">
+    <Y>-2</Y>
+    <X>-1</X>
+    <Name>Windhorn</Name>
+    <Name Lang="va">Gotzdzo</Name>
+    <Name Lang="vi">Kishadikhu</Name>
+    <DataFile Author="John Wood" Source="Traveller 5 Sector Survey" Milieu="M1105" Type="TabDelimited">Windhorn.tab</DataFile>
+    <MetadataFile>Windhorn.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Mesh" Tags="InReview">
+    <Y>-2</Y>
+    <X>0</X>
+    <Name>Meshan</Name>
+    <!-- <Name Lang="va">Arzul</Name> Vilani and Vargr - but duplicate w/ Ingukrax -->
+    <DataFile Author="Michael R. Mikesh" Source="Traveller 5 Sector Survey" Milieu="M1105" Type="TabDelimited">Meshan.tab</DataFile>
+    <MetadataFile>Meshan.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Mend" Tags="InReview">
+    <Y>-2</Y>
+    <X>1</X>
+    <Name>Mendan</Name>
+    <Name Lang="va">Gotzdzo</Name>
+    <DataFile Author="Michael R. Mikesh" Source="Traveller 5 Sector Survey" Milieu="M1105" Type="TabDelimited">Mendan.tab</DataFile>
+    <MetadataFile Source="Challenge #49" Author="Michael R. Mikesh" Publisher="GDW" Ref="http://traveller.mu.org/archive/General/sectors/mendan.vmb" Milieu="M1105">Mendan.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Amdu" Tags="InReview">
+    <Y>-2</Y>
+    <X>2</X>
+    <Name>Amdukan</Name>
+    <Name Lang="va">Outhofos</Name>
+    <DataFile Author="Michael R. Mikesh" Source="Traveller 5 Sector Survey" Milieu="M1105" Type="TabDelimited">Amdukan.tab</DataFile>
+    <MetadataFile Author="Michael R. Mikesh" Source="Challenge #52 (Subsector G)" Publisher="GDW, HIWG" Ref="http://www.ocean-of-storms.com/core/astrogat/dI.htm">Amdukan.xml</MetadataFile>
+  </Sector>
+  <Sector>
+    <Y>-2</Y>
+    <X>3</X>
+    <Name Lang="kk">Ingukrax</Name>
+    <Name Lang="va">Arzul</Name>
+    <DataFile Author="Jeff Zeitlin" Source="The Zhodani Base" Ref="http://zho.berka.com/data/CLASSIC/sector.pl?sector=ARZUL">arzul.sec</DataFile>
+    <MetadataFile Author="Jeff Zeitlin" Source="The Zhodani Base" Ref="http://zho.berka.com/data/CLASSIC/sector.pl?sector=ARZUL">Arzul.xml</MetadataFile>
+  </Sector>
+  <Sector>
+    <Y>-2</Y>
+    <X>4</X>
+    <Name Lang="kk">Gn'hk'r</Name>
+    <Name Lang="va">Gelath</Name>
+    <DataFile Author="John G. Wood" Source="Underdeveloped Sectors" Ref="https://web.archive.org/web/20160205040546/http://homepage.ntlworld.com/elvwood/Traveller/Sectors/">gelath.sec</DataFile>
+    <Subsectors Ref="http://wiki.travellerrpg.com/Gn%27hk%27r_Sector">
+      <Subsector Index="A">'triliir!!gr</Subsector>
+      <Subsector Index="B">N'r Kra Kat</Subsector>
+      <Subsector Index="C">'xeekeekroognee</Subsector>
+      <Subsector Index="D">Faredge</Subsector>
+      <Subsector Index="E">Kakur'rr'k</Subsector>
+      <Subsector Index="F">Gnookatrut</Subsector>
+      <Subsector Index="G">Karurookr</Subsector>
+      <Subsector Index="H">New Rift</Subsector>
+      <Subsector Index="I">Akugasaar</Subsector>
+      <Subsector Index="J">Krib</Subsector>
+      <Subsector Index="K">K!!ngGnik</Subsector>
+      <Subsector Index="L">Kak'hk!rr</Subsector>
+      <Subsector Index="M">Lashashamigbir</Subsector>
+      <Subsector Index="N">Laakib K'ng</Subsector>
+      <Subsector Index="O">Ghelung</Subsector>
+      <Subsector Index="P">Xuxor</Subsector>
+    </Subsectors>
+    <Allegiances Source="Vilani and Vargr">
+      <Allegiance Code="KO" Base="Kk">K'Kree Outpost</Allegiance>
+    </Allegiances>
+    <Routes>
+      <Route Start="2228" End="2025" Type="J-4" Color="White" Style="Dashed" />
+      <Route Start="2025" End="1822" Type="J-4" Color="White" Style="Dashed" />
+      <Route Start="1822" End="1720" Type="J-4" Color="White" Style="Dashed" />
+      <Route Start="1720" End="1417" Type="J-4" Color="White" Style="Dashed" />
+      <Route Start="1417" End="1414" Type="J-4" Color="White" Style="Dashed" />
+    </Routes>
+    <Borders>
+      <Border Allegiance="KO" Color="lightgreen">0202 0303 0402 0503 0603 0703 0802 0903 1003 1104 1203 1303 1402 1503 1603 1704 1705 1706 1806 1807 1808 1809 1710 1610 1511 1512 1513 1413 1414 1314 1214 1115 1015 0916 0815 0716 0616 0516 0415 0316 0315 0314 0213 0212 0211 0210 0310 0309 0308 0307 0306 0205 0204 0203 0202</Border>
+      <Border Allegiance="Kk">1141 1240 1340 1339 1338 1337 1336 1335 1434 1433 1432 1532 1531 1631 1731 1830 1930 2029 2129 2228 2328 2327 2426 2526 2525 2624 2623 2622 2722 2721 2821 2921 3021 3122 3123 3223 3224 3225 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1840 1741 1641 1541 1441 1341 1241 1141</Border>
+    </Borders>
+    <Labels>
+      <Label Hex="1616" Color="white">J-4 Route</Label>
+      <Label Hex="2023" Color="white">J-4 Route</Label>
+    </Labels>
+  </Sector>
+  <Sector>
+    <Y>-2</Y>
+    <X>5</X>
+    <Name Lang="kk">Gur</Name>
+    <DataFile Author="Jim Kundert" Type="SecondSurvey">Gur.txt</DataFile>
+    <MetadataFile>Gur.xml</MetadataFile>
+  </Sector>
+  <Sector>
+    <Y>-2</Y>
+    <X>6</X>
+    <Name Lang="kk">Un'k!!k'ng</Name>
+    <DataFile Author="Jim Kundert" Type="SecondSurvey">Un'k!!k'ng.txt</DataFile>
+    <MetadataFile>Un'k!!k'ng.xml</MetadataFile>
+  </Sector>
+  <Sector>
+    <Y>-2</Y>
+    <X>7</X>
+    <Name Lang="kk">Xaagr</Name>
+    <DataFile Author="Jim Kundert" Type="SecondSurvey">Xaagr.txt</DataFile>
+    <MetadataFile>Xaagr.xml</MetadataFile>
+  </Sector>
+  <Sector>
+    <Y>-2</Y>
+    <X>8</X>
+    <Name Lang="kk">Eekrookrigz</Name>
+  </Sector>
+  <Sector Abbreviation="TDav">
+    <Y>-1</Y>
+    <X>-9</X>
+    <Name Lang="zh">Tsadra Davr</Name>
+  </Sector>
+  <Sector Abbreviation="Tsad">
+    <Y>-1</Y>
+    <X>-8</X>
+    <Name Lang="zh">Tsadra</Name>
+    <Name Publisher="HIWG">Farway</Name>
+    <DataFile Author="Dale Jenkins">Tsadra.sec</DataFile>
+    <Subsectors Author="Dale Jenkins">
+      <Subsector Index="A">Adrablar</Subsector>
+      <Subsector Index="B">Ziebell</Subsector>
+      <Subsector Index="C">Tash</Subsector>
+      <Subsector Index="D">Driaflzha</Subsector>
+      <Subsector Index="E">Ezh'Bremla</Subsector>
+      <Subsector Index="F">Ritsie</Subsector>
+      <Subsector Index="G">Lisheen</Subsector>
+      <Subsector Index="H">Iplzhdr</Subsector>
+      <Subsector Index="I">Adrsidle</Subsector>
+      <Subsector Index="J">Jdibla</Subsector>
+      <Subsector Index="K">Chazhdar</Subsector>
+      <Subsector Index="L">Fjords</Subsector>
+      <Subsector Index="M">Ozenj</Subsector>
+      <Subsector Index="N">Febasi</Subsector>
+      <Subsector Index="O">Shtiaiqr'</Subsector>
+      <Subsector Index="P">Zhdoekl</Subsector>
+    </Subsectors>
+    <Allegiances Author="Dale Jenkins">
+      <Allegiance Code="Ed">Eiaplial Davr</Allegiance>
+      <Allegiance Code="Fj">Fjords</Allegiance>
+      <Allegiance Code="Tn">Tsadra Nadir</Allegiance>
+      <Allegiance Code="Tc">Talpaku Client</Allegiance>
+      <Allegiance Code="Tl">Talpaku Communality</Allegiance>
+    </Allegiances>
+    <Borders>
+      <Border Allegiance="Ed" Color="purple" LabelPosition="1605">1104 1204 1304 1403 1402 1401 1502 1601 1701 1801 1902 1903 2003 2004 2105 2205 2206 2207 2107 2006 1907 1807 1707 1606 1507 1407 1307 1207 1107 1106 1105 1104</Border>
+      <Border Allegiance="Fj" Color="gray" LabelPosition="2725">2322 2422 2522 2622 2722 2822 2922 3022 3123 3223 3124 3125 3025 2926 2927 2928 2827 2826 2726 2625 2525 2424 2324 2323 2322</Border>
+      <Border Allegiance="Tn" Color="tan" LabelPosition="1219">0709 0808 0809 0910 1010 1110 1209 1310 1410 1510 1609 1710 1809 1810 1911 2011 1912 1812 1813 1714 1715 1716 1717 1718 1719 1819 1720 1721 1621 1622 1523 1423 1324 1223 1124 1023 0923 0922 0821 0921 0920 0919 0918 0917 0916 0915 0914 0913 0812 0811 0711 0710 0709</Border>
+      <Border Allegiance="Tl" Color="orange" LabelPosition="3127" WrapLabel="true">
+        3128 3227 3327 3328 3329 3330 3229 3129 3128
+      </Border>
+      <Border Allegiance="ZhCo">1916 2015 2014 2114 2113 2212 2211 2311 2310 2309 2408 2407 2406 2405 2404 2304 2303 2202 2201 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3218 3219 3220 3120 3019 2920 2820 2720 2620 2520 2420 2320 2219 2119 2118 2017 1917 1916</Border>
+    </Borders>
+  </Sector>
+  <Sector>
+    <Y>-1</Y>
+    <X>-7</X>
+    <Name Lang="zh">Yiklerzdanzh</Name>
+    <Name Publisher="HIWG">Horizon's Edge</Name>
+    <DataFile Publisher="HIWG Australia" Author="David Schneider, Grant Sinclair" Source-Milieu="1200" Ref="http://zho.berka.com/data/TNE/sector.pl?sector=YIKLER">yiklerzdanzh.sec</DataFile>
+    <MetadataFile Publisher="HIWG Australia" Author="David Schneider, Grant Sinclair" Source-Milieu="1200" Ref="http://zho.berka.com/data/TNE/sector.pl?sector=YIKLER">Yiklerzdanzh.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Farf" Tags="InReview">
+    <Y>-1</Y>
+    <X>-6</X>
+    <Name>Far Frontiers</Name>
+    <Name Lang="zh">Afachtiabr</Name>
+    <DataFile Author="Dale Kemper; James Kundert" Source="Ares Magazine, The Traveller Chronicle" Type="TabDelimited">Far Frontiers.tab</DataFile>
+    <MetadataFile Author="Dale Kemper; James Kundert" Source="Ares Magazine; The Traveller Chronicle">Far Frontiers.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Fore" Tags="Preserve" Selected="true">
+    <Y>-1</Y>
+    <X>-5</X>
+    <Name>Foreven</Name>
+    <DataFile Source="Foreven Sector Reserve" Milieu="M1105" Type="TabDelimited">Foreven.tab</DataFile>
+    <MetadataFile>Foreven.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Spin" Tags="Official" Selected="true">
+    <Y>-1</Y>
+    <X>-4</X>
+    <Name>Spinward Marches</Name>
+    <Name Lang="zh">Tloql</Name>
+    <DataFile Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Spinward Marches.tab</DataFile>
+    <MetadataFile>Spinward Marches.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Dene" Tags="Official" Selected="true">
+    <Y>-1</Y>
+    <X>-3</X>
+    <Name>Deneb</Name>
+    <Name Lang="zh">Nieklsdia</Name>
+    <DataFile Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Deneb.tab</DataFile>
+    <MetadataFile>Deneb.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Corr" Tags="Official">
+    <Y>-1</Y>
+    <X>-2</X>
+    <Name>Corridor</Name>
+    <Name Lang="vi">Amshagi</Name>
+    <Name Lang="vi">Eneri</Name>
+    <Name Lang="va">Roughantz</Name>
+    <Name Lang="va">Llananae Tourz</Name>
+    <DataFile Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Corridor.tab</DataFile>
+    <MetadataFile>Corridor.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Vlan" Tags="Official">
+    <Y>-1</Y>
+    <X>-1</X>
+    <Name>Vland</Name>
+    <DataFile Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Vland.tab</DataFile>
+    <MetadataFile>Vland.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Lish" Tags="Official">
+    <Y>-1</Y>
+    <X>0</X>
+    <Name>Lishun</Name>
+    <DataFile Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Lishun.tab</DataFile>
+    <MetadataFile>Lishun.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Anta" Tags="Official">
+    <Y>-1</Y>
+    <X>1</X>
+    <Name>Antares</Name>
+    <Name Lang="vi">Mikasirka</Name>
+    <DataFile Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Antares.tab</DataFile>
+    <MetadataFile>Antares.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Empt" Tags="Official">
+    <Y>-1</Y>
+    <X>2</X>
+    <Name>Empty Quarter</Name>
+    <Name Lang="vi">Gushgus</Name>
+    <DataFile Source="Traveller 5 Second Survey" Author="Jason &quot;Flynn&quot; Kemp, Alvin Plummer" Ref="http://stellarreaches.nwgamers.org/" Milieu="M1105" Type="TabDelimited">Empty Quarter.tab</DataFile>
+    <MetadataFile>Empty Quarter.xml</MetadataFile>
+  </Sector>
+  <Sector>
+    <Y>-1</Y>
+    <X>3</X>
+    <Name>Star's End</Name>
+    <DataFile Author="Jeff Zeitlin" Source="The Zhodani Base" Ref="http://zho.berka.com/data/CLASSIC/sector.pl?sector=STARSEND">star-s_end.sec</DataFile>
+    <MetadataFile Author="Jeff Zeitlin" Source="The Zhodani Base" Ref="http://zho.berka.com/data/CLASSIC/sector.pl?sector=STARSEND">Star's End.xml</MetadataFile>
+  </Sector>
+  <Sector>
+    <Y>-1</Y>
+    <X>4</X>
+    <Name Lang="kk">Gh!hken</Name>
+    <DataFile Author="John G. Wood" Source="Underdeveloped Sectors" Ref="https://web.archive.org/web/20160205040546/http://homepage.ntlworld.com/elvwood/Traveller/Sectors/">gh1hken.sec</DataFile>
+    <Subsectors Ref="http://wiki.travellerrpg.com/Gh!hken_Sector">
+      <Subsector Index="B">Xikat Raarr</Subsector>
+      <Subsector Index="C">Ux'x!gn!</Subsector>
+      <Subsector Index="D">K'xratak!'kr!</Subsector>
+      <Subsector Index="H">KuR!l!kr</Subsector>
+      <Subsector Index="L">Ibaar Mi</Subsector>
+      <Subsector Index="P">Kerung</Subsector>
+    </Subsectors>
+    <Allegiances>
+      <Allegiance Code="KC">K'Kree Client State</Allegiance>
+      <Allegiance Code="K1">K'Kree Client State</Allegiance>
+      <Allegiance Code="K2">K'Kree Client State</Allegiance>
+      <Allegiance Code="K3">Gathering of Kirgia</Allegiance>
+      <Allegiance Code="K4">Ka'ra Mandate</Allegiance>
+    </Allegiances>
+    <Borders>
+      <Border Allegiance="K1" Color="lime">1506 1605 1604 1603 1703 1803 1903 2003 2103 2104 2204 2205 2206 2207 2208 2109 2009 1910 1810 1809 1709 1708 1607 1606 1506</Border>
+      <Border Allegiance="K2" Color="lime">1825 1925 1924 1923 2022 2021 2020 2019 2018 2017 2016 2015 2014 2114 2213 2212 2211 2312 2313 2314 2414 2415 2416 2517 2617 2618 2619 2720 2721 2722 2723 2724 2725 2726 2727 2728 2729 2730 2630 2531 2532 2432 2333 2233 2232 2132 2031 2030 2029 1929 1928 1827 1826 1825</Border>
+      <Border Allegiance="K3" Color="yellowgreen">0133 0232 0332 0331 0430 0530 0529 0628 0728 0827 0927 1026 1126 1125 1124 1123 1122 1121 1120 1119 1219 1319 1320 1420 1521 1621 1622 1623 1624 1725 1726 1727 1728 1628 1629 1630 1631 1532 1432 1333 1233 1134 1034 0935 0936 0937 0938 0838 0739 0740 0640 0641 0541 0441 0341 0241 0141 0140 0139 0138 0137 0136 0135 0134 0133</Border>
+      <Border Allegiance="K4" Color="darkgreen">
+        2438 2538 2537 2536 2635 2735 2835 2936 3036 3136 3137 3237 3238 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2540 2539 2438
+      </Border>
+      <Border Allegiance="Kk" LabelPosition="2602">1101 1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3232 3133 3033 3034 2934 2933 2932 2931 2830 2829 2828 2827 2826 2825 2824 2823 2822 2922 2921 2920 2919 2918 2817 2816 2716 2615 2515 2514 2513 2512 2511 2410 2409 2309 2308 2307 2306 2305 2304 2303 2202 2102 2001 1901 1800 1701 1601 1501 1401 1302 1201 1101</Border>
+    </Borders>
+  </Sector>
+  <Sector>
+    <Y>-1</Y>
+    <X>5</X>
+    <Name Lang="kk">Ruupiin</Name>
+    <Subsectors>
+      <Subsector Index="F" Source="MegaTraveller Imperial Encyclopedia">Thirty</Subsector>
+    </Subsectors>
+    <Borders>
+      <Border Allegiance="Kk" ShowLabel="false">0000 0100 0200 0300 0400 0500 0600 0700 0800 0900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001 0000</Border>
+    </Borders>
+
+  </Sector>
+  <Sector>
+    <Y>-1</Y>
+    <X>6</X>
+    <Name Lang="kk">Raakaan</Name>
+    <DataFile Author="Jim Kundert" Type="TabDelimited">Raakaan.tab</DataFile>
+    <MetadataFile>Raakaan.xml</MetadataFile>
+  </Sector>
+  <Sector>
+    <Y>-1</Y>
+    <X>7</X>
+    <Name Lang="kk">Uuk</Name>
+    <DataFile Author="Jim Kundert" Type="SecondSurvey">Uuk.txt</DataFile>
+    <MetadataFile>Uuk.xml</MetadataFile>
+  </Sector>
+  <Sector>
+    <Y>-1</Y>
+    <X>8</X>
+    <Name Lang="kk">Gnaa Iimb'kr</Name>
+  </Sector>
+  <Sector>
+    <Y>0</Y>
+    <X>-9</X>
+    <Name Lang="zh">Chiep Zhez</Name>
+  </Sector>
+  <Sector>
+    <Y>0</Y>
+    <X>-8</X>
+    <Name>Astron</Name>
+    <Name Lang="zh">Shiants</Name>
+    <DataFile Source="CORE" Ref="http://www.ocean-of-storms.com/core/astrogat/f4.htm">astron.sec</DataFile>
+    <!-- Armory Cluster worlds from GURPS Traveller: Sword Worlds, by Hans Rancke-Madsen -->
+    <Subsectors Source="CORE">
+      <Subsector Index="A">Yrgonomi</Subsector>
+      <Subsector Index="B">Ratatta</Subsector>
+      <Subsector Index="C">Obunemias</Subsector>
+      <Subsector Index="D">Gembolia</Subsector>
+      <Subsector Index="E">Klantor</Subsector>
+      <Subsector Index="F">Plutting</Subsector>
+      <Subsector Index="G">Vantor</Subsector>
+      <Subsector Index="H">Haddox</Subsector>
+      <Subsector Index="I">Ingo</Subsector>
+      <Subsector Index="J">Fiqorino</Subsector>
+      <Subsector Index="K">Vyfura</Subsector>
+      <Subsector Index="L">Blahonga</Subsector>
+      <Subsector Index="M">Stane</Subsector>
+      <Subsector Index="N">Vilian</Subsector>
+      <Subsector Index="O">Surgian</Subsector>
+      <Subsector Index="P">Fundibul</Subsector>
+    </Subsectors>
+    <Labels Source="GURPS Traveller: Sword Worlds">
+      <Label Hex="1035">Armory Cluster</Label>
+    </Labels>
+  </Sector>
+  <Sector>
+    <Y>0</Y>
+    <X>-7</X>
+    <Name>Fulani</Name>
+    <Name Lang="zh">Chtedria</Name>
+    <DataFile Source="CORE" Ref="http://www.ocean-of-storms.com/core/astrogat/f5.htm">fulani.sec</DataFile>
+    <Subsectors Source="CORE">
+      <Subsector Index="A">Pieshivl</Subsector>
+      <Subsector Index="B">Aquaria</Subsector>
+      <Subsector Index="C">Bilahew</Subsector>
+      <Subsector Index="D" Source="The Vanguard Reaches" Author="Chuck Kallenbach II" Publisher="Paranoia Press">Lythgoe</Subsector>
+      <Subsector Index="E">Rosorky</Subsector>
+      <Subsector Index="F">Zhdierqr</Subsector>
+      <Subsector Index="G">Tiachtiebria</Subsector>
+      <Subsector Index="H" Source="The Vanguard Reaches" Author="Chuck Kallenbach II" Publisher="Paranoia Press">Vanguard</Subsector>
+      <Subsector Index="I">Encha</Subsector>
+      <Subsector Index="J">Rdrefrn-40</Subsector>
+      <Subsector Index="K">Janzya'jopr</Subsector>
+      <Subsector Index="L" Source="The Vanguard Reaches" Author="Chuck Kallenbach II" Publisher="Paranoia Press">Zachrisson</Subsector>
+      <Subsector Index="M">Eiebl</Subsector>
+      <Subsector Index="N">Jdinchpipr</Subsector>
+      <Subsector Index="O">Ozhev</Subsector>
+      <Subsector Index="P" Source="The Vanguard Reaches" Author="Chuck Kallenbach II" Publisher="Paranoia Press">Idella</Subsector>
+    </Subsectors>
+
+    <Borders>
+      <Border Allegiance="Iz" Color="green">1600 1700 1800 1900 2000 2100 2200 2300 2400 2401 2402 2403 2304 2204 2105 2005 1906 1805 1804 1704 1603 1602 1601 1600</Border>
+    </Borders>
+  </Sector>
+  <Sector Abbreviation="Vang" Tags="InReview">
+    <Y>0</Y>
+    <X>-6</X>
+    <Name>Vanguard Reaches</Name>
+    <DataFile Author="Chuck Kallenbach II"  Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Vanguard Reaches.tab</DataFile>
+    <MetadataFile Author="Chuck Kallenbach II" Publisher="Paranoia Press" Source="Vanguard Reaches" Ref="http://farfuture.net/Contents%20CDROM%20Apocrypha-2.pdf">Vanguard Reaches.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Beyo" Tags="InReview">
+    <Y>0</Y>
+    <X>-5</X>
+    <Name>The Beyond</Name>
+    <Name>Beyond</Name>
+    <Name Lang="as">Lerlairlaii</Name>
+    <Name Lang="zh">Zhdiakltlatl</Name>
+    <DataFile Author="Donald P. Rapp and Chuck Kallenbach II" Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Beyond.tab</DataFile>
+    <MetadataFile Author="Donald P. Rapp and Chuck Kallenbach II">Beyond.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Troj" Tags="Official" Selected="true">
+    <Y>0</Y>
+    <X>-4</X>
+    <Name>Trojan Reach</Name>
+    <Name>Trojan Reaches</Name>
+    <Name Lang="as">Hlaoirloahaurl</Name>
+    <Name Lang="zh">Idrflanta</Name>
+    <DataFile Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Trojan Reach.tab</DataFile>
+    <MetadataFile>Trojan Reach.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Reft" Tags="Official" Selected="true">
+    <Y>0</Y>
+    <X>-3</X>
+    <Name>Reft Sector</Name>
+    <Name>Reft</Name>
+    <Name Lang="zh">Bransakral</Name>
+    <Name Lang="vi">Sushinar</Name>
+    <DataFile Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Reft.tab</DataFile>
+    <MetadataFile>Reft.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Gush" Tags="Official">
+    <Y>0</Y>
+    <X>-2</X>
+    <Name>Gushemege</Name>
+    <DataFile Source="Traveller 5 Second Survey" Author="Joe Fugate, David Burden &amp; Leighton Piper" Milieu="M1105" Type="TabDelimited">Gushemege.tab</DataFile>
+    <!-- ALT: Author="David Burden" Publisher="HIWG" Ref="http://www.converj.com/blogs/gushemege/archives/cat_source_material.html"  -->
+    <MetadataFile>Gushemege.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Dagu" Tags="Official">
+    <Y>0</Y>
+    <X>-1</X>
+    <Name>Dagudashaag</Name>
+    <Name>Dagudashag</Name>
+    <!-- Atlas of the Imperium -->
+    <DataFile Author="Duncan Law-Green, Leighton Piper and Jae Campbell; Martin J. Dougherty" Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Dagudashaag.tab</DataFile>
+    <MetadataFile>Dagudashaag.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Core" Tags="Official">
+    <Y>0</Y>
+    <X>0</X>
+    <Name>Core</Name>
+    <Name Lang="vi">Ukan</Name>
+    <DataFile Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Core.tab</DataFile>
+    <MetadataFile>Core.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Forn" Tags="Official">
+    <Y>0</Y>
+    <X>1</X>
+    <Name>Fornast</Name>
+    <Name Lang="vi">Rishurir</Name>
+    <DataFile Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Fornast.tab</DataFile>
+    <MetadataFile>Fornast.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Ley"  Tags="Official">
+    <Y>0</Y>
+    <X>2</X>
+    <Name>Ley Sector</Name>
+    <Name>Ley</Name>
+    <Name Lang="vi">Makhuniim</Name>
+    <DataFile Author="Martin J. Dougherty and Hunter Gordon" Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Ley.tab</DataFile>
+    <MetadataFile>Ley.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Gate" Tags="InReview">
+    <Y>0</Y>
+    <X>3</X>
+    <Name>Gateway</Name>
+    <DataFile Author="William H. Keith, Jr., Martin J. Dougherty and Hunter Gordon" Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Gateway.tab</DataFile>
+    <MetadataFile>Gateway.xml</MetadataFile>
+  </Sector>
+  <Sector>
+    <Y>0</Y>
+    <X>4</X>
+    <Name Lang="kk">Luretiir!girr</Name>
+    <Name Lang="kk">Luretir!girr</Name>
+    <Name Lang="vi">Emaragamigu</Name>
+    <DataFile Author="Jim Kundert" Type="SecondSurvey">Luretiir!girr.txt</DataFile>
+    <MetadataFile>Luretiir!girr.xml</MetadataFile>
+  </Sector>
+  <Sector>
+    <Y>0</Y>
+    <X>5</X>
+    <Name Lang="kk">X'kug</Name>
+    <Borders>
+      <Border Allegiance="Kk" ShowLabel="false">0000 0100 0200 0300 0400 0500 0600 0700 0800 0900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001 0000</Border>
+    </Borders>
+  </Sector>
+  <Sector>
+    <Y>0</Y>
+    <X>6</X>
+    <Name Lang="kk">Kilong</Name>
+    <Borders>
+      <Border Allegiance="Kk" ShowLabel="false">0000 0100 0200 0300 0400 0500 0600 0700 0800 0900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001 0000</Border>
+    </Borders>
+  </Sector>
+  <Sector>
+    <Y>0</Y>
+    <X>7</X>
+    <Name Lang="kk">Bar'kakr</Name>
+    <DataFile Author="Jim Kundert" Type="SecondSurvey">Bar'kakr.txt</DataFile>
+    <MetadataFile>Bar'kakr.xml</MetadataFile>
+  </Sector>
+  <Sector>
+    <Y>0</Y>
+    <X>8</X>
+    <Name Lang="kk">Mighabohk</Name>
+  </Sector>
+  <Sector>
+    <Y>1</Y>
+    <X>-9</X>
+    <Name Publisher="HIWG">Mavuzog</Name>
+  </Sector>
+  <Sector Abbreviation="Thet" Tags="InReview">
+    <Y>1</Y>
+    <X>-8</X>
+    <Name>Theta Borealis</Name>
+    <DataFile Source="Traveller 5 Second Survey" Author="Bill Bledsaw, Pixie Bledsaw, Mark Holmer, Jeff Johnson, Debi Summerlott and Marc Summerlott" Milieu="M1105" Type="TabDelimited">Theta Borealis.tab</DataFile>
+    <MetadataFile Source="Theta Borealis Sector" Publisher="Group One" Author="Bill Bledsaw, Pixie Bledsaw, Mark Holmer, Jeff Johnson, Debi Summerlott and Marc Summerlott">Theta Borealis.xml</MetadataFile>
+  </Sector>
+  <Sector>
+    <Y>1</Y>
+    <X>-7</X>
+    <Name>Theron</Name>
+    <Name Lang="as">Iykhaiser</Name>
+    <DataFile Author="Jo Grant" Source="CORE, The Zhodani Base" Ref="http://zho.berka.com/data/CLASSIC/sector.pl?sector=THERON">theron.sec</DataFile>
+    <Subsectors Source="CORE">
+      <Subsector Index="A">Terrelay</Subsector>
+      <Subsector Index="B">Ronodik</Subsector>
+      <Subsector Index="C">Babs</Subsector>
+      <Subsector Index="D">Mirdika</Subsector>
+      <Subsector Index="E">Chang-Tu</Subsector>
+      <Subsector Index="F">Olpinures</Subsector>
+      <Subsector Index="G">Plok</Subsector>
+      <Subsector Index="H">Lisqitama</Subsector>
+      <Subsector Index="I">Ubagil</Subsector>
+      <Subsector Index="J">Babadur</Subsector>
+      <Subsector Index="K">Tynvegi</Subsector>
+      <Subsector Index="L">Joseph</Subsector>
+      <Subsector Index="M">Quadrant 01-569</Subsector>
+      <Subsector Index="N">Pozzy</Subsector>
+      <Subsector Index="O">Virtanen</Subsector>
+      <Subsector Index="P">Willwlmo</Subsector>
+    </Subsectors>
+
+    <Borders>
+      <Border Allegiance="Rm" Color="green">2734 2833 2832 2831 2830 2829 2828 2827 2927 3026 3126 3125 3225 3325 3326 3327 3328 3329 3330 3331 3332 3333 3232 3132 3032 2933 2934 2935 2936 2937 2836 2737 2736 2735 2734</Border>
+    </Borders>
+    <Allegiances>
+      <Allegiance Code="Rm">Regency of Muirimi</Allegiance>
+    </Allegiances>
+  </Sector>
+  <Sector>
+    <Y>1</Y>
+    <X>-6</X>
+    <Name>Iphigenaia</Name>
+    <Name Lang="as">Kyatulyare'</Name>
+    <DataFile Source="CORE" Ref="http://www.ocean-of-storms.com/core/astrogat/gA.htm">iphigenaia.sec</DataFile>
+    <Subsectors>
+      <Subsector Index="A" Source="The Vanguard Reaches" Author="Chuck Kallenbach II" Publisher="Paranoia Press">Cheetham</Subsector>
+      <Subsector Index="B" Source="The Vanguard Reaches" Author="Chuck Kallenbach II" Publisher="Paranoia Press">La Grone</Subsector>
+      <Subsector Index="C" Source="The Vanguard Reaches" Author="Chuck Kallenbach II" Publisher="Paranoia Press">Keflin</Subsector>
+      <Subsector Index="D" Source="The Vanguard Reaches" Author="Chuck Kallenbach II" Publisher="Paranoia Press">Shillelagh</Subsector>
+      <Subsector Index="E">Tempoko</Subsector>
+      <Subsector Index="F">Noriega</Subsector>
+      <Subsector Index="G">Warzone</Subsector>
+      <Subsector Index="H">Iyarl</Subsector>
+      <Subsector Index="I">Zebylono</Subsector>
+      <Subsector Index="J">Maria</Subsector>
+      <Subsector Index="K">Ykoroni</Subsector>
+      <Subsector Index="L">Ftyeeta</Subsector>
+      <Subsector Index="M">Riter</Subsector>
+      <Subsector Index="N">Emma</Subsector>
+      <Subsector Index="O">Bablari</Subsector>
+      <Subsector Index="P">Eikaoweal</Subsector>
+    </Subsectors>
+    <Borders>
+      <Border Allegiance="As">2008 2108 2107 2206 2205 2305 2304 2303 2302 2401 2502 2602 2703 2802 2903 3003 3104 3203 3303 3304 3305 3306 3307 3308 3309 3310 3209 3109 3009 2910 2810 2811 2812 2712 2711 2610 2510 2409 2309 2208 2109 2008</Border>
+      <Border Allegiance="Rm" Color="green">0025 0125 0224 0324 0423 0523 0622 0722 0821 0921 0920 1019 1018 1017 1117 1217 1318 1418 1519 1619 1620 1721 1821 1822 1823 1724 1725 1726 1626 1527 1427 1327 1226 1126 1025 0926 0826 0727 0627 0528 0428 0329 0330 0331 0332 0333 0233 0133 0032 0031 0030 0029 0028 0027 0026 0025</Border>
+    </Borders>
+    <Allegiances>
+      <Allegiance Code="Rm">Regency of Muirimi</Allegiance>
+    </Allegiances>
+  </Sector>
+  <Sector>
+    <Y>1</Y>
+    <X>-5</X>
+    <Name>Touchstone</Name>
+    <Name Lang="as">Weasuirlaoa</Name>
+    <DataFile Source="CORE" Ref="http://www.ocean-of-storms.com/core/astrogat/gB.htm">touchstone.sec</DataFile>
+    <Subsectors>
+      <Subsector Index="A">Ekteiu</Subsector>
+      <Subsector Index="B">Kyahiyleakhaw</Subsector>
+      <Subsector Index="C">Hiryarloah</Subsector>
+      <Subsector Index="D">Eietorl Easea'</Subsector>
+      <Subsector Index="E">A Ekhyolyooul</Subsector>
+      <Subsector Index="F">Iheihoarla</Subsector>
+      <Subsector Index="G">Aosola</Subsector>
+      <Subsector Index="H">Ikairleah</Subsector>
+      <Subsector Index="I">Earluiloiw</Subsector>
+      <Subsector Index="J">Taikhahriysea'yoruh</Subsector>
+      <Subsector Index="K">Tarlaihiyr</Subsector>
+      <Subsector Index="L">Oheaaye'eal</Subsector>
+      <Subsector Index="M">Iywe'uar</Subsector>
+      <Subsector Index="N">Hritihtoi</Subsector>
+      <Subsector Index="O">Ayaau'khte</Subsector>
+      <Subsector Index="P">Ala'ourl</Subsector>
+    </Subsectors>
+    <!--
+        <Subsectors Source="CORE">
+            <Subsector Index="A">Oneh</Subsector>
+            <Subsector Index="B">Tuscany</Subsector>
+            <Subsector Index="C">Severn</Subsector>
+            <Subsector Index="D">Cheketae</Subsector>
+        </Subsectors>
+-->
+    <Borders>
+      <Border Allegiance="As" LabelPosition="0409">0003 0103 0202 0303 0403 0503 0603 0703 0802 0903 1003 1104 1105 1106 1107 1108 1109 1209 1210 1211 1212 1213 1114 1014 1015 1016 0916 0815 0715 0615 0516 0517 0417 0317 0316 0315 0314 0313 0212 0211 0210 0110 0009 0008 0007 0006 0005 0004 0003</Border>
+      <Border Allegiance="As" LabelPosition="2705">2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3208 3109 3009 3010 2910 2810 2711 2610 2510 2509 2508 2507 2406 2405 2404 2304 2303 2202 2102 2101 2000</Border>
+    </Borders>
+  </Sector>
+  <Sector Abbreviation="Rift" Tags="Official">
+    <Y>1</Y>
+    <X>-4</X>
+    <Name>Riftspan Reaches</Name>
+    <Name Lang="as">Iiyoihakh</Name>
+    <DataFile Source="Traveller 5 Second Survey" Milieu="M1105" Author="Joe Fugate" Type="TabDelimited">Riftspan Reaches.tab</DataFile>
+    <MetadataFile Source="Traveller 5 Second Survey" Milieu="M1105" Author="Joe Fugate">Riftspan Reaches.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Verg" Tags="Official">
+    <Y>1</Y>
+    <X>-3</X>
+    <Name>Verge</Name>
+    <Name Lang="as">Khtiyhkokaeiw</Name>
+    <Name Lang="vi">Shaakasi</Name>
+    <DataFile Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Verge.tab</DataFile>
+    <MetadataFile>Verge.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Ilel" Tags="Official">
+    <Y>1</Y>
+    <X>-2</X>
+    <Name>Ilelish</Name>
+    <DataFile Author="Martin J. Dougherty" Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Ilelish.tab</DataFile>
+    <MetadataFile>Ilelish.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Zaru" Tags="Official">
+    <Y>1</Y>
+    <X>-1</X>
+    <Name>Zarushagar</Name>
+    <DataFile Source="Traveller 5 Second Survey" Author="Greg Videll, Martin J. Dougherty" Milieu="M1105" Type="TabDelimited">Zarushagar.tab</DataFile>
+    <MetadataFile>Zarushagar.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Mass" Tags="Official">
+    <Y>1</Y>
+    <X>0</X>
+    <Name Source="DGP">Massilia</Name>
+    <Name Source="GDW">Massila</Name>
+    <Name Lang="vi">Masilaa</Name>
+    <DataFile Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Massilia.tab</DataFile>
+    <MetadataFile>Massilia.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Delp" Tags="Official">
+    <Y>1</Y>
+    <X>1</X>
+    <Name>Delphi</Name>
+    <Name Lang="vi">Manadish Khurem</Name>
+    <DataFile Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Delphi.tab</DataFile>
+    <MetadataFile>Delphi.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Glim" Tags="Official">
+    <Y>1</Y>
+    <X>2</X>
+    <Name>Glimmerdrift Reaches</Name>
+    <Name>Glimmerdrift</Name>
+    <DataFile Author="Martin J. Dougherty and Hunter Gordon" Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Glimmerdrift.tab</DataFile>
+    <MetadataFile>Glimmerdrift.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Cruc" Tags="InReview">
+    <Y>1</Y>
+    <X>3</X>
+    <Name>Crucis Margin</Name>
+    <DataFile Author="Martin J. Dougherty and Hunter Gordon" Source="Traveller 5 Sector Survey" Milieu="M1105" Type="TabDelimited">Crucis Margin.tab</DataFile>
+    <MetadataFile>Crucis Margin.xml</MetadataFile>
+  </Sector>
+  <Sector>
+    <Y>1</Y>
+    <X>4</X>
+    <Name Lang="kk">Kaa G!'kul</Name>
+    <Name Lang="hv">Numbis</Name>
+    <Name Lang="vi">Galiin</Name>
+    <DataFile Author="Leroy W. L. Guatney, Mike McKeown" Milieu="M1105" Ref="https://travellermap.com/data/Kaa%20G!kul">Kaa G!kul.sec</DataFile>
+    <MetadataFile>Kaa G!'kul.xml</MetadataFile>
+  </Sector>
+  <Sector>
+    <Y>1</Y>
+    <X>5</X>
+    <Name Lang="kk">Gzirr!k'l</Name>
+    <DataFile Author="Mark Humphreys">Gzirr!k'l.sec</DataFile>
+    <MetadataFile Author="Mark Humphreys">Gzirr!k'l.xml</MetadataFile>
+  </Sector>
+  <Sector>
+    <Y>1</Y>
+    <X>6</X>
+    <Name Lang="kk">K'trekreer</Name>
+    <DataFile Author="Mark Humphreys">K'trekreer.sec</DataFile>
+    <MetadataFile Author="Mark Humphreys">K'trekreer.xml</MetadataFile>
+  </Sector>
+  <Sector>
+    <Y>1</Y>
+    <X>7</X>
+    <Name Lang="kk">Nuughe</Name>
+    <DataFile Author="Jim Kundert" Type="TabDelimited">Nuughe.tab</DataFile>
+    <MetadataFile>Nuughe.xml</MetadataFile>
+  </Sector>
+  <Sector>
+    <Y>1</Y>
+    <X>8</X>
+    <Name Lang="kk">N!!krumbiix</Name>
+  </Sector>
+  <Sector>
+    <Y>2</Y>
+    <X>-9</X>
+    <Name Lang="as" Publisher="HIWG">Harea</Name>
+    <Credits>
+      <![CDATA[
+
+               <b>Harea</b> sector was designed by WG Zeist.
+
+      ]]>
+    </Credits>
+    <DataFile Author="WG Zeist" Source="explorerbase" Ref="https://explorerbase.wordpress.com/harea-sector-data/">Harea.sec</DataFile>
+    <Subsectors Author="WG Zeist" Ref="https://explorerbase.wordpress.com/harea-sector-data/">
+      <Subsector Index="A">Hkoullourou</Subsector>
+      <Subsector Index="B">Aokhatea</Subsector>
+      <Subsector Index="C">Ealisyw</Subsector>
+      <Subsector Index="D">Satakheya</Subsector>
+      <Subsector Index="E">Seatheya</Subsector>
+      <Subsector Index="F">Tealiaia</Subsector>
+      <Subsector Index="G">Eal</Subsector>
+      <Subsector Index="H">Rlalrrou</Subsector>
+      <Subsector Index="I">Oialesthlya</Subsector>
+      <Subsector Index="J">Yelseawah</Subsector>
+      <Subsector Index="K">Ktaahkyo</Subsector>
+      <Subsector Index="L">Thealouh</Subsector>
+      <Subsector Index="M">Fteiyou</Subsector>
+      <Subsector Index="N">Hatriy</Subsector>
+      <Subsector Index="O">Ekthkawa</Subsector>
+      <Subsector Index="P">Fiyraoi</Subsector>
+    </Subsectors>
+  </Sector>
+  <Sector>
+    <Y>2</Y>
+    <X>-8</X>
+    <Name Lang="as">Khaeaw</Name>
+    <DataFile Source="CORE" Ref="http://www.ocean-of-storms.com/core/astrogat/h4.htm">khaeaw.sec</DataFile>
+    <Subsectors Source="CORE">
+      <Subsector Index="A">Hloeaoaa</Subsector>
+      <Subsector Index="B">Houkhtearl</Subsector>
+      <Subsector Index="C">Styehfyeao</Subsector>
+      <Subsector Index="D">Ihohea</Subsector>
+      <Subsector Index="E">Til</Subsector>
+      <Subsector Index="F">Hteikhea</Subsector>
+      <Subsector Index="G">Herealarl</Subsector>
+      <Subsector Index="H">Liyhiyea</Subsector>
+      <Subsector Index="I">Hfaaohkah</Subsector>
+      <Subsector Index="J">Khtuktiyh</Subsector>
+      <Subsector Index="K">Elahakh</Subsector>
+      <Subsector Index="L">Oiee</Subsector>
+      <Subsector Index="M">Uiwour</Subsector>
+      <Subsector Index="N">Uahtoealre</Subsector>
+      <Subsector Index="O">Ktourah</Subsector>
+      <Subsector Index="P">Fteisaueiea</Subsector>
+    </Subsectors>
+  </Sector>
+  <Sector>
+    <Y>2</Y>
+    <X>-7</X>
+    <Name Lang="as">Faoheiroi'iyhao</Name>
+    <DataFile Source="CORE" Ref="http://www.ocean-of-storms.com/core/astrogat/h5.htm">faoheiroi-iyhao.sec</DataFile>
+    <Subsectors Source="CORE">
+      <Subsector Index="A">Oiailau</Subsector>
+      <Subsector Index="B">Esuawa</Subsector>
+      <Subsector Index="C">Kektaiw</Subsector>
+      <Subsector Index="D">Waoasi</Subsector>
+      <Subsector Index="E">Uileftotia</Subsector>
+      <Subsector Index="F">Uasiy'</Subsector>
+      <Subsector Index="G">Wyoiyioi</Subsector>
+      <Subsector Index="H">Hwoirahwai</Subsector>
+      <Subsector Index="I">Yelrakhakh</Subsector>
+      <Subsector Index="J">Keaseawah</Subsector>
+      <Subsector Index="K">Taeafaiiha</Subsector>
+      <Subsector Index="L">Htauiroaei</Subsector>
+      <Subsector Index="M">Eakhatriy</Subsector>
+      <Subsector Index="N">Kawa</Subsector>
+      <Subsector Index="O">Fiyreas</Subsector>
+      <Subsector Index="P">Ealoi</Subsector>
+    </Subsectors>
+  </Sector>
+  <Sector>
+    <Y>2</Y>
+    <X>-6</X>
+    <Name Lang="as">Ftaoiyekyu</Name>
+    <DataFile Source="CORE" Ref="http://www.ocean-of-storms.com/core/astrogat/hA.htm">ftaoiyekyu.sec</DataFile>
+    <Subsectors Source="CORE">
+      <Subsector Index="A">Uir</Subsector>
+      <Subsector Index="B">Yerler</Subsector>
+      <Subsector Index="C">Oua</Subsector>
+      <Subsector Index="D">Kouyelaos</Subsector>
+      <Subsector Index="E">Iylileal</Subsector>
+      <Subsector Index="F">Ftealr</Subsector>
+      <Subsector Index="G">Hroarlalesoa</Subsector>
+      <Subsector Index="H">Sur</Subsector>
+      <Subsector Index="I">Aieauo</Subsector>
+      <Subsector Index="J">Leahoilrihe</Subsector>
+      <Subsector Index="K">Easou</Subsector>
+      <Subsector Index="L">Aiworlaisaoh</Subsector>
+      <Subsector Index="M">Iewyu</Subsector>
+      <Subsector Index="N">Ktyaoireikh</Subsector>
+      <Subsector Index="O">Iaeyaiy</Subsector>
+      <Subsector Index="P">Aeaiy</Subsector>
+    </Subsectors>
+    <Borders>
+      <Border Allegiance="As">1341 1440 1439 1539 1638 1738 1838 1938 2037 2138 2237 2337 2436 2536 2535 2635 2736 2835 2935 3034 3134 3233 3232 3231 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341</Border>
+    </Borders>
+  </Sector>
+  <Sector>
+    <Y>2</Y>
+    <X>-5</X>
+    <Name Lang="as">Afawahisa</Name>
+    <DataFile Source="CORE" Ref="http://www.ocean-of-storms.com/core/astrogat/hB.htm">afawahisa.sec</DataFile>
+    <Subsectors Source="CORE">
+      <Subsector Index="A">Hkao</Subsector>
+      <Subsector Index="B">Steakheya</Subsector>
+      <Subsector Index="C">Etaa</Subsector>
+      <Subsector Index="D">Aoaakhaowea</Subsector>
+      <Subsector Index="E">Hkyewaol</Subsector>
+      <Subsector Index="F">Khtoueaesih</Subsector>
+      <Subsector Index="G">Hahkuleiea</Subsector>
+      <Subsector Index="H">Ahesailiyhah</Subsector>
+      <Subsector Index="I">Yuyahtao</Subsector>
+      <Subsector Index="J">Iuatyeleahoi</Subsector>
+      <Subsector Index="K">Oarua</Subsector>
+      <Subsector Index="L">Ryuwahah</Subsector>
+      <Subsector Index="M">Htaoeasee</Subsector>
+      <Subsector Index="N">Tousyosyesoh</Subsector>
+      <Subsector Index="O">Hkiyiyfteah</Subsector>
+      <Subsector Index="P">Ehrelew</Subsector>
+    </Subsectors>
+    <Borders>
+      <Border Allegiance="As">0031 0131 0230 0331 0430 0530 0629 0729 0728 0828 0929 1028 1128 1228 1329 1428 1528 1628 1728 1827 1928 2028 2129 2228 2328 2327 2326 2425 2525 2524 2624 2724 2823 2923 3022 3122 3121 3120 3119 3218 3217 3216 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031</Border>
+    </Borders>
+  </Sector>
+  <Sector Abbreviation="Hlak" Tags="Official">
+    <Y>2</Y>
+    <X>-4</X>
+    <Name Lang="as">Hlakhoi</Name>
+    <Credits>
+      <![CDATA[
+
+               <b>Hlakhoi</b> sector was designed by Marc W. Miller and
+               appears in <cite>Atlas of the Imperium</cite> (GDW,
+               1984).
+
+      ]]>
+    </Credits>
+    <DataFile Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Hlakhoi.tab</DataFile>
+    <Subsectors Source="CORE">
+      <Subsector Index="A">Oheerl</Subsector>
+      <Subsector Index="B">Sehea</Subsector>
+      <Subsector Index="C">Yuaoeitreakh</Subsector>
+      <Subsector Index="D">Eakhteuiei</Subsector>
+      <Subsector Index="E">Faeifahoi</Subsector>
+      <Subsector Index="F">Atleh</Subsector>
+      <Subsector Index="G">Iyta</Subsector>
+      <Subsector Index="H">Keteaoirloah</Subsector>
+      <Subsector Index="I">Aftyusoiryo</Subsector>
+      <Subsector Index="J">Eahkoeaherl</Subsector>
+      <Subsector Index="K">Koa</Subsector>
+      <Subsector Index="L">Realitaukhei</Subsector>
+      <Subsector Index="M">Akhtai</Subsector>
+      <Subsector Index="N">Eaftaus</Subsector>
+      <Subsector Index="O">Uisoayeh</Subsector>
+      <Subsector Index="P">Yoyoyeouh</Subsector>
+    </Subsectors>
+    <Borders>
+      <Border Allegiance="As">0016 0116 0215 0214 0213 0212 0112 0211 0311 0310 0409 0509 0608 0708 0707 0706 0705 0704 0703 0602 0502 0602 0703 0803 0904 1004 1104 1203 1303 1402 1401 1502 1601 1600 1700 1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016</Border>
+    </Borders>
+  </Sector>
+  <Sector Abbreviation="Eali" Tags="Official">
+    <Y>2</Y>
+    <X>-3</X>
+    <Name Lang="as">Ealiyasiyw</Name>
+    <DataFile Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Ealiyasiyw.tab</DataFile>
+    <MetadataFile Source="Traveller 5 Second Survey" Milieu="M1105">Ealiyasiyw.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Reav" Tags="Official">
+    <Y>2</Y>
+    <X>-2</X>
+    <Name>Reaver's Deep</Name>
+    <Name>Reavers' Deep</Name>
+    <Name>Reavers Deep</Name>
+    <Name Lang="as">Aeitle Sakh</Name>
+    <DataFile Source="Traveller 5 Second Survey" Author="J. Andrew Keith" Milieu="M1105" Type="TabDelimited">Reavers Deep.tab</DataFile>
+    <MetadataFile>Reavers Deep.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Daib" Tags="Official">
+    <Y>2</Y>
+    <X>-1</X>
+    <Name>Daibei</Name>
+    <Name Lang="vi">Lankhisidam</Name>
+    <DataFile Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Daibei.tab</DataFile>
+    <MetadataFile>Daibei.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Dias" Tags="Official">
+    <Y>2</Y>
+    <X>0</X>
+    <Name>Diaspora</Name>
+    <Name Lang="vi">Nakulakak</Name>
+    <DataFile Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Diaspora.tab</DataFile>
+    <MetadataFile>Diaspora.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Olde" Tags="Official">
+    <Y>2</Y>
+    <X>1</X>
+    <Name>Old Expanses</Name>
+    <Name Lang="vi">Mikadira</Name>
+    <DataFile Source="Traveller 5 Second Survey" Author="Jim Cunningham, Gordon Sheridan, Craig Johnson" Milieu="M1105" Type="TabDelimited">Old Expanses.tab</DataFile>
+    <MetadataFile>Old Expanses.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Hint" Tags="Official">
+    <Y>2</Y>
+    <X>2</X>
+    <Name>Hinterworlds</Name>
+    <DataFile Author="Rob Caswell and Karl Johnson" Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Hinterworlds.tab</DataFile>
+    <MetadataFile>Hinterworlds.xml</MetadataFile>
+  </Sector>
+  <Sector>
+    <Y>2</Y>
+    <X>3</X>
+    <Name>Leonidae</Name>
+    <DataFile Source="The Zhodani Base" Author="Michael Allyn &quot;MADDOG&quot; Davis" Ref="http://zho.berka.com/data/CLASSIC/sector.pl?sector=LEONIDAE">leonidae.sec</DataFile>
+    <Subsectors>
+      <Subsector Index="A" Source="Challenge #39">Nejim</Subsector>
+      <Subsector Index="B">Sastanna</Subsector>
+      <Subsector Index="C">Kah-Wak</Subsector>
+      <Subsector Index="D">Ijuw</Subsector>
+      <Subsector Index="E" Source="Challenge #39">Valc</Subsector>
+      <Subsector Index="F">Linnae</Subsector>
+      <Subsector Index="G">Lombard</Subsector>
+      <Subsector Index="H">Roncus</Subsector>
+      <Subsector Index="I" Source="Challenge #39">Zej</Subsector>
+      <Subsector Index="J">Ghidini</Subsector>
+      <Subsector Index="K">Persas</Subsector>
+      <Subsector Index="L">Balneario</Subsector>
+      <Subsector Index="M" Source="Challenge #39">Yuddunn</Subsector>
+      <Subsector Index="N">Ruffoi</Subsector>
+      <Subsector Index="O">Cujus</Subsector>
+      <Subsector Index="P">Melantris</Subsector>
+    </Subsectors>
+    <Allegiances Source="BeRKA">
+      <Allegiance Code="Cr">Corona Regnum</Allegiance>
+      <Allegiance Code="Cu">Cytrialin Unity</Allegiance>
+      <Allegiance Code="Gi">Gniivi</Allegiance>
+      <Allegiance Code="Ia">Ithklur Aexzz</Allegiance>
+      <Allegiance Code="Lp">Council of Leh Perash</Allegiance>
+      <Allegiance Code="Na">Non-Aligned</Allegiance>
+      <Allegiance Code="--">Unknown</Allegiance>
+    </Allegiances>
+    <Borders>
+      <Border Allegiance="Cr" Color="goldenrod">3001 3102 3201 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3315 3314 3313 3312 3311 3210 3110 3010 3009 3008 3007 3006 3005 3004 3003 3002 3001</Border>
+      <Border Allegiance="Cu" Color="orange">0001 0102 0201 0301 0401 0501 0502 0602 0503 0403 0404 0405 0406 0407 0408 0509 0510 0410 0411 0312 0211 0112 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001</Border>
+      <Border Allegiance="Gi" Color="hotpink">0017 0118 0218 0219 0320 0321 0322 0323 0324 0224 0125 0124 0023 0022 0021 0020 0019 0018 0017</Border>
+      <Border Allegiance="Ia" Color="pink" WrapLabel="true">2240 2340 2439 2438 2539 2638 2739 2838 2938 3037 3036 3035 3135 3234 3233 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2840 2741 2641 2541 2441 2341 2240</Border>
+      <Border Allegiance="Lp" Color="blue">0033 0133 0232 0231 0230 0330 0429 0428 0528 0527 0626 0625 0725 0724 0824 0725 0625 0626 0627 0628 0729 0730 0731 0732 0632 0533 0433 0434 0435 0436 0537 0538 0539 0438 0339 0239 0238 0138 0137 0036 0035 0034 0033</Border>
+    </Borders>
+  </Sector>
+  <Sector>
+    <Y>2</Y>
+    <X>4</X>
+    <Name>Extolian</Name>
+    <Name Lang="kk">Krurrihkugr</Name>
+    <DataFile Source="Federation Development Agency" Author="Leroy W. L. Guatney" Ref="http://web.archive.org/web/20071029174129/http://home.earthlink.net/~ngc5139/FDA/">extolian.sec</DataFile>
+    <MetadataFile Author="Mark Humphreys">Extolian.xml</MetadataFile>
+  </Sector>
+  <Sector>
+    <Y>2</Y>
+    <X>5</X>
+    <Name Lang="hv">Ricenden</Name>
+    <Name Lang="hv">Guaran</Name>
+    <Name Lang="kk">Gnoghikt!</Name>
+    <DataFile Author="Mark Humphreys">Ricenden.sec</DataFile>
+    <MetadataFile Author="Mark Humphreys">Ricenden.xml</MetadataFile>
+    <!--
+    <Subsectors>
+      <Subsector Index="I" Source="Supplement 8 - Library Data A-M">Hive</Subsector>
+    </Subsectors>
+-->
+  </Sector>
+  <Sector>
+    <Y>2</Y>
+    <X>6</X>
+    <Name Lang="hv">Blaskon</Name>
+    <Name Lang="kk">Okteekrul</Name>
+    <DataFile Author="Mark Humphreys">Blaskon.sec</DataFile>
+    <MetadataFile Author="Mark Humphreys">Blaskon.xml</MetadataFile>
+  </Sector>
+  <Sector>
+    <Y>2</Y>
+    <X>7</X>
+    <Name Lang="hv">Nooq</Name>
+    <Name Lang="kk">Hkimbiipam</Name>
+    <DataFile Author="Mark Humphreys">Nooq.sec</DataFile>
+    <MetadataFile Author="Mark Humphreys">Nooq.xml</MetadataFile>
+  </Sector>
+  <Sector>
+    <Y>2</Y>
+    <X>8</X>
+    <Name Lang="kk">Gzektixk</Name>
+    <Name Lang="hv" Publisher="HIWG">Trork</Name>
+  </Sector>
+  <Sector>
+    <Y>3</Y>
+    <X>-9</X>
+    <Name Lang="as" Publisher="HIWG">Tlyasea</Name>
+    <Credits>
+      <![CDATA[
+
+               <b>Tlyasea</b> sector was designed by WG Zeist.
+
+      ]]>
+    </Credits>
+    <DataFile Author="WG Zeist" Source="explorerbase" Ref="https://explorerbase.wordpress.com/tlyasea-sector-data/">Tlyasea.sec</DataFile>
+    <Subsectors Author="WG Zeist" Ref="https://explorerbase.wordpress.com/tlyasea-sector-data/">
+      <Subsector Index="A">Waroheya</Subsector>
+      <Subsector Index="B">Hewew</Subsector>
+      <Subsector Index="C">Hka'youk</Subsector>
+      <Subsector Index="D">Roueal</Subsector>
+      <Subsector Index="E">Rkalhourou</Subsector>
+      <Subsector Index="F">Eaheyata</Subsector>
+      <Subsector Index="G">Kawafteiyh</Subsector>
+      <Subsector Index="H">Yeawe</Subsector>
+      <Subsector Index="I">Fteiyoulourou</Subsector>
+      <Subsector Index="J">Akafutah</Subsector>
+      <Subsector Index="K">Theaiwatak</Subsector>
+      <Subsector Index="L">Staroulr</Subsector>
+      <Subsector Index="M">Khara'tak</Subsector>
+      <Subsector Index="N">Oitourar</Subsector>
+      <Subsector Index="O">Houklkhaeaw</Subsector>
+      <Subsector Index="P">Aohahwe</Subsector>
+    </Subsectors>
+  </Sector>
+  <Sector>
+    <Y>3</Y>
+    <X>-8</X>
+    <Name Lang="as">Hkakhaeaw</Name>
+    <DataFile Source="CORE" Ref="http://www.ocean-of-storms.com/core/astrogat/i4.htm">hkakhaeaw.sec</DataFile>
+    <Subsectors Source="CORE">
+      <Subsector Index="A">Iyye</Subsector>
+      <Subsector Index="B">Yow</Subsector>
+      <Subsector Index="C">Ieaaololi'</Subsector>
+      <Subsector Index="D">Eisyekhye</Subsector>
+      <Subsector Index="E">Kaalakhi</Subsector>
+      <Subsector Index="F">Hkear</Subsector>
+      <Subsector Index="G">Aihte'yah</Subsector>
+      <Subsector Index="H">Iytoir</Subsector>
+      <Subsector Index="I">Aoowea</Subsector>
+      <Subsector Index="J">Oeasuihye</Subsector>
+      <Subsector Index="K">Atyeiykhye</Subsector>
+      <Subsector Index="L">Eawoaaaoiy</Subsector>
+      <Subsector Index="M">Khuitaosal</Subsector>
+      <Subsector Index="N">Aiei</Subsector>
+      <Subsector Index="O">Aikhui</Subsector>
+      <Subsector Index="P">Feiko</Subsector>
+    </Subsectors>
+    <Borders>
+      <Border Allegiance="As">2539 2638 2637 2636 2635 2634 2633 2733 2832 2831 2830 2931 3030 3130 3229 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2540 2539</Border>
+    </Borders>
+  </Sector>
+  <Sector>
+    <Y>3</Y>
+    <X>-7</X>
+    <Name Lang="as">Esai'yo</Name>
+    <DataFile Source="CORE" Ref="http://www.ocean-of-storms.com/core/astrogat/i5.htm">esai-yo.sec</DataFile>
+    <Subsectors Source="CORE">
+      <Subsector Index="A">Ekhtaoe</Subsector>
+      <Subsector Index="B">Ktehlaahkyo</Subsector>
+      <Subsector Index="C">Ealehyalokhi</Subsector>
+      <Subsector Index="D">Orletroi</Subsector>
+      <Subsector Index="E">Hie</Subsector>
+      <Subsector Index="F">Ktiya'eai</Subsector>
+      <Subsector Index="G">Kikekheirol</Subsector>
+      <Subsector Index="H">Ftalea</Subsector>
+      <Subsector Index="I">Eahiheiar</Subsector>
+      <Subsector Index="J">Eaaufua</Subsector>
+      <Subsector Index="K">Eaheouya</Subsector>
+      <Subsector Index="L">Ayorl</Subsector>
+      <Subsector Index="M">Hkeiui</Subsector>
+      <Subsector Index="N">Fikheihe'eal</Subsector>
+      <Subsector Index="O">Wiaiaw</Subsector>
+      <Subsector Index="P">Aeie</Subsector>
+    </Subsectors>
+    <Borders>
+      <Border Allegiance="As">0029 0130 0230 0330 0430 0531 0630 0730 0729 0728 0727 0827 0928 1028 1129 1229 1329 1428 1528 1627 1727 1726 1826 1927 2026 2126 2225 2224 2223 2222 2323 2422 2522 2621 2721 2820 2819 2818 2918 2917 3016 3015 3014 3013 2913 2812 2912 3011 3111 3211 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029</Border>
+    </Borders>
+  </Sector>
+  <Sector>
+    <Y>3</Y>
+    <X>-6</X>
+    <Name Lang="as">Waroatahe</Name>
+    <DataFile Author="&quot;jaymin&quot; and Jeff Zeitlin" Source="The Zhodani Basei" Ref="http://www.zho.berka.com/data/CLASSIC/sector.pl?sector=WAROATAH">waroatah.sec</DataFile>
+    <Subsectors>
+      <Subsector Index="A">Iuweie</Subsector>
+      <Subsector Index="B">Walyekh</Subsector>
+      <Subsector Index="C">Hkewoikhuh</Subsector>
+      <Subsector Index="D">Ikaesi</Subsector>
+      <Subsector Index="E">Tlyua</Subsector>
+      <Subsector Index="F">Tyeaue</Subsector>
+      <Subsector Index="G">Taioikheahua</Subsector>
+      <Subsector Index="H">Asyuorea</Subsector>
+      <Subsector Index="I">Hrekh</Subsector>
+      <Subsector Index="J">Ihuirl</Subsector>
+      <Subsector Index="K">Hkairlyelr</Subsector>
+      <Subsector Index="L">Ofti</Subsector>
+      <Subsector Index="M">Ihoalourow</Subsector>
+      <Subsector Index="N">Hekisearai</Subsector>
+      <Subsector Index="O">Oatreikhtekh</Subsector>
+      <Subsector Index="P">Hkiueaaote</Subsector>
+    </Subsectors>
+    <Borders>
+      <Border Allegiance="As">0011 0111 0210 0310 0410 0510 0609 0709 0808 0807 0908 1007 1107 1206 1205 1204 1203 1103 1102 1201 1301 1400 1500 1600 1700 1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011</Border>
+    </Borders>
+  </Sector>
+  <Sector>
+    <Y>3</Y>
+    <X>-5</X>
+    <Name Lang="as">Karleaya</Name>
+    <DataFile Author="&quot;jaymin&quot; and Jeff Zeitlin" Source="The Zhodani Base" Ref="http://www.zho.berka.com/data/CLASSIC/sector.pl?sector=KARLEAYA">karleaya.sec</DataFile>
+    <Borders>
+      <Border Allegiance="As" ShowLabel="false">0000 0100 0200 0300 0400 0500 0600 0700 0800 0900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001 0000</Border>
+    </Borders>
+    <Subsectors Source="Jo Jaquinta">
+      <Subsector Index="A">Htiy</Subsector>
+      <Subsector Index="B">Yakhtaus</Subsector>
+      <Subsector Index="C">Wahyolaheate</Subsector>
+      <Subsector Index="D">Khaeil</Subsector>
+      <Subsector Index="E">Aha</Subsector>
+      <Subsector Index="F">Eaaiaii</Subsector>
+      <Subsector Index="G">Ftyehtea</Subsector>
+      <Subsector Index="H">Aiiyahau</Subsector>
+      <Subsector Index="I">Aryes</Subsector>
+      <Subsector Index="J">Usew</Subsector>
+      <Subsector Index="K">Hteilr</Subsector>
+      <Subsector Index="L">Eaoeis</Subsector>
+      <Subsector Index="M">Keyohoi</Subsector>
+      <Subsector Index="N">Ookhtul</Subsector>
+      <Subsector Index="O">Tyuiyftal</Subsector>
+      <Subsector Index="P">Faoeairl</Subsector>
+    </Subsectors>
+
+  </Sector>
+  <Sector Abbreviation="Stai" Tags="Official">
+    <Y>3</Y>
+    <X>-4</X>
+    <Name Lang="as">Staihaia'yo</Name>
+    <Credits>
+      <![CDATA[
+
+               <b>Staihaia'yo</b> sector was designed by Marc W.
+               Miller and appears in <cite>Atlas of the
+               Imperium</cite> (GDW, 1984).
+
+      ]]>
+    </Credits>
+    <DataFile Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Staihaia'yo.tab</DataFile>
+    <Borders>
+      <Border Allegiance="As" ShowLabel="false">0000 0100 0200 0300 0400 0500 0600 0700 0800 0900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001 0000</Border>
+    </Borders>
+    <Subsectors Source="CORE">
+      <Subsector Index="A">Iwairei</Subsector>
+      <Subsector Index="B">Hkoi</Subsector>
+      <Subsector Index="C">Iyao</Subsector>
+      <Subsector Index="D">Htyoa'</Subsector>
+      <Subsector Index="E">Eftifua</Subsector>
+      <Subsector Index="F">Aiiya</Subsector>
+      <Subsector Index="G">Iy'auaweila</Subsector>
+      <Subsector Index="H">Ualasalr</Subsector>
+      <Subsector Index="I">Aoereaosya</Subsector>
+      <Subsector Index="J">Aye'</Subsector>
+      <Subsector Index="K">Araoiw</Subsector>
+      <Subsector Index="L">Syukaiseakh</Subsector>
+      <Subsector Index="M">Aikheahei</Subsector>
+      <Subsector Index="N">Eaehyuai</Subsector>
+      <Subsector Index="O">Eawewaoa</Subsector>
+      <Subsector Index="P">Eauseewa</Subsector>
+    </Subsectors>
+  </Sector>
+  <Sector Abbreviation="Iwah" Tags="Official">
+    <Y>3</Y>
+    <X>-3</X>
+    <Name Lang="as">Iwahfuah</Name>
+    <Name Publisher="HIWG">Zodia</Name>
+    <Credits>
+      <![CDATA[
+
+               <b>Iwahfuah</b> sector was designed by Marc W. Miller
+               and appears in <cite>Atlas of the Imperium</cite> (GDW,
+               1984).
+
+      ]]>
+    </Credits>
+    <DataFile Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Iwahfuah.tab</DataFile>
+    <Borders>
+      <Border Allegiance="As" ShowLabel="false">0000 0100 0200 0300 0400 0500 0600 0700 0800 0900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001 0000</Border>
+    </Borders>
+    <Subsectors Source="CORE">
+      <Subsector Index="A">Kouohkakhaur</Subsector>
+      <Subsector Index="B">Ouoafeileir</Subsector>
+      <Subsector Index="C">Eawya'ya</Subsector>
+      <Subsector Index="D">Yolraoaial</Subsector>
+      <Subsector Index="E">Ftaueiefei</Subsector>
+      <Subsector Index="F">Kaheaaihlyal</Subsector>
+      <Subsector Index="G">Atlaikharla</Subsector>
+      <Subsector Index="H">Ealriyeihiw</Subsector>
+      <Subsector Index="I">Wuieaaw</Subsector>
+      <Subsector Index="J">Aoaeisea</Subsector>
+      <Subsector Index="K">Uirles</Subsector>
+      <Subsector Index="L">Aiheairl</Subsector>
+      <Subsector Index="M">Eahe</Subsector>
+      <Subsector Index="N">Yastesa</Subsector>
+      <Subsector Index="O">Aeioarlya</Subsector>
+      <Subsector Index="P">Aiaiheh</Subsector>
+    </Subsectors>
+  </Sector>
+  <Sector Abbreviation="Dark" Tags="Official">
+    <Y>3</Y>
+    <X>-2</X>
+    <Name>Dark Nebula</Name>
+    <Name Lang="as">I'aheako</Name>
+    <DataFile Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited" Author="Peter G. Celella, James Holden">Dark Nebula.tab</DataFile>
+    <MetadataFile Source="Traveller 5 Second Survey" Milieu="M1105" Author="Peter G. Celella, James Holden">Dark Nebula.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Magy" Tags="Official">
+    <Y>3</Y>
+    <X>-1</X>
+    <Name>Magyar</Name>
+    <Name Lang="vi">Magaar</Name>
+    <DataFile Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Magyar.tab</DataFile>
+    <MetadataFile>Magyar.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Solo" Tags="Official" Selected="true">
+    <Y>3</Y>
+    <X>0</X>
+    <Name>Solomani Rim</Name>
+    <Name Lang="vi">Kushuggi</Name>
+    <DataFile Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Solomani Rim.tab</DataFile>
+    <MetadataFile>Solomani Rim.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Alph" Tags="Official" Selected="true">
+    <Y>3</Y>
+    <X>1</X>
+    <Name>Alpha Crucis</Name>
+    <Name Lang="vi">Amkarim</Name>
+    <DataFile Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Alpha Crucis.tab</DataFile>
+    <MetadataFile>Alpha Crucis.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Spic" Tags="InReview">
+    <Y>3</Y>
+    <X>2</X>
+    <Name>Spica</Name>
+    <DataFile Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Spica.tab</DataFile>
+    <MetadataFile>Spica.xml</MetadataFile>
+  </Sector>
+  <Sector>
+    <Y>3</Y>
+    <X>3</X>
+    <Name Lang="hv">Phlask</Name>
+    <DataFile Source="The Core Route Project" Type="SecondSurvey" Author="Bari Z. Stafford Sr." Ref="http://web.archive.org/web/20030406042613/http://www.geocities.com/traveller_core_route/proj004/proj004.html">Phlask.txt</DataFile>
+    <MetadataFile Author="Mark Humphreys">Phlask.xml</MetadataFile>
+  </Sector>
+  <Sector>
+    <Y>3</Y>
+    <X>4</X>
+    <Name Lang="hv">Centrax</Name>
+    <Name Lang="hv">Glea</Name>
+    <DataFile Author="Mark Humphreys">Centrax.sec</DataFile>
+    <MetadataFile Author="Mark Humphreys">Centrax.xml</MetadataFile>
+    <!--
+    <Subsectors>
+      <Subsector Index="H" Source="Supplement 8 - Library Data A-M">Liana</Subsector>
+    </Subsectors>
+    <Borders>
+      <Border Allegiance="HvFd" ShowLabel="false">0000 0100 0200 0300 0400 0500 0600 0700 0800 0900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001 0000</Border>
+    </Borders>
+-->
+  </Sector>
+  <Sector>
+    <Y>3</Y>
+    <X>5</X>
+    <Name Lang="hv">Wrenton</Name>
+    <DataFile Author="Mark Humphreys">Wrenton.sec</DataFile>
+    <MetadataFile Author="Mark Humphreys">Wrenton.xml</MetadataFile>
+  </Sector>
+  <Sector>
+    <Y>3</Y>
+    <X>6</X>
+    <Name Lang="hv">Folgore</Name>
+    <DataFile Author="Mark Humphreys">Folgore.sec</DataFile>
+    <MetadataFile Author="Mark Humphreys">Folgore.xml</MetadataFile>
+  </Sector>
+  <Sector>
+    <Y>3</Y>
+    <X>7</X>
+    <Name Lang="hv">Avereguar</Name>
+    <DataFile Author="Mark Humphreys">Avereguar.sec</DataFile>
+    <MetadataFile Author="Mark Humphreys">Avereguar.xml</MetadataFile>
+  </Sector>
+  <Sector>
+    <Y>3</Y>
+    <X>8</X>
+    <Name Lang="hv" Publisher="HIWG">Kolire</Name>
+  </Sector>
+  <Sector>
+    <Y>4</Y>
+    <X>-9</X>
+    <Name Lang="as" Publisher="HIWG">Khuaryakh</Name>
+  </Sector>
+  <Sector>
+    <Y>4</Y>
+    <X>-8</X>
+    <Name Lang="as">Yahehwe</Name>
+    <DataFile Source="Solomani and Aslan" Ref="https://travellermap.com/data/yahehwe">yahehwe.sec</DataFile>
+    <Borders>
+      <Border Allegiance="As">0611 0712 0812 0912 1011 1012 0913 0914 0915 0916 0917 1017 1018 1119 1219 1320 1321 1322 1222 1123 1023 0924 0925 0926 0825 0824 0724 0723 0722 0721 0720 0719 0718 0717 0716 0715 0714 0713 0712 0611</Border>
+      <Border Allegiance="As" LabelPosition="1806">1406 1506 1605 1604 1704 1803 1802 1903 2003 2104 2204 2305 2405 2505 2504 2503 2502 2501 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3224 3124 3123 3022 2922 2821 2721 2620 2520 2519 2518 2517 2516 2515 2514 2513 2512 2511 2510 2409 2509 2608 2607 2606 2506 2405 2305 2205 2106 2006 2007 1908 1909 1910 1911 1912 1911 1810 1809 1709 1608 1508 1507 1406</Border>
+      <Border Allegiance="As">1721 1820 1921 2021 2022 2023 1924 1925 1926 1927 1928 1929 2029 1929 1829 1828 1827 1727 1726 1725 1724 1723 1722 1721</Border>
+    </Borders>
+  </Sector>
+  <Sector>
+    <Y>4</Y>
+    <X>-7</X>
+    <Name Lang="as">Kefiykhta</Name>
+    <DataFile Source="Solomani and Aslan" Ref="https://travellermap.com/data/kefiykhta">kefiykhta.sec</DataFile>
+    <Borders>
+      <Border Allegiance="As">0000 0100 0200 0300 0400 0500 0600 0700 0800 0900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3229 3130 3030 3031 2932 2832 2732 2632 2533 2534 2434 2435 2336 2236 2237 2138 2038 2039 1940 1840 1740 1640 1540 1439 1339 1238 1237 1236 1136 1035 1034 1033 1032 1031 1030 0930 0829 0729 0628 0528 0527 0426 0326 0225 0125 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001 0000</Border>
+    </Borders>
+  </Sector>
+  <Sector>
+    <Y>4</Y>
+    <X>-6</X>
+    <Name Lang="as">Heakhafaw</Name>
+    <DataFile Source="Solomani and Aslan" Ref="https://travellermap.com/data/heakhafaw">heakhafaw.sec</DataFile>
+    <Borders>
+      <Border Allegiance="As">0000 0100 0200 0300 0400 0500 0600 0700 0800 0900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3236 3237 3138 3038 3039 2940 2839 2739 2639 2540 2439 2340 2239 2139 2038 1938 1838 1738 1637 1537 1436 1337 1236 1136 1035 0935 0834 0735 0634 0534 0433 0432 0431 0331 0230 0130 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001 0000</Border>
+    </Borders>
+  </Sector>
+  <Sector>
+    <Y>4</Y>
+    <X>-5</X>
+    <Name Lang="as">Etakhasoa</Name>
+    <DataFile Source="Solomani and Aslan" Ref="https://travellermap.com/data/etakhasoa">etakhasoa.sec</DataFile>
+    <Borders>
+      <Border Allegiance="As">0000 0100 0200 0300 0400 0500 0600 0700 0800 0900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3237 3138 3038 2938 2838 2738 2737 2736 2635 2535 2534 2533 2432 2332 2331 2230 2130 2129 2128 2027 2026 2025 2024 2023 1923 1822 1722 1621 1521 1420 1320 1220 1120 1019 0920 0820 0821 0822 0823 0824 0825 0826 0827 0828 0729 0629 0530 0430 0431 0432 0433 0434 0335 0235 0136 0036 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001 0000</Border>
+    </Borders>
+  </Sector>
+  <Sector Abbreviation="Akti" Tags="Official">
+    <Y>4</Y>
+    <X>-4</X>
+    <Name Lang="as">Aktifao</Name>
+    <DataFile Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Aktifao.tab</DataFile>
+    <Subsectors Source="Traveller Wiki" Ref="http://wiki.travellerrpg.com/Aktifao_Sector">
+      <Subsector Index="A">Alraeiou</Subsector>
+      <Subsector Index="B">Uauiftiktas</Subsector>
+      <Subsector Index="C">Eaekhta</Subsector>
+      <Subsector Index="D">Oulafiy</Subsector>
+      <Subsector Index="E">Tluaeheiwa</Subsector>
+      <Subsector Index="F">Hwahei</Subsector>
+      <Subsector Index="G">Iwoiyrl</Subsector>
+      <Subsector Index="H">Hweaeiaaoea</Subsector>
+      <Subsector Index="I">Eakhtayoki</Subsector>
+      <Subsector Index="J">Waa</Subsector>
+      <Subsector Index="K">Aowa</Subsector>
+      <Subsector Index="L">Treyekha</Subsector>
+      <Subsector Index="M">Teaauhia'</Subsector>
+      <Subsector Index="N">Aihoi</Subsector>
+      <Subsector Index="O">Eakhyo</Subsector>
+      <Subsector Index="P">Eaeakheiryeh</Subsector>
+    </Subsectors>
+    <Borders>
+      <Border Allegiance="As">0000 0100 0200 0300 0400 0500 0600 0700 0800 0900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3224 3125 3025 3026 3027 3028 3029 2930 2830 2731 2631 2532 2432 2433 2334 2234 2134 2034 1935 1835 1735 1635 1536 1436 1337 1237 1238 1138 1038 0939 0839 0739 0639 0540 0440 0340 0339 0238 0138 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001 0000</Border>
+    </Borders>
+  </Sector>
+  <Sector Abbreviation="Uist" Tags="Official">
+    <Y>4</Y>
+    <X>-3</X>
+    <Name Lang="as">Uistilrao</Name>
+    <Name Lang="as">Uistilao</Name>
+    <DataFile Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Uistilrao.tab</DataFile>
+    <!-- Also data from http://zho.berka.com/data/CLASSIC/sector.pl?sector=UISTILAO for Tealou Arlaoh worlds -->
+    <Subsectors>
+      <Subsector Index="A">Ali</Subsector>
+      <Subsector Index="B">Yeeaeaeawe</Subsector>
+      <Subsector Index="C">Aeaew</Subsector>
+      <Subsector Index="D">Yesaw</Subsector>
+      <Subsector Index="E">Tuaauhrelr</Subsector>
+      <Subsector Index="F">Auauwiylis</Subsector>
+      <Subsector Index="G">Hkeelatai</Subsector>
+      <Subsector Index="H">Fisas</Subsector>
+      <Subsector Index="I">Eesalarea</Subsector>
+      <Subsector Index="J">Auau</Subsector>
+      <Subsector Index="K">Eatri</Subsector>
+      <Subsector Index="L">Iaikhya</Subsector>
+      <Subsector Index="M">Oiesa</Subsector>
+      <Subsector Index="N">Tuie'ouhuil</Subsector>
+      <Subsector Index="O">Eaheikiyh</Subsector>
+      <Subsector Index="P">Eaisalyatui</Subsector>
+    </Subsectors>
+
+    <Borders>
+      <Border Allegiance="As">0000 0100 0200 0300 0400 0500 0600 0700 0800 0900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3215 3116 3117 3118 3119 3120 3019 2919 2818 2719 2618 2519 2418 2319 2219 2120 2020 2021 1921 1821 1722 1621 1522 1422 1323 1223 1123 1022 0923 0823 0724 0623 0524 0424 0324 0223 0124 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001 0000</Border>
+      <Border Allegiance="AsTA" Color="lightyellow">2829 2929 2928 2927 3026 3127 3226 3327 3328 3329 3330 3331 3332 3333 3334 3335 3235 3236 3235 3135 3034 3033 3032 2932 2931 2930 2829</Border>
+    </Borders>
+  </Sector>
+  <Sector Abbreviation="Ustr" Tags="Official">
+    <Y>4</Y>
+    <X>-2</X>
+    <Name>Ustral Quadrant</Name>
+    <Name Lang="as">Ftahtuak</Name>
+    <Credits>
+      <![CDATA[
+
+               <b>Ustral Quadrant</b> sector was designed by Douglas
+               G. Snyder.
+
+               Stellar positions were developed by Joe D. Fugate Sr.
+               and appear in <cite>The MegaTraveller Alien, Volume 2:
+               Solomani & Aslan</cite> (Digest Group Publications,
+               1991).
+
+      ]]>
+    </Credits>
+    <DataFile Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Ustral Quadrant.tab</DataFile>
+    <Subsectors Source="CORE">
+      <Subsector Index="A">Alrirleih</Subsector>
+      <Subsector Index="B">Heasairlui</Subsector>
+      <Subsector Index="C">Yewoiauehoah</Subsector>
+      <Subsector Index="D">Thalia</Subsector>
+      <Subsector Index="E">Stiy</Subsector>
+      <Subsector Index="F">Hlol</Subsector>
+      <Subsector Index="G">Aeahaihluil</Subsector>
+      <Subsector Index="H">Iselle</Subsector>
+      <Subsector Index="I">Ftea</Subsector>
+      <Subsector Index="J">Ouateahaaorl</Subsector>
+      <Subsector Index="K">Kemit</Subsector>
+      <Subsector Index="L">Adere</Subsector>
+      <Subsector Index="M">Ihtaois</Subsector>
+      <Subsector Index="N">Khteaiwiyftei</Subsector>
+      <Subsector Index="O">Oolyasiyl</Subsector>
+      <Subsector Index="P">Ehfya</Subsector>
+    </Subsectors>
+    <Borders>
+      <Border Allegiance="As" LabelPosition="1212">0000 0100 0200 0300 0400 0500 0600 0700 0800 0900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2701 2702 2602 2503 2504 2505 2405 2306 2307 2308 2309 2310 2311 2312 2313 2413 2414 2415 2416 2417 2418 2318 2217 2118 2018 2019 2020 2021 2022 1923 1822 1722 1622 1522 1421 1322 1222 1123 1023 0923 0822 0722 0621 0521 0421 0521 0520 0519 0618 0718 0717 0716 0615 0515 0414 0314 0214 0115 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001 0000</Border>
+      <Border Allegiance="AsIf" Color="burlywood">0629 0730 0829 0929 1028 1129 1228 1328 1428 1529 1530 1531 1532 1632 1633 1534 1434 1435 1436 1337 1338 1337 1236 1136 1135 1134 1033 0933 0832 0732 0731 0730 0629</Border>
+      <Border Allegiance="AsOf" Color="khaki" LabelPosition="2535">1932 2031 2131 2231 2331 2431 2532 2632 2732 2831 2931 3031 3132 3232 3233 3334 3234 3235 3136 3036 2937 2938 2838 2739 2639 2638 2538 2537 2536 2435 2335 2234 2134 2033 1934 1933 1932</Border>
+      <Border Allegiance="SoCf" LabelPosition="2907" WrapLabel="true">2406 2506 2605 2604 2603 2703 2802 2801 2901 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3323 3222 3122 3021 2921 2820 2720 2619 2618 2617 2717 2716 2715 2714 2713 2712 2611 2511 2410 2409 2408 2407 2406</Border>
+      <Border Allegiance="AsTA" Color="lightyellow" LabelPosition="0233" WrapLabel="true">0026 0127 0226 0227 0328 0329 0429 0330 0230 0131 0132 0133 0134 0135 0035 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026</Border>
+    </Borders>
+    <Routes Author="Randy Dorman">
+      <Route Start="2619" End="2617" Allegiance="SoCf"/>
+      <Route Start="2617" End="2916" Allegiance="SoCf"/>
+      <Route Start="2916" End="0118" EndOffsetX="1" Allegiance="SoCf"/>
+    </Routes>
+  </Sector>
+  <Sector>
+    <Y>4</Y>
+    <X>-1</X>
+    <Name>Canopus</Name>
+    <DataFile Source="Randy Dorman" Type="TabDelimited">Canopus.tab</DataFile>
+    <MetadataFile>Canopus.xml</MetadataFile>
+  </Sector>
+  <Sector>
+    <Y>4</Y>
+    <X>0</X>
+    <Name>Aldebaran</Name>
+    <DataFile Source="Randy Dorman" Type="TabDelimited">Aldebaran.tab</DataFile>
+    <MetadataFile>Aldebaran.xml</MetadataFile>
+  </Sector>
+  <Sector>
+    <Y>4</Y>
+    <X>1</X>
+    <Name>Neworld</Name>
+    <DataFile Author="Randy Dorman" Type="TabDelimited">Neworld.tab</DataFile>
+    <MetadataFile Author="Randy Dorman">Neworld.xml</MetadataFile>
+  </Sector>
+  <Sector>
+    <Y>4</Y>
+    <X>2</X>
+    <Name Lang="hv">Langere</Name>
+    <DataFile Author="Randy Dorman" Type="TabDelimited">Langere.tab</DataFile>
+    <MetadataFile Author="Randy Dorman">Langere.xml</MetadataFile>
+  </Sector>
+  <Sector>
+    <Y>4</Y>
+    <X>3</X>
+    <Name Lang="hv">Drakken</Name>
+    <DataFile Source="The Core Route Project" Type="SecondSurvey" Author="Bari Z. Stafford Sr." Ref="http://web.archive.org/web/20030406042613/http://www.geocities.com/traveller_core_route/proj004/proj004.html">Drakken.txt</DataFile>
+    <MetadataFile Author="Mark Humphreys">Drakken.xml</MetadataFile>
+  </Sector>
+  <Sector>
+    <Y>4</Y>
+    <X>4</X>
+    <Name Lang="hv">Lorspane</Name>
+    <DataFile Source="The Core Route Project" Type="SecondSurvey" Author="Bari Z. Stafford Sr." Ref="http://web.archive.org/web/20030406042613/http://www.geocities.com/traveller_core_route/proj004/proj004.html">Lorspane.txt</DataFile>
+    <MetadataFile Author="Mark Humphreys">Lorspane.xml</MetadataFile>
+  </Sector>
+  <Sector>
+    <Y>4</Y>
+    <X>5</X>
+    <Name Lang="hv">Porlock</Name>
+    <DataFile Author="Mark Humphreys">Porlock.sec</DataFile>
+    <MetadataFile Author="Mark Humphreys">Porlock.xml</MetadataFile>
+  </Sector>
+  <Sector>
+    <Y>4</Y>
+    <X>6</X>
+    <Name>Kidunal</Name>
+    <DataFile Author="Mark Humphreys">Kidunal.sec</DataFile>
+    <MetadataFile Author="Mark Humphreys">Kidunal.xml</MetadataFile>
+  </Sector>
+  <Sector>
+    <Y>4</Y>
+    <X>7</X>
+    <Name>Treece</Name>
+    <DataFile Author="Mark Humphreys" Type="SecondSurvey">Treece.txt</DataFile>
+    <MetadataFile Author="Mark Humphreys">Treece.xml</MetadataFile>
+  </Sector>
+  <Sector>
+    <Y>4</Y>
+    <X>8</X>
+    <Name Lang="hv" Publisher="HIWG">Genfert</Name>
+  </Sector>
+  <Sector>
+    <Y>5</Y>
+    <X>-9</X>
+    <Name Lang="as" Publisher="HIWG">Aftailr</Name>
+  </Sector>
+  <Sector>
+    <Y>5</Y>
+    <X>-8</X>
+    <Name Lang="as">Ohieraoi</Name>
+    <DataFile Source="Solomani and Aslan" Ref="https://travellermap.com/data/ohieraoi">ohieraoi.sec</DataFile>
+    <Borders>
+      <Border Allegiance="As">1434 1534 1533 1532 1531 1630 1629 1628 1627 1626 1625 1725 1724 1824 1924 2023 2123 2124 2224 2225 2326 2327 2227 2228 2129 2130 2030 2031 1932 1832 1733 1633 1534 1434</Border>
+      <Border Allegiance="As">2311 2410 2510 2509 2609 2709 2808 2908 3007 3107 3206 3306 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3220 3120 3020 2920 2819 2719 2718 2717 2716 2615 2515 2514 2513 2512 2411 2311</Border>
+    </Borders>
+  </Sector>
+  <Sector>
+    <Y>5</Y>
+    <X>-7</X>
+    <Name Lang="as">Fahreahluis</Name>
+    <DataFile Source="Solomani and Aslan" Ref="https://travellermap.com/data/fahreahluis">fahreahluis.sec</DataFile>
+    <Borders>
+      <Border Allegiance="As">0006 0106 0105 0205 0305 0306 0307 0407 0408 0409 0410 0311 0211 0112 0113 0114 0115 0215 0316 0216 0217 0218 0219 0120 0121 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006</Border>
+      <Border Allegiance="As">2216 2316 2315 2314 2313 2312 2311 2310 2309 2308 2307 2306 2406 2507 2606 2706 2805 2905 2904 2903 3003 3104 3203 3104 3105 3106 3107 3108 3109 3009 3010 3011 2912 2913 2914 2915 2916 3016 2916 2816 2717 2617 2517 2416 2316 2216</Border>
+      <Border Allegiance="Hy" Color="khaki">0428 0528 0527 0526 0527 0627 0728 0828 0829 0730 0731 0732 0731 0730 0629 0529 0428</Border>
+      <Border Allegiance="Kt" Color="goldenrod">2536 2635 2735 2834 2833 2832 2932 3031 3030 3029 3028 3027 3128 3228 3229 3230 3231 3232 3233 3234 3135 3035 3036 2937 2837 2738 2739 2738 2637 2537 2536</Border>
+      <Border Allegiance="Sa" Color="orange">0313 0412 0513 0613 0713 0714 0814 0915 1015 1116 1215 1216 1317 1217 1218 1219 1120 1020 0921 0821 0822 0723 0622 0522 0521 0520 0519 0518 0417 0416 0415 0414 0314 0313</Border>
+    </Borders>
+    <Allegiances Source="Solomani and Aslan">
+      <Allegiance Code="Hy">Hreahiyouea</Allegiance>
+      <Allegiance Code="Sa">Sea'ai'teluarliyh</Allegiance>
+      <Allegiance Code="Kt">Ktouho'as</Allegiance>
+    </Allegiances>
+  </Sector>
+  <Sector>
+    <Y>5</Y>
+    <X>-6</X>
+    <Name Lang="as">Hfiywitir</Name>
+    <Credits>
+      <![CDATA[
+
+               <b>Hfiywitir</b> sector was designed by WG Zeist.
+
+               Stellar positions were developed by Joe D. Fugate Sr.
+               and appear in <cite>The MegaTraveller Alien, Volume 2:
+               Solomani &amp; Aslan</cite> (Digest Group Publications,
+               1991).
+
+      ]]>
+    </Credits>
+    <DataFile Author="WG Zeist" Source="explorerbase" Ref="https://explorerbase.wordpress.com/sector-data/" Type="SecondSurvey">Hfiywitir.txt</DataFile>
+    <Borders>
+      <Border Allegiance="As">1306 1405 1404 1505 1605 1705 1804 1904 1903 1904 2004 2005 2006 2107 2207 2308 2408 2509 2608 2708 2709 2809 2910 2810 2811 2712 2612 2613 2614 2615 2616 2517 2518 2417 2318 2218 2217 2117 2016 1916 1915 1914 2013 2012 2011 2010 2009 2008 1908 1807 1708 1608 1509 1408 1407 1406 1306</Border>
+      <Border Allegiance="Et" Color="burlywood" LabelPosition="1014">0416 0516 0515 0614 0613 0713 0712 0713 0813 0914 1014 1114 1213 1214 1215 1116 1117 1017 0917 0817 0718 0617 0517 0417 0416</Border>
+      <Border Allegiance="Ko" Color="orange">1629 1729 1828 1928 2027 2127 2126 2226 2326 2425 2525 2624 2725 2824 2925 3024 3025 3126 3127 3128 3129 3029 3030 2931 2932 2933 2934 2935 2936 2937 2837 2737 2636 2537 2437 2338 2238 2139 2039 1939 1839 1739 1838 1837 1836 1835 1834 1734 1633 1632 1631 1630 1629</Border>
+      <Border Allegiance="Se" Color="khaki">3035 3135 3134 3133 3132 3131 3230 3330 3329 3328 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3239 3238 3237 3137 3036 3035</Border>
+      <Border Allegiance="Sy" Color="goldenrod">0629 0730 0830 0730 0630 0629</Border>
+    </Borders>
+    <Allegiances Source="Solomani and Aslan">
+      <Allegiance Code="Et">Etra</Allegiance>
+      <Allegiance Code="Ko">Khosarliyh</Allegiance>
+      <Allegiance Code="Se">Steaak'heafera</Allegiance>
+      <Allegiance Code="Sy">Steaakh Yeasaol</Allegiance>
+    </Allegiances>
+  </Sector>
+  <Sector>
+    <Y>5</Y>
+    <X>-5</X>
+    <Name Lang="as">Irlaftalea</Name>
+    <DataFile Source="Solomani and Aslan" Ref="https://travellermap.com/data/irlaftalea">irlaftalea.sec</DataFile>
+    <Borders>
+      <Border Allegiance="As">0414 0514 0613 0713 0812 0912 0911 1010 1009 1008 1109 1208 1309 1409 1410 1511 1512 1412 1313 1213 1114 1115 1116 1117 1217 1318 1417 1517 1616 1716 1815 1915 1914 2013 2113 2112 2211 2210 2209 2208 2308 2307 2306 2405 2505 2604 2603 2704 2804 2905 3004 3105 3005 3006 2907 2807 2808 2809 2910 3010 3111 3112 3212 3213 3214 3115 3015 2916 2917 2918 2919 3019 3120 3220 3221 3222 3323 3223 3124 3125 3126 3226 3327 3328 3329 3330 3331 3332 3333 3334 3335 3234 3134 3233 3232 3231 3230 3130 3029 2929 2829 2730 2629 2529 2428 2328 2228 2128 2028 1929 1828 1728 1727 1726 1725 1624 1623 1523 1522 1521 1420 1320 1219 1119 1018 0918 0817 0718 0618 0519 0418 0417 0416 0415 0414</Border>
+      <Border Allegiance="Se" Color="khaki">0030 0130 0129 0128 0127 0226 0225 0326 0425 0525 0624 0724 0824 0825 0826 0827 0828 0929 0930 0931 0831 0832 0733 0734 0735 0635 0536 0436 0437 0338 0238 0239 0140 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030</Border>
+    </Borders>
+    <Allegiances Source="Solomani and Aslan">
+      <Allegiance Code="Se">Steaak'heafera</Allegiance>
+    </Allegiances>
+  </Sector>
+  <Sector>
+    <Y>5</Y>
+    <X>-4</X>
+    <Name Lang="as">Teahloarifu</Name>
+    <Name Lang="as" Source="GURPS Traveller: Alien Races 2">Tahloarifu</Name>
+    <DataFile Source="Solomani and Aslan" Ref="https://travellermap.com/data/teahloarifu">teahloarifu.sec</DataFile>
+    <Borders>
+      <Border Allegiance="As">0020 0021 0022 0123 0223 0324 0423 0523 0522 0521 0620 0619 0618 0518 0417 0517 0516 0515 0514 0614 0714 0813 0913 1013 1114 1213 1313 1312 1311 1310 1209 1109 1008 0909 0809 0710 0610 0510 0409 0310 0309 0308 0307 0406 0405 0505 0604 0705 0805 0905 1004 1104 1103 1203 1303 1402 1503 1603 1703 1704 1804 1905 1805 1806 1707 1607 1608 1509 1409 1310 1311 1312 1313 1314 1414 1515 1615 1616 1717 1718 1618 1619 1620 1621 1622 1623 1724 1624 1625 1626 1627 1628 1729 1829 1930 2029 2129 2128 2227 2226 2225 2224 2223 2222 2221 2220 2219 2218 2217 2216 2116 2115 2114 2013 1913 1812 1712 1812 1912 2011 2111 2210 2310 2409 2509 2508 2608 2709 2809 2810 2911 2912 2913 2914 2814 2815 2816 2717 2718 2618 2619 2520 2521 2522 2622 2722 2822 2923 2924 3024 3025 3026 3027 3028 3029 3030 3131 3132 3133 3033 2933 2832 2732 2631 2531 2431 2331 2230 2131 2031 1932 1832 1733 1734 1735 1736 1737 1738 1638 1539 1540 1439 1339 1238 1138 1037 1036 1136 1135 1134 1133 1232 1231 1230 1130 1030 0931 0831 0832 0733 0633 0534 0434 0335 0234 0135 0034 0033 0032 0031 0030 0029 0028 0027 0026 0127 0227 0327 0426 0425 0424 0324 0223 0123 0023 0022 0021 0020</Border>
+    </Borders>
+  </Sector>
+  <Sector>
+    <Y>5</Y>
+    <X>-3</X>
+    <Name Lang="as">Ahkiweahi'</Name>
+    <Name Lang="so">Seven Sisters</Name>
+    <Credits>
+      <![CDATA[
+
+               <b>Ahkiweahi'</b> sector was designed by WG Zeist.
+
+               Stellar positions were developed by Joe D. Fugate Sr.
+               and appear in <cite>The MegaTraveller Alien, Volume 2:
+               Solomani &amp; Aslan</cite> (Digest Group Publications,
+               1991).
+
+      ]]>
+    </Credits>
+    <DataFile Author="WG Zeist" Source="explorerbase" Ref="https://explorerbase.wordpress.com/sector-data/" Type="SecondSurvey">Ahkiweahi.txt</DataFile>
+    <Borders>
+      <Border Allegiance="As">0406 0506 0605 0705 0804 0904 1003 1104 1203 1303 1402 1503 1603 1504 1505 1405 1306 1206 1107 1007 1008 0909 0910 0911 0811 0712 0611 0512 0511 0510 0409 0408 0407 0406</Border>
+      <Border Allegiance="As">0634 0734 0833 0832 0831 0931 1030 1029 1130 1230 1330 1429 1428 1528 1527 1626 1627 1628 1629 1730 1830 1831 1732 1632 1633 1634 1535 1434 1335 1235 1135 1034 0934 0834 0735 0634</Border>
+      <Border Allegiance="As">2432 2532 2631 2630 2629 2730 2830 2930 3029 3129 3130 3131 3231 3232 3233 3234 3235 3236 3136 3035 2935 2835 2736 2735 2634 2534 2433 2432</Border>
+      <Border Allegiance="Sh" Color="goldenrod">2216 2316 2315 2414 2413 2514 2613 2714 2814 2915 3015 3115 3116 3117 3118 3018 2919 2819 2720 2620 2621 2622 2623 2624 2524 2423 2324 2323 2222 2221 2220 2219 2218 2217 2216</Border>
+    </Borders>
+    <Allegiances Source="Solomani and Aslan">
+      <Allegiance Code="Sh">Steaakh Hlaia</Allegiance>
+    </Allegiances>
+  </Sector>
+  <Sector>
+    <Y>5</Y>
+    <X>-2</X>
+    <Name>Banners</Name>
+    <Name Lang="as">Iyiyukhtoi'</Name>
+    <DataFile Source="CORE" Ref="http://www.ocean-of-storms.com/core/astrogat/kE.htm">banners.sec</DataFile>
+    <Subsectors Source="CORE">
+      <Subsector Index="A">Htai'asta</Subsector>
+      <Subsector Index="B">Estoc</Subsector>
+      <Subsector Index="C">Warliyir</Subsector>
+      <Subsector Index="D">Dante</Subsector>
+      <Subsector Index="E">Hkaihwya</Subsector>
+      <Subsector Index="F">Thalkharl</Subsector>
+      <Subsector Index="G">Woal</Subsector>
+      <Subsector Index="H">Grange</Subsector>
+      <Subsector Index="I">Sander</Subsector>
+      <Subsector Index="J">Hiyakhyes</Subsector>
+      <Subsector Index="K">Roakh</Subsector>
+      <Subsector Index="L">Gobi</Subsector>
+      <Subsector Index="M">Mendon</Subsector>
+      <Subsector Index="N">Delsun</Subsector>
+      <Subsector Index="O">Virian</Subsector>
+      <Subsector Index="P">Harmond</Subsector>
+    </Subsectors>
+
+    <Borders>
+      <Border Allegiance="Ar" Color="goldenrod">1123 1223 1324 1424 1525 1625 1725 1824 1924 2024 2125 2224 2324 2224 2125 2126 2026 1927 1827 1728 1627 1527 1427 1327 1226 1126 1125 1124 1123</Border>
+      <Border Allegiance="Dc" Color="burlywood">1137 1236 1235 1336 1337 1236 1137</Border>
+      <Border Allegiance="Ww" Color="khaki">1514 1613 1612 1712 1811 1911 1910 1909 2008 2007 2006 2106 2107 2207 2208 2209 2210 2211 2212 2313 2213 2114 2014 2015 1916 1815 1715 1615 1614 1514</Border>
+    </Borders>
+    <Allegiances Source="Solomani and Aslan">
+      <Allegiance Code="Ar">Aoiftu Roakh</Allegiance>
+      <Allegiance Code="Dc">Delsun Comagistrant</Allegiance>
+      <Allegiance Code="Ww">Woal Warliylr</Allegiance>
+    </Allegiances>
+  </Sector>
+  <Sector>
+    <Y>5</Y>
+    <X>-1</X>
+    <Name>Hanstone</Name>
+    <Name Lang="as" Publisher="HIWG">Ftetlao'</Name>
+    <DataFile Author="&quot;jaymin&quot; and Jeff Zeitlin" Source="The Zhodani Base" Ref="http://www.zho.berka.com/data/CLASSIC/sector.pl?sector=HANSTONE">hanstone.sec</DataFile>
+    <Subsectors Source="Jo Jaquinta">
+      <Subsector Index="A">Grieg</Subsector>
+      <Subsector Index="B">Nadon</Subsector>
+      <Subsector Index="C">Mozart</Subsector>
+      <Subsector Index="D">Dvorak</Subsector>
+      <Subsector Index="E">Jarre</Subsector>
+      <Subsector Index="F">Fteiheiel</Subsector>
+      <Subsector Index="G">Heads</Subsector>
+      <Subsector Index="H">Bach</Subsector>
+      <Subsector Index="I">Eha</Subsector>
+      <Subsector Index="J">Auftei</Subsector>
+      <Subsector Index="K">Prokofiev</Subsector>
+      <Subsector Index="L">Lennon</Subsector>
+      <Subsector Index="M">Wonder</Subsector>
+      <Subsector Index="N">Anderson</Subsector>
+      <Subsector Index="O">Jangole</Subsector>
+      <Subsector Index="P">Thomson</Subsector>
+    </Subsectors>
+
+    <Borders>
+      <Border Allegiance="Ak" Color="burlywood">0624 0725 0824 0924 1024 0925 0825 0726 0725 0624</Border>
+      <Border Allegiance="Fo" Color="khaki">0815 0915 1015 1116 1015 0916 0815</Border>
+      <Border Allegiance="Hc" Color="blue">2214 2314 2414 2314 2214</Border>
+      <Border Allegiance="Jn" Color="pink">1400 1500 1600 1701 1601 1602 1603 1504 1505 1404 1403 1402 1401 1400</Border>
+      <Border Allegiance="Mu" Color="white">2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3207 3107 3106 3105 3104 3103 3002 2902 2901 2900</Border>
+    </Borders>
+    <Allegiances Source="Solomani and Aslan">
+      <Allegiance Code="Ak">Auftei Ktaih</Allegiance>
+      <Allegiance Code="Fo">Fteiheiel Oih</Allegiance>
+      <Allegiance Code="Hc">Council of Heads</Allegiance>
+      <Allegiance Code="Jn">Jurisdiction of Nadon</Allegiance>
+      <Allegiance Code="Mu">Malorn Union</Allegiance>
+    </Allegiances>
+  </Sector>
+  <Sector>
+    <Y>5</Y>
+    <X>0</X>
+    <Name>Malorn</Name>
+    <DataFile Author="CORE" Source="The Zhodani Base" Ref="http://zho.berka.com/data/CLASSIC/sector.pl?sector=MALORN">malorn.sec</DataFile>
+    <Subsectors Source="CORE">
+      <Subsector Index="A">Malorn</Subsector>
+      <Subsector Index="B">Maiste</Subsector>
+      <Subsector Index="C">Heiligebet</Subsector>
+      <Subsector Index="D">Oberer</Subsector>
+      <Subsector Index="E">Frankfurt</Subsector>
+      <Subsector Index="F">Amorine</Subsector>
+      <Subsector Index="G">Volxenke</Subsector>
+      <Subsector Index="H">Geheim</Subsector>
+      <Subsector Index="I">Gesetz</Subsector>
+      <Subsector Index="J">Lords</Subsector>
+      <Subsector Index="K">Toh</Subsector>
+      <Subsector Index="L">Attacotti</Subsector>
+      <Subsector Index="M">Kiel</Subsector>
+      <Subsector Index="N">Ustov</Subsector>
+      <Subsector Index="O">Saar</Subsector>
+      <Subsector Index="P">Terese</Subsector>
+    </Subsectors>
+    <Borders>
+      <Border Allegiance="Bs" Color="green">2520 2620 2721 2821 2722 2723 2724 2725 2624 2623 2523 2522 2521 2520</Border>
+      <Border Allegiance="Cn" Color="purple">3121 3220 3320 3321 3322 3221 3121</Border>
+      <Border Allegiance="Dj" Color="olivedrab">2926 3026 3126 3125 3126 3026 2926</Border>
+      <Border Allegiance="Gt" Color="lime">1508 1607 1708 1808 1909 2009 2109 2208 2309 2409 2510 2610 2611 2612 2613 2614 2514 2513 2512 2411 2312 2212 2213 2113 2013 1913 1812 1712 1611 1610 1510 1509 1508</Border>
+      <Border Allegiance="Jd" Color="blue">1817 1917 2017 2018 2019 2018 1918 1817</Border>
+      <Border Allegiance="Lv" Color="cyan">0923 0924 1024 1025 1126 1226 1227 1127 1126 1025 0925 0924 0923</Border>
+      <Border Allegiance="Mu" Color="white">0000 0100 0200 0300 0400 0500 0501 0502 0503 0603 0704 0804 0905 1005 1105 1204 1205 1106 1107 1108 1007 0907 0806 0707 0607 0508 0407 0308 0208 0108 0007 0006 0005 0004 0003 0002 0001 0000</Border>
+      <Border Allegiance="Pb" Color="brown">3115 3214 3213 3214 3315 3214 3115</Border>
+      <Border Allegiance="Tr" Color="hotpink">1727 1826 1926 2025 2125 2224 2325 2225 2126 2026 1927 1827 1828 1827 1727</Border>
+    </Borders>
+    <Allegiances Source="Solomani and Aslan">
+      <Allegiance Code="Bs">Bright Star Cooperate</Allegiance>
+      <Allegiance Code="Cn">Creation of Nonpareil</Allegiance>
+      <Allegiance Code="Dj">Daprolix Juncture of Suns</Allegiance>
+      <Allegiance Code="Gt">Great Terbah</Allegiance>
+      <Allegiance Code="Jd">Joie De Vivre</Allegiance>
+      <Allegiance Code="Lv">Lords of Vision</Allegiance>
+      <Allegiance Code="Mu">Malorn Union</Allegiance>
+      <Allegiance Code="Pb">Parity of Brothers</Allegiance>
+      <Allegiance Code="Tr">Toh Republic</Allegiance>
+    </Allegiances>
+  </Sector>
+  <Sector>
+    <Y>5</Y>
+    <X>1</X>
+    <Name>Hadji</Name>
+    <DataFile Author="Jo Jaquinta" Ref="http://www.zho.berka.com/data/CLASSIC/sector.pl?sector=HADJI">hadji.sec</DataFile>
+    <Subsectors Source="Jo Jaquinta">
+      <Subsector Index="A">Winston</Subsector>
+      <Subsector Index="B">Charles</Subsector>
+      <Subsector Index="C">Josef</Subsector>
+      <Subsector Index="D">Franklin</Subsector>
+      <Subsector Index="E">Dubhghall</Subsector>
+      <Subsector Index="F">Ackerman</Subsector>
+      <Subsector Index="G">Jerome</Subsector>
+      <Subsector Index="H">Slava</Subsector>
+      <Subsector Index="I">Consuela</Subsector>
+      <Subsector Index="J">Jonson</Subsector>
+      <Subsector Index="K">Remi</Subsector>
+      <Subsector Index="L">Wise</Subsector>
+      <Subsector Index="M">Peter</Subsector>
+      <Subsector Index="N">Michelle</Subsector>
+      <Subsector Index="O">Baris</Subsector>
+      <Subsector Index="P">Robert</Subsector>
+    </Subsectors>
+    <Borders>
+      <Border Allegiance="Cn" Color="purple">0020 0120 0219 0220 0221 0122 0021 0020</Border>
+      <Border Allegiance="Jf" Color="blue">1020 1121 1221 1222 1221 1121 1020</Border>
+      <Border Allegiance="Pb" Color="brown">0013 0014 0115 0014 0013</Border>
+      <Border Allegiance="Wc" Color="green">2525 2625 2725 2824 2924 3023 3123 3124 3024 2925 2825 2826 2827 2728 2627 2527 2526 2525</Border>
+      <Border Allegiance="Wd" Color="purple">0000 0100 0200 0301 0401 0502 0601 0702 0703 0602 0503 0402 0302 0201 0101 0000</Border>
+    </Borders>
+    <Allegiances Source="Solomani and Aslan">
+      <Allegiance Code="Cn">Creation of Nonpareil</Allegiance>
+      <Allegiance Code="Jf">Jonson-Bowes Federation</Allegiance>
+      <Allegiance Code="Pb">Parity of Brothers</Allegiance>
+      <Allegiance Code="Wc">Council of the Wise</Allegiance>
+      <Allegiance Code="Wd">Winston Democracy</Allegiance>
+    </Allegiances>
+  </Sector>
+  <Sector>
+    <Y>5</Y>
+    <X>2</X>
+    <Name>Storr</Name>
+    <DataFile Author="&quot;jaymin&quot; and Jeff Zeitlin" Source="The Zhodani Base" Ref="http://www.zho.berka.com/data/CLASSIC/sector.pl?sector=STORR">storr.sec</DataFile>
+    <Subsectors Source="Jo Jaquinta">
+      <Subsector Index="A">Bradbury</Subsector>
+      <Subsector Index="B">Simak</Subsector>
+      <Subsector Index="C">Wells</Subsector>
+      <Subsector Index="D">Gibson</Subsector>
+      <Subsector Index="E">Le Guin</Subsector>
+      <Subsector Index="F">Anderson</Subsector>
+      <Subsector Index="G">Niven</Subsector>
+      <Subsector Index="H">Vance</Subsector>
+      <Subsector Index="I">Asimov</Subsector>
+      <Subsector Index="J">Clarke</Subsector>
+      <Subsector Index="K">Harrison</Subsector>
+      <Subsector Index="L">Heinlein</Subsector>
+      <Subsector Index="M">Burroughs</Subsector>
+      <Subsector Index="N">Cherryh</Subsector>
+      <Subsector Index="O">Orwell</Subsector>
+      <Subsector Index="P">Herbert</Subsector>
+    </Subsectors>
+
+  </Sector>
+  <Sector>
+    <Y>5</Y>
+    <X>3</X>
+    <Name>Mikhail</Name>
+  </Sector>
+  <Sector>
+    <Y>5</Y>
+    <X>4</X>
+    <Name>Darret</Name>
+    <DataFile Source="The Core Route Project" Author="Bari Z. Stafford Sr." Ref="http://web.archive.org/web/20030406042613/http://www.geocities.com/traveller_core_route/proj004/proj004.html">darret.sec</DataFile>
+    <Subsectors>
+      <Subsector Index="A">Arret</Subsector>
+      <Subsector Index="B">Barrec</Subsector>
+      <Subsector Index="C">Chirrn</Subsector>
+      <Subsector Index="D">Drret</Subsector>
+      <Subsector Index="E">Eretd</Subsector>
+      <Subsector Index="F">Freddet</Subsector>
+      <Subsector Index="G">Gherr</Subsector>
+      <Subsector Index="H">Herrem</Subsector>
+      <Subsector Index="I">Ierrol</Subsector>
+      <Subsector Index="J">Jerrbole</Subsector>
+      <Subsector Index="K">Kherrez</Subsector>
+      <Subsector Index="L">Lerrin</Subsector>
+      <Subsector Index="M">Mreete</Subsector>
+      <Subsector Index="N">Nerveen</Subsector>
+      <Subsector Index="O">Orrvek</Subsector>
+      <Subsector Index="P">Prerr</Subsector>
+    </Subsectors>
+  </Sector>
+  <Sector>
+    <Y>5</Y>
+    <X>5</X>
+    <Name>Ataurre</Name>
+    <DataFile Source="The Core Route Project" Author="Bari Z. Stafford Sr." Ref="http://web.archive.org/web/20030406042613/http://www.geocities.com/traveller_core_route/proj004/proj004.html">ataurre.sec</DataFile>
+    <Subsectors>
+      <Subsector Index="A">Ataur</Subsector>
+      <Subsector Index="B">Baurre</Subsector>
+      <Subsector Index="C">Catauk</Subsector>
+      <Subsector Index="D">Daurtee</Subsector>
+      <Subsector Index="E">Erruat</Subsector>
+      <Subsector Index="F">Flataur</Subsector>
+      <Subsector Index="G">Ghaurrge</Subsector>
+      <Subsector Index="H">Hurrek</Subsector>
+      <Subsector Index="I">Itaurres</Subsector>
+      <Subsector Index="J">Jataum</Subsector>
+      <Subsector Index="K">Klatau</Subsector>
+      <Subsector Index="L">Laurrex</Subsector>
+      <Subsector Index="M">Muarred</Subsector>
+      <Subsector Index="N">Natuaan</Subsector>
+      <Subsector Index="O">Otauna</Subsector>
+      <Subsector Index="P">Pretau</Subsector>
+    </Subsectors>
+  </Sector>
+  <Sector>
+    <Y>5</Y>
+    <X>6</X>
+    <Name>Katoonah</Name>
+    <DataFile Source="Undiscovered Sectors" Author="Thomas W. Jenkins">Katoonah.sec</DataFile>
+    <Subsectors>
+      <Subsector Index="A">Altare</Subsector>
+      <Subsector Index="B">Kherrou</Subsector>
+      <Subsector Index="C">Pycus</Subsector>
+      <Subsector Index="D">Chydra</Subsector>
+      <Subsector Index="E">Aluvia</Subsector>
+      <Subsector Index="F">Verili</Subsector>
+      <Subsector Index="G">Katoonah</Subsector>
+      <Subsector Index="H">Alpitascyn</Subsector>
+      <Subsector Index="I">Mohennan</Subsector>
+      <Subsector Index="J">Draconia</Subsector>
+      <Subsector Index="K">Mythdranor</Subsector>
+      <Subsector Index="L">Duur Imar</Subsector>
+      <Subsector Index="M">Kayla</Subsector>
+      <Subsector Index="N">Narveen</Subsector>
+      <Subsector Index="O">Kouevi</Subsector>
+      <Subsector Index="P">Kietalli</Subsector>
+    </Subsectors>
+    <Allegiances>
+      <Allegiance Code="Gr">Geanak Republic</Allegiance>
+      <Allegiance Code="Aa">Aluvial Alliance</Allegiance>
+      <Allegiance Code="Sa">Sylvan Alliance</Allegiance>
+      <Allegiance Code="Hl">Human League</Allegiance>
+      <Allegiance Code="De">Draconian Empire</Allegiance>
+      <Allegiance Code="Rv">Reavers</Allegiance>
+    </Allegiances>
+  </Sector>
+  <Sector>
+    <Y>5</Y>
+    <X>7</X>
+    <Name>Uytal</Name>
+  </Sector>
+  <Sector>
+    <Y>5</Y>
+    <X>8</X>
+    <Name Publisher="HIWG">Sporelex</Name>
+  </Sector>
+  <Sector>
+    <Y>6</Y>
+    <X>-9</X>
+    <Name Lang="as" Publisher="HIWG">Tahahroal</Name>
+  </Sector>
+  <Sector>
+    <Y>6</Y>
+    <X>-8</X>
+    <Name Lang="as" Publisher="HIWG">A'yosea</Name>
+  </Sector>
+  <Sector>
+    <Y>6</Y>
+    <X>-7</X>
+    <Name Lang="as" Publisher="HIWG">Usoirarloiau</Name>
+  </Sector>
+  <Sector>
+    <Y>6</Y>
+    <X>-6</X>
+    <Name Lang="as" Publisher="HIWG">Oiah</Name>
+  </Sector>
+  <Sector>
+    <Y>6</Y>
+    <X>-5</X>
+    <Name Lang="as" Publisher="HIWG">Eahyaw</Name>
+  </Sector>
+  <Sector>
+    <Y>6</Y>
+    <X>-4</X>
+    <Name Lang="as" Publisher="HIWG">Ftyer</Name>
+  </Sector>
+  <Sector>
+    <Y>6</Y>
+    <X>-3</X>
+    <Name Lang="as" Publisher="HIWG">Elyetleisiyea</Name>
+  </Sector>
+  <Sector>
+    <Y>6</Y>
+    <X>-2</X>
+    <Name Lang="as" Source="GURPS Traveller: Alien Races 2">Ahriman</Name>
+    <Name Lang="as" Publisher="HIWG">Eose'o</Name>
+  </Sector>
+  <Sector>
+    <Y>6</Y>
+    <X>-1</X>
+    <Name Publisher="HIWG">Holowon</Name>
+    <Name Lang="as" Publisher="HIWG">Tahahorol</Name>
+    <DataFile Author="Brian Smaller">Holowon.sec</DataFile>
+    <MetadataFile Author="Brian Smaller">Holowon.xml</MetadataFile>
+  </Sector>
+  <Sector>
+    <Y>6</Y>
+    <X>0</X>
+    <Name Publisher="HIWG">Amderstun</Name>
+    <DataFile Author="WG Zeist" Source="explorerbase" Ref="https://explorerbase.wordpress.com/amderstun-sector-data/">Amderstun.sec</DataFile>
+    <MetadataFile Author="WG Zeist" Source="explorerbase" Ref="https://explorerbase.wordpress.com/amderstun-sector-data/">Amderstun.xml</MetadataFile>
+  </Sector>
+  <Sector>
+    <Y>6</Y>
+    <X>1</X>
+    <Name>RimReach</Name>
+  </Sector>
+  <Sector>
+    <Y>6</Y>
+    <X>2</X>
+    <Name>Phlange</Name>
+  </Sector>
+  <Sector>
+    <Y>6</Y>
+    <X>3</X>
+    <Name>Tracerie</Name>
+  </Sector>
+  <Sector>
+    <Y>6</Y>
+    <X>4</X>
+    <Name Lang="hv" Publisher="HIWG">Wrence</Name>
+  </Sector>
+  <Sector>
+    <Y>6</Y>
+    <X>5</X>
+    <Name Lang="hv" Publisher="HIWG">Muarne</Name>
+    <DataFile Source="The Core Route Project" Author="Bari Z. Stafford Sr." Ref="http://web.archive.org/web/20030406042613/http://www.geocities.com/traveller_core_route/proj004/proj004.html">muarne.sec</DataFile>
+    <Subsectors>
+      <Subsector Index="A">Amuar</Subsector>
+      <Subsector Index="B">Barnes</Subsector>
+      <Subsector Index="C">Clamuar</Subsector>
+      <Subsector Index="D">Dluarne</Subsector>
+      <Subsector Index="E">Emuart</Subsector>
+      <Subsector Index="F">Fruardi</Subsector>
+      <Subsector Index="G">Grauarn</Subsector>
+      <Subsector Index="H">Haluarg</Subsector>
+      <Subsector Index="I">Imuarff</Subsector>
+      <Subsector Index="J">Juarnest</Subsector>
+      <Subsector Index="K">Klinuar</Subsector>
+      <Subsector Index="L">Lonuarneb</Subsector>
+      <Subsector Index="M">Muaring</Subsector>
+      <Subsector Index="N">Nevuan</Subsector>
+      <Subsector Index="O">Omonuar</Subsector>
+      <Subsector Index="P">Pluast</Subsector>
+    </Subsectors>
+  </Sector>
+  <Sector>
+    <Y>6</Y>
+    <X>6</X>
+    <Name Lang="hv" Publisher="HIWG">Lancask</Name>
+    <DataFile Source="The Core Route Project" Author="Bari Z. Stafford Sr." Ref="http://web.archive.org/web/20030406042613/http://www.geocities.com/traveller_core_route/proj004/proj004.html">lancask.sec</DataFile>
+    <Subsectors>
+      <Subsector Index="A">Alanca</Subsector>
+      <Subsector Index="B">Bancass</Subsector>
+      <Subsector Index="C">Casklier</Subsector>
+      <Subsector Index="D">Dancask</Subsector>
+      <Subsector Index="E">Erancl</Subsector>
+      <Subsector Index="F">Frocask</Subsector>
+      <Subsector Index="G">Ghancask</Subsector>
+      <Subsector Index="H">Hacasell</Subsector>
+      <Subsector Index="I">Icaskarn</Subsector>
+      <Subsector Index="J">Jananca</Subsector>
+      <Subsector Index="K">Kloonac</Subsector>
+      <Subsector Index="L">Lanikasc</Subsector>
+      <Subsector Index="M">Milanco</Subsector>
+      <Subsector Index="N">Nolcask</Subsector>
+      <Subsector Index="O">Olannak</Subsector>
+      <Subsector Index="P">Pocanask</Subsector>
+    </Subsectors>
+  </Sector>
+  <Sector>
+    <Y>6</Y>
+    <X>7</X>
+    <Name Lang="hv" Publisher="HIWG">Tensk</Name>
+  </Sector>
+  <Sector>
+    <Y>6</Y>
+    <X>8</X>
+    <Name Lang="hv" Publisher="HIWG">Aphlent</Name>
+  </Sector>
+
+
+  <Sector>
+    <Y>7</Y>
+    <X>2</X>
+    <Name Lang="hv" Publisher="HIWG">Uroac</Name>
+  </Sector>
+  <Sector>
+    <Y>7</Y>
+    <X>3</X>
+    <Name Lang="hv" Publisher="HIWG">Iphl</Name>
+  </Sector>
+  <Sector>
+    <Y>7</Y>
+    <X>4</X>
+    <Name Lang="hv" Publisher="HIWG">Qona</Name>
+  </Sector>
+  <Sector>
+    <Y>7</Y>
+    <X>5</X>
+    <Name Lang="hv" Publisher="HIWG">Qiask</Name>
+  </Sector>
+  <Sector>
+    <Y>7</Y>
+    <X>6</X>
+    <Name Lang="hv" Publisher="HIWG">Uaftdual</Name>
+  </Sector>
+  <Sector>
+    <Y>7</Y>
+    <X>7</X>
+    <Name Lang="hv" Publisher="HIWG">Orna</Name>
+  </Sector>
+  <Sector>
+    <Y>7</Y>
+    <X>8</X>
+    <Name Lang="hv" Publisher="HIWG">Noontask</Name>
+  </Sector>
+
+  <Sector>
+    <Y>8</Y>
+    <X>2</X>
+    <Name Lang="hv" Publisher="HIWG">Onoo</Name>
+  </Sector>
+  <Sector>
+    <Y>8</Y>
+    <X>3</X>
+    <Name Lang="hv" Publisher="HIWG">Dranon</Name>
+  </Sector>
+  <Sector>
+    <Y>8</Y>
+    <X>4</X>
+    <Name Lang="hv" Publisher="HIWG">Geerphli</Name>
+  </Sector>
+  <Sector>
+    <Y>8</Y>
+    <X>5</X>
+    <Name Lang="hv" Publisher="HIWG">Lila</Name>
+  </Sector>
+  <!-- in Orion OB1 Association
+  <Sector>
+    <Y>8</Y>
+    <X>6</X>
+    <Name Lang="hv" Publisher="HIWG">Nievoak</Name>
+  </Sector>
+-->
+  <Sector>
+    <Y>8</Y>
+    <X>7</X>
+    <Name Lang="hv" Publisher="HIWG">Koirtrua</Name>
+  </Sector>
+  <Sector>
+    <Y>8</Y>
+    <X>8</X>
+    <Name Lang="hv" Publisher="HIWG">Ultret</Name>
+  </Sector>
+
+</Sectors>
+
+<!--
+NOTES:
+  * "Sigma Zephyrus" sector has now been located at (-5 -3).  This is the
+    only example I know of where a sector is named in print which has never
+    had its' location specified in print.  [Private communication with Clay
+    Bush, HIWG.]
+  * Sectors (-4 -4) & (-4 -3) and (-3 -4) & (-3 -3) have been printed with
+    each other's Vargr names in different publications.  Listing above fits
+    with the most recent publication (DGP, _Vilani and Vargr_).
+  * Sector (1 0) has been spelled both "Massila" and "Massilia"; here the
+    latter is used.  Sector (0 4) has been spelled "Luretiir!girr" with one
+    i and with two; here the more common two "i" version is used.
+
+end.  corrections to <bonnevil@cs.umn.edu>
+-->
+
+<!--
+Metadata changes circa 1202, c/o The Regency Sourcebook (TNE)
+  Spinward Marches
+    Darrian - Daryen
+    District 268 - Plankwell
+    Trin's Veil - Trin's Shroud
+  Deneb
+    Dunmag - Namidshur
+
+TODO:
+
+Massilia
+  A     Seletron        - TD #10 ??
+  A     Kerr            - TD #11 ??
+
+TODO:
+
+  Integrate:    http://traveller.mu.org/archive/HIWG/imperium.worlds.txt
+    - UWPs/Subsectors/Sectors of homeworlds
+-->

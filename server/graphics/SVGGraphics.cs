@@ -119,6 +119,8 @@ namespace Maps.Rendering
         
         private class ElementNames
         {
+            private ElementNames() { }
+
             public const string DEFS = "defs";
             public const string CLIPPATH = "clipPath";
 
@@ -617,7 +619,7 @@ namespace Maps.Rendering
         #endregion
 
         #region Utilities
-        private string ToSVG(AbstractPath ap)
+        private static string ToSVG(AbstractPath ap)
         {
             PathBuilder path = new PathBuilder();
 
@@ -642,7 +644,7 @@ namespace Maps.Rendering
             return path.ToString();
         }
 
-        private string ToSVG(PointF[] points, float tension, bool closed)
+        private static string ToSVG(PointF[] points, float tension, bool closed)
         {
             PathBuilder path = new PathBuilder();
 

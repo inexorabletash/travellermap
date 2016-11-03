@@ -49,7 +49,6 @@ namespace Maps.Rendering
     internal abstract class AbstractGraphicsState : IDisposable {
 
         private AbstractGraphics g;
-        private bool restored = false;
 
         protected AbstractGraphicsState(AbstractGraphics graphics)
         {

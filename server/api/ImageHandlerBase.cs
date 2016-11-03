@@ -202,7 +202,6 @@ namespace Maps.API
                     context.Response.Output.Write(";base64,");
                     context.Response.Output.Flush();
 
-                    byte[] buffer = new byte[4096];
                     System.Security.Cryptography.ICryptoTransform transform = new System.Security.Cryptography.ToBase64Transform();
                     using (System.Security.Cryptography.CryptoStream cs = new System.Security.Cryptography.CryptoStream(context.Response.OutputStream, transform, System.Security.Cryptography.CryptoStreamMode.Write))
                     {

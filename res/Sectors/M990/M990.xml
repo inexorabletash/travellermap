@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
+<?xml-stylesheet type="text/xsl" href="../../credits.xslt"?>
 <Sectors>
   <Sector Selected="true" Milieu="M990" Tags="Unreviewed">
     <Y>0</Y>
@@ -44,5 +45,12 @@
     <Name>Daibei</Name>
     <DataFile Author="Randy Dorman" Type="TabDelimited">Daibei.tab</DataFile>
     <MetadataFile>Daibei.xml</MetadataFile>
+  </Sector>
+  <Sector Selected="true" Milieu="M990" Tags="Unofficial">
+    <Y>2</Y>
+    <X>0</X>
+    <Name>Diaspora</Name>
+    <DataFile Author="Randy Dorman" Type="TabDelimited">Diaspora.tab</DataFile>
+    <MetadataFile>Diaspora.xml</MetadataFile>
   </Sector>
 </Sectors>
