@@ -6,17 +6,33 @@
     <X>-4</X>
     <Name>Spinward Marches</Name>
     <Name Lang="zh">Tloql</Name>
-    <DataFile Author="Marc W Miller" Source="MegaTraveller Imperial Encyclopedia" Type="SecondSurvey">1120_Spin.sec</DataFile>
+    <DataFile Type="SecondSurvey">1120_Spin.sec</DataFile>
     <MetadataFile>1120_Spin.xml</MetadataFile>
   </Sector>
-
   <Sector Abbreviation="Mass" Tags="Unreviewed" Selected="true" Milieu="M1120">
-    <Y>-0</Y>
+    <Y>0</Y>
     <X>1</X>
-  <Name Source="DGP">Massilia</Name>
-  <Name Source="GDW">Massila</Name>
-  <Name Lang="vi">Masilaa</Name>
-    <DataFile Author="Joe D. Fugate Sr." Source="Knightfall" Type="SecondSurvey">1120_Mass.sec</DataFile>
+    <Name Source="DGP">Massilia</Name>
+    <Name Source="GDW">Massila</Name>
+    <Name Lang="vi">Masilaa</Name>
+    <DataFile Type="SecondSurvey">1120_Mass.sec</DataFile>
     <MetadataFile>1120_Mass.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Dias" Tags="Unreviewed" Selected="true" Milieu="M1120">
+    <Y>0</Y>
+    <X>2</X>
+    <Name>Diaspora</Name>
+    <Name Lang="vi">Nakulakak</Name>
+    <DataFile Type="SecondSurvey">1124_Dias.sec</DataFile>
+    <MetadataFile>1124_Mass.xml</MetadataFile>
+  </Sector>
+
+  <Sector Abbreviation="Fore" Tags="Preserve" Selected="true" Milieu="M1120">
+    <Y>-1</Y>
+    <X>-5</X>
+  <Name>Foreven</Name>
+  <Name Lang="zh">Iakr</Name>
+    <DataFile Type="SecondSurvey">1120_Fore.sec</DataFile>
+    <MetadataFile>1120_Fore.xml</MetadataFile>
   </Sector>
 </Sectors>

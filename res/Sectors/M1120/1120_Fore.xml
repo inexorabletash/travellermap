@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<Sector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>Foreven</Name>
+  <Name Lang="zh">Iakr</Name>
+  <Credits>
+
+             &lt;b&gt;Foreven&lt;/b&gt; sector has been set aside as a "referee's
+             preserve," with no further official development to be
+             done within the sector. Stellar positions were developed
+             by Greg Videll and Mike Mikesh for &lt;cite&gt;Imperial Lines
+             #1&lt;/cite&gt; (GDW, 1991).
+
+    </Credits>
+  <Product Author="Greg Videll and Mike Mikesh" Title="Imperial Lines 1" Publisher="GDW" Ref="http://www.farfuture.net/Contents%20CDROM%20MegaTraveller.pdf" />
+  <Subsectors>
+    <Subsector Index="A">Shiva</Subsector>
+    <Subsector Index="B">Lieber</Subsector>
+    <Subsector Index="C">Shial</Subsector>
+    <Subsector Index="D">Massina</Subsector>
+    <Subsector Index="E">Pieplow</Subsector>
+    <Subsector Index="F">Anika</Subsector>
+    <Subsector Index="G">Mowbrey</Subsector>
+    <Subsector Index="H">Fessor</Subsector>
+    <Subsector Index="I">Lassana</Subsector>
+    <Subsector Index="J">Titan</Subsector>
+    <Subsector Index="K">Xenough</Subsector>
+    <Subsector Index="L">Reidain</Subsector>
+    <Subsector Index="M">Rull</Subsector>
+    <Subsector Index="N">Harem</Subsector>
+    <Subsector Index="O">Piah</Subsector>
+    <Subsector Index="P">Urnian</Subsector>
+  </Subsectors>
+  <Allegiances>
+    <Allegiance Code="AvCn">Avalar Consulate</Allegiance>
+    <Allegiance Code="CsIm">Client state, Third Imperium</Allegiance>
+    <Allegiance Code="MnPr">Mnemosyne Principality</Allegiance>
+    <Allegiance Code="XXXX">Unknown</Allegiance>
+    <Allegiance Code="ZhIN">Zhodani Consulate, Iadr Nsobl Province</Allegiance>
+  </Allegiances>
+  <Borders>
+    <Border Allegiance="AvCn" Color="Tan">1039 1139 1239 1339 1338 1337 1336 1335 1434 1433 1432 1431 1430 1330 1329 1428 1427 1426 1425 1325 1224 1124 1223 1323 1422 1523 1622 1623 1724 1725 1726 1826 1926 1927 1928 2028 2128 2228 2328 2427 2527 2528 2628 2629 2730 2829 2730 2731 2631 2632 2532 2431 2331 2231 2131 2031 1932 1832 1833 1834 1835 1936 1937 1938 1939 1940 2040 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1041 1040 1039 </Border>
+    <Border Allegiance="MnPr" Color="SlateGray" LabelPosition="0731">0029 0129 0228 0227 0226 0327 0426 0526 0527 0528 0529 0629 0730 0731 0831 0832 0933 0934 1034 1035 0936 0937 0837 0738 0637 0538 0437 0436 0336 0236 0136 0035 0034 0033 0032 0031 0030 0029 </Border>
+    <Border Allegiance="ZhIN" Color="Blue" Label="Zhodani Consulate">0000 0100 0200 0300 0400 0500 0600 0700 0800 0900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3206 3107 3108 3008 2909 2910 2810 2811 2711 2610 2511 2410 2409 2408 2308 2208 2109 2110 2010 1911 1811 1712 1612 1513 1413 1314 1315 1316 1216 1116 1016 0917 0817 0818 0718 0618 0518 0418 0318 0218 0119 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001 0000 </Border>
+  </Borders>
+</Sector>
