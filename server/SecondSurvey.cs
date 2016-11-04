@@ -426,6 +426,9 @@ namespace Maps
             { "BoWo", "Bw", null, "Border Worlds" },
             { "LuIm", "Li", null, "Lucan's Imperium" },
             { "MaSt", "Ma", null, "Maragaret's Domain" },
+            { "BaCl", "Bc", null, "Backman Cluster" },
+            { "FdDa", "Fd", null, "Federation of Daibei" },
+            { "AvCn", "Ac", null, "Avalar Consulate" },
         };
         public static IEnumerable<string> AllegianceCodes { get { return s_t5Allegiances.Keys; } }
 
