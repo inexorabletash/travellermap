@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Sector Tags="InReview">
+  <Y>0</Y>
+  <X>-5</X>
+  <Name>The Beyond</Name>
+  <Name>Beyond</Name>
+  <Name Lang="as">Lerlairlaii</Name>
+  <Name Lang="zh">Zhdiakltlatl</Name>
+  <Credits>
+    <![CDATA[
+
+             <b>Beyond</b> sector was designed by Donald P. Rapp and
+             appears in <cite>The Beyond</cite> (Paranoia Press,
+             1981).
+
+    ]]>
+  </Credits>
+  <DataFile Author="Donald P. Rapp and Chuck Kallenbach II" Source="Traveller 5 Second Survey" Milieu="M1201" Type="TabDelimited">Beyond.tab</DataFile>
+  <Subsectors>
+    <Subsector Index="A">Mapepire</Subsector>
+    <Subsector Index="B">Liberty Hall</Subsector>
+    <Subsector Index="C">Die Weltbund</Subsector>
+    <Subsector Index="D">Mal'Gnar Radiant</Subsector>
+    <Subsector Index="E">Subsector Delta</Subsector>
+    <Subsector Index="F">Metchi' Alagwa</Subsector>
+    <Subsector Index="G">Northeast Middle Beyond</Subsector>
+    <Subsector Index="H">Darkling Regions</Subsector>
+    <Subsector Index="I">Zydar</Subsector>
+    <Subsector Index="J">Middle Beyond</Subsector>
+    <Subsector Index="K">I'Sred*Ni Heptad</Subsector>
+    <Subsector Index="L">Araniopa</Subsector>
+    <Subsector Index="M">Spinward Drift</Subsector>
+    <Subsector Index="N">I-Glathriel</Subsector>
+    <Subsector Index="O">Storm</Subsector>
+    <Subsector Index="P">Aslani</Subsector>
+  </Subsectors>
+
+  <Allegiances>
+    <Allegiance Code="As">Aslan Hierate</Allegiance>
+    <Allegiance Code="Fl">Florian League</Allegiance>
+  </Allegiances>
+
+   <Borders>
+     <Border Allegiance="As" LabelPosition="2540">
+       2039 2139 2138 2137 2237 2337
+       2436 2536 2635 2735 2834 2934 3033 3032 3031 3030 3029 2929 3028 3128
+       3227 3226 3225 3224 3223 3123 3222 3322 3323 3324 3325 3326 3327 3328
+       3329 3330 3331 3332 3333 3334 3335
+       3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541
+       2441 2341 2241 2141 2040 2039
+     </Border>
+     <Border Allegiance="Fl" LabelPosition="2914" Color="green">2717 2816 2916 2915 2914 2913 3013 3113 3112 3011 3111 3210 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3318 3217 3117 3016 2916 2816 2717 </Border>
+   </Borders>
+
+ </Sector>
