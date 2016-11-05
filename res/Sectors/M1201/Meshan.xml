@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Sector Abbreviation="Mesh" Tags="InReview">
+  <Y>-2</Y>
+  <X>0</X>
+  <Name>Meshan</Name>
+  <!-- <Name Lang="va">Arzul</Name> Vilani and Vargr - but duplicate w/ Ingukrax -->
+  <Credits>
+    <![CDATA[
+
+             <b>Meshan</b> sector was designed by Michael R. Mikesh
+             and appears in <cite>The Meshan Saga Magazine</cite>.
+
+             Stellar positions were developed by Joe D. Fugate Sr. and
+             appear in <cite>The MegaTraveller Alien, Volume 1: Vilani
+             &amp; Vargr</cite> (Digest Group Publications, 1990).
+             
+             M1201 data from "The Meshan Saga" - https://books.google.co.uk/books/about/The_Original_Meshan_Saga.html?id=u0Vjh5vtL7kC&redir_esc=y
+
+    ]]>
+  </Credits>
+  <DataFile Author="Michael R. Mikesh" Source="Traveller 5 Sector Survey" Milieu="M1201" Type="TabDelimited">Meshan.tab</DataFile>
+  <Subsectors>
+    <Subsector Index="A">Raen</Subsector>
+    <Subsector Index="B">Lues</Subsector>
+    <Subsector Index="C">Ungersol</Subsector>
+    <Subsector Index="D" Source="Challenge #49">Dekesh</Subsector>
+    <Subsector Index="E">Yonder</Subsector>
+    <Subsector Index="F">Arena</Subsector>
+    <Subsector Index="G">Varson</Subsector>
+    <Subsector Index="H" Source="Challenge #49">Maramar</Subsector>
+    <Subsector Index="I">Mersol</Subsector>
+    <Subsector Index="J">Zisran</Subsector>
+    <Subsector Index="K">Tokho</Subsector>
+    <Subsector Index="L" Source="Challenge #49">Ogaros</Subsector>
+    <Subsector Index="M">Khuulu</Subsector>
+    <Subsector Index="N">Faengfel</Subsector>
+    <Subsector Index="O">Ekso</Subsector>
+    <Subsector Index="P" Source="Challenge #49">Sudzum</Subsector>
+  </Subsectors>
+  <Stylesheet>
+    border.Tu { color: lightblue; }
+    border.Ki { color: lightgreen; }
+  </Stylesheet>
+  <Allegiances>
+    <Allegiance Code="Tu">Tokho Union</Allegiance>
+    <Allegiance Code="Ki">Kisiidi</Allegiance>
+  </Allegiances>
+  <Borders>
+    <Border Allegiance="Ki">1829 1929 1928 1927 1926 1927 1928 2028 2129 2028 1929 1829 </Border>
+    <Border Allegiance="Tu">1725 1824 1924 2023 1924 1824 1725 1726 1727 1726 1725 </Border>
+  </Borders>
+</Sector>

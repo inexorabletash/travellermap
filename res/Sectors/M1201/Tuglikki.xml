@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Sector Abbreviation="Tugl" Tags="InReview">
+  <Y>-2</Y>
+  <X>-3</X>
+  <Name Lang="va">Tuglikki</Name>
+  <Name Lang="zh">Dravr</Name>
+  <Credits>
+    <![CDATA[
+
+             <b>Tuglikki</b> sector was designed by David Drazul.
+             
+             M1201 data from http://zho.berka.com/data/TNE/sector.pl?sector=TUGLIKKI
+
+    ]]>
+  </Credits>
+  <DataFile Author="David Drazul"  Source="Traveller 5 Sector Survey" Milieu="M1201" Type="TabDelimited">Tuglikki.tab</DataFile>
+  <Subsectors Author="David Drazul" Source="Traveller in the DED Zone" Ref="http://www.dedzone.net/traveller/sectors/tuglikki/">
+    <Subsector Index="A">Dokh</Subsector>
+    <Subsector Index="B">Saerrgh</Subsector>
+    <Subsector Index="C">Orrgueg</Subsector>
+    <Subsector Index="D">Knoukhs</Subsector>
+    <Subsector Index="E">Darrgouts</Subsector>
+    <Subsector Index="F">Uerrul</Subsector>
+    <Subsector Index="G">Tsaerlon</Subsector>
+    <Subsector Index="H">Gaerith</Subsector>
+    <Subsector Index="I">Kaeng</Subsector>
+    <Subsector Index="J">Ludzghaeth</Subsector>
+    <Subsector Index="K">Aenkazarr</Subsector>
+    <Subsector Index="L">Onrakae</Subsector>
+    <Subsector Index="M">Anfharsgzo</Subsector>
+    <Subsector Index="N">Ogaeka</Subsector>
+    <Subsector Index="O">Ourrvikh</Subsector>
+    <Subsector Index="P">Aegaek</Subsector>
+  </Subsectors>
+  <Borders>
+  </Borders>
+</Sector>
