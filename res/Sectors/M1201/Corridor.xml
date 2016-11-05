@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<Sector Abbreviation="Corr" Tags="Official">
+  <Y>-1</Y>
+  <X>-2</X>
+  <Name>Corridor</Name>
+  <Name Lang="vi">Amshagi</Name>
+  <Name Lang="vi">Eneri</Name>
+  <Name Lang="va">Roughantz</Name>
+  <Name Lang="va">Llananae Tourz</Name>
+  <Credits>
+    <![CDATA[
+
+             <b>Corridor</b> sector was designed by Marc W. Miller and
+             appears in <cite>Atlas of the Imperium</cite> (GDW,
+             1984).
+
+             It was refined by David Riddell. Portions appear in
+             <cite>The Travellers Digest</cite>.
+             
+             TNE Data from Zhodani Base http://zho.berka.com/data/TNE/sector.pl?sector=CORRIDOR
+
+    ]]>
+  </Credits>
+  <DataFile Source="Traveller 5 Second Survey" Milieu="M1201" Type="TabDelimited">Corridor.tab</DataFile>
+  <Subsectors>
+    <Subsector Index="A">Khouth</Subsector>
+    <Subsector Index="B">Khukish</Subsector>
+    <Subsector Index="C">Lemish</Subsector>
+    <Subsector Index="D">The Narrows</Subsector>
+    <Subsector Index="E">Ian</Subsector>
+    <Subsector Index="F">Strand</Subsector>
+    <Subsector Index="G">Naadi</Subsector>
+    <Subsector Index="H">Uantil</Subsector>
+    <Subsector Index="I">Shush</Subsector>
+    <Subsector Index="J">The Empty Void</Subsector>
+    <Subsector Index="K">Atu'l</Subsector>
+    <Subsector Index="L">Kivu</Subsector>
+    <Subsector Index="M">Two Worlds</Subsector>
+    <Subsector Index="N">Ashishinipar</Subsector>
+    <Subsector Index="O">Sinta</Subsector>
+    <Subsector Index="P">Sashrakusha</Subsector>
+  </Subsectors>
+
+  <Stylesheet>
+    border.Br { color: purple; }
+  </Stylesheet>
+
+  <Allegiances>
+    <Allegiance Code="Br">Brinn</Allegiance>
+    <Allegiance Code="Wi">Wilds</Allegiance>
+    <Allegiance Code="">Barren</Allegiance>
+  </Allegiances>
+
+  <Routes>
+
+  </Routes>
+  <Borders>
+    <Border Allegiance="Br" Label="Brinn" WrapLabel="true">
+      2040 2039 2140 2239 2238 2338 2238 2239 2140 2040
+    </Border>
+  </Borders>
+</Sector>
