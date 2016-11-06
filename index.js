@@ -314,6 +314,9 @@ window.addEventListener('DOMContentLoaded', function() {
       input.focus();
       input.setSelectionRange(0, input.value.length); // .select() fails on iOS
     });
+    input.addEventListener('mouseup', function(e) {
+      e.preventDefault();
+    });
   });
 
   // Nav Bar
