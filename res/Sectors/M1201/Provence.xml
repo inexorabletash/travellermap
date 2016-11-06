@@ -35,15 +35,21 @@
   </Subsectors>
 
   <Stylesheet>
-      border.Kv { color: olivedrab; }
+    border.Kv { color: olivedrab; }
+    border.Vl { color: olivedrab; }
   </Stylesheet>
   <Allegiances>
     <Allegiance Code="Kv">Knokseng Confederation</Allegiance>
+    <Allegiance Code="Vl">Lair Protectorate</Allegiance>
   </Allegiances>
 
     <Borders>
       <Border Allegiance="Kv">
         0325 0424 0423 0422 0421 0422 0523 0524 0624 0625 0626 0627 0728 0828 0728 0628 0529 0530 0430 0530 0529 0528 0527 0526 0425 0325
+      </Border>
+
+      <Border Allegiance="Vl">
+        2001 2101 2201 2301 2302 2402 2302 2201 2102 2001
       </Border>
     </Borders>
 </Sector>
