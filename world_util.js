@@ -412,7 +412,8 @@
 
   var REMARKS_PATTERNS = [
     // Special
-    [ /^Rs\w$/, 'Research Station'],
+    [/^Rs\w$/, 'Research Station'],
+    [/^Rw:?\w$/, 'Refugee World'],
 
     // Ownership
     [ /^O:\d\d\d\d$/, 'Controlled'],

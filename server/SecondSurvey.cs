@@ -470,6 +470,7 @@ namespace Maps
 
         #region Sophonts
         private static readonly IReadOnlyDictionary<string, string> s_sophontCodes = new Dictionary<string, string> {
+            #region T5SS Sophont Codes
             // Sophont Table Begin
             { "Adda", "Addaxur" },
             { "Akee", "Akeed" },
@@ -537,6 +538,11 @@ namespace Maps
             { "Zhod", "Zhodani" },
             { "Ziad", "Ziadd" },
             // Sophont Table End
+            #endregion
+
+            // M1201
+            { "Kkre", "K'kree" },
+            { "Brin", "Brinn" }
         };
         public static string SophontCodeToName(string code)
         {

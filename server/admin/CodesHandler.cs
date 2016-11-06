@@ -54,7 +54,7 @@ namespace Maps.Admin
             // Other Common
             "Xb", // X-boat stop
 
-            { @"^Rw:[0-9]$", "Rw#" }, // TNE: Refugee World
+            { @"^Rw:?[0-9VZ]$", "Rw#" }, // TNE: Refugee World
 
             // LWLG
             "Hp", "Hn", // Hiver-prime, Hiver-norm
