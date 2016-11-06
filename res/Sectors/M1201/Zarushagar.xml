@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<Sector Abbreviation="Zaru" Tags="Official">
+  <Y>1</Y>
+  <X>-1</X>
+  <Name>Zarushagar</Name>
+  <Credits>
+    <![CDATA[
+
+             <b>Zarushagar</b> sector was designed by Marc W. Miller
+             and appears in <cite>Atlas of the Imperium</cite> (GDW,
+             1984).
+
+             It was refined by Greg Videll. Portions appear in
+             <cite>The Travellers Digest</cite> and the
+             <cite>MegaTraveller Referee’s Gaming Kit</cite> (Digest
+             Group Publications, 1989).
+                          
+             Duchy of Oasis from Challenge 71.
+             
+             TNE extrapolated from Bearers of the Flame
+    ]]>
+  </Credits>
+  <DataFile Author="Greg Videll" Source="Challenge 71" Type="TabDelimited">Zarushagar.tab</DataFile>
+  <Subsectors>
+    <Subsector Index="A">?</Subsector>
+    <Subsector Index="B">?</Subsector>
+    <Subsector Index="C">?</Subsector>
+    <Subsector Index="D">?</Subsector>
+    <Subsector Index="E">?</Subsector>
+    <Subsector Index="F">?</Subsector>
+    <Subsector Index="G">?</Subsector>
+    <Subsector Index="H">Nalaashii</Subsector>
+    <Subsector Index="I">?</Subsector>
+    <Subsector Index="J">?</Subsector>
+    <Subsector Index="K" Author="Greg Videll" Source="Challenge 71">Wolf</Subsector>
+    <Subsector Index="L" Author="Greg Videll" Source="Challenge 71">Oasis</Subsector>
+    <Subsector Index="M">?</Subsector>
+    <Subsector Index="N">?</Subsector>
+    <Subsector Index="O">?</Subsector>
+    <Subsector Index="P">?</Subsector>
+  </Subsectors>
+  <Routes>
+    <Route Start="2424" End="2524" Allegiance="Oa" />
+    <Route Start="2424" End="2525" Allegiance="Oa" />
+    <Route Start="2525" End="2725" Allegiance="Oa" />
+    <Route Start="2826" End="2725" Allegiance="Oa" />
+    <Route Start="2826" End="2928" Allegiance="Oa" />
+
+    <Route Start="3128" End="3129" Allegiance="Cr" />
+    <Route Start="3130" End="3129" Allegiance="Cr" />
+
+  </Routes>
+
+  <Stylesheet>
+    border.Oa { color: lightblue; }
+    route.Oa { color: lightgreen; }
+
+    border.Cr { color: blue; }
+    route.Cr { color: #006600; }
+
+    border.Ne { color: red; }
+
+  </Stylesheet>
+
+  <Allegiances>
+    <Allegiance Code="Oa">Duchy of Oasis</Allegiance>
+    <Allegiance Code="Cr">Crown Colonies</Allegiance>
+    <Allegiance Code="Wi">Wilds</Allegiance>
+    <Allegiance Code="Ne">Nalaashii Empire</Allegiance>
+    <Allegiance Code="">Barren</Allegiance>
+  </Allegiances>
+
+  <Borders>
+    <Border Allegiance="Oa" Label="Duchy of Oasis" WrapLabel="true">2424 2524 2624 2725 2726 2826 2927 2928 2827 2826 2726 2625 2525 2424</Border>
+    <Border Allegiance="Cr" Label="Crown Colonies" WrapLabel="true">3128 3129 3229 3230 3130 3129 3128</Border>
+    <Border Allegiance="Ne" Label="Nalaashii Empire" WrapLabel="true">2816 2815 2814 2915 2815 2816</Border>
+    
+  </Borders>
+</Sector>

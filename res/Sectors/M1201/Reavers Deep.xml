@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<Sector Abbreviation="Reav" Tags="Official">
+  <Y>2</Y>
+  <X>-2</X>
+  <Name>Reaver's Deep</Name>
+  <Name>Reavers' Deep</Name>
+  <Name>Reavers Deep</Name>
+  <Name Lang="as">Aeitle Sakh</Name>
+  <Credits>
+    <![CDATA[
+
+             <b>Reaver's Deep</b> sector was designed by J. Andrew
+             Keith. Portions of Reaver's Deep sector appear in
+             <cite>High Passage Magazine</cite>, and in <cite>Far
+             Traveller Magazine</cite>.
+             
+             The Gralyn Union and details of the Drinsaar Loop from Traveller Chronicle Issue 6 
+
+    ]]>
+  </Credits>
+  <DataFile Milieu="M1201" Type="TabDelimited">Reavers Deep.tab</DataFile>
+  <Subsectors Publisher="DGP" Source="The Travellers' Digest #16, Reaver's Deep Sector Sourcebook">
+    <Subsector Index="A">Farift</Subsector>
+    <Subsector Index="B">Riftdeep</Subsector>
+    <Subsector Index="C">Riftrim</Subsector>
+    <Subsector Index="D">Gulf</Subsector>
+    <Subsector Index="E">Hryaroaa</Subsector>
+    <Subsector Index="F">Scotian Deep</Subsector>
+    <Subsector Index="G">Caledon</Subsector>
+    <Subsector Index="H">Nightrim</Subsector>
+    <Subsector Index="I">Keiar</Subsector>
+    <Subsector Index="J">Ea</Subsector>
+    <Subsector Index="K">Drexilthar</Subsector>
+    <Subsector Index="L">Urlaqqash</Subsector>
+    <Subsector Index="M">Uhtaa</Subsector>
+    <Subsector Index="N">Eakoi</Subsector>
+    <Subsector Index="O">Drinsaar</Subsector>
+    <Subsector Index="P">Fahlnar</Subsector>
+  </Subsectors>
+
+  <Allegiances>
+    <Allegiance Code="Gu">Gralyn Union</Allegiance>
+    <Allegiance Code="Wi">Wilds</Allegiance>
+    <Allegiance Code="">Barren</Allegiance>
+  </Allegiances>
+
+  <Stylesheet>
+    border.Gu { color: lightgreen; }
+  </Stylesheet>
+  <Borders>
+    <Border Allegiance="Gu" Label="Gralyn Union" WrapLabel="true" LabelPosition="1835">
+      1734 1735 1734
+    </Border>
+  </Borders>
+
+  <Labels>
+    <Label Hex="2132" Color="Red">Drinsaar Loop</Label>
+  </Labels>
+  
+  <Routes>
+  </Routes>
+</Sector>
