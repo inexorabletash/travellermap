@@ -18,6 +18,8 @@
              Duchy of Oasis from Challenge 71.
              
              TNE extrapolated from Bearers of the Flame
+             
+             Further TNE data from http://www.dedzone.net/traveller/sectors/zarushagar/
     ]]>
   </Credits>
   <DataFile Author="Greg Videll" Source="Challenge 71" Type="TabDelimited">Zarushagar.tab</DataFile>
@@ -67,6 +69,8 @@
     <Allegiance Code="Cr">Crown Colonies</Allegiance>
     <Allegiance Code="Wi">Wilds</Allegiance>
     <Allegiance Code="Ne">Nalaashii Empire</Allegiance>
+    <Allegiance Code="Zr">Zarushagar Rift Confederation</Allegiance>
+    <Allegience Code="Ru">Rossak Union</Allegience>
     <Allegiance Code="">Barren</Allegiance>
   </Allegiances>
 
@@ -74,6 +78,14 @@
     <Border Allegiance="Oa" Label="Duchy of Oasis" WrapLabel="true">2424 2524 2624 2725 2726 2826 2927 2928 2827 2826 2726 2625 2525 2424</Border>
     <Border Allegiance="Cr" Label="Crown Colonies" WrapLabel="true">3128 3129 3229 3230 3130 3129 3128</Border>
     <Border Allegiance="Ne" Label="Nalaashii Empire" WrapLabel="true">2816 2815 2814 2915 2815 2816</Border>
-    
+
+    <Border Allegiance="Ru" Label="Rossak Union">
+      1226 1327 1227 1226
+    </Border>
+
+    <Border Allegiance="Zr" Label="Zarushagar Rift Confederation">
+      0738 0837 0937 0936 0935 0934 0935 0936 0937 0938 1038 1139 1239 1340 1239 1139 1038 0938 0837 0738
+    </Border>
+
   </Borders>
 </Sector>
