@@ -35,4 +35,12 @@
     <DataFile Type="SecondSurvey">1120_Fore.sec</DataFile>
     <MetadataFile>1120_Fore.xml</MetadataFile>
   </Sector>
+
+  <Sector Abbreviation="Hint" Tags="Unreviewed" Selected="true" Milieu="M1120">
+    <Y>2</Y>
+    <X>2</X>
+    <Name>Hinterworlds</Name>
+    <DataFile Type="SecondSurvey">1120_Hint.sec</DataFile>
+    <MetadataFile>1120_Hint.xml</MetadataFile>
+  </Sector>
 </Sectors>

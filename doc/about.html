@@ -130,15 +130,20 @@
       subsector, among others.
     </p>
     <p>
-      You can use <code>*</code> and <code>?</code> as
-      wildcards. <code>*</code> matches zero or more characters,
-      so <code>*ward</code> will find the Spinward Marches
-      sector. <code>?</code> matches exactly one character,
-      so <code>t?rra</code> will find the Terra system.
+      You can use <code>*</code> and <code>?</code> as wildcards.
+      <code>*</code> matches zero or more characters, so
+      <code>*ward</code> will find the Spinward Marches sector.
+      <code>?</code> matches exactly one character, so
+      <code>t?rra</code> will find the Terra system. You can also use
+      character ranges like <code>[8-C]</code> or <code>[89A]</code>.
     </p>
     <p>
       Specify <code>uwp:</code> to search UWPs. For example,
       <code>uwp:*-g</code> will find tech level 16 worlds.
+      <code>uwp:B[5-7][6-7][3-9][4-8]?[4-7]-[B-D]</code> will
+      find all starport B, medium size, standard atmosphere,
+      wet, moderate poulation and law-level words with
+      average stellar tech level.
     </p>
     <p>
       Specify <code>pbg:</code> to search PBG. For example,
