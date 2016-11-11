@@ -23,12 +23,12 @@ namespace Maps.API
             public override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Xml; } }
 
             private static readonly IReadOnlyDictionary<string, string> SpecialSearches = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase) {
-            { @"(default)", @"~/res/search/Default.json"},
-            { @"(grand tour)", @"~/res/search/GrandTour.json"},
-            { @"(arrival vengeance)", @"~/res/search/ArrivalVengeance.json"},
-            { @"(far frontiers)", @"~/res/search/FarFrontiers.json"},
-            { @"(cirque)", @"~/res/search/Cirque.json"}
-        };
+                { @"(default)", @"~/res/search/Default.json"},
+                { @"(grand tour)", @"~/res/search/GrandTour.json"},
+                { @"(arrival vengeance)", @"~/res/search/ArrivalVengeance.json"},
+                { @"(far frontiers)", @"~/res/search/FarFrontiers.json"},
+                { @"(cirque)", @"~/res/search/Cirque.json"}
+            };
 
             private static readonly Regex UWP_REGEXP = new Regex(@"^\w{7}-\w$");
 
@@ -65,15 +65,24 @@ namespace Maps.API
                 string milieu = GetStringOption("milieu", SectorMap.DEFAULT_MILIEU);
                 SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, milieu);
 
-                query = query.Replace('*', '%'); // Support * and % as wildcards
-                query = query.Replace('?', '_'); // Support ? and _ as wildcards
+                int NUM_RESULTS;
+                IEnumerable<ItemLocation> searchResults;
+                if (query == "(random world)")
+                {
+                    NUM_RESULTS = 1;
+                    searchResults = SearchEngine.PerformSearch(milieu, null, SearchEngine.SearchResultsType.Worlds, NUM_RESULTS, random:true);
+                }
+                else
+                {
+                    query = query.Replace('*', '%'); // Support * and % as wildcards
+                    query = query.Replace('?', '_'); // Support ? and _ as wildcards
 
-                if (UWP_REGEXP.IsMatch(query))
-                    query = "uwp:" + query;
+                    if (UWP_REGEXP.IsMatch(query))
+                        query = "uwp:" + query;
 
-                const int NUM_RESULTS = 160;
-
-                var searchResults = SearchEngine.PerformSearch(milieu, query, SearchEngine.SearchResultsType.Default, NUM_RESULTS);
+                    NUM_RESULTS = 160;
+                    searchResults = SearchEngine.PerformSearch(milieu, query, SearchEngine.SearchResultsType.Default, NUM_RESULTS);
+                }
 
                 SearchResults resultsList = new SearchResults();
 
@@ -259,7 +268,7 @@ namespace Maps.API.Results
                 r.Name = label.Label;
                 r.SectorX = l.Sector.X;
                 r.SectorY = l.Sector.Y;
-                r.HexX = l.Hex.X;;
+                r.HexX = l.Hex.X;
                 r.HexY = l.Hex.Y;
                 r.Scale =
                     label.Radius > 80 ? 4 :
