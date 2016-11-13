@@ -15,7 +15,7 @@
              &amp; Vargr</cite> (Digest Group Publications, 1990).
              
              M1201 data from "The Meshan Saga" - https://books.google.co.uk/books/about/The_Original_Meshan_Saga.html?id=u0Vjh5vtL7kC&redir_esc=y
-
+             and http://www.dedzone.net/traveller/sectors/meshan/
     ]]>
   </Credits>
   <DataFile Author="Michael R. Mikesh" Source="Traveller 5 Sector Survey" Milieu="M1201" Type="TabDelimited">Meshan.tab</DataFile>
@@ -40,13 +40,18 @@
   <Stylesheet>
     border.Tu { color: lightblue; }
     border.Ki { color: lightgreen; }
+    border.Tp { color: olivedrab; }
   </Stylesheet>
   <Allegiances>
     <Allegiance Code="Tu">Tokho Union</Allegiance>
     <Allegiance Code="Ki">Kisiidi</Allegiance>
+    <Allegiance Code="Tp">Tagan Pack</Allegiance>
   </Allegiances>
   <Borders>
     <Border Allegiance="Ki">1829 1929 1928 1927 1926 1927 1928 2028 2129 2028 1929 1829 </Border>
     <Border Allegiance="Tu">1725 1824 1924 2023 1924 1824 1725 1726 1727 1726 1725 </Border>
+    <Border Allegiance="Tp" ShowLabel="false">
+      0015 0115 0116 0016
+    </Border>
   </Borders>
 </Sector>

@@ -234,6 +234,15 @@
     <DataFile Author="David Drazul" Source="Traveller 5 Sector Survey" Milieu="M1201" Type="TabDelimited">Provence.tab</DataFile>
     <MetadataFile>Provence.xml</MetadataFile>
   </Sector>
+  <Sector Abbreviation="Wind" Tags="Unreviewed" Milieu="M1201">
+    <Y>-2</Y>
+    <X>-1</X>
+    <Name>Windhorn</Name>
+    <Name Lang="va">Gotzdzo</Name>
+    <Name Lang="vi">Kishadikhu</Name>
+    <DataFile Milieu="M1201" Type="TabDelimited">Windhorn.tab</DataFile>
+    <MetadataFile>Windhorn.xml</MetadataFile>
+  </Sector>
   <Sector Abbreviation="Mesh" Tags="Unreviewed" Milieu="M1201">
     <Y>-2</Y>
     <X>0</X>

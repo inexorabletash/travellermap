@@ -53,6 +53,19 @@
 
   </Routes>
 
+  <Allegiances>
+    <Allegiance Code="Oa">Duchy of Oasis</Allegiance>
+    <Allegiance Code="Cr">Crown Colonies</Allegiance>
+    <Allegiance Code="Ne">Nalaashii Empire</Allegiance>
+    <Allegiance Code="Zr">Zarushagar Rift Confederation</Allegiance>
+    <Allegience Code="Ru">Rossak Union</Allegience>
+    <Allegiance Code="St">Star Traders Compact</Allegiance>
+    <Allegiance Code="Df">Darmine Federation</Allegiance>
+    <Allegiance Code="Af">Alcauan Federated Combine</Allegiance>
+    <Allegiance Code="Wi">Wilds</Allegiance>   
+    <Allegiance Code="">Barren</Allegiance>
+  </Allegiances>
+
   <Stylesheet>
     border.Oa { color: lightblue; }
     route.Oa { color: lightgreen; }
@@ -66,30 +79,13 @@
     border.Ru { color: yellow; }
     border.St { color: white; }
     border.Zr { color: purple; }
-
   </Stylesheet>
 
-  <Allegiances>
-    <Allegiance Code="Oa">Duchy of Oasis</Allegiance>
-    <Allegiance Code="Cr">Crown Colonies</Allegiance>
-    <Allegiance Code="Wi">Wilds</Allegiance>
-    <Allegiance Code="Ne">Nalaashii Empire</Allegiance>
-    <Allegiance Code="Zr">Zarushagar Rift Confederation</Allegiance>
-    <Allegience Code="Ru">Rossak Union</Allegience>
-    <Allegiance Code="St">Star Traders Compact</Allegiance>
-    <Allegiance Code="Df">Darmine Federation</Allegiance>
-    <Allegiance Code="Af">Alcauan Federated Combine</Allegiance>
-    <Allegiance Code="">Barren</Allegiance>
-  </Allegiances>
-  
   <Borders>
     <Border Allegiance="Oa" Label="Duchy of Oasis" WrapLabel="true">2424 2524 2624 2725 2726 2826 2927 2928 2827 2826 2726 2625 2525 2424</Border>
     <Border Allegiance="Cr" Label="Crown Colonies" WrapLabel="true">3128 3129 3229 3230 3130 3129 3128</Border>
     <Border Allegiance="Ne" Label="Nalaashii Empire" WrapLabel="true">2816 2815 2814 2915 2815 2816</Border>
-
-    <Border Allegiance="Ru" Label="Rossak Union">
-      1226 1327 1227 1226
-    </Border>
+    <Border Allegiance="Ru" Label="Rossak Union">1226 1327 1227 1226</Border>
 
     <Border Allegiance="Af" Label="Alcauan Federated Combine">
       1931 2030 1931 1932 1933 1932 1931
