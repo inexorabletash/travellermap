@@ -1149,7 +1149,6 @@
     <None Include="res\Sectors\Zhodani Core Route\zietsebl.sec" />
     <None Include="res\Sectors\Zhodani Core Route\zietssha.sec" />
     <None Include="res\Sectors\Zhodani Core Route\zii.sec" />
-    <Content Include="Web.config.sample" />
     <Content Include="test\refs\coordinates_spin.json" />
     <Content Include="test\refs\coordinates_spin_1910.json" />
     <Content Include="test\refs\coordinates_spin_c.json" />
@@ -1165,6 +1164,9 @@
     <Content Include="test\refs\sec_legend_noheader.sec" />
     <Content Include="test\refs\sec_legend_nometa.sec" />
     <Content Include="test\refs\sec_legend_sscoords.sec" />
+    <None Include="Web.config.sample">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
