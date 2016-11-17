@@ -285,8 +285,9 @@ var Util = {
   // ======================================================================
 
   var MapService = (function() {
-    function service(url, contentType) {
-      return fetch(url, {headers: {Accept: contentType}})
+    function service(url, contentType, method) {
+      return fetch(url, {method: method || 'GET',
+                         headers: {Accept: contentType}})
         .then(function(response) {
           if (!response.ok)
             throw Error(response.statusText);
@@ -316,10 +317,10 @@ var Util = {
                        options.accept || 'application/json');
       },
 
-      search: function(query, options) {
+      search: function(query, options, method) {
         options = Object.assign({}, options, {q: query});
         return service(url('/api/search', options),
-                       options.accept || 'application/json');
+                       options.accept || 'application/json', method);
       },
 
       sectorData: function(sector, options) {
@@ -452,7 +453,7 @@ var Util = {
       var tickFunc = function() {
         var f = (Date.now() - start) / 1000 / dur;
         if (f < 1.0)
-          requestAnimationFrame(tickFunc);
+          this.timerid = requestAnimationFrame(tickFunc);
 
         var p = f;
         if (isCallable(smooth))
@@ -1187,26 +1188,35 @@ var Util = {
     }
   };
 
-  TravellerMap.prototype.animateTo = function(scale, x, y) {
-    this.cancelAnimation();
-    var os = this.scale,
-        ox = this.x,
-        oy = this.y;
-    if (ox === x && oy === y && os === scale)
-      return;
+  TravellerMap.prototype.animateTo = function(scale, x, y, sec) {
+    return new Promise(function(resolve, reject) {
+      this.cancelAnimation();
+      sec = sec || 2.0;
+      var os = this.scale,
+          ox = this.x,
+          oy = this.y;
+      if (ox === x && oy === y && os === scale) {
+        resolve();
+        return;
+      }
 
-    this.animation = new Animation(2.0, function(p) {
-      return Animation.smooth(p, 1.0, 0.1, 0.25);
-    });
+      this.animation = new Animation(sec, function(p) {
+        return Animation.smooth(p, 1.0, 0.1, 0.25);
+      });
 
-    this.animation.onanimate = function(p) {
-      // Interpolate scale in log space.
-      this.scale = pow2(Animation.interpolate(log2(os), log2(scale), p));
-      // TODO: If animating scale, this should follow an arc (parabola?) through 3space treating
-      // scale as Z and computing a height such that the target is in view at the turnaround.
-      this.position = [Animation.interpolate(ox, x, p), Animation.interpolate(oy, y, p)];
-      this.redraw();
-    }.bind(this);
+      this.animation.onanimate = function(p) {
+        // Interpolate scale in log space.
+        this.scale = pow2(Animation.interpolate(log2(os), log2(scale), p));
+        // TODO: If animating scale, this should follow an arc (parabola?) through 3space treating
+        // scale as Z and computing a height such that the target is in view at the turnaround.
+        var p2 = 1 - ((1-p) * (1-p));
+        this.position = [Animation.interpolate(ox, x, p2), Animation.interpolate(oy, y, p2)];
+        this.redraw();
+      }.bind(this);
+
+      this.animation.oncomplete = resolve;
+      this.animation.oncancel = reject;
+    }.bind(this));
   };
 
   TravellerMap.prototype.drawOverlay = function(overlay) {

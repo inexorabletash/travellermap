@@ -303,6 +303,7 @@ window.addEventListener('DOMContentLoaded', function() {
         {scale: 64});
       return;
     }
+    map.cancelAnimation();
     map.scale = home.scale;
     map.x = home.x;
     map.y = home.y;
@@ -596,9 +597,50 @@ window.addEventListener('DOMContentLoaded', function() {
   ['q', 'qn'].forEach(function(key) {
     if (key in urlParams) {
       $('#searchBox').value = urlParams[key];
-    search(urlParams[key], {navigate: key === 'qn'});
+      search(urlParams[key], {navigate: key === 'qn'});
     }
   });
+
+  if ('attract' in urlParams) {
+    // TODO: Disable UI, or make any UI interaction cancel
+    doAttract();
+  }
+
+  //////////////////////////////////////////////////////////////////////
+  //
+  // Attract Mode
+  //
+  //////////////////////////////////////////////////////////////////////
+
+  function doAttract() {
+    function pickTarget() {
+      return Traveller.MapService.search('(random world)', {
+        milieu: map.namedOptions.get('milieu')
+      }, 'POST').then(function(data) {
+        var items = data.Results.Items;
+        if (items.length < 1)
+          throw new Error('random world search failed');
+        var world = items[0].World;
+        var tags = world.SectorTags.split(/\s+/);
+        return tags.includes('OTU') ? world : pickTarget();
+      });
+    }
+
+    var HOME_WAIT_MS = 5e3;
+    var TARGET_WAIT_MS = 10e3;
+
+    goHome();
+    pickTarget().then(function(world) {
+      var target = Traveller.Astrometrics.sectorHexToMap(
+        world.SectorX, world.SectorY, world.HexX, world.HexY);
+      setTimeout(function() {
+        map.animateTo(128, target.x, target.y, 10).then(function() {
+          showCredits(map.worldX, map.worldY, {directAction: true});
+          setTimeout(doAttract, TARGET_WAIT_MS);
+        });
+      }, HOME_WAIT_MS);
+    });
+  }
 
   //////////////////////////////////////////////////////////////////////
   //
