@@ -18,26 +18,28 @@
              Duchy of Oasis from Challenge 71.
              
              TNE extrapolated from Bearers of the Flame
+             
+             Further TNE data adapted from http://www.dedzone.net/traveller/sectors/zarushagar/
     ]]>
   </Credits>
   <DataFile Author="Greg Videll" Source="Challenge 71" Type="TabDelimited">Zarushagar.tab</DataFile>
   <Subsectors>
-    <Subsector Index="A">?</Subsector>
-    <Subsector Index="B">?</Subsector>
-    <Subsector Index="C">?</Subsector>
-    <Subsector Index="D">?</Subsector>
-    <Subsector Index="E">?</Subsector>
-    <Subsector Index="F">?</Subsector>
-    <Subsector Index="G">?</Subsector>
-    <Subsector Index="H">Nalaashii</Subsector>
-    <Subsector Index="I">?</Subsector>
-    <Subsector Index="J">?</Subsector>
-    <Subsector Index="K" Author="Greg Videll" Source="Challenge 71">Wolf</Subsector>
-    <Subsector Index="L" Author="Greg Videll" Source="Challenge 71">Oasis</Subsector>
-    <Subsector Index="M">?</Subsector>
-    <Subsector Index="N">?</Subsector>
-    <Subsector Index="O">?</Subsector>
-    <Subsector Index="P">?</Subsector>
+    <Subsector Index="A">Ibaru</Subsector>
+    <Subsector Index="B">Triton</Subsector>
+    <Subsector Index="C">Lagaar</Subsector>
+    <Subsector Index="D">Lode</Subsector>
+    <Subsector Index="E">Iimii</Subsector>
+    <Subsector Index="F">Khipge</Subsector>
+    <Subsector Index="G">Epshu</Subsector>
+    <Subsector Index="H">Gaussi</Subsector>
+    <Subsector Index="I">Mizar</Subsector>
+    <Subsector Index="J">Liasdi</Subsector>
+    <Subsector Index="K" Publisher="DGP" Source="The Travellers' Digest #21">Wolf</Subsector>
+    <Subsector Index="L" Publisher="DGP" Source="The Travellers' Digest #21">Oasis</Subsector>
+    <Subsector Index="M">Void</Subsector>
+    <Subsector Index="N">Allegro</Subsector>
+    <Subsector Index="O">Rhamsteppe</Subsector>
+    <Subsector Index="P">Mongrabi</Subsector>
   </Subsectors>
   <Routes>
     <Route Start="2424" End="2524" Allegiance="Oa" />
@@ -51,6 +53,19 @@
 
   </Routes>
 
+  <Allegiances>
+    <Allegiance Code="Oa">Duchy of Oasis</Allegiance>
+    <Allegiance Code="Cr">Crown Colonies</Allegiance>
+    <Allegiance Code="Ne">Nalaashii Empire</Allegiance>
+    <Allegiance Code="Zr">Zarushagar Rift Confederation</Allegiance>
+    <Allegience Code="Ru">Rossak Union</Allegience>
+    <Allegiance Code="St">Star Traders Compact</Allegiance>
+    <Allegiance Code="Df">Darmine Federation</Allegiance>
+    <Allegiance Code="Af">Alcauan Federated Combine</Allegiance>
+    <Allegiance Code="Wi">Wilds</Allegiance>   
+    <Allegiance Code="">Barren</Allegiance>
+  </Allegiances>
+
   <Stylesheet>
     border.Oa { color: lightblue; }
     route.Oa { color: lightgreen; }
@@ -60,20 +75,33 @@
 
     border.Ne { color: red; }
 
+    border.Df { color: green; }
+    border.Ru { color: yellow; }
+    border.St { color: white; }
+    border.Zr { color: purple; }
   </Stylesheet>
-
-  <Allegiances>
-    <Allegiance Code="Oa">Duchy of Oasis</Allegiance>
-    <Allegiance Code="Cr">Crown Colonies</Allegiance>
-    <Allegiance Code="Wi">Wilds</Allegiance>
-    <Allegiance Code="Ne">Nalaashii Empire</Allegiance>
-    <Allegiance Code="">Barren</Allegiance>
-  </Allegiances>
 
   <Borders>
     <Border Allegiance="Oa" Label="Duchy of Oasis" WrapLabel="true">2424 2524 2624 2725 2726 2826 2927 2928 2827 2826 2726 2625 2525 2424</Border>
     <Border Allegiance="Cr" Label="Crown Colonies" WrapLabel="true">3128 3129 3229 3230 3130 3129 3128</Border>
     <Border Allegiance="Ne" Label="Nalaashii Empire" WrapLabel="true">2816 2815 2814 2915 2815 2816</Border>
+    <Border Allegiance="Ru" Label="Rossak Union">1226 1327 1227 1226</Border>
+
+    <Border Allegiance="Af" Label="Alcauan Federated Combine">
+      1931 2030 1931 1932 1933 1932 1931
+    </Border>    
     
+    <Border Allegiance="Zr" Label="Zarushagar Rift Confederation" WrapLabel="true">
+      0738 0837 0937 0936 0935 0934 0935 0936 0937 0938 1038 1139 1239 1340 1239 1139 1038 0938 0837 0738
+    </Border>
+
+    <Border Allegiance="Df" Label="Darmine Federation">
+      0422 0522 0622 0523 0524 0525 0524 0523 0422
+    </Border>
+
+    <Border Allegiance="St" Label="Star Traders Compact">
+      0527 0627 0728 0827 0728 0729 0628 0528 0527
+    </Border>
+
   </Borders>
 </Sector>

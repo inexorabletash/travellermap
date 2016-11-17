@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Sector Abbreviation="Wind" Tags="InReview">
+  <Y>-2</Y>
+  <X>-1</X>
+  <Name>Windhorn</Name>
+  <Name Lang="va">Gotzdzo</Name>
+  <Name Lang="vi">Kishadikhu</Name>
+  <Credits>
+    <![CDATA[
+
+             Portions of <b>Windhorn</b> sector were designed by Joe
+             D. Fugate Sr. and appear in <cite>The Flaming Eye</cite>
+             (DGP, 1991). The remainder was designed by John G. Wood.
+
+             Stellar positions were developed by Joe D. Fugate Sr. and
+             appear in <cite>The MegaTraveller Alien, Volume 1: Vilani
+             &amp; Vargr</cite> (Digest Group Publications, 1990).
+
+    ]]>
+  </Credits>
+  <Subsectors>
+    <Subsector Index="A">Dakoeng</Subsector>
+    <Subsector Index="B">Khonsu</Subsector>
+    <Subsector Index="C">Urrgae</Subsector>
+    <Subsector Index="D">Urzkhoe</Subsector>
+    <Subsector Index="E">Nanthou</Subsector>
+    <Subsector Index="F">Elours</Subsector>
+    <Subsector Index="G">Uroez</Subsector>
+    <Subsector Index="H">Tsougak</Subsector>
+    <Subsector Index="I">Urarz</Subsector>
+    <Subsector Index="J">Urkae</Subsector>
+    <Subsector Index="K">Khaellung</Subsector>
+    <Subsector Index="L">Sunggoe</Subsector>
+    <Subsector Index="M">Aekhgal</Subsector>
+    <Subsector Index="N">Gvadhoe</Subsector>
+    <Subsector Index="O">Voenggaks</Subsector>
+    <Subsector Index="P">Kishadiku</Subsector>
+  </Subsectors>
+
+  <Stylesheet>
+    border.Tp { color: olivedrab; }
+    border.Ts { color: olivedrab; }
+  </Stylesheet>
+  <Allegiances>
+    <Allegiance Code="Ts">Tsougak Trade Federation</Allegiance>
+    <Allegiance Code="Tp">Tagan Pack</Allegiance>
+  </Allegiances>
+
+  <Borders>
+    <Border Allegiance="Tp" Color="olivedrab">
+      2815 2916 3015 3115 3215 3315 3316 3216 3217 
+      3117 3016 2916 2815
+    </Border>
+    <Border Allegiance="Ts" Color="olivedrab">
+      2722 2821 2921 2920 2919 3019 3120 3020 2921 2821 2822 2722
+    </Border>
+</Borders>
+</Sector>
