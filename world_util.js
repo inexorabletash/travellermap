@@ -446,7 +446,7 @@
       O: 'Naval Outpost', // Obsolete
       R: 'Clan Base',
       S: 'Scout Base',
-      //    T: 'Terminus',   // For TNE - name Collision 
+      //    T: 'Terminus',   // For TNE - name Collision
       T: 'Tlauku Base',
       V: 'Exploration Base',
       W: 'Way Station',
@@ -673,6 +673,11 @@
     return result;
   }
 
+  var showConsoleNotice = Util.once(function() {
+    if (!console || !console.log) return;
+    console.log('The "404 (Not Found)" for res/Candy/worlds/*.png is expected, and is not a bug.');
+  });
+
   var renderWorldImageFirstTime = true;
   Traveller.renderWorldImage = function(world, canvas) {
     if (!world) return undefined;
@@ -708,11 +713,6 @@
     var isRender = true;
 
     var size = SIZES[world.UWP.Siz] || {width: 0.5, height: 0.5};
-
-    var showConsoleNotice = Util.once(function() {
-      if (!console || !console.log) return;
-      console.log('The "404 (Not Found)" for res/Candy/worlds/*.png is expected, and is not a bug.');
-    });
 
     return Promise.all([
       // Background

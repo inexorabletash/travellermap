@@ -168,23 +168,30 @@ window.addEventListener('DOMContentLoaded', function() {
 
   // Search Bar
 
+  // Mutually exclusive panes:
+  var SEARCH_PANES = ['search-results', 'route-ui', 'wds-visible'];
+  function showSearchPane(pane) {
+    SEARCH_PANES.forEach(function(c) { document.body.classList.toggle(c, c === pane);  });
+  }
+  function hideSearchPanes() {
+    SEARCH_PANES.forEach(function(c) { document.body.classList.remove(c); });
+  }
+  function hideSearchPanesExcept(pane) {
+    SEARCH_PANES
+      .filter(function(c) { return c !== pane; })
+      .forEach(function(c) { document.body.classList.remove(c); });
+  }
+
+
   $("#searchForm").addEventListener('submit', function(e) {
-    document.body.classList.remove('route-ui');
-    map.SetRoute(null);
     search($('#searchBox').value);
     e.preventDefault();
   });
-  var searchTimer = null;
+
   var SEARCH_TIMER_DELAY = 250; // ms
-  $("#searchBox").addEventListener('keyup', function(e) {
-    if (searchTimer)
-      clearTimeout(searchTimer);
-    searchTimer = setTimeout(function() {
-      document.body.classList.remove('route-ui');
-      map.SetRoute(null);
-      search($('#searchBox').value, {typed: true});
-    }, SEARCH_TIMER_DELAY);
-  });
+  $("#searchBox").addEventListener('keyup', Util.debounce(function(e) {
+    search($('#searchBox').value, {typed: true});
+  }, SEARCH_TIMER_DELAY));
 
   $('#closeResultsBtn').addEventListener('click', function() {
     $('#searchBox').value = '';
@@ -193,10 +200,6 @@ window.addEventListener('DOMContentLoaded', function() {
   });
 
   $('#starBtn').addEventListener('click', function() {
-    // TODO: Make these mutually exclusive in a less hacky way.
-    document.body.classList.remove('wds-visible');
-    document.body.classList.remove('route-ui');
-    map.SetRoute(null);
     search("(default)");
   });
 
@@ -211,10 +214,7 @@ window.addEventListener('DOMContentLoaded', function() {
   }
 
   $("#routeBtn").addEventListener('click', function(e) {
-    // TODO: Make these mutually exclusive in a less hacky way.
-    document.body.classList.remove('search-results');
-    document.body.classList.remove('wds-visible');
-    document.body.classList.add('route-ui');
+    showSearchPane('route-ui');
     resizeMap();
     $('#routeStart').focus();
   });
@@ -263,9 +263,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
   document.body.addEventListener('keyup', function(e) {
     if (e.keyCode === VK_ESCAPE) {
-      document.body.classList.remove('search-results');
-      document.body.classList.remove('route-ui');
-      document.body.classList.remove('wds-visible');
+      hideSearchPanes();
       $('#dragContainer').focus();
     }
   });
@@ -724,9 +722,7 @@ window.addEventListener('DOMContentLoaded', function() {
       document.body.classList.toggle('sector-selected', selectedSector);
       document.body.classList.toggle('world-selected', selectedWorld);
       if (selectedWorld) {
-        // TODO: Make these mutually exclusive in a less hacky way.
-        document.body.classList.remove('search-results');
-        document.body.classList.remove('route-ui');
+        hideSearchPanesExcept('wds-visible');
       } else {
         document.body.classList.remove('wds-visible');
       }
@@ -823,7 +819,8 @@ window.addEventListener('DOMContentLoaded', function() {
           });
 
           $('#wds-print-link').href = dataSheetURL;
-          document.body.classList.add('wds-visible');
+
+          showSearchPane('wds-visible');
         })
         .catch(function(error) {
           console.warn('WDS error: ' + error.message);
@@ -832,7 +829,7 @@ window.addEventListener('DOMContentLoaded', function() {
   }
 
   $('#wds-closebtn').addEventListener('click', function(event) {
-    document.body.classList.remove('wds-visible');
+    hideSearchPanes();
   });
 
 
@@ -848,16 +845,16 @@ window.addEventListener('DOMContentLoaded', function() {
   function search(query, options) {
     options = Object(options);
 
+    hideSearchPanesExcept('search-results');
+    map.SetRoute(null);
+    selectedWorld = null;
+
     if (query === '')
       return;
 
     if (query === lastQuery) {
-      if (!searchRequest && !options.typed) {
-        // TODO: Make these mutually exclusive in a less hacky way.
-        document.body.classList.add('search-results');
-        document.body.classList.remove('route-ui');
-        document.body.classList.remove('wds-visible');
-      }
+      if (!searchRequest && !options.typed)
+        showSearchPane('search-results');
       return;
     }
     lastQuery = query;
@@ -879,12 +876,7 @@ window.addEventListener('DOMContentLoaded', function() {
       })
       .then(function() {
         searchRequest = null;
-
-        // TODO: Make these mutually exclusive in a less hacky way.
-        document.body.classList.add('search-results');
-        document.body.classList.remove('route-ui');
-        document.body.classList.remove('wds-visible');
-
+        showSearchPane('search-results');
         if (options.navigate) {
           var first = $('#resultsContainer a');
           if (first)
@@ -967,6 +959,7 @@ window.addEventListener('DOMContentLoaded', function() {
       Array.from(document.querySelectorAll('#resultsContainer a')).forEach(function(a) {
         a.addEventListener('click', function(e) {
           e.preventDefault();
+          selectedWorld = null;
           var params = Util.parseURLQuery(e.target);
           map.CenterAtSectorHex(params.sx|0, params.sy|0, params.hx|0, params.hy|0, {scale: params.scale|0});
           if (mapElement.offsetWidth < 640)
@@ -1047,6 +1040,8 @@ window.addEventListener('DOMContentLoaded', function() {
         Array.from(document.querySelectorAll('#routePath .item a')).forEach(function(a) {
           a.addEventListener('click', function(e) {
             e.preventDefault();
+            selectedWorld = null;
+
             var params = Util.parseURLQuery(e.target);
             map.CenterAtSectorHex(params.sx|0, params.sy|0, params.hx|0, params.hy|0, {scale: params.scale|0});
           });
