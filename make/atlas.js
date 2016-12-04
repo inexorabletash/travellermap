@@ -39,6 +39,16 @@
       world.population = exp >= 0 && mult >= 0 ? Math.pow(10, exp) * mult : 0;
       if (world.population >= 1e9)
         world.hipop = true;
+
+      // U+2212 MINUS SIGN
+      world.ix = world.ix.replace('-', '\u2212');
+      world.ex = world.ex.replace('-', '\u2212');
+
+      // Special formatting
+      world.ix = world.ix.replace(/[{} ]/g, '');
+      world.ex = world.ex.replace(/[() ]/g, '');
+      world.cx = world.cx.replace(/[\[\] ]/g, '');
+
       sector.worlds.push(world);
     });
 
