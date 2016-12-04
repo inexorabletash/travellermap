@@ -264,6 +264,7 @@ window.addEventListener('DOMContentLoaded', function() {
   document.body.addEventListener('keyup', function(e) {
     if (e.keyCode === VK_ESCAPE) {
       hideSearchPanes();
+      map.SetMain(null);
       $('#dragContainer').focus();
     }
   });
@@ -343,6 +344,7 @@ window.addEventListener('DOMContentLoaded', function() {
       e.preventDefault();
       e.stopPropagation();
       showCredits(map.worldX, map.worldY, {directAction: true});
+      showMain(map.worldX, map.worldY);
       return;
     }
     if (e.keyCode === VK_H) {
@@ -398,6 +400,18 @@ window.addEventListener('DOMContentLoaded', function() {
   bindCheckedToNamedOption('#cbAncientWorlds', 'an');
   bindCheckedToNamedOption('#cbMinorHomeworlds', 'mh');
   bindCheckedToNamedOption('#cbStellar', 'stellar');
+  bindChecked('#cbWave',
+              function(o) { return map.namedOptions.get('ew'); },
+              function(c) {
+                if (c) {
+                  map.namedOptions.set('ew', 'milieu');
+                } else {
+                  map.namedOptions.delete('ew');
+                  delete urlParams['ew'];
+                }});
+  bindChecked('#cbMains',
+              function(o) { return showMains; },
+              function(c) { showMains = c; if (!c) map.SetMain(null); });
 
   function bindControl(selector, property, onChange, event, onEvent) {
     var element = $(selector);
@@ -485,11 +499,13 @@ window.addEventListener('DOMContentLoaded', function() {
 
   map.OnClick = function(world) {
     showCredits(world.x, world.y, {directAction: true});
+    showMain(world.x, world.y);
     post({source: 'travellermap', type: 'click', location: world});
   };
 
   map.OnDoubleClick = function(world) {
     showCredits(world.x, world.y, {directAction: true});
+    showMain(world.x, world.y);
     post({source: 'travellermap', type: 'doubleclick', location: world});
   };
 
@@ -847,6 +863,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
     hideSearchPanesExcept('search-results');
     map.SetRoute(null);
+
     selectedWorld = null;
 
     if (query === '')
@@ -960,6 +977,7 @@ window.addEventListener('DOMContentLoaded', function() {
         a.addEventListener('click', function(e) {
           e.preventDefault();
           selectedWorld = null;
+
           var params = Util.parseURLQuery(e.target);
           map.CenterAtSectorHex(params.sx|0, params.sy|0, params.hx|0, params.hy|0, {scale: params.scale|0});
           if (mapElement.offsetWidth < 640)
@@ -1101,6 +1119,51 @@ window.addEventListener('DOMContentLoaded', function() {
   }
   updateScaleIndicator();
 
+
+  //////////////////////////////////////////////////////////////////////
+  //
+  // Mains
+  //
+  //////////////////////////////////////////////////////////////////////
+
+  var showMains = false;
+  var worldToMainMap;
+  function showMain(worldX, worldY) {
+    if (!showMains) return;
+    findMain(worldX, worldY)
+      .then(function(main) { map.SetMain(main); });
+  }
+  function findMain(worldX, worldY) {
+    function sectorHexToSig(sx, sy, hx, hy) {
+      return sx + '/' + sy + '/' + ('0000' + ( hx * 100 + hy )).slice(-4);
+    }
+    function sigToSectorHex(sig) {
+      var parts = sig.split('/');
+      return {sx: parts[0]|0, sy: parts[1]|0, hx: (parts[2] / 100) | 0, hy: parts[2] % 100};
+    }
+
+    function getMainsMapping() {
+      if (worldToMainMap)
+        return Promise.resolve(worldToMainMap);
+      return fetch('./res/mains.json')
+        .then(function(r) { return r.json(); })
+        .then(function(mains) {
+          worldToMainMap = new Map();
+          mains.forEach(function(main) {
+            main.forEach(function(sig, index) {
+              worldToMainMap.set(sig, main);
+              main[index] = sigToSectorHex(sig);
+            });
+          });
+          return worldToMainMap;
+        });
+    }
+    return getMainsMapping().then(function(map) {
+      var sectorHex = Traveller.Astrometrics.worldToSectorHex(worldX, worldY);
+      var sig = sectorHexToSig(sectorHex.sx, sectorHex.sy, sectorHex.hx, sectorHex.hy);
+      return map.get(sig);
+    });
+  }
 
   //////////////////////////////////////////////////////////////////////
   //

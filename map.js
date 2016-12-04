@@ -197,6 +197,18 @@ var Util = {
       };
     },
 
+    worldToSectorHex: function(x, y) {
+      x += Astrometrics.ReferenceHexX - 1;
+      y += Astrometrics.ReferenceHexY - 1;
+
+      var sx = Math.floor(x / Astrometrics.SectorWidth);
+      var sy = Math.floor(y / Astrometrics.SectorHeight);
+      var hx = (x - (sx * Astrometrics.SectorWidth) + 1);
+      var hy = (y - (sy * Astrometrics.SectorHeight) + 1);
+
+      return {sx:sx, sy:sy, hx:hx, hy:hy};
+    },
+
     // Map-space: Cartesian coordinates, centered on Reference
     sectorHexToMap: function(sx, sy, hx, hy) {
       var world = Astrometrics.sectorHexToWorld(sx, sy, hx, hy);
@@ -258,6 +270,8 @@ var Util = {
     var base = {
       overlay_color: '#8080ff',
       route_color: 'green',
+      main_color: 'cyan',
+      main_opacity: 0.25,
       ew_color: 'yellow',
       you_are_here_url: 'res/ui/youarehere.png'
     };
@@ -523,8 +537,8 @@ var Util = {
   NamedOptions.prototype = {
     keys: function() { return Object.keys(this._options); },
     get: function(key) { return this._options[key]; },
-    set: function(key, value) { this._options[key] = value; this._notify(); },
-    delete: function(key) { delete this._options[key]; this._notify(); },
+    set: function(key, value) { this._options[key] = value; this._notify(key); },
+    delete: function(key) { delete this._options[key]; this._notify(key); },
     forEach: function(fn, thisArg) {
       var keys = Object.keys(this._options);
       for (var i = 0; i < keys.length; ++i) {
@@ -616,8 +630,7 @@ var Util = {
 
     this.cache = new LRUCache(64);
 
-    this.namedOptions = new NamedOptions(function() {
-      this.cache.clear();
+    this.namedOptions = new NamedOptions(function(key) {
       this.invalidate();
       fireEvent(this, 'OptionsChanged', this.options);
     }.bind(this));
@@ -649,6 +662,7 @@ var Util = {
     this.markers = [];
     this.overlays = [];
     this.route = null;
+    this.main = null;
 
     // ======================================================================
     // Event Handlers
@@ -955,7 +969,10 @@ var Util = {
 
     // Tile URL (apart from x/y/scale)
     var params = {options: this.options, style: this.style};
-    this.namedOptions.forEach(function(value, key) { params[key] = value; });
+    this.namedOptions.forEach(function(value, key) {
+      if (key === 'ew') return;
+      params[key] = value;
+    });
     if ('devicePixelRatio' in window && window.devicePixelRatio > 1)
       params.dpr = window.devicePixelRatio;
     this._tile_url_base = Util.makeURL(SERVICE_BASE + '/api/tile', params);
@@ -1007,11 +1024,13 @@ var Util = {
     this.markers.forEach(this.drawMarker, this);
     this.overlays.forEach(this.drawOverlay, this);
 
+    if (this.main)
+      this.drawMain(this.main);
     if (this.route)
       this.drawRoute(this.route);
 
     if (this.namedOptions.get('ew'))
-      this.drawEmpressWave(this.namedOptions.get('ew'));
+      this.drawWave(this.namedOptions.get('ew'));
   };
 
   // Draw a rectangle (x1, y1) to (x2, y2)
@@ -1271,6 +1290,25 @@ var Util = {
     ctx.restore();
   };
 
+  TravellerMap.prototype.drawMain = function(main) {
+    var ctx = this.ctx;
+    ctx.save();
+    ctx.translate(-this.canvas.offset_x, -this.canvas.offset_y);
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.globalAlpha = styleLookup(this.style, 'main_opacity');
+    ctx.fillStyle = styleLookup(this.style, 'main_color');
+    ctx.beginPath();
+    var radius = 1.1 * this.scale / 2;
+    main.forEach(function(world) {
+      var pt = Astrometrics.sectorHexToMap(world.sx, world.sy, world.hx, world.hy);
+      pt = this.mapToPixel(pt.x, pt.y);
+      ctx.moveTo(pt.x + radius, pt.y);
+      ctx.arc(pt.x, pt.y, radius, 0, Math.PI*2);
+    }, this);
+    ctx.fill();
+    ctx.restore();
+  };
+
   TravellerMap.prototype.drawMarker = function(marker) {
     var pt = this.mapToPixel(marker.x, marker.y);
 
@@ -1305,11 +1343,14 @@ var Util = {
     }
   };
 
-  TravellerMap.prototype.drawEmpressWave = function(date) {
+  TravellerMap.prototype.drawWave = function(date) {
     var year = 1105;
     var w = 1; /*pc*/
     var m;
-    if ((m = /^(\d+)-(\d+)$/.exec(date))) {
+    if (date === 'milieu') {
+      var milieu = this.namedOptions.get('milieu') || 'M1105';
+      year = (milieu === 'IW') ? -2404 : Number(milieu.replace('M', ''));
+    } else if ((m = /^(\d+)-(\d+)$/.exec(date))) {
       // day-year, e.g. 001-1105
       year = Number(m[2]) + (Number(m[1]) - 1) / 365;
       w = 0.1;
@@ -1565,6 +1606,11 @@ var Util = {
 
   TravellerMap.prototype.SetRoute = function(route) {
     this.route = route;
+    this.invalidate();
+  };
+
+  TravellerMap.prototype.SetMain = function(main) {
+    this.main = main;
     this.invalidate();
   };
 
