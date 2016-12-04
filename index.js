@@ -409,9 +409,6 @@ window.addEventListener('DOMContentLoaded', function() {
                   map.namedOptions.delete('ew');
                   delete urlParams['ew'];
                 }});
-  bindChecked('#cbMains',
-              function(o) { return showMains; },
-              function(c) { showMains = c; if (!c) map.SetMain(null); });
 
   function bindControl(selector, property, onChange, event, onEvent) {
     var element = $(selector);
@@ -521,6 +518,9 @@ window.addEventListener('DOMContentLoaded', function() {
     {param: 'galdir', selector: '#cbGalDir', className: 'show-directions', 'default': true},
     {param: 'tilt', selector: '#cbTilt', className: 'tilt', 'default': false,
      onchange: function(flag) { if (flag) map.EnableTilt(); }
+    },
+    {param: 'mains', selector: '#cbMains', className: 'show-mains', 'default': false,
+     onchange: function(flag) { if (!flag) map.SetMain(null); }
     }
   ];
   PARAM_OPTIONS.forEach(function(option) {
@@ -1126,10 +1126,9 @@ window.addEventListener('DOMContentLoaded', function() {
   //
   //////////////////////////////////////////////////////////////////////
 
-  var showMains = false;
   var worldToMainMap;
   function showMain(worldX, worldY) {
-    if (!showMains) return;
+    if (!$('#cbMains').checked) return;
     findMain(worldX, worldY)
       .then(function(main) { map.SetMain(main); });
   }
@@ -1145,10 +1144,10 @@ window.addEventListener('DOMContentLoaded', function() {
     function getMainsMapping() {
       if (worldToMainMap)
         return Promise.resolve(worldToMainMap);
+      worldToMainMap = new Map();
       return fetch('./res/mains.json')
         .then(function(r) { return r.json(); })
         .then(function(mains) {
-          worldToMainMap = new Map();
           mains.forEach(function(main) {
             main.forEach(function(sig, index) {
               worldToMainMap.set(sig, main);
