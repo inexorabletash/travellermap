@@ -1298,7 +1298,7 @@ var Util = {
     ctx.globalAlpha = styleLookup(this.style, 'main_opacity');
     ctx.fillStyle = styleLookup(this.style, 'main_color');
     ctx.beginPath();
-    var radius = 1.1 * this.scale / 2;
+    var radius = 1.15 * this.scale / 2;
     main.forEach(function(world) {
       var pt = Astrometrics.sectorHexToMap(world.sx, world.sy, world.hx, world.hy);
       pt = this.mapToPixel(pt.x, pt.y);
