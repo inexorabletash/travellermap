@@ -45,7 +45,7 @@ window.addEventListener('DOMContentLoaded', function() {
     options: map.options,
     routes: 1,
     dimunofficial: 0,
-    milieu: '',
+    milieu: 'M1105',
     style: map.style
   };
   var home = {
@@ -271,7 +271,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
   // Options Bar
 
-  var PANELS = ['legend', 'lab', 'settings', 'share', 'download', 'help'];
+  var PANELS = ['legend', 'lab', 'milieu', 'settings', 'share', 'download', 'help'];
   PANELS.forEach(function(b) {
     $('#'+b+'Btn').addEventListener('click', function() {
       PANELS.forEach(function(p) {

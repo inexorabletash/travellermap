@@ -222,7 +222,7 @@ input[type=text] {
 body:not(.wds-visible) #wds-frame { display: none; }
 .hide-footer #wds-frame { bottom: 15px; }
 @media only screen and (max-width: 640px) {
-  .wds-visible #wds-frame { display: none; }
+  #wds-frame { display: none !important; }
 }
 
 #wds-frame {
@@ -481,16 +481,19 @@ button:hover {
 .show-settings #settingsBox,
 .show-legend #legendBox,
 .show-lab #labBox,
+.show-milieu #milieuBox,
 .show-share #shareBox,
 .show-download #downloadBox,
 .show-help #helpBox { display: block; }
 .show-lab #labBtn,
+.show-milieu #milieuBtn,
 .show-settings #settingsBtn,
 .show-legend #legendBtn,
 .show-share #shareBtn,
 .show-download #downloadBtn,
 .show-help #helpBtn { background-color: red; }
 
+body:not(.enable-experiments) #milieuBtn,
 body:not(.enable-experiments) #labBtn { display: none; }
 
 /* ============================================================ */
@@ -641,11 +644,16 @@ body:not(.world-selected) #downloadBox .world-content { display: none; }
 
 
 /* ============================================================ */
-/* Settings Box */
+/* Settings Boxes */
+
+#milieuBox {
+  width: 265px;
+  max-height: 225px;
+}
 
 #labBox {
-  width: 265px;
-  max-height: 445px;
+  width: 215px;
+  max-height: 225px;
 }
 
 #settingsBox {
@@ -659,16 +667,12 @@ body:not(.world-selected) #downloadBox .world-content { display: none; }
   box-shadow: none;
   border: 1px solid gray;
 }
-#labBox section,
-#settingsBox section { margin: 1em 0; }
-#labBox section:first-of-type,
-#settingsBox section:first-of-type { margin-top: 0; }
-#labBox section:last-of-type,
-#settingsBox section:last-of-type { margin-bottom: 0; }
+.settings section { margin: 1em 0; }
+.settings section:first-of-type { margin-top: 0; }
+.settings section:last-of-type { margin-bottom: 0; }
 
 /* checkbox/radio buttons are larger on iOS */
-#labBox p,
-#settingsBox p { min-height: 24px; }
+.settings  p { min-height: 24px; }
 
 #settingsBtn-poster { background-image: url('res/ui/style-poster.png'); }
 #settingsBtn-atlas  { background-image: url('res/ui/style-atlas.png'); }
@@ -759,6 +763,10 @@ body:not(.search-results) #closeResultsBtn { display: none; }
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAARCAMAAADjcdz2AAAAeFBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVyEiIAAAAJ3RSTlMA1Kzn+UD1RDrLhXEoAeu1l5BVMyETEQ4L4dvQvLuko4p3SjkvFALcP6lIAAAAfUlEQVQY01XLWRaDIABD0RQVVMSxVTvPzf53WEsF9H7m5OFHldGkbOEUgkKw7uB1cZpyRJDGScIdgqcbwkMl7OGZnO+XvMMrqIGGWzin4wD0+8zgT/OBiaKeA3mF1UQ2MhXPwqpYfwC0MQMFDAcuRCNyrlwguSKRZ5uF7PYFlXQOctf11XoAAAAASUVORK5CYII=);
 }
 
+#milieuBtn {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAMAAAAMs7fIAAAAilBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATAggvAAAALXRSTlMAA9zfoGz07GZh+LOlV1O+t6hOJSATEQzmw7qtjXBeUEo3LODKx5yShoFzOh2Hlqq1AAAAuklEQVQY0zWPVxKDMAxE18bGmJLQEtIL6WXvf71YQN6PZ56l0S6Epc8ip7d+gYlZxJGoHoUlUzP7FHlM2mGCnLc478/4lmQBLDXnCqhoAGy46uCZNgAMHwD6mAmy4VNV3CFwZ4mIBzHb0VhqONZiSrpniHOgCzMJAsWKTD321MiYQ1i8HE8wzJAwbWUNaAs04ZbkWSsopUSvqcN7DJl7CM2GPE69YuPrRHq9p+763/2Eic5W18sttx0CP6IXEcqsdgUNAAAAAElFTkSuQmCC);
+}
+
 #helpBtn {
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAQCAMAAAAVv241AAAAQlBMVEUAAAAAAAACAgIAAAAAAAADAwMCAgIDAwMDAwMEBAQDAwMDAwMEBAQDAwMCAgIDAwMDAwMCAgICAgIDAwMEBAQDAwOA8UTsAAAAFXRSTlMAHtYWCevfvvM5w6OPTuezq3xsXEBW3gU6AAAAW0lEQVQI12WMCQ6AIAwEF5UbvPf/X7UQRBMmaTKbdgth9tetUFmSo7DVaMV0GUkHOXmoRNq6yOV4pQOUz7XpqPGyk7HpYqU5Nw+f4/w5ItkdU/s0EoxRPRhyDA8g1wQ5PCKIigAAAABJRU5ErkJggg==);
 }
@@ -815,26 +823,28 @@ body:not(.search-results) #closeResultsBtn { display: none; }
   margin-left: 4px;
 }
 
-@media only screen and (max-width: 640px) {
-  #navBar { display: none; }
+@media only screen and (max-width: 680px) {
   #searchBox { width: 100px; }
 }
-@media only screen and (max-width: 520px) {
-  .show-lab #labBox, #labBtn { display: none; }
+@media only screen and (max-width: 640px) {
+  #navBar { display: none; }
+}
+@media only screen and (max-width: 570px) {
+  #milieuBox, #milieuBtn,
+  #labBox, #labBtn { display: none !important; }
 }
 @media only screen and (max-width: 480px) {
-  .show-legend #legendBox, #labBtn { display: none; }
-  #legendBtn { display: none; }
+  #legendBox, #legendBtn { display: none !important; }
 }
 @media only screen and (max-width: 440px) {
-  #searchBtn { display: none; }
+  #searchBtn { display: none !important; }
   #searchBox { width: 50px; }
 }
 @media only screen and (max-width: 390px) {
-  #starBtn { display: none; }
+  #starBtn { display: none !important; }
 }
 @media only screen and (max-width: 360px) {
-  .show-download #downloadBox, #downloadBtn { display: none; }
+  #downloadBox, #downloadBtn { display: none !important; }
 }
 
 
@@ -848,10 +858,11 @@ body:not(.search-results) #closeResultsBtn { display: none; }
   }
   .route-ui #settingsBox,
   .route-ui #labBox,
+  .route-ui #milieuBox,
   .route-ui #legendBox,
   .route-ui #shareBox,
   .route-ui #downloadBox,
-  .route-ui #helpBox { display: none; }
+  .route-ui #helpBox { display: none !important; }
 }
 
 

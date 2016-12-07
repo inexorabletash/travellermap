@@ -35,15 +35,15 @@
 <meta property="og:site_name" content="The Traveller Map">
 <meta property="fb:admins" content="617166358">
 
-<link rel="stylesheet" href="index.css?update=2016-10-26">
-<link rel="stylesheet" href="world.css?update=2016-09-09">
+<link rel="stylesheet" href="index.css?update=2016-12-07">
+<link rel="stylesheet" href="world.css?update=2016-12-06">
 <link rel="stylesheet" href="lib/add-to-home-screen/addtohomescreen.css">
 
 <!--[if lt IE 9]><script>alert("IE8 is no longer supported.");location = 'http://google.com/chrome';</script><![endif]-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
 <script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.27/polyfill.min.js"></script>
-<script src="map.js?update=2016-11-28"></script>
-<script src="index.js?update=2016-11-28"></script>
+<script src="map.js?update=2016-12-04"></script>
+<script src="index.js?update=2016-12-07"></script>
 <script src="world_util.js?update=2016-11-28"></script>
 
 <body class="hide-ui hide-footer">
@@ -234,6 +234,9 @@
     <button id="legendBtn"
             title="Map legend and symbols">
     </button>
+    <button id="milieuBtn"
+            title="Milieu">
+    </button>
     <button id="labBtn"
             title="Experimental features">
     </button>
@@ -246,7 +249,7 @@
   </div>
 
   <div id="settingsBox"
-       class="ui hoverbox hoverbox-right">
+       class="ui hoverbox hoverbox-right settings">
     <section id="styles">
       <button id="settingsBtn-poster"
               title="Classic black background"
@@ -313,23 +316,25 @@
     </div>
   </div>
 
-  <div id="labBox"
-       class="ui hoverbox hoverbox-right">
+  <div id="milieuBox"
+       class="ui hoverbox hoverbox-right settings">
     <section>
       <p><strong>Milieu:</strong></p>
       <div class="indent">
         <p><label><input type="radio" name="milieu" value="IW"   > The Interstellar Wars</label></p>
-        <!--<p><label><input type="radio" name="milieu" value="M0"   > Milieu 0 - Early Imperium</label></p>-->
         <p><label><input type="radio" name="milieu" value="M0" > Milieu 0 &ndash; Early Imperium</label></p>
         <p><label><input type="radio" name="milieu" value="M990" > 990 &ndash; Solomani Rim War</label></p>
-        <p><label><input type="radio" name="milieu" value=""     > 1105 &ndash; The Golden Age (default)</label></p>
+        <p><label><input type="radio" name="milieu" value="M1105"> 1105 &ndash; The Golden Age (default)</label></p>
         <p><label><input type="radio" name="milieu" value="M1120"> 1120 &ndash; The Rebellion</label></p>
         <p><label><input type="radio" name="milieu" value="M1201"> 1201 &ndash; The New Era</label></p>
         <p><label><input type="radio" name="milieu" value="M1248"> 1248 &ndash; The New, New Era</label></p>
         <p><label><input type="radio" name="milieu" value="M1900"> 1900 &ndash; The Far Far Future</label></p>
       </div>
     </section>
+  </div>
 
+  <div id="labBox"
+       class="ui hoverbox hoverbox-right settings">
     <section>
       <p><strong>Overlays:</strong></p>
       <div class="indent">
@@ -420,7 +425,7 @@
       <h3>Traveller</h3>
       <p><a target="_blank" href="http://farfuture.net">Far Future Enterprises</a></p>
       <p><a target="_blank" href="http://travellerrpg.com/">Citizens of the Imperium Forum</a></p>
-      <p><a target="_blank" href="http://www.mongoosepublishing.com/rpgs/traveller.html">Mongoose Publishing</a>
+      <p><a target="_blank" href="http://www.mongoosepublishing.com/rpgs/traveller-1.html">Mongoose Publishing</a>
         &bull; <a target="_blank" href="http://forum.mongoosepublishing.com/viewforum.php?f=89">Forum</a></p>
     </section>
 
