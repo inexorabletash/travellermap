@@ -35,3 +35,8 @@ Dagudashaag 0725.png
 Dagudashaag 0825.png
 * Ginugmuu (1248), Sumuu (T5SS 1105)
 * Source: 1248 Sourcebook 1: Out of the Darkness
+
+Spinward Marches 2007.png
+* Roup
+* Source: JTAS Online April 24, 2001 (Article 280)
+* Author: Robert Prior
