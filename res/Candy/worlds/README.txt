@@ -23,3 +23,15 @@ Spinward Marches 1910.png
 Hinterworlds 1432.png
 * Leenitakot (ancient Ringworld)
 * Author: Joshua Bell
+
+Dagudashaag 0625.png
+* Uske (1248), Bh'ai (T5SS 1105)
+* Source: 1248 Sourcebook 1: Out of the Darkness
+
+Dagudashaag 0725.png
+* Luurii (1248), Akish (T5SS 1105)
+* Source: 1248 Sourcebook 1: Out of the Darkness
+
+Dagudashaag 0825.png
+* Ginugmuu (1248), Sumuu (T5SS 1105)
+* Source: 1248 Sourcebook 1: Out of the Darkness
