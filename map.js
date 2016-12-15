@@ -1459,9 +1459,10 @@ var Util = {
           value = value & ~MapOptions.StyleMaskDeprecated;
         }
 
+        value = value & MapOptions.Mask;
         if (value === this._options) return;
 
-        this._options = value & MapOptions.Mask;
+        this._options = value;
         this.cache.clear();
         this.invalidate();
         fireEvent(this, 'OptionsChanged', this._options);

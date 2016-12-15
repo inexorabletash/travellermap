@@ -667,8 +667,12 @@ window.addEventListener('DOMContentLoaded', function() {
   var lastX, lastY, lastMilieu;
   var selectedSector = null;
   var selectedWorld = null;
+  var enableCredits;
 
   function showCredits(worldX, worldY, options) {
+    if (!enableCredits)
+      return;
+
     options = options || {};
 
     var DATA_REQUEST_DELAY_MS = 500;
@@ -1181,4 +1185,6 @@ window.addEventListener('DOMContentLoaded', function() {
     window.initSharingLinks();
   });
 
+  // After all async events from the map have fired...
+  setTimeout(function() { enableCredits = true; }, 0);
 });
