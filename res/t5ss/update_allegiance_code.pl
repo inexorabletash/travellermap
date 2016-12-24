@@ -26,10 +26,14 @@ sub quote($) {
     return '"' . $s . '"';
 }
 
-my $alleg_path = $dir . '/allegiance_codes.tsv';
+my $INPUT_LINE_ENDINGS = "\r";
+my $INPUT_ENCODING = "UTF-8";
+
+my $input_path = $dir . '/allegiance_codes.tsv';
 my @lines;
 {
-    open my $fh, '<', $alleg_path or die;
+    local $/ = $INPUT_LINE_ENDINGS;
+    open my $fh, "<:encoding($INPUT_ENCODING)", $input_path or die;
 
     my $line = <$fh>; chomp $line; $line = trim($line);
     die "Unexpected header: $line\n" unless $line =~ /^ALLEGIANCES$/;
@@ -66,7 +70,7 @@ my @lines;
     close $fh;
 }
 
-@lines = sort @lines;
+@lines = sort { lc $a cmp lc $b } @lines;
 
 my $replace = join("\n", @lines);
 
