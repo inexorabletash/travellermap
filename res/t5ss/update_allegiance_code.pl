@@ -7,7 +7,7 @@ my $dir = dirname($0);
 my $code_path = $dir . '/../../server/SecondSurvey.cs';
 my $code;
 {
-    open my $fh, '<', $code_path or die;
+    open my $fh, '<:encoding(UTF-8)', $code_path or die;
     local $/ = undef;
     $code = <$fh>;
     close $fh;
@@ -44,6 +44,7 @@ my @lines;
 
     while (<$fh>) {
         chomp;
+        next if /^\s+$/;
         die "Unexpected: $_\n" unless m/^([A-Za-z0-9']{4}) *\t/;
         my ($alleg, $legacy, $base, $desc, $location) = map { trim($_) } split(/\t/);
 
@@ -77,7 +78,7 @@ my $replace = join("\n", @lines);
 $code =~ s/(\/\/ Allegiance Table Begin\s*\n)(.*?)(\n\s*\/\/ Allegiance Table End)/$1$replace$3/s;
 
 {
-    open my $fh, '>', $code_path or die;
+    open my $fh, '>:encoding(UTF-8)', $code_path or die;
     print $fh $code;
     close $fh;
 }

@@ -7,7 +7,7 @@ my $dir = dirname($0);
 my $html_path = $dir . '/../../doc/secondsurvey.html';
 my $html;
 {
-    open my $fh, '<', $html_path or die;
+    open my $fh, '<:encoding(UTF-8)', $html_path or die;
     local $/ = undef;
     $html = <$fh>;
     close $fh;
@@ -38,6 +38,7 @@ my @lines;
 
     while (<$fh>) {
         chomp;
+        next if /^\s+$/;
         die "Unexpected: $_\n" unless m/^([A-Za-z0-9']{4}) *\t/;
         my ($code, $sophont, $location) = map { trim($_) } split(/\t/);
         $sophont =~ s|/|/&#x200B;|g;
@@ -54,7 +55,7 @@ my $replace = join("\n", @lines);
 $html =~ s/(<!-- Sophont Table Begin -->\s*\n)(.*?)(\n\s*<!-- Sophont Table End -->)/$1$replace$3/s;
 
 {
-    open my $fh, '>', $html_path or die;
+    open my $fh, '>:encoding(UTF-8)', $html_path or die;
     print $fh $html;
     close $fh;
 }
