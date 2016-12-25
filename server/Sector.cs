@@ -131,6 +131,8 @@ namespace Maps
             Credits = metadataSource.Credits;
             Products.AddRange(metadataSource.Products);
             StylesheetText = metadataSource.StylesheetText;
+
+            tags.AddRange(metadataSource.tags);
         }
 
         [XmlAttribute("Tags"), JsonName("Tags")]

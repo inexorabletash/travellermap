@@ -2519,28 +2519,28 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
       <Route Start="2916" End="0118" EndOffsetX="1" Allegiance="SoCf"/>
     </Routes>
   </Sector>
-  <Sector>
+  <Sector Abbreviation="Cano" Tags="InReview">
     <Y>4</Y>
     <X>-1</X>
     <Name>Canopus</Name>
     <DataFile Source="Randy Dorman" Type="TabDelimited">Canopus.tab</DataFile>
     <MetadataFile>Canopus.xml</MetadataFile>
   </Sector>
-  <Sector>
+  <Sector Abbreviation="Alde" Tags="InReview">
     <Y>4</Y>
     <X>0</X>
     <Name>Aldebaran</Name>
     <DataFile Source="Randy Dorman" Type="TabDelimited">Aldebaran.tab</DataFile>
     <MetadataFile>Aldebaran.xml</MetadataFile>
   </Sector>
-  <Sector>
+  <Sector Abbreviation="Newo" Tags="InReview">
     <Y>4</Y>
     <X>1</X>
     <Name>Neworld</Name>
     <DataFile Author="Randy Dorman" Type="TabDelimited">Neworld.tab</DataFile>
     <MetadataFile Author="Randy Dorman">Neworld.xml</MetadataFile>
   </Sector>
-  <Sector>
+  <Sector Abbreviation="Lang" Tags="InReview">
     <Y>4</Y>
     <X>2</X>
     <Name Lang="hv">Langere</Name>
