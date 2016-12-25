@@ -54,8 +54,7 @@
 
     sector.worlds.sort(function(a, b) { return cmp(a.hex, b.hex); });
 
-    var LINES = 128, COLUMNS = 2;
-
+    var LINES = 114, COLUMNS = 2;
     sector.pages = partition(sector.worlds, LINES*COLUMNS)
       .map(function(a) { return {columns: partition(a, LINES)
                                  .map(function(w) { return { worlds: w }; })}; });
@@ -94,8 +93,9 @@
       'thet', /*   */ 'rift', 'verg', 'ilel', 'zaru', 'mass', 'delp', 'glim', 'cruc',
       /*           */ 'hlak', 'eali', 'reav', 'daib', 'dias', 'olde', 'hint',
       /*           */ 'stai', 'iwah', 'dark', 'magy', 'solo', 'alph', 'spic',
-      /*           */ 'akti', 'uist', 'ustr'
+      /*           */ 'akti', 'uist', 'ustr', 'cano', 'alde', 'newo', 'lang',
     ];
+
     Promise.all(sectors.map(function(name) {
       return Promise.all([
         name,
