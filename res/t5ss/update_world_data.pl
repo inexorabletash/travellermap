@@ -53,6 +53,7 @@ my %sectors = (
     Spin => "Spinward Marches",
     Stai => "Staihaia'yo",
     Thet => "Theta Borealis",
+    Tien => "Tienspevnekr",
     Troj => "Trojan Reach",
     Tugl => 'Tuglikki',
     Uist => "Uistilrao",

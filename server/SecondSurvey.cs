@@ -412,6 +412,7 @@ namespace Maps
             { "WiDe", "Wd", null, "Winston Democracy" },
             { "XXXX", "Xx", null, "Unknown" },
             { "ZePr", "Zp", "Z", "Zelphic Primacy" },
+            { "ZhAx", "Ax", "Zh", "Zhodani Consulate, Addaxur Reserve" },
             { "ZhCa", "Ca", "Zh", "Zhodani Consulate, Colonnade Province" },
             { "ZhCh", "Zh", "Zh", "Zhodani Consulate, Chtierabl Province" },
             { "ZhCo", "Zh", "Zh", "Zhodani Consulate" }, // undetermined
