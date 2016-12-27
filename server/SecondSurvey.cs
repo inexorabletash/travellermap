@@ -386,6 +386,7 @@ namespace Maps
             { "VAug", "Vu", null, "United Followers of Augurgh" },
             { "VBkA", "Vb", null, "Bakne Alliance" },
             { "VCKd", "Vk", null, "Commonality of Kedzudh" }, // (Kedzudh Aeng)
+            { "VDrN", "VN", null, "Drr'lana Network" },
             { "VDzF", "Vf", null, "Dzarrgh Federate" },
             { "VFFD", "V1", null, "First Fleet of Dzo" },
             { "VGoT", "Vg", null, "Glory of Taarskoerzn" },
@@ -403,12 +404,14 @@ namespace Maps
             { "VSDp", "Vs", null, "Saeknouth Dependency" }, // (Saeknouth Igz)
             { "VSEq", "Vd", null, "Society of Equals" }, // (Dzen Aeng Kho)
             { "VThE", "Vt", null, "Thoengling Empire" }, // (Thoengling Raghz)
+            { "VTrA", "VT", null, "Trae Aggregation" },
             { "VTzE", "Vp", null, "Thirz Empire" }, // (Thirz Uerra)
             { "VUru", "Vu", null, "Urukhu" },
             { "VVar", "Ve", null, "Empire of Varroerth" },
             { "VVoS", "Vv", null, "Voekhaeb Society" },
             { "VWan", "Vw", null, "People of Wanz" },
             { "VWP2", "V2", null, "Windhorn Pact of Two" },
+            { "VYoe", "VQ", null, "Union of Yoetyqq" },
             { "WiDe", "Wd", null, "Winston Democracy" },
             { "XXXX", "Xx", null, "Unknown" },
             { "ZePr", "Zp", "Z", "Zelphic Primacy" },

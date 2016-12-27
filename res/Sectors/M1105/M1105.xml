@@ -727,7 +727,7 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
       <Allegiance Code="Ve">Empire of Varroerth</Allegiance>
     </Allegiances>
   </Sector>
-  <Sector>
+  <Sector Abbreviation="Gash" Tags="InReview">
     <Y>-3</Y>
     <X>1</X>
     <Name>Gashikan</Name>
@@ -743,7 +743,7 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
 
       ]]>
     </Credits>
-    <DataFile Author="Jeff Zeitlin" Source="The Zhodani Base" Ref="http://www.zho.berka.com/data/CLASSIC/sector.pl?sector=GASHIKAN">gashikan.sec</DataFile>
+    <DataFile Author="Jeff Zeitlin" Source="The Zhodani Base" Ref="http://www.zho.berka.com/data/CLASSIC/sector.pl?sector=GASHIKAN" Type="TabDelimited">Gashikan.tab</DataFile>
     <Subsectors>
       <Subsector Index="A">Gali</Subsector>
       <Subsector Index="B">Arim</Subsector>
@@ -763,20 +763,14 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
       <Subsector Index="P" Source="Challenge #49">Gashilean</Subsector>
     </Subsectors>
     <Borders>
-      <Border Allegiance="Ga" Color="yellow">0018 0118 0217 0317 0417 0517 0616 0716 0815 0915 1014 1114 1213 1314 1414 1515 1615 1716 1816 1916 2016 2117 2217 2317 2416 2516 2615 2614 2613 2714 2814 2915 3014 3114 3214 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3240 3141 3040 2940 2839 2740 2640 2540 2440 2439 2339 2238 2138 2038 1939 1839 1739 1638 1539 1439 1340 1240 1140 1039 0940 0839 0740 0640 0541 0441 0341 0241 0141 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018</Border>
-      <Border Allegiance="Jm" ShowLabel="false" Color="teal">1841 1941 2040 2141 2241 2141 2041 1941 1841</Border>
-      <Border Allegiance="VN" Color="olivedrab">0009 0110 0210 0310 0410 0510 0609 0709 0808 0908 1007 1107 1206 1306 1405 1505 1506 1406 1307 1207 1208 1109 1009 0910 0911 0811 0712 0713 0613 0514 0515 0414 0315 0314 0213 0113 0012 0011 0010 0009</Border>
-      <Border Allegiance="VQ" Color="olivedrab">0421 0522 0523 0422 0421</Border>
-      <Border Allegiance="JP" Color="blue" ShowLabel="false">1841 1941 2040 2141 2241 2141 2041 1941 1841</Border>
+      <Border Allegiance="3EoG" Color="yellow">0018 0118 0217 0317 0417 0517 0616 0716 0815 0915 1014 1114 1213 1314 1414 1515 1615 1716 1816 1916 2016 2117 2217 2317 2416 2516 2615 2614 2613 2714 2814 2915 3014 3114 3214 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3240 3141 3040 2940 2839 2740 2640 2540 2440 2439 2339 2238 2138 2038 1939 1839 1739 1638 1539 1439 1340 1240 1140 1039 0940 0839 0740 0640 0541 0441 0341 0241 0141 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018</Border>
+      <Border Allegiance="JMen" ShowLabel="false" Color="teal">1841 1941 2040 2141 2241 2141 2041 1941 1841</Border>
+      <Border Allegiance="VDrN" Color="olivedrab">0009 0110 0210 0310 0410 0510 0609 0709 0808 0908 1007 1107 1206 1306 1405 1505 1506 1406 1307 1207 1208 1109 1009 0910 0911 0811 0712 0713 0613 0514 0515 0414 0315 0314 0213 0113 0012 0011 0010 0009</Border>
+      <Border Allegiance="VYoe" Color="olivedrab">0421 0522 0523 0422 0421</Border>
+      <Border Allegiance="JuPr" Color="blue" ShowLabel="false">1841 1941 2040 2141 2241 2141 2041 1941 1841</Border>
     </Borders>
-    <Allegiances>
-      <Allegiance Code="Ga">Third Empire of Gashikan</Allegiance>
-      <Allegiance Code="Jm">Commonwealth of Mendan</Allegiance>
-      <Allegiance Code="VN">Drr'lana Network</Allegiance>
-      <Allegiance Code="VQ">Union of Yoetyqq</Allegiance>
-    </Allegiances>
   </Sector>
-  <Sector>
+  <Sector Abbreviation="Tren" Tags="InReview">
     <Y>-3</Y>
     <X>2</X>
     <Name>Trenchans</Name>
@@ -793,7 +787,7 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
 
       ]]>
     </Credits>
-    <DataFile Author="Jeff Zeitlin"     Source="The Zhodani Base" Ref="http://www.zho.berka.com/data/CLASSIC/sector.pl?sector=TRENCHAN">trenchans.sec</DataFile>
+    <DataFile Author="Jeff Zeitlin"     Source="The Zhodani Base" Ref="http://www.zho.berka.com/data/CLASSIC/sector.pl?sector=TRENCHAN" Type="TabDelimited">Trenchans.tab</DataFile>
     <Subsectors>
       <Subsector Index="A">Mumari</Subsector>
       <Subsector Index="B">Liiriirda</Subsector>
@@ -813,18 +807,11 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
       <Subsector Index="P">Idudika</Subsector>
     </Subsectors>
     <Borders>
-      <Border Allegiance="Ga" Color="yellow">0014 0115 0215 0316 0416 0516 0615 0614 0715 0815 0916 0917 1017 1118 1218 1319 1418 1519 1618 1718 1817 1917 2016 2015 2014 1914 2013 2114 2213 2313 2413 2514 2614 2715 2815 2916 3015 3116 3216 3217 3118 3018 3019 3020 3021 3022 3123 3124 3024 3025 3026 3027 3028 3029 3130 3030 3031 2932 2933 2833 2834 2734 2634 2535 2434 2334 2233 2134 2034 1935 1835 1736 1636 1537 1538 1539 1438 1338 1237 1138 1038 0939 0838 0739 0639 0539 0439 0339 0239 0140 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014</Border>
-      <Border Allegiance="VT" Color="olivedrab">0207 0308 0208 0209 0208 0207</Border>
-
-      <Border Allegiance="Vw" Color="olivedrab" WrapLabel="true" Label="Rar Errall">2338 2437 2537 2637 2738 2837 2838 2839 2840 2941 2841 2741 2641 2541 2540 2539 2438 2338</Border>
-      <Border Allegiance="JP" ShowLabel="false" Color="blue">1140 1239 1339 1439 1540 1640 1741 1840 1940 1939 1938 2037 2036 2037 2138 2238 2338 2437 2537 2637 2738 2837 2937 3036 3136 3135 3134 3233 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1140</Border>
-
+      <Border Allegiance="3EoG" Color="yellow">0014 0115 0215 0316 0416 0516 0615 0614 0715 0815 0916 0917 1017 1118 1218 1319 1418 1519 1618 1718 1817 1917 2016 2015 2014 1914 2013 2114 2213 2313 2413 2514 2614 2715 2815 2916 3015 3116 3216 3217 3118 3018 3019 3020 3021 3022 3123 3124 3024 3025 3026 3027 3028 3029 3130 3030 3031 2932 2933 2833 2834 2734 2634 2535 2434 2334 2233 2134 2034 1935 1835 1736 1636 1537 1538 1539 1438 1338 1237 1138 1038 0939 0838 0739 0639 0539 0439 0339 0239 0140 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014</Border>
+      <Border Allegiance="VTrA" Color="olivedrab">0207 0308 0208 0209 0208 0207</Border>
+      <Border Allegiance="JRar" Color="olivedrab" WrapLabel="true" Label="Rar Errall">2338 2437 2537 2637 2738 2837 2838 2839 2840 2941 2841 2741 2641 2541 2540 2539 2438 2338</Border>
+      <Border Allegiance="JuPr" ShowLabel="false" Color="blue">1140 1239 1339 1439 1540 1640 1741 1840 1940 1939 1938 2037 2036 2037 2138 2238 2338 2437 2537 2637 2738 2837 2937 3036 3136 3135 3134 3233 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1140</Border>
     </Borders>
-    <Allegiances>
-      <Allegiance Code="Ga">Third Empire of Gashikan</Allegiance>
-      <Allegiance Code="VT">Trae Aggregation</Allegiance>
-      <Allegiance Code="Vw">Rar Errall (The Wolves Warren)</Allegiance>
-    </Allegiances>
   </Sector>
   <Sector>
     <Y>-3</Y>
