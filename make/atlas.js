@@ -87,13 +87,14 @@
   window.addEventListener('DOMContentLoaded', function() {
     var sectors;
     sectors = [
-      /*   */ 'ziaf', 'gvur', 'tugl', 'prov', 'wind', 'mesh', 'mend', 'amdu',
-      'farf', 'fore', 'spin', 'dene', 'corr', 'vlan', 'lish', 'anta', 'empt',
-      'vang', 'beyo', 'troj', 'reft', 'gush', 'dagu', 'core', 'forn', 'ley',  'gate',
-      'thet', /*   */ 'rift', 'verg', 'ilel', 'zaru', 'mass', 'delp', 'glim', 'cruc',
-      /*           */ 'hlak', 'eali', 'reav', 'daib', 'dias', 'olde', 'hint',
-      /*           */ 'stai', 'iwah', 'dark', 'magy', 'solo', 'alph', 'spic',
-      /*           */ 'akti', 'uist', 'ustr', 'cano', 'alde', 'newo', 'lang',
+      /*                                                         */ 'gash','tren',
+      /*               */ 'ziaf','gvur','tugl','prov','wind','mesh','mend','amdu',
+      /*         */'farf','fore','spin','dene','corr','vlan','lish','anta','empt',
+      /*         */'vang','beyo','troj','reft','gush','dagu','core','forn','ley', 'gate',
+      'thet',/*               */ 'rift','verg','ilel','zaru','mass','delp','glim','cruc',
+      /*                      */ 'hlak','eali','reav','daib','dias','olde','hint',
+      /*                      */ 'stai','iwah','dark','magy','solo','alph','spic',
+      /*                      */ 'akti','uist','ustr','cano','alde','newo','lang',
     ];
 
     Promise.all(sectors.map(function(name) {

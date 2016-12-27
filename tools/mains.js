@@ -97,6 +97,11 @@ fetch(`${origin}/data?tag=OTU&milieu=M1105`).then(r => r.json()).then(data => {
   mains = mains.filter(m => m && (m.length >= MIN_SIZE));
   mains.sort((a, b) => b.length - a.length);
 
-  window.mains = mains;
   console.log('done');
+
+  window.mains = mains;
+  const ta = document.createElement('textarea');
+  ta.cols = 80; ta.rows = 24;
+  document.body.appendChild(ta);
+  ta.value = JSON.stringify(mains);
 });
