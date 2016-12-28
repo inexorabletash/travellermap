@@ -11,8 +11,8 @@ Mass	I	0123	Albion	D565326-7		Lo		525	ImDc	M2 V M4 V	{ -3 }	(521-4)	[2146]	B	11	
 Mass	I	0124	K'ZASS	B546985-C		Hi In Cp		714	ImDc	G3 V M9 V	{ 4 }	(G8F+2)	[7D3A]	BEF	11	3,840
 Mass	I	0125	Lant	D31067C-8		Na Ni		200	ImDc	G0 V	{ -3 }	(851+1)	[938B]	B	9	40
 Mass	I	0130	Dalsam	A994456-E		Ni Pa		913	ImDc	M0 V	{ 1 }	(A34+1)	[354D]	Bc	13	120
-Mass	M	0134	Forever	A000100-F	N	As Lo Va		503	ImDc	K6 II M6 V	{ 1 }	(611-3)	[121A]	B	10	4
-Mass	M	0138	Kenbine	C421123-B		He Lo Po		903	ImDc	G8 V	{ 0 }	(611-3)	[1128]	B	10	4
+Mass	M	0134	Forever	A000100-F	N	As Lo Va		503	ImDc	K6 II M6 V	{ 1 }	(601-3)	[121A]	B	10	0
+Mass	M	0138	Kenbine	C421123-B		He Lo Po		903	ImDc	G8 V	{ 0 }	(601-3)	[1128]	B	10	0
 Mass	M	0140	Sekeltin	B633447-B	N	Ni Po Da	A	101	ImDc	M2 V M4 V	{ 1 }	(734+1)	[455B]	B	12	84
 Mass	A	0205	Vilardi	A8D6426-E		Ni		813	ImDc	M1 V	{ 1 }	(A34+1)	[354D]	B	7	120
 Mass	A	0206	Trostar	B78A635-C	N	Ni Ri Wa Kagg3		920	ImDc	M0 V M1 V	{ 2 }	(A56+1)	[483A]	BC	10	300
@@ -48,7 +48,7 @@ Mass	I	0325	Kirgis	B95A510-B		Ni Wa		323	ImDc	K8 V M5 V	{ 1 }	(C45-3)	[1616]	B	1
 Mass	I	0327	Droyna Four	A588844-B		Ri Pa Ph Droy5		304	ImDc	M2 V	{ 3 }	(E7D+1)	[6B39]	BcCe	15	1,274
 Mass	I	0330	DIRAC	B7959BB-C	N	Hi In Pz	A	812	ImDc	F5 V	{ 4 }	(E8F+5)	[BD7E]	BEf	15	8,400
 Mass	M	0331	Staalun	B434872-C		Ph		111	ImDc	M0 V	{ 2 }	(C7C-2)	[4A18]	Be	15	806
-Mass	M	0335	Gusson	B568100-C	N	Lo		521	ImDc	G9 V	{ 1 }	(611-3)	[1217]	B	6	4
+Mass	M	0335	Gusson	B568100-C	N	Lo		521	ImDc	G9 V	{ 1 }	(601-3)	[1217]	B	6	0
 Mass	M	0336	Ledstat	B3007CC-C		Na Va Pi Pz	A	114	ImDc	K3 V M5 V	{ 2 }	(E6C+5)	[A98F]	BD	12	5,040
 Mass	M	0339	Hunberri	B884622-A		Ag Ni Ri		504	ImDc	M0 V M7 V	{ 3 }	(C57-1)	[2916]	BC	11	378
 Mass	A	0402	KAGGUSHUS	A542AA7-F		He Hi In Po Cp (Kaggushus)		904	ImDc	M1 V	{ 4 }	(G9G+4)	[AE5F]	BEF	13	9,216
@@ -56,7 +56,7 @@ Mass	A	0403	Cleves	A566422-D		Ni Pa Da	A	512	ImDc	K1 V	{ 1 }	(934-3)	[1519]	Bc	1
 Mass	E	0411	Chigan Taal	B433758-C		Na Po		605	ImDc	M1 V	{ 2 }	(E6C+2)	[795C]	B	12	2,016
 Mass	E	0414	Laisarlo	B100758-E	N	Na Va Pi		101	ImDc	M2 V M7 V	{ 2 }	(A6D+2)	[795E]	BD	14	1,560
 Mass	E	0415	EMSINGALE	B8D4999-D	N	Hi		221	ImDc	F9 V	{ 3 }	(E8F+4)	[AC6E]	BE	6	6,720
-Mass	E	0416	Enriter	B100120-D		Lo Va		313	ImDc	G3 V	{ 1 }	(711-3)	[1218]	B	7	5
+Mass	E	0416	Enriter	B100120-D		Lo Va		313	ImDc	G3 V	{ 1 }	(701-3)	[1218]	B	7	0
 Mass	E	0417	Korthalis	C541216-8	S	He Lo Po		400	ImDc	G7 V	{ -2 }	(411-3)	[1147]	B	12	3
 Mass	E	0418	Mairs	E400300-A		Lo Va		203	ImDc	K7 V	{ -1 }	(821-5)	[1215]	B	7	8
 Mass	I	0425	Zaibeth	D310583-9		Ni		624	ImDc	M2 III D	{ -2 }	(D42-5)	[2326]	B	12	52
@@ -76,11 +76,11 @@ Mass	A	0508	Ticularosta	A100654-F		Na Ni Va		322	ImDc	G3 V M9 V	{ 1 }	(C55-1)	[4
 Mass	A	0509	Nedupon	B100632-C		Na Ni Va		400	ImDc	A4 V	{ 1 }	(855-3)	[2718]	B	11	140
 Mass	A	0510	Cluseret	B5627BD-A		Ri Pz	A	604	ImDc	G2 V	{ 3 }	(D6C+5)	[BA9E]	BC	7	4,680
 Mass	E	0511	Arineau	B563635-A		Ni Ri		721	ImDc	M2 V	{ 2 }	(B56+1)	[4838]	BC	13	330
-Mass	E	0512	Essin	A200100-F	N	Lo Va		925	ImDc	M1 III	{ 1 }	(A11-3)	[121A]	B	13	7
+Mass	E	0512	Essin	A200100-F	N	Lo Va		925	ImDc	M1 III	{ 1 }	(A01-3)	[121A]	B	13	0
 Mass	E	0513	Daho	E9D6454-9		Ni		624	ImDc	M1 V	{ -2 }	(C31-4)	[2237]	B	9	22
 Mass	E	0514	Kaflowe	D565545-7		Ag Ni Pr		303	ImDc	K0 V M2 V	{ -2 }	(742-4)	[3335]	BcC	11	34
 Mass	E	0519	Salt	B87A454-E		Ni Wa		403	ImDc	M1 V	{ 1 }	(934-1)	[253C]	B	12	97
-Mass	E	0520	Lismal	B561124-B		Lo		704	ImDc	G1 V	{ 1 }	(711-1)	[1239]	B	9	6
+Mass	E	0520	Lismal	B561124-B		Lo		704	ImDc	G1 V	{ 1 }	(701-1)	[1239]	B	9	0
 Mass	I	0522	Marach	B58487A-A		Ri Pa Ph		704	ImDc	K9 V M2 V	{ 3 }	(E7C+5)	[AB7C]	BcCe	12	5,880
 Mass	I	0524	Bloom	A566535-D		Ag Ni Pr		604	ImDc	F4 V M2 V	{ 2 }	(B46+1)	[373B]	BcC	12	264
 Mass	I	0525	Damber	B573553-C		Ni		103	ImDc	K0 V	{ 1 }	(A45-2)	[2629]	B	11	160
@@ -103,7 +103,7 @@ Mass	E	0611	Zimrimairs	A542679-C		He Ni Po		703	ImDc	K5 V	{ 1 }	(B55+2)	[776D]	B
 Mass	E	0616	Marcusen	D575549-7		Ag Ni		602	ImDc	M2 V	{ -2 }	(742-1)	[6368]	BC	10	50
 Mass	E	0617	Jonen	B658569-B		Ag Ni O:0717		802	ImDc	G6 V	{ 2 }	(946+3)	[676C]	BC	14	648
 Mass	E	0618	Tephant	B86457B-B	N	Ag Ni Pr		302	ImDc	F7 V	{ 2 }	(946+4)	[777D]	BcC	12	864
-Mass	E	0619	Makinen	E588110-7		Lo Da	A	211	ImDc	G7 V	{ -3 }	(311-5)	[1112]	B	12	2
+Mass	E	0619	Makinen	E588110-7		Lo Da	A	211	ImDc	G7 V	{ -3 }	(301-5)	[1112]	B	12	0
 Mass	I	0621	Kinnas	EAF7446-8		Ni		310	ImDc	K1 V	{ -3 }	(731-4)	[3147]	B	12	13
 Mass	I	0624	Nananana	B873349-B		Lo		804	ImDc	M3 V	{ 1 }	(921+2)	[446C]	B	11	36
 Mass	I	0627	Beoff	B742300-C		He Lo Po		105	ImDc	M2 V	{ 1 }	(A21-3)	[1417]	B	14	14
@@ -113,10 +113,10 @@ Mass	M	0632	Monapoan	A562435-D	N	Ni		313	ImDc	M1 V M1 V	{ 1 }	(A34-1)	[253B]	B	1
 Mass	A	0701	Raldery IV	D567466-7	S	Ni Pa O:Core-0839		602	ImDc	G4 V M8 V	{ -3 }	(631-4)	[3146]	Bc	9	11
 Mass	A	0703	Death	B100300-E	N	Lo Va Da	A	612	ImDc	M3 V M1 V	{ 1 }	(821-3)	[1419]	B	11	11
 Mass	A	0704	Besholm	B84A445-C	N	Ni Wa		904	ImDc	G4 V M3 V	{ 1 }	(A34-1)	[253A]	B	11	108
-Mass	A	0706	Dalsgaard	B687100-C		Lo Ga		220	ImDc	M1 V M8 V	{ 1 }	(511-3)	[1217]	B	16	4
+Mass	A	0706	Dalsgaard	B687100-C		Lo Ga		220	ImDc	M1 V M8 V	{ 1 }	(501-3)	[1217]	B	16	0
 Mass	A	0707	YAGAS	B566AFC-E		Hi Pz	A	502	ImDc	K3 V	{ 3 }	(E9F+5)	[DD8H]	BE	12	9,450
 Mass	E	0711	Newport	A427303-F		Lo		624	ImDc	K4 V M9 V	{ 1 }	(B21-2)	[142C]	B	10	18
-Mass	E	0712	Latt	B979124-B		Lo		903	ImDc	G3 V	{ 1 }	(611-1)	[1239]	B	13	5
+Mass	E	0712	Latt	B979124-B		Lo		903	ImDc	G3 V	{ 1 }	(601-1)	[1239]	B	13	0
 Mass	E	0715	Ariman	B658558-C	N	Ag Ni		802	ImDc	M2 V	{ 2 }	(946+2)	[575C]	BC	7	432
 Mass	E	0716	Mannai Nila	B200542-D	S	Ni Va		923	ImDc	M0 V	{ 1 }	(C45-3)	[1619]	B	8	168
 Mass	E	0717	Uson	A6847CD-C	N	Ag Ri Pz	A	822	ImDc	M1 V	{ 4 }	(D6E+5)	[BB9G]	BCf	9	5,460
@@ -127,7 +127,7 @@ Mass	I	0728	Bathy	B300555-D		Ni Va		503	ImDc	M2 V	{ 1 }	(A45-1)	[363B]	B	8	180
 Mass	M	0732	Lumbine	B200887-C		Na Va Ph Pi		804	ImDc	M8 V	{ 2 }	(E7C+2)	[8A5C]	BDe	9	2,352
 Mass	M	0733	Crussel	A551246-D		Lo Po		723	ImDc	M2 V M2 V	{ 1 }	(911+1)	[134C]	B	8	9
 Mass	M	0734	Sorrento	B798640-A		Ag Ni		424	ImDc	G0 V	{ 2 }	(E56-2)	[1815]	BC	13	336
-Mass	M	0736	Block	A561101-E	N	Lo		800	ImDc	M2 V	{ 1 }	(311-3)	[121A]	B	14	2
+Mass	M	0736	Block	A561101-E	N	Lo		800	ImDc	M2 V	{ 1 }	(301-3)	[121A]	B	14	0
 Mass	M	0737	Teradd	B6758AA-A		Pa Ph Pi Pz	A	102	ImDc	K1 V M4 V	{ 2 }	(C7B+4)	[AA7C]	BcDe	13	3,696
 Mass	M	0738	Rarderger	E79A766-8		Wa Pi O:0539		713	ImDc	G3 V	{ -2 }	(D66-3)	[6547]	BD	11	328
 Mass	M	0739	Kiggens	B531323-C		Lo Po Da	A	603	ImDc	F6 V	{ 1 }	(821-2)	[1429]	B	9	13
@@ -175,7 +175,7 @@ Mass	B	1004	Quetcro	BAF5234-C		Lo		703	ImDc	M2 V	{ 1 }	(711-1)	[133A]	B	8	6
 Mass	F	1012	Lysitihia	A774300-D		Lo		214	ImDc	F5 V	{ 1 }	(A21-3)	[1418]	B	8	14
 Mass	F	1014	Silum	E865899-6		Ga Ri Pa Ph		201	ImDc	K9 V M1 V	{ -1 }	(A76+1)	[9767]	BcCe	11	420
 Mass	F	1015	Naramorz Rock	B300567-D		Ni Va O:0815		404	ImDc	M2 V	{ 1 }	(B45+1)	[565D]	B	7	220
-Mass	F	1017	Anniga	B300100-E		Lo Va		202	ImDc	M1 V	{ 1 }	(511-3)	[1219]	B	15	4
+Mass	F	1017	Anniga	B300100-E		Lo Va		202	ImDc	M1 V	{ 1 }	(501-3)	[1219]	B	15	0
 Mass	F	1019	Shimshan	A310720-E		Na Pi		813	ImDc	M0 V K3 V	{ 2 }	(D6D-2)	[2919]	BD	9	811
 Mass	F	1020	Groves	E64648A-6		Ni Pa		210	ImDc	G5 V M2 V	{ -3 }	(631-1)	[6178]	Bc	11	16
 Mass	J	1025	Far Trinity	D767661-6	S	Ag Ni Ga Ri O:1029		601	ImDc	F4 V M9 V	{ -1 }	(853-5)	[2512]	BC	11	60
@@ -204,7 +204,7 @@ Mass	F	1220	Reetage	B557215-9	N	Lo		903	ImDc	F9 V M5 V	{ 0 }	(711-2)	[1237]	B	12
 Mass	J	1223	Adep 5	D55458B-7	S	Ag Ni		903	ImDc	M2 V	{ -2 }	(742+1)	[7379]	BC	9	56
 Mass	N	1233	NAGIIDA	B667ACC-E		Hi Ga Cp Pz	A	820	ImDc	G1 V	{ 3 }	(E9F+5)	[DD8H]	BEF	7	9,450
 Mass	N	1234	Weemar	B000699-C		As Na Ni Va		703	ImDc	M3 V M6 V M6 V	{ 1 }	(B55+2)	[776D]	B	7	550
-Mass	N	1235	Ruetzel	B747133-A	N	Lo		403	ImDc	F8 V	{ 1 }	(611-2)	[1227]	B	15	5
+Mass	N	1235	Ruetzel	B747133-A	N	Lo		403	ImDc	F8 V	{ 1 }	(601-2)	[1227]	B	15	0
 Mass	N	1238	Tanny	C567567-9		Ag Ni Pr Di (Hminor) O:0840		704	ImDc	M2 V	{ 0 }	(B44+1)	[5559]	BcC	11	176
 Mass	N	1239	Nilton	B684300-B		Lo		604	ImDc	M1 V	{ 1 }	(921-3)	[1416]	B	7	13
 Mass	B	1303	Balfour	E8D6569-8		Ni O:1104		624	ImDc	M2 V M9 V	{ -3 }	(D41-2)	[6269]	B	12	42
@@ -229,16 +229,16 @@ Mass	N	1340	Wewarbinner	B567227-B		Lo		102	ImDc	G7 V	{ 1 }	(611+1)	[235B]	B	11	6
 Mass	B	1404	Dalphta Three	C999533-A		Ni Da	A	911	ImDc	G2 V	{ 0 }	(944-3)	[2527]	B	9	101
 Mass	B	1408	Wondrous	B776226-B	N	Lo		112	ImDc	K3 V	{ 1 }	(711+1)	[134A]	B	9	7
 Mass	F	1419	Neoland	A653503-D	N	Ni Po		523	ImDc	M2 V	{ 1 }	(C45-2)	[262A]	B	9	192
-Mass	F	1420	Haamish	B572101-C		He Lo		601	ImDc	M1 V	{ 1 }	(411-3)	[1218]	B	13	3
+Mass	F	1420	Haamish	B572101-C		He Lo		601	ImDc	M1 V	{ 1 }	(401-3)	[1218]	B	13	0
 Mass	J	1424	Mag' Lphr	B100435-E	W	Ni Va		703	ImDc	M0 V	{ 2 }	(935+1)	[263C]	B	8	135
 Mass	J	1428	Nindaro	B9896BB-A		Ni Ri Da	A	300	ImDc	G0 V	{ 2 }	(856+4)	[887C]	BC	6	960
 Mass	J	1430	Shiwonee	AA86831-C	N	Ri Pa Ph An (Geonee) Chir2		433	ImDc	F7 V M9 V	{ 3 }	(G7D-1)	[4B18]	BcCe	9	1,310
-Mass	N	1432	Nemille	C64A101-B		Lo Wa		910	ImDc	K6 V M0 V	{ 0 }	(411-4)	[1117]	B	6	2
+Mass	N	1432	Nemille	C64A101-B		Lo Wa		910	ImDc	K6 V M0 V	{ 0 }	(401-4)	[1117]	B	6	0
 Mass	N	1434	Filliagi	B553316-B		Lo Po		800	ImDc	G1 V	{ 1 }	(521+1)	[244A]	B	7	10
 Mass	N	1436	Wergatoen	B65557A-B	N	Ag Ni Ga		914	ImDc	G2 V	{ 2 }	(C46+4)	[777D]	BC	12	1,152
 Mass	B	1503	Pytirsun	C75A310-B		Lo Wa		913	ImDc	K1 V	{ 0 }	(921-4)	[1316]	B	8	11
 Mass	B	1506	Basolus	B694664-A		Ag Ni O:1607		415	ImDc	M1 V M1 V	{ 2 }	(E56+1)	[4838]	BC	18	420
-Mass	B	1507	Verifervid	B310100-D		Lo		920	ImDc	G5 V M4 V	{ 1 }	(511-3)	[1218]	B	7	4
+Mass	B	1507	Verifervid	B310100-D		Lo		920	ImDc	G5 V M4 V	{ 1 }	(501-3)	[1218]	B	7	0
 Mass	B	1508	Gasha	A550510-D		De Ni Po (Ilraki) RsA		924	ImDc	G4 V	{ 1 }	(D45-3)	[1618]	B	9	182
 Mass	B	1510	Anamoni	B99A425-D		Ni Wa		803	ImDc	K7 V	{ 1 }	(934-1)	[253B]	B	7	97
 Mass	F	1512	Dalken	E5577A8-6		Ag		415	ImDc	M2 V	{ -1 }	(966-1)	[7656]	BC	9	292
@@ -250,7 +250,7 @@ Mass	J	1522	Lasiter	E310843-8		Na Ph Pi Pz	A	302	ImDc	M2 V	{ -2 }	(C76-5)	[5625]
 Mass	J	1524	Thun	C000653-C		As Na Ni Va Da	A	614	ImDc	M2 V M9 V	{ 0 }	(D54-3)	[3629]	B	9	182
 Mass	N	1532	Tenonyn	B424779-C	S	Pi		623	ImDc	K7 V M5 V	{ 2 }	(E6C+3)	[896D]	BD	8	3,024
 Mass	N	1533	Serock	B592685-A		He Ni Da	A	302	ImDc	M0 V M3 V	{ 1 }	(A55-1)	[4738]	B	8	225
-Mass	N	1534	Theradway	C762116-9	S	Lo ChirW		800	ImDc	M1 V	{ -1 }	(311-2)	[1148]	B	8	2
+Mass	N	1534	Theradway	C762116-9	S	Lo ChirW		800	ImDc	M1 V	{ -1 }	(301-2)	[1148]	B	8	0
 Mass	N	1535	Dyglen	D425495-9		Ni An		602	ImDc	M3 V	{ -2 }	(831-4)	[2237]	B	8	14
 Mass	N	1538	Nobody	B100200-F		Lo Va Da	A	515	ImDc	M1 V	{ 1 }	(A11-3)	[131A]	B	11	7
 Mass	N	1540	Marilithe	A879485-D	N	Ni Da	A	104	ImDc	M2 V	{ 1 }	(A34-1)	[253B]	B	7	108
@@ -266,7 +266,7 @@ Mass	F	1616	Shukadiin	B300463-D		Ni Va O:1515		123	ImDc	M5 III	{ 1 }	(B34-2)	[15
 Mass	J	1621	Revie	A978757-D		Ag Pi		805	ImDc	K4 V	{ 3 }	(E6E+3)	[7A5D]	BCD	11	3,528
 Mass	J	1629	Pohkrow	B568338-B		Lo		502	ImDc	M2 V M4 V M5 V	{ 1 }	(721+1)	[345B]	B	12	14
 Mass	J	1630	Bisks Planet	B55A476-D	NS	Ni Wa		112	ImDc	F7 V M0 V	{ 2 }	(935+1)	[364C]	B	9	135
-Mass	N	1634	Jade	B310130-D	S	Lo		922	ImDc	M3 V	{ 1 }	(711-3)	[1218]	B	8	5
+Mass	N	1634	Jade	B310130-D	S	Lo		922	ImDc	M3 V	{ 1 }	(701-3)	[1218]	B	8	0
 Mass	N	1639	Wranklin	D547345-6		Lo		201	ImDc	K0 V M1 V	{ -3 }	(521-5)	[1134]	B	10	5
 Mass	C	1703	Tersani	B100532-E		Ni Va		203	ImDc	K4 V	{ 1 }	(A45-3)	[161A]	B	10	140
 Mass	C	1705	Varina	E310231-9		Lo		204	ImDc	M1 V	{ -2 }	(811-5)	[1115]	B	13	4
@@ -278,7 +278,7 @@ Mass	K	1721	Ven	E562621-6		Ni Ri		903	ImDc	K2 V M5 V	{ -2 }	(852-5)	[2412]	BC	13
 Mass	K	1724	LEAGUE	D552983-8	S	Hi Po		502	ImDc	G6 V	{ -1 }	(D88-4)	[6825]	BE	7	499
 Mass	K	1726	Ri Trois	B57255A-B	N	He Ni		504	ImDc	K6 V	{ 1 }	(B45+3)	[767D]	B	12	660
 Mass	K	1728	Lurin	B6357BA-A		Pz	A	814	ImDc	K2 V M3 V	{ 2 }	(E6B+4)	[997C]	B	11	3,696
-Mass	K	1730	Kindstrom	C884134-8	S	Lo		200	ImDc	K1 V	{ -2 }	(311-4)	[1136]	B	12	2
+Mass	K	1730	Kindstrom	C884134-8	S	Lo		200	ImDc	K1 V	{ -2 }	(301-4)	[1136]	B	12	0
 Mass	O	1731	Myimpia	B784202-B	NS	Lo		222	ImDc	G2 V	{ 2 }	(811-2)	[1417]	B	13	6
 Mass	O	1733	Gilkla	B575677-A		Ag Ni		903	ImDc	F5 V M6 V	{ 2 }	(B56+2)	[685A]	BC	13	660
 Mass	O	1740	Kasenca	B796433-B	N	Ni Pa		213	ImDc	M2 V	{ 1 }	(A34-2)	[1528]	Bc	7	96
@@ -302,7 +302,7 @@ Mass	C	1907	Madden	C524522-9		Ni		524	ImDc	M3 V M5 V	{ -1 }	(D43-5)	[1415]	B	9	7
 Mass	C	1909	Ektorr	B5638A9-A		Ri Ph		211	ImDc	K4 V	{ 3 }	(C7C+4)	[9B6B]	BCe	6	4,032
 Mass	C	1910	KHISHAM	A1009AE-F		Hi In Na Va Cp Pz	A	814	ImDc	G1 V M1 V	{ 4 }	(G8G+5)	[DD9K]	BEF	8	10,240
 Mass	G	1915	Deeber	C310763-A		Na Pi O:1814		204	ImDc	M2 V M7 V M7 V	{ 1 }	(D6A-2)	[4827]	BD	7	624
-Mass	G	1916	Stenbon	C641147-9		He Lo Po		325	ImDc	M3 V	{ -1 }	(A11-1)	[1159]	B	10	9
+Mass	G	1916	Stenbon	C641147-9		He Lo Po		325	ImDc	M3 V	{ -1 }	(A01-1)	[1159]	B	10	0
 Mass	G	1917	North	C410433-A	S	Ni		421	ImDc	M3 V	{ 0 }	(933-3)	[1427]	B	9	57
 Mass	G	1918	Cinthy	B747423-B		Ni Pa		101	ImDc	G1 V	{ 1 }	(734-2)	[1528]	Bc	9	67
 Mass	K	1921	Star Triven	B581321-B	S	Lo		913	ImDc	G4 V	{ 1 }	(921-3)	[1417]	B	10	13
@@ -313,7 +313,7 @@ Mass	O	1936	Danmoire	D431758-9		Na Po Pz	A	920	ImDc	K3 V	{ -1 }	(B68-1)	[7659]	B
 Mass	O	1938	Meriod	B310446-D		Ni		301	ImDc	M3 V M9 V	{ 1 }	(734+1)	[354C]	B	15	84
 Mass	O	1940	Arka	A798545-D		Ag Ni		922	ImDc	G1 V M2 V	{ 2 }	(B46+1)	[373B]	BC	12	264
 Mass	C	2001	Marfa	B20079D-C		Na Va Pi Pz	A	503	ImDc	G3 V M4 V	{ 2 }	(C6C+5)	[B99G]	BD	13	4,320
-Mass	C	2004	Germer	B100100-F		Lo Va		824	ImDc	G6 V M6 V	{ 1 }	(911-3)	[121A]	B	13	6
+Mass	C	2004	Germer	B100100-F		Lo Va		824	ImDc	G6 V M6 V	{ 1 }	(901-3)	[121A]	B	13	0
 Mass	C	2007	IGGARIR	B787AA9-E	S	Hi Ga		623	ImDc	F7 V	{ 3 }	(H9F+4)	[BD6F]	BE	10	9,180
 Mass	C	2008	Irlu	A200654-F		Na Ni Va		603	ImDc	K0 IV	{ 1 }	(B55-1)	[473D]	B	8	248
 Mass	C	2010	Wikk	B648655-B	N	Ag Ni		924	ImDc	M3 V M7 V	{ 2 }	(E56+1)	[4839]	BC	9	420
@@ -321,7 +321,7 @@ Mass	G	2013	Niswander	A541555-E		He Ni Po		204	ImDc	K7 V	{ 1 }	(B45-1)	[363C]	B	
 Mass	G	2017	Liaw	B568664-9	N	Ag Ni Ri Geon2 Mr		925	ImDc	K3 V M6 V	{ 2 }	(F56+1)	[4837]	BC	10	450
 Mass	G	2018	Oliphant	C310541-B		Ni		324	ImDc	F2 V M3 V	{ 0 }	(D44-4)	[1517]	B	10	125
 Mass	G	2019	Charted	B585320-A		Lo		401	ImDc	F6 V	{ 1 }	(621-3)	[1415]	B	13	8
-Mass	K	2029	Rarian	B571120-B		He Lo		214	ImDc	M3 V M1 V	{ 1 }	(811-3)	[1216]	B	11	6
+Mass	K	2029	Rarian	B571120-B		He Lo		214	ImDc	M3 V M1 V	{ 1 }	(801-3)	[1216]	B	11	0
 Mass	K	2030	Hexum	B561525-B		Ni Pr		900	ImDc	M1 V M8 V	{ 1 }	(745-1)	[3639]	Bc	8	126
 Mass	O	2031	Umbia	B8D48B9-B		Ph Pz	A	304	ImDc	M0 V M0 V	{ 2 }	(E7C+3)	[9A6C]	Be	11	3,528
 Mass	O	2032	Devan	C97789A-7		Pa Ph Pi		313	ImDc	G7 V M8 V M3 V	{ -1 }	(A77+1)	[A779]	BcDe	13	490
@@ -332,7 +332,7 @@ Mass	C	2102	Trikster	B200530-C		Ni Va		114	ImDc	M1 V	{ 1 }	(C45-3)	[1617]	B	8	16
 Mass	C	2103	INARIM	B565AFG-E		Hi Pz	A	103	ImDc	K9 V M3 V	{ 3 }	(F9F+5)	[FDAK]	BE	9	10,125
 Mass	C	2105	Landwasser	B875544-B	S	Ag Ni		924	ImDc	K8 V M0 V	{ 2 }	(D46+1)	[3739]	BC	9	312
 Mass	C	2109	MURCIA	E564945-7		Hi Pr		814	ImDc	K2 V	{ -1 }	(B88-3)	[7835]	BcE	14	493
-Mass	G	2116	Olden	A625132-E		Lo		505	ImDc	M1 V	{ 1 }	(811-3)	[121A]	B	10	6
+Mass	G	2116	Olden	A625132-E		Lo		505	ImDc	M1 V	{ 1 }	(801-3)	[121A]	B	10	0
 Mass	G	2118	Pinter	A426589-E		Ni		214	ImDc	K8 V	{ 1 }	(C45+2)	[666F]	B	9	480
 Mass	G	2119	Epmeyer	C310516-B		Ni		703	ImDc	F0 V	{ 0 }	(A44-1)	[454A]	B	8	144
 Mass	K	2127	UGDUKIDA	C43199A-B		Hi Na Po Cp		413	ImDc	M3 V M6 V	{ 2 }	(F8D+4)	[BB7D]	BE	15	6,240
@@ -347,7 +347,7 @@ Mass	G	2211	Veny	B544767-A		Ag Pi Pz O:1910	A	810	ImDc	F4 V M5 V	{ 3 }	(A6C+3)	[
 Mass	G	2212	Pirnie	C576842-7		Pa Ph Pi		913	ImDc	K4 V M7 V	{ -1 }	(A77-5)	[4713]	BcDe	13	245
 Mass	G	2213	Meroi	B588332-B		Lo		214	ImDc	G9 V	{ 1 }	(A21-3)	[1417]	B	8	14
 Mass	G	2216	Nogmolen	C310545-B		Ni		304	ImDc	M2 V	{ 0 }	(B44-2)	[3539]	B	10	141
-Mass	G	2217	Lutnikpo	C546100-A		Lo		822	ImDc	G6 V	{ 0 }	(711-4)	[1115]	B	8	4
+Mass	G	2217	Lutnikpo	C546100-A		Lo		822	ImDc	G6 V	{ 0 }	(701-4)	[1115]	B	8	0
 Mass	G	2220	Anbock	C856887-8		Ga Pa Ph		323	ImDc	K6 V M8 V	{ -1 }	(F77-1)	[8758]	Bce	10	662
 Mass	K	2224	MUIMARIR	D657972-7		Hi Ga		913	ImDc	F7 V M6 V	{ -1 }	(B88-5)	[5813]	BE	12	352
 Mass	K	2228	Independent	C552599-9		Ni Po		600	ImDc	K7 V	{ -1 }	(743+1)	[646A]	B	12	84
@@ -400,7 +400,7 @@ Mass	H	2512	The Maralee	D57379A-6		Pi		803	ImDc	K7 V	{ -2 }	(965+1)	[9578]	BD	10
 Mass	H	2513	Atina	B6318A8-A		Na Po Ph		902	ImDc	M3 V	{ 2 }	(C7B+2)	[8A5A]	Be	10	1,848
 Mass	H	2514	Rovick	E554420-7		Ni Pa		822	ImDc	M1 V M3 V M5 V	{ -3 }	(631-5)	[1112]	Bc	7	9
 Mass	H	2516	Rudeen	C100320-B		Lo Va		600	ImDc	M6 III	{ 0 }	(521-4)	[1316]	B	11	6
-Mass	H	2519	Doenye	C422124-A		He Lo Po		113	ImDc	M1 V M8 V	{ 0 }	(711-2)	[1138]	B	8	6
+Mass	H	2519	Doenye	C422124-A		He Lo Po		113	ImDc	M1 V M8 V	{ 0 }	(701-2)	[1138]	B	8	0
 Mass	L	2521	Logol	B5735A9-B		Ni		713	ImDc	K4 V M8 V	{ 1 }	(B45+2)	[666C]	B	7	440
 Mass	L	2522	Gernice	B684645-A		Ag Ni Ri		810	ImDc	F4 V	{ 3 }	(957+1)	[4938]	BC	9	315
 Mass	L	2523	Barden	B555787-A	NS	Ag Pz	A	601	ImDc	M2 V M0 V	{ 4 }	(A6D+4)	[7B5A]	BCf	16	3,120
@@ -411,7 +411,7 @@ Mass	P	2540	OREO	B1009AD-F		Hi In Na Va Cp Pz	A	113	ImDc	M3 V	{ 4 }	(F8G+5)	[DD9
 Mass	D	2605	H'rachovina	B433211-C		Lo Po		403	ImDc	K8 V M9 V	{ 1 }	(711-3)	[1318]	B	14	5
 Mass	D	2606	Galus	B782777-A	N	Ri		904	ImDc	G1 V	{ 3 }	(D6C+3)	[7A5A]	BC	11	2,808
 Mass	D	2607	Athay	B679675-A	N	Ni		402	ImDc	F7 V M3 V	{ 1 }	(A55-1)	[4738]	B	16	225
-Mass	D	2609	Keholutes	B300168-C		Lo Va O:2407		605	ImDc	M1 V M5 V	{ 1 }	(811+1)	[125C]	B	8	8
+Mass	D	2609	Keholutes	B300168-C		Lo Va O:2407		605	ImDc	M1 V M5 V	{ 1 }	(801+1)	[125C]	B	8	0
 Mass	H	2613	Neld	B100895-D		Na Va Ph Pi		601	ImDc	K2 V M6 V	{ 2 }	(B7D+1)	[6A3B]	BDe	12	1,001
 Mass	H	2615	Athoff	B85A7CE-C	N	Wa Pz	A	802	ImDc	G0 V	{ 2 }	(B6C+5)	[B99G]	B	13	3,960
 Mass	H	2616	Saint John	C558345-9		Lo		723	ImDc	F7 V	{ -1 }	(A21-3)	[1237]	B	8	14
@@ -421,7 +421,7 @@ Mass	L	2624	Lorfee	B865465-B	NS	Ni Ga Pa Mr		802	ImDc	M2 V	{ 2 }	(835+1)	[2639]	
 Mass	L	2630	Rolando	D100345-A		Lo Va		702	ImDc	K4 IV M1 V	{ -1 }	(721-3)	[1238]	B	13	10
 Mass	P	2632	MISTHAVEN	B758987-C		Hi Pz	A	603	ImDc	M2 V	{ 3 }	(E8E+3)	[9C5C]	BE	6	4,704
 Mass	P	2633	ORTEGA	C426AFJ-E		Hi In Fo	R	703	ImDc	M2 V	{ 3 }	(F9F+5)	[FDAK]		13	10,125
-Mass	P	2640	Landis	B522123-C	N	He Lo Po Da	A	510	ImDc	M2 V	{ 1 }	(411-2)	[1229]	B	14	3
+Mass	P	2640	Landis	B522123-C	N	He Lo Po Da	A	510	ImDc	M2 V	{ 1 }	(401-2)	[1229]	B	14	0
 Mass	D	2703	Magallanes	B77A330-D		Lo Wa		413	ImDc	K6 V M2 V	{ 1 }	(921-3)	[1418]	B	11	13
 Mass	D	2710	Ayarra	B58457A-B	N	Ag Ni Pr		614	ImDc	G8 V M3 V	{ 2 }	(C46+4)	[777D]	BcC	11	1,152
 Mass	H	2714	Ccoman	B76A443-D		Ni Wa		203	ImDc	G2 V	{ 1 }	(934-2)	[152A]	B	11	86
@@ -435,7 +435,7 @@ Mass	L	2730	Ferron	B591651-B		He Ni		303	ImDc	K3 V	{ 1 }	(B55-3)	[2717]	B	16	193
 Mass	P	2731	Cordell	A100203-F	N	Lo Va		803	ImDc	G8 V M7 V	{ 1 }	(711-2)	[132C]	B	18	6
 Mass	P	2732	Jenina	B564599-B	N	Ag Ni Pr		523	ImDc	G3 V	{ 2 }	(C46+3)	[676C]	BcC	14	864
 Mass	P	2734	Floting	B65569B-A		Ag Ni Ga Da	A	911	ImDc	G5 V M8 V M6 V	{ 2 }	(A56+4)	[887C]	BC	16	1,200
-Mass	P	2735	Vonda	B310102-E	W	Lo		431	ImDc	M2 V M7 V	{ 2 }	(711-2)	[131A]	B	13	6
+Mass	P	2735	Vonda	B310102-E	W	Lo		431	ImDc	M2 V M7 V	{ 2 }	(701-2)	[131A]	B	13	0
 Mass	P	2737	Wedna	A673353-E		Lo		304	ImDc	F9 V	{ 1 }	(921-2)	[142B]	B	10	14
 Mass	P	2738	Mona	B310558-E		Ni		700	ImDc	K3 III	{ 1 }	(745+1)	[565E]	B	13	140
 Mass	P	2739	Cusgrove	DA76520-6		Ag Ni Da	A	104	ImDc	M2 V	{ -2 }	(742-5)	[1311]	BC	7	28
@@ -476,12 +476,12 @@ Mass	D	3001	Reisland	C888373-9		Lo		121	ImDc	K6 V M5 V	{ -1 }	(821-4)	[1226]	B	6
 Mass	D	3002	Southard	B645410-B		Ni Pa		104	ImDc	F7 V	{ 1 }	(A34-3)	[1516]	Bc	10	84
 Mass	D	3003	Titmus	A873422-D		Ni		703	ImDc	M3 V M0 V	{ 1 }	(934-3)	[1519]	B	7	76
 Mass	D	3008	Zabel	A575210-C		Lo		202	ImDc	K9 V M3 V	{ 1 }	(611-3)	[1317]	B	12	4
-Mass	D	3009	Coxe	B000101-F	S	As Lo Va		414	ImDc	M3 V	{ 1 }	(811-3)	[121B]	B	9	6
+Mass	D	3009	Coxe	B000101-F	S	As Lo Va		414	ImDc	M3 V	{ 1 }	(801-3)	[121B]	B	9	0
 Mass	H	3013	PALASHA	A55599D-E		Hi Pz	A	903	ImDc	M0 V	{ 3 }	(E8F+5)	[DC9J]	BE	13	8,400
 Mass	H	3014	Euclid	B542455-C	S	He Ni Po		903	ImDc	M0 V	{ 1 }	(934-1)	[253A]	B	16	97
 Mass	H	3016	GAFF	B310995-E		Hi In Na Cp		104	ImDc	G1 V	{ 4 }	(F8G+2)	[7D3C]	BEF	8	3,840
 Mass	L	3021	Haela	B553400-C		Ni Po		603	ImDc	M2 V	{ 1 }	(934-3)	[1517]	B	10	76
-Mass	L	3026	Erro	B729110-C		Lo		812	ImDc	M0 V K1 V	{ 1 }	(611-3)	[1217]	B	9	4
+Mass	L	3026	Erro	B729110-C		Lo		812	ImDc	M0 V K1 V	{ 1 }	(601-3)	[1217]	B	9	0
 Mass	L	3027	Poorstar	B100333-E	N	Lo Va		802	ImDc	M0 V G6 V	{ 1 }	(721-2)	[142B]	B	13	11
 Mass	P	3035	Granporr	B5768AE-A	N	Pa Ph Pi Pz	A	813	ImDc	G0 V M9 V	{ 2 }	(E7B+5)	[CA9E]	BcDe	10	5,390
 Mass	D	3106	Vageau	E310884-8		Na Ph Pi		312	ImDc	M9 V M8 V	{ -2 }	(D76-4)	[6636]	BDe	9	328
@@ -506,7 +506,7 @@ Mass	D	3210	Friton	D856666-5		Ag Ni Ga O:3211		304	ImDc	F4 V M9 V	{ -2 }	(852-3)
 Mass	H	3211	PORTO	B556AEC-E		Hi Pz	A	114	ImDc	M1 V	{ 3 }	(H9F+5)	[DD8H]	BE	12	11,475
 Mass	H	3214	Ryther	B565200-C		Lo		812	ImDc	M1 V	{ 1 }	(711-3)	[1317]	B	13	5
 Mass	H	3215	Remundo	B889468-C	N	Ni Mr		325	ImDc	G1 V	{ 1 }	(D34+1)	[455C]	B	10	156
-Mass	H	3219	Letycia	B684113-B		Lo Da	A	904	ImDc	F5 V	{ 1 }	(711-2)	[1228]	B	10	6
+Mass	H	3219	Letycia	B684113-B		Lo Da	A	904	ImDc	F5 V	{ 1 }	(701-2)	[1228]	B	10	0
 Mass	L	3221	Tichette	B551314-B		Lo Po		401	ImDc	M0 V M3 V	{ 1 }	(621-1)	[1439]	B	9	11
 Mass	L	3222	Goldazax	EAF57AD-7		Pz	A	802	ImDc	M2 V	{ -2 }	(966+2)	[B59B]	B	9	648
 Mass	L	3225	Nystrom	A568333-C	S	Lo		105	ImDc	M3 V	{ 1 }	(A21-2)	[1429]	B	9	16
@@ -514,4 +514,4 @@ Mass	L	3228	Shallow	B87A345-D		Lo Wa		602	ImDc	M1 V M5 V	{ 1 }	(721-1)	[143B]	B	
 Mass	P	3231	Domy	B85A376-D	N	Lo Wa		805	ImDc	K9 V	{ 1 }	(A21+1)	[244C]	B	8	20
 Mass	P	3232	Randanna	B300796-B		Na Va Pi Pz	A	403	ImDc	G3 V	{ 2 }	(C6C+1)	[694A]	BD	9	864
 Mass	P	3233	Double	B10066A-D	N	Na Ni Va Mr		504	ImDc	G0 V M0 V	{ 1 }	(C55+3)	[877F]	B	7	900
-Mass	P	3236	Esten	C100155-D		Lo Va		703	ImDc	M2 V	{ 0 }	(611-2)	[113B]	B	12	5
+Mass	P	3236	Esten	C100155-D		Lo Va		703	ImDc	M2 V	{ 0 }	(601-2)	[113B]	B	12	0

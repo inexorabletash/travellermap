@@ -1,6 +1,6 @@
 Sector	SS	Hex	Name	UWP	Bases	Remarks	Zone	PBG	Allegiance	Stars	{Ix}	(Ex)	[Cx]	Nobility	W	RU
 Zaru	A	0101	Didraga	C1008BC-8	S	Na Va Ph Pi Pz	A	603	ImDi	K0 V	{ -1 }	(D77+2)	[B78B]	BDe	10	1,274
-Zaru	A	0106	Ymirial	B200102-A		Lo Va		303	ImDi	M3 V M5 V	{ 1 }	(611-3)	[1216]	B	10	4
+Zaru	A	0106	Ymirial	B200102-A		Lo Va		303	ImDi	M3 V M5 V	{ 1 }	(601-3)	[1216]	B	10	0
 Zaru	A	0108	San Nuska Kilna	B5547BD-A		Ag Pz	A	202	ImDi	A2 V	{ 3 }	(B6C+5)	[BA9E]	BC	11	3,960
 Zaru	A	0109	Zed	B431721-A	NS	Na Po		104	ImDi	G0 III	{ 3 }	(D6C-1)	[3A16]	B	8	842
 Zaru	A	0110	Norsec	B427596-B		Ni		504	ImDi	K2 V	{ 1 }	(B45+1)	[464A]	B	10	220
@@ -8,7 +8,7 @@ Zaru	E	0112	NUMDAAG	D553A85-A		Hi Po Darm2		603	ImDi	F1 V M6 V	{ 1 }	(F9B-1)	[8B
 Zaru	E	0114	Tsunami	C542640-8	S	He Ni Po		525	ImDi	K4 V M7 V	{ -2 }	(F52-5)	[1413]	B	14	75
 Zaru	E	0115	Framiller	B89679C-A		Ag Pi Pz	A	612	ImDi	K5 III M1 V	{ 3 }	(C6C+5)	[AA8D]	BCD	6	4,320
 Zaru	E	0116	Travis	B97A320-D		Lo Wa		213	ImDi	F1 V	{ 1 }	(921-3)	[1418]	B	12	13
-Zaru	E	0120	Norton	B310110-A		Lo		824	ImDi	M1 V	{ 1 }	(911-3)	[1215]	B	10	6
+Zaru	E	0120	Norton	B310110-A		Lo		824	ImDi	M1 V	{ 1 }	(901-3)	[1215]	B	10	0
 Zaru	I	0121	Corta	D625785-7		Pi		923	ImDi	K1 V M5 V	{ -2 }	(966-4)	[5535]	BD	10	194
 Zaru	I	0124	Lorrius	B200434-D		Ni Va		224	ImDi	M1 V	{ 1 }	(C34-1)	[253B]	B	11	130
 Zaru	I	0126	Adzel	C422665-A		He Na Ni Po O:0227		800	ImDi	F5 V	{ 0 }	(854-2)	[4638]	B	11	128
@@ -27,9 +27,9 @@ Zaru	I	0227	Keeton	B786644-A		Ag Ni Ga Ri		824	ImDi	F2 V	{ 3 }	(E57+1)	[4938]	BC
 Zaru	M	0239	Noritomo	B675563-B		Ag Ni O:0338		623	CsIm	M3 II	{ 2 }	(C46-1)	[2728]		17	259
 Zaru	A	0302	Point Zulu	B2008AE-C		Na Va Ph Pi Pz	A	524	ImDi	M2 V M3 V	{ 2 }	(G7C+5)	[CA9G]	BDe	10	6,720
 Zaru	A	0304	Makkus	A685672-C		Ag Ni Ga Ri TentW		603	ImDi	M1 V M5 V	{ 3 }	(B57-1)	[2918]	BC	6	347
-Zaru	A	0305	Freeport	B421100-C	N	He Lo Po		424	ImDi	G6 III M7 V	{ 1 }	(911-3)	[1217]	B	9	6
+Zaru	A	0305	Freeport	B421100-C	N	He Lo Po		424	ImDi	G6 III M7 V	{ 1 }	(901-3)	[1217]	B	9	0
 Zaru	A	0306	Woden	B6A1566-B	N	Fl He Ni Mr		101	ImDi	M1 V M1 V	{ 1 }	(845+1)	[464A]	B	9	160
-Zaru	A	0309	Ichiban	A553112-D		Lo Po		321	ImDi	G0 V	{ 1 }	(611-3)	[1219]	B	13	4
+Zaru	A	0309	Ichiban	A553112-D		Lo Po		321	ImDi	G0 V	{ 1 }	(601-3)	[1219]	B	13	0
 Zaru	A	0310	Shadishi	B669322-B	N	Lo TentW		924	ImDi	K6 V	{ 1 }	(B21-3)	[1417]	B	11	15
 Zaru	E	0315	Kirst	D56258B-7	S	Ni Pr		304	ImDi	M0 V	{ -3 }	(741-1)	[7279]	Bc	8	25
 Zaru	E	0317	Aki	D687220-7		Lo Ga		315	ImDi	K0 V M7 V	{ -3 }	(411-5)	[1112]	B	9	2
@@ -44,7 +44,7 @@ Zaru	I	0329	Kotar	B430433-C	N	De Ni Po		113	ImDi	M1 V	{ 1 }	(A34-2)	[1529]	B	10	
 Zaru	M	0338	HAVRE	B677985-C		Hi In		110	CsIm	K9 V	{ 4 }	(C8F+2)	[7D3A]		9	2,880
 Zaru	A	0402	Rogreis	A856440-D	N	Ni Ga Pa		800	ImDi	K2 V	{ 1 }	(634-3)	[1518]	Bc	12	50
 Zaru	A	0404	Bolten	B997554-C		Ag Ni		531	ImDi	M0 V	{ 2 }	(B46+1)	[373A]	BC	11	264
-Zaru	A	0405	Ulaun	C667153-A		Lo Ga		104	ImDi	F5 V	{ 0 }	(711-3)	[1127]	B	7	5
+Zaru	A	0405	Ulaun	C667153-A		Lo Ga		104	ImDi	F5 V	{ 0 }	(701-3)	[1127]	B	7	0
 Zaru	A	0406	Imled	B742831-A		He Po Ph Pi		904	ImDi	K7 V	{ 2 }	(E7B-2)	[4A16]	BDe	12	862
 Zaru	A	0407	STRELA	B6449CB-C		Hi In Pz	A	703	ImDi	K0 V	{ 4 }	(E8F+5)	[BD7E]	BEf	11	8,400
 Zaru	E	0411	New Vision	E4248DA-7		Ph Pi Pz	A	715	ImDi	F9 V	{ -2 }	(A76+1)	[A679]	BDe	11	420
@@ -55,9 +55,9 @@ Zaru	I	0428	First Star	B573300-C		Lo		515	ImDi	M1 V	{ 1 }	(B21-3)	[1417]	B	9	15
 Zaru	I	0430	Airkhipaa	B312464-B	N	Ic Ni Mr		803	ImDi	F8 V	{ 1 }	(934-1)	[2539]	B	13	97
 Zaru	M	0432	Lutyen	E405340-8		Ic Lo Va		805	CsIm	K9 IV M9 V	{ -3 }	(A21-5)	[1113]		13	10
 Zaru	M	0433	Dent	D89758B-7		Ag Ni		622	CsIm	G0 V	{ -2 }	(742+1)	[7379]		8	56
-Zaru	A	0502	Engaki	E310110-7		Lo		213	ImDi	M0 V	{ -3 }	(311-5)	[1112]	B	12	2
+Zaru	A	0502	Engaki	E310110-7		Lo		213	ImDi	M0 V	{ -3 }	(301-5)	[1112]	B	12	0
 Zaru	A	0503	Dugemaa	D3108CB-7		Na Ph Pi Pz	A	104	ImDi	K2 V M7 V	{ -2 }	(A76+1)	[A679]	BDe	10	420
-Zaru	A	0504	Leniv Fenl	C553120-9		Lo Po		402	ImDi	G3 V M1 V	{ -1 }	(511-5)	[1114]	B	10	3
+Zaru	A	0504	Leniv Fenl	C553120-9		Lo Po		402	ImDi	G3 V M1 V	{ -1 }	(501-5)	[1114]	B	10	0
 Zaru	A	0507	Villenuve	B652310-A	N	Lo Po		602	ImDi	G7 V	{ 1 }	(721-3)	[1415]	B	10	10
 Zaru	A	0510	Toulon-Cadiz	B99758B-B		Ag Ni Da	A	314	ImDi	K4 V	{ 2 }	(C46+4)	[777D]	BC	13	1,152
 Zaru	E	0513	Holtan Rock	A560410-C		De Ni		602	ImDi	G3 V	{ 1 }	(834-3)	[1517]	B	11	67
@@ -99,7 +99,7 @@ Zaru	A	0802	Sufizi	A200334-C	N	Lo Va		422	ImDi	M3 V M0 V	{ 1 }	(921-1)	[143A]	B	
 Zaru	A	0803	Cyrpus	B101534-E		Ic Ni Va		604	ImDi	G0 V	{ 1 }	(B45-1)	[363C]	B	10	198
 Zaru	A	0804	GISHIN	B722A79-A	N	He Hi In Na Po		202	ImDi	K2 V	{ 4 }	(E9E+5)	[BE6B]	BEf	7	8,820
 Zaru	A	0805	GINSHE	C886966-A		Hi Ga Pr O:0804		102	ImDi	F8 V M9 V	{ 2 }	(D8C+1)	[8B49]	BcE	14	1,248
-Zaru	A	0806	Madagast	A956100-A		Lo		422	ImDi	G2 V M4 V	{ 1 }	(711-3)	[1215]	B	8	5
+Zaru	A	0806	Madagast	A956100-A		Lo		422	ImDi	G2 V M4 V	{ 1 }	(701-3)	[1215]	B	8	0
 Zaru	E	0812	Rockledge	B310433-C		Ni		123	ImDi	G0 V	{ 1 }	(B34-2)	[1529]	B	9	106
 Zaru	E	0815	Bienhien	D555677-6		Ag Ni		202	ImDi	G1 V M8 V	{ -2 }	(852-2)	[6456]	BC	8	64
 Zaru	E	0816	Ferrati	D431721-8		Na Po		830	ImDi	M3 V	{ -2 }	(C66-5)	[3514]	B	11	216
@@ -125,7 +125,7 @@ Zaru	N	0937	Vail	B9968AC-A		Pa Ph Pi Pz	A	400	NaHu	G1 V M0 V	{ 2 }	(A7B+5)	[BA8D
 Zaru	B	1001	Amdiimuda	A695754-D		Ag Pi Pz	A	812	ImDi	M2 V	{ 3 }	(C6E+1)	[5A3B]	BCD	13	1,008
 Zaru	B	1007	Whisper	DA65485-7	S	Ni Pa		810	ImDi	G7 V M1 V	{ -3 }	(631-5)	[2135]	Bc	11	9
 Zaru	F	1011	Belebrat	C8997A7-9		Pi		605	ImDi	F0 V M6 V	{ 0 }	(E69+1)	[7759]	BD	8	756
-Zaru	F	1012	Resra	B425100-B	NS	Lo		332	ImDi	M1 V	{ 2 }	(811-2)	[1316]	B	16	6
+Zaru	F	1012	Resra	B425100-B	NS	Lo		332	ImDi	M1 V	{ 2 }	(801-2)	[1316]	B	16	0
 Zaru	F	1019	Pleru	B200633-A		Na Ni Va		210	ImDi	M2 V	{ 1 }	(955-2)	[3727]	B	9	180
 Zaru	J	1022	Maxx	C100434-9	S	Ni Va		702	ImDi	K2 V M5 V	{ -1 }	(832-3)	[2337]	B	14	34
 Zaru	J	1023	Fanshang	D668425-7		Ni Pa		500	ImDi	G4 V	{ -3 }	(631-5)	[2135]	Bc	7	9
@@ -174,7 +174,7 @@ Zaru	J	1324	Dineal	A422630-D	N	He Na Ni Po Darm8		424	ImDi	G5 V	{ 1 }	(E55-3)	[1
 Zaru	J	1325	Nidke	A897444-D		Ni Pa Darm6		503	ImDi	K4 V M7 V	{ 1 }	(934-1)	[253B]	Bc	12	97
 Zaru	J	1326	Driuden	B6676AA-A	N	Ag Ni Ga Ri Da Darm7	A	911	ImDi	G7 V M3 V	{ 3 }	(A57+5)	[897C]	BC	11	1,750
 Zaru	J	1327	Arramu	C6478CF-8		Pa Ph Pi Pz DarmW	A	903	ImDi	K2 V	{ -1 }	(D77+4)	[D7AD]	BcDe	10	2,548
-Zaru	J	1328	Edno	B687165-B		Lo Ga O:1326		515	ImDi	G0 V	{ 1 }	(911-1)	[1239]	B	12	8
+Zaru	J	1328	Edno	B687165-B		Lo Ga O:1326		515	ImDi	G0 V	{ 1 }	(901-1)	[1239]	B	12	0
 Zaru	N	1340	Star's End	B549795-A		Pi		521	NaHu	F0 V	{ 2 }	(C6B+1)	[5938]		14	792
 Zaru	B	1406	Amgidii	C546659-9		Ag Ni Darm0		814	ImDi	G2 V	{ 0 }	(D54+1)	[766A]	BC	9	260
 Zaru	B	1407	Mushiar	E766502-6		Ag Ni Ga Pr		200	ImDi	F0 V M8 V	{ -2 }	(742-5)	[1312]	BcC	4	28
@@ -238,16 +238,16 @@ Zaru	O	1740	Aashrikan	B765656-B	NS	Ag Ni Ga Ri		204	ImDi	G9 V M4 V	{ 4 }	(C58+3)
 Zaru	C	1802	Fen	C9968AC-8		Pa Ph Pi Pz	A	904	ImDi	K4 V M2 V M8 V	{ -1 }	(E77+2)	[B78B]	BcDe	11	1,372
 Zaru	G	1811	Frey	B69A7C7-B	S	Wa Pi Pz	A	804	ImDi	F0 V M4 V	{ 2 }	(D6C+2)	[795B]	BD	9	1,872
 Zaru	G	1816	Escalona	B100434-B		Ni Va		813	ImDi	M2 V	{ 1 }	(A34-1)	[2539]	B	11	108
-Zaru	G	1818	Pagac	B563102-C		Lo		505	ImDi	F7 V	{ 1 }	(811-3)	[1218]	B	9	6
+Zaru	G	1818	Pagac	B563102-C		Lo		505	ImDi	F7 V	{ 1 }	(801-3)	[1218]	B	9	0
 Zaru	G	1820	Kleior	C100334-B		Lo Va		224	ImDi	M2 V M6 V	{ 0 }	(B21-2)	[1339]	B	9	18
 Zaru	K	1821	Temenee	B575320-B		Lo		804	ImDi	G2 V	{ 1 }	(921-3)	[1416]	B	9	13
 Zaru	K	1822	Sagree	C796640-8		Ag Ni (Hlatoi)		605	ImDi	F3 V M4 V	{ -1 }	(D53-5)	[1513]	BC	11	98
 Zaru	K	1823	Tetrini	B876554-C		Ag Ni		812	ImDi	K0 V M9 V	{ 2 }	(A46+1)	[373A]	BC	10	240
 Zaru	K	1826	Zecu	B652353-C		Lo Po		603	ImDi	K0 V M8 V	{ 1 }	(821-2)	[1429]	B	11	13
 Zaru	O	1835	DYKO	D2009A7-A		Hi In Na Va Darm7		700	ImDi	G3 V M2 V	{ 2 }	(B8C+2)	[9B5A]	BE	13	2,112
-Zaru	O	1840	Bradley	B736121-A		Lo		823	ImDi	M3 V	{ 1 }	(811-3)	[1216]	B	11	6
+Zaru	O	1840	Bradley	B736121-A		Lo		823	ImDi	M3 V	{ 1 }	(801-3)	[1216]	B	11	0
 Zaru	C	1902	Khii	B200334-B	NW	Lo Va		902	ImDi	M2 V	{ 2 }	(721+1)	[1539]	B	9	14
-Zaru	C	1903	Colton's Green	B545105-C	N	Lo		201	ImDi	K0 V	{ 1 }	(411-1)	[123A]	B	8	4
+Zaru	C	1903	Colton's Green	B545105-C	N	Lo		201	ImDi	K0 V	{ 1 }	(401-1)	[123A]	B	8	0
 Zaru	C	1904	Al Mansur	B100434-E		Ni Va		814	ImDi	G2 V M3 V	{ 1 }	(B34-1)	[253C]	B	8	119
 Zaru	C	1906	Hypaethral	B565621-A	N	Ag Ni Ri		515	ImDi	M2 V M1 V	{ 3 }	(E57-1)	[2916]	BC	12	441
 Zaru	C	1907	Compunccioun	B856440-B		Ni Ga Pa		304	ImDi	F7 V	{ 1 }	(A34-3)	[1516]	Bc	13	84
@@ -260,7 +260,7 @@ Zaru	O	1931	Coad	B432664-C	N	Na Ni Po Mr		804	ImDi	M1 V M8 V	{ 1 }	(C55-1)	[473A
 Zaru	O	1932	Heep	B545898-A		Pa Ph Pi		800	ImDi	K1 V M1 V	{ 2 }	(A7B+2)	[8A5A]	BcDe	11	1,540
 Zaru	O	1933	UDIM	D887944-8		Hi Ga Pr		414	ImDi	F8 V M6 V	{ -1 }	(G88-3)	[7836]	BcE	9	717
 Zaru	O	1934	Znin	B310310-A		Lo		624	ImDi	M1 V	{ 1 }	(B21-3)	[1415]	B	9	15
-Zaru	O	1935	Gaboro	E626120-8		Lo		300	ImDi	M2 V M3 V	{ -3 }	(311-5)	[1113]	B	13	2
+Zaru	O	1935	Gaboro	E626120-8		Lo		300	ImDi	M2 V M3 V	{ -3 }	(301-5)	[1113]	B	13	0
 Zaru	O	1936	Rook	B432498-A	N	Ni Po		900	ImDi	M3 V G0 V M0 V	{ 1 }	(634+1)	[455A]	B	14	72
 Zaru	O	1937	Sukhoi	B100333-D		Lo Va		804	ImDi	G4 III	{ 1 }	(921-2)	[142A]	B	7	14
 Zaru	O	1940	Daiunki	D200334-7		Lo Va		113	ImDi	M2 V M6 V	{ -3 }	(521-5)	[1135]	B	9	5
@@ -275,7 +275,7 @@ Zaru	G	2019	Algoani	C100334-C	S	Lo Va		203	ImDi	M2 V M0 V	{ 0 }	(821-2)	[133A]	B
 Zaru	G	2020	Chellis	C766230-9		Lo Ga		921	ImDi	F2 V	{ -1 }	(711-5)	[1114]	B	16	4
 Zaru	K	2023	Ter-Ritt	B753440-A	N	Ni Po		603	ImDi	F2 V M8 V	{ 1 }	(934-3)	[1515]	B	14	76
 Zaru	K	2030	Alcau	B897554-C	N	Ag Ni		100	ImDi	G2 V	{ 2 }	(746+1)	[373A]	BC	12	168
-Zaru	O	2031	Wasa	B310135-B		Lo		104	ImDi	G1 V	{ 1 }	(711-1)	[1239]	B	13	6
+Zaru	O	2031	Wasa	B310135-B		Lo		104	ImDi	G1 V	{ 1 }	(701-1)	[1239]	B	13	0
 Zaru	O	2032	Cubic	B200333-B		Lo Va		715	ImDi	F4 V	{ 1 }	(B21-2)	[1428]	B	12	18
 Zaru	O	2039	Shipruud	D524598-8		Ni		602	ImDi	A3 V	{ -3 }	(941-3)	[5258]	B	6	25
 Zaru	C	2102	Icebox	B430355-D	N	De Lo Po		525	ImDi	G0 V M5 V	{ 1 }	(C21-1)	[143B]	B	10	22
@@ -289,7 +289,7 @@ Zaru	G	2113	EPSHU	B310976-A	N	Hi In Na Cp		921	ImDi	K3 V M2 V	{ 4 }	(E8E+3)	[8D4
 Zaru	G	2115	Nahsora	B974200-C		Lo		302	ImDi	G5 V M8 V	{ 1 }	(611-3)	[1317]	B	8	4
 Zaru	G	2119	Serenity	B432699-B		Na Ni Po		504	ImDi	G2 V	{ 1 }	(C55+2)	[776C]	B	13	600
 Zaru	K	2129	Reemen	B77A405-A	S	Ni Wa		703	ImDi	F2 V	{ 1 }	(934-1)	[2538]	B	7	97
-Zaru	K	2130	Mettari	D654102-8	S	Lo		204	ImDi	F1 V M4 V M0 V	{ -3 }	(711-5)	[1114]	B	7	4
+Zaru	K	2130	Mettari	D654102-8	S	Lo		204	ImDi	F1 V M4 V M0 V	{ -3 }	(701-5)	[1114]	B	7	0
 Zaru	O	2131	Sellelle	B300300-D		Lo Va		202	ImDi	M0 V M7 V	{ 1 }	(721-3)	[1418]	B	16	10
 Zaru	O	2134	Kep Aru	B425575-A		Ni		202	ImDi	F0 V	{ 1 }	(945-1)	[3638]	B	7	162
 Zaru	O	2135	Neiblung	E100434-9		Ni Va		405	ImDi	M2 V M3 V	{ -2 }	(B31-4)	[2237]	B	11	20
@@ -319,7 +319,7 @@ Zaru	C	2304	Halla	B562314-B	S	Lo		212	ImDi	K3 V M1 V	{ 1 }	(821-1)	[1439]	B	8	14
 Zaru	C	2305	Indus	B859653-A		Ni		514	ImDi	F0 V	{ 1 }	(D55-2)	[3727]	B	8	260
 Zaru	C	2306	Boshant	B997554-C		Ag Ni		821	ImDi	F2 V M5 V	{ 2 }	(A46+1)	[373A]	BC	12	240
 Zaru	G	2311	Anatsov	B764564-B		Ag Ni Pr O:2113		724	ImDi	K9 V	{ 2 }	(D46+1)	[3739]	BcC	9	312
-Zaru	G	2312	Bari	B767100-B		Lo Ga An ChirW		812	ImDi	F6 V M4 V	{ 1 }	(611-3)	[1216]	B	14	4
+Zaru	G	2312	Bari	B767100-B		Lo Ga An ChirW		812	ImDi	F6 V M4 V	{ 1 }	(601-3)	[1216]	B	14	0
 Zaru	G	2313	Maxadan	D74458B-7		Ag Ni		603	ImDi	G1 V	{ -2 }	(742+1)	[7379]	BC	14	56
 Zaru	G	2315	Harding	B54049C-B	N	De He Ni Po Da	A	724	ImDi	M1 V	{ 1 }	(C34+4)	[758E]	B	9	576
 Zaru	G	2318	Lonic	B300654-D	N	Na Ni Va		503	ImDi	M0 V	{ 1 }	(B55-1)	[473B]	B	9	248
@@ -362,16 +362,16 @@ Zaru	L	2522	Altacen	B799847-B	N	Ph Pi		503	ImDi	F2 V	{ 2 }	(D7C+2)	[8A5B]	BDe	11
 Zaru	L	2524	Olesno	B88A654-A		Ni Ri Wa		113	ImDi	G5 V	{ 2 }	(C56+1)	[4838]	BC	9	360
 Zaru	L	2525	Reina	A661877-C		Ri Ph		303	ImDi	M2 V	{ 3 }	(D7D+3)	[8B5C]	BCe	16	3,549
 Zaru	L	2528	Pora	B430433-B		De Ni Po		524	ImDi	M0 V	{ 1 }	(C34-2)	[1528]	B	12	115
-Zaru	P	2531	Mynos	B410100-C	N	Lo		202	ImDi	G5 V	{ 1 }	(511-3)	[1217]	B	7	4
+Zaru	P	2531	Mynos	B410100-C	N	Lo		202	ImDi	G5 V	{ 1 }	(501-3)	[1217]	B	7	0
 Zaru	P	2532	Alekki	C552465-9		Ni Po O:2630		604	ImDi	F5 V	{ -1 }	(A32-3)	[2337]	B	10	42
-Zaru	P	2539	Siven	B798137-B		Lo		511	ImDi	F2 V M6 V	{ 1 }	(511+1)	[125B]	B	12	5
+Zaru	P	2539	Siven	B798137-B		Lo		511	ImDi	F2 V M6 V	{ 1 }	(501+1)	[125B]	B	12	0
 Zaru	P	2540	Mongrebi	B984855-B		Ri Pa Ph		303	ImDi	F1 V	{ 3 }	(D7D+1)	[6B39]	BcCe	9	1,183
 Zaru	D	2603	Tular	B200667-C	N	Na Ni Va Mr		804	ImDi	M1 V	{ 1 }	(C55+1)	[675C]	B	14	300
 Zaru	D	2606	Planet P	E787899-6		Ga Ri Pa Ph		414	ImDi	G2 V	{ -1 }	(A76+1)	[9767]	BcCe	13	420
 Zaru	D	2609	Port Arthur	B74458B-B		Ag Ni		104	ImDi	M2 V M7 V	{ 2 }	(B46+4)	[777D]	BC	8	1,056
 Zaru	D	2610	Ursa Minor	B555875-A		Pa Ph		304	ImDi	G2 V M2 V	{ 2 }	(E7B+1)	[6A38]	Bce	10	1,078
 Zaru	H	2611	LINEAL	E5469BD-8		Hi In Pz Darm4	A	801	ImDi	G3 V	{ 0 }	(C89+4)	[D99C]	BE	7	3,456
-Zaru	H	2615	Bikaner	E659123-8		Lo		820	ImDi	M2 V M0 V	{ -3 }	(511-5)	[1125]	B	8	3
+Zaru	H	2615	Bikaner	E659123-8		Lo		820	ImDi	M2 V M0 V	{ -3 }	(501-5)	[1125]	B	8	0
 Zaru	H	2616	Mogok	E200421-9		Ni Va		102	ImDi	G0 V M5 V	{ -2 }	(831-5)	[1215]	B	12	12
 Zaru	H	2617	Ad Dobere	A978223-D		Lo		803	ImDi	M1 V M1 V	{ 1 }	(711-2)	[132A]	B	13	6
 Zaru	L	2621	Kezfi	C422311-B		He Lo Po		402	ImDi	M3 V	{ 0 }	(721-4)	[1317]	B	7	8
@@ -382,7 +382,7 @@ Zaru	P	2640	Aleta	B434767-B	S	Mr		303	ImDi	M2 V M2 V	{ 2 }	(C6C+2)	[795B]	B	9	1,
 Zaru	D	2701	Liagkimes	B566547-B	N	Ag Ni Pr		504	ImDi	M0 V	{ 2 }	(B46+2)	[575B]	BcC	7	528
 Zaru	D	2707	Merwan	B633689-A	N	Na Ni Po		313	ImDi	K9 V	{ 1 }	(C55+2)	[776B]	B	9	600
 Zaru	D	2708	Ogre	B99758B-B		Ag Ni		303	ImDi	K1 V M3 V	{ 2 }	(A46+4)	[777D]	BC	12	960
-Zaru	H	2712	Voss	B310115-D		Lo		812	ImDi	K7 V M4 V M5 V	{ 1 }	(611-1)	[123B]	B	6	5
+Zaru	H	2712	Voss	B310115-D		Lo		812	ImDi	K7 V M4 V M5 V	{ 1 }	(601-1)	[123B]	B	6	0
 Zaru	H	2718	Victoria	B302785-B	N	Ic Na Va Pi		403	ImDi	K4 V M8 V M1 V	{ 2 }	(C6C+1)	[5939]	BD	7	864
 Zaru	L	2722	Chronus	B310434-B		Ni		201	ImDi	M3 V	{ 1 }	(734-1)	[2539]	B	14	76
 Zaru	L	2725	Shiganisa	B5417C9-A	NS	He Po Pi Pz	A	704	ImDi	G2 V M0 V	{ 3 }	(D6C+4)	[8A6B]	BD	13	3,744
@@ -417,7 +417,7 @@ Zaru	D	2903	Nessus	B100434-D		Ni Va		500	ImDi	M3 V M4 V	{ 1 }	(634-1)	[253B]	B	1
 Zaru	D	2904	Itane	B4206A9-C	N	De He Na Ni Po		605	ImDi	F5 V	{ 1 }	(D55+2)	[776D]	B	11	650
 Zaru	D	2905	Amargim	A756523-D		Ag Ni Ga		902	ImDi	K2 V	{ 2 }	(946-1)	[272A]	BC	9	194
 Zaru	D	2908	LODE	B000944-E		As Hi In Na Va		504	ImDi	M2 V	{ 4 }	(F8G+2)	[7D3C]	BEf	14	3,840
-Zaru	D	2910	Sixty-One	B654102-A	N	Lo		904	ImDi	F0 V	{ 1 }	(711-3)	[1216]	B	9	5
+Zaru	D	2910	Sixty-One	B654102-A	N	Lo		904	ImDi	F0 V	{ 1 }	(701-3)	[1216]	B	9	0
 Zaru	H	2911	Zlotoja	B5518AC-A		Po Ph Pz	A	621	ImDi	K8 V M8 V	{ 2 }	(D7B+5)	[BA8D]	Be	11	5,005
 Zaru	H	2914	Kalasin	B645735-A	NS	Ag Pi Pz	A	202	ImDi	G2 V M4 V M9 V	{ 4 }	(B6D+2)	[5B38]	BCDf	12	1,716
 Zaru	H	2915	Malinu	DA78798-6		Ag Pi		704	ImDi	F1 V M5 V	{ -1 }	(966-1)	[7656]	BCD	13	292
@@ -441,7 +441,7 @@ Zaru	D	3010	Piepsk	B430879-B	N	De Na Po Ph		301	ImDi	K2 V	{ 2 }	(B7C+3)	[9A6C]	B
 Zaru	H	3011	De Zara	C200433-8		Ni Va		113	ImDi	G4 V	{ -2 }	(A31-5)	[1225]	B	7	15
 Zaru	H	3015	Dirkou	A567683-C		Ag Ni Ri		414	ImDi	M0 V	{ 3 }	(D57+1)	[3929]	BC	10	455
 Zaru	H	3016	Bernous Koro	A431334-C		Lo Po		813	ImDi	M1 V	{ 1 }	(921-1)	[143A]	B	9	16
-Zaru	H	3017	Mekele	B542120-B		He Lo Po		220	ImDi	M3 V	{ 1 }	(511-3)	[1216]	B	13	4
+Zaru	H	3017	Mekele	B542120-B		He Lo Po		220	ImDi	M3 V	{ 1 }	(501-3)	[1216]	B	13	0
 Zaru	H	3019	Laxou	B100333-A		Lo Va		803	ImDi	M0 V M1 V	{ 1 }	(821-2)	[1427]	B	10	13
 Zaru	H	3020	Kirn	B550334-B		De Lo Po		503	ImDi	G4 V	{ 1 }	(821-1)	[1439]	B	12	14
 Zaru	L	3021	Uhlis	B310443-B		Ni		114	ImDi	M2 V M3 V	{ 1 }	(B34-2)	[1528]	B	9	106
@@ -463,7 +463,7 @@ Zaru	D	3104	Eryx	A778343-D	N	Lo		802	ImDi	F8 V	{ 1 }	(721-2)	[142A]	B	6	11
 Zaru	D	3109	Sofia	B786658-B	NS	Ag Ni Ga Ri		523	ImDi	F5 V	{ 4 }	(D58+4)	[6A5B]	BCf	13	2,080
 Zaru	D	3110	Munin	B200321-A		Lo Va		400	ImDi	G0 V	{ 1 }	(521-3)	[1416]	B	9	7
 Zaru	H	3111	Senj	D978223-7		Lo		223	ImDi	K4 V M1 V M0 V	{ -3 }	(411-5)	[1124]	B	13	2
-Zaru	H	3115	Baza Lubrin	B422111-A		He Lo Po		604	ImDi	M0 V	{ 1 }	(711-3)	[1216]	B	15	5
+Zaru	H	3115	Baza Lubrin	B422111-A		He Lo Po		604	ImDi	M0 V	{ 1 }	(701-3)	[1216]	B	15	0
 Zaru	H	3116	Banquo	B200334-D	S	Lo Va		112	ImDi	K4 V M1 V	{ 1 }	(821-1)	[143B]	B	12	14
 Zaru	H	3117	Kifri	A565878-C		Ri Pa Ph Cp		825	ImDi	F5 V M8 V	{ 3 }	(H7D+3)	[8B5C]	BcCeF	10	4,641
 Zaru	H	3119	Nbheji	A20058C-F		Ni Va Da	A	112	ImDi	M0 V	{ 1 }	(A45+4)	[868J]	B	17	800
