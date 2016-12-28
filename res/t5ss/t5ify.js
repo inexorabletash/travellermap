@@ -180,7 +180,7 @@ function t5ify(world) {
     Math.max(0,
              world.Ba/* || world.Di*/ ? 0 : // Per Errata "Di should not impact Infrastructure"
              world.Lo ? 1 :
-             world.Ni ? roll1D() :
+             world.Ni ? roll1D()  + world.Importance:
              roll2D() + world.Importance);
   world.Efficiency = flux();
 
