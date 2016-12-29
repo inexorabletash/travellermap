@@ -185,10 +185,10 @@ function t5ify(world) {
   world.Efficiency = flux();
 
   // Cultural Extension
-  world.Homogeneity = Math.max(1, world.Pop + flux());
-  world.Acceptance = Math.max(1, world.Pop + world.Importance);
-  world.Strangeness = Math.max(1, flux() + 5);
-  world.Symbols = Math.max(1, world.TL + flux());
+  world.Homogeneity = world.Pop === 0 ? 0 : Math.max(1, world.Pop + flux());
+  world.Acceptance = world.Pop === 0 ? 0 : Math.max(1, world.Pop + world.Importance);
+  world.Strangeness = world.Pop === 0 ? 0 : Math.max(1, flux() + 5);
+  world.Symbols = world.Pop === 0 ? 0 : Math.max(1, world.TL + flux());
 
   // Worlds
   world.Worlds = 1/*MW*/ + world.GG + world.Belts + roll2D();
