@@ -158,16 +158,17 @@ function t5ify(world) {
   world.Importance = 0 +
     (world.St === 'A' || world.St === 'B' ? 1 : 0) +
     (world.St === 'D' || world.St === 'E' || world.St === 'X' ? -1 : 0) +
-    (world.TL >= 16 ? 1 : 0) +
     (world.TL >= 10 ? 1 : 0) +
+    //(world.TL >= 16 ? 1 : 0) +
     (world.TL <= 8 ? -1 : 0) +
-    (world.Ag ? 1 : 0) +
-    (world.Hi ? 1 : 0) +
-    (world.In ? 1 : 0) +
-    (world.Ri ? 1 : 0) +
     (world.Pop <= 6 ? -1 : 0) +
-    (world.Bases.includes('N') && world.Bases.includes('S') ? 1 : 0) +
-    (world.Bases.includes('W') ? 1 : 0);
+    (world.Pop >= 9 ? 1 : 0) +
+    (world.Ag ? 1 : 0) +
+    (world.Ri ? 1 : 0) +
+    (world.In ? 1 : 0) +
+    (world.Bases === 'NS' || world.Bases === 'NW' || world.Bases === 'W' ||
+      world.Bases === 'X' || world.Bases === 'D' || world.Bases === 'RT' ||
+       world.Bases === 'CK' || world.Bases === 'KM' ? 1 : 0);
 
   // Economics Extension
   world.Resources =
