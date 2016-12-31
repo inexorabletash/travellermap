@@ -394,7 +394,7 @@ namespace Maps
                 if (Bases == "NS" || Bases == "NW" || Bases == "W" || Bases == "X" || Bases == "D" || Bases == "RT" || Bases == "CK" || Bases == "KM") ++imp;
 
                 ErrorUnless(Int32.Parse(ix) == imp,
-                    String.Format("{{Ix}} does not match calculated Importance: {0} vs. {1}", Importance, imp));
+                    String.Format("{{Ix}}={0} does not match calculated Importance={1}", Importance, imp));
             }
 
             // (Ex)
@@ -407,27 +407,27 @@ namespace Maps
 
                 if (TechLevel < 8)
                     ErrorUnless(Util.InRange(resources, 2, 12),
-                        String.Format("(Ex) Resources out of range for TL<8={0} (2D): {1}", TechLevel, resources));
+                        String.Format("(Ex) Resources={0} out of range for TL<8={1} (2D)", resources, TechLevel));
                 else 
                     ErrorUnless(Util.InRange(resources, 2 + GasGiants + Belts, 12 + GasGiants + Belts),
-                        String.Format("(Ex) Resources out of range for TL8+={0} (2D+GG={1}+Belts={2}): {3}", TechLevel, GasGiants, Belts, resources));
+                        String.Format("(Ex) Resources={0} out of range for TL8+={1} (2D + GG={2} + Belts={3})", resources, TechLevel, GasGiants, Belts));
                     
                 ErrorUnless(labor == Math.Max(0, PopulationExponent - 1),
-                    String.Format("(Ex) Labor does not match Pop - 1: {0} vs. {1}", labor, Math.Max(0, PopulationExponent - 1)));
+                    String.Format("(Ex) Labor={0} does not match Pop={1} - 1", labor, PopulationExponent));
 
                 if (Ba)
-                    ErrorUnless(infrastructure == 0, String.Format("(Ex) Infrastructure should be 0 if Ba: {0}", infrastructure));
+                    ErrorUnless(infrastructure == 0, String.Format("(Ex) Infrastructure={0} should be 0 if Ba", infrastructure));
                 else if (Lo)
-                    ErrorUnless(infrastructure == 1, String.Format("(Ex) Infrastructure should be 1 if Lo: {0}", infrastructure));
+                    ErrorUnless(infrastructure == 1, String.Format("(Ex) Infrastructure={0} should be 1 if Lo", infrastructure));
                 else if (Ni)
                     ErrorUnless(Util.InRange(infrastructure, Math.Max(0, imp + 1), Math.Max(0, imp + 6)),
-                        String.Format("(Ex) Infrastructure out of range for Ni (Imp={0} + 1D): {1}", imp, infrastructure));
+                        String.Format("(Ex) Infrastructure={0} out of range for Ni (Imp={1} + 1D)", infrastructure, imp));
                 else
                     ErrorUnless(Util.InRange(infrastructure, Math.Max(0, imp + 2), Math.Max(0, imp + 12)),
-                        String.Format("(Ex) Infrastructure out of range (Imp={0} + 2D): {1}", imp, infrastructure));
+                        String.Format("(Ex) Infrastructure={0} out of range (Imp={1} + 2D)", infrastructure, imp));
 
                 ErrorUnless(Util.InRange(efficiency, -5, 5),
-                    String.Format("(Ex) Efficiency out of range (Flux): {0}", efficiency));
+                    String.Format("(Ex) Efficiency={0} out of range (Flux)", efficiency));
             }
 
             // [Cx]
@@ -440,27 +440,27 @@ namespace Maps
 
                 if (PopulationExponent == 0)
                 {
-                    if (homogeneity != 0) Error("[Cx] Homogeneity - expected 0 for Pop 0");
-                    if (acceptance != 0) Error("[Cx] Acceptance - expected 0 for Pop 0");
-                    if (strangeness != 0) Error("[Cx] Strangeness - expected 0 for Pop 0");
-                    if (symbols != 0) Error("[Cx] Symbols - expected 0 for Pop 0");
+                    if (homogeneity != 0) Error(String.Format("[Cx] Homogeneity={0} - expected 0 for Pop 0", homogeneity));
+                    if (acceptance != 0) Error(String.Format("[Cx] Acceptance={0} - expected 0 for Pop 0", acceptance));
+                    if (strangeness != 0) Error(String.Format("[Cx] Strangeness={0} - expected 0 for Pop 0", strangeness));
+                    if (symbols != 0) Error(String.Format("[Cx] Symbols={0} - expected 0 for Pop 0", symbols));
                 }
                 else
                 {
                     ErrorUnless(Util.InRange(homogeneity, Math.Max(1, PopulationExponent - 5), Math.Max(1, PopulationExponent + 5)),
-                        String.Format("[Cx] Homogeneity out of range (Pop={0} + Flux): {1}", PopulationExponent, homogeneity));
+                        String.Format("[Cx] Homogeneity={0} out of range (Pop={1} + Flux)", homogeneity, PopulationExponent));
                     ErrorUnless(acceptance == Math.Max(1, PopulationExponent + imp),
-                        String.Format("[Cx] Acceptance not equal Pop={0} + Imp={1}: {2}", PopulationExponent, imp, acceptance));
+                        String.Format("[Cx] Acceptance={0} not equal Pop={1} + Imp={2}: {2}", acceptance, PopulationExponent, imp));
                     ErrorUnless(Util.InRange(strangeness, Math.Max(1, 5 - 5), Math.Max(1, 5 + 5)),
-                        String.Format("[Cx] Strangeness out of range (Flux + 5): {0}", strangeness));
+                        String.Format("[Cx] Strangeness={0} out of range (Flux + 5)", strangeness));
                     ErrorUnless(Util.InRange(symbols, Math.Max(1, TechLevel - 5), Math.Max(1, TechLevel + 5)),
-                        String.Format("[Cx] Symbols out of range (TL={0} + Flux): {1}", TechLevel, symbols));
+                        String.Format("[Cx] Symbols={0} out of range (TL={1} + Flux)", symbols, TechLevel));
                 }
             }
 
             // Ownership
             if (Government == 6 && !(HasCodePrefix("O:") || HasCodePrefix("Mr") || HasCode("Re") || HasCode("Px")))
-                errors.Warning("Gov 6 missing O: / Mr / Re / Px", lineNumber, line);
+                errors.Warning("Gov 6 missing O:/Mr/Re/Px", lineNumber, line);
         }
     }
 }
