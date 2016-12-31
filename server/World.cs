@@ -319,5 +319,148 @@ namespace Maps
             }
         }
 
+
+
+        internal void Validate(ErrorLogger errors, int lineNumber, string line)
+        {
+            if (UWP == "???????-?") return;
+
+            Action<string> Error = (string message) => { errors.Error(message, lineNumber, line); };
+            Action<bool, string> ErrorIf = (bool test, string message) => { if (test) Error(message); };
+            Action<bool, string> ErrorUnless = (bool test, string message) => { if (!test) Error(message); };
+            Func<int, string, bool> Check = (int value, string hex) =>
+            {
+                for (int i = 0; i < hex.Length; ++i)
+                {
+                    if (value == SecondSurvey.FromHex(hex[i]))
+                        return true;
+                }
+                return false;
+            };
+
+            Func<string, bool, bool> CC = (string code, bool calc) =>
+            {
+                if (calc)
+                    ErrorUnless(HasCode(code), String.Format("Missing code: {0}", code));
+                else
+                    ErrorUnless(!HasCode(code), String.Format("Extraneous code: {0}", code));
+                return calc;
+            };
+
+            // Planetary
+            bool As = CC("As", Check(Size, "0") /*&& Check(Atmosphere, "0") && Check(Hydrographics, "0")*/);
+            bool De = CC("De", Check(Atmosphere, "23456789") && Check(Hydrographics, "0"));
+            bool Fl = CC("Fl", Check(Atmosphere, "ABC") && Check(Hydrographics, "123456789A"));
+            bool Ga = CC("Ga", Check(Size, "678") && Check(Atmosphere, "568") && Check(Hydrographics, "567"));
+            bool He = CC("He", Check(Size, "3456789A" /* + "BC" */) && Check(Atmosphere, "2479ABC") && Check(Hydrographics, "012")); // TODO: Add BC to T5SS spreadsheet calcs
+            bool Ic = CC("Ic", Check(Atmosphere, "01") && Check(Hydrographics, "123456789A"));
+            bool Oc = CC("Oc", Check(Size, "ABC") && Check(Atmosphere, "3456789") && Check(Hydrographics, "A"));
+            bool Va = CC("Va", Check(Atmosphere, "0"));
+            bool Wa = CC("Wa", Check(Size, "3456789") && Check(Atmosphere, "3456789") && Check(Hydrographics, "A"));
+
+            // Population
+            bool Di = CC("Di", PopulationExponent == 0 /*&& Government == 0 && Law == 0*/ && TechLevel > 0);
+            bool Ba = CC("Ba", PopulationExponent == 0 /*&& Government == 0 && Law == 0*/ && TechLevel == 0);
+            bool Lo = CC("Lo", Check(PopulationExponent, "123"));
+            bool Ni = CC("Ni", Check(PopulationExponent, "456"));
+            bool Ph = CC("Ph", Check(PopulationExponent, "8"));
+            bool Hi = CC("Hi", Check(PopulationExponent, "9ABCDEF"));
+
+            // Economic
+            bool Pa = CC("Pa", Check(Atmosphere, "456789") && Check(Hydrographics, "45678") && Check(PopulationExponent, "48"));
+            bool Ag = CC("Ag", Check(Atmosphere, "456789") && Check(Hydrographics, "45678") && Check(PopulationExponent, "567"));
+            bool Na = CC("Na", Check(Atmosphere, "0123") && Check(Hydrographics, "0123") && Check(PopulationExponent, "6789ABCDEF"));
+            bool Pi = CC("Pi", Check(Atmosphere, "012479") && Check(PopulationExponent, "78"));
+            bool In = CC("In", Check(Atmosphere, "012479ABC") && Check(PopulationExponent, "9ABCDEF"));
+            bool Po = CC("Po", Check(Atmosphere, "2345") && Check(Hydrographics, "0123"));
+            bool Pr = CC("Pr", Check(Atmosphere, "68") && Check(PopulationExponent, "59"));
+            bool Ri = CC("Ri", Check(Atmosphere, "68") && Check(PopulationExponent, "678"));
+
+            // {Ix}
+            int imp = 0;
+            {
+                string ix = Importance.Replace('{', ' ').Replace('}', ' ').Trim();
+
+                if ("AB".Contains(Starport)) ++imp;
+                if ("DEX".Contains(Starport)) --imp;
+                if (TechLevel >= 10) ++imp;
+                //if (TechLevel >= 16) ++imp; // TODO: Add to T5SS spreadsheet calcs
+                if (TechLevel <= 8) --imp;
+                if (PopulationExponent <= 6) --imp;
+                if (PopulationExponent >= 9) ++imp;
+                if (Ag) ++imp;
+                if (Ri) ++imp;
+                if (In) ++imp;
+                if (Bases == "NS" || Bases == "NW" || Bases == "W" || Bases == "X" || Bases == "D" || Bases == "RT" || Bases == "CK" || Bases == "KM") ++imp;
+
+                ErrorUnless(Int32.Parse(ix) == imp,
+                    String.Format("{{Ix}} does not match calculated Importance: {0} vs. {1}", Importance, imp));
+            }
+
+            // (Ex)
+            {
+                string ex = Economic.Replace('(', ' ').Replace(')', ' ').Trim();
+                int resources = SecondSurvey.FromHex(ex[0]);
+                int labor = SecondSurvey.FromHex(ex[1]);
+                int infrastructure = SecondSurvey.FromHex(ex[2]);
+                int efficiency = Int32.Parse(ex.Substring(3));
+
+                if (TechLevel < 8)
+                    ErrorUnless(Util.InRange(resources, 2, 12),
+                        String.Format("(Ex) Resources out of range for TL<8={0} (2D): {1}", TechLevel, resources));
+                else 
+                    ErrorUnless(Util.InRange(resources, 2 + GasGiants + Belts, 12 + GasGiants + Belts),
+                        String.Format("(Ex) Resources out of range for TL8+={0} (2D+GG={1}+Belts={2}): {3}", TechLevel, GasGiants, Belts, resources));
+                    
+                ErrorUnless(labor == Math.Max(0, PopulationExponent - 1),
+                    String.Format("(Ex) Labor does not match Pop - 1: {0} vs. {1}", labor, Math.Max(0, PopulationExponent - 1)));
+
+                if (Ba)
+                    ErrorUnless(infrastructure == 0, String.Format("(Ex) Infrastructure should be 0 if Ba: {0}", infrastructure));
+                else if (Lo)
+                    ErrorUnless(infrastructure == 1, String.Format("(Ex) Infrastructure should be 1 if Lo: {0}", infrastructure));
+                else if (Ni)
+                    ErrorUnless(Util.InRange(infrastructure, Math.Max(0, imp + 1), Math.Max(0, imp + 6)),
+                        String.Format("(Ex) Infrastructure out of range for Ni (Imp={0} + 1D): {1}", imp, infrastructure));
+                else
+                    ErrorUnless(Util.InRange(infrastructure, Math.Max(0, imp + 2), Math.Max(0, imp + 12)),
+                        String.Format("(Ex) Infrastructure out of range (Imp={0} + 2D): {1}", imp, infrastructure));
+
+                ErrorUnless(Util.InRange(efficiency, -5, 5),
+                    String.Format("(Ex) Efficiency out of range (Flux): {0}", efficiency));
+            }
+
+            // [Cx]
+            {
+                string cx = Cultural.Replace('[', ' ').Replace(']', ' ').Trim();
+                int homogeneity = SecondSurvey.FromHex(cx[0]);
+                int acceptance = SecondSurvey.FromHex(cx[1]);
+                int strangeness = SecondSurvey.FromHex(cx[2]);
+                int symbols = SecondSurvey.FromHex(cx[3]);
+
+                if (PopulationExponent == 0)
+                {
+                    if (homogeneity != 0) Error("[Cx] Homogeneity - expected 0 for Pop 0");
+                    if (acceptance != 0) Error("[Cx] Acceptance - expected 0 for Pop 0");
+                    if (strangeness != 0) Error("[Cx] Strangeness - expected 0 for Pop 0");
+                    if (symbols != 0) Error("[Cx] Symbols - expected 0 for Pop 0");
+                }
+                else
+                {
+                    ErrorUnless(Util.InRange(homogeneity, Math.Max(1, PopulationExponent - 5), Math.Max(1, PopulationExponent + 5)),
+                        String.Format("[Cx] Homogeneity out of range (Pop={0} + Flux): {1}", PopulationExponent, homogeneity));
+                    ErrorUnless(acceptance == Math.Max(1, PopulationExponent + imp),
+                        String.Format("[Cx] Acceptance not equal Pop={0} + Imp={1}: {2}", PopulationExponent, imp, acceptance));
+                    ErrorUnless(Util.InRange(strangeness, Math.Max(1, 5 - 5), Math.Max(1, 5 + 5)),
+                        String.Format("[Cx] Strangeness out of range (Flux + 5): {0}", strangeness));
+                    ErrorUnless(Util.InRange(symbols, Math.Max(1, TechLevel - 5), Math.Max(1, TechLevel + 5)),
+                        String.Format("[Cx] Symbols out of range (TL={0} + Flux): {1}", TechLevel, symbols));
+                }
+            }
+
+            // Ownership
+            if (Government == 6 && !(HasCodePrefix("O:") || HasCodePrefix("Mr") || HasCode("Re") || HasCode("Px")))
+                errors.Warning("Gov 6 missing O: / Mr / Re / Px", lineNumber, line);
+        }
     }
 }

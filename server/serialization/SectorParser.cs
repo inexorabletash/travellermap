@@ -165,6 +165,9 @@ namespace Maps.Serialization
                 string rest = match.Groups["rest"].Value;
                 if (!string.IsNullOrEmpty(rest))
                     ParseRest(rest, lineNumber, line, world, errors);
+
+                if (errors != null)
+                    world.Validate(errors, lineNumber, line);
             }
             catch (Exception e)
             {
@@ -355,6 +358,9 @@ namespace Maps.Serialization
                 {
                     worlds[world.X, world.Y] = world;
                 }
+
+                if (errors != null)
+                    world.Validate(errors, lineNumber, line);
             }
             catch (Exception e)
             {
