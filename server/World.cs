@@ -347,6 +347,26 @@ namespace Maps
                 return calc;
             };
 
+#if VALIDATE_UWP
+            // UWP
+            ErrorIf(Atmosphere > 15, String.Format("UWP: Atm>F: {0}", Atmosphere));
+            ErrorIf(Hydrographics > 10, String.Format("UWP: Hyd>A: {0}", Hydrographics));
+            ErrorIf(PopulationExponent > 15, String.Format("UWP: Pop>F: {0}", PopulationExponent));
+            ErrorUnless(Util.InRange(Government, PopulationExponent - 5, Math.Max(15, PopulationExponent + 5)),
+                String.Format("UWP: Gov={0} out of range (Pop={1} + Flux)", Government, PopulationExponent));
+            ErrorUnless(Util.InRange(Law, Government - 5, Math.Max(18, Government + 5)),
+                String.Format("UWP: Law={0} out of range (Gov={1} + Flux)", Law, Government));
+            int tlmod = 
+                (Starport == 'A' ? 6 : 0) + (Starport == 'B' ? 4 : 0) + (Starport == 'C' ? 2 : 0) + (Starport == 'X' ? -4 : 0) +
+                (Size == 0 || Size == 1 ? 2 : 0) + (Size == 2 || Size == 3 || Size == 4 ? 1 : 0) +
+                (Atmosphere <= 3 ? 1 : 0) + (Atmosphere >= 10 ? 1 : 0) +
+                (Hydrographics == 9 ? 1 : 0) + (Hydrographics == 10 ? 2 : 0) + 
+                (Util.InRange(PopulationExponent, 1, 5) ? 1 : 0) + (PopulationExponent == 9 ? 2 : 0) + (PopulationExponent >= 10 ? 4 : 0) +
+                (Government == 0 || Government == 5 ? 1 : 0) + (Government == 13 ? -2 : 0);
+            ErrorUnless(Util.InRange(TechLevel, tlmod + 1, tlmod + 6),
+                String.Format("UWP: TL={0} out of range (mods={1} + 1D)", TechLevel, tlmod));
+#endif
+
             // Planetary
             bool As = CC("As", Check(Size, "0") /*&& Check(Atmosphere, "0") && Check(Hydrographics, "0")*/);
             bool De = CC("De", Check(Atmosphere, "23456789") && Check(Hydrographics, "0"));
