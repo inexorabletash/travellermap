@@ -414,7 +414,7 @@ namespace Maps
                     
                 ErrorUnless(labor == Math.Max(0, PopulationExponent - 1),
                     String.Format("(Ex) Labor={0} does not match Pop={1} - 1", labor, PopulationExponent));
-
+                    
                 if (Ba)
                     ErrorUnless(infrastructure == 0, String.Format("(Ex) Infrastructure={0} should be 0 if Ba", infrastructure));
                 else if (Lo)
@@ -450,7 +450,7 @@ namespace Maps
                     ErrorUnless(Util.InRange(homogeneity, Math.Max(1, PopulationExponent - 5), Math.Max(1, PopulationExponent + 5)),
                         String.Format("[Cx] Homogeneity={0} out of range (Pop={1} + Flux)", homogeneity, PopulationExponent));
                     ErrorUnless(acceptance == Math.Max(1, PopulationExponent + imp),
-                        String.Format("[Cx] Acceptance={0} not equal Pop={1} + Imp={2}: {2}", acceptance, PopulationExponent, imp));
+                        String.Format("[Cx] Acceptance={0} not equal Pop={1} + Imp={2}", acceptance, PopulationExponent, imp));
                     ErrorUnless(Util.InRange(strangeness, Math.Max(1, 5 - 5), Math.Max(1, 5 + 5)),
                         String.Format("[Cx] Strangeness={0} out of range (Flux + 5)", strangeness));
                     ErrorUnless(Util.InRange(symbols, Math.Max(1, TechLevel - 5), Math.Max(1, TechLevel + 5)),
