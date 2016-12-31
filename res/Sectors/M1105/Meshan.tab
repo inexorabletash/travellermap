@@ -1,5 +1,5 @@
 Sector	SS	Hex	Name	UWP	Bases	Remarks	Zone	PBG	Allegiance	Stars	{Ix}	(Ex)	[Cx]	Nobility	W	RU
-Mesh	E	0115	Gvikse	B797666-7	M	Ag Ni		823	VOpp	F1 V M9 V	{ 0 }	(854-1)	[5646]		14	144
+Mesh	E	0115	Gvikse	B797666-7	M	Ag Ni O:0313		823	VOpp	F1 V M9 V	{ 0 }	(854-1)	[5646]		14	144
 Mesh	E	0116	Khalokh	C556500-7	M	Ag Ni		413	VOpp	F3 V M5 V	{ -1 }	(743-5)	[1412]		12	42
 Mesh	E	0120	Ungoe	C79A747-9		Wa Pi		904	V17D	F0 V M6 V M6 V	{ 0 }	(D69+1)	[7759]		11	702
 Mesh	I	0123	ZOLAG	C000A87-E	C	As Hi In Na Va		420	V17D	F4 V	{ 3 }	(E9F+3)	[AD5E]		10	5,670
@@ -14,15 +14,15 @@ Mesh	I	0226	Aegartuer	C666455-5		Ni Ga Pa		323	V17D	F3 V	{ -2 }	(631-4)	[2233]		
 Mesh	I	0229	Cadutah	C8A7620-8	C	Fl Ni		902	V17D	M3 V	{ -2 }	(A52-5)	[1413]		14	50
 Mesh	M	0236	Kalih	C53068A-7		De Na Ni Po		603	VVoS	M1 II D	{ -2 }	(852+1)	[8479]		12	80
 Mesh	M	0237	Ueksuerrg	D436230-8	C	Lo		402	VVoS	K2 III	{ -3 }	(611-5)	[1113]		11	3
-Mesh	A	0310	Aengdan	C624364-7		Lo		621	VOpp	M2 V	{ -2 }	(521-4)	[1135]		9	6
+Mesh	A	0310	Aengdan	C624364-7		Lo O:0409		621	VOpp	M2 V	{ -2 }	(521-4)	[1135]		9	6
 Mesh	E	0312	Lavras	B87578A-8		Ag Pi		313	VOpp	F7 V M0 V	{ 1 }	(D69+3)	[987A]		17	2,106
 Mesh	E	0313	ODESSA	B3109BD-A		Hi In Na Pz	A	104	VOpp	M0 V M1 V	{ 4 }	(F8E+5)	[DD9E]		14	8,400
 Mesh	E	0314	Urulaekhs	E430000-0		Ba De Po		003	VOpp	M2 V	{ -3 }	(200-5)	[0000]		10	0
 Mesh	E	0316	Khongaegh	E579000-0		Ba		024	VOpp	M2 V M3 V	{ -3 }	(200-5)	[0000]		14	0
 Mesh	E	0317	Addar	A520531-B	K	De He Ni Po Cp		521	VOpp	F3 II M0 V	{ 1 }	(A45-3)	[1617]		13	140
 Mesh	I	0321	Ovoe	E300000-0		Ba Va		002	VOpp	G8 V	{ -3 }	(200-5)	[0000]		5	0
-Mesh	I	0324	Uetsae	A987461-C		Ni Pa		401	V17D	F1 V M1 V M5 V	{ 1 }	(734-3)	[1518]		9	59
-Mesh	M	0332	Faerr Or	D420566-8		De He Ni Po		403	VVoS	K4 V	{ -3 }	(A41-4)	[4247]		8	24
+Mesh	I	0324	Uetsae	A987461-C		Ni Pa O:0123		401	V17D	F1 V M1 V M5 V	{ 1 }	(734-3)	[1518]		9	59
+Mesh	M	0332	Faerr Or	D420566-8		De He Ni Po O:0336		403	VVoS	K4 V	{ -3 }	(A41-4)	[4247]		8	24
 Mesh	M	0333	Lakzorr	B644484-A		Ni Pa		803	VVoS	F0 V	{ 1 }	(934-1)	[2538]		10	97
 Mesh	M	0336	TUKOGAN	C510947-9	K	Hi In Na		504	VVoS	F2 V	{ 2 }	(F8C+2)	[9B59]		8	2,880
 Mesh	M	0340	Onlek	C533447-7		Ni Po		202	VVoS	M1 V	{ -2 }	(631-2)	[4257]		11	14
@@ -55,7 +55,7 @@ Mesh	I	0622	LIMADA	E438ADH-8	C	Hi Pz	A	202	VOpp	F3 V	{ -1 }	(E98+4)	[F9AD]		11	4
 Mesh	I	0625	Kougkaez	C6877B8-7		Ag Ga Ri		522	VOpp	F3 V	{ 1 }	(969+1)	[7857]		9	486
 Mesh	I	0626	Vaekh Oen	D431499-7		Ni Po		603	VOpp	M0 V M5 V	{ -3 }	(631-2)	[5168]		9	14
 Mesh	I	0627	Dzugen	D563205-5		Lo		713	VOpp	F9 V	{ -3 }	(411-5)	[1133]		14	2
-Mesh	I	0628	Ounuekhue	C978461-8		Ni Pa		202	VOpp	F8 V M7 V	{ -2 }	(831-5)	[1214]		5	12
+Mesh	I	0628	Ounuekhue	C978461-8		Ni Pa O:0725		202	VOpp	F8 V M7 V	{ -2 }	(831-5)	[1214]		5	12
 Mesh	I	0630	Varraeg	D552655-5		Ni Po		603	VOpp	F6 V M5 V	{ -3 }	(851-5)	[4333]		8	20
 Mesh	M	0631	Zae Errsu	D558746-5		Ag Chir6		104	VOpp	F0 V	{ -1 }	(966-2)	[6644]		10	259
 Mesh	M	0632	Tangoegz	C2008BC-9		Na Va Ph Pi Pz	A	103	VOpp	K8 V	{ 0 }	(D79+3)	[B88C]		11	2,457
@@ -64,7 +64,7 @@ Mesh	M	0637	Aksa	C300677-9		Na Ni Va		203	VVoS	M1 V	{ -1 }	(B53-1)	[6559]		13	14
 Mesh	M	0639	Othaegae	C550556-7		De Ni Po		803	VVoS	F1 V M8 V	{ -2 }	(742-3)	[4346]		12	39
 Mesh	M	0640	Kakar	C432500-B	C	Ni Po		723	VVoS	G9 V	{ 0 }	(C44-4)	[1516]		14	115
 Mesh	A	0706	Dhedhate	B9A8653-9	K	Fl Ni		610	VRo5	K0 II D	{ 0 }	(954-3)	[3626]		12	126
-Mesh	A	0707	Zaelan	D420565-9	K	De He Ni Po		604	VRo5	G6 V M7 V	{ -2 }	(B42-4)	[3337]		13	53
+Mesh	A	0707	Zaelan	D420565-9	K	De He Ni Po O:0706		604	VRo5	G6 V M7 V	{ -2 }	(B42-4)	[3337]		13	53
 Mesh	E	0714	Athol	C658676-5		Ag Ni		302	VOpp	F2 V	{ -1 }	(853-2)	[5544]		11	96
 Mesh	I	0723	Arfeg	B556588-B	K	Ag Ni		801	VOpp	G1 V	{ 2 }	(846+2)	[575B]		4	384
 Mesh	I	0725	Kanukor	A699653-B	K	Ni Cp		323	VOpp	G4 V	{ 1 }	(D55-2)	[3728]		15	260
@@ -84,10 +84,10 @@ Mesh	I	0826	Ueruekh	EAB7345-8		Fl Lo		601	VOpp	G2 III	{ -3 }	(621-5)	[1136]		8	6
 Mesh	I	0827	Dhaekneng	C8D8755-8	M			311	VOpp	M2 V	{ -1 }	(B67-3)	[5636]		11	323
 Mesh	I	0829	Dzare	C520574-7	M	De He Ni Po		305	VOpp	M3 V	{ -2 }	(742-4)	[3335]		13	34
 Mesh	I	0830	Ooelzarz	C59A774-8		Wa Pi		100	VOpp	G7 V M5 V	{ -1 }	(967-3)	[5636]		8	265
-Mesh	M	0831	Lleghzoth	B977664-5		Ag Ni		723	VOpp	M3 V	{ 0 }	(854-2)	[4633]		16	128
+Mesh	M	0831	Lleghzoth	B977664-5		Ag Ni O:0632		723	VOpp	M3 V	{ 0 }	(854-2)	[4633]		16	128
 Mesh	M	0832	Dhaenzueg	C767776-5		Ag Ga Ri		302	VOpp	F3 V	{ 1 }	(968+1)	[6844]		9	432
 Mesh	M	0833	OKALAK	C554974-5		Hi		802	VOpp	F0 V M6 V	{ 0 }	(B88-2)	[7933]		14	563
-Mesh	M	0834	Oekfozak	C6A4367-8	C	Fl Lo		804	VOpp	M3 V	{ -2 }	(921-2)	[3158]		8	14
+Mesh	M	0834	Oekfozak	C6A4367-8	C	Fl Lo O:0632		804	VOpp	M3 V	{ -2 }	(921-2)	[3158]		8	14
 Mesh	M	0838	Ukkhukedh	C550503-8	C	De Ni Po		602	VVoS	F1 V M1 V	{ -2 }	(942-5)	[2325]		11	36
 Mesh	M	0839	Gaez Are	C69A354-B		Lo Wa		305	VVoS	K1 V	{ 0 }	(A21-2)	[1339]		16	16
 Mesh	M	0840	Arida	C4208DF-7	C	De He Na Po Ph Pi Pz	A	203	VVoS	G3 V	{ -1 }	(A77+4)	[D7AC]		7	1,960
@@ -98,7 +98,7 @@ Mesh	F	0920	Uberaba	B767899-8		Ga Ri Pa Ph		200	VOpp	M3 V	{ 1 }	(A79+2)	[9969]		
 Mesh	N	0931	Thukhdzen	E556444-6	C	Ni Pa Chir0		724	VOpp	F5 V	{ -3 }	(631-5)	[2134]		12	9
 Mesh	N	0934	Koenzonakh	B589544-A		Ni Pr		924	VOpp	F1 V M3 V	{ 1 }	(D45-1)	[3638]		15	234
 Mesh	N	0935	Odhduroul	E000521-9		As Ni Va		510	VOpp	M3 V M5 V	{ -2 }	(842-5)	[1315]		6	32
-Mesh	N	0937	Sukknou	B6A8562-9		Fl Ni		904	VOpp	M1 V	{ 0 }	(B44-4)	[1515]		16	106
+Mesh	N	0937	Sukknou	B6A8562-9		Fl Ni Mr		904	VOpp	M1 V	{ 0 }	(B44-4)	[1515]		16	106
 Mesh	N	0939	Laekfae	C434559-B		Ni		703	VVoS	A1 V	{ 0 }	(A44+1)	[656C]		11	160
 Mesh	N	0940	Thaengorrg	C578656-6		Ag Ni		412	VVoS	F1 V	{ -1 }	(853-2)	[5545]		16	96
 Mesh	B	1005	Fingae	C998256-9	C	Lo		824	VRo5	F8 V M5 V	{ -1 }	(A11-2)	[1148]		14	8
@@ -112,20 +112,20 @@ Mesh	J	1024	Zoukhuek	E6757CA-5	C	Ag Pi Pz	A	423	VOpp	F7 V M4 V	{ -1 }	(966+1)	[9
 Mesh	J	1028	Nirrgh	B548651-9		Ag Ni		324	VOpp	K7 V	{ 1 }	(E55-3)	[2715]		18	245
 Mesh	N	1031	Foegoekh	D530742-6		De Na Po		303	VOpp	K9 V	{ -2 }	(965-5)	[3512]		8	135
 Mesh	N	1033	Ganakhukha	B778100-A	K	Lo		605	VOpp	G7 V	{ 1 }	(801-3)	[1215]		16	0
-Mesh	N	1034	Aengkfae	C000766-9		As Na Va Pi		514	VOpp	M2 V M8 V	{ 0 }	(E69-1)	[6748]		13	680
+Mesh	N	1034	Aengkfae	C000766-9		As Na Va Pi O:0632		514	VOpp	M2 V M8 V	{ 0 }	(E69-1)	[6748]		13	680
 Mesh	N	1035	Irrgo	E7765A8-5	C	Ag Ni		134	VOpp	F2 V M8 V	{ -2 }	(742-2)	[5355]		16	45
 Mesh	N	1036	Thusaen	E79A659-5		Ni Wa		503	VOpp	F5 V M9 V	{ -3 }	(851-2)	[7366]		11	32
 Mesh	N	1037	Aesthagz	C520355-A		De He Lo Po		401	VOpp	F5 IV	{ 0 }	(621-2)	[1338]		7	10
 Mesh	N	1040	Shugemansar	D100558-9	C	Ni Va		723	VVoS	M1 V	{ -2 }	(C42-2)	[5359]		14	77
-Mesh	B	1101	Sirrgdhoz	B500563-A	K	Ni Va		604	VRo5	G9 V	{ 1 }	(B45-2)	[2627]		17	176
+Mesh	B	1101	Sirrgdhoz	B500563-A	K	Ni Va O:1303		604	VRo5	G9 V	{ 1 }	(B45-2)	[2627]		17	176
 Mesh	B	1103	Aek Gvon	E430311-8		De Lo Po		603	VRo5	M2 V M2 V	{ -3 }	(821-5)	[1114]		9	8
 Mesh	B	1104	Vourrgvag	E77937A-5	C	Lo		922	VRo5	F1 V	{ -3 }	(521-1)	[5177]		14	9
 Mesh	B	1105	Ksaezan	B000230-D	K	As Lo Va		924	VRo5	K7 V	{ 1 }	(A11-3)	[1318]		17	7
-Mesh	B	1110	Kuvuekue	B561869-5	M	Ri Ph		705	VRo5	F0 V M6 V M7 V	{ 1 }	(A78+2)	[9966]		17	1,120
-Mesh	J	1123	Ugh Gzun	C9A8267-8		Fl Lo		404	VOpp	M0 V	{ -2 }	(811-2)	[2158]		14	6
-Mesh	J	1130	Zegku	E656362-6		Lo Ga		705	VOpp	M2 V M4 V	{ -3 }	(521-5)	[1112]		16	5
+Mesh	B	1110	Kuvuekue	B561869-5	M	Ri Ph O:1412		705	VRo5	F0 V M6 V M7 V	{ 1 }	(A78+2)	[9966]		17	1,120
+Mesh	J	1123	Ugh Gzun	C9A8267-8		Fl Lo O:0725		404	VOpp	M0 V	{ -2 }	(811-2)	[2158]		14	6
+Mesh	J	1130	Zegku	E656362-6		Lo Ga O:1230		705	VOpp	M2 V M4 V	{ -3 }	(521-5)	[1112]		16	5
 Mesh	N	1131	Osang	C100245-B	K	Lo Va		112	VOpp	M2 V	{ 0 }	(711-2)	[1239]		16	6
-Mesh	N	1134	Thotsdhar	D669269-4		Lo		404	VOpp	F0 V M5 V	{ -3 }	(411-2)	[3165]		7	3
+Mesh	N	1134	Thotsdhar	D669269-4		Lo Mr		404	VOpp	F0 V M5 V	{ -3 }	(411-2)	[3165]		7	3
 Mesh	N	1136	Keghag	A7CA220-C	K	Fl Lo		103	VOpp	M0 V	{ 1 }	(711-3)	[1317]		12	5
 Mesh	N	1137	Egirrg	E7C4105-9	C	Fl Lo		204	VOpp	M2 V M5 V	{ -2 }	(701-4)	[1137]		15	0
 Mesh	N	1139	Gatskour	A9EA103-E		Lo		623	VVoS	M1 V	{ 1 }	(801-2)	[122B]		10	0
@@ -145,7 +145,7 @@ Mesh	N	1237	RANOTI	E655AB7-9	C	Hi Ga		803	VOpp	F2 V M7 V	{ 0 }	(F9A+1)	[AA59]		1
 Mesh	N	1239	Tsuthaegz	D69A545-5		Ni Wa		802	VVoS	F3 V M5 V	{ -3 }	(741-5)	[3233]		8	14
 Mesh	N	1240	Llenggorr	C88A353-9	C	Lo Wa		304	VVoS	F7 V	{ -1 }	(921-4)	[1226]		13	11
 Mesh	B	1303	AZILDAK	B546979-A	K	Hi In		603	VRo5	K4 V M1 V	{ 4 }	(E8E+5)	[AD6B]		9	7,840
-Mesh	B	1306	AZURAN	C752A65-7	M	Hi Po		204	VRo5	F9 V	{ 0 }	(C99-2)	[8A35]		15	778
+Mesh	B	1306	AZURAN	C752A65-7	M	Hi Po O:1303		204	VRo5	F9 V	{ 0 }	(C99-2)	[8A35]		15	778
 Mesh	B	1309	Ez Okhknug	C667676-3	C	Ag Ni Ga Ri		802	VRo5	K0 V	{ 0 }	(854-1)	[5642]		9	144
 Mesh	B	1310	Don Aesor	C684489-4	M	Ni Pa		603	VRo5	F2 V M0 V	{ -2 }	(631-1)	[5265]		7	16
 Mesh	F	1317	Cordoba	A30068B-D		Na Ni Va Cp		801	VRo5	M2 V M7 V	{ 1 }	(955+3)	[877F]		9	675
@@ -177,10 +177,10 @@ Mesh	N	1437	Kakror	A666642-A	K	Ag Ni Ga Ri Cp		213	VVoS	F4 V M0 V M5 V	{ 3 }	(C5
 Mesh	N	1439	Oghzaen	C7898A9-6		Ri Ph		502	VVoS	F3 V	{ 0 }	(A77+1)	[9867]		8	490
 Mesh	B	1501	Gakdez	C500533-9		Ni Va		723	VRo5	M1 V M8 V	{ -1 }	(C43-4)	[2426]		11	86
 Mesh	B	1502	Osan	C76989C-8	C	Ri Ph Pz	A	624	VRo5	F6 V	{ 0 }	(G78+3)	[B88B]		14	2,688
-Mesh	B	1505	Arzezkhous	B550368-8	M	De Lo Po		625	VRo5	F1 V	{ -1 }	(C21-1)	[3258]		14	22
+Mesh	B	1505	Arzezkhous	B550368-8	M	De Lo Po O:1303		625	VRo5	F1 V	{ -1 }	(C21-1)	[3258]		14	22
 Mesh	B	1508	Okvouk	C567110-8		Lo		124	VRo5	F1 V	{ -2 }	(901-5)	[1113]		12	0
-Mesh	B	1510	Kfanknue	B989766-9	K	Ri		500	VRo5	F3 V	{ 2 }	(96B+1)	[6948]		5	594
-Mesh	F	1513	Egzuts	C75936B-5	C	Lo		203	VRo5	F7 V	{ -2 }	(521+1)	[5177]		11	10
+Mesh	B	1510	Kfanknue	B989766-9	K	Ri O:1710		500	VRo5	F3 V	{ 2 }	(96B+1)	[6948]		5	594
+Mesh	F	1513	Egzuts	C75936B-5	C	Lo O:1613		203	VRo5	F7 V	{ -2 }	(521+1)	[5177]		11	10
 Mesh	F	1516	Vangllarr	D57A757-5		Wa Pi		803	VRo5	F0 V	{ -2 }	(965-2)	[7555]		12	216
 Mesh	F	1519	Roekheloe	B978677-8	M	Ag Ni		910	VRo5	F0 V	{ 0 }	(954+1)	[6658]		8	180
 Mesh	J	1521	Uduth	C000556-B		As Ni Va		824	VRo5	M2 V	{ 0 }	(D44-1)	[454A]		14	187
@@ -193,28 +193,28 @@ Mesh	N	1539	Kekhtuks	C300423-A	K	Ni Va		100	VVoS	F8 V	{ 0 }	(633-3)	[1427]		3	38
 Mesh	N	1540	Khuulurshii	C436783-9	K			504	VVoS	M2 V	{ 0 }	(D69-3)	[4726]		8	491
 Mesh	F	1613	SUTAN	C67AA7C-C	C	Hi In Wa		403	VRo5	F9 V	{ 3 }	(F9E+5)	[DD8F]		9	9,450
 Mesh	F	1614	Inukh Oni	C533757-6		Na Po		101	VRo5	M0 V K8 V M0 V	{ -1 }	(966-1)	[7656]		7	292
-Mesh	F	1615	Aeghae	E422864-7	C	He Na Po Ph Pi		723	VRo5	G6 V	{ -2 }	(A76-4)	[6635]		12	252
+Mesh	F	1615	Aeghae	E422864-7	C	He Na Po Ph Pi O:1613		723	VRo5	G6 V	{ -2 }	(A76-4)	[6635]		12	252
 Mesh	F	1617	Aknuengon	B886546-7		Ag Ni Ga Pr		310	VRo5	F9 V M2 V	{ 0 }	(744-1)	[4546]		9	101
 Mesh	J	1621	Aedzung	B634678-9		Ni		903	VRo5	K7 V	{ 0 }	(B54+1)	[6659]		12	220
-Mesh	J	1622	Sillan	E554169-6		Lo		302	VRo5	F3 V M0 V	{ -3 }	(301-2)	[2167]		8	0
+Mesh	J	1622	Sillan	E554169-6		Lo O:1722		302	VRo5	F3 V M0 V	{ -3 }	(301-2)	[2167]		8	0
 Mesh	J	1628	Irrne	B546343-B	C	Lo		524	VOpp	F4 V	{ 1 }	(B21-2)	[1428]		15	18
 Mesh	J	1629	Dhourru	C99A79A-6		Wa Pi		204	VOpp	F1 V	{ -1 }	(966+1)	[9678]		15	324
-Mesh	J	1630	Oururrgh	C732368-6		Lo Po		704	VOpp	M2 V M6 V	{ -2 }	(521-2)	[3156]		10	8
+Mesh	J	1630	Oururrgh	C732368-6		Lo Po O:1530		704	VOpp	M2 V M6 V	{ -2 }	(521-2)	[3156]		10	8
 Mesh	N	1631	Kashi	C553112-8	M	Lo Po		510	VOpp	F8 V M9 V	{ -2 }	(401-5)	[1114]		13	0
-Mesh	N	1638	Ughllalar	D655663-2	C	Ag Ni Ga		100	VVoS	F4 V	{ -2 }	(852-5)	[3421]		11	40
-Mesh	N	1640	Kfa Zukhu	B88586A-9	K	Ga Ri Pa Ph		122	VVoS	G6 V	{ 2 }	(E7B+4)	[AA7B]		8	4,312
-Mesh	C	1703	Ngollogzou	E88A568-4	C	Ni Wa Pr Chir3		802	VRo5	F5 V	{ -3 }	(741-3)	[5254]		10	20
+Mesh	N	1638	Ughllalar	D655663-2	C	Ag Ni Ga O:1839		100	VVoS	F4 V	{ -2 }	(852-5)	[3421]		11	40
+Mesh	N	1640	Kfa Zukhu	B88586A-9	K	Ga Ri Pa Ph O:1839		122	VVoS	G6 V	{ 2 }	(E7B+4)	[AA7B]		8	4,312
+Mesh	C	1703	Ngollogzou	E88A568-4	C	Ni Wa Pr Chir3 O:1403		802	VRo5	F5 V	{ -3 }	(741-3)	[5254]		10	20
 Mesh	C	1704	Tibushi	E545000-0		Ba		002	VRo5	F5 V	{ -3 }	(200-5)	[0000]		6	0
 Mesh	C	1706	Khongeks	C5487AD-6	K	Ag Pi Pz	A	120	VRo5	F4 V	{ 0 }	(967+4)	[B79A]		15	1,512
 Mesh	C	1707	Oungrrarr	C665541-6	C	Ag Ni Ga Pr		310	VRo5	F1 V	{ -1 }	(743-5)	[1412]		4	42
 Mesh	C	1710	LORGO	C540AED-B		De He Hi In Po Pz	A	204	VRo5	F6 V	{ 3 }	(G9E+5)	[ED9F]		12	10,080
 Mesh	G	1712	Siisharemmir	C55A653-A	C	Ni Wa		424	VRo5	G0 V	{ 0 }	(E54-3)	[3627]		15	196
-Mesh	G	1714	Uerrsegha	C557469-5	M	Ni Pa		823	VRo5	F4 V	{ -2 }	(631-1)	[5266]		14	16
+Mesh	G	1714	Uerrsegha	C557469-5	M	Ni Pa O:1613		823	VRo5	F4 V	{ -2 }	(631-1)	[5266]		14	16
 Mesh	G	1716	Omoysheb	C887546-4		Ag Ni Ga Pr Chir3		800	VRo5	F3 V	{ -1 }	(743-2)	[4443]		9	67
 Mesh	K	1721	Usozaedh	C558301-8		Lo		722	VRo5	F4 V M6 V	{ -2 }	(921-5)	[1114]		14	9
 Mesh	K	1722	Utsuesu	C10087C-9	C	Na Va Ph Pi		822	VRo5	F2 V	{ 0 }	(E79+3)	[B88C]		12	2,646
 Mesh	K	1727	IGGUK	B75898A-B		Hi		504	VOpp	F0 V	{ 3 }	(F8E+5)	[BC7D]		11	8,400
-Mesh	K	1728	Sazur	C551467-6	M	Ni Po		423	VOpp	F6 V	{ -2 }	(631-2)	[4256]		14	14
+Mesh	K	1728	Sazur	C551467-6	M	Ni Po O:1727		423	VOpp	F6 V	{ -2 }	(631-2)	[4256]		14	14
 Mesh	O	1738	Oesi Zoe	B564311-8	M	Lo		311	VVoS	F4 V	{ -1 }	(721-5)	[1214]		9	7
 Mesh	O	1740	Rraerrgu	C544553-8		Ag Ni		503	VVoS	F9 V M1 V	{ -1 }	(A43-4)	[2425]		15	72
 Mesh	C	1801	Tufae	C797779-5		Ag Pi		300	VRo5	F5 V M7 V M0 V	{ 0 }	(967+1)	[8766]		3	378
@@ -226,13 +226,13 @@ Mesh	G	1815	Kakagshu	E667302-3	C	Lo Ga		623	VRo5	F3 V M1 V	{ -3 }	(521-5)	[1111]
 Mesh	G	1819	Aetna	B8DA334-B		Lo		604	VRo5	M2 V	{ 1 }	(921-1)	[1439]		10	16
 Mesh	K	1824	ANGAMNI	B5449A9-A		Hi In		224	VOpp	F0 V	{ 4 }	(H8E+5)	[AD6B]		14	9,520
 Mesh	K	1829	Anull	E430201-7	C	De Lo Po		600	VOpp	F3 V	{ -3 }	(411-5)	[1113]		8	2
-Mesh	O	1833	Missionary	C422865-7		He Na Po Ph Pi		223	VOpp	F0 V	{ -1 }	(A77-3)	[6735]		10	343
+Mesh	O	1833	Missionary	C422865-7		He Na Po Ph Pi O:1937		223	VOpp	F0 V	{ -1 }	(A77-3)	[6735]		10	343
 Mesh	O	1838	Digar	CA95114-8		Lo		810	VVoS	M1 V	{ -2 }	(401-4)	[1136]		10	0
 Mesh	O	1839	GUTU	B879ABD-A		Hi In Pz	A	720	VVoS	F6 V	{ 4 }	(E9E+5)	[EE9E]		12	8,820
 Mesh	O	1840	KANAL	C430998-A		De Hi Na Po		814	VVoS	F4 V M9 V	{ 2 }	(G8C+2)	[9B5A]		15	3,072
 Mesh	C	1901	Rrongaerrg	C510121-8	C	Lo		404	VRo5	M1 V	{ -2 }	(701-5)	[1114]		15	0
-Mesh	C	1903	Ansana	A68A569-D	K	Ni Wa Cp Pr		201	VRo5	K3 V	{ 1 }	(845+2)	[666E]		11	320
-Mesh	C	1906	Uegthoeke	E66146A-5	C	Ni		811	VRo5	F4 V	{ -3 }	(631-1)	[6177]		12	16
+Mesh	C	1903	Ansana	A68A569-D	K	Ni Wa Cp Pr Mr		201	VRo5	K3 V	{ 1 }	(845+2)	[666E]		11	320
+Mesh	C	1906	Uegthoeke	E66146A-5	C	Ni O:1911		811	VRo5	F4 V	{ -3 }	(631-1)	[6177]		12	16
 Mesh	C	1908	Thaegz	E688000-0		Ba		003	VRo5	F1 V	{ -3 }	(200-5)	[0000]		13	0
 Mesh	G	1911	UGUZA	C2009DB-9		Hi In Na Va Pz	A	410	VRo5	F1 V	{ 2 }	(C8C+4)	[BB7B]		9	4,608
 Mesh	G	1916	Highball	D7746A9-5	C	Ag Ni		102	VRo5	F7 V M3 V	{ -2 }	(852-1)	[7466]		15	72
@@ -253,12 +253,12 @@ Mesh	C	2008	Azgul Kou	E67A000-0		Ba Wa		023	VRo5	F5 V M6 V	{ -3 }	(200-5)	[0000]
 Mesh	G	2019	Ueksek	E300000-0		Ba Va		024	VRo5	M1 V	{ -3 }	(200-5)	[0000]		16	0
 Mesh	K	2022	Ikke	A000536-D	K	As Ni Va Cp		123	VOpp	K9 V	{ 1 }	(C45+1)	[464C]		8	240
 Mesh	K	2023	Rigver	C5778AF-8	M	Pa Ph Pi Pz	A	123	VOpp	F5 V M5 V	{ -1 }	(F77+4)	[D7AD]		12	2,940
-Mesh	O	2034	Ishamzu	A7B6567-D	K	Fl Ni Cp		404	VOpp	M1 V M6 V	{ 1 }	(B45+1)	[565D]		12	220
+Mesh	O	2034	Ishamzu	A7B6567-D	K	Fl Ni Cp O:1937		404	VOpp	M1 V M6 V	{ 1 }	(B45+1)	[565D]		12	220
 Mesh	O	2035	Aekhsueng	E310305-7		Lo		804	VOpp	F8 V M8 V	{ -3 }	(521-5)	[1135]		13	5
 Mesh	O	2039	Shiishularar	B410794-A		Na Pi		603	VFFD	F9 V	{ 2 }	(C6B+1)	[5938]		12	792
 Mesh	C	2102	Ennaekhs	E52545A-7	C	Ni		903	VRo5	M1 V	{ -3 }	(631-1)	[6179]		13	16
 Mesh	C	2104	Rrotoe	X866410-0		Ni Ga Pa Fo	R	400	VRo5	F7 V	{ -3 }	(631-5)	[1111]		4	9
-Mesh	C	2105	Kughurr	B530566-8	M	De Ni Po		802	VRo5	M3 V M1 V	{ -1 }	(943-2)	[4447]		9	86
+Mesh	C	2105	Kughurr	B530566-8	M	De Ni Po Mr		802	VRo5	M3 V M1 V	{ -1 }	(943-2)	[4447]		9	86
 Mesh	C	2107	Ozullnoz	D566432-2	C	Ni Pa		502	VRo5	F9 V	{ -3 }	(631-5)	[1111]		13	9
 Mesh	C	2108	Aerro	C432213-A	K	Lo Po		123	VRo5	M0 V	{ 0 }	(911-3)	[1227]		12	6
 Mesh	G	2112	Knugogh	E67A8DD-5	C	Wa Ph Pi Pz	A	434	VRo5	F4 V	{ -2 }	(A75+2)	[C699]		12	700
@@ -281,7 +281,7 @@ Mesh	G	2213	TUTAG	C6669BA-9	C	Hi Ga Pr Pz	A	304	VRo5	F9 V M6 V	{ 1 }	(F8B+3)	[BA
 Mesh	G	2219	Uenglelon	C644777-5	C	Ag Pi		512	VRo5	F4 V M1 V	{ 0 }	(967+1)	[7755]		10	378
 Mesh	K	2221	Aer Angae	C556310-6		Lo		904	VOpp	G0 V	{ -2 }	(521-5)	[1111]		7	5
 Mesh	K	2223	Ongats	C58A311-9	C	Lo Wa		423	VOpp	K4 V	{ -1 }	(A21-5)	[1215]		11	10
-Mesh	K	2224	Kusuez	D420466-7		De He Ni Po		303	VOpp	M2 V	{ -3 }	(631-4)	[3146]		9	11
+Mesh	K	2224	Kusuez	D420466-7		De He Ni Po O:1824		303	VOpp	M2 V	{ -3 }	(631-4)	[3146]		9	11
 Mesh	K	2227	Akfe Ae	E510495-7	C	Ni		934	VOpp	M3 II	{ -3 }	(631-5)	[2135]		15	9
 Mesh	K	2230	Ushlidmap	C546553-8		Ag Ni		823	VOpp	F6 V M3 V	{ -1 }	(C43-4)	[2425]		9	86
 Mesh	O	2233	Koksgoudh	B52248C-B	K	He Ni Po Da	A	405	VOpp	M1 V	{ 1 }	(B34+4)	[758E]		13	528
@@ -296,7 +296,7 @@ Mesh	G	2313	Galam	D000558-A		As Ni Va		922	VRo5	K7 V	{ -1 }	(B43-1)	[545A]		17	1
 Mesh	G	2317	VAKUGO	A522986-B	K	He Hi In Na Po Cp		200	VRo5	K4 V	{ 4 }	(B8F+3)	[8D4A]		5	3,960
 Mesh	G	2318	Odh Zizats	C77569C-5	CM	Ag Ni Da	A	313	VRo5	F5 V	{ -1 }	(853+2)	[9588]		12	240
 Mesh	G	2319	Ogngaks	C546400-8	M	Ni Pa		720	VRo5	G1 V	{ -2 }	(831-5)	[1213]		6	12
-Mesh	K	2324	Gnoerrla	C53256A-6	C	Ni Po		322	VOpp	K2 V M0 V	{ -2 }	(742+1)	[7378]		9	56
+Mesh	K	2324	Gnoerrla	C53256A-6	C	Ni Po Mr		322	VOpp	K2 V M0 V	{ -2 }	(742+1)	[7378]		9	56
 Mesh	K	2330	Doghzgvaz	C553775-7		Po		623	VOpp	G6 V	{ -1 }	(967-3)	[5635]		16	265
 Mesh	O	2331	Gvakfan	E9D9345-6		Lo		610	VOpp	M2 V	{ -3 }	(521-5)	[1134]		9	5
 Mesh	O	2332	Lodzagna	E545211-5		Lo		700	VOpp	F7 V	{ -3 }	(411-5)	[1111]		10	2
@@ -313,12 +313,12 @@ Mesh	O	2431	Khaegz	B310689-A	K	Na Ni		904	VOpp	M1 III	{ 1 }	(C55+2)	[776B]		8	60
 Mesh	O	2433	An Tinor	E537643-6	C	Ni		804	VOpp	G0 V	{ -3 }	(851-5)	[3323]		13	20
 Mesh	O	2434	Adhoen	C545210-7		Lo		612	VOpp	F7 V	{ -2 }	(411-5)	[1112]		15	2
 Mesh	O	2435	Aerth	B787456-B	K	Ni Ga Pa		301	VOpp	M1 V	{ 1 }	(734+1)	[354A]		7	84
-Mesh	O	2437	Arrgho	C557761-4		Ag		403	VFFD	F4 V	{ 0 }	(966-4)	[3711]		13	194
+Mesh	O	2437	Arrgho	C557761-4		Ag O:2139		403	VFFD	F4 V	{ 0 }	(966-4)	[3711]		13	194
 Mesh	D	2509	Eghthudza	C431249-9	C	Lo Po		105	VRo5	M0 V	{ -1 }	(911+1)	[316A]		9	9
 Mesh	H	2513	Gvonuth	C554204-9	C	Lo		200	VRo5	F7 V M4 V	{ -1 }	(411-3)	[1137]		6	3
 Mesh	H	2517	Aeksnue	E556000-0		Ba		001	VRo5	G7 V M9 V	{ -3 }	(200-5)	[0000]		10	0
 Mesh	L	2524	Rraerroen	C555500-9	K	Ag Ni		720	VOpp	F5 V M8 V	{ 0 }	(944-4)	[1514]		14	86
-Mesh	L	2529	Oukuerz	C564563-7	C	Ag Ni Pr Chir0		800	VOpp	F8 V M3 V	{ -1 }	(743-4)	[2424]		5	50
+Mesh	L	2529	Oukuerz	C564563-7	C	Ag Ni Pr Chir0 O:2431		800	VOpp	F8 V M3 V	{ -1 }	(743-4)	[2424]		5	50
 Mesh	P	2535	Uenouz	C544589-6	M	Ag Ni		700	VOpp	F5 V	{ -1 }	(743+1)	[6467]		5	84
 Mesh	P	2536	Rueghgva	A510303-B	K	Lo		512	VOpp	F2 IV	{ 1 }	(821-2)	[1428]		11	13
 Mesh	P	2538	Guerris	D540379-6		De He Lo Po		502	VFFD	G8 V M9 V	{ -3 }	(521-2)	[4167]		12	8
@@ -333,12 +333,12 @@ Mesh	P	2640	Lefaen	A8C9127-C	K	Fl Lo		704	VFFD	G0 V	{ 1 }	(701+1)	[125C]		12	0
 Mesh	D	2702	Munikhu	C977486-8	C	Ni Pa		304	VRo5	F2 V M4 V	{ -2 }	(A31-3)	[3247]		10	21
 Mesh	D	2703	Gimar	C4207AB-9		De He Na Po Pi Pz	A	522	VRo5	M0 V M1 V	{ 0 }	(D69+2)	[977B]		14	1,404
 Mesh	D	2704	AIMLIIN	C6239BB-8	C	Hi In Na Po Pz	A	104	VRo5	F1 V	{ 1 }	(F8A+3)	[BA7A]		11	3,600
-Mesh	D	2705	Iishla	C200662-9		Na Ni Va		500	VRo5	M1 V	{ -1 }	(853-5)	[2515]		10	60
+Mesh	D	2705	Iishla	C200662-9		Na Ni Va Mr		500	VRo5	M1 V	{ -1 }	(853-5)	[2515]		10	60
 Mesh	D	2706	Igam	C589135-8	M	Lo		304	VRo5	G0 V	{ -2 }	(701-4)	[1136]		10	0
 Mesh	H	2713	Ghan Ugz	C557220-8		Lo		221	VRo5	G1 V	{ -2 }	(711-5)	[1113]		14	4
 Mesh	H	2716	Urrarzak	B567643-5		Ag Ni Ri		504	VOpp	F8 V	{ 1 }	(855-2)	[3722]		14	160
 Mesh	H	2718	Diralaarpen	C540622-8	CM	De He Ni Po		124	VOpp	F1 V M7 V	{ -2 }	(E52-5)	[2414]		17	70
-Mesh	H	2720	Gurupi	D435567-7	C	Ni		403	VOpp	M0 V	{ -3 }	(741-3)	[5257]		12	20
+Mesh	H	2720	Gurupi	D435567-7	C	Ni O:2619		403	VOpp	M0 V	{ -3 }	(741-3)	[5257]		12	20
 Mesh	L	2721	Aegzae	B65465A-8		Ag Ni		210	VOpp	F2 V	{ 0 }	(954+2)	[867A]		6	360
 Mesh	L	2723	AKUVA	C542ACF-8		He Hi In Po Pz	A	504	VOpp	F2 V M5 V	{ 1 }	(G9A+5)	[FBAD]		15	7,200
 Mesh	L	2725	Irmar	D579422-5		Ni		900	VOpp	F2 V	{ -3 }	(631-5)	[1111]		8	9
@@ -352,7 +352,7 @@ Mesh	D	2807	Diramlii	C547153-8	C	Lo		503	VRo5	F1 V	{ -2 }	(601-5)	[1125]		14	0
 Mesh	D	2808	Lepidopter	B587388-A	K	Lo Droy8		903	VRo5	M2 V M0 V	{ 1 }	(821+1)	[345A]		10	16
 Mesh	D	2810	Umurzikuu	D555412-6		Ni Pa		323	VRo5	F7 V M9 V	{ -3 }	(631-5)	[1112]		14	9
 Mesh	H	2815	Fagus Agh	C522343-7		He Lo Po		504	VOpp	M2 V	{ -2 }	(521-5)	[1124]		10	5
-Mesh	H	2818	Ouzudz	B632663-6		Na Ni Po		324	VOpp	M3 V	{ -1 }	(853-4)	[3523]		15	72
+Mesh	H	2818	Ouzudz	B632663-6		Na Ni Po O:2619		324	VOpp	M3 V	{ -1 }	(853-4)	[3523]		15	72
 Mesh	H	2819	Shurgi	A547554-E	K	Ag Ni Cp		524	VOpp	F2 V	{ 2 }	(D46+1)	[373C]		14	312
 Mesh	L	2821	MARAMAR	C641AFF-9	C	He Hi In Po Pz	A	200	VOpp	F9 V M8 V	{ 2 }	(C9C+5)	[FCAE]		11	6,480
 Mesh	L	2822	Ksangars	E68487B-1		Ri Pa Ph		600	VOpp	F5 V	{ -1 }	(A74+1)	[A773]		10	280
@@ -364,8 +364,8 @@ Mesh	P	2832	Dzagkogh	A520595-C	K	De He Ni Po		903	VAnP	F5 V	{ 1 }	(A45-1)	[363A]
 Mesh	P	2836	Uenazuk	E545578-6		Ag Ni		504	VAnP	F7 V	{ -2 }	(742-2)	[5356]		11	45
 Mesh	P	2838	Zolkhughz	D577598-5		Ag Ni		702	VFFD	F3 V	{ -2 }	(742-2)	[5355]		8	45
 Mesh	P	2839	Aluunle	D785445-2		Ni Ga Pa		610	VFFD	F4 V	{ -3 }	(631-5)	[2131]		12	9
-Mesh	P	2840	Dzegkno	B566767-8	M	Ag Ri		604	VFFD	F1 V M9 V	{ 2 }	(D6A+2)	[7958]		14	1,560
-Mesh	D	2901	ERARKI	B663962-9		Hi Pr		623	VRo5	F0 V M0 V M4 V	{ 2 }	(G8C-2)	[5B15]		16	1,229
+Mesh	P	2840	Dzegkno	B566767-8	M	Ag Ri Mr		604	VFFD	F1 V M9 V	{ 2 }	(D6A+2)	[7958]		14	1,560
+Mesh	D	2901	ERARKI	B663962-9		Hi Pr O:2703		623	VRo5	F0 V M0 V M4 V	{ 2 }	(G8C-2)	[5B15]		16	1,229
 Mesh	D	2902	Ikmepushkii	B699745-7	M	Pi		500	VRo5	F0 V M7 V	{ 0 }	(968-2)	[5735]		8	346
 Mesh	D	2908	Shasukar	C423425-8	M	Ni Po		220	VRo5	M2 V	{ -2 }	(831-4)	[2236]		8	14
 Mesh	D	2909	Gnolrar	D432356-6		Lo Po		803	VRo5	M2 V	{ -3 }	(521-4)	[2145]		11	6
@@ -402,9 +402,9 @@ Mesh	H	3116	Shimgugi	C574110-8		Lo		402	NaVa	G5 V M5 V	{ -2 }	(501-5)	[1113]		12
 Mesh	H	3119	Ukfovae	C8766AA-7		Ag Ni Da	A	704	NaVa	F8 V	{ -1 }	(853+1)	[8579]		14	120
 Mesh	H	3120	Kuun	C400341-7		Lo Va		603	NaVa	F3 V	{ -2 }	(521-5)	[1113]		11	5
 Mesh	L	3121	Odhnaegok	D54679C-5		Ag Pi Pz	A	502	NaVa	F3 V	{ -1 }	(966+2)	[A688]		15	648
-Mesh	L	3122	Aegerr	C661369-5		Lo		302	NaVa	F3 V M2 V	{ -2 }	(521-1)	[4166]		9	9
+Mesh	L	3122	Aegerr	C661369-5		Lo O:Mend-0221		302	NaVa	F3 V M2 V	{ -2 }	(521-1)	[4166]		9	9
 Mesh	L	3126	Ogaros	A561856-9		Ri Ph Cp		602	VAnP	F1 V M2 V	{ 2 }	(C7B+1)	[7A48]		6	924
-Mesh	L	3127	Ghousaeg	A100369-E	K	Lo Va		823	VAnP	F2 IV M0 V	{ 1 }	(A21+2)	[446F]		17	40
+Mesh	L	3127	Ghousaeg	A100369-E	K	Lo Va O:3126		823	VAnP	F2 IV M0 V	{ 1 }	(A21+2)	[446F]		17	40
 Mesh	P	3131	Oetsaena	E42448B-7		Ni		922	VAnP	M1 V	{ -3 }	(631-1)	[6179]		12	16
 Mesh	P	3133	Cha-adi'	E8A8610-8		Fl Ni		100	VAnP	M2 V M1 V	{ -3 }	(851-5)	[1313]		13	20
 Mesh	P	3136	Wallaby	D541310-5		He Lo Po		600	VAnP	F9 V	{ -3 }	(521-5)	[1111]		6	5
