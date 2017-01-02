@@ -4,15 +4,6 @@ use File::Basename;
 
 my $dir = dirname($0);
 
-my $code_path = $dir . '/../../server/SecondSurvey.cs';
-my $code;
-{
-    open my $fh, '<:encoding(UTF-8)', $code_path or die;
-    local $/ = undef;
-    $code = <$fh>;
-    close $fh;
-}
-
 sub trim ($) {
     my ($s) = @_;
     $s =~ s/^\s+//;
@@ -74,6 +65,15 @@ my @lines;
 @lines = sort { lc $a cmp lc $b } @lines;
 
 my $replace = join("\n", @lines);
+
+my $code_path = $dir . '/../../server/SecondSurvey.cs';
+my $code;
+{
+    open my $fh, '<:encoding(UTF-8)', $code_path or die;
+    local $/ = undef;
+    $code = <$fh>;
+    close $fh;
+}
 
 $code =~ s/(\/\/ Allegiance Table Begin\s*\n)(.*?)(\n\s*\/\/ Allegiance Table End)/$1$replace$3/s;
 

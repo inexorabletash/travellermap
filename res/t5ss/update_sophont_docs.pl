@@ -4,20 +4,17 @@ use File::Basename;
 
 my $dir = dirname($0);
 
-my $html_path = $dir . '/../../doc/secondsurvey.html';
-my $html;
-{
-    open my $fh, '<:encoding(UTF-8)', $html_path or die;
-    local $/ = undef;
-    $html = <$fh>;
-    close $fh;
-}
-
 sub trim ($) {
     my ($s) = @_;
     $s =~ s/^\s+//;
     $s =~ s/\s+$//;
     return $s;
+}
+
+sub quote($) {
+    my ($s) = @_;
+    $s =~ s/["\\]/\\$1/g;
+    return '"' . $s . '"';
 }
 
 my $INPUT_LINE_ENDINGS = "\r";
@@ -51,6 +48,15 @@ my @lines;
 @lines = sort { lc $a cmp lc $b } @lines;
 
 my $replace = join("\n", @lines);
+
+my $html_path = $dir . '/../../doc/secondsurvey.html';
+my $html;
+{
+    open my $fh, '<:encoding(UTF-8)', $html_path or die;
+    local $/ = undef;
+    $html = <$fh>;
+    close $fh;
+}
 
 $html =~ s/(<!-- Sophont Table Begin -->\s*\n)(.*?)(\n\s*<!-- Sophont Table End -->)/$1$replace$3/s;
 
