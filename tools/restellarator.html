@@ -13,6 +13,14 @@
   }
 </style>
 <h1>Re-Stellarator &mdash; The Traveller Map</h1>
+Conversions:
+<ul>
+<li> <code>VII</code> &rarr; <code>D</code>
+<li> <code>D</code> &rarr; <code>V</code> if it's not the last star (unless it's the only star)
+<li> Convert all remaining white dwarf stars to <code>D</code>
+<li> TODO: Forbid size IV for K5-K9 and M0-M9, size VI for A0-A9 and F0-F4
+</ul>
+
 <textarea id=in>
 </textarea>
 <br><label><input type=checkbox id=expand> Expand fields </label>
@@ -31,17 +39,17 @@ function fix(world) {
 
 function fixStellar(s) {
   var stars = [], m;
-  while (m = /^([OBAFGKM][0-9] ?(?:Ia|Ib|II|III|IV|V|VI|VII|D)|[OAFGKML] ?D|D|BD|BH)\b\s*/.exec(s)) {
+  while (m = /^([OBAFGKM][0-9] ?(?:Ia|Ib|II|III|IV|V|VI|VII|D)|[OAFGKML] ?D|D|BD|BH|D[OBAFGKM])\b\s*/.exec(s)) {
     stars.push(m[1]);
     s = s.substring(m[0].length);
   }
+  if (s) console.log('leftover: ' + s);
   stars = stars.map(function(star, index) {
+    if (m = /^(D)([OBAFGKM])$/.exec(star))
+      star = m[2] + m[1];
+
     if (m = (/^([OBAFGKM][0-9]) ?(Ia|Ib|II|III|IV|V|VI|VII|D)\b/.exec(star) || /^([OAFGKML]) ?(D)/.exec(star))) {
       var spec = m[1], lum = m[2];
-
-      // VI -> V
-      if (lum === 'VI')
-        lum = 'V';
 
       // VII -> D
       if (lum === 'VII')
