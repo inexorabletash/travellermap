@@ -1350,15 +1350,15 @@ var Util = {
     if (date === 'milieu') {
       var milieu = this.namedOptions.get('milieu') || 'M1105';
       year = (milieu === 'IW') ? -2404 : Number(milieu.replace('M', ''));
-    } else if ((m = /^(\d+)-(\d+)$/.exec(date))) {
+    } else if ((m = /^(-?\d+)-(\d+)$/.exec(date))) {
       // day-year, e.g. 001-1105
       year = Number(m[2]) + (Number(m[1]) - 1) / 365;
       w = 0.1;
-    } else if (/^(\d+)\.(\d*)$/.test(date)) {
+    } else if (/^(-?\d+)\.(\d*)$/.test(date)) {
       // decimal year, e.g. 1105.5
       year = Number(date);
       w = 0.1;
-    } else if (/^\d+$/.test(date)) {
+    } else if (/^-?\d+$/.test(date)) {
       // year
       year = Number(date) + 0.5;
       w = 1;
@@ -1372,6 +1372,8 @@ var Util = {
 
     // Per MWM: Wave crosses Ring 10,000 [Reference] on 045-1281
     var radius = (year - (1281 + (45-1) / 365)) * vel + y;
+    if (radius < 0)
+      return;
 
     var ctx = this.ctx;
     ctx.save();
