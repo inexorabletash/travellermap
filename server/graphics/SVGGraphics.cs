@@ -595,6 +595,10 @@ namespace Maps.Rendering
         {
             DrawRectangle(pen, null, x, y, width, height);
         }
+        public void DrawRectangle(AbstractPen pen, RectangleF rect)
+        {
+            DrawRectangle(pen, null, rect.X, rect.Y, rect.Width, rect.Height);
+        }
         public void DrawEllipse(AbstractBrush brush, float x, float y, float width, float height)
         {
             DrawEllipse(null, brush, x, y, width, height);

@@ -63,6 +63,7 @@ namespace Maps.Rendering
         public void DrawClosedCurve(AbstractPen pen, PointF[] points, float tension) { Apply(pen); g.DrawClosedCurve(this.pen, points, tension, FillMode.Winding); }
         public void DrawClosedCurve(AbstractBrush brush, PointF[] points, float tension) { Apply(brush); g.FillClosedCurve(this.brush, points, FillMode.Winding, tension); }
         public void DrawRectangle(AbstractPen pen, float x, float y, float width, float height) { Apply(pen); g.DrawRectangle(this.pen, x, y, width, height); }
+        public void DrawRectangle(AbstractPen pen, RectangleF rect) { Apply(pen); g.DrawRectangle(this.pen, rect.X, rect.Y, rect.Width, rect.Height); }
         public void DrawRectangle(AbstractBrush brush, float x, float y, float width, float height) { Apply(brush); g.FillRectangle(this.brush, x, y, width, height); }
         public void DrawRectangle(AbstractBrush brush, RectangleF rect) { Apply(brush); g.FillRectangle(this.brush, rect); }
         public void DrawEllipse(AbstractPen pen, float x, float y, float width, float height) { Apply(pen); g.DrawEllipse(this.pen, x, y, width, height); }

@@ -58,12 +58,7 @@ namespace Maps.Rendering
         private readonly AbstractMatrix worldSpaceToImageSpace;
         public AbstractMatrix ImageSpaceToWorldSpace { get { return imageSpaceToWorldSpace;  } }
 
-        private static readonly RectangleF galacticBounds = new RectangleF(-14598.67f, -23084.26f, 29234.1133f, 25662.4746f); // TODO: Don't hardcode
-        private static readonly Rectangle galaxyImageRect = new Rectangle(-18257, -26234, 36551, 32462); // Chosen to match T5 pp.416
-
-        // This transforms the Linehan galactic structure to the Mikesh galactic structure
-        // See https://travellermap.blogspot.com/2009/03/galaxy-scale-mismatch.html
-        private static readonly AbstractMatrix xformLinehanToMikesh = new AbstractMatrix(0.9181034f, 0.0f, 0.0f, 0.855192542f, 120.672432f, 86.34569f);
+        private static readonly RectangleF galaxyImageRect = new Rectangle(-18257, -26234, 36551, 32462); // Chosen to match T5 pp.416
 
         private static readonly Rectangle riftImageRect = new Rectangle(-1374, -827, 2769, 1754);
 
@@ -249,11 +244,10 @@ namespace Maps.Rendering
                     //------------------------------------------------------------
                     // Deep background (Galaxy)
                     //------------------------------------------------------------
-                    if (styles.showGalaxyBackground && styles.deepBackgroundOpacity > 0f && galacticBounds.IntersectsWith(tileRect))
+                    if (styles.showGalaxyBackground && styles.deepBackgroundOpacity > 0f && galaxyImageRect.IntersectsWith(tileRect))
                     {
                         using (graphics.Save())
                         {
-                            graphics.MultiplyTransform(xformLinehanToMikesh);
                             AbstractImage galaxyImage = styles.lightBackground ? s_galaxyImageGray : s_galaxyImage;
                             graphics.DrawImageAlpha(styles.deepBackgroundOpacity, galaxyImage, galaxyImageRect);
                         }

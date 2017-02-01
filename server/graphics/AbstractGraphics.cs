@@ -29,6 +29,7 @@ namespace Maps.Rendering
         void DrawClosedCurve(AbstractPen pen, PointF[] points, float tension = 0.5f);
         void DrawClosedCurve(AbstractBrush brush, PointF[] points, float tension = 0.5f);
         void DrawRectangle(AbstractPen pen, float x, float y, float width, float height);
+        void DrawRectangle(AbstractPen pen, RectangleF rect);
         void DrawRectangle(AbstractBrush brush, float x, float y, float width, float height);
         void DrawRectangle(AbstractBrush brush, RectangleF rect);
         void DrawEllipse(AbstractPen pen, float x, float y, float width, float height);

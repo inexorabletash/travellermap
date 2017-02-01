@@ -1367,8 +1367,8 @@ var Util = {
     // Per MWM: Velocity of wave is PI * c
     var vel /*pc/y*/ = Math.PI /*ly/y*/ / 3.26 /*ly/pc*/;
 
-    // Assumption: center is 7000pc coreward
-    var x = 0, y = 7000;
+    // Per MWM: center is 10000pc coreward
+    var x = 0, y = 10000;
 
     // Per MWM: Wave crosses Ring 10,000 [Reference] on 045-1281
     var radius = (year - (1281 + (45-1) / 365)) * vel + y;
