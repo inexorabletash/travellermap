@@ -332,10 +332,10 @@ namespace Maps.Rendering
             macroNames.smallFontInfo = new FontInfo(DEFAULT_FONT, 5f / 1.4f, FontStyle.Regular);
             macroNames.mediumFontInfo = new FontInfo(DEFAULT_FONT, 6.5f / 1.4f, FontStyle.Italic);
 
-            float megaNameScaleFactor = 1.0f * onePixel;
+            float megaNameScaleFactor = Math.Min(35f, 0.75f * onePixel);
             megaNames.fontInfo = new FontInfo(DEFAULT_FONT, 24f * megaNameScaleFactor, FontStyle.Bold);
             megaNames.mediumFontInfo = new FontInfo(DEFAULT_FONT, 22f * megaNameScaleFactor, FontStyle.Regular);
-            megaNames.smallFontInfo = new FontInfo(DEFAULT_FONT, 20f * megaNameScaleFactor, FontStyle.Italic);
+            megaNames.smallFontInfo = new FontInfo(DEFAULT_FONT, 18f * megaNameScaleFactor, FontStyle.Italic);
 
             capitals.fillColor = Color.Wheat;
             capitals.textColor = Color.Red;

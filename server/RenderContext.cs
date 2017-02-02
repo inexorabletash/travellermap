@@ -87,13 +87,13 @@ namespace Maps.Rendering
         private static readonly MapLabel[] megaLabels =
         {
             new MapLabel("Charted Space", 0, 400, true),
-            new MapLabel("Zhodani Core Expeditions", 0, -2000, true),
-            new MapLabel("Core Sophonts", 0, -10000),
-            new MapLabel("Abyssals", -12000, -8500),
-            new MapLabel("Denizens", -7000, -7000),
-            new MapLabel("Essaray", 6000, -12000),
-            new MapLabel("Dushis Khurisi", 0, -19000, true),
-            new MapLabel("The Barren Arm", 8000, -4500, true),
+            new MapLabel("Zhodani\nCore\nExpeditions", 0, -3500, true),
+            new MapLabel("Core Sophonts", 0, -12500),
+            new MapLabel("Abyssals", -13000, -10000),
+            new MapLabel("Denizens", -7500, -7500),
+            new MapLabel("Essaray", 6000, -16000),
+            new MapLabel("Dushis Khurisi", 0, -22000, true),
+            new MapLabel("The\nBarren\nArm", 8000, -4500, true),
         };
 
         private static readonly string[] borderFiles = {
