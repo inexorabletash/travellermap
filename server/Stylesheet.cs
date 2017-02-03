@@ -316,9 +316,11 @@ namespace Maps.Rendering
 
             sectorName.fontInfo = new FontInfo(DEFAULT_FONT, 5.5f);
             subsectorNames.fontInfo = new FontInfo(DEFAULT_FONT, 1.5f);
-            droyneWorlds.fontInfo = new FontInfo(DEFAULT_FONT, onePixel * 12f);
-            ancientsWorlds.fontInfo = new FontInfo(DEFAULT_FONT, onePixel * 12f);
-            minorHomeWorlds.fontInfo = new FontInfo(DEFAULT_FONT, onePixel * 12f);
+
+            float overlayFontSize = Math.Max(onePixel * 12f, 0.375f);
+            droyneWorlds.fontInfo = new FontInfo(DEFAULT_FONT, overlayFontSize);
+            ancientsWorlds.fontInfo = new FontInfo(DEFAULT_FONT, overlayFontSize);
+            minorHomeWorlds.fontInfo = new FontInfo(DEFAULT_FONT, overlayFontSize);
 
             droyneWorlds.content = "\u2605\u2606"; // BLACK STAR / WHITE STAR
             minorHomeWorlds.content = "\u273B"; // TEARDROP-SPOKED ASTERISK
@@ -748,9 +750,8 @@ namespace Maps.Rendering
                 : Util.MediaTypeName_Image_Png;
 
             pseudoRandomStars.fillColor = foregroundColor;
-            droyneWorlds.textColor = foregroundColor;
-            minorHomeWorlds.textColor = foregroundColor;
-            ancientsWorlds.textColor = foregroundColor;
+            droyneWorlds.textColor = minorHomeWorlds.textColor = ancientsWorlds.textColor = 
+                microBorders.textColor;
 
             megaNames.textColor = foregroundColor;
             megaNames.textHighlightColor = highlightColor;
