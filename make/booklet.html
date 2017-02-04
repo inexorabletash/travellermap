@@ -3,12 +3,12 @@
 <title>Sector Booklet - Traveller Map</title>
 <meta charset="utf-8">
 <link rel="shortcut icon" href="../favicon.ico">
-<link rel="stylesheet" href="../site.css?update=2016-10-02">
+<link rel="stylesheet" href="../site.css?update=2016-10-16">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
 <script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.29/polyfill.min.js"></script>
-<script src="../map.js?update=2016-10-13"></script>
+<script src="../map.js?update=2017-01-31"></script>
 <script src="post.js?update=2016-10-15"></script>
-<script src="booklet.js?update=2016-09-16"></script>
+<script src="booklet.js?update=2017-02-03"></script>
 <style>
 @import url(https://fonts.googleapis.com/css?family=Marcellus|PT+Sans+Narrow);
 
@@ -17,6 +17,9 @@
 #input { margin: 8px; }
 
 body.render #input { display: none; }
+
+#option_columns > tbody> tr > td { padding: 0 20px; }
+#label_grid { font-size: 10pt; }
 
 /* Booklet ============================== */
 
@@ -271,6 +274,13 @@ table.uwp-data {
 
 .uwp-data .world-name.hipop { text-transform: uppercase; }
 
+
+.style-classic .world-ix,
+.style-classic .world-ex,
+.style-classic .world-cx,
+.style-classic .world-nobility,
+.style-classic .world-worlds { display: none; }
+
 td.neighbor {
   text-align: center;
   font-weight: bold;
@@ -518,6 +528,27 @@ table.subsector-list tr td:first-of-type {
             spellcheck="false" wrap="off" cols="80" rows="10"></textarea>
     </form>
 
+      </li>
+      <li>
+        Select Options:
+
+        <table id="option_columns">
+          <tr>
+            <td>
+              <table id="label_grid">
+                <tr>
+                  <td style="text-align: right">Style:</td>
+                  <td>
+                    <select id="style" name="style">
+                      <option selected value="t5">Traveller 5 (with Ix/Ex/Cx/etc)</option>
+                      <option value="classic">Classic Traveller (fewer fields)</option>
+                    </select>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
       </li>
       <li>
         Click

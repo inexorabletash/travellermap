@@ -210,6 +210,7 @@
         return;
       }
       document.body.classList.add('render');
+      document.body.classList.add('style-' + $('#style').value);
       render({
         data: form['data'].value,
         metadata: form['metadata'].value
