@@ -2,6 +2,7 @@
 using System.Net.Mime;
 using System.Text;
 using System.Web;
+using Maps.Serialization;
 
 namespace Maps.API
 {
@@ -26,9 +27,10 @@ namespace Maps.API
                 SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, GetStringOption("milieu"));
                 Sector sector;
 
-                bool sscoords = GetBoolOption("sscoords", defaultValue: false);
-                bool includeMetadata = GetBoolOption("metadata", defaultValue: true);
-                bool includeHeader = GetBoolOption("header", defaultValue: true);
+                SectorSerializeOptions options = new Serialization.SectorSerializeOptions();
+                options.sscoords = GetBoolOption("sscoords", defaultValue: false);
+                options.includeMetadata = GetBoolOption("metadata", defaultValue: true);
+                options.includeHeader = GetBoolOption("header", defaultValue: true);
 
                 if (context.Request.HttpMethod == "POST")
                 {
@@ -37,7 +39,7 @@ namespace Maps.API
                     sector = new Sector(context.Request.InputStream, new ContentType(context.Request.ContentType).MediaType, errors);
                     if (lint && !errors.Empty)
                         throw new HttpError(400, "Bad Request", errors.ToString());
-                    includeMetadata = false;
+                    options.includeMetadata = false;
                 }
                 else if (HasOption("sx") && HasOption("sy"))
                 {
@@ -62,14 +64,13 @@ namespace Maps.API
                     throw new HttpError(400, "Bad Request", "No sector specified.");
                 }
 
-                WorldFilter filter = null;
                 if (HasOption("subsector"))
                 {
                     string subsector = GetStringOption("subsector");
                     int index = sector.SubsectorIndexFor(subsector);
                     if (index == -1)
                         throw new HttpError(404, "Not Found", string.Format("The specified subsector '{0}' was not found.", subsector));
-                    filter = (World world) => (world.Subsector == index);
+                    options.filter = (World world) => (world.Subsector == index);
                 }
                 else if (HasOption("quadrant"))
                 {
@@ -77,7 +78,7 @@ namespace Maps.API
                     int index = Sector.QuadrantIndexFor(quadrant);
                     if (index == -1)
                         throw new HttpError(400, "Bad Request", string.Format("The specified quadrant '{0}' is invalid.", quadrant));
-                    filter = (World world) => (world.Quadrant == index);
+                    options.filter = (World world) => (world.Quadrant == index);
                 }
 
                 string mediaType = GetStringOption("type");
@@ -98,7 +99,7 @@ namespace Maps.API
                 {
                     // Content
                     //
-                    sector.Serialize(resourceManager, writer, mediaType, includeMetadata: includeMetadata, includeHeader: includeHeader, sscoords: sscoords, filter: filter);
+                    sector.Serialize(resourceManager, writer, mediaType, options);
                     data = writer.ToString();
                 }
                 SendResult(context, data, encoding);

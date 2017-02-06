@@ -70,9 +70,10 @@ namespace Maps
         private ErrorLogger errors = null;
         public ErrorLogger ErrorList { get { return errors; } }
 
-        public void Serialize(TextWriter writer, string mediaType, bool includeHeader = true, bool sscoords = false, WorldFilter filter = null)
+        public void Serialize(TextWriter writer, string mediaType, SectorSerializeOptions options)
         {
-            SectorFileSerializer.ForType(mediaType).Serialize(writer, this.Where(world => filter == null || filter(world)), includeHeader: includeHeader, sscoords: sscoords);
+            SectorFileSerializer.ForType(mediaType).Serialize(writer,
+                options.filter == null ? this : this.Where(world => options.filter(world)), options);
         }
 
         public void Deserialize(Stream stream, string mediaType, ErrorLogger errors = null)

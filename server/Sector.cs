@@ -1,5 +1,6 @@
 using Json;
 using Maps.Rendering;
+using Maps.Serialization;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -265,7 +266,7 @@ namespace Maps
             }
         }
 
-        internal void Serialize(ResourceManager resourceManager, TextWriter writer, string mediaType, bool includeMetadata = true, bool includeHeader = true, bool sscoords = false, WorldFilter filter = null)
+        internal void Serialize(ResourceManager resourceManager, TextWriter writer, string mediaType, SectorSerializeOptions options)
         {
             WorldCollection worlds = GetWorlds(resourceManager);
 
@@ -275,11 +276,11 @@ namespace Maps
             if (mediaType == "TabDelimited")
             {
                 if (worlds != null)
-                    worlds.Serialize(writer, mediaType, includeHeader: includeHeader, filter: filter);
+                    worlds.Serialize(writer, mediaType, options);
                 return;
             }
 
-            if (includeMetadata)
+            if (options.includeMetadata)
             {
                 // Header
                 //
@@ -333,13 +334,13 @@ namespace Maps
 
             if (worlds == null)
             {
-                if (includeMetadata)
+                if (options.includeMetadata)
                     writer.WriteLine("# No world data available");
                 return;
             }
 
             // Allegiances
-            if (includeMetadata)
+            if (options.includeMetadata)
             {
                 // Use codes as present in the data, to match the worlds
                 foreach (string code in worlds.AllegianceCodes().OrderBy(s => s))
@@ -352,7 +353,7 @@ namespace Maps
             }
 
             // Worlds
-            worlds.Serialize(writer, mediaType, includeHeader: includeHeader, sscoords: sscoords, filter: filter);
+            worlds.Serialize(writer, mediaType, options);
         }
 
         // TODO: Move this elsewhere

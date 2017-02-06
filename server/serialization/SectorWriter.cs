@@ -7,19 +7,34 @@ using System.Text;
 
 namespace Maps.Serialization
 {
+    internal class SectorSerializeOptions
+    {
+        public SectorSerializeOptions(bool includeMetadata = true, bool includeHeader = true, bool sscoords = false)
+        {
+            this.includeMetadata = includeMetadata;
+            this.includeHeader = includeHeader;
+            this.sscoords = sscoords;
+        }
+
+        public bool includeMetadata = true;
+        public bool includeHeader = true;
+        public bool sscoords = false;
+        public WorldFilter filter = null;
+    }
+
     internal abstract class SectorFileSerializer
     {
         public abstract Encoding Encoding { get; }
 
-        public virtual void Serialize(Stream stream, IEnumerable<World> worlds, bool includeHeader=true, bool sscoords=false)
+        public virtual void Serialize(Stream stream, IEnumerable<World> worlds, SectorSerializeOptions options)
         {
             using (var writer = new StreamWriter(stream, Encoding))
             {
-                Serialize(writer, worlds, includeHeader:includeHeader, sscoords:sscoords);
+                Serialize(writer, worlds, options);
             }
         }
 
-        public abstract void Serialize(TextWriter writer, IEnumerable<World> worlds, bool includeHeader=true, bool sscoords=false);
+        public abstract void Serialize(TextWriter writer, IEnumerable<World> worlds, SectorSerializeOptions options);
 
         public static SectorFileSerializer ForType(string mediaType)
         {
@@ -37,10 +52,10 @@ namespace Maps.Serialization
     {
         public override Encoding Encoding { get { return Encoding.GetEncoding(1252); } }
 
-        public override void Serialize(TextWriter writer, IEnumerable<World> worlds, bool includeHeader=true, bool sscoords=false)
+        public override void Serialize(TextWriter writer, IEnumerable<World> worlds, SectorSerializeOptions options)
         {
 
-            if (includeHeader)
+            if (options.includeHeader)
             {
                 foreach (var line in new string[] {
                     " 1-14: Name",
@@ -67,7 +82,7 @@ namespace Maps.Serialization
             {
                 writer.WriteLine(worldFormat,
                     world.Name.Truncate(14),
-                    sscoords ? world.SubsectorHex : world.Hex,
+                    options.sscoords ? world.SubsectorHex : world.Hex,
                     world.UWP,
                     world.LegacyBaseCode,
                     world.Remarks.Truncate(15),
@@ -84,7 +99,7 @@ namespace Maps.Serialization
     {
         public override Encoding Encoding { get { return Util.UTF8_NO_BOM; } }
 
-        public override void Serialize(TextWriter writer, IEnumerable<World> worlds, bool includeHeader=true, bool sscoords=false)
+        public override void Serialize(TextWriter writer, IEnumerable<World> worlds, SectorSerializeOptions options)
         {
             ColumnSerializer formatter = new ColumnSerializer(new string[] {
                 "Hex",
@@ -109,7 +124,7 @@ namespace Maps.Serialization
             foreach (World world in worlds.OrderBy(world => world.SS))
             {
                 formatter.AddRow(new string[] {
-                    sscoords ? world.SubsectorHex : world.Hex,
+                    options.sscoords ? world.SubsectorHex : world.Hex,
                     world.Name,
                     world.UWP,
                     world.Remarks,
@@ -125,7 +140,7 @@ namespace Maps.Serialization
                     world.Stellar
                 });
             }
-            formatter.Serialize(writer, includeHeader);
+            formatter.Serialize(writer, options.includeHeader);
         }
 
         private static string DashIfEmpty(string s)
@@ -140,9 +155,9 @@ namespace Maps.Serialization
     {
         public override Encoding Encoding { get { return Util.UTF8_NO_BOM; } }
 
-        public override void Serialize(TextWriter writer, IEnumerable<World> worlds, bool includeHeader=true, bool sscoords=false)
+        public override void Serialize(TextWriter writer, IEnumerable<World> worlds, SectorSerializeOptions options)
         {
-            if (includeHeader)
+            if (options.includeHeader)
             {
                 writer.WriteLine(string.Join("\t", new string[] {
                     "Sector", "SS", "Hex", "Name", "UWP", "Bases", "Remarks", "Zone", "PBG", "Allegiance", "Stars",
@@ -153,7 +168,7 @@ namespace Maps.Serialization
                 writer.WriteLine(string.Join("\t", new string[] {
                     world.Sector.Abbreviation,
                     world.SS,
-                    sscoords ? world.SubsectorHex : world.Hex,
+                    options.sscoords ? world.SubsectorHex : world.Hex,
                     world.Name,
                     world.UWP,
                     world.Bases,
