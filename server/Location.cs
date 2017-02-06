@@ -88,9 +88,9 @@ namespace Maps
         public WorldLocation(Sector sector, World world)
         {
             if (sector == null)
-                throw new ArgumentNullException("sector");
+                throw new ArgumentNullException(nameof(sector));
             if (world == null)
-                throw new ArgumentNullException("world");
+                throw new ArgumentNullException(nameof(world));
 
             Sector = sector.Location;
             Hex = new Hex(world.X, world.Y);
@@ -108,7 +108,7 @@ namespace Maps
         public void Resolve(SectorMap.Milieu sectorMap, ResourceManager resourceManager, out Sector sector, out World world)
         {
             if (sectorMap == null)
-                throw new ArgumentNullException("sectorMap");
+                throw new ArgumentNullException(nameof(sectorMap));
 
             sector = null;
             world = null;
@@ -130,9 +130,9 @@ namespace Maps
         public SubsectorLocation(Sector sector, Subsector subsector)
         {
             if (sector == null)
-                throw new ArgumentNullException("sector");
+                throw new ArgumentNullException(nameof(sector));
             if (subsector == null)
-                throw new ArgumentNullException("subsector");
+                throw new ArgumentNullException(nameof(subsector));
 
             SectorLocation = sector.Location;
             Index = subsector.Index[0];
@@ -150,7 +150,7 @@ namespace Maps
         public void Resolve(SectorMap.Milieu sectorMap, out Sector sector, out Subsector subsector)
         {
             if (sectorMap == null)
-                throw new ArgumentNullException("sectorMap");
+                throw new ArgumentNullException(nameof(sectorMap));
 
             sector = null;
             subsector = null;
@@ -168,7 +168,7 @@ namespace Maps
         public SectorLocation(Sector sector)
         {
             if (sector == null)
-                throw new ArgumentNullException("sector");
+                throw new ArgumentNullException(nameof(sector));
 
             SectorCoords = sector.Location;
         }
@@ -182,7 +182,7 @@ namespace Maps
         public Sector Resolve(SectorMap.Milieu sectorMap)
         {
             if (sectorMap == null)
-                throw new ArgumentNullException("sectorMap");
+                throw new ArgumentNullException(nameof(sectorMap));
 
             return sectorMap.FromLocation(SectorCoords.X, SectorCoords.Y);
         }
@@ -206,7 +206,7 @@ namespace Maps
         public Sector Resolve(SectorMap.Milieu sectorMap)
         {
             if (sectorMap == null)
-                throw new ArgumentNullException("sectorMap");
+                throw new ArgumentNullException(nameof(sectorMap));
 
             return sectorMap.FromLocation(Astrometrics.CoordinatesToLocation(Coords).Sector);
         }

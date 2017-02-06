@@ -12,7 +12,7 @@ namespace Maps
         public LRUCache(int size)
         {
             if (size <= 0)
-                throw new ArgumentOutOfRangeException("size", "size must be > 0");
+                throw new ArgumentOutOfRangeException(nameof(size), size, "must be > 0");
             this.size = size;
         }
 

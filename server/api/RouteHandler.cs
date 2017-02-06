@@ -46,7 +46,7 @@ namespace Maps.API
 
                 IEnumerable<World> PathFinder.Map<World>.Adjacent(World world)
                 {
-                    if (world == null) throw new ArgumentNullException("world");
+                    if (world == null) throw new ArgumentNullException(nameof(world));
                     foreach (World w in new HexSelector(map, manager, Astrometrics.CoordinatesToLocation(world.Coordinates), Jump).Worlds)
                     {
                         // Exclude destination from filters.
@@ -63,8 +63,8 @@ namespace Maps.API
 
                 int PathFinder.Map<World>.Distance(World a, World b)
                 {
-                    if (a == null) throw new ArgumentNullException("a");
-                    if (b == null) throw new ArgumentNullException("b");
+                    if (a == null) throw new ArgumentNullException(nameof(a));
+                    if (b == null) throw new ArgumentNullException(nameof(b));
                     return Astrometrics.HexDistance(a.Coordinates, b.Coordinates);
                 }
             }
@@ -146,7 +146,7 @@ namespace Maps.API.Results
         public RouteStop() { }
         public RouteStop(World w)
         {
-            if (w == null) throw new ArgumentNullException("w");
+            if (w == null) throw new ArgumentNullException(nameof(w));
 
             Sector = w.SectorName;
             SectorX = w.Sector.X;

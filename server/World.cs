@@ -192,7 +192,7 @@ namespace Maps
         public bool HasCode(string code)
         {
             if (code == null)
-                throw new ArgumentNullException("code");
+                throw new ArgumentNullException(nameof(code));
 
             return codes.Any(s => s.Equals(code, StringComparison.InvariantCultureIgnoreCase));
         }
@@ -200,7 +200,7 @@ namespace Maps
         public string GetCodePrefix(string code)
         {
             if (code == null)
-                throw new ArgumentNullException("code");
+                throw new ArgumentNullException(nameof(code));
 
             return codes.Where(s => s.StartsWith(code, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
         }
@@ -208,7 +208,7 @@ namespace Maps
         public bool HasCodePrefix(string code)
         {
             if (code == null)
-                throw new ArgumentNullException("code");
+                throw new ArgumentNullException(nameof(code));
 
             return codes.Any(s => s.StartsWith(code, StringComparison.InvariantCultureIgnoreCase));
         }
@@ -264,7 +264,7 @@ namespace Maps
             set
             {
                 if (value == null)
-                    throw new ArgumentNullException("value");
+                    throw new ArgumentNullException(nameof(value));
                 codes = new CodeList(value);
             }
         }

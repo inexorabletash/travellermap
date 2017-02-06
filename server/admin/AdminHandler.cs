@@ -28,7 +28,7 @@ namespace Maps.Admin
         public void ProcessRequest(HttpContext context)
         {
             if (context == null)
-                throw new ArgumentNullException("context");
+                throw new ArgumentNullException(nameof(context));
 
             context.Response.Cache.SetCacheability(HttpCacheability.NoCache);
             if (!AdminAuthorized(context))

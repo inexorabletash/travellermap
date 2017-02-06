@@ -33,18 +33,18 @@ namespace Maps
             get
             {
                 if (x < 1 || x > Astrometrics.SectorWidth)
-                    throw new ArgumentOutOfRangeException("x");
+                    throw new ArgumentOutOfRangeException(nameof(x));
                 if (y < 1 || y > Astrometrics.SectorHeight)
-                    throw new ArgumentOutOfRangeException("y");
+                    throw new ArgumentOutOfRangeException(nameof(y));
 
                 return worlds[x - 1, y - 1];
             }
             set
             {
                 if (x < 1 || x > Astrometrics.SectorWidth)
-                    throw new ArgumentOutOfRangeException("x");
+                    throw new ArgumentOutOfRangeException(nameof(x));
                 if (y < 1 || y > Astrometrics.SectorHeight)
-                    throw new ArgumentOutOfRangeException("y");
+                    throw new ArgumentOutOfRangeException(nameof(y));
 
                 worlds[x - 1, y - 1] = value;
             }

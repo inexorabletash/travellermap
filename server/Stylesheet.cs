@@ -119,7 +119,7 @@ namespace Maps.Rendering
         public void Apply(ref AbstractPen pen)
         {
             if (width == 0f)
-                throw new ArgumentOutOfRangeException("pen", "Hairline pens not supported, set width > 0");
+                throw new ArgumentOutOfRangeException(nameof(width), width, "Hairline pens not supported, set width > 0");
 
             pen.Color = color;
             pen.Width = width;

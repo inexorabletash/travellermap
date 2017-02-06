@@ -138,7 +138,7 @@ namespace Maps.Rendering
         internal void Draw(AbstractGraphics graphics, RectangleF rect, AbstractPen pen)
         {
             if (graphics == null)
-                throw new ArgumentNullException("graphics");
+                throw new ArgumentNullException(nameof(graphics));
 
             RectangleF bounds = TransformedBounds;
             if (bounds.IntersectsWith(rect))
@@ -159,7 +159,7 @@ namespace Maps.Rendering
         internal void DrawName(AbstractGraphics graphics, RectangleF rect, Font font, AbstractBrush textBrush, LabelStyle labelStyle)
         {
             if (graphics == null)
-                throw new ArgumentNullException("graphics");
+                throw new ArgumentNullException(nameof(graphics));
 
             RectangleF bounds = TransformedBounds;
 
@@ -190,7 +190,7 @@ namespace Maps.Rendering
         internal void Fill(AbstractGraphics graphics, RectangleF rect, AbstractBrush fillBrush)
         {
             if (graphics == null)
-                throw new ArgumentNullException("graphics");
+                throw new ArgumentNullException(nameof(graphics));
 
             RectangleF bounds = TransformedBounds;
 
@@ -248,7 +248,7 @@ namespace Maps.Rendering
         internal void Paint(AbstractGraphics graphics, Color dotColor, AbstractBrush labelBrush, Font labelFont)
         {
             if (graphics == null)
-                throw new ArgumentNullException("graphics");
+                throw new ArgumentNullException(nameof(graphics));
 
             Point pt = Astrometrics.LocationToCoordinates(Location);
 

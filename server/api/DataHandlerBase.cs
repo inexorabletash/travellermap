@@ -32,7 +32,7 @@ namespace Maps.API
         public void ProcessRequest(HttpContext context)
         {
             if (context == null)
-                throw new ArgumentNullException("context");
+                throw new ArgumentNullException(nameof(context));
 
             // Configure caching
             if (context.Request.HttpMethod == "POST")
@@ -290,7 +290,7 @@ namespace Maps.API
                 if (HasOption("x") && HasOption("y"))
                     return Astrometrics.CoordinatesToLocation(GetIntOption("x", 0), GetIntOption("y", 0));
 
-                throw new ArgumentException("Context is missing required parameters", "context");
+                throw new ArgumentException("Context is missing required parameters", nameof(context));
             }
 
             protected void ParseOptions(ref MapOptions options, ref Stylesheet.Style style)

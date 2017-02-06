@@ -74,7 +74,7 @@ namespace Maps
                 {
                     throw new ArgumentException(string.Format("[{0}]: Sector already added at ({1},{2}): {3} (was {4})",
                         Name, sector.Location.X, sector.Location.Y, sector.Names[0].Text,
-                        locationMap[sector.Location].Names[0].Text));
+                        locationMap[sector.Location].Names[0].Text), nameof(sector));
                 }
 
                 sector.MilieuMap = this;
@@ -305,7 +305,7 @@ namespace Maps
         public void Merge(SectorCollection otherCollection)
         {
             if (otherCollection == null)
-                throw new ArgumentNullException("otherCollection");
+                throw new ArgumentNullException(nameof(otherCollection));
 
             if (otherCollection.Sectors != null)
                 Sectors.AddRange(otherCollection.Sectors);

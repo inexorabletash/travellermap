@@ -105,7 +105,7 @@ namespace Maps
         public void Merge(Sector metadataSource)
         {
             if (metadataSource == null)
-                throw new ArgumentNullException("metadataSource");
+                throw new ArgumentNullException(nameof(metadataSource));
 
             // TODO: This is very fragile; if a new type is added to Sector we need to add more code here.
 
@@ -193,7 +193,7 @@ namespace Maps
         public Subsector Subsector(int index)
         {
             if (index < 0 || index > 15)
-                throw new ArgumentOutOfRangeException("index");
+                throw new ArgumentOutOfRangeException(nameof(index));
 
             char alpha = (char)('A' + index);
 
@@ -203,9 +203,9 @@ namespace Maps
         public Subsector Subsector(int x, int y)
         {
             if (x < 0 || x > 3)
-                throw new ArgumentOutOfRangeException("x");
+                throw new ArgumentOutOfRangeException(nameof(x));
             if (y < 0 || y > 3)
-                throw new ArgumentOutOfRangeException("y");
+                throw new ArgumentOutOfRangeException(nameof(y));
 
             return Subsector(x + (y * 4));
         }
@@ -230,7 +230,7 @@ namespace Maps
 
         public static int QuadrantIndexFor(string label)
         {
-            if (label == null) throw new ArgumentNullException("label");
+            if (label == null) throw new ArgumentNullException(nameof(label));
 
             switch (label.ToLowerInvariant())
             {
@@ -786,7 +786,7 @@ namespace Maps
             }
             set
             {
-                if (value == null) throw new ArgumentNullException("value");
+                if (value == null) throw new ArgumentNullException(nameof(value));
 
                 string[] hexes = value.Split((char[])null, StringSplitOptions.RemoveEmptyEntries);
                 path = (from hex in hexes select new Hex(hex)).ToList();
