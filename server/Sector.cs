@@ -481,6 +481,79 @@ namespace Maps
         }
         private string stylesheetText;
 
+        internal SectorMap.MilieuMap MilieuMap { get; set; }
+
+        public IEnumerable<string> RoutesForWorld(World world)
+        {
+            Location loc = new Location(this.Location, new Hex(world.X, world.Y));
+
+            // Collect adjacent sectors
+            List<Sector> sectors = new List<Sector>();
+            if (MilieuMap == null)
+            {
+                sectors.Add(this);
+            }
+            else
+            {
+                for (int x = this.X - 1; x <= this.X + 1; ++x)
+                {
+                    for (int y = this.Y - 1; y <= this.Y + 1; ++y)
+                    {
+                        Sector sector = MilieuMap.FromLocation(new Point(x, y));
+                        if (x == X && y == X && sector != this)
+                            throw new ApplicationException("Sector lookup did not find itself");
+                        if (sector != null)
+                            sectors.Add(sector);
+                    }
+                }
+            }
+
+            // Collect routes linking to world
+            HashSet<string> routes = new HashSet<string>();
+            foreach (Sector sector in sectors)
+            {
+                foreach (Route route in sector.Routes)
+                {
+                    Location start, end;
+                    sector.RouteToStartEnd(route, out start, out end);
+                    if (start == end)
+                        continue;
+                    if (start != loc && end != loc)
+                        continue;
+                    if (start != loc)
+                        Util.Swap(ref start, ref end);
+
+                    string prefix =
+                        (string.IsNullOrWhiteSpace(route.Type) || route.Type.ToLowerInvariant() == "xboat") ? "Xb" : "Tr";
+
+                    string s;
+                    if (end.Sector == this.Location)
+                    {
+                        s = string.Format("{0}:{1}", prefix, end.Hex);
+                    }
+                    else
+                    {
+                        Sector endSector = MilieuMap.FromLocation(end.Sector);
+                        // Dangling route into non-detailed sector.
+                        if (endSector == null)
+                            continue;
+                        s = string.Format("{0}:{1}-{2}", prefix, endSector.Abbreviation, end.Hex);
+                    }
+                    routes.Add(s);
+                }
+            }
+            return routes;
+        }
+
+        public void RouteToStartEnd(Route route, out Location start, out Location end)
+        {
+            Point startSector = Location, endSector = Location;
+            startSector.Offset(route.StartOffset);
+            endSector.Offset(route.EndOffset);
+
+            start = new Location(startSector, route.Start);
+            end = new Location(endSector, route.End);
+        }
     }
 
     internal class Dotmap : Sector

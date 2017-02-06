@@ -482,5 +482,16 @@ namespace Maps
             if (Government == 6 && !(HasCodePrefix("O:") || HasCodePrefix("Mr") || HasCode("Re") || HasCode("Px")))
                 errors.Warning("Gov 6 missing O:/Mr/Re/Px", lineNumber, line);
         }
+
+        private string routes = null;
+        public string Routes
+        {
+            get
+            {
+                if (routes == null)
+                    routes = string.Join(" ", Sector.RoutesForWorld(this).OrderBy(s => s));
+                return routes;
+            }
+        }
     }
 }

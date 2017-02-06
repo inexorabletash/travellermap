@@ -9,15 +9,9 @@ namespace Maps.Serialization
 {
     internal class SectorSerializeOptions
     {
-        public SectorSerializeOptions(bool includeMetadata = true, bool includeHeader = true, bool sscoords = false)
-        {
-            this.includeMetadata = includeMetadata;
-            this.includeHeader = includeHeader;
-            this.sscoords = sscoords;
-        }
-
         public bool includeMetadata = true;
         public bool includeHeader = true;
+        public bool includeRoutes = false;
         public bool sscoords = false;
         public WorldFilter filter = null;
     }
@@ -101,7 +95,7 @@ namespace Maps.Serialization
 
         public override void Serialize(TextWriter writer, IEnumerable<World> worlds, SectorSerializeOptions options)
         {
-            ColumnSerializer formatter = new ColumnSerializer(new string[] {
+            List<string> cols = new List<string> {
                 "Hex",
                 "Name",
                 "UWP",
@@ -116,15 +110,19 @@ namespace Maps.Serialization
                 "W",
                 "A",
                 "Stellar"
-            });
+            };
+            if (options.includeRoutes)
+                cols.Add("Routes");
+
+            ColumnSerializer formatter = new ColumnSerializer(cols);
 
             formatter.SetMinimumWidth("Name", 20);
             formatter.SetMinimumWidth("Remarks", 20);
 
             foreach (World world in worlds.OrderBy(world => world.SS))
             {
-                formatter.AddRow(new string[] {
-                    options.sscoords ? world.SubsectorHex : world.Hex,
+                List<string> row = new List<string> {
+                    options.sscoords? world.SubsectorHex: world.Hex,
                     world.Name,
                     world.UWP,
                     world.Remarks,
@@ -138,7 +136,10 @@ namespace Maps.Serialization
                     world.Worlds > 0 ? world.Worlds.ToString() : "",
                     world.Allegiance,
                     world.Stellar
-                });
+                };
+                if (options.includeRoutes)
+                    row.Add(world.Routes);
+                formatter.AddRow(row); 
             }
             formatter.Serialize(writer, options.includeHeader);
         }

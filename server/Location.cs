@@ -42,6 +42,19 @@ namespace Maps
         }
         public static bool operator ==(Location a, Location b) { return a.Equals(b); }
         public static bool operator !=(Location a, Location b) { return !a.Equals(b); }
+
+        private static bool IsLessThan(Point a, Point b) { return (a.X < b.X) || (a.X == b.X && a.Y < b.Y); }
+        private static bool IsGreaterThan(Point a, Point b) { return (a.X > b.X) || (a.X == b.X && a.Y > b.Y); }
+
+        public static bool operator <(Location a, Location b)
+        {
+            return IsLessThan(a.Sector, b.Sector) || (a.Sector == b.Sector && a.Hex < b.Hex);
+        }
+        public static bool operator >(Location a, Location b)
+        {
+            return IsGreaterThan(a.Sector, b.Sector) || (a.Sector == b.Sector && a.Hex > b.Hex);
+        }
+
         public override int GetHashCode()
         {
             return Sector.GetHashCode() ^ Hex.GetHashCode();

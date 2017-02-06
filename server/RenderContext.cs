@@ -1571,28 +1571,18 @@ namespace Maps.Rendering
                     foreach (Route route in sector.Routes)
                     {
                         // Compute source/target sectors (may be offset)
-                        Point startSector = sector.Location, endSector = sector.Location;
-                        startSector.Offset(route.StartOffset);
-                        endSector.Offset(route.EndOffset);
-
-                        Location startLocation = new Location(startSector, route.Start);
-                        Location endLocation = new Location(endSector, route.End);
-
-                        PointF startPoint = Astrometrics.HexToCenter(Astrometrics.LocationToCoordinates(startLocation));
-                        PointF endPoint = Astrometrics.HexToCenter(Astrometrics.LocationToCoordinates(endLocation));
-
-                        if (startPoint == endPoint)
+                        Location startLocation, endLocation;
+                        sector.RouteToStartEnd(route, out startLocation, out endLocation);
+                        if (startLocation == endLocation)
                             continue;
 
                         // If drawing dashed lines twice and the start/end are swapped the
                         // dashes don't overlap correctly. So "sort" the points.
-                        if ((startPoint.X > endPoint.X) ||
-                            (startPoint.X == endPoint.X) && (startPoint.Y > endPoint.Y))
-                        {
-                            PointF tmp = startPoint;
-                            startPoint = endPoint;
-                            endPoint = tmp;
-                        }
+                        if (startLocation > endLocation)
+                            Util.Swap(ref startLocation, ref endLocation);
+
+                        PointF startPoint = Astrometrics.HexToCenter(Astrometrics.LocationToCoordinates(startLocation));
+                        PointF endPoint = Astrometrics.HexToCenter(Astrometrics.LocationToCoordinates(endLocation));
 
                         // Shorten line to leave room for world glyph
                         OffsetSegment(ref startPoint, ref endPoint, 0.25f);

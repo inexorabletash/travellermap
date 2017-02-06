@@ -31,6 +31,7 @@ namespace Maps.API
                 options.sscoords = GetBoolOption("sscoords", defaultValue: false);
                 options.includeMetadata = GetBoolOption("metadata", defaultValue: true);
                 options.includeHeader = GetBoolOption("header", defaultValue: true);
+                options.includeRoutes = GetBoolOption("routes", defaultValue: false);
 
                 if (context.Request.HttpMethod == "POST")
                 {

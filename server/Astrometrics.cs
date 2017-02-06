@@ -149,6 +149,9 @@ namespace Maps
         public bool IsEmpty { get { return X == 0 && Y == 0; } }
         public bool IsValid { get { return 1 <= X && X <= Astrometrics.SectorWidth && 1 <= Y && Y <= Astrometrics.SectorHeight; } }
 
+        public static bool operator <(Hex a, Hex b) { return (a.X < b.X) || (a.X == b.X && a.Y < b.Y); }
+        public static bool operator >(Hex a, Hex b) { return (a.X > b.X) || (a.X == b.X && a.Y > b.Y); }
+
         public int ToInt()
         {
             return X * 100 + Y;

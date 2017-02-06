@@ -47,7 +47,7 @@ namespace Maps
         /// <summary>
         /// Represents a single milieu. Contains maps from name to Sector and coordinates to Sector.
         /// </summary>
-        private class MilieuMap
+        internal class MilieuMap
         {
             public MilieuMap(string name) { Name = name; }
             public string Name { get; }
@@ -76,6 +76,8 @@ namespace Maps
                         Name, sector.Location.X, sector.Location.Y, sector.Names[0].Text,
                         locationMap[sector.Location].Names[0].Text));
                 }
+
+                sector.MilieuMap = this;
 
                 locationMap.Add(sector.Location, sector);
 
