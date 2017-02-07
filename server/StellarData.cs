@@ -418,7 +418,7 @@ namespace Maps
                 throw new InvalidSystemException("Could not parse as a system");
 
             if (reader.Peek() != -1)
-                throw new InvalidSystemException(string.Format("Saw unexpected character: {0}", (char)reader.Read()));
+                throw new InvalidSystemException($"Saw unexpected character: {(char)reader.Read()}");
 
             return system.ToString(format);
         }

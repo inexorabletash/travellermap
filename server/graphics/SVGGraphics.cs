@@ -62,9 +62,9 @@ namespace Maps.Rendering
                 if (color.IsEmpty || color.A == 0)
                     return; // Inherits "None" from root
                 else if (color.A < 255)
-                    attributes[name] = string.Format("rgba({0},{1},{2},{3:G5})", color.R, color.G, color.B, color.A/255f);
+                    attributes[name] = $"rgba({color.R},{color.G},{color.B},{color.A / 255f:G5})";
                 else
-                    attributes[name] = string.Format("rgb({0},{1},{2})", color.R, color.G, color.B);
+                    attributes[name] = $"rgb({color.R},{color.G},{color.B})";
             }
 
             public void Apply(AbstractPen pen)
@@ -84,16 +84,16 @@ namespace Maps.Rendering
                             // "solid" is SVG default
                             break;
                         case DashStyle.Dot:
-                            Set("stroke-dasharray", string.Format("{0:G2} {0:G2}", pen.Width));
+                            Set("stroke-dasharray", $"{pen.Width:G2} {pen.Width:G2}");
                             break;
                         case DashStyle.Dash:
-                            Set("stroke-dasharray", string.Format("{0:G2} {1:G2}", pen.Width * 2, pen.Width));
+                            Set("stroke-dasharray", $"{pen.Width * 2:G2} {pen.Width:G2}");
                             break;
                         case DashStyle.DashDot:
-                            Set("stroke-dasharray", string.Format("{0:G2} {1:G2} {1:G2} {1:G2}", pen.Width * 2, pen.Width));
+                            Set("stroke-dasharray", $"{pen.Width * 2:G2} {pen.Width:G2} {pen.Width:G2} {pen.Width:G2}");
                             break;
                         case DashStyle.DashDotDot:
-                            Set("stroke-dasharray", string.Format("{0:G2} {1:G2} {1:G2} {1:G2} {1:G2} {1:G2}", pen.Width * 2, pen.Width));
+                            Set("stroke-dasharray", $"{pen.Width * 2:G2} {pen.Width:G2} {pen.Width:G2} {pen.Width:G2} {pen.Width:G2} {pen.Width:G2}");
                             break;
                         case DashStyle.Custom:
                             if (pen.CustomDashPattern == null)
@@ -151,12 +151,12 @@ namespace Maps.Rendering
             {
                 if (!used)
                 {
-                    b.Append(string.Format("M{0:G5},{1:G5}", x, y));
+                    b.Append($"M{x:G5},{y:G5}");
                     used = true;
                 }
                 else
                 {
-                    b.Append(string.Format("m{0:G5},{1:G5}", x - lastX, y - lastY));
+                    b.Append($"m{x - lastX:G5},{y - lastY:G5}");
                 }
                 lastX = x;
                 lastY = y;
@@ -165,20 +165,20 @@ namespace Maps.Rendering
             {
                 if (!used)
                 {
-                    b.Append(string.Format("L{0:G5},{1:G5}", x, y));
+                    b.Append($"L{x:G5},{y:G5}");
                     used = true;
                 }
                 else if (x == lastX)
                 {
-                    b.Append(string.Format("v{0:G5}", y - lastY));
+                    b.Append($"v{y - lastY:G5}");
                 }
                 else if (y == lastY)
                 {
-                    b.Append(string.Format("h{0:G5}", x - lastX));
+                    b.Append($"h{x - lastX:G5}");
                 }
                 else
                 {
-                    b.Append(string.Format("l{0:G5},{1:G5}", x - lastX, y - lastY));
+                    b.Append($"l{x - lastX:G5},{y - lastY:G5}");
                 }
                 lastX = x;
                 lastY = y;
@@ -187,14 +187,12 @@ namespace Maps.Rendering
             {
                 if (!used)
                 {
-                    b.Append(string.Format("A{0:G5},{1:G5},{2:G5},{3},{4},{5:G5},{6:G5}",
-                        rx, ry, phi, arcFlag, sweepFlag, x, y));
+                    b.Append($"A{rx:G5},{ry:G5},{phi:G5},{arcFlag},{sweepFlag},{x:G5},{y:G5}");
                     used = true;
                 }
                 else
                 {
-                    b.Append(string.Format("a{0:G5},{1:G5},{2:G5},{3},{4},{5:G5},{6:G5}",
-                        rx, ry, phi, arcFlag, sweepFlag, x - lastX, y - lastY));
+                    b.Append($"a{rx:G5},{ry:G5},{phi:G5},{arcFlag},{sweepFlag},{x - lastX:G5},{y - lastY:G5}");
                 }
                 lastX = x;
                 lastY = y;
@@ -203,14 +201,12 @@ namespace Maps.Rendering
             {
                 if (!used)
                 {
-                    b.Append(string.Format("C,{0:G5},{1:G5},{2:G5},{3:G5},{4:G5},{5:G5}",
-                        x1, y1, x2, y2, x, y));
+                    b.Append($"C,{x1:G5},{y1:G5},{x2:G5},{y2:G5},{x:G5},{y:G5}");
                     used = true;
                 }
                 else
                 {
-                    b.Append(string.Format("c{0:G5},{1:G5},{2:G5},{3:G5},{4:G5},{5:G5}",
-                        x1 - lastX, y1 - lastY, x2 - lastX, y2 - lastY, x - lastX, y - lastY));
+                    b.Append($"c{x1 - lastX:G5},{y1 - lastY:G5},{x2 - lastX:G5},{y2 - lastY:G5},{x - lastX:G5},{y - lastY:G5}");
                 }
                 lastX = x;
                 lastY = y;
@@ -275,11 +271,11 @@ namespace Maps.Rendering
             Optimize(root);
 
             writer.WriteLine("<?xml version = \"1.0\" encoding=\"utf-8\"?>");
-            writer.Write(string.Format("<svg version=\"1.1\" baseProfile=\"full\" " +
-                                "xmlns=\"http://www.w3.org/2000/svg\" " +
-                                "xmlns:xlink=\"http://www.w3.org/1999/xlink\" " +
-                                "width=\"{0}\" height=\"{1}\">",
-                width, height));
+            writer.Write(
+                "<svg version=\"1.1\" baseProfile=\"full\" " + 
+                "xmlns=\"http://www.w3.org/2000/svg\" " +
+                "xmlns:xlink=\"http://www.w3.org/1999/xlink\" " +
+                $"width=\"{width}\" height=\"{height}\">");
             if (defs.children.Count > 0)
                 defs.Serialize(writer);
             root.Serialize(writer);
@@ -469,7 +465,7 @@ namespace Maps.Rendering
             r.Set("height", rect.Height);
 
             var e = Open(new Element(ElementNames.G));
-            e.Set("clip-path", string.Format("url(#{0})", clipPath.Get("id")));
+            e.Set("clip-path", $"url(#{clipPath.Get("id")})");
         }
 
         public void IntersectClip(AbstractPath path)
@@ -479,7 +475,7 @@ namespace Maps.Rendering
             p.Set("d", ToSVG(path));
 
             var e = Open(new Element(ElementNames.G));
-            e.Set("clip-path", string.Format("url(#{0})", clipPath.Get("id")));
+            e.Set("clip-path", $"url(#{clipPath.Get("id")})");
         }
         #endregion
 
@@ -528,23 +524,22 @@ namespace Maps.Rendering
         public void ScaleTransform(float scaleX, float scaleY)
         {
             var e = Open(new Element(ElementNames.G));
-            e.Set("transform", string.Format("scale({0:G5} {1:G5})", scaleX, scaleY));
+            e.Set("transform", $"scale({scaleX:G5} {scaleY:G5})");
         }
         public void TranslateTransform(float dx, float dy)
         {
             var e = Open(new Element(ElementNames.G));
-            e.Set("transform", string.Format("translate({0:G5},{1:G5})", dx, dy));
+            e.Set("transform", $"translate({dx:G5},{dy:G5})");
         }
         public void RotateTransform(float angle)
         {
             var e = Open(new Element(ElementNames.G));
-            e.Set("transform", string.Format("rotate({0:G5})", angle));
+            e.Set("transform", $"rotate({angle:G5})");
         }
         public void MultiplyTransform(AbstractMatrix m)
         {
             var e = Open(new Element(ElementNames.G));
-            e.Set("transform", string.Format("matrix({0:G5},{1:G5},{2:G5},{3:G5},{4:G5},{5:G5})", 
-                m.M11, m.M12, m.M21, m.M22, m.OffsetX, m.OffsetY));
+            e.Set("transform", $"matrix({m.M11:G5},{m.M12:G5},{m.M21:G5},{m.M22:G5},{m.OffsetX:G5},{m.OffsetY:G5})");
         }
         #endregion
 

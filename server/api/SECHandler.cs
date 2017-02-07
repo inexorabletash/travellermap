@@ -50,7 +50,7 @@ namespace Maps.API
                     sector = map.FromLocation(sx, sy);
 
                     if (sector == null)
-                        throw new HttpError(404, "Not Found", string.Format("The sector at {0},{1} was not found.", sx, sy));
+                        throw new HttpError(404, "Not Found", $"The sector at {sx},{sy} was not found.");
                 }
                 else if (HasOption("sector"))
                 {
@@ -58,7 +58,7 @@ namespace Maps.API
                     sector = map.FromName(sectorName);  
 
                     if (sector == null)
-                        throw new HttpError(404, "Not Found", string.Format("The specified sector '{0}' was not found.", sectorName));
+                        throw new HttpError(404, "Not Found", $"The specified sector '{sectorName}' was not found.");
                 }
                 else
                 {
@@ -70,7 +70,7 @@ namespace Maps.API
                     string subsector = GetStringOption("subsector");
                     int index = sector.SubsectorIndexFor(subsector);
                     if (index == -1)
-                        throw new HttpError(404, "Not Found", string.Format("The specified subsector '{0}' was not found.", subsector));
+                        throw new HttpError(404, "Not Found", $"The specified subsector '{subsector}' was not found.");
                     options.filter = (World world) => (world.Subsector == index);
                 }
                 else if (HasOption("quadrant"))
@@ -78,7 +78,7 @@ namespace Maps.API
                     string quadrant = GetStringOption("quadrant");
                     int index = Sector.QuadrantIndexFor(quadrant);
                     if (index == -1)
-                        throw new HttpError(400, "Bad Request", string.Format("The specified quadrant '{0}' is invalid.", quadrant));
+                        throw new HttpError(400, "Bad Request", $"The specified quadrant '{quadrant}' is invalid.");
                     options.filter = (World world) => (world.Quadrant == index);
                 }
 

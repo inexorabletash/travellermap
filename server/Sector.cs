@@ -114,12 +114,10 @@ namespace Maps
             if (metadataSource.DataFile != null && DataFile != null)
             {
                 if (metadataSource.DataFile.FileName != DataFile.FileName)
-                    throw new Exception(string.Format("Mismatching DataFile.Name entries for {0}: {1} vs. {2}",
-                        this.Names[0].Text, metadataSource.DataFile.FileName, DataFile.FileName));
+                    throw new Exception($"Mismatching DataFile.Name entries for {Names[0].Text}: {metadataSource.DataFile.FileName} vs. {DataFile.FileName}");
 
                 if (metadataSource.DataFile.Type != DataFile.Type)
-                    throw new Exception(string.Format("Mismatching DataFile.Type entries for {0}: {1} vs. {2}", 
-                        this.Names[0].Text, metadataSource.DataFile.Type, DataFile.Type));
+                    throw new Exception($"Mismatching DataFile.Type entries for {Names[0].Text}: {metadataSource.DataFile.Type} vs. {DataFile.Type}"); 
             }
 
             if (metadataSource.DataFile != null) DataFile = metadataSource.DataFile;
@@ -288,20 +286,20 @@ namespace Maps
                 writer.WriteLine("# " + DateTime.Now.ToString("yyyy-MM-ddTHH:mm:sszzz", DateTimeFormatInfo.InvariantInfo));
                 writer.WriteLine();
 
-                writer.WriteLine("# {0}", Names[0]);
-                writer.WriteLine("# {0},{1}", X, Y);
+                writer.WriteLine($"# {Names[0]}");
+                writer.WriteLine($"# {X},{Y}");
 
                 writer.WriteLine();
                 foreach (var name in Names)
                 {
                     if (name.Lang != null)
-                        writer.WriteLine("# Name: {0} ({1})", name.Text, name.Lang);
+                        writer.WriteLine($"# Name: {name.Text} ({name.Lang})");
                     else
-                        writer.WriteLine("# Name: {0}", name);
+                        writer.WriteLine($"# Name: {name}");
                 }
 
                 writer.WriteLine();
-                writer.WriteLine("# Milieu: {0}", CanonicalMilieu);
+                writer.WriteLine($"# Milieu: {CanonicalMilieu}");
 
                 if (Credits != null)
                 {
@@ -309,17 +307,17 @@ namespace Maps
                     stripped = Regex.Replace(stripped, @"\s+", " ");
                     stripped = stripped.Trim();
                     writer.WriteLine();
-                    writer.WriteLine("# Credits: {0}", stripped);
+                    writer.WriteLine($"# Credits: {stripped}");
                 }
 
                 if (DataFile != null)
                 {
                     writer.WriteLine();
-                    if (DataFile.Author != null) { writer.WriteLine("# Author:    {0}", DataFile.Author); }
-                    if (DataFile.Publisher != null) { writer.WriteLine("# Publisher: {0}", DataFile.Publisher); }
-                    if (DataFile.Copyright != null) { writer.WriteLine("# Copyright: {0}", DataFile.Copyright); }
-                    if (DataFile.Source != null) { writer.WriteLine("# Source:    {0}", DataFile.Source); }
-                    if (DataFile.Ref != null) { writer.WriteLine("# Ref:       {0}", DataFile.Ref); }
+                    if (DataFile.Author != null) { writer.WriteLine($"# Author:    {DataFile.Author}"); }
+                    if (DataFile.Publisher != null) { writer.WriteLine($"# Publisher: {DataFile.Publisher}"); }
+                    if (DataFile.Copyright != null) { writer.WriteLine($"# Copyright: {DataFile.Copyright}"); }
+                    if (DataFile.Source != null) { writer.WriteLine($"# Source:    {DataFile.Source}"); }
+                    if (DataFile.Ref != null) { writer.WriteLine($"# Ref:       {DataFile.Ref}"); }
                 }
 
                 writer.WriteLine();
@@ -327,7 +325,7 @@ namespace Maps
                 {
                     char c = (char)('A' + i);
                     Subsector ss = Subsector(c);
-                    writer.WriteLine("# Subsector {0}: {1}", c, ss?.Name ?? "");
+                    writer.WriteLine($"# Subsector {c}: {ss?.Name ?? ""}");
                 }
                 writer.WriteLine();
             }
@@ -346,8 +344,10 @@ namespace Maps
                 foreach (string code in worlds.AllegianceCodes().OrderBy(s => s))
                 {
                     var alleg = GetAllegianceFromCode(code);
-                    if (alleg != null)
-                        writer.WriteLine("# Alleg: {0}: \"{1}\"", isT5 ? code : SecondSurvey.T5AllegianceCodeToLegacyCode(code), alleg.Name);
+                    if (alleg != null) {
+                        var a = isT5 ? code : SecondSurvey.T5AllegianceCodeToLegacyCode(code);
+                        writer.WriteLine($"# Alleg: {a}: \"{alleg.Name}\"");
+                    }
                 }
                 writer.WriteLine();
             }
@@ -518,10 +518,11 @@ namespace Maps
                     sector.RouteToStartEnd(route, out start, out end);
                     if (start == end)
                         continue;
-                    if (start != loc && end != loc)
-                        continue;
-                    if (start != loc)
+
+                    if (end == loc)
                         Util.Swap(ref start, ref end);
+                    else if (start != loc)
+                        continue;
 
                     string prefix =
                         (string.IsNullOrWhiteSpace(route.Type) || route.Type.ToLowerInvariant() == "xboat") ? "Xb" : "Tr";
@@ -529,7 +530,7 @@ namespace Maps
                     string s;
                     if (end.Sector == this.Location)
                     {
-                        s = string.Format("{0}:{1}", prefix, end.Hex);
+                        s = $"{prefix}:{end.Hex}";
                     }
                     else
                     {
@@ -537,7 +538,7 @@ namespace Maps
                         // Dangling route into non-detailed sector.
                         if (endSector == null)
                             continue;
-                        s = string.Format("{0}:{1}-{2}", prefix, endSector.Abbreviation, end.Hex);
+                        s = $"{prefix}:{endSector.Abbreviation}-{end.Hex}";
                     }
                     routes.Add(s);
                 }

@@ -71,11 +71,7 @@ namespace Maps
             public void Add(Sector sector)
             {
                 if (locationMap.ContainsKey(sector.Location))
-                {
-                    throw new ArgumentException(string.Format("[{0}]: Sector already added at ({1},{2}): {3} (was {4})",
-                        Name, sector.Location.X, sector.Location.Y, sector.Names[0].Text,
-                        locationMap[sector.Location].Names[0].Text), nameof(sector));
-                }
+                    throw new ArgumentException($"[{Name}]: Sector already added at ({sector.Location.X},{sector.Location.Y}): {sector.Names[0].Text} (was {locationMap[sector.Location].Names[0].Text})", nameof(sector));
 
                 sector.MilieuMap = this;
 

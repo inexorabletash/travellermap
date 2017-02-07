@@ -639,7 +639,7 @@ namespace Maps.Rendering
                         if (rounded == 0)
                             continue;
 
-                        string str = string.Format("{0} {1}", rounded, s.label);
+                        string str = $"{rounded} {s.label}";
                         for ( int dx = -1; dx <= 1; ++dx )
                         {
                             for( int dy = -1; dy <= 1; ++dy )

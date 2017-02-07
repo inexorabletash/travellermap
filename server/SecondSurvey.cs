@@ -21,7 +21,7 @@ namespace Maps
             if (0 <= c && c < HEX.Length)
                 return HEX[c];
 
-            throw new ArgumentOutOfRangeException(nameof(c), c, string.Format(CultureInfo.InvariantCulture, "Value out of range: '{0}'", c));
+            throw new ArgumentOutOfRangeException(nameof(c), c, "Expected value in eHex range");
         }
 
         public static int FromHex(char c, int? valueIfUnknown = null)

@@ -73,7 +73,7 @@ namespace Maps.API
             {
                 string query = context.Request.QueryString[field];
                 if (string.IsNullOrWhiteSpace(query))
-                    throw new HttpError(400, "Bad Request", string.Format("Missing {0} location", field));
+                    throw new HttpError(400, "Bad Request", $"Missing {field} location");
 
                 query = query.Trim();
 
@@ -84,7 +84,7 @@ namespace Maps.API
                     int y = GetIntOption("y", 0);
                     WorldLocation loc = SearchEngine.FindNearestWorldMatch(query, GetStringOption("milieu"), x, y);
                     if (loc == null)
-                        throw new HttpError(404, "Not Found", string.Format("Location not found: {0}", query));
+                        throw new HttpError(404, "Not Found", $"Location not found: {query}");
 
                     Sector loc_sector;
                     World loc_world;
@@ -94,16 +94,16 @@ namespace Maps.API
 
                 Sector sector = map.FromName(match.Groups["sector"].Value);
                 if (sector == null)
-                    throw new HttpError(404, "Not Found", string.Format("Sector not found: {0}", sector));
+                    throw new HttpError(404, "Not Found", $"Sector not found: {sector}");
 
                 string hexString = match.Groups["hex"].Value;
                 Hex hex = new Hex(hexString);
                 if (!hex.IsValid)
-                    throw new HttpError(400, "Not Found", string.Format("Invalid hex: {0}", hexString));
+                    throw new HttpError(400, "Not Found", $"Invalid hex: {hexString}");
 
                 World world = sector.GetWorlds(manager)[hex.ToInt()];
                 if (world == null)
-                    throw new HttpError(404, "Not Found", string.Format("No such world: {0} {1}", sector.Names[0].Text, hexString));
+                    throw new HttpError(404, "Not Found", $"No such world: {sector.Names[0].Text} {hexString}");
 
                 return world;
             }

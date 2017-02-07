@@ -279,7 +279,7 @@ namespace Maps
                     Action<string, DataTable, int> BulkInsert = (string name, DataTable table, int batchSize) => {
                         using (var bulk = new SqlBulkCopy(connection, SqlBulkCopyOptions.TableLock, null))
                         {
-                            callback(string.Format("Writing {0} {1}...", table.Rows.Count, name));
+                            callback($"Writing {table.Rows.Count} {name}...");
                             bulk.BatchSize = batchSize;
                             bulk.DestinationTableName = name;
                             bulk.WriteToServer(table);
@@ -310,7 +310,7 @@ namespace Maps
             terms.Insert(0, milieu ?? SectorMap.DEFAULT_MILIEU);
 
             string where = string.Join(" AND ",
-                clauses.Select((clause, index) => "(" + clause.Replace("@term", string.Format("@term{0}", index)) + ")"));
+                clauses.Select((clause, index) => "(" + clause.Replace("@term", $"@term{index}") + ")"));
 
             string orderBy = random ? "ORDER BY NEWID()" : "";
 
@@ -343,7 +343,7 @@ namespace Maps
                     using (var sqlCommand = new SqlCommand(sql, connection))
                     {
                         for (int i = 0; i < terms.Count; ++i)
-                            sqlCommand.Parameters.AddWithValue(string.Format("@term{0}", i), terms[i]);
+                            sqlCommand.Parameters.AddWithValue($"@term{i}", terms[i]);
 
                         using (var row = sqlCommand.ExecuteReader())
                         {
@@ -363,7 +363,7 @@ namespace Maps
                     using (var sqlCommand = new SqlCommand(sql, connection))
                     {
                         for (int i = 0; i < terms.Count; ++i)
-                            sqlCommand.Parameters.AddWithValue(string.Format("@term{0}", i), terms[i]);
+                            sqlCommand.Parameters.AddWithValue($"@term{i}", terms[i]);
 
                         using (var row = sqlCommand.ExecuteReader())
                         {
@@ -386,7 +386,7 @@ namespace Maps
                     using (var sqlCommand = new SqlCommand(sql, connection))
                     {
                         for (int i = 0; i < terms.Count; ++i)
-                            sqlCommand.Parameters.AddWithValue(string.Format("@term{0}", i), terms[i]);
+                            sqlCommand.Parameters.AddWithValue($"@term{i}", terms[i]);
 
                         using (var row = sqlCommand.ExecuteReader())
                         {
@@ -404,7 +404,7 @@ namespace Maps
                     using (var sqlCommand = new SqlCommand(sql, connection))
                     {
                         for (int i = 0; i < terms.Count; ++i)
-                            sqlCommand.Parameters.AddWithValue(string.Format("@term{0}", i), terms[i]);
+                            sqlCommand.Parameters.AddWithValue($"@term{i}", terms[i]);
 
                         using (var row = sqlCommand.ExecuteReader())
                         {

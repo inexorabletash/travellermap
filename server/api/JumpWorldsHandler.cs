@@ -39,7 +39,7 @@ namespace Maps.API
                     int hex = GetIntOption("hex", 0);
                     Sector sector = map.FromName(sectorName);
                     if (sector == null)
-                        throw new HttpError(404, "Not Found", string.Format("The specified sector '{0}' was not found.", sectorName));
+                        throw new HttpError(404, "Not Found", $"The specified sector '{sectorName}' was not found.");
 
                     loc = new Location(sector.Location, hex);
                 }

@@ -132,7 +132,7 @@ namespace Maps.Admin
                         HashSet<string> hash = new HashSet<string>();
                         codes.Add(code, hash);
                     }
-                    codes[code].Add(string.Format("{0} [{1}]", sector.Names[0].Text, sector.CanonicalMilieu));
+                    codes[code].Add($"{sector.Names[0].Text} [{sector.CanonicalMilieu}]");
                 }
             }
 

@@ -175,7 +175,7 @@ namespace Maps.Serialization
                     errors.Error("Parse error: " + e.Message, lineNumber, line);
                 else
                     throw;
-                //throw new Exception(string.Format("UWP Parse Error in line {0}:\n{1}\n{2}", lineNumber, e.Message, line));
+                //throw new Exception($"UWP Parse Error in line {lineNumber}:\n{e.Message}\n{line}");
             }
         }
 
@@ -189,7 +189,7 @@ namespace Maps.Serialization
             catch (StellarDataParser.InvalidSystemException)
             {
                 if (errors != null)
-                    errors.Warning(string.Format("Invalid stellar data: '{0}'", rest), lineNumber, line);
+                    errors.Warning($"Invalid stellar data: '{rest}'", lineNumber, line);
             }
         }
     }
@@ -243,7 +243,7 @@ namespace Maps.Serialization
                     if (!options.HasFlag(CheckOptions.Optional))
                     {
                         if (errors != null)
-                            errors.Error(string.Format("Missing required column {0}", key), lineNumber, line);
+                            errors.Error($"Missing required column {key}", lineNumber, line);
                         hadError = true;
                     }
                     return null;
@@ -254,13 +254,13 @@ namespace Maps.Serialization
                     if (!options.HasFlag(CheckOptions.Warning))
                     {
                         if (errors != null)
-                            errors.Error(string.Format("Unexpected value for {0}: '{1}'", key, dict[key]), lineNumber, line);
+                            errors.Error($"Unexpected value for {key}: '{dict[key]}'", lineNumber, line);
                         hadError = true;
                     }
                     else
                     {
                         if (errors != null)
-                            errors.Warning(string.Format("Unexpected value for {0}: '{1}'", key, dict[key]), lineNumber, line);
+                            errors.Warning($"Unexpected value for {key}: '{dict[key]}'", lineNumber, line);
                     }
                 }
 
@@ -293,13 +293,13 @@ namespace Maps.Serialization
                         if (!options.HasFlag(CheckOptions.Warning))
                         {
                             if (errors != null)
-                                errors.Error(string.Format("Unexpected value for {0}: '{1}'", key, value), lineNumber, line);
+                                errors.Error("Unexpected value for {key}: '{value}'", lineNumber, line);
                             hadError = true;
                         }
                         else
                         {
                             if (errors != null)
-                                errors.Warning(string.Format("Unexpected value for {0}: '{1}'", key, value), lineNumber, line);
+                                errors.Warning("Unexpected value for {key}: '{value}'", lineNumber, line);
                         }
                     }
 
@@ -309,8 +309,7 @@ namespace Maps.Serialization
                 if (!options.HasFlag(CheckOptions.Optional))
                 {
                     if (errors != null)
-                        errors.Error(string.Format("Missing required column {0}",
-                            string.Join("/", keys)), lineNumber, line);
+                        errors.Error($"Missing required column {string.Join("/", keys)}", lineNumber, line);
                     hadError = true;
                 }
 
@@ -368,7 +367,7 @@ namespace Maps.Serialization
                     errors.Error("Parse Error: " + e.Message, lineNumber, line);
                 else
                     throw;
-                //throw new Exception(string.Format("UWP Parse Error in line {0}:\n{1}\n{2}", lineNumber, e.Message, line));
+                //throw new Exception($"UWP Parse Error in line {lineNumber}:\n{e.Message}\n{line}");
             }
         }
     }
@@ -433,7 +432,7 @@ namespace Maps.Serialization
         {
             string[] cols = line.Split(TAB_DELIMITER);
             if (cols.Length != header.Length)
-                throw new ParseException(string.Format("ERROR (Tab Parse) ({0}): {1}", lineNumber, line));
+                throw new ParseException($"ERROR (Tab Parse) ({lineNumber}): {line}");
 
             Dictionary<string, string> dict = new Dictionary<string, string>();
             for (var i = 0; i < cols.Length; ++i)

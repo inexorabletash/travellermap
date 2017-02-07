@@ -39,12 +39,12 @@ namespace Maps.API
                 if (width < 0 || height < 1)
                 {
                     throw new HttpError(400, "Bad Request",
-                          string.Format("Requested dimensions ({0}x{1}) invalid.", width, height));
+                          $"Requested dimensions ({width}x{height}) invalid.");
                 }
                 if (width * height > MaxDimension * MaxDimension)
                 {
                     throw new HttpError(400, "Bad Request",
-                         string.Format("Requested dimensions ({0}x{1}) too large.", width, height));
+                         $"Requested dimensions ({width}x{height}) too large.");
                 }
 
 

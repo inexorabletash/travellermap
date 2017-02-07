@@ -34,14 +34,14 @@ namespace Maps.API
                     string sectorName = GetStringOption("sector");
                     Sector sector = map.FromName(sectorName);
                     if (sector == null)
-                        throw new HttpError(404, "Not Found", string.Format("The specified sector '{0}' was not found.", sectorName));
+                        throw new HttpError(404, "Not Found", $"The specified sector '{sectorName}' was not found.");
 
                     if (HasOption("subsector"))
                     {
                         string subsector = GetStringOption("subsector");
                         int index = sector.SubsectorIndexFor(subsector);
                         if (index == -1)
-                            throw new HttpError(404, "Not Found", string.Format("The specified subsector '{0}' was not found.", subsector));
+                            throw new HttpError(404, "Not Found", $"The specified subsector '{subsector}' was not found.");
                         int ssx = index % 4;
                         int ssy = index / 4;
                         Hex hex = new Hex(

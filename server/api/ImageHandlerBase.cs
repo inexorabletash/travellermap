@@ -169,7 +169,7 @@ namespace Maps.API
                     {
                         if (bitmap == null)
                             throw new HttpError(500, "Internal Server Error",
-                                string.Format("Failed to allocate bitmap ({0}x{1}). Insufficient memory?", width, height));
+                                $"Failed to allocate bitmap ({width}x{height}). Insufficient memory?");
 
                         if (transparent)
                             bitmap.MakeTransparent();
@@ -338,7 +338,7 @@ namespace Maps.API
                 {
                     // Saving seems to throw "A generic error occurred in GDI+." on low memory.
                     throw new HttpError(500, "Internal Server Error",
-                        string.Format("Unknown GDI error encoding bitmap ({0}x{1}). Insufficient memory?", bitmap.Width, bitmap.Height));
+                        $"Unknown GDI error encoding bitmap ({bitmap.Width}x{bitmap.Height}). Insufficient memory?");
                 }
             }
 

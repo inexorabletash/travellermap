@@ -32,7 +32,7 @@ namespace Maps.API
                     string sectorName = GetStringOption("sector");
                     Sector sec = map.FromName(sectorName);
                     if (sec == null)
-                        throw new HttpError(404, "Not Found", string.Format("The specified sector '{0}' was not found.", sectorName));
+                        throw new HttpError(404, "Not Found", $"The specified sector '{sectorName}' was not found.");
 
                     int hex = GetIntOption("hex", Astrometrics.SectorCentralHex);
                     loc = new Location(sec.Location, hex);

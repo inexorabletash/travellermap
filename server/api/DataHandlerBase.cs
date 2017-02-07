@@ -323,7 +323,7 @@ namespace Maps.API
                 {
                     string opt = GetStringOption("style", queryDefaults).ToLowerInvariant();
                     if (!s_nameToStyle.ContainsKey(opt))
-                        throw new HttpError(400, "Bad Request", string.Format("Invalid style option: {0}", opt));
+                        throw new HttpError(400, "Bad Request", $"Invalid style option: {opt}");
                     style = s_nameToStyle[opt];
                 }
             }

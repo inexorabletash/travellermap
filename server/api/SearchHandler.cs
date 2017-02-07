@@ -279,7 +279,7 @@ namespace Maps.API.Results
                 return r;
             }
 
-            throw new ArgumentException(string.Format("Unexpected result type: {0}", location.GetType().Name), nameof(location));
+            throw new ArgumentException($"Unexpected result type: {location.GetType().Name}", nameof(location));
         }
     }
 }
