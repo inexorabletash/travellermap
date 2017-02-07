@@ -921,21 +921,10 @@ namespace Maps
             var s = "";
 
             if (StartOffsetX != 0 || StartOffsetY != 0)
-            {
-                s += StartOffsetX.ToString(CultureInfo.InvariantCulture);
-                s += " ";
-                s += StartOffsetY.ToString(CultureInfo.InvariantCulture);
-                s += " ";
-            }
-            s += StartHex;
-            s += " ";
+                s += $"{StartOffsetX} ${StartOffsetY} ";
+            s += $"{StartHex} ";
             if (EndOffsetX != 0 || EndOffsetY != 0)
-            {
-                s += EndOffsetX.ToString(CultureInfo.InvariantCulture);
-                s += " ";
-                s += EndOffsetY.ToString(CultureInfo.InvariantCulture);
-                s += " ";
-            }
+                s += $"{EndOffsetX} ${EndOffsetY} ";
             s += EndHex;
             return s;
         }

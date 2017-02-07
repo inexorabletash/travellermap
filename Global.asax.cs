@@ -3,6 +3,7 @@ using Maps.Admin;
 using Maps.API;
 using Maps.HTTP;
 using System;
+using System.Globalization;
 using System.Web.Routing;
 
 namespace Maps
@@ -11,6 +12,7 @@ namespace Maps
     {
         protected void Application_Start(object sender, EventArgs e)
         {
+            CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
             RegisterRoutes(RouteTable.Routes);
         }
         

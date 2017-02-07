@@ -143,23 +143,10 @@ namespace Maps.Serialization
                 writer.Write("route ");
 
                 if (route.StartOffsetX != 0 || route.StartOffsetY != 0)
-                {
-                    writer.Write(route.StartOffsetX.ToString(CultureInfo.InvariantCulture));
-                    writer.Write(" ");
-                    writer.Write(route.StartOffsetY.ToString(CultureInfo.InvariantCulture));
-                    writer.Write(" ");
-                }
-                writer.Write(route.StartHex);
-
-                writer.Write(" ");
-
+                    writer.Write($"{route.StartOffsetX} {route.StartOffsetY} ");
+                writer.Write($"{route.StartHex} ");
                 if (route.EndOffsetX != 0 || route.EndOffsetY != 0)
-                {
-                    writer.Write(route.EndOffsetX.ToString(CultureInfo.InvariantCulture));
-                    writer.Write(" ");
-                    writer.Write(route.EndOffsetY.ToString(CultureInfo.InvariantCulture));
-                    writer.Write(" ");
-                }
+                    writer.Write($"{route.EndOffsetX} {route.EndOffsetY} ");
                 writer.Write(route.EndHex);
 
                 SectorStylesheet.StyleResult ssr = sector.ApplyStylesheet("route", route.Allegiance);
