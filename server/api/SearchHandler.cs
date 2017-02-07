@@ -107,11 +107,6 @@ namespace Maps.API.Results
     [XmlRoot(ElementName = "results")]
     public class SearchResults
     {
-        public SearchResults()
-        {
-            Items = new List<Item>();
-        }
-
         [XmlAttribute]
         public int Count { get { return Items.Count; } set { /* We only want to serialize, not deserialize */ } }
 
@@ -123,7 +118,7 @@ namespace Maps.API.Results
         [XmlElement(ElementName = "sector", Type = typeof(SectorResult))]
         [XmlElement(ElementName = "label", Type = typeof(LabelResult))]
 
-        public List<Item> Items { get; }
+        public List<Item> Items { get; } = new List<Item>();
 
         public void Add(Item item)
         {

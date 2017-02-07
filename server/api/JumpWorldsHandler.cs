@@ -64,12 +64,7 @@ namespace Maps.API.Results
     // public for XML serialization
     public class JumpWorldsResult
     {
-        public JumpWorldsResult()
-        {
-            Worlds = new List<World>();
-        }
-
         [XmlElement("World")]
-        public List<World> Worlds { get; }
+        public List<World> Worlds { get; } = new List<World>();
     }
 }

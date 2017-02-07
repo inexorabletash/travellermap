@@ -214,24 +214,13 @@ namespace Maps.Rendering
     [XmlRoot(ElementName = "Worlds")]
     public class WorldObjectCollection
     {
-        public WorldObjectCollection()
-        {
-            Worlds = new List<WorldObject>();
-        }
-
         [XmlElement("World")]
-        public List<WorldObject> Worlds { get; }
+        public List<WorldObject> Worlds { get; } = new List<WorldObject>();
     }
 
 
     public class WorldObject : MapObject
     {
-        public WorldObject()
-        {
-            LabelBiasX = 1;
-            LabelBiasY = 1;
-        }
-
         public string Name { get; set; }
 
         internal float MinScale { get; set; }
@@ -241,8 +230,8 @@ namespace Maps.Rendering
 
         public Location Location { get; set; }
 
-        public int LabelBiasX { get; set; }
-        public int LabelBiasY { get; set; }
+        public int LabelBiasX { get; set; } = 1;
+        public int LabelBiasY { get; set; } = 1;
 
 
         internal void Paint(AbstractGraphics graphics, Color dotColor, AbstractBrush labelBrush, Font labelFont)

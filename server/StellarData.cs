@@ -437,7 +437,6 @@ namespace Maps
             public SeekableStringReader(string s)
             {
                 this.s = s;
-                Position = 0;
             }
 
             public override int Peek()
@@ -450,7 +449,7 @@ namespace Maps
                 return (0 <= Position && Position < s.Length) ? s[Position++] : -1;
             }
 
-            public override int Position { get; set; }
+            public override int Position { get; set; } = 0;
         }
     }
 }

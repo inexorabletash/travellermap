@@ -16,19 +16,7 @@ namespace Maps
     {
         internal Sector Sector { get; set; }
 
-        public World()
-        {
-            // Defaults for auto-properties
-            Name = "";
-            UWP = "X000000-0";
-            PBG = "000";
-            Bases = "";
-            Zone = "";
-            Allegiance = "Na";
-            Stellar = "";
-        }
-
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         public string Hex
         {
@@ -38,11 +26,11 @@ namespace Maps
 
         internal string SubsectorHex { get { return hex.ToSubsectorString(); } }
 
-        [XmlElement("UWP"),JsonName("UWP")]
-        public string UWP { get; set; }
+        [XmlElement("UWP"), JsonName("UWP")]
+        public string UWP { get; set; } = "X000000-0";
 
         [XmlElement("PBG"), JsonName("PBG")]
-        public string PBG { get; set; }
+        public string PBG { get; set; } = "000";
         public string Zone
         {
             get { return zone; }
@@ -51,11 +39,11 @@ namespace Maps
                 zone = (value == " " || value == "G") ? string.Empty : value;
             }
         }
-        private string zone;
+        private string zone = string.Empty;
 
-        public string Bases { get; set; }
-        public string Allegiance { get; set; }
-        public string Stellar { get; set; }
+        public string Bases { get; set; } = string.Empty;
+        public string Allegiance { get; set; } = "Na";
+        public string Stellar { get; set; } = string.Empty;
 
         // T5
         public string SS

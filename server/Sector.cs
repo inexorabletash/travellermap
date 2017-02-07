@@ -18,7 +18,6 @@ namespace Maps
     {
         public Sector()
         {
-            Names = new List<Name>();
         }
 
         internal Sector(Stream stream, string mediaType, ErrorLogger errors)
@@ -71,7 +70,7 @@ namespace Maps
         public string Label { get; set; }
 
         [XmlElement("Name")]
-        public List<Name> Names { get; }
+        public List<Name> Names { get; } = new List<Name>();
 
         public string Domain { get; set; }
 
@@ -627,38 +626,26 @@ namespace Maps
 
     public class DataFile : MetadataItem
     {
-        public DataFile()
-        {
-            FileName = string.Empty;
-            Type = "SEC";
-        }
-
         public override string ToString()
         {
             return FileName;
         }
 
         [XmlText]
-        public string FileName { get; set; }
+        public string FileName { get; set; } = string.Empty;
 
         [XmlAttribute]
         [DefaultValueAttribute("")]
-        public string Type { get; set; }
+        public string Type { get; set; } = "SEC";
     }
 
     public class Subsector : MetadataItem
     {
-        public Subsector()
-        {
-            Name = string.Empty;
-            Index = string.Empty;
-        }
-
         [XmlText]
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         [XmlAttribute]
-        public string Index { get; set; }
+        public string Index { get; set; } = string.Empty;
 
         public int IndexNumber
         {
@@ -733,7 +720,6 @@ namespace Maps
     {
         public Border()
         {
-            ShowLabel = true;
         }
 
         internal Border(string path, string color = null) : this()
@@ -745,7 +731,7 @@ namespace Maps
 
         [XmlAttribute]
         [DefaultValue(true)]
-        public bool ShowLabel { get; set; }
+        public bool ShowLabel { get; set; } = true;
 
         [XmlAttribute]
         public bool WrapLabel { get; set; }

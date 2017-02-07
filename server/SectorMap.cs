@@ -290,13 +290,8 @@ namespace Maps
     [XmlRoot(ElementName = "Sectors")]
     public class SectorCollection
     {
-        public SectorCollection()
-        {
-            Sectors = new List<Sector>();
-        }
-
         [XmlElement("Sector")]
-        public List<Sector> Sectors { get; }
+        public List<Sector> Sectors { get; } = new List<Sector>();
 
         public void Merge(SectorCollection otherCollection)
         {
