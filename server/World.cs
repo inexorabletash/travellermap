@@ -472,6 +472,7 @@ namespace Maps
         }
 
         private string routes = null;
+        [XmlIgnore,JsonIgnore]
         public string Routes
         {
             get

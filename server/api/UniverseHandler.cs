@@ -42,7 +42,7 @@ namespace Maps.API
                     if (requireData && sector.DataFile == null)
                         continue;
 
-                    if (sector.Tags.Contains("meta"))
+                    if (sector.Tags.Contains("meta") && !tags.Contains("meta"))
                         continue;
 
                     if (milieu != null && sector.CanonicalMilieu != milieu)
