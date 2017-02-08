@@ -72,7 +72,7 @@ namespace Json
         private static string GetName(PropertyInfo pi)
         {
             JsonNameAttribute jn = pi.GetCustomAttributes(typeof(JsonNameAttribute), inherit: true).OfType<JsonNameAttribute>().FirstOrDefault();
-            return (jn != null) ? jn.Name : pi.Name;
+            return jn?.Name ?? pi.Name;
         }
 
         private static object GetDefaultValue(PropertyInfo pi)
@@ -178,13 +178,13 @@ namespace Json
                 SerializeObject(writer, o);
         }
 
-        private static string Enquote( string s )
+        private static string Enquote(string s)
         {
-            if (s == null || s.Length == 0)
+            if (string.IsNullOrEmpty(s))
                 return "\"\"";
 
             StringBuilder sb = new StringBuilder(s.Length);
-            sb.Append( '"' );
+            sb.Append('"');
             for (int i = 0; i < s.Length; ++i)
             {
                 char c = s[i];
@@ -223,7 +223,7 @@ namespace Json
                     sb.Append(c);
                 }
             }
-            sb.Append( '"' );
+            sb.Append('"');
             return sb.ToString();
         }
     }

@@ -104,11 +104,9 @@ namespace Maps
                             throw new InvalidOperationException();
                         return o;
                     }
-                    catch (InvalidOperationException ex)
+                    catch (InvalidOperationException ex) when (ex.InnerException is System.Xml.XmlException)
                     {
-                        if (ex.InnerException is System.Xml.XmlException)
-                            throw ex.InnerException;
-                        throw;
+                        throw ex.InnerException;
                     }
                 }
             }

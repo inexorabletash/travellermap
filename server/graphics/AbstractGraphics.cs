@@ -66,11 +66,8 @@ namespace Maps.Rendering
 
         public void Dispose()
         {
-            if (g != null)
-            {
-                g.Restore(this);
-                g = null;
-            }
+            g?.Restore(this);
+            g = null;
         }
 
         #endregion
@@ -117,9 +114,7 @@ namespace Maps.Rendering
             {
                 lock (this)
                 {
-                    if (ximage == null)
-                        ximage = XImage.FromGdiPlusImage(Image);
-                    return ximage;
+                    return ximage ?? (ximage = XImage.FromGdiPlusImage(Image));
                 }
             }
         }
@@ -129,9 +124,7 @@ namespace Maps.Rendering
             {
                 lock (this)
                 {
-                    if (image == null)
-                        image = Image.FromFile(path);
-                    return image;
+                    return image ?? (image = Image.FromFile(path));
                 }
             }
         }

@@ -63,11 +63,9 @@ namespace Maps.Serialization
                 XmlSerializer xs = new XmlSerializer(typeof(Sector));
                 return xs.Deserialize(stream) as Sector;
             }
-            catch (System.InvalidOperationException ex)
+            catch (System.InvalidOperationException ex) when (ex.InnerException is System.Xml.XmlException)
             {
-                if (ex.InnerException is System.Xml.XmlException)
-                    throw ex.InnerException;
-                throw;
+                throw ex.InnerException;
             }
         }
 
@@ -78,11 +76,9 @@ namespace Maps.Serialization
                 XmlSerializer xs = new XmlSerializer(typeof(Sector));
                 return xs.Deserialize(reader) as Sector;
             }
-            catch (System.InvalidOperationException ex)
+            catch (System.InvalidOperationException ex) when (ex.InnerException is System.Xml.XmlException)
             {
-                if (ex.InnerException is System.Xml.XmlException)
-                    throw ex.InnerException;
-                throw;
+                throw ex.InnerException;
             }
         }
     }

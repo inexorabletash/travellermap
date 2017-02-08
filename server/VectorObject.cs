@@ -39,7 +39,7 @@ namespace Maps.Rendering
             get
             {
                 // Compute bounds if not already set
-                if (bounds.IsEmpty && pathDataPoints != null && pathDataPoints.Length > 0)
+                if (bounds.IsEmpty && pathDataPoints?.Length > 0)
                 {
                     bounds.Location = pathDataPoints[0];
 

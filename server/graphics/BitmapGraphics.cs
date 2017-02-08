@@ -166,12 +166,9 @@ namespace Maps.Rendering
                 return;
             if (disposing)
             {
-                if (g != null)
-                    g.Dispose(); 
-                if (brush != null)
-                    brush.Dispose();
-                if (pen != null)
-                    pen.Dispose();
+                g?.Dispose();
+                brush?.Dispose();
+                pen?.Dispose();
             }
             g = null;
             brush = null;

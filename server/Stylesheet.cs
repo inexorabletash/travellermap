@@ -795,13 +795,13 @@ namespace Maps.Rendering
             public PointF position;
 
             private Font font;
-            public Font Font { get { if (font == null) { font = fontInfo.makeFont(); } return font; } }
+            public Font Font { get { return font ?? (font = fontInfo.makeFont()); } }
             private Font smallFont;
-            public Font SmallFont { get { if (smallFont == null) { smallFont = smallFontInfo.makeFont(); } return smallFont; } }
+            public Font SmallFont { get { return smallFont ?? (smallFont = smallFontInfo.makeFont()); } }
             private Font mediumFont;
-            public Font MediumFont { get { if (mediumFont == null) { mediumFont = mediumFontInfo.makeFont(); } return mediumFont; } }
+            public Font MediumFont { get { return mediumFont ?? (mediumFont = mediumFontInfo.makeFont()); } }
             private Font largeFont;
-            public Font LargeFont { get { if (largeFont == null) { largeFont = largeFontInfo.makeFont(); } return largeFont; } }
+            public Font LargeFont { get { return largeFont ?? (largeFont = largeFontInfo.makeFont()); } }
         }
 
 
@@ -1104,13 +1104,13 @@ namespace Maps.Rendering
         private Stylesheet sheet;
 
         private Font wingdingFont;
-        public Font WingdingFont { get { if (wingdingFont == null) { wingdingFont = sheet.wingdingFont.makeFont(); } return wingdingFont; } }
+        public Font WingdingFont { get { return wingdingFont ?? (wingdingFont = sheet.wingdingFont.makeFont()); } }
 
         private Font glyphFont;
-        public Font GlyphFont { get { if (glyphFont == null) { glyphFont = sheet.glyphFont.makeFont(); } return glyphFont; } }
+        public Font GlyphFont { get { return glyphFont ?? (glyphFont = sheet.glyphFont.makeFont()); } }
 
         private Font starportFont;
-        public Font StarportFont { get { if (starportFont == null) { starportFont = sheet.starportFont.makeFont(); } return starportFont; } }
+        public Font StarportFont { get { return starportFont ?? (starportFont = sheet.starportFont.makeFont()); } }
 
         private bool disposed;
         public void Dispose() { Dispose(true); GC.SuppressFinalize(this); }
@@ -1121,18 +1121,18 @@ namespace Maps.Rendering
 #if DISPOSABLE_RESOURCES
                 if( disposing )
                 {
-                    if( this.sectorNameFont != null ) this.sectorNameFont.Dispose();
-                    if( this.subsectorNameFont != null ) this.subsectorNameFont.Dispose();
-                    if( this.microPolityNameFont != null ) this.microPolityNameFont.Dispose();
-                    if( this.microPolityNameSmallFont != null ) this.microPolityNameSmallFont.Dispose();
+                    this.sectorNameFont?.Dispose();
+                    this.subsectorNameFont?.Dispose();
+                    this.microPolityNameFont?.Dispose();
+                    this.microPolityNameSmallFont?.Dispose();
 
-                    if( this.worldFont != null ) this.worldFont.Dispose();
-                    if( this.symbolFont != null ) this.symbolFont.Dispose();
-                    if( this.glyphFont != null ) this.glyphFont.Dispose();
-                    if( this.hexFont != null ) this.hexFont.Dispose();
-                    if( this.smallFont != null ) this.smallFont.Dispose();
-                    if( this.largeFont != null ) this.largeFont.Dispose();
-                    if( this.starportFont != null ) this.starportFont.Dispose();
+                    this.worldFont?.Dispose();
+                    this.symbolFont?.Dispose();
+                    this.glyphFont?.Dispose();
+                    this.hexFont?.Dispose();
+                    this.smallFont?.Dispose();
+                    this.largeFont?.Dispose();
+                    this.starportFont?.Dispose();
                 }
 #endif
                 disposed = true;

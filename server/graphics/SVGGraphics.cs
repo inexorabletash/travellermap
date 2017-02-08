@@ -106,7 +106,7 @@ namespace Maps.Rendering
             }
             public void Apply(AbstractBrush brush)
             {
-                Set("fill", brush == null ? Color.Empty : brush.Color);
+                Set("fill", brush?.Color ?? Color.Empty);
             }
             public void Apply(AbstractPen pen, AbstractBrush brush)
             {

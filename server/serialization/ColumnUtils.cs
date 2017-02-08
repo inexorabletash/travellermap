@@ -118,12 +118,7 @@ namespace Maps.Serialization
 
             string[] row = new string[rows[0].Length];
             for (int i = 0; i < row.Length; ++i)
-            {
-                if (data[i] == null)
-                    row[i] = "";
-                else
-                    row[i] = data[i].Trim();
-            }
+                row[i] = data[i]?.Trim() ?? "";
             rows.Add(row);
         }
         public int[] ComputeWidths()

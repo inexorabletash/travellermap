@@ -127,16 +127,14 @@ namespace Maps.Serialization
         {
             if (!uwpRegex.IsMatch(line))
             {
-                if (errors != null)
-                    errors.Warning("Ignoring non-UWP data", lineNumber, line);
+                errors?.Warning("Ignoring non-UWP data", lineNumber, line);
                 return;
             }
             Match match = worldRegex.Match(line);
 
             if (!match.Success)
             {
-                if (errors != null)
-                    errors.Error("SEC Parse", lineNumber, line);
+                errors?.Error("SEC Parse", lineNumber, line);
                 return;
             }
 
@@ -169,12 +167,9 @@ namespace Maps.Serialization
                 if (errors != null)
                     world.Validate(errors, lineNumber, line);
             }
-            catch (Exception e)
+            catch (Exception e) when (errors != null)
             {
-                if (errors != null)
-                    errors.Error("Parse error: " + e.Message, lineNumber, line);
-                else
-                    throw;
+                errors.Error("Parse error: " + e.Message, lineNumber, line);
                 //throw new Exception($"UWP Parse Error in line {lineNumber}:\n{e.Message}\n{line}");
             }
         }
@@ -188,8 +183,8 @@ namespace Maps.Serialization
             }
             catch (StellarDataParser.InvalidSystemException)
             {
-                if (errors != null)
-                    errors.Warning($"Invalid stellar data: '{rest}'", lineNumber, line);
+                errors?.Warning($"Invalid stellar data: '{rest}'", lineNumber, line);
+                // otherwise ignore
             }
         }
     }
@@ -242,8 +237,7 @@ namespace Maps.Serialization
                 {
                     if (!options.HasFlag(CheckOptions.Optional))
                     {
-                        if (errors != null)
-                            errors.Error($"Missing required column {key}", lineNumber, line);
+                        errors?.Error($"Missing required column {key}", lineNumber, line);
                         hadError = true;
                     }
                     return null;
@@ -253,14 +247,12 @@ namespace Maps.Serialization
                 {
                     if (!options.HasFlag(CheckOptions.Warning))
                     {
-                        if (errors != null)
-                            errors.Error($"Unexpected value for {key}: '{dict[key]}'", lineNumber, line);
+                        errors?.Error($"Unexpected value for {key}: '{dict[key]}'", lineNumber, line);
                         hadError = true;
                     }
                     else
                     {
-                        if (errors != null)
-                            errors.Warning($"Unexpected value for {key}: '{dict[key]}'", lineNumber, line);
+                        errors?.Warning($"Unexpected value for {key}: '{dict[key]}'", lineNumber, line);
                     }
                 }
 
@@ -274,7 +266,7 @@ namespace Maps.Serialization
 
             public string Check(ICollection<string> keys, Regex regex = null, CheckOptions options = 0)
             {
-                return Check(keys, value => regex == null || regex.IsMatch(value), options);
+                return Check(keys, value => regex?.IsMatch(value) ?? true, options);
             }
 
             public string Check(ICollection<string> keys, Func<string, bool> validate, CheckOptions options = 0)
@@ -292,14 +284,12 @@ namespace Maps.Serialization
                     {
                         if (!options.HasFlag(CheckOptions.Warning))
                         {
-                            if (errors != null)
-                                errors.Error("Unexpected value for {key}: '{value}'", lineNumber, line);
+                            errors?.Error("Unexpected value for {key}: '{value}'", lineNumber, line);
                             hadError = true;
                         }
                         else
                         {
-                            if (errors != null)
-                                errors.Warning("Unexpected value for {key}: '{value}'", lineNumber, line);
+                            errors?.Warning("Unexpected value for {key}: '{value}'", lineNumber, line);
                         }
                     }
 
@@ -308,8 +298,7 @@ namespace Maps.Serialization
 
                 if (!options.HasFlag(CheckOptions.Optional))
                 {
-                    if (errors != null)
-                        errors.Error($"Missing required column {string.Join("/", keys)}", lineNumber, line);
+                    errors?.Error($"Missing required column {string.Join("/", keys)}", lineNumber, line);
                     hadError = true;
                 }
 
@@ -350,8 +339,8 @@ namespace Maps.Serialization
                 if (world.Name == world.Name.ToUpperInvariant() && world.IsHi)
                     world.Name = Util.FixCapitalization(world.Name);
 
-                if (worlds[world.X, world.Y] != null && errors != null)
-                    errors.Warning("Duplicate World", lineNumber, line);
+                if (worlds[world.X, world.Y] != null)
+                    errors?.Warning("Duplicate World", lineNumber, line);
 
                 if (!checker.HadError)
                 {
@@ -361,12 +350,9 @@ namespace Maps.Serialization
                 if (errors != null)
                     world.Validate(errors, lineNumber, line);
             }
-            catch (Exception e)
+            catch (Exception e) when (errors != null)
             {
-                if (errors != null)
-                    errors.Error("Parse Error: " + e.Message, lineNumber, line);
-                else
-                    throw;
+                errors.Error("Parse Error: " + e.Message, lineNumber, line);
                 //throw new Exception($"UWP Parse Error in line {lineNumber}:\n{e.Message}\n{line}");
             }
         }

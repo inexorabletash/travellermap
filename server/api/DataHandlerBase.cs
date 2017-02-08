@@ -298,14 +298,14 @@ namespace Maps.API
                 ParseOptions(context.Request, Defaults(context), ref options, ref style);
             }
 
-            private static readonly IReadOnlyDictionary<string, Stylesheet.Style> s_nameToStyle = new Dictionary<string, Stylesheet.Style>() {
-            { "poster",Stylesheet.Style.Poster },
-            { "atlas" ,Stylesheet.Style.Atlas },
-            { "print" , Stylesheet.Style.Print },
-            { "candy" ,Stylesheet.Style.Candy },
-            { "draft" ,Stylesheet.Style.Draft },
-            { "fasa"  ,Stylesheet.Style.FASA },
-        };
+            private static readonly IReadOnlyDictionary<string, Stylesheet.Style> s_nameToStyle = new Dictionary<string, Stylesheet.Style> {
+                { "poster",Stylesheet.Style.Poster },
+                { "atlas" ,Stylesheet.Style.Atlas },
+                { "print" , Stylesheet.Style.Print },
+                { "candy" ,Stylesheet.Style.Candy },
+                { "draft" ,Stylesheet.Style.Draft },
+                { "fasa"  ,Stylesheet.Style.FASA },
+            };
 
             public void ParseOptions(HttpRequest request, IDictionary<string, object> queryDefaults, ref MapOptions options, ref Stylesheet.Style style)
             {

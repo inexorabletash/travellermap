@@ -115,7 +115,7 @@ namespace Maps.Admin
 
             Dictionary<string, HashSet<string>> codes = new Dictionary<string, HashSet<string>>();
 
-            Regex filter = (regex == null) ? new Regex(".*") : new Regex(regex);
+            Regex filter = new Regex(regex ?? ".*");
 
             foreach (var sector in sectorQuery)
             {

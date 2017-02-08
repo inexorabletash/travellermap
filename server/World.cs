@@ -293,9 +293,7 @@ namespace Maps
         {
             get
             {
-                if (Sector == null)
-                    return Allegiance;
-                return Sector.AllegianceCodeToBaseAllegianceCode(Allegiance);
+                return Sector?.AllegianceCodeToBaseAllegianceCode(Allegiance) ?? Allegiance;
             }
         }
 

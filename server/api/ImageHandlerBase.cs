@@ -168,8 +168,10 @@ namespace Maps.API
                     using (var bitmap = TryConstructBitmap(width, height, PixelFormat.Format32bppArgb))
                     {
                         if (bitmap == null)
+                        {
                             throw new HttpError(500, "Internal Server Error",
                                 $"Failed to allocate bitmap ({width}x{height}). Insufficient memory?");
+                        }
 
                         if (transparent)
                             bitmap.MakeTransparent();

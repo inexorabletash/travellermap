@@ -220,9 +220,7 @@ namespace Maps
             }
 
             subsector = Subsectors.Where(ss => !string.IsNullOrEmpty(ss.Name) && ss.Name.Equals(label, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
-            if (subsector == null)
-                return -1;
-            return subsector.IndexNumber;
+            return subsector?.IndexNumber ?? -1;
         }
 
         public static int QuadrantIndexFor(string label)
@@ -272,8 +270,7 @@ namespace Maps
 
             if (mediaType == "TabDelimited")
             {
-                if (worlds != null)
-                    worlds.Serialize(writer, mediaType, options);
+                worlds?.Serialize(writer, mediaType, options);
                 return;
             }
 
@@ -815,9 +812,7 @@ namespace Maps
             if (!string.IsNullOrEmpty(Label))
                 return Label;
             Allegiance alleg = sector.GetAllegianceFromCode(Allegiance);
-            if (alleg == null)
-                return null;
-            return alleg.Name;
+            return alleg?.Name;
         }
     }
     
