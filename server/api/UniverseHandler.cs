@@ -42,7 +42,7 @@ namespace Maps.API
                     if (requireData && sector.DataFile == null)
                         continue;
 
-                    if (sector.Tags.Contains("meta") && !tags.Contains("meta"))
+                    if (sector.Tags.Contains("meta") && !(tags?.Contains("meta") ?? false))
                         continue;
 
                     if (milieu != null && sector.CanonicalMilieu != milieu)
@@ -53,7 +53,6 @@ namespace Maps.API
 
                     data.Sectors.Add(new UniverseResult.SectorResult(sector));
                 }
-
                 SendResult(context, data);
             }
         }
