@@ -21,7 +21,7 @@ namespace Maps.API
                 // NOTE: This (re)initializes a static data structure used for
                 // resolving names into sector locations, so needs to be run
                 // before any other objects (e.g. Worlds) are loaded.
-                ResourceManager resourceManager = new ResourceManager(context.Server);
+                ResourceManager resourceManager = new ResourceManager(Context.Server);
 
                 Selector selector;
                 RectangleF tileRect = new RectangleF();
@@ -121,11 +121,11 @@ namespace Maps.API
                     Sector sector = null;
                     options = options & ~MapOptions.SectorGrid;
 
-                    if (context.Request.HttpMethod == "POST")
+                    if (Context.Request.HttpMethod == "POST")
                     {
                         bool lint = GetBoolOption("lint", defaultValue: false);
                         ErrorLogger errors = new ErrorLogger();
-                        sector = GetPostedSector(context.Request, errors);
+                        sector = GetPostedSector(Context.Request, errors);
                         if (lint && !errors.Empty)
                             throw new HttpError(400, "Bad Request", errors.ToString());
 
@@ -241,7 +241,7 @@ namespace Maps.API
 
                 RenderContext ctx = new RenderContext(resourceManager, selector, tileRect, scale, options, stylesheet, tileSize);
                 ctx.ClipOutsectorBorders = clipOutsectorBorders;
-                ProduceResponse(context, title, ctx, new Size(bitmapWidth, bitmapHeight), rot, translateX, translateY);
+                ProduceResponse(Context, title, ctx, new Size(bitmapWidth, bitmapHeight), rot, translateX, translateY);
             }
         }
     }

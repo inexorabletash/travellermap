@@ -12,16 +12,11 @@ namespace Json
     [AttributeUsage( AttributeTargets.All )]
     internal sealed class JsonNameAttribute : Attribute
     {
-        string name;
-
-        public string Name
-        {
-            get { return name; }
-        }
+        public string Name { get; private set; }
 
         public JsonNameAttribute( string name )
         {
-            this.name = name;
+            Name = name;
         }
     }
 

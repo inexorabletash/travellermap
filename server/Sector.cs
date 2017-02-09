@@ -79,25 +79,19 @@ namespace Maps
         public string GammaQuadrant { get; set; }
         public string DeltaQuadrant { get; set; }
 
-        private MetadataCollection<Subsector> subsectors = new MetadataCollection<Subsector>();
-        private MetadataCollection<Route> routes = new MetadataCollection<Route>();
-        private MetadataCollection<Label> labels = new MetadataCollection<Label>();
-        private MetadataCollection<Border> borders = new MetadataCollection<Border>();
-        private MetadataCollection<Allegiance> allegiances = new MetadataCollection<Allegiance>();
-        private MetadataCollection<Product> products = new MetadataCollection<Product>();
 
         [XmlAttribute]
         [DefaultValue(false)]
         public bool Selected { get; set; }
 
         [XmlElement("Product")]
-        public MetadataCollection<Product> Products { get { return products; } }
+        public MetadataCollection<Product> Products { get; private set; } = new MetadataCollection<Product>();
 
-        public MetadataCollection<Subsector> Subsectors { get { return subsectors; } }
-        public MetadataCollection<Border> Borders { get { return borders; } }
-        public MetadataCollection<Label> Labels { get { return labels; } }
-        public MetadataCollection<Route> Routes { get { return routes; } }
-        public MetadataCollection<Allegiance> Allegiances { get { return allegiances; } }
+        public MetadataCollection<Subsector> Subsectors { get; private set; } = new MetadataCollection<Subsector>();
+        public MetadataCollection<Border> Borders { get; private set; } = new MetadataCollection<Border>();
+        public MetadataCollection<Label> Labels { get; private set; } = new MetadataCollection<Label>();
+        public MetadataCollection<Route> Routes { get; private set; } = new MetadataCollection<Route>();
+        public MetadataCollection<Allegiance> Allegiances { get; private set; } = new MetadataCollection<Allegiance>();
 
         public string Credits { get; set; }
 
@@ -130,24 +124,23 @@ namespace Maps
             Products.AddRange(metadataSource.Products);
             StylesheetText = metadataSource.StylesheetText;
 
-            tags.AddRange(metadataSource.tags);
+            Tags.AddRange(metadataSource.Tags);
         }
 
         [XmlAttribute("Tags"), JsonName("Tags")]
         public string TagString
         {
-            get { return string.Join(" ", tags); }
+            get { return string.Join(" ", Tags); }
             set
             {
-                tags.Clear();
+                Tags.Clear();
                 if (string.IsNullOrWhiteSpace(value))
                     return;
-                tags.AddRange(value.Split());
+                Tags.AddRange(value.Split());
             }
         }
 
-        internal OrderedHashSet<string> Tags { get { return tags; } }
-        private OrderedHashSet<string> tags = new OrderedHashSet<string>();
+        internal OrderedHashSet<string> Tags { get; } = new OrderedHashSet<string>();
 
         public Allegiance GetAllegianceFromCode(string code)
         {

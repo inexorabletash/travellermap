@@ -25,15 +25,15 @@ namespace Maps.API
                 // NOTE: This (re)initializes a static data structure used for 
                 // resolving names into sector locations, so needs to be run
                 // before any other objects (e.g. Worlds) are loaded.
-                ResourceManager resourceManager = new ResourceManager(context.Server);
+                ResourceManager resourceManager = new ResourceManager(Context.Server);
                 SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, GetStringOption("milieu"));
                 Sector sector;
 
-                if (context.Request.HttpMethod == "POST")
+                if (Context.Request.HttpMethod == "POST")
                 {
-                    var type = SectorMetadataFileParser.SniffType(context.Request.InputStream);
+                    var type = SectorMetadataFileParser.SniffType(Context.Request.InputStream);
                     var parser = SectorMetadataFileParser.ForType(type);
-                    using (var reader = new System.IO.StreamReader(context.Request.InputStream, context.Request.ContentEncoding))
+                    using (var reader = new System.IO.StreamReader(Context.Request.InputStream, Context.Request.ContentEncoding))
                     {
                         sector = parser.Parse(reader);
                     }
@@ -61,7 +61,7 @@ namespace Maps.API
                     throw new HttpError(400, "Bad Request", "No sector specified.");
                 }
 
-                SendResult(context, new Results.SectorMetadata(sector, sector.GetWorlds(resourceManager, cacheResults: true)));
+                SendResult(Context, new Results.SectorMetadata(sector, sector.GetWorlds(resourceManager, cacheResults: true)));
             }
         }
     }
@@ -98,6 +98,7 @@ namespace Maps.API.Results
         public List<Name> Names { get { return sector.Names; } }
 
         public string Credits { get { return sector.Credits; } set { } }
+
         public DataFileMetadata DataFile { get { return dataFile; } }
 
         public int X { get { return sector.X; } }

@@ -298,7 +298,7 @@ namespace Maps.Rendering
 
         private Stack<Element> stack = new Stack<Element>();
 
-        private Element Current {  get { return stack.Peek(); } }
+        private Element Current { get { return stack.Peek(); } }
 
         private Element Open(Element element)
         {

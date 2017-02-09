@@ -23,7 +23,7 @@ namespace Maps.API
                 // NOTE: This (re)initializes a static data structure used for 
                 // resolving names into sector locations, so needs to be run
                 // before any other objects (e.g. Worlds) are loaded.
-                ResourceManager resourceManager = new ResourceManager(context.Server);
+                ResourceManager resourceManager = new ResourceManager(Context.Server);
 
                 //
                 // Jump
@@ -35,12 +35,12 @@ namespace Maps.API
                 //
                 Selector selector;
                 Location loc;
-                if (context.Request.HttpMethod == "POST")
+                if (Context.Request.HttpMethod == "POST")
                 {
                     Sector sector;
                     bool lint = GetBoolOption("lint", defaultValue: false);
                     ErrorLogger errors = new ErrorLogger();
-                    sector = GetPostedSector(context.Request, errors);
+                    sector = GetPostedSector(Context.Request, errors);
                     if (lint && !errors.Empty)
                         throw new HttpError(400, "Bad Request", errors.ToString());
 
@@ -156,7 +156,7 @@ namespace Maps.API
 
                 // TODO: Widen path to allow for single-pixel border
                 ctx.ClipPath = clip ? new AbstractPath(boundingPathCoords, boundingPathTypes) : null;
-                ProduceResponse(context, "Jump Map", ctx, tileSize, transparent: clip);
+                ProduceResponse(Context, "Jump Map", ctx, tileSize, transparent: clip);
             }
         }
     }

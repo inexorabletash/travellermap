@@ -73,7 +73,7 @@ namespace Maps.API
                 result.hy = loc.Hex.Y;
                 result.x = coords.X;
                 result.y = coords.Y;
-                SendResult(context, result);
+                SendResult(Context, result);
             }
         }
     }

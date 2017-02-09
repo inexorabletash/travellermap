@@ -13,7 +13,6 @@ namespace Maps.Rendering
 
     public class VectorObject : MapObject
     {
-        private PointF[] pathDataPoints;
         private Byte[] pathDataTypes;
 
         public VectorObject()
@@ -39,13 +38,13 @@ namespace Maps.Rendering
             get
             {
                 // Compute bounds if not already set
-                if (bounds.IsEmpty && pathDataPoints?.Length > 0)
+                if (bounds.IsEmpty && PathDataPoints?.Length > 0)
                 {
-                    bounds.Location = pathDataPoints[0];
+                    bounds.Location = PathDataPoints[0];
 
-                    for (int i = 1; i < pathDataPoints.Length; ++i)
+                    for (int i = 1; i < PathDataPoints.Length; ++i)
                     {
-                        PointF pt = pathDataPoints[i];
+                        PointF pt = PathDataPoints[i];
                         if (pt.X < bounds.X) { float d = bounds.X - pt.X; bounds.X = pt.X; bounds.Width += d; }
                         if (pt.Y < bounds.Y) { float d = bounds.Y - pt.Y; bounds.Y = pt.Y; bounds.Height += d; }
 
@@ -105,16 +104,16 @@ namespace Maps.Rendering
 
         public MapOptions MapOptions { get; set; }
 
-        public PointF[] PathDataPoints { get { return pathDataPoints; } set { pathDataPoints = value; } }
+        public PointF[] PathDataPoints { get; set; }
         public Byte[] PathDataTypes
         {
             get
             {
                 if (pathDataTypes == null)
                 {
-                    List<byte> types = new List<byte>(pathDataPoints.Length);
+                    List<byte> types = new List<byte>(PathDataPoints.Length);
                     types.Add((byte)PathPointType.Start);
-                    for (int i = 1; i < pathDataPoints.Length; ++i)
+                    for (int i = 1; i < PathDataPoints.Length; ++i)
                         types.Add((byte)PathPointType.Line);
                     pathDataTypes = types.ToArray();
                 }

@@ -86,13 +86,12 @@ namespace Maps.API
         {
             public DataResponder(HttpContext context)
             {
-                this.context = context;
+                Context = context;
             }
 
             public abstract string DefaultContentType { get; }
 
-            protected HttpContext context;
-            public HttpContext Context { get { return context; } }
+            public HttpContext Context { get; private set; }
 
             public abstract void Process();
 
@@ -208,7 +207,7 @@ namespace Maps.API
             #region Option Parsing
             protected bool HasOption(string name)
             {
-                return HasOption(name, Defaults(context));
+                return HasOption(name, Defaults(Context));
             }
             public bool HasOption(string name, IDictionary<string, object> queryDefaults)
             {
@@ -217,7 +216,7 @@ namespace Maps.API
 
             protected string GetStringOption(string name, string defaultValue = null)
             {
-                return GetStringOption(name, Defaults(context), defaultValue);
+                return GetStringOption(name, Defaults(Context), defaultValue);
             }
             public string GetStringOption(string name, IDictionary<string, object> queryDefaults, string defaultValue = null)
             {
@@ -238,7 +237,7 @@ namespace Maps.API
 
             protected int GetIntOption(string name, int defaultValue)
             {
-                return GetIntOption(name, Defaults(context), defaultValue);
+                return GetIntOption(name, Defaults(Context), defaultValue);
             }
             public int GetIntOption(string name, IDictionary<string, object> queryDefaults, int defaultValue)
             {
@@ -250,7 +249,7 @@ namespace Maps.API
 
             protected double GetDoubleOption(string name, double defaultValue)
             {
-                return GetDoubleOption(name, Defaults(context), defaultValue);
+                return GetDoubleOption(name, Defaults(Context), defaultValue);
             }
             public double GetDoubleOption(string name, IDictionary<string, object> queryDefaults, double defaultValue)
             {
@@ -262,7 +261,7 @@ namespace Maps.API
 
             protected bool GetBoolOption(string name, bool defaultValue)
             {
-                return GetBoolOption(name, Defaults(context), defaultValue);
+                return GetBoolOption(name, Defaults(Context), defaultValue);
             }
 
             public bool GetBoolOption(string name, IDictionary<string, object> queryDefaults, bool defaultValue)
@@ -290,12 +289,12 @@ namespace Maps.API
                 if (HasOption("x") && HasOption("y"))
                     return Astrometrics.CoordinatesToLocation(GetIntOption("x", 0), GetIntOption("y", 0));
 
-                throw new ArgumentException("Context is missing required parameters", nameof(context));
+                throw new ArgumentException("Context is missing required parameters", nameof(Context));
             }
 
             protected void ParseOptions(ref MapOptions options, ref Stylesheet.Style style)
             {
-                ParseOptions(context.Request, Defaults(context), ref options, ref style);
+                ParseOptions(Context.Request, Defaults(Context), ref options, ref style);
             }
 
             private static readonly IReadOnlyDictionary<string, Stylesheet.Style> s_nameToStyle = new Dictionary<string, Stylesheet.Style> {

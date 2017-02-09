@@ -24,7 +24,7 @@ namespace Maps.API
             public override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Xml; } }
             public override void Process()
             {
-                ResourceManager resourceManager = new ResourceManager(context.Server);
+                ResourceManager resourceManager = new ResourceManager(Context.Server);
 
                 // NOTE: This (re)initializes a static data structure used for 
                 // resolving names into sector locations, so needs to be run
@@ -53,7 +53,7 @@ namespace Maps.API
 
                     data.Sectors.Add(new UniverseResult.SectorResult(sector));
                 }
-                SendResult(context, data);
+                SendResult(Context, data);
             }
         }
     }
@@ -68,8 +68,7 @@ namespace Maps.API.Results
         public UniverseResult() { }
 
         [XmlElement("Sector")]
-        public List<SectorResult> Sectors { get { return sectors; } }
-        private List<SectorResult> sectors = new List<SectorResult>();
+        public List<SectorResult> Sectors { get; } = new List<SectorResult>();
 
         [XmlRoot("Sector")]
         public class SectorResult

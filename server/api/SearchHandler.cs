@@ -34,7 +34,7 @@ namespace Maps.API
 
             public override void Process()
             {
-                string query = context.Request.QueryString["q"];
+                string query = Context.Request.QueryString["q"];
                 if (query == null)
                     return;
 
@@ -43,14 +43,14 @@ namespace Maps.API
                 {
                     string path = SpecialSearches[query];
 
-                    if (context.Request.QueryString["jsonp"] != null)
+                    if (Context.Request.QueryString["jsonp"] != null)
                     {
                         // TODO: Does this include the JSONP headers?
                         SendFile(JsonConstants.MediaType, path);
                         return;
                     }
 
-                    if (Accepts(context, JsonConstants.MediaType))
+                    if (Accepts(Context, JsonConstants.MediaType))
                     {
                         SendFile(JsonConstants.MediaType, path);
                         return;
@@ -61,7 +61,7 @@ namespace Maps.API
                 //
                 // Do the search
                 //
-                ResourceManager resourceManager = new ResourceManager(context.Server);
+                ResourceManager resourceManager = new ResourceManager(Context.Server);
                 string milieu = GetStringOption("milieu", SectorMap.DEFAULT_MILIEU);
                 SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, milieu);
 
@@ -95,7 +95,7 @@ namespace Maps.API
                         .Take(NUM_RESULTS));
                 }
 
-                SendResult(context, resultsList);
+                SendResult(Context, resultsList);
             }
         }
     }

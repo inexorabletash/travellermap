@@ -17,7 +17,7 @@ namespace Maps.API
 
             public override void Process()
             {
-                SendResult(context,
+                SendResult(Context,
                     SecondSurvey.SophontCodes.Select(code => new Results.SophontCode(code, SecondSurvey.SophontCodeToName(code))).ToList());
             }
         }
@@ -36,7 +36,7 @@ namespace Maps.API
             public override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Xml; } }
             public override void Process()
             {
-                SendResult(context, SecondSurvey.AllegianceCodes.Select(
+                SendResult(Context, SecondSurvey.AllegianceCodes.Select(
                     code => new Results.AllegianceCode(code, SecondSurvey.GetStockAllegianceFromCode(code).Name)).ToList());
             }
         }

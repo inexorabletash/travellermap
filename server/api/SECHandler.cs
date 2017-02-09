@@ -23,7 +23,7 @@ namespace Maps.API
                 // NOTE: This (re)initializes a static data structure used for 
                 // resolving names into sector locations, so needs to be run
                 // before any other objects (e.g. Worlds) are loaded.
-                ResourceManager resourceManager = new ResourceManager(context.Server);
+                ResourceManager resourceManager = new ResourceManager(Context.Server);
                 SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, GetStringOption("milieu"));
                 Sector sector;
 
@@ -33,11 +33,11 @@ namespace Maps.API
                 options.includeHeader = GetBoolOption("header", defaultValue: true);
                 options.includeRoutes = GetBoolOption("routes", defaultValue: false);
 
-                if (context.Request.HttpMethod == "POST")
+                if (Context.Request.HttpMethod == "POST")
                 {
                     bool lint = GetBoolOption("lint", defaultValue: false);
                     var errors = lint ? new ErrorLogger() : null;
-                    sector = new Sector(context.Request.InputStream, new ContentType(context.Request.ContentType).MediaType, errors);
+                    sector = new Sector(Context.Request.InputStream, new ContentType(Context.Request.ContentType).MediaType, errors);
                     if (lint && !errors.Empty)
                         throw new HttpError(400, "Bad Request", errors.ToString());
                     options.includeMetadata = false;
@@ -103,7 +103,7 @@ namespace Maps.API
                     sector.Serialize(resourceManager, writer, mediaType, options);
                     data = writer.ToString();
                 }
-                SendResult(context, data, encoding);
+                SendResult(Context, data, encoding);
             }
         }
     }

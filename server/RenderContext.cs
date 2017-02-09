@@ -27,7 +27,7 @@ namespace Maps.Rendering
             AbstractMatrix m = new AbstractMatrix();
             m.TranslatePrepend((float)(-tileRect.Left * scale * Astrometrics.ParsecScaleX), (float)(-tileRect.Top * scale * Astrometrics.ParsecScaleY));
             m.ScalePrepend((float)scale * Astrometrics.ParsecScaleX, (float)scale * Astrometrics.ParsecScaleY);
-            imageSpaceToWorldSpace = m;
+            ImageSpaceToWorldSpace = m;
             m.Invert();
             worldSpaceToImageSpace = m;
         }
@@ -54,9 +54,8 @@ namespace Maps.Rendering
 
         public Stylesheet Styles { get { return styles; } }
 
-        private readonly AbstractMatrix imageSpaceToWorldSpace;
         private readonly AbstractMatrix worldSpaceToImageSpace;
-        public AbstractMatrix ImageSpaceToWorldSpace { get { return imageSpaceToWorldSpace;  } }
+        public AbstractMatrix ImageSpaceToWorldSpace { get; private set; }
 
         private static readonly RectangleF galaxyImageRect = new Rectangle(-18257, -26234, 36551, 32462); // Chosen to match T5 pp.416
 
@@ -190,7 +189,7 @@ namespace Maps.Rendering
                 {
                     if (ClipPath != null)
                     {
-                        graphics.MultiplyTransform(imageSpaceToWorldSpace);
+                        graphics.MultiplyTransform(ImageSpaceToWorldSpace);
                         graphics.IntersectClip(ClipPath);
                         graphics.MultiplyTransform(worldSpaceToImageSpace);
                     }
@@ -209,7 +208,7 @@ namespace Maps.Rendering
                 //
                 //////////////////////////////////////////////////////////////
 
-                graphics.MultiplyTransform(imageSpaceToWorldSpace);
+                graphics.MultiplyTransform(ImageSpaceToWorldSpace);
 
                 using (graphics.Save())
                 {

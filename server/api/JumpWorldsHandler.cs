@@ -20,7 +20,7 @@ namespace Maps.API
                 // NOTE: This (re)initializes a static data structure used for 
                 // resolving names into sector locations, so needs to be run
                 // before any other objects (e.g. Worlds) are loaded.
-                ResourceManager resourceManager = new ResourceManager(context.Server);
+                ResourceManager resourceManager = new ResourceManager(Context.Server);
 
                 //
                 // Jump
@@ -52,7 +52,7 @@ namespace Maps.API
 
                 var data = new Results.JumpWorldsResult();
                 data.Worlds.AddRange(selector.Worlds);
-                SendResult(context, data);
+                SendResult(Context, data);
             }
         }
     }

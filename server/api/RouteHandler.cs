@@ -110,14 +110,14 @@ namespace Maps.API
 
             public override void Process()
             {
-                ResourceManager resourceManager = new ResourceManager(context.Server);
+                ResourceManager resourceManager = new ResourceManager(Context.Server);
                 SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, GetStringOption("milieu"));
 
-                World startWorld = ResolveLocation(context, "start", resourceManager, map);
+                World startWorld = ResolveLocation(Context, "start", resourceManager, map);
                 if (startWorld == null)
                     return;
 
-                World endWorld = ResolveLocation(context, "end", resourceManager, map);
+                World endWorld = ResolveLocation(Context, "end", resourceManager, map);
                 if (endWorld == null)
                     return;
 
@@ -133,7 +133,7 @@ namespace Maps.API
                 if (route == null)
                     throw new HttpError(404, "Not Found", "No route found");
 
-                SendResult(context, route.Select(w => new Results.RouteStop(w)).ToList());
+                SendResult(Context, route.Select(w => new Results.RouteStop(w)).ToList());
             }
         }
     }

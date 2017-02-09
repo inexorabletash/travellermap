@@ -24,7 +24,7 @@ namespace Maps.API
             public Responder(HttpContext context) : base(context) { }
             public override void Process()
             {
-                ResourceManager resourceManager = new ResourceManager(context.Server);
+                ResourceManager resourceManager = new ResourceManager(Context.Server);
 
                 MapOptions options = MapOptions.SectorGrid | MapOptions.BordersMajor | MapOptions.NamesMajor | MapOptions.NamesMinor;
                 Stylesheet.Style style = Stylesheet.Style.Poster;
@@ -65,7 +65,7 @@ namespace Maps.API
                 RenderContext ctx = new RenderContext(resourceManager, selector, tileRect, scale, options, styles, tileSize);
                 ctx.Silly = silly;
                 ctx.ClipOutsectorBorders = true;
-                ProduceResponse(context, "Tile", ctx, tileSize);
+                ProduceResponse(Context, "Tile", ctx, tileSize);
             }
         }
     }

@@ -76,18 +76,12 @@ namespace Maps
 
     internal class ResourceManager
     {
-        private HttpServerUtility serverUtility;
-        public HttpServerUtility Server { get { return serverUtility; } }
-
-        private LRUCache cache = new LRUCache(50);
-
-        // TODO: Quick Fix - clean this up later
-        //private Cache m_cache;
-        public LRUCache Cache { get { return cache; } }
+        public HttpServerUtility Server { get; private set; }
+        public LRUCache Cache { get; } = new LRUCache(50);
 
         public ResourceManager(HttpServerUtility serverUtility)
         {
-            this.serverUtility = serverUtility;
+            Server = serverUtility;
         }
 
         public object GetXmlFileObject(string name, Type type, bool cache = true)
