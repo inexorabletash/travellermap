@@ -284,12 +284,12 @@ namespace Maps.Serialization
                     {
                         if (!options.HasFlag(CheckOptions.Warning))
                         {
-                            errors?.Error("Unexpected value for {key}: '{value}'", lineNumber, line);
+                            errors?.Error($"Unexpected value for {key}: '{value}'", lineNumber, line);
                             hadError = true;
                         }
                         else
                         {
-                            errors?.Warning("Unexpected value for {key}: '{value}'", lineNumber, line);
+                            errors?.Warning($"Unexpected value for {key}: '{value}'", lineNumber, line);
                         }
                     }
 
