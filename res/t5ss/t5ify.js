@@ -53,7 +53,7 @@ function process(world) {
   world.De = world.Atm.in(2, 9) && world.Hyd === 0;
   world.Fl = world.Atm.in(10, 12) && world.Hyd.in(1, 10);
   world.Ga = world.Siz.in(6, 8) && world.Atm.in([5, 6, 8]) && world.Hyd.in(5, 7);
-  world.He = world.Siz.in([3, 4, 5, 9, 10, 11, 12])
+  world.He = world.Siz.in([3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
     && world.Atm.in([2, 4, 7, 9, 10, 11, 12]) && world.Hyd.in(0, 2);
   world.Ic = world.Atm.in(0, 1) && world.Hyd.in(1, 10);
   world.Oc = world.Siz.in(10, 12) && world.Hyd === 10;
