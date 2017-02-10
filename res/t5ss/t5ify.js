@@ -16,7 +16,7 @@ Number.prototype.in = function(min, max) {
 };
 
 function parse(text) {
-  const lines = text.split(/\r\n|\r|\n/);
+  const lines = text.split(/\r\n|\r|\n/).filter(s => s.length > 0);;
   const header = lines.shift().split('\t');
   const worlds = lines.map(line => {
     const world = {};
