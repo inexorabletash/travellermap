@@ -1040,7 +1040,7 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <X>-3</X>
     <Name Lang="va">Tuglikki</Name>
     <Name Lang="zh">Dravr</Name>
-    <DataFile Author="David Drazul"  Source="Traveller 5 Sector Survey" Milieu="M1105" Type="TabDelimited">Tuglikki.tab</DataFile>
+    <DataFile Author="David Drazul"  Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Tuglikki.tab</DataFile>
     <MetadataFile>Tuglikki.xml</MetadataFile>
   </Sector>
   <Sector Abbreviation="Prov" Tags="InReview">
@@ -1049,7 +1049,7 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <Name>Provence</Name>
     <Name Lang="va">Orraenang</Name>
     <Name Lang="vi">Amshagi</Name>
-    <DataFile Author="David Drazul" Source="Traveller 5 Sector Survey" Milieu="M1105" Type="TabDelimited">Provence.tab</DataFile>
+    <DataFile Author="David Drazul" Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Provence.tab</DataFile>
     <MetadataFile>Provence.xml</MetadataFile>
   </Sector>
   <Sector Abbreviation="Wind" Tags="InReview">
@@ -1058,7 +1058,7 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <Name>Windhorn</Name>
     <Name Lang="va">Gotzdzo</Name>
     <Name Lang="vi">Kishadikhu</Name>
-    <DataFile Author="John Wood" Source="Traveller 5 Sector Survey" Milieu="M1105" Type="TabDelimited">Windhorn.tab</DataFile>
+    <DataFile Author="John Wood" Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Windhorn.tab</DataFile>
     <MetadataFile>Windhorn.xml</MetadataFile>
   </Sector>
   <Sector Abbreviation="Mesh" Tags="InReview">
@@ -1066,7 +1066,7 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <X>0</X>
     <Name>Meshan</Name>
     <!-- <Name Lang="va">Arzul</Name> Vilani and Vargr - but duplicate w/ Ingukrax -->
-    <DataFile Author="Michael R. Mikesh" Source="Traveller 5 Sector Survey" Milieu="M1105" Type="TabDelimited">Meshan.tab</DataFile>
+    <DataFile Author="Michael R. Mikesh" Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Meshan.tab</DataFile>
     <MetadataFile>Meshan.xml</MetadataFile>
   </Sector>
   <Sector Abbreviation="Mend" Tags="InReview">
@@ -1074,7 +1074,7 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <X>1</X>
     <Name>Mendan</Name>
     <Name Lang="va">Gotzdzo</Name>
-    <DataFile Author="Michael R. Mikesh" Source="Traveller 5 Sector Survey" Milieu="M1105" Type="TabDelimited">Mendan.tab</DataFile>
+    <DataFile Author="Michael R. Mikesh" Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Mendan.tab</DataFile>
     <MetadataFile Source="Challenge #49" Author="Michael R. Mikesh" Publisher="GDW" Ref="http://traveller.mu.org/archive/General/sectors/mendan.vmb" Milieu="M1105">Mendan.xml</MetadataFile>
   </Sector>
   <Sector Abbreviation="Amdu" Tags="InReview">
@@ -1082,15 +1082,15 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <X>2</X>
     <Name>Amdukan</Name>
     <Name Lang="va">Outhofos</Name>
-    <DataFile Author="Michael R. Mikesh" Source="Traveller 5 Sector Survey" Milieu="M1105" Type="TabDelimited">Amdukan.tab</DataFile>
+    <DataFile Author="Michael R. Mikesh" Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Amdukan.tab</DataFile>
     <MetadataFile Author="Michael R. Mikesh" Source="Challenge #52 (Subsector G)" Publisher="GDW, HIWG" Ref="http://www.ocean-of-storms.com/core/astrogat/dI.htm">Amdukan.xml</MetadataFile>
   </Sector>
-  <Sector>
+  <Sector Abbreviation="Arzu" Tags="InReview">
     <Y>-2</Y>
     <X>3</X>
-    <Name Lang="kk">Ingukrax</Name>
     <Name Lang="va">Arzul</Name>
-    <DataFile Author="Jeff Zeitlin" Source="The Zhodani Base" Ref="http://zho.berka.com/data/CLASSIC/sector.pl?sector=ARZUL">arzul.sec</DataFile>
+    <Name Lang="kk">Ingukrax</Name>
+    <DataFile Author="Jeff Zeitlin" Source="Traveller 5 Second Survey" Type="TabDelimited">Arzul.tab</DataFile>
     <MetadataFile Author="Jeff Zeitlin" Source="The Zhodani Base" Ref="http://zho.berka.com/data/CLASSIC/sector.pl?sector=ARZUL">Arzul.xml</MetadataFile>
   </Sector>
   <Sector>
@@ -1288,11 +1288,11 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <DataFile Source="Traveller 5 Second Survey" Author="Jason &quot;Flynn&quot; Kemp, Alvin Plummer" Ref="http://stellarreaches.nwgamers.org/" Milieu="M1105" Type="TabDelimited">Empty Quarter.tab</DataFile>
     <MetadataFile>Empty Quarter.xml</MetadataFile>
   </Sector>
-  <Sector>
+  <Sector Abbreviation="Star" Tags="InReview">
     <Y>-1</Y>
     <X>3</X>
     <Name>Star's End</Name>
-    <DataFile Author="Jeff Zeitlin" Source="The Zhodani Base" Ref="http://zho.berka.com/data/CLASSIC/sector.pl?sector=STARSEND">star-s_end.sec</DataFile>
+    <DataFile Author="Jeff Zeitlin" Source="Traveller 5 Second Survey" Type="TabDelimited">Star's End.tab</DataFile>
     <MetadataFile Author="Jeff Zeitlin" Source="The Zhodani Base" Ref="http://zho.berka.com/data/CLASSIC/sector.pl?sector=STARSEND">Star's End.xml</MetadataFile>
   </Sector>
   <Sector>
@@ -1715,7 +1715,7 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <Y>1</Y>
     <X>3</X>
     <Name>Crucis Margin</Name>
-    <DataFile Author="Martin J. Dougherty and Hunter Gordon" Source="Traveller 5 Sector Survey" Milieu="M1105" Type="TabDelimited">Crucis Margin.tab</DataFile>
+    <DataFile Author="Martin J. Dougherty and Hunter Gordon" Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Crucis Margin.tab</DataFile>
     <MetadataFile>Crucis Margin.xml</MetadataFile>
   </Sector>
   <Sector>

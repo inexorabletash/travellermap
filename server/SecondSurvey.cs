@@ -265,6 +265,7 @@ namespace Maps
             { "CsHv", "Hc", null, "Client state, Hiver Federation" },
             { "CsIm", "Cs", null, "Client state, Third Imperium" },
             { "CsMP", "Ms", null, "Client state, Ma'Gnar Primarchic" },
+            { "CsTw", "KC", null, "Client state, Two Thousand Worlds" },
             { "CsZh", "Cz", null, "Client state, Zhodani Consulate" },
             { "CyUn", "Cu", null, "Cytralin Unity" },
             { "DaCf", "Da", null, "Darrian Confederation" },
@@ -326,6 +327,7 @@ namespace Maps
             { "KaCo", "KC", null, "Katowice Conquest" },
             { "KaWo", "KW", null, "Karhyri Worlds" },
             { "KhLe", "Kl", null, "Khuur League" },
+            { "KkTw", "Kk", "Kk", "Two Thousand Worlds" }, // (K'kree)
             { "KoEm", "Ko", "Ko", "Korsumug Empire" },
             { "KoPm", "Pm", "Pm", "Percavid Marches" },
             { "KPel", "Pe", "Pe", "Kingdom of Peladon" },
