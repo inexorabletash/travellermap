@@ -1076,7 +1076,23 @@ namespace Maps.Rendering
                                 if (world.GasGiants > 0)
                                 {
                                     solidBrush.Color = styles.worlds.textColor;
-                                    RenderUtil.DrawGlyph(graphics, Glyph.Circle, styleRes, solidBrush, styles.GasGiantPosition.X, styles.GasGiantPosition.Y);
+                                    float ggr = 0.05f;
+                                    graphics.DrawEllipse(solidBrush,
+                                        styles.GasGiantPosition.X - ggr,
+                                        styles.GasGiantPosition.Y - ggr,
+                                        ggr * 2,
+                                        ggr * 2);
+
+                                    if (styles.showGasGiantRing)
+                                    {
+                                        pen.Color = styles.worlds.textColor;
+                                        pen.Width = ggr / 2;
+                                        graphics.DrawLine(pen,
+                                            styles.GasGiantPosition.X - ggr * 1.75f,
+                                            styles.GasGiantPosition.Y + ggr * 0.75f,
+                                            styles.GasGiantPosition.X + ggr * 1.75f,
+                                            styles.GasGiantPosition.Y - ggr * 0.75f);
+                                    }
                                 }
                             }
 #endregion

@@ -240,6 +240,7 @@ namespace Maps.Rendering
             showWorldDetailColors = worldDetails == WorldDetails.Poster && options.HasFlag(MapOptions.WorldColors);
 
             lowerCaseAllegiance = (scale < WorldFullMinScale);
+            showGasGiantRing = (scale >= WorldUwpMinScale);
 
             worlds.textBackgroundStyle = TextBackgroundStyle.Rectangle;
 
@@ -857,6 +858,7 @@ namespace Maps.Rendering
         public WorldDetails worldDetails;
         public bool lowerCaseAllegiance;
         public FontInfo wingdingFont;
+        public bool showGasGiantRing;
 
         // Hex Coordinates
         public StyleElement hexNumber;
