@@ -834,8 +834,51 @@ namespace Maps
                 ColorHtml = color;
         }
 
-        internal Hex Start { get; set; }
-        internal Hex End { get; set; }
+
+        private static void FixHex(ref Hex hex, ref sbyte offsetX, ref sbyte offsetY)
+        {
+            // Normalize outsector links recorded as 0000...3341, etc.
+            if (hex.X < 1)
+            {
+                hex.X = (byte)(hex.X + Astrometrics.SectorWidth);
+                --offsetX;
+            }
+            else if (hex.X > Astrometrics.SectorWidth)
+            {
+                hex.X = (byte)(hex.X - Astrometrics.SectorWidth);
+                ++offsetX;
+            }
+            else
+            {
+                hex.X = hex.X;
+            }
+
+            if (hex.Y < 1)
+            {
+                hex.Y = (byte)(hex.Y + Astrometrics.SectorHeight);
+                --offsetY;
+            }
+            else if (hex.Y > Astrometrics.SectorHeight)
+            {
+                hex.Y = (byte)(hex.Y - Astrometrics.SectorHeight);
+                ++offsetY;
+            }
+            else
+            {
+                hex.Y = hex.Y;
+            }
+
+        }
+        internal Hex Start
+        {
+            get { return start; }
+            set { start = value; FixHex(ref start, ref startOffsetX, ref startOffsetY); }
+        }
+        internal Hex End
+        {
+            get { return end; }
+            set { end = value; FixHex(ref end, ref endOffsetX, ref endOffsetY); }
+        }
 
         [XmlAttribute("Start"), JsonName("Start")]
         public string StartHex
@@ -851,6 +894,8 @@ namespace Maps
             set { End = new Hex(value); }
         }
 
+        private Hex start;
+        private Hex end;
         private sbyte startOffsetX;
         private sbyte startOffsetY;
         private sbyte endOffsetX;
