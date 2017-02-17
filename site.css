@@ -76,10 +76,12 @@ p, li, dd {
 ol.steps > li {
   margin-top: 4px;
   margin-bottom: 4px;
-  font-size: 120%;
+  font-size: 12pt;
 }
-ol.steps > li select {
-  font-size: 120%;
+ol.steps > li select,
+ol.steps > li button,
+ol.steps > li input[type=submit] {
+  font-size: 12pt;
 }
 
 div.aside, p.aside {

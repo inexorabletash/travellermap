@@ -3,12 +3,12 @@
 <title>Sector Booklet - Traveller Map</title>
 <meta charset="utf-8">
 <link rel="shortcut icon" href="../favicon.ico">
-<link rel="stylesheet" href="../site.css?update=2016-10-16">
+<link rel="stylesheet" href="../site.css?update=2017-02-16">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
 <script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.29/polyfill.min.js"></script>
 <script src="../map.js?update=2017-01-31"></script>
 <script src="post.js?update=2016-10-15"></script>
-<script src="booklet.js?update=2017-02-03"></script>
+<script src="booklet.js?update=2017-02-16"></script>
 <style>
 @import url(https://fonts.googleapis.com/css?family=Marcellus|PT+Sans+Narrow);
 
@@ -505,14 +505,15 @@ table.subsector-list tr td:first-of-type {
   <div id="input">
     <h1>Booklet Maker &mdash; The Traveller Map</h1>
 
+    <form id="form" action="api/poster" method="post" enctype="application/x-www-form-urlencoded">
+
     <ol class="steps">
       <li>
         <select id="sector">
-          <option disabled>Select...</option>
+          <option selected disabled>Select...</option>
         </select>
         a sector, or enter custom sector data/metadata:
 
-    <form id="form" action="api/poster" method="post" enctype="application/x-www-form-urlencoded">
       <div>Sector Data:
         (<a target="_blank" href="../doc/fileformats">file formats</a>)
         &mdash;
@@ -526,7 +527,6 @@ table.subsector-list tr td:first-of-type {
         <a target="_blank" href="http://dotclue.org/t20/">MSEC</a>)</div>
       <textarea id="metadata" name="metadata" class="drag-n-drop"
             spellcheck="false" wrap="off" cols="80" rows="10"></textarea>
-    </form>
 
       </li>
       <li>
@@ -537,11 +537,24 @@ table.subsector-list tr td:first-of-type {
             <td>
               <table id="label_grid">
                 <tr>
-                  <td style="text-align: right">Style:</td>
+                  <td style="text-align: right">Data Style:</td>
                   <td>
-                    <select id="style" name="style">
+                    <select id="data-style" name="data-style">
                       <option selected value="t5">Traveller 5 (with Ix/Ex/Cx/etc)</option>
                       <option value="classic">Classic Traveller (fewer fields)</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="text-align: right">Map Style:</td>
+                  <td>
+                    <select name="map-style">
+                      <option value="poster">Black background (Color)</option>
+                      <option value="print" selected>White background (Color)</option>
+                      <option value="atlas">White background (B&amp;W)</option>
+                      <option value="candy">Eye candy</option>
+                      <option value="draft">Draft</option>
+                      <option value="fasa">FASA (experimental)</option>
                     </select>
                   </td>
                 </tr>
@@ -552,10 +565,11 @@ table.subsector-list tr td:first-of-type {
       </li>
       <li>
         Click
-    <!-- TODO: Add preview? -->
-    <button id="compose">Compose Booklet</button>
+        <!-- TODO: Add preview? -->
+        <button id="compose">Compose Booklet</button>
       </li>
     </ol>
+    </form>
     <div style="margin-top: 10px; font-size: 80%">
       The <em class="product">Traveller</em> game in all forms is owned by Far
       Future Enterprises. Copyright &copy; 1977 &ndash; 2017 Far Future

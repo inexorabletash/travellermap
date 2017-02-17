@@ -198,22 +198,26 @@
       document.body.classList.add('render');
       render({
         sector: searchParams.get('sector'),
-        milieu: searchParams.get('milieu')
+        milieu: searchParams.get('milieu'),
+        style: searchParams.get('style'),
+        options: searchParams.get('options')
       });
       return;
     }
 
-    $('#compose').addEventListener('click', function() {
+    $('#compose').addEventListener('click', function(e) {
+      e.preventDefault();
       var form = $('#form');
       if (!form['data'].value.length) {
         alert('Sector data must be specified.');
         return;
       }
       document.body.classList.add('render');
-      document.body.classList.add('style-' + $('#style').value);
+      document.body.classList.add('style-' + $('#data-style').value);
       render({
         data: form['data'].value,
-        metadata: form['metadata'].value
+        metadata: form['metadata'].value,
+        style: form['map-style'].value
       });
     });
 
@@ -224,7 +228,7 @@
     var hash = window.location.hash;
     window.location.hash = '';
 
-    var options = params.options !== (void 0) ? Number(params.options) : Traveller.MapOptions.BordersMask,
+    var options = params.options !== undefined ? Number(params.options) : Traveller.MapOptions.BordersMask,
         style = params.style || 'print';
 
     status('Fetching data...', true);
