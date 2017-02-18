@@ -1581,56 +1581,55 @@ namespace Maps.Rendering
                 styles.microRoutes.pen.Apply(ref pen);
                 float baseWidth = styles.microRoutes.pen.width;
 
-                foreach (Sector sector in selector.Sectors)
+                foreach (var tuple in selector.Routes)
                 {
-                    foreach (Route route in sector.Routes)
-                    {
-                        // Compute source/target sectors (may be offset)
-                        Location startLocation, endLocation;
-                        sector.RouteToStartEnd(route, out startLocation, out endLocation);
-                        if (startLocation == endLocation)
-                            continue;
+                    Sector sector = tuple.Item1;
+                    Route route = tuple.Item2;
+                    // Compute source/target sectors (may be offset)
+                    Location startLocation, endLocation;
+                    sector.RouteToStartEnd(route, out startLocation, out endLocation);
+                    if (startLocation == endLocation)
+                        continue;
 
-                        // If drawing dashed lines twice and the start/end are swapped the
-                        // dashes don't overlap correctly. So "sort" the points.
-                        if (startLocation > endLocation)
-                            Util.Swap(ref startLocation, ref endLocation);
+                    // If drawing dashed lines twice and the start/end are swapped the
+                    // dashes don't overlap correctly. So "sort" the points.
+                    if (startLocation > endLocation)
+                        Util.Swap(ref startLocation, ref endLocation);
 
-                        PointF startPoint = Astrometrics.HexToCenter(Astrometrics.LocationToCoordinates(startLocation));
-                        PointF endPoint = Astrometrics.HexToCenter(Astrometrics.LocationToCoordinates(endLocation));
+                    PointF startPoint = Astrometrics.HexToCenter(Astrometrics.LocationToCoordinates(startLocation));
+                    PointF endPoint = Astrometrics.HexToCenter(Astrometrics.LocationToCoordinates(endLocation));
 
-                        // Shorten line to leave room for world glyph
-                        OffsetSegment(ref startPoint, ref endPoint, 0.25f);
+                    // Shorten line to leave room for world glyph
+                    OffsetSegment(ref startPoint, ref endPoint, 0.25f);
 
-                        float? routeWidth = route.Width;
-                        Color? routeColor = route.Color;
-                        LineStyle? routeStyle = styles.overrideLineStyle ?? route.Style;
+                    float? routeWidth = route.Width;
+                    Color? routeColor = route.Color;
+                    LineStyle? routeStyle = styles.overrideLineStyle ?? route.Style;
 
-                        SectorStylesheet.StyleResult ssr = sector.ApplyStylesheet("route", route.Allegiance ?? route.Type ?? "Im");
-                        routeStyle = routeStyle ?? ssr.GetEnum<LineStyle>("style");
-                        routeColor = routeColor ?? ssr.GetColor("color");
-                        routeWidth = routeWidth ?? (float?)ssr.GetNumber("width") ?? 1.0f;
+                    SectorStylesheet.StyleResult ssr = sector.ApplyStylesheet("route", route.Allegiance ?? route.Type ?? "Im");
+                    routeStyle = routeStyle ?? ssr.GetEnum<LineStyle>("style");
+                    routeColor = routeColor ?? ssr.GetColor("color");
+                    routeWidth = routeWidth ?? (float?)ssr.GetNumber("width") ?? 1.0f;
 
-                        // In grayscale, convert default color and style to non-default style
-                        if (styles.grayscale && !routeColor.HasValue && !routeStyle.HasValue)
-                            routeStyle = LineStyle.Dashed;
+                    // In grayscale, convert default color and style to non-default style
+                    if (styles.grayscale && !routeColor.HasValue && !routeStyle.HasValue)
+                        routeStyle = LineStyle.Dashed;
 
-                        routeColor = routeColor ?? styles.microRoutes.pen.color;
-                        routeStyle = routeStyle ?? LineStyle.Solid;
+                    routeColor = routeColor ?? styles.microRoutes.pen.color;
+                    routeStyle = routeStyle ?? LineStyle.Solid;
 
-                        // Ensure color is visible
-                        if (styles.grayscale || !ColorUtil.NoticeableDifference(routeColor.Value, styles.backgroundColor))
-                            routeColor = styles.microRoutes.pen.color; // default
+                    // Ensure color is visible
+                    if (styles.grayscale || !ColorUtil.NoticeableDifference(routeColor.Value, styles.backgroundColor))
+                        routeColor = styles.microRoutes.pen.color; // default
 
-                        if (routeStyle.Value == LineStyle.None)
-                            continue;
+                    if (routeStyle.Value == LineStyle.None)
+                        continue;
 
-                        pen.Color = routeColor.Value;
-                        pen.Width = routeWidth.Value * baseWidth;
-                        pen.DashStyle = LineStyleToDashStyle(routeStyle.Value);
+                    pen.Color = routeColor.Value;
+                    pen.Width = routeWidth.Value * baseWidth;
+                    pen.DashStyle = LineStyleToDashStyle(routeStyle.Value);
 
-                        graphics.DrawLine(pen, startPoint, endPoint);
-                    }
+                    graphics.DrawLine(pen, startPoint, endPoint);
                 }
             }
         }

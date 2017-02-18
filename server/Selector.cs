@@ -28,7 +28,13 @@ namespace Maps
 
         public IEnumerable<Border> Borders { get { return Sectors.SelectMany(sector => sector.Borders); } }
 
-        public IEnumerable<Route> Routes { get { return Sectors.SelectMany(sector => sector.Routes); } }
+        public virtual IEnumerable<Tuple<Sector, Route>> Routes
+        {
+            get
+            {
+                return Sectors.SelectMany(sector => sector.Routes, (sector, route) => Tuple.Create(sector, route));
+            }
+        }
 
         public IEnumerable<Label> Labels { get { return Sectors.SelectMany(sector => sector.Labels); } }
 
@@ -37,6 +43,22 @@ namespace Maps
             get
             {
                 return Sectors.SelectMany(sector => Enumerable.Range(0, 16).Select(i => sector.Subsector(i)).OfType<Subsector>());
+            }
+        }
+
+        protected IEnumerable<Tuple<Sector, Route>> FilteredRoutes(Rectangle bounds)
+        {
+            foreach (Sector sector in Sectors)
+            {
+                foreach (Route route in sector.Routes)
+                {
+                    Location startLocation, endLocation;
+                    sector.RouteToStartEnd(route, out startLocation, out endLocation);
+
+                    if (bounds.Contains(Astrometrics.LocationToCoordinates(startLocation))
+                    || bounds.Contains(Astrometrics.LocationToCoordinates(endLocation)))
+                        yield return Tuple.Create(sector, route);
+                }
             }
         }
     }
@@ -58,10 +80,11 @@ namespace Maps
             this.resourceManager = resourceManager;
         }
 
-
         public override IEnumerable<Sector> Sectors { get { yield return sector; } }
 
         public override IEnumerable<World> Worlds { get { return sector.GetWorlds(resourceManager, cacheResults: true); } }
+
+        public override IEnumerable<Tuple<Sector, Route>> Routes { get { return FilteredRoutes(sector.Bounds); } }
     }
 
 
@@ -110,6 +133,8 @@ namespace Maps
                 }
             }
         }
+
+        public override IEnumerable<Tuple<Sector, Route>> Routes {  get { return FilteredRoutes(sector.SubsectorBounds(index)); } }
     }
 
     internal class QuadrantSelector : Selector
@@ -157,6 +182,8 @@ namespace Maps
                 }
             }
         }
+
+        public override IEnumerable<Tuple<Sector, Route>> Routes { get { return FilteredRoutes(sector.QuadrantBounds(index));  } }
     }
 
     internal class RectSelector : Selector
