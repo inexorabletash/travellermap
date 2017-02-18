@@ -92,7 +92,6 @@ function process(world) {
     codeSet.delete(c);
   });
 
-
   // Climate
   ['Fr', 'Ho', 'Co', 'Lk', 'Tr', 'Tu', 'Tz'].forEach(c => {
     world[c] = codes.includes(c);
@@ -112,7 +111,10 @@ function process(world) {
   });
 
   // Special
-  ['Sa', 'Fo', 'Pz', 'Da', 'Ab', 'An'].forEach(c => {
+  ['Fo', 'Pz', 'Da'].forEach(c => {
+    codeSet.delete(c);
+  });
+  ['Sa', 'Ab', 'An'].forEach(c => {
     world[c] = codes.includes(c);
     if (world[c]) codeSet.delete(c);
   });
@@ -120,7 +122,7 @@ function process(world) {
   world.Sophonts = codes.filter(
     c =>
       /^....[0-9W]$/.test(c) ||
-      /^\(.*\)[0-9W]?$/.test(c)
+      /^(Di)?\(.*\)[0-9W]?$/.test(c)
   ).map(c => {
     codeSet.delete(c);
     return c;
@@ -132,15 +134,13 @@ function process(world) {
   ).map(c => {
     codeSet.delete(c);
     return c;
-  }).join(' ');
-  [
+  }).concat([
     'Fr', 'Ho', 'Co', 'Lk', 'Tr', 'Tu', 'Tz',
     'Fa', 'Mi', 'Mr', 'Px', 'Pe', 'Re',
-    'Sa', 'Fo', 'Pz', 'Da', 'Ab'
+    'Sa', 'Ab'
     // NOTE: Not An
-  ].forEach(c => {
-    if (world[c]) world.Details += ' ' + c;
-  });
+  ].filter(c => world[c]))
+    .join(' ');
 
   // Stellar configuration - just remove
   codes.filter(c => /^S[0-9A-F]+/.test(c)).forEach(c => {
