@@ -619,6 +619,25 @@ namespace Maps.Rendering
                         .Where(sector => !sector.Tags.Contains("Official") && !sector.Tags.Contains("Preserve") && !sector.Tags.Contains("InReview")))
                         graphics.DrawRectangle(solidBrush, sector.Bounds);
                 }
+                if (styles.colorCodeSectorStatus && styles.worlds.visible)
+                {
+                    foreach (Sector sector in selector.Sectors)
+                    {
+                        if (sector.Tags.Contains("Official"))
+                            solidBrush.Color = Color.FromArgb(128, Color.Red);
+                        else if (sector.Tags.Contains("InReview"))
+                            solidBrush.Color = Color.FromArgb(128, Color.Orange);
+                        else if (sector.Tags.Contains("Unreviewed"))
+                            solidBrush.Color = Color.FromArgb(128, Color.Yellow);
+                        else if (sector.Tags.Contains("Apocryphal"))
+                            solidBrush.Color = Color.FromArgb(128, Color.Magenta);
+                        else if (sector.Tags.Contains("Preserve"))
+                            solidBrush.Color = Color.FromArgb(128, Color.Green);
+                        else
+                            continue;
+                        graphics.DrawRectangle(solidBrush, sector.Bounds);
+                    }
+                }
                 timers.Add(new Timer("unofficial"));
                 #endregion
 
