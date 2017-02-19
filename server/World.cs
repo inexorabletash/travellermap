@@ -206,8 +206,17 @@ namespace Maps
         // "[Sophont]" - major race homeworld
         // "(Sophont)" - minor race homeworld
         // "(Sophont)0" - minor race homeworld (population in tenths)
+        // "Di(Sophont)" - minor race (dieback)
         // "{comment ... }" - arbitrary comment
         // "xyz" - other code
+        private static readonly List<Tuple<string, char>> markers = new List<Tuple<string, char>>
+        {
+            Tuple.Create("[", ']'),
+            Tuple.Create("(", ')'),
+            Tuple.Create("{", '}'),
+            Tuple.Create("Di(", ')')
+        };
+
         private class CodeList : IEnumerable<string>
         {
             public CodeList(string codes = "") { this.codes = codes; }
@@ -218,27 +227,39 @@ namespace Maps
                 int pos = 0;                
                 while (pos < codes.Length)
                 {
-                    int begin = pos;
-                    switch (codes[pos++])
+                    if (codes[pos] == ' ')
                     {
-                        case ' ':
-                            continue;
-                        case '[':
-                            while (pos < codes.Length && codes[pos] != ']') ++pos;
-                            while (pos < codes.Length && codes[pos] != ' ') ++pos;
-                            break;
-                        case '(':
-                            while (pos < codes.Length && codes[pos] != ')') ++pos;
-                            while (pos < codes.Length && codes[pos] != ' ') ++pos;
-                            break;
-                        case '{':
-                            while (pos < codes.Length && codes[pos] != '}') ++pos;
-                            while (pos < codes.Length && codes[pos] != ' ') ++pos;
-                            break;
-                        default:
-                            while (pos < codes.Length && codes[pos] != ' ') ++pos;
-                            break;
+                        ++pos;
+                        continue;
                     }
+
+                    int begin = pos;
+                    bool found = false;
+
+                    foreach (var tuple in markers)
+                    {
+                        string start = tuple.Item1;
+                        char endchar = tuple.Item2;
+
+                        if (codes.MatchAt(start, pos))
+                        {
+                            pos += start.Length;
+                            pos = codes.IndexOf(endchar, pos);
+                            if (pos != -1)
+                                pos = codes.IndexOf(' ', pos);
+                            if (pos == -1)
+                                pos = codes.Length;
+                            yield return codes.Substring(begin, pos - begin);
+                            found = true;
+                            break;
+                        }
+                    }
+                    if (found)
+                        continue;
+
+                    pos = codes.IndexOf(' ', pos);
+                    if (pos == -1)
+                        pos = codes.Length;
                     yield return codes.Substring(begin, pos - begin);
                 }
             }

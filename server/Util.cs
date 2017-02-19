@@ -93,6 +93,16 @@ namespace Maps
             return s.Substring(start, length);
         }
 
+        public static bool MatchAt(this string s, string substring, int start)
+        {
+            for (int i = 0, p = start; i < substring.Length; ++i, ++p)
+            {
+                if (p >= s.Length || s[p] != substring[i])
+                    return false;
+            }
+            return true;
+        }
+
         public static Stream ToStream(this string str, Encoding encoding = null)
         {
             encoding = encoding ?? Encoding.UTF8;
