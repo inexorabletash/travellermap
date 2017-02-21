@@ -156,7 +156,7 @@ namespace Maps.API
 
                 // TODO: Widen path to allow for single-pixel border
                 ctx.ClipPath = clip ? new AbstractPath(boundingPathCoords, boundingPathTypes) : null;
-                ProduceResponse(Context, "Jump Map", ctx, tileSize, transparent: clip);
+                ProduceResponse(Context, "Jump Map", ctx, tileSize, AbstractMatrix.Identity, transparent: clip);
             }
         }
     }

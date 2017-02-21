@@ -209,6 +209,7 @@ namespace Maps.API
                 double scale = Util.Clamp(GetDoubleOption("scale", NormalScale), MinScale, MaxScale);
 
                 int rot = GetIntOption("rotation", 0) % 4;
+                int hrot = GetIntOption("hrotation", 0);
                 bool thumb = GetBoolOption("thumb", false);
 
                 Stylesheet stylesheet = new Stylesheet(scale, options, style);
@@ -223,25 +224,49 @@ namespace Maps.API
                 }
 
                 int bitmapWidth = tileSize.Width, bitmapHeight = tileSize.Height;
-                float translateX = 0, translateY = 0;
+                AbstractMatrix transform = AbstractMatrix.Identity;
+
                 switch (rot)
                 {
                     case 1: // 90 degrees clockwise
+                        transform.RotatePrepend(90);
+                        transform.TranslatePrepend(0, -bitmapHeight);
                         Util.Swap(ref bitmapWidth, ref bitmapHeight);
-                        translateX = bitmapWidth;
                         break;
                     case 2: // 180 degrees
-                        translateX = bitmapWidth; translateY = bitmapHeight;
+                        transform.RotatePrepend(180);
+                        transform.TranslatePrepend(-bitmapWidth, -bitmapHeight);
                         break;
                     case 3: // 270 degrees clockwise
+                        transform.RotatePrepend(270);
+                        transform.TranslatePrepend(-bitmapWidth, 0);
                         Util.Swap(ref bitmapWidth, ref bitmapHeight);
-                        translateY = bitmapHeight;
                         break;
+                }
+
+                // TODO: Figure out how to compose rot and hrot properly.
+
+                if (hrot != 0)
+                {
+                    float degrees = -hrot;
+                    double radians = degrees * Math.PI / 180f;
+                    double newWidth = Math.Abs(Math.Sin(radians)) * bitmapHeight + Math.Abs(Math.Cos(radians)) * bitmapWidth;
+                    double newHeight = Math.Abs(Math.Sin(radians)) * bitmapWidth + Math.Abs(Math.Cos(radians)) * bitmapHeight;
+
+                    transform.TranslatePrepend((float)newWidth / 2, (float)newHeight / 2);
+                    transform.RotatePrepend(-degrees);
+                    transform.TranslatePrepend(-bitmapWidth / 2, -bitmapHeight / 2);
+                    bitmapWidth = (int)Math.Ceiling(newWidth);
+                    bitmapHeight = (int)Math.Ceiling(newHeight);
+
+                    stylesheet.hexRotation = (float)degrees;
+                    stylesheet.microBorders.textStyle.Rotation = degrees;
                 }
 
                 RenderContext ctx = new RenderContext(resourceManager, selector, tileRect, scale, options, stylesheet, tileSize);
                 ctx.ClipOutsectorBorders = clipOutsectorBorders;
-                ProduceResponse(Context, title, ctx, new Size(bitmapWidth, bitmapHeight), rot, translateX, translateY);
+
+                ProduceResponse(Context, title, ctx, new Size(bitmapWidth, bitmapHeight), transform);
             }
         }
     }

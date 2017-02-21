@@ -64,7 +64,7 @@ namespace Maps.Admin
                     RenderContext ctx = new RenderContext(resourceManager, selector, tileRect, scale, options, styles, tileSize);
                     ctx.ClipOutsectorBorders = true;
 
-                    ProduceResponse(Context, "Overview", ctx, tileSize);
+                    ProduceResponse(Context, "Overview", ctx, tileSize, AbstractMatrix.Identity);
                 }
             }
         }

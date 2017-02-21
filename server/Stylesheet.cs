@@ -826,6 +826,7 @@ namespace Maps.Rendering
         public float riftOpacity;
 
         public float hexContentScale = 1.0f;
+        public float hexRotation = 0f;
 
         public string preferredMimeType;
         public bool t5AllegianceCodes;

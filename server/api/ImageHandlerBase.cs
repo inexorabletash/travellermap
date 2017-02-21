@@ -24,15 +24,15 @@ namespace Maps.API
             public override string DefaultContentType { get { return Util.MediaTypeName_Image_Png; } }
 
             protected void ProduceResponse(HttpContext context, string title, RenderContext ctx, Size tileSize,
-                int rot = 0, float translateX = 0, float translateY = 0,
+                AbstractMatrix transform,
                 bool transparent = false)
             {
-                ProduceResponse(context, this, title, ctx, tileSize, rot, translateX, translateY, transparent,
+                ProduceResponse(context, this, title, ctx, tileSize, transform, transparent,
                     (context.Items["RouteData"] as System.Web.Routing.RouteData).Values);
             }
 
             protected void ProduceResponse(HttpContext context, ITypeAccepter accepter, string title, RenderContext ctx, Size tileSize,
-                int rot = 0, float translateX = 0, float translateY = 0,
+                AbstractMatrix transform,
                 bool transparent = false, IDictionary<string, object> queryDefaults = null)
             {
                 // New-style Options
@@ -103,7 +103,7 @@ namespace Maps.API
                     #region SVG Generation
                     using (var svg = new SVGGraphics(tileSize.Width, tileSize.Height))
                     {
-                        RenderToGraphics(ctx, rot, translateX, translateY, svg);
+                        RenderToGraphics(ctx, transform, svg);
 
                         using (var stream = new MemoryStream())
                         {
@@ -144,7 +144,7 @@ namespace Maps.API
 
                         using (var gfx = new PdfSharpGraphics(XGraphics.FromPdfPage(page)))
                         {
-                            RenderToGraphics(ctx, rot, translateX, translateY, gfx);
+                            RenderToGraphics(ctx, transform, gfx);
 
                             using (var stream = new MemoryStream())
                             {
@@ -184,7 +184,7 @@ namespace Maps.API
                             using (var graphics = new BitmapGraphics(g))
                             {
                                 graphics.ScaleTransform((float)devicePixelRatio);
-                                RenderToGraphics(ctx, rot, translateX, translateY, graphics);
+                                RenderToGraphics(ctx, transform, graphics);
                             }
                         }
 
@@ -205,8 +205,8 @@ namespace Maps.API
                     context.Response.Output.Write(";base64,");
                     context.Response.Output.Flush();
 
-                    System.Security.Cryptography.ICryptoTransform transform = new System.Security.Cryptography.ToBase64Transform();
-                    using (System.Security.Cryptography.CryptoStream cs = new System.Security.Cryptography.CryptoStream(context.Response.OutputStream, transform, System.Security.Cryptography.CryptoStreamMode.Write))
+                    System.Security.Cryptography.ICryptoTransform encoder = new System.Security.Cryptography.ToBase64Transform();
+                    using (System.Security.Cryptography.CryptoStream cs = new System.Security.Cryptography.CryptoStream(context.Response.OutputStream, encoder, System.Security.Cryptography.CryptoStreamMode.Write))
                     {
                         ms.WriteTo(cs);
                         cs.FlushFinalBlock();
@@ -231,10 +231,9 @@ namespace Maps.API
                 }
             }
 
-            private static void RenderToGraphics(RenderContext ctx, int rot, float translateX, float translateY, AbstractGraphics graphics)
+            private static void RenderToGraphics(RenderContext ctx, AbstractMatrix transform, AbstractGraphics graphics)
             {
-                graphics.TranslateTransform(translateX, translateY);
-                graphics.RotateTransform(rot * 90);
+                graphics.MultiplyTransform(transform);
 
                 if (ctx.DrawBorder && ctx.ClipPath != null)
                 {

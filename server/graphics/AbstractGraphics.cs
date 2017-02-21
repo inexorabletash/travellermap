@@ -95,6 +95,8 @@ namespace Maps.Rendering
 
         public XMatrix XMatrix { get { return matrix; } }
         public Matrix Matrix { get { return matrix.ToGdiMatrix(); } }
+
+        public static readonly AbstractMatrix Identity = new AbstractMatrix(1, 0, 0, 1, 0, 0);
     }
 
 

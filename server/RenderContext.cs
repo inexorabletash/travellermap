@@ -212,12 +212,10 @@ namespace Maps.Rendering
 
                 using (graphics.Save())
                 {
-                    //------------------------------------------------------------
-                    // Explicit Clipping
-                    //------------------------------------------------------------
-
                     if (ClipPath != null)
                         graphics.IntersectClip(ClipPath);
+                    else
+                        graphics.IntersectClip(tileRect);
 
                     //------------------------------------------------------------
                     // Background
@@ -959,6 +957,7 @@ namespace Maps.Rendering
                 var matrix = new AbstractMatrix();
                 matrix.TranslatePrepend(center.X, center.Y);
                 matrix.ScalePrepend(styles.hexContentScale / Astrometrics.ParsecScaleX, styles.hexContentScale / Astrometrics.ParsecScaleY);
+                matrix.RotatePrepend(styles.hexRotation);
                 graphics.MultiplyTransform(matrix);
 
                 if (layer == WorldLayer.Overlay)
