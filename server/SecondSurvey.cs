@@ -525,6 +525,7 @@ namespace Maps
             { "Lamu", "Lamura Gav/Teg" },
             { "Lanc", "Lancians" },
             { "Libe", "Liberts" },
+            { "Llel", "Llellewyloly" }, // (Dandies)
             { "Luri", "Luriani" },
             { "Mal'", "Mal'Gnar" },
             { "Mask", "Maskai" },
