@@ -390,5 +390,22 @@ namespace Maps.API
                 return sector;
             }
         }
+
+        protected static void ApplyHexRotation(int hrot, Stylesheet stylesheet, ref Size bitmapSize, ref AbstractMatrix transform)
+        {
+            float degrees = -hrot;
+            double radians = degrees * Math.PI / 180f;
+            double newWidth = Math.Abs(Math.Sin(radians)) * bitmapSize.Height + Math.Abs(Math.Cos(radians)) * bitmapSize.Width;
+            double newHeight = Math.Abs(Math.Sin(radians)) * bitmapSize.Width + Math.Abs(Math.Cos(radians)) * bitmapSize.Height;
+
+            transform.TranslatePrepend((float)newWidth / 2, (float)newHeight / 2);
+            transform.RotatePrepend(-degrees);
+            transform.TranslatePrepend(-bitmapSize.Width / 2, -bitmapSize.Height / 2);
+            bitmapSize.Width = (int)Math.Ceiling(newWidth);
+            bitmapSize.Height = (int)Math.Ceiling(newHeight);
+
+            stylesheet.hexRotation = (float)degrees;
+            stylesheet.microBorders.textStyle.Rotation = degrees;
+        }
     }
 }

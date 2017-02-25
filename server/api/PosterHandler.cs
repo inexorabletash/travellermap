@@ -245,28 +245,14 @@ namespace Maps.API
                 }
 
                 // TODO: Figure out how to compose rot and hrot properly.
-
+                Size bitmapSize = new Size(bitmapWidth, bitmapHeight);
                 if (hrot != 0)
-                {
-                    float degrees = -hrot;
-                    double radians = degrees * Math.PI / 180f;
-                    double newWidth = Math.Abs(Math.Sin(radians)) * bitmapHeight + Math.Abs(Math.Cos(radians)) * bitmapWidth;
-                    double newHeight = Math.Abs(Math.Sin(radians)) * bitmapWidth + Math.Abs(Math.Cos(radians)) * bitmapHeight;
-
-                    transform.TranslatePrepend((float)newWidth / 2, (float)newHeight / 2);
-                    transform.RotatePrepend(-degrees);
-                    transform.TranslatePrepend(-bitmapWidth / 2, -bitmapHeight / 2);
-                    bitmapWidth = (int)Math.Ceiling(newWidth);
-                    bitmapHeight = (int)Math.Ceiling(newHeight);
-
-                    stylesheet.hexRotation = (float)degrees;
-                    stylesheet.microBorders.textStyle.Rotation = degrees;
-                }
+                    ApplyHexRotation(hrot, stylesheet, ref bitmapSize, ref transform);
 
                 RenderContext ctx = new RenderContext(resourceManager, selector, tileRect, scale, options, stylesheet, tileSize);
                 ctx.ClipOutsectorBorders = clipOutsectorBorders;
 
-                ProduceResponse(Context, title, ctx, new Size(bitmapWidth, bitmapHeight), transform);
+                ProduceResponse(Context, title, ctx, bitmapSize, transform);
             }
         }
     }

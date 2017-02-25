@@ -179,28 +179,6 @@ namespace Maps.Rendering
                 #endregion
 
                 timers.Add(new Timer("preload"));
-                //////////////////////////////////////////////////////////////
-                //
-                // Image-Space Rendering
-                //
-                //////////////////////////////////////////////////////////////
-
-                using (graphics.Save())
-                {
-                    if (ClipPath != null)
-                    {
-                        graphics.MultiplyTransform(ImageSpaceToWorldSpace);
-                        graphics.IntersectClip(ClipPath);
-                        graphics.MultiplyTransform(worldSpaceToImageSpace);
-                    }
-
-                    // Fill
-                    graphics.SmoothingMode = SmoothingMode.HighSpeed;
-                    solidBrush.Color = styles.backgroundColor;
-                    graphics.DrawRectangle(solidBrush, 0, 0, tileSize.Width, tileSize.Height);
-                }
-
-                timers.Add(new Timer("imagespace"));
 
                 //////////////////////////////////////////////////////////////
                 //
@@ -217,11 +195,20 @@ namespace Maps.Rendering
                     else
                         graphics.IntersectClip(tileRect);
 
+                    timers.Add(new Timer("prep"));
+
                     //------------------------------------------------------------
                     // Background
                     //------------------------------------------------------------
 
-                    timers.Add(new Timer("prep"));
+                    #region background
+                    {
+                        graphics.SmoothingMode = SmoothingMode.HighSpeed;
+                        solidBrush.Color = styles.backgroundColor;
+                        graphics.DrawRectangle(solidBrush, tileRect);
+                        timers.Add(new Timer("background (solid)"));
+                    }
+                    #endregion
 
                     #region nebula-background
                     //------------------------------------------------------------
@@ -606,9 +593,9 @@ namespace Maps.Rendering
                 timers.Add(new Timer("ancients"));
                 #endregion
 
-                #region unofficial
+                #region review-status
                 //------------------------------------------------------------
-                // Unofficial
+                // Review Status
                 //------------------------------------------------------------
                 if (styles.dimUnofficialSectors && styles.worlds.visible)
                 {

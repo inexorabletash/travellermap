@@ -28,7 +28,7 @@ namespace Maps.API
                 //
                 // Jump
                 //
-                int jump = Util.Clamp(GetIntOption("jump", 6), 0, 12);
+                int jump = Util.Clamp(GetIntOption("jump", 6), 0, 20);
 
                 //
                 // Content & Coordinates
@@ -99,6 +99,9 @@ namespace Maps.API
                 //
                 bool clip = GetBoolOption("clip", defaultValue: true);
 
+                // Hex Rotation
+                int hrot = GetIntOption("hrotation", defaultValue: 0);
+
                 //
                 // What to render
                 //
@@ -150,13 +153,17 @@ namespace Maps.API
                 byte[] boundingPathTypes;
                 PathUtil.ComputeBorderPath(clipPath, edgeX, edgeY, out boundingPathCoords, out boundingPathTypes);
 
+                AbstractMatrix transform = AbstractMatrix.Identity;
+                if (hrot != 0)
+                    ApplyHexRotation(hrot, styles, ref tileSize, ref transform);
+
                 RenderContext ctx = new RenderContext(resourceManager, selector, tileRect, scale, options, styles, tileSize);
                 ctx.DrawBorder = border;
                 ctx.ClipOutsectorBorders = true;
 
                 // TODO: Widen path to allow for single-pixel border
                 ctx.ClipPath = clip ? new AbstractPath(boundingPathCoords, boundingPathTypes) : null;
-                ProduceResponse(Context, "Jump Map", ctx, tileSize, AbstractMatrix.Identity, transparent: clip);
+                ProduceResponse(Context, "Jump Map", ctx, tileSize, transform, transparent: clip);
             }
         }
     }
