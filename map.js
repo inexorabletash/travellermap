@@ -635,9 +635,9 @@ var Util = {
       fireEvent(this, 'OptionsChanged', this.options);
     }.bind(this));
 
-    this.loading = {};
+    this.loading = new Set();
 
-    this.defer_loading = false;
+    this.defer_loading = true;
 
     var CLICK_SCALE_DELTA = -0.5;
     var SCROLL_SCALE_DELTA = -0.15;
@@ -862,6 +862,8 @@ var Util = {
     }.bind(this));
 
     this.resetCanvas();
+    this.defer_loading = false;
+    this.invalidate();
 
     if (window == window.top) // == for IE
       container.focus();
@@ -1167,7 +1169,7 @@ var Util = {
       return undefined;
 
     // In progress?
-    if (this.loading[url])
+    if (this.loading.has(url))
       return undefined;
 
     if (this.defer_loading)
@@ -1177,15 +1179,15 @@ var Util = {
       return undefined;
 
     // Nope, better try loading it
-    this.loading[url] = true;
+    this.loading.add(url);
 
     Util.fetchImage(url)
       .then(function(img) {
-        delete this.loading[url];
+        this.loading.delete(url);
         this.cache.insert(url, img);
         callback(img);
       }.bind(this), function() {
-        delete this.loading[url];
+        this.loading.delete(url);
       }.bind(this));
 
     return undefined;
