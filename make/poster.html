@@ -107,13 +107,25 @@
               </select>
           </tr>
           <tr>
-            <td style="text-align: right">Rotation:
+            <td style="text-align: right">Image Rotation:
             <td>
               <select name="rotation">
                 <option value="">None</option>
                 <option value="1">90&deg; CW</option>
                 <option value="2">180&deg;</option>
                 <option value="3">90&deg; CCW</option>
+              </select>
+          </tr>
+          <tr>
+            <td style="text-align: right">Map Rotation:
+            <td>
+              <select name="hrotation">
+                <option value="">None</option>
+                <option value="60">60&deg; CW</option>
+                <option value="120">120&deg; CW</option>
+                <option value="-60">60&deg; CCW</option>
+                <option value="-120">120&deg; CCW</option>
+                <option value="180">180&deg;</option>
               </select>
           </tr>
           <tr>
@@ -203,7 +215,7 @@
     <br>
 
     For a Jump Map, select:
-    J-<input type="number" name="jump" min="0" max="6" value="3">
+    J-<input type="number" name="jump" min="0" max="20" value="3">
     Hex: <input type="text" name="hex" size=4  value="" placeholder="XXYY">
     and click:
     <input id="jumpBtn" type="submit" value="Render Jump Map">
@@ -244,6 +256,7 @@
         var response = results[0], text = results[1];
         if (response.ok) {
           $('#preview').src = text;
+          $('#preview').style.height = 'auto';
         } else {
           console.warn(text);
           alert(text);
