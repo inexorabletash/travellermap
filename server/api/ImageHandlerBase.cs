@@ -45,6 +45,9 @@ namespace Maps.API
                 if (GetBoolOption("allhexes", queryDefaults: queryDefaults, defaultValue: false))
                     ctx.Styles.numberAllHexes = true;
 
+                if (GetBoolOption("nogrid", queryDefaults: queryDefaults, defaultValue: false))
+                    ctx.Styles.parsecGrid.visible = false;
+
                 if (!GetBoolOption("routes", queryDefaults: queryDefaults, defaultValue: true))
                 {
                     ctx.Styles.macroRoutes.visible = false;
