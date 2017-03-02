@@ -1440,22 +1440,27 @@ namespace Maps.Rendering
 
         private void DrawGasGiant(Color color, float x, float y, float r, bool ring)
         {
-            solidBrush.Color = color;
-            graphics.DrawEllipse(solidBrush,
-                x-r,
-                y-r,
-                r * 2,
-                r * 2);
-
-            if (ring)
+            using (graphics.Save())
             {
-                pen.Color = color;
-                pen.Width = r / 2;
-                graphics.DrawLine(pen,
-                    x - r * 1.75f,
-                    y + r * 0.75f,
-                    x + r * 1.75f,
-                    y - r * 0.75f);
+                graphics.TranslateTransform(x, y);
+                solidBrush.Color = color;
+                graphics.DrawEllipse(solidBrush,
+                    - r,
+                    - r,
+                    r * 2,
+                    r * 2);
+
+                if (ring)
+                {
+                    graphics.RotateTransform(-30);
+                    pen.Color = color;
+                    pen.Width = r / 4;
+                    graphics.DrawEllipse(pen,
+                        -r * 1.75f,
+                        -r * 0.4f,
+                        r * 1.75f * 2,
+                        r * 0.4f * 2);
+                }
             }
         }
 
