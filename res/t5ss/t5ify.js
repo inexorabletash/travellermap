@@ -22,7 +22,7 @@ function parse(text) {
     const world = {};
     const cols = line.split('\t');
     cols.forEach((value, index) => {
-      world[header[index]] = value;
+      world[header[index]] = value === '-' ? '' : value;
     });
     return world;
   });
@@ -153,7 +153,6 @@ function process(world) {
 }
 
 function t5ify(world) {
-
   // Importance Extension
   world.Importance = 0 +
     (world.St === 'A' || world.St === 'B' ? 1 : 0) +
@@ -167,50 +166,55 @@ function t5ify(world) {
     (world.Ri ? 1 : 0) +
     (world.In ? 1 : 0) +
     (world.Bases === 'NS' || world.Bases === 'NW' || world.Bases === 'W' ||
-      world.Bases === 'X' || world.Bases === 'D' || world.Bases === 'RT' ||
-       world.Bases === 'CK' || world.Bases === 'KM' ? 1 : 0);
+     world.Bases === 'X' || world.Bases === 'D' || world.Bases === 'RT' ||
+     world.Bases === 'CK' || world.Bases === 'KM' ? 1 : 0);
 
   // Economics Extension
-  world.Resources =
-    Math.max(0,
-             roll2D() + (world.TL >= 8 ? world.GG + world.Belts : 0));
-  world.Labor =
-    Math.max(0,
-             world.Pop - 1);
-  world.Infrastructure =
-    Math.max(0,
-             world.Ba/* || world.Di*/ ? 0 : // Per Errata "Di should not impact Infrastructure"
-             world.Lo ? 1 :
-             world.Ni ? roll1D()  + world.Importance:
-             roll2D() + world.Importance);
-  world.Efficiency = flux();
+  if ('(Ex)' in world) {
+    var ex = world['(Ex)'];
+    world.Resources = fromEHex(ex.substr(1, 1));
+    world.Labor = fromEHex(ex.substr(2, 1));
+    world.Infrastructure = fromEHex(ex.substr(3, 1));
+    world.Efficiency = parseFloat(ex.substr(4, 2));
+  } else {
+    world.Resources =
+      Math.max(0,
+               roll2D() + (world.TL >= 8 ? world.GG + world.Belts : 0));
+    world.Labor =
+      Math.max(0,
+               world.Pop - 1);
+    world.Infrastructure =
+      Math.max(0,
+               world.Ba/* || world.Di*/ ? 0 : // Per Errata "Di should not impact Infrastructure"
+               world.Lo ? 1 :
+               world.Ni ? roll1D()  + world.Importance:
+               roll2D() + world.Importance);
+    world.Efficiency = flux();
+  }
 
   // Cultural Extension
-  world.Homogeneity = world.Pop === 0 ? 0 : Math.max(1, world.Pop + flux());
-  world.Acceptance = world.Pop === 0 ? 0 : Math.max(1, world.Pop + world.Importance);
-  world.Strangeness = world.Pop === 0 ? 0 : Math.max(1, flux() + 5);
-  world.Symbols = world.Pop === 0 ? 0 : Math.max(1, world.TL + flux());
+  if ('[Cx]' in world) {
+    var cx = world['[Cx]'];
+    world.Homogeneity = fromEHex(cx.substr(1, 1));
+    world.Acceptance = fromEHex(cx.substr(2, 1));
+    world.Strangeness = fromEHex(cx.substr(3, 1));
+    world.Symbols = fromEHex(cx.substr(4, 1));
+  } else {
+    world.Homogeneity = world.Pop === 0 ? 0 : Math.max(1, world.Pop + flux());
+    world.Acceptance = world.Pop === 0 ? 0 : Math.max(1, world.Pop + world.Importance);
+    world.Strangeness = world.Pop === 0 ? 0 : Math.max(1, flux() + 5);
+    world.Symbols = world.Pop === 0 ? 0 : Math.max(1, world.TL + flux());
+  }
 
   // Worlds
-  world.Worlds = 1/*MW*/ + world.GG + world.Belts + roll2D();
+  world.Worlds = world.Worlds || (1/*MW*/ + world.GG + world.Belts + roll2D());
 
   // Allegiance Fixups
-  /*
-  if (world.Allegiance === 'Zh')
-    world.Allegiance = 'ZhJp';
-  else if (world.Allegiance === 'Ax')
-    world.Allegiance = 'ZhAx';
-  else if (world.Allegiance === 'Dr') {
-    world.Allegiance = 'ZhJp';
-    world.Sophonts += 'DroyW ';
-  }*/
   world.Allegiance = ({
     'Ga': '3EoG',
     'Jm': 'JMen',
     'Na': 'NaHu',
     'JP': 'JuPr',
-
-    // TODO: Add to docs
     'VN': 'VDrN',
     'VQ': 'VYoe',
     'VT': 'VTrA'
