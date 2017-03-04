@@ -977,6 +977,7 @@ namespace Maps.Rendering
 
                 if (!styles.useWorldImages)
                 {
+                    // Normal (non-"Eye Candy") styles
                     if (layer == WorldLayer.Background)
                     {
 #region Zone
@@ -1075,30 +1076,14 @@ namespace Maps.Rendering
 
                         if (!isPlaceholder)
                         {
-#region GasGiant
-                            if (styles.worldDetails.HasFlag(WorldDetails.GasGiant))
-                            {
-                                if (world.GasGiants > 0)
-                                {
-                                    solidBrush.Color = styles.worlds.textColor;
-                                    float ggr = 0.05f;
-                                    graphics.DrawEllipse(solidBrush,
-                                        styles.GasGiantPosition.X - ggr,
-                                        styles.GasGiantPosition.Y - ggr,
-                                        ggr * 2,
-                                        ggr * 2);
-
-                                    if (styles.showGasGiantRing)
-                                    {
-                                        pen.Color = styles.worlds.textColor;
-                                        pen.Width = ggr / 2;
-                                        graphics.DrawLine(pen,
-                                            styles.GasGiantPosition.X - ggr * 1.75f,
-                                            styles.GasGiantPosition.Y + ggr * 0.75f,
-                                            styles.GasGiantPosition.X + ggr * 1.75f,
-                                            styles.GasGiantPosition.Y - ggr * 0.75f);
-                                    }
-                                }
+                            #region GasGiant
+                            if (styles.worldDetails.HasFlag(WorldDetails.GasGiant) && world.GasGiants > 0) {
+                                DrawGasGiant(
+                                    styles.worlds.textColor, 
+                                    styles.GasGiantPosition.X, 
+                                    styles.GasGiantPosition.Y, 
+                                    0.05f, 
+                                    styles.showGasGiantRing);
                             }
 #endregion
 
@@ -1281,6 +1266,8 @@ namespace Maps.Rendering
                 }
                 else // styles.useWorldImages
                 {
+                    // "Eye-Candy" style
+
                     float imageRadius = ((world.Size <= 0) ? 0.6f : (0.3f * (world.Size / 5.0f + 0.2f))) / 2;
                     float decorationRadius = imageRadius;
 
@@ -1365,19 +1352,20 @@ namespace Maps.Rendering
 #endregion
 
 #region GasGiant
-                        if (styles.worldDetails.HasFlag(WorldDetails.GasGiant))
+                        if (styles.worldDetails.HasFlag(WorldDetails.GasGiant) && world.GasGiants > 0)
                         {
-                            if (world.GasGiants > 0)
-                            {
-                                decorationRadius += 0.1f;
-                                const float symbolRadius = 0.05f;
-                                solidBrush.Color = styles.worlds.textHighlightColor; ;
-                                graphics.DrawEllipse(solidBrush, decorationRadius - symbolRadius, 0.0f - symbolRadius, symbolRadius * 2, symbolRadius * 2);
-                            }
+                            const float symbolRadius = 0.05f;
+                            decorationRadius += 0.1f;
+                            if (styles.showGasGiantRing)
+                                decorationRadius += symbolRadius;
+                            DrawGasGiant(
+                                styles.worlds.textHighlightColor,
+                                decorationRadius, 0, symbolRadius,
+                                styles.showGasGiantRing);
                         }
-#endregion
+                        #endregion
 
-#region UWP
+                        #region UWP
                         if (renderUWP)
                         {
                             solidBrush.Color = styles.worlds.textColor;
@@ -1450,6 +1438,31 @@ namespace Maps.Rendering
             }
         }
 
+        private void DrawGasGiant(Color color, float x, float y, float r, bool ring)
+        {
+            using (graphics.Save())
+            {
+                graphics.TranslateTransform(x, y);
+                solidBrush.Color = color;
+                graphics.DrawEllipse(solidBrush,
+                    - r,
+                    - r,
+                    r * 2,
+                    r * 2);
+
+                if (ring)
+                {
+                    graphics.RotateTransform(-30);
+                    pen.Color = color;
+                    pen.Width = r / 4;
+                    graphics.DrawEllipse(pen,
+                        -r * 1.75f,
+                        -r * 0.4f,
+                        r * 1.75f * 2,
+                        r * 0.4f * 2);
+                }
+            }
+        }
 
         private Stylesheet.StyleElement? ZoneStyle(World world)
         {
