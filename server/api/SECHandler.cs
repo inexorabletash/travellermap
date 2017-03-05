@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Net.Mime;
 using System.Text;
 using System.Web;
@@ -36,7 +37,20 @@ namespace Maps.API
                 if (Context.Request.HttpMethod == "POST")
                 {
                     bool lint = GetBoolOption("lint", defaultValue: false);
-                    var errors = lint ? new ErrorLogger() : null;
+                    ErrorLogger errors = null;
+                    if (lint)
+                    {
+                        bool hide_uwp = GetBoolOption("hide-uwp", defaultValue: false);
+                        bool hide_tl = GetBoolOption("hide-tl", defaultValue: false);
+                        Func<ErrorLogger.Record, bool> filter = (ErrorLogger.Record record) =>
+                        {
+                            if (hide_uwp && record.message.StartsWith("UWP")) return false;
+                            if (hide_tl && record.message.StartsWith("UWP: TL")) return false;
+                            return true;
+                        };
+                        errors = new ErrorLogger(filter);
+                    }
+
                     sector = new Sector(Context.Request.InputStream, new ContentType(Context.Request.ContentType).MediaType, errors);
                     if (lint && !errors.Empty)
                         throw new HttpError(400, "Bad Request", errors.ToString());

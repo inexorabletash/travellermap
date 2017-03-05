@@ -124,7 +124,20 @@ namespace Maps.API
                     if (Context.Request.HttpMethod == "POST")
                     {
                         bool lint = GetBoolOption("lint", defaultValue: false);
-                        ErrorLogger errors = new ErrorLogger();
+                        Func<ErrorLogger.Record, bool> filter = null;
+                        if (lint)
+                        {
+                            bool hide_uwp = GetBoolOption("hide-uwp", defaultValue: false);
+                            bool hide_tl = GetBoolOption("hide-tl", defaultValue: false);
+                            filter = (ErrorLogger.Record record) =>
+                            {
+                                if (hide_uwp && record.message.StartsWith("UWP")) return false;
+                                if (hide_tl && record.message.StartsWith("UWP: TL")) return false;
+                                return true;
+                            };
+                        }
+                        ErrorLogger errors = new ErrorLogger(filter);
+
                         sector = GetPostedSector(Context.Request, errors);
                         if (lint && !errors.Empty)
                             throw new HttpError(400, "Bad Request", errors.ToString());

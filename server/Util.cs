@@ -291,7 +291,7 @@ namespace Maps
             Hint
         }
 
-        private struct Record
+        public struct Record
         {
             public Record(Severity severity, string message)
             {
@@ -302,15 +302,24 @@ namespace Maps
             public string message;
         }
 
-        public ErrorLogger() { }
+        public ErrorLogger(Func<ErrorLogger.Record, bool> filter = null)
+        {
+            this.filter = filter;
+        }
 
         public void Log(Severity sev, string message)
         {
-            log.Add(new Record(sev, message));
+            var record = new Record(sev, message);
+            if (filter != null && !filter(record))
+                return;
+            log.Add(record);
         }
         public void Log(Severity sev, string message, int lineNumber, string line)
         {
-            log.Add(new Record(sev, $"{message}, line {lineNumber}: {line}"));
+            var record = new Record(sev, $"{message}, line {lineNumber}: {line}");
+            if (filter != null && !filter(record))
+                return;
+            log.Add(record);
         }
         public void Fatal(string message) { Log(Severity.Fatal, message); }
         public void Fatal(string message, int lineNumber, string line) { Log(Severity.Fatal, message, lineNumber, line); }
@@ -322,9 +331,15 @@ namespace Maps
         public void Hint(string message, int lineNumber, string line) { Log(Severity.Hint, message, lineNumber, line); }
 
         private List<Record> log = new List<Record>();
+        private Func<ErrorLogger.Record, bool> filter = null;
 
         public bool Empty { get { return log.Count == 0; } }
         public int Count { get { return log.Count; } }
+
+        public int CountOf(Severity sev)
+        {
+            return log.Where(r => r.severity == sev).Count();
+        }
 
         public void Report(TextWriter writer)
         {
@@ -339,6 +354,7 @@ namespace Maps
             using (StringWriter writer = new StringWriter())
             {
                 Report(writer);
+                writer.WriteLine($"{CountOf(Severity.Error)} errors, {CountOf(Severity.Warning)} warnings.");
                 return writer.ToString();
             }
         }

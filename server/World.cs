@@ -354,7 +354,6 @@ namespace Maps
                 return calc;
             };
 
-#if VALIDATE_UWP
             // UWP
             ErrorIf(Atmosphere > 15, $"UWP: Atm>F: {Atmosphere}");
             ErrorIf(Hydrographics > 10, $"UWP: Hyd>A: {Hydrographics}");
@@ -370,9 +369,9 @@ namespace Maps
                 (Hydrographics == 9 ? 1 : 0) + (Hydrographics == 10 ? 2 : 0) + 
                 (Util.InRange(PopulationExponent, 1, 5) ? 1 : 0) + (PopulationExponent == 9 ? 2 : 0) + (PopulationExponent >= 10 ? 4 : 0) +
                 (Government == 0 || Government == 5 ? 1 : 0) + (Government == 13 ? -2 : 0);
-            ErrorUnless(Util.InRange(TechLevel, tlmod + 1, tlmod + 6),
+            ErrorUnless(Util.InRange(TechLevel, tlmod + 1, tlmod + 6) || 
+                (PopulationExponent == 0 && TechLevel == 0),
                 $"UWP: TL={TechLevel} out of range (mods={tlmod} + 1D)");
-#endif
 
             // Planetary
             bool As = CC("As", Check(Size, "0") /*&& Check(Atmosphere, "0") && Check(Hydrographics, "0")*/);

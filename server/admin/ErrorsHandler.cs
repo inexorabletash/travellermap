@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using System.Globalization;
 using System.Linq;
 using System.Net.Mime;
@@ -42,6 +42,9 @@ namespace Maps.Admin
             {
                 context.Response.Output.WriteLine(sector.Names[0].Text);
 #if DEBUG
+                int error_count = 0;
+                int warning_count = 0;
+
                 WorldCollection worlds = sector.GetWorlds(resourceManager, cacheResults: false);
 
                 if (worlds != null)
@@ -52,6 +55,8 @@ namespace Maps.Admin
                     else
                         context.Response.Output.WriteLine($"{worlds.Count()} world(s) - population: N/A");
                     worlds.ErrorList.Report(context.Response.Output);
+                    error_count += worlds.ErrorList.CountOf(ErrorLogger.Severity.Error);
+                    warning_count += worlds.ErrorList.CountOf(ErrorLogger.Severity.Warning);
                 }
                 else
                 {
@@ -79,9 +84,15 @@ namespace Maps.Admin
                     int distance = Astrometrics.HexDistance(Astrometrics.LocationToCoordinates(startLocation),
                         Astrometrics.LocationToCoordinates(endLocation));
                     if (distance == 0)
+                    {
                         context.Response.Output.WriteLine($"Error: Route length {distance}: {route.ToString()}");
+                        ++error_count;
+                    }
                     else if (distance > 4)
+                    {
                         context.Response.Output.WriteLine($"Warning: Route length {distance}: {route.ToString()}");
+                        ++warning_count;
+                    }
                     /*
                      * This fails because of routes that use e.g. 3341-style coordinates
                      * It will also be extremely slow due to loading world lists w/o caching
@@ -103,6 +114,7 @@ namespace Maps.Admin
                                         }
                                         */
                 }
+                context.Response.Output.WriteLine($"{error_count} errors, {warning_count} warnings.");
 #endif
                 context.Response.Output.WriteLine();
             }
