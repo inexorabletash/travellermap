@@ -147,10 +147,8 @@ namespace Maps.Rendering
                 var path = Path;
                 using (graphics.Save())
                 {
-                    var matrix = new AbstractMatrix();
-                    matrix.ScalePrepend(ScaleX, ScaleY);
-                    matrix.TranslatePrepend(-OriginX, -OriginY);
-                    graphics.MultiplyTransform(matrix);
+                    graphics.ScaleTransform(ScaleX, ScaleY);
+                    graphics.TranslateTransform(-OriginX, -OriginY);
                     graphics.DrawPath(pen, path);
                 }
             }
@@ -176,36 +174,12 @@ namespace Maps.Rendering
 
                     using (graphics.Save())
                     {
-                        var matrix = new AbstractMatrix();
-                        matrix.TranslatePrepend(pos.X, pos.Y);
-                        matrix.ScalePrepend(1.0f / Astrometrics.ParsecScaleX, 1.0f / Astrometrics.ParsecScaleY);
-                        matrix.RotatePrepend(-labelStyle.Rotation); // Rotate it
-                        graphics.MultiplyTransform(matrix);
+                        graphics.TranslateTransform(pos.X, pos.Y);
+                        graphics.ScaleTransform(1.0f / Astrometrics.ParsecScaleX, 1.0f / Astrometrics.ParsecScaleY);
+                        graphics.RotateTransform(-labelStyle.Rotation); // Rotate it
 
                         RenderUtil.DrawString(graphics, str, font, textBrush, 0, 0);
                     }
-                }
-            }
-        }
-
-        internal void Fill(AbstractGraphics graphics, RectangleF rect, AbstractBrush fillBrush)
-        {
-            if (graphics == null)
-                throw new ArgumentNullException(nameof(graphics));
-
-            RectangleF bounds = TransformedBounds;
-
-            if (bounds.IntersectsWith(rect))
-            {
-                var path = Path;
-
-                using (graphics.Save())
-                {
-                    var matrix = new AbstractMatrix();
-                    matrix.ScalePrepend(ScaleX, ScaleY);
-                    matrix.TranslatePrepend(-OriginX, -OriginY);
-                    graphics.MultiplyTransform(matrix);
-                    graphics.DrawPath(fillBrush, path);
                 }
             }
         }
@@ -218,7 +192,6 @@ namespace Maps.Rendering
         [XmlElement("World")]
         public List<WorldObject> Worlds { get; } = new List<WorldObject>();
     }
-
 
     public class WorldObject : MapObject
     {

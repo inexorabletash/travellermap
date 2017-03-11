@@ -24,7 +24,7 @@ namespace Maps.Rendering
 
             selector.UseMilieuFallbacks = true;
 
-            AbstractMatrix m = new AbstractMatrix();
+            AbstractMatrix m = AbstractMatrix.Identity;
             m.TranslatePrepend((float)(-tileRect.Left * scale * Astrometrics.ParsecScaleX), (float)(-tileRect.Top * scale * Astrometrics.ParsecScaleY));
             m.ScalePrepend((float)scale * Astrometrics.ParsecScaleX, (float)scale * Astrometrics.ParsecScaleY);
             ImageSpaceToWorldSpace = m;
@@ -494,11 +494,9 @@ namespace Maps.Rendering
                             using (graphics.Save())
                             {
                                 Font font = label.minor ? styles.megaNames.SmallFont : styles.megaNames.Font;
-                                var matrix = new AbstractMatrix();
                                 // TODO: Order here looks sketchy
-                                matrix.ScalePrepend(1.0f / Astrometrics.ParsecScaleX, 1.0f / Astrometrics.ParsecScaleY);
-                                matrix.TranslatePrepend(label.position.X, label.position.Y);
-                                graphics.MultiplyTransform(matrix);
+                                graphics.ScaleTransform(1.0f / Astrometrics.ParsecScaleX, 1.0f / Astrometrics.ParsecScaleY);
+                                graphics.TranslateTransform(label.position.X, label.position.Y);
                                 RenderUtil.DrawString(graphics, label.text, font, solidBrush, 0, 0);
                             }
                         }
@@ -698,10 +696,8 @@ namespace Maps.Rendering
             PointF center = Astrometrics.HexToCenter(coordinates);
             using (graphics.Save())
             {
-                var matrix = new AbstractMatrix();
-                matrix.TranslatePrepend(center.X, center.Y);
-                matrix.ScalePrepend(1 / Astrometrics.ParsecScaleX, 1 / Astrometrics.ParsecScaleY);
-                graphics.MultiplyTransform(matrix);
+                graphics.TranslateTransform(center.X, center.Y);
+                graphics.ScaleTransform(1 / Astrometrics.ParsecScaleX, 1 / Astrometrics.ParsecScaleY);
                 graphics.DrawString(glyph, font, solidBrush, 0, 0, StringAlignment.Centered);
             }
         }
@@ -765,12 +761,9 @@ namespace Maps.Rendering
                 {
                     using (graphics.Save())
                     {
-                        var matrix = new AbstractMatrix();
                         // TODO: Order here looks sketchy
-                        matrix.ScalePrepend(1.0f / Astrometrics.ParsecScaleX, 1.0f / Astrometrics.ParsecScaleY);
-                        matrix.TranslatePrepend(label.position.X, label.position.Y);
-                        graphics.MultiplyTransform(matrix);
-
+                        graphics.ScaleTransform(1.0f / Astrometrics.ParsecScaleX, 1.0f / Astrometrics.ParsecScaleY);
+                        graphics.TranslateTransform(label.position.X, label.position.Y);
                         RenderUtil.DrawString(graphics, label.text, font, solidBrush, 0, 0);
                     }
                 }
@@ -842,10 +835,8 @@ namespace Maps.Rendering
                         }
                         using (graphics.Save())
                         {
-                            var matrix = new AbstractMatrix();
-                            matrix.TranslatePrepend(px + 0.5f, py + yOffset);
-                            matrix.ScalePrepend(styles.hexContentScale / Astrometrics.ParsecScaleX, styles.hexContentScale / Astrometrics.ParsecScaleY);
-                            graphics.MultiplyTransform(matrix);
+                            graphics.TranslateTransform(px + 0.5f, py + yOffset);
+                            graphics.ScaleTransform(styles.hexContentScale / Astrometrics.ParsecScaleX, styles.hexContentScale / Astrometrics.ParsecScaleY);
                             graphics.DrawString(hex, styles.hexNumber.Font, solidBrush, 0, 0, StringAlignment.TopCenter);
                         }
                     }
@@ -945,11 +936,9 @@ namespace Maps.Rendering
                 // Center on the parsec
                 PointF center = Astrometrics.HexToCenter(world.Coordinates);
 
-                var matrix = new AbstractMatrix();
-                matrix.TranslatePrepend(center.X, center.Y);
-                matrix.ScalePrepend(styles.hexContentScale / Astrometrics.ParsecScaleX, styles.hexContentScale / Astrometrics.ParsecScaleY);
-                matrix.RotatePrepend(styles.hexRotation);
-                graphics.MultiplyTransform(matrix);
+                graphics.TranslateTransform(center.X, center.Y);
+                graphics.ScaleTransform(styles.hexContentScale / Astrometrics.ParsecScaleX, styles.hexContentScale / Astrometrics.ParsecScaleY);
+                graphics.RotateTransform(styles.hexRotation);
 
                 if (layer == WorldLayer.Overlay)
                 {
@@ -1392,11 +1381,10 @@ namespace Maps.Rendering
                                     name = name.ToUpper();
 
                                 decorationRadius += 0.1f;
-                                var imageMatrix = new AbstractMatrix();
-                                imageMatrix.TranslatePrepend(decorationRadius, 0.0f);
-                                imageMatrix.ScalePrepend(styles.worlds.textStyle.Scale.Width, styles.worlds.textStyle.Scale.Height);
-                                imageMatrix.TranslatePrepend(graphics.MeasureString(name, styles.worlds.Font).Width / 2, 0.0f); // Left align
-                                graphics.MultiplyTransform(imageMatrix);
+
+                                graphics.TranslateTransform(decorationRadius, 0.0f);
+                                graphics.ScaleTransform(styles.worlds.textStyle.Scale.Width, styles.worlds.textStyle.Scale.Height);
+                                graphics.TranslateTransform(graphics.MeasureString(name, styles.worlds.Font).Width / 2, 0.0f); // Left align
 
                                 DrawWorldLabel(styles.worlds.textBackgroundStyle, solidBrush, textColor, styles.worlds.textStyle.Translation, styles.worlds.Font, name);
                             }
@@ -1415,10 +1403,8 @@ namespace Maps.Rendering
                 graphics.SmoothingMode = SmoothingMode.AntiAlias;
                 PointF center = Astrometrics.HexToCenter(world.Coordinates);
 
-                var matrix = new AbstractMatrix();
-                matrix.TranslatePrepend(center.X, center.Y);
-                matrix.ScalePrepend(styles.hexContentScale / Astrometrics.ParsecScaleX, styles.hexContentScale / Astrometrics.ParsecScaleY);
-                graphics.MultiplyTransform(matrix);
+                graphics.TranslateTransform(center.X, center.Y);
+                graphics.ScaleTransform(styles.hexContentScale / Astrometrics.ParsecScaleX, styles.hexContentScale / Astrometrics.ParsecScaleY);
 
                 // TODO: Proper stellar parsing
                 List<string> ss = new List<string>();
