@@ -31,7 +31,7 @@ namespace Maps.API
 
             private static readonly Regex UWP_REGEXP = new Regex(@"^\w{7}-\w$");
 
-            public override void Process()
+            public override void Process(ResourceManager resourceManager)
             {
                 string query = Context.Request.QueryString["q"];
                 if (query == null)
@@ -60,7 +60,6 @@ namespace Maps.API
                 //
                 // Do the search
                 //
-                ResourceManager resourceManager = new ResourceManager(Context.Server);
                 string milieu = GetStringOption("milieu", SectorMap.DEFAULT_MILIEU);
                 SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, milieu);
 

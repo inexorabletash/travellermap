@@ -16,12 +16,12 @@ namespace Maps.API
             public Responder(HttpContext context) : base(context) { }
             public override string DefaultContentType => System.Net.Mime.MediaTypeNames.Text.Xml;
 
-            public override void Process()
+            public override void Process(ResourceManager resourceManager)
             {
                 // NOTE: This (re)initializes a static data structure used for 
                 // resolving names into sector locations, so needs to be run
                 // before any other objects (e.g. Worlds) are loaded.
-                ResourceManager resourceManager = new ResourceManager(Context.Server);
+                SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, GetStringOption("milieu"));
 
                 //
                 // Jump
@@ -31,7 +31,6 @@ namespace Maps.API
                 //
                 // Coordinates
                 //
-                SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, GetStringOption("milieu"));
                 Location loc = Location.Empty;
 
                 if (HasOption("sector") && HasOption("hex"))

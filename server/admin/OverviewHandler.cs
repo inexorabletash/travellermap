@@ -1,4 +1,5 @@
-﻿using Maps.Rendering;
+﻿using Maps.API;
+using Maps.Rendering;
 using System.Drawing;
 using System.Web;
 
@@ -8,12 +9,13 @@ namespace Maps.Admin
     {
         IHttpHandler impl = new OverviewImpl();
 
-        protected override void Process(System.Web.HttpContext context)
+        // TODO: Passed resourceManager is discarded. Avoid creating it.
+        protected override void Process(HttpContext context, ResourceManager resourceManager)
         {
             impl.ProcessRequest(context);
         }
 
-        class OverviewImpl : Maps.API.ImageHandlerBase
+        class OverviewImpl : ImageHandlerBase
         {
             protected override string ServiceName => "overview";
             protected override DataResponder GetResponder(HttpContext context)
@@ -23,10 +25,8 @@ namespace Maps.Admin
             private class Responder : ImageResponder
             {
                 public Responder(HttpContext context) : base(context) { }
-                public override void Process()
+                public override void Process(ResourceManager resourceManager)
                 {
-                    ResourceManager resourceManager = new ResourceManager(Context.Server);
-
                     MapOptions options = MapOptions.SectorGrid | MapOptions.FilledBorders;
                     Stylesheet.Style style = Stylesheet.Style.Poster;
                     ParseOptions(ref options, ref style);

@@ -10,12 +10,10 @@ namespace Maps.Admin
     /// </summary>
     internal class ErrorsHandler : AdminHandlerBase
     {
-        protected override void Process(System.Web.HttpContext context)
+        protected override void Process(System.Web.HttpContext context, ResourceManager resourceManager)
         {
             context.Response.ContentType = MediaTypeNames.Text.Plain;
             context.Response.BufferOutput = false;
-
-            ResourceManager resourceManager = new ResourceManager(context.Server);
 
             string sectorName = GetStringOption(context, "sector");
             string type = GetStringOption(context, "type");

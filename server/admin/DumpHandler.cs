@@ -8,10 +8,8 @@ namespace Maps.Admin
     /// </summary>
     internal class DumpHandler : AdminHandlerBase
     {
-        protected override void Process(System.Web.HttpContext context)
+        protected override void Process(System.Web.HttpContext context, ResourceManager resourceManager)
         {
-            ResourceManager resourceManager = new ResourceManager(context.Server);
-
             // NOTE: This (re)initializes a static data structure used for 
             // resolving names into sector locations, so needs to be run
             // before any other objects (e.g. Worlds) are loaded.

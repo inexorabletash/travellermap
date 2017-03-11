@@ -22,10 +22,8 @@ namespace Maps.API
             public Responder(HttpContext context) : base(context) { }
             public override string DefaultContentType => System.Net.Mime.MediaTypeNames.Text.Xml;
 
-            public override void Process()
+            public override void Process(ResourceManager resourceManager)
             {
-                ResourceManager resourceManager = new ResourceManager(Context.Server);
-
                 // NOTE: This (re)initializes a static data structure used for 
                 // resolving names into sector locations, so needs to be run
                 // before any other objects (e.g. Worlds) are loaded.

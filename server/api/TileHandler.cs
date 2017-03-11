@@ -21,10 +21,8 @@ namespace Maps.API
         private class Responder : ImageResponder
         {
             public Responder(HttpContext context) : base(context) { }
-            public override void Process()
+            public override void Process(ResourceManager resourceManager)
             {
-                ResourceManager resourceManager = new ResourceManager(Context.Server);
-
                 MapOptions options = MapOptions.SectorGrid | MapOptions.BordersMajor | MapOptions.NamesMajor | MapOptions.NamesMinor;
                 Stylesheet.Style style = Stylesheet.Style.Poster;
                 ParseOptions(ref options, ref style);

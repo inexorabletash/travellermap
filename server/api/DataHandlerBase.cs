@@ -53,7 +53,7 @@ namespace Maps.API
 
             try
             {
-                GetResponder(context).Process();
+                GetResponder(context).Process(new ResourceManager(context.Server));
             }
             catch (HttpError error)
             {
@@ -92,7 +92,7 @@ namespace Maps.API
 
             public HttpContext Context { get; private set; }
 
-            public abstract void Process();
+            public abstract void Process(ResourceManager resourceManager);
 
             #region Response Methods
             protected void SendResult(HttpContext context, object o, Encoding encoding = null)

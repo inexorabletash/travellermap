@@ -84,12 +84,10 @@ namespace Maps.Admin
             { @"^{.*}$", "(comment)" }
         };
             
-        protected override void Process(System.Web.HttpContext context)
+        protected override void Process(System.Web.HttpContext context, ResourceManager resourceManager)
         {
             context.Response.ContentType = MediaTypeNames.Text.Plain;
             context.Response.StatusCode = 200;
-
-            ResourceManager resourceManager = new ResourceManager(context.Server);
 
             string sectorName = GetStringOption(context, "sector");
             string type = GetStringOption(context, "type");

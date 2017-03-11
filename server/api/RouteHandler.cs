@@ -103,9 +103,8 @@ namespace Maps.API
                 return world;
             }
 
-            public override void Process()
+            public override void Process(ResourceManager resourceManager)
             {
-                ResourceManager resourceManager = new ResourceManager(Context.Server);
                 SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, GetStringOption("milieu"));
 
                 World startWorld = ResolveLocation(Context, "start", resourceManager, map);

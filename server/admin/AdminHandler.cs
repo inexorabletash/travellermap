@@ -40,10 +40,10 @@ namespace Maps.Admin
                 context.Response.Flush();
                 return;
             }
-            Process(context);
+            Process(context, new ResourceManager(context.Server));
         }
 
-        protected abstract void Process(HttpContext context);
+        protected abstract void Process(HttpContext context, ResourceManager resourceManager);
 
         // TODO: Dedupe w/ DataResponder
         protected static string GetStringOption(HttpContext context, string name)
@@ -59,7 +59,7 @@ namespace Maps.Admin
 
     internal class AdminHandler : AdminHandlerBase
     {
-        protected override void Process(HttpContext context)
+        protected override void Process(HttpContext context, ResourceManager resourceManager)
         {
             context.Server.ScriptTimeout = 3600; // An hour should be plenty
             context.Response.ContentType = System.Net.Mime.MediaTypeNames.Text.Html;
@@ -138,7 +138,6 @@ namespace Maps.Admin
 
         private static void Reindex(HttpContext context)
         {
-
             Write(context.Response, "Initializing resource manager...");
             ResourceManager resourceManager = new ResourceManager(context.Server);
 
