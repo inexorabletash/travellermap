@@ -30,18 +30,12 @@ namespace Maps
             worlds = wc;
         }
 
-        public int X { get { return Location.X; } set { Location = new Point(value, Location.Y); } }
-        public int Y { get { return Location.Y; } set { Location = new Point(Location.X, value); } }
+        public int X { get => Location.X; set => Location = new Point(value, Location.Y); }
+        public int Y { get => Location.Y; set => Location = new Point(Location.X, value); }
         public Point Location { get; set; }
 
         // TODO: Better name for this, possibly just by cleaning up the data.
-        public string CanonicalMilieu
-        {
-            get
-            {
-                return DataFile?.Milieu ?? Milieu ?? SectorMap.DEFAULT_MILIEU;
-            }
-        }
+        public string CanonicalMilieu => DataFile?.Milieu ?? Milieu ?? SectorMap.DEFAULT_MILIEU;
 
         [XmlAttribute]
         public string Abbreviation {
@@ -62,7 +56,7 @@ namespace Maps
                 abbreviation = name;
                 return abbreviation;
             }
-            set { abbreviation = value; }
+            set => abbreviation = value;
         }
         private string abbreviation;
 
@@ -130,8 +124,7 @@ namespace Maps
         [XmlAttribute("Tags"), JsonName("Tags")]
         public string TagString
         {
-            get { return string.Join(" ", Tags); }
-            set
+            get => string.Join(" ", Tags); set
             {
                 Tags.Clear();
                 if (string.IsNullOrWhiteSpace(value))
@@ -354,8 +347,7 @@ namespace Maps
 
             public ClipPath(Sector sector, PathUtil.PathType borderPathType)
             {
-                float[] edgex, edgey;
-                RenderUtil.HexEdges(borderPathType, out edgex, out edgey);
+                RenderUtil.HexEdges(borderPathType, out float[] edgex, out float[] edgey);
 
                 IEnumerable<Hex> hexes =
                     Util.Sequence(1, Astrometrics.SectorWidth).Select(x => new Hex((byte)x, 1))
@@ -397,17 +389,11 @@ namespace Maps
             return clipPathsCache[(int)type];
         }
 
-        internal Rectangle Bounds
-        {
-            get
-            {
-                return new Rectangle(
+        internal Rectangle Bounds => new Rectangle(
                         (Location.X * Astrometrics.SectorWidth) - Astrometrics.ReferenceHex.X,
                         (Location.Y * Astrometrics.SectorHeight) - Astrometrics.ReferenceHex.Y,
                         Astrometrics.SectorWidth, Astrometrics.SectorHeight
                     );
-            }
-        }
 
         public Rectangle SubsectorBounds(int index)
         {
@@ -427,13 +413,7 @@ namespace Maps
                 Astrometrics.SubsectorHeight * 2);
         }
 
-        internal Point Center
-        {
-            get
-            {
-                return Astrometrics.LocationToCoordinates(Location, Astrometrics.SectorCenter);
-            }
-        }
+        internal Point Center => Astrometrics.LocationToCoordinates(Location, Astrometrics.SectorCenter);
 
         public Point SubsectorCenter(int index)
         {
@@ -457,8 +437,7 @@ namespace Maps
         [XmlElement("Stylesheet"), JsonName("Stylesheet")]
         public string StylesheetText
         {
-            get { return stylesheetText; }
-            set
+            get => stylesheetText; set
             {
                 stylesheetText = value;
                 if (value != null)
@@ -474,6 +453,9 @@ namespace Maps
 
         public IEnumerable<string> RoutesForWorld(World world)
         {
+            if (world == null)
+                throw new ArgumentNullException(nameof(world));
+
             Location loc = new Location(this.Location, new Hex(world.X, world.Y));
 
             // Collect adjacent sectors
@@ -503,8 +485,7 @@ namespace Maps
             {
                 foreach (Route route in sector.Routes)
                 {
-                    Location start, end;
-                    sector.RouteToStartEnd(route, out start, out end);
+                    sector.RouteToStartEnd(route, out Location start, out Location end);
                     if (start == end)
                         continue;
 
@@ -537,6 +518,9 @@ namespace Maps
 
         public void RouteToStartEnd(Route route, out Location start, out Location end)
         {
+            if (route == null)
+                throw new ArgumentNullException(nameof(route));
+
             Point startSector = Location, endSector = Location;
             startSector.Offset(route.StartOffset);
             endSector.Offset(route.EndOffset);
@@ -569,12 +553,14 @@ namespace Maps
             WorldCollection dots = new WorldCollection();
             foreach (var world in worlds)
             {
-                var dot = new World();
-                dot.Hex = world.Hex;
-                dot.UWP = "???????-?";
-                dot.PBG = "???";
-                dot.Allegiance = "??";
-                dot.Sector = this;
+                var dot = new World()
+                {
+                    Hex = world.Hex,
+                    UWP = "???????-?",
+                    PBG = "???",
+                    Allegiance = "??",
+                    Sector = this
+                };
                 dots[dot.X, dot.Y] = dot;
             }
 
@@ -681,7 +667,7 @@ namespace Maps
         [XmlAttribute("Code"), JsonName("Code")]
         public string T5Code { get; set; }
 
-        internal string LegacyCode { get { return string.IsNullOrEmpty(legacyCode) ? T5Code : legacyCode; } set { legacyCode = value; } }
+        internal string LegacyCode { get => string.IsNullOrEmpty(legacyCode) ? T5Code : legacyCode; set => legacyCode = value; }
         private string legacyCode;
 
         /// <summary>
@@ -697,7 +683,7 @@ namespace Maps
         [XmlAttribute]
         public string Base { get; set; }
 
-        string IAllegiance.Allegiance { get { return T5Code; } }
+        string IAllegiance.Allegiance => T5Code;
     }
 
     public interface IAllegiance
@@ -728,12 +714,12 @@ namespace Maps
 
         internal Color? Color { get; set; }
         [XmlAttribute("Color"), JsonName("Color")]
-        public string ColorHtml { get { return Color.HasValue ? ColorTranslator.ToHtml(Color.Value) : null; } set { Color = ColorTranslator.FromHtml(value); } }
+        public string ColorHtml { get => Color.HasValue ? ColorTranslator.ToHtml(Color.Value) : null; set => Color = ColorTranslator.FromHtml(value); }
 
         [XmlAttribute]
         public string Allegiance { get; set; }
 
-        internal IEnumerable<Hex> Path { get { return path; } }
+        internal IEnumerable<Hex> Path => path;
         private List<Hex> path = new List<Hex>();
 
         internal Hex LabelPosition { get; set; }
@@ -741,8 +727,7 @@ namespace Maps
         [XmlAttribute("LabelPosition"), JsonName("LabelPosition")]
         public string LabelPositionHex
         {
-            get { return LabelPosition.ToString(); }
-            set { LabelPosition = new Hex(value); }
+            get => LabelPosition.ToString(); set => LabelPosition = new Hex(value);
         }
 
         [XmlAttribute]
@@ -750,17 +735,14 @@ namespace Maps
 
         internal LineStyle? Style { get; set; }
         [XmlAttribute("Style"), JsonIgnore]
-        public LineStyle _Style { get { return Style.Value; } set { Style = value; } }
+        public LineStyle _Style { get => Style.Value; set => Style = value; }
         public bool ShouldSerialize_Style() { return Style.HasValue; }
 
 
         [XmlText, JsonName("Path")]
         public string PathString
         {
-            get
-            {
-                return string.Join(" ", from hex in path select hex.ToString());
-            }
+            get => string.Join(" ", from hex in path select hex.ToString());
             set
             {
                 if (value == null) throw new ArgumentNullException(nameof(value));
@@ -871,27 +853,23 @@ namespace Maps
         }
         internal Hex Start
         {
-            get { return start; }
-            set { start = value; FixHex(ref start, ref startOffsetX, ref startOffsetY); }
+            get => start; set { start = value; FixHex(ref start, ref startOffsetX, ref startOffsetY); }
         }
         internal Hex End
         {
-            get { return end; }
-            set { end = value; FixHex(ref end, ref endOffsetX, ref endOffsetY); }
+            get => end; set { end = value; FixHex(ref end, ref endOffsetX, ref endOffsetY); }
         }
 
         [XmlAttribute("Start"), JsonName("Start")]
         public string StartHex
         {
-            get { return Start.ToString(); }
-            set { Start = new Hex(value); }
+            get => Start.ToString(); set => Start = new Hex(value);
         }
 
         [XmlAttribute("End"), JsonName("End")]
         public string EndHex
         {
-            get { return End.ToString(); }
-            set { End = new Hex(value); }
+            get => End.ToString(); set => End = new Hex(value);
         }
 
         private Hex start;
@@ -902,46 +880,49 @@ namespace Maps
         private sbyte endOffsetY;
 
         internal Point StartOffset {
-            get { return new Point(startOffsetX, startOffsetY); }
+            get => new Point(startOffsetX, startOffsetY);
             set { startOffsetX = (sbyte)value.X; startOffsetY = (sbyte)value.Y; }
         }
 
         internal Point EndOffset
         {
-            get { return new Point(endOffsetX, endOffsetY); }
+            get => new Point(endOffsetX, endOffsetY);
             set { endOffsetX = (sbyte)value.X; endOffsetY = (sbyte)value.Y; }
         }
 
         [XmlAttribute("StartOffsetX")]
         [DefaultValueAttribute(0)]
-        public int StartOffsetX { get { return startOffsetX; } set { startOffsetX = (sbyte)value; } }
+        public int StartOffsetX { get => startOffsetX; set => startOffsetX = (sbyte)value; }
 
         [XmlAttribute("StartOffsetY")]
         [DefaultValueAttribute(0)]
-        public int StartOffsetY { get { return startOffsetY; } set { startOffsetY = (sbyte)value; } }
+        public int StartOffsetY { get => startOffsetY; set => startOffsetY = (sbyte)value; }
 
         [XmlAttribute("EndOffsetX")]
         [DefaultValueAttribute(0)]
-        public int EndOffsetX { get { return endOffsetX; } set { endOffsetX = (sbyte)value; } }
+        public int EndOffsetX { get => endOffsetX; set => endOffsetX = (sbyte)value; }
 
         [XmlAttribute("EndOffsetY")]
         [DefaultValueAttribute(0)]
-        public int EndOffsetY { get { return endOffsetY; } set { endOffsetY = (sbyte)value; } }
+        public int EndOffsetY { get => endOffsetY; set => endOffsetY = (sbyte)value; }
 
 
         internal LineStyle? Style { get; set; }
         [XmlAttribute("Style"), JsonIgnore]
-        public LineStyle _Style { get { return Style.Value; } set { Style = value; } }
+        public LineStyle _Style { get => Style.Value; set => Style = value; }
         public bool ShouldSerialize_Style() { return Style.HasValue; }
 
         internal float? Width { get; set; }
         [XmlAttribute("Width"), JsonIgnore]
-        public float _Width { get { return Width.Value; } set { Width = value; } }
+        public float _Width { get => Width.Value; set => Width = value; }
         public bool ShouldSerialize_Width() { return Width.HasValue; }
 
         internal Color? Color { get; set; }
         [XmlAttribute("Color"), JsonName("Color")]
-        public string ColorHtml { get { return Color.HasValue ? ColorTranslator.ToHtml(Color.Value) : null; } set { Color = ColorTranslator.FromHtml(value); } }
+        public string ColorHtml {
+            get => Color.HasValue ? ColorTranslator.ToHtml(Color.Value) : null;
+            set => Color = ColorTranslator.FromHtml(value);
+        }
 
         [XmlAttribute]
         public string Allegiance { get; set; }
@@ -976,8 +957,7 @@ namespace Maps
             Text = text;
         }
 
-        public static Color DefaultColor { get { return Color.Yellow; } }
-
+        public static Color DefaultColor => Color.Yellow;
         [XmlAttribute]
         public int Hex { get; set; }
 
@@ -986,7 +966,10 @@ namespace Maps
 
         internal Color Color { get; set; }
         [XmlAttribute("Color"), JsonName("Color")]
-        public string ColorHtml { get { return ColorTranslator.ToHtml(Color); } set { Color = ColorTranslator.FromHtml(value); } }
+        public string ColorHtml {
+            get => ColorTranslator.ToHtml(Color);
+            set => Color = ColorTranslator.FromHtml(value);
+        }
 
         [XmlAttribute]
         public string Size { get; set; }

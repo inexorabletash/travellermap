@@ -54,14 +54,12 @@ namespace Maps.Serialization
 
     internal class XmlSectorMetadataParser : SectorMetadataFileParser
     {
-        public override Encoding Encoding { get { return Encoding.UTF8; } }
-
+        public override Encoding Encoding => Encoding.UTF8;
         public override Sector Parse(Stream stream)
         {
             try
             {
-                XmlSerializer xs = new XmlSerializer(typeof(Sector));
-                return xs.Deserialize(stream) as Sector;
+                return new XmlSerializer(typeof(Sector)).Deserialize(stream) as Sector;
             }
             catch (System.InvalidOperationException ex) when (ex.InnerException is System.Xml.XmlException)
             {
@@ -73,8 +71,7 @@ namespace Maps.Serialization
         {
             try
             {
-                XmlSerializer xs = new XmlSerializer(typeof(Sector));
-                return xs.Deserialize(reader) as Sector;
+                return new XmlSerializer(typeof(Sector)).Deserialize(reader) as Sector;
             }
             catch (System.InvalidOperationException ex) when (ex.InnerException is System.Xml.XmlException)
             {

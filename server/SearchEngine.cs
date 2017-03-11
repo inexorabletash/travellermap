@@ -299,9 +299,7 @@ namespace Maps
         {
             List<ItemLocation> results = new List<ItemLocation>();
 
-            List<string> clauses;
-            List<string> terms;
-            types = ParseQuery(query, types, out clauses, out terms);
+            types = ParseQuery(query, types, out var clauses, out var terms);
 
             if (clauses.Count() == 0 && !random)
                 return results;

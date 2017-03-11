@@ -17,8 +17,7 @@ namespace Maps.Serialization
 
         public override void Serialize(TextWriter writer, Sector sector)
         {
-            var serializer = new Serializer(sector, writer);
-            serializer.Serialize();
+            new Serializer(sector, writer).Serialize();
             writer.Flush();
         }
 

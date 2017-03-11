@@ -12,7 +12,7 @@ namespace Maps.API
 {
     internal class SearchHandler : DataHandlerBase
     {
-        protected override string ServiceName { get { return "search"; } }
+        protected override string ServiceName => "search";
         protected override DataResponder GetResponder(HttpContext context)
         {
             return new Responder(context);
@@ -20,8 +20,7 @@ namespace Maps.API
         private class Responder : DataResponder
         {
             public Responder(HttpContext context) : base(context) { }
-            public override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Xml; } }
-
+            public override string DefaultContentType => System.Net.Mime.MediaTypeNames.Text.Xml;
             private static readonly IReadOnlyDictionary<string, string> SpecialSearches = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase) {
                 { @"(default)", @"~/res/search/Default.json"},
                 { @"(grand tour)", @"~/res/search/GrandTour.json"},
@@ -108,7 +107,7 @@ namespace Maps.API.Results
     public class SearchResults
     {
         [XmlAttribute]
-        public int Count { get { return Items.Count; } set { /* We only want to serialize, not deserialize */ } }
+        public int Count { get => Items.Count; set { /* We only want to serialize, not deserialize */ } }
 
         // This is necessary to get "clean" XML serialization of a heterogeneous list;
         // otherwise the output is sprinkled with xsi:type declarations and the base class
@@ -196,45 +195,41 @@ namespace Maps.API.Results
         {
             if (location is WorldLocation)
             {
-                Sector sector;
-                World world;
-                ((WorldLocation)location).Resolve(map, resourceManager, out sector, out world);
+                ((WorldLocation)location).Resolve(map, resourceManager, out Sector sector, out World world);
 
                 if (sector == null || world == null)
                     return null;
 
-                WorldResult r = new WorldResult();
-                r.SectorX = sector.X;
-                r.SectorY = sector.Y;
-                r.SectorTags = sector.TagString;
-                r.HexX = world.X;
-                r.HexY = world.Y;
-                r.Name = world.Name;
-                r.Sector = sector.Names[0].Text;
-                r.Uwp = world.UWP;
-                r.Importance = world.ImportanceValue;
-
-                return r;
+                return new WorldResult()
+                {
+                    SectorX = sector.X,
+                    SectorY = sector.Y,
+                    SectorTags = sector.TagString,
+                    HexX = world.X,
+                    HexY = world.Y,
+                    Name = world.Name,
+                    Sector = sector.Names[0].Text,
+                    Uwp = world.UWP,
+                    Importance = world.ImportanceValue
+                };
             }
 
             if (location is SubsectorLocation)
             {
-                Sector sector;
-                Subsector subsector;
-                ((SubsectorLocation)location).Resolve(map, out sector, out subsector);
+                ((SubsectorLocation)location).Resolve(map, out Sector sector, out Subsector subsector);
 
                 if (sector == null || subsector == null)
                     return null;
 
-                SubsectorResult r = new SubsectorResult();
-                r.SectorX = sector.X;
-                r.SectorY = sector.Y;
-                r.SectorTags = sector.TagString;
-                r.Name = subsector.Name;
-                r.Index = subsector.Index;
-                r.Sector = sector.Names[0].Text;
-
-                return r;
+                return new SubsectorResult()
+                {
+                    SectorX = sector.X,
+                    SectorY = sector.Y,
+                    SectorTags = sector.TagString,
+                    Name = subsector.Name,
+                    Index = subsector.Index,
+                    Sector = sector.Names[0].Text
+                };
             }
 
             if (location is SectorLocation)
@@ -244,13 +239,13 @@ namespace Maps.API.Results
                 if (sector == null)
                     return null;
 
-                SectorResult r = new SectorResult();
-                r.SectorX = sector.X;
-                r.SectorY = sector.Y;
-                r.SectorTags = sector.TagString;
-                r.Name = sector.Names[0].Text;
-
-                return r;
+                return new SectorResult()
+                {
+                    SectorX = sector.X,
+                    SectorY = sector.Y,
+                    SectorTags = sector.TagString,
+                    Name = sector.Names[0].Text
+                };
             }
 
             if (location is LabelLocation)
@@ -259,19 +254,19 @@ namespace Maps.API.Results
                 Location l = Astrometrics.CoordinatesToLocation(label.Coords);
                 Sector sector = label.Resolve(map);
 
-                LabelResult r = new LabelResult();
-                r.Name = label.Label;
-                r.SectorX = l.Sector.X;
-                r.SectorY = l.Sector.Y;
-                r.HexX = l.Hex.X;
-                r.HexY = l.Hex.Y;
-                r.Scale =
-                    label.Radius > 80 ? 4 :
-                    label.Radius > 40 ? 8 :
-                    label.Radius > 20 ? 32 : 64;
-                r.SectorTags = sector.TagString;
-
-                return r;
+                return new LabelResult()
+                {
+                    Name = label.Label,
+                    SectorX = l.Sector.X,
+                    SectorY = l.Sector.Y,
+                    HexX = l.Hex.X,
+                    HexY = l.Hex.Y,
+                    Scale =
+                        label.Radius > 80 ? 4 :
+                        label.Radius > 40 ? 8 :
+                        label.Radius > 20 ? 32 : 64,
+                    SectorTags = sector.TagString
+                };
             }
 
             throw new ArgumentException($"Unexpected result type: {location.GetType().Name}", nameof(location));

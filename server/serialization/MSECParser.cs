@@ -9,8 +9,7 @@ namespace Maps.Serialization
 {
     internal class MSECParser : SectorMetadataFileParser 
     {
-        public override Encoding Encoding { get { return Encoding.GetEncoding(1252); } }
-
+        public override Encoding Encoding => Encoding.GetEncoding(1252);
         private static void Apply(string line, Sector sector)
         {
             string[] kv = line.Split(null, 2);
@@ -23,10 +22,11 @@ namespace Maps.Serialization
             }
 
             if (Regex.IsMatch(key, @"^[A-P]$")) {
-                Subsector ss = new Subsector();
-                ss.Index = key;
-                ss.Name = value;
-                sector.Subsectors.Add(ss);
+                sector.Subsectors.Add(new Subsector()
+                {
+                    Index = key,
+                    Name = value
+                });
                 return;
             }
 
@@ -138,8 +138,7 @@ namespace Maps.Serialization
                                 }
                                 if (Regex.IsMatch(option, @"[-+](\d+)$"))
                                 {
-                                    int offset = 0;
-                                    if (int.TryParse(option, out offset))
+                                    if (int.TryParse(option, out int offset))
                                         label.OffsetY = offset / 100f;
                                     continue;
                                 }

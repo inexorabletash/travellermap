@@ -103,12 +103,7 @@ namespace Maps.HTTP
                 this.statusCode = statusCode;
             }
 
-            bool IHttpHandler.IsReusable
-            {
-                // TODO: Why false here?
-                get { return false; }
-            }
-
+            bool IHttpHandler.IsReusable => false;
             void IHttpHandler.ProcessRequest(HttpContext context)
             {
                 if (context == null)

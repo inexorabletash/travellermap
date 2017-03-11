@@ -9,7 +9,7 @@ namespace Maps.API
 {
     internal class SECHandler : DataHandlerBase
     {
-        protected override string ServiceName { get { return "sec"; } }
+        protected override string ServiceName => "sec";
         protected override DataResponder GetResponder(HttpContext context)
         {
             return new Responder(context);
@@ -17,8 +17,7 @@ namespace Maps.API
         private class Responder : DataResponder
         {
             public Responder(HttpContext context) : base(context) { }
-            public override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Plain; } }
-
+            public override string DefaultContentType => System.Net.Mime.MediaTypeNames.Text.Plain;
             public override void Process()
             {
                 // NOTE: This (re)initializes a static data structure used for 
@@ -28,12 +27,13 @@ namespace Maps.API
                 SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, GetStringOption("milieu"));
                 Sector sector;
 
-                SectorSerializeOptions options = new Serialization.SectorSerializeOptions();
-                options.sscoords = GetBoolOption("sscoords", defaultValue: false);
-                options.includeMetadata = GetBoolOption("metadata", defaultValue: true);
-                options.includeHeader = GetBoolOption("header", defaultValue: true);
-                options.includeRoutes = GetBoolOption("routes", defaultValue: false);
-
+                SectorSerializeOptions options = new SectorSerializeOptions()
+                {
+                    sscoords = GetBoolOption("sscoords", defaultValue: false),
+                    includeMetadata = GetBoolOption("metadata", defaultValue: true),
+                    includeHeader = GetBoolOption("header", defaultValue: true),
+                    includeRoutes = GetBoolOption("routes", defaultValue: false)
+                };
                 if (Context.Request.HttpMethod == "POST")
                 {
                     bool lint = GetBoolOption("lint", defaultValue: false);
@@ -61,17 +61,13 @@ namespace Maps.API
                     int sx = GetIntOption("sx", 0);
                     int sy = GetIntOption("sy", 0);
 
-                    sector = map.FromLocation(sx, sy);
-
-                    if (sector == null)
+                    sector = map.FromLocation(sx, sy) ??
                         throw new HttpError(404, "Not Found", $"The sector at {sx},{sy} was not found.");
                 }
                 else if (HasOption("sector"))
                 {
                     string sectorName = GetStringOption("sector");
-                    sector = map.FromName(sectorName);  
-
-                    if (sector == null)
+                    sector = map.FromName(sectorName) ??
                         throw new HttpError(404, "Not Found", $"The specified sector '{sectorName}' was not found.");
                 }
                 else

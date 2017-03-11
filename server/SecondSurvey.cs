@@ -446,8 +446,7 @@ namespace Maps
             { "FdDa", "Fd", null, "Federation of Daibei" },
             { "AvCn", "Ac", null, "Avalar Consulate" },
         };
-        public static IEnumerable<string> AllegianceCodes { get { return s_t5Allegiances.Keys; } }
-
+        public static IEnumerable<string> AllegianceCodes => s_t5Allegiances.Keys;
         // May need GroupBy to handle duplicates
         private static readonly IReadOnlyDictionary<string, Allegiance> s_legacyToT5Allegiance = s_t5Allegiances.Values
             .GroupBy(a => a.LegacyCode).Select(g => g.First()).ToDictionary(a => a.LegacyCode);
@@ -565,7 +564,7 @@ namespace Maps
                 return s_sophontCodes[code];
             return null;
         }
-        public static IEnumerable<string> SophontCodes { get { return s_sophontCodes.Keys; } }
+        public static IEnumerable<string> SophontCodes => s_sophontCodes.Keys;
         #endregion // Sophonts
 
         #region World Details

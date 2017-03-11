@@ -8,7 +8,7 @@ namespace Maps.API
 {
     internal class RouteHandler : DataHandlerBase
     {
-        protected override string ServiceName { get { return "route"; } }
+        protected override string ServiceName => "route";
         protected override DataResponder GetResponder(HttpContext context)
         {
             return new Responder(context);
@@ -16,8 +16,7 @@ namespace Maps.API
         private class Responder : DataResponder
         {
             public Responder(HttpContext context) : base(context) { }
-            public override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Xml; } }
-
+            public override string DefaultContentType => System.Net.Mime.MediaTypeNames.Text.Xml;
             private class TravellerPathFinder : PathFinder.Map<World>
             {
                 ResourceManager manager;
@@ -82,27 +81,23 @@ namespace Maps.API
                 {
                     int x = GetIntOption("x", 0);
                     int y = GetIntOption("y", 0);
-                    WorldLocation loc = SearchEngine.FindNearestWorldMatch(query, GetStringOption("milieu"), x, y);
-                    if (loc == null)
+                    WorldLocation loc = SearchEngine.FindNearestWorldMatch(query, GetStringOption("milieu"), x, y) ??
                         throw new HttpError(404, "Not Found", $"Location not found: {query}");
 
-                    Sector loc_sector;
-                    World loc_world;
-                    loc.Resolve(map, manager, out loc_sector, out loc_world);
+                    loc.Resolve(map, manager, out Sector loc_sector, out World loc_world);
                     return loc_world;
                 }
 
-                Sector sector = map.FromName(match.Groups["sector"].Value);
-                if (sector == null)
-                    throw new HttpError(404, "Not Found", $"Sector not found: {sector}");
+                string name = match.Groups["sector"].Value;
+                Sector sector = map.FromName(name) ??
+                    throw new HttpError(404, "Not Found", $"Sector not found: {name}");
 
                 string hexString = match.Groups["hex"].Value;
                 Hex hex = new Hex(hexString);
                 if (!hex.IsValid)
                     throw new HttpError(400, "Not Found", $"Invalid hex: {hexString}");
 
-                World world = sector.GetWorlds(manager)[hex.ToInt()];
-                if (world == null)
+                World world = sector.GetWorlds(manager)[hex.ToInt()] ??
                     throw new HttpError(404, "Not Found", $"No such world: {sector.Names[0].Text} {hexString}");
 
                 return world;
@@ -123,14 +118,13 @@ namespace Maps.API
 
                 int jump = Util.Clamp(GetIntOption("jump", 2), 0, 12);
 
-                var finder = new TravellerPathFinder(resourceManager, map, jump);
-
-                finder.RequireWildernessRefuelling = GetBoolOption("wild", false);
-                finder.ImperialWorldsOnly = GetBoolOption("im", false);
-                finder.AvoidRedZones = GetBoolOption("nored", false);
-
-                List<World> route = finder.FindPath(startWorld, endWorld);
-                if (route == null)
+                var finder = new TravellerPathFinder(resourceManager, map, jump)
+                {
+                    RequireWildernessRefuelling = GetBoolOption("wild", false),
+                    ImperialWorldsOnly = GetBoolOption("im", false),
+                    AvoidRedZones = GetBoolOption("nored", false)
+                };
+                List<World> route = finder.FindPath(startWorld, endWorld) ??
                     throw new HttpError(404, "Not Found", "No route found");
 
                 SendResult(Context, route.Select(w => new Results.RouteStop(w)).ToList());

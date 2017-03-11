@@ -7,8 +7,7 @@ namespace Maps.API
 {
     internal class PosterHandler : ImageHandlerBase
     {
-        protected override string ServiceName { get { return "poster"; } }
-
+        protected override string ServiceName => "poster";
         protected override DataResponder GetResponder(HttpContext context)
         {
             return new Responder(context);
@@ -24,7 +23,7 @@ namespace Maps.API
                 ResourceManager resourceManager = new ResourceManager(Context.Server);
 
                 Selector selector;
-                RectangleF tileRect = new RectangleF();
+                RectangleF tileRect;
                 MapOptions options = MapOptions.SectorGrid | MapOptions.SubsectorGrid | MapOptions.BordersMajor | MapOptions.BordersMinor | MapOptions.NamesMajor | MapOptions.NamesMinor | MapOptions.WorldsCapitals | MapOptions.WorldsHomeworlds;
                 Stylesheet.Style style = Stylesheet.Style.Poster;
                 ParseOptions(ref options, ref style);
@@ -41,14 +40,18 @@ namespace Maps.API
                     int y1 = GetIntOption("y1", 0);
                     int y2 = GetIntOption("y2", 0);
 
-                    tileRect.X = Math.Min(x1, x2);
-                    tileRect.Y = Math.Min(y1, y2);
+                    tileRect = new RectangleF()
+                    {
+                        X = Math.Min(x1, x2),
+                        Y = Math.Min(y1, y2)
+                    };
                     tileRect.Width = Math.Max(x1, x2) - tileRect.X;
                     tileRect.Height = Math.Max(y1, y2) - tileRect.Y;
 
                     SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, GetStringOption("milieu"));
                     selector = new RectSelector(map, resourceManager, tileRect, slop: false);
 
+                    // Include specified hexes
                     tileRect.Offset(-1, -1);
                     tileRect.Width += 1;
                     tileRect.Height += 1;
@@ -95,14 +98,18 @@ namespace Maps.API
                     int x2 = (int)Math.Round(x1 + w * Astrometrics.SectorWidth - 1);
                     int y2 = (int)Math.Round(y1 + h * Astrometrics.SectorHeight - 1);
 
-                    tileRect.X = Math.Min(x1, x2);
-                    tileRect.Y = Math.Min(y1, y2);
+                    tileRect = new RectangleF()
+                    {
+                        X = Math.Min(x1, x2),
+                        Y = Math.Min(y1, y2)
+                    };
                     tileRect.Width = Math.Max(x1, x2) - tileRect.X;
                     tileRect.Height = Math.Max(y1, y2) - tileRect.Y;
 
                     SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, GetStringOption("milieu"));
                     selector = new RectSelector(map, resourceManager, tileRect, slop: false);
 
+                    // Include selected hexes
                     tileRect.Offset(-1, -1);
                     tileRect.Width += 1;
                     tileRect.Height += 1;
@@ -138,12 +145,11 @@ namespace Maps.API
                         }
                         ErrorLogger errors = new ErrorLogger(filter);
 
-                        sector = GetPostedSector(Context.Request, errors);
+                        sector = GetPostedSector(Context.Request, errors) ??
+                            throw new HttpError(400, "Bad Request", "Either file or data must be supplied in the POST data.");
                         if (lint && !errors.Empty)
                             throw new HttpError(400, "Bad Request", errors.ToString());
 
-                        if (sector == null)
-                            throw new HttpError(400, "Bad Request", "Either file or data must be supplied in the POST data.");
 
                         title = "User Data";
 
@@ -152,14 +158,12 @@ namespace Maps.API
                     }
                     else
                     {
-                        string sectorName = GetStringOption("sector");
-                        if (sectorName == null)
+                        string sectorName = GetStringOption("sector") ??
                             throw new HttpError(400, "Bad Request", "No sector specified.");
 
                         SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, GetStringOption("milieu"));
 
-                        sector = map.FromName(sectorName);
-                        if (sector == null)
+                        sector = map.FromName(sectorName) ??
                             throw new HttpError(404, "Not Found", $"The specified sector '{sectorName}' was not found.");
 
                         title = sector.Names[0].Text;
@@ -262,9 +266,10 @@ namespace Maps.API
                 if (hrot != 0)
                     ApplyHexRotation(hrot, stylesheet, ref bitmapSize, ref transform);
 
-                RenderContext ctx = new RenderContext(resourceManager, selector, tileRect, scale, options, stylesheet, tileSize);
-                ctx.ClipOutsectorBorders = clipOutsectorBorders;
-
+                RenderContext ctx = new RenderContext(resourceManager, selector, tileRect, scale, options, stylesheet, tileSize)
+                {
+                    ClipOutsectorBorders = clipOutsectorBorders
+                };
                 ProduceResponse(Context, title, ctx, bitmapSize, transform);
             }
         }

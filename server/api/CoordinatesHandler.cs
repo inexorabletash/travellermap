@@ -6,8 +6,7 @@ namespace Maps.API
 {
     internal class CoordinatesHandler : DataHandlerBase
     {
-        protected override string ServiceName { get { return "coordinates"; } }
-
+        protected override string ServiceName => "coordinates";
         protected override DataResponder GetResponder(HttpContext context)
         {
             return new Responder(context);
@@ -16,8 +15,7 @@ namespace Maps.API
         private class Responder : DataResponder
         {
             public Responder(HttpContext context) : base(context) { }
-            public override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Xml; } }
-
+            public override string DefaultContentType => System.Net.Mime.MediaTypeNames.Text.Xml;
             public override void Process()
             {
                 // NOTE: This (re)initializes a static data structure used for 
@@ -32,8 +30,7 @@ namespace Maps.API
                 if (HasOption("sector"))
                 {
                     string sectorName = GetStringOption("sector");
-                    Sector sector = map.FromName(sectorName);
-                    if (sector == null)
+                    Sector sector = map.FromName(sectorName) ??
                         throw new HttpError(404, "Not Found", $"The specified sector '{sectorName}' was not found.");
 
                     if (HasOption("subsector"))
@@ -42,12 +39,9 @@ namespace Maps.API
                         int index = sector.SubsectorIndexFor(subsector);
                         if (index == -1)
                             throw new HttpError(404, "Not Found", $"The specified subsector '{subsector}' was not found.");
-                        int ssx = index % 4;
-                        int ssy = index / 4;
-                        Hex hex = new Hex(
-                            (byte)(ssx * Astrometrics.SubsectorWidth + Astrometrics.SubsectorWidth / 2),
-                            (byte)(ssy * Astrometrics.SubsectorHeight + Astrometrics.SubsectorHeight / 2));
-                        loc = new Location(sector.Location, hex);
+                        loc = new Location(sector.Location, new Hex(
+                            (byte)(index % 4 * Astrometrics.SubsectorWidth + Astrometrics.SubsectorWidth / 2),
+                            (byte)(index / 4 * Astrometrics.SubsectorHeight + Astrometrics.SubsectorHeight / 2)));
                     }
                     else
                     {
@@ -66,14 +60,15 @@ namespace Maps.API
 
                 Point coords = Astrometrics.LocationToCoordinates(loc);
 
-                var result = new Results.CoordinatesResult();
-                result.sx = loc.Sector.X;
-                result.sy = loc.Sector.Y;
-                result.hx = loc.Hex.X;
-                result.hy = loc.Hex.Y;
-                result.x = coords.X;
-                result.y = coords.Y;
-                SendResult(Context, result);
+                SendResult(Context, new Results.CoordinatesResult()
+                {
+                    sx = loc.Sector.X,
+                    sy = loc.Sector.Y,
+                    hx = loc.Hex.X,
+                    hy = loc.Hex.Y,
+                    x = coords.X,
+                    y = coords.Y
+                });
             }
         }
     }
@@ -86,6 +81,7 @@ namespace Maps.API.Results
     public class CoordinatesResult
     {
         // Sector/Hex
+#pragma warning disable IDE1006 // Naming Styles
         public int sx { get; set; }
         public int sy { get; set; }
         public int hx { get; set; }
@@ -94,5 +90,6 @@ namespace Maps.API.Results
         // World-space X/Y
         public int x { get; set; }
         public int y { get; set; }
+#pragma warning restore IDE1006 // Naming Styles
     }
 }

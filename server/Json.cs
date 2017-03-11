@@ -42,8 +42,7 @@ namespace Json
         
         public void Serialize( Stream stream, object item )
         {
-            Encoding utf8 = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false);
-            using (var sw = new StreamWriter(stream, utf8))
+            using (var sw = new StreamWriter(stream, new UTF8Encoding(encoderShouldEmitUTF8Identifier: false)))
             {
                 Serialize(sw, item);
                 sw.Flush();

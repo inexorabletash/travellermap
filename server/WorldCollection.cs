@@ -27,6 +27,7 @@ namespace Maps
         }
 
         public bool IsUserData { get; }
+
         private World[,] worlds = new World[Astrometrics.SectorWidth, Astrometrics.SectorHeight];
         public World this[int x, int y]
         {
@@ -49,8 +50,9 @@ namespace Maps
                 worlds[x - 1, y - 1] = value;
             }
         }
-        public World this[int hex] { get { return this[hex / 100, hex % 100]; } }
-        public World this[Hex hex] { get { return this[hex.X, hex.Y]; } }
+
+        public World this[int hex] => this[hex / 100, hex % 100];
+        public World this[Hex hex] => this[hex.X, hex.Y];
 
         public IEnumerator<World> GetEnumerator()
         {
@@ -68,32 +70,28 @@ namespace Maps
         IEnumerator IEnumerable.GetEnumerator() { return GetEnumerator(); }
 
         private ErrorLogger errors = null;
-        public ErrorLogger ErrorList { get { return errors; } }
-
+        public ErrorLogger ErrorList => errors;
         public void Serialize(TextWriter writer, string mediaType, SectorSerializeOptions options)
         {
             SectorFileSerializer.ForType(mediaType).Serialize(writer,
                 options.filter == null ? this : this.Where(world => options.filter(world)), options);
         }
 
-        public void Deserialize(Stream stream, string mediaType, ErrorLogger errors = null)
+        public void Deserialize(Stream stream, string mediaType, ErrorLogger log = null)
         {
             if (mediaType == null || mediaType == MediaTypeNames.Text.Plain || mediaType == MediaTypeNames.Application.Octet)
                 mediaType = SectorFileParser.SniffType(stream);
             SectorFileParser parser = SectorFileParser.ForType(mediaType);
-            parser.Parse(stream, this, errors);
-            if (errors != null && !errors.Empty)
+            parser.Parse(stream, this, log);
+            if (log != null && !log.Empty)
             {
-                errors.Prepend(ErrorLogger.Severity.Hint, $"Parsing as: {parser.Name}");
+                log.Prepend(ErrorLogger.Severity.Hint, $"Parsing as: {parser.Name}");
             }
         }
 
         public HashSet<string> AllegianceCodes()
         {
-            var set = new HashSet<string>();
-            foreach (var world in this)
-                set.Add(world.Allegiance);
-            return set;
+            return new HashSet<string>(this.Select(world => world.Allegiance));
         }
     }
 }

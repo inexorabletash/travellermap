@@ -5,7 +5,7 @@ namespace Maps.API
 {
     internal class SophontCodesHandler : DataHandlerBase
     {
-        protected override string ServiceName { get { return "sophontcodes"; } }
+        protected override string ServiceName => "sophontcodes";
         protected override DataResponder GetResponder(HttpContext context)
         {
             return new Responder(context);
@@ -13,8 +13,7 @@ namespace Maps.API
         private class Responder : DataResponder
         {
             public Responder(HttpContext context) : base(context) { }
-            public override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Xml; } }
-
+            public override string DefaultContentType => System.Net.Mime.MediaTypeNames.Text.Xml;
             public override void Process()
             {
                 SendResult(Context,
@@ -25,7 +24,7 @@ namespace Maps.API
 
     internal class AllegianceCodesHandler : DataHandlerBase
     {
-        protected override string ServiceName { get { return "allegiancecodes"; } }
+        protected override string ServiceName => "allegiancecodes";
         protected override DataResponder GetResponder(HttpContext context)
         {
             return new Responder(context);
@@ -33,7 +32,8 @@ namespace Maps.API
         private class Responder : DataResponder
         {
             public Responder(HttpContext context) : base(context) { }
-            public override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Xml; } }
+            public override string DefaultContentType => System.Net.Mime.MediaTypeNames.Text.Xml;
+
             public override void Process()
             {
                 SendResult(Context, SecondSurvey.AllegianceCodes.Select(

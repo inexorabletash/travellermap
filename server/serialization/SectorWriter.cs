@@ -44,8 +44,7 @@ namespace Maps.Serialization
 
     internal class SecSerializer : SectorFileSerializer
     {
-        public override Encoding Encoding { get { return Encoding.GetEncoding(1252); } }
-
+        public override Encoding Encoding => Encoding.GetEncoding(1252);
         public override void Serialize(TextWriter writer, IEnumerable<World> worlds, SectorSerializeOptions options)
         {
 
@@ -91,8 +90,7 @@ namespace Maps.Serialization
 
     internal class SecondSurveySerializer : SectorFileSerializer
     {
-        public override Encoding Encoding { get { return Util.UTF8_NO_BOM; } }
-
+        public override Encoding Encoding => Util.UTF8_NO_BOM;
         public override void Serialize(TextWriter writer, IEnumerable<World> worlds, SectorSerializeOptions options)
         {
             List<string> cols = new List<string> {
@@ -154,8 +152,7 @@ namespace Maps.Serialization
 
     internal class TabDelimitedSerializer : SectorFileSerializer
     {
-        public override Encoding Encoding { get { return Util.UTF8_NO_BOM; } }
-
+        public override Encoding Encoding => Util.UTF8_NO_BOM;
         public override void Serialize(TextWriter writer, IEnumerable<World> worlds, SectorSerializeOptions options)
         {
             if (options.includeHeader)

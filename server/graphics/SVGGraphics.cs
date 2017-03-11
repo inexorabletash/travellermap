@@ -114,7 +114,7 @@ namespace Maps.Rendering
                 Apply(brush);
             }
 
-            public int NodeCount { get { return 1 + children.Sum(c => c.NodeCount); } }
+            public int NodeCount => 1 + children.Sum(c => c.NodeCount);
         }
         
         private class ElementNames
@@ -298,8 +298,7 @@ namespace Maps.Rendering
 
         private Stack<Element> stack = new Stack<Element>();
 
-        private Element Current { get { return stack.Peek(); } }
-
+        private Element Current => stack.Peek();
         private Element Open(Element element)
         {
             stack.Push(Current.Append(element));
@@ -320,10 +319,8 @@ namespace Maps.Rendering
             stack.Push(root);
         }
 
-        Graphics AbstractGraphics.Graphics { get { return null; } }
-        SmoothingMode AbstractGraphics.SmoothingMode { get; set; }
-        public bool SupportsWingdings { get { return false; } }
-
+        Graphics AbstractGraphics.Graphics => null; SmoothingMode AbstractGraphics.SmoothingMode { get; set; }
+        public bool SupportsWingdings => false;
         #region Drawing
 
         public void DrawLine(AbstractPen pen, float x1, float y1, float x2, float y2)

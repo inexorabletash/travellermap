@@ -6,7 +6,7 @@ namespace Maps.API
 {
     internal class JumpWorldsHandler : DataHandlerBase
     {
-        protected override string ServiceName { get { return "jumpworlds"; } }
+        protected override string ServiceName => "jumpworlds";
         protected override DataResponder GetResponder(HttpContext context)
         {
             return new Responder(context);
@@ -14,7 +14,8 @@ namespace Maps.API
         private class Responder : DataResponder
         {
             public Responder(HttpContext context) : base(context) { }
-            public override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Xml; } }
+            public override string DefaultContentType => System.Net.Mime.MediaTypeNames.Text.Xml;
+
             public override void Process()
             {
                 // NOTE: This (re)initializes a static data structure used for 
@@ -37,8 +38,7 @@ namespace Maps.API
                 {
                     string sectorName = GetStringOption("sector");
                     int hex = GetIntOption("hex", 0);
-                    Sector sector = map.FromName(sectorName);
-                    if (sector == null)
+                    Sector sector = map.FromName(sectorName) ??
                         throw new HttpError(404, "Not Found", $"The specified sector '{sectorName}' was not found.");
 
                     loc = new Location(sector.Location, hex);

@@ -134,8 +134,7 @@ namespace Maps
             return (a1, a2) =>
             {
                 var key = Tuple.Create(a1, a2);
-                R value;
-                if (map.TryGetValue(key, out value))
+                if (map.TryGetValue(key, out R value))
                     return value;
                 value = f(a1, a2);
                 map.Add(key, value);
@@ -276,8 +275,7 @@ namespace Maps
 
         public int Count() { return set.Count(); }
 
-        public T this[int index] { get { return list[index]; } }
-
+        public T this[int index] => list[index];
         public IEnumerator<T> GetEnumerator() { return list.GetEnumerator(); }
         IEnumerator IEnumerable.GetEnumerator() { return GetEnumerator(); }
     }
@@ -333,8 +331,8 @@ namespace Maps
         private List<Record> log = new List<Record>();
         private Func<ErrorLogger.Record, bool> filter = null;
 
-        public bool Empty { get { return log.Count == 0; } }
-        public int Count { get { return log.Count; } }
+        public bool Empty => log.Count == 0;
+        public int Count => log.Count;
 
         public int CountOf(Severity sev)
         {
@@ -413,7 +411,7 @@ namespace Maps
             return frontItem;
         }
 
-        public int Count { get { return data.Count; } }
+        public int Count => data.Count;
     }
 
     [Serializable]

@@ -32,30 +32,30 @@ namespace Maps.Rendering
         public float NameX { get; set; }
         public float NameY { get; set; }
 
-        private RectangleF bounds;
+        private RectangleF cachedBounds;
         public RectangleF Bounds
         {
             get
             {
                 // Compute bounds if not already set
-                if (bounds.IsEmpty && PathDataPoints?.Length > 0)
+                if (cachedBounds.IsEmpty && PathDataPoints?.Length > 0)
                 {
-                    bounds.Location = PathDataPoints[0];
+                    cachedBounds.Location = PathDataPoints[0];
 
                     for (int i = 1; i < PathDataPoints.Length; ++i)
                     {
                         PointF pt = PathDataPoints[i];
-                        if (pt.X < bounds.X) { float d = bounds.X - pt.X; bounds.X = pt.X; bounds.Width += d; }
-                        if (pt.Y < bounds.Y) { float d = bounds.Y - pt.Y; bounds.Y = pt.Y; bounds.Height += d; }
+                        if (pt.X < cachedBounds.X) { float d = cachedBounds.X - pt.X; cachedBounds.X = pt.X; cachedBounds.Width += d; }
+                        if (pt.Y < cachedBounds.Y) { float d = cachedBounds.Y - pt.Y; cachedBounds.Y = pt.Y; cachedBounds.Height += d; }
 
-                        if (pt.X > bounds.Right) { bounds.Width = pt.X - bounds.X; }
-                        if (pt.Y > bounds.Bottom) { bounds.Height = pt.Y - bounds.Y; }
+                        if (pt.X > cachedBounds.Right) { cachedBounds.Width = pt.X - cachedBounds.X; }
+                        if (pt.Y > cachedBounds.Bottom) { cachedBounds.Height = pt.Y - cachedBounds.Y; }
                     }
                 }
-                return bounds;
+                return cachedBounds;
             }
 
-            set { bounds = value; }
+            set { cachedBounds = value; }
         }
 
         internal RectangleF TransformedBounds
@@ -111,8 +111,10 @@ namespace Maps.Rendering
             {
                 if (pathDataTypes == null)
                 {
-                    List<byte> types = new List<byte>(PathDataPoints.Length);
-                    types.Add((byte)PathPointType.Start);
+                    List<byte> types = new List<byte>(PathDataPoints.Length)
+                    {
+                        (byte)PathPointType.Start
+                    };
                     for (int i = 1; i < PathDataPoints.Length; ++i)
                         types.Add((byte)PathPointType.Line);
                     pathDataTypes = types.ToArray();

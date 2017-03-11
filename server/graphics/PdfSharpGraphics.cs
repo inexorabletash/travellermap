@@ -52,11 +52,9 @@ namespace Maps.Rendering
             return xfont;
         }
 
-        public bool SupportsWingdings { get { return true; } }
-
-        public SmoothingMode SmoothingMode { get { return (SmoothingMode)g.SmoothingMode; } set { g.SmoothingMode = (XSmoothingMode)value; } }
-        public Graphics Graphics { get { return g.Graphics; } }
-
+        public bool SupportsWingdings => true;
+        public SmoothingMode SmoothingMode { get => (SmoothingMode)g.SmoothingMode; set => g.SmoothingMode = (XSmoothingMode)value; }
+        public Graphics Graphics => g.Graphics;
         public void ScaleTransform(float scaleXY) { g.ScaleTransform(scaleXY); }
         public void ScaleTransform(float scaleX, float scaleY) { g.ScaleTransform(scaleX, scaleY); }
         public void TranslateTransform(float dx, float dy) { g.TranslateTransform(dx, dy); }
@@ -125,10 +123,13 @@ namespace Maps.Rendering
                     Bitmap scratchBitmap = new Bitmap(w, h, PixelFormat.Format32bppArgb);
                     using (var scratchGraphics = Graphics.FromImage(scratchBitmap))
                     {
-                        ColorMatrix matrix = new ColorMatrix();
-                        matrix.Matrix00 = matrix.Matrix11 = matrix.Matrix22 = 1;
-                        matrix.Matrix33 = alpha;
-
+                        ColorMatrix matrix = new ColorMatrix()
+                        {
+                            Matrix00 = 1,
+                            Matrix11 = 1,
+                            Matrix22 = 1,
+                            Matrix33 = alpha
+                        };
                         ImageAttributes attr = new ImageAttributes();
                         attr.SetColorMatrix(matrix);
 
@@ -161,9 +162,11 @@ namespace Maps.Rendering
         #region StringFormats
         private static XStringFormat CreateStringFormat(XStringAlignment alignment, XLineAlignment lineAlignment)
         {
-            XStringFormat format = new XStringFormat();
-            format.Alignment = alignment;
-            format.LineAlignment = lineAlignment;
+            XStringFormat format = new XStringFormat()
+            {
+                Alignment = alignment,
+                LineAlignment = lineAlignment
+            };
             return format;
         }
 

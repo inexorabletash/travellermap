@@ -1,5 +1,6 @@
 ﻿using Maps.Serialization;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web;
 using System.Xml.Serialization;
 
@@ -10,8 +11,7 @@ namespace Maps.API
     /// </summary>
     internal class SectorMetaDataHandler : DataHandlerBase
     {
-        protected override string ServiceName { get { return "sectormetadata"; } }
-
+        protected override string ServiceName => "sectormetadata";
         protected override DataResponder GetResponder(HttpContext context)
         {
             return new Responder(context);
@@ -19,7 +19,8 @@ namespace Maps.API
         private class Responder : DataResponder
         {
             public Responder(HttpContext context) : base(context) { }
-            public override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Xml; } }
+            public override string DefaultContentType => System.Net.Mime.MediaTypeNames.Text.Xml;
+
             public override void Process()
             {
                 // NOTE: This (re)initializes a static data structure used for 
@@ -43,17 +44,13 @@ namespace Maps.API
                     int sx = GetIntOption("sx", 0);
                     int sy = GetIntOption("sy", 0);
 
-                    sector = map.FromLocation(sx, sy);
-
-                    if (sector == null)
+                    sector = map.FromLocation(sx, sy) ??
                         throw new HttpError(404, "Not Found", $"The sector at {sx},{sy} was not found.");
                 }
                 else if (HasOption("sector"))
                 {
                     string sectorName = GetStringOption("sector");
-                    sector = map.FromName(sectorName);
-
-                    if (sector == null)
+                    sector = map.FromName(sectorName) ??
                         throw new HttpError(404, "Not Found", $"The specified sector '{sectorName}' was not found.");
                 }
                 else
@@ -86,29 +83,22 @@ namespace Maps.API.Results
 
         [XmlAttribute]
         [System.ComponentModel.DefaultValue(false)]
-        public bool Selected { get { return sector.Selected; } }
-
+        public bool Selected => sector.Selected;
         [XmlAttribute]
-        public string Tags { get { return sector.TagString; } }
-
+        public string Tags => sector.TagString;
         [XmlAttribute]
-        public string Abbreviation { get { return sector.Abbreviation; } }
-
+        public string Abbreviation => sector.Abbreviation;
         [XmlElement("Name")]
-        public List<Name> Names { get { return sector.Names; } }
+        public List<Name> Names => sector.Names;
+        public string Credits { get => sector.Credits; set { } }
 
-        public string Credits { get { return sector.Credits; } set { } }
-
-        public DataFileMetadata DataFile { get { return dataFile; } }
-
-        public int X { get { return sector.X; } }
-        public int Y { get { return sector.Y; } }
+        public DataFileMetadata DataFile => dataFile;
+        public int X => sector.X;
+        public int Y => sector.Y;
 
         [XmlElement("Product")]
-        public MetadataCollection<Product> Products { get { return sector.Products; } }
-
-        public MetadataCollection<Subsector> Subsectors { get { return sector.Subsectors; } }
-
+        public MetadataCollection<Product> Products => sector.Products;
+        public MetadataCollection<Subsector> Subsectors => sector.Subsectors;
         public List<Allegiance> Allegiances
         {
             get
@@ -129,15 +119,15 @@ namespace Maps.API.Results
             }
         }
 
-        public string Stylesheet { get { return sector.StylesheetText; } set { } }
+        public string Stylesheet { get => sector.StylesheetText; set { } }
 
-        public MetadataCollection<Label> Labels { get { return sector.Labels; } }
+        public MetadataCollection<Label> Labels => sector.Labels;
         public bool ShouldSerializeLabels() { return sector.Labels.Count > 0; }
 
-        public MetadataCollection<Border> Borders { get { return sector.Borders; } }
+        public MetadataCollection<Border> Borders => sector.Borders;
         public bool ShouldSerializeBorders() { return sector.Borders.Count > 0; }
-        
-        public MetadataCollection<Route> Routes { get { return sector.Routes; } }
+
+        public MetadataCollection<Route> Routes => sector.Routes;
         public bool ShouldSerializeRoutes() { return sector.Routes.Count > 0; }
 
         [XmlRoot("DataFile")]
@@ -152,25 +142,19 @@ namespace Maps.API.Results
             private Sector sector;
 
             [XmlAttribute]
-            public string Title { get { return sector.DataFile?.Title ?? sector.Title; } }
-
+            public string Title => sector.DataFile?.Title ?? sector.Title;
             [XmlAttribute]
-            public string Author { get { return sector.DataFile?.Author ?? sector.Author; } }
-
+            public string Author => sector.DataFile?.Author ?? sector.Author;
             [XmlAttribute]
-            public string Source { get { return sector.DataFile?.Source ?? sector.Source; } }
-
+            public string Source => sector.DataFile?.Source ?? sector.Source;
             [XmlAttribute]
-            public string Publisher { get { return sector.DataFile?.Publisher ?? sector.Publisher; } }
-
+            public string Publisher => sector.DataFile?.Publisher ?? sector.Publisher;
             [XmlAttribute]
-            public string Copyright { get { return sector.DataFile?.Copyright ?? sector.Copyright; } }
-
+            public string Copyright => sector.DataFile?.Copyright ?? sector.Copyright;
             [XmlAttribute]
-            public string Milieu { get { return sector.CanonicalMilieu; } }
-
+            public string Milieu => sector.CanonicalMilieu;
             [XmlAttribute]
-            public string Ref { get { return sector.DataFile?.Ref ?? sector.Ref; } }
+            public string Ref => sector.DataFile?.Ref ?? sector.Ref;
         }
     }
 

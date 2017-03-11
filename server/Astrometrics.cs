@@ -132,8 +132,7 @@ namespace Maps
         public Hex(Hex other) { X = other.X; Y = other.Y; }
         public Hex(string s)
         {
-            byte x, y;
-            if (s.Length == 4 && byte.TryParse(s.Substring(0, 2), out x) && byte.TryParse(s.Substring(2, 2), out y))
+            if (s.Length == 4 && byte.TryParse(s.Substring(0, 2), out byte x) && byte.TryParse(s.Substring(2, 2), out byte y))
             {
                 X = x; Y = y;
             }
@@ -146,9 +145,8 @@ namespace Maps
         public byte X { get; set; }
         public byte Y { get; set; }
 
-        public bool IsEmpty { get { return X == 0 && Y == 0; } }
-        public bool IsValid { get { return 1 <= X && X <= Astrometrics.SectorWidth && 1 <= Y && Y <= Astrometrics.SectorHeight; } }
-
+        public bool IsEmpty => (X == 0 && Y == 0);
+        public bool IsValid => (1 <= X && X <= Astrometrics.SectorWidth && 1 <= Y && Y <= Astrometrics.SectorHeight);
         public static bool operator <(Hex a, Hex b) { return (a.X < b.X) || (a.X == b.X && a.Y < b.Y); }
         public static bool operator >(Hex a, Hex b) { return (a.X > b.X) || (a.X == b.X && a.Y > b.Y); }
 

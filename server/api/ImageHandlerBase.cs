@@ -21,8 +21,7 @@ namespace Maps.API
         protected abstract class ImageResponder : DataResponder
         {
             protected ImageResponder(HttpContext context) : base(context) { }
-            public override string DefaultContentType { get { return Util.MediaTypeName_Image_Png; } }
-
+            public override string DefaultContentType => Util.MediaTypeName_Image_Png;
             protected void ProduceResponse(HttpContext context, string title, RenderContext ctx, Size tileSize,
                 AbstractMatrix transform,
                 bool transparent = false)
@@ -99,7 +98,7 @@ namespace Maps.API
                 MemoryStream ms = null;
                 if (dataURI)
                     ms = new MemoryStream();
-                Stream outputStream = dataURI ? ms : Context.Response.OutputStream;
+                Stream outputStream = ms ?? Context.Response.OutputStream;
 
                 if (accepter.Accepts(context, Util.MediaTypeName_Image_Svg, ignoreHeaderFallbacks: true))
                 {
@@ -200,7 +199,7 @@ namespace Maps.API
                 if (dataURI)
                 {
                     string contentType = context.Response.ContentType;
-                    context.Response.ContentType = System.Net.Mime.MediaTypeNames.Text.Plain;
+                    context.Response.ContentType = MediaTypeNames.Text.Plain;
                     ms.Seek(0, SeekOrigin.Begin);
 
                     context.Response.Output.Write("data:");

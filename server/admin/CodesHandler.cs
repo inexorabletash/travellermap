@@ -11,7 +11,6 @@ namespace Maps.Admin
     /// </summary>
     internal class CodesHandler : AdminHandler
     {
-
         static readonly IReadOnlyList<string> s_legacySophontCodes = new List<string>
         {
             "A", // Aslan
@@ -129,8 +128,7 @@ namespace Maps.Admin
                 {
                     if (!codes.ContainsKey(code))
                     {
-                        HashSet<string> hash = new HashSet<string>();
-                        codes.Add(code, hash);
+                        codes.Add(code, new HashSet<string>());
                     }
                     codes[code].Add($"{sector.Names[0].Text} [{sector.CanonicalMilieu}]");
                 }

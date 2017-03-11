@@ -40,11 +40,9 @@ namespace Maps.Rendering
         }
         private void Apply(AbstractPen pen, AbstractBrush brush) { Apply(pen); Apply(brush); }
 
-        public bool SupportsWingdings { get { return true; } }
-
-        public SmoothingMode SmoothingMode { get { return g.SmoothingMode; } set { g.SmoothingMode = value; } }
-        public Graphics Graphics { get { return g; } }
-
+        public bool SupportsWingdings => true;
+        public SmoothingMode SmoothingMode { get => g.SmoothingMode; set => g.SmoothingMode = value; }
+        public Graphics Graphics => g;
         public void ScaleTransform(float scaleXY) { g.ScaleTransform(scaleXY, scaleXY); }
         public void ScaleTransform(float scaleX, float scaleY) { g.ScaleTransform(scaleX, scaleY); }
         public void TranslateTransform(float dx, float dy) { g.TranslateTransform(dx, dy); }
@@ -85,10 +83,13 @@ namespace Maps.Rendering
             Image gdiImage = image.Image;
             lock(gdiImage)
             {
-                ColorMatrix matrix = new ColorMatrix();
-                matrix.Matrix00 = matrix.Matrix11 = matrix.Matrix22 = 1;
-                matrix.Matrix33 = alpha;
-
+                ColorMatrix matrix = new ColorMatrix()
+                {
+                    Matrix00 = 1,
+                    Matrix11 = 1,
+                    Matrix22 = 1,
+                    Matrix33 = alpha
+                };
                 ImageAttributes attr = new ImageAttributes();
                 attr.SetColorMatrix(matrix);
 
@@ -129,9 +130,11 @@ namespace Maps.Rendering
         #region StringFormats
         private static StringFormat CreateStringFormat(System.Drawing.StringAlignment alignment, System.Drawing.StringAlignment lineAlignment)
         {
-            StringFormat format = new StringFormat();
-            format.Alignment = alignment;
-            format.LineAlignment = lineAlignment;
+            StringFormat format = new StringFormat()
+            {
+                Alignment = alignment,
+                LineAlignment = lineAlignment
+            };
             return format;
         }
 

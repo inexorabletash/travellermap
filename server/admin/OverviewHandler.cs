@@ -15,8 +15,7 @@ namespace Maps.Admin
 
         class OverviewImpl : Maps.API.ImageHandlerBase
         {
-            protected override string ServiceName { get { return "overview"; } }
-
+            protected override string ServiceName => "overview";
             protected override DataResponder GetResponder(HttpContext context)
             {
                 return new Responder(context);
@@ -37,12 +36,13 @@ namespace Maps.Admin
                     float scale = 2;
                     Size tileSize = new Size(1000, 1000);
 
-                    RectangleF tileRect = new RectangleF();
-                    tileRect.X = x * tileSize.Width / (scale * Astrometrics.ParsecScaleX);
-                    tileRect.Y = y * tileSize.Height / (scale * Astrometrics.ParsecScaleY);
-                    tileRect.Width = tileSize.Width / (scale * Astrometrics.ParsecScaleX);
-                    tileRect.Height = tileSize.Height / (scale * Astrometrics.ParsecScaleY);
-
+                    RectangleF tileRect = new RectangleF()
+                    {
+                        X = x * tileSize.Width / (scale * Astrometrics.ParsecScaleX),
+                        Y = y * tileSize.Height / (scale * Astrometrics.ParsecScaleY),
+                        Width = tileSize.Width / (scale * Astrometrics.ParsecScaleX),
+                        Height = tileSize.Height / (scale * Astrometrics.ParsecScaleY)
+                    };
                     Selector selector = new RectSelector(
                         SectorMap.ForMilieu(resourceManager, GetStringOption("milieu")),
                         resourceManager,
@@ -61,9 +61,10 @@ namespace Maps.Admin
                     styles.pseudoRandomStars.visible = false;
                     styles.fillMicroBorders = true;
 
-                    RenderContext ctx = new RenderContext(resourceManager, selector, tileRect, scale, options, styles, tileSize);
-                    ctx.ClipOutsectorBorders = true;
-
+                    RenderContext ctx = new RenderContext(resourceManager, selector, tileRect, scale, options, styles, tileSize)
+                    {
+                        ClipOutsectorBorders = true
+                    };
                     ProduceResponse(Context, "Overview", ctx, tileSize, AbstractMatrix.Identity);
                 }
             }

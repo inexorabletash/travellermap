@@ -79,22 +79,25 @@ namespace Maps.Rendering
     {
         public XMatrix matrix;
 
-        public AbstractMatrix(float m11, float m12, float m21, float m22, float dx, float dy) { matrix = new XMatrix(m11, m12, m21, m22, dx, dy); }
+        public AbstractMatrix(float m11, float m12, float m21, float m22, float dx, float dy)
+        {
+            matrix = new XMatrix(m11, m12, m21, m22, dx, dy);
+        }
 
-        public float M11 { get { return (float)matrix.M11; } }
-        public float M12 { get { return (float)matrix.M12; } }
-        public float M21 { get { return (float)matrix.M21; } }
-        public float M22 { get { return (float)matrix.M22; } }
-        public float OffsetX { get { return (float)matrix.OffsetX; } }
-        public float OffsetY { get { return (float)matrix.OffsetY; } }
+        public float M11 => (float)matrix.M11;
+        public float M12 => (float)matrix.M12;
+        public float M21 => (float)matrix.M21;
+        public float M22 => (float)matrix.M22;
+        public float OffsetX => (float)matrix.OffsetX;
+        public float OffsetY => (float)matrix.OffsetY;
 
         public void Invert() { matrix.Invert(); }
         public void RotatePrepend(float angle) { matrix.RotatePrepend(angle); }
         public void ScalePrepend(float sx, float sy) { matrix.ScalePrepend(sx, sy); }
         public void TranslatePrepend(float dx, float dy) { matrix.TranslatePrepend(dx, dy); }
 
-        public XMatrix XMatrix { get { return matrix; } }
-        public Matrix Matrix { get { return matrix.ToGdiMatrix(); } }
+        public XMatrix XMatrix => matrix;
+        public Matrix Matrix => matrix.ToGdiMatrix();
 
         public static readonly AbstractMatrix Identity = new AbstractMatrix(1, 0, 0, 1, 0, 0);
     }
@@ -109,7 +112,8 @@ namespace Maps.Rendering
         private Image image;
         private XImage ximage;
 
-        public string Url { get { return url; } }
+        public string Url => url;
+
         public XImage XImage
         {
             get

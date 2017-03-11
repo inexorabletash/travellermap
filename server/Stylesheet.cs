@@ -91,7 +91,7 @@ namespace Maps.Rendering
             this.style = style;
         }
 
-        public Font makeFont()
+        public Font MakeFont()
         {
             if (family != null)
                 return new Font(family, size * 1.4f, style, GraphicsUnit.World);
@@ -796,13 +796,13 @@ namespace Maps.Rendering
             public PointF position;
 
             private Font font;
-            public Font Font { get { return font ?? (font = fontInfo.makeFont()); } }
+            public Font Font => font ?? (font = fontInfo.MakeFont());
             private Font smallFont;
-            public Font SmallFont { get { return smallFont ?? (smallFont = smallFontInfo.makeFont()); } }
+            public Font SmallFont => smallFont ?? (smallFont = smallFontInfo.MakeFont());
             private Font mediumFont;
-            public Font MediumFont { get { return mediumFont ?? (mediumFont = mediumFontInfo.makeFont()); } }
+            public Font MediumFont => mediumFont ?? (mediumFont = mediumFontInfo.MakeFont());
             private Font largeFont;
-            public Font LargeFont { get { return largeFont ?? (largeFont = largeFontInfo.makeFont()); } }
+            public Font LargeFont => largeFont ?? (largeFont = largeFontInfo.MakeFont());
         }
 
 
@@ -845,8 +845,7 @@ namespace Maps.Rendering
         public StyleElement importanceOverlay;
         public bool showStellarOverlay;
 
-        public bool HasWorldOverlays { get { return populationOverlay.visible || importanceOverlay.visible|| highlightWorlds.visible || showStellarOverlay; } }
-
+        public bool HasWorldOverlays => populationOverlay.visible || importanceOverlay.visible || highlightWorlds.visible || showStellarOverlay;
         public PointF StarportPosition;
         public PointF GasGiantPosition;
         public PointF AllegiancePosition;
@@ -1061,35 +1060,34 @@ namespace Maps.Rendering
             if (string.IsNullOrWhiteSpace(s)) return null;
 
             HighlightWorldPattern p = new HighlightWorldPattern();
-            int min, max;
 
             Match m;
             if ((m = basicRegex.Match(s)).Success)
             {
                 if (!ParseField(m.Groups[1].Value, ref p.field)) return null;
-                if (!Int32.TryParse(m.Groups[2].Value, out min)) return null;
+                if (!Int32.TryParse(m.Groups[2].Value, out int min)) return null;
                 p.min = p.max = min;
                 return p;
             }
             if ((m = minRegex.Match(s)).Success)
             {
                 if (!ParseField(m.Groups[1].Value, ref p.field)) return null;
-                if (!Int32.TryParse(m.Groups[2].Value, out min)) return null;
+                if (!Int32.TryParse(m.Groups[2].Value, out int min)) return null;
                 p.min = min;
                 return p;
             }
             if ((m = maxRegex.Match(s)).Success)
             {
                 if (!ParseField(m.Groups[1].Value, ref p.field)) return null;
-                if (!Int32.TryParse(m.Groups[2].Value, out max)) return null;
+                if (!Int32.TryParse(m.Groups[2].Value, out int max)) return null;
                 p.max = max;
                 return p;
             }
             if ((m = rangeRegex.Match(s)).Success)
             {
                 if (!ParseField(m.Groups[1].Value, ref p.field)) return null;
-                if (!Int32.TryParse(m.Groups[2].Value, out min)) return null;
-                if (!Int32.TryParse(m.Groups[3].Value, out max)) return null;
+                if (!Int32.TryParse(m.Groups[2].Value, out int min)) return null;
+                if (!Int32.TryParse(m.Groups[3].Value, out int max)) return null;
                 p.min = min;
                 p.max = max;
                 return p;
@@ -1108,14 +1106,11 @@ namespace Maps.Rendering
         private Stylesheet sheet;
 
         private Font wingdingFont;
-        public Font WingdingFont { get { return wingdingFont ?? (wingdingFont = sheet.wingdingFont.makeFont()); } }
-
+        public Font WingdingFont => wingdingFont ?? (wingdingFont = sheet.wingdingFont.MakeFont());
         private Font glyphFont;
-        public Font GlyphFont { get { return glyphFont ?? (glyphFont = sheet.glyphFont.makeFont()); } }
-
+        public Font GlyphFont => glyphFont ?? (glyphFont = sheet.glyphFont.MakeFont());
         private Font starportFont;
-        public Font StarportFont { get { return starportFont ?? (starportFont = sheet.starportFont.makeFont()); } }
-
+        public Font StarportFont => starportFont ?? (starportFont = sheet.starportFont.MakeFont());
         private bool disposed;
         public void Dispose() { Dispose(true); GC.SuppressFinalize(this); }
         private void Dispose(bool disposing)

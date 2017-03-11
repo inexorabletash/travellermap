@@ -194,11 +194,7 @@ namespace Maps.Rendering
             this.Bias = bias;
         }
 
-        public bool IsPrintable
-        {
-            get { return Characters.Length > 0; }
-        }
-
+        public bool IsPrintable => Characters.Length > 0;
         public static readonly Glyph None = new Glyph("");
         public static readonly Glyph Diamond = new Glyph("\x2666"); // U+2666 (BLACK DIAMOND SUIT)
         public static readonly Glyph DiamondX = new Glyph("\x2756"); // U+2756 (BLACK DIAMOND MINUS WHITE X)
@@ -307,8 +303,7 @@ namespace Maps.Rendering
 
         public BorderPath(Border border, Sector sector, PathUtil.PathType type)
         {
-            float[] edgeX, edgeY;
-            RenderUtil.HexEdges(type, out edgeX, out edgeY);
+            RenderUtil.HexEdges(type, out float[] edgeX, out float[] edgeY);
 
             int lengthEstimate = border.Path.Count() * 3;
 
@@ -472,15 +467,11 @@ namespace Maps.Rendering
         {
             const double JND = 2.3;
 
-            double ax, ay, az;
-            double bx, by, bz;
-            RGBtoXYZ(a.R, a.G, a.B, out ax, out ay, out az);
-            RGBtoXYZ(b.R, b.G, b.B, out bx, out by, out bz);
+            RGBtoXYZ(a.R, a.G, a.B, out double ax, out double ay, out double az);
+            RGBtoXYZ(b.R, b.G, b.B, out double bx, out double by, out double bz);
 
-            double al, aa, ab;
-            double bl, ba, bb;
-            XYZtoLab(ax, ay, az, out al, out aa, out ab);
-            XYZtoLab(bx, by, bz, out bl, out ba, out bb);
+            XYZtoLab(ax, ay, az, out double al, out double aa, out double ab);
+            XYZtoLab(bx, by, bz, out double bl, out double ba, out double bb);
 
             return DeltaE76(al, aa, ab, bl, ba, bb) > JND;
         }
@@ -646,7 +637,7 @@ namespace Maps.Rendering
                 { "M", Color.FromArgb(0xff, 0x00, 0x00) },
             };
 
-        public static StarProps star2props(string star)
+        public static StarProps StarToProps(string star)
         {
             Match m = STAR_REGEX.Match(star);
             if (m.Success)
@@ -671,8 +662,10 @@ namespace Maps.Rendering
             }
         }
 
+#pragma warning disable IDE1006 // Naming Styles
         private static float sinf(double r) { return (float)Math.Sin(r); }
         private static float cosf(double r) { return (float)Math.Cos(r); }
+#pragma warning restore IDE1006 // Naming Styles
         private static float[] dx = new float[] {
                     0.0f,
                     cosf(Math.PI * 1 / 3),cosf(Math.PI * 2 / 3),cosf(Math.PI * 3 / 3),

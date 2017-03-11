@@ -79,10 +79,9 @@ namespace Maps.Admin
                     startSector.Offset(route.StartOffset);
                     endSector.Offset(route.EndOffset);
 
-                    Location startLocation = new Location(startSector, route.Start);
-                    Location endLocation = new Location(endSector, route.End);
-                    int distance = Astrometrics.HexDistance(Astrometrics.LocationToCoordinates(startLocation),
-                        Astrometrics.LocationToCoordinates(endLocation));
+                    int distance = Astrometrics.HexDistance(
+                        Astrometrics.LocationToCoordinates(new Location(startSector, route.Start)),
+                        Astrometrics.LocationToCoordinates(new Location(endSector, route.End)));
                     if (distance == 0)
                     {
                         context.Response.Output.WriteLine($"Error: Route length {distance}: {route.ToString()}");

@@ -6,8 +6,7 @@ namespace Maps.API
 {
     internal class CreditsHandler : DataHandlerBase
     {
-        protected override string ServiceName { get { return "credits"; } }
-
+        protected override string ServiceName => "credits";
         protected override DataResponder GetResponder(HttpContext context)
         {
             return new Responder(context);
@@ -16,7 +15,8 @@ namespace Maps.API
         private class Responder : DataResponder
         {
             public Responder(HttpContext context) : base(context) { }
-            public override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Xml; } }
+            public override string DefaultContentType => System.Net.Mime.MediaTypeNames.Text.Xml;
+
             public override void Process()
             {
                 ResourceManager resourceManager = new ResourceManager(Context.Server);
@@ -30,8 +30,7 @@ namespace Maps.API
                 if (HasOption("sector"))
                 {
                     string sectorName = GetStringOption("sector");
-                    Sector sec = map.FromName(sectorName);
-                    if (sec == null)
+                    Sector sec = map.FromName(sectorName) ??
                         throw new HttpError(404, "Not Found", $"The specified sector '{sectorName}' was not found.");
 
                     int hex = GetIntOption("hex", Astrometrics.SectorCentralHex);

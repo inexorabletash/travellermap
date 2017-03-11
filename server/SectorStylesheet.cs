@@ -93,15 +93,16 @@ namespace Maps
             {
                 Selector selector = ParseSelector();
                 if (selector == null) return null;
-                List<Selector> selectors = new List<Selector>();
-                selectors.Add(selector);
+                List<Selector> selectors = new List<Selector>
+                {
+                    selector
+                };
                 WS();
                 while (reader.Peek() == ',')
                 {
                     Expect(',');
                     WS();
-                    selector = ParseSelector();
-                    if (selector == null) throw new ParseException("Expected selector, saw: " + reader.ReadLine());
+                    selector = ParseSelector() ?? throw new ParseException("Expected selector, saw: " + reader.ReadLine());
                     selectors.Add(selector);
                 }
                 WS();
@@ -115,8 +116,7 @@ namespace Maps
                 if (reader.Peek() == '.')
                 {
                     Expect('.');
-                    code = IDENT();
-                    if (code == null) throw new ParseException("Expected code, saw: " + reader.ReadLine());
+                    code = IDENT() ?? throw new ParseException("Expected code, saw: " + reader.ReadLine());
                 }
                 return new Selector(element, code);
             }
@@ -147,8 +147,7 @@ namespace Maps
                 WS();
                 Expect(':');
                 WS();
-                string value = ParseValue();
-                if (value == null) throw new ParseException("Expected value, saw: " + reader.ReadLine());
+                string value = ParseValue() ?? throw new ParseException("Expected value, saw: " + reader.ReadLine());
                 WS();
                 return new Declaration(property, value);
             }
@@ -344,25 +343,21 @@ namespace Maps
 
             public string GetString(string property)
             {
-                string value;
-                return GetValue(property, out value) ? value : null;
+                return GetValue(property, out string value) ? value : null;
             }
 
             public Color? GetColor(string property)
             {
-                string value;
-                if (!GetValue(property, out value))
+                if (!GetValue(property, out string value))
                     return null;
                 return ColorTranslator.FromHtml(value);
             }
 
             public double? GetNumber(string property)
             {
-                string value;
-                if (!GetValue(property, out value))
+                if (!GetValue(property, out string value))
                     return null;
-                double result;
-                if (double.TryParse(value, out result))
+                if (double.TryParse(value, out double result))
                     return result;
                 return null;
             }
@@ -372,13 +367,11 @@ namespace Maps
                 if (!typeof(T).IsEnum)
                     throw new ParseException("Type must be an enum");
 
-                string value;
-                if (!dict.TryGetValue(property, out value) || string.IsNullOrEmpty(value))
+                if (!dict.TryGetValue(property, out string value) || string.IsNullOrEmpty(value))
                     return null;
 
                 bool ignoreCase = true;
-                T result;
-                if (Enum.TryParse(value, ignoreCase, out result))
+                if (Enum.TryParse(value, ignoreCase, out T result))
                     return result;
 
                 return null;
@@ -403,8 +396,7 @@ namespace Maps
         public StyleResult Apply(string element, string code)
         {
             var key = Tuple.Create(element, code);
-            StyleResult result;
-            if (memo.TryGetValue(key, out result))
+            if (memo.TryGetValue(key, out StyleResult result))
                 return result;
 
             var dict = new Dictionary<string, Tuple<int, string>>(StringComparer.InvariantCultureIgnoreCase);
@@ -420,8 +412,7 @@ namespace Maps
 
                         foreach (var declaration in rule.declarations)
                         {
-                            Tuple<int, string> current;
-                            if (!dict.TryGetValue(declaration.property, out current) || match >= current.Item1)
+                            if (!dict.TryGetValue(declaration.property, out Tuple<int, string> current) || match >= current.Item1)
                                 dict[declaration.property] = new Tuple<int, string>(match, declaration.value);
                         }
                     }

@@ -52,8 +52,7 @@ namespace Maps.Rendering
         private AbstractBrush solidBrush;
         private AbstractPen pen;
 
-        public Stylesheet Styles { get { return styles; } }
-
+        public Stylesheet Styles => styles;
         private readonly AbstractMatrix worldSpaceToImageSpace;
         public AbstractMatrix ImageSpaceToWorldSpace { get; private set; }
 
@@ -471,8 +470,7 @@ namespace Maps.Rendering
                     //------------------------------------------------------------
                     if (styles.capitals.visible && (options & MapOptions.WorldsMask) != 0)
                     {
-                        WorldObjectCollection worlds = resourceManager.GetXmlFileObject(@"~/res/Worlds.xml", typeof(WorldObjectCollection)) as WorldObjectCollection;
-                        if (worlds != null && worlds.Worlds != null)
+                        if (resourceManager.GetXmlFileObject(@"~/res/Worlds.xml", typeof(WorldObjectCollection)) is WorldObjectCollection worlds && worlds.Worlds != null)
                         {
                             solidBrush.Color = styles.capitals.textColor;
                             foreach (WorldObject world in worlds.Worlds.Where(world => (world.MapOptions & options) != 0))
@@ -716,8 +714,10 @@ namespace Maps.Rendering
                 .Where(vec => (vec.MapOptions & options & MapOptions.NamesMask) != 0))
             {
                 bool major = vec.MapOptions.HasFlag(MapOptions.NamesMajor);
-                LabelStyle labelStyle = new LabelStyle();
-                labelStyle.Uppercase = major;
+                LabelStyle labelStyle = new LabelStyle()
+                {
+                    Uppercase = major
+                };
                 Font font = major ? styles.macroNames.Font : styles.macroNames.SmallFont;
                 solidBrush.Color = major ? styles.macroNames.textColor : styles.macroNames.textHighlightColor;
                 vec.DrawName(graphics, tileRect, font, solidBrush, labelStyle);
@@ -729,9 +729,11 @@ namespace Maps.Rendering
                 .Where(vec => (vec.MapOptions & options & MapOptions.NamesMask) != 0))
             {
                 bool major = vec.MapOptions.HasFlag(MapOptions.NamesMajor);
-                LabelStyle labelStyle = new LabelStyle();
-                labelStyle.Rotation = 35;
-                labelStyle.Uppercase = major;
+                LabelStyle labelStyle = new LabelStyle()
+                {
+                    Rotation = 35,
+                    Uppercase = major
+                };
                 Font font = major ? styles.macroNames.Font : styles.macroNames.SmallFont;
                 solidBrush.Color = major ? styles.macroNames.textColor : styles.macroNames.textHighlightColor;
                 vec.DrawName(graphics, tileRect, font, solidBrush, labelStyle);
@@ -745,8 +747,10 @@ namespace Maps.Rendering
                     .Where(vec => (vec.MapOptions & options & MapOptions.NamesMask) != 0))
                 {
                     bool major = vec.MapOptions.HasFlag(MapOptions.NamesMajor);
-                    LabelStyle labelStyle = new LabelStyle();
-                    labelStyle.Uppercase = major;
+                    LabelStyle labelStyle = new LabelStyle()
+                    {
+                        Uppercase = major
+                    };
                     Font font = major ? styles.macroNames.Font : styles.macroNames.SmallFont;
                     solidBrush.Color = major ? styles.macroRoutes.textColor : styles.macroRoutes.textHighlightColor;
                     vec.DrawName(graphics, tileRect, font, solidBrush, labelStyle);
@@ -1231,8 +1235,7 @@ namespace Maps.Rendering
                                 }
                                 else
                                 {
-                                    Color penColor, brushColor;
-                                    styles.WorldColors(world, out penColor, out brushColor);
+                                    styles.WorldColors(world, out Color penColor, out Color brushColor);
 
                                     if (!brushColor.IsEmpty && !penColor.IsEmpty)
                                     {
@@ -1425,7 +1428,7 @@ namespace Maps.Rendering
                 }
 
                 int i = 0;
-                foreach (var props in ss.Select(s => StellarRendering.star2props(s)).OrderByDescending(p => p.radius)) {
+                foreach (var props in ss.Select(s => StellarRendering.StarToProps(s)).OrderByDescending(p => p.radius)) {
                     solidBrush.Color = props.color;
                     pen.Color = props.borderColor;
                     pen.DashStyle = DashStyle.Solid;
@@ -1604,8 +1607,7 @@ namespace Maps.Rendering
                     Sector sector = tuple.Item1;
                     Route route = tuple.Item2;
                     // Compute source/target sectors (may be offset)
-                    Location startLocation, endLocation;
-                    sector.RouteToStartEnd(route, out startLocation, out endLocation);
+                    sector.RouteToStartEnd(route, out Location startLocation, out Location endLocation);
                     if (startLocation == endLocation)
                         continue;
 
@@ -1702,10 +1704,9 @@ namespace Maps.Rendering
         {
             const byte FILL_ALPHA = 64;
 
-            float[] edgex, edgey;
             PathUtil.PathType borderPathType = styles.microBorderStyle == MicroBorderStyle.Square ?
                 PathUtil.PathType.Square : PathUtil.PathType.Hex;
-            RenderUtil.HexEdges(borderPathType, out edgex, out edgey);
+            RenderUtil.HexEdges(borderPathType, out float[] edgex, out float[] edgey);
 
             AbstractBrush solidBrush = new AbstractBrush();
             AbstractPen pen = new AbstractPen(Color.Empty);

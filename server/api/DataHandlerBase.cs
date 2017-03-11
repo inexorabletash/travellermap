@@ -27,8 +27,7 @@ namespace Maps.API
     {
         protected abstract string ServiceName { get; }
 
-        public bool IsReusable { get { return true; } }
-
+        public bool IsReusable => true;
         public void ProcessRequest(HttpContext context)
         {
             if (context == null)
@@ -141,8 +140,7 @@ namespace Maps.API
             public void SendXml(object o)
             {
                 Context.Response.ContentType = MediaTypeNames.Text.Xml;
-                XmlSerializer xs = new XmlSerializer(o.GetType());
-                xs.Serialize(Context.Response.OutputStream, o);
+                new XmlSerializer(o.GetType()).Serialize(Context.Response.OutputStream, o);
             }
 
             public void SendText(object o, Encoding encoding = null)
@@ -171,11 +169,9 @@ namespace Maps.API
             {
                 Context.Response.ContentType = JsonConstants.MediaType;
 
-                JsonSerializer js = new JsonSerializer();
-
                 // TODO: Subclass this from a DataResponsePage
                 SendPreamble(JsonConstants.MediaType);
-                js.Serialize(Context.Response.OutputStream, o);
+                new JsonSerializer().Serialize(Context.Response.OutputStream, o);
                 SendPostamble(JsonConstants.MediaType);
             }
 
@@ -241,8 +237,7 @@ namespace Maps.API
             }
             public int GetIntOption(string name, IDictionary<string, object> queryDefaults, int defaultValue)
             {
-                double temp;
-                if (double.TryParse(GetStringOption(name, queryDefaults), NumberStyles.Float, CultureInfo.InvariantCulture, out temp))
+                if (double.TryParse(GetStringOption(name, queryDefaults), NumberStyles.Float, CultureInfo.InvariantCulture, out double temp))
                     return (int)Math.Round(temp);
                 return defaultValue;
             }
@@ -253,8 +248,7 @@ namespace Maps.API
             }
             public double GetDoubleOption(string name, IDictionary<string, object> queryDefaults, double defaultValue)
             {
-                double temp;
-                if (double.TryParse(GetStringOption(name, queryDefaults), NumberStyles.Float, CultureInfo.InvariantCulture, out temp))
+                if (double.TryParse(GetStringOption(name, queryDefaults), NumberStyles.Float, CultureInfo.InvariantCulture, out double temp))
                     return temp;
                 return defaultValue;
             }
@@ -266,8 +260,7 @@ namespace Maps.API
 
             public bool GetBoolOption(string name, IDictionary<string, object> queryDefaults, bool defaultValue)
             {
-                int temp;
-                if (int.TryParse(GetStringOption(name, queryDefaults), NumberStyles.Integer, CultureInfo.InvariantCulture, out temp))
+                if (int.TryParse(GetStringOption(name, queryDefaults), NumberStyles.Integer, CultureInfo.InvariantCulture, out int temp))
                     return temp != 0;
                 return defaultValue;
             }

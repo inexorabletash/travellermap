@@ -25,13 +25,12 @@ namespace Maps
 
         // For XML Deserialization:
         [XmlAttribute("Sector")]
-        public string SectorName { get { return null; } set { Sector = SectorMap.GetSectorCoordinatesByName(value); } }
+        public string SectorName { get => null; set => Sector = SectorMap.GetSectorCoordinatesByName(value); }
         [XmlAttribute("Hex")]
-        public string HexName { get { return null; } set { Hex = new Hex(value); } }
+        public string HexName { get => null; set => Hex = new Hex(value); }
 
-        public bool IsEmpty { get { return Sector.IsEmpty && Hex.IsEmpty; } }
-        public bool IsValid { get { return Hex.IsValid; } }
-
+        public bool IsEmpty => Sector.IsEmpty && Hex.IsEmpty;
+        public bool IsValid => Hex.IsValid;
         public bool Equals(Location other)
         {
             return other.Sector == Sector && other.Hex == Hex;
@@ -60,16 +59,8 @@ namespace Maps
             return Sector.GetHashCode() ^ Hex.GetHashCode();
         }
 
-        public string HexString
-        {
-            get { return Hex.ToString(); }
-        }
-
-        public string SubsectorHexString
-        {
-            get { return Hex.ToSubsectorString(); }
-        }
-
+        public string HexString => Hex.ToString();
+        public string SubsectorHexString => Hex.ToSubsectorString();
         public static readonly Location Empty = new Location();
     }
 

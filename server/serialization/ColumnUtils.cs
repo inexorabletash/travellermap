@@ -70,8 +70,7 @@ namespace Maps.Serialization
         private List<Column> columns = new List<Column>();
         public List<Row> Data { get; } = new List<Row>();
 
-        public IEnumerable<string> Fields { get { return (from col in columns select col.name); } }
-
+        public IEnumerable<string> Fields => (from col in columns select col.name);
         private void ComputeFields(string header, string separator)
         {
             string[] chunks = Regex.Split(separator, @"( +)");

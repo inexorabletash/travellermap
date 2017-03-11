@@ -42,8 +42,7 @@ namespace Maps
         /// will contain duplicate sectors across milieux.
         /// </summary>
         private SectorCollection sectors = new SectorCollection();
-        public IList<Sector> Sectors { get { return sectors.Sectors; } }
-
+        public IList<Sector> Sectors => sectors.Sectors;
         /// <summary>
         /// Represents a single milieu. Contains maps from name to Sector and coordinates to Sector.
         /// </summary>
@@ -56,15 +55,13 @@ namespace Maps
 
             public Sector FromName(string name)
             {
-                Sector sector;
-                nameMap.TryGetValue(name, out sector);
+                nameMap.TryGetValue(name, out Sector sector);
                 return sector;
             }
 
             public Sector FromLocation(Point coords)
             {
-                Sector sector;
-                locationMap.TryGetValue(coords, out sector);
+                locationMap.TryGetValue(coords, out Sector sector);
                 return sector;
             }
 

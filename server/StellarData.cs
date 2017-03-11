@@ -75,15 +75,13 @@ namespace Maps
             public static bool Parse(SeekableReader r, out Unit unit)
             {
 #if EXTENDED_SYSTEM_PARSING
-                Pair p;
-                if( Pair.Parse( r, out p ) )
+                if( Pair.Parse( r, out Pair p ) )
                 {
                     unit = p;
                     return true;
                 }
 #endif
-                Star s;
-                if (Star.Parse(r, out s))
+                if (Star.Parse(r, out Star s))
                 {
                     unit = s;
                     return true;
@@ -149,15 +147,13 @@ namespace Maps
         {
             public static bool Parse(SeekableReader r, out Companion companion)
             {
-                NearCompanion nc;
-                if (NearCompanion.Parse(r, out nc))
+                if (NearCompanion.Parse(r, out NearCompanion nc))
                 {
                     companion = nc;
                     return true;
                 }
 #if EXTENDED_SYSTEM_PARSING
-                FarCompanion fc;
-                if( FarCompanion.Parse( r, out fc ) )
+                if( FarCompanion.Parse( r, out FarCompanion fc ) )
                 {
                     companion = fc;
                     return true;
@@ -179,11 +175,12 @@ namespace Maps
             }
             public static bool Parse(SeekableReader r, out NearCompanion near)
             {
-                Unit u;
-                if (Unit.Parse(r, out u))
+                if (Unit.Parse(r, out Unit u))
                 {
-                    near = new NearCompanion();
-                    near.Companion = u;
+                    near = new NearCompanion()
+                    {
+                        Companion = u
+                    };
                     return true;
                 }
 
@@ -245,21 +242,19 @@ namespace Maps
 
             public static bool Parse(SeekableReader r, out System system)
             {
-
-                Unit u;
-                if (!Unit.Parse(r, out u))
+                if (!Unit.Parse(r, out Unit u))
                     throw new InvalidSystemException("No core star");
 
-                system = new System();
-                system.Core = u;
-
+                system = new System()
+                {
+                    Core = u
+                };
                 while (r.Peek() == ' ')
                 {
                     while (r.Peek() == ' ') // w+
                         r.Read();
 
-                    Companion companion;
-                    if (!Companion.Parse(r, out companion))
+                    if (!Companion.Parse(r, out Companion companion))
                         throw new InvalidSystemException("Expected companion");
                     system.Companions.Add(companion);
                 }
@@ -304,8 +299,10 @@ namespace Maps
                 if (m != null)
                 {
                     // Brown Dwarf, Black Hole, Unknown
-                    star = new Star();
-                    star.Type = m;
+                    star = new Star()
+                    {
+                        Type = m
+                    };
                     return true;
                 }
 
@@ -313,9 +310,10 @@ namespace Maps
                 if (m != null)
                 {
                     // Regular
-                    star = new Star();
-                    star.Type = m;
-
+                    star = new Star()
+                    {
+                        Type = m
+                    };
                     if (r.Peek() == ' ')
                     {
                         while (r.Peek() == ' ') // w*
@@ -332,16 +330,14 @@ namespace Maps
                     }
                     else
                     {
-                        m = Match(r, STAR_TENTHS);
-                        if (m == null)
+                        m = Match(r, STAR_TENTHS) ??
                             throw new InvalidSystemException("Invalid stellar type");
                         star.Tenths = (int)m[0] - (int)'0';
 
                         while (r.Peek() == ' ') // w*
                             r.Read();
 
-                        m = Match(r, STAR_SIZES);
-                        if (m == null)
+                        m = Match(r, STAR_SIZES) ??
                             throw new InvalidSystemException("Invalid stellar size");
                         star.Size = m;
                     }
@@ -360,8 +356,10 @@ namespace Maps
                 if (m != null)
                 {
                     // Dwarf
-                    star = new Star();
-                    star.Type = m;
+                    star = new Star()
+                    {
+                        Type = m
+                    };
                     return true;
                 }
 
@@ -411,8 +409,7 @@ namespace Maps
         public static string Parse(string rest, OutputFormat format)
         {
             SeekableReader reader = new SeekableStringReader(rest);
-            System system;
-            bool success = System.Parse(reader, out system);
+            bool success = System.Parse(reader, out System system);
 
             if (!success)
                 throw new InvalidSystemException("Could not parse as a system");

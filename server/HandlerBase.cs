@@ -18,8 +18,7 @@ namespace Maps
 
         public static RouteValueDictionary Defaults(HttpContext context)
         {
-            RouteData data = context.Items["RouteData"] as RouteData;
-            if (data == null)
+            RouteData data = context.Items["RouteData"] as RouteData ??
                 throw new System.ApplicationException("RouteData not assigned by RouteHandler");
             return data.Values;
         }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Data.SqlClient;
-using System.Globalization;
 using System.IO;
 using System.Text;
 using System.Web;
@@ -24,8 +23,7 @@ namespace Maps.Admin
             return false;
         }
 
-        public bool IsReusable { get { return true; } }
-
+        public bool IsReusable => true;
         public void ProcessRequest(HttpContext context)
         {
             if (context == null)
@@ -138,7 +136,6 @@ namespace Maps.Admin
             Write(context.Response, "<b>&Omega;</b>");
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Security", "CA2100:Review SQL queries for security vulnerabilities")]
         private static void Reindex(HttpContext context)
         {
 

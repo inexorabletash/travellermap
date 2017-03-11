@@ -7,8 +7,7 @@ namespace Maps.API
 {
     internal class TileHandler : ImageHandlerBase
     {
-        protected override string ServiceName { get { return "tile"; } }
-
+        protected override string ServiceName => "tile";
         public const int MinDimension = 1;
         public const int MaxDimension = 2048;
 
@@ -50,21 +49,24 @@ namespace Maps.API
 
                 Size tileSize = new Size(width, height);
 
-                RectangleF tileRect = new RectangleF();
-                tileRect.X = (float)(x * tileSize.Width / (scale * Astrometrics.ParsecScaleX));
-                tileRect.Y = (float)(y * tileSize.Height / (scale * Astrometrics.ParsecScaleY));
-                tileRect.Width = (float)(tileSize.Width / (scale * Astrometrics.ParsecScaleX));
-                tileRect.Height = (float)(tileSize.Height / (scale * Astrometrics.ParsecScaleY));
-
+                RectangleF tileRect = new RectangleF()
+                {
+                    X = (float)(x * tileSize.Width / (scale * Astrometrics.ParsecScaleX)),
+                    Y = (float)(y * tileSize.Height / (scale * Astrometrics.ParsecScaleY)),
+                    Width = (float)(tileSize.Width / (scale * Astrometrics.ParsecScaleX)),
+                    Height = (float)(tileSize.Height / (scale * Astrometrics.ParsecScaleY))
+                };
                 DateTime dt = DateTime.Now;
                 bool silly = (Math.Abs((int)x % 2) == Math.Abs((int)y % 2)) && (dt.Month == 4 && dt.Day == 1);
                 silly = GetBoolOption("silly", silly);
 
                 Selector selector = new RectSelector(SectorMap.ForMilieu(resourceManager, GetStringOption("milieu")), resourceManager, tileRect);
                 Stylesheet styles = new Stylesheet(scale, options, style);
-                RenderContext ctx = new RenderContext(resourceManager, selector, tileRect, scale, options, styles, tileSize);
-                ctx.Silly = silly;
-                ctx.ClipOutsectorBorders = true;
+                RenderContext ctx = new RenderContext(resourceManager, selector, tileRect, scale, options, styles, tileSize)
+                {
+                    Silly = silly,
+                    ClipOutsectorBorders = true
+                };
                 ProduceResponse(Context, "Tile", ctx, tileSize, AbstractMatrix.Identity);
             }
         }

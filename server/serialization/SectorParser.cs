@@ -76,8 +76,8 @@ namespace Maps.Serialization
 
     internal class SecParser : SectorFileParser
     {
-        public override string Name { get { return "SEC (Legacy)"; } }
-        public override Encoding Encoding { get { return Encoding.UTF8; } }
+        public override string Name => "SEC (Legacy)";
+        public override Encoding Encoding => Encoding.UTF8;
 
         public override void Parse(TextReader reader, WorldCollection worlds, ErrorLogger errors)
         {
@@ -140,18 +140,20 @@ namespace Maps.Serialization
 
             try
             {
-                World world = new World();
-                // Allegiance may affect interpretation of other values, e.g. bases, zones
-                world.Allegiance = match.Groups["allegiance"].Value.Trim();
+                World world = new World()
+                {
+                    // Allegiance may affect interpretation of other values, e.g. bases, zones
+                    Allegiance = match.Groups["allegiance"].Value.Trim(),
 
-                // Crack the RegExpr data
-                world.Name = nameFixupRegex.Replace(match.Groups["name"].Value.Trim(), "");
-                world.Hex = match.Groups["hex"].Value.Trim();
-                world.UWP = match.Groups["uwp"].Value.Trim();
-                world.LegacyBaseCode = EmptyIfDash(match.Groups["base"].Value.Trim());
-                world.Remarks = match.Groups["codes"].Value.Trim();
-                world.Zone = EmptyIfDash(match.Groups["zone"].Value);
-                world.PBG = match.Groups["pbg"].Value.Trim();
+                    // Crack the RegExpr data
+                    Name = nameFixupRegex.Replace(match.Groups["name"].Value.Trim(), ""),
+                    Hex = match.Groups["hex"].Value.Trim(),
+                    UWP = match.Groups["uwp"].Value.Trim(),
+                    LegacyBaseCode = EmptyIfDash(match.Groups["base"].Value.Trim()),
+                    Remarks = match.Groups["codes"].Value.Trim(),
+                    Zone = EmptyIfDash(match.Groups["zone"].Value),
+                    PBG = match.Groups["pbg"].Value.Trim()
+                };
 
                 // Cleanup known placeholders
                 if (world.Name == match.Groups["hex"].Value || placeholderNameRegex.IsMatch(world.Name))
@@ -223,7 +225,8 @@ namespace Maps.Serialization
             private string line;
             bool hadError = false;
 
-            public bool HadError { get { return hadError; } }
+            public bool HadError => hadError;
+
             public FieldChecker(Dictionary<string, string> dict, ErrorLogger errors, int lineNumber, string line)
             {
                 this.dict = dict;
@@ -311,28 +314,27 @@ namespace Maps.Serialization
             try
             {
                 FieldChecker checker = new FieldChecker(dict, errors, lineNumber, line);
-                World world = new World();
-                world.Hex = checker.Check("Hex", HEX_REGEX);
-                world.Name = checker.Check("Name");
-                world.UWP = checker.Check("UWP", UWP_REGEX);
-                world.Remarks = checker.Check(new string[] { "Remarks", "Trade Codes", "Comments" });
-                world.Importance = checker.Check(new string[] { "{Ix}", "{ Ix }", "Ix" }, options: CheckOptions.Optional);
-                world.Economic = checker.Check(new string[] { "(Ex)", "( Ex )", "Ex" }, options: CheckOptions.Optional);
-                world.Cultural = checker.Check(new string[] { "[Cx]", "[ Cx ]", "Cx" }, options: CheckOptions.Optional);
-                world.Nobility = checker.Check(new string[] { "N", "Nobility" }, NOBILITY_REGEX, CheckOptions.EmptyIfDash | CheckOptions.Optional);
-                world.Bases = checker.Check(new string[] { "B", "Bases" }, BASES_REGEX, CheckOptions.EmptyIfDash);
-                world.Zone = checker.Check(new string[] { "Z", "Zone" }, ZONE_REGEX, CheckOptions.EmptyIfDash);
-                world.PBG = checker.Check("PBG", PBG_REGEX);
-                world.Allegiance = checker.Check(new string[] { "A", "Al", "Allegiance" },
-                    a => worlds.IsUserData || a.Length != 4 || SecondSurvey.IsKnownT5Allegiance(a));
-                world.Stellar = checker.Check(new string[] { "Stellar", "Stars", "Stellar Data" }, STARS_REGEX, CheckOptions.Warning);
-
-                byte w;
-                if (byte.TryParse(checker.Check(new string[] { "W", "Worlds" }, options: CheckOptions.Optional), NumberStyles.Integer, CultureInfo.InvariantCulture, out w))
+                World world = new World()
+                {
+                    Hex = checker.Check("Hex", HEX_REGEX),
+                    Name = checker.Check("Name"),
+                    UWP = checker.Check("UWP", UWP_REGEX),
+                    Remarks = checker.Check(new string[] { "Remarks", "Trade Codes", "Comments" }),
+                    Importance = checker.Check(new string[] { "{Ix}", "{ Ix }", "Ix" }, options: CheckOptions.Optional),
+                    Economic = checker.Check(new string[] { "(Ex)", "( Ex )", "Ex" }, options: CheckOptions.Optional),
+                    Cultural = checker.Check(new string[] { "[Cx]", "[ Cx ]", "Cx" }, options: CheckOptions.Optional),
+                    Nobility = checker.Check(new string[] { "N", "Nobility" }, NOBILITY_REGEX, CheckOptions.EmptyIfDash | CheckOptions.Optional),
+                    Bases = checker.Check(new string[] { "B", "Bases" }, BASES_REGEX, CheckOptions.EmptyIfDash),
+                    Zone = checker.Check(new string[] { "Z", "Zone" }, ZONE_REGEX, CheckOptions.EmptyIfDash),
+                    PBG = checker.Check("PBG", PBG_REGEX),
+                    Allegiance = checker.Check(new string[] { "A", "Al", "Allegiance" },
+                        a => worlds.IsUserData || a.Length != 4 || SecondSurvey.IsKnownT5Allegiance(a)),
+                    Stellar = checker.Check(new string[] { "Stellar", "Stars", "Stellar Data" }, STARS_REGEX, CheckOptions.Warning)
+                };
+                if (byte.TryParse(checker.Check(new string[] { "W", "Worlds" }, options: CheckOptions.Optional), NumberStyles.Integer, CultureInfo.InvariantCulture, out byte w))
                     world.Worlds = w;
 
-                int ru;
-                if (int.TryParse(checker.Check("RU", options: CheckOptions.Optional), NumberStyles.Integer | NumberStyles.AllowThousands, CultureInfo.InvariantCulture, out ru))
+                if (int.TryParse(checker.Check("RU", options: CheckOptions.Optional), NumberStyles.Integer | NumberStyles.AllowThousands, CultureInfo.InvariantCulture, out int ru))
                     world.ResourceUnits = ru;
 
                 // Cleanup known placeholders
@@ -360,22 +362,19 @@ namespace Maps.Serialization
 
     internal class SecondSurveyParser : T5ParserBase
     {
-        public override string Name { get { return "T5 Second Survey - Column Delimited"; } }
-        public override Encoding Encoding { get { return Encoding.UTF8; } }
-
+        public override string Name => "T5 Second Survey - Column Delimited";
+        public override Encoding Encoding => Encoding.UTF8;
         public override void Parse(TextReader reader, WorldCollection worlds, ErrorLogger errors)
         {
-            ColumnParser parser = new ColumnParser(reader);
-            foreach (var row in parser.Data)
+            foreach (var row in new ColumnParser(reader).Data)
                 ParseWorld(worlds, row.dict, row.line, row.lineNumber, errors);
         }
     }
 
     internal class TabDelimitedParser : T5ParserBase
     {
-        public override string Name { get { return "T5 Second Survey - Tab Delimited"; } }
-        public override Encoding Encoding { get { return Encoding.UTF8; } }
-
+        public override string Name => "T5 Second Survey - Tab Delimited";
+        public override Encoding Encoding => Encoding.UTF8;
         public override void Parse(TextReader reader, WorldCollection worlds, ErrorLogger errors)
         {
             TSVParser parser = new TSVParser(reader);
@@ -436,6 +435,6 @@ namespace Maps.Serialization
 
         private string[] header;
         private List<Row> data = new List<Row>();
-        public List<Row> Data { get { return data; } }
+        public List<Row> Data => data;
     }
 }

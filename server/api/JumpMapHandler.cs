@@ -8,8 +8,7 @@ namespace Maps.API
 {
     internal class JumpMapHandler : ImageHandlerBase
     {
-        protected override string ServiceName { get { return "jumpmap"; } }
-
+        protected override string ServiceName => "jumpmap";
         protected override DataResponder GetResponder(HttpContext context)
         {
             return new Responder(context);
@@ -53,12 +52,10 @@ namespace Maps.API
                     }
 
                     ErrorLogger errors = new ErrorLogger(filter);
-                    sector = GetPostedSector(Context.Request, errors);
+                    sector = GetPostedSector(Context.Request, errors) ??
+                        throw new HttpError(400, "Bad Request", "Either file or data must be supplied in the POST data.");
                     if (lint && !errors.Empty)
                         throw new HttpError(400, "Bad Request", errors.ToString());
-
-                    if (sector == null)
-                        throw new HttpError(400, "Bad Request", "Either file or data must be supplied in the POST data.");
 
                     int hex = GetIntOption("hex", Astrometrics.SectorCentralHex);
                     loc = new Location(new Point(0, 0), hex);
@@ -72,8 +69,7 @@ namespace Maps.API
                     {
                         string sectorName = GetStringOption("sector");
                         int hex = GetIntOption("hex", 0);
-                        Sector sector = map.FromName(sectorName);
-                        if (sector == null)
+                        Sector sector = map.FromName(sectorName) ??
                             throw new HttpError(404, "Not Found", $"The specified sector '{sectorName}' was not found.");
 
                         loc = new Location(sector.Location, hex);
@@ -159,23 +155,22 @@ namespace Maps.API
                     styles.worldDetails |= WorldDetails.AllNames;
 
                 // Compute path
-                float[] edgeX, edgeY;
                 RenderUtil.HexEdges(styles.hexStyle == HexStyle.Square ? PathUtil.PathType.Square : PathUtil.PathType.Hex,
-                    out edgeX, out edgeY);
-                PointF[] boundingPathCoords;
-                byte[] boundingPathTypes;
-                PathUtil.ComputeBorderPath(clipPath, edgeX, edgeY, out boundingPathCoords, out boundingPathTypes);
+                    out float[] edgeX, out float[] edgeY);
+                PathUtil.ComputeBorderPath(clipPath, edgeX, edgeY, out PointF[] boundingPathCoords, out byte[] boundingPathTypes);
 
                 AbstractMatrix transform = AbstractMatrix.Identity;
                 if (hrot != 0)
                     ApplyHexRotation(hrot, styles, ref tileSize, ref transform);
 
-                RenderContext ctx = new RenderContext(resourceManager, selector, tileRect, scale, options, styles, tileSize);
-                ctx.DrawBorder = border;
-                ctx.ClipOutsectorBorders = true;
+                RenderContext ctx = new RenderContext(resourceManager, selector, tileRect, scale, options, styles, tileSize)
+                {
+                    DrawBorder = border,
+                    ClipOutsectorBorders = true,
 
-                // TODO: Widen path to allow for single-pixel border
-                ctx.ClipPath = clip ? new AbstractPath(boundingPathCoords, boundingPathTypes) : null;
+                    // TODO: Widen path to allow for single-pixel border
+                    ClipPath = clip ? new AbstractPath(boundingPathCoords, boundingPathTypes) : null
+                };
                 ProduceResponse(Context, "Jump Map", ctx, tileSize, transform, transparent: clip);
             }
         }

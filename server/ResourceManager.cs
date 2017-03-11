@@ -57,8 +57,7 @@ namespace Maps
             values = new List<object>();
         }
 
-        public int Count { get { return keys.Count; } }
-
+        public int Count => keys.Count;
         public List<string>.Enumerator GetEnumerator()
         {
             return keys.GetEnumerator();
@@ -92,8 +91,7 @@ namespace Maps
                 {
                     try
                     {
-                        XmlSerializer xs = new XmlSerializer(type);
-                        object o = xs.Deserialize(stream);
+                        object o = new XmlSerializer(type).Deserialize(stream);
                         if (o.GetType() != type)
                             throw new InvalidOperationException();
                         return o;
@@ -135,15 +133,12 @@ namespace Maps
                     {
                         ConstructorInfo constructorInfoObj = type.GetConstructor(
                             BindingFlags.Instance | BindingFlags.Public, null,
-                            CallingConventions.HasThis, new Type[0], null);
-
-                        if (constructorInfoObj == null)
+                            CallingConventions.HasThis, new Type[0], null) ??
                             throw new TargetException();
 
                         obj = constructorInfoObj.Invoke(null);
 
-                        IDeserializable ides = obj as IDeserializable;
-                        if (ides == null)
+                        IDeserializable ides = obj as IDeserializable ??
                             throw new TargetException();
 
                         ides.Deserialize(stream, mediaType);

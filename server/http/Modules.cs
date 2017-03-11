@@ -11,8 +11,7 @@ namespace Maps.HTTP
     // </appSettings>
     public class PageFooter : IHttpModule
     {
-        public String ModuleName { get { return "PageFooter"; } }
-
+        public String ModuleName => "PageFooter";
         public void Init(HttpApplication application)
         {
             string footer = System.Configuration.ConfigurationManager.AppSettings["PageFooter"];

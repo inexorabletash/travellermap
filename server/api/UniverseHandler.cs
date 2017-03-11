@@ -12,8 +12,7 @@ namespace Maps.API
     /// </summary>
     internal class UniverseHandler : DataHandlerBase
     {
-        protected override string ServiceName { get { return "universe"; } }
-
+        protected override string ServiceName => "universe";
         protected override DataResponder GetResponder(HttpContext context)
         {
             return new Responder(context);
@@ -21,7 +20,8 @@ namespace Maps.API
         private class Responder : DataResponder
         {
             public Responder(HttpContext context) : base(context) { }
-            public override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Xml; } }
+            public override string DefaultContentType => System.Net.Mime.MediaTypeNames.Text.Xml;
+
             public override void Process()
             {
                 ResourceManager resourceManager = new ResourceManager(Context.Server);
@@ -78,18 +78,18 @@ namespace Maps.API.Results
             public SectorResult(Sector sector) { this.sector = sector; }
             private Sector sector;
 
-            public int X { get { return sector.X; } set { } }
-            public int Y { get { return sector.Y; } set { } }
-            public string Milieu { get { return sector.CanonicalMilieu; } set { } }
+            public int X { get => sector.X; set { } }
+            public int Y { get => sector.Y; set { } }
+            public string Milieu { get => sector.CanonicalMilieu; set { } }
 
             [XmlAttribute]
-            public string Abbreviation { get { return sector.Abbreviation; } set { } }
+            public string Abbreviation { get => sector.Abbreviation; set { } }
 
             [XmlAttribute]
-            public string Tags { get { return sector.TagString; } set { } }
+            public string Tags { get => sector.TagString; set { } }
 
             [XmlElement("Name")]
-            public List<Name> Names { get { return sector.Names; } set { } }
+            public List<Name> Names { get => sector.Names; set { } }
         }
     }
 }

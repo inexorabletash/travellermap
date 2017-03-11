@@ -6,8 +6,7 @@ namespace Maps.API
 {
     internal class MSECHandler : DataHandlerBase
     {
-        protected override string ServiceName { get { return "msec"; } }
-
+        protected override string ServiceName => "msec";
         protected override DataResponder GetResponder(HttpContext context)
         {
             return new Responder(context);
@@ -15,7 +14,8 @@ namespace Maps.API
         private class Responder : DataResponder
         {
             public Responder(HttpContext context) : base(context) { }
-            public override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Plain; } }
+            public override string DefaultContentType => System.Net.Mime.MediaTypeNames.Text.Plain;
+
             public override void Process()
             {
                 // NOTE: This (re)initializes a static data structure used for 
@@ -30,17 +30,13 @@ namespace Maps.API
                     int sx = GetIntOption("sx", 0);
                     int sy = GetIntOption("sy", 0);
 
-                    sector = map.FromLocation(sx, sy);
-
-                    if (sector == null)
+                    sector = map.FromLocation(sx, sy) ??
                         throw new HttpError(404, "Not Found", $"The sector at {sx},{sy} was not found.");
                 }
                 else if (HasOption("sector"))
                 {
                     string sectorName = GetStringOption("sector");
-                    sector = map.FromName(sectorName);
-
-                    if (sector == null)
+                    sector = map.FromName(sectorName) ??
                         throw new HttpError(404, "Not Found", $"The specified sector '{sectorName}' was not found.");
                 }
                 else

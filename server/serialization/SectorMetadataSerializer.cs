@@ -26,8 +26,7 @@ namespace Maps.Serialization
     {
         public override void Serialize(TextWriter writer, Sector sector)
         {
-            XmlSerializer xs = new XmlSerializer(typeof(Sector));
-            xs.Serialize(writer, sector);
+            new XmlSerializer(typeof(Sector)).Serialize(writer, sector);
         }
     }
 
