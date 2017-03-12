@@ -7,7 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace Maps.Rendering
+namespace Maps.Graphics
 {
     internal class SVGGraphics : AbstractGraphics
     {
@@ -319,7 +319,8 @@ namespace Maps.Rendering
             stack.Push(root);
         }
 
-        Graphics AbstractGraphics.Graphics => null; SmoothingMode AbstractGraphics.SmoothingMode { get; set; }
+        System.Drawing.Graphics AbstractGraphics.Graphics => null;
+        SmoothingMode AbstractGraphics.SmoothingMode { get; set; }
         public bool SupportsWingdings => false;
         #region Drawing
 
@@ -477,10 +478,10 @@ namespace Maps.Rendering
         #endregion
 
         #region Text
-        private Graphics scratch;
+        private System.Drawing.Graphics scratch;
         public SizeF MeasureString(string text, Font font)
         {
-            if (scratch == null) scratch = Graphics.FromImage(new Bitmap(1, 1));
+            if (scratch == null) scratch = System.Drawing.Graphics.FromImage(new Bitmap(1, 1));
             return scratch.MeasureString(text, font);
         }
 

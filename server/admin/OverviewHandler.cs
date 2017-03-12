@@ -1,4 +1,5 @@
 ﻿using Maps.API;
+using Maps.Graphics;
 using Maps.Rendering;
 using System.Drawing;
 using System.Web;

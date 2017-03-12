@@ -3,15 +3,15 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 
-namespace Maps.Rendering
+namespace Maps.Graphics
 {
     internal class BitmapGraphics : AbstractGraphics
     {
-        private Graphics g;
+        private System.Drawing.Graphics g;
         private SolidBrush brush;
         private Pen pen;
 
-        public BitmapGraphics(Graphics g)
+        public BitmapGraphics(System.Drawing.Graphics g)
         {
             this.g = g;
             this.brush = new SolidBrush(Color.Empty);
@@ -42,7 +42,7 @@ namespace Maps.Rendering
 
         public bool SupportsWingdings => true;
         public SmoothingMode SmoothingMode { get => g.SmoothingMode; set => g.SmoothingMode = value; }
-        public Graphics Graphics => g;
+        public System.Drawing.Graphics Graphics => g;
         public void ScaleTransform(float scaleXY) { g.ScaleTransform(scaleXY, scaleXY); }
         public void ScaleTransform(float scaleX, float scaleY) { g.ScaleTransform(scaleX, scaleY); }
         public void TranslateTransform(float dx, float dy) { g.TranslateTransform(dx, dy); }

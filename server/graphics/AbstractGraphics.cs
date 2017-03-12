@@ -3,12 +3,12 @@ using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 
-namespace Maps.Rendering
+namespace Maps.Graphics
 {
     internal interface AbstractGraphics : IDisposable
     {
         SmoothingMode SmoothingMode { get; set; }
-        Graphics Graphics { get; }
+        System.Drawing.Graphics Graphics { get; }
         bool SupportsWingdings { get; }
 
         void ScaleTransform(float scaleXY);

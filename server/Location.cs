@@ -1,7 +1,5 @@
-﻿using Json;
-using System;
+﻿using System;
 using System.Drawing;
-using System.Globalization;
 using System.Xml.Serialization;
 
 namespace Maps

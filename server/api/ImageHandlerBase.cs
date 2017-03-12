@@ -1,3 +1,4 @@
+using Maps.Graphics;
 using Maps.Rendering;
 using Maps.Serialization;
 using PdfSharp.Drawing;
@@ -179,7 +180,7 @@ namespace Maps.API
                         if (transparent)
                             bitmap.MakeTransparent();
 
-                        using (var g = Graphics.FromImage(bitmap))
+                        using (var g = System.Drawing.Graphics.FromImage(bitmap))
                         {
                             g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
 

@@ -7,7 +7,7 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Linq;
 
-namespace Maps.Rendering
+namespace Maps.Graphics
 {
     internal class PdfSharpGraphics : AbstractGraphics
     {
@@ -54,7 +54,7 @@ namespace Maps.Rendering
 
         public bool SupportsWingdings => true;
         public SmoothingMode SmoothingMode { get => (SmoothingMode)g.SmoothingMode; set => g.SmoothingMode = (XSmoothingMode)value; }
-        public Graphics Graphics => g.Graphics;
+        public System.Drawing.Graphics Graphics => g.Graphics;
         public void ScaleTransform(float scaleXY) { g.ScaleTransform(scaleXY); }
         public void ScaleTransform(float scaleX, float scaleY) { g.ScaleTransform(scaleX, scaleY); }
         public void TranslateTransform(float dx, float dy) { g.TranslateTransform(dx, dy); }
@@ -121,7 +121,7 @@ namespace Maps.Rendering
                     // a small set
 
                     Bitmap scratchBitmap = new Bitmap(w, h, PixelFormat.Format32bppArgb);
-                    using (var scratchGraphics = Graphics.FromImage(scratchBitmap))
+                    using (var scratchGraphics = System.Drawing.Graphics.FromImage(scratchBitmap))
                     {
                         ColorMatrix matrix = new ColorMatrix()
                         {

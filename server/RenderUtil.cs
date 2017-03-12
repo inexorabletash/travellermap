@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Maps.Graphics;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -63,7 +64,7 @@ namespace Maps.Rendering
                 font = styleRes.GlyphFont;
             }
 
-            g.DrawString(s, font, brush, x, y, StringAlignment.Centered);
+            g.DrawString(s, font, brush, x, y, Maps.Graphics.StringAlignment.Centered);
         }
 
         //               |          |
@@ -139,7 +140,7 @@ namespace Maps.Rendering
 
             Util.ForEachZip(lines, sizes, (line, sz) =>
             {
-                g.DrawString(line, font, brush, x + widthFactor * sz.Width, y, StringAlignment.Baseline);
+                g.DrawString(line, font, brush, x + widthFactor * sz.Width, y, Maps.Graphics.StringAlignment.Baseline);
                 y += lineSpacing;
             });
         }
