@@ -51,7 +51,7 @@ namespace Maps.API
 
                 var data = new Results.JumpWorldsResult();
                 data.Worlds.AddRange(selector.Worlds);
-                SendResult(Context, data);
+                SendResult(data);
             }
         }
     }

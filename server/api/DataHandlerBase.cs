@@ -95,7 +95,7 @@ namespace Maps.API
             public abstract void Process(ResourceManager resourceManager);
 
             #region Response Methods
-            protected void SendResult(HttpContext context, object o, Encoding encoding = null)
+            protected void SendResult(object o, Encoding encoding = null)
             {
                 SendResult(this, o, encoding);
             }

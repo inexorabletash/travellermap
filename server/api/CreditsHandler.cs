@@ -127,7 +127,7 @@ namespace Maps.API
                     }
                 }
 
-                SendResult(Context, data);
+                SendResult(data);
             }
         }
     }

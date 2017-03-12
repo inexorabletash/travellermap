@@ -16,8 +16,7 @@ namespace Maps.API
             public override string DefaultContentType => System.Net.Mime.MediaTypeNames.Text.Xml;
             public override void Process(ResourceManager resourceManager)
             {
-                SendResult(Context,
-                    SecondSurvey.SophontCodes.Select(code => new Results.SophontCode(code, SecondSurvey.SophontCodeToName(code))).ToList());
+                SendResult(SecondSurvey.SophontCodes.Select(code => new Results.SophontCode(code, SecondSurvey.SophontCodeToName(code))).ToList());
             }
         }
     }
@@ -36,7 +35,7 @@ namespace Maps.API
 
             public override void Process(ResourceManager resourceManager)
             {
-                SendResult(Context, SecondSurvey.AllegianceCodes.Select(
+                SendResult(SecondSurvey.AllegianceCodes.Select(
                     code => new Results.AllegianceCode(code, SecondSurvey.GetStockAllegianceFromCode(code).Name)).ToList());
             }
         }

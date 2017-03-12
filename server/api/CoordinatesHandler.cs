@@ -59,7 +59,7 @@ namespace Maps.API
 
                 Point coords = Astrometrics.LocationToCoordinates(loc);
 
-                SendResult(Context, new Results.CoordinatesResult()
+                SendResult(new Results.CoordinatesResult()
                 {
                     sx = loc.Sector.X,
                     sy = loc.Sector.Y,

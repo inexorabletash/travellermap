@@ -1111,6 +1111,7 @@ namespace Maps.Rendering
         public Font GlyphFont => glyphFont ?? (glyphFont = sheet.glyphFont.MakeFont());
         private Font starportFont;
         public Font StarportFont => starportFont ?? (starportFont = sheet.starportFont.MakeFont());
+
         public void Dispose() { Dispose(true); GC.SuppressFinalize(this); }
         private void Dispose(bool disposing)
         {

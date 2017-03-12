@@ -126,7 +126,7 @@ namespace Maps.API
                 List<World> route = finder.FindPath(startWorld, endWorld) ??
                     throw new HttpError(404, "Not Found", "No route found");
 
-                SendResult(Context, route.Select(w => new Results.RouteStop(w)).ToList());
+                SendResult(route.Select(w => new Results.RouteStop(w)).ToList());
             }
         }
     }

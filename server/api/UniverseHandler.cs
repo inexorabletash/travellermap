@@ -51,7 +51,7 @@ namespace Maps.API
 
                     data.Sectors.Add(new UniverseResult.SectorResult(sector));
                 }
-                SendResult(Context, data);
+                SendResult(data);
             }
         }
     }

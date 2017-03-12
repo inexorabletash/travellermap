@@ -93,7 +93,7 @@ namespace Maps.API
                         .Take(NUM_RESULTS));
                 }
 
-                SendResult(Context, resultsList);
+                SendResult(resultsList);
             }
         }
     }

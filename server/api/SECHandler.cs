@@ -112,7 +112,7 @@ namespace Maps.API
                     sector.Serialize(resourceManager, writer, mediaType, options);
                     data = writer.ToString();
                 }
-                SendResult(Context, data, encoding);
+                SendResult(data, encoding);
             }
         }
     }

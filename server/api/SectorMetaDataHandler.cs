@@ -57,7 +57,7 @@ namespace Maps.API
                     throw new HttpError(400, "Bad Request", "No sector specified.");
                 }
 
-                SendResult(Context, new Results.SectorMetadata(sector, sector.GetWorlds(resourceManager, cacheResults: true)));
+                SendResult(new Results.SectorMetadata(sector, sector.GetWorlds(resourceManager, cacheResults: true)));
             }
         }
     }

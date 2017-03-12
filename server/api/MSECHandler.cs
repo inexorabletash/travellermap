@@ -50,7 +50,7 @@ namespace Maps.API
                     data = writer.ToString();
                 }
 
-                SendResult(Context, data);
+                SendResult(data);
             }
         }
     }
