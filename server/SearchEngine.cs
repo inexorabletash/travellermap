@@ -36,8 +36,6 @@ namespace Maps
             Default = Sectors | Subsectors | Worlds | Labels
         }
 
-        public delegate void StatusCallback(string status);
-
         private static readonly object s_lock = new object();
 
         private static string SanifyLabel(string s)
@@ -82,7 +80,7 @@ namespace Maps
             "name nvarchar(50) NULL"
         };
 
-        public static void PopulateDatabase(ResourceManager resourceManager, StatusCallback callback)
+        public static void PopulateDatabase(ResourceManager resourceManager, Action<string> statusCallback)
         {
             // Lock to prevent indexing twice, without blocking tile requests.
             lock (SearchEngine.s_lock)
@@ -128,7 +126,7 @@ namespace Maps
                         labels[key].Add(coords);
                     };
 
-                    callback("Parsing data...");
+                    statusCallback("Parsing data...");
                     foreach (Sector sector in map.Sectors)
                     {
                         // TODO: Index alternate milieu
@@ -266,7 +264,7 @@ namespace Maps
                         "CREATE NONCLUSTERED INDEX milieu ON labels ( milieu ASC )" + INDEX_OPTIONS,
                     };
 
-                    callback("Rebuilding schema...");
+                    statusCallback("Rebuilding schema...");
                     foreach (string cmd in rebuild_schema)
                     {
                         sqlCommand = new SqlCommand(cmd, connection);
@@ -279,7 +277,7 @@ namespace Maps
                     Action<string, DataTable, int> BulkInsert = (string name, DataTable table, int batchSize) => {
                         using (var bulk = new SqlBulkCopy(connection, SqlBulkCopyOptions.TableLock, null))
                         {
-                            callback($"Writing {table.Rows.Count} {name}...");
+                            statusCallback($"Writing {table.Rows.Count} {name}...");
                             bulk.BatchSize = batchSize;
                             bulk.DestinationTableName = name;
                             bulk.WriteToServer(table);
@@ -291,7 +289,7 @@ namespace Maps
                     BulkInsert("worlds", dt_worlds, 4096);
                     BulkInsert("labels", dt_labels, dt_labels.Rows.Count);
                 }
-                callback("Complete!");
+                statusCallback("Complete!");
             }
         }
 

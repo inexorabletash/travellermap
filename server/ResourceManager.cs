@@ -20,7 +20,7 @@ namespace Maps
         {
             get
             {
-                int index = keys.FindIndex(delegate(string s) { return s == key; });
+                int index = keys.FindIndex(s => s == key);
                 if (index == -1)
                     return null;
                 

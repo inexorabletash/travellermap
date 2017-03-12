@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace Maps.Serialization
         public bool includeHeader = true;
         public bool includeRoutes = false;
         public bool sscoords = false;
-        public WorldFilter filter = null;
+        public Func<World, bool> filter = null;
     }
 
     internal abstract class SectorFileSerializer

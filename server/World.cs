@@ -10,8 +10,6 @@ using System.Xml.Serialization;
 
 namespace Maps
 {
-    internal delegate bool WorldFilter(World w);
-
     public class World
     {
         internal Sector Sector { get; set; }
