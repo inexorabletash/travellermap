@@ -193,24 +193,18 @@ namespace Maps.Rendering
         #endregion
 
         #region IDisposable Support
-        private bool disposedValue = false; // To detect redundant calls
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!disposedValue)
-            {
-                if (disposing)
-                {
-                    g.Dispose();
-                    g = null;
-                }
-                disposedValue = true;
-            }
-        }
-
         void IDisposable.Dispose()
         {
             Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                g?.Dispose();
+            }
         }
         #endregion
 
