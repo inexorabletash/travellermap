@@ -455,4 +455,65 @@ namespace Maps.Utilities
         public ParseException(string message, Exception innerException) : base(message, innerException) { }
         protected ParseException(SerializationInfo info, StreamingContext context) : base(info, context) { }
     }
+
+    internal class LRUCache
+    {
+        public LRUCache(int size)
+        {
+            if (size <= 0)
+                throw new ArgumentOutOfRangeException(nameof(size), size, "must be > 0");
+            this.size = size;
+        }
+
+        public object this[string key]
+        {
+            get
+            {
+                int index = keys.FindIndex(s => s == key);
+                if (index == -1)
+                    return null;
+
+                if (index == 0)
+                    return values[0];
+
+                string k = keys[index];
+                object v = values[index];
+                keys.RemoveAt(index);
+                values.RemoveAt(index);
+                keys.Insert(0, k);
+                values.Insert(0, v);
+                return v;
+            }
+
+            set
+            {
+                keys.Insert(0, key);
+                values.Insert(0, value);
+                while (keys.Count > size)
+                {
+                    keys.RemoveAt(size);
+                }
+                while (values.Count > size)
+                {
+                    values.RemoveAt(size);
+                }
+            }
+        }
+
+        public void Clear()
+        {
+            keys = new List<string>();
+            values = new List<object>();
+        }
+
+        public int Count => keys.Count;
+        public List<string>.Enumerator GetEnumerator()
+        {
+            return keys.GetEnumerator();
+        }
+
+        private int size;
+        private List<string> keys = new List<string>();
+        private List<object> values = new List<object>();
+    }
 }

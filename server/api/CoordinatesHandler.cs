@@ -24,7 +24,7 @@ namespace Maps.API
                 // before any other objects (e.g. Worlds) are loaded.
                 SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, GetStringOption("milieu"));
 
-                Location loc = Location.Empty;
+                Location loc;
 
                 // Accept either sector [& hex] or sx,sy [& hx,hy] or x,y
                 if (HasOption("sector"))

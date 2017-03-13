@@ -1397,7 +1397,6 @@ namespace Maps.Rendering
             }
         }
 
-        private static readonly Regex STELLAR_REGEX = new Regex(@"([OBAFGKM][0-9] ?(?:Ia|Ib|II|III|IV|V|VI|VII|D)|D|BD|BH)", RegexOptions.Compiled | RegexOptions.CultureInvariant);
         private void DrawStars(World world)
         {
             using (graphics.Save())
@@ -1408,15 +1407,9 @@ namespace Maps.Rendering
                 graphics.TranslateTransform(center.X, center.Y);
                 graphics.ScaleTransform(styles.hexContentScale / Astrometrics.ParsecScaleX, styles.hexContentScale / Astrometrics.ParsecScaleY);
 
-                // TODO: Proper stellar parsing
-                List<string> ss = new List<string>();
-                foreach (Match m in STELLAR_REGEX.Matches(world.Stellar))
-                {
-                    ss.Add(m.Value);
-                }
-
                 int i = 0;
-                foreach (var props in ss.Select(s => StellarRendering.StarToProps(s)).OrderByDescending(p => p.radius)) {
+                foreach (var props in 
+                    StellarData.Parse(world.Stellar).Select(s => StellarRendering.StarToProps(s)).OrderByDescending(p => p.radius)) {
                     solidBrush.Color = props.color;
                     pen.Color = props.borderColor;
                     pen.DashStyle = Graphics.DashStyle.Solid;

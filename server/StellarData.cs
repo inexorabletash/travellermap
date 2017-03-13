@@ -2,12 +2,62 @@
 
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
 
 namespace Maps
 {
+    // TODO: Expand to handle non-T5SS data
+    internal static class StellarData
+    {
+        internal struct Star
+        {
+            public string classification; // Full string for star, e.g. "G2 V", "D", "BD", "BH", etc
+
+            public char type; // OBAFGKM 
+            public int fraction; // 0-9
+            public string luminosity; // Ia, Ib, II, III, IV, V, VI, VII
+        }
+
+        private static readonly Regex STELLAR_REGEX = new Regex(@"([OBAFGKM][0-9] ?(?:Ia|Ib|II|III|IV|V|VI|VII|D)|D|BD|BH)",
+            RegexOptions.Compiled | RegexOptions.CultureInvariant);
+
+        private static Regex STAR_REGEX = new Regex(@"^([OBAFGKM])([0-9]) ?(Ia|Ib|II|III|IV|V|VI)$",
+                RegexOptions.Compiled | RegexOptions.CultureInvariant);
+
+        internal static IEnumerable<Star> Parse(string stellar)
+        {
+            foreach (Match m in STELLAR_REGEX.Matches(stellar))
+            {
+                if (m.Value == "D" || m.Value == "BD" || m.Value == "BH")
+                {
+                    yield return new Star() { classification = m.Value };
+                }
+                else
+                {
+                    Match sm = STAR_REGEX.Match(m.Value);
+                    if (sm.Success)
+                    {
+                        yield return new Star()
+                        {
+                            classification = m.Value,
+                            type = sm.Groups[1].Value[0],
+                            fraction = sm.Groups[2].Value[0] - '0',
+                            luminosity = sm?.Groups[3].Value
+                        };
+                    }
+                    else
+                    {
+                        // Assume anything else is a white dwarf. 
+                        yield return new Star() { classification = "D" };
+                    }
+                }
+            }
+        }
+    }
+
+    // TODO: Remove this
     internal static class StellarDataParser
     {
         // Grammar:

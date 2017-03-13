@@ -625,57 +625,45 @@ namespace Maps.Rendering
             };
 
         // Base radius for spectral class.
-        private static Dictionary<string, float> RAD = new Dictionary<string, float>
-            { { "O", 4 }, { "B", 3 }, { "A", 2 }, { "F", 1.5f }, { "G", 1 }, { "K", 0.7f }, { "M", 0.5f } };
+        private static Dictionary<char, float> RAD = new Dictionary<char, float>
+            { { 'O', 4 }, { 'B', 3 }, { 'A', 2 }, { 'F', 1.5f }, { 'G', 1 }, { 'K', 0.7f }, { 'M', 0.5f } };
 
         // Maps spectral class to color.
-        private static Dictionary<string, Color> COLOR = new Dictionary<string, Color> {
-                { "O", Color.FromArgb(0x9d, 0xb4, 0xff) },
-                { "B", Color.FromArgb(0xbb, 0xcc, 0xff) },
-                { "A", Color.FromArgb(0xfb, 0xf8, 0xff) },
-                { "F", Color.FromArgb(0xff, 0xff, 0xed) },
-                { "G", Color.FromArgb(0xff, 0xff, 0x00) },
-                { "K", Color.FromArgb(0xff, 0x98, 0x33) },
-                { "M", Color.FromArgb(0xff, 0x00, 0x00) },
+        private static Dictionary<char, Color> COLOR = new Dictionary<char, Color> {
+                { 'O', Color.FromArgb(0x9d, 0xb4, 0xff) },
+                { 'B', Color.FromArgb(0xbb, 0xcc, 0xff) },
+                { 'A', Color.FromArgb(0xfb, 0xf8, 0xff) },
+                { 'F', Color.FromArgb(0xff, 0xff, 0xed) },
+                { 'G', Color.FromArgb(0xff, 0xff, 0x00) },
+                { 'K', Color.FromArgb(0xff, 0x98, 0x33) },
+                { 'M', Color.FromArgb(0xff, 0x00, 0x00) },
             };
 
-        public static StarProps StarToProps(string star)
+        public static StarProps StarToProps(StellarData.Star star)
         {
-            Match m = STAR_REGEX.Match(star);
-            if (m.Success)
-            {
-                string c = m.Groups[1].Value;
-                //string f = m.Groups[2].Value;
-                string l = m.Groups[3].Value;
-                return new StarProps(COLOR[c], Color.Black, RAD[c] + LUM[l]);
-            }
-            else if (star == "BH")
-            {
+            if (star.classification == "BH")
                 return new StarProps(Color.Black, Color.White, 0.8f);
-            }
-            else if (star == "BD")
-            {
+
+            if (star.classification == "BD")
                 return new StarProps(Color.Brown, Color.Black, 0.3f);
-            }
-            else
-            {
-                // Assume white dwarf
+
+            if (star.classification == "D")
                 return new StarProps(Color.White, Color.Black, 0.3f);
-            }
+
+            return new StarProps(COLOR[star.type], Color.Black, RAD[star.type] + LUM[star.luminosity]);
         }
 
-#pragma warning disable IDE1006 // Naming Styles
-        private static float sinf(double r) { return (float)Math.Sin(r); }
-        private static float cosf(double r) { return (float)Math.Cos(r); }
-#pragma warning restore IDE1006 // Naming Styles
+        private static float SinF(double r) { return (float)Math.Sin(r); }
+        private static float CosF(double r) { return (float)Math.Cos(r); }
+
         private static float[] dx = new float[] {
                     0.0f,
-                    cosf(Math.PI * 1 / 3),cosf(Math.PI * 2 / 3),cosf(Math.PI * 3 / 3),
-                    cosf(Math.PI * 4 / 3),cosf(Math.PI * 5 / 3),cosf(Math.PI * 6 / 3) };
+                    CosF(Math.PI * 1 / 3),CosF(Math.PI * 2 / 3),CosF(Math.PI * 3 / 3),
+                    CosF(Math.PI * 4 / 3),CosF(Math.PI * 5 / 3),CosF(Math.PI * 6 / 3) };
         private static float[] dy = new float[] {
                     0.0f,
-                    sinf(Math.PI * 1 / 3),sinf(Math.PI * 2 / 3),sinf(Math.PI * 3 / 3),
-                    sinf(Math.PI * 4 / 3),sinf(Math.PI * 5 / 3),sinf(Math.PI * 6 / 3) };
+                    SinF(Math.PI * 1 / 3),SinF(Math.PI * 2 / 3),SinF(Math.PI * 3 / 3),
+                    SinF(Math.PI * 4 / 3),SinF(Math.PI * 5 / 3),SinF(Math.PI * 6 / 3) };
         public static PointF Offset(int index)
         {
             if (index >= dx.Length)

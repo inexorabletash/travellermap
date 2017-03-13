@@ -35,7 +35,7 @@ namespace Maps.API
 
                 int width = GetIntOption("w", NormalTileWidth);
                 int height = GetIntOption("h", NormalTileHeight);
-                if (width < 0 || height < 1)
+                if (width < 1 || height < 1)
                 {
                     throw new HttpError(400, "Bad Request",
                           $"Requested dimensions ({width}x{height}) invalid.");
