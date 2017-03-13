@@ -7,54 +7,34 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace Maps
+namespace Maps.Utilities
 {
-    internal static class Util
+    internal static class ContentTypes
     {
-        public const string MediaTypeName_Image_Png = "image/png";
-        public const string MediaTypeName_Image_Svg = "image/svg+xml";
-
-        public static readonly Encoding UTF8_NO_BOM = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false);
-
-        public static string FixCapitalization(string s)
+        internal static class Application
         {
-            // TODO: Handle "I'Sred*N..."
-            // TODO: Consider using System.Globalization.TextInfo.ToTitleCase
-
-            StringBuilder sb = new StringBuilder(s.Length);
-            bool leading = true;
-            foreach (char c in s)
-            {
-                if (Char.IsLetter(c) || c == '\'')
-                {
-                    if (leading)
-                    {
-                        sb.Append(Char.ToUpperInvariant(c));
-                        leading = false;
-                    }
-                    else
-                    {
-                        sb.Append(Char.ToLowerInvariant(c));
-                    }
-                }
-                else
-                {
-                    sb.Append(c);
-                    leading = true;
-                }
-            }
-
-            return sb.ToString();
+            public const string Pdf = System.Net.Mime.MediaTypeNames.Application.Pdf;
+            public const string Octet = System.Net.Mime.MediaTypeNames.Application.Octet;
         }
-
-        public static void Swap<T>(ref T a, ref T b)
+        internal static class Text
         {
-            T tmp = a;
-            a = b;
-            b = tmp;
+            public const string Plain = System.Net.Mime.MediaTypeNames.Text.Plain;
+            public const string Html = System.Net.Mime.MediaTypeNames.Text.Html;
+            public const string Xml = System.Net.Mime.MediaTypeNames.Text.Xml;
         }
+        internal static class Image
+        {
+            public const string Gif = System.Net.Mime.MediaTypeNames.Image.Gif;
+            public const string Jpeg = System.Net.Mime.MediaTypeNames.Image.Jpeg;
+            public const string Png = "image/png";
+            public const string Svg = "image/svg+xml";
+        }
+    }
 
-        public static T Clamp<T>(T value, T min, T max) where T : IComparable<T>
+    internal static class ExtensionMethods
+    {
+        #region IComparable Methods
+        public static T Clamp<T>(this T value, T min, T max) where T : IComparable<T>
         {
             if (value.CompareTo(min) < 0)
                 return min;
@@ -64,14 +44,19 @@ namespace Maps
                 return value;
         }
 
-        public static bool InRange<T>(T item, T a, T b) where T : IComparable<T> { return item.CompareTo(a) >= 0 && item.CompareTo(b) <= 0; }
+        public static bool InRange<T>(this IComparable<T> item, T a, T b)
+        {
+            return item.CompareTo(a) >= 0 && item.CompareTo(b) <= 0;
+        }
 
-        public static bool InList<T>(T item, T o1, T o2) { return item.Equals(o1) || item.Equals(o2); }
-        public static bool InList<T>(T item, T o1, T o2, T o3) { return item.Equals(o1) || item.Equals(o2) || item.Equals(o3); }
-        public static bool InList<T>(T item, T o1, T o2, T o3, T o4) { return item.Equals(o1) || item.Equals(o2) || item.Equals(o3) || item.Equals(o4); }
-        public static bool InList<T>(T item, T o1, T o2, T o3, T o4, T o5) { return item.Equals(o1) || item.Equals(o2) || item.Equals(o3) || item.Equals(o4) || item.Equals(o5); }
-        public static bool InList<T>(T item, T o1, T o2, T o3, T o4, T o5, T o6) { return item.Equals(o1) || item.Equals(o2) || item.Equals(o3) || item.Equals(o4) || item.Equals(o5) || item.Equals(o6); }
+        public static bool InList<T>(this T item, T o1, T o2) { return item.Equals(o1) || item.Equals(o2); }
+        public static bool InList<T>(this T item, T o1, T o2, T o3) { return item.Equals(o1) || item.Equals(o2) || item.Equals(o3); }
+        public static bool InList<T>(this T item, T o1, T o2, T o3, T o4) { return item.Equals(o1) || item.Equals(o2) || item.Equals(o3) || item.Equals(o4); }
+        public static bool InList<T>(this T item, T o1, T o2, T o3, T o4, T o5) { return item.Equals(o1) || item.Equals(o2) || item.Equals(o3) || item.Equals(o4) || item.Equals(o5); }
+        public static bool InList<T>(this T item, T o1, T o2, T o3, T o4, T o5, T o6) { return item.Equals(o1) || item.Equals(o2) || item.Equals(o3) || item.Equals(o4) || item.Equals(o5) || item.Equals(o6); }
+        #endregion
 
+        #region String Methods
         public static string Truncate(this string value, int size)
         {
             return value.Length <= size ? value : value.Substring(0, size);
@@ -116,18 +101,39 @@ namespace Maps
             return stream;
         }
 
-        // TODO: Could be a variant of Enumerable.Range(...).Select(...)
-        public static IEnumerable<int> Sequence(int start, int end)
+        public static string FixCapitalization(this string s)
         {
-            int current = start, delta = (start < end) ? 1 : -1;
-            yield return current;
-            while (current != end)
-            {
-                current += delta;
-                yield return current;
-            }
-        }
+            // TODO: Handle "I'Sred*N..."
+            // TODO: Consider using System.Globalization.TextInfo.ToTitleCase
 
+            StringBuilder sb = new StringBuilder(s.Length);
+            bool leading = true;
+            foreach (char c in s)
+            {
+                if (Char.IsLetter(c) || c == '\'')
+                {
+                    if (leading)
+                    {
+                        sb.Append(Char.ToUpperInvariant(c));
+                        leading = false;
+                    }
+                    else
+                    {
+                        sb.Append(Char.ToLowerInvariant(c));
+                    }
+                }
+                else
+                {
+                    sb.Append(c);
+                    leading = true;
+                }
+            }
+
+            return sb.ToString();
+        }
+        #endregion
+
+        #region Function Methods
         public static Func<A1, A2, R> Memoize2<A1, A2, R>(this Func<A1, A2, R> f)
         {
             var map = new Dictionary<Tuple<A1, A2>, R>();
@@ -141,7 +147,9 @@ namespace Maps
                 return value;
             };
         }
+        #endregion
 
+        #region IEnumerable Methods
         // http://stackoverflow.com/questions/18395943/using-foreach-to-iterate-simultaneously-through-multiple-lists-syntax-sugar
         public static void ForEachZip<T1, T2>(this IEnumerable<T1> first, IEnumerable<T2> second, Action<T1, T2> action)
         {
@@ -152,6 +160,31 @@ namespace Maps
                 {
                     action(e1.Current, e2.Current);
                 }
+            }
+        }
+        #endregion
+    }
+
+    internal static class Util
+    {
+        public static readonly Encoding UTF8_NO_BOM = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false);
+
+        public static void Swap<T>(ref T a, ref T b)
+        {
+            T tmp = a;
+            a = b;
+            b = tmp;
+        }
+
+        // TODO: Could be a variant of Enumerable.Range(...).Select(...)
+        public static IEnumerable<int> Sequence(int start, int end)
+        {
+            int current = start, delta = (start < end) ? 1 : -1;
+            yield return current;
+            while (current != end)
+            {
+                current += delta;
+                yield return current;
             }
         }
     }

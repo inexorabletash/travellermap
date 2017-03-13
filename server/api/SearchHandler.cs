@@ -1,5 +1,6 @@
 ﻿using Json;
 using Maps.API.Results;
+using Maps.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,7 @@ namespace Maps.API
         private class Responder : DataResponder
         {
             public Responder(HttpContext context) : base(context) { }
-            public override string DefaultContentType => System.Net.Mime.MediaTypeNames.Text.Xml;
+            public override string DefaultContentType => ContentTypes.Text.Xml;
             private static readonly IReadOnlyDictionary<string, string> SpecialSearches = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase) {
                 { @"(default)", @"~/res/search/Default.json"},
                 { @"(grand tour)", @"~/res/search/GrandTour.json"},

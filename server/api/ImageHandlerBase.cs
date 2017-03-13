@@ -1,6 +1,7 @@
 using Maps.Graphics;
 using Maps.Rendering;
 using Maps.Serialization;
+using Maps.Utilities;
 using PdfSharp.Drawing;
 using PdfSharp.Pdf;
 using System;
@@ -22,7 +23,7 @@ namespace Maps.API
         protected abstract class ImageResponder : DataResponder
         {
             protected ImageResponder(HttpContext context) : base(context) { }
-            public override string DefaultContentType => Util.MediaTypeName_Image_Png;
+            public override string DefaultContentType => ContentTypes.Image.Png;
             protected void ProduceResponse(HttpContext context, string title, RenderContext ctx, Size tileSize,
                 AbstractMatrix transform,
                 bool transparent = false)
@@ -101,7 +102,7 @@ namespace Maps.API
                     ms = new MemoryStream();
                 Stream outputStream = ms ?? Context.Response.OutputStream;
 
-                if (accepter.Accepts(context, Util.MediaTypeName_Image_Svg, ignoreHeaderFallbacks: true))
+                if (accepter.Accepts(context, ContentTypes.Image.Svg, ignoreHeaderFallbacks: true))
                 {
                     #region SVG Generation
                     using (var svg = new SVGGraphics(tileSize.Width, tileSize.Height))
@@ -111,7 +112,7 @@ namespace Maps.API
                         using (var stream = new MemoryStream())
                         {
                             svg.Serialize(new StreamWriter(stream));
-                            context.Response.ContentType = Util.MediaTypeName_Image_Svg;
+                            context.Response.ContentType = ContentTypes.Image.Svg;
                             if (!dataURI)
                             {
                                 context.Response.AddHeader("content-length", stream.Length.ToString());
@@ -123,7 +124,7 @@ namespace Maps.API
                     #endregion
                 }
 
-                else if (accepter.Accepts(context, MediaTypeNames.Application.Pdf, ignoreHeaderFallbacks: true))
+                else if (accepter.Accepts(context, ContentTypes.Application.Pdf, ignoreHeaderFallbacks: true))
                 {
                     #region PDF Generation
                     using (var document = new PdfDocument())
@@ -152,7 +153,7 @@ namespace Maps.API
                             using (var stream = new MemoryStream())
                             {
                                 document.Save(stream, closeStream: false);
-                                context.Response.ContentType = MediaTypeNames.Application.Pdf;
+                                context.Response.ContentType = ContentTypes.Application.Pdf;
                                 if (!dataURI)
                                 {
                                     context.Response.AddHeader("content-length", stream.Length.ToString());
@@ -191,7 +192,7 @@ namespace Maps.API
                             }
                         }
 
-                        BitmapResponse(context.Response, outputStream, ctx.Styles, bitmap, transparent ? Util.MediaTypeName_Image_Png : null);
+                        BitmapResponse(context.Response, outputStream, ctx.Styles, bitmap, transparent ? ContentTypes.Image.Png : null);
 
                     }
                     #endregion
@@ -200,7 +201,7 @@ namespace Maps.API
                 if (dataURI)
                 {
                     string contentType = context.Response.ContentType;
-                    context.Response.ContentType = MediaTypeNames.Text.Plain;
+                    context.Response.ContentType = ContentTypes.Text.Plain;
                     ms.Seek(0, SeekOrigin.Begin);
 
                     context.Response.Output.Write("data:");
@@ -300,12 +301,12 @@ namespace Maps.API
                     if (encoder != null)
                     {
                         EncoderParameters encoderParams;
-                        if (mimeType == MediaTypeNames.Image.Jpeg)
+                        if (mimeType == ContentTypes.Image.Jpeg)
                         {
                             encoderParams = new EncoderParameters(1);
                             encoderParams.Param[0] = new EncoderParameter(Encoder.Quality, (long)95);
                         }
-                        else if (mimeType == Util.MediaTypeName_Image_Png)
+                        else if (mimeType == ContentTypes.Image.Png)
                         {
                             encoderParams = new EncoderParameters(1);
                             encoderParams.Param[0] = new EncoderParameter(Encoder.ColorDepth, 8);
@@ -315,7 +316,7 @@ namespace Maps.API
                             encoderParams = new EncoderParameters(0);
                         }
 
-                        if (mimeType == Util.MediaTypeName_Image_Png)
+                        if (mimeType == ContentTypes.Image.Png)
                         {
                             // PNG encoder is picky about streams - need to do an indirection
                             // http://www.west-wind.com/WebLog/posts/8230.aspx
@@ -335,7 +336,7 @@ namespace Maps.API
                     else
                     {
                         // Default to GIF if we can't find anything
-                        response.ContentType = MediaTypeNames.Image.Gif;
+                        response.ContentType = ContentTypes.Image.Gif;
                         bitmap.Save(outputStream, ImageFormat.Gif);
                     }
                 }
@@ -359,11 +360,11 @@ namespace Maps.API
                 else if (!string.IsNullOrEmpty(request.Form["data"]))
                 {
                     string data = request.Form["data"];
-                    sector = new Sector(data.ToStream(), MediaTypeNames.Text.Plain, errors);
+                    sector = new Sector(data.ToStream(), ContentTypes.Text.Plain, errors);
                 }
-                else if (new ContentType(request.ContentType).MediaType == MediaTypeNames.Text.Plain)
+                else if (new ContentType(request.ContentType).MediaType == ContentTypes.Text.Plain)
                 {
-                    sector = new Sector(request.InputStream, MediaTypeNames.Text.Plain, errors);
+                    sector = new Sector(request.InputStream, ContentTypes.Text.Plain, errors);
                 }
                 else
                 {

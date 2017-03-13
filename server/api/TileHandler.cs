@@ -1,5 +1,6 @@
 ﻿using Maps.Graphics;
 using Maps.Rendering;
+using Maps.Utilities;
 using System;
 using System.Drawing;
 using System.Web;
@@ -30,7 +31,7 @@ namespace Maps.API
 
                 double x = GetDoubleOption("x", 0);
                 double y = GetDoubleOption("y", 0);
-                double scale = Util.Clamp(GetDoubleOption("scale", 0), MinScale, MaxScale);
+                double scale = GetDoubleOption("scale", 0).Clamp(MinScale, MaxScale);
 
                 int width = GetIntOption("w", NormalTileWidth);
                 int height = GetIntOption("h", NormalTileHeight);

@@ -1,6 +1,7 @@
 using Json;
 using Maps.Rendering;
 using Maps.Serialization;
+using Maps.Utilities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -201,7 +202,7 @@ namespace Maps
             if (label.Length == 1)
             {
                 char c = char.ToUpperInvariant(label[0]);
-                if (Util.InRange(c, 'A', 'P'))
+                if (c.InRange('A', 'P'))
                     return (int)c - (int)'A';
             }
 

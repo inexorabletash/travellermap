@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Maps.Utilities;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Net.Mime;
 using System.Text.RegularExpressions;
 
 namespace Maps.Admin
@@ -86,7 +86,7 @@ namespace Maps.Admin
             
         protected override void Process(System.Web.HttpContext context, ResourceManager resourceManager)
         {
-            context.Response.ContentType = MediaTypeNames.Text.Plain;
+            context.Response.ContentType = ContentTypes.Text.Plain;
             context.Response.StatusCode = 200;
 
             string sectorName = GetStringOption(context, "sector");

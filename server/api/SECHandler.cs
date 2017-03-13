@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Maps.Serialization;
+using Maps.Utilities;
+using System;
 using System.IO;
 using System.Net.Mime;
 using System.Text;
 using System.Web;
-using Maps.Serialization;
 
 namespace Maps.API
 {
@@ -17,7 +18,7 @@ namespace Maps.API
         private class Responder : DataResponder
         {
             public Responder(HttpContext context) : base(context) { }
-            public override string DefaultContentType => System.Net.Mime.MediaTypeNames.Text.Plain;
+            public override string DefaultContentType => ContentTypes.Text.Plain;
             public override void Process(ResourceManager resourceManager)
             {
                 // NOTE: This (re)initializes a static data structure used for 

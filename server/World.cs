@@ -1,4 +1,5 @@
 ﻿using Json;
+using Maps.Utilities;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -106,28 +107,28 @@ namespace Maps
         internal int Belts => SecondSurvey.FromHex(PBG[1], valueIfUnknown: 0);
         internal int GasGiants => SecondSurvey.FromHex(PBG[2], valueIfUnknown: 0);
         internal double Population => Math.Pow(10, PopulationExponent) * PopulationMantissa;
-        internal bool WaterPresent => (Hydrographics > 0) && (Util.InRange(Atmosphere, 2, 9) || Util.InRange(Atmosphere, 0xD, 0xF));
+        internal bool WaterPresent => (Hydrographics > 0) && (Atmosphere.InRange(2, 9) || Atmosphere.InRange(0xD, 0xF));
 
         // Planetary
         internal bool IsAs => Size == 0;
-        internal bool IsDe => Util.InRange(Atmosphere, 2, 10) && Hydrographics == 0;
+        internal bool IsDe => Atmosphere.InRange(2, 10) && Hydrographics == 0;
         internal bool IsFl => Atmosphere >= 10 && Hydrographics > 0;
-        internal bool IsIc => Util.InList(Atmosphere, 0, 1) && Hydrographics > 0;
+        internal bool IsIc => Atmosphere.InList(0, 1) && Hydrographics > 0;
         internal bool IsVa => Atmosphere == 0;
         internal bool IsWa => Hydrographics == 10;
 
         // Population
         internal bool IsBa => PopulationExponent == 0;
         internal bool IsLo => PopulationExponent < 4;
-        internal bool IsNi => Util.InRange(PopulationExponent, 1, 6);
+        internal bool IsNi => PopulationExponent.InRange(1, 6);
         internal bool IsHi => PopulationExponent >= 9;
 
         // Economic
-        internal bool IsAg => Util.InRange(Atmosphere, 4, 9) && Util.InRange(Hydrographics, 4, 8) && Util.InRange(PopulationExponent, 5, 7);
-        internal bool IsNa => Util.InRange(Atmosphere, 0, 3) && Util.InRange(Hydrographics, 0, 3) && Util.InRange(PopulationExponent, 6, 10);
-        internal bool IsIn => Util.InList(Atmosphere, 0, 1, 2, 4, 7, 9) && Util.InList(PopulationExponent, 9, 10);
-        internal bool IsPo => Util.InList(Atmosphere, 2, 3, 4, 5) && Util.InList(Hydrographics, 0, 1, 2, 3) && PopulationExponent > 0;
-        internal bool IsRi => Util.InList(Atmosphere, 6, 7, 8) && Util.InList(PopulationExponent, 6, 7, 8) && Util.InList(Government, 4, 5, 6, 7, 8, 9);
+        internal bool IsAg => Atmosphere.InRange(4, 9) && Hydrographics.InRange(4, 8) && PopulationExponent.InRange(5, 7);
+        internal bool IsNa => Atmosphere.InRange(0, 3) && Hydrographics.InRange(0, 3) && PopulationExponent.InRange(6, 10);
+        internal bool IsIn => Atmosphere.InList(0, 1, 2, 4, 7, 9) && PopulationExponent.InList(9, 10);
+        internal bool IsPo => Atmosphere.InList(2, 3, 4, 5) && Hydrographics.InList(0, 1, 2, 3) && PopulationExponent > 0;
+        internal bool IsRi => Atmosphere.InList(6, 7, 8) && PopulationExponent.InList(6, 7, 8) && Government.InList(4, 5, 6, 7, 8, 9);
 
         internal bool IsCp => HasCode("Cp");
         internal bool IsCs => HasCode("Cs");
@@ -292,18 +293,18 @@ namespace Maps
             ErrorIf(Atmosphere > 15, $"UWP: Atm>F: {Atmosphere}");
             ErrorIf(Hydrographics > 10, $"UWP: Hyd>A: {Hydrographics}");
             ErrorIf(PopulationExponent > 15, $"UWP: Pop>F: {PopulationExponent}");
-            ErrorUnless(Util.InRange(Government, PopulationExponent - 5, Math.Max(15, PopulationExponent + 5)),
+            ErrorUnless(Government.InRange(PopulationExponent - 5, Math.Max(15, PopulationExponent + 5)),
                 $"UWP: Gov={Government} out of range (Pop={PopulationExponent} + Flux)");
-            ErrorUnless(Util.InRange(Law, Government - 5, Math.Max(18, Government + 5)),
+            ErrorUnless(Law.InRange(Government - 5, Math.Max(18, Government + 5)),
                 $"UWP: Law={Law} out of range (Gov={Government} + Flux)");
             int tlmod = 
                 (Starport == 'A' ? 6 : 0) + (Starport == 'B' ? 4 : 0) + (Starport == 'C' ? 2 : 0) + (Starport == 'X' ? -4 : 0) +
                 (Size == 0 || Size == 1 ? 2 : 0) + (Size == 2 || Size == 3 || Size == 4 ? 1 : 0) +
                 (Atmosphere <= 3 ? 1 : 0) + (Atmosphere >= 10 ? 1 : 0) +
                 (Hydrographics == 9 ? 1 : 0) + (Hydrographics == 10 ? 2 : 0) + 
-                (Util.InRange(PopulationExponent, 1, 5) ? 1 : 0) + (PopulationExponent == 9 ? 2 : 0) + (PopulationExponent >= 10 ? 4 : 0) +
+                (PopulationExponent.InRange(1, 5) ? 1 : 0) + (PopulationExponent == 9 ? 2 : 0) + (PopulationExponent >= 10 ? 4 : 0) +
                 (Government == 0 || Government == 5 ? 1 : 0) + (Government == 13 ? -2 : 0);
-            ErrorUnless(Util.InRange(TechLevel, tlmod + 1, tlmod + 6) || 
+            ErrorUnless(TechLevel.InRange(tlmod + 1, tlmod + 6) || 
                 (PopulationExponent == 0 && TechLevel == 0),
                 $"UWP: TL={TechLevel} out of range (mods={tlmod} + 1D)");
 
@@ -366,10 +367,10 @@ namespace Maps
                 int efficiency = Int32.Parse(ex.Substring(3));
 
                 if (TechLevel < 8)
-                    ErrorUnless(Util.InRange(resources, 2, 12),
+                    ErrorUnless(resources.InRange(2, 12),
                         $"(Ex) Resources={resources} out of range for TL<8={TechLevel} (2D)");
                 else 
-                    ErrorUnless(Util.InRange(resources, 2 + GasGiants + Belts, 12 + GasGiants + Belts),
+                    ErrorUnless(resources.InRange(2 + GasGiants + Belts, 12 + GasGiants + Belts),
                         $"(Ex) Resources={resources} out of range for TL8+={TechLevel} (2D + GG={GasGiants} + Belts={Belts})");
                     
                 ErrorUnless(labor == Math.Max(0, PopulationExponent - 1),
@@ -380,13 +381,13 @@ namespace Maps
                 else if (Lo)
                     ErrorUnless(infrastructure == 1, $"(Ex) Infrastructure={infrastructure} should be 1 if Lo");
                 else if (Ni)
-                    ErrorUnless(Util.InRange(infrastructure, Math.Max(0, imp + 1), Math.Max(0, imp + 6)),
+                    ErrorUnless(infrastructure.InRange(Math.Max(0, imp + 1), Math.Max(0, imp + 6)),
                         $"(Ex) Infrastructure={infrastructure} out of range for Ni (Imp={imp} + 1D)");
                 else
-                    ErrorUnless(Util.InRange(infrastructure, Math.Max(0, imp + 2), Math.Max(0, imp + 12)),
+                    ErrorUnless(infrastructure.InRange(Math.Max(0, imp + 2), Math.Max(0, imp + 12)),
                         $"(Ex) Infrastructure={infrastructure} out of range (Imp={imp} + 2D)");
 
-                ErrorUnless(Util.InRange(efficiency, -5, 5),
+                ErrorUnless(efficiency.InRange(-5, 5),
                     $"(Ex) Efficiency={efficiency} out of range (Flux)");
             }
 
@@ -407,13 +408,13 @@ namespace Maps
                 }
                 else
                 {
-                    ErrorUnless(Util.InRange(homogeneity, Math.Max(1, PopulationExponent - 5), Math.Max(1, PopulationExponent + 5)),
+                    ErrorUnless(homogeneity.InRange(Math.Max(1, PopulationExponent - 5), Math.Max(1, PopulationExponent + 5)),
                         $"[Cx] Homogeneity={homogeneity} out of range (Pop={PopulationExponent} + Flux)");
                     ErrorUnless(acceptance == Math.Max(1, PopulationExponent + imp),
                         $"[Cx] Acceptance={acceptance} not equal Pop={PopulationExponent} + Imp={imp}");
-                    ErrorUnless(Util.InRange(strangeness, Math.Max(1, 5 - 5), Math.Max(1, 5 + 5)),
+                    ErrorUnless(strangeness.InRange(Math.Max(1, 5 - 5), Math.Max(1, 5 + 5)),
                         $"[Cx] Strangeness={strangeness} out of range (Flux + 5)");
-                    ErrorUnless(Util.InRange(symbols, Math.Max(1, TechLevel - 5), Math.Max(1, TechLevel + 5)),
+                    ErrorUnless(symbols.InRange(Math.Max(1, TechLevel - 5), Math.Max(1, TechLevel + 5)),
                         $"[Cx] Symbols={symbols} out of range (TL={TechLevel} + Flux)");
                 }
             }

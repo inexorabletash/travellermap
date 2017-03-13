@@ -1,5 +1,6 @@
 ﻿using Maps.Graphics;
 using Maps.Rendering;
+using Maps.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -23,7 +24,7 @@ namespace Maps.API
                 //
                 // Jump
                 //
-                int jump = Util.Clamp(GetIntOption("jump", 6), 0, 20);
+                int jump = GetIntOption("jump", 6).Clamp(0, 20);
 
                 //
                 // Content & Coordinates
@@ -88,7 +89,7 @@ namespace Maps.API
                 //
                 // Scale
                 //
-                double scale = Util.Clamp(GetDoubleOption("scale", 64), MinScale, MaxScale);
+                double scale = GetDoubleOption("scale", 64).Clamp(MinScale, MaxScale);
 
                 //
                 // Options & Style

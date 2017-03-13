@@ -1,4 +1,4 @@
-﻿using Maps;
+﻿using Maps.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
 
@@ -10,14 +10,14 @@ namespace UnitTests
         [TestMethod]
         public void FixCapitalizationTest()
         {
-            Assert.AreEqual("", Util.FixCapitalization(""));
-            Assert.AreEqual("Regina", Util.FixCapitalization("Regina"));
-            Assert.AreEqual("Regina", Util.FixCapitalization("regina"));
-            Assert.AreEqual("Regina", Util.FixCapitalization("REGINA"));
-            Assert.AreEqual("Varen's Planet", Util.FixCapitalization("VAREN'S PLANET"));
-            Assert.AreEqual("St. George", Util.FixCapitalization("ST. GEORGE"));
-            Assert.AreEqual("Airlyrlyu'eas", Util.FixCapitalization("AIRLYRLYU'EAS"));
-            Assert.AreEqual("494-908", Util.FixCapitalization("494-908"));
+            Assert.AreEqual("", "".FixCapitalization());
+            Assert.AreEqual("Regina", "Regina".FixCapitalization());
+            Assert.AreEqual("Regina", "regina".FixCapitalization());
+            Assert.AreEqual("Regina", "REGINA".FixCapitalization());
+            Assert.AreEqual("Varen's Planet", "VAREN'S PLANET".FixCapitalization());
+            Assert.AreEqual("St. George", "ST. GEORGE".FixCapitalization());
+            Assert.AreEqual("Airlyrlyu'eas", "AIRLYRLYU'EAS".FixCapitalization());
+            Assert.AreEqual("494-908", "494-908".FixCapitalization());
         }
 
         [TestMethod]
@@ -42,14 +42,14 @@ namespace UnitTests
         [TestMethod]
         public void ClampTest()
         {
-            Assert.AreEqual(5, Util.Clamp(5, 1, 10));
-            Assert.AreEqual(1, Util.Clamp(-5, 1, 10));
-            Assert.AreEqual(10, Util.Clamp(15, 1, 10));
-            Assert.AreEqual(10, Util.Clamp(5, 10, 1));
+            Assert.AreEqual(5, 5.Clamp(1, 10));
+            Assert.AreEqual(1, -5.Clamp(1, 10));
+            Assert.AreEqual(10, 15.Clamp(1, 10));
+            Assert.AreEqual(10, 5.Clamp(10, 1));
 
-            Assert.AreEqual("c", Util.Clamp("c", "a", "f"));
-            Assert.AreEqual("a", Util.Clamp("@", "a", "f"));
-            Assert.AreEqual("f", Util.Clamp("z", "a", "f"));
+            Assert.AreEqual("c", "c".Clamp("a", "f"));
+            Assert.AreEqual("a", "@".Clamp("a", "f"));
+            Assert.AreEqual("f", "z".Clamp("a", "f"));
         }
 
         [TestMethod]

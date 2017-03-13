@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using Maps.Utilities;
+using System.Drawing;
 using System.Web;
 using System.Xml.Serialization;
 
@@ -15,7 +16,7 @@ namespace Maps.API
         private class Responder : DataResponder
         {
             public Responder(HttpContext context) : base(context) { }
-            public override string DefaultContentType => System.Net.Mime.MediaTypeNames.Text.Xml;
+            public override string DefaultContentType => ContentTypes.Text.Xml;
             public override void Process(ResourceManager resourceManager)
             {
                 // NOTE: This (re)initializes a static data structure used for 

@@ -1,10 +1,10 @@
 using Maps.Serialization;
+using Maps.Utilities;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net.Mime;
 
 namespace Maps
 {
@@ -79,7 +79,7 @@ namespace Maps
 
         public void Deserialize(Stream stream, string mediaType, ErrorLogger log = null)
         {
-            if (mediaType == null || mediaType == MediaTypeNames.Text.Plain || mediaType == MediaTypeNames.Application.Octet)
+            if (mediaType == null || mediaType == ContentTypes.Text.Plain || mediaType == ContentTypes.Application.Octet)
                 mediaType = SectorFileParser.SniffType(stream);
             SectorFileParser parser = SectorFileParser.ForType(mediaType);
             parser.Parse(stream, this, log);

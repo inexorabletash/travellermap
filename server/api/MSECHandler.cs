@@ -1,4 +1,5 @@
 ﻿using Maps.Serialization;
+using Maps.Utilities;
 using System.IO;
 using System.Web;
 
@@ -14,7 +15,7 @@ namespace Maps.API
         private class Responder : DataResponder
         {
             public Responder(HttpContext context) : base(context) { }
-            public override string DefaultContentType => System.Net.Mime.MediaTypeNames.Text.Plain;
+            public override string DefaultContentType => ContentTypes.Text.Plain;
 
             public override void Process(ResourceManager resourceManager)
             {

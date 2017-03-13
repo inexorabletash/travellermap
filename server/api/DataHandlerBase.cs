@@ -2,13 +2,13 @@
 
 using Json;
 using Maps.Rendering;
+using Maps.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Net.Mime;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
@@ -128,7 +128,7 @@ namespace Maps.API
                         SendJson(o);
                         return;
                     }
-                    if (type == MediaTypeNames.Text.Xml)
+                    if (type == ContentTypes.Text.Xml)
                     {
                         SendXml(o);
                         return;
@@ -139,13 +139,13 @@ namespace Maps.API
 
             public void SendXml(object o)
             {
-                Context.Response.ContentType = MediaTypeNames.Text.Xml;
+                Context.Response.ContentType = ContentTypes.Text.Xml;
                 new XmlSerializer(o.GetType()).Serialize(Context.Response.OutputStream, o);
             }
 
             public void SendText(object o, Encoding encoding = null)
             {
-                Context.Response.ContentType = MediaTypeNames.Text.Plain;
+                Context.Response.ContentType = ContentTypes.Text.Plain;
                 if (encoding == null)
                 {
                     Context.Response.Output.Write(o.ToString());

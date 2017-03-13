@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Maps.Utilities;
+using System;
 using System.Data.SqlClient;
 using System.IO;
 using System.Text;
@@ -35,7 +36,7 @@ namespace Maps.Admin
                 context.Response.TrySkipIisCustomErrors = true;
                 context.Response.StatusCode = 403;
                 context.Response.StatusDescription = "Forbidden";
-                context.Response.ContentType = System.Net.Mime.MediaTypeNames.Text.Plain;
+                context.Response.ContentType = ContentTypes.Text.Plain;
                 context.Response.Output.WriteLine("Incorrect secret or connection not secure.");
                 context.Response.Flush();
                 return;
@@ -62,7 +63,7 @@ namespace Maps.Admin
         protected override void Process(HttpContext context, ResourceManager resourceManager)
         {
             context.Server.ScriptTimeout = 3600; // An hour should be plenty
-            context.Response.ContentType = System.Net.Mime.MediaTypeNames.Text.Html;
+            context.Response.ContentType = ContentTypes.Text.Html;
             context.Response.BufferOutput = false;
 
             Action<string> WriteLine = (string s) => { context.Response.Write(s); context.Response.Write("\n"); };

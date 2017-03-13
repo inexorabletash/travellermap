@@ -1,4 +1,5 @@
-﻿using PdfSharp.Drawing;
+﻿using Maps.Utilities;
+using PdfSharp.Drawing;
 using PdfSharp.Pdf;
 using System;
 using System.Collections.Generic;
@@ -85,7 +86,7 @@ namespace Maps.Graphics
         public void DrawImageAlpha(float alpha, AbstractImage mimage, RectangleF targetRect)
         {
             // Clamp and Quantize
-            alpha = Util.Clamp(alpha, 0f, 1f);
+            alpha = alpha.Clamp(0f, 1f);
             alpha = (float)Math.Round(alpha * 16f) / 16f;
             if (alpha <= 0f)
                 return;

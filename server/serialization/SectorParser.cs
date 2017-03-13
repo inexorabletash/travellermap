@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Maps.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -158,7 +159,7 @@ namespace Maps.Serialization
                 if (world.Name == match.Groups["hex"].Value || placeholderNameRegex.IsMatch(world.Name))
                     world.Name = "";
                 if (world.Name == world.Name.ToUpperInvariant() && world.IsHi)
-                    world.Name = Util.FixCapitalization(world.Name);
+                    world.Name = world.Name.FixCapitalization();
 
                 worlds[world.X, world.Y] = world;
                 string rest = match.Groups["rest"].Value;
@@ -338,7 +339,7 @@ namespace Maps.Serialization
 
                 // Cleanup known placeholders
                 if (world.Name == world.Name.ToUpperInvariant() && world.IsHi)
-                    world.Name = Util.FixCapitalization(world.Name);
+                    world.Name = world.Name.FixCapitalization();
 
                 if (worlds[world.X, world.Y] != null)
                     errors?.Warning("Duplicate World", lineNumber, line);

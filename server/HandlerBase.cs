@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using Maps.Utilities;
+using System.Web;
 using System.Web.Routing;
 
 namespace Maps
@@ -12,7 +13,7 @@ namespace Maps
             response.TrySkipIisCustomErrors = true;
             response.StatusCode = code;
             response.StatusDescription = description;
-            response.ContentType = System.Net.Mime.MediaTypeNames.Text.Plain;
+            response.ContentType = ContentTypes.Text.Plain;
             response.Output.WriteLine(message);
         }
 

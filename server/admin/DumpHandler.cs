@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Net.Mime;
+﻿using Maps.Utilities;
+using System.Collections.Generic;
 
 namespace Maps.Admin
 {
@@ -15,7 +15,7 @@ namespace Maps.Admin
             // before any other objects (e.g. Worlds) are loaded.
             SectorMap map = SectorMap.GetInstance(resourceManager);
 
-            context.Response.ContentType = MediaTypeNames.Text.Plain;
+            context.Response.ContentType = ContentTypes.Text.Plain;
             context.Response.BufferOutput = false;
 
             foreach (Sector sector in map.Sectors)

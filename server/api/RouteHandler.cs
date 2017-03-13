@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Maps.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -16,8 +17,8 @@ namespace Maps.API
         private class Responder : DataResponder
         {
             public Responder(HttpContext context) : base(context) { }
-            public override string DefaultContentType => System.Net.Mime.MediaTypeNames.Text.Xml;
-            private class TravellerPathFinder : PathFinder.Map<World>
+            public override string DefaultContentType => ContentTypes.Text.Xml;
+            private class TravellerPathFinder : PathFinder.IMap<World>
             {
                 ResourceManager manager;
                 SectorMap.Milieu map;
@@ -43,7 +44,7 @@ namespace Maps.API
                     return PathFinder.FindPath<World>(this, start, end);
                 }
 
-                IEnumerable<World> PathFinder.Map<World>.Adjacent(World world)
+                IEnumerable<World> PathFinder.IMap<World>.Adjacent(World world)
                 {
                     if (world == null) throw new ArgumentNullException(nameof(world));
                     foreach (World w in new HexSelector(map, manager, Astrometrics.CoordinatesToLocation(world.Coordinates), Jump).Worlds)
@@ -60,7 +61,7 @@ namespace Maps.API
                     }
                 }
 
-                int PathFinder.Map<World>.Distance(World a, World b)
+                int PathFinder.IMap<World>.Distance(World a, World b)
                 {
                     if (a == null) throw new ArgumentNullException(nameof(a));
                     if (b == null) throw new ArgumentNullException(nameof(b));
@@ -115,7 +116,7 @@ namespace Maps.API
                 if (endWorld == null)
                     return;
 
-                int jump = Util.Clamp(GetIntOption("jump", 2), 0, 12);
+                int jump = GetIntOption("jump", 2).Clamp(0, 12);
 
                 var finder = new TravellerPathFinder(resourceManager, map, jump)
                 {

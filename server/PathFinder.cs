@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Maps.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -29,13 +30,13 @@ namespace Maps
             }
         }
 
-        public interface Map<T>
+        public interface IMap<T>
         {
             IEnumerable<T> Adjacent(T entity);
             int Distance(T a, T b);
         }
 
-        public static List<T> FindPath<T>(Map<T> map, T start, T end)
+        public static List<T> FindPath<T>(IMap<T> map, T start, T end)
         {
             var open = new PriorityQueue<Node<T>>();
             var openSet = new HashSet<T>();

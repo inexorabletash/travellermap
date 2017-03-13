@@ -1,4 +1,5 @@
 using Maps.Graphics;
+using Maps.Utilities;
 using System;
 using System.Drawing;
 using System.Text.RegularExpressions;
@@ -748,8 +749,8 @@ namespace Maps.Rendering
             }
 
             preferredMimeType = (style == Style.Candy)
-                ? System.Net.Mime.MediaTypeNames.Image.Jpeg
-                : Util.MediaTypeName_Image_Png;
+                ? ContentTypes.Image.Jpeg
+                : ContentTypes.Image.Png;
 
             pseudoRandomStars.fillColor = foregroundColor;
             droyneWorlds.textColor = minorHomeWorlds.textColor = ancientsWorlds.textColor = 

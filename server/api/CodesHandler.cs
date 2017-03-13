@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using Maps.Utilities;
+using System.Linq;
 using System.Web;
 
 namespace Maps.API
@@ -13,7 +14,7 @@ namespace Maps.API
         private class Responder : DataResponder
         {
             public Responder(HttpContext context) : base(context) { }
-            public override string DefaultContentType => System.Net.Mime.MediaTypeNames.Text.Xml;
+            public override string DefaultContentType => ContentTypes.Text.Xml;
             public override void Process(ResourceManager resourceManager)
             {
                 SendResult(SecondSurvey.SophontCodes.Select(code => new Results.SophontCode(code, SecondSurvey.SophontCodeToName(code))).ToList());
@@ -31,7 +32,7 @@ namespace Maps.API
         private class Responder : DataResponder
         {
             public Responder(HttpContext context) : base(context) { }
-            public override string DefaultContentType => System.Net.Mime.MediaTypeNames.Text.Xml;
+            public override string DefaultContentType => ContentTypes.Text.Xml;
 
             public override void Process(ResourceManager resourceManager)
             {

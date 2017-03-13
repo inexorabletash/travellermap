@@ -1,5 +1,6 @@
 ﻿using Maps.Graphics;
 using Maps.Rendering;
+using Maps.Utilities;
 using System;
 using System.Drawing;
 using System.Web;
@@ -225,7 +226,7 @@ namespace Maps.API
                 }
 
                 const double NormalScale = 64; // pixels/parsec - standard subsector-rendering scale
-                double scale = Util.Clamp(GetDoubleOption("scale", NormalScale), MinScale, MaxScale);
+                double scale = GetDoubleOption("scale", NormalScale).Clamp(MinScale, MaxScale);
 
                 int rot = GetIntOption("rotation", 0) % 4;
                 int hrot = GetIntOption("hrotation", 0);

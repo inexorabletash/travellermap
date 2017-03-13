@@ -1,4 +1,5 @@
 ﻿using Maps.Graphics;
+using Maps.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -138,7 +139,7 @@ namespace Maps.Rendering
                     break;
             }
 
-            Util.ForEachZip(lines, sizes, (line, sz) =>
+            lines.ForEachZip(sizes, (line, sz) =>
             {
                 g.DrawString(line, font, brush, x + widthFactor * sz.Width, y, Maps.Graphics.StringAlignment.Baseline);
                 y += lineSpacing;
