@@ -1755,7 +1755,7 @@ var Util = {
     [
       'silly', 'routes', 'rifts', 'dimunofficial',
       'sscoords', 'allhexes',
-      'dw', 'an', 'mh', 'po', 'im', 'stellar'
+      'dw', 'an', 'mh', 'po', 'im', 'cp', 'stellar'
     ].forEach(function(name) {
       if (name in params)
         this.namedOptions.set(name, int(name));

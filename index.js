@@ -396,6 +396,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
   bindCheckedToNamedOption('#cbImpOverlay', 'im');
   bindCheckedToNamedOption('#cbPopOverlay', 'po');
+  bindCheckedToNamedOption('#cbCapitalOverlay', 'cp');
   bindCheckedToNamedOption('#cbDroyneWorlds', 'dw');
   bindCheckedToNamedOption('#cbAncientWorlds', 'an');
   bindCheckedToNamedOption('#cbMinorHomeworlds', 'mh');
