@@ -420,6 +420,10 @@ namespace Maps.Rendering
             importanceOverlay.pen = new PenInfo(Color.Empty, 0.03f * penScale, DashStyle.Dot);
             highlightWorlds.pen = new PenInfo(Color.Empty, 0.03f * penScale, DashStyle.DashDot);
 
+            capitalOverlay.fillColor = Color.FromArgb(0x80, Color.Green);
+            capitalOverlayAltA.fillColor = Color.FromArgb(0x80, Color.Blue);
+            capitalOverlayAltB.fillColor = Color.FromArgb(0x80, Color.Yellow);
+
             switch (style)
             {
                 case Style.Poster:
@@ -845,9 +849,12 @@ namespace Maps.Rendering
         public bool showWorldDetailColors;
         public StyleElement populationOverlay;
         public StyleElement importanceOverlay;
+        public StyleElement capitalOverlay;
+        public StyleElement capitalOverlayAltA;
+        public StyleElement capitalOverlayAltB;
         public bool showStellarOverlay;
 
-        public bool HasWorldOverlays => populationOverlay.visible || importanceOverlay.visible || highlightWorlds.visible || showStellarOverlay;
+        public bool HasWorldOverlays => populationOverlay.visible || importanceOverlay.visible || highlightWorlds.visible || showStellarOverlay || capitalOverlay.visible;
         public PointF StarportPosition;
         public PointF GasGiantPosition;
         public PointF AllegiancePosition;

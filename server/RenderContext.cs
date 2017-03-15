@@ -962,6 +962,21 @@ namespace Maps.Rendering
                     }
                     #endregion
 
+                    #region Capital Overlay
+                    if (styles.capitalOverlay.visible)
+                    {
+                        bool hasIm = SecondSurvey.Importance(world) >= 4;
+                        bool hasCp = world.IsCapital;
+
+                        if (hasIm && hasCp)
+                            DrawOverlay(styles.capitalOverlay, 2 * Astrometrics.ParsecScaleX, ref solidBrush, ref pen);
+                        else if (hasIm)
+                            DrawOverlay(styles.capitalOverlayAltA, 2 * Astrometrics.ParsecScaleX, ref solidBrush, ref pen);
+                        else if (hasCp)
+                            DrawOverlay(styles.capitalOverlayAltB, 2 * Astrometrics.ParsecScaleX, ref solidBrush, ref pen);
+                    }
+                    #endregion
+
                     #region Highlight Worlds
                     if (styles.highlightWorlds.visible && styles.highlightWorldsPattern.Matches(world))
                     {

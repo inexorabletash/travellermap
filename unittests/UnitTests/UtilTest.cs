@@ -106,6 +106,25 @@ namespace UnitTests
             Assert.IsFalse(set.Contains("a"));
             Assert.IsFalse(set.Contains("b"));
         }
+
+        [TestMethod]
+        public void PriorityQueueTest()
+        {
+            var pq = new PriorityQueue<int>();
+            pq.Add(3);
+            pq.Add(2);
+            pq.Add(4);
+            pq.Add(5);
+            pq.Add(1);
+            pq.Add(3);
+            Assert.AreEqual(6, pq.Count);
+            Assert.AreEqual(1, pq.Dequeue());
+            Assert.AreEqual(2, pq.Dequeue());
+            Assert.AreEqual(3, pq.Dequeue());
+            Assert.AreEqual(3, pq.Dequeue());
+            Assert.AreEqual(4, pq.Dequeue());
+            Assert.AreEqual(5, pq.Dequeue());
+        }
     }
 
     [TestClass]

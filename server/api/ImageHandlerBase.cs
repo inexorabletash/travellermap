@@ -64,6 +64,9 @@ namespace Maps.API
                 if (GetBoolOption("im", queryDefaults: queryDefaults, defaultValue: false))
                     ctx.Styles.importanceOverlay.visible = true;
 
+                if (GetBoolOption("cp", queryDefaults: queryDefaults, defaultValue: false))
+                    ctx.Styles.capitalOverlay.visible = true;
+
                 if (GetBoolOption("stellar", queryDefaults: queryDefaults, defaultValue: false))
                     ctx.Styles.showStellarOverlay = true;
 
