@@ -98,7 +98,7 @@ namespace Maps
         //   w          ::= " "
         //
         // Notes:
-        //   * "Un" is from Mendan 0221 (verified in Challenge #46)
+        //   * "Un" is from Mendan 0221 (verified in Challenge #46) [Replaced in T5SS]
         //   * "BH" is for Far Frontiers 2526 Shadowsand (per "Rescue on Galatea")
         //
         // Future: 

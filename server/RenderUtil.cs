@@ -658,12 +658,14 @@ namespace Maps.Rendering
 
         private static float[] dx = new float[] {
                     0.0f,
-                    CosF(Math.PI * 1 / 3),CosF(Math.PI * 2 / 3),CosF(Math.PI * 3 / 3),
-                    CosF(Math.PI * 4 / 3),CosF(Math.PI * 5 / 3),CosF(Math.PI * 6 / 3) };
+                    CosF(Math.PI * 1 / 3), CosF(Math.PI * 2 / 3), CosF(Math.PI * 3 / 3),
+                    CosF(Math.PI * 4 / 3), CosF(Math.PI * 5 / 3), CosF(Math.PI * 6 / 3)
+        };
         private static float[] dy = new float[] {
                     0.0f,
-                    SinF(Math.PI * 1 / 3),SinF(Math.PI * 2 / 3),SinF(Math.PI * 3 / 3),
-                    SinF(Math.PI * 4 / 3),SinF(Math.PI * 5 / 3),SinF(Math.PI * 6 / 3) };
+                    SinF(Math.PI * 1 / 3), SinF(Math.PI * 2 / 3), SinF(Math.PI * 3 / 3),
+                    SinF(Math.PI * 4 / 3), SinF(Math.PI * 5 / 3), SinF(Math.PI * 6 / 3)
+        };
         public static PointF Offset(int index)
         {
             if (index >= dx.Length)

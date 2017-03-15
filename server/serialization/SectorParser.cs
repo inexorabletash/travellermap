@@ -10,7 +10,7 @@ namespace Maps.Serialization
 {
     internal abstract class SectorFileParser
     {
-        public const int BUFFER_SIZE = 32768;
+        private const int BUFFER_SIZE = 32768;
 
         public abstract string Name { get; }
         public abstract Encoding Encoding { get; }
