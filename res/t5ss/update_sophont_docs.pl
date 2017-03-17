@@ -40,6 +40,9 @@ my @lines;
         my ($code, $sophont, $location) = map { trim($_) } split(/\t/);
         $sophont =~ s|/|/&#x200B;|g;
         $location =~ s|/|/&#x200B;|g;
+        $location =~ s|various|<i>various</i>|g;
+        $location =~ s|\b(\w{3,4})\b|<a class=stealth href="https://travellermap.com/go/$1">$1</a>|ig;
+        $location =~ s|&#x200B;|<wbr>|g;
         push @lines, "      <tr><td><code>$code</code><td>$sophont<td>$location";
     }
     close $fh;

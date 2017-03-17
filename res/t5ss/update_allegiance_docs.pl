@@ -39,6 +39,9 @@ my @lines;
         die "Unexpected: $_\n" unless m/^([A-Za-z0-9']{4}) *\t/;
         my ($alleg, $legacy, $base, $name, $location) = map { trim($_) } split(/\t/);
         $location =~ s|/|/&#x200B;|g;
+        $location =~ s|various|<i>various</i>|g;
+        $location =~ s|\b(\w{3,4})\b|<a class=stealth href="https://travellermap.com/go/$1">$1</a>|ig;
+        $location =~ s|&#x200B;|<wbr>|g;
         push @lines, "      <tr><td><code>$alleg</code><td>$name<td>$location";
     }
     close $fh;

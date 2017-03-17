@@ -101,6 +101,13 @@ a.reference {
   font-size: smaller;
   text-decoration: none;
 }
+a.stealth {
+  text-decoration: none;
+}
+a:hover.stealth {
+  text-decoration: underline;
+}
+
 
 dfn, cite {
   font-style: italic;
