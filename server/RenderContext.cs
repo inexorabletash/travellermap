@@ -1344,11 +1344,9 @@ namespace Maps.Rendering
 #region Zone
                         if (styles.worldDetails.HasFlag(WorldDetails.Zone))
                         {
-                            if (world.IsAmber || world.IsRed || world.IsBlue)
+                            if (world.IsAmber || world.IsRed)
                             {
-                                PenInfo pi =
-                                    world.IsAmber ? styles.amberZone.pen :
-                                    world.IsRed ? styles.redZone.pen : styles.blueZone.pen;
+                                PenInfo pi = world.IsAmber ? styles.amberZone.pen : styles.redZone.pen;
                                 pi.Apply(ref pen);
 
                                 decorationRadius += 0.1f;
@@ -1465,11 +1463,10 @@ namespace Maps.Rendering
 
         private Stylesheet.StyleElement? ZoneStyle(World world)
         {
-            if (world.IsAmber || world.IsRed || world.IsBlue)
+            if (world.IsAmber || world.IsRed)
             {
                 Stylesheet.StyleElement elem =
-                    world.IsAmber ? styles.amberZone :
-                    world.IsRed ? styles.redZone : styles.blueZone;
+                    world.IsAmber ? styles.amberZone : styles.redZone;
                 return elem;
             }
             return null;

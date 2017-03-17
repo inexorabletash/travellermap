@@ -249,7 +249,7 @@ namespace Maps
 
         internal bool IsAmber => Zone == "A" || Zone == "U";
         internal bool IsRed => Zone == "R" || Zone == "F";
-        internal bool IsBlue => Zone == "B";
+        internal bool IsTNEBalkanized => Zone == "B";
 
         [XmlAttribute("Sector"), JsonName("Sector")]
         public string SectorName => Sector.Names[0].Text;

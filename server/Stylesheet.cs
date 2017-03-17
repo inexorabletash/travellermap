@@ -344,7 +344,6 @@ namespace Maps.Rendering
 
             capitals.fillColor = Color.Wheat;
             capitals.textColor = Color.Red;
-            blueZone.pen.color = Color.Blue;
             amberZone.pen.color = Color.Gold;
             redZone.pen.color = Color.Red;
             macroBorders.pen.color = Color.Red;
@@ -407,7 +406,7 @@ namespace Maps.Rendering
             macroBorders.pen.width = borderPenWidth;
             microRoutes.pen.width = routePenWidth;
 
-            amberZone.pen.width = redZone.pen.width = blueZone.pen.width = 0.05f * penScale;
+            amberZone.pen.width = redZone.pen.width = 0.05f * penScale;
 
             macroRoutes.pen.width = borderPenWidth;
             macroRoutes.pen.dashStyle = DashStyle.Dash;
@@ -439,7 +438,6 @@ namespace Maps.Rendering
                         capitals.fillColor = Color.DarkGray;
                         capitals.textColor = Color.Black;
                         amberZone.pen.color = Color.LightGray;
-                        blueZone.pen.color = Color.Gray; // TODO: make dashed
                         redZone.pen.color = Color.Black;
                         macroBorders.pen.color = Color.Black;
                         macroRoutes.pen.color = Color.Gray;
@@ -492,7 +490,6 @@ namespace Maps.Rendering
                         capitals.textColor = inkColor;
                         amberZone.pen.color = inkColor;
                         amberZone.pen.width = onePixel * 2;
-                        blueZone.pen.color = inkColor; // TODO: make dashed
                         redZone.pen.color = Color.Empty;
                         redZone.fillColor = Color.FromArgb(0x80, inkColor);
                         
@@ -745,7 +742,7 @@ namespace Maps.Rendering
             {
                 subsectorNames.textColor = sectorName.textColor = Color.FromArgb(128, Color.Goldenrod);
 
-                amberZone.pen.width = redZone.pen.width = blueZone.pen.width = 0.035f;
+                amberZone.pen.width = redZone.pen.width = 0.035f;
 
                 microRoutes.pen.width = scale < CandyMaxRouteRelativeScale ? routePenWidth : routePenWidth / 2;
                 macroBorders.pen.width = scale < CandyMaxBorderRelativeScale ? borderPenWidth : borderPenWidth / 4;
@@ -889,7 +886,6 @@ namespace Maps.Rendering
         public StyleElement subsectorNames;
         public StyleElement amberZone;
         public StyleElement redZone;
-        public StyleElement blueZone;
         public StyleElement sectorGrid;
         public StyleElement subsectorGrid;
         public StyleElement parsecGrid;
