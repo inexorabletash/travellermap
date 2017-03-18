@@ -2,7 +2,7 @@
 <title>Printable Route - Traveller Map</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
 <script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.29/polyfill.min.js"></script>
-<script src="../map.js?update=2016-10-13"></script>
+<script src="../map.js?update=2017-03-14"></script>
 <script>
 window.addEventListener('DOMContentLoaded', function() {
   var $ = document.querySelector.bind(document);
@@ -130,6 +130,10 @@ body {
   background-color: white;
 }
 
+.copyright {
+  font-family: Arial;
+}
+
 #routePath {
   margin-bottom: 10px; text-align: left;
 }
@@ -196,6 +200,6 @@ h2 {
   your local class A or B starport.
 
   The <em class=product>Traveller</em> game in all forms is owned by
-  Far Future Enterprises. Copyright &copy; 1977 &ndash; 2017 Far
-  Future Enterprises.
+  Far Future Enterprises. Copyright <span class=copyright>&copy;</span>
+  1977 &ndash; 2017 Far Future Enterprises.
 </div>
