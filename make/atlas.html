@@ -429,7 +429,7 @@ table.uwp-data {
 /* Index ============================== */
 
 .index {
-  font-size: 9.5pt;
+  font-size: 16pt;
   font-family: Optima, Marcellus, serif;
 }
 .dot-leaders { overflow-x: hidden; }
@@ -863,13 +863,14 @@ table.uwp-data {
     <div class="page">
       <div class="content index">
         <h1 class="underline">Sector Index</h1>
-        {{#index}}
-        <div class="dot-leaders">
-          <span>{{name}}</span>
-          <span>{{page}}</span>
+        <div style="column-count: 2">
+          {{#index}}
+          <div class="dot-leaders">
+            <span>{{name}}</span>
+            <span>{{page}}</span>
+          </div>
+          {{/index}}
         </div>
-        {{/index}}
-        </ol>
       </div>
       <div class=pagenum></div>
     </div>
