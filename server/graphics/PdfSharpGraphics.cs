@@ -194,18 +194,24 @@ namespace Maps.Graphics
         #endregion
 
         #region IDisposable Support
-        void IDisposable.Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
+        private bool disposedValue = false; // To detect redundant calls
 
         protected virtual void Dispose(bool disposing)
         {
-            if (disposing)
+            if (!disposedValue)
             {
-                g?.Dispose();
+                if (disposing)
+                {
+                    g.Dispose();
+                    g = null;
+                }
+                disposedValue = true;
             }
+        }
+
+        void IDisposable.Dispose()
+        {
+            Dispose(true);
         }
         #endregion
 

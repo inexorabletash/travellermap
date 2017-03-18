@@ -1117,26 +1117,31 @@ namespace Maps.Rendering
         private Font starportFont;
         public Font StarportFont => starportFont ?? (starportFont = sheet.starportFont.MakeFont());
 
+        private bool disposed;
         public void Dispose() { Dispose(true); GC.SuppressFinalize(this); }
         private void Dispose(bool disposing)
         {
-#if DISPOSABLE_RESOURCES
-            if( disposing )
+            if (!disposed)
             {
-                sectorNameFont?.Dispose();
-                subsectorNameFont?.Dispose();
-                microPolityNameFont?.Dispose();
-                microPolityNameSmallFont?.Dispose();
+#if DISPOSABLE_RESOURCES
+                if( disposing )
+                {
+                    this.sectorNameFont?.Dispose();
+                    this.subsectorNameFont?.Dispose();
+                    this.microPolityNameFont?.Dispose();
+                    this.microPolityNameSmallFont?.Dispose();
 
-                worldFont?.Dispose();
-                symbolFont?.Dispose();
-                glyphFont?.Dispose();
-                hexFont?.Dispose();
-                smallFont?.Dispose();
-                largeFont?.Dispose();
-                starportFont?.Dispose();
-            }
+                    this.worldFont?.Dispose();
+                    this.symbolFont?.Dispose();
+                    this.glyphFont?.Dispose();
+                    this.hexFont?.Dispose();
+                    this.smallFont?.Dispose();
+                    this.largeFont?.Dispose();
+                    this.starportFont?.Dispose();
+                }
 #endif
+                disposed = true;
+            }
         }
     }
 }
