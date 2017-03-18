@@ -194,24 +194,23 @@ namespace Maps.Graphics
         #endregion
 
         #region IDisposable Support
-        private bool disposedValue = false; // To detect redundant calls
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!disposedValue)
-            {
-                if (disposing)
-                {
-                    g.Dispose();
-                    g = null;
-                }
-                disposedValue = true;
-            }
-        }
+        private bool disposed = false;
 
         void IDisposable.Dispose()
         {
             Dispose(true);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposed)
+                return;
+            if (disposing)
+            {
+                g.Dispose();
+                g = null;
+            }
+            disposed = true;
         }
         #endregion
 

@@ -1117,31 +1117,49 @@ namespace Maps.Rendering
         private Font starportFont;
         public Font StarportFont => starportFont ?? (starportFont = sheet.starportFont.MakeFont());
 
-        private bool disposed;
-        public void Dispose() { Dispose(true); GC.SuppressFinalize(this); }
-        private void Dispose(bool disposing)
-        {
-            if (!disposed)
-            {
-#if DISPOSABLE_RESOURCES
-                if( disposing )
-                {
-                    this.sectorNameFont?.Dispose();
-                    this.subsectorNameFont?.Dispose();
-                    this.microPolityNameFont?.Dispose();
-                    this.microPolityNameSmallFont?.Dispose();
+        #region IDisposable Support
+        private bool disposed = false;
 
-                    this.worldFont?.Dispose();
-                    this.symbolFont?.Dispose();
-                    this.glyphFont?.Dispose();
-                    this.hexFont?.Dispose();
-                    this.smallFont?.Dispose();
-                    this.largeFont?.Dispose();
-                    this.starportFont?.Dispose();
-                }
-#endif
-                disposed = true;
-            }
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposed)
+                return;
+#if DISPOSABLE_RESOURCES
+            if( disposing )
+            {
+                sectorNameFont?.Dispose();
+                sectorNameFont = null;
+                subsectorNameFont?.Dispose();
+                subsectorNameFont = null;
+                microPolityNameFont?.Dispose();
+                microPolityNameFont = null;
+                microPolityNameSmallFont?.Dispose();
+                microPolityNameSmallFont = null;
+
+                worldFont?.Dispose();
+                worldFont = null;
+                symbolFont?.Dispose();
+                symbolFont = null;
+                glyphFont?.Dispose();
+                glyphFont = null;
+                hexFont?.Dispose();
+                hexFont = null;
+                smallFont?.Dispose();
+                smallFont = null;
+                largeFont?.Dispose();
+                largeFont = null;
+                starportFont?.Dispose();
+                starportFont = null;
+            }
+#endif
+            disposed = true;
+        }
+        #endregion
     }
 }
