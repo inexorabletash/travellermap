@@ -792,26 +792,26 @@ table.uwp-data {
     <div class="page">
       <div class="sector_data">
         <h2>{{../name}} &mdash; Page {{index}} of {{../page_count}}</h2>
-        <table>
+        <table style="table-layout: fixed; width: 0">
           <tr>
             {{#columns}}
-            <td class="column">
-              <table class="uwp-data">
+            <td class="column" style="width: 3.8in">
+              <table class="uwp-data" style="table-layout: fixed; width: 0">
                 <tr>
-                  <th>Hex</th>
-                  <th>Name</th>
-                  <th>UWP</th>
-                  <th>Remarks</th>
-                  <th>{Ix}</th>
-                  <th>(Ex)</th>
-                  <th>[Cx]</th>
-                  <th>N</th>
-                  <th>B</th>
-                  <th>Z</th>
-                  <th>PBG</th>
-                  <th>W</th>
-                  <th>A</th>
-                  <th>Stellar</th>
+                  <th style="width: 0.18in">Hex</th>
+                  <th style="width: 0.49in">Name</th>
+                  <th style="width: 0.34in">UWP</th>
+                  <th style="width: 0.67in">Remarks</th>
+                  <th style="width: 0.19in">{Ix}</th>
+                  <th style="width: 0.25in">(Ex)</th>
+                  <th style="width: 0.2in">[Cx]</th>
+                  <th style="width: 0.16in">N</th>
+                  <th style="width: 0.1in">B</th>
+                  <th style="width: 0.06in">Z</th>
+                  <th style="width: 0.13in">PBG</th>
+                  <th style="width: 0.09in">W</th>
+                  <th style="width: 0.175in">A</th>
+                  <th style="width: 0.4in">Stellar</th>
                 </tr>
                 {{#worlds}}
                 <tr>
