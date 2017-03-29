@@ -42,7 +42,7 @@ my @lines;
         $location =~ s|various|<i>various</i>|g;
         $location =~ s|\b(\w{3,4})\b|<a class=stealth href="https://travellermap.com/go/$1">$1</a>|ig;
         $location =~ s|&#x200B;|<wbr>|g;
-        push @lines, "      <tr><td><code>$alleg</code><td>$name<td>$location";
+        push @lines, "      <tr><td><code>$alleg</code><td><code>$legacy</code></td><td>$name<td>$location";
     }
     close $fh;
 }

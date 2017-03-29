@@ -34,6 +34,7 @@
   td, th {
     border: none;
   }
+  .twocode th:nth-child(2), .twocode td:nth-child(2),
   td:first-child, th:first-child {
     border: 1pt solid black;
   }
@@ -137,8 +138,9 @@
     <h2>Hex Location</h2>
     <div class="example"><code><span class="highlight">1910</span> Regina A788899-C Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF NS - 703 8 ImDd F7 V BD M3 V</code></div>
     <p>
-      The hexagon location of the world within a sector, given as a
-      four digit number. The first two digits are the distance from
+      The location of the world within a sector, given as a
+      four digit number identifying a position on a hexagonal grid.
+      The first two digits are the distance from
       the spinward edge in parsecs ranging from <code>01</code>
       through <code>32</code>. The second two digits are the distance
       from the coreward edge in parsecs ranging from <code>01</code>
@@ -161,7 +163,7 @@
     <div class="example"><code>1910 Regina <span class="highlight">A788899-C</span> Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF NS - 703 8 ImDd F7 V BD M3 V</code></div>
     <p>
       The UWP gives a compact description of the physical and cultural
-      aspects of the main world, as well the starport facilities and
+      aspects of the Main World, as well the starport facilities and
       available technology. The fields are respectively:
     </p>
     <table>
@@ -208,7 +210,7 @@
       <div class="example"><code>1910 Regina <span class="highlight">A</span>788899-C Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF NS - 703 8 ImDd F7 V BD M3 V</code></div>
       <p>
         Starport indicates the best quality starport in the star
-        system.
+        system available to travellers.
       </p>
       <table>
         <tr>
@@ -857,7 +859,7 @@
     </h4>
 
     <p>
-      Worlds in the Wilds (allegiance code: <code>Wi</code>) use a different set of
+      Worlds in the Wilds (<a href="#allegiance">allegiance</a> code: <code>Wi</code>) use a different set of
       government codes.
     </p>
 
@@ -1153,7 +1155,7 @@
     <div class="example"><code>1910 Regina A788899-C <span class="highlight">Ri Pa Ph An Cp (Amindii)2</span>   { 4 }  (D7E+4) [9C6D] BcCeF NS - 703 8 ImDd F7 V BD M3 V</code></div>
     <p>
       Remarks and trade classifications indicate obvious or important
-      characteristics for the main world in the system. They serve to
+      characteristics for the Main World in the system. They serve to
       show the potential for a world based on its capacity as a source
       of trade goods, a market for trade goods, or both.
     </p>
@@ -1749,7 +1751,7 @@
     <div class="example"><code>1910 Regina A788899-C Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF NS - 7<span class="highlight">0</span>3 8 ImDd F7 V BD M3 V</code></div>
     <p>
       The second <a href="#ehex">eHex</a> digit is the number of
-      planetoid belts in the system. A main world of
+      planetoid belts in the system. A Main World of
       size <code>0</code> is termed an asteriod belt, and is not
       counted here.
     </p>
@@ -1767,11 +1769,17 @@
     <div class="example"><code>1910 Regina A788899-C Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF NS - 703 <span class="highlight">8</span> ImDd F7 V BD M3 V</code></div>
     <p>
       The number of "worlds" in the system. This is given as a decimal
-      integer, and will always be at least 1 (the main world) plus the
+      integer, and will always be at least 1 (the Main World) plus the
       number of planetoid belts (see <a href="#pbg">PBG</a>) plus the
       number of gas giants (see <a href="#pbg">PBG</a>) but will
       include other planets orbiting the star(s) in the system.
     </p>
+    <p>
+      Note that gas giant satellites are <em>not</em> counted, unless
+      the satellite is the Main World itself - identified with
+      <a href="#remark">remark</a> <code>Sa</code>.
+    </p>
+
   </section>
 
   <section id="allegiance">
@@ -1786,217 +1794,218 @@
 
     <p>
       The allegiance code is a 4-character code which is selected to
-      uniquely identify a polity in Charted Space.
+      uniquely identify a polity in Charted Space. Previous editions
+      used a 2-character code (see below).
     </p>
 
-    <table>
-      <tr><th>Code<th>Description<th>Location
+    <table class=twocode>
+      <tr><th>Code<th>Pre-T5<th>Description<th>Location
         <!-- Allegiance Table Begin -->
-      <tr><td><code>3EoG</code><td>Third Empire of Gashikan<td><a class=stealth href="https://travellermap.com/go/Mend">Mend</a>/<wbr><a class=stealth href="https://travellermap.com/go/Gash">Gash</a>/<wbr><a class=stealth href="https://travellermap.com/go/Tren">Tren</a>
-      <tr><td><code>4Wor</code><td>Four Worlds<td><a class=stealth href="https://travellermap.com/go/Farf">Farf</a>
-      <tr><td><code>AkUn</code><td>Akeena Union<td><a class=stealth href="https://travellermap.com/go/Gate">Gate</a>
-      <tr><td><code>AlCo</code><td>Altarean Confederation<td><a class=stealth href="https://travellermap.com/go/Vang">Vang</a>
-      <tr><td><code>AnTC</code><td>Anubian Trade Coalition<td><a class=stealth href="https://travellermap.com/go/Hint">Hint</a>
-      <tr><td><code>AsIf</code><td>Iyeaao'fte (Tlaukhu client state)<td><a class=stealth href="https://travellermap.com/go/Ustr">Ustr</a>
-      <tr><td><code>AsMw</code><td>Aslan Hierate, single multiple-world clan dominates<td><a class=stealth href="https://travellermap.com/go/Akti">Akti</a>/<wbr><a class=stealth href="https://travellermap.com/go/Dark">Dark</a>/<wbr><a class=stealth href="https://travellermap.com/go/Eali">Eali</a>/<wbr><a class=stealth href="https://travellermap.com/go/Hlak">Hlak</a>/<wbr><a class=stealth href="https://travellermap.com/go/Iwah">Iwah</a>/<wbr><a class=stealth href="https://travellermap.com/go/Reav">Reav</a>/<wbr><a class=stealth href="https://travellermap.com/go/Rift">Rift</a>/<wbr><a class=stealth href="https://travellermap.com/go/Stai">Stai</a>/<wbr><a class=stealth href="https://travellermap.com/go/Troj">Troj</a>/<wbr><a class=stealth href="https://travellermap.com/go/Uist">Uist</a>/<wbr><a class=stealth href="https://travellermap.com/go/Ustr">Ustr</a>/<wbr><a class=stealth href="https://travellermap.com/go/Verg">Verg</a>
-      <tr><td><code>AsOf</code><td>Oleaiy'fte (Tlaukhu client state)<td><a class=stealth href="https://travellermap.com/go/Ustr">Ustr</a>
-      <tr><td><code>AsSc</code><td>Aslan Hierate, multiple clans split control<td><a class=stealth href="https://travellermap.com/go/Akti">Akti</a>/<wbr><a class=stealth href="https://travellermap.com/go/Dark">Dark</a>/<wbr><a class=stealth href="https://travellermap.com/go/Eali">Eali</a>/<wbr><a class=stealth href="https://travellermap.com/go/Hlak">Hlak</a>/<wbr><a class=stealth href="https://travellermap.com/go/Iwah">Iwah</a>/<wbr><a class=stealth href="https://travellermap.com/go/Reav">Reav</a>/<wbr><a class=stealth href="https://travellermap.com/go/Rift">Rift</a>/<wbr><a class=stealth href="https://travellermap.com/go/Stai">Stai</a>/<wbr><a class=stealth href="https://travellermap.com/go/Troj">Troj</a>/<wbr><a class=stealth href="https://travellermap.com/go/Uist">Uist</a>/<wbr><a class=stealth href="https://travellermap.com/go/Ustr">Ustr</a>
-      <tr><td><code>AsSF</code><td>Aslan Hierate, small facility (temporary)<td>
-      <tr><td><code>AsT0</code><td>Aslan Hierate, Tlaukhu control, Yerlyaruiwo (1), Hrawoao (13), Eisohiyw (14), Ferekhearl (19)<td><a class=stealth href="https://travellermap.com/go/Akti">Akti</a>/<wbr><a class=stealth href="https://travellermap.com/go/Dark">Dark</a>/<wbr><a class=stealth href="https://travellermap.com/go/Eali">Eali</a>/<wbr><a class=stealth href="https://travellermap.com/go/Hlak">Hlak</a>/<wbr><a class=stealth href="https://travellermap.com/go/Iwah">Iwah</a>/<wbr><a class=stealth href="https://travellermap.com/go/Reav">Reav</a>/<wbr><a class=stealth href="https://travellermap.com/go/Rift">Rift</a>/<wbr><a class=stealth href="https://travellermap.com/go/Stai">Stai</a>/<wbr><a class=stealth href="https://travellermap.com/go/Troj">Troj</a>/<wbr><a class=stealth href="https://travellermap.com/go/Uist">Uist</a>/<wbr><a class=stealth href="https://travellermap.com/go/Ustr">Ustr</a>
-      <tr><td><code>AsT1</code><td>Aslan Hierate, Tlaukhu control, Khauleairl (2), Estoieie' (16), Toaseilwi (22)<td><a class=stealth href="https://travellermap.com/go/Akti">Akti</a>/<wbr><a class=stealth href="https://travellermap.com/go/Dark">Dark</a>/<wbr><a class=stealth href="https://travellermap.com/go/Eali">Eali</a>/<wbr><a class=stealth href="https://travellermap.com/go/Hlak">Hlak</a>/<wbr><a class=stealth href="https://travellermap.com/go/Iwah">Iwah</a>/<wbr><a class=stealth href="https://travellermap.com/go/Reav">Reav</a>/<wbr><a class=stealth href="https://travellermap.com/go/Rift">Rift</a>/<wbr><a class=stealth href="https://travellermap.com/go/Stai">Stai</a>/<wbr><a class=stealth href="https://travellermap.com/go/Troj">Troj</a>/<wbr><a class=stealth href="https://travellermap.com/go/Uist">Uist</a>/<wbr><a class=stealth href="https://travellermap.com/go/Ustr">Ustr</a>
-      <tr><td><code>AsT2</code><td>Aslan Hierate, Tlaukhu control, Syoisuis (3)<td><a class=stealth href="https://travellermap.com/go/Akti">Akti</a>/<wbr><a class=stealth href="https://travellermap.com/go/Dark">Dark</a>/<wbr><a class=stealth href="https://travellermap.com/go/Eali">Eali</a>/<wbr><a class=stealth href="https://travellermap.com/go/Hlak">Hlak</a>/<wbr><a class=stealth href="https://travellermap.com/go/Iwah">Iwah</a>/<wbr><a class=stealth href="https://travellermap.com/go/Reav">Reav</a>/<wbr><a class=stealth href="https://travellermap.com/go/Rift">Rift</a>/<wbr><a class=stealth href="https://travellermap.com/go/Stai">Stai</a>/<wbr><a class=stealth href="https://travellermap.com/go/Troj">Troj</a>/<wbr><a class=stealth href="https://travellermap.com/go/Uist">Uist</a>/<wbr><a class=stealth href="https://travellermap.com/go/Ustr">Ustr</a>
-      <tr><td><code>AsT3</code><td>Aslan Hierate, Tlaukhu control, Tralyeaeawi (4), Yulraleh (12), Aiheilar (25), Riyhalaei (28)<td><a class=stealth href="https://travellermap.com/go/Akti">Akti</a>/<wbr><a class=stealth href="https://travellermap.com/go/Dark">Dark</a>/<wbr><a class=stealth href="https://travellermap.com/go/Eali">Eali</a>/<wbr><a class=stealth href="https://travellermap.com/go/Hlak">Hlak</a>/<wbr><a class=stealth href="https://travellermap.com/go/Iwah">Iwah</a>/<wbr><a class=stealth href="https://travellermap.com/go/Reav">Reav</a>/<wbr><a class=stealth href="https://travellermap.com/go/Rift">Rift</a>/<wbr><a class=stealth href="https://travellermap.com/go/Stai">Stai</a>/<wbr><a class=stealth href="https://travellermap.com/go/Troj">Troj</a>/<wbr><a class=stealth href="https://travellermap.com/go/Uist">Uist</a>/<wbr><a class=stealth href="https://travellermap.com/go/Ustr">Ustr</a>
-      <tr><td><code>AsT4</code><td>Aslan Hierate, Tlaukhu control, Eakhtiyho (5), Eteawyolei' (11), Fteweyeakh (23)<td><a class=stealth href="https://travellermap.com/go/Akti">Akti</a>/<wbr><a class=stealth href="https://travellermap.com/go/Dark">Dark</a>/<wbr><a class=stealth href="https://travellermap.com/go/Eali">Eali</a>/<wbr><a class=stealth href="https://travellermap.com/go/Hlak">Hlak</a>/<wbr><a class=stealth href="https://travellermap.com/go/Iwah">Iwah</a>/<wbr><a class=stealth href="https://travellermap.com/go/Reav">Reav</a>/<wbr><a class=stealth href="https://travellermap.com/go/Rift">Rift</a>/<wbr><a class=stealth href="https://travellermap.com/go/Stai">Stai</a>/<wbr><a class=stealth href="https://travellermap.com/go/Troj">Troj</a>/<wbr><a class=stealth href="https://travellermap.com/go/Uist">Uist</a>/<wbr><a class=stealth href="https://travellermap.com/go/Ustr">Ustr</a>
-      <tr><td><code>AsT5</code><td>Aslan Hierate, Tlaukhu control, Hlyueawi (6), Isoitiyro (15)<td><a class=stealth href="https://travellermap.com/go/Akti">Akti</a>/<wbr><a class=stealth href="https://travellermap.com/go/Dark">Dark</a>/<wbr><a class=stealth href="https://travellermap.com/go/Eali">Eali</a>/<wbr><a class=stealth href="https://travellermap.com/go/Hlak">Hlak</a>/<wbr><a class=stealth href="https://travellermap.com/go/Iwah">Iwah</a>/<wbr><a class=stealth href="https://travellermap.com/go/Reav">Reav</a>/<wbr><a class=stealth href="https://travellermap.com/go/Rift">Rift</a>/<wbr><a class=stealth href="https://travellermap.com/go/Stai">Stai</a>/<wbr><a class=stealth href="https://travellermap.com/go/Troj">Troj</a>/<wbr><a class=stealth href="https://travellermap.com/go/Uist">Uist</a>/<wbr><a class=stealth href="https://travellermap.com/go/Ustr">Ustr</a>
-      <tr><td><code>AsT6</code><td>Aslan Hierate, Tlaukhu control, Uiktawa (7), Iykyasea (17), Faowaou (27)<td><a class=stealth href="https://travellermap.com/go/Akti">Akti</a>/<wbr><a class=stealth href="https://travellermap.com/go/Dark">Dark</a>/<wbr><a class=stealth href="https://travellermap.com/go/Eali">Eali</a>/<wbr><a class=stealth href="https://travellermap.com/go/Hlak">Hlak</a>/<wbr><a class=stealth href="https://travellermap.com/go/Iwah">Iwah</a>/<wbr><a class=stealth href="https://travellermap.com/go/Reav">Reav</a>/<wbr><a class=stealth href="https://travellermap.com/go/Rift">Rift</a>/<wbr><a class=stealth href="https://travellermap.com/go/Stai">Stai</a>/<wbr><a class=stealth href="https://travellermap.com/go/Troj">Troj</a>/<wbr><a class=stealth href="https://travellermap.com/go/Uist">Uist</a>/<wbr><a class=stealth href="https://travellermap.com/go/Ustr">Ustr</a>
-      <tr><td><code>AsT7</code><td>Aslan Hierate, Tlaukhu control, Ikhtealyo (8), Tlerfearlyo (20), Yehtahikh (24)<td><a class=stealth href="https://travellermap.com/go/Akti">Akti</a>/<wbr><a class=stealth href="https://travellermap.com/go/Dark">Dark</a>/<wbr><a class=stealth href="https://travellermap.com/go/Eali">Eali</a>/<wbr><a class=stealth href="https://travellermap.com/go/Hlak">Hlak</a>/<wbr><a class=stealth href="https://travellermap.com/go/Iwah">Iwah</a>/<wbr><a class=stealth href="https://travellermap.com/go/Reav">Reav</a>/<wbr><a class=stealth href="https://travellermap.com/go/Rift">Rift</a>/<wbr><a class=stealth href="https://travellermap.com/go/Stai">Stai</a>/<wbr><a class=stealth href="https://travellermap.com/go/Troj">Troj</a>/<wbr><a class=stealth href="https://travellermap.com/go/Uist">Uist</a>/<wbr><a class=stealth href="https://travellermap.com/go/Ustr">Ustr</a>
-      <tr><td><code>AsT8</code><td>Aslan Hierate, Tlaukhu control, Seieakh (9), Akatoiloh (18), We'okunir (29)<td><a class=stealth href="https://travellermap.com/go/Akti">Akti</a>/<wbr><a class=stealth href="https://travellermap.com/go/Dark">Dark</a>/<wbr><a class=stealth href="https://travellermap.com/go/Eali">Eali</a>/<wbr><a class=stealth href="https://travellermap.com/go/Hlak">Hlak</a>/<wbr><a class=stealth href="https://travellermap.com/go/Iwah">Iwah</a>/<wbr><a class=stealth href="https://travellermap.com/go/Reav">Reav</a>/<wbr><a class=stealth href="https://travellermap.com/go/Rift">Rift</a>/<wbr><a class=stealth href="https://travellermap.com/go/Stai">Stai</a>/<wbr><a class=stealth href="https://travellermap.com/go/Troj">Troj</a>/<wbr><a class=stealth href="https://travellermap.com/go/Uist">Uist</a>/<wbr><a class=stealth href="https://travellermap.com/go/Ustr">Ustr</a>
-      <tr><td><code>AsT9</code><td>Aslan Hierate, Tlaukhu control, Aokhalte (10), Sahao' (21), Ouokhoi (26)<td><a class=stealth href="https://travellermap.com/go/Akti">Akti</a>/<wbr><a class=stealth href="https://travellermap.com/go/Dark">Dark</a>/<wbr><a class=stealth href="https://travellermap.com/go/Eali">Eali</a>/<wbr><a class=stealth href="https://travellermap.com/go/Hlak">Hlak</a>/<wbr><a class=stealth href="https://travellermap.com/go/Iwah">Iwah</a>/<wbr><a class=stealth href="https://travellermap.com/go/Reav">Reav</a>/<wbr><a class=stealth href="https://travellermap.com/go/Rift">Rift</a>/<wbr><a class=stealth href="https://travellermap.com/go/Stai">Stai</a>/<wbr><a class=stealth href="https://travellermap.com/go/Troj">Troj</a>/<wbr><a class=stealth href="https://travellermap.com/go/Uist">Uist</a>/<wbr><a class=stealth href="https://travellermap.com/go/Ustr">Ustr</a>
-      <tr><td><code>AsTA</code><td>Tealou Arlaoh (Aslan independent clan, non-outcast)<td><a class=stealth href="https://travellermap.com/go/Uist">Uist</a>/<wbr><a class=stealth href="https://travellermap.com/go/Ustr">Ustr</a>
-      <tr><td><code>AsTv</code><td>Aslan Hierate, Tlaukhu vassal clan dominates<td><a class=stealth href="https://travellermap.com/go/Akti">Akti</a>/<wbr><a class=stealth href="https://travellermap.com/go/Dark">Dark</a>/<wbr><a class=stealth href="https://travellermap.com/go/Eali">Eali</a>/<wbr><a class=stealth href="https://travellermap.com/go/Hlak">Hlak</a>/<wbr><a class=stealth href="https://travellermap.com/go/Iwah">Iwah</a>/<wbr><a class=stealth href="https://travellermap.com/go/Reav">Reav</a>/<wbr><a class=stealth href="https://travellermap.com/go/Rift">Rift</a>/<wbr><a class=stealth href="https://travellermap.com/go/Stai">Stai</a>/<wbr><a class=stealth href="https://travellermap.com/go/Troj">Troj</a>/<wbr><a class=stealth href="https://travellermap.com/go/Uist">Uist</a>/<wbr><a class=stealth href="https://travellermap.com/go/Ustr">Ustr</a>
-      <tr><td><code>AsTz</code><td>Aslan Hierate, Zodia clan (Tralyeaeawi vassal)<td><a class=stealth href="https://travellermap.com/go/Iwah">Iwah</a>
-      <tr><td><code>AsVc</code><td>Aslan Hierate, vassal clan dominates<td><a class=stealth href="https://travellermap.com/go/Akti">Akti</a>/<wbr><a class=stealth href="https://travellermap.com/go/Dark">Dark</a>/<wbr><a class=stealth href="https://travellermap.com/go/Eali">Eali</a>/<wbr><a class=stealth href="https://travellermap.com/go/Hlak">Hlak</a>/<wbr><a class=stealth href="https://travellermap.com/go/Iwah">Iwah</a>/<wbr><a class=stealth href="https://travellermap.com/go/Reav">Reav</a>/<wbr><a class=stealth href="https://travellermap.com/go/Rift">Rift</a>/<wbr><a class=stealth href="https://travellermap.com/go/Stai">Stai</a>/<wbr><a class=stealth href="https://travellermap.com/go/Troj">Troj</a>/<wbr><a class=stealth href="https://travellermap.com/go/Uist">Uist</a>/<wbr><a class=stealth href="https://travellermap.com/go/Ustr">Ustr</a>
-      <tr><td><code>AsWc</code><td>Aslan Hierate, single one-world clan dominates<td><a class=stealth href="https://travellermap.com/go/Akti">Akti</a>/<wbr><a class=stealth href="https://travellermap.com/go/Dark">Dark</a>/<wbr><a class=stealth href="https://travellermap.com/go/Eali">Eali</a>/<wbr><a class=stealth href="https://travellermap.com/go/Hlak">Hlak</a>/<wbr><a class=stealth href="https://travellermap.com/go/Iwah">Iwah</a>/<wbr><a class=stealth href="https://travellermap.com/go/Reav">Reav</a>/<wbr><a class=stealth href="https://travellermap.com/go/Rift">Rift</a>/<wbr><a class=stealth href="https://travellermap.com/go/Stai">Stai</a>/<wbr><a class=stealth href="https://travellermap.com/go/Troj">Troj</a>/<wbr><a class=stealth href="https://travellermap.com/go/Uist">Uist</a>/<wbr><a class=stealth href="https://travellermap.com/go/Ustr">Ustr</a>
-      <tr><td><code>AsXX</code><td>Aslan Hierate, unknown<td><a class=stealth href="https://travellermap.com/go/Akti">Akti</a>/<wbr><a class=stealth href="https://travellermap.com/go/Dark">Dark</a>/<wbr><a class=stealth href="https://travellermap.com/go/Eali">Eali</a>/<wbr><a class=stealth href="https://travellermap.com/go/Hlak">Hlak</a>/<wbr><a class=stealth href="https://travellermap.com/go/Iwah">Iwah</a>/<wbr><a class=stealth href="https://travellermap.com/go/Reav">Reav</a>/<wbr><a class=stealth href="https://travellermap.com/go/Rift">Rift</a>/<wbr><a class=stealth href="https://travellermap.com/go/Stai">Stai</a>/<wbr><a class=stealth href="https://travellermap.com/go/Troj">Troj</a>/<wbr><a class=stealth href="https://travellermap.com/go/Uist">Uist</a>/<wbr><a class=stealth href="https://travellermap.com/go/Ustr">Ustr</a>
-      <tr><td><code>Bium</code><td>The Biumvirate<td><a class=stealth href="https://travellermap.com/go/Farf">Farf</a>
-      <tr><td><code>BlSo</code><td>Belgardian Sojurnate<td><a class=stealth href="https://travellermap.com/go/Troj">Troj</a>
-      <tr><td><code>CaAs</code><td>Carrillian Assembly<td><a class=stealth href="https://travellermap.com/go/Reav">Reav</a>
-      <tr><td><code>CAEM</code><td>Comsentient Alliance, Eslyat Magistracy<td><a class=stealth href="https://travellermap.com/go/Beyo">Beyo</a>/<wbr><a class=stealth href="https://travellermap.com/go/Vang">Vang</a>
-      <tr><td><code>CAin</code><td>Comsentient Alliance, independent<td><a class=stealth href="https://travellermap.com/go/Vang">Vang</a>
-      <tr><td><code>CAKT</code><td>Comsentient Alliance, Kajaani Triumverate<td><a class=stealth href="https://travellermap.com/go/Vang">Vang</a>
-      <tr><td><code>CaPr</code><td>Principality of Caledon<td><a class=stealth href="https://travellermap.com/go/Reav">Reav</a>
-      <tr><td><code>CaTe</code><td>Carter Technocracy<td><a class=stealth href="https://travellermap.com/go/Reav">Reav</a>
-      <tr><td><code>CoBa</code><td>Confederation of Bammesuka<td><a class=stealth href="https://travellermap.com/go/Mend">Mend</a>
-      <tr><td><code>CoLp</code><td>Council of Leh Perash<td><a class=stealth href="https://travellermap.com/go/Hint">Hint</a>
-      <tr><td><code>CsCa</code><td>Client state, Principality of Caledon<td><a class=stealth href="https://travellermap.com/go/Reav">Reav</a>
-      <tr><td><code>CsHv</code><td>Client state, Hiver Federation<td><a class=stealth href="https://travellermap.com/go/Cruc">Cruc</a>/<wbr><a class=stealth href="https://travellermap.com/go/Spic">Spic</a>
-      <tr><td><code>CsIm</code><td>Client state, Third Imperium<td><i>various</i>
-      <tr><td><code>CsMP</code><td>Client state, Ma'Gnar Primarchic<td><a class=stealth href="https://travellermap.com/go/Beyo">Beyo</a>
-      <tr><td><code>CsTw</code><td>Client state, Two Thousand Worlds<td><i>various</i>
-      <tr><td><code>CsZh</code><td>Client state, Zhodani Consulate<td><a class=stealth href="https://travellermap.com/go/Spin">Spin</a>/<wbr><a class=stealth href="https://travellermap.com/go/Troj">Troj</a>
-      <tr><td><code>CyUn</code><td>Cytralin Unity<td><a class=stealth href="https://travellermap.com/go/Hint">Hint</a>
-      <tr><td><code>DaCf</code><td>Darrian Confederation<td><a class=stealth href="https://travellermap.com/go/Spin">Spin</a>
-      <tr><td><code>DeHg</code><td>Descarothe Hegemony<td><a class=stealth href="https://travellermap.com/go/Farf">Farf</a>
-      <tr><td><code>DeNo</code><td>Demos of Nobles<td><a class=stealth href="https://travellermap.com/go/Newo">Newo</a>
-      <tr><td><code>DiGr</code><td>Dienbach Grüpen<td><a class=stealth href="https://travellermap.com/go/Newo">Newo</a>
-      <tr><td><code>DiWb</code><td>Die Weltbund<td><a class=stealth href="https://travellermap.com/go/Beyo">Beyo</a>
-      <tr><td><code>DoAl</code><td>Domain of Alntzar<td><a class=stealth href="https://travellermap.com/go/Farf">Farf</a>
-      <tr><td><code>DuCf</code><td>Confederation of Duncinae<td><a class=stealth href="https://travellermap.com/go/Reav">Reav</a>
-      <tr><td><code>FCSA</code><td>Four Corners Sovereign Array<td><a class=stealth href="https://travellermap.com/go/Vang">Vang</a>
-      <tr><td><code>FeAl</code><td>Federation of Alsas<td><a class=stealth href="https://travellermap.com/go/Farf">Farf</a>
-      <tr><td><code>FeAm</code><td>Federation of Amil<td><a class=stealth href="https://travellermap.com/go/Cruc">Cruc</a>
-      <tr><td><code>FeHe</code><td>Federation of Heron<td><a class=stealth href="https://travellermap.com/go/Glim">Glim</a>
-      <tr><td><code>FlLe</code><td>Florian League<td><a class=stealth href="https://travellermap.com/go/Troj">Troj</a>
-      <tr><td><code>GaFd</code><td>Galian Federation<td><a class=stealth href="https://travellermap.com/go/Gate">Gate</a>
-      <tr><td><code>GaRp</code><td>Gamma Republic<td><a class=stealth href="https://travellermap.com/go/Glim">Glim</a>
-      <tr><td><code>GdKa</code><td>Grand Duchy of Kalradin<td><a class=stealth href="https://travellermap.com/go/Cruc">Cruc</a>
-      <tr><td><code>GdMh</code><td>Grand Duchy of Marlheim<td><a class=stealth href="https://travellermap.com/go/Reav">Reav</a>
-      <tr><td><code>GdSt</code><td>Grand Duchy of Stoner<td><a class=stealth href="https://travellermap.com/go/Glim">Glim</a>
-      <tr><td><code>GeOr</code><td>Gerontocracy of Ormine<td><a class=stealth href="https://travellermap.com/go/Dark">Dark</a>
-      <tr><td><code>GlEm</code><td>Glorious Empire (Aslan independent clan, outcast)<td><a class=stealth href="https://travellermap.com/go/Troj">Troj</a>
-      <tr><td><code>GlFe</code><td>Glimmerdrift Federation<td><a class=stealth href="https://travellermap.com/go/Cruc">Cruc</a>/<wbr><a class=stealth href="https://travellermap.com/go/Glim">Glim</a>
-      <tr><td><code>GnCl</code><td>Gniivi Collective<td><a class=stealth href="https://travellermap.com/go/Hint">Hint</a>
-      <tr><td><code>GrCo</code><td>Grossdeutchland Confederation<td><a class=stealth href="https://travellermap.com/go/Vang">Vang</a>
-      <tr><td><code>HaCo</code><td>Haladon Cooperative<td><a class=stealth href="https://travellermap.com/go/Farf">Farf</a>
-      <tr><td><code>HoPA</code><td>Hochiken People's Assembly<td><a class=stealth href="https://travellermap.com/go/Gate">Gate</a>
-      <tr><td><code>HvFd</code><td>Hiver Federation<td><a class=stealth href="https://travellermap.com/go/Spic">Spic</a>
-      <tr><td><code>HyLe</code><td>Hyperion League<td><a class=stealth href="https://travellermap.com/go/Vang">Vang</a>
-      <tr><td><code>IHPr</code><td>I'Sred*Ni Protectorate<td><a class=stealth href="https://travellermap.com/go/Beyo">Beyo</a>
-      <tr><td><code>ImAp</code><td>Third Imperium, Amec Protectorate<td><a class=stealth href="https://travellermap.com/go/Dagu">Dagu</a>
-      <tr><td><code>ImDa</code><td>Third Imperium, Domain of Antares<td><a class=stealth href="https://travellermap.com/go/Anta">Anta</a>/<wbr><a class=stealth href="https://travellermap.com/go/Empt">Empt</a>/<wbr><a class=stealth href="https://travellermap.com/go/Lish">Lish</a>
-      <tr><td><code>ImDc</code><td>Third Imperium, Domain of Sylea<td><a class=stealth href="https://travellermap.com/go/Core">Core</a>/<wbr><a class=stealth href="https://travellermap.com/go/Delp">Delp</a>/<wbr><a class=stealth href="https://travellermap.com/go/Forn">Forn</a>/<wbr><a class=stealth href="https://travellermap.com/go/Mass">Mass</a>
-      <tr><td><code>ImDd</code><td>Third Imperium, Domain of Deneb<td><a class=stealth href="https://travellermap.com/go/Dene">Dene</a>/<wbr><a class=stealth href="https://travellermap.com/go/Reft">Reft</a>/<wbr><a class=stealth href="https://travellermap.com/go/Spin">Spin</a>/<wbr><a class=stealth href="https://travellermap.com/go/Troj">Troj</a>
-      <tr><td><code>ImDg</code><td>Third Imperium, Domain of Gateway<td><a class=stealth href="https://travellermap.com/go/Glim">Glim</a>/<wbr><a class=stealth href="https://travellermap.com/go/Hint">Hint</a>/<wbr><a class=stealth href="https://travellermap.com/go/Ley">Ley</a>
-      <tr><td><code>ImDi</code><td>Third Imperium, Domain of Ilelish<td><a class=stealth href="https://travellermap.com/go/Daib">Daib</a>/<wbr><a class=stealth href="https://travellermap.com/go/Ilel">Ilel</a>/<wbr><a class=stealth href="https://travellermap.com/go/Reav">Reav</a>/<wbr><a class=stealth href="https://travellermap.com/go/Verg">Verg</a>/<wbr><a class=stealth href="https://travellermap.com/go/Zaru">Zaru</a>
-      <tr><td><code>ImDs</code><td>Third Imperium, Domain of Sol<td><a class=stealth href="https://travellermap.com/go/Alph">Alph</a>/<wbr><a class=stealth href="https://travellermap.com/go/Dias">Dias</a>/<wbr><a class=stealth href="https://travellermap.com/go/Magy">Magy</a>/<wbr><a class=stealth href="https://travellermap.com/go/Olde">Olde</a>/<wbr><a class=stealth href="https://travellermap.com/go/Solo">Solo</a>
-      <tr><td><code>ImDv</code><td>Third Imperium, Domain of Vland<td><a class=stealth href="https://travellermap.com/go/Corr">Corr</a>/<wbr><a class=stealth href="https://travellermap.com/go/Dagu">Dagu</a>/<wbr><a class=stealth href="https://travellermap.com/go/Gush">Gush</a>/<wbr><a class=stealth href="https://travellermap.com/go/Reft">Reft</a>/<wbr><a class=stealth href="https://travellermap.com/go/Vlan">Vlan</a>
-      <tr><td><code>ImLa</code><td>Third Imperium, League of Antares<td><a class=stealth href="https://travellermap.com/go/Anta">Anta</a>
-      <tr><td><code>ImLc</code><td>Third Imperium, Lancian Cultural Region<td><a class=stealth href="https://travellermap.com/go/Corr">Corr</a>/<wbr><a class=stealth href="https://travellermap.com/go/Dagu">Dagu</a>/<wbr><a class=stealth href="https://travellermap.com/go/Gush">Gush</a>
-      <tr><td><code>ImLu</code><td>Third Imperium, Luriani Cultural Association<td><a class=stealth href="https://travellermap.com/go/Ley">Ley</a>/<wbr><a class=stealth href="https://travellermap.com/go/Forn">Forn</a>
-      <tr><td><code>ImSy</code><td>Third Imperium, Sylean Worlds<td><a class=stealth href="https://travellermap.com/go/Core">Core</a>
-      <tr><td><code>ImVd</code><td>Third Imperium, Vegan Autonomous District<td><a class=stealth href="https://travellermap.com/go/Solo">Solo</a>
-      <tr><td><code>IsDo</code><td>Islaiat Dominate<td><a class=stealth href="https://travellermap.com/go/Eali">Eali</a>
-      <tr><td><code>JAOz</code><td>Julian Protectorate, Alliance of Ozuvon<td><a class=stealth href="https://travellermap.com/go/Mend">Mend</a>
-      <tr><td><code>JaPa</code><td>Jarnac Pashalic<td><a class=stealth href="https://travellermap.com/go/Beyo">Beyo</a>/<wbr><a class=stealth href="https://travellermap.com/go/Vang">Vang</a>
-      <tr><td><code>JAsi</code><td>Julian Protectorate, Asimikigir Confederation<td><a class=stealth href="https://travellermap.com/go/Amdu">Amdu</a>/<wbr><a class=stealth href="https://travellermap.com/go/Mend">Mend</a>
-      <tr><td><code>JCoK</code><td>Julian Protectorate, Constitution of Koekhon<td><a class=stealth href="https://travellermap.com/go/Amdu">Amdu</a>/<wbr><a class=stealth href="https://travellermap.com/go/Mend">Mend</a>
-      <tr><td><code>JHhk</code><td>Julian Protectorate, Hhkar Sphere<td><a class=stealth href="https://travellermap.com/go/Amdu">Amdu</a>/<wbr><a class=stealth href="https://travellermap.com/go/Mend">Mend</a>
-      <tr><td><code>JLum</code><td>Julian Protectorate, Lumda Dower<td><a class=stealth href="https://travellermap.com/go/Mend">Mend</a>
-      <tr><td><code>JMen</code><td>Julian Protectorate, Commonwealth of Mendan<td><a class=stealth href="https://travellermap.com/go/Mend">Mend</a>/<wbr><a class=stealth href="https://travellermap.com/go/Gash">Gash</a>
-      <tr><td><code>JPSt</code><td>Julian Protectorate, Pirbarish Starlane<td><a class=stealth href="https://travellermap.com/go/Mend">Mend</a>
-      <tr><td><code>JRar</code><td>Julian Protectorate, Rar Errall/Wolves Warren<td><a class=stealth href="https://travellermap.com/go/Mend">Mend</a>
-      <tr><td><code>JuHl</code><td>Julian Protectorate, Hegemony of Lorean<td><a class=stealth href="https://travellermap.com/go/Amdu">Amdu</a>/<wbr><a class=stealth href="https://travellermap.com/go/Empt">Empt</a>/<wbr><a class=stealth href="https://travellermap.com/go/Mend">Mend</a>
-      <tr><td><code>JUkh</code><td>Julian Protectorate, Ukhanzi Coordinate<td><a class=stealth href="https://travellermap.com/go/Mend">Mend</a>
-      <tr><td><code>JuNa</code><td>Jurisdiction of Nadon<td><a class=stealth href="https://travellermap.com/go/Cano">Cano</a>
-      <tr><td><code>JuPr</code><td>Julian Protectorate, independent<td><a class=stealth href="https://travellermap.com/go/Amdu">Amdu</a>/<wbr><a class=stealth href="https://travellermap.com/go/Empt">Empt</a>/<wbr><a class=stealth href="https://travellermap.com/go/Mend">Mend</a>
-      <tr><td><code>JuRu</code><td>Julian Protectorate, Rukadukaz Republic<td><a class=stealth href="https://travellermap.com/go/Empt">Empt</a>/<wbr><a class=stealth href="https://travellermap.com/go/Mend">Mend</a>
-      <tr><td><code>JVug</code><td>Julian Protectorate, Vugurar Dominion<td><a class=stealth href="https://travellermap.com/go/Mend">Mend</a>
-      <tr><td><code>KaCo</code><td>Katowice Conquest<td><a class=stealth href="https://travellermap.com/go/Cruc">Cruc</a>
-      <tr><td><code>KaWo</code><td>Karhyri Worlds<td><a class=stealth href="https://travellermap.com/go/Cruc">Cruc</a>
-      <tr><td><code>KhLe</code><td>Khuur League<td><a class=stealth href="https://travellermap.com/go/Ley">Ley</a>
-      <tr><td><code>KkTw</code><td>Two Thousand Worlds (K'kree)<td><i>various</i>
-      <tr><td><code>KoEm</code><td>Korsumug Empire<td><a class=stealth href="https://travellermap.com/go/Thet">Thet</a>
-      <tr><td><code>KoPm</code><td>Percavid Marches<td><a class=stealth href="https://travellermap.com/go/Thet">Thet</a>
-      <tr><td><code>KPel</code><td>Kingdom of Peladon<td><a class=stealth href="https://travellermap.com/go/Thet">Thet</a>
-      <tr><td><code>KrBu</code><td>Kranzbund<td><a class=stealth href="https://travellermap.com/go/Vang">Vang</a>
-      <tr><td><code>LaCo</code><td>Langemarck Coalition<td><a class=stealth href="https://travellermap.com/go/Vang">Vang</a>
-      <tr><td><code>LeSu</code><td>League of Suns<td><a class=stealth href="https://travellermap.com/go/Farf">Farf</a>
-      <tr><td><code>LnRp</code><td>Loyal Nineworlds Republic<td><a class=stealth href="https://travellermap.com/go/Glim">Glim</a>
-      <tr><td><code>LyCo</code><td>Lanyard Colonies<td><a class=stealth href="https://travellermap.com/go/Reav">Reav</a>
-      <tr><td><code>MaCl</code><td>Mapepire Cluster<td><a class=stealth href="https://travellermap.com/go/Beyo">Beyo</a>
-      <tr><td><code>MaEm</code><td>Maskai Empire<td><a class=stealth href="https://travellermap.com/go/Glim">Glim</a>
-      <tr><td><code>MaPr</code><td>Ma'Gnar Primarchic<td><a class=stealth href="https://travellermap.com/go/Beyo">Beyo</a>
-      <tr><td><code>MaUn</code><td>Malorn Union<td><a class=stealth href="https://travellermap.com/go/Cano">Cano</a>/<wbr><a class=stealth href="https://travellermap.com/go/Alde">Alde</a>
-      <tr><td><code>MeCo</code><td>Megusard Corporate<td><a class=stealth href="https://travellermap.com/go/Gate">Gate</a>
-      <tr><td><code>MiCo</code><td>Mische Conglomerate<td><a class=stealth href="https://travellermap.com/go/Cruc">Cruc</a>
-      <tr><td><code>MnPr</code><td>Mnemosyne Principality<td><a class=stealth href="https://travellermap.com/go/Farf">Farf</a>
-      <tr><td><code>MrCo</code><td>Mercantile Concord<td><a class=stealth href="https://travellermap.com/go/Cruc">Cruc</a>
-      <tr><td><code>NaAs</code><td>Non-Aligned, Aslan-dominated (outside Hierate)<td><a class=stealth href="https://travellermap.com/go/Akti">Akti</a>/<wbr><a class=stealth href="https://travellermap.com/go/Dark">Dark</a>/<wbr><a class=stealth href="https://travellermap.com/go/Eali">Eali</a>/<wbr><a class=stealth href="https://travellermap.com/go/Rift">Rift</a>/<wbr><a class=stealth href="https://travellermap.com/go/Uist">Uist</a>/<wbr><a class=stealth href="https://travellermap.com/go/Ustr">Ustr</a>
-      <tr><td><code>NaHu</code><td>Non-Aligned, Human-dominated<td><i>various</i>
-      <tr><td><code>NaVa</code><td>Non-Aligned, Vargr-dominated<td><i>various</i>
-      <tr><td><code>NaXX</code><td>Non-Aligned, unclaimed<td><i>various</i>
-      <tr><td><code>OcWs</code><td>Outcasts of the Whispering Sky<td><a class=stealth href="https://travellermap.com/go/Hint">Hint</a>
-      <tr><td><code>OlWo</code><td>Old Worlds<td><a class=stealth href="https://travellermap.com/go/Cruc">Cruc</a>
-      <tr><td><code>PiFe</code><td>Pionier Fellowship<td><a class=stealth href="https://travellermap.com/go/Vang">Vang</a>
-      <tr><td><code>PlLe</code><td>Plavian League<td><a class=stealth href="https://travellermap.com/go/Gate">Gate</a>
-      <tr><td><code>Prot</code><td>The Protectorate<td><a class=stealth href="https://travellermap.com/go/Farf">Farf</a>
-      <tr><td><code>RaRa</code><td>Ral Ranta<td><a class=stealth href="https://travellermap.com/go/Hint">Hint</a>
-      <tr><td><code>Reac</code><td>The Reach<td><a class=stealth href="https://travellermap.com/go/Cruc">Cruc</a>
-      <tr><td><code>ReUn</code><td>Renkard Union<td><a class=stealth href="https://travellermap.com/go/Gate">Gate</a>
-      <tr><td><code>SaCo</code><td>Salinaikin Concordance<td><a class=stealth href="https://travellermap.com/go/Farf">Farf</a>
-      <tr><td><code>Sark</code><td>Sarkan Constellation<td><a class=stealth href="https://travellermap.com/go/Mend">Mend</a>
-      <tr><td><code>SeFo</code><td>Senlis Foederate<td><a class=stealth href="https://travellermap.com/go/Troj">Troj</a>
-      <tr><td><code>SlLg</code><td>Shukikikar League<td><a class=stealth href="https://travellermap.com/go/Glim">Glim</a>
-      <tr><td><code>SoBF</code><td>Solomani Confederation, Bootean Federation<td><a class=stealth href="https://travellermap.com/go/Solo">Solo</a>
-      <tr><td><code>SoCf</code><td>Solomani Confederation<td><a class=stealth href="https://travellermap.com/go/Alph">Alph</a>/<wbr><a class=stealth href="https://travellermap.com/go/Diab">Diab</a>/<wbr><a class=stealth href="https://travellermap.com/go/Dark">Dark</a>/<wbr><a class=stealth href="https://travellermap.com/go/Hint">Hint</a>/<wbr><a class=stealth href="https://travellermap.com/go/Magy">Magy</a>/<wbr><a class=stealth href="https://travellermap.com/go/Olde">Olde</a>/<wbr><a class=stealth href="https://travellermap.com/go/Reav">Reav</a>/<wbr><a class=stealth href="https://travellermap.com/go/Solo">Solo</a>/<wbr><a class=stealth href="https://travellermap.com/go/Spic">Spic</a>/<wbr><a class=stealth href="https://travellermap.com/go/Ustr">Ustr</a>
-      <tr><td><code>SoCT</code><td>Solomani Confederation, Consolidation of Turin<td><a class=stealth href="https://travellermap.com/go/Alph">Alph</a>
-      <tr><td><code>SoFr</code><td>Solomani Confederation, Third Reformed French Confederate Rebublic<td><a class=stealth href="https://travellermap.com/go/Alde">Alde</a>
-      <tr><td><code>SoHn</code><td>Solomani Confederation, Hanuman Systems<td><a class=stealth href="https://travellermap.com/go/Lang">Lang</a>
-      <tr><td><code>SoKv</code><td>Solomani Confederation, Kostov Confederate Republic<td><a class=stealth href="https://travellermap.com/go/Newo">Newo</a>
-      <tr><td><code>SoNS</code><td>Solomani Confederation, New Slavic Solidarity<td><a class=stealth href="https://travellermap.com/go/Magy">Magy</a>
-      <tr><td><code>SoQu</code><td>Solomani Confederation, Grand United States of Quesada<td><a class=stealth href="https://travellermap.com/go/Alde">Alde</a>
-      <tr><td><code>SoRD</code><td>Solomani Confederation, Reformed Dootchen Estates<td><a class=stealth href="https://travellermap.com/go/Magy">Magy</a>
-      <tr><td><code>SoWu</code><td>Solomani Confederation, Wuan Technology Association<td><a class=stealth href="https://travellermap.com/go/Diab">Diab</a>/<wbr><a class=stealth href="https://travellermap.com/go/Magy">Magy</a>
-      <tr><td><code>StCl</code><td>Strend Cluster<td><a class=stealth href="https://travellermap.com/go/Troj">Troj</a>
-      <tr><td><code>SwCf</code><td>Sword Worlds Confederation<td><a class=stealth href="https://travellermap.com/go/Spin">Spin</a>
-      <tr><td><code>SwFW</code><td>Swanfei Free Worlds<td><a class=stealth href="https://travellermap.com/go/Gate">Gate</a>
-      <tr><td><code>SyRe</code><td>Syzlin Republic<td><a class=stealth href="https://travellermap.com/go/Cruc">Cruc</a>
-      <tr><td><code>TeCl</code><td>Tellerian Cluster<td><a class=stealth href="https://travellermap.com/go/Vang">Vang</a>
-      <tr><td><code>TrBr</code><td>Trita Brotherhood<td><a class=stealth href="https://travellermap.com/go/Cano">Cano</a>
-      <tr><td><code>TrCo</code><td>Trindel Confederacy<td><a class=stealth href="https://travellermap.com/go/Gate">Gate</a>
-      <tr><td><code>TrDo</code><td>Trelyn Domain<td><a class=stealth href="https://travellermap.com/go/Vang">Vang</a>/<wbr><a class=stealth href="https://travellermap.com/go/Farf">Farf</a>
-      <tr><td><code>TroC</code><td>Trooles Confederation<td><a class=stealth href="https://travellermap.com/go/Thet">Thet</a>
-      <tr><td><code>UnGa</code><td>Union of Garth<td><a class=stealth href="https://travellermap.com/go/Farf">Farf</a>
-      <tr><td><code>UnHa</code><td>Union of Harmony<td><a class=stealth href="https://travellermap.com/go/Dark">Dark</a>/<wbr><a class=stealth href="https://travellermap.com/go/Reav">Reav</a>
-      <tr><td><code>V17D</code><td>17th Disjucture<td><a class=stealth href="https://travellermap.com/go/Mesh">Mesh</a>/<wbr><a class=stealth href="https://travellermap.com/go/Wind">Wind</a>
-      <tr><td><code>V40S</code><td>40th Squadron (Ekhelle Ksafi)<td><a class=stealth href="https://travellermap.com/go/Gvur">Gvur</a>
-      <tr><td><code>VAnP</code><td>Antares Pact<td><a class=stealth href="https://travellermap.com/go/Mesh">Mesh</a>/<wbr><a class=stealth href="https://travellermap.com/go/Mend">Mend</a>
-      <tr><td><code>VARC</code><td>Anti-Rukh Coalition (Gnoerrgh Rukh Lloell)<td><a class=stealth href="https://travellermap.com/go/Gvur">Gvur</a>
-      <tr><td><code>VAug</code><td>United Followers of Augurgh<td><a class=stealth href="https://travellermap.com/go/Dene">Dene</a>/<wbr><a class=stealth href="https://travellermap.com/go/Tugl">Tugl</a>
-      <tr><td><code>VBkA</code><td>Bakne Alliance<td><a class=stealth href="https://travellermap.com/go/Tugl">Tugl</a>
-      <tr><td><code>VCKd</code><td>Commonality of Kedzudh (Kedzudh Aeng)<td><a class=stealth href="https://travellermap.com/go/Gvur">Gvur</a>
-      <tr><td><code>VDrN</code><td>Drr'lana Network<td><a class=stealth href="https://travellermap.com/go/Gash">Gash</a>
-      <tr><td><code>VDzF</code><td>Dzarrgh Federate<td><a class=stealth href="https://travellermap.com/go/Dene">Dene</a>/<wbr><a class=stealth href="https://travellermap.com/go/Prov">Prov</a>/<wbr><a class=stealth href="https://travellermap.com/go/Tugl">Tugl</a>
-      <tr><td><code>VFFD</code><td>First Fleet of Dzo<td><a class=stealth href="https://travellermap.com/go/Mesh">Mesh</a>
-      <tr><td><code>VGoT</code><td>Glory of Taarskoerzn<td><a class=stealth href="https://travellermap.com/go/Prov">Prov</a>
-      <tr><td><code>ViCo</code><td>Viyard Concourse<td><a class=stealth href="https://travellermap.com/go/Gate">Gate</a>
-      <tr><td><code>VIrM</code><td>Irrgh Manifest<td><a class=stealth href="https://travellermap.com/go/Prov">Prov</a>
-      <tr><td><code>VJoF</code><td>Jihad of Faarzgaen<td><a class=stealth href="https://travellermap.com/go/Prov">Prov</a>
-      <tr><td><code>VLIn</code><td>Llaeghskath Interacterate<td><a class=stealth href="https://travellermap.com/go/Prov">Prov</a>/<wbr><a class=stealth href="https://travellermap.com/go/Tugl">Tugl</a>
-      <tr><td><code>VLPr</code><td>Lair Protectorate<td><a class=stealth href="https://travellermap.com/go/Prov">Prov</a>
-      <tr><td><code>VNgC</code><td>Ngath Confederation<td><a class=stealth href="https://travellermap.com/go/Wind">Wind</a>
-      <tr><td><code>VOpp</code><td>Opposition Alliance<td><a class=stealth href="https://travellermap.com/go/Mesh">Mesh</a>
-      <tr><td><code>VPGa</code><td>Pact of Gaerr (Gaerr Thue)<td><a class=stealth href="https://travellermap.com/go/Gvur">Gvur</a>
-      <tr><td><code>VRo5</code><td>Ruler of Five<td><a class=stealth href="https://travellermap.com/go/Mesh">Mesh</a>
-      <tr><td><code>VRrS</code><td>Rranglloez Stronghold<td><a class=stealth href="https://travellermap.com/go/Tugl">Tugl</a>
-      <tr><td><code>VRuk</code><td>Worlds of Leader Rukh (Rukh Aegz)<td><a class=stealth href="https://travellermap.com/go/Gvur">Gvur</a>
-      <tr><td><code>VSDp</code><td>Saeknouth Dependency (Saeknouth Igz)<td><a class=stealth href="https://travellermap.com/go/Gvur">Gvur</a>
-      <tr><td><code>VSEq</code><td>Society of Equals (Dzen Aeng Kho)<td><a class=stealth href="https://travellermap.com/go/Gvur">Gvur</a>/<wbr><a class=stealth href="https://travellermap.com/go/Tugl">Tugl</a>
-      <tr><td><code>VThE</code><td>Thoengling Empire (Thoengling Raghz)<td><a class=stealth href="https://travellermap.com/go/Gvur">Gvur</a>/<wbr><a class=stealth href="https://travellermap.com/go/Tugl">Tugl</a>
-      <tr><td><code>VTrA</code><td>Trae Aggregation<td><a class=stealth href="https://travellermap.com/go/Tren">Tren</a>
-      <tr><td><code>VTzE</code><td>Thirz Empire (Thirz Uerra)<td><a class=stealth href="https://travellermap.com/go/Gvur">Gvur</a>/<wbr><a class=stealth href="https://travellermap.com/go/Ziaf">Ziaf</a>
-      <tr><td><code>VUru</code><td>Urukhu<td><a class=stealth href="https://travellermap.com/go/Gvur">Gvur</a>
-      <tr><td><code>VVar</code><td>Empire of Varroerth<td><a class=stealth href="https://travellermap.com/go/Prov">Prov</a>/<wbr><a class=stealth href="https://travellermap.com/go/Tugl">Tugl</a>/<wbr><a class=stealth href="https://travellermap.com/go/Wind">Wind</a>
-      <tr><td><code>VVoS</code><td>Voekhaeb Society<td><a class=stealth href="https://travellermap.com/go/Mesh">Mesh</a>
-      <tr><td><code>VWan</code><td>People of Wanz<td><a class=stealth href="https://travellermap.com/go/Tugl">Tugl</a>
-      <tr><td><code>VWP2</code><td>Windhorn Pact of Two<td><a class=stealth href="https://travellermap.com/go/Tugl">Tugl</a>
-      <tr><td><code>VYoe</code><td>Union of Yoetyqq<td><a class=stealth href="https://travellermap.com/go/Gash">Gash</a>
-      <tr><td><code>WiDe</code><td>Winston Democracy<td><a class=stealth href="https://travellermap.com/go/Alde">Alde</a>/<wbr><a class=stealth href="https://travellermap.com/go/Newo">Newo</a>
-      <tr><td><code>XXXX</code><td>Unknown<td><i>various</i>
-      <tr><td><code>ZePr</code><td>Zelphic Primacy<td><a class=stealth href="https://travellermap.com/go/Farf">Farf</a>
-      <tr><td><code>ZhAx</code><td>Zhodani Consulate, Addaxur Reserve<td><a class=stealth href="https://travellermap.com/go/Tien">Tien</a>
-      <tr><td><code>ZhCa</code><td>Zhodani Consulate, Colonnade Province<td><a class=stealth href="https://travellermap.com/go/Vang">Vang</a>/<wbr><a class=stealth href="https://travellermap.com/go/Farf">Farf</a>
-      <tr><td><code>ZhCh</code><td>Zhodani Consulate, Chtierabl Province<td><a class=stealth href="https://travellermap.com/go/Chti">Chti</a>
-      <tr><td><code>ZhCo</code><td>Zhodani Consulate, undetermined<td><i>various</i>
-      <tr><td><code>ZhIa</code><td>Zhodani Consulate, Iabrensh Province<td><a class=stealth href="https://travellermap.com/go/Stia">Stia</a>/<wbr><a class=stealth href="https://travellermap.com/go/Zdie">Zdie</a>
-      <tr><td><code>ZhIN</code><td>Zhodani Consulate, Iadr Nsobl Province<td><a class=stealth href="https://travellermap.com/go/Farf">Farf</a>/<wbr><a class=stealth href="https://travellermap.com/go/Fore">Fore</a>/<wbr><a class=stealth href="https://travellermap.com/go/Gvur">Gvur</a>/<wbr><a class=stealth href="https://travellermap.com/go/Spin">Spin</a>/<wbr><a class=stealth href="https://travellermap.com/go/Yikl">Yikl</a>/<wbr><a class=stealth href="https://travellermap.com/go/Ziaf">Ziaf</a>
-      <tr><td><code>ZhJp</code><td>Zhodani Consulate, Jadlapriants Province<td><a class=stealth href="https://travellermap.com/go/Tien">Tien</a>/<wbr><a class=stealth href="https://travellermap.com/go/Zhda">Zhda</a>
-      <tr><td><code>ZhMe</code><td>Zhodani Consulate, Meqlemianz Province<td><a class=stealth href="https://travellermap.com/go/Eiap">Eiap</a>/<wbr><a class=stealth href="https://travellermap.com/go/Sidi">Sidi</a>/<wbr><a class=stealth href="https://travellermap.com/go/Eiap">Eiap</a>
-      <tr><td><code>ZhOb</code><td>Zhodani Consulate, Obrefripl Province<td><i>various</i>
-      <tr><td><code>ZhSh</code><td>Zhodani Consulate, Shtochiadr Province<td><a class=stealth href="https://travellermap.com/go/Itvi">Itvi</a>/<wbr><a class=stealth href="https://travellermap.com/go/Tlab">Tlab</a>
-      <tr><td><code>ZhVQ</code><td>Zhodani Consulate, Vlanchiets Qlom Province<td><i>various</i>
-      <tr><td><code>Zuug</code><td>Zuugabish Tripartite<td><a class=stealth href="https://travellermap.com/go/Mend">Mend</a>
-      <tr><td><code>ZyCo</code><td>Zydarian Codominion<td><a class=stealth href="https://travellermap.com/go/Beyo">Beyo</a>
+      <tr><td><code>3EoG</code><td><code>Ga</code></td><td>Third Empire of Gashikan<td><a class=stealth href="https://travellermap.com/go/Mend">Mend</a>/<wbr><a class=stealth href="https://travellermap.com/go/Gash">Gash</a>/<wbr><a class=stealth href="https://travellermap.com/go/Tren">Tren</a>
+      <tr><td><code>4Wor</code><td><code>Fw</code></td><td>Four Worlds<td><a class=stealth href="https://travellermap.com/go/Farf">Farf</a>
+      <tr><td><code>AkUn</code><td><code>Ak</code></td><td>Akeena Union<td><a class=stealth href="https://travellermap.com/go/Gate">Gate</a>
+      <tr><td><code>AlCo</code><td><code>Al</code></td><td>Altarean Confederation<td><a class=stealth href="https://travellermap.com/go/Vang">Vang</a>
+      <tr><td><code>AnTC</code><td><code>Ac</code></td><td>Anubian Trade Coalition<td><a class=stealth href="https://travellermap.com/go/Hint">Hint</a>
+      <tr><td><code>AsIf</code><td><code>As</code></td><td>Iyeaao'fte (Tlaukhu client state)<td><a class=stealth href="https://travellermap.com/go/Ustr">Ustr</a>
+      <tr><td><code>AsMw</code><td><code>As</code></td><td>Aslan Hierate, single multiple-world clan dominates<td><a class=stealth href="https://travellermap.com/go/Akti">Akti</a>/<wbr><a class=stealth href="https://travellermap.com/go/Dark">Dark</a>/<wbr><a class=stealth href="https://travellermap.com/go/Eali">Eali</a>/<wbr><a class=stealth href="https://travellermap.com/go/Hlak">Hlak</a>/<wbr><a class=stealth href="https://travellermap.com/go/Iwah">Iwah</a>/<wbr><a class=stealth href="https://travellermap.com/go/Reav">Reav</a>/<wbr><a class=stealth href="https://travellermap.com/go/Rift">Rift</a>/<wbr><a class=stealth href="https://travellermap.com/go/Stai">Stai</a>/<wbr><a class=stealth href="https://travellermap.com/go/Troj">Troj</a>/<wbr><a class=stealth href="https://travellermap.com/go/Uist">Uist</a>/<wbr><a class=stealth href="https://travellermap.com/go/Ustr">Ustr</a>/<wbr><a class=stealth href="https://travellermap.com/go/Verg">Verg</a>
+      <tr><td><code>AsOf</code><td><code>As</code></td><td>Oleaiy'fte (Tlaukhu client state)<td><a class=stealth href="https://travellermap.com/go/Ustr">Ustr</a>
+      <tr><td><code>AsSc</code><td><code>As</code></td><td>Aslan Hierate, multiple clans split control<td><a class=stealth href="https://travellermap.com/go/Akti">Akti</a>/<wbr><a class=stealth href="https://travellermap.com/go/Dark">Dark</a>/<wbr><a class=stealth href="https://travellermap.com/go/Eali">Eali</a>/<wbr><a class=stealth href="https://travellermap.com/go/Hlak">Hlak</a>/<wbr><a class=stealth href="https://travellermap.com/go/Iwah">Iwah</a>/<wbr><a class=stealth href="https://travellermap.com/go/Reav">Reav</a>/<wbr><a class=stealth href="https://travellermap.com/go/Rift">Rift</a>/<wbr><a class=stealth href="https://travellermap.com/go/Stai">Stai</a>/<wbr><a class=stealth href="https://travellermap.com/go/Troj">Troj</a>/<wbr><a class=stealth href="https://travellermap.com/go/Uist">Uist</a>/<wbr><a class=stealth href="https://travellermap.com/go/Ustr">Ustr</a>
+      <tr><td><code>AsSF</code><td><code>As</code></td><td>Aslan Hierate, small facility (temporary)<td>
+      <tr><td><code>AsT0</code><td><code>A0</code></td><td>Aslan Hierate, Tlaukhu control, Yerlyaruiwo (1), Hrawoao (13), Eisohiyw (14), Ferekhearl (19)<td><a class=stealth href="https://travellermap.com/go/Akti">Akti</a>/<wbr><a class=stealth href="https://travellermap.com/go/Dark">Dark</a>/<wbr><a class=stealth href="https://travellermap.com/go/Eali">Eali</a>/<wbr><a class=stealth href="https://travellermap.com/go/Hlak">Hlak</a>/<wbr><a class=stealth href="https://travellermap.com/go/Iwah">Iwah</a>/<wbr><a class=stealth href="https://travellermap.com/go/Reav">Reav</a>/<wbr><a class=stealth href="https://travellermap.com/go/Rift">Rift</a>/<wbr><a class=stealth href="https://travellermap.com/go/Stai">Stai</a>/<wbr><a class=stealth href="https://travellermap.com/go/Troj">Troj</a>/<wbr><a class=stealth href="https://travellermap.com/go/Uist">Uist</a>/<wbr><a class=stealth href="https://travellermap.com/go/Ustr">Ustr</a>
+      <tr><td><code>AsT1</code><td><code>A1</code></td><td>Aslan Hierate, Tlaukhu control, Khauleairl (2), Estoieie' (16), Toaseilwi (22)<td><a class=stealth href="https://travellermap.com/go/Akti">Akti</a>/<wbr><a class=stealth href="https://travellermap.com/go/Dark">Dark</a>/<wbr><a class=stealth href="https://travellermap.com/go/Eali">Eali</a>/<wbr><a class=stealth href="https://travellermap.com/go/Hlak">Hlak</a>/<wbr><a class=stealth href="https://travellermap.com/go/Iwah">Iwah</a>/<wbr><a class=stealth href="https://travellermap.com/go/Reav">Reav</a>/<wbr><a class=stealth href="https://travellermap.com/go/Rift">Rift</a>/<wbr><a class=stealth href="https://travellermap.com/go/Stai">Stai</a>/<wbr><a class=stealth href="https://travellermap.com/go/Troj">Troj</a>/<wbr><a class=stealth href="https://travellermap.com/go/Uist">Uist</a>/<wbr><a class=stealth href="https://travellermap.com/go/Ustr">Ustr</a>
+      <tr><td><code>AsT2</code><td><code>A2</code></td><td>Aslan Hierate, Tlaukhu control, Syoisuis (3)<td><a class=stealth href="https://travellermap.com/go/Akti">Akti</a>/<wbr><a class=stealth href="https://travellermap.com/go/Dark">Dark</a>/<wbr><a class=stealth href="https://travellermap.com/go/Eali">Eali</a>/<wbr><a class=stealth href="https://travellermap.com/go/Hlak">Hlak</a>/<wbr><a class=stealth href="https://travellermap.com/go/Iwah">Iwah</a>/<wbr><a class=stealth href="https://travellermap.com/go/Reav">Reav</a>/<wbr><a class=stealth href="https://travellermap.com/go/Rift">Rift</a>/<wbr><a class=stealth href="https://travellermap.com/go/Stai">Stai</a>/<wbr><a class=stealth href="https://travellermap.com/go/Troj">Troj</a>/<wbr><a class=stealth href="https://travellermap.com/go/Uist">Uist</a>/<wbr><a class=stealth href="https://travellermap.com/go/Ustr">Ustr</a>
+      <tr><td><code>AsT3</code><td><code>A3</code></td><td>Aslan Hierate, Tlaukhu control, Tralyeaeawi (4), Yulraleh (12), Aiheilar (25), Riyhalaei (28)<td><a class=stealth href="https://travellermap.com/go/Akti">Akti</a>/<wbr><a class=stealth href="https://travellermap.com/go/Dark">Dark</a>/<wbr><a class=stealth href="https://travellermap.com/go/Eali">Eali</a>/<wbr><a class=stealth href="https://travellermap.com/go/Hlak">Hlak</a>/<wbr><a class=stealth href="https://travellermap.com/go/Iwah">Iwah</a>/<wbr><a class=stealth href="https://travellermap.com/go/Reav">Reav</a>/<wbr><a class=stealth href="https://travellermap.com/go/Rift">Rift</a>/<wbr><a class=stealth href="https://travellermap.com/go/Stai">Stai</a>/<wbr><a class=stealth href="https://travellermap.com/go/Troj">Troj</a>/<wbr><a class=stealth href="https://travellermap.com/go/Uist">Uist</a>/<wbr><a class=stealth href="https://travellermap.com/go/Ustr">Ustr</a>
+      <tr><td><code>AsT4</code><td><code>A4</code></td><td>Aslan Hierate, Tlaukhu control, Eakhtiyho (5), Eteawyolei' (11), Fteweyeakh (23)<td><a class=stealth href="https://travellermap.com/go/Akti">Akti</a>/<wbr><a class=stealth href="https://travellermap.com/go/Dark">Dark</a>/<wbr><a class=stealth href="https://travellermap.com/go/Eali">Eali</a>/<wbr><a class=stealth href="https://travellermap.com/go/Hlak">Hlak</a>/<wbr><a class=stealth href="https://travellermap.com/go/Iwah">Iwah</a>/<wbr><a class=stealth href="https://travellermap.com/go/Reav">Reav</a>/<wbr><a class=stealth href="https://travellermap.com/go/Rift">Rift</a>/<wbr><a class=stealth href="https://travellermap.com/go/Stai">Stai</a>/<wbr><a class=stealth href="https://travellermap.com/go/Troj">Troj</a>/<wbr><a class=stealth href="https://travellermap.com/go/Uist">Uist</a>/<wbr><a class=stealth href="https://travellermap.com/go/Ustr">Ustr</a>
+      <tr><td><code>AsT5</code><td><code>A5</code></td><td>Aslan Hierate, Tlaukhu control, Hlyueawi (6), Isoitiyro (15)<td><a class=stealth href="https://travellermap.com/go/Akti">Akti</a>/<wbr><a class=stealth href="https://travellermap.com/go/Dark">Dark</a>/<wbr><a class=stealth href="https://travellermap.com/go/Eali">Eali</a>/<wbr><a class=stealth href="https://travellermap.com/go/Hlak">Hlak</a>/<wbr><a class=stealth href="https://travellermap.com/go/Iwah">Iwah</a>/<wbr><a class=stealth href="https://travellermap.com/go/Reav">Reav</a>/<wbr><a class=stealth href="https://travellermap.com/go/Rift">Rift</a>/<wbr><a class=stealth href="https://travellermap.com/go/Stai">Stai</a>/<wbr><a class=stealth href="https://travellermap.com/go/Troj">Troj</a>/<wbr><a class=stealth href="https://travellermap.com/go/Uist">Uist</a>/<wbr><a class=stealth href="https://travellermap.com/go/Ustr">Ustr</a>
+      <tr><td><code>AsT6</code><td><code>A6</code></td><td>Aslan Hierate, Tlaukhu control, Uiktawa (7), Iykyasea (17), Faowaou (27)<td><a class=stealth href="https://travellermap.com/go/Akti">Akti</a>/<wbr><a class=stealth href="https://travellermap.com/go/Dark">Dark</a>/<wbr><a class=stealth href="https://travellermap.com/go/Eali">Eali</a>/<wbr><a class=stealth href="https://travellermap.com/go/Hlak">Hlak</a>/<wbr><a class=stealth href="https://travellermap.com/go/Iwah">Iwah</a>/<wbr><a class=stealth href="https://travellermap.com/go/Reav">Reav</a>/<wbr><a class=stealth href="https://travellermap.com/go/Rift">Rift</a>/<wbr><a class=stealth href="https://travellermap.com/go/Stai">Stai</a>/<wbr><a class=stealth href="https://travellermap.com/go/Troj">Troj</a>/<wbr><a class=stealth href="https://travellermap.com/go/Uist">Uist</a>/<wbr><a class=stealth href="https://travellermap.com/go/Ustr">Ustr</a>
+      <tr><td><code>AsT7</code><td><code>A7</code></td><td>Aslan Hierate, Tlaukhu control, Ikhtealyo (8), Tlerfearlyo (20), Yehtahikh (24)<td><a class=stealth href="https://travellermap.com/go/Akti">Akti</a>/<wbr><a class=stealth href="https://travellermap.com/go/Dark">Dark</a>/<wbr><a class=stealth href="https://travellermap.com/go/Eali">Eali</a>/<wbr><a class=stealth href="https://travellermap.com/go/Hlak">Hlak</a>/<wbr><a class=stealth href="https://travellermap.com/go/Iwah">Iwah</a>/<wbr><a class=stealth href="https://travellermap.com/go/Reav">Reav</a>/<wbr><a class=stealth href="https://travellermap.com/go/Rift">Rift</a>/<wbr><a class=stealth href="https://travellermap.com/go/Stai">Stai</a>/<wbr><a class=stealth href="https://travellermap.com/go/Troj">Troj</a>/<wbr><a class=stealth href="https://travellermap.com/go/Uist">Uist</a>/<wbr><a class=stealth href="https://travellermap.com/go/Ustr">Ustr</a>
+      <tr><td><code>AsT8</code><td><code>A8</code></td><td>Aslan Hierate, Tlaukhu control, Seieakh (9), Akatoiloh (18), We'okunir (29)<td><a class=stealth href="https://travellermap.com/go/Akti">Akti</a>/<wbr><a class=stealth href="https://travellermap.com/go/Dark">Dark</a>/<wbr><a class=stealth href="https://travellermap.com/go/Eali">Eali</a>/<wbr><a class=stealth href="https://travellermap.com/go/Hlak">Hlak</a>/<wbr><a class=stealth href="https://travellermap.com/go/Iwah">Iwah</a>/<wbr><a class=stealth href="https://travellermap.com/go/Reav">Reav</a>/<wbr><a class=stealth href="https://travellermap.com/go/Rift">Rift</a>/<wbr><a class=stealth href="https://travellermap.com/go/Stai">Stai</a>/<wbr><a class=stealth href="https://travellermap.com/go/Troj">Troj</a>/<wbr><a class=stealth href="https://travellermap.com/go/Uist">Uist</a>/<wbr><a class=stealth href="https://travellermap.com/go/Ustr">Ustr</a>
+      <tr><td><code>AsT9</code><td><code>A9</code></td><td>Aslan Hierate, Tlaukhu control, Aokhalte (10), Sahao' (21), Ouokhoi (26)<td><a class=stealth href="https://travellermap.com/go/Akti">Akti</a>/<wbr><a class=stealth href="https://travellermap.com/go/Dark">Dark</a>/<wbr><a class=stealth href="https://travellermap.com/go/Eali">Eali</a>/<wbr><a class=stealth href="https://travellermap.com/go/Hlak">Hlak</a>/<wbr><a class=stealth href="https://travellermap.com/go/Iwah">Iwah</a>/<wbr><a class=stealth href="https://travellermap.com/go/Reav">Reav</a>/<wbr><a class=stealth href="https://travellermap.com/go/Rift">Rift</a>/<wbr><a class=stealth href="https://travellermap.com/go/Stai">Stai</a>/<wbr><a class=stealth href="https://travellermap.com/go/Troj">Troj</a>/<wbr><a class=stealth href="https://travellermap.com/go/Uist">Uist</a>/<wbr><a class=stealth href="https://travellermap.com/go/Ustr">Ustr</a>
+      <tr><td><code>AsTA</code><td><code>Ta</code></td><td>Tealou Arlaoh (Aslan independent clan, non-outcast)<td><a class=stealth href="https://travellermap.com/go/Uist">Uist</a>/<wbr><a class=stealth href="https://travellermap.com/go/Ustr">Ustr</a>
+      <tr><td><code>AsTv</code><td><code>As</code></td><td>Aslan Hierate, Tlaukhu vassal clan dominates<td><a class=stealth href="https://travellermap.com/go/Akti">Akti</a>/<wbr><a class=stealth href="https://travellermap.com/go/Dark">Dark</a>/<wbr><a class=stealth href="https://travellermap.com/go/Eali">Eali</a>/<wbr><a class=stealth href="https://travellermap.com/go/Hlak">Hlak</a>/<wbr><a class=stealth href="https://travellermap.com/go/Iwah">Iwah</a>/<wbr><a class=stealth href="https://travellermap.com/go/Reav">Reav</a>/<wbr><a class=stealth href="https://travellermap.com/go/Rift">Rift</a>/<wbr><a class=stealth href="https://travellermap.com/go/Stai">Stai</a>/<wbr><a class=stealth href="https://travellermap.com/go/Troj">Troj</a>/<wbr><a class=stealth href="https://travellermap.com/go/Uist">Uist</a>/<wbr><a class=stealth href="https://travellermap.com/go/Ustr">Ustr</a>
+      <tr><td><code>AsTz</code><td><code>As</code></td><td>Aslan Hierate, Zodia clan (Tralyeaeawi vassal)<td><a class=stealth href="https://travellermap.com/go/Iwah">Iwah</a>
+      <tr><td><code>AsVc</code><td><code>As</code></td><td>Aslan Hierate, vassal clan dominates<td><a class=stealth href="https://travellermap.com/go/Akti">Akti</a>/<wbr><a class=stealth href="https://travellermap.com/go/Dark">Dark</a>/<wbr><a class=stealth href="https://travellermap.com/go/Eali">Eali</a>/<wbr><a class=stealth href="https://travellermap.com/go/Hlak">Hlak</a>/<wbr><a class=stealth href="https://travellermap.com/go/Iwah">Iwah</a>/<wbr><a class=stealth href="https://travellermap.com/go/Reav">Reav</a>/<wbr><a class=stealth href="https://travellermap.com/go/Rift">Rift</a>/<wbr><a class=stealth href="https://travellermap.com/go/Stai">Stai</a>/<wbr><a class=stealth href="https://travellermap.com/go/Troj">Troj</a>/<wbr><a class=stealth href="https://travellermap.com/go/Uist">Uist</a>/<wbr><a class=stealth href="https://travellermap.com/go/Ustr">Ustr</a>
+      <tr><td><code>AsWc</code><td><code>As</code></td><td>Aslan Hierate, single one-world clan dominates<td><a class=stealth href="https://travellermap.com/go/Akti">Akti</a>/<wbr><a class=stealth href="https://travellermap.com/go/Dark">Dark</a>/<wbr><a class=stealth href="https://travellermap.com/go/Eali">Eali</a>/<wbr><a class=stealth href="https://travellermap.com/go/Hlak">Hlak</a>/<wbr><a class=stealth href="https://travellermap.com/go/Iwah">Iwah</a>/<wbr><a class=stealth href="https://travellermap.com/go/Reav">Reav</a>/<wbr><a class=stealth href="https://travellermap.com/go/Rift">Rift</a>/<wbr><a class=stealth href="https://travellermap.com/go/Stai">Stai</a>/<wbr><a class=stealth href="https://travellermap.com/go/Troj">Troj</a>/<wbr><a class=stealth href="https://travellermap.com/go/Uist">Uist</a>/<wbr><a class=stealth href="https://travellermap.com/go/Ustr">Ustr</a>
+      <tr><td><code>AsXX</code><td><code>As</code></td><td>Aslan Hierate, unknown<td><a class=stealth href="https://travellermap.com/go/Akti">Akti</a>/<wbr><a class=stealth href="https://travellermap.com/go/Dark">Dark</a>/<wbr><a class=stealth href="https://travellermap.com/go/Eali">Eali</a>/<wbr><a class=stealth href="https://travellermap.com/go/Hlak">Hlak</a>/<wbr><a class=stealth href="https://travellermap.com/go/Iwah">Iwah</a>/<wbr><a class=stealth href="https://travellermap.com/go/Reav">Reav</a>/<wbr><a class=stealth href="https://travellermap.com/go/Rift">Rift</a>/<wbr><a class=stealth href="https://travellermap.com/go/Stai">Stai</a>/<wbr><a class=stealth href="https://travellermap.com/go/Troj">Troj</a>/<wbr><a class=stealth href="https://travellermap.com/go/Uist">Uist</a>/<wbr><a class=stealth href="https://travellermap.com/go/Ustr">Ustr</a>
+      <tr><td><code>Bium</code><td><code>Bi</code></td><td>The Biumvirate<td><a class=stealth href="https://travellermap.com/go/Farf">Farf</a>
+      <tr><td><code>BlSo</code><td><code>Bs</code></td><td>Belgardian Sojurnate<td><a class=stealth href="https://travellermap.com/go/Troj">Troj</a>
+      <tr><td><code>CaAs</code><td><code>Cb</code></td><td>Carrillian Assembly<td><a class=stealth href="https://travellermap.com/go/Reav">Reav</a>
+      <tr><td><code>CAEM</code><td><code>Es</code></td><td>Comsentient Alliance, Eslyat Magistracy<td><a class=stealth href="https://travellermap.com/go/Beyo">Beyo</a>/<wbr><a class=stealth href="https://travellermap.com/go/Vang">Vang</a>
+      <tr><td><code>CAin</code><td><code>Co</code></td><td>Comsentient Alliance, independent<td><a class=stealth href="https://travellermap.com/go/Vang">Vang</a>
+      <tr><td><code>CAKT</code><td><code>Kt</code></td><td>Comsentient Alliance, Kajaani Triumverate<td><a class=stealth href="https://travellermap.com/go/Vang">Vang</a>
+      <tr><td><code>CaPr</code><td><code>Ca</code></td><td>Principality of Caledon<td><a class=stealth href="https://travellermap.com/go/Reav">Reav</a>
+      <tr><td><code>CaTe</code><td><code>Ct</code></td><td>Carter Technocracy<td><a class=stealth href="https://travellermap.com/go/Reav">Reav</a>
+      <tr><td><code>CoBa</code><td><code>Ba</code></td><td>Confederation of Bammesuka<td><a class=stealth href="https://travellermap.com/go/Mend">Mend</a>
+      <tr><td><code>CoLp</code><td><code>Lp</code></td><td>Council of Leh Perash<td><a class=stealth href="https://travellermap.com/go/Hint">Hint</a>
+      <tr><td><code>CsCa</code><td><code>Ca</code></td><td>Client state, Principality of Caledon<td><a class=stealth href="https://travellermap.com/go/Reav">Reav</a>
+      <tr><td><code>CsHv</code><td><code>Hc</code></td><td>Client state, Hiver Federation<td><a class=stealth href="https://travellermap.com/go/Cruc">Cruc</a>/<wbr><a class=stealth href="https://travellermap.com/go/Spic">Spic</a>
+      <tr><td><code>CsIm</code><td><code>Cs</code></td><td>Client state, Third Imperium<td><i>various</i>
+      <tr><td><code>CsMP</code><td><code>Ms</code></td><td>Client state, Ma'Gnar Primarchic<td><a class=stealth href="https://travellermap.com/go/Beyo">Beyo</a>
+      <tr><td><code>CsTw</code><td><code>KC</code></td><td>Client state, Two Thousand Worlds<td><i>various</i>
+      <tr><td><code>CsZh</code><td><code>Cz</code></td><td>Client state, Zhodani Consulate<td><a class=stealth href="https://travellermap.com/go/Spin">Spin</a>/<wbr><a class=stealth href="https://travellermap.com/go/Troj">Troj</a>
+      <tr><td><code>CyUn</code><td><code>Cu</code></td><td>Cytralin Unity<td><a class=stealth href="https://travellermap.com/go/Hint">Hint</a>
+      <tr><td><code>DaCf</code><td><code>Da</code></td><td>Darrian Confederation<td><a class=stealth href="https://travellermap.com/go/Spin">Spin</a>
+      <tr><td><code>DeHg</code><td><code>Dh</code></td><td>Descarothe Hegemony<td><a class=stealth href="https://travellermap.com/go/Farf">Farf</a>
+      <tr><td><code>DeNo</code><td><code>Dn</code></td><td>Demos of Nobles<td><a class=stealth href="https://travellermap.com/go/Newo">Newo</a>
+      <tr><td><code>DiGr</code><td><code>Dg</code></td><td>Dienbach Grüpen<td><a class=stealth href="https://travellermap.com/go/Newo">Newo</a>
+      <tr><td><code>DiWb</code><td><code>Dw</code></td><td>Die Weltbund<td><a class=stealth href="https://travellermap.com/go/Beyo">Beyo</a>
+      <tr><td><code>DoAl</code><td><code>Az</code></td><td>Domain of Alntzar<td><a class=stealth href="https://travellermap.com/go/Farf">Farf</a>
+      <tr><td><code>DuCf</code><td><code>Cd</code></td><td>Confederation of Duncinae<td><a class=stealth href="https://travellermap.com/go/Reav">Reav</a>
+      <tr><td><code>FCSA</code><td><code>Fc</code></td><td>Four Corners Sovereign Array<td><a class=stealth href="https://travellermap.com/go/Vang">Vang</a>
+      <tr><td><code>FeAl</code><td><code>Fa</code></td><td>Federation of Alsas<td><a class=stealth href="https://travellermap.com/go/Farf">Farf</a>
+      <tr><td><code>FeAm</code><td><code>FA</code></td><td>Federation of Amil<td><a class=stealth href="https://travellermap.com/go/Cruc">Cruc</a>
+      <tr><td><code>FeHe</code><td><code>Fh</code></td><td>Federation of Heron<td><a class=stealth href="https://travellermap.com/go/Glim">Glim</a>
+      <tr><td><code>FlLe</code><td><code>Fl</code></td><td>Florian League<td><a class=stealth href="https://travellermap.com/go/Troj">Troj</a>
+      <tr><td><code>GaFd</code><td><code>Ga</code></td><td>Galian Federation<td><a class=stealth href="https://travellermap.com/go/Gate">Gate</a>
+      <tr><td><code>GaRp</code><td><code>Gr</code></td><td>Gamma Republic<td><a class=stealth href="https://travellermap.com/go/Glim">Glim</a>
+      <tr><td><code>GdKa</code><td><code>Rm</code></td><td>Grand Duchy of Kalradin<td><a class=stealth href="https://travellermap.com/go/Cruc">Cruc</a>
+      <tr><td><code>GdMh</code><td><code>Ma</code></td><td>Grand Duchy of Marlheim<td><a class=stealth href="https://travellermap.com/go/Reav">Reav</a>
+      <tr><td><code>GdSt</code><td><code>Gs</code></td><td>Grand Duchy of Stoner<td><a class=stealth href="https://travellermap.com/go/Glim">Glim</a>
+      <tr><td><code>GeOr</code><td><code>Go</code></td><td>Gerontocracy of Ormine<td><a class=stealth href="https://travellermap.com/go/Dark">Dark</a>
+      <tr><td><code>GlEm</code><td><code>Gl</code></td><td>Glorious Empire (Aslan independent clan, outcast)<td><a class=stealth href="https://travellermap.com/go/Troj">Troj</a>
+      <tr><td><code>GlFe</code><td><code>Gf</code></td><td>Glimmerdrift Federation<td><a class=stealth href="https://travellermap.com/go/Cruc">Cruc</a>/<wbr><a class=stealth href="https://travellermap.com/go/Glim">Glim</a>
+      <tr><td><code>GnCl</code><td><code>Gi</code></td><td>Gniivi Collective<td><a class=stealth href="https://travellermap.com/go/Hint">Hint</a>
+      <tr><td><code>GrCo</code><td><code>Gr</code></td><td>Grossdeutchland Confederation<td><a class=stealth href="https://travellermap.com/go/Vang">Vang</a>
+      <tr><td><code>HaCo</code><td><code>Hc</code></td><td>Haladon Cooperative<td><a class=stealth href="https://travellermap.com/go/Farf">Farf</a>
+      <tr><td><code>HoPA</code><td><code>Ho</code></td><td>Hochiken People's Assembly<td><a class=stealth href="https://travellermap.com/go/Gate">Gate</a>
+      <tr><td><code>HvFd</code><td><code>Hv</code></td><td>Hiver Federation<td><a class=stealth href="https://travellermap.com/go/Spic">Spic</a>
+      <tr><td><code>HyLe</code><td><code>Hy</code></td><td>Hyperion League<td><a class=stealth href="https://travellermap.com/go/Vang">Vang</a>
+      <tr><td><code>IHPr</code><td><code>IS</code></td><td>I'Sred*Ni Protectorate<td><a class=stealth href="https://travellermap.com/go/Beyo">Beyo</a>
+      <tr><td><code>ImAp</code><td><code>Im</code></td><td>Third Imperium, Amec Protectorate<td><a class=stealth href="https://travellermap.com/go/Dagu">Dagu</a>
+      <tr><td><code>ImDa</code><td><code>Im</code></td><td>Third Imperium, Domain of Antares<td><a class=stealth href="https://travellermap.com/go/Anta">Anta</a>/<wbr><a class=stealth href="https://travellermap.com/go/Empt">Empt</a>/<wbr><a class=stealth href="https://travellermap.com/go/Lish">Lish</a>
+      <tr><td><code>ImDc</code><td><code>Im</code></td><td>Third Imperium, Domain of Sylea<td><a class=stealth href="https://travellermap.com/go/Core">Core</a>/<wbr><a class=stealth href="https://travellermap.com/go/Delp">Delp</a>/<wbr><a class=stealth href="https://travellermap.com/go/Forn">Forn</a>/<wbr><a class=stealth href="https://travellermap.com/go/Mass">Mass</a>
+      <tr><td><code>ImDd</code><td><code>Im</code></td><td>Third Imperium, Domain of Deneb<td><a class=stealth href="https://travellermap.com/go/Dene">Dene</a>/<wbr><a class=stealth href="https://travellermap.com/go/Reft">Reft</a>/<wbr><a class=stealth href="https://travellermap.com/go/Spin">Spin</a>/<wbr><a class=stealth href="https://travellermap.com/go/Troj">Troj</a>
+      <tr><td><code>ImDg</code><td><code>Im</code></td><td>Third Imperium, Domain of Gateway<td><a class=stealth href="https://travellermap.com/go/Glim">Glim</a>/<wbr><a class=stealth href="https://travellermap.com/go/Hint">Hint</a>/<wbr><a class=stealth href="https://travellermap.com/go/Ley">Ley</a>
+      <tr><td><code>ImDi</code><td><code>Im</code></td><td>Third Imperium, Domain of Ilelish<td><a class=stealth href="https://travellermap.com/go/Daib">Daib</a>/<wbr><a class=stealth href="https://travellermap.com/go/Ilel">Ilel</a>/<wbr><a class=stealth href="https://travellermap.com/go/Reav">Reav</a>/<wbr><a class=stealth href="https://travellermap.com/go/Verg">Verg</a>/<wbr><a class=stealth href="https://travellermap.com/go/Zaru">Zaru</a>
+      <tr><td><code>ImDs</code><td><code>Im</code></td><td>Third Imperium, Domain of Sol<td><a class=stealth href="https://travellermap.com/go/Alph">Alph</a>/<wbr><a class=stealth href="https://travellermap.com/go/Dias">Dias</a>/<wbr><a class=stealth href="https://travellermap.com/go/Magy">Magy</a>/<wbr><a class=stealth href="https://travellermap.com/go/Olde">Olde</a>/<wbr><a class=stealth href="https://travellermap.com/go/Solo">Solo</a>
+      <tr><td><code>ImDv</code><td><code>Im</code></td><td>Third Imperium, Domain of Vland<td><a class=stealth href="https://travellermap.com/go/Corr">Corr</a>/<wbr><a class=stealth href="https://travellermap.com/go/Dagu">Dagu</a>/<wbr><a class=stealth href="https://travellermap.com/go/Gush">Gush</a>/<wbr><a class=stealth href="https://travellermap.com/go/Reft">Reft</a>/<wbr><a class=stealth href="https://travellermap.com/go/Vlan">Vlan</a>
+      <tr><td><code>ImLa</code><td><code>Im</code></td><td>Third Imperium, League of Antares<td><a class=stealth href="https://travellermap.com/go/Anta">Anta</a>
+      <tr><td><code>ImLc</code><td><code>Im</code></td><td>Third Imperium, Lancian Cultural Region<td><a class=stealth href="https://travellermap.com/go/Corr">Corr</a>/<wbr><a class=stealth href="https://travellermap.com/go/Dagu">Dagu</a>/<wbr><a class=stealth href="https://travellermap.com/go/Gush">Gush</a>
+      <tr><td><code>ImLu</code><td><code>Im</code></td><td>Third Imperium, Luriani Cultural Association<td><a class=stealth href="https://travellermap.com/go/Ley">Ley</a>/<wbr><a class=stealth href="https://travellermap.com/go/Forn">Forn</a>
+      <tr><td><code>ImSy</code><td><code>Im</code></td><td>Third Imperium, Sylean Worlds<td><a class=stealth href="https://travellermap.com/go/Core">Core</a>
+      <tr><td><code>ImVd</code><td><code>Ve</code></td><td>Third Imperium, Vegan Autonomous District<td><a class=stealth href="https://travellermap.com/go/Solo">Solo</a>
+      <tr><td><code>IsDo</code><td><code>Id</code></td><td>Islaiat Dominate<td><a class=stealth href="https://travellermap.com/go/Eali">Eali</a>
+      <tr><td><code>JAOz</code><td><code>Jo</code></td><td>Julian Protectorate, Alliance of Ozuvon<td><a class=stealth href="https://travellermap.com/go/Mend">Mend</a>
+      <tr><td><code>JaPa</code><td><code>Ja</code></td><td>Jarnac Pashalic<td><a class=stealth href="https://travellermap.com/go/Beyo">Beyo</a>/<wbr><a class=stealth href="https://travellermap.com/go/Vang">Vang</a>
+      <tr><td><code>JAsi</code><td><code>Ja</code></td><td>Julian Protectorate, Asimikigir Confederation<td><a class=stealth href="https://travellermap.com/go/Amdu">Amdu</a>/<wbr><a class=stealth href="https://travellermap.com/go/Mend">Mend</a>
+      <tr><td><code>JCoK</code><td><code>Jc</code></td><td>Julian Protectorate, Constitution of Koekhon<td><a class=stealth href="https://travellermap.com/go/Amdu">Amdu</a>/<wbr><a class=stealth href="https://travellermap.com/go/Mend">Mend</a>
+      <tr><td><code>JHhk</code><td><code>Jh</code></td><td>Julian Protectorate, Hhkar Sphere<td><a class=stealth href="https://travellermap.com/go/Amdu">Amdu</a>/<wbr><a class=stealth href="https://travellermap.com/go/Mend">Mend</a>
+      <tr><td><code>JLum</code><td><code>Jd/Jl</code></td><td>Julian Protectorate, Lumda Dower<td><a class=stealth href="https://travellermap.com/go/Mend">Mend</a>
+      <tr><td><code>JMen</code><td><code>Jm</code></td><td>Julian Protectorate, Commonwealth of Mendan<td><a class=stealth href="https://travellermap.com/go/Mend">Mend</a>/<wbr><a class=stealth href="https://travellermap.com/go/Gash">Gash</a>
+      <tr><td><code>JPSt</code><td><code>Jp</code></td><td>Julian Protectorate, Pirbarish Starlane<td><a class=stealth href="https://travellermap.com/go/Mend">Mend</a>
+      <tr><td><code>JRar</code><td><code>Vw</code></td><td>Julian Protectorate, Rar Errall/Wolves Warren<td><a class=stealth href="https://travellermap.com/go/Mend">Mend</a>
+      <tr><td><code>JuHl</code><td><code>Hl</code></td><td>Julian Protectorate, Hegemony of Lorean<td><a class=stealth href="https://travellermap.com/go/Amdu">Amdu</a>/<wbr><a class=stealth href="https://travellermap.com/go/Empt">Empt</a>/<wbr><a class=stealth href="https://travellermap.com/go/Mend">Mend</a>
+      <tr><td><code>JUkh</code><td><code>Ju</code></td><td>Julian Protectorate, Ukhanzi Coordinate<td><a class=stealth href="https://travellermap.com/go/Mend">Mend</a>
+      <tr><td><code>JuNa</code><td><code>Jn</code></td><td>Jurisdiction of Nadon<td><a class=stealth href="https://travellermap.com/go/Cano">Cano</a>
+      <tr><td><code>JuPr</code><td><code>Jp/J-</code></td><td>Julian Protectorate, independent<td><a class=stealth href="https://travellermap.com/go/Amdu">Amdu</a>/<wbr><a class=stealth href="https://travellermap.com/go/Empt">Empt</a>/<wbr><a class=stealth href="https://travellermap.com/go/Mend">Mend</a>
+      <tr><td><code>JuRu</code><td><code>Jr</code></td><td>Julian Protectorate, Rukadukaz Republic<td><a class=stealth href="https://travellermap.com/go/Empt">Empt</a>/<wbr><a class=stealth href="https://travellermap.com/go/Mend">Mend</a>
+      <tr><td><code>JVug</code><td><code>Jv</code></td><td>Julian Protectorate, Vugurar Dominion<td><a class=stealth href="https://travellermap.com/go/Mend">Mend</a>
+      <tr><td><code>KaCo</code><td><code>KC</code></td><td>Katowice Conquest<td><a class=stealth href="https://travellermap.com/go/Cruc">Cruc</a>
+      <tr><td><code>KaWo</code><td><code>KW</code></td><td>Karhyri Worlds<td><a class=stealth href="https://travellermap.com/go/Cruc">Cruc</a>
+      <tr><td><code>KhLe</code><td><code>Kl</code></td><td>Khuur League<td><a class=stealth href="https://travellermap.com/go/Ley">Ley</a>
+      <tr><td><code>KkTw</code><td><code>Kk</code></td><td>Two Thousand Worlds (K'kree)<td><i>various</i>
+      <tr><td><code>KoEm</code><td><code>Ko</code></td><td>Korsumug Empire<td><a class=stealth href="https://travellermap.com/go/Thet">Thet</a>
+      <tr><td><code>KoPm</code><td><code>Pm</code></td><td>Percavid Marches<td><a class=stealth href="https://travellermap.com/go/Thet">Thet</a>
+      <tr><td><code>KPel</code><td><code>Pe</code></td><td>Kingdom of Peladon<td><a class=stealth href="https://travellermap.com/go/Thet">Thet</a>
+      <tr><td><code>KrBu</code><td><code>Kr</code></td><td>Kranzbund<td><a class=stealth href="https://travellermap.com/go/Vang">Vang</a>
+      <tr><td><code>LaCo</code><td><code>Lc</code></td><td>Langemarck Coalition<td><a class=stealth href="https://travellermap.com/go/Vang">Vang</a>
+      <tr><td><code>LeSu</code><td><code>Ls</code></td><td>League of Suns<td><a class=stealth href="https://travellermap.com/go/Farf">Farf</a>
+      <tr><td><code>LnRp</code><td><code>Ln</code></td><td>Loyal Nineworlds Republic<td><a class=stealth href="https://travellermap.com/go/Glim">Glim</a>
+      <tr><td><code>LyCo</code><td><code>Ly</code></td><td>Lanyard Colonies<td><a class=stealth href="https://travellermap.com/go/Reav">Reav</a>
+      <tr><td><code>MaCl</code><td><code>Ma</code></td><td>Mapepire Cluster<td><a class=stealth href="https://travellermap.com/go/Beyo">Beyo</a>
+      <tr><td><code>MaEm</code><td><code>Mk</code></td><td>Maskai Empire<td><a class=stealth href="https://travellermap.com/go/Glim">Glim</a>
+      <tr><td><code>MaPr</code><td><code>MF</code></td><td>Ma'Gnar Primarchic<td><a class=stealth href="https://travellermap.com/go/Beyo">Beyo</a>
+      <tr><td><code>MaUn</code><td><code>Mu</code></td><td>Malorn Union<td><a class=stealth href="https://travellermap.com/go/Cano">Cano</a>/<wbr><a class=stealth href="https://travellermap.com/go/Alde">Alde</a>
+      <tr><td><code>MeCo</code><td><code>Me</code></td><td>Megusard Corporate<td><a class=stealth href="https://travellermap.com/go/Gate">Gate</a>
+      <tr><td><code>MiCo</code><td><code>Mi</code></td><td>Mische Conglomerate<td><a class=stealth href="https://travellermap.com/go/Cruc">Cruc</a>
+      <tr><td><code>MnPr</code><td><code>Mn</code></td><td>Mnemosyne Principality<td><a class=stealth href="https://travellermap.com/go/Farf">Farf</a>
+      <tr><td><code>MrCo</code><td><code>MC</code></td><td>Mercantile Concord<td><a class=stealth href="https://travellermap.com/go/Cruc">Cruc</a>
+      <tr><td><code>NaAs</code><td><code>As</code></td><td>Non-Aligned, Aslan-dominated (outside Hierate)<td><a class=stealth href="https://travellermap.com/go/Akti">Akti</a>/<wbr><a class=stealth href="https://travellermap.com/go/Dark">Dark</a>/<wbr><a class=stealth href="https://travellermap.com/go/Eali">Eali</a>/<wbr><a class=stealth href="https://travellermap.com/go/Rift">Rift</a>/<wbr><a class=stealth href="https://travellermap.com/go/Uist">Uist</a>/<wbr><a class=stealth href="https://travellermap.com/go/Ustr">Ustr</a>
+      <tr><td><code>NaHu</code><td><code>Na</code></td><td>Non-Aligned, Human-dominated<td><i>various</i>
+      <tr><td><code>NaVa</code><td><code>Va</code></td><td>Non-Aligned, Vargr-dominated<td><i>various</i>
+      <tr><td><code>NaXX</code><td><code>Na</code></td><td>Non-Aligned, unclaimed<td><i>various</i>
+      <tr><td><code>OcWs</code><td><code>Ow</code></td><td>Outcasts of the Whispering Sky<td><a class=stealth href="https://travellermap.com/go/Hint">Hint</a>
+      <tr><td><code>OlWo</code><td><code>Ow</code></td><td>Old Worlds<td><a class=stealth href="https://travellermap.com/go/Cruc">Cruc</a>
+      <tr><td><code>PiFe</code><td><code>Pi</code></td><td>Pionier Fellowship<td><a class=stealth href="https://travellermap.com/go/Vang">Vang</a>
+      <tr><td><code>PlLe</code><td><code>Pl</code></td><td>Plavian League<td><a class=stealth href="https://travellermap.com/go/Gate">Gate</a>
+      <tr><td><code>Prot</code><td><code>Pt</code></td><td>The Protectorate<td><a class=stealth href="https://travellermap.com/go/Farf">Farf</a>
+      <tr><td><code>RaRa</code><td><code>Ra</code></td><td>Ral Ranta<td><a class=stealth href="https://travellermap.com/go/Hint">Hint</a>
+      <tr><td><code>Reac</code><td><code>Rh</code></td><td>The Reach<td><a class=stealth href="https://travellermap.com/go/Cruc">Cruc</a>
+      <tr><td><code>ReUn</code><td><code>Re</code></td><td>Renkard Union<td><a class=stealth href="https://travellermap.com/go/Gate">Gate</a>
+      <tr><td><code>SaCo</code><td><code>Sc</code></td><td>Salinaikin Concordance<td><a class=stealth href="https://travellermap.com/go/Farf">Farf</a>
+      <tr><td><code>Sark</code><td><code>Sc</code></td><td>Sarkan Constellation<td><a class=stealth href="https://travellermap.com/go/Mend">Mend</a>
+      <tr><td><code>SeFo</code><td><code>Sf</code></td><td>Senlis Foederate<td><a class=stealth href="https://travellermap.com/go/Troj">Troj</a>
+      <tr><td><code>SlLg</code><td><code>Sl</code></td><td>Shukikikar League<td><a class=stealth href="https://travellermap.com/go/Glim">Glim</a>
+      <tr><td><code>SoBF</code><td><code>So</code></td><td>Solomani Confederation, Bootean Federation<td><a class=stealth href="https://travellermap.com/go/Solo">Solo</a>
+      <tr><td><code>SoCf</code><td><code>So</code></td><td>Solomani Confederation<td><a class=stealth href="https://travellermap.com/go/Alph">Alph</a>/<wbr><a class=stealth href="https://travellermap.com/go/Diab">Diab</a>/<wbr><a class=stealth href="https://travellermap.com/go/Dark">Dark</a>/<wbr><a class=stealth href="https://travellermap.com/go/Hint">Hint</a>/<wbr><a class=stealth href="https://travellermap.com/go/Magy">Magy</a>/<wbr><a class=stealth href="https://travellermap.com/go/Olde">Olde</a>/<wbr><a class=stealth href="https://travellermap.com/go/Reav">Reav</a>/<wbr><a class=stealth href="https://travellermap.com/go/Solo">Solo</a>/<wbr><a class=stealth href="https://travellermap.com/go/Spic">Spic</a>/<wbr><a class=stealth href="https://travellermap.com/go/Ustr">Ustr</a>
+      <tr><td><code>SoCT</code><td><code>So</code></td><td>Solomani Confederation, Consolidation of Turin<td><a class=stealth href="https://travellermap.com/go/Alph">Alph</a>
+      <tr><td><code>SoFr</code><td><code>Fr</code></td><td>Solomani Confederation, Third Reformed French Confederate Rebublic<td><a class=stealth href="https://travellermap.com/go/Alde">Alde</a>
+      <tr><td><code>SoHn</code><td><code>Hn</code></td><td>Solomani Confederation, Hanuman Systems<td><a class=stealth href="https://travellermap.com/go/Lang">Lang</a>
+      <tr><td><code>SoKv</code><td><code>Kv</code></td><td>Solomani Confederation, Kostov Confederate Republic<td><a class=stealth href="https://travellermap.com/go/Newo">Newo</a>
+      <tr><td><code>SoNS</code><td><code>So</code></td><td>Solomani Confederation, New Slavic Solidarity<td><a class=stealth href="https://travellermap.com/go/Magy">Magy</a>
+      <tr><td><code>SoQu</code><td><code>Qu</code></td><td>Solomani Confederation, Grand United States of Quesada<td><a class=stealth href="https://travellermap.com/go/Alde">Alde</a>
+      <tr><td><code>SoRD</code><td><code>So</code></td><td>Solomani Confederation, Reformed Dootchen Estates<td><a class=stealth href="https://travellermap.com/go/Magy">Magy</a>
+      <tr><td><code>SoWu</code><td><code>So</code></td><td>Solomani Confederation, Wuan Technology Association<td><a class=stealth href="https://travellermap.com/go/Diab">Diab</a>/<wbr><a class=stealth href="https://travellermap.com/go/Magy">Magy</a>
+      <tr><td><code>StCl</code><td><code>Sc</code></td><td>Strend Cluster<td><a class=stealth href="https://travellermap.com/go/Troj">Troj</a>
+      <tr><td><code>SwCf</code><td><code>Sw</code></td><td>Sword Worlds Confederation<td><a class=stealth href="https://travellermap.com/go/Spin">Spin</a>
+      <tr><td><code>SwFW</code><td><code>Sw</code></td><td>Swanfei Free Worlds<td><a class=stealth href="https://travellermap.com/go/Gate">Gate</a>
+      <tr><td><code>SyRe</code><td><code>Sy</code></td><td>Syzlin Republic<td><a class=stealth href="https://travellermap.com/go/Cruc">Cruc</a>
+      <tr><td><code>TeCl</code><td><code>Tc</code></td><td>Tellerian Cluster<td><a class=stealth href="https://travellermap.com/go/Vang">Vang</a>
+      <tr><td><code>TrBr</code><td><code>Tb</code></td><td>Trita Brotherhood<td><a class=stealth href="https://travellermap.com/go/Cano">Cano</a>
+      <tr><td><code>TrCo</code><td><code>Tr</code></td><td>Trindel Confederacy<td><a class=stealth href="https://travellermap.com/go/Gate">Gate</a>
+      <tr><td><code>TrDo</code><td><code>Td</code></td><td>Trelyn Domain<td><a class=stealth href="https://travellermap.com/go/Vang">Vang</a>/<wbr><a class=stealth href="https://travellermap.com/go/Farf">Farf</a>
+      <tr><td><code>TroC</code><td><code>Tr</code></td><td>Trooles Confederation<td><a class=stealth href="https://travellermap.com/go/Thet">Thet</a>
+      <tr><td><code>UnGa</code><td><code>Ug</code></td><td>Union of Garth<td><a class=stealth href="https://travellermap.com/go/Farf">Farf</a>
+      <tr><td><code>UnHa</code><td><code>Uh</code></td><td>Union of Harmony<td><a class=stealth href="https://travellermap.com/go/Dark">Dark</a>/<wbr><a class=stealth href="https://travellermap.com/go/Reav">Reav</a>
+      <tr><td><code>V17D</code><td><code>V7</code></td><td>17th Disjucture<td><a class=stealth href="https://travellermap.com/go/Mesh">Mesh</a>/<wbr><a class=stealth href="https://travellermap.com/go/Wind">Wind</a>
+      <tr><td><code>V40S</code><td><code>Ve</code></td><td>40th Squadron (Ekhelle Ksafi)<td><a class=stealth href="https://travellermap.com/go/Gvur">Gvur</a>
+      <tr><td><code>VAnP</code><td><code>Vx</code></td><td>Antares Pact<td><a class=stealth href="https://travellermap.com/go/Mesh">Mesh</a>/<wbr><a class=stealth href="https://travellermap.com/go/Mend">Mend</a>
+      <tr><td><code>VARC</code><td><code>Vr</code></td><td>Anti-Rukh Coalition (Gnoerrgh Rukh Lloell)<td><a class=stealth href="https://travellermap.com/go/Gvur">Gvur</a>
+      <tr><td><code>VAug</code><td><code>Vu</code></td><td>United Followers of Augurgh<td><a class=stealth href="https://travellermap.com/go/Dene">Dene</a>/<wbr><a class=stealth href="https://travellermap.com/go/Tugl">Tugl</a>
+      <tr><td><code>VBkA</code><td><code>Vb</code></td><td>Bakne Alliance<td><a class=stealth href="https://travellermap.com/go/Tugl">Tugl</a>
+      <tr><td><code>VCKd</code><td><code>Vk</code></td><td>Commonality of Kedzudh (Kedzudh Aeng)<td><a class=stealth href="https://travellermap.com/go/Gvur">Gvur</a>
+      <tr><td><code>VDrN</code><td><code>VN</code></td><td>Drr'lana Network<td><a class=stealth href="https://travellermap.com/go/Gash">Gash</a>
+      <tr><td><code>VDzF</code><td><code>Vf</code></td><td>Dzarrgh Federate<td><a class=stealth href="https://travellermap.com/go/Dene">Dene</a>/<wbr><a class=stealth href="https://travellermap.com/go/Prov">Prov</a>/<wbr><a class=stealth href="https://travellermap.com/go/Tugl">Tugl</a>
+      <tr><td><code>VFFD</code><td><code>V1</code></td><td>First Fleet of Dzo<td><a class=stealth href="https://travellermap.com/go/Mesh">Mesh</a>
+      <tr><td><code>VGoT</code><td><code>Vg</code></td><td>Glory of Taarskoerzn<td><a class=stealth href="https://travellermap.com/go/Prov">Prov</a>
+      <tr><td><code>ViCo</code><td><code>Vi</code></td><td>Viyard Concourse<td><a class=stealth href="https://travellermap.com/go/Gate">Gate</a>
+      <tr><td><code>VIrM</code><td><code>Vh</code></td><td>Irrgh Manifest<td><a class=stealth href="https://travellermap.com/go/Prov">Prov</a>
+      <tr><td><code>VJoF</code><td><code>Vj</code></td><td>Jihad of Faarzgaen<td><a class=stealth href="https://travellermap.com/go/Prov">Prov</a>
+      <tr><td><code>VLIn</code><td><code>Vi</code></td><td>Llaeghskath Interacterate<td><a class=stealth href="https://travellermap.com/go/Prov">Prov</a>/<wbr><a class=stealth href="https://travellermap.com/go/Tugl">Tugl</a>
+      <tr><td><code>VLPr</code><td><code>Vl</code></td><td>Lair Protectorate<td><a class=stealth href="https://travellermap.com/go/Prov">Prov</a>
+      <tr><td><code>VNgC</code><td><code>Vn</code></td><td>Ngath Confederation<td><a class=stealth href="https://travellermap.com/go/Wind">Wind</a>
+      <tr><td><code>VOpp</code><td><code>Vo</code></td><td>Opposition Alliance<td><a class=stealth href="https://travellermap.com/go/Mesh">Mesh</a>
+      <tr><td><code>VPGa</code><td><code>Vg</code></td><td>Pact of Gaerr (Gaerr Thue)<td><a class=stealth href="https://travellermap.com/go/Gvur">Gvur</a>
+      <tr><td><code>VRo5</code><td><code>V5</code></td><td>Ruler of Five<td><a class=stealth href="https://travellermap.com/go/Mesh">Mesh</a>
+      <tr><td><code>VRrS</code><td><code>VW</code></td><td>Rranglloez Stronghold<td><a class=stealth href="https://travellermap.com/go/Tugl">Tugl</a>
+      <tr><td><code>VRuk</code><td><code>Vn</code></td><td>Worlds of Leader Rukh (Rukh Aegz)<td><a class=stealth href="https://travellermap.com/go/Gvur">Gvur</a>
+      <tr><td><code>VSDp</code><td><code>Vs</code></td><td>Saeknouth Dependency (Saeknouth Igz)<td><a class=stealth href="https://travellermap.com/go/Gvur">Gvur</a>
+      <tr><td><code>VSEq</code><td><code>Vd</code></td><td>Society of Equals (Dzen Aeng Kho)<td><a class=stealth href="https://travellermap.com/go/Gvur">Gvur</a>/<wbr><a class=stealth href="https://travellermap.com/go/Tugl">Tugl</a>
+      <tr><td><code>VThE</code><td><code>Vt</code></td><td>Thoengling Empire (Thoengling Raghz)<td><a class=stealth href="https://travellermap.com/go/Gvur">Gvur</a>/<wbr><a class=stealth href="https://travellermap.com/go/Tugl">Tugl</a>
+      <tr><td><code>VTrA</code><td><code>VT</code></td><td>Trae Aggregation<td><a class=stealth href="https://travellermap.com/go/Tren">Tren</a>
+      <tr><td><code>VTzE</code><td><code>Vp</code></td><td>Thirz Empire (Thirz Uerra)<td><a class=stealth href="https://travellermap.com/go/Gvur">Gvur</a>/<wbr><a class=stealth href="https://travellermap.com/go/Ziaf">Ziaf</a>
+      <tr><td><code>VUru</code><td><code>Vu</code></td><td>Urukhu<td><a class=stealth href="https://travellermap.com/go/Gvur">Gvur</a>
+      <tr><td><code>VVar</code><td><code>Ve</code></td><td>Empire of Varroerth<td><a class=stealth href="https://travellermap.com/go/Prov">Prov</a>/<wbr><a class=stealth href="https://travellermap.com/go/Tugl">Tugl</a>/<wbr><a class=stealth href="https://travellermap.com/go/Wind">Wind</a>
+      <tr><td><code>VVoS</code><td><code>Vv</code></td><td>Voekhaeb Society<td><a class=stealth href="https://travellermap.com/go/Mesh">Mesh</a>
+      <tr><td><code>VWan</code><td><code>Vw</code></td><td>People of Wanz<td><a class=stealth href="https://travellermap.com/go/Tugl">Tugl</a>
+      <tr><td><code>VWP2</code><td><code>V2</code></td><td>Windhorn Pact of Two<td><a class=stealth href="https://travellermap.com/go/Tugl">Tugl</a>
+      <tr><td><code>VYoe</code><td><code>VQ</code></td><td>Union of Yoetyqq<td><a class=stealth href="https://travellermap.com/go/Gash">Gash</a>
+      <tr><td><code>WiDe</code><td><code>Wd</code></td><td>Winston Democracy<td><a class=stealth href="https://travellermap.com/go/Alde">Alde</a>/<wbr><a class=stealth href="https://travellermap.com/go/Newo">Newo</a>
+      <tr><td><code>XXXX</code><td><code>Xx</code></td><td>Unknown<td><i>various</i>
+      <tr><td><code>ZePr</code><td><code>Zp</code></td><td>Zelphic Primacy<td><a class=stealth href="https://travellermap.com/go/Farf">Farf</a>
+      <tr><td><code>ZhAx</code><td><code>Ax</code></td><td>Zhodani Consulate, Addaxur Reserve<td><a class=stealth href="https://travellermap.com/go/Tien">Tien</a>
+      <tr><td><code>ZhCa</code><td><code>Ca</code></td><td>Zhodani Consulate, Colonnade Province<td><a class=stealth href="https://travellermap.com/go/Vang">Vang</a>/<wbr><a class=stealth href="https://travellermap.com/go/Farf">Farf</a>
+      <tr><td><code>ZhCh</code><td><code>Zh</code></td><td>Zhodani Consulate, Chtierabl Province<td><a class=stealth href="https://travellermap.com/go/Chti">Chti</a>
+      <tr><td><code>ZhCo</code><td><code>Zh</code></td><td>Zhodani Consulate, undetermined<td><i>various</i>
+      <tr><td><code>ZhIa</code><td><code>Zh</code></td><td>Zhodani Consulate, Iabrensh Province<td><a class=stealth href="https://travellermap.com/go/Stia">Stia</a>/<wbr><a class=stealth href="https://travellermap.com/go/Zdie">Zdie</a>
+      <tr><td><code>ZhIN</code><td><code>Zh</code></td><td>Zhodani Consulate, Iadr Nsobl Province<td><a class=stealth href="https://travellermap.com/go/Farf">Farf</a>/<wbr><a class=stealth href="https://travellermap.com/go/Fore">Fore</a>/<wbr><a class=stealth href="https://travellermap.com/go/Gvur">Gvur</a>/<wbr><a class=stealth href="https://travellermap.com/go/Spin">Spin</a>/<wbr><a class=stealth href="https://travellermap.com/go/Yikl">Yikl</a>/<wbr><a class=stealth href="https://travellermap.com/go/Ziaf">Ziaf</a>
+      <tr><td><code>ZhJp</code><td><code>Zh</code></td><td>Zhodani Consulate, Jadlapriants Province<td><a class=stealth href="https://travellermap.com/go/Tien">Tien</a>/<wbr><a class=stealth href="https://travellermap.com/go/Zhda">Zhda</a>
+      <tr><td><code>ZhMe</code><td><code>Zh</code></td><td>Zhodani Consulate, Meqlemianz Province<td><a class=stealth href="https://travellermap.com/go/Eiap">Eiap</a>/<wbr><a class=stealth href="https://travellermap.com/go/Sidi">Sidi</a>/<wbr><a class=stealth href="https://travellermap.com/go/Eiap">Eiap</a>
+      <tr><td><code>ZhOb</code><td><code>Zh</code></td><td>Zhodani Consulate, Obrefripl Province<td><i>various</i>
+      <tr><td><code>ZhSh</code><td><code>Zh</code></td><td>Zhodani Consulate, Shtochiadr Province<td><a class=stealth href="https://travellermap.com/go/Itvi">Itvi</a>/<wbr><a class=stealth href="https://travellermap.com/go/Tlab">Tlab</a>
+      <tr><td><code>ZhVQ</code><td><code>Zh</code></td><td>Zhodani Consulate, Vlanchiets Qlom Province<td><i>various</i>
+      <tr><td><code>Zuug</code><td><code>Zu</code></td><td>Zuugabish Tripartite<td><a class=stealth href="https://travellermap.com/go/Mend">Mend</a>
+      <tr><td><code>ZyCo</code><td><code>Zc</code></td><td>Zydarian Codominion<td><a class=stealth href="https://travellermap.com/go/Beyo">Beyo</a>
         <!-- Allegiance Table End -->
     </table>
 
@@ -2007,7 +2016,8 @@
     <p>
       Older versions of Traveller use a 2-character code. Due to the
       limited number of useful 2-character codes, these are not unique
-      across Charted Space.
+      across Charted Space. In addition to the secondary entries in
+      the above table, the following codes are seen:
     </p>
 
     <table>
@@ -2015,41 +2025,8 @@
         <th>Code
         <th>Description
       <tr>
-        <td><code>As</code>
-        <td>Aslan (general designation).
-      <tr>
-        <td><code>A0</code>
-        <td>Aslan Tlauku Clan (numbers <code>0</code>-<code>9</code> indicate Tlauku clan).
-      <tr>
-        <td><code>Cs</code>
-        <td>Client State (usually of the Imperium).
-      <tr>
         <td><code>Dr</code>
         <td>Droyne.
-      <tr>
-        <td><code>Hv</code>
-        <td>Hive Federation.
-      <tr>
-        <td><code>Im</code>
-        <td>Imperium.
-      <tr>
-        <td><code>Kk</code>
-        <td>The Two Thousand Worlds (K’kree).
-      <tr>
-        <td><code>Na</code>
-        <td>Non-Aligned (independent neutral world without affiliation).
-      <tr>
-        <td><code>So</code>
-        <td>Solomani Confederation.
-      <tr>
-        <td><code>Va</code>
-        <td>Vargr (general designation).
-      <tr>
-        <td><code>Vx</code>
-        <td>Vargr (2<sup>nd</sup> digit <code>0</code>-<code>9</code> or letter <code>a</code>-<code>z</code> indicates specific allegiance)
-      <tr>
-        <td><code>Zh</code>
-        <td>Zhodani Consulate.
       <tr>
         <td><code>Wi</code>
         <td>Wilds (Traveller: The New Era).
@@ -2064,8 +2041,23 @@
     <h2>Stellar Data</h2>
     <div class="example"><code>1910 Regina A788899-C Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF NS - 703 8 ImDd <span class="highlight">F7 V BD M3 V</span></code></div>
     <p>
-      Stellar Data indicates the spectral and luminosity class of each
-      star in the system. This uses a subset of the
+      Stellar data lists the stars in the system.
+    </p>
+
+    <p class=aside>
+      Normal stars fuse hydrogen, and occur in a variety of colors
+      (due to temperature) and sizes (sub-dwarfs to super-giants).
+      After a dwarf star exhausts its fuel it will briefly become a
+      cool red giant then leave behind its core as an incredibly dense
+      and bright white dwarf. A giant star will explode and leave
+      behind an even denser neutron star or black hole. An object too
+      small to fuse hydrogen but large enough to fuse deuterium is
+      known as a brown dwarf.
+    </p>
+
+    <p>
+      Normal stars are described by their
+      spectral class and luminosity. This uses a subset of the
       <a target="_blank" href="http://en.wikipedia.org/wiki/Stellar_classification">Morgan–Keenan classification system</a>
       (also known as Yerkes or MKK), such as <code>G2 V</code> where <code>G2</code>
       is the color/temperature (<sup>2</sup>&frasl;<sub>10</sub><sup>th</sup> of the way
@@ -2174,12 +2166,14 @@
 
     </table>
 
+
+
     <h3>
       <cite>Classic Traveller</cite>, <cite>MegaTraveller</cite>, <cite>Traveller: The New Era</cite>, <cite>Traveller: 4th Edition</cite>
     </h3>
 
     <p>
-      White dwarf stars are represented by the size
+      White dwarfs (the cores of dead stars) are represented by the size
       code <code>D</code>, optionally followed by a spectral code,
       e.g.
 
@@ -2189,13 +2183,13 @@
       <code>DG</code>,
       <code>DK</code>,
       <code>DM</code>.
-      <em>(Note: This differs significantly from real-world
-      classification of white dwarf stars.)</em>
+      <em>(Note: This differs significantly from the real-world
+      classification of white dwarfs.)</em>
     </p>
 
     <p>
       Some files may use luminosity code <code>VII</code> for white
-      dwarf stars instead.
+      dwarfs instead.
     </p>
 
     <p>
@@ -2205,13 +2199,17 @@
     <h3><cite>Traveller<sup>5</sup></cite></h3>
 
    <p>
-      White dwarf stars are represented by the size
+      White dwarfs are represented by the size
       code <code>D</code> with no spectral code.
    </p>
 
     <p>
       The special code <code>BD</code> may be used for brown dwarf,
       sub-stellar objects.
+    </p>
+
+    <p>
+      The special code <code>BH</code> may be used for black holes.
     </p>
 
   </section>
