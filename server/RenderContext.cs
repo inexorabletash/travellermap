@@ -1662,6 +1662,9 @@ namespace Maps.Rendering
 
         private void DrawOverlay(Stylesheet.StyleElement elem, float r, ref AbstractBrush solidBrush, ref AbstractPen pen)
         {
+            // Prevent "Out of memory" exception when rendering to GDI+.
+            if (r < 0.001f)
+                return;
             if (!elem.fillColor.IsEmpty && !elem.pen.color.IsEmpty)
             {
                 solidBrush.Color = elem.fillColor;
