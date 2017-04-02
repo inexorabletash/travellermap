@@ -472,7 +472,7 @@ namespace Maps
                     for (int y = this.Y - 1; y <= this.Y + 1; ++y)
                     {
                         Sector sector = MilieuMap.FromLocation(new Point(x, y));
-                        if (x == X && y == X && sector != this)
+                        if (x == X && y == Y && sector != this)
                             throw new ApplicationException("Sector lookup did not find itself");
                         if (sector != null)
                             sectors.Add(sector);
