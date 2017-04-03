@@ -179,9 +179,11 @@ namespace Maps.API
             {
                 if (contentType == JsonConstants.MediaType && Context.Request.QueryString["jsonp"] != null)
                 {
+                    if (!IsSimpleJSIdentifier(Context.Request.QueryString["jsonp"]))
+                        throw new HttpError(400, "Bad Request", "The jsonp parameter must be a simple script identifier.");
+
                     using (var w = new StreamWriter(Context.Response.OutputStream))
                     {
-                        // TODO: Ensure jsonp is just an identifier
                         w.Write(Context.Request.QueryString["jsonp"]);
                         w.Write("(");
                     }

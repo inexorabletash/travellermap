@@ -152,13 +152,11 @@ namespace Maps.Admin
                 {
                     string sql = $"SELECT COUNT(*) FROM {table}";
                     using (var command = new SqlCommand(sql, connection))
+                    using (var reader = command.ExecuteReader())
                     {
-                        using (var reader = command.ExecuteReader())
+                        while (reader.Read())
                         {
-                            while (reader.Read())
-                            {
-                                Write(context.Response, $"{table}: {reader.GetInt32(0)}");
-                            }
+                            Write(context.Response, $"{table}: {reader.GetInt32(0)}");
                         }
                     }
                 }

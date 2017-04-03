@@ -10,6 +10,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Net.Mime;
 using System.Web;
 
@@ -290,16 +291,8 @@ namespace Maps.API
                     response.ContentType = mimeType;
 
                     // Searching for a matching encoder
-                    ImageCodecInfo encoder = null;
-                    ImageCodecInfo[] encoders = ImageCodecInfo.GetImageEncoders();
-                    for (int i = 0; i < encoders.Length; ++i)
-                    {
-                        if (encoders[i].MimeType == response.ContentType)
-                        {
-                            encoder = encoders[i];
-                            break;
-                        }
-                    }
+                    ImageCodecInfo encoder = ImageCodecInfo.GetImageEncoders()
+                        .FirstOrDefault(e => e.MimeType == response.ContentType);
 
                     if (encoder != null)
                     {

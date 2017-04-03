@@ -100,9 +100,7 @@ namespace Maps
                     {
                         World world = worlds[1 + x + Astrometrics.SubsectorWidth * ssx, 1 + y + Astrometrics.SubsectorHeight * ssy];
                         if (world == null)
-                        {
                             continue;
-                        }
 
                         yield return world;
                     }
@@ -145,9 +143,7 @@ namespace Maps
                     {
                         World world = worlds[1 + x + Astrometrics.SubsectorWidth * 2 * qx, 1 + y + Astrometrics.SubsectorHeight * 2 * qy];
                         if (world == null)
-                        {
                             continue;
-                        }
 
                         yield return world;
                     }
@@ -196,9 +192,7 @@ namespace Maps
                     {
                         Sector sector = map.FromLocation(cx, cy, UseMilieuFallbacks);
                         if (sector == null)
-                        {
                             continue;
-                        }
 
                         yield return sector;
                     }
@@ -298,9 +292,7 @@ namespace Maps
                     {
                         Sector sector = map.FromLocation(x, y, UseMilieuFallbacks);
                         if (sector == null)
-                        {
                             continue;
-                        }
 
                         yield return sector;
                     }

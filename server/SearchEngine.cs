@@ -445,19 +445,17 @@ namespace Maps
                 milieu = SectorMap.DEFAULT_MILIEU;
 
             using (var connection = DBUtil.MakeConnection())
+            using (var sqlCommand = new SqlCommand(sql, connection))
             {
-                using (var sqlCommand = new SqlCommand(sql, connection))
+                sqlCommand.Parameters.AddWithValue("@x", x);
+                sqlCommand.Parameters.AddWithValue("@y", y);
+                sqlCommand.Parameters.AddWithValue("@milieu", milieu);
+                sqlCommand.Parameters.AddWithValue("@name", name);
+                using (var row = sqlCommand.ExecuteReader())
                 {
-                    sqlCommand.Parameters.AddWithValue("@x", x);
-                    sqlCommand.Parameters.AddWithValue("@y", y);
-                    sqlCommand.Parameters.AddWithValue("@milieu", milieu);
-                    sqlCommand.Parameters.AddWithValue("@name", name);
-                    using (var row = sqlCommand.ExecuteReader())
-                    {
-                        if (!row.Read())
-                            return null;
-                        return new WorldLocation(row.GetInt32(0), row.GetInt32(1), (byte)row.GetInt32(2), (byte)row.GetInt32(3));
-                    }
+                    if (!row.Read())
+                        return null;
+                    return new WorldLocation(row.GetInt32(0), row.GetInt32(1), (byte)row.GetInt32(2), (byte)row.GetInt32(3));
                 }
             }
         }

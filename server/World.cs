@@ -272,9 +272,9 @@ namespace Maps
             Action<bool, string> ErrorUnless = (bool test, string message) => { if (!test) Error(message); };
             Func<int, string, bool> Check = (int value, string hex) =>
             {
-                for (int i = 0; i < hex.Length; ++i)
+                foreach (char c in hex)
                 {
-                    if (value == SecondSurvey.FromHex(hex[i]))
+                    if (value == SecondSurvey.FromHex(c))
                         return true;
                 }
                 return false;

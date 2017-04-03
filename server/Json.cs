@@ -179,9 +179,8 @@ namespace Json
 
             StringBuilder sb = new StringBuilder(s.Length);
             sb.Append('"');
-            for (int i = 0; i < s.Length; ++i)
+            foreach (char c in s)
             {
-                char c = s[i];
                 if ((c == '\\') || (c == '"') || (c == '/'))
                 {
                     sb.Append('\\');
