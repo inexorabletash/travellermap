@@ -72,15 +72,15 @@ namespace Maps.Rendering
         }
 
         // TODO: Move this to data file
-        private static readonly MapLabel[] labels =
+        private static readonly MapLabel[] minorLabels =
         {
-            new MapLabel("Human Client States", -160, -50),
-            new MapLabel("Aslan Client States", -60, 155),
-            new MapLabel("Aslan Colonies", -115, -5),
-            new MapLabel("Mixed Client States", 110, 5),
-            new MapLabel("Scattered\nClient States", 85, 65),
-            new MapLabel("Vargr Enclaves", 95, -135),
-            new MapLabel("Hive Young Worlds", 100, 128)
+            new MapLabel("Human Client States", -184, -50),
+            new MapLabel("Aslan Client States", -69, 155),
+            new MapLabel("Aslan Colonies", -133, -5),
+            new MapLabel("Mixed Client States", 127, 5),
+            new MapLabel("Scattered\nClient States", 98, 65),
+            new MapLabel("Vargr Enclaves", 110, -135),
+            new MapLabel("Hive Young Worlds", 115, 128)
         };
 
         // TODO: Move this to data file
@@ -89,11 +89,11 @@ namespace Maps.Rendering
             new MapLabel("Charted Space", 0, 400, true),
             new MapLabel("Zhodani\nCore\nExpeditions", 0, -3500, true),
             new MapLabel("Core Sophonts", 0, -12500),
-            new MapLabel("Abyssals", -13000, -10000),
-            new MapLabel("Denizens", -7500, -7500),
-            new MapLabel("Essaray", 6000, -16000),
+            new MapLabel("Abyssals", -15000, -10000),
+            new MapLabel("Denizens", -8660, -7500),
+            new MapLabel("Essaray", 6900, -16000),
             new MapLabel("Dushis Khurisi", 0, -22000, true),
-            new MapLabel("The\nBarren\nArm", 8000, -4500, true),
+            new MapLabel("The\nBarren\nArm", 9240, -4500, true),
         };
 
         private static readonly string[] borderFiles = {
@@ -496,9 +496,8 @@ namespace Maps.Rendering
                             using (graphics.Save())
                             {
                                 Font font = label.minor ? styles.megaNames.SmallFont : styles.megaNames.Font;
-                                // TODO: Order here looks sketchy
-                                graphics.ScaleTransform(1.0f / Astrometrics.ParsecScaleX, 1.0f / Astrometrics.ParsecScaleY);
                                 graphics.TranslateTransform(label.position.X, label.position.Y);
+                                graphics.ScaleTransform(1.0f / Astrometrics.ParsecScaleX, 1.0f / Astrometrics.ParsecScaleY);
                                 RenderUtil.DrawString(graphics, label.text, font, solidBrush, 0, 0);
                             }
                         }
@@ -759,13 +758,12 @@ namespace Maps.Rendering
             {
                 Font font = styles.macroNames.MediumFont;
                 solidBrush.Color = styles.macroRoutes.textHighlightColor;
-                foreach (var label in labels)
+                foreach (var label in minorLabels)
                 {
                     using (graphics.Save())
                     {
-                        // TODO: Order here looks sketchy
-                        graphics.ScaleTransform(1.0f / Astrometrics.ParsecScaleX, 1.0f / Astrometrics.ParsecScaleY);
                         graphics.TranslateTransform(label.position.X, label.position.Y);
+                        graphics.ScaleTransform(1.0f / Astrometrics.ParsecScaleX, 1.0f / Astrometrics.ParsecScaleY);
                         RenderUtil.DrawString(graphics, label.text, font, solidBrush, 0, 0);
                     }
                 }
