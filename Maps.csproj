@@ -132,8 +132,10 @@
     <Compile Include="server\graphics\SVGGraphics.cs" />
     <Compile Include="server\http\Modules.cs" />
     <Compile Include="server\http\Routing.cs" />
-    <Compile Include="server\PathFinder.cs" />
     <Compile Include="server\SectorMap.cs" />
+    <Compile Include="server\utilities\Json.cs" />
+    <Compile Include="server\utilities\PathFinder.cs" />
+    <Compile Include="server\utilities\Util.cs" />
     <Compile Include="server\WorldCollection.cs" />
     <Content Include="404.html" />
     <Content Include="borders\bd_images\image001.gif" />
@@ -740,7 +742,6 @@
     <Compile Include="server\api\UniverseHandler.cs" />
     <Compile Include="server\Astrometrics.cs" />
     <Compile Include="server\HandlerBase.cs" />
-    <Compile Include="server\Json.cs" />
     <Compile Include="server\Location.cs" />
     <Compile Include="server\Metadata.cs" />
     <Compile Include="server\RenderContext.cs" />
@@ -760,7 +761,6 @@
     <Compile Include="server\serialization\SectorWriter.cs" />
     <Compile Include="server\StellarData.cs" />
     <Compile Include="server\Stylesheet.cs" />
-    <Compile Include="server\Util.cs" />
     <Compile Include="server\VectorObject.cs" />
     <Compile Include="server\World.cs" />
     <Content Include="world.html" />

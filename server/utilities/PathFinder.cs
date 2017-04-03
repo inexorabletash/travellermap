@@ -1,8 +1,7 @@
-﻿using Maps.Utilities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
-namespace Maps
+namespace Maps.Utilities
 {
     internal static class PathFinder
     {
