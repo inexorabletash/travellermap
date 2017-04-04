@@ -148,28 +148,42 @@ namespace Json
 
         private void SerializeValue(TextWriter writer, object o)
         {
-            if (o == null)
-                writer.Write("null");
-            else if (o is bool)
-                writer.Write(((bool)o) ? "true" : "false");
-            else if (o is byte)
-                writer.Write(((double)(byte)o).ToString(CultureInfo.InvariantCulture));
-            else if (o is short)
-                writer.Write(((double)(short)o).ToString(CultureInfo.InvariantCulture));
-            else if (o is int)
-                writer.Write(((double)(int)o).ToString(CultureInfo.InvariantCulture));
-            else if (o is long)
-                writer.Write(((double)(long)o).ToString(CultureInfo.InvariantCulture));
-            else if (o is float)
-                writer.Write(((double)(float)o).ToString(CultureInfo.InvariantCulture));
-            else if (o is double)
-                writer.Write(((double)o).ToString(CultureInfo.InvariantCulture));
-            else if (o is string)
-                writer.Write(Enquote((string)o));
-            else if (o is IEnumerable)
-                SerializeArray(writer, (IEnumerable)o);
-            else
-                SerializeObject(writer, o);
+            switch (o)
+            {
+                case null:
+                    writer.Write("null");
+                    break;
+                case bool b:
+                    writer.Write(b ? "true" : "false");
+                    break;
+                case byte n:
+                    writer.Write(((double)n).ToString(CultureInfo.InvariantCulture));
+                    break;
+                case short n:
+                    writer.Write(((double)n).ToString(CultureInfo.InvariantCulture));
+                    break;
+                case int n:
+                    writer.Write(((double)n).ToString(CultureInfo.InvariantCulture));
+                    break;
+                case long n:
+                    writer.Write(((double)n).ToString(CultureInfo.InvariantCulture));
+                    break;
+                case float n:
+                    writer.Write(((double)n).ToString(CultureInfo.InvariantCulture));
+                    break;
+                case double n:
+                    writer.Write(n.ToString(CultureInfo.InvariantCulture));
+                    break;
+                case string s:
+                    writer.Write(Enquote(s));
+                    break;
+                case IEnumerable enumerable:
+                    SerializeArray(writer, enumerable);
+                    break;
+                default:
+                    SerializeObject(writer, o);
+                    break;
+            }
         }
 
         private static string Enquote(string s)

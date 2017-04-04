@@ -89,7 +89,7 @@ namespace Maps.API
                 if (searchResults != null)
                 {
                     resultsList.AddRange(searchResults
-                        .Select(loc => SearchResults.LocationToSearchResult(map, resourceManager, loc))
+                        .Select(loc => SearchResults.SearchResultToItem(map, resourceManager, loc))
                         .OfType<SearchResults.Item>()
                         .OrderByDescending(item => item.Importance)
                         .Take(NUM_RESULTS));
@@ -192,11 +192,11 @@ namespace Maps.API.Results
             internal int? Importance { get; set; }
         }
 
-        internal static Item LocationToSearchResult(SectorMap.Milieu map, ResourceManager resourceManager, SearchResult location)
+        internal static Item SearchResultToItem(SectorMap.Milieu map, ResourceManager resourceManager, SearchResult result)
         {
-            if (location is Maps.WorldResult)
+            if (result is Search.WorldResult worldResult)
             {
-                ((Maps.WorldResult)location).Resolve(map, resourceManager, out Sector sector, out World world);
+                worldResult.Resolve(map, resourceManager, out Sector sector, out World world);
 
                 if (sector == null || world == null)
                     return null;
@@ -215,9 +215,9 @@ namespace Maps.API.Results
                 };
             }
 
-            if (location is Maps.SubsectorResult)
+            if (result is Search.SubsectorResult subsectorResult)
             {
-                ((Maps.SubsectorResult)location).Resolve(map, out Sector sector, out Subsector subsector);
+                subsectorResult.Resolve(map, out Sector sector, out Subsector subsector);
 
                 if (sector == null || subsector == null)
                     return null;
@@ -233,9 +233,9 @@ namespace Maps.API.Results
                 };
             }
 
-            if (location is Maps.SectorResult)
+            if (result is Search.SectorResult sectorResult)
             {
-                Sector sector = ((Maps.SectorResult)location).Resolve(map);
+                Sector sector = sectorResult.Resolve(map);
 
                 if (sector == null)
                     return null;
@@ -249,9 +249,8 @@ namespace Maps.API.Results
                 };
             }
 
-            if (location is Maps.LabelResult)
+            if (result is Search.LabelResult label)
             {
-                Maps.LabelResult label = location as Maps.LabelResult;
                 Location l = Astrometrics.CoordinatesToLocation(label.Coords);
                 Sector sector = label.Resolve(map);
 
@@ -270,7 +269,7 @@ namespace Maps.API.Results
                 };
             }
 
-            throw new ArgumentException($"Unexpected result type: {location.GetType().Name}", nameof(location));
+            throw new ArgumentException($"Unexpected result type: {result.GetType().Name}", nameof(result));
         }
     }
 }

@@ -114,14 +114,21 @@ namespace Maps.Serialization
                     }
 
                     // Output the item
-                    if (item is Allegiance)
-                        WriteAllegiance(item as Allegiance);
-                    else if (item is Border)
-                        WriteBorder(item as Border, alleg);
-                    else if (item is Label)
-                        WriteLabel(item as Label);
-                    else if (item is Route)
-                        WriteRoute(item as Route);
+                    switch (item)
+                    {
+                        case Allegiance allegiance:
+                            WriteAllegiance(allegiance);
+                            break;
+                        case Border border:
+                            WriteBorder(border, alleg);
+                            break;
+                        case Label label:
+                            WriteLabel(label);
+                            break;
+                        case Route route:
+                            WriteRoute(route);
+                            break;
+                    }
                 }
             }
 

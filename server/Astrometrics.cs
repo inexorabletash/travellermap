@@ -169,7 +169,7 @@ namespace Maps
 
         public override bool Equals(object other)
         {
-            return other is Hex && Equals((Hex)other);
+            return other is Hex hex && Equals(hex);
         }
         public bool Equals(Hex other)
         {
