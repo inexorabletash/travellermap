@@ -11,11 +11,11 @@ namespace Maps.Graphics
         private SolidBrush brush;
         private Pen pen;
 
-        public BitmapGraphics(System.Drawing.Graphics g)
+        public BitmapGraphics(System.Drawing.Graphics graphics)
         {
-            this.g = g;
-            this.brush = new SolidBrush(Color.Empty);
-            this.pen = new Pen(Color.Empty);
+            g = graphics;
+            brush = new SolidBrush(Color.Empty);
+            pen = new Pen(Color.Empty);
         }
 
         private void Apply(AbstractBrush brush)
@@ -83,15 +83,14 @@ namespace Maps.Graphics
             Image gdiImage = image.Image;
             lock(gdiImage)
             {
-                ColorMatrix matrix = new ColorMatrix()
+                ImageAttributes attr = new ImageAttributes();
+                attr.SetColorMatrix(new ColorMatrix()
                 {
                     Matrix00 = 1,
                     Matrix11 = 1,
                     Matrix22 = 1,
                     Matrix33 = alpha
-                };
-                ImageAttributes attr = new ImageAttributes();
-                attr.SetColorMatrix(matrix);
+                });
 
                 PointF[] dest = new PointF[]
                 {

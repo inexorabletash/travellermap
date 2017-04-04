@@ -124,15 +124,14 @@ namespace Maps.Graphics
                     Bitmap scratchBitmap = new Bitmap(w, h, PixelFormat.Format32bppArgb);
                     using (var scratchGraphics = System.Drawing.Graphics.FromImage(scratchBitmap))
                     {
-                        ColorMatrix matrix = new ColorMatrix()
+                        ImageAttributes attr = new ImageAttributes();
+                        attr.SetColorMatrix(new ColorMatrix()
                         {
                             Matrix00 = 1,
                             Matrix11 = 1,
                             Matrix22 = 1,
                             Matrix33 = alpha
-                        };
-                        ImageAttributes attr = new ImageAttributes();
-                        attr.SetColorMatrix(matrix);
+                        });
 
                         scratchGraphics.DrawImage(image, new Rectangle(0, 0, w, h), 0, 0, w, h, GraphicsUnit.Pixel, attr);
                     }
