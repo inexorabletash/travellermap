@@ -46,7 +46,6 @@ namespace Maps.Rendering
         // Options
         public AbstractPath ClipPath { get; set; }
         public bool DrawBorder { get; set; }
-        public bool Silly { get; set; }
         public bool ClipOutsectorBorders { get; set; }
 
         // Assigned during Render()
@@ -129,8 +128,6 @@ namespace Maps.Rendering
         private static bool s_imagesInitialized = false;
 
         // TODO: Consider not caching these across sessions
-        private static AbstractImage s_sillyImageColor;
-        private static AbstractImage s_sillyImageGray;
         private static AbstractImage s_nebulaImage;
         private static AbstractImage s_galaxyImage;
         private static AbstractImage s_galaxyImageGray;
@@ -256,28 +253,6 @@ namespace Maps.Rendering
                     if (styles.showRiftOverlay && styles.riftOpacity > 0f)
                         graphics.DrawImageAlpha(styles.riftOpacity, s_riftImage, riftImageRect);
                     timers.Add(new Timer("rifts"));
-                    #endregion
-
-                    #region april-fools
-                    //------------------------------------------------------------
-                    // April Fool's Day
-                    //------------------------------------------------------------
-                    if (Silly)
-                    {
-                        using (graphics.Save())
-                        {
-                            // Render in image-space
-                            graphics.MultiplyTransform(worldSpaceToImageSpace);
-
-                            AbstractImage sillyImage = styles.grayscale ? s_sillyImageGray : s_sillyImageColor;
-
-                            lock (sillyImage)
-                            {
-                                graphics.DrawImage(sillyImage, 0, 0, tileSize.Width, tileSize.Height);
-                            }
-                        }
-                        timers.Add(new Timer("silly"));
-                    }
                     #endregion
 
                     //------------------------------------------------------------
@@ -685,10 +660,6 @@ namespace Maps.Rendering
                             { "HydA", PrepareImage("/res/Candy/HydA.png") },
                             { "Belt", PrepareImage("/res/Candy/Belt.png") },
                         };
-
-                // Happy face c/o http://bighappyfaces.com/
-                s_sillyImageColor = PrepareImage("/res/AprilFools/Starburst.png");
-                s_sillyImageGray = PrepareImage("/res/AprilFools/Starburst_Gray.png");
             }
         }
 
