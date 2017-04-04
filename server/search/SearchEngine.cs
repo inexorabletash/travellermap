@@ -7,7 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Text.RegularExpressions;
 
-namespace Maps
+namespace Maps.Search
 {
     static class DBUtil
     {
@@ -293,9 +293,9 @@ namespace Maps
             }
         }
 
-        public static IEnumerable<ItemLocation> PerformSearch(string milieu, string query, SearchResultsType types, int maxResultsPerType, bool random = false)
+        public static IEnumerable<SearchResult> PerformSearch(string milieu, string query, SearchResultsType types, int maxResultsPerType, bool random = false)
         {
-            List<ItemLocation> results = new List<ItemLocation>();
+            List<SearchResult> results = new List<SearchResult>();
 
             types = ParseQuery(query, types, out var clauses, out var terms);
 
@@ -345,7 +345,7 @@ namespace Maps
                         {
                             while (row.Read())
                             {
-                                results.Add(new SectorLocation(row.GetInt32(0), row.GetInt32(1)));
+                                results.Add(new SectorResult(row.GetInt32(0), row.GetInt32(1)));
                             }
                         }
                     }
@@ -368,7 +368,7 @@ namespace Maps
                                 char[] chars = new char[1];
                                 row.GetChars(2, 0, chars, 0, chars.Length);
 
-                                results.Add(new SubsectorLocation(row.GetInt32(0), row.GetInt32(1), chars[0]));
+                                results.Add(new SubsectorResult(row.GetInt32(0), row.GetInt32(1), chars[0]));
                             }
                         }
                     }
@@ -387,7 +387,7 @@ namespace Maps
                         using (var row = sqlCommand.ExecuteReader())
                         {
                             while (row.Read())
-                                results.Add(new WorldLocation(row.GetInt32(0), row.GetInt32(1), (byte)row.GetInt32(2), (byte)row.GetInt32(3)));
+                                results.Add(new WorldResult(row.GetInt32(0), row.GetInt32(1), (byte)row.GetInt32(2), (byte)row.GetInt32(3)));
                         }
                     }
                 }
@@ -406,7 +406,7 @@ namespace Maps
                         {
                             while (row.Read())
                             {
-                                results.Add(new LabelLocation(row.GetString(3), new Point(row.GetInt32(0), row.GetInt32(1)), row.GetInt32(2)));
+                                results.Add(new LabelResult(row.GetString(3), new Point(row.GetInt32(0), row.GetInt32(1)), row.GetInt32(2)));
                             }
                         }
                     }
@@ -433,7 +433,7 @@ namespace Maps
             return RE_TERMS.Matches(q).Cast<Match>().Select(m => m.Value).Where(s => !string.IsNullOrWhiteSpace(s));
         }
 
-        public static WorldLocation FindNearestWorldMatch(string name, string milieu, int x, int y)
+        public static WorldResult FindNearestWorldMatch(string name, string milieu, int x, int y)
         {
             const string sql = "SELECT sector_x, sector_y, hex_x, hex_y, " +
                 "((@x - x) * (@x - x) + (@y - y) * (@y - y)) AS distance " +
@@ -455,7 +455,7 @@ namespace Maps
                 {
                     if (!row.Read())
                         return null;
-                    return new WorldLocation(row.GetInt32(0), row.GetInt32(1), (byte)row.GetInt32(2), (byte)row.GetInt32(3));
+                    return new WorldResult(row.GetInt32(0), row.GetInt32(1), (byte)row.GetInt32(2), (byte)row.GetInt32(3));
                 }
             }
         }

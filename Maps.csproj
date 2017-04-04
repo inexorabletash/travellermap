@@ -132,6 +132,8 @@
     <Compile Include="server\graphics\SVGGraphics.cs" />
     <Compile Include="server\http\Modules.cs" />
     <Compile Include="server\http\Routing.cs" />
+    <Compile Include="server\search\SearchEngine.cs" />
+    <Compile Include="server\search\SearchResult.cs" />
     <Compile Include="server\SectorMap.cs" />
     <Compile Include="server\utilities\ColorUtil.cs" />
     <Compile Include="server\utilities\Json.cs" />
@@ -618,8 +620,6 @@
     <Content Include="res\Vectors\CoreRoute.xml" />
     <Content Include="res\Vectors\J4Route.xml" />
     <Content Include="res\Vectors\J5Route.xml" />
-    <Content Include="res\AprilFools\Starburst.png" />
-    <Content Include="res\AprilFools\Starburst_Gray.png" />
     <Content Include="res\world\cx.png" />
     <Content Include="res\world\ex.png" />
     <Content Include="res\world\gg.jpg" />
@@ -748,7 +748,6 @@
     <Compile Include="server\RenderContext.cs" />
     <Compile Include="server\RenderUtil.cs" />
     <Compile Include="server\ResourceManager.cs" />
-    <Compile Include="server\SearchEngine.cs" />
     <Compile Include="server\SecondSurvey.cs" />
     <Compile Include="server\Sector.cs" />
     <Compile Include="server\SectorStylesheet.cs" />

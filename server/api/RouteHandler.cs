@@ -1,4 +1,5 @@
-﻿using Maps.Utilities;
+﻿using Maps.Search;
+using Maps.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -82,7 +83,7 @@ namespace Maps.API
                 {
                     int x = GetIntOption("x", 0);
                     int y = GetIntOption("y", 0);
-                    WorldLocation loc = SearchEngine.FindNearestWorldMatch(query, GetStringOption("milieu"), x, y) ??
+                    WorldResult loc = SearchEngine.FindNearestWorldMatch(query, GetStringOption("milieu"), x, y) ??
                         throw new HttpError(404, "Not Found", $"Location not found: {query}");
 
                     loc.Resolve(map, manager, out Sector loc_sector, out World loc_world);

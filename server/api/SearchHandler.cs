@@ -1,5 +1,6 @@
 ﻿using Json;
 using Maps.API.Results;
+using Maps.Search;
 using Maps.Utilities;
 using System;
 using System.Collections.Generic;
@@ -65,7 +66,7 @@ namespace Maps.API
                 SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, milieu);
 
                 int NUM_RESULTS;
-                IEnumerable<ItemLocation> searchResults;
+                IEnumerable<SearchResult> searchResults;
                 if (query == "(random world)")
                 {
                     NUM_RESULTS = 1;
@@ -191,11 +192,11 @@ namespace Maps.API.Results
             internal int? Importance { get; set; }
         }
 
-        internal static Item LocationToSearchResult(SectorMap.Milieu map, ResourceManager resourceManager, ItemLocation location)
+        internal static Item LocationToSearchResult(SectorMap.Milieu map, ResourceManager resourceManager, SearchResult location)
         {
-            if (location is WorldLocation)
+            if (location is Maps.WorldResult)
             {
-                ((WorldLocation)location).Resolve(map, resourceManager, out Sector sector, out World world);
+                ((Maps.WorldResult)location).Resolve(map, resourceManager, out Sector sector, out World world);
 
                 if (sector == null || world == null)
                     return null;
@@ -214,9 +215,9 @@ namespace Maps.API.Results
                 };
             }
 
-            if (location is SubsectorLocation)
+            if (location is Maps.SubsectorResult)
             {
-                ((SubsectorLocation)location).Resolve(map, out Sector sector, out Subsector subsector);
+                ((Maps.SubsectorResult)location).Resolve(map, out Sector sector, out Subsector subsector);
 
                 if (sector == null || subsector == null)
                     return null;
@@ -232,9 +233,9 @@ namespace Maps.API.Results
                 };
             }
 
-            if (location is SectorLocation)
+            if (location is Maps.SectorResult)
             {
-                Sector sector = ((SectorLocation)location).Resolve(map);
+                Sector sector = ((Maps.SectorResult)location).Resolve(map);
 
                 if (sector == null)
                     return null;
@@ -248,9 +249,9 @@ namespace Maps.API.Results
                 };
             }
 
-            if (location is LabelLocation)
+            if (location is Maps.LabelResult)
             {
-                LabelLocation label = location as LabelLocation;
+                Maps.LabelResult label = location as Maps.LabelResult;
                 Location l = Astrometrics.CoordinatesToLocation(label.Coords);
                 Sector sector = label.Resolve(map);
 
