@@ -191,9 +191,9 @@ namespace Maps.Rendering
         }
         public Glyph(Glyph other, bool highlight = false, GlyphBias bias = GlyphBias.None)
         {
-            this.Characters = other.Characters;
-            this.IsHighlighted = highlight;
-            this.Bias = bias;
+            Characters = other.Characters;
+            IsHighlighted = highlight;
+            Bias = bias;
         }
 
         public bool IsPrintable => Characters.Length > 0;
@@ -414,7 +414,7 @@ namespace Maps.Rendering
                     last.AddLast(point);
             }
 
-            this.curves = segments.Select(c =>
+            curves = segments.Select(c =>
             {
                 if (c.First() == c.Last())
                 {
@@ -551,7 +551,7 @@ namespace Maps.Rendering
     #region Stellar Rendering
     internal struct StarProps
     {
-        public StarProps(Color color, Color border, float radius) { this.color = color; this.borderColor = border; this.radius = radius; }
+        public StarProps(Color color, Color border, float radius) { this.color = color; borderColor = border; this.radius = radius; }
         public Color color;
         public Color borderColor;
         public float radius;

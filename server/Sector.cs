@@ -457,7 +457,7 @@ namespace Maps
             if (world == null)
                 throw new ArgumentNullException(nameof(world));
 
-            Location loc = new Location(this.Location, new Hex(world.X, world.Y));
+            Location loc = new Location(Location, new Hex(world.X, world.Y));
 
             // Collect adjacent sectors
             List<Sector> sectors = new List<Sector>();
@@ -467,13 +467,13 @@ namespace Maps
             }
             else
             {
-                for (int x = this.X - 1; x <= this.X + 1; ++x)
+                for (int x = X - 1; x <= X + 1; ++x)
                 {
-                    for (int y = this.Y - 1; y <= this.Y + 1; ++y)
+                    for (int y = Y - 1; y <= Y + 1; ++y)
                     {
                         var pt = new Point(x, y);
                         Sector sector = MilieuMap.FromLocation(pt);
-                        if (pt == this.Location && sector != this)
+                        if (pt == Location && sector != this)
                             throw new ApplicationException("Sector lookup did not find itself");
                         if (sector != null)
                             sectors.Add(sector);
@@ -500,7 +500,7 @@ namespace Maps
                         (string.IsNullOrWhiteSpace(route.Type) || route.Type.ToLowerInvariant() == "xboat") ? "Xb" : "Tr";
 
                     string s;
-                    if (end.Sector == this.Location)
+                    if (end.Sector == Location)
                     {
                         s = $"{prefix}:{end.Hex}";
                     }
@@ -538,8 +538,8 @@ namespace Maps
         private WorldCollection worlds = null;
 
         public Dotmap(Sector basis) {
-            this.X = basis.X;
-            this.Y = basis.Y;
+            X = basis.X;
+            Y = basis.Y;
             this.basis = basis;
         }
 

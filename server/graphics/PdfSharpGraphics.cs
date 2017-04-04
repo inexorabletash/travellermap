@@ -17,8 +17,8 @@ namespace Maps.Graphics
         private XPen pen;
 
         public PdfSharpGraphics(XGraphics g) { this.g = g;
-            this.brush = new XSolidBrush();
-            this.pen = new XPen(Color.Empty);
+            brush = new XSolidBrush();
+            pen = new XPen(Color.Empty);
         }
 
         private void Apply(AbstractBrush brush)
