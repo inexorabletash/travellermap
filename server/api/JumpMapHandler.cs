@@ -95,7 +95,7 @@ namespace Maps.API
                 // Options & Style
                 //
                 MapOptions options = MapOptions.BordersMajor | MapOptions.BordersMinor | MapOptions.ForceHexes;
-                Stylesheet.Style style = Stylesheet.Style.Poster;
+                Style style = Style.Poster;
                 ParseOptions(ref options, ref style);
 
                 //

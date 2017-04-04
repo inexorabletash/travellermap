@@ -42,7 +42,7 @@ namespace Maps.API
                 #region URL Parameters
                 // TODO: move to ParseOptions (maybe - requires options to be parsed after stylesheet creation?)
                 if (GetBoolOption("sscoords", queryDefaults: queryDefaults, defaultValue: false))
-                    ctx.Styles.hexCoordinateStyle = Stylesheet.HexCoordinateStyle.Subsector;
+                    ctx.Styles.hexCoordinateStyle = HexCoordinateStyle.Subsector;
 
                 if (GetBoolOption("allhexes", queryDefaults: queryDefaults, defaultValue: false))
                     ctx.Styles.numberAllHexes = true;

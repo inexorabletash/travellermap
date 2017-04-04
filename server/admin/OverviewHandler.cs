@@ -29,7 +29,7 @@ namespace Maps.Admin
                 public override void Process(ResourceManager resourceManager)
                 {
                     MapOptions options = MapOptions.SectorGrid | MapOptions.FilledBorders;
-                    Stylesheet.Style style = Stylesheet.Style.Poster;
+                    Style style = Style.Poster;
                     ParseOptions(ref options, ref style);
 
                     float x = -0.5f;

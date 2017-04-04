@@ -801,8 +801,8 @@ namespace Maps.Rendering
                         switch (styles.hexCoordinateStyle)
                         {
                             default:
-                            case Stylesheet.HexCoordinateStyle.Sector: hex = loc.HexString; break;
-                            case Stylesheet.HexCoordinateStyle.Subsector: hex = loc.SubsectorHexString; break;
+                            case HexCoordinateStyle.Sector: hex = loc.HexString; break;
+                            case HexCoordinateStyle.Subsector: hex = loc.SubsectorHexString; break;
                         }
                         using (graphics.Save())
                         {
@@ -1002,8 +1002,8 @@ namespace Maps.Rendering
                             switch (styles.hexCoordinateStyle)
                             {
                                 default:
-                                case Stylesheet.HexCoordinateStyle.Sector: hex = world.Hex; break;
-                                case Stylesheet.HexCoordinateStyle.Subsector: hex = world.SubsectorHex; break;
+                                case HexCoordinateStyle.Sector: hex = world.Hex; break;
+                                case HexCoordinateStyle.Subsector: hex = world.SubsectorHex; break;
                             }
                             solidBrush.Color = styles.hexNumber.textColor;
                             graphics.DrawString(hex, styles.hexNumber.Font, solidBrush, 0.0f, -0.5f, Graphics.StringAlignment.TopCenter);

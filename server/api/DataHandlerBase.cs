@@ -287,30 +287,30 @@ namespace Maps.API
                 throw new ArgumentException("Context is missing required parameters", nameof(Context));
             }
 
-            protected void ParseOptions(ref MapOptions options, ref Stylesheet.Style style)
+            protected void ParseOptions(ref MapOptions options, ref Style style)
             {
                 ParseOptions(Context.Request, Defaults(Context), ref options, ref style);
             }
 
-            private static readonly IReadOnlyDictionary<string, Stylesheet.Style> s_nameToStyle = new Dictionary<string, Stylesheet.Style> {
-                { "poster",Stylesheet.Style.Poster },
-                { "atlas" ,Stylesheet.Style.Atlas },
-                { "print" , Stylesheet.Style.Print },
-                { "candy" ,Stylesheet.Style.Candy },
-                { "draft" ,Stylesheet.Style.Draft },
-                { "fasa"  ,Stylesheet.Style.FASA },
+            private static readonly IReadOnlyDictionary<string, Style> s_nameToStyle = new Dictionary<string, Style> {
+                { "poster", Style.Poster },
+                { "atlas" , Style.Atlas },
+                { "print" , Style.Print },
+                { "candy" , Style.Candy },
+                { "draft" , Style.Draft },
+                { "fasa"  , Style.FASA },
             };
 
-            public void ParseOptions(HttpRequest request, IDictionary<string, object> queryDefaults, ref MapOptions options, ref Stylesheet.Style style)
+            public void ParseOptions(HttpRequest request, IDictionary<string, object> queryDefaults, ref MapOptions options, ref Style style)
             {
                 options = (MapOptions)GetIntOption("options", queryDefaults, (int)options);
 
 #if LEGACY_STYLES
             // Handle deprecated/legacy options bits for selecting style
             style =
-                (options & MapOptions.StyleMaskDeprecated) == MapOptions.PrintStyleDeprecated ? Stylesheet.Style.Atlas :
-                (options & MapOptions.StyleMaskDeprecated) == MapOptions.CandyStyleDeprecated ? Stylesheet.Style.Candy :
-                Stylesheet.Style.Poster;
+                (options & MapOptions.StyleMaskDeprecated) == MapOptions.PrintStyleDeprecated ? Style.Atlas :
+                (options & MapOptions.StyleMaskDeprecated) == MapOptions.CandyStyleDeprecated ? Style.Candy :
+                Style.Poster;
 #endif // LEGACY_STYLES
 
                 if (HasOption("style", queryDefaults))

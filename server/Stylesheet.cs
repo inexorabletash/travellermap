@@ -145,12 +145,21 @@ namespace Maps.Rendering
         Square,
         Curve,
     }
+
     public enum HexStyle
     {
         None,
         Hex,
         Square,
     }
+
+    public enum HexCoordinateStyle
+    {
+        Sector,
+        Subsector
+    };
+
+    public enum Style { Poster, Atlas, Candy, Print, Draft, FASA };
 
     internal class Stylesheet
     {
@@ -191,8 +200,6 @@ namespace Maps.Rendering
         private const float CandyMaxRouteRelativeScale = 32;
 
         private const float T5AllegianceCodeMinScale = 64;
-
-        public enum Style { Poster, Atlas, Candy, Print, Draft, FASA };
 
         public Stylesheet(double scale, MapOptions options, Style style)
         {
@@ -869,11 +876,6 @@ namespace Maps.Rendering
 
         // Hex Coordinates
         public StyleElement hexNumber;
-        public enum HexCoordinateStyle
-        {
-            Sector,
-            Subsector
-        };
         public HexCoordinateStyle hexCoordinateStyle;
         public bool numberAllHexes;
 

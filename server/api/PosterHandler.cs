@@ -22,7 +22,7 @@ namespace Maps.API
                 Selector selector;
                 RectangleF tileRect;
                 MapOptions options = MapOptions.SectorGrid | MapOptions.SubsectorGrid | MapOptions.BordersMajor | MapOptions.BordersMinor | MapOptions.NamesMajor | MapOptions.NamesMinor | MapOptions.WorldsCapitals | MapOptions.WorldsHomeworlds;
-                Stylesheet.Style style = Stylesheet.Style.Poster;
+                Style style = Style.Poster;
                 ParseOptions(ref options, ref style);
                 string title;
                 bool clipOutsectorBorders;
@@ -120,7 +120,7 @@ namespace Maps.API
                     // Account for jagged hexes
                     tileRect.Height += 0.5f;
                     tileRect.Inflate(0.25f, 0.10f);
-                    if (style == Stylesheet.Style.Candy)
+                    if (style == Style.Candy)
                         tileRect.Width += 0.75f;
 
                     clipOutsectorBorders = true;
@@ -220,7 +220,7 @@ namespace Maps.API
                     // Account for jagged hexes
                     tileRect.Height += 0.5f;
                     tileRect.Inflate(0.25f, 0.10f);
-                    if (style == Stylesheet.Style.Candy)
+                    if (style == Style.Candy)
                         tileRect.Width += 0.75f;
                     clipOutsectorBorders = false;
                 }
