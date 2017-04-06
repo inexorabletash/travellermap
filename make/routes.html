@@ -37,6 +37,12 @@
           spellcheck="false" wrap="off" cols="80" rows="10"></textarea>
 
   <li>Click <button id="parsesec">Generate Map</button> (may take a few seconds)
+    <div>
+      Highlight:
+       &nbsp; <label><input type=checkbox id="highlight-im"> Importance</label>
+       &nbsp; <label><input type=checkbox id="highlight-po"> Population</label>
+    </div>
+
   <li>Click on the map to set a route start point, then again to set a route end point
   <li>If needed, click <button id="undo">Undo</button> to undo the last click,
     or <button id="clear">Clear</button> to start over
@@ -125,7 +131,9 @@ function parse() {
         style: 'print',
         options: 41975,
         scale: 64,
-        datauri: 1
+        datauri: 1,
+        im: $('#highlight-im').checked ? 1 : 0,
+        po: $('#highlight-po').checked ? 1 : 0
       };
       return getTextViaPOST(Traveller.MapService.makeURL('/api/poster'), params);
     })
@@ -135,7 +143,7 @@ function parse() {
       refresh();
     })
     .catch(function(reason) {
-      alert(reason);
+      alert('Server error: ' + reason);
     });
 }
 
