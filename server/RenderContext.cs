@@ -959,7 +959,7 @@ namespace Maps.Rendering
                     // Normal (non-"Eye Candy") styles
                     if (layer == WorldLayer.Background)
                     {
-#region Zone
+                        #region Zone
                         if (styles.worldDetails.HasFlag(WorldDetails.Zone))
                         {
                             Stylesheet.StyleElement? maybeElem = ZoneStyle(world);
@@ -992,9 +992,9 @@ namespace Maps.Rendering
                                 }
                             }
                         }
-#endregion
+                        #endregion
 
-#region Hex
+                        #region Hex
                         if (!styles.numberAllHexes &&
                             styles.worldDetails.HasFlag(WorldDetails.Hex))
                         {
@@ -1008,7 +1008,7 @@ namespace Maps.Rendering
                             solidBrush.Color = styles.hexNumber.textColor;
                             graphics.DrawString(hex, styles.hexNumber.Font, solidBrush, 0.0f, -0.5f, Graphics.StringAlignment.TopCenter);
                         }
-#endregion
+                        #endregion
                     }
 
                     if (layer == WorldLayer.Foreground)
@@ -1017,7 +1017,7 @@ namespace Maps.Rendering
                         TextBackgroundStyle worldTextBackgroundStyle = (elem.HasValue && !elem.Value.fillColor.IsEmpty)
                             ? TextBackgroundStyle.None : styles.worlds.textBackgroundStyle;
 
-#region Name
+                        #region Name
                         if (renderName)
                         {
                             string name = world.Name;
@@ -1031,9 +1031,9 @@ namespace Maps.Rendering
 
                             DrawWorldLabel(worldTextBackgroundStyle, solidBrush, textColor, styles.worlds.textStyle.Translation, font, name);
                         }
-#endregion
+                        #endregion
 
-#region Allegiance
+                        #region Allegiance
                         // TODO: Mask off background for allegiance
                         if (styles.worldDetails.HasFlag(WorldDetails.Allegiance))
                         {
@@ -1051,7 +1051,7 @@ namespace Maps.Rendering
                                 graphics.DrawString(alleg, styles.worlds.SmallFont, solidBrush, styles.AllegiancePosition.X, styles.AllegiancePosition.Y, Graphics.StringAlignment.Centered);
                             }
                         }
-#endregion
+                        #endregion
 
                         if (!isPlaceholder)
                         {
@@ -1064,17 +1064,17 @@ namespace Maps.Rendering
                                     0.05f, 
                                     styles.showGasGiantRing);
                             }
-#endregion
+                            #endregion
 
-#region Starport
+                            #region Starport
                             if (styles.worldDetails.HasFlag(WorldDetails.Starport))
                             {
                                 string starport = world.Starport.ToString();
                                 DrawWorldLabel(worldTextBackgroundStyle, solidBrush, styles.worlds.textColor, styles.StarportPosition, styleRes.StarportFont, starport);
                             }
-#endregion
+                            #endregion
 
-#region UWP
+                            #region UWP
                             if (renderUWP)
                             {
                                 string uwp = world.UWP;
@@ -1082,9 +1082,9 @@ namespace Maps.Rendering
 
                                 graphics.DrawString(uwp, styles.hexNumber.Font, solidBrush, styles.StarportPosition.X, -styles.StarportPosition.Y, Graphics.StringAlignment.Centered);
                             }
-#endregion
+                            #endregion
 
-#region Bases
+                            #region Bases
                             // TODO: Mask off background for glyphs
                             if (styles.worldDetails.HasFlag(WorldDetails.Bases))
                             {
@@ -1152,10 +1152,10 @@ namespace Maps.Rendering
                                     RenderUtil.DrawGlyph(graphics, glyph, styleRes, solidBrush, styles.BaseMiddlePosition.X, 0);
                                 }
                             }
-#endregion
+                            #endregion
                         }
 
-#region Disc
+                        #region Disc
                         if (styles.worldDetails.HasFlag(WorldDetails.Type))
                         {
                             if (isPlaceholder)
@@ -1251,7 +1251,7 @@ namespace Maps.Rendering
 
                     if (layer == WorldLayer.Background)
                     {
-#region Disc
+                        #region Disc
                         if (styles.worldDetails.HasFlag(WorldDetails.Type))
                         {
                             if (isPlaceholder)
@@ -1302,7 +1302,7 @@ namespace Maps.Rendering
                             solidBrush.Color = styles.worlds.textColor;
                             graphics.DrawEllipse(solidBrush, -0.2f, -0.2f, 0.4f, 0.4f);
                         }
-#endregion
+                        #endregion
                     }
 
                     if (isPlaceholder)
@@ -1310,7 +1310,9 @@ namespace Maps.Rendering
 
                     if (layer == WorldLayer.Foreground)
                     {
-#region Zone
+                        decorationRadius += 0.1f;
+
+                        #region Zone
                         if (styles.worldDetails.HasFlag(WorldDetails.Zone))
                         {
                             if (world.IsAmber || world.IsRed)
@@ -1318,26 +1320,26 @@ namespace Maps.Rendering
                                 PenInfo pi = world.IsAmber ? styles.amberZone.pen : styles.redZone.pen;
                                 pi.Apply(ref pen);
 
-                                decorationRadius += 0.1f;
                                 graphics.DrawArc(pen, -decorationRadius, -decorationRadius, decorationRadius * 2, decorationRadius * 2, 5, 80);
                                 graphics.DrawArc(pen, -decorationRadius, -decorationRadius, decorationRadius * 2, decorationRadius * 2, 95, 80);
                                 graphics.DrawArc(pen, -decorationRadius, -decorationRadius, decorationRadius * 2, decorationRadius * 2, 185, 80);
                                 graphics.DrawArc(pen, -decorationRadius, -decorationRadius, decorationRadius * 2, decorationRadius * 2, 275, 80);
+                                decorationRadius += 0.1f;
                             }
                         }
-#endregion
+                        #endregion
 
-#region GasGiant
+                        #region GasGiant
                         if (styles.worldDetails.HasFlag(WorldDetails.GasGiant) && world.GasGiants > 0)
                         {
                             const float symbolRadius = 0.05f;
-                            decorationRadius += 0.1f;
                             if (styles.showGasGiantRing)
                                 decorationRadius += symbolRadius;
                             DrawGasGiant(
                                 styles.worlds.textHighlightColor,
                                 decorationRadius, 0, symbolRadius,
                                 styles.showGasGiantRing);
+                            decorationRadius += 0.1f;
                         }
                         #endregion
 
@@ -1345,11 +1347,12 @@ namespace Maps.Rendering
                         if (renderUWP)
                         {
                             solidBrush.Color = styles.worlds.textColor;
-                            graphics.DrawString(world.UWP, styles.hexNumber.Font, solidBrush, styles.StarportPosition.X, -styles.StarportPosition.Y, Graphics.StringAlignment.CenterLeft);
+                            // TODO: Scale, like the name text.
+                            graphics.DrawString(world.UWP, styles.hexNumber.Font, solidBrush, decorationRadius, -styles.StarportPosition.Y, Graphics.StringAlignment.CenterLeft);
                         }
-#endregion
+                        #endregion
 
-#region Name
+                        #region Name
                         if (renderName)
                         {
                             string name = world.Name;
@@ -1364,8 +1367,6 @@ namespace Maps.Rendering
                                 if (styles.worlds.textStyle.Uppercase)
                                     name = name.ToUpper();
 
-                                decorationRadius += 0.1f;
-
                                 graphics.TranslateTransform(decorationRadius, 0.0f);
                                 graphics.ScaleTransform(styles.worlds.textStyle.Scale.Width, styles.worlds.textStyle.Scale.Height);
                                 graphics.TranslateTransform(graphics.MeasureString(name, styles.worlds.Font).Width / 2, 0.0f); // Left align
@@ -1373,7 +1374,7 @@ namespace Maps.Rendering
                                 DrawWorldLabel(styles.worlds.textBackgroundStyle, solidBrush, textColor, styles.worlds.textStyle.Translation, styles.worlds.Font, name);
                             }
                         }
-#endregion
+                        #endregion
                     }
                 }
             }
@@ -1421,6 +1422,8 @@ namespace Maps.Rendering
                     graphics.RotateTransform(-30);
                     pen.Color = color;
                     pen.Width = r / 4;
+                    pen.DashStyle = Graphics.DashStyle.Solid;
+                    pen.CustomDashPattern = null;
                     graphics.DrawEllipse(pen,
                         -r * 1.75f,
                         -r * 0.4f,
