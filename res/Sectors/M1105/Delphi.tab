@@ -3,7 +3,7 @@ Delp	A	0102	Murphy	C544596-6		Ag Ni		101	ImDc	M0 V	{ -1 }	(743-2)	[4445]	BC	11	-
 Delp	A	0103	Oxnard	E6756A9-5		Ag Ni		524	ImDc	M2 V M6 V	{ -2 }	(852-1)	[7466]	BC	15	-80
 Delp	A	0105	Dunlap	A575221-B		Lo		604	ImDc	K3 V M8 V	{ 1 }	(811-3)	[1317]	B	15	-24
 Delp	A	0106	Wrall	D100595-9		Ni Va Da	A	600	ImDc	M2 V	{ -2 }	(742-4)	[3337]	B	6	-224
-Delp	A	0107	McPherson	B564657-9		Ag Ni Ri Cp		303	ImDc	K4 V	{ 2 }	(B56+2)	[6859]	BC	10	660
+Delp	A	0107	McPherson	B564657-9		Ag Ni Ri Cp		303	ImDc	K4 V	{ 2 }	(B56+2)	[6859]	BCF	10	660
 Delp	A	0108	Kornag	E310240-9		Lo		820	ImDc	M2 V G4 V	{ -2 }	(611-5)	[1114]	B	12	-30
 Delp	A	0109	Freyja	B435522-9	S	Ni		100	ImDc	G7 V	{ 0 }	(744-4)	[1515]	B	9	-448
 Delp	A	0110	Ravenkin	E310587-9		Ni		303	ImDc	M0 V M6 V	{ -2 }	(A42-2)	[5359]	B	6	-160
@@ -81,7 +81,7 @@ Delp	I	0523	ZIINA	E42399A-7		Hi In Na Po Pz	A	403	ImDc	K4 V M9 V	{ 0 }	(B89+2)	[
 Delp	I	0527	Hadamard	B100230-9		Lo Va Da	A	923	ImDc	G7 V	{ 0 }	(911-4)	[1214]	B	9	-36
 Delp	I	0528	Valli	B562876-6		Ri Ph Pz	A	104	ImDc	M1 V	{ 1 }	(A78+1)	[7945]	BCe	15	560
 Delp	M	0532	Piinur	E200533-7		Ni Va		200	ImDc	K4 V M0 V	{ -3 }	(741-5)	[2224]	B	12	-140
-Delp	M	0533	Korbak	A432320-B	NW	Lo Po Cp		913	ImDc	F9 V	{ 2 }	(921-2)	[1516]	B	13	-36
+Delp	M	0533	Korbak	A432320-B	NW	Lo Po Cp		913	ImDc	F9 V	{ 2 }	(921-2)	[1516]	BF	13	-36
 Delp	M	0534	Eta-Gu	B73A552-E		Ni Wa		602	ImDc	M1 V	{ 1 }	(945-3)	[161A]	B	10	-540
 Delp	M	0536	Ektuurim	C788774-4		Ag Ri		703	ImDc	M0 V	{ 1 }	(967-1)	[5832]	BC	7	-378
 Delp	M	0537	Uowdin	C31049B-7		Ni Da	A	805	ImDc	K3 V M5 V	{ -2 }	(631+1)	[6279]	B	15	18
@@ -144,7 +144,7 @@ Delp	B	0906	Robin	B994330-A	N	Lo		114	ImDc	M2 V	{ 1 }	(A21-3)	[1415]	B	8	-60
 Delp	F	0916	Odin	C543444-6		Ni Po		703	ImDc	K2 V	{ -2 }	(631-4)	[2234]	B	7	-72
 Delp	F	0918	Galis	E425133-7		Lo		622	ImDc	K4 V	{ -3 }	(301-5)	[1124]	B	9	0
 Delp	J	0922	Orn	D64A404-8		Ni Wa		902	ImDc	K4 V	{ -3 }	(831-5)	[2136]	B	15	-120
-Delp	J	0925	Konat-Kale	B310886-B		Na Ph Cp Pi		302	ImDc	M3 V	{ 2 }	(C7C+1)	[7A4A]	BDe	7	1,008
+Delp	J	0925	Konat-Kale	B310886-B		Na Ph Cp Pi		302	ImDc	M3 V	{ 2 }	(C7C+1)	[7A4A]	BDeF	7	1,008
 Delp	J	0926	Poynting	C787634-8		Ag Ni Ga Ri		905	ImDc	M1 V M0 V	{ 0 }	(D54-2)	[4636]	BC	17	-520
 Delp	J	0929	Gabon	C10088A-B		Na Va Ph Pi		513	ImDc	K3 V M4 V	{ 1 }	(E7B+3)	[A97D]	BDe	8	3,234
 Delp	N	0933	Rappik	B57289B-8		He Ph Pi Pz	A	313	ImDc	M2 V	{ 0 }	(E78+2)	[A87A]	BDe	7	1,568
@@ -168,7 +168,7 @@ Delp	J	1028	Edmonton	C431721-A		Na Po		823	ImDc	K3 V M0 V M0 V	{ 1 }	(E6A-3)	[38
 Delp	N	1031	De Thorneclay	B527587-C		Ni		903	ImDc	M2 V M6 V M8 V	{ 1 }	(A45+1)	[565C]	B	15	200
 Delp	N	1034	Lavoisier	B553420-8		Ni Po		403	ImDc	M1 V	{ -1 }	(932-5)	[1313]	B	8	-270
 Delp	N	1035	McConnell	E639340-7		Lo		711	ImDc	G3 V	{ -3 }	(521-5)	[1112]	B	8	-50
-Delp	N	1036	Belthan	A310877-E		Na Ph Cp Pi		413	ImDc	K3 V	{ 2 }	(E7D+2)	[8A5E]	BDe	11	2,548
+Delp	N	1036	Belthan	A310877-E		Na Ph Cp Pi		413	ImDc	K3 V	{ 2 }	(E7D+2)	[8A5E]	BDeF	11	2,548
 Delp	N	1039	Beowulf	B996454-B	N	Ni Pa		104	ImDc	G0 V	{ 1 }	(A34-1)	[2539]	Bc	11	-120
 Delp	B	1101	Thomaswyff	C000741-7		As Na Va Pi		712	ImDc	K0 V	{ -1 }	(967-5)	[3613]	BD	7	-1,890
 Delp	B	1103	TSENT	B639954-E		Hi		724	ImDc	M3 V M7 V	{ 3 }	(H8F+1)	[7C3C]	BE	13	2,040
@@ -177,7 +177,7 @@ Delp	B	1109	Pale	A100433-D		Ni Va		412	ImDc	M3 V	{ 1 }	(934-2)	[152A]	B	11	-216
 Delp	F	1111	Carthage	B525677-8		Ni		100	ImDc	K3 V	{ -1 }	(853-1)	[6558]	B	10	-120
 Delp	F	1114	Evraud	D431721-6		Na Po Varg?		223	ImDc	M1 V	{ -2 }	(965-5)	[3512]	B	9	-1,350
 Delp	F	1116	Lacerta	E000587-7		As Ni Va		212	ImDc	M3 V M0 V	{ -3 }	(741-3)	[5257]	B	9	-84
-Delp	F	1118	Antler	A553420-D	NS	Ni Po Cp		603	ImDc	M3 V M8 V	{ 2 }	(935-2)	[1618]	B	12	-270
+Delp	F	1118	Antler	A553420-D	NS	Ni Po Cp		603	ImDc	M3 V M8 V	{ 2 }	(935-2)	[1618]	BF	12	-270
 Delp	F	1119	McDonald	E100434-A		Ni Va		410	ImDc	M1 V	{ -1 }	(732-3)	[2338]	B	9	-126
 Delp	J	1123	De Weton	D565220-5		Lo		103	ImDc	K9 V	{ -3 }	(411-5)	[1111]	B	8	-20
 Delp	N	1133	Barett	E756440-5		Ni Ga Pa		124	ImDc	M3 V	{ -3 }	(631-5)	[1111]	Bc	12	-90
@@ -248,7 +248,7 @@ Delp	G	1716	Watton	C431721-8		Na Po		702	ImDc	K0 V	{ -1 }	(B67-5)	[3614]	B	11	-2
 Delp	K	1722	Leviticus	B527587-A	N	Ni		213	ImDc	G0 V	{ 1 }	(B45+1)	[565A]	B	7	220
 Delp	K	1724	ANAXIAS	A553A85-D		Hi Po Cs		900	ImDc	K0 V M3 V	{ 3 }	(C9F+1)	[8D3B]	BEF	11	1,620
 Delp	O	1736	GIMESH	E1009A7-9		Hi In Na Va		703	ImDc	M2 V	{ 1 }	(E8B+1)	[9A59]	BE	9	1,232
-Delp	O	1737	Todd	A100633-C		Na Ni Va Cp		813	ImDc	K0 V	{ 1 }	(C55-2)	[3729]	B	18	-600
+Delp	O	1737	Todd	A100633-C		Na Ni Va Cp		813	ImDc	K0 V	{ 1 }	(C55-2)	[3729]	BF	18	-600
 Delp	O	1739	Gilina	C756440-9		Ni Ga Pa		402	ImDc	K2 V	{ -1 }	(832-5)	[1314]	Bc	8	-240
 Delp	O	1740	Thayer	C100433-B		Ni Va		702	ImDc	K2 V M5 V	{ 0 }	(833-3)	[1428]	B	14	-216
 Delp	C	1801	DISHIIRPI	B525966-9	N	Hi In Mr		812	ImDc	M2 V M1 V	{ 3 }	(E8D+2)	[8C48]	BE	15	2,912
@@ -267,7 +267,7 @@ Delp	C	1905	Izmir	D553420-7		Ni Po		804	ImDc	K4 V M3 V M4 V	{ -3 }	(631-5)	[1112
 Delp	O	1935	ANISE	D100A99-D		Hi In Na Va		304	ImDc	K2 IV	{ 2 }	(G9E+3)	[BC6E]	BE	7	6,048
 Delp	O	1937	Grimman	B525677-B		Ni		202	ImDc	K1 V M7 V	{ 1 }	(A55+1)	[675B]	B	12	250
 Delp	O	1939	Calais	D431721-8		Na Po		213	ImDc	M1 V	{ -2 }	(D66-5)	[3514]	B	10	-2,340
-Delp	G	2011	Yugoslav	A000587-E	N	As Ni Va Cp		512	ImDc	G2 V	{ 1 }	(A45+1)	[565E]	B	11	200
+Delp	G	2011	Yugoslav	A000587-E	N	As Ni Va Cp		512	ImDc	G2 V	{ 1 }	(A45+1)	[565E]	BF	11	200
 Delp	G	2014	Whitaker	E100433-7		Ni Va		104	ImDc	M0 V	{ -3 }	(631-5)	[1124]	B	9	-90
 Delp	K	2025	Sian	B100434-E	N	Ni Va		525	ImDc	K3 IV	{ 1 }	(D34-1)	[253C]	B	10	-156
 Delp	K	2026	RIIRZUKHINDI	E565984-8		Hi Pr		504	ImDc	K7 V	{ -1 }	(F88-3)	[7836]	BcE	7	-2,880
@@ -321,7 +321,7 @@ Delp	H	2813	Vermillion	A527587-D		Ni		203	CsIm	G0 V	{ 1 }	(A45+1)	[565D]		10	200
 Delp	L	2830	Vermpe	D553420-3		Ni Po		503	NaHu	M2 V	{ -3 }	(631-5)	[1111]		11	-90
 Delp	P	2831	Khmer	B639340-C		Lo		423	NaHu	G1 V M6 V	{ 1 }	(A21-3)	[1417]		14	-60
 Delp	P	2832	Nero	B89758B-A		Ag Ni		413	ImDc	F4 V	{ 2 }	(B46+4)	[777C]	BC	10	1,056
-Delp	P	2833	Frigidair	B587220-B	KM	Lo		405	ImDc	M2 V	{ 2 }	(911-2)	[1416]	B	13	-18
+Delp	P	2833	Frigidair	B587220-B	KM	Lo		405	ImDc	M2 V	{ 1 }	(911-2)	[1316]	B	13	-18
 Delp	P	2839	Rogis	C544622-6		Ag Ni		404	ImDc	G3 V	{ -1 }	(853-5)	[2512]	BC	8	-600
 Delp	D	2910	Pero	B5746AC-7		Ag Ni Da	A	504	NaHu	M3 V	{ 0 }	(854+3)	[968A]		12	480
 Delp	P	2931	Boffit	B566433-9		Ni Pa		613	CsIm	M3 V M5 V	{ 0 }	(A33-3)	[1426]		16	-270
@@ -330,14 +330,14 @@ Delp	P	2937	Dougal	B100433-D		Ni Va		702	ImDc	M3 V	{ 1 }	(834-2)	[152A]	B	14	-19
 Delp	P	2938	McKenna	E525677-7		Ni		804	ImDc	M0 V	{ -3 }	(851-3)	[6357]	B	12	-120
 Delp	D	3003	Jillott	C100433-8		Ni Va		214	NaHu	M1 V M3 V	{ -2 }	(B31-5)	[1225]		10	-165
 Delp	P	3034	Bagley	D100434-7		Ni Va		704	ImDc	K0 V M8 V	{ -3 }	(631-5)	[2135]	B	11	-90
-Delp	P	3035	BREDA	A565984-B	KM	Hi Cp Pr		825	ImDc	M2 V	{ 4 }	(J8F+2)	[7D39]	BcEF	15	4,320
+Delp	P	3035	BREDA	A565984-B	KM	Hi Cp Pr		825	ImDc	M2 V	{ 3 }	(J8F+2)	[7C39]	BcEF	15	4,320
 Delp	P	3037	Horshard	B000721-D		As Na Va Pi		605	ImDc	M2 V	{ 2 }	(E6D-2)	[3919]	BD	13	-2,184
 Delp	P	3040	Taliarin	B100434-B	N	Ni Va		700	ImDc	K4 V	{ 1 }	(634-1)	[2539]	B	10	-72
 Delp	L	3130	Crofta	B565220-7	M	Lo		922	NaHu	K4 V	{ -1 }	(411-5)	[1112]		13	-20
 Delp	P	3134	Willow	B756440-7		Ni Ga Pa		512	ImDc	M0 V M0 V	{ -1 }	(632-5)	[1312]	Bc	7	-180
 Delp	P	3137	Cotes	C897554-6		Ag Ni		210	ImDc	M2 V	{ -1 }	(743-3)	[3434]	BC	12	-252
 Delp	P	3138	Dami	A200657-D		Na Ni Va		604	ImDc	K2 V	{ 1 }	(C55+1)	[675D]	B	10	300
-Delp	P	3140	Aida	B100433-9	KM	Ni Va		503	ImDc	M3 V	{ 1 }	(934-2)	[1526]	B	14	-216
+Delp	P	3140	Aida	B100433-9	KM	Ni Va		503	ImDc	M3 V	{ 0 }	(934-2)	[1426]	B	14	-216
 Delp	D	3204	Steuenson	B525677-8		Ni		921	CsIm	K1 V	{ -1 }	(B53-1)	[6558]		10	-165
 Delp	D	3207	Wulfrith	C100433-B		Ni Va		303	CsIm	K1 III D	{ 0 }	(933-3)	[1428]		14	-243
 Delp	L	3222	Hays	C525677-9		Ni		220	ImDc	M3 V	{ -1 }	(A53-1)	[6559]	B	9	-150
