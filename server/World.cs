@@ -313,7 +313,7 @@ namespace Maps
             bool De = CC("De", Check(Atmosphere, "23456789") && Check(Hydrographics, "0"));
             bool Fl = CC("Fl", Check(Atmosphere, "ABC") && Check(Hydrographics, "123456789A"));
             bool Ga = CC("Ga", Check(Size, "678") && Check(Atmosphere, "568") && Check(Hydrographics, "567"));
-            bool He = CC("He", Check(Size, "3456789A" /* + "BC" */) && Check(Atmosphere, "2479ABC") && Check(Hydrographics, "012")); // TODO: Add BC to T5SS spreadsheet calcs
+            bool He = CC("He", Check(Size, "3456789ABC") && Check(Atmosphere, "2479ABC") && Check(Hydrographics, "012"));
             bool Ic = CC("Ic", Check(Atmosphere, "01") && Check(Hydrographics, "123456789A"));
             bool Oc = CC("Oc", Check(Size, "ABC") && Check(Atmosphere, "3456789") && Check(Hydrographics, "A"));
             bool Va = CC("Va", Check(Atmosphere, "0"));
@@ -345,7 +345,7 @@ namespace Maps
                 if ("AB".Contains(Starport)) ++imp;
                 if ("DEX".Contains(Starport)) --imp;
                 if (TechLevel >= 10) ++imp;
-                //if (TechLevel >= 16) ++imp; // TODO: Add to T5SS spreadsheet calcs
+                if (TechLevel >= 16) ++imp;
                 if (TechLevel <= 8) --imp;
                 if (PopulationExponent <= 6) --imp;
                 if (PopulationExponent >= 9) ++imp;
@@ -422,6 +422,8 @@ namespace Maps
             // Ownership
             if (Government == 6 && !(HasCodePrefix("O:") || HasCodePrefix("Mr") || HasCode("Re") || HasCode("Px")))
                 errors.Warning("Gov 6 missing O:/Mr/Re/Px", lineNumber, line);
+
+            // TODO: Nobility
         }
 
         private string routes = null;
