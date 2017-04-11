@@ -43,4 +43,24 @@
     <DataFile Type="SecondSurvey">1120_Hint.sec</DataFile>
     <MetadataFile>1120_Hint.xml</MetadataFile>
   </Sector>
+
+   <Sector Abbreviation="Corr" Tags="Unreviewed" Selected="true" Milieu="M1120">
+    <Y>-1</Y>
+    <X>-2</X>
+    <Name>Corridor</Name>
+    <Name Lang="vi">Amshagi</Name>
+    <Name Lang="vi">Eneri</Name>
+    <Name Lang="va">Roughantz</Name>
+    <Name Lang="va">Llananae Tourz</Name>
+    <DataFile Author="James Holden, Philip Athans, Mike Mikesh, and David Riddell" Type="SecondSurvey">1120_Corr.sec</DataFile>
+    <MetadataFile>1120_Corr.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Eali" Tags="Unreviewed" Selected="true" Milieu="M1120">
+    <Y>2</Y>
+    <X>-3</X>
+    <Name Lang="as">Ealiyasiyw</Name>
+    <DataFile Author="James Holden" Type="SecondSurvey">1120_Eali.sec</DataFile>
+    <MetadataFile>1120_Eali.xml</MetadataFile>
+  </Sector>
+ 
 </Sectors>
