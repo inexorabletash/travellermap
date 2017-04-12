@@ -1,6 +1,7 @@
 ﻿using Maps.Search;
 using Maps.Utilities;
 using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.IO;
 using System.Text;
@@ -161,10 +162,23 @@ namespace Maps.Admin
                         }
                     }
                 }
+
+                {
+                    Write(context.Response, "&nbsp;");
+                    Write(context.Response, "Worlds by Milieu:");
+                    string sql = $"SELECT milieu, COUNT(*) FROM worlds GROUP BY milieu ORDER BY milieu";
+                    using (var command = new SqlCommand(sql, connection))
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Write(context.Response, $"{reader.GetString(0)} &mdash; {reader.GetInt32(1)}");
+                        }
+                    }
+                }
             }
 
             Write(context.Response, "<b>&Omega;</b>");
-
         }
     }
 

@@ -320,7 +320,8 @@ namespace Maps
             bool Wa = CC("Wa", Check(Size, "3456789") && Check(Atmosphere, "3456789") && Check(Hydrographics, "A"));
 
             // Population
-            bool Di = CC("Di", PopulationExponent == 0 /*&& Government == 0 && Law == 0*/ && TechLevel > 0);
+            bool Di = (PopulationExponent == 0 /*&& Government == 0 && Law == 0*/ && TechLevel > 0);
+            ErrorIf(Di && !HasCodePrefix("Di"), "Missing code: Di or Di(sophont)");
             bool Ba = CC("Ba", PopulationExponent == 0 /*&& Government == 0 && Law == 0*/ && TechLevel == 0);
             bool Lo = CC("Lo", Check(PopulationExponent, "123"));
             bool Ni = CC("Ni", Check(PopulationExponent, "456"));
