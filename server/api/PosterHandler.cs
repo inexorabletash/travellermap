@@ -269,6 +269,31 @@ namespace Maps.API
                 if (hrot != 0)
                     ApplyHexRotation(hrot, stylesheet, ref bitmapSize, ref transform);
 
+                if (GetBoolOption("clampar", defaultValue: false))
+                {
+                    // Landscape: 1.91:1 (1.91)
+                    // Portrait: 4:5 (0.8)
+                    const double MIN_ASPECT_RATIO = 0.8;
+                    const double MAX_ASPECT_RATIO = 1.91;
+                    double aspectRatio = (double)bitmapSize.Width / (double)bitmapSize.Height;
+                    Size newSize = bitmapSize;
+                    if (aspectRatio < MIN_ASPECT_RATIO)
+                    {
+                        newSize.Width = (int)Math.Floor(bitmapSize.Height * MIN_ASPECT_RATIO);
+                    }
+                    else if (aspectRatio > MAX_ASPECT_RATIO)
+                    {
+                        newSize.Height = (int)Math.Floor(bitmapSize.Width / MAX_ASPECT_RATIO);
+                    }
+                    if (newSize != bitmapSize)
+                    {
+                        transform.TranslatePrepend(
+                            (newSize.Width - bitmapSize.Width) / 2f,
+                            (newSize.Height - bitmapSize.Height) / 2f);
+                        bitmapSize = newSize;
+                    }
+                }
+
                 RenderContext ctx = new RenderContext(resourceManager, selector, tileRect, scale, options, stylesheet, tileSize)
                 {
                     ClipOutsectorBorders = clipOutsectorBorders
