@@ -199,6 +199,7 @@ th, td {
   padding: 0.25in 0.5in;
 }
 .sector-image {
+  display: block;
   border: solid 4px black;
   width: 9.5in;
 }
@@ -235,10 +236,8 @@ th, td {
   float: left;
 }
 .subsector-image {
-  padding: 4px;
-}
-.subsector-image > img {
   border: solid 4px black;
+  display: block;
 }
 .subsector-body {
   text-align: left;
@@ -294,28 +293,27 @@ td.vertical {
   width: 1.25em;
   max-width: 1.25em;
 }
-.rotate90 {
+
+td.neighbor div {
+  width: 280px;
   display: inline-block;
   padding: 0;
   margin: 0;
+}
+
+.rotate90 {
   transform: translateX(-50%) rotate(90deg) translateY(-4pt);
   -webkit-transform: translateX(-50%) rotate(90deg) translateY(-4pt);
   -moz-transform: translateX(-50%) rotate(90deg) translateX(-4pt);
   -o-transform: translateX(-50%) rotate(90deg) translateX(-4pt);
 }
 .rotate180 {
-  display: inline-block;
-  padding: 0;
-  margin: 0;
   transform: rotate(180deg);
   -webkit-transform: rotate(180deg);
   -moz-transform: rotate(180deg);
   -o-transform: rotate(180deg);
 }
 .rotate270 {
-  display: inline-block;
-  padding: 0;
-  margin: 0;
   transform: translateX(-50%) rotate(270deg) translateY(10pt);
   -webkit-transform: translateX(-50%) rotate(270deg) translateY(10pt);
   -moz-transform: translateX(-50%) rotate(270deg) translateY(10pt);
@@ -738,17 +736,20 @@ table.subsector-list tr td:first-of-type {
 
           <table>
             <tr>
-              <td>
-              <td class="neighbor" colspan="1">{{neighbor.[0]}}
-              <td>
+              <td></td>
+              <td class="neighbor" colspan="1"><div>{{neighbor.[0]}}</div></td>
+              <td></td>
+            </tr>
             <tr>
-              <td class="neighbor vertical"><div class="rotate270">{{neighbor.[3]}}</div>
-              <td class="subsector-image"><img src="{{img_src}}" alt="" class="subsector-image">
-              <td class="neighbor vertical"><div class="rotate90">{{neighbor.[1]}}</div>
+              <td class="neighbor vertical"><div class="rotate270">{{neighbor.[3]}}</div></td>
+              <td><img class="subsector-image" src="{{img_src}}" alt=""></td>
+              <td class="neighbor vertical"><div class="rotate90">{{neighbor.[1]}}</div></td>
+            </tr>
             <tr>
-              <td>
-              <td class="neighbor" colspan="1"><div class="rotate180">{{neighbor.[2]}}</div>
-              <td>
+              <td></td>
+              <td class="neighbor" colspan="1"><div class="rotate180">{{neighbor.[2]}}</div></td>
+              <td></td>
+            </tr>
           </table>
         </div>
       </div>
