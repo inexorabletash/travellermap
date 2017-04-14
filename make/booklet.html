@@ -235,10 +235,6 @@ th, td {
   height: 8.25in;
   float: left;
 }
-.subsector-image {
-  border: solid 4px black;
-  display: block;
-}
 .subsector-body {
   text-align: left;
   white-space: normal;
@@ -280,46 +276,42 @@ table.uwp-data {
 .style-classic .world-nobility,
 .style-classic .world-worlds { display: none; }
 
-td.neighbor {
-  text-align: center;
-  font-weight: bold;
-  text-transform: uppercase;
-  padding: 0;
-  white-space: nowrap;
-  line-height: 9pt;
-  font-size: 11pt;
-}
-td.vertical {
-  width: 1.25em;
-  max-width: 1.25em;
+.subsector-image,
+.subsector-image-border {
+  position: absolute;
+  border: solid 6px black;
+  width: 471px;
+  height: 684px;
 }
 
-td.neighbor div {
+.subsector-image {
+  display: block;
+  left: 20px;
+  top: 20px;
+  padding: 0;
+}
+.subsector-image-border {
+  left: 5px;
+  top: 5px;
+  padding: 15px;
+}
+.neighbor {
+  position: absolute;
   width: 280px;
-  display: inline-block;
-  padding: 0;
-  margin: 0;
+  height: 15px;
+  padding: 2px;
+  background-color: white;
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+  font-size: 12pt;
+  line-height: 9pt;
+  font-weight: bold;
 }
-
-.rotate90 {
-  transform: translateX(-50%) rotate(90deg) translateY(-4pt);
-  -webkit-transform: translateX(-50%) rotate(90deg) translateY(-4pt);
-  -moz-transform: translateX(-50%) rotate(90deg) translateX(-4pt);
-  -o-transform: translateX(-50%) rotate(90deg) translateX(-4pt);
-}
-.rotate180 {
-  transform: rotate(180deg);
-  -webkit-transform: rotate(180deg);
-  -moz-transform: rotate(180deg);
-  -o-transform: rotate(180deg);
-}
-.rotate270 {
-  transform: translateX(-50%) rotate(270deg) translateY(10pt);
-  -webkit-transform: translateX(-50%) rotate(270deg) translateY(10pt);
-  -moz-transform: translateX(-50%) rotate(270deg) translateY(10pt);
-  -o-transform: translateX(-50%) rotate(270deg) translateY(10pt);
-}
-
+.neighbor-c { left:  109px; top:    -14px; transform: rotate(180deg); }
+.neighbor-r { left:  109px; bottom: -14px; }
+.neighbor-t { right: -14px; top: 347px; transform: translateX(50%) rotate(270deg) translateY(-50%); }
+.neighbor-s { left:  -14px; top: 347px; transform: translateX(-50%) rotate(90deg) translateY(-50%); }
 
 .subsector_title {
   white-space: nowrap;
@@ -733,24 +725,15 @@ table.subsector-list tr td:first-of-type {
       <!-- Right: Image -->
       <div class="page-half ss-page-right">
         <div class="content">
-
-          <table>
-            <tr>
-              <td></td>
-              <td class="neighbor" colspan="1"><div>{{neighbor.[0]}}</div></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td class="neighbor vertical"><div class="rotate270">{{neighbor.[3]}}</div></td>
-              <td><img class="subsector-image" src="{{img_src}}" alt=""></td>
-              <td class="neighbor vertical"><div class="rotate90">{{neighbor.[1]}}</div></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td class="neighbor" colspan="1"><div class="rotate180">{{neighbor.[2]}}</div></td>
-              <td></td>
-            </tr>
-          </table>
+          <div style="position: relative; margin: 2px;">
+            <img class="subsector-image" src="{{img_src}}" alt="">
+            <div class="subsector-image-border">
+            <div class="neighbor neighbor-c">{{neighbor.[0]}}</div>
+            <div class="neighbor neighbor-t">{{neighbor.[1]}}</div>
+            <div class="neighbor neighbor-r">{{neighbor.[2]}}</div>
+            <div class="neighbor neighbor-s">{{neighbor.[3]}}</div>
+</div>
+          </div>
         </div>
       </div>
 

@@ -258,6 +258,7 @@
       }
       document.title = sector.title;
       var imageURL, url_params = {
+          accept: 'image/svg+xml',
           rotation: 3,
           scale: 64,
           options: options | Traveller.MapOptions.SubsectorGrid | Traveller.MapOptions.NamesMask,
@@ -376,6 +377,7 @@
 
         subsector.blurb = subsector.blurb.join(' ');
         var imageURL, url_params = {
+            accept: 'image/svg+xml',
             subsector: subsector.index,
             scale: 64,
             options: options,
