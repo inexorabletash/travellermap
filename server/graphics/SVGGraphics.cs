@@ -11,7 +11,9 @@ namespace Maps.Graphics
 {
     internal class SVGGraphics : AbstractGraphics
     {
-        private const string NumberFormat = "G5";
+        // G6 precision is needed for rendering far away from Charted Space, e.g. Legend
+        private const string NumberFormat = "G6";
+        private static string F(float f) { return f.ToString(NumberFormat); }
 
         private class Element
         {
@@ -57,12 +59,12 @@ namespace Maps.Graphics
             public bool Has(string name) { return attributes.ContainsKey(name); }
             public string Get(string name) { return attributes[name]; }
             public void Set(string name, string value) { attributes[name] = value; }
-            public void Set(string name, float value) { attributes[name] = value.ToString(NumberFormat, CultureInfo.InvariantCulture); }
+            public void Set(string name, float value) { attributes[name] = F(value); }
             public void Set(string name, Color color) {
                 if (color.IsEmpty || color.A == 0)
                     return; // Inherits "None" from root
                 else if (color.A < 255)
-                    attributes[name] = $"rgba({color.R},{color.G},{color.B},{color.A / 255f:G5})";
+                    attributes[name] = $"rgba({color.R},{color.G},{color.B},{F(color.A / 255f)})";
                 else
                     attributes[name] = $"rgb({color.R},{color.G},{color.B})";
             }
@@ -99,7 +101,7 @@ namespace Maps.Graphics
                             if (pen.CustomDashPattern == null)
                                 throw new ApplicationException("Custom dash style specified but no pattern set");
                             Set("stroke-dasharray",
-                                string.Join(" ", pen.CustomDashPattern.Select(w => (w * pen.Width).ToString(NumberFormat))));
+                                string.Join(" ", pen.CustomDashPattern.Select(w => F(w * pen.Width))));
                             break;
                     }
                 }
@@ -151,12 +153,12 @@ namespace Maps.Graphics
             {
                 if (!used)
                 {
-                    b.Append($"M{x:G5},{y:G5}");
+                    b.Append($"M{F(x)},{F(y)}");
                     used = true;
                 }
                 else
                 {
-                    b.Append($"m{x - lastX:G5},{y - lastY:G5}");
+                    b.Append($"m{F(x - lastX)},{F(y - lastY)}");
                 }
                 lastX = x;
                 lastY = y;
@@ -165,20 +167,20 @@ namespace Maps.Graphics
             {
                 if (!used)
                 {
-                    b.Append($"L{x:G5},{y:G5}");
+                    b.Append($"L{F(x)},{F(y)}");
                     used = true;
                 }
                 else if (x == lastX)
                 {
-                    b.Append($"v{y - lastY:G5}");
+                    b.Append($"v{F(y - lastY)}");
                 }
                 else if (y == lastY)
                 {
-                    b.Append($"h{x - lastX:G5}");
+                    b.Append($"h{F(x - lastX)}");
                 }
                 else
                 {
-                    b.Append($"l{x - lastX:G5},{y - lastY:G5}");
+                    b.Append($"l{F(x - lastX)},{F(y - lastY)}");
                 }
                 lastX = x;
                 lastY = y;
@@ -187,12 +189,12 @@ namespace Maps.Graphics
             {
                 if (!used)
                 {
-                    b.Append($"A{rx:G5},{ry:G5},{phi:G5},{arcFlag},{sweepFlag},{x:G5},{y:G5}");
+                    b.Append($"A{F(rx)},{F(ry)},{F(phi)},{arcFlag},{sweepFlag},{F(x)},{F(y)}");
                     used = true;
                 }
                 else
                 {
-                    b.Append($"a{rx:G5},{ry:G5},{phi:G5},{arcFlag},{sweepFlag},{x - lastX:G5},{y - lastY:G5}");
+                    b.Append($"a{F(rx)},{F(ry)},{F(phi)},{arcFlag},{sweepFlag},{F(x - lastX)},{F(y - lastY)}");
                 }
                 lastX = x;
                 lastY = y;
@@ -201,12 +203,12 @@ namespace Maps.Graphics
             {
                 if (!used)
                 {
-                    b.Append($"C,{x1:G5},{y1:G5},{x2:G5},{y2:G5},{x:G5},{y:G5}");
+                    b.Append($"C,{F(x1)},{F(y1)},{F(x2)},{F(y2)},{F(x)},{F(y)}");
                     used = true;
                 }
                 else
                 {
-                    b.Append($"c{x1 - lastX:G5},{y1 - lastY:G5},{x2 - lastX:G5},{y2 - lastY:G5},{x - lastX:G5},{y - lastY:G5}");
+                    b.Append($"c{F(x1 - lastX)},{F(y1 - lastY)},{F(x2 - lastX)},{F(y2 - lastY)},{F(x - lastX)},{F(y - lastY)}");
                 }
                 lastX = x;
                 lastY = y;
@@ -522,22 +524,22 @@ namespace Maps.Graphics
         public void ScaleTransform(float scaleX, float scaleY)
         {
             var e = Open(new Element(ElementNames.G));
-            e.Set("transform", $"scale({scaleX:G5} {scaleY:G5})");
+            e.Set("transform", $"scale({F(scaleX)} {F(scaleY)})");
         }
         public void TranslateTransform(float dx, float dy)
         {
             var e = Open(new Element(ElementNames.G));
-            e.Set("transform", $"translate({dx:G5},{dy:G5})");
+            e.Set("transform", $"translate({F(dx)},{F(dy)})");
         }
         public void RotateTransform(float angle)
         {
             var e = Open(new Element(ElementNames.G));
-            e.Set("transform", $"rotate({angle:G5})");
+            e.Set("transform", $"rotate({F(angle)})");
         }
         public void MultiplyTransform(AbstractMatrix m)
         {
             var e = Open(new Element(ElementNames.G));
-            e.Set("transform", $"matrix({m.M11:G5},{m.M12:G5},{m.M21:G5},{m.M22:G5},{m.OffsetX:G5},{m.OffsetY:G5})");
+            e.Set("transform", $"matrix({F(m.M11)},{F(m.M12)},{F(m.M21)},{F(m.M22)},{F(m.OffsetX)},{F(m.OffsetY)})");
         }
         #endregion
 

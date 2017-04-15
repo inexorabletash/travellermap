@@ -141,7 +141,7 @@ namespace Maps.Rendering
 
             lines.ForEachZip(sizes, (line, sz) =>
             {
-                g.DrawString(line, font, brush, x + widthFactor * sz.Width, y, Maps.Graphics.StringAlignment.Baseline);
+                g.DrawString(line, font, brush, x + widthFactor * sz.Width + sz.Width / 2, y - sz.Height / 2, Graphics.StringAlignment.Centered);
                 y += lineSpacing;
             });
         }
