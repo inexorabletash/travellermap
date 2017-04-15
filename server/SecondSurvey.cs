@@ -444,6 +444,9 @@ namespace Maps
             { "BaCl", "Bc", null, "Backman Cluster" },
             { "FdDa", "Fd", null, "Federation of Daibei" },
             { "AvCn", "Ac", null, "Avalar Consulate" },
+            { "CoAl", "Ca", null, "Corsair Alliance" },
+            { "StIm", "St", null, "Strephon's Worlds" },
+            { "ZiSi", "Rv", null, "Restored Vilani Imperium" }, // Ziru Sirka
         };
         public static IEnumerable<string> AllegianceCodes => s_t5Allegiances.Keys;
         // May need GroupBy to handle duplicates

@@ -267,7 +267,7 @@ namespace Maps
         {
             if (UWP == "???????-?") return;
 
-            Action<string> Error = (string message) => { errors.Error(message, lineNumber, line); };
+            Action<string> Error = (string message) => { errors.Warning(message, lineNumber, line); };
             Action<bool, string> ErrorIf = (bool test, string message) => { if (test) Error(message); };
             Action<bool, string> ErrorUnless = (bool test, string message) => { if (!test) Error(message); };
             Func<int, string, bool> Check = (int value, string hex) =>
@@ -340,6 +340,7 @@ namespace Maps
 
             // {Ix}
             int imp = 0;
+            if (!string.IsNullOrWhiteSpace(Importance))
             {
                 string ix = Importance.Replace('{', ' ').Replace('}', ' ').Trim();
 
@@ -360,6 +361,7 @@ namespace Maps
             }
 
             // (Ex)
+            if (!string.IsNullOrWhiteSpace(Economic))
             {
                 string ex = Economic.Replace('(', ' ').Replace(')', ' ').Trim();
                 int resources = SecondSurvey.FromHex(ex[0]);
@@ -393,6 +395,7 @@ namespace Maps
             }
 
             // [Cx]
+            if (!string.IsNullOrWhiteSpace(Cultural))
             {
                 string cx = Cultural.Replace('[', ' ').Replace(']', ' ').Trim();
                 int homogeneity = SecondSurvey.FromHex(cx[0]);
