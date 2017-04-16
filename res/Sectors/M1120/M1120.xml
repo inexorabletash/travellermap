@@ -62,5 +62,22 @@
     <DataFile Author="James Holden" Type="SecondSurvey">1120_Eali.sec</DataFile>
     <MetadataFile>1120_Eali.xml</MetadataFile>
   </Sector>
+
+   <Sector Abbreviation="Rift" Tags="Unreviewed" Selected="true" Milieu="M1120">
+    <Y>1</Y>
+    <X>-4</X>
+    <Name>Riftspan Reaches</Name>
+    <Name Lang="as">Iiyoihakh</Name>
+    <DataFile Author="James Holden" Type="SecondSurvey">1120_Rift.sec</DataFile>
+    <MetadataFile>1120_Rift.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Dene" Tags="Unreviewed" Selected="true" Milieu="M1120">
+    <Y>-1</Y>
+    <X>-3</X>
+    <Name>Deneb</Name>
+    <Name Lang="zh">Nieklsdia</Name>
+    <DataFile Author="James Holden, Mike Mikesh and Nancy Parker" Type="SecondSurvey">1120_Dene.sec</DataFile>
+    <MetadataFile>1120_Dene.xml</MetadataFile>
+  </Sector>
  
 </Sectors>
