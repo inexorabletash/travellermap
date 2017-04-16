@@ -109,7 +109,7 @@
     <p>
       Substantial changes to the site, data and APIs are announced and discussed at <a target="_blank" href="https://travellermap.blogspot.com/">the Traveller Map Blog</a>. Changes to the code can be found
       by looking at the
-      <a target="_blank" href="https://github.com/inexorabletash/travellermap/commits/master">commits on GitHub</a>.
+      <a target="_blank" href="https://github.com/inexorabletash/travellermap/commits/master">commits on GitHub</a>, or following the <a target=_blank href="https://twitter.com/travellermap">@TravellerMap Twitter feed</a>.
     </p>
     <p>
       A "Wish List", including known issues, can be found on the
@@ -239,9 +239,10 @@
     <p>
       The server providing the map tiles is running Microsoft's IIS
       with a custom image generation service implemented in C# using
-      ASP.NET and GDI+ (via <a target="_blank"
-      href="http://www.pdfsharp.net/">PDFsharp</a>) to render the
-      tiles.
+      ASP.NET and GDI+ to render the tiles as bitmaps. Maps
+      can also be generated in PDF format (via <a target="_blank"
+      href="http://www.pdfsharp.net/">PDFsharp</a>) or SVG for
+      print-quality use.
     </p>
     <p>
       The full source code to the site - both client and server - is
@@ -283,15 +284,19 @@
       on this site matches the <b><i>Classic Traveller</i></b>
       resources such as the Imperium Map, maps in the Alien Modules,
       the Spinward Marches and Solomani Rim modules, and hexagonal
-      subsector maps. The maps may appear distorted when compared with
-      square-based maps such as the <cite>Atlas of the Imperium</cite>
-      or <b><i>MegaTraveller</i></b>-era publications.
+      subsector maps. Maps that use squares for parsecs, such as the
+      <cite>Atlas of the Imperium</cite> or
+      <cite>MegaTraveller</cite>-era publications, may appear distorted
+      in comparison.
     </p>
     <p>
       When zoomed out to larger scales, the stars are rendered
       pseudo-randomly rather than trying to display the actual system
       data. This maintains the appearance of the Imperium Map poster.
-      Rifts are simply left empty. At extremely large scales
+      Rifts are simply left empty. Zooming out further, rifts details
+      from
+      <a target=_blank href="http://www.securityleak.com/slm/issue_05/onward_coreward_preface.html">Mike Mikesh from Security Leak fanzine</a>
+      are used, and at extremely large scales
       the <a target="_blank"
       href="http://www.spitzer.caltech.edu/images/2353-sig05-010a-Milky-Way-Bar">structure
       of Milky Way galaxy</a> is represented using an illustration by
