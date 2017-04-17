@@ -447,6 +447,7 @@ namespace Maps
             { "CoAl", "Ca", null, "Corsair Alliance" },
             { "StIm", "St", null, "Strephon's Worlds" },
             { "ZiSi", "Rv", null, "Restored Vilani Imperium" }, // Ziru Sirka
+            { "VA16", "V6", null, "Assemblage of 1116" },
         };
         public static IEnumerable<string> AllegianceCodes => s_t5Allegiances.Keys;
         // May need GroupBy to handle duplicates
