@@ -207,7 +207,7 @@ function t5ify(world) {
   }
 
   // Worlds
-  world.Worlds = world.Worlds || (1/*MW*/ + world.GG + world.Belts + roll2D());
+  world.Worlds = world.Worlds || world.W || (1/*MW*/ + world.GG + world.Belts + roll2D());
 
   // Allegiance Fixups
   world.Allegiance = ({

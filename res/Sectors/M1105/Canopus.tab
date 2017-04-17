@@ -27,7 +27,7 @@ Cano	A	0301	Senmovigita	C410626-9		Na Ni		302	SoCf	F6 V K2 V	{ -1 }	(753+1)	[655
 Cano	A	0304	Brulanta	E410200-8		Lo Tz		101	SoCf	M5 V	{ -3 }	(911+0)	[1165]		11	9
 Cano	A	0306	Eudroa	E775200-5		Lo		204	SoCf	G4 V M3 V	{ -3 }	(511-5)	[1114]		11	-25
 Cano	A	0309	Maro	C99A672-7		Ni Wa		221	SoCf	G9 V M4 V M5 V	{ -2 }	(A51+4)	[9485]		10	200
-Cano	E	0311	CORBINE IV	E400965-7		Hi In Na Va Tz O:3112		612	SoCf	M6 V	{ 0 }	(C89-5)	[8917]		13	-4,320
+Cano	E	0311	CORBINE IV	E400965-7		Hi In Na Va O:3112 Tz		612	SoCf	M6 V	{ 0 }	(C89-5)	[8917]		13	-4,320
 Cano	E	0320	Amaranth	A673678-7		Ni		233	SoCf	F9 V	{ -1 }	(A50-1)	[4526]		17	0
 Cano	I	0326	Meliboea	E78A501-9		Ni Wa Pr		802	SoCf	K5 V	{ -2 }	(841+3)	[3325]		9	96
 Cano	I	0327	Guyane	D202130-8		Ic Lo Va Tz		633	SoCf	M7 V M3 V	{ -3 }	(E01-2)	[1178]		17	0
@@ -42,13 +42,13 @@ Cano	I	0422	Kobuk	C200422-7	K	Ni Va Tz		301	NaHu	M7 V	{ -2 }	(732+0)	[724C]		8	4
 Cano	I	0425	Rancor	E313201-8		Ic Lo Sa		102	SoCf	M3 V	{ -3 }	(711-4)	[4168]		13	-28
 Cano	I	0427	Rosaline	A56676B-9	KM	Ag Ri Asla7 Mr		111	SoCf	G3 V M8 V	{ 4 }	(E68+2)	[6B5B]		5	1,344
 Cano	I	0428	Cynoscion	D88A79A-4		Ri Wa		132	SoCf	G1 V G6 V K4 V	{ -1 }	(967+2)	[B639]		16	756
-Cano	I	0429	Bequest	B769689-8	KM	Ni Ri		711	SoCf	G9 V M4 V	{ 1 }	(852-2)	[4759]		12	-80
+Cano	I	0429	Bequest	B769689-8	KM	Ni Ri		711	SoCf	G9 V M4 V	{ 1 }	(852-2)	[4759]		12	-160
 Cano	M	0431	KAIHKAHE	B1009BB-C	K	Hi In Na Va Fo	R	111	NaAs	G2 V	{ 4 }	(A8G-3)	[CD6G]		5	-3,840
 Cano	M	0437	Ouao	B200758-B		Na Va Pi Sa		911	NaAs	F6 V	{ 2 }	(867+1)	[798D]		7	336
 Cano	A	0501	Dresselhaus	E8B9543-8		Fl Ni		203	SoCf	A5 V	{ -3 }	(F40+5)	[721B]		12	0
 Cano	A	0506	Coronis	C857454-7		Ni Ga Pa Tz		402	SoCf	M9 V M0 V	{ -2 }	(631+0)	[3277]		10	18
-Cano	A	0507	BOWIN PRIME	A863988-C		Hi Pr		313	SoCf	G4 V	{ 3 }	(A8C+0)	[9C1C]		12	1,320
-Cano	A	0508	Nunavut	A79566A-B	KM	Ag Ni AslaW Sa Mr		504	SoCf	G4 V	{ 3 }	(D57+4)	[699B]		14	1,820
+Cano	A	0507	BOWIN PRIME	A863988-C		Hi Pr		313	SoCf	G4 V	{ 3 }	(A8C+0)	[9C1C]		12	960
+Cano	A	0508	Nunavut	A79566A-B	KM	Ag Ni AslaW Mr Sa		504	SoCf	G4 V	{ 3 }	(D57+4)	[699B]		14	1,820
 Cano	E	0517	Arsenic	E4A3102-8		Fl Lo Fr		720	SoCf	M1 V	{ -3 }	(601+1)	[116A]		6	0
 Cano	E	0518	Wetzel	A763534-C		Ni Pr		434	SoCf	K1 V	{ 1 }	(E45-5)	[563D]		20	-1,400
 Cano	M	0532	Hkoawe	BBA8535-B		Fl Ni		301	NaAs	K0 V M3 V	{ 1 }	(744-1)	[767D]		11	-112
@@ -92,9 +92,9 @@ Cano	M	0840	Kaihwarefeea	A8AA699-C		Fl Ni		700	NaAs	K2 V	{ 1 }	(854-4)	[4719]		6
 Cano	B	0903	Kochab	D400155-7		Lo Va		621	SoCf	K4 III	{ -3 }	(401-2)	[118A]		9	0
 Cano	B	0905	Anapa	D564534-2		Ag Ni Pr		303	SoCf	G9 V M5 V	{ -2 }	(840+0)	[8332]		9	0
 Cano	B	0906	Conrad	C896412-7		Ni Pa		110	NaHu	G0 V M1 V	{ -2 }	(730+2)	[7237]		10	0
-Cano	B	0907	Childress	E545566-5		Ag Ni Tz O:1203		210	SoCf	K0 V M6 V	{ -2 }	(343-2)	[9385]		11	-72
+Cano	B	0907	Childress	E545566-5		Ag Ni O:1203 Tz		210	SoCf	K0 V M6 V	{ -2 }	(343-2)	[9385]		11	-72
 Cano	B	0908	Yuanyan	D744246-5		Lo		512	SoCf	G0 V	{ -3 }	(911-1)	[6151]		14	-9
-Cano	B	0909	Erskine	B310355-9	KM	Lo		102	SoCf	M3 V M9 V	{ 1 }	(921+1)	[241A]		13	54
+Cano	B	0909	Erskine	B310355-9	KM	Lo		102	SoCf	M3 V M9 V	{ 1 }	(921+1)	[241A]		13	18
 Cano	F	0913	Fathom	B79A345-8	KM	Lo Wa		530	SoCf	G1 V	{ 0 }	(B21+1)	[537A]		11	22
 Cano	J	0921	Alastor	X520353-7		De He Lo Po Fo	R	531	NaHu	M3 V M3 V	{ -3 }	(821-3)	[119B]		8	-48
 Cano	J	0922	Leipzig	X9C8000-0		Ba Fl Fo	R	034	SoCf	G3 V	{ -3 }	(300-5)	[0000]		19	0
@@ -108,7 +108,7 @@ Cano	B	1005	Grume	D4AA310-A		Fl Lo Tz		433	NaHu	M1 V M0 V	{ -1 }	(A21+0)	[128B]	
 Cano	F	1012	Chastain	E410000-0		Ba		001	SoCf	M8 V	{ -3 }	(800-5)	[0000]		10	0
 Cano	F	1020	Tacitus	A720338-9	KM	De He Lo Po Tz		412	SoCf	M6 V M7 V	{ 1 }	(721+3)	[148B]		12	42
 Cano	J	1023	Imogen	B000433-B		As Ni Va Sa		502	SoCf	M7 V	{ 1 }	(736+0)	[456A]		10	126
-Cano	J	1025	Sulawesi	D6846A6-8		Ag Ni Ri		231	SoCf	K6 V	{ 0 }	(B52-1)	[6618]		15	-110
+Cano	J	1025	Sulawesi	D6846A6-8		Ag Ni Ri		231	SoCf	K6 V	{ -1 }	(B52-1)	[6518]		15	-110
 Cano	N	1031	Roshni	C200897-7		Na Va Ph Pi		412	SoCf	K1 V M1 V	{ -1 }	(A76+3)	[B758]		10	1,260
 Cano	N	1036	TRITA	A968A8B-D		Hi Cx		112	TrBr	G2 V	{ 3 }	(997-3)	[AD6B]		8	-1,701
 Cano	N	1037	Navid	C200344-7	K	Lo Va Tz		803	TrBr	M9 V	{ -2 }	(421+0)	[1133]		12	8
@@ -136,7 +136,7 @@ Cano	B	1310	Erzsi	X200000-0		Ba Va Fo Sa	R	011	SoCf	M6 III	{ -3 }	(600-5)	[0000]
 Cano	F	1316	Edenic	D788134-5		Lo		102	SoCf	G9 V	{ -3 }	(801-1)	[1143]		12	0
 Cano	F	1317	Lucius	E620100-7		De He Lo Po Sa		203	SoCf	G3 IV	{ -3 }	(601-2)	[511B]		13	0
 Cano	J	1324	Minotaur	X410000-0		Ba Fo Tz	R	023	SoCf	M6 V	{ -3 }	(500-5)	[0000]		15	0
-Cano	J	1325	Ulmen III	CEAA430-A		Fl Ni Oc		433	SoCf	M6 V	{ 0 }	(A36-1)	[145D]		15	-180
+Cano	J	1325	Ulmen III	CEAA430-A		Fl Ni		433	SoCf	M6 V	{ 0 }	(A36-1)	[145D]		15	-180
 Cano	J	1330	CN301	E200000-0		Ba Va Tz		002	SoCf	M3 V	{ -3 }	(400-5)	[0000]		14	0
 Cano	N	1332	CN783	X7A5000-0		Ba Fl Fo Tz	R	003	SoCf	M0 V M0 V	{ -3 }	(600-5)	[0000]		14	0
 Cano	N	1334	Qubei	B650779-5		De Po		501	NaHu	G0 V	{ 0 }	(86A+0)	[8736]		12	480
@@ -147,7 +147,7 @@ Cano	B	1401	Anemone	C988766-3		Ag Ri O:Magy-1438		503	SoCf	G7 V M0 V	{ 1 }	(868-
 Cano	B	1408	YANOS	C887944-6		Hi Ga Pr Dolp0		902	NaHu	F6 V M5 V	{ 0 }	(387-2)	[8964]		10	-336
 Cano	F	1412	Troyes	E410100-7		Lo Tz		832	SoCf	M7 V	{ -3 }	(601+3)	[1123]		11	0
 Cano	F	1414	Tsushima	E4A7200-9		Fl Lo		604	SoCf	G5 IV	{ -2 }	(D11-3)	[5177]		17	-39
-Cano	F	1420	Sangju	D4A3436-8		Fl Ni AslaW Px Fr		322	SoCf	M7 V	{ -3 }	(A30+2)	[2177]		15	0
+Cano	F	1420	Sangju	D4A3436-8		Fl Ni AslaW Fr Px		322	SoCf	M7 V	{ -3 }	(A30+2)	[2177]		15	0
 Cano	J	1430	Severomorsk	D545214-5		Lo Fr		103	SoCf	M3 V	{ -3 }	(611+0)	[1124]		11	6
 Cano	N	1438	Oustafiylr	E68A100-9		Lo Wa Tz		230	NaHu	M9 V	{ -2 }	(801-1)	[1129]		8	0
 Cano	N	1440	Avril	D531445-6		Ni Po Tz		312	JuNa	M6 V	{ -3 }	(630+0)	[1177]		12	0
@@ -212,7 +212,7 @@ Cano	O	1932	Rephorm	C598301-6		Lo Tz		522	NaHu	M0 V M8 V	{ -2 }	(521+4)	[6184]		
 Cano	O	1934	Yuwen	E699258-8		Lo		423	SoCf	G0 V M1 V	{ -3 }	(D11+3)	[1115]		17	39
 Cano	O	1936	Vela 7	E9A6374-8		Fl Lo Tz		433	NaHu	M6 V	{ -3 }	(D21+0)	[3146]		19	26
 Cano	C	2001	Klimovsk	A4A6735-C		Fl		102	SoCf	G0 V	{ 2 }	(C6A+2)	[597C]		6	1,440
-Cano	C	2004	Octavia	A631669-B		Na Ni Po Px O:2007		730	SoCf	K7 V	{ 1 }	(752+0)	[674A]		11	70
+Cano	C	2004	Octavia	A631669-B		Na Ni Po O:2007 Px		730	SoCf	K7 V	{ 1 }	(752+0)	[674A]		11	70
 Cano	C	2007	CASTINE	A763A88-E	KM	Hi Cp		231	SoCf	G6 V	{ 4 }	(F9G+1)	[7E2B]		12	2,160
 Cano	G	2017	Lancaster	C510225-7	K	Lo Tz		934	NaHu	M8 V	{ -2 }	(711+1)	[3177]		18	7
 Cano	G	2019	Herne	B754730-8	KM	Ag		231	SoCf	K2 V G6 V	{ 2 }	(A6C-2)	[7919]		12	-1,440
@@ -245,7 +245,7 @@ Cano	C	2203	Ordoyne	D687459-5		Ni Ga Pa		631	SoCf	K3 V K6 V	{ -3 }	(C32-1)	[1142
 Cano	C	2204	Sopor	D402300-7		Ic Lo Va Tz		102	SoCf	M6 V	{ -3 }	(421-5)	[4114]		12	-40
 Cano	C	2205	Ruchbah	E000543-7		As Ni Va		333	SoCf	A5 IV	{ -3 }	(B40+0)	[1259]		8	0
 Cano	C	2209	Gilliam	E410344-7		Lo		322	SoCf	M4 V	{ -3 }	(921+2)	[1146]		11	36
-Cano	C	2210	Sulidae	B400462-C		Ni Va Tz O:2007		422	SoCf	M5 V	{ 1 }	(E37-2)	[755E]		12	-588
+Cano	C	2210	Sulidae	B400462-C		Ni Va O:2007 Tz		422	SoCf	M5 V	{ 1 }	(E37-2)	[755E]		12	-588
 Cano	G	2211	Aroostook	D89557A-5		Ag Ni		113	SoCf	G6 V	{ -2 }	(743+1)	[1366]		12	84
 Cano	G	2212	Dheneb	E200499-8		Ni Va		623	SoCf	K2 III	{ -3 }	(G30+0)	[4179]		12	0
 Cano	G	2217	Temuka	E520302-7		De He Lo Po Tz		921	SoCf	M1 V	{ -3 }	(B21+5)	[4138]		9	110
@@ -261,7 +261,7 @@ Cano	C	2304	Agrippa	C7A7853-9	K	Fl Ph		702	NaHu	F6 V	{ 0 }	(B75-1)	[9839]		11	-3
 Cano	C	2308	Volzhsk	E9B5133-8		Fl Lo Fr		100	SoCf	M2 V M8 V	{ -3 }	(401+0)	[2157]		10	0
 Cano	G	2313	Rangiriri	B66588B-5	KM	Ga Ri Pa Ph Dolp2 Tz		211	SoCf	M4 V M9 V	{ 2 }	(67B-4)	[9A88]		12	-1,848
 Cano	G	2314	Arable	D646400-5		Ni Pa		600	SoCf	G3 V	{ -3 }	(630+0)	[2185]		10	0
-Cano	G	2315	Waitaki	C5A4548-8		Fl Ni Px Tz		402	SoCf	M6 V	{ -2 }	(840+5)	[4398]		13	0
+Cano	G	2315	Waitaki	C5A4548-8		Fl Ni Tz Px		402	SoCf	M6 V	{ -2 }	(840+5)	[4398]		13	0
 Cano	G	2317	Kratu	E300100-7		Lo Va		502	NaHu	F0 V K0 III	{ -3 }	(701+1)	[3146]		13	0
 Cano	K	2321	Isidore	A7697B8-9		Ri		213	SoCf	K4 V	{ 2 }	(96A+1)	[895B]		13	540
 Cano	K	2322	Abano	E310102-7		Lo Tz		522	SoCf	M6 V	{ -3 }	(601-3)	[116A]		10	0
@@ -316,7 +316,7 @@ Cano	P	2639	Dispater	C720100-7		De He Lo Po		631	NaHu	G6 V K7 V	{ -2 }	(A01-2)	[
 Cano	D	2702	Tannhauser	B310525-A	KM	Ni		634	SoCf	A4 V M4 V	{ 2 }	(D43-1)	[474B]		14	-156
 Cano	H	2712	Mavalvala	E520347-7		De He Lo Po Tz		501	SoCf	M7 V	{ -3 }	(821+3)	[2177]		6	48
 Cano	H	2714	Daleiden	X4A4000-0		Ba Fl Fo	R	011	SoCf	M1 V	{ -3 }	(900-5)	[0000]		12	0
-Cano	H	2715	Campinas	B533410-7	KM	Ni Po Tz		202	SoCf	M1 V	{ 0 }	(631+1)	[145A]		13	0
+Cano	H	2715	Campinas	B533410-7	KM	Ni Po Tz		202	SoCf	M1 V	{ 0 }	(631+1)	[145A]		13	18
 Cano	H	2716	Zarn	C685644-7		Ag Ni Ga Ri (Zarn)		103	SoCf	G5 V K5 V	{ 0 }	(755+0)	[466A]		14	175
 Cano	H	2717	Borovichi	E530434-6		De Ni Po Tz		512	SoCf	M7 V	{ -3 }	(731-2)	[3134]		14	-42
 Cano	H	2720	Stanza Belt	E000100-8		As Lo Va		202	SoCf	M8 V G5 V	{ -3 }	(401-2)	[411B]		14	0
@@ -333,7 +333,7 @@ Cano	H	2811	Metellus	C201644-7	K	Ic Na Ni Va Tz		200	NaHu	M8 V M7 V	{ -2 }	(850+
 Cano	H	2816	Graphite	E830220-6		De Lo Po		603	SoCf	M0 V	{ -3 }	(B11-1)	[7152]		12	-11
 Cano	H	2817	Keel	B402357-D		Ic Lo Va		232	SoCf	K3 V	{ 1 }	(E21-3)	[247B]		16	-84
 Cano	H	2820	Billow	X8CA000-0		Ba Fl Fo Tz	R	033	NaXX	M2 V M6 V	{ -3 }	(500-5)	[0000]		14	0
-Cano	L	2825	Senthil	E5A4467-8		Fl Ni Px Tz O:3229		104	SoCf	M8 V	{ -3 }	(630-1)	[416C]		17	0
+Cano	L	2825	Senthil	E5A4467-8		Fl Ni O:3229 Tz Px		104	SoCf	M8 V	{ -3 }	(630-1)	[416C]		17	0
 Cano	L	2827	Aimi	C555424-8		Ni Pa		503	NaHu	G4 V	{ -2 }	(532+4)	[4279]		6	120
 Cano	L	2828	Ochropus	X100000-0		Ba Va Fo Tz	R	001	NaXX	M3 V	{ -3 }	(500-5)	[0000]		6	0
 Cano	P	2833	AB5-922	EDB5000-0		Ba Fl Tz		001	NaXX	M8 V	{ -3 }	(600-5)	[0000]		12	0
@@ -362,14 +362,14 @@ Cano	H	3015	Kelheim	X7A6233-8		Fl Lo Fo	R	504	NaHu	M0 II M9 V	{ -3 }	(F11-4)	[11
 Cano	H	3020	CASSIO	A977986-D		Hi In Cp		532	SoCf	F4 V	{ 4 }	(988-5)	[CD5D]		14	-2,880
 Cano	L	3023	Ursula	C565666-3		Ag Ni Ri O:3020		302	SoCf	G0 V	{ 0 }	(755+1)	[7656]		10	175
 Cano	L	3026	Hangar	B200243-9		Lo Va		102	SoCf	G2 V	{ 0 }	(811+0)	[629B]		7	8
-Cano	P	3032	Marrakesh	C100866-9		Na Va Ph Pi Sa O:3229		402	SoCf	K2 II	{ 0 }	(C76-2)	[685A]		12	-1,008
+Cano	P	3032	Marrakesh	C100866-9		Na Va Ph Pi O:3229 Sa		402	SoCf	K2 II	{ 0 }	(C76-2)	[685A]		12	-1,008
 Cano	P	3039	Lyovren	C200410-7	K	Ni Va Sa		311	MaUn	G5 V	{ -2 }	(931-3)	[2288]		10	-81
 Cano	D	3101	Beta Martius	B510376-7		Lo Tz		424	SoCf	M1 V M2 V	{ -1 }	(721-3)	[2265]		12	-42
 Cano	D	3102	Magadan	E201211-9		Ic Lo Va		100	SoCf	K3 V	{ -2 }	(411-5)	[411B]		10	-20
 Cano	D	3108	Horicon	E315125-8		Ic Lo Tz		501	SoCf	K4 V	{ -3 }	(701+0)	[3176]		10	0
-Cano	D	3109	Noor	E631386-6		Lo Po Px Tz		103	SoCf	M1 V M4 V	{ -3 }	(821+0)	[1157]		8	16
+Cano	D	3109	Noor	E631386-6		Lo Po Tz Px		103	SoCf	M1 V M4 V	{ -3 }	(821+0)	[1157]		8	16
 Cano	H	3111	Aedes	A100575-E		Ni Va		103	NaHu	G8 V G1 V	{ 1 }	(C45-1)	[368F]		12	-240
-Cano	H	3113	Ready	B4A3557-C		Fl Ni Px Tz		901	SoCf	M5 V	{ 1 }	(647+2)	[165D]		10	336
+Cano	H	3113	Ready	B4A3557-C		Fl Ni Tz Px		901	SoCf	M5 V	{ 1 }	(647+2)	[165D]		10	336
 Cano	H	3116	Torrefy	X832000-0		Ba Po Fo	R	013	SoCf	F7 V	{ -3 }	(200-5)	[0000]		10	0
 Cano	L	3122	Pelotus	E777210-5		Lo		502	SoCf	K5 V	{ -3 }	(A11+3)	[214A]		5	30
 Cano	L	3123	Pazuzu	X200000-0		Ba Va Fo Tz	R	003	SoCf	M8 V	{ -3 }	(800-5)	[0000]		11	0
