@@ -368,6 +368,7 @@ namespace Maps
             { "SoNS", "So", "So", "Solomani Confederation, New Slavic Solidarity" },
             { "SoQu", "Qu", "So", "Solomani Confederation, Grand United States of Quesada" },
             { "SoRD", "So", "So", "Solomani Confederation, Reformed Dootchen Estates" },
+            { "SoRz", "So", "So", "Solomani Confederation, Restricted Zone" },
             { "SoWu", "So", "So", "Solomani Confederation, Wuan Technology Association" },
             { "StCl", "Sc", null, "Strend Cluster" },
             { "SwCf", "Sw", null, "Sword Worlds Confederation" },
