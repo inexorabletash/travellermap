@@ -315,10 +315,10 @@ namespace Maps
             bool Ga = CC("Ga", Check(Size, "678") && Check(Atmosphere, "568") && Check(Hydrographics, "567"));
             bool He = CC("He", Check(Size, "3456789ABC") && Check(Atmosphere, "2479ABC") && Check(Hydrographics, "012"));
             bool Ic = CC("Ic", Check(Atmosphere, "01") && Check(Hydrographics, "123456789A"));
-            bool Oc = CC("Oc", Check(Size, "ABC") && Check(Atmosphere, "3456789") && Check(Hydrographics, "A"));
+            bool Oc = CC("Oc", Check(Size, "ABCDEF") && Check(Atmosphere, "3456789") && Check(Hydrographics, "A"));
             bool Va = CC("Va", Check(Atmosphere, "0"));
             bool Wa = CC("Wa", Check(Size, "3456789") && Check(Atmosphere, "3456789") && Check(Hydrographics, "A"));
-
+            
             // Population
             bool Di = (PopulationExponent == 0 /*&& Government == 0 && Law == 0*/ && TechLevel > 0);
             ErrorIf(Di && !HasCodePrefix("Di"), "Missing code: Di or Di(sophont)");
