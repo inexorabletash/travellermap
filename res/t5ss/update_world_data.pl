@@ -188,6 +188,7 @@ foreach my $line (@lines) {
 
     $fields{'Remarks'} = combine($fields{'TC'}, $fields{'Remarks'}, $fields{'Sophonts'}, $fields{'Details'});
 
+    $fields{'Name'} = $fields{'M1000 Names'};
 
     my @out;
     for my $i (0..$#outheader) {
