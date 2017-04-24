@@ -31,6 +31,8 @@ namespace Maps.Admin
             { @"^Rs[ABGDEZHT]$", "Rs" },
             { @"^O:[0-9]{4}(-\w+)?$", "O:nnnn" },
             { @"^O:[A-Za-z]{3,4}-[0-9]{4}$", "O:nnnn (outsector)" },
+            { @"^C:[0-9]{4}(-\w+)?$", "C:nnnn" },
+            { @"^C:[A-Za-z]{3,4}-[0-9]{4}$", "C:nnnn (outsector)" },
 
             // Legacy
             "Ag", "As", "Ba", "De",

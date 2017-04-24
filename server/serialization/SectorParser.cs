@@ -319,7 +319,7 @@ namespace Maps.Serialization
                     Hex = checker.Check("Hex", HEX_REGEX),
                     Name = checker.Check("Name"),
                     UWP = checker.Check("UWP", UWP_REGEX),
-                    Remarks = checker.Check(new string[] { "Remarks", "Trade Codes", "Comments" }),
+                    Remarks = checker.Check(new string[] { "Remarks", "Trade Codes", "Comments" },options: CheckOptions.EmptyIfDash),
                     Importance = checker.Check(new string[] { "{Ix}", "{ Ix }", "Ix" }, options: CheckOptions.Optional),
                     Economic = checker.Check(new string[] { "(Ex)", "( Ex )", "Ex" }, options: CheckOptions.Optional),
                     Cultural = checker.Check(new string[] { "[Cx]", "[ Cx ]", "Cx" }, options: CheckOptions.Optional),
