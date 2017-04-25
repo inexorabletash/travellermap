@@ -444,15 +444,20 @@ namespace Maps
             // M1120
             { "FdAr", "Fa", null, "Federation of Arden" },
             { "BoWo", "Bw", null, "Border Worlds" },
-            { "LuIm", "Li", null, "Lucan's Imperium" },
-            { "MaSt", "Ma", null, "Maragaret's Domain" },
+            { "LuIm", "Li", "Im", "Lucan's Imperium" },
+            { "MaSt", "Ma", "Im", "Maragaret's Domain" },
             { "BaCl", "Bc", null, "Backman Cluster" },
-            { "FdDa", "Fd", null, "Federation of Daibei" },
+            { "FdDa", "Fd", "Im", "Federation of Daibei" },
+            { "FdIl", "Fi", "Im", "Federation of Ilelish" },
             { "AvCn", "Ac", null, "Avalar Consulate" },
             { "CoAl", "Ca", null, "Corsair Alliance" },
-            { "StIm", "St", null, "Strephon's Worlds" },
-            { "ZiSi", "Rv", null, "Restored Vilani Imperium" }, // Ziru Sirka
+            { "StIm", "St", "Im", "Strephon's Worlds" },
+            { "ZiSi", "Rv", "Im", "Restored Vilani Imperium" }, // Ziru Sirka
             { "VA16", "V6", null, "Assemblage of 1116" },
+            { "CRVi", "CV", null, "Vilani Cultural Region" },
+            { "CRGe", "CG", null, "Geonee Cultural Region" },
+            { "CRSu", "CS", null, "Suerrat Cultural Region" },
+            { "CRAk", "CA", null, "Anakudnu Cultural Region" },
         };
         public static IEnumerable<string> AllegianceCodes => s_t5Allegiances.Keys;
         // May need GroupBy to handle duplicates

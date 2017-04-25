@@ -81,21 +81,21 @@
   </Sector>
 
   <!-- Vilani & Vargr -->
-  <Sector Abbreviation="Vlan" Tags="Unreviewed" Selected=true Milieu="M1120">
+  <Sector Abbreviation="Vlan" Tags="Unreviewed" Selected="true" Milieu="M1120">
     <Y>-1</Y>
     <X>-1</X>
     <Name>Vland</Name>
     <DataFile Author="James Holden, Joe D. Fugate Jr. and Terry McInnes" Type="SecondSurvey">1120_Vlan.sec</DataFile>
     <MetadataFile>1120_Vlan.xml</MetadataFile>
   </Sector>
-  <Sector Abbreviation="Gush" Tags="Unreviewed" Selected=true Milieu="M1120">
+  <Sector Abbreviation="Gush" Tags="Unreviewed" Selected="true" Milieu="M1120">
     <Y>0</Y>
     <X>-2</X>
     <Name>Gushemege</Name>
     <DataFile Author="James Holden, Joe D. Fugate Jr. and Terry McInnes" Type="SecondSurvey">1120_Gush.sec</DataFile>
     <MetadataFile>1120_Gush.xml</MetadataFile>
   </Sector>
-  <Sector Abbreviation="Dagu" Tags="Unreviewed" Selected=true Milieu="M1120">
+  <Sector Abbreviation="Dagu" Tags="Unreviewed" Selected="true" Milieu="M1120">
     <Y>0</Y>
     <X>-1</X>
     <Name>Dagudashaag</Name>
@@ -103,7 +103,7 @@
     <DataFile Author="James Holden, Joe D. Fugate Jr. and Terry McInnes" Type="SecondSurvey">1120_Dagu.sec</DataFile>
     <MetadataFile>1120_Dagu.xml</MetadataFile>
   </Sector>
-  <Sector Abbreviation="Core" Tags="Unreviewed" Selected=true Milieu="M1120">
+  <Sector Abbreviation="Core" Tags="Unreviewed" Selected="true" Milieu="M1120">
     <Y>0</Y>
     <X>0</X>
     <Name>Core</Name>

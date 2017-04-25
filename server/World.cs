@@ -265,7 +265,8 @@ namespace Maps
 
         internal void Validate(ErrorLogger errors, int lineNumber, string line)
         {
-            if (UWP == "???????-?") return;
+            // TODO: Validate partial UWPs
+            if (UWP.Contains('?')) return;
 
             Action<string> Error = (string message) => { errors.Warning(message, lineNumber, line); };
             Action<bool, string> ErrorIf = (bool test, string message) => { if (test) Error(message); };
