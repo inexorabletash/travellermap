@@ -129,7 +129,7 @@ namespace Maps.API
                 {
                     // Sector - either POSTed or specified by name
                     Sector sector = null;
-                    options = options & ~MapOptions.SectorGrid;
+                    options &= ~MapOptions.SectorGrid;
 
                     if (Context.Request.HttpMethod == "POST")
                     {
@@ -157,7 +157,7 @@ namespace Maps.API
                         title = "User Data";
 
                         // TODO: Suppress all OTU rendering.
-                        options = options & ~MapOptions.WorldsHomeworlds & ~MapOptions.WorldsCapitals;
+                        options &= ~(MapOptions.WorldsHomeworlds | MapOptions.WorldsCapitals);
                     }
                     else
                     {
@@ -174,7 +174,6 @@ namespace Maps.API
 
                     if (sector != null && HasOption("subsector") && GetStringOption("subsector").Length > 0)
                     {
-                        options = options & ~MapOptions.SubsectorGrid;
                         string subsector = GetStringOption("subsector");
                         int index = sector.SubsectorIndexFor(subsector);
                         if (index == -1)

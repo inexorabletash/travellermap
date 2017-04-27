@@ -109,7 +109,7 @@ namespace Maps.Rendering
             SizeF boundingSize = new SizeF(sizes.Max(s => s.Width), lineSpacing * sizes.Count());
 
             // Offset from baseline to top-left.
-            y += ascent;
+            y += lineSpacing / 2;
 
             float widthFactor = 0;
             switch (format)
@@ -125,6 +125,7 @@ namespace Maps.Rendering
                     y -= boundingSize.Height;
                     break;
             }
+
             switch (format)
             {
                 case TextFormat.TopCenter:
@@ -141,7 +142,7 @@ namespace Maps.Rendering
 
             lines.ForEachZip(sizes, (line, sz) =>
             {
-                g.DrawString(line, font, brush, x + widthFactor * sz.Width + sz.Width / 2, y - sz.Height / 2, Graphics.StringAlignment.Centered);
+                g.DrawString(line, font, brush, x + widthFactor * sz.Width + sz.Width / 2, y, Graphics.StringAlignment.Centered);
                 y += lineSpacing;
             });
         }
@@ -159,6 +160,7 @@ namespace Maps.Rendering
 
                 g.TranslateTransform(center.X, center.Y);
                 g.ScaleTransform(1.0f / Astrometrics.ParsecScaleX, 1.0f / Astrometrics.ParsecScaleY);
+
                 g.TranslateTransform(labelStyle.Translation.X, labelStyle.Translation.Y);
                 g.RotateTransform(labelStyle.Rotation);
                 g.ScaleTransform(labelStyle.Scale.Width, labelStyle.Scale.Height);
