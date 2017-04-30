@@ -29,6 +29,23 @@ namespace Maps.Utilities
             public const string Png = "image/png";
             public const string Svg = "image/svg+xml";
         }
+        internal static string TypeForPath(string path)
+        {
+            switch(Path.GetExtension(path).ToLowerInvariant())
+            {
+                case "pdf": return Application.Pdf;
+                case "txt": return Text.Plain;
+                case "htm":
+                case "html": return Text.Html;
+                case "xml": return Text.Xml;
+                case "gif": return Image.Gif;
+                case "png": return Image.Png;
+                case "jpg":
+                case "jpeg": return Image.Jpeg;
+                case "svg": return Image.Svg;
+                default: return Application.Octet;
+            }
+        }
     }
 
     internal static class ExtensionMethods

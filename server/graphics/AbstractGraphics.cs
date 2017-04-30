@@ -114,6 +114,21 @@ namespace Maps.Graphics
 
         public string Url => url;
 
+        private string dataUrl;
+        public string DataUrl
+        {
+            get
+            {
+                if (dataUrl == null)
+                {
+                    string contentType = Utilities.ContentTypes.TypeForPath(path);
+                    byte[] bytes = System.IO.File.ReadAllBytes(path);
+                    dataUrl = "data:" + contentType + ";base64," + Convert.ToBase64String(bytes, Base64FormattingOptions.None);
+                }
+                return dataUrl;
+            }
+        }
+
         public XImage XImage
         {
             get

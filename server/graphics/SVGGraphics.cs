@@ -69,6 +69,9 @@ namespace Maps.Graphics
                     attributes[name] = $"rgb({color.R},{color.G},{color.B})";
             }
 
+            // Helpers for common attributes
+            public string Id { get => Get("id"); set => Set("id", value); }
+
             public void Apply(AbstractPen pen)
             {
                 if (pen == null)
@@ -124,6 +127,7 @@ namespace Maps.Graphics
             private ElementNames() { }
 
             public const string DEFS = "defs";
+            public const string USE = "use";
             public const string CLIPPATH = "clipPath";
 
             public const string G = "g";
@@ -289,11 +293,12 @@ namespace Maps.Graphics
         private float height;
         private Element root = new Element(ElementNames.G);
         private Element defs = new Element(ElementNames.DEFS);
+        private Dictionary<AbstractImage, string> images = new Dictionary<AbstractImage, string>();
 
         private int def_id = 0;
         private Element AddDefinition(Element element)
         {
-            element.Set("id", "did" + (++def_id).ToString(CultureInfo.InvariantCulture));
+            element.Id = "did" + (++def_id).ToString(CultureInfo.InvariantCulture);
             defs.Append(element);
             return element;
         }
@@ -432,25 +437,32 @@ namespace Maps.Graphics
         #endregion
 
         #region Images
+        private string UseImage(AbstractImage image)
+        {
+            if (images.ContainsKey(image))
+                return images[image];
+            var e = AddDefinition(new Element(ElementNames.IMAGE));
+            e.Set("xlink:href", image.DataUrl);
+            e.Set("width", 1);
+            e.Set("height", 1);
+            e.Set("preserveAspectRatio", "none");
+            images[image] = e.Id;
+            return e.Id;
+        }
+
         public void DrawImage(AbstractImage image, float x, float y, float width, float height)
         {
-            var e = Append(new Element(ElementNames.IMAGE));
-            e.Set("x", x);
-            e.Set("y", y);
-            e.Set("width", width);
-            e.Set("height", height);
-            e.Set("xlink:href", image.Url);
+            var e = Append(new Element(ElementNames.USE));
+            e.Set("transform", $"translate({F(x)} {F(y)}) scale({F(width)} {F(height)})");
+            e.Set("xlink:href", "#" + UseImage(image));
         }
 
         public void DrawImageAlpha(float alpha, AbstractImage image, RectangleF targetRect)
         {
-            var e = Append(new Element(ElementNames.IMAGE));
-            e.Set("x", targetRect.X);
-            e.Set("y", targetRect.Y);
-            e.Set("width", targetRect.Width);
-            e.Set("height", targetRect.Height);
+            var e = Append(new Element(ElementNames.USE));
+            e.Set("transform", $"translate({F(targetRect.X)} {F(targetRect.Y)}) scale({F(targetRect.Width)} {F(targetRect.Height)})");
             e.Set("opacity", alpha);
-            e.Set("xlink:href", image.Url);
+            e.Set("xlink:href", "#" + UseImage(image));
         }
         #endregion
 
@@ -465,7 +477,7 @@ namespace Maps.Graphics
             r.Set("height", rect.Height);
 
             var e = Open(new Element(ElementNames.G));
-            e.Set("clip-path", $"url(#{clipPath.Get("id")})");
+            e.Set("clip-path", $"url(#{clipPath.Id})");
         }
 
         public void IntersectClip(AbstractPath path)
@@ -475,7 +487,7 @@ namespace Maps.Graphics
             p.Set("d", ToSVG(path));
 
             var e = Open(new Element(ElementNames.G));
-            e.Set("clip-path", $"url(#{clipPath.Get("id")})");
+            e.Set("clip-path", $"url(#{clipPath.Id})");
         }
         #endregion
 
@@ -523,16 +535,22 @@ namespace Maps.Graphics
         #region Transforms
         public void ScaleTransform(float scaleX, float scaleY)
         {
+            if (scaleX == 1 && scaleY == 1)
+                return;
             var e = Open(new Element(ElementNames.G));
             e.Set("transform", $"scale({F(scaleX)} {F(scaleY)})");
         }
         public void TranslateTransform(float dx, float dy)
         {
+            if (dx == 0 && dy == 0)
+                return;
             var e = Open(new Element(ElementNames.G));
             e.Set("transform", $"translate({F(dx)},{F(dy)})");
         }
         public void RotateTransform(float angle)
         {
+            if (angle == 0)
+                return;
             var e = Open(new Element(ElementNames.G));
             e.Set("transform", $"rotate({F(angle)})");
         }
