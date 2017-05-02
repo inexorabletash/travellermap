@@ -624,7 +624,7 @@ body:not(.world-selected) #downloadBox .world-content { display: none; }
   width: 200px; height: 200px; margin: 0; padding: 0;
   background-repeat: no-repeat;
   background-position: center center;
-  background-image: url("res/ui/Legend_1003_poster.png");
+  background-image: url("res/ui/Legend_1003_poster.svg");
 }
 #legendBox #image2
 {
@@ -632,19 +632,19 @@ body:not(.world-selected) #downloadBox .world-content { display: none; }
   width: 200px; height: 200px; margin: 0; padding: 0;
   background-repeat: no-repeat;
   background-position: center center;
-  background-image: url("res/ui/Legend_1006_poster.png");
+  background-image: url("res/ui/Legend_1006_poster.svg");
 }
 
-.style-candy #legendBox #image1 { background-image: url("res/ui/Legend_1003_candy.jpg"); }
-.style-candy #legendBox #image2 { background-image: url("res/ui/Legend_1006_candy.jpg"); }
-.style-atlas #legendBox #image1 { background-image: url("res/ui/Legend_1003_atlas.png"); }
-.style-atlas #legendBox #image2 { background-image: url("res/ui/Legend_1006_atlas.png"); }
-.style-print #legendBox #image1 { background-image: url("res/ui/Legend_1003_print.png"); }
-.style-print #legendBox #image2 { background-image: url("res/ui/Legend_1006_print.png"); }
-.style-draft #legendBox #image1 { background-image: url("res/ui/Legend_1003_draft.png"); }
-.style-draft #legendBox #image2 { background-image: url("res/ui/Legend_1006_draft.png"); }
-.style-fasa #legendBox #image1 { background-image: url("res/ui/Legend_1003_fasa.png"); }
-.style-fasa #legendBox #image2 { background-image: url("res/ui/Legend_1006_fasa.png"); }
+.style-candy #legendBox #image1 { background-image: url("res/ui/Legend_1003_candy.svg"); }
+.style-candy #legendBox #image2 { background-image: url("res/ui/Legend_1006_candy.svg"); }
+.style-atlas #legendBox #image1 { background-image: url("res/ui/Legend_1003_atlas.svg"); }
+.style-atlas #legendBox #image2 { background-image: url("res/ui/Legend_1006_atlas.svg"); }
+.style-print #legendBox #image1 { background-image: url("res/ui/Legend_1003_print.svg"); }
+.style-print #legendBox #image2 { background-image: url("res/ui/Legend_1006_print.svg"); }
+.style-draft #legendBox #image1 { background-image: url("res/ui/Legend_1003_draft.svg"); }
+.style-draft #legendBox #image2 { background-image: url("res/ui/Legend_1006_draft.svg"); }
+.style-fasa #legendBox #image1 { background-image: url("res/ui/Legend_1003_fasa.svg"); }
+.style-fasa #legendBox #image2 { background-image: url("res/ui/Legend_1006_fasa.svg"); }
 
 
 /* ============================================================ */
