@@ -33,16 +33,16 @@ namespace Maps.Utilities
         {
             switch(Path.GetExtension(path).ToLowerInvariant())
             {
-                case "pdf": return Application.Pdf;
-                case "txt": return Text.Plain;
-                case "htm":
-                case "html": return Text.Html;
-                case "xml": return Text.Xml;
-                case "gif": return Image.Gif;
-                case "png": return Image.Png;
-                case "jpg":
-                case "jpeg": return Image.Jpeg;
-                case "svg": return Image.Svg;
+                case ".pdf": return Application.Pdf;
+                case ".txt": return Text.Plain;
+                case ".htm":
+                case ".html": return Text.Html;
+                case ".xml": return Text.Xml;
+                case ".gif": return Image.Gif;
+                case ".png": return Image.Png;
+                case ".jpg":
+                case ".jpeg": return Image.Jpeg;
+                case ".svg": return Image.Svg;
                 default: return Application.Octet;
             }
         }

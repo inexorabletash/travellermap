@@ -296,5 +296,22 @@ namespace UnitTests
             }
         }
         #endregion
+
+        #region Content Type Tests
+        [TestMethod]
+        public void ContentTypeTest()
+        {
+            Assert.AreEqual("image/png", ContentTypes.TypeForPath(@"c:\dir\file.png"));
+            Assert.AreEqual("image/png", ContentTypes.TypeForPath(@"c:\dir\FILE.PNG"));
+            Assert.AreEqual("image/jpeg", ContentTypes.TypeForPath(@"c:\dir\file.jpg"));
+            Assert.AreEqual("image/jpeg", ContentTypes.TypeForPath(@"c:\dir\file.jpeg"));
+            Assert.AreEqual("text/html", ContentTypes.TypeForPath(@"c:\dir\file.htm"));
+            Assert.AreEqual("text/html", ContentTypes.TypeForPath(@"c:\dir\file.html"));
+            Assert.AreEqual("text/html", ContentTypes.TypeForPath(@"c:\dir\FILE.HTML"));
+            Assert.AreEqual("application/octet-stream", ContentTypes.TypeForPath(@"c:\dir\file"));
+            Assert.AreEqual("application/octet-stream", ContentTypes.TypeForPath(@"c:\dir\file.bin"));
+            Assert.AreEqual("application/octet-stream", ContentTypes.TypeForPath(@"c:\dir\file.nope"));
+        }
+        #endregion
     }
 }
