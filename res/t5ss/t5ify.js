@@ -3,7 +3,7 @@
 const EHEX = '0123456789ABCDEFGHJKLMNPQRSTUV';
 function fromEHex(c) { return EHEX.indexOf(c); }
 function toEHex(n) { return EHEX.substr(n, 1); }
-
+function toSInt(n) { return n < 0 ? String(n) : '+' + String(n); }
 function roll1D() { return Math.floor(Math.random() * 6) + 1; }
 function roll2D() { return roll1D() + roll1D(); }
 function roll1D10() { return Math.floor(Math.random() * 10) + 1; }
@@ -16,7 +16,7 @@ Number.prototype.in = function(min, max) {
 };
 
 function parse(text) {
-  const lines = text.split(/\r\n|\r|\n/).filter(s => s.length > 0);;
+  const lines = text.split(/\r\n|\r|\n/).filter(s => s.length > 0);
   const header = lines.shift().split('\t');
   const worlds = lines.map(line => {
     const world = {};
@@ -56,65 +56,71 @@ function process(world) {
   world.He = world.Siz.in([3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
     && world.Atm.in([2, 4, 7, 9, 10, 11, 12]) && world.Hyd.in(0, 2);
   world.Ic = world.Atm.in(0, 1) && world.Hyd.in(1, 10);
-  world.Oc = world.Siz.in(10, 12) && world.Hyd === 10;
+  world.Oc = world.Siz.in(10, 15) && world.Atm.in(3,9) && world.Hyd === 10;
   world.Va = world.Atm === 0;
-  world.Wa = world.Siz.in(5, 9) && world.Hyd === 10;
+  world.Wa = world.Siz.in(3, 9) && world.Atm.in(3,9) && world.Hyd === 10;
 
-  ['As', 'De', 'Fl', 'Ga', 'He', 'Ic', 'Oc', 'Va', 'Wa'].forEach(c => {
+  const PLANETARY_CODES = ['As', 'De', 'Fl', 'Ga', 'He', 'Ic', 'Oc', 'Va', 'Wa'];
+  PLANETARY_CODES.forEach(c => {
     codeSet.delete(c);
   });
-
 
   // Population
   world.Di = world.Pop === 0 && world.Gov === 0 && world.Law === 0 && world.TL > 0;
   world.Ba = world.Pop === 0 && world.Gov === 0 && world.Law === 0 && world.TL === 0;
   world.Lo = world.Pop.in(1, 3);
   world.Ni = world.Pop.in(4, 6);
-  world.Ph = world.Pop.in === 8;
+  world.Ph = world.Pop === 8;
   world.Hi = world.Pop.in(9, 12);
 
-  ['Di', 'Ba', 'Lo', 'Ni', 'Ph', 'Hi'].forEach(c => {
+  const POPULATION_CODES = ['Di', 'Ba', 'Lo', 'Ni', 'Ph', 'Hi'];
+  POPULATION_CODES.forEach(c => {
     codeSet.delete(c);
   });
-
 
   // Economic
   world.Pa = world.Atm.in(4, 9) && world.Hyd.in(4, 8) && world.Pop.in([4,8]);
   world.Ag = world.Atm.in(4, 9) && world.Hyd.in(4, 8) && world.Pop.in(5, 7);
   world.Na = world.Atm.in(0, 3) && world.Hyd.in(0, 3) && world.Pop.in(6, 12);
   world.Pi = world.Atm.in([0,1,2,4,7,9]) && world.Pop.in(7, 8);
-  world.In = world.Atm.in([0,1,2,4,7,9]) && world.Pop.in(9, 12);
+  world.In = world.Atm.in([0,1,2,4,7,9,10,11,12]) && world.Pop.in(9, 15);
   world.Po = world.Atm.in(2, 5) && world.Hyd.in(0, 3);
   world.Pr = world.Atm.in([6,8]) && world.Pop.in([5,9]);
   world.Ri = world.Atm.in([6,8]) && world.Pop.in(6, 8);
 
-  ['Pa', 'Ag', 'Na', 'Pi', 'In', 'Po', 'Pr', 'Ri'].forEach(c => {
+  const ECONOMIC_CODES = ['Pa', 'Ag', 'Na', 'Pi', 'In', 'Po', 'Pr', 'Ri'];
+  ECONOMIC_CODES.forEach(c => {
     codeSet.delete(c);
   });
 
   // Climate
-  ['Fr', 'Ho', 'Co', 'Lk', 'Tr', 'Tu', 'Tz'].forEach(c => {
+  const CLIMATE_CODES = ['Fr', 'Ho', 'Co', 'Lk', 'Tr', 'Tu', 'Tz'];
+  CLIMATE_CODES.forEach(c => {
     world[c] = codes.includes(c);
     if (world[c]) codeSet.delete(c);
   });
 
   // Secondary
-  ['Fa', 'Mi', 'Mr', 'Px', 'Pe', 'Re'].forEach(c => {
+  const SECONDARY_CODES = ['Fa', 'Mi', 'Mr', 'Px', 'Pe', 'Re'];
+  SECONDARY_CODES.forEach(c => {
     world[c] = codes.includes(c);
     if (world[c]) codeSet.delete(c);
   });
 
   // Political
-  ['Cp', 'Cs', 'Cx', 'Cy'].forEach(c => {
+  const POLITICAL_CODES = ['Cp', 'Cs', 'Cx', 'Cy'];
+  POLITICAL_CODES.forEach(c => {
     world[c] = codes.includes(c);
     if (world[c]) codeSet.delete(c);
   });
 
   // Special
-  ['Fo', 'Pz', 'Da'].forEach(c => {
+  const SPECIAL_CODES = ['Fo', 'Pz', 'Da'];
+  SPECIAL_CODES.forEach(c => {
     codeSet.delete(c);
   });
-  ['Sa', 'Ab', 'An'].forEach(c => {
+  const ADDITIONAL_CODES = ['Sa', 'Ab', 'An'];
+  ADDITIONAL_CODES.forEach(c => {
     world[c] = codes.includes(c);
     if (world[c]) codeSet.delete(c);
   });
@@ -150,6 +156,11 @@ function process(world) {
   // Report unmatched codes
   if (codeSet.size)
     console.warn(`Unmatched codes (${world.Hex}): ` + Array.from(codeSet).map(s=>JSON.stringify(s)).join(' '));
+
+
+  world.Remarks = (PLANETARY_CODES.concat(POPULATION_CODES).concat(ECONOMIC_CODES).
+                   map(code => world[code] ? code : '').join(' ')
+                   + world.Sophonts + world.Details).trim().replace(/\s{2,}/g, ' ');
 }
 
 function t5ify(world) {
@@ -158,7 +169,7 @@ function t5ify(world) {
     (world.St === 'A' || world.St === 'B' ? 1 : 0) +
     (world.St === 'D' || world.St === 'E' || world.St === 'X' ? -1 : 0) +
     (world.TL >= 10 ? 1 : 0) +
-    //(world.TL >= 16 ? 1 : 0) +
+    (world.TL >= 16 ? 1 : 0) +
     (world.TL <= 8 ? -1 : 0) +
     (world.Pop <= 6 ? -1 : 0) +
     (world.Pop >= 9 ? 1 : 0) +
@@ -168,9 +179,10 @@ function t5ify(world) {
     (world.Bases === 'NS' || world.Bases === 'NW' || world.Bases === 'W' ||
      world.Bases === 'X' || world.Bases === 'D' || world.Bases === 'RT' ||
      world.Bases === 'CK' || world.Bases === 'KM' ? 1 : 0);
+  world._Ix_ = `{ ${world.Importance} }`;
 
   // Economics Extension
-  if ('(Ex)' in world) {
+  if (world['(Ex)']) {
     var ex = world['(Ex)'];
     world.Resources = fromEHex(ex.substr(1, 1));
     world.Labor = fromEHex(ex.substr(2, 1));
@@ -191,20 +203,27 @@ function t5ify(world) {
                roll2D() + world.Importance);
     world.Efficiency = flux();
   }
+  world._Ex_ = `(${toEHex(world.Resources)}${toEHex(world.Labor)}${toEHex(world.Infrastructure)}${toSInt(world.Efficiency)})`;
 
   // Cultural Extension
-  if ('[Cx]' in world) {
+  if (world['[Cx]']) {
     var cx = world['[Cx]'];
     world.Homogeneity = fromEHex(cx.substr(1, 1));
     world.Acceptance = fromEHex(cx.substr(2, 1));
     world.Strangeness = fromEHex(cx.substr(3, 1));
     world.Symbols = fromEHex(cx.substr(4, 1));
+  } else if (world.Pop === 0) {
+    world.Homogeneity = 0;
+    world.Acceptance = 0;
+    world.Strangeness = 0;
+    world.Symbols = 0;
   } else {
     world.Homogeneity = world.Pop === 0 ? 0 : Math.max(1, world.Pop + flux());
     world.Acceptance = world.Pop === 0 ? 0 : Math.max(1, world.Pop + world.Importance);
     world.Strangeness = world.Pop === 0 ? 0 : Math.max(1, flux() + 5);
     world.Symbols = world.Pop === 0 ? 0 : Math.max(1, world.TL + flux());
   }
+  world._Cx_ = `[${toEHex(world.Homogeneity)}${toEHex(world.Acceptance)}${toEHex(world.Strangeness)}${toEHex(world.Symbols)}]`;
 
   // Worlds
   world.Worlds = world.Worlds || world.W || (1/*MW*/ + world.GG + world.Belts + roll2D());
@@ -217,7 +236,9 @@ function t5ify(world) {
     'JP': 'JuPr',
     'VN': 'VDrN',
     'VQ': 'VYoe',
-    'VT': 'VTrA'
+    'VT': 'VTrA',
+    'Zc': 'CsZh',
+    'Zh': 'ZhMe'
   })[world.Allegiance] || world.Allegiance;
 
   world.Stars = world.Stars || generateStars();
@@ -324,9 +345,11 @@ function format(world) {
   ];
 }
 
+
+
 function $(s) { return document.querySelector(s); }
 
-$('#go').addEventListener('click', e => {
+$('#forss').addEventListener('click', e => {
 
   const worlds = parse($('#in').value);
   worlds.forEach(world => process(world));
@@ -336,6 +359,43 @@ $('#go').addEventListener('click', e => {
     .join('\n');
 
   window.worlds = worlds;
+});
+
+$('#sectot5').addEventListener('click', e => {
+
+  const worlds = fetch(new Request('https://travellermap.com/api/sec?type=TabDelimited',
+                                   {method: 'POST', body: $('#in').value}))
+  .then(response => response.text())
+  .then(tab => parse(tab))
+  .then(worlds => {
+    worlds.forEach(world => process(world));
+    worlds.forEach(world => t5ify(world));
+    const cols = ['Hex', 'Name', 'UWP', 'Bases', 'Remarks', 'Zone', 'PBG',
+                  'Allegiance', 'Stars', '{Ix}', '(Ex)', '[Cx]', 'Nobility', 'W'];
+
+    $('#out').value =
+      cols.join('\t') + '\n' +
+      worlds
+      .map(world => [
+        world.Hex,
+        world.Name,
+        world.UWP,
+        world.Bases,
+        world.Remarks,
+        world.Zone,
+        world.PBG,
+        world.Allegiance,
+        world.Stars,
+        world._Ix_,
+        world._Ex_,
+        world._Cx_,
+        '',
+        world.Worlds
+      ].join('\t'))
+      .join('\n');
+
+    window.worlds = worlds;
+  });
 });
 
 

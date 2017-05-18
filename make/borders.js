@@ -73,7 +73,6 @@ document.addEventListener('DOMContentLoaded', function() {
     kc: 'lightgreen',
     va: 'olive',
     zh: 'blue',
-    zhco: 'blue',
     zc: 'lightblue',
     so: 'orange',
     socf: 'orange',
@@ -95,6 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
   function colorFor(alleg) {
     alleg = String(alleg).toLowerCase();
     if (/Im../i.test(alleg)) return ALLEGIANCE_COLORS['im'];
+    if (/Zh../i.test(alleg)) return ALLEGIANCE_COLORS['zh'];
     if (/As../i.test(alleg)) return ALLEGIANCE_COLORS['as'];
     if (/V./i.test(alleg)) return ALLEGIANCE_COLORS['va'];
     if (/J./i.test(alleg)) return ALLEGIANCE_COLORS['jp'];
