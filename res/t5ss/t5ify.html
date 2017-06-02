@@ -1,15 +1,24 @@
 <!DOCTYPE html>
 <meta charset=utf-8>
 <style>
-body, table { font-family: sans-serif; }
+body, table { font-family: sans-serif; font-size: 16px;}
 textarea { white-space: pre; }
+button { font-size: 16px; }
 </style>
 
+<p>Input can be SEC, T5 Tab, or T5 Col delimited. If needed:
+<ul>
+<li>Trade codes corrected (watch console for warnings)
+<li>Some allegiances converted to T5SS
+<li>Ix/Ex/Cx generated
+<li>Stellar data generated
+<li>World count
+</ul>
 <textarea id=in cols=128 rows=20></textarea>
 <br>
-<button id=forss>T5 Tab Delimited &rarr; T5SS Spreadsheet</button>
-<button id=sectot5>SEC to T5 Tab Delimited</button>
+<button id=forss>&rarr; T5SS Spreadsheet</button>
+<button id=sectot5>&rarr; T5 Tab Delimited</button>
 <br>
-<textarea id=out cols=128 rows=20></textarea>
+<textarea id=out cols=128 rows=20 readonly></textarea>
 
 <script src=t5ify.js></script>

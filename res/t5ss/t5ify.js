@@ -349,25 +349,27 @@ function format(world) {
 
 function $(s) { return document.querySelector(s); }
 
+function convertAndParse(text) {
+  return fetch(new Request('https://travellermap.com/api/sec?type=TabDelimited',
+                           {method: 'POST', body: text}))
+    .then(response => response.text())
+    .then(tab => parse(tab));
+}
+
 $('#forss').addEventListener('click', e => {
+  convertAndParse($('#in').value).then(worlds => {
+    worlds.forEach(world => process(world));
+    worlds.forEach(world => t5ify(world));
+    $('#out').value = worlds
+      .map(world => format(world).join('\t'))
+      .join('\n') + '\n';
 
-  const worlds = parse($('#in').value);
-  worlds.forEach(world => process(world));
-  worlds.forEach(world => t5ify(world));
-  $('#out').value = worlds
-    .map(world => format(world).join('\t'))
-    .join('\n');
-
-  window.worlds = worlds;
+    window.worlds = worlds;
+  });
 });
 
 $('#sectot5').addEventListener('click', e => {
-
-  const worlds = fetch(new Request('https://travellermap.com/api/sec?type=TabDelimited',
-                                   {method: 'POST', body: $('#in').value}))
-  .then(response => response.text())
-  .then(tab => parse(tab))
-  .then(worlds => {
+  convertAndParse($('#in').value).then(worlds => {
     worlds.forEach(world => process(world));
     worlds.forEach(world => t5ify(world));
     const cols = ['Hex', 'Name', 'UWP', 'Bases', 'Remarks', 'Zone', 'PBG',
