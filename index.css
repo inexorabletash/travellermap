@@ -363,7 +363,7 @@ button:hover {
 
 #searchForm { display: inline; }
 #searchBox {
-  height: 30px; width: 220px;
+  height: 30px; width: 260px;
   float: left;
   font-size: 12pt;
   padding: 0 10px; margin: 0; border: none;
@@ -728,13 +728,6 @@ body:not(.search-results) #closeResultsBtn { display: none; }
 #searchBtn, #closeRouteBtn, #closeResultsBtn { opacity: 0.5; }
 #searchBtn:hover, #closeRouteBtn:hover, #closeResultsBtn:hover { opacity: 1; }
 
-#starBtn {
-  height: 30px;
-  float: left;
-  margin-left: 4px;
-  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAMAAAAMs7fIAAAAQlBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACO4fbyAAAAFXRSTlMAZhDsy7WQXlFANRwJ962Cb9uadilwmvqSAAAAaUlEQVQY012QVw7EMAgFiVvi9C1z/6uubOVtIuYHNIAEmFjNM87e5OJEIDozgRvb4VD70AFiT0azGnnw+raufIuyXrtITCYGOtX+vOl8brPBBiQTFXJYEiwyhbOFg1Mmzdcpu14TVGpTP4EXBrcVFEcOAAAAAElFTkSuQmCC);
-}
-
 #routeBtn {
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAMCAMAAABP7o1HAAAAVFBMVEUAAAADAwMCAgICAgIAAAACAgICAgIDAwMDAwMCAgICAgIDAwMCAgIFBQUAAAADAwMCAgIDAwMCAgICAgIDAwMDAwMAAAAAAAADAwMEBAQAAAADAwPMDm3RAAAAG3RSTlMA+d9rGunYxqV80r2BMQ7z2bGJdGFUIgmZPyp+lMJRAAAAf0lEQVQY022ORxaDMAxEZRxXiOlpc/97Rnq2YAF/NcXPI7phnbw93ftQFsym7tH1KjOMQThyYG461ELzFBGriWBkpEg+EPX41AnnXWKxuMy5zAcsRBvGHxW2A4D2SclYd4zP+uMkU/N5gmk5eSn01JfDlxoJzE7ayHttOm/pyh8X5Ac5DXWjngAAAABJRU5ErkJggg==);
 }
@@ -828,7 +821,7 @@ body:not(.search-results) #closeResultsBtn { display: none; }
 }
 
 @media only screen and (max-width: 680px) {
-  #searchBox { width: 100px; }
+  #searchBox { width: 120px; }
 }
 @media only screen and (max-width: 640px) {
   #navBar { display: none; }
@@ -842,10 +835,7 @@ body:not(.search-results) #closeResultsBtn { display: none; }
 }
 @media only screen and (max-width: 440px) {
   #searchBtn { display: none !important; }
-  #searchBox { width: 50px; }
-}
-@media only screen and (max-width: 390px) {
-  #starBtn { display: none !important; }
+  #searchBox { width: 70px; }
 }
 @media only screen and (max-width: 360px) {
   #downloadBox, #downloadBtn { display: none !important; }
