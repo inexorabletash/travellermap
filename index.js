@@ -171,12 +171,17 @@ window.addEventListener('DOMContentLoaded', function() {
   // Mutually exclusive panes:
   var SEARCH_PANES = ['search-results', 'route-ui', 'wds-visible'];
   function showSearchPane(pane) {
+    if (pane !== 'wds-visible')
+      $('#wds-frame').classList.add('wds-mini');
     SEARCH_PANES.forEach(function(c) { document.body.classList.toggle(c, c === pane);  });
   }
   function hideSearchPanes() {
+    $('#wds-frame').classList.add('wds-mini');
     SEARCH_PANES.forEach(function(c) { document.body.classList.remove(c); });
   }
   function hideSearchPanesExcept(pane) {
+    if (pane !== 'wds-visible')
+      $('#wds-frame').classList.add('wds-mini');
     SEARCH_PANES
       .filter(function(c) { return c !== pane; })
       .forEach(function(c) { document.body.classList.remove(c); });

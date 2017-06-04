@@ -92,7 +92,7 @@ input[type=text] {
   pointer-events: none;
   position: absolute;
   text-align: center;
-  z-index: 1000;
+  z-index: 10;
   visibility: hidden;
 }
 .show-directions .direction { visibility: visible; }
@@ -225,28 +225,33 @@ input[type=text] {
 
 body:not(.wds-visible) #wds-frame { display: none; }
 .hide-footer #wds-frame { bottom: 15px; }
-@media only screen and (max-width: 640px) {
-  #wds-frame { display: none !important; }
-}
 
 #wds-frame {
   position: absolute;
-  left: 15px; top: 50px;
-  width: 320px; bottom: 110px;
-  border: 1px solid black;
+  z-index: 30;
   color: black;
   background-color: white;
+  border: 1px solid black;
+
+  left: 15px; right: auto; width: 320px;
+  top: 50px; bottom: 110px; height: auto;
+}
+
+#wds-scroll {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
   overflow-y: scroll;
 }
+
 
 #wds-frame a {
   color: black;
 }
 
 #wds-closebtn {
-  position: fixed;
-  left: 310px;
-  top: 55px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
   width: 20px;
   min-width: 0;
   height: 20px;
@@ -287,6 +292,25 @@ body:not(.wds-visible) #wds-frame { display: none; }
 #wds-frame.wds-mini { height: 150px; }
 #wds-frame.wds-mini .wds-properties { display: none; }
 
+@media only screen and (max-width: 640px) {
+  #wds-frame {
+    left: 10px; right: 10px; width: auto;
+    top: 60px; bottom: 0px; height: auto;
+    border-bottom: none;
+  }
+
+  .wds-properties { margin-left: auto; margin-right: auto; max-width: }
+
+  #wds-frame.wds-mini {
+    top: auto; height: 150px;
+  }
+
+  .wds-visible #bottom-pane { display: none; }
+
+  #wds-frame.wds-mini #wds-mini-toggle:before { content: "\25B2"; /* U+25B2 BLACK UP-POINTING TRIANGLE */ }
+  #wds-mini-toggle:before { content: "\25BC"; /* U+25BC BLACK DOWN-POINTING TRIANGLE */ }
+}
+
 
 /* Expand/Collapse */
 
@@ -309,7 +333,7 @@ body:not(.wds-visible) #wds-frame { display: none; }
 /* UI Elements */
 
 .ui {
-  z-index: 2000;
+  z-index: 20;
   transform: translateZ(2000px);
 }
 
@@ -341,7 +365,7 @@ button:hover {
   border: 1px solid gray;
   box-shadow: 2px 2px 4px #404040;
   padding: 20px;
-  z-index: 2001;
+  z-index: 40;
 }
 
 .hoverbox-right {

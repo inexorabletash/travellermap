@@ -481,6 +481,16 @@
           });
         });
 
+  var fetch_status = new Map();
+
+  function fetchImage(url) {
+    if (fetch_status.has(url) && !fetch_status.get(url))
+      return Promise.reject(new Error('Image not available'));
+    return Util.fetchImage(url)
+      .then(function(img) { fetch_status.set(url, true); return img; })
+      .catch(function(err) { fetch_status.set(url, false); throw err; });
+  }
+
   function decodeSophontPopulation(match, code, pop) {
     var name = SOPHONT_TABLE[code] || 'Sophont';
     if (pop === '0')
@@ -656,6 +666,17 @@
       world.sector_url = makeWikiURL(world.Sector + ' Sector');
 
       return world;
+    }).then(function(world) {
+      var map_thumb = 'https://s3.amazonaws.com/travellermap/images/maps/thumbs/'
+        + encodeURIComponent(world.Sector) + ' ' + encodeURIComponent(world.Hex) + '.png';
+      if (fetch_status.has(map_thumb)) {
+        if (fetch_status.get(map_thumb)) world.map_thumb = map_thumb;
+        return world;
+      }
+      showConsoleNotice();
+      return fetchImage(map_thumb)
+        .then(function(response) { world.map_thumb = map_thumb; }, function() {})
+        .then(function() { return world; });
     });
   };
 
@@ -675,7 +696,7 @@
 
   var showConsoleNotice = Util.once(function() {
     if (!console || !console.log) return;
-    console.log('The "404 (Not Found)" for res/Candy/worlds/*.png is expected, and is not a bug.');
+    console.log('The "404 (Not Found)" for *.png is expected, and is not a bug.');
   });
 
   var renderWorldImageFirstTime = true;
@@ -716,12 +737,12 @@
 
     return Promise.all([
       // Background
-      Util.fetchImage(bg),
+      fetchImage(bg),
 
       // Foreground
       world.isPlaceholder
         ? null
-        : Util.fetchImage(render).then(
+        : fetchImage(render).then(
           function(image) {
             size.height = size.width * image.naturalHeight / image.naturalWidth;
             return image;
@@ -729,7 +750,7 @@
           function() {
             showConsoleNotice();
             isRender = false;
-            return Util.fetchImage(generic);
+            return fetchImage(generic);
           })
     ])
       .then(function(images) {

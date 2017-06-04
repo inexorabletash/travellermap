@@ -34,8 +34,8 @@
 <meta property="og:site_name" content="The Traveller Map">
 <meta property="fb:admins" content="617166358">
 
+<link rel="stylesheet" href="world.css?update=2017-06-03">
 <link rel="stylesheet" href="index.css?update=2017-06-03">
-<link rel="stylesheet" href="world.css?update=2016-12-06">
 <link rel="stylesheet" href="lib/add-to-home-screen/addtohomescreen.css">
 
 <!--[if lt IE 9]><script>alert("IE8 is no longer supported.");location = 'http://google.com/chrome';</script><![endif]-->
@@ -43,7 +43,7 @@
 <script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.29/polyfill.min.js"></script>
 <script src="map.js?update=2017-03-14"></script>
 <script src="index.js?update=2017-06-03"></script>
-<script src="world_util.js?update=2016-11-28"></script>
+<script src="world_util.js?update=2017-06-03"></script>
 
 <body class="hide-ui hide-footer">
   <div id="mapContainer">
@@ -616,9 +616,11 @@
   </div>
 
   <div id=wds-frame class=wds-mini>
-    <canvas id=wds-world-image width=200 height=200></canvas>
+    <div id=wds-scroll>
+      <canvas id=wds-world-image width=200 height=200></canvas>
+      <div id=wds-world-data></div>
+    </div>
     <button id=wds-closebtn></button>
-    <div id=wds-world-data></div>
   </div>
 
 <script id=wds-world-template type="text/x-handlebars-template">
@@ -653,6 +655,16 @@
 <div id=wds-mini-toggle></div>
 
 <table class=wds-properties>
+{{#if map_thumb}}
+<tbody>
+<tr>
+<td colspan=3 style="text-align: center;">
+<img src="{{map_thumb}}" style="width: 272px; height: auto; border: 2px solid black;">
+</td>
+</tr>
+</tbody>
+{{/if}}
+
 {{#if AllegianceName}}
 <tbody>
 <tr class=wds-deets>
