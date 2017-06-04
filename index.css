@@ -223,6 +223,15 @@ input[type=text] {
 /* ============================================================ */
 /* World Data Sheet (Modeless Side Panel) */
 
+#wds-shade {
+  display: none;
+  position: absolute;
+  z-index: 29;
+  left: 0; right: 0; top: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 0.50);
+}
+body:not(.wds-visible) #wds-shade { display: none; }
+
 body:not(.wds-visible) #wds-frame { display: none; }
 .hide-footer #wds-frame { bottom: 15px; }
 
@@ -273,7 +282,7 @@ body:not(.wds-visible) #wds-frame { display: none; }
   text-align: center;
   text-decoration: underline;
 }
-#wds-frame.wds-mini #wds-print-link { display: none; }
+.wds-mini #wds-frame #wds-print-link { display: none; }
 
 /* Mini Mode */
 
@@ -286,13 +295,16 @@ body:not(.wds-visible) #wds-frame { display: none; }
 #wds-mini-toggle:hover {
   opacity: 1;
 }
-#wds-frame.wds-mini #wds-mini-toggle:before { content: "\25BC"; /* U+25BC BLACK DOWN-POINTING TRIANGLE */ }
+.wds-mini #wds-frame #wds-mini-toggle:before { content: "\25BC"; /* U+25BC BLACK DOWN-POINTING TRIANGLE */ }
 #wds-mini-toggle:before { content: "\25B2"; /* U+25B2 BLACK UP-POINTING TRIANGLE */ }
 
-#wds-frame.wds-mini { height: 150px; }
-#wds-frame.wds-mini .wds-properties { display: none; }
+.wds-mini #wds-frame { height: 150px; }
+.wds-mini #wds-frame .wds-properties { display: none; }
 
 @media only screen and (max-width: 640px) {
+  #wds-shade { display: block; }
+  .wds-mini #wds-shade { display: none; }
+
   #wds-frame {
     left: 10px; right: 10px; width: auto;
     top: 60px; bottom: 0px; height: auto;
@@ -301,13 +313,13 @@ body:not(.wds-visible) #wds-frame { display: none; }
 
   .wds-properties { margin-left: auto; margin-right: auto; max-width: }
 
-  #wds-frame.wds-mini {
+  .wds-mini #wds-frame {
     top: auto; height: 150px;
   }
 
   .wds-visible #bottom-pane { display: none; }
 
-  #wds-frame.wds-mini #wds-mini-toggle:before { content: "\25B2"; /* U+25B2 BLACK UP-POINTING TRIANGLE */ }
+  .wds-mini #wds-frame #wds-mini-toggle:before { content: "\25B2"; /* U+25B2 BLACK UP-POINTING TRIANGLE */ }
   #wds-mini-toggle:before { content: "\25BC"; /* U+25BC BLACK DOWN-POINTING TRIANGLE */ }
 }
 
@@ -856,6 +868,7 @@ body:not(.search-results) #closeResultsBtn { display: none; }
 }
 @media only screen and (max-width: 480px) {
   #legendBox, #legendBtn { display: none !important; }
+  #bottom-pane { display: none; }
 }
 @media only screen and (max-width: 440px) {
   #searchBtn { display: none !important; }
@@ -863,6 +876,7 @@ body:not(.search-results) #closeResultsBtn { display: none; }
 }
 @media only screen and (max-width: 360px) {
   #downloadBox, #downloadBtn { display: none !important; }
+  #searchBox { width: 60px; }
 }
 
 

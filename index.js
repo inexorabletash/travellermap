@@ -172,16 +172,16 @@ window.addEventListener('DOMContentLoaded', function() {
   var SEARCH_PANES = ['search-results', 'route-ui', 'wds-visible'];
   function showSearchPane(pane) {
     if (pane !== 'wds-visible')
-      $('#wds-frame').classList.add('wds-mini');
+      document.body.classList.add('wds-mini');
     SEARCH_PANES.forEach(function(c) { document.body.classList.toggle(c, c === pane);  });
   }
   function hideSearchPanes() {
-    $('#wds-frame').classList.add('wds-mini');
+    document.body.classList.add('wds-mini');
     SEARCH_PANES.forEach(function(c) { document.body.classList.remove(c); });
   }
   function hideSearchPanesExcept(pane) {
     if (pane !== 'wds-visible')
-      $('#wds-frame').classList.add('wds-mini');
+      document.body.classList.add('wds-mini');
     SEARCH_PANES
       .filter(function(c) { return c !== pane; })
       .forEach(function(c) { document.body.classList.remove(c); });
@@ -841,7 +841,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
           // Hook up toggle
           $('#wds-mini-toggle').addEventListener('click', function(event) {
-            $('#wds-frame').classList.toggle('wds-mini');
+            document.body.classList.toggle('wds-mini');
           });
 
           $('#wds-print-link').href = dataSheetURL;
@@ -854,10 +854,11 @@ window.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  $('#wds-closebtn').addEventListener('click', function(event) {
-    hideSearchPanes();
+  Array.from($$('#wds-closebtn,#wds-shade')).forEach(function(element) {
+    element.addEventListener('click', function(event) {
+      hideSearchPanes();
+    });
   });
-
 
   //////////////////////////////////////////////////////////////////////
   //
