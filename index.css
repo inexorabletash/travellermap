@@ -92,7 +92,7 @@ input[type=text] {
   pointer-events: none;
   position: absolute;
   text-align: center;
-  z-index: 10;
+  z-index: 1;
   visibility: hidden;
 }
 .show-directions .direction { visibility: visible; }
@@ -226,9 +226,9 @@ input[type=text] {
 #wds-shade {
   display: none;
   position: absolute;
-  z-index: 29;
+  z-index: 39;
   left: 0; right: 0; top: 0; bottom: 0;
-  background-color: rgba(0, 0, 0, 0.50);
+  background-color: rgba(0, 0, 0, 0.65);
 }
 body:not(.wds-visible) #wds-shade { display: none; }
 
@@ -237,7 +237,7 @@ body:not(.wds-visible) #wds-frame { display: none; }
 
 #wds-frame {
   position: absolute;
-  z-index: 30;
+  z-index: 40;
   color: black;
   background-color: white;
   border: 1px solid black;
@@ -276,17 +276,21 @@ body:not(.wds-visible) #wds-frame { display: none; }
 #wds-closebtn { opacity: 0.5; }
 #wds-closebtn:hover { opacity: 1; }
 
-#wds-print-link {
+#wds-print-links {
   display: block;
   margin: 10px;
   text-align: center;
+}
+#wds-print-link {
+  display: block;
   text-decoration: underline;
 }
-.wds-mini #wds-frame #wds-print-link { display: none; }
+.wds-mini #wds-frame #wds-print-links { display: none; }
 
 /* Mini Mode */
 
 #wds-mini-toggle {
+  touch-action: none;
   clear: both;
   text-align: center;
   font-size: 14px;
@@ -346,7 +350,6 @@ body:not(.wds-visible) #wds-frame { display: none; }
 
 .ui {
   z-index: 20;
-  transform: translateZ(2000px);
 }
 
 .hide-ui .ui { display: none; }
@@ -377,7 +380,7 @@ button:hover {
   border: 1px solid gray;
   box-shadow: 2px 2px 4px #404040;
   padding: 20px;
-  z-index: 40;
+  z-index: 30;
 }
 
 .hoverbox-right {
@@ -447,6 +450,8 @@ button:hover {
   height: 30px; width: 100%;
 
   font-size: 12pt;
+  color: black;
+  background-color: white;
   padding: 0 10px; margin: 0 -11px; border: 1px solid gray;
   margin-bottom: 10px;
 }
@@ -555,7 +560,7 @@ body:not(.enable-experiments) #labBtn { display: none; }
 
 #downloadBox {
   width: 250px;
-  max-height: 215px;
+  max-height: 155px;
 }
 #downloadBox section { margin: 1em 0; }
 #downloadBox section:first-of-type { margin-top: 0; }
@@ -563,7 +568,6 @@ body:not(.enable-experiments) #labBtn { display: none; }
 
 body.sector-selected #downloadBox .inactive-content { display: none; }
 body:not(.sector-selected) #downloadBox .active-content { display: none; }
-body:not(.world-selected) #downloadBox .world-content { display: none; }
 
 #downloadBox h3 { font-style: italic; font-weight: normal;
                   color: red;
@@ -870,11 +874,23 @@ body:not(.search-results) #closeResultsBtn { display: none; }
   #legendBox, #legendBtn { display: none !important; }
   #bottom-pane { display: none; }
 }
+
 @media only screen and (max-width: 440px) {
   #searchBtn { display: none !important; }
   #searchBox { width: 70px; }
+
+  #shareBox {  max-height: 225px; }
+  #share-embed { display: none; }
+
+  #helpBox { max-height: 220px; }
+  #help-tools,
+  #help-developers { display: none; }
+
+  #settingsBox { max-height: 280px; }
+  #settings-show,
+  #settings-appearance-hexes { display: none; }
 }
-@media only screen and (max-width: 360px) {
+@media only screen and (max-width: 370px) {
   #downloadBox, #downloadBtn { display: none !important; }
   #searchBox { width: 60px; }
 }
@@ -912,7 +928,6 @@ noscript div {
   text-align: center;
   line-height: 200px;
   z-index: 9999;
-  transform: translateZ(9999px);
   color: white;
   background-color: inherit;
   border: 2px solid white;

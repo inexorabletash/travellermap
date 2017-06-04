@@ -269,7 +269,7 @@
               ></button>
     </section>
 
-    <section>
+    <section id="settings-show">
       <p><strong>Show:</strong></p>
       <div class="indent">
         <p><label title="Show or hide the direction labels around the edge of the map"><input type="checkbox" id="cbGalDir"> Galactic Direction</label></p>
@@ -289,7 +289,7 @@
     <section>
       <p><strong>Appearance:</strong></p>
       <div class="indent">
-        <p><label title="Always use hexagonal parsecs"><input type="checkbox" id="cbForceHexes"> Always Use Hexes</label>
+        <p id="settings-appearance-hexes"><label title="Always use hexagonal parsecs"><input type="checkbox" id="cbForceHexes"> Always Use Hexes</label>
         <p><label title="Use more colors for world features"><input type="checkbox" id="cbWorldColors"> More World Colors</label>
         <p><label title="Fill borders to make regions more visible"><input type="checkbox" id="cbFilledBorders"> Filled Borders</label>
         <p><label title="Dim sectors that are not official Traveller 5 Sector Survey data"><input type="checkbox" id="cbDimUnofficial"> Dim Unofficial Data</label>
@@ -437,7 +437,7 @@
 
     </section>
 
-    <section>
+    <section id="help-tools">
       <h3>Players &amp; Referees</h3>
       <p><a target="_blank" href="doc/secondsurvey">About Second Survey Data</a></p>
       <p>
@@ -450,7 +450,7 @@
       </p>
     </section>
 
-    <section>
+    <section id="help-developers">
       <h3>Developers</h3>
       <p><a target="_blank" href="doc/api">Explore the API</a></p>
       <p><a target="_blank" href="https://github.com/inexorabletash/travellermap">Get the source code</a></p>
@@ -481,9 +481,9 @@
       <input readonly id="share-url" title="Copy and paste">
     </section>
 
-    <section>
+    <section id="share-embed">
       Embed this HTML:
-      <input readonly id="share-embed" title="Copy and paste">
+      <input readonly id="share-code" title="Copy and paste">
     </section>
 
   </div>
@@ -511,20 +511,6 @@
         <li>
           <a id="download-data" target="_blank" href="#">Raw Sector Data</a>
         </li>
-
-        <li class="world-content">
-          <a id="world-data-sheet" target="world-data-sheet" href="#">World Data Sheet</a>
-        </li>
-
-        <li class="world-content">
-          <a id="world-jump-map-1" target="_blank" href="#">J-1</a> &bull;
-          <a id="world-jump-map-2" target="_blank" href="#">J-2</a> &bull;
-          <a id="world-jump-map-3" target="_blank" href="#">J-3</a> &bull;
-          <a id="world-jump-map-4" target="_blank" href="#">J-4</a> &bull;
-          <a id="world-jump-map-5" target="_blank" href="#">J-5</a> &bull;
-          <a id="world-jump-map-6" target="_blank" href="#">J-6</a>
-        </li>
-
       </ul>
     </section>
 
@@ -620,6 +606,16 @@
     <div id=wds-scroll>
       <canvas id=wds-world-image width=200 height=200></canvas>
       <div id=wds-world-data></div>
+      <div id="wds-print-links">
+        <a id="wds-print-link" target="world-data-sheet" href="#">Printable Data Sheet</a>
+        <br>
+        <a id="world-jump-map-1" target="_blank" href="#">J-1</a> &bull;
+        <a id="world-jump-map-2" target="_blank" href="#">J-2</a> &bull;
+        <a id="world-jump-map-3" target="_blank" href="#">J-3</a> &bull;
+        <a id="world-jump-map-4" target="_blank" href="#">J-4</a> &bull;
+        <a id="world-jump-map-5" target="_blank" href="#">J-5</a> &bull;
+        <a id="world-jump-map-6" target="_blank" href="#">J-6</a>
+      </div>
     </div>
     <button id=wds-closebtn></button>
   </div>
@@ -783,8 +779,6 @@
 </tbody>
 {{/Zone}}
 </table>
-
-<a id="wds-print-link" target="world-data-sheet" href="#">Printable Data Sheet</a>
 
 </script>
 

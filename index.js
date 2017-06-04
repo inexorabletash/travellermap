@@ -132,7 +132,7 @@ window.addEventListener('DOMContentLoaded', function() {
       window.history.replaceState(null, document.title, pageURL);
 
     $('#share-url').value = pageURL;
-    $('#share-embed').value = '<iframe width=400 height=300 src="' + pageURL + '">';
+    $('#share-code').value = '<iframe width=400 height=300 src="' + pageURL + '">';
 
     var snapshotParams = (function() {
       var map_center_x = map.x,
@@ -313,10 +313,11 @@ window.addEventListener('DOMContentLoaded', function() {
     map.y = home.y;
   }
 
-  Array.from($$('#share-url,#share-embed')).forEach(function(input) {
+  Array.from($$('#share-url,#share-code')).forEach(function(input) {
     input.addEventListener('click', function(e) {
       e.preventDefault();
       input.focus();
+      input.select();
       input.setSelectionRange(0, input.value.length); // .select() fails on iOS
     });
     input.addEventListener('mouseup', function(e) {
@@ -782,32 +783,6 @@ window.addEventListener('DOMContentLoaded', function() {
 
     if (selectedWorld) {
 
-      // Downloads > Data Sheet
-      var dataSheetURL = Util.makeURL('world', {
-        sector: selectedSector,
-        hex: selectedWorld.hex,
-        milieu: milieu
-      });
-      $('#world-data-sheet').href = dataSheetURL;
-      $('#world-data-sheet').innerHTML = Util.escapeHTML(
-        'Data Sheet: ' + selectedWorld.name + ' (' + selectedWorld.hex + ')');
-
-      // Downloads > Jump Maps
-      var options = map.options & (
-        Traveller.MapOptions.BordersMask | Traveller.MapOptions.NamesMask |
-          Traveller.MapOptions.WorldColors | Traveller.MapOptions.FilledBorders);
-      for (var j = 1; j <= 6; ++j) {
-        var jumpMapURL = Traveller.MapService.makeURL('/api/jumpmap', {
-          sector: selectedSector,
-          hex: selectedWorld.hex,
-          milieu: milieu,
-          jump: j,
-          style: map.style,
-          options: options
-        });
-        $('#downloadBox a#world-jump-map-' + j).href = jumpMapURL;
-      }
-
       // World Data Sheet ("Info Card")
       fetch(Traveller.MapService.makeURL(
         '/api/jumpworlds?', {
@@ -831,6 +806,30 @@ window.addEventListener('DOMContentLoaded', function() {
           Traveller.renderWorld(
             world, $('#wds-world-template').innerHTML, $('#wds-world-data'));
 
+          // Data Sheet
+          var dataSheetURL = Util.makeURL('world', {
+            sector: selectedSector,
+            hex: selectedWorld.hex,
+            milieu: milieu
+          });
+          $('#wds-print-link').href = dataSheetURL;
+
+          // Jump Maps
+          var options = map.options & (
+            Traveller.MapOptions.BordersMask | Traveller.MapOptions.NamesMask |
+              Traveller.MapOptions.WorldColors | Traveller.MapOptions.FilledBorders);
+          for (var j = 1; j <= 6; ++j) {
+            var jumpMapURL = Traveller.MapService.makeURL('/api/jumpmap', {
+              sector: selectedSector,
+              hex: selectedWorld.hex,
+              milieu: milieu,
+              jump: j,
+              style: map.style,
+              options: options
+            });
+            $('#wds-print-links a#world-jump-map-' + j).href = jumpMapURL;
+          }
+
           // Hook up any generated "expandy" fields
           Array.from($$('.wds-expandy')).forEach(function(elem) {
             elem.addEventListener('click', function(event) {
@@ -843,8 +842,6 @@ window.addEventListener('DOMContentLoaded', function() {
           $('#wds-mini-toggle').addEventListener('click', function(event) {
             document.body.classList.toggle('wds-mini');
           });
-
-          $('#wds-print-link').href = dataSheetURL;
 
           showSearchPane('wds-visible');
         })
