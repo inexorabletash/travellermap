@@ -407,15 +407,17 @@ window.addEventListener('DOMContentLoaded', function() {
   bindCheckedToNamedOption('#cbAncientWorlds', 'an');
   bindCheckedToNamedOption('#cbMinorHomeworlds', 'mh');
   bindCheckedToNamedOption('#cbStellar', 'stellar');
+  bindCheckedToNamedOption('#cbQZ', 'qz');
   bindChecked('#cbWave',
-              function(o) { return map.namedOptions.get('ew'); },
-              function(c) {
-                if (c) {
-                  map.namedOptions.set('ew', 'milieu');
-                } else {
-                  map.namedOptions.delete('ew');
-                  delete urlParams['ew'];
-                }});
+    function(o) { return map.namedOptions.get('ew'); },
+    function(c) {
+      if (c) {
+        map.namedOptions.set('ew', 'milieu');
+      } else {
+        map.namedOptions.delete('ew');
+        delete urlParams['ew'];
+      }
+    });
 
   function bindControl(selector, property, onChange, event, onEvent) {
     var element = $(selector);

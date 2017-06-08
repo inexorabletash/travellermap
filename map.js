@@ -972,7 +972,7 @@ var Util = {
     // Tile URL (apart from x/y/scale)
     var params = {options: this.options, style: this.style};
     this.namedOptions.forEach(function(value, key) {
-      if (key === 'ew') return;
+      if (key === 'ew' || key === 'qz') return;
       params[key] = value;
     });
     if ('devicePixelRatio' in window && window.devicePixelRatio > 1)
@@ -1033,6 +1033,9 @@ var Util = {
 
     if (this.namedOptions.get('ew'))
       this.drawWave(this.namedOptions.get('ew'));
+
+    if (this.namedOptions.get('qz'))
+      this.drawQZ();
   };
 
   // Draw a rectangle (x1, y1) to (x2, y2)
@@ -1373,7 +1376,7 @@ var Util = {
     var x = 0, y = 10000;
 
     // Per MWM: Wave crosses Ring 10,000 [Reference] on 045-1281
-    var radius = (year - (1281 + (45-1) / 365)) * vel + y;
+    var radius = (year - (1281 + (45 - 1) / 365)) * vel + y;
     if (radius < 0)
       return;
 
@@ -1388,10 +1391,29 @@ var Util = {
     var px_offset = 0.5; // offset from corner to center of hex
     var pt = this.mapToPixel(x + px_offset, y + px_offset);
     ctx.arc(pt.x,
-            pt.y,
-            this.scale * radius,
-            Math.PI/2 - Math.PI/12,
-            Math.PI/2 + Math.PI/12);
+      pt.y,
+      this.scale * radius,
+      Math.PI / 2 - Math.PI / 12,
+      Math.PI / 2 + Math.PI / 12);
+    ctx.stroke();
+    ctx.restore();
+  };
+
+  TravellerMap.prototype.drawQZ = function() {
+    var x = -179.4, y = 131, radius = 30 * Traveller.Astrometrics.ParsecScaleX, w = 1;
+    var ctx = this.ctx;
+    ctx.save();
+    ctx.translate(-this.canvas.offset_x, -this.canvas.offset_y);
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.globalAlpha = 0.3;
+    ctx.lineWidth = Math.max(w * this.scale, 5);
+    ctx.strokeStyle = styleLookup(this.style, 'ew_color');
+    ctx.beginPath();
+    var px_offset = 0.5; // offset from corner to center of hex
+    var pt = this.mapToPixel(x + px_offset, y + px_offset);
+    ctx.arc(pt.x,
+        pt.y,
+        this.scale * radius, 0, Math.PI * 2);
     ctx.stroke();
     ctx.restore();
   };
@@ -1761,7 +1783,7 @@ var Util = {
         this.namedOptions.set(name, int(name));
     }, this);
     // String options
-    ['ew', 'hw', 'milieu'].forEach(function(name) {
+    ['ew', 'qz', 'hw', 'milieu'].forEach(function(name) {
       if (name in params)
         this.namedOptions.set(name, params[name]);
     }, this);
