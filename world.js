@@ -96,6 +96,7 @@
                 x: coords.x,
                 y: coords.y,
                 milieu: searchParams.get('milieu'),
+                style: searchParams.get('style'),
                 jump: JUMP,
                 scale: SCALE,
                 border: 0};

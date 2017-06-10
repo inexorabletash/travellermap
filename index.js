@@ -812,7 +812,8 @@ window.addEventListener('DOMContentLoaded', function() {
           var dataSheetURL = Util.makeURL('world', {
             sector: selectedSector,
             hex: selectedWorld.hex,
-            milieu: milieu
+            milieu: milieu,
+            style: map.style
           });
           $('#wds-print-link').href = dataSheetURL;
 
