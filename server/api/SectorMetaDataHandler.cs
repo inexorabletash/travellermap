@@ -82,18 +82,18 @@ namespace Maps.API.Results
 
         [XmlAttribute]
         [System.ComponentModel.DefaultValue(false)]
-        public bool Selected => sector.Selected;
+        public bool Selected { get => sector.Selected; set { } }
         [XmlAttribute]
-        public string Tags => sector.TagString;
+        public string Tags { get => sector.TagString; set { } }
         [XmlAttribute]
-        public string Abbreviation => sector.Abbreviation;
+        public string Abbreviation { get => sector.Abbreviation; set { } }
         [XmlElement("Name")]
         public List<Name> Names => sector.Names;
         public string Credits { get => sector.Credits; set { } }
 
-        public DataFileMetadata DataFile => dataFile;
-        public int X => sector.X;
-        public int Y => sector.Y;
+        public DataFileMetadata DataFile { get => dataFile; set { } }
+        public int X { get => sector.X; set { } }
+        public int Y { get => sector.Y; set { } }
 
         [XmlElement("Product")]
         public MetadataCollection<Product> Products => sector.Products;
@@ -141,19 +141,19 @@ namespace Maps.API.Results
             private Sector sector;
 
             [XmlAttribute]
-            public string Title => sector.DataFile?.Title ?? sector.Title;
+            public string Title { get => sector.DataFile?.Title ?? sector.Title; set { } }
             [XmlAttribute]
-            public string Author => sector.DataFile?.Author ?? sector.Author;
+            public string Author { get => sector.DataFile?.Author ?? sector.Author; set { } }
             [XmlAttribute]
-            public string Source => sector.DataFile?.Source ?? sector.Source;
+            public string Source { get => sector.DataFile?.Source ?? sector.Source; set { } }
             [XmlAttribute]
-            public string Publisher => sector.DataFile?.Publisher ?? sector.Publisher;
+            public string Publisher { get => sector.DataFile?.Publisher ?? sector.Publisher; set { } }
             [XmlAttribute]
-            public string Copyright => sector.DataFile?.Copyright ?? sector.Copyright;
+            public string Copyright { get => sector.DataFile?.Copyright ?? sector.Copyright; set { } }
             [XmlAttribute]
-            public string Milieu => sector.CanonicalMilieu;
+            public string Milieu { get => sector.CanonicalMilieu; set { } }
             [XmlAttribute]
-            public string Ref => sector.DataFile?.Ref ?? sector.Ref;
+            public string Ref { get => sector.DataFile?.Ref ?? sector.Ref; set { } }
         }
     }
 
