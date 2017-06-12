@@ -732,20 +732,13 @@ window.addEventListener('DOMContentLoaded', function() {
         .join(', ');
 
       // Other UI
-      if ('SectorName' in data && 'SectorTags' in data) {
-        selectedSector = data.SectorName.replace(/ Sector$/, '');
+      selectedSector = ('SectorName' in data && 'SectorTags' in data) ? data.SectorName : null;
 
-        // Treat world as "selected" if (1) in the data, (2) scale is appropriate,
-        // and (3) either this is a direct action (e.g. click) or a refresh
-        selectedWorld =
-          'WorldHex' in data &&
-          map.scale > 16 &&
-          (options.directAction || selectedWorld)
-          ? { name: data.WorldName, hex: data.WorldHex } : null;
-        updateSectorLinks();
-      } else {
-        selectedSector = null;
+      if (map.scale <= 16) {
         selectedWorld = null;
+      } else if (options.directAction) {
+        selectedWorld = 'WorldHex' in data ? { name: data.WorldName, hex: data.WorldHex } : null;
+        updateSectorLinks();
       }
 
       document.body.classList.toggle('sector-selected', selectedSector);
@@ -989,7 +982,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
       $('#resultsContainer').innerHTML = template('#SearchResultsTemplate')(data);
 
-      Array.from(document.querySelectorAll('#resultsContainer a')).forEach(function(a) {
+      Array.from($$('#resultsContainer a')).forEach(function(a) {
         a.addEventListener('click', function(e) {
           e.preventDefault();
           selectedWorld = null;
@@ -1077,7 +1070,7 @@ window.addEventListener('DOMContentLoaded', function() {
           PrintURL: Util.makeURL('./print/route', options)
         });
 
-        Array.from(document.querySelectorAll('#routePath .item a')).forEach(function(a) {
+        Array.from($$('#routePath .item a')).forEach(function(a) {
           a.addEventListener('click', function(e) {
             e.preventDefault();
             selectedWorld = null;
