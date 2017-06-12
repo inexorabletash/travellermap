@@ -683,7 +683,7 @@ window.addEventListener('DOMContentLoaded', function() {
   }
 
   function updateContext(worldX, worldY, options) {
-    if (!enableContext)
+    if (!enableContext || document.body.classList.contains('hide-ui'))
       return;
 
     options = Object.assign({}, options);
