@@ -734,7 +734,7 @@ window.addEventListener('DOMContentLoaded', function() {
       // Other UI
       selectedSector = ('SectorName' in data && 'SectorTags' in data) ? data.SectorName : null;
 
-      if (map.scale <= 16) {
+      if (map.scale <= 16 || document.body.classList.contains('route-ui')) {
         selectedWorld = null;
       } else if (options.directAction) {
         selectedWorld = 'WorldHex' in data ? { name: data.WorldName, hex: data.WorldHex } : null;
