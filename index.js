@@ -738,8 +738,8 @@ window.addEventListener('DOMContentLoaded', function() {
         selectedWorld = null;
       } else if (options.directAction) {
         selectedWorld = 'WorldHex' in data ? { name: data.WorldName, hex: data.WorldHex } : null;
-        updateSectorLinks();
       }
+      updateSectorLinks();
 
       document.body.classList.toggle('sector-selected', selectedSector);
       document.body.classList.toggle('world-selected', selectedWorld);
