@@ -221,7 +221,7 @@ input[type=text] {
 
 
 /* ============================================================ */
-/* World Data Sheet (Modeless Side Panel) */
+/* Sector/World Data Sheet (Modeless Side Panel) */
 
 #wds-shade {
   display: none;
@@ -232,9 +232,13 @@ input[type=text] {
 }
 body:not(.wds-visible) #wds-shade { display: none; }
 
+body:not(.sds-visible) #sds-frame,
 body:not(.wds-visible) #wds-frame { display: none; }
+
+.hide-footer #sds-frame
 .hide-footer #wds-frame { bottom: 15px; }
 
+#sds-frame,
 #wds-frame {
   position: absolute;
   z-index: 40;
@@ -246,17 +250,22 @@ body:not(.wds-visible) #wds-frame { display: none; }
   top: 50px; bottom: 110px; height: auto;
 }
 
+#sds-scroll,
 #wds-scroll {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
   overflow-y: scroll;
 }
 
+#sds-scroll { padding: 10px; }
 
+
+#sds-frame a,
 #wds-frame a {
   color: black;
 }
 
+#sds-closebtn,
 #wds-closebtn {
   position: absolute;
   right: 10px;
@@ -273,14 +282,18 @@ body:not(.wds-visible) #wds-frame { display: none; }
   background-repeat: no-repeat;
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANCAMAAABFNRROAAAAPFBMVEUAAAAEBAQDAwMAAAACAgIEBAQCAgIDAwMDAwMAAAACAgICAgIDAwMAAAADAwMCAgICAgIDAwMEBAQDAwPQczG9AAAAE3RSTlMAPPQo549ww6sM2c1kGLeHeFBIVkwaZQAAAFBJREFUCNctzEkWgCAMA9CAgsrg1PvflbZpFsn7mwAYGzzv1KqyO4u0iU/EWXQ7cDoNOYHMAZJgumkEqoHPBBnI/0EmHlzGBhQDlNxHy3gnLPTJBXzfVCglAAAAAElFTkSuQmCC);
 }
+#sds-closebtn,
 #wds-closebtn { opacity: 0.5; }
+#sds-closebtn:hover,
 #wds-closebtn:hover { opacity: 1; }
 
+#sds-print-links,
 #wds-print-links {
   display: block;
   margin: 10px;
   text-align: center;
 }
+#sds-print-link,
 #wds-print-link {
   display: block;
   text-decoration: underline;
@@ -302,6 +315,7 @@ body:not(.wds-visible) #wds-frame { display: none; }
 .wds-mini #wds-frame #wds-mini-toggle:before { content: "\25BC"; /* U+25BC BLACK DOWN-POINTING TRIANGLE */ }
 #wds-mini-toggle:before { content: "\25B2"; /* U+25B2 BLACK UP-POINTING TRIANGLE */ }
 
+#sds-frame { height: 150px; }
 .wds-mini #wds-frame { height: 150px; }
 .wds-mini #wds-frame .wds-properties { display: none; }
 
@@ -309,6 +323,7 @@ body:not(.wds-visible) #wds-frame { display: none; }
   #wds-shade { display: block; }
   .wds-mini #wds-shade { display: none; }
 
+  #sds-frame,
   #wds-frame {
     left: 10px; right: 10px; width: auto;
     top: 60px; bottom: 0px; height: auto;
@@ -317,10 +332,15 @@ body:not(.wds-visible) #wds-frame { display: none; }
 
   .wds-properties { margin-left: auto; margin-right: auto; max-width: }
 
+  #sds-frame,
   .wds-mini #wds-frame {
     top: auto; height: 150px;
   }
+  #sds-frame {
+    height: 150px;
+  }
 
+  .sds-visible #bottom-pane,
   .wds-visible #bottom-pane { display: none; }
 
   .wds-mini #wds-frame #wds-mini-toggle:before { content: "\25B2"; /* U+25B2 BLACK UP-POINTING TRIANGLE */ }
@@ -344,6 +364,41 @@ body:not(.wds-visible) #wds-frame { display: none; }
 .wds-expand-cx .wds-expandy[data-wds-expand="wds-expand-cx"] .wds-toggle:before {
   content: "\25B2"; /* U+25B2 BLACK UP-POINTING TRIANGLE */
 }
+
+.sds-sectorname {
+  font-family: Optima, Marcellus, "Times New Roman", serif;
+  font-size: 26px;
+  font-weight: bold;
+  font-style: italic;
+  padding-bottom: 1px;
+  border-bottom: 4px solid black;
+  margin-bottom: 8px;
+}
+
+.sds-credits {
+  font-style: italic;
+}
+
+.sds-wiki-link {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sds-status {
+  text-align: center;
+}
+
+#sds-frame .sds-status a { text-decoration: none; font-weight: bold; }
+#sds-frame .sds-status a.official { color: red; }
+#sds-frame .sds-status a.inreview { color: orange; }
+#sds-frame .sds-status a.unreviewed { color: orange; }
+#sds-frame .sds-status a.preserve { color: green; }
+#sds-frame .sds-status a.apocryphal { color: magenta; }
+#sds-frame .sds-status a.unofficial { color: gold; }
+#sds-frame .sds-status a.bar { font-size: 120%; }
+
+
 
 /* ============================================================ */
 /* UI Elements */
@@ -528,14 +583,12 @@ button:hover {
 .show-lab #labBox,
 .show-milieu #milieuBox,
 .show-share #shareBox,
-.show-download #downloadBox,
 .show-help #helpBox { display: block; }
 .show-lab #labBtn,
 .show-milieu #milieuBtn,
 .show-settings #settingsBtn,
 .show-legend #legendBtn,
 .show-share #shareBtn,
-.show-download #downloadBtn,
 .show-help #helpBtn { background-color: red; }
 
 body:not(.enable-experiments) #milieuBtn,
@@ -546,35 +599,13 @@ body:not(.enable-experiments) #labBtn { display: none; }
 
 #shareBox {
   width: 250px;
-  max-height: 280px;
+  max-height: 300px;
 }
 #shareBox section { margin: 1em 0; }
 #shareBox section:first-of-type { margin-top: 0; }
 #shareBox section:last-of-type { margin-bottom: 0; }
 #shareBox input { width: 230px; padding: 5px; border: 1px solid #404040; }
 #shareBox section.fb { height: 33px; }
-
-
-/* ============================================================ */
-/* Download Box */
-
-#downloadBox {
-  width: 250px;
-  max-height: 155px;
-}
-#downloadBox section { margin: 1em 0; }
-#downloadBox section:first-of-type { margin-top: 0; }
-#downloadBox section:last-of-type { margin-bottom: 0; }
-
-body.sector-selected #downloadBox .inactive-content { display: none; }
-body:not(.sector-selected) #downloadBox .active-content { display: none; }
-
-#downloadBox h3 { font-style: italic; font-weight: normal;
-                  color: red;
-                  border-bottom: 2px solid red;
-                  margin-bottom: 10px; }
-#downloadBox ul { list-style-type: none; padding-left: 20px; }
-#downloadBox li { margin: 1em 0; }
 
 
 /* ============================================================ */
@@ -784,10 +815,6 @@ body:not(.search-results) #closeResultsBtn { display: none; }
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAQCAMAAADH72RtAAAANlBMVEUAAAAEBAQCAgIFBQUAAAAAAAADAwMCAgICAgIDAwMDAwMDAwMAAAACAgIDAwMCAgIDAwMDAwPH0tW3AAAAEXRSTlMAQYAzKBr46trGpVsO0aloUlej6yoAAABbSURBVBjTjY5JDoAwDAOdLkApW/7/WRKVqIs4dC6WR1VjNOwHBnj1o2F2bb83FlKExgME6QU1GSCJagDExfoZirnYBftZQp/4cp3wmUy20EwdRklNP3LSdPyaF6jxB4sTvWWFAAAAAElFTkSuQmCC);
 }
 
-#downloadBtn {
-  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAIVBMVEUAAAAAAAACAgIAAAADAwMCAgICAgIDAwMDAwMEBAQDAwPvSKVJAAAACnRSTlMAEoAs9tvOqKVBBAy8pgAAADtJREFUCNdjAIJVq4AEuQz2VUDQAGQwAuklAiChWatWLQbLMa1apQCkgAqjlgEpEMNqIYQBBGAGBCAYAL3GI6238XWoAAAAAElFTkSuQmCC);
-}
-
 #legendBtn {
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAANCAMAAACEsl7iAAAAUVBMVEUAAAAAAAAEBAQDAwMDAwMEBAQAAAAEBAQDAwMEBAQFBQUEBAQEBAQEBAQFBQUAAAAEBAQEBAQEBAQEBAQFBQUEBAQEBAQFBQUAAAAFBQUEBAR33/o6AAAAGnRSTlMABfdQ2b4l8eLLmdCugGId6sS1im9COS8SXRwxkREAAACKSURBVBjTZZCJCoQwDEQnmlatR7115/8/dFNhoXUfOSATmBBALOKdeokghraZXY03Z8OHEZKDe2ZFpvygYLRZu7lU64wLjmw8MJiS06EnFwimQqjYw1k7IMtL6LBbrVZNS/7ygWzPuNIE0d9VB4DNHMUMqYBXPkwQs1IdBKNqgEB2p13w/z/JMuMLpZEMR3+PXfgAAAAASUVORK5CYII=);
 }
@@ -860,22 +887,18 @@ body:not(.search-results) #closeResultsBtn { display: none; }
   margin-left: 4px;
 }
 
-@media only screen and (max-width: 680px) {
+@media only screen and (max-width: 640px) {
   #searchBox { width: 120px; }
 }
 @media only screen and (max-width: 640px) {
   #navBar { display: none; }
 }
-@media only screen and (max-width: 560px) {
-  #milieuBox, #milieuBtn,
-  #labBox, #labBtn { display: none !important; }
-}
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 520px) {
   #legendBox, #legendBtn { display: none !important; }
-  #bottom-pane { display: none; }
 }
+@media only screen and (max-width: 460px) {
+  #bottom-pane { display: none; }
 
-@media only screen and (max-width: 440px) {
   #searchBtn { display: none !important; }
   #searchBox { width: 70px; }
 
@@ -890,11 +913,13 @@ body:not(.search-results) #closeResultsBtn { display: none; }
   #settings-show,
   #settings-appearance-hexes { display: none; }
 }
-@media only screen and (max-width: 370px) {
-  #downloadBox, #downloadBtn { display: none !important; }
+@media only screen and (max-width: 420px) {
+  #labBox, #labBtn,
+  #milieuBox, #milieuBtn { display: none !important; }
+}
+@media only screen and (max-width: 330px) {
   #searchBox { width: 60px; }
 }
-
 
 @media only screen and (max-width: 420px) {
   .route-ui #routeBox {
@@ -909,7 +934,6 @@ body:not(.search-results) #closeResultsBtn { display: none; }
   .route-ui #milieuBox,
   .route-ui #legendBox,
   .route-ui #shareBox,
-  .route-ui #downloadBox,
   .route-ui #helpBox { display: none !important; }
 }
 

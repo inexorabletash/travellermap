@@ -35,7 +35,7 @@
 <meta property="fb:admins" content="617166358">
 
 <link rel="stylesheet" href="world.css?update=2017-06-03">
-<link rel="stylesheet" href="index.css?update=2017-06-10">
+<link rel="stylesheet" href="index.css?update=2017-06-11">
 <link rel="stylesheet" href="lib/add-to-home-screen/addtohomescreen.css">
 
 <!--[if lt IE 9]><script>alert("IE8 is no longer supported.");location = 'http://google.com/chrome';</script><![endif]-->
@@ -43,7 +43,7 @@
 <script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.29/polyfill.min.js"></script>
 <script src="map.js?update=2017-06-07"></script>
 <script src="index.js?update=2017-06-11"></script>
-<script src="world_util.js?update=2017-06-03"></script>
+<script src="world_util.js?update=2017-06-11"></script>
 
 <body class="hide-ui hide-footer wds-mini">
   <div id="mapContainer">
@@ -222,9 +222,6 @@
     </button>
     <button id="shareBtn"
             title="Share links to the map">
-    </button>
-    <button id="downloadBtn"
-            title="Download maps, data, and more">
     </button>
     <button id="legendBtn"
             title="Map legend and symbols">
@@ -461,6 +458,12 @@
 
   <div id="shareBox"
        class="ui hoverbox hoverbox-right">
+
+    <section>
+      <a id="download-snapshot" target="_blank" href="#" download="TravellerMapSnapshot">Save Snapshot</a>
+      (<a id="download-snapshot-pdf" target="_blank" href="#">or PDF</a>)
+    </section>
+
     <section>
       <a href="https://twitter.com/share" class="twitter-share-button" data-via="inexorabletash" data-size="large">Tweet</a>
     </section>
@@ -486,35 +489,6 @@
       Embed this HTML:
       <input readonly id="share-code" title="Copy and paste">
     </section>
-
-  </div>
-
-  <div id="downloadBox"
-       class="ui hoverbox hoverbox-right">
-    <section>
-      <a id="download-snapshot" target="_blank" href="#" download="TravellerMapSnapshot">Save Snapshot</a>
-      (<a id="download-snapshot-pdf" target="_blank" href="#">or PDF</a>)
-    </section>
-
-    <section class="inactive-content">
-      Click on the map to select a sector for more options.
-    </section>
-
-    <section class="active-content">
-      <h3 id="sector-name"></h3>
-      <ul>
-        <li>
-          <a id="download-booklet" target="_blank" href="#">Printable Booklet</a>
-        </li>
-        <li>
-          <a id="download-poster" target="_blank" href="#">Sector Poster</a>
-        </li>
-        <li>
-          <a id="download-data" target="_blank" href="#">Raw Sector Data</a>
-        </li>
-      </ul>
-    </section>
-
   </div>
 
   <div id="navBar"
@@ -602,6 +576,68 @@
     </script>
   </div>
 
+  <div id=sds-frame>
+    <div id=sds-scroll>
+      <div id=sds-data></div>
+    </div>
+    <button id=sds-closebtn></button>
+  </div>
+
+  <script id=sds-template type="text/x-handlebars-template">
+      <div class=sds-sectorname>
+        {{SectorName}}
+      </div>
+
+
+      <div class=sds-wiki-link>
+        <a target=wiki href="{{SectorWikiURL}}">{{SectorWikiURLNoScheme}}</a>
+      </div>
+
+      <div id=sds-print-links>
+        <a id=sds-booklet target=_blank href="{{BookletURL}}">Printable Booklet</a>
+        &bull;
+        <a id=sds-poster target=_blank href="{{PosterURL}}">Poster</a>
+        &bull;
+        <a id=sds-data target=_blank href="{{DataURL}}">Raw Data</a>
+      </div>
+
+      <div class=sds-status>
+        {{#Official}}
+          <a class="official" target=_blank
+            title="Sector data has been approved by the Traveller 5 Second Survey"
+            href="doc/credits#official"><span class="bar">&#x25AC;</span> Official <span class="bar">&#x25AC;</span></a>
+        {{/Official}}
+        {{#InReview}}
+          <a class="inreview" target=_blank
+            title="Sector data is being reviewed by the Traveller 5 Second Survey"
+            href="doc/credits#inreview"><span class="bar">&#x25AC;</span> In Review <span class="bar">&#x25AC;</span></a>
+        {{/InReview}}
+        {{#Unreviewed}}
+          <a class="unreviewed" target=_blank
+            title="Sector data has not yet been reviewed by the Traveller 5 Second Survey"
+            href="doc/credits#unreviewed"><span class="bar">&#x25AC;</span> Unreviewed <span class="bar">&#x25AC;</span></a>
+        {{/Unreviewed}}
+        {{#Preserve}}
+          <a class="preserve" target=_blank
+            title="This sector is set aside as a Referee's Preserve - the presented data is an example"
+            href="doc/credits#preserve"><span class="bar">&#x25AC;</span> Preserve <span class="bar">&#x25AC;</span></a>
+        {{/Preserve}}
+        {{#Apocryphal}}
+          <a class="apocryphal" target=_blank
+            title="Sector data is apocryphal - no longer considered official"
+            href="doc/credits#apocryphal"><span class="bar">&#x25AC;</span> Apocryphal <span class="bar">&#x25AC;</span></a>
+        {{/Apocryphal}}
+        {{#Unofficial}}
+          <a class="unofficial" target=_blank
+            title="Sector data is unofficial"
+            href="doc/credits#unofficial"><span class="bar">&#x25AC;</span> Unofficial <span class="bar">&#x25AC;</span></a>
+        {{/Unofficial}}
+        {{#Unmapped}}
+          &nbsp;
+        {{/Unmapped}}
+      </div>
+  </script>
+
   <div id=wds-shade></div>
   <div id=wds-frame>
     <div id=wds-scroll>
@@ -638,14 +674,10 @@
 
 <div class=wds-sectorhex><a target=wiki href="{{sector_url}}">{{Sector}}</a> {{Hex}}</div>
 
-<div style="font-size: 10px; margin-top: 8px">Wiki:
+<div style="font-size: 10px; margin-top: 8px; overflow: hidden; text-overflow: ellipsis;">
 {{#if Name}}
-  <a target=wiki href="{{world_url}}">World</a> &ndash;
+  <a style="text-decoration: underline;" target=wiki href="{{world_url}}">{{world_url_noscheme}}</a>
 {{/if}}
-{{#if SubsectorName}}
-  <a target=wiki href="{{ss_url}}">Subsector</a> &ndash;
-{{/if}}
-  <a target=wiki href="{{sector_url}}">Sector</a>
 </div>
 
 </div>

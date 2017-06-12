@@ -169,7 +169,7 @@ window.addEventListener('DOMContentLoaded', function() {
   // Search Bar
 
   // Mutually exclusive panes:
-  var SEARCH_PANES = ['search-results', 'route-ui', 'wds-visible'];
+  var SEARCH_PANES = ['search-results', 'route-ui', 'wds-visible', 'sds-visible'];
   function showSearchPane(pane) {
     if (pane !== 'wds-visible')
       document.body.classList.add('wds-mini');
@@ -276,7 +276,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
   // Options Bar
 
-  var PANELS = ['legend', 'lab', 'milieu', 'settings', 'share', 'download', 'help'];
+  var PANELS = ['legend', 'lab', 'milieu', 'settings', 'share', 'help'];
   PANELS.forEach(function(b) {
     $('#'+b+'Btn').addEventListener('click', function() {
       PANELS.forEach(function(p) {
@@ -349,7 +349,7 @@ window.addEventListener('DOMContentLoaded', function() {
     if (e.key === 'c' || e.keyCode === VK_C) {
       e.preventDefault();
       e.stopPropagation();
-      showCredits(map.worldX, map.worldY, {directAction: true});
+      updateContext(map.worldX, map.worldY, {directAction: true});
       showMain(map.worldX, map.worldY);
       return;
     }
@@ -468,7 +468,7 @@ window.addEventListener('DOMContentLoaded', function() {
   map.OnOptionsChanged = function(options) {
     optionObservers.forEach(function(o) { o(options); });
     $('#legendBox').classList.toggle('world_colors', options & Traveller.MapOptions.WorldColors);
-    showCredits(lastX || map.worldX, lastY || map.worldY, {refresh: true});
+    updateContext(lastX || map.worldX, lastY || map.worldY, {refresh: true});
     updatePermalink();
     savePreferences();
   };
@@ -477,21 +477,21 @@ window.addEventListener('DOMContentLoaded', function() {
     STYLES.forEach(function(s) {
       document.body.classList.toggle('style-' + s, s === style);
     });
+    updateContext(lastX || map.worldX, lastY || map.worldY, {refresh: true});
     updatePermalink();
-    updateSectorLinks();
     updateScaleIndicator();
     savePreferences();
   };
 
   map.OnScaleChanged = function() {
+    updateContext(lastX || map.worldX, lastY || map.worldY);
     updatePermalink();
-    updateSectorLinks();
     updateScaleIndicator();
     savePreferences();
   };
 
   map.OnPositionChanged = function() {
-    showCredits(map.worldX, map.worldY);
+    updateContext(map.worldX, map.worldY);
     updatePermalink();
     savePreferences();
   };
@@ -504,13 +504,13 @@ window.addEventListener('DOMContentLoaded', function() {
   }
 
   map.OnClick = function(world) {
-    showCredits(world.x, world.y, {directAction: true});
+    updateContext(world.x, world.y, {directAction: true});
     showMain(world.x, world.y);
     post({source: 'travellermap', type: 'click', location: world});
   };
 
   map.OnDoubleClick = function(world) {
-    showCredits(world.x, world.y, {directAction: true});
+    updateContext(world.x, world.y, {directAction: true});
     showMain(world.x, world.y);
     post({source: 'travellermap', type: 'doubleclick', location: world});
   };
@@ -658,7 +658,7 @@ window.addEventListener('DOMContentLoaded', function() {
         world.SectorX, world.SectorY, world.HexX, world.HexY);
       setTimeout(function() {
         map.animateTo(128, target.x, target.y, 10).then(function() {
-          showCredits(map.worldX, map.worldY, {directAction: true});
+          updateContext(map.worldX, map.worldY, {directAction: true});
           setTimeout(doAttract, TARGET_WAIT_MS);
         });
       }, HOME_WAIT_MS);
@@ -676,10 +676,14 @@ window.addEventListener('DOMContentLoaded', function() {
   var lastX, lastY, lastMilieu;
   var selectedSector = null;
   var selectedWorld = null;
-  var enableCredits;
+  var enableContext;
 
-  function showCredits(worldX, worldY, options) {
-    if (!enableCredits)
+  function makeWikiURL(suffix) {
+    return 'http://wiki.travellerrpg.com/' + encodeURIComponent(suffix.replace(/ /g, '_'));
+  }
+
+  function updateContext(worldX, worldY, options) {
+    if (!enableContext)
       return;
 
     options = Object.assign({}, options);
@@ -687,8 +691,10 @@ window.addEventListener('DOMContentLoaded', function() {
     var DATA_REQUEST_DELAY_MS = 250;
     var milieu = map.namedOptions.get('milieu');
 
-    if (!options.directAction && lastX === worldX && lastY === worldY && lastMilieu === milieu)
+    if (!(options.directAction || options.refresh)
+        && lastX === worldX && lastY === worldY && lastMilieu === milieu)
       return;
+
     lastX = worldX;
     lastY = worldY;
     lastMilieu = milieu;
@@ -701,16 +707,19 @@ window.addEventListener('DOMContentLoaded', function() {
     if (dataTimeout)
       window.clearTimeout(dataTimeout);
 
-    dataTimeout = setTimeout(function() {
-      dataRequest = Util.ignorable(Traveller.MapService.credits(worldX, worldY, {
-        milieu: milieu
-      }));
-      dataRequest.then(function(data) {
+    if (map.scale < 1) {
+      displayResults({});
+    } else {
+      dataTimeout = setTimeout(function() {
+        dataRequest = Util.ignorable(Traveller.MapService.credits(worldX, worldY, {
+          milieu: milieu
+        }));
+        dataRequest.then(function(data) {
           dataRequest = null;
           displayResults(data);
         });
-
-    }, options.directAction || options.refresh ? 0 : DATA_REQUEST_DELAY_MS);
+      }, options.directAction || options.refresh ? 0 : DATA_REQUEST_DELAY_MS);
+    }
 
     function displayResults(data) {
       if ('SectorTags' in data) {
@@ -731,123 +740,135 @@ window.addEventListener('DOMContentLoaded', function() {
         .map(function(p) { return data[p]; })
         .join(', ');
 
-      // Other UI
-      selectedSector = ('SectorName' in data && 'SectorTags' in data) ? data.SectorName : null;
+      if (data.SectorName) {
+        data.SectorWikiURL = makeWikiURL(data.SectorName + ' Sector');
+        data.SectorWikiURLNoScheme = data.SectorWikiURL.replace(/^\w+:\/\//, '');
+        data.BookletURL = Traveller.MapService.makeURL(
+          '/data/' + encodeURIComponent(data.SectorName) + '/booklet', {
+            milieu: milieu
+          });
 
-      if (map.scale <= 16 || document.body.classList.contains('route-ui')) {
-        selectedWorld = null;
-      } else if (options.directAction) {
-        selectedWorld = 'WorldHex' in data ? { name: data.WorldName, hex: data.WorldHex } : null;
+        data.PosterURL = Traveller.MapService.makeURL('/api/poster', {
+          sector: data.SectorName,
+          accept: 'application/pdf',
+          style: map.style,
+          milieu: milieu
+        });
+        data.DataURL = Traveller.MapService.makeURL('/api/sec', {
+          sector: data.SectorName, type: 'SecondSurvey',
+          milieu: milieu
+        });
       }
-      updateSectorLinks();
 
-      document.body.classList.toggle('sector-selected', selectedSector);
-      document.body.classList.toggle('world-selected', selectedWorld);
-      if (selectedWorld) {
-        hideSearchPanesExcept('wds-visible');
-      } else {
-        document.body.classList.remove('wds-visible');
-      }
 
+      // Credits
       $('#MetadataDisplay').innerHTML = template('#MetadataTemplate')(data);
+
+      // Sector/World Data Sheets
+      if (options.directAction && !document.body.classList.contains('route-ui')) {
+        selectedSector = ('SectorName' in data && 'SectorTags' in data) ? data.SectorName : null;
+        selectedWorld = map.scale > 16 && 'WorldHex' in data
+          ? { name: data.WorldName, hex: data.WorldHex } : null;
+      } else if (options.refresh) {
+        // Keep as-is
+      } else {
+        selectedSector = null;
+        selectedWorld = null;
+      }
+
+      if (selectedSector && (options.refresh || options.directAction))
+        $('#sds-data').innerHTML = template('#sds-template')(data);
+
+      if (options.directAction) {
+        document.body.classList.toggle('sector-selected', selectedSector);
+        document.body.classList.toggle('world-selected', selectedWorld);
+
+        if (selectedWorld) {
+          hideSearchPanesExcept('wds-visible');
+          showWorldData();
+        } else if (selectedSector && map.scale <= 16) {
+          showSearchPane('sds-visible');
+        } else {
+          document.body.classList.remove('sds-visible');
+          document.body.classList.remove('wds-visible');
+        }
+      }
     }
   }
 
-  function updateSectorLinks() {
-    if (!selectedSector)
+  function showWorldData() {
+    if (!selectedWorld)
       return;
     var milieu = map.namedOptions.get('milieu');
+    // World Data Sheet ("Info Card")
+    fetch(Traveller.MapService.makeURL(
+      '/api/jumpworlds?', {
+        sector: selectedSector, hex: selectedWorld.hex,
+        milieu: milieu,
+        jump: 0
+      }))
+      .then(function(response) {
+        if (!response.ok) throw Error(response.statusText);
+        return response.json();
+      })
+      .then(function(data) {
+        return Traveller.prepareWorld(data.Worlds[0]);
+      })
+      .then(function(world) {
+        if (!world) return undefined;
+        return Traveller.renderWorldImage(world, $('#wds-world-image'));
+      })
+      .then(function(world) {
+        if (!world) return;
+        Traveller.renderWorld(
+          world, $('#wds-world-template').innerHTML, $('#wds-world-data'));
 
-    var bookletURL = Traveller.MapService.makeURL(
-      '/data/' + encodeURIComponent(selectedSector) + '/booklet', {
-        milieu: milieu
-      });
-    var posterURL = Traveller.MapService.makeURL('/api/poster', {
-      sector: selectedSector, accept: 'application/pdf', style: map.style,
-      milieu: milieu
-    });
-    var dataURL = Traveller.MapService.makeURL('/api/sec', {
-      sector: selectedSector, type: 'SecondSurvey',
-      milieu: milieu
-    });
-
-    $('#downloadBox #sector-name').innerHTML = Util.escapeHTML(selectedSector + ' Sector');
-    $('#downloadBox a#download-booklet').href = bookletURL;
-    $('#downloadBox a#download-poster').href = posterURL;
-    $('#downloadBox a#download-data').href = dataURL;
-
-    if (selectedWorld) {
-
-      // World Data Sheet ("Info Card")
-      fetch(Traveller.MapService.makeURL(
-        '/api/jumpworlds?', {
-          sector: selectedSector, hex: selectedWorld.hex,
+        // Data Sheet
+        var dataSheetURL = Util.makeURL('world', {
+          sector: selectedSector,
+          hex: selectedWorld.hex,
           milieu: milieu,
-          jump: 0
-        }))
-        .then(function(response) {
-          if (!response.ok) throw Error(response.statusText);
-          return response.json();
-        })
-        .then(function(data) {
-          return Traveller.prepareWorld(data.Worlds[0]);
-        })
-        .then(function(world) {
-          if (!world) return undefined;
-          return Traveller.renderWorldImage(world, $('#wds-world-image'));
-        })
-        .then(function(world) {
-          if (!world) return;
-          Traveller.renderWorld(
-            world, $('#wds-world-template').innerHTML, $('#wds-world-data'));
+          style: map.style
+        });
+        $('#wds-print-link').href = dataSheetURL;
 
-          // Data Sheet
-          var dataSheetURL = Util.makeURL('world', {
+        // Jump Maps
+        var options = map.options & (
+          Traveller.MapOptions.BordersMask | Traveller.MapOptions.NamesMask |
+            Traveller.MapOptions.WorldColors | Traveller.MapOptions.FilledBorders);
+        for (var j = 1; j <= 6; ++j) {
+          var jumpMapURL = Traveller.MapService.makeURL('/api/jumpmap', {
             sector: selectedSector,
             hex: selectedWorld.hex,
             milieu: milieu,
-            style: map.style
+            jump: j,
+            style: map.style,
+            options: options
           });
-          $('#wds-print-link').href = dataSheetURL;
+          $('#wds-print-links a#world-jump-map-' + j).href = jumpMapURL;
+        }
 
-          // Jump Maps
-          var options = map.options & (
-            Traveller.MapOptions.BordersMask | Traveller.MapOptions.NamesMask |
-              Traveller.MapOptions.WorldColors | Traveller.MapOptions.FilledBorders);
-          for (var j = 1; j <= 6; ++j) {
-            var jumpMapURL = Traveller.MapService.makeURL('/api/jumpmap', {
-              sector: selectedSector,
-              hex: selectedWorld.hex,
-              milieu: milieu,
-              jump: j,
-              style: map.style,
-              options: options
-            });
-            $('#wds-print-links a#world-jump-map-' + j).href = jumpMapURL;
-          }
-
-          // Hook up any generated "expandy" fields
-          Array.from($$('.wds-expandy')).forEach(function(elem) {
-            elem.addEventListener('click', function(event) {
-              var c = elem.getAttribute('data-wds-expand');
-              $('#wds-frame').classList.toggle(c);
-            });
+        // Hook up any generated "expandy" fields
+        Array.from($$('.wds-expandy')).forEach(function(elem) {
+          elem.addEventListener('click', function(event) {
+            var c = elem.getAttribute('data-wds-expand');
+            $('#wds-frame').classList.toggle(c);
           });
-
-          // Hook up toggle
-          $('#wds-mini-toggle').addEventListener('click', function(event) {
-            document.body.classList.toggle('wds-mini');
-          });
-
-          showSearchPane('wds-visible');
-        })
-        .catch(function(error) {
-          console.warn('WDS error: ' + error.message);
         });
-    }
+
+        // Hook up toggle
+        $('#wds-mini-toggle').addEventListener('click', function(event) {
+          document.body.classList.toggle('wds-mini');
+        });
+
+        showSearchPane('wds-visible');
+      })
+      .catch(function(error) {
+        console.warn('WDS error: ' + error.message);
+      });
   }
 
-  Array.from($$('#wds-closebtn,#wds-shade')).forEach(function(element) {
+  Array.from($$('#wds-closebtn,#wds-shade,#sds-closebtn,#sds-shade')).forEach(function(element) {
     element.addEventListener('click', function(event) {
       hideSearchPanes();
     });
@@ -995,7 +1016,7 @@ window.addEventListener('DOMContentLoaded', function() {
           if (params.world && params.sector) {
             selectedSector = params.sector;
             selectedWorld = { name: params.name, hex: params.hex };
-            updateSectorLinks();
+            showWorldData();
           }
         });
       });
@@ -1197,5 +1218,5 @@ window.addEventListener('DOMContentLoaded', function() {
   });
 
   // After all async events from the map have fired...
-  setTimeout(function() { enableCredits = true; }, 0);
+  setTimeout(function() { enableContext = true; }, 0);
 });
