@@ -210,7 +210,7 @@ input[type=text] {
 .metadata-status .unreviewed { color: orange; }
 .metadata-status .preserve { color: green; }
 .metadata-status .apocryphal { color: magenta; }
-.metadata-status .unofficial { color: yellow; }
+.metadata-status .unofficial { color: gold; }
 .metadata-status .bar { font-size: 120%; }
 .style-print .metadata-status .preserve,
 .style-print .metadata-status .apocryphal,
@@ -365,6 +365,14 @@ body:not(.wds-visible) #wds-frame { display: none; }
   content: "\25B2"; /* U+25B2 BLACK UP-POINTING TRIANGLE */
 }
 
+.wds-wiki-link {
+  font-size: 10px;
+  margin-top: 8px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
 .sds-sectorname {
   font-family: Optima, Marcellus, "Times New Roman", serif;
   font-size: 26px;
@@ -382,6 +390,7 @@ body:not(.wds-visible) #wds-frame { display: none; }
 .sds-wiki-link {
   width: 100%;
   overflow: hidden;
+  white-space: nowrap;
   text-overflow: ellipsis;
 }
 
