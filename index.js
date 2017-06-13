@@ -270,6 +270,7 @@ window.addEventListener('DOMContentLoaded', function() {
     if (e.key === 'Escape' || e.keyCode === VK_ESCAPE) {
       hideSearchPanes();
       map.SetMain(null);
+      resizeMap();
       $('#dragContainer').focus();
     }
   });
