@@ -785,7 +785,7 @@ window.addEventListener('DOMContentLoaded', function() {
         document.body.classList.toggle('world-selected', selectedWorld);
 
         if (selectedWorld) {
-          hideSearchPanesExcept('wds-visible');
+          showSearchPane('wds-visible');
           showWorldData();
         } else if (selectedSector && map.scale <= 16) {
           showSearchPane('sds-visible');
@@ -800,6 +800,7 @@ window.addEventListener('DOMContentLoaded', function() {
   function showWorldData() {
     if (!selectedWorld)
       return;
+    $('#wds-spinner').style.display = 'block';
     var milieu = map.namedOptions.get('milieu');
     // World Data Sheet ("Info Card")
     fetch(Traveller.MapService.makeURL(
@@ -861,11 +862,12 @@ window.addEventListener('DOMContentLoaded', function() {
         $('#wds-mini-toggle').addEventListener('click', function(event) {
           document.body.classList.toggle('wds-mini');
         });
-
-        showSearchPane('wds-visible');
       })
       .catch(function(error) {
         console.warn('WDS error: ' + error.message);
+      })
+      .then(function() {
+        $('#wds-spinner').style.display = 'none';
       });
   }
 
