@@ -205,12 +205,12 @@ input[type=text] {
 .style-fasa #bottom-pane { color: #5C4033; }
 
 .metadata-status a { text-decoration: none; font-weight: bold; }
-.metadata-status .official { visibility: hidden; }
-.metadata-status .inreview { color: orange; }
-.metadata-status .unreviewed { color: orange; }
+.metadata-status .official { color: green; visibility: hidden; }
 .metadata-status .preserve { color: green; }
+.metadata-status .inreview { color: gold; }
+.metadata-status .unreviewed { color: gold; }
 .metadata-status .apocryphal { color: magenta; }
-.metadata-status .unofficial { color: gold; }
+.metadata-status .unofficial { color: red; }
 .metadata-status .bar { font-size: 120%; }
 .style-print .metadata-status .preserve,
 .style-print .metadata-status .apocryphal,
@@ -415,12 +415,12 @@ body:not(.wds-visible) #wds-frame { display: none; }
 }
 
 #sds-frame .sds-status a { text-decoration: none; font-weight: bold; }
-#sds-frame .sds-status a.official { color: red; }
+#sds-frame .sds-status a.official { color: green; }
+#sds-frame .sds-status a.preserve { color: green; }
 #sds-frame .sds-status a.inreview { color: orange; }
 #sds-frame .sds-status a.unreviewed { color: orange; }
-#sds-frame .sds-status a.preserve { color: green; }
 #sds-frame .sds-status a.apocryphal { color: magenta; }
-#sds-frame .sds-status a.unofficial { color: gold; }
+#sds-frame .sds-status a.unofficial { color: red; }
 #sds-frame .sds-status a.bar { font-size: 120%; }
 
 
