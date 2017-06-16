@@ -42,8 +42,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
 <script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.29/polyfill.min.js"></script>
 <script src="map.js?update=2017-06-07"></script>
-<script src="index.js?update=2017-06-14"></script>
-<script src="world_util.js?update=2017-06-11"></script>
+<script src="index.js?update=2017-06-15"></script>
+<script src="world_util.js?update=2017-06-15"></script>
 
 <body class="hide-ui hide-footer wds-mini">
   <div id="mapContainer">
@@ -644,16 +644,6 @@
     <div id=wds-scroll>
       <canvas id=wds-world-image width=200 height=200></canvas>
       <div id=wds-world-data></div>
-      <div id="wds-print-links">
-        <a id="wds-print-link" target="world-data-sheet" href="#">Printable Data Sheet</a>
-        <br>
-        <a id="world-jump-map-1" target="_blank" href="#">J-1</a> &bull;
-        <a id="world-jump-map-2" target="_blank" href="#">J-2</a> &bull;
-        <a id="world-jump-map-3" target="_blank" href="#">J-3</a> &bull;
-        <a id="world-jump-map-4" target="_blank" href="#">J-4</a> &bull;
-        <a id="world-jump-map-5" target="_blank" href="#">J-5</a> &bull;
-        <a id="world-jump-map-6" target="_blank" href="#">J-6</a>
-      </div>
     </div>
     <div id=wds-spinner></div>
     <button id=wds-closebtn></button>
@@ -814,6 +804,17 @@
 </tbody>
 {{/Zone}}
 </table>
+
+<div id="wds-print-links">
+  <a id="wds-print-link" target="world-data-sheet" href="{{DataSheetURL}}">Printable Data Sheet</a>
+  <br>
+  <a id="world-jump-map-1" target="_blank" href="{{JumpMapURL}}&jump=1">J-1</a> &bull;
+  <a id="world-jump-map-2" target="_blank" href="{{JumpMapURL}}&jump=2">J-2</a> &bull;
+  <a id="world-jump-map-3" target="_blank" href="{{JumpMapURL}}&jump=3">J-3</a> &bull;
+  <a id="world-jump-map-4" target="_blank" href="{{JumpMapURL}}&jump=4">J-4</a> &bull;
+  <a id="world-jump-map-5" target="_blank" href="{{JumpMapURL}}&jump=5">J-5</a> &bull;
+  <a id="world-jump-map-6" target="_blank" href="{{JumpMapURL}}&jump=6">J-6</a>
+</div>
 
 </script>
 

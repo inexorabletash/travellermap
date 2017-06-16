@@ -683,12 +683,6 @@
     });
   };
 
-  Traveller.renderWorld = function(world, template, container) {
-    if (!world) return undefined;
-    container.innerHTML = Handlebars.compile(template)(world);
-    return world;
-  };
-
   function supportsCompositeMode(ctx, mode) {
     var orig = ctx.globalCompositeOperation;
     ctx.globalCompositeOperation = mode;

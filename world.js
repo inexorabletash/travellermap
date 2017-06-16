@@ -51,8 +51,8 @@
               if (!world) return;
 
               $('#wds-world-image').classList.add('wds-ready');
-              Traveller.renderWorld(
-                world, $('#wds-world-template').innerHTML, $('#wds-world-data'));
+              $('#wds-world-data').innerHTML =
+                Handlebars.compile($('#wds-world-template').innerHTML)(world);
 
               // Document title
               document.title = Handlebars.compile(

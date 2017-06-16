@@ -800,12 +800,16 @@ window.addEventListener('DOMContentLoaded', function() {
   function showWorldData() {
     if (!selectedWorld)
       return;
+    var context = {
+      sector: selectedSector,
+      hex: selectedWorld.hex
+    };
     $('#wds-spinner').style.display = 'block';
     var milieu = map.namedOptions.get('milieu');
     // World Data Sheet ("Info Card")
     fetch(Traveller.MapService.makeURL(
       '/api/jumpworlds?', {
-        sector: selectedSector, hex: selectedWorld.hex,
+        sector: context.sector, hex: context.hex,
         milieu: milieu,
         jump: 0
       }))
@@ -822,33 +826,27 @@ window.addEventListener('DOMContentLoaded', function() {
       })
       .then(function(world) {
         if (!world) return;
-        Traveller.renderWorld(
-          world, $('#wds-world-template').innerHTML, $('#wds-world-data'));
 
         // Data Sheet
-        var dataSheetURL = Util.makeURL('world', {
-          sector: selectedSector,
-          hex: selectedWorld.hex,
+        world.DataSheetURL = Util.makeURL('world', {
+          sector: context.sector,
+          hex: context.hex,
           milieu: milieu,
           style: map.style
         });
-        $('#wds-print-link').href = dataSheetURL;
 
         // Jump Maps
-        var options = map.options & (
-          Traveller.MapOptions.BordersMask | Traveller.MapOptions.NamesMask |
-            Traveller.MapOptions.WorldColors | Traveller.MapOptions.FilledBorders);
-        for (var j = 1; j <= 6; ++j) {
-          var jumpMapURL = Traveller.MapService.makeURL('/api/jumpmap', {
-            sector: selectedSector,
-            hex: selectedWorld.hex,
-            milieu: milieu,
-            jump: j,
-            style: map.style,
-            options: options
-          });
-          $('#wds-print-links a#world-jump-map-' + j).href = jumpMapURL;
-        }
+        world.JumpMapURL = Traveller.MapService.makeURL('/api/jumpmap', {
+          sector: context.sector,
+          hex: context.hex,
+          milieu: milieu,
+          style: map.style,
+          options: map.options &
+            (Traveller.MapOptions.BordersMask | Traveller.MapOptions.NamesMask |
+             Traveller.MapOptions.WorldColors | Traveller.MapOptions.FilledBorders)
+        });
+
+       $('#wds-world-data').innerHTML = template('#wds-world-template')(world);
 
         // Hook up any generated "expandy" fields
         Array.from($$('.wds-expandy')).forEach(function(elem) {
