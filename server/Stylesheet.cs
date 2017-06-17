@@ -159,7 +159,7 @@ namespace Maps.Rendering
         Subsector
     };
 
-    public enum Style { Poster, Atlas, Candy, Print, Draft, FASA };
+    public enum Style { Poster, Atlas, Candy, Print, Draft, FASA, Terminal };
 
     internal class Stylesheet
     {
@@ -429,6 +429,8 @@ namespace Maps.Rendering
             capitalOverlay.fillColor = Color.FromArgb(0x80, Color.Green);
             capitalOverlayAltA.fillColor = Color.FromArgb(0x80, Color.Blue);
             capitalOverlayAltB.fillColor = Color.FromArgb(0x80, Color.Yellow);
+
+            bool fadeSectorSubsectorNames = true;
 
             switch (style)
             {
@@ -738,12 +740,105 @@ namespace Maps.Rendering
 
                         break;
                     }
+                case Style.Terminal:
+                    {
+                        fadeSectorSubsectorNames = false;
+                        showGalaxyBackground = false;
+                        lightBackground = false;
+
+                        backgroundColor = Color.Black;
+                        foregroundColor = Color.Cyan;
+                        highlightColor = Color.White;
+
+                        lightColor = Color.LightBlue;
+                        darkColor = Color.DarkBlue;
+                        dimColor = Color.DimGray;
+
+                        subsectorGrid.pen.color = Color.Cyan;
+
+                        const string FONT_NAME = "Courier New";
+                        worlds.fontInfo.name = FONT_NAME;
+                        worlds.smallFontInfo.name = FONT_NAME;
+                        starportFont.name = FONT_NAME;
+                        worlds.largeFontInfo.name = FONT_NAME;
+                        worlds.largeFontInfo.size = worlds.fontInfo.size * 1.25f;
+                        worlds.fontInfo.size *= 0.8f;
+
+                        macroNames.fontInfo.name = FONT_NAME;
+                        macroNames.mediumFontInfo.name = FONT_NAME;
+                        macroNames.smallFontInfo.name = FONT_NAME;
+                        megaNames.fontInfo.name = FONT_NAME;
+                        megaNames.mediumFontInfo.name = FONT_NAME;
+                        megaNames.smallFontInfo.name = FONT_NAME;
+                        microBorders.smallFontInfo.name = FONT_NAME;
+                        microBorders.largeFontInfo.name = FONT_NAME;
+                        microBorders.fontInfo.name = FONT_NAME;
+                        macroBorders.fontInfo.name = FONT_NAME;
+                        macroRoutes.fontInfo.name = FONT_NAME;
+                        capitals.fontInfo.name = FONT_NAME;
+                        macroBorders.smallFontInfo.name = FONT_NAME;
+
+                        worlds.textStyle.Uppercase = true;
+                        microBorders.textStyle.Uppercase = true;
+                        microBorders.fontInfo.style |= FontStyle.Underline;
+
+                        sectorName.textColor = foregroundColor;
+                        sectorName.textStyle.Scale = new SizeF(1, 1);
+                        sectorName.textStyle.Rotation = 0;
+                        sectorName.textStyle.Uppercase = true;
+                        sectorName.fontInfo.style |= FontStyle.Bold;
+                        sectorName.fontInfo.size *= 0.5f;
+
+                        subsectorNames.textColor = foregroundColor;
+                        subsectorNames.textStyle.Scale = new SizeF(1, 1);
+                        subsectorNames.textStyle.Rotation = 0;
+                        subsectorNames.textStyle.Uppercase = true;
+                        subsectorNames.fontInfo.style |= FontStyle.Bold;
+                        subsectorNames.fontInfo.size *= 0.5f;
+
+                        worlds.textStyle.Uppercase = true;
+
+                        worlds.textBackgroundStyle = TextBackgroundStyle.None;
+
+                        subsectorNames.fontInfo.name = FONT_NAME;
+                        sectorName.fontInfo.name = FONT_NAME;
+
+                        worlds.largeFontInfo.style |= FontStyle.Underline;
+
+                        microBorders.pen.width = onePixel * 4;
+                        microBorders.pen.dashStyle = DashStyle.Dot;
+
+                        worldNoWater.fillColor = foregroundColor;
+                        worldWater.fillColor = Color.Empty;
+                        worldWater.pen = new PenInfo(foregroundColor, onePixel * 2);
+
+                        amberZone.pen.color = foregroundColor;
+                        amberZone.pen.width = onePixel;
+                        redZone.pen.width = onePixel * 2;
+
+                        microRoutes.pen.color = Color.Gray;
+
+                        parsecGrid.pen.color = Color.Plum;
+                        microBorders.textColor = Color.Cyan;
+
+                        riftOpacity = Math.Min(riftOpacity, 0.30f);
+
+                        numberAllHexes = true;
+
+                        if (scale >= 64)
+                            subsectorNames.visible = false;
+
+                        break;
+                    }
             }
 
-            sectorName.textColor = scale < 16 ? foregroundColor :
-                scale < 48 ? darkColor : dimColor;
-            subsectorNames.textColor = scale < 16 ? foregroundColor :
-                scale < 48 ? darkColor : dimColor;
+            if (fadeSectorSubsectorNames)
+            {
+                sectorName.textColor = scale < 16 ? foregroundColor :
+                    scale < 48 ? darkColor : dimColor;
+                subsectorNames.textColor = scale < 16 ? foregroundColor :
+                    scale < 48 ? darkColor : dimColor;
+            }
 
             if (style == Style.Candy)
             {
