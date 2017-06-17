@@ -35,14 +35,14 @@
 <meta property="fb:admins" content="617166358">
 
 <link rel="stylesheet" href="world.css?update=2017-06-03">
-<link rel="stylesheet" href="index.css?update=2017-06-15">
+<link rel="stylesheet" href="index.css?update=2017-06-17">
 <link rel="stylesheet" href="lib/add-to-home-screen/addtohomescreen.css">
 
 <!--[if lt IE 9]><script>alert("IE8 is no longer supported.");location = 'http://google.com/chrome';</script><![endif]-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
 <script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.29/polyfill.min.js"></script>
 <script src="map.js?update=2017-06-07"></script>
-<script src="index.js?update=2017-06-16"></script>
+<script src="index.js?update=2017-06-17"></script>
 <script src="world_util.js?update=2017-06-15"></script>
 
 <body class="hide-ui hide-footer wds-mini">
@@ -69,12 +69,12 @@
              autocapitalize="none"
              spellcheck="false"
              >
-      <button id="searchBtn"
+      <button id="searchBtn" class=dim
               title="Search">
       </button>
     </form>
 
-    <button id="closeResultsBtn"
+    <button id="closeSearchBtn" class=dim
             title="Close search">
     </button>
 
@@ -145,9 +145,6 @@
 
   <div id="routeBox"
        class="ui hoverbox hoverbox-left">
-    <button id="closeRouteBtn"
-            title="Close route">
-    </button>
     <form id="routeForm" action="get">
       <div id="routeInputWrapper">
         <input type="text"
@@ -170,12 +167,15 @@
                autocapitalize="none"
                spellcheck="false">
       </div>
-      <button id="J-1" name="jump" title="Calculate a Jump-1 route">J-1</button>
-      <button id="J-2" name="jump" title="Calculate a Jump-2 route">J-2</button>
-      <button id="J-3" name="jump" title="Calculate a Jump-3 route">J-3</button>
-      <button id="J-4" name="jump" title="Calculate a Jump-4 route">J-4</button>
-      <button id="J-5" name="jump" title="Calculate a Jump-5 route">J-5</button>
-      <button id="J-6" name="jump" title="Calculate a Jump-6 route">J-6</button>
+
+      <!--
+      --><button id="J-1" name="jump" title="Calculate a Jump-1 route">J-1</button><!--
+      --><button id="J-2" name="jump" title="Calculate a Jump-2 route">J-2</button><!--
+      --><button id="J-3" name="jump" title="Calculate a Jump-3 route">J-3</button><!--
+      --><button id="J-4" name="jump" title="Calculate a Jump-4 route">J-4</button><!--
+      --><button id="J-5" name="jump" title="Calculate a Jump-5 route">J-5</button><!--
+      --><button id="J-6" name="jump" title="Calculate a Jump-6 route">J-6</button>
+
       <div id="routeDisplay">
         <div id="routePath"></div>
         <div id="routeOptions">
@@ -191,6 +191,9 @@
         </div>
       </div>
     </form>
+    <button id="closeRouteBtn" class=dim
+            title="Close route">
+    </button>
 
     <script id="RouteResultsTemplate" type="text/x-handlebars-template">
       <span class="route-summary">
@@ -243,27 +246,31 @@
 
   <div id="settingsBox"
        class="ui hoverbox hoverbox-right settings">
-    <section id="styles">
-      <button id="settingsBtn-poster"
+    <section id="styles"><!--
+      --><button id="settingsBtn-poster"
               title="Classic black background"
-              ></button>
-      <button id="settingsBtn-atlas"
+              ></button><!--
+      --><button id="settingsBtn-atlas"
               title="Black on white"
-              ></button>
-      <button id="settingsBtn-print"
+              ></button><!--
+      --><button id="settingsBtn-print"
               title="Printer friendly"
-              ></button>
-      <button id="settingsBtn-candy"
+              ></button><!--
+      --><button id="settingsBtn-candy"
               title="Eye candy"
-              ></button>
+              ></button><!--
 
-      <button id="settingsBtn-draft"
+      --><button id="settingsBtn-draft"
               style="display: none;"
               title="Draft"
-              ></button>
-      <button id="settingsBtn-fasa"
+              ></button><!--
+      --><button id="settingsBtn-fasa"
               style="display: none;"
               title="FASA"
+              ></button><!--
+      --><button id="settingsBtn-terminal"
+              style="display: none;"
+              title="Terminal"
               ></button>
     </section>
 
@@ -577,11 +584,11 @@
     </script>
   </div>
 
-  <div id=sds-frame>
-    <div id=sds-scroll>
+  <div id=sds-frame class=ds-frame>
+    <div id=sds-scroll class=ds-scroll>
       <div id=sds-data></div>
     </div>
-    <button id=sds-closebtn></button>
+    <button id=sds-closebtn class="ds-closebtn dim"></button>
   </div>
 
   <script id=sds-template type="text/x-handlebars-template">
@@ -594,7 +601,7 @@
         <a target=wiki href="{{SectorWikiURL}}">{{SectorWikiURLNoScheme}}</a>
       </div>
 
-      <div id=sds-print-links>
+      <div id=sds-print-links class=ds-print-links>
         <a id=sds-booklet target=_blank href="{{BookletURL}}">Booklet</a>
         &bull;
         <a id=sds-poster target=_blank href="{{PosterURL}}">Poster</a>
@@ -640,13 +647,13 @@
   </script>
 
   <div id=wds-shade></div>
-  <div id=wds-frame>
-    <div id=wds-scroll>
+  <div id=wds-frame class=ds-frame>
+    <div id=wds-scroll class=ds-scroll>
       <canvas id=wds-world-image width=200 height=200></canvas>
       <div id=wds-world-data></div>
     </div>
     <div id=wds-spinner></div>
-    <button id=wds-closebtn></button>
+    <button id=wds-closebtn class="ds-closebtn dim"></button>
   </div>
 
 <script id=wds-world-template type="text/x-handlebars-template">
@@ -674,14 +681,14 @@
 
 </div>
 
-<div id=wds-mini-toggle></div>
+<div id=wds-mini-toggle class=dim></div>
 
 <table class=wds-properties>
 {{#if map_thumb}}
 <tbody>
 <tr>
 <td colspan=3 style="text-align: center;">
-<img src="{{map_thumb}}" style="width: 272px; height: auto; border: 2px solid black;">
+<img id=wds-world-map src="{{map_thumb}}" style="width: 272px; height: auto; border: 2px solid black;">
 </td>
 </tr>
 </tbody>
@@ -805,15 +812,15 @@
 {{/Zone}}
 </table>
 
-<div id="wds-print-links">
-  <a id="wds-print-link" target="world-data-sheet" href="{{DataSheetURL}}">Print</a>
-  <br>
-  <a id="world-jump-map-1" target="_blank" href="{{JumpMapURL}}&jump=1">J-1</a> &bull;
-  <a id="world-jump-map-2" target="_blank" href="{{JumpMapURL}}&jump=2">J-2</a> &bull;
-  <a id="world-jump-map-3" target="_blank" href="{{JumpMapURL}}&jump=3">J-3</a> &bull;
-  <a id="world-jump-map-4" target="_blank" href="{{JumpMapURL}}&jump=4">J-4</a> &bull;
-  <a id="world-jump-map-5" target="_blank" href="{{JumpMapURL}}&jump=5">J-5</a> &bull;
-  <a id="world-jump-map-6" target="_blank" href="{{JumpMapURL}}&jump=6">J-6</a>
+<div id="wds-print-links" class=ds-print-links>
+  <a target="world-data-sheet" href="{{DataSheetURL}}">Print</a>
+  <br><br>
+  <a target="_blank" href="{{JumpMapURL}}&jump=1">J-1</a> &bull;
+  <a target="_blank" href="{{JumpMapURL}}&jump=2">J-2</a> &bull;
+  <a target="_blank" href="{{JumpMapURL}}&jump=3">J-3</a> &bull;
+  <a target="_blank" href="{{JumpMapURL}}&jump=4">J-4</a> &bull;
+  <a target="_blank" href="{{JumpMapURL}}&jump=5">J-5</a> &bull;
+  <a target="_blank" href="{{JumpMapURL}}&jump=6">J-6</a>
 </div>
 
 </script>

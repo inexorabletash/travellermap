@@ -202,7 +202,7 @@ window.addEventListener('DOMContentLoaded', function() {
     search($('#searchBox').value, {typed: true});
   }, SEARCH_TIMER_DELAY));
 
-  $('#closeResultsBtn').addEventListener('click', function() {
+  $('#closeSearchBtn').addEventListener('click', function() {
     $('#searchBox').value = '';
     lastQuery = null;
     document.body.classList.remove('search-results');
@@ -293,7 +293,7 @@ window.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  var STYLES = ['poster', 'atlas', 'print', 'candy', 'draft', 'fasa'];
+  var STYLES = ['poster', 'atlas', 'print', 'candy', 'draft', 'fasa', 'terminal'];
   STYLES.forEach(function(s) {
     $('#settingsBtn-'+s).addEventListener('click', function() { map.style = s; });
   });
