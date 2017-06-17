@@ -1557,7 +1557,8 @@ var Util = {
     if (!options.immediate &&
         'scale' in options &&
         this.shouldAnimateTo(options.scale, target.x, target.y)) {
-      this.animateTo(options.scale, target.x, target.y);
+      this.animateTo(options.scale, target.x, target.y)
+        .catch(function(){});
       return;
     }
 

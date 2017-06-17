@@ -661,7 +661,7 @@ window.addEventListener('DOMContentLoaded', function() {
         map.animateTo(128, target.x, target.y, 10).then(function() {
           updateContext(map.worldX, map.worldY, {directAction: true});
           setTimeout(doAttract, TARGET_WAIT_MS);
-        });
+        }, function() {});
       }, HOME_WAIT_MS);
     });
   }
@@ -677,6 +677,7 @@ window.addEventListener('DOMContentLoaded', function() {
   var lastX, lastY, lastMilieu;
   var selectedSector = null;
   var selectedWorld = null;
+  var ignoreIndirect = false;
   var enableContext;
 
   function makeWikiURL(suffix) {
@@ -689,7 +690,11 @@ window.addEventListener('DOMContentLoaded', function() {
 
     options = Object.assign({}, options);
 
-    var DATA_REQUEST_DELAY_MS = 250;
+    if (ignoreIndirect && !options.directAction)
+      return;
+    ignoreIndirect = options.ignoreIndirect;
+
+    var DATA_REQUEST_DELAY_MS = 100;
     var milieu = map.namedOptions.get('milieu');
 
     if (!(options.directAction || options.refresh)
@@ -973,7 +978,10 @@ window.addEventListener('DOMContentLoaded', function() {
           hx = (Traveller.Astrometrics.SectorWidth / 2);
           hy = (Traveller.Astrometrics.SectorHeight / 2);
           scale = sector.Scale || 8;
-          sector.href = Util.makeURL(base_url, {scale: scale, sx: sx, sy: sy, hx: hx, hy: hy});
+          sector.href = Util.makeURL(base_url, {
+            scale: scale, sx: sx, sy: sy, hx: hx, hy: hy,
+            sector: sector.Name
+          });
           applyTags(sector);
         } else if (item.World) {
           var world = item.World;
@@ -1015,10 +1023,16 @@ window.addEventListener('DOMContentLoaded', function() {
           if (mapElement.offsetWidth < 640)
             document.body.classList.remove('search-results');
 
+          var coords = Traveller.Astrometrics.sectorHexToWorld(
+            params.sx|0, params.sy|0, params.hx|0, params.hy|0);
+
           if (params.world && params.sector) {
             selectedSector = params.sector;
             selectedWorld = { name: params.name, hex: params.hex };
-            showWorldData();
+            updateContext(coords.x, coords.y, {directAction: true, ignoreIndirect: true});
+          } else if (params.sector) {
+            selectedSector = params.sector;
+            updateContext(coords.x, coords.y, {directAction: true, ignoreIndirect: true});
           }
         });
       });
