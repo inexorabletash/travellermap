@@ -832,7 +832,8 @@ window.addEventListener('DOMContentLoaded', function() {
           sector: context.sector,
           hex: context.hex,
           milieu: milieu,
-          style: map.style
+          style: map.style,
+          print: true
         });
 
         // Jump Maps

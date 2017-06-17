@@ -118,7 +118,12 @@
             }));
         }
         return Promise.all(promises);
-      }, function(reason) {
+      })
+      .then(function() {
+        if (searchParams.has('print'))
+          window.print();
+      })
+      .catch(function(reason) {
         console.error(reason);
       });
   });
