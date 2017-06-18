@@ -133,6 +133,8 @@
       var short_name = sector.name.replace(/^The /, '');
 
       index.push({name: short_name, page: ++page_count});
+      page_count += sector.page_count;
+
       if (sector.credits)
         credits.push({name: short_name, credits: sector.credits});
       else
