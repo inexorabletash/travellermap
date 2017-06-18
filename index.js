@@ -171,17 +171,17 @@ window.addEventListener('DOMContentLoaded', function() {
   // Mutually exclusive panes:
   var SEARCH_PANES = ['search-results', 'route-ui', 'wds-visible', 'sds-visible'];
   function showSearchPane(pane) {
-    if (pane !== 'wds-visible')
-      document.body.classList.add('wds-mini');
+    if (!['wds-visible', 'sds-visible'].includes(pane))
+      document.body.classList.add('ds-mini');
     SEARCH_PANES.forEach(function(c) { document.body.classList.toggle(c, c === pane);  });
   }
   function hideSearchPanes() {
-    document.body.classList.add('wds-mini');
+    document.body.classList.add('ds-mini');
     SEARCH_PANES.forEach(function(c) { document.body.classList.remove(c); });
   }
   function hideSearchPanesExcept(pane) {
-    if (pane !== 'wds-visible')
-      document.body.classList.add('wds-mini');
+    if (!['wds-visible', 'sds-visible'].includes(pane))
+      document.body.classList.add('ds-mini');
     SEARCH_PANES
       .filter(function(c) { return c !== pane; })
       .forEach(function(c) { document.body.classList.remove(c); });
@@ -784,8 +784,13 @@ window.addEventListener('DOMContentLoaded', function() {
         selectedWorld = null;
       }
 
-      if (selectedSector && (options.refresh || options.directAction))
+      if (selectedSector && (options.refresh || options.directAction)) {
         $('#sds-data').innerHTML = template('#sds-template')(data);
+        // Hook up toggle
+        $('#sds-data .ds-mini-toggle').addEventListener('click', function(event) {
+          document.body.classList.toggle('ds-mini');
+        });
+      }
 
       if (options.directAction) {
         document.body.classList.toggle('sector-selected', selectedSector);
@@ -797,8 +802,7 @@ window.addEventListener('DOMContentLoaded', function() {
         } else if (selectedSector && map.scale <= 16) {
           showSearchPane('sds-visible');
         } else {
-          document.body.classList.remove('sds-visible');
-          document.body.classList.remove('wds-visible');
+          hideSearchPanes();
         }
       }
     }
@@ -854,7 +858,7 @@ window.addEventListener('DOMContentLoaded', function() {
              Traveller.MapOptions.WorldColors | Traveller.MapOptions.FilledBorders)
         });
 
-       $('#wds-world-data').innerHTML = template('#wds-world-template')(world);
+       $('#wds-data').innerHTML = template('#wds-template')(world);
 
         // Hook up any generated "expandy" fields
         Array.from($$('.wds-expandy')).forEach(function(elem) {
@@ -865,19 +869,19 @@ window.addEventListener('DOMContentLoaded', function() {
         });
 
         // Hook up toggle
-        $('#wds-mini-toggle').addEventListener('click', function(event) {
-          document.body.classList.toggle('wds-mini');
+        $('#wds-data .ds-mini-toggle').addEventListener('click', function(event) {
+          document.body.classList.toggle('ds-mini');
         });
       })
       .catch(function(error) {
-        console.warn('WDS error: ' + error.message);
+        console.warn(error);
       })
       .then(function() {
         $('#wds-spinner').style.display = 'none';
       });
   }
 
-  Array.from($$('#wds-closebtn,#wds-shade,#sds-closebtn,#sds-shade')).forEach(function(element) {
+  Array.from($$('.ds-closebtn,#ds-shade')).forEach(function(element) {
     element.addEventListener('click', function(event) {
       hideSearchPanes();
     });

@@ -45,7 +45,7 @@
 <script src="index.js?update=2017-06-17"></script>
 <script src="world_util.js?update=2017-06-15"></script>
 
-<body class="hide-ui hide-footer wds-mini">
+<body class="hide-ui hide-footer ds-mini">
   <div id="mapContainer">
     <div id="dragContainer"
          tabindex="0"
@@ -533,7 +533,6 @@
     <script id="MetadataTemplate" type="text/x-handlebars-template">
       <div>
         {{SectorName}}
-        {{#SectorEra}}(circa {{.}}){{/SectorEra}}
       </div>
       <div class="credits">
         {{Attribution}}
@@ -645,19 +644,48 @@
           &nbsp;
         {{/Unmapped}}
       </div>
+
+      <div class="ds-mini-toggle dim"></div>
+
+      <div class=ds-mini-hidden>
+
+      <div>
+      {{#if Credits}}
+        {{{Credits}}}
+      {{else}}
+        {{Attribution}}
+      {{/if}}
+      </div>
+
+      {{#SectorRef}}
+      <div>
+        <a target="_blank" href="{{.}}">{{.}}</a>
+      </div>
+      {{/SectorRef}}
+
+      {{#ProductRef}}
+      <div>
+        <p>
+          <a target="_blank" href="{{.}}"><cite>{{../ProductTitle}}</cite></a>
+        </p>
+        {{#../ProductAuthor}} <p>{{.}}</p> {{/../ProductAuthor}}
+        <p>{{../ProductPublisher}}</p>
+      </div>
+      {{/ProductRef}}
+
   </script>
 
-  <div id=wds-shade></div>
+  <div id=ds-shade></div>
   <div id=wds-frame class=ds-frame>
     <div id=wds-scroll class=ds-scroll>
       <canvas id=wds-world-image width=200 height=200></canvas>
-      <div id=wds-world-data></div>
+      <div id=wds-data></div>
     </div>
     <div id=wds-spinner></div>
     <button id=wds-closebtn class="ds-closebtn dim"></button>
   </div>
 
-<script id=wds-world-template type="text/x-handlebars-template">
+<script id=wds-template type="text/x-handlebars-template">
 
 <div class=wds-names>
 <div class=wds-worldname>
@@ -682,14 +710,15 @@
 
 </div>
 
-<div id=wds-mini-toggle class=dim></div>
+<div class="ds-mini-toggle dim"></div>
 
+<div class=ds-mini-hidden>
 <table class=wds-properties>
 {{#if map_thumb}}
 <tbody>
 <tr>
 <td colspan=3 style="text-align: center;">
-<img id=wds-world-map src="{{map_thumb}}" style="width: 272px; height: auto; border: 2px solid black;">
+<img id=wds-map src="{{map_thumb}}" style="width: 272px; height: auto; border: 2px solid black;">
 </td>
 </tr>
 </tbody>
@@ -822,6 +851,8 @@
   <a target="_blank" href="{{JumpMapURL}}&jump=4">J-4</a> &bull;
   <a target="_blank" href="{{JumpMapURL}}&jump=5">J-5</a> &bull;
   <a target="_blank" href="{{JumpMapURL}}&jump=6">J-6</a>
+</div>
+
 </div>
 
 </script>

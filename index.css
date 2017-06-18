@@ -205,15 +205,15 @@ input[type=text] {
 /* ============================================================ */
 /* Sector/World Data Sheet (Modeless Side Panel) */
 
-#wds-shade {
+#ds-shade {
   display: none;
   position: absolute;
   z-index: 39;
   left: 0; right: 0; top: 0; bottom: 0;
   background-color: rgba(0, 0, 0, 0.65);
 }
-body:not(.wds-visible) #wds-shade { display: none; }
 
+body:not(.wds-visible) #ds-shade,
 body:not(.sds-visible) #sds-frame,
 body:not(.wds-visible) #wds-frame { display: none; }
 
@@ -239,6 +239,9 @@ body:not(.wds-visible) #wds-frame { display: none; }
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
   overflow-y: scroll;
+}
+.ds-mini .ds-scroll {
+  overflow-y: hidden;
 }
 
 #sds-scroll { padding: 10px; }
@@ -282,26 +285,26 @@ body:not(.wds-visible) #wds-frame { display: none; }
   margin: 10px;
   text-align: center;
 }
-.wds-mini #wds-frame #wds-print-links { display: none; }
-
 /* Mini Mode */
 
-#wds-mini-toggle {
+.ds-mini-toggle {
   touch-action: none;
   clear: both;
   text-align: center;
   font-size: 14px;
 }
-.wds-mini #wds-frame #wds-mini-toggle:before { content: "\25BC"; /* U+25BC BLACK DOWN-POINTING TRIANGLE */ }
-#wds-mini-toggle:before { content: "\25B2"; /* U+25B2 BLACK UP-POINTING TRIANGLE */ }
+.ds-mini .ds-mini-toggle:before { content: "\25BC"; /* U+25BC BLACK DOWN-POINTING TRIANGLE */ }
+.ds-mini-toggle:before { content: "\25B2"; /* U+25B2 BLACK UP-POINTING TRIANGLE */ }
+.ds-mini .ds-mini-hidden { display: none; }
 
-#sds-frame { height: 150px; }
-.wds-mini #wds-frame { height: 150px; }
-.wds-mini #wds-frame .wds-properties { display: none; }
+.ds-mini .ds-frame { height: 150px; }
+
+#sds-data > div:not(:first-child) { margin: 8px 0; }
+#sds-data .ds-mini-hidden > div { margin: 8px 0; }
 
 @media only screen and (max-width: 640px) {
-  #wds-shade { display: block; }
-  .wds-mini #wds-shade { display: none; }
+  #ds-shade { display: block; }
+  .ds-mini #ds-shade { display: none; }
 
   .ds-frame {
     left: 10px; right: 10px; width: auto;
@@ -312,16 +315,19 @@ body:not(.wds-visible) #wds-frame { display: none; }
 
   .wds-properties { margin-left: auto; margin-right: auto; max-width: }
 
-  #sds-frame,
-  .wds-mini #wds-frame {
+  #sds-frame {
+    height: 300px;
+  }
+  .ds-mini #sds-frame,
+  .ds-mini #wds-frame {
     height: 150px;
   }
 
   .sds-visible #bottom-pane,
   .wds-visible #bottom-pane { display: none; }
 
-  .wds-mini #wds-frame #wds-mini-toggle:before { content: "\25B2"; /* U+25B2 BLACK UP-POINTING TRIANGLE */ }
-  #wds-mini-toggle:before { content: "\25BC"; /* U+25BC BLACK DOWN-POINTING TRIANGLE */ }
+  .ds-mini .ds-mini-toggle:before { content: "\25B2"; /* U+25B2 BLACK UP-POINTING TRIANGLE */ }
+  .ds-mini-toggle:before { content: "\25BC"; /* U+25BC BLACK DOWN-POINTING TRIANGLE */ }
 }
 
 
@@ -364,10 +370,6 @@ body:not(.wds-visible) #wds-frame { display: none; }
   margin-bottom: 8px;
 }
 .sds-sectorname small { font-size: 65%; }
-
-.sds-credits {
-  font-style: italic;
-}
 
 .sds-status {
   text-align: center;
@@ -945,7 +947,7 @@ body:not(.search-results) #closeSearchBtn { display: none; }
 .style-terminal #closeSearchBtn,
 .style-terminal #closeRouteBtn { filter: invert(100%); }
 .style-terminal #wds-world-image,
-.style-terminal #wds-world-map { filter: invert(100%); }
+.style-terminal #wds-map { filter: invert(100%); }
 .style-terminal #wds-frame button,
 .style-terminal #sds-frame button,
 .style-terminal #styles button { filter: none; }
