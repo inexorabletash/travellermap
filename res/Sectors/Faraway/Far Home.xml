@@ -1,0 +1,149 @@
+<?xml version="1.0"?>
+<Sector>
+  <Name>Far Home</Name>
+  <Credits>
+    <![CDATA[
+      <b>Far Home</b> sector was designed by Ade Stewart as part of the Distant Fringe.
+    ]]>
+  </Credits>
+  <Subsectors>
+    <Subsector Index="A">Genesti</Subsector>
+    <Subsector Index="B">Esqua</Subsector>
+    <Subsector Index="C">Arodir</Subsector>
+    <Subsector Index="D">Xelan</Subsector>
+    <Subsector Index="E">Natar</Subsector>
+    <Subsector Index="F">Velous</Subsector>
+    <Subsector Index="G">Ras Tennol</Subsector>
+    <Subsector Index="H">Nisor</Subsector>
+    <Subsector Index="I">Irikusk</Subsector>
+    <Subsector Index="J">Demon's Eye</Subsector>
+    <Subsector Index="K">Orret</Subsector>
+    <Subsector Index="L">Aredian</Subsector>
+    <Subsector Index="M">Annistu</Subsector>
+    <Subsector Index="N">Foralin</Subsector>
+    <Subsector Index="O">Sarudis</Subsector>
+    <Subsector Index="P">Sath</Subsector>
+  </Subsectors>
+  <Borders>
+    <Border Allegiance="Ci" LabelPosition="3113" ShowLabel="true" WrapLabel="true">2713 2812 2912 2913 2914 3014 2914 2813 2713 </Border>
+    <Border Allegiance="Fw" LabelPosition="0813" ShowLabel="true" WrapLabel="false">0611 0712 0811 0911 0910 1009 1008 1109 1110 1111 1211 1112 1012 0912 0812 0712 0611 </Border>
+    <Border Allegiance="Hw" LabelPosition="2531" ShowLabel="true" WrapLabel="false">2230 2330 2329 2330 2331 2332 2331 2230 </Border>
+    <Border Allegiance="Ot" LabelPosition="1915" ShowLabel="true" WrapLabel="true">2013 2113 2114 2013 </Border>
+    <Border Allegiance="Pr" LabelPosition="3010" ShowLabel="true" WrapLabel="false">2511 2610 2609 2608 2709 2809 2909 2809 2810 2811 2712 2612 2512 2511 </Border>
+    <Border Allegiance="Rf" LabelPosition="1426" ShowLabel="true" WrapLabel="true">1229 1329 1428 1427 1528 1627 1728 1628 1629 1529 1428 1329 1229 </Border>
+    <Border Allegiance="Sa" LabelPosition="2435" ShowLabel="true" WrapLabel="false">2136 2235 2234 2233 2333 2433 2533 2633 2733 2734 2735 2835 2936 2836 2837 2737 2636 2537 2436 2337 2236 2136 </Border>
+    <Border Allegiance="Wl" LabelPosition="2010" ShowLabel="true" WrapLabel="true">2210 2310 2309 2409 2310 2311 2312 2212 2211 2210 </Border>
+  </Borders>
+  <Allegiances>
+    <Allegiance Code="Ci">Client States</Allegiance>
+    <Allegiance Code="Fw">Firstworlds</Allegiance>
+    <Allegiance Code="Hw">Hellworlds</Allegiance>
+    <Allegiance Code="Ot">Occupied Territories</Allegiance>
+    <Allegiance Code="Pr">Protectorate</Allegiance>
+    <Allegiance Code="Rf">Rimward Federation</Allegiance>
+    <Allegiance Code="Sa">Sath Alliance</Allegiance>
+    <Allegiance Code="Wl">Worlds of The Leader</Allegiance>
+  </Allegiances>
+  <Routes>
+    <!-- Kuyt Chain -->
+    <Route Start="0917" End="0919"/>
+    <Route Start="0919" End="1120"/>
+    <Route Start="1120" End="1220"/>
+    <Route Start="1220" End="1222"/>
+    <Route Start="1222" End="1023"/>
+    <Route Start="1023" End="0824"/>
+    <Route Start="0824" End="0825"/>
+    <Route Start="0825" End="0626"/>
+    <Route Start="0626" End="0728"/>
+
+    <!-- New Border -->
+    <Route Start="2511" End="2312"/>
+    <Route Start="2312" End="2113"/>
+    <Route Start="2113" End="2114"/>
+    <Route Start="2114" End="2315"/>
+
+    <!-- Outland Run -->
+    <Route Start="2315" End="2317"/>
+    <Route Start="2317" End="2417"/>
+    <Route Start="2417" End="2617"/>
+    <Route Start="2617" End="2717"/>
+    <Route Start="2717" End="2918"/>
+    <Route Start="2918" End="2819"/>
+    <Route Start="2819" End="2821"/>
+    <Route Start="2821" End="3022"/>
+    <Route Start="3022" End="3222"/>
+    
+    <!-- Scybrian Run -->
+    <Route Start="0910" End="0911"/>
+    <Route Start="0911" End="0811"/>
+    <Route Start="0811" End="0611"/>
+    <Route Start="0611" End="0412"/>
+    <Route Start="0412" End="0211"/>
+    <Route Start="0211" End="0011"/>
+    
+    <!-- Spinward Drift -->
+    <Route Start="0728" End="0730"/>
+    <Route Start="0730" End="0931"/>
+    <Route Start="0931" End="1032"/>
+    <Route Start="1032" End="1134"/>
+    <Route Start="1134" End="1335"/>
+    <Route Start="1335" End="1535"/>
+    <Route Start="1535" End="1633"/>
+
+    <!-- The Descent -->
+    <Route Start="1633" End="1832"/>
+    <Route Start="1832" End="1932"/>
+    <Route Start="1932" End="2031"/>
+    <Route Start="2031" End="2230"/>
+    <Route Start="2230" End="2331"/>
+
+    <!-- Void Edge -->
+    <Route Start="2317" End="2319"/>
+    <Route Start="2319" End="2219"/>
+    <Route Start="2219" End="2220"/>
+    <Route Start="2220" End="2122"/>
+    <Route Start="2122" End="2023"/>
+    <Route Start="2023" End="2025"/>
+    <Route Start="2025" End="2225"/>
+    <Route Start="2225" End="2325"/>
+
+    <!-- Wolfs Tail -->
+    <Route Start="0730" End="0732"/>
+    <Route Start="0732" End="0532"/>
+    <Route Start="0532" End="0430"/>
+    <Route Start="0430" End="0330"/>
+    <Route Start="0330" End="0328"/>
+    <Route Start="0328" End="0127"/>
+    <Route Start="0127" End="0027"/>
+  </Routes>
+  <Labels>
+    <!-- Route Names -->
+    <Label Hex="1024" Color="white">Kuyt Chain</Label>
+    <Label Hex="2413" Color="white">New Border</Label>
+    <Label Hex="2917" Color="white">Outland Run</Label>
+    <Label Hex="0212" Color="white">Scybrian Run</Label>
+    <Label Hex="0934" Color="white">Spinward Drift</Label>
+    <Label Hex="1632" Color="white">The Descent</Label>
+    <Label Hex="2322" Color="white">Void Edge</Label>
+    <Label Hex="0327" Color="white">Wolfs Tail</Label>
+
+    <!-- Rift Names -->
+    <Label Hex="1721" Color="gray">Demon's&#x0A;&#x0A;Eye&#x0A;Rift</Label>
+    <Label Hex="1705" Color="gray" Size="large">Moat Rifts</Label>
+    <Label Hex="0209" Color="gray">Rissa&#x0A;Void</Label>
+    <Label Hex="0420" Color="gray">Harmal&#x0A;Deep</Label>
+    <Label Hex="0332" Color="gray">Baradine&#x0A;Divide</Label>
+    <Label Hex="1638" Color="gray" Size="large">Great Void</Label>
+  </Labels>
+  <Stylesheet>
+    border.Ci { color: cyan; style: dotted }
+    border.Fw { color: red }
+    border.Hw { color: olive; style: dotted }
+    border.Pr { color: cyan }
+    border.Ot { color: magenta; style: dotted }
+    border.Rf { color: blue }
+    border.Sa { color: olive }
+    border.Wl { color: magenta }
+    route { style: dashed }
+  </Stylesheet>
+</Sector>
