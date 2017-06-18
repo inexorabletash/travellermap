@@ -766,6 +766,8 @@ window.addEventListener('DOMContentLoaded', function() {
         });
       }
 
+      if (data.SectorY)
+        data.SectorY = -data.SectorY;
 
       // Credits
       $('#MetadataDisplay').innerHTML = template('#MetadataTemplate')(data);

@@ -363,6 +363,7 @@ body:not(.wds-visible) #wds-frame { display: none; }
   border-bottom: 4px solid black;
   margin-bottom: 8px;
 }
+.sds-sectorname small { font-size: 65%; }
 
 .sds-credits {
   font-style: italic;
@@ -459,7 +460,8 @@ button:hover {
 /* -- Results */
 
 #resultsBox {
-  left: 15px; top: 50px; width: 200px;
+  min-width: 200px;
+  width: 240px;
   min-height: 50px;
   max-height: 250px;
 }
@@ -883,6 +885,8 @@ body:not(.search-results) #closeSearchBtn { display: none; }
 
 @media only screen and (max-width: 640px) {
   #searchBox { width: 120px; }
+  #resultsBox { width: 200px; }
+
 }
 @media only screen and (max-width: 640px) {
   #navBar { display: none; }
