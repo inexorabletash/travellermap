@@ -885,12 +885,13 @@ body:not(.search-results) #closeSearchBtn { display: none; }
   margin-left: 4px;
 }
 
+@media only screen and (max-height: 460px) {
+  #bottom-pane { display: none; }
+  #navBar { display: none; }
+}
 @media only screen and (max-width: 640px) {
   #searchBox { width: 120px; }
   #resultsBox { width: 200px; }
-
-}
-@media only screen and (max-width: 640px) {
   #navBar { display: none; }
 }
 @media only screen and (max-width: 520px) {
