@@ -49,6 +49,9 @@ namespace Maps.API
 
                 if (sector != null)
                 {
+                    data.SectorX = sector.X;
+                    data.SectorY = sector.Y;
+
                     // TODO: Multiple names
                     foreach (var name in sector.Names.Take(1))
                         data.SectorName = name.Text;
@@ -142,6 +145,8 @@ namespace Maps.API.Results
     {
         public string Credits { get; set; }
 
+        public int SectorX { get; set; }
+        public int SectorY { get; set; }
         public string SectorName { get; set; }
         public string SectorAuthor { get; set; }
         public string SectorSource { get; set; }
