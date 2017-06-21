@@ -37,6 +37,8 @@ namespace Maps.API
                     {
                         sector = parser.Parse(reader);
                     }
+                    sector.MetadataFile = null;
+                    sector.DataFile = null;
                 }
                 else if (HasOption("sx") && HasOption("sy"))
                 {
@@ -91,7 +93,6 @@ namespace Maps.API.Results
         public List<Name> Names => sector.Names;
         public string Credits { get => sector.Credits; set { } }
 
-        public DataFileMetadata DataFile { get => dataFile; set { } }
         public int X { get => sector.X; set { } }
         public int Y { get => sector.Y; set { } }
 

@@ -238,6 +238,7 @@ namespace Maps
 
                 // Otherwise, look it up
                 WorldCollection data = resourceManager.GetDeserializableFileObject(DataFile.FileName, typeof(WorldCollection), cacheResults: false, mediaType: DataFile.Type) as WorldCollection;
+
                 foreach (World world in data)
                     world.Sector = this;
 
