@@ -160,20 +160,6 @@ input[type=text] {
 .style-atlas #stripe { color: black; background-color: black; border: solid 1px black; }
 .style-fasa #stripe { color: #5C4033; background-color: #5C4033; border: solid 1px #5C4033; }
 
-@media only screen and (max-width: 850px), only screen and (max-height: 460px) {
-  #LogoImage { width: 210px; height: 71px; background-image: url("res/ui/logo-stacked.png"); }
-  .style-fasa #LogoImage,
-  .style-draft #LogoImage,
-  .style-print #LogoImage,
-  .style-atlas #LogoImage {  background-image: url("res/ui/logo-stacked-gray.png"); }
-}
-
-@media only screen and (max-width: 640px), only screen and (max-height: 460px) {
-  #bottom-pane { font-size: 75%; height: 45px; padding: 2px;}
-  #stripe { height: 2px; margin: 2px 0px; }
-  #LogoImage { width: 105px; height: 35.5px; }
-}
-
 
 /* ============================================================ */
 /* Credits/Metadata */
@@ -881,10 +867,26 @@ body:not(.search-results) #closeSearchBtn { display: none; }
   margin-left: 4px;
 }
 
+
+@media only screen and (max-width: 850px), only screen and (max-height: 460px) {
+  #LogoImage { width: 210px; height: 71px; background-image: url("res/ui/logo-stacked.png"); }
+  .style-fasa #LogoImage,
+  .style-draft #LogoImage,
+  .style-print #LogoImage,
+  .style-atlas #LogoImage {  background-image: url("res/ui/logo-stacked-gray.png"); }
+}
+
+@media only screen and (max-width: 640px), only screen and (max-height: 460px) {
+  #bottom-pane { font-size: 75%; height: 45px; padding: 2px;}
+  #stripe { height: 2px; margin: 2px 0px; }
+  #LogoImage { width: 105px; height: 35.5px; }
+  #navBar { bottom: 55px; }
+}
+
 @media only screen and (max-width: 640px) {
   #searchBox { width: 120px; }
   #resultsBox { width: 200px; }
-  #navBar { display: none; }
+  #navBar button { display: none; }
 }
 @media only screen and (max-width: 520px) {
   #legendBox, #legendBtn { display: none !important; }
@@ -896,8 +898,9 @@ body:not(.search-results) #closeSearchBtn { display: none; }
 @media only screen and (max-width: 460px), only screen and (max-height: 460px) {
   .direction { display: none; }
 
-  #navBar { display: none; }
+  #navBar button { display: none; }
 
+  #navBar { bottom: 5px; right: 115px; }
   #bottom-pane { background-color: transparent; }
   #stripe, #MetadataDisplay { display: none; }
   #LogoImage { position: absolute; right: 5px; bottom: 5px; }
