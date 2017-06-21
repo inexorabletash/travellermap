@@ -885,10 +885,6 @@ body:not(.search-results) #closeSearchBtn { display: none; }
   margin-left: 4px;
 }
 
-@media only screen and (max-height: 460px) {
-  #bottom-pane { display: none; }
-  #navBar { display: none; }
-}
 @media only screen and (max-width: 640px) {
   #searchBox { width: 120px; }
   #resultsBox { width: 200px; }
@@ -898,10 +894,14 @@ body:not(.search-results) #closeSearchBtn { display: none; }
   #legendBox, #legendBtn { display: none !important; }
 }
 @media only screen and (max-width: 460px) {
-  #bottom-pane { display: none; }
-
   #searchBtn { display: none !important; }
   #searchBox { width: 70px; }
+}
+@media only screen and (max-width: 460px), only screen and (max-height: 460px) {
+  .direction { display: none; }
+
+  #bottom-pane { display: none; }
+  #navBar { display: none; }
 
   #shareBox {  max-height: 225px; }
   #share-embed { display: none; }
@@ -917,12 +917,7 @@ body:not(.search-results) #closeSearchBtn { display: none; }
 @media only screen and (max-width: 420px) {
   #labBox, #labBtn,
   #milieuBox, #milieuBtn { display: none !important; }
-}
-@media only screen and (max-width: 330px) {
-  #searchBox { width: 60px; }
-}
 
-@media only screen and (max-width: 420px) {
   .route-ui #routeBox {
     left: 0; top: 0; right: 0; width: auto;
     height: 300px;
@@ -936,6 +931,9 @@ body:not(.search-results) #closeSearchBtn { display: none; }
   .route-ui #legendBox,
   .route-ui #shareBox,
   .route-ui #helpBox { display: none !important; }
+}
+@media only screen and (max-width: 330px) {
+  #searchBox { width: 60px; }
 }
 
 .style-terminal button { background-color: lightgray; }
