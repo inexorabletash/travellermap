@@ -416,12 +416,6 @@ button:hover {
 .hoverbox-left {
   left: 15px; top: 50px; bottom: 110px;
 }
-@media only screen and (max-width: 640px) {
-  .hoverbox-right,
-  .hoverbox-left {
-    bottom: 60px;
-  }
-}
 
 
 /* ============================================================ */
@@ -576,9 +570,8 @@ body:not(.enable-experiments) #labBtn { display: none; }
   width: 250px;
   max-height: 300px;
 }
-#shareBox section { margin: 1em 0; }
+#shareBox section { margin-top: 1em; }
 #shareBox section:first-of-type { margin-top: 0; }
-#shareBox section:last-of-type { margin-bottom: 0; }
 #shareBox input { width: 230px; padding: 5px; border: 1px solid #404040; }
 #shareBox section.fb { height: 33px; }
 
@@ -722,9 +715,8 @@ body:not(.enable-experiments) #labBtn { display: none; }
   box-shadow: none;
   border: 1px solid gray;
 }
-.settings section { margin: 1em 0; }
+.settings section { margin-top: 1em; }
 .settings section:first-of-type { margin-top: 0; }
-.settings section:last-of-type { margin-bottom: 0; }
 
 /* checkbox/radio buttons are larger on iOS */
 .settings  p { min-height: 24px; }
@@ -745,13 +737,11 @@ body:not(.enable-experiments) #labBtn { display: none; }
   width: 215px;
   max-height: 390px;
 }
-#helpBox section { margin: 1em 0; }
+#helpBox section { margin-top: 1em; }
 #helpBox section:first-of-type { margin-top: 0; }
-#helpBox section:last-of-type { margin-bottom: 0; }
 
-#helpBox p { margin: 0.5em 0; }
+#helpBox p { margin-top: 0.5em; }
 #helpBox p:first-of-type { margin-top: 0; }
-#helpBox p:last-of-type { margin-bottom: 0; }
 
 #helpBox h3:first-of-type { margin-top: 0; }
 #helpBox h3 { x-font-style: italic; x-font-weight: normal;
@@ -881,6 +871,10 @@ body:not(.search-results) #closeSearchBtn { display: none; }
   #stripe { height: 2px; margin: 2px 0px; }
   #LogoImage { width: 105px; height: 35.5px; }
   #navBar { bottom: 55px; }
+  .hoverbox-right,
+  .hoverbox-left {
+    bottom: 60px;
+  }
 }
 
 @media only screen and (max-width: 640px) {
@@ -905,14 +899,14 @@ body:not(.search-results) #closeSearchBtn { display: none; }
   #stripe, #MetadataDisplay { display: none; }
   #LogoImage { position: absolute; right: 5px; bottom: 5px; }
 
-  #shareBox {  max-height: 225px; }
+  #shareBox { max-height: 245px; }
   #share-embed { display: none; }
 
-  #helpBox { max-height: 220px; }
+  #helpBox { max-height: 205px; }
   #help-tools,
   #help-developers { display: none; }
 
-  #settingsBox { max-height: 280px; }
+  #settingsBox { max-height: 265px; }
   #settings-show,
   #settings-appearance-hexes { display: none; }
 }
