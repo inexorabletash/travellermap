@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Sector>
+  <Name>Divide</Name>
+  <Credits>
+    <![CDATA[
+      <b>Divide</b> sector was designed by Ade Stewart as part of the Distant Fringe.
+    ]]>
+  </Credits>
+  <Subsectors>
+    <Subsector Index="L">Redoubt</Subsector>
+    <Subsector Index="P">Esser</Subsector>
+  </Subsectors>
+  <Labels>
+    <!-- Explored Systems -->
+    <Label Hex="3030" Color="gray">Hylan&#x0a;Spur</Label>
+
+    <!-- Rift Names -->
+    <Label Hex="2216" Color="gray" Size="large">Moat&#x0a;Rifts</Label>
+    <Label Hex="1735" Color="gray" Size="large">Great&#x0a;Void</Label>
+  </Labels>
+</Sector>
