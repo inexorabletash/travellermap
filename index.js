@@ -19,6 +19,15 @@ window.addEventListener('DOMContentLoaded', function() {
   //
   //////////////////////////////////////////////////////////////////////
 
+  // Account for adjustments to innerHeight (dynamic browser UI)
+  // (Repro: Safari on iPhone, enter landscape, make url bar appear)
+  window.addEventListener('resize', function(e) {
+    if (window.innerHeight !== window.outerHeight) {
+      document.body.style.height = window.innerHeight + 'px';
+      window.scrollTo(0, 0);
+    }
+  });
+
   var mapElement = $('#dragContainer'), sizeElement = mapElement.parentNode;
   var map = new Traveller.Map(mapElement, sizeElement);
 
