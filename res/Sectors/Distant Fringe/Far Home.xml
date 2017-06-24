@@ -42,6 +42,7 @@
     <Allegiance Code="Pr">Protectorate</Allegiance>
     <Allegiance Code="Rf">Rimward Federation</Allegiance>
     <Allegiance Code="Sa">Sath Alliance</Allegiance>
+    <Allegiance Code="Sx">Sath Exploration</Allegiance>
     <Allegiance Code="Wl">Worlds of The Leader</Allegiance>
   </Allegiances>
   <Routes>
@@ -55,13 +56,11 @@
     <Route Start="0824" End="0825"/>
     <Route Start="0825" End="0626"/>
     <Route Start="0626" End="0728"/>
-
     <!-- New Border -->
     <Route Start="2511" End="2312"/>
     <Route Start="2312" End="2113"/>
     <Route Start="2113" End="2114"/>
     <Route Start="2114" End="2315"/>
-
     <!-- Outland Run -->
     <Route Start="2315" End="2317"/>
     <Route Start="2317" End="2417"/>
@@ -72,7 +71,6 @@
     <Route Start="2819" End="2821"/>
     <Route Start="2821" End="3022"/>
     <Route Start="3022" End="3222"/>
-    
     <!-- Scybrian Run -->
     <Route Start="0910" End="0911"/>
     <Route Start="0911" End="0811"/>
@@ -80,7 +78,6 @@
     <Route Start="0611" End="0412"/>
     <Route Start="0412" End="0211"/>
     <Route Start="0211" End="0011"/>
-    
     <!-- Spinward Drift -->
     <Route Start="0728" End="0730"/>
     <Route Start="0730" End="0931"/>
@@ -89,14 +86,12 @@
     <Route Start="1134" End="1335"/>
     <Route Start="1335" End="1535"/>
     <Route Start="1535" End="1633"/>
-
     <!-- The Descent -->
     <Route Start="1633" End="1832"/>
     <Route Start="1832" End="1932"/>
     <Route Start="1932" End="2031"/>
     <Route Start="2031" End="2230"/>
     <Route Start="2230" End="2331"/>
-
     <!-- Void Edge -->
     <Route Start="2317" End="2319"/>
     <Route Start="2319" End="2219"/>
@@ -106,7 +101,6 @@
     <Route Start="2023" End="2025"/>
     <Route Start="2025" End="2225"/>
     <Route Start="2225" End="2325"/>
-
     <!-- Wolfs Tail -->
     <Route Start="0730" End="0732"/>
     <Route Start="0732" End="0532"/>
@@ -117,6 +111,8 @@
     <Route Start="0127" End="0027"/>
   </Routes>
   <Labels>
+    <!-- Sath Exploration -->
+    <Label Hex="3038" Color="Olive" Size="small">Waypoint</Label>
     <!-- Route Names -->
     <Label Hex="1024" Color="white">Kuyt Chain</Label>
     <Label Hex="2413" Color="white">New Border</Label>
@@ -126,14 +122,13 @@
     <Label Hex="1632" Color="white">The Descent</Label>
     <Label Hex="2322" Color="white">Void Edge</Label>
     <Label Hex="0327" Color="white">Wolfs Tail</Label>
-
     <!-- Rift Names -->
-    <Label Hex="1721" Color="gray">Demon's&#x0A;&#x0A;Eye&#x0A;Rift</Label>
-    <Label Hex="1705" Color="gray" Size="large">Moat Rifts</Label>
-    <Label Hex="0209" Color="gray">Rissa&#x0A;Void</Label>
-    <Label Hex="0420" Color="gray">Harmal&#x0A;Deep</Label>
-    <Label Hex="0332" Color="gray">Baradine&#x0A;Divide</Label>
-    <Label Hex="1638" Color="gray" Size="large">Great Void</Label>
+    <Label Hex="1820" Color="gray">Demon's&#x0a;Eye&#x0a;Rift</Label>
+    <Label Hex="1604" Color="gray" Size="large">Moat Rifts</Label>
+    <Label Hex="0209" Color="gray">Rissa&#x0a;Void</Label>
+    <Label Hex="0219" Color="gray">Harmal&#x0a;Deep</Label>
+    <Label Hex="0231" Color="gray">Baradine&#x0a;Divide</Label>
+    <Label Hex="1238" Color="gray" Size="large">Great Void</Label>
   </Labels>
   <Stylesheet>
     border.Ci { color: cyan; style: dotted }

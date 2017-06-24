@@ -55,7 +55,7 @@
     <X>-16</X>
     <Y>13</Y>
     <Name>Course</Name>
-    <DataFile>Course.sec</DataFile>
+    <DataFile Type="SecondSurvey">Course.txt</DataFile>
     <MetadataFile>Course.xml</MetadataFile>
   </Sector>
 
@@ -77,14 +77,14 @@
     <X>-17</X>
     <Y>14</Y>
     <Name>Gulf</Name>
-    <DataFile>Gulf.sec</DataFile>
+    <DataFile Type="SecondSurvey">Gulf.txt</DataFile>
     <MetadataFile>Gulf.xml</MetadataFile>
   </Sector>
   <Sector Tags="Faraway">
     <X>-16</X>
     <Y>14</Y>
     <Name>Deep</Name>
-    <DataFile>Deep.sec</DataFile>
+    <DataFile Type="SecondSurvey">Deep.txt</DataFile>
     <MetadataFile>Deep.xml</MetadataFile>
   </Sector>
 </Sectors>
