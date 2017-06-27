@@ -74,6 +74,18 @@ namespace Maps.API
                 }
                 else
                 {
+                    SearchEngine.SearchResultsType types = 0;
+                    foreach (var type in GetStringsOption("types", new string[] { "default" }))
+                    {
+                        switch (type) {
+                            case "worlds": types |= SearchEngine.SearchResultsType.Worlds; break;
+                            case "subsectors": types |= SearchEngine.SearchResultsType.Subsectors; break;
+                            case "sectors": types |= SearchEngine.SearchResultsType.Sectors; break;
+                            case "labels": types |= SearchEngine.SearchResultsType.Labels; break;
+                            case "default": types |= SearchEngine.SearchResultsType.Default; break;
+                        }
+                    }
+
                     query = query.Replace('*', '%'); // Support * and % as wildcards
                     query = query.Replace('?', '_'); // Support ? and _ as wildcards
 
@@ -81,7 +93,7 @@ namespace Maps.API
                         query = "uwp:" + query;
 
                     NUM_RESULTS = 160;
-                    searchResults = SearchEngine.PerformSearch(milieu, query, SearchEngine.SearchResultsType.Default, NUM_RESULTS);
+                    searchResults = SearchEngine.PerformSearch(milieu, query, types, NUM_RESULTS);
                 }
 
                 SearchResults resultsList = new SearchResults();
