@@ -764,12 +764,8 @@ namespace Maps
                 // If no position was set, use the center of the "bounding box"
                 if (LabelPosition.IsEmpty)
                     LabelPosition = new Hex((byte)((min.X + max.X + 1) / 2), (byte)((min.Y + max.Y + 1) / 2)); // "+ 1" to round up
-
-                Extends = !min.IsValid || !max.IsValid;
             }
         }
-
-        internal bool Extends { get; set; }
 
         private BorderPath[] borderPathsCache = new BorderPath[(int)PathUtil.PathType.TypeCount];
         internal BorderPath ComputeGraphicsPath(Sector sector, PathUtil.PathType type)

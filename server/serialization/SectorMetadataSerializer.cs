@@ -1,5 +1,4 @@
 ﻿using System.IO;
-using System.Xml.Serialization;
 
 namespace Maps.Serialization
 {
@@ -23,7 +22,7 @@ namespace Maps.Serialization
     {
         public override void Serialize(TextWriter writer, Sector sector)
         {
-            new XmlSerializer(typeof(Sector)).Serialize(writer, sector);
+            throw new System.ApplicationException("Not Implemented");
         }
     }
 

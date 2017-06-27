@@ -132,7 +132,7 @@ namespace Maps
         public Hex(Hex other) { X = other.X; Y = other.Y; }
         public Hex(string s)
         {
-            if (s.Length == 4 && byte.TryParse(s.Substring(0, 2), out byte x) && byte.TryParse(s.Substring(2, 2), out byte y))
+            if (s != null && s.Length == 4 && byte.TryParse(s.Substring(0, 2), out byte x) && byte.TryParse(s.Substring(2, 2), out byte y))
             {
                 X = x; Y = y;
             }

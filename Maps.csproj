@@ -228,7 +228,9 @@
     <Content Include="res\Sectors\Distant Fringe\Chasm.xml" />
     <Content Include="res\Sectors\Distant Fringe\Course.xml" />
     <Content Include="res\Sectors\Distant Fringe\Deep.xml" />
-    <Content Include="res\Sectors\Distant Fringe\distantfringe.xml" />
+    <Content Include="res\Sectors\Distant Fringe\distantfringe.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="res\Sectors\Distant Fringe\Divide.xml" />
     <Content Include="res\Sectors\Distant Fringe\Extent.xml" />
     <Content Include="res\Sectors\Distant Fringe\Fallow.xml" />
