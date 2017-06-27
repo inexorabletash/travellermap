@@ -767,6 +767,7 @@ window.addEventListener('DOMContentLoaded', function() {
           sector: data.SectorName,
           accept: 'application/pdf',
           style: map.style,
+          options: map.options,
           milieu: milieu
         });
         data.DataURL = Traveller.MapService.makeURL('/api/sec', {
