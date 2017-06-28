@@ -478,6 +478,17 @@ button:hover {
   background-color: transparent;
 }
 
+#routeBox #swapRouteBtn {
+  position: absolute;
+  top: 48px;
+  right: 4px;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  box-shadow: none;
+  background-color: transparent;
+}
+
 #routeInputWrapper {
   padding: 0px 10px;
 }
@@ -741,6 +752,9 @@ body:not(.enable-experiments) #labBtn { display: none; }
 
 body:not(.search-results) #closeSearchBtn { display: none; }
 
+#swapRouteBtn {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAgMAAABinRfyAAAACVBMVEUAAAAAAAAAAACDY+nAAAAAAnRSTlMAf7YpoZUAAAA4SURBVAjXY2BgYGQAAjYHBqYFUhOARNYSBqaFq1YCWVwNuImsVV4NDFIrgSy2JUCCcQLIEAcGBgCujhFyqsERTgAAAABJRU5ErkJggg==);
+}
 
 #routeBtn {
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAMCAMAAABP7o1HAAAAVFBMVEUAAAADAwMCAgICAgIAAAACAgICAgIDAwMDAwMCAgICAgIDAwMCAgIFBQUAAAADAwMCAgIDAwMCAgICAgIDAwMDAwMAAAAAAAADAwMEBAQAAAADAwPMDm3RAAAAG3RSTlMA+d9rGunYxqV80r2BMQ7z2bGJdGFUIgmZPyp+lMJRAAAAf0lEQVQY022ORxaDMAxEZRxXiOlpc/97Rnq2YAF/NcXPI7phnbw93ftQFsym7tH1KjOMQThyYG461ELzFBGriWBkpEg+EPX41AnnXWKxuMy5zAcsRBvGHxW2A4D2SclYd4zP+uMkU/N5gmk5eSn01JfDlxoJzE7ayHttOm/pyh8X5Ac5DXWjngAAAABJRU5ErkJggg==);

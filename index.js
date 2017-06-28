@@ -246,6 +246,17 @@ window.addEventListener('DOMContentLoaded', function() {
     resizeMap();
   });
 
+  $('#swapRouteBtn').addEventListener('click', function(e) {
+    var tmp = $('#routeStart').value;
+    $('#routeStart').value = $('#routeEnd').value;
+    $('#routeEnd').value = tmp;
+    $('#routePath').innerHTML = '';
+    ['J-1','J-2','J-3','J-4','J-5','J-6'].forEach(function(n) {
+      $('#routeForm').classList.remove(n);
+    });
+  });
+
+
   Array.from($$("#routeForm button")).forEach(function(button) {
     button.addEventListener('click', function(e) {
       e.preventDefault();
