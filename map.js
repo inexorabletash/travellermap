@@ -668,9 +668,10 @@ var Util = {
     // Event Handlers
     // ======================================================================
 
-    var dragging, drag_coords, was_dragged;
+    var dragging, drag_coords, was_dragged, previous_focus;
     container.addEventListener('mousedown', function(e) {
       this.cancelAnimation();
+      previous_focus = document.activeElement;
       container.focus();
       dragging = true;
       was_dragged = false;
@@ -717,7 +718,8 @@ var Util = {
       e.stopPropagation();
 
       if (!was_dragged)
-        fireEvent(this, 'Click', this.eventToWorldCoords(e));
+        fireEvent(this, 'Click',
+                  Object.assign({}, this.eventToWorldCoords(e), {activeElement: previous_focus}));
     }.bind(this));
 
     container.addEventListener('dblclick', function(e) {

@@ -252,7 +252,8 @@ window.addEventListener('DOMContentLoaded', function() {
     $('#routeEnd').value = tmp;
     $('#routePath').innerHTML = '';
     ['J-1','J-2','J-3','J-4','J-5','J-6'].forEach(function(n) {
-      $('#routeForm').classList.remove(n);
+      if ($('#routeForm').classList.contains(n))
+        $('#'+n).click();
     });
   });
 
@@ -524,10 +525,10 @@ window.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  map.OnClick = function(world) {
-    updateContext(world.x, world.y, {directAction: true});
-    showMain(world.x, world.y);
-    post({source: 'travellermap', type: 'click', location: world});
+  map.OnClick = function(data) {
+    updateContext(data.x, data.y, {directAction: true, activeElement: data.activeElement});
+    showMain(data.x, data.y);
+    post({source: 'travellermap', type: 'click', location: {x: data.x, y: data.y}});
   };
 
   map.OnDoubleClick = function(world) {
@@ -794,7 +795,33 @@ window.addEventListener('DOMContentLoaded', function() {
       $('#MetadataDisplay').innerHTML = template('#MetadataTemplate')(data);
 
       // Sector/World Data Sheets
-      if (options.directAction && !document.body.classList.contains('route-ui')) {
+      if (options.directAction && document.body.classList.contains('route-ui')) {
+        if (options.activeElement === $('#routeStart')) {
+          selectedSector = null;
+          selectedWorld = null;
+          if (data.WorldName) {
+            $('#routeStart').value = data.WorldName;
+            $('#routeEnd').focus();
+          } else {
+            $('#routeStart').focus();
+          }
+          return;
+        } else if (options.activeElement === $('#routeEnd')) {
+          selectedSector = null;
+          selectedWorld = null;
+          if (data.WorldName) {
+            $('#routeEnd').value = data.WorldName;
+            $('#J-2').click();
+          } else {
+            $('#routeEnd').focus();
+          }
+          return;
+        } else {
+          selectedSector = null;
+          selectedWorld = null;
+          return;
+        }
+      } else if (options.directAction && !document.body.classList.contains('route-ui')) {
         selectedSector = ('SectorName' in data && 'SectorTags' in data) ? data.SectorName : null;
         selectedWorld = map.scale > 16 && 'WorldHex' in data
           ? { name: data.WorldName, hex: data.WorldHex } : null;
