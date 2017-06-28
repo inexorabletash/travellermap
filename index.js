@@ -796,31 +796,30 @@ window.addEventListener('DOMContentLoaded', function() {
 
       // Sector/World Data Sheets
       if (options.directAction && document.body.classList.contains('route-ui')) {
+        selectedSector = null;
+        selectedWorld = null;
         if (options.activeElement === $('#routeStart')) {
-          selectedSector = null;
-          selectedWorld = null;
           if (data.WorldName) {
             $('#routeStart').value = data.WorldName;
             $('#routeEnd').focus();
           } else {
             $('#routeStart').focus();
           }
-          return;
         } else if (options.activeElement === $('#routeEnd')) {
-          selectedSector = null;
-          selectedWorld = null;
           if (data.WorldName) {
             $('#routeEnd').value = data.WorldName;
             $('#J-2').click();
           } else {
             $('#routeEnd').focus();
           }
-          return;
-        } else {
-          selectedSector = null;
-          selectedWorld = null;
-          return;
+        } else if ($('#routeStart').value === '' && data.WorldName) {
+          $('#routeStart').value = data.WorldName;
+          $('#routeEnd').focus();
+        } else if ($('#routeEnd').value === '' && data.WorldName) {
+          $('#routeEnd').value = data.WorldName;
+          $('#J-2').click();
         }
+        return;
       } else if (options.directAction && !document.body.classList.contains('route-ui')) {
         selectedSector = ('SectorName' in data && 'SectorTags' in data) ? data.SectorName : null;
         selectedWorld = map.scale > 16 && 'WorldHex' in data

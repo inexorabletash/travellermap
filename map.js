@@ -717,9 +717,10 @@ var Util = {
       e.preventDefault();
       e.stopPropagation();
 
-      if (!was_dragged)
+      if (!was_dragged) {
         fireEvent(this, 'Click',
                   Object.assign({}, this.eventToWorldCoords(e), {activeElement: previous_focus}));
+      }
     }.bind(this));
 
     container.addEventListener('dblclick', function(e) {
@@ -806,15 +807,17 @@ var Util = {
       if (e.touches.length === 1)
         touch_coords = this.eventCoords(e.touches[0]);
 
-      if (e.touches.length === 0 && !was_touch_dragged)
-        fireEvent(this, 'Click', touch_wc);
-
+      if (e.touches.length === 0 && !was_touch_dragged) {
+        fireEvent(this, 'Click',
+                  Object.assign({}, touch_wc, {activeElement: previous_focus}));
+      }
       e.preventDefault();
       e.stopPropagation();
     }.bind(this), true);
 
     container.addEventListener('touchstart', function(e) {
       was_touch_dragged = false;
+      previous_focus = document.activeElement;
 
       if (e.touches.length === 1) {
         touch_coords = this.eventCoords(e.touches[0]);
@@ -1454,7 +1457,7 @@ var Util = {
 
   TravellerMap.prototype.eventToWorldCoords = function(event) {
     var coords = this.eventCoords(event);
-    var map = this.pixelToMap(coords.x + this.rect.left, coords.y + this.rect.top);
+    var map = this.pixelToMap(coords.x, coords.y);
     return Astrometrics.mapToWorld(map.x, map.y);
   };
 
