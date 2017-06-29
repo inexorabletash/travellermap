@@ -684,10 +684,15 @@ var Util = {
 
     var hover_coords;
     container.addEventListener('mousemove', function(e) {
+      var coords = this.eventCoords(e);
+
+      // Ignore mousemove immediately following mousedown with same coords.
+      if (dragging && coords.x === drag_coords.x && coords.y === drag_coords.y)
+        return;
+
       if (dragging) {
         was_dragged = true;
 
-        var coords = this.eventCoords(e);
         this._offset(drag_coords.x - coords.x, drag_coords.y - coords.y);
         drag_coords = coords;
         e.preventDefault();
