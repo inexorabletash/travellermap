@@ -440,10 +440,13 @@ button:hover {
 #routeBox {
   left: 10px; top: 10px; width: 290px;
   padding: 10px;
-  min-height: 120px;
+  min-height: 115px;
   max-height: 350px;
 }
 .route-ui #routeBox { display: block; }
+
+body:not(.route-shown) #routeDisplay { display: none; }
+body:not(.route-shown) #routeBox { min-height: 115px; max-height: 115px; }
 
 #routeBox input[type=text] {
   height: 30px; width: 100%;
@@ -938,9 +941,13 @@ body:not(.search-results) #closeSearchBtn { display: none; }
     left: 0; top: 0; right: 0; width: auto;
     height: 300px;
   }
-  .route-ui #mapContainer {
+  .route-ui.route-shown #mapContainer {
     top: 320px;
   }
+  .route-ui #mapContainer {
+    top: 137px;
+  }
+
   .route-ui #settingsBox,
   .route-ui #labBox,
   .route-ui #milieuBox,

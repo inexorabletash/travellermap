@@ -230,7 +230,12 @@ window.addEventListener('DOMContentLoaded', function() {
   $("#routeBtn").addEventListener('click', function(e) {
     showSearchPane('route-ui');
     resizeMap();
-    $('#routeStart').focus();
+    if (selectedWorld) {
+      $('#routeStart').value = selectedWorld.name;
+      if (!isSmallScreen) $('#routeEnd').focus();
+    } else {
+      if (!isSmallScreen) $('#routeStart').focus();
+    }
   });
 
   $('#closeRouteBtn').addEventListener('click', function(e) {
@@ -241,6 +246,7 @@ window.addEventListener('DOMContentLoaded', function() {
       $('#routeForm').classList.remove(n);
     });
     document.body.classList.remove('route-ui');
+    document.body.classList.remove('route-shown');
     map.SetRoute(null);
     lastRoute = null;
     resizeMap();
@@ -290,6 +296,8 @@ window.addEventListener('DOMContentLoaded', function() {
   document.body.addEventListener('keyup', function(e) {
     if (e.key === 'Escape' || e.keyCode === VK_ESCAPE) {
       hideSearchPanes();
+      selectedWorld = selectedSector = null;
+      map.SetRoute(null);
       map.SetMain(null);
       resizeMap();
       $('#dragContainer').focus();
@@ -814,7 +822,7 @@ window.addEventListener('DOMContentLoaded', function() {
           }
         } else if ($('#routeStart').value === '' && data.WorldName) {
           $('#routeStart').value = data.WorldName;
-          $('#routeEnd').focus();
+          if (!isSmallScreen) $('#routeEnd').focus();
         } else if ($('#routeEnd').value === '' && data.WorldName) {
           $('#routeEnd').value = data.WorldName;
           $('#J-2').click();
@@ -931,6 +939,7 @@ window.addEventListener('DOMContentLoaded', function() {
   Array.from($$('.ds-closebtn,#ds-shade')).forEach(function(element) {
     element.addEventListener('click', function(event) {
       hideSearchPanes();
+      selectedWorld = selectedSector = null;
     });
   });
 
@@ -947,9 +956,8 @@ window.addEventListener('DOMContentLoaded', function() {
     options = Object.assign({}, options);
 
     hideSearchPanesExcept('search-results');
+    selectedWorld = selectedSector = null;
     map.SetRoute(null);
-
-    selectedWorld = null;
 
     if (query === '')
       query = '(default)';
@@ -1159,6 +1167,8 @@ window.addEventListener('DOMContentLoaded', function() {
           Jumps: data.length - 1,
           PrintURL: Util.makeURL('./print/route', options)
         });
+        document.body.classList.add('route-shown');
+        resizeMap();
 
         Array.from($$('#routePath .item a')).forEach(function(a) {
           a.addEventListener('click', function(e) {
@@ -1174,6 +1184,8 @@ window.addEventListener('DOMContentLoaded', function() {
       .catch(function(reason) {
         $('#routePath').innerHTML = template('#RouteErrorTemplate')({Message: reason.message});
         map.SetRoute(null);
+        document.body.classList.add('route-shown');
+        resizeMap();
       });
   }
 
@@ -1275,7 +1287,7 @@ window.addEventListener('DOMContentLoaded', function() {
   //
   //////////////////////////////////////////////////////////////////////
 
-  if (!isIframe) // == for IE
+  if (!isIframe)
     mapElement.focus();
 
   $('#searchBox').disabled = false;
