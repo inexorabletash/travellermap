@@ -153,11 +153,6 @@ namespace Maps.Rendering
 #endif
         }
 
-        private AbstractImage PrepareImage(string urlPath)
-        {
-            return new AbstractImage(resourceManager.Server.MapPath("~" + urlPath), urlPath);
-        }
-
         public void Render(AbstractGraphics graphics)
         {
 #if SHOW_TIMING
@@ -167,15 +162,12 @@ namespace Maps.Rendering
             this.graphics = graphics;
             solidBrush = new AbstractBrush();
             pen = new AbstractPen(Color.Empty);
+            InitializeImages();
 
             List<Timer> timers = new List<Timer>();
 
             using (var fonts = new FontCache(styles))
             {
-                #region resources
-                InitializeImages();
-                #endregion
-
                 timers.Add(new Timer("preload"));
 
                 //////////////////////////////////////////////////////////////
@@ -228,11 +220,8 @@ namespace Maps.Rendering
                     //------------------------------------------------------------
                     if (styles.showGalaxyBackground && styles.deepBackgroundOpacity > 0f && galaxyImageRect.IntersectsWith(tileRect))
                     {
-                        using (graphics.Save())
-                        {
-                            AbstractImage galaxyImage = styles.lightBackground ? s_galaxyImageGray : s_galaxyImage;
-                            graphics.DrawImageAlpha(styles.deepBackgroundOpacity, galaxyImage, galaxyImageRect);
-                        }
+                        AbstractImage galaxyImage = styles.lightBackground ? s_galaxyImageGray : s_galaxyImage;
+                        graphics.DrawImageAlpha(styles.deepBackgroundOpacity, galaxyImage, galaxyImageRect);
                     }
                     timers.Add(new Timer("background (galaxy)"));
                     #endregion
@@ -635,6 +624,9 @@ namespace Maps.Rendering
 
         private void InitializeImages()
         {
+            Func<string, AbstractImage> prepare = (string urlPath) =>
+                new AbstractImage(resourceManager.Server.MapPath("~" + urlPath), urlPath);
+
             lock (s_imageInitLock)
             {
                 if (s_imagesInitialized)
@@ -642,23 +634,23 @@ namespace Maps.Rendering
                 s_imagesInitialized = true;
 
                 // Actual images are loaded lazily.
-                s_nebulaImage = PrepareImage("/res/Candy/Nebula.png");
-                s_riftImage = PrepareImage("/res/Candy/Rifts.png");
-                s_galaxyImage = PrepareImage("/res/Candy/Galaxy.png");
-                s_galaxyImageGray = PrepareImage("/res/Candy/Galaxy_Gray.png");
+                s_nebulaImage = prepare("/res/Candy/Nebula.png");
+                s_riftImage = prepare("/res/Candy/Rifts.png");
+                s_galaxyImage = prepare("/res/Candy/Galaxy.png");
+                s_galaxyImageGray = prepare("/res/Candy/Galaxy_Gray.png");
                 s_worldImages = new Dictionary<string, AbstractImage> {
-                            { "Hyd0", PrepareImage("/res/Candy/Hyd0.png") },
-                            { "Hyd1", PrepareImage("/res/Candy/Hyd1.png") },
-                            { "Hyd2", PrepareImage("/res/Candy/Hyd2.png") },
-                            { "Hyd3", PrepareImage("/res/Candy/Hyd3.png") },
-                            { "Hyd4", PrepareImage("/res/Candy/Hyd4.png") },
-                            { "Hyd5", PrepareImage("/res/Candy/Hyd5.png") },
-                            { "Hyd6", PrepareImage("/res/Candy/Hyd6.png") },
-                            { "Hyd7", PrepareImage("/res/Candy/Hyd7.png") },
-                            { "Hyd8", PrepareImage("/res/Candy/Hyd8.png") },
-                            { "Hyd9", PrepareImage("/res/Candy/Hyd9.png") },
-                            { "HydA", PrepareImage("/res/Candy/HydA.png") },
-                            { "Belt", PrepareImage("/res/Candy/Belt.png") },
+                            { "Hyd0", prepare("/res/Candy/Hyd0.png") },
+                            { "Hyd1", prepare("/res/Candy/Hyd1.png") },
+                            { "Hyd2", prepare("/res/Candy/Hyd2.png") },
+                            { "Hyd3", prepare("/res/Candy/Hyd3.png") },
+                            { "Hyd4", prepare("/res/Candy/Hyd4.png") },
+                            { "Hyd5", prepare("/res/Candy/Hyd5.png") },
+                            { "Hyd6", prepare("/res/Candy/Hyd6.png") },
+                            { "Hyd7", prepare("/res/Candy/Hyd7.png") },
+                            { "Hyd8", prepare("/res/Candy/Hyd8.png") },
+                            { "Hyd9", prepare("/res/Candy/Hyd9.png") },
+                            { "HydA", prepare("/res/Candy/HydA.png") },
+                            { "Belt", prepare("/res/Candy/Belt.png") },
                         };
             }
         }
@@ -856,32 +848,29 @@ namespace Maps.Rendering
             {
                 graphics.MultiplyTransform(worldSpaceToImageSpace);
 
-                lock (s_nebulaImage)
+                const float backgroundImageScale = 2.0f;
+                const int nebulaImageWidth = 1024, nebulaImageHeight = 1024;
+                // Scaled size of the background
+                float w = nebulaImageWidth * backgroundImageScale;
+                float h = nebulaImageHeight * backgroundImageScale;
+
+                // Offset of the background, relative to the canvas
+                float ox = (float)(-tileRect.Left * scale * Astrometrics.ParsecScaleX) % w;
+                float oy = (float)(-tileRect.Top * scale * Astrometrics.ParsecScaleY) % h;
+                if (ox > 0) ox -= w;
+                if (oy > 0) oy -= h;
+
+                // Number of copies needed to cover the canvas
+                int nx = 1 + (int)Math.Floor(tileSize.Width / w);
+                int ny = 1 + (int)Math.Floor(tileSize.Height / h);
+                if (ox + nx * w < tileSize.Width) nx += 1;
+                if (oy + ny * h < tileSize.Height) ny += 1;
+
+                for (int x = 0; x < nx; ++x)
                 {
-                    const float backgroundImageScale = 2.0f;
-                    const int nebulaImageWidth = 1024, nebulaImageHeight = 1024;
-                    // Scaled size of the background
-                    float w = nebulaImageWidth * backgroundImageScale;
-                    float h = nebulaImageHeight * backgroundImageScale;
-
-                    // Offset of the background, relative to the canvas
-                    float ox = (float)(-tileRect.Left * scale * Astrometrics.ParsecScaleX) % w;
-                    float oy = (float)(-tileRect.Top * scale * Astrometrics.ParsecScaleY) % h;
-                    if (ox > 0) ox -= w;
-                    if (oy > 0) oy -= h;
-
-                    // Number of copies needed to cover the canvas
-                    int nx = 1 + (int)Math.Floor(tileSize.Width / w);
-                    int ny = 1 + (int)Math.Floor(tileSize.Height / h);
-                    if (ox + nx * w < tileSize.Width) nx += 1;
-                    if (oy + ny * h < tileSize.Height) ny += 1;
-
-                    for (int x = 0; x < nx; ++x)
+                    for (int y = 0; y < ny; ++y)
                     {
-                        for (int y = 0; y < ny; ++y)
-                        {
-                            graphics.DrawImage(s_nebulaImage, ox + x * w, oy + y * h, w + 1, h + 1);
-                        }
+                        graphics.DrawImage(s_nebulaImage, ox + x * w, oy + y * h, w + 1, h + 1);
                     }
                 }
             }
@@ -1264,10 +1253,7 @@ namespace Maps.Rendering
                                 const float scaleY = 1.0f;
                                 AbstractImage img = s_worldImages["Belt"];
 
-                                lock (img)
-                                {
-                                    graphics.DrawImage(img, -imageRadius * scaleX, -imageRadius * scaleY, imageRadius * 2 * scaleX, imageRadius * 2 * scaleY);
-                                }
+                                graphics.DrawImage(img, -imageRadius * scaleX, -imageRadius * scaleY, imageRadius * 2 * scaleX, imageRadius * 2 * scaleY);
                             }
                             else
                             {
@@ -1289,10 +1275,7 @@ namespace Maps.Rendering
                                 }
                                 if (img != null)
                                 {
-                                    lock (img)
-                                    {
-                                        graphics.DrawImage(img, -imageRadius, -imageRadius, imageRadius * 2, imageRadius * 2);
-                                    }
+                                    graphics.DrawImage(img, -imageRadius, -imageRadius, imageRadius * 2, imageRadius * 2);
                                 }
                             }
                         }

@@ -1135,10 +1135,10 @@ namespace Maps.Rendering
             return InRange(v);
         }
 
-        private static Regex basicRegex = new Regex(@"^([A-Za-z]+)(-?\d+)$", RegexOptions.Compiled);
-        private static Regex minRegex = new Regex(@"^([A-Za-z]+)(-?\d+)\+$", RegexOptions.Compiled);
-        private static Regex maxRegex = new Regex(@"^([A-Za-z]+)(-?\d+)\-$", RegexOptions.Compiled);
-        private static Regex rangeRegex = new Regex(@"^([A-Za-z]+)(-?\d+)\-(-?\d+)$", RegexOptions.Compiled);
+        private static Regex HIGHLIGHT_BASIC_REGEX = new Regex(@"^([A-Za-z]+)(-?\d+)$", RegexOptions.Compiled);
+        private static Regex HIGHLIGHT_MIN_REGEX = new Regex(@"^([A-Za-z]+)(-?\d+)\+$", RegexOptions.Compiled);
+        private static Regex HIGHLIGHT_MAX_REGEX = new Regex(@"^([A-Za-z]+)(-?\d+)\-$", RegexOptions.Compiled);
+        private static Regex HIGHLIGHT_RANGE_REGEX = new Regex(@"^([A-Za-z]+)(-?\d+)\-(-?\d+)$", RegexOptions.Compiled);
 
         private static bool ParseField(string s, ref Field f)
         {
@@ -1164,28 +1164,28 @@ namespace Maps.Rendering
             HighlightWorldPattern p = new HighlightWorldPattern();
 
             Match m;
-            if ((m = basicRegex.Match(s)).Success)
+            if ((m = HIGHLIGHT_BASIC_REGEX.Match(s)).Success)
             {
                 if (!ParseField(m.Groups[1].Value, ref p.field)) return null;
                 if (!Int32.TryParse(m.Groups[2].Value, out int min)) return null;
                 p.min = p.max = min;
                 return p;
             }
-            if ((m = minRegex.Match(s)).Success)
+            if ((m = HIGHLIGHT_MIN_REGEX.Match(s)).Success)
             {
                 if (!ParseField(m.Groups[1].Value, ref p.field)) return null;
                 if (!Int32.TryParse(m.Groups[2].Value, out int min)) return null;
                 p.min = min;
                 return p;
             }
-            if ((m = maxRegex.Match(s)).Success)
+            if ((m = HIGHLIGHT_MAX_REGEX.Match(s)).Success)
             {
                 if (!ParseField(m.Groups[1].Value, ref p.field)) return null;
                 if (!Int32.TryParse(m.Groups[2].Value, out int max)) return null;
                 p.max = max;
                 return p;
             }
-            if ((m = rangeRegex.Match(s)).Success)
+            if ((m = HIGHLIGHT_RANGE_REGEX.Match(s)).Success)
             {
                 if (!ParseField(m.Groups[1].Value, ref p.field)) return null;
                 if (!Int32.TryParse(m.Groups[2].Value, out int min)) return null;

@@ -82,30 +82,43 @@ namespace Maps.Graphics
         public void DrawEllipse(AbstractPen pen, AbstractBrush brush, float x, float y, float width, float height) { Apply(pen, brush); g.DrawEllipse(this.pen, this.brush, x, y, width, height); }
         public void DrawArc(AbstractPen pen, float x, float y, float width, float height, float startAngle, float sweepAngle) { Apply(pen); g.DrawArc(this.pen, x, y, width, height, startAngle, sweepAngle); }
 
-        public void DrawImage(AbstractImage image, float x, float y, float width, float height) { g.DrawImage(image.XImage, x, y, width, height); }
+        public void DrawImage(AbstractImage image, float x, float y, float width, float height) {
+            XImage ximage = image.XImage;
+            lock (ximage)
+            {
+                g.DrawImage(ximage, x, y, width, height);
+            }
+        }
+
+        const int ALPHA_STEPS = 16;
+
         public void DrawImageAlpha(float alpha, AbstractImage mimage, RectangleF targetRect)
         {
+            XImage ximage;
+
             // Clamp and Quantize
             alpha = alpha.Clamp(0f, 1f);
-            alpha = (float)Math.Round(alpha * 16f) / 16f;
+            alpha = (float)Math.Round(alpha * ALPHA_STEPS) / ALPHA_STEPS;
             if (alpha <= 0f)
                 return;
-            if (alpha >= 1f)
+            
+            ximage = (alpha >= 1f) ? mimage.XImage : GetAlphaVariant(alpha, mimage);
+            lock (ximage)
             {
-                g.DrawImage(mimage.XImage, targetRect);
-                return;
+                g.DrawImage(ximage, targetRect);
             }
+        }
 
-            int key = (int)Math.Round(alpha * 16);
-
+        private static XImage GetAlphaVariant(float alpha, AbstractImage mimage)
+        {
             Image image = mimage.Image;
-            XImage ximage;
-            int w, h;
-
             lock (image)
             {
-                w = image.Width;
-                h = image.Height;
+                XImage ximage;
+
+                int w = image.Width;
+                int h = image.Height;
+                int key = (int)Math.Round(alpha * ALPHA_STEPS);
 
                 if (image.Tag == null || !(image.Tag is Dictionary<int, XImage>))
                     image.Tag = new Dictionary<int, XImage>();
@@ -139,11 +152,7 @@ namespace Maps.Graphics
                     ximage = XImage.FromGdiPlusImage(scratchBitmap);
                     dict[key] = ximage;
                 }
-            }
-
-            lock (ximage)
-            {
-                g.DrawImage(ximage, targetRect);
+                return ximage;
             }
         }
 

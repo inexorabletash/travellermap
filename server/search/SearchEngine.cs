@@ -460,7 +460,7 @@ namespace Maps.Search
             }
         }
 
-        private static Regex s_sectorHexRegex = new Regex(@"^(?<sector>[A-Za-z0-9!' ]{3,}) (?<hex>\d{4})$",
+        private static Regex SECTOR_HEX_REGEX = new Regex(@"^(?<sector>[A-Za-z0-9!' ]{3,}) (?<hex>\d{4})$",
             RegexOptions.Compiled | RegexOptions.CultureInvariant);
 
         private static SearchResultsType ParseQuery(string query, SearchResultsType types, out List<string> clauses, out List<string> terms)
@@ -471,7 +471,7 @@ namespace Maps.Search
                 return types;
             query = query.Trim().ToLowerInvariant();
 
-            Match m = s_sectorHexRegex.Match(query);
+            Match m = SECTOR_HEX_REGEX.Match(query);
             if (m.Success)
             {
                 int hex = int.Parse(m.Groups["hex"].Value);

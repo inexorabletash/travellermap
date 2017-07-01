@@ -69,20 +69,27 @@ namespace Maps.Graphics
         public void DrawEllipse(AbstractPen pen, AbstractBrush brush, float x, float y, float width, float height) { Apply(pen, brush); g.FillEllipse(this.brush, x, y, width, height); g.DrawEllipse(this.pen, x, y, width, height); }
         public void DrawArc(AbstractPen pen, float x, float y, float width, float height, float startAngle, float sweepAngle) { Apply(pen); g.DrawArc(this.pen, x, y, width, height, startAngle, sweepAngle); }
 
-        public void DrawImage(AbstractImage image, float x, float y, float width, float height) { g.DrawImage(image.Image, x, y, width, height); }
+        public void DrawImage(AbstractImage image, float x, float y, float width, float height)
+        {
+            Image gdiImage = image.Image;
+            lock (gdiImage)
+            {
+                g.DrawImage(gdiImage, x, y, width, height);
+            }
+        }
         public void DrawImageAlpha(float alpha, AbstractImage image, RectangleF targetRect)
         {
             if (alpha <= 0)
                 return;
-            if (alpha >= 1)
-            {
-                DrawImage(image, targetRect.X, targetRect.Y, targetRect.Width, targetRect.Height);
-                return;
-            }
-
             Image gdiImage = image.Image;
-            lock(gdiImage)
+            lock (gdiImage)
             {
+                if (alpha >= 1)
+                {
+                    g.DrawImage(gdiImage, targetRect.X, targetRect.Y, targetRect.Width, targetRect.Height);
+                    return;
+                }
+
                 ImageAttributes attr = new ImageAttributes();
                 attr.SetColorMatrix(new ColorMatrix()
                 {
