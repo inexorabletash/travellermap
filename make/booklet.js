@@ -356,6 +356,8 @@
           subsector.blurb.push(capitalize(subsector.article) + ' contains one world, ' +
                                subsector.maxpop.name + ', with a population of ' +
                                friendlyNumber(subsector.maxpop.population) + '.');
+        } else if (subsector.worlds.length === 1) {
+          subsector.blurb.push(capitalize(subsector.article) + ' contains one barren world.');
         } else if (subsector.worlds.length === 0) {
           subsector.blurb.push(capitalize(subsector.article) + ' contains no charted worlds.');
         }
