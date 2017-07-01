@@ -1,4 +1,5 @@
 ﻿using Maps.Utilities;
+using System;
 using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -77,70 +78,79 @@ namespace Maps.Serialization
         }
         private static bool ParseBool(string s)
         {
-            return s == "True";
+            if (string.IsNullOrEmpty(s)) return false;
+            return s == "true" ? true : s == "false" ? false : throw new Exception($"'{s}' is not a valid boolean");
         }
         private static int? ParseInt(string s)
         {
-            return int.TryParse(s, out int i) ? (int?)i : null;
+            if (string.IsNullOrEmpty(s)) return null;
+            try { return int.Parse(s); }
+            catch (Exception) { throw new Exception($"'{s}' is not a valid integer"); }
         }
         private static float? ParseFloat(string s)
         {
-            return float.TryParse(s, out float f) ? (float?)f : null;
+            if (string.IsNullOrEmpty(s)) return null;
+            try { return float.Parse(s); }
+            catch (Exception) { throw new Exception($"'{s}' is not a valid number"); }
         }
         private static TEnum? ParseEnum<TEnum>(string s) where TEnum : struct
         {
             if (string.IsNullOrWhiteSpace(s))
                 return null;
-            try
-            {
-                return (TEnum)System.Enum.Parse(typeof(TEnum), s);
-            }
-            catch
-            {
-                return null;
-            }
+            try { return (TEnum)Enum.Parse(typeof(TEnum), s); }
+            catch { throw new Exception($"'{s}' is not a valid {typeof(TEnum).Name}"); }
+        }
+
+        private static void ParseErrorAppender(XmlElement elem, Action<XmlElement> action)
+        {
+            try { action(elem); }
+            catch (Exception ex) { throw new Exception($"{ex.Message}\n in {elem.OuterXml}"); }
         }
 
         private Sector Parse(XmlDocument xd)
         {
             Sector sector = new Sector();
 
-            foreach (var name in xd.SelectNodes("/Sector/Name").OfType<XmlElement>())
+            foreach (var e in xd.SelectNodes("/Sector/Name").OfType<XmlElement>())
             {
-                sector.Names.Add(new Name() {
+                ParseErrorAppender(e, name => sector.Names.Add(new Name()
+                {
                     Lang = ParseString(name.GetAttribute("lang")),
                     Text = name.InnerText,
-                });
+                }));
             }
-            foreach (var subsector in xd.SelectNodes("/Sector/Subsectors/Subsector").OfType<XmlElement>())
+            foreach (var e in xd.SelectNodes("/Sector/Subsectors/Subsector").OfType<XmlElement>())
             {
-                sector.Subsectors.Add(new Subsector()
+                ParseErrorAppender(e, subsector => sector.Subsectors.Add(new Subsector()
                 {
                     Index = subsector.GetAttribute("Index"),
                     Name = subsector.InnerText,
+                }));
+            }
+            foreach (var e in xd.SelectNodes("/Sector/Routes/Route").OfType<XmlElement>())
+            {
+                ParseErrorAppender(e, route =>
+                {
+                    var r = new Route()
+                    {
+                        Allegiance = ParseString(route.GetAttribute("Allegiance")),
+                        ColorHtml = ParseString(route.GetAttribute("Color")),
+                        StartHex = ParseString(route.GetAttribute("Start")),
+                        EndHex = ParseString(route.GetAttribute("End")),
+                        Style = ParseEnum<LineStyle>(route.GetAttribute("Style")),
+                        Type = ParseString(route.GetAttribute("Type")),
+                        Width = ParseFloat(route.GetAttribute("Width")),
+                    };
+                    r.StartOffsetX = ParseInt(route.GetAttribute("StartOffsetX")) ?? r.StartOffsetX;
+                    r.StartOffsetY = ParseInt(route.GetAttribute("StartOffsetY")) ?? r.StartOffsetY;
+                    r.EndOffsetX = ParseInt(route.GetAttribute("EndOffsetX")) ?? r.EndOffsetX;
+                    r.EndOffsetY = ParseInt(route.GetAttribute("EndOffsetY")) ?? r.EndOffsetY;
+                    sector.Routes.Add(r);
                 });
             }
-            foreach (var route in xd.SelectNodes("/Sector/Routes/Route").OfType<XmlElement>())
+            foreach (var e in xd.SelectNodes("/Sector/Borders/Border").OfType<XmlElement>())
             {
-                var r = new Route()
-                {
-                    Allegiance = ParseString(route.GetAttribute("Allegiance")),
-                    ColorHtml = ParseString(route.GetAttribute("Color")),
-                    StartHex = ParseString(route.GetAttribute("Start")),
-                    EndHex = ParseString(route.GetAttribute("End")),
-                    Style = ParseEnum<LineStyle>(route.GetAttribute("Style")),
-                    Type = ParseString(route.GetAttribute("Type")),
-                    Width = ParseFloat(route.GetAttribute("Width")),
-                };
-                r.StartOffsetX = ParseInt(route.GetAttribute("StartOffsetX")) ?? r.StartOffsetX;
-                r.StartOffsetY = ParseInt(route.GetAttribute("StartOffsetY")) ?? r.StartOffsetY;
-                r.EndOffsetX = ParseInt(route.GetAttribute("EndOffsetX")) ?? r.EndOffsetX;
-                r.EndOffsetY = ParseInt(route.GetAttribute("EndOffsetY")) ?? r.EndOffsetY;
-                sector.Routes.Add(r);
-            }
-            foreach (var border in xd.SelectNodes("/Sector/Borders/Border").OfType<XmlElement>())
-            {
-                sector.Borders.Add(new Border()
+                ParseErrorAppender(e, border => sector.Borders.Add(new Border()
                 {
                     Allegiance = ParseString(border.GetAttribute("Allegiance")),
                     ColorHtml = ParseString(border.GetAttribute("Color")),
@@ -150,20 +160,20 @@ namespace Maps.Serialization
                     ShowLabel = ParseBool(border.GetAttribute("ShowLabel")),
                     Style = ParseEnum<LineStyle>(border.GetAttribute("Style")),
                     WrapLabel = ParseBool(border.GetAttribute("WrapLabel")),
-                });
+                }));
             }
-            foreach (var alleg in xd.SelectNodes("/Sector/Allegiances/Allegiance").OfType<XmlElement>())
+            foreach (var e in xd.SelectNodes("/Sector/Allegiances/Allegiance").OfType<XmlElement>())
             {
-                sector.Allegiances.Add(new Allegiance()
+                ParseErrorAppender(e, alleg => sector.Allegiances.Add(new Allegiance()
                 {
                     Base = ParseString(alleg.GetAttribute("Base")),
                     T5Code = ParseString(alleg.GetAttribute("Code")),
                     Name = alleg.InnerText,
-                });
+                }));
             }
-            foreach (var label in xd.SelectNodes("/Sector/Labels/Label").OfType<XmlElement>())
+            foreach (var e in xd.SelectNodes("/Sector/Labels/Label").OfType<XmlElement>())
             {
-                sector.Labels.Add(new Label()
+                ParseErrorAppender(e, label => sector.Labels.Add(new Label()
                 {
                     Allegiance = ParseString(label.GetAttribute("Allegiance")),
                     ColorHtml = ParseString(label.GetAttribute("Color")),
@@ -171,10 +181,13 @@ namespace Maps.Serialization
                     OffsetY = ParseFloat(label.GetAttribute("OffsetY")) ?? 0,
                     Size = ParseString(label.GetAttribute("Size")),
                     Text = label.InnerText,
-                });
+                }));
             }
-            sector.StylesheetText = (xd.SelectSingleNode("/Sector/Stylesheet") as XmlElement)?.InnerText;
-            sector.Credits = (xd.SelectSingleNode("/Sector/Credits") as XmlElement)?.InnerText;
+            if (xd.SelectSingleNode("/Sector/Stylesheet") is XmlElement stylesheet)
+                ParseErrorAppender(stylesheet, e => sector.StylesheetText = e.InnerText);
+
+            if (xd.SelectSingleNode("/Sector/Credits") is XmlElement credits)
+                ParseErrorAppender(credits, e => sector.Credits = e.InnerText);
 
             return sector;
         }

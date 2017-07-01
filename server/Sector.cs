@@ -717,7 +717,10 @@ namespace Maps
 
         internal Color? Color { get; set; }
         [XmlAttribute("Color"), JsonName("Color")]
-        public string ColorHtml { get => Color.HasValue ? ColorTranslator.ToHtml(Color.Value) : null; set => Color = ColorTranslator.FromHtml(value); }
+        public string ColorHtml {
+            get => Color.HasValue ? ColorTranslator.ToHtml(Color.Value) : null;
+            set { if (value != null) Color = ColorUtil.ParseColor(value); }
+        }
 
         [XmlAttribute]
         public string Allegiance { get; set; }
@@ -920,7 +923,7 @@ namespace Maps
         [XmlAttribute("Color"), JsonName("Color")]
         public string ColorHtml {
             get => Color.HasValue ? ColorTranslator.ToHtml(Color.Value) : null;
-            set => Color = ColorTranslator.FromHtml(value);
+            set { if (value != null) Color = ColorUtil.ParseColor(value); }
         }
 
         [XmlAttribute]
@@ -967,7 +970,7 @@ namespace Maps
         [XmlAttribute("Color"), JsonName("Color")]
         public string ColorHtml {
             get => ColorTranslator.ToHtml(Color);
-            set => Color = ColorTranslator.FromHtml(value);
+            set { if (value != null) Color = ColorUtil.ParseColor(value); }
         }
 
         [XmlAttribute]

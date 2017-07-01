@@ -351,7 +351,7 @@ namespace Maps
             {
                 if (!GetValue(property, out string value))
                     return null;
-                return ColorTranslator.FromHtml(value);
+                return ColorUtil.ParseColor(value);
             }
 
             public double? GetNumber(string property)

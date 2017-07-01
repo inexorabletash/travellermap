@@ -132,13 +132,17 @@ namespace Maps
         public Hex(Hex other) { X = other.X; Y = other.Y; }
         public Hex(string s)
         {
-            if (s != null && s.Length == 4 && byte.TryParse(s.Substring(0, 2), out byte x) && byte.TryParse(s.Substring(2, 2), out byte y))
+            if (string.IsNullOrEmpty(s))
+            {
+                X = Y = 0;
+            }
+            else if (s.Length == 4 && byte.TryParse(s.Substring(0, 2), out byte x) && byte.TryParse(s.Substring(2, 2), out byte y))
             {
                 X = x; Y = y;
             }
             else
             {
-                X = 0; Y = 0;
+                throw new Exception($"'{s}' is not a valid hex");
             }
         }
 

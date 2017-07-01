@@ -52,5 +52,16 @@ namespace Maps.Utilities
             return DeltaE76(al, aa, ab, bl, ba, bb) > JND;
         }
 
+        public static Color ParseColor(string value)
+        {
+            try
+            {
+                return ColorTranslator.FromHtml(value);
+            }
+            catch (Exception)
+            {
+                throw new Exception($"'{value}' is not a valid color name.");
+            }
+        }
     }
 }
