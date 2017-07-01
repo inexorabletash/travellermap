@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<Sector>
+  <Y>1</Y>
+  <X>-5</X>
+  <Name>Touchstone</Name>
+  <Name Lang="as">Weasuirlaoa</Name>
+  <Credits>
+    <![CDATA[
+
+             <b>Touchstone</b> sector was designed by Jo Grant
+             with further refinement by Joshua Bell.
+
+
+             Stellar positions were developed by Joe D. Fugate Sr. and
+             appear in <cite>The MegaTraveller Alien, Volume 2: Solomani
+             &amp; Aslan</cite> (Digest Group Publications, 1991).
+    ]]>
+  </Credits>
+  <Subsectors>
+    <Subsector Index="A">Ekteiu</Subsector>
+    <Subsector Index="B">Kyahiyleakhaw</Subsector>
+    <Subsector Index="C">Hiryarloah</Subsector>
+    <Subsector Index="D">Eietorl Easea'</Subsector>
+    <Subsector Index="E">A Ekhyolyooul</Subsector>
+    <Subsector Index="F">Iheihoarla</Subsector>
+    <Subsector Index="G">Aosola</Subsector>
+    <Subsector Index="H">Ikairleah</Subsector>
+    <Subsector Index="I">Earluiloiw</Subsector>
+    <Subsector Index="J">Taikhahriysea'yoruh</Subsector>
+    <Subsector Index="K">Tarlaihiyr</Subsector>
+    <Subsector Index="L">Oheaaye'eal</Subsector>
+    <Subsector Index="M">Iywe'uar</Subsector>
+    <Subsector Index="N">Hritihtoi</Subsector>
+    <Subsector Index="O">Ayaau'khte</Subsector>
+    <Subsector Index="P">Ala'ourl</Subsector>
+  </Subsectors>
+  <!--
+    <Subsectors Source="CORE">
+      <Subsector Index="A">Oneh</Subsector>
+      <Subsector Index="B">Tuscany</Subsector>
+      <Subsector Index="C">Severn</Subsector>
+      <Subsector Index="D">Cheketae</Subsector>
+    </Subsectors>
+  -->
+  <Borders>
+    <Border Allegiance="As" LabelPosition="0305">0103 0202 0303 0403 0503 0603 0703 0802 0903 1003 1104 1105 1106 1006 0907 0806 0707 0606 0507 0407 0308 0208 0109 0110 0109 0108 0107 0106 0105 0104 0103 </Border>
+    <Border Allegiance="As" LabelPosition="0915">0212 0312 0411 0512 0612 0713 0812 0912 0911 0910 0809 0808 0909 1008 1108 1109 1209 1210 1211 1212 1213 1114 1014 1015 1016 0916 0815 0715 0615 0516 0517 0417 0317 0316 0315 0314 0313 0212 </Border>
+    <Border Allegiance="As" LabelPosition="2705">2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3208 3109 3009 3010 2910 2810 2711 2610 2510 2509 2508 2507 2406 2405 2404 2304 2303 2202 2102 2101 2000</Border>
+  </Borders>
+</Sector>

@@ -1,3 +1,4 @@
+/*global Restellarator*/
 'use strict';
 
 const EHEX = '0123456789ABCDEFGHJKLMNPQRSTUV';
@@ -47,6 +48,16 @@ function process(world) {
           .filter(s => s.length)
           .map(c => c === 'Cr' ? 'Cx' : c);
   const codeSet = new Set(codes);
+
+  if (world.Pop === 0)
+    world.Gov = world.Law = world.PMult = 0;
+
+  // Correct over-abundance of Dieback worlds
+  if (world.Pop === 0 && world.TL > 0 && roll2D() > 2)
+    world.TL = 0;
+
+  world.UWP = `${world.St}${toEHex(world.Siz)}${toEHex(world.Atm)}${toEHex(world.Hyd)}${toEHex(world.Pop)}${toEHex(world.Gov)}${toEHex(world.Law)}-${toEHex(world.TL)}`;
+  world.PBG = `${toEHex(world.PMult)}${toEHex(world.Belts)}${toEHex(world.GG)}`;
 
   // Planetary
   world.As = world.Siz === 0;
@@ -232,7 +243,6 @@ function t5ify(world) {
   world.Allegiance = ({
     'Ga': '3EoG',
     'Jm': 'JMen',
-    'Na': 'NaHu',
     'JP': 'JuPr',
     'VN': 'VDrN',
     'VQ': 'VYoe',
@@ -241,7 +251,47 @@ function t5ify(world) {
     'Zh': 'ZhMe'
   })[world.Allegiance] || world.Allegiance;
 
-  world.Stars = world.Stars || generateStars();
+  // Derived from Trojan Reach/Riftspan Reaches/Beyond
+  const NA_TABLE = [
+    {freq: 341, entry: 'NaHu'},
+    {freq:   8, entry: 'NaAs'},
+    {freq:   6, entry: 'NaXX'},
+    {freq:   2, entry: 'NaVa'}
+  ];
+  const AS_TABLE = [
+    {freq: 72, entry:'AsSc'},
+    {freq: 50, entry:'AsMw'},
+    {freq: 31, entry:'AsWc'},
+    {freq: 26, entry:'AsVc'},
+    {freq: 25, entry:'AsTv'},
+    {freq:  7, entry:'AsXX'},
+    {freq:  4, entry:'AsT9'},
+    {freq:  4, entry:'AsT1'},
+    {freq:  3, entry:'AsT8'},
+    {freq:  3, entry:'AsT7'},
+    {freq:  3, entry:'AsT4'},
+    {freq:  3, entry:'AsT3'},
+    {freq:  3, entry:'AsT0'},
+    {freq:  2, entry:'AsT5'},
+    {freq:  2, entry:'AsT2'},
+    {freq:  1, entry:'AsT6'},
+  ];
+  if (world.Allegiance === 'Na') world.Allegiance = world.Pop === 0 ? 'NaXX' : pickFromFrequencyTable(NA_TABLE);
+  if (world.Allegiance === 'As') world.Allegiance = pickFromFrequencyTable(AS_TABLE);
+
+  world.Stars = Restellarator.fix(world.Stars) || Restellarator.generate();
+}
+
+function pickFromFrequencyTable(table) {
+  const sum = table.reduce((sum, entry) => sum + entry.freq, 0);
+  let n = Math.floor(Math.random() * sum);
+  for (let i = 0; i < table.length; ++i) {
+    const row = table[i];
+      if (n < row.freq)
+        return row.entry;
+    n -= row.freq;
+  }
+  throw new Error("Logic bug");
 }
 
 function format(world) {
@@ -399,105 +449,3 @@ $('#sectot5').addEventListener('click', e => {
     window.worlds = worlds;
   });
 });
-
-
-function generateStars() {
-
-  let primarySpectralFlux = flux();
-  let primarySizeFlux = flux();
-
-  function generateStar(primary) {
-    function clamp(a, min, max) { return a < min ? min : a > max ? max : a; }
-
-    const table = {
-      Sp: { '-6': 'OB', '-5': 'A', '-4': 'A', '-3': 'F', '-2': 'F', '-1': 'G',
-            0: 'G', 1: 'K', 2: 'K', 3: 'M', 4: 'M', 5: 'M', 6: 'BD', 7: 'BD', 8: 'BD' },
-      O: { '-6': 'Ia', '-5': 'Ia', '-4': 'Ib', '-3': 'II', '-2': 'III', '-1': 'III',
-            0: 'III', 1: 'V', 2: 'V', 3: 'V', 4: 'IV', 5: 'D', 6: 'IV', 7: 'IV', 8: 'IV' },
-      B: { '-6': 'Ia', '-5': 'Ia', '-4': 'Ib', '-3': 'II', '-2': 'III', '-1': 'III',
-            0: 'III', 1: 'III', 2: 'V', 3: 'V', 4: 'IV', 5: 'D', 6: 'IV', 7: 'IV', 8: 'IV' },
-      A: { '-6': 'Ia', '-5': 'Ia', '-4': 'Ib', '-3': 'II', '-2': 'III', '-1': 'IV',
-            0: 'V', 1: 'V', 2: 'V', 3: 'V', 4: 'V', 5: 'D', 6: 'V', 7: 'V', 8: 'V' },
-      F: { '-6': 'II', '-5': 'II', '-4': 'III', '-3': 'IV', '-2': 'V', '-1': 'V',
-            0: 'V', 1: 'V', 2: 'V', 3: 'V', 4: 'VI', 5: 'D', 6: 'VI', 7: 'VI', 8: 'VI' },
-      G: { '-6': 'II', '-5': 'II', '-4': 'III', '-3': 'IV', '-2': 'V', '-1': 'V',
-            0: 'V', 1: 'V', 2: 'V', 3: 'V', 4: 'VI', 5: 'D', 6: 'VI', 7: 'VI', 8: 'VI' },
-      K: { '-6': 'II', '-5': 'II', '-4': 'III', '-3': 'IV', '-2': 'V', '-1': 'V',
-            0: 'V', 1: 'V', 2: 'V', 3: 'V', 4: 'VI', 5: 'D', 6: 'VI', 7: 'VI', 8: 'VI' },
-      M: { '-6': 'II', '-5': 'II', '-4': 'II', '-3': 'II', '-2': 'III', '-1': 'V',
-            0: 'V', 1: 'V', 2: 'V', 3: 'V', 4: 'VI', 5: 'D', 6: 'VI', 7: 'VI', 8: 'VI' }
-    };
-
-    while (true) {
-      // "Spectral Type: Roll Flux for Primary. For all others, Primary Flux + (1D-1)."
-      let spectral = table.Sp[clamp(
-        primary ? primarySpectralFlux : primarySpectralFlux + roll1D() - 1, -6, 8)];
-
-      // "Select further between O or B."
-      if (spectral === 'OB') spectral = roll1D() <= 3 ? 'O' : 'B';
-
-      // "If Spectral= BD ignore remaining rolls."
-      if (spectral === 'BD') return spectral;
-
-      // "Spectral Decimal. Roll decimal 0 to 9."
-      let spectralDecimal = roll1D10() - 1;
-
-      // "Stellar Size. Roll Flux for Primary. For all others, use Primary Flux + (1D+2)."
-      let size = table[spectral][clamp(
-        primary ? primarySizeFlux : primarySizeFlux + roll1D() + 2, -6, 8)];
-
-      // T5SS: Disallow D as primary
-      if (primary && size === 'D') {
-        primarySizeFlux = flux();
-        continue;
-      }
-
-      // "If Size= D, ignore Spectral Decimal."
-      // T5SS: Use only 'D' not 'MD' etc.
-      if (size === 'D') return size;
-
-      // "Size IV not for K5-K9 and M0-M9."
-      if (size === 'IV' && ((spectral === 'K' && spectralDecimal.in(5, 9)) ||
-                            spectral === 'M'))
-        continue;
-
-      // "Size VI not for A0-A9 and F0-F4."
-      if (size === 'VI' && (spectral === 'A' ||
-                            (spectral === 'F' && spectralDecimal.in(0, 4))))
-        continue;
-
-      return `${spectral}${spectralDecimal} ${size}`;
-    }
-  }
-
-  const stars = [];
-
-  // Primary
-  stars.push(generateStar(true));
-
-  // Companion
-  if (flux() >= 3) stars.push(generateStar());
-
-  // Close
-  if (flux() >= 3) {
-    stars.push(generateStar());
-    // Companion
-    if (flux() >= 3) stars.push(generateStar());
-  }
-
-  // Near
-  if (flux() >= 3) {
-    stars.push(generateStar());
-    // Companion
-    if (flux() >= 3) stars.push(generateStar());
-  }
-
-  // Far
-  if (flux() >= 3) {
-    stars.push(generateStar());
-    // Companion
-    if (flux() >= 3) stars.push(generateStar());
-  }
-
-  return stars.join(' ');
-}
