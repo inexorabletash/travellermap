@@ -42,20 +42,20 @@ namespace Maps.Rendering
     [Flags]
     public enum WorldDetails : int
     {
-        None = 0x0000,
+        None = 0,
 
-        Type = 0x0001, // Show world type (water/no water/asteroid/unknown)
-        KeyNames = 0x0002, // Show HiPop/Capital names
-        Starport = 0x0004, // Show starport
-        GasGiant = 0x0008, // Show gas giant glyph
-        Allegiance = 0x0010, // Show allegiance code
-        Bases = 0x0020, // Show bases
-        Hex = 0x0040, // Include hex numbers
-        Zone = 0x0080, // Show Amber/Red zones
-        AllNames = 0x0100, // Show all world names, not just HiPop/Capitals
-        Uwp = 0x0200, // Show UWP below world name
-        Asteroids = 0x0400, // Render asteroids as pseudorandom ovals
-        Highlight = 0x0800, // Highlight (text font, text color) HiPopCapital worlds
+        Type = 1 << 0, // Show world type (water/no water/asteroid/unknown)
+        KeyNames = 1 << 1, // Show HiPop/Capital names
+        Starport = 1 << 2, // Show starport
+        GasGiant = 1 << 3, // Show gas giant glyph
+        Allegiance = 1 << 4, // Show allegiance code
+        Bases = 1 << 5, // Show bases
+        Hex = 1 << 6, // Include hex numbers
+        Zone = 1 << 7, // Show Amber/Red zones
+        AllNames = 1 << 8, // Show all world names, not just HiPop/Capitals
+        Uwp = 1 << 9, // Show UWP below world name
+        Asteroids = 1 << 10, // Render asteroids as pseudorandom ovals
+        Highlight = 1 << 11, // Highlight (text font, text color) HiPopCapital worlds
 
         Dotmap = None,
         Atlas = Type | KeyNames | Starport | GasGiant | Allegiance | Bases | Zone | Highlight,

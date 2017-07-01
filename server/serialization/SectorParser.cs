@@ -212,9 +212,9 @@ namespace Maps.Serialization
         [Flags]
         private enum CheckOptions
         {
-            EmptyIfDash = 1,
-            Warning = 2,
-            Optional = 4
+            EmptyIfDash = 1 << 0,
+            Warning = 1 << 1,
+            Optional = 1 << 2
         };
 
         private class FieldChecker

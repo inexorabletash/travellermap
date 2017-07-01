@@ -29,10 +29,10 @@ namespace Maps.Search
         [Flags]
         public enum SearchResultsType : int
         {
-            Sectors = 0x0001,
-            Subsectors = 0x0002,
-            Worlds = 0x0004,
-            Labels = 0x0008,
+            Sectors = 1 << 0,
+            Subsectors = 1 << 1,
+            Worlds = 1 << 2,
+            Labels = 1 << 3,
             Default = Sectors | Subsectors | Worlds | Labels
         }
 
@@ -460,13 +460,29 @@ namespace Maps.Search
             }
         }
 
+        private static Regex s_sectorHexRegex = new Regex(@"^(?<sector>[A-Za-z0-9!' ]{3,}) (?<hex>\d{4})$",
+            RegexOptions.Compiled | RegexOptions.CultureInvariant);
+
         private static SearchResultsType ParseQuery(string query, SearchResultsType types, out List<string> clauses, out List<string> terms)
         {
             clauses = new List<string>();
             terms = new List<string>();
             if (string.IsNullOrWhiteSpace(query))
                 return types;
-            query = query.ToLowerInvariant();
+            query = query.Trim().ToLowerInvariant();
+
+            Match m = s_sectorHexRegex.Match(query);
+            if (m.Success)
+            {
+                int hex = int.Parse(m.Groups["hex"].Value);
+                clauses.Add("sector_name LIKE @term + '%'");
+                terms.Add(m.Groups["sector"].Value);
+                clauses.Add("hex_x = @term");
+                terms.Add((hex / 100).ToString());
+                clauses.Add("hex_y = @term");
+                terms.Add((hex % 100).ToString());
+                return SearchResultsType.Worlds;
+            }
 
             foreach (string t in ParseTerms(query))
             {
