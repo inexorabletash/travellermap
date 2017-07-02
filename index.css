@@ -290,6 +290,8 @@ body:not(.wds-visible) #wds-frame { display: none; }
 #sds-data > div:not(:first-child) { margin: 8px 0; }
 #sds-data .ds-mini-hidden > div { margin: 8px 0; }
 
+#sds-data > div:not(:first-child).ds-mini-toggle { margin: -8px 0; }
+#sds-data .ds-mini-hidden > div.ds-mini-toggle { margin: -8px 0; }
 
 /* Expand/Collapse */
 
