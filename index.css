@@ -221,6 +221,7 @@ body:not(.wds-visible) #wds-frame { display: none; }
 .ds-scroll {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
+  overflow-x: hidden;
   overflow-y: scroll;
 }
 .ds-mini .ds-scroll {
@@ -273,11 +274,15 @@ body:not(.wds-visible) #wds-frame { display: none; }
 .ds-mini-toggle {
   touch-action: none;
   clear: both;
-  text-align: center;
-  font-size: 14px;
+  height: 14px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAKAgMAAAAWdexqAAAACVBMVEUAAAAAAAAAAACDY+nAAAAAAnRSTlMAf7YpoZUAAAAySURBVAjXY2BgZAACNgcgITUBSGQtAQqtXAkUWpLlABQCCmY5sC1hkGRgnMDAwsDgAAC0jgg98vnGsQAAAABJRU5ErkJggg==);
 }
-.ds-mini .ds-mini-toggle:before { content: "\25BC"; /* U+25BC BLACK DOWN-POINTING TRIANGLE */ }
-.ds-mini-toggle:before { content: "\25B2"; /* U+25B2 BLACK UP-POINTING TRIANGLE */ }
+.ds-mini .ds-mini-toggle {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAKAgMAAAAWdexqAAAACVBMVEUAAAAAAAAAAACDY+nAAAAAAnRSTlMAf7YpoZUAAAAySURBVAjXDcRBDQAwCATBJWnwUNScHtScCD51WeYxHBCXMK0cymVyWsR7QM9W3lJbwAfiugg93xGAJAAAAABJRU5ErkJggg==);
+}
+
 .ds-mini .ds-mini-hidden { display: none; }
 
 .ds-mini .ds-frame { height: 150px; }
@@ -291,16 +296,23 @@ body:not(.wds-visible) #wds-frame { display: none; }
 .wds-expandy { cursor: pointer; }
 .wds-toggle { float: right; opacity: 0.5; }
 .wds-expandy:hover .wds-toggle { opacity: 1; }
-.wds-toggle:before { content: "\25BC"; /* U+25BC BLACK DOWN-POINTING TRIANGLE */ }
+.wds-toggle {
+  display: block;
+  height: 14px;
+  width: 14px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAKAgMAAAAWdexqAAAACVBMVEUAAAAAAAAAAACDY+nAAAAAAnRSTlMAf7YpoZUAAAAySURBVAjXDcRBDQAwCATBJWnwUNScHtScCD51WeYxHBCXMK0cymVyWsR7QM9W3lJbwAfiugg93xGAJAAAAABJRU5ErkJggg==);
+}
 
 #wds-frame:not(.wds-expand-uwp) #wds-uwp,
 #wds-frame:not(.wds-expand-ex) #wds-ex,
 #wds-frame:not(.wds-expand-cx) #wds-cx { display: none; }
 
-.wds-expand-uwp .wds-expandy[data-wds-expand="wds-expand-uwp"] .wds-toggle:before,
-.wds-expand-ex .wds-expandy[data-wds-expand="wds-expand-ex"] .wds-toggle:before,
-.wds-expand-cx .wds-expandy[data-wds-expand="wds-expand-cx"] .wds-toggle:before {
-  content: "\25B2"; /* U+25B2 BLACK UP-POINTING TRIANGLE */
+.wds-expand-uwp .wds-expandy[data-wds-expand="wds-expand-uwp"] .wds-toggle,
+.wds-expand-ex .wds-expandy[data-wds-expand="wds-expand-ex"] .wds-toggle,
+.wds-expand-cx .wds-expandy[data-wds-expand="wds-expand-cx"] .wds-toggle {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAKAgMAAAAWdexqAAAACVBMVEUAAAAAAAAAAACDY+nAAAAAAnRSTlMAf7YpoZUAAAAySURBVAjXY2BgZAACNgcgITUBSGQtAQqtXAkUWpLlABQCCmY5sC1hkGRgnMDAwsDgAAC0jgg98vnGsQAAAABJRU5ErkJggg==);
 }
 
 .wds-wiki-link,
@@ -883,7 +895,7 @@ body:not(.search-results) #closeSearchBtn { display: none; }
     transition: height 0.25s;
   }
 
-  .wds-properties { margin-left: auto; margin-right: auto; max-width: }
+  .wds-properties { margin-left: auto; margin-right: auto; }
 
   #sds-frame {
     height: 320px;
@@ -896,8 +908,8 @@ body:not(.search-results) #closeSearchBtn { display: none; }
   .sds-visible #bottom-pane,
   .wds-visible #bottom-pane { display: none; }
 
-  .ds-mini .ds-mini-toggle:before { content: "\25B2"; /* U+25B2 BLACK UP-POINTING TRIANGLE */ }
-  .ds-mini-toggle:before { content: "\25BC"; /* U+25BC BLACK DOWN-POINTING TRIANGLE */ }
+  .ds-mini .ds-mini-toggle { background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAKAgMAAAAWdexqAAAACVBMVEUAAAAAAAAAAACDY+nAAAAAAnRSTlMAf7YpoZUAAAAySURBVAjXY2BgZAACNgcgITUBSGQtAQqtXAkUWpLlABQCCmY5sC1hkGRgnMDAwsDgAAC0jgg98vnGsQAAAABJRU5ErkJggg==); }
+  .ds-mini-toggle { background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAKAgMAAAAWdexqAAAACVBMVEUAAAAAAAAAAACDY+nAAAAAAnRSTlMAf7YpoZUAAAAySURBVAjXDcRBDQAwCATBJWnwUNScHtScCD51WeYxHBCXMK0cymVyWsR7QM9W3lJbwAfiugg93xGAJAAAAABJRU5ErkJggg==); }
 }
 
 @media only screen and (max-width: 640px) {
