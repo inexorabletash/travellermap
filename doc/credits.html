@@ -585,6 +585,14 @@
     </p>
 
     <p>
+      Chuck Kallenbach II's 1991 updates of the Paranoia Press sectors &mdash;
+      which differ from the 1981 editions and the T5SS updates &mdash;
+      are present on the map, located far away from charted space:
+      <a class="sector">The Beyond (Paranoia Press 1991)</a> and
+      <a class="sector">Vanguard Reaches (Paranoia Press 1991)</a>.
+    </p>
+
+    <p>
       The <a class="sector">Precipice</a> subsector
       "one half sector coreward from the Imperial border" was featured in
       <cite>Disappearance on Aramat</cite> by
@@ -900,6 +908,12 @@
       "Dalthor Et Magera" Anderson.
     </p>
 
+    <p>
+      <a class="sector">The Beyond (Jeff Zeitlin)</a> represents a version of that
+      sector by the prolific sector designer that was hosted on this site for many years
+      before the data was updated, and is presented as a "far away" sector for players
+      who wish to continue to use it.
+    </p>
 
     <p>
       The <a target="_blank" href="https://explorerbase.wordpress.com/orion-ob1-association/">Orion OB1 Association</a>
@@ -929,6 +943,7 @@
       <a class="sector">Gulf</a>, and
       <a class="sector">Deep</a>.
     </p>
+
 
     <!-- ================================================================================ -->
     <h2>Borders and Routes</h2>
@@ -996,7 +1011,6 @@
 
   [].slice.call($$('a.sector')).forEach(function(anchor) {
     var name = anchor.innerText || anchor.textContent;
-    name = name.replace(/^The /, '');
     anchor.href = SERVICE_BASE + '/go/' + encodeURIComponent(name);
     anchor.target = "_blank";
   });

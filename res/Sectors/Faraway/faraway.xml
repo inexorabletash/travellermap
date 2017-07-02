@@ -1194,12 +1194,36 @@
       <Route Type="Trade" Start="1829" End="2031"/>
     </Routes>
   </Sector>
+
+  <Sector Tags="Faraway" Abbreviation="VR91" Label="Vanguard Reaches">
+    <X>152</X>
+    <Y>0</Y>
+    <Name>Vanguard Reaches (Paranoia Press 1991)</Name>
+    <DataFile>Vanguard Reaches 1991.sec</DataFile>
+    <MetadataFile>Vanguard Reaches 1991.xml</MetadataFile>
+  </Sector>
+  <Sector Tags="Faraway" Abbreviation="BE91" Label="The Beyond">
+    <X>153</X>
+    <Y>0</Y>
+    <Name>The Beyond (Paranoia Press 1991)</Name>
+    <DataFile>Beyond 1991.sec</DataFile>
+    <MetadataFile>Beyond 1991.xml</MetadataFile>
+  </Sector>
+
   <Sector Tags="Faraway">
     <X>60</X>
     <Y>60</Y>
     <Name Author="Ed &quot;Dalthor Et Magera&quot; Anderson">Varan</Name>
     <DataFile Author="Ed &quot;Dalthor Et Magera&quot; Anderson" Type="SecondSurvey">Varan.t5</DataFile>
     <MetadataFile Author="Ed &quot;Dalthor Et Magera&quot; Anderson">Varan.xml</MetadataFile>
+  </Sector>
+
+  <Sector Tags="Faraway" Abbreviation="JZBe" Label="The Beyond">
+    <X>70</X>
+    <Y>70</Y>
+    <Name>The Beyond (Jeff Zeitlin)</Name>
+    <DataFile>beyond.sec</DataFile>
+    <MetadataFile>Zeitlin Beyond.xml</MetadataFile>
   </Sector>
   <Sector Tags="Apocryphal">
     <X>70</X>
