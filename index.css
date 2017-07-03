@@ -889,7 +889,7 @@ body:not(.search-results) #closeSearchBtn { display: none; }
     border-bottom: none;
     transition: height 0.25s;
   }
-  #sds-frame {
+  body:not(.ds-mini) #sds-frame {
     height: 320px;
   }
   .ds-mini .ds-frame {
@@ -898,7 +898,7 @@ body:not(.search-results) #closeSearchBtn { display: none; }
     min-height: 150px;
   }
 
-  .wds-properties { margin-left: auto; margin-right: auto; }
+  .wds-properties { width: 100%; }
 
   .sds-visible #bottom-pane,
   .wds-visible #bottom-pane { display: none; }
