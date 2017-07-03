@@ -7,7 +7,7 @@
     ]]>
   </Credits>
   <Subsectors>
-    <Subsector Index="A">Bolid</Subsector>
+    <Subsector Index="A">Murada</Subsector>
     <Subsector Index="B">Cradle</Subsector>
     <Subsector Index="C">Stanter</Subsector>
     <Subsector Index="D">Frell</Subsector>
@@ -73,7 +73,7 @@
     <Route Start="0830" End="0731"/>
     <Route Start="0731" End="0733"/>
     <Route Start="0733" End="0734"/>
-    <Route Start="0635" End="0733"/>
+    <Route Start="0635" End="0734"/>
     <!-- Rasand Link -->
     <Route Start="1424" End="1223"/>
     <Route Start="1223" End="1022"/>
@@ -107,6 +107,8 @@
     <Route Start="3227" End="3327"/>
   </Routes>
   <Labels>
+    <!-- Deep Space -->
+    <Label Hex="1937" Color="gray" Size="small">fuel&#x0a;cache</Label>
     <!-- Route Names -->
     <Label Hex="2132" Color="white">Barabek Loop</Label>
     <Label Hex="1622" Color="white">Elemid Trace</Label>
@@ -117,10 +119,10 @@
     <Label Hex="3129" Color="white">Wolfs Tail</Label>
     <!-- Rift Names -->
     <Label Hex="1201" Color="gray" Size="large">Moat Rifts</Label>
-    <Label Hex="1637" Color="gray" Size="large">Great Void</Label>
+    <Label Hex="1437" Color="gray" Size="large">Great Void</Label>
     <Label Hex="3109" Color="gray">Rissa&#x0a;Void</Label>
     <Label Hex="3122" Color="gray">Harmal&#x0a;Deep</Label>
-    <Label Hex="3132" Color="gray">Baradine&#x0a;Divide</Label>
+    <Label Hex="3135" Color="gray">Baradine&#x0a;Divide</Label>
   </Labels>
   <Stylesheet>
     border.Bc { color: magenta }

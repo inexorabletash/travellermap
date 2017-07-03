@@ -56,6 +56,8 @@
     <Route Start="0824" End="0825"/>
     <Route Start="0825" End="0626"/>
     <Route Start="0626" End="0728"/>
+    <!-- Incal Intersect -->
+    <Route Start="0732" End="0931"/>
     <!-- New Border -->
     <Route Start="2511" End="2312"/>
     <Route Start="2312" End="2113"/>
@@ -111,8 +113,10 @@
     <Route Start="0127" End="0027"/>
   </Routes>
   <Labels>
-    <!-- Sath Exploration -->
-    <Label Hex="3038" Color="Olive" Size="small">Waypoint</Label>
+    <!-- Sath Waypoints -->
+    <Label Hex="2435" Color="Olive" Size="small">Sch'ikaa&#x0a;Waypoint</Label>
+    <Label Hex="2536" Color="Olive" Size="small">Tiik'sch&#x0a;Waypoint</Label>
+    <Label Hex="3038" Color="Olive" Size="small">Ith-Saa-Ka&#x0a;Waypoint</Label>
     <!-- Route Names -->
     <Label Hex="1024" Color="white">Kuyt Chain</Label>
     <Label Hex="2413" Color="white">New Border</Label>
@@ -123,7 +127,7 @@
     <Label Hex="2322" Color="white">Void Edge</Label>
     <Label Hex="0327" Color="white">Wolfs Tail</Label>
     <!-- Rift Names -->
-    <Label Hex="1820" Color="gray">Demon's&#x0a;Eye&#x0a;Rift</Label>
+    <Label Hex="1720" Color="gray">Demon's Eye Rift</Label>
     <Label Hex="1604" Color="gray" Size="large">Moat Rifts</Label>
     <Label Hex="0209" Color="gray">Rissa&#x0a;Void</Label>
     <Label Hex="0219" Color="gray">Harmal&#x0a;Deep</Label>
