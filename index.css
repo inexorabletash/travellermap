@@ -200,8 +200,7 @@ body:not(.wds-visible) #ds-shade,
 body:not(.sds-visible) #sds-frame,
 body:not(.wds-visible) #wds-frame { display: none; }
 
-.hide-footer #sds-frame
-.hide-footer #wds-frame { bottom: 15px; }
+.hide-footer .ds-frame { bottom: 15px; }
 
 .ds-frame {
   position: absolute;
@@ -211,7 +210,7 @@ body:not(.wds-visible) #wds-frame { display: none; }
   border: 1px solid black;
 
   left: 15px; right: auto; width: 320px;
-  top: 50px; bottom: 110px; height: auto;
+  top: 50px; min-height: 151px; height: auto; bottom: 110px;
 }
 
 .ds-frame a {
@@ -219,13 +218,9 @@ body:not(.wds-visible) #wds-frame { display: none; }
 }
 
 .ds-scroll {
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
   overflow-x: hidden;
   overflow-y: scroll;
-}
-.ds-mini .ds-scroll {
-  overflow-y: hidden;
+  max-height: 100%;
 }
 
 #sds-scroll { padding: 10px; }
@@ -284,8 +279,7 @@ body:not(.wds-visible) #wds-frame { display: none; }
 }
 
 .ds-mini .ds-mini-hidden { display: none; }
-
-.ds-mini .ds-frame { height: 150px; }
+.ds-mini .ds-frame { bottom: auto; }
 
 #sds-data > div:not(:first-child) { margin: 8px 0; }
 #sds-data .ds-mini-hidden > div { margin: 8px 0; }
@@ -317,17 +311,17 @@ body:not(.wds-visible) #wds-frame { display: none; }
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAKAgMAAAAWdexqAAAACVBMVEUAAAAAAAAAAACDY+nAAAAAAnRSTlMAf7YpoZUAAAAySURBVAjXY2BgZAACNgcgITUBSGQtAQqtXAkUWpLlABQCCmY5sC1hkGRgnMDAwsDgAAC0jgg98vnGsQAAAABJRU5ErkJggg==);
 }
 
-.wds-wiki-link,
-.sds-wiki-link {
+.wds-names { max-height: initial; }
+
+.ds-wiki-link {
   width: 100%;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+.ds-wiki-link a { color: blue; }
 
-.wds-wiki-link {
-  margin-top: 6px;
-}
+.wds-wiki-link { margin-top: 6px; }
 
 .sds-sectorname {
   font-family: Optima, Marcellus, "Times New Roman", serif;
@@ -357,7 +351,6 @@ body:not(.wds-visible) #wds-frame { display: none; }
 .style-terminal .ds-frame a {
   font-family: "Courier New", "Courier", monospace;
 }
-
 
 /* ============================================================ */
 /* UI Elements */
@@ -896,16 +889,16 @@ body:not(.search-results) #closeSearchBtn { display: none; }
     border-bottom: none;
     transition: height 0.25s;
   }
-
-  .wds-properties { margin-left: auto; margin-right: auto; }
-
   #sds-frame {
     height: 320px;
   }
-  .ds-mini #sds-frame,
-  .ds-mini #wds-frame {
-    height: 150px;
+  .ds-mini .ds-frame {
+    bottom: 0;
+    height: auto;
+    min-height: 150px;
   }
+
+  .wds-properties { margin-left: auto; margin-right: auto; }
 
   .sds-visible #bottom-pane,
   .wds-visible #bottom-pane { display: none; }
@@ -984,8 +977,7 @@ body:not(.search-results) #closeSearchBtn { display: none; }
 .style-terminal #closeRouteBtn { filter: invert(100%); }
 .style-terminal #wds-world-image,
 .style-terminal #wds-map { filter: invert(100%); }
-.style-terminal #wds-frame button,
-.style-terminal #sds-frame button,
+.style-terminal .ds-frame button,
 .style-terminal #styles button { filter: none; }
 
 
