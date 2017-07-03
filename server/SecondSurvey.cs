@@ -383,6 +383,7 @@ namespace Maps
             { "UnHa", "Uh", null, "Union of Harmony" },
             { "V17D", "V7", "Va", "17th Disjucture" },
             { "V40S", "Ve", "Va", "40th Squadron" }, // (Ekhelle Ksafi)
+            { "VAkh", "VA", "Va", "Akhstuti" },
             { "VAnP", "Vx", "Va", "Antares Pact" },
             { "VARC", "Vr", "Va", "Anti-Rukh Coalition" }, // (Gnoerrgh Rukh Lloell)
             { "VAsP", "Vx", "Va", "Ascendancy Pact" },
@@ -398,11 +399,14 @@ namespace Maps
             { "VInL", "V9", "Va", "Infinity League" },
             { "VIrM", "Vh", "Va", "Irrgh Manifest" },
             { "VJoF", "Vj", "Va", "Jihad of Faarzgaen" },
+            { "VKfu", "Vk", "Va", "Kfue" },
             { "VLIn", "Vi", "Va", "Llaeghskath Interacterate" },
             { "VLPr", "Vl", "Va", "Lair Protectorate" },
             { "VNgC", "Vn", "Va", "Ngath Confederation" },
+            { "VNoe", "VN", "Va", "Noefa" },
             { "VOpA", "Vo", "Va", "Opposition Alliance" },
             { "VOpp", "Vo", "Va", "Opposition Alliance" },
+            { "VOuz", "VO", "Va", "Ouzvothon" },
             { "VPGa", "Vg", "Va", "Pact of Gaerr" }, // (Gaerr Thue)
             { "VRo5", "V5", "Va", "Ruler of Five" },
             { "VRrS", "VW", "Va", "Rranglloez Stronghold" },

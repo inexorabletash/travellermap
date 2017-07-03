@@ -11,7 +11,6 @@
 
     ]]>
   </Credits>
-  <DataFile Author="David Drazul"  Source="Traveller 5 Sector Survey" Milieu="M1105" Type="TabDelimited">Tuglikki.tab</DataFile>
   <Subsectors Author="David Drazul" Source="Traveller in the DED Zone" Ref="http://www.dedzone.net/traveller/sectors/tuglikki/">
     <Subsector Index="A">Dokh</Subsector>
     <Subsector Index="B">Saerrgh</Subsector>
@@ -31,17 +30,83 @@
     <Subsector Index="P">Aegaek</Subsector>
   </Subsectors>
   <Borders>
-    <Border Allegiance="VWP2" Color="olivedrab" WrapLabel="true" LabelPosition="2326">1926 2025 2024 2023 2022 2122 2221 2322 2421 2422 2423 2524 2525 2425 2426 2427 2428 2329 2330 2329 2228 2128 2127 2026 1926</Border>
-    <Border Allegiance="VWP2" Color="olivedrab" WrapLabel="true" LabelPosition="2533">2234 2334 2433 2533 2632 2732 2832 2733 2734 2735 2736 2737 2637 2537 2437 2436 2336 2335 2234</Border>
-    <Border Allegiance="VWP2" Color="olivedrab" ShowLabel="false">2415</Border>
-    <Border Allegiance="VRrS" Color="olivedrab" WrapLabel="true" LabelPosition="0206">0103 0202 0201 0202 0303 0304 0305 0205 0105 0104 0103</Border>
-    <Border Allegiance="VBkA" Color="olivedrab" LabelPosition="1306">0506 0605 0604 0603 0602 0601 0600 0500 0600 0700 0800 0900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1701 1601 1602 1603 1604 1605 1606 1607 1708 1709 1809 1910 2010 2111 2112 2212 2112 2012 1913 1813 1713 1613 1513 1412 1312 1211 1112 1012 1011 1010 1110 1109 1108 1107 1106 1005 0905 0804 0705 0605 0506</Border>
-    <Border Allegiance="VVar" Color="olivedrab" WrapLabel="true" LabelPosition="2908">2500 2600 2700 2800 2900 3000 3001 3002 3003 3104 3105 3106 3206 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3218 3119 3018 3017 3016 3015 3014 3013 3012 3011 2911 2810 2710 2609 2608 2607 2606 2605 2604 2504 2503 2502 2501 2500</Border>
-    <Border Allegiance="VDzF" Color="olivedrab" LabelPosition="3129">2730 2829 2828 2827 2927 2926 2925 3024 3124 3223 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3240 3239 3238 3237 3236 3235 3234 3233 3133 3132 3031 2931 2830 2730</Border>
-    <Border Allegiance="VLIn" Color="olivedrab" ShowLabel="false">3201 3301 3302 3303 3302 3201</Border>
-    <Border Allegiance="VThE" Color="olivedrab">0011 0112 0212 0313 0412 0512 0612 0713 0714 0715 0615 0616 0617 0518 0519 0520 0521 0522 0523 0623 0624 0625 0626 0627 0628 0629 0530 0531 0532 0533 0433 0333 0233 0134 0133 0132 0131 0130 0129 0128 0127 0126 0125 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011</Border>
-    <Border Allegiance="VAug" Color="olivedrab" WrapLabel="true" LabelPosition="2739">2741 2840 2839 2939 2938 2937 3036 3035 3036 3037 3038 3039 2940 2840 2741</Border>
-    <Border Allegiance="VWan" Color="olivedrab">0921 1020 1120 1119 1118 1117 1216 1316 1315 1316 1416 1517 1617 1718 1817 1917 1918 2018 2019 1920 1820 1821 1822 1723 1724 1623 1524 1424 1325 1225 1226 1126 1025 1024 1023 1022 0922 0921</Border>
-    <Border Allegiance="VSEq" Color="olivedrab" WrapLabel="true" LabelPosition="0308">0210 0310 0309 0408 0508 0607 0707 0806 0907 0908 0808 0709 0609 0510 0409 0310 0210</Border>
+    <Border Color="olivedrab" Allegiance="VKfu" LabelPosition="0428">0427 0528 0529 0629 0529 0429 0428 0427</Border>
+    <Border Color="olivedrab" Allegiance="VNoe" LabelPosition="1628">1428 1529 1629 1729 1629 1530 1430 1330 1429 1428</Border>
+    <Border Color="olivedrab" Allegiance="VAkh" LabelPosition="0438">0337 0437 0538 0539 0540 0439 0340 0239 0238 0338 0337</Border>
+    <Border Color="olivedrab" Allegiance="VWP2" LabelPosition="2226">1926 2025 2024 2023 2022 2122 2221 2322 2421 2422 2423 2524 2525 2425 2426 2427 2428 2328 2228 2128 2127 2026 1926</Border>
+    <Border Color="olivedrab" Allegiance="VWP2" LabelPosition="2535">2234 2334 2433 2533 2632 2732 2832 2733 2734 2735 2736 2737 2637 2537 2437 2436 2336 2335 2234</Border>
+    <Border Color="olivedrab" Allegiance="VWP2" LabelPosition="2415">2415</Border>
+    <Border Color="olivedrab" Allegiance="VOuz" LabelPosition="0834">0734 0833 0832 0933 0934 0935 0936 0836 0737 0736 0735 0734</Border>
+    <Border Color="olivedrab" Allegiance="VRrS" LabelPosition="203">0103 0202 0201 0202 0303 0304 0305 0205 0105 0104 0103</Border>
+    <Border Color="olivedrab" Allegiance="VBkA" LabelPosition="1207">0609 0509 0508 0507 0506 0605 0604 0603 0602 0601 0600 0500 0600 0700 0800 0900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1701 1601 1602 1603 1604 1605 1606 1607 1708 1608 1509 1510 1610 1611 1512 1412 1312 1211 1112 1012 1011 0911 0810 0710 0609</Border>
+    <Border Color="olivedrab" Allegiance="VVar" LabelPosition="2910">2500 2600 2700 2800 2900 3000 3001 3002 3003 3104 3105 3106 3206 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3218 3119 3018 3017 3016 3015 3014 3013 3012 3011 2911 2810 2710 2609 2608 2607 2606 2605 2604 2504 2503 2502 2501 2500</Border>
+    <Border Color="olivedrab" Allegiance="VDzF" LabelPosition="3032">2730 2829 2828 2827 2927 2926 2925 3024 3124 3223 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3240 3239 3238 3237 3236 3235 3234 3233 3133 3132 3031 2931 2830 2730</Border>
+    <Border Color="olivedrab" Allegiance="VLIn" LabelPosition="3302">3201 3301 3302 3303 3302 3201</Border>
+    <Border Color="olivedrab" Allegiance="VThE" LabelPosition="0316">0011 0112 0212 0313 0412 0512 0612 0713 0714 0715 0615 0616 0617 0518 0519 0520 0521 0522 0422 0322 0221 0122 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011</Border>
+    <Border Color="olivedrab" Allegiance="VAug" LabelPosition="2938">2741 2840 2839 2939 2938 2937 3036 3035 3036 3037 3038 3039 2940 2840 2741</Border>
+    <Border Color="olivedrab" Allegiance="VWan" LabelPosition="1521">0921 1021 1121 1220 1219 1319 1418 1519 1520 1620 1721 1722 1622 1523 1524 1424 1325 1225 1226 1126 1025 1024 1023 1022 0922 0921</Border>
   </Borders>
+  <Routes>
+    <Route Start="0239" End="0040" Color="Blue"/>
+    <Route Start="0239" End="0437"/>
+    <Route Start="0437" End="0737" Color="Blue"/>
+    <Route Start="0737" End="0734"/>
+    <Route Start="0734" End="0933"/>
+    <Route Start="0933" End="1232" Color="Blue"/>
+    <Route Start="1232" End="1430" Color="Blue"/>
+    <Route Start="1430" End="1629"/>
+    <Route Start="0737" End="0938" Color="Blue"/>
+    <Route Start="1232" End="1534" Color="Blue"/>
+    <Route Start="1534" End="1836" Color="Blue"/>
+    <Route Start="1836" End="2234" Color="Blue"/>
+    <Route Start="1629" End="1428"/>
+    <Route Start="1629" End="1431" Color="Blue"/>
+    <Route Start="1428" End="1226" Color="Blue"/>
+    <Route Start="1226" End="1225" Color="Blue"/>
+    <Route Start="1225" End="1223"/>
+    <Route Start="1223" End="1220"/>
+    <Route Start="1220" End="0921"/>
+    <Route Start="1223" End="1522"/>
+    <Route Start="1223" End="1325"/>
+    <Route Start="1522" End="1721"/>
+    <Route Start="1721" End="2018" Color="Blue"/>
+    <Route Start="2018" End="1917" Color="Blue"/>
+    <Route Start="1917" End="2015" Color="Blue"/>
+    <Route Start="0115" End="0314"/>
+    <Route Start="0314" End="0512"/>
+    <Route Start="0314" End="0714"/>
+    <Route Start="0115" End="0317"/>
+    <Route Start="1012" End="0714" Color="Blue"/>
+    <Route Start="1012" End="1312"/>
+    <Route Start="1312" End="1712" Color="Blue"/>
+    <Route Start="0607" End="0408" Color="Blue"/>
+    <Route Start="0607" End="0804"/>
+    <Route Start="0804" End="1105"/>
+    <Route Start="1312" End="1208"/>
+    <Route Start="1506" End="1105"/>
+    <Route Start="1208" End="1107"/>
+    <Route Start="1107" End="1105"/>
+    <Route Start="1105" End="0902"/>
+    <Route Start="0902" End="0900"/>
+    <Route Start="1506" End="1905" Color="Blue"/>
+    <Route Start="1905" End="2204" Color="Blue"/>
+    <Route Start="1604" End="1905" Color="Blue"/>
+    <Route Start="3126" End="2827"/>
+    <Route Start="3126" End="3326"/>
+    <Route Start="2827" End="2930"/>
+    <Route Start="2827" End="2428" Color="Blue"/>
+    <Route Start="3201" End="2902" Color="Blue"/>
+    <Route Start="2902" End="2700"/>
+    <Route Start="2902" End="2705"/>
+    <Route Start="2705" End="2707"/>
+    <Route Start="2707" End="3109"/>
+    <Route Start="3109" End="3212"/>
+    <Route Start="3216" End="3316"/>
+    <Route Start="3216" End="3218"/>
+    <Route Start="3216" End="2816" Color="Blue"/>
+    <Route Start="3218" End="2919" Color="Blue"/>
+    <Route Start="3212" End="3314"/>
+    <Route Start="2421" End="2224"/>
+    <Route Start="2224" End="2128"/>
+  </Routes>
 </Sector>
