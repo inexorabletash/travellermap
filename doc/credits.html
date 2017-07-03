@@ -889,8 +889,7 @@
       Grant's CORE data</a> with no further credits provided:
       <a class="sector">Banners</a>,
       <a class="sector">Hadji</a>,
-      <a class="sector">Malorn</a>,
-      <a class="sector">Neworld</a>.
+      <a class="sector">Malorn</a>.
     </p>
 
     <!-- ================================================================================ -->
@@ -1035,11 +1034,15 @@
        if (tags.indexOf('ZCR') !== -1) return false;
        return true;
      });
+     known.forEach(function(s) {
+       s.Names.forEach(function(name) {
+         name.Text = name.Text.replace(/^The /, '');
+       });
+     });
      var knownSet = new Set();
      known.forEach(function(s) {
        s.Names.forEach(function(name) { knownSet.add(name.Text); });
      });
-
      known.forEach(function(s) {
        if (!s.Names.some(function(name) { return docSet.has(name.Text); }))
          console.warn('No credits for known sector: ' + s.Names[0].Text);
