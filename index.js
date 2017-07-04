@@ -216,7 +216,7 @@ window.addEventListener('DOMContentLoaded', function() {
     $('#searchBox').value = '';
     lastQuery = null;
     document.body.classList.remove('search-results');
-    $('#dragContainer').focus();
+    mapElement.focus();
   });
 
   function resizeMap() {
@@ -302,7 +302,7 @@ window.addEventListener('DOMContentLoaded', function() {
       map.SetRoute(null);
       map.SetMain(null);
       resizeMap();
-      $('#dragContainer').focus();
+      mapElement.focus();
     }
   });
 
@@ -831,6 +831,7 @@ window.addEventListener('DOMContentLoaded', function() {
         }
         return;
       } else if (options.directAction && !document.body.classList.contains('route-ui')) {
+        mapElement.focus();
         selectedSector = ('SectorName' in data && 'SectorTags' in data) ? data.SectorName : null;
         selectedWorld = map.scale > 16 && 'WorldHex' in data
           ? { name: data.WorldName, hex: data.WorldHex } : null;

@@ -40,6 +40,7 @@ a { color: white; }
 .style-atlas a { color: black; }
 
 input[type=text] {
+  -webkit-appearance: none; /* inner shadow on iOS */
   font-family: Univers, Helvetica, Arial, sans-serif;
   color: black;
   background-color: white;
@@ -451,18 +452,18 @@ button:hover {
 .route-ui #routeBox { display: block; }
 
 body:not(.route-shown) #routeDisplay { display: none; }
-body:not(.route-shown) #routeBox { min-height: 115px; max-height: 115px; }
+body:not(.route-shown) #routeBox { min-height: 130px; max-height: 130px; }
 
 #routeBox input[type=text] {
   height: 30px; width: 100%;
 
   font-size: 12pt;
-  padding: 0 10px; margin: 0 -11px; border: 1px solid gray;
+  padding: 5px 10px; margin: 0 -11px; border: none;
   margin-bottom: 10px;
+  border-radius: 2px;
 }
 #routeBox form {
   text-align: center;
-  margin: 0 0 10px 0;
 }
 #routeForm button {
   height: 20px; margin: 0 4px;
@@ -475,26 +476,24 @@ body:not(.route-shown) #routeBox { min-height: 115px; max-height: 115px; }
 #routeForm.J-5 #J-5,
 #routeForm.J-6 #J-6 { background-color: red; }
 
-#routeBox #closeRouteBtn {
+#routeForm #closeRouteBtn,
+#routeForm #swapRouteBtn {
   position: absolute;
-  top: 0;
   right: 0;
   padding: 0;
+  margin: 0;
   width: 50px;
   height: 50px;
   box-shadow: none;
   background-color: transparent;
 }
 
+#routeBox #closeRouteBtn {
+  top: 5px;
+}
+
 #routeBox #swapRouteBtn {
-  position: absolute;
-  top: 48px;
-  right: 4px;
-  padding: 0;
-  width: 40px;
-  height: 40px;
-  box-shadow: none;
-  background-color: transparent;
+  top: 57px;
 }
 
 #routeInputWrapper {
@@ -504,10 +503,10 @@ body:not(.route-shown) #routeBox { min-height: 115px; max-height: 115px; }
 #routeBox { overflow: hidden; }
 #routeDisplay {
   position: absolute;
-  top: 130px;
+  top: 145px;
   left: 20px;
   right: 20px;
-  bottom: 20px;
+  bottom: 10px;
   overflow: auto;
 }
 
@@ -939,10 +938,12 @@ body:not(.search-results) #closeSearchBtn { display: none; }
   #settings-show,
   #settings-appearance-hexes { display: none; }
 
+  #routeBox button,
   #searchBar > button,
   #optionsBar > button,
   #navBar > button { border-radius: 20px; box-shadow: none; }
-  #searchBox { box-shadow: none; }
+
+  #searchBox, #routeBox input[type=text] { box-shadow: none; }
 
   #homeBtn { position: fixed; left: 10px; bottom: 10px; }
 }
@@ -1025,8 +1026,10 @@ input[type=text]::-ms-clear {
 ::-webkit-scrollbar { background-color: transparent; width: 6px; height: 6px; }
 ::-webkit-scrollbar-thumb { background-color: #404040; }
 ::-webkit-scrollbar-thumb:hover { background-color: #808080; }
+.ds-frame ::-webkit-scrollbar-thumb,
 .style-print ::-webkit-scrollbar-thumb,
 .style-atlas ::-webkit-scrollbar-thumb { background-color: #b0b0b0; }
+.ds-frame ::-webkit-scrollbar-thumb:hover,
 .style-print ::-webkit-scrollbar-thumb:hover,
 .style-atlas ::-webkit-scrollbar-thumb:hover { background-color: #808080; }
 
