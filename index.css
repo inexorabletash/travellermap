@@ -209,8 +209,8 @@ body:not(.wds-visible) #wds-frame { display: none; }
   background-color: white;
   border: 1px solid black;
 
-  left: 15px; right: auto; width: 320px;
-  top: 50px; min-height: 151px; height: auto; bottom: 110px;
+  left: 10px; right: auto; width: 320px;
+  top: 55px; min-height: 151px; height: auto; bottom: 110px;
 }
 
 .ds-frame a {
@@ -391,22 +391,21 @@ button:hover {
 }
 
 .hoverbox-right {
-  right: 15px; top: 50px; bottom: 150px;
+  right: 10px; top: 55px; bottom: 150px;
 }
 .hoverbox-left {
-  left: 15px; top: 50px; bottom: 110px;
+  left: 10px; top: 55px; bottom: 110px;
 }
 
 
 /* ============================================================ */
 /* Search Bar / Box */
 
-#searchForm { display: inline; }
+#searchForm { display: block; float: left; }
 #searchBox {
-  height: 30px; width: 260px;
-  float: left;
+  height: 30px; width: 250px;
   font-size: 12pt;
-  padding: 0 10px; margin: 0; border: none;
+  padding: 5px 10px; margin: 0; border: none;
   border-radius: 2px;
   box-shadow: 2px 2px 4px #404040;
 }
@@ -419,7 +418,7 @@ button:hover {
 
 #resultsBox {
   min-width: 200px;
-  width: 240px;
+  width: 230px;
   min-height: 50px;
   max-height: 250px;
 }
@@ -433,19 +432,18 @@ button:hover {
 #resultsContainer .item-uwp { margin-left: 10pt; }
 #resultsContainer .item-status { font-style: italic; }
 
-#searchBar #searchBtn,
-#searchBar #closeSearchBtn {
-  margin-left: -30px;
-  padding: 0;
-  min-width: 0;
-  box-shadow: none;
+#searchForm button {
+  position: absolute;
+  top: 0; right: 40px;
+  width: 40px; height: 40px;
   background-color: transparent;
+  box-shadow: none;
 }
 
 /* -- Route */
 
 #routeBox {
-  left: 10px; top: 10px; width: 290px;
+  left: 10px; top: 10px; width: 300px;
   padding: 10px;
   min-height: 115px;
   max-height: 350px;
@@ -825,30 +823,31 @@ body:not(.search-results) #closeSearchBtn { display: none; }
 #optionsBar,
 #navBar {
   position: absolute;
-  height: 30px;
+  height: 40px;
 }
 
 #scaleIndicator {
+  margin-top: 10px;
   pointer-events: none;
 }
 
 #searchBar {
-  left: 15px; top: 15px;
+  left: 10px; top: 10px;
 }
 
 #optionsBar {
-  right: 15px; top: 15px;
+  right: 10px; top: 10px;
 }
 
 #navBar {
-  right: 15px; bottom: 110px;
+  right: 10px; bottom: 110px;
 }
 .hide-footer #navBar { bottom: 15px; }
 
-#searchBar button,
-#optionsBar button,
-#navBar button {
-  height: 30px; width: 30px;
+#searchBar > button,
+#optionsBar > button,
+#navBar > button {
+  height: 40px; width: 40px;
   float: left;
   margin-left: 4px;
 }
@@ -908,7 +907,7 @@ body:not(.search-results) #closeSearchBtn { display: none; }
 }
 
 @media only screen and (max-width: 640px) {
-  #searchBox { width: 120px; }
+  #searchBox { width: 110px; }
   #resultsBox { width: 200px; }
   #navBar button { display: none; }
 }
@@ -917,7 +916,7 @@ body:not(.search-results) #closeSearchBtn { display: none; }
 }
 @media only screen and (max-width: 460px) {
   #searchBtn { display: none !important; }
-  #searchBox { width: 70px; }
+  #searchBox { width: 110px; }
 }
 @media only screen and (max-width: 460px), only screen and (max-height: 460px) {
   .direction { display: none; }
@@ -939,6 +938,13 @@ body:not(.search-results) #closeSearchBtn { display: none; }
   #settingsBox { max-height: 265px; }
   #settings-show,
   #settings-appearance-hexes { display: none; }
+
+  #searchBar > button,
+  #optionsBar > button,
+  #navBar > button { border-radius: 20px; box-shadow: none; }
+  #searchBox { box-shadow: none; }
+
+  #homeBtn { position: fixed; left: 10px; bottom: 10px; }
 }
 @media only screen and (max-width: 420px) {
   #labBox, #labBtn,
@@ -963,7 +969,7 @@ body:not(.search-results) #closeSearchBtn { display: none; }
   .route-ui #helpBox { display: none !important; }
 }
 @media only screen and (max-width: 330px) {
-  #searchBox { width: 60px; }
+  #searchBox { width: 90px; }
 }
 
 .style-terminal button { background-color: lightgray; }

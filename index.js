@@ -211,10 +211,12 @@ window.addEventListener('DOMContentLoaded', function() {
     search($('#searchBox').value, {typed: true});
   }, SEARCH_TIMER_DELAY));
 
-  $('#closeSearchBtn').addEventListener('click', function() {
+  $('#closeSearchBtn').addEventListener('click', function(e) {
+    e.preventDefault();
     $('#searchBox').value = '';
     lastQuery = null;
     document.body.classList.remove('search-results');
+    $('#dragContainer').focus();
   });
 
   function resizeMap() {
