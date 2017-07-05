@@ -184,16 +184,15 @@ window.addEventListener('DOMContentLoaded', function() {
       document.body.classList.add('ds-mini');
     SEARCH_PANES.forEach(function(c) { document.body.classList.toggle(c, c === pane);  });
   }
-  function hideSearchPanes() {
-    document.body.classList.add('ds-mini');
-    SEARCH_PANES.forEach(function(c) { document.body.classList.remove(c); });
+
+  function hideSearch() {
+    document.body.classList.remove('search-results');
   }
-  function hideSearchPanesExcept(pane) {
-    if (!['wds-visible', 'sds-visible'].includes(pane))
-      document.body.classList.add('ds-mini');
-    SEARCH_PANES
-      .filter(function(c) { return c !== pane; })
-      .forEach(function(c) { document.body.classList.remove(c); });
+
+  function hideCards() {
+    document.body.classList.remove('wds-visible');
+    document.body.classList.remove('sds-visible');
+    document.body.classList.add('ds-mini');
   }
 
 
@@ -230,31 +229,43 @@ window.addEventListener('DOMContentLoaded', function() {
   }
 
   $("#routeBtn").addEventListener('click', function(e) {
-    showSearchPane('route-ui');
-    resizeMap();
     if (selectedWorld) {
       $('#routeStart').value = selectedWorld.name;
       if (!isSmallScreen) $('#routeEnd').focus();
     } else {
       if (!isSmallScreen) $('#routeStart').focus();
     }
+    showRoute();
   });
 
-  $('#closeRouteBtn').addEventListener('click', function(e) {
+  function showRoute() {
+    hidePanels();
+    hideCards();
+    showSearchPane('route-ui');
+    resizeMap();
+  }
+
+  function closeRoute() {
+    document.body.classList.remove('route-ui');
+    resizeMap();
+    document.body.classList.remove('route-shown');
     $('#routeStart').value = '';
     $('#routeEnd').value = '';
     $('#routePath').innerHTML = '';
     ['J-1','J-2','J-3','J-4','J-5','J-6'].forEach(function(n) {
       $('#routeForm').classList.remove(n);
     });
-    document.body.classList.remove('route-ui');
-    document.body.classList.remove('route-shown');
     map.SetRoute(null);
     lastRoute = null;
-    resizeMap();
+  }
+
+  $('#closeRouteBtn').addEventListener('click', function(e) {
+    e.preventDefault();
+    closeRoute();
   });
 
   $('#swapRouteBtn').addEventListener('click', function(e) {
+    e.preventDefault();
     var tmp = $('#routeStart').value;
     $('#routeStart').value = $('#routeEnd').value;
     $('#routeEnd').value = tmp;
@@ -265,8 +276,7 @@ window.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-
-  Array.from($$("#routeForm button")).forEach(function(button) {
+  Array.from($$('#routeForm button[name="jump"]')).forEach(function(button) {
     button.addEventListener('click', function(e) {
       e.preventDefault();
 
@@ -297,31 +307,37 @@ window.addEventListener('DOMContentLoaded', function() {
 
   document.body.addEventListener('keyup', function(e) {
     if (e.key === 'Escape' || e.keyCode === VK_ESCAPE) {
-      hideSearchPanes();
+      hidePanels();
+      hideSearch();
+      hideCards();
       selectedWorld = selectedSector = null;
-      map.SetRoute(null);
+      closeRoute();
+
       map.SetMain(null);
-      resizeMap();
+
       mapElement.focus();
     }
   });
 
   // Options Bar
 
-  var PANELS = ['legend', 'lab', 'milieu', 'settings', 'share', 'help'];
-  PANELS.forEach(function(b) {
-    $('#'+b+'Btn').addEventListener('click', function() {
-      PANELS.forEach(function(p) {
-        document.body.classList[b === p ? 'toggle' : 'remove']('show-' + p);
-      });
+  function togglePanel(shown) {
+    PANELS.forEach(function(p) {
+      document.body.classList[p === shown ? 'toggle' : 'remove']('show-' + p);
     });
-  });
-  document.body.addEventListener('keyup', function(e) {
-    if (e.key === 'Escape' || e.keyCode === VK_ESCAPE) {
-      PANELS.forEach(function(p) {
-        document.body.classList.remove('show-' + p);
-      });
-    }
+  }
+
+  function hidePanels() {
+    PANELS.forEach(function(p) {
+      document.body.classList.remove('show-' + p);
+    });
+  }
+
+  var PANELS = ['legend', 'lab', 'milieu', 'settings', 'share', 'help'];
+  PANELS.forEach(function(p) {
+    $('#'+p+'Btn').addEventListener('click', function() {
+      togglePanel(p);
+    });
   });
 
   var STYLES = ['poster', 'atlas', 'print', 'candy', 'draft', 'fasa', 'terminal'];
@@ -536,12 +552,14 @@ window.addEventListener('DOMContentLoaded', function() {
   }
 
   map.OnClick = function(data) {
+    hidePanels();
     updateContext(data.x, data.y, {directAction: true, activeElement: data.activeElement});
     showMain(data.x, data.y);
     post({source: 'travellermap', type: 'click', location: {x: data.x, y: data.y}});
   };
 
   map.OnDoubleClick = function(world) {
+    hidePanels();
     updateContext(world.x, world.y, {directAction: true});
     showMain(world.x, world.y);
     post({source: 'travellermap', type: 'doubleclick', location: world});
@@ -860,7 +878,7 @@ window.addEventListener('DOMContentLoaded', function() {
         } else if (selectedSector && map.scale <= 16) {
           showSearchPane('sds-visible');
         } else {
-          hideSearchPanes();
+          hideCards();
         }
       }
     }
@@ -941,7 +959,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
   Array.from($$('.ds-closebtn,#ds-shade')).forEach(function(element) {
     element.addEventListener('click', function(event) {
-      hideSearchPanes();
+      hideCards();
       selectedWorld = selectedSector = null;
     });
   });
@@ -958,7 +976,9 @@ window.addEventListener('DOMContentLoaded', function() {
   function search(query, options) {
     options = Object.assign({}, options);
 
-    hideSearchPanesExcept('search-results');
+    closeRoute();
+    hideCards();
+
     selectedWorld = selectedSector = null;
     map.SetRoute(null);
 
@@ -1294,6 +1314,11 @@ window.addEventListener('DOMContentLoaded', function() {
     mapElement.focus();
 
   $('#searchBox').disabled = false;
+
+  // iOS Safari: Prevent inadvertant touch-scroll.
+  Array.from($$('button, input')).forEach(function(e) {
+      e.addEventListener('touchmove', function(e) { e.preventDefault(); });
+  });
 
   // Init all of the "social" UI asynchronously.
   setTimeout(window.initSharingLinks, 5000);
