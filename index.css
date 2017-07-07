@@ -211,28 +211,32 @@ body:not(.wds-visible) #wds-frame { display: none; }
   border: 1px solid black;
 
   left: 10px; right: auto; width: 320px;
-  top: 55px; min-height: 151px; height: auto; bottom: 110px;
+  top: 55px; min-height: 141px; height: auto; bottom: 110px;
+
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding: 10px;
 }
 
 .ds-frame a {
   color: black;
 }
 
-.ds-scroll {
-  overflow-x: hidden;
-  overflow-y: scroll;
-  max-height: 100%;
+.wds-properties {
+  width: 100%;
+  margin: 5px 0 5px;
 }
 
-#sds-scroll { padding: 10px; }
-
-#wds-world-image { background-color: black; }
+#wds-world-image {
+  background-color: black;
+  margin: 0 10px 5px 0;
+}
 
 #wds-spinner {
   display: none;
 
   position: absolute;
-  right: 35px;
+  right: 30px;
   top: 10px;
   width: 20px;
   height: 20px;
@@ -245,7 +249,7 @@ body:not(.wds-visible) #wds-frame { display: none; }
 
 .ds-closebtn {
   position: absolute;
-  right: -5px;
+  right: -10px;
   top: -5px;
   width: 50px;
   height: 50px;
@@ -261,8 +265,6 @@ body:not(.wds-visible) #wds-frame { display: none; }
 .ds-closebtn:hover { background-color: transparent; }
 
 .ds-print-links {
-  display: block;
-  margin: 10px;
   text-align: center;
 }
 /* Mini Mode */
@@ -280,7 +282,7 @@ body:not(.wds-visible) #wds-frame { display: none; }
 }
 
 .ds-mini .ds-mini-hidden { display: none; }
-.ds-mini .ds-frame { bottom: auto; }
+.ds-mini .ds-frame { bottom: auto; padding-bottom: 0; }
 
 #sds-data > div:not(:first-child) { margin: 8px 0; }
 #sds-data .ds-mini-hidden > div { margin: 8px 0; }
@@ -312,17 +314,18 @@ body:not(.wds-visible) #wds-frame { display: none; }
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAKAgMAAAAWdexqAAAACVBMVEUAAAAAAAAAAACDY+nAAAAAAnRSTlMAf7YpoZUAAAAySURBVAjXY2BgZAACNgcgITUBSGQtAQqtXAkUWpLlABQCCmY5sC1hkGRgnMDAwsDgAAC0jgg98vnGsQAAAABJRU5ErkJggg==);
 }
 
-.wds-names { max-height: initial; }
-
 .ds-wiki-link {
-  width: 100%;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 .ds-wiki-link a { color: blue; }
 
-.wds-wiki-link { margin-top: 6px; }
+.wds-names {
+  overflow: hidden; /* So stripe does not extend under floated image. */
+}
+
+.wds-wiki-link { margin-top: 6px; margin-left: 10px; }
 
 .sds-sectorname {
   font-family: Optima, Marcellus, "Times New Roman", serif;
@@ -458,8 +461,7 @@ body:not(.route-shown) #routeBox { min-height: 130px; max-height: 130px; }
   height: 30px; width: 100%;
 
   font-size: 12pt;
-  padding: 5px 10px; margin: 0 -11px; border: none;
-  margin-bottom: 10px;
+  padding: 5px 10px; margin: 0 -11px 10px; border: none;
   border-radius: 2px;
 }
 #routeBox form {
@@ -488,15 +490,11 @@ body:not(.route-shown) #routeBox { min-height: 130px; max-height: 130px; }
   background-color: transparent;
 }
 
-#routeBox #closeRouteBtn {
-  top: 5px;
-}
-
-#routeBox #swapRouteBtn {
-  top: 57px;
-}
+#routeBox #closeRouteBtn { top: 5px; }
+#routeBox #swapRouteBtn { top: 57px; }
 
 #routeInputWrapper {
+  /* So that INPUT elements can be width: 100% */
   padding: 0px 10px;
 }
 
@@ -883,7 +881,8 @@ body:not(.search-results) #closeSearchBtn { display: none; }
 
   .ds-frame {
     left: 10px; right: 10px; width: auto;
-    top: auto; bottom: 0px; height: 90%;
+    top: auto; bottom: 0px; height: 85%;
+    padding: 10px;
     border-bottom: none;
     transition: height 0.25s;
   }
@@ -892,11 +891,18 @@ body:not(.search-results) #closeSearchBtn { display: none; }
   }
   .ds-mini .ds-frame {
     bottom: 0;
-    height: auto;
-    min-height: 150px;
+    padding: 10px 10px 0;
+    height: 140px;
   }
 
-  .wds-properties { width: 100%; }
+  /* Elipsify when mini so height can be fixed and transitioned. */
+  .ds-mini .ds-frame .wds-wiki-link,
+  .ds-mini .ds-frame #sds-data > div,
+  .ds-mini .ds-frame .wds-names > div {
+    overflow-x: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
 
   .sds-visible #bottom-pane,
   .wds-visible #bottom-pane { display: none; }
@@ -945,7 +951,7 @@ body:not(.search-results) #closeSearchBtn { display: none; }
 
   #searchBox, #routeBox input[type=text] { box-shadow: none; }
 
-  #homeBtn { position: fixed; left: 10px; bottom: 10px; }
+  #optionsBar #homeBtn { position: fixed; left: 10px; bottom: 10px; float: none; margin: 0; }
 }
 @media only screen and (max-width: 420px) {
   #labBox, #labBtn,
