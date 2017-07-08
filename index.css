@@ -4,7 +4,7 @@ html { margin: 0; padding: 0; width: 100%; height: 100%; }
 form { margin: 0; padding: 0; }
 p { margin: 0; }
 .indent { margin-left: 20px; }
-.nowrap { white-space: nowrap; }
+.nowrap { white-space: nowrap; display: inline-block; }
 
 .dim { opacity: 0.5; }
 .dim:hover { opacity: 1; }
@@ -211,12 +211,13 @@ body:not(.wds-visible) #wds-frame { display: none; }
   border: 1px solid black;
 
   left: 10px; right: auto; width: 320px;
-  top: 55px; min-height: 141px; height: auto; bottom: 110px;
+  top: 55px; min-height: 151px; height: auto; bottom: 110px;
 
   overflow-y: scroll;
   overflow-x: hidden;
-  padding: 10px;
 }
+.ds-scroll { margin: 10px; }
+.ds-mini .ds-scroll { margin-bottom: 0; }
 
 .ds-frame a {
   color: black;
@@ -881,18 +882,20 @@ body:not(.search-results) #closeSearchBtn { display: none; }
 
   .ds-frame {
     left: 10px; right: 10px; width: auto;
-    top: auto; bottom: 0px; height: 85%;
-    padding: 10px;
-    border-bottom: none;
+    top: auto; bottom: -1px; height: 90%;
     transition: height 0.25s;
+    min-height: 0;
+    border-bottom: none;
   }
+  body:not(.sds-visible) #sds-frame,
+  body:not(.wds-visible) #wds-frame { height: 0; display: block; }
+
   body:not(.ds-mini) #sds-frame {
     height: 320px;
   }
   .ds-mini .ds-frame {
-    bottom: 0;
-    padding: 10px 10px 0;
-    height: 140px;
+    bottom: -1px; /* Chrome rendering bug with bottom border */
+    height: 151px;
   }
 
   /* Elipsify when mini so height can be fixed and transitioned. */
