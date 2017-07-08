@@ -263,7 +263,7 @@ namespace Maps
             { "CsCa", "Ca", null, "Client state, Principality of Caledon" },
             { "CsHv", "Hc", null, "Client state, Hiver Federation" },
             { "CsIm", "Cs", null, "Client state, Third Imperium" },
-            { "CsMP", "Ms", null, "Client state, Ma'Gnar Primarchic" },
+            { "CsMP", "Ms", null, "Client state, Mal'Gnar Primarchic" },
             { "CsTw", "KC", null, "Client state, Two Thousand Worlds" },
             { "CsZh", "Cz", null, "Client state, Zhodani Consulate" },
             { "CyUn", "Cu", null, "Cytralin Unity" },
@@ -337,7 +337,7 @@ namespace Maps
             { "LyCo", "Ly", null, "Lanyard Colonies" },
             { "MaCl", "Ma", null, "Mapepire Cluster" },
             { "MaEm", "Mk", null, "Maskai Empire" },
-            { "MaPr", "MF", null, "Ma'Gnar Primarchic" },
+            { "MaPr", "MF", null, "Mal'Gnar Primarchic" },
             { "MaUn", "Mu", null, "Malorn Union" },
             { "MeCo", "Me", null, "Megusard Corporate" },
             { "MiCo", "Mi", null, "Mische Conglomerate" },
@@ -437,7 +437,7 @@ namespace Maps
             { "ZhSh", "Zh", "Zh", "Zhodani Consulate, Shtochiadr Province" },
             { "ZhVQ", "Zh", "Zh", "Zhodani Consulate, Vlanchiets Qlom Province" },
             { "Zuug", "Zu", "Zu", "Zuugabish Tripartite" },
-            { "ZyCo", "Zc", null, "Zydarian Codominion" },
+            { "ZyCo", "Zc", null, "Zydarian Codominium" },
             // Allegiance Table End
             #endregion
 
