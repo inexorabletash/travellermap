@@ -671,7 +671,8 @@
       return world;
     }).then(function(world) {
       var map_thumb = 'https://s3.amazonaws.com/travellermap/images/maps/thumbs/'
-        + encodeURIComponent(world.Sector) + ' ' + encodeURIComponent(world.Hex) + '.png';
+            + encodeURIComponent(world.SectorAbbreviation) + ' '
+            + encodeURIComponent(world.Hex) + '.jpg';
       if (fetch_status.has(map_thumb)) {
         if (fetch_status.get(map_thumb)) world.map_thumb = map_thumb;
         return world;
