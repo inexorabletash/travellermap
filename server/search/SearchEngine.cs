@@ -153,7 +153,7 @@ namespace Maps.Search
                             dt_subsectors.Rows.Add(row);
                         }
 
-                        foreach (Border border in sector.Borders.Where(b => b.ShowLabel))
+                        foreach (Border border in sector.BordersAndRegions.Where(b => b.ShowLabel))
                         {
                             AddLabel(
                                 sector.CanonicalMilieu, 

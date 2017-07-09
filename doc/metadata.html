@@ -79,6 +79,7 @@ pre.example { font-family: 'Share Tech Mono', monospace; }
   <!-- less common -->
   <Allegiances>...</Allegiances>
   <Labels>...</Labels>
+  <Regions>...</Regions>
   <Stylesheet>...</Stylesheet>
 </Sector>
 </script>
@@ -354,6 +355,31 @@ pre.example { font-family: 'Share Tech Mono', monospace; }
 </script>
   </section>
 
+  <section id="regions">
+    <h2>Regions</h2>
+    <p>
+      Regions are just like borders but they are filled rather than
+      outlined. They can be used to represent regions of space other
+      than political boundaries, such as nebulas. 
+    </p>
+    <p>
+      The format and options are exactly the same as borders, although
+      <code>Allegiance</code> is not typically used and <code>Style</code>
+      is ignored.
+    </p>
+
+    <h4>Examples</h4>
+    <script class="example" type="text/xml">
+<Regions>
+  <Region Label="Nebula" Color="Purple">
+    2720 2819 2920 2921 2922 2921 2820 2720
+  </Region>
+  ...
+</Regions>
+    </script>
+  </section>
+
+
   <section id="stylesheet">
     <h2>Stylesheet</h2>
     <p>
@@ -369,7 +395,7 @@ pre.example { font-family: 'Share Tech Mono', monospace; }
 
     <h4>Selectors (the bit up front)</h4>
     <ul>
-      <li>Starts with a <var>type</var>: <code>border</code> or <code>route</code></li>
+      <li>Starts with a <var>type</var>: <code>border</code>, <code>region</code> or <code>route</code></li>
       <li>The type is optionally followed by a period (<code>.</code>), then
         a <var>class</var>. For <cite>Traveller</cite> this is the allegiance or
         (for routes) type.
@@ -395,6 +421,7 @@ pre.example { font-family: 'Share Tech Mono', monospace; }
     </dl>
     <h4>Application Rules</h4>
     <ul>
+      <li><code>color</code> applies to matching <code>Region</code> elements</li>
       <li><code>color</code> and <code>style</code> apply to matching <code>Border</code> elements</li>
       <li><code>color</code>, <code>style</code> and <code>width</code> apply to matching <code>Route</code> elements</li>
       <li>You can use C-style <code>/* comments */</code> anywhere you can put spaces.</li>
@@ -410,6 +437,7 @@ pre.example { font-family: 'Share Tech Mono', monospace; }
 
   route.Trade { color: gray; style: dashed; width: 0.5 }
   border.Hazard { color: #c02020; style: dotted }
+  region.Nebula { color: purple }
 </Stylesheet>
 </script>
     <p>

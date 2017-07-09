@@ -49,7 +49,7 @@ namespace Maps.Graphics
         public void RotateTransform(float angle) { g.RotateTransform(angle); }
         public void MultiplyTransform(AbstractMatrix m) { g.MultiplyTransform(m.Matrix); }
 
-        public void IntersectClip(AbstractPath path) { g.IntersectClip(new Region(new GraphicsPath(path.Points, path.Types, FillMode.Winding))); }
+        public void IntersectClip(AbstractPath path) { g.IntersectClip(new System.Drawing.Region(new GraphicsPath(path.Points, path.Types, FillMode.Winding))); }
         public void IntersectClip(RectangleF rect) { g.IntersectClip(rect); }
 
         public void DrawLine(AbstractPen pen, float x1, float y1, float x2, float y2) { Apply(pen); g.DrawLine(this.pen, x1, y1, x2, y2); }

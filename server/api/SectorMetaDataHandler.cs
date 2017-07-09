@@ -127,6 +127,9 @@ namespace Maps.API.Results
         public MetadataCollection<Border> Borders => sector.Borders;
         public bool ShouldSerializeBorders() { return sector.Borders.Count > 0; }
 
+        public MetadataCollection<Region> Regions => sector.Regions;
+        public bool ShouldSerializeRegions() { return sector.Regions.Count > 0; }
+
         public MetadataCollection<Route> Routes => sector.Routes;
         public bool ShouldSerializeRoutes() { return sector.Routes.Count > 0; }
 

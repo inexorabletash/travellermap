@@ -155,11 +155,25 @@ namespace Maps.Serialization
                     Allegiance = ParseString(border.GetAttribute("Allegiance")),
                     ColorHtml = ParseString(border.GetAttribute("Color")),
                     Label = ParseString(border.GetAttribute("Label")),
-                    LabelPositionHex = ParseString(border.GetAttribute("Position")),
+                    LabelPositionHex = ParseString(border.GetAttribute("LabelPosition")),
                     PathString = border.InnerText,
                     ShowLabel = ParseBool(border.GetAttribute("ShowLabel")),
                     Style = ParseEnum<LineStyle>(border.GetAttribute("Style")),
                     WrapLabel = ParseBool(border.GetAttribute("WrapLabel")),
+                }));
+            }
+            foreach (var e in xd.SelectNodes("/Sector/Region/Regions").OfType<XmlElement>())
+            {
+                ParseErrorAppender(e, region => sector.Regions.Add(new Region()
+                {
+                    Allegiance = ParseString(region.GetAttribute("Allegiance")),
+                    ColorHtml = ParseString(region.GetAttribute("Color")),
+                    Label = ParseString(region.GetAttribute("Label")),
+                    LabelPositionHex = ParseString(region.GetAttribute("LabelPosition")),
+                    PathString = region.InnerText,
+                    ShowLabel = ParseBool(region.GetAttribute("ShowLabel")),
+                    Style = ParseEnum<LineStyle>(region.GetAttribute("Style")),
+                    WrapLabel = ParseBool(region.GetAttribute("WrapLabel")),
                 }));
             }
             foreach (var e in xd.SelectNodes("/Sector/Allegiances/Allegiance").OfType<XmlElement>())

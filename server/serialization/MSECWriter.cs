@@ -76,7 +76,7 @@ namespace Maps.Serialization
                 //
                 List<IAllegiance> list = new List<IAllegiance>();
                 list.AddRange(sector.Allegiances); // TODO: Output stock allegiances
-                list.AddRange(sector.Borders);
+                list.AddRange(sector.BordersAndRegions);
                 list.AddRange(sector.Routes);
                 list.AddRange(sector.Labels);
 
@@ -203,10 +203,10 @@ namespace Maps.Serialization
                     writer.WriteLine();
                 }
 
-                writer.Write("border ");
+                writer.Write(border is Region ? "region " : "border ");
                 writer.Write(border.PathString);
 
-                SectorStylesheet.StyleResult ssr = sector.ApplyStylesheet("border", alleg?.T5Code);
+                SectorStylesheet.StyleResult ssr = sector.ApplyStylesheet(border is Region ? "region" : "border", alleg?.T5Code);
                 Color? color = border.Color ?? ssr.GetColor("color");
                 if (color.HasValue)
                 {
@@ -215,7 +215,7 @@ namespace Maps.Serialization
                 }
                 writer.WriteLine();
             }
-            
+
             private static int CompareAllegiances(IAllegiance a, IAllegiance b)
             {
                 if (a == null)

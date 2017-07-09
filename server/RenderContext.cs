@@ -376,6 +376,8 @@ namespace Maps.Rendering
                     //------------------------------------------------------------
                     if (styles.microBorders.visible)
                     {
+                        DrawMicroBorders(BorderLayer.Regions);
+
                         if (styles.fillMicroBorders)
                             DrawMicroBorders(BorderLayer.Fill);
 
@@ -1496,7 +1498,7 @@ namespace Maps.Rendering
                 foreach (Sector sector in selector.Sectors)
                 {
                     solidBrush.Color = styles.microBorders.textColor;
-                    foreach (Border border in sector.Borders.Where(border => border.ShowLabel))
+                    foreach (Border border in sector.BordersAndRegions.Where(border => border.ShowLabel))
                     {
                         string label = border.GetLabel(sector);
                         if (label == null)
@@ -1650,7 +1652,7 @@ namespace Maps.Rendering
             }
         }
         
-        private enum BorderLayer { Fill, Stroke };
+        private enum BorderLayer { Fill, Stroke, Regions };
         private void DrawMicroBorders(BorderLayer layer)
         {
             const byte FILL_ALPHA = 64;
@@ -1684,7 +1686,7 @@ namespace Maps.Rendering
 
                     graphics.SmoothingMode = SmoothingMode.AntiAlias;
 
-                    foreach (Border border in sector.Borders)
+                    foreach (Border border in (layer == BorderLayer.Regions ? (IEnumerable<Border>)sector.Regions : sector.Borders))
                     {
                         BorderPath borderPath = border.ComputeGraphicsPath(sector, borderPathType);
 
@@ -1717,6 +1719,7 @@ namespace Maps.Rendering
                                 graphics.IntersectClip(drawPath);
                                 switch (layer)
                                 {
+                                    case BorderLayer.Regions:
                                     case BorderLayer.Fill:
                                         solidBrush.Color = Color.FromArgb(FILL_ALPHA, borderColor.Value);
                                         graphics.DrawPath(solidBrush, drawPath);
@@ -1731,6 +1734,7 @@ namespace Maps.Rendering
                         {
                             switch (layer)
                             {
+                                case BorderLayer.Regions:
                                 case BorderLayer.Fill:
                                     solidBrush.Color = Color.FromArgb(FILL_ALPHA, borderColor.Value);
                                     graphics.DrawClosedCurve(solidBrush, borderPath.points);

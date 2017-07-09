@@ -84,9 +84,12 @@ namespace Maps
 
         public MetadataCollection<Subsector> Subsectors { get; private set; } = new MetadataCollection<Subsector>();
         public MetadataCollection<Border> Borders { get; private set; } = new MetadataCollection<Border>();
+        public MetadataCollection<Region> Regions { get; private set; } = new MetadataCollection<Region>();
         public MetadataCollection<Label> Labels { get; private set; } = new MetadataCollection<Label>();
         public MetadataCollection<Route> Routes { get; private set; } = new MetadataCollection<Route>();
         public MetadataCollection<Allegiance> Allegiances { get; private set; } = new MetadataCollection<Allegiance>();
+
+        public IEnumerable<Border> BordersAndRegions { get => Borders.Concat(Regions); }
 
         public string Credits { get; set; }
 
@@ -113,6 +116,7 @@ namespace Maps
             Subsectors.AddRange(metadataSource.Subsectors);
             Allegiances.AddRange(metadataSource.Allegiances);
             Borders.AddRange(metadataSource.Borders);
+            Regions.AddRange(metadataSource.Regions);
             Routes.AddRange(metadataSource.Routes);
             Labels.AddRange(metadataSource.Labels);
             Credits = metadataSource.Credits;
@@ -591,7 +595,7 @@ namespace Maps
         public string Text { get; set; }
 
         [XmlAttribute]
-        [DefaultValueAttribute("")]
+        [DefaultValue("")]
         public string Lang { get; set; }
 
         [XmlAttribute]
@@ -614,7 +618,7 @@ namespace Maps
         public string FileName { get; set; } = string.Empty;
 
         [XmlAttribute]
-        [DefaultValueAttribute("")]
+        [DefaultValue("")]
         public string Type { get; set; } = "SEC";
     }
 
@@ -713,6 +717,7 @@ namespace Maps
         public bool ShowLabel { get; set; } = true;
 
         [XmlAttribute]
+        [DefaultValue(false)]
         public bool WrapLabel { get; set; }
 
         internal Color? Color { get; set; }
@@ -792,7 +797,13 @@ namespace Maps
             return alleg?.Name;
         }
     }
-    
+
+    public class Region : Border
+    {
+        public Region() { }
+        internal Region(string path, string color = null) : base(path, color) { }
+    }
+
     public enum LineStyle
     {
         Solid = 0, // Default
@@ -893,19 +904,19 @@ namespace Maps
         }
 
         [XmlAttribute("StartOffsetX")]
-        [DefaultValueAttribute(0)]
+        [DefaultValue(0)]
         public int StartOffsetX { get => startOffsetX; set => startOffsetX = (sbyte)value; }
 
         [XmlAttribute("StartOffsetY")]
-        [DefaultValueAttribute(0)]
+        [DefaultValue(0)]
         public int StartOffsetY { get => startOffsetY; set => startOffsetY = (sbyte)value; }
 
         [XmlAttribute("EndOffsetX")]
-        [DefaultValueAttribute(0)]
+        [DefaultValue(0)]
         public int EndOffsetX { get => endOffsetX; set => endOffsetX = (sbyte)value; }
 
         [XmlAttribute("EndOffsetY")]
-        [DefaultValueAttribute(0)]
+        [DefaultValue(0)]
         public int EndOffsetY { get => endOffsetY; set => endOffsetY = (sbyte)value; }
 
 
@@ -977,6 +988,7 @@ namespace Maps
         public string Size { get; set; }
 
         [XmlAttribute]
+        [DefaultValue(0f)]
         public float OffsetY { get; set; }
 
         [XmlAttribute]
