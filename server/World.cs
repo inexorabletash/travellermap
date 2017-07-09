@@ -255,6 +255,8 @@ namespace Maps
         public string SectorName => Sector.Names[0].Text;
         public string SubsectorName => Sector.Subsector(Subsector)?.Name ?? "";
 
+        public string SectorAbbreviation => Sector.Abbreviation;
+
         public string AllegianceName => Sector?.GetAllegianceFromCode(Allegiance)?.Name ?? "";
 
         internal string BaseAllegiance => Sector?.AllegianceCodeToBaseAllegianceCode(Allegiance) ?? Allegiance;
