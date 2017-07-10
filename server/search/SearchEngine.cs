@@ -129,9 +129,13 @@ namespace Maps.Search
                     statusCallback("Parsing data...");
                     foreach (Sector sector in map.Sectors)
                     {
-                        // TODO: Index alternate milieu
+                        // TODO: Allow searching non-OTU additions (Orion OB-1, etc)
                         if (!sector.Tags.Contains("OTU") && !sector.Tags.Contains("Faraway"))
                             continue;
+
+                        // Apply suffix to borders/labels so that alternate versions are not merged.
+                        string suffix = sector.Tags.Contains("Apocryphal") ? " (Apocryphal)" : 
+                            sector.Tags.Contains("Alternate") ? " (Alternate)" : "";
 
                         foreach (Name name in sector.Names)
                         {
@@ -156,16 +160,16 @@ namespace Maps.Search
                         foreach (Border border in sector.BordersAndRegions.Where(b => b.ShowLabel))
                         {
                             AddLabel(
-                                sector.CanonicalMilieu, 
-                                border.GetLabel(sector), 
+                                sector.CanonicalMilieu,
+                                border.GetLabel(sector) + suffix,
                                 Astrometrics.LocationToCoordinates(new Location(sector.Location, border.LabelPosition)));
                         }
 
                         foreach (Label label in sector.Labels)
                         {
                             AddLabel(
-                                sector.CanonicalMilieu, 
-                                label.Text, 
+                                sector.CanonicalMilieu,
+                                label.Text + suffix,
                                 Astrometrics.LocationToCoordinates(new Location(sector.Location, label.Hex)));
                         }
 
