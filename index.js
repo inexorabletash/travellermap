@@ -11,7 +11,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
   // IE8: document.querySelector can't use bind()
   var $ = function(s) { return document.querySelector(s); };
-  var $$ = function(s) { return document.querySelectorAll(s); };
+  var $$ = function(s) { return Array.from(document.querySelectorAll(s)); };
 
   //////////////////////////////////////////////////////////////////////
   //
@@ -276,7 +276,7 @@ window.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  Array.from($$('#routeForm button[name="jump"]')).forEach(function(button) {
+  $$('#routeForm button[name="jump"]').forEach(function(button) {
     button.addEventListener('click', function(e) {
       e.preventDefault();
 
@@ -293,7 +293,7 @@ window.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  Array.from($$('#routeForm input[type="checkbox"]')).forEach(function(input) {
+  $$('#routeForm input[type="checkbox"]').forEach(function(input) {
     input.addEventListener('click', function(e) {
       if ($('#routePath').innerHTML !== '')
         reroute();
@@ -361,7 +361,7 @@ window.addEventListener('DOMContentLoaded', function() {
     map.y = home.y;
   }
 
-  Array.from($$('#share-url,#share-code')).forEach(function(input) {
+  $$('#share-url,#share-code').forEach(function(input) {
     input.addEventListener('click', function(e) {
       e.preventDefault();
       input.focus();
@@ -501,7 +501,7 @@ window.addEventListener('DOMContentLoaded', function() {
       var e = $(selector + '[value="' +  v + '"]');
       if (e) e.checked = true;
     });
-    Array.from($$(selector)).forEach(function(elem) {
+    $$(selector).forEach(function(elem) {
       elem.addEventListener('click', function(event) {
         if (elem.value === defaults[name]) {
           delete urlParams[name];
@@ -863,8 +863,10 @@ window.addEventListener('DOMContentLoaded', function() {
       if (selectedSector && (options.refresh || options.directAction)) {
         $('#sds-data').innerHTML = template('#sds-template')(data);
         // Hook up toggle
-        $('#sds-data .ds-mini-toggle').addEventListener('click', function(event) {
-          document.body.classList.toggle('ds-mini');
+        $$('#sds-data .ds-mini-toggle, .sds-sectorname').forEach(function(e) {
+          e.addEventListener('click', function(event) {
+            document.body.classList.toggle('ds-mini');
+          });
         });
       }
 
@@ -937,7 +939,7 @@ window.addEventListener('DOMContentLoaded', function() {
        $('#wds-data').innerHTML = template('#wds-template')(world);
 
         // Hook up any generated "expandy" fields
-        Array.from($$('.wds-expandy')).forEach(function(elem) {
+        $$('.wds-expandy').forEach(function(elem) {
           elem.addEventListener('click', function(event) {
             var c = elem.getAttribute('data-wds-expand');
             $('#wds-frame').classList.toggle(c);
@@ -945,8 +947,10 @@ window.addEventListener('DOMContentLoaded', function() {
         });
 
         // Hook up toggle
-        $('#wds-data .ds-mini-toggle').addEventListener('click', function(event) {
-          document.body.classList.toggle('ds-mini');
+        $$('#wds-data .ds-mini-toggle, #wds-data .wds-names').forEach(function(e) {
+            e.addEventListener('click', function(event) {
+              document.body.classList.toggle('ds-mini');
+            });
         });
       })
       .catch(function(error) {
@@ -957,7 +961,11 @@ window.addEventListener('DOMContentLoaded', function() {
       });
   }
 
-  Array.from($$('.ds-closebtn,#ds-shade')).forEach(function(element) {
+  $('#wds-world-image').addEventListener('click', function(event) {
+    document.body.classList.toggle('ds-mini');
+  });
+
+  $$('.ds-closebtn,#ds-shade').forEach(function(element) {
     element.addEventListener('click', function(event) {
       hideCards();
       selectedWorld = selectedSector = null;
@@ -1097,7 +1105,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
       $('#resultsContainer').innerHTML = template('#SearchResultsTemplate')(data);
 
-      Array.from($$('#resultsContainer a')).forEach(function(a) {
+      $$('#resultsContainer a').forEach(function(a) {
         a.addEventListener('click', function(e) {
           e.preventDefault();
           selectedWorld = null;
@@ -1193,7 +1201,7 @@ window.addEventListener('DOMContentLoaded', function() {
         document.body.classList.add('route-shown');
         resizeMap();
 
-        Array.from($$('#routePath .item a')).forEach(function(a) {
+        $$('#routePath .item a').forEach(function(a) {
           a.addEventListener('click', function(e) {
             e.preventDefault();
             selectedWorld = null;
@@ -1316,7 +1324,7 @@ window.addEventListener('DOMContentLoaded', function() {
   $('#searchBox').disabled = false;
 
   // iOS Safari: Prevent inadvertant touch-scroll.
-  Array.from($$('button, input')).forEach(function(e) {
+  $$('button, input').forEach(function(e) {
       e.addEventListener('touchmove', function(e) { e.preventDefault(); });
   });
 

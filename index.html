@@ -35,14 +35,14 @@
 <meta property="fb:admins" content="617166358">
 
 <link rel="stylesheet" href="world.css?update=2017-07-06T08:56:46">
-<link rel="stylesheet" href="index.css?update=2017-07-08T11:56:40">
+<link rel="stylesheet" href="index.css?update=2017-07-09T19:46:32">
 <link rel="stylesheet" href="lib/add-to-home-screen/addtohomescreen.css">
 
 <!--[if lt IE 10]><script>alert("IE9 is no longer supported.");</script><![endif]-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
 <script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.29/polyfill.min.js"></script>
 <script src="map.js?update=2017-06-29T21:36:37"></script>
-<script src="index.js?update=2017-07-04T21:29:31"></script>
+<script src="index.js?update=2017-07-09T19:32:57"></script>
 <script src="world_util.js?update=2017-07-09T13:27:30"></script>
 
 <body class="hide-ui hide-footer ds-mini">
@@ -598,7 +598,6 @@
         <small>({{SectorX}},{{SectorY}})</small>
       </div>
 
-
       <div class="ds-wiki-link sds-wiki-link">
         <a target=wiki href="{{SectorWikiURL}}">{{SectorWikiURLNoScheme}}</a>
       </div>
@@ -690,20 +689,11 @@
 <script id=wds-template type="text/x-handlebars-template">
 
 <div class=wds-names>
-<div class=wds-worldname>
-{{#if Name}}
-  <a target=wiki href="{{world_url}}">{{Name}}</a>
-{{else}}
-  (Unnamed)
-{{/if}}
-</div>
-
-{{#if SubsectorName}}
-<div class=wds-ssname><a target=wiki href="{{ss_url}}">{{SubsectorName}} Subsector</a></div>
-{{/if}}
-
-<div class=wds-sectorhex><a target=wiki href="{{sector_url}}">{{Sector}}</a> {{Hex}}</div>
-
+  <div class=wds-worldname>{{#if Name}}{{Name}}{{else}}(Unnamed){{/if}}</div>
+  {{#if SubsectorName}}
+    <div class=wds-ssname>{{SubsectorName}} Subsector</div>
+  {{/if}}
+  <div class=wds-sectorhex>{{Sector}} {{Hex}}</div>
 </div>
 
 <div class="ds-wiki-link wds-wiki-link">

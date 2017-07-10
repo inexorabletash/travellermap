@@ -211,7 +211,7 @@ body:not(.wds-visible) #wds-frame { display: none; }
   border: 1px solid black;
 
   left: 10px; right: auto; width: 320px;
-  top: 55px; min-height: 151px; height: auto; bottom: 110px;
+  top: 55px; min-height: 155px; height: auto; bottom: 110px;
 
   overflow-y: scroll;
   overflow-x: hidden;
@@ -256,7 +256,7 @@ body:not(.wds-visible) #wds-frame { display: none; }
   height: 50px;
   min-width: 0;
 
-  padding: 0; margin: 0;
+  padding: 0;
   border: none;
   box-shadow: none;
   background-color: transparent;
@@ -885,7 +885,9 @@ body:not(.search-results) #closeSearchBtn { display: none; }
     top: auto; bottom: -1px; height: 90%;
     transition: height 0.25s;
     min-height: 0;
+    border-color: darkgray;
     border-bottom: none;
+    border-radius: 5px 5px 0 0;
   }
   body:not(.sds-visible) #sds-frame,
   body:not(.wds-visible) #wds-frame { height: 0; display: block; }
@@ -895,11 +897,10 @@ body:not(.search-results) #closeSearchBtn { display: none; }
   }
   .ds-mini .ds-frame {
     bottom: -1px; /* Chrome rendering bug with bottom border */
-    height: 151px;
+    height: 155px;
   }
 
   /* Elipsify when mini so height can be fixed and transitioned. */
-  .ds-mini .ds-frame .wds-wiki-link,
   .ds-mini .ds-frame #sds-data > div,
   .ds-mini .ds-frame .wds-names > div {
     overflow-x: hidden;
