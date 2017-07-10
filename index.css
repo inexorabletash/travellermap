@@ -15,13 +15,22 @@ body {
   border: none; overflow: hidden;
   width: 100%; height: 100%; max-height: 100%;
 
-  font-size: 10pt; font-family: Univers, Arial, sans-serif;
+  font-size: 10pt;
   color: white; background-color: black;
 
   -webkit-touch-callout: none;
   -webkit-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0,0,0,0); /* No gray highlight when clicking divs. */
 }
+body, input[type=text], button {
+ font-family: Univers, Helvetica, Arial, sans-serif;
+}
+.copyright {
+  font-family: Helvetica, Arial, sans-serif; /* Univers' (C) is tiny. */
+}
+
+a { -webkit-tap-highlight-color: initial; }
 
 body.style-print,
 body.style-fasa,
@@ -40,8 +49,7 @@ a { color: white; }
 .style-atlas a { color: black; }
 
 input[type=text] {
-  -webkit-appearance: none; /* inner shadow on iOS */
-  font-family: Univers, Helvetica, Arial, sans-serif;
+  -webkit-appearance: none; /* No inner shadow on iOS. */
   color: black;
   background-color: white;
 }
@@ -54,10 +62,6 @@ input[type=text] {
 .style-terminal input[type=text] {
   font-family: "Courier New", "Courier", monospace;
   font-weight: bold;
-}
-
-.copyright {
-  font-family: Arial;
 }
 
 
@@ -155,12 +159,13 @@ input[type=text] {
 }
 
 #stripe {
-  border: solid 1px red; height: 5px;
-  color: red; background-color: red;
+  margin: 6.5px 0;
+  height: 7px;
+  background-color: red;
  }
 .style-print #stripe,
-.style-atlas #stripe { color: black; background-color: black; border: solid 1px black; }
-.style-fasa #stripe { color: #5C4033; background-color: #5C4033; border: solid 1px #5C4033; }
+.style-atlas #stripe { background-color: black; }
+.style-fasa #stripe { background-color: #5C4033; }
 
 
 /* ============================================================ */
@@ -171,9 +176,9 @@ input[type=text] {
 .style-fasa #bottom-pane { color: #5C4033; }
 
 .metadata-status a { text-decoration: none; font-weight: bold; }
-.metadata-status .official { color: green; visibility: hidden; }
+.metadata-status .official { visibility: hidden; }
 .metadata-status .preserve { color: green; }
-.metadata-status .inreview { color: gold; }
+.metadata-status .inreview,
 .metadata-status .unreviewed { color: gold; }
 .metadata-status .apocryphal { color: magenta; }
 .metadata-status .unofficial { color: red; }
@@ -197,7 +202,6 @@ input[type=text] {
   background-color: rgba(0, 0, 0, 0.65);
 }
 
-body:not(.wds-visible) #ds-shade,
 body:not(.sds-visible) #sds-frame,
 body:not(.wds-visible) #wds-frame { display: none; }
 
@@ -344,9 +348,9 @@ body:not(.wds-visible) #wds-frame { display: none; }
 }
 
 #sds-frame .sds-status a { text-decoration: none; font-weight: bold; }
-#sds-frame .sds-status a.official { color: green; }
+#sds-frame .sds-status a.official,
 #sds-frame .sds-status a.preserve { color: green; }
-#sds-frame .sds-status a.inreview { color: orange; }
+#sds-frame .sds-status a.inreview,
 #sds-frame .sds-status a.unreviewed { color: orange; }
 #sds-frame .sds-status a.apocryphal { color: magenta; }
 #sds-frame .sds-status a.unofficial { color: red; }
@@ -368,7 +372,6 @@ body:not(.wds-visible) #wds-frame { display: none; }
 .hide-footer #bottom-pane { display: none; }
 
 button {
-  font-family: Univers, Helvetica, Arial, sans-serif;
   font-size: 10pt;
   font-weight: bold;
   padding: 0 10px; margin: 0; border: none;
@@ -866,7 +869,7 @@ body:not(.search-results) #closeSearchBtn { display: none; }
 
 @media only screen and (max-width: 640px), only screen and (max-height: 460px) {
   #bottom-pane { font-size: 75%; height: 45px; padding: 2px;}
-  #stripe { height: 2px; margin: 2px 0px; }
+  #stripe { height: 4px; margin: 2px 0; }
   #LogoImage { width: 105px; height: 35.5px; }
   #navBar { bottom: 55px; }
   .hoverbox-right,
@@ -877,8 +880,9 @@ body:not(.search-results) #closeSearchBtn { display: none; }
 }
 
 @media only screen and (max-width: 640px) {
-  #ds-shade { display: block; }
-  .ds-mini #ds-shade { display: none; }
+  /* Small/Portrait screens - info cards at bottom */
+
+  .wds-visible:not(.ds-mini) #ds-shade { display: block; }
 
   .ds-frame {
     left: 10px; right: 10px; width: auto;
@@ -928,6 +932,8 @@ body:not(.search-results) #closeSearchBtn { display: none; }
   #searchBox { width: 110px; }
 }
 @media only screen and (max-width: 460px), only screen and (max-height: 460px) {
+  /* Mobile (portrait or landscape) */
+
   .direction { display: none; }
 
   #navBar button { display: none; }
@@ -958,6 +964,7 @@ body:not(.search-results) #closeSearchBtn { display: none; }
   #optionsBar #homeBtn { position: fixed; left: 10px; bottom: 10px; float: none; margin: 0; }
 }
 @media only screen and (max-width: 420px) {
+  /* Mobile/Portrait - Dock Route UI to top */
   #labBox, #labBtn,
   #milieuBox, #milieuBtn { display: none !important; }
 
