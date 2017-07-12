@@ -79,7 +79,7 @@ namespace Maps.API
                         case "solomani": x = -1.5; y = 2.75; w = 4; h = 2.25; title = "Solomani Confederacy"; break;
                         case "zhodani": x = -8; y = -3; w = 5; h = 3; title = "Zhodani Consulate"; break;
                         case "hive":
-                        case "hiver": x = 2; y = 1; w = 6; h = 4; title = "Hiver Federation"; break;
+                        case "hiver": x = 2; y = 1; w = 6; h = 4; title = "Hive Federation"; break;
                         case "aslan": x = -8; y = 1; w = 7; h = 4; title = "Aslan Hierate"; break;
                         case "vargr": x = -4; y = -4; w = 8; h = 3; title = "Vargr Extents"; break;
                         case "kkree": x = 4; y = -2; w = 4; h = 4; title = "Two Thousand Worlds"; break;
