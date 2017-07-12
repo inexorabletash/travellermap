@@ -53,8 +53,9 @@ my @lines;
         $legacy = quote($legacy);
         $base = $base ? quote($base) : 'null';
         $desc = quote($desc);
+        $location = quote($location);
 
-        my $line = "            { $alleg, $legacy, $base, $desc },";
+        my $line = "            { $alleg, $legacy, $base, $desc, $location },";
         $line .= " // $comment" if $comment;
 
         push @lines, $line;

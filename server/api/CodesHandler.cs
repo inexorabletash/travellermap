@@ -17,7 +17,11 @@ namespace Maps.API
             public override string DefaultContentType => ContentTypes.Text.Xml;
             public override void Process(ResourceManager resourceManager)
             {
-                SendResult(SecondSurvey.SophontCodes.Select(code => new Results.SophontCode(code, SecondSurvey.SophontCodeToName(code))).ToList());
+                SendResult(SecondSurvey.SophontCodes.Select(code =>
+                {
+                    var sophont = SecondSurvey.SophontForCode(code);
+                    return new Results.SophontCode(code, sophont.Name, sophont.Location);
+                }).ToList());
             }
         }
     }
@@ -37,7 +41,11 @@ namespace Maps.API
             public override void Process(ResourceManager resourceManager)
             {
                 SendResult(SecondSurvey.AllegianceCodes.Select(
-                    code => new Results.AllegianceCode(code, SecondSurvey.GetStockAllegianceFromCode(code).Name)).ToList());
+                    code =>
+                    {
+                        var alleg = SecondSurvey.GetStockAllegianceFromCode(code);
+                        return new Results.AllegianceCode(code, alleg.Name, alleg.Location);
+                    }).ToList());
             }
         }
     }
@@ -48,25 +56,27 @@ namespace Maps.API.Results
     public class SophontCode
     {
         public SophontCode() { }
-        public SophontCode(string code, string name)
+        public SophontCode(string code, string name, string location)
         {
-            Code = code;
-            Name = name;
+            Code = code; Name = name; Location = location;
         }
 
         public string Code { get; set; }
         public string Name { get; set; }
+        public string Location { get; set; }
     }
     public class AllegianceCode
     {
         public AllegianceCode() { }
-        public AllegianceCode(string code, string name)
+        public AllegianceCode(string code, string name, string location)
         {
             Code = code;
             Name = name;
+            Location = location;
         }
 
         public string Code { get; set; }
         public string Name { get; set; }
+        public string Location { get; set; }
     }
 }

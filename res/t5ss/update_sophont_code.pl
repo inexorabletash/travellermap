@@ -47,8 +47,9 @@ my @lines;
 
         $code = quote($code);
         $sophont = quote($sophont);
+        $location = quote($location);
 
-        my $line = "            { $code, $sophont },";
+        my $line = "            { $code, $sophont, $location },";
         $line .= " // $comment" if $comment;
 
         push @lines, $line;

@@ -656,12 +656,13 @@ namespace Maps
             T5Code = t5code;
             LegacyCode = legacyCode;
         }
-        public Allegiance(string t5code, string legacyCode, string baseCode, string name)
+        public Allegiance(string t5code, string legacyCode, string baseCode, string name, string location=null)
         {
             Name = name;
             T5Code = t5code;
             LegacyCode = legacyCode;
             Base = baseCode;
+            Location = location;
         }
 
         [XmlText]
@@ -689,6 +690,13 @@ namespace Maps
         /// </summary>
         [XmlAttribute]
         public string Base { get; set; }
+
+        /// <summary>
+        /// A textual summary of sectors or regions in which the allegiance occurs,
+        /// from the T5SS master spreadsheets.
+        /// </summary>
+        [XmlAttribute]
+        public string Location { get; set; }
 
         string IAllegiance.Allegiance => T5Code;
     }
