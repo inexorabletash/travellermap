@@ -1,4 +1,4 @@
-﻿using Maps.Utilities;
+using Maps.Utilities;
 using System.Linq;
 using System.Web;
 
@@ -44,7 +44,7 @@ namespace Maps.API
                     code =>
                     {
                         var alleg = SecondSurvey.GetStockAllegianceFromCode(code);
-                        return new Results.AllegianceCode(code, alleg.Name, alleg.Location);
+                        return new Results.AllegianceCode(code, alleg.LegacyCode, alleg.Name, alleg.Location);
                     }).ToList());
             }
         }
@@ -68,14 +68,16 @@ namespace Maps.API.Results
     public class AllegianceCode
     {
         public AllegianceCode() { }
-        public AllegianceCode(string code, string name, string location)
+        public AllegianceCode(string code, string legacy, string name, string location)
         {
             Code = code;
+            LegacyCode = legacy;
             Name = name;
             Location = location;
         }
 
         public string Code { get; set; }
+        public string LegacyCode { get; set; }
         public string Name { get; set; }
         public string Location { get; set; }
     }
