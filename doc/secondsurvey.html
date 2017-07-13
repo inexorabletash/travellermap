@@ -2148,6 +2148,7 @@
   }
 
   function processLocation(text) {
+    if (!text) return '';
     return text
       .replace(/\//g, '/&#x200B;')
       .replace(/various/g, '<i>various</i>')
