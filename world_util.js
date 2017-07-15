@@ -5,6 +5,27 @@
   var $ = function(s) { return document.querySelector(s); };
   var $$ = function(s) { return document.querySelectorAll(s); };
 
+  function worldImageURL(world, type) {
+    var S3_PREFIX = 'https://s3.amazonaws.com/travellermap/images/';
+    switch (type) {
+    case 'map':
+      return S3_PREFIX + 'maps/'
+        + encodeURIComponent(world.SectorAbbreviation) + ' '
+        + encodeURIComponent(world.Hex) + '.png';
+    case 'map_thumb':
+      return S3_PREFIX + 'maps/thumbs/'
+        + encodeURIComponent(world.SectorAbbreviation) + ' '
+        + encodeURIComponent(world.Hex) + '.jpg';
+    case 'render':
+      return S3_PREFIX + 'worlds/'
+        + encodeURIComponent(world.SectorAbbreviation) + ' '
+        + encodeURIComponent(world.Hex) + '.png';
+    case 'generic':
+      return 'res/Candy/'
+        + (world.UWP.Siz === '0' ? 'Belt' : 'Hyd' + world.UWP.Hyd) + '.png';
+    }
+  }
+
   var STARPORT_TABLE = {
     // Starports
     A: 'Excellent',
@@ -670,9 +691,7 @@
 
       return world;
     }).then(function(world) {
-      var map_thumb = 'https://s3.amazonaws.com/travellermap/images/maps/thumbs/'
-            + encodeURIComponent(world.SectorAbbreviation) + ' '
-            + encodeURIComponent(world.Hex) + '.jpg';
+      var map_thumb = worldImageURL(world, 'map_thumb');
       if (fetch_status.has(map_thumb)) {
         if (fetch_status.get(map_thumb)) world.map_thumb = map_thumb;
         return world;
@@ -694,7 +713,7 @@
 
   var showConsoleNotice = Util.once(function() {
     if (!console || !console.log) return;
-    console.log('The "404 (Not Found)" for *.png is expected, and is not a bug.');
+    console.log('The "404 (Not Found)" error images is expected, and is not a bug.');
   });
 
   var renderWorldImageFirstTime = true;
@@ -725,10 +744,8 @@
       { width: 0.95, height: 0.95 }
     ];
 
-    var render = 'res/Candy/worlds/'
-          + encodeURIComponent(world.Sector + ' ' + world.Hex) + '.png';
-    var generic = 'res/Candy/'
-          + (world.UWP.Siz === '0' ? 'Belt' : 'Hyd' + world.UWP.Hyd) + '.png';
+    var render = worldImageURL(world, 'render');
+    var generic = worldImageURL(world, 'generic');
     var isRender = true;
 
     var size = SIZES[world.UWP.Siz] || {width: 0.5, height: 0.5};
