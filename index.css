@@ -399,7 +399,7 @@ button:hover {
 }
 
 .hoverbox-right {
-  right: 10px; top: 55px; bottom: 150px;
+  right: 10px; top: 55px; bottom: 160px;
 }
 .hoverbox-left {
   left: 10px; top: 55px; bottom: 110px;
@@ -636,8 +636,7 @@ body:not(.enable-experiments) #labBtn { display: none; }
 #legendBox .glyph.g10 { font-size: 100%; }
 #legendBox .glyph.g12 { font-size: 120%; }
 
-#legendBox:not(.world_colors) ul.extended_world_colors,
-#legendBox.world_colors ul.basic_world_colors { display: none; }
+#legendBox:not(.world_colors) li.extended-only { display: none; }
 
 /* Extended World Colors */
 #legendBox .glyph.RiAg { color: rgb(241,194,50); }

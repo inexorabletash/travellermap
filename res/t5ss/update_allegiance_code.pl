@@ -1,36 +1,28 @@
 #!/usr/bin/env perl
 use strict;
-use File::Basename;
+use warnings;
 
-my $dir = dirname($0);
+use File::Spec;
+use FindBin;
+use lib $FindBin::Bin;
 
-sub trim ($) {
-    my ($s) = @_;
-    $s =~ s/^\s+//;
-    $s =~ s/\s+$//;
-    return $s;
-}
-
-sub quote($) {
-    my ($s) = @_;
-    $s =~ s/["\\]/\\$1/g;
-    return '"' . $s . '"';
-}
+use parseutil;
 
 my $INPUT_LINE_ENDINGS = "\r";
 my $INPUT_ENCODING = "UTF-8";
 
-my $input_path = $dir . '/allegiance_codes.tsv';
+my $input_path = File::Spec->catfile($FindBin::Bin, 'allegiance_codes.tsv');
 my @lines;
 {
     local $/ = $INPUT_LINE_ENDINGS;
     open my $fh, "<:encoding($INPUT_ENCODING)", $input_path or die;
+    my $line;
 
-    my $line = <$fh>; chomp $line; $line = trim($line);
+    $line = <$fh>; chomp $line; $line = trim($line);
     die "Unexpected header: $line\n" unless $line =~ /^ALLEGIANCES$/;
-    my $line = <$fh>; chomp $line; $line = trim($line);
+    $line = <$fh>; chomp $line; $line = trim($line);
     die "Unexpected header: $line\n" unless $line =~ /^$/;
-    my $line = <$fh>; chomp $line; $line = trim($line);
+    $line = <$fh>; chomp $line; $line = trim($line);
     die "Unexpected header: $line\n" unless $line =~ /^Code\t/;
 
     while (<$fh>) {
@@ -67,7 +59,7 @@ my @lines;
 
 my $replace = join("\n", @lines);
 
-my $code_path = $dir . '/../../server/SecondSurvey.cs';
+my $code_path = File::Spec->catfile($FindBin::Bin, '..', '..', 'server', 'SecondSurvey.cs');
 my $code;
 {
     open my $fh, '<:encoding(UTF-8)', $code_path or die;

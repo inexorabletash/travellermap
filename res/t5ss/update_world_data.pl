@@ -1,9 +1,13 @@
 #!/usr/bin/env perl
 use strict;
-use FileHandle;
-use File::Basename;
+use warnings;
 
-my $dir = dirname($0);
+use File::Spec;
+use FileHandle;
+use FindBin;
+use lib $FindBin::Bin;
+
+use parseutil;
 
 my %sectors = (
     Akti => "Aktifao",
@@ -80,7 +84,11 @@ my %sectors = (
 my $INPUT_LINE_ENDINGS = "\r";
 my $INPUT_ENCODING = "UTF-8";
 
-my %files;
+
+
+#
+# Parse T5SS TSV files
+#
 my @lines = ();
 my $header;
 {
@@ -88,8 +96,8 @@ my $header;
     local $/ = $INPUT_LINE_ENDINGS;
     foreach my $file (@in_files) {
         my $count = 0;
-        print "processing: $file\n";
-        my $in_path = $dir . '/' . $file;
+        print "Processing: $file\n";
+        my $in_path = File::Spec->catfile($FindBin::Bin, $file);
         open my $in, "<:encoding($INPUT_ENCODING)", $in_path or die;
         my $keep = 0;
         foreach my $line (<$in>) {
@@ -100,12 +108,27 @@ my $header;
                 $keep = 1;
                 next;
             }
-            next unless $keep && $sector =~ /^....?$/;
+            next unless $keep && $sector && $sector =~ /^....?$/;
             push @lines, $line;
             ++$count;
         }
         print " count: $count lines\n";
     }
+}
+
+#
+# Parse anomalies (calibration points, etc) column-delimited file
+#
+my @anomalies;
+{
+    my $in_path = File::Spec->catfile($FindBin::Bin, 'anomalies.txt');
+    open my $in, "<:encoding($INPUT_ENCODING)", $in_path or die;
+    local $/ = undef;
+    my $data = <$in>;
+    close $in;
+    @anomalies = parseColumnDelimited($data);
+
+    print "Anomalies: ", scalar(@anomalies), "\n"
 }
 
 @lines = sort @lines;
@@ -134,13 +157,6 @@ my @outheader = (
 
 #Sector Hex Name UWP TC Remarks Sophonts Details {Ix} (Ex) [Cx] Nobility Bases Zone PBG Allegiance Stars W RU
 
-sub trim ($) {
-    my ($s) = @_;
-    $s =~ s/^\s+//;
-    $s =~ s/\s+$//;
-    return $s;
-}
-
 sub combine {
     my $result = '';
     while (@_) {
@@ -161,9 +177,33 @@ sub hexToSS {
     return chr(ord('A') + $ssx + $ssy * 4);
 }
 
-my $outdir = $dir . '/../Sectors/M1105';
+
+#
+# Start outputting sector files
+#
+
+my $outdir = File::Spec->catdir($FindBin::Bin, '..', 'Sectors', 'M1105');
+my %files;
+
+# Look up appropriate sector file handle, open if needed
+sub fileForSector($) {
+    my ($sec) = @_;
+    return $files{$sec} if exists $files{$sec};
+    die "Unknown sector code: $sec\n" unless exists $sectors{$sec};
+
+    # Indicate progress
+    print "Processing $sec...\n";
+
+    my $fh = FileHandle->new;
+    $files{$sec} = $fh;
+    open ($fh, '>:encoding(UTF-8)', File::Spec->catfile($outdir, "$sectors{$sec}.tab"));
+    print { $fh } join("\t", @outheader), "\n";
+    return $fh;
+}
+
 
 foreach my $line (@lines) {
+    # Parse tab-delimited lines into fields
     chomp $line;
     my @cols = map { trim($_) } split("\t", $line);
     my %fields = ();
@@ -175,24 +215,36 @@ foreach my $line (@lines) {
     my $sec = $fields{'Sector'};
     next if $sec eq 'ZZZZ'; # Sentinel
 
-    if (!exists $files{$sec}) {
-        die "Unknown sector code: $sec\n" unless exists $sectors{$sec};
-        print "Processing $sec...\n";
-        my $fh = FileHandle->new;
-        $files{$sec} = $fh;
-        open ($fh, '>:encoding(UTF-8)', "$outdir/$sectors{$sec}.tab");
-        print { $files{$sec} } join("\t", @outheader), "\n";
-    }
-
+    # Synthesize fields
     $fields{'SS'} = hexToSS($fields{'Hex'});
-
     $fields{'Remarks'} = combine($fields{'TC'}, $fields{'Remarks'}, $fields{'Sophonts'}, $fields{'Details'});
-
     $fields{'Name'} = $fields{'M1000 Names'};
 
+    # Write fields, per output header
     my @out;
     for my $i (0..$#outheader) {
         $out[$i] = $fields{$outheader[$i]}
     }
-    print { $files{$sec} } join("\t", @out), "\n";
+
+    my $fh = fileForSector($sec);
+    print { $fh } join("\t", @out), "\n";
+}
+
+# Append anomaly entries
+
+print "Processing Anomalies...\n";
+foreach my $anomaly (@anomalies) {
+    my $sec = $anomaly->{'Sector'};
+
+    # Synthesize fields
+    $anomaly->{'SS'} = hexToSS($anomaly->{'Hex'});
+
+    # Write fields, per output header
+    my @out;
+    for my $i (0..$#outheader) {
+        $out[$i] = $anomaly->{$outheader[$i]} // '';
+    }
+
+    my $fh = fileForSector($sec);
+    print { $fh } join("\t", @out), "\n";
 }
