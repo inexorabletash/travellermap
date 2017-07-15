@@ -141,6 +141,7 @@ namespace Maps
         internal string ResearchStation => GetCodePrefix("Rs");
 
         internal bool IsPlaceholder => UWP == "XXXXXXX-X" || UWP == "???????-?";
+        internal bool IsAnomaly => HasCode("{Anomaly}");
 
         public bool HasCode(string code)
         {

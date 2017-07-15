@@ -76,9 +76,9 @@ namespace Maps.Serialization
         {
             return string.IsNullOrEmpty(s) ? null : s;
         }
-        private static bool ParseBool(string s)
+        private static bool? ParseBool(string s)
         {
-            if (string.IsNullOrEmpty(s)) return false;
+            if (string.IsNullOrEmpty(s)) return null;
             return s == "true" ? true : s == "false" ? false : throw new Exception($"'{s}' is not a valid boolean");
         }
         private static int? ParseInt(string s)
@@ -135,16 +135,20 @@ namespace Maps.Serialization
                     {
                         Allegiance = ParseString(route.GetAttribute("Allegiance")),
                         ColorHtml = ParseString(route.GetAttribute("Color")),
-                        StartHex = ParseString(route.GetAttribute("Start")),
-                        EndHex = ParseString(route.GetAttribute("End")),
                         Style = ParseEnum<LineStyle>(route.GetAttribute("Style")),
                         Type = ParseString(route.GetAttribute("Type")),
                         Width = ParseFloat(route.GetAttribute("Width")),
+
+                        // These assignments must precede Start/EndHex as the latter may
+                        // adjust Start/EndOffsetX/Y (e.g. if 0000/3341).
+                        StartOffsetX = ParseInt(route.GetAttribute("StartOffsetX")) ?? 0,
+                        StartOffsetY = ParseInt(route.GetAttribute("StartOffsetY")) ?? 0,
+                        EndOffsetX = ParseInt(route.GetAttribute("EndOffsetX")) ?? 0,
+                        EndOffsetY = ParseInt(route.GetAttribute("EndOffsetY")) ?? 0,
+
+                        StartHex = ParseString(route.GetAttribute("Start")),
+                        EndHex = ParseString(route.GetAttribute("End")),
                     };
-                    r.StartOffsetX = ParseInt(route.GetAttribute("StartOffsetX")) ?? r.StartOffsetX;
-                    r.StartOffsetY = ParseInt(route.GetAttribute("StartOffsetY")) ?? r.StartOffsetY;
-                    r.EndOffsetX = ParseInt(route.GetAttribute("EndOffsetX")) ?? r.EndOffsetX;
-                    r.EndOffsetY = ParseInt(route.GetAttribute("EndOffsetY")) ?? r.EndOffsetY;
                     sector.Routes.Add(r);
                 });
             }
@@ -157,12 +161,12 @@ namespace Maps.Serialization
                     Label = ParseString(border.GetAttribute("Label")),
                     LabelPositionHex = ParseString(border.GetAttribute("LabelPosition")),
                     PathString = border.InnerText,
-                    ShowLabel = ParseBool(border.GetAttribute("ShowLabel")),
+                    ShowLabel = ParseBool(border.GetAttribute("ShowLabel")) ?? true,
                     Style = ParseEnum<LineStyle>(border.GetAttribute("Style")),
-                    WrapLabel = ParseBool(border.GetAttribute("WrapLabel")),
+                    WrapLabel = ParseBool(border.GetAttribute("WrapLabel")) ?? false,
                 }));
             }
-            foreach (var e in xd.SelectNodes("/Sector/Region/Regions").OfType<XmlElement>())
+            foreach (var e in xd.SelectNodes("/Sector/Regions/Region").OfType<XmlElement>())
             {
                 ParseErrorAppender(e, region => sector.Regions.Add(new Region()
                 {
@@ -171,9 +175,9 @@ namespace Maps.Serialization
                     Label = ParseString(region.GetAttribute("Label")),
                     LabelPositionHex = ParseString(region.GetAttribute("LabelPosition")),
                     PathString = region.InnerText,
-                    ShowLabel = ParseBool(region.GetAttribute("ShowLabel")),
+                    ShowLabel = ParseBool(region.GetAttribute("ShowLabel")) ?? true,
                     Style = ParseEnum<LineStyle>(region.GetAttribute("Style")),
-                    WrapLabel = ParseBool(region.GetAttribute("WrapLabel")),
+                    WrapLabel = ParseBool(region.GetAttribute("WrapLabel")) ?? false,
                 }));
             }
             foreach (var e in xd.SelectNodes("/Sector/Allegiances/Allegiance").OfType<XmlElement>())

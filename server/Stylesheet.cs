@@ -878,6 +878,10 @@ namespace Maps.Rendering
             placeholder.fontInfo = new FontInfo("Georgia", 0.6f);
             placeholder.textColor = foregroundColor;
             placeholder.position = new PointF(0, 0.17f);
+
+            anomaly.content = "\u2316"; // POSITION INDICATOR
+            anomaly.fontInfo = new FontInfo("Segoe UI Symbol", 0.6f);
+            anomaly.textColor = highlightColor;
         }
 
         internal struct StyleElement
@@ -995,6 +999,7 @@ namespace Maps.Rendering
         public StyleElement macroNames;
         public StyleElement pseudoRandomStars;
         public StyleElement placeholder;
+        public StyleElement anomaly;
 
         public StyleElement microBorders;
         public bool fillMicroBorders;

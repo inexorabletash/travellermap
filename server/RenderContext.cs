@@ -1008,42 +1008,6 @@ namespace Maps.Rendering
                         TextBackgroundStyle worldTextBackgroundStyle = (elem.HasValue && !elem.Value.fillColor.IsEmpty)
                             ? TextBackgroundStyle.None : styles.worlds.textBackgroundStyle;
 
-                        #region Name
-                        if (renderName)
-                        {
-                            string name = world.Name;
-                            if ((isHiPop && styles.worldDetails.HasFlag(WorldDetails.Highlight)) || styles.worlds.textStyle.Uppercase)
-                                name = name.ToUpperInvariant();
-
-                            Color textColor = (isCapital && styles.worldDetails.HasFlag(WorldDetails.Highlight))
-                                ? styles.worlds.textHighlightColor : styles.worlds.textColor;
-                            Font font = ((isHiPop || isCapital) && styles.worldDetails.HasFlag(WorldDetails.Highlight))
-                                ? styles.worlds.LargeFont : styles.worlds.Font;
-
-                            DrawWorldLabel(worldTextBackgroundStyle, solidBrush, textColor, styles.worlds.textStyle.Translation, font, name);
-                        }
-                        #endregion
-
-                        #region Allegiance
-                        // TODO: Mask off background for allegiance
-                        if (styles.worldDetails.HasFlag(WorldDetails.Allegiance))
-                        {
-                            string alleg = world.Allegiance;
-                            if (!SecondSurvey.IsDefaultAllegiance(alleg))
-                            {
-                                if (!styles.t5AllegianceCodes && alleg.Length > 2)
-                                    alleg = SecondSurvey.T5AllegianceCodeToLegacyCode(alleg);
-
-                                solidBrush.Color = styles.worlds.textColor;
-
-                                if (styles.lowerCaseAllegiance)
-                                    alleg = alleg.ToLowerInvariant();
-
-                                graphics.DrawString(alleg, styles.worlds.SmallFont, solidBrush, styles.AllegiancePosition.X, styles.AllegiancePosition.Y, Graphics.StringAlignment.Centered);
-                            }
-                        }
-                        #endregion
-
                         if (!isPlaceholder)
                         {
                             #region GasGiant
@@ -1151,7 +1115,8 @@ namespace Maps.Rendering
                         {
                             if (isPlaceholder)
                             {
-                                DrawWorldLabel(styles.placeholder.textBackgroundStyle, solidBrush, styles.placeholder.textColor, styles.placeholder.position, styles.placeholder.Font, styles.placeholder.content);
+                                var e = world.IsAnomaly ? styles.anomaly : styles.placeholder;
+                                DrawWorldLabel(e.textBackgroundStyle, solidBrush, e.textColor, e.position, e.Font, e.content);
                             }
                             else
                             {
@@ -1230,7 +1195,43 @@ namespace Maps.Rendering
                             solidBrush.Color = styles.worlds.textColor;
                             graphics.DrawEllipse(solidBrush, -0.2f, -0.2f, 0.4f, 0.4f);
                         }
-#endregion
+                        #endregion
+
+                        #region Name
+                        if (renderName)
+                        {
+                            string name = world.Name;
+                            if ((isHiPop && styles.worldDetails.HasFlag(WorldDetails.Highlight)) || styles.worlds.textStyle.Uppercase)
+                                name = name.ToUpperInvariant();
+
+                            Color textColor = (isCapital && styles.worldDetails.HasFlag(WorldDetails.Highlight))
+                                ? styles.worlds.textHighlightColor : styles.worlds.textColor;
+                            Font font = ((isHiPop || isCapital) && styles.worldDetails.HasFlag(WorldDetails.Highlight))
+                                ? styles.worlds.LargeFont : styles.worlds.Font;
+
+                            DrawWorldLabel(worldTextBackgroundStyle, solidBrush, textColor, styles.worlds.textStyle.Translation, font, name);
+                        }
+                        #endregion
+
+                        #region Allegiance
+                        // TODO: Mask off background for allegiance
+                        if (styles.worldDetails.HasFlag(WorldDetails.Allegiance))
+                        {
+                            string alleg = world.Allegiance;
+                            if (!SecondSurvey.IsDefaultAllegiance(alleg))
+                            {
+                                if (!styles.t5AllegianceCodes && alleg.Length > 2)
+                                    alleg = SecondSurvey.T5AllegianceCodeToLegacyCode(alleg);
+
+                                solidBrush.Color = styles.worlds.textColor;
+
+                                if (styles.lowerCaseAllegiance)
+                                    alleg = alleg.ToLowerInvariant();
+
+                                graphics.DrawString(alleg, styles.worlds.SmallFont, solidBrush, styles.AllegiancePosition.X, styles.AllegiancePosition.Y, Graphics.StringAlignment.Centered);
+                            }
+                        }
+                        #endregion
                     }
                 }
                 else // styles.useWorldImages
@@ -1247,7 +1248,8 @@ namespace Maps.Rendering
                         {
                             if (isPlaceholder)
                             {
-                                DrawWorldLabel(styles.placeholder.textBackgroundStyle, solidBrush, styles.placeholder.textColor, styles.placeholder.position, styles.placeholder.Font, styles.placeholder.content);
+                                var e = world.IsAnomaly ? styles.anomaly : styles.placeholder;
+                                DrawWorldLabel(e.textBackgroundStyle, solidBrush, e.textColor, e.position, e.Font, e.content);
                             }
                             else if (world.Size <= 0)
                             {
