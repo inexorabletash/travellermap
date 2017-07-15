@@ -126,7 +126,7 @@ namespace Maps.API
                             data.WorldEx = world.Economic;
                             data.WorldCx = world.Cultural;
                             data.WorldPbg = world.PBG;
-                            data.WorldAllegiance = sector.GetAllegianceFromCode(world.Allegiance).T5Code;
+                            data.WorldAllegiance = sector.GetAllegianceFromCode(world.Allegiance)?.T5Code ?? "";
                         }
                     }
                 }
