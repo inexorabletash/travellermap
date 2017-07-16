@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -210,19 +211,39 @@ namespace Maps.Utilities
     //  - case insensitive by default
     //  - * matches 0-or-more of anything
     //  - ? matches exactly one of anything
-    [Serializable]
     internal class Glob : Regex
     {
         public Glob(string pattern, RegexOptions options = RegexOptions.IgnoreCase | RegexOptions.Singleline)
             : base("^" + Regex.Escape(pattern).Replace(@"\*", ".*").Replace(@"\?", ".") + "$", options) { }
-        protected Glob(SerializationInfo info, StreamingContext context) : base(info, context) { }
     }
 
-    [Serializable]
-    internal class RegexDictionary<T> : Dictionary<Regex, T>
+    internal class ConcurrentSet<T> : IEnumerable<T>
+    {
+        private ConcurrentDictionary<T, bool> dict = new ConcurrentDictionary<T, bool>();
+        public void Add(T e) { if (!dict.TryAdd(e, true)) throw new ApplicationException("Unexpected initialization failure"); }
+        public bool Contains(T e) { return dict.ContainsKey(e); }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            return dict.Keys.GetEnumerator();
+        }
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return dict.Keys.GetEnumerator();
+        }
+    }
+
+    internal class EasyInitConcurrentDictionary<TKey, TValue> : ConcurrentDictionary<TKey, TValue>
+    {
+        public EasyInitConcurrentDictionary() { }
+        public EasyInitConcurrentDictionary(IEqualityComparer<TKey> c) : base(c) { }
+        public EasyInitConcurrentDictionary(IEnumerable<KeyValuePair<TKey, TValue>> e) : base(e) { }
+        public void Add(TKey k, TValue v) { TryAdd(k, v); }
+    }
+
+    internal class RegexDictionary<T> : EasyInitConcurrentDictionary<Regex, T>
     {
         public RegexDictionary() { }
-        protected RegexDictionary(SerializationInfo info, StreamingContext context) : base(info, context) { }
 
         public virtual void Add(string r, T v) { Add(new Regex(r), v); }
         public virtual void Add(T v) { Add(new Regex("^" + Regex.Escape(v.ToString()) + "$"), v); }
@@ -237,11 +258,9 @@ namespace Maps.Utilities
         }
     }
 
-    [Serializable]
     internal class GlobDictionary<T> : RegexDictionary<T>
     {
         public GlobDictionary() { }
-        protected GlobDictionary(SerializationInfo info, StreamingContext context) : base(info, context) { }
 
         public override void Add(string r, T v) { Add(new Glob(r), v); }
         public override void Add(T v) { Add(new Glob(v.ToString()), v); }

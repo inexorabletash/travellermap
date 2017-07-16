@@ -550,31 +550,34 @@ namespace Maps
 
         internal override WorldCollection GetWorlds(ResourceManager resourceManager, bool cacheResults = true)
         {
-            if (this.worlds != null)
-                return this.worlds;
-
-            WorldCollection worlds = basis.GetWorlds(resourceManager, cacheResults);
-            if (worlds == null)
-                return null;
-
-            WorldCollection dots = new WorldCollection();
-            foreach (var world in worlds)
+            lock (this)
             {
-                var dot = new World()
+                if (this.worlds != null)
+                    return this.worlds;
+
+                WorldCollection worlds = basis.GetWorlds(resourceManager, cacheResults);
+                if (worlds == null)
+                    return null;
+
+                WorldCollection dots = new WorldCollection();
+                foreach (var world in worlds)
                 {
-                    Hex = world.Hex,
-                    UWP = "???????-?",
-                    PBG = "???",
-                    Allegiance = "??",
-                    Sector = this
-                };
-                dots[dot.X, dot.Y] = dot;
+                    var dot = new World()
+                    {
+                        Hex = world.Hex,
+                        UWP = "???????-?",
+                        PBG = "???",
+                        Allegiance = "??",
+                        Sector = this
+                    };
+                    dots[dot.X, dot.Y] = dot;
+                }
+
+                if (cacheResults)
+                    this.worlds = dots;
+
+                return dots;
             }
-
-            if (cacheResults)
-                this.worlds = dots;
-
-            return dots;
         }
     }
 

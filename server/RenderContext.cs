@@ -3,6 +3,7 @@
 using Maps.Graphics;
 using Maps.Utilities;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -132,7 +133,7 @@ namespace Maps.Rendering
         private static AbstractImage s_galaxyImage;
         private static AbstractImage s_galaxyImageGray;
         private static AbstractImage s_riftImage;
-        private static Dictionary<string, AbstractImage> s_worldImages;
+        private static ConcurrentDictionary<string, AbstractImage> s_worldImages;
         #endregion
 
         /// <summary>
@@ -640,7 +641,7 @@ namespace Maps.Rendering
                 s_riftImage = prepare("/res/Candy/Rifts.png");
                 s_galaxyImage = prepare("/res/Candy/Galaxy.png");
                 s_galaxyImageGray = prepare("/res/Candy/Galaxy_Gray.png");
-                s_worldImages = new Dictionary<string, AbstractImage> {
+                s_worldImages = new EasyInitConcurrentDictionary<string, AbstractImage> {
                             { "Hyd0", prepare("/res/Candy/Hyd0.png") },
                             { "Hyd1", prepare("/res/Candy/Hyd1.png") },
                             { "Hyd2", prepare("/res/Candy/Hyd2.png") },
@@ -1192,8 +1193,11 @@ namespace Maps.Rendering
                         else
                         {
                             // Dotmap
-                            solidBrush.Color = styles.worlds.textColor;
-                            graphics.DrawEllipse(solidBrush, -0.2f, -0.2f, 0.4f, 0.4f);
+                            if (!world.IsAnomaly)
+                            {
+                                solidBrush.Color = styles.worlds.textColor;
+                                graphics.DrawEllipse(solidBrush, -0.2f, -0.2f, 0.4f, 0.4f);
+                            }
                         }
                         #endregion
 
@@ -1286,8 +1290,11 @@ namespace Maps.Rendering
                         else
                         {
                             // Dotmap
-                            solidBrush.Color = styles.worlds.textColor;
-                            graphics.DrawEllipse(solidBrush, -0.2f, -0.2f, 0.4f, 0.4f);
+                            if (!world.IsAnomaly)
+                            {
+                                solidBrush.Color = styles.worlds.textColor;
+                                graphics.DrawEllipse(solidBrush, -0.2f, -0.2f, 0.4f, 0.4f);
+                            }
                         }
                         #endregion
                     }

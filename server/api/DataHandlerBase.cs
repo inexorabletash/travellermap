@@ -100,10 +100,10 @@ namespace Maps.API
                 SendResult(this, o, encoding);
             }
 
-            private static readonly Regex simpleJSIdentifierRegex = new Regex(@"^[A-Za-z_][A-Za-z0-9_]*$", RegexOptions.Compiled);
+            private static readonly Regex SIMPLE_JS_IDENTIFIER_REGEX = new Regex(@"^[A-Za-z_][A-Za-z0-9_]*$", RegexOptions.Compiled);
             public static bool IsSimpleJSIdentifier(string s)
             {
-                return simpleJSIdentifierRegex.IsMatch(s);
+                return SIMPLE_JS_IDENTIFIER_REGEX.IsMatch(s);
             }
 
             public void SendResult(ITypeAccepter accepter, object o, Encoding encoding = null)
@@ -292,7 +292,7 @@ namespace Maps.API
                 ParseOptions(Context.Request, Defaults(Context), ref options, ref style);
             }
 
-            private static readonly IReadOnlyDictionary<string, Style> s_nameToStyle = new Dictionary<string, Style> {
+            private static readonly IReadOnlyDictionary<string, Style> s_nameToStyle = new EasyInitConcurrentDictionary<string, Style> {
                 { "poster", Style.Poster },
                 { "atlas" , Style.Atlas },
                 { "print" , Style.Print },

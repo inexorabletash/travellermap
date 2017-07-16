@@ -33,7 +33,7 @@ namespace Maps.Serialization
             }
         }
 
-        private static readonly Regex sniff_xml = new Regex(@"<\?xml", RegexOptions.Compiled | RegexOptions.CultureInvariant);
+        private static readonly Regex SNIFF_XML_REGEX = new Regex(@"<\?xml", RegexOptions.Compiled | RegexOptions.CultureInvariant);
 
         public static string SniffType(Stream stream)
         {
@@ -43,7 +43,7 @@ namespace Maps.Serialization
                 using (var reader = new NoCloseStreamReader(stream, Encoding.GetEncoding(1252), detectEncodingFromByteOrderMarks: true, bufferSize: BUFFER_SIZE))
                 {
                     string line = reader.ReadLine();
-                    if (line != null && sniff_xml.IsMatch(line))
+                    if (line != null && SNIFF_XML_REGEX.IsMatch(line))
                         return "XML";
                 }
                 return "MSEC";

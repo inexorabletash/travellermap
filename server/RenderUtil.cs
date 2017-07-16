@@ -42,7 +42,7 @@ namespace Maps.Rendering
         // because the glyphs are much higher quality.
         // See http://www.alanwood.net/demos/wingdings.html for a good mapping
 
-        private static Dictionary<char, char> DING_MAP = new Dictionary<char, char>
+        private static IReadOnlyDictionary<char, char> DING_MAP = new EasyInitConcurrentDictionary<char, char>
         {
             { '\x2666', '\x74' }, // U+2666 (BLACK DIAMOND SUIT)
             { '\x2756', '\x76' }, // U+2756 (BLACK DIAMOND MINUS WHITE X)
@@ -181,9 +181,9 @@ namespace Maps.Rendering
             Top,
             Bottom
         }
-        public string Characters { get; set; }
-        public GlyphBias Bias { get; set; }
-        public bool IsHighlighted { get; set; }
+        public string Characters { get; }
+        public GlyphBias Bias { get; }
+        public bool IsHighlighted { get; }
 
         public Glyph(string chars, bool highlight = false)
         {
@@ -566,7 +566,7 @@ namespace Maps.Rendering
                 RegexOptions.Compiled | RegexOptions.CultureInvariant);
 
         // Additions to radius based on luminosity.
-        private static Dictionary<string, float> LUM = new Dictionary<string, float>
+        private static IReadOnlyDictionary<string, float> LUM = new EasyInitConcurrentDictionary<string, float>
             {
                 { "Ia", 7 },
                 { "Ib", 5 },
@@ -577,11 +577,11 @@ namespace Maps.Rendering
             };
 
         // Base radius for spectral class.
-        private static Dictionary<char, float> RAD = new Dictionary<char, float>
+        private static IReadOnlyDictionary<char, float> RAD = new EasyInitConcurrentDictionary<char, float>
             { { 'O', 4 }, { 'B', 3 }, { 'A', 2 }, { 'F', 1.5f }, { 'G', 1 }, { 'K', 0.7f }, { 'M', 0.5f } };
 
         // Maps spectral class to color.
-        private static Dictionary<char, Color> COLOR = new Dictionary<char, Color> {
+        private static IReadOnlyDictionary<char, Color> COLOR = new EasyInitConcurrentDictionary<char, Color> {
                 { 'O', Color.FromArgb(0x9d, 0xb4, 0xff) },
                 { 'B', Color.FromArgb(0xbb, 0xcc, 0xff) },
                 { 'A', Color.FromArgb(0xfb, 0xf8, 0xff) },

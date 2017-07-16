@@ -23,10 +23,10 @@ namespace Maps
         // Reference (Core 0140)
         // Origin of the coordinate system, relative to the containing sector
         // ("Reference, Center of the Imperium" The Travellers' Digest 10)
-        public static readonly Point ReferenceSector = new Point(0, 0);
-        public static readonly Hex ReferenceHex = new Hex(01, 40);
+        public static Point ReferenceSector => new Point(0, 0);
+        public static Hex ReferenceHex => new Hex(01, 40);
 
-        public static readonly Hex SectorCenter = new Hex(SectorWidth / 2, SectorHeight / 2);
+        public static Hex SectorCenter => new Hex(SectorWidth / 2, SectorHeight / 2);
 
         public static Point LocationToCoordinates(Location location)
         {

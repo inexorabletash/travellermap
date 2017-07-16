@@ -23,7 +23,8 @@ namespace Maps.API
         {
             public Responder(HttpContext context) : base(context) { }
             public override string DefaultContentType => ContentTypes.Text.Xml;
-            private static readonly IReadOnlyDictionary<string, string> SpecialSearches = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase) {
+            private static readonly IReadOnlyDictionary<string, string> SpecialSearches = 
+                new EasyInitConcurrentDictionary<string, string>(StringComparer.InvariantCultureIgnoreCase) {
                 { @"(default)", @"~/res/search/Default.json"},
                 { @"(grand tour)", @"~/res/search/GrandTour.json"},
                 { @"(arrival vengeance)", @"~/res/search/ArrivalVengeance.json"},

@@ -145,8 +145,11 @@ namespace Maps
 
         #region Allegiance
 
-        private class AllegianceDictionary : Dictionary<string, Allegiance>
+        private class AllegianceDictionary : EasyInitConcurrentDictionary<string, Allegiance>
         {
+            public AllegianceDictionary() { }
+            public AllegianceDictionary(IEnumerable<KeyValuePair<string, Allegiance>> e) : base(e) { }
+
             public void Add(string code, string name)
             {
                 Add(code, new Allegiance(code, name));
@@ -159,7 +162,7 @@ namespace Maps
         }
 
         // Overrides or additions where Legacy -> T5SS code mapping is ambiguous.
-        private static readonly IReadOnlyDictionary<string, string> s_legacyAllegianceToT5Overrides = new Dictionary<string, string> {
+        private static readonly IReadOnlyDictionary<string, string> s_legacyAllegianceToT5Overrides = new EasyInitConcurrentDictionary<string, string> {
             { "J-", "JuPr" },
             { "Jp", "JuPr" },
             { "Ju", "JuPr" },
@@ -465,10 +468,14 @@ namespace Maps
         };
         public static IEnumerable<string> AllegianceCodes => s_t5Allegiances.Keys;
         // May need GroupBy to handle duplicates
-        private static readonly IReadOnlyDictionary<string, Allegiance> s_legacyToT5Allegiance = s_t5Allegiances.Values
-            .GroupBy(a => a.LegacyCode).Select(g => g.First()).ToDictionary(a => a.LegacyCode);
+        private static readonly IReadOnlyDictionary<string, Allegiance> s_legacyToT5Allegiance =
+            new AllegianceDictionary(
+                s_t5Allegiances.Values
+                .GroupBy(a => a.LegacyCode)
+                .Select(g => g.First())
+                .Select(a => new KeyValuePair<string, Allegiance>(a.LegacyCode, a)));
 
-        private static readonly HashSet<string> s_defaultAllegiances = new HashSet<string> {
+        private static readonly ConcurrentSet<string> s_defaultAllegiances = new ConcurrentSet<string> {
             "Im", // Classic Imperium
             "ImAp", // Third Imperium, Amec Protectorate (Dagu)
             "ImDa", // Third Imperium, Domain of Antares (Anta/Empt/Lish)

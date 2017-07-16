@@ -175,7 +175,7 @@ namespace Maps
         // "Di(Sophont)" - minor race (dieback)
         // "{comment ... }" - arbitrary comment
         // "xyz" - other code
-        private static readonly List<Tuple<string, char>> markers = new List<Tuple<string, char>>
+        private static readonly Tuple<string, char>[] MARKERS = new Tuple<string, char>[]
         {
             Tuple.Create("[", ']'),
             Tuple.Create("(", ')'),
@@ -202,7 +202,7 @@ namespace Maps
                     int begin = pos;
                     bool found = false;
 
-                    foreach (var tuple in markers)
+                    foreach (var tuple in MARKERS)
                     {
                         string start = tuple.Item1;
                         char endchar = tuple.Item2;

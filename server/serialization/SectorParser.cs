@@ -35,9 +35,9 @@ namespace Maps.Serialization
             }
         }
 
-        private static readonly Regex comment = new Regex(@"^[#$@]", RegexOptions.Compiled | RegexOptions.CultureInvariant);
-        private static readonly Regex sniff_tab = new Regex(@"^[^\t]*(\t[^\t]*){9,}$", RegexOptions.Compiled | RegexOptions.CultureInvariant);
-        private static readonly Regex sniff_ss = new Regex(@"\{.*\} +\(.*\) +\[.*\]", RegexOptions.Compiled | RegexOptions.CultureInvariant);
+        private static readonly Regex COMMENT_REGEX = new Regex(@"^[#$@]", RegexOptions.Compiled | RegexOptions.CultureInvariant);
+        private static readonly Regex SNIFF_TAB_DELIMITED_REGEX = new Regex(@"^[^\t]*(\t[^\t]*){9,}$", RegexOptions.Compiled | RegexOptions.CultureInvariant);
+        private static readonly Regex SNIFF_SECONDSURVEY_REGEX = new Regex(@"\{.*\} +\(.*\) +\[.*\]", RegexOptions.Compiled | RegexOptions.CultureInvariant);
 
         public static string SniffType(Stream stream)
         {
@@ -48,13 +48,13 @@ namespace Maps.Serialization
                 {
                     for (string line = reader.ReadLine(); line != null; line = reader.ReadLine())
                     {
-                        if (line.Length == 0 || comment.IsMatch(line))
+                        if (line.Length == 0 || COMMENT_REGEX.IsMatch(line))
                             continue;
 
-                        if (sniff_tab.IsMatch(line))
+                        if (SNIFF_TAB_DELIMITED_REGEX.IsMatch(line))
                             return "TabDelimited";
 
-                        if (sniff_ss.IsMatch(line))
+                        if (SNIFF_SECONDSURVEY_REGEX.IsMatch(line))
                             return "SecondSurvey";
                     }
                     return null;
@@ -101,10 +101,10 @@ namespace Maps.Serialization
             }
         }
 
-        private static readonly Regex uwpRegex = new Regex(@"[ABCDEX?][0-9A-Z?]{6}-[0-9A-Z?]",
+        private static readonly Regex UWP_REGEX = new Regex(@"[ABCDEX?][0-9A-Z?]{6}-[0-9A-Z?]",
             RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.Singleline);
 
-        private static readonly Regex worldRegex = new Regex(@"^" +
+        private static readonly Regex WORLD_REGEX = new Regex(@"^" +
             @"( [ \t]*       (?<name>        .*                              ) )  " + // Name
             @"( [ \t]*       (?<hex>         [0-9]{4}                        ) )  " + // Hex
             @"( [ \t]{1,2}   (?<uwp>         [ABCDEX?][0-9A-Z?]{6}-[0-9A-Z?] ) )  " + // UWP (Universal World Profile)
@@ -117,20 +117,20 @@ namespace Maps.Serialization
             @"[ \t]*$"
             , RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.Singleline | RegexOptions.ExplicitCapture | RegexOptions.IgnorePatternWhitespace);
 
-        private static readonly Regex nameFixupRegex = new Regex(@"[\.\+]*$", RegexOptions.Compiled);
+        private static readonly Regex NAME_FIXUP_REGEX = new Regex(@"[\.\+]*$", RegexOptions.Compiled);
 
-        private static readonly Regex placeholderNameRegex = new Regex(
+        private static readonly Regex PLACEHOLDER_NAME_REGEX = new Regex(
             @"^[A-P]-[0-9]{1,2}$",
             RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.Singleline | RegexOptions.ExplicitCapture | RegexOptions.IgnorePatternWhitespace);
 
         private static void ParseWorld(WorldCollection worlds, string line, int lineNumber, ErrorLogger errors)
         {
-            if (!uwpRegex.IsMatch(line))
+            if (!UWP_REGEX.IsMatch(line))
             {
                 errors?.Warning("Ignoring non-UWP data", lineNumber, line);
                 return;
             }
-            Match match = worldRegex.Match(line);
+            Match match = WORLD_REGEX.Match(line);
 
             if (!match.Success)
             {
@@ -146,7 +146,7 @@ namespace Maps.Serialization
                     Allegiance = match.Groups["allegiance"].Value.Trim(),
 
                     // Crack the RegExpr data
-                    Name = nameFixupRegex.Replace(match.Groups["name"].Value.Trim(), ""),
+                    Name = NAME_FIXUP_REGEX.Replace(match.Groups["name"].Value.Trim(), ""),
                     Hex = match.Groups["hex"].Value.Trim(),
                     UWP = match.Groups["uwp"].Value.Trim(),
                     LegacyBaseCode = EmptyIfDash(match.Groups["base"].Value.Trim()),
@@ -156,7 +156,7 @@ namespace Maps.Serialization
                 };
 
                 // Cleanup known placeholders
-                if (world.Name == match.Groups["hex"].Value || placeholderNameRegex.IsMatch(world.Name))
+                if (world.Name == match.Groups["hex"].Value || PLACEHOLDER_NAME_REGEX.IsMatch(world.Name))
                     world.Name = "";
                 if (world.Name == world.Name.ToUpperInvariant() && world.IsHi)
                     world.Name = world.Name.FixCapitalization();

@@ -1,8 +1,8 @@
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.IO;
 using System.Runtime.Serialization;
 using System.Xml.Serialization;
 
@@ -38,11 +38,16 @@ namespace Maps
         private static SectorMap s_instance;
 
         /// <summary>
-        /// Holds all known sectors across all milieux. Callers should generally not use this, since it
+        /// Holds all known sectors across all milieux.
+        /// </summary>
+        private readonly SectorCollection sectors = new SectorCollection();
+
+        /// <summary>
+        /// Enumerate all known sectors across all milieux. Callers should generally not use this, since it
         /// will contain duplicate sectors across milieux.
         /// </summary>
-        private SectorCollection sectors = new SectorCollection();
-        public IList<Sector> Sectors => sectors.Sectors;
+        public IEnumerable<Sector> Sectors => sectors.Sectors;
+
         /// <summary>
         /// Represents a single milieu. Contains maps from name to Sector and coordinates to Sector.
         /// </summary>
@@ -50,8 +55,9 @@ namespace Maps
         {
             public MilieuMap(string name) { Name = name; }
             public string Name { get; }
-            public Dictionary<string, Sector> nameMap = new Dictionary<string, Sector>(StringComparer.InvariantCultureIgnoreCase);
-            public Dictionary<Point, Sector> locationMap = new Dictionary<Point, Sector>();
+
+            private ConcurrentDictionary<string, Sector> nameMap = new ConcurrentDictionary<string, Sector>(StringComparer.InvariantCultureIgnoreCase);
+            private ConcurrentDictionary<Point, Sector> locationMap = new ConcurrentDictionary<Point, Sector>();
 
             public Sector FromName(string name)
             {
@@ -67,47 +73,38 @@ namespace Maps
 
             public void Add(Sector sector)
             {
-                if (locationMap.ContainsKey(sector.Location))
-                    throw new ArgumentException($"[{Name}]: Sector already added at ({sector.Location.X},{sector.Location.Y}): {sector.Names[0].Text} (was {locationMap[sector.Location].Names[0].Text})", nameof(sector));
+                if (!locationMap.TryAdd(sector.Location, sector))
+                    return;
 
                 sector.MilieuMap = this;
 
-                locationMap.Add(sector.Location, sector);
-
                 foreach (var name in sector.Names)
                 {
-                    if (!nameMap.ContainsKey(name.Text))
-                        nameMap.Add(name.Text, sector);
+                    nameMap.TryAdd(name.Text, sector);
 
                     // Automatically alias "SpinwardMarches"
-                    string spaceless = name.Text.Replace(" ", "");
-                    if (spaceless != name.Text && !nameMap.ContainsKey(spaceless))
-                        nameMap.Add(spaceless, sector);
+                    nameMap.TryAdd(name.Text.Replace(" ", ""), sector);
                 }
 
-                if (!string.IsNullOrEmpty(sector.Abbreviation) && !nameMap.ContainsKey(sector.Abbreviation))
-                    nameMap.Add(sector.Abbreviation, sector);
+                if (!string.IsNullOrEmpty(sector.Abbreviation))
+                    nameMap.TryAdd(sector.Abbreviation, sector);
             }
         }
 
         public const string DEFAULT_MILIEU = "M1105";
 
-        public static bool IsDefaultMilieu(string m)
-        {
-            return string.IsNullOrWhiteSpace(m) || m == DEFAULT_MILIEU;
-        }
-
         /// <summary>
         /// Holds all milieu, keyed by name (e.g. "M0").
         /// </summary>
-        private Dictionary<string, MilieuMap> milieux = new Dictionary<string, MilieuMap>(StringComparer.InvariantCultureIgnoreCase);
+        private ConcurrentDictionary<string, MilieuMap> milieux 
+            = new ConcurrentDictionary<string, MilieuMap>(StringComparer.InvariantCultureIgnoreCase);
+
         private MilieuMap GetMilieuMap(string name)
         {
-            if (!milieux.ContainsKey(name))
-                milieux.Add(name, new MilieuMap(name));
-            return milieux[name];
+            return milieux.GetOrAdd(name, n => new MilieuMap(n));
         }
 
+        // Singleton initialization
         private SectorMap(IEnumerable<SectorMetafileEntry> metafiles, ResourceManager resourceManager)
         {
             // Load all sectors from all metafiles.
@@ -136,6 +133,7 @@ namespace Maps
             }
         }
 
+        // Singleton accessor
         public static SectorMap GetInstance(ResourceManager resourceManager)
         {
             lock (SectorMap.s_lock)
@@ -249,8 +247,6 @@ namespace Maps
         /// <returns>Sector if found, or null</returns>
         private Sector FromName(string name, string milieu)
         {
-            if (sectors == null)
-                throw new MapNotInitializedException();
             return SelectMilieux(milieu)
                 .Select(m => m.FromName(name))
                 .Where(s => s != null)
@@ -266,19 +262,21 @@ namespace Maps
         /// <returns>Sector if found, or null</returns>
         private Sector FromLocation(Point pt, string milieu, bool useMilieuFallbacks = false)
         {
-            if (sectors == null)
-                throw new MapNotInitializedException();
             Sector sector = SelectMilieux(milieu)
-                .Select(m => m.FromLocation(pt))
-                .Where(s => s != null && (useMilieuFallbacks || !(s is Dotmap)))
+                .Select(map => map.FromLocation(pt))
+                .Where(sec => sec != null && (useMilieuFallbacks || !(sec is Dotmap)))
                 .FirstOrDefault();
 
             if (sector != null || milieu == null || !useMilieuFallbacks)
                 return sector;
+
+            // Fall back to default milieu and produce a dotmap
             sector = FromLocation(pt, null);
             if (sector == null)
                 return null;
             sector = new Dotmap(sector);
+
+            // Remember it, if milieu is known.
             if (milieux.ContainsKey(milieu))
                 milieux[milieu].Add(sector);
             return sector;
