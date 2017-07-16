@@ -9,7 +9,7 @@ This guide assumes basic familiarity with using Visual Studio projects and the G
 Prerequisites
 -------------
 * Windows 7 or later
-* [Visual Studio 2015 Community Edition](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx) or the equivalent
+* [Visual Studio Community 2017](https://www.visualstudio.com/downloads/) or the equivalent
 * Git for Windows Windows - options include
 [msysgit](https://code.google.com/p/msysgit/),
 [TortoiseGit](https://code.google.com/p/tortoisegit/) (a GUI wrapper around msysgit)

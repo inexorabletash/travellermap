@@ -21,7 +21,7 @@
         + encodeURIComponent(world.SectorAbbreviation) + ' '
         + encodeURIComponent(world.Hex) + '.png';
     case 'generic':
-      return 'res/Candy/'
+      return S3_PREFIX + 'generic_worlds/'
         + (world.UWP.Siz === '0' ? 'Belt' : 'Hyd' + world.UWP.Hyd) + '.png';
     }
   }
