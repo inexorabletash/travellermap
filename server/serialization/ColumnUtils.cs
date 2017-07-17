@@ -104,11 +104,8 @@ namespace Maps.Serialization
                 columns[row[i]] = i;
             }
             rows.Add(row);
-
-            Padding = ' ';
-            Delimiter = " ";
-            Separator = '-';
         }
+
         public void AddRow(IList<string> data)
         {
             if (rows[0].Length != data.Count())
@@ -119,6 +116,7 @@ namespace Maps.Serialization
                 row[i] = data[i]?.Trim() ?? "";
             rows.Add(row);
         }
+
         public int[] ComputeWidths()
         {
             int[] widths = new int[rows[0].Length];
@@ -184,9 +182,9 @@ namespace Maps.Serialization
             }
         }
 
-        public char Padding { get; set; }
-        public string Delimiter { get; set; }
-        public char Separator { get; set; }
+        public char Padding { get; set; } = ' ';
+        public string Delimiter { get; set; } = " ";
+        public char Separator { get; set; } = '-';
         private Dictionary<string, int> columns = new Dictionary<string, int>();
         private Dictionary<int, int> minimums = new Dictionary<int, int>();
         private List<string[]> rows = new List<string[]>();

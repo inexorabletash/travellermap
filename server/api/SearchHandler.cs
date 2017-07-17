@@ -14,7 +14,6 @@ namespace Maps.API
 {
     internal class SearchHandler : DataHandlerBase
     {
-        protected override string ServiceName => "search";
         protected override DataResponder GetResponder(HttpContext context) => new Responder(context);
 
         private class Responder : DataResponder

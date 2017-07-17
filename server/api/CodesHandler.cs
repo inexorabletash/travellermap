@@ -6,7 +6,6 @@ namespace Maps.API
 {
     internal class SophontCodesHandler : DataHandlerBase
     {
-        protected override string ServiceName => "sophontcodes";
         protected override DataResponder GetResponder(HttpContext context) => new Responder(context);
 
         private class Responder : DataResponder
@@ -26,7 +25,6 @@ namespace Maps.API
 
     internal class AllegianceCodesHandler : DataHandlerBase
     {
-        protected override string ServiceName => "allegiancecodes";
         protected override DataResponder GetResponder(HttpContext context) => new Responder(context);
 
         private class Responder : DataResponder

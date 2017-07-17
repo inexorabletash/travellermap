@@ -25,8 +25,6 @@ namespace Maps.API
 
     internal abstract class DataHandlerBase : HandlerBase, IHttpHandler
     {
-        protected abstract string ServiceName { get; }
-
         public bool IsReusable => true;
         public void ProcessRequest(HttpContext context)
         {

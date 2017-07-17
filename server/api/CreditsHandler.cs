@@ -7,7 +7,6 @@ namespace Maps.API
 {
     internal class CreditsHandler : DataHandlerBase
     {
-        protected override string ServiceName => "credits";
         protected override DataResponder GetResponder(HttpContext context) => new Responder(context);
 
         private class Responder : DataResponder

@@ -7,7 +7,6 @@ namespace Maps.API
 {
     internal class MSECHandler : DataHandlerBase
     {
-        protected override string ServiceName => "msec";
         protected override DataResponder GetResponder(HttpContext context) => new Responder(context);
 
         private class Responder : DataResponder

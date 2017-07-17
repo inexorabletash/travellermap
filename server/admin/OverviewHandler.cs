@@ -18,7 +18,6 @@ namespace Maps.Admin
 
         class OverviewImpl : ImageHandlerBase
         {
-            protected override string ServiceName => "overview";
             protected override DataResponder GetResponder(HttpContext context) => new Responder(context);
 
             private class Responder : ImageResponder

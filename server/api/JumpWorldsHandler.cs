@@ -7,7 +7,6 @@ namespace Maps.API
 {
     internal class JumpWorldsHandler : DataHandlerBase
     {
-        protected override string ServiceName => "jumpworlds";
         protected override DataResponder GetResponder(HttpContext context) => new Responder(context);
 
         private class Responder : DataResponder

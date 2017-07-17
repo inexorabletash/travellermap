@@ -11,7 +11,6 @@ namespace Maps.API
     /// </summary>
     internal class SectorMetaDataHandler : DataHandlerBase
     {
-        protected override string ServiceName => "sectormetadata";
         protected override DataResponder GetResponder(HttpContext context) => new Responder(context);
 
         private class Responder : DataResponder

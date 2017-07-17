@@ -9,7 +9,6 @@ namespace Maps.API
 {
     internal class TileHandler : ImageHandlerBase
     {
-        protected override string ServiceName => "tile";
         public const int MinDimension = 1;
         public const int MaxDimension = 2048;
 

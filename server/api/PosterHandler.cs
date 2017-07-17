@@ -9,7 +9,6 @@ namespace Maps.API
 {
     internal class PosterHandler : ImageHandlerBase
     {
-        protected override string ServiceName => "poster";
         protected override DataResponder GetResponder(HttpContext context) => new Responder(context);
 
         private class Responder : ImageResponder

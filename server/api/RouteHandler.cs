@@ -10,7 +10,6 @@ namespace Maps.API
 {
     internal class RouteHandler : DataHandlerBase
     {
-        protected override string ServiceName => "route";
         protected override DataResponder GetResponder(HttpContext context) => new Responder(context);
 
         private class Responder : DataResponder

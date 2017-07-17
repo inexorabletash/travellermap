@@ -13,7 +13,6 @@ namespace Maps.API
     /// </summary>
     internal class UniverseHandler : DataHandlerBase
     {
-        protected override string ServiceName => "universe";
         protected override DataResponder GetResponder(HttpContext context) => new Responder(context);
 
         private class Responder : DataResponder

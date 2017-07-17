@@ -142,11 +142,10 @@ namespace Maps.Rendering
         private class Timer
         {
 #if SHOW_TIMING
-            public DateTime dt;
+            public DateTime dt = DateTime.Now;
             public string label;
             public Timer(string label)
             {
-                this.dt = DateTime.Now;
                 this.label = label;
             }
 #else

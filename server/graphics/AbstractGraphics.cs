@@ -161,7 +161,7 @@ namespace Maps.Graphics
     {
         public Color Color { get; set; }
         public float Width { get; set; }
-        public DashStyle DashStyle { get; set; }
+        public DashStyle DashStyle { get; set; } = DashStyle.Solid;
         public float[] CustomDashPattern { get; set; }
 
         public AbstractPen() { }
@@ -169,7 +169,6 @@ namespace Maps.Graphics
         {
             Color = color;
             Width = width;
-            DashStyle = DashStyle.Solid;
         }
     }
 
