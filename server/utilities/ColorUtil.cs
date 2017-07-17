@@ -20,10 +20,7 @@ namespace Maps.Utilities
             z = sr * 0.0193 + sg * 0.1192 + sb * 0.9505;
         }
 
-        private static double Fxyz(double t)
-        {
-            return ((t > 0.008856) ? Math.Pow(t, (1.0 / 3.0)) : (7.787 * t + 16.0 / 116.0));
-        }
+        private static double Fxyz(double t) => ((t > 0.008856) ? Math.Pow(t, (1.0 / 3.0)) : (7.787 * t + 16.0 / 116.0));
 
         public static void XYZtoLab(double x, double y, double z, out double l, out double a, out double b)
         {

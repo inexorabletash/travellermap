@@ -219,10 +219,9 @@ namespace Maps
         private class NearCompanion : Companion
         {
             public Unit Companion;
-            public override string ToString(OutputFormat format)
-            {
-                return Companion.ToString(format);
-            }
+
+            public override string ToString(OutputFormat format) => Companion.ToString(format);
+
             public static bool Parse(SeekableReader r, out NearCompanion near)
             {
                 if (Unit.Parse(r, out Unit u))
@@ -418,10 +417,7 @@ namespace Maps
             }
         }
 
-        private static bool IsPrefixIn(string prefix, string[] options)
-        {
-            return options.Any(s => s.StartsWith(prefix));
-        }
+        private static bool IsPrefixIn(string prefix, string[] options) => options.Any(s => s.StartsWith(prefix));
 
         /// <summary>
         /// Match one of a set of string options. Will return one of the options or null
@@ -486,15 +482,9 @@ namespace Maps
                 this.s = s;
             }
 
-            public override int Peek()
-            {
-                return (0 <= Position && Position < s.Length) ? s[Position] : -1;
-            }
+            public override int Peek() => (0 <= Position && Position < s.Length) ? s[Position] : -1;
 
-            public override int Read()
-            {
-                return (0 <= Position && Position < s.Length) ? s[Position++] : -1;
-            }
+            public override int Read() => (0 <= Position && Position < s.Length) ? s[Position++] : -1;
 
             public override int Position { get; set; } = 0;
         }

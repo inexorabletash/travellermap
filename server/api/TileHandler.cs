@@ -16,10 +16,8 @@ namespace Maps.API
         public const int NormalTileWidth = 256;
         public const int NormalTileHeight = 256;
 
-        protected override DataResponder GetResponder(HttpContext context)
-        {
-            return new Responder(context);
-        }
+        protected override DataResponder GetResponder(HttpContext context) => new Responder(context);
+
         private class Responder : ImageResponder
         {
             public Responder(HttpContext context) : base(context) { }

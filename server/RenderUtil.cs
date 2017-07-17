@@ -274,10 +274,7 @@ namespace Maps.Rendering
             { "*.T", Glyph.Terminus }, // Terminus 
         };
 
-        public static Glyph FromBaseCode(string allegiance, char code)
-        {
-            return s_baseGlyphTable.Match(allegiance + "." + code);
-        }
+        public static Glyph FromBaseCode(string allegiance, char code) =>  s_baseGlyphTable.Match(allegiance + "." + code);
     }
 
     // BorderPath is a render-ready representation of a Border.
@@ -605,8 +602,8 @@ namespace Maps.Rendering
             return new StarProps(COLOR[star.type], Color.Black, RAD[star.type] + LUM[star.luminosity]);
         }
 
-        private static float SinF(double r) { return (float)Math.Sin(r); }
-        private static float CosF(double r) { return (float)Math.Cos(r); }
+        private static float SinF(double r) => (float)Math.Sin(r);
+        private static float CosF(double r) => (float)Math.Cos(r);
 
         private static float[] dx = new float[] {
                     0.0f,

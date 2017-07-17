@@ -99,10 +99,7 @@ namespace Maps
         private ConcurrentDictionary<string, MilieuMap> milieux 
             = new ConcurrentDictionary<string, MilieuMap>(StringComparer.InvariantCultureIgnoreCase);
 
-        private MilieuMap GetMilieuMap(string name)
-        {
-            return milieux.GetOrAdd(name, n => new MilieuMap(n));
-        }
+        private MilieuMap GetMilieuMap(string name) => milieux.GetOrAdd(name, n => new MilieuMap(n));
 
         // Singleton initialization
         private SectorMap(IEnumerable<SectorMetafileEntry> metafiles, ResourceManager resourceManager)
@@ -206,15 +203,16 @@ namespace Maps
                 this.map = map;
                 this.milieu = milieu;
             }
-            public Sector FromLocation(int x, int y, bool useMilieuFallbacks = false) { return map.FromLocation(new Point(x, y), milieu, useMilieuFallbacks); }
-            public Sector FromLocation(Point pt, bool useMilieuFallbacks = false) { return map.FromLocation(pt, milieu, useMilieuFallbacks); }
-            public Sector FromName(string name) { return map.FromName(name, milieu); }
+            public Sector FromLocation(int x, int y, bool useMilieuFallbacks = false)
+                => map.FromLocation(new Point(x, y), milieu, useMilieuFallbacks);
+            public Sector FromLocation(Point pt, bool useMilieuFallbacks = false)
+                => map.FromLocation(pt, milieu, useMilieuFallbacks);
+            public Sector FromName(string name)
+                => map.FromName(name, milieu);
         }
 
         public static Milieu ForMilieu(ResourceManager resourceManager, string milieu)
-        {
-            return new Milieu(SectorMap.GetInstance(resourceManager), milieu);
-        }
+            => new Milieu(SectorMap.GetInstance(resourceManager), milieu);
 
         /// <summary>
         /// Helper to find MilieuMaps by name.
@@ -245,13 +243,10 @@ namespace Maps
         /// <param name="name">Sector name</param>
         /// <param name="milieu">Milieu name, null for default/fallbacks</param>
         /// <returns>Sector if found, or null</returns>
-        private Sector FromName(string name, string milieu)
-        {
-            return SelectMilieux(milieu)
-                .Select(m => m.FromName(name))
-                .Where(s => s != null)
-                .FirstOrDefault();
-        }
+        private Sector FromName(string name, string milieu) => SelectMilieux(milieu)
+                    .Select(m => m.FromName(name))
+                    .Where(s => s != null)
+                    .FirstOrDefault();
 
         /// <summary>
         /// Finds sector by location in the named milieu (using default/fallbacks if null)

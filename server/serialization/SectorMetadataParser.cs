@@ -72,10 +72,8 @@ namespace Maps.Serialization
             }
         }
 
-        private static string ParseString(string s)
-        {
-            return string.IsNullOrEmpty(s) ? null : s;
-        }
+        private static string ParseString(string s) => string.IsNullOrEmpty(s) ? null : s;
+
         private static bool? ParseBool(string s)
         {
             if (string.IsNullOrEmpty(s)) return null;

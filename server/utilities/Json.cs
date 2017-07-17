@@ -57,11 +57,8 @@ namespace Json
                 SerializeValue( writer, item );
         }
 
-        private static string GetName( object item )
-        {
-            return item.GetType().GetCustomAttributes(typeof(JsonNameAttribute), inherit: true).OfType<JsonNameAttribute>()
-                .Select(jn => jn.Name).FirstOrDefault();
-        }
+        private static string GetName( object item ) => item.GetType().GetCustomAttributes(typeof(JsonNameAttribute), inherit: true)
+            .OfType<JsonNameAttribute>().Select(jn => jn.Name).FirstOrDefault();
 
         private static string GetName(PropertyInfo pi)
         {
@@ -69,16 +66,10 @@ namespace Json
             return jn?.Name ?? pi.Name;
         }
 
-        private static object GetDefaultValue(PropertyInfo pi)
-        {
-            return pi.GetCustomAttributes(typeof(DefaultValueAttribute), inherit: true).OfType<DefaultValueAttribute>()
-                .Select(dva => dva.Value).FirstOrDefault();
-        }
+        private static object GetDefaultValue(PropertyInfo pi) => pi.GetCustomAttributes(typeof(DefaultValueAttribute), inherit: true)
+            .OfType<DefaultValueAttribute>().Select(dva => dva.Value).FirstOrDefault();
 
-        private static bool Ignore(PropertyInfo info)
-        {
-            return info.GetCustomAttributes(typeof(JsonIgnoreAttribute), inherit: true).Any();
-        }
+        private static bool Ignore(PropertyInfo info) => info.GetCustomAttributes(typeof(JsonIgnoreAttribute), inherit: true).Any();
 
         private void SerializeObject( TextWriter writer, object item )
         {

@@ -38,10 +38,7 @@ namespace Maps.Search
 
         private static readonly object s_lock = new object();
 
-        private static string SanifyLabel(string s)
-        {
-            return Regex.Replace(s.Trim(), @"\s+", " ");
-        }
+        private static string SanifyLabel(string s)=> Regex.Replace(s.Trim(), @"\s+", " ");
 
         private static readonly string[] SECTORS_COLUMNS = {
             "milieu nvarchar(12) NULL",
@@ -432,10 +429,8 @@ namespace Maps.Search
         private static readonly Regex RE_TERMS = new Regex("(" + string.Join("|", OPS) + ")?(\"[^\"]+\"|\\S+)",
             RegexOptions.Compiled | RegexOptions.CultureInvariant);
 
-        private static IEnumerable<string> ParseTerms(string q)
-        {
-            return RE_TERMS.Matches(q).Cast<Match>().Select(m => m.Value).Where(s => !string.IsNullOrWhiteSpace(s));
-        }
+        private static IEnumerable<string> ParseTerms(string q) =>
+            RE_TERMS.Matches(q).Cast<Match>().Select(m => m.Value).Where(s => !string.IsNullOrWhiteSpace(s));
 
         public static WorldResult FindNearestWorldMatch(string name, string milieu, int x, int y)
         {

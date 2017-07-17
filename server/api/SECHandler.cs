@@ -11,10 +11,8 @@ namespace Maps.API
     internal class SECHandler : DataHandlerBase
     {
         protected override string ServiceName => "sec";
-        protected override DataResponder GetResponder(HttpContext context)
-        {
-            return new Responder(context);
-        }
+        protected override DataResponder GetResponder(HttpContext context) => new Responder(context);
+
         private class Responder : DataResponder
         {
             public Responder(HttpContext context) : base(context) { }

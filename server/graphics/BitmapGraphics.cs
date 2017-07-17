@@ -110,10 +110,7 @@ namespace Maps.Graphics
             }
         }
 
-        public SizeF MeasureString(string text, Font font)
-        {
-            return g.MeasureString(text, font);
-        }
+        public SizeF MeasureString(string text, Font font)=> g.MeasureString(text, font);
 
         public void DrawString(string s, Font font, AbstractBrush brush, float x, float y, StringAlignment format)
         {
@@ -130,7 +127,7 @@ namespace Maps.Graphics
             }
         }
 
-        public AbstractGraphicsState Save() { return new State(this, g.Save()); }
+        public AbstractGraphicsState Save() => new State(this, g.Save());
         public void Restore(AbstractGraphicsState state) { g.Restore(((State)state).state); }
 
         #region StringFormats

@@ -29,33 +29,20 @@ namespace Maps
 
         public bool IsEmpty => Sector.IsEmpty && Hex.IsEmpty;
         public bool IsValid => Hex.IsValid;
-        public bool Equals(Location other)
-        {
-            return other.Sector == Sector && other.Hex == Hex;
-        }
-        public override bool Equals(object other)
-        {
-            return other is Location location && Equals(location);
-        }
-        public static bool operator ==(Location a, Location b) { return a.Equals(b); }
-        public static bool operator !=(Location a, Location b) { return !a.Equals(b); }
+        public bool Equals(Location other) => other.Sector == Sector && other.Hex == Hex;
+        public override bool Equals(object other) => other is Location location && Equals(location);
+        public static bool operator ==(Location a, Location b) => a.Equals(b);
+        public static bool operator !=(Location a, Location b) => !a.Equals(b);
 
-        private static bool IsLessThan(Point a, Point b) { return (a.X < b.X) || (a.X == b.X && a.Y < b.Y); }
-        private static bool IsGreaterThan(Point a, Point b) { return (a.X > b.X) || (a.X == b.X && a.Y > b.Y); }
+        private static bool IsLessThan(Point a, Point b) => (a.X < b.X) || (a.X == b.X && a.Y < b.Y);
+        private static bool IsGreaterThan(Point a, Point b) => (a.X > b.X) || (a.X == b.X && a.Y > b.Y);
 
-        public static bool operator <(Location a, Location b)
-        {
-            return IsLessThan(a.Sector, b.Sector) || (a.Sector == b.Sector && a.Hex < b.Hex);
-        }
-        public static bool operator >(Location a, Location b)
-        {
-            return IsGreaterThan(a.Sector, b.Sector) || (a.Sector == b.Sector && a.Hex > b.Hex);
-        }
+        public static bool operator <(Location a, Location b) =>
+            IsLessThan(a.Sector, b.Sector) || (a.Sector == b.Sector && a.Hex < b.Hex);
+        public static bool operator >(Location a, Location b) =>
+            IsGreaterThan(a.Sector, b.Sector) || (a.Sector == b.Sector && a.Hex > b.Hex);
 
-        public override int GetHashCode()
-        {
-            return Sector.GetHashCode() ^ Hex.GetHashCode();
-        }
+        public override int GetHashCode() => Sector.GetHashCode() ^ Hex.GetHashCode();
 
         public string HexString => Hex.ToString();
         public string SubsectorHexString => Hex.ToSubsectorString();

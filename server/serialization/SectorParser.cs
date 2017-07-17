@@ -268,9 +268,7 @@ namespace Maps.Serialization
             }
 
             public string Check(ICollection<string> keys, Regex regex = null, CheckOptions options = 0)
-            {
-                return Check(keys, value => regex?.IsMatch(value) ?? true, options);
-            }
+                => Check(keys, value => regex?.IsMatch(value) ?? true, options);
 
             public string Check(ICollection<string> keys, Func<string, bool> validate, CheckOptions options = 0)
             {

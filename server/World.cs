@@ -230,7 +230,7 @@ namespace Maps
                 }
             }
 
-            IEnumerator IEnumerable.GetEnumerator() { return GetEnumerator(); }
+            IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
         }
 
         public string Remarks

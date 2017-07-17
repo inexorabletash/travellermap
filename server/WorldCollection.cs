@@ -67,7 +67,7 @@ namespace Maps
             }
         }
 
-        IEnumerator IEnumerable.GetEnumerator() { return GetEnumerator(); }
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
         private ErrorLogger errors = null;
         public ErrorLogger ErrorList => errors;
@@ -89,9 +89,6 @@ namespace Maps
             }
         }
 
-        public HashSet<string> AllegianceCodes()
-        {
-            return new HashSet<string>(this.Select(world => world.Allegiance));
-        }
+        public ISet<string> AllegianceCodes() => new HashSet<string>(this.Select(world => world.Allegiance));
     }
 }

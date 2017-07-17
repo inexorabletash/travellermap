@@ -12,10 +12,8 @@ namespace Maps.API
     internal class SectorMetaDataHandler : DataHandlerBase
     {
         protected override string ServiceName => "sectormetadata";
-        protected override DataResponder GetResponder(HttpContext context)
-        {
-            return new Responder(context);
-        }
+        protected override DataResponder GetResponder(HttpContext context) => new Responder(context);
+
         private class Responder : DataResponder
         {
             public Responder(HttpContext context) : base(context) { }
@@ -122,16 +120,16 @@ namespace Maps.API.Results
         public string Stylesheet { get => sector.StylesheetText; set { } }
 
         public MetadataCollection<Label> Labels => sector.Labels;
-        public bool ShouldSerializeLabels() { return sector.Labels.Count > 0; }
+        public bool ShouldSerializeLabels() => sector.Labels.Count > 0;
 
         public MetadataCollection<Border> Borders => sector.Borders;
-        public bool ShouldSerializeBorders() { return sector.Borders.Count > 0; }
+        public bool ShouldSerializeBorders() => sector.Borders.Count > 0;
 
         public MetadataCollection<Region> Regions => sector.Regions;
-        public bool ShouldSerializeRegions() { return sector.Regions.Count > 0; }
+        public bool ShouldSerializeRegions() => sector.Regions.Count > 0;
 
         public MetadataCollection<Route> Routes => sector.Routes;
-        public bool ShouldSerializeRoutes() { return sector.Routes.Count > 0; }
+        public bool ShouldSerializeRoutes() => sector.Routes.Count > 0;
 
         [XmlRoot("DataFile")]
         public class DataFileMetadata

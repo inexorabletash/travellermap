@@ -173,10 +173,7 @@ namespace Maps
 
         private WorldCollection worlds;
 
-        public Subsector Subsector(char alpha)
-        {
-            return Subsectors.Where(ss => ss.Index != null && ss.Index[0] == alpha).FirstOrDefault();
-        }
+        public Subsector Subsector(char alpha) => Subsectors.Where(ss => ss.Index != null && ss.Index[0] == alpha).FirstOrDefault();
 
         public Subsector Subsector(int index)
         {
@@ -401,23 +398,17 @@ namespace Maps
                         Astrometrics.SectorWidth, Astrometrics.SectorHeight
                     );
 
-        public Rectangle SubsectorBounds(int index)
-        {
-            return new Rectangle(
+        public Rectangle SubsectorBounds(int index) => new Rectangle(
                 (Location.X * Astrometrics.SectorWidth) - Astrometrics.ReferenceHex.X + (Astrometrics.SubsectorWidth * (index % 4)),
                 (Location.Y * Astrometrics.SectorHeight) - Astrometrics.ReferenceHex.Y + (Astrometrics.SubsectorHeight * (index / 4)),
                 Astrometrics.SubsectorWidth,
                 Astrometrics.SubsectorHeight);
-        }
-
-        public Rectangle QuadrantBounds(int index)
-        {
-            return new Rectangle(
+ 
+        public Rectangle QuadrantBounds(int index) => new Rectangle(
                 (Location.X * Astrometrics.SectorWidth) - Astrometrics.ReferenceHex.X + (Astrometrics.SubsectorWidth * 2 * (index % 2)),
                 (Location.Y * Astrometrics.SectorHeight) - Astrometrics.ReferenceHex.Y + (Astrometrics.SubsectorHeight * 2 * (index / 2)),
                 Astrometrics.SubsectorWidth * 2,
                 Astrometrics.SubsectorHeight * 2);
-        }
 
         internal Point Center => Astrometrics.LocationToCoordinates(Location, Astrometrics.SectorCenter);
 
@@ -436,9 +427,7 @@ namespace Maps
         internal SectorStylesheet Stylesheet { get; set; }
 
         internal SectorStylesheet.StyleResult ApplyStylesheet(string element, string code)
-        {
-            return (Stylesheet ?? s_defaultStyleSheet).Apply(element, code);
-        }
+            => (Stylesheet ?? s_defaultStyleSheet).Apply(element, code);
 
         [XmlElement("Stylesheet"), JsonName("Stylesheet")]
         public string StylesheetText
@@ -604,18 +593,12 @@ namespace Maps
         [XmlAttribute]
         public string Source { get; set; }
 
-        public override string ToString()
-        {
-            return Text;
-        }
+        public override string ToString() => Text;
     }
 
     public class DataFile : MetadataItem
     {
-        public override string ToString()
-        {
-            return FileName;
-        }
+        public override string ToString() => FileName;
 
         [XmlText]
         public string FileName { get; set; } = string.Empty;
@@ -758,7 +741,7 @@ namespace Maps
         internal LineStyle? Style { get; set; }
         [XmlAttribute("Style"), JsonIgnore]
         public LineStyle _Style { get => Style.Value; set => Style = value; }
-        public bool ShouldSerialize_Style() { return Style.HasValue; }
+        public bool ShouldSerialize_Style() => Style.HasValue;
 
 
         [XmlText, JsonName("Path")]
@@ -934,12 +917,12 @@ namespace Maps
         internal LineStyle? Style { get; set; }
         [XmlAttribute("Style"), JsonIgnore]
         public LineStyle _Style { get => Style.Value; set => Style = value; }
-        public bool ShouldSerialize_Style() { return Style.HasValue; }
+        public bool ShouldSerialize_Style() => Style.HasValue;
 
         internal float? Width { get; set; }
         [XmlAttribute("Width"), JsonIgnore]
         public float _Width { get => Width.Value; set => Width = value; }
-        public bool ShouldSerialize_Width() { return Width.HasValue; }
+        public bool ShouldSerialize_Width() => Width.HasValue;
 
         internal Color? Color { get; set; }
         [XmlAttribute("Color"), JsonName("Color")]

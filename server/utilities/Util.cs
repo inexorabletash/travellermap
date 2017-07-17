@@ -62,23 +62,17 @@ namespace Maps.Utilities
                 return value;
         }
 
-        public static bool InRange<T>(this IComparable<T> item, T a, T b)
-        {
-            return item.CompareTo(a) >= 0 && item.CompareTo(b) <= 0;
-        }
+        public static bool InRange<T>(this IComparable<T> item, T a, T b) => item.CompareTo(a) >= 0 && item.CompareTo(b) <= 0;
 
-        public static bool InList<T>(this T item, T o1, T o2) { return item.Equals(o1) || item.Equals(o2); }
-        public static bool InList<T>(this T item, T o1, T o2, T o3) { return item.Equals(o1) || item.Equals(o2) || item.Equals(o3); }
-        public static bool InList<T>(this T item, T o1, T o2, T o3, T o4) { return item.Equals(o1) || item.Equals(o2) || item.Equals(o3) || item.Equals(o4); }
-        public static bool InList<T>(this T item, T o1, T o2, T o3, T o4, T o5) { return item.Equals(o1) || item.Equals(o2) || item.Equals(o3) || item.Equals(o4) || item.Equals(o5); }
-        public static bool InList<T>(this T item, T o1, T o2, T o3, T o4, T o5, T o6) { return item.Equals(o1) || item.Equals(o2) || item.Equals(o3) || item.Equals(o4) || item.Equals(o5) || item.Equals(o6); }
+        public static bool InList<T>(this T item, T o1, T o2) => item.Equals(o1) || item.Equals(o2);
+        public static bool InList<T>(this T item, T o1, T o2, T o3) => item.Equals(o1) || item.Equals(o2) || item.Equals(o3);
+        public static bool InList<T>(this T item, T o1, T o2, T o3, T o4) => item.Equals(o1) || item.Equals(o2) || item.Equals(o3) || item.Equals(o4);
+        public static bool InList<T>(this T item, T o1, T o2, T o3, T o4, T o5) => item.Equals(o1) || item.Equals(o2) || item.Equals(o3) || item.Equals(o4) || item.Equals(o5);
+        public static bool InList<T>(this T item, T o1, T o2, T o3, T o4, T o5, T o6) => item.Equals(o1) || item.Equals(o2) || item.Equals(o3) || item.Equals(o4) || item.Equals(o5) || item.Equals(o6);
         #endregion
 
         #region String Methods
-        public static string Truncate(this string value, int size)
-        {
-            return value.Length <= size ? value : value.Substring(0, size);
-        }
+        public static string Truncate(this string value, int size) => value.Length <= size ? value : value.Substring(0, size);
 
         /// <summary>
         /// Retrieves a substring from this instance. The substring starts at
@@ -221,16 +215,10 @@ namespace Maps.Utilities
     {
         private ConcurrentDictionary<T, bool> dict = new ConcurrentDictionary<T, bool>();
         public void Add(T e) { if (!dict.TryAdd(e, true)) throw new ApplicationException("Unexpected initialization failure"); }
-        public bool Contains(T e) { return dict.ContainsKey(e); }
+        public bool Contains(T e) => dict.ContainsKey(e);
 
-        public IEnumerator<T> GetEnumerator()
-        {
-            return dict.Keys.GetEnumerator();
-        }
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return dict.Keys.GetEnumerator();
-        }
+        public IEnumerator<T> GetEnumerator() => dict.Keys.GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator() => dict.Keys.GetEnumerator();
     }
 
     internal class EasyInitConcurrentDictionary<TKey, TValue> : ConcurrentDictionary<TKey, TValue>
@@ -250,14 +238,8 @@ namespace Maps.Utilities
         public virtual void Add(string r, T v) { Add(new Regex(r), v); }
         public virtual void Add(T v) { Add(new Regex("^" + Regex.Escape(v.ToString()) + "$"), v); }
 
-        public T Match(string s)
-        {
-            return list.FirstOrDefault(pair => pair.Key.IsMatch(s)).Value;
-        }
-        public bool IsMatch(string s)
-        {
-            return list.Any(pair => pair.Key.IsMatch(s));
-        }
+        public T Match(string s) => list.FirstOrDefault(pair => pair.Key.IsMatch(s)).Value;
+        public bool IsMatch(string s) => list.Any(pair => pair.Key.IsMatch(s));
 
         public IEnumerator<KeyValuePair<Regex, T>> GetEnumerator() => list.GetEnumerator();
         IEnumerator IEnumerable.GetEnumerator() => list.GetEnumerator();
@@ -326,10 +308,7 @@ namespace Maps.Utilities
                 list.Remove(item);
         }
 
-        public bool Contains(T item)
-        {
-            return set.Contains(item);
-        }
+        public bool Contains(T item) => set.Contains(item);
 
         public void Clear()
         {
@@ -337,21 +316,13 @@ namespace Maps.Utilities
             set.Clear();
         }
 
-        public bool Any(Func<T, bool> predicate)
-        {
-            return set.Any(predicate);
-        }
-
-        public IEnumerable<T> Where(Func<T, bool> predicate)
-        {
-            return list.Where(predicate);
-        }
-
-        public int Count() { return set.Count(); }
+        public bool Any(Func<T, bool> predicate) => set.Any(predicate);
+        public IEnumerable<T> Where(Func<T, bool> predicate) => list.Where(predicate);
+        public int Count() => set.Count();
 
         public T this[int index] => list[index];
-        public IEnumerator<T> GetEnumerator() { return list.GetEnumerator(); }
-        IEnumerator IEnumerable.GetEnumerator() { return GetEnumerator(); }
+        public IEnumerator<T> GetEnumerator() => list.GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
 
     internal class ErrorLogger
@@ -408,10 +379,7 @@ namespace Maps.Utilities
         public bool Empty => log.Count == 0;
         public int Count => log.Count;
 
-        public int CountOf(Severity sev)
-        {
-            return log.Where(r => r.severity == sev).Count();
-        }
+        public int CountOf(Severity sev) => log.Where(r => r.severity == sev).Count();
 
         public void Report(TextWriter writer)
         {
@@ -548,10 +516,7 @@ namespace Maps.Utilities
         }
 
         public int Count => keys.Count;
-        public List<string>.Enumerator GetEnumerator()
-        {
-            return keys.GetEnumerator();
-        }
+        public List<string>.Enumerator GetEnumerator() => keys.GetEnumerator();
 
         private int size;
         private List<string> keys = new List<string>();

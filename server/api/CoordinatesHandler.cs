@@ -8,10 +8,7 @@ namespace Maps.API
     internal class CoordinatesHandler : DataHandlerBase
     {
         protected override string ServiceName => "coordinates";
-        protected override DataResponder GetResponder(HttpContext context)
-        {
-            return new Responder(context);
-        }
+        protected override DataResponder GetResponder(HttpContext context) => new Responder(context);
 
         private class Responder : DataResponder
         {

@@ -495,15 +495,8 @@ namespace Maps
             "--", // Placeholder - show as blank
         };
 
-        public static bool IsDefaultAllegiance(string code)
-        {
-            return s_defaultAllegiances.Contains(code);
-        }
-
-        public static bool IsKnownT5Allegiance(string code)
-        {
-            return s_t5Allegiances.ContainsKey(code);
-        }
+        public static bool IsDefaultAllegiance(string code) => s_defaultAllegiances.Contains(code);
+        public static bool IsKnownT5Allegiance(string code) => s_t5Allegiances.ContainsKey(code);
 
         #endregion Allegiance
 

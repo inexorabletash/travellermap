@@ -101,10 +101,7 @@ namespace Maps.API
             }
 
             private static readonly Regex SIMPLE_JS_IDENTIFIER_REGEX = new Regex(@"^[A-Za-z_][A-Za-z0-9_]*$", RegexOptions.Compiled);
-            public static bool IsSimpleJSIdentifier(string s)
-            {
-                return SIMPLE_JS_IDENTIFIER_REGEX.IsMatch(s);
-            }
+            public static bool IsSimpleJSIdentifier(string s) => SIMPLE_JS_IDENTIFIER_REGEX.IsMatch(s);
 
             public void SendResult(ITypeAccepter accepter, object o, Encoding encoding = null)
             {
@@ -203,19 +200,14 @@ namespace Maps.API
             #endregion
 
             #region Option Parsing
-            protected bool HasOption(string name)
-            {
-                return HasOption(name, Defaults(Context));
-            }
+            protected bool HasOption(string name) => HasOption(name, Defaults(Context));
+
             public bool HasOption(string name, IDictionary<string, object> queryDefaults)
-            {
-                return Context.Request[name] != null || (queryDefaults != null && queryDefaults.ContainsKey(name));
-            }
+                => Context.Request[name] != null || (queryDefaults != null && queryDefaults.ContainsKey(name));
 
             protected string GetStringOption(string name, string defaultValue = null)
-            {
-                return GetStringOption(name, Defaults(Context), defaultValue);
-            }
+                => GetStringOption(name, Defaults(Context), defaultValue);
+
             public string GetStringOption(string name, IDictionary<string, object> queryDefaults, string defaultValue = null)
             {
                 if (Context.Request[name] != null)
@@ -233,10 +225,8 @@ namespace Maps.API
                 return s.Split(new char[] { '|' });
             }
 
-            protected int GetIntOption(string name, int defaultValue)
-            {
-                return GetIntOption(name, Defaults(Context), defaultValue);
-            }
+            protected int GetIntOption(string name, int defaultValue) => GetIntOption(name, Defaults(Context), defaultValue);
+
             public int GetIntOption(string name, IDictionary<string, object> queryDefaults, int defaultValue)
             {
                 if (double.TryParse(GetStringOption(name, queryDefaults), NumberStyles.Float, CultureInfo.InvariantCulture, out double temp))
@@ -244,10 +234,8 @@ namespace Maps.API
                 return defaultValue;
             }
 
-            protected double GetDoubleOption(string name, double defaultValue)
-            {
-                return GetDoubleOption(name, Defaults(Context), defaultValue);
-            }
+            protected double GetDoubleOption(string name, double defaultValue) => GetDoubleOption(name, Defaults(Context), defaultValue);
+
             public double GetDoubleOption(string name, IDictionary<string, object> queryDefaults, double defaultValue)
             {
                 if (double.TryParse(GetStringOption(name, queryDefaults), NumberStyles.Float, CultureInfo.InvariantCulture, out double temp))
@@ -255,10 +243,7 @@ namespace Maps.API
                 return defaultValue;
             }
 
-            protected bool GetBoolOption(string name, bool defaultValue)
-            {
-                return GetBoolOption(name, Defaults(Context), defaultValue);
-            }
+            protected bool GetBoolOption(string name, bool defaultValue) => GetBoolOption(name, Defaults(Context), defaultValue);
 
             public bool GetBoolOption(string name, IDictionary<string, object> queryDefaults, bool defaultValue)
             {
@@ -267,11 +252,7 @@ namespace Maps.API
                 return defaultValue;
             }
 
-            public bool HasLocation()
-            {
-                return (HasOption("sx") && HasOption("sy")) ||
-                       (HasOption("x") && HasOption("y"));
-            }
+            public bool HasLocation() => (HasOption("sx") && HasOption("sy")) || (HasOption("x") && HasOption("y"));
 
             public Location GetLocation()
             {
@@ -328,9 +309,7 @@ namespace Maps.API
             #region ITypeAccepter
             // ITypeAccepter
             public bool Accepts(HttpContext context, string mediaType, bool ignoreHeaderFallbacks = false)
-            {
-                return AcceptTypes(context, ignoreHeaderFallbacks).Contains(mediaType);
-            }
+                => AcceptTypes(context, ignoreHeaderFallbacks).Contains(mediaType);
 
             // ITypeAccepter
             public IEnumerable<string> AcceptTypes(HttpContext context, bool ignoreHeaderFallbacks = false)

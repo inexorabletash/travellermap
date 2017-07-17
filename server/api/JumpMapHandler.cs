@@ -11,10 +11,7 @@ namespace Maps.API
     internal class JumpMapHandler : ImageHandlerBase
     {
         protected override string ServiceName => "jumpmap";
-        protected override DataResponder GetResponder(HttpContext context)
-        {
-            return new Responder(context);
-        }
+        protected override DataResponder GetResponder(HttpContext context) => new Responder(context);
 
         private class Responder : ImageResponder
         {

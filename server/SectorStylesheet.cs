@@ -48,10 +48,7 @@ namespace Maps
             public string property;
             public string value;
 
-            public override string ToString()
-            {
-                return property + ": " + value + ";";
-            }
+            public override string ToString() => property + ": " + value + ";";
         };
 
         #region Parser
@@ -152,10 +149,9 @@ namespace Maps
                 WS();
                 return new Declaration(property, value);
             }
-            public string ParseValue()
-            {
-                return IDENT() ?? NUMBER() ?? COLOR();
-            }
+
+            public string ParseValue() => IDENT() ?? NUMBER() ?? COLOR();
+
             public string IDENT()
             {
                 int c = reader.Peek();
@@ -280,14 +276,8 @@ namespace Maps
                 reader.Read();
             }
         }
-        public static SectorStylesheet Parse(string src)
-        {
-            return Parse(new StringReader(src));
-        }
-        public static SectorStylesheet Parse(TextReader reader)
-        {
-            return new SectorStylesheet(new Parser(reader).ParseStylesheet());
-        }
+        public static SectorStylesheet Parse(string src) => Parse(new StringReader(src));
+        public static SectorStylesheet Parse(TextReader reader) => new SectorStylesheet(new Parser(reader).ParseStylesheet());
 
         #endregion // Parser
 
@@ -337,15 +327,9 @@ namespace Maps
                 this.dict = dict;
             }
             
-            private bool GetValue(string property, out string value)
-            {
-                return dict.TryGetValue(property, out value) && !string.IsNullOrEmpty(value);
-            }
+            private bool GetValue(string property, out string value) => dict.TryGetValue(property, out value) && !string.IsNullOrEmpty(value);
 
-            public string GetString(string property)
-            {
-                return GetValue(property, out string value) ? value : null;
-            }
+            public string GetString(string property) => GetValue(property, out string value) ? value : null;
 
             public Color? GetColor(string property)
             {

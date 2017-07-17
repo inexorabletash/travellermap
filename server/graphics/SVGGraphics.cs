@@ -13,7 +13,7 @@ namespace Maps.Graphics
     {
         // G6 precision is needed for rendering far away from Charted Space, e.g. Legend
         private const string NumberFormat = "G6";
-        private static string F(float f) { return f.ToString(NumberFormat); }
+        private static string F(float f) => f.ToString(NumberFormat);
 
         private class Element
         {
@@ -56,8 +56,8 @@ namespace Maps.Graphics
                 b.Write(">");
             }
 
-            public bool Has(string name) { return attributes.ContainsKey(name); }
-            public string Get(string name) { return attributes[name]; }
+            public bool Has(string name) => attributes.ContainsKey(name);
+            public string Get(string name) => attributes[name];
             public void Set(string name, string value) { attributes[name] = value; }
             public void Set(string name, float value) { attributes[name] = F(value); }
             public void Set(string name, Color color) {
@@ -149,7 +149,7 @@ namespace Maps.Graphics
             private float lastY = 0;
             private bool used = false;
 
-            public override string ToString() { return b.ToString().Trim(); }
+            public override string ToString() => b.ToString().Trim();
 
             public PathBuilder() { }
 
@@ -311,10 +311,7 @@ namespace Maps.Graphics
             stack.Push(Current.Append(element));
             return element;
         }
-        private Element Append(Element element)
-        {
-            return Current.Append(element);
-        }
+        private Element Append(Element element) => Current.Append(element);
 
         public SVGGraphics(float width, float height)
         {
