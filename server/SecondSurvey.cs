@@ -60,7 +60,7 @@ namespace Maps
         // V     Any        Exploration base
         // W     Any        Way station
 
-        private static readonly RegexDictionary<string> s_legacyBaseDecodeTable = new GlobDictionary<string> {
+        private static readonly RegexMap<string> s_legacyBaseDecodeTable = new GlobMap<string> {
             { "*.2", "NS" },  // Imperial Naval base + Scout base
             { "*.A", "NS" },  // Imperial Naval base + Scout base
             { "*.B", "NW" },  // Imperial Naval base + Scout Way station
@@ -101,7 +101,7 @@ namespace Maps
             return (match != default(string)) ? match : code;
         }
 
-        private static RegexDictionary<string> s_legacyBaseEncodeTable = new GlobDictionary<string> {
+        private static RegexMap<string> s_legacyBaseEncodeTable = new GlobMap<string> {
             { "*.NS", "A" },  // Imperial Naval base + Scout base
             { "*.NW", "B" },  // Imperial Naval base + Scout Way station
             { "*.C", "C" },   // Vargr Corsair base

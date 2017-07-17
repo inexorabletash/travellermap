@@ -241,26 +241,31 @@ namespace Maps.Utilities
         public void Add(TKey k, TValue v) { TryAdd(k, v); }
     }
 
-    internal class RegexDictionary<T> : EasyInitConcurrentDictionary<Regex, T>
+    internal class RegexMap<T> : IEnumerable<KeyValuePair<Regex, T>>
     {
-        public RegexDictionary() { }
+        private ConcurrentQueue<KeyValuePair<Regex, T>> list = new ConcurrentQueue<KeyValuePair<Regex, T>>();
+        public RegexMap() { }
 
+        public void Add(Regex r, T v) { list.Enqueue(new KeyValuePair<Regex, T>(r, v)); }
         public virtual void Add(string r, T v) { Add(new Regex(r), v); }
         public virtual void Add(T v) { Add(new Regex("^" + Regex.Escape(v.ToString()) + "$"), v); }
 
         public T Match(string s)
         {
-            return this.FirstOrDefault(pair => pair.Key.IsMatch(s)).Value;
+            return list.FirstOrDefault(pair => pair.Key.IsMatch(s)).Value;
         }
         public bool IsMatch(string s)
         {
-            return this.Any(pair => pair.Key.IsMatch(s));
+            return list.Any(pair => pair.Key.IsMatch(s));
         }
+
+        public IEnumerator<KeyValuePair<Regex, T>> GetEnumerator() => list.GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator() => list.GetEnumerator();
     }
 
-    internal class GlobDictionary<T> : RegexDictionary<T>
+    internal class GlobMap<T> : RegexMap<T>
     {
-        public GlobDictionary() { }
+        public GlobMap() { }
 
         public override void Add(string r, T v) { Add(new Glob(r), v); }
         public override void Add(T v) { Add(new Glob(v.ToString()), v); }

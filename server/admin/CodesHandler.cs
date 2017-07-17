@@ -25,7 +25,7 @@ namespace Maps.Admin
             "Z", // Zhodani
         };
 
-        static readonly RegexDictionary<string> s_knownCodes = new RegexDictionary<string>
+        static readonly RegexMap<string> s_knownCodes = new RegexMap<string>
         {
             // General
             { @"^Rs[ABGDEZHT]$", "Rs" },

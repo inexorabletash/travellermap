@@ -251,7 +251,7 @@ namespace Maps.Rendering
             return glyph;
         }
 
-        private static readonly RegexDictionary<Glyph> s_baseGlyphTable = new GlobDictionary<Glyph> {
+        private static readonly RegexMap<Glyph> s_baseGlyphTable = new GlobMap<Glyph> {
             { "*.C", new Glyph(Glyph.StarStar, bias:GlyphBias.Bottom) }, // Vargr Corsair Base
             { "Im.D", new Glyph(Glyph.Square, bias:GlyphBias.Bottom) }, // Imperial Depot
             { "*.D", new Glyph(Glyph.Square, highlight:true)}, // Depot
