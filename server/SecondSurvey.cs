@@ -507,9 +507,9 @@ namespace Maps
             {
                 Code = code; Name = name; Location = location;
             }
-            public string Code { get; set; }
-            public string Name { get; set; }
-            public string Location { get; set; }
+            public string Code { get; }
+            public string Name { get; }
+            public string Location { get; }
         }
 
         private class SophontDictionary : Dictionary<string, Sophont>

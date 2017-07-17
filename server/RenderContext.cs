@@ -56,7 +56,7 @@ namespace Maps.Rendering
 
         public Stylesheet Styles => styles;
         private readonly AbstractMatrix worldSpaceToImageSpace;
-        public AbstractMatrix ImageSpaceToWorldSpace { get; private set; }
+        public AbstractMatrix ImageSpaceToWorldSpace { get; }
 
         private static readonly RectangleF galaxyImageRect = new Rectangle(-18257, -26234, 36551, 32462); // Chosen to match T5 pp.416
 

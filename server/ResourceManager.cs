@@ -14,7 +14,7 @@ namespace Maps
 
     internal class ResourceManager
     {
-        public HttpServerUtility Server { get; private set; }
+        public HttpServerUtility Server { get; }
         public LRUCache Cache { get; } = new LRUCache(50);
 
         public ResourceManager(HttpServerUtility serverUtility)

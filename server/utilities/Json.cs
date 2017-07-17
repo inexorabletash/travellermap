@@ -12,7 +12,7 @@ namespace Json
     [AttributeUsage( AttributeTargets.All )]
     internal sealed class JsonNameAttribute : Attribute
     {
-        public string Name { get; private set; }
+        public string Name { get; }
 
         public JsonNameAttribute( string name )
         {

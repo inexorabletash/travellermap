@@ -1,4 +1,5 @@
-﻿using Maps.Utilities;
+﻿using Json;
+using Maps.Utilities;
 using System.Drawing;
 using System.Web;
 using System.Xml.Serialization;
@@ -59,12 +60,12 @@ namespace Maps.API
 
                 SendResult(new Results.CoordinatesResult()
                 {
-                    sx = loc.Sector.X,
-                    sy = loc.Sector.Y,
-                    hx = loc.Hex.X,
-                    hy = loc.Hex.Y,
-                    x = coords.X,
-                    y = coords.Y
+                    SectorX = loc.Sector.X,
+                    SectorY = loc.Sector.Y,
+                    HexX = loc.Hex.X,
+                    HexY = loc.Hex.Y,
+                    X = coords.X,
+                    Y = coords.Y
                 });
             }
         }
@@ -78,15 +79,19 @@ namespace Maps.API.Results
     public class CoordinatesResult
     {
         // Sector/Hex
-#pragma warning disable IDE1006 // Naming Styles
-        public int sx { get; set; }
-        public int sy { get; set; }
-        public int hx { get; set; }
-        public int hy { get; set; }
+        [XmlElement("sx"), JsonName("sx")]
+        public int SectorX { get; set; }
+        [XmlElement("sy"), JsonName("sy")]
+        public int SectorY { get; set; }
+        [XmlElement("hx"), JsonName("hx")]
+        public int HexX { get; set; }
+        [XmlElement("hy"), JsonName("hy")]
+        public int HexY { get; set; }
 
         // World-space X/Y
-        public int x { get; set; }
-        public int y { get; set; }
-#pragma warning restore IDE1006 // Naming Styles
+        [XmlElement("x"), JsonName("x")]
+        public int X { get; set; }
+        [XmlElement("y"), JsonName("y")]
+        public int Y { get; set; }
     }
 }

@@ -90,7 +90,7 @@ namespace Maps.API
 
             public abstract string DefaultContentType { get; }
 
-            public HttpContext Context { get; private set; }
+            public HttpContext Context { get; }
 
             public abstract void Process(ResourceManager resourceManager);
 
