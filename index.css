@@ -698,7 +698,7 @@ body:not(.enable-experiments) #labBtn { display: none; }
 
 #settingsBox {
   width: 215px;
-  max-height: 540px;
+  max-height: 520px;
 }
 #styles button {
   width: 40px; height: 40px;
@@ -950,8 +950,7 @@ body:not(.search-results) #closeSearchBtn { display: none; }
   #help-developers { display: none; }
 
   #settingsBox { max-height: 265px; }
-  #settings-show,
-  #settings-appearance-hexes { display: none; }
+  #settings-show { display: none; }
 
   #routeBox button,
   #searchBar > button,

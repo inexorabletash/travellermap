@@ -441,7 +441,6 @@ window.addEventListener('DOMContentLoaded', function() {
   bindCheckedToNamedOption('#ShowRoutes', 'routes');
   bindCheckedToOption('#ShowGovernmentNames', Traveller.MapOptions.NamesMask);
   bindCheckedToOption('#ShowImportantWorlds', Traveller.MapOptions.WorldsMask);
-  bindCheckedToOption('#cbForceHexes', Traveller.MapOptions.ForceHexes);
   bindCheckedToOption('#cbWorldColors', Traveller.MapOptions.WorldColors);
   bindCheckedToOption('#cbFilledBorders',Traveller.MapOptions.FilledBorders);
   bindCheckedToNamedOption('#cbDimUnofficial', 'dimunofficial');
