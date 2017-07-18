@@ -700,13 +700,29 @@ body:not(.enable-experiments) #labBtn { display: none; }
   width: 215px;
   max-height: 520px;
 }
-#styles button {
+#styles button.style-choice {
   width: 40px; height: 40px;
   margin: 2px 4px;
   background-size: cover;
   box-shadow: none;
   border: 1px solid gray;
 }
+#styles button.styles-pager {
+  width: 22px; height: 40px;
+  padding: 0; min-width: 0;
+  margin: 2px 0;
+  box-shadow: none;
+  filter: invert(100%);
+  background-color: transparent;
+}
+.style-atlas #styles button.styles-pager,
+.style-print #styles button.styles-pager,
+.style-draft #styles button.styles-pager,
+.style-fasa #styles button.styles-pager { filter: none; }
+
+#styles:not(.p2) .styles-p2 { display: none; }
+#styles.p2 .styles-p1 { display: none; }
+
 .settings section { margin-top: 1em; }
 .settings section:first-of-type { margin-top: 0; }
 
@@ -813,6 +829,20 @@ body:not(.search-results) #closeSearchBtn { display: none; }
 
 #tiltBtn {
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAMBAMAAABLmSrqAAAAIVBMVEUAAAACAgIDAwMAAAAAAAADAwMDAwMCAgICAgIFBQUDAwOwJzrTAAAACnRSTlMA30whC6+hgHQxOTlSpgAAAEdJREFUCNdjYJZaxbVKmIGBcxWQXsnAwASiFzEwcIDoFQwMbiB6mQMDDHiB+KscGKzAtAGDFphWYKgC0wUMUWA6gEEKTAsAAIfPIAlSCF6BAAAAAElFTkSuQmCC);
+}
+
+/* ============================================================ */
+/* Generic Icons */
+
+.chevron-left {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAPAgMAAACgkbadAAAACVBMVEUAAAAAAAAAAACDY+nAAAAAAnRSTlMAf7YpoZUAAAAqSURBVAjXY2BgZGBgYHNgYJCawMCQ5cDAuBLIXQLjgmgwHyyOEHAA6QMA6pAH3elNd7YAAAAASUVORK5CYII=);
+}
+.chevron-right {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAPAgMAAACgkbadAAAACVBMVEUAAAAAAAAAAACDY+nAAAAAAnRSTlMAf7YpoZUAAAAqSURBVAjXY2BhYGCQBOIsBwYGqQkMDGxLGBgYV8IFQDSQDxKHccHqQfoA4mwHia4bb5gAAAAASUVORK5CYII=);
 }
 
 
@@ -1000,7 +1030,7 @@ body:not(.search-results) #closeSearchBtn { display: none; }
 .style-terminal #wds-world-image,
 .style-terminal #wds-map { filter: invert(100%); }
 .style-terminal .ds-frame button,
-.style-terminal #styles button { filter: none; }
+.style-terminal button.style-choice { filter: none; }
 
 
 /* ============================================================ */

@@ -344,6 +344,10 @@ window.addEventListener('DOMContentLoaded', function() {
   STYLES.forEach(function(s) {
     $('#settingsBtn-'+s).addEventListener('click', function() { map.style = s; });
   });
+  $$('.styles-pager').forEach(function(e) {
+    e.addEventListener('click', function() { $('#styles').classList.toggle('p2'); });
+  });
+
 
   $('#homeBtn').addEventListener('click', goHome);
 
