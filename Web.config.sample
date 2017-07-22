@@ -87,11 +87,17 @@
       <!-- <add name="PageFooter" type="Maps.HTTP.PageFooter" /> -->
     </modules>
 
+    <!-- Enable CORS -->
     <httpProtocol>
       <customHeaders>
         <add name="Access-Control-Allow-Origin" value="*" />
       </customHeaders>
     </httpProtocol>
+
+    <!-- Pass URLs with things like + along to routing. -->
+    <security>
+      <requestFiltering allowDoubleEscaping="true" />
+    </security>
 
     <rewrite>
       <rules>
