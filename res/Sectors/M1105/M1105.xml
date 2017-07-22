@@ -1742,74 +1742,8 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <Y>2</Y>
     <X>-5</X>
     <Name Lang="as">Afawahisa</Name>
-    <DataFile Source="CORE" Ref="http://www.ocean-of-storms.com/core/astrogat/hB.htm">afawahisa.sec</DataFile>
-    <Subsectors Source="CORE">
-      <Subsector Index="A">Hkao</Subsector>
-      <Subsector Index="B">Steakheya</Subsector>
-      <Subsector Index="C">Etaa</Subsector>
-      <Subsector Index="D">Aoaakhaowea</Subsector>
-      <Subsector Index="E">Hkyewaol</Subsector>
-      <Subsector Index="F">Khtoueaesih</Subsector>
-      <Subsector Index="G">Hahkuleiea</Subsector>
-      <Subsector Index="H">Ahesailiyhah</Subsector>
-      <Subsector Index="I">Yuyahtao</Subsector>
-      <Subsector Index="J">Iuatyeleahoi</Subsector>
-      <Subsector Index="K">Oarua</Subsector>
-      <Subsector Index="L">Ryuwahah</Subsector>
-      <Subsector Index="M">Htaoeasee</Subsector>
-      <Subsector Index="N">Tousyosyesoh</Subsector>
-      <Subsector Index="O">Hkiyiyfteah</Subsector>
-      <Subsector Index="P">Ehrelew</Subsector>
-    </Subsectors>
-    <Borders>
-      <Border Allegiance="As">0031 0131 0230 0331 0430 0530 0629 0729 0728 0828 0929 1028 1128 1228 1329 1428 1528 1628 1728 1827 1928 2028 2129 2228 2328 2327 2326 2425 2525 2524 2624 2724 2823 2923 3022 3122 3121 3120 3119 3218 3217 3216 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031</Border>
-    </Borders>
-    <Routes Author="Joshua Bell">
-      <Route Start="3219" End="0117" EndOffsetX="1" Allegiance="As"/>
-      <Route Start="3219" End="0220" EndOffsetX="1" Allegiance="As"/>
-      <Route Start="3122" End="0222" EndOffsetX="1" Allegiance="As"/>
-      <Route Start="3229" End="0330" EndOffsetX="1" Allegiance="As"/>
-      <Route Start="3229" End="0131" EndOffsetX="1" Allegiance="As"/>
-      <Route Start="3132" End="0131" EndOffsetX="1" Allegiance="As"/>
-      <Route Start="3132" End="0133" EndOffsetX="1" Allegiance="As"/>
-      <Route Start="1340" End="1201" EndOffsetY="1" Allegiance="As"/>
-      <Route Start="1440" End="1402" EndOffsetY="1" Allegiance="As"/>
-      <Route Start="2039" End="2101" EndOffsetY="1" Allegiance="As"/>
-      <Route Start="1040" End="0902" EndOffsetY="1" Allegiance="As"/>
-      <Route Start="3140" End="2902" EndOffsetY="1" Allegiance="As"/>
-      <Route Start="3140" End="3202" EndOffsetY="1" Allegiance="As"/>
-      <Route Start="1340" End="1040" Allegiance="As"/>
-      <Route Start="3219" End="3119" Allegiance="As"/>
-      <Route Start="3219" End="3122" Allegiance="As"/>
-      <Route Start="3122" End="3022" Allegiance="As"/>
-      <Route Start="3022" End="3025" Allegiance="As"/>
-      <Route Start="3025" End="3127" Allegiance="As"/>
-      <Route Start="3127" End="3028" Allegiance="As"/>
-      <Route Start="3028" End="2927" Allegiance="As"/>
-      <Route Start="2927" End="3025" Allegiance="As"/>
-      <Route Start="3025" End="2725" Allegiance="As"/>
-      <Route Start="2725" End="2624" Allegiance="As"/>
-      <Route Start="2927" End="2628" Allegiance="As"/>
-      <Route Start="2628" End="2629" Allegiance="As"/>
-      <Route Start="2628" End="2328" Allegiance="As"/>
-      <Route Start="2328" End="2131" Allegiance="As"/>
-      <Route Start="2131" End="1833" Allegiance="As"/>
-      <Route Start="1833" End="1736" Allegiance="As"/>
-      <Route Start="1833" End="1734" Allegiance="As"/>
-      <Route Start="1734" End="1736" Allegiance="As"/>
-      <Route Start="1736" End="1538" Allegiance="As"/>
-      <Route Start="1538" End="1539" Allegiance="As"/>
-      <Route Start="1539" End="1440" Allegiance="As"/>
-      <Route Start="1340" End="1538" Allegiance="As"/>
-      <Route Start="3028" End="3229" Allegiance="As"/>
-      <Route Start="2933" End="3132" Allegiance="As"/>
-      <Route Start="1432" End="1734" Allegiance="As"/>
-      <Route Start="2131" End="2234" Allegiance="As"/>
-      <Route Start="1736" End="2136" Allegiance="As"/>
-      <Route Start="2136" End="2234" Allegiance="As"/>
-      <Route Start="2136" End="2139" Allegiance="As"/>
-      <Route Start="2139" End="2039" Allegiance="As"/>
-    </Routes>
+    <DataFile Source="CORE" Ref="http://www.ocean-of-storms.com/core/astrogat/hB.htm" Type="TabDelimited">Afawahisa.tab</DataFile>
+    <MetadataFile>Afawahisa.xml</MetadataFile>
   </Sector>
   <Sector Abbreviation="Hlak" Tags="Official">
     <Y>2</Y>

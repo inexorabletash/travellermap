@@ -251,30 +251,30 @@ function t5ify(world) {
     'Zh': 'ZhMe'
   })[world.Allegiance] || world.Allegiance;
 
-  // Derived from Trojan Reach/Riftspan Reaches/Beyond
+  // Derived from:
+  // Hlakhoi Ealiyasiyw Staihaia'yo Iwahfuah Riftspan Reaches
   const NA_TABLE = [
-    {freq: 341, entry: 'NaHu'},
-    {freq:   8, entry: 'NaAs'},
-    {freq:   6, entry: 'NaXX'},
-    {freq:   2, entry: 'NaVa'}
+    {freq: 29, entry: 'NaAs'},
+    {freq:  2, entry: 'NaXX'}
   ];
   const AS_TABLE = [
-    {freq: 72, entry:'AsSc'},
-    {freq: 50, entry:'AsMw'},
-    {freq: 31, entry:'AsWc'},
-    {freq: 26, entry:'AsVc'},
-    {freq: 25, entry:'AsTv'},
-    {freq:  7, entry:'AsXX'},
-    {freq:  4, entry:'AsT9'},
-    {freq:  4, entry:'AsT1'},
-    {freq:  3, entry:'AsT8'},
-    {freq:  3, entry:'AsT7'},
-    {freq:  3, entry:'AsT4'},
-    {freq:  3, entry:'AsT3'},
-    {freq:  3, entry:'AsT0'},
-    {freq:  2, entry:'AsT5'},
-    {freq:  2, entry:'AsT2'},
-    {freq:  1, entry:'AsT6'},
+    {freq: 274, entry: 'AsSc'},
+    {freq: 274, entry: 'AsMw'},
+    {freq: 204, entry: 'AsTv'},
+    {freq: 195, entry: 'AsVc'},
+    {freq: 156, entry: 'AsWc'},
+    {freq:  76, entry: 'AsT9'},
+    {freq:  70, entry: 'AsT1'},
+    {freq:  68, entry: 'AsT0'},
+    {freq:  64, entry: 'AsT6'},
+    {freq:  60, entry: 'AsT4'},
+    {freq:  56, entry: 'AsT8'},
+    {freq:  56, entry: 'AsT3'},
+    {freq:  53, entry: 'AsT2'},
+    {freq:  48, entry: 'AsT5'},
+    {freq:  45, entry: 'AsT7'},
+    {freq:  26, entry: 'AsXX'},
+    {freq:  10, entry: 'AsTz'}
   ];
   if (world.Allegiance === 'Na') world.Allegiance = world.Pop === 0 ? 'NaXX' : pickFromFrequencyTable(NA_TABLE);
   if (world.Allegiance === 'As') world.Allegiance = pickFromFrequencyTable(AS_TABLE);
@@ -424,6 +424,8 @@ $('#sectot5').addEventListener('click', e => {
     worlds.forEach(world => t5ify(world));
     const cols = ['Hex', 'Name', 'UWP', 'Bases', 'Remarks', 'Zone', 'PBG',
                   'Allegiance', 'Stars', '{Ix}', '(Ex)', '[Cx]', 'Nobility', 'W'];
+
+    worlds.sort((a, b) => a.Hex < b.Hex ? -1 : b.Hex < a.Hex ? 1 : 0);
 
     $('#out').value =
       cols.join('\t') + '\n' +
