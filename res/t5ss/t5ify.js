@@ -175,6 +175,50 @@ function process(world) {
 }
 
 function t5ify(world) {
+  // Allegiance Fixups
+  world.Allegiance = ({
+    'Ga': '3EoG',
+    'Jm': 'JMen',
+    'JP': 'JuPr',
+    'VN': 'VDrN',
+    'VQ': 'VYoe',
+    'VT': 'VTrA',
+    'Zc': 'CsZh',
+    'Zh': 'ZhMe'
+  })[world.Allegiance] || world.Allegiance;
+
+  // Derived from:
+  // Hlakhoi Ealiyasiyw Staihaia'yo Iwahfuah Riftspan Reaches
+  const NA_TABLE = [
+    {freq: 29, entry: 'NaAs'},
+    {freq:  2, entry: 'NaXX'}
+  ];
+  const AS_TABLE = [
+    {freq: 274, entry: 'AsSc'},
+    {freq: 274, entry: 'AsMw'},
+    {freq: 204, entry: 'AsTv'},
+    {freq: 195, entry: 'AsVc'},
+    {freq: 156, entry: 'AsWc'},
+    {freq:  76, entry: 'AsT9'},
+    {freq:  70, entry: 'AsT1'},
+    {freq:  68, entry: 'AsT0'},
+    {freq:  64, entry: 'AsT6'},
+    {freq:  60, entry: 'AsT4'},
+    {freq:  56, entry: 'AsT8'},
+    {freq:  56, entry: 'AsT3'},
+    {freq:  53, entry: 'AsT2'},
+    {freq:  48, entry: 'AsT5'},
+    {freq:  45, entry: 'AsT7'},
+    {freq:  26, entry: 'AsXX'},
+    {freq:  10, entry: 'AsTz'}
+  ];
+  if (world.Allegiance === 'Na') world.Allegiance = world.Pop === 0 ? 'NaXX' : pickFromFrequencyTable(NA_TABLE);
+  if (world.Allegiance === 'As') world.Allegiance = pickFromFrequencyTable(AS_TABLE);
+
+  if (/^As/.test(world.Allegiance) && /[NS]/.test(world.Bases)) {
+    world.Bases = /^AsT/.test(world.Allegiance) ? 'T' : 'R';
+  }
+
   // Importance Extension
   world.Importance = 0 +
     (world.St === 'A' || world.St === 'B' ? 1 : 0) +
@@ -238,46 +282,6 @@ function t5ify(world) {
 
   // Worlds
   world.Worlds = world.Worlds || world.W || (1/*MW*/ + world.GG + world.Belts + roll2D());
-
-  // Allegiance Fixups
-  world.Allegiance = ({
-    'Ga': '3EoG',
-    'Jm': 'JMen',
-    'JP': 'JuPr',
-    'VN': 'VDrN',
-    'VQ': 'VYoe',
-    'VT': 'VTrA',
-    'Zc': 'CsZh',
-    'Zh': 'ZhMe'
-  })[world.Allegiance] || world.Allegiance;
-
-  // Derived from:
-  // Hlakhoi Ealiyasiyw Staihaia'yo Iwahfuah Riftspan Reaches
-  const NA_TABLE = [
-    {freq: 29, entry: 'NaAs'},
-    {freq:  2, entry: 'NaXX'}
-  ];
-  const AS_TABLE = [
-    {freq: 274, entry: 'AsSc'},
-    {freq: 274, entry: 'AsMw'},
-    {freq: 204, entry: 'AsTv'},
-    {freq: 195, entry: 'AsVc'},
-    {freq: 156, entry: 'AsWc'},
-    {freq:  76, entry: 'AsT9'},
-    {freq:  70, entry: 'AsT1'},
-    {freq:  68, entry: 'AsT0'},
-    {freq:  64, entry: 'AsT6'},
-    {freq:  60, entry: 'AsT4'},
-    {freq:  56, entry: 'AsT8'},
-    {freq:  56, entry: 'AsT3'},
-    {freq:  53, entry: 'AsT2'},
-    {freq:  48, entry: 'AsT5'},
-    {freq:  45, entry: 'AsT7'},
-    {freq:  26, entry: 'AsXX'},
-    {freq:  10, entry: 'AsTz'}
-  ];
-  if (world.Allegiance === 'Na') world.Allegiance = world.Pop === 0 ? 'NaXX' : pickFromFrequencyTable(NA_TABLE);
-  if (world.Allegiance === 'As') world.Allegiance = pickFromFrequencyTable(AS_TABLE);
 
   world.Stars = Restellarator.fix(world.Stars) || Restellarator.generate();
 }
