@@ -42,20 +42,24 @@ namespace Maps
         public string Abbreviation {
             get
             {
-                if (!string.IsNullOrEmpty(abbreviation))
+                lock (this)
+                {
+                    if (!string.IsNullOrEmpty(abbreviation))
+                        return abbreviation;
+                    if (!Tags.Contains("OTU") || Names.Count == 0)
+                        return null;
+
+                    // For OTU sectors, synthesize an abbreviation if not specified.
+                    string name = Names[0].Text;
+                    name = name.Replace(" ", "");
+                    name = Regex.Replace(name, @"[^A-Z]", "x", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
+                    if (name.Length == 0)
+                        return null;
+                    name = name.SafeSubstring(0, 4);
+                    name = name.Substring(0, 1).ToString().ToUpperInvariant() + name.Substring(1).ToLowerInvariant();
+                    abbreviation = name;
                     return abbreviation;
-                if (!Tags.Contains("OTU") || Names.Count == 0)
-                    return null;
-                // For OTU sectors, synthesize an abbreviation if not specified.
-                string name = Names[0].Text;
-                name = name.Replace(" ", "");
-                name = Regex.Replace(name, @"[^A-Z]", "x", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
-                if (name.Length == 0)
-                    return null;
-                name = name.SafeSubstring(0, 4);
-                name = name.Substring(0, 1).ToString().ToUpperInvariant() + name.Substring(1).ToLowerInvariant();
-                abbreviation = name;
-                return abbreviation;
+                }
             }
             set => abbreviation = value;
         }
@@ -171,8 +175,6 @@ namespace Maps
                 MetadataFile = Path.Combine(dir, MetadataFile).Replace(Path.DirectorySeparatorChar, '/');
         }
 
-        private WorldCollection worlds;
-
         public Subsector Subsector(char alpha) => Subsectors.Where(ss => ss.Index != null && ss.Index[0] == alpha).FirstOrDefault();
 
         public Subsector Subsector(int index)
@@ -225,6 +227,7 @@ namespace Maps
             return -1;
         }
 
+        private WorldCollection worlds;
         internal virtual WorldCollection GetWorlds(ResourceManager resourceManager, bool cacheResults = true)
         {
             lock (this)
@@ -387,9 +390,8 @@ namespace Maps
             {
                 if (clipPathsCache[(int)type] == null)
                     clipPathsCache[(int)type] = new ClipPath(this, type);
+                return clipPathsCache[(int)type];
             }
-
-            return clipPathsCache[(int)type];
         }
 
         internal Rectangle Bounds => new Rectangle(
@@ -432,7 +434,8 @@ namespace Maps
         [XmlElement("Stylesheet"), JsonName("Stylesheet")]
         public string StylesheetText
         {
-            get => stylesheetText; set
+            get => stylesheetText;
+            set
             {
                 stylesheetText = value;
                 if (value != null)
@@ -776,9 +779,8 @@ namespace Maps
             {
                 if (borderPathsCache[(int)type] == null)
                     borderPathsCache[(int)type] = new BorderPath(this, sector, type);
+                return borderPathsCache[(int)type];
             }
-
-            return borderPathsCache[(int)type];
         }
 
         internal string GetLabel(Sector sector)

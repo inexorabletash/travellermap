@@ -83,8 +83,11 @@ namespace Maps.API
                 ctx.Styles.highlightWorlds.visible = ctx.Styles.highlightWorldsPattern != null;
 
                 double devicePixelRatio = GetDoubleOption("dpr", defaultValue: 1, queryDefaults: queryDefaults);
+                devicePixelRatio = Math.Round(devicePixelRatio, 1);
                 if (devicePixelRatio <= 0)
                     devicePixelRatio = 1;
+                if (devicePixelRatio > 2)
+                    devicePixelRatio = 2;
 
                 bool dataURI = GetBoolOption("datauri", queryDefaults: queryDefaults, defaultValue: false);
 

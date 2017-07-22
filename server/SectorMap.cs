@@ -71,23 +71,26 @@ namespace Maps
                 return sector;
             }
 
-            public void Add(Sector sector)
+            public void TryAdd(Sector sector)
             {
-                if (!locationMap.TryAdd(sector.Location, sector))
-                    return;
-
-                sector.MilieuMap = this;
-
-                foreach (var name in sector.Names)
+                lock (this)
                 {
-                    nameMap.TryAdd(name.Text, sector);
+                    if (!locationMap.TryAdd(sector.Location, sector))
+                        return;
 
-                    // Automatically alias "SpinwardMarches"
-                    nameMap.TryAdd(name.Text.Replace(" ", ""), sector);
+                    sector.MilieuMap = this;
+
+                    foreach (var name in sector.Names)
+                    {
+                        nameMap.TryAdd(name.Text, sector);
+
+                        // Automatically alias "SpinwardMarches"
+                        nameMap.TryAdd(name.Text.Replace(" ", ""), sector);
+                    }
+
+                    if (!string.IsNullOrEmpty(sector.Abbreviation))
+                        nameMap.TryAdd(sector.Abbreviation, sector);
                 }
-
-                if (!string.IsNullOrEmpty(sector.Abbreviation))
-                    nameMap.TryAdd(sector.Abbreviation, sector);
             }
         }
 
@@ -126,7 +129,7 @@ namespace Maps
                     sector.Merge(metadata);
                 }
 
-                GetMilieuMap(sector.CanonicalMilieu).Add(sector);
+                GetMilieuMap(sector.CanonicalMilieu).TryAdd(sector);
             }
         }
 
@@ -222,9 +225,6 @@ namespace Maps
         /// <returns>Enumerable yielding all matching MilieuMap instances.</returns>
         private IEnumerable<MilieuMap> SelectMilieux(string m)
         {
-            if (milieux == null)
-                throw new MapNotInitializedException();
-
             if (m != null)
             {
                 // If milieu name is specified, return matching MilieuMap if found.
@@ -273,7 +273,8 @@ namespace Maps
 
             // Remember it, if milieu is known.
             if (milieux.ContainsKey(milieu))
-                milieux[milieu].Add(sector);
+                milieux[milieu].TryAdd(sector);
+
             return sector;
         }
     }
