@@ -197,7 +197,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
 
   $("#searchForm").addEventListener('submit', function(e) {
-    search($('#searchBox').value);
+    search($('#searchBox').value, {onsubmit: true});
     e.preventDefault();
   });
 
@@ -303,7 +303,8 @@ window.addEventListener('DOMContentLoaded', function() {
   var VK_ESCAPE = KeyboardEvent.DOM_VK_ESCAPE || 0x1B,
       VK_C = KeyboardEvent.DOM_VK_C || 0x43,
       VK_H = KeyboardEvent.DOM_VK_H || 0x48,
-      VK_T = KeyboardEvent.DOM_VK_T || 0x54;
+      VK_T = KeyboardEvent.DOM_VK_T || 0x54,
+      VK_QUESTION_MARK = KeyboardEvent.DOM_VK_QUESTION_MARK || 0x63;
 
   document.body.addEventListener('keyup', function(e) {
     if (e.key === 'Escape' || e.keyCode === VK_ESCAPE) {
@@ -415,6 +416,13 @@ window.addEventListener('DOMContentLoaded', function() {
       e.preventDefault();
       e.stopPropagation();
       toggleTilt();
+      return;
+    }
+    if (e.key === '?' || e.keyCode === VK_QUESTION_MARK) {
+      e.preventDefault();
+      e.stopPropagation();
+      $('#helpBtn').focus();
+      $('#helpBtn').click();
       return;
     }
   });
@@ -997,6 +1005,15 @@ window.addEventListener('DOMContentLoaded', function() {
       query = '(default)';
 
     if (query === lastQuery) {
+      if (!searchRequest && options.onsubmit) {
+        console.log('here!');
+        var links = $$('#resultsContainer .item a');
+        if (links.length === 1) {
+          links[0].click();
+          return;
+        }
+      }
+
       if (!searchRequest && !options.typed)
         showSearchPane('search-results');
       return;
@@ -1022,7 +1039,7 @@ window.addEventListener('DOMContentLoaded', function() {
         searchRequest = null;
         showSearchPane('search-results');
         if (options.navigate) {
-          var first = $('#resultsContainer a');
+          var first = $('#resultsContainer .item a');
           if (first)
             first.click();
         }
