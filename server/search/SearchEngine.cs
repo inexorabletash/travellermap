@@ -557,6 +557,21 @@ namespace Maps.Search
                 {
                     clause = "name LIKE @term";
                 }
+                else if (term.Equals("sector", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    types = SearchResultsType.Sectors;
+                    continue;
+                }
+                else if (term.Equals("subsector", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    types = SearchResultsType.Subsectors;
+                    continue;
+                }
+                else if (term.Equals("world", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    types = SearchResultsType.Worlds;
+                    continue;
+                }
                 else
                 {
                     clause = "name LIKE @term + '%' OR name LIKE '% ' + @term + '%'";
