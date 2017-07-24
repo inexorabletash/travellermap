@@ -1006,7 +1006,6 @@ window.addEventListener('DOMContentLoaded', function() {
 
     if (query === lastQuery) {
       if (!searchRequest && options.onsubmit) {
-        console.log('here!');
         var links = $$('#resultsContainer .item a');
         if (links.length === 1) {
           links[0].click();

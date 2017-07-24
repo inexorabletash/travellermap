@@ -42,7 +42,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
 <script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.29/polyfill.min.js"></script>
 <script src="map.js?update=2017-06-29T21:36:37"></script>
-<script src="index.js?update=2017-07-22T10:43:34"></script>
+<script src="index.js?update=2017-07-23T19:40:47"></script>
 <script src="world_util.js?update=2017-07-16T12:24:25"></script>
 
 <body class="hide-ui hide-footer ds-mini">
@@ -58,7 +58,8 @@
   <div id="direction-trailing" class="direction">Trailing</div>
 
   <div id="searchBar" class="ui">
-    <form id="searchForm" action="get">
+    <form id="searchForm" action=".">
+      <input type="submit" style="visibility: hidden; position: absolute;">
       <input type="text"
              id="searchBox"
              placeholder="Search..."
@@ -144,7 +145,7 @@
 
   <div id="routeBox"
        class="ui hoverbox hoverbox-left">
-    <form id="routeForm" action="get">
+    <form id="routeForm">
       <div id="routeInputWrapper">
         <input type="text"
                name="start"
