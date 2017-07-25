@@ -1211,7 +1211,7 @@ var Util = {
     if (scale !== this.scale)
       return false;
 
-    var threshold = 2 * Astrometrics.SectorHeight * 64 / this.scale;
+    var threshold = Astrometrics.SectorHeight * 64 / this.scale;
     return dist(x - this.x, y - this.y) < threshold;
   };
 

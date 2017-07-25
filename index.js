@@ -207,7 +207,8 @@ window.addEventListener('DOMContentLoaded', function() {
 
   var SEARCH_TIMER_DELAY = 100; // ms
   $("#searchBox").addEventListener('keyup', Util.debounce(function(e) {
-    search($('#searchBox').value, {typed: true});
+    if (e.key !== 'Enter') // Ignore double-submit on iOS
+      search($('#searchBox').value, {typed: true});
   }, SEARCH_TIMER_DELAY));
 
   $('#closeSearchBtn').addEventListener('click', function(e) {
@@ -1006,8 +1007,8 @@ window.addEventListener('DOMContentLoaded', function() {
 
     if (query === lastQuery) {
       if (!searchRequest && options.onsubmit) {
-        var links = $$('#resultsContainer .item a');
-        if (links.length === 1) {
+        var links = $$('#resultsContainer a');
+        if (links.length > 0) {
           links[0].click();
           return;
         }
@@ -1038,7 +1039,7 @@ window.addEventListener('DOMContentLoaded', function() {
         searchRequest = null;
         showSearchPane('search-results');
         if (options.navigate) {
-          var first = $('#resultsContainer .item a');
+          var first = $('#resultsContainer a');
           if (first)
             first.click();
         }
