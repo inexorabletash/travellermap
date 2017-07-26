@@ -414,6 +414,9 @@ $('#forss').addEventListener('click', e => {
   convertAndParse($('#in').value).then(worlds => {
     worlds.forEach(world => process(world));
     worlds.forEach(world => t5ify(world));
+
+    worlds.sort((a, b) => a.Hex < b.Hex ? -1 : b.Hex < a.Hex ? 1 : 0);
+
     $('#out').value = worlds
       .map(world => format(world).join('\t'))
       .join('\n') + '\n';

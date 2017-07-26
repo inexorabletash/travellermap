@@ -10,6 +10,7 @@ use lib $FindBin::Bin;
 use parseutil;
 
 my %sectors = (
+    Afaw => "Afawahisa",
     Akti => "Aktifao",
     Alde => 'Aldebaran',
     Alph => "Alpha Crucis",
@@ -61,6 +62,7 @@ my %sectors = (
     Star => "Star's End",
     Thet => "Theta Borealis",
     Tien => "Tienspevnekr",
+    Touc => "Touchstone",
     Tren => "Trenchans",
     Troj => "Trojan Reach",
     Tugl => 'Tuglikki',
