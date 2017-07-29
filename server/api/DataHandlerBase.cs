@@ -220,7 +220,7 @@ namespace Maps.API
                 string s = GetStringOption(name);
                 if (string.IsNullOrWhiteSpace(s))
                     return defaultValue;
-                return s.Split(new char[] { '|' });
+                return s.Split('|');
             }
 
             protected int GetIntOption(string name, int defaultValue) => GetIntOption(name, Defaults(Context), defaultValue);

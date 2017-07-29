@@ -1,6 +1,7 @@
 ﻿using Maps.Utilities;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace Maps
@@ -159,6 +160,32 @@ namespace Maps
             {
                 Add(code, new Allegiance(code, legacy, baseCode, name, location));
             }
+
+            public AllegianceDictionary Merge(AllegianceDictionary other)
+            {
+                foreach (var pair in other)
+                    TryAdd(pair.Key, pair.Value);
+                return this;
+            }
+
+            public static AllegianceDictionary FromFile(string path)
+            {
+                using (var reader = File.OpenText(path)) { return Parse(reader); }
+            }
+
+            private static AllegianceDictionary Parse(StreamReader reader)
+            {
+                Func<string, string> nullIfEmpty = (s) => string.IsNullOrWhiteSpace(s) ? null : s;
+                var dict = new AllegianceDictionary();
+                var parser = new Serialization.TSVParser(reader);
+                foreach (var row in parser.Data)
+                {
+                    dict.Add(
+                        row.dict["Code"], row.dict["Legacy"], nullIfEmpty(row.dict["BaseCode"]),
+                        row.dict["Name"], nullIfEmpty(row.dict["Location"]));
+                }
+                return dict;
+            }
         }
 
         // Overrides or additions where Legacy -> T5SS code mapping is ambiguous.
@@ -223,226 +250,11 @@ namespace Maps
         }
 
         // TODO: Parse this from data file
-        private static readonly AllegianceDictionary s_t5Allegiances = new AllegianceDictionary {
+
+        private static readonly AllegianceDictionary s_t5Allegiances = AllegianceDictionary
+            .FromFile(System.Web.Hosting.HostingEnvironment.MapPath("~/res/t5ss/allegiance_codes.tab"))
+            .Merge(new AllegianceDictionary {
             // T5Code, LegacyCode, BaseCode, Name
-            #region T5SS Allegiances
-            // Allegiance Table Begin
-            { "3EoG", "Ga", null, "Third Empire of Gashikan", "Mend/Gash/Tren" },
-            { "4Wor", "Fw", null, "Four Worlds", "Farf" },
-            { "AkUn", "Ak", null, "Akeena Union", "Gate" },
-            { "AlCo", "Al", null, "Altarean Confederation", "Vang" },
-            { "AnTC", "Ac", null, "Anubian Trade Coalition", "Hint" },
-            { "AsIf", "As", "As", "Iyeaao'fte", "Ustr" }, // (Tlaukhu client state)
-            { "AsMw", "As", "As", "Aslan Hierate, single multiple-world clan dominates", "Akti/Dark/Eali/Hlak/Iwah/Reav/Rift/Stai/Troj/Uist/Ustr/Verg" },
-            { "AsOf", "As", "As", "Oleaiy'fte", "Ustr" }, // (Tlaukhu client state)
-            { "AsSc", "As", "As", "Aslan Hierate, multiple clans split control", "Akti/Dark/Eali/Hlak/Iwah/Reav/Rift/Stai/Troj/Uist/Ustr" },
-            { "AsSF", "As", "As", "Aslan Hierate, small facility", "" }, // (temporary)
-            { "AsT0", "A0", "As", "Aslan Hierate, Tlaukhu control, Yerlyaruiwo (1), Hrawoao (13), Eisohiyw (14), Ferekhearl (19)", "Akti/Dark/Eali/Hlak/Iwah/Reav/Rift/Stai/Troj/Uist/Ustr" },
-            { "AsT1", "A1", "As", "Aslan Hierate, Tlaukhu control, Khauleairl (2), Estoieie' (16), Toaseilwi (22)", "Akti/Dark/Eali/Hlak/Iwah/Reav/Rift/Stai/Troj/Uist/Ustr" },
-            { "AsT2", "A2", "As", "Aslan Hierate, Tlaukhu control, Syoisuis (3)", "Akti/Dark/Eali/Hlak/Iwah/Reav/Rift/Stai/Troj/Uist/Ustr" },
-            { "AsT3", "A3", "As", "Aslan Hierate, Tlaukhu control, Tralyeaeawi (4), Yulraleh (12), Aiheilar (25), Riyhalaei (28)", "Akti/Dark/Eali/Hlak/Iwah/Reav/Rift/Stai/Troj/Uist/Ustr" },
-            { "AsT4", "A4", "As", "Aslan Hierate, Tlaukhu control, Eakhtiyho (5), Eteawyolei' (11), Fteweyeakh (23)", "Akti/Dark/Eali/Hlak/Iwah/Reav/Rift/Stai/Troj/Uist/Ustr" },
-            { "AsT5", "A5", "As", "Aslan Hierate, Tlaukhu control, Hlyueawi (6), Isoitiyro (15)", "Akti/Dark/Eali/Hlak/Iwah/Reav/Rift/Stai/Troj/Uist/Ustr" },
-            { "AsT6", "A6", "As", "Aslan Hierate, Tlaukhu control, Uiktawa (7), Iykyasea (17), Faowaou (27)", "Akti/Dark/Eali/Hlak/Iwah/Reav/Rift/Stai/Troj/Uist/Ustr" },
-            { "AsT7", "A7", "As", "Aslan Hierate, Tlaukhu control, Ikhtealyo (8), Tlerfearlyo (20), Yehtahikh (24)", "Akti/Dark/Eali/Hlak/Iwah/Reav/Rift/Stai/Troj/Uist/Ustr" },
-            { "AsT8", "A8", "As", "Aslan Hierate, Tlaukhu control, Seieakh (9), Akatoiloh (18), We'okunir (29)", "Akti/Dark/Eali/Hlak/Iwah/Reav/Rift/Stai/Troj/Uist/Ustr" },
-            { "AsT9", "A9", "As", "Aslan Hierate, Tlaukhu control, Aokhalte (10), Sahao' (21), Ouokhoi (26)", "Akti/Dark/Eali/Hlak/Iwah/Reav/Rift/Stai/Troj/Uist/Ustr" },
-            { "AsTA", "Ta", "As", "Tealou Arlaoh", "Uist/Ustr" }, // (Aslan independent clan, non-outcast)
-            { "AsTv", "As", "As", "Aslan Hierate, Tlaukhu vassal clan dominates", "Akti/Dark/Eali/Hlak/Iwah/Reav/Rift/Stai/Troj/Uist/Ustr" },
-            { "AsTz", "As", "As", "Aslan Hierate, Zodia clan", "Iwah" }, // (Tralyeaeawi vassal)
-            { "AsVc", "As", "As", "Aslan Hierate, vassal clan dominates", "Akti/Dark/Eali/Hlak/Iwah/Reav/Rift/Stai/Troj/Uist/Ustr" },
-            { "AsWc", "As", "As", "Aslan Hierate, single one-world clan dominates", "Akti/Dark/Eali/Hlak/Iwah/Reav/Rift/Stai/Troj/Uist/Ustr" },
-            { "AsXX", "As", "As", "Aslan Hierate, unknown", "Akti/Dark/Eali/Hlak/Iwah/Reav/Rift/Stai/Troj/Uist/Ustr" },
-            { "Bium", "Bi", null, "The Biumvirate", "Farf" },
-            { "BlSo", "Bs", null, "Belgardian Sojurnate", "Troj" },
-            { "CaAs", "Cb", null, "Carrillian Assembly", "Reav" },
-            { "CAEM", "Es", null, "Comsentient Alliance, Eslyat Magistracy", "Beyo/Vang" },
-            { "CAin", "Co", null, "Comsentient Alliance", "Beyo/Vang" }, // independent
-            { "CAKT", "Kt", null, "Comsentient Alliance, Kajaani Triumverate", "Vang" },
-            { "CaPr", "Ca", null, "Principality of Caledon", "Reav" },
-            { "CaTe", "Ct", null, "Carter Technocracy", "Reav" },
-            { "CoBa", "Ba", null, "Confederation of Bammesuka", "Mend" },
-            { "CoLp", "Lp", null, "Council of Leh Perash", "Hint" },
-            { "CsCa", "Ca", null, "Client state, Principality of Caledon", "Reav" },
-            { "CsHv", "Hc", null, "Client state, Hive Federation", "Cruc/Spic" },
-            { "CsIm", "Cs", null, "Client state, Third Imperium", "various" },
-            { "CsMP", "Ms", null, "Client state, Mal'Gnar Primarchic", "Beyo" },
-            { "CsTw", "KC", null, "Client state, Two Thousand Worlds", "various" },
-            { "CsZh", "Cz", null, "Client state, Zhodani Consulate", "Spin/Troj" },
-            { "CyUn", "Cu", null, "Cytralin Unity", "Hint" },
-            { "DaCf", "Da", null, "Darrian Confederation", "Spin" },
-            { "DeHg", "Dh", null, "Descarothe Hegemony", "Farf" },
-            { "DeNo", "Dn", null, "Demos of Nobles", "Newo" },
-            { "DiGr", "Dg", null, "Dienbach Grüpen", "Newo" },
-            { "DiWb", "Dw", null, "Die Weltbund", "Beyo" },
-            { "DoAl", "Az", null, "Domain of Alntzar", "Farf" },
-            { "DuCf", "Cd", null, "Confederation of Duncinae", "Reav" },
-            { "FCSA", "Fc", null, "Four Corners Sovereign Array", "Vang" },
-            { "FeAl", "Fa", null, "Federation of Alsas", "Farf" },
-            { "FeAm", "FA", null, "Federation of Amil", "Cruc" },
-            { "FeHe", "Fh", null, "Federation of Heron", "Glim" },
-            { "FlLe", "Fl", null, "Florian League", "Troj" },
-            { "GaFd", "Ga", null, "Galian Federation", "Gate" },
-            { "GaRp", "Gr", null, "Gamma Republic", "Glim" },
-            { "GdKa", "Rm", null, "Grand Duchy of Kalradin", "Cruc" },
-            { "GdMh", "Ma", null, "Grand Duchy of Marlheim", "Reav" },
-            { "GdSt", "Gs", null, "Grand Duchy of Stoner", "Glim" },
-            { "GeOr", "Go", null, "Gerontocracy of Ormine", "Dark" },
-            { "GlEm", "Gl", "As", "Glorious Empire", "Troj" }, // (Aslan independent clan, outcast)
-            { "GlFe", "Gf", null, "Glimmerdrift Federation", "Cruc/Glim" },
-            { "GnCl", "Gi", null, "Gniivi Collective", "Hint" },
-            { "GrCo", "Gr", null, "Grossdeutchland Confederation", "Vang" },
-            { "HaCo", "Hc", null, "Haladon Cooperative", "Farf" },
-            { "HoPA", "Ho", null, "Hochiken People's Assembly", "Gate" },
-            { "HvFd", "Hv", "Hv", "Hive Federation", "Spic" },
-            { "HyLe", "Hy", null, "Hyperion League", "Vang" },
-            { "IHPr", "IS", null, "I'Sred*Ni Protectorate", "Beyo" },
-            { "ImAp", "Im", "Im", "Third Imperium, Amec Protectorate", "Dagu" },
-            { "ImDa", "Im", "Im", "Third Imperium, Domain of Antares", "Anta/Empt/Lish" },
-            { "ImDc", "Im", "Im", "Third Imperium, Domain of Sylea", "Core/Delp/Forn/Mass" },
-            { "ImDd", "Im", "Im", "Third Imperium, Domain of Deneb", "Dene/Reft/Spin/Troj" },
-            { "ImDg", "Im", "Im", "Third Imperium, Domain of Gateway", "Glim/Hint/Ley" },
-            { "ImDi", "Im", "Im", "Third Imperium, Domain of Ilelish", "Daib/Ilel/Reav/Verg/Zaru" },
-            { "ImDs", "Im", "Im", "Third Imperium, Domain of Sol", "Alph/Dias/Magy/Olde/Solo" },
-            { "ImDv", "Im", "Im", "Third Imperium, Domain of Vland", "Corr/Dagu/Gush/Reft/Vlan" },
-            { "ImLa", "Im", "Im", "Third Imperium, League of Antares", "Anta" },
-            { "ImLc", "Im", "Im", "Third Imperium, Lancian Cultural Region", "Corr/Dagu/Gush" },
-            { "ImLu", "Im", "Im", "Third Imperium, Luriani Cultural Association", "Ley/Forn" },
-            { "ImSy", "Im", "Im", "Third Imperium, Sylean Worlds", "Core" },
-            { "ImVd", "Ve", "Im", "Third Imperium, Vegan Autonomous District", "Solo" },
-            { "IsDo", "Id", null, "Islaiat Dominate", "Eali" },
-            { "JAOz", "Jo", "Jp", "Julian Protectorate, Alliance of Ozuvon", "Mend" },
-            { "JaPa", "Ja", null, "Jarnac Pashalic", "Beyo/Vang" },
-            { "JAsi", "Ja", "Jp", "Julian Protectorate, Asimikigir Confederation", "Amdu/Mend" },
-            { "JCoK", "Jc", "Jp", "Julian Protectorate, Constitution of Koekhon", "Amdu/Mend" },
-            { "JHhk", "Jh", "Jp", "Julian Protectorate, Hhkar Sphere", "Amdu/Mend" },
-            { "JLum", "Jd", "Jp", "Julian Protectorate, Lumda Dower", "Mend" },
-            { "JMen", "Jm", "Jp", "Julian Protectorate, Commonwealth of Mendan", "Mend/Gash" },
-            { "JPSt", "Jp", "Jp", "Julian Protectorate, Pirbarish Starlane", "Mend" },
-            { "JRar", "Vw", "Jp", "Julian Protectorate, Rar Errall/Wolves Warren", "Mend" },
-            { "JuHl", "Hl", "Jp", "Julian Protectorate, Hegemony of Lorean", "Amdu/Empt/Mend" },
-            { "JUkh", "Ju", "Jp", "Julian Protectorate, Ukhanzi Coordinate", "Mend" },
-            { "JuNa", "Jn", null, "Jurisdiction of Nadon", "Cano" },
-            { "JuPr", "Jp", "Jp", "Julian Protectorate", "Amdu/Empt/Mend" }, // independent
-            { "JuRu", "Jr", "Jp", "Julian Protectorate, Rukadukaz Republic", "Empt/Mend" },
-            { "JVug", "Jv", "Jp", "Julian Protectorate, Vugurar Dominion", "Mend" },
-            { "KaCo", "KC", null, "Katowice Conquest", "Cruc" },
-            { "KaWo", "KW", null, "Karhyri Worlds", "Cruc" },
-            { "KhLe", "Kl", null, "Khuur League", "Ley" },
-            { "KkTw", "Kk", "Kk", "Two Thousand Worlds", "various" }, // (K'kree)
-            { "KoEm", "Ko", null, "Korsumug Empire", "Thet" },
-            { "KoPm", "Pm", null, "Percavid Marches", "Thet" },
-            { "KPel", "Pe", null, "Kingdom of Peladon", "Thet" },
-            { "KrBu", "Kr", null, "Kranzbund", "Vang" },
-            { "LaCo", "Lc", null, "Langemarck Coalition", "Vang" },
-            { "LeSu", "Ls", null, "League of Suns", "Farf" },
-            { "LnRp", "Ln", null, "Loyal Nineworlds Republic", "Glim" },
-            { "LyCo", "Ly", null, "Lanyard Colonies", "Reav" },
-            { "MaCl", "Ma", null, "Mapepire Cluster", "Beyo" },
-            { "MaEm", "Mk", null, "Maskai Empire", "Glim" },
-            { "MaPr", "MF", null, "Mal'Gnar Primarchic", "Beyo" },
-            { "MaUn", "Mu", null, "Malorn Union", "Cano/Alde" },
-            { "MeCo", "Me", null, "Megusard Corporate", "Gate" },
-            { "MiCo", "Mi", null, "Mische Conglomerate", "Cruc" },
-            { "MnPr", "Mn", null, "Mnemosyne Principality", "Farf" },
-            { "MrCo", "MC", null, "Mercantile Concord", "Cruc" },
-            { "NaAs", "As", "As", "Non-Aligned, Aslan-dominated", "Akti/Dark/Eali/Rift/Uist/Ustr" }, // (outside Hierate)
-            { "NaHu", "Na", "Na", "Non-Aligned, Human-dominated", "various" },
-            { "NaVa", "Va", "Va", "Non-Aligned, Vargr-dominated", "various" },
-            { "NaXX", "Na", "Na", "Non-Aligned, unclaimed", "various" },
-            { "OcWs", "Ow", null, "Outcasts of the Whispering Sky", "Hint" },
-            { "OlWo", "Ow", null, "Old Worlds", "Cruc" },
-            { "PiFe", "Pi", null, "Pionier Fellowship", "Vang" },
-            { "PlLe", "Pl", null, "Plavian League", "Gate" },
-            { "Prot", "Pt", null, "The Protectorate", "Farf" },
-            { "RaRa", "Ra", null, "Ral Ranta", "Hint" },
-            { "Reac", "Rh", null, "The Reach", "Cruc" },
-            { "ReUn", "Re", null, "Renkard Union", "Gate" },
-            { "SaCo", "Sc", null, "Salinaikin Concordance", "Farf" },
-            { "Sark", "Sc", null, "Sarkan Constellation", "Mend" },
-            { "SeFo", "Sf", null, "Senlis Foederate", "Troj" },
-            { "SlLg", "Sl", null, "Shukikikar League", "Glim" },
-            { "SoBF", "So", "So", "Solomani Confederation, Bootean Federation", "Solo" },
-            { "SoCf", "So", "So", "Solomani Confederation", "Alph/Diab/Dark/Hint/Magy/Olde/Reav/Solo/Spic/Ustr" },
-            { "SoCT", "So", "So", "Solomani Confederation, Consolidation of Turin", "Alph" },
-            { "SoFr", "Fr", "So", "Solomani Confederation, Third Reformed French Confederate Rebublic", "Alde" },
-            { "SoHn", "Hn", "So", "Solomani Confederation, Hanuman Systems", "Lang" },
-            { "SoKv", "Kv", "So", "Solomani Confederation, Kostov Confederate Republic", "Newo" },
-            { "SoNS", "So", "So", "Solomani Confederation, New Slavic Solidarity", "Magy" },
-            { "SoQu", "Qu", "So", "Solomani Confederation, Grand United States of Quesada", "Alde" },
-            { "SoRD", "So", "So", "Solomani Confederation, Reformed Dootchen Estates", "Magy" },
-            { "SoRz", "So", "So", "Solomani Confederation, Restricted Zone", "Alde/Newo" },
-            { "SoWu", "So", "So", "Solomani Confederation, Wuan Technology Association", "Diab/Magy" },
-            { "StCl", "Sc", null, "Strend Cluster", "Troj" },
-            { "SwCf", "Sw", null, "Sword Worlds Confederation", "Spin" },
-            { "SwFW", "Sw", null, "Swanfei Free Worlds", "Gate" },
-            { "SyRe", "Sy", null, "Syzlin Republic", "Cruc" },
-            { "TeCl", "Tc", null, "Tellerian Cluster", "Vang" },
-            { "TrBr", "Tb", null, "Trita Brotherhood", "Cano" },
-            { "TrCo", "Tr", null, "Trindel Confederacy", "Gate" },
-            { "TrDo", "Td", null, "Trelyn Domain", "Vang/Farf" },
-            { "TroC", "Tr", null, "Trooles Confederation", "Thet" },
-            { "UnGa", "Ug", null, "Union of Garth", "Farf" },
-            { "UnHa", "Uh", null, "Union of Harmony", "Dark/Reav" },
-            { "V17D", "V7", "Va", "17th Disjucture", "Mesh/Wind" },
-            { "V40S", "Ve", "Va", "40th Squadron", "Gvur" }, // (Ekhelle Ksafi)
-            { "VAkh", "VA", "Va", "Akhstuti", "Tugl" },
-            { "VAnP", "Vx", "Va", "Antares Pact", "Mesh/Mend" },
-            { "VARC", "Vr", "Va", "Anti-Rukh Coalition", "Gvur" }, // (Gnoerrgh Rukh Lloell)
-            { "VAsP", "Vx", "Va", "Ascendancy Pact", "Knoe" },
-            { "VAug", "Vu", "Va", "United Followers of Augurgh", "Dene/Tugl" },
-            { "VBkA", "Vb", "Va", "Bakne Alliance", "Tugl" },
-            { "VCKd", "Vk", "Va", "Commonality of Kedzudh", "Gvur" }, // (Kedzudh Aeng)
-            { "VDeG", "Vd", "Va", "Democracy of Greats", "Knoe" },
-            { "VDrN", "VN", "Va", "Drr'lana Network", "Gash" },
-            { "VDzF", "Vf", "Va", "Dzarrgh Federate", "Dene/Prov/Tugl" },
-            { "VFFD", "V1", "Va", "First Fleet of Dzo", "Mesh" },
-            { "VGoT", "Vg", "Va", "Glory of Taarskoerzn", "Prov" },
-            { "ViCo", "Vi", "Va", "Viyard Concourse", "Gate" },
-            { "VInL", "V9", "Va", "Infinity League", "Knoe" },
-            { "VIrM", "Vh", "Va", "Irrgh Manifest", "Prov" },
-            { "VJoF", "Vj", "Va", "Jihad of Faarzgaen", "Prov" },
-            { "VKfu", "Vk", "Va", "Kfue", "Tugl" },
-            { "VLIn", "Vi", "Va", "Llaeghskath Interacterate", "Prov/Tugl" },
-            { "VLPr", "Vl", "Va", "Lair Protectorate", "Prov" },
-            { "VNgC", "Vn", "Va", "Ngath Confederation", "Wind" },
-            { "VNoe", "VN", "Va", "Noefa", "Tugl" },
-            { "VOpA", "Vo", "Va", "Opposition Alliance", "Knoe" },
-            { "VOpp", "Vo", "Va", "Opposition Alliance", "Mesh" },
-            { "VOuz", "VO", "Va", "Ouzvothon", "Tugl" },
-            { "VPGa", "Vg", "Va", "Pact of Gaerr", "Gvur" }, // (Gaerr Thue)
-            { "VRo5", "V5", "Va", "Ruler of Five", "Mesh" },
-            { "VRrS", "VW", "Va", "Rranglloez Stronghold", "Tugl" },
-            { "VRuk", "Vn", "Va", "Worlds of Leader Rukh", "Gvur" }, // (Rukh Aegz)
-            { "VSDp", "Vs", "Va", "Saeknouth Dependency", "Gvur" }, // (Saeknouth Igz)
-            { "VSEq", "Vd", "Va", "Society of Equals", "Gvur/Tugl" }, // (Dzen Aeng Kho)
-            { "VThE", "Vt", "Va", "Thoengling Empire", "Gvur/Tugl" }, // (Thoengling Raghz)
-            { "VTrA", "VT", "Va", "Trae Aggregation", "Tren" },
-            { "VTzE", "Vp", "Va", "Thirz Empire", "Gvur/Ziaf" }, // (Thirz Uerra)
-            { "VUru", "Vu", "Va", "Urukhu", "Gvur" },
-            { "VVar", "Ve", "Va", "Empire of Varroerth", "Prov/Tugl/Wind" },
-            { "VVoS", "Vv", "Va", "Voekhaeb Society", "Mesh" },
-            { "VWan", "Vw", "Va", "People of Wanz", "Tugl" },
-            { "VWP2", "V2", "Va", "Windhorn Pact of Two", "Tugl" },
-            { "VYoe", "VQ", "Va", "Union of Yoetyqq", "Gash" },
-            { "WiDe", "Wd", null, "Winston Democracy", "Alde/Newo" },
-            { "XXXX", "Xx", null, "Unknown", "various" },
-            { "ZePr", "Zp", "Z", "Zelphic Primacy", "Farf" },
-            { "ZhAx", "Ax", "Zh", "Zhodani Consulate, Addaxur Reserve", "Tien" },
-            { "ZhCa", "Ca", "Zh", "Zhodani Consulate, Colonnade Province", "Vang/Farf" },
-            { "ZhCh", "Zh", "Zh", "Zhodani Consulate, Chtierabl Province", "Chti" },
-            { "ZhCo", "Zh", "Zh", "Zhodani Consulate", "various" }, // undetermined
-            { "ZhIa", "Zh", "Zh", "Zhodani Consulate, Iabrensh Province", "Stia/Zdie" },
-            { "ZhIN", "Zh", "Zh", "Zhodani Consulate, Iadr Nsobl Province", "Farf/Fore/Gvur/Spin/Yikl/Ziaf" },
-            { "ZhJp", "Zh", "Zh", "Zhodani Consulate, Jadlapriants Province", "Tien/Zhda" },
-            { "ZhMe", "Zh", "Zh", "Zhodani Consulate, Meqlemianz Province", "Eiap/Sidi/Eiap" },
-            { "ZhOb", "Zh", "Zh", "Zhodani Consulate, Obrefripl Province", "various" },
-            { "ZhSh", "Zh", "Zh", "Zhodani Consulate, Shtochiadr Province", "Itvi/Tlab" },
-            { "ZhVQ", "Zh", "Zh", "Zhodani Consulate, Vlanchiets Qlom Province", "various" },
-            { "Zuug", "Zu", "Zu", "Zuugabish Tripartite", "Mend" },
-            { "ZyCo", "Zc", null, "Zydarian Codominium", "Beyo" },
-            // Allegiance Table End
-            #endregion
 
             // -----------------------
             // Unofficial/Unreviewed
@@ -465,7 +277,7 @@ namespace Maps
             { "CRGe", "CG", null, "Geonee Cultural Region" },
             { "CRSu", "CS", null, "Suerrat Cultural Region" },
             { "CRAk", "CA", null, "Anakudnu Cultural Region" },
-        };
+        });
         public static IEnumerable<string> AllegianceCodes => s_t5Allegiances.Keys;
         // May need GroupBy to handle duplicates
         private static readonly IReadOnlyDictionary<string, Allegiance> s_legacyToT5Allegiance =
@@ -518,82 +330,27 @@ namespace Maps
             {
                 Add(code, new Sophont(code, name, location));
             }
+            public static SophontDictionary FromFile(string path)
+            {
+                using (var reader = File.OpenText(path))
+                {
+                    return Parse(reader);
+                }
+            }
+
+            private static SophontDictionary Parse(StreamReader reader)
+            {
+                var dict = new SophontDictionary();
+                var parser = new Serialization.TSVParser(reader);
+                foreach (var row in parser.Data)
+                    dict.Add(row.dict["Code"], row.dict["Name"], row.dict["Location"]);
+                return dict;
+            }
         }
 
-        private static readonly SophontDictionary s_sophontCodes = new SophontDictionary {
-            #region T5SS Sophont Codes
-            // Sophont Table Begin
-            { "Adda", "Addaxur", "Zhodani space" },
-            { "Akee", "Akeed", "Gate" },
-            { "Aqua", "Aquans (Daga)/Aquamorphs (Alph)", "Daga (Aquans)/Alph (Aquamorphs)" },
-            { "Asla", "Aslan", "major" },
-            { "Bhun", "Brunj", "Forn" },
-            { "Brin", "Brinn", "Corr" },
-            { "Bruh", "Bruhre", "Daib/Reav" },
-            { "Buru", "Burugdi", "Dagu/Thet" },
-            { "Bwap", "Bwaps", "Imperial/Vilani space" },
-            { "Chir", "Chirpers", "major" },
-            { "Darm", "Darmine", "Zaru" },
-            { "Dary", "Daryen", "Spin" },
-            { "Dolp", "Dolphins", "Imperial/Solomani space" },
-            { "Droy", "Droyne", "major" },
-            { "Esly", "Eslyat", "Beyo/Vang" },
-            { "Flor", "Floriani", "Beyo/Troj" },
-            { "Geon", "Geonee", "Mass" },
-            { "Gnii", "Gniivi", "Hint" },
-            { "Gray", "Graytch", "Dagu/Gush/Ilel" },
-            { "Guru", "Gurungan", "Solo" },
-            { "Gurv", "Gurvin", "Hiver space" },
-            { "Hama", "Hamaran", "Dagu" },
-            { "Hive", "Hiver", "Hiver space" },
-            { "Huma", "Human", "Imperial/Solomani space" }, // (Vilani/Solomani-mixed)
-            { "Ithk", "Ithklur", "Hiver space" },
-            { "Jaib", "Jaibok", "Thet" },
-            { "Jala", "Jala'lak", "Dagu" },
-            { "Jend", "Jenda", "Hint" },
-            { "Jonk", "Jonkeereen", "Dene/Spin" },
-            { "K'kr", "K'kree", "K'kree space" },
-            { "Kafo", "Kafoe", "Cruc" },
-            { "Kagg", "Kaggushus", "Mass" },
-            { "Karh", "Karhyri", "Cruc" },
-            { "Kiak", "Kiakh'iee", "Dagu" },
-            { "Lamu", "Lamura Gav/Teg", "Hint" },
-            { "Lanc", "Lancians", "Dagu/Gush" },
-            { "Libe", "Liberts", "Daib/Dias" },
-            { "Llel", "Llellewyloly", "Spin" }, // (Dandies)
-            { "Luri", "Luriani", "Forn/Ley" },
-            { "Mal'", "Mal'Gnar", "Beyo" },
-            { "Mask", "Maskai", "Glim" },
-            { "Mitz", "Mitzene", "Thet" },
-            { "Muri", "Murians", "Vang" },
-            { "Orca", "Orca", "Imperial/Solomani space" },
-            { "Ormi", "Ormine", "Dark" },
-            { "S'mr", "S'mrii", "Dagu" },
-            { "Scan", "Scanians", "Dagu" },
-            { "Sele", "Selenites", "Alph" },
-            { "Sred", "Sred*Ni", "Beyo" },
-            { "Stal", "Stalkers", "Hint" },
-            { "Suer", "Suerrat", "Ilel" },
-            { "Sull", "Sulliji", "Dene" },
-            { "Swan", "Swanfei", "Gate" },
-            { "Sydi", "Sydites", "Ley" },
-            { "Syle", "Syleans", "Core" },
-            { "Tapa", "Tapazmal", "Reft" },
-            { "Taur", "Taureans", "Alde" },
-            { "Tent", "Tentrassi", "Zaru" },
-            { "Tlye", "Tlyetrai", "Reav" },
-            { "UApe", "Uplifted Apes", "Imperial/Solomani space" },
-            { "Ulan", "Ulane", "Dark" },
-            { "Ursa", "Ursa", "Forn/Ley" },
-            { "Urun", "Urunishani", "Anta" },
-            { "Varg", "Vargr", "Anta/Corr/Dagu/Dene/Empt/Ley/Lish/Spin/Vargr space" },
-            { "Vega", "Vegans", "Solo" },
-            { "Za't", "Za'tachk", "Wren" },
-            { "Zhod", "Zhodani", "Zhodani space" },
-            { "Ziad", "Ziadd", "Dagu" },
-            // Sophont Table End
-            #endregion
-        };
+        private static readonly SophontDictionary s_sophontCodes = SophontDictionary
+            .FromFile(System.Web.Hosting.HostingEnvironment.MapPath("~/res/t5ss/sophont_codes.tab"));
+
         public static string SophontCodeToName(string code)
         {
             if (s_sophontCodes.ContainsKey(code))

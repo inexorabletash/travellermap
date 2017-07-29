@@ -278,6 +278,10 @@ namespace Maps
         }
         public static SectorStylesheet Parse(string src) => Parse(new StringReader(src));
         public static SectorStylesheet Parse(TextReader reader) => new SectorStylesheet(new Parser(reader).ParseStylesheet());
+        public static SectorStylesheet FromFile(string path)
+        {
+            using (var reader = File.OpenText(path)) { return Parse(reader); }
+        }
 
         #endregion // Parser
 

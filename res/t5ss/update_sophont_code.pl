@@ -37,12 +37,11 @@ my @lines;
             $comment = $2;
         }
 
-        $code = quote($code);
-        $sophont = quote($sophont);
-        $location = quote($location);
+        $code = $code;
+        $sophont = $sophont;
+        $location = $location;
 
-        my $line = "            { $code, $sophont, $location },";
-        $line .= " // $comment" if $comment;
+        my $line = join("\t", ($code, $sophont, $location));
 
         push @lines, $line;
     }
@@ -51,21 +50,8 @@ my @lines;
 
 @lines = sort { lc $a cmp lc $b } @lines;
 
-my $replace = join("\n", @lines);
-
-my $code_path = File::Spec->catfile($FindBin::Bin,  '..', '..', 'server', 'SecondSurvey.cs');
-my $code;
-{
-    open my $fh, '<:encoding(UTF-8)', $code_path or die;
-    local $/ = undef;
-    $code = <$fh>;
-    close $fh;
-}
-
-$code =~ s/(\/\/ Sophont Table Begin\s*\n)(.*?)(\n\s*\/\/ Sophont Table End)/$1$replace$3/s;
-
-{
-    open my $fh, '>:encoding(UTF-8)', $code_path or die;
-    print $fh $code;
-    close $fh;
-}
+my $code_path = File::Spec->catfile($FindBin::Bin,  'sophont_codes.tab');
+open my $fh, '>:encoding(UTF-8)', $code_path or die;
+print $fh join("\t", qw(Code Name Location)), "\n";
+print $fh join("\n", @lines), "\n";
+close $fh;

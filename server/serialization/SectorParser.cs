@@ -383,8 +383,6 @@ namespace Maps.Serialization
 
     internal class TSVParser
     {
-        private static readonly char[] TAB_DELIMITER = { '\t' };
-
         public TSVParser(TextReader reader)
         {
             int lineNumber = 0;
@@ -403,7 +401,7 @@ namespace Maps.Serialization
 
                 if (header == null)
                 {
-                    header = line.Split(TAB_DELIMITER);
+                    header = line.Split('\t');
                     continue;
                 }
 
@@ -413,7 +411,7 @@ namespace Maps.Serialization
 
         private void ParseLine(string line, int lineNumber)
         {
-            string[] cols = line.Split(TAB_DELIMITER);
+            string[] cols = line.Split('\t');
             if (cols.Length != header.Length)
                 throw new ParseException($"ERROR (Tab Parse) ({lineNumber}): {line}");
 

@@ -41,14 +41,13 @@ my @lines;
 
         $legacy =~ s|/.*||g;
 
-        $alleg = quote($alleg);
-        $legacy = quote($legacy);
-        $base = $base ? quote($base) : 'null';
-        $desc = quote($desc);
-        $location = quote($location);
+        $alleg = $alleg;
+        $legacy = $legacy;
+        $base = $base // '';
+        $desc = $desc;
+        $location = $location // '';
 
-        my $line = "            { $alleg, $legacy, $base, $desc, $location },";
-        $line .= " // $comment" if $comment;
+        my $line = join("\t", ($alleg, $legacy, $base, $desc, $location));
 
         push @lines, $line;
     }
@@ -57,21 +56,8 @@ my @lines;
 
 @lines = sort { lc $a cmp lc $b } @lines;
 
-my $replace = join("\n", @lines);
-
-my $code_path = File::Spec->catfile($FindBin::Bin, '..', '..', 'server', 'SecondSurvey.cs');
-my $code;
-{
-    open my $fh, '<:encoding(UTF-8)', $code_path or die;
-    local $/ = undef;
-    $code = <$fh>;
-    close $fh;
-}
-
-$code =~ s/(\/\/ Allegiance Table Begin\s*\n)(.*?)(\n\s*\/\/ Allegiance Table End)/$1$replace$3/s;
-
-{
-    open my $fh, '>:encoding(UTF-8)', $code_path or die;
-    print $fh $code;
-    close $fh;
-}
+my $code_path = File::Spec->catfile($FindBin::Bin, 'allegiance_codes.tab');
+open my $fh, '>:encoding(UTF-8)', $code_path or die;
+print $fh join("\t", qw(Code Legacy BaseCode Name Location)), "\n";
+print $fh join("\n", @lines), "\n";
+close $fh;

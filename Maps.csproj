@@ -600,6 +600,7 @@
     <Content Include="res\Sectors\Orion OB1\Sigma Orionis.txt" />
     <Content Include="res\Sectors\Orion OB1\Sigma Orionis.xml" />
     <Content Include="res\Sectors\Zhodani Core Route\ZhodaniCoreRoute.xml" />
+    <Content Include="res\t5ss\anomalies.txt" />
     <Content Include="res\t5ss\t5ify.html" />
     <Content Include="res\t5ss\t5ify.js" />
     <Content Include="res\ui\button-clock.png" />
@@ -619,7 +620,7 @@
     <Content Include="res\ui\route-end.svg" />
     <Content Include="res\ui\route.svg" />
     <Content Include="world_util.js" />
-    <EmbeddedResource Include="res\styles\otu.css" />
+    <None Include="res\styles\otu.css" />
     <Content Include="res\ui\background.png" />
     <Content Include="res\ui\background_light.png" />
     <Content Include="res\ui\button-close.png" />
@@ -974,8 +975,6 @@
     <Content Include="res\Sectors\Orion OB1\Mintaka.tab" />
     <Content Include="res\ui\youarehere.pdn" />
     <Content Include="res\t5ss\update_allegiance_code.pl" />
-    <Content Include="res\t5ss\update_allegiance_docs.pl" />
-    <Content Include="res\t5ss\update_sophont_docs.pl" />
     <Content Include="res\t5ss\update_world_data.pl" />
     <Content Include="res\t5ss\update_sophont_code.pl" />
     <Content Include="res\Sectors\Meta\legend.sec" />
@@ -1044,6 +1043,8 @@
     <Content Include="res\Sectors\Faraway\Vanguard Reaches 1991.sec" />
     <None Include="res\Sectors\M1201\Spica.tab" />
     <Content Include="res\Sectors\M1201\Windhorn.tab" />
+    <Content Include="res\t5ss\allegiance_codes.tab" />
+    <Content Include="res\t5ss\sophont_codes.tab" />
     <None Include="res\Vectors\Galaxy_Positive.xvf" />
     <None Include="res\Sectors\Zhodani Core Route\ablaz.sec" />
     <None Include="res\Sectors\Zhodani Core Route\abresh.sec" />

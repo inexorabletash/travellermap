@@ -423,8 +423,8 @@ namespace Maps
         }
 
         private static readonly SectorStylesheet s_defaultStyleSheet =
-            s_defaultStyleSheet = SectorStylesheet.Parse(new StreamReader(
-                Assembly.GetExecutingAssembly().GetManifestResourceStream(@"Maps.res.styles.otu.css")));
+            s_defaultStyleSheet = SectorStylesheet.Parse(
+                File.OpenText(System.Web.Hosting.HostingEnvironment.MapPath("~/res/styles/otu.css")));
 
         internal SectorStylesheet Stylesheet { get; set; }
 
