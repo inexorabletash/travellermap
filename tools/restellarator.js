@@ -42,6 +42,7 @@ var Restellarator = {
     function roll1D() { return Math.floor(Math.random() * 6) + 1; }
     function roll1D10() { return Math.floor(Math.random() * 10) + 1; }
     function flux() { return roll1D() - roll1D(); }
+    function inRange(a, min, max) { return min <= a && a <= max; }
 
     let primarySpectralFlux = flux();
     let primarySizeFlux = flux();
@@ -97,13 +98,13 @@ var Restellarator = {
         if (size === 'D') return size;
 
         // "Size IV not for K5-K9 and M0-M9."
-        if (size === 'IV' && ((spectral === 'K' && spectralDecimal.in(5, 9)) ||
+        if (size === 'IV' && ((spectral === 'K' && inRange(spectralDecimal, 5, 9)) ||
                               spectral === 'M'))
           continue;
 
         // "Size VI not for A0-A9 and F0-F4."
         if (size === 'VI' && (spectral === 'A' ||
-                              (spectral === 'F' && spectralDecimal.in(0, 4))))
+                              (spectral === 'F' && inRange(spectralDecimal, 0, 4))))
           continue;
 
         return `${spectral}${spectralDecimal} ${size}`;
