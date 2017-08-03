@@ -304,6 +304,7 @@ window.addEventListener('DOMContentLoaded', function() {
   var VK_ESCAPE = KeyboardEvent.DOM_VK_ESCAPE || 0x1B,
       VK_C = KeyboardEvent.DOM_VK_C || 0x43,
       VK_H = KeyboardEvent.DOM_VK_H || 0x48,
+      VK_L = KeyboardEvent.DOM_VK_L || 0x4C,
       VK_T = KeyboardEvent.DOM_VK_T || 0x54,
       VK_QUESTION_MARK = KeyboardEvent.DOM_VK_QUESTION_MARK || 0x63;
 
@@ -323,6 +324,15 @@ window.addEventListener('DOMContentLoaded', function() {
 
   // Options Bar
 
+  var PANELS = ['legend', 'more'];
+  var TABS = ['lab', 'milieu', 'settings', 'share', 'help'];
+
+  function showPanel(shown) {
+    PANELS.forEach(function(p) {
+      document.body.classList[p === shown ? 'add' : 'remove']('show-' + p);
+    });
+  }
+
   function togglePanel(shown) {
     PANELS.forEach(function(p) {
       document.body.classList[p === shown ? 'toggle' : 'remove']('show-' + p);
@@ -335,10 +345,21 @@ window.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  var PANELS = ['legend', 'lab', 'milieu', 'settings', 'share', 'help'];
   PANELS.forEach(function(p) {
     $('#'+p+'Btn').addEventListener('click', function() {
       togglePanel(p);
+    });
+  });
+
+  function showTab(shown) {
+    TABS.forEach(function(p) {
+      document.body.classList[shown === p ? 'add' : 'remove']('show-' + p);
+    });
+  }
+
+  TABS.forEach(function(p) {
+    $('#'+p+'Btn').addEventListener('click', function() {
+      showTab(p);
     });
   });
 
@@ -383,11 +404,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
   $('#zoomInBtn').addEventListener('click', map.ZoomIn.bind(map));
   $('#zoomOutBtn').addEventListener('click', map.ZoomOut.bind(map));
-  $('#tiltBtn').addEventListener('click', toggleTilt);
-
-  function toggleTilt() {
-    $('#cbTilt').click();
-  };
+  $('#tiltBtn').addEventListener('click', function() { $('#cbTilt').click(); });
 
   // Bottom Panel
 
@@ -416,14 +433,20 @@ window.addEventListener('DOMContentLoaded', function() {
     if (e.key === 't' || e.keyCode === VK_T) {
       e.preventDefault();
       e.stopPropagation();
-      toggleTilt();
+      $('#tiltBtn').click();
+      return;
+    }
+    if (e.key === 'l' || e.keyCode === VK_L) {
+      e.preventDefault();
+      e.stopPropagation();
+      showPanel('legend');
       return;
     }
     if (e.key === '?' || e.keyCode === VK_QUESTION_MARK) {
       e.preventDefault();
       e.stopPropagation();
-      $('#helpBtn').focus();
-      $('#helpBtn').click();
+      showPanel('more');
+      showTab('help');
       return;
     }
   });
@@ -981,6 +1004,12 @@ window.addEventListener('DOMContentLoaded', function() {
     element.addEventListener('click', function(event) {
       hideCards();
       selectedWorld = selectedSector = null;
+    });
+  });
+
+  $$('#legend-closebtn,#more-closebtn,#panel-shade').forEach(function(element) {
+    element.addEventListener('click', function(event) {
+      hidePanels();
     });
   });
 

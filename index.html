@@ -45,7 +45,7 @@
 <script src="index.js?update=2017-07-24T19:50:58"></script>
 <script src="world_util.js?update=2017-07-16T12:24:25"></script>
 
-<body class="hide-ui hide-footer ds-mini">
+<body class="hide-ui hide-footer ds-mini show-settings">
   <div id="mapContainer">
     <div id="dragContainer"
          tabindex="0"
@@ -57,13 +57,14 @@
   <div id="direction-spinward" class="direction">Spinward</div>
   <div id="direction-trailing" class="direction">Trailing</div>
 
-  <div id="searchBar" class="ui">
+  <div id="topBar" class="ui bar">
     <form id="searchForm" action=".">
       <input type="submit" style="visibility: hidden; position: absolute;">
       <input type="text"
              id="searchBox"
              placeholder="Search..."
              title="Search by world, subsector, sector or region name.&#x0A; &bull; * and ? as wildcards&#x0A; &bull; Use uwp: pbg: zone: alleg: or remark: to search data (e.g. uwp:A*)&#x0A; &bull; Use in: to search in a sector (e.g. uwp:*-F in:Deneb)&#x0A; &bull; Use like: for sounds-like matches&#x0A; &bull; Use exact: or &quot;quotes&quot; to find exact matches"
+
              disabled
              autocomplete="off"
              autocorrect="off"
@@ -79,9 +80,24 @@
     </form>
 
     <button id="routeBtn"
+            class=bar-button
             title="Calculate a jump route between worlds">
     </button>
 
+    <div class="bar-right">
+      <button id="homeBtn"
+              class=bar-button
+              title="Return to the default view&#x0A;Keyboard: H">
+      </button>
+      <button id="legendBtn"
+              class=bar-button
+              title="Map legend and symbols">
+      </button>
+      <button id="moreBtn"
+              class=bar-button
+              title="show options">
+      </button>
+    </div>
   </div>
 
   <div id="resultsBox"
@@ -175,12 +191,12 @@
       </div>
 
       <!--
-      --><button id="J-1" name="jump" title="Calculate a Jump-1 route">J-1</button><!--
-      --><button id="J-2" name="jump" title="Calculate a Jump-2 route">J-2</button><!--
-      --><button id="J-3" name="jump" title="Calculate a Jump-3 route">J-3</button><!--
-      --><button id="J-4" name="jump" title="Calculate a Jump-4 route">J-4</button><!--
-      --><button id="J-5" name="jump" title="Calculate a Jump-5 route">J-5</button><!--
-      --><button id="J-6" name="jump" title="Calculate a Jump-6 route">J-6</button>
+      --><button id="J-1" class=jump-button name=jump title="Calculate a Jump-1 route">J-1</button><!--
+      --><button id="J-2" class=jump-button name=jump title="Calculate a Jump-2 route">J-2</button><!--
+      --><button id="J-3" class=jump-button name=jump title="Calculate a Jump-3 route">J-3</button><!--
+      --><button id="J-4" class=jump-button name=jump title="Calculate a Jump-4 route">J-4</button><!--
+      --><button id="J-5" class=jump-button name=jump title="Calculate a Jump-5 route">J-5</button><!--
+      --><button id="J-6" class=jump-button name=jump title="Calculate a Jump-6 route">J-6</button>
 
       <div id="routeDisplay">
         <div id="routePath"></div>
@@ -223,32 +239,38 @@
     </script>
   </div>
 
-  <div id="optionsBar" class="ui">
-    <button id="homeBtn"
-            title="Return to the default view&#x0A;Keyboard: H">
-    </button>
-    <button id="shareBtn"
-            title="Share links to the map">
-    </button>
-    <button id="legendBtn"
-            title="Map legend and symbols">
-    </button>
-    <button id="milieuBtn"
-            title="Milieu">
-    </button>
-    <button id="labBtn"
-            title="Experimental features">
-    </button>
-    <button id="settingsBtn"
-            title="Change the map appearance">
-    </button>
-    <button id="helpBtn"
-            title="Help, feedback, and more">
-    </button>
-  </div>
+  <div id=panel-shade></div>
+  <div id="moreBox"
+       class="ui"
+  >
+    <div id="more-tabs">
+      <button id="settingsBtn"
+              class=tab-button
+              title="Change the map appearance">
+      </button>
+      <button id="labBtn"
+              class=tab-button
+              title="Experimental features">
+      </button>
+      <button id="milieuBtn"
+              class=tab-button
+              title="Milieu">
+      </button>
+      <button id="shareBtn"
+              class=tab-button
+              title="Share links to the map">
+      </button>
+      <button id="helpBtn"
+              class=tab-button
+              title="Help, feedback, and more">
+      </button>
+    </div>
+    <button id=more-closebtn class="dim"></button>
+    <div id="moreScroll">
 
-  <div id="settingsBox"
-       class="ui hoverbox hoverbox-right settings">
+
+  <div id="settings-tab"
+       class="more-tab settings">
     <section id="styles"><!--
       --><button id="settingsBtn-poster"
                  class="style-choice styles-p1"
@@ -325,15 +347,15 @@
     </div>
   </div>
 
-  <div id="milieuBox"
-       class="ui hoverbox hoverbox-right settings">
+  <div id="milieu-tab"
+       class="more-tab settings">
     <section>
       <p><strong>Milieu:</strong></p>
       <div class="indent">
         <p><label><input type="radio" name="milieu" value="IW"   > The Interstellar Wars</label></p>
-        <p><label><input type="radio" name="milieu" value="M0" > Milieu 0 &ndash; Early Imperium</label></p>
+        <p><label><input type="radio" name="milieu" value="M0"   > Milieu 0 &ndash; Early Imperium</label></p>
         <p><label><input type="radio" name="milieu" value="M990" > 990 &ndash; Solomani Rim War</label></p>
-        <p><label><input type="radio" name="milieu" value="M1105"> 1105 &ndash; The Golden Age (default)</label></p>
+        <p><label><input type="radio" name="milieu" value="M1105"> 1105 &ndash; The Golden Age <b>(default)</b></label></p>
         <p><label><input type="radio" name="milieu" value="M1120"> 1120 &ndash; The Rebellion</label></p>
         <p><label><input type="radio" name="milieu" value="M1201"> 1201 &ndash; The New Era</label></p>
         <p><label><input type="radio" name="milieu" value="M1248"> 1248 &ndash; The New, New Era</label></p>
@@ -342,8 +364,8 @@
     </section>
   </div>
 
-  <div id="labBox"
-       class="ui hoverbox hoverbox-right settings">
+  <div id="lab-tab"
+       class="more-tab settings">
     <section>
       <p><strong>Overlays:</strong></p>
       <div class="indent">
@@ -361,8 +383,93 @@
     </section>
   </div>
 
+  <div id="help-tab"
+       class="more-tab">
+
+   <section>
+      <h3>Traveller</h3>
+      <p><a target=_blank href="http://farfuture.net">Far Future Enterprises</a></p>
+      <p><a target=_blank href="http://travellerrpg.com/">Citizens of the Imperium Forum</a></p>
+      <p><a target=_blank href="http://www.mongoosepublishing.com/rpgs/traveller-1.html">Mongoose Publishing</a>
+        &bull; <a target=_blank href="http://forum.mongoosepublishing.com/viewforum.php?f=89">Forum</a></p>
+    </section>
+
+    <section>
+      <h3>The Traveller Map</h3>
+      <p><a target=_blank href="doc/about">About the Traveller Map</a></p>
+      <p><a target=_blank href="doc/credits">Credits and Data Sources</a></p>
+      <p>
+        <a target=_blank href="https://travellermap.blogspot.com/">News &amp; Feedback</a>
+        &bull;
+        <a target=_blank href="https://trello.com/b/y61wmEKJ/travellermap-com-wish-list">Wish List</a>
+      </p>
+
+    </section>
+
+    <section id="help-tools">
+      <h3>Players &amp; Referees</h3>
+      <p><a target=_blank href="doc/secondsurvey">About Second Survey Data</a></p>
+      <p>
+        <a target=_blank href="make/booklet">Booklet Maker</a> &bull;
+        <a target=_blank href="make/poster">Poster Maker</a>
+      </p>
+      <p>
+        <a target=_blank href="doc/custom">Custom Data</a> &bull;
+        <a target=_blank href="doc/submit">Submissions</a>
+      </p>
+    </section>
+
+    <section id="help-developers">
+      <h3>Developers</h3>
+      <p><a target=_blank href="doc/api">Explore the API</a></p>
+      <p><a target=_blank href="https://github.com/inexorabletash/travellermap">Get the source code</a></p>
+    </section>
+
+  </div>
+
+  <div id="share-tab"
+       class="more-tab">
+
+    <section>
+      <a id="download-snapshot" target=_blank href="#" download="TravellerMapSnapshot">Save Snapshot</a>
+      (<a id="download-snapshot-pdf" target=_blank href="#">or PDF</a>)
+    </section>
+
+    <section>
+      <a href="https://twitter.com/share" class="twitter-share-button" data-via="inexorabletash" data-size="large">Tweet</a>
+    </section>
+
+    <section>
+      <div class="g-plusone" data-size="tall" data-annotation="inline" data-width="240">+1</div>
+    </section>
+
+    <section class="fb">
+      <div class="fb-like" data-href="http://travellermap.com" data-width="200" data-colorscheme="dark" data-layout="standard" data-action="like" data-show-faces="false">Like</div>
+    </section>
+
+    <section>
+      <a target=_blank href="//www.tumblr.com/share" title="Share on Tumblr" style="display:inline-block; text-indent:-9999px; overflow:hidden; width:129px; height:20px; background:url('//platform.tumblr.com/v1/share_3.png') top left no-repeat transparent;">Share on Tumblr</a>
+    </section>
+
+    <section>
+      Share this link:
+      <input readonly id="share-url" title="Copy and paste">
+    </section>
+
+    <section id="share-embed">
+      Embed this HTML:
+      <input readonly id="share-code" title="Copy and paste">
+    </section>
+  </div>
+
+
+  </div>
+  </div>
+
   <div id="legendBox"
        class="ui hoverbox hoverbox-right">
+    <button id=legend-closebtn class="dim"></button>
+    <div id="legendBoxContent">
     <section>
       <h2>Map Legend</h2><br>
       <div id="image1"></div>
@@ -424,100 +531,30 @@
         <li><span class="highlight">Highlighted</span> world names<br>are subsector capitals.
       </ul>
     </section>
+    </div>
   </div>
 
-  <div id="helpBox"
-       class="ui hoverbox hoverbox-right">
-
-   <section>
-      <h3>Traveller</h3>
-      <p><a target=_blank href="http://farfuture.net">Far Future Enterprises</a></p>
-      <p><a target=_blank href="http://travellerrpg.com/">Citizens of the Imperium Forum</a></p>
-      <p><a target=_blank href="http://www.mongoosepublishing.com/rpgs/traveller-1.html">Mongoose Publishing</a>
-        &bull; <a target=_blank href="http://forum.mongoosepublishing.com/viewforum.php?f=89">Forum</a></p>
-    </section>
-
-    <section>
-      <h3>The Traveller Map</h3>
-      <p><a target=_blank href="doc/about">About the Traveller Map</a></p>
-      <p><a target=_blank href="doc/credits">Credits and Data Sources</a></p>
-      <p>
-        <a target=_blank href="https://travellermap.blogspot.com/">News &amp; Feedback</a>
-        &bull;
-        <a target=_blank href="https://trello.com/b/y61wmEKJ/travellermap-com-wish-list">Wish List</a>
-      </p>
-
-    </section>
-
-    <section id="help-tools">
-      <h3>Players &amp; Referees</h3>
-      <p><a target=_blank href="doc/secondsurvey">About Second Survey Data</a></p>
-      <p>
-        <a target=_blank href="make/booklet">Booklet Maker</a> &bull;
-        <a target=_blank href="make/poster">Poster Maker</a>
-      </p>
-      <p>
-        <a target=_blank href="doc/custom">Custom Data</a> &bull;
-        <a target=_blank href="doc/submit">Submissions</a>
-      </p>
-    </section>
-
-    <section id="help-developers">
-      <h3>Developers</h3>
-      <p><a target=_blank href="doc/api">Explore the API</a></p>
-      <p><a target=_blank href="https://github.com/inexorabletash/travellermap">Get the source code</a></p>
-    </section>
-
-  </div>
-
-  <div id="shareBox"
-       class="ui hoverbox hoverbox-right">
-
-    <section>
-      <a id="download-snapshot" target=_blank href="#" download="TravellerMapSnapshot">Save Snapshot</a>
-      (<a id="download-snapshot-pdf" target=_blank href="#">or PDF</a>)
-    </section>
-
-    <section>
-      <a href="https://twitter.com/share" class="twitter-share-button" data-via="inexorabletash" data-size="large">Tweet</a>
-    </section>
-
-    <section>
-      <div class="g-plusone" data-size="tall" data-annotation="inline" data-width="240">+1</div>
-    </section>
-
-    <section class="fb">
-      <div class="fb-like" data-href="http://travellermap.com" data-width="200" data-colorscheme="dark" data-layout="standard" data-action="like" data-show-faces="false">Like</div>
-    </section>
-
-    <section>
-      <a target=_blank href="//www.tumblr.com/share" title="Share on Tumblr" style="display:inline-block; text-indent:-9999px; overflow:hidden; width:129px; height:20px; background:url('//platform.tumblr.com/v1/share_3.png') top left no-repeat transparent;">Share on Tumblr</a>
-    </section>
-
-    <section>
-      Share this link:
-      <input readonly id="share-url" title="Copy and paste">
-    </section>
-
-    <section id="share-embed">
-      Embed this HTML:
-      <input readonly id="share-code" title="Copy and paste">
-    </section>
-  </div>
 
   <div id="navBar"
-       class="ui">
-    <canvas id="scaleIndicator" width="120" height="30">
-    </canvas>
-    <button id="zoomInBtn"
-            title="Zoom in&#x0A;Keyboard: +">
-    </button>
-    <button id="zoomOutBtn"
+       class="ui bar">
+    <div class="bar-right">
+      <canvas id="scaleIndicator"
+              title="Scale"
+              width="120" height="30">
+      </canvas>
+      <button id="zoomInBtn"
+              class=bar-button
+              title="Zoom in&#x0A;Keyboard: +">
+      </button>
+      <button id="zoomOutBtn"
+              class=bar-button
             title="Zoom out&#x0A;Keyboard: -">
-    </button>
-    <button id="tiltBtn"
-            title="Tilt&#x0A;Keyboard: T">
-    </button>
+      </button>
+      <button id="tiltBtn"
+              class=bar-button
+              title="Tilt&#x0A;Keyboard: T">
+      </button>
+    </div>
   </div>
 
   <div id="bottom-pane"
