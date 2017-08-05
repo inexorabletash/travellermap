@@ -1374,7 +1374,11 @@ window.addEventListener('DOMContentLoaded', function() {
 
   // iOS Safari: Prevent inadvertant touch-scroll.
   $$('button, input').forEach(function(e) {
-      e.addEventListener('touchmove', function(e) { e.preventDefault(); });
+      e.addEventListener('touchmove', function(e) { e.preventDefault();  });
+  });
+  // iOS Safari: Prevent inadvertant touch-zoom.
+  $$('.ui, .ds-frame').forEach(function(e) {
+      e.addEventListener('touchmove', function(e) { if (e.touches.length > 1) e.preventDefault(); });
   });
 
   // Init all of the "social" UI asynchronously.
