@@ -153,7 +153,7 @@ window.addEventListener('DOMContentLoaded', function() {
           x = ( map_center_x * scale - ( width / 2 ) ) / width,
           y = ( -map_center_y * scale - ( height / 2 ) ) / height;
       return { x: x, y: y, w: width, h: height, scale: scale };
-    }());
+    })();
     snapshotParams.x = round(snapshotParams.x, 1/1000);
     snapshotParams.y = round(snapshotParams.y, 1/1000);
     snapshotParams.scale = round(snapshotParams.scale, 1/128);
@@ -661,7 +661,7 @@ window.addEventListener('DOMContentLoaded', function() {
       $('#cbExperiments').checked = true;
       document.body.classList.add('enable-experiments');
     }
-  }());
+  })();
 
   $('#cbSavePreferences').addEventListener('click', savePreferences);
   $('#cbSaveLocation').addEventListener('click', savePreferences);
@@ -1372,14 +1372,27 @@ window.addEventListener('DOMContentLoaded', function() {
 
   $('#searchBox').disabled = false;
 
-  // iOS Safari: Prevent inadvertant touch-scroll.
-  $$('button, input').forEach(function(e) {
+  // iOS WebKit workarounds
+  (function(){
+    // Prevent inadvertant touch-scroll.
+    $$('button, input').forEach(function(e) {
       e.addEventListener('touchmove', function(e) { e.preventDefault();  });
-  });
-  // iOS Safari: Prevent inadvertant touch-zoom.
-  $$('.ui, .ds-frame').forEach(function(e) {
-      e.addEventListener('touchmove', function(e) { if (e.touches.length > 1) e.preventDefault(); });
-  });
+    });
+    // Prevent inadvertant touch-zoom.
+    document.addEventListener('touchmove', function(e) {
+      if (e.scale !== 1) { e.preventDefault(); }
+    }, false);
+    // Prevent double-tap-to-zoom.
+    var last_time = Date.now();
+    document.addEventListener('touchend', function(e) {
+      var now = Date.now();
+      if (now - last_time <= 500) {
+        e.preventDefault();
+        e.target.click();
+      }
+      last_time = now;
+    }, false);
+  })();
 
   // Init all of the "social" UI asynchronously.
   setTimeout(window.initSharingLinks, 5000);
