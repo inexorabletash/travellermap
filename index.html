@@ -35,7 +35,7 @@
 <meta property="fb:admins" content="617166358">
 
 <link rel="stylesheet" href="world.css?update=2017-07-06T09:56:46">
-<link rel="stylesheet" href="index.css?update=2017-08-05T10:52:59">
+<link rel="stylesheet" href="index.css?update=2017-08-05T22:00:17">
 <link rel="stylesheet" href="lib/add-to-home-screen/addtohomescreen.css">
 
 <!--[if lt IE 10]><script>alert("IE9 is no longer supported.");</script><![endif]-->
@@ -440,11 +440,11 @@
     </section>
 
     <section>
-      <div class="g-plusone" data-size="tall" data-annotation="inline" data-width="240">+1</div>
+      <div class="g-plusone" data-size="tall" data-annotation="inline" data-width="260"></div>
     </section>
 
     <section class="fb">
-      <div class="fb-like" data-href="http://travellermap.com" data-width="200" data-colorscheme="dark" data-layout="standard" data-action="like" data-show-faces="false">Like</div>
+      <div class="fb-like" data-href="https://travellermap.com" data-width="260" data-layout="standard" data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>
     </section>
 
     <section>
@@ -898,26 +898,38 @@
   <script>
   window.initSharingLinks = Util.once(function() {
     // Twitter
-    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+    window.twttr = (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0],
+          t = window.twttr || {};
+      if (d.getElementById(id)) return t;
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "https://platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js, fjs);
+
+      t._e = [];
+      t.ready = function(f) {
+        t._e.push(f);
+      };
+
+      return t;
+    }(document, "script", "twitter-wjs"));
 
     // Google+
-    (function() {
-      var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-      po.src = 'https://apis.google.com/js/plusone.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-    })();
+    gapi.plusone.go();
 
     // Facebook
     (function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) return;
       js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=259977877486558&version=v2.0";
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10&appId=259977877486558";
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
   });
   </script>
 
+  <script src="https://apis.google.com/js/platform.js" async defer>{parsetags: 'explicit'}</script>
   <script src="lib/add-to-home-screen/addtohomescreen.min.js"></script>
   <script>
     if (window == window.top && 'addToHomeScreen' in window) // Skip if in iframe, == for IE
