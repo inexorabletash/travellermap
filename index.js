@@ -76,7 +76,7 @@ window.addEventListener('DOMContentLoaded', function() {
       style: map.style,
       options: map.options
     };
-    NAMED_OPTIONS.forEach(function(name) {
+    map.namedOptions.NAMES.forEach(function(name) {
       prefs[name] = map.namedOptions.get(name);
     });
     PARAM_OPTIONS.forEach(function(option) {
@@ -601,12 +601,6 @@ window.addEventListener('DOMContentLoaded', function() {
   };
 
 
-  var NAMED_OPTIONS = [
-    'routes', 'dimunofficial',
-    'milieu',
-    'im', 'po', 'dw', 'an', 'mh', 'stellar'
-  ];
-
   // TODO: Generalize URLParam<->Control and URLParam<->Style binding
   var PARAM_OPTIONS = [
     {param: 'galdir', selector: '#cbGalDir', className: 'show-directions', 'default': true},
@@ -638,7 +632,7 @@ window.addEventListener('DOMContentLoaded', function() {
       $('#cbSavePreferences').checked = true;
       if ('style' in preferences) map.style = preferences.style;
       if ('options' in preferences) map.options = preferences.options;
-      NAMED_OPTIONS.forEach(function(name) {
+      map.namedOptions.NAMES.forEach(function(name) {
         if (name in preferences) map.namedOptions.set(name, preferences[name]);
       });
 

@@ -611,6 +611,15 @@ var Util = {
 
   var SINK_OFFSET = 1000;
 
+  var INT_OPTIONS = [
+    'routes', 'rifts', 'dimunofficial',
+    'sscoords', 'allhexes',
+    'dw', 'an', 'mh', 'po', 'im', 'cp', 'stellar'
+  ];
+  var STRING_OPTIONS = [
+    'ew', 'qz', 'hw', 'milieu'
+  ];
+
   function TravellerMap(container, boundingElement) {
     this.container = container;
     this.rect = boundingElement.getBoundingClientRect();
@@ -634,6 +643,7 @@ var Util = {
       this.invalidate();
       fireEvent(this, 'OptionsChanged', this.options);
     }.bind(this));
+    this.namedOptions.NAMES = INT_OPTIONS.concat(STRING_OPTIONS);
 
     this.loading = new Set();
 
@@ -1687,8 +1697,8 @@ var Util = {
 
     var pt;
 
-   if (has(params, ['yah_sx', 'yah_sy', 'yah_hx', 'yah_hx'])) {
-     pt = Astrometrics.sectorHexToMap(int('yah_sx'), int('yah_sy'), int('yah_hx'), int('yah_hy'));
+    if (has(params, ['yah_sx', 'yah_sy', 'yah_hx', 'yah_hx'])) {
+      pt = Astrometrics.sectorHexToMap(int('yah_sx'), int('yah_sy'), int('yah_hx'), int('yah_hy'));
       this.AddMarker('you_are_here', pt.x, pt.y);
     } else if (has(params, ['yah_x', 'yah_y'])) {
       this.AddMarker('you_are_here', float('yah_x'), float('yah_y'));
@@ -1785,16 +1795,12 @@ var Util = {
     }
 
     // Int/Boolean options
-    [
-      'silly', 'routes', 'rifts', 'dimunofficial',
-      'sscoords', 'allhexes',
-      'dw', 'an', 'mh', 'po', 'im', 'cp', 'stellar'
-    ].forEach(function(name) {
+    INT_OPTIONS.forEach(function(name) {
       if (name in params)
         this.namedOptions.set(name, int(name));
     }, this);
     // String options
-    ['ew', 'qz', 'hw', 'milieu'].forEach(function(name) {
+    STRING_OPTIONS.forEach(function(name) {
       if (name in params)
         this.namedOptions.set(name, params[name]);
     }, this);
