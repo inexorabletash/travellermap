@@ -1,4 +1,4 @@
-﻿using Maps.Serialization;
+using Maps.Serialization;
 using Maps.Utilities;
 using System.Collections.Generic;
 using System.Web;
@@ -95,6 +95,9 @@ namespace Maps.API.Results
 
         [XmlElement("Product")]
         public MetadataCollection<Product> Products => sector.Products;
+
+        public DataFileMetadata DataFile { get => dataFile; set { } }
+
         public MetadataCollection<Subsector> Subsectors => sector.Subsectors;
         public List<Allegiance> Allegiances
         {

@@ -257,6 +257,10 @@
       } else {
         sector.name = sector.title = 'Unnamed Sector';
       }
+      if (sector.metadata.DataFile.Milieu) {
+        var m = /^M(\d+)$/.exec(sector.metadata.DataFile.Milieu);
+        if (m) sector.metadata.DataFile.Era = m[1];
+      }
       document.title = sector.title;
       var imageURL, url_params = {
           accept: 'image/svg+xml',
