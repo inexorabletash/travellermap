@@ -65,29 +65,25 @@ window.addEventListener('DOMContentLoaded', function() {
 
   var SAVE_PREFERENCES_DELAY_MS = 500;
   var savePreferences = isIframe ? function() {} : Util.debounce(function() {
-    function maybeSave(test, key, data) {
-      if (test)
-        localStorage.setItem(key, JSON.stringify(data));
-      else
-        localStorage.removeItem(key);
-    }
-
-    var prefs = {
+    var preferences = {
       style: map.style,
       options: map.options
     };
     map.namedOptions.NAMES.forEach(function(name) {
-      prefs[name] = map.namedOptions.get(name);
+      preferences[name] = map.namedOptions.get(name);
     });
     PARAM_OPTIONS.forEach(function(option) {
-      prefs[option.param] = document.body.classList.contains(option.className);
+      preferences[option.param] = document.body.classList.contains(option.className);
     });
-    maybeSave($('#cbSavePreferences').checked, 'preferences', prefs);
-    maybeSave($('#cbSaveLocation').checked, 'location', {
+    localStorage.setItem('preferences', JSON.stringify(preferences));
+    localStorage.setItem('location', JSON.stringify({
       position: { x: map.x, y: map.y },
       scale: map.scale
-    });
-    maybeSave($('#cbExperiments').checked, 'experiments', {});
+    }));
+    if ($('#cbExperiments').checked)
+      localStorage.setItem('experiments', JSON.stringify({}));
+    else
+      localStorage.removeItem('experiments');
   }, SAVE_PREFERENCES_DELAY_MS);
 
   var template = Util.memoize(function(sel) {
@@ -119,7 +115,9 @@ window.addEventListener('DOMContentLoaded', function() {
     urlParams.style = map.style;
 
     var namedOptions = map.namedOptions.keys();
-    map.namedOptions.forEach(function(value, key) { urlParams[key] = value; });
+    map.namedOptions.forEach(function(value, key) {
+      urlParams[key] = value;
+    });
 
     Object.keys(defaults).forEach(function(p) {
       if (urlParams[p] === defaults[p]) delete urlParams[p];
@@ -548,15 +546,17 @@ window.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  map.OnOptionsChanged = function(options) {
+  var EVENT_DEBOUNCE_MS = 10;
+
+  map.OnOptionsChanged = Util.debounce(function(options) {
     optionObservers.forEach(function(o) { o(options); });
     $('#legendBox').classList.toggle('world_colors', options & Traveller.MapOptions.WorldColors);
     updateContext(lastX || map.worldX, lastY || map.worldY, {refresh: true});
     updatePermalink();
     savePreferences();
-  };
+  }, EVENT_DEBOUNCE_MS);
 
-  map.OnStyleChanged = function(style) {
+  map.OnStyleChanged = Util.debounce(function(style) {
     STYLES.forEach(function(s) {
       document.body.classList.toggle('style-' + s, s === style);
     });
@@ -564,20 +564,20 @@ window.addEventListener('DOMContentLoaded', function() {
     updatePermalink();
     updateScaleIndicator();
     savePreferences();
-  };
+  }, EVENT_DEBOUNCE_MS);
 
-  map.OnScaleChanged = function() {
+  map.OnScaleChanged = Util.debounce(function() {
     updateContext(lastX || map.worldX, lastY || map.worldY);
     updatePermalink();
     updateScaleIndicator();
     savePreferences();
-  };
+  }, EVENT_DEBOUNCE_MS);
 
-  map.OnPositionChanged = function() {
+  map.OnPositionChanged = Util.debounce(function() {
     updateContext(map.worldX, map.worldY);
     updatePermalink();
     savePreferences();
-  };
+  }, EVENT_DEBOUNCE_MS);
 
   function post(message) {
     if (window.parent !== window && 'postMessage' in window.parent) {
@@ -623,13 +623,31 @@ window.addEventListener('DOMContentLoaded', function() {
     });
   });
 
+  function resetOptionsToDefaults() {
+    map.namedOptions.NAMES.forEach(function(name) {
+      delete urlParams[name];
+      if (!(name in defaults))
+        map.namedOptions.delete(name);
+      else
+        map.namedOptions.set(name, defaults[name]);
+    });
+    PARAM_OPTIONS.forEach(function(option) {
+      $(option.selector).checked = option['default'];
+      document.body.classList.toggle(option.className, option['default']);
+      if (option.onchange) option.onchange(option.default);
+    });
+    map.options = defaults.options;
+    updatePermalink();
+    savePreferences();
+  }
+  $('#btnResetPrefs').addEventListener('click', resetOptionsToDefaults);
+
   (function() {
     if (isIframe) return;
     var preferences = JSON.parse(localStorage.getItem('preferences'));
     var location = JSON.parse(localStorage.getItem('location'));
     var experiments = JSON.parse(localStorage.getItem('experiments'));
     if (preferences) {
-      $('#cbSavePreferences').checked = true;
       if ('style' in preferences) map.style = preferences.style;
       if ('options' in preferences) map.options = preferences.options;
       map.namedOptions.NAMES.forEach(function(name) {
@@ -646,7 +664,6 @@ window.addEventListener('DOMContentLoaded', function() {
     }
 
     if (location) {
-      $('#cbSaveLocation').checked = true;
       if ('scale' in location) map.scale = location.scale;
       if ('position' in location) { map.x = location.position.x; map.y = location.position.y; }
     }
@@ -657,8 +674,6 @@ window.addEventListener('DOMContentLoaded', function() {
     }
   })();
 
-  $('#cbSavePreferences').addEventListener('click', savePreferences);
-  $('#cbSaveLocation').addEventListener('click', savePreferences);
   $('#cbExperiments').addEventListener('click', function() {
     savePreferences();
     document.body.classList.toggle('enable-experiments', this.checked);

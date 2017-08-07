@@ -639,10 +639,10 @@ var Util = {
 
     this.cache = new LRUCache(64);
 
-    this.namedOptions = new NamedOptions(function(key) {
+    this.namedOptions = new NamedOptions(Util.debounce(function(key) {
       this.invalidate();
       fireEvent(this, 'OptionsChanged', this.options);
-    }.bind(this));
+    }.bind(this), 1));
     this.namedOptions.NAMES = INT_OPTIONS.concat(STRING_OPTIONS);
 
     this.loading = new Set();
