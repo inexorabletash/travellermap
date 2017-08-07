@@ -228,7 +228,8 @@
     var hash = window.location.hash;
     window.location.hash = '';
 
-    var options = params.options !== undefined ? Number(params.options) : Traveller.MapOptions.BordersMask,
+    var options = (params.options !== undefined && params.options !== null)
+          ? Number(params.options) : Traveller.MapOptions.BordersMask,
         style = params.style || 'print';
 
     status('Fetching data...', true);
