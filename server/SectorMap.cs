@@ -150,6 +150,7 @@ namespace Maps
                         new SectorMetafileEntry(@"~/res/Sectors/Zhodani Core Route/ZhodaniCoreRoute.xml", new List<string> { "ZCR" } ),
                         new SectorMetafileEntry(@"~/res/Sectors/Orion OB1/orion.xml", new List<string> { "OrionOB1" } ),
                         new SectorMetafileEntry(@"~/res/Sectors/Distant Fringe/distantfringe.xml", new List<string> { "DistantFringe" } ),
+                        new SectorMetafileEntry(@"~/res/Sectors/Where The Stars End/wherethestarsend.xml", new List<string> { "WhereTheStarsEnd" } ),
 
                         // OTU - Other Milieu
                         new SectorMetafileEntry(@"~/res/Sectors/IW/iw.xml", new List<string> { "OTU" } ),
