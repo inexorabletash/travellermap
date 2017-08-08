@@ -543,12 +543,13 @@
   };
 
   Traveller.splitPBG = function splitPBG(pbg) {
-    if (pbg === 'XXX' || pbg === '???')
-      return { Pop: -1, Belts: '???', GG: '???' };
+    function fix(value, replacement) {
+      return value === -1 ? replacement : value;
+    }
     return {
       Pop: Traveller.fromHex(pbg.substring(0, 1)),
-      Belts: Traveller.fromHex(pbg.substring(1, 2)),
-      GG: Traveller.fromHex(pbg.substring(2, 3))
+      Belts: fix(Traveller.fromHex(pbg.substring(1, 2)), '???'),
+      GG: fix(Traveller.fromHex(pbg.substring(2, 3)), '???')
     };
   };
 
