@@ -633,22 +633,16 @@ namespace Maps
     public sealed class Allegiance : IAllegiance
     {
         public Allegiance() { }
-        public Allegiance(string code, string name)
+        public Allegiance(string t5code, string name)
         {
-            Name = name;
-            T5Code = code;
-            LegacyCode = code;
-        }
-        public Allegiance(string t5code, string legacyCode, string name)
-        {
-            Name = name;
             T5Code = t5code;
-            LegacyCode = legacyCode;
-        }
-        public Allegiance(string t5code, string legacyCode, string baseCode, string name, string location=null)
-        {
             Name = name;
+            LegacyCode = t5code;
+        }
+        public Allegiance(string t5code, string name, string legacyCode, string baseCode = null, string location = null)
+        {
             T5Code = t5code;
+            Name = name;
             LegacyCode = legacyCode;
             Base = baseCode;
             Location = location;

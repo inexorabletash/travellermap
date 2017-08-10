@@ -158,7 +158,7 @@ namespace Maps
 
             public void Add(string code, string legacy, string baseCode, string name, string location = null)
             {
-                Add(code, new Allegiance(code, legacy, baseCode, name, location));
+                Add(code, new Allegiance(code, name, legacy, baseCode, location));
             }
 
             public AllegianceDictionary Merge(AllegianceDictionary other)

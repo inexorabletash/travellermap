@@ -113,7 +113,7 @@ namespace Maps.API.Results
                     var alleg = sector.GetAllegianceFromCode(code);
                     if (alleg == null)
                         continue;
-                    list.Add(new Allegiance(code, alleg.Name));
+                    list.Add(new Allegiance(code, alleg.Name, alleg.LegacyCode, alleg.Base));
                 }
                 return list;
             }
