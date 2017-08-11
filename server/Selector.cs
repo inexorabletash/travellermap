@@ -34,6 +34,11 @@ namespace Maps
 
         protected IEnumerable<Tuple<Sector, Route>> FilteredRoutes(Rectangle bounds)
         {
+            // Passed bounds are intended for rendering, where the lower-right edge of a hex is at (0,0) and
+            // therefore the bounds are offset by (-1,-1) already to include the specified hex. Compensate here
+            // by offsetting.
+            bounds.Offset(1, 1);
+
             foreach (Sector sector in Sectors)
             {
                 foreach (Route route in sector.Routes)
