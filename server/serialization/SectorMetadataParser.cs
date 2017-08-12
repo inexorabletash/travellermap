@@ -193,7 +193,7 @@ namespace Maps.Serialization
                 {
                     Allegiance = ParseString(label.GetAttribute("Allegiance")),
                     ColorHtml = ParseString(label.GetAttribute("Color")),
-                    Hex = ParseInt(label.GetAttribute("Hex")) ?? 0,
+                    Hex = new Hex(ParseString(label.GetAttribute("Hex"))),
                     OffsetY = ParseFloat(label.GetAttribute("OffsetY")) ?? 0,
                     Size = ParseString(label.GetAttribute("Size")),
                     Text = label.InnerText,

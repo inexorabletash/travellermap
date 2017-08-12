@@ -956,13 +956,15 @@ namespace Maps
         public Label(int hex, string text)
             : this()
         {
-            Hex = hex;
+            Hex = new Hex(hex);
             Text = text;
         }
 
         public static Color DefaultColor => Color.Yellow;
-        [XmlAttribute]
-        public int Hex { get; set; }
+
+        internal Hex Hex { get; set; }
+        [XmlAttribute("Hex"),JsonName("Hex")]
+        public string HexString { get => Hex.ToString(); set { Hex = new Hex(value); } }
 
         [XmlAttribute]
         public string Allegiance { get; set; }

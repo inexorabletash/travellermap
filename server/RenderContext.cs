@@ -1526,8 +1526,7 @@ namespace Maps.Rendering
                     foreach (Label label in sector.Labels)
                     {
                         string text = label.Text;
-                        Hex labelHex = new Hex(label.Hex);
-                        PointF labelPos = Astrometrics.HexToCenter(Astrometrics.LocationToCoordinates(new Location(sector.Location, labelHex)));
+                        PointF labelPos = Astrometrics.HexToCenter(Astrometrics.LocationToCoordinates(new Location(sector.Location, label.Hex)));
                         // TODO: Adopt some of the tweaks from .MSEC
                         labelPos.Y -= label.OffsetY * 0.7f;
 

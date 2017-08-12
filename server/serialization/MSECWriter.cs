@@ -175,7 +175,7 @@ namespace Maps.Serialization
                     if (line.Length > 0)
                     {
                         writer.Write("label ");
-                        writer.Write(label.Hex.ToString("0000", CultureInfo.InvariantCulture));
+                        writer.Write(label.Hex);
                         if (offset != 0)
                         {
                             writer.Write("/");
